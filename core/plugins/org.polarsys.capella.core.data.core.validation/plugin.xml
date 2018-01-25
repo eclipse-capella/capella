@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <!--
-  Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -389,6 +389,25 @@ This rule checks that an capella element doesn&apos;t contain any naming conflic
                </message>
                <description>
                   Detects moved elements and verifies that outgoing/incoming references from/to these elements and their content trees are still allowed. This validation rule is only executed if the move operation was executed in the Move Staging View.
+               </description>
+               <target
+                     class="CapellaElement">
+               </target>
+            </constraint>
+             <constraint
+                  class="org.polarsys.capella.core.data.core.validation.constraint.InterModelConsistencyValidationRule"
+                  id="I_39"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Live"
+                  name="I_39 - Validate inter-model references"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  ''{0}'' in model ''{1}'' cannot reference ''{2}'' in model ''{3}'' via ''{4}''
+               </message>
+               <description>
+                  An element in model A can only reference an element in model B if A has declared a "Library Reference" to B. 
                </description>
                <target
                      class="CapellaElement">

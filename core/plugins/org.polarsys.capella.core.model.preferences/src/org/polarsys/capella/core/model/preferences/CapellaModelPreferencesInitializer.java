@@ -1,10 +1,10 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *  
+ *
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
@@ -52,11 +52,6 @@ public class CapellaModelPreferencesInitializer extends AbstractPreferencesIniti
     putBoolean(ISynchronizationPreferences.PREFS_ALLOW_SYNC_PHYSICALPORT_TO_COMPONENTPORT_ON_PHYSICALPATH,
         ISynchronizationPreferences.PREFS_ALLOW_SYNC_PHYSICALPORT_TO_COMPONENTPORT_ON_PHYSICALPATH_DEFAULT
             .booleanValue(),
-        ProjectScope.class);
-
-    // Set inter-model integrity preferences
-    putBoolean(IInterModelIntegrityPreferences.PREFS_PREVENT_ON_THE_FLY_DEPENDENCY_VIOLATION,
-        IInterModelIntegrityPreferences.PREFS_PREVENT_ON_THE_FLY_DEPENDENCY_VIOLATION_DEFAULT.booleanValue(),
         ProjectScope.class);
 
     // Set Mode & State management preferences
