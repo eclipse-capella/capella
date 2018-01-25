@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
@@ -72,16 +73,15 @@ public class PhysicalPathExt {
   }
 
   /**
-   * retrieves the source functions of a functional chain. if functional chain is composite, returns also starting functions of sub functional chains
-   * @param functionalChain_p a functional chain
-   * @return source functions of functionalChain_p
+   * @param physicalPath a Physical Path
+   * @return the first physical path involvement of the given path
    */
-  public static Collection<PhysicalPathInvolvement> getFlatFirstPhysicalPathInvolvments(PhysicalPath physicalPath1) {
+  public static Collection<PhysicalPathInvolvement> getFlatFirstPhysicalPathInvolvments(PhysicalPath physicalPath) {
     Set<PhysicalPathInvolvement> result = new HashSet<PhysicalPathInvolvement>();
 
     LinkedList<PhysicalPath> toVisit = new LinkedList<PhysicalPath>();
     HashSet<PhysicalPath> visited = new HashSet<PhysicalPath>();
-    toVisit.add(physicalPath1);
+    toVisit.add(physicalPath);
 
     while (!toVisit.isEmpty()) {
       PhysicalPath chain = toVisit.removeFirst();
@@ -103,16 +103,15 @@ public class PhysicalPathExt {
   }
 
   /**
-   * retrieves the source functions of a functional chain. if functional chain is composite, returns also starting functions of sub functional chains
-   * @param functionalChain_p a functional chain
-   * @return source functions of functionalChain_p
+   * @param physicalPath a physical Path
+   * @return the last involvement of the given PhysicalPath
    */
-  public static Collection<PhysicalPathInvolvement> getFlatLastPhysicalPathInvolvments(PhysicalPath physicalPath1) {
+  public static Collection<PhysicalPathInvolvement> getFlatLastPhysicalPathInvolvments(PhysicalPath physicalPath) {
     Set<PhysicalPathInvolvement> result = new HashSet<PhysicalPathInvolvement>();
 
     LinkedList<PhysicalPath> toVisit = new LinkedList<PhysicalPath>();
     HashSet<PhysicalPath> visited = new HashSet<PhysicalPath>();
-    toVisit.add(physicalPath1);
+    toVisit.add(physicalPath);
 
     while (!toVisit.isEmpty()) {
       PhysicalPath chain = toVisit.removeFirst();
@@ -290,14 +289,13 @@ public class PhysicalPathExt {
   }
 
   /**
-   * retrieves the source functions of a functional chain. if functional chain is composite, returns also starting functions of sub functional chains
-   * @param functionalChain_p a functional chain
-   * @return source functions of functionalChain_p
+   * @param physicalPath a Physical Path
+   * @return the first involvement of the given Physical Path which is a Part
    */
-  public static Set<Part> getFlatPhysicalPathFirstParts(PhysicalPath chain) {
+  public static Set<Part> getFlatPhysicalPathFirstParts(PhysicalPath physicalPath) {
     Set<Part> result = new HashSet<Part>();
 
-    for (PhysicalPathInvolvement inv : getFlatFirstPhysicalPathInvolvments(chain)) {
+    for (PhysicalPathInvolvement inv : getFlatFirstPhysicalPathInvolvments(physicalPath)) {
       if (inv.getInvolvedElement() instanceof Part) {
         result.add((Part) inv.getInvolvedElement());
       }
@@ -307,14 +305,13 @@ public class PhysicalPathExt {
   }
 
   /**
-   * retrieves the target functions of a functional chain if functional chain is composite, returns also ending functions of sub functional chains
-   * @param functionalChain_p a functional chain
-   * @return target functions of functionalChain_p
+   * @param physicalPath a Physical Path
+   * @return the last involvement of the given Physical Path which is a Part
    */
-  public static Set<Part> getFlatPhysicalPathLastParts(PhysicalPath chain) {
+  public static Set<Part> getFlatPhysicalPathLastParts(PhysicalPath physicalPath) {
     Set<Part> result = new HashSet<Part>();
 
-    for (PhysicalPathInvolvement inv : getFlatLastPhysicalPathInvolvments(chain)) {
+    for (PhysicalPathInvolvement inv : getFlatLastPhysicalPathInvolvments(physicalPath)) {
       if (inv.getInvolvedElement() instanceof Part) {
         result.add((Part) inv.getInvolvedElement());
       }
@@ -761,11 +758,12 @@ public class PhysicalPathExt {
 
   /**
    * @param path
-   * @param physicalLink_p
+   * @param involvedClass
    * @return
    */
   public static Collection<PhysicalPathInvolvement> getFlatInvolvementsOf(PhysicalPath path, EClass involvedClass) {
-    Set<PhysicalPathInvolvement> result = new HashSet<PhysicalPathInvolvement>();
+	// Use a LinkedHashSet to preserve order of involvement
+    Set<PhysicalPathInvolvement> result = new LinkedHashSet<PhysicalPathInvolvement>();
     for (PhysicalPathInvolvement involvement : getFlatInvolvements(path)) {
       if ((involvement.getInvolvedElement() != null) && involvedClass.isInstance(involvement.getInvolvedElement())) {
         result.add(involvement);
@@ -776,7 +774,7 @@ public class PhysicalPathExt {
 
   /**
    * @param aPath
-   * @param physicalLink_p
+   * @param involvedClass
    * @return
    */
   public static Collection<EObject> getFlatInvolvedElements(PhysicalPath aPath, EClass involvedClass) {
@@ -817,13 +815,13 @@ public class PhysicalPathExt {
   }
 
   /**
-   * @param fc
-   * @param involved_p
+   * @param physicalPath
+   * @param involvedClass
    * @return all the involvements of the PhysicalPath that involves the given element
    */
-  public static Set<PhysicalPathInvolvement> getInvolvementsOf(PhysicalPath fc, EClass involvedClass) {
+  public static Set<PhysicalPathInvolvement> getInvolvementsOf(PhysicalPath physicalPath, EClass involvedClass) {
     Set<PhysicalPathInvolvement> result = new HashSet<PhysicalPathInvolvement>();
-    for (PhysicalPathInvolvement anInvolvement : fc.getOwnedPhysicalPathInvolvements()) {
+    for (PhysicalPathInvolvement anInvolvement : physicalPath.getOwnedPhysicalPathInvolvements()) {
       if ((anInvolvement.getInvolvedElement() != null) && involvedClass.isInstance(anInvolvement.getInvolvedElement())) {
         result.add(anInvolvement);
       }
@@ -836,8 +834,8 @@ public class PhysicalPathExt {
    * @param cExchange
    */
   public static void synchronizeAllocations(PhysicalPath pPath, ComponentExchange cExchange) {
-    Port ceSource = ComponentExchangeExt.getSourcePort(cExchange);
-    Port ceTarget = ComponentExchangeExt.getTargetPort(cExchange);
+    Port ceSource = cExchange.getSourcePort();
+    Port ceTarget = cExchange.getTargetPort();
     if ((ceSource instanceof ComponentPort) && (ceTarget instanceof ComponentPort)) {
       synchronizeAllocations(pPath, (ComponentPort) ceSource, (ComponentPort) ceTarget);
     }
@@ -861,8 +859,8 @@ public class PhysicalPathExt {
    */
   public static List<ModelElement> evaluateImpactsOfUnsynchronizeAllocations(PhysicalPath pPath, ComponentExchange cExchange, boolean forceCleaning) {
     List<ModelElement> result = new ArrayList<ModelElement>();
-    Port ceSource = ComponentExchangeExt.getSourcePort(cExchange);
-    Port ceTarget = ComponentExchangeExt.getTargetPort(cExchange);
+    Port ceSource = cExchange.getSourcePort();
+    Port ceTarget = cExchange.getTargetPort();
     if ((ceSource instanceof ComponentPort) && (ceTarget instanceof ComponentPort)) {
       result.addAll(unsynchronizeAllocations(pPath, (ComponentPort) ceSource, (ComponentPort) ceTarget, forceCleaning));
     }
