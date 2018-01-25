@@ -7,16 +7,11 @@
    </configIni>
 
    <launcherArgs>
-      <programArgsLin>--launcher.GTK_version
-2
-      </programArgsLin>
       <vmArgs>-Dosgi.requiredJavaVersion=1.8
 -Xms1000m
 -Xmx3000m
 -Xss4m
       </vmArgs>
-      <vmArgsLin>-Dorg.eclipse.swt.browser.DefaultType=mozilla
-      </vmArgsLin>
       <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts
       </vmArgsMac>
    </launcherArgs>
