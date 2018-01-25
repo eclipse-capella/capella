@@ -504,7 +504,7 @@
             <mask mask="{0}"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%current%>">
-                <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
+                <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:self.void2Null(arg0)"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -1181,7 +1181,7 @@
             <mask mask="{0}"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%current%>">
-                <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
+                <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:self.void2Null(arg0)"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -1189,7 +1189,7 @@
             <mask mask="{0}"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%current%>">
-                <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
+                <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:self.void2Null(arg0)"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -1197,7 +1197,7 @@
             <mask mask="{0}"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%current%>">
-                <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
+                <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:self.void2Null(arg0)"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>

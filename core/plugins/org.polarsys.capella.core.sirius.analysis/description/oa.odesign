@@ -190,7 +190,7 @@
           <ownedTools xsi:type="tool_1:DirectEditLabel" name="Rename OEB">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
+              <firstModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:self.void2Null(arg0)"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool_1:ToolGroup" name="Constraints">
@@ -566,7 +566,7 @@
           <ownedTools xsi:type="tool_1:DirectEditLabel" name="name">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
+              <firstModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:self.void2Null(arg0)"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool_1:ToolGroup" name="Constraints">
@@ -1132,13 +1132,13 @@
           <ownedTools xsi:type="tool_1:DirectEditLabel" name="name">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
+              <firstModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:self.void2Null(arg0)"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool_1:DirectEditLabel" name="OA Role">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
+              <firstModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:self.void2Null(arg0)"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool_1:DeleteElementDescription" name="capellaElement" precondition="&lt;%!($containerView[!filter(&quot;DDiagram&quot;)].eContainer(&quot;DDiagram&quot;).target + $containerView[filter(&quot;DDiagram&quot;)].target.ancestor + $containerView[filter(&quot;DDiagram&quot;)].target + $containerView[!filter(&quot;DDiagram&quot;)].eContainer(&quot;DDiagram&quot;).target.ancestor).nContains($element)%>">
@@ -1861,7 +1861,7 @@
             <mask mask="{0}"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%current%>">
-                <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
+                <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:self.void2Null(arg0)"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -2045,7 +2045,7 @@
           <ownedTools xsi:type="tool_1:DirectEditLabel" name="Rename Interaction" forceRefresh="true">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
+              <firstModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:self.void2Null(arg0)"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool_1:ContainerDropDescription" name="change allocation" mappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Role%20Blank']/@defaultLayer/@containerMappings[name='ORB_Role1']/@subNodeMappings[name='ORB_OAAllocation']" moveEdges="true">
@@ -3727,7 +3727,7 @@
             <mask mask="{0}"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% representedInstance %>">
-                <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
+                <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:self.void2Null(arg0)"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -3735,7 +3735,7 @@
             <mask mask="{0}"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% sendingEnd.event.operation %>">
-                <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
+                <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:self.void2Null(arg0)"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -3940,7 +3940,7 @@
           <ownedTools xsi:type="tool_1:DirectEditLabel" name="Set Duration">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:SetValue" featureName="duration" valueExpression="&lt;%$0%>"/>
+              <firstModelOperations xsi:type="tool:SetValue" featureName="duration" valueExpression="aql:self.void2Null(arg0)"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool_2:InstanceRoleReorderTool" name="IRReorder" forceRefresh="true" mappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20OA']">
@@ -4672,9 +4672,9 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% current%>">
                 <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% representedInstance %>">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:self.void2Null(arg0)"/>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
+                <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:self.void2Null(arg0)"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -4682,7 +4682,7 @@
             <mask mask="{0}"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% sendingEnd.event.operation %>">
-                <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
+                <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:self.void2Null(arg0)"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -4864,7 +4864,7 @@
           <ownedTools xsi:type="tool_1:DirectEditLabel" name="Set Duration">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:SetValue" featureName="duration" valueExpression="&lt;%$0%>"/>
+              <firstModelOperations xsi:type="tool:SetValue" featureName="duration" valueExpression="aql:self.void2Null(arg0)"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool_2:InstanceRoleReorderTool" name="IRReorder" forceRefresh="true" mappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Activity%20Interaction%20Scenario']/@defaultLayer/@nodeMappings[name='InstanceRoleMaping%20AIS']">
@@ -5926,7 +5926,7 @@
           <ownedTools xsi:type="tool_1:DirectEditLabel" name="OA COC Direct Edit Label">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
+              <firstModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:self.void2Null(arg0)"/>
             </initialOperation>
           </ownedTools>
         </toolSections>

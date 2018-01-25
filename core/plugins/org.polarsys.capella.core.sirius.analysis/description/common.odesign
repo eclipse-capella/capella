@@ -738,13 +738,13 @@
           <ownedTools xsi:type="tool:DirectEditLabel" name="NamedElement DirectEdit" forceRefresh="true">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:self.void2Null(arg0)"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:DirectEditLabel" name="Transition DirectEdit" forceRefresh="true">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:SetValue" featureName="triggerDescription" valueExpression="&lt;%$0%>"/>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="triggerDescription" valueExpression="aql:self.void2Null(arg0)"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:DeleteElementDescription" name="Delete StateMode" precondition="&lt;%!($containerView[!filter(&quot;DDiagram&quot;)].eContainer(&quot;DDiagram&quot;).target + $containerView[filter(&quot;DDiagram&quot;)].target.ancestor + $containerView[filter(&quot;DDiagram&quot;)].target + $containerView[!filter(&quot;DDiagram&quot;)].eContainer(&quot;DDiagram&quot;).target.ancestor).nContains($element)%>">
@@ -1528,13 +1528,13 @@
           <ownedTools xsi:type="tool:DirectEditLabel" name="NamedElement DirectEdit" forceRefresh="true" inputLabelExpression="feature:name">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:self.void2Null(arg0)"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:DirectEditLabel" name="Transition DirectEdit" forceRefresh="true">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:SetValue" featureName="triggerDescription" valueExpression="&lt;%$0%>"/>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="triggerDescription" valueExpression="aql:self.void2Null(arg0)"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:DeleteElementDescription" name="Delete StateMode" precondition="&lt;%!($containerView[!filter(&quot;DDiagram&quot;)].eContainer(&quot;DDiagram&quot;).target + $containerView[filter(&quot;DDiagram&quot;)].target.ancestor + $containerView[filter(&quot;DDiagram&quot;)].target + $containerView[!filter(&quot;DDiagram&quot;)].eContainer(&quot;DDiagram&quot;).target.ancestor).nContains($element)%>">
@@ -3461,14 +3461,14 @@
             <tools xsi:type="tool:DirectEditLabel" documentation="This editis reused in diffrent diagrams" name="Constraint Content" forceRefresh="true" inputLabelExpression="feature:name">
               <mask mask="{0}"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
+                <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:self.void2Null(arg0)"/>
               </initialOperation>
             </tools>
           </ownedTools>
           <ownedTools xsi:type="tool:DirectEditLabel" name="name" forceRefresh="true" inputLabelExpression="feature:name">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:self.void2Null(arg0)"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:DeleteElementDescription" name="Delete_DataType" precondition="&lt;%!($containerView[!filter(&quot;DDiagram&quot;)].eContainer(&quot;DDiagram&quot;).target + $containerView[filter(&quot;DDiagram&quot;)].target.ancestor + $containerView[filter(&quot;DDiagram&quot;)].target + $containerView[!filter(&quot;DDiagram&quot;)].eContainer(&quot;DDiagram&quot;).target.ancestor).nContains($element)%>">
@@ -4294,7 +4294,7 @@
           <ownedTools xsi:type="tool:DirectEditLabel" name="literal name" forceRefresh="true">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:self.void2Null(arg0)"/>
             </initialOperation>
           </ownedTools>
         </toolSections>
@@ -5768,14 +5768,14 @@
           <ownedTools xsi:type="tool:DirectEditLabel" name="NamedElement DirectEdit" inputLabelExpression="feature:name">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:self.void2Null(arg0)"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:DirectEditLabel" name="Allocation DirectEdit" inputLabelExpression="&lt;%allocatedItem.name%>">
             <mask mask="{0}"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%allocatedItem%>">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:self.void2Null(arg0)"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -7340,7 +7340,7 @@
           <ownedTools xsi:type="tool:DirectEditLabel" name="NamedElement DirectEdit">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:self.void2Null(arg0)"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="implements target" precondition="&lt;%!(current.eContainer().isA(&quot;ConfigurationItem&quot;)) &amp;&amp; $target.isA(&quot;Interface&quot;) &amp;&amp; !(current.eContainer().implementedInterfaces.nContains($target))%>">
@@ -9028,7 +9028,7 @@
           <ownedTools xsi:type="tool:DirectEditLabel" name="NamedElement DirectEdit">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:self.void2Null(arg0)"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="CB Reconnect Generalization Target" precondition="&lt;% canReconnectGeneralization($element.sub,$target) %>">
@@ -10801,14 +10801,14 @@
           <ownedTools xsi:type="tool:DirectEditLabel" name="NamedElement DirectEdit" inputLabelExpression="feature:name">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:self.void2Null(arg0)"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:DirectEditLabel" name="Allocation DirectEdit" inputLabelExpression="&lt;%allocatedItem.name%>">
             <mask mask="{0}"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%allocatedItem%>">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:self.void2Null(arg0)"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -11311,7 +11311,7 @@
           <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
           <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
           <variables name="root" documentation="The semantic element of the table."/>
-          <firstModelOperation xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
+          <firstModelOperation xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:self.void2Null(arg0)"/>
           <mask mask="{0}"/>
         </directEdit>
       </ownedColumnMappings>
@@ -11323,7 +11323,7 @@
           <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
           <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
           <variables name="root" documentation="The semantic element of the table."/>
-          <firstModelOperation xsi:type="tool_1:SetValue" featureName="requirementId" valueExpression="&lt;%$0%>"/>
+          <firstModelOperation xsi:type="tool_1:SetValue" featureName="requirementId" valueExpression="aql:self.void2Null(arg0)"/>
           <mask mask="{0}"/>
         </directEdit>
       </ownedColumnMappings>
@@ -11335,7 +11335,7 @@
           <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
           <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
           <variables name="root" documentation="The semantic element of the table."/>
-          <firstModelOperation xsi:type="tool_1:SetValue" featureName="summary" valueExpression="&lt;%$0%>"/>
+          <firstModelOperation xsi:type="tool_1:SetValue" featureName="summary" valueExpression="aql:self.void2Null(arg0)"/>
           <mask mask="{0}"/>
         </directEdit>
       </ownedColumnMappings>
@@ -11347,7 +11347,7 @@
           <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
           <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
           <variables name="root" documentation="The semantic element of the table."/>
-          <firstModelOperation xsi:type="tool_1:SetValue" featureName="description" valueExpression="&lt;%$0%>"/>
+          <firstModelOperation xsi:type="tool_1:SetValue" featureName="description" valueExpression="aql:self.void2Null(arg0)"/>
           <mask mask="{0}"/>
         </directEdit>
       </ownedColumnMappings>
@@ -11359,7 +11359,7 @@
           <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
           <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
           <variables name="root" documentation="The semantic element of the table."/>
-          <firstModelOperation xsi:type="tool_1:SetValue" featureName="additionalInformation" valueExpression="&lt;%$0%>"/>
+          <firstModelOperation xsi:type="tool_1:SetValue" featureName="additionalInformation" valueExpression="aql:self.void2Null(arg0)"/>
           <mask mask="{0}"/>
         </directEdit>
       </ownedColumnMappings>
@@ -11371,7 +11371,7 @@
           <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
           <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
           <variables name="root" documentation="The semantic element of the table."/>
-          <firstModelOperation xsi:type="tool_1:SetValue" featureName="verificationMethod" valueExpression="&lt;%$0%>"/>
+          <firstModelOperation xsi:type="tool_1:SetValue" featureName="verificationMethod" valueExpression="aql:self.void2Null(arg0)"/>
           <mask mask="{0}"/>
         </directEdit>
       </ownedColumnMappings>
@@ -11383,7 +11383,7 @@
           <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
           <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
           <variables name="root" documentation="The semantic element of the table."/>
-          <firstModelOperation xsi:type="tool_1:SetValue" featureName="verificationPhase" valueExpression="&lt;%$0%>"/>
+          <firstModelOperation xsi:type="tool_1:SetValue" featureName="verificationPhase" valueExpression="aql:self.void2Null(arg0)"/>
           <mask mask="{0}"/>
         </directEdit>
       </ownedColumnMappings>
@@ -11553,7 +11553,7 @@
           <ownedTools xsi:type="tool:DirectEditLabel" name="NamedElement DirectEdit">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:self.void2Null(arg0)"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:ToolGroup" name="Constraints">
@@ -12992,14 +12992,14 @@
           <ownedTools xsi:type="tool:DirectEditLabel" name="NamedElement DirectEdit" inputLabelExpression="feature:name">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:self.void2Null(arg0)"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:DirectEditLabel" name="Allocation DirectEdit" inputLabelExpression="&lt;%allocatedItem.name%>">
             <mask mask="{0}"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%allocatedItem%>">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:self.void2Null(arg0)"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -14988,9 +14988,9 @@
             <mask mask="{0}"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%current%>">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:self.void2Null(arg0)"/>
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="feature:representedInstance">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:self.void2Null(arg0)"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -14999,7 +14999,7 @@
             <mask mask="{0}"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% sendingEnd.event.operation.allocatedItem%>">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:self.void2Null(arg0)"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -15100,7 +15100,7 @@
           <ownedTools xsi:type="tool:DirectEditLabel" name="Set Duration">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:SetValue" featureName="duration" valueExpression="&lt;%$0%>"/>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="duration" valueExpression="aql:self.void2Null(arg0)"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool_2:InstanceRoleReorderTool" name="IRReorder" forceRefresh="true" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping']">
@@ -16834,9 +16834,9 @@
             <mask mask="{0}"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%current%>">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:self.void2Null(arg0)"/>
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="feature:representedInstance">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:self.void2Null(arg0)"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -16845,7 +16845,7 @@
             <mask mask="{0}"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% sendingEnd.event.operation %>">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:self.void2Null(arg0)"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -16960,7 +16960,7 @@
           <ownedTools xsi:type="tool:DirectEditLabel" name="Set Duration">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:SetValue" featureName="duration" valueExpression="&lt;%$0%>"/>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="duration" valueExpression="aql:self.void2Null(arg0)"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool_2:InstanceRoleReorderTool" name="IRReorder" forceRefresh="true" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20DF']">
@@ -17632,9 +17632,9 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% current%>">
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="feature:representedInstance">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:self.void2Null(arg0)"/>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:self.void2Null(arg0)"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -17685,7 +17685,7 @@
             <mask mask="{0}"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% sendingEnd.event.operation %>">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:self.void2Null(arg0)"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -18053,7 +18053,7 @@
           <ownedTools xsi:type="tool:DirectEditLabel" name="Set Duration">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:SetValue" featureName="duration" valueExpression="&lt;%$0%>"/>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="duration" valueExpression="aql:self.void2Null(arg0)"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool_2:InstanceRoleReorderTool" name="IRReorder" forceRefresh="true" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20FS']">

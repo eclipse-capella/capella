@@ -488,7 +488,7 @@
           <ownedTools xsi:type="tool_1:DirectEditLabel" name="Logical Rename Part">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
+              <firstModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:self.void2Null(arg0)"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool_1:DiagramCreationDescription" name="Logical Component Breakdown" precondition="&lt;%isInLib() &amp;&amp; getComponentType.isA(&quot;LogicalComponent&quot;)%>" titleExpression="[LCBD] &lt;%current.name%>" browseExpression="&lt;%getComponentType%>" diagramDescription="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Component%20Breakdown']">
@@ -833,7 +833,7 @@
             <mask mask="{0}"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%current%>">
-                <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
+                <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:self.void2Null(arg0)"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -1484,7 +1484,7 @@
             <mask mask="{0}"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%current%>">
-                <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
+                <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:self.void2Null(arg0)"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -1492,7 +1492,7 @@
             <mask mask="{0}"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%current%>">
-                <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
+                <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:self.void2Null(arg0)"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -1500,7 +1500,7 @@
             <mask mask="{0}"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%current%>">
-                <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
+                <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:self.void2Null(arg0)"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -3570,7 +3570,7 @@
           <ownedTools xsi:type="tool_1:DirectEditLabel" name="name" forceRefresh="true">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
+              <firstModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:self.void2Null(arg0)"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool_1:DeleteElementDescription" name="delete capella element" precondition="&lt;%!($containerView[!filter(&quot;DDiagram&quot;)].eContainer(&quot;DDiagram&quot;).target + $containerView[filter(&quot;DDiagram&quot;)].target.ancestor + $containerView[filter(&quot;DDiagram&quot;)].target + $containerView[!filter(&quot;DDiagram&quot;)].eContainer(&quot;DDiagram&quot;).target.ancestor).nContains($element)%>">
@@ -3933,7 +3933,7 @@
           <ownedTools xsi:type="tool_1:DirectEditLabel" name="LA CRR Direct Edit Label">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
+              <firstModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:self.void2Null(arg0)"/>
             </initialOperation>
           </ownedTools>
         </toolSections>
