@@ -13,7 +13,6 @@ Require-Bundle: org.polarsys.capella.common.flexibility.properties,
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.libraries,
- org.polarsys.capella.core.libraries.interModelInconsistencyDetection,
  org.polarsys.capella.core.libraries.model,
  org.polarsys.capella.core.libraries.nature,
  org.polarsys.capella.core.libraries.properties,

@@ -58,15 +58,15 @@ The following figure illustrates the prompted dialog when deleting the System Ac
 On the sub section '''Model''' of Capella preferences, it is possible to specify global behavior regarding the management of specific elements.
 
  
-[[Image:Images/6.2.%20Model%20preferences_html_m2492a832.png|1200x800px]]
+[[Image:Images/6.2.%20Model%20preferences_html_m2492a832.png|874x633px]]
 
-When &ldquo;'''Reuse of components'''&rdquo; is activated, it activates to enable the reuse of components, creating several “Parts” from a Type. During a project creation, it activate a performance to reuse components.
+When &ldquo;'''Reuse of components'''&rdquo; is activated, it activates to enable the reuse of components, creating several ï¿½Partsï¿½ from a Type. During a project creation, it activate a performance to reuse components.
 
 
 [[Image:Images/6.2_Model preferences8.png|500x350px]]
 
 
-In diagrams, you can use the “Reuse Components” palette tool. In Properties, selecting the “Part” will provide a way to select an available Type (e.g. Logical Component, Physical Components...).
+In diagrams, you can use the ï¿½Reuse Componentsï¿½ palette tool. In Properties, selecting the ï¿½Partï¿½ will provide a way to select an available Type (e.g. Logical Component, Physical Components...).
 
  
 When &ldquo;'''Multiple inheritance allowed'''&rdquo; is activated, a Class can inherit from several other Classes. Otherwise, it can only have one inheritance ancestor.
