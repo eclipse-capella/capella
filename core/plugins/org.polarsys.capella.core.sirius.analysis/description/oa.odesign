@@ -643,7 +643,7 @@
               <view name="views"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%createFunctionalChain($views)%>">
-                  <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%current.isA(&quot;FunctionalChain&quot;)%>">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(fa::FunctionalChain)">
                     <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']/@defaultLayer/@nodeMappings[name='OAIB_OperationalProcessEnd']" containerViewExpression="&lt;%$views.nFirst().getDiagramContainer()%>"/>
                   </subModelOperations>
                 </firstModelOperations>
@@ -1703,7 +1703,7 @@
               <view name="views"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%createFunctionalChain($views)%>">
-                  <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%current.isA(&quot;FunctionalChain&quot;)%>">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(fa::FunctionalChain)">
                     <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@nodeMappings[name='OAB_OperationalProcessEnd']" containerViewExpression="&lt;%$views.nFirst().getDiagramContainer()%>"/>
                   </subModelOperations>
                 </firstModelOperations>

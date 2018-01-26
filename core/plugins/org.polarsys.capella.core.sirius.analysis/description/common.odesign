@@ -3040,7 +3040,7 @@
               <sourceViewVariable name="sourceView"/>
               <targetViewVariable name="targetView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%current.getSourceClassPkg%>">
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.void2Null(self.getSourceClassPkg())">
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%current.filter(&quot;AssociationPkg&quot;).nSize() == 0%>">
                     <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="setVariable" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SetVariable">
                       <parameters name="context" value="aql:self.void2Null(source)"/>
@@ -3275,7 +3275,7 @@
           </ownedTools>
           <ownedTools xsi:type="tool:ToolGroup" documentation="Insert/Remove Features" name="S/H Features">
             <tools xsi:type="tool:NodeCreationDescription" documentation="Insert/Remove properties" name="Show/Hide Properties" label="Properties" precondition="&lt;% !$containerView.getDiagramContainer().isSynchronized() %>" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_Class']/@subNodeMappings[name='DT_Property']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
-              <filters precondition="&lt;%current.isSynchronized()%>" elementsToListen="aql:self.void2Null(self)">
+              <filters precondition="aql:self.isSynchronized()" elementsToListen="aql:self.void2Null(self)">
                 <listeners domainClass="DDiagram" featureName="synchronized"/>
               </filters>
               <variable name="container"/>
@@ -3299,7 +3299,7 @@
               </initialOperation>
             </tools>
             <tools xsi:type="tool:NodeCreationDescription" documentation="Insert/Remove operations" name="Show/Hide Operations" label="Operations" precondition="&lt;% !$containerView.getDiagramContainer().isSynchronized() %>" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_Class']/@subNodeMappings[name='DT_Operation'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@containerMappings[name='FullInterface1']/@subNodeMappings[name='DT_Operation1']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
-              <filters precondition="&lt;%current.isSynchronized()%>" elementsToListen="aql:self.void2Null(self)">
+              <filters precondition="aql:self.isSynchronized()" elementsToListen="aql:self.void2Null(self)">
                 <listeners domainClass="DDiagram" featureName="synchronized"/>
               </filters>
               <variable name="container"/>
@@ -4156,7 +4156,7 @@
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool_1:ToolDescription" documentation="Insert/Remove Exchange Item Element Links" name="Show/Hide ExchangeItemElement Link" label="Exchange Item Element Links" precondition="&lt;%isA(&quot;ExchangeItem&quot;) %>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
-            <filters precondition="&lt;%current.isSynchronized()%>" elementsToListen="aql:self.void2Null(self)">
+            <filters precondition="aql:self.isSynchronized()" elementsToListen="aql:self.void2Null(self)">
               <listeners domainClass="DDiagram" featureName="synchronized"/>
             </filters>
             <element name="element"/>
@@ -4300,7 +4300,7 @@
         </toolSections>
         <toolSections name="Accelerators">
           <ownedTools xsi:type="tool_1:ToolDescription" documentation="Initializes the current diagram according to an existing diagram defined in the previous architecture. It adds realizing elements for each element from the source diagram and preserves layout between diagrams. This tool does not modify the semantic model." name="DiagramInitialization" label="Initialization from existing diagram" precondition="&lt;%$elementView.isValidInitializeDiagramFromExistingDiagram%>" iconPath="/org.eclipse.sirius.ui/icons/full/obj16/DAnalysis.gif">
-            <filters precondition="&lt;%current.isFilterInitializeDiagramFromExistingDiagram%>" elementsToListen="aql:self.void2Null(self)">
+            <filters precondition="aql:self.isFilterInitializeDiagramFromExistingDiagram()" elementsToListen="aql:self.void2Null(self)">
               <listeners domainClass="DDiagram" featureName="ownedDiagramElements"/>
             </filters>
             <element name="element"/>
@@ -10475,7 +10475,7 @@
               </initialOperation>
             </tools>
             <tools xsi:type="tool:NodeCreationDescription" documentation="Insert/Remove Component Ports.  Create or delete graphical objects corresponding to already existing Component Ports. Removing a Component Port graphical object from a Component / Actor does not delete the Component Port from the model. This tool does not modify the semantic model." name="Show/Hide Component Ports" label="Component Ports" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='IDB_Component']/@borderedNodeMappings[name='IDB_Port']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
-              <filters precondition="&lt;%current.isSynchronized()%>" elementsToListen="aql:self.void2Null(self)">
+              <filters precondition="aql:self.isSynchronized()" elementsToListen="aql:self.void2Null(self)">
                 <listeners domainClass="DDiagram" featureName="synchronized"/>
               </filters>
               <variable name="container"/>
@@ -10591,7 +10591,7 @@
               </initialOperation>
             </tools>
             <tools xsi:type="tool:NodeCreationDescription" documentation="Insert/Remove Exchange Items Allocations. Removing an Exchange Item Allocation graphical object from a diagram does not delete the Exchange Item Allocation from the model. This tool does not modify the semantic model. An Exchange Item allocation is a reference relationship from an Interface to an Exchange Item." name="Show/Hide Exchange Item Allocations" label="Exchange Item Allocations" precondition="&lt;%!$containerView.getViewDiagram().target.isA(&quot;ConfigurationItem&quot;)%>" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='IDB_Interface']/@subNodeMappings[name='IDB_Operation']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
-              <filters precondition="&lt;%current.isSynchronized()%>" elementsToListen="aql:self.void2Null(self)">
+              <filters precondition="aql:self.isSynchronized()" elementsToListen="aql:self.void2Null(self)">
                 <listeners domainClass="DDiagram" featureName="synchronized"/>
               </filters>
               <variable name="container"/>
@@ -10637,7 +10637,7 @@
               </initialOperation>
             </tools>
             <tools xsi:type="tool:NodeCreationDescription" documentation="Insert/Remove Exchange Items Elements. Removing an Exchange Item Element graphical object from a diagram does not delete the Exchange Item Element from the model. This tool does not modify the semantic model." name="Show/Hide Exchange Item Elements" label="Exchange Item Elements" precondition="&lt;%!$containerView.getViewDiagram().target.isA(&quot;ConfigurationItem&quot;)%>" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='IDB_ExchangeItem']/@subNodeMappings[name='IDB_ExchangeItemElement']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
-              <filters precondition="&lt;%current.isSynchronized()%>" elementsToListen="aql:self.void2Null(self)">
+              <filters precondition="aql:self.isSynchronized()" elementsToListen="aql:self.void2Null(self)">
                 <listeners domainClass="DDiagram" featureName="synchronized"/>
               </filters>
               <variable name="container"/>
@@ -12955,7 +12955,7 @@
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Insert/Remove Exchange Items Allocations. Removing an Exchange Item Allocation graphical object from a diagram does not delete the Exchange Item Allocation from the model. This tool does not modify the semantic model. An Exchange Item allocation is a reference relationship from an Interface to an Exchange Item." name="Show/Hide Exchange Item Allocations" label="Exchange Item Allocations" precondition="&lt;%!$containerView.getViewDiagram().target.isA(&quot;ConfigurationItem&quot;)%>" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interface%20Diagram']/@defaultLayer/@containerMappings[name='ID_Interface']/@subNodeMappings[name='ID_Operation']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
-            <filters precondition="&lt;%current.isSynchronized()%>" elementsToListen="aql:self.void2Null(self)">
+            <filters precondition="aql:self.isSynchronized()" elementsToListen="aql:self.void2Null(self)">
               <listeners domainClass="DDiagram" featureName="synchronized"/>
             </filters>
             <variable name="container"/>

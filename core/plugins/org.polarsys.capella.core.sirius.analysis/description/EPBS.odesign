@@ -429,7 +429,7 @@
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Create or delete graphical objects corresponding to already realized Physical Artifacts. Removing a Physical Artifacts graphical object from a Configuration Item does not delete the realization relationship between this Configuration Item and the Physical Artifact. This tool does not modify the semantic model." name="Show/Hide Realized Physical Artifacts" label="Realized Physical Artifacts" nodeMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='CI%20container%20mapping']/@subNodeMappings[name='PhysicalComponentInCI%20mapping'] //@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='CI%20container%20mapping']/@subNodeMappings[name='PhysicalLinkInCI%20mapping'] //@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='CI%20container%20mapping']/@subNodeMappings[name='PhysicalPortInCI%20mapping']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
-            <filters precondition="&lt;%current.isSynchronized()%>" elementsToListen="aql:self.void2Null(self)">
+            <filters precondition="aql:self.isSynchronized()" elementsToListen="aql:self.void2Null(self)">
               <listeners domainClass="DDiagram" featureName="synchronized"/>
             </filters>
             <variable name="container">

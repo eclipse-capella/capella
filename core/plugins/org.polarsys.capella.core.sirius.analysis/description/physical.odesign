@@ -1336,7 +1336,7 @@
               <view name="views"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%createFunctionalChain($views)%>">
-                  <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%current.isA(&quot;FunctionalChain&quot;)%>">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(fa::FunctionalChain)">
                     <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Data%20Flow%20Blank']/@defaultLayer/@nodeMappings[name='PDFB_FunctionalChainEnd']" containerViewExpression="&lt;%$views.nFirst().getDiagramContainer()%>"/>
                   </subModelOperations>
                 </firstModelOperations>
@@ -1728,7 +1728,7 @@
             </initialOperation>
             <edgeView name="edgeView"/>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:DiagramNavigationDescription" name="Navigate from PCB to PAB" browseExpression="&lt;%current.getNavigationScope()%>" navigationNameExpression="&lt;%$containerView.getNavigationName($diagramName)%>" diagramDescription="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']">
+          <ownedTools xsi:type="tool_1:DiagramNavigationDescription" name="Navigate from PCB to PAB" browseExpression="aql:self.void2Null(self.getNavigationScope())" navigationNameExpression="&lt;%$containerView.getNavigationName($diagramName)%>" diagramDescription="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']">
             <containerViewVariable name="containerView"/>
             <containerVariable name="container"/>
             <representationNameVariable name="diagramName"/>
@@ -2976,7 +2976,7 @@
               </view>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%createPhysicalPath($views,$source)%>">
-                  <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%current.isA(&quot;PhysicalPath&quot;)%>">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(cs::PhysicalPath)">
                     <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='PAB_PhysicalPathEnd']" containerViewExpression="&lt;%$views.nFirst().getDiagramContainer()%>"/>
                   </subModelOperations>
                 </firstModelOperations>
@@ -3140,36 +3140,36 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$element.dndABDeployment($oldSemanticContainer, $newSemanticContainer)%>"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:DiagramNavigationDescription" name="Navigate from PAB to PAB" browseExpression="&lt;%current.getNavigationScope()%>" navigationNameExpression="&lt;%$containerView.getNavigationName($diagramName)%>" diagramDescription="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']">
+          <ownedTools xsi:type="tool_1:DiagramNavigationDescription" name="Navigate from PAB to PAB" browseExpression="aql:self.void2Null(self.getNavigationScope())" navigationNameExpression="&lt;%$containerView.getNavigationName($diagramName)%>" diagramDescription="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']">
             <containerViewVariable name="containerView"/>
             <containerVariable name="container"/>
             <representationNameVariable name="diagramName"/>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:DiagramNavigationDescription" name="Navigate from PAB to IDB" browseExpression="&lt;%current.getNavigationScope()%>" navigationNameExpression="&lt;%$containerView.getNavigationName($diagramName)%>">
+          <ownedTools xsi:type="tool_1:DiagramNavigationDescription" name="Navigate from PAB to IDB" browseExpression="aql:self.void2Null(self.getNavigationScope())" navigationNameExpression="&lt;%$containerView.getNavigationName($diagramName)%>">
             <containerViewVariable name="containerView"/>
             <containerVariable name="container"/>
             <representationNameVariable name="diagramName"/>
             <diagramDescription href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']"/>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:DiagramNavigationDescription" name="Navigate from PAB to CCII" browseExpression="&lt;%current.getNavigationScope()%>" navigationNameExpression="&lt;%$containerView.getNavigationName($diagramName)%>">
+          <ownedTools xsi:type="tool_1:DiagramNavigationDescription" name="Navigate from PAB to CCII" browseExpression="aql:self.void2Null(self.getNavigationScope())" navigationNameExpression="&lt;%$containerView.getNavigationName($diagramName)%>">
             <containerViewVariable name="containerView"/>
             <containerVariable name="container"/>
             <representationNameVariable name="diagramName"/>
             <diagramDescription href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']"/>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:DiagramNavigationDescription" name="Navigate from PAB to CCEI" browseExpression="&lt;%current.getNavigationScope()%>" navigationNameExpression="&lt;%$containerView.getNavigationName($diagramName)%>">
+          <ownedTools xsi:type="tool_1:DiagramNavigationDescription" name="Navigate from PAB to CCEI" browseExpression="aql:self.void2Null(self.getNavigationScope())" navigationNameExpression="&lt;%$containerView.getNavigationName($diagramName)%>">
             <containerViewVariable name="containerView"/>
             <containerVariable name="container"/>
             <representationNameVariable name="diagramName"/>
             <diagramDescription href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']"/>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:DiagramNavigationDescription" name="Navigate from PAB to CCDI" browseExpression="&lt;%current.getNavigationScope()%>" navigationNameExpression="&lt;%$containerView.getNavigationName($diagramName)%>">
+          <ownedTools xsi:type="tool_1:DiagramNavigationDescription" name="Navigate from PAB to CCDI" browseExpression="aql:self.void2Null(self.getNavigationScope())" navigationNameExpression="&lt;%$containerView.getNavigationName($diagramName)%>">
             <containerViewVariable name="containerView"/>
             <containerVariable name="container"/>
             <representationNameVariable name="diagramName"/>
             <diagramDescription href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']"/>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:DiagramNavigationDescription" name="Navigate from PAB to PCB" browseExpression="&lt;%current.getNavigationScope()%>" navigationNameExpression="&lt;%$containerView.getNavigationName($diagramName)%>" diagramDescription="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Component%20Breakdown']">
+          <ownedTools xsi:type="tool_1:DiagramNavigationDescription" name="Navigate from PAB to PCB" browseExpression="aql:self.void2Null(self.getNavigationScope())" navigationNameExpression="&lt;%$containerView.getNavigationName($diagramName)%>" diagramDescription="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Component%20Breakdown']">
             <containerViewVariable name="containerView"/>
             <containerVariable name="container"/>
             <representationNameVariable name="diagramName"/>
@@ -4176,7 +4176,7 @@
               <view name="views"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%createFunctionalChain($views)%>">
-                  <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%current.isA(&quot;FunctionalChain&quot;)%>">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(fa::FunctionalChain)">
                     <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='PAB_FunctionalChainEnd']" containerViewExpression="&lt;%$views.nFirst().getDiagramContainer()%>"/>
                   </subModelOperations>
                 </firstModelOperations>
