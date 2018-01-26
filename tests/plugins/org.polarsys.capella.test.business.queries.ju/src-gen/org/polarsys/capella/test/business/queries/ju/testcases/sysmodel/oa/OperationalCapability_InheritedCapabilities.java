@@ -1,10 +1,10 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *  
+ *
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
@@ -15,12 +15,13 @@ import org.polarsys.capella.test.business.queries.ju.BQTestCase;
 /**
  * @generated
  */
-public class OperationalCapability_InheritedClasses extends BQTestCase {
-	
+public class OperationalCapability_InheritedCapabilities extends BQTestCase {
+
 	/**
 	 * @generated
 	 */
-	public String getProjectForTest() {
+	@Override
+  public String getProjectForTest() {
 		return "sysmodel"; //$NON-NLS-1$
 	}
 
@@ -29,7 +30,7 @@ public class OperationalCapability_InheritedClasses extends BQTestCase {
 	 */
 	@Override
 	public String getBQFullQualifiedName() {
-		return "org.polarsys.capella.core.business.queries.oa.OperationalCapability_InheritedClasses"; //$NON-NLS-1$
+		return "org.polarsys.capella.core.business.queries.oa.OperationalCapability_InheritedCapabilities"; //$NON-NLS-1$
 	}
 
 }
