@@ -298,22 +298,22 @@
             </filters>
             <variable name="container"/>
             <viewVariable name="containerView">
-              <subVariables xsi:type="tool:AcceleoVariable" name="diagram" computationExpression="&lt;% $containerView.getDiagramContainer() %>"/>
+              <subVariables xsi:type="tool:AcceleoVariable" name="diagram" computationExpression="aql:containerView.getDiagramContainer()"/>
               <subVariables xsi:type="tool:AcceleoVariable" name="containerType" computationExpression="&lt;% $containerView.getABTarget().getComponentType() %>"/>
-              <subVariables xsi:type="tool:AcceleoVariable" name="containerTarget" computationExpression="&lt;% $containerView.getABTarget() %>"/>
+              <subVariables xsi:type="tool:AcceleoVariable" name="containerTarget" computationExpression="aql:containerView.getABTarget()"/>
             </viewVariable>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerType">
                 <subModelOperations xsi:type="tool:ExternalJavaAction" name="select Components" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementFromListWizard">
                   <parameters name="context" value="aql:containerType"/>
-                  <parameters name="scope" value="&lt;% $containerType.getABInsertComponent%>"/>
+                  <parameters name="scope" value="aql:containerType.getABInsertComponent()"/>
                   <parameters name="multiple" value="true"/>
                   <parameters name="resultVariable" value="components"/>
                   <parameters name="wizardMessage" value="Select a Configuration Item."/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% $components != &quot;WIZARD_CANCELED&quot; %>">
                   <subModelOperations xsi:type="tool:For" expression="aql:components">
-                    <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% $containerTarget.isA(&quot;BlockArchitecture&quot;) %>">
+                    <subModelOperations xsi:type="tool:If" conditionExpression="aql:containerTarget.oclIsKindOf(cs::BlockArchitecture)">
                       <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $containerTarget.getContext() %>">
                         <subModelOperations xsi:type="tool:CreateInstance" typeName="cs.Part" referenceName="ownedFeatures" variableName="part">
                           <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%creationService%>"/>
@@ -386,9 +386,9 @@
           <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Create or delete graphical objects corresponding to existing Configuration Items. Removing a Configuration Item graphical object does not delete this Configuration Item from the model. This tool does not modify the semantic model." name="Show/Hide Configuration Items" label="Configuration Items" containerMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='CI%20container%20mapping']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <variable name="container"/>
             <viewVariable name="containerView">
-              <subVariables xsi:type="tool:AcceleoVariable" name="diagram" computationExpression="&lt;% $containerView.eContainer(&quot;DDiagram&quot;) %>"/>
+              <subVariables xsi:type="tool:AcceleoVariable" name="diagram" computationExpression="aql:containerView.eContainerOrSelf(diagram::DDiagram)"/>
               <subVariables xsi:type="tool:AcceleoVariable" name="containerType" computationExpression="&lt;% $containerType() %>"/>
-              <subVariables xsi:type="tool:AcceleoVariable" name="scope" computationExpression="&lt;% $containerView.getABShowHideComponent() %>"/>
+              <subVariables xsi:type="tool:AcceleoVariable" name="scope" computationExpression="aql:containerView.getABShowHideComponent()"/>
               <subVariables xsi:type="tool:AcceleoVariable" name="ownedNodeContainer" computationExpression="&lt;%$containerView.eAllContents().filter(&quot;DNodeContainer&quot;)%>"/>
             </viewVariable>
             <initialOperation>
@@ -409,7 +409,7 @@
                     </subModelOperations>
                     <subModelOperations xsi:type="tool:For" expression="aql:self.void2Null(selection)">
                       <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% $ownedNodeContainer[target == $i].nSize() > 0 %>">
-                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $ownedNodeContainer[target == $i].show %>"/>
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:ownedNodeContainer->select(x | x.target = i).show()->first()"/>
                       </subModelOperations>
                       <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% $ownedNodeContainer[target == $i].nSize() == 0 %>">
                         <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:i">
@@ -551,7 +551,7 @@
               <element name="element"/>
               <elementView name="elementView">
                 <subVariables xsi:type="tool:AcceleoVariable" name="constraintsInDiagram" computationExpression="&lt;% getExistingConstraintsFromDiagram($elementView.getDiagramContainer())%>"/>
-                <subVariables xsi:type="tool:AcceleoVariable" name="diagram" computationExpression="&lt;% $elementView.eContainer(&quot;DDiagram&quot;) %>"/>
+                <subVariables xsi:type="tool:AcceleoVariable" name="diagram" computationExpression="aql:elementView.eContainerOrSelf(diagram::DDiagram)"/>
               </elementView>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView">
@@ -681,7 +681,7 @@
                 <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
                   <parameters name="context" value="aql:container"/>
                   <parameters name="scope" value="aql:self"/>
-                  <parameters name="containerViewExpression" value="&lt;%$containerView.getDiagramContainer()%>"/>
+                  <parameters name="containerViewExpression" value="aql:containerView.getDiagramContainer()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -694,7 +694,7 @@
                 <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
                   <parameters name="context" value="aql:container"/>
                   <parameters name="scope" value="aql:self"/>
-                  <parameters name="containerViewExpression" value="&lt;%$containerView.getDiagramContainer()%>"/>
+                  <parameters name="containerViewExpression" value="aql:containerView.getDiagramContainer()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -707,7 +707,7 @@
                 <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
                   <parameters name="context" value="aql:container"/>
                   <parameters name="scope" value="aql:self"/>
-                  <parameters name="containerViewExpression" value="&lt;%$containerView.getDiagramContainer()%>"/>
+                  <parameters name="containerViewExpression" value="aql:containerView.getDiagramContainer()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -720,7 +720,7 @@
                 <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
                   <parameters name="context" value="aql:container"/>
                   <parameters name="scope" value="aql:self"/>
-                  <parameters name="containerViewExpression" value="&lt;%$containerView.getDiagramContainer()%>"/>
+                  <parameters name="containerViewExpression" value="aql:containerView.getDiagramContainer()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -733,7 +733,7 @@
                 <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
                   <parameters name="context" value="aql:container"/>
                   <parameters name="scope" value="aql:self"/>
-                  <parameters name="containerViewExpression" value="&lt;%$containerView.getDiagramContainer()%>"/>
+                  <parameters name="containerViewExpression" value="aql:containerView.getDiagramContainer()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -746,7 +746,7 @@
                 <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
                   <parameters name="context" value="aql:container"/>
                   <parameters name="scope" value="aql:self"/>
-                  <parameters name="containerViewExpression" value="&lt;%$containerView.getDiagramContainer()%>"/>
+                  <parameters name="containerViewExpression" value="aql:containerView.getDiagramContainer()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -759,7 +759,7 @@
                 <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
                   <parameters name="context" value="aql:container"/>
                   <parameters name="scope" value="aql:self"/>
-                  <parameters name="containerViewExpression" value="&lt;%$containerView.getDiagramContainer()%>"/>
+                  <parameters name="containerViewExpression" value="aql:containerView.getDiagramContainer()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -818,17 +818,17 @@
             <containerView name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.sourceNode.target.typedElements%>">
-                <subModelOperations xsi:type="tool:MoveElement" newContainerExpression="&lt;%$containerView.target%>" featureName="ownedFeatures">
+                <subModelOperations xsi:type="tool:MoveElement" newContainerExpression="aql:containerView.target" featureName="ownedFeatures">
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView">
                     <subModelOperations xsi:type="tool:For" expression="&lt;%sourceNode.target.ownedPartitions.filter(&quot;FlowPort&quot;).exchanges%>">
                       <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:i">
-                        <subModelOperations xsi:type="tool:MoveElement" newContainerExpression="&lt;%$containerView.target%>" featureName="ownedExchanges"/>
+                        <subModelOperations xsi:type="tool:MoveElement" newContainerExpression="aql:containerView.target" featureName="ownedExchanges"/>
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.sourceNode.target%>">
-                  <subModelOperations xsi:type="tool:MoveElement" newContainerExpression="&lt;%$containerView.target%>" featureName="ownedConfigurationItems"/>
+                  <subModelOperations xsi:type="tool:MoveElement" newContainerExpression="aql:containerView.target" featureName="ownedConfigurationItems"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -879,7 +879,7 @@
               <element name="element"/>
               <elementView name="elementView">
                 <subVariables xsi:type="tool:AcceleoVariable" name="constraintsInDiagram" computationExpression="&lt;% getExistingConstraintsFromDiagram($elementView.getDiagramContainer())%>"/>
-                <subVariables xsi:type="tool:AcceleoVariable" name="diagram" computationExpression="&lt;% $elementView.eContainer(&quot;DDiagram&quot;) %>"/>
+                <subVariables xsi:type="tool:AcceleoVariable" name="diagram" computationExpression="aql:elementView.eContainerOrSelf(diagram::DDiagram)"/>
               </elementView>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView">

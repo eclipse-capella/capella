@@ -311,7 +311,7 @@
               <element name="element"/>
               <elementView name="elementView">
                 <subVariables xsi:type="tool_1:AcceleoVariable" name="constraintsInDiagram" computationExpression="&lt;% getExistingConstraintsFromDiagram($elementView.getDiagramContainer())%>"/>
-                <subVariables xsi:type="tool_1:AcceleoVariable" name="diagram" computationExpression="&lt;% $elementView.eContainer(&quot;DDiagram&quot;) %>"/>
+                <subVariables xsi:type="tool_1:AcceleoVariable" name="diagram" computationExpression="aql:elementView.eContainerOrSelf(diagram::DDiagram)"/>
               </elementView>
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView">
@@ -561,7 +561,7 @@
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:source">
-                  <subModelOperations xsi:type="tool_1:For" expression="&lt;%involvedActors.actor%>" iteratorName="j">
+                  <subModelOperations xsi:type="tool_1:For" expression="aql:self.void2Null(self.involvedActors.actor)" iteratorName="j">
                     <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%$sourceView.eContainer(&quot;DDiagram&quot;).eAllContents().filter(&quot;DNode&quot;)[target == $j].nSize() == 0%>">
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:j">
                         <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@nodeMappings[name='ActorNode2']" containerViewExpression="&lt;%$sourceView.eContainer(&quot;DDiagram&quot;)%>"/>
@@ -744,7 +744,7 @@
               <element name="element"/>
               <elementView name="elementView">
                 <subVariables xsi:type="tool_1:AcceleoVariable" name="constraintsInDiagram" computationExpression="&lt;% getExistingConstraintsFromDiagram($elementView.getDiagramContainer())%>"/>
-                <subVariables xsi:type="tool_1:AcceleoVariable" name="diagram" computationExpression="&lt;% $elementView.eContainer(&quot;DDiagram&quot;) %>"/>
+                <subVariables xsi:type="tool_1:AcceleoVariable" name="diagram" computationExpression="aql:elementView.eContainerOrSelf(diagram::DDiagram)"/>
               </elementView>
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView">
@@ -996,7 +996,7 @@
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $container.eContainer %>">
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:container.eContainer()">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Capability" referenceName="ownedCapabilities" variableName="capa">
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
                 </subModelOperations>
@@ -1239,7 +1239,7 @@
               <element name="element"/>
               <elementView name="elementView">
                 <subVariables xsi:type="tool_1:AcceleoVariable" name="constraintsInDiagram" computationExpression="&lt;% getExistingConstraintsFromDiagram($elementView.getDiagramContainer())%>"/>
-                <subVariables xsi:type="tool_1:AcceleoVariable" name="diagram" computationExpression="&lt;% $elementView.eContainer(&quot;DDiagram&quot;) %>"/>
+                <subVariables xsi:type="tool_1:AcceleoVariable" name="diagram" computationExpression="aql:elementView.eContainerOrSelf(diagram::DDiagram)"/>
               </elementView>
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView">
@@ -1559,12 +1559,12 @@
             <targetViewVariable name="targetView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:source">
-                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% $source.isA(&quot;Mission&quot;) %>">
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:source.oclIsKindOf(ctx::Mission)">
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ActorMissionInvolvement" referenceName="ownedActorMissionInvolvements">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="involved" valueExpression="aql:target"/>
                   </subModelOperations>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% $source.isA(&quot;Capability&quot;) %>">
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:source.oclIsKindOf(ctx::Capability)">
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ActorCapabilityInvolvement" referenceName="ownedActorCapabilityInvolvements">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="involved" valueExpression="aql:target"/>
                   </subModelOperations>
@@ -1768,7 +1768,7 @@
               <element name="element"/>
               <elementView name="elementView">
                 <subVariables xsi:type="tool_1:AcceleoVariable" name="constraintsInDiagram" computationExpression="&lt;% getExistingConstraintsFromDiagram($elementView.getDiagramContainer())%>"/>
-                <subVariables xsi:type="tool_1:AcceleoVariable" name="diagram" computationExpression="&lt;% $elementView.eContainer(&quot;DDiagram&quot;) %>"/>
+                <subVariables xsi:type="tool_1:AcceleoVariable" name="diagram" computationExpression="aql:elementView.eContainerOrSelf(diagram::DDiagram)"/>
               </elementView>
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView">
@@ -1985,7 +1985,7 @@
       </intersection>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_2:CrossTableDescription" name="System Functions - Operational Activities" domainClass="SystemAnalysis">
-      <ownedLineMappings name="System Functions 1" domainClass="AbstractFunction" semanticCandidatesExpression="&lt;%getRootFunction().getOwnedAbstractFunctions()%>" headerLabelExpression="feature:name">
+      <ownedLineMappings name="System Functions 1" domainClass="AbstractFunction" semanticCandidatesExpression="aql:self.getRootFunction().getOwnedAbstractFunctions()" headerLabelExpression="feature:name">
         <ownedSubLines name="Sub System Function 1" reusedSubLines="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Functions%20-%20Operational%20Activities']/@ownedLineMappings[name='System%20Functions%201']/@ownedSubLines[name='Sub%20Function%20Pkg'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Functions%20-%20Operational%20Activities']/@ownedLineMappings[name='System%20Functions%201']/@ownedSubLines[name='Sub%20System%20Function%201']" reusedInMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Functions%20-%20Operational%20Activities']/@ownedLineMappings[name='FunctionPkgs'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Functions%20-%20Operational%20Activities']/@ownedLineMappings[name='System%20Functions%201']/@ownedSubLines[name='Sub%20Function%20Pkg'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Functions%20-%20Operational%20Activities']/@ownedLineMappings[name='System%20Functions%201']/@ownedSubLines[name='Sub%20System%20Function%201']" domainClass="SystemFunction" semanticCandidatesExpression="&lt;%getOwnedAbstractFunctions()%>" headerLabelExpression="feature:name">
           <delete name="No delete" precondition="false">
             <variables name="element" documentation="The currently edited element."/>
@@ -2015,7 +2015,7 @@
           <variables name="root" documentation="The semantic element corresponding to the current table."/>
         </delete>
       </ownedColumnMappings>
-      <intersection name="Function Realisations 3" lineMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Functions%20-%20Operational%20Activities']/@ownedLineMappings[name='System%20Functions%201'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Functions%20-%20Operational%20Activities']/@ownedLineMappings[name='System%20Functions%201']/@ownedSubLines[name='Sub%20System%20Function%201']" columnMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Functions%20-%20Operational%20Activities']/@ownedColumnMappings.0" labelExpression="X" useDomainClass="true" columnFinderExpression="&lt;%targetElement.filter(&quot;OperationalActivity&quot;)%>" lineFinderExpression="&lt;%sourceElement.filter(&quot;AbstractFunction&quot;)%>" domainClass="FunctionRealization">
+      <intersection name="Function Realisations 3" lineMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Functions%20-%20Operational%20Activities']/@ownedLineMappings[name='System%20Functions%201'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Functions%20-%20Operational%20Activities']/@ownedLineMappings[name='System%20Functions%201']/@ownedSubLines[name='Sub%20System%20Function%201']" columnMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Functions%20-%20Operational%20Activities']/@ownedColumnMappings.0" labelExpression="X" useDomainClass="true" columnFinderExpression="aql:self.targetElement->filter(oa::OperationalActivity)" lineFinderExpression="aql:self.sourceElement->filter(fa::AbstractFunction)" domainClass="FunctionRealization">
         <directEdit>
           <variables name="table" documentation="The current DTable."/>
           <variables name="line" documentation="The DLine of the current DCell."/>
@@ -2115,7 +2115,7 @@
         <reusedMappings xsi:type="description_1:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_ContrainedElements']"/>
         <reusedMappings xsi:type="description_1:NodeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']"/>
         <toolSections name="Functions">
-          <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Creates a new System Function in the target Function" name="System Function" precondition="&lt;%$containerView.isValidCreationDFFunction() %>" forceRefresh="true" elementsToSelect="&lt;%selectOnlyCreatedView()%>" nodeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='SFB_SystemFunction']" extraMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='SFB_SystemFunction']">
+          <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Creates a new System Function in the target Function" name="System Function" precondition="aql:containerView.isValidCreationDFFunction()" forceRefresh="true" elementsToSelect="&lt;%selectOnlyCreatedView()%>" nodeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='SFB_SystemFunction']" extraMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='SFB_SystemFunction']">
             <variable name="container">
               <subVariables xsi:type="tool_1:AcceleoVariable" name="tool" computationExpression="System Function"/>
             </variable>
@@ -2125,13 +2125,13 @@
                 <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
                   <parameters name="context" value="aql:container"/>
                   <parameters name="scope" value="aql:self"/>
-                  <parameters name="containerViewExpression" value="&lt;%$containerView.getDiagramContainer()%>"/>
+                  <parameters name="containerViewExpression" value="aql:containerView.getDiagramContainer()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:ToolGroup" name="ControlNodes">
-            <tools xsi:type="tool:NodeCreationDescription" documentation="Creates a new Duplicate Function in the target Function" name="Duplicate" precondition="&lt;%$containerView.isValidCreationDFControlNode()%>" forceRefresh="true" elementsToSelect="&lt;%selectOnlyCreatedView()%>" nodeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='SFB_SystemFunction']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Duplicate.gif" extraMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='SFB_SystemFunction']">
+            <tools xsi:type="tool:NodeCreationDescription" documentation="Creates a new Duplicate Function in the target Function" name="Duplicate" precondition="aql:containerView.isValidCreationDFControlNode()" forceRefresh="true" elementsToSelect="&lt;%selectOnlyCreatedView()%>" nodeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='SFB_SystemFunction']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Duplicate.gif" extraMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='SFB_SystemFunction']">
               <variable name="container">
                 <subVariables xsi:type="tool_1:AcceleoVariable" name="tool" computationExpression="Fork"/>
               </variable>
@@ -2141,12 +2141,12 @@
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
                     <parameters name="context" value="aql:container"/>
                     <parameters name="scope" value="aql:self"/>
-                    <parameters name="containerViewExpression" value="&lt;%$containerView.getDiagramContainer()%>"/>
+                    <parameters name="containerViewExpression" value="aql:containerView.getDiagramContainer()"/>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool:NodeCreationDescription" documentation="Creates a new Gather Function in the target Function" name="Gather" precondition="&lt;%$containerView.isValidCreationDFControlNode()%>" forceRefresh="true" elementsToSelect="&lt;%selectOnlyCreatedView()%>" nodeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='SFB_SystemFunction']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Gather.gif" extraMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='SFB_SystemFunction']">
+            <tools xsi:type="tool:NodeCreationDescription" documentation="Creates a new Gather Function in the target Function" name="Gather" precondition="aql:containerView.isValidCreationDFControlNode()" forceRefresh="true" elementsToSelect="&lt;%selectOnlyCreatedView()%>" nodeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='SFB_SystemFunction']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Gather.gif" extraMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='SFB_SystemFunction']">
               <variable name="container">
                 <subVariables xsi:type="tool_1:AcceleoVariable" name="tool" computationExpression="Fork"/>
               </variable>
@@ -2156,12 +2156,12 @@
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
                     <parameters name="context" value="aql:container"/>
                     <parameters name="scope" value="aql:self"/>
-                    <parameters name="containerViewExpression" value="&lt;%$containerView.getDiagramContainer()%>"/>
+                    <parameters name="containerViewExpression" value="aql:containerView.getDiagramContainer()"/>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool:NodeCreationDescription" documentation="Creates a new Route Function in the target Function" name="Route" precondition="&lt;%$containerView.isValidCreationDFControlNode()%>" forceRefresh="true" elementsToSelect="&lt;%selectOnlyCreatedView()%>" nodeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='SFB_SystemFunction']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Route.gif" extraMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='SFB_SystemFunction']">
+            <tools xsi:type="tool:NodeCreationDescription" documentation="Creates a new Route Function in the target Function" name="Route" precondition="aql:containerView.isValidCreationDFControlNode()" forceRefresh="true" elementsToSelect="&lt;%selectOnlyCreatedView()%>" nodeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='SFB_SystemFunction']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Route.gif" extraMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='SFB_SystemFunction']">
               <variable name="container">
                 <subVariables xsi:type="tool_1:AcceleoVariable" name="tool" computationExpression="Fork"/>
               </variable>
@@ -2171,12 +2171,12 @@
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
                     <parameters name="context" value="aql:container"/>
                     <parameters name="scope" value="aql:self"/>
-                    <parameters name="containerViewExpression" value="&lt;%$containerView.getDiagramContainer()%>"/>
+                    <parameters name="containerViewExpression" value="aql:containerView.getDiagramContainer()"/>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool:NodeCreationDescription" documentation="Creates a new Select Function in the target Function" name="Select" precondition="&lt;%$containerView.isValidCreationDFControlNode()%>" forceRefresh="true" elementsToSelect="&lt;%selectOnlyCreatedView()%>" nodeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='SFB_SystemFunction']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Select.gif" extraMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='SFB_SystemFunction']">
+            <tools xsi:type="tool:NodeCreationDescription" documentation="Creates a new Select Function in the target Function" name="Select" precondition="aql:containerView.isValidCreationDFControlNode()" forceRefresh="true" elementsToSelect="&lt;%selectOnlyCreatedView()%>" nodeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='SFB_SystemFunction']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Select.gif" extraMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='SFB_SystemFunction']">
               <variable name="container">
                 <subVariables xsi:type="tool_1:AcceleoVariable" name="tool" computationExpression="Fork"/>
               </variable>
@@ -2186,12 +2186,12 @@
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
                     <parameters name="context" value="aql:container"/>
                     <parameters name="scope" value="aql:self"/>
-                    <parameters name="containerViewExpression" value="&lt;%$containerView.getDiagramContainer()%>"/>
+                    <parameters name="containerViewExpression" value="aql:containerView.getDiagramContainer()"/>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool:NodeCreationDescription" documentation="Creates a new Split Function in the target Function" name="Split" precondition="&lt;%$containerView.isValidCreationDFControlNode()%>" forceRefresh="true" elementsToSelect="&lt;%selectOnlyCreatedView()%>" nodeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='SFB_SystemFunction']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Split.gif" extraMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='SFB_SystemFunction']">
+            <tools xsi:type="tool:NodeCreationDescription" documentation="Creates a new Split Function in the target Function" name="Split" precondition="aql:containerView.isValidCreationDFControlNode()" forceRefresh="true" elementsToSelect="&lt;%selectOnlyCreatedView()%>" nodeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='SFB_SystemFunction']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Split.gif" extraMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='SFB_SystemFunction']">
               <variable name="container">
                 <subVariables xsi:type="tool_1:AcceleoVariable" name="tool" computationExpression="Fork"/>
               </variable>
@@ -2201,13 +2201,13 @@
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
                     <parameters name="context" value="aql:container"/>
                     <parameters name="scope" value="aql:self"/>
-                    <parameters name="containerViewExpression" value="&lt;%$containerView.getDiagramContainer()%>"/>
+                    <parameters name="containerViewExpression" value="aql:containerView.getDiagramContainer()"/>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
             </tools>
           </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" documentation="Sets the target Function as the new container of the source Function" name="Contained In" precondition="&lt;%$preSource.isValidDndDFBAbstractFunction($preTargetView)%>" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@edgeMappings[name='SFB_SystemFunction_subFunctions']" iconPath="/org.polarsys.capella.core.sirius.analysis/description/images/containedIn.png">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" documentation="Sets the target Function as the new container of the source Function" name="Contained In" precondition="aql:preSource.isValidDndDFBAbstractFunction(preTargetView)" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@edgeMappings[name='SFB_SystemFunction_subFunctions']" iconPath="/org.polarsys.capella.core.sirius.analysis/description/images/containedIn.png">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -2300,7 +2300,7 @@
               <element name="element"/>
               <elementView name="elementView">
                 <subVariables xsi:type="tool_1:AcceleoVariable" name="constraintsInDiagram" computationExpression="&lt;% getExistingConstraintsFromDiagram($elementView.getDiagramContainer())%>"/>
-                <subVariables xsi:type="tool_1:AcceleoVariable" name="diagram" computationExpression="&lt;% $elementView.eContainer(&quot;DDiagram&quot;) %>"/>
+                <subVariables xsi:type="tool_1:AcceleoVariable" name="diagram" computationExpression="aql:elementView.eContainerOrSelf(diagram::DDiagram)"/>
               </elementView>
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView">
@@ -2553,7 +2553,7 @@
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $containerView.getDFTarget()%>">
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:containerView.getDFTarget()">
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%isFunction()%>">
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%current.createFunction()%>">
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%allocateToCapability($containerView)%>"/>
@@ -2566,11 +2566,11 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool:ContainerCreationDescription" documentation="Creates a new Duplicate" name="Duplicate" precondition="&lt;%$containerView.isValidCreationDFControlNode()%>" containerMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Duplicate.gif">
+            <tools xsi:type="tool:ContainerCreationDescription" documentation="Creates a new Duplicate" name="Duplicate" precondition="aql:containerView.isValidCreationDFControlNode()" containerMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Duplicate.gif">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $containerView.getDFTarget()%>">
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:containerView.getDFTarget()">
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%isFunction() || isActorFunction()%>">
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% current.createDuplicateFunction()%>">
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%allocateToCapability($containerView)%>"/>
@@ -2583,11 +2583,11 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool:ContainerCreationDescription" documentation="Creates a new Gather" name="Gather" precondition="&lt;%$containerView.isValidCreationDFControlNode()%>" containerMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Gather.gif">
+            <tools xsi:type="tool:ContainerCreationDescription" documentation="Creates a new Gather" name="Gather" precondition="aql:containerView.isValidCreationDFControlNode()" containerMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Gather.gif">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $containerView.getDFTarget()%>">
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:containerView.getDFTarget()">
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%isFunction() || isActorFunction()%>">
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%current.createGatherFunction()%>">
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%allocateToCapability($containerView)%>"/>
@@ -2600,11 +2600,11 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool:ContainerCreationDescription" documentation="Creates a new Route" name="Route" precondition="&lt;%$containerView.isValidCreationDFControlNode()%>" containerMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Route.gif">
+            <tools xsi:type="tool:ContainerCreationDescription" documentation="Creates a new Route" name="Route" precondition="aql:containerView.isValidCreationDFControlNode()" containerMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Route.gif">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $containerView.getDFTarget()%>">
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:containerView.getDFTarget()">
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%isFunction() || isActorFunction()%>">
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% current.createRouteFunction()%>">
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%allocateToCapability($containerView)%>"/>
@@ -2617,11 +2617,11 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool:ContainerCreationDescription" documentation="Creates a new Select" name="Select" precondition="&lt;%$containerView.isValidCreationDFControlNode()%>" containerMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Select.gif">
+            <tools xsi:type="tool:ContainerCreationDescription" documentation="Creates a new Select" name="Select" precondition="aql:containerView.isValidCreationDFControlNode()" containerMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Select.gif">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $containerView.getDFTarget()%>">
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:containerView.getDFTarget()">
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%isFunction() || isActorFunction()%>">
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% current.createSelectFunction()%>">
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%allocateToCapability($containerView)%>"/>
@@ -2634,11 +2634,11 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool:ContainerCreationDescription" documentation="Creates a new Split" name="Split" precondition="&lt;%$containerView.isValidCreationDFControlNode()%>" containerMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Split.gif">
+            <tools xsi:type="tool:ContainerCreationDescription" documentation="Creates a new Split" name="Split" precondition="aql:containerView.isValidCreationDFControlNode()" containerMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Split.gif">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $containerView.getDFTarget()%>">
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:containerView.getDFTarget()">
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%isFunction() || isActorFunction()%>">
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% current.createSplitFunction()%>">
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%allocateToCapability($containerView)%>"/>
@@ -2656,7 +2656,7 @@
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $container.getRootFunction()%>">
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:container.getRootFunction()">
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%isFunction()%>">
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% current.createActorFunction()%>">
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%allocateToCapability($containerView)%>"/>
@@ -2680,7 +2680,7 @@
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$source.createDFFunctionalExchange($sourceView, $targetView)%>"/>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool:NodeCreationDescription" documentation="Creates a new Input Port on the target Function" name="Input Port" precondition="&lt;%$containerView.isValidCreationFunctionInputPort()%>" nodeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']/@borderedNodeMappings[name='SDFB_Pin']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/InFlowPort.gif">
+            <tools xsi:type="tool:NodeCreationDescription" documentation="Creates a new Input Port on the target Function" name="Input Port" precondition="aql:containerView.isValidCreationFunctionInputPort()" nodeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']/@borderedNodeMappings[name='SDFB_Pin']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/InFlowPort.gif">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -2691,7 +2691,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool:NodeCreationDescription" documentation="Creates a new Output Port on the target Function" name="Output Port" precondition="&lt;%$containerView.isValidCreationFunctionOutputPort()%>" nodeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']/@borderedNodeMappings[name='SDFB_Pin']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/OutFlowPort.gif">
+            <tools xsi:type="tool:NodeCreationDescription" documentation="Creates a new Output Port on the target Function" name="Output Port" precondition="aql:containerView.isValidCreationFunctionOutputPort()" nodeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']/@borderedNodeMappings[name='SDFB_Pin']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/OutFlowPort.gif">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -2706,14 +2706,14 @@
           <ownedTools xsi:type="tool_1:ToolDescription" documentation="Insert/Remove Functions. Create or delete graphical objects corresponding to already existing Functions. Removing a Function graphical object from the diagram does not delete the Function from the model. This tool does not modify the semantic model." name="Show/Hide Functions" label="Functions" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <element name="element"/>
             <elementView name="elementView">
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="visibleFunctions" computationExpression="&lt;% $elementView.getDisplayedAbstractFunctions() %>"/>
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="visibleFunctionViews" computationExpression="&lt;% $elementView.getDisplayedAbstractFunctionViews() %>"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="visibleFunctions" computationExpression="aql:self.void2Null(elementView.getDisplayedAbstractFunctions())"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="visibleFunctionViews" computationExpression="aql:self.void2Null(elementView.getDisplayedAbstractFunctionViews())"/>
             </elementView>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView">
                 <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="selectFunctions" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
                   <parameters name="context" value="aql:elementView"/>
-                  <parameters name="scope" value="&lt;% $elementView.getAvailableAbstractFunctionsToInsertInDataFlowBlank() %>"/>
+                  <parameters name="scope" value="aql:self.void2Null(elementView.getAvailableAbstractFunctionsToInsertInDataFlowBlank())"/>
                   <parameters name="resultVariable" value="selectedFunctions"/>
                   <parameters name="wizardMessage" value="Select Functions and ControlNodes to show in &lt;%$element.name%>."/>
                   <parameters name="initialSelection" value="aql:visibleFunctions"/>
@@ -2734,7 +2734,7 @@
             <tools xsi:type="tool_1:ToolDescription" documentation="Insert/Remove Functional Exchange. Create or delete graphical objects corresponding to already existing Functional Exchanges and the corresponding source/target Functions if they are not present on the diagram yet. Removing a Functional Exchange graphical object from the diagram does not delete the Functional Exchange from the model. This tool does not modify the semantic model." name="Show/Hide Functional Exchanges" label="Functional Exchanges" precondition="&lt;%($elementView.target.filter(&quot;AbstractFunction&quot;).nSize() > 0) &amp;&amp; ($elementView.filter(&quot;DDiagram&quot;).nSize() == 0) %>" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
               <element name="element"/>
               <elementView name="elementView">
-                <subVariables xsi:type="tool_1:AcceleoVariable" name="displayedExchanges" computationExpression="&lt;%$elementView.getDisplayedFunctionalExchanges()%>"/>
+                <subVariables xsi:type="tool_1:AcceleoVariable" name="displayedExchanges" computationExpression="aql:self.void2Null(elementView.getDisplayedFunctionalExchanges())"/>
                 <subVariables xsi:type="tool_1:AcceleoVariable" name="scope" computationExpression="&lt;%getAvailableFunctionalExchangesToInsert()%>"/>
               </elementView>
               <initialOperation>
@@ -2747,7 +2747,7 @@
                     <parameters name="wizardMessage" value="Select Functional Exchanges to show in &lt;%$element.name%>."/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%($selectedExchanges != &quot;WIZARD_CANCELED&quot;)%>">
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$elementView.showDFFunctionalExchange($scope, $selectedExchanges )%>"/>
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView.showDFFunctionalExchange(scope,selectedExchanges)"/>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
@@ -2794,7 +2794,7 @@
               </filters>
               <element name="element"/>
               <elementView name="elementView">
-                <subVariables xsi:type="tool_1:AcceleoVariable" name="diagram" computationExpression="&lt;% $elementView.getDiagramContainer() %>"/>
+                <subVariables xsi:type="tool_1:AcceleoVariable" name="diagram" computationExpression="aql:elementView.getDiagramContainer()"/>
               </elementView>
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView">
@@ -2813,9 +2813,9 @@
           <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Insert/Remove Functional Chain. Create or delete graphical objects corresponding to already existing Functional Chains. Removing a Functional Chain graphical object from the diagram does not delete the Functional Chain from the model. This tool does not modify the semantic model." name="Show/Hide Functional Chains" label="Functional Chains" nodeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@nodeMappings[name='SDFB_FunctionalChainEnd']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <variable name="container"/>
             <viewVariable name="containerView">
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="ownedElements" computationExpression="&lt;%$containerView.getSetOfDiagramElements()%>"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="ownedElements" computationExpression="aql:containerView.getSetOfDiagramElements()"/>
               <subVariables xsi:type="tool_1:AcceleoVariable" name="initialSelection" computationExpression="&lt;%$containerView.getNodesAndNodeListElements()[visible &amp;&amp; target.filter(&quot;FunctionalChain&quot;).nSize() > 0].target%>"/>
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="diagram" computationExpression="&lt;%$containerView.getDiagramContainer()%>"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="diagram" computationExpression="aql:containerView.getDiagramContainer()"/>
             </viewVariable>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:container">
@@ -2858,12 +2858,12 @@
                 <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="SetVariable $scope" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SetVariable">
                   <parameters name="context" value="aql:element"/>
                   <parameters name="variable" value="scope"/>
-                  <parameters name="value" value="&lt;% $elementView.getSwitchFECategoriesScope() %>"/>
+                  <parameters name="value" value="aql:self.void2Null(elementView.getSwitchFECategoriesScope())"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="SetVariable $initialSelection" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SetVariable">
                   <parameters name="context" value="aql:element"/>
                   <parameters name="variable" value="initialSelection"/>
-                  <parameters name="value" value="&lt;% $elementView.getSwitchFECategoriesInitialSelection()%>"/>
+                  <parameters name="value" value="aql:self.void2Null(elementView.getSwitchFECategoriesInitialSelection())"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="selectElements" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectLinksFromTransferWizard">
                   <parameters name="context" value="aql:element"/>
@@ -2873,7 +2873,7 @@
                   <parameters name="wizardMessage" value="Select Categories to reveal"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%($selectedElements != &quot;WIZARD_CANCELED&quot;)%>">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$elementView.switchFECategories($scope, $initialSelection, $selectedElements )%>"/>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView.switchFECategories(scope,initialSelection,selectedElements)"/>
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$elementView.getDiagramContainer().forceRefresh%>"/>
                 </subModelOperations>
               </firstModelOperations>
@@ -2892,16 +2892,16 @@
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerDropDescription" name="DnD DF FunctionPort" precondition="&lt;%$element.isValidDndDFFunctionPort($newViewContainer) %>" mappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']/@borderedNodeMappings[name='SDFB_Pin']" moveEdges="true">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="DnD DF FunctionPort" precondition="aql:element.isValidDndDFFunctionPort(newViewContainer)" mappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']/@borderedNodeMappings[name='SDFB_Pin']" moveEdges="true">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
             <newViewContainer name="newContainerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$element.dndDFFunctionPort($oldSemanticContainer, $newSemanticContainer)%>"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:element.dndDFFunctionPort(oldSemanticContainer,newSemanticContainer)"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerDropDescription" name="DnD DF AbstractFunction" precondition="&lt;%$element.isValidDndDFBAbstractFunction($newViewContainer) %>" forceRefresh="true" mappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']" moveEdges="true">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="DnD DF AbstractFunction" precondition="aql:element.isValidDndDFBAbstractFunction(newViewContainer)" forceRefresh="true" mappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']" moveEdges="true">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
@@ -2983,7 +2983,7 @@
               <element name="element"/>
               <elementView name="elementView">
                 <subVariables xsi:type="tool_1:AcceleoVariable" name="constraintsInDiagram" computationExpression="&lt;% getExistingConstraintsFromDiagram($elementView.getDiagramContainer())%>"/>
-                <subVariables xsi:type="tool_1:AcceleoVariable" name="diagram" computationExpression="&lt;% $elementView.eContainer(&quot;DDiagram&quot;) %>"/>
+                <subVariables xsi:type="tool_1:AcceleoVariable" name="diagram" computationExpression="aql:elementView.eContainerOrSelf(diagram::DDiagram)"/>
               </elementView>
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView">
@@ -3052,14 +3052,14 @@
           </ownedTools>
         </toolSections>
         <toolSections name="Accelerators">
-          <ownedTools xsi:type="tool_1:ToolDescription" documentation="Insert all the Functions available in a given Mode / State. This tool does not modify the semantic model." name="State-Mode Elements" label="Functions from Mode / State" precondition="&lt;%$elementView.isValidDFInsertStateModes()%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Mode.gif">
+          <ownedTools xsi:type="tool_1:ToolDescription" documentation="Insert all the Functions available in a given Mode / State. This tool does not modify the semantic model." name="State-Mode Elements" label="Functions from Mode / State" precondition="aql:elementView.isValidDFInsertStateModes()" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Mode.gif">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.void2Null(element)">
                 <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="selectStates" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementFromListWizard">
                   <parameters name="context" value="aql:self.void2Null(element)"/>
-                  <parameters name="scope" value="&lt;%$elementView.getDFInsertStateModesScope()%>"/>
+                  <parameters name="scope" value="aql:elementView.getDFInsertStateModesScope()"/>
                   <parameters name="multiple" value="true"/>
                   <parameters name="resultVariable" value="elements"/>
                   <parameters name="wizardMessage" value="Select States/Modes to display all its available functions."/>
@@ -3070,14 +3070,14 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ToolDescription" documentation="Insert all the Functions and Functional Exchanges contributing to a given Scenario. This tool does not modify the semantic model." name="Scenario Elements" label="Elements from Scenario" precondition="&lt;%$elementView.isValidDFInsertScenarios()%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Scenario.gif">
+          <ownedTools xsi:type="tool_1:ToolDescription" documentation="Insert all the Functions and Functional Exchanges contributing to a given Scenario. This tool does not modify the semantic model." name="Scenario Elements" label="Elements from Scenario" precondition="aql:elementView.isValidDFInsertScenarios()" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Scenario.gif">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.void2Null(element)">
                 <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="selectElements" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementFromListWizard">
                   <parameters name="context" value="aql:self.void2Null(element)"/>
-                  <parameters name="scope" value="&lt;%$elementView.getDFInsertScenariosScope()%>"/>
+                  <parameters name="scope" value="aql:elementView.getDFInsertScenariosScope()"/>
                   <parameters name="multiple" value="true"/>
                   <parameters name="resultVariable" value="elements"/>
                   <parameters name="wizardMessage" value="Select Scenarios to display all involved elements."/>
@@ -3091,8 +3091,8 @@
           <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Insert all the Functions and Functional Exchanges contributing to a given Functional Chain. " name="Show Functional Chain Elements" label="Functional Chain Elements" containerMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionalChain.gif">
             <variable name="container"/>
             <viewVariable name="containerView">
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="scope" computationExpression="&lt;%$container.getAllFunctionalChain()%>"/>
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="diagram" computationExpression="&lt;%$containerView.getDiagramContainer()%>"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="scope" computationExpression="aql:container.getAllFunctionalChain()"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="diagram" computationExpression="aql:containerView.getDiagramContainer()"/>
             </viewVariable>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self">
@@ -3117,7 +3117,7 @@
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="refreshElement" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.RefreshElement">
-                    <parameters name="context" value="&lt;% $containerView.getDiagramContainer() %>"/>
+                    <parameters name="context" value="aql:containerView.getDiagramContainer()"/>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
@@ -3194,7 +3194,7 @@
         <filters xsi:type="filter:MappingFilter" filterKind="COLLAPSE" mappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='CA%20Dummy']" semanticConditionExpression=""/>
       </filters>
       <filters xsi:type="filter:CompositeFilterDescription" name="Hide cross Functional Exchanges of reusable Components">
-        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='CA%20DataFlow%20between%20Function']" semanticConditionExpression="" viewConditionExpression="&lt;%target.isValidFunctionalExchangeEdge(sourceNode,targetNode)%>"/>
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='CA%20DataFlow%20between%20Function']" semanticConditionExpression="" viewConditionExpression="aql:self.target.isValidFunctionalExchangeEdge(self.sourceNode,self.targetNode)"/>
       </filters>
       <filters xsi:type="filter:CompositeFilterDescription" name="Hide Simplified Group of Component Exchanges" label="Hide Simplified Grouped Component Exchanges">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='SAB_ComponentExchangeByGroup']"/>
@@ -3388,7 +3388,7 @@
         <edgeMappings name="SAB_ComponentExchangeByGroup" preconditionExpression="service:isValidComponentExchangeByGroupEdge(sourceView, targetView)" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20category']" semanticElements="service:getComponentExchangeByGroupSemantics()" sourceMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20System']" targetMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20System']" targetFinderExpression="service:getComponentExchangeByGroupTargets()" targetExpression="service:getComponentExchangeByGroupTarget()">
           <style lineStyle="dash" targetArrow="NoDecoration">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-            <centerLabelStyleDescription labelExpression="&lt;%$view.getComponentExchangeLabelByDelegation()%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ComponentExchange.gif">
+            <centerLabelStyleDescription labelExpression="aql:view.getComponentExchangeLabelByDelegation()" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ComponentExchange.gif">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_gray']"/>
             </centerLabelStyleDescription>
           </style>
@@ -3396,7 +3396,7 @@
         <edgeMappings name="SAB_ComponentExchangeByGroup_Oriented" preconditionExpression="service:isValidComponentExchangeByGroupOrientedEdge(sourceView, targetView)" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20category']" semanticElements="service:getComponentExchangeByGroupOrientedSemanticElts()" sourceMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20System']" targetMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20System']" targetFinderExpression="service:getComponentExchangeByGroupTargets()" targetExpression="service:getComponentExchangeByGroupTarget()">
           <style lineStyle="dash">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-            <centerLabelStyleDescription labelExpression="&lt;%$view.getComponentExchangeLabelByDelegation()%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ComponentExchange.gif">
+            <centerLabelStyleDescription labelExpression="aql:view.getComponentExchangeLabelByDelegation()" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ComponentExchange.gif">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </centerLabelStyleDescription>
           </style>
@@ -3594,15 +3594,15 @@
         <reusedMappings xsi:type="description_1:NodeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']"/>
         <toolSections name="Components">
           <ownedTools xsi:type="tool:ToolGroup" name="Actor">
-            <tools xsi:type="tool:ContainerCreationDescription" documentation="Create an Actor and its Part" name="Actor" precondition="&lt;%$containerView.isA(&quot;DDiagram&quot;)%>" containerMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']">
+            <tools xsi:type="tool:ContainerCreationDescription" documentation="Create an Actor and its Part" name="Actor" precondition="aql:containerView.oclIsKindOf(diagram::DDiagram)" containerMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']">
               <variable name="container">
-                <subVariables xsi:type="tool_1:AcceleoVariable" name="containerType" computationExpression="&lt;% $container.getComponentType() %>"/>
+                <subVariables xsi:type="tool_1:AcceleoVariable" name="containerType" computationExpression="aql:container.getComponentType()"/>
               </variable>
               <viewVariable name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%getArchitecture()%>">
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%createActor(&quot;actor&quot;)%>"/>
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%getArchitecture().getContext()%>">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.getArchitecture().getContext()">
                     <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%$actor!=null%>">
                       <subModelOperations xsi:type="tool_1:CreateInstance" typeName="cs.Part" referenceName="ownedFeatures" variableName="part">
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
@@ -3618,10 +3618,10 @@
                 <listeners domainClass="org.polarsys.capella.core.preferences.Listener" featureName="multipart.allowed"/>
               </filters>
               <variable name="container">
-                <subVariables xsi:type="tool_1:AcceleoVariable" name="containerType" computationExpression="&lt;% $container.getComponentType() %>"/>
+                <subVariables xsi:type="tool_1:AcceleoVariable" name="containerType" computationExpression="aql:container.getComponentType()"/>
               </variable>
               <viewVariable name="containerView">
-                <subVariables xsi:type="tool_1:AcceleoVariable" name="diagram" computationExpression="&lt;% $containerView.getDiagramContainer() %>"/>
+                <subVariables xsi:type="tool_1:AcceleoVariable" name="diagram" computationExpression="aql:containerView.getDiagramContainer()"/>
               </viewVariable>
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:containerType">
@@ -3707,9 +3707,9 @@
             </tools>
           </ownedTools>
           <ownedTools xsi:type="tool:ToolGroup" name="Ports">
-            <tools xsi:type="tool:NodeCreationDescription" documentation="Create an In Flow Port on the component type of the selected Part" name="In Flow Port" precondition="&lt;% $container.isA(&quot;Part&quot;) %>" nodeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@borderedNodeMappings[name='CA%20Component%20Port']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FlowPortIn.gif">
+            <tools xsi:type="tool:NodeCreationDescription" documentation="Create an In Flow Port on the component type of the selected Part" name="In Flow Port" precondition="aql:container.oclIsKindOf(cs::Part)" nodeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@borderedNodeMappings[name='CA%20Component%20Port']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FlowPortIn.gif">
               <variable name="container">
-                <subVariables xsi:type="tool_1:AcceleoVariable" name="containerType" computationExpression="&lt;% $container.getComponentType() %>"/>
+                <subVariables xsi:type="tool_1:AcceleoVariable" name="containerType" computationExpression="aql:container.getComponentType()"/>
               </variable>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -3722,9 +3722,9 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool:NodeCreationDescription" documentation="Create an Out Flow Port on the component type of the selected Part" name="Out Flow Port" precondition="&lt;% $container.isA(&quot;Part&quot;) %>" nodeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@borderedNodeMappings[name='CA%20Component%20Port']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FlowPortOut.gif">
+            <tools xsi:type="tool:NodeCreationDescription" documentation="Create an Out Flow Port on the component type of the selected Part" name="Out Flow Port" precondition="aql:container.oclIsKindOf(cs::Part)" nodeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@borderedNodeMappings[name='CA%20Component%20Port']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FlowPortOut.gif">
               <variable name="container">
-                <subVariables xsi:type="tool_1:AcceleoVariable" name="containerType" computationExpression="&lt;% $container.getComponentType() %>"/>
+                <subVariables xsi:type="tool_1:AcceleoVariable" name="containerType" computationExpression="aql:container.getComponentType()"/>
               </variable>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -3737,9 +3737,9 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool:NodeCreationDescription" documentation="Create an InOut Flow Port on the component type of the selected Part" name="InOut Flow Port" precondition="&lt;% $container.isA(&quot;Part&quot;) %>" nodeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@borderedNodeMappings[name='CA%20Component%20Port']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FlowPort.gif">
+            <tools xsi:type="tool:NodeCreationDescription" documentation="Create an InOut Flow Port on the component type of the selected Part" name="InOut Flow Port" precondition="aql:container.oclIsKindOf(cs::Part)" nodeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@borderedNodeMappings[name='CA%20Component%20Port']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FlowPort.gif">
               <variable name="container">
-                <subVariables xsi:type="tool_1:AcceleoVariable" name="containerType" computationExpression="&lt;% $container.getComponentType() %>"/>
+                <subVariables xsi:type="tool_1:AcceleoVariable" name="containerType" computationExpression="aql:container.getComponentType()"/>
               </variable>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -3754,7 +3754,7 @@
             </tools>
             <tools xsi:type="tool:NodeCreationDescription" documentation="Create a Standard Port on the component type of the selected Part" name="Standard Port" nodeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@borderedNodeMappings[name='CA%20Component%20Port']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/StandardPort.gif">
               <variable name="container">
-                <subVariables xsi:type="tool_1:AcceleoVariable" name="containerType" computationExpression="&lt;% $container.getComponentType() %>"/>
+                <subVariables xsi:type="tool_1:AcceleoVariable" name="containerType" computationExpression="aql:container.getComponentType()"/>
               </variable>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -3768,7 +3768,7 @@
             </tools>
             <tools xsi:type="tool:NodeCreationDescription" documentation="Creates a new Physical Port on the target System Component or Actor." name="Physical Port" nodeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@borderedNodeMappings[name='SAB_PhysicalPort']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/PhysicalPort.gif">
               <variable name="container">
-                <subVariables xsi:type="tool_1:AcceleoVariable" name="containerType" computationExpression="&lt;% $container.abstractType() %>"/>
+                <subVariables xsi:type="tool_1:AcceleoVariable" name="containerType" computationExpression="aql:container.abstractType"/>
               </variable>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -3797,9 +3797,9 @@
           <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Insert/Remove Actors" name="Show/Hide Actors" label="Actors" containerMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <variable name="container"/>
             <viewVariable name="containerView">
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="diagram" computationExpression="&lt;% $containerView.eContainer(&quot;DDiagram&quot;) %>"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="diagram" computationExpression="aql:containerView.eContainerOrSelf(diagram::DDiagram)"/>
               <subVariables xsi:type="tool_1:AcceleoVariable" name="containerType" computationExpression="&lt;% $containerView.target.getComponentType() %>"/>
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="scope" computationExpression="&lt;% $containerView.getABShowHideActor()%>"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="scope" computationExpression="aql:containerView.getABShowHideActor()"/>
               <subVariables xsi:type="tool_1:AcceleoVariable" name="ownedNodeContainer" computationExpression="&lt;%$containerView.eAllContents().filter(&quot;DNodeContainer&quot;)%>"/>
             </viewVariable>
             <initialOperation>
@@ -3820,12 +3820,12 @@
                     </subModelOperations>
                     <subModelOperations xsi:type="tool_1:For" expression="aql:self.void2Null(selection)">
                       <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% $ownedNodeContainer[target == $i].nSize() > 0 %>">
-                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $ownedNodeContainer[target == $i].show %>"/>
+                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:ownedNodeContainer->select(x | x.target = i).show()->first()"/>
                       </subModelOperations>
                       <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% $ownedNodeContainer[target == $i].nSize() == 0 %>">
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:i">
                           <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% ($ownedNodeContainer+$containerView)[(target == $i.eContainer || target.type == $i.eContainer)] == null %>">
-                            <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% $containerView.isA(&quot;DDiagram&quot;) %>">
+                            <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:containerView.oclIsKindOf(diagram::DDiagram)">
                               <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']" containerViewExpression="aql:containerView"/>
                             </subModelOperations>
                           </subModelOperations>
@@ -3850,7 +3850,7 @@
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="SetVariable $displayedExchanges" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SetVariable">
                     <parameters name="context" value="aql:elementView"/>
                     <parameters name="variable" value="displayedExchanges"/>
-                    <parameters name="value" value="&lt;%$elementView.getDisplayedConnections%>"/>
+                    <parameters name="value" value="aql:self.void2Null(elementView.getDisplayedConnections())"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="selectExchanges" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectLinksFromTransferWizard">
                     <parameters name="context" value="aql:element"/>
@@ -3862,7 +3862,7 @@
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%($selectedExchanges != &quot;WIZARD_CANCELED&quot;)%>">
                     <subModelOperations xsi:type="tool_1:For" expression="aql:self.void2Null(selectedExchanges)">
                       <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%! $displayedExchanges.nContains($i)%>">
-                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$i.showABComponentExchange($elementView)%>"/>
+                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:i.showABComponentExchange(elementView)"/>
                       </subModelOperations>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool_1:For" expression="aql:displayedExchanges">
@@ -3877,23 +3877,23 @@
                             <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="setVariable" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SetVariable">
                               <parameters name="context" value="aql:elementView"/>
                               <parameters name="variable" value="sourceNode"/>
-                              <parameters name="value" value="&lt;% $edgeToDelete.sourceNode %>"/>
+                              <parameters name="value" value="aql:edgeToDelete.sourceNode"/>
                             </subModelOperations>
                             <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="setVariable" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SetVariable">
                               <parameters name="context" value="aql:elementView"/>
                               <parameters name="variable" value="targetNode"/>
-                              <parameters name="value" value="&lt;% $edgeToDelete.targetNode %>"/>
+                              <parameters name="value" value="aql:edgeToDelete.targetNode"/>
                             </subModelOperations>
                             <subModelOperations xsi:type="tool_1:DeleteView"/>
                           </subModelOperations>
-                          <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%$sourceNode.isABorderedNode()%>">
+                          <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:sourceNode.isABorderedNode()">
                             <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:sourceNode">
                               <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%($sourceNode.getIncomingEdges.nSize() == 0) &amp;&amp; ($sourceNode.getOutgoingEdges.nSize() == 0)%>">
                                 <subModelOperations xsi:type="tool_1:DeleteView"/>
                               </subModelOperations>
                             </subModelOperations>
                           </subModelOperations>
-                          <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%$targetNode.isABorderedNode()%>">
+                          <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:targetNode.isABorderedNode()">
                             <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:targetNode">
                               <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%($targetNode.getIncomingEdges.nSize() == 0) &amp;&amp; ($targetNode.getOutgoingEdges.nSize() == 0)%>">
                                 <subModelOperations xsi:type="tool_1:DeleteView"/>
@@ -3963,7 +3963,7 @@
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="SetVariable $displayedLinks" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SetVariable">
                     <parameters name="context" value="aql:elementView"/>
                     <parameters name="variable" value="displayedLinks"/>
-                    <parameters name="value" value="&lt;%$elementView.getDisplayedPhysicalLinks%>"/>
+                    <parameters name="value" value="aql:self.void2Null(elementView.getDisplayedPhysicalLinks())"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="selectExchanges" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectLinksFromTransferWizard">
                     <parameters name="context" value="aql:element"/>
@@ -3975,7 +3975,7 @@
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%($selectedExchanges != &quot;WIZARD_CANCELED&quot;)%>">
                     <subModelOperations xsi:type="tool_1:For" expression="aql:self.void2Null(selectedExchanges)">
                       <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%! $displayedLinks.nContains($i)%>">
-                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$i.showABPhysicalLink($elementView)%>"/>
+                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:i.showABPhysicalLink(elementView)"/>
                       </subModelOperations>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool_1:For" expression="aql:displayedLinks">
@@ -3990,23 +3990,23 @@
                             <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="setVariable" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SetVariable">
                               <parameters name="context" value="aql:elementView"/>
                               <parameters name="variable" value="sourceNode"/>
-                              <parameters name="value" value="&lt;% $edgeToDelete.sourceNode %>"/>
+                              <parameters name="value" value="aql:edgeToDelete.sourceNode"/>
                             </subModelOperations>
                             <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="setVariable" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SetVariable">
                               <parameters name="context" value="aql:elementView"/>
                               <parameters name="variable" value="targetNode"/>
-                              <parameters name="value" value="&lt;% $edgeToDelete.targetNode %>"/>
+                              <parameters name="value" value="aql:edgeToDelete.targetNode"/>
                             </subModelOperations>
                             <subModelOperations xsi:type="tool_1:DeleteView"/>
                           </subModelOperations>
-                          <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%$sourceNode.isABorderedNode()%>">
+                          <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:sourceNode.isABorderedNode()">
                             <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:sourceNode">
                               <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%($sourceNode.getIncomingEdges.nSize() == 0) &amp;&amp; ($sourceNode.getOutgoingEdges.nSize() == 0)%>">
                                 <subModelOperations xsi:type="tool_1:DeleteView"/>
                               </subModelOperations>
                             </subModelOperations>
                           </subModelOperations>
-                          <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%$targetNode.isABorderedNode()%>">
+                          <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:targetNode.isABorderedNode()">
                             <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:targetNode">
                               <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%($targetNode.getIncomingEdges.nSize() == 0) &amp;&amp; ($targetNode.getOutgoingEdges.nSize() == 0)%>">
                                 <subModelOperations xsi:type="tool_1:DeleteView"/>
@@ -4137,37 +4137,37 @@
             <element name="element"/>
             <newViewContainer name="newContainerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$element.dndABComponentPort($oldSemanticContainer, $newSemanticContainer)%>"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:element.dndABComponentPort(oldSemanticContainer,newSemanticContainer)"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerDropDescription" name="DnD AB FunctionPort" precondition="&lt;%$element.isValidDndABFunctionPort($newViewContainer) %>" mappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@subNodeMappings[name='CA%20System%20Function']/@borderedNodeMappings[name='CA%20Flow%20Port%20on%20System%20Function']" moveEdges="true">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="DnD AB FunctionPort" precondition="aql:element.isValidDndABFunctionPort(newViewContainer)" mappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@subNodeMappings[name='CA%20System%20Function']/@borderedNodeMappings[name='CA%20Flow%20Port%20on%20System%20Function']" moveEdges="true">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
             <newViewContainer name="newContainerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$element.dndABFunctionPort($oldSemanticContainer, $newSemanticContainer)%>"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:element.dndABFunctionPort(oldSemanticContainer,newSemanticContainer)"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="CA Reconnect Exchanges Target" precondition="&lt;%$element.isValidABReconnectComponentExchangeTarget($source, $target)%>">
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="CA Reconnect Exchanges Target" precondition="aql:element.isValidABReconnectComponentExchangeTarget(source,target)">
             <source name="source"/>
             <target name="target"/>
             <sourceView name="sourceView"/>
             <targetView name="targetView"/>
             <element name="element"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$element.reconnectABComponentExchangeTarget($edgeView, $sourceView, $targetView)%>"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:element.reconnectABComponentExchangeTarget(edgeView,sourceView,targetView)"/>
             </initialOperation>
             <edgeView name="edgeView"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="CA Reconnect Exchanges Source" precondition="&lt;%$element.isValidABReconnectComponentExchangeSource($source, $target)%>" reconnectionKind="RECONNECT_SOURCE">
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="CA Reconnect Exchanges Source" precondition="aql:element.isValidABReconnectComponentExchangeSource(source,target)" reconnectionKind="RECONNECT_SOURCE">
             <source name="source"/>
             <target name="target"/>
             <sourceView name="sourceView"/>
             <targetView name="targetView"/>
             <element name="element"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$element.reconnectABComponentExchangeSource($edgeView, $sourceView, $targetView)%>"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:element.reconnectABComponentExchangeSource(edgeView,sourceView,targetView)"/>
             </initialOperation>
             <edgeView name="edgeView"/>
           </ownedTools>
@@ -4244,7 +4244,7 @@
               <element name="element"/>
               <elementView name="elementView">
                 <subVariables xsi:type="tool_1:AcceleoVariable" name="constraintsInDiagram" computationExpression="&lt;% getExistingConstraintsFromDiagram($elementView.getDiagramContainer())%>"/>
-                <subVariables xsi:type="tool_1:AcceleoVariable" name="diagram" computationExpression="&lt;% $elementView.eContainer(&quot;DDiagram&quot;) %>"/>
+                <subVariables xsi:type="tool_1:AcceleoVariable" name="diagram" computationExpression="aql:elementView.eContainerOrSelf(diagram::DDiagram)"/>
               </elementView>
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView">
@@ -4325,14 +4325,14 @@
             <containerVariable name="container"/>
             <representationNameVariable name="diagramName"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="Reconnect PhysicalLink Source" precondition="&lt;%$element.isValidABReconnectPhysicalLinkSource($source, $target)%>" reconnectionKind="RECONNECT_SOURCE">
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="Reconnect PhysicalLink Source" precondition="aql:element.isValidABReconnectPhysicalLinkSource(source,target)" reconnectionKind="RECONNECT_SOURCE">
             <source name="source"/>
             <target name="target"/>
             <sourceView name="sourceView"/>
             <targetView name="targetView">
               <subVariables xsi:type="tool_1:AcceleoVariable" name="targetComponent" computationExpression="&lt;% $targetView.target.getRelatedComponent() %>"/>
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="targetPart" computationExpression="&lt;% $targetView.getRelatedPart() %>"/>
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="targetConnection" computationExpression="&lt;% $targetView.target %>"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="targetPart" computationExpression="aql:targetView.getRelatedPart()"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="targetConnection" computationExpression="aql:targetView.target"/>
               <subVariables xsi:type="tool_1:AcceleoVariable" name="targetIsPort" computationExpression="&lt;%$targetView.target.isA(&quot;Port&quot;)%>"/>
             </targetView>
             <element name="element"/>
@@ -4341,14 +4341,14 @@
             </initialOperation>
             <edgeView name="edgeView"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="Reconnect PhysicalLink Target" precondition="&lt;%$element.isValidABReconnectPhysicalLinkTarget($source, $target)%>">
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="Reconnect PhysicalLink Target" precondition="aql:element.isValidABReconnectPhysicalLinkTarget(source,target)">
             <source name="source"/>
             <target name="target"/>
             <sourceView name="sourceView"/>
             <targetView name="targetView">
               <subVariables xsi:type="tool_1:AcceleoVariable" name="targetComponent" computationExpression="&lt;% $targetView.target.getRelatedComponent() %>"/>
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="targetPart" computationExpression="&lt;% $targetView.getRelatedPart() %>"/>
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="targetConnection" computationExpression="&lt;% $targetView.target %>"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="targetPart" computationExpression="aql:targetView.getRelatedPart()"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="targetConnection" computationExpression="aql:targetView.target"/>
               <subVariables xsi:type="tool_1:AcceleoVariable" name="targetIsPort" computationExpression="&lt;%$targetView.target.isA(&quot;Port&quot;)%>"/>
             </targetView>
             <element name="element"/>
@@ -4363,7 +4363,7 @@
             <element name="element"/>
             <newViewContainer name="newContainerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$element.dndABPhysicalPort($oldSemanticContainer, $newSemanticContainer)%>"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:element.dndABPhysicalPort(oldSemanticContainer,newSemanticContainer)"/>
             </initialOperation>
           </ownedTools>
         </toolSections>
@@ -4371,7 +4371,7 @@
           <ownedTools xsi:type="tool:ToolGroup" name="FunctionCreation">
             <tools xsi:type="tool:NodeCreationDescription" documentation="Create a new System Function" name="System Function" precondition="&lt;% current.getComponentType().isA(&quot;Component&quot;)%>" nodeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@subNodeMappings[name='CA%20System%20Function']">
               <variable name="container">
-                <subVariables xsi:type="tool_1:AcceleoVariable" name="containerType" computationExpression="&lt;% $container.getComponentType() %>"/>
+                <subVariables xsi:type="tool_1:AcceleoVariable" name="containerType" computationExpression="aql:container.getComponentType()"/>
                 <subVariables xsi:type="tool_1:AcceleoVariable" name="tool" computationExpression="System Function"/>
               </variable>
               <viewVariable name="containerView"/>
@@ -4387,7 +4387,7 @@
             </tools>
             <tools xsi:type="tool:NodeCreationDescription" documentation="Create a new Duplicate allocated to the component type of the selected part" name="Duplicate" precondition="&lt;% current.getComponentType().isA(&quot;Component&quot;)%>" nodeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@subNodeMappings[name='CA%20System%20Function']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Duplicate.gif">
               <variable name="container">
-                <subVariables xsi:type="tool_1:AcceleoVariable" name="containerType" computationExpression="&lt;% $container.getComponentType() %>"/>
+                <subVariables xsi:type="tool_1:AcceleoVariable" name="containerType" computationExpression="aql:container.getComponentType()"/>
               </variable>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -4402,7 +4402,7 @@
             </tools>
             <tools xsi:type="tool:NodeCreationDescription" documentation="Create a new Gather allocated to the component type of the selected part" name="Gather" precondition="&lt;% current.getComponentType().isA(&quot;Component&quot;)%>" nodeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@subNodeMappings[name='CA%20System%20Function']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Gather.gif">
               <variable name="container">
-                <subVariables xsi:type="tool_1:AcceleoVariable" name="containerType" computationExpression="&lt;% $container.getComponentType() %>"/>
+                <subVariables xsi:type="tool_1:AcceleoVariable" name="containerType" computationExpression="aql:container.getComponentType()"/>
               </variable>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -4417,7 +4417,7 @@
             </tools>
             <tools xsi:type="tool:NodeCreationDescription" documentation="Create a new Route allocated to the component type of the selected part" name="Route" precondition="&lt;% current.getComponentType().isA(&quot;Component&quot;)%>" nodeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@subNodeMappings[name='CA%20System%20Function']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Route.gif">
               <variable name="container">
-                <subVariables xsi:type="tool_1:AcceleoVariable" name="containerType" computationExpression="&lt;% $container.getComponentType() %>"/>
+                <subVariables xsi:type="tool_1:AcceleoVariable" name="containerType" computationExpression="aql:container.getComponentType()"/>
               </variable>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -4432,7 +4432,7 @@
             </tools>
             <tools xsi:type="tool:NodeCreationDescription" documentation="Create a new Select allocated to the component type of the selected part" name="Select" precondition="&lt;% current.getComponentType().isA(&quot;Component&quot;)%>" nodeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@subNodeMappings[name='CA%20System%20Function']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Select.gif">
               <variable name="container">
-                <subVariables xsi:type="tool_1:AcceleoVariable" name="containerType" computationExpression="&lt;% $container.getComponentType() %>"/>
+                <subVariables xsi:type="tool_1:AcceleoVariable" name="containerType" computationExpression="aql:container.getComponentType()"/>
               </variable>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -4447,7 +4447,7 @@
             </tools>
             <tools xsi:type="tool:NodeCreationDescription" documentation="Create a new Split allocated to the component type of the selected part" name="Split" precondition="&lt;% current.getComponentType().isA(&quot;Component&quot;)%>" nodeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@subNodeMappings[name='CA%20System%20Function']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Split.gif">
               <variable name="container">
-                <subVariables xsi:type="tool_1:AcceleoVariable" name="containerType" computationExpression="&lt;% $container.getComponentType() %>"/>
+                <subVariables xsi:type="tool_1:AcceleoVariable" name="containerType" computationExpression="aql:container.getComponentType()"/>
               </variable>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -4471,7 +4471,7 @@
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$source.createABFunctionalExchange($sourceView, $targetView)%>"/>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool:NodeCreationDescription" documentation="Create a new Input Port on the selected Function" name="Input Port" precondition="&lt;%$containerView.isValidCreationFunctionInputPort()%>" nodeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@subNodeMappings[name='CA%20System%20Function']/@borderedNodeMappings[name='CA%20Flow%20Port%20on%20System%20Function']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/InFlowPort.gif">
+            <tools xsi:type="tool:NodeCreationDescription" documentation="Create a new Input Port on the selected Function" name="Input Port" precondition="aql:containerView.isValidCreationFunctionInputPort()" nodeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@subNodeMappings[name='CA%20System%20Function']/@borderedNodeMappings[name='CA%20Flow%20Port%20on%20System%20Function']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/InFlowPort.gif">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -4482,7 +4482,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool:NodeCreationDescription" documentation="Create a new Output Port on the selected Function" name="Output Port" precondition="&lt;%$containerView.isValidCreationFunctionOutputPort()%>" nodeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@subNodeMappings[name='CA%20System%20Function']/@borderedNodeMappings[name='CA%20Flow%20Port%20on%20System%20Function']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/OutFlowPort.gif">
+            <tools xsi:type="tool:NodeCreationDescription" documentation="Create a new Output Port on the selected Function" name="Output Port" precondition="aql:containerView.isValidCreationFunctionOutputPort()" nodeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@subNodeMappings[name='CA%20System%20Function']/@borderedNodeMappings[name='CA%20Flow%20Port%20on%20System%20Function']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/OutFlowPort.gif">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -4510,14 +4510,14 @@
           </ownedTools>
           <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Manage function allocation on the component type of the selected Part&#xD;&#xA;" name="Manage Function Allocation" label="Manage Function Allocation" precondition="&lt;% $container.getComponentType().isA(&quot;Component&quot;) %>" nodeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@subNodeMappings[name='CA%20System%20Node'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@subNodeMappings[name='CA%20System%20Function']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Manage.gif">
             <variable name="container">
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="containerType" computationExpression="&lt;% $container.getComponentType() %>"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="containerType" computationExpression="aql:container.getComponentType()"/>
             </variable>
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:containerType">
                 <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="selectFunctions" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
                   <parameters name="context" value="aql:containerType"/>
-                  <parameters name="scope" value="&lt;% $containerType.getAvailableFunctionalAllocation()%>"/>
+                  <parameters name="scope" value="aql:self.void2Null(containerType.getAvailableFunctionalAllocation())"/>
                   <parameters name="resultVariable" value="selection"/>
                   <parameters name="wizardMessage" value="Select Functions to allocate to &lt;%$container.type.name%>."/>
                   <parameters name="initialSelection" value="&lt;% $containerType.ownedFunctionalAllocation.targetElement %>"/>
@@ -4542,7 +4542,7 @@
                         </subModelOperations>
                       </subModelOperations>
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:i">
-                        <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% $i.isA(&quot;AbstractFunction&quot;) %>">
+                        <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:i.oclIsKindOf(fa::AbstractFunction)">
                           <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@subNodeMappings[name='CA%20System%20Function']" containerViewExpression="aql:containerView"/>
                         </subModelOperations>
                       </subModelOperations>
@@ -4556,7 +4556,7 @@
           <ownedTools xsi:type="tool:ToolGroup" name="Show/Hide Functions">
             <tools xsi:type="tool:NodeCreationDescription" documentation="Insert/Remove Allocated Functions" name="Show/Hide Allocated Functions" label="Allocated Functions" precondition="&lt;% !$containerView.isA(&quot;DDiagram&quot;) %>" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@subNodeMappings[name='CA%20System%20Node'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@subNodeMappings[name='CA%20System%20Function']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
               <variable name="container">
-                <subVariables xsi:type="tool_1:AcceleoVariable" name="containerType" computationExpression="&lt;% $container.getComponentType() %>"/>
+                <subVariables xsi:type="tool_1:AcceleoVariable" name="containerType" computationExpression="aql:container.getComponentType()"/>
               </variable>
               <viewVariable name="containerView">
                 <subVariables xsi:type="tool_1:AcceleoVariable" name="visibleFunctions" computationExpression="&lt;% $containerView.getNodesAndNodeListElements().target.filter(&quot;AbstractFunction&quot;) %>"/>
@@ -4565,13 +4565,13 @@
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self">
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="selectAllocatedFunctions" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
                     <parameters name="context" value="aql:containerType"/>
-                    <parameters name="scope" value="&lt;% $container.getShowableAllocatedFunctions($containerView)%>"/>
+                    <parameters name="scope" value="aql:container.getShowableAllocatedFunctions(containerView)"/>
                     <parameters name="initialSelection" value="aql:visibleFunctions"/>
                     <parameters name="resultVariable" value="selectedFunctions"/>
                     <parameters name="wizardMessage" value="Select allocated Functions to show in &lt;%$container.name%>."/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% ! ($selectedFunctions == &quot;WIZARD_CANCELED&quot;) %>">
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $containerView.insertRemoveAllocatedFunctions($selectedFunctions) %>"/>
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:containerView.insertRemoveAllocatedFunctions(selectedFunctions)"/>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
@@ -4602,7 +4602,7 @@
           <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Insert/Remove Functional Chains" name="Show/Hide Functional Chains" label="Functional Chains" nodeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='CA_FunctionalChainEnd']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <variable name="container"/>
             <viewVariable name="containerView">
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="ownedElements" computationExpression="&lt;%$containerView.getSetOfDiagramElements()%>"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="ownedElements" computationExpression="aql:containerView.getSetOfDiagramElements()"/>
               <subVariables xsi:type="tool_1:AcceleoVariable" name="initialSelection" computationExpression="&lt;%$containerView.getNodesAndNodeListElements()[visible &amp;&amp; target.filter(&quot;FunctionalChain&quot;).nSize() > 0].target%>"/>
             </viewVariable>
             <initialOperation>
@@ -4636,7 +4636,7 @@
             <tools xsi:type="tool_1:ToolDescription" documentation="Insert/Remove incoming and outgoing exchanges of the selected function" name="Show/Hide Functional Exchanges" label="Functional Exchanges" precondition="&lt;%($elementView.target.filter(&quot;AbstractFunction&quot;).nSize() > 0) &amp;&amp; ($elementView.filter(&quot;DDiagram&quot;).nSize() == 0)%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
               <element name="element"/>
               <elementView name="elementView">
-                <subVariables xsi:type="tool_1:AcceleoVariable" name="displayedExchanges" computationExpression="&lt;%$elementView.getDisplayedFunctionalExchanges%>"/>
+                <subVariables xsi:type="tool_1:AcceleoVariable" name="displayedExchanges" computationExpression="aql:self.void2Null(elementView.getDisplayedFunctionalExchanges())"/>
               </elementView>
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView">
@@ -4650,7 +4650,7 @@
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%($selectedExchanges != &quot;WIZARD_CANCELED&quot;)%>">
                     <subModelOperations xsi:type="tool_1:For" expression="aql:self.void2Null(selectedExchanges)">
                       <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%! $displayedExchanges.nContains($i)%>">
-                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$i.showFunctionalExchangeInArchitectureBlank2($elementView)%>"/>
+                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:i.showFunctionalExchangeInArchitectureBlank2(elementView)"/>
                       </subModelOperations>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool_1:For" expression="aql:displayedExchanges">
@@ -4664,23 +4664,23 @@
                           <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="setVariable" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SetVariable">
                             <parameters name="context" value="aql:elementView"/>
                             <parameters name="variable" value="sourceNode"/>
-                            <parameters name="value" value="&lt;% $edgeToDelete.sourceNode %>"/>
+                            <parameters name="value" value="aql:edgeToDelete.sourceNode"/>
                           </subModelOperations>
                           <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="setVariable" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SetVariable">
                             <parameters name="context" value="aql:elementView"/>
                             <parameters name="variable" value="targetNode"/>
-                            <parameters name="value" value="&lt;% $edgeToDelete.targetNode %>"/>
+                            <parameters name="value" value="aql:edgeToDelete.targetNode"/>
                           </subModelOperations>
                           <subModelOperations xsi:type="tool_1:DeleteView"/>
                         </subModelOperations>
-                        <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%$sourceNode.isABorderedNode()%>">
+                        <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:sourceNode.isABorderedNode()">
                           <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:sourceNode">
                             <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%($sourceNode.getIncomingEdges.nSize() == 0) &amp;&amp; ($sourceNode.getOutgoingEdges.nSize() == 0)%>">
                               <subModelOperations xsi:type="tool_1:DeleteView"/>
                             </subModelOperations>
                           </subModelOperations>
                         </subModelOperations>
-                        <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%$targetNode.isABorderedNode()%>">
+                        <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:targetNode.isABorderedNode()">
                           <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:targetNode">
                             <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%($targetNode.getIncomingEdges.nSize() == 0) &amp;&amp; ($targetNode.getOutgoingEdges.nSize() == 0)%>">
                               <subModelOperations xsi:type="tool_1:DeleteView"/>
@@ -4738,12 +4738,12 @@
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="SetVariable $scope" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SetVariable">
                     <parameters name="context" value="aql:element"/>
                     <parameters name="variable" value="scope"/>
-                    <parameters name="value" value="&lt;% $elementView.getSwitchFECategoriesScope() %>"/>
+                    <parameters name="value" value="aql:self.void2Null(elementView.getSwitchFECategoriesScope())"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="SetVariable $initialSelection" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SetVariable">
                     <parameters name="context" value="aql:element"/>
                     <parameters name="variable" value="initialSelection"/>
-                    <parameters name="value" value="&lt;% $elementView.getSwitchFECategoriesInitialSelection()%>"/>
+                    <parameters name="value" value="aql:self.void2Null(elementView.getSwitchFECategoriesInitialSelection())"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="selectElements" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectLinksFromTransferWizard">
                     <parameters name="context" value="aql:element"/>
@@ -4753,7 +4753,7 @@
                     <parameters name="wizardMessage" value="Select Categories to reveal"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%($selectedElements != &quot;WIZARD_CANCELED&quot;)%>">
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$elementView.switchFECategories($scope, $initialSelection, $selectedElements )%>"/>
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView.switchFECategories(scope,initialSelection,selectedElements)"/>
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$elementView.getDiagramContainer().forceRefresh%>"/>
                   </subModelOperations>
                 </firstModelOperations>
@@ -4775,7 +4775,7 @@
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element">
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="oldAllocationBlocks" computationExpression="&lt;%$element.allocationBlocks%>"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="oldAllocationBlocks" computationExpression="aql:self.void2Null(element.allocationBlocks)"/>
             </element>
             <newViewContainer name="newContainerView"/>
             <initialOperation>
@@ -4784,10 +4784,10 @@
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$element.dndABAbstractFunctionAllocation($element.allocationBlocks.nFirst, $newSemanticContainer.type)%>"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%$oldAllocationBlocks.nSize() == 0%>">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $newSemanticContainer.type%>">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:newSemanticContainer.type">
                     <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ComponentFunctionalAllocation" referenceName="ownedFunctionalAllocation">
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="targetElement" valueExpression="aql:element"/>
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="sourceElement" valueExpression="&lt;% $newSemanticContainer.type%>"/>
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="sourceElement" valueExpression="aql:newSemanticContainer.type"/>
                     </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
@@ -4808,14 +4808,14 @@
           </ownedTools>
         </toolSections>
         <toolSections name="Accelerators">
-          <ownedTools xsi:type="tool_1:ToolDescription" documentation="Insert all the Functions available in a given Mode / State. This tool does not modify the semantic model." name="State-Mode Elements" label="Functions from Mode / State" precondition="&lt;%$elementView.isValidABInsertStateModes()%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Mode.gif">
+          <ownedTools xsi:type="tool_1:ToolDescription" documentation="Insert all the Functions available in a given Mode / State. This tool does not modify the semantic model." name="State-Mode Elements" label="Functions from Mode / State" precondition="aql:elementView.isValidABInsertStateModes()" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Mode.gif">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.void2Null(element)">
                 <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="selectStates" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementFromListWizard">
                   <parameters name="context" value="aql:self.void2Null(element)"/>
-                  <parameters name="scope" value="&lt;%$elementView.getABInsertStateModesScope()%>"/>
+                  <parameters name="scope" value="aql:elementView.getABInsertStateModesScope()"/>
                   <parameters name="multiple" value="true"/>
                   <parameters name="resultVariable" value="elements"/>
                   <parameters name="wizardMessage" value="Select States/Modes to display all its available functions."/>
@@ -4826,14 +4826,14 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ToolDescription" documentation="Insert all the related elements contributing to a given Scenario. &#xD;&#xA;Functions and allocating Components / Actors might be displayed on the diagram as well if they are not yet represented. &#xD;&#xA;This tool does not modify the semantic model." name="Scenario Elements" label="Elements from Scenario" precondition="&lt;%$elementView.isValidABInsertScenarios()%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Scenario.gif">
+          <ownedTools xsi:type="tool_1:ToolDescription" documentation="Insert all the related elements contributing to a given Scenario. &#xD;&#xA;Functions and allocating Components / Actors might be displayed on the diagram as well if they are not yet represented. &#xD;&#xA;This tool does not modify the semantic model." name="Scenario Elements" label="Elements from Scenario" precondition="aql:elementView.isValidABInsertScenarios()" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Scenario.gif">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.void2Null(element)">
                 <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="selectElements" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementFromListWizard">
                   <parameters name="context" value="aql:self.void2Null(element)"/>
-                  <parameters name="scope" value="&lt;%$elementView.getABInsertScenariosScope()%>"/>
+                  <parameters name="scope" value="aql:elementView.getABInsertScenariosScope()"/>
                   <parameters name="multiple" value="true"/>
                   <parameters name="resultVariable" value="elements"/>
                   <parameters name="wizardMessage" value="Select Scenarios to display all involved elements."/>
@@ -4929,7 +4929,7 @@
                 <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
                   <parameters name="context" value="aql:container"/>
                   <parameters name="scope" value="aql:self"/>
-                  <parameters name="containerViewExpression" value="&lt;%$containerView.getDiagramContainer()%>"/>
+                  <parameters name="containerViewExpression" value="aql:containerView.getDiagramContainer()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -5048,7 +5048,7 @@
               <element name="element"/>
               <elementView name="elementView">
                 <subVariables xsi:type="tool_1:AcceleoVariable" name="constraintsInDiagram" computationExpression="&lt;% getExistingConstraintsFromDiagram($elementView.getDiagramContainer())%>"/>
-                <subVariables xsi:type="tool_1:AcceleoVariable" name="diagram" computationExpression="&lt;% $elementView.eContainer(&quot;DDiagram&quot;) %>"/>
+                <subVariables xsi:type="tool_1:AcceleoVariable" name="diagram" computationExpression="aql:elementView.eContainerOrSelf(diagram::DDiagram)"/>
               </elementView>
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView">
@@ -5148,7 +5148,7 @@
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_2:CrossTableDescription" name="Interfaces - Capabilities" preconditionExpression="&lt;%isA(&quot;SystemAnalysis&quot;) || isA(&quot;LogicalArchitecture&quot;) %>" domainClass="BlockArchitecture">
       <ownedLineMappings name="TIC Interfaces line" domainClass="Interface" semanticCandidatesExpression="&lt;%getAllInterfacesInvolved%>" headerLabelExpression="feature:name">
-        <ownedSubLines name="TIC Services line" domainClass="ExchangeItemAllocation" semanticCandidatesExpression="&lt;%getDefinedExchangeItems()%>" headerLabelExpression="&lt;%allocatedItem.name%>"/>
+        <ownedSubLines name="TIC Services line" domainClass="ExchangeItemAllocation" semanticCandidatesExpression="&lt;%getDefinedExchangeItems()%>" headerLabelExpression="aql:self.allocatedItem.name"/>
       </ownedLineMappings>
       <ownedColumnMappings name="TIC Capabilities column" headerLabelExpression="feature:name" domainClass="AbstractCapability" semanticCandidatesExpression="&lt;%getAllCapabilities()%>"/>
       <intersection name="TIC Cell Value" canEdit="false" lineMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Interfaces%20-%20Capabilities']/@ownedLineMappings[name='TIC%20Interfaces%20line']/@ownedSubLines[name='TIC%20Services%20line']" columnMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Interfaces%20-%20Capabilities']/@ownedColumnMappings.0" labelExpression="X" columnFinderExpression="&lt;%isUsedInCapabilities()%>"/>
@@ -5159,17 +5159,17 @@
         <representationNameVariable name="tableName"/>
       </ownedRepresentationCreationDescriptions>
       <ownedLineMappings name="TIS Interfaces line" domainClass="Interface" semanticCandidatesExpression="&lt;%getAllInterfacesInvolved%>" headerLabelExpression="feature:name">
-        <ownedSubLines name="TIS Services line" domainClass="ExchangeItemAllocation" semanticCandidatesExpression="&lt;%getDefinedExchangeItems()%>" headerLabelExpression="&lt;%allocatedItem.name%>"/>
+        <ownedSubLines name="TIS Services line" domainClass="ExchangeItemAllocation" semanticCandidatesExpression="&lt;%getDefinedExchangeItems()%>" headerLabelExpression="aql:self.allocatedItem.name"/>
       </ownedLineMappings>
       <ownedColumnMappings name="TIS Scenarios column" headerLabelExpression="feature:name" domainClass="Scenario" semanticCandidatesExpression="&lt;%getOwnedScenarios()%>"/>
       <intersection name="TIS Cell Value" canEdit="false" lineMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Interfaces%20-%20Scenarios']/@ownedLineMappings[name='TIS%20Interfaces%20line']/@ownedSubLines[name='TIS%20Services%20line']" columnMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Interfaces%20-%20Scenarios']/@ownedColumnMappings.0" labelExpression="X" columnFinderExpression="&lt;%isUsedInScenarios()%>"/>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_2:CrossTableDescription" name="Interfaces - Capabilities and Scenarios" preconditionExpression="&lt;%isA(&quot;SystemAnalysis&quot;) || isA(&quot;LogicalArchitecture&quot;) %>" domainClass="BlockArchitecture">
       <ownedLineMappings name="TICS Interfaces line" domainClass="Interface" semanticCandidatesExpression="&lt;%getAllInterfacesInvolved%>" headerLabelExpression="feature:name">
-        <ownedSubLines name="TICS Services line" domainClass="ExchangeItemAllocation" semanticCandidatesExpression="&lt;%getDefinedExchangeItems()%>" headerLabelExpression="&lt;%allocatedItem.name%>"/>
+        <ownedSubLines name="TICS Services line" domainClass="ExchangeItemAllocation" semanticCandidatesExpression="&lt;%getDefinedExchangeItems()%>" headerLabelExpression="aql:self.allocatedItem.name"/>
       </ownedLineMappings>
       <ownedColumnMappings name="TICS Capabilities column" headerLabelExpression="feature:name" domainClass="AbstractCapability" semanticCandidatesExpression="&lt;%getAllCapabilities()%>"/>
-      <intersection name="TICS Cell Value" canEdit="false" lineMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Interfaces%20-%20Capabilities%20and%20Scenarios']/@ownedLineMappings[name='TICS%20Interfaces%20line']/@ownedSubLines[name='TICS%20Services%20line']" columnMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Interfaces%20-%20Capabilities%20and%20Scenarios']/@ownedColumnMappings.0" labelExpression="&lt;%$lineSemantic.getScenariosUsingService($columnSemantic)%>" columnFinderExpression="&lt;%isUsedInCapabilities()%>"/>
+      <intersection name="TICS Cell Value" canEdit="false" lineMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Interfaces%20-%20Capabilities%20and%20Scenarios']/@ownedLineMappings[name='TICS%20Interfaces%20line']/@ownedSubLines[name='TICS%20Services%20line']" columnMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Interfaces%20-%20Capabilities%20and%20Scenarios']/@ownedColumnMappings.0" labelExpression="aql:lineSemantic.getScenariosUsingService(columnSemantic)" columnFinderExpression="&lt;%isUsedInCapabilities()%>"/>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_2:CrossTableDescription" name="System/Actors - System Functions" domainClass="SystemAnalysis">
       <ownedLineMappings name="Components 1" domainClass="Component" semanticCandidatesExpression="&lt;%ownedSystem+ownedActorPkg.getAllActors()%>" headerLabelExpression="feature:name">
