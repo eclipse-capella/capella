@@ -172,7 +172,7 @@
           <detailDescriptions xsi:type="tool_1:DiagramCreationDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='Contextual%20Component%20External%20Interfaces']"/>
           <detailDescriptions xsi:type="tool_1:DiagramCreationDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Interfaces%20Diagram%20Blank']"/>
           <detailDescriptions xsi:type="description_1:TableCreationDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interface%20Delegations']/@ownedRepresentationCreationDescriptions[name='Interface%20delegations']"/>
-          <subNodeMappings name="PhysicalComponentInCI mapping" deletionDescription="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20PC%20allocation%20in%20CI']" labelDirectEdit="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='rename%20CI']" semanticCandidatesExpression="&lt;%type.outgoingTraces.filter(&quot;PhysicalArtifactRealization&quot;).targetElement[filter(&quot;PhysicalComponent&quot;)]%>" domainClass="PhysicalComponent">
+          <subNodeMappings name="PhysicalComponentInCI mapping" deletionDescription="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20PC%20allocation%20in%20CI']" labelDirectEdit="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='rename%20CI']" semanticCandidatesExpression="aql:self.type.outgoingTraces->filter(epbs::PhysicalArtifactRealization).targetElement->select(x | x->filter(pa::PhysicalComponent)->size() > 0)" domainClass="PhysicalComponent">
             <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="aql:self.computeComponentLabel()" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']"/>
               <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']"/>
@@ -186,13 +186,13 @@
               </style>
             </conditionnalStyles>
           </subNodeMappings>
-          <subNodeMappings name="PhysicalLinkInCI mapping" deletionDescription="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20PC%20allocation%20in%20CI']" labelDirectEdit="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='rename%20CI']" semanticCandidatesExpression="&lt;%type.outgoingTraces.filter(&quot;PhysicalArtifactRealization&quot;).targetElement[filter(&quot;PhysicalLink&quot;)]%>" domainClass="PhysicalLink">
+          <subNodeMappings name="PhysicalLinkInCI mapping" deletionDescription="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20PC%20allocation%20in%20CI']" labelDirectEdit="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='rename%20CI']" semanticCandidatesExpression="aql:self.type.outgoingTraces->filter(epbs::PhysicalArtifactRealization).targetElement->select(x | x->filter(cs::PhysicalLink)->size() > 0)" domainClass="PhysicalLink">
             <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="aql:self.computeComponentLabel()" sizeComputationExpression="5" arcWidth="1" arcHeight="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/PhysicalLink.png">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </subNodeMappings>
-          <subNodeMappings name="PhysicalPortInCI mapping" deletionDescription="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20PC%20allocation%20in%20CI']" labelDirectEdit="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='rename%20CI']" semanticCandidatesExpression="&lt;%type.outgoingTraces.filter(&quot;PhysicalArtifactRealization&quot;).targetElement[filter(&quot;PhysicalPort&quot;)]%>" domainClass="PhysicalPort">
+          <subNodeMappings name="PhysicalPortInCI mapping" deletionDescription="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20PC%20allocation%20in%20CI']" labelDirectEdit="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='rename%20CI']" semanticCandidatesExpression="aql:self.type.outgoingTraces->filter(epbs::PhysicalArtifactRealization).targetElement->select(x | x->filter(cs::PhysicalPort)->size() > 0)" domainClass="PhysicalPort">
             <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="aql:self.computeComponentLabel()" sizeComputationExpression="2" arcWidth="1" arcHeight="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/PhysicalPort.png">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -215,7 +215,7 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $container.createCOTSCI() %>">
                 <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
                   <parameters name="context" value="aql:container"/>
-                  <parameters name="scope" value="&lt;% current.representingPartitions.nLast() %>"/>
+                  <parameters name="scope" value="aql:self.representingPartitions->last()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -227,7 +227,7 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $container.createCSCI() %>">
                 <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
                   <parameters name="context" value="aql:container"/>
-                  <parameters name="scope" value="&lt;% current.representingPartitions.nLast() %>"/>
+                  <parameters name="scope" value="aql:self.representingPartitions->last()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -239,7 +239,7 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $container.createHWCI() %>">
                 <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
                   <parameters name="context" value="aql:container"/>
-                  <parameters name="scope" value="&lt;% current.representingPartitions.nLast() %>"/>
+                  <parameters name="scope" value="aql:self.representingPartitions->last()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -251,7 +251,7 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $container.createInterfaceCI() %>">
                 <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
                   <parameters name="context" value="aql:container"/>
-                  <parameters name="scope" value="&lt;% current.representingPartitions.nLast() %>"/>
+                  <parameters name="scope" value="aql:self.representingPartitions->last()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -263,7 +263,7 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $container.createNDICI() %>">
                 <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
                   <parameters name="context" value="aql:container"/>
-                  <parameters name="scope" value="&lt;% current.representingPartitions.nLast() %>"/>
+                  <parameters name="scope" value="aql:self.representingPartitions->last()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -275,7 +275,7 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $container.createPrimeItemCI() %>">
                 <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
                   <parameters name="context" value="aql:container"/>
-                  <parameters name="scope" value="&lt;% current.representingPartitions.nLast() %>"/>
+                  <parameters name="scope" value="aql:self.representingPartitions->last()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -287,19 +287,19 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $container.createSystemCI() %>">
                 <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
                   <parameters name="context" value="aql:container"/>
-                  <parameters name="scope" value="&lt;% current.representingPartitions.nLast() %>"/>
+                  <parameters name="scope" value="aql:self.representingPartitions->last()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Create a new Part allowing to reuse an existing Configuration Item." name="Reuse Configuration Item" precondition="&lt;% !($containerView.isA(&quot;DDiagram&quot;) &amp;&amp; $containerView.getABTarget().isA(&quot;ModellingArchitecture&quot;))%>" containerMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='CI%20container%20mapping']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Insert.gif">
-            <filters precondition="&lt;%!isPreferenceEnabled(&quot;multipart.allowed&quot;)%>" elementsToListen="aql:self.getPreferenceListener()">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Create a new Part allowing to reuse an existing Configuration Item." name="Reuse Configuration Item" precondition="aql:not (containerView.oclIsKindOf(diagram::DDiagram) and containerView.getABTarget().oclIsKindOf(capellacore::ModellingArchitecture))" containerMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='CI%20container%20mapping']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Insert.gif">
+            <filters precondition="aql:not (self.isPreferenceEnabled('multipart.allowed'))" elementsToListen="aql:self.getPreferenceListener()">
               <listeners domainClass="org.polarsys.capella.core.preferences.Listener" featureName="multipart.allowed"/>
             </filters>
             <variable name="container"/>
             <viewVariable name="containerView">
               <subVariables xsi:type="tool:AcceleoVariable" name="diagram" computationExpression="aql:containerView.getDiagramContainer()"/>
-              <subVariables xsi:type="tool:AcceleoVariable" name="containerType" computationExpression="&lt;% $containerView.getABTarget().getComponentType() %>"/>
+              <subVariables xsi:type="tool:AcceleoVariable" name="containerType" computationExpression="aql:containerView.getABTarget().getComponentType()"/>
               <subVariables xsi:type="tool:AcceleoVariable" name="containerTarget" computationExpression="aql:containerView.getABTarget()"/>
             </viewVariable>
             <initialOperation>
@@ -321,7 +321,7 @@
                         </subModelOperations>
                       </subModelOperations>
                     </subModelOperations>
-                    <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% !$containerTarget.isA(&quot;BlockArchitecture&quot;) %>">
+                    <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (containerTarget.oclIsKindOf(cs::BlockArchitecture))">
                       <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerType">
                         <subModelOperations xsi:type="tool:CreateInstance" typeName="cs.Part" referenceName="ownedFeatures" variableName="part">
                           <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%creationService%>"/>
@@ -330,7 +330,7 @@
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$containerView.getDiagramContainer().forceRefresh%>"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.getDiagramContainer().forceRefresh()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -344,15 +344,15 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerType">
                 <subModelOperations xsi:type="tool:ExternalJavaAction" name="selectPC" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
                   <parameters name="context" value="aql:container"/>
-                  <parameters name="scope" value="&lt;% $containerType.getAllRealizablePhysicalArtefacts[! current.eContainer().isA(&quot;PhysicalArchitecture&quot;)]%>"/>
+                  <parameters name="scope" value="aql:containerType.getAllRealizablePhysicalArtefacts()->select(x | not (x.eContainer().isA('PhysicalArchitecture')))"/>
                   <parameters name="resultVariable" value="selection"/>
                   <parameters name="wizardMessage" value="aql:'Select Physical Components, Physical Links and Physical Ports  to allocate to ' + container.type.name + '.'"/>
-                  <parameters name="initialSelection" value="&lt;% $containerType.ownedPhysicalArtifactRealizations.targetElement%>"/>
+                  <parameters name="initialSelection" value="aql:self.void2Null(containerType.ownedPhysicalArtifactRealizations.targetElement)"/>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% ! ($selection == &quot;WIZARD_CANCELED&quot;) %>">
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selection = 'WIZARD_CANCELED')">
                   <subModelOperations xsi:type="tool:For" expression="aql:self.void2Null(selection)">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerType">
-                      <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%!$containerType.ownedPhysicalArtifactRealizations.targetElement.nContains($i)%>">
+                      <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (containerType.ownedPhysicalArtifactRealizations.targetElement->includes(i))">
                         <subModelOperations xsi:type="tool:CreateInstance" typeName="PhysicalArtifactRealization" referenceName="ownedPhysicalArtifactRealizations" variableName="pca">
                           <subModelOperations xsi:type="tool:SetValue" featureName="sourceElement" valueExpression="aql:containerType"/>
                           <subModelOperations xsi:type="tool:SetValue" featureName="targetElement" valueExpression="aql:i"/>
@@ -371,14 +371,14 @@
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool:For" expression="&lt;%$containerType.ownedPhysicalArtifactRealizations.targetElement%>">
-                    <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%!$selection.nContains($i)%>">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$containerType.ownedPhysicalArtifactRealizations[targetElement == $i]%>">
+                  <subModelOperations xsi:type="tool:For" expression="aql:self.void2Null(containerType.ownedPhysicalArtifactRealizations.targetElement)">
+                    <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selection->includes(i))">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerType.ownedPhysicalArtifactRealizations->select(ownedPhysicalArtifactRealization | ownedPhysicalArtifactRealization.targetElement = i)->first()">
                         <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%removeCapellaElement()%>"/>
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$containerView.getDiagramContainer().forceRefresh%>"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.getDiagramContainer().forceRefresh()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -389,7 +389,7 @@
               <subVariables xsi:type="tool:AcceleoVariable" name="diagram" computationExpression="aql:containerView.eContainerOrSelf(diagram::DDiagram)"/>
               <subVariables xsi:type="tool:AcceleoVariable" name="containerType" computationExpression="&lt;% $containerType() %>"/>
               <subVariables xsi:type="tool:AcceleoVariable" name="scope" computationExpression="aql:containerView.getABShowHideComponent()"/>
-              <subVariables xsi:type="tool:AcceleoVariable" name="ownedNodeContainer" computationExpression="&lt;%$containerView.eAllContents().filter(&quot;DNodeContainer&quot;)%>"/>
+              <subVariables xsi:type="tool:AcceleoVariable" name="ownedNodeContainer" computationExpression="aql:self.void2Null(containerView.eAllContents()->filter(diagram::DNodeContainer))"/>
             </viewVariable>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerType">
@@ -398,12 +398,12 @@
                   <parameters name="scope" value="aql:scope"/>
                   <parameters name="resultVariable" value="selection"/>
                   <parameters name="wizardMessage" value="aql:'Select Sub Components to show in ' + container.name + '.'"/>
-                  <parameters name="initialSelection" value="&lt;% getIntersection($ownedNodeContainer[visible].target, $scope) %>"/>
+                  <parameters name="initialSelection" value="aql:self.void2Null(self.getIntersection(ownedNodeContainer->select(x | x.visible).target,scope))"/>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% ! ($selection == &quot;WIZARD_CANCELED&quot;) %>">
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selection = 'WIZARD_CANCELED')">
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container">
                     <subModelOperations xsi:type="tool:For" expression="aql:self.void2Null(self.makeDiff(self.getIntersection((self.makeUnion(ownedNodeContainer->select(x | x.visible).target, diagram.target)),scope), selection))">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $ownedNodeContainer[target == $i] %>">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:ownedNodeContainer->select(x | x.target = i)->first()">
                         <subModelOperations xsi:type="tool:DeleteView"/>
                       </subModelOperations>
                     </subModelOperations>
@@ -417,13 +417,13 @@
                             <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='CI%20container%20mapping']" containerViewExpression="aql:containerView"/>
                           </subModelOperations>
                           <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (self.makeUnion(ownedNodeContainer, containerView))->select(x | (x.target = i.eContainer() or x.target.type = i.eContainer()))->isEmpty()">
-                            <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='CI%20container%20mapping']" containerViewExpression="&lt;%($ownedNodeContainer+$containerView)[(target == $i.eContainer || target.type == $i.eContainer)] %>"/>
+                            <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='CI%20container%20mapping']" containerViewExpression="aql:(self.makeUnion(ownedNodeContainer, containerView))->select(x | (x.target = i.eContainer() or x.target.type = i.eContainer()))->first()"/>
                           </subModelOperations>
                         </subModelOperations>
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$containerView.getDiagramContainer().forceRefresh%>"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.getDiagramContainer().forceRefresh()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -443,12 +443,12 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerType">
                 <subModelOperations xsi:type="tool:ExternalJavaAction" name="selectPhysicalComponent" forceRefresh="true" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
                   <parameters name="context" value="aql:containerType"/>
-                  <parameters name="scope" value="&lt;%$containerType.ownedPhysicalArtifactRealizations.targetElement%>"/>
+                  <parameters name="scope" value="aql:self.void2Null(containerType.ownedPhysicalArtifactRealizations.targetElement)"/>
                   <parameters name="resultVariable" value="selection"/>
                   <parameters name="wizardMessage" value="aql:'Select allocated Physical Components, Physical Links and Physical Ports to show in ' + container.name + '.'"/>
                   <parameters name="initialSelection" value="aql:self.void2Null(self.makeUnion(containerView.getNodesAndNodeListElements().target->filter(pa::PhysicalComponent), containerView.getNodesAndNodeListElements().target->filter(cs::PhysicalLink), containerView.getNodesAndNodeListElements().target->filter(cs::PhysicalPort)))"/>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% ! ($selection == &quot;WIZARD_CANCELED&quot;) %>">
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selection = 'WIZARD_CANCELED')">
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container">
                     <subModelOperations xsi:type="tool:For" expression="aql:containedPhysicalComponent">
                       <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%! $selection.nContains($i.target) %>">
@@ -472,7 +472,7 @@
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$containerView.getDiagramContainer().forceRefresh%>"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.getDiagramContainer().forceRefresh()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -525,7 +525,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:EdgeCreationDescription" documentation="Allocate a Source Constraint to an available Target Capella Element." name="ConstraintElement" precondition="&lt;%!( $preSource.constrainedElements.nContains($preTarget))%>" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ClassCarries.gif">
+            <tools xsi:type="tool_1:EdgeCreationDescription" documentation="Allocate a Source Constraint to an available Target Capella Element." name="ConstraintElement" precondition="aql:not (preSource.constrainedElements->includes(preTarget))" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ClassCarries.gif">
               <edgeMappings href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_ContrainedElements']"/>
               <sourceVariable name="source"/>
               <targetVariable name="target"/>
@@ -550,7 +550,7 @@
             <tools xsi:type="tool:ToolDescription" documentation="Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model." name="Show/Hide Constraints" label="Constraints" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
               <element name="element"/>
               <elementView name="elementView">
-                <subVariables xsi:type="tool:AcceleoVariable" name="constraintsInDiagram" computationExpression="&lt;% getExistingConstraintsFromDiagram($elementView.getDiagramContainer())%>"/>
+                <subVariables xsi:type="tool:AcceleoVariable" name="constraintsInDiagram" computationExpression="aql:self.void2Null(self.getExistingConstraintsFromDiagram(elementView.getDiagramContainer()))"/>
                 <subVariables xsi:type="tool:AcceleoVariable" name="diagram" computationExpression="aql:elementView.eContainerOrSelf(diagram::DDiagram)"/>
               </elementView>
               <initialOperation>
@@ -562,13 +562,13 @@
                     <parameters name="resultVariable" value="selectedConstraints"/>
                     <parameters name="wizardMessage" value="Select Constraints to show."/>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%($selectedConstraints != &quot;WIZARD_CANCELED&quot;)%>">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:(selectedConstraints != 'WIZARD_CANCELED')">
                     <subModelOperations xsi:type="tool:For" expression="aql:self.void2Null(selectedConstraints)">
                       <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%createConstraintWithConstaintedElementInDiagram($i,$diagram,$constraintsInDiagram,true)%>"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool:For" expression="aql:constraintsInDiagram">
-                      <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%! $selectedConstraints.nContains($i)%>">
-                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.getDiagramContainer().getNodesAndNodeListElements()[target == $i]%>">
+                      <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selectedConstraints->includes(i))">
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().getNodesAndNodeListElements()->select(getNodesAndNodeListElement | getNodesAndNodeListElement.target = i)->first()">
                           <subModelOperations xsi:type="tool:DeleteView"/>
                         </subModelOperations>
                       </subModelOperations>
@@ -770,7 +770,7 @@
             <sourceViewVariable name="sourceView"/>
             <targetViewVariable name="targetView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%($sourceView.eContainer(&quot;DDiagram&quot;).getNodesAndNodeListElements() + $sourceView.eContainer(&quot;DDiagram&quot;)).target.nMinimize.ownedFeatures.filter(&quot;Part&quot;)[abstractType == $source]%>">
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:(self.makeUnion(sourceView.eContainerOrSelf(diagram::DDiagram).getNodesAndNodeListElements(), sourceView.eContainerOrSelf(diagram::DDiagram))).target->asSet().ownedFeatures->filter(cs::Part)->select(x | x.abstractType = source)->first()">
                 <subModelOperations xsi:type="tool:MoveElement" newContainerExpression="aql:target" featureName="ownedFeatures"/>
                 <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:source">
                   <subModelOperations xsi:type="tool:MoveElement" newContainerExpression="aql:target" featureName="ownedConfigurationItems"/>
@@ -827,7 +827,7 @@
                     </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.sourceNode.target%>">
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.sourceNode.target">
                   <subModelOperations xsi:type="tool:MoveElement" newContainerExpression="aql:containerView.target" featureName="ownedConfigurationItems"/>
                 </subModelOperations>
               </firstModelOperations>
@@ -853,7 +853,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:EdgeCreationDescription" documentation="Allocate a Source Constraint to an available Target Capella Element." name="ConstraintElement" precondition="&lt;%!( $preSource.constrainedElements.nContains($preTarget))%>" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ClassCarries.gif">
+            <tools xsi:type="tool_1:EdgeCreationDescription" documentation="Allocate a Source Constraint to an available Target Capella Element." name="ConstraintElement" precondition="aql:not (preSource.constrainedElements->includes(preTarget))" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ClassCarries.gif">
               <edgeMappings href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_ContrainedElements']"/>
               <sourceVariable name="source"/>
               <targetVariable name="target"/>
@@ -878,7 +878,7 @@
             <tools xsi:type="tool:ToolDescription" documentation="Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model." name="Show/Hide Constraints" label="Constraints" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
               <element name="element"/>
               <elementView name="elementView">
-                <subVariables xsi:type="tool:AcceleoVariable" name="constraintsInDiagram" computationExpression="&lt;% getExistingConstraintsFromDiagram($elementView.getDiagramContainer())%>"/>
+                <subVariables xsi:type="tool:AcceleoVariable" name="constraintsInDiagram" computationExpression="aql:self.void2Null(self.getExistingConstraintsFromDiagram(elementView.getDiagramContainer()))"/>
                 <subVariables xsi:type="tool:AcceleoVariable" name="diagram" computationExpression="aql:elementView.eContainerOrSelf(diagram::DDiagram)"/>
               </elementView>
               <initialOperation>
@@ -890,13 +890,13 @@
                     <parameters name="resultVariable" value="selectedConstraints"/>
                     <parameters name="wizardMessage" value="Select Constraints to show."/>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%($selectedConstraints != &quot;WIZARD_CANCELED&quot;)%>">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:(selectedConstraints != 'WIZARD_CANCELED')">
                     <subModelOperations xsi:type="tool:For" expression="aql:self.void2Null(selectedConstraints)">
                       <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%createConstraintWithConstaintedElementInDiagram($i,$diagram,$constraintsInDiagram,true)%>"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool:For" expression="aql:constraintsInDiagram">
-                      <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%! $selectedConstraints.nContains($i)%>">
-                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.getDiagramContainer().getNodesAndNodeListElements()[target == $i]%>">
+                      <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selectedConstraints->includes(i))">
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().getNodesAndNodeListElements()->select(getNodesAndNodeListElement | getNodesAndNodeListElement.target = i)->first()">
                           <subModelOperations xsi:type="tool:DeleteView"/>
                         </subModelOperations>
                       </subModelOperations>
