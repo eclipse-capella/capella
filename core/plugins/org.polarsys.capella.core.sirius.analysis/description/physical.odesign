@@ -394,7 +394,7 @@
             </variable>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container.createFunction()%>">
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container.createFunction()">
                 <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
                   <parameters name="context" value="aql:container"/>
                   <parameters name="scope" value="aql:self"/>
@@ -410,7 +410,7 @@
               </variable>
               <viewVariable name="containerView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container.createDuplicateFunction()%>">
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container.createDuplicateFunction()">
                   <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
                     <parameters name="context" value="aql:container"/>
                     <parameters name="scope" value="aql:self"/>
@@ -425,7 +425,7 @@
               </variable>
               <viewVariable name="containerView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container.createGatherFunction()%>">
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container.createGatherFunction()">
                   <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
                     <parameters name="context" value="aql:container"/>
                     <parameters name="scope" value="aql:self"/>
@@ -440,7 +440,7 @@
               </variable>
               <viewVariable name="containerView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container.createRouteFunction()%>">
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container.createRouteFunction()">
                   <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
                     <parameters name="context" value="aql:container"/>
                     <parameters name="scope" value="aql:self"/>
@@ -455,7 +455,7 @@
               </variable>
               <viewVariable name="containerView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container.createSelectFunction()%>">
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container.createSelectFunction()">
                   <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
                     <parameters name="context" value="aql:container"/>
                     <parameters name="scope" value="aql:self"/>
@@ -470,7 +470,7 @@
               </variable>
               <viewVariable name="containerView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container.createSplitFunction()%>">
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container.createSplitFunction()">
                   <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
                     <parameters name="context" value="aql:container"/>
                     <parameters name="scope" value="aql:self"/>
@@ -541,7 +541,7 @@
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container">
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:containerView->filter(diagram::DDiagram)->size() = 1">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="Constraint" referenceName="ownedConstraints">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
                     </subModelOperations>
                   </subModelOperations>
                 </firstModelOperations>
@@ -586,7 +586,7 @@
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:(selectedConstraints != 'WIZARD_CANCELED')">
                     <subModelOperations xsi:type="tool:For" expression="aql:self.void2Null(selectedConstraints)">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%createConstraintWithConstaintedElementInDiagram($i,$diagram,$constraintsInDiagram,true)%>"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createConstraintWithConstaintedElementInDiagram(i,diagram,constraintsInDiagram,true)"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool:For" expression="aql:constraintsInDiagram">
                       <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selectedConstraints->includes(i))">
@@ -596,7 +596,7 @@
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.getDiagramContainer().forceRefresh%>"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().forceRefresh()"/>
                 </firstModelOperations>
               </initialOperation>
             </tools>
@@ -769,44 +769,44 @@
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </borderedNodeMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="18" arcHeight="18" borderSizeComputationExpression="1" labelExpression="&lt;%$view.computeFunctionLabel%>" roundedCorner="true" backgroundStyle="GradientTopToBottom">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="18" arcHeight="18" borderSizeComputationExpression="1" labelExpression="aql:view.computeFunctionLabel()" roundedCorner="true" backgroundStyle="GradientTopToBottom">
             <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xDFB_Function_Border_Green']"/>
             <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xDFB_Function_Green_Label']"/>
             <backgroundColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xDFB_Function_Green_min']"/>
             <foregroundColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xDFB_Function_Green']"/>
           </style>
           <conditionnalStyles predicateExpression="service:isDuplicateFunction()">
-            <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="&lt;%$view.computeFunctionLabel%>" sizeComputationExpression="5" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionKind_Duplicate.png">
+            <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql:view.computeFunctionLabel()" sizeComputationExpression="5" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionKind_Duplicate.png">
               <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xDFB_Function_Border_Green']"/>
               <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xDFB_Function_Green_Label']"/>
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="service:isGatherFunction()">
-            <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="&lt;%$view.computeFunctionLabel%>" sizeComputationExpression="5" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionKind_Gather.png">
+            <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql:view.computeFunctionLabel()" sizeComputationExpression="5" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionKind_Gather.png">
               <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xDFB_Function_Border_Green']"/>
               <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xDFB_Function_Green_Label']"/>
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="service:isRouteFunction()">
-            <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="&lt;%$view.computeFunctionLabel%>" sizeComputationExpression="5" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionKind_Route.png">
+            <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql:view.computeFunctionLabel()" sizeComputationExpression="5" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionKind_Route.png">
               <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xDFB_Function_Border_Green']"/>
               <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xDFB_Function_Green_Label']"/>
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="service:isSelectFunction()">
-            <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="&lt;%$view.computeFunctionLabel%>" sizeComputationExpression="5" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionKind_Select.png">
+            <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql:view.computeFunctionLabel()" sizeComputationExpression="5" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionKind_Select.png">
               <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xDFB_Function_Border_Green']"/>
               <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xDFB_Function_Green_Label']"/>
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="service:isSplitFunction()">
-            <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="&lt;%$view.computeFunctionLabel%>" sizeComputationExpression="5" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionKind_Split.png">
+            <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql:view.computeFunctionLabel()" sizeComputationExpression="5" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionKind_Split.png">
               <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xDFB_Function_Border_Green']"/>
               <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xDFB_Function_Green_Label']"/>
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="service:hasAllocationBlocks()">
-            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="18" arcHeight="18" borderSizeComputationExpression="1" labelExpression="&lt;%$view.computeFunctionLabel%>" roundedCorner="true" backgroundStyle="GradientTopToBottom">
+            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="18" arcHeight="18" borderSizeComputationExpression="1" labelExpression="aql:view.computeFunctionLabel()" roundedCorner="true" backgroundStyle="GradientTopToBottom">
               <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Border_Blue']"/>
               <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_label']"/>
               <backgroundColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_min']"/>
@@ -814,7 +814,7 @@
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="service:isNotLeafAndisAllLeavesFunctionActorAllocated()">
-            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="18" arcHeight="18" borderSizeComputationExpression="1" labelExpression="&lt;%$view.computeFunctionLabel%>" roundedCorner="true" backgroundStyle="GradientTopToBottom">
+            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="18" arcHeight="18" borderSizeComputationExpression="1" labelExpression="aql:view.computeFunctionLabel()" roundedCorner="true" backgroundStyle="GradientTopToBottom">
               <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Border_Blue']"/>
               <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_label']"/>
               <backgroundColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_min']"/>
@@ -832,8 +832,8 @@
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.getDFTarget()">
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.isFunction()">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% current.createFunction()%>">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%allocateToCapability($containerView)%>"/>
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createFunction()">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.allocateToCapability(containerView)"/>
                       <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
                         <parameters name="context" value="aql:container"/>
                         <parameters name="scope" value="aql:self"/>
@@ -849,8 +849,8 @@
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.getDFTarget()">
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.isFunction() or isActorFunction()">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% current.createDuplicateFunction()%>">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%allocateToCapability($containerView)%>"/>
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createDuplicateFunction()">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.allocateToCapability(containerView)"/>
                       <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
                         <parameters name="context" value="aql:container"/>
                         <parameters name="scope" value="aql:self"/>
@@ -866,8 +866,8 @@
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.getDFTarget()">
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.isFunction() or isActorFunction()">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% current.createGatherFunction()%>">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%allocateToCapability($containerView)%>"/>
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createGatherFunction()">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.allocateToCapability(containerView)"/>
                       <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
                         <parameters name="context" value="aql:container"/>
                         <parameters name="scope" value="aql:self"/>
@@ -883,8 +883,8 @@
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.getDFTarget()">
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.isFunction() or isActorFunction()">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% current.createRouteFunction()%>">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%allocateToCapability($containerView)%>"/>
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createRouteFunction()">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.allocateToCapability(containerView)"/>
                       <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
                         <parameters name="context" value="aql:container"/>
                         <parameters name="scope" value="aql:self"/>
@@ -900,8 +900,8 @@
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.getDFTarget()">
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.isFunction() or isActorFunction()">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% current.createSelectFunction()%>">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%allocateToCapability($containerView)%>"/>
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createSelectFunction()">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.allocateToCapability(containerView)"/>
                       <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
                         <parameters name="context" value="aql:container"/>
                         <parameters name="scope" value="aql:self"/>
@@ -917,8 +917,8 @@
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.getDFTarget()">
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.isFunction() or isActorFunction()">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% current.createSplitFunction()%>">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%allocateToCapability($containerView)%>"/>
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createSplitFunction()">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.allocateToCapability(containerView)"/>
                       <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
                         <parameters name="context" value="aql:container"/>
                         <parameters name="scope" value="aql:self"/>
@@ -935,8 +935,8 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container.getRootFunction()">
                 <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.isFunction()">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% current.createActorFunction()%>">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%allocateToCapability($containerView)%>"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createActorFunction()">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.allocateToCapability(containerView)"/>
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.allocateToNewActor()"/>
                     <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
                       <parameters name="context" value="aql:container"/>
@@ -954,7 +954,7 @@
               <sourceViewVariable name="sourceView"/>
               <targetViewVariable name="targetView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$source.createDFFunctionalExchange($sourceView, $targetView)%>"/>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:source.createDFFunctionalExchange(sourceView,targetView)"/>
               </initialOperation>
             </tools>
             <tools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Input Port on the target Function" name="Input Port" precondition="aql:containerView.isValidCreationFunctionInputPort()" nodeMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='PDFB_Function']/@borderedNodeMappings[name='PDFB_Pin']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/InFlowPort.gif">
@@ -963,7 +963,7 @@
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="FunctionInputPort" referenceName="inputs">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
@@ -974,7 +974,7 @@
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="FunctionOutputPort" referenceName="outputs">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
@@ -1002,7 +1002,7 @@
                     <parameters name="visible functions" value="aql:visibleFunctions"/>
                     <parameters name="visible function views" value="aql:visibleFunctionViews"/>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.getDiagramContainer().forceRefresh%>"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().forceRefresh()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -1081,7 +1081,7 @@
                     <parameters name="wizardMessage" value="aql:'Select Exchange Categories and targeted Functions to show in ' + element.name + '.'"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selectedExchangeCategories = 'WIZARD_CANCELED')">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.getDiagramContainer().forceRefresh%>"/>
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().forceRefresh()"/>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
@@ -1151,7 +1151,7 @@
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:If" conditionExpression="aql:(selectedElements != 'WIZARD_CANCELED')">
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.switchFECategories(scope,initialSelection,selectedElements)"/>
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.getDiagramContainer().forceRefresh%>"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().forceRefresh()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -1221,7 +1221,7 @@
             <element name="element"/>
             <newViewContainer name="newContainerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$element.dndDFAbstractFunction($oldSemanticContainer, $newSemanticContainer)%>"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:element.dndDFAbstractFunction(oldSemanticContainer,newSemanticContainer)"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="PDFB Reconnect Function Exchanges" precondition="aql:element.isFunctionalExchangeReconnectable(sourceView.getDiagramContainer(),source,target)" reconnectionKind="RECONNECT_BOTH">
@@ -1231,7 +1231,7 @@
             <targetView name="targetView"/>
             <element name="element"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $element.reconnectFunctionalExchange($source,$target) %>"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:element.reconnectFunctionalExchange(source,target)"/>
             </initialOperation>
             <edgeView name="edgeView"/>
           </ownedTools>
@@ -1244,7 +1244,7 @@
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container">
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:containerView->filter(diagram::DDiagram)->size() = 1">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="Constraint" referenceName="ownedConstraints">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
                     </subModelOperations>
                   </subModelOperations>
                 </firstModelOperations>
@@ -1289,7 +1289,7 @@
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:(selectedConstraints != 'WIZARD_CANCELED')">
                     <subModelOperations xsi:type="tool:For" expression="aql:self.void2Null(selectedConstraints)">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%createConstraintWithConstaintedElementInDiagram($i,$diagram,$constraintsInDiagram,true)%>"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createConstraintWithConstaintedElementInDiagram(i,diagram,constraintsInDiagram,true)"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool:For" expression="aql:constraintsInDiagram">
                       <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selectedConstraints->includes(i))">
@@ -1299,7 +1299,7 @@
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.getDiagramContainer().forceRefresh%>"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().forceRefresh()"/>
                 </firstModelOperations>
               </initialOperation>
             </tools>
@@ -1335,7 +1335,7 @@
             <menuItemDescription xsi:type="tool:OperationAction" name="Create a Functional Chain" precondition="&lt;%isValidFunctionalChainSelection($views)%>" forceRefresh="true">
               <view name="views"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%createFunctionalChain($views)%>">
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createFunctionalChain(views)">
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(fa::FunctionalChain)">
                     <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Data%20Flow%20Blank']/@defaultLayer/@nodeMappings[name='PDFB_FunctionalChainEnd']" containerViewExpression="aql:views->first().getDiagramContainer()"/>
                   </subModelOperations>
@@ -1358,7 +1358,7 @@
                   <parameters name="wizardMessage" value="Select States/Modes to display all its available functions."/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (elements = 'WIZARD_CANCELED')">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.showDFStateModes($elements)%>"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.showDFStateModes(elements)"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -1376,7 +1376,7 @@
                   <parameters name="wizardMessage" value="Select Scenarios to display all involved elements."/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (elements = 'WIZARD_CANCELED')">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.showDFScenarios($elements)%>"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.showDFScenarios(elements)"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -1520,7 +1520,7 @@
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container.createPhysicalComponent()%>">
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container.createPhysicalComponent()">
                 <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
                   <parameters name="context" value="aql:container"/>
                   <parameters name="scope" value="aql:self"/>
@@ -1534,7 +1534,7 @@
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container.createPhysicalComponent()%>">
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container.createPhysicalComponent()">
                 <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
                   <parameters name="context" value="aql:container"/>
                   <parameters name="scope" value="aql:self"/>
@@ -1616,7 +1616,7 @@
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container">
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:containerView->filter(diagram::DDiagram)->size() = 1">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="Constraint" referenceName="ownedConstraints">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
                     </subModelOperations>
                   </subModelOperations>
                 </firstModelOperations>
@@ -1661,7 +1661,7 @@
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:(selectedConstraints != 'WIZARD_CANCELED')">
                     <subModelOperations xsi:type="tool:For" expression="aql:self.void2Null(selectedConstraints)">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%createConstraintWithConstaintedElementInDiagram($i,$diagram,$constraintsInDiagram,true)%>"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createConstraintWithConstaintedElementInDiagram(i,diagram,constraintsInDiagram,true)"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool:For" expression="aql:constraintsInDiagram">
                       <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selectedConstraints->includes(i))">
@@ -1671,7 +1671,7 @@
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.getDiagramContainer().forceRefresh%>"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().forceRefresh()"/>
                 </firstModelOperations>
               </initialOperation>
             </tools>
@@ -1894,43 +1894,43 @@
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </borderedNodeMappings>
-          <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="&lt;%$view.computeFunctionLabel%>" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW">
+          <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="aql:view.computeFunctionLabel()" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW">
             <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']"/>
             <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Label_Green']"/>
             <color xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Green']"/>
           </style>
           <conditionnalStyles predicateExpression="service:isDuplicateFunction()">
-            <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="&lt;%$view.computeFunctionLabel%>" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionDuplicateDiagram.svg">
+            <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql:view.computeFunctionLabel()" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionDuplicateDiagram.svg">
               <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']"/>
               <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Label_Green']"/>
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="service:isGatherFunction()">
-            <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="&lt;%$view.computeFunctionLabel%>" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionGatherDiagram.svg">
+            <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql:view.computeFunctionLabel()" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionGatherDiagram.svg">
               <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']"/>
               <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Label_Green']"/>
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="service:isRouteFunction()">
-            <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="&lt;%$view.computeFunctionLabel%>" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionRouteDiagram.svg">
+            <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql:view.computeFunctionLabel()" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionRouteDiagram.svg">
               <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']"/>
               <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Label_Green']"/>
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="service:isSplitFunction()">
-            <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="&lt;%$view.computeFunctionLabel%>" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionSplitDiagram.svg">
+            <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql:view.computeFunctionLabel()" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionSplitDiagram.svg">
               <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']"/>
               <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Label_Green']"/>
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="service:isSelectFunction()">
-            <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="&lt;%$view.computeFunctionLabel%>" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionSelectDiagram.svg">
+            <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql:view.computeFunctionLabel()" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionSelectDiagram.svg">
               <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']"/>
               <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Label_Green']"/>
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="service:isNotLeaf()">
-            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="&lt;%$view.computeFunctionLabel%>" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW">
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="aql:view.computeFunctionLabel()" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']"/>
               <labelFormat>italic</labelFormat>
               <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Label_Green']"/>
@@ -2358,13 +2358,13 @@
               <viewVariable name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.getABTarget().getComponentType()">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%createComponent(&quot;component&quot;)%>"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createComponent('component')"/>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:component != null">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:component">
                       <subModelOperations xsi:type="tool:SetValue" featureName="nature" valueExpression="aql:nature"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="cs.Part" referenceName="ownedFeatures" variableName="part">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
                       <subModelOperations xsi:type="tool:SetValue" featureName="abstractType" valueExpression="aql:component"/>
                     </subModelOperations>
                   </subModelOperations>
@@ -2397,7 +2397,7 @@
                       <subModelOperations xsi:type="tool:If" conditionExpression="aql:containerTarget.oclIsKindOf(cs::BlockArchitecture)">
                         <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $containerTarget.getContext() %>">
                           <subModelOperations xsi:type="tool:CreateInstance" typeName="cs.Part" referenceName="ownedFeatures" variableName="part">
-                            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
                             <subModelOperations xsi:type="tool:SetValue" featureName="abstractType" valueExpression="aql:i"/>
                           </subModelOperations>
                         </subModelOperations>
@@ -2405,7 +2405,7 @@
                       <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (containerTarget.oclIsKindOf(cs::BlockArchitecture))">
                         <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerType">
                           <subModelOperations xsi:type="tool:CreateInstance" typeName="cs.Part" referenceName="ownedFeatures" variableName="part">
-                            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
                             <subModelOperations xsi:type="tool:SetValue" featureName="abstractType" valueExpression="aql:i"/>
                           </subModelOperations>
                         </subModelOperations>
@@ -2424,12 +2424,12 @@
               <viewVariable name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.eContainerOrSelf(pa::PhysicalArchitecture).ownedPhysicalComponent">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%createComponent(&quot;component&quot;)%>"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createComponent('component')"/>
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:component">
                     <subModelOperations xsi:type="tool:SetValue" featureName="nature" valueExpression="aql:nature"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="cs.Part" referenceName="ownedFeatures" variableName="part">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
                     <subModelOperations xsi:type="tool:SetValue" featureName="abstractType" valueExpression="aql:component"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container">
@@ -2450,11 +2450,11 @@
               <viewVariable name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.getArchitecture()">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%createActor(&quot;actor&quot;)%>"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createActor('actor')"/>
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.getArchitecture().getContext()">
                     <subModelOperations xsi:type="tool:If" conditionExpression="aql:actor != null">
                       <subModelOperations xsi:type="tool:CreateInstance" typeName="cs.Part" referenceName="ownedFeatures" variableName="part">
-                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
                         <subModelOperations xsi:type="tool:SetValue" featureName="abstractType" valueExpression="aql:actor"/>
                       </subModelOperations>
                     </subModelOperations>
@@ -2485,7 +2485,7 @@
                     <subModelOperations xsi:type="tool:For" expression="aql:components">
                       <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$containerType.getArchitecture().getContext()%>">
                         <subModelOperations xsi:type="tool:CreateInstance" typeName="cs.Part" referenceName="ownedFeatures" variableName="part">
-                          <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                          <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
                           <subModelOperations xsi:type="tool:SetValue" featureName="abstractType" valueExpression="aql:i"/>
                         </subModelOperations>
                       </subModelOperations>
@@ -2502,7 +2502,7 @@
             <sourceViewVariable name="sourceView"/>
             <targetViewVariable name="targetView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$source.createABPhysicalLink($sourceView, $targetView)%>"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:source.createABPhysicalLink(sourceView,targetView)"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Physical Port on the target Node Physical Component or Actor." name="Physical Port" precondition="aql:container.getComponentType().nature != pa::PhysicalComponentNature::BEHAVIOR" nodeMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC']/@borderedNodeMappings[name='PAB_Port']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/PhysicalPort.gif">
@@ -2513,7 +2513,7 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerType">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="PhysicalPort" referenceName="ownedFeatures">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -2809,7 +2809,7 @@
                         </subModelOperations>
                       </subModelOperations>
                     </subModelOperations>
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.getDiagramContainer().forceRefresh%>"/>
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().forceRefresh()"/>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
@@ -2828,7 +2828,7 @@
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%($selectedPaths != &quot;WIZARD_CANCELED&quot;)%>">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%showHidePhysicalPaths($selectedPaths, $elementView)%>"/>
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.getDiagramContainer().forceRefresh%>"/>
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().forceRefresh()"/>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
@@ -2975,7 +2975,7 @@
                 <subVariables xsi:type="tool:AcceleoVariable" name="source" computationExpression="aql:self.getAvailableSourcesOfPhysicalPath(views)->first()"/>
               </view>
               <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%createPhysicalPath($views,$source)%>">
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createPhysicalPath(views,source)">
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(cs::PhysicalPath)">
                     <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='PAB_PhysicalPathEnd']" containerViewExpression="aql:views->first().getDiagramContainer()"/>
                   </subModelOperations>
@@ -2997,7 +2997,7 @@
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container">
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:containerView->filter(diagram::DDiagram)->size() = 1">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="Constraint" referenceName="ownedConstraints">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
                     </subModelOperations>
                   </subModelOperations>
                 </firstModelOperations>
@@ -3034,7 +3034,7 @@
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:(selectedConstraints != 'WIZARD_CANCELED')">
                     <subModelOperations xsi:type="tool:For" expression="aql:self.void2Null(selectedConstraints)">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%createConstraintWithConstaintedElementInDiagram($i,$diagram,$constraintsInDiagram,true)%>"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createConstraintWithConstaintedElementInDiagram(i,diagram,constraintsInDiagram,true)"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool:For" expression="aql:constraintsInDiagram">
                       <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selectedConstraints->includes(i))">
@@ -3044,7 +3044,7 @@
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.getDiagramContainer().forceRefresh%>"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().forceRefresh()"/>
                 </firstModelOperations>
               </initialOperation>
             </tools>
@@ -3089,7 +3089,7 @@
             </targetView>
             <element name="element"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$element.reconnectABPhysicalLinkSource($edgeView, $sourceView, $targetView)%>"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:element.reconnectABPhysicalLinkSource(edgeView,sourceView,targetView)"/>
             </initialOperation>
             <edgeView name="edgeView"/>
           </ownedTools>
@@ -3105,7 +3105,7 @@
             </targetView>
             <element name="element"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$element.reconnectABPhysicalLinkTarget($edgeView, $sourceView, $targetView)%>"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:element.reconnectABPhysicalLinkTarget(edgeView,sourceView,targetView)"/>
             </initialOperation>
             <edgeView name="edgeView"/>
           </ownedTools>
@@ -3185,12 +3185,12 @@
               <viewVariable name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.eContainerOrSelf(pa::PhysicalArchitecture).ownedPhysicalComponent">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%createComponent(&quot;component&quot;)%>"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createComponent('component')"/>
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:component">
                     <subModelOperations xsi:type="tool:SetValue" featureName="nature" valueExpression="aql:nature"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="cs.Part" referenceName="ownedFeatures" variableName="part">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
                     <subModelOperations xsi:type="tool:SetValue" featureName="abstractType" valueExpression="aql:component"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container">
@@ -3210,13 +3210,13 @@
               <viewVariable name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.getABTarget().getComponentType()">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%createComponent(&quot;component&quot;)%>"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createComponent('component')"/>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:component != null">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:component">
                       <subModelOperations xsi:type="tool:SetValue" featureName="nature" valueExpression="aql:nature"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="cs.Part" referenceName="ownedFeatures" variableName="part">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
                       <subModelOperations xsi:type="tool:SetValue" featureName="abstractType" valueExpression="aql:component"/>
                     </subModelOperations>
                   </subModelOperations>
@@ -3249,7 +3249,7 @@
                       <subModelOperations xsi:type="tool:If" conditionExpression="aql:containerTarget.oclIsKindOf(cs::BlockArchitecture)">
                         <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $containerTarget.getContext() %>">
                           <subModelOperations xsi:type="tool:CreateInstance" typeName="cs.Part" referenceName="ownedFeatures" variableName="part">
-                            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
                             <subModelOperations xsi:type="tool:SetValue" featureName="abstractType" valueExpression="aql:i"/>
                           </subModelOperations>
                         </subModelOperations>
@@ -3257,7 +3257,7 @@
                       <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (containerTarget.oclIsKindOf(cs::BlockArchitecture))">
                         <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerType">
                           <subModelOperations xsi:type="tool:CreateInstance" typeName="cs.Part" referenceName="ownedFeatures" variableName="part">
-                            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
                             <subModelOperations xsi:type="tool:SetValue" featureName="abstractType" valueExpression="aql:i"/>
                           </subModelOperations>
                         </subModelOperations>
@@ -3279,7 +3279,7 @@
               <sourceViewVariable name="sourceView"/>
               <targetViewVariable name="targetView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$source.createABComponentExchange($sourceView, $targetView)%>"/>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:source.createABComponentExchange(sourceView,targetView)"/>
               </initialOperation>
             </tools>
             <tools xsi:type="tool_1:EdgeCreationDescription" documentation="[Singleton Components] Creates a Component Exchange of kind FLOW between the Source and Target Components. When necessary (for example when used to relate two sub components), Delegation relationships are also created. This tool can be used directly from / to Component or from / to Component Ports." name="Component Exchange with Delegations" precondition="aql:self.isValidCreationPABComponentExchange(preSourceView,preTargetView)" elementsToSelect="var:result" edgeMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='PAB_Exchange']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Connection.gif" extraSourceMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_Actor'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_Deployment']" extraTargetMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_Actor'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_Deployment']" connectionStartPrecondition="aql:self.isValidCreationPABComponentExchange(preSourceView)">
@@ -3291,7 +3291,7 @@
               <sourceViewVariable name="sourceView"/>
               <targetViewVariable name="targetView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%current.createABComponentExchangeThroughDelegation($sourceView, $targetView)%>"/>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createABComponentExchangeThroughDelegation(sourceView,targetView)"/>
               </initialOperation>
             </tools>
             <tools xsi:type="tool_1:EdgeCreationDescription" documentation="[Reusable Components] Creates a Component Exchange of kind FLOW between the Source and Target Parts. Component Ports are created automatically if the Source and / or Target are Parts instead of Ports." name="Component Exchange with ports" precondition="aql:self.isValidCreationPABComponentExchange(preSourceView,preTargetView)" elementsToSelect="var:result" edgeMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='PAB_Exchange']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Connection.gif" extraSourceMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_Actor'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_Deployment']" extraTargetMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_Actor'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_Deployment']" connectionStartPrecondition="aql:self.isValidCreationPABComponentExchange(preSourceView)">
@@ -3303,7 +3303,7 @@
               <sourceViewVariable name="sourceView"/>
               <targetViewVariable name="targetView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$source.createABComponentExchange($sourceView, $targetView)%>"/>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:source.createABComponentExchange(sourceView,targetView)"/>
               </initialOperation>
             </tools>
             <tools xsi:type="tool_1:EdgeCreationDescription" documentation="[Reusable Components] Creates a Component Exchange of kind ASSEMBLY between the Source Part and Target Parts." name="Component Exchange without ports" precondition="&lt;%isValidCreationPABComponentExchangeWithoutPorts($preSourceView, $preTargetView)%>" edgeMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='PAB_Exchange']" extraSourceMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_Actor'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_Deployment']" extraTargetMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_PC'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_Actor'] //@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_Deployment']" connectionStartPrecondition="&lt;%isValidCreationPABComponentExchangeWithoutPorts($preSourceView)%>">
@@ -3336,7 +3336,7 @@
               <sourceViewVariable name="sourceView"/>
               <targetViewVariable name="targetView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$source.createABDelegation($sourceView, $targetView)%>"/>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:source.createABDelegation(sourceView,targetView)"/>
               </initialOperation>
             </tools>
           </ownedTools>
@@ -3351,7 +3351,7 @@
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="ComponentPort" referenceName="ownedFeatures" variableName="port">
                     <subModelOperations xsi:type="tool:SetValue" featureName="kind" valueExpression="FLOW"/>
                     <subModelOperations xsi:type="tool:SetValue" featureName="orientation" valueExpression="IN"/>
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
@@ -3366,7 +3366,7 @@
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="ComponentPort" referenceName="ownedFeatures" variableName="port">
                     <subModelOperations xsi:type="tool:SetValue" featureName="kind" valueExpression="FLOW"/>
                     <subModelOperations xsi:type="tool:SetValue" featureName="orientation" valueExpression="OUT"/>
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
@@ -3381,7 +3381,7 @@
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="ComponentPort" referenceName="ownedFeatures" variableName="port">
                     <subModelOperations xsi:type="tool:SetValue" featureName="kind" valueExpression="FLOW"/>
                     <subModelOperations xsi:type="tool:SetValue" featureName="orientation" valueExpression="INOUT"/>
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
@@ -3395,7 +3395,7 @@
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerType">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="ComponentPort" referenceName="ownedFeatures" variableName="port">
                     <subModelOperations xsi:type="tool:SetValue" featureName="kind" valueExpression="STANDARD"/>
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
@@ -3636,7 +3636,7 @@
                         </subModelOperations>
                       </subModelOperations>
                     </subModelOperations>
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.getDiagramContainer().forceRefresh%>"/>
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().forceRefresh()"/>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
@@ -3733,8 +3733,8 @@
               </variable>
               <viewVariable name="containerView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $containerType.getRootFunction().createFunction() %>">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%allocateToComponent($containerType)%>"/>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerType.getRootFunction().createFunction()">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.allocateToComponent(containerType)"/>
                   <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
                     <parameters name="context" value="aql:container"/>
                     <parameters name="scope" value="aql:self"/>
@@ -3748,8 +3748,8 @@
               </variable>
               <viewVariable name="containerView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $containerType.getRootFunction().createDuplicateFunction() %>">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%allocateToComponent($containerType)%>"/>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerType.getRootFunction().createDuplicateFunction()">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.allocateToComponent(containerType)"/>
                   <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
                     <parameters name="context" value="aql:container"/>
                     <parameters name="scope" value="aql:self"/>
@@ -3763,8 +3763,8 @@
               </variable>
               <viewVariable name="containerView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $containerType.getRootFunction().createGatherFunction() %>">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%allocateToComponent($containerType)%>"/>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerType.getRootFunction().createGatherFunction()">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.allocateToComponent(containerType)"/>
                   <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
                     <parameters name="context" value="aql:container"/>
                     <parameters name="scope" value="aql:self"/>
@@ -3779,7 +3779,7 @@
               <viewVariable name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $containerType.getRootFunction().createRouteFunction() %>">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%allocateToComponent($containerType)%>"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.allocateToComponent(containerType)"/>
                   <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
                     <parameters name="context" value="aql:container"/>
                     <parameters name="scope" value="aql:self"/>
@@ -3793,8 +3793,8 @@
               </variable>
               <viewVariable name="containerView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $containerType.getRootFunction().createSelectFunction() %>">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%allocateToComponent($containerType)%>"/>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerType.getRootFunction().createSelectFunction()">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.allocateToComponent(containerType)"/>
                   <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
                     <parameters name="context" value="aql:container"/>
                     <parameters name="scope" value="aql:self"/>
@@ -3809,7 +3809,7 @@
               <viewVariable name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $containerType.getRootFunction().createSplitFunction() %>">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%allocateToComponent($containerType)%>"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.allocateToComponent(containerType)"/>
                   <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
                     <parameters name="context" value="aql:container"/>
                     <parameters name="scope" value="aql:self"/>
@@ -3825,7 +3825,7 @@
               <sourceViewVariable name="sourceView"/>
               <targetViewVariable name="targetView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$source.createABFunctionalExchange($sourceView, $targetView)%>"/>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:source.createABFunctionalExchange(sourceView,targetView)"/>
               </initialOperation>
             </tools>
             <tools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Function Input Port on the target Function." name="Input Port" precondition="aql:containerView.isValidCreationFunctionInputPort()" nodeMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='PAB_PhysicalFunction']/@borderedNodeMappings[name='PAB_Pin']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/InFlowPort.gif">
@@ -3834,7 +3834,7 @@
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="FunctionInputPort" referenceName="inputs">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
@@ -3845,7 +3845,7 @@
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="FunctionOutputPort" referenceName="outputs">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
@@ -3887,7 +3887,7 @@
                           <subModelOperations xsi:type="tool:DeleteView"/>
                         </subModelOperations>
                         <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerType.ownedFunctionalAllocation->select(x | x.targetElement = i)->first()">
-                          <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%removeCapellaElement()%>"/>
+                          <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.removeCapellaElement()"/>
                         </subModelOperations>
                       </subModelOperations>
                     </subModelOperations>
@@ -4048,7 +4048,7 @@
                         </subModelOperations>
                       </subModelOperations>
                     </subModelOperations>
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.getDiagramContainer().forceRefresh%>"/>
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().forceRefresh()"/>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
@@ -4113,7 +4113,7 @@
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:(selectedElements != 'WIZARD_CANCELED')">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.switchFECategories(scope,initialSelection,selectedElements)"/>
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.getDiagramContainer().forceRefresh%>"/>
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().forceRefresh()"/>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
@@ -4144,7 +4144,7 @@
             <targetView name="targetView"/>
             <element name="element"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $element.reconnectFunctionalExchange($source,$target) %>"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:element.reconnectFunctionalExchange(source,target)"/>
             </initialOperation>
             <edgeView name="edgeView"/>
           </ownedTools>
@@ -4175,7 +4175,7 @@
             <menuItemDescription xsi:type="tool:OperationAction" name="Create a Functional Chain" precondition="&lt;%isValidFunctionalChainSelection($views)%>" forceRefresh="true">
               <view name="views"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%createFunctionalChain($views)%>">
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createFunctionalChain(views)">
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(fa::FunctionalChain)">
                     <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='PAB_FunctionalChainEnd']" containerViewExpression="aql:views->first().getDiagramContainer()"/>
                   </subModelOperations>
@@ -4198,7 +4198,7 @@
                   <parameters name="wizardMessage" value="Select States/Modes to display all its available functions."/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (elements = 'WIZARD_CANCELED')">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.showABStateModes($elements)%>"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.showABStateModes(elements)"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -4216,7 +4216,7 @@
                   <parameters name="wizardMessage" value="Select Scenarios to display all involved elements."/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (elements = 'WIZARD_CANCELED')">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.showABScenarios($elements)%>"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.showABScenarios(elements)"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -4499,7 +4499,7 @@
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.getDiagramContainer().forceRefresh%>"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().forceRefresh()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -4531,7 +4531,7 @@
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.getDiagramContainer().forceRefresh%>"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().forceRefresh()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -4575,7 +4575,7 @@
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container">
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:containerView->filter(diagram::DDiagram)->size() = 1">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="Constraint" referenceName="ownedConstraints">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
                     </subModelOperations>
                   </subModelOperations>
                 </firstModelOperations>
@@ -4620,7 +4620,7 @@
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:(selectedConstraints != 'WIZARD_CANCELED')">
                     <subModelOperations xsi:type="tool:For" expression="aql:self.void2Null(selectedConstraints)">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%createConstraintWithConstaintedElementInDiagram($i,$diagram,$constraintsInDiagram,true)%>"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createConstraintWithConstaintedElementInDiagram(i,diagram,constraintsInDiagram,true)"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool:For" expression="aql:constraintsInDiagram">
                       <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selectedConstraints->includes(i))">
@@ -4630,7 +4630,7 @@
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.getDiagramContainer().forceRefresh%>"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().forceRefresh()"/>
                 </firstModelOperations>
               </initialOperation>
             </tools>
