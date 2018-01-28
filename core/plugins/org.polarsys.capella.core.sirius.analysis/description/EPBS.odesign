@@ -346,7 +346,7 @@
                   <parameters name="context" value="aql:container"/>
                   <parameters name="scope" value="&lt;% $containerType.getAllRealizablePhysicalArtefacts[! current.eContainer().isA(&quot;PhysicalArchitecture&quot;)]%>"/>
                   <parameters name="resultVariable" value="selection"/>
-                  <parameters name="wizardMessage" value="Select Physical Components, Physical Links and Physical Ports  to allocate to &lt;%$container.type.name%>."/>
+                  <parameters name="wizardMessage" value="aql:'Select Physical Components, Physical Links and Physical Ports  to allocate to ' + container.type.name + '.'"/>
                   <parameters name="initialSelection" value="&lt;% $containerType.ownedPhysicalArtifactRealizations.targetElement%>"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% ! ($selection == &quot;WIZARD_CANCELED&quot;) %>">
@@ -397,7 +397,7 @@
                   <parameters name="context" value="aql:container"/>
                   <parameters name="scope" value="aql:scope"/>
                   <parameters name="resultVariable" value="selection"/>
-                  <parameters name="wizardMessage" value="Select Sub Components to show in &lt;%$container.name%>."/>
+                  <parameters name="wizardMessage" value="aql:'Select Sub Components to show in ' + container.name + '.'"/>
                   <parameters name="initialSelection" value="&lt;% getIntersection($ownedNodeContainer[visible].target, $scope) %>"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% ! ($selection == &quot;WIZARD_CANCELED&quot;) %>">
@@ -445,7 +445,7 @@
                   <parameters name="context" value="aql:containerType"/>
                   <parameters name="scope" value="&lt;%$containerType.ownedPhysicalArtifactRealizations.targetElement%>"/>
                   <parameters name="resultVariable" value="selection"/>
-                  <parameters name="wizardMessage" value="Select allocated Physical Components, Physical Links and Physical Ports to show in &lt;%$container.name%>."/>
+                  <parameters name="wizardMessage" value="aql:'Select allocated Physical Components, Physical Links and Physical Ports to show in ' + container.name + '.'"/>
                   <parameters name="initialSelection" value="&lt;% $containerView.getNodesAndNodeListElements().target.filter(&quot;PhysicalComponent&quot;) +  $containerView.getNodesAndNodeListElements().target.filter(&quot;PhysicalLink&quot;)  +  $containerView.getNodesAndNodeListElements().target.filter(&quot;PhysicalPort&quot;) %>"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% ! ($selection == &quot;WIZARD_CANCELED&quot;) %>">

@@ -1316,7 +1316,7 @@
                   <parameters name="context" value="aql:elementView"/>
                   <parameters name="scope" value="aql:self.void2Null(elementView.getAvailableAbstractFunctionsToInsertInDataFlowBlank())"/>
                   <parameters name="resultVariable" value="selectedFunctions"/>
-                  <parameters name="wizardMessage" value="Select Functions and ControlNodes to show in &lt;%$element.name%>."/>
+                  <parameters name="wizardMessage" value="aql:'Select Functions and ControlNodes to show in ' + element.name + '.'"/>
                   <parameters name="initialSelection" value="aql:visibleFunctions"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% ! ($selectedFunctions == &quot;WIZARD_CANCELED&quot;) %>">
@@ -1345,7 +1345,7 @@
                     <parameters name="scope" value="aql:scope"/>
                     <parameters name="initialSelection" value="aql:displayedExchanges"/>
                     <parameters name="resultVariable" value="selectedExchanges"/>
-                    <parameters name="wizardMessage" value="Select Functional Exchanges to show in &lt;%$element.name%>."/>
+                    <parameters name="wizardMessage" value="aql:'Select Functional Exchanges to show in ' + element.name + '.'"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%($selectedExchanges != &quot;WIZARD_CANCELED&quot;)%>">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.showDFFunctionalExchange(scope,selectedExchanges)"/>
@@ -1367,7 +1367,7 @@
                     <parameters name="context" value="aql:element"/>
                     <parameters name="scope" value="&lt;% $elementView.target.getAvailablePins($elementView.getDiagramContainer(), $elementView)%>"/>
                     <parameters name="resultVariable" value="selection"/>
-                    <parameters name="wizardMessage" value="Select Ports to show in &lt;%$element.name%>."/>
+                    <parameters name="wizardMessage" value="aql:'Select Ports to show in ' + element.name + '.'"/>
                     <parameters name="initialSelection" value="aql:displayedPorts"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% ! ($selection == &quot;WIZARD_CANCELED&quot;) %>">
@@ -1402,7 +1402,7 @@
                   <subModelOperations xsi:type="tool:ExternalJavaAction" name="selectExchangeCategories" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromCheckBoxWizard">
                     <parameters name="context" value="aql:elementView"/>
                     <parameters name="resultVariable" value="selectedExchangeCategories"/>
-                    <parameters name="wizardMessage" value="Select Exchange Categories and targeted Functions to show in &lt;%$element.name%>."/>
+                    <parameters name="wizardMessage" value="aql:'Select Exchange Categories and targeted Functions to show in ' + element.name + '.'"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% ! ($selectedExchangeCategories == &quot;WIZARD_CANCELED&quot;) %>">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.getDiagramContainer().forceRefresh%>"/>
@@ -1425,7 +1425,7 @@
                   <parameters name="scope" value="&lt;%getFunctionalChainsToInsert($containerView, $container.getAllFunctionalChain())%>"/>
                   <parameters name="initialSelection" value="aql:initialSelection"/>
                   <parameters name="resultVariable" value="selectedFunctionalChains"/>
-                  <parameters name="wizardMessage" value="Select Functional Chains to show in &lt;%$container.name%>."/>
+                  <parameters name="wizardMessage" value="aql:'Select Functional Chains to show in ' + container.name + '.'"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% ! ($selectedFunctionalChains == &quot;WIZARD_CANCELED&quot;) %>">
                   <subModelOperations xsi:type="tool:For" expression="aql:initialSelection">
@@ -1717,7 +1717,7 @@
                   <parameters name="scope" value="aql:container.getAllFunctionalChain()"/>
                   <parameters name="multiple" value="true"/>
                   <parameters name="resultVariable" value="selectedFunctionalChains"/>
-                  <parameters name="wizardMessage" value="Select FunctionChains to display all involved elements in &lt;%$container.name%>."/>
+                  <parameters name="wizardMessage" value="aql:'Select FunctionChains to display all involved elements in ' + container.name + '.'"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% ! ($selectedFunctionalChains == &quot;WIZARD_CANCELED&quot;) %>">
                   <subModelOperations xsi:type="tool:ExternalJavaAction" name="showHideRelatedElements" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.ShowHideRelatedElements">
@@ -2566,7 +2566,7 @@
                   <parameters name="context" value="aql:container"/>
                   <parameters name="scope" value="aql:scope"/>
                   <parameters name="resultVariable" value="selection"/>
-                  <parameters name="wizardMessage" value="Select Sub Components to show in &lt;%$container.name%>."/>
+                  <parameters name="wizardMessage" value="aql:'Select Sub Components to show in ' + container.name + '.'"/>
                   <parameters name="initialSelection" value="&lt;% getIntersection($ownedNodeContainer[visible].target, $scope) %>"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% ! ($selection == &quot;WIZARD_CANCELED&quot;) %>">
@@ -2613,7 +2613,7 @@
                   <parameters name="context" value="aql:container"/>
                   <parameters name="scope" value="aql:scope"/>
                   <parameters name="resultVariable" value="selection"/>
-                  <parameters name="wizardMessage" value="Select Sub Components to show in &lt;%$container.name%>."/>
+                  <parameters name="wizardMessage" value="aql:'Select Sub Components to show in ' + container.name + '.'"/>
                   <parameters name="initialSelection" value="aql:componentsInDiagram"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% ! ($selection == &quot;WIZARD_CANCELED&quot;) %>">
@@ -2652,7 +2652,7 @@
                   <parameters name="context" value="aql:container"/>
                   <parameters name="scope" value="aql:scope"/>
                   <parameters name="resultVariable" value="selection"/>
-                  <parameters name="wizardMessage" value="Select Sub Components to show in &lt;%$container.name%>."/>
+                  <parameters name="wizardMessage" value="aql:'Select Sub Components to show in ' + container.name + '.'"/>
                   <parameters name="initialSelection" value="&lt;% getIntersection($ownedNodeContainer[visible].target, $scope) %>"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% ! ($selection == &quot;WIZARD_CANCELED&quot;) %>">
@@ -2701,7 +2701,7 @@
                     <parameters name="scope" value="aql:self.getAvailableConnectionsToInsert()"/>
                     <parameters name="initialSelection" value="aql:displayedExchanges"/>
                     <parameters name="resultVariable" value="selectedExchanges"/>
-                    <parameters name="wizardMessage" value="Select Connections to show in &lt;%$element.name%>."/>
+                    <parameters name="wizardMessage" value="aql:'Select Connections to show in ' + element.name + '.'"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%($selectedExchanges != &quot;WIZARD_CANCELED&quot;)%>">
                     <subModelOperations xsi:type="tool:For" expression="aql:self.void2Null(selectedExchanges)">
@@ -2814,7 +2814,7 @@
                     <parameters name="scope" value="aql:self.void2Null(self.getAvailablePhysicalLinksToInsert(diagram))"/>
                     <parameters name="initialSelection" value="aql:displayedLinks"/>
                     <parameters name="resultVariable" value="selectedExchanges"/>
-                    <parameters name="wizardMessage" value="Select Physical Links to show in &lt;%$element.name%>."/>
+                    <parameters name="wizardMessage" value="aql:'Select Physical Links to show in ' + element.name + '.'"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%($selectedExchanges != &quot;WIZARD_CANCELED&quot;)%>">
                     <subModelOperations xsi:type="tool:For" expression="aql:self.void2Null(selectedExchanges)">
@@ -2944,7 +2944,7 @@
                   <parameters name="context" value="aql:element"/>
                   <parameters name="scope" value="&lt;% $elementView.target.getComponentType().ownedFeatures.filter(&quot;Port&quot;)%>"/>
                   <parameters name="resultVariable" value="selection"/>
-                  <parameters name="wizardMessage" value="Select Ports to show in &lt;%$element.name%>."/>
+                  <parameters name="wizardMessage" value="aql:'Select Ports to show in ' + element.name + '.'"/>
                   <parameters name="initialSelection" value="aql:displayedPorts"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% ! ($selection == &quot;WIZARD_CANCELED&quot;) %>">
@@ -3324,7 +3324,7 @@
                   <parameters name="context" value="aql:containerType"/>
                   <parameters name="scope" value="aql:self.void2Null(containerType.getAvailableFunctionalAllocation())"/>
                   <parameters name="resultVariable" value="selection"/>
-                  <parameters name="wizardMessage" value="Select Functions to allocate to &lt;%$container.type.name%>."/>
+                  <parameters name="wizardMessage" value="aql:'Select Functions to allocate to ' + container.type.name + '.'"/>
                   <parameters name="initialSelection" value="&lt;% $containerType.ownedFunctionalAllocation.targetElement %>"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% ! ($selection == &quot;WIZARD_CANCELED&quot;) %>">
@@ -3373,7 +3373,7 @@
                     <parameters name="scope" value="aql:container.getShowableAllocatedFunctions(containerView)"/>
                     <parameters name="initialSelection" value="aql:visibleFunctions"/>
                     <parameters name="resultVariable" value="selectedFunctions"/>
-                    <parameters name="wizardMessage" value="Select allocated Functions to show in &lt;%$container.name%>."/>
+                    <parameters name="wizardMessage" value="aql:'Select allocated Functions to show in ' + container.name + '.'"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% ! ($selectedFunctions == &quot;WIZARD_CANCELED&quot;) %>">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.insertRemoveAllocatedFunctions(selectedFunctions)"/>
@@ -3419,7 +3419,7 @@
                   <parameters name="scope" value="&lt;%getFunctionalChainsToInsert($containerView, $container.getAllFunctionalChain())%>"/>
                   <parameters name="initialSelection" value="aql:initialSelection"/>
                   <parameters name="resultVariable" value="selectedFunctionalChains"/>
-                  <parameters name="wizardMessage" value="Select Functional Chains to show in &lt;%$container.name%>."/>
+                  <parameters name="wizardMessage" value="aql:'Select Functional Chains to show in ' + container.name + '.'"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% ! ($selectedFunctionalChains == &quot;WIZARD_CANCELED&quot;) %>">
                   <subModelOperations xsi:type="tool:For" expression="aql:initialSelection">
@@ -3452,7 +3452,7 @@
                     <parameters name="scope" value="aql:self.getAvailableFunctionalExchangesToInsertInArchitectureBlank()"/>
                     <parameters name="initialSelection" value="aql:displayedExchanges"/>
                     <parameters name="resultVariable" value="selectedExchanges"/>
-                    <parameters name="wizardMessage" value="Select Functional Exchanges to show in &lt;%$element.name%>."/>
+                    <parameters name="wizardMessage" value="aql:'Select Functional Exchanges to show in ' + element.name + '.'"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%($selectedExchanges != &quot;WIZARD_CANCELED&quot;)%>">
                     <subModelOperations xsi:type="tool:For" expression="aql:self.void2Null(selectedExchanges)">
@@ -3515,7 +3515,7 @@
                     <parameters name="context" value="aql:element"/>
                     <parameters name="scope" value="&lt;% $elementView.target.getAvailablePins($elementView.getDiagramContainer(), $elementView)%>"/>
                     <parameters name="resultVariable" value="selection"/>
-                    <parameters name="wizardMessage" value="Select Ports to show in &lt;%$element.name%>."/>
+                    <parameters name="wizardMessage" value="aql:'Select Ports to show in ' + element.name + '.'"/>
                     <parameters name="initialSelection" value="aql:displayedPorts"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% ! ($selection == &quot;WIZARD_CANCELED&quot;) %>">
