@@ -1,0 +1,32 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _0NxrkAXGEeiIZY68FD204w,_D7hzUAXGEeiIZY68FD204w,_AUQxsAXGEeiIZY68FD204w,_YtxAQAXTEeiIZY68FD204w
+Element-Name: RefreshAllSubRepresentations_Empty
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _n0g6wAXEEeiIZY68FD204w
+Runtime-Version: 2.3.0.201801290011
+Save-Time: 1/30/18 4:48 PM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+Test the "Refresh All Sub Representations" in case that the model does not contain any diagram.
+
+In that case a dialog is showed up to inform the user that "there is not any representation to refresh". 
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+with [get-view "Capella Project Explorer" | get-tree] {
+    select "RefreshAllSubRepresentation_Empty/RefreshAllSubRepresentation_Empty.aird" | double-click
+    select "RefreshAllSubRepresentation_Empty/RefreshAllSubRepresentation_Empty.aird" | get-menu 
+        -path "Refresh All Sub Representations" | click
+}
+get-window "No Representation To Refresh" | get-label "There is not any representation under the selected element." 
+    | get-property caption | equals "There is not any representation under the selected element." | verify-true
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

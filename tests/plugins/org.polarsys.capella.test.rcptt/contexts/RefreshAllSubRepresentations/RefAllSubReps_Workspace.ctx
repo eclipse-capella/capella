@@ -1,0 +1,28 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Context-Type: org.eclipse.rcptt.ctx.workspace
+Element-Name: RefAllSubReps_Workspace
+Element-Type: context
+Element-Version: 2.0
+Id: _AUQxsAXGEeiIZY68FD204w
+Runtime-Version: 2.3.0.201801290011
+Save-Time: 1/30/18 4:33 PM
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+The default Workspace state for each test of Refresh  All Sub Representations
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.q7.content-3d2e0690-ce48-3609-83e0-c704d49f1eaf
+Content-Type: q7/binary
+Entry-Name: .q7.content
+
+UEsDBBQACAgIAAAAIQAAAAAAAAAAAAAAAAAIAAkALmNvbnRlbnRVVAUAAQAAAACVkF9LwzAUxd8Fv0PI
+syZziIzSOmo3ZbCBbsimLyOmd10wf0pyZ+u3Nx20PopvN/f+zjnkpNPWaPIFPihnM3rDRpSAla5Utsro
+CQ/XEzq9v7xIna8YSK3qAMzLGpFJbFnj/GeohYRk20+FswgtktaoZPAdd74xyYYk7jN6RKwTzpumYc5U
+LJrz3WrRI39kDfKe6eRnjkeODxwlVphIr+GQa705fayhDvvt71mVGd3nry9tyHdPc1CL97e7yeNsPLpt
+4rGyzkP58F1oEP5ZIIKPPylEDVqLwhkjbLlUFpauYkc0+oqsZvMY4Tye3zTWRkgquz4s8q5E/t8Wo+gH
+UEsHCATcszT9AAAAogEAAFBLAQIUABQACAgIAAAAIQAE3LM0/QAAAKIBAAAIAAkAAAAAAAAAAAAAAAAA
+AAAuY29udGVudFVUBQABAAAAAFBLBQYAAAAAAQABAD8AAAA8AQAAAAA=
+------=_.q7.content-3d2e0690-ce48-3609-83e0-c704d49f1eaf--

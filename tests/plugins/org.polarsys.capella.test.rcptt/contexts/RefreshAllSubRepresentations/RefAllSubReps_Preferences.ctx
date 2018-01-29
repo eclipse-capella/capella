@@ -1,0 +1,27 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Context-Type: org.eclipse.rcptt.ctx.preferences
+Element-Name: RefAllSubReps_Preferences
+Element-Type: context
+Element-Version: 2.0
+Id: _0NxrkAXGEeiIZY68FD204w
+Runtime-Version: 2.3.0.201801290011
+Save-Time: 1/30/18 3:08 PM
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+The default Preferences state for each test of Refresh  All Sub Representations
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.q7.content-3d2e0690-ce48-3609-83e0-c704d49f1eaf
+Content-Type: q7/binary
+Entry-Name: .q7.content
+
+UEsDBBQACAgIAAAAIQAAAAAAAAAAAAAAAAAIAAkALmNvbnRlbnRVVAUAAQAAAACFkMFqAjEQQO8F/yHM
+vclWSpHFVERb8dCy2Iv2IjbOrsFsEpLZbj6/saDdW2/D8OY9mOkstYZ9Y4jaWQkPvACGVrmjto2Ejur7
+CcyeR3dTFxqOymgfkQflibiixH3AGkM+wFhWf/PCWcJELLW6vLnHF3eu2VjmvYQTkS+F6Pueu7bhOSC2
+b+sr8m/vJrhSF8EvKTIpBiQwe2hRwgbruTEf3dcGfdxXQ0AfJeyL9xTO8+3qBfX6c/c0eV2Oi8cemDJ4
+sNWwTKFDEPktP1BLBwgbgwp4ywAAAD8BAABQSwECFAAUAAgICAAAACEAG4MKeMsAAAA/AQAACAAJAAAA
+AAAAAAAAAAAAAAAALmNvbnRlbnRVVAUAAQAAAABQSwUGAAAAAAEAAQA/AAAACgEAAAAA
+------=_.q7.content-3d2e0690-ce48-3609-83e0-c704d49f1eaf--

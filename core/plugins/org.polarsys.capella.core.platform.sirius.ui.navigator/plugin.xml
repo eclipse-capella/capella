@@ -1155,10 +1155,10 @@
       </command>
       <command
             categoryId="org.polarsys.capella.core.platform.sirius.ui.navigator"
-            defaultHandler="org.polarsys.capella.core.platform.sirius.ui.navigator.handlers.FixDiagramFiltersHandler"
-            id="org.polarsys.capella.core.platform.sirius.ui.navigator.fixFilters"
-            name="%command.fixFilters"
-            description="%command.fixFilters.description">
+            defaultHandler="org.polarsys.capella.core.platform.sirius.ui.navigator.handlers.RefreshDiagramsCommandHandler"
+            id="org.polarsys.capella.core.platform.sirius.ui.navigator.refreshAird"
+            name="%command.refreshDiagrams"
+            description="%command.refreshDiagrams.description">
       </command>
       <command
             categoryId="org.polarsys.capella.core.platform.sirius.ui.navigator"
@@ -1166,13 +1166,6 @@
             id="org.polarsys.capella.core.platform.sirius.ui.navigator.fixDAnnotationsCommand"
             name="%command.fixDAnnotations.name"
             description="%command.fixDAnnotations.description">
-      </command>
-      <command
-            categoryId="org.polarsys.capella.core.platform.sirius.ui.navigator"
-            defaultHandler="org.polarsys.capella.core.platform.sirius.ui.navigator.handlers.RefreshDiagramsCommandHandler"
-            id="org.polarsys.capella.core.platform.sirius.ui.navigator.refreshAird"
-            name="%command.refreshDiagrams"
-            description="%command.refreshDiagrams.description">
       </command>
       <command
             categoryId="org.polarsys.capella.core.platform.sirius.ui.navigator"
@@ -1199,11 +1192,6 @@
          
       <image
             commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.refreshAird"
-            icon="icons/viewpoint.gif">
-      </image>
-      
-      <image
-            commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.fixFilters"
             icon="icons/viewpoint.gif">
       </image>
       
@@ -1259,32 +1247,6 @@
                                  value="org.polarsys.capella.common.data.modellingcore.ModelElement">
                            </instanceof>
                         </or>
-                     </iterate>
-                     <count value="1">
-                     </count>
-                  </and>
-               </with>
-            </visibleWhen>
-         </command>
-         <command
-               commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.fixFilters"
-               id="org.polarsys.capella.core.platform.sirius.ui.navigator.fixFilters"
-               label="%command.fixFilters"
-               style="push">
-            <visibleWhen checkEnabled="true">
-               <with variable="activeMenuSelection">
-                  <and>
-                     <iterate>
-                        <and>
-                           <instanceof
-                                 value="org.eclipse.core.resources.IFile">
-                           </instanceof>
-                           <test
-                                 forcePluginActivation="true"
-                                 property="org.eclipse.core.resources.extension"
-                                 value="aird">
-                           </test>
-                        </and>
                      </iterate>
                      <count value="1">
                      </count>
