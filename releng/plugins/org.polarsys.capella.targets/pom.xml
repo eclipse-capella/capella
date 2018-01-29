@@ -35,8 +35,6 @@
 	<properties>
 		<tycho-version>0.25.0</tycho-version>
 		<tycho-extras-version>0.25.0</tycho-extras-version>
-		<platform-name>neon</platform-name>
-		<targetPlatform.repository>http://mbarbero.github.com/fr.obeo.releng.targetplatform/p2/latest</targetPlatform.repository>
 		<targetPlatform.name>capella.target-definition.targetplatform</targetPlatform.name>
 		<converterApplication.name>fr.obeo.releng.targetplatform.targetPlatform.converter</converterApplication.name>
 		<targetPlatform.id>full</targetPlatform.id>
@@ -51,14 +49,14 @@
 				<configuration>
 					<repositories>
 						<repository>
-							<id>${platform-name}</id>
+							<id>targetplatform-tp</id>
 							<layout>p2</layout>
-							<url>http://download.eclipse.org/releases/${platform-name}</url>
+							<url>http://download.eclipse.org/releases/oxygen/201709271000</url>
 						</repository>
 						<repository>
 							<id>targetplatform</id>
 							<layout>p2</layout>
-							<url>${targetPlatform.repository}</url>
+							<url>http://pdulth.github.io/fr.obeo.releng.targetplatform/p2/latest</url>
 						</repository>
 					</repositories>
 					<!-- Set dependencies to launch the application -->
