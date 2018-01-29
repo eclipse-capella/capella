@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -53,8 +53,6 @@ import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.RenameReso
 import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.SortContentAction;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.SortSelectionAction;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.handlers.DeleteHiddenElementsJob;
-import org.polarsys.capella.core.platform.sirius.ui.navigator.handlers.FixDiagramFiltersHandler;
-import org.polarsys.capella.core.platform.sirius.ui.navigator.handlers.FixDiagramFiltersHandler.FixDiagramsJob;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.handlers.RefreshDiagramsCommandHandler;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaCommonNavigator;
 import org.polarsys.capella.core.platform.sirius.ui.project.NewProjectWizard;
@@ -363,19 +361,9 @@ public class GuiActions {
     job.schedule();
   }
  
-  /**
-   * This code is called when using the "Fix Filters on all Representations" action
-   * @param session
-   */
-  public static void fixDiagrams(IFile airdFile, Session session) {
-    FixDiagramsJob job = new FixDiagramFiltersHandler().new FixDiagramsJob("Fix filters on aird", airdFile.getName(), session, Display.getDefault());
-    job.setUser(true);
-    job.schedule();
-  }
-
   public static void refreshAllSubRepresentations(IFile airdFile, Session session) {
     Collection<DRepresentation> representationsToRefresh = DialectManager.INSTANCE.getAllRepresentations(session);
-    Job job = new RefreshDiagramsCommandHandler().new RefreshDiagramsJob(airdFile.getName(), session, representationsToRefresh, Display.getCurrent());
+    Job job = new RefreshDiagramsCommandHandler().new RefreshDiagramsJob(airdFile.getName(), representationsToRefresh, session, Display.getCurrent());
     job.setThread(Display.getDefault().getThread());
     job.setUser(true);
     job.schedule();
