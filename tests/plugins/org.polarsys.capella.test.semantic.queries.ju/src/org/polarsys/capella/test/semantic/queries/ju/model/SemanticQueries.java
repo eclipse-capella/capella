@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -205,6 +205,11 @@ public abstract class SemanticQueries extends AbstractSemanticQueryTestCase {
 	  public static final String PA__CAPABILITIES__CAPABILITY_1 = "a51c707d-0591-43e7-8d87-3b49882745d9";  //$NON-NLS-1$ 
 	  public static final String LA__LOGICALCOMPONENT_1 = "e3c12d76-4afd-442e-96c5-d8b8be8cb0d9";  //$NON-NLS-1$ 
 	  public static final String LA__LOGICAL_ACTORS__LA_2 = "37af6f3b-2a72-494f-928d-8ce375e1e957";  //$NON-NLS-1$ 
+	  public static final String LA__INTERFACES__EI_LA_01 = "9dd91b9b-5880-4f25-a889-cd3998134f36";  //$NON-NLS-1$
+	  public static final String SA__INTERFACES__EI_SA_01 = "4491adad-bad5-43cb-b37b-c285dccc2602";  //$NON-NLS-1$
+	  public static final String SA__DATA__EI_SA_02 = "3581a5f9-10de-419e-b52c-0de9588d4941";  //$NON-NLS-1$
+	  public static final String PA__INTERFACES__EI_PA_01 = "705e2d94-f38e-4ea6-bfad-a9d143a72da0";  //$NON-NLS-1$
+	  public static final String PA__DATA__EI_PA_02 = "1bd1d591-0bea-4631-9dd9-30330ed53a5b";  //$NON-NLS-1$
 	  
 	@Override
 	public List<String> getRequiredTestModels() {
