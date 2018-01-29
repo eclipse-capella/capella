@@ -17,6 +17,7 @@ import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
 import org.polarsys.capella.test.transition.ju.model.AlreadyTransitionedActorTestCase;
 import org.polarsys.capella.test.transition.ju.model.modestate.StateMachineTransitionTestCase;
+import org.polarsys.capella.test.transition.ju.testcases.LcWithPropertyValueTestCase;
 import org.polarsys.capella.test.transition.ju.testcases.ReconciliationCommunicationLinks;
 import org.polarsys.capella.test.transition.ju.testcases.ReconciliationInterfaceUsesImplements;
 import org.polarsys.capella.test.transition.ju.testcases.SkeletonElementsNames;
@@ -39,6 +40,7 @@ public class TransitionTestSuite extends BasicTestSuite {
     tests.add(new ReconciliationInterfaceUsesImplements());
     tests.add(new SkeletonElementsNames());
     tests.add(new StateMachineTransitionTestCase());
+    tests.add(new LcWithPropertyValueTestCase());
     tests.add(new AlreadyTransitionedActorTestCase());
     return tests;
   }
