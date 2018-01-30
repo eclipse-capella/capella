@@ -1,10 +1,10 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *  
+ *
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
@@ -24,13 +24,12 @@ import org.eclipse.swt.dnd.TransferData;
 import org.polarsys.capella.common.flexibility.wizards.schema.IRendererContext;
 import org.polarsys.capella.common.re.CatalogElementLink;
 import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
-import org.polarsys.capella.core.model.helpers.move.MoveHelper;
+import org.polarsys.capella.core.model.helpers.move.CapellaMoveHelper;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.drop.BasicDropConstraints;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.drop.ExplorerDropAdapterAssistant;
-import org.polarsys.capella.core.re.handlers.attributes.CapellaMoveHelper;
 
 /**
- * 
+ *
  */
 public class ReplicaContentLocationRenderer extends org.polarsys.capella.common.re.ui.renderers.ReplicaContentLocationRenderer {
 
@@ -61,15 +60,7 @@ public class ReplicaContentLocationRenderer extends org.polarsys.capella.common.
         }
         ISelection adaptSelection = new StructuredSelection(adaptLinks);
         try {
-          ExplorerDropAdapterAssistant assistant = new ExplorerDropAdapterAssistant() {
-
-            /**
-             * {@inheritDoc}
-             */
-            @Override
-            protected MoveHelper getMoveHelper() {
-              return new CapellaMoveHelper();
-            }
+          ExplorerDropAdapterAssistant assistant = new ExplorerDropAdapterAssistant(new CapellaMoveHelper()) {
 
             @Override
             protected BasicDropConstraints getBasicConstraints() {
