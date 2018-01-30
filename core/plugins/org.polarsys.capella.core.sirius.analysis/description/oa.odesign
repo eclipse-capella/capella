@@ -428,7 +428,7 @@
                   <parameters name="context" value="aql:elementView"/>
                   <parameters name="scope" value="&lt;% $elementView.getAvailableAbstractFunctionsToInsertInDataFlowBlank()[allocationBlocks.filter(&quot;AbstractActor&quot;).nSize() == 0]%>"/>
                   <parameters name="resultVariable" value="selectedFunctions"/>
-                  <parameters name="wizardMessage" value="Select Functions and ControlNodes to show in &lt;%$element.name%>."/>
+                  <parameters name="wizardMessage" value="aql:'Select Functions and ControlNodes to show in ' + element.name + '.'"/>
                   <parameters name="initialSelection" value="aql:visibleFunctions"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% ! ($selectedFunctions == &quot;WIZARD_CANCELED&quot;) %>">
@@ -456,7 +456,7 @@
                   <parameters name="scope" value="aql:scope"/>
                   <parameters name="initialSelection" value="aql:displayedExchanges"/>
                   <parameters name="resultVariable" value="selectedExchanges"/>
-                  <parameters name="wizardMessage" value="Select Functional Exchanges to show in &lt;%$element.name%>."/>
+                  <parameters name="wizardMessage" value="aql:'Select Functional Exchanges to show in ' + element.name + '.'"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%($selectedExchanges != &quot;WIZARD_CANCELED&quot;)%>">
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.showDFFunctionalExchange(scope,selectedExchanges)"/>
@@ -479,7 +479,7 @@
                   <parameters name="scope" value="&lt;%getFunctionalChainsToInsert($containerView, $container.getAllFunctionalChain())%>"/>
                   <parameters name="initialSelection" value="aql:initialSelection"/>
                   <parameters name="resultVariable" value="selectedFunctionalChains"/>
-                  <parameters name="wizardMessage" value="Select Operartional Processes to show  in &lt;%$container.name%>."/>
+                  <parameters name="wizardMessage" value="aql:'Select Operartional Processes to show  in ' + container.name + '.'"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% ! ($selectedFunctionalChains == &quot;WIZARD_CANCELED&quot;) %>">
                   <subModelOperations xsi:type="tool:For" expression="aql:initialSelection">
@@ -945,7 +945,7 @@
                     <parameters name="context" value="aql:containerView.getOEBTarget()"/>
                     <parameters name="scope" value="&lt;% $containerView.getAvailableEntitiesToInsert()[!isA(&quot;OperationalActor&quot;)] %>"/>
                     <parameters name="resultVariable" value="selection"/>
-                    <parameters name="wizardMessage" value="Select Operational Entities to show in &lt;%$container.name%>."/>
+                    <parameters name="wizardMessage" value="aql:'Select Operational Entities to show in ' + container.name + '.'"/>
                     <parameters name="initialSelection" value="aql:componentsInDiagram"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% ! ($selection == &quot;WIZARD_CANCELED&quot;) %>">
@@ -984,7 +984,7 @@
                     <parameters name="context" value="aql:containerView.getOEBTarget()"/>
                     <parameters name="scope" value="&lt;% $containerView.getAvailableEntitiesToInsert()[isA(&quot;OperationalActor&quot;)] %>"/>
                     <parameters name="resultVariable" value="selection"/>
-                    <parameters name="wizardMessage" value="Select Operational Actors to show in &lt;%$container.name%>."/>
+                    <parameters name="wizardMessage" value="aql:'Select Operational Actors to show in ' + container.name + '.'"/>
                     <parameters name="initialSelection" value="aql:componentsInDiagram"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% ! ($selection == &quot;WIZARD_CANCELED&quot;) %>">
@@ -1028,7 +1028,7 @@
                     <parameters name="scope" value="aql:self.getAvailableConnectionsToInsert()"/>
                     <parameters name="initialSelection" value="aql:displayedExchanges"/>
                     <parameters name="resultVariable" value="selectedExchanges"/>
-                    <parameters name="wizardMessage" value="Select Component Exchanges to show in &lt;%$element.name%>."/>
+                    <parameters name="wizardMessage" value="aql:'Select Component Exchanges to show in ' + element.name + '.'"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%($selectedExchanges != &quot;WIZARD_CANCELED&quot;)%>">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.insertRemoveCommunicationMeans(selectedExchanges)"/>
@@ -1261,7 +1261,7 @@
                   <parameters name="scope" value="&lt;% $container.eContainer(&quot;ModellingArchitecture&quot;).ownedRolePkg.ownedRoles - $container.ownedRoleAllocations.targetElement %>"/>
                   <parameters name="initialSelection" value="&lt;% $container.ownedRoleAllocations.targetElement %>"/>
                   <parameters name="resultVariable" value="selection"/>
-                  <parameters name="wizardMessage" value="Select Roles to allocate to &lt;%$container.name%>."/>
+                  <parameters name="wizardMessage" value="aql:'Select Roles to allocate to ' + container.name + '.'"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% ! ($selection == &quot;WIZARD_CANCELED&quot;) %>">
                   <subModelOperations xsi:type="tool:For" expression="&lt;% $selection -  $container.ownedRoleAllocations.targetElement %>">
@@ -1316,7 +1316,7 @@
                   <parameters name="scope" value="aql:self.ownedRoleAllocations.targetElement"/>
                   <parameters name="initialSelection" value="&lt;% $containerView.eContents().filter(&quot;DDiagramElement&quot;)[visible].target.filter(&quot;Role&quot;) %>"/>
                   <parameters name="resultVariable" value="element"/>
-                  <parameters name="wizardMessage" value="Select allocated Roles to show in &lt;%$container.name%>."/>
+                  <parameters name="wizardMessage" value="aql:'Select allocated Roles to show in ' + container.name + '.'"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% ! ($element == &quot;WIZARD_CANCELED&quot;) %>">
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView">
@@ -1412,7 +1412,7 @@
                     <parameters name="scope" value="aql:container.getAvailableOperationalActivityAllocations()"/>
                     <parameters name="initialSelection" value="&lt;%$container.ownedActivityAllocations.targetElement%>"/>
                     <parameters name="resultVariable" value="element"/>
-                    <parameters name="wizardMessage" value="Select Operational Activities to allocate to &lt;%$container.name%>."/>
+                    <parameters name="wizardMessage" value="aql:'Select Operational Activities to allocate to ' + container.name + '.'"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% ! ($element == &quot;WIZARD_CANCELED&quot;) %>">
                     <subModelOperations xsi:type="tool:For" expression="&lt;%$container.ownedActivityAllocations.targetElement%>">
@@ -1446,7 +1446,7 @@
                     <parameters name="scope" value="aql:container.getAvailableFunctionalAllocation()"/>
                     <parameters name="initialSelection" value="&lt;%$container.ownedFunctionalAllocation.targetElement%>"/>
                     <parameters name="resultVariable" value="element"/>
-                    <parameters name="wizardMessage" value="Select Operational Activities to allocate to &lt;%$container.name%>."/>
+                    <parameters name="wizardMessage" value="aql:'Select Operational Activities to allocate to ' + container.name + '.'"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% ! ($element == &quot;WIZARD_CANCELED&quot;) %>">
                     <subModelOperations xsi:type="tool:For" expression="&lt;%filter(&quot;Entity&quot;).allocatedFunctions + filter(&quot;Role&quot;).outgoingTraces.filter(&quot;ActivityAllocation&quot;).targetElement%>">
@@ -1491,7 +1491,7 @@
                   <parameters name="scope" value="aql:self.getAvailableFunctionalExchangesToInsertInArchitectureBlank()"/>
                   <parameters name="initialSelection" value="aql:displayedExchanges"/>
                   <parameters name="resultVariable" value="selectedExchanges"/>
-                  <parameters name="wizardMessage" value="Select Functional Exchanges to show in &lt;%$element.name%>."/>
+                  <parameters name="wizardMessage" value="aql:'Select Functional Exchanges to show in ' + element.name + '.'"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%($selectedExchanges != &quot;WIZARD_CANCELED&quot;)%>">
                   <subModelOperations xsi:type="tool:For" expression="aql:self.void2Null(selectedExchanges)">
@@ -1587,7 +1587,7 @@
                       <parameters name="scope" value="aql:container.getShowableAllocatedFunctions(containerView)"/>
                       <parameters name="initialSelection" value="aql:visibleFunctions"/>
                       <parameters name="resultVariable" value="selectedFunctions"/>
-                      <parameters name="wizardMessage" value="Select allocated Operational Activities to show in &lt;%$container.name%>."/>
+                      <parameters name="wizardMessage" value="aql:'Select allocated Operational Activities to show in ' + container.name + '.'"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% ! ($selectedFunctions == &quot;WIZARD_CANCELED&quot;) %>">
                       <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.insertRemoveAllocatedFunctions(selectedFunctions)"/>
@@ -1600,7 +1600,7 @@
                     <parameters name="scope" value="aql:container.getShowableAllocatedOperationalActivities()"/>
                     <parameters name="initialSelection" value="aql:visibleFunctions"/>
                     <parameters name="resultVariable" value="selectedFunctions"/>
-                    <parameters name="wizardMessage" value="Select allocated Operational Activities to show in &lt;%$container.name%>."/>
+                    <parameters name="wizardMessage" value="aql:'Select allocated Operational Activities to show in ' + container.name + '.'"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% ! ($selectedFunctions == &quot;WIZARD_CANCELED&quot;) %>">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.insertRemoveAllocatedFunctions(selectedFunctions)"/>
@@ -2024,7 +2024,7 @@
                   <parameters name="context" value="aql:container"/>
                   <parameters name="scope" value="&lt;%eContainer(&quot;OperationalAnalysis&quot;).eAllContents().filter(&quot;Role&quot;) - $containerView.eAllContents(&quot;DSemanticDecorator&quot;).target%>"/>
                   <parameters name="resultVariable" value="roles"/>
-                  <parameters name="wizardMessage" value="Select Roles to insert into &lt;%$container.name%>."/>
+                  <parameters name="wizardMessage" value="aql:'Select Roles to insert into ' + container.name + '.'"/>
                   <parameters name="initialSelection" value="aql:visibleRoles"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$roles != &quot;WIZARD_CANCELED&quot;%>">
@@ -2212,7 +2212,7 @@
                   <parameters name="scope" value="aql:self.getAvailableFunctionalExchangesToInsertInArchitectureBlank()"/>
                   <parameters name="initialSelection" value="aql:displayedExchanges"/>
                   <parameters name="resultVariable" value="selectedExchanges"/>
-                  <parameters name="wizardMessage" value="Select Functional Exchanges to show in &lt;%$element.name%>."/>
+                  <parameters name="wizardMessage" value="aql:'Select Functional Exchanges to show in ' + element.name + '.'"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%($selectedExchanges != &quot;WIZARD_CANCELED&quot;)%>">
                   <subModelOperations xsi:type="tool:For" expression="aql:self.void2Null(selectedExchanges)">
@@ -2271,7 +2271,7 @@
                   <parameters name="scope" value="aql:container.getAvailableOperationalActivityAllocations()"/>
                   <parameters name="initialSelection" value="&lt;%$container.ownedActivityAllocations.targetElement%>"/>
                   <parameters name="resultVariable" value="element"/>
-                  <parameters name="wizardMessage" value="Select Operational Activities to allocate to &lt;%$container.name%>."/>
+                  <parameters name="wizardMessage" value="aql:'Select Operational Activities to allocate to ' + container.name + '.'"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% ! ($element == &quot;WIZARD_CANCELED&quot;) %>">
                   <subModelOperations xsi:type="tool:For" expression="&lt;%outgoingTraces.filter(&quot;ActivityAllocation&quot;).targetElement%>">
@@ -2313,7 +2313,7 @@
                   <parameters name="scope" value="aql:container.getShowableAllocatedOperationalActivities()"/>
                   <parameters name="initialSelection" value="aql:visibleFunctions"/>
                   <parameters name="resultVariable" value="selectedFunctions"/>
-                  <parameters name="wizardMessage" value="Select allocated Operational Activities to show in &lt;%$container.name%>."/>
+                  <parameters name="wizardMessage" value="aql:'Select allocated Operational Activities to show in ' + container.name + '.'"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% ! ($selectedFunctions == &quot;WIZARD_CANCELED&quot;) %>">
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.insertRemoveAllocatedFunctions(selectedFunctions)"/>
@@ -2914,7 +2914,7 @@
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="interaction.MessageEnd" referenceName="ownedInteractionFragments" variableName="receivingEnd">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Receive Call &lt;% $call.name%>"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:'Receive Call ' + call.name"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="coveredInstanceRoles" valueExpression="aql:targetIR"/>
                   <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% $messageEndAfter != null %>">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%moveEndOnScenario($messageEndAfter.semanticEnd)%>"/>
@@ -2930,7 +2930,7 @@
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="interaction.MessageEnd" referenceName="ownedInteractionFragments" variableName="sendingEnd">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Send Call &lt;% $call.name%>"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:'Send Call ' + call.name"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="coveredInstanceRoles" valueExpression="aql:sourceIR"/>
                   <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$messageEndBefore == null%>">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfScenario()"/>
@@ -3120,7 +3120,7 @@
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="interaction.MessageEnd" referenceName="ownedInteractionFragments" variableName="receivingEnd">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Receive Call &lt;% $call.name%>"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:'Receive Call ' + call.name"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="coveredInstanceRoles" valueExpression="aql:targetIR"/>
                   <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% $messageEndAfter != null %>">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%moveEndOnScenario($messageEndAfter.semanticEnd)%>"/>
@@ -3136,7 +3136,7 @@
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="interaction.MessageEnd" referenceName="ownedInteractionFragments" variableName="sendingEnd">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Send Call &lt;% $call.name%>"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:'Send Call ' + call.name"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="coveredInstanceRoles" valueExpression="aql:sourceIR"/>
                   <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$messageEndBefore == null%>">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfScenario()"/>
@@ -3199,7 +3199,7 @@
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="interaction.MessageEnd" referenceName="ownedInteractionFragments" variableName="sendingEnd">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Send Call &lt;% $call.name%>"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:'Send Call ' + call.name"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="coveredInstanceRoles" valueExpression="aql:sourceIR"/>
                   <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$messageEndBefore == null%>">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfScenario()"/>
@@ -3215,7 +3215,7 @@
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="interaction.MessageEnd" referenceName="ownedInteractionFragments" variableName="receivingEnd">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Receive Call &lt;% $call.name%>"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:'Receive Call ' + call.name"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="coveredInstanceRoles" valueExpression="aql:targetIR"/>
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnScenario(sendingEnd)"/>
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnInstanceRole(sendingEnd)"/>
@@ -3257,7 +3257,7 @@
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="interaction.MessageEnd" referenceName="ownedInteractionFragments" variableName="sendingEnd">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Send Call &lt;% $call.name%>"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:'Send Call ' + call.name"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="coveredInstanceRoles" valueExpression="aql:sourceIR"/>
                   <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$messageEndBefore == null%>">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfScenario()"/>
@@ -3273,7 +3273,7 @@
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="interaction.MessageEnd" referenceName="ownedInteractionFragments" variableName="receivingEnd">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Receive Call &lt;% $call.name%>"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:'Receive Call ' + call.name"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="coveredInstanceRoles" valueExpression="aql:targetIR"/>
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnScenario(sendingEnd)"/>
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnInstanceRole(sendingEnd)"/>
@@ -3317,7 +3317,7 @@
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="interaction.MessageEnd" referenceName="ownedInteractionFragments" variableName="receivingEnd">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Receive Call &lt;%$call.name%>"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:'Receive Call ' + call.name"/>
                     <subModelOperations xsi:type="tool:SetValue" featureName="coveredInstanceRoles" valueExpression="aql:targetIR"/>
                     <subModelOperations xsi:type="tool:SetValue" featureName="event" valueExpression="aql:eventReceiptOperationCall"/>
                     <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% $messageEndAfter != null %>">
@@ -3333,7 +3333,7 @@
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="interaction.MessageEnd" referenceName="ownedInteractionFragments" variableName="sendingEnd">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Send Call &lt;%$call.name%>"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:'Send Call ' + call.name"/>
                     <subModelOperations xsi:type="tool:SetValue" featureName="coveredInstanceRoles" valueExpression="aql:sourceIR"/>
                     <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$messageEndBefore == null%>">
                       <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfScenario()"/>
@@ -3393,7 +3393,7 @@
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="interaction.MessageEnd" referenceName="ownedInteractionFragments" variableName="receivingEnd">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Receive Call &lt;%$call.name%>"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:'Receive Call ' + call.name"/>
                     <subModelOperations xsi:type="tool:SetValue" featureName="coveredInstanceRoles" valueExpression="aql:targetIR"/>
                     <subModelOperations xsi:type="tool:SetValue" featureName="event" valueExpression="aql:eventReceiptOperationCall"/>
                     <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% $messageEndAfter != null %>">
@@ -3409,7 +3409,7 @@
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="interaction.MessageEnd" referenceName="ownedInteractionFragments" variableName="sendingEnd">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Send Call &lt;%$call.name%>"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:'Send Call ' + call.name"/>
                     <subModelOperations xsi:type="tool:SetValue" featureName="coveredInstanceRoles" valueExpression="aql:sourceIR"/>
                     <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$messageEndBefore == null%>">
                       <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfScenario()"/>
@@ -4143,7 +4143,7 @@
               <foregroundColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_CombinedFragment_Gray']"/>
             </style>
           </subContainerMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression=" &lt;% operator %>" labelAlignment="LEFT">
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql:' ' + self.operator.toString()" labelAlignment="LEFT">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -4246,7 +4246,7 @@
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="interaction.MessageEnd" referenceName="ownedInteractionFragments" variableName="receivingEnd">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Receive Call &lt;% $call.name%>"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:'Receive Call ' + call.name"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="coveredInstanceRoles" valueExpression="aql:targetIR"/>
                   <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% $messageEndAfter != null%>">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%moveEndOnScenario($messageEndAfter.semanticEnd)%>"/>
@@ -4262,7 +4262,7 @@
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="interaction.MessageEnd" referenceName="ownedInteractionFragments" variableName="sendingEnd">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Send Call &lt;% $call.name%>"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:'Send Call ' + call.name"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="coveredInstanceRoles" valueExpression="aql:sourceIR"/>
                   <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$messageEndBefore == null%>">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfScenario()"/>
@@ -4910,7 +4910,7 @@
                   <parameters name="scope" value="aql:container.getFCDInvolveFunctionScope()"/>
                   <parameters name="multiple" value="true"/>
                   <parameters name="resultVariable" value="selectedFunctions"/>
-                  <parameters name="wizardMessage" value="Select Operational Activities to involve in &lt;%$container.name%>."/>
+                  <parameters name="wizardMessage" value="aql:'Select Operational Activities to involve in ' + container.name + '.'"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$selectedFunctions != &quot;WIZARD_CANCELED&quot;%>">
                   <subModelOperations xsi:type="tool:For" expression="aql:selectedFunctions->filter(fa::AbstractFunction)" iteratorName="selectedFunction">
@@ -4962,7 +4962,7 @@
                   <parameters name="scope" value="aql:containerView.getFCDInvolveFunctionalChainScope()"/>
                   <parameters name="multiple" value="true"/>
                   <parameters name="resultVariable" value="selectedFunctions"/>
-                  <parameters name="wizardMessage" value="Select an Operational Process to involve in &lt;%$container.name%>."/>
+                  <parameters name="wizardMessage" value="aql:'Select an Operational Process to involve in ' + container.name + '.'"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$selectedFunctions != &quot;WIZARD_CANCELED&quot;%>">
                   <subModelOperations xsi:type="tool:For" expression="aql:selectedFunctions->filter(fa::FunctionalChain)" iteratorName="selectedFunction">
@@ -5016,7 +5016,7 @@
                 <subModelOperations xsi:type="tool:ExternalJavaAction" name="selectFunctionalExchanges" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromCheckBoxWizard">
                   <parameters name="context" value="aql:elementView"/>
                   <parameters name="resultVariable" value="selectedFunctionalExchanges"/>
-                  <parameters name="wizardMessage" value="Select Interactions and Operational Processes to involve from &lt;%name%>"/>
+                  <parameters name="wizardMessage" value="aql:'Select Interactions and Operational Processes to involve from ' + self.name"/>
                   <parameters name="type" value="EXCHANGES_FUNCTIONALCHAINS"/>
                 </subModelOperations>
               </firstModelOperations>
@@ -5388,11 +5388,11 @@
                   <parameters name="scope" value="aql:scope"/>
                   <parameters name="initialSelection" value="&lt;%$diagram.getInitialSelection($scope)%>"/>
                   <parameters name="resultVariable" value="selectedRelationships"/>
-                  <parameters name="wizardMessage" value="Select Relationships to show in &lt;%$element.name%>."/>
+                  <parameters name="wizardMessage" value="aql:'Select Relationships to show in ' + element.name + '.'"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%($selectedRelationships != &quot;WIZARD_CANCELED&quot;)%>">
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$element.showHideRelationshipInCapabilityDiagram($elementView, $selectedRelationships, $scope)%>"/>
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.getDiagramContainer().forceRefresh%> "/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().forceRefresh()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -5807,11 +5807,11 @@
                   <parameters name="scope" value="aql:scope"/>
                   <parameters name="initialSelection" value="&lt;%$diagram.getInitialSelection($scope)%>"/>
                   <parameters name="resultVariable" value="selectedRelationships"/>
-                  <parameters name="wizardMessage" value="Select Relationships to show in &lt;%$element.name%>."/>
+                  <parameters name="wizardMessage" value="aql:'Select Relationships to show in ' + element.name + '.'"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%($selectedRelationships != &quot;WIZARD_CANCELED&quot;)%>">
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$element.showHideRelationshipInCapabilityDiagram($elementView, $selectedRelationships, $scope)%>"/>
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.getDiagramContainer().forceRefresh%> "/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().forceRefresh()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
