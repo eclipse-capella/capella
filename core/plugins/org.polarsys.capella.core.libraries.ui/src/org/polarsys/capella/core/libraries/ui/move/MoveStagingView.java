@@ -102,6 +102,7 @@ import org.polarsys.capella.common.libraries.IModel;
 import org.polarsys.capella.common.libraries.manager.LibraryManager;
 import org.polarsys.capella.common.libraries.manager.LibraryManagerExt;
 import org.polarsys.capella.core.libraries.model.ICapellaModel;
+import org.polarsys.capella.core.model.helpers.move.CapellaMoveHelper;
 import org.polarsys.capella.core.model.helpers.move.Stage;
 import org.polarsys.capella.core.model.helpers.move.StageListener;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.LocateInCapellaExplorerAction;
@@ -525,7 +526,7 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
 
     destinationViewer.addDropSupport(0, new Transfer[] { LocalSelectionTransfer.getTransfer() }, new ViewerDropAdapter(destinationViewer) {
 
-      final ExplorerDropAdapterAssistant a = new ExplorerDropAdapterAssistant();
+      final ExplorerDropAdapterAssistant a = new ExplorerDropAdapterAssistant(new CapellaMoveHelper());
 
       @Override
       public boolean validateDrop(Object target, int operation, TransferData transferType) {
