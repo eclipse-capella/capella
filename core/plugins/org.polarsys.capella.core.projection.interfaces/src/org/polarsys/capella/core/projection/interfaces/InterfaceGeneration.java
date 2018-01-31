@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -41,7 +41,6 @@ public class InterfaceGeneration extends AbstractTransform {
   private static final String CAPELLA_INTERFACE_GENERATION_RULES = "org.polarsys.capella.core.projection.interfaces.generation"; //$NON-NLS-1$
 
   public static final String KEY_PREFS = "interfaceGenerationPreferences"; //$NON-NLS-1$
-  public static final String KEY_DRY_RUN = "interfaceGenerationIsDryRun"; //$NON-NLS-1$
   public static final String KEY_RESULT = "interfaceGenerationResult"; //$NON-NLS-1$
 
   private final InterfaceGenerationPreferences prefs;
@@ -110,7 +109,7 @@ public class InterfaceGeneration extends AbstractTransform {
     }
     transfo.put(TransfoEngine.TRANSFO_SOURCE, _context);
     transfo.put(KEY_PREFS, prefs);
-    transfo.put(KEY_DRY_RUN, dryRun);
+    transfo.setDryRun(dryRun);
     transfo.put(KEY_RESULT, result);
     
     return transfo;
@@ -132,18 +131,6 @@ public class InterfaceGeneration extends AbstractTransform {
       }
     }
     return false;
-  }
-
-  /**
-   * During a dry-run generation the model is not updated. After a dry-run
-   * generation completes, clients can inspect and/or apply the generation result via
-   * {@link #getResult(ITransfo)}
-   * 
-   * @param transfo
-   * @return
-   */
-  public static boolean isDryRun(ITransfo transfo) {
-    return transfo.get(KEY_DRY_RUN) == Boolean.TRUE;
   }
 
   public InterfaceGenerationResult getResult() {
