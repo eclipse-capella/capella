@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -26,6 +26,7 @@ resultIds = {
     eacd4654-e941-4840-9525-fde712ba4c8b
     ae850d5a-f49b-48d5-a4af-d5bc5a714555
     142be261-1ab0-4703-852f-913108ccb27e
+    8f5ed8da-5087-42a5-9a41-60fc0cced412
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.la.LogicalActor_FunctionalAllocation-getCurrentElements
@@ -51,6 +52,7 @@ resultIds = {
     eacd4654-e941-4840-9525-fde712ba4c8b
     ae850d5a-f49b-48d5-a4af-d5bc5a714555
     142be261-1ab0-4703-852f-913108ccb27e
+    3f009486-8a78-435e-b538-d24d5479027e
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.la.LogicalActor_FunctionalAllocation-getCurrentElements
@@ -124,6 +126,7 @@ resultIds = {
     eacd4654-e941-4840-9525-fde712ba4c8b
     ae850d5a-f49b-48d5-a4af-d5bc5a714555
     142be261-1ab0-4703-852f-913108ccb27e
+    a11f9249-3975-4cbf-b947-f0bd58e770f7
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.la.LogicalActor_FunctionalAllocation-getCurrentElements
@@ -149,6 +152,7 @@ resultIds = {
     eacd4654-e941-4840-9525-fde712ba4c8b
     ae850d5a-f49b-48d5-a4af-d5bc5a714555
     142be261-1ab0-4703-852f-913108ccb27e
+    e7862c4a-d1e4-4382-9d21-52e9d1c6eca4
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.la.LogicalActor_FunctionalAllocation-getCurrentElements
@@ -174,6 +178,7 @@ resultIds = {
     eacd4654-e941-4840-9525-fde712ba4c8b
     ae850d5a-f49b-48d5-a4af-d5bc5a714555
     142be261-1ab0-4703-852f-913108ccb27e
+    d0dc038a-2008-4a5f-8aac-844ecd021f31
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.la.LogicalActor_FunctionalAllocation-getCurrentElements
@@ -199,6 +204,7 @@ resultIds = {
     eacd4654-e941-4840-9525-fde712ba4c8b
     ae850d5a-f49b-48d5-a4af-d5bc5a714555
     142be261-1ab0-4703-852f-913108ccb27e
+    22466a04-e9a3-45da-a007-8a4578b7e215
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.la.LogicalActor_FunctionalAllocation-getCurrentElements
@@ -224,6 +230,7 @@ resultIds = {
     eacd4654-e941-4840-9525-fde712ba4c8b
     ae850d5a-f49b-48d5-a4af-d5bc5a714555
     142be261-1ab0-4703-852f-913108ccb27e
+    5f36be0f-c918-4f32-9bba-ce392b998577
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.la.LogicalActor_FunctionalAllocation-getCurrentElements
