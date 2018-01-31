@@ -13,8 +13,9 @@ package org.polarsys.capella.test.transition.ju.testcases;
 import java.util.Arrays;
 import java.util.List;
 
-import org.polarsys.capella.core.data.cs.Component;
+import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
+import org.polarsys.capella.core.transition.system.topdown.constants.ITopDownConstants;
 import org.polarsys.capella.test.transition.ju.TopDownTransitionTestCase;
 
 public class LcWithPropertyValueTestCase extends TopDownTransitionTestCase {
@@ -23,16 +24,16 @@ public class LcWithPropertyValueTestCase extends TopDownTransitionTestCase {
   
   @Override
   public void performTest() throws Exception {
+	setPreferenceValue(ITopDownConstants.OPTIONS__PROPERTY_VALUE__APPLIED_PROPERTY_VALUES, Boolean.TRUE);
+	
     // The LA__LC1 has an EnumarationPropertyValue referenced in appliedPropertyValues
     performLCtoPCTransition(getObjects(LA__LC1));
 
-    Component logicalComponent = shouldExist(LA__LC1);
+    EObject physicalComponent = mustBeMonoTransitioned(LA__LC1);
+    assertTrue(physicalComponent instanceof PhysicalComponent);
     
-    PhysicalComponent physicalComponent = (PhysicalComponent) mustBeMonoTransitioned(logicalComponent);
-
     // The transitioned PhysicalComponent should also reference this EnumerationPropertyValue in appliedPropertyValues
-    assertFalse(physicalComponent.getAppliedPropertyValues().isEmpty());
-    assertTrue(physicalComponent.getAppliedPropertyValues().size() == 1);
+    assertEquals(1, ((PhysicalComponent) physicalComponent).getAppliedPropertyValues().size());
   }
   
   @Override
