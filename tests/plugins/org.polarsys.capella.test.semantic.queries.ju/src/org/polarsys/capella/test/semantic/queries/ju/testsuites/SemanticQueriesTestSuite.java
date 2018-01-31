@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -30,6 +30,8 @@ import org.polarsys.capella.test.semantic.queries.ju.testcases.CapabilityRealiza
 import org.polarsys.capella.test.semantic.queries.ju.testcases.CapellaElement_applied_property_value_groups;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.CapellaElement_applied_property_values;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.EntryExitPoint_ParentRegionTest;
+import org.polarsys.capella.test.semantic.queries.ju.testcases.ExchangeItem_realizedEI;
+import org.polarsys.capella.test.semantic.queries.ju.testcases.ExchangeItem_realizingEI;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.PropertyValueGroup_applying_valued_element;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.PropertyValue_applying_valued_element;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.State_OwnedEntryExitPointsTest;
@@ -58,6 +60,8 @@ public class SemanticQueriesTestSuite extends BasicTestSuite {
     tests.add(new CapabilityRealization_OwnedFunctionalChains());
     tests.add(new CapabilityRealization_RealizedCapability());
     tests.add(new CapabilityRealization_RealizingCapabilityRealization());
+    tests.add(new ExchangeItem_realizedEI());
+    tests.add(new ExchangeItem_realizingEI());
     
     return tests;
   }
