@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materiTals
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -43,6 +43,11 @@ import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin
 public class ResourceSetListenerForInterModelInconsistencyDetection extends ResourceSetListenerImpl {
 
 	protected DependencyChecker linkChecker;
+
+  @Override
+  public boolean isAggregatePrecommitListener() {
+    return true;
+  }
 
 	/**
 	 * check all notifications in the resource set and roll back if inter-model dependency violation are detected.
