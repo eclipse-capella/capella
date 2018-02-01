@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -274,7 +274,7 @@ public class RefreshDiagramsCommandHandler extends AbstractDiagramCommandHandler
         job.setUser(true);
         job.schedule();
 
-        // Add job listener to return the state of sirius preference.
+        // Add job listener to return the state of Sirius preference.
         job.addJobChangeListener(new IJobChangeListener() {
 
           @Override
@@ -300,7 +300,6 @@ public class RefreshDiagramsCommandHandler extends AbstractDiagramCommandHandler
             SiriusEditPlugin.getPlugin().getPreferenceStore().setValue(
                 SiriusUIPreferencesKeys.PREF_REFRESH_ON_REPRESENTATION_OPENING.name(),
                 currentValueOfSiriusPrefRefreshOnOpening);
-            StatusManager.getManager().handle(event.getResult());
           }
 
           @Override
