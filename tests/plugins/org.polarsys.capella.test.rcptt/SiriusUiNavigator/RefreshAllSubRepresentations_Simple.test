@@ -76,9 +76,6 @@ with [get-view "Capella Project Explorer" | get-tree] {
 }
 
 // Confirm and save
-get-window "Confirm Capella Representation Refresh" 
-    | get-label "There will be 1 representation(s) might be refreshed. It is recommended to firstly backup your model. Are you still want to proceed?" | get-property caption 
-    | equals "There will be 1 representation(s) might be refreshed. It is recommended to firstly backup your model. Are you still want to proceed?" | verify-true
 get-window "Confirm Capella Representation Refresh" | get-button OK | click
 get-button "Save All (M1+M2+S)" | click
 
