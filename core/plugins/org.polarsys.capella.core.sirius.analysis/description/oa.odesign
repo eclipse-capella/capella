@@ -126,7 +126,7 @@
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container.createEntity()%>">
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container.createEntity()">
                 <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
                   <parameters name="context" value="aql:container"/>
                   <parameters name="scope" value="aql:self"/>
@@ -139,7 +139,7 @@
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container.createOperationalActor()%>">
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container.createOperationalActor()">
                 <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
                   <parameters name="context" value="aql:container"/>
                   <parameters name="scope" value="aql:self"/>
@@ -202,7 +202,7 @@
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container">
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:containerView->filter(diagram::DDiagram)->size() = 1">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="Constraint" referenceName="ownedConstraints">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
                     </subModelOperations>
                   </subModelOperations>
                 </firstModelOperations>
@@ -247,7 +247,7 @@
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:(selectedConstraints != 'WIZARD_CANCELED')">
                     <subModelOperations xsi:type="tool:For" expression="aql:self.void2Null(selectedConstraints)">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%createConstraintWithConstaintedElementInDiagram($i,$diagram,$constraintsInDiagram,true)%>"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createConstraintWithConstaintedElementInDiagram(i,diagram,constraintsInDiagram,true)"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool:For" expression="aql:constraintsInDiagram">
                       <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selectedConstraints->includes(i))">
@@ -257,7 +257,7 @@
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.getDiagramContainer().forceRefresh%>"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().forceRefresh()"/>
                 </firstModelOperations>
               </initialOperation>
             </tools>
@@ -350,38 +350,38 @@
         <containerMappings name="OAIB Operational Activity" deletionDescription="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" labelDirectEdit="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='name']" semanticCandidatesExpression="" createElements="false" semanticElements="" domainClass="OperationalActivity" dropDescriptions="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='DnD%20DF%20AbstractFunction'] //@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20OperationalActivity%20From%20Project%20Explorer']" reusedContainerMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']/@defaultLayer/@containerMappings[name='OAIB%20Operational%20Activity']">
           <detailDescriptions xsi:type="tool_1:DiagramCreationDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capella%20Architecture']/@defaultLayer/@toolSections.0/@ownedTools[name='Operational%20Activity%20Breakdown']"/>
           <detailDescriptions xsi:type="tool_1:DiagramCreationDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capella%20Architecture']/@defaultLayer/@toolSections.0/@ownedTools[name='Operational%20Activity%20Interaction%20Blank']"/>
-          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="18" arcHeight="18" borderSizeComputationExpression="1" labelExpression="&lt;%$view.computeFunctionLabel%>" roundedCorner="true" backgroundStyle="GradientTopToBottom">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="18" arcHeight="18" borderSizeComputationExpression="1" labelExpression="aql:view.computeFunctionLabel()" roundedCorner="true" backgroundStyle="GradientTopToBottom">
             <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Border_Orange']"/>
             <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xDF_Activity_Label_Orange']"/>
             <backgroundColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Orange_min']"/>
             <foregroundColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Orange']"/>
           </style>
           <conditionnalStyles predicateExpression="service:isDuplicateFunction()">
-            <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="&lt;%$view.computeFunctionLabel%>" sizeComputationExpression="5" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionKind_Duplicate.png">
+            <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql:view.computeFunctionLabel()" sizeComputationExpression="5" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionKind_Duplicate.png">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="service:isGatherFunction()">
-            <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="&lt;%$view.computeFunctionLabel%>" sizeComputationExpression="5" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionKind_Gather.png">
+            <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql:view.computeFunctionLabel()" sizeComputationExpression="5" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionKind_Gather.png">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="service:isRouteFunction()">
-            <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="&lt;%$view.computeFunctionLabel%>" sizeComputationExpression="5" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionKind_Route.png">
+            <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql:view.computeFunctionLabel()" sizeComputationExpression="5" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionKind_Route.png">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="service:isSelectFunction()">
-            <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="&lt;%$view.computeFunctionLabel%>" sizeComputationExpression="5" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionKind_Select.png">
+            <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql:view.computeFunctionLabel()" sizeComputationExpression="5" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionKind_Select.png">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="service:isSplitFunction()">
-            <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="&lt;%$view.computeFunctionLabel%>" sizeComputationExpression="5" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionKind_Split.png">
+            <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql:view.computeFunctionLabel()" sizeComputationExpression="5" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionKind_Split.png">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
@@ -396,8 +396,8 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.getDFTarget()">
                 <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.isFunction()">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% current.createFunction()%>">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%allocateToCapability($containerView)%>"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createFunction()">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.allocateToCapability(containerView)"/>
                     <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
                       <parameters name="context" value="aql:container"/>
                       <parameters name="scope" value="aql:self"/>
@@ -413,7 +413,7 @@
             <sourceViewVariable name="sourceView"/>
             <targetViewVariable name="targetView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$source.createDFFunctionalExchange($sourceView, $targetView)%>"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:source.createDFFunctionalExchange(sourceView,targetView)"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:ToolDescription" documentation="Insert/Remove Operational Activities. Create or delete graphical objects corresponding to already existing Operational Activities. Removing an Operational Activity graphical object from the diagram does not delete the Operational Activity from the model. This tool does not modify the semantic model." name="Show/Hide Operational Activity" label="Operational Activities" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
@@ -438,7 +438,7 @@
                     <parameters name="visible functions" value="aql:visibleFunctions"/>
                     <parameters name="visible function views" value="aql:visibleFunctionViews"/>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.getDiagramContainer().forceRefresh%>"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().forceRefresh()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -460,7 +460,7 @@
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:If" conditionExpression="aql:(selectedExchanges != 'WIZARD_CANCELED')">
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.showDFFunctionalExchange(scope,selectedExchanges)"/>
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.getDiagramContainer().forceRefresh%>"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().forceRefresh()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -522,7 +522,7 @@
             <element name="element"/>
             <newViewContainer name="newContainerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$element.dndDFAbstractFunction($oldSemanticContainer, $newSemanticContainer)%>"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:element.dndDFAbstractFunction(oldSemanticContainer,newSemanticContainer)"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool_1:ContainerDropDescription" name="D&amp;D OperationalActivity From Project Explorer" precondition="aql:element.oclIsKindOf(oa::OperationalActivity) and element.canBeDropped(newViewContainer)" forceRefresh="true" mappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']/@defaultLayer/@containerMappings[name='OAIB%20Operational%20Activity']" dragSource="PROJECT_EXPLORER" moveEdges="true">
@@ -559,7 +559,7 @@
             <targetView name="targetView"/>
             <element name="element"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $element.reconnectFunctionalExchange($source,$target) %>"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:element.reconnectFunctionalExchange(source,target)"/>
             </initialOperation>
             <edgeView name="edgeView"/>
           </ownedTools>
@@ -578,7 +578,7 @@
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container">
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:containerView->filter(diagram::DDiagram)->size() = 1">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="Constraint" referenceName="ownedConstraints">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
                     </subModelOperations>
                   </subModelOperations>
                 </firstModelOperations>
@@ -623,7 +623,7 @@
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:(selectedConstraints != 'WIZARD_CANCELED')">
                     <subModelOperations xsi:type="tool:For" expression="aql:self.void2Null(selectedConstraints)">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%createConstraintWithConstaintedElementInDiagram($i,$diagram,$constraintsInDiagram,true)%>"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createConstraintWithConstaintedElementInDiagram(i,diagram,constraintsInDiagram,true)"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool:For" expression="aql:constraintsInDiagram">
                       <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selectedConstraints->includes(i))">
@@ -633,7 +633,7 @@
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.getDiagramContainer().forceRefresh%>"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().forceRefresh()"/>
                 </firstModelOperations>
               </initialOperation>
             </tools>
@@ -642,7 +642,7 @@
             <menuItemDescription xsi:type="tool:OperationAction" name="Create an Operational Process" precondition="&lt;%isValidFunctionalChainSelection($views)%>" forceRefresh="true">
               <view name="views"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%createFunctionalChain($views)%>">
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createFunctionalChain(views)">
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(fa::FunctionalChain)">
                     <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']/@defaultLayer/@nodeMappings[name='OAIB_OperationalProcessEnd']" containerViewExpression="aql:views->first().getDiagramContainer()"/>
                   </subModelOperations>
@@ -665,7 +665,7 @@
                   <parameters name="wizardMessage" value="Select States/Modes to display all its available functions."/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (elements = 'WIZARD_CANCELED')">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.showDFStateModes($elements)%>"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.showDFStateModes(elements)"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -683,7 +683,7 @@
                   <parameters name="wizardMessage" value="Select Scenarios to display all involved elements."/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (elements = 'WIZARD_CANCELED')">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.showDFScenarios($elements)%>"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.showDFScenarios(elements)"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -823,13 +823,13 @@
           <subNodeMappings name="OAB_Activity" preconditionExpression="service:isAllocatedFunction(container, containerView)" deletionDescription="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" labelDirectEdit="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='name']" semanticCandidatesExpression="" createElements="false" domainClass="OperationalActivity">
             <detailDescriptions xsi:type="tool_1:DiagramCreationDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capella%20Architecture']/@defaultLayer/@toolSections.0/@ownedTools[name='Operational%20Activity%20Breakdown']"/>
             <detailDescriptions xsi:type="tool_1:DiagramCreationDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capella%20Architecture']/@defaultLayer/@toolSections.0/@ownedTools[name='Operational%20Activity%20Interaction%20Blank']"/>
-            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="&lt;%$view.computeFunctionLabel%>" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="aql:view.computeFunctionLabel()" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Border_Orange']"/>
               <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Activity_Label_Orange']"/>
               <color xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Orange']"/>
             </style>
             <conditionnalStyles predicateExpression="service:isNotLeaf()">
-              <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="&lt;%$view.computeFunctionLabel%>" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
+              <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="aql:view.computeFunctionLabel()" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Border_Orange']"/>
                 <labelFormat>italic</labelFormat>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -863,25 +863,25 @@
                 <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.getOEBTarget()">
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(oa::Entity) and not (self.oclIsKindOf(oa::OperationalActor))">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="Entity" referenceName="ownedEntities" variableName="entity">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(oa::EntityPkg)">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="Entity" referenceName="ownedEntities" variableName="entity">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (self.oclIsKindOf(oa::Entity)) and not (self.oclIsKindOf(oa::EntityPkg))">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.getRootEntityPkg()">
                       <subModelOperations xsi:type="tool:CreateInstance" typeName="Entity" referenceName="ownedEntities" variableName="entity">
-                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(oa::OperationalActor)">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%current.eContainer()%>">
                       <subModelOperations xsi:type="tool:CreateInstance" typeName="Entity" referenceName="ownedEntities" variableName="entity">
-                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
@@ -897,25 +897,25 @@
                 <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.getOEBTarget()">
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(oa::Entity) and not (self.oclIsKindOf(oa::OperationalActor))">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="OperationalActor" referenceName="ownedEntities" variableName="entity">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(oa::EntityPkg)">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="OperationalActor" referenceName="ownedEntities" variableName="entity">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (self.oclIsKindOf(oa::Entity)) and not (self.oclIsKindOf(oa::EntityPkg))">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.getRootEntityPkg()">
                       <subModelOperations xsi:type="tool:CreateInstance" typeName="OperationalActor" referenceName="ownedEntities" variableName="entity">
-                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(oa::OperationalActor)">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%current.eContainer()%>">
                       <subModelOperations xsi:type="tool:CreateInstance" typeName="OperationalActor" referenceName="ownedEntities" variableName="entity">
-                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
@@ -929,7 +929,7 @@
             <sourceViewVariable name="sourceView"/>
             <targetViewVariable name="targetView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$source.createABComponentExchange($sourceView, $targetView)%> "/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:source.createABComponentExchange(sourceView,targetView)"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool_1:ToolGroup" name="Show Hide Entity">
@@ -1032,7 +1032,7 @@
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:(selectedExchanges != 'WIZARD_CANCELED')">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.insertRemoveCommunicationMeans(selectedExchanges)"/>
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.getDiagramContainer().forceRefresh%>"/>
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().forceRefresh()"/>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
@@ -1047,7 +1047,7 @@
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container">
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:containerView->filter(diagram::DDiagram)->size() = 1">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="Constraint" referenceName="ownedConstraints">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
                     </subModelOperations>
                   </subModelOperations>
                 </firstModelOperations>
@@ -1092,7 +1092,7 @@
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:(selectedConstraints != 'WIZARD_CANCELED')">
                     <subModelOperations xsi:type="tool:For" expression="aql:self.void2Null(selectedConstraints)">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%createConstraintWithConstaintedElementInDiagram($i,$diagram,$constraintsInDiagram,true)%>"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createConstraintWithConstaintedElementInDiagram(i,diagram,constraintsInDiagram,true)"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool:For" expression="aql:constraintsInDiagram">
                       <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selectedConstraints->includes(i))">
@@ -1102,7 +1102,7 @@
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.getDiagramContainer().forceRefresh%>"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().forceRefresh()"/>
                 </firstModelOperations>
               </initialOperation>
             </tools>
@@ -1241,7 +1241,7 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container">
                 <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container.getRootRolePkg()">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="Role" referenceName="ownedRoles" variableName="newRole">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="RoleAllocation" referenceName="ownedRoleAllocations">
@@ -1369,7 +1369,7 @@
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="ComponentFunctionalAllocation" referenceName="ownedFunctionalAllocation" variableName="allocation"/>
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container.getRootFunction()">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="OperationalActivity" referenceName="ownedFunctions" variableName="newOA">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:allocation">
@@ -1381,7 +1381,7 @@
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="ActivityAllocation" referenceName="ownedActivityAllocations" variableName="allocation"/>
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container.getRootFunction()">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="OperationalActivity" referenceName="ownedFunctions" variableName="newOA">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:allocation">
@@ -1398,7 +1398,7 @@
             <sourceViewVariable name="sourceView"/>
             <targetViewVariable name="targetView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$source.createABFunctionalExchange($sourceView, $targetView)%>"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:source.createABFunctionalExchange(sourceView,targetView)"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates new allocation relationships between selected Operational Activity and the target Operational Entity or Role. The newly allocated Operational Activity are automatically displayed on the target Operational Entity or Role. This tool modifies the semantic model." name="Manage Activity Allocation" label="Manage Activity Allocation" precondition="aql:container->select(x | x->filter(oa::Entity)->size() > 0 or x->filter(oa::Role)->size() > 0)->size() > 0" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@containerMappings[name='OAB_Entity1']/@subNodeMappings[name='OAB_Activity']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Manage.gif">
@@ -1421,7 +1421,7 @@
                           <subModelOperations xsi:type="tool:DeleteView"/>
                         </subModelOperations>
                         <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container.ownedActivityAllocations->select(ownedActivityAllocation | ownedActivityAllocation.targetElement = i)->first()">
-                          <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%removeCapellaElement()%>"/>
+                          <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.removeCapellaElement()"/>
                         </subModelOperations>
                       </subModelOperations>
                     </subModelOperations>
@@ -1455,7 +1455,7 @@
                           <subModelOperations xsi:type="tool:DeleteView"/>
                         </subModelOperations>
                         <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container.ownedFunctionalAllocation->select(x | x.function = i)->first()">
-                          <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%removeCapellaElement()%>"/>
+                          <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.removeCapellaElement()"/>
                         </subModelOperations>
                       </subModelOperations>
                     </subModelOperations>
@@ -1535,7 +1535,7 @@
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.getDiagramContainer().forceRefresh%>"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().forceRefresh()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -1628,7 +1628,7 @@
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.getDiagramContainer().forceRefresh%>"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().forceRefresh()"/>
                 </firstModelOperations>
               </initialOperation>
             </tools>
@@ -1650,7 +1650,7 @@
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.getDiagramContainer().forceRefresh%>"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().forceRefresh()"/>
                 </firstModelOperations>
               </initialOperation>
             </tools>
@@ -1702,7 +1702,7 @@
             <menuItemDescription xsi:type="tool:OperationAction" name="Create an Operational Process" precondition="&lt;%isValidFunctionalChainSelection($views)%>" forceRefresh="true">
               <view name="views"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%createFunctionalChain($views)%>">
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createFunctionalChain(views)">
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(fa::FunctionalChain)">
                     <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@nodeMappings[name='OAB_OperationalProcessEnd']" containerViewExpression="aql:views->first().getDiagramContainer()"/>
                   </subModelOperations>
@@ -1717,7 +1717,7 @@
             <targetView name="targetView"/>
             <element name="element"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $element.reconnectFunctionalExchange($source,$target) %>"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:element.reconnectFunctionalExchange(source,target)"/>
             </initialOperation>
             <edgeView name="edgeView"/>
           </ownedTools>
@@ -1736,7 +1736,7 @@
                   <parameters name="wizardMessage" value="Select States/Modes to display all its available functions."/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (elements = 'WIZARD_CANCELED')">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.showABStateModes($elements)%>"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.showABStateModes(elements)"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -1754,7 +1754,7 @@
                   <parameters name="wizardMessage" value="Select Scenarios to display all involved elements."/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (elements = 'WIZARD_CANCELED')">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.showABScenarios($elements)%>"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.showABScenarios(elements)"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -1820,7 +1820,7 @@
             </variable>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container.createFunction()%>">
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container.createFunction()">
                 <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
                   <parameters name="context" value="aql:container"/>
                   <parameters name="scope" value="aql:self"/>
@@ -1885,7 +1885,7 @@
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container">
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:containerView->filter(diagram::DDiagram)->size() = 1">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="Constraint" referenceName="ownedConstraints">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
                     </subModelOperations>
                   </subModelOperations>
                 </firstModelOperations>
@@ -1930,7 +1930,7 @@
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:(selectedConstraints != 'WIZARD_CANCELED')">
                     <subModelOperations xsi:type="tool:For" expression="aql:self.void2Null(selectedConstraints)">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%createConstraintWithConstaintedElementInDiagram($i,$diagram,$constraintsInDiagram,true)%>"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createConstraintWithConstaintedElementInDiagram(i,diagram,constraintsInDiagram,true)"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool:For" expression="aql:constraintsInDiagram">
                       <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selectedConstraints->includes(i))">
@@ -1940,7 +1940,7 @@
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.getDiagramContainer().forceRefresh%>"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().forceRefresh()"/>
                 </firstModelOperations>
               </initialOperation>
             </tools>
@@ -1976,13 +1976,13 @@
         </edgeMappings>
         <containerMappings name="ORB_Role1" deletionDescription="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Role%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" labelDirectEdit="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Role%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Rename%20Interaction']" semanticCandidatesExpression="" createElements="false" domainClass="Role" dropDescriptions="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Role%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='change%20allocation'] //@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Role%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20OperationalActivities%20From%20Project%20Explorer'] //@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Role%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Role%20From%20Project%20Explorer']">
           <subNodeMappings name="ORB_OAAllocation" preconditionExpression="aql:container.getShowableAllocatedOperationalActivities()->includes(self)" deletionDescription="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Role%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" labelDirectEdit="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Role%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Rename%20Interaction']" semanticCandidatesExpression="" createElements="false" domainClass="OperationalActivity">
-            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="&lt;%$view.computeFunctionLabel%>" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="aql:view.computeFunctionLabel()" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Border_Orange']"/>
               <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Border_Orange']"/>
               <color xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Orange']"/>
             </style>
             <conditionnalStyles predicateExpression="service:isNotLeaf()">
-              <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="&lt;%$view.computeFunctionLabel%>" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
+              <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="aql:view.computeFunctionLabel()" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Border_Orange']"/>
                 <labelFormat>italic</labelFormat>
                 <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Border_Orange']"/>
@@ -2007,7 +2007,7 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container">
                 <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.getRootRolePkg()">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="Role" referenceName="ownedRoles" variableName="role">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
@@ -2090,7 +2090,7 @@
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container">
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:containerView->filter(diagram::DDiagram)->size() = 1">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="Constraint" referenceName="ownedConstraints">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
                     </subModelOperations>
                   </subModelOperations>
                 </firstModelOperations>
@@ -2135,7 +2135,7 @@
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:(selectedConstraints != 'WIZARD_CANCELED')">
                     <subModelOperations xsi:type="tool:For" expression="aql:self.void2Null(selectedConstraints)">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%createConstraintWithConstaintedElementInDiagram($i,$diagram,$constraintsInDiagram,true)%>"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createConstraintWithConstaintedElementInDiagram(i,diagram,constraintsInDiagram,true)"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool:For" expression="aql:constraintsInDiagram">
                       <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selectedConstraints->includes(i))">
@@ -2145,7 +2145,7 @@
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.getDiagramContainer().forceRefresh%>"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().forceRefresh()"/>
                 </firstModelOperations>
               </initialOperation>
             </tools>
@@ -2180,7 +2180,7 @@
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="ActivityAllocation" referenceName="ownedActivityAllocations" variableName="allocation"/>
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container.getRootFunction()">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="OperationalActivity" referenceName="ownedFunctions" variableName="newOA">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:allocation">
@@ -2197,7 +2197,7 @@
             <sourceViewVariable name="sourceView"/>
             <targetViewVariable name="targetView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$source.createABFunctionalExchange($sourceView, $targetView)%>"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:source.createABFunctionalExchange(sourceView,targetView)"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:ToolDescription" documentation="Insert/Remove Operational Interactions. Creates or deletes graphical objects corresponding to already existing Operational Interactions. Removing an Operational Interaction graphical object from the diagram does not delete the Operational Interaction from the model. This tool does not modify the semantic model.&#xD;&#xA;" name="Show/Hide Interaction" label="Interactions" precondition="aql:(elementView.target->filter(fa::AbstractFunction)->size() > 0) and (elementView->filter(diagram::DDiagram)->size() = 0)" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
@@ -2256,7 +2256,7 @@
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.getDiagramContainer().forceRefresh%>"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().forceRefresh()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -2280,7 +2280,7 @@
                         <subModelOperations xsi:type="tool:DeleteView"/>
                       </subModelOperations>
                       <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container.ownedActivityAllocations->select(ownedActivityAllocation | ownedActivityAllocation.targetElement = i)->first()">
-                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%removeCapellaElement()%>"/>
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.removeCapellaElement()"/>
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
@@ -2339,7 +2339,7 @@
                     </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.getDiagramContainer().forceRefresh%>"/>
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().forceRefresh()"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -2370,7 +2370,7 @@
             <targetView name="targetView"/>
             <element name="element"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $element.reconnectFunctionalExchange($source,$target) %>"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:element.reconnectFunctionalExchange(source,target)"/>
             </initialOperation>
             <edgeView name="edgeView"/>
           </ownedTools>
@@ -2660,7 +2660,7 @@
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:self->filter(oa::OperationalAnalysis)->size() != 0">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.ownedEntityPkg">
                       <subModelOperations xsi:type="tool:CreateInstance" typeName="Entity" referenceName="ownedEntities" variableName="component">
-                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
@@ -2670,7 +2670,7 @@
                     <subModelOperations xsi:type="tool:SetValue" featureName="representedInstance" valueExpression="aql:component.abstractTypedElements->at(1)"/>
                     <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:component.name"/>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% reorderInstanceRole ($instance, $predecessor) %>"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.reorderInstanceRole(instance,predecessor)"/>
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.ensureCapabilityInvolvment(component)"/>
                 </subModelOperations>
               </firstModelOperations>
@@ -2686,7 +2686,7 @@
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:self->filter(oa::OperationalAnalysis)->size() != 0">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.ownedEntityPkg">
                       <subModelOperations xsi:type="tool:CreateInstance" typeName="OperationalActor" referenceName="ownedEntities" variableName="actor">
-                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
@@ -2696,7 +2696,7 @@
                     <subModelOperations xsi:type="tool:SetValue" featureName="representedInstance" valueExpression="aql:actor.abstractTypedElements->at(1)"/>
                     <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:actor.name"/>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% reorderInstanceRole ($instance, $predecessor) %>"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.reorderInstanceRole(instance,predecessor)"/>
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.ensureCapabilityInvolvment(actor)"/>
                 </subModelOperations>
               </firstModelOperations>
@@ -2712,7 +2712,7 @@
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:self->filter(oa::OperationalAnalysis)->size() != 0">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.ownedRolePkg">
                       <subModelOperations xsi:type="tool:CreateInstance" typeName="Role" referenceName="ownedRoles" variableName="component">
-                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
@@ -2722,7 +2722,7 @@
                     <subModelOperations xsi:type="tool:SetValue" featureName="representedInstance" valueExpression="aql:component"/>
                     <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:component.name"/>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% reorderInstanceRole ($instance, $predecessor) %>"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.reorderInstanceRole(instance,predecessor)"/>
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.ensureCapabilityInvolvment(component)"/>
                 </subModelOperations>
               </firstModelOperations>
@@ -2749,7 +2749,7 @@
                           <subModelOperations xsi:type="tool:SetValue" featureName="representedInstance" valueExpression="aql:i"/>
                           <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:i.name"/>
                         </subModelOperations>
-                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% reorderInstanceRole ($instance, $predecessor) %>"/>
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.reorderInstanceRole(instance,predecessor)"/>
                         <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.ensureCapabilityInvolvment(i.abstractType)"/>
                       </subModelOperations>
                     </subModelOperations>
@@ -3175,7 +3175,7 @@
             <startingEndPredecessor name="messageEndBefore"/>
             <finishingEndPredecessor name="messageEndAfter"/>
           </ownedTools>
-          <ownedTools xsi:type="tool_2:MessageCreationTool" documentation="Creates a new Create Sequence Message invoking an Operational Interaction or Communication Mean between the Source and Target Lifelines representing existing Operational Entities Parts. This tool opens a selection wizard to select an available existing Operational Interaction or Communication Mean." name="Create message" precondition="&lt;% allowCreateMessageCreation ($preTargetView.target, $preSourceView.target, $messageEndBefore.semanticEnd, $messageEndAfter.semanticEnd) %>" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']/@defaultLayer/@edgeMappings[name='Basic%20message%20mapping%20OA']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/CreateSequenceMessage.gif">
+          <ownedTools xsi:type="tool_2:MessageCreationTool" documentation="Creates a new Create Sequence Message invoking an Operational Interaction or Communication Mean between the Source and Target Lifelines representing existing Operational Entities Parts. This tool opens a selection wizard to select an available existing Operational Interaction or Communication Mean." name="Create message" precondition="aql:self.allowCreateMessageCreation2(preTargetView.target,preSourceView.target,messageEndBefore,messageEndAfter)" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']/@defaultLayer/@edgeMappings[name='Basic%20message%20mapping%20OA']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/CreateSequenceMessage.gif">
             <sourceVariable name="source">
               <subVariables xsi:type="tool:AcceleoVariable" name="sourceIR" computationExpression="aql:if (self->filter(interaction::Execution)->size() > 0) then self.covered else self endif"/>
             </sourceVariable>
@@ -3233,7 +3233,7 @@
             <startingEndPredecessor name="messageEndBefore"/>
             <finishingEndPredecessor name="messageEndAfter"/>
           </ownedTools>
-          <ownedTools xsi:type="tool_2:MessageCreationTool" documentation="Creates a new Create Sequence Message invoking an Operational Interaction or Communication Mean between the Source and Target Lifelines representing existing Operational Entities Parts. This tool opens a selection wizard to select an available existing Operational Interaction or Communication Mean." name="Delete message" precondition="&lt;% allowDeleteMessageCreation ($preTargetView.target, $preSourceView.target, $messageEndBefore.semanticEnd, $messageEndAfter.semanticEnd)%>" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']/@defaultLayer/@edgeMappings[name='Basic%20message%20mapping%20OA']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/DeleteSequenceMessage.gif">
+          <ownedTools xsi:type="tool_2:MessageCreationTool" documentation="Creates a new Create Sequence Message invoking an Operational Interaction or Communication Mean between the Source and Target Lifelines representing existing Operational Entities Parts. This tool opens a selection wizard to select an available existing Operational Interaction or Communication Mean." name="Delete message" precondition="aql:self.allowDeleteMessageCreation2(preTargetView.target,preSourceView.target,messageEndBefore,messageEndAfter)" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']/@defaultLayer/@edgeMappings[name='Basic%20message%20mapping%20OA']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/DeleteSequenceMessage.gif">
             <sourceVariable name="source">
               <subVariables xsi:type="tool:AcceleoVariable" name="sourceIR" computationExpression="aql:if (self->filter(interaction::Execution)->size() > 0) then self.covered else self endif"/>
             </sourceVariable>
@@ -3867,7 +3867,7 @@
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container">
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:containerView->filter(diagram::DDiagram)->size() = 1">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="Constraint" referenceName="ownedConstraints">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
                     </subModelOperations>
                   </subModelOperations>
                 </firstModelOperations>
@@ -3922,7 +3922,7 @@
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.getDiagramContainer().forceRefresh%>"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().forceRefresh()"/>
                 </firstModelOperations>
               </initialOperation>
             </tools>
@@ -4163,7 +4163,7 @@
                 <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.eContainerOrSelf(cs::BlockArchitecture)">
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.ownedFunctionPkg.ownedOperationalActivities->at(1)">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="OperationalActivity" referenceName="ownedFunctions" variableName="component">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
                     </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
@@ -4172,7 +4172,7 @@
                     <subModelOperations xsi:type="tool:SetValue" featureName="representedInstance" valueExpression="aql:component"/>
                     <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:component.name"/>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% reorderInstanceRole ($instance, $predecessor) %>"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.reorderInstanceRole(instance,predecessor)"/>
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.ensureCapabilityInvolvment(component)"/>
                 </subModelOperations>
               </firstModelOperations>
@@ -4199,7 +4199,7 @@
                           <subModelOperations xsi:type="tool:SetValue" featureName="representedInstance" valueExpression="aql:i"/>
                           <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:i.name"/>
                         </subModelOperations>
-                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% reorderInstanceRole ($instance, $predecessor) %>"/>
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.reorderInstanceRole(instance,predecessor)"/>
                         <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.ensureCapabilityInvolvment(i)"/>
                       </subModelOperations>
                     </subModelOperations>
@@ -4791,7 +4791,7 @@
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container">
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:containerView->filter(diagram::DDiagram)->size() = 1">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="Constraint" referenceName="ownedConstraints">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
                     </subModelOperations>
                   </subModelOperations>
                 </firstModelOperations>
@@ -4846,7 +4846,7 @@
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.getDiagramContainer().forceRefresh%>"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().forceRefresh()"/>
                 </firstModelOperations>
               </initialOperation>
             </tools>
@@ -5003,7 +5003,7 @@
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.getDiagramContainer().forceRefresh%>"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().forceRefresh()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -5060,7 +5060,7 @@
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container">
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:containerView->filter(diagram::DDiagram)->size() = 1">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="Constraint" referenceName="ownedConstraints">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
                     </subModelOperations>
                   </subModelOperations>
                 </firstModelOperations>
@@ -5105,7 +5105,7 @@
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:(selectedConstraints != 'WIZARD_CANCELED')">
                     <subModelOperations xsi:type="tool:For" expression="aql:self.void2Null(selectedConstraints)">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%createConstraintWithConstaintedElementInDiagram($i,$diagram,$constraintsInDiagram,true)%>"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createConstraintWithConstaintedElementInDiagram(i,diagram,constraintsInDiagram,true)"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool:For" expression="aql:constraintsInDiagram">
                       <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selectedConstraints->includes(i))">
@@ -5115,7 +5115,7 @@
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.getDiagramContainer().forceRefresh%>"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().forceRefresh()"/>
                 </firstModelOperations>
               </initialOperation>
             </tools>
@@ -5214,18 +5214,18 @@
                 <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.getOEBTarget()">
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(oa::Entity)">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="Entity" referenceName="ownedEntities" variableName="entity">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(oa::EntityPkg)">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="Entity" referenceName="ownedEntities" variableName="entity">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (self.oclIsKindOf(oa::Entity)) and not (self.oclIsKindOf(oa::EntityPkg))">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.getRootEntityPkg()">
                       <subModelOperations xsi:type="tool:CreateInstance" typeName="Entity" referenceName="ownedEntities" variableName="entity">
-                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
@@ -5241,18 +5241,18 @@
                 <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.getOEBTarget()">
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(oa::Entity)">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="OperationalActor" referenceName="ownedEntities" variableName="entity">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(oa::EntityPkg)">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="OperationalActor" referenceName="ownedEntities" variableName="entity">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (self.oclIsKindOf(oa::Entity)) and not (self.oclIsKindOf(oa::EntityPkg))">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.getRootEntityPkg()">
                       <subModelOperations xsi:type="tool:CreateInstance" typeName="OperationalActor" referenceName="ownedEntities" variableName="entity">
-                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
@@ -5266,7 +5266,7 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="OperationalCapability" referenceName="ownedOperationalCapabilities">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -5277,7 +5277,7 @@
             <sourceViewVariable name="sourceView"/>
             <targetViewVariable name="targetView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$source.createABComponentExchange($sourceView, $targetView)%> "/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:source.createABComponentExchange(sourceView,targetView)"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Creates a new Involvement relationship between a source Operational Capability and a target Operational Entity / Actor" name="Involvement" precondition="aql:not (preSource.ownedEntityOperationalCapabilityInvolvements.involved->includes(preTarget))" edgeMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Capabilities%20Blank']/@defaultLayer/@edgeMappings[name='COC_EntityOperationalCapabilityInvolvement']">
@@ -5288,7 +5288,7 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:source">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="EntityOperationalCapabilityInvolvement" referenceName="ownedEntityOperationalCapabilityInvolvements">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="involved" valueExpression="aql:target"/>
                 </subModelOperations>
               </firstModelOperations>
@@ -5337,10 +5337,10 @@
             </element>
             <elementView name="elementView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.genericSelectElements%>">
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.genericSelectElements()">
                 <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (resultVariable = 'WIZARD_CANCELED')">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.genericShowHideElements%>"/>
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.getDiagramContainer().forceRefresh%>"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.genericShowHideElements()"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().forceRefresh()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -5351,10 +5351,10 @@
             </element>
             <elementView name="elementView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.genericSelectElements%>">
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.genericSelectElements()">
                 <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (resultVariable = 'WIZARD_CANCELED')">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.genericShowHideElements%>"/>
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.getDiagramContainer().forceRefresh%>"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.genericShowHideElements()"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().forceRefresh()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -5365,10 +5365,10 @@
             </element>
             <elementView name="elementView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.genericSelectElements%>">
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.genericSelectElements()">
                 <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (resultVariable = 'WIZARD_CANCELED')">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.genericShowHideElements%>"/>
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.getDiagramContainer().forceRefresh%>"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.genericShowHideElements()"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().forceRefresh()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -5406,7 +5406,7 @@
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container">
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:containerView->filter(diagram::DDiagram)->size() = 1">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="Constraint" referenceName="ownedConstraints">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
                     </subModelOperations>
                   </subModelOperations>
                 </firstModelOperations>
@@ -5451,7 +5451,7 @@
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:(selectedConstraints != 'WIZARD_CANCELED')">
                     <subModelOperations xsi:type="tool:For" expression="aql:self.void2Null(selectedConstraints)">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%createConstraintWithConstaintedElementInDiagram($i,$diagram,$constraintsInDiagram,true)%>"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createConstraintWithConstaintedElementInDiagram(i,diagram,constraintsInDiagram,true)"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool:For" expression="aql:constraintsInDiagram">
                       <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selectedConstraints->includes(i))">
@@ -5461,7 +5461,7 @@
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.getDiagramContainer().forceRefresh%>"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().forceRefresh()"/>
                 </firstModelOperations>
               </initialOperation>
             </tools>
@@ -5642,18 +5642,18 @@
                 <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.getOEBTarget()">
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(oa::Entity)">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="Entity" referenceName="ownedEntities" variableName="entity">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(oa::EntityPkg)">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="Entity" referenceName="ownedEntities" variableName="entity">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (self.oclIsKindOf(oa::Entity)) and not (self.oclIsKindOf(oa::EntityPkg))">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.getRootEntityPkg()">
                       <subModelOperations xsi:type="tool:CreateInstance" typeName="Entity" referenceName="ownedEntities" variableName="entity">
-                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
@@ -5669,18 +5669,18 @@
                 <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.getOEBTarget()">
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(oa::Entity)">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="OperationalActor" referenceName="ownedEntities" variableName="entity">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(oa::EntityPkg)">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="OperationalActor" referenceName="ownedEntities" variableName="entity">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (self.oclIsKindOf(oa::Entity)) and not (self.oclIsKindOf(oa::EntityPkg))">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.getRootEntityPkg()">
                       <subModelOperations xsi:type="tool:CreateInstance" typeName="OperationalActor" referenceName="ownedEntities" variableName="entity">
-                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
@@ -5694,7 +5694,7 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container.eContainer()">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="OperationalCapability" referenceName="ownedOperationalCapabilities" variableName="capa">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -5707,7 +5707,7 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:source">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="EntityOperationalCapabilityInvolvement" referenceName="ownedEntityOperationalCapabilityInvolvements">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="involved" valueExpression="aql:target"/>
                 </subModelOperations>
               </firstModelOperations>
@@ -5756,10 +5756,10 @@
             </element>
             <elementView name="elementView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.genericSelectElements%>">
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.genericSelectElements()">
                 <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (resultVariable = 'WIZARD_CANCELED')">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.genericShowHideElements%>"/>
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.getDiagramContainer().forceRefresh%>"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.genericShowHideElements()"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().forceRefresh()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -5770,10 +5770,10 @@
             </element>
             <elementView name="elementView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.genericSelectElements%>">
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.genericSelectElements()">
                 <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (resultVariable = 'WIZARD_CANCELED')">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.genericShowHideElements%>"/>
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.getDiagramContainer().forceRefresh%>"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.genericShowHideElements()"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().forceRefresh()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -5784,10 +5784,10 @@
             </element>
             <elementView name="elementView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.genericSelectElements%>">
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.genericSelectElements()">
                 <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (resultVariable = 'WIZARD_CANCELED')">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.genericShowHideElements%>"/>
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.getDiagramContainer().forceRefresh%>"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.genericShowHideElements()"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().forceRefresh()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -5825,7 +5825,7 @@
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container">
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:containerView->filter(diagram::DDiagram)->size() = 1">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="Constraint" referenceName="ownedConstraints">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
                     </subModelOperations>
                   </subModelOperations>
                 </firstModelOperations>
@@ -5870,7 +5870,7 @@
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:(selectedConstraints != 'WIZARD_CANCELED')">
                     <subModelOperations xsi:type="tool:For" expression="aql:self.void2Null(selectedConstraints)">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%createConstraintWithConstaintedElementInDiagram($i,$diagram,$constraintsInDiagram,true)%>"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createConstraintWithConstaintedElementInDiagram(i,diagram,constraintsInDiagram,true)"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool:For" expression="aql:constraintsInDiagram">
                       <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selectedConstraints->includes(i))">
@@ -5880,7 +5880,7 @@
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.getDiagramContainer().forceRefresh%>"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().forceRefresh()"/>
                 </firstModelOperations>
               </initialOperation>
             </tools>
