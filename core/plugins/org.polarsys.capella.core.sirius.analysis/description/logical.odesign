@@ -1172,7 +1172,7 @@
               <viewVariable name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.getDFTarget()">
-                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.isFunction() or isActorFunction()">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.isFunction() or self.isActorFunction()">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createDuplicateFunction()">
                       <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.allocateToCapability(containerView)"/>
                       <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
@@ -1189,7 +1189,7 @@
               <viewVariable name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.getDFTarget()">
-                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.isFunction() or isActorFunction()">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.isFunction() or self.isActorFunction()">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createGatherFunction()">
                       <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.allocateToCapability(containerView)"/>
                       <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
@@ -1206,7 +1206,7 @@
               <viewVariable name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.getDFTarget()">
-                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.isFunction() or isActorFunction()">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.isFunction() or self.isActorFunction()">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createRouteFunction()">
                       <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.allocateToCapability(containerView)"/>
                       <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
@@ -1223,7 +1223,7 @@
               <viewVariable name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.getDFTarget()">
-                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.isFunction() or isActorFunction()">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.isFunction() or self.isActorFunction()">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createSelectFunction()">
                       <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.allocateToCapability(containerView)"/>
                       <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
@@ -1240,7 +1240,7 @@
               <viewVariable name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.getDFTarget()">
-                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.isFunction() or isActorFunction()">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.isFunction() or self.isActorFunction()">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createSplitFunction()">
                       <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.allocateToCapability(containerView)"/>
                       <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">

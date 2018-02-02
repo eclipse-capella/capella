@@ -17078,7 +17078,7 @@
           <conditionnalStyles predicateExpression="aql:self.representedInstance.componentFunctionalAllocations.block->filter(cs::AbstractActor)->size() != 0">
             <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Border_Blue']" labelExpression="aql:self.getInstanceRoleLabel()" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue_label']" labelPosition="node" resizeKind="EAST_WEST" width="10" height="5" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue']"/>
           </conditionnalStyles>
-          <conditionnalStyles predicateExpression="aql:not (self.representedInstance.isControlNode()) and not (self.representedInstance.isAllLeavesFunctionActorAllocated)">
+          <conditionnalStyles predicateExpression="aql:not (self.representedInstance.isControlNode()) and not (self.representedInstance.isAllLeavesFunctionActorAllocated())">
             <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']" labelExpression="aql:self.getInstanceRoleLabel()" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Label_Green']" labelPosition="node" resizeKind="EAST_WEST" width="10" height="5" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Green']"/>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;%representedInstance.isAllLeavesFunctionActorAllocated%>">
