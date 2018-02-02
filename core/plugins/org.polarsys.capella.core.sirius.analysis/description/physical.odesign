@@ -41,7 +41,7 @@
           <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
           <variables name="root" documentation="The semantic element of the table."/>
           <firstModelOperation xsi:type="tool:If" conditionExpression="aql:arg0 = '' and root.eAllContents()->filter(requirement::RequirementsTrace)->select(x | x.targetElement = columnSemantic and x.sourceElement = lineSemantic)->size() > 0">
-            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$root.eAllContents().filter(&quot;RequirementsTrace&quot;)[targetElement == $columnSemantic &amp;&amp; sourceElement == $lineSemantic].nFirst()%>">
+            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:root.eAllContents()->filter(requirement::RequirementsTrace)->select(x | x.targetElement = columnSemantic and x.sourceElement = lineSemantic)->first()">
               <subModelOperations xsi:type="tool:RemoveElement"/>
             </subModelOperations>
           </firstModelOperation>
@@ -91,7 +91,7 @@
           <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
           <variables name="root" documentation="The semantic element of the table."/>
           <firstModelOperation xsi:type="tool:If" conditionExpression="aql:arg0 = '' and root.eAllContents()->filter(requirement::RequirementsTrace)->select(x | x.targetElement = columnSemantic and x.sourceElement = lineSemantic)->size() > 0">
-            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$root.eAllContents().filter(&quot;RequirementsTrace&quot;)[targetElement == $columnSemantic &amp;&amp; sourceElement == $lineSemantic].nFirst()%>">
+            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:root.eAllContents()->filter(requirement::RequirementsTrace)->select(x | x.targetElement = columnSemantic and x.sourceElement = lineSemantic)->first()">
               <subModelOperations xsi:type="tool:RemoveElement"/>
             </subModelOperations>
           </firstModelOperation>
@@ -138,7 +138,7 @@
           <variables name="root" documentation="The semantic element corresponding to the current table."/>
         </delete>
       </ownedLineMappings>
-      <ownedColumnMappings name="Logical Functions 2" headerLabelExpression="feature:name" domainClass="AbstractFunction" semanticCandidatesExpression="&lt;%getRootContainer().eAllContents().filter(&quot;LogicalArchitecture&quot;).eAllContents().filter(&quot;AbstractFunction&quot;).nFirst().eAllContents().filter(&quot;AbstractFunction&quot;)%>">
+      <ownedColumnMappings name="Logical Functions 2" headerLabelExpression="feature:name" domainClass="AbstractFunction" semanticCandidatesExpression="aql:self.getRootContainer().eAllContents()->filter(la::LogicalArchitecture).eAllContents()->filter(fa::AbstractFunction)->first().eAllContents()->filter(fa::AbstractFunction)">
         <delete name="No delete" precondition="false">
           <variables name="element" documentation="The currently edited element."/>
           <variables name="root" documentation="The semantic element corresponding to the current table."/>
@@ -153,7 +153,7 @@
           <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
           <variables name="root" documentation="The semantic element of the table."/>
           <firstModelOperation xsi:type="tool:If" conditionExpression="aql:arg0 = '' and lineSemantic.ownedFunctionRealizations->select(ownedFunctionRealization | ownedFunctionRealization.allocatedFunction = columnSemantic and ownedFunctionRealization.allocatingFunction = lineSemantic)->size() > 0">
-            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$lineSemantic.ownedFunctionRealizations[allocatedFunction == $columnSemantic &amp;&amp; allocatingFunction == $lineSemantic].nFirst()%>">
+            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:lineSemantic.ownedFunctionRealizations->select(ownedFunctionRealization | ownedFunctionRealization.allocatedFunction = columnSemantic and ownedFunctionRealization.allocatingFunction = lineSemantic)->first()">
               <subModelOperations xsi:type="tool:RemoveElement"/>
             </subModelOperations>
           </firstModelOperation>
@@ -188,7 +188,7 @@
           <variables name="root" documentation="The semantic element corresponding to the current table."/>
         </delete>
       </ownedLineMappings>
-      <ownedColumnMappings name="Logical Components" headerLabelExpression="feature:name" domainClass="LogicalComponent" semanticCandidatesExpression="&lt;%getRootContainer().eAllContents().filter(&quot;LogicalComponent&quot;).nFirst().eAllContents().filter(&quot;LogicalComponent&quot;)[subLogicalComponents.nSize() == 0]%>">
+      <ownedColumnMappings name="Logical Components" headerLabelExpression="feature:name" domainClass="LogicalComponent" semanticCandidatesExpression="aql:self.getRootContainer().eAllContents()->filter(la::LogicalComponent)->first().eAllContents()->filter(la::LogicalComponent)->select(x | x.subLogicalComponents->size() = 0)">
         <delete name="No delete" precondition="false">
           <variables name="element" documentation="The currently edited element."/>
           <variables name="root" documentation="The semantic element corresponding to the current table."/>
@@ -203,7 +203,7 @@
           <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
           <variables name="root" documentation="The semantic element of the table."/>
           <firstModelOperation xsi:type="tool:If" conditionExpression="aql:arg0 = '' and lineSemantic.ownedLogicalComponentRealizations->select(ownedLogicalComponentRealization | ownedLogicalComponentRealization.allocatedComponent = columnSemantic and ownedLogicalComponentRealization.allocatingComponent = lineSemantic)->size() > 0">
-            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$lineSemantic.ownedLogicalComponentRealizations[allocatedComponent == $columnSemantic &amp;&amp; allocatingComponent == $lineSemantic].nFirst()%>">
+            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:lineSemantic.ownedLogicalComponentRealizations->select(ownedLogicalComponentRealization | ownedLogicalComponentRealization.allocatedComponent = columnSemantic and ownedLogicalComponentRealization.allocatingComponent = lineSemantic)->first()">
               <subModelOperations xsi:type="tool:RemoveElement"/>
             </subModelOperations>
           </firstModelOperation>
@@ -253,7 +253,7 @@
           <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
           <variables name="root" documentation="The semantic element of the table."/>
           <firstModelOperation xsi:type="tool:If" conditionExpression="aql:arg0 = '' and lineSemantic.ownedFunctionalAllocation->select(x | x.function = columnSemantic and x.block = lineSemantic)->size() > 0">
-            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$lineSemantic.ownedFunctionalAllocation[function == $columnSemantic &amp;&amp; block == $lineSemantic].nFirst()%>">
+            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:lineSemantic.ownedFunctionalAllocation->select(x | x.function = columnSemantic and x.block = lineSemantic)->first()">
               <subModelOperations xsi:type="tool:RemoveElement"/>
             </subModelOperations>
           </firstModelOperation>
@@ -282,7 +282,7 @@
           <variables name="root" documentation="The semantic element corresponding to the current table."/>
         </delete>
       </ownedLineMappings>
-      <ownedColumnMappings name="PILI Logical Interface column" initialWidth="50" domainClass="Interface" semanticCandidatesExpression="&lt;%precedingSibling.filter(&quot;BlockArchitecture&quot;).nLast().eAllContents().filter(&quot;Interface&quot;)%>">
+      <ownedColumnMappings name="PILI Logical Interface column" initialWidth="50" domainClass="Interface" semanticCandidatesExpression="aql:self.precedingSibling->filter(cs::BlockArchitecture)->last().eAllContents()->filter(cs::Interface)">
         <delete name="No delete" precondition="false">
           <variables name="element" documentation="The currently edited element."/>
           <variables name="root" documentation="The semantic element corresponding to the current table."/>
@@ -297,7 +297,7 @@
           <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
           <variables name="root" documentation="The semantic element of the table."/>
           <firstModelOperation xsi:type="tool:If" conditionExpression="aql:arg0 = '' and root.eAllContents()->filter(pa::LogicalInterfaceRealization)->select(x | x.targetElement = columnSemantic and x.sourceElement = lineSemantic)->size() > 0">
-            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$root.eAllContents().filter(&quot;LogicalInterfaceRealization&quot;)[targetElement == $columnSemantic &amp;&amp; sourceElement == $lineSemantic].nFirst()%>">
+            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:root.eAllContents()->filter(pa::LogicalInterfaceRealization)->select(x | x.targetElement = columnSemantic and x.sourceElement = lineSemantic)->first()">
               <subModelOperations xsi:type="tool:RemoveElement"/>
             </subModelOperations>
           </firstModelOperation>
@@ -518,7 +518,7 @@
             <elementView name="elementView"/>
             <containerView name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.sourceNode.target.dndDFBAbstractFunction($elementView.sourceNode.target.eContainer, $containerView.target)%>"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.sourceNode.target.dndDFBAbstractFunction(elementView.sourceNode.target.eContainer(),containerView.target)"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool_1:DeleteElementDescription" name="delete SF" precondition="&lt;%!($containerView[!filter(&quot;DDiagram&quot;)].eContainer(&quot;DDiagram&quot;).target + $containerView[filter(&quot;DDiagram&quot;)].target.ancestor + $containerView[filter(&quot;DDiagram&quot;)].target + $containerView[!filter(&quot;DDiagram&quot;)].eContainer(&quot;DDiagram&quot;).target.ancestor).nContains($element)%>" forceRefresh="true">
@@ -1107,7 +1107,7 @@
                   <subModelOperations xsi:type="tool:For" expression="aql:initialSelection">
                     <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selectedFunctionalChains->includes(i))">
                       <subModelOperations xsi:type="tool:If" conditionExpression="aql:diagram.target.oclIsKindOf(interaction::AbstractCapability)">
-                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $diagram.target.removeFunctionalChainAbstractCapabilityInvolvement($i)%>"/>
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:diagram.target.removeFunctionalChainAbstractCapabilityInvolvement(i)"/>
                       </subModelOperations>
                       <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.getNodesAndNodeListElements()->select(getNodesAndNodeListElement | getNodesAndNodeListElement.target = i)->first()">
                         <subModelOperations xsi:type="tool:DeleteView"/>
@@ -1116,7 +1116,7 @@
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:For" expression="aql:self.void2Null(self.makeDiff(selectedFunctionalChains, initialSelection))">
                     <subModelOperations xsi:type="tool:If" conditionExpression="aql:diagram.target.oclIsKindOf(interaction::AbstractCapability)">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $diagram.target.createFunctionalChainAbstractCapabilityInvolvement($i)%>"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:diagram.target.createFunctionalChainAbstractCapabilityInvolvement(i)"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:i">
                       <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Data%20Flow%20Blank']/@defaultLayer/@nodeMappings[name='PDFB_FunctionalChainEnd']" containerViewExpression="aql:containerView"/>
@@ -1322,7 +1322,7 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.void2Null(element)">
                 <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (newContainerView.getDiagramContainer().target.oclIsKindOf(fa::AbstractFunction))">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$newContainerView.getDiagramContainer().target%>">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:newContainerView.getDiagramContainer().target">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="AbstractFunctionAbstractCapabilityInvolvement" referenceName="ownedAbstractFunctionAbstractCapabilityInvolvements" variableName="involvement">
                       <subModelOperations xsi:type="tool:SetValue" featureName="involved" valueExpression="aql:self.void2Null(element)"/>
                     </subModelOperations>
@@ -1403,9 +1403,9 @@
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:diagram.target.oclIsKindOf(interaction::AbstractCapability)">
                     <subModelOperations xsi:type="tool:For" expression="aql:selectedFunctionalChains">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $diagram.target.createFunctionalChainAbstractCapabilityInvolvement($i)%>"/>
-                      <subModelOperations xsi:type="tool:For" expression="&lt;%$i.getOwnedFunctionalChainInvolvements.involved.filter(&quot;AbstractFunction&quot;)%>" iteratorName="j">
-                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $diagram.target.createAbstractFunctionAbstractCapabilityInvolvement($j)%>"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:diagram.target.createFunctionalChainAbstractCapabilityInvolvement(i)"/>
+                      <subModelOperations xsi:type="tool:For" expression="aql:i.getOwnedFunctionalChainInvolvements.involved->filter(fa::AbstractFunction)" iteratorName="j">
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:diagram.target.createAbstractFunctionAbstractCapabilityInvolvement(j)"/>
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
@@ -1442,7 +1442,7 @@
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//datatype"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//datavalue"/>
       <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
-      <layout xsi:type="description_2:OrderedTreeLayout" childrenExpression="&lt;%ownedFeatures.filter(&quot;Part&quot;).abstractType%>" nodeMapping="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Component%20Breakdown']/@defaultLayer/@nodeMappings[name='PCB_PhysicalComponent']"/>
+      <layout xsi:type="description_2:OrderedTreeLayout" childrenExpression="aql:self.ownedFeatures->filter(cs::Part).abstractType" nodeMapping="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Component%20Breakdown']/@defaultLayer/@nodeMappings[name='PCB_PhysicalComponent']"/>
       <defaultLayer name="default">
         <nodeMappings name="PCB_PhysicalComponent" navigationDescriptions="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Component%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20from%20PCB%20to%20PAB']" deletionDescription="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Component%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='Physical%20Component']" labelDirectEdit="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Component%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='PCB%20Rename']" semanticCandidatesExpression="aql:self.makeUnion(self->select(x | x.representingPartitions.eContainer()->filter(cs::ComponentContext)->size() = 0), self.getAllDescendants())" synchronizationLock="true" domainClass="PhysicalComponent">
           <detailDescriptions xsi:type="tool_1:DiagramCreationDescription" href="#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Component%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='Physical%20Component%20Breakdown']"/>
@@ -1587,7 +1587,7 @@
             <elementView name="view"/>
             <containerView name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.sourceNode.target.dndABDComponent($elementView.sourceNode.target.eContainer, $containerView.target)%>"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.sourceNode.target.dndABDComponent(elementView.sourceNode.target.eContainer(),containerView.target)"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool_1:DeleteElementDescription" name="Physical Component" precondition="&lt;%!($containerView[!filter(&quot;DDiagram&quot;)].eContainer(&quot;DDiagram&quot;).target + $containerView[filter(&quot;DDiagram&quot;)].target.ancestor + $containerView[filter(&quot;DDiagram&quot;)].target + $containerView[!filter(&quot;DDiagram&quot;)].eContainer(&quot;DDiagram&quot;).target.ancestor).nContains($element)%>">
@@ -1706,7 +1706,7 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self">
                 <subModelOperations xsi:type="tool:If" conditionExpression="aql:edgeView.semanticElements->size() = 1">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$edgeView.semanticElements.nGet(0).dndABDComponent($source, $target)%>"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:edgeView.semanticElements->at(1).dndABDComponent(source,target)"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:If" conditionExpression="aql:edgeView.semanticElements->size() > 1">
                   <subModelOperations xsi:type="tool:ExternalJavaAction" name="select part" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementFromListWizard">
@@ -1722,7 +1722,7 @@
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:edgeView">
                     <subModelOperations xsi:type="tool:DeleteView"/>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$sourceView.getDiagramContainer().refresh()%>"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:sourceView.getDiagramContainer().refresh()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -2483,7 +2483,7 @@
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:components != 'WIZARD_CANCELED'">
                     <subModelOperations xsi:type="tool:For" expression="aql:components">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$containerType.getArchitecture().getContext()%>">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerType.getArchitecture().getContext()">
                         <subModelOperations xsi:type="tool:CreateInstance" typeName="cs.Part" referenceName="ownedFeatures" variableName="part">
                           <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
                           <subModelOperations xsi:type="tool:SetValue" featureName="abstractType" valueExpression="aql:i"/>
@@ -2732,10 +2732,10 @@
               <elementView name="elementView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView">
-                  <subModelOperations xsi:type="tool:For" expression="&lt;%$elementView.getAllContainers()[(target.filter(&quot;Component&quot;).nSize()>0 || target.filter(&quot;Part&quot;).nSize()>0)] %>">
+                  <subModelOperations xsi:type="tool:For" expression="aql:elementView.getAllContainersNew()->select(x | (x.target->filter(cs::Component)->size() > 0 or x.target->filter(cs::Part)->size() > 0))">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:i">
-                      <subModelOperations xsi:type="tool:For" expression="&lt;%$i.target.getDeployedComponents()%>" iteratorName="j">
-                        <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%!$i.ownedDiagramElements[actualMapping.name == &quot;PAB_Deployment&quot;].target.nContains($j)%>">
+                      <subModelOperations xsi:type="tool:For" expression="aql:i.target.getDeployedComponents()" iteratorName="j">
+                        <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (i.ownedDiagramElements->select(ownedDiagramElement | ownedDiagramElement.actualMapping.name = 'PAB_Deployment').target->includes(j))">
                           <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:j">
                             <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_Deployment']" containerViewExpression="aql:i"/>
                           </subModelOperations>
@@ -2824,9 +2824,9 @@
                     <parameters name="scope" value="aql:self.getAvailablePhysicalPathsToInsert(diagram)"/>
                     <parameters name="initialSelection" value="aql:elementView.getDisplayedPhysicalPaths()"/>
                     <parameters name="resultVariable" value="selectedPaths"/>
-                    <parameters name="wizardMessage" value="Select Physical Paths to show in &lt;%$element.name%>."/>
+                    <parameters name="wizardMessage" value="aql:'Select Physical Paths to show in ' + element.name + '.'"/>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%($selectedPaths != &quot;WIZARD_CANCELED&quot;)%>">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:(selectedPaths != 'WIZARD_CANCELED')">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.showHidePhysicalPaths(selectedPaths,elementView)"/>
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().forceRefresh()"/>
                   </subModelOperations>
@@ -3430,7 +3430,7 @@
               <variable name="container"/>
               <viewVariable name="containerView">
                 <subVariables xsi:type="tool:AcceleoVariable" name="diagram" computationExpression="aql:containerView.eContainerOrSelf(diagram::DDiagram)"/>
-                <subVariables xsi:type="tool:AcceleoVariable" name="scope" computationExpression="&lt;% $containerView.getABShowHideComponent()[getComponentType().nature == &quot;BEHAVIOR&quot;]%>"/>
+                <subVariables xsi:type="tool:AcceleoVariable" name="scope" computationExpression="aql:containerView.getABShowHideComponent()->select(x | x.getComponentType().nature = pa::PhysicalComponentNature::BEHAVIOR)"/>
                 <subVariables xsi:type="tool:AcceleoVariable" name="ownedNodeContainer" computationExpression="aql:self.void2Null(containerView.eAllContents()->filter(diagram::DNodeContainer)->select(x | x.actualMapping.name = 'PAB_PC'))"/>
               </viewVariable>
               <initialOperation>
@@ -3440,7 +3440,7 @@
                     <parameters name="scope" value="aql:scope"/>
                     <parameters name="resultVariable" value="selection"/>
                     <parameters name="wizardMessage" value="aql:'Select Sub Components to show in ' + container.name + '.'"/>
-                    <parameters name="initialSelection" value="&lt;% getIntersection($ownedNodeContainer[visible &amp;&amp; actualMapping.name==&quot;PAB_PC&quot;].target, $scope)[getComponentType().nature == &quot;BEHAVIOR&quot;] %>"/>
+                    <parameters name="initialSelection" value="aql:self.getIntersection(ownedNodeContainer->select(x | x.visible and x.actualMapping.name = 'PAB_PC').target,scope)->select(x | x.getComponentType().nature = pa::PhysicalComponentNature::BEHAVIOR)"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selection = 'WIZARD_CANCELED')">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container">
@@ -3559,10 +3559,10 @@
               <elementView name="elementView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView">
-                  <subModelOperations xsi:type="tool:For" expression="&lt;%$elementView.getAllContainers()[(target.filter(&quot;Component&quot;).nSize()>0 || target.filter(&quot;Part&quot;).nSize()>0)] %>">
+                  <subModelOperations xsi:type="tool:For" expression="aql:elementView.getAllContainersNew()->select(x | (x.target->filter(cs::Component)->size() > 0 or x.target->filter(cs::Part)->size() > 0))">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:i">
-                      <subModelOperations xsi:type="tool:For" expression="&lt;%$i.target.getDeployedComponents()%>" iteratorName="j">
-                        <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%!$i.ownedDiagramElements[actualMapping.name == &quot;PAB_Deployment&quot;].target.nContains($j)%>">
+                      <subModelOperations xsi:type="tool:For" expression="aql:i.target.getDeployedComponents()" iteratorName="j">
+                        <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (i.ownedDiagramElements->select(ownedDiagramElement | ownedDiagramElement.actualMapping.name = 'PAB_Deployment').target->includes(j))">
                           <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:j">
                             <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='PAB_Deployment']" containerViewExpression="aql:i"/>
                           </subModelOperations>
@@ -3778,7 +3778,7 @@
               </variable>
               <viewVariable name="containerView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $containerType.getRootFunction().createRouteFunction() %>">
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerType.getRootFunction().createRouteFunction()">
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.allocateToComponent(containerType)"/>
                   <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
                     <parameters name="context" value="aql:container"/>
@@ -3808,7 +3808,7 @@
               </variable>
               <viewVariable name="containerView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $containerType.getRootFunction().createSplitFunction() %>">
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerType.getRootFunction().createSplitFunction()">
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.allocateToComponent(containerType)"/>
                   <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
                     <parameters name="context" value="aql:container"/>
@@ -4158,7 +4158,7 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.void2Null(element)">
                 <subModelOperations xsi:type="tool:If" conditionExpression="aql:oldAllocationBlocks->size() > 0">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$element.dndABAbstractFunctionAllocation($element.allocationBlocks.nFirst, $newSemanticContainer.type)%>"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:element.dndABAbstractFunctionAllocation(element.allocationBlocks->first(),newSemanticContainer.type)"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:If" conditionExpression="aql:oldAllocationBlocks->size() = 0">
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:newSemanticContainer.type">
@@ -4237,7 +4237,7 @@
           <variables name="root" documentation="The semantic element corresponding to the current table."/>
         </delete>
       </ownedLineMappings>
-      <ownedColumnMappings name="PALA Logical Actor column" initialWidth="50" domainClass="LogicalActor" semanticCandidatesExpression="&lt;%precedingSibling.filter(&quot;BlockArchitecture&quot;).nLast().eAllContents().filter(&quot;LogicalActor&quot;)%>">
+      <ownedColumnMappings name="PALA Logical Actor column" initialWidth="50" domainClass="LogicalActor" semanticCandidatesExpression="aql:self.precedingSibling->filter(cs::BlockArchitecture)->last().eAllContents()->filter(la::LogicalActor)">
         <delete name="No delete" precondition="false">
           <variables name="element" documentation="The currently edited element."/>
           <variables name="root" documentation="The semantic element corresponding to the current table."/>
@@ -4252,7 +4252,7 @@
           <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
           <variables name="root" documentation="The semantic element of the table."/>
           <firstModelOperation xsi:type="tool:If" conditionExpression="aql:arg0 = '' and root.eAllContents()->filter(pa::LogicalActorRealization)->select(x | x.targetElement = columnSemantic and x.sourceElement = lineSemantic)->size() > 0">
-            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$root.eAllContents().filter(&quot;LogicalActorRealization&quot;)[targetElement == $columnSemantic &amp;&amp; sourceElement == $lineSemantic].nFirst()%>">
+            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:root.eAllContents()->filter(pa::LogicalActorRealization)->select(x | x.targetElement = columnSemantic and x.sourceElement = lineSemantic)->first()">
               <subModelOperations xsi:type="tool:RemoveElement"/>
             </subModelOperations>
           </firstModelOperation>
@@ -4299,7 +4299,7 @@
           <variables name="root" documentation="The semantic element corresponding to the current table."/>
         </delete>
       </ownedColumnMappings>
-      <intersection name="Trace Function" semanticElements="aql:self.makeUnion(self, self.eContainer())" lineMapping="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Requirements%20-%20Physical%20Functions']/@ownedLineMappings[name='Requirements']/@ownedSubLines[name='Sub%20Requirements']" columnMapping="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Requirements%20-%20Physical%20Functions']/@ownedColumnMappings.0" labelExpression="aql:self.getRFLabel(lineSemantic,columnSemantic)" useDomainClass="true" columnFinderExpression="feature:sourceElement" lineFinderExpression="feature:targetElement" semanticCandidatesExpression="&lt;%getRFColumnCandidates().outgoingTraces()[isA(&quot;RequirementsTrace&quot;)]%>" domainClass="RequirementsTrace">
+      <intersection name="Trace Function" semanticElements="aql:self.makeUnion(self, self.eContainer())" lineMapping="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Requirements%20-%20Physical%20Functions']/@ownedLineMappings[name='Requirements']/@ownedSubLines[name='Sub%20Requirements']" columnMapping="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Requirements%20-%20Physical%20Functions']/@ownedColumnMappings.0" labelExpression="aql:self.getRFLabel(lineSemantic,columnSemantic)" useDomainClass="true" columnFinderExpression="feature:sourceElement" lineFinderExpression="feature:targetElement" semanticCandidatesExpression="aql:self.getRFColumnCandidates().outgoingTraces->select(outgoingTrace | outgoingTrace.oclIsKindOf(requirement::RequirementsTrace))" domainClass="RequirementsTrace">
         <directEdit>
           <variables name="table" documentation="The current DTable."/>
           <variables name="line" documentation="The DLine of the current DCell."/>

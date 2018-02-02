@@ -1161,7 +1161,7 @@
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Region" referenceName="ownedRegions">
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()">
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveRegionMSM(instance,null)">
-                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $elementView.getDiagramContainer().forceRefresh %>"/>
+                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().forceRefresh()"/>
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
@@ -1548,7 +1548,7 @@
             </initialOperation>
             <hook id="org.polarsys.capella.core.sirius.analysis.delete.CapellaDeleteActionHook"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="Reconnect source transition" precondition="&lt;% canCreateTransitionMSM($target, $element.source) %>" reconnectionKind="RECONNECT_SOURCE">
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="Reconnect source transition" precondition="aql:self.canCreateTransitionMSM(target,element.source)" reconnectionKind="RECONNECT_SOURCE">
             <source name="source"/>
             <target name="target"/>
             <sourceView name="sourceView"/>
@@ -1570,7 +1570,7 @@
             </initialOperation>
             <edgeView name="edgeView"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="Reconnect target transition" precondition="&lt;% canCreateTransitionMSM($element.source, $target) %>">
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="Reconnect target transition" precondition="aql:self.canCreateTransitionMSM(element.source,target)">
             <source name="source"/>
             <target name="target"/>
             <sourceView name="sourceView"/>
@@ -3274,47 +3274,47 @@
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:ToolGroup" documentation="Insert/Remove Features" name="S/H Features">
-            <tools xsi:type="tool:NodeCreationDescription" documentation="Insert/Remove properties" name="Show/Hide Properties" label="Properties" precondition="&lt;% !$containerView.getDiagramContainer().isSynchronized() %>" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_Class']/@subNodeMappings[name='DT_Property']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+            <tools xsi:type="tool:NodeCreationDescription" documentation="Insert/Remove properties" name="Show/Hide Properties" label="Properties" precondition="aql:not (containerView.getDiagramContainer().isSynchronized())" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_Class']/@subNodeMappings[name='DT_Property']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
               <filters precondition="aql:self.isSynchronized()" elementsToListen="aql:self">
                 <listeners domainClass="DDiagram" featureName="synchronized"/>
               </filters>
               <variable name="container"/>
               <viewVariable name="containerView">
-                <subVariables xsi:type="tool_1:AcceleoVariable" name="displayedProperties" computationExpression="&lt;%$containerView.getNodesAndNodeListElements().target.filter(&quot;Property&quot;)%>"/>
+                <subVariables xsi:type="tool_1:AcceleoVariable" name="displayedProperties" computationExpression="aql:containerView.getNodesAndNodeListElements().target->filter(information::Property)"/>
                 <subVariables xsi:type="tool_1:AcceleoVariable" name="diagram" computationExpression="aql:containerView.getDiagramContainer()"/>
               </viewVariable>
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:containerView">
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="selectProperties" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
                     <parameters name="context" value="aql:containerView"/>
-                    <parameters name="scope" value="&lt;%$container.ownedFeatures[isPrimitiveTypeForAttribute()]%>"/>
+                    <parameters name="scope" value="aql:container.ownedFeatures->select(ownedFeature | ownedFeature.isPrimitiveTypeForAttribute())"/>
                     <parameters name="initialSelection" value="aql:displayedProperties"/>
                     <parameters name="resultVariable" value="selectedProperties"/>
-                    <parameters name="wizardMessage" value="Select Properties to show in &lt;%$container.name%>."/>
+                    <parameters name="wizardMessage" value="aql:'Select Properties to show in ' + container.name + '.'"/>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%($selectedProperties != &quot;WIZARD_CANCELED&quot;)%>">
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:(selectedProperties != 'WIZARD_CANCELED')">
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:containerView.showHideProperties(selectedProperties,diagram)"/>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool:NodeCreationDescription" documentation="Insert/Remove operations" name="Show/Hide Operations" label="Operations" precondition="&lt;% !$containerView.getDiagramContainer().isSynchronized() %>" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_Class']/@subNodeMappings[name='DT_Operation'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@containerMappings[name='FullInterface1']/@subNodeMappings[name='DT_Operation1']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+            <tools xsi:type="tool:NodeCreationDescription" documentation="Insert/Remove operations" name="Show/Hide Operations" label="Operations" precondition="aql:not (containerView.getDiagramContainer().isSynchronized())" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_Class']/@subNodeMappings[name='DT_Operation'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@containerMappings[name='FullInterface1']/@subNodeMappings[name='DT_Operation1']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
               <filters precondition="aql:self.isSynchronized()" elementsToListen="aql:self">
                 <listeners domainClass="DDiagram" featureName="synchronized"/>
               </filters>
               <variable name="container"/>
               <viewVariable name="containerView">
-                <subVariables xsi:type="tool_1:AcceleoVariable" name="displayedOperations" computationExpression="&lt;%$containerView.getNodesAndNodeListElements().target[isA(&quot;Operation&quot;)||isA(&quot;ExchangeItemAllocation&quot;)]%>"/>
+                <subVariables xsi:type="tool_1:AcceleoVariable" name="displayedOperations" computationExpression="aql:containerView.getNodesAndNodeListElements().target->select(x | x.oclIsKindOf(information::Operation) or x.oclIsKindOf(cs::ExchangeItemAllocation))"/>
                 <subVariables xsi:type="tool_1:AcceleoVariable" name="diagram" computationExpression="aql:containerView.getDiagramContainer()"/>
               </viewVariable>
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:containerView">
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="selectOperations" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
                     <parameters name="context" value="aql:containerView"/>
-                    <parameters name="scope" value="&lt;%$container.ownedFeatures.filter(&quot;Operation&quot;)%>"/>
+                    <parameters name="scope" value="aql:container.ownedFeatures->filter(information::Operation)"/>
                     <parameters name="initialSelection" value="aql:displayedOperations"/>
                     <parameters name="resultVariable" value="selectedOperations"/>
-                    <parameters name="wizardMessage" value="Select Operations to show in &lt;%$container.name%>."/>
+                    <parameters name="wizardMessage" value="aql:'Select Operations to show in ' + container.name + '.'"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:(selectedOperations != 'WIZARD_CANCELED')">
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:containerView.showHideOperations(selectedOperations,diagram)"/>
@@ -3834,7 +3834,7 @@
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="name"/>
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="allocatedItem" valueExpression="aql:instance"/>
-                        <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%!($container.getDiagramContainer().isSynchronized())%>">
+                        <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not (container.getDiagramContainer().isSynchronized())">
                           <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:allocation">
                             <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@containerMappings[name='FullInterface1']/@subNodeMappings[name='DT_Operation1']" containerViewExpression="aql:containerView"/>
                           </subModelOperations>
@@ -3881,7 +3881,7 @@
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="name"/>
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="allocatedItem" valueExpression="aql:instance"/>
-                        <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%!($container.getDiagramContainer().isSynchronized())%>">
+                        <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not (container.getDiagramContainer().isSynchronized())">
                           <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:allocation">
                             <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@containerMappings[name='FullInterface1']/@subNodeMappings[name='DT_Operation1']" containerViewExpression="aql:containerView"/>
                           </subModelOperations>
@@ -3928,7 +3928,7 @@
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="name"/>
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="allocatedItem" valueExpression="aql:instance"/>
-                        <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%!($container.getDiagramContainer().isSynchronized())%>">
+                        <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not (container.getDiagramContainer().isSynchronized())">
                           <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:allocation">
                             <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@containerMappings[name='FullInterface1']/@subNodeMappings[name='DT_Operation1']" containerViewExpression="aql:containerView"/>
                           </subModelOperations>
@@ -3975,7 +3975,7 @@
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="name"/>
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="allocatedItem" valueExpression="aql:instance"/>
-                        <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%!($container.getDiagramContainer().isSynchronized())%>">
+                        <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not (container.getDiagramContainer().isSynchronized())">
                           <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:allocation">
                             <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@containerMappings[name='FullInterface1']/@subNodeMappings[name='DT_Operation1']" containerViewExpression="aql:containerView"/>
                           </subModelOperations>
@@ -4022,7 +4022,7 @@
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="name"/>
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="allocatedItem" valueExpression="aql:instance"/>
-                        <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%!($container.getDiagramContainer().isSynchronized())%>">
+                        <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not (container.getDiagramContainer().isSynchronized())">
                           <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:allocation">
                             <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@containerMappings[name='FullInterface1']/@subNodeMappings[name='DT_Operation1']" containerViewExpression="aql:containerView"/>
                           </subModelOperations>
@@ -4351,7 +4351,7 @@
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%ancestor.filter(&quot;SystemEngineering&quot;).nFirst()%>">
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.ancestors()->filter(capellamodeller::SystemEngineering)->first()">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="OperationalAnalysis" referenceName="ownedArchitectures">
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
                 </subModelOperations>
@@ -4362,7 +4362,7 @@
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%ancestor.filter(&quot;SystemEngineering&quot;).nFirst()%>">
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.ancestors()->filter(capellamodeller::SystemEngineering)->first()">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="SystemAnalysis" referenceName="ownedArchitectures">
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
                 </subModelOperations>
@@ -4373,7 +4373,7 @@
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%ancestor.filter(&quot;SystemEngineering&quot;).nFirst()%>">
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.ancestors()->filter(capellamodeller::SystemEngineering)->first()">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="LogicalArchitecture" referenceName="ownedArchitectures">
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
                 </subModelOperations>
@@ -4384,7 +4384,7 @@
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%ancestor.filter(&quot;SystemEngineering&quot;).nFirst()%>">
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.ancestors()->filter(capellamodeller::SystemEngineering)->first()">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="PhysicalArchitecture" referenceName="ownedArchitectures">
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
                 </subModelOperations>
@@ -4395,7 +4395,7 @@
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%ancestor.filter(&quot;SystemEngineering&quot;).nFirst()%>">
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.ancestors()->filter(capellamodeller::SystemEngineering)->first()">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EPBSArchitecture" referenceName="ownedArchitectures">
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
                 </subModelOperations>
@@ -4604,7 +4604,7 @@
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" documentation="toto&#xD;&#xA;" name="Component Interfaces Scenario" label="Interface Scenario" precondition="aql:self.isInLib()" titleExpression="&lt;%current.name.addScenarioPrefix(&quot;[IS]&quot;)%>" browseExpression="aql:self.ownedScenarios->last()" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" documentation="toto&#xD;&#xA;" name="Component Interfaces Scenario" label="Interface Scenario" precondition="aql:self.isInLib()" titleExpression="aql:self.name.addScenarioPrefix('[IS]')" browseExpression="aql:self.ownedScenarios->last()" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']">
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Scenario" referenceName="ownedScenarios">
@@ -4620,7 +4620,7 @@
             <containerVariable name="container"/>
             <representationNameVariable name="diagramName"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Component Exchanges Scenario" label="Exchange Scenario" precondition="aql:self.isInLib()" titleExpression="&lt;%current.name.addScenarioPrefix(&quot;[ES]&quot;)%>" browseExpression="aql:self.ownedScenarios->last()" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Component Exchanges Scenario" label="Exchange Scenario" precondition="aql:self.isInLib()" titleExpression="aql:self.name.addScenarioPrefix('[ES]')" browseExpression="aql:self.ownedScenarios->last()" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']">
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Scenario" referenceName="ownedScenarios">
@@ -4651,7 +4651,7 @@
             <representationNameVariable name="tableName"/>
             <tableDescription xsi:type="description_3:CrossTableDescription" href="context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Interfaces%20-%20Capabilities%20and%20Scenarios']"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" documentation="toto&#xD;&#xA;" name="Functional Scenario" precondition="aql:self.isInLib()" titleExpression="&lt;%current.name.addScenarioPrefix(&quot;[FS]&quot;)%>" browseExpression="aql:self.ownedScenarios->last()" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" documentation="toto&#xD;&#xA;" name="Functional Scenario" precondition="aql:self.isInLib()" titleExpression="aql:self.name.addScenarioPrefix('[FS]')" browseExpression="aql:self.ownedScenarios->last()" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']">
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Scenario" referenceName="ownedScenarios">
@@ -4788,7 +4788,7 @@
         </edgeMappings>
         <containerMappings name="FullInterface1" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElement%20DirectEdit']" semanticCandidatesExpression="" createElements="false" domainClass="Interface" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='Allocation%20ExchangeItem%20from%20Diagram'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='Allocation%20ExchangeItem%20from%20Model']" reusedNodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@additionalLayers[name='Communication%20Model']/@nodeMappings[name='DT_ExchangeItem']" reusedContainerMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@containerMappings[name='CCDI_ExchangeItem']" childrenPresentation="List">
           <subNodeMappings name="DT_Attribute1" preconditionExpression="aql:self.association = null" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete_DataType']" semanticCandidatesExpression="feature:ownedFeatures" domainClass="Property">
-            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="&lt;%multiplicityToString()%> &lt;%maxCard.value%> feature:name&lt;%if (type != null) {%> : &lt;%type.name%>&lt;%}%>" labelAlignment="LEFT" sizeComputationExpression="1">
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="aql:self.multiplicityToString() + ' ' + self.maxCard.value + ' feature:name' + if (self.type != null) then ' : ' + self.type.name endif" labelAlignment="LEFT" sizeComputationExpression="1">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
@@ -5750,8 +5750,8 @@
             <elementView name="elementView"/>
             <containerView name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $elementView.sourceNode.target %>">
-                <subModelOperations xsi:type="tool_1:Unset" featureName="providedInterfaces" elementExpression="&lt;%  $elementView.targetNode.target %>"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView.sourceNode.target">
+                <subModelOperations xsi:type="tool_1:Unset" featureName="providedInterfaces" elementExpression="aql:elementView.targetNode.target"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -5760,8 +5760,8 @@
             <elementView name="elementView"/>
             <containerView name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $elementView.sourceNode.target %>">
-                <subModelOperations xsi:type="tool_1:Unset" featureName="requiredInterfaces" elementExpression="&lt;%  $elementView.targetNode.target %>"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView.sourceNode.target">
+                <subModelOperations xsi:type="tool_1:Unset" featureName="requiredInterfaces" elementExpression="aql:elementView.targetNode.target"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -5867,7 +5867,7 @@
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:target">
                       <subModelOperations xsi:type="tool_1:CreateInstance" typeName="InterfaceImplementation" referenceName="ownedInterfaceImplementations">
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="implementedInterface" valueExpression="aql:edgeView.targetNode.target"/>
-                        <subModelOperations xsi:type="tool:CreateEdgeView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@edgeMappings[name='imp1']" containerViewExpression="aql:edgeView.getDiagramContainer()" sourceExpression="aql:target" targetExpression="&lt;%$edgeView.targetNode.target%>"/>
+                        <subModelOperations xsi:type="tool:CreateEdgeView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@edgeMappings[name='imp1']" containerViewExpression="aql:edgeView.getDiagramContainer()" sourceExpression="aql:target" targetExpression="aql:edgeView.targetNode.target"/>
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
@@ -5875,7 +5875,7 @@
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:target">
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="providedInterfaces" valueExpression="aql:edgeView.targetNode.target"/>
                     </subModelOperations>
-                    <subModelOperations xsi:type="tool:CreateEdgeView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@edgeMappings[name='CCDI_PinProvidedInterface']" containerViewExpression="aql:edgeView.getDiagramContainer()" sourceExpression="aql:target" targetExpression="&lt;%$edgeView.targetNode.target%>"/>
+                    <subModelOperations xsi:type="tool:CreateEdgeView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@edgeMappings[name='CCDI_PinProvidedInterface']" containerViewExpression="aql:edgeView.getDiagramContainer()" sourceExpression="aql:target" targetExpression="aql:edgeView.targetNode.target"/>
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.void2Null(element)">
                       <subModelOperations xsi:type="tool_1:RemoveElement"/>
                     </subModelOperations>
@@ -5918,7 +5918,7 @@
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:target">
                       <subModelOperations xsi:type="tool_1:CreateInstance" typeName="InterfaceUse" referenceName="ownedInterfaceUses">
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="usedInterface" valueExpression="aql:edgeView.targetNode.target"/>
-                        <subModelOperations xsi:type="tool:CreateEdgeView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@edgeMappings[name='use1']" containerViewExpression="aql:edgeView.getDiagramContainer()" sourceExpression="aql:target" targetExpression="&lt;%$edgeView.targetNode.target%>"/>
+                        <subModelOperations xsi:type="tool:CreateEdgeView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@edgeMappings[name='use1']" containerViewExpression="aql:edgeView.getDiagramContainer()" sourceExpression="aql:target" targetExpression="aql:edgeView.targetNode.target"/>
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
@@ -5926,7 +5926,7 @@
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:target">
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="requiredInterfaces" valueExpression="aql:edgeView.targetNode.target"/>
                     </subModelOperations>
-                    <subModelOperations xsi:type="tool:CreateEdgeView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@edgeMappings[name='CCDI_PinRequiredInterface']" containerViewExpression="aql:edgeView.getDiagramContainer()" sourceExpression="aql:target" targetExpression="&lt;%$edgeView.targetNode.target%>"/>
+                    <subModelOperations xsi:type="tool:CreateEdgeView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@edgeMappings[name='CCDI_PinRequiredInterface']" containerViewExpression="aql:edgeView.getDiagramContainer()" sourceExpression="aql:target" targetExpression="aql:edgeView.targetNode.target"/>
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.void2Null(element)">
                       <subModelOperations xsi:type="tool_1:RemoveElement"/>
                     </subModelOperations>
@@ -5953,7 +5953,7 @@
             </initialOperation>
             <edgeView name="edgeView"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="CB Reconnect Generalization Target" precondition="&lt;% canReconnectGeneralization($element.sub,$target) %>">
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="CB Reconnect Generalization Target" precondition="aql:self.canReconnectGeneralization(element.sub,target)">
             <source name="source"/>
             <target name="target"/>
             <sourceView name="sourceView"/>
@@ -6261,7 +6261,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="CCEI_PinRequiredInterface" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='CCEI_RequiredInterface']" semanticCandidatesExpression="&lt;%eContainer(&quot;BlockArchitecture&quot;).eAllContents(&quot;Port&quot;)%>" semanticElements="" sourceMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@defaultLayer/@containerMappings[name='CA_Component']/@borderedNodeMappings[name='CCEI_Port']" targetMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@defaultLayer/@nodeMappings[name='CA_Interface']" targetFinderExpression="feature:requiredInterfaces" reconnections="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='PinRequiredInterface%20target'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='used-pinrequired%20source']" pathExpression="">
+        <edgeMappings name="CCEI_PinRequiredInterface" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='CCEI_RequiredInterface']" semanticCandidatesExpression="aql:self.eContainerOrSelf(cs::BlockArchitecture).eAllContents(information::Port)" semanticElements="" sourceMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@defaultLayer/@containerMappings[name='CA_Component']/@borderedNodeMappings[name='CCEI_Port']" targetMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@defaultLayer/@nodeMappings[name='CA_Interface']" targetFinderExpression="feature:requiredInterfaces" reconnections="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='PinRequiredInterface%20target'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='used-pinrequired%20source']" pathExpression="">
           <style lineStyle="dash_dot" endsCentering="Source">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription>
@@ -6269,7 +6269,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="CCEI_PinProvidedInterface" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='CCEI_ProvidedInterface']" semanticCandidatesExpression="&lt;%eContainer(&quot;BlockArchitecture&quot;).eAllContents(&quot;Port&quot;)%>" semanticElements="" sourceMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@defaultLayer/@containerMappings[name='CA_Component']/@borderedNodeMappings[name='CCEI_Port']" targetMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@defaultLayer/@nodeMappings[name='CA_Interface']" targetFinderExpression="feature:providedInterfaces" reconnections="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='PinProvidedInterface%20target'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='implements-pinprovided%20source']">
+        <edgeMappings name="CCEI_PinProvidedInterface" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='CCEI_ProvidedInterface']" semanticCandidatesExpression="aql:self.eContainerOrSelf(cs::BlockArchitecture).eAllContents(information::Port)" semanticElements="" sourceMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@defaultLayer/@containerMappings[name='CA_Component']/@borderedNodeMappings[name='CCEI_Port']" targetMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@defaultLayer/@nodeMappings[name='CA_Interface']" targetFinderExpression="feature:providedInterfaces" reconnections="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='PinProvidedInterface%20target'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='implements-pinprovided%20source']">
           <style lineStyle="dash" targetArrow="InputClosedArrow" endsCentering="Source">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription>
@@ -7322,8 +7322,8 @@
             <elementView name="elementView"/>
             <containerView name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $elementView.sourceNode.target %>">
-                <subModelOperations xsi:type="tool_1:Unset" featureName="providedInterfaces" elementExpression="&lt;%  $elementView.targetNode.target %>"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView.sourceNode.target">
+                <subModelOperations xsi:type="tool_1:Unset" featureName="providedInterfaces" elementExpression="aql:elementView.targetNode.target"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -7332,8 +7332,8 @@
             <elementView name="elementView"/>
             <containerView name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $elementView.sourceNode.target %>">
-                <subModelOperations xsi:type="tool_1:Unset" featureName="requiredInterfaces" elementExpression="&lt;%  $elementView.targetNode.target %>"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView.sourceNode.target">
+                <subModelOperations xsi:type="tool_1:Unset" featureName="requiredInterfaces" elementExpression="aql:elementView.targetNode.target"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -7433,7 +7433,7 @@
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:target">
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="providedInterfaces" valueExpression="aql:edgeView.targetNode.target"/>
                     </subModelOperations>
-                    <subModelOperations xsi:type="tool:CreateEdgeView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@defaultLayer/@edgeMappings[name='CCEI_PinProvidedInterface']" containerViewExpression="aql:edgeView.getDiagramContainer()" sourceExpression="aql:target" targetExpression="&lt;%$edgeView.targetNode.target%>"/>
+                    <subModelOperations xsi:type="tool:CreateEdgeView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@defaultLayer/@edgeMappings[name='CCEI_PinProvidedInterface']" containerViewExpression="aql:edgeView.getDiagramContainer()" sourceExpression="aql:target" targetExpression="aql:edgeView.targetNode.target"/>
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.void2Null(element)">
                       <subModelOperations xsi:type="tool_1:RemoveElement"/>
                     </subModelOperations>
@@ -7449,7 +7449,7 @@
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:target->filter(fa::ComponentPort)->size() > 0">
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:source">
-                      <subModelOperations xsi:type="tool_1:Unset" featureName="providedInterfaces" elementExpression="&lt;%$edgeView.targetNode.target %>"/>
+                      <subModelOperations xsi:type="tool_1:Unset" featureName="providedInterfaces" elementExpression="aql:edgeView.targetNode.target"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:target">
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="providedInterfaces" valueExpression="aql:edgeView.targetNode.target"/>
@@ -7476,7 +7476,7 @@
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:target">
                       <subModelOperations xsi:type="tool_1:CreateInstance" typeName="InterfaceUse" referenceName="ownedInterfaceUses">
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="usedInterface" valueExpression="aql:edgeView.targetNode.target"/>
-                        <subModelOperations xsi:type="tool:CreateEdgeView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@defaultLayer/@edgeMappings[name='CA_use2']" containerViewExpression="aql:edgeView.getDiagramContainer()" sourceExpression="aql:target" targetExpression="&lt;%$edgeView.targetNode.target%>"/>
+                        <subModelOperations xsi:type="tool:CreateEdgeView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@defaultLayer/@edgeMappings[name='CA_use2']" containerViewExpression="aql:edgeView.getDiagramContainer()" sourceExpression="aql:target" targetExpression="aql:edgeView.targetNode.target"/>
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
@@ -7484,7 +7484,7 @@
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:target">
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="requiredInterfaces" valueExpression="aql:edgeView.targetNode.target"/>
                     </subModelOperations>
-                    <subModelOperations xsi:type="tool:CreateEdgeView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@defaultLayer/@edgeMappings[name='CCEI_PinRequiredInterface']" containerViewExpression="aql:edgeView.getDiagramContainer()" sourceExpression="aql:target" targetExpression="&lt;%$edgeView.targetNode.target%>"/>
+                    <subModelOperations xsi:type="tool:CreateEdgeView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@defaultLayer/@edgeMappings[name='CCEI_PinRequiredInterface']" containerViewExpression="aql:edgeView.getDiagramContainer()" sourceExpression="aql:target" targetExpression="aql:edgeView.targetNode.target"/>
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.void2Null(element)">
                       <subModelOperations xsi:type="tool_1:RemoveElement"/>
                     </subModelOperations>
@@ -7511,7 +7511,7 @@
             </initialOperation>
             <edgeView name="edgeView"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="CB Reconnect Generalization Target" precondition="&lt;% canReconnectGeneralization($element.sub,$target) %>">
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="CB Reconnect Generalization Target" precondition="aql:self.canReconnectGeneralization(element.sub,target)">
             <source name="source"/>
             <target name="target"/>
             <sourceView name="sourceView"/>
@@ -7524,7 +7524,7 @@
             </initialOperation>
             <edgeView name="edgeView"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="CB Reconnect Generalization Source" precondition="&lt;%  canReconnectGeneralization($target,$element.super) %>" reconnectionKind="RECONNECT_SOURCE">
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="CB Reconnect Generalization Source" precondition="aql:self.canReconnectGeneralization(target,element.super)" reconnectionKind="RECONNECT_SOURCE">
             <source name="source"/>
             <target name="target"/>
             <sourceView name="sourceView"/>
@@ -8723,7 +8723,7 @@
                             <subModelOperations xsi:type="tool_1:DeleteView"/>
                           </subModelOperations>
                           <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:h">
-                            <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@nodeMappings[name='CCII_Interface']" containerViewExpression="&lt;%$h.getBestGraphicalContainer($containerView.getViewDiagram(), $container.eClass)%>"/>
+                            <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@nodeMappings[name='CCII_Interface']" containerViewExpression="aql:h.getBestGraphicalContainer(containerView.getViewDiagram(),container.eClass())"/>
                           </subModelOperations>
                         </subModelOperations>
                       </subModelOperations>
@@ -8769,7 +8769,7 @@
                         </subModelOperations>
                         <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:targetView = null">
                           <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:i">
-                            <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@nodeMappings[name='CCII_Interface']" containerViewExpression="&lt;%$i.getBestGraphicalContainer($containerView.getViewDiagram(), $container.eClass)%>"/>
+                            <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@nodeMappings[name='CCII_Interface']" containerViewExpression="aql:i.getBestGraphicalContainer(containerView.getViewDiagram(),container.eClass())"/>
                           </subModelOperations>
                         </subModelOperations>
                       </subModelOperations>
@@ -8908,7 +8908,7 @@
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:target">
                       <subModelOperations xsi:type="tool_1:CreateInstance" typeName="InterfaceImplementation" referenceName="ownedInterfaceImplementations">
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="implementedInterface" valueExpression="aql:edgeView.targetNode.target"/>
-                        <subModelOperations xsi:type="tool:CreateEdgeView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@edgeMappings[name='CCII_ImplementInterface']" containerViewExpression="aql:edgeView.getDiagramContainer()" sourceExpression="aql:target" targetExpression="&lt;%$edgeView.targetNode.target%>"/>
+                        <subModelOperations xsi:type="tool:CreateEdgeView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@edgeMappings[name='CCII_ImplementInterface']" containerViewExpression="aql:edgeView.getDiagramContainer()" sourceExpression="aql:target" targetExpression="aql:edgeView.targetNode.target"/>
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
@@ -8916,7 +8916,7 @@
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:target">
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="providedInterfaces" valueExpression="aql:edgeView.targetNode.target"/>
                     </subModelOperations>
-                    <subModelOperations xsi:type="tool:CreateEdgeView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@edgeMappings[name='CCII_PinProvidedInterface']" containerViewExpression="aql:edgeView.getDiagramContainer()" sourceExpression="aql:target" targetExpression="&lt;%$edgeView.targetNode.target%>"/>
+                    <subModelOperations xsi:type="tool:CreateEdgeView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@edgeMappings[name='CCII_PinProvidedInterface']" containerViewExpression="aql:edgeView.getDiagramContainer()" sourceExpression="aql:target" targetExpression="aql:edgeView.targetNode.target"/>
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.void2Null(element)">
                       <subModelOperations xsi:type="tool_1:RemoveElement"/>
                     </subModelOperations>
@@ -8959,7 +8959,7 @@
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:target">
                       <subModelOperations xsi:type="tool_1:CreateInstance" typeName="InterfaceUse" referenceName="ownedInterfaceUses">
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="usedInterface" valueExpression="aql:edgeView.targetNode.target"/>
-                        <subModelOperations xsi:type="tool:CreateEdgeView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@edgeMappings[name='CCII_UseInterface']" containerViewExpression="aql:edgeView.getDiagramContainer()" sourceExpression="aql:target" targetExpression="&lt;%$edgeView.targetNode.target%>"/>
+                        <subModelOperations xsi:type="tool:CreateEdgeView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@edgeMappings[name='CCII_UseInterface']" containerViewExpression="aql:edgeView.getDiagramContainer()" sourceExpression="aql:target" targetExpression="aql:edgeView.targetNode.target"/>
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
@@ -8967,7 +8967,7 @@
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:target">
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="requiredInterfaces" valueExpression="aql:edgeView.targetNode.target"/>
                     </subModelOperations>
-                    <subModelOperations xsi:type="tool:CreateEdgeView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@edgeMappings[name='CCII_PinRequiredInterface']" containerViewExpression="aql:edgeView.getDiagramContainer()" sourceExpression="aql:target" targetExpression="&lt;%$edgeView.targetNode.target%>"/>
+                    <subModelOperations xsi:type="tool:CreateEdgeView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@edgeMappings[name='CCII_PinRequiredInterface']" containerViewExpression="aql:edgeView.getDiagramContainer()" sourceExpression="aql:target" targetExpression="aql:edgeView.targetNode.target"/>
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.void2Null(element)">
                       <subModelOperations xsi:type="tool_1:RemoveElement"/>
                     </subModelOperations>
@@ -9010,8 +9010,8 @@
             <elementView name="elementView"/>
             <containerView name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $elementView.sourceNode.target %>">
-                <subModelOperations xsi:type="tool_1:Unset" featureName="providedInterfaces" elementExpression="&lt;%  $elementView.targetNode.target %>"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView.sourceNode.target">
+                <subModelOperations xsi:type="tool_1:Unset" featureName="providedInterfaces" elementExpression="aql:elementView.targetNode.target"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -9020,8 +9020,8 @@
             <elementView name="elementView"/>
             <containerView name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $elementView.sourceNode.target %>">
-                <subModelOperations xsi:type="tool_1:Unset" featureName="requiredInterfaces" elementExpression="&lt;%  $elementView.targetNode.target %>"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView.sourceNode.target">
+                <subModelOperations xsi:type="tool_1:Unset" featureName="requiredInterfaces" elementExpression="aql:elementView.targetNode.target"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -9031,7 +9031,7 @@
               <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:arg0"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="CB Reconnect Generalization Target" precondition="&lt;% canReconnectGeneralization($element.sub,$target) %>">
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="CB Reconnect Generalization Target" precondition="aql:self.canReconnectGeneralization(element.sub,target)">
             <source name="source"/>
             <target name="target"/>
             <sourceView name="sourceView"/>
@@ -9379,7 +9379,7 @@
         </edgeMappings>
         <containerMappings name="IDB_Interface" detailDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interface%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Interface%20Diagram']" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElement%20DirectEdit']" semanticCandidatesExpression="" createElements="false" domainClass="Interface" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Allocation%20ExchangeItem%20from%20Diagram'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Allocation%20ExchangeItem%20from%20Model']" reusedContainerMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='IDB_ExchangeItem']" childrenPresentation="List">
           <subNodeMappings name="IDB_Attribute" preconditionExpression="aql:self.association = null" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElement%20DirectEdit']" semanticCandidatesExpression="feature:ownedFeatures" domainClass="Property">
-            <style xsi:type="style:SquareDescription" labelExpression="&lt;%multiplicityToString()%> &lt;%maxCard.value%> feature:name&lt;%if (type != null) {%> : &lt;%type.name%>&lt;%}%>" labelAlignment="LEFT" sizeComputationExpression="1">
+            <style xsi:type="style:SquareDescription" labelExpression="aql:self.multiplicityToString() + ' ' + self.maxCard.value + ' feature:name' + if (self.type != null) then ' : ' + self.type.name endif" labelAlignment="LEFT" sizeComputationExpression="1">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -9919,7 +9919,7 @@
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="name"/>
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="allocatedItem" valueExpression="aql:instance"/>
-                        <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%!($container.getDiagramContainer().isSynchronized())%>">
+                        <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not (container.getDiagramContainer().isSynchronized())">
                           <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:allocation">
                             <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='IDB_Interface']/@subNodeMappings[name='IDB_Operation']" containerViewExpression="aql:containerView"/>
                           </subModelOperations>
@@ -9978,7 +9978,7 @@
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="name"/>
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="allocatedItem" valueExpression="aql:instance"/>
-                        <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%!($container.getDiagramContainer().isSynchronized())%>">
+                        <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not (container.getDiagramContainer().isSynchronized())">
                           <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:allocation">
                             <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='IDB_Interface']/@subNodeMappings[name='IDB_Operation']" containerViewExpression="aql:containerView"/>
                           </subModelOperations>
@@ -10037,7 +10037,7 @@
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="name"/>
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="allocatedItem" valueExpression="aql:instance"/>
-                        <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%!($container.getDiagramContainer().isSynchronized())%>">
+                        <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not (container.getDiagramContainer().isSynchronized())">
                           <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:allocation">
                             <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='IDB_Interface']/@subNodeMappings[name='IDB_Operation']" containerViewExpression="aql:containerView"/>
                           </subModelOperations>
@@ -10096,7 +10096,7 @@
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="name"/>
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="allocatedItem" valueExpression="aql:instance"/>
-                        <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%!($container.getDiagramContainer().isSynchronized())%>">
+                        <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not (container.getDiagramContainer().isSynchronized())">
                           <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:allocation">
                             <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='IDB_Interface']/@subNodeMappings[name='IDB_Operation']" containerViewExpression="aql:containerView"/>
                           </subModelOperations>
@@ -10155,7 +10155,7 @@
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="name"/>
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="allocatedItem" valueExpression="aql:instance"/>
-                        <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%!($container.getDiagramContainer().isSynchronized())%>">
+                        <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not (container.getDiagramContainer().isSynchronized())">
                           <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:allocation">
                             <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='IDB_Interface']/@subNodeMappings[name='IDB_Operation']" containerViewExpression="aql:containerView"/>
                           </subModelOperations>
@@ -10402,7 +10402,7 @@
                               <subModelOperations xsi:type="tool_1:DeleteView"/>
                             </subModelOperations>
                             <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:h">
-                              <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='IDB_Interface']" containerViewExpression="&lt;%$h.getBestGraphicalContainer($containerView.getViewDiagram(), $container.eClass)%>"/>
+                              <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='IDB_Interface']" containerViewExpression="aql:h.getBestGraphicalContainer(containerView.getViewDiagram(),container.eClass())"/>
                             </subModelOperations>
                           </subModelOperations>
                         </subModelOperations>
@@ -10564,7 +10564,7 @@
                           </subModelOperations>
                           <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:targetView = null">
                             <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:i">
-                              <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='IDB_Interface']" containerViewExpression="&lt;%$i.getBestGraphicalContainer($containerView.getViewDiagram(), $container.eClass)%>"/>
+                              <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='IDB_Interface']" containerViewExpression="aql:i.getBestGraphicalContainer(containerView.getViewDiagram(),container.eClass())"/>
                             </subModelOperations>
                           </subModelOperations>
                         </subModelOperations>
@@ -10773,8 +10773,8 @@
             <elementView name="elementView"/>
             <containerView name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $elementView.sourceNode.target %>">
-                <subModelOperations xsi:type="tool_1:Unset" featureName="providedInterfaces" elementExpression="&lt;%  $elementView.targetNode.target %>"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView.sourceNode.target">
+                <subModelOperations xsi:type="tool_1:Unset" featureName="providedInterfaces" elementExpression="aql:elementView.targetNode.target"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -10783,8 +10783,8 @@
             <elementView name="elementView"/>
             <containerView name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $elementView.sourceNode.target %>">
-                <subModelOperations xsi:type="tool_1:Unset" featureName="requiredInterfaces" elementExpression="&lt;%  $elementView.targetNode.target %>"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView.sourceNode.target">
+                <subModelOperations xsi:type="tool_1:Unset" featureName="requiredInterfaces" elementExpression="aql:elementView.targetNode.target"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -10900,7 +10900,7 @@
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:target">
                       <subModelOperations xsi:type="tool_1:CreateInstance" typeName="InterfaceImplementation" referenceName="ownedInterfaceImplementations">
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="implementedInterface" valueExpression="aql:edgeView.targetNode.target"/>
-                        <subModelOperations xsi:type="tool:CreateEdgeView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='IDB_ImplementInterface']" containerViewExpression="aql:edgeView.getDiagramContainer()" sourceExpression="aql:target" targetExpression="&lt;%$edgeView.targetNode.target%>"/>
+                        <subModelOperations xsi:type="tool:CreateEdgeView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='IDB_ImplementInterface']" containerViewExpression="aql:edgeView.getDiagramContainer()" sourceExpression="aql:target" targetExpression="aql:edgeView.targetNode.target"/>
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
@@ -10908,7 +10908,7 @@
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:target">
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="providedInterfaces" valueExpression="aql:edgeView.targetNode.target"/>
                     </subModelOperations>
-                    <subModelOperations xsi:type="tool:CreateEdgeView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='IDB_PinProvidedInterface']" containerViewExpression="aql:edgeView.getDiagramContainer()" sourceExpression="aql:target" targetExpression="&lt;%$edgeView.targetNode.target%>"/>
+                    <subModelOperations xsi:type="tool:CreateEdgeView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='IDB_PinProvidedInterface']" containerViewExpression="aql:edgeView.getDiagramContainer()" sourceExpression="aql:target" targetExpression="aql:edgeView.targetNode.target"/>
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.void2Null(element)">
                       <subModelOperations xsi:type="tool_1:RemoveElement"/>
                     </subModelOperations>
@@ -10951,7 +10951,7 @@
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:target">
                       <subModelOperations xsi:type="tool_1:CreateInstance" typeName="InterfaceUse" referenceName="ownedInterfaceUses">
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="usedInterface" valueExpression="aql:edgeView.targetNode.target"/>
-                        <subModelOperations xsi:type="tool:CreateEdgeView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='IDB_UseInterface']" containerViewExpression="aql:edgeView.getDiagramContainer()" sourceExpression="aql:target" targetExpression="&lt;%$edgeView.targetNode.target%>"/>
+                        <subModelOperations xsi:type="tool:CreateEdgeView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='IDB_UseInterface']" containerViewExpression="aql:edgeView.getDiagramContainer()" sourceExpression="aql:target" targetExpression="aql:edgeView.targetNode.target"/>
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
@@ -10959,7 +10959,7 @@
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:target">
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="requiredInterfaces" valueExpression="aql:edgeView.targetNode.target"/>
                     </subModelOperations>
-                    <subModelOperations xsi:type="tool:CreateEdgeView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='IDB_PinRequiredInterface']" containerViewExpression="aql:edgeView.getDiagramContainer()" sourceExpression="aql:target" targetExpression="&lt;%$edgeView.targetNode.target%>"/>
+                    <subModelOperations xsi:type="tool:CreateEdgeView" mapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='IDB_PinRequiredInterface']" containerViewExpression="aql:edgeView.getDiagramContainer()" sourceExpression="aql:target" targetExpression="aql:edgeView.targetNode.target"/>
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.void2Null(element)">
                       <subModelOperations xsi:type="tool_1:RemoveElement"/>
                     </subModelOperations>
@@ -11890,7 +11890,7 @@
                       <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.oclIsKindOf(la::LogicalArchitecture)">
                         <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:false and self.ownedLogicalComponent->size() != 0">
                           <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.ownedLogicalComponentPkg->size() != 0">
-                            <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%setVariableA(&quot;owner&quot;, ownedLogicalComponentPkg.nGet(0))%>"/>
+                            <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.setVariableA('owner',self.ownedLogicalComponentPkg->at(1))"/>
                           </subModelOperations>
                           <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.ownedLogicalComponentPkg->size() = 0">
                             <subModelOperations xsi:type="tool_1:CreateInstance" typeName="LogicalComponentPkg" referenceName="ownedLogicalComponentPkg" variableName="owner">
@@ -11912,7 +11912,7 @@
                       <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.oclIsKindOf(pa::PhysicalArchitecture)">
                         <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:false and self.ownedPhysicalComponent->size() != 0">
                           <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.ownedPhysicalComponentPkg->size() != 0">
-                            <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%setVariableA(&quot;owner&quot;, ownedPhysicalComponentPkg.nGet(0))%>"/>
+                            <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.setVariableA('owner',self.ownedPhysicalComponentPkg->at(1))"/>
                           </subModelOperations>
                           <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.ownedPhysicalComponentPkg->size() = 0">
                             <subModelOperations xsi:type="tool_1:CreateInstance" typeName="PhysicalComponentPkg" referenceName="ownedPhysicalComponentPkg" variableName="owner">
@@ -11934,7 +11934,7 @@
                       <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.oclIsKindOf(epbs::EPBSArchitecture)">
                         <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:false and self.ownedConfigurationItem->size() != 0">
                           <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.ownedConfigurationItemPkg->size() != 0">
-                            <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%setVariableA(&quot;owner&quot;, ownedConfigurationItemPkg.nGet(0))%>"/>
+                            <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.setVariableA('owner',self.ownedConfigurationItemPkg->at(1))"/>
                           </subModelOperations>
                           <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.ownedConfigurationItemPkg->size() = 0">
                             <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ConfigurationItemPkg" referenceName="ownedConfigurationItemPkg" variableName="owner">
@@ -12489,11 +12489,11 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ToolDescription" documentation="Insert/Remove Dependent Packages" name="Show/Hide Dependent Packages" label="Dependencies" precondition="&lt;%!$elementView.isA(&quot;DDiagram&quot;)%>" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+          <ownedTools xsi:type="tool_1:ToolDescription" documentation="Insert/Remove Dependent Packages" name="Show/Hide Dependent Packages" label="Dependencies" precondition="aql:not (elementView.oclIsKindOf(diagram::DDiagram))" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $element.showHidePackageDependencies($elementView.getDiagramContainer()) %>"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:element.showHidePackageDependencies(elementView.getDiagramContainer())"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:DeleteElementDescription" name="No Delete">
@@ -12598,14 +12598,14 @@
         <representationNameVariable name="tableName"/>
       </ownedRepresentationCreationDescriptions>
       <ownedLineMappings name="TID line" domainClass="Component" semanticCandidatesExpression="aql:self.getSubUsedComponents()" headerLabelExpression="feature:name"/>
-      <ownedColumnMappings name="TID column" headerLabelExpression="aql:self.getTIDInterfaceLabel()" domainClass="Interface" semanticCandidatesExpression="&lt;%$viewpoint.target.getTIDInterfaces()%>"/>
+      <ownedColumnMappings name="TID column" headerLabelExpression="aql:self.getTIDInterfaceLabel()" domainClass="Interface" semanticCandidatesExpression="aql:viewpoint.target.getTIDInterfaces()"/>
       <intersection name="TID Cell Value" canEdit="false" lineMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interface%20Delegations']/@ownedLineMappings[name='TID%20line']" columnMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interface%20Delegations']/@ownedColumnMappings.0" labelExpression="aql:self.getTIDLabel(column,line)" columnFinderExpression="aql:self.getRelatedInterfaces()"/>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Interface Diagram" titleExpression="[ID] &lt;%current.name%>" domainClass="Interface">
       <defaultLayer name="default IDB" reusedMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_ContrainedElements']">
         <containerMappings name="ID_Interface" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interface%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interface%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElement%20DirectEdit']" semanticCandidatesExpression="aql:self" domainClass="Interface" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interface%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Allocation%20ExchangeItem%20from%20Model']" childrenPresentation="List">
           <subNodeMappings name="ID_Attribute" preconditionExpression="aql:self.association = null" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interface%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interface%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElement%20DirectEdit']" semanticCandidatesExpression="feature:ownedFeatures" domainClass="Property">
-            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="&lt;%multiplicityToString()%> &lt;%maxCard.value%> feature:name&lt;%if (type != null) {%> : &lt;%type.name%>&lt;%}%>" labelAlignment="LEFT" sizeComputationExpression="1">
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="aql:self.multiplicityToString() + ' ' + self.maxCard.value + ' feature:name' + if (self.type != null) then ' : ' + self.type.name endif" labelAlignment="LEFT" sizeComputationExpression="1">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
@@ -12960,7 +12960,7 @@
             </filters>
             <variable name="container"/>
             <viewVariable name="containerView">
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="displayedOperations" computationExpression="&lt;%$containerView.getNodesAndNodeListElements().target.filter(&quot;ExchangeItemAllocation&quot;)%>"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="displayedOperations" computationExpression="aql:containerView.getNodesAndNodeListElements().target->filter(cs::ExchangeItemAllocation)"/>
               <subVariables xsi:type="tool_1:AcceleoVariable" name="diagram" computationExpression="aql:containerView.getDiagramContainer()"/>
             </viewVariable>
             <initialOperation>
@@ -13087,7 +13087,7 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_2:SequenceDiagramDescription" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20Component'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraint%20From%20Project%20Explorer']" name="Component Interfaces Scenario" label="Interface Scenario" titleExpression="&lt;%current.name.addScenarioPrefix(&quot;[IS]&quot;)%>" domainClass="interaction.Scenario" preconditionExpression="aql:self.isValidIS()" endsOrdering="aql:self.makeIntersection(self.getOrderedInteractionFragments(), eventEnds)" instanceRolesOrdering="feature:ownedInstanceRoles">
+    <ownedRepresentations xsi:type="description_2:SequenceDiagramDescription" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20Component'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraint%20From%20Project%20Explorer']" name="Component Interfaces Scenario" label="Interface Scenario" titleExpression="aql:self.name.addScenarioPrefix('[IS]')" domainClass="interaction.Scenario" preconditionExpression="aql:self.isValidIS()" endsOrdering="aql:self.makeIntersection(self.getOrderedInteractionFragments(), eventEnds)" instanceRolesOrdering="feature:ownedInstanceRoles">
       <filters xsi:type="filter:CompositeFilterDescription" name="Hide executions">
         <filters xsi:type="filter:MappingFilter" filterKind="COLLAPSE" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping']/@borderedNodeMappings[name='default%20execution']/@borderedNodeMappings[name='Execution']"/>
       </filters>
@@ -13721,7 +13721,7 @@
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self->filter(epbs::EPBSArchitecture)->size() != 0">
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% eContainer.ownedArchitectures.filter(&quot;PhysicalArchitecture&quot;).ownedPhysicalActorPkg  %>">
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.eContainer().ownedArchitectures->filter(pa::PhysicalArchitecture).ownedPhysicalActorPkg">
                       <subModelOperations xsi:type="tool_1:CreateInstance" typeName="PhysicalActor" referenceName="ownedPhysicalActors" variableName="actor">
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
                       </subModelOperations>
@@ -13998,7 +13998,7 @@
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveMessage(call)"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interaction.MessageEnd" referenceName="ownedInteractionFragments" variableName="receivingEnd">
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="Receive Call &lt;%newCallName%>"/>
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'Receive Call ' + self.newCallName()"/>
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="coveredInstanceRoles" valueExpression="aql:targetIR"/>
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="event" valueExpression="aql:eventReceiptOperationCall"/>
                       <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:messageEndAfter != null">
@@ -14014,7 +14014,7 @@
                       </subModelOperations>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interaction.MessageEnd" referenceName="ownedInteractionFragments" variableName="sendingEnd">
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="Send Call &lt;%newCallName%>"/>
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'Send Call ' + self.newCallName()"/>
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="coveredInstanceRoles" valueExpression="aql:sourceIR"/>
                       <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:messageEndBefore = null">
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfScenario()"/>
@@ -14030,7 +14030,7 @@
                       </subModelOperations>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interaction.MessageEnd" referenceName="ownedInteractionFragments" variableName="sendingReplyEnd">
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="Send Call &lt;%newCallName%>"/>
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'Send Call ' + self.newCallName()"/>
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="coveredInstanceRoles" valueExpression="aql:targetIR"/>
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveEndOnScenario(receivingEnd)"/>
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveEndOnInstanceRole(receivingEnd)"/>
@@ -14040,7 +14040,7 @@
                       </subModelOperations>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interaction.MessageEnd" referenceName="ownedInteractionFragments" variableName="receivingReplyEnd">
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="Receive Call &lt;%newCallName%>"/>
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'Receive Call ' + self.newCallName()"/>
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="coveredInstanceRoles" valueExpression="aql:sourceIR"/>
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveEndOnScenario(sendingReplyEnd)"/>
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveEndOnInstanceRole(sendingReplyEnd)"/>
@@ -14456,7 +14456,7 @@
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:instanceRole.eContainerOrSelf(interaction::Scenario)">
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="affectServiceDialogBox" id="org.polarsys.capella.core.sirius.analysis.affectToSequenceMessageDialogBox">
-                    <parameters name="targetOnExchangeItem" value="&lt;% ($instanceRole + $instanceRole) %>"/>
+                    <parameters name="targetOnExchangeItem" value="aql:(self.makeUnion(instanceRole, instanceRole))"/>
                     <parameters name="targetIR" value="aql:instanceRole"/>
                     <parameters name="messageKind" value="SYNCHRONOUS_CALL"/>
                     <parameters name="resultVariable" value="result"/>
@@ -14471,14 +14471,14 @@
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveMessageOnBegining()"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not endBefore->isEmpty() and endBefore.semanticEnd.getPreviousMessageEnd() != null">
-                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%moveMessage($endBefore.semanticEnd.getPreviousMessageEnd.message)%>"/>
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveMessage(endBefore.semanticEnd.getPreviousMessageEnd().message)"/>
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interaction.MessageEnd" referenceName="ownedInteractionFragments" variableName="receivingEnd">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'Receive Call ' + call.name"/>
                     <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not endBefore->isEmpty()">
-                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%moveEndOnScenario($endBefore.semanticEnd)%>"/>
-                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%moveEndOnInstanceRole($endBefore.semanticEnd)%>"/>
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveEndOnScenario(endBefore.semanticEnd)"/>
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveEndOnInstanceRole(endBefore.semanticEnd)"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:messageEndAfter = null">
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfScenario()"/>
@@ -14523,7 +14523,7 @@
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:instanceRole.eContainerOrSelf(interaction::Scenario)">
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="affectServiceDialogBox" id="org.polarsys.capella.core.sirius.analysis.affectToSequenceMessageDialogBox">
-                    <parameters name="targetOnExchangeItem" value="&lt;% ($instanceRole + $instanceRole) %>"/>
+                    <parameters name="targetOnExchangeItem" value="aql:(self.makeUnion(instanceRole, instanceRole))"/>
                     <parameters name="sourceIR" value="aql:instanceRole"/>
                     <parameters name="messageKind" value="SYNCHRONOUS_CALL"/>
                     <parameters name="resultVariable" value="result"/>
@@ -14543,8 +14543,8 @@
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interaction.MessageEnd" referenceName="ownedInteractionFragments" variableName="sendingEnd">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'Receive Call ' + call.name"/>
                     <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not endBefore->isEmpty()">
-                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%moveEndOnScenario($endBefore.semanticEnd)%>"/>
-                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%moveEndOnInstanceRole($endBefore.semanticEnd)%>"/>
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveEndOnScenario(endBefore.semanticEnd)"/>
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveEndOnInstanceRole(endBefore.semanticEnd)"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:endBefore->isEmpty()">
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfScenario()"/>
@@ -14581,7 +14581,7 @@
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfScenario()"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not finishingEndPredecessor->isEmpty()">
-                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%moveEndOnScenario($finishingEndPredecessor.semanticEnd)%>"/>
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveEndOnScenario(finishingEndPredecessor.semanticEnd)"/>
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interaction.FragmentEnd" referenceName="ownedInteractionFragments" variableName="startFE">
@@ -14624,7 +14624,7 @@
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfScenario()"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not finishingEndPredecessor->isEmpty()">
-                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%moveEndOnScenario($finishingEndPredecessor.semanticEnd)%>"/>
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveEndOnScenario(finishingEndPredecessor.semanticEnd)"/>
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interaction.FragmentEnd" referenceName="ownedInteractionFragments" variableName="startFE">
@@ -14667,7 +14667,7 @@
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfScenario()"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not finishingEndPredecessor->isEmpty()">
-                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%moveEndOnScenario($finishingEndPredecessor.semanticEnd)%>"/>
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveEndOnScenario(finishingEndPredecessor.semanticEnd)"/>
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interaction.FragmentEnd" referenceName="ownedInteractionFragments" variableName="startFE">
@@ -14718,7 +14718,7 @@
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfScenario()"/>
                       </subModelOperations>
                       <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not finishingEndPredecessor->isEmpty()">
-                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%moveEndOnScenario($finishingEndPredecessor.semanticEnd)%>"/>
+                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveEndOnScenario(finishingEndPredecessor.semanticEnd)"/>
                       </subModelOperations>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interaction.FragmentEnd" referenceName="ownedInteractionFragments" variableName="startFE">
@@ -14995,10 +14995,10 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DirectEditLabel" name="rename basic message" inputLabelExpression="&lt;%sendingEnd.event.operation.allocatedItem.name%>">
+          <ownedTools xsi:type="tool:DirectEditLabel" name="rename basic message" inputLabelExpression="aql:self.sendingEnd.event.operation.allocatedItem.name">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% sendingEnd.event.operation.allocatedItem%>">
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.sendingEnd.event.operation.allocatedItem">
                 <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:arg0"/>
               </firstModelOperations>
             </initialOperation>
@@ -15119,7 +15119,7 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_2:SequenceDiagramDescription" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20Component'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraint%20From%20Project%20Explorer']" name="Component Exchanges Scenario" label="Exchange Scenario" titleExpression="&lt;%current.name.addScenarioPrefix(&quot;[ES]&quot;)%>" domainClass="interaction.Scenario" preconditionExpression="aql:self.isValidES()" reusedMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Scenario_Constraint'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@edgeMappings[name='Scenario_ContrainedElements']" endsOrdering="aql:self.makeIntersection(self.ownedInteractionFragments, eventEnds)" instanceRolesOrdering="feature:ownedInstanceRoles">
+    <ownedRepresentations xsi:type="description_2:SequenceDiagramDescription" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20Component'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraint%20From%20Project%20Explorer']" name="Component Exchanges Scenario" label="Exchange Scenario" titleExpression="aql:self.name.addScenarioPrefix('[ES]')" domainClass="interaction.Scenario" preconditionExpression="aql:self.isValidES()" reusedMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Scenario_Constraint'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@edgeMappings[name='Scenario_ContrainedElements']" endsOrdering="aql:self.makeIntersection(self.ownedInteractionFragments, eventEnds)" instanceRolesOrdering="feature:ownedInstanceRoles">
       <filters xsi:type="filter:CompositeFilterDescription" name="Hide executions">
         <filters xsi:type="filter:MappingFilter" filterKind="COLLAPSE" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20DF']/@borderedNodeMappings[name='default%20execution%20DF']/@borderedNodeMappings[name='Execution%20DF']"/>
       </filters>
@@ -15342,7 +15342,7 @@
         <edgeMappings xsi:type="description_2:CreationMessageMapping" name="creation message mapping DF" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements%20DF']" semanticCandidatesExpression="aql:self.ownedMessages->select(ownedMessage | ownedMessage.kind = interaction::MessageKind::CREATE)" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20DF']/@borderedNodeMappings[name='default%20execution%20DF'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20DF']/@borderedNodeMappings[name='default%20execution%20DF']/@borderedNodeMappings[name='Execution%20DF']" targetMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20DF']" targetFinderExpression="aql:self.getReceivingEnd()" sourceFinderExpression="aql:self.getSendingEnd()" domainClass="interaction.SequenceMessage" useDomainElement="true" sendingEndFinderExpression="feature:sendingEnd" receivingEndFinderExpression="feature:receivingEnd">
           <style>
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <centerLabelStyleDescription showIcon="false" labelExpression="&lt;% getDFMessageName($view.eContainer(&quot;DDiagram&quot;)) %>">
+            <centerLabelStyleDescription showIcon="false" labelExpression="aql:self.getDFMessageName(view.eContainerOrSelf(diagram::DDiagram))">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
@@ -15350,7 +15350,7 @@
         <edgeMappings xsi:type="description_2:DestructionMessageMapping" name="destruction message mapping DF" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements%20DF']" semanticCandidatesExpression="aql:self.ownedMessages->select(ownedMessage | ownedMessage.kind = interaction::MessageKind::DELETE)" sourceMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20DF']/@borderedNodeMappings[name='default%20execution%20DF'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20DF']/@borderedNodeMappings[name='default%20execution%20DF']/@borderedNodeMappings[name='Execution%20DF']" targetMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20DF']/@borderedNodeMappings[name='default%20execution%20DF']/@borderedNodeMappings[name='Lifeline%20deletion%20mapping%20DF']" targetFinderExpression="aql:self.getReceivingEnd()" sourceFinderExpression="aql:self.getSendingEnd()" domainClass="interaction.SequenceMessage" useDomainElement="true" sendingEndFinderExpression="feature:sendingEnd" receivingEndFinderExpression="feature:receivingEnd">
           <style>
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <centerLabelStyleDescription showIcon="false" labelExpression="&lt;% getDFMessageName($view.eContainer(&quot;DDiagram&quot;)) %>">
+            <centerLabelStyleDescription showIcon="false" labelExpression="aql:self.getDFMessageName(view.eContainerOrSelf(diagram::DDiagram))">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
@@ -15528,7 +15528,7 @@
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self->filter(epbs::EPBSArchitecture)->size() != 0">
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% eContainer.ownedArchitectures.filter(&quot;PhysicalArchitecture&quot;).ownedPhysicalActorPkg  %>">
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.eContainer().ownedArchitectures->filter(pa::PhysicalArchitecture).ownedPhysicalActorPkg">
                       <subModelOperations xsi:type="tool_1:CreateInstance" typeName="PhysicalActor" referenceName="ownedPhysicalActors" variableName="actor">
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
                       </subModelOperations>
@@ -15787,7 +15787,7 @@
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveMessage(call)"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interaction.MessageEnd" referenceName="ownedInteractionFragments" variableName="receivingEnd">
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="Receive Call &lt;%newCallName%>"/>
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'Receive Call ' + self.newCallName()"/>
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="coveredInstanceRoles" valueExpression="aql:targetIR"/>
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="event" valueExpression="aql:eventReceiptOperationCall"/>
                       <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:messageEndAfter != null">
@@ -15803,7 +15803,7 @@
                       </subModelOperations>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interaction.MessageEnd" referenceName="ownedInteractionFragments" variableName="sendingEnd">
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="Send Call &lt;%newCallName%>"/>
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'Send Call ' + self.newCallName()"/>
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="coveredInstanceRoles" valueExpression="aql:sourceIR"/>
                       <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:messageEndBefore = null">
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfScenario()"/>
@@ -15819,7 +15819,7 @@
                       </subModelOperations>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interaction.MessageEnd" referenceName="ownedInteractionFragments" variableName="sendingReplyEnd">
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="Send Call &lt;%newCallName%>"/>
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'Send Call ' + self.newCallName()"/>
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="coveredInstanceRoles" valueExpression="aql:targetIR"/>
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveEndOnScenario(receivingEnd)"/>
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveEndOnInstanceRole(receivingEnd)"/>
@@ -15829,7 +15829,7 @@
                       </subModelOperations>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interaction.MessageEnd" referenceName="ownedInteractionFragments" variableName="receivingReplyEnd">
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="Receive Call &lt;%newCallName%>"/>
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'Receive Call ' + self.newCallName()"/>
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="coveredInstanceRoles" valueExpression="aql:sourceIR"/>
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveEndOnScenario(sendingReplyEnd)"/>
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveEndOnInstanceRole(sendingReplyEnd)"/>
@@ -15998,7 +15998,7 @@
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveMessage(call)"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interaction.MessageEnd" referenceName="ownedInteractionFragments" variableName="receivingEnd">
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="Receive Call &lt;%newCallName%>"/>
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'Receive Call ' + self.newCallName()"/>
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="coveredInstanceRoles" valueExpression="aql:targetIR"/>
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="event" valueExpression="aql:eventReceiptOperationCall"/>
                       <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:messageEndAfter != null">
@@ -16014,7 +16014,7 @@
                       </subModelOperations>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interaction.MessageEnd" referenceName="ownedInteractionFragments" variableName="sendingEnd">
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="Send Call &lt;%newCallName%>"/>
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'Send Call ' + self.newCallName()"/>
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="coveredInstanceRoles" valueExpression="aql:sourceIR"/>
                       <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:messageEndBefore = null">
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfScenario()"/>
@@ -16030,7 +16030,7 @@
                       </subModelOperations>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interaction.MessageEnd" referenceName="ownedInteractionFragments" variableName="sendingReplyEnd">
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="Send Call &lt;%newCallName%>"/>
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'Send Call ' + self.newCallName()"/>
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="coveredInstanceRoles" valueExpression="aql:targetIR"/>
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveEndOnScenario(receivingEnd)"/>
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveEndOnInstanceRole(receivingEnd)"/>
@@ -16040,7 +16040,7 @@
                       </subModelOperations>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interaction.MessageEnd" referenceName="ownedInteractionFragments" variableName="receivingReplyEnd">
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="Receive Call &lt;%newCallName%>"/>
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'Receive Call ' + self.newCallName()"/>
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="coveredInstanceRoles" valueExpression="aql:sourceIR"/>
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveEndOnScenario(sendingReplyEnd)"/>
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveEndOnInstanceRole(sendingReplyEnd)"/>
@@ -16252,14 +16252,14 @@
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveMessageOnBegining()"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not endBefore->isEmpty() and endBefore.semanticEnd.getPreviousMessageEnd() != null">
-                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%moveMessage($endBefore.semanticEnd.getPreviousMessageEnd.message)%>"/>
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveMessage(endBefore.semanticEnd.getPreviousMessageEnd().message)"/>
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interaction.MessageEnd" referenceName="ownedInteractionFragments" variableName="receivingEnd">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'Receive Call ' + call.name"/>
                     <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not endBefore->isEmpty()">
-                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%moveEndOnScenario($endBefore.semanticEnd)%>"/>
-                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%moveEndOnInstanceRole($endBefore.semanticEnd)%>"/>
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveEndOnScenario(endBefore.semanticEnd)"/>
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveEndOnInstanceRole(endBefore.semanticEnd)"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:endBefore->isEmpty()">
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfScenario()"/>
@@ -16316,14 +16316,14 @@
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveMessageOnBegining()"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not endBefore->isEmpty() and endBefore.semanticEnd.getPreviousMessageEnd() != null">
-                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%moveMessage($endBefore.semanticEnd.getPreviousMessageEnd.message)%>"/>
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveMessage(endBefore.semanticEnd.getPreviousMessageEnd().message)"/>
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interaction.MessageEnd" referenceName="ownedInteractionFragments" variableName="sendingEnd">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'Sending Call ' + call.name"/>
                     <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not endBefore->isEmpty()">
-                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%moveEndOnScenario($endBefore.semanticEnd)%>"/>
-                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%moveEndOnInstanceRole($endBefore.semanticEnd)%>"/>
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveEndOnScenario(endBefore.semanticEnd)"/>
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveEndOnInstanceRole(endBefore.semanticEnd)"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:endBefore->isEmpty()">
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfScenario()"/>
@@ -16370,14 +16370,14 @@
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveMessageOnBegining()"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not endBefore->isEmpty() and endBefore.semanticEnd.getPreviousMessageEnd() != null">
-                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%moveMessage($endBefore.semanticEnd.getPreviousMessageEnd.message)%>"/>
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveMessage(endBefore.semanticEnd.getPreviousMessageEnd().message)"/>
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interaction.MessageEnd" referenceName="ownedInteractionFragments" variableName="receivingEnd">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'Receive Call ' + call.name"/>
                     <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not endBefore->isEmpty()">
-                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%moveEndOnScenario($endBefore.semanticEnd)%>"/>
-                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%moveEndOnInstanceRole($endBefore.semanticEnd)%>"/>
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveEndOnScenario(endBefore.semanticEnd)"/>
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveEndOnInstanceRole(endBefore.semanticEnd)"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:endBefore->isEmpty()">
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfScenario()"/>
@@ -16434,14 +16434,14 @@
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveMessageOnBegining()"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not endBefore->isEmpty() and endBefore.semanticEnd.getPreviousMessageEnd() != null">
-                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%moveMessage($endBefore.semanticEnd.getPreviousMessageEnd.message)%>"/>
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveMessage(endBefore.semanticEnd.getPreviousMessageEnd().message)"/>
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interaction.MessageEnd" referenceName="ownedInteractionFragments" variableName="sendingEnd">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'Sending Call ' + call.name"/>
                     <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not endBefore->isEmpty()">
-                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%moveEndOnScenario($endBefore.semanticEnd)%>"/>
-                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%moveEndOnInstanceRole($endBefore.semanticEnd)%>"/>
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveEndOnScenario(endBefore.semanticEnd)"/>
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveEndOnInstanceRole(endBefore.semanticEnd)"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:endBefore->isEmpty()">
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfScenario()"/>
@@ -16631,7 +16631,7 @@
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfScenario()"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not finishingEndPredecessor->isEmpty()">
-                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%moveEndOnScenario($finishingEndPredecessor.semanticEnd)%>"/>
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveEndOnScenario(finishingEndPredecessor.semanticEnd)"/>
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interaction.FragmentEnd" referenceName="ownedInteractionFragments" variableName="startFE">
@@ -16674,7 +16674,7 @@
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfScenario()"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not finishingEndPredecessor->isEmpty()">
-                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%moveEndOnScenario($finishingEndPredecessor.semanticEnd)%>"/>
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveEndOnScenario(finishingEndPredecessor.semanticEnd)"/>
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interaction.FragmentEnd" referenceName="ownedInteractionFragments" variableName="startFE">
@@ -16717,7 +16717,7 @@
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfScenario()"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not finishingEndPredecessor->isEmpty()">
-                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%moveEndOnScenario($finishingEndPredecessor.semanticEnd)%>"/>
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveEndOnScenario(finishingEndPredecessor.semanticEnd)"/>
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interaction.FragmentEnd" referenceName="ownedInteractionFragments" variableName="startFE">
@@ -16768,7 +16768,7 @@
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfScenario()"/>
                       </subModelOperations>
                       <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not finishingEndPredecessor->isEmpty()">
-                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%moveEndOnScenario($finishingEndPredecessor.semanticEnd)%>"/>
+                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveEndOnScenario(finishingEndPredecessor.semanticEnd)"/>
                       </subModelOperations>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interaction.FragmentEnd" referenceName="ownedInteractionFragments" variableName="startFE">
@@ -16841,10 +16841,10 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DirectEditLabel" name="rename basic message DF" inputLabelExpression="&lt;% sendingEnd.event.operation.name %>">
+          <ownedTools xsi:type="tool:DirectEditLabel" name="rename basic message DF" inputLabelExpression="aql:self.sendingEnd.event.operation.name">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% sendingEnd.event.operation %>">
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.sendingEnd.event.operation">
                 <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:arg0"/>
               </firstModelOperations>
             </initialOperation>
@@ -16979,7 +16979,7 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_2:SequenceDiagramDescription" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20Component'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraint%20From%20Project%20Explorer']" name="Functional Scenario" label="Function Scenario" titleExpression="&lt;%current.name.addScenarioPrefix(&quot;[FS]&quot;)%>" domainClass="interaction.Scenario" preconditionExpression="aql:self.isValidFS()" reusedMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Scenario_Constraint'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@edgeMappings[name='Scenario_ContrainedElements']" endsOrdering="aql:self.makeIntersection(self.ownedInteractionFragments, eventEnds)" instanceRolesOrdering="feature:ownedInstanceRoles">
+    <ownedRepresentations xsi:type="description_2:SequenceDiagramDescription" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20Component'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraint%20From%20Project%20Explorer']" name="Functional Scenario" label="Function Scenario" titleExpression="aql:self.name.addScenarioPrefix('[FS]')" domainClass="interaction.Scenario" preconditionExpression="aql:self.isValidFS()" reusedMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Scenario_Constraint'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@edgeMappings[name='Scenario_ContrainedElements']" endsOrdering="aql:self.makeIntersection(self.ownedInteractionFragments, eventEnds)" instanceRolesOrdering="feature:ownedInstanceRoles">
       <filters xsi:type="filter:CompositeFilterDescription" name="Hide executions">
         <filters xsi:type="filter:MappingFilter" filterKind="COLLAPSE" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20FS']/@borderedNodeMappings[name='default%20execution%20FS']/@borderedNodeMappings[name='Execution%20FS']"/>
       </filters>
@@ -17272,7 +17272,7 @@
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$container.getRootFunction().createGatherFunction()%>">
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:container.getRootFunction().createGatherFunction()">
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="setVariable" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SetVariable">
                     <parameters name="context" value="aql:container"/>
                     <parameters name="variable" value="component"/>
@@ -17294,7 +17294,7 @@
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$container.getRootFunction().createRouteFunction()%>">
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:container.getRootFunction().createRouteFunction()">
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="setVariable" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SetVariable">
                     <parameters name="context" value="aql:container"/>
                     <parameters name="variable" value="component"/>
@@ -17316,7 +17316,7 @@
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$container.getRootFunction().createSelectFunction()%>">
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:container.getRootFunction().createSelectFunction()">
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="setVariable" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SetVariable">
                     <parameters name="context" value="aql:container"/>
                     <parameters name="variable" value="component"/>
@@ -17432,7 +17432,7 @@
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveMessage(call)"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interaction.MessageEnd" referenceName="ownedInteractionFragments" variableName="receivingEnd">
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="Receive Call &lt;%newCallName%>"/>
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'Receive Call ' + self.newCallName()"/>
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="coveredInstanceRoles" valueExpression="aql:targetIR"/>
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="event" valueExpression="aql:eventReceiptOperationCall"/>
                       <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:messageEndAfter != null">
@@ -17448,7 +17448,7 @@
                       </subModelOperations>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interaction.MessageEnd" referenceName="ownedInteractionFragments" variableName="sendingEnd">
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="Send Call &lt;%newCallName%>"/>
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'Send Call ' + self.newCallName()"/>
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="coveredInstanceRoles" valueExpression="aql:sourceIR"/>
                       <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:messageEndBefore = null">
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfScenario()"/>
@@ -17464,7 +17464,7 @@
                       </subModelOperations>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interaction.MessageEnd" referenceName="ownedInteractionFragments" variableName="sendingReplyEnd">
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="Send Call &lt;%newCallName%>"/>
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'Send Call ' + self.newCallName()"/>
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="coveredInstanceRoles" valueExpression="aql:targetIR"/>
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveEndOnScenario(receivingEnd)"/>
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveEndOnInstanceRole(receivingEnd)"/>
@@ -17474,7 +17474,7 @@
                       </subModelOperations>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interaction.MessageEnd" referenceName="ownedInteractionFragments" variableName="receivingReplyEnd">
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="Receive Call &lt;%newCallName%>"/>
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'Receive Call ' + self.newCallName()"/>
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="coveredInstanceRoles" valueExpression="aql:sourceIR"/>
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveEndOnScenario(sendingReplyEnd)"/>
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveEndOnInstanceRole(sendingReplyEnd)"/>
@@ -17681,10 +17681,10 @@
             <finishingEndPredecessor name="finishingEndPredecessor"/>
             <coveredLifelines name="coveredLifeLines"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DirectEditLabel" name="rename basic message FS" inputLabelExpression="&lt;% sendingEnd.event.operation.name %>">
+          <ownedTools xsi:type="tool:DirectEditLabel" name="rename basic message FS" inputLabelExpression="aql:self.sendingEnd.event.operation.name">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% sendingEnd.event.operation %>">
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.sendingEnd.event.operation">
                 <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:arg0"/>
               </firstModelOperations>
             </initialOperation>
@@ -17702,7 +17702,7 @@
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfScenario()"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not finishingEndPredecessor->isEmpty()">
-                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%moveEndOnScenario($finishingEndPredecessor.semanticEnd)%>"/>
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveEndOnScenario(finishingEndPredecessor.semanticEnd)"/>
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interaction.FragmentEnd" referenceName="ownedInteractionFragments" variableName="startFE">
@@ -17745,7 +17745,7 @@
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfScenario()"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not finishingEndPredecessor->isEmpty()">
-                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%moveEndOnScenario($finishingEndPredecessor.semanticEnd)%>"/>
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveEndOnScenario(finishingEndPredecessor.semanticEnd)"/>
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interaction.FragmentEnd" referenceName="ownedInteractionFragments" variableName="startFE">
@@ -17788,7 +17788,7 @@
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfScenario()"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not finishingEndPredecessor->isEmpty()">
-                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%moveEndOnScenario($finishingEndPredecessor.semanticEnd)%>"/>
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveEndOnScenario(finishingEndPredecessor.semanticEnd)"/>
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interaction.FragmentEnd" referenceName="ownedInteractionFragments" variableName="startFE">
@@ -17839,7 +17839,7 @@
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfScenario()"/>
                       </subModelOperations>
                       <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not finishingEndPredecessor->isEmpty()">
-                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%moveEndOnScenario($finishingEndPredecessor.semanticEnd)%>"/>
+                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveEndOnScenario(finishingEndPredecessor.semanticEnd)"/>
                       </subModelOperations>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interaction.FragmentEnd" referenceName="ownedInteractionFragments" variableName="startFE">

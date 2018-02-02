@@ -173,7 +173,7 @@
             <elementView name="elementView"/>
             <containerView name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.sourceNode.target.dndABDComponent($elementView.sourceNode.target.eContainer, $containerView.target)%>"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.sourceNode.target.dndABDComponent(elementView.sourceNode.target.eContainer(),containerView.target)"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool_1:DeleteElementDescription" name="capellaElement" precondition="&lt;%!($containerView[!filter(&quot;DDiagram&quot;)].eContainer(&quot;DDiagram&quot;).target + $containerView[filter(&quot;DDiagram&quot;)].target.ancestor + $containerView[filter(&quot;DDiagram&quot;)].target + $containerView[!filter(&quot;DDiagram&quot;)].eContainer(&quot;DDiagram&quot;).target.ancestor).nContains($element)%>" forceRefresh="true">
@@ -485,7 +485,7 @@
                   <subModelOperations xsi:type="tool:For" expression="aql:initialSelection">
                     <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selectedFunctionalChains->includes(i))">
                       <subModelOperations xsi:type="tool:If" conditionExpression="aql:diagram.target.oclIsKindOf(interaction::AbstractCapability)">
-                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $diagram.target.removeFunctionalChainAbstractCapabilityInvolvement($i)%>"/>
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:diagram.target.removeFunctionalChainAbstractCapabilityInvolvement(i)"/>
                       </subModelOperations>
                       <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.getNodesAndNodeListElements()->select(getNodesAndNodeListElement | getNodesAndNodeListElement.target = i)->first()">
                         <subModelOperations xsi:type="tool:DeleteView"/>
@@ -494,7 +494,7 @@
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:For" expression="aql:self.void2Null(self.makeDiff(selectedFunctionalChains, initialSelection))">
                     <subModelOperations xsi:type="tool:If" conditionExpression="aql:diagram.target.oclIsKindOf(interaction::AbstractCapability)">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $diagram.target.createFunctionalChainAbstractCapabilityInvolvement($i)%>"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:diagram.target.createFunctionalChainAbstractCapabilityInvolvement(i)"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:i">
                       <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']/@defaultLayer/@nodeMappings[name='OAIB_OperationalProcessEnd']" containerViewExpression="aql:containerView"/>
@@ -533,7 +533,7 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.void2Null(element)">
                 <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (newContainerView.getDiagramContainer().target.oclIsKindOf(fa::AbstractFunction))">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$newContainerView.getDiagramContainer().target%>">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:newContainerView.getDiagramContainer().target">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="AbstractFunctionAbstractCapabilityInvolvement" referenceName="ownedAbstractFunctionAbstractCapabilityInvolvements" variableName="involvement">
                       <subModelOperations xsi:type="tool:SetValue" featureName="involved" valueExpression="aql:self.void2Null(element)"/>
                     </subModelOperations>
@@ -701,7 +701,7 @@
                   <parameters name="scope" value="aql:scope"/>
                   <parameters name="multiple" value="true"/>
                   <parameters name="resultVariable" value="selectedFunctionalChains"/>
-                  <parameters name="wizardMessage" value="Select Operational Processes to display all involved elements  in &lt;%$container.name%>."/>
+                  <parameters name="wizardMessage" value="aql:'Select Operational Processes to display all involved elements  in ' + container.name + '.'"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selectedFunctionalChains = 'WIZARD_CANCELED')">
                   <subModelOperations xsi:type="tool:ExternalJavaAction" name="showHideRelatedElements" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.ShowHideRelatedElements">
@@ -710,9 +710,9 @@
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:diagram.target.oclIsKindOf(interaction::AbstractCapability)">
                     <subModelOperations xsi:type="tool:For" expression="aql:selectedFunctionalChains">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $diagram.target.createFunctionalChainAbstractCapabilityInvolvement($i)%>"/>
-                      <subModelOperations xsi:type="tool:For" expression="&lt;%$i.getOwnedFunctionalChainInvolvements.involved.filter(&quot;AbstractFunction&quot;)%>" iteratorName="j">
-                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $diagram.target.createAbstractFunctionAbstractCapabilityInvolvement($j)%>"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:diagram.target.createFunctionalChainAbstractCapabilityInvolvement(i)"/>
+                      <subModelOperations xsi:type="tool:For" expression="aql:i.getOwnedFunctionalChainInvolvements.involved->filter(fa::AbstractFunction)" iteratorName="j">
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:diagram.target.createAbstractFunctionAbstractCapabilityInvolvement(j)"/>
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
@@ -1325,7 +1325,7 @@
                     </subModelOperations>
                     <subModelOperations xsi:type="tool:For" expression="aql:self.void2Null(element)">
                       <subModelOperations xsi:type="tool:If" conditionExpression="aql:containerView.eContents()->filter(diagram::DDiagramElement)->select(x | x.target = i)->size() > 0">
-                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$containerView.eContents().filter(&quot;DDiagramElement&quot;)[target == $i].nFirst.show%>"/>
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.eContents()->filter(diagram::DDiagramElement)->select(x | x.target = i)->first().show()"/>
                       </subModelOperations>
                       <subModelOperations xsi:type="tool:If" conditionExpression="aql:containerView.eContents()->filter(diagram::DDiagramElement)->select(x | x.target = i)->size() = 0">
                         <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:i">
@@ -1553,7 +1553,7 @@
                   <parameters name="scope" value="aql:self.getFunctionalChainsToInsert(containerView,container.getAllFunctionalChain())"/>
                   <parameters name="initialSelection" value="aql:initialSelection"/>
                   <parameters name="resultVariable" value="selectedFunctionalChains"/>
-                  <parameters name="wizardMessage" value="Select Operartional Processes to show in &lt;%$container.name%>."/>
+                  <parameters name="wizardMessage" value="aql:'Select Operartional Processes to show in ' + container.name + '.'"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selectedFunctionalChains = 'WIZARD_CANCELED')">
                   <subModelOperations xsi:type="tool:For" expression="aql:initialSelection">
@@ -1665,7 +1665,7 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.void2Null(element)">
                 <subModelOperations xsi:type="tool:If" conditionExpression="aql:oldAllocationBlocks->size() > 0">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$element.dndABAbstractFunctionAllocation($element.allocationBlocks.nFirst, $newSemanticContainer)%>"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:element.dndABAbstractFunctionAllocation(element.allocationBlocks->first(),newSemanticContainer)"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:If" conditionExpression="aql:oldAllocationBlocks->size() = 0">
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:newSemanticContainer">
@@ -1843,7 +1843,7 @@
             <elementView name="elementView"/>
             <containerView name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.sourceNode.target.dndDFBAbstractFunction($elementView.sourceNode.target.eContainer, $containerView.target)%>"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.sourceNode.target.dndDFBAbstractFunction(elementView.sourceNode.target.eContainer(),containerView.target)"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool_1:DeleteElementDescription" name="capellaElement" precondition="&lt;%!($containerView[!filter(&quot;DDiagram&quot;)].eContainer(&quot;DDiagram&quot;).target + $containerView[filter(&quot;DDiagram&quot;)].target.ancestor + $containerView[filter(&quot;DDiagram&quot;)].target + $containerView[!filter(&quot;DDiagram&quot;)].eContainer(&quot;DDiagram&quot;).target.ancestor).nContains($element)%>">
@@ -2061,8 +2061,8 @@
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:If" conditionExpression="aql:not element.subFunctions->isEmpty()">
-                  <subModelOperations xsi:type="tool:For" expression="&lt;%$element.eAllContents()[subFunctions == null]%>">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$oldSemanticContainer.ownedActivityAllocations[targetElement == $i]%>">
+                  <subModelOperations xsi:type="tool:For" expression="aql:element.eAllContents()->select(eAllContent | eAllContent.subFunctions->isEmpty())">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:oldSemanticContainer.ownedActivityAllocations->select(ownedActivityAllocation | ownedActivityAllocation.targetElement = i)">
                       <subModelOperations xsi:type="tool:MoveElement" newContainerExpression="aql:newContainerView.target" featureName="ownedActivityAllocations"/>
                     </subModelOperations>
                   </subModelOperations>
@@ -2377,7 +2377,7 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_3:SequenceDiagramDescription" dropDescriptions="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20Component'] //@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer']" name="Operational Interaction Scenario" label="Entity Scenario" titleExpression="&lt;%current.name.addScenarioPrefix(&quot;[OES]&quot;)%>" domainClass="interaction.Scenario" preconditionExpression="aql:self.isValidEntityScenario()" endsOrdering="aql:self.makeIntersection(self.getOrderedInteractionFragments(), eventEnds)" instanceRolesOrdering="aql:self.ownedInstanceRoles">
+    <ownedRepresentations xsi:type="description_3:SequenceDiagramDescription" dropDescriptions="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20Component'] //@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer']" name="Operational Interaction Scenario" label="Entity Scenario" titleExpression="aql:self.name.addScenarioPrefix('[OES]')" domainClass="interaction.Scenario" preconditionExpression="aql:self.isValidEntityScenario()" endsOrdering="aql:self.makeIntersection(self.getOrderedInteractionFragments(), eventEnds)" instanceRolesOrdering="aql:self.ownedInstanceRoles">
       <filters xsi:type="filter:CompositeFilterDescription" name="Hide executions">
         <filters xsi:type="filter:MappingFilter" filterKind="COLLAPSE" mappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20OA']/@borderedNodeMappings[name='default%20execution%20OA']/@borderedNodeMappings[name='Execution%20OA']"/>
       </filters>
@@ -2635,7 +2635,7 @@
         <reusedMappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@edgeMappings[name='Scenario_ContrainedElements']"/>
         <reusedMappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@edgeMappings[name='Scenario_ExchangeContext']"/>
         <toolSections name="tools section" label="Scenarios Elements">
-          <ownedTools xsi:type="tool_1:DiagramCreationDescription" name="Entity Scenario " precondition="aql:self.isInLib()" titleExpression="&lt;%current.name.addScenarioPrefix(&quot;[OES]&quot;)%> - Operational Entity Scenario" browseExpression="aql:self.ownedScenarios->last()" diagramDescription="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']">
+          <ownedTools xsi:type="tool_1:DiagramCreationDescription" name="Entity Scenario " precondition="aql:self.isInLib()" titleExpression="aql:self.name.addScenarioPrefix('[OES]') + ' - Operational Entity Scenario'" browseExpression="aql:self.ownedScenarios->last()" diagramDescription="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']">
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="interaction.Scenario" referenceName="ownedScenarios">
@@ -2806,7 +2806,7 @@
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveMessage(call)"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="interaction.MessageEnd" referenceName="ownedInteractionFragments" variableName="receivingEnd">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Receive Call &lt;%newCallName%>"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:'Receive Call ' + self.newCallName()"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="coveredInstanceRoles" valueExpression="aql:targetIR"/>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:messageEndAfter != null">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnScenario(messageEndAfter.semanticEnd)"/>
@@ -2822,7 +2822,7 @@
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="interaction.MessageEnd" referenceName="ownedInteractionFragments" variableName="sendingEnd">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Send Call &lt;%newCallName%>"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:'Send Call ' + self.newCallName()"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="coveredInstanceRoles" valueExpression="aql:sourceIR"/>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:messageEndBefore = null">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfScenario()"/>
@@ -2838,7 +2838,7 @@
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="interaction.MessageEnd" referenceName="ownedInteractionFragments" variableName="sendingReplyEnd">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Send Call &lt;%newCallName%>"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:'Send Call ' + self.newCallName()"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="coveredInstanceRoles" valueExpression="aql:targetIR"/>
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnScenario(receivingEnd)"/>
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnInstanceRole(receivingEnd)"/>
@@ -2848,7 +2848,7 @@
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="interaction.MessageEnd" referenceName="ownedInteractionFragments" variableName="receivingReplyEnd">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Receive Call &lt;%newCallName%>"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:'Receive Call ' + self.newCallName()"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="coveredInstanceRoles" valueExpression="aql:sourceIR"/>
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnScenario(sendingReplyEnd)"/>
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnInstanceRole(sendingReplyEnd)"/>
@@ -3012,7 +3012,7 @@
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveMessage(call)"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="interaction.MessageEnd" referenceName="ownedInteractionFragments" variableName="receivingEnd">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Receive Call &lt;%newCallName%>"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:'Receive Call ' + self.newCallName()"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="coveredInstanceRoles" valueExpression="aql:targetIR"/>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:messageEndAfter != null">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnScenario(messageEndAfter.semanticEnd)"/>
@@ -3028,7 +3028,7 @@
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="interaction.MessageEnd" referenceName="ownedInteractionFragments" variableName="sendingEnd">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Send Call &lt;%newCallName%>"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:'Send Call ' + self.newCallName()"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="coveredInstanceRoles" valueExpression="aql:sourceIR"/>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:messageEndBefore = null">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfScenario()"/>
@@ -3044,7 +3044,7 @@
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="interaction.MessageEnd" referenceName="ownedInteractionFragments" variableName="sendingReplyEnd">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Send Call &lt;%newCallName%>"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:'Send Call ' + self.newCallName()"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="coveredInstanceRoles" valueExpression="aql:targetIR"/>
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnScenario(receivingEnd)"/>
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnInstanceRole(receivingEnd)"/>
@@ -3054,7 +3054,7 @@
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="interaction.MessageEnd" referenceName="ownedInteractionFragments" variableName="receivingReplyEnd">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Receive Call &lt;%newCallName%>"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:'Receive Call ' + self.newCallName()"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="coveredInstanceRoles" valueExpression="aql:sourceIR"/>
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnScenario(sendingReplyEnd)"/>
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnInstanceRole(sendingReplyEnd)"/>
@@ -3530,7 +3530,7 @@
                       <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfScenario()"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool:If" conditionExpression="aql:not finishingEndPredecessor->isEmpty()">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%moveEndOnScenario($finishingEndPredecessor.semanticEnd)%>"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnScenario(finishingEndPredecessor.semanticEnd)"/>
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="interaction.FragmentEnd" referenceName="ownedInteractionFragments" variableName="startFE">
@@ -3573,7 +3573,7 @@
                       <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfScenario()"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool:If" conditionExpression="aql:not finishingEndPredecessor->isEmpty()">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%moveEndOnScenario($finishingEndPredecessor.semanticEnd)%>"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnScenario(finishingEndPredecessor.semanticEnd)"/>
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="interaction.FragmentEnd" referenceName="ownedInteractionFragments" variableName="startFE">
@@ -3616,7 +3616,7 @@
                       <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfScenario()"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool:If" conditionExpression="aql:not finishingEndPredecessor->isEmpty()">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%moveEndOnScenario($finishingEndPredecessor.semanticEnd)%>"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnScenario(finishingEndPredecessor.semanticEnd)"/>
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="interaction.FragmentEnd" referenceName="ownedInteractionFragments" variableName="startFE">
@@ -3667,7 +3667,7 @@
                         <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfScenario()"/>
                       </subModelOperations>
                       <subModelOperations xsi:type="tool:If" conditionExpression="aql:not finishingEndPredecessor->isEmpty()">
-                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%moveEndOnScenario($finishingEndPredecessor.semanticEnd)%>"/>
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnScenario(finishingEndPredecessor.semanticEnd)"/>
                       </subModelOperations>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="interaction.FragmentEnd" referenceName="ownedInteractionFragments" variableName="startFE">
@@ -3731,10 +3731,10 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:DirectEditLabel" name="rename basic message OA" inputLabelExpression="&lt;% sendingEnd.event.operation.name %>">
+          <ownedTools xsi:type="tool_1:DirectEditLabel" name="rename basic message OA" inputLabelExpression="aql:self.sendingEnd.event.operation.name">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% sendingEnd.event.operation %>">
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.sendingEnd.event.operation">
                 <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:arg0"/>
               </firstModelOperations>
             </initialOperation>
@@ -3960,7 +3960,7 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_3:SequenceDiagramDescription" dropDescriptions="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Activity%20Interaction%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20Component'] //@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Activity%20Interaction%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer']" name="Activity Interaction Scenario" label="Activity Scenario" titleExpression="&lt;%current.name.addScenarioPrefix(&quot;[OAS]&quot;)%>" domainClass="interaction.Scenario" preconditionExpression="aql:self.isValidActivityScenario()" endsOrdering="aql:self.makeIntersection(self.getOrderedInteractionFragments(), eventEnds)" instanceRolesOrdering="aql:self.ownedInstanceRoles">
+    <ownedRepresentations xsi:type="description_3:SequenceDiagramDescription" dropDescriptions="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Activity%20Interaction%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20Component'] //@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Activity%20Interaction%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer']" name="Activity Interaction Scenario" label="Activity Scenario" titleExpression="aql:self.name.addScenarioPrefix('[OAS]')" domainClass="interaction.Scenario" preconditionExpression="aql:self.isValidActivityScenario()" endsOrdering="aql:self.makeIntersection(self.getOrderedInteractionFragments(), eventEnds)" instanceRolesOrdering="aql:self.ownedInstanceRoles">
       <filters xsi:type="filter:CompositeFilterDescription" name="Hide executions">
         <filters xsi:type="filter:MappingFilter" filterKind="COLLAPSE" mappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Activity%20Interaction%20Scenario']/@defaultLayer/@nodeMappings[name='InstanceRoleMaping%20AIS']/@borderedNodeMappings[name='default%20execution%20AIS']/@borderedNodeMappings[name='Execution%20AIS']"/>
       </filters>
@@ -4341,7 +4341,7 @@
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveMessage(call)"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="interaction.MessageEnd" referenceName="ownedInteractionFragments" variableName="receivingEnd">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Receive Call &lt;%newCallName%>"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:'Receive Call ' + self.newCallName()"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="coveredInstanceRoles" valueExpression="aql:targetIR"/>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:messageEndAfter != null">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnScenario(messageEndAfter.semanticEnd)"/>
@@ -4357,7 +4357,7 @@
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="interaction.MessageEnd" referenceName="ownedInteractionFragments" variableName="sendingEnd">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Send Call &lt;%newCallName%>"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:'Send Call ' + self.newCallName()"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="coveredInstanceRoles" valueExpression="aql:sourceIR"/>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:messageEndBefore = null">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfScenario()"/>
@@ -4373,7 +4373,7 @@
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="interaction.MessageEnd" referenceName="ownedInteractionFragments" variableName="sendingReplyEnd">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Send Call &lt;%newCallName%>"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:'Send Call ' + self.newCallName()"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="coveredInstanceRoles" valueExpression="aql:targetIR"/>
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnScenario(receivingEnd)"/>
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnInstanceRole(receivingEnd)"/>
@@ -4383,7 +4383,7 @@
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="interaction.MessageEnd" referenceName="ownedInteractionFragments" variableName="receivingReplyEnd">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Receive Call &lt;%newCallName%>"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:'Receive Call ' + self.newCallName()"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="coveredInstanceRoles" valueExpression="aql:sourceIR"/>
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnScenario(sendingReplyEnd)"/>
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnInstanceRole(sendingReplyEnd)"/>
@@ -4425,7 +4425,7 @@
               </firstModelOperations>
             </onEventMovedOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:DiagramCreationDescription" name="Activity Scenario" precondition="aql:self.isInLib()" titleExpression="&lt;%current.name.addScenarioPrefix(&quot;[OAS]&quot;)%> - Operational Activity Scenario" browseExpression="aql:self.ownedScenarios->last()" diagramDescription="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Activity%20Interaction%20Scenario']">
+          <ownedTools xsi:type="tool_1:DiagramCreationDescription" name="Activity Scenario" precondition="aql:self.isInLib()" titleExpression="aql:self.name.addScenarioPrefix('[OAS]') + ' - Operational Activity Scenario'" browseExpression="aql:self.ownedScenarios->last()" diagramDescription="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Activity%20Interaction%20Scenario']">
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="interaction.Scenario" referenceName="ownedScenarios">
@@ -4497,7 +4497,7 @@
                       <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfScenario()"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool:If" conditionExpression="aql:not finishingEndPredecessor->isEmpty()">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%moveEndOnScenario($finishingEndPredecessor.semanticEnd)%>"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnScenario(finishingEndPredecessor.semanticEnd)"/>
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="interaction.FragmentEnd" referenceName="ownedInteractionFragments" variableName="startFE">
@@ -4540,7 +4540,7 @@
                       <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfScenario()"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool:If" conditionExpression="aql:not finishingEndPredecessor->isEmpty()">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%moveEndOnScenario($finishingEndPredecessor.semanticEnd)%>"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnScenario(finishingEndPredecessor.semanticEnd)"/>
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="interaction.FragmentEnd" referenceName="ownedInteractionFragments" variableName="startFE">
@@ -4583,7 +4583,7 @@
                       <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfScenario()"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool:If" conditionExpression="aql:not finishingEndPredecessor->isEmpty()">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%moveEndOnScenario($finishingEndPredecessor.semanticEnd)%>"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnScenario(finishingEndPredecessor.semanticEnd)"/>
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="interaction.FragmentEnd" referenceName="ownedInteractionFragments" variableName="startFE">
@@ -4634,7 +4634,7 @@
                         <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfScenario()"/>
                       </subModelOperations>
                       <subModelOperations xsi:type="tool:If" conditionExpression="aql:not finishingEndPredecessor->isEmpty()">
-                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%moveEndOnScenario($finishingEndPredecessor.semanticEnd)%>"/>
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnScenario(finishingEndPredecessor.semanticEnd)"/>
                       </subModelOperations>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="interaction.FragmentEnd" referenceName="ownedInteractionFragments" variableName="startFE">
@@ -4678,10 +4678,10 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:DirectEditLabel" name="rename basic message AIS" inputLabelExpression="&lt;% sendingEnd.event.operation.name %>">
+          <ownedTools xsi:type="tool_1:DirectEditLabel" name="rename basic message AIS" inputLabelExpression="aql:self.sendingEnd.event.operation.name">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% sendingEnd.event.operation %>">
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.sendingEnd.event.operation">
                 <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:arg0"/>
               </firstModelOperations>
             </initialOperation>
@@ -4986,7 +4986,7 @@
                   <parameters name="scope" value="aql:elementView.getFCDInvolveFunctionalExchangeAndFunctionScope()"/>
                   <parameters name="initialSelection" value="aql:self.void2Null(self.getEmptyList())"/>
                   <parameters name="resultVariable" value="selectedExchanges"/>
-                  <parameters name="wizardMessage" value="Select Interactions to involve from &lt;%$element.name%>."/>
+                  <parameters name="wizardMessage" value="aql:'Select Interactions to involve from ' + element.name + '.'"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:If" conditionExpression="aql:(selectedExchanges != 'WIZARD_CANCELED')">
                   <subModelOperations xsi:type="tool:For" expression="aql:self.void2Null(selectedExchanges)">
@@ -5522,7 +5522,7 @@
           <variables name="root" documentation="The semantic element corresponding to the current table."/>
         </delete>
       </ownedColumnMappings>
-      <intersection name="Trace Function" semanticElements="aql:self.makeUnion(self, self.eContainer())" lineMapping="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Requirements%20-%20Operational%20Activities']/@ownedLineMappings[name='Requirements']/@ownedSubLines[name='Sub%20Requirements']" columnMapping="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Requirements%20-%20Operational%20Activities']/@ownedColumnMappings.0" labelExpression="aql:self.getRFLabel(lineSemantic,columnSemantic)" useDomainClass="true" columnFinderExpression="feature:sourceElement" lineFinderExpression="feature:targetElement" semanticCandidatesExpression="&lt;%getRFColumnCandidates().outgoingTraces()[isA(&quot;RequirementsTrace&quot;)]%>" domainClass="RequirementsTrace">
+      <intersection name="Trace Function" semanticElements="aql:self.makeUnion(self, self.eContainer())" lineMapping="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Requirements%20-%20Operational%20Activities']/@ownedLineMappings[name='Requirements']/@ownedSubLines[name='Sub%20Requirements']" columnMapping="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Requirements%20-%20Operational%20Activities']/@ownedColumnMappings.0" labelExpression="aql:self.getRFLabel(lineSemantic,columnSemantic)" useDomainClass="true" columnFinderExpression="feature:sourceElement" lineFinderExpression="feature:targetElement" semanticCandidatesExpression="aql:self.getRFColumnCandidates().outgoingTraces->select(outgoingTrace | outgoingTrace.oclIsKindOf(requirement::RequirementsTrace))" domainClass="RequirementsTrace">
         <directEdit>
           <variables name="table" documentation="The current DTable."/>
           <variables name="line" documentation="The DLine of the current DCell."/>
