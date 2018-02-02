@@ -457,7 +457,7 @@
                     </subModelOperations>
                     <subModelOperations xsi:type="tool:For" expression="aql:self.void2Null(selection)" iteratorName="j">
                       <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%! $containedPhysicalComponentTarget.nContains($j)%>">
-                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $j%>">
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:j">
                           <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='CI%20container%20mapping']/@subNodeMappings[name='PhysicalComponentInCI%20mapping']" containerViewExpression="aql:containerView"/>
                           <subModelOperations xsi:type="tool:If" conditionExpression="aql:j.oclIsKindOf(pa::PhysicalComponent)">
                             <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='CI%20container%20mapping']/@subNodeMappings[name='PhysicalComponentInCI%20mapping']" containerViewExpression="aql:containerView"/>
@@ -790,7 +790,7 @@
                 <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.type">
                   <subModelOperations xsi:type="tool:MoveElement" newContainerExpression="aql:target" featureName="ownedConfigurationItems"/>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$edgeView%>">
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:edgeView">
                   <subModelOperations xsi:type="tool:For" expression="&lt;%sourceNode.target.ownedPartitions.filter(&quot;FlowPort&quot;).exchanges%>">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:i">
                       <subModelOperations xsi:type="tool:MoveElement" newContainerExpression="&lt;% getCommonComponentAncestor($i.source.parent, $i.target.parent) %>" featureName="ownedExchanges"/>

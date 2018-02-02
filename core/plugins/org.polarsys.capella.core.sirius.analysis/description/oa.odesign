@@ -639,7 +639,7 @@
             </tools>
           </ownedTools>
           <ownedTools xsi:type="tool:PopupMenu" name="Operational Process">
-            <menuItemDescription xsi:type="tool:OperationAction" name="Create an Operational Process" precondition="&lt;%isValidFunctionalChainSelection($views)%>" forceRefresh="true">
+            <menuItemDescription xsi:type="tool:OperationAction" name="Create an Operational Process" precondition="aql:self.isValidFunctionalChainSelection(views)" forceRefresh="true">
               <view name="views"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createFunctionalChain(views)">
@@ -1699,7 +1699,7 @@
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:PopupMenu" name="Operational Process">
-            <menuItemDescription xsi:type="tool:OperationAction" name="Create an Operational Process" precondition="&lt;%isValidFunctionalChainSelection($views)%>" forceRefresh="true">
+            <menuItemDescription xsi:type="tool:OperationAction" name="Create an Operational Process" precondition="aql:self.isValidFunctionalChainSelection(views)" forceRefresh="true">
               <view name="views"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createFunctionalChain(views)">
@@ -2559,7 +2559,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings xsi:type="description_3:ReturnMessageMapping" name="return message mapping OA" deletionDescription="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" semanticCandidatesExpression="aql:self.ownedMessages->select(ownedMessage | ownedMessage.kind = interaction::MessageKind::REPLY)" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20OA']/@borderedNodeMappings[name='default%20execution%20OA'] //@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20OA']/@borderedNodeMappings[name='default%20execution%20OA']/@borderedNodeMappings[name='Execution%20OA']" targetMapping="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20OA']/@borderedNodeMappings[name='default%20execution%20OA'] //@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20OA']/@borderedNodeMappings[name='default%20execution%20OA']/@borderedNodeMappings[name='Execution%20OA']" targetFinderExpression="aql:self.getReceivingEnd()" sourceFinderExpression="aql:self.getSendingEnd()" domainClass="interaction.SequenceMessage" useDomainElement="true" sendingEndFinderExpression="aql:self.sendingEnd" receivingEndFinderExpression="aql:self.receivingEnd" invocationMessageFinderExpression="&lt;% getInvocationMessage ()%>">
+        <edgeMappings xsi:type="description_3:ReturnMessageMapping" name="return message mapping OA" deletionDescription="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" semanticCandidatesExpression="aql:self.ownedMessages->select(ownedMessage | ownedMessage.kind = interaction::MessageKind::REPLY)" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20OA']/@borderedNodeMappings[name='default%20execution%20OA'] //@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20OA']/@borderedNodeMappings[name='default%20execution%20OA']/@borderedNodeMappings[name='Execution%20OA']" targetMapping="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20OA']/@borderedNodeMappings[name='default%20execution%20OA'] //@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20OA']/@borderedNodeMappings[name='default%20execution%20OA']/@borderedNodeMappings[name='Execution%20OA']" targetFinderExpression="aql:self.getReceivingEnd()" sourceFinderExpression="aql:self.getSendingEnd()" domainClass="interaction.SequenceMessage" useDomainElement="true" sendingEndFinderExpression="aql:self.sendingEnd" receivingEndFinderExpression="aql:self.receivingEnd" invocationMessageFinderExpression="aql:self.getInvocationMessage()">
           <style lineStyle="dash">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription showIcon="false">
@@ -2635,11 +2635,11 @@
         <reusedMappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@edgeMappings[name='Scenario_ContrainedElements']"/>
         <reusedMappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@edgeMappings[name='Scenario_ExchangeContext']"/>
         <toolSections name="tools section" label="Scenarios Elements">
-          <ownedTools xsi:type="tool_1:DiagramCreationDescription" name="Entity Scenario " precondition="&lt;%isInLib()%>" titleExpression="&lt;%current.name.addScenarioPrefix(&quot;[OES]&quot;)%> - Operational Entity Scenario" browseExpression="aql:self.ownedScenarios->last()" diagramDescription="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']">
+          <ownedTools xsi:type="tool_1:DiagramCreationDescription" name="Entity Scenario " precondition="aql:self.isInLib()" titleExpression="&lt;%current.name.addScenarioPrefix(&quot;[OES]&quot;)%> - Operational Entity Scenario" browseExpression="aql:self.ownedScenarios->last()" diagramDescription="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']">
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="interaction.Scenario" referenceName="ownedScenarios">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$diagramName%>"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:diagramName"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -2814,7 +2814,7 @@
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:messageEndAfter = null">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfScenario()"/>
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%moveEndOnBeginingOfInstanceRole%>"/>
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfInstanceRole()"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:SetValue" featureName="event" valueExpression="aql:eventReceiptOperationCall"/>
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:call">
@@ -2826,7 +2826,7 @@
                   <subModelOperations xsi:type="tool:SetValue" featureName="coveredInstanceRoles" valueExpression="aql:sourceIR"/>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:messageEndBefore = null">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfScenario()"/>
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%moveEndOnBeginingOfInstanceRole%>"/>
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfInstanceRole()"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:messageEndBefore != null">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnScenario(messageEndBefore.semanticEnd)"/>
@@ -2922,7 +2922,7 @@
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:messageEndAfter = null">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfScenario()"/>
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%moveEndOnBeginingOfInstanceRole%>"/>
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfInstanceRole()"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:SetValue" featureName="event" valueExpression="aql:eventReceiptOperationCall"/>
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:call">
@@ -2934,7 +2934,7 @@
                   <subModelOperations xsi:type="tool:SetValue" featureName="coveredInstanceRoles" valueExpression="aql:sourceIR"/>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:messageEndBefore = null">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfScenario()"/>
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%moveEndOnBeginingOfInstanceRole%>"/>
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfInstanceRole()"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:messageEndBefore != null">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnScenario(messageEndBefore.semanticEnd)"/>
@@ -3020,7 +3020,7 @@
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:messageEndAfter = null">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfScenario()"/>
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%moveEndOnBeginingOfInstanceRole%>"/>
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfInstanceRole()"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:SetValue" featureName="event" valueExpression="aql:eventReceiptOperationCall"/>
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:call">
@@ -3032,7 +3032,7 @@
                   <subModelOperations xsi:type="tool:SetValue" featureName="coveredInstanceRoles" valueExpression="aql:sourceIR"/>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:messageEndBefore = null">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfScenario()"/>
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%moveEndOnBeginingOfInstanceRole%>"/>
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfInstanceRole()"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:messageEndBefore != null">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnScenario(messageEndBefore.semanticEnd)"/>
@@ -3128,7 +3128,7 @@
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:messageEndAfter = null">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfScenario()"/>
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%moveEndOnBeginingOfInstanceRole%>"/>
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfInstanceRole()"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:SetValue" featureName="event" valueExpression="aql:eventReceiptOperationCall"/>
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:call">
@@ -3140,7 +3140,7 @@
                   <subModelOperations xsi:type="tool:SetValue" featureName="coveredInstanceRoles" valueExpression="aql:sourceIR"/>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:messageEndBefore = null">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfScenario()"/>
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%moveEndOnBeginingOfInstanceRole%>"/>
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfInstanceRole()"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:messageEndBefore != null">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnScenario(messageEndBefore.semanticEnd)"/>
@@ -3203,7 +3203,7 @@
                   <subModelOperations xsi:type="tool:SetValue" featureName="coveredInstanceRoles" valueExpression="aql:sourceIR"/>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:messageEndBefore = null">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfScenario()"/>
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%moveEndOnBeginingOfInstanceRole%>"/>
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfInstanceRole()"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:messageEndBefore != null">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnScenario(messageEndBefore.semanticEnd)"/>
@@ -3261,7 +3261,7 @@
                   <subModelOperations xsi:type="tool:SetValue" featureName="coveredInstanceRoles" valueExpression="aql:sourceIR"/>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:messageEndBefore = null">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfScenario()"/>
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%moveEndOnBeginingOfInstanceRole%>"/>
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfInstanceRole()"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:messageEndBefore != null">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnScenario(messageEndBefore.semanticEnd)"/>
@@ -3326,7 +3326,7 @@
                     </subModelOperations>
                     <subModelOperations xsi:type="tool:If" conditionExpression="aql:messageEndAfter = null">
                       <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfScenario()"/>
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%moveEndOnBeginingOfInstanceRole%>"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfInstanceRole()"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:call">
                       <subModelOperations xsi:type="tool:SetValue" featureName="receivingEnd" valueExpression="aql:receivingEnd"/>
@@ -3337,7 +3337,7 @@
                     <subModelOperations xsi:type="tool:SetValue" featureName="coveredInstanceRoles" valueExpression="aql:sourceIR"/>
                     <subModelOperations xsi:type="tool:If" conditionExpression="aql:messageEndBefore = null">
                       <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfScenario()"/>
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%moveEndOnBeginingOfInstanceRole%>"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfInstanceRole()"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool:If" conditionExpression="aql:messageEndBefore != null">
                       <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnScenario(messageEndBefore.semanticEnd)"/>
@@ -3402,7 +3402,7 @@
                     </subModelOperations>
                     <subModelOperations xsi:type="tool:If" conditionExpression="aql:messageEndAfter = null">
                       <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfScenario()"/>
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%moveEndOnBeginingOfInstanceRole%>"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfInstanceRole()"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:call">
                       <subModelOperations xsi:type="tool:SetValue" featureName="receivingEnd" valueExpression="aql:receivingEnd"/>
@@ -3413,7 +3413,7 @@
                     <subModelOperations xsi:type="tool:SetValue" featureName="coveredInstanceRoles" valueExpression="aql:sourceIR"/>
                     <subModelOperations xsi:type="tool:If" conditionExpression="aql:messageEndBefore = null">
                       <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfScenario()"/>
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%moveEndOnBeginingOfInstanceRole%>"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfInstanceRole()"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool:If" conditionExpression="aql:messageEndBefore != null">
                       <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnScenario(messageEndBefore.semanticEnd)"/>
@@ -3467,7 +3467,7 @@
             <finishingEndPredecessorAfter name="finishingEndPredecessorAfter"/>
             <onEventMovedOperation>
               <firstModelOperations xsi:type="tool:ExternalJavaAction" name="org.polarsys.capella.core.sirius.analysis.actions.extensions.DoReorder" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.DoReorder">
-                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% current  %>"/>
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self"/>
                 <parameters name="context" value="aql:self"/>
                 <parameters name="STARTING_END_PREDECESSOR" value="aql:startingEndPredecessorAfter.semanticEnd"/>
                 <parameters name="FINISHING_END_PREDECESSOR" value="aql:finishingEndPredecessorAfter.semanticEnd"/>
@@ -3492,7 +3492,7 @@
                     <subModelOperations xsi:type="tool:SetValue" featureName="coveredInstanceRoles" valueExpression="aql:coveredLifeLines"/>
                     <subModelOperations xsi:type="tool:If" conditionExpression="aql:messageEndBefore = null">
                       <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfScenario()"/>
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%moveEndOnBeginingOfInstanceRole%>"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfInstanceRole()"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool:If" conditionExpression="aql:messageEndBefore != null">
                       <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnScenario(messageEndBefore.semanticEnd)"/>
@@ -3726,7 +3726,7 @@
           <ownedTools xsi:type="tool_1:DirectEditLabel" name="rename instance role OA">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% representedInstance %>">
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.representedInstance">
                 <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:arg0"/>
               </firstModelOperations>
             </initialOperation>
@@ -3912,7 +3912,7 @@
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:(selectedConstraints != 'WIZARD_CANCELED')">
                     <subModelOperations xsi:type="tool:For" expression="aql:self.void2Null(selectedConstraints)">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%createConstraintWithConstaintedElementInDiagram($i,$diagram,$constraintsInDiagram,false)%>"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createConstraintWithConstaintedElementInDiagram(i,diagram,constraintsInDiagram,false)"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool:For" expression="aql:constraintsInDiagram">
                       <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selectedConstraints->includes(i))">
@@ -3949,8 +3949,8 @@
             <instanceRoleMoved>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self">
                 <subModelOperations xsi:type="tool:ExternalJavaAction" name="org.polarsys.capella.core.sirius.analysis.actions.extensions.doIRReorder" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.doIRReorder">
-                  <parameters name="PREDECESSOR_BEFORE" value="&lt;% $predecessorBefore %>"/>
-                  <parameters name="PREDECESSOR_AFTER" value="&lt;% $predecessorAfter %>"/>
+                  <parameters name="PREDECESSOR_BEFORE" value="aql:predecessorBefore"/>
+                  <parameters name="PREDECESSOR_AFTER" value="aql:predecessorAfter"/>
                   <parameters name="SCENARIO" value="aql:self.eContainerOrSelf(interaction::Scenario)"/>
                 </subModelOperations>
               </firstModelOperations>
@@ -4089,7 +4089,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings xsi:type="description_3:ReturnMessageMapping" name="return message mapping AIS" deletionDescription="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" semanticCandidatesExpression="aql:self.ownedMessages->select(ownedMessage | ownedMessage.kind = interaction::MessageKind::REPLY)" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Activity%20Interaction%20Scenario']/@defaultLayer/@nodeMappings[name='InstanceRoleMaping%20AIS']/@borderedNodeMappings[name='default%20execution%20AIS'] //@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Activity%20Interaction%20Scenario']/@defaultLayer/@nodeMappings[name='InstanceRoleMaping%20AIS']/@borderedNodeMappings[name='default%20execution%20AIS']/@borderedNodeMappings[name='Execution%20AIS']" targetMapping="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Activity%20Interaction%20Scenario']/@defaultLayer/@nodeMappings[name='InstanceRoleMaping%20AIS']/@borderedNodeMappings[name='default%20execution%20AIS'] //@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Activity%20Interaction%20Scenario']/@defaultLayer/@nodeMappings[name='InstanceRoleMaping%20AIS']/@borderedNodeMappings[name='default%20execution%20AIS']/@borderedNodeMappings[name='Execution%20AIS']" targetFinderExpression="aql:self.getReceivingEnd()" sourceFinderExpression="aql:self.getSendingEnd()" domainClass="interaction.SequenceMessage" useDomainElement="true" sendingEndFinderExpression="aql:self.sendingEnd" receivingEndFinderExpression="aql:self.receivingEnd" invocationMessageFinderExpression="&lt;% getInvocationMessage ()%>">
+        <edgeMappings xsi:type="description_3:ReturnMessageMapping" name="return message mapping AIS" deletionDescription="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" semanticCandidatesExpression="aql:self.ownedMessages->select(ownedMessage | ownedMessage.kind = interaction::MessageKind::REPLY)" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Activity%20Interaction%20Scenario']/@defaultLayer/@nodeMappings[name='InstanceRoleMaping%20AIS']/@borderedNodeMappings[name='default%20execution%20AIS'] //@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Activity%20Interaction%20Scenario']/@defaultLayer/@nodeMappings[name='InstanceRoleMaping%20AIS']/@borderedNodeMappings[name='default%20execution%20AIS']/@borderedNodeMappings[name='Execution%20AIS']" targetMapping="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Activity%20Interaction%20Scenario']/@defaultLayer/@nodeMappings[name='InstanceRoleMaping%20AIS']/@borderedNodeMappings[name='default%20execution%20AIS'] //@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Activity%20Interaction%20Scenario']/@defaultLayer/@nodeMappings[name='InstanceRoleMaping%20AIS']/@borderedNodeMappings[name='default%20execution%20AIS']/@borderedNodeMappings[name='Execution%20AIS']" targetFinderExpression="aql:self.getReceivingEnd()" sourceFinderExpression="aql:self.getSendingEnd()" domainClass="interaction.SequenceMessage" useDomainElement="true" sendingEndFinderExpression="aql:self.sendingEnd" receivingEndFinderExpression="aql:self.receivingEnd" invocationMessageFinderExpression="aql:self.getInvocationMessage()">
           <style lineStyle="dash">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription showIcon="false">
@@ -4254,7 +4254,7 @@
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:messageEndAfter = null">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfScenario()"/>
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%moveEndOnBeginingOfInstanceRole%>"/>
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfInstanceRole()"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:SetValue" featureName="event" valueExpression="aql:eventReceiptOperationCall"/>
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:call">
@@ -4266,7 +4266,7 @@
                   <subModelOperations xsi:type="tool:SetValue" featureName="coveredInstanceRoles" valueExpression="aql:sourceIR"/>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:messageEndBefore = null">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfScenario()"/>
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%moveEndOnBeginingOfInstanceRole%>"/>
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfInstanceRole()"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:messageEndBefore != null">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnScenario(messageEndBefore.semanticEnd)"/>
@@ -4349,7 +4349,7 @@
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:messageEndAfter = null">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfScenario()"/>
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%moveEndOnBeginingOfInstanceRole%>"/>
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfInstanceRole()"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:SetValue" featureName="event" valueExpression="aql:eventReceiptOperationCall"/>
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:call">
@@ -4361,7 +4361,7 @@
                   <subModelOperations xsi:type="tool:SetValue" featureName="coveredInstanceRoles" valueExpression="aql:sourceIR"/>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:messageEndBefore = null">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfScenario()"/>
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%moveEndOnBeginingOfInstanceRole%>"/>
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfInstanceRole()"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:messageEndBefore != null">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnScenario(messageEndBefore.semanticEnd)"/>
@@ -4418,18 +4418,18 @@
             <finishingEndPredecessorAfter name="finishingEndPredecessorAfter"/>
             <onEventMovedOperation>
               <firstModelOperations xsi:type="tool:ExternalJavaAction" name="org.polarsys.capella.core.sirius.analysis.actions.extensions.DoReorder" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.DoReorder">
-                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% current  %>"/>
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self"/>
                 <parameters name="context" value="aql:self"/>
                 <parameters name="STARTING_END_PREDECESSOR" value="aql:startingEndPredecessorAfter.semanticEnd"/>
                 <parameters name="FINISHING_END_PREDECESSOR" value="aql:finishingEndPredecessorAfter.semanticEnd"/>
               </firstModelOperations>
             </onEventMovedOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:DiagramCreationDescription" name="Activity Scenario" precondition="&lt;%isInLib()%>" titleExpression="&lt;%current.name.addScenarioPrefix(&quot;[OAS]&quot;)%> - Operational Activity Scenario" browseExpression="aql:self.ownedScenarios->last()" diagramDescription="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Activity%20Interaction%20Scenario']">
+          <ownedTools xsi:type="tool_1:DiagramCreationDescription" name="Activity Scenario" precondition="aql:self.isInLib()" titleExpression="&lt;%current.name.addScenarioPrefix(&quot;[OAS]&quot;)%> - Operational Activity Scenario" browseExpression="aql:self.ownedScenarios->last()" diagramDescription="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Activity%20Interaction%20Scenario']">
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="interaction.Scenario" referenceName="ownedScenarios">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$diagramName%>"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:diagramName"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -4459,7 +4459,7 @@
                     <subModelOperations xsi:type="tool:SetValue" featureName="coveredInstanceRoles" valueExpression="aql:coveredLifeLines"/>
                     <subModelOperations xsi:type="tool:If" conditionExpression="aql:messageEndBefore = null">
                       <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfScenario()"/>
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%moveEndOnBeginingOfInstanceRole%>"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfInstanceRole()"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool:If" conditionExpression="aql:messageEndBefore != null">
                       <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.moveEndOnScenario(messageEndBefore.semanticEnd)"/>
@@ -4670,8 +4670,8 @@
           <ownedTools xsi:type="tool_1:DirectEditLabel" name="rename instance role AIS">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% current%>">
-                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% representedInstance %>">
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self">
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.representedInstance">
                   <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:arg0"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:arg0"/>
@@ -4836,7 +4836,7 @@
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:(selectedConstraints != 'WIZARD_CANCELED')">
                     <subModelOperations xsi:type="tool:For" expression="aql:self.void2Null(selectedConstraints)">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%createConstraintWithConstaintedElementInDiagram($i,$diagram,$constraintsInDiagram,false)%>"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createConstraintWithConstaintedElementInDiagram(i,diagram,constraintsInDiagram,false)"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool:For" expression="aql:constraintsInDiagram">
                       <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selectedConstraints->includes(i))">
@@ -4873,8 +4873,8 @@
             <instanceRoleMoved>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self">
                 <subModelOperations xsi:type="tool:ExternalJavaAction" name="org.polarsys.capella.core.sirius.analysis.actions.extensions.doIRReorder" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.doIRReorder">
-                  <parameters name="PREDECESSOR_BEFORE" value="&lt;% $predecessorBefore %>"/>
-                  <parameters name="PREDECESSOR_AFTER" value="&lt;% $predecessorAfter %>"/>
+                  <parameters name="PREDECESSOR_BEFORE" value="aql:predecessorBefore"/>
+                  <parameters name="PREDECESSOR_AFTER" value="aql:predecessorAfter"/>
                   <parameters name="SCENARIO" value="aql:self.eContainerOrSelf(interaction::Scenario)"/>
                 </subModelOperations>
               </firstModelOperations>
@@ -5022,7 +5022,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:DiagramCreationDescription" name="Operational Process Description" precondition="&lt;%isInLib()%>" titleExpression="[OPD] &lt;%current.name%>" diagramDescription="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Process%20Description']">
+          <ownedTools xsi:type="tool_1:DiagramCreationDescription" name="Operational Process Description" precondition="aql:self.isInLib()" titleExpression="[OPD] &lt;%current.name%>" diagramDescription="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Process%20Description']">
             <initialOperation/>
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
@@ -5516,13 +5516,13 @@
           <variables name="root" documentation="The semantic element corresponding to the current table."/>
         </delete>
       </ownedLineMappings>
-      <ownedColumnMappings name="Functions" headerLabelExpression="feature:name" domainClass="NamedElement" semanticCandidatesExpression="&lt;%getRFColumnCandidates()%>">
+      <ownedColumnMappings name="Functions" headerLabelExpression="feature:name" domainClass="NamedElement" semanticCandidatesExpression="aql:self.getRFColumnCandidates()">
         <delete name="No delete" precondition="false">
           <variables name="element" documentation="The currently edited element."/>
           <variables name="root" documentation="The semantic element corresponding to the current table."/>
         </delete>
       </ownedColumnMappings>
-      <intersection name="Trace Function" semanticElements="&lt;%current+current.eContainer()%>" lineMapping="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Requirements%20-%20Operational%20Activities']/@ownedLineMappings[name='Requirements']/@ownedSubLines[name='Sub%20Requirements']" columnMapping="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Requirements%20-%20Operational%20Activities']/@ownedColumnMappings.0" labelExpression="&lt;%getRFLabel($lineSemantic, $columnSemantic)%>" useDomainClass="true" columnFinderExpression="feature:sourceElement" lineFinderExpression="feature:targetElement" semanticCandidatesExpression="&lt;%getRFColumnCandidates().outgoingTraces()[isA(&quot;RequirementsTrace&quot;)]%>" domainClass="RequirementsTrace">
+      <intersection name="Trace Function" semanticElements="&lt;%current+current.eContainer()%>" lineMapping="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Requirements%20-%20Operational%20Activities']/@ownedLineMappings[name='Requirements']/@ownedSubLines[name='Sub%20Requirements']" columnMapping="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Requirements%20-%20Operational%20Activities']/@ownedColumnMappings.0" labelExpression="aql:self.getRFLabel(lineSemantic,columnSemantic)" useDomainClass="true" columnFinderExpression="feature:sourceElement" lineFinderExpression="feature:targetElement" semanticCandidatesExpression="&lt;%getRFColumnCandidates().outgoingTraces()[isA(&quot;RequirementsTrace&quot;)]%>" domainClass="RequirementsTrace">
         <directEdit>
           <variables name="table" documentation="The current DTable."/>
           <variables name="line" documentation="The DLine of the current DCell."/>
