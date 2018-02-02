@@ -111,7 +111,7 @@
             </style>
           </conditionnalStyles>
         </nodeMappings>
-        <edgeMappings name="containedIn Mapping" deletionDescription="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20containment']" semanticCandidatesExpression="&lt;%current.eAllContents%>" semanticElements="aql:self.eContainerOrSelf(oa::OperationalAnalysis).eAllContents()->filter(cs::Part)->select(x | x.abstractType = self)" sourceMapping="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']/@defaultLayer/@nodeMappings[name='OEB_OperationalEntities']" targetMapping="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']/@defaultLayer/@nodeMappings[name='OEB_OperationalEntities']" targetFinderExpression="service:getLogicalParent()" sourceFinderExpression="feature:type" domainClass="cs.Part" reconnections="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='changeContainer']">
+        <edgeMappings name="containedIn Mapping" deletionDescription="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20containment']" semanticCandidatesExpression="aql:self.eAllContents()" semanticElements="aql:self.eContainerOrSelf(oa::OperationalAnalysis).eAllContents()->filter(cs::Part)->select(x | x.abstractType = self)" sourceMapping="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']/@defaultLayer/@nodeMappings[name='OEB_OperationalEntities']" targetMapping="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']/@defaultLayer/@nodeMappings[name='OEB_OperationalEntities']" targetFinderExpression="service:getLogicalParent()" sourceFinderExpression="feature:type" domainClass="cs.Part" reconnections="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='changeContainer']">
           <style routingStyle="tree" foldingStyle="TARGET">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
@@ -164,7 +164,7 @@
             <targetView name="targetView"/>
             <element name="element"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$element.dndABDComponent($source, $target)%>"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:element.dndABDComponent(source,target)"/>
             </initialOperation>
             <edgeView name="edgeView"/>
           </ownedTools>
@@ -879,7 +879,7 @@
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(oa::OperationalActor)">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%current.eContainer()%>">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.eContainer()">
                       <subModelOperations xsi:type="tool:CreateInstance" typeName="Entity" referenceName="ownedEntities" variableName="entity">
                         <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
                       </subModelOperations>
@@ -913,7 +913,7 @@
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(oa::OperationalActor)">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%current.eContainer()%>">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.eContainer()">
                       <subModelOperations xsi:type="tool:CreateInstance" typeName="OperationalActor" referenceName="ownedEntities" variableName="entity">
                         <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
                       </subModelOperations>
@@ -1803,7 +1803,7 @@
             </style>
           </conditionnalStyles>
         </nodeMappings>
-        <edgeMappings name="OAB_OperationalActivity_subFunctions" deletionDescription="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20subFunctionLink']" semanticCandidatesExpression="&lt;%current.eAllContents%>" sourceMapping="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Breakdown']/@defaultLayer/@nodeMappings[name='OAB_OperationalActivity']" targetMapping="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Breakdown']/@defaultLayer/@nodeMappings[name='OAB_OperationalActivity']" targetFinderExpression="service:getFBDParentFunction()" reconnections="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='changeContainer']">
+        <edgeMappings name="OAB_OperationalActivity_subFunctions" deletionDescription="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20subFunctionLink']" semanticCandidatesExpression="aql:self.eAllContents()" sourceMapping="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Breakdown']/@defaultLayer/@nodeMappings[name='OAB_OperationalActivity']" targetMapping="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Breakdown']/@defaultLayer/@nodeMappings[name='OAB_OperationalActivity']" targetFinderExpression="service:getFBDParentFunction()" reconnections="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='changeContainer']">
           <style targetArrow="InputFillClosedArrow" routingStyle="tree" foldingStyle="TARGET">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
@@ -1865,14 +1865,14 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="changeContainer" precondition="&lt;%$element.isValidDndDFBAbstractFunction($targetView)%>" forceRefresh="true">
+          <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="changeContainer" precondition="aql:element.isValidDndDFBAbstractFunction(targetView)" forceRefresh="true">
             <source name="source"/>
             <target name="target"/>
             <sourceView name="sourceView"/>
             <targetView name="targetView"/>
             <element name="element"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$element.dndDFBAbstractFunction($source, $target)%>"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:element.dndDFBAbstractFunction(source,target)"/>
             </initialOperation>
             <edgeView name="edgeView"/>
           </ownedTools>
@@ -2635,7 +2635,7 @@
         <reusedMappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@edgeMappings[name='Scenario_ContrainedElements']"/>
         <reusedMappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@edgeMappings[name='Scenario_ExchangeContext']"/>
         <toolSections name="tools section" label="Scenarios Elements">
-          <ownedTools xsi:type="tool_1:DiagramCreationDescription" name="Entity Scenario " precondition="&lt;%isInLib()%>" titleExpression="&lt;%current.name.addScenarioPrefix(&quot;[OES]&quot;)%> - Operational Entity Scenario" browseExpression="&lt;%ownedScenarios.nLast()%>" diagramDescription="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']">
+          <ownedTools xsi:type="tool_1:DiagramCreationDescription" name="Entity Scenario " precondition="&lt;%isInLib()%>" titleExpression="&lt;%current.name.addScenarioPrefix(&quot;[OES]&quot;)%> - Operational Entity Scenario" browseExpression="aql:self.ownedScenarios->last()" diagramDescription="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']">
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="interaction.Scenario" referenceName="ownedScenarios">
@@ -3469,8 +3469,8 @@
               <firstModelOperations xsi:type="tool:ExternalJavaAction" name="org.polarsys.capella.core.sirius.analysis.actions.extensions.DoReorder" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.DoReorder">
                 <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% current  %>"/>
                 <parameters name="context" value="aql:self"/>
-                <parameters name="STARTING_END_PREDECESSOR" value="&lt;% $startingEndPredecessorAfter.semanticEnd %>"/>
-                <parameters name="FINISHING_END_PREDECESSOR" value="&lt;% $finishingEndPredecessorAfter.semanticEnd %>"/>
+                <parameters name="STARTING_END_PREDECESSOR" value="aql:startingEndPredecessorAfter.semanticEnd"/>
+                <parameters name="FINISHING_END_PREDECESSOR" value="aql:finishingEndPredecessorAfter.semanticEnd"/>
               </firstModelOperations>
             </onEventMovedOperation>
           </ownedTools>
@@ -3951,7 +3951,7 @@
                 <subModelOperations xsi:type="tool:ExternalJavaAction" name="org.polarsys.capella.core.sirius.analysis.actions.extensions.doIRReorder" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.doIRReorder">
                   <parameters name="PREDECESSOR_BEFORE" value="&lt;% $predecessorBefore %>"/>
                   <parameters name="PREDECESSOR_AFTER" value="&lt;% $predecessorAfter %>"/>
-                  <parameters name="SCENARIO" value="&lt;% self.eContainer (&quot;Scenario&quot;) %>"/>
+                  <parameters name="SCENARIO" value="aql:self.eContainerOrSelf(interaction::Scenario)"/>
                 </subModelOperations>
               </firstModelOperations>
             </instanceRoleMoved>
@@ -4420,12 +4420,12 @@
               <firstModelOperations xsi:type="tool:ExternalJavaAction" name="org.polarsys.capella.core.sirius.analysis.actions.extensions.DoReorder" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.DoReorder">
                 <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% current  %>"/>
                 <parameters name="context" value="aql:self"/>
-                <parameters name="STARTING_END_PREDECESSOR" value="&lt;% $startingEndPredecessorAfter.semanticEnd %>"/>
-                <parameters name="FINISHING_END_PREDECESSOR" value="&lt;% $finishingEndPredecessorAfter.semanticEnd %>"/>
+                <parameters name="STARTING_END_PREDECESSOR" value="aql:startingEndPredecessorAfter.semanticEnd"/>
+                <parameters name="FINISHING_END_PREDECESSOR" value="aql:finishingEndPredecessorAfter.semanticEnd"/>
               </firstModelOperations>
             </onEventMovedOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:DiagramCreationDescription" name="Activity Scenario" precondition="&lt;%isInLib()%>" titleExpression="&lt;%current.name.addScenarioPrefix(&quot;[OAS]&quot;)%> - Operational Activity Scenario" browseExpression="&lt;%ownedScenarios.nLast()%>" diagramDescription="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Activity%20Interaction%20Scenario']">
+          <ownedTools xsi:type="tool_1:DiagramCreationDescription" name="Activity Scenario" precondition="&lt;%isInLib()%>" titleExpression="&lt;%current.name.addScenarioPrefix(&quot;[OAS]&quot;)%> - Operational Activity Scenario" browseExpression="aql:self.ownedScenarios->last()" diagramDescription="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Activity%20Interaction%20Scenario']">
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="interaction.Scenario" referenceName="ownedScenarios">
@@ -4875,7 +4875,7 @@
                 <subModelOperations xsi:type="tool:ExternalJavaAction" name="org.polarsys.capella.core.sirius.analysis.actions.extensions.doIRReorder" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.doIRReorder">
                   <parameters name="PREDECESSOR_BEFORE" value="&lt;% $predecessorBefore %>"/>
                   <parameters name="PREDECESSOR_AFTER" value="&lt;% $predecessorAfter %>"/>
-                  <parameters name="SCENARIO" value="&lt;% self.eContainer (&quot;Scenario&quot;) %>"/>
+                  <parameters name="SCENARIO" value="aql:self.eContainerOrSelf(interaction::Scenario)"/>
                 </subModelOperations>
               </firstModelOperations>
             </instanceRoleMoved>
@@ -5381,17 +5381,17 @@
                 <subModelOperations xsi:type="tool:ExternalJavaAction" name="setVariable" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SetVariable">
                   <parameters name="context" value="aql:element"/>
                   <parameters name="variable" value="scope"/>
-                  <parameters name="value" value="&lt;% $element.getCapabilityDiagramScopeInsertRelationship($diagram)%>"/>
+                  <parameters name="value" value="aql:element.getCapabilityDiagramScopeInsertRelationship(diagram)"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:ExternalJavaAction" name="selectRelationships" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectLinksFromTransferWizard">
                   <parameters name="context" value="aql:elementView"/>
                   <parameters name="scope" value="aql:scope"/>
-                  <parameters name="initialSelection" value="&lt;%$diagram.getInitialSelection($scope)%>"/>
+                  <parameters name="initialSelection" value="aql:diagram.getInitialSelection(scope)"/>
                   <parameters name="resultVariable" value="selectedRelationships"/>
                   <parameters name="wizardMessage" value="aql:'Select Relationships to show in ' + element.name + '.'"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:If" conditionExpression="aql:(selectedRelationships != 'WIZARD_CANCELED')">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$element.showHideRelationshipInCapabilityDiagram($elementView, $selectedRelationships, $scope)%>"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:element.showHideRelationshipInCapabilityDiagram(elementView,selectedRelationships,scope)"/>
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().forceRefresh()"/>
                 </subModelOperations>
               </firstModelOperations>
@@ -5800,17 +5800,17 @@
                 <subModelOperations xsi:type="tool:ExternalJavaAction" name="setVariable" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SetVariable">
                   <parameters name="context" value="aql:element"/>
                   <parameters name="variable" value="scope"/>
-                  <parameters name="value" value="&lt;% $element.getCapabilityDiagramScopeInsertRelationship($diagram)%>"/>
+                  <parameters name="value" value="aql:element.getCapabilityDiagramScopeInsertRelationship(diagram)"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:ExternalJavaAction" name="selectRelationships" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectLinksFromTransferWizard">
                   <parameters name="context" value="aql:elementView"/>
                   <parameters name="scope" value="aql:scope"/>
-                  <parameters name="initialSelection" value="&lt;%$diagram.getInitialSelection($scope)%>"/>
+                  <parameters name="initialSelection" value="aql:diagram.getInitialSelection(scope)"/>
                   <parameters name="resultVariable" value="selectedRelationships"/>
                   <parameters name="wizardMessage" value="aql:'Select Relationships to show in ' + element.name + '.'"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:If" conditionExpression="aql:(selectedRelationships != 'WIZARD_CANCELED')">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$element.showHideRelationshipInCapabilityDiagram($elementView, $selectedRelationships, $scope)%>"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:element.showHideRelationshipInCapabilityDiagram(elementView,selectedRelationships,scope)"/>
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().forceRefresh()"/>
                 </subModelOperations>
               </firstModelOperations>

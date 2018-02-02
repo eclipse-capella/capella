@@ -208,11 +208,11 @@
             <elementView name="elementView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.void2Null(element)">
-                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%$diagram.synchronized%>">
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:diagram.synchronized">
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="setVariable" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SetVariable">
                     <parameters name="context" value="aql:element"/>
                     <parameters name="variable" value="scope"/>
-                    <parameters name="value" value="&lt;% $element.getCapabilityDiagramScopeInsertRelationship($diagram) %>"/>
+                    <parameters name="value" value="aql:element.getCapabilityDiagramScopeInsertRelationship(diagram)"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="setVariable" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SetVariable">
                     <parameters name="context" value="aql:element"/>
@@ -231,18 +231,18 @@
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="setVariable" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SetVariable">
                     <parameters name="context" value="aql:element"/>
                     <parameters name="variable" value="scope"/>
-                    <parameters name="value" value="&lt;% $element.getCapabilityDiagramScopeInsertRelationship($diagram)%>"/>
+                    <parameters name="value" value="aql:element.getCapabilityDiagramScopeInsertRelationship(diagram)"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="selectRelationships" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectLinksFromTransferWizard">
                     <parameters name="context" value="aql:elementView"/>
                     <parameters name="scope" value="aql:scope"/>
-                    <parameters name="initialSelection" value="&lt;%$diagram.getInitialSelection($scope)%>"/>
+                    <parameters name="initialSelection" value="aql:diagram.getInitialSelection(scope)"/>
                     <parameters name="resultVariable" value="selectedRelationships"/>
                     <parameters name="wizardMessage" value="aql:'Select Relationships to show in ' + element.name + '.'"/>
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:(selectedRelationships != 'WIZARD_CANCELED')">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$element.showHideRelationshipInCapabilityDiagram($elementView, $selectedRelationships, $scope)%>"/>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:element.showHideRelationshipInCapabilityDiagram(elementView,selectedRelationships,scope)"/>
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().forceRefresh()"/>
                 </subModelOperations>
               </firstModelOperations>
@@ -376,7 +376,7 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.void2Null(element)"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramNavigationDescription" name="Navigate from CM to SAB" browseExpression="aql:self.getNavigationScope()" navigationNameExpression="&lt;%$containerView.getNavigationName($diagramName)%>" diagramDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']">
+          <ownedTools xsi:type="tool:DiagramNavigationDescription" name="Navigate from CM to SAB" browseExpression="aql:self.getNavigationScope()" navigationNameExpression="aql:containerView.getNavigationName(diagramName)" diagramDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']">
             <containerViewVariable name="containerView"/>
             <containerVariable name="container"/>
             <representationNameVariable name="diagramName"/>
@@ -564,7 +564,7 @@
                   <subModelOperations xsi:type="tool_1:For" expression="aql:self.void2Null(self.involvedActors.actor)" iteratorName="j">
                     <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%$sourceView.eContainer(&quot;DDiagram&quot;).eAllContents().filter(&quot;DNode&quot;)[target == $j].nSize() == 0%>">
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:j">
-                        <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@nodeMappings[name='ActorNode2']" containerViewExpression="&lt;%$sourceView.eContainer(&quot;DDiagram&quot;)%>"/>
+                        <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@nodeMappings[name='ActorNode2']" containerViewExpression="aql:sourceView.eContainerOrSelf(diagram::DDiagram)"/>
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
@@ -646,11 +646,11 @@
             <elementView name="elementView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.void2Null(element)">
-                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%$diagram.synchronized%>">
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:diagram.synchronized">
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="setVariable" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SetVariable">
                     <parameters name="context" value="aql:element"/>
                     <parameters name="variable" value="scope"/>
-                    <parameters name="value" value="&lt;% $element.getCapabilityDiagramScopeInsertRelationship($diagram) %>"/>
+                    <parameters name="value" value="aql:element.getCapabilityDiagramScopeInsertRelationship(diagram)"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="setVariable" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SetVariable">
                     <parameters name="context" value="aql:element"/>
@@ -669,18 +669,18 @@
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="setVariable" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SetVariable">
                     <parameters name="context" value="aql:element"/>
                     <parameters name="variable" value="scope"/>
-                    <parameters name="value" value="&lt;% $element.getCapabilityDiagramScopeInsertRelationship($diagram)%>"/>
+                    <parameters name="value" value="aql:element.getCapabilityDiagramScopeInsertRelationship(diagram)"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="selectRelationships" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectLinksFromTransferWizard">
                     <parameters name="context" value="aql:elementView"/>
                     <parameters name="scope" value="aql:scope"/>
-                    <parameters name="initialSelection" value="&lt;%$diagram.getInitialSelection($scope)%>"/>
+                    <parameters name="initialSelection" value="aql:diagram.getInitialSelection(scope)"/>
                     <parameters name="resultVariable" value="selectedRelationships"/>
                     <parameters name="wizardMessage" value="aql:'Select Relationships to show in ' + element.name + '.'"/>
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:(selectedRelationships != 'WIZARD_CANCELED')">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$element.showHideRelationshipInCapabilityDiagram($elementView, $selectedRelationships, $scope)%>"/>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:element.showHideRelationshipInCapabilityDiagram(elementView,selectedRelationships,scope)"/>
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().forceRefresh()"/>
                 </subModelOperations>
               </firstModelOperations>
@@ -809,7 +809,7 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.void2Null(element)"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramNavigationDescription" name="Navigate from MB to SAB" browseExpression="aql:self.getNavigationScope()" navigationNameExpression="&lt;%$containerView.getNavigationName($diagramName)%>" diagramDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']">
+          <ownedTools xsi:type="tool:DiagramNavigationDescription" name="Navigate from MB to SAB" browseExpression="aql:self.getNavigationScope()" navigationNameExpression="aql:containerView.getNavigationName(diagramName)" diagramDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']">
             <containerViewVariable name="containerView"/>
             <containerVariable name="container"/>
             <representationNameVariable name="diagramName"/>
@@ -1136,11 +1136,11 @@
             <elementView name="elementView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.void2Null(element)">
-                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%$diagram.synchronized%>">
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:diagram.synchronized">
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="setVariable" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SetVariable">
                     <parameters name="context" value="aql:element"/>
                     <parameters name="variable" value="scope"/>
-                    <parameters name="value" value="&lt;% $element.getCapabilityDiagramScopeInsertRelationship($diagram) %>"/>
+                    <parameters name="value" value="aql:element.getCapabilityDiagramScopeInsertRelationship(diagram)"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="setVariable" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SetVariable">
                     <parameters name="context" value="aql:element"/>
@@ -1159,18 +1159,18 @@
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="setVariable" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SetVariable">
                     <parameters name="context" value="aql:element"/>
                     <parameters name="variable" value="scope"/>
-                    <parameters name="value" value="&lt;% $element.getCapabilityDiagramScopeInsertRelationship($diagram)%>"/>
+                    <parameters name="value" value="aql:element.getCapabilityDiagramScopeInsertRelationship(diagram)"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="selectRelationships" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectLinksFromTransferWizard">
                     <parameters name="context" value="aql:elementView"/>
                     <parameters name="scope" value="aql:scope"/>
-                    <parameters name="initialSelection" value="&lt;%$diagram.getInitialSelection($scope)%>"/>
+                    <parameters name="initialSelection" value="aql:diagram.getInitialSelection(scope)"/>
                     <parameters name="resultVariable" value="selectedRelationships"/>
                     <parameters name="wizardMessage" value="aql:'Select Relationships to show in ' + element.name + '.'"/>
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:(selectedRelationships != 'WIZARD_CANCELED')">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$element.showHideRelationshipInCapabilityDiagram($elementView, $selectedRelationships, $scope)%>"/>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:element.showHideRelationshipInCapabilityDiagram(elementView,selectedRelationships,scope)"/>
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().forceRefresh()"/>
                 </subModelOperations>
               </firstModelOperations>
@@ -1304,7 +1304,7 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.void2Null(element)"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Component Interfaces Scenario" label="Interface Scenario" precondition="&lt;%isInLib()%>" titleExpression="&lt;%current.name.addScenarioPrefix(&quot;[IS]&quot;)%>" browseExpression="&lt;%ownedScenarios.nLast()%>">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Component Interfaces Scenario" label="Interface Scenario" precondition="&lt;%isInLib()%>" titleExpression="&lt;%current.name.addScenarioPrefix(&quot;[IS]&quot;)%>" browseExpression="aql:self.ownedScenarios->last()">
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Scenario" referenceName="ownedScenarios">
@@ -1322,7 +1322,7 @@
             <representationNameVariable name="diagramName"/>
             <diagramDescription href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramNavigationDescription" name="Navigate from CC to SAB" browseExpression="aql:self.getNavigationScope()" navigationNameExpression="&lt;%$containerView.getNavigationName($diagramName)%>" diagramDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']">
+          <ownedTools xsi:type="tool:DiagramNavigationDescription" name="Navigate from CC to SAB" browseExpression="aql:self.getNavigationScope()" navigationNameExpression="aql:containerView.getNavigationName(diagramName)" diagramDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']">
             <containerViewVariable name="containerView"/>
             <containerVariable name="container"/>
             <representationNameVariable name="diagramName"/>
@@ -1670,11 +1670,11 @@
             <elementView name="elementView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.void2Null(element)">
-                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%$diagram.synchronized%>">
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:diagram.synchronized">
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="setVariable" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SetVariable">
                     <parameters name="context" value="aql:element"/>
                     <parameters name="variable" value="scope"/>
-                    <parameters name="value" value="&lt;% $element.getCapabilityDiagramScopeInsertRelationship($diagram) %>"/>
+                    <parameters name="value" value="aql:element.getCapabilityDiagramScopeInsertRelationship(diagram)"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="setVariable" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SetVariable">
                     <parameters name="context" value="aql:element"/>
@@ -1693,18 +1693,18 @@
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="setVariable" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SetVariable">
                     <parameters name="context" value="aql:element"/>
                     <parameters name="variable" value="scope"/>
-                    <parameters name="value" value="&lt;% $element.getCapabilityDiagramScopeInsertRelationship($diagram)%>"/>
+                    <parameters name="value" value="aql:element.getCapabilityDiagramScopeInsertRelationship(diagram)"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="selectRelationships" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectLinksFromTransferWizard">
                     <parameters name="context" value="aql:elementView"/>
                     <parameters name="scope" value="aql:scope"/>
-                    <parameters name="initialSelection" value="&lt;%$diagram.getInitialSelection($scope)%>"/>
+                    <parameters name="initialSelection" value="aql:diagram.getInitialSelection(scope)"/>
                     <parameters name="resultVariable" value="selectedRelationships"/>
                     <parameters name="wizardMessage" value="aql:'Select Relationships to show in ' + element.name + '.'"/>
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:(selectedRelationships != 'WIZARD_CANCELED')">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$element.showHideRelationshipInCapabilityDiagram($elementView, $selectedRelationships, $scope)%>"/>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:element.showHideRelationshipInCapabilityDiagram(elementView,selectedRelationships,scope)"/>
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().forceRefresh()"/>
                 </subModelOperations>
               </firstModelOperations>
@@ -1833,7 +1833,7 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.void2Null(element)"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Component Interfaces Scenario" label="Interface Scenario" precondition="&lt;%isInLib()%>" titleExpression="&lt;%current.name.addScenarioPrefix(&quot;[IS]&quot;)%>" browseExpression="&lt;%ownedScenarios.nLast()%>">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Component Interfaces Scenario" label="Interface Scenario" precondition="&lt;%isInLib()%>" titleExpression="&lt;%current.name.addScenarioPrefix(&quot;[IS]&quot;)%>" browseExpression="aql:self.ownedScenarios->last()">
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Scenario" referenceName="ownedScenarios">
@@ -1851,7 +1851,7 @@
             <representationNameVariable name="diagramName"/>
             <diagramDescription href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Exchange Scenario" label="Exchange Scenario" precondition="&lt;%isInLib()%>" titleExpression="&lt;%current.name.addScenarioPrefix(&quot;[ES]&quot;)%>" browseExpression="&lt;%ownedScenarios.nLast()%>">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Exchange Scenario" label="Exchange Scenario" precondition="&lt;%isInLib()%>" titleExpression="&lt;%current.name.addScenarioPrefix(&quot;[ES]&quot;)%>" browseExpression="aql:self.ownedScenarios->last()">
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Scenario" referenceName="ownedScenarios">
@@ -1869,7 +1869,7 @@
             <representationNameVariable name="diagramName"/>
             <diagramDescription href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Function Scenario" label="Function Scenario" precondition="&lt;%isInLib()%>" titleExpression="&lt;%current.name.addScenarioPrefix(&quot;[FS]&quot;)%>" browseExpression="&lt;%ownedScenarios.nLast()%>">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Function Scenario" label="Function Scenario" precondition="&lt;%isInLib()%>" titleExpression="&lt;%current.name.addScenarioPrefix(&quot;[FS]&quot;)%>" browseExpression="aql:self.ownedScenarios->last()">
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Scenario" referenceName="ownedScenarios">
@@ -1887,7 +1887,7 @@
             <representationNameVariable name="diagramName"/>
             <diagramDescription href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramNavigationDescription" name="Navigate from MCB to SAB" browseExpression="aql:self.getNavigationScope()" navigationNameExpression="&lt;%$containerView.getNavigationName($diagramName)%>" diagramDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']">
+          <ownedTools xsi:type="tool:DiagramNavigationDescription" name="Navigate from MCB to SAB" browseExpression="aql:self.getNavigationScope()" navigationNameExpression="aql:containerView.getNavigationName(diagramName)" diagramDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']">
             <containerViewVariable name="containerView"/>
             <containerVariable name="container"/>
             <representationNameVariable name="diagramName"/>
@@ -2104,7 +2104,7 @@
             </style>
           </conditionnalStyles>
         </nodeMappings>
-        <edgeMappings name="SFB_SystemFunction_subFunctions" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20subFunctionLink']" semanticCandidatesExpression="&lt;%current.eAllContents%>" sourceMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='SFB_SystemFunction']" targetMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='SFB_SystemFunction']" targetFinderExpression="service:getFBDParentFunction()" reconnections="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='changeContainer']">
+        <edgeMappings name="SFB_SystemFunction_subFunctions" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20subFunctionLink']" semanticCandidatesExpression="aql:self.eAllContents()" sourceMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='SFB_SystemFunction']" targetMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='SFB_SystemFunction']" targetFinderExpression="service:getFBDParentFunction()" reconnections="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='changeContainer']">
           <style routingStyle="tree" foldingStyle="TARGET">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
@@ -2216,14 +2216,14 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:source.dndDFBAbstractFunction(source.eContainer(),target)"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="changeContainer" precondition="&lt;%$element.isValidDndDFBAbstractFunction($targetView)%>" forceRefresh="true">
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="changeContainer" precondition="aql:element.isValidDndDFBAbstractFunction(targetView)" forceRefresh="true">
             <source name="source"/>
             <target name="target"/>
             <sourceView name="sourceView"/>
             <targetView name="targetView"/>
             <element name="element"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$element.dndDFBAbstractFunction($source, $target)%>"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:element.dndDFBAbstractFunction(source,target)"/>
             </initialOperation>
             <edgeView name="edgeView"/>
           </ownedTools>
@@ -3627,7 +3627,7 @@
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:containerType">
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="select Components" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementFromListWizard">
                     <parameters name="context" value="aql:containerType"/>
-                    <parameters name="scope" value="&lt;% $containerType.getABInsertActor %>"/>
+                    <parameters name="scope" value="aql:containerType.getABInsertActor()"/>
                     <parameters name="multiple" value="true"/>
                     <parameters name="resultVariable" value="components"/>
                     <parameters name="wizardMessage" value="Select Actors in &lt;%$container.name%>."/>
@@ -3681,7 +3681,7 @@
               <sourceViewVariable name="sourceView"/>
               <targetViewVariable name="targetView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$source.createABComponentExchangeWithoutPorts($sourceView, $targetView)%>"/>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:source.createABComponentExchangeWithoutPorts(sourceView,targetView)"/>
               </initialOperation>
             </tools>
             <tools xsi:type="tool:EdgeCreationDescription" documentation="Create a new component exchange binding a port of a part to another port of a part.&#xD;&#xA;Port binded must be of the same kind. If two flowports are linked, they must have complementary orientation." name="Component Exchange between types" precondition="aql:self.isValidCreationABComponentExchange(preSourceView,preTargetView)" elementsToSelect="var:result" edgeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='CA%20Data%20Flow%20Between%20Actors%20and%20System']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Connection.gif" extraSourceMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20System'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']" extraTargetMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20System'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']">
@@ -3693,7 +3693,7 @@
               <sourceViewVariable name="sourceView"/>
               <targetViewVariable name="targetView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$source.createABComponentExchange($sourceView, $targetView,true)%>"/>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:source.createABComponentExchange(sourceView,targetView,true)"/>
               </initialOperation>
             </tools>
             <tools xsi:type="tool:EdgeCreationDescription" documentation="Creates a new Physical Link between the source and target System Components or Actors." name="Physical Link" elementsToSelect="var:result" edgeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='SAB_PhysicalLink']" extraSourceMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20System'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']" extraTargetMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20System'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']">
@@ -3933,12 +3933,12 @@
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="SetVariable $scope" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SetVariable">
                     <parameters name="context" value="aql:element"/>
                     <parameters name="variable" value="scope"/>
-                    <parameters name="value" value="&lt;% $elementView.getABSwitchComponentCategoriesScope() %>"/>
+                    <parameters name="value" value="aql:elementView.getABSwitchComponentCategoriesScope()"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="SetVariable $initialSelection" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SetVariable">
                     <parameters name="context" value="aql:element"/>
                     <parameters name="variable" value="initialSelection"/>
-                    <parameters name="value" value="&lt;% $elementView.getABSwitchComponentCategoriesInitialSelection()%>"/>
+                    <parameters name="value" value="aql:elementView.getABSwitchComponentCategoriesInitialSelection()"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="selectElements" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectLinksFromTransferWizard">
                     <parameters name="context" value="aql:element"/>
@@ -3948,7 +3948,7 @@
                     <parameters name="wizardMessage" value="Select Categories to reveal"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:(selectedElements != 'WIZARD_CANCELED')">
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$elementView.switchABComponentCategories($scope, $initialSelection, $selectedElements )%>"/>
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView.switchABComponentCategories(scope,initialSelection,selectedElements)"/>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
@@ -4029,7 +4029,7 @@
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="selectPaths" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectLinksFromTransferWizard">
                     <parameters name="context" value="aql:element"/>
                     <parameters name="scope" value="&lt;%getAvailablePhysicalPathsToInsert($diagram)%>"/>
-                    <parameters name="initialSelection" value="&lt;%$elementView.getDisplayedPhysicalPaths()%>"/>
+                    <parameters name="initialSelection" value="aql:elementView.getDisplayedPhysicalPaths()"/>
                     <parameters name="resultVariable" value="selectedPaths"/>
                     <parameters name="wizardMessage" value="Select Physical Paths to show in &lt;%$element.name%>."/>
                   </subModelOperations>
@@ -4065,12 +4065,12 @@
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="SetVariable $scope" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SetVariable">
                     <parameters name="context" value="aql:element"/>
                     <parameters name="variable" value="scope"/>
-                    <parameters name="value" value="&lt;% $elementView.getABSwitchPhysicalCategoriesScope() %>"/>
+                    <parameters name="value" value="aql:elementView.getABSwitchPhysicalCategoriesScope()"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="SetVariable $initialSelection" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SetVariable">
                     <parameters name="context" value="aql:element"/>
                     <parameters name="variable" value="initialSelection"/>
-                    <parameters name="value" value="&lt;% $elementView.getABSwitchPhysicalCategoriesInitialSelection()%>"/>
+                    <parameters name="value" value="aql:elementView.getABSwitchPhysicalCategoriesInitialSelection()"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="selectElements" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectLinksFromTransferWizard">
                     <parameters name="context" value="aql:element"/>
@@ -4080,7 +4080,7 @@
                     <parameters name="wizardMessage" value="Select Categories to reveal"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:(selectedElements != 'WIZARD_CANCELED')">
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$elementView.switchABPhysicalCategories($scope, $initialSelection, $selectedElements )%>"/>
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView.switchABPhysicalCategories(scope,initialSelection,selectedElements)"/>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
@@ -4291,36 +4291,36 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.void2Null(element)"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramNavigationDescription" name="Navigate from SAB to SAB" browseExpression="aql:self.getNavigationScope()" navigationNameExpression="&lt;%$containerView.getNavigationName($diagramName)%>" diagramDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']">
+          <ownedTools xsi:type="tool:DiagramNavigationDescription" name="Navigate from SAB to SAB" browseExpression="aql:self.getNavigationScope()" navigationNameExpression="aql:containerView.getNavigationName(diagramName)" diagramDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']">
             <containerViewVariable name="containerView"/>
             <containerVariable name="container"/>
             <representationNameVariable name="diagramName"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramNavigationDescription" name="Navigate from SAB to IDB" browseExpression="aql:self.getNavigationScope()" navigationNameExpression="&lt;%$containerView.getNavigationName($diagramName)%>">
+          <ownedTools xsi:type="tool:DiagramNavigationDescription" name="Navigate from SAB to IDB" browseExpression="aql:self.getNavigationScope()" navigationNameExpression="aql:containerView.getNavigationName(diagramName)">
             <containerViewVariable name="containerView"/>
             <containerVariable name="container"/>
             <representationNameVariable name="diagramName"/>
             <diagramDescription href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramNavigationDescription" name="Navigate from SAB to CCII" browseExpression="aql:self.getNavigationScope()" navigationNameExpression="&lt;%$containerView.getNavigationName($diagramName)%>">
+          <ownedTools xsi:type="tool:DiagramNavigationDescription" name="Navigate from SAB to CCII" browseExpression="aql:self.getNavigationScope()" navigationNameExpression="aql:containerView.getNavigationName(diagramName)">
             <containerViewVariable name="containerView"/>
             <containerVariable name="container"/>
             <representationNameVariable name="diagramName"/>
             <diagramDescription href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramNavigationDescription" name="Navigate from SAB to CCEI" browseExpression="aql:self.getNavigationScope()" navigationNameExpression="&lt;%$containerView.getNavigationName($diagramName)%>">
+          <ownedTools xsi:type="tool:DiagramNavigationDescription" name="Navigate from SAB to CCEI" browseExpression="aql:self.getNavigationScope()" navigationNameExpression="aql:containerView.getNavigationName(diagramName)">
             <containerViewVariable name="containerView"/>
             <containerVariable name="container"/>
             <representationNameVariable name="diagramName"/>
             <diagramDescription href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramNavigationDescription" name="Navigate from SAB to CCDI" browseExpression="aql:self.getNavigationScope()" navigationNameExpression="&lt;%$containerView.getNavigationName($diagramName)%>">
+          <ownedTools xsi:type="tool:DiagramNavigationDescription" name="Navigate from SAB to CCDI" browseExpression="aql:self.getNavigationScope()" navigationNameExpression="aql:containerView.getNavigationName(diagramName)">
             <containerViewVariable name="containerView"/>
             <containerVariable name="container"/>
             <representationNameVariable name="diagramName"/>
             <diagramDescription href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramNavigationDescription" name="Navigate from SAB to CSA" browseExpression="aql:self.getNavigationScope()" navigationNameExpression="&lt;%$containerView.getNavigationName($diagramName)%>" diagramDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20System%20Actors']">
+          <ownedTools xsi:type="tool:DiagramNavigationDescription" name="Navigate from SAB to CSA" browseExpression="aql:self.getNavigationScope()" navigationNameExpression="aql:containerView.getNavigationName(diagramName)" diagramDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20System%20Actors']">
             <containerViewVariable name="containerView"/>
             <containerVariable name="container"/>
             <representationNameVariable name="diagramName"/>
@@ -5086,7 +5086,7 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.void2Null(element)"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramNavigationDescription" name="Navigate from CSA to SAB" browseExpression="aql:self.getNavigationScope()" navigationNameExpression="&lt;%$containerView.getNavigationName($diagramName)%>" diagramDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']">
+          <ownedTools xsi:type="tool:DiagramNavigationDescription" name="Navigate from CSA to SAB" browseExpression="aql:self.getNavigationScope()" navigationNameExpression="aql:containerView.getNavigationName(diagramName)" diagramDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']">
             <containerViewVariable name="containerView"/>
             <containerVariable name="container"/>
             <representationNameVariable name="diagramName"/>
@@ -5095,7 +5095,7 @@
       </defaultLayer>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_2:CrossTableDescription" name="System Actor - Operational Actor" label="System Actors - Operational Actors/Operational Entities" domainClass="SystemAnalysis">
-      <ownedLineMappings name="SAOA System Actor Line" domainClass="Actor" semanticCandidatesExpression="&lt;%ownedActorPkg.getAllActors()%>">
+      <ownedLineMappings name="SAOA System Actor Line" domainClass="Actor" semanticCandidatesExpression="aql:self.ownedActorPkg.getAllActors()">
         <delete name="No delete" precondition="false">
           <variables name="element" documentation="The currently edited element."/>
           <variables name="root" documentation="The semantic element corresponding to the current table."/>
@@ -5128,7 +5128,7 @@
           <variables name="root" documentation="The semantic root element of the table."/>
           <firstModelOperation xsi:type="tool_1:ChangeContext" browseExpression="aql:lineSemantic">
             <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:arg0 = 'X'">
-              <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%$columnSemantic.isA(&quot;OperationalActor&quot;)%>">
+              <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:columnSemantic.oclIsKindOf(oa::OperationalActor)">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="OperationalActorRealization" referenceName="ownedOperationalActorRealizations">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="sourceElement" valueExpression="aql:lineSemantic"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="targetElement" valueExpression="aql:columnSemantic"/>
@@ -5184,7 +5184,7 @@
           <variables name="root" documentation="The semantic element corresponding to the current table."/>
         </delete>
       </ownedColumnMappings>
-      <intersection name="Component Functional Allocations" lineMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%2FActors%20-%20System%20Functions']/@ownedLineMappings[name='Components%201']" columnMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%2FActors%20-%20System%20Functions']/@ownedColumnMappings.0" labelExpression="X" useDomainClass="true" columnFinderExpression="&lt;%function.filter(&quot;AbstractFunction&quot;)%>" lineFinderExpression="feature:block" domainClass="ComponentFunctionalAllocation">
+      <intersection name="Component Functional Allocations" lineMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%2FActors%20-%20System%20Functions']/@ownedLineMappings[name='Components%201']" columnMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%2FActors%20-%20System%20Functions']/@ownedColumnMappings.0" labelExpression="X" useDomainClass="true" columnFinderExpression="aql:self.function->filter(fa::AbstractFunction)" lineFinderExpression="feature:block" domainClass="ComponentFunctionalAllocation">
         <directEdit>
           <variables name="table" documentation="The current DTable."/>
           <variables name="line" documentation="The DLine of the current DCell."/>

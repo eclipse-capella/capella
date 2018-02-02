@@ -92,7 +92,7 @@
       </intersection>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:CrossTableDescription" name="EPBS Requirement Refinements" domainClass="EPBSArchitecture">
-      <ownedLineMappings name="ERR RequirementsPkg" reusedSubLines="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Requirement%20Refinements']/@ownedLineMappings[name='ERR%20RequirementsPkg']" reusedInMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Requirement%20Refinements']/@ownedLineMappings[name='ERR%20RequirementsPkg']" domainClass="RequirementsPkg" semanticCandidatesExpression="&lt;%eContents().filter(&quot;RequirementsPkg&quot;)%>" headerLabelExpression="aql:self.getRequirementElementLabel()">
+      <ownedLineMappings name="ERR RequirementsPkg" reusedSubLines="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Requirement%20Refinements']/@ownedLineMappings[name='ERR%20RequirementsPkg']" reusedInMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Requirement%20Refinements']/@ownedLineMappings[name='ERR%20RequirementsPkg']" domainClass="RequirementsPkg" semanticCandidatesExpression="aql:self.eContents()->filter(requirement::RequirementsPkg)" headerLabelExpression="aql:self.getRequirementElementLabel()">
         <ownedSubLines name="Requirements 2" domainClass="Requirement" semanticCandidatesExpression="aql:self.ownedRequirements" headerLabelExpression="aql:self.getRequirementElementLabel()">
           <delete name="No delete" precondition="false">
             <variables name="element" documentation="The currently edited element."/>
@@ -314,7 +314,7 @@
                 <subModelOperations xsi:type="tool:If" conditionExpression="aql:components != 'WIZARD_CANCELED'">
                   <subModelOperations xsi:type="tool:For" expression="aql:components">
                     <subModelOperations xsi:type="tool:If" conditionExpression="aql:containerTarget.oclIsKindOf(cs::BlockArchitecture)">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $containerTarget.getContext() %>">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerTarget.getContext()">
                         <subModelOperations xsi:type="tool:CreateInstance" typeName="cs.Part" referenceName="ownedFeatures" variableName="part">
                           <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
                           <subModelOperations xsi:type="tool:SetValue" featureName="abstractType" valueExpression="aql:i"/>
@@ -459,13 +459,13 @@
                       <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%! $containedPhysicalComponentTarget.nContains($j)%>">
                         <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $j%>">
                           <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='CI%20container%20mapping']/@subNodeMappings[name='PhysicalComponentInCI%20mapping']" containerViewExpression="aql:containerView"/>
-                          <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$j.isA(&quot;PhysicalComponent&quot;)%>">
+                          <subModelOperations xsi:type="tool:If" conditionExpression="aql:j.oclIsKindOf(pa::PhysicalComponent)">
                             <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='CI%20container%20mapping']/@subNodeMappings[name='PhysicalComponentInCI%20mapping']" containerViewExpression="aql:containerView"/>
                           </subModelOperations>
-                          <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$j.isA(&quot;PhysicalLink&quot;)%>">
+                          <subModelOperations xsi:type="tool:If" conditionExpression="aql:j.oclIsKindOf(cs::PhysicalLink)">
                             <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='CI%20container%20mapping']/@subNodeMappings[name='PhysicalLinkInCI%20mapping']" containerViewExpression="aql:containerView"/>
                           </subModelOperations>
-                          <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$j.isA(&quot;PhysicalPort&quot;)%>">
+                          <subModelOperations xsi:type="tool:If" conditionExpression="aql:j.oclIsKindOf(cs::PhysicalPort)">
                             <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='CI%20container%20mapping']/@subNodeMappings[name='PhysicalPortInCI%20mapping']" containerViewExpression="aql:containerView"/>
                           </subModelOperations>
                         </subModelOperations>
@@ -480,7 +480,7 @@
           <ownedTools xsi:type="tool_1:DirectEditLabel" name="rename CI">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;% $0 %>"/>
+              <firstModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:arg0"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool_1:DeleteElementDescription" name="delete a CI" precondition="&lt;%!($containerView[!filter(&quot;DDiagram&quot;)].eContainer(&quot;DDiagram&quot;).target + $containerView[filter(&quot;DDiagram&quot;)].target.ancestor + $containerView[filter(&quot;DDiagram&quot;)].target + $containerView[!filter(&quot;DDiagram&quot;)].eContainer(&quot;DDiagram&quot;).target.ancestor).nContains($element)%>">
@@ -594,7 +594,7 @@
             <element name="element"/>
             <newViewContainer name="newContainerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$element.dndABPhysicalArtifacts($oldSemanticContainer, $newSemanticContainer)%>"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:element.dndABPhysicalArtifacts(oldSemanticContainer,newSemanticContainer)"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool_1:ContainerDropDescription" name="D&amp;D Constraints From Project Explorer" precondition="aql:element.oclIsKindOf(capellacore::Constraint) and element.canBeDropped(newViewContainer)" forceRefresh="true" dragSource="PROJECT_EXPLORER">
@@ -662,7 +662,7 @@
             </style>
           </conditionnalStyles>
         </nodeMappings>
-        <edgeMappings name="CIBD_ConfigurationItem_subComponents" deletionDescription="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20subComponentLink']" semanticCandidatesExpression="&lt;%current.eAllContents%>" semanticElements="service:getLogicalParent()" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']" targetMapping="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']" targetFinderExpression="service:getLogicalParent()" reconnections="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='changeContainer']">
+        <edgeMappings name="CIBD_ConfigurationItem_subComponents" deletionDescription="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20subComponentLink']" semanticCandidatesExpression="aql:self.eAllContents()" semanticElements="service:getLogicalParent()" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']" targetMapping="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']" targetFinderExpression="service:getLogicalParent()" reconnections="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='changeContainer']">
           <style routingStyle="tree" foldingStyle="TARGET">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
@@ -787,7 +787,7 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$source.ownedFeatures.filter(&quot;Part&quot;)[abstractType == $edgeView.sourceNode.target]%>">
                 <subModelOperations xsi:type="tool:MoveElement" newContainerExpression="aql:target" featureName="ownedFeatures"/>
-                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% current.type %>">
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.type">
                   <subModelOperations xsi:type="tool:MoveElement" newContainerExpression="aql:target" featureName="ownedConfigurationItems"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$edgeView%>">
