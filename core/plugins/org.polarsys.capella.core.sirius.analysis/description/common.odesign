@@ -128,13 +128,13 @@
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </conditionnalStyles>
-          <conditionnalStyles predicateExpression="&lt;%filter(&quot;EntryPointPseudoState&quot;).nSize() > 0%>">
+          <conditionnalStyles predicateExpression="aql:self->filter(capellacommon::EntryPointPseudoState)->size() > 0">
             <style xsi:type="style:WorkspaceImageDescription" showIcon="false" hideLabelByDefault="true" sizeComputationExpression="2" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/Pseudostate_entryPoint.svg">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </conditionnalStyles>
-          <conditionnalStyles predicateExpression="&lt;%filter(&quot;ExitPointPseudoState&quot;).nSize() > 0%>">
+          <conditionnalStyles predicateExpression="aql:self->filter(capellacommon::ExitPointPseudoState)->size() > 0">
             <style xsi:type="style:WorkspaceImageDescription" showIcon="false" hideLabelByDefault="true" sizeComputationExpression="2" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/Pseudostate_exitPoint.svg">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -707,7 +707,7 @@
           <ownedTools xsi:type="tool:DiagramCreationDescription" name="SM_CreateDiag_ModeStateMachine" label="Mode State Machine Diagram" precondition="aql:self.isInLib()" titleExpression="[MSM] &lt;%current.name%>" browseExpression="aql:self->filter(capellacommon::State).ownedRegions->first()" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']">
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:containerView.target">
-                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%ownedRegions.nSize() == 0%>">
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.ownedRegions->size() = 0">
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Region" referenceName="ownedRegions">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:diagramName"/>
                   </subModelOperations>
@@ -720,7 +720,7 @@
           <ownedTools xsi:type="tool:DiagramCreationDescription" name="SM_CreateDiag_ModesAndStates" label="Modes and States [DEPRECATED]" precondition="aql:self.isInLib()" titleExpression="[M&amp;S] &lt;%current.name%>" browseExpression="aql:self->filter(capellacommon::State).ownedRegions->first()" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']">
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:containerView.target">
-                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%ownedRegions.nSize() == 0%>">
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.ownedRegions->size() = 0">
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Region" referenceName="ownedRegions">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:diagramName"/>
                   </subModelOperations>
@@ -904,7 +904,7 @@
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//datavalue"/>
       <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
       <filters xsi:type="filter:CompositeFilterDescription" name="HideInternalStates" label="Hide Internal Modes and States">
-        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@nodeMappings[name='MSM_ModeState'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@containerMappings[name='MSM_ModeState_Container']" viewConditionExpression="&lt;% self.eContainer.filter(&quot;DDiagram&quot;).nSize() > 0 %>"/>
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@nodeMappings[name='MSM_ModeState'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@containerMappings[name='MSM_ModeState_Container']" viewConditionExpression="aql:self.eContainer()->filter(diagram::DDiagram)->size() > 0"/>
       </filters>
       <filters xsi:type="filter:CompositeFilterDescription" name="HideRegionNames" label="Hide Region names"/>
       <filters xsi:type="filter:CompositeFilterDescription" name="ShowTriggerFESource" label="Show Trigger [Source Function ->] FE">
@@ -994,13 +994,13 @@
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </conditionnalStyles>
-          <conditionnalStyles predicateExpression="&lt;%filter(&quot;EntryPointPseudoState&quot;).nSize() > 0%>">
+          <conditionnalStyles predicateExpression="aql:self->filter(capellacommon::EntryPointPseudoState)->size() > 0">
             <style xsi:type="style:WorkspaceImageDescription" showIcon="false" hideLabelByDefault="true" sizeComputationExpression="2" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/Pseudostate_entryPoint.svg">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </conditionnalStyles>
-          <conditionnalStyles predicateExpression="&lt;%filter(&quot;ExitPointPseudoState&quot;).nSize() > 0%>">
+          <conditionnalStyles predicateExpression="aql:self->filter(capellacommon::ExitPointPseudoState)->size() > 0">
             <style xsi:type="style:WorkspaceImageDescription" showIcon="false" hideLabelByDefault="true" sizeComputationExpression="2" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/Pseudostate_exitPoint.svg">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -1510,7 +1510,7 @@
           <ownedTools xsi:type="tool:DiagramCreationDescription" name="SM_CreateDiag_ModeStateMachine" label="Mode State Machine Diagram" precondition="aql:self.isInLib()" titleExpression="[MSM] &lt;%current.name%>" browseExpression="aql:self->filter(capellacommon::State).ownedRegions->first()" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']">
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:containerView.target">
-                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%ownedRegions.nSize() == 0%>">
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.ownedRegions->size() = 0">
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Region" referenceName="ownedRegions">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:diagramName"/>
                   </subModelOperations>
@@ -1677,7 +1677,7 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.void2Null(element)"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerDropDescription" name="D&amp;D ModeState from Diagram" precondition="&lt;% $element.isValidDndSMModeState($oldContainer, $newViewContainer) &amp;&amp; !$element.isReferencedState ($oldContainer)%>" forceRefresh="true" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@nodeMappings[name='MSM_ModeState'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@containerMappings[name='MSM_ModeState_Container']">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="D&amp;D ModeState from Diagram" precondition="aql:element.isValidDndSMModeState(oldContainer,newViewContainer) and not (element.isReferencedState(oldContainer))" forceRefresh="true" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@nodeMappings[name='MSM_ModeState'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@containerMappings[name='MSM_ModeState_Container']">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
@@ -3429,7 +3429,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool:ReconnectEdgeDescription" documentation="This Reconnect is reused in diffrent diagrams" name="CB Reconnect Constraint Elements" precondition="&lt;%!(current.constrainedElements.nContains($target)) &amp;&amp; !($target.isA(&quot;Constraint&quot;))%>">
+            <tools xsi:type="tool:ReconnectEdgeDescription" documentation="This Reconnect is reused in diffrent diagrams" name="CB Reconnect Constraint Elements" precondition="aql:not (self.constrainedElements->includes(target)) and not (target.oclIsKindOf(capellacore::Constraint))">
               <source name="source"/>
               <target name="target"/>
               <sourceView name="sourceView"/>
@@ -4347,7 +4347,7 @@
       <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
       <defaultLayer name="default">
         <toolSections name="Architectures">
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Operational Analysis" precondition="&lt;%getRootContainer().eAllContents().filter(&quot;OperationalAnalysis&quot;).nSize() == 0%>" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/OperationalAnalysis.gif">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Operational Analysis" precondition="aql:self.getRootContainer().eAllContents()->filter(oa::OperationalAnalysis)->size() = 0" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/OperationalAnalysis.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -4358,7 +4358,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="System Analysis" precondition="&lt;%getRootContainer().eAllContents().filter(&quot;OperationalAnalysis&quot;).nSize() == 1 &amp;&amp; getRootContainer().eAllContents().filter(&quot;SystemAnalysis&quot;).nSize() == 0%>" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/SystemAnalysis.gif">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="System Analysis" precondition="aql:self.getRootContainer().eAllContents()->filter(oa::OperationalAnalysis)->size() = 1 and self.getRootContainer().eAllContents()->filter(ctx::SystemAnalysis)->size() = 0" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/SystemAnalysis.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -4369,7 +4369,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Logical Architecture" precondition="&lt;%getRootContainer().eAllContents().filter(&quot;SystemAnalysis&quot;).nSize() == 1 &amp;&amp; getRootContainer().eAllContents().filter(&quot;LogicalArchitecture&quot;).nSize() == 0%>" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/LogicalArchitecture.gif">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Logical Architecture" precondition="aql:self.getRootContainer().eAllContents()->filter(ctx::SystemAnalysis)->size() = 1 and self.getRootContainer().eAllContents()->filter(la::LogicalArchitecture)->size() = 0" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/LogicalArchitecture.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -4380,7 +4380,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Physical Architecture" precondition="&lt;%getRootContainer().eAllContents().filter(&quot;LogicalArchitecture&quot;).nSize() == 1 &amp;&amp; getRootContainer().eAllContents().filter(&quot;PhysicalArchitecture&quot;).nSize() == 0%>" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/PhysicalArchitecture.gif">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Physical Architecture" precondition="aql:self.getRootContainer().eAllContents()->filter(la::LogicalArchitecture)->size() = 1 and self.getRootContainer().eAllContents()->filter(pa::PhysicalArchitecture)->size() = 0" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/PhysicalArchitecture.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -4391,7 +4391,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="EPBS Architecture" precondition="&lt;%getRootContainer().eAllContents().filter(&quot;PhysicalArchitecture&quot;).nSize() == 1 &amp;&amp; getRootContainer().eAllContents().filter(&quot;EPBSArchitecture&quot;).nSize() == 0%>" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/EPBSArchitecture.gif">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="EPBS Architecture" precondition="aql:self.getRootContainer().eAllContents()->filter(pa::PhysicalArchitecture)->size() = 1 and self.getRootContainer().eAllContents()->filter(epbs::EPBSArchitecture)->size() = 0" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/EPBSArchitecture.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -4496,7 +4496,7 @@
             <representationNameVariable name="diagramName"/>
             <tableDescription xsi:type="description_3:CrossTableDescription" href="EPBS.odesign#//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20-%20Physical%20Artifacts']"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Logical Data Flow Blank" label="" precondition="&lt;% eContainer (&quot;LogicalArchitecture&quot;).nSize != 0  &amp;&amp; isInLib()%>" titleExpression="[LDFB] &lt;%current.name%>">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Logical Data Flow Blank" label="" precondition="aql:self.eContainerOrSelf(la::LogicalArchitecture)->size() != 0 and self.isInLib()" titleExpression="[LDFB] &lt;%current.name%>">
             <initialOperation/>
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
@@ -4518,7 +4518,7 @@
             <representationNameVariable name="tableName"/>
             <tableDescription xsi:type="description_3:CrossTableDescription" href="logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Actor%20-%20Context%20Actor']"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Physical Data Flow Blank" precondition="&lt;% eContainer (&quot;PhysicalArchitecture&quot;).nSize != 0  &amp;&amp; isInLib()%>" titleExpression="[PDFB] &lt;%current.name%>">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Physical Data Flow Blank" precondition="aql:self.eContainerOrSelf(pa::PhysicalArchitecture)->size() != 0 and self.isInLib()" titleExpression="[PDFB] &lt;%current.name%>">
             <initialOperation/>
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
@@ -4950,7 +4950,7 @@
           <conditionnalStyles predicateExpression="aql:(self.eClass().name = 'PhysicalComponent') and (self.isAbstract() = false)">
             <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
           </conditionnalStyles>
-          <conditionnalStyles predicateExpression="&lt;% (eClass.name == &quot;PhysicalComponent&quot;) &amp;&amp; (isAbstract==true) %>">
+          <conditionnalStyles predicateExpression="aql:(self.eClass().name = 'PhysicalComponent') and (self.isAbstract() = true)">
             <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
           </conditionnalStyles>
         </containerMappings>
@@ -5729,7 +5729,7 @@
               </initialOperation>
             </tools>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Contextual Component Detailed Interfaces" precondition="&lt;% isInLib() &amp;&amp; getComponentType[filter(&quot;LogicalComponent&quot;) || filter(&quot;PhysicalComponent&quot;) || filter(&quot;System&quot;) || filter(&quot;Actor&quot;) || filter(&quot;LogicalActor&quot;) || filter(&quot;PhysicalActor&quot;) || filter(&quot;ConfigurationItem&quot;)].nSize() > 0%>" titleExpression="[CDI] &lt;%current.name%>" browseExpression="aql:self.getComponentType()" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Contextual Component Detailed Interfaces" precondition="aql:self.isInLib() and self.getComponentType()->select(x | x->filter(la::LogicalComponent)->size() > 0 or x->filter(pa::PhysicalComponent)->size() > 0 or x->filter(ctx::System)->size() > 0 or x->filter(ctx::Actor)->size() > 0 or x->filter(la::LogicalActor)->size() > 0 or x->filter(pa::PhysicalActor)->size() > 0 or x->filter(epbs::ConfigurationItem)->size() > 0)->size() > 0" titleExpression="[CDI] &lt;%current.name%>" browseExpression="aql:self.getComponentType()" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']">
             <initialOperation/>
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
@@ -5779,7 +5779,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="implements target" precondition="&lt;% !(current.eContainer().isA(&quot;ConfigurationItem&quot;)) &amp;&amp; $target.isA(&quot;Interface&quot;) &amp;&amp; !(current.eContainer().implementedInterfaces.nContains($target)) %>">
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="implements target" precondition="aql:not (self.eContainer().oclIsKindOf(epbs::ConfigurationItem)) and target.oclIsKindOf(cs::Interface) and not (self.eContainer().implementedInterfaces->includes(target))">
             <source name="source"/>
             <target name="target"/>
             <sourceView name="sourceView"/>
@@ -5801,7 +5801,7 @@
             </initialOperation>
             <edgeView name="edgeView"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="uses target" precondition="&lt;% !(current.eContainer().isA(&quot;ConfigurationItem&quot;)) &amp;&amp; $target.isA(&quot;Interface&quot;) &amp;&amp; !(current.eContainer().usedInterfaces.nContains($target)) %>">
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="uses target" precondition="aql:not (self.eContainer().oclIsKindOf(epbs::ConfigurationItem)) and target.oclIsKindOf(cs::Interface) and not (self.eContainer().usedInterfaces->includes(target))">
             <source name="source"/>
             <target name="target"/>
             <sourceView name="sourceView"/>
@@ -5823,7 +5823,7 @@
             </initialOperation>
             <edgeView name="edgeView"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="PinRequiredInterface target" precondition="&lt;% !(current.eContainer().isA(&quot;ConfigurationItem&quot;)) &amp;&amp; $target.isA(&quot;Interface&quot;) &amp;&amp; !(self.requiredInterfaces.nContains($target)) %>">
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="PinRequiredInterface target" precondition="aql:not (self.eContainer().oclIsKindOf(epbs::ConfigurationItem)) and target.oclIsKindOf(cs::Interface) and not (self.requiredInterfaces->includes(target))">
             <source name="source"/>
             <target name="target"/>
             <sourceView name="sourceView"/>
@@ -5837,7 +5837,7 @@
             </initialOperation>
             <edgeView name="edgeView"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="PinProvidedInterface target" precondition="&lt;% !(current.eContainer().isA(&quot;ConfigurationItem&quot;)) &amp;&amp; $target.isA(&quot;Interface&quot;) &amp;&amp; !(self.providedInterfaces.nContains($target)) %>">
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="PinProvidedInterface target" precondition="aql:not (self.eContainer().oclIsKindOf(epbs::ConfigurationItem)) and target.oclIsKindOf(cs::Interface) and not (self.providedInterfaces->includes(target))">
             <source name="source"/>
             <target name="target"/>
             <sourceView name="sourceView"/>
@@ -6060,7 +6060,7 @@
             </initialOperation>
             <edgeView name="edgeView"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="CommunicationLink source" precondition="&lt;%$source.isA(&quot;CommunicationLinkExchanger&quot;) &amp;&amp; !($target.ownedCommunicationLinks[kind==$element.kind &amp;&amp; exchangeItem==$element.exchangeItem])%>" reconnectionKind="RECONNECT_SOURCE">
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="CommunicationLink source" precondition="aql:source.oclIsKindOf(communication::CommunicationLinkExchanger) and not (target.ownedCommunicationLinks->select(ownedCommunicationLink | ownedCommunicationLink.kind = element.kind and ownedCommunicationLink.exchangeItem = element.exchangeItem))" reconnectionKind="RECONNECT_SOURCE">
             <source name="source"/>
             <target name="target"/>
             <sourceView name="sourceView"/>
@@ -6464,7 +6464,7 @@
           <conditionnalStyles predicateExpression="aql:(self.eClass().name = 'PhysicalComponent') and (self.isAbstract() = false)">
             <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
           </conditionnalStyles>
-          <conditionnalStyles predicateExpression="&lt;% (eClass.name == &quot;PhysicalComponent&quot;) &amp;&amp; (isAbstract==true) %>">
+          <conditionnalStyles predicateExpression="aql:(self.eClass().name = 'PhysicalComponent') and (self.isAbstract() = true)">
             <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
               <labelFormat>italic</labelFormat>
             </style>
@@ -6480,21 +6480,21 @@
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:parentContainer">
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.oclIsKindOf(la::LogicalArchitecture)">
-                    <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%ownedLogicalComponent.nSize()==0%>">
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.ownedLogicalComponent->size() = 0">
                       <subModelOperations xsi:type="tool_1:CreateInstance" typeName="LogicalComponent" referenceName="ownedLogicalComponent" variableName="comp">
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.oclIsKindOf(pa::PhysicalArchitecture)">
-                    <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%ownedPhysicalComponent.nSize()==0%>">
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.ownedPhysicalComponent->size() = 0">
                       <subModelOperations xsi:type="tool_1:CreateInstance" typeName="PhysicalComponent" referenceName="ownedPhysicalComponent" variableName="comp">
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.oclIsKindOf(epbs::EPBSArchitecture)">
-                    <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%ownedConfigurationItem.nSize()==0%>">
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.ownedConfigurationItem->size() = 0">
                       <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ConfigurationItem" referenceName="ownedConfigurationItem" variableName="comp">
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
                       </subModelOperations>
@@ -7301,7 +7301,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Contextual Component External Interfaces" precondition="&lt;% isInLib() &amp;&amp; getComponentType[filter(&quot;LogicalComponent&quot;) || filter(&quot;PhysicalComponent&quot;) || filter(&quot;System&quot;) || filter(&quot;Actor&quot;) || filter(&quot;LogicalActor&quot;) || filter(&quot;PhysicalActor&quot;) || filter(&quot;ConfigurationItem&quot;)].nSize() > 0%>" titleExpression="[CEI] &lt;%current.name%>" browseExpression="aql:self.getComponentType()" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Contextual Component External Interfaces" precondition="aql:self.isInLib() and self.getComponentType()->select(x | x->filter(la::LogicalComponent)->size() > 0 or x->filter(pa::PhysicalComponent)->size() > 0 or x->filter(ctx::System)->size() > 0 or x->filter(ctx::Actor)->size() > 0 or x->filter(la::LogicalActor)->size() > 0 or x->filter(pa::PhysicalActor)->size() > 0 or x->filter(epbs::ConfigurationItem)->size() > 0)->size() > 0" titleExpression="[CEI] &lt;%current.name%>" browseExpression="aql:self.getComponentType()" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']">
             <initialOperation/>
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
@@ -7343,7 +7343,7 @@
               <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:arg0"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="implements target" precondition="&lt;%!(current.eContainer().isA(&quot;ConfigurationItem&quot;)) &amp;&amp; $target.isA(&quot;Interface&quot;) &amp;&amp; !(current.eContainer().implementedInterfaces.nContains($target))%>">
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="implements target" precondition="aql:not (self.eContainer().oclIsKindOf(epbs::ConfigurationItem)) and target.oclIsKindOf(cs::Interface) and not (self.eContainer().implementedInterfaces->includes(target))">
             <source name="source"/>
             <target name="target"/>
             <sourceView name="sourceView"/>
@@ -7365,7 +7365,7 @@
             </initialOperation>
             <edgeView name="edgeView"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="uses target" precondition="&lt;% !(current.eContainer().isA(&quot;ConfigurationItem&quot;)) &amp;&amp; $target.isA(&quot;Interface&quot;) &amp;&amp; !(current.eContainer().usedInterfaces.nContains($target)) %>">
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="uses target" precondition="aql:not (self.eContainer().oclIsKindOf(epbs::ConfigurationItem)) and target.oclIsKindOf(cs::Interface) and not (self.eContainer().usedInterfaces->includes(target))">
             <source name="source"/>
             <target name="target"/>
             <sourceView name="sourceView"/>
@@ -7387,7 +7387,7 @@
             </initialOperation>
             <edgeView name="edgeView"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="PinRequiredInterface target" precondition="&lt;% !(current.eContainer().isA(&quot;ConfigurationItem&quot;)) &amp;&amp; $target.isA(&quot;Interface&quot;) &amp;&amp; !(self.requiredInterfaces.nContains($target)) %>">
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="PinRequiredInterface target" precondition="aql:not (self.eContainer().oclIsKindOf(epbs::ConfigurationItem)) and target.oclIsKindOf(cs::Interface) and not (self.requiredInterfaces->includes(target))">
             <source name="source"/>
             <target name="target"/>
             <sourceView name="sourceView"/>
@@ -7401,7 +7401,7 @@
             </initialOperation>
             <edgeView name="edgeView"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="PinProvidedInterface target" precondition="&lt;% !(current.eContainer().isA(&quot;ConfigurationItem&quot;)) &amp;&amp;  $target.isA(&quot;Interface&quot;) &amp;&amp; !(self.providedInterfaces.nContains($target)) %>">
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="PinProvidedInterface target" precondition="aql:not (self.eContainer().oclIsKindOf(epbs::ConfigurationItem)) and target.oclIsKindOf(cs::Interface) and not (self.providedInterfaces->includes(target))">
             <source name="source"/>
             <target name="target"/>
             <sourceView name="sourceView"/>
@@ -7439,7 +7439,7 @@
                     </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%$source.filter(&quot;ComponentPort&quot;).nSize()>0%>">
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:source->filter(fa::ComponentPort)->size() > 0">
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:target->filter(cs::Component)->size() > 0">
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:target">
                       <subModelOperations xsi:type="tool_1:CreateInstance" typeName="InterfaceImplementation" referenceName="ownedInterfaceImplementations">
@@ -7618,7 +7618,7 @@
             </initialOperation>
             <edgeView name="edgeView"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="CommunicationLink source" precondition="&lt;%$source.isA(&quot;CommunicationLinkExchanger&quot;) &amp;&amp; !($target.ownedCommunicationLinks[kind==$element.kind &amp;&amp; exchangeItem==$element.exchangeItem])%>" reconnectionKind="RECONNECT_SOURCE">
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="CommunicationLink source" precondition="aql:source.oclIsKindOf(communication::CommunicationLinkExchanger) and not (target.ownedCommunicationLinks->select(ownedCommunicationLink | ownedCommunicationLink.kind = element.kind and ownedCommunicationLink.exchangeItem = element.exchangeItem))" reconnectionKind="RECONNECT_SOURCE">
             <source name="source"/>
             <target name="target"/>
             <sourceView name="sourceView"/>
@@ -8025,7 +8025,7 @@
           <conditionnalStyles predicateExpression="aql:(self.eClass().name = 'PhysicalComponent') and (self.isAbstract() = false)">
             <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
           </conditionnalStyles>
-          <conditionnalStyles predicateExpression="&lt;% (eClass.name == &quot;PhysicalComponent&quot;) &amp;&amp; (isAbstract==true) %>">
+          <conditionnalStyles predicateExpression="aql:(self.eClass().name = 'PhysicalComponent') and (self.isAbstract() = true)">
             <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
               <labelFormat>italic</labelFormat>
             </style>
@@ -8041,21 +8041,21 @@
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:parentContainer">
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.oclIsKindOf(la::LogicalArchitecture)">
-                    <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%ownedLogicalComponent.nSize()==0%>">
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.ownedLogicalComponent->size() = 0">
                       <subModelOperations xsi:type="tool_1:CreateInstance" typeName="LogicalComponent" referenceName="ownedLogicalComponent" variableName="comp">
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.oclIsKindOf(pa::PhysicalArchitecture)">
-                    <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%ownedPhysicalComponent.nSize()==0%>">
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.ownedPhysicalComponent->size() = 0">
                       <subModelOperations xsi:type="tool_1:CreateInstance" typeName="PhysicalComponent" referenceName="ownedPhysicalComponent" variableName="comp">
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.oclIsKindOf(epbs::EPBSArchitecture)">
-                    <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%ownedConfigurationItem.nSize()==0%>">
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.ownedConfigurationItem->size() = 0">
                       <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ConfigurationItem" referenceName="ownedConfigurationItem" variableName="comp">
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="kind" valueExpression="aql:epbs::ConfigurationItemKind::SystemCI"/>
@@ -8815,7 +8815,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Contextual Component Internal Interfaces" precondition="&lt;%isInLib() &amp;&amp; getComponentType[filter(&quot;LogicalComponent&quot;) || filter(&quot;PhysicalComponent&quot;)].nSize() > 0%>" titleExpression="[CII] &lt;%current.name%>" browseExpression="aql:self.getComponentType()" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Contextual Component Internal Interfaces" precondition="aql:self.isInLib() and self.getComponentType()->select(x | x->filter(la::LogicalComponent)->size() > 0 or x->filter(pa::PhysicalComponent)->size() > 0)->size() > 0" titleExpression="[CII] &lt;%current.name%>" browseExpression="aql:self.getComponentType()" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']">
             <initialOperation/>
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
@@ -8864,7 +8864,7 @@
             </initialOperation>
             <edgeView name="edgeView"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="PinRequiredInterface target" precondition="&lt;% !(current.eContainer().isA(&quot;ConfigurationItem&quot;)) &amp;&amp; $target.isA(&quot;Interface&quot;) &amp;&amp; current.eContainer().isAvailableInterface($target) &amp;&amp; !(self.requiredInterfaces.nContains($target)) %>">
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="PinRequiredInterface target" precondition="aql:not (self.eContainer().oclIsKindOf(epbs::ConfigurationItem)) and target.oclIsKindOf(cs::Interface) and self.eContainer().isAvailableInterface(target) and not (self.requiredInterfaces->includes(target))">
             <source name="source"/>
             <target name="target"/>
             <sourceView name="sourceView"/>
@@ -8878,7 +8878,7 @@
             </initialOperation>
             <edgeView name="edgeView"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="PinProvidedInterface target" precondition="&lt;%!(current.eContainer().isA(&quot;ConfigurationItem&quot;)) &amp;&amp;  $target.isA(&quot;Interface&quot;) &amp;&amp; current.eContainer().isAvailableInterface($target) &amp;&amp; !(self.providedInterfaces.nContains($target)) %>">
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="PinProvidedInterface target" precondition="aql:not (self.eContainer().oclIsKindOf(epbs::ConfigurationItem)) and target.oclIsKindOf(cs::Interface) and self.eContainer().isAvailableInterface(target) and not (self.providedInterfaces->includes(target))">
             <source name="source"/>
             <target name="target"/>
             <sourceView name="sourceView"/>
@@ -9138,7 +9138,7 @@
             </initialOperation>
             <edgeView name="edgeView"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="CommunicationLink source" precondition="&lt;%$source.isA(&quot;CommunicationLinkExchanger&quot;) &amp;&amp; !($target.ownedCommunicationLinks[kind==$element.kind &amp;&amp; exchangeItem==$element.exchangeItem])%>" reconnectionKind="RECONNECT_SOURCE">
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="CommunicationLink source" precondition="aql:source.oclIsKindOf(communication::CommunicationLinkExchanger) and not (target.ownedCommunicationLinks->select(ownedCommunicationLink | ownedCommunicationLink.kind = element.kind and ownedCommunicationLink.exchangeItem = element.exchangeItem))" reconnectionKind="RECONNECT_SOURCE">
             <source name="source"/>
             <target name="target"/>
             <sourceView name="sourceView"/>
@@ -9570,7 +9570,7 @@
           <conditionnalStyles predicateExpression="aql:(self.eClass().name = 'PhysicalComponent') and (self.isAbstract() = false)">
             <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
           </conditionnalStyles>
-          <conditionnalStyles predicateExpression="&lt;% (eClass.name == &quot;PhysicalComponent&quot;) &amp;&amp; (isAbstract==true) %>">
+          <conditionnalStyles predicateExpression="aql:(self.eClass().name = 'PhysicalComponent') and (self.isAbstract() = true)">
             <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
               <labelFormat>italic</labelFormat>
             </style>
@@ -9606,21 +9606,21 @@
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:parentContainer">
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.oclIsKindOf(la::LogicalArchitecture)">
-                    <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%ownedLogicalComponent.nSize()==0%>">
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.ownedLogicalComponent->size() = 0">
                       <subModelOperations xsi:type="tool_1:CreateInstance" typeName="LogicalComponent" referenceName="ownedLogicalComponent" variableName="comp">
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.oclIsKindOf(pa::PhysicalArchitecture)">
-                    <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%ownedPhysicalComponent.nSize()==0%>">
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.ownedPhysicalComponent->size() = 0">
                       <subModelOperations xsi:type="tool_1:CreateInstance" typeName="PhysicalComponent" referenceName="ownedPhysicalComponent" variableName="comp">
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.oclIsKindOf(epbs::EPBSArchitecture)">
-                    <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%ownedConfigurationItem.nSize()==0%>">
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.ownedConfigurationItem->size() = 0">
                       <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ConfigurationItem" referenceName="ownedConfigurationItem" variableName="comp">
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="kind" valueExpression="aql:epbs::ConfigurationItemKind::SystemCI"/>
@@ -11103,7 +11103,7 @@
             </initialOperation>
             <edgeView name="edgeView"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="CommunicationLink source" precondition="&lt;%$source.isA(&quot;CommunicationLinkExchanger&quot;) &amp;&amp; !($target.ownedCommunicationLinks[kind==$element.kind &amp;&amp; exchangeItem==$element.exchangeItem])%>" reconnectionKind="RECONNECT_SOURCE">
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="CommunicationLink source" precondition="aql:source.oclIsKindOf(communication::CommunicationLinkExchanger) and not (target.ownedCommunicationLinks->select(ownedCommunicationLink | ownedCommunicationLink.kind = element.kind and ownedCommunicationLink.exchangeItem = element.exchangeItem))" reconnectionKind="RECONNECT_SOURCE">
             <source name="source"/>
             <target name="target"/>
             <sourceView name="sourceView"/>
@@ -11315,7 +11315,7 @@
           <mask mask="{0}"/>
         </directEdit>
       </ownedColumnMappings>
-      <ownedColumnMappings name="Requirement Id" headerLabelExpression="Requirement Id" canEdit="&lt;%current.filter(&quot;Requirement&quot;).nSize() > 0%>" featureName="requirementId" labelExpression="feature:requirementId">
+      <ownedColumnMappings name="Requirement Id" headerLabelExpression="Requirement Id" canEdit="aql:self->filter(requirement::Requirement)->size() > 0" featureName="requirementId" labelExpression="feature:requirementId">
         <directEdit>
           <variables name="table" documentation="The current DTable."/>
           <variables name="line" documentation="The DLine of the current DCell."/>
@@ -11327,7 +11327,7 @@
           <mask mask="{0}"/>
         </directEdit>
       </ownedColumnMappings>
-      <ownedColumnMappings name="Summary" headerLabelExpression="Summary" canEdit="&lt;%current.filter(&quot;Requirement&quot;).nSize() > 0%>" featureName="summary" labelExpression="feature:summary">
+      <ownedColumnMappings name="Summary" headerLabelExpression="Summary" canEdit="aql:self->filter(requirement::Requirement)->size() > 0" featureName="summary" labelExpression="feature:summary">
         <directEdit>
           <variables name="table" documentation="The current DTable."/>
           <variables name="line" documentation="The DLine of the current DCell."/>
@@ -11339,7 +11339,7 @@
           <mask mask="{0}"/>
         </directEdit>
       </ownedColumnMappings>
-      <ownedColumnMappings name="Description" headerLabelExpression="Description" canEdit="&lt;%current.filter(&quot;Requirement&quot;).nSize() > 0%>" featureName="description" labelExpression="feature:description">
+      <ownedColumnMappings name="Description" headerLabelExpression="Description" canEdit="aql:self->filter(requirement::Requirement)->size() > 0" featureName="description" labelExpression="feature:description">
         <directEdit>
           <variables name="table" documentation="The current DTable."/>
           <variables name="line" documentation="The DLine of the current DCell."/>
@@ -11351,7 +11351,7 @@
           <mask mask="{0}"/>
         </directEdit>
       </ownedColumnMappings>
-      <ownedColumnMappings name="Additional Information" headerLabelExpression="Additional Information" canEdit="&lt;%current.filter(&quot;Requirement&quot;).nSize() > 0%>" featureName="additionalInformation" labelExpression="feature:additionalInformation">
+      <ownedColumnMappings name="Additional Information" headerLabelExpression="Additional Information" canEdit="aql:self->filter(requirement::Requirement)->size() > 0" featureName="additionalInformation" labelExpression="feature:additionalInformation">
         <directEdit>
           <variables name="table" documentation="The current DTable."/>
           <variables name="line" documentation="The DLine of the current DCell."/>
@@ -11363,7 +11363,7 @@
           <mask mask="{0}"/>
         </directEdit>
       </ownedColumnMappings>
-      <ownedColumnMappings name="Verification Method" headerLabelExpression="Verification Method" canEdit="&lt;%current.filter(&quot;Requirement&quot;).nSize() > 0%>" featureName="verificationMethod" labelExpression="feature:verificationMethod">
+      <ownedColumnMappings name="Verification Method" headerLabelExpression="Verification Method" canEdit="aql:self->filter(requirement::Requirement)->size() > 0" featureName="verificationMethod" labelExpression="feature:verificationMethod">
         <directEdit>
           <variables name="table" documentation="The current DTable."/>
           <variables name="line" documentation="The DLine of the current DCell."/>
@@ -11375,7 +11375,7 @@
           <mask mask="{0}"/>
         </directEdit>
       </ownedColumnMappings>
-      <ownedColumnMappings name="Verification Phase" headerLabelExpression="Verification Phase" canEdit="&lt;%current.filter(&quot;Requirement&quot;).nSize() > 0%>" featureName="verificationPhase" labelExpression="feature:verificationPhase">
+      <ownedColumnMappings name="Verification Phase" headerLabelExpression="Verification Phase" canEdit="aql:self->filter(requirement::Requirement)->size() > 0" featureName="verificationPhase" labelExpression="feature:verificationPhase">
         <directEdit>
           <variables name="table" documentation="The current DTable."/>
           <variables name="line" documentation="The DLine of the current DCell."/>
@@ -11455,7 +11455,7 @@
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </conditionnalStyles>
-          <conditionnalStyles predicateExpression="&lt;%filter(&quot;ConfigurationItem&quot;).nSize() > 0%>">
+          <conditionnalStyles predicateExpression="aql:self->filter(epbs::ConfigurationItem)->size() > 0">
             <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="aql:''" sizeComputationExpression="5" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/CSCI.png">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -11476,10 +11476,10 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:containerView.target">
-                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%(ancestor().filter(&quot;Component&quot;).nSize() == 0) &amp;&amp; (ancestor().filter(&quot;LogicalArchitecture&quot;).nSize() > 0)%>">
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:(self.ancestors()->filter(cs::Component)->size() = 0) and (self.ancestors()->filter(la::LogicalArchitecture)->size() > 0)">
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="select Components" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementFromListWizard">
                     <parameters name="context" value="aql:container"/>
-                    <parameters name="scope" value="&lt;% eContainer(&quot;LogicalArchitecture&quot;).ownedLogicalComponent.ownedPartitions.abstractType - $containerView.eAllContents().filter(&quot;DSemanticDecorator&quot;).target %>"/>
+                    <parameters name="scope" value="aql:self.makeDiff(self.eContainerOrSelf(la::LogicalArchitecture).ownedLogicalComponent.ownedPartitions.abstractType, containerView.eAllContents()->filter(viewpoint::DSemanticDecorator).target)"/>
                     <parameters name="multiple" value="true"/>
                     <parameters name="resultVariable" value="components"/>
                     <parameters name="wizardMessage" value="Select Components."/>
@@ -11496,10 +11496,10 @@
                     </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%(ancestor().filter(&quot;Component&quot;).nSize() == 0) &amp;&amp; (ancestor().filter(&quot;PhysicalArchitecture&quot;).nSize() > 0)%>">
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:(self.ancestors()->filter(cs::Component)->size() = 0) and (self.ancestors()->filter(pa::PhysicalArchitecture)->size() > 0)">
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="select Components" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementFromListWizard">
                     <parameters name="context" value="aql:container"/>
-                    <parameters name="scope" value="&lt;% eContainer(&quot;PhysicalArchitecture&quot;).ownedPhysicalComponent.ownedPartitions.abstractType - $containerView.eAllContents().filter(&quot;DSemanticDecorator&quot;).target %>"/>
+                    <parameters name="scope" value="aql:self.makeDiff(self.eContainerOrSelf(pa::PhysicalArchitecture).ownedPhysicalComponent.ownedPartitions.abstractType, containerView.eAllContents()->filter(viewpoint::DSemanticDecorator).target)"/>
                     <parameters name="multiple" value="true"/>
                     <parameters name="resultVariable" value="components"/>
                     <parameters name="wizardMessage" value="Select Components."/>
@@ -11516,10 +11516,10 @@
                     </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% ancestor().filter(&quot;Component&quot;).nSize() > 0%>">
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.ancestors()->filter(cs::Component)->size() > 0">
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="select Components" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementFromListWizard">
                     <parameters name="context" value="aql:container"/>
-                    <parameters name="scope" value="&lt;% eContainer(&quot;Component&quot;).ownedPartitions.abstractType - $containerView.eAllContents().filter(&quot;DSemanticDecorator&quot;).target %>"/>
+                    <parameters name="scope" value="aql:self.makeDiff(self.eContainerOrSelf(cs::Component).ownedPartitions.abstractType, containerView.eAllContents()->filter(viewpoint::DSemanticDecorator).target)"/>
                     <parameters name="multiple" value="true"/>
                     <parameters name="resultVariable" value="components"/>
                     <parameters name="wizardMessage" value="Select Components."/>
@@ -11637,7 +11637,7 @@
             <containerVariable name="container"/>
             <representationNameVariable name="diagramName"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Contextual Capability Realization Involvement" precondition="&lt;% isInLib() &amp;&amp; isA(&quot;CapabilityRealization&quot;)%>" titleExpression="[CII] &lt;%current.name%>" browseExpression="aql:self.getComponentType()" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Contextual Capability Realization Involvement" precondition="aql:self.isInLib() and self.oclIsKindOf(la::CapabilityRealization)" titleExpression="[CII] &lt;%current.name%>" browseExpression="aql:self.getComponentType()" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']">
             <initialOperation/>
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
@@ -11834,7 +11834,7 @@
           <conditionnalStyles predicateExpression="aql:(self.eClass().name = 'PhysicalComponent') and (self.isAbstract() = false)">
             <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
           </conditionnalStyles>
-          <conditionnalStyles predicateExpression="&lt;% (eClass.name == &quot;PhysicalComponent&quot;) &amp;&amp; (isAbstract==true) %>">
+          <conditionnalStyles predicateExpression="aql:(self.eClass().name = 'PhysicalComponent') and (self.isAbstract() = true)">
             <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
               <labelFormat>italic</labelFormat>
             </style>
@@ -11888,11 +11888,11 @@
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:firstComponent->size() = 0">
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:container.eContainerOrSelf(cs::BlockArchitecture)">
                       <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.oclIsKindOf(la::LogicalArchitecture)">
-                        <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%false &amp;&amp; ownedLogicalComponent.nSize()!=0%>">
-                          <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%ownedLogicalComponentPkg.nSize()!=0%>">
+                        <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:false and self.ownedLogicalComponent->size() != 0">
+                          <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.ownedLogicalComponentPkg->size() != 0">
                             <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%setVariableA(&quot;owner&quot;, ownedLogicalComponentPkg.nGet(0))%>"/>
                           </subModelOperations>
-                          <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%ownedLogicalComponentPkg.nSize()==0%>">
+                          <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.ownedLogicalComponentPkg->size() = 0">
                             <subModelOperations xsi:type="tool_1:CreateInstance" typeName="LogicalComponentPkg" referenceName="ownedLogicalComponentPkg" variableName="owner">
                               <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
                             </subModelOperations>
@@ -11903,18 +11903,18 @@
                             </subModelOperations>
                           </subModelOperations>
                         </subModelOperations>
-                        <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%ownedLogicalComponent.nSize()==0%>">
+                        <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.ownedLogicalComponent->size() = 0">
                           <subModelOperations xsi:type="tool_1:CreateInstance" typeName="LogicalComponent" referenceName="ownedLogicalComponent" variableName="comp">
                             <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
                           </subModelOperations>
                         </subModelOperations>
                       </subModelOperations>
                       <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.oclIsKindOf(pa::PhysicalArchitecture)">
-                        <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%false &amp;&amp; ownedPhysicalComponent.nSize()!=0%>">
-                          <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%ownedPhysicalComponentPkg.nSize()!=0%>">
+                        <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:false and self.ownedPhysicalComponent->size() != 0">
+                          <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.ownedPhysicalComponentPkg->size() != 0">
                             <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%setVariableA(&quot;owner&quot;, ownedPhysicalComponentPkg.nGet(0))%>"/>
                           </subModelOperations>
-                          <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%ownedPhysicalComponentPkg.nSize()==0%>">
+                          <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.ownedPhysicalComponentPkg->size() = 0">
                             <subModelOperations xsi:type="tool_1:CreateInstance" typeName="PhysicalComponentPkg" referenceName="ownedPhysicalComponentPkg" variableName="owner">
                               <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
                             </subModelOperations>
@@ -11925,18 +11925,18 @@
                             </subModelOperations>
                           </subModelOperations>
                         </subModelOperations>
-                        <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%ownedPhysicalComponent.nSize()==0%>">
+                        <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.ownedPhysicalComponent->size() = 0">
                           <subModelOperations xsi:type="tool_1:CreateInstance" typeName="PhysicalComponent" referenceName="ownedPhysicalComponent" variableName="comp">
                             <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
                           </subModelOperations>
                         </subModelOperations>
                       </subModelOperations>
                       <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.oclIsKindOf(epbs::EPBSArchitecture)">
-                        <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%false &amp;&amp; ownedConfigurationItem.nSize()!=0%>">
-                          <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%ownedConfigurationItemPkg.nSize()!=0%>">
+                        <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:false and self.ownedConfigurationItem->size() != 0">
+                          <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.ownedConfigurationItemPkg->size() != 0">
                             <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%setVariableA(&quot;owner&quot;, ownedConfigurationItemPkg.nGet(0))%>"/>
                           </subModelOperations>
-                          <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%ownedConfigurationItemPkg.nSize()==0%>">
+                          <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.ownedConfigurationItemPkg->size() = 0">
                             <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ConfigurationItemPkg" referenceName="ownedConfigurationItemPkg" variableName="owner">
                               <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
                             </subModelOperations>
@@ -11948,7 +11948,7 @@
                             </subModelOperations>
                           </subModelOperations>
                         </subModelOperations>
-                        <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%ownedConfigurationItem.nSize()==0%>">
+                        <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.ownedConfigurationItem->size() = 0">
                           <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ConfigurationItem" referenceName="ownedConfigurationItem" variableName="comp">
                             <subModelOperations xsi:type="tool_1:SetValue" featureName="kind" valueExpression="SystemCI"/>
                             <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
@@ -12593,7 +12593,7 @@
       </defaultLayer>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_3:CrossTableDescription" name="Interface Delegations" titleExpression="[ID] &lt;%current.name%>" preconditionExpression="aql:self.oclIsKindOf(la::LogicalComponent) or self.oclIsKindOf(pa::PhysicalComponent)" domainClass="Component">
-      <ownedRepresentationCreationDescriptions xsi:type="description_3:TableCreationDescription" name="Interface delegations" precondition="&lt;%isA(&quot;LogicalComponent&quot;) || isA(&quot;PhysicalComponent&quot;)%>" titleExpression="[ID] &lt;%current.name%>" tableDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interface%20Delegations']">
+      <ownedRepresentationCreationDescriptions xsi:type="description_3:TableCreationDescription" name="Interface delegations" precondition="aql:self.oclIsKindOf(la::LogicalComponent) or self.oclIsKindOf(pa::PhysicalComponent)" titleExpression="[ID] &lt;%current.name%>" tableDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interface%20Delegations']">
         <containerViewVariable name="containerView"/>
         <representationNameVariable name="tableName"/>
       </ownedRepresentationCreationDescriptions>
@@ -13475,7 +13475,7 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="eContainer (&quot;BlockArchitecture&quot;)">
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.getComponentContainer()">
-                  <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% eContainer(&quot;BlockArchitecture&quot;).filter (&quot;EPBSArchitecture&quot;).nSize != 0 %>">
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.eContainerOrSelf(cs::BlockArchitecture)->filter(epbs::EPBSArchitecture)->size() != 0">
                     <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ConfigurationItem" referenceName="ownedConfigurationItems" variableName="component">
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="kind" valueExpression="COTSCI"/>
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
@@ -13507,7 +13507,7 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="eContainer (&quot;BlockArchitecture&quot;)">
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.getComponentContainer()">
-                  <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% eContainer(&quot;BlockArchitecture&quot;).filter (&quot;EPBSArchitecture&quot;).nSize != 0 %>">
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.eContainerOrSelf(cs::BlockArchitecture)->filter(epbs::EPBSArchitecture)->size() != 0">
                     <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ConfigurationItem" referenceName="ownedConfigurationItems" variableName="component">
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="kind" valueExpression="CSCI"/>
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
@@ -13539,7 +13539,7 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="eContainer (&quot;BlockArchitecture&quot;)">
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.getComponentContainer()">
-                  <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% eContainer(&quot;BlockArchitecture&quot;).filter (&quot;EPBSArchitecture&quot;).nSize != 0 %>">
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.eContainerOrSelf(cs::BlockArchitecture)->filter(epbs::EPBSArchitecture)->size() != 0">
                     <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ConfigurationItem" referenceName="ownedConfigurationItems" variableName="component">
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="kind" valueExpression="HWCI"/>
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
@@ -13571,7 +13571,7 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="eContainer (&quot;BlockArchitecture&quot;)">
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.getComponentContainer()">
-                  <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% eContainer(&quot;BlockArchitecture&quot;).filter (&quot;EPBSArchitecture&quot;).nSize != 0 %>">
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.eContainerOrSelf(cs::BlockArchitecture)->filter(epbs::EPBSArchitecture)->size() != 0">
                     <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ConfigurationItem" referenceName="ownedConfigurationItems" variableName="component">
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="kind" valueExpression="InterfaceCI"/>
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
@@ -13603,7 +13603,7 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="eContainer (&quot;BlockArchitecture&quot;)">
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.getComponentContainer()">
-                  <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% eContainer(&quot;BlockArchitecture&quot;).filter (&quot;EPBSArchitecture&quot;).nSize != 0 %>">
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.eContainerOrSelf(cs::BlockArchitecture)->filter(epbs::EPBSArchitecture)->size() != 0">
                     <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ConfigurationItem" referenceName="ownedConfigurationItems" variableName="component">
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="kind" valueExpression="NDICI"/>
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
@@ -13635,7 +13635,7 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="eContainer (&quot;BlockArchitecture&quot;)">
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.getComponentContainer()">
-                  <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% eContainer(&quot;BlockArchitecture&quot;).filter (&quot;EPBSArchitecture&quot;).nSize != 0 %>">
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.eContainerOrSelf(cs::BlockArchitecture)->filter(epbs::EPBSArchitecture)->size() != 0">
                     <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ConfigurationItem" referenceName="ownedConfigurationItems" variableName="component">
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="kind" valueExpression="PrimeItemCI"/>
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
@@ -13667,7 +13667,7 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="eContainer (&quot;BlockArchitecture&quot;)">
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.getComponentContainer()">
-                  <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% eContainer(&quot;BlockArchitecture&quot;).filter (&quot;EPBSArchitecture&quot;).nSize != 0 %>">
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.eContainerOrSelf(cs::BlockArchitecture)->filter(epbs::EPBSArchitecture)->size() != 0">
                     <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ConfigurationItem" referenceName="ownedConfigurationItems" variableName="component">
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="kind" valueExpression="SystemCI"/>
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
@@ -14467,16 +14467,16 @@
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interaction.SequenceMessage" referenceName="ownedMessages" variableName="call">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="kind" valueExpression="ASYNCHRONOUS_CALL"/>
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:self.newCallName()"/>
-                    <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%$endBefore == null ||  $endBefore.semanticEnd.getPreviousMessageEnd == null%>">
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:endBefore->isEmpty() or endBefore.semanticEnd.getPreviousMessageEnd() = null">
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveMessageOnBegining()"/>
                     </subModelOperations>
-                    <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%$endBefore != null &amp;&amp;  $endBefore.semanticEnd.getPreviousMessageEnd != null%>">
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not endBefore->isEmpty() and endBefore.semanticEnd.getPreviousMessageEnd() != null">
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%moveMessage($endBefore.semanticEnd.getPreviousMessageEnd.message)%>"/>
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interaction.MessageEnd" referenceName="ownedInteractionFragments" variableName="receivingEnd">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'Receive Call ' + call.name"/>
-                    <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% $endBefore != null %>">
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not endBefore->isEmpty()">
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%moveEndOnScenario($endBefore.semanticEnd)%>"/>
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%moveEndOnInstanceRole($endBefore.semanticEnd)%>"/>
                     </subModelOperations>
@@ -14533,20 +14533,20 @@
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interaction.SequenceMessage" referenceName="ownedMessages" variableName="call">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="kind" valueExpression="ASYNCHRONOUS_CALL"/>
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:self.newCallName()"/>
-                    <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%$endBefore == null ||  $endBefore.semanticEnd.getPreviousMessageEnd == null%>">
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:endBefore->isEmpty() or endBefore.semanticEnd.getPreviousMessageEnd() = null">
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveMessageOnBegining()"/>
                     </subModelOperations>
-                    <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%$endBefore != null &amp;&amp;  $endBefore.semanticEnd.getPreviousMessageEnd != null%>">
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not endBefore->isEmpty() and endBefore.semanticEnd.getPreviousMessageEnd() != null">
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveMessage(messageEndBefore.semanticEnd.getPreviousMessageEnd().message)"/>
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interaction.MessageEnd" referenceName="ownedInteractionFragments" variableName="sendingEnd">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'Receive Call ' + call.name"/>
-                    <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% $endBefore != null %>">
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not endBefore->isEmpty()">
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%moveEndOnScenario($endBefore.semanticEnd)%>"/>
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%moveEndOnInstanceRole($endBefore.semanticEnd)%>"/>
                     </subModelOperations>
-                    <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% $endBefore == null %>">
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:endBefore->isEmpty()">
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfScenario()"/>
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfInstanceRole()"/>
                     </subModelOperations>
@@ -14796,7 +14796,7 @@
               </firstModelOperations>
             </onEventMovedOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ToolDescription" documentation="Creates or deletes graphical objects corresponding to existing Exchange Contexts. Removing an Exchange Context graphical object does not delete the corresponding Constraint from the model. This tool does not modify the semantic model." name="ExchangeContext" label="Exchange Context" precondition="&lt;% $element.filter(&quot;Scenario&quot;) > 0 || $element.filter(&quot;SequenceMessage&quot;) > 0 %>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+          <ownedTools xsi:type="tool_1:ToolDescription" documentation="Creates or deletes graphical objects corresponding to existing Exchange Contexts. Removing an Exchange Context graphical object does not delete the corresponding Constraint from the model. This tool does not modify the semantic model." name="ExchangeContext" label="Exchange Context" precondition="aql:element->filter(interaction::Scenario) > 0 or element->filter(interaction::SequenceMessage) > 0" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <element name="element"/>
             <elementView name="elementView">
               <subVariables xsi:type="tool_1:AcceleoVariable" name="diagram" computationExpression="aql:elementView.eContainerOrSelf(diagram::DDiagram)"/>
@@ -14806,7 +14806,7 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView">
                 <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="selectedExchangeContexts" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectLinksFromTransferWizard">
                   <parameters name="context" value="aql:elementView"/>
-                  <parameters name="scope" value="&lt;% getExchangeContextsToInsertInDiagram() - $visibleExchangeContexts%>"/>
+                  <parameters name="scope" value="aql:self.makeDiff(self.getExchangeContextsToInsertInDiagram(), visibleExchangeContexts)"/>
                   <parameters name="initialSelection" value="aql:visibleExchangeContexts"/>
                   <parameters name="resultVariable" value="selectedConstraints"/>
                   <parameters name="wizardMessage" value="Select ExchangeContexts to show."/>
@@ -16248,20 +16248,20 @@
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interaction.SequenceMessage" referenceName="ownedMessages" variableName="call">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="kind" valueExpression="ASYNCHRONOUS_CALL"/>
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:self.newCallName()"/>
-                    <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%$endBefore == null ||  $endBefore.semanticEnd.getPreviousMessageEnd == null%>">
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:endBefore->isEmpty() or endBefore.semanticEnd.getPreviousMessageEnd() = null">
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveMessageOnBegining()"/>
                     </subModelOperations>
-                    <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%$endBefore != null &amp;&amp;  $endBefore.semanticEnd.getPreviousMessageEnd != null%>">
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not endBefore->isEmpty() and endBefore.semanticEnd.getPreviousMessageEnd() != null">
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%moveMessage($endBefore.semanticEnd.getPreviousMessageEnd.message)%>"/>
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interaction.MessageEnd" referenceName="ownedInteractionFragments" variableName="receivingEnd">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'Receive Call ' + call.name"/>
-                    <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% $endBefore != null %>">
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not endBefore->isEmpty()">
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%moveEndOnScenario($endBefore.semanticEnd)%>"/>
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%moveEndOnInstanceRole($endBefore.semanticEnd)%>"/>
                     </subModelOperations>
-                    <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% $endBefore == null %>">
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:endBefore->isEmpty()">
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfScenario()"/>
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfInstanceRole()"/>
                     </subModelOperations>
@@ -16312,20 +16312,20 @@
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interaction.SequenceMessage" referenceName="ownedMessages" variableName="call">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="kind" valueExpression="ASYNCHRONOUS_CALL"/>
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:self.newCallName()"/>
-                    <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%$endBefore == null ||  $endBefore.semanticEnd.getPreviousMessageEnd == null%>">
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:endBefore->isEmpty() or endBefore.semanticEnd.getPreviousMessageEnd() = null">
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveMessageOnBegining()"/>
                     </subModelOperations>
-                    <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%$endBefore != null &amp;&amp;  $endBefore.semanticEnd.getPreviousMessageEnd != null%>">
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not endBefore->isEmpty() and endBefore.semanticEnd.getPreviousMessageEnd() != null">
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%moveMessage($endBefore.semanticEnd.getPreviousMessageEnd.message)%>"/>
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interaction.MessageEnd" referenceName="ownedInteractionFragments" variableName="sendingEnd">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'Sending Call ' + call.name"/>
-                    <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% $endBefore != null %>">
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not endBefore->isEmpty()">
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%moveEndOnScenario($endBefore.semanticEnd)%>"/>
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%moveEndOnInstanceRole($endBefore.semanticEnd)%>"/>
                     </subModelOperations>
-                    <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% $endBefore == null %>">
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:endBefore->isEmpty()">
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfScenario()"/>
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfInstanceRole()"/>
                     </subModelOperations>
@@ -16366,20 +16366,20 @@
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interaction.SequenceMessage" referenceName="ownedMessages" variableName="call">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="kind" valueExpression="ASYNCHRONOUS_CALL"/>
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:self.newCallName()"/>
-                    <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%$endBefore == null ||  $endBefore.semanticEnd.getPreviousMessageEnd == null%>">
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:endBefore->isEmpty() or endBefore.semanticEnd.getPreviousMessageEnd() = null">
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveMessageOnBegining()"/>
                     </subModelOperations>
-                    <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%$endBefore != null &amp;&amp;  $endBefore.semanticEnd.getPreviousMessageEnd != null%>">
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not endBefore->isEmpty() and endBefore.semanticEnd.getPreviousMessageEnd() != null">
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%moveMessage($endBefore.semanticEnd.getPreviousMessageEnd.message)%>"/>
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interaction.MessageEnd" referenceName="ownedInteractionFragments" variableName="receivingEnd">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'Receive Call ' + call.name"/>
-                    <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% $endBefore != null %>">
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not endBefore->isEmpty()">
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%moveEndOnScenario($endBefore.semanticEnd)%>"/>
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%moveEndOnInstanceRole($endBefore.semanticEnd)%>"/>
                     </subModelOperations>
-                    <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% $endBefore == null %>">
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:endBefore->isEmpty()">
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfScenario()"/>
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfInstanceRole()"/>
                     </subModelOperations>
@@ -16430,20 +16430,20 @@
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interaction.SequenceMessage" referenceName="ownedMessages" variableName="call">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="kind" valueExpression="ASYNCHRONOUS_CALL"/>
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:self.newCallName()"/>
-                    <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%$endBefore == null ||  $endBefore.semanticEnd.getPreviousMessageEnd == null%>">
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:endBefore->isEmpty() or endBefore.semanticEnd.getPreviousMessageEnd() = null">
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveMessageOnBegining()"/>
                     </subModelOperations>
-                    <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%$endBefore != null &amp;&amp;  $endBefore.semanticEnd.getPreviousMessageEnd != null%>">
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not endBefore->isEmpty() and endBefore.semanticEnd.getPreviousMessageEnd() != null">
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%moveMessage($endBefore.semanticEnd.getPreviousMessageEnd.message)%>"/>
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interaction.MessageEnd" referenceName="ownedInteractionFragments" variableName="sendingEnd">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'Sending Call ' + call.name"/>
-                    <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% $endBefore != null %>">
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not endBefore->isEmpty()">
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%moveEndOnScenario($endBefore.semanticEnd)%>"/>
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%moveEndOnInstanceRole($endBefore.semanticEnd)%>"/>
                     </subModelOperations>
-                    <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% $endBefore == null %>">
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:endBefore->isEmpty()">
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfScenario()"/>
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.moveEndOnBeginingOfInstanceRole()"/>
                     </subModelOperations>
@@ -18449,7 +18449,7 @@
           <variables name="columnSemantic" documentation="The semantic element corresponding to the column (only available for Intersection Mapping)."/>
           <variables name="root" documentation="The semantic element of the table."/>
           <firstModelOperation xsi:type="tool_1:ChangeContext" browseExpression="aql:lineSemantic">
-            <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%$0 == &quot;&quot; &amp;&amp; $columnSemantic.availableInStates.nContains($lineSemantic)%>">
+            <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:arg0 = '' and columnSemantic.availableInStates->includes(lineSemantic)">
               <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:columnSemantic.inActiveAnElement(lineSemantic)"/>
             </subModelOperations>
           </firstModelOperation>
@@ -18477,7 +18477,7 @@
           <variables name="columnSemantic" documentation="The semantic element corresponding to the column (only available for Intersection Mapping)."/>
           <variables name="root" documentation="The semantic element of the table."/>
           <firstModelOperation xsi:type="tool_1:ChangeContext" browseExpression="aql:lineSemantic">
-            <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%$0 == &quot;&quot; &amp;&amp; $columnSemantic.availableInStates.nContains($lineSemantic)%>">
+            <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:arg0 = '' and columnSemantic.availableInStates->includes(lineSemantic)">
               <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:columnSemantic.inActiveAnElement(lineSemantic)"/>
             </subModelOperations>
           </firstModelOperation>
@@ -18506,7 +18506,7 @@
           <variables name="root" documentation="The semantic element of the table."/>
           <firstModelOperation xsi:type="tool_1:ChangeContext" browseExpression="aql:lineSemantic">
             <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%  $lineSemantic.isA(&quot;Function&quot;) || $lineSemantic.isA(&quot;FunctionalChain&quot;) || $lineSemantic.isA(&quot;AbstractCapability&quot;)%>">
-              <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%$0 == &quot;&quot; &amp;&amp; $lineSemantic.availableInStates.nContains($columnSemantic)%>">
+              <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:arg0 = '' and lineSemantic.availableInStates->includes(columnSemantic)">
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:lineSemantic.inActiveAnElement(columnSemantic)"/>
               </subModelOperations>
             </subModelOperations>
@@ -18587,7 +18587,7 @@
           <variables name="root" documentation="The semantic element of the table."/>
           <firstModelOperation xsi:type="tool_1:ChangeContext" browseExpression="aql:lineSemantic">
             <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%  $lineSemantic.isA(&quot;Function&quot;) || $lineSemantic.isA(&quot;FunctionalChain&quot;) || $lineSemantic.isA(&quot;AbstractCapability&quot;)%>">
-              <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%$0 == &quot;&quot; &amp;&amp; $lineSemantic.availableInStates.nContains($columnSemantic)%>">
+              <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:arg0 = '' and lineSemantic.availableInStates->includes(columnSemantic)">
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:lineSemantic.inActiveAnElement(columnSemantic)"/>
               </subModelOperations>
             </subModelOperations>
@@ -18617,7 +18617,7 @@
           <variables name="root" documentation="The semantic element of the table."/>
           <firstModelOperation xsi:type="tool_1:ChangeContext" browseExpression="aql:lineSemantic">
             <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%  $lineSemantic.isA(&quot;Function&quot;) || $lineSemantic.isA(&quot;FunctionalChain&quot;) || $lineSemantic.isA(&quot;AbstractCapability&quot;)%>">
-              <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%$0 == &quot;&quot; &amp;&amp; $lineSemantic.availableInStates.nContains($columnSemantic)%>">
+              <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:arg0 = '' and lineSemantic.availableInStates->includes(columnSemantic)">
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:lineSemantic.inActiveAnElement(columnSemantic)"/>
               </subModelOperations>
             </subModelOperations>
@@ -18647,7 +18647,7 @@
           <variables name="root" documentation="The semantic element of the table."/>
           <firstModelOperation xsi:type="tool_1:ChangeContext" browseExpression="aql:lineSemantic">
             <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%  $lineSemantic.isA(&quot;Function&quot;) || $lineSemantic.isA(&quot;FunctionalChain&quot;) || $lineSemantic.isA(&quot;AbstractCapability&quot;)%>">
-              <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%$0 == &quot;&quot; &amp;&amp; $lineSemantic.availableInStates.nContains($columnSemantic)%>">
+              <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:arg0 = '' and lineSemantic.availableInStates->includes(columnSemantic)">
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:lineSemantic.inActiveAnElement(columnSemantic)"/>
               </subModelOperations>
             </subModelOperations>

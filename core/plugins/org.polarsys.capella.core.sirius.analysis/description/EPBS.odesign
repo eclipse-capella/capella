@@ -22,7 +22,7 @@
           <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
           <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
           <variables name="root" documentation="The semantic element of the table."/>
-          <firstModelOperation xsi:type="tool:If" conditionExpression="&lt;%$0 == &quot;&quot; &amp;&amp; $root.eAllContents().filter(&quot;RequirementsTrace&quot;)[targetElement == $columnSemantic &amp;&amp; sourceElement == $lineSemantic].nSize() > 0%>">
+          <firstModelOperation xsi:type="tool:If" conditionExpression="aql:arg0 = '' and root.eAllContents()->filter(requirement::RequirementsTrace)->select(x | x.targetElement = columnSemantic and x.sourceElement = lineSemantic)->size() > 0">
             <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$root.eAllContents().filter(&quot;RequirementsTrace&quot;)[targetElement == $columnSemantic &amp;&amp; sourceElement == $lineSemantic].nFirst()%>">
               <subModelOperations xsi:type="tool:RemoveElement"/>
             </subModelOperations>
@@ -66,7 +66,7 @@
           <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
           <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
           <variables name="root" documentation="The semantic element of the table."/>
-          <firstModelOperation xsi:type="tool:If" conditionExpression="&lt;%$0 == &quot;&quot; &amp;&amp; $lineSemantic.ownedPhysicalArtifactRealizations[targetElement == $columnSemantic &amp;&amp; sourceElement == $lineSemantic].nSize() > 0%>">
+          <firstModelOperation xsi:type="tool:If" conditionExpression="aql:arg0 = '' and lineSemantic.ownedPhysicalArtifactRealizations->select(ownedPhysicalArtifactRealization | ownedPhysicalArtifactRealization.targetElement = columnSemantic and ownedPhysicalArtifactRealization.sourceElement = lineSemantic)->size() > 0">
             <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$lineSemantic.ownedPhysicalArtifactRealizations[targetElement == $columnSemantic &amp;&amp; sourceElement == $lineSemantic].nFirst()%>">
               <subModelOperations xsi:type="tool:RemoveElement"/>
             </subModelOperations>
@@ -79,7 +79,7 @@
           <variables name="root" documentation="The semantic root element of the table."/>
           <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="aql:lineSemantic">
             <subModelOperations xsi:type="tool:If" conditionExpression="aql:arg0 = 'X'">
-              <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%!$lineSemantic.ownedPhysicalArtifactRealizations.targetElement.nContains($columnSemantic) &amp;&amp; !$lineSemantic.eContainer(&quot;EPBSArchitecture&quot;).eAllContents().filter(&quot;ConfigurationItem&quot;).ownedPhysicalArtifactRealizations.targetElement.nContains($columnSemantic)  %>">
+              <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (lineSemantic.ownedPhysicalArtifactRealizations.targetElement->includes(columnSemantic)) and not (lineSemantic.eContainerOrSelf(epbs::EPBSArchitecture).eAllContents()->filter(epbs::ConfigurationItem).ownedPhysicalArtifactRealizations.targetElement->includes(columnSemantic))">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="PhysicalArtifactRealization" referenceName="ownedPhysicalArtifactRealizations">
                   <subModelOperations xsi:type="tool:SetValue" featureName="sourceElement" valueExpression="aql:lineSemantic"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="targetElement" valueExpression="aql:columnSemantic"/>
@@ -118,7 +118,7 @@
           <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
           <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
           <variables name="root" documentation="The semantic element of the table."/>
-          <firstModelOperation xsi:type="tool:If" conditionExpression="&lt;%$0 == &quot;&quot; &amp;&amp; $root.eAllContents().filter(&quot;RequirementsTrace&quot;)[targetElement == $columnSemantic &amp;&amp; sourceElement == $lineSemantic].nSize() > 0%>">
+          <firstModelOperation xsi:type="tool:If" conditionExpression="aql:arg0 = '' and root.eAllContents()->filter(requirement::RequirementsTrace)->select(x | x.targetElement = columnSemantic and x.sourceElement = lineSemantic)->size() > 0">
             <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$root.eAllContents().filter(&quot;RequirementsTrace&quot;)[targetElement == $columnSemantic &amp;&amp; sourceElement == $lineSemantic].nFirst()%>">
               <subModelOperations xsi:type="tool:RemoveElement"/>
             </subModelOperations>
@@ -505,7 +505,7 @@
             </initialOperation>
             <hook id="org.polarsys.capella.core.sirius.analysis.delete.CapellaDeleteActionHook"/>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:DiagramCreationDescription" name="EPBS Architecture Blank" precondition="&lt;%isInLib() &amp;&amp; isA(&quot;ConfigurationItem&quot;)%>" forceRefresh="true" titleExpression="[EAB] &lt;%current.name%>" diagramDescription="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']">
+          <ownedTools xsi:type="tool_1:DiagramCreationDescription" name="EPBS Architecture Blank" precondition="aql:self.isInLib() and self.oclIsKindOf(epbs::ConfigurationItem)" forceRefresh="true" titleExpression="[EAB] &lt;%current.name%>" diagramDescription="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']">
             <initialOperation/>
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
@@ -833,7 +833,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:DiagramCreationDescription" name="Configuration Items BreakDown" precondition="&lt;%isInLib() &amp;&amp; isA(&quot;ConfigurationItem&quot;)%>" forceRefresh="true" titleExpression="[CIBD] &lt;%current.name%>" diagramDescription="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']">
+          <ownedTools xsi:type="tool_1:DiagramCreationDescription" name="Configuration Items BreakDown" precondition="aql:self.isInLib() and self.oclIsKindOf(epbs::ConfigurationItem)" forceRefresh="true" titleExpression="[CIBD] &lt;%current.name%>" diagramDescription="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']">
             <initialOperation/>
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>

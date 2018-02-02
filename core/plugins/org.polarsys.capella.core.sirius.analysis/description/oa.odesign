@@ -157,7 +157,7 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:source.dndABDComponent(source.eContainer(),target)"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="changeContainer" precondition="&lt;% !$target.isA(&quot;OperationalActor&quot;) &amp;&amp; $element.isValidDndABDComponent($targetView)%>" forceRefresh="true">
+          <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="changeContainer" precondition="aql:not (target.oclIsKindOf(oa::OperationalActor)) and element.isValidDndABDComponent(targetView)" forceRefresh="true">
             <source name="source"/>
             <target name="target"/>
             <sourceView name="sourceView"/>
@@ -2969,7 +2969,7 @@
             <startingEndPredecessor name="messageEndBefore"/>
             <finishingEndPredecessor name="messageEndAfter"/>
           </ownedTools>
-          <ownedTools xsi:type="tool_2:MessageCreationTool" documentation="Creates a new Sequence Message invoking a Communication Mean with return branch between the Source and Target Lifelines representing existing Operational Entities Parts. This tool opens a selection wizard to select an available existing Communication Mean or to create a new one between these Operational Entities.&#xD;&#xA;This tool is masked as soon as an Operational Interaction is displayed on the scenario." name="CommunicationMean Return Branch" precondition="aql:preTarget.representedInstance->filter(oa::Role)->size() = 0" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']/@defaultLayer/@edgeMappings[name='Basic%20message%20mapping%20OA']" extraSourceMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20OA']/@borderedNodeMappings[name='default%20execution%20OA'] //@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20OA']/@borderedNodeMappings[name='default%20execution%20OA']/@borderedNodeMappings[name='Execution%20OA']" extraTargetMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20OA']/@borderedNodeMappings[name='default%20execution%20OA']/@borderedNodeMappings[name='Execution%20OA'] //@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20OA']/@borderedNodeMappings[name='default%20execution%20OA']" connectionStartPrecondition="&lt;% $preSource.representedInstance.filter (&quot;Role&quot;).nSize == 0 %>">
+          <ownedTools xsi:type="tool_2:MessageCreationTool" documentation="Creates a new Sequence Message invoking a Communication Mean with return branch between the Source and Target Lifelines representing existing Operational Entities Parts. This tool opens a selection wizard to select an available existing Communication Mean or to create a new one between these Operational Entities.&#xD;&#xA;This tool is masked as soon as an Operational Interaction is displayed on the scenario." name="CommunicationMean Return Branch" precondition="aql:preTarget.representedInstance->filter(oa::Role)->size() = 0" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']/@defaultLayer/@edgeMappings[name='Basic%20message%20mapping%20OA']" extraSourceMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20OA']/@borderedNodeMappings[name='default%20execution%20OA'] //@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20OA']/@borderedNodeMappings[name='default%20execution%20OA']/@borderedNodeMappings[name='Execution%20OA']" extraTargetMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20OA']/@borderedNodeMappings[name='default%20execution%20OA']/@borderedNodeMappings[name='Execution%20OA'] //@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20OA']/@borderedNodeMappings[name='default%20execution%20OA']" connectionStartPrecondition="aql:preSource.representedInstance->filter(oa::Role)->size() = 0">
             <filters precondition="aql:self.target.eContainerOrSelf(interaction::Scenario).ownedEvents.operation->filter(fa::FunctionalExchange)->size() > 0" elementsToListen="aql:self.target.eContainerOrSelf(interaction::Scenario)">
               <listeners domainClass="interaction.Scenario" featureName="ownedInteractionFragments"/>
             </filters>
@@ -3084,7 +3084,7 @@
             <startingEndPredecessor name="messageEndBefore"/>
             <finishingEndPredecessor name="messageEndAfter"/>
           </ownedTools>
-          <ownedTools xsi:type="tool_2:MessageCreationTool" documentation="Creates a new Sequence Message invoking a Communication Mean with return branch between the Source and Target Lifelines representing existing Operational Entities Parts. This tool opens a selection wizard to select an available existing Communication Mean or to create a new one between these Operational Entities." name="Communication Mean" precondition="aql:preTarget.representedInstance->filter(oa::Role)->size() = 0" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']/@defaultLayer/@edgeMappings[name='Basic%20message%20mapping%20OA']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/AsyncSequenceMessage.gif" connectionStartPrecondition="&lt;% $preSource.representedInstance.filter (&quot;Role&quot;).nSize == 0 %>">
+          <ownedTools xsi:type="tool_2:MessageCreationTool" documentation="Creates a new Sequence Message invoking a Communication Mean with return branch between the Source and Target Lifelines representing existing Operational Entities Parts. This tool opens a selection wizard to select an available existing Communication Mean or to create a new one between these Operational Entities." name="Communication Mean" precondition="aql:preTarget.representedInstance->filter(oa::Role)->size() = 0" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']/@defaultLayer/@edgeMappings[name='Basic%20message%20mapping%20OA']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/AsyncSequenceMessage.gif" connectionStartPrecondition="aql:preSource.representedInstance->filter(oa::Role)->size() = 0">
             <filters precondition="aql:self.target.eContainerOrSelf(interaction::Scenario).ownedEvents.operation->filter(fa::FunctionalExchange)->size() > 0" elementsToListen="aql:self.target.eContainerOrSelf(interaction::Scenario)">
               <listeners domainClass="interaction.Scenario" featureName="ownedInteractionFragments"/>
             </filters>
@@ -5373,7 +5373,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ToolDescription" documentation="Insert/Remove Relationships" name="Show/Hide Relationships" label="Relationships" precondition="&lt;%$elementView.getDiagramContainer()!=$elementView &amp;&amp; (isA(&quot;Entity&quot;) || isA(&quot;AbstractCapability&quot;)) %>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+          <ownedTools xsi:type="tool:ToolDescription" documentation="Insert/Remove Relationships" name="Show/Hide Relationships" label="Relationships" precondition="aql:elementView.getDiagramContainer() != elementView and (self.oclIsKindOf(oa::Entity) or self.oclIsKindOf(interaction::AbstractCapability))" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
@@ -5522,7 +5522,7 @@
           <variables name="root" documentation="The semantic element corresponding to the current table."/>
         </delete>
       </ownedColumnMappings>
-      <intersection name="Trace Function" semanticElements="&lt;%current+current.eContainer()%>" lineMapping="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Requirements%20-%20Operational%20Activities']/@ownedLineMappings[name='Requirements']/@ownedSubLines[name='Sub%20Requirements']" columnMapping="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Requirements%20-%20Operational%20Activities']/@ownedColumnMappings.0" labelExpression="aql:self.getRFLabel(lineSemantic,columnSemantic)" useDomainClass="true" columnFinderExpression="feature:sourceElement" lineFinderExpression="feature:targetElement" semanticCandidatesExpression="&lt;%getRFColumnCandidates().outgoingTraces()[isA(&quot;RequirementsTrace&quot;)]%>" domainClass="RequirementsTrace">
+      <intersection name="Trace Function" semanticElements="aql:self.makeUnion(self, self.eContainer())" lineMapping="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Requirements%20-%20Operational%20Activities']/@ownedLineMappings[name='Requirements']/@ownedSubLines[name='Sub%20Requirements']" columnMapping="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Requirements%20-%20Operational%20Activities']/@ownedColumnMappings.0" labelExpression="aql:self.getRFLabel(lineSemantic,columnSemantic)" useDomainClass="true" columnFinderExpression="feature:sourceElement" lineFinderExpression="feature:targetElement" semanticCandidatesExpression="&lt;%getRFColumnCandidates().outgoingTraces()[isA(&quot;RequirementsTrace&quot;)]%>" domainClass="RequirementsTrace">
         <directEdit>
           <variables name="table" documentation="The current DTable."/>
           <variables name="line" documentation="The DLine of the current DCell."/>
@@ -5530,7 +5530,7 @@
           <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
           <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
           <variables name="root" documentation="The semantic element of the table."/>
-          <firstModelOperation xsi:type="tool:If" conditionExpression="&lt;%$0 == &quot;&quot;%>">
+          <firstModelOperation xsi:type="tool:If" conditionExpression="aql:arg0 = ''">
             <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.void2Null(element)">
               <subModelOperations xsi:type="tool:RemoveElement"/>
             </subModelOperations>
@@ -5542,7 +5542,7 @@
           <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
           <variables name="root" documentation="The semantic root element of the table."/>
           <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="aql:columnSemantic">
-            <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$0 == &quot;X&quot; &amp;&amp; $lineSemantic.incomingTraces[sourceElement==$columnSemantic].nSize()==0%>">
+            <subModelOperations xsi:type="tool:If" conditionExpression="aql:arg0 = 'X' and lineSemantic.incomingTraces->select(incomingTrace | incomingTrace.sourceElement = columnSemantic)->size() = 0">
               <subModelOperations xsi:type="tool:CreateInstance" typeName="RequirementsTrace" referenceName="ownedTraces">
                 <subModelOperations xsi:type="tool:SetValue" featureName="sourceElement" valueExpression="aql:columnSemantic"/>
                 <subModelOperations xsi:type="tool:SetValue" featureName="targetElement" valueExpression="aql:lineSemantic"/>
@@ -5792,7 +5792,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ToolDescription" documentation="Insert/Remove Relationships" name="Show/Hide Relationships" label="Relationships" precondition="&lt;%$elementView.getDiagramContainer()!=$elementView &amp;&amp; (isA(&quot;Entity&quot;) || isA(&quot;AbstractCapability&quot;)) %>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+          <ownedTools xsi:type="tool:ToolDescription" documentation="Insert/Remove Relationships" name="Show/Hide Relationships" label="Relationships" precondition="aql:elementView.getDiagramContainer() != elementView and (self.oclIsKindOf(oa::Entity) or self.oclIsKindOf(interaction::AbstractCapability))" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>

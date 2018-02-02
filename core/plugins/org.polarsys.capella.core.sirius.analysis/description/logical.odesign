@@ -40,7 +40,7 @@
           <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
           <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
           <variables name="root" documentation="The semantic element of the table."/>
-          <firstModelOperation xsi:type="tool:If" conditionExpression="&lt;%$0 == &quot;&quot; &amp;&amp; $root.eAllContents().filter(&quot;RequirementsTrace&quot;)[targetElement == $columnSemantic &amp;&amp; sourceElement == $lineSemantic].nSize() > 0%>">
+          <firstModelOperation xsi:type="tool:If" conditionExpression="aql:arg0 = '' and root.eAllContents()->filter(requirement::RequirementsTrace)->select(x | x.targetElement = columnSemantic and x.sourceElement = lineSemantic)->size() > 0">
             <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$root.eAllContents().filter(&quot;RequirementsTrace&quot;)[targetElement == $columnSemantic &amp;&amp; sourceElement == $lineSemantic].nFirst()%>">
               <subModelOperations xsi:type="tool:RemoveElement"/>
             </subModelOperations>
@@ -90,7 +90,7 @@
           <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
           <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
           <variables name="root" documentation="The semantic element of the table."/>
-          <firstModelOperation xsi:type="tool:If" conditionExpression="&lt;%$0 == &quot;&quot; &amp;&amp; $root.eAllContents().filter(&quot;RequirementsTrace&quot;)[targetElement == $columnSemantic &amp;&amp; sourceElement == $lineSemantic].nSize() > 0%>">
+          <firstModelOperation xsi:type="tool:If" conditionExpression="aql:arg0 = '' and root.eAllContents()->filter(requirement::RequirementsTrace)->select(x | x.targetElement = columnSemantic and x.sourceElement = lineSemantic)->size() > 0">
             <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$root.eAllContents().filter(&quot;RequirementsTrace&quot;)[targetElement == $columnSemantic &amp;&amp; sourceElement == $lineSemantic].nFirst()%>">
               <subModelOperations xsi:type="tool:RemoveElement"/>
             </subModelOperations>
@@ -152,7 +152,7 @@
           <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
           <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
           <variables name="root" documentation="The semantic element of the table."/>
-          <firstModelOperation xsi:type="tool:If" conditionExpression="&lt;%$0 == &quot;&quot; &amp;&amp; $lineSemantic.ownedFunctionRealizations[allocatedFunction == $columnSemantic].nSize() > 0%>">
+          <firstModelOperation xsi:type="tool:If" conditionExpression="aql:arg0 = '' and lineSemantic.ownedFunctionRealizations->select(ownedFunctionRealization | ownedFunctionRealization.allocatedFunction = columnSemantic)->size() > 0">
             <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$lineSemantic.ownedFunctionRealizations[targetElement == $columnSemantic].nFirst()%>">
               <subModelOperations xsi:type="tool:RemoveElement"/>
             </subModelOperations>
@@ -176,7 +176,7 @@
       </intersection>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:CrossTableDescription" name="Logical Components - Logical Functions" label="Logical Components/Actors - Logical Functions" domainClass="LogicalArchitecture">
-      <ownedLineMappings name="Logical Components 1" domainClass="Component" semanticCandidatesExpression="&lt;%ownedLogicalComponent.subLogicalComponents+ownedLogicalActorPkg.getAllLogicalActors()%>" headerLabelExpression="feature:name">
+      <ownedLineMappings name="Logical Components 1" domainClass="Component" semanticCandidatesExpression="aql:self.makeUnion(self.ownedLogicalComponent.subLogicalComponents, self.ownedLogicalActorPkg.getAllLogicalActors())" headerLabelExpression="feature:name">
         <ownedSubLines name="Sub Logical Components 1" reusedSubLines="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Components%20-%20Logical%20Functions']/@ownedLineMappings[name='Logical%20Components%201']/@ownedSubLines[name='Sub%20Logical%20Components%201']" reusedInMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Components%20-%20Logical%20Functions']/@ownedLineMappings[name='Logical%20Components%201']/@ownedSubLines[name='Sub%20Logical%20Components%201']" domainClass="LogicalComponent" semanticCandidatesExpression="feature:subLogicalComponents" headerLabelExpression="feature:name">
           <delete name="No delete" precondition="false">
             <variables name="element" documentation="The currently edited element."/>
@@ -202,7 +202,7 @@
           <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
           <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
           <variables name="root" documentation="The semantic element of the table."/>
-          <firstModelOperation xsi:type="tool:If" conditionExpression="&lt;%$0 == &quot;&quot; &amp;&amp; $lineSemantic.ownedFunctionalAllocation[function == $columnSemantic &amp;&amp; block == $lineSemantic].nSize() > 0%>">
+          <firstModelOperation xsi:type="tool:If" conditionExpression="aql:arg0 = '' and lineSemantic.ownedFunctionalAllocation->select(x | x.function = columnSemantic and x.block = lineSemantic)->size() > 0">
             <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$lineSemantic.ownedFunctionalAllocation[function == $columnSemantic &amp;&amp; block == $lineSemantic].nFirst()%>">
               <subModelOperations xsi:type="tool:RemoveElement"/>
             </subModelOperations>
@@ -214,7 +214,7 @@
           <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
           <variables name="root" documentation="The semantic root element of the table."/>
           <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="aql:lineSemantic">
-            <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$0 == &quot;X&quot;  &amp;&amp;  $lineSemantic.getAvailableFunctionalAllocation().nContains($columnSemantic)%>">
+            <subModelOperations xsi:type="tool:If" conditionExpression="aql:arg0 = 'X' and lineSemantic.getAvailableFunctionalAllocation()->includes(columnSemantic)">
               <subModelOperations xsi:type="tool:CreateInstance" typeName="ComponentFunctionalAllocation" referenceName="ownedFunctionalAllocation">
                 <subModelOperations xsi:type="tool:SetValue" featureName="sourceElement" valueExpression="aql:lineSemantic"/>
                 <subModelOperations xsi:type="tool:SetValue" featureName="targetElement" valueExpression="aql:columnSemantic"/>
@@ -252,7 +252,7 @@
           <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
           <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
           <variables name="root" documentation="The semantic element of the table."/>
-          <firstModelOperation xsi:type="tool:If" conditionExpression="&lt;%$0 == &quot;&quot; &amp;&amp; $root.eAllContents().filter(&quot;RequirementsTrace&quot;)[targetElement == $columnSemantic &amp;&amp; sourceElement == $lineSemantic].nSize() > 0%>">
+          <firstModelOperation xsi:type="tool:If" conditionExpression="aql:arg0 = '' and root.eAllContents()->filter(requirement::RequirementsTrace)->select(x | x.targetElement = columnSemantic and x.sourceElement = lineSemantic)->size() > 0">
             <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$root.eAllContents().filter(&quot;RequirementsTrace&quot;)[targetElement == $columnSemantic &amp;&amp; sourceElement == $lineSemantic].nFirst()%>">
               <subModelOperations xsi:type="tool:RemoveElement"/>
             </subModelOperations>
@@ -296,7 +296,7 @@
           <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
           <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
           <variables name="root" documentation="The semantic element of the table."/>
-          <firstModelOperation xsi:type="tool:If" conditionExpression="&lt;%$0 == &quot;&quot; &amp;&amp; $root.eAllContents().filter(&quot;ContextInterfaceRealization&quot;)[targetElement == $columnSemantic &amp;&amp; sourceElement == $lineSemantic].nSize() > 0%>">
+          <firstModelOperation xsi:type="tool:If" conditionExpression="aql:arg0 = '' and root.eAllContents()->filter(la::ContextInterfaceRealization)->select(x | x.targetElement = columnSemantic and x.sourceElement = lineSemantic)->size() > 0">
             <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$root.eAllContents().filter(&quot;ContextInterfaceRealization&quot;)[targetElement == $columnSemantic &amp;&amp; sourceElement == $lineSemantic].nFirst()%>">
               <subModelOperations xsi:type="tool:RemoveElement"/>
             </subModelOperations>
@@ -340,7 +340,7 @@
           <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
           <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
           <variables name="root" documentation="The semantic element of the table."/>
-          <firstModelOperation xsi:type="tool:If" conditionExpression="&lt;%$0 == &quot;&quot; &amp;&amp; $root.eAllContents().filter(&quot;SystemActorRealization&quot;)[targetElement == $columnSemantic &amp;&amp; sourceElement == $lineSemantic].nSize() > 0%>">
+          <firstModelOperation xsi:type="tool:If" conditionExpression="aql:arg0 = '' and root.eAllContents()->filter(la::SystemActorRealization)->select(x | x.targetElement = columnSemantic and x.sourceElement = lineSemantic)->size() > 0">
             <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$root.eAllContents().filter(&quot;SystemActorRealization&quot;)[targetElement == $columnSemantic &amp;&amp; sourceElement == $lineSemantic].nFirst()%>">
               <subModelOperations xsi:type="tool:RemoveElement"/>
             </subModelOperations>
@@ -491,7 +491,7 @@
               <firstModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:arg0"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:DiagramCreationDescription" name="Logical Component Breakdown" precondition="&lt;%isInLib() &amp;&amp; getComponentType.isA(&quot;LogicalComponent&quot;)%>" titleExpression="[LCBD] &lt;%current.name%>" browseExpression="aql:self.getComponentType()" diagramDescription="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Component%20Breakdown']">
+          <ownedTools xsi:type="tool_1:DiagramCreationDescription" name="Logical Component Breakdown" precondition="aql:self.isInLib() and self.getComponentType().oclIsKindOf(la::LogicalComponent)" titleExpression="[LCBD] &lt;%current.name%>" browseExpression="aql:self.getComponentType()" diagramDescription="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Component%20Breakdown']">
             <initialOperation/>
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
@@ -613,10 +613,10 @@
             <element name="element"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:If" conditionExpression="true">
-                <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$edgeView.semanticElements.nSize()==1%>">
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:edgeView.semanticElements->size() = 1">
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$edgeView.semanticElements.nGet(0).dndABDComponent($source, $target)%>"/>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$edgeView.semanticElements.nSize()>1%>">
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:edgeView.semanticElements->size() > 1">
                   <subModelOperations xsi:type="tool:ExternalJavaAction" name="select part" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementFromListWizard">
                     <parameters name="context" value="aql:source"/>
                     <parameters name="scope" value="aql:edgeView.semanticElements"/>
@@ -813,7 +813,7 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:source.dndDFBAbstractFunction(source.eContainer(),target)"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:DiagramCreationDescription" name="Logical Function Breakdown" precondition="&lt;%isInLib() &amp;&amp; current.filter(&quot;LogicalFunction&quot;).nSize() >0%>" titleExpression="[LFBD] &lt;%current.name%>" diagramDescription="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Function%20Breakdown']">
+          <ownedTools xsi:type="tool_1:DiagramCreationDescription" name="Logical Function Breakdown" precondition="aql:self.isInLib() and self->filter(la::LogicalFunction)->size() > 0" titleExpression="[LFBD] &lt;%current.name%>" diagramDescription="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Function%20Breakdown']">
             <initialOperation/>
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
@@ -1504,7 +1504,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:DiagramCreationDescription" name="Logical Data Flow Blank" precondition="&lt;%isInLib() &amp;&amp; isA(&quot;LogicalFunction&quot;) || isA(&quot;CapabilityRealization&quot;)%>" titleExpression="[LDFB] &lt;%current.name%>" browseExpression="" diagramDescription="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']">
+          <ownedTools xsi:type="tool_1:DiagramCreationDescription" name="Logical Data Flow Blank" precondition="aql:self.isInLib() and self.oclIsKindOf(la::LogicalFunction) or self.oclIsKindOf(la::CapabilityRealization)" titleExpression="[LDFB] &lt;%current.name%>" browseExpression="" diagramDescription="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']">
             <initialOperation/>
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
@@ -2966,7 +2966,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:DiagramCreationDescription" name="Logical Architecture Blank" precondition="&lt;%isInLib() &amp;&amp; getComponentType.isA(&quot;LogicalComponent&quot;)%>" titleExpression="[LAB] &lt;%current.name%>" diagramDescription="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']">
+          <ownedTools xsi:type="tool_1:DiagramCreationDescription" name="Logical Architecture Blank" precondition="aql:self.isInLib() and self.getComponentType().oclIsKindOf(la::LogicalComponent)" titleExpression="[LAB] &lt;%current.name%>" diagramDescription="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']">
             <initialOperation/>
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
@@ -3964,7 +3964,7 @@
           <variables name="root" documentation="The semantic element corresponding to the current table."/>
         </delete>
       </ownedColumnMappings>
-      <intersection name="Trace Function" semanticElements="&lt;%current+current.eContainer()%>" lineMapping="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Requirements%20-%20Logical%20Functions']/@ownedLineMappings[name='Requirements']/@ownedSubLines[name='Sub%20Requirements']" columnMapping="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Requirements%20-%20Logical%20Functions']/@ownedColumnMappings.0" labelExpression="aql:self.getRFLabel(lineSemantic,columnSemantic)" useDomainClass="true" columnFinderExpression="feature:sourceElement" lineFinderExpression="feature:targetElement" semanticCandidatesExpression="&lt;%getRFColumnCandidates().outgoingTraces()[isA(&quot;RequirementsTrace&quot;)]%>" domainClass="RequirementsTrace">
+      <intersection name="Trace Function" semanticElements="aql:self.makeUnion(self, self.eContainer())" lineMapping="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Requirements%20-%20Logical%20Functions']/@ownedLineMappings[name='Requirements']/@ownedSubLines[name='Sub%20Requirements']" columnMapping="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Requirements%20-%20Logical%20Functions']/@ownedColumnMappings.0" labelExpression="aql:self.getRFLabel(lineSemantic,columnSemantic)" useDomainClass="true" columnFinderExpression="feature:sourceElement" lineFinderExpression="feature:targetElement" semanticCandidatesExpression="&lt;%getRFColumnCandidates().outgoingTraces()[isA(&quot;RequirementsTrace&quot;)]%>" domainClass="RequirementsTrace">
         <directEdit>
           <variables name="table" documentation="The current DTable."/>
           <variables name="line" documentation="The DLine of the current DCell."/>
@@ -3972,7 +3972,7 @@
           <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
           <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
           <variables name="root" documentation="The semantic element of the table."/>
-          <firstModelOperation xsi:type="tool:If" conditionExpression="&lt;%$0 == &quot;&quot;%>">
+          <firstModelOperation xsi:type="tool:If" conditionExpression="aql:arg0 = ''">
             <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.void2Null(element)">
               <subModelOperations xsi:type="tool:RemoveElement"/>
             </subModelOperations>
@@ -3984,7 +3984,7 @@
           <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
           <variables name="root" documentation="The semantic root element of the table."/>
           <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="aql:columnSemantic">
-            <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$0 == &quot;X&quot; &amp;&amp; $lineSemantic.incomingTraces[sourceElement==$columnSemantic].nSize()==0%>">
+            <subModelOperations xsi:type="tool:If" conditionExpression="aql:arg0 = 'X' and lineSemantic.incomingTraces->select(incomingTrace | incomingTrace.sourceElement = columnSemantic)->size() = 0">
               <subModelOperations xsi:type="tool:CreateInstance" typeName="RequirementsTrace" referenceName="ownedTraces">
                 <subModelOperations xsi:type="tool:SetValue" featureName="sourceElement" valueExpression="aql:columnSemantic"/>
                 <subModelOperations xsi:type="tool:SetValue" featureName="targetElement" valueExpression="aql:lineSemantic"/>

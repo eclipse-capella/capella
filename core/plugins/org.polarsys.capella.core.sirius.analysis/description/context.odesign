@@ -203,7 +203,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ToolDescription" documentation="Insert/Remove Relationships" name="Show/Hide Relationships" label="Relationships" precondition="&lt;%$elementView.getDiagramContainer()!=$elementView &amp;&amp; (isA(&quot;Actor&quot;) || isA(&quot;Mission&quot;) || isA(&quot;AbstractCapability&quot;)) %>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+          <ownedTools xsi:type="tool_1:ToolDescription" documentation="Insert/Remove Relationships" name="Show/Hide Relationships" label="Relationships" precondition="aql:elementView.getDiagramContainer() != elementView and (self.oclIsKindOf(ctx::Actor) or self.oclIsKindOf(ctx::Mission) or self.oclIsKindOf(interaction::AbstractCapability))" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
@@ -217,7 +217,7 @@
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="setVariable" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SetVariable">
                     <parameters name="context" value="aql:element"/>
                     <parameters name="variable" value="scope"/>
-                    <parameters name="value" value="&lt;% $scope - $diagram.getInitialSelection($scope) %>"/>
+                    <parameters name="value" value="aql:self.makeDiff(scope, diagram.getInitialSelection(scope))"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="InsertTypeWizardCall" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementFromListWizard">
                     <parameters name="context" value="aql:element"/>
@@ -562,7 +562,7 @@
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:source">
                   <subModelOperations xsi:type="tool_1:For" expression="aql:self.void2Null(self.involvedActors.actor)" iteratorName="j">
-                    <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%$sourceView.eContainer(&quot;DDiagram&quot;).eAllContents().filter(&quot;DNode&quot;)[target == $j].nSize() == 0%>">
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:sourceView.eContainerOrSelf(diagram::DDiagram).eAllContents()->filter(diagram::DNode)->select(x | x.target = j)->size() = 0">
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:j">
                         <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@nodeMappings[name='ActorNode2']" containerViewExpression="aql:sourceView.eContainerOrSelf(diagram::DDiagram)"/>
                       </subModelOperations>
@@ -641,7 +641,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ToolDescription" documentation="Insert/Remove Relationships" name="Show/Hide Relationships" label="Relationships" precondition="&lt;%$elementView.getDiagramContainer()!=$elementView &amp;&amp; (isA(&quot;Actor&quot;) || isA(&quot;Mission&quot;) || isA(&quot;AbstractCapability&quot;)) %>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+          <ownedTools xsi:type="tool_1:ToolDescription" documentation="Insert/Remove Relationships" name="Show/Hide Relationships" label="Relationships" precondition="aql:elementView.getDiagramContainer() != elementView and (self.oclIsKindOf(ctx::Actor) or self.oclIsKindOf(ctx::Mission) or self.oclIsKindOf(interaction::AbstractCapability))" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
@@ -655,7 +655,7 @@
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="setVariable" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SetVariable">
                     <parameters name="context" value="aql:element"/>
                     <parameters name="variable" value="scope"/>
-                    <parameters name="value" value="&lt;% $scope - $diagram.getInitialSelection($scope) %>"/>
+                    <parameters name="value" value="aql:self.makeDiff(scope, diagram.getInitialSelection(scope))"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="InsertTypeWizardCall" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementFromListWizard">
                     <parameters name="context" value="aql:element"/>
@@ -1131,7 +1131,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ToolDescription" documentation="Insert/Remove Relationships" name="Show/Hide Relationships" label="Relationships" precondition="&lt;%$elementView.getDiagramContainer()!=$elementView &amp;&amp; (isA(&quot;Actor&quot;) || isA(&quot;Mission&quot;) || isA(&quot;AbstractCapability&quot;)) %>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+          <ownedTools xsi:type="tool_1:ToolDescription" documentation="Insert/Remove Relationships" name="Show/Hide Relationships" label="Relationships" precondition="aql:elementView.getDiagramContainer() != elementView and (self.oclIsKindOf(ctx::Actor) or self.oclIsKindOf(ctx::Mission) or self.oclIsKindOf(interaction::AbstractCapability))" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
@@ -1145,7 +1145,7 @@
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="setVariable" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SetVariable">
                     <parameters name="context" value="aql:element"/>
                     <parameters name="variable" value="scope"/>
-                    <parameters name="value" value="&lt;% $scope - $diagram.getInitialSelection($scope) %>"/>
+                    <parameters name="value" value="aql:self.makeDiff(scope, diagram.getInitialSelection(scope))"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="InsertTypeWizardCall" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementFromListWizard">
                     <parameters name="context" value="aql:element"/>
@@ -1665,7 +1665,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ToolDescription" documentation="Insert/Remove Relationships. Create or delete graphical objects corresponding to already existing Exploitation / Extension / Inclusion / Generalization relationships. Removing a Relationship graphical object from the diagram does not delete the Relationship from the model. This tool does not modify the semantic model." name="Show/Hide Relationships" label="Relationships" precondition="&lt;%$elementView.getDiagramContainer()!=$elementView &amp;&amp; (isA(&quot;Actor&quot;) || isA(&quot;Mission&quot;) || isA(&quot;AbstractCapability&quot;)) %>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+          <ownedTools xsi:type="tool_1:ToolDescription" documentation="Insert/Remove Relationships. Create or delete graphical objects corresponding to already existing Exploitation / Extension / Inclusion / Generalization relationships. Removing a Relationship graphical object from the diagram does not delete the Relationship from the model. This tool does not modify the semantic model." name="Show/Hide Relationships" label="Relationships" precondition="aql:elementView.getDiagramContainer() != elementView and (self.oclIsKindOf(ctx::Actor) or self.oclIsKindOf(ctx::Mission) or self.oclIsKindOf(interaction::AbstractCapability))" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
@@ -1679,7 +1679,7 @@
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="setVariable" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SetVariable">
                     <parameters name="context" value="aql:element"/>
                     <parameters name="variable" value="scope"/>
-                    <parameters name="value" value="&lt;% $scope - $diagram.getInitialSelection($scope) %>"/>
+                    <parameters name="value" value="aql:self.makeDiff(scope, diagram.getInitialSelection(scope))"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="InsertTypeWizardCall" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectLinksFromTransferWizard">
                     <parameters name="context" value="aql:element"/>
@@ -2235,7 +2235,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" name="System Function Breakdown" precondition="&lt;% isInLib() &amp;&amp; current.filter(&quot;SystemFunction&quot;).nSize() >0%>" titleExpression="[SFBD] &lt;%current.name%>" diagramDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="System Function Breakdown" precondition="aql:self.isInLib() and self->filter(ctx::SystemFunction)->size() > 0" titleExpression="[SFBD] &lt;%current.name%>" diagramDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']">
             <initialOperation/>
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
@@ -2887,7 +2887,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" name="System Data Flow Blank" precondition="&lt;%isInLib() &amp;&amp; (isA(&quot;SystemFunction&quot;) || isA(&quot;Capability&quot;))%>" titleExpression="[SDFB] &lt;%current.name%>" browseExpression="" diagramDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="System Data Flow Blank" precondition="aql:self.isInLib() and (self.oclIsKindOf(ctx::SystemFunction) or self.oclIsKindOf(ctx::Capability))" titleExpression="[SDFB] &lt;%current.name%>" browseExpression="" diagramDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']">
             <initialOperation/>
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
@@ -4198,7 +4198,7 @@
               <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:arg0"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" name="System Architecture Blank" precondition="&lt;%isInLib() &amp;&amp; getComponentType.isA(&quot;System&quot;)%>" titleExpression="[SAB] &lt;%current.name%>" browseExpression="aql:self.getComponentType()" diagramDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="System Architecture Blank" precondition="aql:self.isInLib() and self.getComponentType().oclIsKindOf(ctx::System)" titleExpression="[SAB] &lt;%current.name%>" browseExpression="aql:self.getComponentType()" diagramDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']">
             <initialOperation/>
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
@@ -5115,7 +5115,7 @@
           <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
           <variables name="columnSemantic" documentation="The semantic element corresponding to the column (only available for Intersection Mapping)."/>
           <variables name="root" documentation="The semantic element of the table."/>
-          <firstModelOperation xsi:type="tool_1:If" conditionExpression="&lt;%$0 == &quot;&quot; &amp;&amp; $root.eAllContents().filter(&quot;ComponentAllocation&quot;)[targetElement == $columnSemantic &amp;&amp; sourceElement == $lineSemantic].nSize() > 0%>">
+          <firstModelOperation xsi:type="tool_1:If" conditionExpression="aql:arg0 = '' and root.eAllContents()->filter(cs::ComponentAllocation)->select(x | x.targetElement = columnSemantic and x.sourceElement = lineSemantic)->size() > 0">
             <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$root.eAllContents().filter(&quot;ComponentAllocation&quot;)[targetElement == $columnSemantic &amp;&amp; sourceElement == $lineSemantic].nFirst()%>">
               <subModelOperations xsi:type="tool_1:RemoveElement"/>
             </subModelOperations>
@@ -5172,7 +5172,7 @@
       <intersection name="TICS Cell Value" canEdit="false" lineMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Interfaces%20-%20Capabilities%20and%20Scenarios']/@ownedLineMappings[name='TICS%20Interfaces%20line']/@ownedSubLines[name='TICS%20Services%20line']" columnMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Interfaces%20-%20Capabilities%20and%20Scenarios']/@ownedColumnMappings.0" labelExpression="aql:lineSemantic.getScenariosUsingService(columnSemantic)" columnFinderExpression="aql:self.isUsedInCapabilities()"/>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_2:CrossTableDescription" name="System/Actors - System Functions" domainClass="SystemAnalysis">
-      <ownedLineMappings name="Components 1" domainClass="Component" semanticCandidatesExpression="&lt;%ownedSystem+ownedActorPkg.getAllActors()%>" headerLabelExpression="feature:name">
+      <ownedLineMappings name="Components 1" domainClass="Component" semanticCandidatesExpression="aql:self.makeUnion(self.ownedSystem, self.ownedActorPkg.getAllActors())" headerLabelExpression="feature:name">
         <delete name="No delete" precondition="false">
           <variables name="element" documentation="The currently edited element."/>
           <variables name="root" documentation="The semantic element corresponding to the current table."/>
@@ -5192,7 +5192,7 @@
           <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
           <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
           <variables name="root" documentation="The semantic element of the table."/>
-          <firstModelOperation xsi:type="tool_1:If" conditionExpression="&lt;%$0 == &quot;&quot; &amp;&amp; $lineSemantic.ownedFunctionalAllocation[function == $columnSemantic &amp;&amp; block == $lineSemantic].nSize() > 0%>">
+          <firstModelOperation xsi:type="tool_1:If" conditionExpression="aql:arg0 = '' and lineSemantic.ownedFunctionalAllocation->select(x | x.function = columnSemantic and x.block = lineSemantic)->size() > 0">
             <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$lineSemantic.ownedFunctionalAllocation[function == $columnSemantic &amp;&amp; block == $lineSemantic].nFirst()%>">
               <subModelOperations xsi:type="tool_1:RemoveElement"/>
             </subModelOperations>
@@ -5204,7 +5204,7 @@
           <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
           <variables name="root" documentation="The semantic root element of the table."/>
           <firstModelOperation xsi:type="tool_1:ChangeContext" browseExpression="aql:lineSemantic">
-            <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%$0 == &quot;X&quot;  &amp;&amp;  $lineSemantic.getAvailableFunctionalAllocation().nContains($columnSemantic)%>">
+            <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:arg0 = 'X' and lineSemantic.getAvailableFunctionalAllocation()->includes(columnSemantic)">
               <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ComponentFunctionalAllocation" referenceName="ownedFunctionalAllocation">
                 <subModelOperations xsi:type="tool_1:SetValue" featureName="sourceElement" valueExpression="aql:lineSemantic"/>
                 <subModelOperations xsi:type="tool_1:SetValue" featureName="targetElement" valueExpression="aql:columnSemantic"/>
@@ -5240,7 +5240,7 @@
           <variables name="root" documentation="The semantic element corresponding to the current table."/>
         </delete>
       </ownedColumnMappings>
-      <intersection name="Trace Function" semanticElements="&lt;%current+current.eContainer()%>" lineMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Requirements%20-%20System%20Functions']/@ownedLineMappings[name='Requirements']/@ownedSubLines[name='Sub%20Requirements']" columnMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Requirements%20-%20System%20Functions']/@ownedColumnMappings.0" labelExpression="aql:self.getRFLabel(lineSemantic,columnSemantic)" useDomainClass="true" columnFinderExpression="feature:sourceElement" lineFinderExpression="feature:targetElement" semanticCandidatesExpression="&lt;%getRFColumnCandidates().outgoingTraces()[isA(&quot;RequirementsTrace&quot;)]%>" domainClass="RequirementsTrace">
+      <intersection name="Trace Function" semanticElements="aql:self.makeUnion(self, self.eContainer())" lineMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Requirements%20-%20System%20Functions']/@ownedLineMappings[name='Requirements']/@ownedSubLines[name='Sub%20Requirements']" columnMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Requirements%20-%20System%20Functions']/@ownedColumnMappings.0" labelExpression="aql:self.getRFLabel(lineSemantic,columnSemantic)" useDomainClass="true" columnFinderExpression="feature:sourceElement" lineFinderExpression="feature:targetElement" semanticCandidatesExpression="&lt;%getRFColumnCandidates().outgoingTraces()[isA(&quot;RequirementsTrace&quot;)]%>" domainClass="RequirementsTrace">
         <directEdit>
           <variables name="table" documentation="The current DTable."/>
           <variables name="line" documentation="The DLine of the current DCell."/>
@@ -5248,7 +5248,7 @@
           <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
           <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
           <variables name="root" documentation="The semantic element of the table."/>
-          <firstModelOperation xsi:type="tool_1:If" conditionExpression="&lt;%$0 == &quot;&quot;%>">
+          <firstModelOperation xsi:type="tool_1:If" conditionExpression="aql:arg0 = ''">
             <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.void2Null(element)">
               <subModelOperations xsi:type="tool_1:RemoveElement"/>
             </subModelOperations>
@@ -5260,7 +5260,7 @@
           <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
           <variables name="root" documentation="The semantic root element of the table."/>
           <firstModelOperation xsi:type="tool_1:ChangeContext" browseExpression="aql:columnSemantic">
-            <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%$0 == &quot;X&quot; &amp;&amp; $lineSemantic.incomingTraces[sourceElement==$columnSemantic].nSize()==0%>">
+            <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:arg0 = 'X' and lineSemantic.incomingTraces->select(incomingTrace | incomingTrace.sourceElement = columnSemantic)->size() = 0">
               <subModelOperations xsi:type="tool_1:CreateInstance" typeName="RequirementsTrace" referenceName="ownedTraces">
                 <subModelOperations xsi:type="tool_1:SetValue" featureName="sourceElement" valueExpression="aql:columnSemantic"/>
                 <subModelOperations xsi:type="tool_1:SetValue" featureName="targetElement" valueExpression="aql:lineSemantic"/>
