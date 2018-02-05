@@ -56,9 +56,8 @@ public void start(BundleContext context) throws Exception {
     SiriusEditPlugin.getPlugin().getPreferenceStore()
         .setValue(SiriusPreferencesKeys.PREF_EMPTY_AIRD_FRAGMENT_ON_CONTROL.name(), true);
 
-    // Deactivate by default Sirius scale option (Use 0 to have similar
-    // behavior as before).
-    SiriusEditPlugin.getPlugin().getPreferenceStore().setDefault(SiriusUIPreferencesKeys.PREF_SCALE_LEVEL_DIAGRAMS_ON_EXPORT.name(), 0);
+    // Set the default Sirius scale option (20%).
+    SiriusEditPlugin.getPlugin().getPreferenceStore().setDefault(SiriusUIPreferencesKeys.PREF_SCALE_LEVEL_DIAGRAMS_ON_EXPORT.name(), 2);
   }
 
   /**
