@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -35,6 +35,11 @@ import org.polarsys.capella.common.data.modellingcore.TraceableElement;
  */
 public class Transfo extends HashMap<String, Object> implements ITransfo {
 
+  /**
+   * Transfo tag to indicate whether the transfo modifies the model {@link Boolean#FALSE} or not {@link Boolean#FALSE}
+   */
+  public static final String DRY_RUN = "isDryRun"; //$NON-NLS-1$
+  
   private static String __cr = System.getProperty("line.separator"); //$NON-NLS-1$
 
   private static final String RULE_NAME_ID = "rulename"; //$NON-NLS-1$
@@ -366,5 +371,15 @@ public class Transfo extends HashMap<String, Object> implements ITransfo {
     }
 
     return builder.toString();
+  }
+
+  @Override
+  public boolean isDryRun() {
+    return containsKey(DRY_RUN) && get(DRY_RUN) == Boolean.TRUE;
+  }
+
+  @Override
+  public void setDryRun(boolean dryRun) {
+    put(DRY_RUN, dryRun);
   }
 }
