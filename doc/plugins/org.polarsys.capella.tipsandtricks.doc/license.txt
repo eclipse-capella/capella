@@ -11,6 +11,7 @@ org.polarsys.capella.tipsandtricks.doc\html\Images
 error.gif
 InfoIcon.png
 Tips1.png
+TipsCopyNote.png
 Tips10.png
 Tips11.png
 Tips12.png
