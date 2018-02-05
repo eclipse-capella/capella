@@ -9,8 +9,9 @@ You can '''export a diagram to an image file'''. In order to do that right-click
 
 You can:
 
-* Select the repository to export it,
-* Choose the format among JPG, PNG, SVG, BMP, GIF.
+* Select the export location
+* Choose the format among JPG, PNG, SVG, BMP, GIF
+* Choose the quality of the exported image (image size)
 * Export it to HTML Format
 
 ==Batch Image Export==
@@ -25,9 +26,18 @@ In order to do that; right-click on your representations file (aird file) then c
 
 You can:
 
-* Select the repository to export them,
-* Choose the format among JPG, PNG, SVG, BMP, GIF.
+* Select the export location
+* Choose the format among JPG, PNG, SVG, BMP, GIF
+* Choose the quality of the exported image (image size)
 * Export it to HTML Format
+
+'''Note''': The export performance will decrease and will take more time the more you increase the image size.
+
+==Set Export Image Size as Preference==
+
+In the '''Sirius > Sirius Diagram''' preference page, you can set the size of the exported images as a preference so that this size will be used for all your export.
+
+[[Image:../../Images/export_image_pref.png]]
 
 ==Print Area Preview==
 
@@ -35,4 +45,4 @@ Before sending a diagram to a printer, it can be interesting to arrange the elem
 
 [[File:../../Images/Tips69.png|thumbnail|600px|]]
 
-Note: Use the same command to hide the page breaks displayed on the diagram.
+'''Note''': Use the same command to hide the page breaks displayed on the diagram.

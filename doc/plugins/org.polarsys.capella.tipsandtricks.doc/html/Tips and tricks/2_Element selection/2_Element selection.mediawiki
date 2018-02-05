@@ -14,6 +14,12 @@ That's why, two selection modes are available with the mouse cursor:
 [[File:../../Images/Tips2.png|thumbnail|800px|Figure 2: Cursor selection from the right to the left]]
 
 
+==Selection with ALT + Continuous Mouse Click==
+
+In a diagram containing multiple hierarchical components equipped with border nodes (PAB, LAB, SAB, SDFB ...), the user can select elements using continuous left mouse button click, but it's not easy to select multiple inner components without selecting the parent, even more difficult when the diagram's white background is not displayed due to a zoom.
+In that case, use Alt + continuous left mouse click to select elements without selecting the element behind the first click.
+
+Same behavior of the mouse selection from '''Right to Left''' and '''Left to Right''' will be applied with the Alt button.
 
 ==Connectors Selection==
 
