@@ -11,6 +11,7 @@ You can:
 
 * Select the repository to export it,
 * Choose the format among JPG, PNG, SVG, BMP, GIF.
+* Choose the quality of the exported image (image size)
 * Export it to HTML Format
 
 ==Batch Image Export==
@@ -27,6 +28,7 @@ You can:
 
 * Select the repository to export them,
 * Choose the format among JPG, PNG, SVG, BMP, GIF.
+* Choose the quality of the exported image (image size)
 * Export it to HTML Format
 
 ==Print Area Preview==
