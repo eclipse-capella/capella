@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,17 +11,7 @@
 package org.polarsys.capella.test.diagram.tools.ju.diagram.actions;
 
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.diagram.DDiagramElement;
-import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
-import org.polarsys.capella.common.helpers.TransactionHelper;
-import org.polarsys.capella.core.libraries.model.ICapellaModel;
-import org.polarsys.capella.core.libraries.utils.ScopeModelWrapper;
-import org.polarsys.capella.core.model.helpers.BlockArchitectureExt.Type;
-import org.polarsys.capella.shared.id.handler.IScope;
-import org.polarsys.capella.shared.id.handler.IdManager;
 import org.polarsys.capella.test.diagram.common.ju.api.AbstractDiagramTestCase;
-import org.polarsys.capella.test.diagram.common.ju.context.XABDiagram;
-import org.polarsys.capella.test.framework.context.SessionContext;
 import org.polarsys.capella.test.framework.helpers.GuiActions;
 
 import junit.framework.Test;
@@ -42,24 +32,7 @@ public class RefreshAllSubRepresentations extends AbstractDiagramTestCase {
   @Override
   public void test() throws Exception {
     Session session = getSessionForTestModel(getRequiredTestModel());
-    SessionContext context = new SessionContext(session);
-    
-    final XABDiagram xab = XABDiagram.openDiagram(context, PAB_DIAGRAM, Type.PA);
-    
-    ICapellaModel model = getTestModel(getRequiredTestModel());
-    IScope scope = new ScopeModelWrapper(model);
-    final DDiagramElement pc2View = xab.getView(IdManager.getInstance().getEObject(PC_2, scope));
-    
-    TransactionHelper.getExecutionManager(IdManager.getInstance().getEObject(PC_2, scope)).execute(new AbstractReadWriteCommand() {
-      @Override
-      public void run() {
-        xab.getDiagram().getOwnedDiagramElements().remove(pc2View);
-      }
-    });
-    
     GuiActions.refreshAllSubRepresentations(getAirdFileForLoadedModel(getRequiredTestModel()), session);
-    GuiActions.flushASyncGuiThread();
-    xab.hasView(PC_2);
   }
 
   public static Test suite() {

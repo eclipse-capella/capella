@@ -66,8 +66,8 @@ public class RemoveHiddenElementsHandler extends AbstractDiagramCommandHandler {
     // Is there a representation to process ?
     if (representationsToRefresh.isEmpty()) {
       // No representation -> processing is over.
-      MessageDialog.openInformation(PlatformUI.getWorkbench().getDisplay().getActiveShell(), Messages.RefreshDiagramsCommandHandler_NoDiagramDialog_Title,
-          Messages.RefreshDiagramsCommandHandler_NoDiagramDialog_Text);
+      MessageDialog.openInformation(PlatformUI.getWorkbench().getDisplay().getActiveShell(), Messages.RemoveHiddenElementsHandler_ConfirmRefreshDialog_Title,
+          Messages.RemoveHiddenElementsHandler_NoDiagramDialog_Text);
       return null;
     }
     // Ask user confirmation.
