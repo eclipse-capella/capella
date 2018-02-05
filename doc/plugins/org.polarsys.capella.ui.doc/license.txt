@@ -172,54 +172,6 @@ logo_capella_big.png
 5.5. Creation of Functional Chains and Physical Paths_html_m447a782f.png
 5.5. Creation of Functional Chains and Physical Paths_html_m5845eb00.png
 5.5. Creation of Functional Chains and Physical Paths_html_mdab6cc9.png
-5.6. Diagrams Tips and Tricks_html_114912fa.png
-5.6. Diagrams Tips and Tricks_html_13b01b21.png
-5.6. Diagrams Tips and Tricks_html_277295ca.gif
-5.6. Diagrams Tips and Tricks_html_38b9a3a9.png
-5.6. Diagrams Tips and Tricks_html_3c70f94e.gif
-5.6. Diagrams Tips and Tricks_html_3dedd8b1.png
-5.6. Diagrams Tips and Tricks_html_4387d6d2.png
-5.6. Diagrams Tips and Tricks_html_45a14775.png
-5.6. Diagrams Tips and Tricks_html_47f32841.gif
-5.6. Diagrams Tips and Tricks_html_4a5941a0.png
-5.6. Diagrams Tips and Tricks_html_51b05f77.png
-5.6. Diagrams Tips and Tricks_html_5c4b92b6.png
-5.6. Diagrams Tips and Tricks_html_5ce27242.png
-5.6. Diagrams Tips and Tricks_html_5e595306.png
-5.6. Diagrams Tips and Tricks_html_6e4109f3.png
-5.6. Diagrams Tips and Tricks_html_6f217e35.gif
-5.6. Diagrams Tips and Tricks_html_740f48ce.png
-5.6. Diagrams Tips and Tricks_html_77868a11.png
-5.6. Diagrams Tips and Tricks_html_79d54579.gif
-5.6. Diagrams Tips and Tricks_html_a38ed9a.png
-5.6. Diagrams Tips and Tricks_html_m10775b3b.png
-5.6. Diagrams Tips and Tricks_html_m1cfa7de5.gif
-5.6. Diagrams Tips and Tricks_html_m215c821.png
-5.6. Diagrams Tips and Tricks_html_m217db488.gif
-5.6. Diagrams Tips and Tricks_html_m262394d3.png
-5.6. Diagrams Tips and Tricks_html_m275755e7.gif
-5.6. Diagrams Tips and Tricks_html_m2d5cddf5.png
-5.6. Diagrams Tips and Tricks_html_m3a4a06e5.gif
-5.6. Diagrams Tips and Tricks_html_m3d5aebbe.png
-5.6. Diagrams Tips and Tricks_html_m4b0b0804.png
-5.6. Diagrams Tips and Tricks_html_m5505d461.gif
-5.6. Diagrams Tips and Tricks_html_m5bd4aef6.png
-5.6. Diagrams Tips and Tricks_html_m6d14d040.png
-5.6. Diagrams Tips and Tricks_html_m72f203f0.png
-5.6. Diagrams Tips and Tricks_html_m7613115c.png
-5.6. Diagrams Tips and Tricks_html_m76e8132a.png
-5.6. Diagrams Tips and Tricks_html_m7899e751.gif
-5.6. Diagrams Tips and Tricks_html_m7dd84077.png
-5.6. Diagrams Tips and Tricks_html_mec122fe.png
-5.6. Diagrams Tips and Tricks_html_3db61b22.gif
-5.6. Diagrams Tips and Tricks_html_13847806.png
-5.6. Diagrams Tips and Tricks_html_m5d8456b3.png
-5.6. Diagrams Tips and Tricks_html_m4cfc019f.png
-5.6. Diagrams Tips and Tricks_html_76539433.png
-5.6. Diagrams Tips and Tricks_html_418ed8e3.png
-5.6. Diagrams Tips and Tricks_html_67b668f.png
-5.6. Diagrams Tips and Tricks_html_6d5f4ebe.png
-5.6. Diagrams Tips and Tricks_html_71e66c70.png
 AllocatingFunctions_AllocatedFunctionReference.png
 AllocatingFunctions_FunctionalBreakdown.png
 AllocatingFunctions_FunctionAllocatedOnComponents.png

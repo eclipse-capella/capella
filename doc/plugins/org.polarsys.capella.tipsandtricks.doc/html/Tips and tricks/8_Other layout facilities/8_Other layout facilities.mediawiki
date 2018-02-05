@@ -67,3 +67,12 @@ It is a new preference added in '''Sirius > Sirius Diagram > Connections''':
 When you '''select an edge or a label''', graphical link appears between them:
 [[File:../../Images/Tips75.png|thumbnail|700px|]]
 
+
+==Copy Paste Of Notes==
+ 
+To quickly copy paste Notes on a diagram, '''click on CTRL and move the Notes''': new Notes are created.
+
+[[File:../../Images/TipsCopyNote.png|thumbnail|800px|]]
+ 
+<br>
+<br>
