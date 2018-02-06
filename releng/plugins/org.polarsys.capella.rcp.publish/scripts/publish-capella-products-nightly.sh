@@ -67,8 +67,8 @@ export BUILD_TYPE_PREFIX="N"
 echo "Cmd line : mkdir -p $TARGET_DIR_PRODUCT"
 mkdir -p "$TARGET_DIR_PRODUCT"
 # The actual publication of products
-echo "Cmd line : cp -dR "$WORKSPACE/$PRODUCTS_FOLDER/"capella-*.zip $TARGET_DIR_PRODUCT"
-cp -dR "$WORKSPACE/$PRODUCTS_FOLDER/"capella-*.zip "$TARGET_DIR_PRODUCT"
+echo "Cmd line : mv -f "$WORKSPACE/$PRODUCTS_FOLDER/"capella-*.zip $TARGET_DIR_PRODUCT"
+mv -f "$WORKSPACE/$PRODUCTS_FOLDER/"capella-*.zip "$TARGET_DIR_PRODUCT"
 
 # Manifest file
 MANIFEST_NAME="Manifest$COMPONENT_NAME.txt"
