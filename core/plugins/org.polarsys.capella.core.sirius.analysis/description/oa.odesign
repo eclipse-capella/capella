@@ -63,7 +63,7 @@
         </create>
       </intersection>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_2:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer']" name="Operational Entity Breakdown" titleExpression="[OEBD] &lt;%current.name%>" domainClass="Component" preconditionExpression="aql:(self.oclIsKindOf(oa::Entity) and not (self.oclIsKindOf(oa::OperationalActor))) or self.oclIsKindOf(oa::OperationalContext) or self.oclIsKindOf(oa::EntityPkg)">
+    <ownedRepresentations xsi:type="description_2:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer']" name="Operational Entity Breakdown" titleExpression="aql:'[OEBD] ' + self.name" domainClass="Component" preconditionExpression="aql:(self.oclIsKindOf(oa::Entity) and not (self.oclIsKindOf(oa::OperationalActor))) or self.oclIsKindOf(oa::OperationalContext) or self.oclIsKindOf(oa::EntityPkg)">
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.activity.gen/model/Activity.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.behavior.gen/model/Behavior.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CompositeStructure.ecore#/"/>
@@ -275,7 +275,7 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_2:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='DnD%20DF%20AbstractFunction'] //@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20OperationalActivity%20From%20Project%20Explorer'] //@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer']" name="Operational Activity Interaction Blank" titleExpression="[OAIB] &lt;%current.name%>" domainClass="AbstractFunctionalChainContainer" preconditionExpression="aql:self.oclIsKindOf(oa::OperationalActivity) or self.oclIsKindOf(oa::OperationalCapability)">
+    <ownedRepresentations xsi:type="description_2:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='DnD%20DF%20AbstractFunction'] //@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20OperationalActivity%20From%20Project%20Explorer'] //@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer']" name="Operational Activity Interaction Blank" titleExpression="aql:'[OAIB] ' + self.name" domainClass="AbstractFunctionalChainContainer" preconditionExpression="aql:self.oclIsKindOf(oa::OperationalActivity) or self.oclIsKindOf(oa::OperationalCapability)">
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.activity.gen/model/Activity.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.behavior.gen/model/Behavior.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CompositeStructure.ecore#/"/>
@@ -726,7 +726,7 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_2:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Entities%20From%20Project%20Explorer'] //@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer'] //@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='DnD%20Entitiy']" name="Operational Entity Blank" label="Operational Architecture Blank" titleExpression="[OAB] &lt;%current.name%>" domainClass="Component" preconditionExpression="aql:self.oclIsKindOf(oa::Entity) or self.oclIsKindOf(oa::OperationalContext) or self.oclIsKindOf(oa::EntityPkg)">
+    <ownedRepresentations xsi:type="description_2:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Entities%20From%20Project%20Explorer'] //@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer'] //@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='DnD%20Entitiy']" name="Operational Entity Blank" label="Operational Architecture Blank" titleExpression="aql:'[OAB] ' + self.name" domainClass="Component" preconditionExpression="aql:self.oclIsKindOf(oa::Entity) or self.oclIsKindOf(oa::OperationalContext) or self.oclIsKindOf(oa::EntityPkg)">
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.activity.gen/model/Activity.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.behavior.gen/model/Behavior.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CompositeStructure.ecore#/"/>
@@ -1767,7 +1767,7 @@
         </customization>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_2:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer']" name="Operational Activity Breakdown" titleExpression="[OABD] &lt;%current.name%>" domainClass="OperationalActivity">
+    <ownedRepresentations xsi:type="description_2:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer']" name="Operational Activity Breakdown" titleExpression="aql:'[OABD] ' + self.name" domainClass="OperationalActivity">
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/LogicalArchitecture.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.activity.gen/model/Activity.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.behavior.gen/model/Behavior.ecore#/"/>
@@ -1958,7 +1958,7 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_2:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Role%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer'] //@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Role%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Role%20From%20Project%20Explorer']" name="Operational Role Blank" titleExpression="[ORB] &lt;%current.name%>" domainClass="Component" preconditionExpression="aql:(self.oclIsKindOf(oa::Entity) and not (self.oclIsKindOf(oa::OperationalActor))) or self.oclIsKindOf(oa::OperationalContext) or self.oclIsKindOf(oa::EntityPkg)">
+    <ownedRepresentations xsi:type="description_2:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Role%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer'] //@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Role%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Role%20From%20Project%20Explorer']" name="Operational Role Blank" titleExpression="aql:'[ORB] ' + self.name" domainClass="Component" preconditionExpression="aql:(self.oclIsKindOf(oa::Entity) and not (self.oclIsKindOf(oa::OperationalActor))) or self.oclIsKindOf(oa::OperationalContext) or self.oclIsKindOf(oa::EntityPkg)">
       <filters xsi:type="filter:CompositeFilterDescription" name="Hide Allocated Interactions">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Role%20Blank']/@defaultLayer/@edgeMappings[name='ORB%20Interaction']" semanticConditionExpression="aql:self.hideAllocatedInteractions()"/>
       </filters>
@@ -4890,7 +4890,7 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_2:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Process%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='Dnd%20Function'] //@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Process%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer']" name="Operational Process Description" titleExpression="[OPD] &lt;%current.name%>" domainClass="OperationalProcess">
+    <ownedRepresentations xsi:type="description_2:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Process%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='Dnd%20Function'] //@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Process%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer']" name="Operational Process Description" titleExpression="aql:'[OPD] ' + self.name" domainClass="OperationalProcess">
       <layout xsi:type="description_2:CompositeLayout" direction="LeftToRight"/>
       <defaultLayer name="Default">
         <reusedMappings xsi:type="description_2:NodeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@nodeMappings[name='FC_AbstractFunction']"/>
@@ -5022,7 +5022,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:DiagramCreationDescription" name="Operational Process Description" precondition="aql:self.isInLib()" titleExpression="[OPD] &lt;%current.name%>" diagramDescription="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Process%20Description']">
+          <ownedTools xsi:type="tool_1:DiagramCreationDescription" name="Operational Process Description" precondition="aql:self.isInLib()" titleExpression="aql:'[OPD] ' + self.name" diagramDescription="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Process%20Description']">
             <initialOperation/>
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
@@ -5124,7 +5124,7 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_2:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Entities%20From%20Project%20Explorer'] //@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Capabilities%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer'] //@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Capabilities%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Operational%20Capabilities%20From%20Project%20Explorer'] //@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Capabilities%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Entities%20From%20Project%20Explorer']" name="Operational Capabilities Blank" label="Operational Capabilities Blank" titleExpression="[OCB] &lt;%current.name%>" domainClass="OperationalCapabilityPkg">
+    <ownedRepresentations xsi:type="description_2:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Entities%20From%20Project%20Explorer'] //@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Capabilities%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer'] //@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Capabilities%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Operational%20Capabilities%20From%20Project%20Explorer'] //@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Capabilities%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Entities%20From%20Project%20Explorer']" name="Operational Capabilities Blank" label="Operational Capabilities Blank" titleExpression="aql:'[OCB] ' + self.name" domainClass="OperationalCapabilityPkg">
       <filters xsi:type="filter:CompositeFilterDescription" name="Hide Communication Means">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Capabilities%20Blank']/@defaultLayer/@edgeMappings[name='COC_CommunicationMeans']"/>
       </filters>
@@ -5553,7 +5553,7 @@
         </create>
       </intersection>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_2:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Contextual%20Operational%20Capability']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Entities%20From%20Project%20Explorer'] //@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Contextual%20Operational%20Capability']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer'] //@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Contextual%20Operational%20Capability']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Operational%20Capabilities%20From%20Project%20Explorer']" name="Contextual Operational Capability" titleExpression="[COC] &lt;%current.name%>" domainClass="OperationalCapability">
+    <ownedRepresentations xsi:type="description_2:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Contextual%20Operational%20Capability']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Entities%20From%20Project%20Explorer'] //@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Contextual%20Operational%20Capability']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer'] //@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Contextual%20Operational%20Capability']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Operational%20Capabilities%20From%20Project%20Explorer']" name="Contextual Operational Capability" titleExpression="aql:'[COC] ' + self.name" domainClass="OperationalCapability">
       <filters xsi:type="filter:CompositeFilterDescription" name="Hide Entities">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Contextual%20Operational%20Capability']/@defaultLayer/@containerMappings[name='COC2_Entities']"/>
       </filters>
@@ -5885,7 +5885,7 @@
               </initialOperation>
             </tools>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:DiagramCreationDescription" name="Contextual Operational Capabilty" titleExpression="[COC] &lt;%current.name%>" diagramDescription="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Contextual%20Operational%20Capability']">
+          <ownedTools xsi:type="tool_1:DiagramCreationDescription" name="Contextual Operational Capabilty" titleExpression="aql:'[COC] ' + self.name" diagramDescription="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Contextual%20Operational%20Capability']">
             <initialOperation/>
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>

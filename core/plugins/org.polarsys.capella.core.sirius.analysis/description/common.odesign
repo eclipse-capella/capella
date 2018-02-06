@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ASCII"?>
 <description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0" xmlns:description_3="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_2="http://www.eclipse.org/sirius/diagram/sequence/description/tool/2.0.0" name="General" version="12.0.0.2017041100">
   <ownedViewpoints name="Common" modelFileExtension="melodymodeller" icon="">
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraint%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20ModeState%20from%20Diagram'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20ModeState%20From%20Project%20Explorer']" name="Modes &amp; States" label="Modes and States [DEPRECATED]" titleExpression="[M&amp;S] &lt;%current.name%>" domainClass="Region">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraint%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20ModeState%20from%20Diagram'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20ModeState%20From%20Project%20Explorer']" name="Modes &amp; States" label="Modes and States [DEPRECATED]" titleExpression="aql:'[M&amp;S] ' + self.name" domainClass="Region">
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaModeller.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.activity.gen/model/Activity.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.behavior.gen/model/Behavior.ecore#/"/>
@@ -704,7 +704,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" name="SM_CreateDiag_ModeStateMachine" label="Mode State Machine Diagram" precondition="aql:self.isInLib()" titleExpression="[MSM] &lt;%current.name%>" browseExpression="aql:self->filter(capellacommon::State).ownedRegions->first()" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="SM_CreateDiag_ModeStateMachine" label="Mode State Machine Diagram" precondition="aql:self.isInLib()" titleExpression="aql:'[MSM] ' + self.name" browseExpression="aql:self->filter(capellacommon::State).ownedRegions->first()" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']">
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:containerView.target">
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.ownedRegions->size() = 0">
@@ -717,7 +717,7 @@
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" name="SM_CreateDiag_ModesAndStates" label="Modes and States [DEPRECATED]" precondition="aql:self.isInLib()" titleExpression="[M&amp;S] &lt;%current.name%>" browseExpression="aql:self->filter(capellacommon::State).ownedRegions->first()" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="SM_CreateDiag_ModesAndStates" label="Modes and States [DEPRECATED]" precondition="aql:self.isInLib()" titleExpression="aql:'[M&amp;S] ' + self.name" browseExpression="aql:self->filter(capellacommon::State).ownedRegions->first()" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']">
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:containerView.target">
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.ownedRegions->size() = 0">
@@ -881,7 +881,7 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraint%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20ModeState%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20ModeState%20from%20Diagram']" name="Mode State Machine" label="Mode State Machine" titleExpression="[MSM] &lt;%current.name%>" domainClass="Region">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraint%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20ModeState%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20ModeState%20from%20Diagram']" name="Mode State Machine" label="Mode State Machine" titleExpression="aql:'[MSM] ' + self.name" domainClass="Region">
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaModeller.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.activity.gen/model/Activity.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.behavior.gen/model/Behavior.ecore#/"/>
@@ -1507,7 +1507,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" name="SM_CreateDiag_ModeStateMachine" label="Mode State Machine Diagram" precondition="aql:self.isInLib()" titleExpression="[MSM] &lt;%current.name%>" browseExpression="aql:self->filter(capellacommon::State).ownedRegions->first()" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="SM_CreateDiag_ModeStateMachine" label="Mode State Machine Diagram" precondition="aql:self.isInLib()" titleExpression="aql:'[MSM] ' + self.name" browseExpression="aql:self->filter(capellacommon::State).ownedRegions->first()" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']">
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:containerView.target">
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.ownedRegions->size() = 0">
@@ -1703,7 +1703,7 @@
         </customization>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Class%20Into%20DataPkg'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@additionalLayers[name='Communication%20Model']/@toolSections.0/@ownedTools[name='AbstractExchangeItem%20Into%20AbstractExchangeItemPkg'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Class%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20DataType%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='DataType%20Into%20DataPkg'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@additionalLayers[name='Communication%20Model']/@toolSections.0/@ownedTools[name='D%26D%20Interface%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@additionalLayers[name='Communication%20Model']/@toolSections.0/@ownedTools[name='Interface%20Into%20InterfacePkg'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Enumeration%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Collection%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Collection%20Into%20DataPkg'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='DataPkg%20Into%20DataPkg'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@additionalLayers[name='Communication%20Model']/@toolSections.0/@ownedTools[name='InterfacePkg%20Into%20InterfacePkg'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20BooleanType%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20DataPkg%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@additionalLayers[name='Communication%20Model']/@toolSections.0/@ownedTools[name='D%26D%20InterfacePkg%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@additionalLayers[name='Communication%20Model']/@toolSections.0/@ownedTools[name='D%26D%20ExchangeItem%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20DataValue%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='DataValue%20Into%20DataPkg'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Unit%20from%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Unit%20Into%20DataPkg'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraint%20From%20Project%20Explorer']" name="Class Diagram Blank" titleExpression="[CDB] &lt;%current.name%>" domainClass="DataPkg" defaultConcern="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@concerns/@ownedConcernDescriptions.0">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Class%20Into%20DataPkg'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@additionalLayers[name='Communication%20Model']/@toolSections.0/@ownedTools[name='AbstractExchangeItem%20Into%20AbstractExchangeItemPkg'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Class%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20DataType%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='DataType%20Into%20DataPkg'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@additionalLayers[name='Communication%20Model']/@toolSections.0/@ownedTools[name='D%26D%20Interface%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@additionalLayers[name='Communication%20Model']/@toolSections.0/@ownedTools[name='Interface%20Into%20InterfacePkg'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Enumeration%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Collection%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Collection%20Into%20DataPkg'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='DataPkg%20Into%20DataPkg'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@additionalLayers[name='Communication%20Model']/@toolSections.0/@ownedTools[name='InterfacePkg%20Into%20InterfacePkg'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20BooleanType%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20DataPkg%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@additionalLayers[name='Communication%20Model']/@toolSections.0/@ownedTools[name='D%26D%20InterfacePkg%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@additionalLayers[name='Communication%20Model']/@toolSections.0/@ownedTools[name='D%26D%20ExchangeItem%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20DataValue%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='DataValue%20Into%20DataPkg'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Unit%20from%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Unit%20Into%20DataPkg'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraint%20From%20Project%20Explorer']" name="Class Diagram Blank" titleExpression="aql:'[CDB] ' + self.name" domainClass="DataPkg" defaultConcern="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@concerns/@ownedConcernDescriptions.0">
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaModeller.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.activity.gen/model/Activity.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.behavior.gen/model/Behavior.ecore#/"/>
@@ -4496,13 +4496,13 @@
             <representationNameVariable name="diagramName"/>
             <tableDescription xsi:type="description_3:CrossTableDescription" href="EPBS.odesign#//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20-%20Physical%20Artifacts']"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Logical Data Flow Blank" label="" precondition="aql:self.eContainerOrSelf(la::LogicalArchitecture)->size() != 0 and self.isInLib()" titleExpression="[LDFB] &lt;%current.name%>">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Logical Data Flow Blank" label="" precondition="aql:self.eContainerOrSelf(la::LogicalArchitecture)->size() != 0 and self.isInLib()" titleExpression="aql:'[LDFB] ' + self.name">
             <initialOperation/>
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
             <diagramDescription href="logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Logical Function Breakdown" precondition="aql:self.isInLib()" titleExpression="[LFBD] &lt;%current.name%>">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Logical Function Breakdown" precondition="aql:self.isInLib()" titleExpression="aql:'[LFBD] ' + self.name">
             <initialOperation/>
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
@@ -4518,13 +4518,13 @@
             <representationNameVariable name="tableName"/>
             <tableDescription xsi:type="description_3:CrossTableDescription" href="logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Actor%20-%20Context%20Actor']"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Physical Data Flow Blank" precondition="aql:self.eContainerOrSelf(pa::PhysicalArchitecture)->size() != 0 and self.isInLib()" titleExpression="[PDFB] &lt;%current.name%>">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Physical Data Flow Blank" precondition="aql:self.eContainerOrSelf(pa::PhysicalArchitecture)->size() != 0 and self.isInLib()" titleExpression="aql:'[PDFB] ' + self.name">
             <initialOperation/>
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
             <diagramDescription href="physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Data%20Flow%20Blank']"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Physical Function Breakdown" precondition="aql:self.isInLib()" titleExpression="[PFBD] &lt;%current.name%>">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Physical Function Breakdown" precondition="aql:self.isInLib()" titleExpression="aql:'[PFBD] ' + self.name">
             <initialOperation/>
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
@@ -4540,66 +4540,66 @@
             <representationNameVariable name="tableName"/>
             <tableDescription xsi:type="description_3:CrossTableDescription" href="physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Actor%20-%20Logical%20Actor']"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" name="System Data Flow Blank" precondition="aql:self.isInLib()" titleExpression="[SDFB] &lt;%current.name%>">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="System Data Flow Blank" precondition="aql:self.isInLib()" titleExpression="aql:'[SDFB] ' + self.name">
             <initialOperation/>
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
             <diagramDescription href="context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" name="System Function Breakdown" precondition="aql:self.isInLib()" titleExpression="[SFBD] &lt;%current.name%>">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="System Function Breakdown" precondition="aql:self.isInLib()" titleExpression="aql:'[SFBD] ' + self.name">
             <initialOperation/>
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
             <diagramDescription href="context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Mission Capability Blank" precondition="aql:self.isInLib()" titleExpression="[MCB] &lt;%current.name%>">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Mission Capability Blank" precondition="aql:self.isInLib()" titleExpression="aql:'[MCB] ' + self.name">
             <initialOperation/>
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
             <diagramDescription href="context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Mission Blank" precondition="aql:self.isInLib()" titleExpression="[MB] &lt;%current.name%>">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Mission Blank" precondition="aql:self.isInLib()" titleExpression="aql:'[MB] ' + self.name">
             <initialOperation/>
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
             <diagramDescription href="context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Operational Activity Breakdown" precondition="aql:self.isInLib()" titleExpression="[OABD] &lt;%current.name%>">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Operational Activity Breakdown" precondition="aql:self.isInLib()" titleExpression="aql:'[OABD] ' + self.name">
             <initialOperation/>
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
             <diagramDescription href="oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Breakdown']"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Operational Entity Breakdown" precondition="aql:self.isInLib()" titleExpression="[OEBD] &lt;%current.name%>">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Operational Entity Breakdown" precondition="aql:self.isInLib()" titleExpression="aql:'[OEBD] ' + self.name">
             <initialOperation/>
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
             <diagramDescription href="oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Operational Activity Interaction Blank" precondition="aql:self.isInLib()" titleExpression="[OAIB] &lt;%current.name%>">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Operational Activity Interaction Blank" precondition="aql:self.isInLib()" titleExpression="aql:'[OAIB] ' + self.name">
             <initialOperation/>
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
             <diagramDescription href="oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Operational Entity Blank" label="Operational Architecture Blank" precondition="aql:self.isInLib()" titleExpression="[OAB] &lt;%current.name%>">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Operational Entity Blank" label="Operational Architecture Blank" precondition="aql:self.isInLib()" titleExpression="aql:'[OAB] ' + self.name">
             <initialOperation/>
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
             <diagramDescription href="oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Operational Role Blank" precondition="aql:self.isInLib()" titleExpression="[ORB] &lt;%current.name%>">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Operational Role Blank" precondition="aql:self.isInLib()" titleExpression="aql:'[ORB] ' + self.name">
             <initialOperation/>
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
             <diagramDescription href="oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Role%20Blank']"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Modes &amp;&amp; States" label="Modes and states" precondition="aql:self.isInLib()" titleExpression="[M&amp;S] &lt;%current.name%>" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Modes &amp;&amp; States" label="Modes and states" precondition="aql:self.isInLib()" titleExpression="aql:'[M&amp;S] ' + self.name" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']">
             <initialOperation/>
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Class Diagram Blank" precondition="aql:self.isInLib()" titleExpression="[CDB] &lt;%current.name%>" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Class Diagram Blank" precondition="aql:self.isInLib()" titleExpression="aql:'[CDB] ' + self.name" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']">
             <initialOperation/>
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
@@ -4670,7 +4670,7 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='InterfaceDrop%20from%20Model'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='Allocation%20ExchangeItem%20from%20Diagram'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='Allocation%20ExchangeItem%20from%20Model'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraint%20From%20Project%20Explorer']" name="Contextual Component Detailed Interfaces" titleExpression="[CDI] &lt;%current.name%>" domainClass="Component" preconditionExpression="aql:self.getComponentType()->select(x | x->filter(la::LogicalComponent)->size() > 0 or x->filter(pa::PhysicalComponent)->size() > 0 or x->filter(ctx::System)->size() > 0 or x->filter(ctx::Actor)->size() > 0 or x->filter(la::LogicalActor)->size() > 0 or x->filter(pa::PhysicalActor)->size() > 0)->size() > 0" defaultConcern="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@concerns/@ownedConcernDescriptions.0">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='InterfaceDrop%20from%20Model'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='Allocation%20ExchangeItem%20from%20Diagram'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='Allocation%20ExchangeItem%20from%20Model'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraint%20From%20Project%20Explorer']" name="Contextual Component Detailed Interfaces" titleExpression="aql:'[CDI] ' + self.name" domainClass="Component" preconditionExpression="aql:self.getComponentType()->select(x | x->filter(la::LogicalComponent)->size() > 0 or x->filter(pa::PhysicalComponent)->size() > 0 or x->filter(ctx::System)->size() > 0 or x->filter(ctx::Actor)->size() > 0 or x->filter(la::LogicalActor)->size() > 0 or x->filter(pa::PhysicalActor)->size() > 0)->size() > 0" defaultConcern="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@concerns/@ownedConcernDescriptions.0">
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.activity.gen/model/Activity.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.behavior.gen/model/Behavior.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CompositeStructure.ecore#/"/>
@@ -5729,7 +5729,7 @@
               </initialOperation>
             </tools>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Contextual Component Detailed Interfaces" precondition="aql:self.isInLib() and self.getComponentType()->select(x | x->filter(la::LogicalComponent)->size() > 0 or x->filter(pa::PhysicalComponent)->size() > 0 or x->filter(ctx::System)->size() > 0 or x->filter(ctx::Actor)->size() > 0 or x->filter(la::LogicalActor)->size() > 0 or x->filter(pa::PhysicalActor)->size() > 0 or x->filter(epbs::ConfigurationItem)->size() > 0)->size() > 0" titleExpression="[CDI] &lt;%current.name%>" browseExpression="aql:self.getComponentType()" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Contextual Component Detailed Interfaces" precondition="aql:self.isInLib() and self.getComponentType()->select(x | x->filter(la::LogicalComponent)->size() > 0 or x->filter(pa::PhysicalComponent)->size() > 0 or x->filter(ctx::System)->size() > 0 or x->filter(ctx::Actor)->size() > 0 or x->filter(la::LogicalActor)->size() > 0 or x->filter(pa::PhysicalActor)->size() > 0 or x->filter(epbs::ConfigurationItem)->size() > 0)->size() > 0" titleExpression="aql:'[CDI] ' + self.name" browseExpression="aql:self.getComponentType()" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']">
             <initialOperation/>
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
@@ -6121,7 +6121,7 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='InterfaceDrop%20from%20Model'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='Allocation%20ExchangeItem%20from%20Model'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='Component%20from%20Model'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraint%20From%20Project%20Explorer']" name="Contextual Component External Interfaces" titleExpression="[CEI] &lt;%current.name%>" domainClass="Component" preconditionExpression="aql:self.getComponentType()->select(x | x->filter(la::LogicalComponent)->size() > 0 or x->filter(pa::PhysicalComponent)->size() > 0 or x->filter(ctx::System)->size() > 0 or x->filter(ctx::Actor)->size() > 0 or x->filter(la::LogicalActor)->size() > 0 or x->filter(pa::PhysicalActor)->size() > 0)->size() > 0" defaultConcern="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@concerns/@ownedConcernDescriptions.0">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='InterfaceDrop%20from%20Model'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='Allocation%20ExchangeItem%20from%20Model'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='Component%20from%20Model'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraint%20From%20Project%20Explorer']" name="Contextual Component External Interfaces" titleExpression="aql:'[CEI] ' + self.name" domainClass="Component" preconditionExpression="aql:self.getComponentType()->select(x | x->filter(la::LogicalComponent)->size() > 0 or x->filter(pa::PhysicalComponent)->size() > 0 or x->filter(ctx::System)->size() > 0 or x->filter(ctx::Actor)->size() > 0 or x->filter(la::LogicalActor)->size() > 0 or x->filter(pa::PhysicalActor)->size() > 0)->size() > 0" defaultConcern="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@concerns/@ownedConcernDescriptions.0">
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.activity.gen/model/Activity.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.behavior.gen/model/Behavior.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CompositeStructure.ecore#/"/>
@@ -7301,7 +7301,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Contextual Component External Interfaces" precondition="aql:self.isInLib() and self.getComponentType()->select(x | x->filter(la::LogicalComponent)->size() > 0 or x->filter(pa::PhysicalComponent)->size() > 0 or x->filter(ctx::System)->size() > 0 or x->filter(ctx::Actor)->size() > 0 or x->filter(la::LogicalActor)->size() > 0 or x->filter(pa::PhysicalActor)->size() > 0 or x->filter(epbs::ConfigurationItem)->size() > 0)->size() > 0" titleExpression="[CEI] &lt;%current.name%>" browseExpression="aql:self.getComponentType()" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Contextual Component External Interfaces" precondition="aql:self.isInLib() and self.getComponentType()->select(x | x->filter(la::LogicalComponent)->size() > 0 or x->filter(pa::PhysicalComponent)->size() > 0 or x->filter(ctx::System)->size() > 0 or x->filter(ctx::Actor)->size() > 0 or x->filter(la::LogicalActor)->size() > 0 or x->filter(pa::PhysicalActor)->size() > 0 or x->filter(epbs::ConfigurationItem)->size() > 0)->size() > 0" titleExpression="aql:'[CEI] ' + self.name" browseExpression="aql:self.getComponentType()" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']">
             <initialOperation/>
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
@@ -7688,7 +7688,7 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='Component%20from%20Model'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='Component%20from%20Diagram'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='Allocation%20ExchangeItem%20from%20Model'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='Allocation%20ExchangeItem%20from%20Diagram'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='InterfaceDrop%20from%20Model'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='InterfaceDrop%20from%20Diagram'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraint%20From%20Project%20Explorer']" name="Contextual Component Internal Interfaces" titleExpression="[CII] &lt;%current.name%>" domainClass="Component" preconditionExpression="aql:self.getComponentType()->select(x | x->filter(la::LogicalComponent)->size() > 0 or x->filter(pa::PhysicalComponent)->size() > 0)->size() > 0" defaultConcern="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@concerns/@ownedConcernDescriptions.0">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='Component%20from%20Model'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='Component%20from%20Diagram'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='Allocation%20ExchangeItem%20from%20Model'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='Allocation%20ExchangeItem%20from%20Diagram'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='InterfaceDrop%20from%20Model'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='InterfaceDrop%20from%20Diagram'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraint%20From%20Project%20Explorer']" name="Contextual Component Internal Interfaces" titleExpression="aql:'[CII] ' + self.name" domainClass="Component" preconditionExpression="aql:self.getComponentType()->select(x | x->filter(la::LogicalComponent)->size() > 0 or x->filter(pa::PhysicalComponent)->size() > 0)->size() > 0" defaultConcern="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@concerns/@ownedConcernDescriptions.0">
       <filters xsi:type="filter:CompositeFilterDescription" name="Hide Interfaces">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@nodeMappings[name='CCII_Interface']"/>
       </filters>
@@ -8815,7 +8815,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Contextual Component Internal Interfaces" precondition="aql:self.isInLib() and self.getComponentType()->select(x | x->filter(la::LogicalComponent)->size() > 0 or x->filter(pa::PhysicalComponent)->size() > 0)->size() > 0" titleExpression="[CII] &lt;%current.name%>" browseExpression="aql:self.getComponentType()" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Contextual Component Internal Interfaces" precondition="aql:self.isInLib() and self.getComponentType()->select(x | x->filter(la::LogicalComponent)->size() > 0 or x->filter(pa::PhysicalComponent)->size() > 0)->size() > 0" titleExpression="aql:'[CII] ' + self.name" browseExpression="aql:self.getComponentType()" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']">
             <initialOperation/>
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
@@ -9235,7 +9235,7 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='InterfaceDrop%20from%20Model'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='InterfaceDrop%20from%20Diagram'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Allocation%20ExchangeItem%20from%20Diagram'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Component%20from%20Model'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Component%20from%20Diagram'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Allocation%20ExchangeItem%20from%20Model'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraint%20From%20Project%20Explorer']" name="Interfaces Diagram Blank" titleExpression="[IDB] &lt;%current.name%>" domainClass="Component" preconditionExpression="aql:self.getComponentType()->select(x | x->filter(la::LogicalComponent)->size() > 0 or x->filter(pa::PhysicalComponent)->size() > 0 or x->filter(ctx::System)->size() > 0 or x->filter(ctx::Actor)->size() > 0 or x->filter(la::LogicalActor)->size() > 0 or x->filter(pa::PhysicalActor)->size() > 0)->size() > 0" defaultConcern="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@concerns/@ownedConcernDescriptions.0">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='InterfaceDrop%20from%20Model'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='InterfaceDrop%20from%20Diagram'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Allocation%20ExchangeItem%20from%20Diagram'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Component%20from%20Model'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Component%20from%20Diagram'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Allocation%20ExchangeItem%20from%20Model'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraint%20From%20Project%20Explorer']" name="Interfaces Diagram Blank" titleExpression="aql:'[IDB] ' + self.name" domainClass="Component" preconditionExpression="aql:self.getComponentType()->select(x | x->filter(la::LogicalComponent)->size() > 0 or x->filter(pa::PhysicalComponent)->size() > 0 or x->filter(ctx::System)->size() > 0 or x->filter(ctx::Actor)->size() > 0 or x->filter(la::LogicalActor)->size() > 0 or x->filter(pa::PhysicalActor)->size() > 0)->size() > 0" defaultConcern="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@concerns/@ownedConcernDescriptions.0">
       <filters xsi:type="filter:CompositeFilterDescription" name="Hide Interface contents">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='IDB_Interface']/@subNodeMappings[name='IDB_Operation'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='IDB_Interface']/@subNodeMappings[name='IDB_Attribute']"/>
       </filters>
@@ -10986,7 +10986,7 @@
             </initialOperation>
             <edgeView name="edgeView"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Interfaces Diagram Blank" precondition="aql:self.isInLib()" titleExpression="[IDB] &lt;%current.name%>" browseExpression="aql:self.getComponentType()" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Interfaces Diagram Blank" precondition="aql:self.isInLib()" titleExpression="aql:'[IDB] ' + self.name" browseExpression="aql:self.getComponentType()" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']">
             <initialOperation/>
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
@@ -11388,7 +11388,7 @@
         </directEdit>
       </ownedColumnMappings>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraint%20From%20Project%20Explorer']" name="Contextual Capability Realization Involvement" titleExpression="[CRI] &lt;%current.name%>" domainClass="CapabilityRealization">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraint%20From%20Project%20Explorer']" name="Contextual Capability Realization Involvement" titleExpression="aql:'[CRI] ' + self.name" domainClass="CapabilityRealization">
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.activity.gen/model/Activity.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.behavior.gen/model/Behavior.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CompositeStructure.ecore#/"/>
@@ -11637,12 +11637,12 @@
             <containerVariable name="container"/>
             <representationNameVariable name="diagramName"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Contextual Capability Realization Involvement" precondition="aql:self.isInLib() and self.oclIsKindOf(la::CapabilityRealization)" titleExpression="[CII] &lt;%current.name%>" browseExpression="aql:self.getComponentType()" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Contextual Capability Realization Involvement" precondition="aql:self.isInLib() and self.oclIsKindOf(la::CapabilityRealization)" titleExpression="aql:'[CII] ' + self.name" browseExpression="aql:self.getComponentType()" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']">
             <initialOperation/>
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Capability Realization Refinement" precondition="aql:self.isInLib()" titleExpression="[CRR] &lt;%current.name%>">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Capability Realization Refinement" precondition="aql:self.isInLib()" titleExpression="aql:'[CRR] ' + self.name">
             <initialOperation/>
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
@@ -11657,7 +11657,7 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capability%20Realization%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Component%20from%20Model'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capability%20Realization%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Capabilities%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capability%20Realization%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraint%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capability%20Realization%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Component%20from%20Diagram']" name="Capability Realization Blank" titleExpression="[CRB] &lt;%current.name%>" domainClass="CapabilityRealizationPkg">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capability%20Realization%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Component%20from%20Model'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capability%20Realization%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Capabilities%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capability%20Realization%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraint%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capability%20Realization%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Component%20from%20Diagram']" name="Capability Realization Blank" titleExpression="aql:'[CRB] ' + self.name" domainClass="CapabilityRealizationPkg">
       <filters xsi:type="filter:CompositeFilterDescription" name="Hide Capability Realizations">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capability%20Realization%20Blank']/@defaultLayer/@nodeMappings[name='CRB%20CapabilityRealization']"/>
       </filters>
@@ -12415,7 +12415,7 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Package%20Dependencies']/@defaultLayer/@toolSections.0/@ownedTools[name='Allocate%20InterfacePkg%20from%20Model']" name="Package Dependencies" titleExpression="[PD] &lt;%current.name%>" domainClass="AbstractDependenciesPkg" preconditionExpression="">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Package%20Dependencies']/@defaultLayer/@toolSections.0/@ownedTools[name='Allocate%20InterfacePkg%20from%20Model']" name="Package Dependencies" titleExpression="aql:'[PD] ' + self.name" domainClass="AbstractDependenciesPkg" preconditionExpression="">
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.activity.gen/model/Activity.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.behavior.gen/model/Behavior.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CompositeStructure.ecore#/"/>
@@ -12506,7 +12506,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Package Dependencies" precondition="aql:self.isInLib()" titleExpression="[PD] &lt;%current.name%>" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Package%20Dependencies']">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Package Dependencies" precondition="aql:self.isInLib()" titleExpression="aql:'[PD] ' + self.name" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Package%20Dependencies']">
             <initialOperation/>
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
@@ -12592,8 +12592,8 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_3:CrossTableDescription" name="Interface Delegations" titleExpression="[ID] &lt;%current.name%>" preconditionExpression="aql:self.oclIsKindOf(la::LogicalComponent) or self.oclIsKindOf(pa::PhysicalComponent)" domainClass="Component">
-      <ownedRepresentationCreationDescriptions xsi:type="description_3:TableCreationDescription" name="Interface delegations" precondition="aql:self.oclIsKindOf(la::LogicalComponent) or self.oclIsKindOf(pa::PhysicalComponent)" titleExpression="[ID] &lt;%current.name%>" tableDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interface%20Delegations']">
+    <ownedRepresentations xsi:type="description_3:CrossTableDescription" name="Interface Delegations" titleExpression="aql:'[ID] ' + self.name" preconditionExpression="aql:self.oclIsKindOf(la::LogicalComponent) or self.oclIsKindOf(pa::PhysicalComponent)" domainClass="Component">
+      <ownedRepresentationCreationDescriptions xsi:type="description_3:TableCreationDescription" name="Interface delegations" precondition="aql:self.oclIsKindOf(la::LogicalComponent) or self.oclIsKindOf(pa::PhysicalComponent)" titleExpression="aql:'[ID] ' + self.name" tableDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interface%20Delegations']">
         <containerViewVariable name="containerView"/>
         <representationNameVariable name="tableName"/>
       </ownedRepresentationCreationDescriptions>
@@ -12601,7 +12601,7 @@
       <ownedColumnMappings name="TID column" headerLabelExpression="aql:self.getTIDInterfaceLabel()" domainClass="Interface" semanticCandidatesExpression="aql:viewpoint.target.getTIDInterfaces()"/>
       <intersection name="TID Cell Value" canEdit="false" lineMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interface%20Delegations']/@ownedLineMappings[name='TID%20line']" columnMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interface%20Delegations']/@ownedColumnMappings.0" labelExpression="aql:self.getTIDLabel(column,line)" columnFinderExpression="aql:self.getRelatedInterfaces()"/>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Interface Diagram" titleExpression="[ID] &lt;%current.name%>" domainClass="Interface">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Interface Diagram" titleExpression="aql:'[ID] ' + self.name" domainClass="Interface">
       <defaultLayer name="default IDB" reusedMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_ContrainedElements']">
         <containerMappings name="ID_Interface" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interface%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interface%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElement%20DirectEdit']" semanticCandidatesExpression="aql:self" domainClass="Interface" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interface%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Allocation%20ExchangeItem%20from%20Model']" childrenPresentation="List">
           <subNodeMappings name="ID_Attribute" preconditionExpression="aql:self.association = null" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interface%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interface%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElement%20DirectEdit']" semanticCandidatesExpression="feature:ownedFeatures" domainClass="Property">
@@ -13003,7 +13003,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Interface Diagram" precondition="aql:self.isInLib()" titleExpression="[ID] &lt;%current.name%>" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interface%20Diagram']">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Interface Diagram" precondition="aql:self.isInLib()" titleExpression="aql:'[ID] ' + self.name" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interface%20Diagram']">
             <initialOperation/>
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
@@ -18072,7 +18072,7 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='Dnd%20Function'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraint%20From%20Project%20Explorer']" name="Functional Chain Description" titleExpression="[&lt;%getFunctionalChainDiagramPrefix()%>] &lt;%current.name%>" domainClass="FunctionalChain" preconditionExpression="aql:not (self.oclIsKindOf(oa::OperationalProcess)) and self.isInLib()">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='Dnd%20Function'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraint%20From%20Project%20Explorer']" name="Functional Chain Description" titleExpression="aql:'[' + self.getFunctionalChainDiagramPrefix() + '] ' + self.name" domainClass="FunctionalChain" preconditionExpression="aql:not (self.oclIsKindOf(oa::OperationalProcess)) and self.isInLib()">
       <filters xsi:type="filter:CompositeFilterDescription" name="Show ExchangeItems">
         <filters xsi:type="filter:MappingFilter" filterKind="COLLAPSE" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@nodeMappings[name='hideSequenceLabelDF']"/>
       </filters>
@@ -18282,7 +18282,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Functional Chain Description" precondition="aql:self.isInLib()" titleExpression="[&lt;%getFunctionalChainDiagramPrefix()%>] &lt;%current.name%>" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Functional Chain Description" precondition="aql:self.isInLib()" titleExpression="aql:'[' + self.getFunctionalChainDiagramPrefix() + '] ' + self.name" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']">
             <initialOperation/>
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
