@@ -88,7 +88,6 @@ import org.eclipse.ui.IWorkbenchActionConstants;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.forms.widgets.Form;
-import org.eclipse.ui.forms.widgets.FormText;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.Section;
 import org.eclipse.ui.part.ViewPart;
@@ -124,7 +123,6 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
   StageListener listener;
 
   Form form;
-  FormText formText;
 
   Section stageSection;
   Section destinationSection;
@@ -144,22 +142,13 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
     GridLayout layout = new GridLayout(2, true);
     form.getBody().setLayout(layout);
 
-    formText = toolkit.createFormText(form.getBody(), true);
-    formText.setColor("red", toolkit.getColors().createColor("red", toolkit.getColors().getSystemColor(SWT.COLOR_RED))); //$NON-NLS-1$ //$NON-NLS-2$
-    form.setText(Messages.MoveStagingView_formTitle);
-    formText.setText(Messages.MoveStagingView_formText, true, true);
-    GridData gd = new GridData(SWT.FILL, SWT.FILL, true, false);
-    gd.horizontalSpan = 2;
-
-    formText.setLayoutData(gd);
-
     stageSection = toolkit.createSection(form.getBody(),
         Section.TITLE_BAR|Section.DESCRIPTION|
         Section.EXPANDED);
     stageSection.setText(Messages.MoveStagingView_stageSectionTitle);
     stageSection.setDescription(Messages.MoveStagingView_stageSectionDescription);
 
-    gd = new GridData(SWT.FILL, SWT.FILL, true, true);
+    GridData gd = new GridData(SWT.FILL, SWT.FILL, true, true);
     stageSection.setLayoutData(gd);
 
     Composite stageSectionClient = toolkit.createComposite(stageSection);
