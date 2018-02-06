@@ -1,4 +1,4 @@
-= Acceleo 2 queries [deprecated] =
+= Aql queries =
 
 == Basic Model Queries ==
  
@@ -9,27 +9,27 @@
 |-
 | Current Element 
 | Model Element
-| <% current %>
+| aql:self
 
 |-
 | Container of current element
 | A model element 
-| <% current.'''eContainer''' %>
+| aql:self.'''eContainer()'''
 
 |-
 | Type of an element
 | A model element
-| <% current.'''eClass''' %>
+| aql:self.'''eClass()'''
 
 |-
 | Total number of elements in a model
 | A model element
-| <% current.'''ancestor.nLast.eAllContents.nSize''' %>
+| aql:self.'''ancestors()->last().eAllContents()->size()'''
 
 |-
 | Total number of sub-elements
 | A model element
-| <% current.'''eAllContents.nSize''' %>
+| aql:self.'''eAllContents()->size()'''
 
 |}
 
@@ -44,53 +44,53 @@
 |-
 | Semantic element associated to a graphical element
 | A diagram / A diagram element
-| <% current.'''target''' %>
+| aql:self.'''target'''
 
 |-
 | aird file (non fragmented model)
 | A diagram
-| <% ((current+current.~).ancestor[eClass.name=="DAnalysis"].nMinimize()) %>
+| aql:((self.makeUnion(self, self.eInverse(''))).ancestors()->select(ancestor | ancestor.eClass().name = 'DAnalysis')->asSet())
 
 |-
 | All aird files (fragmented model)
 | A diagram
 
-| <% (((current+current.~).ancestor[eClass.name=="DAnalysis"].nMinimize().put("aird") + (get("aird")+get("aird").~+get("aird").~.~+get("aird").~.~.~).put("airds") + get("airds")+get("airds").referencedAnalysis+get("airds").referencedAnalysis.referencedAnalysis+get("airds").referencedAnalysis.referencedAnalysis.referencedAnalysis).nMinimize()[eClass.name=="DAnalysis"]) %>
+| aql: self.getAllDAnalysis()
 
 
 |-
 | All diagrams
 | A diagram
-| <% (((current+current.~).ancestor[eClass.name=="DAnalysis"].nMinimize().put("aird") + (get("aird")+get("aird").~+get("aird").~.~+get("aird").~.~.~).put("airds") + get("airds")+get("airds").referencedAnalysis+get("airds").referencedAnalysis.referencedAnalysis+get("airds").referencedAnalysis.referencedAnalysis.referencedAnalysis).nMinimize()[eClass.name=="DAnalysis"])'''.ownedViews.ownedRepresentationDescriptors''' %>
+| aql: self.getAllDAnalysis().'''ownedViews.ownedRepresentationDescriptors'''
 
 |-
 | Number of diagrams
 | A diagram
-| <% (((current+current.~).ancestor[eClass.name=="DAnalysis"].nMinimize().put("aird") + (get("aird")+get("aird").~+get("aird").~.~+get("aird").~.~.~).put("airds") + get("airds")+get("airds").referencedAnalysis+get("airds").referencedAnalysis.referencedAnalysis+get("airds").referencedAnalysis.referencedAnalysis.referencedAnalysis).nMinimize()[eClass.name=="DAnalysis"])'''.ownedViews.ownedRepresentationDescriptors.nSize()''' %>
+| aql: self.getAllDAnalysis().'''ownedViews.ownedRepresentationDescriptors->size()'''
 
 |-
 | All diagrams from kind "Logical Data Flow"
 | A diagram
-| <% (((current+current.~).ancestor[eClass.name=="DAnalysis"].nMinimize().put("aird") + (get("aird")+get("aird").~+get("aird").~.~+get("aird").~.~.~).put("airds") + get("airds")+get("airds").referencedAnalysis+get("airds").referencedAnalysis.referencedAnalysis+get("airds").referencedAnalysis.referencedAnalysis.referencedAnalysis).nMinimize()[eClass.name=="DAnalysis"])'''.ownedViews.ownedRepresentationDescriptors[description.name.startsWith("Logical Data Flow Blank")]'''%>
+| aql: self.getAllDAnalysis().'''ownedViews.ownedRepresentationDescriptors->select(x | x.description.name.startsWith('Logical Data Flow Blank'))'''
 |-
 | All diagrams except kind "Scenario"
 | A diagram
-| <% (((current+current.~).ancestor[eClass.name=="DAnalysis"].nMinimize().put("aird") + (get("aird")+get("aird").~+get("aird").~.~+get("aird").~.~.~).put("airds") + get("airds")+get("airds").referencedAnalysis+get("airds").referencedAnalysis.referencedAnalysis+get("airds").referencedAnalysis.referencedAnalysis.referencedAnalysis).nMinimize()[eClass.name=="DAnalysis"])'''.ownedViews.ownedRepresentationDescriptors[description.name.endsWith("Scenario")==false]''' %>
+| aql: self.getAllDAnalysis().'''ownedViews.ownedRepresentationDescriptors->select(x | x.description.name.endsWith('Scenario') = false)'''
 
 |-
 | List of different viewpoints
 | A diagram
-| <% (((current+current.~).ancestor[eClass.name=="DAnalysis"].nMinimize().put("aird") + (get("aird")+get("aird").~+get("aird").~.~+get("aird").~.~.~).put("airds") + get("airds")+get("airds").referencedAnalysis+get("airds").referencedAnalysis.referencedAnalysis+get("airds").referencedAnalysis.referencedAnalysis.referencedAnalysis).nMinimize()[eClass.name=="DAnalysis"])'''.ownedViews.viewpoint.nMinimize()''' %>
+| aql: self.getAllDAnalysis().'''ownedViews.viewpoint->asSet()'''
 
 |-
 | Number of graphical elements in all diagrams
 | A diagram
-| <% (((current+current.~).ancestor[eClass.name=="DAnalysis"].nMinimize().put("aird") + (get("aird")+get("aird").~+get("aird").~.~+get("aird").~.~.~).put("airds") + get("airds")+get("airds").referencedAnalysis+get("airds").referencedAnalysis.referencedAnalysis+get("airds").referencedAnalysis.referencedAnalysis.referencedAnalysis).nMinimize()[eClass.name=="DAnalysis"])'''.ownedViews.ownedRepresentationDescriptors.representation.diagramElements.nSize()''' %>
+| aql: self.getAllDAnalysis().'''ownedViews.ownedRepresentationDescriptors.representation.diagramElements->size()'''
 
 |-
 | Number of graphical elements in all diagrams (including technical elements like style, color…)
 | A diagram
-| <% (((current+current.~).ancestor[eClass.name=="DAnalysis"].nMinimize().put("aird") + (get("aird")+get("aird").~+get("aird").~.~+get("aird").~.~.~).put("airds") + get("airds")+get("airds").referencedAnalysis+get("airds").referencedAnalysis.referencedAnalysis+get("airds").referencedAnalysis.referencedAnalysis.referencedAnalysis).nMinimize()[eClass.name=="DAnalysis"])'''.ownedViews.ownedRepresentationDescriptors.representation.eAllContents.nSize()''' %>
+| aql: self.getAllDAnalysis().'''ownedViews.ownedRepresentationDescriptors.representation.eAllContents()->size()'''
 |}
 
 == Searching Strings ==
@@ -102,27 +102,27 @@
 |-
 | All element containing the "TODO" string in their 'Name' property
 | A model element
-| <% current.eAllContents()'''[name.matches(".*TODO.*")]''' %>
+| aql:self.eAllContents()->'''select(eAllContent | eAllContent.name.matches('.*TODO.*'))'''
 
 |-
 | All element containing the "TODO" string in their 'Summary' property
 | A model element
-| <% current.eAllContents()'''[summary.matches(".*TODO.*")]''' %>
+| aql:self.eAllContents()->'''select(eAllContent | eAllContent.summary.matches('.*TODO.*'))'''
 
 |-
 | All element containing the "TODO" string in their 'Description' property
 | A model element
-| <% current.eAllContents()'''[description.matches(".*TODO.*")]''' %>
+| aql:self.eAllContents()->'''select(eAllContent | eAllContent.description.matches('.*TODO.*'))'''
 
 |-
 | All diagrams containing a note containing the "TODO" string
 | A diagram
-| <% (((current+current.~).ancestor[eClass.name=="DAnalysis"].nMinimize().put("aird") + (get("aird")+get("aird").~+get("aird").~.~+get("aird").~.~).put("airds") + get("airds")+get("airds").referencedAnalysis+get("airds").referencedAnalysis.referencedAnalysis+get("airds").referencedAnalysis.referencedAnalysis.referencedAnalysis).nMinimize()[eClass.name=="DAnalysis"]).ownedViews.ownedRepresentationDescriptors.'''representation[~element.filter("notation.Diagram").eAllContents("notation.Node")[type=="Note" && description.indexOf("TODO")>=0]]''' %>
+| aql: self.getAllDAnalysis().ownedViews.ownedRepresentationDescriptors.'''representation->select(x | x.eInverse('element')->filter(notation::Diagram).eAllContents(notation::Node)->select(x | x.type = 'Note' and x.description.contains('TODO')))'''
 
 |-
 | Number of diagrams containing a note containing the "TODO" string
 | A diagram
-| <% (((current+current.~).ancestor[eClass.name=="DAnalysis"].nMinimize().put("aird") + (get("aird")+get("aird").~+get("aird").~.~+get("aird").~.~).put("airds") + get("airds")+get("airds").referencedAnalysis+get("airds").referencedAnalysis.referencedAnalysis+get("airds").referencedAnalysis.referencedAnalysis.referencedAnalysis).nMinimize()[eClass.name=="DAnalysis"]).ownedViews.ownedRepresentationDescriptors.'''representation[~element.filter("notation.Diagram").eAllContents("notation.Node")[type=="Note" && description.indexOf("TODO")>=0]].nSize()''' %>
+| aql: self.getAllDAnalysis().ownedViews.ownedRepresentationDescriptors.'''representation->select(x | x.eInverse('element')->filter(notation::Diagram).eAllContents(notation::Node)->select(x | x.type = 'Note' and x.description.contains('TODO')))->size()'''
 |}
 
 == Requirements ==
@@ -134,7 +134,7 @@
 |-
 | Query to retrieve the list of non-allocated requirements
 | Requirement Package
-| <% current.'''eAllContents[relatedCapellaElements==null]''' %>
+| aql:self.'''eAllContents()->select(x | x.getRelatedCapellaElements()->isEmpty())'''
 |}
 
 == Model Navigation Examples ==
@@ -146,18 +146,18 @@
 |-
 | List of functions allocated to a component
 | Any Component
-| <% current.allocatedFunctions %>
+| aql:self.allocatedFunctions
 |-
 | List of sub logical components
 | Any Logical Component
-| <% current.subLogicalComponents %>
+| aql:self.subLogicalComponents
 |-
 | List of all functions
 - having more than 3 ports
 - allocated to one given component
 - Which name starts with "Store"
 | Any Component
-| <% current.allocatedFunctions[name.startsWith("Store") && eAllContents().filter("FunctionPort").nSize>3] %>
+| aql:self.allocatedFunctions->select(allocatedFunction | allocatedFunction.name.startsWith('Store') and allocatedFunction.eAllContents()->filter(fa::FunctionPort)->size() > 3)
 |}
 
 == Metrics ==
@@ -167,106 +167,106 @@
 | '''Workbench Selection'''
 | '''Syntax'''
 |-
-| Number of XXXX owned by the selected element, where XXXX is the type of a model element (<% current.eClass %> )
+| Number of YYYY::XXXX owned by the selected element, where XXXX is the type of a model element (aql:self.eClass() ) and YYYY the last term of its package
 | A model element
-| <% current.eAllContents("XXXX").nSize() %>
+| aql:self.eAllContents(YYYY::XXXX)->size()
 |-
 | Number of Operational Activities
 | OperationalAnalysis
-| <% current.eAllContents("OperationalActivity").nSize() %>
+| aql:self.eAllContents(oa::OperationalActivity)->size()
 |-
 | Number of Operational Interactions
 | OperationalAnalysis
-| <% current.eAllContents("FunctionalExchange").nSize() %>
+| aql:self.eAllContents(fa::FunctionalExchange)->size()
 |-
 | Number of Exchange Items in OA
 | OperationalAnalysis
-| <% current.eAllContents("AbstractExchangeItem").nSize() %>
+| aql:self.eAllContents(modellingcore::AbstractExchangeItem)->size()
 |-
 | Number of Types (Classes, Datatypes) in OA
 | OperationalAnalysis
-| <% current.eAllContents("DataType").nSize() %>
+| aql:self.eAllContents(datatype::DataType)->size()
 |-
 | Number of Classes in OA
 | OperationalAnalysis
 | 
-<% current.eAllContents("Class").nSize() %>
+aql:self.eAllContents(information::Class)->size()
 |-
 | Number of States or Modes in OA
 | OperationalAnalysis
-| <% (current.eAllContents().filter("State") - current.eAllContents().filter("Mode")).nSize() %>
+| aql:(self.eAllContents()->filter(capellacommon::State) - self.eAllContents()->filter(capellacommon::Mode))->size()
 |-
 | Number of Operational Entities
 | OperationalAnalysis
-| <% (current.eAllContents("Entity")-current.eAllContents("OperationalActor")).nSize() %>
+| aql:(self.eAllContents(oa::Entity) - self.eAllContents(oa::OperationalActor))->size()
 |-
 | Number of Operational Actors
 | OperationalAnalysis
-| <% current.eAllContents("OperationalActor").nSize() %>
+| aql:self.eAllContents(oa::OperationalActor)->size()
 |-
 | Number of Operational Roles
 | OperationalAnalysis
-| <% current.eAllContents("Role").nSize() %>
+| aql:self.eAllContents(oa::Role)->size()
 |-
 | Number of Communication Means
 | OperationalAnalysis
-| <% current.eAllContents("CommunicationMean").nSize() %>
+| aql:self.eAllContents(oa::CommunicationMean)->size()
 |-
 | Number of System Functions
 | SystemAnalysis
-| <% current.eAllContents("SystemFunction").nSize() %>
+| aql:self.eAllContents(ctx::SystemFunction)->size()
 |-
 | Number of Functional Exchanges in SA
 | SystemAnalysis
-| <% current.eAllContents("FunctionalExchange").nSize() %>
+| aql:self.eAllContents(fa::FunctionalExchange)->size()
 |-
 | Number of Function Ports in SA
 | SystemAnalysis
-| <% current.eAllContents().filter("FunctionPort").nSize %>
+| aql:self.eAllContents()->filter(fa::FunctionPort)->size()
 |-
 | Number of System Actors
 | SystemAnalysis
-| <% current.eAllContents("Actor").nSize() %>
+| aql:self.eAllContents(ctx::Actor)->size()
 |-
 | Number of Functional Chains in SA
 | SystemAnalysis
-| <% current.eAllContents("FunctionalChain").nSize() %>
+| aql:self.eAllContents(fa::FunctionalChain)->size()
 |-
 | Number of Scenarios in SA
 | SystemAnalysis
-| <% current.eAllContents("Scenario").nSize() %>
+| aql:self.eAllContents(interaction::Scenario)->size()
 |-
 | Number of Behaviour Components in PA
 | PhysicalArchitecture
-| <% current.eAllContents("PhysicalComponent")[nature=="BEHAVIOR"].nSize %>
+| aql:self.eAllContents(pa::PhysicalComponent)->select(eAllContent | eAllContent.nature = pa::PhysicalComponentNature::BEHAVIOR)->size()
 |-
 | Number of Implementation PC (nodes) in PA
 | PhysicalArchitecture
-| <% current.eAllContents("PhysicalComponent")[nature=="NODE"].nSize %>
+| aql:self.eAllContents(pa::PhysicalComponent)->select(eAllContent | eAllContent.nature = pa::PhysicalComponentNature::NODE)->size()
 |-
 | Number of Physical Links
 | PhysicalArchitecture
-| <% current.eAllContents("PhysicalLink").nSize() %>
+| aql:self.eAllContents(cs::PhysicalLink)->size()
 |-
 | Number of Physical Ports
 | PhysicalArchitecture
-| <% current.eAllContents("PhysicalPort").nSize() %>
+| aql:self.eAllContents(cs::PhysicalPort)->size()
 |}
 
 
 == Advanced Queries ==
-With Acceleo, you can navigate in elements following references and attributes:
-<%current.outgoing%> on a SystemFunction will retrieve outgoing functional exchanges:<br><br>
+With Aql, you can navigate in elements following references and attributes:
+aql:self.outgoing on a SystemFunction will retrieve outgoing functional exchanges:<br><br>
 [[Image:Images/12_5_ Acceleo Queries_html_51a25b.png|500x150px]]<br>
 <br>
 There is many way to retrieve which references to use for an element. These references ca be used in a request like the above outgoing reference.
-For instance, you can retrieve references with Acceleo using the following request:
-<%current.eClass.eAllReferences%> (or current.eClass.eAllAttributes to retrieve attributes)
+For instance, you can retrieve references with Aql using the following request:
+aql:self.eClass().eAllReferences (or self.eClass().eAllAttributes to retrieve attributes)
 <br><br>
 [[Image:Images/12_5_ Acceleo Queries_html_m4a26b2e2.png|550x300px]]<br>
 <br>
 One easiest way to retrieve references or attributes is to open the Properties View and go the Expert tab then choose relevant references/attributes for your query
 <br><br>
 [[Image:Images/12_5_ Acceleo Queries_html_m44230212.png|800x250px]]<br><br>
-You just have to write the reference name in a camelCaseFormat to use it with Acceleo (e.g. Available In States => availableInStates)
+You just have to write the reference name in a camelCaseFormat to use it with Aql (e.g. Available In States => availableInStates) or in some case with the corresponding getter function
  

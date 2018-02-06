@@ -38,6 +38,7 @@ import org.eclipse.sirius.business.api.helper.task.DeleteEObjectTask;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
 import org.eclipse.sirius.diagram.AbstractDNode;
@@ -65,6 +66,7 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.query.legacy.business.internal.interpreter.EObjectServices;
 import org.eclipse.sirius.query.legacy.ecore.factories.EFactory;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
@@ -195,6 +197,23 @@ public class CapellaServices {
 	/** used by aql queries */ 
 	public List<DDiagramElementContainer> getAllContainersNew(EObject container) {
 		return getAllContainers(container);
+	}
+
+	// equivalent de <% (((current+current.~).ancestor[eClass.name=="DAnalysis"].nMinimize().put("aird") + (get("aird")+get("aird").~+get("aird").~.~+get("aird").~.~.~).put("airds") + get("airds")+get("airds").referencedAnalysis+get("airds").referencedAnalysis.referencedAnalysis+get("airds").referencedAnalysis.referencedAnalysis.referencedAnalysis).nMinimize()[eClass.name=="DAnalysis"]) %>
+	public static Collection<EObject> getAllDAnalysis(EObject eObject) {
+		Collection<EObject> result = new ArrayList<EObject>();
+		EObject source = eObject;
+		if (source instanceof DSemanticDecorator) {
+			source = ((DSemanticDecorator) source).getTarget();
+		}
+		if (source instanceof DRepresentationDescriptor) {
+			source = ((DRepresentationDescriptor) source).getTarget();
+		}
+		Session session = SessionManager.INSTANCE.getSession(source);
+		if (session instanceof DAnalysisSession) {
+			result.addAll(((DAnalysisSession) session).allAnalyses());
+		}
+		return result;
 	}
 	
 	@SuppressWarnings("rawtypes")
