@@ -277,7 +277,7 @@ public class RefreshDiagramsCommandHandler extends AbstractDiagramCommandHandler
         job.setUser(true);
         job.schedule();
 
-        // Add job listener to return the state of sirius preference.
+        // Add job listener to return the state of Sirius preference.
         job.addJobChangeListener(new IJobChangeListener() {
 
           @Override
@@ -303,7 +303,6 @@ public class RefreshDiagramsCommandHandler extends AbstractDiagramCommandHandler
             SiriusEditPlugin.getPlugin().getPreferenceStore().setValue(
                 SiriusUIPreferencesKeys.PREF_REFRESH_ON_REPRESENTATION_OPENING.name(),
                 currentValueOfSiriusPrefRefreshOnOpening);
-            StatusManager.getManager().handle(event.getResult());
           }
 
           @Override

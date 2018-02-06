@@ -62,11 +62,6 @@ get-window "Save Resource Before Refreshing"
 get-window "Save Resource Before Refreshing" | get-button OK | click
 
 // Make sure other dialog showed up to ask for proceeding the refresh
-get-window "Confirm Capella Representation Refresh" 
-    | get-label "There will be 1 representation(s) might be refreshed. It is recommended to firstly backup your model. Are you still want to proceed?" 
-    | get-property caption 
-    | equals "There will be 1 representation(s) might be refreshed. It is recommended to firstly backup your model. Are you still want to proceed?" 
-    | verify-true
 get-window "Confirm Capella Representation Refresh" | get-button OK | click
 
 // Save all
