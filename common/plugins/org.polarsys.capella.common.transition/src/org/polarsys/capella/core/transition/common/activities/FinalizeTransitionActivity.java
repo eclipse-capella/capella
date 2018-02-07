@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,6 +22,7 @@ import org.eclipse.osgi.util.NLS;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
+import org.polarsys.capella.core.transition.common.constants.ITransitionSteps;
 import org.polarsys.capella.core.transition.common.constants.Messages;
 import org.polarsys.capella.core.transition.common.handlers.log.LogHelper;
 import org.polarsys.kitalpha.cadence.core.api.parameter.ActivityParameters;
@@ -35,6 +36,10 @@ public class FinalizeTransitionActivity extends AbstractActivity implements ITra
 
   public static final String ID = "org.polarsys.capella.core.transition.common.activities.FinalizeTransitionActivity"; //$NON-NLS-1$
 
+  @Override
+  public String getActivityIdentifier() {
+    return ITransitionSteps.FINALIZE_TRANSITION;
+  }
   /*
    * (non-Javadoc)
    * @see org.polarsys.kitalpha.cadence.core.api.IActivity#run(org.polarsys.kitalpha.cadence.core.api.parameter.ActivityParameters)

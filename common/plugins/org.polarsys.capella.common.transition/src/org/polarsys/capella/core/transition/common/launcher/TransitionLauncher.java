@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -49,9 +49,9 @@ public class TransitionLauncher extends DefaultLauncher {
     return parameter;
   }
 
-  @Override
-  protected WorkflowActivityParameter buildDiffMergeActivities() {
-    return buildPostExecutionActivities();
+  @Deprecated
+  protected WorkflowActivityParameter buildPostExecutionActivities() {
+    return buildDiffMergeActivities();
   }
 
   /**
@@ -87,8 +87,23 @@ public class TransitionLauncher extends DefaultLauncher {
    * 
    * @return associated workflow element
    */
-  @Deprecated
-  protected WorkflowActivityParameter buildPostExecutionActivities() {
+  protected WorkflowActivityParameter buildFinalizationActivities() {
+    WorkflowActivityParameter parameter = new WorkflowActivityParameter();
+
+    if (getTransposer() != null) {
+
+      // PostDiffMergeActivity
+      parameter.addActivity(getActivity(PostDiffMergeActivity.ID));
+
+      // PostDiffMergeActivity
+      parameter.addActivity(getActivity(FinalizeTransitionActivity.ID));
+
+    }
+
+    return parameter;
+  }
+  
+  protected WorkflowActivityParameter buildDiffMergeActivities() {
     WorkflowActivityParameter parameter = new WorkflowActivityParameter();
 
     if (getTransposer() != null) {
@@ -104,12 +119,6 @@ public class TransitionLauncher extends DefaultLauncher {
 
       // DifferencesFilteringActivity
       parameter.addActivity(getActivity(DifferencesMergingActivity.ID));
-
-      // PostDiffMergeActivity
-      parameter.addActivity(getActivity(PostDiffMergeActivity.ID));
-
-      // PostDiffMergeActivity
-      parameter.addActivity(getActivity(FinalizeTransitionActivity.ID));
 
     }
 
