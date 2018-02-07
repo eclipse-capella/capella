@@ -17,7 +17,10 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.handlers.traceability.ITraceabilityHandler;
@@ -31,6 +34,74 @@ public class TargetModelScope extends ContextModelScope implements ITargetModelS
   public TargetModelScope(List<? extends EObject> elements, IContext context) {
     super(elements, context);
   }
+  
+
+  protected boolean dirty;
+  
+  public boolean isDirty() {
+    return dirty;
+  }
+  
+  @Override
+  public boolean add(EObject element) {
+    dirty = true;
+    return super.add(element);
+  }
+
+  @Override
+  public boolean add(EObject element, boolean includeChildren) {
+    dirty = true;
+    return super.add(element, includeChildren);
+  }
+
+  @Override
+  public boolean add(EObject source, EReference reference, EObject value) {
+    dirty = true;
+    return super.add(source, reference, value);
+  }
+
+  @Override
+  public boolean remove(EObject element) {
+    dirty = true;
+    return super.remove(element);
+  }
+
+  @Override
+  public void removeFromScope(EObject element) {
+    dirty = true;
+    super.removeFromScope(element);
+  }
+
+  @Override
+  public boolean add(EObject source_p, EAttribute attribute_p, Object value_p) {
+    dirty = true;
+    return super.add(source_p, attribute_p, value_p);
+  }
+
+  @Override
+  public Object move(EObject source_p, EStructuralFeature feature_p, int newPosition_p, int oldPosition_p) {
+    dirty = true;
+    return super.move(source_p, feature_p, newPosition_p, oldPosition_p);
+  }
+
+  @Override
+  public boolean remove(EObject source_p, EAttribute attribute_p, Object value_p) {
+    dirty = true;
+    return super.remove(source_p, attribute_p, value_p);
+  }
+
+  @Override
+  public boolean remove(EObject source_p, EReference reference_p, EObject value_p) {
+    dirty = true;
+    return super.remove(source_p, reference_p, value_p);
+  }
+
+  @Override
+  protected boolean removeValue(EObject source_p, EStructuralFeature feature_p, Object value_p) {
+    dirty = true;
+    return super.removeValue(source_p, feature_p, value_p);
+  }
+
 
   @Override
   public Object getOriginator() {

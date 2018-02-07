@@ -152,7 +152,7 @@ public class HeadlessIntramodelLauncher extends TransitionLauncher {
    * @return associated workflow element
    */
   @Override
-  protected WorkflowActivityParameter buildPostExecutionActivities() {
+  protected WorkflowActivityParameter buildDiffMergeActivities() {
     WorkflowActivityParameter parameter = new WorkflowActivityParameter();
 
     if (getTransposer() != null) {
@@ -168,6 +168,22 @@ public class HeadlessIntramodelLauncher extends TransitionLauncher {
 
       // DifferencesMergingActivity
       parameter.addActivity(DifferencesMergingActivity.ID);
+
+    }
+
+    return parameter;
+  }
+  
+  /**
+   * Activities to load in the workflow element of cadence "POST EXECUTION"
+   * 
+   * @return associated workflow element
+   */
+  @Override
+  protected WorkflowActivityParameter buildFinalizationActivities() {
+    WorkflowActivityParameter parameter = new WorkflowActivityParameter();
+
+    if (getTransposer() != null) {
 
       // PostDiffMergeActivity
       parameter.addActivity(PostDiffMergeActivity.ID);
