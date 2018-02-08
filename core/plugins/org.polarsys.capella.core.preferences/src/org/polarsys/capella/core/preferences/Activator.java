@@ -399,11 +399,12 @@ public class Activator extends AbstractUIPlugin {
    * @param property
    * @return
    */
+  @Deprecated
   public boolean existPropertyStore(PropertyChangeEvent event) {
     final IProject project = PreferencesHelper.getSelectedCapellaProject();
     if ((project != null) && !((event.getSource() != null) && (event.getSource() instanceof PropertyStore))) {
       ScopedCapellaPreferencesStore.getInstance(PLUGIN_ID);
-      return ScopedCapellaPreferencesStore.getValueFromPresistentPropertyStore(project, event.getProperty()) != null;
+      return ScopedCapellaPreferencesStore.getProjectValue(project, event.getProperty()) != null;
     }
 
     return false;
