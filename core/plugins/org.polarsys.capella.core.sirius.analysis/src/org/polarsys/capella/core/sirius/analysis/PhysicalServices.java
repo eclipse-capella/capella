@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -970,10 +970,25 @@ public class PhysicalServices {
                     .add(retrieveInternalLink((DNode) edge.getTargetNode(), (DNode) currentTargetNode, path, color));
               }
             }
+            
+            // If not created try nextLink.source to currentLink.source
+            if (!created && nextLink != null && displayedPhysicalLinks.containsKey(nextLink)) {
+              DEdge edge = displayedPhysicalLinks.get(nextLink);
+              if ((edge != null) && isValidNodeForInternalLink(edge.getSourceNode())
+                  && isValidInternalLinkEdge(edge.getSourceNode(), currentSourceNode)) {
+                internalLinks
+                    .add(retrieveInternalLink((DNode) edge.getSourceNode(), (DNode) currentSourceNode, path, color));
+              }
+              // If still not created try nextLink.target to currentLink.target
+              else if ((edge != null) && isValidNodeForInternalLink(edge.getTargetNode())
+                  && isValidInternalLinkEdge(edge.getTargetNode(), currentTargetNode)) {
+                internalLinks
+                    .add(retrieveInternalLink((DNode) edge.getTargetNode(), (DNode) currentTargetNode, path, color));
+              }
+            }
           }
         }
       }
-
     }
 
     if (internalLinks.contains(null)) {
