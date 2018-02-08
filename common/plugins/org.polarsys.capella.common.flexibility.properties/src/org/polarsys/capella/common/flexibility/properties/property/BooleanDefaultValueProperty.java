@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,8 @@ package org.polarsys.capella.common.flexibility.properties.property;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.preferences.DefaultScope;
+import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.core.runtime.preferences.IScopeContext;
 import org.eclipse.core.runtime.preferences.InstanceScope;
 
@@ -76,5 +78,14 @@ public class BooleanDefaultValueProperty extends AbstractProperty implements IDe
   public Object getDefaultValue(IPropertyContext context) {
     String argument = getParameter(PropertiesSchemaConstants.PropertiesSchema_PROPERTY_PREFERENCE__DEFAULT);
     return ((Boolean) toType(argument, context)).booleanValue();
+  }
+
+  @Override
+  public void initializeDefaultValue(IPropertyContext context) {
+    IEclipsePreferences preference = DefaultScope.INSTANCE.getNode(getParameter(PropertiesSchemaConstants.PropertiesSchema_PROPERTY_PREFERENCE__SCOPE));
+    Object value = getDefaultValue(context);
+    if (value != null) {
+      preference.put(getId(), value.toString());
+    }
   }
 }

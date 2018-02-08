@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -88,9 +88,20 @@ public class StringPropertyPreference extends AbstractProperty implements IEdita
   /**
    * {@inheritDoc}
    */
-  public Object getDefaultValue(IPropertyContext context_p) {
+  public String getDefaultValue(IPropertyContext context_p) {
     String argument = getParameter(PropertiesSchemaConstants.PropertiesSchema_PROPERTY_PREFERENCE__DEFAULT);
-    return toType(argument, context_p);
+    return ((String) toType(argument, context_p));
+  }
+  
+  @Override
+  public void initializeDefaultValue(IPropertyContext context) {
+    String scope = getParameter(PropertiesSchemaConstants.PropertiesSchema_PROPERTY_PREFERENCE__SCOPE);
+    String preferenceId = getId();
+    if (isArgumentSet(PropertiesSchemaConstants.PropertiesSchema_PROPERTY_PREFERENCE__PREFERENCE_ID)) {
+      preferenceId = getParameter(PropertiesSchemaConstants.PropertiesSchema_PROPERTY_PREFERENCE__PREFERENCE_ID);
+    }
+    String value = getDefaultValue(context);
+    ScopedCapellaPreferencesStore.getInstance(scope).setDefault(preferenceId, value);
   }
 
   @Override
