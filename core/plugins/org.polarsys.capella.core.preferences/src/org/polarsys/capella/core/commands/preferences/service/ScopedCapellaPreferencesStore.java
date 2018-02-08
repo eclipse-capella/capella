@@ -10,10 +10,8 @@
  *******************************************************************************/
 package org.polarsys.capella.core.commands.preferences.service;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
@@ -31,10 +29,8 @@ import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.jface.preference.FieldEditor;
 import org.eclipse.ui.preferences.ScopedPreferenceStore;
 import org.osgi.service.prefs.BackingStoreException;
-
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
-import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.core.commands.preferences.util.PreferencesHelper;
 import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.preferences.Activator;
@@ -43,70 +39,29 @@ import org.polarsys.capella.core.preferences.Activator;
  */
 public class ScopedCapellaPreferencesStore extends ScopedPreferenceStore {
 
-  /*
-   * 
-   */
-  private static final Logger __logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.UI);
+  private static final Logger __logger = ReportManagerRegistry.getInstance()
+      .subscribe(IReportManagerDefaultComponents.UI);
 
-  /*
-   * 
-   */
   private static ScopedCapellaPreferencesStore instance;
 
-  /*
-	 * 
-	 */
   public static Map<String, String> DEFAULT_OPTIONS_MAP;
 
-  /*
-	 * 
-	 */
   private static Map<String, String> options;
 
-  /*
-   * 
-   */
   public static Map<FieldEditor, String> fields;
 
-  /*
-   * 
-   */
-  private static List<IScopeContext> projectContexts = new ArrayList<IScopeContext>(3);
+  private static final Map<IProject, IScopeContext> projectScopes = new HashMap<IProject, IScopeContext>(0);
 
-  /*
-	 * 
-	 */
-  private static final DefaultScope defaultScopPref = (DefaultScope) DefaultScope.INSTANCE;
-
-  /*
-	 * 
-	 */
-  private static final InstanceScope instanceScopPrefs = (InstanceScope) InstanceScope.INSTANCE;
-
-  /*
-	 * 
-	 */
-  private static final Map<IProject, IScopeContext> projectScopPrefs = new HashMap<IProject, IScopeContext>(0);
-
-  /*
-   * 
-   */
   private static final String PREFERENCE_SEPARATOR = "."; //$NON-NLS-1$
 
-  /**
-	 * 
-	 */
   static {
     options = new HashMap<String, String>();
     DEFAULT_OPTIONS_MAP = Collections.unmodifiableMap(options);
     fields = new HashMap<FieldEditor, String>(0);
   }
 
-  /**
-	 * 
-	 */
   private ScopedCapellaPreferencesStore(String pluginId) {
-    super(instanceScopPrefs, pluginId);
+    super(InstanceScope.INSTANCE, pluginId);
   }
 
   /**
@@ -115,15 +70,10 @@ public class ScopedCapellaPreferencesStore extends ScopedPreferenceStore {
    */
   public static ScopedCapellaPreferencesStore getInstance(String pluginID_p) {
     if (instance == null) {
-      //1953: We share the same preference store. we don't want use the first one loaded.
+      // 1953: We share the same preference store. we don't want use the first one loaded.
       instance = new ScopedCapellaPreferencesStore(Activator.PLUGIN_ID);
     }
     return instance;
-  }
-
-  @Override
-  public void addPropertyChangeListener(org.eclipse.jface.util.IPropertyChangeListener listener) {
-    super.addPropertyChangeListener(listener);
   }
 
   @Override
@@ -138,80 +88,16 @@ public class ScopedCapellaPreferencesStore extends ScopedPreferenceStore {
    * @param optionName
    * @param value
    */
-  protected static void putInt(IProject project, String optionName, int value) {
-    IScopeContext context = (null != project) ? getProjectScope(project) : null;
-    String key = project != null ? project.getName() + PREFERENCE_SEPARATOR + optionName : optionName;
-
-    IEclipsePreferences projectNode = context != null ? context.getNode(Activator.PLUGIN_ID) : null;
-    IEclipsePreferences instanceNode = instanceScopPrefs.getNode(Activator.PLUGIN_ID);
-    IEclipsePreferences defaultNode = defaultScopPref.getNode(Activator.PLUGIN_ID);
-
-    String projectValue =
-        projectNode != null ? Platform.getPreferencesService().get(key, null, new IEclipsePreferences[] { projectNode }) : ICommonConstants.EMPTY_STRING;
-    String instanceValue = Platform.getPreferencesService().get(optionName, null, new IEclipsePreferences[] { instanceNode });
-    String defaultValue = Platform.getPreferencesService().get(optionName, null, new IEclipsePreferences[] { defaultNode });
-
-    if (instanceValue == null) {
-      instanceNode.putInt(key, instanceNode.getInt(key, value));
-      flushPreference(instanceNode);
-    }
-
-    if (defaultValue == null) {
-      defaultNode.putInt(key, instanceNode.getInt(key, value));
-      flushPreference(defaultNode);
-    }
-
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public int getInt(String name) {
-    return getInt(true, name);
-  }
-
-  /**
-   * @param inProjectScope_p
-   * @param key_p
-   * @return
-   */
-  public static int getInt(boolean inProjectScope, String optionName) {
-    IProject selectedCapellaProject = PreferencesHelper.getSelectedCapellaProject();
-    if (inProjectScope && (selectedCapellaProject != null)) {
-      if (PreferencesHelper.hasConfigurationProject(selectedCapellaProject)) {
-        final IProject refProjectConfiguration = PreferencesHelper.getReferencedProjectConfiguration(selectedCapellaProject);
-        if (Activator.getDefault().getPropertyPreferenceStore(refProjectConfiguration) != null) {
-          return Activator.getDefault().getPropertyPreferenceStore(refProjectConfiguration).getInt(optionName);
-        } else if ((getValueFromPresistentPropertyStore(refProjectConfiguration, optionName) != null)
-                   && (getValueFromPresistentPropertyStore(refProjectConfiguration, optionName) instanceof String)) {
-          return Integer.valueOf((String) getValueFromPresistentPropertyStore(refProjectConfiguration, optionName)).intValue();
-        }
-      } else if (Activator.getDefault().getPropertyPreferenceStore(selectedCapellaProject) != null) {
-        return Activator.getDefault().getPropertyPreferenceStore(selectedCapellaProject).getInt(optionName);
-      }
-    }
-    return Activator.getDefault().getPreferenceStore().getInt(optionName);
-  }
-
-  /**
-   * @param project
-   * @param optionName
-   * @param value
-   */
   protected static void putBoolean(IProject project, String optionName, boolean value) {
-    IScopeContext context = (null != project) ? getProjectScope(project) : null;
     String key = project != null ? project.getName() + PREFERENCE_SEPARATOR + optionName : optionName;
 
-    IEclipsePreferences projectNode = context != null ? context.getNode(Activator.PLUGIN_ID) : null;
-    IEclipsePreferences instanceNode = instanceScopPrefs.getNode(Activator.PLUGIN_ID);
-    IEclipsePreferences defaultNode = defaultScopPref.getNode(Activator.PLUGIN_ID);
+    IEclipsePreferences instanceNode = InstanceScope.INSTANCE.getNode(Activator.PLUGIN_ID);
+    IEclipsePreferences defaultNode = DefaultScope.INSTANCE.getNode(Activator.PLUGIN_ID);
 
-    String projectValue =
-        projectNode != null ? Platform.getPreferencesService().get(key, null, new IEclipsePreferences[] { projectNode }) : ICommonConstants.EMPTY_STRING;
-    String instanceValue = Platform.getPreferencesService().get(optionName, null, new IEclipsePreferences[] { instanceNode });
-    String defaultValue = Platform.getPreferencesService().get(optionName, null, new IEclipsePreferences[] { defaultNode });
-
+    String instanceValue = Platform.getPreferencesService().get(optionName, null,
+        new IEclipsePreferences[] { instanceNode });
+    String defaultValue = Platform.getPreferencesService().get(optionName, null,
+        new IEclipsePreferences[] { defaultNode });
 
     if (instanceValue == null) {
       instanceNode.put(key, instanceNode.get(key, String.valueOf(value)));
@@ -222,15 +108,76 @@ public class ScopedCapellaPreferencesStore extends ScopedPreferenceStore {
       defaultNode.put(key, defaultNode.get(key, String.valueOf(value)));
       flushPreference(defaultNode);
     }
-
   }
 
   /**
-   * {@inheritDoc}
+   * @param project
+   * @param optionName
+   * @param value
    */
+  protected static void putInt(IProject project, String optionName, int value) {
+    String key = project != null ? project.getName() + PREFERENCE_SEPARATOR + optionName : optionName;
+
+    IEclipsePreferences instanceNode = InstanceScope.INSTANCE.getNode(Activator.PLUGIN_ID);
+    IEclipsePreferences defaultNode = DefaultScope.INSTANCE.getNode(Activator.PLUGIN_ID);
+
+    String instanceValue = Platform.getPreferencesService().get(optionName, null,
+        new IEclipsePreferences[] { instanceNode });
+    String defaultValue = Platform.getPreferencesService().get(optionName, null,
+        new IEclipsePreferences[] { defaultNode });
+
+    if (instanceValue == null) {
+      instanceNode.putInt(key, instanceNode.getInt(key, value));
+      flushPreference(instanceNode);
+    }
+
+    if (defaultValue == null) {
+      defaultNode.putInt(key, instanceNode.getInt(key, value));
+      flushPreference(defaultNode);
+    }
+  }
+
+  /**
+   * @param project
+   * @param optionName
+   * @param defaultValue
+   */
+  protected static void putString(IProject project, String optionName, String value) {
+
+    String key = project != null ? project.getName() + PREFERENCE_SEPARATOR + optionName : optionName;
+
+    IEclipsePreferences instanceNode = InstanceScope.INSTANCE.getNode(Activator.PLUGIN_ID);
+    IEclipsePreferences defaultNode = DefaultScope.INSTANCE.getNode(Activator.PLUGIN_ID);
+
+    String instanceValue = Platform.getPreferencesService().get(optionName, null,
+        new IEclipsePreferences[] { instanceNode });
+    String defaultValue = Platform.getPreferencesService().get(optionName, null,
+        new IEclipsePreferences[] { defaultNode });
+
+    if (instanceValue == null) {
+      instanceNode.put(key, instanceNode.get(key, String.valueOf(value)));
+      flushPreference(instanceNode);
+    }
+
+    if (defaultValue == null) {
+      defaultNode.put(key, instanceNode.get(key, String.valueOf(value)));
+      flushPreference(defaultNode);
+    }
+  }
+
   @Override
   public boolean getBoolean(String name) {
     return getBoolean(true, name);
+  }
+
+  @Override
+  public String getString(String name) {
+    return getString(true, name);
+  }
+
+  @Override
+  public int getInt(String name) {
+    return getInt(true, name);
   }
 
   /**
@@ -238,11 +185,67 @@ public class ScopedCapellaPreferencesStore extends ScopedPreferenceStore {
    * @param optionName
    * @return
    */
+  @Deprecated
   public static boolean getBoolean(boolean inProjectScope, String optionName) {
     IProject selectedCapellaProject = PreferencesHelper.getSelectedCapellaProject();
-    return getPreferenceFromCustomScopes(inProjectScope, optionName, selectedCapellaProject);
+    return getBoolean(inProjectScope, optionName, selectedCapellaProject);
+  }
+
+  /**
+   * @param preferenceShowCapellaProjectConcept_p
+   * @param contentChild_p
+   * @return
+   */
+  @Deprecated
+  public static boolean getBoolean(String preferenceName, Object contentChild_p) {
+    if ((contentChild_p instanceof Project) && (PreferencesHelper.getProject((Project) contentChild_p) != null)) {
+      return getBoolean(true, preferenceName, PreferencesHelper.getProject((Project) contentChild_p));
+    }
+    return getBoolean(true, preferenceName);
+  }
+
+  private static IProject adapt(IProject selectedCapellaProject) {
+    if (PreferencesHelper.hasConfigurationProject(selectedCapellaProject)) {
+      return PreferencesHelper.getReferencedProjectConfiguration(selectedCapellaProject);
+    }
+    return selectedCapellaProject;
   }
   
+  @Deprecated
+  public static boolean getBoolean(boolean inProjectScope, String optionName, IProject selectedCapellaProject) {
+    if (inProjectScope && (selectedCapellaProject != null)) {
+      IProject project = adapt(selectedCapellaProject);
+      if ((getProjectValue(project, optionName) != null) && (getProjectValue(project, optionName) instanceof String)) {
+        return Boolean.valueOf((String) getProjectValue(project, optionName)).booleanValue();
+      }
+    }
+    return Activator.getDefault().getPreferenceStore().getBoolean(optionName);
+  }
+
+  @Deprecated
+  public static int getInt(boolean inProjectScope, String optionName) {
+    IProject selectedCapellaProject = PreferencesHelper.getSelectedCapellaProject();
+    if (inProjectScope && (selectedCapellaProject != null)) {
+      IProject project = adapt(selectedCapellaProject);
+      if ((getProjectValue(project, optionName) != null) && (getProjectValue(project, optionName) instanceof String)) {
+        return Integer.valueOf((String) getProjectValue(project, optionName)).intValue();
+      }
+    }
+    return Activator.getDefault().getPreferenceStore().getInt(optionName);
+  }
+
+  @Deprecated
+  public static String getString(boolean inProjectScope, String optionName) {
+    IProject selectedCapellaProject = PreferencesHelper.getSelectedCapellaProject();
+    if (inProjectScope && (selectedCapellaProject != null)) {
+      IProject project = adapt(selectedCapellaProject);
+      if ((getProjectValue(project, optionName) != null) && (getProjectValue(project, optionName) instanceof String)) {
+        return (String) getProjectValue(project, optionName);
+      }
+    }
+    return Activator.getDefault().getPreferenceStore().getString(optionName);
+  }
+
   /**
    * @param project
    * @param optionName
@@ -253,83 +256,22 @@ public class ScopedCapellaPreferencesStore extends ScopedPreferenceStore {
     return containsKey(true, optionName, selectedCapellaProject);
   }
 
-  /**
-   * @param project
-   * @param optionName
-   * @return
-   */
-  public static boolean getBoolean(boolean inProjectScope, String optionName, IProject projectParam) {
-    return getPreferenceFromCustomScopes(inProjectScope, optionName, projectParam);
-  }
-
-  private static boolean getPreferenceFromCustomScopes(boolean inProjectScope, String optionName, IProject selectedCapellaProject) {
-    if (inProjectScope && (selectedCapellaProject != null)) {
-      if (PreferencesHelper.hasConfigurationProject(selectedCapellaProject)) {
-        final IProject refProjectConfiguration = PreferencesHelper.getReferencedProjectConfiguration(selectedCapellaProject);
-       	if ((getValueFromPresistentPropertyStore(refProjectConfiguration, optionName) != null)
-                   && (getValueFromPresistentPropertyStore(refProjectConfiguration, optionName) instanceof String)) {
-          return Boolean.valueOf((String) getValueFromPresistentPropertyStore(refProjectConfiguration, optionName)).booleanValue();
-        }
-      } else if (getValueFromPresistentPropertyStore(selectedCapellaProject, optionName) != null ) {
-        return Boolean.valueOf((String) getValueFromPresistentPropertyStore(selectedCapellaProject, optionName)).booleanValue();
-      }
-    }
-    return Activator.getDefault().getPreferenceStore().getBoolean(optionName);
-  }
-
+  @Deprecated
   public static boolean containsKey(boolean inProjectScope, String optionName, IProject selectedCapellaProject) {
     if (inProjectScope && (selectedCapellaProject != null)) {
+
       if (PreferencesHelper.hasConfigurationProject(selectedCapellaProject)) {
-        final IProject refProjectConfiguration = PreferencesHelper.getReferencedProjectConfiguration(selectedCapellaProject);
-        if (getValueFromPresistentPropertyStore(refProjectConfiguration, optionName) != null) {
+        final IProject configuration = PreferencesHelper.getReferencedProjectConfiguration(selectedCapellaProject);
+        if (getProjectValue(configuration, optionName) != null) {
           return true;
         }
       }
-      
-      if (getValueFromPresistentPropertyStore(selectedCapellaProject, optionName) != null) {
+
+      if (getProjectValue(selectedCapellaProject, optionName) != null) {
         return true;
       }
     }
     return Activator.getDefault().getPreferenceStore().contains(optionName);
-  }
-  
-  /**
-   * @param preferenceShowCapellaProjectConcept_p
-   * @param contentChild_p
-   * @return
-   */
-  public static boolean getBoolean(String preferenceName, Object contentChild_p) {
-    if ((contentChild_p instanceof Project) && (PreferencesHelper.getProject((Project) contentChild_p) != null)) {
-      return getBoolean(true, preferenceName, PreferencesHelper.getProject((Project) contentChild_p));
-    }
-    return getBoolean(true, preferenceName);
-
-  }
-
-  @Override
-  public void setValue(String name, boolean value) {
-    IProject[] projects = ResourcesPlugin.getWorkspace().getRoot().getProjects();
-    for (IProject project : projects) {
-      if (PreferencesHelper.hasConfigurationProject(project)) {
-        IProject configProject = PreferencesHelper.getReferencedProjectConfiguration(project);
-        if (getDefaultBoolean(name) == value) {
-        	IEclipsePreferences pref = 
-        	          new ProjectScope(configProject).getNode(Activator.PLUGIN_ID);
-        	pref.remove(name);
-        } else {
-        	IEclipsePreferences pref = 
-      	          new ProjectScope(configProject).getNode(Activator.PLUGIN_ID);
-        	pref.putBoolean(name, value);
-        	}
-      	}
-    }
-    	if (getDefaultBoolean(name) == value) {
-    		IEclipsePreferences pref = InstanceScope.INSTANCE.getNode(Activator.PLUGIN_ID);
-    		pref.remove(name);
-    	} else {
-    		IEclipsePreferences pref = InstanceScope.INSTANCE.getNode(Activator.PLUGIN_ID);
-    		pref.putBoolean(name, value);
-    	}
   }
 
   /**
@@ -337,12 +279,17 @@ public class ScopedCapellaPreferencesStore extends ScopedPreferenceStore {
    * @param key
    * @return
    */
+  @Deprecated
   public static Object getValueFromPresistentPropertyStore(IProject resource, String key) {
-    try {
+    return getProjectValue(resource, key);
+  }
 
+  public static Object getProjectValue(IProject resource, String key) {
+    
+    try {
       if (resource.isAccessible() && resource.isOpen()) {
-        Map<QualifiedName, String> properties =
-            resource.getPersistentProperties() != null ? resource.getPersistentProperties() : new HashMap<QualifiedName, String>(0);
+        Map<QualifiedName, String> properties = resource.getPersistentProperties() != null
+            ? resource.getPersistentProperties() : new HashMap<QualifiedName, String>(0);
         for (QualifiedName qualifiedName : properties.keySet()) {
           QualifiedName qualified = qualifiedName;
           if (key.equals(qualified.getLocalName())) {
@@ -358,68 +305,24 @@ public class ScopedCapellaPreferencesStore extends ScopedPreferenceStore {
     return null;
   }
 
-  /**
-   * @param project
-   * @param optionName
-   * @param defaultValue
-   */
-  protected static void putString(IProject project, String optionName, String value) {
-
-    IScopeContext context = (null != project) ? getProjectScope(project) : null;
-    String key = project != null ? project.getName() + PREFERENCE_SEPARATOR + optionName : optionName;
-
-    IEclipsePreferences projectNode = context != null ? context.getNode(Activator.PLUGIN_ID) : null;
-    IEclipsePreferences instanceNode = instanceScopPrefs.getNode(Activator.PLUGIN_ID);
-    IEclipsePreferences defaultNode = defaultScopPref.getNode(Activator.PLUGIN_ID);
-
-    String projectValue =
-        projectNode != null ? Platform.getPreferencesService().get(key, null, new IEclipsePreferences[] { projectNode }) : ICommonConstants.EMPTY_STRING;
-    String instanceValue = Platform.getPreferencesService().get(optionName, null, new IEclipsePreferences[] { instanceNode });
-    String defaultValue = Platform.getPreferencesService().get(optionName, null, new IEclipsePreferences[] { defaultNode });
-
-
-    if (instanceValue == null) {
-      instanceNode.put(key, instanceNode.get(key, String.valueOf(value)));
-      flushPreference(instanceNode);
-    }
-
-    if (defaultValue == null) {
-      defaultNode.put(key, instanceNode.get(key, String.valueOf(value)));
-      flushPreference(defaultNode);
-    }
-
-  }
-
   @Override
-  public String getString(String name) {
-    return getString(true, name);
-  }
-
-  /**
-   * Helper method to get a single preference setting, e.g., APT_GENSRCDIR. This is a different level of abstraction than the processor -A settings! The -A
-   * settings are all contained under one single preference node, APT_PROCESSOROPTIONS. Use @see #getProcessorOptions(IJavaProject) to get the -A settings; use @see
-   * #getOptions(IJavaProject) to get all the preference settings as a map; and use this helper method to get a single preference setting.
-   * @param jproj the project, or null for workspace.
-   * @param optionName a preference constant from @see AptPreferenceConstants.
-   * @return the string value of the setting.
-   */
-  public static String getString(boolean inProjectScope, String optionName) {
-    IProject selectedCapellaProject = PreferencesHelper.getSelectedCapellaProject();
-    if (inProjectScope && (selectedCapellaProject != null)) {
-      if (PreferencesHelper.hasConfigurationProject(selectedCapellaProject)) {
-        final IProject refProjectConfiguration = PreferencesHelper.getReferencedProjectConfiguration(selectedCapellaProject);
-        if (Activator.getDefault().getPropertyPreferenceStore(refProjectConfiguration) != null) {
-          return Activator.getDefault().getPropertyPreferenceStore(refProjectConfiguration).getString(optionName);
-        } else if ((getValueFromPresistentPropertyStore(refProjectConfiguration, optionName) != null)
-                   && (getValueFromPresistentPropertyStore(refProjectConfiguration, optionName) instanceof String)) {
-          return (String) getValueFromPresistentPropertyStore(refProjectConfiguration, optionName);
+  public void setValue(String name, boolean value) {
+    IProject[] projects = ResourcesPlugin.getWorkspace().getRoot().getProjects();
+    for (IProject project : projects) {
+      if (PreferencesHelper.hasConfigurationProject(project)) {
+        IProject configuration = PreferencesHelper.getReferencedProjectConfiguration(project);
+        if (getDefaultBoolean(name) == value) {
+          new ProjectScope(configuration).getNode(Activator.PLUGIN_ID).remove(name);
+        } else {
+          new ProjectScope(configuration).getNode(Activator.PLUGIN_ID).putBoolean(name, value);
         }
-      } else if (Activator.getDefault().getPropertyPreferenceStore(selectedCapellaProject) != null) {
-        return Activator.getDefault().getPropertyPreferenceStore(selectedCapellaProject).getString(optionName);
       }
     }
-    return Activator.getDefault().getPreferenceStore().getString(optionName);
-
+    if (getDefaultBoolean(name) == value) {
+      InstanceScope.INSTANCE.getNode(Activator.PLUGIN_ID).remove(name);
+    } else {
+      InstanceScope.INSTANCE.getNode(Activator.PLUGIN_ID).putBoolean(name, value);
+    }
   }
 
   /**
@@ -430,22 +333,22 @@ public class ScopedCapellaPreferencesStore extends ScopedPreferenceStore {
     IProject[] projects = ResourcesPlugin.getWorkspace().getRoot().getProjects();
     for (IProject project : projects) {
       if (PreferencesHelper.hasConfigurationProject(project)) {
-        IProject configProject = PreferencesHelper.getReferencedProjectConfiguration(project);
-
+        
+        IProject configuration = PreferencesHelper.getReferencedProjectConfiguration(project);
         if (getDefaultString(name) == value) {
-          new ProjectScope(configProject).getNode(Activator.PLUGIN_ID).remove(name);
+          new ProjectScope(configuration).getNode(Activator.PLUGIN_ID).remove(name);
         } else {
-          new ProjectScope(configProject).getNode(Activator.PLUGIN_ID).put(name, value);
+          new ProjectScope(configuration).getNode(Activator.PLUGIN_ID).put(name, value);
         }
       }
     }
-
+    
     if (getDefaultString(name) == value) {
       InstanceScope.INSTANCE.getNode(Activator.PLUGIN_ID).remove(name);
     } else {
       InstanceScope.INSTANCE.getNode(Activator.PLUGIN_ID).put(name, value);
     }
-
+    
   }
 
   /**
@@ -455,7 +358,6 @@ public class ScopedCapellaPreferencesStore extends ScopedPreferenceStore {
   public void save() {
     try {
       Platform.getPreferencesService().getRootNode().flush();
-
     } catch (BackingStoreException exception_p) {
       StringBuilder loggerMessage = new StringBuilder("ScopedPreferenceManager.save(..) _ "); //$NON-NLS-1$
       __logger.warn(loggerMessage.toString(), exception_p);
@@ -472,13 +374,11 @@ public class ScopedCapellaPreferencesStore extends ScopedPreferenceStore {
     } catch (BackingStoreException exception_p) {
       StringBuilder loggerMessage = new StringBuilder("ScopedPreferenceManager.flushPreference(..) _ "); //$NON-NLS-1$
       __logger.warn(loggerMessage.toString(), exception_p);
-
     }
-
   }
 
   /**
-   * Deprecated: unexpected behavior, should use containsKey(String) [Bug 1127] 
+   * Deprecated: unexpected behavior, should use containsKey(String) [Bug 1127]
    */
   @Override
   @Deprecated
@@ -487,13 +387,13 @@ public class ScopedCapellaPreferencesStore extends ScopedPreferenceStore {
     IProject selectedCapellaProject = PreferencesHelper.getSelectedCapellaProject();
     IPreferencesService service = Platform.getPreferencesService();
     IScopeContext[] contexts;
-    String key =
-        (selectedCapellaProject != null) && !name.contains(selectedCapellaProject.getName()) ? selectedCapellaProject.getName() + PREFERENCE_SEPARATOR + name
-                                                                                          : name;
+    String key = (selectedCapellaProject != null) && !name.contains(selectedCapellaProject.getName())
+        ? selectedCapellaProject.getName() + PREFERENCE_SEPARATOR + name : name;
     if ((selectedCapellaProject != null)) {
-      contexts = new IScopeContext[] { getProjectScope(selectedCapellaProject), instanceScopPrefs, defaultScopPref };
+      contexts = new IScopeContext[] { getProjectScope(selectedCapellaProject), InstanceScope.INSTANCE,
+          DefaultScope.INSTANCE };
     } else {
-      contexts = new IScopeContext[] { instanceScopPrefs, defaultScopPref };
+      contexts = new IScopeContext[] { InstanceScope.INSTANCE, DefaultScope.INSTANCE };
     }
 
     contains = service.getString(Activator.PLUGIN_ID, key, null, contexts) != null;
@@ -503,29 +403,25 @@ public class ScopedCapellaPreferencesStore extends ScopedPreferenceStore {
 
   /**
    * @param project
-   * @return
    */
+  @Deprecated
   public static IScopeContext getProjectScope(IProject project) {
     final IProject realProject = project.getProject();
-    if (projectScopPrefs.get(realProject) != null) {
-      return projectScopPrefs.get(realProject);
+    if (projectScopes.get(realProject) != null) {
+      return projectScopes.get(realProject);
     }
     return new ProjectScope(realProject);
   }
 
-  /**
-   * @return
-   */
+  @Deprecated
   public static Map<String, String> getOptions() {
     return options;
   }
 
-  /**
-   * @return
-   */
+  @Deprecated
   public static Map<IProject, IScopeContext> getProjectContexts() {
 
-    return projectScopPrefs;
+    return projectScopes;
   }
 
 }
