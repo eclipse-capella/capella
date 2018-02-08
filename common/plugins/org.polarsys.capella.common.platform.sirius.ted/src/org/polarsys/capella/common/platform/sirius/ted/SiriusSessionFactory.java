@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -31,9 +31,6 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.factory.SessionFactory;
-import org.eclipse.sirius.business.internal.movida.Movida;
-import org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry;
-import org.eclipse.sirius.business.internal.movida.registry.ViewpointURIConverter;
 import org.eclipse.sirius.business.internal.session.SessionFactoryImpl;
 import org.eclipse.sirius.business.internal.session.danalysis.DAnalysisSessionImpl;
 import org.eclipse.sirius.viewpoint.DAnalysis;
@@ -55,10 +52,6 @@ public class SiriusSessionFactory extends SessionFactoryImpl implements SessionF
    */
   @Override
   protected void configureDomain(TransactionalEditingDomain transactionalEditingDomain, URI sessionResourceUri) {
-    if (Movida.isEnabled()) {
-      transactionalEditingDomain.getResourceSet().setURIConverter(new ViewpointURIConverter(
-          (ViewpointRegistry) org.eclipse.sirius.business.api.componentization.ViewpointRegistry.getInstance()));
-    }
   }
   
   @Override
