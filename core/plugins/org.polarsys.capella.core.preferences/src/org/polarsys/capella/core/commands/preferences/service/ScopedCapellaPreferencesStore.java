@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -115,7 +115,8 @@ public class ScopedCapellaPreferencesStore extends ScopedPreferenceStore {
    */
   public static ScopedCapellaPreferencesStore getInstance(String pluginID_p) {
     if (instance == null) {
-      instance = new ScopedCapellaPreferencesStore(pluginID_p);
+      //1953: We share the same preference store. we don't want use the first one loaded.
+      instance = new ScopedCapellaPreferencesStore(Activator.PLUGIN_ID);
     }
     return instance;
   }
