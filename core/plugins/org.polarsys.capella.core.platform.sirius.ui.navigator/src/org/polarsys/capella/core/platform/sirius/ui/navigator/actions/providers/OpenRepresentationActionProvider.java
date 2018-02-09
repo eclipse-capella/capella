@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,6 +23,7 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.diagram.sequence.description.SequenceDiagramDescription;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.ui.navigator.CommonActionProvider;
@@ -59,13 +60,14 @@ public class OpenRepresentationActionProvider extends CommonActionProvider {
 
           for (RepresentationDescription description : descriptions) {
             // Computes the "Open Diagram / Table..." menu content according to the current selection.
-            if (DialectManager.INSTANCE.getRepresentations(description, currentSession) != null) {
-              Collection<DRepresentation> rep = DialectManager.INSTANCE.getRepresentations(description, currentSession);
+            Collection<DRepresentationDescriptor> descriptors = DialectManager.INSTANCE
+                .getRepresentationDescriptors(description, currentSession);
+            if (descriptors != null) {
               Collection<DRepresentation> ownedRep = DialectManager.INSTANCE.getRepresentations(firstSelectedEObject,
                   currentSession);
-              rep.retainAll(ownedRep);
-              for (DRepresentation drep : rep) {
-                OpenRepresentationsAction ora = new OpenRepresentationsAction(description, drep);
+              descriptors.retainAll(ownedRep);
+              for (DRepresentationDescriptor descriptor : descriptors) {
+                OpenRepresentationsAction ora = new OpenRepresentationsAction(description, descriptor);
                 openDiagramMenu.add(ora);
               }
             }
@@ -77,22 +79,23 @@ public class OpenRepresentationActionProvider extends CommonActionProvider {
               for (RepresentationDescription representationDescription : vp.getOwnedRepresentations()) {
                 if (representationDescription instanceof SequenceDiagramDescription) {
                   SequenceDiagramDescription sdd = (SequenceDiagramDescription) representationDescription;
-                  if (DialectManager.INSTANCE.getRepresentations(sdd, currentSession) != null) {
-                    Collection<DRepresentation> rep = DialectManager.INSTANCE.getRepresentations(sdd, currentSession);
-
+                  Collection<DRepresentationDescriptor> descriptors = DialectManager.INSTANCE
+                      .getRepresentationDescriptors(sdd, currentSession);
+                  if (descriptors != null) {
                     // Select only scenarios belonging to the Capability
-                    Collection<DRepresentation> ownedRep = new ArrayList<DRepresentation>();
+                    Collection<DRepresentationDescriptor> ownedDescriptors = new ArrayList<DRepresentationDescriptor>();
                     EList<Scenario> lstScenarios = ((AbstractCapability) firstSelectedEObject).getOwnedScenarios();
                     for (Scenario scenario : lstScenarios) {
-                      Collection<DRepresentation> repScenario = DialectManager.INSTANCE.getRepresentations(scenario,
+                      Collection<DRepresentationDescriptor> repDescScenario = DialectManager.INSTANCE
+                          .getRepresentationDescriptors(scenario,
                           currentSession);
-                      ownedRep.addAll(repScenario);
+                      ownedDescriptors.addAll(repDescScenario);
                     }
 
-                    rep.retainAll(ownedRep);
+                    descriptors.retainAll(ownedDescriptors);
 
-                    for (DRepresentation drep : rep) {
-                      OpenRepresentationsAction ora = new OpenRepresentationsAction(sdd, drep);
+                    for (DRepresentationDescriptor descriptor : descriptors) {
+                      OpenRepresentationsAction ora = new OpenRepresentationsAction(sdd, descriptor);
                       openDiagramMenu.add(ora);
                     }
                   }

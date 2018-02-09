@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -52,9 +52,10 @@ import org.polarsys.capella.core.sirius.ui.helper.SessionHelper;
 /**
  * The Capella navigator label provider.
  */
-public class CapellaNavigatorLabelProvider extends MDEAdapterFactoryLabelProvider implements IDescriptionProvider,
-    IFontProvider {
+public class CapellaNavigatorLabelProvider extends MDEAdapterFactoryLabelProvider
+    implements IDescriptionProvider, IFontProvider {
   private static final String STATUS_LINE_PATH_SEPARATOR = "::"; //$NON-NLS-1$
+
   private Font _italicFont;
 
   /**
@@ -115,8 +116,7 @@ public class CapellaNavigatorLabelProvider extends MDEAdapterFactoryLabelProvide
       text = super.getText(((ItemWrapper) object).getWrappedObject());
     } else {
       // Fix due to 3.5 & 3.6 that have changed the implementation of IResource.toString().
-      IWorkbenchAdapter workbenchAdapter = (IWorkbenchAdapter) Platform.getAdapterManager().getAdapter(object,
-          IWorkbenchAdapter.class);
+      IWorkbenchAdapter workbenchAdapter = Platform.getAdapterManager().getAdapter(object, IWorkbenchAdapter.class);
       text = (null != workbenchAdapter) ? workbenchAdapter.getLabel(object) : super.getText(object);
 
       if (object instanceof IFile) {
@@ -155,9 +155,9 @@ public class CapellaNavigatorLabelProvider extends MDEAdapterFactoryLabelProvide
       } else {
         representationName = ((DRepresentation) element).getName();
         // Adapts the representation into a Capella element (it returns its Capella container).
-        modelElement = Platform.getAdapterManager().getAdapter((DRepresentation) element, ModelElement.class);
+        modelElement = Platform.getAdapterManager().getAdapter(element, ModelElement.class);
         if (null == modelElement) {
-          modelElement = Platform.getAdapterManager().loadAdapter((DRepresentation) element, ModelElement.class.getName());
+          modelElement = Platform.getAdapterManager().loadAdapter(element, ModelElement.class.getName());
         }
       }
       if (null != modelElement) {
@@ -217,13 +217,16 @@ public class CapellaNavigatorLabelProvider extends MDEAdapterFactoryLabelProvide
   protected String getSiriusMessage(Object element) {
     String result = ICommonConstants.EMPTY_STRING;
     if (element instanceof IGraphicalEditPart) {
-      Object model = ((IGraphicalEditPart) element).getModel(); 
+      Object model = ((IGraphicalEditPart) element).getModel();
       if (model instanceof View)
         element = ((View) model).getElement();
     }
 
-    if (element instanceof DRepresentationDescriptor)
-      element = ((DRepresentationDescriptor) element).getRepresentation();
+    if (element instanceof DRepresentationDescriptor) {
+      if (((DRepresentationDescriptor) element).isLoadedRepresentation()) {
+        element = ((DRepresentationDescriptor) element).getRepresentation();
+      }
+    }
 
     if (element instanceof EObject) {
       DDiagram diagram = null;
