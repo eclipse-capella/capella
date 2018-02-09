@@ -16,32 +16,31 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.query.RepresentationDescriptionQuery;
+import org.eclipse.sirius.business.api.query.SiriusReferenceFinder;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.resource.AirdResource;
+import org.eclipse.sirius.business.internal.session.danalysis.DAnalysisSessionImpl;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
 import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
-import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.utils.RunnableWithBooleanResult;
-import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.cs.AbstractActor;
-import org.polarsys.capella.core.data.interaction.InteractionPackage;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 
 import com.google.common.collect.Iterables;
@@ -132,15 +131,16 @@ public class RepresentationHelper {
 
     return representations;
   }
-  
+
   /**
    * Get all representation descriptors targeted by specified semantic elements.<br>
-   * Default implementation loops over specified elements and search for all representation descriptorss in a specified element
-   * containment subtree.
+   * Default implementation loops over specified elements and search for all representation descriptorss in a specified
+   * element containment subtree.
    *
    * @return a not <code>null</code> collection.
    */
-  public static Collection<DRepresentationDescriptor> getAllRepresentationDescriptorsTargetedBy(Collection<?> semanticElements) {
+  public static Collection<DRepresentationDescriptor> getAllRepresentationDescriptorsTargetedBy(
+      Collection<?> semanticElements) {
     Set<DRepresentationDescriptor> representations = new HashSet<DRepresentationDescriptor>();
     // Go through EObjects only.
     Iterable<EObject> semanticEObjects = Iterables.filter(semanticElements, EObject.class);
@@ -163,71 +163,70 @@ public class RepresentationHelper {
   }
 
   /**
-   * Get all representations where the specified semantic element appears. This method is recursive and get also
-   * representation of some related elements.
-   *
+   * Get all representations where the specified semantic element appears.
+   * 
    * @param semanticElement
-   * @param representations
+   * @param representationDescriptors
    */
-  private static void getRelatedRepresentations(EObject semanticElement, Set<DRepresentation> representations) {
-    Session session = SessionManager.INSTANCE.getSession(semanticElement);
+  private static void getRelatedRepresentations(EObject semanticElement,
+      Set<DRepresentationDescriptor> representationDescriptors) {
+    // Use Set instead of list to avoid dulicate
+    Set<EObject> semanticElementsToCheck = new HashSet<>();
 
-    List<EObject> semanticElementsToCheck = new ArrayList<EObject>();
+    // The semantic element itself needs to be checked
     semanticElementsToCheck.add(semanticElement);
+
     // For an AbstractActor, we want to see representations related to its allocated functions.
     if (semanticElement instanceof AbstractActor) {
       semanticElementsToCheck.addAll(((AbstractActor) semanticElement).getAllocatedFunctions());
     }
 
-    for (EObject semanticElementToCheck : semanticElementsToCheck) {
-      for (Setting setting : session.getSemanticCrossReferencer().getInverseReferences(semanticElementToCheck)) {
-        // Get DRepresentation related to semanticElement.
-        if (ViewpointPackage.Literals.DSEMANTIC_DECORATOR__TARGET.equals(setting.getEStructuralFeature())) {
-          DSemanticDecorator decorator = (DSemanticDecorator) setting.getEObject();
-          // TODO Use DiagramHelper.getService().getRepresentation(decorator) (not possible currently because of a cycle
-          // in dependencies).
-          DRepresentation diagram = null;
-          if (decorator instanceof DRepresentation) {
-            // DRepresentation is referencing directly to the semantic element.
-            diagram = (DRepresentation) decorator;
-          } else {
-            // An internal element of a representation is referencing the semantic element -> get containing
-            // representation.
-            diagram = (DRepresentation) EcoreUtil2.getFirstContainer(decorator,
-                ViewpointPackage.Literals.DREPRESENTATION);
-          }
-          if (null != diagram) {
-            // Will be added only if not already present (it's a Set).
-            representations.add(diagram);
-          }
-        } else if (ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE
-            .equals(setting.getEStructuralFeature())
-            || InteractionPackage.Literals.EVENT_RECEIPT_OPERATION__OPERATION.equals(setting.getEStructuralFeature())
-            || InteractionPackage.Literals.ABSTRACT_END__EVENT.equals(setting.getEStructuralFeature())
-            || InteractionPackage.Literals.SEQUENCE_MESSAGE__RECEIVING_END.equals(setting.getEStructuralFeature())
-            || InteractionPackage.Literals.EVENT_SENT_OPERATION__OPERATION.equals(setting.getEStructuralFeature())
-            || InteractionPackage.Literals.SEQUENCE_MESSAGE__SENDING_END.equals(setting.getEStructuralFeature())
-            || InteractionPackage.Literals.INSTANCE_ROLE__REPRESENTED_INSTANCE.equals(setting.getEStructuralFeature())
-            || InteractionPackage.Literals.STATE_FRAGMENT__RELATED_ABSTRACT_STATE
-                .equals(setting.getEStructuralFeature())
-            || InteractionPackage.Literals.STATE_FRAGMENT__RELATED_ABSTRACT_FUNCTION
-                .equals(setting.getEStructuralFeature())
-            || CapellacorePackage.Literals.INVOLVEMENT__INVOLVED.equals(setting.getEStructuralFeature())) {
-          // Get representations associated to another semantic element referencing the given semantic element.
-          getRelatedRepresentations(setting.getEObject(), representations);
-        }
+    Session session = SessionManager.INSTANCE.getSession(semanticElement);
+    Map<EObject, Collection<DRepresentationDescriptor>> impactedRepresentationDescriptors = ((DAnalysisSessionImpl) session)
+        .getSiriusReferenceFinder().getImpactedRepresentationDescriptors(semanticElementsToCheck,
+            SiriusReferenceFinder.SearchScope.ALL_REPRESENTATIONS_SCOPE);
+
+    for (Entry<EObject, Collection<DRepresentationDescriptor>> entry : impactedRepresentationDescriptors.entrySet()) {
+      Collection<DRepresentationDescriptor> impactedRepDescs = entry.getValue();
+      if (!impactedRepDescs.isEmpty()) {
+        representationDescriptors.addAll(impactedRepDescs);
       }
     }
   }
 
   /**
    * Get all representations where specified semantic element is displayed.
+   * 
+   * @deprecated use getAllRepresentationDescriptorsWhereSemanticElementIsDisplayed instead because using
+   *             {@link DRepresentationDescriptor} avoid loading the associated {@link DRepresentation} if not
+   *             necessary.
+   * @param semanticElement
+   * @param filteringRepresentationDescriptionClass
+   * @return a not <code>null</code> collection.
+   */
+  @Deprecated
+  public static Collection<DRepresentation> getAllRepresentationsWhereSemanticElementIsDisplayed(
+      EObject semanticElement, RunnableWithBooleanResult filteringCondition) {
+    Collection<DRepresentation> reps = new ArrayList<>();
+
+    Collection<DRepresentationDescriptor> repDescs = getAllRepresentationDescriptorsWhereSemanticElementIsDisplayed(
+        semanticElement, filteringCondition);
+
+    for (DRepresentationDescriptor dRepresentationDescriptor : repDescs) {
+      reps.add(dRepresentationDescriptor.getRepresentation());
+    }
+
+    return reps;
+  }
+
+  /**
+   * Get all representationDescriptors where specified semantic element is displayed.
    *
    * @param semanticElement
    * @param filteringRepresentationDescriptionClass
    * @return a not <code>null</code> collection.
    */
-  public static Collection<DRepresentation> getAllRepresentationsWhereSemanticElementIsDisplayed(
+  public static Collection<DRepresentationDescriptor> getAllRepresentationDescriptorsWhereSemanticElementIsDisplayed(
       EObject semanticElement, RunnableWithBooleanResult filteringCondition) {
     // Precondition: we must have a Session.
     Session session = SessionManager.INSTANCE.getSession(semanticElement);
@@ -236,32 +235,33 @@ public class RepresentationHelper {
     }
     // Collect all representations related to the given semantic elements and some other related ones (following
     // specific kind of references).
-    Set<DRepresentation> unfilteredRepresentations = new HashSet<DRepresentation>();
-    getRelatedRepresentations(semanticElement, unfilteredRepresentations);
+    Set<DRepresentationDescriptor> unfilteredRepresentationDescs = new HashSet<DRepresentationDescriptor>();
+    getRelatedRepresentations(semanticElement, unfilteredRepresentationDescs);
 
     // Do some filtering.
-    Set<DRepresentation> filteredRepresentations = new HashSet<DRepresentation>();
+    Set<DRepresentationDescriptor> filteredRepresentationDescs = new HashSet<DRepresentationDescriptor>();
     Collection<Viewpoint> selectedViewpoints = session.getSelectedViewpoints(false);
     // Go through representations.
-    for (DRepresentation representation : unfilteredRepresentations) {
-      RepresentationDescription representationDescription = DialectManager.INSTANCE.getDescription(representation);
+    for (DRepresentationDescriptor representationDescriptor : unfilteredRepresentationDescs) {
+      RepresentationDescription representationDescription = representationDescriptor.getDescription();
       // Keep only representations having their RepresentationDescription in selectedViewpoints.
       Viewpoint parentViewpoint = new RepresentationDescriptionQuery(representationDescription).getParentViewpoint();
       if (selectedViewpoints.contains(parentViewpoint)) {
         if (null == filteringCondition) {
-          filteredRepresentations.add(representation);
+          filteredRepresentationDescs.add(representationDescriptor);
         } else {
-          // If a condition is given, use it to filter out or not current representation regarding its description.
+          // If a condition is given, use it to filter out or not current representation regarding its
+          // description.
           filteringCondition.setObject(representationDescription);
           filteringCondition.run();
           if (filteringCondition.getResult().booleanValue()) {
-            filteredRepresentations.add(representation);
+            filteredRepresentationDescs.add(representationDescriptor);
           }
         }
       }
     }
 
-    return filteredRepresentations;
+    return filteredRepresentationDescs;
   }
 
   /**
@@ -276,9 +276,10 @@ public class RepresentationHelper {
     for (EObject referencingElement : CrossReferencerHelper.getReferencingElements(semanticRoot)) {
       resources.add(referencingElement.eResource());
     }
-    // Get all representations that reference semantic root.
-    for (DRepresentation representation : getAllRepresentationsWhereSemanticElementIsDisplayed(semanticRoot, null)) {
-      resources.add(representation.eResource());
+    // Get all representation descriptors that reference semantic root.
+    for (DRepresentationDescriptor representationDescriptor : getAllRepresentationDescriptorsWhereSemanticElementIsDisplayed(
+        semanticRoot, null)) {
+      resources.add(representationDescriptor.eResource());
     }
     // Loop over semantic root sub tree to collect all dependent resources.
     Resource semanticRootResource = semanticRoot.eResource();
@@ -292,9 +293,10 @@ public class RepresentationHelper {
         for (EObject referencingElement : CrossReferencerHelper.getReferencingElements(child)) {
           resources.add(referencingElement.eResource());
         }
-        // Get all representations that reference current child.
-        for (DRepresentation representation : getAllRepresentationsWhereSemanticElementIsDisplayed(child, null)) {
-          resources.add(representation.eResource());
+        // Get all representation descriptors that reference current child.
+        for (DRepresentationDescriptor representationDescriptor : getAllRepresentationDescriptorsWhereSemanticElementIsDisplayed(
+            child, null)) {
+          resources.add(representationDescriptor.eResource());
         }
       }
     }

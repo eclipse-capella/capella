@@ -607,25 +607,32 @@ public class DiagramServices {
   }
 
   /**
-   * Returns a list of all diagram elements for the given view.
+   * Returns a collection of DSemanticDecorator (RepresentationElement) presented in the diagram,
+   * which have the target and/or the semantic elements containing
+   * the given semantic element
    * 
    * @param diagram
    * @param semantic
    * @return
    */
   public Collection<DSemanticDecorator> getDiagramElements(DRepresentation diagram, EObject semantic) {
-    Collection<DSemanticDecorator> views = new ArrayList<DSemanticDecorator>();
+    Collection<DSemanticDecorator> semanticDecorators = new ArrayList<DSemanticDecorator>();
     Session session = SessionManager.INSTANCE.getSession(semantic);
+    
     for (Setting setting : session.getSemanticCrossReferencer().getInverseReferences(semantic)) {
-      if (ViewpointPackage.Literals.DSEMANTIC_DECORATOR__TARGET.equals(setting.getEStructuralFeature())) {
+      
+      boolean isTargetForRepElement = ViewpointPackage.Literals.DSEMANTIC_DECORATOR__TARGET.equals(setting.getEStructuralFeature());
+      boolean isSemanticForRepElement = ViewpointPackage.Literals.DREPRESENTATION_ELEMENT__SEMANTIC_ELEMENTS.equals(setting.getEStructuralFeature());
+      
+      if (isTargetForRepElement || isSemanticForRepElement) {
         DSemanticDecorator decorator = (DSemanticDecorator) setting.getEObject();
         DRepresentation diag = DiagramHelper.getService().getRepresentation(decorator);
         if ((diagram == null) || diagram.equals(diag)) {
-          views.add(decorator);
+          semanticDecorators.add(decorator);
         }
       }
     }
-    return views;
+    return semanticDecorators;
   }
 
   /**

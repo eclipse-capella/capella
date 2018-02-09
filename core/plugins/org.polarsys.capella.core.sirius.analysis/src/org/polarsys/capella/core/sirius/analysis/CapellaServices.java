@@ -11,6 +11,7 @@
 package org.polarsys.capella.core.sirius.analysis;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
@@ -18,7 +19,9 @@ import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.OperationCanceledException;
@@ -99,6 +102,7 @@ import org.polarsys.capella.core.data.capellacore.Constraint;
 import org.polarsys.capella.core.data.capellacore.Feature;
 import org.polarsys.capella.core.data.capellacore.GeneralizableElement;
 import org.polarsys.capella.core.data.capellacore.Generalization;
+import org.polarsys.capella.core.data.capellacore.Involvement;
 import org.polarsys.capella.core.data.capellacore.ModellingArchitecture;
 import org.polarsys.capella.core.data.capellacore.Structure;
 import org.polarsys.capella.core.data.capellacore.TypedElement;
@@ -152,10 +156,15 @@ import org.polarsys.capella.core.data.information.datatype.DataType;
 import org.polarsys.capella.core.data.information.datatype.NumericType;
 import org.polarsys.capella.core.data.information.datatype.PhysicalQuantity;
 import org.polarsys.capella.core.data.interaction.AbstractCapability;
+import org.polarsys.capella.core.data.interaction.AbstractEnd;
+import org.polarsys.capella.core.data.interaction.EventReceiptOperation;
+import org.polarsys.capella.core.data.interaction.EventSentOperation;
 import org.polarsys.capella.core.data.interaction.Execution;
 import org.polarsys.capella.core.data.interaction.InstanceRole;
 import org.polarsys.capella.core.data.interaction.RefinementLink;
 import org.polarsys.capella.core.data.interaction.Scenario;
+import org.polarsys.capella.core.data.interaction.SequenceMessage;
+import org.polarsys.capella.core.data.interaction.StateFragment;
 import org.polarsys.capella.core.data.la.LogicalActor;
 import org.polarsys.capella.core.data.la.LogicalActorPkg;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
@@ -2758,5 +2767,121 @@ public class CapellaServices {
   public String capellaLabelService(EObject e, DDiagramElement view, DDiagram diagram) {
     return EObjectExt.getText(e);
   }
-
+  
+  /**
+   * A service provides associated semantic elements for a given target.
+   * @param target
+   * @return A collection of associated semantic elements (including the target itself) based on the type of given target.
+   */
+  public Collection<EObject> getAssociatedSemanticElements(EObject target) {
+    List<EObject> associatedSemanticElements = new ArrayList<EObject>();
+    if (target == null) {
+      return associatedSemanticElements;
+    }
+    
+    if (target instanceof AbstractTypedElement) {
+      Collection<EObject> elements = getAssociatedSemanticElementsForAbstractTypedElement((AbstractTypedElement) target);
+      associatedSemanticElements.addAll(elements);
+    }
+    if (target instanceof EventReceiptOperation) {
+      Collection<EObject> elements = getAssociatedSemanticElementsForEventReceiptOperation((EventReceiptOperation) target);
+      associatedSemanticElements.addAll(elements);
+    }
+    if (target instanceof AbstractEnd) {
+      Collection<EObject> elements = getAssociatedSemanticElementsForAbstractEnd((AbstractEnd) target);
+      associatedSemanticElements.addAll(elements);
+    }
+    if (target instanceof EventSentOperation) {
+      Collection<EObject> elements = getAssociatedSemanticElementsForEventSentOperation((EventSentOperation) target);
+      associatedSemanticElements.addAll(elements);
+    }
+    if (target instanceof SequenceMessage) {
+      Collection<EObject> elements = getAssociatedSemanticElementsForSequenceMessage((SequenceMessage) target);
+      associatedSemanticElements.addAll(elements);
+    }
+    if (target instanceof InstanceRole) {
+      Collection<EObject> elements =  getAssociatedSemanticElementsForInstanceRole((InstanceRole) target);
+      associatedSemanticElements.addAll(elements);
+    }
+    if (target instanceof StateFragment) {
+      Collection<EObject> elements =  getAssociatedSemanticElementsForStateFragment((StateFragment) target);
+      associatedSemanticElements.addAll(elements);
+    }
+    if (target instanceof Involvement) {
+      Collection<EObject> elements =  getAssociatedSemanticElementsForInvolvement((Involvement) target);
+      associatedSemanticElements.addAll(elements);
+    }
+    
+    List<EObject> associatedSemanticElementsWithoutNulls = associatedSemanticElements.stream()
+        .filter(Objects::nonNull)
+        .collect(Collectors.toList());
+    
+    if (!associatedSemanticElementsWithoutNulls.isEmpty()) {
+      return associatedSemanticElementsWithoutNulls;
+    }
+    return Arrays.asList(target);
+  }
+  
+  private Collection<EObject> getAssociatedSemanticElementsForAbstractTypedElement(AbstractTypedElement element) {
+    List<EObject> semanticElements = new ArrayList<>();
+    semanticElements.add(element);
+    semanticElements.add(element.getAbstractType());
+    return semanticElements;
+  }
+  
+  private Collection<EObject> getAssociatedSemanticElementsForEventReceiptOperation(EventReceiptOperation element) {
+    List<EObject> semanticElements = new ArrayList<>();
+    semanticElements.add(element);
+    semanticElements.add(element.getOperation());
+    return semanticElements;
+  }
+  
+  private Collection<EObject> getAssociatedSemanticElementsForAbstractEnd(AbstractEnd element) {
+    List<EObject> semanticElements = new ArrayList<>();
+    semanticElements.add(element);
+    semanticElements.add(element.getEvent());
+    return semanticElements;
+  }
+  
+  private Collection<EObject> getAssociatedSemanticElementsForEventSentOperation(EventSentOperation element) {
+    List<EObject> semanticElements = new ArrayList<>();
+    semanticElements.add(element);
+    semanticElements.add(element.getOperation());
+    return semanticElements;
+  }
+  
+  private Collection<EObject> getAssociatedSemanticElementsForSequenceMessage(SequenceMessage element) {
+    List<EObject> semanticElements = new ArrayList<>();
+    semanticElements.add(element);
+    semanticElements.add(element.getReceivingEnd());
+    semanticElements.add(element.getSendingEnd());
+    semanticElements.add(element.getInvokedOperation());
+    return semanticElements;
+  }
+  
+  private Collection<EObject> getAssociatedSemanticElementsForInstanceRole(InstanceRole element) {
+    List<EObject> semanticElements = new ArrayList<>();
+    semanticElements.add(element);
+    semanticElements.add(element.getRepresentedInstance());
+    if (element.getRepresentedInstance() instanceof Part) {
+      semanticElements.add(element.getRepresentedInstance().getAbstractType());
+    }
+    return semanticElements;
+  }
+  
+  private Collection<EObject> getAssociatedSemanticElementsForStateFragment(StateFragment element) {
+    List<EObject> semanticElements = new ArrayList<>();
+    semanticElements.add(element);
+    semanticElements.add(element.getRelatedAbstractState());
+    semanticElements.add(element.getRelatedAbstractFunction());
+    return semanticElements;
+  }
+  
+  private Collection<EObject> getAssociatedSemanticElementsForInvolvement(Involvement element) {
+    List<EObject> semanticElements = new ArrayList<>();
+    semanticElements.add(element);
+    semanticElements.add(element.getInvolved());
+    return semanticElements;
+  }
+  
 }
