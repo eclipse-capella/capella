@@ -2,7 +2,7 @@
 <description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" version="12.0.0.2017041100">
   <ownedViewpoints name="EPBS architecture" modelFileExtension="melodymodeller">
     <ownedRepresentations xsi:type="description_1:CrossTableDescription" name="Configuration Items - Requirements" domainClass="EPBSArchitecture">
-      <ownedLineMappings name="Configuration Item 2" domainClass="ConfigurationItem" semanticCandidatesExpression="&lt;%eAllContents.filter(&quot;ConfigurationItem&quot;)[! current.eContainer().isA(&quot;EPBSArchitecture&quot;)]%>" headerLabelExpression="aql:self.computeComponentLabel()">
+      <ownedLineMappings name="Configuration Item 2" domainClass="ConfigurationItem" semanticCandidatesExpression="aql:self.eAllContents()->filter(epbs::ConfigurationItem)->select(x | not (x.eContainer().oclIsKindOf(epbs::EPBSArchitecture)))" headerLabelExpression="aql:self.computeComponentLabel()">
         <delete name="No delete" precondition="false">
           <variables name="element" documentation="The currently edited element."/>
           <variables name="root" documentation="The semantic element corresponding to the current table."/>
@@ -46,7 +46,7 @@
       </intersection>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:CrossTableDescription" name="Configuration Items - Physical Artifacts" domainClass="EPBSArchitecture">
-      <ownedLineMappings name="Configuration Item 1" domainClass="ConfigurationItem" semanticCandidatesExpression="&lt;%eAllContents.filter(&quot;ConfigurationItem&quot;)[! current.eContainer().isA(&quot;EPBSArchitecture&quot;)]%>" headerLabelExpression="aql:self.computeComponentLabel()">
+      <ownedLineMappings name="Configuration Item 1" domainClass="ConfigurationItem" semanticCandidatesExpression="aql:self.eAllContents()->filter(epbs::ConfigurationItem)->select(x | not (x.eContainer().oclIsKindOf(epbs::EPBSArchitecture)))" headerLabelExpression="aql:self.computeComponentLabel()">
         <delete name="No delete" precondition="false">
           <variables name="element" documentation="The currently edited element."/>
           <variables name="root" documentation="The semantic element corresponding to the current table."/>
@@ -387,12 +387,11 @@
             <variable name="container"/>
             <viewVariable name="containerView">
               <subVariables xsi:type="tool:AcceleoVariable" name="diagram" computationExpression="aql:containerView.eContainerOrSelf(diagram::DDiagram)"/>
-              <subVariables xsi:type="tool:AcceleoVariable" name="containerType" computationExpression="&lt;% $containerType() %>"/>
               <subVariables xsi:type="tool:AcceleoVariable" name="scope" computationExpression="aql:containerView.getABShowHideComponent()"/>
               <subVariables xsi:type="tool:AcceleoVariable" name="ownedNodeContainer" computationExpression="aql:self.void2Null(containerView.eAllContents()->filter(diagram::DNodeContainer))"/>
             </viewVariable>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerType">
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container">
                 <subModelOperations xsi:type="tool:ExternalJavaAction" name="selectSubComponent" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
                   <parameters name="context" value="aql:container"/>
                   <parameters name="scope" value="aql:scope"/>
@@ -483,7 +482,7 @@
               <firstModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:arg0"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="delete a CI" precondition="&lt;%!($containerView[!filter(&quot;DDiagram&quot;)].eContainer(&quot;DDiagram&quot;).target + $containerView[filter(&quot;DDiagram&quot;)].target.ancestor + $containerView[filter(&quot;DDiagram&quot;)].target + $containerView[!filter(&quot;DDiagram&quot;)].eContainer(&quot;DDiagram&quot;).target.ancestor).nContains($element)%>">
+          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="delete a CI" precondition="aql: not self.makeUnion(diagram.target, diagram.target.ancestors())->includes(element)">
             <element name="element"/>
             <elementView name="view"/>
             <containerView name="containerView"/>
@@ -790,18 +789,11 @@
                 <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.type">
                   <subModelOperations xsi:type="tool:MoveElement" newContainerExpression="aql:target" featureName="ownedConfigurationItems"/>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:edgeView">
-                  <subModelOperations xsi:type="tool:For" expression="&lt;%sourceNode.target.ownedPartitions.filter(&quot;FlowPort&quot;).exchanges%>">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:i">
-                      <subModelOperations xsi:type="tool:MoveElement" newContainerExpression="aql:self.getCommonComponentAncestor(i.source.eContainer(),i.target.eContainer())" featureName="ownedExchanges"/>
-                    </subModelOperations>
-                  </subModelOperations>
-                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
             <edgeView name="edgeView"/>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="delete Configuration Item" precondition="&lt;%!($containerView[!filter(&quot;DDiagram&quot;)].eContainer(&quot;DDiagram&quot;).target + $containerView[filter(&quot;DDiagram&quot;)].target.ancestor + $containerView[filter(&quot;DDiagram&quot;)].target + $containerView[!filter(&quot;DDiagram&quot;)].eContainer(&quot;DDiagram&quot;).target.ancestor).nContains($element)%>">
+          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="delete Configuration Item" precondition="aql: not self.makeUnion(diagram.target, diagram.target.ancestors())->includes(element)">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
@@ -819,13 +811,6 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.sourceNode.target.typedElements">
                 <subModelOperations xsi:type="tool:MoveElement" newContainerExpression="aql:containerView.target" featureName="ownedFeatures">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView">
-                    <subModelOperations xsi:type="tool:For" expression="&lt;%sourceNode.target.ownedPartitions.filter(&quot;FlowPort&quot;).exchanges%>">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:i">
-                        <subModelOperations xsi:type="tool:MoveElement" newContainerExpression="aql:containerView.target" featureName="ownedExchanges"/>
-                      </subModelOperations>
-                    </subModelOperations>
-                  </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.sourceNode.target">
                   <subModelOperations xsi:type="tool:MoveElement" newContainerExpression="aql:containerView.target" featureName="ownedConfigurationItems"/>

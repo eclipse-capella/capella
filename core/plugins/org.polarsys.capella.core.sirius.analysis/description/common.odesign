@@ -35,13 +35,13 @@
             </style>
           </borderedNodeMappings>
           <borderedNodeMappings name="ModeState_Entry" preconditionExpression="aql:(self.makeUnion(self->filter(capellacommon::Mode), self->filter(capellacommon::State)))->size() > 0 and (not self.entry->isEmpty())" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20StateMode']" semanticCandidatesExpression="aql:self" domainClass="IState">
-            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="entry / &lt;%entry.name.sep(&quot;, &quot;)%>" sizeComputationExpression="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Blank.gif">
+            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="aql:'entry / ' + self.entry.name->sep(', ')" sizeComputationExpression="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Blank.gif">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </borderedNodeMappings>
           <borderedNodeMappings name="ModeState_Exit" preconditionExpression="aql:(self.makeUnion(self->filter(capellacommon::Mode), self->filter(capellacommon::State)))->size() > 0 and (not self.exit->isEmpty())" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20StateMode']" semanticCandidatesExpression="aql:self" domainClass="IState">
-            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="exit / &lt;%exit.name.sep(&quot;, &quot;)%>" labelAlignment="RIGHT" sizeComputationExpression="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Blank.gif">
+            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="aql:'exit / ' + self.exit.name->sep(', ')" labelAlignment="RIGHT" sizeComputationExpression="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Blank.gif">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
@@ -747,7 +747,7 @@
               <firstModelOperations xsi:type="tool_1:SetValue" featureName="triggerDescription" valueExpression="aql:arg0"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="Delete StateMode" precondition="&lt;%!($containerView[!filter(&quot;DDiagram&quot;)].eContainer(&quot;DDiagram&quot;).target + $containerView[filter(&quot;DDiagram&quot;)].target.ancestor + $containerView[filter(&quot;DDiagram&quot;)].target + $containerView[!filter(&quot;DDiagram&quot;)].eContainer(&quot;DDiagram&quot;).target.ancestor).nContains($element)%>">
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="Delete StateMode" precondition="aql: not self.makeUnion(diagram.target, diagram.target.ancestors())->includes(element)">
             <element name="element"/>
             <elementView name="view"/>
             <containerView name="containerView"/>
@@ -1537,7 +1537,7 @@
               <firstModelOperations xsi:type="tool_1:SetValue" featureName="triggerDescription" valueExpression="aql:arg0"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="Delete StateMode" precondition="&lt;%!($containerView[!filter(&quot;DDiagram&quot;)].eContainer(&quot;DDiagram&quot;).target + $containerView[filter(&quot;DDiagram&quot;)].target.ancestor + $containerView[filter(&quot;DDiagram&quot;)].target + $containerView[!filter(&quot;DDiagram&quot;)].eContainer(&quot;DDiagram&quot;).target.ancestor).nContains($element)%>">
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="Delete StateMode" precondition="aql: not self.makeUnion(diagram.target, diagram.target.ancestors())->includes(element)">
             <element name="element"/>
             <elementView name="view"/>
             <containerView name="containerView"/>
@@ -2995,7 +2995,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ToolDescription" documentation="Creates a new Parameter for the selected Class Operation. This tool opens a selection wizard to select the Type of the Parameter." name="Parameter" precondition="&lt;%isA(&quot;Operation&quot;) &amp;&amp; (!(isA(&quot;SignalReception&quot;) &amp;&amp; ownedParameters.nSize()>0)) %>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Parameter.gif">
+          <ownedTools xsi:type="tool_1:ToolDescription" documentation="Creates a new Parameter for the selected Class Operation. This tool opens a selection wizard to select the Type of the Parameter." name="Parameter" precondition="aql:self.oclIsKindOf(information::Operation)" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Parameter.gif">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
@@ -3012,10 +3012,6 @@
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:type != 'WIZARD_CANCELED'">
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="abstractType" valueExpression="aql:type"/>
-                    <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%$element.filter(&quot;SignalReception&quot;).nSize() > 0%>">
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="signal"/>
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="direction" valueExpression="IN"/>
-                    </subModelOperations>
                     <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Edit parameter" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.EditCapellaPropertyWizard">
                       <parameters name="context" value="aql:instance"/>
                     </subModelOperations>
@@ -3471,7 +3467,7 @@
               <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:arg0"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="Delete_DataType" precondition="&lt;%!($containerView[!filter(&quot;DDiagram&quot;)].eContainer(&quot;DDiagram&quot;).target + $containerView[filter(&quot;DDiagram&quot;)].target.ancestor + $containerView[filter(&quot;DDiagram&quot;)].target + $containerView[!filter(&quot;DDiagram&quot;)].eContainer(&quot;DDiagram&quot;).target.ancestor).nContains($element)%>">
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="Delete_DataType" precondition="aql: not self.makeUnion(diagram.target, diagram.target.ancestors())->includes(element)">
             <element name="element"/>
             <elementView name="view"/>
             <containerView name="containerView"/>
@@ -4794,7 +4790,7 @@
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </style>
           </subNodeMappings>
-          <subNodeMappings name="DT_Operation1" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete_DataType']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='Allocation%20DirectEdit']" semanticCandidatesExpression="feature:ownedExchangeItemAllocations" semanticElements="&lt;%current+allocatedItem+allocatedItem.ownedElements%>" domainClass="CapellaElement" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='Allocation%20ExchangeItem%20from%20Diagram']">
+          <subNodeMappings name="DT_Operation1" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete_DataType']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='Allocation%20DirectEdit']" semanticCandidatesExpression="feature:ownedExchangeItemAllocations" semanticElements="aql:self.makeUnion(self, self.allocatedItem, self.allocatedItem.ownedElements)" domainClass="CapellaElement" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='Allocation%20ExchangeItem%20from%20Diagram']">
             <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="aql:self.getOperationLabel(view)" labelAlignment="LEFT" sizeComputationExpression="1">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -5063,7 +5059,7 @@
           </ownedTools>
           <ownedTools xsi:type="tool:EdgeCreationDescription" documentation="Creates a Require relationship from a Component Port to an Interface" name="Requires" precondition="aql:not (preSource.ancestors()->includes(preTarget)) and not (preTarget.ancestors()->includes(preSource)) and not (preSource.oclIsKindOf(fa::ComponentPort) and preSource.requiredInterfaces->includes(preTarget))" edgeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@edgeMappings[name='CCDI_PinRequiredInterface']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Require.gif" extraSourceMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@containerMappings[name='System%201']" extraTargetMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@containerMappings[name='FullInterface1']">
             <sourceVariable name="source">
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="sourceRequiresCreation" computationExpression="&lt;% !$source.isA(&quot;Port&quot;) &amp;&amp; !$source.isA(&quot;ControlNode&quot;)%>"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="sourceRequiresCreation" computationExpression="aql:not (source.oclIsKindOf(information::Port))"/>
             </sourceVariable>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -5091,7 +5087,7 @@
           </ownedTools>
           <ownedTools xsi:type="tool:EdgeCreationDescription" documentation="Creates a Provide relationship from a Component Port to an Interface" name="Provides" precondition="aql:not (preSource.ancestors()->includes(preTarget)) and not (preTarget.ancestors()->includes(preSource)) and not (preSource.oclIsKindOf(fa::ComponentPort) and preSource.providedInterfaces->includes(preTarget))" edgeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@edgeMappings[name='CCDI_PinProvidedInterface']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Provide.gif" extraSourceMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@containerMappings[name='System%201']" extraTargetMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@containerMappings[name='FullInterface1']">
             <sourceVariable name="source">
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="sourceRequiresCreation" computationExpression="&lt;% !$source.isA(&quot;Port&quot;) &amp;&amp; !$source.isA(&quot;ControlNode&quot;)%>"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="sourceRequiresCreation" computationExpression="aql:not (source.oclIsKindOf(information::Port))"/>
             </sourceVariable>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -5734,7 +5730,7 @@
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="delete capella elements" precondition="&lt;%!($containerView[!filter(&quot;DDiagram&quot;)].eContainer(&quot;DDiagram&quot;).target + $containerView[filter(&quot;DDiagram&quot;)].target.ancestor + $containerView[filter(&quot;DDiagram&quot;)].target + $containerView[!filter(&quot;DDiagram&quot;)].eContainer(&quot;DDiagram&quot;).target.ancestor).nContains($element)%>">
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="delete capella elements" precondition="aql: not self.makeUnion(diagram.target, diagram.target.ancestors())->includes(element)">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
@@ -6060,7 +6056,7 @@
             </initialOperation>
             <edgeView name="edgeView"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="CommunicationLink source" precondition="aql:source.oclIsKindOf(communication::CommunicationLinkExchanger) and not (target.ownedCommunicationLinks->select(ownedCommunicationLink | ownedCommunicationLink.kind = element.kind and ownedCommunicationLink.exchangeItem = element.exchangeItem))" reconnectionKind="RECONNECT_SOURCE">
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="CommunicationLink source" precondition="aql:source.oclIsKindOf(communication::CommunicationLinkExchanger) and target.ownedCommunicationLinks->select(ownedCommunicationLink | ownedCommunicationLink.kind = element.kind and ownedCommunicationLink.exchangeItem = element.exchangeItem)->size() = 0" reconnectionKind="RECONNECT_SOURCE">
             <source name="source"/>
             <target name="target"/>
             <sourceView name="sourceView"/>
@@ -6666,7 +6662,7 @@
           </ownedTools>
           <ownedTools xsi:type="tool:EdgeCreationDescription" documentation="Creates a Provide relationship from a Component Port to an Interface" name="Provides" precondition="aql:not (preSource.ancestors()->includes(preTarget)) and not (preTarget.ancestors()->includes(preSource)) and not (preSource.oclIsKindOf(fa::ComponentPort) and preSource.providedInterfaces->includes(preTarget))" edgeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@defaultLayer/@edgeMappings[name='CCEI_PinProvidedInterface']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Provide.gif" extraSourceMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@defaultLayer/@containerMappings[name='CA_Component']" extraTargetMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@defaultLayer/@nodeMappings[name='CA_Interface']">
             <sourceVariable name="source">
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="sourceRequiresCreation" computationExpression="&lt;% !$source.isA(&quot;Port&quot;) &amp;&amp; !$source.isA(&quot;ControlNode&quot;)%>"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="sourceRequiresCreation" computationExpression="aql:not (source.oclIsKindOf(information::Port))"/>
             </sourceVariable>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -6694,7 +6690,7 @@
           </ownedTools>
           <ownedTools xsi:type="tool:EdgeCreationDescription" documentation="Creates a Require relationship from a Component Port to an Interface" name="Requires" precondition="aql:not (preSource.ancestors()->includes(preTarget)) and not (preTarget.ancestors()->includes(preSource)) and not (preSource.oclIsKindOf(fa::ComponentPort) and preSource.requiredInterfaces->includes(preTarget))" edgeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@defaultLayer/@edgeMappings[name='CCEI_PinRequiredInterface']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Require.gif" extraSourceMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@defaultLayer/@containerMappings[name='CA_Component']" extraTargetMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@defaultLayer/@nodeMappings[name='CA_Interface']">
             <sourceVariable name="source">
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="sourceRequiresCreation" computationExpression="&lt;% !$source.isA(&quot;Port&quot;) &amp;&amp; !$source.isA(&quot;ControlNode&quot;)%>"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="sourceRequiresCreation" computationExpression="aql:not (source.oclIsKindOf(information::Port))"/>
             </sourceVariable>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -7306,7 +7302,7 @@
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="delete capella elements" precondition="&lt;%!($containerView[!filter(&quot;DDiagram&quot;)].eContainer(&quot;DDiagram&quot;).target + $containerView[filter(&quot;DDiagram&quot;)].target.ancestor + $containerView[filter(&quot;DDiagram&quot;)].target + $containerView[!filter(&quot;DDiagram&quot;)].eContainer(&quot;DDiagram&quot;).target.ancestor).nContains($element)%>">
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="delete capella elements" precondition="aql: not self.makeUnion(diagram.target, diagram.target.ancestors())->includes(element)">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
@@ -7618,7 +7614,7 @@
             </initialOperation>
             <edgeView name="edgeView"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="CommunicationLink source" precondition="aql:source.oclIsKindOf(communication::CommunicationLinkExchanger) and not (target.ownedCommunicationLinks->select(ownedCommunicationLink | ownedCommunicationLink.kind = element.kind and ownedCommunicationLink.exchangeItem = element.exchangeItem))" reconnectionKind="RECONNECT_SOURCE">
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="CommunicationLink source" precondition="aql:source.oclIsKindOf(communication::CommunicationLinkExchanger) and target.ownedCommunicationLinks->select(ownedCommunicationLink | ownedCommunicationLink.kind = element.kind and ownedCommunicationLink.exchangeItem = element.exchangeItem)->size() = 0" reconnectionKind="RECONNECT_SOURCE">
             <source name="source"/>
             <target name="target"/>
             <sourceView name="sourceView"/>
@@ -8213,7 +8209,7 @@
           </ownedTools>
           <ownedTools xsi:type="tool:EdgeCreationDescription" documentation="Creates a Provide relationship from a Component Port to an Interface" name="Provides" precondition="aql:not (preSource.ancestors()->includes(preTarget)) and not (preTarget.ancestors()->includes(preSource)) and preTarget.oclIsKindOf(cs::Interface) and preSource.eContainerOrSelf(cs::Component).isAvailableInterface(preTarget) and not (preSource.oclIsKindOf(fa::ComponentPort) and preSource.providedInterfaces->includes(preTarget))" edgeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@edgeMappings[name='CCII_PinProvidedInterface']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Provide.gif" extraSourceMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@containerMappings[name='CCII_Component']" extraTargetMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@nodeMappings[name='CCII_Interface']">
             <sourceVariable name="source">
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="sourceRequiresCreation" computationExpression="&lt;% !$source.isA(&quot;Port&quot;) &amp;&amp; !$source.isA(&quot;ControlNode&quot;)%>"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="sourceRequiresCreation" computationExpression="aql:not (source.oclIsKindOf(information::Port))"/>
             </sourceVariable>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -8241,7 +8237,7 @@
           </ownedTools>
           <ownedTools xsi:type="tool:EdgeCreationDescription" documentation="Creates a Require relationship from a Component Port to an Interface" name="Requires" precondition="aql:not (preSource.ancestors()->includes(preTarget)) and not (preTarget.ancestors()->includes(preSource)) and preTarget.oclIsKindOf(cs::Interface) and preSource.eContainerOrSelf(cs::Component).isAvailableInterface(preTarget) and not (preSource.oclIsKindOf(fa::ComponentPort) and preSource.requiredInterfaces->includes(preTarget))" edgeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@edgeMappings[name='CCII_PinRequiredInterface']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Require.gif" extraSourceMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@containerMappings[name='CCII_Component']" extraTargetMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@nodeMappings[name='CCII_Interface']">
             <sourceVariable name="source">
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="sourceRequiresCreation" computationExpression="&lt;% !$source.isA(&quot;Port&quot;) &amp;&amp; !$source.isA(&quot;ControlNode&quot;)%>"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="sourceRequiresCreation" computationExpression="aql:not (source.oclIsKindOf(information::Port))"/>
             </sourceVariable>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -8994,7 +8990,7 @@
             </initialOperation>
             <edgeView name="edgeView"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="delete capella elements" precondition="&lt;%!($containerView[!filter(&quot;DDiagram&quot;)].eContainer(&quot;DDiagram&quot;).target + $containerView[filter(&quot;DDiagram&quot;)].target.ancestor + $containerView[filter(&quot;DDiagram&quot;)].target + $containerView[!filter(&quot;DDiagram&quot;)].eContainer(&quot;DDiagram&quot;).target.ancestor).nContains($element)%>">
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="delete capella elements" precondition="aql: not self.makeUnion(diagram.target, diagram.target.ancestors())->includes(element)">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
@@ -9138,7 +9134,7 @@
             </initialOperation>
             <edgeView name="edgeView"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="CommunicationLink source" precondition="aql:source.oclIsKindOf(communication::CommunicationLinkExchanger) and not (target.ownedCommunicationLinks->select(ownedCommunicationLink | ownedCommunicationLink.kind = element.kind and ownedCommunicationLink.exchangeItem = element.exchangeItem))" reconnectionKind="RECONNECT_SOURCE">
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="CommunicationLink source" precondition="aql:source.oclIsKindOf(communication::CommunicationLinkExchanger) and target.ownedCommunicationLinks->select(ownedCommunicationLink | ownedCommunicationLink.kind = element.kind and ownedCommunicationLink.exchangeItem = element.exchangeItem)->size() = 0" reconnectionKind="RECONNECT_SOURCE">
             <source name="source"/>
             <target name="target"/>
             <sourceView name="sourceView"/>
@@ -9385,7 +9381,7 @@
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </subNodeMappings>
-          <subNodeMappings name="IDB_Operation" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Allocation%20DirectEdit']" semanticCandidatesExpression="feature:ownedExchangeItemAllocations" semanticElements="&lt;%current+allocatedItem+allocatedItem.ownedElements%>" domainClass="CapellaElement" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Allocation%20ExchangeItem%20from%20Diagram'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Allocation%20ExchangeItem%20from%20Model']">
+          <subNodeMappings name="IDB_Operation" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Allocation%20DirectEdit']" semanticCandidatesExpression="feature:ownedExchangeItemAllocations" semanticElements="aql:self.makeUnion(self, self.allocatedItem, self.allocatedItem.ownedElements)" domainClass="CapellaElement" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Allocation%20ExchangeItem%20from%20Diagram'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Allocation%20ExchangeItem%20from%20Model']">
             <style xsi:type="style:SquareDescription" labelExpression="aql:self.getOperationLabel(view)" labelAlignment="LEFT" sizeComputationExpression="1">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -9792,7 +9788,7 @@
           </ownedTools>
           <ownedTools xsi:type="tool:EdgeCreationDescription" documentation="Creates a Provide relationship from a Component Port to an Interface" name="Provides" precondition="aql:not (preSource.ancestors()->includes(preTarget)) and not (preTarget.ancestors()->includes(preSource)) and not (preSource.oclIsKindOf(fa::ComponentPort) and preSource.providedInterfaces->includes(preTarget))" edgeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='IDB_PinProvidedInterface']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Provide.gif" extraSourceMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='IDB_Component']" extraTargetMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='IDB_Interface']">
             <sourceVariable name="source">
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="sourceRequiresCreation" computationExpression="&lt;% !$source.isA(&quot;Port&quot;) &amp;&amp; !$source.isA(&quot;ControlNode&quot;)%>"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="sourceRequiresCreation" computationExpression="aql:not (source.oclIsKindOf(information::Port))"/>
             </sourceVariable>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -9820,7 +9816,7 @@
           </ownedTools>
           <ownedTools xsi:type="tool:EdgeCreationDescription" documentation="Creates a Require relationship from a Component Port to an Interface" name="Requires" precondition="aql:not (preSource.ancestors()->includes(preTarget)) and not (preTarget.ancestors()->includes(preSource)) and not (preSource.oclIsKindOf(fa::ComponentPort) and preSource.requiredInterfaces->includes(preTarget))" edgeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='IDB_PinRequiredInterface']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Require.gif" extraSourceMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='IDB_Component']" extraTargetMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='IDB_Interface']">
             <sourceVariable name="source">
-              <subVariables xsi:type="tool_1:AcceleoVariable" name="sourceRequiresCreation" computationExpression="&lt;% !$source.isA(&quot;Port&quot;) &amp;&amp; !$source.isA(&quot;ControlNode&quot;)%>"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="sourceRequiresCreation" computationExpression="aql:not (source.oclIsKindOf(information::Port))"/>
             </sourceVariable>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -10757,7 +10753,7 @@
               </initialOperation>
             </tools>
           </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="delete capella elements" precondition="&lt;%!($containerView[!filter(&quot;DDiagram&quot;)].eContainer(&quot;DDiagram&quot;).target + $containerView[filter(&quot;DDiagram&quot;)].target.ancestor + $containerView[filter(&quot;DDiagram&quot;)].target + $containerView[!filter(&quot;DDiagram&quot;)].eContainer(&quot;DDiagram&quot;).target.ancestor).nContains($element)%>">
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="delete capella elements" precondition="aql: not self.makeUnion(diagram.target, diagram.target.ancestors())->includes(element)">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
@@ -11103,7 +11099,7 @@
             </initialOperation>
             <edgeView name="edgeView"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="CommunicationLink source" precondition="aql:source.oclIsKindOf(communication::CommunicationLinkExchanger) and not (target.ownedCommunicationLinks->select(ownedCommunicationLink | ownedCommunicationLink.kind = element.kind and ownedCommunicationLink.exchangeItem = element.exchangeItem))" reconnectionKind="RECONNECT_SOURCE">
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="CommunicationLink source" precondition="aql:source.oclIsKindOf(communication::CommunicationLinkExchanger) and target.ownedCommunicationLinks->select(ownedCommunicationLink | ownedCommunicationLink.kind = element.kind and ownedCommunicationLink.exchangeItem = element.exchangeItem)->size() = 0" reconnectionKind="RECONNECT_SOURCE">
             <source name="source"/>
             <target name="target"/>
             <sourceView name="sourceView"/>
@@ -11539,7 +11535,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="delete capella elements" precondition="&lt;%!($containerView[!filter(&quot;DDiagram&quot;)].eContainer(&quot;DDiagram&quot;).target + $containerView[filter(&quot;DDiagram&quot;)].target.ancestor + $containerView[filter(&quot;DDiagram&quot;)].target + $containerView[!filter(&quot;DDiagram&quot;)].eContainer(&quot;DDiagram&quot;).target.ancestor).nContains($element)%>">
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="delete capella elements" precondition="aql: not self.makeUnion(diagram.target, diagram.target.ancestors())->includes(element)">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
@@ -12611,7 +12607,7 @@
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </style>
           </subNodeMappings>
-          <subNodeMappings name="ID_Operation" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interface%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interface%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Allocation%20DirectEdit']" semanticCandidatesExpression="feature:ownedExchangeItemAllocations" semanticElements="&lt;%current+allocatedItem+allocatedItem.ownedElements%>" domainClass="CapellaElement">
+          <subNodeMappings name="ID_Operation" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interface%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interface%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Allocation%20DirectEdit']" semanticCandidatesExpression="feature:ownedExchangeItemAllocations" semanticElements="aql:self.makeUnion(self, self.allocatedItem, self.allocatedItem.ownedElements)" domainClass="CapellaElement">
             <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="aql:self.getOperationLabel(diagram)" labelAlignment="LEFT" sizeComputationExpression="1">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -12978,7 +12974,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="delete capella elements" precondition="&lt;%!($containerView[!filter(&quot;DDiagram&quot;)].eContainer(&quot;DDiagram&quot;).target + $containerView[filter(&quot;DDiagram&quot;)].target.ancestor + $containerView[filter(&quot;DDiagram&quot;)].target + $containerView[!filter(&quot;DDiagram&quot;)].eContainer(&quot;DDiagram&quot;).target.ancestor).nContains($element)%>">
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="delete capella elements" precondition="aql: not self.makeUnion(diagram.target, diagram.target.ancestors())->includes(element)">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
@@ -13118,7 +13114,7 @@
         <nodeMappings xsi:type="description_2:InstanceRoleMapping" name="Instancerole Mapping" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements%20IS']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='rename%20instance%20role']" semanticCandidatesExpression="feature:ownedInstanceRoles" synchronizationLock="true" domainClass="interaction.InstanceRole">
           <borderedNodeMappings xsi:type="description_2:ExecutionMapping" name="default execution" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements%20IS']" semanticCandidatesExpression="aql:self" synchronizationLock="true" domainClass="interaction.InstanceRole" reusedBorderedNodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping']/@borderedNodeMappings[name='default%20execution']/@borderedNodeMappings[name='Execution']/@borderedNodeMappings[name='InteractionState%20Mapping']" startingEndFinderExpression="aql:self" finishingEndFinderExpression="aql:self">
             <borderedNodeMappings xsi:type="description_2:ExecutionMapping" name="Execution" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements%20IS']" semanticCandidatesExpression="aql:self.getExecutionsFromInstanceRoleOrParentExecution()" synchronizationLock="true" domainClass="interaction.Execution" reusedBorderedNodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping']/@borderedNodeMappings[name='default%20execution']/@borderedNodeMappings[name='Execution']" startingEndFinderExpression="feature:start" finishingEndFinderExpression="feature:finish">
-              <borderedNodeMappings xsi:type="description_2:StateMapping" name="InteractionState Mapping" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" semanticCandidatesExpression="&lt;% getInteractionStatesOnExecution () %>" domainClass="interaction.StateFragment" startingEndFinderExpression="feature:start" finishingEndFinderExpression="feature:finish">
+              <borderedNodeMappings xsi:type="description_2:StateMapping" name="InteractionState Mapping" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" semanticCandidatesExpression="aql:self.getInteractionStatesOnExecution()" domainClass="interaction.StateFragment" startingEndFinderExpression="feature:start" finishingEndFinderExpression="feature:finish">
                 <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']" showIcon="false" labelExpression="aql:self.relatedAbstractFunction.name" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']" labelPosition="node" resizeKind="NSEW" width="10" height="3" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Green']"/>
                 <conditionnalStyles predicateExpression="aql:not self.relatedAbstractState->isEmpty() and self.relatedAbstractState->filter(capellacommon::Mode)->size() > 0">
                   <style xsi:type="style:EllipseNodeDescription" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_StateMode_Border_Gray']" showIcon="false" labelExpression="aql:self.relatedAbstractState.name" labelPosition="node" resizeKind="NSEW" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Mode_Gray']" horizontalDiameterComputationExpression="10" verticalDiameterComputationExpression="3">
@@ -14765,7 +14761,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="delete capella elements IS" precondition="&lt;%!($containerView[!filter(&quot;DDiagram&quot;)].eContainer(&quot;DDiagram&quot;).target + $containerView[filter(&quot;DDiagram&quot;)].target.ancestor + $containerView[filter(&quot;DDiagram&quot;)].target + $containerView[!filter(&quot;DDiagram&quot;)].eContainer(&quot;DDiagram&quot;).target.ancestor).nContains($element)%>">
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="delete capella elements IS" precondition="aql: not self.makeUnion(diagram.target, diagram.target.ancestors())->includes(element)">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
@@ -15180,7 +15176,7 @@
         <nodeMappings xsi:type="description_2:InstanceRoleMapping" name="Instancerole Mapping DF" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements%20DF']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='rename%20instance%20role%20DF']" semanticCandidatesExpression="feature:ownedInstanceRoles" synchronizationLock="true" domainClass="interaction.InstanceRole">
           <borderedNodeMappings xsi:type="description_2:ExecutionMapping" name="default execution DF" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements%20DF']" semanticCandidatesExpression="aql:self" synchronizationLock="true" domainClass="interaction.InstanceRole" reusedBorderedNodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20DF']/@borderedNodeMappings[name='default%20execution%20DF']/@borderedNodeMappings[name='Execution%20DF']/@borderedNodeMappings[name='InteractionStateFunction']" startingEndFinderExpression="aql:self" finishingEndFinderExpression="aql:self">
             <borderedNodeMappings xsi:type="description_2:ExecutionMapping" name="Execution DF" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements%20DF']" semanticCandidatesExpression="aql:self.getExecutionsFromInstanceRoleOrParentExecution()" synchronizationLock="true" domainClass="interaction.Execution" reusedBorderedNodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20DF']/@borderedNodeMappings[name='default%20execution%20DF']/@borderedNodeMappings[name='Execution%20DF']" startingEndFinderExpression="feature:start" finishingEndFinderExpression="feature:finish">
-              <borderedNodeMappings xsi:type="description_2:StateMapping" name="InteractionStateFunction" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" semanticCandidatesExpression="&lt;% getInteractionStatesOnExecution () %>" domainClass="interaction.StateFragment" startingEndFinderExpression="feature:start" finishingEndFinderExpression="feature:finish">
+              <borderedNodeMappings xsi:type="description_2:StateMapping" name="InteractionStateFunction" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" semanticCandidatesExpression="aql:self.getInteractionStatesOnExecution()" domainClass="interaction.StateFragment" startingEndFinderExpression="feature:start" finishingEndFinderExpression="feature:finish">
                 <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']" showIcon="false" labelExpression="aql:self.relatedAbstractFunction.name" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']" labelPosition="node" resizeKind="NSEW" width="10" height="3" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Green']"/>
                 <conditionnalStyles predicateExpression="aql:not self.relatedAbstractState->isEmpty() and self.relatedAbstractState->filter(capellacommon::Mode)->size() > 0">
                   <style xsi:type="style:EllipseNodeDescription" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_StateMode_Border_Gray']" showIcon="false" labelExpression="aql:self.relatedAbstractState.name" labelPosition="node" resizeKind="NSEW" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Mode_Gray']" horizontalDiameterComputationExpression="10" verticalDiameterComputationExpression="3">
@@ -16464,7 +16460,7 @@
               </initialOperation>
             </tools>
           </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="delete capella elements DF" precondition="&lt;%!($containerView[!filter(&quot;DDiagram&quot;)].eContainer(&quot;DDiagram&quot;).target + $containerView[filter(&quot;DDiagram&quot;)].target.ancestor + $containerView[filter(&quot;DDiagram&quot;)].target + $containerView[!filter(&quot;DDiagram&quot;)].eContainer(&quot;DDiagram&quot;).target.ancestor).nContains($element)%>">
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="delete capella elements DF" precondition="aql: not self.makeUnion(diagram.target, diagram.target.ancestors())->includes(element)">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
@@ -17016,7 +17012,7 @@
         <nodeMappings xsi:type="description_2:InstanceRoleMapping" name="Instancerole Mapping FS" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='rename%20instance%20role%20FS']" semanticCandidatesExpression="feature:ownedInstanceRoles" synchronizationLock="true" domainClass="interaction.InstanceRole">
           <borderedNodeMappings xsi:type="description_2:ExecutionMapping" name="default execution FS" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" semanticCandidatesExpression="aql:self" synchronizationLock="true" domainClass="interaction.InstanceRole" reusedBorderedNodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20FS']/@borderedNodeMappings[name='default%20execution%20FS']/@borderedNodeMappings[name='Execution%20FS']/@borderedNodeMappings[name='InteractionState%20Mapping%20FS']" startingEndFinderExpression="aql:self" finishingEndFinderExpression="aql:self">
             <borderedNodeMappings xsi:type="description_2:ExecutionMapping" name="Execution FS" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" semanticCandidatesExpression="aql:self.getExecutionsFromInstanceRoleOrParentExecution()" synchronizationLock="true" domainClass="interaction.Execution" reusedBorderedNodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20FS']/@borderedNodeMappings[name='default%20execution%20FS']/@borderedNodeMappings[name='Execution%20FS']" startingEndFinderExpression="feature:start" finishingEndFinderExpression="feature:finish">
-              <borderedNodeMappings xsi:type="description_2:StateMapping" name="InteractionState Mapping FS" semanticCandidatesExpression="&lt;% getInteractionStatesOnExecution () %>" domainClass="interaction.StateFragment" startingEndFinderExpression="feature:start" finishingEndFinderExpression="feature:finish">
+              <borderedNodeMappings xsi:type="description_2:StateMapping" name="InteractionState Mapping FS" semanticCandidatesExpression="aql:self.getInteractionStatesOnExecution()" domainClass="interaction.StateFragment" startingEndFinderExpression="feature:start" finishingEndFinderExpression="feature:finish">
                 <deletionDescription href="context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']"/>
                 <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']" showIcon="false" labelExpression="aql:self.relatedAbstractFunction.name" labelPosition="node" resizeKind="NSEW" width="10" height="3" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Green']">
                   <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -17028,24 +17024,6 @@
                 </conditionnalStyles>
                 <conditionnalStyles predicateExpression="aql:not self.relatedAbstractState->isEmpty() and self.relatedAbstractState->filter(capellacommon::Mode)->size() = 0">
                   <style xsi:type="style:EllipseNodeDescription" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_StateMode_Border_Gray']" showIcon="false" labelExpression="aql:self.relatedAbstractState.name" labelPosition="node" resizeKind="NSEW" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_State_Gray']" horizontalDiameterComputationExpression="10" verticalDiameterComputationExpression="3">
-                    <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                  </style>
-                </conditionnalStyles>
-                <conditionnalStyles predicateExpression="&lt;% relatedAbstractFunction != null &amp;&amp; relatedAbstractFunction.filter (&quot;DecisionFunction&quot;).nSize() != 0 %>">
-                  <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="aql:self.relatedAbstractFunction.name" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/DecisionNode.gif" labelPosition="node" resizeKind="NSEW" width="10" height="3" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Green']">
-                    <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                    <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                  </style>
-                </conditionnalStyles>
-                <conditionnalStyles predicateExpression="&lt;% relatedAbstractFunction != null &amp;&amp; relatedAbstractFunction.filter (&quot;ForkFunction&quot;).nSize() != 0 %>">
-                  <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="aql:self.relatedAbstractFunction.name" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ForkNode.gif" labelPosition="node" resizeKind="NSEW" width="10" height="3" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Green']">
-                    <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                    <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                  </style>
-                </conditionnalStyles>
-                <conditionnalStyles predicateExpression="&lt;% relatedAbstractFunction != null &amp;&amp; relatedAbstractFunction.filter (&quot;JoinFunction&quot;).nSize() != 0 %>">
-                  <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="aql:self.relatedAbstractFunction.name" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/JoinNode.gif" labelPosition="node" resizeKind="NSEW" width="10" height="3" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Green']">
-                    <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                     <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                   </style>
                 </conditionnalStyles>
@@ -17598,7 +17576,7 @@
             <startingEndPredecessor name="messageEndBefore"/>
             <finishingEndPredecessor name="messageEndAfter"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="delete capella elements" precondition="&lt;%!($containerView[!filter(&quot;DDiagram&quot;)].eContainer(&quot;DDiagram&quot;).target + $containerView[filter(&quot;DDiagram&quot;)].target.ancestor + $containerView[filter(&quot;DDiagram&quot;)].target + $containerView[!filter(&quot;DDiagram&quot;)].eContainer(&quot;DDiagram&quot;).target.ancestor).nContains($element)%>">
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="delete capella elements" precondition="aql: not self.makeUnion(diagram.target, diagram.target.ancestors())->includes(element)">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
@@ -18505,7 +18483,7 @@
           <variables name="columnSemantic" documentation="The semantic element corresponding to the column (only available for Intersection Mapping)."/>
           <variables name="root" documentation="The semantic element of the table."/>
           <firstModelOperation xsi:type="tool_1:ChangeContext" browseExpression="aql:lineSemantic">
-            <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%  $lineSemantic.isA(&quot;Function&quot;) || $lineSemantic.isA(&quot;FunctionalChain&quot;) || $lineSemantic.isA(&quot;AbstractCapability&quot;)%>">
+            <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:lineSemantic.oclIsKindOf(fa::FunctionalChain) or lineSemantic.oclIsKindOf(interaction::AbstractCapability)">
               <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:arg0 = '' and lineSemantic.availableInStates->includes(columnSemantic)">
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:lineSemantic.inActiveAnElement(columnSemantic)"/>
               </subModelOperations>
@@ -18586,7 +18564,7 @@
           <variables name="columnSemantic" documentation="The semantic element corresponding to the column (only available for Intersection Mapping)."/>
           <variables name="root" documentation="The semantic element of the table."/>
           <firstModelOperation xsi:type="tool_1:ChangeContext" browseExpression="aql:lineSemantic">
-            <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%  $lineSemantic.isA(&quot;Function&quot;) || $lineSemantic.isA(&quot;FunctionalChain&quot;) || $lineSemantic.isA(&quot;AbstractCapability&quot;)%>">
+            <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:lineSemantic.oclIsKindOf(fa::FunctionalChain) or lineSemantic.oclIsKindOf(interaction::AbstractCapability)">
               <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:arg0 = '' and lineSemantic.availableInStates->includes(columnSemantic)">
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:lineSemantic.inActiveAnElement(columnSemantic)"/>
               </subModelOperations>
@@ -18616,7 +18594,7 @@
           <variables name="columnSemantic" documentation="The semantic element corresponding to the column (only available for Intersection Mapping)."/>
           <variables name="root" documentation="The semantic element of the table."/>
           <firstModelOperation xsi:type="tool_1:ChangeContext" browseExpression="aql:lineSemantic">
-            <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%  $lineSemantic.isA(&quot;Function&quot;) || $lineSemantic.isA(&quot;FunctionalChain&quot;) || $lineSemantic.isA(&quot;AbstractCapability&quot;)%>">
+            <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:lineSemantic.oclIsKindOf(fa::FunctionalChain) or lineSemantic.oclIsKindOf(interaction::AbstractCapability)">
               <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:arg0 = '' and lineSemantic.availableInStates->includes(columnSemantic)">
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:lineSemantic.inActiveAnElement(columnSemantic)"/>
               </subModelOperations>
@@ -18646,7 +18624,7 @@
           <variables name="columnSemantic" documentation="The semantic element corresponding to the column (only available for Intersection Mapping)."/>
           <variables name="root" documentation="The semantic element of the table."/>
           <firstModelOperation xsi:type="tool_1:ChangeContext" browseExpression="aql:lineSemantic">
-            <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%  $lineSemantic.isA(&quot;Function&quot;) || $lineSemantic.isA(&quot;FunctionalChain&quot;) || $lineSemantic.isA(&quot;AbstractCapability&quot;)%>">
+            <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:lineSemantic.oclIsKindOf(fa::FunctionalChain) or lineSemantic.oclIsKindOf(interaction::AbstractCapability)">
               <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:arg0 = '' and lineSemantic.availableInStates->includes(columnSemantic)">
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:lineSemantic.inActiveAnElement(columnSemantic)"/>
               </subModelOperations>

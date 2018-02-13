@@ -148,6 +148,8 @@ public abstract class BasicTestCase extends TestCase implements BasicTestArtefac
     return INPUT_MODEL_FOLDER_NAME;
   }
 
+  public static BasicTestCase currentTest;
+  
   /**
    * Set context before the test case begins:
    * <ul>
@@ -157,6 +159,7 @@ public abstract class BasicTestCase extends TestCase implements BasicTestArtefac
   @Override
   protected void setUp() throws Exception {
     super.setUp();
+    currentTest = this;
     List<String> projectNamesToLoad = getRequiredTestModels();
     if (projectNamesToLoad != null) {
       ModelProviderHelper.getInstance().getModelProvider().requireTestModel(projectNamesToLoad, this);
