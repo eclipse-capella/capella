@@ -22,6 +22,7 @@
             name="%view.name">
       </view>
    </extension>
+   
    <extension
          point="org.polarsys.capella.common.tools.report.appenders.reportlogview.filterOnReportView">
       <reportView
@@ -40,6 +41,36 @@
       <editingDomainListener
             class="org.polarsys.capella.core.ui.reportlog.DeleteMarkerListener">
       </editingDomainListener>
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.menus">
+         
+   		<menuContribution
+            allPopups="false"
+            locationURI="toolbar:org.eclipse.pde.runtime.LogView">
+         <command
+               commandId="org.polarsys.capella.core.ui.reportlog.logcommand"
+               icon="icons/add_element.gif"
+               id="logcommand"
+               style="push">
+         </command>
+      	</menuContribution>
+      
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            id="org.polarsys.capella.core.ui.reportlog.logcommand"
+            name="%logcommand.name">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="org.polarsys.capella.core.ui.reportlog.LogDataHandler"
+            commandId="org.polarsys.capella.core.ui.reportlog.logcommand">
+      </handler>
    </extension>
    
 </plugin>
