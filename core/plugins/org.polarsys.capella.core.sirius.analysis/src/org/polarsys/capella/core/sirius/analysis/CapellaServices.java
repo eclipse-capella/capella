@@ -21,6 +21,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.util.BasicEList;
@@ -185,6 +186,12 @@ import org.polarsys.capella.core.sirius.analysis.tool.StringUtil;
  * Basic Services For Capella models.
  */
 public class CapellaServices {
+  
+  /**
+   * A specific prefix to add for message of {@link OperationCanceledException} that must be rethrown to rollback all the corresponding command.
+   */
+  public static final String RE_THROW_OCE_PREFIX = "-RT-"; //$NON-NLS-1$
+  
 	
 	@SuppressWarnings("restriction")
 	protected static EObjectServices EOBJECT_SERVICES = new EObjectServices();
@@ -2615,9 +2622,13 @@ public class CapellaServices {
       CapellaDeleteCommand command = new CapellaDeleteCommand(TransactionHelper.getExecutionManager(elements),
           elements, false, false, true);
       if (command.canExecute()) {
+        try {
         command.execute();
+        } catch (OperationCanceledException oce) {
+          throw new OperationCanceledException(RE_THROW_OCE_PREFIX);
       }
     }
+  }
   }
 
   public EObject setComponentDiagramTarget(DSemanticDiagram diagram) {
