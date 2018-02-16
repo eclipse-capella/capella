@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,6 +21,7 @@ import java.util.Set;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.command.AbstractCommand;
 import org.eclipse.emf.common.command.Command;
@@ -215,7 +216,11 @@ public class BasicCapellaDeleteCommand extends AbstractCommand {
       // Execute deletion within caller transaction.
       try {
         doExecute();
+      } catch (OperationCanceledException oce) {
+        // If an OperationCanceledException is thrown by the doExecute, we propagate it, to rollback the current command.
+        throw oce;
       } catch (Exception re) {
+        // For other kind of Exception, we only log them.
         ModelHandlerPlugin.getDefault().getLog().log(new Status(IStatus.WARNING, ModelHandlerPlugin.PLUGIN_ID, re.getMessage(), re));
       }
     }
@@ -246,7 +251,8 @@ public class BasicCapellaDeleteCommand extends AbstractCommand {
         if (sendLongRunningEvents) {
           LongRunningListenersRegistry.getInstance().operationAborted(BasicCapellaDeleteCommand.class);
         }
-        return;
+        // If the preDelete detects something wrong, we abort the current command with an OperationCanceledException.
+        throw new OperationCanceledException();
       }
     }
     try {
