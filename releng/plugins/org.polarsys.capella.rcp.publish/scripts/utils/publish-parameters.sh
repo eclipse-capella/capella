@@ -34,10 +34,8 @@ export COMPONENT_NAME=$1
 export BUILD_TYPE=$2
 export BUILD_TYPE_PREFIX=$3
 
-product="$WORKSPACE"/releng/plugins/org.polarsys.capella.rcp.product/capella.product
-
 # The full version (should be taken as an argument)
-export VERSION=$(cat "$product" | sed -rn 's/.*version=\"([0-9\.]+)\.qualifier.*/\1/p')
+export VERSION="1.1.4"
 
 # Streams are of the form 1.0.x: only keep major and minor version number parts
 export STREAM=$(echo "$VERSION" | sed -r -e 's/^([0-9]+\.[0-9]+\.).*$/\1x/')
