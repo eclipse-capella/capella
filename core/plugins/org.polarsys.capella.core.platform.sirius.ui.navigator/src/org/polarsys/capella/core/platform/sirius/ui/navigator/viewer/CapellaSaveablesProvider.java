@@ -173,6 +173,7 @@ public class CapellaSaveablesProvider extends SaveablesProvider implements Sessi
       case SessionListener.DIRTY:
         runnable = new Runnable() {
           @Override
+          @SuppressWarnings("synthetic-access")
           public void run() {
             if (null != saveable[0]) {
               // Fire a new dirty event.
@@ -184,6 +185,7 @@ public class CapellaSaveablesProvider extends SaveablesProvider implements Sessi
       case SessionListener.CLOSED:
         runnable = new Runnable() {
           @Override
+          @SuppressWarnings("synthetic-access")
           public void run() {
             if (null != saveable[0]) {
               // Fire a closed event.
@@ -195,6 +197,7 @@ public class CapellaSaveablesProvider extends SaveablesProvider implements Sessi
       case SessionListener.CLOSING:
         runnable = new Runnable() {
           @Override
+          @SuppressWarnings("synthetic-access")
           public void run() {
             if (null != saveable[0]) {
               // Fire a new dirty state.
@@ -206,6 +209,7 @@ public class CapellaSaveablesProvider extends SaveablesProvider implements Sessi
       case SessionListener.OPENED:
         runnable = new Runnable() {
           @Override
+          @SuppressWarnings("synthetic-access")
           public void run() {
             // Fire a new dirty state.
             fireSaveablesOpened(new Saveable[] { saveable[0] });
