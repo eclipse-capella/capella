@@ -125,22 +125,6 @@ public class CapellaSaveable extends SessionSaveable {
   /**
    * @see org.eclipse.ui.Saveable#getName()
    */
-  /**
-   * Due to https://bugs.eclipse.org/bugs/show_bug.cgi?id=521989
-   */
-  @Override
-  public void doSave(IProgressMonitor monitor) {
-      new CapellaSaveSessionRunnable(getSession()).run(monitor);
-  }
-
-  /**
-   * Due to https://bugs.eclipse.org/bugs/show_bug.cgi?id=521989
-   */
-  @Override
-  public IJobRunnable doSave(IProgressMonitor monitor, IShellProvider shellProvider) throws CoreException {
-      return new CapellaSaveSessionRunnable(getSession());
-  }
-  
   @Override
   public String getName() {
     String result = ICommonConstants.EMPTY_STRING;
