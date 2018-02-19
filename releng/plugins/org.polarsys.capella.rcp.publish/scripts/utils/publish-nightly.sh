@@ -71,9 +71,9 @@ mkdir -p "$TARGET_DIR"/org.polarsys.capella.test.site
 mkdir -p "$TARGET_DIR"/org.polarsys.capella.egf.site
 
 # The actual publication of the p2 repo produced by the build
-cp -dR "$WORKSPACE"/releng/plugins/org.polarsys.capella/site.p2/* "$TARGET_DIR"/org.polarsys.capella.rcp.site
-cp -dR "$WORKSPACE"/releng/plugins/org.polarsys.capella.test.feature/site.p2/* "$TARGET_DIR"/org.polarsys.capella.test.site
-cp -dR "$WORKSPACE"/releng/plugins/org.polarsys.capella.core.egf.feature/site.p2/* "$TARGET_DIR"/org.polarsys.capella.egf.site
+cp -dR "$WORKSPACE"/result/publish/org.polarsys.capella/site.p2/* "$TARGET_DIR"/org.polarsys.capella.rcp.site
+cp -dR "$WORKSPACE"/result/publish/org.polarsys.capella.test.feature/site.p2/* "$TARGET_DIR"/org.polarsys.capella.test.site
+cp -dR "$WORKSPACE"/result/publish/org.polarsys.capella.core.egf.feature/site.p2/* "$TARGET_DIR"/org.polarsys.capella.egf.site
 
 echo "Update site runtime core : $URL_PUBLISH_PREFIX/$BUILD_TYPE/$FULL_VERSION"
 
