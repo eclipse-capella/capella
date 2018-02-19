@@ -1,0 +1,70 @@
+#!/bin/sh
+# ====================================================================
+# Copyright (c) 2017 THALES GLOBAL SERVICES.
+# All rights reserved. This program and the accompanying materials
+# are made available under the terms of the Eclipse Public License v1.0
+# which accompanies this distribution, and is available at
+# http://www.eclipse.org/legal/epl-v10.html
+# 
+# Contributors:
+#      Obeo - initial implementation retrieved from Sirius
+#    Thales - adaptation for Capella
+# ====================================================================
+# ====================================================================
+#
+# This script Publish update site from runtime core build to
+# http://download.polarsys.org/capella/core/updates
+#
+# ====================================================================
+
+
+[ -z "$WORKSPACE" -o -z "$GIT_BRANCH" ] && {
+     echo "Execution aborted.
+
+One or more of the required variables is not set. They are normally
+provided by the Hudson build.
+
+- WORKSPACE  : the build workspace root.
+- GIT_BRANCH : the name fo the Git branch being build/published.
+"
+    exit 1
+}
+
+######################################################################
+# Setup
+######################################################################
+
+# Exit on error
+set -e
+
+# Component name
+export COMPONENT_NAME="products"
+
+# Product project name
+export PRODUCT_PRJ_NAME="org.polarsys.capella.rcp.product"
+
+# Target update project path
+export PRODUCTS_FOLDER="result/publish"
+
+# Get folder path contain this script
+BASEDIR=$(dirname $0)
+
+# Get script name
+SCRIPT_NAME=$(basename $0)
+
+# The type of build being published
+export BUILD_TYPE="nightly"
+export BUILD_TYPE_PREFIX="N"
+
+# Extract global parameters (ie Publish fix part location)
+. $BASEDIR/utils/global-parameters.sh $BUILD_TYPE
+
+# Extract publish parameters (ie VERSION)
+. $BASEDIR/utils/publish-parameters.sh $COMPONENT_NAME $BUILD_TYPE $BUILD_TYPE_PREFIX
+
+# Ensure the target folder exists
+echo "Cmd line : mkdir -p $TARGET_DIR_PRODUCT"
+mkdir -p "$TARGET_DIR_PRODUCT"
+# The actual publication of products
+echo "Cmd line : mv -f "$WORKSPACE/$PRODUCTS_FOLDER/"capella-*.zip $TARGET_DIR_PRODUCT"
+mv -f "$WORKSPACE/$PRODUCTS_FOLDER/"capella-*.zip "$TARGET_DIR_PRODUCT"
