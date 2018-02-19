@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,8 +23,6 @@ import java.util.Set;
 
 import org.eclipse.core.commands.operations.IUndoContext;
 import org.eclipse.core.commands.operations.OperationHistoryFactory;
-import org.eclipse.core.internal.jobs.JobManager;
-import org.eclipse.core.internal.jobs.JobMessages;
 import org.eclipse.core.internal.registry.ExtensionRegistry;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExtensionPoint;
@@ -251,12 +249,6 @@ public class CapellaWorkbenchAdvisor extends IDEWorkbenchAdvisor {
                     Throwable exception = status.getException();
                     if ((exception != null) && (exception.getMessage() != null) && (status.getMessage() != null)
                         && !status.getMessage().equals(exception.getMessage())) {
-                      
-                      if (JobManager.PI_JOBS.equals(status.getPlugin())) {
-                        if (text.startsWith(JobMessages.jobs_internalError.substring(0,30))) {
-                          return WorkbenchMessages.WorkbenchStatusDialog_SeeDetails;
-                        }
-                      }
                       if (text.equals(status.getException().getMessage())) {
                         return WorkbenchMessages.WorkbenchStatusDialog_SeeDetails;
                       }
