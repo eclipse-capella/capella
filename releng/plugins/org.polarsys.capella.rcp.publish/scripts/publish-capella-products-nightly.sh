@@ -68,3 +68,5 @@ mkdir -p "$TARGET_DIR_PRODUCT"
 # The actual publication of products
 echo "Cmd line : mv -f "$WORKSPACE/$PRODUCTS_FOLDER/"capella-*.zip $TARGET_DIR_PRODUCT"
 mv -f "$WORKSPACE/$PRODUCTS_FOLDER/"capella-*.zip "$TARGET_DIR_PRODUCT"
+echo "Cmd line : mv -f "$WORKSPACE/$PRODUCTS_FOLDER/"capella-*.tar.gz $TARGET_DIR_PRODUCT"
+mv -f "$WORKSPACE/$PRODUCTS_FOLDER/"capella-*.tar.gz "$TARGET_DIR_PRODUCT"
