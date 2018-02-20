@@ -807,8 +807,7 @@ public class PhysicalServices {
       RGBValues color = ShapeUtil.getNodeColorStyle(me.getValue());
 
       // Customize internal links
-      Set<DEdge> internalLinks = new HashSet<DEdge>();
-      internalLinks = updatePhysicalPathInternalLinks(me.getKey(), displayedPhysicalLinks, displayedIL, color);
+      Set<DEdge> internalLinks = updatePhysicalPathInternalLinks(me.getKey(), displayedPhysicalLinks, color);
       updatedInternalLinks.addAll(internalLinks);
 
       // Customize physical paths
@@ -892,16 +891,15 @@ public class PhysicalServices {
   }
 
   protected Set<DEdge> updatePhysicalPathInternalLinks(PhysicalPath path,
-      HashMap<PhysicalLink, DEdge> displayedPhysicalLinks, HashMap<PhysicalPath, Set<DEdge>> displayedIL,
-      RGBValues color) {
-    Set<DEdge> internalLinks = new HashSet<DEdge>();
+      HashMap<PhysicalLink, DEdge> displayedPhysicalLinks, RGBValues color) {
+    Set<DEdge> internalLinks = new HashSet<>();
 
     // Iterate over involved physical links
     Collection<PhysicalPathInvolvement> flatInvolvementsOf = PhysicalPathExt.getFlatInvolvementsOf(path,
         CsPackage.Literals.PHYSICAL_LINK);
     int size = flatInvolvementsOf.size();
     PhysicalPathInvolvement[] flatInvolvements = flatInvolvementsOf.toArray(new PhysicalPathInvolvement[size]);
-    for (int index = 0; index < size; index++) {
+    for (int index = 0; index < size-1; index++) {
       PhysicalLink currentLink = (PhysicalLink) flatInvolvements[index].getInvolved();
       boolean created = false;
       if (displayedPhysicalLinks.containsKey(currentLink)) {
@@ -918,7 +916,7 @@ public class PhysicalServices {
               // Display an internal link from previousLink.target to
               // currentLink.source
               if ((previousEdge != null) && isValidNodeForInternalLink(previousEdge.getTargetNode())
-                  && isValidInternalLinkEdge(previousEdge.getTargetNode(), currentSourceNode)) {
+                  && isValidInternalLinkEdge(previousEdge.getTargetNode(), currentSourceNode, internalLinks)) {
                 internalLinks.add(
                     retrieveInternalLink((DNode) previousEdge.getTargetNode(), (DNode) currentSourceNode, path, color));
                 created = true;
@@ -926,7 +924,7 @@ public class PhysicalServices {
               // Display an internal link from previousLink.source to
               // currentLink.target
               else if ((previousEdge != null) && isValidNodeForInternalLink(previousEdge.getSourceNode())
-                  && isValidInternalLinkEdge(previousEdge.getSourceNode(), currentTargetNode)) {
+                  && isValidInternalLinkEdge(previousEdge.getSourceNode(), currentTargetNode, internalLinks)) {
                 internalLinks.add(
                     retrieveInternalLink((DNode) previousEdge.getSourceNode(), (DNode) currentTargetNode, path, color));
                 created = true;
@@ -940,7 +938,7 @@ public class PhysicalServices {
               // Display an internal link from currentLink.target to
               // nextLink.source
               if ((nextEdge != null) && isValidNodeForInternalLink(nextEdge.getSourceNode())
-                  && isValidInternalLinkEdge(currentTargetNode, nextEdge.getSourceNode())) {
+                  && isValidInternalLinkEdge(currentTargetNode, nextEdge.getSourceNode(), internalLinks)) {
                 internalLinks.add(
                     retrieveInternalLink((DNode) currentTargetNode, (DNode) nextEdge.getSourceNode(), path, color));
                 created = true;
@@ -948,7 +946,7 @@ public class PhysicalServices {
               // Display an internal link from currentLink.source to
               // nextLink.target
               else if ((nextEdge != null) && isValidNodeForInternalLink(nextEdge.getTargetNode())
-                  && isValidInternalLinkEdge(currentSourceNode, nextEdge.getTargetNode())) {
+                  && isValidInternalLinkEdge(currentSourceNode, nextEdge.getTargetNode(), internalLinks)) {
                 internalLinks.add(
                     retrieveInternalLink((DNode) currentSourceNode, (DNode) nextEdge.getTargetNode(), path, color));
                 created = true;
@@ -959,15 +957,17 @@ public class PhysicalServices {
             if (!created && previousLink != null && displayedPhysicalLinks.containsKey(previousLink)) {
               DEdge edge = displayedPhysicalLinks.get(previousLink);
               if ((edge != null) && isValidNodeForInternalLink(edge.getSourceNode())
-                  && isValidInternalLinkEdge(edge.getSourceNode(), currentSourceNode)) {
+                  && isValidInternalLinkEdge(edge.getSourceNode(), currentSourceNode, internalLinks)) {
                 internalLinks
                     .add(retrieveInternalLink((DNode) edge.getSourceNode(), (DNode) currentSourceNode, path, color));
+                created = true;
               }
               // If still not created try previousLink.target to currentLink.target
               else if ((edge != null) && isValidNodeForInternalLink(edge.getTargetNode())
-                  && isValidInternalLinkEdge(edge.getTargetNode(), currentTargetNode)) {
+                  && isValidInternalLinkEdge(edge.getTargetNode(), currentTargetNode, internalLinks)) {
                 internalLinks
                     .add(retrieveInternalLink((DNode) edge.getTargetNode(), (DNode) currentTargetNode, path, color));
+                created = true;
               }
             }
             
@@ -975,13 +975,13 @@ public class PhysicalServices {
             if (!created && nextLink != null && displayedPhysicalLinks.containsKey(nextLink)) {
               DEdge edge = displayedPhysicalLinks.get(nextLink);
               if ((edge != null) && isValidNodeForInternalLink(edge.getSourceNode())
-                  && isValidInternalLinkEdge(edge.getSourceNode(), currentSourceNode)) {
+                  && isValidInternalLinkEdge(edge.getSourceNode(), currentSourceNode, internalLinks)) {
                 internalLinks
                     .add(retrieveInternalLink((DNode) edge.getSourceNode(), (DNode) currentSourceNode, path, color));
               }
               // If still not created try nextLink.target to currentLink.target
               else if ((edge != null) && isValidNodeForInternalLink(edge.getTargetNode())
-                  && isValidInternalLinkEdge(edge.getTargetNode(), currentTargetNode)) {
+                  && isValidInternalLinkEdge(edge.getTargetNode(), currentTargetNode, internalLinks)) {
                 internalLinks
                     .add(retrieveInternalLink((DNode) edge.getTargetNode(), (DNode) currentTargetNode, path, color));
               }
@@ -997,19 +997,27 @@ public class PhysicalServices {
     return internalLinks;
   }
 
-  private boolean isValidInternalLinkEdge(EdgeTarget currentSourceNode, EdgeTarget currentTargetNode) {
+  private boolean isValidInternalLinkEdge(EdgeTarget currentSourceNode, EdgeTarget currentTargetNode, Set<DEdge> internalLinks) {
     if (currentSourceNode == null) {
       return false;
     }
     if (currentTargetNode == null) {
       return false;
     }
+    Set<EdgeTarget> edgeTargets = new HashSet<>();
+    for(DEdge edge : internalLinks){
+      edgeTargets.add(edge.getSourceNode());
+      edgeTargets.add(edge.getTargetNode());
+    }
 
+    // Check if currentSourceNode and currentTargetNode are not already used for internal links
+    boolean alreadyUsed = edgeTargets.contains(currentSourceNode) || edgeTargets.contains(currentTargetNode);
+    
     EObject sourceParent = currentSourceNode.eContainer();
     EObject targetParent = currentTargetNode.eContainer();
     // Internal links are valid on same parent
     if ((sourceParent != null) && (targetParent != null)) {
-      return sourceParent.equals(targetParent);
+        return sourceParent.equals(targetParent)&& !alreadyUsed;
     }
     return true;
   }
