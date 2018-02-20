@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,7 +14,9 @@ package org.polarsys.capella.common.ui.services.commands;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.ui.IWorkbenchPart;
+import org.eclipse.ui.IWorkbenchPartSite;
 import org.eclipse.ui.IWorkbenchWindow;
 
 /**
@@ -35,8 +37,22 @@ public abstract class AbstractLocateInWorkbenchPartHandler extends
       return null;
     }
     // Get the current selection from the active part.
-		handleSelection(activePart.getSite().getSelectionProvider()
-				.getSelection(), activePart, event);
+    IWorkbenchPartSite site = activePart.getSite();
+    if (null == site) {
+      return null;
+    }
+    
+    ISelectionProvider selectionProvider = site.getSelectionProvider();
+    if (null == selectionProvider) {
+      return null;
+    }
+    
+    ISelection selection = selectionProvider.getSelection();
+    if (null == selection) {
+      return null;
+    }
+    
+		handleSelection(selection, activePart, event);
     return null;
   }
 
