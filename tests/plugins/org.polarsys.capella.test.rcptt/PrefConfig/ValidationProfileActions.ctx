@@ -5,8 +5,8 @@ Element-Name: ValidationProfileActions
 Element-Type: context
 Element-Version: 2.0
 Id: _ZR3fQKKHEeaAAPJPtfviTA
-Runtime-Version: 2.3.0.201712190725
-Save-Time: 1/23/18 1:55 PM
+Runtime-Version: 2.1.0.201605312320
+Save-Time: 2/22/18 1:44 PM
 
 ------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
 Content-Type: text/ecl
@@ -484,9 +484,9 @@ proc "checkUnchangedPreferencesProject1" [val projectName] {
 	    // CAUTION this option is the same as the default one !!!
 	    with [get-group "Logical Components to Physical Components"] {
 	        get-button "Propagate logical component breakdown in physical architecture" | get-property selected 
-	            | equals true | verify-true
-	        get-button "Propagate only leaf logical component in physical architecture" | get-property selected 
 	            | equals false | verify-true
+	        get-button "Propagate only leaf logical component in physical architecture" | get-property selected 
+	            | equals true | verify-true
 	    }
 	    with [get-group "Interface generation"] {
 	        get-button "Propagate Exchange Items from Functional Exchange to Function Ports" | get-property selected | equals false 
