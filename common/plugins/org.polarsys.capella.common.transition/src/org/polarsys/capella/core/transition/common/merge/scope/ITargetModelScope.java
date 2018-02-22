@@ -22,4 +22,10 @@ public interface ITargetModelScope {
   public boolean isDirty();
   
   Collection<EObject> retrieveTransformedElementsFromTarget(EObject targetElement);
+  
+  interface Edit {
+    
+    public void setDirty(boolean dirty);
+
+  }
 }

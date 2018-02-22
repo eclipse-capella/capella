@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,8 +16,10 @@ import java.util.Collection;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.diffmerge.api.diff.IDifference;
+import org.eclipse.emf.diffmerge.api.scopes.IEditableModelScope;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.handlers.merge.MergeHandlerHelper;
+import org.polarsys.capella.core.transition.common.merge.scope.ITargetModelScope;
 import org.polarsys.kitalpha.cadence.core.api.parameter.ActivityParameters;
 import org.polarsys.kitalpha.transposer.api.ITransposerWorkflow;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
@@ -48,6 +50,11 @@ public class DifferencesMergingActivity extends AbstractActivity implements ITra
       return Status.OK_STATUS;
     }
 
+    IEditableModelScope targetScope = (IEditableModelScope) context.get(ITransitionConstants.MERGE_TARGET_SCOPE);
+    if (targetScope instanceof ITargetModelScope.Edit) {
+      ((ITargetModelScope.Edit) targetScope).setDirty(false);
+    }
+    
     return Status.CANCEL_STATUS;
 
   }
