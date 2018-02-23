@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,40 +29,43 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 /**
  * A model scope covering target model scope.
  */
-public class TargetModelScope extends ContextModelScope implements ITargetModelScope {
+public class TargetModelScope extends ContextModelScope implements ITargetModelScope, ITargetModelScope.Edit {
 
   public TargetModelScope(List<? extends EObject> elements, IContext context) {
     super(elements, context);
   }
   
-
   protected boolean dirty;
   
   public boolean isDirty() {
     return dirty;
   }
   
+  public void setDirty(boolean dirty) {
+    this.dirty = dirty;
+  }
+  
   @Override
   public boolean add(EObject element) {
-    dirty = true;
+    setDirty(true);
     return super.add(element);
   }
 
   @Override
   public boolean add(EObject element, boolean includeChildren) {
-    dirty = true;
+    setDirty(true);
     return super.add(element, includeChildren);
   }
 
   @Override
   public boolean add(EObject source, EReference reference, EObject value) {
-    dirty = true;
+    setDirty(true);
     return super.add(source, reference, value);
   }
 
   @Override
   public boolean remove(EObject element) {
-    dirty = true;
+    setDirty(true);
     return super.remove(element);
   }
 
@@ -74,31 +77,31 @@ public class TargetModelScope extends ContextModelScope implements ITargetModelS
 
   @Override
   public boolean add(EObject source_p, EAttribute attribute_p, Object value_p) {
-    dirty = true;
+    setDirty(true);
     return super.add(source_p, attribute_p, value_p);
   }
 
   @Override
   public Object move(EObject source_p, EStructuralFeature feature_p, int newPosition_p, int oldPosition_p) {
-    dirty = true;
+    setDirty(true);
     return super.move(source_p, feature_p, newPosition_p, oldPosition_p);
   }
 
   @Override
   public boolean remove(EObject source_p, EAttribute attribute_p, Object value_p) {
-    dirty = true;
+    setDirty(true);
     return super.remove(source_p, attribute_p, value_p);
   }
 
   @Override
   public boolean remove(EObject source_p, EReference reference_p, EObject value_p) {
-    dirty = true;
+    setDirty(true);
     return super.remove(source_p, reference_p, value_p);
   }
 
   @Override
   protected boolean removeValue(EObject source_p, EStructuralFeature feature_p, Object value_p) {
-    dirty = true;
+    setDirty(true);
     return super.removeValue(source_p, feature_p, value_p);
   }
 
@@ -152,5 +155,6 @@ public class TargetModelScope extends ContextModelScope implements ITargetModelS
 
     return object;
   }
+
 
 }
