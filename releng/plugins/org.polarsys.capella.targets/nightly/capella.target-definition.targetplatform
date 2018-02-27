@@ -23,7 +23,7 @@ location eclipse-releases-neon "http://download.eclipse.org/releases/neon" {
 	com.ibm.icu
 }
 
-location sirius-6.0.0 "http://download.eclipse.org/sirius/updates/stable/6.0.0-S20180113-114649/neon" {
+location sirius-6.0.0 "http://download.eclipse.org/sirius/updates/stable/6.0.0-S20180404-103514/neon" {
 	org.eclipse.sirius.doc.feature.feature.group
 	org.eclipse.sirius.runtime.feature.group
 	org.eclipse.sirius.runtime.source.feature.group
