@@ -21,7 +21,10 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
+import org.eclipse.core.runtime.Assert;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
@@ -47,6 +50,7 @@ import org.polarsys.capella.common.helpers.SimpleOrientedGraph;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
 import org.polarsys.capella.core.business.queries.capellacore.BusinessQueriesProvider;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.data.capellacore.InvolvedElement;
 import org.polarsys.capella.core.data.cs.AbstractActor;
 import org.polarsys.capella.core.data.cs.AbstractDeploymentLink;
 import org.polarsys.capella.core.data.cs.AbstractPathInvolvedElement;
@@ -889,9 +893,10 @@ public class PhysicalServices {
 
     return result;
   }
-
+  
   protected Set<DEdge> updatePhysicalPathInternalLinks(PhysicalPath path,
       HashMap<PhysicalLink, DEdge> displayedPhysicalLinks, RGBValues color) {
+
     Set<DEdge> internalLinks = new HashSet<>();
 
     // Iterate over involved physical links
@@ -900,90 +905,39 @@ public class PhysicalServices {
     int size = flatInvolvementsOf.size();
     PhysicalPathInvolvement[] flatInvolvements = flatInvolvementsOf.toArray(new PhysicalPathInvolvement[size]);
     for (int index = 0; index < size-1; index++) {
-      PhysicalLink currentLink = (PhysicalLink) flatInvolvements[index].getInvolved();
-      boolean created = false;
+      PhysicalPathInvolvement physicalPathInvolvement = flatInvolvements[index];
+      PhysicalLink currentLink = (PhysicalLink) physicalPathInvolvement.getInvolved();
       if (displayedPhysicalLinks.containsKey(currentLink)) {
         DEdge currentEdge = displayedPhysicalLinks.get(currentLink);
-        if (currentEdge != null) {
-          EdgeTarget currentSourceNode = currentEdge.getSourceNode();
-          EdgeTarget currentTargetNode = currentEdge.getTargetNode();
-          if (isValidNodeForInternalLink(currentSourceNode)) {
-
-            // Handle previous and current
-            PhysicalLink previousLink = index > 0 ? (PhysicalLink) flatInvolvements[index - 1].getInvolved() : null;
-            if (previousLink != null && displayedPhysicalLinks.containsKey(previousLink)) {
-              DEdge previousEdge = displayedPhysicalLinks.get(previousLink);
-              // Display an internal link from previousLink.target to
-              // currentLink.source
-              if ((previousEdge != null) && isValidNodeForInternalLink(previousEdge.getTargetNode())
-                  && isValidInternalLinkEdge(previousEdge.getTargetNode(), currentSourceNode, internalLinks)) {
-                internalLinks.add(
-                    retrieveInternalLink((DNode) previousEdge.getTargetNode(), (DNode) currentSourceNode, path, color));
-                created = true;
-              }
-              // Display an internal link from previousLink.source to
-              // currentLink.target
-              else if ((previousEdge != null) && isValidNodeForInternalLink(previousEdge.getSourceNode())
-                  && isValidInternalLinkEdge(previousEdge.getSourceNode(), currentTargetNode, internalLinks)) {
-                internalLinks.add(
-                    retrieveInternalLink((DNode) previousEdge.getSourceNode(), (DNode) currentTargetNode, path, color));
-                created = true;
-              }
-            }
-
+        InvolvedElement nextInvolved = getRelevantInvolvedElement(physicalPathInvolvement, CsPackage.eINSTANCE.getPhysicalPathInvolvement_NextInvolvements());
+        if (currentEdge != null && nextInvolved != null) {
+         
+          // Get port node from the current link which is on the next involvement
+          EdgeTarget firstNode = getPortOnInvolved(currentEdge, nextInvolved);
+          
+          // Get port node from the next link which is on the next involvement
+          if (isValidNodeForInternalLink(firstNode)) {
             // Handle current and next
-            PhysicalLink nextLink = index + 1 == size ? null : (PhysicalLink) flatInvolvements[index + 1].getInvolved();
+            PhysicalPathInvolvement nextPhysicalPathInvolvement = flatInvolvements[index + 1];
+            PhysicalLink nextLink = index + 1 == size ? null : (PhysicalLink) nextPhysicalPathInvolvement.getInvolved();
             if (nextLink != null && displayedPhysicalLinks.containsKey(nextLink)) {
               DEdge nextEdge = displayedPhysicalLinks.get(nextLink);
-              // Display an internal link from currentLink.target to
-              // nextLink.source
-              if ((nextEdge != null) && isValidNodeForInternalLink(nextEdge.getSourceNode())
-                  && isValidInternalLinkEdge(currentTargetNode, nextEdge.getSourceNode(), internalLinks)) {
-                internalLinks.add(
-                    retrieveInternalLink((DNode) currentTargetNode, (DNode) nextEdge.getSourceNode(), path, color));
-                created = true;
-              }
-              // Display an internal link from currentLink.source to
-              // nextLink.target
-              else if ((nextEdge != null) && isValidNodeForInternalLink(nextEdge.getTargetNode())
-                  && isValidInternalLinkEdge(currentSourceNode, nextEdge.getTargetNode(), internalLinks)) {
-                internalLinks.add(
-                    retrieveInternalLink((DNode) currentSourceNode, (DNode) nextEdge.getTargetNode(), path, color));
-                created = true;
-              }
-            }
-
-            // If not created try previsouLink.source to currentLink.source
-            if (!created && previousLink != null && displayedPhysicalLinks.containsKey(previousLink)) {
-              DEdge edge = displayedPhysicalLinks.get(previousLink);
-              if ((edge != null) && isValidNodeForInternalLink(edge.getSourceNode())
-                  && isValidInternalLinkEdge(edge.getSourceNode(), currentSourceNode, internalLinks)) {
-                internalLinks
-                    .add(retrieveInternalLink((DNode) edge.getSourceNode(), (DNode) currentSourceNode, path, color));
-                created = true;
-              }
-              // If still not created try previousLink.target to currentLink.target
-              else if ((edge != null) && isValidNodeForInternalLink(edge.getTargetNode())
-                  && isValidInternalLinkEdge(edge.getTargetNode(), currentTargetNode, internalLinks)) {
-                internalLinks
-                    .add(retrieveInternalLink((DNode) edge.getTargetNode(), (DNode) currentTargetNode, path, color));
-                created = true;
-              }
-            }
-            
-            // If not created try nextLink.source to currentLink.source
-            if (!created && nextLink != null && displayedPhysicalLinks.containsKey(nextLink)) {
-              DEdge edge = displayedPhysicalLinks.get(nextLink);
-              if ((edge != null) && isValidNodeForInternalLink(edge.getSourceNode())
-                  && isValidInternalLinkEdge(edge.getSourceNode(), currentSourceNode, internalLinks)) {
-                internalLinks
-                    .add(retrieveInternalLink((DNode) edge.getSourceNode(), (DNode) currentSourceNode, path, color));
-              }
-              // If still not created try nextLink.target to currentLink.target
-              else if ((edge != null) && isValidNodeForInternalLink(edge.getTargetNode())
-                  && isValidInternalLinkEdge(edge.getTargetNode(), currentTargetNode, internalLinks)) {
-                internalLinks
-                    .add(retrieveInternalLink((DNode) edge.getTargetNode(), (DNode) currentTargetNode, path, color));
+              InvolvedElement previousInvolvedElement = getRelevantInvolvedElement(nextPhysicalPathInvolvement, CsPackage.eINSTANCE.getPhysicalPathInvolvement_PreviousInvolvements());
+              if(nextEdge != null && previousInvolvedElement != null){
+                EdgeTarget secondNode = getPortOnInvolved(nextEdge, previousInvolvedElement);
+                if (isValidNodeForInternalLink(secondNode)
+                    && isValidInternalLinkEdge(firstNode, secondNode, internalLinks)) {
+                  internalLinks
+                      .add(retrieveInternalLink((DNode)firstNode, (DNode)secondNode, path, color));
+                }else {
+                  InvolvedElement previousInvolved = getRelevantInvolvedElement(physicalPathInvolvement, CsPackage.eINSTANCE.getPhysicalPathInvolvement_PreviousInvolvements());
+                  firstNode = getPortOnInvolved(currentEdge, previousInvolved);
+                  if(isValidNodeForInternalLink(firstNode)&& isValidNodeForInternalLink(secondNode)
+                    && isValidInternalLinkEdge(firstNode, secondNode, internalLinks)){
+                    internalLinks
+                    .add(retrieveInternalLink((DNode)firstNode, (DNode)secondNode, path, color));
+                  }
+                }
               }
             }
           }
@@ -995,29 +949,48 @@ public class PhysicalServices {
       internalLinks.remove(null);
     }
     return internalLinks;
+  
+  }
+
+  private InvolvedElement getRelevantInvolvedElement(PhysicalPathInvolvement physicalPathInvolvement, EStructuralFeature feature) {
+    Assert.isLegal(feature.isMany());
+    @SuppressWarnings("unchecked")
+    EList<Object>  values = (EList<Object>)physicalPathInvolvement.eGet(feature);
+    if(values != null && !values.isEmpty()){
+      Object value = values.get(0);
+      if(value instanceof PhysicalPathInvolvement){
+        return ((PhysicalPathInvolvement)value).getInvolved();
+      }
+    }
+   return null;
+  }
+
+  private EdgeTarget getPortOnInvolved(DEdge edge, InvolvedElement involved) {
+    EdgeTarget sourceNode = edge.getSourceNode();
+    if(sourceNode.eContainer() instanceof DNodeContainer && (((DNodeContainer)sourceNode.eContainer()).getTarget()).equals(involved)){
+        return sourceNode;
+    }
+    EdgeTarget targetNode = edge.getTargetNode();
+    if(targetNode.eContainer() instanceof DNodeContainer && (((DNodeContainer)targetNode.eContainer()).getTarget()).equals(involved)){
+        return targetNode;
+    }
+    return null;
   }
 
   private boolean isValidInternalLinkEdge(EdgeTarget currentSourceNode, EdgeTarget currentTargetNode, Set<DEdge> internalLinks) {
+    internalLinks.remove(null);
     if (currentSourceNode == null) {
       return false;
     }
     if (currentTargetNode == null) {
       return false;
     }
-    Set<EdgeTarget> edgeTargets = new HashSet<>();
-    for(DEdge edge : internalLinks){
-      edgeTargets.add(edge.getSourceNode());
-      edgeTargets.add(edge.getTargetNode());
-    }
-
-    // Check if currentSourceNode and currentTargetNode are not already used for internal links
-    boolean alreadyUsed = edgeTargets.contains(currentSourceNode) || edgeTargets.contains(currentTargetNode);
     
     EObject sourceParent = currentSourceNode.eContainer();
     EObject targetParent = currentTargetNode.eContainer();
     // Internal links are valid on same parent
     if ((sourceParent != null) && (targetParent != null)) {
-        return sourceParent.equals(targetParent)&& !alreadyUsed;
+        return sourceParent.equals(targetParent);
     }
     return true;
   }
