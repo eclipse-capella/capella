@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -58,23 +58,27 @@ public class FixDAnnotationsHelper extends AbstractFixDiagramHelper {
     for (DView dView : dAnalysis.getOwnedViews()) {
       for (DRepresentationDescriptor representationDesc : dView.getOwnedRepresentationDescriptors()) {
         DRepresentation representation = representationDesc.getRepresentation();
-
-        for (String oldAnnotationID : dAnnotationMigrationMapping.keySet()) {
-          DAnnotation oldAnnotation = RepresentationHelper.getAnnotation(oldAnnotationID, representation);
-
-          // Old annotation is present
-          if (oldAnnotation != null) {
-            String newAnnotationID = dAnnotationMigrationMapping.get(oldAnnotationID);
-            DAnnotation newAnnotation = RepresentationHelper.getAnnotation(newAnnotationID, representation);
-
-            if (newAnnotation == null) {
-              // No new annotation found, just replace old annotation by new annotation
-              oldAnnotation.setSource(newAnnotationID);
-            } else {
-              // New annotation found, remove old annotation and preserve new one.
-              RepresentationHelper.removeAnnotation(oldAnnotationID, representation);
+        
+        // Bug 1975 - NPE while Fix Diagram Annotations
+        // https://bugs.polarsys.org/show_bug.cgi?id=1975
+        if (representation != null) {
+          for (String oldAnnotationID : dAnnotationMigrationMapping.keySet()) {
+            DAnnotation oldAnnotation = RepresentationHelper.getAnnotation(oldAnnotationID, representation);
+  
+            // Old annotation is present
+            if (oldAnnotation != null) {
+              String newAnnotationID = dAnnotationMigrationMapping.get(oldAnnotationID);
+              DAnnotation newAnnotation = RepresentationHelper.getAnnotation(newAnnotationID, representation);
+  
+              if (newAnnotation == null) {
+                // No new annotation found, just replace old annotation by new annotation
+                oldAnnotation.setSource(newAnnotationID);
+              } else {
+                // New annotation found, remove old annotation and preserve new one.
+                RepresentationHelper.removeAnnotation(oldAnnotationID, representation);
+              }
+              incrementCounter(diagramToModifyObjectCount, representation);
             }
-            incrementCounter(diagramToModifyObjectCount, representation);
           }
         }
       }
