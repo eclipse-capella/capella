@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,6 +12,7 @@ package org.polarsys.capella.core.sirius.ui.actions;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
@@ -194,7 +195,6 @@ public class CloseSessionAction extends BaseSelectionListenerAction {
         SessionCloseManager.closeUISession(uiSession, saveIsNeeded);
       }
       SessionCloseManager.closeSession(session);
-      SessionCloseManager.cleanSession(session);
     }
 
     /**
