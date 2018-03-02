@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -209,9 +209,8 @@ public class CloseSessionAction extends BaseSelectionListenerAction {
 
     protected void saveSession(Session session) {
       Collection<IFile> files = new ArrayList<IFile>();
-      if (SessionCloseManager.isSaveable(session,
-          files)/* SessionHelper.areSessionResourcesSaveable(session, files) */) {
-        SessionCloseManager.saveSession(session);// session.save(new NullProgressMonitor());
+      if (SessionCloseManager.isSaveable(session, files)) {
+        SessionCloseManager.saveSession(session);
       } else {
         String msg;
         msg = Messages.unableToSaveDialog_TopMsg;
@@ -229,19 +228,17 @@ public class CloseSessionAction extends BaseSelectionListenerAction {
     protected void closeSession(Session session, boolean saveIsNeeded) {
       IEditingSession uiSession = SessionUIManager.INSTANCE.getUISession(session);
       if (null != uiSession) {
-        SessionCloseManager.closeUISession(uiSession, saveIsNeeded);// uiSession.close(saveIsNeeded);
+        SessionCloseManager.closeUISession(uiSession, saveIsNeeded);
       }
       // Close editors not yet registered with an UI session
       Display.getDefault().syncExec(new CloseOthersEditorRunnable(session, saveIsNeeded));
       // Remove the UI session.
       if (uiSession != null) {
-        SessionCloseManager.removeUiSession(uiSession);// SessionUIManager.INSTANCE.remove(uiSession);
+        SessionCloseManager.removeUiSession(uiSession);
       }
-      // sessionsToClose.add(session);
       if (session.isOpen()) {
-        SessionCloseManager.closeSession(session);// session.close(null);
+        SessionCloseManager.closeSession(session);
       }
-      SessionCloseManager.cleanSession(session);
     }
 
     /**
@@ -253,7 +250,7 @@ public class CloseSessionAction extends BaseSelectionListenerAction {
 
       // Ask user confirmation, if needed.
       int choice = ISaveablePart2.NO;
-      if (SessionCloseManager.isDirty(session)/* SessionStatus.DIRTY.equals(session.getStatus()) */) {
+      if (SessionCloseManager.isDirty(session)) {
         if (showDialog) {
           // Show a dialog.
           choice = SWTUtil.showSaveDialog(session, "Session", true); //$NON-NLS-1$
