@@ -23,7 +23,6 @@ import org.eclipse.emf.common.ui.URIEditorInput;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.business.api.session.Session;
@@ -32,7 +31,6 @@ import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.common.ui.tools.api.util.SWTUtil;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
@@ -47,6 +45,7 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.polarsys.capella.common.ef.command.AbstractNonDirtyingCommand;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.core.sirius.ui.Messages;
+import org.polarsys.capella.core.sirius.ui.SiriusUIPlugin;
 import org.polarsys.capella.core.sirius.ui.closeproject.SessionCloseManager;
 import org.polarsys.capella.core.sirius.ui.helper.SessionHelper;
 
@@ -103,16 +102,9 @@ public class CloseSessionAction extends BaseSelectionListenerAction {
     IRunnableWithProgress closeSessionOperation = new CloseSessionOperation(sessions);
 
     Shell activeShell = PlatformUI.getWorkbench().getDisplay().getActiveShell();
-    ProgressMonitorDialog monitor = new ProgressMonitorDialog(activeShell);
-    try {
-      monitor.run(false, false, closeSessionOperation);
-    } catch (final InvocationTargetException ite) {
-      SiriusPlugin.getDefault().error("the program was not able close the session", ite); //$NON-NLS-1$
-    } catch (final InterruptedException ie) {
-      SiriusPlugin.getDefault().warning("the close session action was interrupted", ie); //$NON-NLS-1$
-    }
+    SiriusUIPlugin.getDefault().runSaveOperation(activeShell, closeSessionOperation);
   }
-
+  
   /**
    * Get the sessions from internal structured selection.
    *

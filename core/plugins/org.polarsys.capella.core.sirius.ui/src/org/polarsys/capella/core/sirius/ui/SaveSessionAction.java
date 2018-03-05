@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,10 +19,7 @@ import java.util.List;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.business.api.session.Session;
@@ -31,9 +28,6 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.actions.BaseSelectionListenerAction;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
-import org.eclipse.ui.statushandlers.StatusManager;
-import org.osgi.framework.Bundle;
-import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.core.sirius.ui.helper.SessionHelper;
 
@@ -84,50 +78,28 @@ public class SaveSessionAction extends BaseSelectionListenerAction {
         unsaveableSessions.add(session);
       }
     }
-
-    final Shell activeShell = Display.getCurrent().getActiveShell();
-    ProgressMonitorDialog monitor = new ProgressMonitorDialog(activeShell);
-    try {
-      // Save sessions runnable.
-      IRunnableWithProgress saveSessionOperation = new IRunnableWithProgress() {
-        public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
-          for (Session session : saveableSessions) {
-            session.save(monitor);
-          }
+    
+    // Save sessions runnable.
+    IRunnableWithProgress saveSessionOperation = new IRunnableWithProgress() {
+      public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
+        for (Session session : saveableSessions) {
+          session.save(monitor);
         }
-      };
+      }
+    };
+    
+    Shell activeShell = Display.getCurrent().getActiveShell();
+    SiriusUIPlugin.getDefault().runSaveOperation(activeShell, saveSessionOperation);
 
-      monitor.run(false, false, saveSessionOperation);
-
-      if (!unsaveableSessions.isEmpty()) {
-        String msg;
-        msg = Messages.unableToSaveDialog_TopMsg;
-        for (IFile file : files) {
-          msg += file.toString() + ICommonConstants.EOL_CHARACTER;
-        }
-
-        MessageDialog.openWarning(activeShell, Messages.unableToSaveDialog_Title, msg);
+    if (!unsaveableSessions.isEmpty()) {
+      String msg;
+      msg = Messages.unableToSaveDialog_TopMsg;
+      for (IFile file : files) {
+        msg += file.toString() + ICommonConstants.EOL_CHARACTER;
       }
 
-    } catch (InvocationTargetException ite) {
-      StatusManager.getManager().handle(
-          new Status(IStatus.ERROR, getBundleId(ite.getCause()), ite.getCause().getMessage(), ite.getCause()),
-          StatusManager.BLOCK);
-    } catch (InterruptedException ie) {
-      StatusManager.getManager().handle(new Status(IStatus.ERROR, getBundleId(ie), ie.getMessage(), ie));
+      MessageDialog.openWarning(activeShell, Messages.unableToSaveDialog_Title, msg);
     }
   }
 
-  /**
-   * @param obj
-   * @return the bundle containing the object's class or the class's name if it's not contained in a bundle
-   */
-  private String getBundleId(Object obj) {
-    Bundle bundle = FrameworkUtil.getBundle(obj.getClass());
-    if (bundle != null)
-    {
-      return bundle.getSymbolicName();
-    }
-    return obj.getClass().getCanonicalName();
-  }
 }
