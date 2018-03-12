@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -32,8 +32,7 @@ public class SessionCloseManager {
   }
 
   public static IEditingSession getUISession(Session session) {
-    IEditingSession editingSession = SessionUIManager.INSTANCE.getUISession(session);
-    return editingSession;
+    return SessionUIManager.INSTANCE.getUISession(session);
   }
 
   public static void closeUISession(IEditingSession uiSession, boolean saveIsNeeded) {
@@ -50,7 +49,7 @@ public class SessionCloseManager {
   }
 
   public static void closeSession(Session session) {
-    closeSession(session, null);
+    closeSession(session, new NullProgressMonitor());
   }
 
   public static void closeSession(Session session, IProgressMonitor monitor) {
@@ -59,7 +58,8 @@ public class SessionCloseManager {
 
   // Ensure proper close of session because when a session is not opened but have been getted (by SessionManager.getSession), the close does not unload the aird
   // resource.
-  // Workaround until TIG will be aligned on Sirius
+  // Workaround until TIG will be aligned on Sirius (fix since v0.8.x)
+  @Deprecated
   public static void cleanSession(Session session) {
     TransactionalEditingDomain editingDomain = TransactionHelper.getEditingDomain(session);
 
