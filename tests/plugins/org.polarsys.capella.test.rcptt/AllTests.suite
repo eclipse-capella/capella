@@ -5,8 +5,8 @@ Element-Type: testsuite
 Element-Version: 2.0
 Id: _H2g9YMEUEeWqb6y2_gGIKQ
 Manually-Ordered: true
-Runtime-Version: 2.3.0.201712190725
-Save-Time: 12/19/17 2:44 PM
+Runtime-Version: 2.1.0.201606221726
+Save-Time: 3/13/18 3:14 PM
 
 ------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8
 Content-Type: text/testcase
@@ -19,7 +19,6 @@ _g6DIAFpOEeaZtZLaGPKybA	// kind: 'test' name: 'CheckAFMFilePresenceAfterMigratio
 _LPsygGYiEeaVsIgvj-cA7g	// kind: 'suite' name: 'PatternSuite' path: 'Patterns/PatternSuite.suite'
 _s0WTkLfUEea5ZpGbd-RfXw	// kind: 'test' name: 'FragmentedModelDiffMerge' path: 'FragmentedModelDiffMerge/FragmentedModelDiffMerge.test'
 _KKad8L0gEeaNWvF_GpqW3w	// kind: 'suite' name: 'ValidationProfileSuite' path: 'PrefConfig/ValidationProfileSuite.suite'
-_zy85YBhIEee-A_RTBZbvjg	// kind: 'test' name: 'DetachVP' path: 'detachment/DetachVP.test'
 _AczyQB3uEeex3Nv8iShVXQ	// kind: 'suite' name: 'InnerDiagramsSuite' path: 'InnerDiagrams/InnerDiagramsSuite.suite'
 _6DCJACmvEeeLMJ-eLKwAnw	// kind: 'suite' name: 'Constraint' path: 'Constraint/Constraint.suite'
 _02YZQDS4EeeZEMGRa8a5kg	// kind: 'test' name: 'DragnDropClassDiagram' path: 'DragAndDrop/DragnDropClassDiagram.test'
@@ -33,5 +32,6 @@ _8tBCsOSeEeeF_6848eoV8Q	// kind: 'test' name: 'HidePartsByDefaultInProjectExplor
 _r_UEYOSgEeeF_6848eoV8Q	// kind: 'test' name: 'LocatedElementIsFilteredInCapellaExplorer' path: 'ProjectExplorer/LocatedElementIsFilteredInCapellaExplorer.test'
 _-NK48OTBEee98IEkL9YSZg	// kind: 'test' name: 'LocatedElementIsFilteredInCapellaExplorer_GoTo' path: 'ProjectExplorer/LocatedElementIsFilteredInCapellaExplorer_GoTo.test'
 _j7W34AXEEeiIZY68FD204w	// kind: 'suite' name: 'RefreshAllSubRepresentations_Suite' path: 'SiriusUiNavigator/RefreshAllSubRepresentations_Suite.suite'
+_0kJfgCbIEeieRPPEeacKyA	// kind: 'suite' name: 'DetachmentTestSuite' path: 'detachment/DetachmentTestSuite.suite'
 
 ------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8--
