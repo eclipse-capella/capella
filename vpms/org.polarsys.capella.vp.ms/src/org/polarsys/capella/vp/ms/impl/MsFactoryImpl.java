@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.polarsys.capella.common.lib.IdGenerator;
 import org.polarsys.capella.vp.ms.AndOperation;
 import org.polarsys.capella.vp.ms.CSConfiguration;
 import org.polarsys.capella.vp.ms.Comparison;
@@ -149,6 +150,11 @@ public class MsFactoryImpl extends EFactoryImpl implements MsFactory {
    */
   public CSConfiguration createCSConfiguration() {
     CSConfigurationImpl csConfiguration = new CSConfigurationImpl();
+    // begin-capella-code
+
+    csConfiguration.setId(IdGenerator.createId());
+
+    // end-capella-code
     return csConfiguration;
   }
 
@@ -159,6 +165,11 @@ public class MsFactoryImpl extends EFactoryImpl implements MsFactory {
    */
   public FSMType createFSMType() {
     FSMTypeImpl fsmType = new FSMTypeImpl();
+    // begin-capella-code
+
+    fsmType.setId(IdGenerator.createId());
+
+    // end-capella-code
     return fsmType;
   }
 
@@ -169,6 +180,11 @@ public class MsFactoryImpl extends EFactoryImpl implements MsFactory {
    */
   public Situation createSituation() {
     SituationImpl situation = new SituationImpl();
+    // begin-capella-code
+
+    situation.setId(IdGenerator.createId());
+
+    // end-capella-code
     return situation;
   }
 
@@ -179,6 +195,11 @@ public class MsFactoryImpl extends EFactoryImpl implements MsFactory {
    */
   public InStateExpression createInStateExpression() {
     InStateExpressionImpl inStateExpression = new InStateExpressionImpl();
+    // begin-capella-code
+
+    inStateExpression.setId(IdGenerator.createId());
+
+    // end-capella-code
     return inStateExpression;
   }
 
@@ -189,6 +210,11 @@ public class MsFactoryImpl extends EFactoryImpl implements MsFactory {
    */
   public InSituationExpression createInSituationExpression() {
     InSituationExpressionImpl inSituationExpression = new InSituationExpressionImpl();
+    // begin-capella-code
+
+    inSituationExpression.setId(IdGenerator.createId());
+
+    // end-capella-code
     return inSituationExpression;
   }
 
@@ -199,6 +225,11 @@ public class MsFactoryImpl extends EFactoryImpl implements MsFactory {
    */
   public AndOperation createAndOperation() {
     AndOperationImpl andOperation = new AndOperationImpl();
+    // begin-capella-code
+
+    andOperation.setId(IdGenerator.createId());
+
+    // end-capella-code
     return andOperation;
   }
 
@@ -209,6 +240,11 @@ public class MsFactoryImpl extends EFactoryImpl implements MsFactory {
    */
   public OrOperation createOrOperation() {
     OrOperationImpl orOperation = new OrOperationImpl();
+    // begin-capella-code
+
+    orOperation.setId(IdGenerator.createId());
+
+    // end-capella-code
     return orOperation;
   }
 
@@ -219,6 +255,11 @@ public class MsFactoryImpl extends EFactoryImpl implements MsFactory {
    */
   public NotOperation createNotOperation() {
     NotOperationImpl notOperation = new NotOperationImpl();
+    // begin-capella-code
+
+    notOperation.setId(IdGenerator.createId());
+
+    // end-capella-code
     return notOperation;
   }
 
@@ -229,6 +270,11 @@ public class MsFactoryImpl extends EFactoryImpl implements MsFactory {
    */
   public Comparison createComparison() {
     ComparisonImpl comparison = new ComparisonImpl();
+    // begin-capella-code
+
+    comparison.setId(IdGenerator.createId());
+
+    // end-capella-code
     return comparison;
   }
 
@@ -239,6 +285,11 @@ public class MsFactoryImpl extends EFactoryImpl implements MsFactory {
    */
   public Result createResult() {
     ResultImpl result = new ResultImpl();
+    // begin-capella-code
+
+    result.setId(IdGenerator.createId());
+
+    // end-capella-code
     return result;
   }
 
@@ -348,6 +399,71 @@ public class MsFactoryImpl extends EFactoryImpl implements MsFactory {
   @Deprecated
   public static MsPackage getPackage() {
     return MsPackage.eINSTANCE;
+  }
+
+  /**
+   * Creates class and sets its name (This method comes from a customization of the standard EMF generator)
+   *
+   * @param name_p
+   *          : default name of created element
+   * @generated
+   */
+  public CSConfiguration createCSConfiguration(String name_p) {
+    CSConfiguration csConfiguration = createCSConfiguration();
+    csConfiguration.setName(name_p);
+    return csConfiguration;
+  }
+
+  /**
+   * Creates class and sets its name (This method comes from a customization of the standard EMF generator)
+   *
+   * @param name_p
+   *          : default name of created element
+   * @generated
+   */
+  public FSMType createFSMType(String name_p) {
+    FSMType fsmType = createFSMType();
+    fsmType.setName(name_p);
+    return fsmType;
+  }
+
+  /**
+   * Creates class and sets its name (This method comes from a customization of the standard EMF generator)
+   *
+   * @param name_p
+   *          : default name of created element
+   * @generated
+   */
+  public Situation createSituation(String name_p) {
+    Situation situation = createSituation();
+    situation.setName(name_p);
+    return situation;
+  }
+
+  /**
+   * Creates class and sets its name (This method comes from a customization of the standard EMF generator)
+   *
+   * @param name_p
+   *          : default name of created element
+   * @generated
+   */
+  public Comparison createComparison(String name_p) {
+    Comparison comparison = createComparison();
+    comparison.setName(name_p);
+    return comparison;
+  }
+
+  /**
+   * Creates class and sets its name (This method comes from a customization of the standard EMF generator)
+   *
+   * @param name_p
+   *          : default name of created element
+   * @generated
+   */
+  public Result createResult(String name_p) {
+    Result result = createResult();
+    result.setName(name_p);
+    return result;
   }
 
 } // MsFactoryImpl

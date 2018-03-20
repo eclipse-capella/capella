@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,7 +23,7 @@ location eclipse-releases-neon "http://download.eclipse.org/releases/neon" {
 	com.ibm.icu
 }
 
-location sirius-5.1.0 "http://download.eclipse.org/sirius/updates/milestones/5.1.0rc4/neon" {
+location sirius-5.1.x "http://download.eclipse.org/sirius/updates/milestones/5.1.1rc4/neon" {
 	org.eclipse.sirius.doc.feature.feature.group
 	org.eclipse.sirius.doc.feature.source.feature.group
 	org.eclipse.sirius.runtime.feature.group
@@ -44,7 +44,7 @@ location sirius-5.1.0 "http://download.eclipse.org/sirius/updates/milestones/5.1
 	org.eclipse.sirius.runtime.ide.ui.acceleo.source.feature.group
 }
 
-location kitalpha-runtime-master "https://hudson.polarsys.org/kitalpha/job/Kitalpha_master/545/artifact/result/publish/kitalpha_runtime/site.p2" {
+location kitalpha-runtime-core-master "http://download.polarsys.org/kitalpha/updates/milestone/runtimecore/1.2.1rc1/" {
 	org.polarsys.kitalpha.ad.runtime.feature.feature.group lazy
 	org.polarsys.kitalpha.cadence.feature.feature.group lazy
 	org.polarsys.kitalpha.common.feature.feature.group lazy
@@ -60,16 +60,19 @@ location kitalpha-runtime-master "https://hudson.polarsys.org/kitalpha/job/Kital
 	org.polarsys.kitalpha.report.feature.feature.group lazy
 	org.polarsys.kitalpha.report.ui.feature.feature.group lazy
 	org.polarsys.kitalpha.transposer.feature.feature.group lazy
-	org.polarsys.kitalpha.richtext.widget.doc.feature.feature.group lazy
 	org.polarsys.kitalpha.richtext.widget.feature.feature.group lazy
-	org.polarsys.kitalpha.richtext.widget.source.feature.feature.group lazy
 	org.polarsys.kitalpha.richtext.widget.ext.feature.feature.group lazy
-	org.polarsys.kitalpha.richtext.widget.ext.source.feature.feature.group lazy
-	org.polarsys.kitalpha.doc.feature.feature.group lazy
+	org.polarsys.kitalpha.richtext.widget.feature.source.feature.group lazy
+	org.polarsys.kitalpha.richtext.widget.ext.feature.source.feature.group lazy
 }
 
-location kitalpha-sdk-master "https://hudson.polarsys.org/kitalpha/job/Kitalpha_master/545/artifact/result/publish/kitalpha_sdk/site.p2" {
+location kitalpha-runtime-master "http://download.polarsys.org/kitalpha/updates/milestone/runtime/1.2.1rc1/" {
+	org.polarsys.kitalpha.richtext.widget.doc.feature.feature.group lazy
+}
+
+location kitalpha-sdk-master "http://download.polarsys.org/kitalpha/updates/milestone/sdk/1.2.1rc/" {
 	org.polarsys.kitalpha.emde.sdk.feature.feature.group lazy
+	org.polarsys.kitalpha.doc.feature.feature.group lazy
 }
 
 location diffmerge-core-master "http://download.eclipse.org/diffmerge/releases/0.9.0/emf-diffmerge-site" {

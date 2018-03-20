@@ -228,6 +228,42 @@
 						</execution>
 					</executions>
 				</plugin>
+				
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-antrun-plugin</artifactId>
+					<version>${antrun-version}</version>
+					<executions>
+						<execution>
+							<id>package-dropins</id>
+							<phase>package</phase>
+							<goals>
+								<goal>run</goal>
+							</goals>
+							<configuration>
+								<target>
+									<delete
+										file="${project.build.directory}/${packagedSiteName}/eclipse/artifacts.jar" />
+									<delete
+										file="${project.build.directory}/${packagedSiteName}/eclipse/content.jar" />
+									<delete includeemptydirs="true">
+										<fileset
+											dir="${project.build.directory}/${packagedSiteName}/eclipse/features"
+											includes="**/META-INF/**" />
+									</delete>
+									<zip
+										destfile="${project.build.directory}/${packagedSiteName}-dropins-${unqualifiedVersion}.${buildQualifier}.zip">
+										<fileset dir="${project.build.directory}">
+											<include name="${packagedSiteName}/**" />
+										</fileset>
+									</zip>
+								</target>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+				
+				
 				<plugin>
 					<groupId>org.eclipse.tycho</groupId>
 					<artifactId>tycho-p2-repository-plugin</artifactId>
@@ -375,6 +411,23 @@
 				<module>releng/plugins/org.polarsys.capella.headless.site</module>
 			</modules>
 		</profile>
+
+		<profile>
+		  <id>addons</id>
+		  <activation>
+		    <activeByDefault>false</activeByDefault>
+		  </activation>
+		  <properties>
+		    <packagedSiteName>org.polarsys.capella.addons</packagedSiteName>
+		    <target-platform-path>addons</target-platform-path>
+		    <targetPlatform.id>addons</targetPlatform.id>
+		  </properties>
+		  <modules>
+		    <module>vpms</module>
+		  </modules>
+		</profile>
+
+		
 		<profile>
 			<id>sign</id>
 			<activation>

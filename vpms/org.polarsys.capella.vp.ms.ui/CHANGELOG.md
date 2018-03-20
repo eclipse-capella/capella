@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## 0.9.0 - 2018-03-18
+### Dependencies
+ - Now based on Capella v1.2.x
+
 ## 0.8.0 - 
 ### Added
  - Configurations can reference Scenarios and 'Other Elements'

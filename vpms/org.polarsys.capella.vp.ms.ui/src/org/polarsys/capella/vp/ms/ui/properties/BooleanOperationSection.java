@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -41,7 +41,7 @@ public class BooleanOperationSection extends CapellaElementSection {
 
     boolean displayedInWizard = isDisplayedInWizard();
 
-    Group exchangeItemGroup = getWidgetFactory().createGroup(_rootParentComposite, ""); //$NON-NLS-1$
+    Group exchangeItemGroup = getWidgetFactory().createGroup(rootParentComposite, ""); //$NON-NLS-1$
     exchangeItemGroup.setLayout(new GridLayout(1, false));
     GridData layoutData = new GridData(GridData.FILL_HORIZONTAL);
     layoutData.horizontalSpan = 2;
@@ -52,6 +52,7 @@ public class BooleanOperationSection extends CapellaElementSection {
         "Select States") {
 
       // backport https://bugs.polarsys.org/show_bug.cgi?id=1164
+      @Override
       @SuppressWarnings("unchecked")
       protected List<EObject> getReferencedElementsByContainedOnes() {
         List<EObject> containedElements = (List<EObject>) _semanticElement.eGet(_semanticFeature);

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -80,11 +80,11 @@ public class CSConfigurationSection extends NamedElementSection {
 
     boolean displayedInWizard = isDisplayedInWizard();
 
-    selectorGroup = new SelectorGroup(_rootParentComposite, getWidgetFactory(),
+    selectorGroup = new SelectorGroup(rootParentComposite, getWidgetFactory(),
         MsEditPlugin.INSTANCE.getString("_UI_CSConfiguration_selector_feature"), 2); //$NON-NLS-1$
     selectorGroup.setDisplayedInWizard(displayedInWizard);
 
-    kindGroup = new KindGroup(_rootParentComposite, getWidgetFactory(),
+    kindGroup = new KindGroup(rootParentComposite, getWidgetFactory(),
         MsEditPlugin.INSTANCE.getString("_UI_CSConfiguration_kind_feature"), 2); //$NON-NLS-1$
 
     IMultipleSemanticFieldController elementsController = new DerivedElementsController();

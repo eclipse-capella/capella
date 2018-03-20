@@ -18,13 +18,13 @@
          point="org.eclipse.emf.validation.constraintProviders">
       <constraintProvider>
          <package
-               namespaceUri="http://www.polarsys.org/capella/core/fa/1.1.0">
+               namespaceUri="http://www.polarsys.org/capella/core/fa/1.2.0">
          </package>
          <package
-               namespaceUri="http://www.polarsys.org/capella/core/common/1.1.0">
+               namespaceUri="http://www.polarsys.org/capella/core/common/1.2.0">
          </package>
          <package
-               namespaceUri="http://www.polarsys.org/capella/core/interaction/1.1.0">
+               namespaceUri="http://www.polarsys.org/capella/core/interaction/1.2.0">
          </package>
          <package
                namespaceUri="http://www.polarsys.org/capella/ms">

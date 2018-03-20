@@ -1,5 +1,5 @@
 #*******************************************************************************
-# Copyright (c) 2017 THALES GLOBAL SERVICES.
+# Copyright (c) 2017, 2018 THALES GLOBAL SERVICES.
 # All rights reserved. This program and the accompanying materials
 # are made available under the terms of the Eclipse Public License v1.0
 # which accompanies this distribution, and is available at
@@ -17,12 +17,12 @@ test -f "$ant_installer" || curl -L -O https://raw.githubusercontent.com/Lorenzo
 ant -Dbase.dir.install=. -f "$ant_installer" install-buckminster-4.3
 
 
-# Download and unzip capella 1.1.1
+# Download and unzip capella 1.2.0
 #
 if [ ! -d capella ]; then
-   curl -s -L -o capella-1.1.x.tar.gz http://download.polarsys.org/capella/core/platform/releases/1.1.1/mars/capella-1.1.1.2017-03-28_12-41-45-linux-gtk-x86_64-mars.tar.gz
-   tar -xzf capella-1.1.x.tar.gz
-   rm capella-1.1.x.tar.gz
+   curl -s -L -o capella-1.2.x.zip http://download.polarsys.org/capella/core/products/releases/1.2.0-R20171103-050121/capella-1.2.0.201711030906-linux-gtk-x86_64.zip
+   unzip capella-1.2.x.zip
+   rm capella-1.2.x.zip
 fi
 
 
