@@ -38,6 +38,7 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.osgi.util.NLS;
 import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
+import org.polarsys.capella.core.model.helpers.listeners.PartComponentMoveListener;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.ArrayListMultimap;
@@ -319,8 +320,14 @@ public class Stage {
 
       };
 
-      domain.getCommandStack().execute(rc);
-      result = (IStatus) rc.getResult().iterator().next();
+      ResourceSetListener l = new PartComponentMoveListener();
+      try {
+        domain.addResourceSetListener(l);
+        domain.getCommandStack().execute(rc);
+        result = (IStatus) rc.getResult().iterator().next();
+      } finally {
+        domain.removeResourceSetListener(l);
+      }
 
     }
     return result;

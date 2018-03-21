@@ -10,19 +10,11 @@
 
 This PROTOTYPE makes it possible to move elements from a project to a library. (Moving elements from a library to a project will be supported soon). Feel encouraged to report feedback in this bugzilla: https://bugs.polarsys.org/show_bug.cgi?id=1673
 
-== Project Explorer Drag & Drop ==
+== Transfer view ==
 
-For simple move operations, drag and drop the element to be moved from the project to a suitable location in the library. However, sometimes such an action would violate referential integrity: for example when you are trying to move a Class A which extends from another Class B to a library, while Class B remains in the project. Since an element in a library can never reference an element in a project, the drop cannot be completed and a warning dialog will open. One could instead select A and B and move them together, but this is only possible because A and B are elements of the same Type. 
+When the Transfer view View (Window->Show View->Capella (Incubation)->Transfer) is opened for the first time, it looks like this:
 
-The Move Elements View (see below) allows to move multiple elements with distinct types and references between each other in a single undoable operation. Note however that this method does not currently execute semantic validation (see below), so you may end up with illegal references in your model.
-
-If you're unsure whether a move would introduce an illegal reference, better use the new Move Elements view or execute validation rule I_38 (which is disabled by default) on your model after you're done moving elements.
-
-== Move Elements View ==
-
-When the Move Elements View (Window->Show View->Capella (Incubation)->Move Elements View) is opened for the first time, it looks like this:
-
-[[Image:Images//9.5_MoveElementsView_1.png|827x489px]] 
+[[Image:Images//9.5_MoveElementsView_1.png|935x398px]] 
 
 1. The Selection Area shows all elements that should be moved in '''bold'''. Drag/Drop model elements from the Capella Project Explorer over this area to fill the view. To remove a selected element from the view, click the small 'x' on the right side of the Selection Area.
 
@@ -34,11 +26,11 @@ When the Move Elements View (Window->Show View->Capella (Incubation)->Move Eleme
 
 === Illegal Backreferences ===
 
-Sometimes it is not possible to move a single element without moving other related elements, such as in the initial example of Class A extending Class B. When Class A is dropped onto the Selection Area, this problem is detected and presented by drawing the Generalization child of A in red. Hovering over the element will show additional informations on this ''illegal backreference'':
+Sometimes it is not possible to move an element in isolation: For example a Class B that extends another Class A cannot be moved without moving A too: When Class B is dropped onto the Selection Area, this problem is detected and presented by drawing the Generalization child of A in red. Hovering over the element will show additional informations on this ''illegal backreference'':
 
-[[Image:Images//9.5_MoveElementsView_2.png|800x435px]] 
+[[Image:Images//9.5_MoveElementsView_2.png|919x327px]] 
 
-As long as one or more illegal backreferences are present, the execute button remains disabled. There are always multiple solutions to an illegal backreference: In this case, either add Class B to the Selection Area, or remove the Generalization element from the model. The view detects changes to the model and re-calculates backreferences automatically.
+It is possible to click on the hyperlink in the tooltip to select the target element in the Capella project explorer. As long as one or more illegal backreferences are present, the execute button remains disabled. There are always multiple solutions to an illegal backreference: In this case, either add Class A to the Selection Area, or remove the Generalization element from the model. The view detects changes to the model and re-calculates backreferences automatically.
 
 === Semantic Validation ===
 

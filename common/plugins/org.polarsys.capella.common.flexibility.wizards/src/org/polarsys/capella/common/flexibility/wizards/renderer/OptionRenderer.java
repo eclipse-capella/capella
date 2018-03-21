@@ -1,10 +1,10 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *  
+ *
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
@@ -64,11 +64,14 @@ public class OptionRenderer extends AbstractRenderer {
       dataExport.addSelectionListener(new SelectionListener() {
 
         public void widgetSelected(SelectionEvent e) {
-          Object newValue = ((Button) e.widget).getData();
-          if ((newValue != null) && (newValue instanceof IPropertyOption)) {
-            String value = ((IPropertyOption) newValue).getValue();
-            changeValue(property, rendererContext, value);
-            updatedValue(property, rendererContext, value);
+          Button b = (Button) e.widget;
+          if (b.getSelection()) {
+            Object newValue = b.getData();
+            if ((newValue != null) && (newValue instanceof IPropertyOption)) {
+              String value = ((IPropertyOption) newValue).getValue();
+              changeValue(property, rendererContext, value);
+              updatedValue(property, rendererContext, value);
+            }
           }
         }
 

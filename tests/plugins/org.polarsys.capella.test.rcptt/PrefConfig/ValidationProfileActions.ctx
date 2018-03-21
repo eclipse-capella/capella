@@ -226,8 +226,6 @@ proc "checkDefaultPreferences" [val projectName] {
 	        checkPropertyButtonSelected "Synchronize Physical Port to Component Port delegation when allocating Component Exchanges to Physical Links" true
 	        checkPropertyButtonSelected "Synchronize Physical Port to Component Port delegation when allocating Component Exchanges to Physical Paths" true
 	    }
-	    get-group "Inter-model integrity" 
-	        | checkPropertyButtonSelected "Prevent on the fly inter-model dependency violation (notice that performances may be impacted)" true
 	    get-group "Modes and States Management" | checkPropertyButtonSelected "Mode/State mixed hierarchy allowed" false
 	}
 	
@@ -299,9 +297,6 @@ proc "changePreferences" [val projectName] {
 	        get-button "Synchronize Physical Port to Component Port delegation when allocating Component Exchanges to Physical Paths" 
 	            | uncheck
 	    }
-	    get-group "Inter-model integrity" 
-	        | get-button "Prevent on the fly inter-model dependency violation (notice that performances may be impacted)" 
-	        | uncheck
 	    get-group "Modes and States Management" | get-button "Mode/State mixed hierarchy allowed" | check
 	}
 	
@@ -377,9 +372,6 @@ proc "checkChangedPreferences" [val projectName] {
 	        get-button "Synchronize Physical Port to Component Port delegation when allocating Component Exchanges to Physical Paths" 
 	            | get-property selected | equals false | verify-true
 	    }
-	    get-group "Inter-model integrity" 
-	        | get-button "Prevent on the fly inter-model dependency violation (notice that performances may be impacted)" 
-	        | get-property selected | equals false | verify-true
 	    get-group "Modes and States Management" | get-button "Mode/State mixed hierarchy allowed" | get-property selected 
 	        | equals true | verify-true
 	}
@@ -462,9 +454,6 @@ proc "checkUnchangedPreferencesProject1" [val projectName] {
 	        get-button "Synchronize Physical Port to Component Port delegation when allocating Component Exchanges to Physical Paths" 
 	            | get-property selected | equals true | verify-true
 	    }
-	    get-group "Inter-model integrity" 
-	        | get-button "Prevent on the fly inter-model dependency violation (notice that performances may be impacted)" 
-	        | get-property selected | equals true | verify-true
 	    get-group "Modes and States Management" | get-button "Mode/State mixed hierarchy allowed" | get-property selected 
 	        | equals false | verify-true
 	}

@@ -1,10 +1,10 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *  
+ *
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
@@ -13,6 +13,7 @@ package org.polarsys.capella.common.re.re2rpl.create.properties;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
@@ -28,9 +29,10 @@ import org.polarsys.capella.common.re.CatalogElementLink;
 import org.polarsys.capella.common.re.constants.IReConstants;
 import org.polarsys.capella.common.re.handlers.location.LocationHandlerHelper;
 import org.polarsys.capella.common.re.handlers.replicable.ReplicableElementHandlerHelper;
-import org.polarsys.capella.core.transition.common.capellaHelpers.HashMapSet;
 import org.polarsys.capella.core.transition.common.handlers.contextscope.ContextScopeHandlerHelper;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
+
+import com.google.common.collect.LinkedHashMultimap;
 
 /**
  *
@@ -52,7 +54,7 @@ public class ReplicaContentProperty extends AbstractProperty implements ICompoun
     if (ctx.get(LINKS) != null) {
       return ctx.get(LINKS);
     }
-    Collection<EObject> links = new HashSet<EObject>();
+    Collection<CatalogElementLink> links = new LinkedHashSet<CatalogElementLink>();
 
     CatalogElement source =
         (CatalogElement) context.getCurrentValue(context.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_SOURCE));
@@ -74,7 +76,7 @@ public class ReplicaContentProperty extends AbstractProperty implements ICompoun
       }
     }
 
-    HashMapSet<CatalogElement, CatalogElementLink> toCreate = new HashMapSet<CatalogElement, CatalogElementLink>();
+    LinkedHashMultimap<CatalogElement, CatalogElementLink> toCreate = LinkedHashMultimap.create();
 
     Collection<CatalogElement> usedSource = new ArrayList<CatalogElement>();
     usedSource.add(source);
@@ -122,8 +124,8 @@ public class ReplicaContentProperty extends AbstractProperty implements ICompoun
   public IStatus validate(Object newValue, IPropertyContext context) {
     IContext ctx = (IContext) context.getSource();
 
-    Object useDefault = context.getCurrentValue(context.getProperties().getProperty(IReConstants.PROPERTY__USE_DEFAULT_LOCATION));
-    boolean isUseDefault = !(Boolean.FALSE.equals(useDefault));
+    Object useDefault = context.getCurrentValue(context.getProperties().getProperty(IReConstants.PROPERTY__PARENT_LOCATOR));
+    boolean isUseDefault = !IReConstants.LOCATOR_OPTION_MANUAL.equals(useDefault);
 
     HashSet<CatalogElementLink> links = (HashSet<CatalogElementLink>) newValue;
     HashSet<CatalogElementLink> linksInvalid = new HashSet<CatalogElementLink>();
@@ -178,9 +180,9 @@ public class ReplicaContentProperty extends AbstractProperty implements ICompoun
     //Nothing yet+
     IContext ctx = (IContext) context.getSource();
 
-    HashSet<CatalogElementLink> links = (HashSet) context.getCurrentValue(this);
-    Object useDefault = context.getCurrentValue(context.getProperties().getProperty(IReConstants.PROPERTY__USE_DEFAULT_LOCATION));
-    boolean isUseDefault = !(Boolean.FALSE.equals(useDefault));
+    HashSet<CatalogElementLink> links = (HashSet<CatalogElementLink>) context.getCurrentValue(this);
+    Object useDefault = context.getCurrentValue(context.getProperties().getProperty(IReConstants.PROPERTY__PARENT_LOCATOR));
+    boolean isUseDefault = !IReConstants.LOCATOR_OPTION_MANUAL.equals(useDefault);
 
     if (links != null) {
 
@@ -222,7 +224,7 @@ public class ReplicaContentProperty extends AbstractProperty implements ICompoun
    */
   @Override
   public String[] getRelatedProperties() {
-    return new String[] { IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET, IReConstants.PROPERTY__USE_DEFAULT_LOCATION,
+    return new String[] { IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET, IReConstants.PROPERTY__PARENT_LOCATOR,
                          IReConstants.PROPERTY__LOCATION_TARGET };
   }
 
@@ -232,7 +234,8 @@ public class ReplicaContentProperty extends AbstractProperty implements ICompoun
   @Override
   public void updatedValue(IProperty property, IPropertyContext context) {
     if (IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET.equals(property.getId())
-     || IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_SOURCE.equals(property.getId()))
+     || IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_SOURCE.equals(property.getId())
+     || IReConstants.PROPERTY__PARENT_LOCATOR.equals(property.getId()))
     {
       IContext ctx = (IContext) context.getSource();
       ctx.put(LINKS, null);

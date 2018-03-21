@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *  
+ *
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
@@ -17,6 +17,9 @@ import org.osgi.framework.BundleContext;
  * This is the activator of the business queries plug-in
  */
 public class BusinessQueriesPlugin extends Plugin {
+
+  public static final String PLUGIN_ID = "org.polarsys.capella.core.data.business.queries"; //$NON-NLS-1$
+
   /**
    * Single instance of the class
    */

@@ -6,17 +6,15 @@
 From a diagram, select a consistent set of elements (here, a Component and the Functions it is performing).
 
  
-[[Image:Images/8.2.%20Basic%20Use%20Case_html_61ca87e6.png|627x157px]]
+[[Image:Images/8.2.%20Basic%20Use%20Case_html_61ca87e6.png|627x157px]]<!-- BasicUseCase/[LAB] Logical System -->
 
  
-From the contextual menu, select &ldquo;Create a REC from Selection&rdquo;
+From the contextual menu, select &ldquo;REC/RPL->Create REC->From selection...&rdquo;
 
- 
-[[Image:Images/8.2.%20Basic%20Use%20Case_html_4fd534ab.png|627x89px]]
+[[Image:Images/8.2.%20Basic%20Use%20Case_html_4fd534ab.png|575x88px]]
 
- 
-The REC creation dialog appears. A name shall be given to the REC. The Catalog field allows to select in which catalog this REC should be created (when working with Libraries, the Catalog is most likely located in a Library).
-
+The REC creation dialog appears. A name shall be given to the REC. The Catalog field allows to select in which catalog this REC should be created.
+When working with Libraries, the Catalog is most likely located in a Library. In a library, an additional action &ldquo;With whole library content...&rdquo; is shown in the REC creation menu. If that action is chosen, the new REC will be initialized with the entire contents of the library.
  
 [[Image:Images/8.2.%20Basic%20Use%20Case_html_m11a06012.png|590x692px]]
 
@@ -135,16 +133,14 @@ And from the Function F2 included in the REC:
  
 == Instantiation of a REC ==
  
-From anywhere in the model, use the contextual command &ldquo;Instantiate a RPL from a REC&rdquo;:
+From anywhere in the model, use the contextual command &ldquo;REC/RPL->Instantiate a RPL from a REC&rdquo;:
 
- 
-[[Image:Images/8.2.%20Basic%20Use%20Case_html_17699e08.png|627x85px]]
+[[Image:Images/8.2.%20Basic%20Use%20Case_html_17699e08.png|574x93px]]
 
- 
 The instantiation dialog opens:
 
  
-[[Image:Images/8.2.%20Basic%20Use%20Case_html_3f98bee7.png|627x502px]]
+[[Image:Images/8.2.%20Basic%20Use%20Case_html_3f98bee7.png|685x826px]]<!-- BasicUseCase/REC1 -->
 
  
 This dialog allows:
@@ -159,15 +155,15 @@ This dialog allows:
 All RPL elements corresponding to a REC element with the suffix tag &#91;+SUFFIX&#93; will have the RPL suffix.
 
  
-By default, all RPL elements (new elements) will be located in standard containers in the model (for example, Root Functions, Root Components, etc.). It is possible to desactivate this option. In that case, a specific location has to be found manually for the root elements of the RPL. The elements for which a location still has to be found are marked in Orange. The definition of a new location is performed using drag and drop between the two trees.
+The parent locator options exist to specify where the RPL elements will be located:
+* Use default locations: Elements will be located in standard containers in the model
+* Create specific packages: For each element type, a RPL specific package will be created. Elements of the corresponding type will be stored in that package. Some elements, e.g. Parts do not get a specific package and are located just as if the default locations option would be selected.
+* Locate parents manually: A location has to be found manually for the root elements of the RPL. The elements for which a location still has to be found are marked in Orange. The definition of a new location is performed using drag and drop between the two trees:
 
- 
-[[Image:Images/8.2.%20Basic%20Use%20Case_html_m734c92a5.png|627x284px]]
+[[Image:Images/8.2.%20Basic%20Use%20Case_html_m734c92a5.png|668x381px]]
 
- 
-It is possible to create on-the-fly new elements in the right tree, using the contextual menu and rename them by pressing F2.
+It is possible to create on-the-fly new elements in the right tree, using the contextual menu and rename them by pressing F2. It is possible to double click on a RPL element in the left tree to find its parent in the right tree.
 
- 
 [[Image:Images/8.2_Basic_Use_Case.png|500x180px]]
 
  

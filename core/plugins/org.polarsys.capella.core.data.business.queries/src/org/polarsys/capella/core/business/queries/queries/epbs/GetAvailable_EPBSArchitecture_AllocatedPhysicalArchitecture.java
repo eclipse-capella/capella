@@ -1,10 +1,10 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *  
+ *
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
@@ -18,7 +18,6 @@ import org.polarsys.capella.common.queries.AbstractQuery;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
-import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.epbs.EPBSArchitecture;
 import org.polarsys.capella.core.data.helpers.epbs.services.EPBSArchitectureExt;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
@@ -35,7 +34,7 @@ public class GetAvailable_EPBSArchitecture_AllocatedPhysicalArchitecture extends
 		return (List) availableElements;
 	}
 
-	/** 
+	/**
 	 * Gets ...
 	 * <p>
 	 * All the Physical Architectures contained by the current Element's
@@ -62,18 +61,17 @@ public class GetAvailable_EPBSArchitecture_AllocatedPhysicalArchitecture extends
 		return availableElements;
 	}
 
-	/** 
+	/**
 	 * All the Physical Architectures contained by the current Element's
 	 * alternative decomposition hierarchy.
 	 */
 	private List<CapellaElement> getRule_MQRY_EPBSArchitecture_Allocation_11(EPBSArchitecture currentEPBSArchitecture) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
 		SystemEngineering parentSystemEngineering = EPBSArchitectureExt.getParentSystemEngineering(currentEPBSArchitecture);
-		List<BlockArchitecture> currentPA = currentEPBSArchitecture.getAllocatedArchitectures();
 		for (PhysicalArchitecture pa : SystemEngineeringExt.getAllPhysicalArchitectures(parentSystemEngineering)) {
-			if (null == pa || currentPA.contains(pa))
-				continue;
-			availableElements.add(pa);
+			if (pa != null) {
+			  availableElements.add(pa);
+			}
 		}
 		return availableElements;
 	}

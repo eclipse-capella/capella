@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -86,8 +86,8 @@ import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeColumn;
 import org.eclipse.ui.IWorkbenchActionConstants;
 import org.eclipse.ui.IWorkbenchPart;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.forms.widgets.Form;
-import org.eclipse.ui.forms.widgets.FormText;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.Section;
 import org.eclipse.ui.part.ViewPart;
@@ -95,15 +95,19 @@ import org.eclipse.ui.statushandlers.StatusManager;
 import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.tabbed.ITabbedPropertySheetPageContributor;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
+import org.polarsys.capella.common.flexibility.wizards.ui.FlexibilityColors;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.libraries.IModel;
 import org.polarsys.capella.common.libraries.manager.LibraryManager;
 import org.polarsys.capella.common.libraries.manager.LibraryManagerExt;
-import org.polarsys.capella.common.ui.StatusManagerExceptionHandler;
 import org.polarsys.capella.core.libraries.model.ICapellaModel;
+import org.polarsys.capella.core.model.helpers.move.CapellaMoveHelper;
 import org.polarsys.capella.core.model.helpers.move.Stage;
 import org.polarsys.capella.core.model.helpers.move.StageListener;
+import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.LocateInCapellaExplorerAction;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.drop.ExplorerDropAdapterAssistant;
+
+import com.google.common.collect.Lists;
 
 public class MoveStagingView extends ViewPart implements ISelectionProvider, ITabbedPropertySheetPageContributor {
 
@@ -119,7 +123,6 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
   StageListener listener;
 
   Form form;
-  FormText formText;
 
   Section stageSection;
   Section destinationSection;
@@ -139,22 +142,13 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
     GridLayout layout = new GridLayout(2, true);
     form.getBody().setLayout(layout);
 
-    formText = toolkit.createFormText(form.getBody(), true);
-    formText.setColor("red", toolkit.getColors().createColor("red", toolkit.getColors().getSystemColor(SWT.COLOR_RED))); //$NON-NLS-1$ //$NON-NLS-2$
-    form.setText(Messages.MoveStagingView_formTitle);
-    formText.setText(Messages.MoveStagingView_formText, true, true);
-    GridData gd = new GridData(SWT.FILL, SWT.FILL, true, false);
-    gd.horizontalSpan = 2;
-
-    formText.setLayoutData(gd);
-
     stageSection = toolkit.createSection(form.getBody(),
         Section.TITLE_BAR|Section.DESCRIPTION|
         Section.EXPANDED);
     stageSection.setText(Messages.MoveStagingView_stageSectionTitle);
     stageSection.setDescription(Messages.MoveStagingView_stageSectionDescription);
 
-    gd = new GridData(SWT.FILL, SWT.FILL, true, true);
+    GridData gd = new GridData(SWT.FILL, SWT.FILL, true, true);
     stageSection.setLayoutData(gd);
 
     Composite stageSectionClient = toolkit.createComposite(stageSection);
@@ -196,19 +190,21 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
       TransactionErrorHandler newHandler = new TransactionErrorHandler();
       stack.setExceptionHandler(newHandler);
       IStatus result = null;
+      destinationViewer.getTree().setRedraw(false);
       try {
         result = stage.execute();
       } finally {
         stack.setExceptionHandler(oldHandler);
         if (result != null) {
           if (result.isOK()) {
-            if (!newHandler.handledException) {
+            if (newHandler.handledException == null) {
               reset();
             }
           } else {
             StatusManager.getManager().handle(result, StatusManager.SHOW);
           }
         }
+        destinationViewer.getTree().setRedraw(true);
       }
     }
     };
@@ -282,6 +278,8 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
     TreeColumn column = new TreeColumn(stageViewer.getTree(), SWT.LEFT);
     column.setWidth(200);
 
+    stageViewer.setAutoExpandLevel(3);
+
     stageViewer.setContentProvider(new AdapterFactoryContentProvider(new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE)){
 
       @Override
@@ -349,22 +347,22 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
 
             @Override
             public void stageChanged(Stage s) {
-              handleStageChanged(s);
+              PlatformUI.getWorkbench().getDisplay().asyncExec(() -> handleStageChanged(s));
             }
 
             @Override
             public void elementsAdded(Collection<EObject> elements) {
-              handleStageElementsAdded(elements);
+              PlatformUI.getWorkbench().getDisplay().asyncExec(() -> handleStageElementsAdded(elements));
             }
 
             @Override
             public void parentChanged(EObject staged, EObject oldParent, EObject newParent) {
-              handleStageParentChanged(staged, oldParent, newParent);
+              PlatformUI.getWorkbench().getDisplay().asyncExec(() -> handleStageParentChanged(staged, oldParent, newParent));
             }
 
             @Override
             public void elementsRemoved(Collection<? extends EObject> elements) {
-              handleStageElementsRemoved(elements);
+              PlatformUI.getWorkbench().getDisplay().asyncExec(() -> handleStageElementsRemoved(elements));
             }
           };
           stage.addStageListener(listener);
@@ -372,7 +370,13 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
           stageViewer.setLabelProvider(
               new DecoratingColumLabelProvider(new LabelProvider(cfac, stageViewer), new StageLabelDecorator()));
           stageViewer.setFilters(new CollectionTreeFilter(stage.getElements(), false));
-          tooltipSupport = new ColumnViewerInformationControlToolTipSupport(stageViewer, new DiagnosticDecorator.EditingDomainLocationListener(stage.getEditingDomain(), stageViewer));
+          tooltipSupport = new ColumnViewerInformationControlToolTipSupport(stageViewer, new DiagnosticDecorator.EditingDomainLocationListener(stage.getEditingDomain(), stageViewer) {
+            @Override
+            protected void setSelection(final Object object) {
+              MyLocateInCapellaExplorerAction action = new MyLocateInCapellaExplorerAction();
+              action.selectElementInCapellaExplorer(new StructuredSelection(object));
+            }
+          });
 
           destinationViewer.setInput(stage.getEditingDomain().getResourceSet());
 
@@ -447,6 +451,8 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
     GridData gd = new GridData(SWT.FILL, SWT.FILL, true, true);
     destinationViewer.getControl().setLayoutData(gd);
 
+    destinationViewer.setAutoExpandLevel(3);
+
     destinationViewer.setLabelProvider(
         new DecoratingColumLabelProvider(new LabelProvider(cfac, destinationViewer), new StageLabelDecorator()));
     destinationViewer.setContentProvider(new AdapterFactoryContentProvider(cfac) {
@@ -487,22 +493,29 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
           }
         }
 
-        Object[] realChildren = super.getChildren(element);
-        Object[] result = realChildren;
+        List<Object> result = Lists.newArrayList(super.getChildren(element));
 
-        if (newChildren != null){
-          result = new Object[realChildren.length + newChildren.size()];
-          System.arraycopy(realChildren, 0, result, 0, realChildren.length);
-          System.arraycopy(newChildren.toArray(), 0, result, realChildren.length, newChildren.size());
+        // during execution the stage model isn't updated so take care to not
+        // return a moved element twice. also, staged elements are always the
+        // 'last' children.
+        if (newChildren != null) {
+          for (Iterator<Object> it = result.iterator(); it.hasNext();) {
+            Object next = it.next();
+            if (newChildren.contains(next)) {
+              it.remove();
+            }
+          }
+          result.addAll(newChildren);
         }
 
-        return result;
+        return result.toArray();
       }
+
     });
 
     destinationViewer.addDropSupport(0, new Transfer[] { LocalSelectionTransfer.getTransfer() }, new ViewerDropAdapter(destinationViewer) {
 
-      final ExplorerDropAdapterAssistant a = new ExplorerDropAdapterAssistant();
+      final ExplorerDropAdapterAssistant a = new ExplorerDropAdapterAssistant(new CapellaMoveHelper());
 
       @Override
       public boolean validateDrop(Object target, int operation, TransferData transferType) {
@@ -811,7 +824,10 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
       if (stage.hasBackreferences((EObject) object)) {
         return Display.getCurrent().getSystemColor(SWT.COLOR_RED);
       } else if (stage.getNewParent((EObject) object) != null) {
-        return Display.getCurrent().getSystemColor(SWT.COLOR_GREEN);
+        return FlexibilityColors.getColorRegistry().get(FlexibilityColors.FG_GREEN);
+      }
+      if (!EcoreUtil.isAncestor(stage.getElements(), (EObject) object)) {
+        return Display.getCurrent().getSystemColor(SWT.COLOR_DARK_GRAY);
       }
       return super.getForeground(object);
     }
@@ -866,18 +882,20 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
     }
   }
 
-  private static class TransactionErrorHandler extends StatusManagerExceptionHandler {
+  private static class TransactionErrorHandler implements ExceptionHandler {
 
-    boolean handledException = false;
-
-    TransactionErrorHandler() {
-      super(StatusManager.SHOW | StatusManager.LOG);
-    }
+    Exception handledException;
 
     @Override
     public void handleException(Exception e) {
-      handledException = true;
-      super.handleException(e);
+      handledException = e;
+    }
+  }
+
+  private static class MyLocateInCapellaExplorerAction extends LocateInCapellaExplorerAction {
+    @Override
+    public void selectElementInCapellaExplorer(ISelection selection) {
+      super.selectElementInCapellaExplorer(selection);
     }
   }
 
