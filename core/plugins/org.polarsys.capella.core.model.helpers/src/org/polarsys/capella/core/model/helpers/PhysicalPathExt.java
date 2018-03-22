@@ -31,6 +31,7 @@ import org.eclipse.osgi.util.NLS;
 
 import org.polarsys.capella.common.helpers.SimpleOrientedGraph;
 import org.polarsys.capella.common.helpers.TransactionHelper;
+import org.polarsys.capella.core.data.capellacore.InvolvedElement;
 import org.polarsys.capella.core.data.cs.AbstractPathInvolvedElement;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
@@ -48,6 +49,7 @@ import org.polarsys.capella.core.data.fa.ComponentPort;
 import org.polarsys.capella.core.data.information.Port;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
+import org.polarsys.capella.core.model.helpers.refmap.Pair;
 import org.polarsys.capella.common.data.modellingcore.InformationsExchanger;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.menu.dynamic.CreationHelper;
@@ -661,6 +663,41 @@ public class PhysicalPathExt {
    * @return a new PhysicalPath initialized with the given involved physical links
    */
   public static PhysicalPath createPhysicalPath(final Component container, final Collection<PhysicalLink> involvedPhysicalLinks, final Part source) {
+    PhysicalPath newPath = CsFactory.eINSTANCE.createPhysicalPath();
+
+    container.getOwnedPhysicalPath().add(newPath);
+    EditingDomain editingDomain = TransactionHelper.getEditingDomain(newPath);
+    StrictCompoundCommand command = CreationHelper.getAdditionnalCommand(editingDomain, newPath);
+    if (command.canExecute()) {
+      command.execute();
+    }
+    
+    // Create a first involvement for the given source part
+    PhysicalPathInvolvement previousPartInvolvement = createInvolvement(newPath, source);
+    
+    // On each iteration, get a pair of (link, part), create the involvements and link them
+    int size = involvedPhysicalLinks.size();
+    for(int i=0; i < size; i++){
+      Pair<PhysicalLink, Part> nextLinkPartPair = getNextLinkPartPair(involvedPhysicalLinks, previousPartInvolvement.getInvolved());
+      if(nextLinkPartPair != null){
+        // Remove the physical link from the involved links
+        involvedPhysicalLinks.remove(nextLinkPartPair.getFirstValue());
+        
+        // Create an involvement for the link and wire it to the previous part involvement
+        PhysicalPathInvolvement linkInvolvement = createInvolvement(newPath, nextLinkPartPair.getFirstValue());
+        previousPartInvolvement.getNextInvolvements().add(linkInvolvement);
+        
+        // Create an involvement for the part and wire it to the link involvement
+        PhysicalPathInvolvement nextPartInvolvement = createInvolvement(newPath, nextLinkPartPair.getSecondValue());
+        linkInvolvement.getNextInvolvements().add(nextPartInvolvement);
+        
+        // Next become previous
+        previousPartInvolvement = nextPartInvolvement;        
+      }
+    }
+    return newPath;
+  }
+  public static PhysicalPath createPhysicalPath_(final Component container, final Collection<PhysicalLink> involvedPhysicalLinks, final Part source) {
     // Is not sure that this sturdiness is useful to avoid the recreation of several involvement part.
     HashMap<Part, PhysicalPathInvolvement> mapping = new HashMap<Part, PhysicalPathInvolvement>();
 
@@ -734,10 +771,10 @@ public class PhysicalPathExt {
    * @param path
    * @return
    */
-  private static Collection<PhysicalPathInvolvement> getFlatInvolvements(PhysicalPath path) {
+  public static Collection<PhysicalPathInvolvement> getFlatInvolvements(PhysicalPath path) {
     Collection<PhysicalPathInvolvement> involvments = new ArrayList<PhysicalPathInvolvement>();
     LinkedList<PhysicalPath> toVisit = new LinkedList<PhysicalPath>();
-    HashSet<PhysicalPath> visited = new HashSet<PhysicalPath>();
+    HashSet<PhysicalPath> visited = new LinkedHashSet<PhysicalPath>();
     toVisit.add(path);
 
     while (!toVisit.isEmpty()) {
@@ -882,6 +919,27 @@ public class PhysicalPathExt {
       result.addAll(PhysicalLinkExt.unsynchronizeAllocations(getPhysicalPortFrom(pPath, ceTarget), ceTarget));
     }
     return result;
+  }
+  
+  /**
+   *
+   * @param involvedPhysicalLinks
+   * @param involvedPart
+   * @return the next pair of link and part. The next link which has a port on the involvedPart and the next part which
+   *         is the parent of the other port of the returned link.
+   */
+  private static Pair<PhysicalLink, Part> getNextLinkPartPair(Collection<PhysicalLink> involvedPhysicalLinks,
+      InvolvedElement involvedPart) {
+    for (PhysicalLink physicalLink : involvedPhysicalLinks) {
+      Part sourcePart = org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt.getSourcePart(physicalLink);
+      Part targetPart = org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt.getTargetPart(physicalLink);
+      if (sourcePart.equals(involvedPart)) {
+        return new Pair<>(physicalLink, targetPart);
+      } else if (targetPart.equals(involvedPart)) {
+        return new Pair<>(physicalLink, sourcePart);
+      }
+    }
+    return null;
   }
 
   /**

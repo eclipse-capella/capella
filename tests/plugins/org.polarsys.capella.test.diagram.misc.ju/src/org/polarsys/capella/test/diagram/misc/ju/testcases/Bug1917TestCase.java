@@ -42,6 +42,7 @@ public class Bug1917TestCase extends BasicTestCase {
 	private String diagramName5 = "[PAB] Physical System 5";
 	private String diagramName6 = "[PAB] Physical System 6";
 	private String diagramName7 = "[PAB] Physical System 7";
+	private String diagramName8 = "[PAB] Physical System 8";
 	
 	// [PAB] Physical System 1: Internal Link
 	private String[] diag1_internalLink_ids = {"c0e58764-42d0-4b53-90b2-0e356d715f8a", "be17092c-0e29-4673-a0a6-f17bddf1ebe2"};
@@ -78,6 +79,18 @@ public class Bug1917TestCase extends BasicTestCase {
 	
 	//[PAB] Physical System 7: Internal Link 4
 	private String[] diag7_internalLink4_ids = {"6fa0b1a7-b072-4f44-ab0d-52f516f1449a", "2a14bec3-a1fe-41f3-99ea-848747830209"};
+	
+	//[PAB] Physical System 8: Internal Link 1
+	private String[] diag8_internalLink1_ids = {"6c5ba9e1-8593-45a0-bcf3-76c2b7bf3d06", "2eb644da-e866-4e1c-ba53-f043a6d70b51"};
+	
+	//[PAB] Physical System 8: Internal Link 2
+	private String[] diag8_internalLink2_ids = {"b5d33fd7-8c2b-4808-96f6-2e106c157503", "f626e973-b36f-4a76-86e3-acedbe9a2a18"};
+	
+	//[PAB] Physical System 8: Internal Link 3
+	private String[] diag8_internalLink3_ids = {"f626e973-b36f-4a76-86e3-acedbe9a2a18", "3c6eccae-502a-48f1-98d9-5dd54cafb287"};
+	
+	//[PAB] Physical System 8: Internal Link 4
+	private String[] diag8_internalLink4_ids = {"bfff6a9c-53ef-43f1-9333-3100a6bad3d8", "0081811c-c036-491b-b591-1528567efa63"};
 	
 	
 	@Override
@@ -119,6 +132,12 @@ public class Bug1917TestCase extends BasicTestCase {
     testInternalLink(session, diagramName7, diag7_internalLink2_ids);
     testInternalLink(session, diagramName7, diag7_internalLink3_ids);
     testInternalLink(session, diagramName7, diag7_internalLink4_ids);
+    
+    testDiagram(session, diagramName8, 9);
+    testInternalLink(session, diagramName8, diag8_internalLink1_ids);
+    testInternalLink(session, diagramName8, diag8_internalLink2_ids);
+    testInternalLink(session, diagramName8, diag8_internalLink3_ids);
+    testInternalLink(session, diagramName8, diag8_internalLink4_ids);
   }
 
   private void testDiagram(Session session, String diagramName, int expectedNbOfEdges) {
