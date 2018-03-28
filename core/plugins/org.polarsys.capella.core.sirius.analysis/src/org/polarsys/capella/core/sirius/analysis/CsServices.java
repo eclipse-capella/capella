@@ -98,6 +98,7 @@ import org.polarsys.capella.core.data.capellacore.AbstractPropertyValue;
 import org.polarsys.capella.core.data.capellacore.Allocation;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
+import org.polarsys.capella.core.data.capellacore.Classifier;
 import org.polarsys.capella.core.data.capellacore.Constraint;
 import org.polarsys.capella.core.data.capellacore.Feature;
 import org.polarsys.capella.core.data.capellacore.GeneralizableElement;
@@ -5583,15 +5584,22 @@ public class CsServices {
     }
   }
 
+  public boolean isPrimitive(EObject context) {
+	  if (context instanceof Class)
+		  return ((Class) context).isIsPrimitive();
+	  else
+		  return false;
+  }
+  
   public boolean isAbstract(EObject context) {
     // DataType, Class
     if (context instanceof GeneralizableElement) {
       GeneralizableElement genEle = (GeneralizableElement) context;
       return genEle.isAbstract();
-    }
+    }    
     // DataValue
     else if (context instanceof DataValue) {
-      DataValue value = (DataValue) context;
+      DataValue value = (DataValue) context;      
       return value.isAbstract();
     }
     // Property
