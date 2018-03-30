@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,11 +17,11 @@ import java.io.InputStream;
 import org.apache.log4j.Logger;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.emf.ecore.xmi.impl.XMLHandler;
-
+import org.osgi.framework.Version;
+import org.polarsys.capella.common.data.core.gen.xmi.impl.CapellaXMLSaveImpl;
+import org.polarsys.capella.common.mdsofa.common.helper.StringHelper;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
-import org.polarsys.capella.common.mdsofa.common.helper.StringHelper;
-import org.polarsys.capella.common.data.core.gen.xmi.impl.CapellaXMLSaveImpl;
 
 /**
  */
@@ -29,7 +29,8 @@ public class CapellaFeatureHelper {
   /**
    * Log4j reference logger.
    */
-  private static final Logger __logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.MODEL);
+  private static final Logger __logger = ReportManagerRegistry.getInstance()
+      .subscribe(IReportManagerDefaultComponents.MODEL);
 
   /**
    * BUFFER size read to detect the version.
@@ -37,10 +38,22 @@ public class CapellaFeatureHelper {
   private static final int BUFFER_SIZE = 76;
 
   /**
-   * Get the version serialized in given model file.
-   * @param modelFile_p
-   * @return
+   * Retrieve the short version of the given model
+   * 
+   * It returns a Version.emptyVersion if no version encountered in the file
    */
+  public static Version getFileVersion(IFile modelFile) {
+    String detectedVersion = CapellaFeatureHelper.getDetectedVersion((IFile) modelFile);
+    return Version.parseVersion(detectedVersion);
+  }
+
+  /**
+   * Get the version serialized in given model file.
+   * 
+   * @param modelFile_p
+   * Deprecated use getFileVersion to prevent NPE
+   */
+  @Deprecated
   public static String getDetectedVersion(IFile modelFile_p) {
     String detectedVersion = null;
     try {
@@ -57,10 +70,12 @@ public class CapellaFeatureHelper {
       // Instantiate the bytes as a string according to encoding.
       String contentAsString = new String(buffer, encoding);
       // Get the version.
-      detectedVersion = StringHelper.substring(CapellaXMLSaveImpl.CAPELLA_VERSION_PREFIX, "-->", contentAsString, false); //$NON-NLS-1$
+      detectedVersion = StringHelper.substring(CapellaXMLSaveImpl.CAPELLA_VERSION_PREFIX, "-->", contentAsString, //$NON-NLS-1$
+          false);
       if (detectedVersion == null) {
         // version not detected, it might be an old legacy model
-        detectedVersion = StringHelper.substring(CapellaXMLSaveImpl.MELODY_VERSION_PREFIX, "-->", contentAsString, false); //$NON-NLS-1$
+        detectedVersion = StringHelper.substring(CapellaXMLSaveImpl.MELODY_VERSION_PREFIX, "-->", contentAsString, //$NON-NLS-1$
+            false);
       }
     } catch (Exception exception_p) {
       StringBuilder loggerMessage = new StringBuilder("CapellaFeatureHelper.getDetectedVersion(..) _ "); //$NON-NLS-1$
@@ -71,6 +86,7 @@ public class CapellaFeatureHelper {
 
   /**
    * Read buffer where Capella version is stored.
+   * 
    * @param inputStream_p
    * @return
    * @throws IOException

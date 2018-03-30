@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,8 +10,15 @@
  *******************************************************************************/
 package org.polarsys.capella.core.data.migration.context;
 
+import java.util.HashMap;
+
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
+import org.eclipse.ui.PlatformUI;
+import org.osgi.framework.Version;
 
 /**
  *
@@ -24,15 +31,31 @@ public class MigrationContext {
 
   private IProgressMonitor _monitor = null;
 
-  private MigrationContext arent;
-
   private String _name;
+
+  private IFile _resource;
+
+  private HashMap<IPath, Version> fileVersions = new HashMap<IPath, Version>();
+
+  public Version getCurrentVersion() {
+    return getFileVersion(_resource);
+  }
+  
+  public Version getFileVersion(IFile file) {
+    IPath path = file.getFullPath().removeFileExtension();
+    Version currentVersion =  fileVersions.containsKey(path) ? fileVersions.get(path) : Version.emptyVersion;
+    return currentVersion;
+  }
+
+  public void setFileVersion(IFile file, Version currentVersion) {
+    IPath path = file.getFullPath().removeFileExtension();
+    this.fileVersions.put(path, currentVersion);
+  }
 
   public MigrationContext() {
   }
 
   public MigrationContext(MigrationContext context) {
-    arent = context;
   }
 
   public boolean isSkipConfirmation() {
@@ -55,24 +78,28 @@ public class MigrationContext {
     return _monitor;
   }
 
-  /**
-   * @return
-   */
   public Shell getShell() {
     return _shell;
   }
 
-  /**
-   * @return
-   */
   public String getName() {
     return _name;
   }
 
-  /**
-   * @param migrationAction_Title
-   */
   public void setName(String name) {
     _name = name;
+  }
+
+  public IFile getResource() {
+    return _resource;
+  }
+  
+  public String getResourceName() {
+    return getResource() == null ? getName() : getResource().getName();
+  }
+
+  public void setResource(IFile file) {
+    _resource = file;
+
   }
 }
