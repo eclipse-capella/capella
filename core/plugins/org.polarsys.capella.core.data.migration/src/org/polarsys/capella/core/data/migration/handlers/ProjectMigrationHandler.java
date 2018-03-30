@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -34,16 +34,22 @@ public class ProjectMigrationHandler extends AbstractMigrationHandler {
   @Override
   public Object execute(ExecutionEvent event) throws ExecutionException {
     boolean skipConfirmation = Boolean.valueOf(event.getParameter("skipConfirmation"));
-    for (Object selected : getSelection((IEvaluationContext) event.getApplicationContext(), IResource.class)) {
-      if (selected instanceof IProject) {
-        IProject project = (IProject) selected;
-        IStatus validationStatus = new RepresentationFilesNeedCloseSessionValidator(
-            NLS.bind(Messages.MigrationAction_Title, project.getName())).validate(null);
-        if (validationStatus.isOK()) {
-          MigrationHelpers.getInstance().trigger(project, HandlerUtil.getActiveShell(event), skipConfirmation, true,
-              MigrationConstants.DEFAULT_KIND_ORDER);
+    
+    try {
+      for (Object selected : getSelection((IEvaluationContext) event.getApplicationContext(), IResource.class)) {
+        if (selected instanceof IProject) {
+          IProject project = (IProject) selected;
+          IStatus validationStatus = new RepresentationFilesNeedCloseSessionValidator(
+              NLS.bind(Messages.MigrationAction_Title, project.getName())).validate(null);
+          if (validationStatus.isOK()) {
+            MigrationHelpers.getInstance().trigger(project, HandlerUtil.getActiveShell(event), skipConfirmation, true,
+                MigrationConstants.DEFAULT_KIND_ORDER);
+          }
         }
       }
+      
+    } finally {
+      MigrationHelpers.getInstance().dispose();
     }
     return event;
   }
