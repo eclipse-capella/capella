@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.polarsys.capella.common.platform.sirius.customisation;
 
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
@@ -46,18 +48,24 @@ public class SiriusPlugin extends AbstractUIPlugin {
 public void start(BundleContext context) throws Exception {
     super.start(context);
     plugin = this;
-    // Initialize the preferences for Sirius
-    PlatformUI.getPreferenceStore().setValue(IWorkbenchPreferenceConstants.PROMPT_WHEN_SAVEABLE_STILL_OPEN, false);
-
-    // Change the UICallBack to have a specific Session displayed name
-    SiriusEditPlugin.getPlugin().setUiCallback(new SiriusUiCallBack(SiriusEditPlugin.getPlugin().getUiCallback()));
-
-    // Allow by default aird fragment with no representation creation
-    SiriusEditPlugin.getPlugin().getPreferenceStore()
-        .setValue(SiriusPreferencesKeys.PREF_EMPTY_AIRD_FRAGMENT_ON_CONTROL.name(), true);
-
-    // Set the default Sirius scale option (20%).
-    SiriusEditPlugin.getPlugin().getPreferenceStore().setDefault(SiriusUIPreferencesKeys.PREF_SCALE_LEVEL_DIAGRAMS_ON_EXPORT.name(), 2);
+    // Do all initialization inside a try-catch block to ensure plug-in start normally
+    try {
+      // Initialize the preferences for Sirius
+      PlatformUI.getPreferenceStore().setValue(IWorkbenchPreferenceConstants.PROMPT_WHEN_SAVEABLE_STILL_OPEN, false);
+      
+      // Change the UICallBack to have a specific Session displayed name
+      SiriusEditPlugin.getPlugin().setUiCallback(new SiriusUiCallBack(SiriusEditPlugin.getPlugin().getUiCallback()));
+      
+      // Allow by default aird fragment with no representation creation
+      SiriusEditPlugin.getPlugin().getPreferenceStore()
+      .setValue(SiriusPreferencesKeys.PREF_EMPTY_AIRD_FRAGMENT_ON_CONTROL.name(), true);
+      
+      // Set the default Sirius scale option (20%).
+      SiriusEditPlugin.getPlugin().getPreferenceStore().setDefault(SiriusUIPreferencesKeys.PREF_SCALE_LEVEL_DIAGRAMS_ON_EXPORT.name(), 2);
+      
+    } catch (Exception e) {
+      getLog().log(new Status(IStatus.ERROR, PLUGIN_ID, IStatus.OK, e.getMessage(), e));
+    }
   }
 
   /**
