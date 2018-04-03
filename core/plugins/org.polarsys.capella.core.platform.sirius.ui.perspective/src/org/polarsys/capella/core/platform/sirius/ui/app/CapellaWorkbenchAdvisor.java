@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,10 +16,7 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.lang.reflect.Field;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Properties;
-import java.util.Set;
 
 import org.eclipse.core.commands.operations.IUndoContext;
 import org.eclipse.core.commands.operations.OperationHistoryFactory;
@@ -32,9 +29,6 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
-import org.eclipse.core.runtime.Status;
-import org.eclipse.core.runtime.preferences.ConfigurationScope;
-import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.emf.validation.service.ModelValidationService;
 import org.eclipse.jface.viewers.ILabelDecorator;
 import org.eclipse.jface.viewers.ILabelProviderListener;
@@ -43,10 +37,6 @@ import org.eclipse.sirius.common.tools.api.constant.CommonPreferencesConstants;
 import org.eclipse.sirius.common.ui.SiriusTransPlugin;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.graphics.Image;
-import org.eclipse.ui.activities.IActivityManager;
-import org.eclipse.ui.activities.ICategory;
-import org.eclipse.ui.activities.IWorkbenchActivitySupport;
-import org.eclipse.ui.activities.WorkbenchActivityHelper;
 import org.eclipse.ui.application.IWorkbenchWindowConfigurer;
 import org.eclipse.ui.application.WorkbenchWindowAdvisor;
 import org.eclipse.ui.ide.undo.WorkspaceUndoUtil;
@@ -56,11 +46,10 @@ import org.eclipse.ui.internal.ide.application.IDEWorkbenchAdvisor;
 import org.eclipse.ui.statushandlers.AbstractStatusHandler;
 import org.eclipse.ui.statushandlers.StatusAdapter;
 import org.eclipse.ui.statushandlers.WorkbenchStatusDialogManager;
-import org.osgi.service.prefs.BackingStoreException;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
+import org.polarsys.capella.common.tools.report.appenders.usage.UsageMonitoringLogger;
 import org.polarsys.capella.core.commands.preferences.util.PreferencesHelper;
 import org.polarsys.capella.core.model.handler.advisor.DelegateWorkbenchAdvisor;
-import org.polarsys.capella.core.platform.sirius.ui.PerspectivePlugin;
 import org.polarsys.capella.core.platform.sirius.ui.perspective.CapellaPerspective;
 
 /**
@@ -139,7 +128,11 @@ public class CapellaWorkbenchAdvisor extends IDEWorkbenchAdvisor {
 
     // Remove all acceleo UI elements from capella( remove all extensions from extensionRegistry).
     removeAllAcceleoIntroExtensionPoints();
-
+    
+    // Call UsageMonitoringLogger.getInstance() to trigger the activation of plug-in
+    // org.polarsys.capella.common.tools.report.appenders.usage so that default preferences will be initialized by the
+    // org.polarsys.capella.common.tools.report.appenders.usage.preferences.PreferencesInitializer
+    UsageMonitoringLogger.getInstance();
   }
 
   /**
