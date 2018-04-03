@@ -22,6 +22,7 @@ import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
@@ -349,6 +350,21 @@ public class CapellaResourceHelper {
     return false;
   }
 
+  /**
+   * Returns for the given URI if it is located into a Capella project
+   */
+  public static boolean isCapellaProject(URI uri) {
+    try {
+      if (uri.isPlatformResource()) {
+        IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(uri.toPlatformString(true)));
+        return CapellaResourceHelper.isCapellaProject(file.getProject());
+      }
+    } catch (Exception ex) {
+      // This is not a valid local project
+    }
+
+    return false;
+  }
   /**
    * @param eObject
    * @return the main model resource if eObject is in a fragmented resource

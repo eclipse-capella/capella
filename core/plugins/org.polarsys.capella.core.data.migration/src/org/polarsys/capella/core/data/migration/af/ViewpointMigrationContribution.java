@@ -29,6 +29,7 @@ import org.polarsys.capella.common.bundle.FeatureHelper;
 import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.core.af.integration.AFIntegrationPlugin;
+import org.polarsys.capella.core.af.integration.CapellaMetadataProvider;
 import org.polarsys.capella.core.data.migration.Activator;
 import org.polarsys.capella.core.data.migration.capella.Messages;
 import org.polarsys.capella.core.data.migration.context.MigrationContext;
@@ -54,12 +55,13 @@ public class ViewpointMigrationContribution extends AbstractMigrationContributio
 
   @Override
   public IStatus preMigrationExecute(IResource fileToMigrate, MigrationContext context, boolean checkVersion) {
+    
     if (fileToMigrate instanceof IFile && MetadataHelper.isMetadataResource(fileToMigrate)) {
       return checkAFM(fileToMigrate, context, checkVersion);
 
     } else if (CapellaResourceHelper.isCapellaResource(fileToMigrate)) {
       // We check AFM
-      IFile afm = getAFM((IFile) fileToMigrate);
+      IFile afm = CapellaMetadataProvider.getAFM((IFile) fileToMigrate);
       if (afm.exists()) {
         return checkAFM(afm, context, checkVersion);
       }
@@ -69,7 +71,7 @@ public class ViewpointMigrationContribution extends AbstractMigrationContributio
 
     } else if (CapellaResourceHelper.isAirdResource(fileToMigrate, true)) {
       // We check AFM
-      IFile afm = getAFM((IFile) fileToMigrate);
+      IFile afm = CapellaMetadataProvider.getAFM((IFile) fileToMigrate);
       if (afm.exists()) {
         return checkAFM(afm, context, checkVersion);
       }
@@ -89,16 +91,10 @@ public class ViewpointMigrationContribution extends AbstractMigrationContributio
     context.setFileVersion((IFile) fileToMigrate, fileVersion);
 
     if (checkVersion) {
-      Version currentVersion = getCurrentVersion();
+      Version currentVersion = CapellaMetadataProvider.getCurrentVersion();
       return isMigrationPossible(fileVersion, currentVersion, context);
     }
     return Status.OK_STATUS;
-  }
-
-  private IFile getAFM(IFile fileToMigrate) {
-    IFile file = fileToMigrate.getProject().getFile(fileToMigrate.getProjectRelativePath().removeFileExtension()
-        .addFileExtension(ViewpointMetadata.STORAGE_EXTENSION));
-    return file;
   }
 
   private IStatus checkAFM(IResource fileToMigrate, MigrationContext context, boolean checkVersion) {
@@ -109,14 +105,14 @@ public class ViewpointMigrationContribution extends AbstractMigrationContributio
     try {
       if (Version.emptyVersion.equals(context.getFileVersion((IFile) fileToMigrate))) {
 
-        Map<String, Version> viewpointUsages = getViewpointsUsage((IFile) fileToMigrate);
+        Map<String, Version> viewpointUsages = CapellaMetadataProvider.getViewpointsUsage((IFile) fileToMigrate);
 
         // We load the AFM file and check if there is an incompatibility with Capella version
         Version fileVersion = viewpointUsages.get(AFIntegrationPlugin.CAPELLA_VIEWPOINT_ID);
         context.setFileVersion((IFile) fileToMigrate, fileVersion);
 
         if (checkVersion) {
-          Version currentVersion = getCurrentVersion();
+          Version currentVersion = CapellaMetadataProvider.getCurrentVersion();
           IStatus version = isMigrationPossible(fileVersion, currentVersion, context);
           if (!version.isOK()) {
             return version;
@@ -141,40 +137,6 @@ public class ViewpointMigrationContribution extends AbstractMigrationContributio
     
     return Status.OK_STATUS;
 
-  }
-
-  private Map<String, Version> getViewpointsUsage(IFile afmFile) {
-
-    // check all used VP are available (we suppose they are coming with migration tooling)
-    ResourceSet resourceSet = new ResourceSetImpl();
-    resourceSet.getLoadOptions().put(GMFResource.OPTION_ABORT_ON_ERROR, Boolean.TRUE);
-    resourceSet.getLoadOptions().put(XMLResource.OPTION_RECORD_UNKNOWN_FEATURE, Boolean.TRUE);
-    try {
-      resourceSet.getResource(EcoreUtil2.getURI((IFile) afmFile), true);
-      return MetadataHelper.getViewpointMetadata(resourceSet).getViewpointReferences();
-
-    } finally {
-      for (Resource r : resourceSet.getResources()) {
-        r.unload();
-      }
-      resourceSet.getResources().clear();
-    }
-  }
-
-  /**
-   * Return the platform current version
-   */
-  private Version getCurrentVersion() {
-    // We try to load the capella viewpoint first.
-    try {
-      Version version = ViewpointManager
-          .readVersion(ViewpointManager.getViewpoint(AFIntegrationPlugin.CAPELLA_VIEWPOINT_ID));
-      return version;
-
-    } catch (Exception e) {
-      // We never know if ViewpointManager return an exception
-      return Version.parseVersion(FeatureHelper.getCapellaVersion(false));
-    }
   }
 
   /**
