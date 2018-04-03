@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -37,6 +37,7 @@ import org.eclipse.swt.widgets.Shell;
 import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper;
 import org.polarsys.capella.core.data.migration.context.MigrationContext;
+import org.polarsys.capella.core.data.migration.contribution.BackupResourceContribution;
 import org.polarsys.capella.core.data.migration.contribution.IMigrationContribution;
 import org.polarsys.capella.core.data.migration.contributor.AbstractMigrationContributor;
 import org.xml.sax.Attributes;
@@ -53,6 +54,7 @@ public class MigrationHelpers implements IMigrationContribution {
   private ArrayList<IMigrationContribution> migrations = null;
 
   static final String MIGRATION_CONTRIBUTIONS_ID = "org.polarsys.capella.core.data.migration.contributions"; //$NON-NLS-1$
+  
   static final String MIGRATION_CONTRIBUTORS_ID = "org.polarsys.capella.core.data.migration.contributors"; //$NON-NLS-1$
 
   public MigrationHelpers() {
@@ -146,6 +148,11 @@ public class MigrationHelpers implements IMigrationContribution {
     }
   }
 
+  public void dispose() {
+    //We shall call all contributors but it create an API break
+    BackupResourceContribution.dispose();
+  }
+  
   @Override
   public String getFeatureName(String prefix, String name, boolean isElement, EObject peekObject, String value, Resource resource, MigrationContext context) {
     for (IMigrationContribution migration : migrations) {

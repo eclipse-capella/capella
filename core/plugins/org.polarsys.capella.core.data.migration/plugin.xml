@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <!--
-  Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -142,6 +142,9 @@
             class="org.polarsys.capella.core.data.migration.aird.SiriusMigrationContribution">
       </migrationContribution>
       <migrationContribution
+         class="org.polarsys.capella.core.data.migration.af.ViewpointMigrationContribution">
+      </migrationContribution>
+      <migrationContribution
             class="org.polarsys.capella.core.data.migration.contribution.BackupResourceContribution">
       </migrationContribution>
       
@@ -166,6 +169,12 @@
       <migrationContributor
             class="org.polarsys.capella.core.data.migration.aird.AirdMigrationContributor">
       </migrationContributor>
+      <migrationContributor
+         class="org.polarsys.capella.core.data.migration.af.MetadataUpdateContributor">
+      </migrationContributor>
+      <migrationContributor
+         class="org.polarsys.capella.core.data.migration.af.ViewpointMigrationContributor"> 
+      </migrationContributor>
       
    </extension>
    
@@ -178,32 +187,24 @@
    
    
    
-   <extension
-         point="org.polarsys.capella.core.data.migration.migrationContributions">
-      <migrationContribution
-         class="org.polarsys.capella.core.data.migration.af.ViewpointMigrationContribution"/>         
-   </extension>
-   
-   
-   <extension
-         point="org.polarsys.capella.core.data.migration.migrationContributors">
-      <migrationContributor
-         class="org.polarsys.capella.core.data.migration.af.MetadataUpdateContributor"/>
-      <migrationContributor
-         class="org.polarsys.capella.core.data.migration.af.ViewpointMigrationContributor"/>    
-   </extension>
-   
-   
    
    <!-- Contributions that should be removed between versions -->
    
    <extension
          point="org.polarsys.capella.core.data.migration.migrationContributions">
+         
 	  <migrationContribution
-         class="org.polarsys.capella.core.data.migration.contribution.FixDAnnotationsContribution"/>
-   <migrationContribution
+         class="org.polarsys.capella.core.data.migration.contribution.FixDAnnotationsContribution">
+	  </migrationContribution>
+	  
+	  <migrationContribution
          class="org.polarsys.capella.core.data.migration.contribution.ActivateDiagramFiltersContribution">
-   </migrationContribution>       
+	  </migrationContribution>
+	  
+	  <migrationContribution
+         class="org.polarsys.capella.core.data.migration.contribution.UidFromXmiIdContribution">
+	  </migrationContribution>
+          
    </extension>
    
    
