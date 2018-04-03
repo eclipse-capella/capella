@@ -896,47 +896,46 @@ public class PhysicalServices {
   
   protected Set<DEdge> updatePhysicalPathInternalLinks(PhysicalPath path,
       HashMap<PhysicalLink, DEdge> displayedPhysicalLinks, RGBValues color) {
-
     Set<DEdge> internalLinks = new HashSet<>();
-
-    // Iterate over involved physical links
-    Collection<PhysicalPathInvolvement> flatInvolvementsOf = PhysicalPathExt.getFlatInvolvementsOf(path,
-        CsPackage.Literals.PHYSICAL_LINK);
-    int size = flatInvolvementsOf.size();
-    PhysicalPathInvolvement[] flatInvolvements = flatInvolvementsOf.toArray(new PhysicalPathInvolvement[size]);
-    for (int index = 0; index < size-1; index++) {
-      PhysicalPathInvolvement physicalPathInvolvement = flatInvolvements[index];
-      PhysicalLink currentLink = (PhysicalLink) physicalPathInvolvement.getInvolved();
-      if (displayedPhysicalLinks.containsKey(currentLink)) {
-        DEdge currentEdge = displayedPhysicalLinks.get(currentLink);
-        InvolvedElement nextInvolved = getRelevantInvolvedElement(physicalPathInvolvement, CsPackage.eINSTANCE.getPhysicalPathInvolvement_NextInvolvements());
-        if (currentEdge != null && nextInvolved != null) {
-         
-          // Get port node from the current link which is on the next involvement
-          EdgeTarget firstNode = getPortOnInvolved(currentEdge, nextInvolved);
-          
-          // Get port node from the next link which is on the next involvement
-          if (isValidNodeForInternalLink(firstNode)) {
-            // Handle current and next
-            PhysicalPathInvolvement nextPhysicalPathInvolvement = flatInvolvements[index + 1];
-            PhysicalLink nextLink = index + 1 == size ? null : (PhysicalLink) nextPhysicalPathInvolvement.getInvolved();
-            if (nextLink != null && displayedPhysicalLinks.containsKey(nextLink)) {
+    // Iterate over involved parts
+    Collection<PhysicalPathInvolvement> flatPartInvolvements = PhysicalPathExt.getFlatInvolvementsOf(path,
+        CsPackage.Literals.PART);
+    for (PhysicalPathInvolvement partInvolvement : flatPartInvolvements) {
+      // The current part
+      Part currentPart = (Part) partInvolvement.getInvolvedElement();
+     
+      // The previous link involvements  if any
+      EList<PhysicalPathInvolvement> previousLinkInvolvements = partInvolvement.getPreviousInvolvements();
+      
+      // The next link involvements if any
+      EList<PhysicalPathInvolvement> nextLinkInvolvements = partInvolvement.getNextInvolvements();
+      
+      // Case 1: only next involvements are available, in this case all ports for the link on the current part should be connected together
+      if (previousLinkInvolvements.isEmpty() && !nextLinkInvolvements.isEmpty()) {
+        updateInternalLinks(path, displayedPhysicalLinks, color, internalLinks, currentPart, nextLinkInvolvements);
+      }
+      // Case 2: only previous involvements are available, in this case all ports for the link on the current part should be connected together
+      else if (!previousLinkInvolvements.isEmpty() && nextLinkInvolvements.isEmpty()) {
+        updateInternalLinks(path, displayedPhysicalLinks, color, internalLinks, currentPart, previousLinkInvolvements);
+      }
+      // Case 3: previous and next involvements are available, so we connect previous with next via internal links
+      else {
+        // Connect each previous with all next, usually there 1 previous and many next or 1 next and many previous
+        for (PhysicalPathInvolvement previousInvolvement : previousLinkInvolvements) {
+          for (PhysicalPathInvolvement nextInvolvement : nextLinkInvolvements) {
+            PhysicalLink previousLink = (PhysicalLink) previousInvolvement.getInvolvedElement();
+            PhysicalLink nextLink = (PhysicalLink) nextInvolvement.getInvolvedElement();
+            if (displayedPhysicalLinks.containsKey(previousLink) && displayedPhysicalLinks.containsKey(nextLink)) {
+              DEdge previousEdge = displayedPhysicalLinks.get(previousLink);
               DEdge nextEdge = displayedPhysicalLinks.get(nextLink);
-              InvolvedElement previousInvolvedElement = getRelevantInvolvedElement(nextPhysicalPathInvolvement, CsPackage.eINSTANCE.getPhysicalPathInvolvement_PreviousInvolvements());
-              if(nextEdge != null && previousInvolvedElement != null){
-                EdgeTarget secondNode = getPortOnInvolved(nextEdge, previousInvolvedElement);
-                if (isValidNodeForInternalLink(secondNode)
+              if (previousEdge != null && nextEdge != null) {
+                // Get port node from the previous edge which is on the current part
+                EdgeTarget firstNode = getPortOnInvolved(previousEdge, currentPart);
+                // Get port node from the next edge which is on the current part
+                EdgeTarget secondNode = getPortOnInvolved(nextEdge, currentPart);
+                if (isValidNodeForInternalLink(secondNode) && isValidNodeForInternalLink(secondNode)
                     && isValidInternalLinkEdge(firstNode, secondNode, internalLinks)) {
-                  internalLinks
-                      .add(retrieveInternalLink((DNode)firstNode, (DNode)secondNode, path, color));
-                }else {
-                  InvolvedElement previousInvolved = getRelevantInvolvedElement(physicalPathInvolvement, CsPackage.eINSTANCE.getPhysicalPathInvolvement_PreviousInvolvements());
-                  firstNode = getPortOnInvolved(currentEdge, previousInvolved);
-                  if(isValidNodeForInternalLink(firstNode)&& isValidNodeForInternalLink(secondNode)
-                    && isValidInternalLinkEdge(firstNode, secondNode, internalLinks)){
-                    internalLinks
-                    .add(retrieveInternalLink((DNode)firstNode, (DNode)secondNode, path, color));
-                  }
+                  internalLinks.add(retrieveInternalLink((DNode) firstNode, (DNode) secondNode, path, color));
                 }
               }
             }
@@ -944,25 +943,45 @@ public class PhysicalServices {
         }
       }
     }
-
     if (internalLinks.contains(null)) {
       internalLinks.remove(null);
     }
     return internalLinks;
-  
   }
 
-  private InvolvedElement getRelevantInvolvedElement(PhysicalPathInvolvement physicalPathInvolvement, EStructuralFeature feature) {
-    Assert.isLegal(feature.isMany());
-    @SuppressWarnings("unchecked")
-    EList<Object>  values = (EList<Object>)physicalPathInvolvement.eGet(feature);
-    if(values != null && !values.isEmpty()){
-      Object value = values.get(0);
-      if(value instanceof PhysicalPathInvolvement){
-        return ((PhysicalPathInvolvement)value).getInvolved();
+  private void updateInternalLinks(PhysicalPath path, HashMap<PhysicalLink, DEdge> displayedPhysicalLinks,
+      RGBValues color, Set<DEdge> internalLinks, Part currentPart,
+      EList<PhysicalPathInvolvement> linkInvolvements) {
+    int size = linkInvolvements.size();
+    PhysicalPathInvolvement[] linkInvolvementsArray = linkInvolvements.toArray(new PhysicalPathInvolvement[size]);
+    for (int index = 0; index < size - 1; index++) {
+      PhysicalPathInvolvement physicalPathInvolvement = linkInvolvementsArray[index];
+      PhysicalLink currentLink = (PhysicalLink) physicalPathInvolvement.getInvolvedElement();
+      if (displayedPhysicalLinks.containsKey(currentLink)) {
+        DEdge currentEdge = displayedPhysicalLinks.get(currentLink);
+        if (currentEdge != null) {
+          // Get port node from the current link which is on the next involvement
+          EdgeTarget firstNode = getPortOnInvolved(currentEdge, currentPart);
+          // Get port node from the next link which is on the next involvement
+          if (isValidNodeForInternalLink(firstNode)) {
+            // Handle current and next
+            PhysicalPathInvolvement nextPhysicalPathInvolvement = linkInvolvementsArray[index + 1];
+            PhysicalLink nextLink = index + 1 == size ? null
+                : (PhysicalLink) nextPhysicalPathInvolvement.getInvolvedElement();
+            if (nextLink != null && displayedPhysicalLinks.containsKey(nextLink)) {
+              DEdge nextEdge = displayedPhysicalLinks.get(nextLink);
+              if (nextEdge != null) {
+                EdgeTarget secondNode = getPortOnInvolved(nextEdge, currentPart);
+                if (isValidNodeForInternalLink(secondNode)
+                    && isValidInternalLinkEdge(firstNode, secondNode, internalLinks)) {
+                  internalLinks.add(retrieveInternalLink((DNode) firstNode, (DNode) secondNode, path, color));
+                }
+              }
+            }
+          }
+        }
       }
     }
-   return null;
   }
 
   private EdgeTarget getPortOnInvolved(DEdge edge, InvolvedElement involved) {
