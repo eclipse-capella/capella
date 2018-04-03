@@ -24,7 +24,6 @@ import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Path;
-import org.eclipse.core.runtime.SubMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -34,12 +33,7 @@ import org.eclipse.sirius.business.api.session.factory.SessionFactory;
 import org.eclipse.sirius.business.internal.session.SessionFactoryImpl;
 import org.eclipse.sirius.business.internal.session.danalysis.DAnalysisSessionImpl;
 import org.eclipse.sirius.viewpoint.DAnalysis;
-import org.polarsys.capella.common.ef.ExecutionManagerRegistry;
-import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper;
-import org.polarsys.kitalpha.ad.metadata.helpers.MetadataHelper;
-import org.polarsys.kitalpha.ad.metadata.helpers.ViewpointMetadata;
-import org.polarsys.kitalpha.ad.services.manager.ViewpointManager;
 
 /**
  * Specific SessionFactory to override {@link DAnalysisSessionImpl#getSemanticResources()}.
@@ -53,15 +47,15 @@ public class SiriusSessionFactory extends SessionFactoryImpl implements SessionF
   @Override
   protected void configureDomain(TransactionalEditingDomain transactionalEditingDomain, URI sessionResourceUri) {
   }
-  
+
   @Override
   protected Session createSession(DAnalysis analysis, final TransactionalEditingDomain transactionalEditingDomain) {
     return new DAnalysisSessionImpl(analysis) {
       @Override
       public Collection<Resource> getSemanticResources() {
         Collection<Resource> semanticResources = new ArrayList<Resource>(super.getSemanticResources());
-        semanticResources.addAll(new DerivedResourcesHelper()
-            .getDerivedSemanticResources(transactionalEditingDomain, semanticResources));
+        semanticResources.addAll(
+            new DerivedResourcesHelper().getDerivedSemanticResources(transactionalEditingDomain, semanticResources));
         return Collections.unmodifiableCollection(semanticResources);
       }
     };
@@ -75,7 +69,8 @@ public class SiriusSessionFactory extends SessionFactoryImpl implements SessionF
   @Override
   protected void createAdditionalResources(Collection<Resource> additionalResources,
       TransactionalEditingDomain transactionalEditingDomain, URI sessionResourceURI, IProgressMonitor monitor) {
-    Resource metadataResource = new SessionMetadataHelper().createMetadataResource(transactionalEditingDomain, sessionResourceURI, monitor);
+    Resource metadataResource = new SessionMetadataHelper().createMetadataResource(transactionalEditingDomain,
+        sessionResourceURI, monitor);
     if (metadataResource != null) {
       additionalResources.add(metadataResource);
     }
@@ -139,35 +134,41 @@ public class SiriusSessionFactory extends SessionFactoryImpl implements SessionF
 
   public static class SessionMetadataHelper {
 
-    public void checkMetadata(URI sessionResourceURI, ResourceSet set) {
-      if (sessionResourceURI.isPlatform() && isCapellaProject(sessionResourceURI)) {
-        if (!ViewpointManager.getInstance(set).hasMetadata()) {
-          throw new NoMetadataException(
-              MetadataHelper.getViewpointMetadata(set).getExpectedMetadataStorageURI().toPlatformString(true));
-        }
+    static Boolean loaded = Boolean.FALSE;
+    
+    static IMetadataProvider provider = null;
 
-        IStatus result = ViewpointManager.checkViewpointsCompliancy(set);
-        if (!result.isOK()) {
-          IStatus capella = ViewpointManager.checkViewpointCompliancy(set,
-              PlatformSiriusTedActivator.CAPELLA_VIEWPOINT_ID);
-          if (!capella.isOK()) {
-            throw new WrongCapellaVersionException(capella);
+    public IMetadataProvider getProvider() {
+      
+      if (loaded == Boolean.FALSE) {
+        for (IConfigurationElement configurationElement : ExtensionPointHelper
+            .getConfigurationElements(PlatformSiriusTedActivator.getDefault().getPluginId(), "metadataProvider")) {
+          IMetadataProvider contrib = (IMetadataProvider) ExtensionPointHelper.createInstance(configurationElement,
+              ExtensionPointHelper.ATT_CLASS);
+          if (contrib != null) {
+            provider = contrib;
           }
-          throw new MetadataException(result);
+        }
+        loaded = Boolean.TRUE;
+      }
+
+      return provider;
+    }
+
+    public void checkMetadata(URI sessionResourceURI, ResourceSet set) {
+      IMetadataProvider provider = getProvider();
+      if (provider != null) {
+        IStatus status = provider.checkMetadata(sessionResourceURI, set);
+        if (!status.isOK()) {
+          throw new MetadataException(status);
         }
       }
     }
 
     public void registerMetadataResource(Resource resource, final Session session, final IProgressMonitor monitor) {
-      if (resource != null && session !=null) {
-        final URI metadataResourceURI = resource.getURI();
-        ExecutionManagerRegistry.getInstance().getExecutionManager(session.getTransactionalEditingDomain())
-            .execute(new AbstractReadWriteCommand() {
-              @Override
-              public void run() {
-                session.addSemanticResource(metadataResourceURI, monitor);
-              }
-            });
+      IMetadataProvider provider = getProvider();
+      if (provider != null) {
+        provider.registerMetadataResource(resource, session, monitor);
       }
     }
 
@@ -183,35 +184,17 @@ public class SiriusSessionFactory extends SessionFactoryImpl implements SessionF
      */
     public Resource createMetadataResource(TransactionalEditingDomain domain, URI resourceURI,
         IProgressMonitor monitor) {
-      SubMonitor progress = SubMonitor.convert(monitor, 2);
-      try {
-        if (!isCapellaProject(resourceURI)) {
-          return null;
-        }
-
-        URI uri = resourceURI.trimFileExtension().appendFileExtension(ViewpointMetadata.STORAGE_EXTENSION);
-
-        progress.beginTask("Create an empty metadata resource", 1);
-        Resource resource = MetadataHelper.getViewpointMetadata(domain.getResourceSet()).initMetadataStorage(uri);
-        progress.worked(1);
-
-        try {
-          progress.beginTask("Save metadata model", 1);
-          resource.save(Collections.emptyMap());
-        } catch (Exception e) {
-          // we couldn't do this
-        }
-        progress.worked(1);
-        return resource;
-      } finally {
-        progress.done();
+      IMetadataProvider provider = getProvider();
+      if (provider != null) {
+        return provider.createMetadataResource(domain, resourceURI, monitor);
       }
+      return null;
     }
 
     /**
-     * @param uri
-     * @return
+     * @deprecated use CapellaResourceHelper instead
      */
+    @Deprecated
     protected static boolean isCapellaProject(URI uri) {
       try {
         if (uri.isPlatformResource()) {

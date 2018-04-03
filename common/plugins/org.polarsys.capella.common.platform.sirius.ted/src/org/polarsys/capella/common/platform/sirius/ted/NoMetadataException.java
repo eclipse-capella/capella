@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,12 +10,14 @@
  *******************************************************************************/
 package org.polarsys.capella.common.platform.sirius.ted;
 
-import org.eclipse.osgi.util.NLS;
-
+@Deprecated
+/**
+ * Use a MetadataException instead
+ */
 public class NoMetadataException extends RuntimeException {
 
 	public NoMetadataException(String message) {
-		super(NLS.bind(Messages.NoMetadataException_Message, message));
+		super(message);
 	}
 
 	public NoMetadataException() {
