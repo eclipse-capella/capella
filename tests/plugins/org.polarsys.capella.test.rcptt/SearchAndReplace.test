@@ -6,8 +6,8 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _yFxMUJ6BEeWcU-ojRg-Rxw
-Runtime-Version: 2.3.0.201712190725
-Save-Time: 1/23/18 2:29 PM
+Runtime-Version: 2.1.0.201606221726
+Save-Time: 4/4/18 10:53 AM
 Testcase-Type: ecl
 
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
@@ -61,6 +61,10 @@ with [get-window "Selection Dialog"] {
     get-button "Replace All" | click
 }
 get-window "Selection Dialog" | get-button OK | click
+
+// Sometimes RCPTT does not see the 3 lines in Information view, this makes sure that the view gets the focus before RCPTT does the verification
+get-view Information | click
+
 with [get-view Information | get-tree] {
     get-property itemCount | equals 3 | verify-true
     get-item "Impacted element names: 5" | get-property caption | equals "Impacted element names: 5" | verify-true
