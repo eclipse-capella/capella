@@ -8,23 +8,23 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_5cwh4LafEd-D96Pr0_X3Fg">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_AZZlUHQuEeamAMxs9g9ZYQ" name="LC 1" repPath="#_W_064JFrEeemoaFOWaTTWw">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_AZZlUHQuEeamAMxs9g9ZYQ" name="LC 1" repPath="#_nXEv8FbyEeCtXqpjL2wCJQ">
         <description xmi:type="description_1:SequenceDiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']"/>
         <target xmi:type="org.polarsys.capella.core.data.interaction:Scenario" href="validation.mergerTest.melodymodeller#8439b248-a413-41ec-8028-d824f58f330a"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_AZZlUXQuEeamAMxs9g9ZYQ" name="LC ROOT" repPath="#_XAELcJFrEeemoaFOWaTTWw">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_AZZlUXQuEeamAMxs9g9ZYQ" name="LC ROOT" repPath="#_747qcFbyEeCtXqpjL2wCJQ">
         <description xmi:type="description_1:SequenceDiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']"/>
         <target xmi:type="org.polarsys.capella.core.data.interaction:Scenario" href="validation.mergerTest.melodymodeller#02bcfe34-407f-44ab-9aab-38f407fd01c3"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_AZZlUnQuEeamAMxs9g9ZYQ" name="SysTEME" repPath="#_XAUqIJFrEeemoaFOWaTTWw">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_AZZlUnQuEeamAMxs9g9ZYQ" name="SysTEME" repPath="#_KGgjcFbzEeCtXqpjL2wCJQ">
         <description xmi:type="description_1:SequenceDiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']"/>
         <target xmi:type="org.polarsys.capella.core.data.interaction:Scenario" href="validation.mergerTest.melodymodeller#c008806f-2980-4c0d-be7e-5628c3db25b7"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_AZZlU3QuEeamAMxs9g9ZYQ" name="[IS] Scenario 1 - Interface Scenario" repPath="#_XAfCMJFrEeemoaFOWaTTWw">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_AZZlU3QuEeamAMxs9g9ZYQ" name="[IS] Scenario 1 - Interface Scenario" repPath="#_ibFxMFkuEeCvw7BMIRDDyg">
         <description xmi:type="description_1:SequenceDiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']"/>
         <target xmi:type="org.polarsys.capella.core.data.interaction:Scenario" href="validation.mergerTest.melodymodeller#d08ff0a6-e1f9-401f-9c46-00e5be8e2104"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_AZZlVHQuEeamAMxs9g9ZYQ" name="[IS] Scenario 1 - Interface Scenario" repPath="#_XA3csJFrEeemoaFOWaTTWw">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_AZZlVHQuEeamAMxs9g9ZYQ" name="[IS] Scenario 1 - Interface Scenario" repPath="#_aYQRQFkwEeCvw7BMIRDDyg">
         <description xmi:type="description_1:SequenceDiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']"/>
         <target xmi:type="org.polarsys.capella.core.data.interaction:Scenario" href="validation.mergerTest.melodymodeller#6030c79b-1087-4826-83a8-5d363c7242eb"/>
       </ownedRepresentationDescriptors>
@@ -45,7 +45,7 @@
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.kitalpha.ad.integration.sirius/description/ad.odesign#//@ownedViewpoints[name='ad']"/>
     </ownedViews>
   </viewpoint:DAnalysis>
-  <sequence:SequenceDDiagram xmi:id="_nXEv8FbyEeCtXqpjL2wCJQ" name="LC 1" uid="_W_064JFrEeemoaFOWaTTWw">
+  <sequence:SequenceDDiagram xmi:id="_nXEv8FbyEeCtXqpjL2wCJQ" name="LC 1" uid="_nXEv8FbyEeCtXqpjL2wCJQ">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_nXYR8FbyEeCtXqpjL2wCJQ" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_nXYR8VbyEeCtXqpjL2wCJQ" type="Sirius" element="_nXEv8FbyEeCtXqpjL2wCJQ" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="_nde58FbyEeCtXqpjL2wCJQ" type="2001" element="_Al4iIHQuEeamAMxs9g9ZYQ">
@@ -512,7 +512,7 @@
     <activatedLayers xmi:type="description_2:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.interaction:Scenario" href="validation.mergerTest.melodymodeller#8439b248-a413-41ec-8028-d824f58f330a"/>
   </sequence:SequenceDDiagram>
-  <sequence:SequenceDDiagram xmi:id="_747qcFbyEeCtXqpjL2wCJQ" name="LC ROOT" uid="_XAELcJFrEeemoaFOWaTTWw">
+  <sequence:SequenceDDiagram xmi:id="_747qcFbyEeCtXqpjL2wCJQ" name="LC ROOT" uid="_747qcFbyEeCtXqpjL2wCJQ">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_747qdFbyEeCtXqpjL2wCJQ" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_747qdVbyEeCtXqpjL2wCJQ" type="Sirius" element="_747qcFbyEeCtXqpjL2wCJQ" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="_76a4MFbyEeCtXqpjL2wCJQ" type="2001" element="_AnQbIHQuEeamAMxs9g9ZYQ">
@@ -973,7 +973,7 @@
     <activatedLayers xmi:type="description_2:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.interaction:Scenario" href="validation.mergerTest.melodymodeller#02bcfe34-407f-44ab-9aab-38f407fd01c3"/>
   </sequence:SequenceDDiagram>
-  <sequence:SequenceDDiagram xmi:id="_KGgjcFbzEeCtXqpjL2wCJQ" name="SysTEME" uid="_XAUqIJFrEeemoaFOWaTTWw">
+  <sequence:SequenceDDiagram xmi:id="_KGgjcFbzEeCtXqpjL2wCJQ" name="SysTEME" uid="_KGgjcFbzEeCtXqpjL2wCJQ">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_KGgjdFbzEeCtXqpjL2wCJQ" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_KGgjdVbzEeCtXqpjL2wCJQ" type="Sirius" element="_KGgjcFbzEeCtXqpjL2wCJQ" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="_KHs2QFbzEeCtXqpjL2wCJQ" type="2001" element="_AoXOYHQuEeamAMxs9g9ZYQ">
@@ -1308,7 +1308,7 @@
     <activatedLayers xmi:type="description_2:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.interaction:Scenario" href="validation.mergerTest.melodymodeller#c008806f-2980-4c0d-be7e-5628c3db25b7"/>
   </sequence:SequenceDDiagram>
-  <sequence:SequenceDDiagram xmi:id="_ibFxMFkuEeCvw7BMIRDDyg" name="[IS] Scenario 1 - Interface Scenario" uid="_XAfCMJFrEeemoaFOWaTTWw">
+  <sequence:SequenceDDiagram xmi:id="_ibFxMFkuEeCvw7BMIRDDyg" name="[IS] Scenario 1 - Interface Scenario" uid="_ibFxMFkuEeCvw7BMIRDDyg">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_ibsOIFkuEeCvw7BMIRDDyg" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_ibsOIVkuEeCvw7BMIRDDyg" type="Sirius" element="_ibFxMFkuEeCvw7BMIRDDyg" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="_i4cbkFkuEeCvw7BMIRDDyg" type="2001" element="_ApG1QHQuEeamAMxs9g9ZYQ">
@@ -1789,7 +1789,7 @@
     <activatedLayers xmi:type="description_2:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.interaction:Scenario" href="validation.mergerTest.melodymodeller#d08ff0a6-e1f9-401f-9c46-00e5be8e2104"/>
   </sequence:SequenceDDiagram>
-  <sequence:SequenceDDiagram xmi:id="_aYQRQFkwEeCvw7BMIRDDyg" name="[IS] Scenario 1 - Interface Scenario" uid="_XA3csJFrEeemoaFOWaTTWw">
+  <sequence:SequenceDDiagram xmi:id="_aYQRQFkwEeCvw7BMIRDDyg" name="[IS] Scenario 1 - Interface Scenario" uid="_aYQRQFkwEeCvw7BMIRDDyg">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_aYQRRFkwEeCvw7BMIRDDyg" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_aYQRRVkwEeCvw7BMIRDDyg" type="Sirius" element="_aYQRQFkwEeCvw7BMIRDDyg" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="_aZSzEFkwEeCvw7BMIRDDyg" type="2001" element="_ApqO4HQuEeamAMxs9g9ZYQ">

@@ -23,13 +23,13 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_xwDOUBcNEeSxXqwG_iovJg">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_p5lT4HQuEeamAMxs9g9ZYQ" name="[IDB] System - Interfaces Diagram Blank" repPath="#_PuzLAJFwEeemoaFOWaTTWw">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_p5lT4HQuEeamAMxs9g9ZYQ" name="[IDB] System - Interfaces Diagram Blank" repPath="#_zmE70BcNEeSxXqwG_iovJg">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.ctx:System" href="Project_validation10.melodymodeller#5094b5c3-cd7b-4691-957f-f0c4ca63270f"/>
       </ownedRepresentationDescriptors>
     </ownedViews>
   </viewpoint:DAnalysis>
-  <diagram:DSemanticDiagram xmi:id="_zmE70BcNEeSxXqwG_iovJg" name="[IDB] System - Interfaces Diagram Blank" uid="_PuzLAJFwEeemoaFOWaTTWw">
+  <diagram:DSemanticDiagram xmi:id="_zmE70BcNEeSxXqwG_iovJg" name="[IDB] System - Interfaces Diagram Blank" uid="_zmE70BcNEeSxXqwG_iovJg">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_zmLCcBcNEeSxXqwG_iovJg" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_zmLCcRcNEeSxXqwG_iovJg" type="Sirius" element="_zmE70BcNEeSxXqwG_iovJg" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="_09Nt4BcNEeSxXqwG_iovJg" type="2003" element="_0744MBcNEeSxXqwG_iovJg">

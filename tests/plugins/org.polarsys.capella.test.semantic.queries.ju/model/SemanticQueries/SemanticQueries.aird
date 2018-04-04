@@ -5,25 +5,25 @@
     <semanticResources>SemanticQueries.afm</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_c7gnUOVJEeWC_cpFfVotog">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_1nLsQFjLEea_Bs2eLgK85w" name="[SAB] System - System Architecture Blank" repPath="#_mXDygL_tEeejSqjY2nz12g">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_1nLsQFjLEea_Bs2eLgK85w" name="[SAB] System - System Architecture Blank" repPath="#_dc7AYOVLEeWC_cpFfVotog">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.ctx:System" href="SemanticQueries.melodymodeller#a3422c3a-1806-478a-9e52-f6d604d32b76"/>
       </ownedRepresentationDescriptors>
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_c79TQOVJEeWC_cpFfVotog">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_1oeswFjLEea_Bs2eLgK85w" name="[OAB] Operational Context - Operational Architecture Blank" repPath="#_mXeCML_tEeejSqjY2nz12g">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_1oeswFjLEea_Bs2eLgK85w" name="[OAB] Operational Context - Operational Architecture Blank" repPath="#_o6wAgOVJEeWC_cpFfVotog">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.oa:OperationalContext" href="SemanticQueries.melodymodeller#d792c8dd-91c8-451d-8646-f897cad97092"/>
       </ownedRepresentationDescriptors>
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_c8HEQOVJEeWC_cpFfVotog">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_1rVzgFjLEea_Bs2eLgK85w" name="[MSM] Default Region" repPath="#_mXepQL_tEeejSqjY2nz12g">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_1rVzgFjLEea_Bs2eLgK85w" name="[MSM] Default Region" repPath="#_72LrQC2AEeaaO8Z2r_yfIA">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']"/>
         <target xmi:type="org.polarsys.capella.core.data.capellacommon:Region" href="SemanticQueries.melodymodeller#7e346ce2-5dc0-4bdd-8d03-4cc2892fe2a2"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_ogXUEB6ZEeeEO_UCYZclcQ" name="[CRB] Capabilities" repPath="#_mXrdkL_tEeejSqjY2nz12g">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_ogXUEB6ZEeeEO_UCYZclcQ" name="[CRB] Capabilities" repPath="#_ogX7IB6ZEeeEO_UCYZclcQ">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capability%20Realization%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.la:CapabilityRealizationPkg" href="SemanticQueries.melodymodeller#7f696210-08b4-492f-b9f4-26912aa5b5fd"/>
       </ownedRepresentationDescriptors>
@@ -36,11 +36,11 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_c9chAOVJEeWC_cpFfVotog">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_1sUD4FjLEea_Bs2eLgK85w" name="[LAB] Logical System - Logical Architecture Blank" repPath="#_mXpBUL_tEeejSqjY2nz12g">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_1sUD4FjLEea_Bs2eLgK85w" name="[LAB] Logical System - Logical Architecture Blank" repPath="#_rBp8IebJEeWJKPQrzKU3Xw">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="SemanticQueries.melodymodeller#096703b9-355f-4722-ac4b-e98d582fe114"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_5G0I8B6ZEeeOZc6PowOyKg" name="[LDFB] Root Logical Function" repPath="#_mX6uIL_tEeejSqjY2nz12g">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_5G0I8B6ZEeeOZc6PowOyKg" name="[LDFB] Root Logical Function" repPath="#_5G3zUB6ZEeeOZc6PowOyKg">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.la:LogicalFunction" href="SemanticQueries.melodymodeller#e6a86efd-1b45-416c-80e7-1e424788b0ec"/>
       </ownedRepresentationDescriptors>
@@ -49,7 +49,7 @@
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.kitalpha.ad.integration.sirius/description/ad.odesign#//@ownedViewpoints[name='ad']"/>
     </ownedViews>
   </viewpoint:DAnalysis>
-  <diagram:DSemanticDiagram xmi:id="_dc7AYOVLEeWC_cpFfVotog" name="[SAB] System - System Architecture Blank" uid="_mXDygL_tEeejSqjY2nz12g">
+  <diagram:DSemanticDiagram xmi:id="_dc7AYOVLEeWC_cpFfVotog" name="[SAB] System - System Architecture Blank" uid="_dc7AYOVLEeWC_cpFfVotog">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_dc7AYeVLEeWC_cpFfVotog" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_dc7AYuVLEeWC_cpFfVotog"/>
     </ownedAnnotationEntries>
@@ -88,7 +88,7 @@
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.ctx:System" href="SemanticQueries.melodymodeller#a3422c3a-1806-478a-9e52-f6d604d32b76"/>
   </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram xmi:id="_o6wAgOVJEeWC_cpFfVotog" name="[OAB] Operational Context - Operational Architecture Blank" uid="_mXeCML_tEeejSqjY2nz12g">
+  <diagram:DSemanticDiagram xmi:id="_o6wAgOVJEeWC_cpFfVotog" name="[OAB] Operational Context - Operational Architecture Blank" uid="_o6wAgOVJEeWC_cpFfVotog">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_o6wAgeVJEeWC_cpFfVotog" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_o6wAguVJEeWC_cpFfVotog"/>
     </ownedAnnotationEntries>
@@ -103,7 +103,7 @@
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.oa:OperationalContext" href="SemanticQueries.melodymodeller#d792c8dd-91c8-451d-8646-f897cad97092"/>
   </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram xmi:id="_72LrQC2AEeaaO8Z2r_yfIA" name="[MSM] Default Region" uid="_mXepQL_tEeejSqjY2nz12g">
+  <diagram:DSemanticDiagram xmi:id="_72LrQC2AEeaaO8Z2r_yfIA" name="[MSM] Default Region" uid="_72LrQC2AEeaaO8Z2r_yfIA">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_72LrQS2AEeaaO8Z2r_yfIA" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_72LrQi2AEeaaO8Z2r_yfIA">
         <computedStyleDescriptions xmi:type="style:FlatContainerStyleDescription" xmi:id="_85m3IC2AEeaaO8Z2r_yfIA" arcWidth="12" arcHeight="12" borderSizeComputationExpression="1" borderLineStyle="dash" showIcon="false" labelExpression="&lt;% self.getRegionLabel($diagram) %>" labelAlignment="LEFT" backgroundStyle="GradientTopToBottom">
@@ -223,7 +223,7 @@
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.capellacommon:Region" href="SemanticQueries.melodymodeller#7e346ce2-5dc0-4bdd-8d03-4cc2892fe2a2"/>
   </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram xmi:id="_rBp8IebJEeWJKPQrzKU3Xw" name="[LAB] Logical System - Logical Architecture Blank" uid="_mXpBUL_tEeejSqjY2nz12g">
+  <diagram:DSemanticDiagram xmi:id="_rBp8IebJEeWJKPQrzKU3Xw" name="[LAB] Logical System - Logical Architecture Blank" uid="_rBp8IebJEeWJKPQrzKU3Xw">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_rBp8IubJEeWJKPQrzKU3Xw" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_rBp8I-bJEeWJKPQrzKU3Xw"/>
     </ownedAnnotationEntries>
@@ -265,7 +265,7 @@
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="SemanticQueries.melodymodeller#096703b9-355f-4722-ac4b-e98d582fe114"/>
   </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram xmi:id="_ogX7IB6ZEeeEO_UCYZclcQ" name="[CRB] Capabilities" uid="_mXrdkL_tEeejSqjY2nz12g">
+  <diagram:DSemanticDiagram xmi:id="_ogX7IB6ZEeeEO_UCYZclcQ" name="[CRB] Capabilities" uid="_ogX7IB6ZEeeEO_UCYZclcQ">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_ogX7IR6ZEeeEO_UCYZclcQ" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_ogX7Ih6ZEeeEO_UCYZclcQ"/>
     </ownedAnnotationEntries>
@@ -392,7 +392,7 @@
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capability%20Realization%20Blank']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.la:CapabilityRealizationPkg" href="SemanticQueries.melodymodeller#7f696210-08b4-492f-b9f4-26912aa5b5fd"/>
   </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram xmi:id="_5G3zUB6ZEeeOZc6PowOyKg" name="[LDFB] Root Logical Function" uid="_mX6uIL_tEeejSqjY2nz12g">
+  <diagram:DSemanticDiagram xmi:id="_5G3zUB6ZEeeOZc6PowOyKg" name="[LDFB] Root Logical Function" uid="_5G3zUB6ZEeeOZc6PowOyKg">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_5G3zUR6ZEeeOZc6PowOyKg" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_5G3zUh6ZEeeOZc6PowOyKg"/>
     </ownedAnnotationEntries>

@@ -5,7 +5,7 @@
     <semanticResources>PackageCycleTest5.afm</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_XKzfYLuVEeGHlKca_PLCQw">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_H6awoHQ3EeaVgPeL-Ht88A" name="[CDB] Data - Class Diagram Blank" repPath="#_R3zw0JFuEeemoaFOWaTTWw">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_H6awoHQ3EeaVgPeL-Ht88A" name="[CDB] Data - Class Diagram Blank" repPath="#_ZAqNwLuVEeGHlKca_PLCQw">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.information:DataPkg" href="PackageCycleTest5.melodymodeller#aff852a3-4528-4885-ab32-d86e1776ee68"/>
       </ownedRepresentationDescriptors>
@@ -29,7 +29,7 @@
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.kitalpha.ad.integration.sirius/description/ad.odesign#//@ownedViewpoints[name='ad']"/>
     </ownedViews>
   </viewpoint:DAnalysis>
-  <diagram:DSemanticDiagram xmi:id="_ZAqNwLuVEeGHlKca_PLCQw" name="[CDB] Data - Class Diagram Blank" uid="_R3zw0JFuEeemoaFOWaTTWw">
+  <diagram:DSemanticDiagram xmi:id="_ZAqNwLuVEeGHlKca_PLCQw" name="[CDB] Data - Class Diagram Blank" uid="_ZAqNwLuVEeGHlKca_PLCQw">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_ZA9IsLuVEeGHlKca_PLCQw" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_ZA9IsbuVEeGHlKca_PLCQw" type="Sirius" element="_ZAqNwLuVEeGHlKca_PLCQw" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="_Zr3t8LuVEeGHlKca_PLCQw" type="2002" element="_ZrIHELuVEeGHlKca_PLCQw">

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--Capella_Version_1.2.0-->
+<!--Capella_Version_1.2.1-->
 <org.eclipse.emf.diffmerge.patterns.core:PatternRepository xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cs_1.0.0="http://www.polarsys.org/capella/core/cs/1.0.0"
     xmlns:deployment_1.0.0="http://www.polarsys.org/capella/core/pa/deployment/1.0.0"
@@ -52,6 +52,8 @@
         name="Print device" abstractType="#b0ef6ff5-1c4f-4566-8ea3-7fbe61ddf07b"/>
     <templateElements xsi:type="cs_1.0.0:Part" id="cac9b473-6c58-491e-b660-5817eae5a5df"
         name="Print device" abstractType="#b0ef6ff5-1c4f-4566-8ea3-7fbe61ddf07b"/>
+    <templateElements xsi:type="cs_1.0.0:Part" id="cac9b473-6c58-491e-b660-5817eae5a5df"
+        name="Print device" abstractType="#b0ef6ff5-1c4f-4566-8ea3-7fbe61ddf07b"/>
     <templateElements xsi:type="cs_1.0.0:Part" id="edc1aa8d-dd30-462c-9106-29a62f849c84"
         name="Print Soft" abstractType="#b7168a8d-93d9-4d71-aa1a-a0563cbe6a6e"/>
     <templateElements xsi:type="pa_1.0.0:PhysicalComponent" id="b0ef6ff5-1c4f-4566-8ea3-7fbe61ddf07b"
@@ -63,6 +65,8 @@
             sourceElement="#7651703d-705d-4076-b347-6517db49b364"/>
       </ownedFeatures>
     </templateElements>
+    <templateElements xsi:type="pa_1.0.0:PhysicalComponent" id="b0ef6ff5-1c4f-4566-8ea3-7fbe61ddf07b"
+        name="Print device" nature="NODE"/>
     <templateElements xsi:type="pa_1.0.0:PhysicalComponent" id="b0ef6ff5-1c4f-4566-8ea3-7fbe61ddf07b"
         name="Print device" nature="NODE"/>
     <templateElements xsi:type="pa_1.0.0:PhysicalComponent" id="b0ef6ff5-1c4f-4566-8ea3-7fbe61ddf07b"
@@ -83,6 +87,8 @@
       <inputs xsi:type="fa_1.0.0:FunctionInputPort" id="69ce64c5-46c1-40ce-b950-02db6ae56773"
           name="FIP 1"/>
     </templateElements>
+    <templateElements xsi:type="pa_1.0.0:PhysicalFunction" id="55c8416f-9419-4de2-af1b-202a6414c304"
+        name="Print Information"/>
     <templateElements xsi:type="pa_1.0.0:PhysicalFunction" id="55c8416f-9419-4de2-af1b-202a6414c304"
         name="Print Information"/>
     <templateElements xsi:type="pa_1.0.0:PhysicalFunction" id="55c8416f-9419-4de2-af1b-202a6414c304"

@@ -14,19 +14,19 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_KH37oHpWEeam2Za7kAFLHQ">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_MidHsHpWEeam2Za7kAFLHQ" name="[CDI] Logical System" repPath="#_dHUO0JFxEeemoaFOWaTTWw">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_MidHsHpWEeam2Za7kAFLHQ" name="[CDI] Logical System" repPath="#_MiztAHpWEeam2Za7kAFLHQ">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']"/>
         <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="testPortSize.melodymodeller#961e0090-d416-4cbb-a2c8-699758fc999d"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_NpRl0HpWEeam2Za7kAFLHQ" name="[CEI] Logical System" repPath="#_dHd_0JFxEeemoaFOWaTTWw">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_NpRl0HpWEeam2Za7kAFLHQ" name="[CEI] Logical System" repPath="#_NpSM4HpWEeam2Za7kAFLHQ">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']"/>
         <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="testPortSize.melodymodeller#961e0090-d416-4cbb-a2c8-699758fc999d"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_OzrjcHpWEeam2Za7kAFLHQ" name="[CII] Logical System" repPath="#_dHnJwJFxEeemoaFOWaTTWw">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_OzrjcHpWEeam2Za7kAFLHQ" name="[CII] Logical System" repPath="#_OzsxkHpWEeam2Za7kAFLHQ">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']"/>
         <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="testPortSize.melodymodeller#961e0090-d416-4cbb-a2c8-699758fc999d"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_nczsIHqUEea48fyJEK3uMg" name="[IDB] Logical System" repPath="#_dHw6wJFxEeemoaFOWaTTWw">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_nczsIHqUEea48fyJEK3uMg" name="[IDB] Logical System" repPath="#_nc0TMHqUEea48fyJEK3uMg">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="testPortSize.melodymodeller#961e0090-d416-4cbb-a2c8-699758fc999d"/>
       </ownedRepresentationDescriptors>
@@ -41,7 +41,7 @@
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']"/>
     </ownedViews>
   </viewpoint:DAnalysis>
-  <diagram:DSemanticDiagram xmi:id="_MiztAHpWEeam2Za7kAFLHQ" name="[CDI] Logical System" uid="_dHUO0JFxEeemoaFOWaTTWw">
+  <diagram:DSemanticDiagram xmi:id="_MiztAHpWEeam2Za7kAFLHQ" name="[CDI] Logical System" uid="_MiztAHpWEeam2Za7kAFLHQ">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_MiztAXpWEeam2Za7kAFLHQ" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_MiztAnpWEeam2Za7kAFLHQ"/>
     </ownedAnnotationEntries>
@@ -295,7 +295,7 @@
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="testPortSize.melodymodeller#961e0090-d416-4cbb-a2c8-699758fc999d"/>
   </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram xmi:id="_NpSM4HpWEeam2Za7kAFLHQ" name="[CEI] Logical System" uid="_dHd_0JFxEeemoaFOWaTTWw">
+  <diagram:DSemanticDiagram xmi:id="_NpSM4HpWEeam2Za7kAFLHQ" name="[CEI] Logical System" uid="_NpSM4HpWEeam2Za7kAFLHQ">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_NpSM4XpWEeam2Za7kAFLHQ" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_NpSM4npWEeam2Za7kAFLHQ"/>
     </ownedAnnotationEntries>
@@ -563,7 +563,7 @@
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="testPortSize.melodymodeller#961e0090-d416-4cbb-a2c8-699758fc999d"/>
   </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram xmi:id="_OzsxkHpWEeam2Za7kAFLHQ" name="[CII] Logical System" uid="_dHnJwJFxEeemoaFOWaTTWw">
+  <diagram:DSemanticDiagram xmi:id="_OzsxkHpWEeam2Za7kAFLHQ" name="[CII] Logical System" uid="_OzsxkHpWEeam2Za7kAFLHQ">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_OzsxkXpWEeam2Za7kAFLHQ" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_OzsxknpWEeam2Za7kAFLHQ"/>
     </ownedAnnotationEntries>
@@ -830,7 +830,7 @@
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="testPortSize.melodymodeller#961e0090-d416-4cbb-a2c8-699758fc999d"/>
   </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram xmi:id="_nc0TMHqUEea48fyJEK3uMg" name="[IDB] Logical System" uid="_dHw6wJFxEeemoaFOWaTTWw">
+  <diagram:DSemanticDiagram xmi:id="_nc0TMHqUEea48fyJEK3uMg" name="[IDB] Logical System" uid="_nc0TMHqUEea48fyJEK3uMg">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_nc0TMXqUEea48fyJEK3uMg" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_nc0TMnqUEea48fyJEK3uMg"/>
     </ownedAnnotationEntries>

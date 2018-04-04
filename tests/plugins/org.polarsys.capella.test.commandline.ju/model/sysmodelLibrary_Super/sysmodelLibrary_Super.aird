@@ -8,14 +8,14 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_PKvd8OKyEeSbW_1s1tOuBA">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_EpsgIY-pEeagLJRD2VnG3A" name="[CDB] Data - Class Diagram Blank" repPath="#_L7UPIJFsEeemoaFOWaTTWw">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_EpsgIY-pEeagLJRD2VnG3A" name="[CDB] Data - Class Diagram Blank" repPath="#_d7JhwOKzEeSbW_1s1tOuBA">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.information:DataPkg" href="sysmodelLibrary_Super.melodymodeller#5cb74faa-aae1-4622-9817-878d79e000f3"/>
       </ownedRepresentationDescriptors>
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_PLMJ4OKyEeSbW_1s1tOuBA">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_EpsgII-pEeagLJRD2VnG3A" name="[LAB] Logical System - Logical Architecture Blank" repPath="#_L7LFMJFsEeemoaFOWaTTWw">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_EpsgII-pEeagLJRD2VnG3A" name="[LAB] Logical System - Logical Architecture Blank" repPath="#_i9lWUOKyEeSbW_1s1tOuBA">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="sysmodelLibrary_Super.melodymodeller#f4919f93-7095-4cae-9ab5-39a6138893bb"/>
       </ownedRepresentationDescriptors>
@@ -33,7 +33,7 @@
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.kitalpha.ad.integration.sirius/description/ad.odesign#//@ownedViewpoints[name='ad']"/>
     </ownedViews>
   </viewpoint:DAnalysis>
-  <diagram:DSemanticDiagram xmi:id="_i9lWUOKyEeSbW_1s1tOuBA" name="[LAB] Logical System - Logical Architecture Blank" uid="_L7LFMJFsEeemoaFOWaTTWw">
+  <diagram:DSemanticDiagram xmi:id="_i9lWUOKyEeSbW_1s1tOuBA" name="[LAB] Logical System - Logical Architecture Blank" uid="_i9lWUOKyEeSbW_1s1tOuBA">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_i9lWWOKyEeSbW_1s1tOuBA" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_i9lWWeKyEeSbW_1s1tOuBA" type="Sirius" element="_i9lWUOKyEeSbW_1s1tOuBA" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="_i9lWW-KyEeSbW_1s1tOuBA" type="2002" element="_i9lWUeKyEeSbW_1s1tOuBA">
@@ -326,11 +326,13 @@
     <activatedFilters xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@filters[name='Hide%20Simplified%20Oriented%20Grouped%20Component%20Exchanges']"/>
     <activatedFilters xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@filters[name='Hide%20Simplified%20Group%20of%20Component%20Exchanges']"/>
     <activatedFilters xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.kitalpha.ad.integration.sirius/description/ad.odesign#//@ownedViewpoints[name='ad']/@ownedRepresentations[name='AD%20diagram']/@filters[name='ModelExtensionFilter']"/>
+    <activatedFilters xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@filters[name='Hide%20Computed%20Component%20Exchanges']"/>
+    <activatedFilters xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@filters[name='Hide%20Computed%20Physical%20Links']"/>
     <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_i9lWV-KyEeSbW_1s1tOuBA"/>
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="sysmodelLibrary_Super.melodymodeller#f4919f93-7095-4cae-9ab5-39a6138893bb"/>
   </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram xmi:id="_d7JhwOKzEeSbW_1s1tOuBA" name="[CDB] Data - Class Diagram Blank" uid="_L7UPIJFsEeemoaFOWaTTWw">
+  <diagram:DSemanticDiagram xmi:id="_d7JhwOKzEeSbW_1s1tOuBA" name="[CDB] Data - Class Diagram Blank" uid="_d7JhwOKzEeSbW_1s1tOuBA">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_d7JhwuKzEeSbW_1s1tOuBA" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_d7Jhw-KzEeSbW_1s1tOuBA" type="Sirius" element="_d7JhwOKzEeSbW_1s1tOuBA" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="_eSjVIOKzEeSbW_1s1tOuBA" type="2003" element="_eSZkIOKzEeSbW_1s1tOuBA">

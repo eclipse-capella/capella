@@ -24,13 +24,13 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_ljD5kKIhEeSQu5S5CPxyxg">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_ntjNgFjMEea_Bs2eLgK85w" name="[CDB] Data - Class Diagram Blank" repPath="#_IZpNQJFuEeemoaFOWaTTWw">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_ntjNgFjMEea_Bs2eLgK85w" name="[CDB] Data - Class Diagram Blank" repPath="#_Ck9igKIiEeSQu5S5CPxyxg">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.information:DataPkg" href="P.melodymodeller#14fd757f-c5c4-4980-b449-7a7a7ef82c88"/>
       </ownedRepresentationDescriptors>
     </ownedViews>
   </viewpoint:DAnalysis>
-  <diagram:DSemanticDiagram xmi:id="_Ck9igKIiEeSQu5S5CPxyxg" name="[CDB] Data - Class Diagram Blank" uid="_IZpNQJFuEeemoaFOWaTTWw">
+  <diagram:DSemanticDiagram xmi:id="_Ck9igKIiEeSQu5S5CPxyxg" name="[CDB] Data - Class Diagram Blank" uid="_Ck9igKIiEeSQu5S5CPxyxg">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_ClGscKIiEeSQu5S5CPxyxg" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_ClGscaIiEeSQu5S5CPxyxg" type="Sirius" element="_Ck9igKIiEeSQu5S5CPxyxg" measurementUnit="Pixel">
         <styles xmi:type="notation:DiagramStyle" xmi:id="_ClGscqIiEeSQu5S5CPxyxg"/>

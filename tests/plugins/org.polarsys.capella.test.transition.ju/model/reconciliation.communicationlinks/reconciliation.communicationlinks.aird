@@ -5,15 +5,15 @@
     <semanticResources>reconciliation.communicationlinks.afm</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_2joeME_yEeWYOYp6IHwA3Q">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_4QahEHs1EeaIfY15UCx5Ag" name="[IDB] Logical System - Interfaces Diagram Blank" repPath="#_h0uOkJFwEeemoaFOWaTTWw">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_4QahEHs1EeaIfY15UCx5Ag" name="[IDB] Logical System - Interfaces Diagram Blank" repPath="#_3OesUFFCEeWTo_sFebnhNg">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="reconciliation.communicationlinks.melodymodeller#0405bcc1-0f91-4aff-b423-b721d8c9ada5"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_4QahEXs1EeaIfY15UCx5Ag" name="[IDB] System - Interfaces Diagram Blank" repPath="#_h05NsJFwEeemoaFOWaTTWw">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_4QahEXs1EeaIfY15UCx5Ag" name="[IDB] System - Interfaces Diagram Blank" repPath="#_h0lYkFYOEeWQlsgDn-S-Sg">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.ctx:System" href="reconciliation.communicationlinks.melodymodeller#7a581275-a180-44dc-9526-b6b0b3636288"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_4QahEns1EeaIfY15UCx5Ag" name="[IDB] Logical System - Interfaces Diagram Blank" repPath="#_h1Ez4JFwEeemoaFOWaTTWw">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_4QahEns1EeaIfY15UCx5Ag" name="[IDB] Logical System - Interfaces Diagram Blank" repPath="#_bGJmIFYYEeWQlsgDn-S-Sg">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="reconciliation.communicationlinks.melodymodeller#0405bcc1-0f91-4aff-b423-b721d8c9ada5"/>
       </ownedRepresentationDescriptors>
@@ -37,7 +37,7 @@
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']"/>
     </ownedViews>
   </viewpoint:DAnalysis>
-  <diagram:DSemanticDiagram xmi:id="_3OesUFFCEeWTo_sFebnhNg" name="[IDB] Logical System - Interfaces Diagram Blank" uid="_h0uOkJFwEeemoaFOWaTTWw">
+  <diagram:DSemanticDiagram xmi:id="_3OesUFFCEeWTo_sFebnhNg" name="[IDB] Logical System - Interfaces Diagram Blank" uid="_3OesUFFCEeWTo_sFebnhNg">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_3O7YQFFCEeWTo_sFebnhNg" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_3O7YQVFCEeWTo_sFebnhNg" type="Sirius" element="_3OesUFFCEeWTo_sFebnhNg" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="_3pmiEFFCEeWTo_sFebnhNg" type="2002" element="_3otKMFFCEeWTo_sFebnhNg">
@@ -406,7 +406,7 @@
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="reconciliation.communicationlinks.melodymodeller#0405bcc1-0f91-4aff-b423-b721d8c9ada5"/>
   </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram xmi:id="_h0lYkFYOEeWQlsgDn-S-Sg" name="[IDB] System - Interfaces Diagram Blank" uid="_h05NsJFwEeemoaFOWaTTWw">
+  <diagram:DSemanticDiagram xmi:id="_h0lYkFYOEeWQlsgDn-S-Sg" name="[IDB] System - Interfaces Diagram Blank" uid="_h0lYkFYOEeWQlsgDn-S-Sg">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_h1RVEFYOEeWQlsgDn-S-Sg" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_h1RVEVYOEeWQlsgDn-S-Sg" type="Sirius" element="_h0lYkFYOEeWQlsgDn-S-Sg" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="_k60JsFYOEeWQlsgDn-S-Sg" type="2002" element="_k6hOwFYOEeWQlsgDn-S-Sg">
@@ -780,7 +780,7 @@
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.ctx:System" href="reconciliation.communicationlinks.melodymodeller#7a581275-a180-44dc-9526-b6b0b3636288"/>
   </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram xmi:id="_bGJmIFYYEeWQlsgDn-S-Sg" name="[IDB] Logical System - Interfaces Diagram Blank" uid="_h1Ez4JFwEeemoaFOWaTTWw">
+  <diagram:DSemanticDiagram xmi:id="_bGJmIFYYEeWQlsgDn-S-Sg" name="[IDB] Logical System - Interfaces Diagram Blank" uid="_bGJmIFYYEeWQlsgDn-S-Sg">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_bGKNMFYYEeWQlsgDn-S-Sg" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_bGKNMVYYEeWQlsgDn-S-Sg" type="Sirius" element="_bGJmIFYYEeWQlsgDn-S-Sg" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="_baFOwFYYEeWQlsgDn-S-Sg" type="2002" element="_bZ0wEFYYEeWQlsgDn-S-Sg">

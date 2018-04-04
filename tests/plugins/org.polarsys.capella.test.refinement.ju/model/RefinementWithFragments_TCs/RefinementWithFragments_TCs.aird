@@ -20,7 +20,7 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_FWWZsB1kEeC08fCt2SoaIw">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_0lhP4HnFEea0Df0HniJfuA" name="[IS] Simple TC with Interaction Use (TC0) - Interface Scenario" repPath="#_m3SwkJFwEeemoaFOWaTTWw">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_0lhP4HnFEea0Df0HniJfuA" name="[IS] Simple TC with Interaction Use (TC0) - Interface Scenario" repPath="#_Uikv4C4FEeCIGZxxpvOwww">
         <description xmi:type="description_1:SequenceDiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']"/>
         <target xmi:type="org.polarsys.capella.core.data.interaction:Scenario" href="RefinementWithFragments_TCs.melodymodeller#c3a3d1a8-7260-40a5-be07-21eade906482"/>
       </ownedRepresentationDescriptors>
@@ -29,7 +29,7 @@
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.kitalpha.ad.integration.sirius/description/ad.odesign#//@ownedViewpoints[name='ad']"/>
     </ownedViews>
   </viewpoint:DAnalysis>
-  <sequence:SequenceDDiagram xmi:id="_Uikv4C4FEeCIGZxxpvOwww" name="[IS] Simple TC with Interaction Use (TC0) - Interface Scenario" uid="_m3SwkJFwEeemoaFOWaTTWw">
+  <sequence:SequenceDDiagram xmi:id="_Uikv4C4FEeCIGZxxpvOwww" name="[IS] Simple TC with Interaction Use (TC0) - Interface Scenario" uid="_Uikv4C4FEeCIGZxxpvOwww">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_Uikv5C4FEeCIGZxxpvOwww" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_Uikv5S4FEeCIGZxxpvOwww" type="Sirius" element="_Uikv4C4FEeCIGZxxpvOwww" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="_UjxCsC4FEeCIGZxxpvOwww" type="2001" element="_0uu2QHnFEea0Df0HniJfuA">

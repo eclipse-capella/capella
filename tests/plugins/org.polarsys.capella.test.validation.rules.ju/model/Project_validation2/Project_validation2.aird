@@ -14,7 +14,7 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_HYAkwPuwEeOZYMGwVIPWYw">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_0Iq-EHQuEeamAMxs9g9ZYQ" name="[IDB] Logical System - Interfaces Diagram Blank" repPath="#_U8vPgJFwEeemoaFOWaTTWw">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_0Iq-EHQuEeamAMxs9g9ZYQ" name="[IDB] Logical System - Interfaces Diagram Blank" repPath="#_LL4fAPuwEeOZYMGwVIPWYw">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Project_validation2.melodymodeller#55fb90c9-ab90-4692-a6cb-3c142148aa3b"/>
       </ownedRepresentationDescriptors>
@@ -29,7 +29,7 @@
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.kitalpha.ad.integration.sirius/description/ad.odesign#//@ownedViewpoints[name='ad']"/>
     </ownedViews>
   </viewpoint:DAnalysis>
-  <diagram:DSemanticDiagram xmi:id="_LL4fAPuwEeOZYMGwVIPWYw" name="[IDB] Logical System - Interfaces Diagram Blank" uid="_U8vPgJFwEeemoaFOWaTTWw">
+  <diagram:DSemanticDiagram xmi:id="_LL4fAPuwEeOZYMGwVIPWYw" name="[IDB] Logical System - Interfaces Diagram Blank" uid="_LL4fAPuwEeOZYMGwVIPWYw">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_LMdt0PuwEeOZYMGwVIPWYw" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_LMdt0fuwEeOZYMGwVIPWYw" type="Sirius" element="_LL4fAPuwEeOZYMGwVIPWYw" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="_NJtdoPuwEeOZYMGwVIPWYw" type="2002" element="_NIlcQPuwEeOZYMGwVIPWYw">

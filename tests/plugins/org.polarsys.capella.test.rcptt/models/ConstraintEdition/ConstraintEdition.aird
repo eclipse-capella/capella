@@ -17,7 +17,7 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_tnWbgCmbEeet0P8uzCNCFQ">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_5lRmECmbEeet0P8uzCNCFQ" name="[MSM] Default Region" repPath="#_9NALIJFsEeemoaFOWaTTWw">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_5lRmECmbEeet0P8uzCNCFQ" name="[MSM] Default Region" repPath="#_5lRmESmbEeet0P8uzCNCFQ">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']"/>
         <target xmi:type="org.polarsys.capella.core.data.capellacommon:Region" href="ConstraintEdition.melodymodeller#a90c1666-6963-4086-8928-f61fbf6b9962"/>
       </ownedRepresentationDescriptors>
@@ -29,7 +29,7 @@
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']"/>
     </ownedViews>
   </viewpoint:DAnalysis>
-  <diagram:DSemanticDiagram xmi:id="_5lRmESmbEeet0P8uzCNCFQ" name="[MSM] Default Region" uid="_9NALIJFsEeemoaFOWaTTWw">
+  <diagram:DSemanticDiagram xmi:id="_5lRmESmbEeet0P8uzCNCFQ" name="[MSM] Default Region" uid="_5lRmESmbEeet0P8uzCNCFQ">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_5lRmEimbEeet0P8uzCNCFQ" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_5lRmEymbEeet0P8uzCNCFQ"/>
     </ownedAnnotationEntries>

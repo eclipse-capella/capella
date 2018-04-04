@@ -11,7 +11,7 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_BuwF4DWVEeegO75wgtaLyw">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_Of1ywDWVEeegO75wgtaLyw" name="[IS] Capability 1" repPath="#_Fktc8JFtEeemoaFOWaTTWw">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_Of1ywDWVEeegO75wgtaLyw" name="[IS] Capability 1" repPath="#_Of3A4DWVEeegO75wgtaLyw">
         <description xmi:type="description_1:SequenceDiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']"/>
         <target xmi:type="org.polarsys.capella.core.data.interaction:Scenario" href="DeleteLifeline.melodymodeller#9ef65f3d-89f0-427b-8870-38d0929f9e3c"/>
       </ownedRepresentationDescriptors>
@@ -29,7 +29,7 @@
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']"/>
     </ownedViews>
   </viewpoint:DAnalysis>
-  <sequence:SequenceDDiagram xmi:id="_Of3A4DWVEeegO75wgtaLyw" name="[IS] Capability 1" uid="_Fktc8JFtEeemoaFOWaTTWw">
+  <sequence:SequenceDDiagram xmi:id="_Of3A4DWVEeegO75wgtaLyw" name="[IS] Capability 1" uid="_Of3A4DWVEeegO75wgtaLyw">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_Of3A4TWVEeegO75wgtaLyw" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_Of3A4jWVEeegO75wgtaLyw"/>
     </ownedAnnotationEntries>

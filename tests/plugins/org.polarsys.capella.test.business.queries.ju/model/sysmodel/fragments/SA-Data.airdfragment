@@ -6,19 +6,19 @@
     <semanticResources>../sysmodel.melodymodeller</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_XxLn4iZxEeGJJIltX6tx3w">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_I-5MgHTTEea2zdoadWNr2A" name="[PD] Data - Package Dependencies" repPath="#_cdbdcLJkEee8ZfbQ021kng">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_I-5MgHTTEea2zdoadWNr2A" name="[PD] Data - Package Dependencies" repPath="#_0bx5gMNoEeCmUclACW4KLw">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Package%20Dependencies']"/>
         <target xmi:type="org.polarsys.capella.core.data.information:DataPkg" href="SA-Data.melodyfragment#fb7840a4-2ac6-46f2-9547-a3368dd320a0"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_I-5MgXTTEea2zdoadWNr2A" name="[CDB] Data - Class Diagram Blank" repPath="#_cdgV8LJkEee8ZfbQ021kng">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_I-5MgXTTEea2zdoadWNr2A" name="[CDB] Data - Class Diagram Blank" repPath="#_5wZAAMNjEeCmUclACW4KLw">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.information:DataPkg" href="SA-Data.melodyfragment#fb7840a4-2ac6-46f2-9547-a3368dd320a0"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_I-5MgnTTEea2zdoadWNr2A" name="[CDB] Data and Contextual - Class Diagram Blank" repPath="#_cd27QLJkEee8ZfbQ021kng">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_I-5MgnTTEea2zdoadWNr2A" name="[CDB] Data and Contextual - Class Diagram Blank" repPath="#_F2DpkK_uEeGRvqHr5IqSew">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.information:DataPkg" href="SA-Data.melodyfragment#fb7840a4-2ac6-46f2-9547-a3368dd320a0"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_I-5Mg3TTEea2zdoadWNr2A" name="[CDB] Data - Class Diagram Blank - With Contextual Element" repPath="#_ceAFMLJkEee8ZfbQ021kng">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_I-5Mg3TTEea2zdoadWNr2A" name="[CDB] Data - Class Diagram Blank - With Contextual Element" repPath="#_2PwCUFo_EeKJDKFqomiB-A">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.information:DataPkg" href="SA-Data.melodyfragment#fb7840a4-2ac6-46f2-9547-a3368dd320a0"/>
       </ownedRepresentationDescriptors>
@@ -42,7 +42,7 @@
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.kitalpha.ad.integration.sirius/description/ad.odesign#//@ownedViewpoints[name='ad']"/>
     </ownedViews>
   </viewpoint:DAnalysis>
-  <diagram:DSemanticDiagram xmi:id="_0bx5gMNoEeCmUclACW4KLw" name="[PD] Data - Package Dependencies" uid="_cdbdcLJkEee8ZfbQ021kng">
+  <diagram:DSemanticDiagram xmi:id="_0bx5gMNoEeCmUclACW4KLw" name="[PD] Data - Package Dependencies" uid="_0bx5gMNoEeCmUclACW4KLw">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_0bx5gsNoEeCmUclACW4KLw" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_0bx5g8NoEeCmUclACW4KLw" type="Sirius" element="_0bx5gMNoEeCmUclACW4KLw" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="_146l4MNoEeCmUclACW4KLw" type="2002" element="_14nD5sNoEeCmUclACW4KLw">
@@ -419,7 +419,7 @@
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Package%20Dependencies']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.information:DataPkg" href="SA-Data.melodyfragment#fb7840a4-2ac6-46f2-9547-a3368dd320a0"/>
   </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram xmi:id="_5wZAAMNjEeCmUclACW4KLw" name="[CDB] Data - Class Diagram Blank" uid="_cdgV8LJkEee8ZfbQ021kng">
+  <diagram:DSemanticDiagram xmi:id="_5wZAAMNjEeCmUclACW4KLw" name="[CDB] Data - Class Diagram Blank" uid="_5wZAAMNjEeCmUclACW4KLw">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_5wZAAsNjEeCmUclACW4KLw" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_5wZAA8NjEeCmUclACW4KLw" type="Sirius" element="_5wZAAMNjEeCmUclACW4KLw" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="_6mL_kMNjEeCmUclACW4KLw" type="2001" element="_6mCOkMNjEeCmUclACW4KLw">
@@ -1935,7 +1935,7 @@
     <activatedLayers xmi:type="description_1:AdditionalLayer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@additionalLayers[name='Communication%20Model']"/>
     <target xmi:type="org.polarsys.capella.core.data.information:DataPkg" href="SA-Data.melodyfragment#fb7840a4-2ac6-46f2-9547-a3368dd320a0"/>
   </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram xmi:id="_F2DpkK_uEeGRvqHr5IqSew" name="[CDB] Data and Contextual - Class Diagram Blank" uid="_cd27QLJkEee8ZfbQ021kng">
+  <diagram:DSemanticDiagram xmi:id="_F2DpkK_uEeGRvqHr5IqSew" name="[CDB] Data and Contextual - Class Diagram Blank" uid="_F2DpkK_uEeGRvqHr5IqSew">
     <eAnnotations xmi:type="description:DAnnotation" xmi:id="_GwdcUK_uEeGRvqHr5IqSew" source="CONTEXTUAL_ELEMENTS">
       <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_ou7s8K_uEeGRvqHr5IqSew" key="id_0" value="2aba8b7f-af58-43ed-80a8-6e1172ebe861"/>
       <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_ou7s8a_uEeGRvqHr5IqSew" key="id_1" value="98531f8b-f63b-4b23-8847-c8076dc3e9e0"/>
@@ -2534,7 +2534,7 @@
     <activatedLayers xmi:type="description_1:AdditionalLayer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@additionalLayers[name='Communication%20Model']"/>
     <target xmi:type="org.polarsys.capella.core.data.information:DataPkg" href="SA-Data.melodyfragment#fb7840a4-2ac6-46f2-9547-a3368dd320a0"/>
   </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram xmi:id="_2PwCUFo_EeKJDKFqomiB-A" name="[CDB] Data - Class Diagram Blank - With Contextual Element" uid="_ceAFMLJkEee8ZfbQ021kng">
+  <diagram:DSemanticDiagram xmi:id="_2PwCUFo_EeKJDKFqomiB-A" name="[CDB] Data - Class Diagram Blank - With Contextual Element" uid="_2PwCUFo_EeKJDKFqomiB-A">
     <eAnnotations xmi:type="description:DAnnotation" xmi:id="_7oRmMFo_EeKJDKFqomiB-A" source="CONTEXTUAL_ELEMENTS">
       <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_HA0y0FpAEeKJDKFqomiB-A" key="id_0" value="1cc32365-2530-410c-a293-7838909118d0"/>
       <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_HA0y0VpAEeKJDKFqomiB-A" key="id_1" value="f4bdbaed-1add-4bf7-8bb0-8daad7238492"/>

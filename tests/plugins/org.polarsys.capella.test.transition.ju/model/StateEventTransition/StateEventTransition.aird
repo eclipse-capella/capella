@@ -8,7 +8,7 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_3oS_EBoQEee7Y7y_i2JAkQ">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_QjU68B3PEeejjYO-zACrJg" name="[MSM] Default Region" repPath="#_CV73AJFxEeemoaFOWaTTWw">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_QjU68B3PEeejjYO-zACrJg" name="[MSM] Default Region" repPath="#_8YGWEBoQEee7Y7y_i2JAkQ">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']"/>
         <target xmi:type="org.polarsys.capella.core.data.capellacommon:Region" href="StateEventTransition.melodymodeller#f92bcaaf-f6cc-4376-96b7-9c6f77d94828"/>
       </ownedRepresentationDescriptors>
@@ -29,7 +29,7 @@
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/EPBS.odesign#//@ownedViewpoints[name='EPBS%20architecture']"/>
     </ownedViews>
   </viewpoint:DAnalysis>
-  <diagram:DSemanticDiagram xmi:id="_8YGWEBoQEee7Y7y_i2JAkQ" name="[MSM] Default Region" uid="_CV73AJFxEeemoaFOWaTTWw">
+  <diagram:DSemanticDiagram xmi:id="_8YGWEBoQEee7Y7y_i2JAkQ" name="[MSM] Default Region" uid="_8YGWEBoQEee7Y7y_i2JAkQ">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_8YGWERoQEee7Y7y_i2JAkQ" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_8YGWEhoQEee7Y7y_i2JAkQ"/>
     </ownedAnnotationEntries>

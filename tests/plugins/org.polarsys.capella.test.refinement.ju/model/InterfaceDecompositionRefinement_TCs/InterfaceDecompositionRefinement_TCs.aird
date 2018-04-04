@@ -14,19 +14,19 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_eGKVUFbeEeCt3pxNBEaUOg">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_VZVEMHnGEea0Df0HniJfuA" name="[IS] Simple TC without ambiguity - Interface Scenario" repPath="#_hE6CkJFtEeemoaFOWaTTWw">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_VZVEMHnGEea0Df0HniJfuA" name="[IS] Simple TC without ambiguity - Interface Scenario" repPath="#_P-A4cVbqEeCetq6Dlnlq3w">
         <description xmi:type="description_1:SequenceDiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']"/>
         <target xmi:type="org.polarsys.capella.core.data.interaction:Scenario" href="InterfaceDecompositionRefinement_TCs.melodymodeller#8100375c-6a86-4a82-99a2-aa3d35359449"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_VZVEMXnGEea0Df0HniJfuA" name="[IS] Simple TC with usage ambiguity - Interface Scenario" repPath="#_hFDMgJFtEeemoaFOWaTTWw">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_VZVEMXnGEea0Df0HniJfuA" name="[IS] Simple TC with usage ambiguity - Interface Scenario" repPath="#_2OXbsFbvEeCetq6Dlnlq3w">
         <description xmi:type="description_1:SequenceDiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']"/>
         <target xmi:type="org.polarsys.capella.core.data.interaction:Scenario" href="InterfaceDecompositionRefinement_TCs.melodymodeller#14f6f392-a6e3-4fc0-b059-710648273d56"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_VZVEMnnGEea0Df0HniJfuA" name="[IS] Simple TC with implementation ambiguity - Interface Scenario" repPath="#_hFM9gJFtEeemoaFOWaTTWw">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_VZVEMnnGEea0Df0HniJfuA" name="[IS] Simple TC with implementation ambiguity - Interface Scenario" repPath="#_3IW-wFbvEeCetq6Dlnlq3w">
         <description xmi:type="description_1:SequenceDiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']"/>
         <target xmi:type="org.polarsys.capella.core.data.interaction:Scenario" href="InterfaceDecompositionRefinement_TCs.melodymodeller#8a732e22-37a3-40eb-a253-e40e9928c2bd"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_VZVEM3nGEea0Df0HniJfuA" name="[IS] Simple TC with both ambiguity - Interface Scenario" repPath="#_hFWugJFtEeemoaFOWaTTWw">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_VZVEM3nGEea0Df0HniJfuA" name="[IS] Simple TC with both ambiguity - Interface Scenario" repPath="#_3rPCUFbvEeCetq6Dlnlq3w">
         <description xmi:type="description_1:SequenceDiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']"/>
         <target xmi:type="org.polarsys.capella.core.data.interaction:Scenario" href="InterfaceDecompositionRefinement_TCs.melodymodeller#812ca413-4794-4f60-943a-ca70bdbefa05"/>
       </ownedRepresentationDescriptors>
@@ -41,7 +41,7 @@
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.kitalpha.ad.integration.sirius/description/ad.odesign#//@ownedViewpoints[name='ad']"/>
     </ownedViews>
   </viewpoint:DAnalysis>
-  <sequence:SequenceDDiagram xmi:id="_P-A4cVbqEeCetq6Dlnlq3w" name="[IS] Simple TC without ambiguity - Interface Scenario" uid="_hE6CkJFtEeemoaFOWaTTWw">
+  <sequence:SequenceDDiagram xmi:id="_P-A4cVbqEeCetq6Dlnlq3w" name="[IS] Simple TC without ambiguity - Interface Scenario" uid="_P-A4cVbqEeCetq6Dlnlq3w">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_P-nVYFbqEeCetq6Dlnlq3w" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_P-nVYVbqEeCetq6Dlnlq3w" type="Sirius" element="_P-A4cVbqEeCetq6Dlnlq3w" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="_i8pHgEaREeWeYombhCiYAQ" type="2001" element="_ViwF8HnGEea0Df0HniJfuA">
@@ -324,7 +324,7 @@
     <activatedLayers xmi:type="description_2:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.interaction:Scenario" href="InterfaceDecompositionRefinement_TCs.melodymodeller#8100375c-6a86-4a82-99a2-aa3d35359449"/>
   </sequence:SequenceDDiagram>
-  <sequence:SequenceDDiagram xmi:id="_2OXbsFbvEeCetq6Dlnlq3w" name="[IS] Simple TC with usage ambiguity - Interface Scenario" uid="_hFDMgJFtEeemoaFOWaTTWw">
+  <sequence:SequenceDDiagram xmi:id="_2OXbsFbvEeCetq6Dlnlq3w" name="[IS] Simple TC with usage ambiguity - Interface Scenario" uid="_2OXbsFbvEeCetq6Dlnlq3w">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_2OXbtFbvEeCetq6Dlnlq3w" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_2OXbtVbvEeCetq6Dlnlq3w" type="Sirius" element="_2OXbsFbvEeCetq6Dlnlq3w" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="_i_tpoEaREeWeYombhCiYAQ" type="2001" element="_Vi86QHnGEea0Df0HniJfuA">
@@ -603,7 +603,7 @@
     <activatedLayers xmi:type="description_2:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.interaction:Scenario" href="InterfaceDecompositionRefinement_TCs.melodymodeller#14f6f392-a6e3-4fc0-b059-710648273d56"/>
   </sequence:SequenceDDiagram>
-  <sequence:SequenceDDiagram xmi:id="_3IW-wFbvEeCetq6Dlnlq3w" name="[IS] Simple TC with implementation ambiguity - Interface Scenario" uid="_hFM9gJFtEeemoaFOWaTTWw">
+  <sequence:SequenceDDiagram xmi:id="_3IW-wFbvEeCetq6Dlnlq3w" name="[IS] Simple TC with implementation ambiguity - Interface Scenario" uid="_3IW-wFbvEeCetq6Dlnlq3w">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_3IW-xFbvEeCetq6Dlnlq3w" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_3IW-xVbvEeCetq6Dlnlq3w" type="Sirius" element="_3IW-wFbvEeCetq6Dlnlq3w" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="_jADA0EaREeWeYombhCiYAQ" type="2001" element="_VjH5YHnGEea0Df0HniJfuA">
@@ -882,7 +882,7 @@
     <activatedLayers xmi:type="description_2:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.interaction:Scenario" href="InterfaceDecompositionRefinement_TCs.melodymodeller#8a732e22-37a3-40eb-a253-e40e9928c2bd"/>
   </sequence:SequenceDDiagram>
-  <sequence:SequenceDDiagram xmi:id="_3rPCUFbvEeCetq6Dlnlq3w" name="[IS] Simple TC with both ambiguity - Interface Scenario" uid="_hFWugJFtEeemoaFOWaTTWw">
+  <sequence:SequenceDDiagram xmi:id="_3rPCUFbvEeCetq6Dlnlq3w" name="[IS] Simple TC with both ambiguity - Interface Scenario" uid="_3rPCUFbvEeCetq6Dlnlq3w">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_3rPCVFbvEeCetq6Dlnlq3w" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_3rPCVVbvEeCetq6Dlnlq3w" type="Sirius" element="_3rPCUFbvEeCetq6Dlnlq3w" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="_jAXJ4EaREeWeYombhCiYAQ" type="2001" element="_VjS4gHnGEea0Df0HniJfuA">

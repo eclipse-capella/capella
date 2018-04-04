@@ -12,7 +12,7 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_IX268aIyEeSb_oTRTAsn1Q">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_x7ps4HQuEeamAMxs9g9ZYQ" name="[CDB] Data - Class Diagram Blank" repPath="#_TVpV4JFwEeemoaFOWaTTWw">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_x7ps4HQuEeamAMxs9g9ZYQ" name="[CDB] Data - Class Diagram Blank" repPath="#_OGIsYKIyEeSb_oTRTAsn1Q">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.information:DataPkg" href="Project_validation12.melodymodeller#8c440b26-99be-47d4-a94f-483032857212"/>
       </ownedRepresentationDescriptors>
@@ -30,7 +30,7 @@
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']"/>
     </ownedViews>
   </viewpoint:DAnalysis>
-  <diagram:DSemanticDiagram xmi:id="_OGIsYKIyEeSb_oTRTAsn1Q" name="[CDB] Data - Class Diagram Blank" uid="_TVpV4JFwEeemoaFOWaTTWw">
+  <diagram:DSemanticDiagram xmi:id="_OGIsYKIyEeSb_oTRTAsn1Q" name="[CDB] Data - Class Diagram Blank" uid="_OGIsYKIyEeSb_oTRTAsn1Q">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_OGSdYKIyEeSb_oTRTAsn1Q" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_OGSdYaIyEeSb_oTRTAsn1Q" type="Sirius" element="_OGIsYKIyEeSb_oTRTAsn1Q" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="_OgEPUKIyEeSb_oTRTAsn1Q" type="2003" element="_OfnjYKIyEeSb_oTRTAsn1Q">

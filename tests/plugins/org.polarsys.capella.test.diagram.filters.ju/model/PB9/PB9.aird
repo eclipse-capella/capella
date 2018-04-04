@@ -23,13 +23,13 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_WKh3QJI_EeeH1vQ3EnstJA">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_iL_eBZI_EeeH1vQ3EnstJA" name="[PAB] Physical System" repPath="#_iLsjEJI_EeeH1vQ3EnstJA">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_iL_eBZI_EeeH1vQ3EnstJA" name="[PAB] Physical System" repPath="#_iL_eAJI_EeeH1vQ3EnstJA">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.pa:PhysicalComponent" href="PB9.melodymodeller#a0f0c6d2-a3b1-4a8e-8043-474fe029b6b9"/>
       </ownedRepresentationDescriptors>
     </ownedViews>
   </viewpoint:DAnalysis>
-  <diagram:DSemanticDiagram xmi:id="_iL_eAJI_EeeH1vQ3EnstJA" name="[PAB] Physical System" uid="_iLsjEJI_EeeH1vQ3EnstJA">
+  <diagram:DSemanticDiagram xmi:id="_iL_eAJI_EeeH1vQ3EnstJA" name="[PAB] Physical System" uid="_iL_eAJI_EeeH1vQ3EnstJA">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_iL_eAZI_EeeH1vQ3EnstJA" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_iL_eApI_EeeH1vQ3EnstJA"/>
     </ownedAnnotationEntries>

@@ -14,7 +14,7 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_m83sEDqqEeCotryTFv7yKQ">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_8kwEEHs1EeaIfY15UCx5Ag" name="[IDB] Logical System - Interfaces Diagram Blank" repPath="#_jnP8IJFwEeemoaFOWaTTWw">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_8kwEEHs1EeaIfY15UCx5Ag" name="[IDB] Logical System - Interfaces Diagram Blank" repPath="#_pO6AIDqqEeCotryTFv7yKQ">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="reconciliation.interfacelinks.melodymodeller#dbe061f7-c93e-4ec6-8343-38725bc1b94a"/>
       </ownedRepresentationDescriptors>
@@ -29,7 +29,7 @@
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.kitalpha.ad.integration.sirius/description/ad.odesign#//@ownedViewpoints[name='ad']"/>
     </ownedViews>
   </viewpoint:DAnalysis>
-  <diagram:DSemanticDiagram xmi:id="_pO6AIDqqEeCotryTFv7yKQ" name="[IDB] Logical System - Interfaces Diagram Blank" uid="_jnP8IJFwEeemoaFOWaTTWw">
+  <diagram:DSemanticDiagram xmi:id="_pO6AIDqqEeCotryTFv7yKQ" name="[IDB] Logical System - Interfaces Diagram Blank" uid="_pO6AIDqqEeCotryTFv7yKQ">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_pO6AIjqqEeCotryTFv7yKQ" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_pO6AIzqqEeCotryTFv7yKQ" type="Sirius" element="_pO6AIDqqEeCotryTFv7yKQ" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="_JzjdIHs1EeaM24ankAhUQw" type="2002" element="_qUDDQDqqEeCotryTFv7yKQ">
