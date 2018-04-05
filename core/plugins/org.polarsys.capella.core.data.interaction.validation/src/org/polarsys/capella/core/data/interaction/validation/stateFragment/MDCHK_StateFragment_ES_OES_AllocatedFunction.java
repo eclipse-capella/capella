@@ -78,10 +78,8 @@ public class MDCHK_StateFragment_ES_OES_AllocatedFunction extends AbstractValida
       String componentMetaClassLabel = EObjectLabelProviderHelper.getMetaclassLabel(component, false);
       String deployed = (BlockArchitectureExt.getRootBlockArchitecture(containingScenario) instanceof PhysicalArchitecture) ? "/deployed" : ""; //$NON-NLS-1$ //$NON-NLS-2$
 
-      String componentName = null;
-      if (null != component) {
-        componentName = component.getName();
-      }
+      String componentName = component != null ? component.getName() : EObjectLabelProviderHelper.getText(representedInstance);
+      componentMetaClassLabel = componentMetaClassLabel != null ? componentMetaClassLabel : EObjectLabelProviderHelper.getMetaclassLabel(representedInstance, false);
       return ctx.createFailureStatus(relatedFunction.getName(), relatedFunctionMetaClassLabel,
           containingScenario.getName(), scenarioMetaClassLabel, componentName, componentMetaClassLabel, deployed);
     }
