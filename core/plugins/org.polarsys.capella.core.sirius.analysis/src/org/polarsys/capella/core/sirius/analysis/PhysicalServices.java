@@ -15,16 +15,16 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.jface.window.Window;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
@@ -45,8 +45,11 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.RGBValues;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.swt.graphics.RGB;
+import org.eclipse.ui.PlatformUI;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.helpers.SimpleOrientedGraph;
+import org.polarsys.capella.common.helpers.TransactionHelper;
+import org.polarsys.capella.common.ui.toolkit.dialogs.SelectElementsDialog;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
 import org.polarsys.capella.core.business.queries.capellacore.BusinessQueriesProvider;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
@@ -80,6 +83,7 @@ import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
 import org.polarsys.capella.core.data.pa.deployment.DeploymentFactory;
 import org.polarsys.capella.core.data.pa.deployment.PartDeploymentLink;
+import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.PartExt;
@@ -479,8 +483,8 @@ public class PhysicalServices {
 
   public EObject createPhysicalPath(EObject context, List<EObject> views, EObject source) {
 
-    if (!views.isEmpty()) {
-      List<PhysicalLink> newList = new ArrayList<PhysicalLink>();
+    if (!views.isEmpty() && source != null) {
+      List<PhysicalLink> newList = new ArrayList<>();
       for (EObject aSelectedElement : views) {
         if ((aSelectedElement instanceof DEdge) && (((DEdge) aSelectedElement).getTarget() != null)
             && (((DEdge) aSelectedElement).getTarget() instanceof PhysicalLink)) {
@@ -498,7 +502,7 @@ public class PhysicalServices {
       return PhysicalPathExt.createPhysicalPath(container, newList, sourcePath);
 
     }
-    return context;
+    return null;
   }
 
   public boolean canBeInvolvedInPhysicalPath(EObject source) {
@@ -515,8 +519,8 @@ public class PhysicalServices {
   }
 
   public List<EObject> getAvailableSourcesOfPhysicalPath(EObject context, List<EObject> views) {
-    HashMap<Part, Integer> parts = new HashMap<Part, Integer>();
-    List<EObject> result = new ArrayList<EObject>();
+    HashMap<Part, Integer> parts = new HashMap<>();
+    List<EObject> result = new ArrayList<>();
     for (EObject aSelectedElement : views) {
       if ((aSelectedElement instanceof DEdge) && (((DEdge) aSelectedElement).getTarget() != null)
           && (((DEdge) aSelectedElement).getTarget() instanceof PhysicalLink)) {
@@ -566,7 +570,7 @@ public class PhysicalServices {
   }
 
   public boolean isValidPhysicalPathSelection(EObject context, List<EObject> views) {
-    SimpleOrientedGraph<Part> graph = new SimpleOrientedGraph<Part>();
+    SimpleOrientedGraph<Part> graph = new SimpleOrientedGraph<>();
     if (!views.isEmpty()) {
       for (EObject aSelectedElement : views) {
         if ((aSelectedElement instanceof DEdge) && (((DEdge) aSelectedElement).getTarget() != null)
@@ -584,7 +588,7 @@ public class PhysicalServices {
             return false;
           }
         }
-        return graph.isValid();
+        return graph.isValid() && !getAvailableSourcesOfPhysicalPath(context, views).isEmpty();
       }
       return false;
     }
@@ -1456,7 +1460,7 @@ public class PhysicalServices {
       incoming.retainAll(outgoing);
       incoming.removeAll(PhysicalPathExt.getFlatPhysicalLinks(path));
 
-      Collection<Part> targetParts = new HashSet<Part>();
+      Collection<Part> targetParts = new LinkedHashSet<>();
       targetParts.addAll(PhysicalPathExt.getFlatPhysicalPathFirstParts(path));
       targetParts.addAll(PhysicalPathExt.getFlatPhysicalPathLastParts(path));
 

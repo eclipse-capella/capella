@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:description_3="http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="System Descriptions" version="11.1.1.201610211630">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:description_3="http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="System Descriptions" version="12.0.0.2017041100">
   <ownedViewpoints name="System Analysis" modelFileExtension="melodymodeller">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Missions%20From%20Project%20Explorer'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Capabilities%20From%20Project%20Explorer'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Actors%20From%20Project%20Explorer']" name="Contextual Mission" titleExpression="[CM] &lt;%current.name%>" domainClass="Mission">
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.activity.gen/model/Activity.ecore#/"/>
@@ -1955,6 +1955,8 @@
       </ownedColumnMappings>
       <intersection name="Trace 4" lineMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Functions%20-%20Requirements']/@ownedLineMappings[name='System%20Functions%202'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Functions%20-%20Requirements']/@ownedLineMappings[name='System%20Functions%202']/@ownedSubLines[name='Sub%20System%20Functions%202']" columnMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Functions%20-%20Requirements']/@ownedColumnMappings.0" labelExpression="X" useDomainClass="true" columnFinderExpression="feature:targetElement" lineFinderExpression="feature:sourceElement" domainClass="RequirementsTrace">
         <directEdit>
+          <variables name="table" documentation="The current DTable."/>
+          <variables name="line" documentation="The DLine of the current DCell."/>
           <variables name="element" documentation="The currently edited element."/>
           <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
           <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
@@ -2015,6 +2017,8 @@
       </ownedColumnMappings>
       <intersection name="Function Realisations 3" lineMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Functions%20-%20Operational%20Activities']/@ownedLineMappings[name='System%20Functions%201'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Functions%20-%20Operational%20Activities']/@ownedLineMappings[name='System%20Functions%201']/@ownedSubLines[name='Sub%20System%20Function%201']" columnMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Functions%20-%20Operational%20Activities']/@ownedColumnMappings.0" labelExpression="X" useDomainClass="true" columnFinderExpression="&lt;%targetElement.filter(&quot;OperationalActivity&quot;)%>" lineFinderExpression="&lt;%sourceElement.filter(&quot;AbstractFunction&quot;)%>" domainClass="FunctionRealization">
         <directEdit>
+          <variables name="table" documentation="The current DTable."/>
+          <variables name="line" documentation="The DLine of the current DCell."/>
           <variables name="element" documentation="The currently edited element."/>
           <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
           <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
@@ -3778,13 +3782,20 @@
           </ownedTools>
           <ownedTools xsi:type="tool_1:PopupMenu" name="Physical Path">
             <menuItemDescription xsi:type="tool_1:OperationAction" name="Create a Physical Path" precondition="&lt;%isValidPhysicalPathSelection($views)%>">
-              <view name="views">
-                <subVariables xsi:type="tool_1:AcceleoVariable" name="source" computationExpression="&lt;%getAvailableSourcesOfPhysicalPath($views).nFirst()%>"/>
-              </view>
+              <view name="views"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%createPhysicalPath($views,$source)%>">
-                  <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%current.isA(&quot;PhysicalPath&quot;)%>">
-                    <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='SAB_PhysicalPathEnd']" containerViewExpression="&lt;%$views.nFirst().getDiagramContainer()%>"/>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $views%>">
+                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="selectSource" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementFromListWizard">
+                    <parameters name="context" value="&lt;% $views.nFirst()%>"/>
+                    <parameters name="scope" value="&lt;%getAvailableSourcesOfPhysicalPath($views)%>"/>
+                    <parameters name="resultVariable" value="source"/>
+                    <parameters name="wizardMessage" value="Select the Source of your Physical Path:"/>
+                    <parameters name="displayDialogForOneElement" value="false"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%createPhysicalPath($views,$source)%>">
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%current.isA(&quot;PhysicalPath&quot;)%>">
+                      <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='SAB_PhysicalPathEnd']" containerViewExpression="&lt;%$views.nFirst().getDiagramContainer()%>"/>
+                    </subModelOperations>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
@@ -5105,6 +5116,8 @@
       </ownedColumnMappings>
       <intersection name="SAOA OperationalActor Realisation" lineMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Actor%20-%20Operational%20Actor']/@ownedLineMappings[name='SAOA%20System%20Actor%20Line']" columnMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Actor%20-%20Operational%20Actor']/@ownedColumnMappings.0" labelExpression="X" useDomainClass="true" columnFinderExpression="feature:targetElement" lineFinderExpression="feature:sourceElement" domainClass="ComponentAllocation">
         <directEdit>
+          <variables name="table" documentation="The current DTable."/>
+          <variables name="line" documentation="The DLine of the current DCell."/>
           <variables name="element" documentation="The currently edited element."/>
           <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
           <variables name="columnSemantic" documentation="The semantic element corresponding to the column (only available for Intersection Mapping)."/>
@@ -5180,6 +5193,8 @@
       </ownedColumnMappings>
       <intersection name="Component Functional Allocations" lineMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%2FActors%20-%20System%20Functions']/@ownedLineMappings[name='Components%201']" columnMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%2FActors%20-%20System%20Functions']/@ownedColumnMappings.0" labelExpression="X" useDomainClass="true" columnFinderExpression="&lt;%function.filter(&quot;AbstractFunction&quot;)%>" lineFinderExpression="feature:block" domainClass="ComponentFunctionalAllocation">
         <directEdit>
+          <variables name="table" documentation="The current DTable."/>
+          <variables name="line" documentation="The DLine of the current DCell."/>
           <variables name="element" documentation="The currently edited element."/>
           <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
           <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
@@ -5234,6 +5249,8 @@
       </ownedColumnMappings>
       <intersection name="Trace Function" semanticElements="&lt;%current+current.eContainer()%>" lineMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Requirements%20-%20System%20Functions']/@ownedLineMappings[name='Requirements']/@ownedSubLines[name='Sub%20Requirements']" columnMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Requirements%20-%20System%20Functions']/@ownedColumnMappings.0" labelExpression="&lt;%getRFLabel($lineSemantic, $columnSemantic)%>" useDomainClass="true" columnFinderExpression="feature:sourceElement" lineFinderExpression="feature:targetElement" semanticCandidatesExpression="&lt;%getRFColumnCandidates().outgoingTraces()[isA(&quot;RequirementsTrace&quot;)]%>" domainClass="RequirementsTrace">
         <directEdit>
+          <variables name="table" documentation="The current DTable."/>
+          <variables name="line" documentation="The DLine of the current DCell."/>
           <variables name="element" documentation="The currently edited element."/>
           <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
           <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
