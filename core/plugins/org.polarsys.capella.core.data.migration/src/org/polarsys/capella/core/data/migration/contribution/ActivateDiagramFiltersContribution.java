@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,7 +18,9 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.description.filter.FilterDescription;
+import org.osgi.framework.Version;
 import org.polarsys.capella.common.ef.ExecutionManager;
+import org.polarsys.capella.core.af.integration.CapellaMetadataProvider;
 import org.polarsys.capella.core.data.migration.context.MigrationContext;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.core.sirius.analysis.IMappingNameConstants;
@@ -33,7 +35,9 @@ public class ActivateDiagramFiltersContribution extends AbstractMigrationContrib
   @Override
   public void unaryEndMigrationExecute(ExecutionManager executionManager, Resource resource, MigrationContext context) {
     super.unaryEndMigrationExecute(executionManager, resource, context);
-    activateRelevantDiagramFilters(resource);
+    if(isMigrationRequired(context)){
+      activateRelevantDiagramFilters(resource);      
+    }
   }
 
   private void activateRelevantDiagramFilters(Resource resource) {
@@ -68,5 +72,12 @@ public class ActivateDiagramFiltersContribution extends AbstractMigrationContrib
       }
     }
     return allDiagrams;
+  }
+  
+  private boolean isMigrationRequired(MigrationContext context){
+    Version fileVersion = context.getCurrentVersion();
+    Version platformVersion = CapellaMetadataProvider.getCurrentVersion();
+    return ((fileVersion.getMajor() == 1 && fileVersion.getMinor() == 1 && fileVersion.getMicro() >= 0)
+     && (platformVersion.getMajor() == 1 && platformVersion.getMinor() == 2 && platformVersion.getMicro() >= 0));
   }
 }
