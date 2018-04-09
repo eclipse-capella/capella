@@ -23,3 +23,8 @@
 
 * A property '''readOnly''' (EBoolean) has been added to ''re.CatalogElement'' metaclass
 * A property '''version''' (EString) has been added to ''re.CatalogElement'' metaclass
+
+=== [Bugzilla 2020][M2] Add semantic annotation to InstanceRole, ConstraintDuration, StateFragment  ===
+* The '''InstanceRole''' metaclass has been annotated as ''semantic''
+* The '''ConstraintDuration''' metaclass has been annotated as ''semantic''
+* The '''StateFragment''' metaclass has been annotated as ''semantic''

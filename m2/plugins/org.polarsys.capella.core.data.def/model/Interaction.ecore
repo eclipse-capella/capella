@@ -283,6 +283,7 @@
         <details key="explanation" value="none"/>
         <details key="constraints" value="uml::Interaction::lifeline elements on which InstanceRole stereotype or any stereotype that inherits from it is applied&#xD;&#xA;Order must be computed"/>
       </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedMessages" upperBound="-1"
         eType="#//SequenceMessage" containment="true" resolveProxies="false">
@@ -347,6 +348,7 @@
         <details key="explanation" value="none"/>
         <details key="constraints" value="uml::Interaction::fragment elements on which Execution stereotype or any stereotype that inherits from it is applied"/>
       </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedEvents" upperBound="-1"
         eType="#//Event" containment="true" resolveProxies="false">
@@ -419,6 +421,7 @@
         <details key="comment/notes" value="none"/>
         <details key="reference documentation" value="none"/>
       </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="containedFunctions" upperBound="-1"
         eType="ecore:EClass FunctionalAnalysis.ecore#//AbstractFunction" changeable="false"
@@ -737,6 +740,7 @@
       <details key="explanation" value="none"/>
       <details key="constraints" value="none"/>
     </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="abstractEnds" upperBound="-1"
         eType="#//AbstractEnd" changeable="false" volatile="true" transient="true"
         derived="true" eOpposite="#//AbstractEnd/covered">
@@ -2774,6 +2778,7 @@
       <details key="comment/notes" value="none"/>
       <details key="reference documentation" value="none"/>
     </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="relatedAbstractState" eType="ecore:EClass CapellaCommon.ecore#//AbstractState">
       <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
         <details key="UML/SysML semantic equivalences" value=""/>
@@ -2846,6 +2851,7 @@
       <details key="explanation" value="none"/>
       <details key="constraints" value="none"/>
     </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="duration" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="n/a"/>
