@@ -2971,13 +2971,20 @@
           </ownedTools>
           <ownedTools xsi:type="tool:PopupMenu" name="Physical Path">
             <menuItemDescription xsi:type="tool:OperationAction" name="Create a Physical Path" precondition="&lt;%isValidPhysicalPathSelection($views)%>" forceRefresh="true">
-              <view name="views">
-                <subVariables xsi:type="tool:AcceleoVariable" name="source" computationExpression="&lt;%getAvailableSourcesOfPhysicalPath($views).nFirst()%>"/>
-              </view>
+              <view name="views"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%createPhysicalPath($views,$source)%>">
-                  <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%current.isA(&quot;PhysicalPath&quot;)%>">
-                    <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='PAB_PhysicalPathEnd']" containerViewExpression="&lt;%$views.nFirst().getDiagramContainer()%>"/>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $views%>">
+                  <subModelOperations xsi:type="tool:ExternalJavaAction" name="selectSource" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementFromListWizard">
+                    <parameters name="context" value="&lt;% $views.nFirst()%>"/>
+                    <parameters name="scope" value="&lt;%getAvailableSourcesOfPhysicalPath($views)%>"/>
+                    <parameters name="resultVariable" value="source"/>
+                    <parameters name="wizardMessage" value="Select the Source of your Physical Path:"/>
+                    <parameters name="displayDialogForOneElement" value="false"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%createPhysicalPath($views,$source)%>">
+                    <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%current.isA(&quot;PhysicalPath&quot;)%>">
+                      <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='PAB_PhysicalPathEnd']" containerViewExpression="&lt;%$views.nFirst().getDiagramContainer()%>"/>
+                    </subModelOperations>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -70,6 +70,11 @@ public abstract class AbstractExternalJavaAction implements IExternalJavaAction 
    * Message tag.
    */
   protected static final String MESSAGE = "message"; //$NON-NLS-1$
+  
+  /**
+   * Parameter to display or not the dialog if one element is to display
+   */
+  protected static final String DISPLAY_DIALOG_FOR_ONE_ELEMENT = "displayDialogForOneElement"; //$NON-NLS-1$
 
   protected static final String EXCHANGE_TYPE = "exchangeType"; //$NON-NLS-1$
 
