@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,8 +13,7 @@ package org.polarsys.capella.test.diagram.tools.ju.testsuites.main;
 import java.util.ArrayList;
 import java.util.List;
 
-import junit.framework.Test;
-
+import org.polarsys.capella.test.diagram.tools.ju.common.CommonToolsTest;
 import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.CDBDiagramToolsTestSuite;
 import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.DiagramActionsTestSuite;
 import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.ESDiagramToolsTestSuite;
@@ -31,6 +30,8 @@ import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.XBDiagramTo
 import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.XDFBDiagramToolsTestSuite;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
+
+import junit.framework.Test;
 
 public class DiagramToolsTestSuite extends BasicTestSuite {
 
@@ -60,6 +61,7 @@ public class DiagramToolsTestSuite extends BasicTestSuite {
     tests.add(new XBDiagramToolsTestSuite());
     tests.add(new XDFBDiagramToolsTestSuite());
     tests.add(new DiagramActionsTestSuite());
+    tests.add(new CommonToolsTest());
     return tests;
   }
 
