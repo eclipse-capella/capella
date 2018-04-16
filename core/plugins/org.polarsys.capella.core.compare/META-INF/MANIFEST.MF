@@ -16,7 +16,9 @@ Require-Bundle: org.eclipse.core.runtime,
  org.polarsys.capella.core.sirius.ui,
  org.polarsys.kitalpha.ad.metadata.model,
  org.polarsys.kitalpha.ad.services,
- org.polarsys.capella.common.libraries
+ org.polarsys.capella.common.libraries,
+ org.eclipse.sirius,
+ org.eclipse.emf.common
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.compare
