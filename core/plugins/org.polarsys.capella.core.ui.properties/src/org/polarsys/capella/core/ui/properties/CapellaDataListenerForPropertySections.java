@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -51,7 +51,7 @@ public class CapellaDataListenerForPropertySections extends CapellaModelDataList
     }
 
     Object notifier = notification.getNotifier();
-    if (notifier instanceof EObject) {
+    if (notifier instanceof EObject && !getPages().isEmpty()) {
       UIJob refreshView = new UIJob(Display.getDefault(), "Refresh properties view") { //$NON-NLS-1$
             @Override
             public IStatus runInUIThread(IProgressMonitor monitor) {
