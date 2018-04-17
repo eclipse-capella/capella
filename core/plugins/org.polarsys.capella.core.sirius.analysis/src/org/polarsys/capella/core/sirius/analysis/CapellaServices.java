@@ -34,6 +34,8 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.jface.viewers.AbstractTreeViewer;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.helper.task.DeleteEObjectTask;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
@@ -59,6 +61,7 @@ import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.diagram.description.filter.FilterDescription;
 import org.eclipse.sirius.diagram.ui.business.api.helper.graphicalfilters.CompositeFilterApplicationBuilder;
+import org.eclipse.sirius.diagram.ui.tools.internal.menu.PopupMenuContribution;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.FeatureNotFoundException;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.MetaClassNotFoundException;
@@ -68,6 +71,8 @@ import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.ui.PlatformUI;
 import org.polarsys.capella.common.data.activity.ActivityEdge;
 import org.polarsys.capella.common.data.activity.ActivityNode;
 import org.polarsys.capella.common.data.activity.Pin;
@@ -87,6 +92,8 @@ import org.polarsys.capella.common.libraries.ILibraryManager;
 import org.polarsys.capella.common.libraries.IModel;
 import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.SemanticEditingDomain;
 import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
+import org.polarsys.capella.common.re.CatalogElement;
+import org.polarsys.capella.common.re.helpers.ReplicableElementExt;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
 import org.polarsys.capella.core.business.queries.capellacore.BusinessQueriesProvider;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
@@ -177,7 +184,10 @@ import org.polarsys.capella.core.model.helpers.ExchangeItemExt;
 import org.polarsys.capella.core.model.helpers.FunctionalChainExt;
 import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
 import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaDeleteCommand;
+import org.polarsys.capella.core.sirius.analysis.tool.HashMapSet;
 import org.polarsys.capella.core.sirius.analysis.tool.StringUtil;
+import org.polarsys.capella.core.ui.properties.providers.CapellaTransfertViewerLabelProvider;
+import org.polarsys.capella.core.ui.toolkit.helpers.SelectionDialogHelper;
 
 /**
  * Basic Services For Capella models.
@@ -2613,6 +2623,58 @@ public class CapellaServices {
 
   public String capellaLabelService(EObject e, DDiagramElement view, DDiagram diagram) {
     return EObjectExt.getText(e);
+  }
+
+  private static Boolean poc529992Enabled = null;
+  
+  /**
+   * Check if the POC of bug 529992 is enabled.
+   * 
+   * @param self
+   *          The current element
+   * @return true if the POC of bug 529992 is enabled, false otherwise.
+   */
+  public boolean isPoc529992Enabled(EObject self) {
+    if (poc529992Enabled == null) {
+      poc529992Enabled = Boolean.getBoolean(PopupMenuContribution.POPUP_MENU_IMPROVEMENT_ID);
+    }
+    return poc529992Enabled;
+  }
+
+  /**
+   * This method allows to choose a REC-RPL used in the diagram and returns the list of views to be selected
+   * Used only for POC of bug 529992
+   */
+  public Collection<DSemanticDecorator> getElementsFromRECRPL(EObject eo, Collection<DSemanticDecorator> views) {
+
+    Collection<CatalogElement> recs = new HashSet<CatalogElement>();
+    // Retrieve a map<REC, views> from the diagram views
+    HashMapSet<CatalogElement, DSemanticDecorator> viewsPerRec = new HashMapSet<CatalogElement, DSemanticDecorator>();
+    for (DDiagramElement element : ((DDiagram) eo).getDiagramElements()) {
+      if (element != null) {
+        EObject target = element.getTarget();
+        if (target != null && !target.eIsProxy()) {
+
+          for (CatalogElement rec : ReplicableElementExt.getReferencingReplicableElements(target)) {
+            if (rec != null) {
+              recs.add(rec);
+              viewsPerRec.put(rec, element);
+            }
+          }
+        }
+      }
+    }
+
+    Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
+    if (recs.isEmpty()) {
+      MessageDialog.openInformation(shell, "Select from given REC-RPL", "There is no element related to a REC-RPL in this diagram");
+      return Collections.emptyList();
+    }
+    CapellaTransfertViewerLabelProvider labelProvider = new CapellaTransfertViewerLabelProvider(
+        TransactionHelper.getEditingDomain(recs));
+    EObject selected = SelectionDialogHelper.simplePropertySelectionDialogWizard(recs, labelProvider, shell,
+        AbstractTreeViewer.ALL_LEVELS);
+    return viewsPerRec.get(selected);
   }
 
 }

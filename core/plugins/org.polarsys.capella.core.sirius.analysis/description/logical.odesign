@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ASCII"?>
 <description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_3="http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" name="Logical Descriptions" version="12.0.0.2017041100">
-  <ownedViewpoints name="Logical Architecture" modelFileExtension="melodymodeller" icon="">
+  <ownedViewpoints name="Logical Architecture" modelFileExtension="melodymodeller">
     <ownedRepresentations xsi:type="description_1:CrossTableDescription" name="Logical Functions - Requirements" domainClass="LogicalArchitecture">
       <ownedLineMappings name="Logical Functions 2" domainClass="AbstractFunction" semanticCandidatesExpression="&lt;%getTableRootAbstractFunctions()%>" headerLabelExpression="feature:name">
         <ownedSubLines name="Sub Logical Function 2" reusedSubLines="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Functions%20-%20Requirements']/@ownedLineMappings[name='Logical%20Functions%202']/@ownedSubLines[name='Sub%20Function%20Pkg'] //@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Functions%20-%20Requirements']/@ownedLineMappings[name='Logical%20Functions%202']/@ownedSubLines[name='Sub%20Logical%20Function%202']" reusedInMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Functions%20-%20Requirements']/@ownedLineMappings[name='FunctionPkgs'] //@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Functions%20-%20Requirements']/@ownedLineMappings[name='Logical%20Functions%202']/@ownedSubLines[name='Sub%20Function%20Pkg'] //@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Functions%20-%20Requirements']/@ownedLineMappings[name='Logical%20Functions%202']/@ownedSubLines[name='Sub%20Logical%20Function%202']" domainClass="LogicalFunction" semanticCandidatesExpression="&lt;%getOwnedAbstractFunctions()%>" headerLabelExpression="feature:name">
@@ -656,6 +656,9 @@
           <reusedTools xsi:type="tool_1:ToolGroup" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV']"/>
           <reusedTools xsi:type="tool_1:ContainerDropDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer']"/>
         </toolSections>
+        <toolSections name="Select All Common Tools">
+          <reusedTools xsi:type="tool:PopupMenu" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.2/@ownedTools[name='selectMenu']"/>
+        </toolSections>
       </defaultLayer>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_2:DiagramDescription" name="Logical Function Breakdown" titleExpression="[LFBD] &lt;%current.name%>" domainClass="LogicalFunction">
@@ -963,6 +966,9 @@
           </ownedTools>
           <reusedTools xsi:type="tool_1:ToolGroup" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV']"/>
           <reusedTools xsi:type="tool_1:ContainerDropDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer']"/>
+        </toolSections>
+        <toolSections name="Select All Common Tools">
+          <reusedTools xsi:type="tool:PopupMenu" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.2/@ownedTools[name='selectMenu']"/>
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
@@ -1784,6 +1790,25 @@
           </ownedTools>
           <reusedTools xsi:type="tool_1:ToolGroup" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV']"/>
           <reusedTools xsi:type="tool_1:ContainerDropDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer']"/>
+        </toolSections>
+        <toolSections name="Select All Logical Data Flow">
+          <ownedTools xsi:type="tool:PopupMenu" documentation="group=siriusSelectGroup&#xD;&#xA;tabbarPath=Select" name="selectMenu" label="Select" precondition="aql:self.isPoc529992Enabled()">
+            <menuItemDescription xsi:type="tool:OperationAction" documentation="path=selectMenu/siriusSelectGroup" name="AllLogicalFunctions" label="Logical Functions" elementsToSelect="aql:diagram.getAllAbstractNodes()->select(v | v.target.oclIsKindOf(fa::AbstractFunction))" icon="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/LogicalFunction.gif">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self"/>
+              </initialOperation>
+            </menuItemDescription>
+            <menuItemDescription xsi:type="tool:OperationAction" documentation="path=selectMenu/siriusSelectGroup" name="AllFunctionalExchanges" label="Functional Exchanges" elementsToSelect="aql:diagram.edges->select(v | v.target.oclIsKindOf(fa::FunctionalExchange))" icon="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionalExchange.gif">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self"/>
+              </initialOperation>
+            </menuItemDescription>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="Select All Common Tools">
+          <reusedTools xsi:type="tool:PopupMenu" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.2/@ownedTools[name='selectMenu']"/>
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
@@ -3784,6 +3809,37 @@
           <reusedTools xsi:type="tool_1:ToolGroup" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV']"/>
           <reusedTools xsi:type="tool_1:ContainerDropDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer']"/>
         </toolSections>
+        <toolSections name="Select All Logical Architecture">
+          <ownedTools xsi:type="tool:PopupMenu" documentation="group=siriusSelectGroup&#xD;&#xA;tabbarPath=Select" name="selectMenu" label="Select" precondition="aql:self.isPoc529992Enabled()">
+            <menuItemDescription xsi:type="tool:OperationAction" documentation="path=selectMenu/siriusSelectGroup" name="AllLogicalComponent" label="Logical Actors" elementsToSelect="aql:diagram.getAllAbstractNodes()->select(v | v.target.type.oclIsKindOf(la::LogicalActor))" icon="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Actor.gif">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self"/>
+              </initialOperation>
+            </menuItemDescription>
+            <menuItemDescription xsi:type="tool:OperationAction" documentation="path=selectMenu/siriusSelectGroup" name="AllLogicalComponent" label="Logical Components" elementsToSelect="aql:diagram.getAllAbstractNodes()->select(v | v.target.type.oclIsKindOf(la::LogicalComponent))" icon="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/LogicalComponent.gif">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self"/>
+              </initialOperation>
+            </menuItemDescription>
+            <menuItemDescription xsi:type="tool:OperationAction" documentation="path=selectMenu/siriusSelectGroup" name="AllLogicalFunctions" label="Logical Functions" elementsToSelect="aql:diagram.getAllAbstractNodes()->select(v | v.target.oclIsKindOf(fa::AbstractFunction))" icon="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/LogicalFunction.gif">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self"/>
+              </initialOperation>
+            </menuItemDescription>
+            <menuItemDescription xsi:type="tool:OperationAction" documentation="path=selectMenu/siriusSelectGroup" name="AllFunctionalExchanges" label="Functional Exchanges" elementsToSelect="aql:diagram.edges->select(v | v.target.oclIsKindOf(fa::FunctionalExchange))" icon="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionalExchange.gif">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self"/>
+              </initialOperation>
+            </menuItemDescription>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="Select All Common Tools">
+          <reusedTools xsi:type="tool:PopupMenu" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.2/@ownedTools[name='selectMenu']"/>
+        </toolSections>
         <customization>
           <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="&lt;% !current.isAllocatedInThisComponent($container.getComponentType()) %>">
             <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@subNodeMappings[name='LAB%20Logical%20Function']/@conditionnalStyles.5/@style //@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@subNodeMappings[name='LAB%20Logical%20Function']/@style" attributeName="borderLineStyle" value="dash"/>
@@ -4093,5 +4149,7 @@
     <ownedJavaExtensions qualifiedClassName="org.polarsys.capella.core.sirius.analysis.DiagramServices"/>
     <ownedJavaExtensions qualifiedClassName="org.polarsys.capella.core.sirius.analysis.DFServices"/>
     <ownedJavaExtensions qualifiedClassName="org.polarsys.capella.core.sirius.analysis.ABServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.polarsys.capella.core.sirius.analysis.LogicalServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.eclipse.sirius.diagram.ui.tools.api.interpreter.StandardDiagramServices"/>
   </ownedViewpoints>
 </description:Group>
