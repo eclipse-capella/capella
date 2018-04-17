@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -279,7 +279,28 @@ public class CapellaServices {
       }
     }
   }
-
+  
+  @SuppressWarnings({ "unchecked", "rawtypes" })
+  /** used by aql queries */
+  public Object makeDiff(EObject eObject, Object obj1, Object obj2) {
+    try {
+      List<Object> result = new ArrayList<Object>();
+      if (obj1 instanceof Collection)
+        result.addAll((Collection) obj1);
+      else if (obj1 != null)
+        result.add(obj1);
+      if (obj2 instanceof Collection)
+        result.removeAll((Collection) obj2);
+      else if (obj2 != null)
+        result.remove(obj2);
+      // if (result.size() == 1)
+      // return result.get(0);
+      return result;
+    } catch (Exception e) {
+      throw new UnsupportedOperationException();
+    }
+  }
+  
   public EObject forceRefresh(DDiagram diagram) {
     boolean automaticRefresh = Platform.getPreferencesService().getBoolean(SiriusPlugin.ID, SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), false, null);
     if (null != diagram && !automaticRefresh) {
