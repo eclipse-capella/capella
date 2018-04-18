@@ -61,6 +61,18 @@
         supportedTypes="org.eclipse.emf.edit.provider.IItemLabelProvider"
         uri="http://www.polarsys.org/capella/core/information/communication/1.2.0"/>
    </extension>
+   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <factory
+        class="org.polarsys.capella.core.data.information.datavalue.provider.DatavalueItemProviderDecoratorAdapterFactory"
+        supportedTypes="org.eclipse.emf.edit.provider.IItemLabelProvider"
+        uri="http://www.polarsys.org/capella/core/information/datavalue/1.2.0"/>
+   </extension>
+   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <factory
+        class="org.polarsys.capella.core.data.information.datatype.provider.DatatypeItemProviderDecoratorAdapterFactory"
+        supportedTypes="org.eclipse.emf.edit.provider.IItemLabelProvider"
+        uri="http://www.polarsys.org/capella/core/information/datatype/1.2.0"/>
+   </extension>
   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <factory
         class="org.polarsys.capella.core.data.information.provider.InformationItemProviderDecoratorAdapterFactory"
@@ -137,6 +149,18 @@
         point="org.polarsys.capella.core.model.handler.decoratorAdapterFactory">
      <decoratorAdapterFactory
            class="org.polarsys.capella.core.data.information.communication.provider.CommunicationItemProviderDecoratorAdapterFactory">
+     </decoratorAdapterFactory>
+  </extension>
+  <extension
+        point="org.polarsys.capella.core.model.handler.decoratorAdapterFactory">
+     <decoratorAdapterFactory
+           class="org.polarsys.capella.core.data.information.datavalue.provider.DatavalueItemProviderDecoratorAdapterFactory">
+     </decoratorAdapterFactory>
+  </extension>
+   <extension
+        point="org.polarsys.capella.core.model.handler.decoratorAdapterFactory">
+     <decoratorAdapterFactory
+           class="org.polarsys.capella.core.data.information.datatype.provider.DatatypeItemProviderDecoratorAdapterFactory">
      </decoratorAdapterFactory>
   </extension>
   <extension
