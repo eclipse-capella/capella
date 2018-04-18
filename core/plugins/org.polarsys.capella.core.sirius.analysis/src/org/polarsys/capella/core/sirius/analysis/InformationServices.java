@@ -411,7 +411,7 @@ public class InformationServices {
     }
 
     if (type != null) {
-      sb.append(type.getName());
+      sb.append(EObjectLabelProviderHelper.getText(type));
     } else {
       sb.append(Messages.InformationServices_Undefined);
     }
@@ -652,18 +652,17 @@ public class InformationServices {
    * used in common.odesign
    */
   public String computeLabel(Operation operation) {
-    String result = operation.getName();
+    String result = EObjectLabelProviderHelper.getText(operation);
     result = result + parametersToString(operation);
     return result;
   }
 
   public String computeLabel(ExchangeCategory category) {
-    String result = category.getName();
-    return result;
+    return EObjectLabelProviderHelper.getText(category);
   }
 
   public String computeLabel(Port port) {
-    String result = port.getName();
+    String result = EObjectLabelProviderHelper.getText(port);
     return result;
   }
 
@@ -2180,9 +2179,7 @@ public class InformationServices {
             ExchangeItem item = (ExchangeItem) allocatedItem;
             ExchangeMechanism exchangeMechanism = item.getExchangeMechanism();
             if ((exchangeMechanism != null) && exchangeMechanism.equals(ExchangeMechanism.OPERATION)) {
-              // customize the label
-              String itemName = item.getName();
-              result = itemName;
+              result = getAllocatedElementName(allocation);
             } else {
               result = computeLabel(allocation);
             }
@@ -2213,12 +2210,8 @@ public class InformationServices {
    * @return
    */
   private String getAllocatedElementName(ExchangeItemAllocation operation) {
-    String result = ICommonConstants.EMPTY_STRING;
-    AbstractExchangeItem allocatedItem = operation.getAllocatedItem();
-    if (null != allocatedItem) {
-      result = allocatedItem.getName();
-    }
-    return result;
+    String result = EObjectLabelProviderHelper.getText(operation.getAllocatedItem());
+    return result == null ? ICommonConstants.EMPTY_STRING : result;
   }
 
   public boolean hasExchangeItemAllocationLink(DDiagramElement context) {

@@ -2869,7 +2869,8 @@ public class CsServices {
       return "[" + part.eClass().getName() + "]"; //$NON-NLS-2$ //$NON-NLS-1$
     }
 
-    return part.getName();
+    //if we are in mono part mode, we display the name of the type
+    return EObjectLabelProviderHelper.getText(part.getType());
   }
 
   public String computePartLabelMultiPartMode(Part part) {

@@ -430,6 +430,8 @@
     <appliedFilters>Hide Simplified Group of Component Exchanges</appliedFilters>
     <appliedFilters>ModelExtensionFilter</appliedFilters>
     <appliedFilters>Hide Simplified Oriented Grouped Component Exchanges</appliedFilters>
+    <appliedFilters>Hide Computed Component Exchanges</appliedFilters>
+    <appliedFilters>Hide Computed Physical Links</appliedFilters>
     <ownedLayouts xsi:type="layout:NodeLayout" id="ccb184f7-d99d-4bb7-9695-b07e987a447c" name="User Action Chain" actualMapping="LAB_FunctionalChainEnd">
       <appliedStyles>foregroundColor: 24,114,248</appliedStyles>
       <appliedStyles>borderColor: 0,0,0</appliedStyles>
@@ -1105,6 +1107,8 @@
     <appliedFilters>Hide Simplified Group of Component Exchanges</appliedFilters>
     <appliedFilters>ModelExtensionFilter</appliedFilters>
     <appliedFilters>Hide Simplified Oriented Grouped Component Exchanges</appliedFilters>
+    <appliedFilters>Hide Computed Component Exchanges</appliedFilters>
+    <appliedFilters>Hide Computed Physical Links</appliedFilters>
     <ownedLayouts xsi:type="layout:NodeLayout" id="c87efb3a-8f17-457d-a539-b4164e00a274" name="MVC Component" actualMapping="LAB Logical Component">
       <appliedStyles>backgroundColor: 195,230,255</appliedStyles>
       <appliedStyles>foregroundColor: 150,177,218</appliedStyles>
@@ -2063,6 +2067,8 @@
     <appliedFilters>Hide Simplified Group of Component Exchanges</appliedFilters>
     <appliedFilters>ModelExtensionFilter</appliedFilters>
     <appliedFilters>Hide Simplified Oriented Grouped Component Exchanges</appliedFilters>
+    <appliedFilters>Hide Computed Component Exchanges</appliedFilters>
+    <appliedFilters>Hide Computed Physical Links</appliedFilters>
     <ownedLayouts xsi:type="layout:NodeLayout" id="45e78cb8-231c-4116-bb16-a3f05a9fff5b" name="FunctionalChain 1" actualMapping="LAB_FunctionalChainEnd">
       <appliedStyles>foregroundColor: 24,114,248</appliedStyles>
       <appliedStyles>borderColor: 0,0,0</appliedStyles>
@@ -2979,6 +2985,8 @@
     <appliedFilters>Hide Simplified Group of Component Exchanges</appliedFilters>
     <appliedFilters>ModelExtensionFilter</appliedFilters>
     <appliedFilters>Hide Simplified Oriented Grouped Component Exchanges</appliedFilters>
+    <appliedFilters>Hide Computed Component Exchanges</appliedFilters>
+    <appliedFilters>Hide Computed Physical Links</appliedFilters>
     <ownedLayouts xsi:type="layout:NodeLayout" id="29fce4a4-08ba-437c-b7a7-a87a96d28875" name="LC_m" actualMapping="LAB Logical Component">
       <appliedStyles>backgroundColor: 195,230,255</appliedStyles>
       <appliedStyles>foregroundColor: 150,177,218</appliedStyles>
@@ -3153,6 +3161,8 @@
     <appliedFilters>Hide Simplified Oriented Grouped Component Exchanges</appliedFilters>
     <appliedFilters>Hide Simplified Group of Component Exchanges</appliedFilters>
     <appliedFilters>ModelExtensionFilter</appliedFilters>
+    <appliedFilters>Hide Computed Component Exchanges</appliedFilters>
+    <appliedFilters>Hide Computed Physical Links</appliedFilters>
     <ownedLayouts xsi:type="layout:NodeLayout" id="da484c83-8e2e-4e62-926a-ee7eff350e2b" name="Logical System" actualMapping="LAB Logical Component">
       <appliedStyles>backgroundColor: 195,230,255</appliedStyles>
       <appliedStyles>foregroundColor: 150,177,218</appliedStyles>
@@ -3310,6 +3320,8 @@
     <appliedFilters>Hide Simplified Oriented Grouped Component Exchanges</appliedFilters>
     <appliedFilters>Hide Simplified Group of Component Exchanges</appliedFilters>
     <appliedFilters>ModelExtensionFilter</appliedFilters>
+    <appliedFilters>Hide Computed Component Exchanges</appliedFilters>
+    <appliedFilters>Hide Computed Physical Links</appliedFilters>
     <ownedLayouts xsi:type="layout:NodeLayout" id="da484c83-8e2e-4e62-926a-ee7eff350e2b" name="Logical System" actualMapping="LAB Logical Component">
       <appliedStyles>backgroundColor: 195,230,255</appliedStyles>
       <appliedStyles>foregroundColor: 150,177,218</appliedStyles>
@@ -3524,6 +3536,8 @@
     <appliedFilters>Hide Simplified Diagram Based Component Exchanges</appliedFilters>
     <appliedFilters>Hide Simplified Group of Component Exchanges</appliedFilters>
     <appliedFilters>ModelExtensionFilter</appliedFilters>
+    <appliedFilters>Hide Computed Component Exchanges</appliedFilters>
+    <appliedFilters>Hide Computed Physical Links</appliedFilters>
     <ownedLayouts xsi:type="layout:NodeLayout" id="f158d452-363a-4735-8742-3fd7f4764032" name="PhysicalPath 1" actualMapping="LAB_PhysicalPathEnd">
       <appliedStyles>foregroundColor: 24,114,248</appliedStyles>
       <appliedStyles>borderColor: 0,0,0</appliedStyles>
@@ -3885,6 +3899,8 @@
     <appliedFilters>Hide Simplified Oriented Grouped Component Exchanges</appliedFilters>
     <appliedFilters>Hide Simplified Group of Component Exchanges</appliedFilters>
     <appliedFilters>ModelExtensionFilter</appliedFilters>
+    <appliedFilters>Hide Computed Component Exchanges</appliedFilters>
+    <appliedFilters>Hide Computed Physical Links</appliedFilters>
     <ownedLayouts xsi:type="layout:NodeLayout" id="b4af3c86-f15a-4f53-83f6-d7a04f812646" name="Pattern_Style_Layout" actualMapping="LAB Logical Component">
       <appliedStyles>backgroundColor: 195,230,255</appliedStyles>
       <appliedStyles>foregroundColor: 150,177,218</appliedStyles>
@@ -4442,7 +4458,7 @@
     </ownedLayouts>
     <ownedLayouts xsi:type="layout:NodeLayout" id="3bed494a-3ac6-419b-9ee2-a244905e73b7" name="OE3" actualMapping="OEB_OperationalEntities">
       <appliedStyles>borderColor: 0,0,0</appliedStyles>
-      <bounds x="336" y="-89" width="70" height="70"/>
+      <bounds x="336" y="-89" width="70" height="49"/>
     </ownedLayouts>
     <ownedLayouts xsi:type="layout:NodeLayout" id="fd2748c4-e347-46bc-a7fc-8f6c43daee57" name="OA2" actualMapping="OEB_OperationalEntities">
       <appliedFilters>HideFilter</appliedFilters>
@@ -5945,6 +5961,8 @@
     <appliedFilters>Hide Component Port Allocations</appliedFilters>
     <appliedFilters>ModelExtensionFilter</appliedFilters>
     <appliedFilters>Hide Simplified Oriented Grouped Component Exchanges</appliedFilters>
+    <appliedFilters>Hide Computed Component Exchanges</appliedFilters>
+    <appliedFilters>Hide Computed Physical Links</appliedFilters>
     <ownedLayouts xsi:type="layout:NodeLayout" id="2c065c06-f1eb-4edb-ad3e-03c7a247fd38" name="PhysicalPath 1" actualMapping="PAB_PhysicalPathEnd">
       <appliedStyles>foregroundColor: 24,114,248</appliedStyles>
       <appliedStyles>borderColor: 0,0,0</appliedStyles>
@@ -5972,7 +5990,7 @@
         <appliedStyles>foregroundColor: 150,177,218</appliedStyles>
         <appliedStyles>borderColor: 74,74,151</appliedStyles>
         <bounds x="19" y="30" width="150" height="84"/>
-        <ownedLayouts xsi:type="layout:NodeLayout" id="4ee34e88-afe1-490b-9a1b-6817b3a3b72e" name="" actualMapping="PAB_Port">
+        <ownedLayouts xsi:type="layout:NodeLayout" id="4ee34e88-afe1-490b-9a1b-6817b3a3b72e" name="[Component Port]" actualMapping="PAB_Port">
           <appliedFilters>HideLabelFilter</appliedFilters>
           <appliedStyles>borderColor: 0,0,0</appliedStyles>
           <bounds x="36" y="60" width="10" height="10"/>
@@ -7000,6 +7018,8 @@
     <appliedFilters>Hide Component Port Allocations</appliedFilters>
     <appliedFilters>ModelExtensionFilter</appliedFilters>
     <appliedFilters>Hide Simplified Oriented Grouped Component Exchanges</appliedFilters>
+    <appliedFilters>Hide Computed Component Exchanges</appliedFilters>
+    <appliedFilters>Hide Computed Physical Links</appliedFilters>
     <ownedLayouts xsi:type="layout:NodeLayout" id="b068b7c2-a8b0-4308-b9c0-2893d7496aa3" name="Print Status Chain" actualMapping="PAB_FunctionalChainEnd">
       <appliedStyles>foregroundColor: 227,164,156</appliedStyles>
       <appliedStyles>borderColor: 0,0,0</appliedStyles>
@@ -7555,6 +7575,8 @@
     <appliedFilters>Hide Simplified Group of Component Exchanges</appliedFilters>
     <appliedFilters>ModelExtensionFilter</appliedFilters>
     <appliedFilters>Hide Simplified Oriented Grouped Component Exchanges</appliedFilters>
+    <appliedFilters>Hide Computed Component Exchanges</appliedFilters>
+    <appliedFilters>Hide Computed Physical Links</appliedFilters>
     <ownedLayouts xsi:type="layout:NodeLayout" id="b068b7c2-a8b0-4308-b9c0-2893d7496aa3" name="Print Status Chain" actualMapping="PAB_FunctionalChainEnd">
       <appliedStyles>foregroundColor: 227,164,156</appliedStyles>
       <appliedStyles>borderColor: 0,0,0</appliedStyles>
@@ -8090,6 +8112,8 @@
   <ownedLayouts id="e0b20cc0-2fd6-4e26-bf20-0e6b1a090d01" name="[PAB] - Style - Physical Architecture Blank" synchronized="true" description="Physical Architecture Blank">
     <appliedFilters>ModelExtensionFilter</appliedFilters>
     <appliedFilters>Hide Simplified Oriented Grouped Component Exchanges</appliedFilters>
+    <appliedFilters>Hide Computed Component Exchanges</appliedFilters>
+    <appliedFilters>Hide Computed Physical Links</appliedFilters>
     <ownedLayouts xsi:type="layout:NodeLayout" id="122d5805-5c49-4407-8343-8d4c414d87e0" name="" actualMapping="DT_Contraint">
       <appliedStyles>foregroundColor: 228,179,229</appliedStyles>
       <appliedStyles>borderColor: 155,199,204</appliedStyles>
@@ -8428,6 +8452,8 @@
     <appliedFilters>Hide Simplified Group of Component Exchanges</appliedFilters>
     <appliedFilters>ModelExtensionFilter</appliedFilters>
     <appliedFilters>Hide Simplified Oriented Grouped Component Exchanges</appliedFilters>
+    <appliedFilters>Hide Computed Component Exchanges</appliedFilters>
+    <appliedFilters>Hide Computed Physical Links</appliedFilters>
     <ownedLayouts xsi:type="layout:NodeLayout" id="a6063dc5-7935-460b-8e32-a9c75665c2e1" name="Monitor Soft" actualMapping="PAB_PC">
       <appliedStyles>backgroundColor: 195,230,255</appliedStyles>
       <appliedStyles>foregroundColor: 150,177,218</appliedStyles>
@@ -8696,6 +8722,8 @@
     <appliedFilters>Hide Simplified Group of Component Exchanges</appliedFilters>
     <appliedFilters>ModelExtensionFilter</appliedFilters>
     <appliedFilters>Hide Simplified Oriented Grouped Component Exchanges</appliedFilters>
+    <appliedFilters>Hide Computed Component Exchanges</appliedFilters>
+    <appliedFilters>Hide Computed Physical Links</appliedFilters>
     <ownedLayouts xsi:type="layout:NodeLayout" id="98ebb15e-4da9-4eb9-a304-3ff88a640c60" name="PC12" actualMapping="PAB_PC">
       <appliedStyles>backgroundColor: 255,255,220</appliedStyles>
       <appliedStyles>foregroundColor: 255,252,183</appliedStyles>
@@ -8943,6 +8971,8 @@
     <appliedFilters>Hide Simplified Group of Component Exchanges</appliedFilters>
     <appliedFilters>ModelExtensionFilter</appliedFilters>
     <appliedFilters>Hide Simplified Oriented Grouped Component Exchanges</appliedFilters>
+    <appliedFilters>Hide Computed Component Exchanges</appliedFilters>
+    <appliedFilters>Hide Computed Physical Links</appliedFilters>
     <ownedLayouts xsi:type="layout:NodeLayout" id="98ebb15e-4da9-4eb9-a304-3ff88a640c60" name="PC12" actualMapping="PAB_PC">
       <appliedStyles>backgroundColor: 255,255,220</appliedStyles>
       <appliedStyles>foregroundColor: 255,252,183</appliedStyles>
@@ -9467,6 +9497,8 @@
     <appliedFilters>Hide Simplified Group of Component Exchanges</appliedFilters>
     <appliedFilters>ModelExtensionFilter</appliedFilters>
     <appliedFilters>Hide Simplified Oriented Grouped Component Exchanges</appliedFilters>
+    <appliedFilters>Hide Computed Component Exchanges</appliedFilters>
+    <appliedFilters>Hide Computed Physical Links</appliedFilters>
     <ownedLayouts xsi:type="layout:NodeLayout" id="cd4cb4c7-7554-4a28-807b-11c780333812" name="Composite PP" actualMapping="PAB_PhysicalPathEnd">
       <appliedStyles>foregroundColor: 255,165,0</appliedStyles>
       <appliedStyles>borderColor: 0,0,0</appliedStyles>
@@ -9663,27 +9695,6 @@
       <bendpoints x="336" y="172"/>
       <bendpoints x="427" y="248"/>
     </ownedLayouts>
-    <ownedLayouts xsi:type="layout:EdgeLayout" id="cd4cb4c7-7554-4a28-807b-11c780333812" name="" actualMapping="PAB_InternPhysicalPathLink" source="//@ownedLayouts.50/@ownedLayouts.2/@ownedLayouts.0" target="//@ownedLayouts.50/@ownedLayouts.2/@ownedLayouts.1">
-      <appliedStyles>strokeColor: 255,165,0</appliedStyles>
-      <appliedStyles>centeredColor: 0,0,0</appliedStyles>
-      <appliedStyles>edgeRouting: straight</appliedStyles>
-      <bendpoints x="148" y="34"/>
-      <bendpoints x="223" y="34"/>
-    </ownedLayouts>
-    <ownedLayouts xsi:type="layout:EdgeLayout" id="cd4cb4c7-7554-4a28-807b-11c780333812" name="" actualMapping="PAB_InternPhysicalPathLink" source="//@ownedLayouts.50/@ownedLayouts.2/@ownedLayouts.0" target="//@ownedLayouts.50/@ownedLayouts.2/@ownedLayouts.2">
-      <appliedStyles>strokeColor: 255,165,0</appliedStyles>
-      <appliedStyles>centeredColor: 0,0,0</appliedStyles>
-      <appliedStyles>edgeRouting: straight</appliedStyles>
-      <bendpoints x="148" y="36"/>
-      <bendpoints x="209" y="61"/>
-    </ownedLayouts>
-    <ownedLayouts xsi:type="layout:EdgeLayout" id="cd4cb4c7-7554-4a28-807b-11c780333812" name="" actualMapping="PAB_InternPhysicalPathLink" source="//@ownedLayouts.50/@ownedLayouts.2/@ownedLayouts.1" target="//@ownedLayouts.50/@ownedLayouts.2/@ownedLayouts.2">
-      <appliedStyles>strokeColor: 255,165,0</appliedStyles>
-      <appliedStyles>centeredColor: 0,0,0</appliedStyles>
-      <appliedStyles>edgeRouting: straight</appliedStyles>
-      <bendpoints x="225" y="39"/>
-      <bendpoints x="216" y="58"/>
-    </ownedLayouts>
     <ownedLayouts xsi:type="layout:EdgeLayout" id="cd4cb4c7-7554-4a28-807b-11c780333812" name="" actualMapping="PAB_InternPhysicalPathLink" source="//@ownedLayouts.50/@ownedLayouts.1/@ownedLayouts.0" target="//@ownedLayouts.50/@ownedLayouts.1/@ownedLayouts.1">
       <appliedStyles>strokeColor: 255,165,0</appliedStyles>
       <appliedStyles>centeredColor: 0,0,0</appliedStyles>
@@ -9785,6 +9796,8 @@
     <appliedFilters>Hide Simplified Group of Component Exchanges</appliedFilters>
     <appliedFilters>ModelExtensionFilter</appliedFilters>
     <appliedFilters>Hide Simplified Oriented Grouped Component Exchanges</appliedFilters>
+    <appliedFilters>Hide Computed Component Exchanges</appliedFilters>
+    <appliedFilters>Hide Computed Physical Links</appliedFilters>
     <ownedLayouts xsi:type="layout:NodeLayout" id="8ed4b9cf-0bdd-4590-ab25-10c206634d2f" name="User_bad_reuse" actualMapping="PAB_Actor">
       <appliedStyles>backgroundColor: 218,253,255</appliedStyles>
       <appliedStyles>foregroundColor: 198,230,255</appliedStyles>
@@ -10001,6 +10014,8 @@
     <appliedFilters>Hide Simplified Group of Component Exchanges</appliedFilters>
     <appliedFilters>ModelExtensionFilter</appliedFilters>
     <appliedFilters>Hide Simplified Oriented Grouped Component Exchanges</appliedFilters>
+    <appliedFilters>Hide Computed Component Exchanges</appliedFilters>
+    <appliedFilters>Hide Computed Physical Links</appliedFilters>
     <ownedLayouts xsi:type="layout:NodeLayout" id="893ad1d8-57fd-40ad-a8f7-ca20c94b0540" name="PC 1" actualMapping="PAB_PC">
       <appliedStyles>backgroundColor: 255,255,220</appliedStyles>
       <appliedStyles>foregroundColor: 255,252,183</appliedStyles>
@@ -11688,6 +11703,8 @@
     <appliedFilters>Collapse Component Ports</appliedFilters>
     <appliedFilters>Collapse Function Ports</appliedFilters>
     <appliedFilters>Hide Simplified Oriented Grouped Component Exchanges</appliedFilters>
+    <appliedFilters>Hide Computed Component Exchanges</appliedFilters>
+    <appliedFilters>Hide Computed Physical Links</appliedFilters>
     <ownedLayouts xsi:type="layout:NodeLayout" id="893ad1d8-57fd-40ad-a8f7-ca20c94b0540" name="PC 1" actualMapping="PAB_PC">
       <appliedStyles>backgroundColor: 255,255,220</appliedStyles>
       <appliedStyles>foregroundColor: 255,252,183</appliedStyles>
@@ -13568,6 +13585,8 @@
   <ownedLayouts id="378832be-24af-4673-baea-0bb4c9d406c1" name="FULL  [PAB] Bus - Physical Architecture Blank" synchronized="true" description="Physical Architecture Blank">
     <appliedFilters>ModelExtensionFilter</appliedFilters>
     <appliedFilters>Hide Simplified Oriented Grouped Component Exchanges</appliedFilters>
+    <appliedFilters>Hide Computed Component Exchanges</appliedFilters>
+    <appliedFilters>Hide Computed Physical Links</appliedFilters>
     <ownedLayouts xsi:type="layout:NodeLayout" id="893ad1d8-57fd-40ad-a8f7-ca20c94b0540" name="PC 1" actualMapping="PAB_PC">
       <appliedStyles>backgroundColor: 255,255,220</appliedStyles>
       <appliedStyles>foregroundColor: 255,252,183</appliedStyles>
@@ -15601,11 +15620,11 @@
       <appliedStyles>backgroundColor: 255,255,255</appliedStyles>
       <appliedStyles>foregroundColor: 255,255,255</appliedStyles>
       <appliedStyles>borderColor: 0,0,0</appliedStyles>
-      <bounds x="0" y="0" width="322" height="47"/>
-      <ownedLayouts xsi:type="layout:NodeLayout" id="33186f43-7503-43ff-9629-8094105da39e" name="ei_op1(INOUT eie3:PhysicalQuantity1) :  returns eie2:Class1" actualMapping="ID_Operation">
+      <bounds x="0" y="0" width="358" height="47"/>
+      <ownedLayouts xsi:type="layout:NodeLayout" id="33186f43-7503-43ff-9629-8094105da39e" name="ei_op1(INOUT eie3:PhysicalQuantity1 (Unit1)) :  returns eie2:Class1" actualMapping="ID_Operation">
         <appliedStyles>foregroundColor: 136,136,136</appliedStyles>
         <appliedStyles>borderColor: 136,136,136</appliedStyles>
-        <bounds x="89" y="112" width="310" height="16"/>
+        <bounds x="89" y="112" width="346" height="16"/>
       </ownedLayouts>
     </ownedLayouts>
     <appliedLayers>default IDB</appliedLayers>
@@ -15990,7 +16009,7 @@
       <bendpoints x="1052" y="319" relative="true"/>
       <bendpoints x="1052" y="319" relative="true"/>
     </ownedLayouts>
-    <ownedLayouts xsi:type="layout:EdgeLayout" id="d8c47314-238b-4bc6-a945-bd76c26b5a9b" name="ei_Event_Interface, ei3, ei3, ei_Event, ei_Event" actualMapping="IDB_FilteredLabel" source="//@ownedLayouts.62/@ownedLayouts.2" target="//@ownedLayouts.62/@ownedLayouts.6">
+    <ownedLayouts xsi:type="layout:EdgeLayout" id="d8c47314-238b-4bc6-a945-bd76c26b5a9b" name="ei_Event_Interface, ei_Event, ei_Event, ei3, ei3" actualMapping="IDB_FilteredLabel" source="//@ownedLayouts.62/@ownedLayouts.2" target="//@ownedLayouts.62/@ownedLayouts.6">
       <appliedFilters>Hide Simplified Component Interactions</appliedFilters>
       <appliedStyles>strokeColor: 0,0,0</appliedStyles>
       <appliedStyles>centeredColor: 0,0,0</appliedStyles>
@@ -16022,7 +16041,7 @@
       <bendpoints x="0" y="0"/>
       <bendpoints x="0" y="84"/>
     </ownedLayouts>
-    <ownedLayouts xsi:type="layout:EdgeLayout" id="d8c47314-238b-4bc6-a945-bd76c26b5a9b" name="ei3, ei3, ei_Event, ei_Event" actualMapping="IDB_FilteredLabel_DiagramBased" source="//@ownedLayouts.62/@ownedLayouts.2" target="//@ownedLayouts.62/@ownedLayouts.6">
+    <ownedLayouts xsi:type="layout:EdgeLayout" id="d8c47314-238b-4bc6-a945-bd76c26b5a9b" name="ei_Event, ei_Event, ei3, ei3" actualMapping="IDB_FilteredLabel_DiagramBased" source="//@ownedLayouts.62/@ownedLayouts.2" target="//@ownedLayouts.62/@ownedLayouts.6">
       <appliedStyles>strokeColor: 0,0,0</appliedStyles>
       <appliedStyles>centeredColor: 0,0,0</appliedStyles>
       <appliedStyles>edgeRouting: straight</appliedStyles>
@@ -16131,11 +16150,11 @@
       <appliedStyles>backgroundColor: 255,255,255</appliedStyles>
       <appliedStyles>foregroundColor: 240,221,221</appliedStyles>
       <appliedStyles>borderColor: 124,61,61</appliedStyles>
-      <bounds x="0" y="0" width="322" height="47"/>
-      <ownedLayouts xsi:type="layout:NodeLayout" id="33186f43-7503-43ff-9629-8094105da39e" name="ei_op1(INOUT eie3:PhysicalQuantity1) :  returns eie2:Class1" actualMapping="DT_Operation1">
+      <bounds x="0" y="0" width="358" height="47"/>
+      <ownedLayouts xsi:type="layout:NodeLayout" id="33186f43-7503-43ff-9629-8094105da39e" name="ei_op1(INOUT eie3:PhysicalQuantity1 (Unit1)) :  returns eie2:Class1" actualMapping="DT_Operation1">
         <appliedStyles>foregroundColor: 136,136,136</appliedStyles>
         <appliedStyles>borderColor: 136,136,136</appliedStyles>
-        <bounds x="5" y="28" width="310" height="16"/>
+        <bounds x="5" y="28" width="346" height="16"/>
       </ownedLayouts>
     </ownedLayouts>
     <ownedLayouts xsi:type="layout:NodeLayout" id="d8c47314-238b-4bc6-a945-bd76c26b5a9b" name="System" actualMapping="System 1">
@@ -16212,8 +16231,8 @@
       <appliedStyles>strokeColor: 0,0,0</appliedStyles>
       <appliedStyles>centeredColor: 0,0,0</appliedStyles>
       <appliedStyles>edgeRouting: straight</appliedStyles>
-      <bendpoints x="298" y="192"/>
-      <bendpoints x="178" y="45"/>
+      <bendpoints x="301" y="192"/>
+      <bendpoints x="194" y="45"/>
     </ownedLayouts>
     <ownedLayouts xsi:type="layout:EdgeLayout" id="5a5b511f-5fed-417b-bc85-527e4b84b46e" name="" actualMapping="imp1" source="//@ownedLayouts.63/@ownedLayouts.8" target="//@ownedLayouts.63/@ownedLayouts.0">
       <appliedStyles>strokeColor: 0,0,0</appliedStyles>
@@ -16574,7 +16593,7 @@
       <bendpoints relative="true"/>
       <bendpoints relative="true"/>
     </ownedLayouts>
-    <ownedLayouts xsi:type="layout:EdgeLayout" id="d8c47314-238b-4bc6-a945-bd76c26b5a9b" name="ei_Event_Interface, ei3, ei3, ei_Event, ei_Event" actualMapping="CCEI_FilteredLabel" source="//@ownedLayouts.64/@ownedLayouts.9" target="//@ownedLayouts.64/@ownedLayouts.10">
+    <ownedLayouts xsi:type="layout:EdgeLayout" id="d8c47314-238b-4bc6-a945-bd76c26b5a9b" name="ei_Event_Interface, ei_Event, ei_Event, ei3, ei3" actualMapping="CCEI_FilteredLabel" source="//@ownedLayouts.64/@ownedLayouts.9" target="//@ownedLayouts.64/@ownedLayouts.10">
       <appliedFilters>Hide Simplified Component Interactions</appliedFilters>
       <appliedStyles>strokeColor: 0,0,0</appliedStyles>
       <appliedStyles>centeredColor: 0,0,0</appliedStyles>
@@ -17662,7 +17681,7 @@
   <ownedLayouts id="4c57cc19-363c-44fe-b818-b05319a1ad06" name="[IS] SubIS2 - Interface Scenario" synchronized="true" description="Component Interfaces Scenario">
     <appliedFilters>ModelExtensionFilter</appliedFilters>
     <appliedFilters>Hide PrePost conditions</appliedFilters>
-    <ownedLayouts xsi:type="layout:NodeLayout" id="0ee1d909-5a5e-4504-baa5-2623e474ef3b" name="COTSCI 1" actualMapping="Instancerole Mapping">
+    <ownedLayouts xsi:type="layout:NodeLayout" id="0ee1d909-5a5e-4504-baa5-2623e474ef3b" name="[COTSCI] COTSCI 1" actualMapping="Instancerole Mapping">
       <appliedFilters>AbsoluteBoundsFilter</appliedFilters>
       <appliedStyles>foregroundColor: 150,177,218</appliedStyles>
       <appliedStyles>borderColor: 74,74,151</appliedStyles>
@@ -17677,7 +17696,7 @@
         </ownedLayouts>
       </ownedLayouts>
     </ownedLayouts>
-    <ownedLayouts xsi:type="layout:NodeLayout" id="5844c935-fe54-4d09-8437-bf50c550f58c" name="System CI 2" actualMapping="Instancerole Mapping">
+    <ownedLayouts xsi:type="layout:NodeLayout" id="5844c935-fe54-4d09-8437-bf50c550f58c" name="[SystemCI] System CI 2" actualMapping="Instancerole Mapping">
       <appliedFilters>AbsoluteBoundsFilter</appliedFilters>
       <appliedStyles>foregroundColor: 150,177,218</appliedStyles>
       <appliedStyles>borderColor: 74,74,151</appliedStyles>
