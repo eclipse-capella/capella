@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,7 +11,6 @@
 package org.polarsys.capella.core.data.gen.edit.decorators;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -21,6 +20,7 @@ import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notifier;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.EMFEditPlugin;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
@@ -33,18 +33,24 @@ import org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper;
 public class ItemProviderAdapterDecorator extends ItemProviderDecorator implements Adapter.Internal {
 
   private List<Notifier> targets;
-  
-  /** cache to store the contributors to the delegatedDecorators extension point */
-  private static Map<String, List<IDelegatedDecorator>> _contributors = null;
-  private static Map<IDelegatedDecorator, String> _contributorsPosition = null;
+
+  private static Map<String, List<IDelegatedDecorator>> directContributors;
+  private static Map<String, List<IDelegatedDecorator>> allContributors;
+  private static Map<IDelegatedDecorator, String> contributorPositions;
 
   /** constants related to the delegatedDecorators extension point */
-  private static final String PLUGIN_ID = "org.polarsys.capella.core.data.gen.edit.decorators";
-  private static final String EXTENSION_POINT_ID = "delegatedDecorator";
+  private static final String PLUGIN_ID = "org.polarsys.capella.core.data.gen.edit.decorators"; //$NON-NLS-1$
+  private static final String EXTENSION_POINT_ID = "delegatedDecorator"; //$NON-NLS-1$
 
-  protected static final String DECORATOR_POSITION_OVERRIDES = "overrides";
-  protected static final String DECORATOR_POSITION_PREFIX = "prefix";
-  protected static final String DECORATOR_POSITION_SUFFIX = "suffix";
+  protected static final String DECORATOR_POSITION_OVERRIDES = "overrides"; //$NON-NLS-1$
+  protected static final String DECORATOR_POSITION_PREFIX = "prefix"; //$NON-NLS-1$
+  protected static final String DECORATOR_POSITION_SUFFIX = "suffix"; //$NON-NLS-1$
+
+  protected static final String DECORATOR_ATTRIBUTE_POSITION = "position"; //$NON-NLS-1$
+  protected static final String DECORATOR_ATTRIBUTE_TYPE = "type"; //$NON-NLS-1$
+  protected static final String DECORATOR_ATTRIBUTE_CLASS = "class"; //$NON-NLS-1$
+
+
 
   public ItemProviderAdapterDecorator(AdapterFactory adapterFactory) {
     super(adapterFactory);
@@ -52,22 +58,22 @@ public class ItemProviderAdapterDecorator extends ItemProviderDecorator implemen
 
   @Override
   public String getText(Object object) {
-    String text = super.getText(object);
+    StringBuilder text = new StringBuilder(super.getText(object));
 
     for (IDelegatedDecorator labelProvider : getDelegatedDecorators((EObject) object)) {
       if (labelProvider.appliesTo(object)) {
         String position = getDecoratorPosition(labelProvider);
         if (DECORATOR_POSITION_PREFIX.equals(position)) {
-          text = labelProvider.getText(object) + text;
+          text.insert(0, labelProvider.getText(object));
         } else if (DECORATOR_POSITION_SUFFIX.equals(position)) {
-          text = text + labelProvider.getText(object);
+          text.append(labelProvider.getText(object));
         } else if (DECORATOR_POSITION_OVERRIDES.equals(position)) {
-          text = labelProvider.getText(object);
+          text.replace(0, text.length(), labelProvider.getText(object));
         }
       }
     }
 
-    return text;
+    return text.toString();
   }
 
   /**
@@ -77,47 +83,75 @@ public class ItemProviderAdapterDecorator extends ItemProviderDecorator implemen
     if (labelProvider == null) {
       return ICommonConstants.EMPTY_STRING;
     }
-    if (_contributorsPosition == null) {
+    if (contributorPositions == null) {
       fillContributorsCache();
     }
-    return _contributorsPosition.get(labelProvider);
+    return contributorPositions.get(labelProvider);
   }
 
   /**
-   * @param eobject the object from which a delegated decorator is requested
+   * @param eobject
+   *          the object from which a delegated decorator is requested
    * @return a list of {@link IDelegatedDecorator} related to the given eobject
    */
   protected List<IDelegatedDecorator> getDelegatedDecorators(EObject eobject) {
     if (eobject == null) {
       return Collections.<IDelegatedDecorator> emptyList();
     }
-    if (_contributors == null) {
+    if (directContributors == null) {
       fillContributorsCache();
     }
-    List<IDelegatedDecorator> providers = _contributors.get(eobject.eClass().getInstanceClassName());
-    return providers != null ? providers : Collections.<IDelegatedDecorator> emptyList();
+
+    return getContributorsPerType(eobject.eClass());
   }
 
-  /**
+  private List<IDelegatedDecorator> getContributorsPerType(EClass clazz) {
+    if (!allContributors.containsKey(clazz.getInstanceClassName())) {
+      List<IDelegatedDecorator> result = new ArrayList<IDelegatedDecorator>(2);
+      List<IDelegatedDecorator> current = directContributors.get(clazz.getInstanceClassName());
+      if (current != null) {
+        for (IDelegatedDecorator next : current) {
+          if (!result.contains(next)) {
+            result.add(next);
+          }
+        }
+      }
+      for (EClass superType : clazz.getEAllSuperTypes()) {
+        for (IDelegatedDecorator next : getContributorsPerType(superType)) {
+          if (!result.contains(next)) {
+            result.add(next);
+          }
+        }
+      }
+      if (result.isEmpty()) {
+        result = Collections.emptyList();
+      }
+      allContributors.put(clazz.getInstanceClassName(), result);
+    }
+    return allContributors.get(clazz.getInstanceClassName());
+  }
+
+  /*
    * Fills both caches '_contributors' and '_contributorsPosition'
    */
   private void fillContributorsCache() {
-    _contributors = new HashMap<String, List<IDelegatedDecorator>>();
-    _contributorsPosition = new HashMap<IDelegatedDecorator, String>();
-    List<IConfigurationElement> attributesProvider =
-        Arrays.asList(ExtensionPointHelper.getConfigurationElements(PLUGIN_ID, EXTENSION_POINT_ID));
-    for (IConfigurationElement provider : attributesProvider) {
-      String type = provider.getAttribute("type");
-      List<IDelegatedDecorator> labelProviders = _contributors.get(type);
+    directContributors = new HashMap<String, List<IDelegatedDecorator>>();
+    contributorPositions = new HashMap<IDelegatedDecorator, String>();
+    allContributors = new HashMap<String, List<IDelegatedDecorator>>();
+
+    for (IConfigurationElement provider : ExtensionPointHelper.getConfigurationElements(PLUGIN_ID, EXTENSION_POINT_ID)) {
+      String type = provider.getAttribute(DECORATOR_ATTRIBUTE_TYPE);
+      List<IDelegatedDecorator> labelProviders = directContributors.get(type);
       if (labelProviders == null) {
         labelProviders = new ArrayList<IDelegatedDecorator>();
-        _contributors.put(type, labelProviders);
+        directContributors.put(type, labelProviders);
       }
-      IDelegatedDecorator cls = (IDelegatedDecorator) ExtensionPointHelper.createInstance(provider, "class");
+      IDelegatedDecorator cls = (IDelegatedDecorator) ExtensionPointHelper.createInstance(provider, DECORATOR_ATTRIBUTE_CLASS);
       labelProviders.add(cls);
-      String position = provider.getAttribute("position");
-      _contributorsPosition.put(cls, position == null ? ICommonConstants.EMPTY_STRING : position);
+      String position = provider.getAttribute(DECORATOR_ATTRIBUTE_POSITION);
+      contributorPositions.put(cls, position == null ? ICommonConstants.EMPTY_STRING : position);
     }
+
   }
 
   /**
@@ -137,7 +171,7 @@ public class ItemProviderAdapterDecorator extends ItemProviderDecorator implemen
     if (AdapterFactoryEditingDomain.isControlled(object)) {
       List<Object> images = new ArrayList<Object>(2);
       images.add(image);
-      images.add(EMFEditPlugin.INSTANCE.getImage("full/ovr16/ControlledObject"));
+      images.add(EMFEditPlugin.INSTANCE.getImage("full/ovr16/ControlledObject")); //$NON-NLS-1$
       image = new ComposedImage(images);
     }
     return image;
@@ -146,6 +180,7 @@ public class ItemProviderAdapterDecorator extends ItemProviderDecorator implemen
   /**
    * @see org.eclipse.emf.common.notify.Adapter#getTarget()
    */
+  @Override
   public Notifier getTarget() {
     if (targets == null || targets.isEmpty()) {
       return null;
@@ -156,6 +191,7 @@ public class ItemProviderAdapterDecorator extends ItemProviderDecorator implemen
   /**
    * @see org.eclipse.emf.common.notify.Adapter#setTarget(org.eclipse.emf.common.notify.Notifier)
    */
+  @Override
   public void setTarget(Notifier newTarget) {
     if (targets == null) {
       targets = new ArrayList<Notifier>();
@@ -166,6 +202,7 @@ public class ItemProviderAdapterDecorator extends ItemProviderDecorator implemen
   /**
    * @see org.eclipse.emf.common.notify.Adapter.Internal#unsetTarget(org.eclipse.emf.common.notify.Notifier)
    */
+  @Override
   public void unsetTarget(Notifier oldTarget) {
     if (targets != null) {
       targets.remove(oldTarget);
