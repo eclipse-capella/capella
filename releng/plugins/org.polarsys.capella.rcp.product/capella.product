@@ -66,6 +66,7 @@
       <feature id="org.eclipse.sirius.aql"/>
       <feature id="org.eclipse.acceleo.query"/>
       <feature id="org.eclipse.sirius.runtime.ide.ui.acceleo"/>
+	  <feature id="org.eclipse.nebula.widgets.richtext.feature"/>
       <feature id="org.polarsys.capella.rcp.feature"/>
       <feature id="org.polarsys.kitalpha.ad.feature"/>
       <feature id="org.polarsys.kitalpha.ad.integration.emde.feature"/>
@@ -87,6 +88,7 @@
       <feature id="org.polarsys.kitalpha.resourcereuse.feature"/>
       <feature id="org.polarsys.kitalpha.resourcereuse.ui.feature"/>
       <feature id="org.polarsys.kitalpha.transposer.feature"/>
+	  <feature id="org.polarsys.kitalpha.richtext.widget.feature"/>
    </features>
 
    <configurations>
