@@ -3941,6 +3941,11 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 		   new String[] {
 		   });	
 		addAnnotation
+		  (getInstanceRole_RepresentedInstance(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
 		  (getAbstractCapability_PreCondition(), 
 		   source, 
 		   new String[] {
@@ -4019,7 +4024,22 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 		   new String[] {
 		   });	
 		addAnnotation
+		  (getStateFragment_RelatedAbstractState(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getStateFragment_RelatedAbstractFunction(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
 		  (constraintDurationEClass, 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getConstraintDuration_Duration(), 
 		   source, 
 		   new String[] {
 		   });	
