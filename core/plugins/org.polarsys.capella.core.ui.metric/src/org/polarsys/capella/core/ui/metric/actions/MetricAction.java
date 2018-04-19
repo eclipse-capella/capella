@@ -36,7 +36,7 @@ import org.polarsys.capella.core.data.capellamodeller.CapellamodellerPackage;
 import org.polarsys.capella.core.data.capellamodeller.ModelRoot;
 import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
-import org.polarsys.capella.core.data.cs.CsPackage;
+import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.data.oa.OaFactory;
 import org.polarsys.capella.core.data.oa.OperationalActivity;
@@ -270,11 +270,7 @@ public class MetricAction extends BaseSelectionListenerAction {
         Session session = SessionHelper.getSession((IFile) selectedObj);
         return (null != session && session.isOpen()); 
       } else if (selectedObj instanceof EObject) {
-        EObject eObject = (EObject) selectedObj;
-        EClass eclass = eObject.eClass();
-        if (CapellamodellerPackage.Literals.SYSTEM_ENGINEERING.isSuperTypeOf(eclass) || CsPackage.Literals.BLOCK_ARCHITECTURE.isSuperTypeOf(eclass)) {
-          return true;
-        }
+        return selectedObj instanceof SystemEngineering || selectedObj instanceof BlockArchitecture;
       }
     }
     return false;
