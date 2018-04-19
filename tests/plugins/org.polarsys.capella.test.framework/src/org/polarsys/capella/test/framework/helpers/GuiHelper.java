@@ -20,9 +20,13 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.common.tools.internal.resource.ResourceSyncClientNotifier;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.navigator.CommonViewer;
+import org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaCommonNavigator;
 
 /**
  * @author Erwan Brottier
@@ -64,14 +68,28 @@ public class GuiHelper {
     return resources;
   }
 
-public static void waitCloseSessionJobs() {
-	try {
-		Job.getJobManager().join(ResourceSyncClientNotifier.FAMILY, new NullProgressMonitor());
-	} catch (OperationCanceledException e) {
-		e.printStackTrace();
-	} catch (InterruptedException e) {
-		e.printStackTrace();
-	}
-}
+  public static void waitCloseSessionJobs() {
+    try {
+      Job.getJobManager().join(ResourceSyncClientNotifier.FAMILY, new NullProgressMonitor());
+    } catch (OperationCanceledException e) {
+      e.printStackTrace();
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    }
+  }
 
+  public static IStructuredSelection getCurrentSelectionInProjectExplorer() {
+    final CommonViewer[] viewer = new CommonViewer[1];
+    Display.getDefault().syncExec(new Runnable() {
+
+      @Override
+      public void run() {
+        IViewPart part = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
+            .findView(CapellaCommonNavigator.ID);
+
+        viewer[0] = ((CapellaCommonNavigator) part).getCommonViewer();
+      }
+    });
+    return viewer[0].getStructuredSelection();
+  }
 }
