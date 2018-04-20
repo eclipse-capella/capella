@@ -61,7 +61,7 @@ import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.common.data.modellingcore.InformationsExchanger;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.data.modellingcore.TraceableElement;
-import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
+import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.sirius.decorators.loader.SiriusDecoratorsManager;
@@ -171,7 +171,7 @@ public class FaServices {
     if ("".equals(fe.getName()) || (null == fe.getName())) { //$NON-NLS-1$
       return "<undefined>"; //$NON-NLS-1$
     }
-    return EObjectLabelProviderHelper.getText(fe);
+    return EObjectExt.getText(fe);
   }
 
   /**
@@ -1171,7 +1171,7 @@ public class FaServices {
       if (isControlNode(target)) {
         return decorateString(ICommonConstants.EMPTY_STRING, decorator);
       }
-      return decorateString(EObjectLabelProviderHelper.getText(target), decorator);
+      return decorateString(EObjectExt.getText(target), decorator);
     }
     return decorateString(ICommonConstants.EMPTY_STRING, decorator);
   }
@@ -4588,7 +4588,7 @@ public class FaServices {
         }
       }
     } else {
-      result.append(EObjectLabelProviderHelper.getText(exchange));
+      result.append(EObjectExt.getText(exchange));
     }
     return decorateString(result.toString(), exchange);
   }
@@ -4647,7 +4647,7 @@ public class FaServices {
     StringBuilder result = new StringBuilder();
     List<? extends AbstractExchangeItem> selectEIList;
     selectEIList = exchange.getExchangedItems();
-    result.append(EObjectLabelProviderHelper.getText(exchange));
+    result.append(EObjectExt.getText(exchange));
     result.append(" "); //$NON-NLS-1$
     result.append("["); //$NON-NLS-1$
     int indice = 0;
@@ -4720,7 +4720,7 @@ public class FaServices {
       List<AbstractExchangeItem> exchangedItems) {
     int indice = 0;
     if (showName) {
-      result.append(EObjectLabelProviderHelper.getText(exchange));
+      result.append(EObjectExt.getText(exchange));
     }
 
     if (showExchangeItems || showExchangeItemsWithOutFE) {
@@ -5051,7 +5051,7 @@ public class FaServices {
     if ((null != exchange) && (exchange instanceof PhysicalLink)) {
       PhysicalLink pl = (PhysicalLink) exchange;
       if (!isHidePhysicalLinksNamesEnable(exchange, diagram)) {
-        return EObjectLabelProviderHelper.getText(pl);
+        return EObjectExt.getText(pl);
       }
     }
     return centerLabel;

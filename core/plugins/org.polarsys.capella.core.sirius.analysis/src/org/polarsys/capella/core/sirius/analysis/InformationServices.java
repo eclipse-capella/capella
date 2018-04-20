@@ -411,7 +411,7 @@ public class InformationServices {
     }
 
     if (type != null) {
-      sb.append(EObjectLabelProviderHelper.getText(type));
+      sb.append(EObjectExt.getText(type));
     } else {
       sb.append(Messages.InformationServices_Undefined);
     }
@@ -652,17 +652,17 @@ public class InformationServices {
    * used in common.odesign
    */
   public String computeLabel(Operation operation) {
-    String result = EObjectLabelProviderHelper.getText(operation);
+    String result = EObjectExt.getText(operation);
     result = result + parametersToString(operation);
     return result;
   }
 
   public String computeLabel(ExchangeCategory category) {
-    return EObjectLabelProviderHelper.getText(category);
+    return EObjectExt.getText(category);
   }
 
   public String computeLabel(Port port) {
-    String result = EObjectLabelProviderHelper.getText(port);
+    String result = EObjectExt.getText(port);
     return result;
   }
 
@@ -689,7 +689,7 @@ public class InformationServices {
       // it will return it !!
       return computeLabel((Port) property);
     }
-    return EObjectLabelProviderHelper.getText(property);
+    return EObjectExt.getText(property);
   }
 
   /**
@@ -853,9 +853,9 @@ public class InformationServices {
     if ((qualifier != null) && (qualifier.size() > 0)) {
       result.append(" { "); //$NON-NLS-1$
       for (int i = 0; i < (qualifier.size() - 1); i++) {
-        result.append(EObjectLabelProviderHelper.getText(qualifier.get(i)) + COMMA_WITH_SPACE);
+        result.append(EObjectExt.getText(qualifier.get(i)) + COMMA_WITH_SPACE);
       }
-      result.append(EObjectLabelProviderHelper.getText(qualifier.get(qualifier.size() - 1)));
+      result.append(EObjectExt.getText(qualifier.get(qualifier.size() - 1)));
       result.append(" }"); //$NON-NLS-1$
     }
     return result.toString();
@@ -2210,7 +2210,7 @@ public class InformationServices {
    * @return
    */
   private String getAllocatedElementName(ExchangeItemAllocation operation) {
-    String result = EObjectLabelProviderHelper.getText(operation.getAllocatedItem());
+    String result = EObjectExt.getText(operation.getAllocatedItem());
     return result == null ? ICommonConstants.EMPTY_STRING : result;
   }
 

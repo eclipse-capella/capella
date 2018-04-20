@@ -33,7 +33,6 @@ import org.eclipse.core.commands.ParameterizedCommand;
 import org.eclipse.core.commands.common.NotDefinedException;
 import org.eclipse.core.expressions.EvaluationContext;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -56,7 +55,6 @@ import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
 import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.GraphicalFilter;
-import org.eclipse.sirius.diagram.business.internal.metamodel.spec.DNodeContainerSpec;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
@@ -82,6 +80,7 @@ import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.common.data.modellingcore.FinalizableElement;
 import org.polarsys.capella.common.data.modellingcore.InformationsExchanger;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
+import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.mdsofa.common.misc.Couple;
@@ -2825,7 +2824,7 @@ public class CsServices {
    * Return the label to be displayed for PV / PVG in diagrams
    */
   public String computePVLabel(EObject PV) {
-    return EObjectLabelProviderHelper.getText(PV);
+    return EObjectExt.getText(PV);
   }
 
   /**
@@ -2836,7 +2835,7 @@ public class CsServices {
    * @return : customized lable for component
    */
   public String computeComponentLabel(EObject component) {
-    return EObjectLabelProviderHelper.getText(component);
+    return EObjectExt.getText(component);
   }
 
   public String computePartLabelMultiPartOnly(Part part) {
@@ -2863,7 +2862,7 @@ public class CsServices {
         return getDefaultKindLabel(part);
       }
 
-      return mul + ICommonConstants.WHITE_SPACE_CHARACTER + EObjectLabelProviderHelper.getText(part);
+      return mul + ICommonConstants.WHITE_SPACE_CHARACTER + EObjectExt.getText(part);
     }
 
     if (part.getName().length() == 0) {
@@ -2871,7 +2870,7 @@ public class CsServices {
     }
 
     //if we are in mono part mode, we display the name of the type
-    return EObjectLabelProviderHelper.getText(part.getType());
+    return EObjectExt.getText(part.getType());
   }
 
   public String computePartLabelMultiPartMode(Part part) {
@@ -2891,7 +2890,7 @@ public class CsServices {
         return getDefaultKindLabel(part);
       }
 
-      return mul + ICommonConstants.WHITE_SPACE_CHARACTER + EObjectLabelProviderHelper.getText(part);
+      return mul + ICommonConstants.WHITE_SPACE_CHARACTER + EObjectExt.getText(part);
     }
 
     String result = ICommonConstants.EMPTY_STRING;
@@ -2908,7 +2907,7 @@ public class CsServices {
   }
 
   private String getDefaultKindLabel(Part part) {
-    return ICommonConstants.WHITE_SPACE_CHARACTER + EObjectLabelProviderHelper.getText(part);
+    return ICommonConstants.WHITE_SPACE_CHARACTER + EObjectExt.getText(part);
   }
 
   private String getCardValue(Part part, NumericValue card) {
@@ -5335,7 +5334,7 @@ public class CsServices {
             name = ModeStateMachineServices.getService()
                 .getIncomingFunctionalExchangeLabel((FunctionalExchange) trigger);
           } else
-            name = EObjectLabelProviderHelper.getText(trigger);
+            name = EObjectExt.getText(trigger);
           if (trigger instanceof ChangeEvent) {
             ChangeEvent changeEvent = (ChangeEvent) trigger;
             name = "(" + changeEvent.getKind() + ") "; //$NON-NLS-1$ //$NON-NLS-2$
@@ -5390,7 +5389,7 @@ public class CsServices {
               result.append(ModeStateMachineServices.getService()
                   .getOutgoingFunctionalExchangeLabel((FunctionalExchange) effect));
             } else
-              result.append(EObjectLabelProviderHelper.getText(effect));
+              result.append(EObjectExt.getText(effect));
           }
         }
       }

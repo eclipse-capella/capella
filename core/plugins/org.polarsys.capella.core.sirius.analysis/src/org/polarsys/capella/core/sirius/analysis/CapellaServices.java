@@ -83,7 +83,7 @@ import org.polarsys.capella.common.data.modellingcore.AbstractTypedElement;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.common.data.modellingcore.TraceableElement;
-import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
+import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.libraries.ILibraryManager;
@@ -1531,7 +1531,7 @@ public class CapellaServices {
   }
 
   public String getEObjectLabelProviderHelper(EObject context) {
-    return EObjectLabelProviderHelper.getText(context);
+    return EObjectExt.getText(context);
   }
 
   /**
@@ -2756,7 +2756,7 @@ public class CapellaServices {
   }
 
   public String capellaLabelService(EObject e, DDiagramElement view, DDiagram diagram) {
-    return EObjectLabelProviderHelper.getText(e);
+    return EObjectExt.getText(e);
   }
 
 }
