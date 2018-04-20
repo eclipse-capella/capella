@@ -47,6 +47,7 @@ import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.swt.graphics.RGB;
 import org.eclipse.ui.PlatformUI;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
+import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.common.helpers.SimpleOrientedGraph;
 import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.ui.toolkit.dialogs.SelectElementsDialog;
@@ -1142,7 +1143,7 @@ public class PhysicalServices {
   }
 
   public String getPhysicalPathLabel(PhysicalPath path, DDiagram diagram) {
-    String label = path.getName();
+    String label = EObjectLabelProviderHelper.getText(path);
 
     boolean isComplete = isCompletePhysicalPath(path, diagram);
     boolean isValid = PhysicalPathExt.isPhysicalPathValid(path);

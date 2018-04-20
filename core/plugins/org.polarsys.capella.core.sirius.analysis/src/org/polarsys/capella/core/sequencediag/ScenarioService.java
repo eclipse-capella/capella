@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -237,14 +237,14 @@ public class ScenarioService {
   }
 
   public String getInstanceRoleLabel(InstanceRole ir) {
-    AbstractInstance part = ir.getRepresentedInstance();
-    AbstractType type = part.getAbstractType();
+    AbstractInstance representedInstance = ir.getRepresentedInstance();
+    AbstractType type = representedInstance.getAbstractType();
 
-    boolean multipart = TriStateBoolean.True.equals(CapellaProjectHelper.isReusableComponentsDriven(type));
-    if (multipart && (type != null)) {
-      return part.getName() + ICommonConstants.COLON_CHARACTER + type.getName();
+    if ( TriStateBoolean.True.equals(CapellaProjectHelper.isReusableComponentsDriven(type)) || type == null) {
+      return EObjectLabelProviderHelper.getText(representedInstance); // multipart, label is 'partName : typeName', or 'functionName' for functions
+    } else {
+      return EObjectLabelProviderHelper.getText(type); // monopart, label is 'typeName' (which is synchronized with partName)
     }
-    return part.getName();
 
   }
 

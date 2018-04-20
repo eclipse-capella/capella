@@ -1,10 +1,10 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *  
+ *
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
@@ -41,6 +41,7 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.RGBValues;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.swt.graphics.RGB;
+import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.common.helpers.SimpleOrientedGraph;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
@@ -691,7 +692,7 @@ public class FunctionalChainServices {
 	 }
 
 	 public String getFunctionalChainLabel(FunctionalChain fc, DDiagram diagram) {
-		 String label = fc.getName();
+		 String label = EObjectLabelProviderHelper.getText(fc);
 
 		 boolean isComplete = isCompleteFunctionalChain(fc, diagram);
 		 boolean isValid = FunctionalChainExt.isFunctionalChainValid(fc);
