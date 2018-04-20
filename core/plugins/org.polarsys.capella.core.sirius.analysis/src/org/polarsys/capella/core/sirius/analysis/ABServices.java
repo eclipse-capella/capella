@@ -930,7 +930,7 @@ public class ABServices {
   }
 
   public boolean isValidInsertAppliedPV(DSemanticDecorator containerView) {
-    return !(containerView instanceof DDiagram);
+    return containerView instanceof EdgeTarget;
   }
 
   /**
