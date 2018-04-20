@@ -25,7 +25,7 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.polarsys.capella.common.data.modellingcore.AbstractExchangeItem;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.data.modellingcore.AbstractType;
-import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
+import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.queries.filters.IQueryFilter;
 import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
@@ -241,9 +241,9 @@ public class ScenarioService {
     AbstractType type = representedInstance.getAbstractType();
 
     if ( TriStateBoolean.True.equals(CapellaProjectHelper.isReusableComponentsDriven(type)) || type == null) {
-      return EObjectLabelProviderHelper.getText(representedInstance); // multipart, label is 'partName : typeName', or 'functionName' for functions
+      return EObjectExt.getText(representedInstance); // multipart, label is 'partName : typeName', or 'functionName' for functions
     } else {
-      return EObjectLabelProviderHelper.getText(type); // monopart, label is 'typeName' (which is synchronized with partName)
+      return EObjectExt.getText(type); // monopart, label is 'typeName' (which is synchronized with partName)
     }
 
   }
@@ -463,7 +463,7 @@ public class ScenarioService {
     if ("".equals(fe.getName()) || (null == fe.getName())) { //$NON-NLS-1$
       return "<undefined>"; //$NON-NLS-1$
     }
-    return EObjectLabelProviderHelper.getText(fe);
+    return EObjectExt.getText(fe);
   }
 
   public static String getShowCEEIParams(AbstractEventOperation op, List<? extends AbstractExchangeItem> eiOnMessage) {

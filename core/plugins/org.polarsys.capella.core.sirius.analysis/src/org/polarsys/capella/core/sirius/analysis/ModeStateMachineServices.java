@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -31,7 +31,7 @@ import org.eclipse.sirius.diagram.description.filter.FilterDescription;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.polarsys.capella.common.data.behavior.AbstractEvent;
 import org.polarsys.capella.common.data.modellingcore.IState;
-import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
+import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.core.data.capellacommon.EntryPointPseudoState;
 import org.polarsys.capella.core.data.capellacommon.ExitPointPseudoState;
@@ -73,7 +73,7 @@ public class ModeStateMachineServices {
 
   public String getRegionLabel(Region region, DDiagram diagram) {
     return isDiagramFilterEnable(diagram, IMappingNameConstants.HIDE_REGION_NAMES) ? ""
-        : " [" + EObjectLabelProviderHelper.getText(region) + "]";
+        : " [" + EObjectExt.getText(region) + "]";
   }
 
   public String getActivityLabel(AbstractEvent abstractEvent) {
@@ -81,7 +81,7 @@ public class ModeStateMachineServices {
     if (abstractEvent instanceof FunctionalExchange) {
       return getOutgoingFunctionalExchangeLabel((FunctionalExchange) abstractEvent);
     }
-    return EObjectLabelProviderHelper.getText(abstractEvent);
+    return EObjectExt.getText(abstractEvent);
   }
 
   public String getOutgoingFunctionalExchangeLabel(FunctionalExchange fe) {
@@ -90,7 +90,7 @@ public class ModeStateMachineServices {
       target = target.eContainer();
     }
     if (target instanceof AbstractFunction) {
-      return EObjectLabelProviderHelper.getText(fe) + " [-> " + EObjectLabelProviderHelper.getText(target) + "]";
+      return EObjectExt.getText(fe) + " [-> " + EObjectExt.getText(target) + "]";
     }
     return "";
   }
@@ -101,7 +101,7 @@ public class ModeStateMachineServices {
       source = source.eContainer();
     }
     if (source instanceof AbstractFunction) {
-      return "[" + EObjectLabelProviderHelper.getText(source) + " ->] " + EObjectLabelProviderHelper.getText(fe);
+      return "[" + EObjectExt.getText(source) + " ->] " + EObjectExt.getText(fe);
     }
     return "";
   }
@@ -112,12 +112,12 @@ public class ModeStateMachineServices {
       EList<Region> regions = pseudostate.getInvolverRegions();
       if (!regions.isEmpty()) {
         Region region = regions.get(0);
-        return EObjectLabelProviderHelper.getText(pseudostate) + " (" + EObjectLabelProviderHelper.getText(region)
+        return EObjectExt.getText(pseudostate) + " (" + EObjectExt.getText(region)
             + ")";
       }
     }
 
-    return EObjectLabelProviderHelper.getText(pseudostate);
+    return EObjectExt.getText(pseudostate);
   }
 
   private boolean isDiagramFilterEnable(DDiagram diagram, String filterName) {
