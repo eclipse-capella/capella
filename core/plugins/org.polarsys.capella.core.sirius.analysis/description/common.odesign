@@ -14300,79 +14300,140 @@
             </initialOperation>
             <predecessor name="predecessor"/>
           </ownedTools>
-          <ownedTools xsi:type="tool_2:InstanceRoleCreationTool" name="Components" precondition="&lt;% eContainer(&quot;SystemAnalysis&quot;).nSize == 0 %>" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
-            <filters precondition="&lt;% target.eContainer(&quot;SystemAnalysis&quot;).nSize != 0%>" elementsToListen="&lt;% target.eContainer (&quot;Scenario&quot;) %>">
-              <listeners domainClass="interaction.Scenario" featureName="ownedAbstractEnds"/>
-            </filters>
-            <variable name="container"/>
-            <viewVariable name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$container %>">
-                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Select Component" forceRefresh="true" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
-                  <parameters name="context" value="&lt;% $container %>"/>
-                  <parameters name="scope" value="&lt;% $container.getISScopeInsertComponents() %>"/>
-                  <parameters name="initialSelection" value="&lt;% $containerView.eContainer(&quot;DDiagram&quot;).eAllContents(&quot;DSemanticDecorator&quot;).target.filter(&quot;InstanceRole&quot;).representedInstance[abstractType.filter (&quot;Component&quot;).nSize > 0 &amp;&amp; abstractType.filter (&quot;AbstractActor&quot;).nSize == 0]  %>"/>
-                  <parameters name="wizardMessage" value=""/>
-                  <parameters name="resultVariable" value="result"/>
-                </subModelOperations>
-                <subModelOperations xsi:type="tool_1:For" expression="&lt;% $result %>">
-                  <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% $i != &quot;WIZARD_CANCELED&quot; %>">
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$container %>">
-                      <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% ! ($containerView.eContainer(&quot;DDiagram&quot;).eAllContents(&quot;DSemanticDecorator&quot;).target.filter(&quot;InstanceRole&quot;).representedInstance.nContains ($i)) %>">
-                        <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interaction.InstanceRole" referenceName="ownedInstanceRoles">
-                          <subModelOperations xsi:type="tool_1:SetValue" featureName="representedInstance" valueExpression="&lt;%$i%>"/>
-                          <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$i.name%>"/>
+          <ownedTools xsi:type="tool:ToolGroup" name="ISActorsGroup">
+            <tools xsi:type="tool_2:InstanceRoleCreationTool" name="Actors" precondition="&lt;% eContainer(&quot;EPBSArchitecture&quot;).nSize == 0 %>" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+              <filters precondition="&lt;% (target.eContainer(&quot;EPBSArchitecture&quot;).nSize != 0)%>" elementsToListen="&lt;% target.eContainer (&quot;Scenario&quot;) %>">
+                <listeners domainClass="interaction.Scenario" featureName="ownedAbstractEnds"/>
+              </filters>
+              <variable name="container"/>
+              <viewVariable name="containerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$container %>">
+                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Select Actor" forceRefresh="true" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
+                    <parameters name="context" value="&lt;% $container %>"/>
+                    <parameters name="scope" value="&lt;% $container.getISScopeInsertActors() %>"/>
+                    <parameters name="initialSelection" value="&lt;% $containerView.eContainer(&quot;DDiagram&quot;).eAllContents(&quot;DSemanticDecorator&quot;).target.filter(&quot;InstanceRole&quot;).representedInstance[abstractType.filter (&quot;AbstractActor&quot;).nSize > 0]  %>"/>
+                    <parameters name="wizardMessage" value=""/>
+                    <parameters name="resultVariable" value="result"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:For" expression="&lt;% $result %>">
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% $i != &quot;WIZARD_CANCELED&quot; %>">
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$container %>">
+                        <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% ! ($containerView.eContainer(&quot;DDiagram&quot;).eAllContents(&quot;DSemanticDecorator&quot;).target.filter(&quot;InstanceRole&quot;).representedInstance.nContains ($i)) %>">
+                          <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interaction.InstanceRole" referenceName="ownedInstanceRoles">
+                            <subModelOperations xsi:type="tool_1:SetValue" featureName="representedInstance" valueExpression="&lt;%$i%>"/>
+                            <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$i.name%>"/>
+                          </subModelOperations>
+                          <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% reorderInstanceRole ($instance, $predecessor) %>"/>
+                          <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% ensureCapabilityInvolvment ($i.abstractType) %>"/>
                         </subModelOperations>
-                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% reorderInstanceRole ($instance, $predecessor) %>"/>
-                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% ensureCapabilityInvolvment ($i.abstractType) %>"/>
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
-                </subModelOperations>
-                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="org.polarsys.capella.core.sirius.analysis.delete.RemoveInstanceRoles" forceRefresh="true" id="org.polarsys.capella.core.sirius.analysis.delete.RemoveInstanceRoles">
-                  <parameters name="result" value="&lt;% $result %>"/>
-                  <parameters name="current" value="&lt;% $containerView.eContainer(&quot;DDiagram&quot;).eAllContents(&quot;DSemanticDecorator&quot;).target.filter(&quot;InstanceRole&quot;)[representedInstance.abstractType.filter (&quot;Component&quot;).nSize > 0 &amp;&amp; representedInstance.abstractType.filter(&quot;AbstractActor&quot;).nSize == 0] %>"/>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-            <predecessor name="predecessor"/>
+                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="org.polarsys.capella.core.sirius.analysis.delete.RemoveInstanceRoles" forceRefresh="true" id="org.polarsys.capella.core.sirius.analysis.delete.RemoveInstanceRoles">
+                    <parameters name="result" value="&lt;% $result %>"/>
+                    <parameters name="current" value="&lt;% $containerView.eContainer(&quot;DDiagram&quot;).eAllContents(&quot;DSemanticDecorator&quot;).target.filter(&quot;InstanceRole&quot;)[representedInstance.abstractType.filter (&quot;AbstractActor&quot;).nSize > 0] %>"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+              <predecessor name="predecessor"/>
+            </tools>
+            <tools xsi:type="tool_2:InstanceRoleCreationTool" documentation="Creates a new lifeline representing an existing actor. This tool allows having multiple lifelines representing the same actor." name="Add multiple lifelines for an existing Actor" precondition="&lt;% eContainer(&quot;EPBSArchitecture&quot;).nSize == 0 %>" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/AddInstanceRole.gif">
+              <filters precondition="&lt;% (target.eContainer(&quot;EPBSArchitecture&quot;).nSize != 0)%>" elementsToListen="&lt;% target.eContainer (&quot;Scenario&quot;) %>">
+                <listeners domainClass="interaction.Scenario" featureName="ownedAbstractEnds"/>
+              </filters>
+              <variable name="container"/>
+              <viewVariable name="containerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$container %>">
+                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Select Component" forceRefresh="true" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementFromListWizard">
+                    <parameters name="context" value="&lt;% $container %>"/>
+                    <parameters name="scope" value="service:getAllMultiInstanceRoleActorParts"/>
+                    <parameters name="wizardMessage" value=""/>
+                    <parameters name="resultVariable" value="result"/>
+                    <parameters name="multiple" value="false"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:For" expression="&lt;% $result %>"/>
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% $result != &quot;WIZARD_CANCELED&quot; %>">
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$container %>">
+                      <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interaction.InstanceRole" referenceName="ownedInstanceRoles">
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="representedInstance" valueExpression="&lt;%$result%>"/>
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$result.name%>"/>
+                      </subModelOperations>
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% reorderInstanceRole ($instance, $predecessor) %>"/>
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% ensureCapabilityInvolvment ($result.abstractType) %>"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+              <predecessor name="predecessor"/>
+            </tools>
           </ownedTools>
-          <ownedTools xsi:type="tool_2:InstanceRoleCreationTool" name="Actors" precondition="&lt;% eContainer(&quot;EPBSArchitecture&quot;).nSize == 0 %>" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
-            <filters precondition="&lt;% (target.eContainer(&quot;EPBSArchitecture&quot;).nSize != 0)%>" elementsToListen="&lt;% target.eContainer (&quot;Scenario&quot;) %>">
-              <listeners domainClass="interaction.Scenario" featureName="ownedAbstractEnds"/>
-            </filters>
-            <variable name="container"/>
-            <viewVariable name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$container %>">
-                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Select Actor" forceRefresh="true" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
-                  <parameters name="context" value="&lt;% $container %>"/>
-                  <parameters name="scope" value="&lt;% $container.getISScopeInsertActors() %>"/>
-                  <parameters name="initialSelection" value="&lt;% $containerView.eContainer(&quot;DDiagram&quot;).eAllContents(&quot;DSemanticDecorator&quot;).target.filter(&quot;InstanceRole&quot;).representedInstance[abstractType.filter (&quot;AbstractActor&quot;).nSize > 0]  %>"/>
-                  <parameters name="wizardMessage" value=""/>
-                  <parameters name="resultVariable" value="result"/>
-                </subModelOperations>
-                <subModelOperations xsi:type="tool_1:For" expression="&lt;% $result %>">
-                  <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% $i != &quot;WIZARD_CANCELED&quot; %>">
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$container %>">
-                      <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% ! ($containerView.eContainer(&quot;DDiagram&quot;).eAllContents(&quot;DSemanticDecorator&quot;).target.filter(&quot;InstanceRole&quot;).representedInstance.nContains ($i)) %>">
-                        <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interaction.InstanceRole" referenceName="ownedInstanceRoles">
-                          <subModelOperations xsi:type="tool_1:SetValue" featureName="representedInstance" valueExpression="&lt;%$i%>"/>
-                          <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$i.name%>"/>
+          <ownedTools xsi:type="tool:ToolGroup" name="ISComponentsGroup">
+            <tools xsi:type="tool_2:InstanceRoleCreationTool" name="Components" precondition="&lt;% eContainer(&quot;SystemAnalysis&quot;).nSize == 0 %>" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+              <filters precondition="&lt;% target.eContainer(&quot;SystemAnalysis&quot;).nSize != 0%>" elementsToListen="&lt;% target.eContainer (&quot;Scenario&quot;) %>">
+                <listeners domainClass="interaction.Scenario" featureName="ownedAbstractEnds"/>
+              </filters>
+              <variable name="container"/>
+              <viewVariable name="containerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$container %>">
+                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Select Component" forceRefresh="true" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
+                    <parameters name="context" value="&lt;% $container %>"/>
+                    <parameters name="scope" value="&lt;% $container.getISScopeInsertComponents() %>"/>
+                    <parameters name="initialSelection" value="&lt;% $containerView.eContainer(&quot;DDiagram&quot;).eAllContents(&quot;DSemanticDecorator&quot;).target.filter(&quot;InstanceRole&quot;).representedInstance[abstractType.filter (&quot;Component&quot;).nSize > 0 &amp;&amp; abstractType.filter (&quot;AbstractActor&quot;).nSize == 0]  %>"/>
+                    <parameters name="wizardMessage" value=""/>
+                    <parameters name="resultVariable" value="result"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:For" expression="&lt;% $result %>">
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% $i != &quot;WIZARD_CANCELED&quot; %>">
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$container %>">
+                        <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% ! ($containerView.eContainer(&quot;DDiagram&quot;).eAllContents(&quot;DSemanticDecorator&quot;).target.filter(&quot;InstanceRole&quot;).representedInstance.nContains ($i)) %>">
+                          <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interaction.InstanceRole" referenceName="ownedInstanceRoles">
+                            <subModelOperations xsi:type="tool_1:SetValue" featureName="representedInstance" valueExpression="&lt;%$i%>"/>
+                            <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$i.name%>"/>
+                          </subModelOperations>
+                          <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% reorderInstanceRole ($instance, $predecessor) %>"/>
+                          <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% ensureCapabilityInvolvment ($i.abstractType) %>"/>
                         </subModelOperations>
-                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% reorderInstanceRole ($instance, $predecessor) %>"/>
-                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% ensureCapabilityInvolvment ($i.abstractType) %>"/>
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
-                </subModelOperations>
-                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="org.polarsys.capella.core.sirius.analysis.delete.RemoveInstanceRoles" forceRefresh="true" id="org.polarsys.capella.core.sirius.analysis.delete.RemoveInstanceRoles">
-                  <parameters name="result" value="&lt;% $result %>"/>
-                  <parameters name="current" value="&lt;% $containerView.eContainer(&quot;DDiagram&quot;).eAllContents(&quot;DSemanticDecorator&quot;).target.filter(&quot;InstanceRole&quot;)[representedInstance.abstractType.filter (&quot;AbstractActor&quot;).nSize > 0] %>"/>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-            <predecessor name="predecessor"/>
+                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="org.polarsys.capella.core.sirius.analysis.delete.RemoveInstanceRoles" forceRefresh="true" id="org.polarsys.capella.core.sirius.analysis.delete.RemoveInstanceRoles">
+                    <parameters name="result" value="&lt;% $result %>"/>
+                    <parameters name="current" value="&lt;% $containerView.eContainer(&quot;DDiagram&quot;).eAllContents(&quot;DSemanticDecorator&quot;).target.filter(&quot;InstanceRole&quot;)[representedInstance.abstractType.filter (&quot;Component&quot;).nSize > 0 &amp;&amp; representedInstance.abstractType.filter(&quot;AbstractActor&quot;).nSize == 0] %>"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+              <predecessor name="predecessor"/>
+            </tools>
+            <tools xsi:type="tool_2:InstanceRoleCreationTool" documentation="Creates a new lifeline representing an existing component or the system. This tool allows having multiple lifelines representing the same component." name="Add multiple lifelines for an existing Component" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/AddInstanceRole.gif">
+              <variable name="container"/>
+              <viewVariable name="containerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$container %>">
+                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Select Component" forceRefresh="true" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementFromListWizard">
+                    <parameters name="context" value="&lt;% $container %>"/>
+                    <parameters name="scope" value="service:getAllMultiInstanceRoleComponentParts"/>
+                    <parameters name="wizardMessage" value=""/>
+                    <parameters name="resultVariable" value="result"/>
+                    <parameters name="multiple" value="false"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:For" expression="&lt;% $result %>"/>
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% $result != &quot;WIZARD_CANCELED&quot; %>">
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$container %>">
+                      <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interaction.InstanceRole" referenceName="ownedInstanceRoles">
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="representedInstance" valueExpression="&lt;%$result%>"/>
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$result.name%>"/>
+                      </subModelOperations>
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% reorderInstanceRole ($instance, $predecessor) %>"/>
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% ensureCapabilityInvolvment ($result.abstractType) %>"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+              <predecessor name="predecessor"/>
+            </tools>
           </ownedTools>
           <ownedTools xsi:type="tool_2:InstanceRoleCreationTool" name="Shared Data/Event " nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <variable name="container"/>
@@ -16063,6 +16124,41 @@
             </initialOperation>
             <predecessor name="predecessor"/>
           </ownedTools>
+          <ownedTools xsi:type="tool_2:InstanceRoleCreationTool" name="Component" precondition="&lt;% eContainer(&quot;SystemAnalysis&quot;).nSize == 0 %>" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20DF']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ComponentInstance.gif">
+            <filters precondition="&lt;% target.eContainer (&quot;PhysicalArchitecture&quot;).nSize > 0 %>" elementsToListen="&lt;% target.eContainer (&quot;Scenario&quot;) %>"/>
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="eContainer (&quot;BlockArchitecture&quot;)">
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% eContainer(&quot;BlockArchitecture&quot;)%>">
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% filter (&quot;LogicalArchitecture&quot;).nSize != 0 %>">
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="feature:ownedLogicalComponent">
+                      <subModelOperations xsi:type="tool_1:CreateInstance" typeName="LogicalComponent" referenceName="ownedLogicalComponents" variableName="component">
+                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% filter (&quot;PhysicalArchitecture&quot;).nSize != 0 %>">
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="feature:ownedPhysicalComponent">
+                      <subModelOperations xsi:type="tool_1:CreateInstance" typeName="PhysicalComponent" referenceName="ownedPhysicalComponents" variableName="component">
+                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="nature" valueExpression="BEHAVIOR"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $container.eContainer (&quot;Scenario&quot;)%>">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interaction.InstanceRole" referenceName="ownedInstanceRoles">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="representedInstance" valueExpression="&lt;%$component.abstractTypedElements.nGet(0) %>"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$component.name%>"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% reorderInstanceRole ($instance, $predecessor) %>"/>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% ensureCapabilityInvolvment ($component) %>"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+            <predecessor name="predecessor"/>
+          </ownedTools>
           <ownedTools xsi:type="tool_2:InstanceRoleCreationTool" name="Actor" precondition="&lt;% eContainer(&quot;EPBSArchitecture&quot;).nSize == 0 %>" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20DF']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Actor.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
@@ -16110,108 +16206,134 @@
             </initialOperation>
             <predecessor name="predecessor"/>
           </ownedTools>
-          <ownedTools xsi:type="tool_2:InstanceRoleCreationTool" name="Components" precondition="&lt;% eContainer(&quot;SystemAnalysis&quot;).nSize == 0 %>" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20DF']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
-            <variable name="container"/>
-            <viewVariable name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$container %>">
-                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Select Component" forceRefresh="true" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
-                  <parameters name="context" value="&lt;% $container %>"/>
-                  <parameters name="scope" value="&lt;% getAllAvailablePartsIncludingSystem($containerView.eContainer(&quot;DDiagram&quot;).eAllContents(&quot;DSemanticDecorator&quot;).target.filter(&quot;InstanceRole&quot;).representedInstance.filter(&quot;Part&quot;))[abstractType.filter(&quot;AbstractActor&quot;).nSize() == 0] %>"/>
-                  <parameters name="initialSelection" value="&lt;% $containerView.eContainer(&quot;DDiagram&quot;).eAllContents(&quot;DSemanticDecorator&quot;).target.filter(&quot;InstanceRole&quot;).representedInstance[abstractType.filter (&quot;Component&quot;).nSize > 0 &amp;&amp; abstractType.filter (&quot;AbstractActor&quot;).nSize == 0]   %>"/>
-                  <parameters name="wizardMessage" value=""/>
-                  <parameters name="resultVariable" value="result"/>
-                </subModelOperations>
-                <subModelOperations xsi:type="tool_1:For" expression="&lt;% $result %>">
-                  <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% $i != &quot;WIZARD_CANCELED&quot; %>">
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$container %>">
-                      <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% ! ($containerView.eContainer(&quot;DDiagram&quot;).eAllContents(&quot;DSemanticDecorator&quot;).target.filter(&quot;InstanceRole&quot;).representedInstance.nContains ($i)) %>">
-                        <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interaction.InstanceRole" referenceName="ownedInstanceRoles">
-                          <subModelOperations xsi:type="tool_1:SetValue" featureName="representedInstance" valueExpression="&lt;%$i%>"/>
-                          <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$i.name%>"/>
+          <ownedTools xsi:type="tool:ToolGroup" name="ESComponentsGroup">
+            <tools xsi:type="tool_2:InstanceRoleCreationTool" name="Components" precondition="&lt;% eContainer(&quot;SystemAnalysis&quot;).nSize == 0 %>" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20DF']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+              <filters precondition="&lt;% target.eContainer(&quot;SystemAnalysis&quot;).nSize != 0%>" elementsToListen="&lt;% target.eContainer (&quot;Scenario&quot;) %>">
+                <listeners domainClass="interaction.Scenario" featureName="ownedAbstractEnds"/>
+              </filters>
+              <variable name="container"/>
+              <viewVariable name="containerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$container %>">
+                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Select Component" forceRefresh="true" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
+                    <parameters name="context" value="&lt;% $container %>"/>
+                    <parameters name="scope" value="&lt;% getAllAvailablePartsIncludingSystem($containerView.eContainer(&quot;DDiagram&quot;).eAllContents(&quot;DSemanticDecorator&quot;).target.filter(&quot;InstanceRole&quot;).representedInstance.filter(&quot;Part&quot;))[abstractType.filter(&quot;AbstractActor&quot;).nSize() == 0] %>"/>
+                    <parameters name="initialSelection" value="&lt;% $containerView.eContainer(&quot;DDiagram&quot;).eAllContents(&quot;DSemanticDecorator&quot;).target.filter(&quot;InstanceRole&quot;).representedInstance[abstractType.filter (&quot;Component&quot;).nSize > 0 &amp;&amp; abstractType.filter (&quot;AbstractActor&quot;).nSize == 0]   %>"/>
+                    <parameters name="wizardMessage" value=""/>
+                    <parameters name="resultVariable" value="result"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:For" expression="&lt;% $result %>">
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% $i != &quot;WIZARD_CANCELED&quot; %>">
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$container %>">
+                        <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% ! ($containerView.eContainer(&quot;DDiagram&quot;).eAllContents(&quot;DSemanticDecorator&quot;).target.filter(&quot;InstanceRole&quot;).representedInstance.nContains ($i)) %>">
+                          <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interaction.InstanceRole" referenceName="ownedInstanceRoles">
+                            <subModelOperations xsi:type="tool_1:SetValue" featureName="representedInstance" valueExpression="&lt;%$i%>"/>
+                            <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$i.name%>"/>
+                          </subModelOperations>
+                          <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% reorderInstanceRole ($instance, $predecessor) %>"/>
+                          <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% ensureCapabilityInvolvment ($i.abstractType) %>"/>
                         </subModelOperations>
-                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% reorderInstanceRole ($instance, $predecessor) %>"/>
-                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% ensureCapabilityInvolvment ($i.abstractType) %>"/>
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
-                </subModelOperations>
-                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="org.polarsys.capella.core.sirius.analysis.delete.RemoveInstanceRoles" forceRefresh="true" id="org.polarsys.capella.core.sirius.analysis.delete.RemoveInstanceRoles">
-                  <parameters name="result" value="&lt;% $result %>"/>
-                  <parameters name="current" value="&lt;% $containerView.eContainer(&quot;DDiagram&quot;).eAllContents(&quot;DSemanticDecorator&quot;).target.filter(&quot;InstanceRole&quot;)[representedInstance.abstractType.filter (&quot;Component&quot;).nSize > 0 &amp;&amp; representedInstance.abstractType.filter (&quot;AbstractActor&quot;).nSize == 0] %>"/>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-            <predecessor name="predecessor"/>
-          </ownedTools>
-          <ownedTools xsi:type="tool_2:InstanceRoleCreationTool" name="Actors" precondition="&lt;%filter(&quot;Scenario&quot;).nSize == 1%>" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20DF']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
-            <variable name="container"/>
-            <viewVariable name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$container %>">
-                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Select Actor" forceRefresh="true" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
-                  <parameters name="context" value="&lt;% $container %>"/>
-                  <parameters name="scope" value="&lt;% getAllActors[~abstractType.filter(&quot;Part&quot;).nSize >= 1].typedElements %>"/>
-                  <parameters name="initialSelection" value="&lt;% $containerView.eContainer(&quot;DDiagram&quot;).eAllContents(&quot;DSemanticDecorator&quot;).target.filter(&quot;InstanceRole&quot;).representedInstance [abstractType.filter (&quot;AbstractActor&quot;).nSize > 0] %>"/>
-                  <parameters name="wizardMessage" value=""/>
-                  <parameters name="resultVariable" value="result"/>
-                </subModelOperations>
-                <subModelOperations xsi:type="tool_1:For" expression="&lt;% $result %>">
-                  <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% $i != &quot;WIZARD_CANCELED&quot; %>">
+                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="org.polarsys.capella.core.sirius.analysis.delete.RemoveInstanceRoles" forceRefresh="true" id="org.polarsys.capella.core.sirius.analysis.delete.RemoveInstanceRoles">
+                    <parameters name="result" value="&lt;% $result %>"/>
+                    <parameters name="current" value="&lt;% $containerView.eContainer(&quot;DDiagram&quot;).eAllContents(&quot;DSemanticDecorator&quot;).target.filter(&quot;InstanceRole&quot;)[representedInstance.abstractType.filter (&quot;Component&quot;).nSize > 0 &amp;&amp; representedInstance.abstractType.filter (&quot;AbstractActor&quot;).nSize == 0] %>"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+              <predecessor name="predecessor"/>
+            </tools>
+            <tools xsi:type="tool_2:InstanceRoleCreationTool" documentation="Creates a new lifeline representing an existing component or the system. This tool allows having multiple lifelines representing the same component." name="Add multiple lifelines for an existing Component" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20DF']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/AddInstanceRole.gif">
+              <variable name="container"/>
+              <viewVariable name="containerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$container %>">
+                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Select Component" forceRefresh="true" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementFromListWizard">
+                    <parameters name="context" value="&lt;% $container %>"/>
+                    <parameters name="scope" value="service:getAllMultiInstanceRoleComponentParts"/>
+                    <parameters name="wizardMessage" value=""/>
+                    <parameters name="resultVariable" value="result"/>
+                    <parameters name="multiple" value="false"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:For" expression="&lt;% $result %>"/>
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% $result != &quot;WIZARD_CANCELED&quot; %>">
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$container %>">
-                      <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% ! ($containerView.eContainer(&quot;DDiagram&quot;).eAllContents(&quot;DSemanticDecorator&quot;).target.filter(&quot;InstanceRole&quot;).representedInstance.nContains ($i)) %>">
-                        <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interaction.InstanceRole" referenceName="ownedInstanceRoles">
-                          <subModelOperations xsi:type="tool_1:SetValue" featureName="representedInstance" valueExpression="&lt;%$i%>"/>
-                          <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$i.name%>"/>
-                        </subModelOperations>
-                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% reorderInstanceRole ($instance, $predecessor) %>"/>
-                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% ensureCapabilityInvolvment ($i.abstractType) %>"/>
+                      <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interaction.InstanceRole" referenceName="ownedInstanceRoles">
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="representedInstance" valueExpression="&lt;%$result%>"/>
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$result.name%>"/>
                       </subModelOperations>
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% reorderInstanceRole ($instance, $predecessor) %>"/>
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% ensureCapabilityInvolvment ($result.abstractType) %>"/>
                     </subModelOperations>
                   </subModelOperations>
-                </subModelOperations>
-                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="org.polarsys.capella.core.sirius.analysis.delete.RemoveInstanceRoles" forceRefresh="true" id="org.polarsys.capella.core.sirius.analysis.delete.RemoveInstanceRoles">
-                  <parameters name="result" value="&lt;% $result %>"/>
-                  <parameters name="current" value="&lt;% $containerView.eContainer(&quot;DDiagram&quot;).eAllContents(&quot;DSemanticDecorator&quot;).target.filter(&quot;InstanceRole&quot;) [representedInstance.abstractType.filter (&quot;AbstractActor&quot;).nSize > 0]%>"/>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-            <predecessor name="predecessor"/>
+                </firstModelOperations>
+              </initialOperation>
+              <predecessor name="predecessor"/>
+            </tools>
           </ownedTools>
-          <ownedTools xsi:type="tool_2:InstanceRoleCreationTool" name="Component" precondition="&lt;% eContainer(&quot;SystemAnalysis&quot;).nSize == 0 %>" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20DF']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ComponentInstance.gif">
-            <filters precondition="&lt;% target.eContainer (&quot;PhysicalArchitecture&quot;).nSize > 0 %>" elementsToListen="&lt;% target.eContainer (&quot;Scenario&quot;) %>"/>
-            <variable name="container"/>
-            <viewVariable name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="eContainer (&quot;BlockArchitecture&quot;)">
-                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% eContainer(&quot;BlockArchitecture&quot;)%>">
-                  <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% filter (&quot;LogicalArchitecture&quot;).nSize != 0 %>">
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="feature:ownedLogicalComponent">
-                      <subModelOperations xsi:type="tool_1:CreateInstance" typeName="LogicalComponent" referenceName="ownedLogicalComponents" variableName="component">
-                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
+          <ownedTools xsi:type="tool:ToolGroup" name="ESActorsGroup">
+            <tools xsi:type="tool_2:InstanceRoleCreationTool" name="Actors" precondition="&lt;%filter(&quot;Scenario&quot;).nSize == 1%>" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20DF']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+              <variable name="container"/>
+              <viewVariable name="containerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$container %>">
+                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Select Actor" forceRefresh="true" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
+                    <parameters name="context" value="&lt;% $container %>"/>
+                    <parameters name="scope" value="&lt;% getAllActors[~abstractType.filter(&quot;Part&quot;).nSize >= 1].typedElements %>"/>
+                    <parameters name="initialSelection" value="&lt;% $containerView.eContainer(&quot;DDiagram&quot;).eAllContents(&quot;DSemanticDecorator&quot;).target.filter(&quot;InstanceRole&quot;).representedInstance [abstractType.filter (&quot;AbstractActor&quot;).nSize > 0] %>"/>
+                    <parameters name="wizardMessage" value=""/>
+                    <parameters name="resultVariable" value="result"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:For" expression="&lt;% $result %>">
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% $i != &quot;WIZARD_CANCELED&quot; %>">
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$container %>">
+                        <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% ! ($containerView.eContainer(&quot;DDiagram&quot;).eAllContents(&quot;DSemanticDecorator&quot;).target.filter(&quot;InstanceRole&quot;).representedInstance.nContains ($i)) %>">
+                          <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interaction.InstanceRole" referenceName="ownedInstanceRoles">
+                            <subModelOperations xsi:type="tool_1:SetValue" featureName="representedInstance" valueExpression="&lt;%$i%>"/>
+                            <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$i.name%>"/>
+                          </subModelOperations>
+                          <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% reorderInstanceRole ($instance, $predecessor) %>"/>
+                          <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% ensureCapabilityInvolvment ($i.abstractType) %>"/>
+                        </subModelOperations>
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% filter (&quot;PhysicalArchitecture&quot;).nSize != 0 %>">
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="feature:ownedPhysicalComponent">
-                      <subModelOperations xsi:type="tool_1:CreateInstance" typeName="PhysicalComponent" referenceName="ownedPhysicalComponents" variableName="component">
-                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
-                        <subModelOperations xsi:type="tool_1:SetValue" featureName="nature" valueExpression="BEHAVIOR"/>
+                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="org.polarsys.capella.core.sirius.analysis.delete.RemoveInstanceRoles" forceRefresh="true" id="org.polarsys.capella.core.sirius.analysis.delete.RemoveInstanceRoles">
+                    <parameters name="result" value="&lt;% $result %>"/>
+                    <parameters name="current" value="&lt;% $containerView.eContainer(&quot;DDiagram&quot;).eAllContents(&quot;DSemanticDecorator&quot;).target.filter(&quot;InstanceRole&quot;) [representedInstance.abstractType.filter (&quot;AbstractActor&quot;).nSize > 0]%>"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+              <predecessor name="predecessor"/>
+            </tools>
+            <tools xsi:type="tool_2:InstanceRoleCreationTool" documentation="Creates a new lifeline representing an existing actor. This tool allows having multiple lifelines representing the same actor." name="Add multiple lifelines for an existing Actor" precondition="&lt;%filter(&quot;Scenario&quot;).nSize == 1%>" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20DF']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/AddInstanceRole.gif">
+              <variable name="container"/>
+              <viewVariable name="containerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$container %>">
+                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Select Component" forceRefresh="true" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementFromListWizard">
+                    <parameters name="context" value="&lt;% $container %>"/>
+                    <parameters name="scope" value="service:getAllMultiInstanceRoleActorParts"/>
+                    <parameters name="wizardMessage" value=""/>
+                    <parameters name="resultVariable" value="result"/>
+                    <parameters name="multiple" value="false"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:For" expression="&lt;% $result %>"/>
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;% $result != &quot;WIZARD_CANCELED&quot; %>">
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$container %>">
+                      <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interaction.InstanceRole" referenceName="ownedInstanceRoles">
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="representedInstance" valueExpression="&lt;%$result%>"/>
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$result.name%>"/>
                       </subModelOperations>
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% reorderInstanceRole ($instance, $predecessor) %>"/>
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% ensureCapabilityInvolvment ($result.abstractType) %>"/>
                     </subModelOperations>
                   </subModelOperations>
-                </subModelOperations>
-                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $container.eContainer (&quot;Scenario&quot;)%>">
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interaction.InstanceRole" referenceName="ownedInstanceRoles">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="representedInstance" valueExpression="&lt;%$component.abstractTypedElements.nGet(0) %>"/>
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$component.name%>"/>
-                  </subModelOperations>
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% reorderInstanceRole ($instance, $predecessor) %>"/>
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% ensureCapabilityInvolvment ($component) %>"/>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-            <predecessor name="predecessor"/>
+                </firstModelOperations>
+              </initialOperation>
+              <predecessor name="predecessor"/>
+            </tools>
           </ownedTools>
           <ownedTools xsi:type="tool:ToolGroup" name="FunctionalExchange">
             <tools xsi:type="tool_2:MessageCreationTool" documentation="Creates a new Sequence Message invoking a Functional Exchange without return branch between the Source and Target Lifelines representing existing Component/Actor Parts. The kind of these Components/Actors is related to the Architecture. This tool opens a selection wizard to select an available existing Functional Exchange or to create a new one between existing/new allocated  Functions.&#xD;&#xA;This tool is masked as soon as a Component Exchange is displayed on the scenario." name="Functional Exchange" precondition="&lt;% allowMessageCreation ($preSource, $preTarget, true, $messageEndBefore.semanticEnd, $messageEndAfter.semanticEnd) %>" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@edgeMappings[name='Basic%20message%20mapping%20DF']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/AsyncSequenceMessage.gif">

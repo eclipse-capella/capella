@@ -1129,5 +1129,11 @@
                
       </definition>
    </extension>
+   <extension
+         point="org.polarsys.capella.core.tiger">
+      <transfoExecuteExtension
+            class="org.polarsys.capella.core.projection.commands.internal.MultiInstanceRoleExtension">
+      </transfoExecuteExtension>
+   </extension>
    
 </plugin>
