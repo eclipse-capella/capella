@@ -39,7 +39,7 @@ import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 import org.polarsys.capella.common.data.modellingcore.InformationsExchanger;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
-import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
+import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.tools.report.EmbeddedMessage;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
@@ -882,14 +882,14 @@ public class ABServices {
             unallocatedFunctions.addFirst(scenario);
             Logger logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.MODEL);
             logger.info(new EmbeddedMessage(
-                NLS.bind(Messages.ABServices_UnallocatedFunctions, EObjectLabelProviderHelper.getText(scenario)),
+                NLS.bind(Messages.ABServices_UnallocatedFunctions, EObjectExt.getText(scenario)),
                 IReportManagerDefaultComponents.MODEL, unallocatedFunctions));
           }
           if (unallocatedRoles.size() > 0) {
             unallocatedRoles.addFirst(scenario);
             Logger logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.MODEL);
             logger.info(new EmbeddedMessage(
-                NLS.bind(Messages.ABServices_UnallocatedRoles, EObjectLabelProviderHelper.getText(scenario)),
+                NLS.bind(Messages.ABServices_UnallocatedRoles, EObjectExt.getText(scenario)),
                 IReportManagerDefaultComponents.MODEL, unallocatedRoles));
           }
         }

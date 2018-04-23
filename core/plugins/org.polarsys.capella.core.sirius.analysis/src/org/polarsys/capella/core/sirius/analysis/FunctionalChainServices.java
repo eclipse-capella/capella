@@ -41,7 +41,7 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.RGBValues;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.swt.graphics.RGB;
-import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
+import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.helpers.SimpleOrientedGraph;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
@@ -692,7 +692,7 @@ public class FunctionalChainServices {
 	 }
 
 	 public String getFunctionalChainLabel(FunctionalChain fc, DDiagram diagram) {
-		 String label = EObjectLabelProviderHelper.getText(fc);
+		 String label = EObjectExt.getText(fc);
 
 		 boolean isComplete = isCompleteFunctionalChain(fc, diagram);
 		 boolean isValid = FunctionalChainExt.isFunctionalChainValid(fc);
