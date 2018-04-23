@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,6 +17,7 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
@@ -32,6 +33,7 @@ import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
 import org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants;
 import org.eclipse.jface.window.Window;
 import org.eclipse.jface.wizard.WizardDialog;
+import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.common.tools.api.util.TreeItemWrapper;
 import org.eclipse.sirius.common.ui.tools.api.selection.EObjectSelectionWizard;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.AbstractSiriusEditPolicy;
@@ -121,7 +123,7 @@ public class ChooseServiceEditPolicy extends AbstractSiriusEditPolicy {
             new ICommandProxy(new GMFCommandWrapper(getEditingDomain(), new RecordingCommand(getEditingDomain()) {
               @Override
               protected void doExecute() {
-                getSirius().refresh();
+                  DialectManager.INSTANCE.refresh(getSirius(), new NullProgressMonitor());
               }
             })).execute();
             // Do not call RefreshDiagramCommand anymore since Sirius 4.18.
