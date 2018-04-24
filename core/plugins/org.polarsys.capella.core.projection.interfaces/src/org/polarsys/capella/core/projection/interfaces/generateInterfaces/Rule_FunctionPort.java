@@ -44,12 +44,12 @@ abstract class Rule_FunctionPort extends InterfaceGenerationRule {
   protected abstract Collection<FunctionalExchange> getRelatedFunctionalExchanges(FunctionPort p);
   
   @Override
-  protected Collection<InterfaceInfo> transformToInterfaceInfo(EObject element, ITransfo transfo_p) {
+  protected Collection<InterfaceInfo> transformToInterfaceInfo(EObject element, ITransfo transfo) {
 
     Collection<InterfaceInfo> result = new ArrayList<InterfaceInfo>();
 
     for (FunctionalExchange fe : getRelatedFunctionalExchanges((FunctionPort)element)){
-      if (isExternal(fe)){
+      if (isExternal(fe, transfo)){
         return Collections.emptyList();
       }
     }
@@ -74,7 +74,7 @@ abstract class Rule_FunctionPort extends InterfaceGenerationRule {
 
     abstract ProviderRequirerRole getRole();
 
-    private boolean isExternal(FunctionalExchange exchange){
+    private boolean isExternal(FunctionalExchange exchange, ITransfo transfo){
       
       AbstractFunction sourceF = FunctionalExchangeExt.getSourceFunction(exchange);
       AbstractFunction targetF = FunctionalExchangeExt.getTargetFunction(exchange);
@@ -84,21 +84,24 @@ abstract class Rule_FunctionPort extends InterfaceGenerationRule {
       result &= targetF != null;
       result &= sourceF.getAllocationBlocks().size() > 0;
       if (!result) {
-        // The source function has not been allocated to any component
-        String message = sourceF.getName() + " has not been allocated to any component";
-        logger.warn(new EmbeddedMessage(message, logger.getName(), Arrays.asList(sourceF)));
+        if(!transfo.isDryRun()){
+          // The source function has not been allocated to any component
+          String message = sourceF.getName() + " has not been allocated to any component";
+          logger.warn(new EmbeddedMessage(message, logger.getName(), Arrays.asList(sourceF)));
+        }          
         return true;
       }
       result &= targetF.getAllocationBlocks().size() > 0;
       if (!result) {
-        String message = targetF.getName() + " has not been allocated to any component";
-        // The target function has not been allocated to any component
-        logger.warn(new EmbeddedMessage(message, logger.getName(), Arrays.asList(targetF)));
+        if(!transfo.isDryRun()){
+          // The target function has not been allocated to any component
+          String message = targetF.getName() + " has not been allocated to any component";
+          logger.warn(new EmbeddedMessage(message, logger.getName(), Arrays.asList(targetF)));
+        }
         return true;
       }
       result &= sourceF.getAllocationBlocks().get(0) != targetF.getAllocationBlocks().get(0);
 
       return result;
     }
-
 }
