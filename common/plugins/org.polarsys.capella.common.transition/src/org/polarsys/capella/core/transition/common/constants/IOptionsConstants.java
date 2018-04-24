@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,5 +24,7 @@ public class IOptionsConstants {
   public static final String OPTIONS_LOG = "log.enabled";
 
   public static final Boolean OPTIONS_LOG__DEFAULT = Boolean.TRUE;
+  
+  public static final String IS_DRY_RUN = "isDryRun";
 
 }

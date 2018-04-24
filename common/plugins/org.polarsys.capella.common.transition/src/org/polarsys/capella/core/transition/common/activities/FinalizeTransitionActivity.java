@@ -21,11 +21,13 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
+import org.polarsys.capella.core.transition.common.constants.IOptionsConstants;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.constants.ITransitionSteps;
 import org.polarsys.capella.core.transition.common.constants.Messages;
 import org.polarsys.capella.core.transition.common.handlers.log.LogHelper;
 import org.polarsys.kitalpha.cadence.core.api.parameter.ActivityParameters;
+import org.polarsys.kitalpha.cadence.core.api.parameter.GenericParameter;
 import org.polarsys.kitalpha.transposer.api.ITransposerWorkflow;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
@@ -73,7 +75,10 @@ public class FinalizeTransitionActivity extends AbstractActivity implements ITra
       }
     }
 
-    LogHelper.getInstance().info("Operation has been successful.", Messages.Activity_Transition);
+    GenericParameter<?> parameter = activityParams.getParameter(IOptionsConstants.IS_DRY_RUN);
+    if(parameter == null || !Boolean.valueOf(parameter.getValue().toString())){
+      LogHelper.getInstance().info("Operation has been successful.", Messages.Activity_Transition);
+    }
 
     return Status.OK_STATUS;
   }
