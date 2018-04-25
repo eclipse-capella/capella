@@ -54,7 +54,8 @@ Require-Bundle: org.eclipse.core.expressions,
  org.eclipse.sirius.diagram.ui,
  com.google.guava,
  org.polarsys.capella.common.linkedtext.ui,
- org.polarsys.capella.core.linkedtext.ui
+ org.polarsys.capella.core.linkedtext.ui,
+ org.polarsys.capella.core.re
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-Localization: plugin
