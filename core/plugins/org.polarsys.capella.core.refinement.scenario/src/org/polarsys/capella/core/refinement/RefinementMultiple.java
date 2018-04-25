@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,6 +12,7 @@ package org.polarsys.capella.core.refinement;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -44,6 +45,7 @@ import org.polarsys.capella.core.model.utils.CapellaLayerCheckingExt;
 import org.polarsys.capella.core.refinement.framework.ui.SelectionWizard;
 import org.polarsys.capella.core.refinement.framework.ui.model.SelectionItemNode;
 import org.polarsys.capella.core.refinement.framework.ui.model.TargetSelectionItem;
+import org.polarsys.capella.core.refinement.scenarios.core.ScenarioRefinement;
 import org.polarsys.capella.core.refinement.scenarios.core.exceptions.ProcessorException;
 import org.polarsys.capella.core.refinement.scenarios.core.plugs.IProcessor;
 
@@ -54,13 +56,17 @@ public class RefinementMultiple implements IProcessor {
   /**
    *
    */
-  private List<IProcessor> _refinements = null;
+  private List<ScenarioRefinement> _refinements = null;
+
+  public Iterator<ScenarioRefinement> getRefinements(){
+    return _refinements.iterator();
+  }
 
   /**
    * @param srcElt
    */
   public RefinementMultiple(NamedElement srcElt) {
-    _refinements = new ArrayList<IProcessor>();
+    _refinements = new ArrayList<ScenarioRefinement>();
     List<Scenario> scenarios = new ArrayList<Scenario>();
 
     if (srcElt instanceof Scenario && ((Scenario) srcElt).getKind().equals(ScenarioKind.INTERFACE)) {
