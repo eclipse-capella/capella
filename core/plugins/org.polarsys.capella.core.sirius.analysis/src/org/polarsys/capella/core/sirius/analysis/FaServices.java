@@ -4192,8 +4192,8 @@ public class FaServices {
       DNodeContainer containerView) {
     Set<AbstractFunction> leaveFunctions = new HashSet<AbstractFunction>();
 
-    // retrieve all allocated functions of this component or entities (including roles)
-    if (componentOrPart instanceof Part) {
+    // Retrieve all allocated functions of this component or entities (including roles)
+    if (componentOrPart instanceof Part && ((Part) componentOrPart).getAbstractType() != null) {
       leaveFunctions.addAll(((Component) (((Part) componentOrPart).getAbstractType())).getAllocatedFunctions());
 
     } else if (componentOrPart instanceof Component) {
@@ -4209,7 +4209,7 @@ public class FaServices {
       }
     }
 
-    // add leaves of sub components only if it is not displayed, recursively
+    // Add leaves of sub components only if it is not displayed, recursively
     Set<EObject> subComponents = new HashSet<EObject>();
     if (componentOrPart instanceof Component) {
       subComponents.addAll(ComponentExt.getSubUsedComponents((Component) componentOrPart));

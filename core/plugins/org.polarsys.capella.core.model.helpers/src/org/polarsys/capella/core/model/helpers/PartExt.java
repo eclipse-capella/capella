@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -44,8 +44,8 @@ import org.polarsys.capella.core.data.pa.deployment.PartDeploymentLink;
  */
 public class PartExt {
   /*
-   * Associate the Part (part_p) to the AbstractType(abstractType_p) Object given in Parameter and store the Part into
-   * Context package in layer given in parameter (componentArchitecture_p)
+   * Associate the Part (part) to the AbstractType(abstractType) Object given in Parameter and store the Part into
+   * Context package in layer given in parameter (componentArchitecture)
    */
   public static void addPart(AbstractType abstractType, Part part, ComponentArchitecture componentArchitecture) {
     ComponentContext componentCtx = null;
@@ -111,7 +111,9 @@ public class PartExt {
   public static List<Part> getSubUsedAndDeployedParts(Part part) {
     List<Part> result = new ArrayList<Part>();
     result.addAll(PartExt.getDeployedParts(part));
-    result.addAll(ComponentExt.getSubParts(((Component) part.getAbstractType())));
+    if(part.getAbstractType() != null){
+      result.addAll(ComponentExt.getSubParts(((Component) part.getAbstractType())));      
+    }
     return result;
   }
 
