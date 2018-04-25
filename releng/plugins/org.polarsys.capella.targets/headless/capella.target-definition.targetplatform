@@ -59,7 +59,7 @@ location "http://download.eclipse.org/diffmerge/releases/0.9.0/edm-patterns-site
 	org.eclipse.emf.diffmerge.patterns.sirius.sdk.feature.feature.group lazy
 }
 
-location "http://download.eclipse.org/modeling/amalgam/updates/stable/1.9.0-S20180326/capella" {
+location "http://download.eclipse.org/modeling/amalgam/updates/stable/1.9.0-S20180423/capella" {
 	org.eclipse.amalgam.explorer.activity.feature.group
 }
 
