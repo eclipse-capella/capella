@@ -1498,4 +1498,11 @@ public interface IToolNameConstants {
   String TABLE_TOOL_REQ_SFIR = "System Functional Interface Requirement"; //$NON-NLS-1$
   String TABLE_TOOL_REQ_SNFR = "System Non Functional Requirement"; //$NON-NLS-1$
   String TABLE_TOOL_REQ_SNFIR = "System Non Functional Interface Requirement"; //$NON-NLS-1$
+
+  /**
+   * Tool on IS, ES diagrams to create multiple instance roles for identical represented
+   */
+  String TOOL_SCENARIO_MULTI_INSTANCEROLE_COMPONENT = "Add multiple lifelines for an existing Component"; //$NON-NLS-1$
+  String TOOL_SCENARIO_MULTI_INSTANCEROLE_ACTOR = "Add multiple lifelines for an existing Actor"; //$NON-NLS-1$
+  String TOOL_OES_MULTI_INSTANCEROLE_ENTITYACTOR = "Add multiple lifelines for an existing Entity / Actor"; //$NON-NLS-1$
 }
