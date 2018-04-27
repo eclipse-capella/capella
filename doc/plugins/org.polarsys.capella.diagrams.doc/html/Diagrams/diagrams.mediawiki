@@ -440,10 +440,16 @@ This section lists tools that are available on all Capella diagrams. These tools
 |-
 | 	Actors 	
 | [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+|
+|-
+| 	Add multiple lifelines for an existing Actor
+| [[Image:Images/icons/full/obj16/AddInstanceRole.gif]]
+| 	Creates a new Lifeline representing an existing Actor. This allows to have multiple Lifelines representing the same Actor in a single scenario. 
 | 
 |-
-| 	Component 	
-| [[Image:Images/icons/full/obj16/ComponentInstance.gif]] 
+| 	Add multiple lifelines for an existing Component
+| [[Image:Images/icons/full/obj16/AddInstanceRole.gif]]
+| 	Creates a new Lifeline representing an existing Component. This allows to have multiple Lifelines representing the same Component in a single scenario. 
 | 
 |-
 | 	Functional Exchange 	
@@ -570,6 +576,16 @@ This section lists tools that are available on all Capella diagrams. These tools
 |-
 | 	Actors 	
 | [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 
+|-
+| 	Add multiple lifelines for an existing Actor
+| [[Image:Images/icons/full/obj16/AddInstanceRole.gif]]
+| 	Creates a new Lifeline representing an existing Actor. This allows to have multiple Lifelines representing the same Actor in a single scenario. 
+| 
+|-
+| 	Add multiple lifelines for an existing Component
+| [[Image:Images/icons/full/obj16/AddInstanceRole.gif]]
+| 	Creates a new Lifeline representing an existing Component. This allows to have multiple Lifelines representing the same Component in a single scenario. 
 | 
 |-
 | 	Shared Data/Event  	
@@ -2305,6 +2321,11 @@ This section lists tools that are available on all Capella diagrams. These tools
 |-
 | 	Operational Entities / roles 	
 | [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 
+|-
+| 	Add multiple lifelines for existing Entities / Roles
+| [[Image:Images/icons/full/obj16/AddInstanceRole.gif]]
+| 	Creates a new Lifeline representing an existing Actor / Entity. This allows to have multiple Lifelines representing the same Actor / Entity in a single scenario. 
 | 
 |-
 | 	Interaction with Return Branch 	
