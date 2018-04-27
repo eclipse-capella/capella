@@ -2491,6 +2491,12 @@
         <ownedCapabilities xsi:type="org.polarsys.capella.core.data.ctx:Capability"
             id="4e6fa11e-933f-4aec-b4c0-621c8fb244e5" name="Provide Moving-Map Services"
             description="[Wikipedia]&lt;br />&#xD;&#xA;A moving-map system is a real-time flight information video channel broadcast through to cabin project/video screens and&#xD;&#xA;personal televisions (PTVs). In addition to displaying a map that illustrates the position and direction of the plane, the&#xD;&#xA;system gives the altitude, airspeed, outside air temperature, distance to the destination, distance from the origination&#xD;&#xA;point, and local time. The moving-map system information is derived in real time from the aircraft's flight computer&#xD;&#xA;systems.">
+          <ownedScenarios xsi:type="org.polarsys.capella.core.data.interaction:Scenario"
+              id="c3d663a9-3a4c-4e36-ac88-d5163b11d3ff" name="[IS] Provide Moving-Map Services"
+              kind="INTERFACE">
+            <ownedInstanceRoles xsi:type="org.polarsys.capella.core.data.interaction:InstanceRole"
+                id="450ec410-5971-4e4d-a0c4-091950ffc101" name="IFE System" representedInstance="#cb4b8f2d-7663-4d35-bc44-20080a8d3133"/>
+          </ownedScenarios>
           <ownedActorCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.ctx:ActorCapabilityInvolvement"
               id="b5e2ccdb-fd59-45fa-82df-d6befe26e3f2" involved="#c8b78c78-5b11-4fc0-87b7-3ca84622efea"/>
           <ownedActorCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.ctx:ActorCapabilityInvolvement"
@@ -8315,6 +8321,9 @@
         </ownedCapabilityRealizations>
         <ownedCapabilityRealizations xsi:type="org.polarsys.capella.core.data.la:CapabilityRealization"
             id="36429bbc-57fd-4862-b59e-003a11f4b146" name="Provide Configuration Means">
+          <ownedScenarios xsi:type="org.polarsys.capella.core.data.interaction:Scenario"
+              id="5bf082b5-2050-438c-a203-f1eb03cbcecd" name="[IS] Provide Configuration Means"
+              kind="INTERFACE"/>
           <ownedAbstractCapabilityRealizations xsi:type="org.polarsys.capella.core.data.interaction:AbstractCapabilityRealization"
               id="57757338-f769-45a2-a54b-a360f1adbe89" targetElement="#a643f8af-0104-49c8-add7-525806988ccb"
               sourceElement="#36429bbc-57fd-4862-b59e-003a11f4b146"/>
@@ -13257,12 +13266,18 @@
         </ownedCapabilityRealizations>
         <ownedCapabilityRealizations xsi:type="org.polarsys.capella.core.data.la:CapabilityRealization"
             id="9bd26014-34ac-46c1-ac3c-7646941ada16" name="Provide Testing Interface">
+          <ownedScenarios xsi:type="org.polarsys.capella.core.data.interaction:Scenario"
+              id="7b2fa095-18cb-483f-87be-73f78c1cc88f" name="Provide Testing Interface"
+              kind="DATA_FLOW"/>
           <ownedAbstractCapabilityRealizations xsi:type="org.polarsys.capella.core.data.interaction:AbstractCapabilityRealization"
               id="3ea5aac1-1f67-4db8-bf34-35a4e57fa830" targetElement="#bd2a543a-d87b-4147-8ad4-7f77a110ced2"
               sourceElement="#9bd26014-34ac-46c1-ac3c-7646941ada16"/>
         </ownedCapabilityRealizations>
         <ownedCapabilityRealizations xsi:type="org.polarsys.capella.core.data.la:CapabilityRealization"
             id="ca3942df-c48d-461c-9cc2-de207cd35908" name="Provide Configuration Means">
+          <ownedScenarios xsi:type="org.polarsys.capella.core.data.interaction:Scenario"
+              id="9ef4fd22-b504-4013-9edb-fb9e7ed1d97d" name="[IS] Provide Configuration Means"
+              kind="INTERFACE"/>
           <ownedAbstractCapabilityRealizations xsi:type="org.polarsys.capella.core.data.interaction:AbstractCapabilityRealization"
               id="ee6e3530-547f-4af6-83ad-7cc8f373da64" targetElement="#36429bbc-57fd-4862-b59e-003a11f4b146"
               sourceElement="#ca3942df-c48d-461c-9cc2-de207cd35908"/>
