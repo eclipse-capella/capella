@@ -1,0 +1,9 @@
+= Known Issues =
+
+Below is a selection of known issues present at each release of Capella.
+
+== Capella 1.2.1 ==
+
+=== Transitions for multi-Instancerole Scenarios ===
+
+[https://bugs.polarsys.org/show_bug.cgi?id=2052 Bug 2052]: Capella 1.2.1 allows the creation of Scenarios with multiple InstanceRoles for identical represented instances. However, the various Scenario Transitions and Subscenario wizards have not been adapted yet and thus may produce unexpected results for such Scenarios.
