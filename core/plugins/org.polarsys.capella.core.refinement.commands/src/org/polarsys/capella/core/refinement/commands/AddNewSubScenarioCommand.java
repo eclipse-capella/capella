@@ -1,22 +1,29 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *  
+ *
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
 package org.polarsys.capella.core.refinement.commands;
 
+import org.apache.log4j.Logger;
 import org.eclipse.core.runtime.IProgressMonitor;
-
-import org.polarsys.capella.common.helpers.operations.LongRunningListenersRegistry;
-import org.polarsys.capella.core.data.interaction.Scenario;
-import org.polarsys.capella.core.refinement.subscenario.SubScenarioUtils;
+import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.PlatformUI;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.common.helpers.EObjectExt;
+import org.polarsys.capella.common.helpers.operations.LongRunningListenersRegistry;
+import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
+import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
+import org.polarsys.capella.core.data.interaction.Scenario;
+import org.polarsys.capella.core.model.helpers.ScenarioExt;
+import org.polarsys.capella.core.refinement.subscenario.SubScenarioUtils;
 
 /**
  */
@@ -43,10 +50,26 @@ public class AddNewSubScenarioCommand extends AbstractReadWriteCommand {
   /**
    * @see org.polarsys.capella.common.ef.command.command.ICommand#execute(org.eclipse.core.runtime.IProgressMonitor)
    */
+  @Override
   public void run() {
     LongRunningListenersRegistry.getInstance().operationStarting(getClass());
     try {
       if (modelElement != null) {
+
+        // TODO remove when https://bugs.polarsys.org/show_bug.cgi?id=2052 is fixed
+        if (ScenarioExt.isMultiInstanceRole((Scenario) modelElement)) {
+          Display display = PlatformUI.getWorkbench().getDisplay();
+          if (display != null) {
+            if (!MessageDialog.openConfirm(display.getActiveShell(), Messages.MultiInstanceRoleExtension_title,
+                Messages.MultiInstanceRoleExtension_message)) {
+              return;
+            } else {
+              Logger logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.REFINEMENT);
+              logger.warn(Messages.MultiInstanceRoleExtension_logmsg_confirm + EObjectExt.getText(modelElement));
+            }
+          }
+        }
+
         SubScenarioUtils.addNewSubScenario((Scenario) modelElement, progressMonitor);
       }
     } finally {

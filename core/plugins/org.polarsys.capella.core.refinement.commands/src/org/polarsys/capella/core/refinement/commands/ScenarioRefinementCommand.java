@@ -15,7 +15,7 @@ import java.util.Iterator;
 import org.apache.log4j.Logger;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.ui.IWorkbenchWindow;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.PlatformUI;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
@@ -75,10 +75,12 @@ public class ScenarioRefinementCommand extends AbstractReadWriteCommand {
         RefinementMultiple refinement = new RefinementMultiple((NamedElement) selectedElement);
         for (Iterator<ScenarioRefinement> sr = refinement.getRefinements(); sr.hasNext();) {
           Scenario scenario = sr.next().getContext();
+
+          // TODO remove when https://bugs.polarsys.org/show_bug.cgi?id=2052 is fixed
           if (ScenarioExt.isMultiInstanceRole(scenario)) {
-            IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
-            if (window != null) {
-              if (!MessageDialog.openConfirm(window.getShell(), Messages.MultiInstanceRoleExtension_title,
+            Display display = PlatformUI.getWorkbench().getDisplay();
+            if (display != null) {
+              if (!MessageDialog.openConfirm(display.getActiveShell(), Messages.MultiInstanceRoleExtension_title,
                   Messages.MultiInstanceRoleExtension_message)) {
                 sr.remove();
               } else {
@@ -87,6 +89,7 @@ public class ScenarioRefinementCommand extends AbstractReadWriteCommand {
               }
             }
           }
+
         }
 
         refinement.execute(progressMonitor);
