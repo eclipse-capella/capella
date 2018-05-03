@@ -295,7 +295,6 @@
 				<module>releng/plugins/org.polarsys.capella.rcp</module>
 				<module>releng/plugins/org.polarsys.capella.rcp.product</module>
 				<module>releng/plugins/org.polarsys.capella.rcp.site</module>
-				<module>releng/plugins/org.polarsys.capella.richtext.site</module>
 
 				<!-- EGF patterns -->
 				<module>releng/features/org.polarsys.capella.core.egf.feature</module>
@@ -341,7 +340,6 @@
 				<module>releng/plugins/org.polarsys.capella.rcp</module>
 				<module>releng/plugins/org.polarsys.capella.rcp.product</module>
 				<module>releng/plugins/org.polarsys.capella.rcp.site</module>
-				<module>releng/plugins/org.polarsys.capella.richtext.site</module>
 
 				<!-- Tests -->
 				<module>tests/features/org.polarsys.capella.test.feature</module>
