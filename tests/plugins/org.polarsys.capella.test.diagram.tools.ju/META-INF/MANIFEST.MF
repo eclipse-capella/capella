@@ -9,7 +9,8 @@ Require-Bundle: org.eclipse.core.runtime,
  org.polarsys.capella.test.diagram.common.ju;visibility:=reexport,
  org.polarsys.capella.core.preferences,
  org.polarsys.capella.core.model.preferences,
- org.polarsys.capella.core.sirius.analysis
+ org.polarsys.capella.core.sirius.analysis,
+ org.eclipse.sirius.diagram
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.test.diagram.tools.ju,

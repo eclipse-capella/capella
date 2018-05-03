@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -106,6 +106,7 @@ import org.polarsys.capella.core.data.capellacore.Generalization;
 import org.polarsys.capella.core.data.capellacore.ModellingArchitecture;
 import org.polarsys.capella.core.data.capellacore.ModellingBlock;
 import org.polarsys.capella.core.data.capellacore.NamedElement;
+import org.polarsys.capella.core.data.capellacore.PropertyValueGroup;
 import org.polarsys.capella.core.data.capellacore.Relationship;
 import org.polarsys.capella.core.data.capellacore.Type;
 import org.polarsys.capella.core.data.cs.AbstractActor;
@@ -2757,6 +2758,74 @@ public class CsServices {
       InterpreterUtil.getInterpreter(container).setVariable(nameVariable, element);
     }
     return element;
+  }
+  
+  /**
+   * Used to show the link between a PV/PVG and its containing PVG
+   */
+  public Collection<CapellaElement> PVinPVG(CapellaElement elem) {
+    Collection<CapellaElement> result = new ArrayList<CapellaElement>();
+    for (EObject content : elem.eContents()) {
+      if (content instanceof AbstractPropertyValue || content instanceof PropertyValueGroup) {
+        result.add((CapellaElement) content);
+      }
+    }
+    return result;
+  }
+
+  /**
+   * Used to show the link between a PV/PVG and and a component (while the PV/PVG may be applied to a component, only the part is represented in the diagram!)
+   */
+  public Collection<CapellaElement> computeValuedElements(CapellaElement elem) {
+    Collection<CapellaElement> result = new ArrayList<CapellaElement>();
+    if (elem instanceof AbstractPropertyValue) {
+      AbstractPropertyValue PV = (AbstractPropertyValue) elem;
+      for (CapellaElement element : PV.getValuedElements()) {
+        result.add(element);
+        if (element instanceof Component) {
+          Component comp = (Component) element;
+          for (Partition part : comp.getRepresentingPartitions()) {
+            result.add(part);
+          }
+        }
+      }
+    } else if (elem instanceof PropertyValueGroup) {
+      PropertyValueGroup PV = (PropertyValueGroup) elem;
+      for (CapellaElement element : PV.getValuedElements()) {
+        result.add(element);
+        if (element instanceof Component) {
+          Component comp = (Component) element;
+          for (Partition part : comp.getRepresentingPartitions()) {
+            result.add(part);
+          }
+        }
+      }
+    }
+    return result;
+  }
+
+  /**
+   * Used to show the applied PV/PVG (while the PV/PVG may be applied to a component, only the part is represented in
+   * the diagram!)
+   */
+  public Collection<CapellaElement> computeAppliedPV(CapellaElement elem) {
+    Collection<CapellaElement> result = new ArrayList<CapellaElement>();
+    result.addAll(elem.getAppliedPropertyValueGroups());
+    result.addAll(elem.getAppliedPropertyValues());
+    // if we have a part, we also add the PV and PVG applied to the type
+    if (elem instanceof Part) {
+      Part part = (Part) elem;
+      result.addAll(part.getType().getAppliedPropertyValueGroups());
+      result.addAll(part.getType().getAppliedPropertyValues());
+    }
+    return result;
+  }
+
+  /**
+   * Return the label to be displayed for PV / PVG in diagrams
+   */
+  public String computePVLabel(EObject PV) {
+    return EObjectLabelProviderHelper.getText(PV);
   }
 
   /**

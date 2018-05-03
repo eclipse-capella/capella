@@ -363,7 +363,9 @@
         </create>
       </intersection>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_2:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Component%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer']" name="Logical Component Breakdown" titleExpression="aql:'[LCBD] ' + self.name" domainClass="LogicalComponent">
+    <ownedRepresentations xsi:type="description_2:DiagramDescription" name="Logical Component Breakdown" titleExpression="aql:'[LCBD] ' + self.name" domainClass="LogicalComponent">
+      <dropDescriptions href="#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Component%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer']"/>
+      <dropDescriptions href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer']"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaModeller.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.activity.gen/model/Activity.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.behavior.gen/model/Behavior.ecore#/"/>
@@ -387,6 +389,12 @@
       <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
       <filters xsi:type="filter:CompositeFilterDescription" name="Hide root container">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Component%20Breakdown']/@defaultLayer/@nodeMappings[name='LCB_LogicalComponent']" viewConditionExpression="aql:self.target != self.getParentDiagram().target"/>
+      </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="Hide Property Values">
+        <filters xsi:type="filter:MappingFilter">
+          <mappings xsi:type="description_2:NodeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_PV']"/>
+          <mappings xsi:type="description_2:ContainerMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_PVG']"/>
+        </filters>
       </filters>
       <layout xsi:type="description_2:OrderedTreeLayout" childrenExpression="aql:self.ownedFeatures->filter(cs::Part).abstractType" nodeMapping="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Component%20Breakdown']/@defaultLayer/@nodeMappings[name='LCB_LogicalComponent']"/>
       <defaultLayer name="default">
@@ -438,6 +446,10 @@
         </edgeMappings>
         <reusedMappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_ContrainedElements']"/>
         <reusedMappings xsi:type="description_2:NodeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']"/>
+        <reusedMappings xsi:type="description_2:NodeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_PV']"/>
+        <reusedMappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_PVconnector']"/>
+        <reusedMappings xsi:type="description_2:ContainerMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_PVG']"/>
+        <reusedMappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_PVGconnector']"/>
         <toolSections name="Components">
           <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Logical Component in the target Logical Component" name="Logical Component" forceRefresh="true" elementsToSelect="aql:self.selectOnlyCreatedView()" inverseSelectionOrder="true" nodeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Component%20Breakdown']/@defaultLayer/@nodeMappings[name='LCB_LogicalComponent']" extraMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Component%20Breakdown']/@defaultLayer/@nodeMappings[name='LCB_LogicalComponent']">
             <variable name="container"/>
@@ -515,75 +527,6 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.sourceNode.target.dndABDComponent(elementView.sourceNode.target.eContainer(),containerView.target)"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ToolGroup" name="Constraints">
-            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new Constraint." name="Constraint" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Constraint.gif">
-              <nodeMappings href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']"/>
-              <variable name="container"/>
-              <viewVariable name="containerView"/>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container">
-                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:containerView->filter(diagram::DDiagram)->size() = 1">
-                    <subModelOperations xsi:type="tool:CreateInstance" typeName="Constraint" referenceName="ownedConstraints">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
-                    </subModelOperations>
-                  </subModelOperations>
-                </firstModelOperations>
-              </initialOperation>
-            </tools>
-            <tools xsi:type="tool_1:EdgeCreationDescription" documentation="Allocate a Source Constraint to an available Target Capella Element." name="ConstraintElement" precondition="aql:not (preSource.constrainedElements->includes(preTarget))" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ClassCarries.gif">
-              <edgeMappings href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_ContrainedElements']"/>
-              <sourceVariable name="source"/>
-              <targetVariable name="target"/>
-              <sourceViewVariable name="sourceView"/>
-              <targetViewVariable name="targetView"/>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool:If" conditionExpression="aql:source->filter(capellacore::Constraint)->size() = 1">
-                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:source.constrainedElements->size() = 0">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:source">
-                      <subModelOperations xsi:type="tool:SetValue" featureName="constrainedElements" valueExpression="aql:target"/>
-                      <subModelOperations xsi:type="tool:MoveElement" newContainerExpression="aql:target" featureName="ownedConstraints"/>
-                    </subModelOperations>
-                  </subModelOperations>
-                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:source.constrainedElements->size() != 0">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:source">
-                      <subModelOperations xsi:type="tool:SetValue" featureName="constrainedElements" valueExpression="aql:target"/>
-                    </subModelOperations>
-                  </subModelOperations>
-                </firstModelOperations>
-              </initialOperation>
-            </tools>
-            <tools xsi:type="tool:ToolDescription" documentation="Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model." name="Show/Hide Constraints" label="Constraints" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
-              <element name="element"/>
-              <elementView name="elementView">
-                <subVariables xsi:type="tool:AcceleoVariable" name="constraintsInDiagram" computationExpression="aql:self.void2Null(self.getExistingConstraintsFromDiagram(elementView.getDiagramContainer()))"/>
-                <subVariables xsi:type="tool:AcceleoVariable" name="diagram" computationExpression="aql:elementView.eContainerOrSelf(diagram::DDiagram)"/>
-              </elementView>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView">
-                  <subModelOperations xsi:type="tool:ExternalJavaAction" name="selectedConstraints" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectLinksFromTransferWizard">
-                    <parameters name="context" value="aql:elementView"/>
-                    <parameters name="scope" value="aql:self.void2Null(self.makeDiff(self.getConstraintToInsertInDiagram(), constraintsInDiagram))"/>
-                    <parameters name="initialSelection" value="aql:constraintsInDiagram"/>
-                    <parameters name="resultVariable" value="selectedConstraints"/>
-                    <parameters name="wizardMessage" value="Select Constraints to show."/>
-                  </subModelOperations>
-                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:(selectedConstraints != 'WIZARD_CANCELED')">
-                    <subModelOperations xsi:type="tool:For" expression="aql:self.void2Null(selectedConstraints)">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createConstraintWithConstaintedElementInDiagram(i,diagram,constraintsInDiagram,true)"/>
-                    </subModelOperations>
-                    <subModelOperations xsi:type="tool:For" expression="aql:constraintsInDiagram">
-                      <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selectedConstraints->includes(i))">
-                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().getNodesAndNodeListElements()->select(getNodesAndNodeListElement | getNodesAndNodeListElement.target = i)->first()">
-                          <subModelOperations xsi:type="tool:DeleteView"/>
-                        </subModelOperations>
-                      </subModelOperations>
-                    </subModelOperations>
-                  </subModelOperations>
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().forceRefresh()"/>
-                </firstModelOperations>
-              </initialOperation>
-            </tools>
-          </ownedTools>
           <ownedTools xsi:type="tool_1:ContainerDropDescription" name="D&amp;D Constraints From Project Explorer" precondition="aql:element.oclIsKindOf(capellacore::Constraint) and element.canBeDropped(newViewContainer)" forceRefresh="true" dragSource="PROJECT_EXPLORER">
             <mappings xsi:type="description_2:NodeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']"/>
             <oldContainer name="oldSemanticContainer"/>
@@ -642,9 +585,82 @@
             <representationNameVariable name="diagramName"/>
           </ownedTools>
         </toolSections>
+        <toolSections name="Common">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new Constraint." name="Constraint" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Constraint.gif">
+            <nodeMappings href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']"/>
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container">
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:containerView->filter(diagram::DDiagram)->size() = 1">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="Constraint" referenceName="ownedConstraints">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Allocate a Source Constraint to an available Target Capella Element." name="ConstraintElement" precondition="aql:not (preSource.constrainedElements->includes(preTarget))" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ClassCarries.gif">
+            <edgeMappings href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_ContrainedElements']"/>
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:If" conditionExpression="aql:source->filter(capellacore::Constraint)->size() = 1">
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:source.constrainedElements->size() = 0">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:source">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="constrainedElements" valueExpression="aql:target"/>
+                    <subModelOperations xsi:type="tool:MoveElement" newContainerExpression="aql:target" featureName="ownedConstraints"/>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:source.constrainedElements->size() != 0">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:source">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="constrainedElements" valueExpression="aql:target"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ToolDescription" documentation="Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model." name="Show/Hide Constraints" label="Constraints" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+            <element name="element"/>
+            <elementView name="elementView">
+              <subVariables xsi:type="tool:AcceleoVariable" name="constraintsInDiagram" computationExpression="aql:self.void2Null(self.getExistingConstraintsFromDiagram(elementView.getDiagramContainer()))"/>
+              <subVariables xsi:type="tool:AcceleoVariable" name="diagram" computationExpression="aql:elementView.eContainerOrSelf(diagram::DDiagram)"/>
+            </elementView>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView">
+                <subModelOperations xsi:type="tool:ExternalJavaAction" name="selectedConstraints" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectLinksFromTransferWizard">
+                  <parameters name="context" value="aql:elementView"/>
+                  <parameters name="scope" value="aql:self.void2Null(self.makeDiff(self.getConstraintToInsertInDiagram(), constraintsInDiagram))"/>
+                  <parameters name="initialSelection" value="aql:constraintsInDiagram"/>
+                  <parameters name="resultVariable" value="selectedConstraints"/>
+                  <parameters name="wizardMessage" value="Select Constraints to show."/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:(selectedConstraints != 'WIZARD_CANCELED')">
+                  <subModelOperations xsi:type="tool:For" expression="aql:self.void2Null(selectedConstraints)">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createConstraintWithConstaintedElementInDiagram(i,diagram,constraintsInDiagram,true)"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:For" expression="aql:constraintsInDiagram">
+                    <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selectedConstraints->includes(i))">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().getNodesAndNodeListElements()->select(getNodesAndNodeListElement | getNodesAndNodeListElement.target = i)->first()">
+                        <subModelOperations xsi:type="tool:DeleteView"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().forceRefresh()"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <reusedTools xsi:type="tool_1:ToolGroup" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV']"/>
+          <reusedTools xsi:type="tool_1:ContainerDropDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer']"/>
+        </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_2:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Function%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer']" name="Logical Function Breakdown" titleExpression="aql:'[LFBD] ' + self.name" domainClass="LogicalFunction">
+    <ownedRepresentations xsi:type="description_2:DiagramDescription" name="Logical Function Breakdown" titleExpression="aql:'[LFBD] ' + self.name" domainClass="LogicalFunction">
+      <dropDescriptions href="#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Function%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer']"/>
+      <dropDescriptions href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer']"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/LogicalArchitecture.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.activity.gen/model/Activity.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.behavior.gen/model/Behavior.ecore#/"/>
@@ -662,6 +678,12 @@
       <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
       <filters xsi:type="filter:CompositeFilterDescription" name="Hide Control Nodes">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='LFB_LogicalFunction']" semanticConditionExpression="aql:not (self.isControlNode())"/>
+      </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="Hide Property Values">
+        <filters xsi:type="filter:MappingFilter">
+          <mappings xsi:type="description_2:NodeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_PV']"/>
+          <mappings xsi:type="description_2:ContainerMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_PVG']"/>
+        </filters>
       </filters>
       <layout xsi:type="description_2:OrderedTreeLayout" childrenExpression="feature:subFunctions" nodeMapping="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='LFB_LogicalFunction']"/>
       <defaultLayer name="default">
@@ -711,6 +733,10 @@
         </edgeMappings>
         <reusedMappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_ContrainedElements']"/>
         <reusedMappings xsi:type="description_2:NodeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']"/>
+        <reusedMappings xsi:type="description_2:NodeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_PV']"/>
+        <reusedMappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_PVconnector']"/>
+        <reusedMappings xsi:type="description_2:ContainerMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_PVG']"/>
+        <reusedMappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_PVGconnector']"/>
         <toolSections name="Functions">
           <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Logical Function in the target Function" name="Logical Function" precondition="aql:containerView.isValidCreationDFFunction()" forceRefresh="true" elementsToSelect="aql:self.selectOnlyCreatedView()" nodeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='LFB_LogicalFunction']" extraMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Function%20Breakdown']/@defaultLayer/@nodeMappings[name='LFB_LogicalFunction']">
             <variable name="container">
@@ -856,75 +882,6 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.sourceNode.target.dndDFBAbstractFunction(elementView.sourceNode.target.eContainer(),containerView.target)"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ToolGroup" documentation="Insert/Remove Constraints" name="Constraints">
-            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new Constraint." name="Constraint" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Constraint.gif">
-              <nodeMappings href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']"/>
-              <variable name="container"/>
-              <viewVariable name="containerView"/>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container">
-                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:containerView->filter(diagram::DDiagram)->size() = 1">
-                    <subModelOperations xsi:type="tool:CreateInstance" typeName="Constraint" referenceName="ownedConstraints">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
-                    </subModelOperations>
-                  </subModelOperations>
-                </firstModelOperations>
-              </initialOperation>
-            </tools>
-            <tools xsi:type="tool_1:EdgeCreationDescription" documentation="Allocate a Source Constraint to an available Target Capella Element." name="ConstraintElement" precondition="aql:not (preSource.constrainedElements->includes(preTarget))" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ClassCarries.gif">
-              <edgeMappings href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_ContrainedElements']"/>
-              <sourceVariable name="source"/>
-              <targetVariable name="target"/>
-              <sourceViewVariable name="sourceView"/>
-              <targetViewVariable name="targetView"/>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool:If" conditionExpression="aql:source->filter(capellacore::Constraint)->size() = 1">
-                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:source.constrainedElements->size() = 0">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:source">
-                      <subModelOperations xsi:type="tool:SetValue" featureName="constrainedElements" valueExpression="aql:target"/>
-                      <subModelOperations xsi:type="tool:MoveElement" newContainerExpression="aql:target" featureName="ownedConstraints"/>
-                    </subModelOperations>
-                  </subModelOperations>
-                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:source.constrainedElements->size() != 0">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:source">
-                      <subModelOperations xsi:type="tool:SetValue" featureName="constrainedElements" valueExpression="aql:target"/>
-                    </subModelOperations>
-                  </subModelOperations>
-                </firstModelOperations>
-              </initialOperation>
-            </tools>
-            <tools xsi:type="tool:ToolDescription" documentation="Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model." name="Show/Hide Constraints" label="Constraints" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
-              <element name="element"/>
-              <elementView name="elementView">
-                <subVariables xsi:type="tool:AcceleoVariable" name="constraintsInDiagram" computationExpression="aql:self.void2Null(self.getExistingConstraintsFromDiagram(elementView.getDiagramContainer()))"/>
-                <subVariables xsi:type="tool:AcceleoVariable" name="diagram" computationExpression="aql:elementView.eContainerOrSelf(diagram::DDiagram)"/>
-              </elementView>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView">
-                  <subModelOperations xsi:type="tool:ExternalJavaAction" name="selectedConstraints" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectLinksFromTransferWizard">
-                    <parameters name="context" value="aql:elementView"/>
-                    <parameters name="scope" value="aql:self.void2Null(self.makeDiff(self.getConstraintToInsertInDiagram(), constraintsInDiagram))"/>
-                    <parameters name="initialSelection" value="aql:constraintsInDiagram"/>
-                    <parameters name="resultVariable" value="selectedConstraints"/>
-                    <parameters name="wizardMessage" value="Select Constraints to show."/>
-                  </subModelOperations>
-                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:(selectedConstraints != 'WIZARD_CANCELED')">
-                    <subModelOperations xsi:type="tool:For" expression="aql:self.void2Null(selectedConstraints)">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createConstraintWithConstaintedElementInDiagram(i,diagram,constraintsInDiagram,true)"/>
-                    </subModelOperations>
-                    <subModelOperations xsi:type="tool:For" expression="aql:constraintsInDiagram">
-                      <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selectedConstraints->includes(i))">
-                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().getNodesAndNodeListElements()->select(getNodesAndNodeListElement | getNodesAndNodeListElement.target = i)->first()">
-                          <subModelOperations xsi:type="tool:DeleteView"/>
-                        </subModelOperations>
-                      </subModelOperations>
-                    </subModelOperations>
-                  </subModelOperations>
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().forceRefresh()"/>
-                </firstModelOperations>
-              </initialOperation>
-            </tools>
-          </ownedTools>
           <ownedTools xsi:type="tool_1:ContainerDropDescription" name="D&amp;D Constraints From Project Explorer" precondition="aql:element.oclIsKindOf(capellacore::Constraint) and element.canBeDropped(newViewContainer)" forceRefresh="true" dragSource="PROJECT_EXPLORER">
             <mappings xsi:type="description_2:NodeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']"/>
             <oldContainer name="oldSemanticContainer"/>
@@ -936,9 +893,84 @@
             </initialOperation>
           </ownedTools>
         </toolSections>
+        <toolSections name="Common">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new Constraint." name="Constraint" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Constraint.gif">
+            <nodeMappings href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']"/>
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container">
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:containerView->filter(diagram::DDiagram)->size() = 1">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="Constraint" referenceName="ownedConstraints">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Allocate a Source Constraint to an available Target Capella Element." name="ConstraintElement" precondition="aql:not (preSource.constrainedElements->includes(preTarget))" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ClassCarries.gif">
+            <edgeMappings href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_ContrainedElements']"/>
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:If" conditionExpression="aql:source->filter(capellacore::Constraint)->size() = 1">
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:source.constrainedElements->size() = 0">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:source">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="constrainedElements" valueExpression="aql:target"/>
+                    <subModelOperations xsi:type="tool:MoveElement" newContainerExpression="aql:target" featureName="ownedConstraints"/>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:source.constrainedElements->size() != 0">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:source">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="constrainedElements" valueExpression="aql:target"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ToolDescription" documentation="Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model." name="Show/Hide Constraints" label="Constraints" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+            <element name="element"/>
+            <elementView name="elementView">
+              <subVariables xsi:type="tool:AcceleoVariable" name="constraintsInDiagram" computationExpression="aql:self.void2Null(self.getExistingConstraintsFromDiagram(elementView.getDiagramContainer()))"/>
+              <subVariables xsi:type="tool:AcceleoVariable" name="diagram" computationExpression="aql:elementView.eContainerOrSelf(diagram::DDiagram)"/>
+            </elementView>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView">
+                <subModelOperations xsi:type="tool:ExternalJavaAction" name="selectedConstraints" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectLinksFromTransferWizard">
+                  <parameters name="context" value="aql:elementView"/>
+                  <parameters name="scope" value="aql:self.void2Null(self.makeDiff(self.getConstraintToInsertInDiagram(), constraintsInDiagram))"/>
+                  <parameters name="initialSelection" value="aql:constraintsInDiagram"/>
+                  <parameters name="resultVariable" value="selectedConstraints"/>
+                  <parameters name="wizardMessage" value="Select Constraints to show."/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:(selectedConstraints != 'WIZARD_CANCELED')">
+                  <subModelOperations xsi:type="tool:For" expression="aql:self.void2Null(selectedConstraints)">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createConstraintWithConstaintedElementInDiagram(i,diagram,constraintsInDiagram,true)"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:For" expression="aql:constraintsInDiagram">
+                    <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selectedConstraints->includes(i))">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().getNodesAndNodeListElements()->select(getNodesAndNodeListElement | getNodesAndNodeListElement.target = i)->first()">
+                        <subModelOperations xsi:type="tool:DeleteView"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().forceRefresh()"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <reusedTools xsi:type="tool_1:ToolGroup" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV']"/>
+          <reusedTools xsi:type="tool_1:ContainerDropDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer']"/>
+        </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_2:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='DnD%20DF%20AbstractFunction'] //@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Function%20From%20Project%20Explorer'] //@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer']" name="Logical Data Flow Blank" titleExpression="aql:'[LDFB] ' + self.name" domainClass="AbstractFunctionalChainContainer" preconditionExpression="aql:self.oclIsKindOf(la::LogicalFunction) or (self.oclIsKindOf(la::CapabilityRealization) and self.eContainerOrSelf(cs::BlockArchitecture).oclIsKindOf(la::LogicalArchitecture))">
+    <ownedRepresentations xsi:type="description_2:DiagramDescription" name="Logical Data Flow Blank" titleExpression="aql:'[LDFB] ' + self.name" domainClass="AbstractFunctionalChainContainer" preconditionExpression="aql:self.oclIsKindOf(la::LogicalFunction) or (self.oclIsKindOf(la::CapabilityRealization) and self.eContainerOrSelf(cs::BlockArchitecture).oclIsKindOf(la::LogicalArchitecture))">
+      <dropDescriptions href="#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='DnD%20DF%20AbstractFunction']"/>
+      <dropDescriptions href="#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Function%20From%20Project%20Explorer']"/>
+      <dropDescriptions href="#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer']"/>
+      <dropDescriptions href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer']"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.activity.gen/model/Activity.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.behavior.gen/model/Behavior.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CompositeStructure.ecore#/"/>
@@ -994,6 +1026,12 @@
       <filters xsi:type="filter:CompositeFilterDescription" name="Hide Functional Exchanges names">
         <filters xsi:type="filter:MappingFilter">
           <mappings xsi:type="description_2:NodeMapping" href="context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='CA%20Dummy']"/>
+        </filters>
+      </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="Hide Property Values">
+        <filters xsi:type="filter:MappingFilter">
+          <mappings xsi:type="description_2:NodeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_PV']"/>
+          <mappings xsi:type="description_2:ContainerMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_PVG']"/>
         </filters>
       </filters>
       <layout xsi:type="description_2:CompositeLayout" direction="LeftToRight"/>
@@ -1134,6 +1172,10 @@
         </containerMappings>
         <reusedMappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_ContrainedElements']"/>
         <reusedMappings xsi:type="description_2:NodeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']"/>
+        <reusedMappings xsi:type="description_2:NodeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_PV']"/>
+        <reusedMappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_PVconnector']"/>
+        <reusedMappings xsi:type="description_2:ContainerMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_PVG']"/>
+        <reusedMappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_PVGconnector']"/>
         <toolSections name="Functions">
           <ownedTools xsi:type="tool_1:ToolGroup" name="FunctionCreation">
             <tools xsi:type="tool_1:ContainerCreationDescription" documentation="Creates a new Logical Function" name="Logical Function" precondition="aql:containerView.isValidCreationDFFunction() and (container.oclIsKindOf(la::CapabilityRealization) or container.allocationBlocks->filter(cs::AbstractActor)->size() = 0)" containerMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='LDFB_Function']">
@@ -1545,75 +1587,6 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ToolGroup" documentation="Insert/Remove Constraints" name="Constraints">
-            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new Constraint." name="Constraint" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Constraint.gif">
-              <nodeMappings href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']"/>
-              <variable name="container"/>
-              <viewVariable name="containerView"/>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container">
-                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:containerView->filter(diagram::DDiagram)->size() = 1">
-                    <subModelOperations xsi:type="tool:CreateInstance" typeName="Constraint" referenceName="ownedConstraints">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
-                    </subModelOperations>
-                  </subModelOperations>
-                </firstModelOperations>
-              </initialOperation>
-            </tools>
-            <tools xsi:type="tool_1:EdgeCreationDescription" documentation="Allocate a Source Constraint to an available Target Capella Element." name="ConstraintElement" precondition="aql:not (preSource.constrainedElements->includes(preTarget))" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ClassCarries.gif">
-              <edgeMappings href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_ContrainedElements']"/>
-              <sourceVariable name="source"/>
-              <targetVariable name="target"/>
-              <sourceViewVariable name="sourceView"/>
-              <targetViewVariable name="targetView"/>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool:If" conditionExpression="aql:source->filter(capellacore::Constraint)->size() = 1">
-                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:source.constrainedElements->size() = 0">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:source">
-                      <subModelOperations xsi:type="tool:SetValue" featureName="constrainedElements" valueExpression="aql:target"/>
-                      <subModelOperations xsi:type="tool:MoveElement" newContainerExpression="aql:target" featureName="ownedConstraints"/>
-                    </subModelOperations>
-                  </subModelOperations>
-                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:source.constrainedElements->size() != 0">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:source">
-                      <subModelOperations xsi:type="tool:SetValue" featureName="constrainedElements" valueExpression="aql:target"/>
-                    </subModelOperations>
-                  </subModelOperations>
-                </firstModelOperations>
-              </initialOperation>
-            </tools>
-            <tools xsi:type="tool:ToolDescription" documentation="Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model." name="Show/Hide Constraints" label="Constraints" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
-              <element name="element"/>
-              <elementView name="elementView">
-                <subVariables xsi:type="tool:AcceleoVariable" name="constraintsInDiagram" computationExpression="aql:self.void2Null(self.getExistingConstraintsFromDiagram(elementView.getDiagramContainer()))"/>
-                <subVariables xsi:type="tool:AcceleoVariable" name="diagram" computationExpression="aql:elementView.eContainerOrSelf(diagram::DDiagram)"/>
-              </elementView>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView">
-                  <subModelOperations xsi:type="tool:ExternalJavaAction" name="selectedConstraints" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectLinksFromTransferWizard">
-                    <parameters name="context" value="aql:elementView"/>
-                    <parameters name="scope" value="aql:self.void2Null(self.makeDiff(self.getConstraintToInsertInDiagram(), constraintsInDiagram))"/>
-                    <parameters name="initialSelection" value="aql:constraintsInDiagram"/>
-                    <parameters name="resultVariable" value="selectedConstraints"/>
-                    <parameters name="wizardMessage" value="Select Constraints to show."/>
-                  </subModelOperations>
-                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:(selectedConstraints != 'WIZARD_CANCELED')">
-                    <subModelOperations xsi:type="tool:For" expression="aql:self.void2Null(selectedConstraints)">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createConstraintWithConstaintedElementInDiagram(i,diagram,constraintsInDiagram,true)"/>
-                    </subModelOperations>
-                    <subModelOperations xsi:type="tool:For" expression="aql:constraintsInDiagram">
-                      <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selectedConstraints->includes(i))">
-                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().getNodesAndNodeListElements()->select(getNodesAndNodeListElement | getNodesAndNodeListElement.target = i)->first()">
-                          <subModelOperations xsi:type="tool:DeleteView"/>
-                        </subModelOperations>
-                      </subModelOperations>
-                    </subModelOperations>
-                  </subModelOperations>
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().forceRefresh()"/>
-                </firstModelOperations>
-              </initialOperation>
-            </tools>
-          </ownedTools>
           <ownedTools xsi:type="tool_1:ContainerDropDescription" name="D&amp;D Function From Project Explorer" precondition="aql:element.oclIsKindOf(fa::AbstractFunction) and element.canBeDropped(newViewContainer)" forceRefresh="true" mappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='LDFB_Function']" dragSource="PROJECT_EXPLORER">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
@@ -1727,9 +1700,85 @@
           </ownedTools>
           <reusedTools xsi:type="tool:ToolDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@additionalLayers[name='Communication%20Model']/@toolSections.1/@ownedTools[name='DiagramInitialization']"/>
         </toolSections>
+        <toolSections name="Common">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new Constraint." name="Constraint" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Constraint.gif">
+            <nodeMappings href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']"/>
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container">
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:containerView->filter(diagram::DDiagram)->size() = 1">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="Constraint" referenceName="ownedConstraints">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Allocate a Source Constraint to an available Target Capella Element." name="ConstraintElement" precondition="aql:not (preSource.constrainedElements->includes(preTarget))" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ClassCarries.gif">
+            <edgeMappings href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_ContrainedElements']"/>
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:If" conditionExpression="aql:source->filter(capellacore::Constraint)->size() = 1">
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:source.constrainedElements->size() = 0">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:source">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="constrainedElements" valueExpression="aql:target"/>
+                    <subModelOperations xsi:type="tool:MoveElement" newContainerExpression="aql:target" featureName="ownedConstraints"/>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:source.constrainedElements->size() != 0">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:source">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="constrainedElements" valueExpression="aql:target"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ToolDescription" documentation="Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model." name="Show/Hide Constraints" label="Constraints" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+            <element name="element"/>
+            <elementView name="elementView">
+              <subVariables xsi:type="tool:AcceleoVariable" name="constraintsInDiagram" computationExpression="aql:self.void2Null(self.getExistingConstraintsFromDiagram(elementView.getDiagramContainer()))"/>
+              <subVariables xsi:type="tool:AcceleoVariable" name="diagram" computationExpression="aql:elementView.eContainerOrSelf(diagram::DDiagram)"/>
+            </elementView>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView">
+                <subModelOperations xsi:type="tool:ExternalJavaAction" name="selectedConstraints" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectLinksFromTransferWizard">
+                  <parameters name="context" value="aql:elementView"/>
+                  <parameters name="scope" value="aql:self.void2Null(self.makeDiff(self.getConstraintToInsertInDiagram(), constraintsInDiagram))"/>
+                  <parameters name="initialSelection" value="aql:constraintsInDiagram"/>
+                  <parameters name="resultVariable" value="selectedConstraints"/>
+                  <parameters name="wizardMessage" value="Select Constraints to show."/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:(selectedConstraints != 'WIZARD_CANCELED')">
+                  <subModelOperations xsi:type="tool:For" expression="aql:self.void2Null(selectedConstraints)">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createConstraintWithConstaintedElementInDiagram(i,diagram,constraintsInDiagram,true)"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:For" expression="aql:constraintsInDiagram">
+                    <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selectedConstraints->includes(i))">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().getNodesAndNodeListElements()->select(getNodesAndNodeListElement | getNodesAndNodeListElement.target = i)->first()">
+                        <subModelOperations xsi:type="tool:DeleteView"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().forceRefresh()"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <reusedTools xsi:type="tool_1:ToolGroup" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV']"/>
+          <reusedTools xsi:type="tool_1:ContainerDropDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer']"/>
+        </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_2:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='DnD%20AB%20Component'] //@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer'] //@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Actors%20From%20Project%20Explorer'] //@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Components%20From%20Project%20Explorer']" name="Logical Architecture Blank" titleExpression="aql:'[LAB] ' + self.name" domainClass="NamedElement" preconditionExpression="aql:self.oclIsKindOf(la::LogicalComponent) or (self.oclIsKindOf(cs::Part) and self.getComponentType().oclIsKindOf(la::LogicalComponent))" defaultConcern="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@concerns/@ownedConcernDescriptions.0">
+    <ownedRepresentations xsi:type="description_2:DiagramDescription" name="Logical Architecture Blank" titleExpression="aql:'[LAB] ' + self.name" domainClass="NamedElement" preconditionExpression="aql:self.oclIsKindOf(la::LogicalComponent) or (self.oclIsKindOf(cs::Part) and self.getComponentType().oclIsKindOf(la::LogicalComponent))" defaultConcern="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@concerns/@ownedConcernDescriptions.0">
+      <dropDescriptions href="#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='DnD%20AB%20Component']"/>
+      <dropDescriptions href="#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer']"/>
+      <dropDescriptions href="#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Actors%20From%20Project%20Explorer']"/>
+      <dropDescriptions href="#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Components%20From%20Project%20Explorer']"/>
+      <dropDescriptions href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer']"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaModeller.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/LogicalArchitecture.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/FunctionalAnalysis.ecore#/"/>
@@ -1830,6 +1879,12 @@
       </filters>
       <filters xsi:type="filter:CompositeFilterDescription" name="Hide Computed Physical Links">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='LAB_ComputedPhysicalLink']"/>
+      </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="Hide Property Values">
+        <filters xsi:type="filter:MappingFilter">
+          <mappings xsi:type="description_2:NodeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_PV']"/>
+          <mappings xsi:type="description_2:ContainerMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_PVG']"/>
+        </filters>
       </filters>
       <concerns>
         <ownedConcernDescriptions name="default" filters="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@filters[name='Hide%20Simplified%20Diagram%20Based%20Component%20Exchanges'] //@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@filters[name='Hide%20Simplified%20Oriented%20Grouped%20Component%20Exchanges'] //@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@filters[name='Hide%20Simplified%20Group%20of%20Component%20Exchanges']"/>
@@ -2254,6 +2309,10 @@
         </containerMappings>
         <reusedMappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_ContrainedElements']"/>
         <reusedMappings xsi:type="description_2:NodeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']"/>
+        <reusedMappings xsi:type="description_2:NodeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_PV']"/>
+        <reusedMappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_PVconnector']"/>
+        <reusedMappings xsi:type="description_2:ContainerMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_PVG']"/>
+        <reusedMappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_PVGconnector']"/>
         <toolSections name="Components">
           <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Creates a new Logical Component and a Part typed by this Logical Component. &#xD;&#xA;The Part is created in the Component target of the click." name="Logical Component" precondition="aql:not (containerView.oclIsKindOf(diagram::DDiagram) and containerView.getABTarget().oclIsKindOf(capellacore::ModellingArchitecture))" containerMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']">
             <variable name="container">
@@ -2957,75 +3016,6 @@
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ToolGroup" documentation="Insert/Remove Constraints" name="Constraints">
-            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new Constraint." name="Constraint" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Constraint.gif">
-              <nodeMappings href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']"/>
-              <variable name="container"/>
-              <viewVariable name="containerView"/>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container">
-                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:containerView->filter(diagram::DDiagram)->size() = 1">
-                    <subModelOperations xsi:type="tool:CreateInstance" typeName="Constraint" referenceName="ownedConstraints">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
-                    </subModelOperations>
-                  </subModelOperations>
-                </firstModelOperations>
-              </initialOperation>
-            </tools>
-            <tools xsi:type="tool_1:EdgeCreationDescription" documentation="Allocate a Source Constraint to an available Target Capella Element." name="ConstraintElement" precondition="aql:not (preSource.constrainedElements->includes(preTarget))" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ClassCarries.gif">
-              <edgeMappings href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_ContrainedElements']"/>
-              <sourceVariable name="source"/>
-              <targetVariable name="target"/>
-              <sourceViewVariable name="sourceView"/>
-              <targetViewVariable name="targetView"/>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool:If" conditionExpression="aql:source->filter(capellacore::Constraint)->size() = 1">
-                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:source.constrainedElements->size() = 0">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:source">
-                      <subModelOperations xsi:type="tool:SetValue" featureName="constrainedElements" valueExpression="aql:target"/>
-                      <subModelOperations xsi:type="tool:MoveElement" newContainerExpression="aql:target" featureName="ownedConstraints"/>
-                    </subModelOperations>
-                  </subModelOperations>
-                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:source.constrainedElements->size() != 0">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:source">
-                      <subModelOperations xsi:type="tool:SetValue" featureName="constrainedElements" valueExpression="aql:target"/>
-                    </subModelOperations>
-                  </subModelOperations>
-                </firstModelOperations>
-              </initialOperation>
-            </tools>
-            <tools xsi:type="tool:ToolDescription" documentation="Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model." name="Show/Hide Constraints" label="Constraints" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
-              <element name="element"/>
-              <elementView name="elementView">
-                <subVariables xsi:type="tool:AcceleoVariable" name="constraintsInDiagram" computationExpression="aql:self.void2Null(self.getExistingConstraintsFromDiagram(elementView.getDiagramContainer()))"/>
-                <subVariables xsi:type="tool:AcceleoVariable" name="diagram" computationExpression="aql:elementView.eContainerOrSelf(diagram::DDiagram)"/>
-              </elementView>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView">
-                  <subModelOperations xsi:type="tool:ExternalJavaAction" name="selectedConstraints" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectLinksFromTransferWizard">
-                    <parameters name="context" value="aql:elementView"/>
-                    <parameters name="scope" value="aql:self.void2Null(self.makeDiff(self.getConstraintToInsertInDiagram(), constraintsInDiagram))"/>
-                    <parameters name="initialSelection" value="aql:constraintsInDiagram"/>
-                    <parameters name="resultVariable" value="selectedConstraints"/>
-                    <parameters name="wizardMessage" value="Select Constraints to show."/>
-                  </subModelOperations>
-                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:(selectedConstraints != 'WIZARD_CANCELED')">
-                    <subModelOperations xsi:type="tool:For" expression="aql:self.void2Null(selectedConstraints)">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createConstraintWithConstaintedElementInDiagram(i,diagram,constraintsInDiagram,true)"/>
-                    </subModelOperations>
-                    <subModelOperations xsi:type="tool:For" expression="aql:constraintsInDiagram">
-                      <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selectedConstraints->includes(i))">
-                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().getNodesAndNodeListElements()->select(getNodesAndNodeListElement | getNodesAndNodeListElement.target = i)->first()">
-                          <subModelOperations xsi:type="tool:DeleteView"/>
-                        </subModelOperations>
-                      </subModelOperations>
-                    </subModelOperations>
-                  </subModelOperations>
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().forceRefresh()"/>
-                </firstModelOperations>
-              </initialOperation>
-            </tools>
-          </ownedTools>
           <ownedTools xsi:type="tool_1:ContainerDropDescription" name="D&amp;D Constraints From Project Explorer" precondition="aql:element.oclIsKindOf(capellacore::Constraint) and element.canBeDropped(newViewContainer)" forceRefresh="true" dragSource="PROJECT_EXPLORER">
             <mappings xsi:type="description_2:NodeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']"/>
             <oldContainer name="oldSemanticContainer"/>
@@ -3702,6 +3692,77 @@
           </ownedTools>
           <reusedTools xsi:type="tool:ToolDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@additionalLayers[name='Communication%20Model']/@toolSections.1/@ownedTools[name='DiagramInitialization']"/>
         </toolSections>
+        <toolSections name="Common">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new Constraint." name="Constraint" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Constraint.gif">
+            <nodeMappings href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']"/>
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container">
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:containerView->filter(diagram::DDiagram)->size() = 1">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="Constraint" referenceName="ownedConstraints">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.creationService()"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Allocate a Source Constraint to an available Target Capella Element." name="ConstraintElement" precondition="aql:not (preSource.constrainedElements->includes(preTarget))" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ClassCarries.gif">
+            <edgeMappings href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_ContrainedElements']"/>
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:If" conditionExpression="aql:source->filter(capellacore::Constraint)->size() = 1">
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:source.constrainedElements->size() = 0">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:source">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="constrainedElements" valueExpression="aql:target"/>
+                    <subModelOperations xsi:type="tool:MoveElement" newContainerExpression="aql:target" featureName="ownedConstraints"/>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:source.constrainedElements->size() != 0">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:source">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="constrainedElements" valueExpression="aql:target"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ToolDescription" documentation="Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model." name="Show/Hide Constraints" label="Constraints" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+            <element name="element"/>
+            <elementView name="elementView">
+              <subVariables xsi:type="tool:AcceleoVariable" name="constraintsInDiagram" computationExpression="aql:self.void2Null(self.getExistingConstraintsFromDiagram(elementView.getDiagramContainer()))"/>
+              <subVariables xsi:type="tool:AcceleoVariable" name="diagram" computationExpression="aql:elementView.eContainerOrSelf(diagram::DDiagram)"/>
+            </elementView>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView">
+                <subModelOperations xsi:type="tool:ExternalJavaAction" name="selectedConstraints" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectLinksFromTransferWizard">
+                  <parameters name="context" value="aql:elementView"/>
+                  <parameters name="scope" value="aql:self.void2Null(self.makeDiff(self.getConstraintToInsertInDiagram(), constraintsInDiagram))"/>
+                  <parameters name="initialSelection" value="aql:constraintsInDiagram"/>
+                  <parameters name="resultVariable" value="selectedConstraints"/>
+                  <parameters name="wizardMessage" value="Select Constraints to show."/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:(selectedConstraints != 'WIZARD_CANCELED')">
+                  <subModelOperations xsi:type="tool:For" expression="aql:self.void2Null(selectedConstraints)">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createConstraintWithConstaintedElementInDiagram(i,diagram,constraintsInDiagram,true)"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:For" expression="aql:constraintsInDiagram">
+                    <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selectedConstraints->includes(i))">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().getNodesAndNodeListElements()->select(getNodesAndNodeListElement | getNodesAndNodeListElement.target = i)->first()">
+                        <subModelOperations xsi:type="tool:DeleteView"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().forceRefresh()"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <reusedTools xsi:type="tool_1:ToolGroup" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV']"/>
+          <reusedTools xsi:type="tool_1:ContainerDropDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer']"/>
+        </toolSections>
         <customization>
           <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="aql:not (self.isAllocatedInThisComponent(container.getComponentType()))">
             <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@subNodeMappings[name='LAB%20Logical%20Function']/@conditionnalStyles.5/@style //@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@subNodeMappings[name='LAB%20Logical%20Function']/@style" attributeName="borderLineStyle" value="dash"/>
@@ -3711,6 +3772,7 @@
       <reusedTools xsi:type="tool:ToolDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@additionalLayers[name='Communication%20Model']/@toolSections.1/@ownedTools[name='DiagramInitialization']"/>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_2:DiagramDescription" name="Capability Realization Refinement" titleExpression="aql:'[CRR] ' + self.name" domainClass="CapabilityRealization">
+      <dropDescriptions href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer']"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaModeller.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.activity.gen/model/Activity.ecore#/"/>
       <metamodel href="platform:/plugin/org.polarsys.capella.common.data.behavior.gen/model/Behavior.ecore#/"/>
@@ -3734,6 +3796,12 @@
       <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
       <filters xsi:type="filter:CompositeFilterDescription" name="Hide Actors">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Capability%20Realization%20Refinement']/@defaultLayer/@nodeMappings[name='CRI_Actors']"/>
+      </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="Hide Property Values">
+        <filters xsi:type="filter:MappingFilter">
+          <mappings xsi:type="description_2:NodeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_PV']"/>
+          <mappings xsi:type="description_2:ContainerMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_PVG']"/>
+        </filters>
       </filters>
       <defaultLayer name="default">
         <nodeMappings name="CRI_CapabilityRealization" labelDirectEdit="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Capability%20Realization%20Refinement']/@defaultLayer/@toolSections.0/@ownedTools[name='LA%20CRR%20Direct%20Edit%20Label']" semanticCandidatesExpression="aql:self" domainClass="CapabilityRealization">
@@ -3915,6 +3983,10 @@
         </containerMappings>
         <reusedMappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_ContrainedElements']"/>
         <reusedMappings xsi:type="description_2:NodeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']"/>
+        <reusedMappings xsi:type="description_2:NodeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_PV']"/>
+        <reusedMappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_PVconnector']"/>
+        <reusedMappings xsi:type="description_2:ContainerMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_PVG']"/>
+        <reusedMappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_PVGconnector']"/>
         <toolSections name="Tools">
           <ownedTools xsi:type="tool_1:DirectEditLabel" name="LA CRR Direct Edit Label">
             <mask mask="{0}"/>
@@ -3922,6 +3994,10 @@
               <firstModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:arg0"/>
             </initialOperation>
           </ownedTools>
+        </toolSections>
+        <toolSections name="Common">
+          <reusedTools xsi:type="tool_1:ToolGroup" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV']"/>
+          <reusedTools xsi:type="tool_1:ContainerDropDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer']"/>
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>

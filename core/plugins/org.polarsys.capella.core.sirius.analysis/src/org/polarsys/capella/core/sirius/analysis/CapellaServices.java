@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -440,7 +440,9 @@ public class CapellaServices {
       }
     }
   }
-
+  
+ 
+  
   public EObject forceRefresh(DDiagram diagram) {
     boolean automaticRefresh = Platform.getPreferencesService().getBoolean(SiriusPlugin.ID, SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), false, null);
     if (null != diagram && !automaticRefresh) {
