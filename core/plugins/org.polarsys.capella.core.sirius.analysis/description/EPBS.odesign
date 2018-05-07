@@ -489,7 +489,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:DirectEditLabel" name="rename CI">
+          <ownedTools xsi:type="tool_1:DirectEditLabel" name="rename CI" inputLabelExpression="feature:name">
             <mask mask="{0}"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:arg0"/>

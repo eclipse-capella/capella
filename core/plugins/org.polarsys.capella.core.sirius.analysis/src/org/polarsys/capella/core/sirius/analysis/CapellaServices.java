@@ -2754,4 +2754,9 @@ public class CapellaServices {
     }
     return null;
   }
+
+  public String capellaLabelService(EObject e, DDiagramElement view, DDiagram diagram) {
+    return EObjectLabelProviderHelper.getText(e);
+  }
+
 }

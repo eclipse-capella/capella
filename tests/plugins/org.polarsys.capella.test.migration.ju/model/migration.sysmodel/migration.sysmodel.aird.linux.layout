@@ -5990,7 +5990,7 @@
         <appliedStyles>foregroundColor: 150,177,218</appliedStyles>
         <appliedStyles>borderColor: 74,74,151</appliedStyles>
         <bounds x="19" y="30" width="150" height="84"/>
-        <ownedLayouts xsi:type="layout:NodeLayout" id="4ee34e88-afe1-490b-9a1b-6817b3a3b72e" name="" actualMapping="PAB_Port">
+        <ownedLayouts xsi:type="layout:NodeLayout" id="4ee34e88-afe1-490b-9a1b-6817b3a3b72e" name="[Component Port]" actualMapping="PAB_Port">
           <appliedFilters>HideLabelFilter</appliedFilters>
           <appliedStyles>borderColor: 0,0,0</appliedStyles>
           <bounds x="36" y="60" width="10" height="10"/>
@@ -9694,27 +9694,6 @@
       <appliedStyles>edgeRouting: straight</appliedStyles>
       <bendpoints x="336" y="172"/>
       <bendpoints x="427" y="248"/>
-    </ownedLayouts>
-    <ownedLayouts xsi:type="layout:EdgeLayout" id="cd4cb4c7-7554-4a28-807b-11c780333812" name="" actualMapping="PAB_InternPhysicalPathLink" source="//@ownedLayouts.50/@ownedLayouts.2/@ownedLayouts.0" target="//@ownedLayouts.50/@ownedLayouts.2/@ownedLayouts.1">
-      <appliedStyles>strokeColor: 255,165,0</appliedStyles>
-      <appliedStyles>centeredColor: 0,0,0</appliedStyles>
-      <appliedStyles>edgeRouting: straight</appliedStyles>
-      <bendpoints x="148" y="34"/>
-      <bendpoints x="223" y="34"/>
-    </ownedLayouts>
-    <ownedLayouts xsi:type="layout:EdgeLayout" id="cd4cb4c7-7554-4a28-807b-11c780333812" name="" actualMapping="PAB_InternPhysicalPathLink" source="//@ownedLayouts.50/@ownedLayouts.2/@ownedLayouts.0" target="//@ownedLayouts.50/@ownedLayouts.2/@ownedLayouts.2">
-      <appliedStyles>strokeColor: 255,165,0</appliedStyles>
-      <appliedStyles>centeredColor: 0,0,0</appliedStyles>
-      <appliedStyles>edgeRouting: straight</appliedStyles>
-      <bendpoints x="148" y="36"/>
-      <bendpoints x="209" y="61"/>
-    </ownedLayouts>
-    <ownedLayouts xsi:type="layout:EdgeLayout" id="cd4cb4c7-7554-4a28-807b-11c780333812" name="" actualMapping="PAB_InternPhysicalPathLink" source="//@ownedLayouts.50/@ownedLayouts.2/@ownedLayouts.1" target="//@ownedLayouts.50/@ownedLayouts.2/@ownedLayouts.2">
-      <appliedStyles>strokeColor: 255,165,0</appliedStyles>
-      <appliedStyles>centeredColor: 0,0,0</appliedStyles>
-      <appliedStyles>edgeRouting: straight</appliedStyles>
-      <bendpoints x="225" y="39"/>
-      <bendpoints x="216" y="58"/>
     </ownedLayouts>
     <ownedLayouts xsi:type="layout:EdgeLayout" id="cd4cb4c7-7554-4a28-807b-11c780333812" name="" actualMapping="PAB_InternPhysicalPathLink" source="//@ownedLayouts.50/@ownedLayouts.1/@ownedLayouts.0" target="//@ownedLayouts.50/@ownedLayouts.1/@ownedLayouts.1">
       <appliedStyles>strokeColor: 255,165,0</appliedStyles>
@@ -15641,11 +15620,11 @@
       <appliedStyles>backgroundColor: 255,255,255</appliedStyles>
       <appliedStyles>foregroundColor: 255,255,255</appliedStyles>
       <appliedStyles>borderColor: 0,0,0</appliedStyles>
-      <bounds x="0" y="0" width="372" height="47"/>
-      <ownedLayouts xsi:type="layout:NodeLayout" id="33186f43-7503-43ff-9629-8094105da39e" name="ei_op1(INOUT eie3:PhysicalQuantity1) :  returns eie2:Class1" actualMapping="ID_Operation">
+      <bounds x="0" y="0" width="413" height="47"/>
+      <ownedLayouts xsi:type="layout:NodeLayout" id="33186f43-7503-43ff-9629-8094105da39e" name="ei_op1(INOUT eie3:PhysicalQuantity1 (Unit1)) :  returns eie2:Class1" actualMapping="ID_Operation">
         <appliedStyles>foregroundColor: 136,136,136</appliedStyles>
         <appliedStyles>borderColor: 136,136,136</appliedStyles>
-        <bounds x="89" y="112" width="360" height="16"/>
+        <bounds x="89" y="112" width="401" height="16"/>
       </ownedLayouts>
     </ownedLayouts>
     <appliedLayers>default IDB</appliedLayers>
@@ -16171,11 +16150,11 @@
       <appliedStyles>backgroundColor: 255,255,255</appliedStyles>
       <appliedStyles>foregroundColor: 240,221,221</appliedStyles>
       <appliedStyles>borderColor: 124,61,61</appliedStyles>
-      <bounds x="0" y="0" width="372" height="47"/>
-      <ownedLayouts xsi:type="layout:NodeLayout" id="33186f43-7503-43ff-9629-8094105da39e" name="ei_op1(INOUT eie3:PhysicalQuantity1) :  returns eie2:Class1" actualMapping="DT_Operation1">
+      <bounds x="0" y="0" width="413" height="47"/>
+      <ownedLayouts xsi:type="layout:NodeLayout" id="33186f43-7503-43ff-9629-8094105da39e" name="ei_op1(INOUT eie3:PhysicalQuantity1 (Unit1)) :  returns eie2:Class1" actualMapping="DT_Operation1">
         <appliedStyles>foregroundColor: 136,136,136</appliedStyles>
         <appliedStyles>borderColor: 136,136,136</appliedStyles>
-        <bounds x="5" y="28" width="360" height="16"/>
+        <bounds x="5" y="28" width="401" height="16"/>
       </ownedLayouts>
     </ownedLayouts>
     <ownedLayouts xsi:type="layout:NodeLayout" id="d8c47314-238b-4bc6-a945-bd76c26b5a9b" name="System" actualMapping="System 1">
@@ -16252,8 +16231,8 @@
       <appliedStyles>strokeColor: 0,0,0</appliedStyles>
       <appliedStyles>centeredColor: 0,0,0</appliedStyles>
       <appliedStyles>edgeRouting: straight</appliedStyles>
-      <bendpoints x="302" y="192"/>
-      <bendpoints x="200" y="45"/>
+      <bendpoints x="305" y="192"/>
+      <bendpoints x="218" y="45"/>
     </ownedLayouts>
     <ownedLayouts xsi:type="layout:EdgeLayout" id="5a5b511f-5fed-417b-bc85-527e4b84b46e" name="" actualMapping="imp1" source="//@ownedLayouts.63/@ownedLayouts.8" target="//@ownedLayouts.63/@ownedLayouts.0">
       <appliedStyles>strokeColor: 0,0,0</appliedStyles>
@@ -17702,7 +17681,7 @@
   <ownedLayouts id="4c57cc19-363c-44fe-b818-b05319a1ad06" name="[IS] SubIS2 - Interface Scenario" synchronized="true" description="Component Interfaces Scenario">
     <appliedFilters>ModelExtensionFilter</appliedFilters>
     <appliedFilters>Hide PrePost conditions</appliedFilters>
-    <ownedLayouts xsi:type="layout:NodeLayout" id="0ee1d909-5a5e-4504-baa5-2623e474ef3b" name="COTSCI 1" actualMapping="Instancerole Mapping">
+    <ownedLayouts xsi:type="layout:NodeLayout" id="0ee1d909-5a5e-4504-baa5-2623e474ef3b" name="[COTSCI] COTSCI 1" actualMapping="Instancerole Mapping">
       <appliedFilters>AbsoluteBoundsFilter</appliedFilters>
       <appliedStyles>foregroundColor: 150,177,218</appliedStyles>
       <appliedStyles>borderColor: 74,74,151</appliedStyles>
@@ -17717,7 +17696,7 @@
         </ownedLayouts>
       </ownedLayouts>
     </ownedLayouts>
-    <ownedLayouts xsi:type="layout:NodeLayout" id="5844c935-fe54-4d09-8437-bf50c550f58c" name="System CI 2" actualMapping="Instancerole Mapping">
+    <ownedLayouts xsi:type="layout:NodeLayout" id="5844c935-fe54-4d09-8437-bf50c550f58c" name="[SystemCI] System CI 2" actualMapping="Instancerole Mapping">
       <appliedFilters>AbsoluteBoundsFilter</appliedFilters>
       <appliedStyles>foregroundColor: 150,177,218</appliedStyles>
       <appliedStyles>borderColor: 74,74,151</appliedStyles>
