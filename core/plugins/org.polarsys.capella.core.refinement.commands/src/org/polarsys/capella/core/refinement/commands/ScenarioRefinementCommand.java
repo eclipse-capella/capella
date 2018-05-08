@@ -4,24 +4,32 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *  
+ *
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
 package org.polarsys.capella.core.refinement.commands;
 
+import java.util.Iterator;
+
 import org.apache.log4j.Logger;
 import org.eclipse.core.runtime.IProgressMonitor;
-
+import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.ui.IWorkbenchWindow;
+import org.eclipse.ui.PlatformUI;
+import org.polarsys.capella.common.data.modellingcore.ModelElement;
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.common.helpers.operations.LongRunningListenersRegistry;
 import org.polarsys.capella.common.tools.report.EmbeddedMessage;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 import org.polarsys.capella.core.data.capellacore.NamedElement;
+import org.polarsys.capella.core.data.interaction.Scenario;
+import org.polarsys.capella.core.model.helpers.ScenarioExt;
 import org.polarsys.capella.core.refinement.RefinementMultiple;
+import org.polarsys.capella.core.refinement.scenarios.core.ScenarioRefinement;
 import org.polarsys.capella.core.refinement.scenarios.core.exceptions.ProcessorException;
-import org.polarsys.capella.common.data.modellingcore.ModelElement;
-import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 
 /**
  */
@@ -56,13 +64,31 @@ public class ScenarioRefinementCommand extends AbstractReadWriteCommand {
   /**
    * @see java.lang.Runnable#run()
    */
+  @Override
   public void run() {
     // Send long running operation events.
     // Operation is starting.
     LongRunningListenersRegistry.getInstance().operationStarting(getClass());
     try {
       if (selectedElement != null) {
+
         RefinementMultiple refinement = new RefinementMultiple((NamedElement) selectedElement);
+        for (Iterator<ScenarioRefinement> sr = refinement.getRefinements(); sr.hasNext();) {
+          Scenario scenario = sr.next().getContext();
+          if (ScenarioExt.isMultiInstanceRole(scenario)) {
+            IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+            if (window != null) {
+              if (!MessageDialog.openConfirm(window.getShell(), Messages.MultiInstanceRoleExtension_title,
+                  Messages.MultiInstanceRoleExtension_message)) {
+                sr.remove();
+              } else {
+                Logger logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.REFINEMENT);
+                logger.warn(Messages.MultiInstanceRoleExtension_logmsg_confirm + EObjectLabelProviderHelper.getText(scenario));
+              }
+            }
+          }
+        }
+
         refinement.execute(progressMonitor);
       }
     }
