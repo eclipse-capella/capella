@@ -1,6 +1,6 @@
 #!/bin/sh
 # ====================================================================
-# Copyright (c) 2017 THALES GLOBAL SERVICES.
+# Copyright (c) 2017, 2018 THALES GLOBAL SERVICES.
 # All rights reserved. This program and the accompanying materials
 # are made available under the terms of the Eclipse Public License v1.0
 # which accompanies this distribution, and is available at
@@ -72,13 +72,11 @@ MANIFEST_FILE="$WORKSPACE/$UPDATE_PATH/target/$MANIFEST_NAME"
 # Ensure the target folder exists
 mkdir -p "$TARGET_DIR"/org.polarsys.capella.rcp.site
 mkdir -p "$TARGET_DIR"/org.polarsys.capella.test.site
-mkdir -p "$TARGET_DIR"/org.polarsys.capella.richtext.site
 mkdir -p "$TARGET_DIR"/org.polarsys.capella.egf.site
 
 # The actual publication of the p2 repo produced by the build
 cp -dR "$WORKSPACE"/releng/plugins/org.polarsys.capella.rcp.site/target/repository/* "$TARGET_DIR"/org.polarsys.capella.rcp.site
 cp -dR "$WORKSPACE"/releng/plugins/org.polarsys.capella.test.site/target/repository/* "$TARGET_DIR"/org.polarsys.capella.test.site
-cp -dR "$WORKSPACE"/releng/plugins/org.polarsys.capella.richtext.site/target/repository/* "$TARGET_DIR"/org.polarsys.capella.richtext.site
 cp -dR "$WORKSPACE"/releng/plugins/org.polarsys.capella.egf.site/target/repository/* "$TARGET_DIR"/org.polarsys.capella.egf.site
 
 echo "Update site runtime core : $URL_PUBLISH_PREFIX/$BUILD_TYPE/$FULL_VERSION"
@@ -134,7 +132,6 @@ EOF
 # and publish the zipped versions there, at stable URLs
 create_redirect "$TARGET_ROOT/$VERSION"/org.polarsys.capella.rcp.site "$BUILD_TYPE/$FULL_VERSION"/org.polarsys.capella.rcp.site
 create_redirect "$TARGET_ROOT/$VERSION"/org.polarsys.capella.test.site "$BUILD_TYPE/$FULL_VERSION"/org.polarsys.capella.test.site
-create_redirect "$TARGET_ROOT/$VERSION"/org.polarsys.capella.richtext.site "$BUILD_TYPE/$FULL_VERSION"/org.polarsys.capella.richtext.site
 create_redirect "$TARGET_ROOT/$VERSION"/org.polarsys.capella.egf.site "$BUILD_TYPE/$FULL_VERSION"/org.polarsys.capella.egf.site
 echo "Link runtime core Version : $URL_PUBLISH_PREFIX/$BUILD_TYPE/$VERSION to $URL_PUBLISH_PREFIX/$BUILD_TYPE/$FULL_VERSION "
 cp -dR "$WORKSPACE/$UPDATE_PATH"/target/$UPDATE_PRJ_NAME-$VERSION-*.zip "$TARGET_ROOT/$VERSION/$UPDATE_PRJ_NAME-$VERSION.zip"
@@ -144,7 +141,6 @@ echo "Zipped update site runtime core : $URL_PUBLISH_PREFIX/$BUILD_TYPE/$VERSION
 # and publish the zipped versions there, at stable URLs
 create_redirect "$TARGET_ROOT/$STREAM"/org.polarsys.capella.rcp.site "$BUILD_TYPE/$FULL_VERSION"/org.polarsys.capella.rcp.site
 create_redirect "$TARGET_ROOT/$STREAM"/org.polarsys.capella.test.site "$BUILD_TYPE/$FULL_VERSION"/org.polarsys.capella.test.site
-create_redirect "$TARGET_ROOT/$STREAM"/org.polarsys.capella.richtext.site "$BUILD_TYPE/$FULL_VERSION"/org.polarsys.capella.richtext.site
 create_redirect "$TARGET_ROOT/$STREAM"/org.polarsys.capella.egf.site "$BUILD_TYPE/$FULL_VERSION"/org.polarsys.capella.egf.site
 echo "Link runtime core Short Version : $URL_PUBLISH_PREFIX/$BUILD_TYPE/$STREAM to $URL_PUBLISH_PREFIX/$BUILD_TYPE/$FULL_VERSION "
 cp -dR "$WORKSPACE/$UPDATE_PATH"/target/$UPDATE_PRJ_NAME-$VERSION-*.zip "$TARGET_ROOT/$STREAM/$UPDATE_PRJ_NAME-$STREAM.zip"
