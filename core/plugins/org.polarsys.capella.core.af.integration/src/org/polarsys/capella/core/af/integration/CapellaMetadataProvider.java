@@ -143,31 +143,35 @@ public class CapellaMetadataProvider implements IMetadataProvider {
    * Checks current platform version and viewpoints.
    */
   public IStatus checkMetadata(URI sessionResourceURI, ResourceSet set) {
-    if (CapellaResourceHelper.isCapellaProject(sessionResourceURI)) {
-
-      // If there is no afm file, we raise an error
-      if (!ViewpointManager.getInstance(set).hasMetadata()) {
+    if (!ViewpointManager.getInstance(set).hasMetadata()) {
+      // If there is no afm file but the current check is about a capella project, we must raise an exception because the afm file is missing.
+      if (CapellaResourceHelper.isCapellaProject(sessionResourceURI)) {
         return new Status(IStatus.ERROR, AFIntegrationPlugin.getSymbolicName(), NLS.bind(Messages.NoMetadataException_Message, MetadataHelper.getViewpointMetadata(set).getExpectedMetadataStorageURI().toPlatformString(true)));
       }
+    } else {
+      // If there is an afm file, first we check if the capella viewpoint is present in the platform
+      org.polarsys.kitalpha.resourcereuse.model.Resource vp = ViewpointManager.getViewpoint(AFIntegrationPlugin.CAPELLA_VIEWPOINT_ID);
+      if (vp != null) {
+        // then, if the afm file has this capella viewpoint
+        Version fileVersion = MetadataHelper.getViewpointMetadata(set).getVersion(vp);
+        if (fileVersion != null) {
+          Version currentVersion = getCurrentVersion();
 
-      // If version of Capella is not compatible (not same major/minor), we raise a migration required message
-      org.polarsys.kitalpha.resourcereuse.model.Resource vp = ViewpointManager
-          .getViewpoint(AFIntegrationPlugin.CAPELLA_VIEWPOINT_ID);
-      Version fileVersion = MetadataHelper.getViewpointMetadata(set).getVersion(vp);
-      Version currentVersion = getCurrentVersion();
-
-      IStatus migration = isMigrationRequired(fileVersion, currentVersion);
-      if (!migration.isOK()) {
-        return migration;
+          // If version of Capella is not compatible (not same major/minor), we raise a migration required message
+          IStatus migration = isMigrationRequired(fileVersion, currentVersion);
+          if (!migration.isOK()) {
+            return migration;
+          }
+        }
       }
 
-      // If a viewpoint is not compatible (not same major/minor), we raise a missing/incompatible viewpoint
+      // If this viewpoint or another viewpoint is not compatible (not same major/minor), we raise a missing/incompatible viewpoint
       IStatus result = ViewpointManager.checkViewpointsCompliancy(set);
       if (!result.isOK()) {
         return result;
       }
-
     }
+
     return Status.OK_STATUS;
   }
 
