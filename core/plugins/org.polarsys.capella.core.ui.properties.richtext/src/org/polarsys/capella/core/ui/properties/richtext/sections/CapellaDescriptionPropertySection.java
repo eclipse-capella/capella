@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,7 +11,10 @@
 package org.polarsys.capella.core.ui.properties.richtext.sections;
 
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.IFilter;
@@ -40,7 +43,12 @@ import org.polarsys.capella.core.ui.properties.sections.AbstractSection;
  * @author Joao Barata
  */
 public class CapellaDescriptionPropertySection extends AbstractSection implements IFilter {
-
+    /**
+     * Because of the description property section is used in both the view properties and the wizard dialog (when user double clicks on an capella element).
+     * We use here a static map to keep track of the instances of this class.
+     * The idea is: when a section in a wizard is disposed, the current opening section in the view properties could be notified to be refresh. (This is the bug we have with richtext editor)
+     */
+    private static Map<CapellaDescriptionPropertySection, EObject> mapDescriptionSectionToEObject = new HashMap<CapellaDescriptionPropertySection, EObject>();
     /**
      *
      */
@@ -66,10 +74,23 @@ public class CapellaDescriptionPropertySection extends AbstractSection implement
     @Override
     public void dispose() {
         super.dispose();
-
+        
         if (null != descriptionGroup) {
             descriptionGroup.dispose();
             descriptionGroup = null;
+        }
+        
+        // On disposing, remove the instance from the map
+        mapDescriptionSectionToEObject.remove(this);
+        // If the disposing section is displayed in the wizard, then notify the section (if there is) in the view properties to be refreshed.
+        if (isDisplayedInWizard()) {
+          Set<CapellaDescriptionPropertySection> availableDescriptionSections = mapDescriptionSectionToEObject.keySet();
+          for (CapellaDescriptionPropertySection descriptionSection : availableDescriptionSections) {
+            if (descriptionSection != null && !descriptionSection.isDisplayedInWizard()) {
+              descriptionSection.refresh();
+              descriptionSection.aboutToBeShown();
+            }
+          }
         }
     }
 
@@ -80,6 +101,20 @@ public class CapellaDescriptionPropertySection extends AbstractSection implement
     protected void handleParentBackground(Color color, Composite parent) {
         // Do nothing.
     }
+    
+    @Override
+    public void aboutToBeHidden() {
+      if (descriptionGroup != null)
+        descriptionGroup.aboutToBeHidden();
+      super.aboutToBeHidden();
+    }
+    
+    @Override
+    public void aboutToBeShown() {
+      if (descriptionGroup != null)
+        descriptionGroup.aboutToBeShown();
+      super.aboutToBeShown();
+    }
 
     /**
      * {@inheritDoc}
@@ -87,7 +122,8 @@ public class CapellaDescriptionPropertySection extends AbstractSection implement
     @Override
     public void loadData(EObject capellaElement) {
         super.loadData(capellaElement);
-
+        // On loading data, add the instance to the map.
+        mapDescriptionSectionToEObject.put(this, capellaElement);
         if (null != descriptionGroup) {
             descriptionGroup.loadData(capellaElement);
         }

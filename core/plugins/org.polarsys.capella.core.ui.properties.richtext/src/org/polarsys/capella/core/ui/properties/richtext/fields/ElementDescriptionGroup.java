@@ -28,12 +28,10 @@ import org.polarsys.capella.common.ef.command.ICommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.core.ui.properties.helpers.NotificationHelper;
+import org.polarsys.capella.core.ui.properties.richtext.RichtextManager;
 import org.polarsys.kitalpha.richtext.common.intf.MDERichTextWidget;
 import org.polarsys.kitalpha.richtext.common.intf.SaveStrategy;
 import org.polarsys.kitalpha.richtext.nebula.widget.MDENebulaBasedRichTextWidget;
-import org.polarsys.kitalpha.richtext.nebula.widget.MDENebulaRichTextConfiguration;
-import org.polarsys.kitalpha.richtext.nebula.widget.MDERichTextConstants;
-import org.polarsys.kitalpha.richtext.widget.factory.MDERichTextFactory;
 import org.polarsys.kitalpha.richtext.widget.helper.MDERichtextWidgetHelper;
 
 /**
@@ -101,12 +99,33 @@ public abstract class ElementDescriptionGroup {
   }
 
   /**
+   * Move the editor to the new container
+   */
+  public void aboutToBeShown() {
+    RichtextManager.getInstance().addWidget(descriptionContainer);
+    
+    try {
+      if (semanticElement != null && semanticFeature != null) {
+        descriptionTextField.bind(semanticElement, semanticFeature);
+      }
+    } catch (SWTException e) {
+      // Catch SWT "Permission denied" exception raised by Nebula Richtext
+    }
+    
+  }
+  
+  /**
+   * Remove the editor before the Property tab is disposed
+   */
+  public void aboutToBeHidden() {
+    RichtextManager.getInstance().removeWidget(descriptionContainer);
+  }
+  
+  /**
    * 
    */
   public void dispose() {
-    if (null != descriptionTextField) {
-      descriptionTextField.dispose();
-    }
+    // Do nothing
   }
 
   /**
@@ -116,18 +135,9 @@ public abstract class ElementDescriptionGroup {
    * @return
    */
   protected MDERichTextWidget createDescriptionField(Composite parent) {
-    MDERichTextFactory f = new MDERichTextFactory() {
-      @Override
-      protected MDERichTextFactory initializeMDEMinimalToolbar() {
-        MDERichTextFactory factory = super.initializeMDEMinimalToolbar();
-        ((MDENebulaRichTextConfiguration) getConfiguration()).removeToolbarItems(MDERichTextConstants.SUBSCRIPT,
-            MDERichTextConstants.SUPERSCRIPT);
-        return factory;
-      }
-    };
-    MDERichTextWidget ee = f.createMinimalRichTextWidget(parent);
+    MDERichTextWidget widget = RichtextManager.getInstance().getRichtextWidget(parent);
 
-    ee.setSaveStrategy(new SaveStrategy() {
+    widget.setSaveStrategy(new SaveStrategy() {
       @Override
       public void save(final String editorText, final EObject owner, final EStructuralFeature feature) {
         if (NotificationHelper.isNotificationRequired(owner, feature, editorText)) {
@@ -141,7 +151,7 @@ public abstract class ElementDescriptionGroup {
       }
     });
 
-    return ee;
+    return widget;
   }
 
   /**
@@ -221,20 +231,19 @@ public abstract class ElementDescriptionGroup {
    * @param feature
    */
   public void loadData(EObject element, EStructuralFeature feature) {
-    if (element != semanticElement) {
-      semanticElement = element;
-      semanticFeature = feature;
-      if (descriptionTextField instanceof MDENebulaBasedRichTextWidget) {
-        ((MDENebulaBasedRichTextWidget) descriptionTextField).setDirtyStateUpdated(true);
-      }
-      descriptionTextField.bind(semanticElement, semanticFeature);
-    }
-    else {
-      try {
+    try {
+      if (element != semanticElement) {
+        semanticElement = element;
+        semanticFeature = feature;
+        if (descriptionTextField instanceof MDENebulaBasedRichTextWidget) {
+          ((MDENebulaBasedRichTextWidget) descriptionTextField).setDirtyStateUpdated(true);
+        }
+        descriptionTextField.bind(semanticElement, semanticFeature);
+      } else {
         descriptionTextField.loadContent();
-      } catch (SWTException e) {
-        // Catch SWT "Permission denied" exception
       }
+    } catch (SWTException e) {
+      // Catch SWT "Permission denied" exception raised by Nebula Richtext
     }
     
     updateDescriptionEditability();
