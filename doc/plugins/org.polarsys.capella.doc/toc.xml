@@ -13,7 +13,7 @@
 <toc label="Capella Guide" topic="html/toc.html" sort="false">
    <topic label="Release Note">
       <topic label="API changes">
-         <topic href="html/Release note/API_1.1.x_to_1.2.x.html" label="Capella 1.1.x to 1.2.x">
+         <topic href="html/Release note/API_1.1.x-1.2.0_to_1.2.x.html" label="Capella 1.1.x/1.2.0 to 1.2.x">
          </topic>
          <topic href="html/Release note/API_1.0.x_to_1.1.x.html" label="Capella 1.0.x to 1.1.x">
          </topic>
