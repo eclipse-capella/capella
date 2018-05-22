@@ -1,6 +1,6 @@
 = API changes =
 
-== From Capella 1.1.x to 1.2.x ==
+== From Capella 1.1.x/1.2.0 to 1.2.x ==
 
 === Uid is used instead of xmiid to identify a representation (''org.eclipse.sirius.viewpoint.DRepresentation'') ===
 * Since Capella 1.2.1, ''uid'' should be used to identify a representation (diagram/table) instead of ''xmiid''. The convenient class ''org.polarsys.capella.shared.id.handler.IdManager'' which is used to obtain an EObject from its id and vice versa has been implemented to take into account representation's ''uid''. Consumers of this class should not have any impact on existing code. Otherwise, one should migrate their code to use this class when trying to obtain a representation from its id and vice versa.
