@@ -258,7 +258,7 @@
         <repositoryList
             name="Neon">
           <repository
-              url="http://download.eclipse.org/sirius/updates/stable/5.1.2-S20180420-110312/neon"/>
+              url="http://download.eclipse.org/sirius/updates/stable/5.1.2-S20180518-120822/neon"/>
         </repositoryList>
         <repositoryList
             name="Oxygen">
@@ -317,7 +317,7 @@
         <repositoryList
             name="Neon">
           <repository
-              url="http://download.eclipse.org/modeling/amalgam/updates/stable/1.9.0-S20180423/capella"/>
+              url="http://download.eclipse.org/modeling/amalgam/updates/stable/1.9.0-S20180522/capella"/>
         </repositoryList>
       </targlet>
       <targlet
@@ -470,11 +470,11 @@
         <repositoryList
             name="Neon">
           <repository
-              url="https://ci.polarsys.org/kitalpha/job/Kitalpha-v1.2.x/lastSuccessfulBuild/artifact/releng/plugins/org.polarsys.kitalpha.releng.runtime.core.updatesite/target/repository"/>
+              url="https://ci.polarsys.org/kitalpha/job/Kitalpha-v1.2.x/58/artifact/releng/plugins/org.polarsys.kitalpha.releng.runtime.core.updatesite/target/repository"/>
           <repository
-              url="https://ci.polarsys.org/kitalpha/job/Kitalpha-v1.2.x/lastSuccessfulBuild/artifact/releng/plugins/org.polarsys.kitalpha.releng.runtime.updatesite/target/repository"/>
+              url="https://ci.polarsys.org/kitalpha/job/Kitalpha-v1.2.x/58/artifact/releng/plugins/org.polarsys.kitalpha.releng.runtime.updatesite/target/repository"/>
           <repository
-              url="https://ci.polarsys.org/kitalpha/job/Kitalpha-v1.2.x/lastSuccessfulBuild/artifact/releng/plugins/org.polarsys.kitalpha.releng.sdk.updatesite/target/repository"/>
+              url="https://ci.polarsys.org/kitalpha/job/Kitalpha-v1.2.x/58/artifact/releng/plugins/org.polarsys.kitalpha.releng.sdk.updatesite/target/repository"/>
         </repositoryList>
       </targlet>
       <description>This defines the targets for 1.2.x and master. The filter below is defined to exclude this targlet from v1.1.x which is isolated in its own stream since its tp differs quite a bit.</description>
