@@ -17,7 +17,6 @@ import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.jface.viewers.IFilter;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.swt.SWT;
@@ -42,7 +41,7 @@ import org.polarsys.capella.core.ui.properties.sections.AbstractSection;
 /**
  * @author Joao Barata
  */
-public class CapellaDescriptionPropertySection extends AbstractSection implements IFilter {
+public class CapellaDescriptionPropertySection extends AbstractSection {
     /**
      * Because of the description property section is used in both the view properties and the wizard dialog (when user double clicks on an capella element).
      * We use here a static map to keep track of the instances of this class.
@@ -185,5 +184,16 @@ public class CapellaDescriptionPropertySection extends AbstractSection implement
     @Override
     public List<AbstractSemanticField> getSemanticFields() {
         return Collections.emptyList();
+    }
+
+    @Override
+    public void refresh() {
+        if (shouldRefresh()) {
+            super.refresh();
+        }
+    }
+
+    public boolean shouldRefresh() {
+        return descriptionGroup == null || descriptionGroup.shouldRefresh();
     }
 }
