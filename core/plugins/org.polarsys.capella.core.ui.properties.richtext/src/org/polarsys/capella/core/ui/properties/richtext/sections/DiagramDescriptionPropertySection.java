@@ -139,14 +139,17 @@ public class DiagramDescriptionPropertySection extends AbstractSection {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void refresh() {
-        loadData();
+        if (shouldRefresh()) {
+            loadData();
+        }
     }
 
+    public boolean shouldRefresh() {
+        return descriptionGroup == null || descriptionGroup.shouldRefresh();
+    }
+    
     /**
      * {@inheritDoc}
      */
@@ -214,4 +217,5 @@ public class DiagramDescriptionPropertySection extends AbstractSection {
         descriptionGroup.aboutToBeShown();
       super.aboutToBeShown();
     }
+    
 }
