@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,10 +21,11 @@ import org.eclipse.core.runtime.IExtensionPoint;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.ui.IWorkbenchPart;
-import org.eclipse.ui.internal.views.properties.tabbed.TabbedPropertyViewPlugin;
+import org.eclipse.ui.internal.views.properties.tabbed.view.TabDescriptor;
 import org.eclipse.ui.internal.views.properties.tabbed.view.TabbedPropertyRegistry;
 import org.eclipse.ui.views.properties.tabbed.ITabDescriptor;
 import org.eclipse.ui.views.properties.tabbed.ITabDescriptorProvider;
+import org.osgi.framework.FrameworkUtil;
 
 /**
  * A ITabDescriptorProvider allowing to use both extension mechanism of org.eclipse.ui.views.properties.tabbed.propertySections
@@ -85,7 +86,7 @@ public abstract class FixedTabDescriptorProvider extends TabbedPropertyRegistry 
       return new IConfigurationElement[0];
     }
     IExtensionPoint point =
-        Platform.getExtensionRegistry().getExtensionPoint(TabbedPropertyViewPlugin.getPlugin().getBundle().getSymbolicName(), extensionPointId);
+        Platform.getExtensionRegistry().getExtensionPoint(FrameworkUtil.getBundle(TabDescriptor.class).getSymbolicName(), extensionPointId);
     IConfigurationElement[] extensions = point.getConfigurationElements();
 
     List unordered = new ArrayList(extensions.length);

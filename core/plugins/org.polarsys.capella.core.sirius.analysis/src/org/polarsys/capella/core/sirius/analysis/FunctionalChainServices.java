@@ -343,7 +343,7 @@ public class FunctionalChainServices {
 					incompleteFC.add(me.getKey());
 				}
 			}
-            RefreshSiriusElement.refresh(me.getValue());
+           RefreshSiriusElement.refresh(me.getValue());
 		}
 
 		// destroy old internal links
