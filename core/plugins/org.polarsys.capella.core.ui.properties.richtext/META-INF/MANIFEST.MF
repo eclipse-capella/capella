@@ -13,7 +13,8 @@ Require-Bundle: org.eclipse.sirius.diagram.ui,
  org.polarsys.kitalpha.richtext.common,
  org.polarsys.kitalpha.richtext.widget,
  org.polarsys.kitalpha.richtext.widget.ext,
- org.eclipse.swt
+ org.eclipse.swt,
+ org.polarsys.capella.core.model.handler
 Export-Package: org.polarsys.capella.core.ui.properties.richtext,
  org.polarsys.capella.core.ui.properties.richtext.fields,
  org.polarsys.capella.core.ui.properties.richtext.navigation,
