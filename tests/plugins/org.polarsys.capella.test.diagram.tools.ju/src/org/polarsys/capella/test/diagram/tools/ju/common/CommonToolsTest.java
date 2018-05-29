@@ -76,6 +76,7 @@ public class CommonToolsTest extends AbstractDiagramTestCase {
         Project proj = (Project) s.getSemanticResources().iterator().next().getContents().get(0);
         pv = CapellacoreFactory.eINSTANCE.createBooleanPropertyValue();
         pvg = CapellacoreFactory.eINSTANCE.createPropertyValueGroup();
+        pvg.getOwnedPropertyValues().add(CapellacoreFactory.eINSTANCE.createBooleanPropertyValue());
         proj.getOwnedPropertyValues().add(pv);
         proj.getOwnedPropertyValueGroups().add(pvg);
       }
@@ -113,6 +114,7 @@ public class CommonToolsTest extends AbstractDiagramTestCase {
           String containerId = ce.getId();
           cd.insertPV(pv.getId(), containerId);
           cd.insertPVG(pvg.getId(), containerId);
+          cd.refreshDiagram();
           cd.removePVG(pvg.getId(), containerId);
           cd.removePV(pv.getId(), containerId);
         }
