@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -54,6 +54,7 @@ import org.polarsys.capella.common.libraries.IModelIdentifier;
 import org.polarsys.capella.common.libraries.manager.LibraryManagerExt;
 import org.polarsys.capella.common.platform.sirius.ted.MetadataException;
 import org.polarsys.capella.common.platform.sirius.ted.NoMetadataException;
+import org.polarsys.capella.common.platform.sirius.ted.SiriusSessionFactory.SessionMetadataHelper;
 import org.polarsys.capella.common.platform.sirius.ted.WrongCapellaVersionException;
 import org.polarsys.capella.common.tools.report.EmbeddedMessage;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
@@ -163,6 +164,8 @@ public class CapellaSessionHelper {
           return new Status(IStatus.WARNING, pluginId, diagnostic.getMessage(), exception);
         }
       }
+      // Check if the model and its viewpoints are fully compatible with the current platform.
+      new SessionMetadataHelper().checkMetadata(uri, tempResourceSet);
     } catch (Exception exception) {
       IStatus status = handleLoadingErrors(exception);
       if (status == null || status.isOK()) {
