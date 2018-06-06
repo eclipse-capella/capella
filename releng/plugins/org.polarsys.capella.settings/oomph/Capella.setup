@@ -213,8 +213,6 @@
         <requirement
             name="org.eclipse.emf.transaction.feature.group"/>
         <requirement
-            name="org.eclipse.gmf.feature.group"/>
-        <requirement
             name="org.eclipse.equinox.executable.feature.group"/>
         <requirement
             name="com.ibm.icu"/>
@@ -263,7 +261,7 @@
         <repositoryList
             name="Oxygen">
           <repository
-              url="http://download.eclipse.org/sirius/updates/stable/6.0.0-S20180404-103514/oxygen"/>
+              url="http://download.eclipse.org/sirius/updates/milestones/6.0.0rc4/oxygen"/>
         </repositoryList>
       </targlet>
       <targlet
@@ -475,6 +473,29 @@
               url="https://ci.polarsys.org/kitalpha/job/Kitalpha-v1.2.x/58/artifact/releng/plugins/org.polarsys.kitalpha.releng.runtime.updatesite/target/repository"/>
           <repository
               url="https://ci.polarsys.org/kitalpha/job/Kitalpha-v1.2.x/58/artifact/releng/plugins/org.polarsys.kitalpha.releng.sdk.updatesite/target/repository"/>
+        </repositoryList>
+      </targlet>
+      <targlet
+          name="GMF"
+          activeRepositoryList="${eclipse.target.platform}">
+        <requirement
+            name="org.eclipse.gmf.feature.group"/>
+        <repositoryList
+            name="Neon">
+          <repository
+              url="http://download.eclipse.org/releases/neon"/>
+        </repositoryList>
+        <repositoryList
+            name="Oxygen">
+          <repository
+              url="http://download.eclipse.org/modeling/gmp/gmf-notation/updates/milestones/S201805221301"/>
+          <repository
+              url="http://download.eclipse.org/modeling/gmp/gmf-runtime/updates/milestones/S201806010809"/>
+        </repositoryList>
+        <repositoryList
+            name="Mars">
+          <repository
+              url="http://download.eclipse.org/releases/mars"/>
         </repositoryList>
       </targlet>
       <description>This defines the targets for 1.2.x and master. The filter below is defined to exclude this targlet from v1.1.x which is isolated in its own stream since its tp differs quite a bit.</description>

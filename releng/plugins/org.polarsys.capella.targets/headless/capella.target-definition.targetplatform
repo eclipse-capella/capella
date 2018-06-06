@@ -10,6 +10,8 @@
  *******************************************************************************/
 target "Capella"
 
+include "../modules/gmf-runtime-1.12.tpd"
+
 with source, requirements
 
 location "http://download.eclipse.org/releases/neon" {
@@ -18,12 +20,11 @@ location "http://download.eclipse.org/releases/neon" {
 	org.eclipse.emf.sdk.feature.group
 	org.eclipse.emf.query.feature.group
 	org.eclipse.emf.transaction.feature.group
-	org.eclipse.gmf.feature.group
 	org.eclipse.equinox.executable.feature.group
 	com.ibm.icu
 }
 
-location "http://download.eclipse.org/sirius/updates/stable/6.0.0-S20180404-103514/neon" {
+location "http://download.eclipse.org/sirius/updates/milestones/6.0.0rc4/neon" {
 	org.eclipse.sirius.runtime.feature.group
 	org.eclipse.sirius.runtime.source.feature.group
 	org.eclipse.sirius.runtime.aql.feature.group
