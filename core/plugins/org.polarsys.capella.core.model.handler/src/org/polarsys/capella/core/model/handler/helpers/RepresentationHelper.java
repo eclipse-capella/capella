@@ -14,16 +14,17 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
+import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.query.RepresentationDescriptionQuery;
 import org.eclipse.sirius.business.api.query.SiriusReferenceFinder;
 import org.eclipse.sirius.business.api.session.Session;
@@ -56,53 +57,27 @@ public class RepresentationHelper {
    * @param selection
    * @return
    */
-  public static List<DRepresentation> getRepresentations(Collection<?> selection) {
-    return getRepresentations(selection, false);
+  public static Collection<DRepresentation> getRepresentations(Collection<?> selection) {
+    return getSelectedDescriptors(selection).stream().map(d -> d.getRepresentation()).collect(Collectors.toList());
   }
 
   /**
-   * Filters representations.
-   *
-   * @param selection
-   * @param mustBeDecorator
-   *          representation must be an instance of {@link DSemanticDecorator}
-   *
-   * @return
+   * Get selected representations.
+   * @param selectedElements A list of selected elements.
+   * @return A not <code>null</code> (possibly empty) collection of representations.
    */
-  public static List<DRepresentation> getRepresentations(Collection<?> selection, boolean mustBeDecorator) {
-
-    List<DRepresentation> representations = new ArrayList<DRepresentation>();
-    Iterator<?> iterator = selection.iterator();
-    while (iterator.hasNext()) {
-      Object selectedObject = iterator.next();
-      // We don't manage ItemWrapper here to avoid ui dependency...
-      // if (selectedObject instanceof ItemWrapper) {
-      // selectedObject = ((ItemWrapper)
-      // selectedObject).getWrappedObject();
-      // }
-
-      if (selectedObject instanceof DRepresentation) {
-        addRepresentation(mustBeDecorator, representations, (DRepresentation) selectedObject);
+  public static Collection<DRepresentationDescriptor> getSelectedDescriptors(Collection<?> selectedElements) {
+    return CapellaAdapterHelper.resolveEObjects(selectedElements).stream().filter(x -> x instanceof DRepresentationDescriptor ||  x instanceof DRepresentation ).map(new Function<Object, DRepresentationDescriptor>() {
+      @Override
+      public DRepresentationDescriptor apply(Object t) {
+        if (t instanceof DRepresentation) {
+          return new DRepresentationQuery((DRepresentation)t).getRepresentationDescriptor();
+        }
+        return (DRepresentationDescriptor)t;
       }
-      if (selectedObject instanceof DRepresentationDescriptor) {
-        addRepresentation(mustBeDecorator, representations,
-            ((DRepresentationDescriptor) selectedObject).getRepresentation());
-      }
-    }
-    return representations;
+    }).collect(Collectors.toList());
   }
-
-  private static void addRepresentation(boolean mustBeDecorator, List<DRepresentation> representations,
-      DRepresentation selectedObject) {
-    if (mustBeDecorator) {
-      if (selectedObject instanceof DSemanticDecorator) {
-        representations.add(selectedObject);
-      }
-    } else {
-      representations.add(selectedObject);
-    }
-  }
-
+  
   /**
    * Get all representation targeted by specified semantic elements.<br>
    * Default implementation loops over specified elements and search for all representations in a specified element
@@ -409,16 +384,7 @@ public class RepresentationHelper {
    * @since Sirius 4.1: introduction of the representation descriptors
    */
   public static DRepresentationDescriptor getRepresentationDescriptor(Session session, DRepresentation representation) {
-    if (representation != null && session != null) {
-      RepresentationDescription description = DialectManager.INSTANCE.getDescription(representation);
-      for (DRepresentationDescriptor descriptor : DialectManager.INSTANCE.getRepresentationDescriptors(description,
-          session)) {
-        if (representation.equals(descriptor.getRepresentation())) {
-          return descriptor;
-        }
-      }
-    }
-    return null;
+    return new DRepresentationQuery(representation).getRepresentationDescriptor();
   }
 
   /**
@@ -431,13 +397,7 @@ public class RepresentationHelper {
    * @since Sirius 4.1: introduction of the representation descriptors
    */
   public static DRepresentationDescriptor getRepresentationDescriptor(DRepresentation representation) {
-    if (representation instanceof DSemanticDecorator) {
-      EObject target = ((DSemanticDecorator) representation).getTarget();
-      Session session = SessionManager.INSTANCE.getSession(target);
-
-      return getRepresentationDescriptor(session, representation);
-    }
-    return null;
+    return new DRepresentationQuery(representation).getRepresentationDescriptor();
   }
 
   /**

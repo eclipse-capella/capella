@@ -67,7 +67,7 @@ public class OpenRepresentationActionProvider extends CommonActionProvider {
                   currentSession);
               descriptors.retainAll(ownedRep);
               for (DRepresentationDescriptor descriptor : descriptors) {
-                OpenRepresentationsAction ora = new OpenRepresentationsAction(description, descriptor);
+                OpenRepresentationsAction ora = new OpenRepresentationsAction(descriptor);
                 openDiagramMenu.add(ora);
               }
             }
@@ -95,7 +95,7 @@ public class OpenRepresentationActionProvider extends CommonActionProvider {
                     descriptors.retainAll(ownedDescriptors);
 
                     for (DRepresentationDescriptor descriptor : descriptors) {
-                      OpenRepresentationsAction ora = new OpenRepresentationsAction(sdd, descriptor);
+                      OpenRepresentationsAction ora = new OpenRepresentationsAction(descriptor);
                       openDiagramMenu.add(ora);
                     }
                   }

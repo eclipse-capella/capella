@@ -12,9 +12,8 @@ package org.polarsys.capella.core.platform.sirius.ui.navigator.actions.move.repr
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -30,7 +29,6 @@ import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
-import org.eclipse.sirius.ui.tools.api.views.common.item.ItemWrapper;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
@@ -41,6 +39,7 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
+import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 
 /**
  * Move a representation between airds owned by the same session.
@@ -59,12 +58,12 @@ public class MoveRepresentationAction extends BaseSelectionListenerAction {
   }
 
   /**
-   * Latest selection of representations to move.
+   * Latest selection of representation descriptors to move.
    */
-  private List<DRepresentationDescriptor> _repDescToMove;
-
+  private Collection<DRepresentationDescriptor> _descriptorsToMove;
+  
   private Session _session;
-
+  
   private Collection<Resource> _availableTargetResources;
 
   public void run(IAction action) {
@@ -72,8 +71,8 @@ public class MoveRepresentationAction extends BaseSelectionListenerAction {
   }
 
   public void dispose() {
-    if (null != _repDescToMove) {
-      _repDescToMove.clear();
+    if (null != _descriptorsToMove) {
+      _descriptorsToMove.clear();
     }
     if (null != _availableTargetResources) {
       _availableTargetResources.clear();
@@ -91,54 +90,42 @@ public class MoveRepresentationAction extends BaseSelectionListenerAction {
     }
     boolean enabled = true;
     // Clean previous execution.
-    _repDescToMove = new ArrayList<DRepresentationDescriptor>(0);
+    _descriptorsToMove = new ArrayList<DRepresentationDescriptor>(0);
     _session = null;
-    Iterator<?> iterator = selection.toList().iterator();
-    while (iterator.hasNext() && enabled) {
-      Object element = iterator.next();
-      // Got a representation, store it.
-      if (element instanceof ItemWrapper) {
-        element = ((ItemWrapper) element).getWrappedObject();
-      }
-      if (element instanceof DRepresentationDescriptor) {
-        // Add representation.
-        _repDescToMove.add((DRepresentationDescriptor) element);
-        if (null != _session) {
-          enabled = SessionManager.INSTANCE.getSession(((DRepresentationDescriptor) element).getTarget())
-              .equals(_session);
-        } else {
-          _session = SessionManager.INSTANCE.getSession(((DRepresentationDescriptor) element).getTarget());
-          enabled = null != _session;
-        }
-      } else {
-        // One selected is not a representation.
-        enabled = false;
-        break;
-      }
+
+    List<?> selectionList = ((IStructuredSelection) selection).toList();
+
+    // Retrieve descriptors from selection
+    Collection<DRepresentationDescriptor> descriptors = RepresentationHelper.getSelectedDescriptors(selectionList);
+
+    // Retrieve given sessions. If they belongs to the same session, we continue
+    List<Session> sessions = descriptors.stream().map(descriptor -> descriptor.getTarget())
+        .map(t -> SessionManager.INSTANCE.getSession(t)).distinct().filter(s -> s != null).collect(Collectors.toList());
+
+    enabled = false;
+
+    // If all selected elements were EObjects, retrieve editing domain if elements are from the same session
+    if (selectionList.size() == descriptors.size() && sessions.size() == 1) {
+      _session = sessions.get(0);
+      _descriptorsToMove = descriptors;
+      enabled = true;
     }
+
     if (enabled) {
+
       _availableTargetResources = new ArrayList<Resource>(((DAnalysisSession) _session).getAllSessionResources());
-      Collection<Resource> representationResources = collectRepresentationResources(_repDescToMove);
+
+      // Retrieve resources of descriptors
+      Collection<Resource> representationResources = _descriptorsToMove.stream().map(d -> d.eResource()).distinct()
+          .collect(Collectors.toList());
+
       _availableTargetResources.removeAll(representationResources);
+
       // Check if a common target resource exist to move on.
       enabled = !_availableTargetResources.isEmpty();
     }
     // Return the action enablement state.
     return enabled;
-  }
-
-  /**
-   * Collect the representations resources.
-   * 
-   * @param movableRepresentations
-   * @return a not <code>null</code> collection.
-   */
-  private Collection<Resource> collectRepresentationResources(Collection<DRepresentationDescriptor> movableRepDescs) {
-    Collection<Resource> result = new HashSet<Resource>();
-    for (DRepresentationDescriptor repDesc : movableRepDescs) {
-      result.add(repDesc.eResource());
-    }
-    return result;
   }
 
   /**
@@ -152,7 +139,7 @@ public class MoveRepresentationAction extends BaseSelectionListenerAction {
       Collection<DAnalysis> availableDAnalysys = EcoreUtil.getObjectsByType(availableTargetResource.getContents(),
           ViewpointPackage.eINSTANCE.getDAnalysis());
       for (DAnalysis dAnalysis : availableDAnalysys) {
-        actions.add(createMoveRepresentationsActions((DAnalysisSession) _session, _repDescToMove, dAnalysis));
+        actions.add(createMoveRepresentationsActions((DAnalysisSession) _session, _descriptorsToMove, dAnalysis));
       }
     }
     return actions;
@@ -161,41 +148,40 @@ public class MoveRepresentationAction extends BaseSelectionListenerAction {
   /**
    * @see {@link org.eclipse.sirius.ui.tools.internal.views.sessionview.DesignerSessionView#createMoveRepresentationsActions(DAnalysisSession, Collection, DAnalysis)}
    * @param session
-   * @param repDescs
+   * @param descriptors
    * @param targetAnalysis
    * @return
    */
   private Action createMoveRepresentationsActions(final DAnalysisSession session,
-      Collection<DRepresentationDescriptor> repDescs, final DAnalysis targetAnalysis) {
+      Collection<DRepresentationDescriptor> descriptors, final DAnalysis targetAnalysis) {
     ImageDescriptor descriptor = AbstractUIPlugin.imageDescriptorFromPlugin(SiriusEditPlugin.ID,
         "/icons/full/others/forward.gif"); //$NON-NLS-1$
-    final Collection<DRepresentationDescriptor> movableRepDescs = new ArrayList<DRepresentationDescriptor>(repDescs);
+    
     return new Action(Messages.MoveRepresentationAction_Title + targetAnalysis.eResource().getURI(), descriptor) {
       /**
        * @see org.eclipse.jface.action.Action#run()
        */
       @Override
       public void run() {
-        TransactionHelper.getExecutionManager(movableRepDescs).execute(new AbstractReadWriteCommand() {
+        TransactionHelper.getExecutionManager(descriptors).execute(new AbstractReadWriteCommand() {
           /**
            * @see java.lang.Runnable#run()
            */
-          @Override
           public void run() {
-            final IEditingSession uiSession = SessionUIManager.INSTANCE.getUISession(session);
+            IEditingSession uiSession = SessionUIManager.INSTANCE.getUISession(session);
             if (uiSession != null) {
-              for (final DRepresentationDescriptor repDesc : movableRepDescs) {
-                closeOpenedEditor(uiSession, repDesc);
+              for (DRepresentationDescriptor descriptor : descriptors) {
+                closeOpenedEditor(uiSession, descriptor);
               }
             }
-            for (final DRepresentationDescriptor repDesc : movableRepDescs) {
-              session.moveRepresentation(targetAnalysis, repDesc);
+            for (DRepresentationDescriptor descriptor : descriptors) {
+              session.moveRepresentation(targetAnalysis, descriptor);
             }
           }
 
-          private void closeOpenedEditor(final IEditingSession uiSession, final DRepresentationDescriptor repDesc) {
-            if (repDesc.isLoadedRepresentation()) {
-              final IEditorPart editor = uiSession.getEditor(repDesc.getRepresentation());
+          private void closeOpenedEditor(IEditingSession uiSession, DRepresentationDescriptor descriptor) {
+            if (descriptor.isLoadedRepresentation()) {
+              IEditorPart editor = uiSession.getEditor(descriptor.getRepresentation());
               if (editor != null) {
                 editor.getEditorSite().getPage().closeEditor(editor, false);
               }

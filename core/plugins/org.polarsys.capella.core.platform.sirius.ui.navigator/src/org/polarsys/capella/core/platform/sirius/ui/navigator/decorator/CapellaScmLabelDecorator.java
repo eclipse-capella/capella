@@ -18,7 +18,6 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.IDecoration;
 import org.eclipse.jface.viewers.ILabelProviderListener;
 import org.eclipse.jface.viewers.ILightweightLabelDecorator;
-import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.team.core.RepositoryProvider;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
@@ -49,12 +48,12 @@ public class CapellaScmLabelDecorator implements ILightweightLabelDecorator {
     // The plugin.xml (via decorator extension) defines the enable status.
     // Only the NamedElement model element is decorated.
     // Ensure that in checking given object type.
+    
     if (element instanceof NamedElement) {
       handleNamedElement(decoration, (NamedElement) element);
-    } else if (element instanceof DRepresentation) {
-      handleRespresentation(decoration, (DRepresentation) element);
+      
     } else if (element instanceof DRepresentationDescriptor) {
-      addScmOverlay(decoration, (EObject) element);
+      handleRepresentation(decoration, (DRepresentationDescriptor) element);
     }
   }
 
@@ -64,7 +63,7 @@ public class CapellaScmLabelDecorator implements ILightweightLabelDecorator {
    * @param decoration
    * @param element
    */
-  protected void handleRespresentation(IDecoration decoration, DRepresentation element) {
+  protected void handleRepresentation(IDecoration decoration, DRepresentationDescriptor element) {
     addScmOverlay(decoration, element);
   }
 

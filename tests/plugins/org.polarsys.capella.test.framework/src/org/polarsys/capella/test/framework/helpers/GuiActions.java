@@ -27,16 +27,14 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.jobs.IJobManager;
 import org.eclipse.core.runtime.jobs.Job;
-import org.eclipse.emf.common.ui.URIEditorInput;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
-import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorReference;
 import org.eclipse.ui.IWorkbenchPage;
@@ -354,7 +352,7 @@ public class GuiActions {
    * @param session
    */
   public static void deleteHiddenElements(Session session, boolean isUnsyncDiagram) {
-    Collection<DRepresentation> representationsToRefresh = DialectManager.INSTANCE.getAllRepresentations(session);
+    Collection<DRepresentationDescriptor> representationsToRefresh = DialectManager.INSTANCE.getAllRepresentationDescriptors(session);
     Job job = new DeleteHiddenElementsJob(representationsToRefresh, session, isUnsyncDiagram);
     job.setThread(Display.getDefault().getThread());
     job.setUser(true);
@@ -362,7 +360,7 @@ public class GuiActions {
   }
  
   public static void refreshAllSubRepresentations(IFile airdFile, Session session) {
-    Collection<DRepresentation> representationsToRefresh = DialectManager.INSTANCE.getAllRepresentations(session);
+    Collection<DRepresentationDescriptor> representationsToRefresh = DialectManager.INSTANCE.getAllRepresentationDescriptors(session);
     Job job = new RefreshDiagramsCommandHandler().new RefreshDiagramsJob(airdFile.getName(), representationsToRefresh, session, Display.getCurrent());
     job.setThread(Display.getDefault().getThread());
     job.setUser(true);

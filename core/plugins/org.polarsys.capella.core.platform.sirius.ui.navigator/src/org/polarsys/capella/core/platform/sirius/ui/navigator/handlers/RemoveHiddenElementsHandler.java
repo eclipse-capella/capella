@@ -27,8 +27,7 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.PlatformUI;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
@@ -46,22 +45,20 @@ public class RemoveHiddenElementsHandler extends AbstractDiagramCommandHandler {
     //
     // Compute representations to process.
     //
-    Collection<DRepresentation> representationsToRefresh = Collections.emptyList();
+    Collection<DRepresentationDescriptor> representationsToRefresh = Collections.emptyList();
     if (selectedElement instanceof ModelElement) {
       // Selected element is a ModelElement, only diagrams under this ModelElement are considered.
-      representationsToRefresh = new ArrayList<DRepresentation>();
-      Collection<DRepresentation> allSessionRepresentations = DialectManager.INSTANCE.getAllRepresentations(session);
-      for (DRepresentation representation : allSessionRepresentations) {
-        if (representation instanceof DSemanticDecorator) {
-          EObject associatedModelElement = ((DSemanticDecorator) representation).getTarget();
+      representationsToRefresh = new ArrayList<DRepresentationDescriptor>();
+      Collection<DRepresentationDescriptor> allSessionRepresentations = DialectManager.INSTANCE.getAllRepresentationDescriptors(session);
+      for (DRepresentationDescriptor representation : allSessionRepresentations) {
+          EObject associatedModelElement = representation.getTarget();
           if (EcoreUtil.isAncestor((ModelElement) selectedElement, associatedModelElement)) {
             representationsToRefresh.add(representation);
-          }
         }
       }
     } else if (selectedElement instanceof IFile) {
       // Selected element is an IFile (the aird file), all diagrams are processed.
-      representationsToRefresh = DialectManager.INSTANCE.getAllRepresentations(session);
+      representationsToRefresh = DialectManager.INSTANCE.getAllRepresentationDescriptors(session);
     }
     // Is there a representation to process ?
     if (representationsToRefresh.isEmpty()) {

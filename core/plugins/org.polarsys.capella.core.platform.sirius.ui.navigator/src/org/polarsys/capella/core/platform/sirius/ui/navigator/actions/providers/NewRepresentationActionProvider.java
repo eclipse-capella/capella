@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -39,7 +39,7 @@ import org.polarsys.capella.core.sirius.ui.actions.NewScenarioRepresentationActi
  */
 public class NewRepresentationActionProvider extends CommonActionProvider {
 
-/**
+  /**
    * @see org.eclipse.ui.actions.ActionGroup#fillContextMenu(org.eclipse.jface.action.IMenuManager)
    */
   @Override
@@ -58,8 +58,10 @@ public class NewRepresentationActionProvider extends CommonActionProvider {
 
         if (sessionModel == null || sessionModel.equals(currentElementModel)) {
           Collection<Viewpoint> selectedViewpoints = currentSession.getSelectedViewpoints(false);
+
           Collection<RepresentationDescription> descriptions = DialectManager.INSTANCE
               .getAvailableRepresentationDescriptions(selectedViewpoints, firstSelectedEObject);
+
           if (!descriptions.isEmpty()) {
             // Creates the "New Diagram / Table" menu.
             MenuManager newDiagramMenu = new MenuManager(
@@ -68,11 +70,9 @@ public class NewRepresentationActionProvider extends CommonActionProvider {
 
             // Computes the "New Diagram..." menu content according to the current selection.
             for (RepresentationDescription description : descriptions) {
-              if (DialectManager.INSTANCE.canCreate(firstSelectedEObject, description)) {
-                NewRepresentationAction representationAction = buildNewRepresentationAction(firstSelectedEObject,
-                    description, currentSession);
-                newDiagramMenu.add(representationAction);
-              }
+              NewRepresentationAction representationAction = buildNewRepresentationAction(firstSelectedEObject,
+                  description, currentSession);
+              newDiagramMenu.add(representationAction);
             }
 
             // Create scenarios from capabilities
@@ -108,7 +108,8 @@ public class NewRepresentationActionProvider extends CommonActionProvider {
   }
 
   // Build an action allowing to create new representation according to the current selection.
-  private NewRepresentationAction buildNewRepresentationAction(EObject selectedEObject, RepresentationDescription description, Session session) {
+  private NewRepresentationAction buildNewRepresentationAction(EObject selectedEObject,
+      RepresentationDescription description, Session session) {
     NewRepresentationAction action = new NewRepresentationAction(description, selectedEObject, session);
     return action;
   }

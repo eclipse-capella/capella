@@ -10,20 +10,20 @@
  *******************************************************************************/
 package org.polarsys.capella.core.platform.sirius.ui.navigator.viewer;
 
+import java.util.ArrayList;
+
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
-import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.viewers.IFontProvider;
+import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionStatus;
 import org.eclipse.sirius.common.ui.tools.api.view.common.item.ItemDecorator;
 import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.diagram.sequence.description.SequenceDiagramDescription;
 import org.eclipse.sirius.ui.tools.api.views.common.item.ItemWrapper;
 import org.eclipse.sirius.ui.tools.api.views.common.item.RepresentationDescriptionItem;
@@ -55,7 +55,6 @@ import org.polarsys.capella.core.sirius.ui.helper.SessionHelper;
 public class CapellaNavigatorLabelProvider extends MDEAdapterFactoryLabelProvider
     implements IDescriptionProvider, IFontProvider {
   private static final String STATUS_LINE_PATH_SEPARATOR = "::"; //$NON-NLS-1$
-
   private Font _italicFont;
 
   /**
@@ -116,7 +115,8 @@ public class CapellaNavigatorLabelProvider extends MDEAdapterFactoryLabelProvide
       text = super.getText(((ItemWrapper) object).getWrappedObject());
     } else {
       // Fix due to 3.5 & 3.6 that have changed the implementation of IResource.toString().
-      IWorkbenchAdapter workbenchAdapter = Platform.getAdapterManager().getAdapter(object, IWorkbenchAdapter.class);
+      IWorkbenchAdapter workbenchAdapter = (IWorkbenchAdapter) Platform.getAdapterManager().getAdapter(object,
+          IWorkbenchAdapter.class);
       text = (null != workbenchAdapter) ? workbenchAdapter.getLabel(object) : super.getText(object);
 
       if (object instanceof IFile) {
@@ -139,6 +139,7 @@ public class CapellaNavigatorLabelProvider extends MDEAdapterFactoryLabelProvide
   public String getDescription(Object element) {
     String result = ICommonConstants.EMPTY_STRING;
     String slash = String.valueOf(ICommonConstants.SLASH_CHARACTER);
+
     if (element instanceof ModelElement) {
       ModelElement modelElement = (ModelElement) element;
       String path = modelElement.getFullLabel();
@@ -146,41 +147,39 @@ public class CapellaNavigatorLabelProvider extends MDEAdapterFactoryLabelProvide
         path = path.substring(1);
       }
       result = path.replaceAll(slash, STATUS_LINE_PATH_SEPARATOR);
+
     } else if (element instanceof DRepresentation || element instanceof DRepresentationDescriptor) {
-      Object modelElement = null;
-      String representationName = ICommonConstants.EMPTY_STRING;
+      if (element instanceof DRepresentation) {
+        element = (new DRepresentationQuery((DRepresentation) element)).getRepresentationDescriptor();
+      }
+
       if (element instanceof DRepresentationDescriptor) {
-        representationName = ((DRepresentationDescriptor) element).getName();
-        modelElement = ((DRepresentationDescriptor) element).getTarget();
-      } else {
-        representationName = ((DRepresentation) element).getName();
-        // Adapts the representation into a Capella element (it returns its Capella container).
-        modelElement = Platform.getAdapterManager().getAdapter(element, ModelElement.class);
-        if (null == modelElement) {
-          modelElement = Platform.getAdapterManager().loadAdapter(element, ModelElement.class.getName());
-        }
-      }
-      if (null != modelElement) {
-        // Builds and formats the DRepresentation path.
-        String containerPath = getDescription(modelElement);
-        String path = containerPath.concat(STATUS_LINE_PATH_SEPARATOR).concat(representationName);
+        ArrayList<String> values = new ArrayList<String>(2);
 
-        path = path.concat(getSiriusMessage(element));
-
-        if (path.startsWith(slash)) {
-          path = path.substring(1);
+        Object modelElement = ((DRepresentationDescriptor) element).getTarget();
+        if (null != modelElement) {
+          values.add(getDescription(modelElement));
         }
-        result = path.replaceAll(slash, STATUS_LINE_PATH_SEPARATOR);
+
+        String representationName = ((DRepresentationDescriptor) element).getName();
+        if (null != representationName) {
+          values.add(representationName + getSiriusMessage((DRepresentationDescriptor) element));
+        }
+
+        result = String.join(STATUS_LINE_PATH_SEPARATOR, values);
       }
+
     } else if (element instanceof ItemWrapper) {
       // Adapts the representation into a Capella element (it returns its Capella container).
       ItemWrapper item = (ItemWrapper) element;
       Object wrappedObject = item.getWrappedObject();
       String description = getDescription(wrappedObject);
       result = description;
+
     } else if (element instanceof Viewpoint) {
       Viewpoint viewpoint = (Viewpoint) element;
       result = viewpoint.getName();
+
     } else if (element instanceof RepresentationDescription) {
       RepresentationDescription description = (RepresentationDescription) element;
       String representationDescPath = description.getName();
@@ -193,8 +192,8 @@ public class CapellaNavigatorLabelProvider extends MDEAdapterFactoryLabelProvide
         container = container.eContainer();
       }
       result = representationDescPath;
-    } else if (element instanceof EObject) {
 
+    } else if (element instanceof EObject) {
       String path = getText(element);
       EObject container = ((EObject) element).eContainer();
 
@@ -214,29 +213,16 @@ public class CapellaNavigatorLabelProvider extends MDEAdapterFactoryLabelProvide
     return result;
   }
 
-  protected String getSiriusMessage(Object element) {
+  private String getSiriusMessage(DRepresentationDescriptor element) {
     String result = ICommonConstants.EMPTY_STRING;
-    if (element instanceof IGraphicalEditPart) {
-      Object model = ((IGraphicalEditPart) element).getModel();
-      if (model instanceof View)
-        element = ((View) model).getElement();
-    }
 
-    if (element instanceof DRepresentationDescriptor) {
-      if (((DRepresentationDescriptor) element).isLoadedRepresentation()) {
-        element = ((DRepresentationDescriptor) element).getRepresentation();
-      }
-    }
+    if (!element.isLoadedRepresentation()) {
+      result = " (Not Loaded)";
 
-    if (element instanceof EObject) {
-      DDiagram diagram = null;
-      if (element instanceof DDiagram)
-        diagram = (DDiagram) element;
-      else
-        diagram = (new EObjectQuery((EObject) element).getParentDiagram()).get();
-
-      if (diagram != null) {
-        if (diagram.isSynchronized()) {
+    } else {
+      DRepresentation representation = element.getRepresentation();
+      if (representation instanceof DDiagram) {
+        if (((DDiagram) representation).isSynchronized()) {
           result = " (Synchronized)";
         } else {
           result = " (Unsynchronized)";

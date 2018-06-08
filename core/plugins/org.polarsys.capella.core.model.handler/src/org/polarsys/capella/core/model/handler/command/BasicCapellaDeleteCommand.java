@@ -236,7 +236,7 @@ public class BasicCapellaDeleteCommand extends AbstractCommand {
 
   protected Command getDeleteRepresentationCommand(TransactionalEditingDomain editingDomain) {
     return new BasicRepresentationDeleteCommand(editingDomain,
-        RepresentationHelper.getAllRepresentationsTargetedBy(getExpandedSelection()), new NullProgressMonitor());
+        RepresentationHelper.getAllRepresentationDescriptorsTargetedBy(getExpandedSelection()), new NullProgressMonitor());
   }
 
   /**

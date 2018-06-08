@@ -10,16 +10,13 @@
  *******************************************************************************/
 package org.polarsys.capella.core.platform.sirius.ui.navigator.actions;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.ui.tools.api.views.common.item.ItemWrapper;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
@@ -27,6 +24,7 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.BaseSelectionListenerAction;
 import org.polarsys.capella.common.helpers.TransactionHelper;
+import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaCloneDiagramCommand;
 import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaCloneDiagramCommand.ICloneListener;
 
@@ -53,42 +51,11 @@ public class CloneAction extends BaseSelectionListenerAction {
   }
 
   /**
-   * Get selected representations.
-   * 
-   * @param selectedElements
-   *          A list of selected elements.
-   * @return A not <code>null</code> (possibly empty) collection of representations.
-   */
-  protected Collection<DRepresentationDescriptor> getSelectedRepresentationDescriptors(List<?> selectedElements) {
-    // Resulting collection.
-    Collection<DRepresentationDescriptor> result = null;
-    // Cycle through selected elements.
-    for (Object element : selectedElements) {
-      if (element instanceof ItemWrapper) {
-        element = ((ItemWrapper) element).getWrappedObject();
-      }
-      // Got a representation, store it.
-      if (element instanceof DRepresentationDescriptor) {
-        // Lazy initialization.
-        if (null == result) {
-          result = new ArrayList<DRepresentationDescriptor>(1);
-        }
-        // Add representation.
-        result.add((DRepresentationDescriptor) element);
-      }
-    }
-    // Do not return a null collection.
-    if (null == result) {
-      result = Collections.emptyList();
-    }
-    return result;
-  }
-
-  /**
    * @see org.eclipse.jface.action.Action#run()
    */
   @Override
   public void run() {
+    
     CapellaCloneDiagramCommand command = new CapellaCloneDiagramCommand(_descriptors);
     // Add a listener that refreshes the capella explorer during execution/undo/redo operations.
     command.addCloneListener(new ICloneListener() {
@@ -159,7 +126,7 @@ public class CloneAction extends BaseSelectionListenerAction {
   @Override
   protected boolean updateSelection(IStructuredSelection selection) {
     List<?> selectedElements = selection.toList();
-    _descriptors = getSelectedRepresentationDescriptors(selectedElements);
+    _descriptors = RepresentationHelper.getSelectedDescriptors(selectedElements);
     // Enable action only if all selected elements are representations.
     int size = selectedElements.size();
     return (size > 0) && (size == _descriptors.size());

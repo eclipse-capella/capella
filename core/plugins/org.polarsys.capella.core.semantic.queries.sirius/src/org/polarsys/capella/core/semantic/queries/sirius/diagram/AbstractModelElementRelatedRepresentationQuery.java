@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -30,7 +30,7 @@ public abstract class AbstractModelElementRelatedRepresentationQuery implements 
     if (!(object_p instanceof EObject)) {
       return result;
     }
-    result.addAll(RepresentationHelper.getAllRepresentationsWhereSemanticElementIsDisplayed((EObject) object_p, filterRepresentationDescription()));
+    result.addAll(RepresentationHelper.getAllRepresentationDescriptorsWhereSemanticElementIsDisplayed((EObject) object_p, filterRepresentationDescription()));
     return result;
   }
 

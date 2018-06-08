@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,10 +17,8 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.diagram.DSemanticDiagram;
-import org.eclipse.sirius.table.metamodel.table.DTable;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
-import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbenchPart;
 import org.polarsys.capella.core.ui.semantic.browser.view.SemanticBrowserView;
@@ -37,21 +35,6 @@ public class DiagramOpenAction {
    * Semantic browser view.
    */
   private SemanticBrowserView _semanticBrowserView;
-
-  /**
-   * Get target for given representation.
-   * @param representation_p
-   * @return <code>null</code> if not target element found.
-   */
-  protected EObject getTarget(DRepresentation representation_p) {
-    EObject target = null;
-    if (representation_p instanceof DSemanticDiagram) {
-      target = ((DSemanticDiagram) representation_p).getTarget();
-    } else if (representation_p instanceof DTable) {
-      target = ((DTable) representation_p).getTarget();
-    }
-    return target;
-  }
 
   /**
    * 
@@ -75,19 +58,19 @@ public class DiagramOpenAction {
   public void run(IAction action_p) {
     IStructuredSelection structuredSelection = (IStructuredSelection) _selection;
     // This action is only available for DSemanticDiagram with at least one element.
-    DRepresentation representation = (DRepresentation) structuredSelection.getFirstElement();
+    DRepresentationDescriptor representation = (DRepresentationDescriptor) structuredSelection.getFirstElement();
     // Get the current element before opening the diagram that changes the selection.
     Object currentElement = _semanticBrowserView.getCurrentViewer().getInput();
     // Deactivate listening events during diagram opening since the open editor will change it to something that is not the end-user concern.
     boolean listeningToPageSelectionEvents = SemanticBrowserView.isListeningToPageSelectionEvents();
-    EObject target = getTarget(representation);
+    EObject target = representation.getTarget();
     if (null != target) {
       try {
         if (listeningToPageSelectionEvents) {
           _semanticBrowserView.deactivateListeningToPageSelectionEvents();
         }
         Session session = SessionManager.INSTANCE.getSession(target);
-        IEditorPart openEditor = DialectUIManager.INSTANCE.openEditor(session, representation, new NullProgressMonitor());
+        IEditorPart openEditor = DialectUIManager.INSTANCE.openEditor(session, representation.getRepresentation(), new NullProgressMonitor());
         postEditorOpen(currentElement, openEditor);
 
       } finally {

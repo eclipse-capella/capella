@@ -192,7 +192,7 @@
             <and>
                <iterate>
                   <instanceof
-                        value="org.eclipse.sirius.viewpoint.DRepresentation">
+                        value="org.eclipse.sirius.viewpoint.DRepresentationDescriptor">
                   </instanceof>
                </iterate>
                <count

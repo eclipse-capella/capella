@@ -10,18 +10,21 @@
  *******************************************************************************/
 package org.polarsys.capella.core.model.handler.helpers;
 
+import java.util.Collection;
+import java.util.stream.Collectors;
+
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
+import org.polarsys.capella.common.data.modellingcore.AbstractType;
+import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.epbs.ConfigurationItem;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.TriStateBoolean;
-import org.polarsys.capella.common.data.modellingcore.AbstractType;
-import org.polarsys.capella.common.data.modellingcore.ModelElement;
 
 /**
  *
@@ -29,31 +32,70 @@ import org.polarsys.capella.common.data.modellingcore.ModelElement;
 public class CapellaAdapterHelper {
 
   /**
-   * @param object
+   * Returns the semantic element for the given object.
+   * @see it is similar than resolveSemanticObject(object, false)
+   * It shall have be called resolveEObject.
+   * 
+   * @param object must not be a list
    */
+  @Deprecated
   public static EObject resolveSemanticObject(Object object) {
+    return resolveEObject(object);
+  }
+  
+  /**
+   * Returns the semantic element for the given object.
+   * @see it is similar than resolveSemanticObject(object, false)
+   * 
+   * @param object must not be a list
+   */
+  public static EObject resolveEObject(Object object) {
     return resolveSemanticObject(object, false);
   }
 
+  
   /**
-   * @param object
-   * @param onlySemantic
+   * Returns the semantic element for the given object.
+   * According to onlySemantic, if the element is a Sirius representation, it returns the semantic element associated.
    */
   public static EObject resolveSemanticObject(Object object, boolean onlySemantic) {
     if (object instanceof EObject) {
       return resolveEObject((EObject) object, onlySemantic);
+      
     } else if (object instanceof IAdaptable) {
       Object adapter = ((IAdaptable) object).getAdapter(EObject.class);
+      
       if (adapter instanceof EObject) {
         return resolveEObject((EObject) adapter, onlySemantic);
       }
     }
+    
     return null;
   }
 
   /**
-   * @param object
-   * @param onlySemantic
+   * This method returns the list of EObject from the given objects.
+   */
+  public static Collection<EObject> resolveEObjects(Collection<?> objects) {
+    return resolveSemanticObjects(objects, false);
+  }
+  
+  /**
+   * This method returns the list of semantic objects from the given objects.
+   */
+  public static Collection<EObject> resolveSemanticsObjects(Collection<?> objects) {
+    return resolveSemanticObjects(objects, true);
+  }
+  
+  /**
+   * This method returns the list of EObject from the given objects.
+   */
+  private static Collection<EObject> resolveSemanticObjects(Collection<?> objects, boolean onlySemantic) {
+    return objects.stream().map( x -> resolveSemanticObject(x, onlySemantic)).collect(Collectors.toList());
+  }
+  
+  /**
+   * This method 
    */
   private static EObject resolveEObject(EObject object, boolean onlySemantic) {
     if (!onlySemantic && (object instanceof DRepresentationDescriptor || object instanceof DRepresentation)) {

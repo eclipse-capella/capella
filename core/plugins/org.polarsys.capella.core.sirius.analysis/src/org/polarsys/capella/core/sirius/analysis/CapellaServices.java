@@ -2813,7 +2813,7 @@ public class CapellaServices {
     }
     
     List<EObject> associatedSemanticElementsWithoutNulls = associatedSemanticElements.stream()
-        .filter(Objects::nonNull)
+        .filter(Objects::nonNull).map(x -> (EObject)x)
         .collect(Collectors.toList());
     
     if (!associatedSemanticElementsWithoutNulls.isEmpty()) {
