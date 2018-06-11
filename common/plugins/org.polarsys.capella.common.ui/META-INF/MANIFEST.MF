@@ -11,8 +11,10 @@ Require-Bundle: org.eclipse.help,
  org.eclipse.emf.transaction.ui;visibility:=reexport,
  org.polarsys.capella.common.ef,
  org.polarsys.capella.common;visibility:=reexport,
- org.eclipse.ui.forms;visibility:=reexport
+ org.eclipse.ui.forms;visibility:=reexport,
+ org.eclipse.ui.navigator;visibility:=reexport
 Export-Package: org.polarsys.capella.common.ui,
+ org.polarsys.capella.common.ui.actions,
  org.polarsys.capella.common.ui.providers,
  org.polarsys.capella.common.ui.services,
  org.polarsys.capella.common.ui.services.commands,

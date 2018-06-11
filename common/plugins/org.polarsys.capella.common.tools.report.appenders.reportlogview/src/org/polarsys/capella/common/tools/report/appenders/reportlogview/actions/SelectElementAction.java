@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,14 +18,15 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.navigator.CommonNavigator;
 import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.common.tools.report.EmbeddedMessage;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
+import org.polarsys.capella.common.ui.actions.LocateFilteredElementsInCommonNavigatorAction;
 import org.polarsys.capella.common.ui.services.helper.EObjectImageProviderHelper;
 import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 
@@ -68,34 +69,30 @@ public class SelectElementAction extends Action {
     selectElementInCapellaExplorer(eObject);
   }
   
-  protected Object getFirstSelectedElement(ISelection selection) {
-	    if (selection.isEmpty() || !(selection instanceof IStructuredSelection)) {
-	      return null;
-	    }
-	    IStructuredSelection structuredSelection = (IStructuredSelection) selection;
-	    return structuredSelection.getFirstElement();
-  }
-
   /**
-   * @param elem
+   * @param element
    */
-  public void selectElementInCapellaExplorer(EObject elem) {
-    if (null != elem) {
+  public void selectElementInCapellaExplorer(EObject element) {
+    if (null != element) {
       IWorkbenchPage activePage = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
-      ISelection newSelection = new StructuredSelection(elem);
-      Object firstElement = getFirstSelectedElement(newSelection);
+      ISelection newSelection = new StructuredSelection(element);
      
       try {
-    	  IViewPart explorerView = activePage.showView(__EXPLORER_VIEW_ID);
-          if(firstElement instanceof DRepresentation){
-        	  explorerView.getViewSite().getSelectionProvider().setSelection(
-        			  new StructuredSelection(RepresentationHelper.getRepresentationDescriptor((DRepresentation)firstElement)));
+        CommonNavigator explorerView = (CommonNavigator)activePage.showView(__EXPLORER_VIEW_ID);
+          if(element instanceof DRepresentation){
+            explorerView.getViewSite().getSelectionProvider().setSelection(
+                new StructuredSelection(RepresentationHelper.getRepresentationDescriptor((DRepresentation)element)));
           } else {
-        	  // when it doesn't concern DRepresentations
-        	  explorerView.getViewSite().getSelectionProvider().setSelection(newSelection);
+            // When it doesn't concern DRepresentations
+            explorerView.getViewSite().getSelectionProvider().setSelection(newSelection);
           }   
+          if (!LocateFilteredElementsInCommonNavigatorAction.isSetSelection(explorerView.getCommonViewer(), element)) {
+            LocateFilteredElementsInCommonNavigatorAction locateFilteredElementsInCommonNavigatorAction = new LocateFilteredElementsInCommonNavigatorAction(__EXPLORER_VIEW_ID);
+            locateFilteredElementsInCommonNavigatorAction.run((IStructuredSelection) newSelection);
+            explorerView.selectReveal(newSelection);
+          }
       } catch (PartInitException exception) {
-    	__logger.warn(new EmbeddedMessage(exception.getMessage(), IReportManagerDefaultComponents.UI), exception);
+      __logger.warn(new EmbeddedMessage(exception.getMessage(), IReportManagerDefaultComponents.UI), exception);
       } 
     }
   }

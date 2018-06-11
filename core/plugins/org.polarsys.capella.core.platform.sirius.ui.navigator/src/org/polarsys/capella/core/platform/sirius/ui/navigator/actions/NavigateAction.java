@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,6 +15,8 @@ import org.eclipse.jface.action.Action;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.StructuredViewer;
+import org.polarsys.capella.common.ui.actions.LocateFilteredElementsInCommonNavigatorAction;
+import org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaCommonNavigator;
 
 /**
  */
@@ -34,12 +36,12 @@ class NavigateAction extends Action {
   /**
    * Constructor.
    * 
-   * @param element_p
-   * @param viewer_p
+   * @param element
+   * @param viewer
    */
-  public NavigateAction(EObject element_p, StructuredViewer viewer_p) {
-    _element = element_p;
-    _viewer = viewer_p;
+  public NavigateAction(EObject element, StructuredViewer viewer) {
+    _element = element;
+    _viewer = viewer;
   }
 
   /**
@@ -49,9 +51,9 @@ class NavigateAction extends Action {
   public void run() {
     IStructuredSelection selection = new StructuredSelection(_element);
     _viewer.setSelection(selection, true);
-    if (((StructuredSelection) _viewer.getSelection()).toArray().length == 0) {
-      LocatedElementsNotFoundInCapellaExplorerHandlingAction locatedElementsNotFoundInCapellaExplorerHandlingAction = new LocatedElementsNotFoundInCapellaExplorerHandlingAction();
-      locatedElementsNotFoundInCapellaExplorerHandlingAction.run(selection);
+    if (!LocateFilteredElementsInCommonNavigatorAction.isSetSelection(_viewer, _element)) {
+      LocateFilteredElementsInCommonNavigatorAction LocateFilteredElementsInCommonNavigatorAction = new LocateFilteredElementsInCommonNavigatorAction(CapellaCommonNavigator.ID);
+      LocateFilteredElementsInCommonNavigatorAction.run(selection);
       _viewer.setSelection(selection, true);
     }
   }

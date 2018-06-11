@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -33,6 +33,7 @@ import org.eclipse.ui.PlatformUI;
 import org.polarsys.capella.common.tools.report.EmbeddedMessage;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
+import org.polarsys.capella.common.ui.actions.LocateFilteredElementsInCommonNavigatorAction;
 import org.polarsys.capella.common.ui.toolkit.browser.content.provider.wrapper.EObjectWrapper;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.epbs.ConfigurationItem;
@@ -127,9 +128,9 @@ public class LocateInCapellaExplorerAction implements IObjectActionDelegate, IVi
         explorerView = (CapellaCommonNavigator) activePage.showView(CapellaCommonNavigator.ID);
       }
       explorerView.selectReveal(selection);
-      if (((StructuredSelection) explorerView.getCommonViewer().getSelection()).toArray().length == 0) {
-        LocatedElementsNotFoundInCapellaExplorerHandlingAction locatedElementsNotFoundInCapellaExplorerHandlingAction = new LocatedElementsNotFoundInCapellaExplorerHandlingAction();
-        locatedElementsNotFoundInCapellaExplorerHandlingAction.run((IStructuredSelection) selection);
+      if (!LocateFilteredElementsInCommonNavigatorAction.isSetSelection(explorerView.getCommonViewer(), ((IStructuredSelection) selection).getFirstElement())) {
+        LocateFilteredElementsInCommonNavigatorAction locateFilteredElementsInCommonNavigatorAction = new LocateFilteredElementsInCommonNavigatorAction(CapellaCommonNavigator.ID);
+        locateFilteredElementsInCommonNavigatorAction.run((IStructuredSelection) selection);
         explorerView.selectReveal(selection);
       }
     } catch (PartInitException exception) {

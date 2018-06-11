@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,30 +8,42 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.core.platform.sirius.ui.navigator.actions;
+package org.polarsys.capella.common.ui.actions;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.runtime.Assert;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.viewers.ITreeContentProvider;
+import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.jface.viewers.ViewerFilter;
+import org.eclipse.osgi.util.NLS;
+import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.internal.navigator.NavigatorFilterService;
+import org.eclipse.ui.navigator.CommonNavigator;
 import org.eclipse.ui.navigator.ICommonFilterDescriptor;
 import org.eclipse.ui.navigator.INavigatorContentService;
-import org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaCommonNavigator;
 
 /**
  * This action will be executed if the navigated elements are not visible in the project explorer. Its responsibilities
  * is to find the effective filters applied on the navigated elements and deactivate them, so that the navigated
  * elements will be visible and focused on the project explorer.
  * 
- * @author Cong Bang DO
  *
  */
-public class LocatedElementsNotFoundInCapellaExplorerHandlingAction {
+public class LocateFilteredElementsInCommonNavigatorAction {
+  
+  private String commonNavigatorID;
+  
+  public LocateFilteredElementsInCommonNavigatorAction(String commonNavigatorID){
+    Assert.isLegal(commonNavigatorID != null && !commonNavigatorID.isEmpty());
+    this.commonNavigatorID = commonNavigatorID;
+  }
 
   /**
    * 
@@ -39,9 +51,12 @@ public class LocatedElementsNotFoundInCapellaExplorerHandlingAction {
    */
   public void run(IStructuredSelection selection) {
     IWorkbenchPage activePage = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
-    // Get the Capella Explorer.
-    CapellaCommonNavigator capellaNavigator = (CapellaCommonNavigator) activePage.findView(CapellaCommonNavigator.ID);
-    INavigatorContentService capellaNavigatorContentService = capellaNavigator.getNavigatorContentService();
+    // Get the View.
+    IViewPart viewPart = activePage.findView(commonNavigatorID);
+    Assert.isLegal(viewPart instanceof CommonNavigator);
+    
+    CommonNavigator commonNavigator = (CommonNavigator) viewPart;
+    INavigatorContentService capellaNavigatorContentService = commonNavigator.getNavigatorContentService();
     NavigatorFilterService capellaNavigatorFilterService = (NavigatorFilterService) capellaNavigatorContentService
         .getFilterService();
 
@@ -58,7 +73,7 @@ public class LocatedElementsNotFoundInCapellaExplorerHandlingAction {
       for (Object element : selection.toArray()) {
         if (capellaNavigatorFilterService.isActive(filterDescriptor.getId())) {
           activeFilterIds.add(filterDescriptor.getId());
-          if (!viewerFilter.select(capellaNavigator.getCommonViewer(), null, element)) {
+          if (!select(commonNavigator, viewerFilter, element)) {
             effectiveFilterDescriptors.add(filterDescriptor);
             effectiveFilterIds.add(filterDescriptor.getId());
           }
@@ -68,24 +83,41 @@ public class LocatedElementsNotFoundInCapellaExplorerHandlingAction {
 
     if (effectiveFilterDescriptors.size() > 0) {
       StringBuilder dialogMessageBuilder = new StringBuilder();
-      dialogMessageBuilder.append(Messages.LocateInCapellaExplorerAction_SelectedElementNotVisible_0);
+      dialogMessageBuilder.append(Messages.LocateInCommonNavigator_SelectedElementNotVisible_0);
       for (ICommonFilterDescriptor filterDescriptor : effectiveFilterDescriptors) {
         dialogMessageBuilder
             .append(" - " + filterDescriptor.getName() + ": " + filterDescriptor.getDescription() + "\n"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
       }
-      dialogMessageBuilder.append(Messages.LocateInCapellaExplorerAction_SelectedElementNotVisible_4);
+      dialogMessageBuilder.append(Messages.LocateInCommonNavigator_SelectedElementNotVisible_1);
 
       boolean openFilterSelectionDialog = MessageDialog.openQuestion(
           PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
-          Messages.LocateInCapellaExplorerAction_SelectedElementNotVisible_Title, dialogMessageBuilder.toString());
+          NLS.bind(Messages.LocateInCommonNavigator_SelectedElementNotVisible_Title, commonNavigator.getPartName()),
+          dialogMessageBuilder.toString());
       if (openFilterSelectionDialog) {
         activeFilterIds.removeAll(effectiveFilterIds);
         capellaNavigatorFilterService.activateFilterIdsAndUpdateViewer(activeFilterIds.toArray(new String[0]));
       }
     } else {
       MessageDialog.openInformation(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
-          Messages.LocateInCapellaExplorerAction_SelectedElementNotVisible_Title,
-          Messages.LocateInCapellaExplorerAction_SelectedElementNotVisible_5);
+          NLS.bind(Messages.LocateInCommonNavigator_SelectedElementNotVisible_Title, commonNavigator.getPartName()),
+          NLS.bind(Messages.LocateInCommonNavigator_SelectedElementNotVisible_2, commonNavigator.getPartName()));
     }
+  }
+
+  protected boolean select(CommonNavigator commonNavigator, ViewerFilter viewerFilter, Object element) {
+    boolean select = true;
+    while (select && !(element instanceof IFile)) {
+      select = viewerFilter.select(commonNavigator.getCommonViewer(), null, element);
+      ITreeContentProvider contentProvider = (ITreeContentProvider) commonNavigator.getCommonViewer()
+          .getContentProvider();
+      element = contentProvider.getParent(element);
+    }
+    return select;
+  }
+  
+  public static boolean isSetSelection(StructuredViewer viewer, Object exptectedElement) {
+    IStructuredSelection selection = (IStructuredSelection) viewer.getSelection();
+    return selection.toArray().length > 0 && selection.getFirstElement().equals(exptectedElement);
   }
 }
