@@ -72,6 +72,7 @@ import org.polarsys.capella.core.data.capellacore.InvolvedElement;
 import org.polarsys.capella.core.data.capellacore.Involvement;
 import org.polarsys.capella.core.data.capellacore.ModellingBlock;
 import org.polarsys.capella.core.data.capellacore.NamedElement;
+import org.polarsys.capella.core.data.capellacore.PropertyValueGroup;
 import org.polarsys.capella.core.data.cs.AbstractDeploymentLink;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
@@ -3712,7 +3713,8 @@ public class FaServices {
     // get all displayed functions in the diagram
     for (DDiagramElement aContainer : diagram.getContainers()) {
       if ((aContainer != null) && (aContainer.getTarget() != null)
-          && FaServices.getFaServices().isAbstractFunctionVisibleInDFB((AbstractDNode) aContainer, diagram)) {
+          && FaServices.getFaServices().isAbstractFunctionVisibleInDFB((AbstractDNode) aContainer, diagram)
+          && !(aContainer.getTarget() instanceof PropertyValueGroup)) {
         elementsInDiagram.put(aContainer.getTarget(), aContainer);
         if (aContainer.getTarget() instanceof AbstractFunction) {
           allFunctionsInDiagram.put((AbstractFunction) aContainer.getTarget(), (AbstractDNode) aContainer);
