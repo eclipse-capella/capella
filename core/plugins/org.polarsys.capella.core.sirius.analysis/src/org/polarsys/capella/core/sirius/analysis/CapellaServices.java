@@ -299,8 +299,14 @@ public class CapellaServices {
         result.addAll((Collection) obj1);
       else if (obj1 != null)
         result.add(obj1);
+
       if (obj2 instanceof Collection)
         result.removeAll((Collection) obj2);
+      else if (obj2 instanceof Object[]) {
+        for (Object o : (Object[]) obj2) {
+          result.remove(o);
+        }
+      }
       else if (obj2 != null)
         result.remove(obj2);
       // if (result.size() == 1)
