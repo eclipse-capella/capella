@@ -4801,9 +4801,6 @@
             <mask mask="{0}"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% current%>">
-                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% representedInstance %>">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
-                </subModelOperations>
                 <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
               </firstModelOperations>
             </initialOperation>

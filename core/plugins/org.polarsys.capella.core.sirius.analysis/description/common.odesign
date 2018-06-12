@@ -15664,9 +15664,6 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%current%>">
                 <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
-                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="feature:representedInstance">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
-                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -17574,9 +17571,6 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%current%>">
                 <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
-                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="feature:representedInstance">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
-                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -18373,9 +18367,6 @@
             <mask mask="{0}"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% current%>">
-                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="feature:representedInstance">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
-                </subModelOperations>
                 <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
               </firstModelOperations>
             </initialOperation>
