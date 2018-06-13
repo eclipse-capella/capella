@@ -262,8 +262,6 @@
 	    <topic href="html/12. Model Analysis/Interpreter View.html" label="Interpreter View">
 		</topic>
 		<topic href="html/12. Model Analysis/12.5.1 AQL Queries.html" label="AQL Queries">
-		</topic>
-		<topic label="Acceleo 2 Queries">
 			<topic href="html/12. Model Analysis/12.5.2 Acceleo 2 Queries.html#Basic_Model_Queries" label="Basic Model Queries"></topic>
 			<topic href="html/12. Model Analysis/12.5.2 Acceleo 2 Queries.html#Diagram_Queries" label="Diagram Queries"></topic>
 			<topic href="html/12. Model Analysis/12.5.2 Acceleo 2 Queries.html#Searching_Strings" label="Searching Strings"></topic>
