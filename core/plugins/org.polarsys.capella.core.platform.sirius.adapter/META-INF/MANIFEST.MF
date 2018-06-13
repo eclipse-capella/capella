@@ -10,5 +10,5 @@ Require-Bundle: org.eclipse.sirius.diagram;visibility:=reexport,
  org.polarsys.capella.core.model.handler
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.platform.sirius.adapter
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Localization: plugin

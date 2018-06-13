@@ -9,7 +9,7 @@ Require-Bundle: org.polarsys.capella.core.projection.misc;visibility:=reexport,
  org.polarsys.capella.core.projection.common,
  org.polarsys.capella.core.projection.data,
  org.polarsys.capella.core.projection.interfaces
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.transfo.logicalfunction
 Bundle-Localization: plugin

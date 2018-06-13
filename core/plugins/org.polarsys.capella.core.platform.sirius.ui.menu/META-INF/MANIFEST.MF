@@ -11,6 +11,6 @@ Require-Bundle: org.polarsys.capella.core.platform.sirius.ui.actions;visibility:
  org.polarsys.capella.core.model.helpers,
  org.polarsys.capella.core.preferences
 Export-Package: org.polarsys.capella.core.platform.sirius.ui
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin

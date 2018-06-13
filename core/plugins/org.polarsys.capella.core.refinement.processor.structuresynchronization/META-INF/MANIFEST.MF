@@ -8,5 +8,5 @@ Require-Bundle: org.polarsys.capella.core.refinement.framework.ui;visibility:=re
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.refinement.processor,
  org.polarsys.capella.core.refinement.static_
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Localization: plugin

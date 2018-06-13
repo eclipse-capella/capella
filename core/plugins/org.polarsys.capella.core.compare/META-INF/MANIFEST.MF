@@ -17,7 +17,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.polarsys.kitalpha.ad.metadata.model,
  org.polarsys.kitalpha.ad.services,
  org.polarsys.capella.common.libraries
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.compare
 Bundle-Localization: plugin

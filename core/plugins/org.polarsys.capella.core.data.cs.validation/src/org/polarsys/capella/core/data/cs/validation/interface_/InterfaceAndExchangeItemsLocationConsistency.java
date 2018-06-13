@@ -79,7 +79,8 @@ public class InterfaceAndExchangeItemsLocationConsistency extends AbstractValida
       List<EObject> objects = query.getAvailableElements(target);
 
       Object featureValue = target.eGet(targetFeature);
-      List<EObject> values = targetFeature.isMany() ? (EList) featureValue : Collections.singletonList(featureValue);
+     
+      List<EObject> values = targetFeature.isMany() ? (EList) featureValue : Collections.singletonList((EObject) featureValue);
 
       if ((source != null) && (target != null)) {
         for (EObject value : values) {

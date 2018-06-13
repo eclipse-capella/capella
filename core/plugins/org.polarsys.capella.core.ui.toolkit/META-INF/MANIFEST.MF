@@ -16,7 +16,7 @@ Export-Package: org.polarsys.capella.core.ui.toolkit,
  org.polarsys.capella.core.ui.toolkit.helpers,
  org.polarsys.capella.core.ui.toolkit.icons,
  org.polarsys.capella.core.ui.toolkit.viewers
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Bundle-Activator: org.polarsys.capella.core.ui.toolkit.Activator
 Bundle-Localization: plugin

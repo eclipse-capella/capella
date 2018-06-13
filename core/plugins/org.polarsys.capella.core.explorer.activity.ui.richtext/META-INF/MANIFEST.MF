@@ -12,7 +12,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.polarsys.kitalpha.richtext.widget,
  org.polarsys.kitalpha.richtext.common
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: org.polarsys.capella.core.explorer.activity.ui.richtext,
  org.polarsys.capella.core.explorer.activity.ui.richtext.page
 Bundle-Vendor: %providerName

@@ -43,5 +43,5 @@ Export-Package: org.polarsys.capella.core.data.helpers.capellacommon,
 Require-Bundle: org.polarsys.capella.core.data.gen;visibility:=reexport,
  org.polarsys.capella.common.data.helpers;visibility:=reexport
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Localization: plugin

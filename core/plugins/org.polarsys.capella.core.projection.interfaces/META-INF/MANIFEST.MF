@@ -14,7 +14,7 @@ Require-Bundle: org.polarsys.capella.core.projection.misc,
  org.polarsys.capella.core.projection.preferences,
  org.polarsys.capella.core.platform.sirius.ui.actions,
  org.polarsys.capella.core.transition.system.topdown
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Bundle-Activator: org.polarsys.capella.core.projection.interfaces.InterfaceGenerationActivator
 Bundle-Localization: plugin

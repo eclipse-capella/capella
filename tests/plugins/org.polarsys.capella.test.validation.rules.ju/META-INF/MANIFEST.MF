@@ -15,7 +15,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.junit,
  org.polarsys.capella.patterns,
  org.polarsys.capella.core.model.helpers
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.test.validation.rules.ju,
  org.polarsys.capella.test.validation.rules.ju.testcases,

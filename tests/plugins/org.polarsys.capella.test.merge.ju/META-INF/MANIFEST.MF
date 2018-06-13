@@ -9,7 +9,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.polarsys.capella.core.data.gen,
  org.polarsys.capella.core.refinement.merge,
  org.polarsys.capella.test.framework
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.test.merge.ju,
  org.polarsys.capella.test.merge.ju.testcases,
