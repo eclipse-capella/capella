@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -45,6 +45,7 @@ public class UndoRedoActionProvider extends CommonActionProvider implements ICom
    * Undo action handler based on {@link IOperationHistory}.
    */
   private UndoActionHandler undoActionHandler;
+
   /**
    * Redo action handler based on {@link IOperationHistory}.
    */
@@ -59,9 +60,9 @@ public class UndoRedoActionProvider extends CommonActionProvider implements ICom
 
     IWorkbenchPartSite workbenchPartSite = ((ICommonViewerWorkbenchSite) site.getViewSite()).getSite();
     // Create the undo action handler
-    undoActionHandler = new UndoActionHandler(workbenchPartSite, null/*undoContext*/);
+    undoActionHandler = new UndoActionHandler(workbenchPartSite, null/* undoContext */);
     // Create the redo action handler
-    redoActionHandler = new RedoActionHandler(workbenchPartSite, null/*undoContext*/);
+    redoActionHandler = new RedoActionHandler(workbenchPartSite, null/* undoContext */);
 
     NavigatorEditingDomainDispatcher.registerCommandStackSelectionProvider(this);
     updateActionBars();
@@ -102,19 +103,21 @@ public class UndoRedoActionProvider extends CommonActionProvider implements ICom
     }
     if (selection instanceof IStructuredSelection) {
       IStructuredSelection structuralSel = (IStructuredSelection) selection;
-      //If a representation item is clicked, the editing domain should be retrieved from the corresponding diagram
+      // If a representation item is clicked, the editing domain should be retrieved from the corresponding
+      // diagram
       if (structuralSel.size() == 1) {
         Object selectedElement = structuralSel.getFirstElement();
         if (selectedElement instanceof RepresentationItemImpl)
-          editingDomain = TransactionHelper.getEditingDomain(((RepresentationItemImpl) selectedElement).getDRepresentationDescriptor().getRepresentation());
+          editingDomain = TransactionHelper
+              .getEditingDomain(((RepresentationItemImpl) selectedElement).getDRepresentationDescriptor());
       }
-      
+
       boolean isEObjectList = true;
       List selectionList = ((IStructuredSelection) selection).toList();
       for (Object obj : selectionList)
         if (!(obj instanceof EObject))
           isEObjectList = false;
-      //Editing domain can only be retrieved from a list of EObjects
+      // Editing domain can only be retrieved from a list of EObjects
       if (isEObjectList)
         editingDomain = TransactionHelper.getEditingDomain((Collection) selectionList);
     }

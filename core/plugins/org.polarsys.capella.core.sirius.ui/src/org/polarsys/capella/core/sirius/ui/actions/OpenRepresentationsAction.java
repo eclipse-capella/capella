@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,6 +25,7 @@ import org.eclipse.sirius.table.metamodel.table.description.CrossTableDescriptio
 import org.eclipse.sirius.table.metamodel.table.description.EditionTableDescription;
 import org.eclipse.sirius.table.metamodel.table.provider.TableUIPlugin;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.actions.BaseSelectionListenerAction;
@@ -46,7 +47,7 @@ public class OpenRepresentationsAction extends BaseSelectionListenerAction {
   // Log4j reference logger.
   private static final Logger LOGGER = ReportManagerRegistry.getInstance()
       .subscribe(IReportManagerDefaultComponents.UI);
-  private List<DRepresentation> representations;
+  private List<DRepresentationDescriptor> representationDescriptors;
   private boolean parent = false;
 
   /**
@@ -59,12 +60,12 @@ public class OpenRepresentationsAction extends BaseSelectionListenerAction {
   /**
    * @param drep
    */
-  public OpenRepresentationsAction(RepresentationDescription description, DRepresentation drep) {
-    super(drep.getName());
+  public OpenRepresentationsAction(RepresentationDescription description, DRepresentationDescriptor repDesc) {
+    super(repDesc.getName());
 
     parent = true;
-    representations = new ArrayList<DRepresentation>();
-    representations.add(drep);
+    representationDescriptors = new ArrayList<DRepresentationDescriptor>();
+    representationDescriptors.add(repDesc);
 
     ImageDescriptor imageDescriptor = null;
     // Handle specific representations : Table ones.
@@ -92,9 +93,11 @@ public class OpenRepresentationsAction extends BaseSelectionListenerAction {
    */
   @Override
   public void run() {
-    List<DRepresentation> reps;
+    List<DRepresentation> reps = new ArrayList<>();
     if (parent) {
-      reps = representations;
+      for (DRepresentationDescriptor repDesc : representationDescriptors) {
+        reps.add(repDesc.getRepresentation());
+      }
     } else {
       IStructuredSelection selection = getStructuredSelection();
       

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,7 @@ package org.polarsys.capella.core.sirius.ui.actions;
 import java.util.Iterator;
 import java.util.List;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.window.Window;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
@@ -53,13 +54,8 @@ public class RenameRepresentationAction extends BaseSelectionListenerAction {
     if (handler != null) {
       for (Iterator<?> iterator = selection.iterator(); iterator.hasNext();) {
         Object selectedObject = iterator.next();
-
-        if (selectedObject instanceof DRepresentationDescriptor) {
-          selectedObject = ((DRepresentationDescriptor) selectedObject).getRepresentation();
-        }
-
-        if (selectedObject instanceof DRepresentation) {
-          if (handler.isLockedByOthers((DRepresentation) selectedObject)) {
+        if (selectedObject instanceof DRepresentation || selectedObject instanceof DRepresentationDescriptor) {
+          if (handler.isLockedByOthers((EObject) selectedObject)) {
             return false;
           }
         }
