@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,12 +23,9 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.sirius.common.tools.api.util.SiriusCrossReferenceAdapter;
 import org.polarsys.capella.common.platform.sirius.ted.SemanticCrossReferencer;
-import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.SemanticEditingDomain;
 import org.polarsys.capella.common.platform.sirius.ted.SiriusSessionListener;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
-import org.polarsys.capella.core.model.handler.helpers.CrossReferencerHelper;
 
 /**
  * An {@link ECrossReferenceAdapter} that only takes capella resources into account.
@@ -65,20 +62,27 @@ public class CapellaECrossReferenceAdapter extends SemanticCrossReferencer  {
 
   /**
    * Adapt all references of specified object against the inverse cross referencer.<br>
-   * Adapted means fake a Notification against the cross referencer to make sure its internal map is correctly filled in.
+   * Adapted means fake a Notification against the cross referencer to make sure its internal map is correctly filled
+   * in.
+   * 
    * @param object_p
    */
   protected void adaptAllEReferences(EObject object) {
     EList<EReference> eAllReferences = object.eClass().getEAllReferences();
-    // Loop over all references of specified object. When attaching an object to a new container, its subtree elements must be self adapted too.
-    // When attaching to a new container, remove notifications are sent that clears crossreferencer maps regarding this subtree.
+    
+    // Loop over all covered references of specified object. When attaching an object to a new container, its subtree elements
+    // must be self adapted too.
+    // When attaching to a new container, remove notifications are sent that clears crossreferencer maps regarding this
+    // subtree.
     // Hence, we must adapt again the subtree to make sure the cross referencer maps are filled in correctly.
     for (EReference eReference : eAllReferences) {
-      int eventType = Notification.ADD_MANY;
-      if (!eReference.isMany()) {
-        eventType = Notification.SET;
+      if (eReference.isContainment() || isIncluded(eReference)) {
+        int eventType = Notification.ADD_MANY;
+        if (!eReference.isMany()) {
+          eventType = Notification.SET;
+        }
+        selfAdapt(new ENotificationImpl((InternalEObject) object, eventType, eReference, null, object.eGet(eReference)));
       }
-      selfAdapt(new ENotificationImpl((InternalEObject) object, eventType, eReference, null, object.eGet(eReference)));
     }
   }
 
