@@ -108,7 +108,8 @@ public class DiagramContext extends SessionContext {
       }
     }
     if (view == null) {
-      view = getView(getSemanticElement(semanticIdentifier));
+      // Catch to avoid The method getView(String) is ambiguous for the type DiagramContext
+      view = getView((EObject) getSemanticElement(semanticIdentifier));
       if (view instanceof DDiagramElement) {
         putView(semanticIdentifier, (DDiagramElement) view);
       }

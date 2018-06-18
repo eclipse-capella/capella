@@ -10,7 +10,7 @@ Require-Bundle: org.polarsys.capella.core.validation.ui.ide,
  org.polarsys.capella.core.platform.sirius.ui.navigator,
  org.polarsys.capella.core.platform.sirius.ui.actions,
  org.polarsys.capella.core.ui.properties
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
 Export-Package: org.polarsys.capella.core.data.pa.ui.quickfix,

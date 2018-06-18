@@ -7,6 +7,6 @@ Bundle-Vendor: %providerName
 Require-Bundle: org.polarsys.capella.core.refinement.framework.ui;visibility:=reexport,
  org.polarsys.capella.core.refinement.merge
 Export-Package: org.polarsys.capella.core.refinement
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin

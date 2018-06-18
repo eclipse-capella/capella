@@ -16,7 +16,7 @@ Require-Bundle: org.eclipse.sirius.diagram.sequence,
  org.eclipse.sirius.diagram.ui,
  org.polarsys.capella.common.ui.services,
  org.polarsys.capella.core.model.preferences
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
 Export-Package: org.polarsys.capella.core.platform.sirius.clipboard,

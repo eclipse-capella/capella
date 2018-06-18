@@ -36,7 +36,7 @@ Require-Bundle: org.eclipse.ui,
  org.polarsys.capella.core.sirius.analysis
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: org.polarsys.capella.core.data.migration,
  org.polarsys.capella.core.data.migration.af,
  org.polarsys.capella.core.data.migration.aird,

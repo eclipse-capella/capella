@@ -10,7 +10,7 @@ Require-Bundle: org.polarsys.capella.core.refinement.framework;visibility:=reexp
 Export-Package: org.polarsys.capella.core.refinement.framework.ui,
  org.polarsys.capella.core.refinement.framework.ui.icons_75,
  org.polarsys.capella.core.refinement.framework.ui.model
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
 Import-Package: org.polarsys.capella.core.platform.sirius.ui.navigator.view

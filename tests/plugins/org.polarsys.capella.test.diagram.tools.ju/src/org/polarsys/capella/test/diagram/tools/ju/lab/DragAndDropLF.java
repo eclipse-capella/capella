@@ -12,6 +12,7 @@ package org.polarsys.capella.test.diagram.tools.ju.lab;
 
 import junit.framework.Test;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.viewpoint.RGBValues;
@@ -35,7 +36,8 @@ public class DragAndDropLF extends AbstractDiagramTestCase {
     SessionContext context = new SessionContext(session);
 
     DiagramContext diagramContext = new OpenDiagramStep(context, LAB_DIAGRAM).run();
-    DNode beforeDnDLFNode = (DNode) diagramContext.getView(context.getSemanticElement(LA__ROOT_LF__LF_5));
+    // Casting to avoid The method getView(String) is ambiguous for the type DiagramContext
+    DNode beforeDnDLFNode = (DNode) diagramContext.getView((EObject) context.getSemanticElement(LA__ROOT_LF__LF_5));
 
     RGBValues beforeDnDRgb = beforeDnDLFNode.getOwnedStyle().getBorderColor();
     int beforeDnDRed = beforeDnDRgb.getRed();
@@ -47,8 +49,8 @@ public class DragAndDropLF extends AbstractDiagramTestCase {
 
     new DragAndDropTool(diagramContext, "DnD AB AbstractFunction Allocation", LA__ROOT_LF__LF_5,
         LA__LOGICAL_CONTEXT__PART_LA_2__LA_2).run();
-
-    DNode afterDnDLFNode = (DNode) diagramContext.getView(context.getSemanticElement(LA__ROOT_LF__LF_5));
+    // Casting to avoid The method getView(String) is ambiguous for the type DiagramContext
+    DNode afterDnDLFNode = (DNode) diagramContext.getView((EObject) context.getSemanticElement(LA__ROOT_LF__LF_5));
     RGBValues afterDnDRgb = afterDnDLFNode.getOwnedStyle().getBorderColor();
     int afterDnDRed = afterDnDRgb.getRed();
     int afterDnDGreen = afterDnDRgb.getGreen();

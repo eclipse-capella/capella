@@ -10,6 +10,6 @@ Require-Bundle: org.eclipse.sirius;visibility:=reexport,
  org.eclipse.sirius.ecore.extender;visibility:=reexport,
  org.polarsys.capella.common.ef;visibility:=reexport
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Activator: org.polarsys.capella.common.platform.sirius.ted.PlatformSiriusTedActivator
 Bundle-Localization: plugin

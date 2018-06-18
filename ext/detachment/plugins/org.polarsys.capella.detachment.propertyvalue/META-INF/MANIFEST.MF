@@ -16,7 +16,7 @@ Require-Bundle: org.eclipse.ui,
  org.polarsys.capella.core.platform.sirius.ui.navigator,
  org.polarsys.capella.core.data.gen.edit,
  org.polarsys.capella.core.ui.toolkit
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Bundle-Vendor: %providerName
 Export-Package: org.polarsys.capella.detachment.propertyvalue.command,

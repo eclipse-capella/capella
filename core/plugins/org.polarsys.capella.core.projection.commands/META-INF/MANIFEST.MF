@@ -33,7 +33,7 @@ Require-Bundle: org.eclipse.ui,
  org.polarsys.capella.core.projection.scenario,
  org.eclipse.sirius.diagram.ui,
  org.polarsys.capella.common.tools.report.appenders.usage
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.projection.commands,
  org.polarsys.capella.core.projection.commands.actions,

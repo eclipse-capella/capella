@@ -11,7 +11,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.polarsys.capella.core.projection.data,
  org.polarsys.capella.core.projection.statemachine,
  org.polarsys.capella.core.projection.preferences
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.projection.actors.oa2ctx,
  org.polarsys.capella.core.projection.actors.oa2ctx.rules.byactor,

@@ -10,6 +10,6 @@ Require-Bundle: org.eclipse.ui,
  org.polarsys.capella.core.platform.sirius.ui.navigator,
  org.polarsys.capella.core.menu.dynamic
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: org.polarsys.capella.test.navigator.ju,
  org.polarsys.capella.test.navigator.ju.testsuites.main

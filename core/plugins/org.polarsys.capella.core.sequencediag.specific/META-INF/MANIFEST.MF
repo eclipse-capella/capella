@@ -19,7 +19,7 @@ Require-Bundle: org.eclipse.ui,
  org.polarsys.capella.common.ui.services,
  org.polarsys.capella.core.data.interaction.properties,
  org.eclipse.sirius.diagram.ui
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Import-Package: org.eclipse.gmf.runtime.diagram.ui.services.editpolicy
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin

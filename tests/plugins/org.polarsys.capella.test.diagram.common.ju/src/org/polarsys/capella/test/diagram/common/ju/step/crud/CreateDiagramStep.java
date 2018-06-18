@@ -48,13 +48,15 @@ public class CreateDiagramStep extends AbstractTestStep<DiagramContext> {
   protected URI selectedURI;
 
   public CreateDiagramStep(SessionContext executionContext, String targetIdentifier, String diagramDescription) {
-    this(executionContext, executionContext.getSemanticElement(targetIdentifier), diagramDescription, TestHelper
+    // Cast to EObject to avoid The constructor CreateDiagramStep(SessionContext, String, String, URI) is ambiguous
+    this(executionContext, (EObject) executionContext.getSemanticElement(targetIdentifier), diagramDescription, TestHelper
         .getAirdResource(executionContext.getSession()).getURI());
   }
 
   public CreateDiagramStep(SessionContext executionContext, String targetIdentifier, String diagramDescription,
       URI selectedURI) {
-    this(executionContext, executionContext.getSemanticElement(targetIdentifier), diagramDescription, selectedURI);
+    // Cast to EObject to avoid The constructor CreateDiagramStep(SessionContext, String, String, URI) is ambiguous
+    this(executionContext, (EObject) executionContext.getSemanticElement(targetIdentifier), diagramDescription, selectedURI);
   }
 
   /**
