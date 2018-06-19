@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,12 +22,12 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.ui.internal.views.properties.tabbed.TabbedPropertyViewPlugin;
+import org.eclipse.ui.internal.views.properties.tabbed.view.TabDescriptor;
 import org.eclipse.ui.views.properties.tabbed.AbstractPropertySection;
 import org.eclipse.ui.views.properties.tabbed.ISection;
 import org.eclipse.ui.views.properties.tabbed.ISectionDescriptor;
 import org.eclipse.ui.views.properties.tabbed.ITabDescriptor;
-
+import org.osgi.framework.FrameworkUtil;
 import org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper;
 import org.polarsys.capella.core.ui.properties.sections.IAbstractSection;
 import org.polarsys.capella.core.ui.properties.sections.CapellaPropertySection;
@@ -125,7 +125,7 @@ public class CustomPropertyHelper {
     List<String> allMetaClassNames = getAllMetaClassNames(object.eClass());
 
     IConfigurationElement[] propertySectionsElements =
-        ExtensionPointHelper.getConfigurationElements(TabbedPropertyViewPlugin.getPlugin().getBundle().getSymbolicName(), EXTPT_SECTIONS);
+        ExtensionPointHelper.getConfigurationElements(FrameworkUtil.getBundle(TabDescriptor.class).getSymbolicName(), EXTPT_SECTIONS);
     for (IConfigurationElement propertySectionsElement : propertySectionsElements) {
       // Get the contributor id.
       String id = propertySectionsElement.getAttribute(ATT_CONTRIBUTOR_ID);

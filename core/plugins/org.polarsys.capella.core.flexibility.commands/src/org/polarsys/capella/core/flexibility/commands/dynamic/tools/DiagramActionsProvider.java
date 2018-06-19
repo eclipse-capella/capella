@@ -792,18 +792,18 @@ public class DiagramActionsProvider implements IActionsProvider {
         }
       }
 
-      if (hasProceed) {
-        getLogger().info(
-            new EmbeddedMessage(NLS.bind("Edges on diagram ''{0}'' have recovered default color.", object.getName()), IReportManagerDefaultComponents.UI, //$NON-NLS-1$
-                object));
-        try {
-                    DialectManager.INSTANCE.refresh(object, new NullProgressMonitor());
-        } catch (Exception exceptionP) {
-          getLogger().warn(
-              new EmbeddedMessage(NLS.bind("An error occured while refreshing diagram ''{0}''.", object.getName()), IReportManagerDefaultComponents.UI, //$NON-NLS-1$
-                  object));
-        }
-      }
+			if (hasProceed) {
+				getLogger().info(new EmbeddedMessage(
+						NLS.bind("Edges on diagram ''{0}'' have recovered default color.", object.getName()), //$NON-NLS-1$
+						IReportManagerDefaultComponents.UI, object));
+				try {
+					DialectManager.INSTANCE.refresh(object, new NullProgressMonitor());
+				} catch (Exception exceptionP) {
+					getLogger().warn(new EmbeddedMessage(
+							NLS.bind("An error occured while refreshing diagram ''{0}''.", object.getName()), //$NON-NLS-1$
+							IReportManagerDefaultComponents.UI, object));
+				}
+			}
 
       return hasProceed;
     }

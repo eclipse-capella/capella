@@ -10,11 +10,11 @@
  *******************************************************************************/
 target "Capella"
 
-include "../modules/gmf-runtime-1.12.tpd
+include "../modules/gmf-runtime-1.12.tpd"
 
 with source, requirements
 
-location eclipse-releases-neon "http://download.eclipse.org/releases/neon" {
+location eclipse-releases-oxygen "http://download.eclipse.org/releases/oxygen" {
 	org.eclipse.sdk.feature.group
 	org.eclipse.platform.feature.group
 	org.eclipse.emf.sdk.feature.group
@@ -24,7 +24,7 @@ location eclipse-releases-neon "http://download.eclipse.org/releases/neon" {
 	com.ibm.icu
 }
 
-location sirius-6.0.0 "http://download.eclipse.org/sirius/updates/milestones/6.0.0rc4/neon" {
+location sirius-6.0.0 "http://download.eclipse.org/sirius/updates/milestones/6.0.0rc4/oxygen" {
 	org.eclipse.sirius.doc.feature.feature.group
 	org.eclipse.sirius.runtime.feature.group
 	org.eclipse.sirius.runtime.source.feature.group
