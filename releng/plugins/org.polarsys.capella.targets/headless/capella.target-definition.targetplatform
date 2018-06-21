@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c)  2017 THALES GLOBAL SERVICES.
+ * Copyright (c)  2017, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,7 +14,7 @@ include "../modules/gmf-runtime-1.12.tpd"
 
 with source, requirements
 
-location "http://download.eclipse.org/releases/oxygen" {
+location "http://download.eclipse.org/releases/oxygen/201803211000" {
 	org.eclipse.sdk.feature.group
 	org.eclipse.platform.feature.group
 	org.eclipse.emf.sdk.feature.group
