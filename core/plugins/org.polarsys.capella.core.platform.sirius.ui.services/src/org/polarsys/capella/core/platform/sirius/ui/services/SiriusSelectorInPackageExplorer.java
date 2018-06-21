@@ -36,19 +36,23 @@ import org.polarsys.capella.core.platform.sirius.ui.perspective.CapellaPerspecti
  * The selection manager for the RSx platform.
  */
 public class SiriusSelectorInPackageExplorer implements ISelectorInPackageExplorer {
+  
+  // Log4j reference logger.
+  private Logger logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.UI);
+  
   /**
    * The runnable which select the specified model element.
    */
   public class SelectionRunnable implements Runnable {
     // The model element to select.
-    private EObject _element;
+    private EObject element;
 
     /**
      * Constructs the runnable which select the specified model element.
      * @param element the model element to select.
      */
     public SelectionRunnable(EObject element) {
-      _element = element;
+      this.element = element;
     }
 
     /**
@@ -56,7 +60,7 @@ public class SiriusSelectorInPackageExplorer implements ISelectorInPackageExplor
      */
     @SuppressWarnings("synthetic-access")
     public void run() {
-      if (null == _element) {
+      if (null == element) {
         return;
       }
 
@@ -77,22 +81,19 @@ public class SiriusSelectorInPackageExplorer implements ISelectorInPackageExplor
         IViewPart viewPart = page.showView(viewId);
         if ((null != viewPart) && (viewPart instanceof CommonNavigator)) {
           CommonNavigator navigator = (CommonNavigator) viewPart;
-          IStructuredSelection selection = new StructuredSelection(_element);
+          IStructuredSelection selection = new StructuredSelection(element);
           navigator.getCommonViewer().setSelection(selection);
-          if(!LocateFilteredElementsInCommonNavigatorAction.isSetSelection(navigator.getCommonViewer(), _element)){
+          if(!LocateFilteredElementsInCommonNavigatorAction.isSetSelection(navigator.getCommonViewer(), selection)){
             LocateFilteredElementsInCommonNavigatorAction locateFilteredElementsInCommonNavigatorAction = new LocateFilteredElementsInCommonNavigatorAction(viewId);
             locateFilteredElementsInCommonNavigatorAction.run(selection);
             navigator.getCommonViewer().setSelection(selection);
           }
         }
       } catch (PartInitException pie) {
-        __logger.debug(new EmbeddedMessage(pie.getMessage(), IReportManagerDefaultComponents.UI));
+        logger.debug(new EmbeddedMessage(pie.getMessage(), IReportManagerDefaultComponents.UI));
       }
     }
   }
-
-  // Log4j reference logger.
-  private Logger __logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.UI);
 
   /**
    * 

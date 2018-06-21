@@ -61,10 +61,10 @@ public class SemanticLocateInCapellaExplorerAction extends LocateInCapellaExplor
     // If the navigation returns something else, select it.
     if (!navigableElements.isEmpty()) {
       selectElementInCapellaExplorer(new StructuredSelection(navigableElements.toArray()));
-    } else {
-      LocateFilteredElementsInCommonNavigatorAction LocateFilteredElementsInCommonNavigatorAction = new LocateFilteredElementsInCommonNavigatorAction(CapellaCommonNavigator.ID);
-      LocateFilteredElementsInCommonNavigatorAction.run(new StructuredSelection(navigableElements.toArray()));
-      selectElementInCapellaExplorer(new StructuredSelection(navigableElements.toArray()));
+    } 
+    else {
+      LocateFilteredElementsInCommonNavigatorAction locateFilteredElementsInCommonNavigatorAction = new LocateFilteredElementsInCommonNavigatorAction(CapellaCommonNavigator.ID);
+      locateFilteredElementsInCommonNavigatorAction.run(new StructuredSelection(navigableElements.toArray()));
     }
   }
 

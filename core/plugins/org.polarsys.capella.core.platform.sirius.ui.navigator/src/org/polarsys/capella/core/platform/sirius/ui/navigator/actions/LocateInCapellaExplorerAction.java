@@ -47,9 +47,9 @@ import org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaCommon
  * The action to locate a Capella model element into the Capella explorer from the diagram view.
  */
 public class LocateInCapellaExplorerAction implements IObjectActionDelegate, IViewActionDelegate {
-  private Logger __logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.UI);
-  private boolean _ignoreWorkbenchPartSite;
-  private IWorkbenchPartSite _site;
+  private Logger logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.UI);
+  private boolean ignoreWorkbenchPartSite;
+  private IWorkbenchPartSite site;
 
   /**
    * Get the first selected element.
@@ -72,7 +72,7 @@ public class LocateInCapellaExplorerAction implements IObjectActionDelegate, IVi
    * @return <code>StructuredSelection.EMPTY</code> if no {@link IWorkbenchPart} is set to this action.
    */
   protected ISelection getSelection() {
-    return (null != _site) ? _site.getSelectionProvider().getSelection() : StructuredSelection.EMPTY;
+    return (null != site) ? site.getSelectionProvider().getSelection() : StructuredSelection.EMPTY;
   }
 
   /**
@@ -81,14 +81,14 @@ public class LocateInCapellaExplorerAction implements IObjectActionDelegate, IVi
    * @see org.eclipse.ui.IViewActionDelegate#init(org.eclipse.ui.IViewPart)
    */
   public void init(IViewPart view) {
-    _site = view.getSite();
+    site = view.getSite();
   }
 
   /**
    * @see org.eclipse.ui.IActionDelegate#run(org.eclipse.jface.action.IAction)
    */
   public void run(IAction action) {
-    if (_ignoreWorkbenchPartSite || (null != _site)) {
+    if (ignoreWorkbenchPartSite || (null != site)) {
       ISelection selection = getSelection();
       if (selection instanceof IStructuredSelection) {
         Object uiSelectedElement = getFirstSelectedElement(selection);
@@ -128,13 +128,13 @@ public class LocateInCapellaExplorerAction implements IObjectActionDelegate, IVi
         explorerView = (CapellaCommonNavigator) activePage.showView(CapellaCommonNavigator.ID);
       }
       explorerView.selectReveal(selection);
-      if (!LocateFilteredElementsInCommonNavigatorAction.isSetSelection(explorerView.getCommonViewer(), ((IStructuredSelection) selection).getFirstElement())) {
+      if (!LocateFilteredElementsInCommonNavigatorAction.isSetSelection(explorerView.getCommonViewer(), (IStructuredSelection) selection)) {
         LocateFilteredElementsInCommonNavigatorAction locateFilteredElementsInCommonNavigatorAction = new LocateFilteredElementsInCommonNavigatorAction(CapellaCommonNavigator.ID);
         locateFilteredElementsInCommonNavigatorAction.run((IStructuredSelection) selection);
         explorerView.selectReveal(selection);
       }
     } catch (PartInitException exception) {
-      __logger.warn(new EmbeddedMessage(exception.getMessage(), IReportManagerDefaultComponents.UI), exception);
+      logger.warn(new EmbeddedMessage(exception.getMessage(), IReportManagerDefaultComponents.UI), exception);
     }
   }
 
@@ -151,7 +151,7 @@ public class LocateInCapellaExplorerAction implements IObjectActionDelegate, IVi
    *      org.eclipse.ui.IWorkbenchPart)
    */
   public void setActivePart(IAction action, IWorkbenchPart targetPart) {
-    _site = targetPart.getSite();
+    this.site = targetPart.getSite();
   }
 
   /**
@@ -160,7 +160,7 @@ public class LocateInCapellaExplorerAction implements IObjectActionDelegate, IVi
    * @param site
    */
   public void setSite(IWorkbenchPartSite site) {
-    _site = site;
+    this.site = site;
   }
 
   /**
@@ -169,7 +169,7 @@ public class LocateInCapellaExplorerAction implements IObjectActionDelegate, IVi
    * @param ignore
    */
   public void shouldIgnoreWorkbenchPartSite(boolean ignore) {
-    _ignoreWorkbenchPartSite = ignore;
+    ignoreWorkbenchPartSite = ignore;
   }
 
   /**
@@ -211,10 +211,8 @@ public class LocateInCapellaExplorerAction implements IObjectActionDelegate, IVi
     if (result instanceof Part) {
       boolean allowMultiplePart = TriStateBoolean.True
           .equals(CapellaProjectHelper.isReusableComponentsDriven((Part) result));
-      if (!allowMultiplePart) {
-        if (!(((Part) result).getAbstractType() instanceof ConfigurationItem)) {
-          result = ((Part) result).getAbstractType();
-        }
+      if (!allowMultiplePart && !(((Part) result).getAbstractType() instanceof ConfigurationItem)) {
+        result = ((Part) result).getAbstractType();
       }
     }
 
