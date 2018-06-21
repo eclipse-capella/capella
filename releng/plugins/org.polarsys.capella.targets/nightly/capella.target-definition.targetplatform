@@ -12,7 +12,7 @@ target "Capella"
 
 with source, requirements
 
-location eclipse-releases-neon "http://download.eclipse.org/releases/neon" {
+location eclipse-releases-neon "http://download.eclipse.org/releases/neon/201705151400" {
 	org.eclipse.sdk.feature.group
 	org.eclipse.platform.feature.group
 	org.eclipse.emf.sdk.feature.group
