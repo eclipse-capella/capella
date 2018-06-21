@@ -14,7 +14,6 @@ import org.apache.log4j.Logger;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.resource.ImageDescriptor;
-import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.sirius.viewpoint.DRepresentation;
@@ -35,12 +34,12 @@ import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
  */
 public class SelectElementAction extends Action {
 	
-   private Logger __logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.UI);
+   private Logger logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.UI);
    
   /**
    * View id of project explorer
    */
-  static final String __EXPLORER_VIEW_ID = "capella.project.explorer"; //$NON-NLS-1$
+  static final String EXPLORER_VIEW_ID = "capella.project.explorer"; //$NON-NLS-1$
 
   EObject eObject;
 
@@ -75,10 +74,10 @@ public class SelectElementAction extends Action {
   public void selectElementInCapellaExplorer(EObject element) {
     if (null != element) {
       IWorkbenchPage activePage = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
-      ISelection newSelection = new StructuredSelection(element);
+      IStructuredSelection newSelection = new StructuredSelection(element);
      
       try {
-        CommonNavigator explorerView = (CommonNavigator)activePage.showView(__EXPLORER_VIEW_ID);
+        CommonNavigator explorerView = (CommonNavigator)activePage.showView(EXPLORER_VIEW_ID);
           if(element instanceof DRepresentation){
             explorerView.getViewSite().getSelectionProvider().setSelection(
                 new StructuredSelection(RepresentationHelper.getRepresentationDescriptor((DRepresentation)element)));
@@ -86,13 +85,13 @@ public class SelectElementAction extends Action {
             // When it doesn't concern DRepresentations
             explorerView.getViewSite().getSelectionProvider().setSelection(newSelection);
           }   
-          if (!LocateFilteredElementsInCommonNavigatorAction.isSetSelection(explorerView.getCommonViewer(), element)) {
-            LocateFilteredElementsInCommonNavigatorAction locateFilteredElementsInCommonNavigatorAction = new LocateFilteredElementsInCommonNavigatorAction(__EXPLORER_VIEW_ID);
+          if (!LocateFilteredElementsInCommonNavigatorAction.isSetSelection(explorerView.getCommonViewer(), newSelection)) {
+            LocateFilteredElementsInCommonNavigatorAction locateFilteredElementsInCommonNavigatorAction = new LocateFilteredElementsInCommonNavigatorAction(EXPLORER_VIEW_ID);
             locateFilteredElementsInCommonNavigatorAction.run((IStructuredSelection) newSelection);
             explorerView.selectReveal(newSelection);
           }
       } catch (PartInitException exception) {
-      __logger.warn(new EmbeddedMessage(exception.getMessage(), IReportManagerDefaultComponents.UI), exception);
+        logger.warn(new EmbeddedMessage(exception.getMessage(), IReportManagerDefaultComponents.UI), exception);
       } 
     }
   }

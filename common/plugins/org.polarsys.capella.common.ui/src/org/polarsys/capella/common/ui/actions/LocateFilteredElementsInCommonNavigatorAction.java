@@ -61,11 +61,11 @@ public class LocateFilteredElementsInCommonNavigatorAction {
         .getFilterService();
 
     // The active filter makes the element hidden.
-    List<ICommonFilterDescriptor> effectiveFilterDescriptors = new ArrayList<ICommonFilterDescriptor>();
+    List<ICommonFilterDescriptor> effectiveFilterDescriptors = new ArrayList<>();
     // The active filter id makes the element hidden.
-    List<String> effectiveFilterIds = new ArrayList<String>();
+    List<String> effectiveFilterIds = new ArrayList<>();
     // The active filter
-    List<String> activeFilterIds = new ArrayList<String>();
+    List<String> activeFilterIds = new ArrayList<>();
 
     ICommonFilterDescriptor[] visibleFilterDescriptors = capellaNavigatorFilterService.getVisibleFilterDescriptors();
     for (ICommonFilterDescriptor filterDescriptor : visibleFilterDescriptors) {
@@ -81,7 +81,7 @@ public class LocateFilteredElementsInCommonNavigatorAction {
       }
     }
 
-    if (effectiveFilterDescriptors.size() > 0) {
+    if (!effectiveFilterDescriptors.isEmpty()) {
       StringBuilder dialogMessageBuilder = new StringBuilder();
       dialogMessageBuilder.append(Messages.LocateInCommonNavigator_SelectedElementNotVisible_0);
       for (ICommonFilterDescriptor filterDescriptor : effectiveFilterDescriptors) {
@@ -107,17 +107,25 @@ public class LocateFilteredElementsInCommonNavigatorAction {
 
   protected boolean select(CommonNavigator commonNavigator, ViewerFilter viewerFilter, Object element) {
     boolean select = true;
-    while (select && !(element instanceof IFile)) {
-      select = viewerFilter.select(commonNavigator.getCommonViewer(), null, element);
+    Object parent = element;
+    while (select && !(parent instanceof IFile)) {
+      select = viewerFilter.select(commonNavigator.getCommonViewer(), null, parent);
       ITreeContentProvider contentProvider = (ITreeContentProvider) commonNavigator.getCommonViewer()
           .getContentProvider();
-      element = contentProvider.getParent(element);
+      parent = contentProvider.getParent(parent);
     }
     return select;
   }
   
-  public static boolean isSetSelection(StructuredViewer viewer, Object exptectedElement) {
-    IStructuredSelection selection = (IStructuredSelection) viewer.getSelection();
-    return selection.toArray().length > 0 && selection.getFirstElement().equals(exptectedElement);
+  public static boolean isSetSelection(StructuredViewer viewer, IStructuredSelection exptectedSelection) {
+    IStructuredSelection currentSelection = (IStructuredSelection) viewer.getSelection();
+    if(currentSelection.toArray().length > 0){
+      List<?> currentList = currentSelection.toList();
+      List<?> exptectedList = exptectedSelection.toList();
+      if(currentList.size() == exptectedList.size()){
+        return !currentList.retainAll(exptectedList);
+      }
+    }
+    return false;
   }
 }

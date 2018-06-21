@@ -27,11 +27,11 @@ class NavigateAction extends Action {
   /**
    * Element to select.
    */
-  private EObject _element;
+  private EObject element;
   /**
    * Viewer that selects the model element.
    */
-  private StructuredViewer _viewer;
+  private StructuredViewer viewer;
 
   /**
    * Constructor.
@@ -40,8 +40,8 @@ class NavigateAction extends Action {
    * @param viewer
    */
   public NavigateAction(EObject element, StructuredViewer viewer) {
-    _element = element;
-    _viewer = viewer;
+    this.element = element;
+    this.viewer = viewer;
   }
 
   /**
@@ -49,12 +49,12 @@ class NavigateAction extends Action {
    */
   @Override
   public void run() {
-    IStructuredSelection selection = new StructuredSelection(_element);
-    _viewer.setSelection(selection, true);
-    if (!LocateFilteredElementsInCommonNavigatorAction.isSetSelection(_viewer, _element)) {
-      LocateFilteredElementsInCommonNavigatorAction LocateFilteredElementsInCommonNavigatorAction = new LocateFilteredElementsInCommonNavigatorAction(CapellaCommonNavigator.ID);
-      LocateFilteredElementsInCommonNavigatorAction.run(selection);
-      _viewer.setSelection(selection, true);
+    IStructuredSelection selection = new StructuredSelection(element);
+    viewer.setSelection(selection, true);
+    if (!LocateFilteredElementsInCommonNavigatorAction.isSetSelection(viewer, selection)) {
+      LocateFilteredElementsInCommonNavigatorAction locateFilteredElementsInCommonNavigatorAction = new LocateFilteredElementsInCommonNavigatorAction(CapellaCommonNavigator.ID);
+      locateFilteredElementsInCommonNavigatorAction.run(selection);
+      viewer.setSelection(selection, true);
     }
   }
 }
