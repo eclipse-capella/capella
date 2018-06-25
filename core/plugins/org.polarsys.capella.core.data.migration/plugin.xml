@@ -194,6 +194,10 @@
          point="org.polarsys.capella.core.data.migration.migrationContributions">
          
 	  <migrationContribution
+         class="org.polarsys.capella.core.data.migration.contribution.DAnnotationDescriptorContribution">
+	  </migrationContribution>
+	  
+	  <migrationContribution
          class="org.polarsys.capella.core.data.migration.contribution.FixDAnnotationsContribution">
 	  </migrationContribution>
 	  

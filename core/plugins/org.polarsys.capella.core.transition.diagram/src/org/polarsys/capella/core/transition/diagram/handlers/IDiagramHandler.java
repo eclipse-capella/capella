@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,6 +23,7 @@ import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.filter.FilterDescription;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
@@ -60,7 +61,7 @@ public interface IDiagramHandler extends IHandler {
    * @param description_p
    * @return
    */
-  public boolean covers(IContext context, DRepresentation representation_p);
+  public boolean covers(IContext context, DRepresentationDescriptor representation_p);
 
   /**
    * Returns whether the current handler can transform a description to the given representation
@@ -76,7 +77,7 @@ public interface IDiagramHandler extends IHandler {
    * @param description_p
    * @return
    */
-  public boolean backCovers(IContext context, DRepresentation representation_p);
+  public boolean backCovers(IContext context, DRepresentationDescriptor representation_p);
 
   /**
    * Returns for the given mapping the mapping used in the targetDesccription

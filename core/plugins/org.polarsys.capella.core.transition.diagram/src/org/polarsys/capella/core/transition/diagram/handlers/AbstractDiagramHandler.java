@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,7 +24,7 @@ import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.filter.FilterDescription;
-import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.polarsys.capella.common.data.modellingcore.TraceableElement;
@@ -46,12 +46,12 @@ public abstract class AbstractDiagramHandler implements IDiagramHandler {
   }
 
   @Override
-  public boolean covers(IContext context_p, DRepresentation representation_p) {
+  public boolean covers(IContext context_p, DRepresentationDescriptor representation_p) {
     return true;
   }
 
   @Override
-  public boolean backCovers(IContext context_p, DRepresentation representation_p) {
+  public boolean backCovers(IContext context_p, DRepresentationDescriptor representation_p) {
     return true;
   }
 

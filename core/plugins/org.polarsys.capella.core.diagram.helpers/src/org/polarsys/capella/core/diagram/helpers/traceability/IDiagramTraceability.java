@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,10 +10,7 @@
  *******************************************************************************/
 package org.polarsys.capella.core.diagram.helpers.traceability;
 
-import java.util.Collection;
-
-import org.eclipse.core.runtime.IStatus;
-import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 
 /**
  * A traceability manager for diagram
@@ -21,34 +18,12 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 public interface IDiagramTraceability {
 
   /**
-   * Returns list of realizing diagrams for the given representation
-   * @param representation
-   * @return
-   */
-  Collection<DRepresentation> getRealizingRepresentations(DRepresentation representation);
-
-  /**
-   * Returns list of realized diagrams for the given representation
-   * @param representation
-   * @return
-   */
-  Collection<DRepresentation> getRealizedRepresentations(DRepresentation representation);
-
-  /**
-   * Add a traceability link between both representations, the realized and the realizing
-   * @param realized
-   * @param realizing
-   * @return
-   */
-  IStatus addRealizingRepresentation(DRepresentation realized, DRepresentation realizing);
-
-  /**
    * Returns whether the given representation can realize an other representation
    * (for instance, any OA cannot realize another diagram)
    * @param realizing
    * @return
    */
-  boolean isRealizingable(DRepresentation realizing);
+  boolean isRealizingable(DRepresentationDescriptor realizing);
 
   /**
    * Returns whether the given representation can be realized by another representation
@@ -57,7 +32,7 @@ public interface IDiagramTraceability {
    * @param realizing
    * @return
    */
-  boolean isRealizable(DRepresentation realized, DRepresentation realizing);
+  boolean isRealizable(DRepresentationDescriptor realized, DRepresentationDescriptor realizing);
 
   /**
    * Some traceability informations can be stored in helper to optimize performance.

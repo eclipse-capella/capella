@@ -39,7 +39,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.sirius.business.api.query.DViewQuery;
+import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
 import org.eclipse.sirius.diagram.AbstractDNode;
@@ -65,9 +65,9 @@ import org.eclipse.sirius.diagram.description.filter.CompositeFilterDescription;
 import org.eclipse.sirius.diagram.description.filter.FilterDescription;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.commands.ICommandService;
@@ -81,7 +81,6 @@ import org.polarsys.capella.common.data.modellingcore.FinalizableElement;
 import org.polarsys.capella.common.data.modellingcore.InformationsExchanger;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.helpers.EObjectExt;
-import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.mdsofa.common.misc.Couple;
 import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
@@ -97,7 +96,6 @@ import org.polarsys.capella.core.data.capellacore.AbstractPropertyValue;
 import org.polarsys.capella.core.data.capellacore.Allocation;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
-import org.polarsys.capella.core.data.capellacore.Classifier;
 import org.polarsys.capella.core.data.capellacore.Constraint;
 import org.polarsys.capella.core.data.capellacore.Feature;
 import org.polarsys.capella.core.data.capellacore.GeneralizableElement;
@@ -192,6 +190,7 @@ import org.polarsys.capella.core.diagram.helpers.traceability.IDiagramTraceabili
 import org.polarsys.capella.core.libraries.extendedqueries.QueryIdentifierConstants;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.TriStateBoolean;
+import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.core.model.helpers.AbstractDependenciesPkgExt;
 import org.polarsys.capella.core.model.helpers.AssociationExt;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
@@ -258,7 +257,8 @@ public class CsServices {
       return true;
     }
 
-    if (handler.isRealizingable((DRepresentation) diagram)) {
+    DRepresentationDescriptor descriptor = RepresentationHelper.getRepresentationDescriptor((DRepresentation)diagram);
+    if (handler.isRealizingable(descriptor)) {
       handler.dispose();
 
       if (diagram instanceof DDiagram) {
@@ -342,12 +342,13 @@ public class CsServices {
 
     Session session = DiagramHelper.getService().getSession(diagram);
 
-    for (DView view : session.getOwnedViews()) {
-      for (DRepresentation representation : new DViewQuery(view).getLoadedRepresentations()) {
-        if (handler.isRealizable(representation, diagram)) {
-          if (!scope.contains(representation)) {
-            scope.add(representation);
-          }
+    DRepresentationDescriptor descriptor = RepresentationHelper.getRepresentationDescriptor(diagram);
+
+    for (DRepresentationDescriptor representation : DialectManager.INSTANCE.getAllRepresentationDescriptors(session)) {
+
+      if (handler.isRealizable(representation, descriptor)) {
+        if (!scope.contains(representation)) {
+          scope.add(representation.getRepresentation());
         }
       }
     }

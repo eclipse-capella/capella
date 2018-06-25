@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,6 +12,8 @@ package org.polarsys.capella.core.transition.diagram.ui;
 
 import org.eclipse.core.expressions.PropertyTester;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
+import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.core.transition.common.context.TransitionContext;
 import org.polarsys.capella.core.transition.diagram.handlers.DiagramDescriptionHelper;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
@@ -29,7 +31,8 @@ public class CommandTester extends PropertyTester {
 
         if (DiagramDescriptionHelper.getService(context).handles(context, diagram.getDescription())) {
           if (DiagramDescriptionHelper.getService(context).covers(context, diagram.getDescription())) {
-            if (DiagramDescriptionHelper.getService(context).covers(context, diagram)) {
+            DRepresentationDescriptor descriptor = RepresentationHelper.getRepresentationDescriptor(diagram);
+            if (DiagramDescriptionHelper.getService(context).covers(context, descriptor)) {
               return true;
             }
           }
