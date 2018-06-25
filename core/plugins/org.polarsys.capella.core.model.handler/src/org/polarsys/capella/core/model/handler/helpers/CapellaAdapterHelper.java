@@ -113,7 +113,6 @@ public class CapellaAdapterHelper {
       if (CapellaResourceHelper.isSemanticElement(object)) {
         return getRelatedSemanticObject(object);
       }
-
       EObject obj = (EObject) Platform.getAdapterManager().getAdapter(object, ModelElement.class);
       if (obj == null) {
         obj = (EObject) Platform.getAdapterManager().loadAdapter(object, ModelElement.class.getName());

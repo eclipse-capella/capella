@@ -198,10 +198,6 @@
 	  </migrationContribution>
 	  
 	  <migrationContribution
-         class="org.polarsys.capella.core.data.migration.contribution.FixDAnnotationsContribution">
-	  </migrationContribution>
-	  
-	  <migrationContribution
          class="org.polarsys.capella.core.data.migration.contribution.ActivateDiagramFiltersContribution">
 	  </migrationContribution>
 	  

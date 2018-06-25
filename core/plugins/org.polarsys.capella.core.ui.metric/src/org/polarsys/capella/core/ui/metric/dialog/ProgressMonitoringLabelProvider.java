@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,9 +12,7 @@ package org.polarsys.capella.core.ui.metric.dialog;
 
 import org.eclipse.jface.viewers.IColorProvider;
 import org.eclipse.jface.viewers.TreeViewer;
-import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
-import org.eclipse.sirius.viewpoint.description.DAnnotation;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Image;
@@ -25,9 +23,8 @@ import org.polarsys.capella.common.ui.providers.MDEAdapterFactoryLabelProvider;
 import org.polarsys.capella.common.ui.toolkit.viewers.data.TreeData;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellacore.EnumerationPropertyLiteral;
-import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
+import org.polarsys.capella.core.diagram.helpers.RepresentationAnnotationHelper;
 import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
-import org.polarsys.capella.core.ui.properties.annotations.IRepresentationAnnotationConstants;
 
 /**
  * @see Progress Monitoring label provider.
@@ -94,6 +91,7 @@ public class ProgressMonitoringLabelProvider extends MDEAdapterFactoryLabelProvi
 
     if (0 == columnIndex) {
       text = getText(element);
+      
     } else if (1 == columnIndex) {
       if (element instanceof CapellaElement) {
         EnumerationPropertyLiteral status = ((CapellaElement) element).getStatus();
@@ -103,12 +101,12 @@ public class ProgressMonitoringLabelProvider extends MDEAdapterFactoryLabelProvi
       }
       if (element instanceof DRepresentationDescriptor) {
         DRepresentationDescriptor representationDesc = (DRepresentationDescriptor) element;
-        String eAnnot = IRepresentationAnnotationConstants.ProgressStatus;
-        DAnnotation dAnnotation = RepresentationHelper.getAnnotation(eAnnot, (DRepresentation) representationDesc.getRepresentation());
-        if (dAnnotation != null) {
-          text = dAnnotation.getDetails().get("value");
+        EnumerationPropertyLiteral status = RepresentationAnnotationHelper.getProgressStatus(representationDesc);
+        if (null != status) {
+          text = status.getLabel();
         }
       }
+      
     } else if (2 == columnIndex) {
       if (element instanceof CapellaElement) {
         String review = ((CapellaElement) element).getReview();
@@ -118,10 +116,9 @@ public class ProgressMonitoringLabelProvider extends MDEAdapterFactoryLabelProvi
       }
       if (element instanceof DRepresentationDescriptor) {
         DRepresentationDescriptor representationDesc = (DRepresentationDescriptor) element;
-        String eAnnot = IRepresentationAnnotationConstants.StatusReview;
-        DAnnotation dAnnotation = RepresentationHelper.getAnnotation(eAnnot, (DRepresentation) representationDesc.getRepresentation());
-        if (dAnnotation != null) {
-          text = dAnnotation.getDetails().get("value");
+        String review = RepresentationAnnotationHelper.getStatusReview(representationDesc);
+        if (review != null) {
+          text = review;
         }
       }
     }

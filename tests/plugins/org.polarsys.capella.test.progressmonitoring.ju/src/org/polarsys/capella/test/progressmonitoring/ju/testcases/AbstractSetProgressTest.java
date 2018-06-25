@@ -10,14 +10,24 @@
  *******************************************************************************/
 package org.polarsys.capella.test.progressmonitoring.ju.testcases;
 
-import static org.polarsys.capella.test.progressmonitoring.ju.util.SetProgressTestContants.*;
+import static org.polarsys.capella.test.progressmonitoring.ju.util.SetProgressTestContants.BOOLEANPROPERTYVALUE_BOOLEANPROPERTY_ID;
+import static org.polarsys.capella.test.progressmonitoring.ju.util.SetProgressTestContants.DATAPKG_DATAPACKAGE_ID;
+import static org.polarsys.capella.test.progressmonitoring.ju.util.SetProgressTestContants.DRAFT;
+import static org.polarsys.capella.test.progressmonitoring.ju.util.SetProgressTestContants.ENUMERATIONPROPERTYVALUE_ENUMPROPERTY_ID;
+import static org.polarsys.capella.test.progressmonitoring.ju.util.SetProgressTestContants.MODEL_NAME;
+import static org.polarsys.capella.test.progressmonitoring.ju.util.SetProgressTestContants.STRINGTYPE_STRING_ID;
+import static org.polarsys.capella.test.progressmonitoring.ju.util.SetProgressTestContants.SYSTEMFUNCTION_ROOTSYSTEMFUNCTION_ID;
+import static org.polarsys.capella.test.progressmonitoring.ju.util.SetProgressTestContants.SYSTEMFUNCTION_SF11_ID;
+import static org.polarsys.capella.test.progressmonitoring.ju.util.SetProgressTestContants.SYSTEMFUNCTION_SF1_ID;
+import static org.polarsys.capella.test.progressmonitoring.ju.util.SetProgressTestContants.SYSTEMFUNCTION_SF22_ID;
+import static org.polarsys.capella.test.progressmonitoring.ju.util.SetProgressTestContants.SYSTEMFUNCTION_SF2_ID;
 
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.swt.widgets.Display;
 import org.polarsys.capella.core.data.capellacore.BooleanPropertyValue;
 import org.polarsys.capella.core.data.capellacore.EnumerationPropertyLiteral;
@@ -50,7 +60,7 @@ public abstract class AbstractSetProgressTest extends BasicTestCase {
   protected EnumerationPropertyValue enumerationProperty;
   protected StringType string;
 
-  protected Collection<DRepresentation> representations;
+  protected Collection<DRepresentationDescriptor> representations;
 
   @Override
   public List<String> getRequiredTestModels() {
@@ -98,7 +108,8 @@ public abstract class AbstractSetProgressTest extends BasicTestCase {
     string = (StringType) IdManager.getInstance().getEObject(STRINGTYPE_STRING_ID, scope);
     assertNotNull(string);
 
-    representations = RepresentationHelper.getAllRepresentationsTargetedBy(Arrays.asList(rootSysFunc));
+    representations = RepresentationHelper.getAllRepresentationDescriptorsTargetedBy(Arrays.asList(rootSysFunc));
+    
     assertTrue(representations.size() == 2);
   }
 

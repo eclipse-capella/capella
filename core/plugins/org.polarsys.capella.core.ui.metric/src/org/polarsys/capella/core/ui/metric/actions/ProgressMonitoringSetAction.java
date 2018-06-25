@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,7 +29,7 @@ import org.eclipse.jface.window.Window;
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.viewpoint.DAnalysis;
-import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
@@ -45,7 +45,6 @@ import org.polarsys.capella.core.ui.metric.MetricActivator;
 import org.polarsys.capella.core.ui.metric.MetricMessages;
 import org.polarsys.capella.core.ui.metric.actions.ProgressSetDialog.PropagateChoice;
 import org.polarsys.capella.core.ui.metric.utils.ProgressMonitoringPropagator;
-import org.polarsys.capella.core.ui.metric.utils.Utils;
 
 public class ProgressMonitoringSetAction extends BaseSelectionListenerAction {
 
@@ -65,13 +64,11 @@ public class ProgressMonitoringSetAction extends BaseSelectionListenerAction {
   @SuppressWarnings("rawtypes")
 private int getNbElementsOfType (Collection<EObject> inCollection, Class clazz) {
 	  int nb = 0;
-	  for (EObject eo : inCollection ) {
+	  for (EObject eo : inCollection) {
 		  if (clazz.isInstance(eo)) {
 			  nb+=1;
 		  }
 	  }
-	  
-	  
 	  return nb;
   }
   
@@ -91,7 +88,6 @@ private int getNbElementsOfType (Collection<EObject> inCollection, Class clazz) 
     final ProgressSetDialog dialog = getRunSetup(selectedObjects);
     if (dialog != null) {
       TransactionHelper.getExecutionManager(selectedObjects.iterator().next()).execute(new AbstractReadWriteCommand() {
-        @SuppressWarnings("synthetic-access")
         @Override
         public void run() {
           
@@ -107,13 +103,14 @@ private int getNbElementsOfType (Collection<EObject> inCollection, Class clazz) 
 
           // Compute the number of modified elements
           int nbCapellaElementTagged = getNbElementsOfType(result.get(0), CapellaElement.class);
-          int nbDRepresentationTagged = getNbElementsOfType(result.get(0), DRepresentation.class);
+          int nbDRepresentationTagged = getNbElementsOfType(result.get(0), DRepresentationDescriptor.class);
           
           int nbCapellaElementReviewedCleared = getNbElementsOfType(result.get(1), CapellaElement.class);
-          int nbDRepresentationReviewedCleared = getNbElementsOfType(result.get(1), DRepresentation.class);
+          int nbDRepresentationReviewedCleared = getNbElementsOfType(result.get(1), DRepresentationDescriptor.class);
           
           if (nbCapellaElementTagged+nbDRepresentationTagged == 0) {
         	  logger.info(NLS.bind(MetricMessages.progressMonitoring_setAction_nochanges_info, strStatus));
+        	  
           } else {
         	  String[] arguments = new String[3];
         	  arguments[0] = strStatus;
@@ -124,12 +121,13 @@ private int getNbElementsOfType (Collection<EObject> inCollection, Class clazz) 
 
           if (nbCapellaElementReviewedCleared+nbDRepresentationReviewedCleared == 0) {
         	  logger.info(NLS.bind(MetricMessages.progressMonitoring_setAction_nochanges_info, strReview));
+        	  
           } else {
         	  String[] arguments = new String[3];
         	  arguments[0] = strReview;
         	  arguments[1] = Integer.toString(nbCapellaElementReviewedCleared);
         	  arguments[2] = Integer.toString(nbDRepresentationReviewedCleared);
-        	  logger.info(NLS.bind(MetricMessages.progressMonitoring_setAction_changes_info, arguments));
+        	  logger.info(NLS.bind(MetricMessages.progressMonitoring_setAction_nochanges_info, arguments));
           }
         }
 
@@ -200,9 +198,7 @@ private int getNbElementsOfType (Collection<EObject> inCollection, Class clazz) 
         }
         return showProgressAction;
       }
-    } else if (selection instanceof DRepresentation) {
-      return ProgressMonitoringPropagator.getInstance().isEnumerationPropertyTypeDefinedForProject(
-          Utils.getTarget((DRepresentation) selection));
+      
     } else if (selection instanceof EObject) {
       return ProgressMonitoringPropagator.getInstance().isEnumerationPropertyTypeDefinedForProject((EObject) selection);
     }

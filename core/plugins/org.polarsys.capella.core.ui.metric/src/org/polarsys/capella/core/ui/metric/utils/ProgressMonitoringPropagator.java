@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,15 +16,13 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.sirius.viewpoint.description.DAnnotation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.capellacore.EnumerationPropertyLiteral;
+import org.polarsys.capella.core.diagram.helpers.RepresentationAnnotationHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
 import org.polarsys.capella.core.model.handler.helpers.PropertyPropagator;
-import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
-import org.polarsys.capella.core.ui.properties.annotations.IRepresentationAnnotationConstants;
-import org.polarsys.capella.core.ui.properties.annotations.RepresentationAnnotationHelper;
 
 /**
  * Utility class for Progress Monitoring
@@ -114,14 +112,14 @@ public class ProgressMonitoringPropagator extends PropertyPropagator {
 			  ((CapellaElement) eObject).setStatus(literal);
 		  }
 		  return true;
-	  } else if (eObject instanceof DRepresentation) {
-		  String previousLiteral = RepresentationAnnotationHelper.getProgressStatus(((DRepresentation) eObject));
-		  if ((null == previousLiteral && null == literal) || (previousLiteral != null && literal != null && previousLiteral.equals(literal.getLabel()))) {
+		  
+	  } else if (eObject instanceof DRepresentationDescriptor) {
+	    EnumerationPropertyLiteral previousLiteral = RepresentationAnnotationHelper.getProgressStatus(((DRepresentationDescriptor) eObject));
+		  if ((null == previousLiteral && null == literal) || (previousLiteral != null && literal != null && previousLiteral.equals(literal))) {
 			  // Don't update if value unchanged.
 			  return false;
 		  }
-		  String value = literal == null ? null : literal.getLabel();
-		  RepresentationAnnotationHelper.setProgressStatus(((DRepresentation) eObject), value);
+		  RepresentationAnnotationHelper.setProgressStatus(((DRepresentationDescriptor) eObject), literal);
 		  return true;
 	  }
 	  return false;
@@ -143,15 +141,13 @@ public class ProgressMonitoringPropagator extends PropertyPropagator {
    */
   @Override
   protected boolean isTaggedRepresentation(EObject eObject) {
-    if (eObject instanceof DRepresentation) {
-      String eAnnotStatus = IRepresentationAnnotationConstants.ProgressStatus;
-      DAnnotation dAnnotationStatus = RepresentationHelper.getAnnotation(eAnnotStatus, (DRepresentation) eObject);
-
-      String eAnnotReview = IRepresentationAnnotationConstants.StatusReview;
-      DAnnotation dAnnotationReview = RepresentationHelper.getAnnotation(eAnnotReview, (DRepresentation) eObject);
-
-      return ((null != dAnnotationStatus) && (null != dAnnotationStatus.getDetails().get("value")) || (null != dAnnotationReview)
-          && (null != dAnnotationReview.getDetails().get("value")));
+    if (eObject instanceof DRepresentationDescriptor) {
+      if (RepresentationAnnotationHelper.hasStatusReview((DRepresentationDescriptor) eObject)) {
+        return true;
+      }
+      if (RepresentationAnnotationHelper.hasProgressStatus((DRepresentationDescriptor) eObject)) {
+        return true;
+      }
     }
     return false;
   }
@@ -161,9 +157,9 @@ public class ProgressMonitoringPropagator extends PropertyPropagator {
     if (eObject instanceof CapellaElement) {
       EnumerationPropertyLiteral status = ((CapellaElement) eObject).getStatus();
       return status != null ? status.getLabel() : null;
-    } else if (eObject instanceof DRepresentation) {
-      String value = RepresentationAnnotationHelper.getProgressStatus((((DRepresentation) eObject)));
-      return value == "" ? null : value;
+    } else if (eObject instanceof DRepresentationDescriptor) {
+      EnumerationPropertyLiteral status = RepresentationAnnotationHelper.getProgressStatus((((DRepresentationDescriptor) eObject)));
+      return status != null ? status.getLabel() : null;
     }
     return null;
   }
@@ -176,11 +172,10 @@ public class ProgressMonitoringPropagator extends PropertyPropagator {
     		eobj.eUnset(reviewFeature);
     		return true;
     	}
-    } else if (eobj instanceof DRepresentation) {
-    	String statusReview = IRepresentationAnnotationConstants.StatusReview;
-    	if (null!=RepresentationHelper.getAnnotation(statusReview, (DRepresentation) eobj)) {
-    		RepresentationHelper.removeAnnotation(statusReview, (DRepresentation) eobj);
-    		return true;
+    } else if (eobj instanceof DRepresentationDescriptor) {
+    	if (RepresentationAnnotationHelper.getStatusReview((DRepresentationDescriptor) eobj) != null) {
+        RepresentationAnnotationHelper.setStatusReview((DRepresentationDescriptor) eobj, null);
+        return true;
     	}
     }
     return false;

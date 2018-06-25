@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,6 +15,7 @@ import java.util.List;
 
 import org.eclipse.core.runtime.IAdapterFactory;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
@@ -34,6 +35,13 @@ public class SiriusToCapellaAdapterFactory implements IAdapterFactory {
   public EObject adaptToBusinessElement(Object object_p) {
     if (object_p instanceof DSemanticDecorator) {
       DSemanticDecorator vpe = (DSemanticDecorator) object_p;
+      EObject element = vpe.getTarget();
+      if (CapellaResourceHelper.isSemanticElement(element)) {
+        return element;
+      }
+    }
+    if (object_p instanceof DRepresentationDescriptor) {
+      DRepresentationDescriptor vpe = (DRepresentationDescriptor) object_p;
       EObject element = vpe.getTarget();
       if (CapellaResourceHelper.isSemanticElement(element)) {
         return element;

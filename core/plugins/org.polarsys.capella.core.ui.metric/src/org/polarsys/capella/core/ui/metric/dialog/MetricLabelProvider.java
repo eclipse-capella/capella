@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,7 +15,6 @@ import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.ILabelProviderListener;
 import org.eclipse.jface.viewers.ITableLabelProvider;
 import org.eclipse.swt.graphics.Image;
-
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.core.ui.metric.core.MetricTree;
 import org.polarsys.capella.core.ui.metric.utils.Utils;
@@ -40,9 +39,7 @@ public class MetricLabelProvider implements ITableLabelProvider, ILabelProvider 
     if (OBJ_COLUMN_INDEX == columnIndex_p) {
       MetricTree<EObject> element = (MetricTree<EObject>) element_p;
       MetricTree<EObject> tree = element;
-
       EObject eobject = tree.getId();
-
       image = Utils.getImage(eobject);
     }
 
@@ -102,7 +99,6 @@ public class MetricLabelProvider implements ITableLabelProvider, ILabelProvider 
 
   static public String getLabelText(EObject eobject_p, String regex_p) {
     String tmp = Utils.getText(eobject_p);
-
     return tmp.replaceAll(null == regex_p ? _regex : regex_p, ICommonConstants.EMPTY_STRING);
   }
 

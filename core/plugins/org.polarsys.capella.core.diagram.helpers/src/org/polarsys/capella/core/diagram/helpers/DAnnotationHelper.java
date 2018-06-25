@@ -55,7 +55,7 @@ public class DAnnotationHelper {
    */
   public static DAnnotation getAnnotation(String source, DModelElement representation, boolean create) {
     for (DAnnotation annotation : representation.getEAnnotations()) {
-      if (annotation.getSource().equals(source)) {
+      if (annotation.getSource() != null && annotation.getSource().equals(source)) {
         return annotation;
       }
     }

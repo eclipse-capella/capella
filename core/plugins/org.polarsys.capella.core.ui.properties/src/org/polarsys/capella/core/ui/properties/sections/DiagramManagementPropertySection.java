@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.function.Consumer;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -31,16 +32,16 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
-import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
 import org.polarsys.capella.core.business.queries.capellacore.BusinessQueriesProvider;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
+import org.polarsys.capella.core.data.capellacore.EnumerationPropertyLiteral;
+import org.polarsys.capella.core.diagram.helpers.RepresentationAnnotationHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaAdapterHelper;
-import org.polarsys.capella.core.ui.properties.annotations.IRepresentationAnnotationConstants;
-import org.polarsys.capella.core.ui.properties.annotations.RepresentationAnnotationHelper;
+import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticField;
 import org.polarsys.capella.core.ui.properties.fields.BooleanValueGroup;
 import org.polarsys.capella.core.ui.properties.fields.EnumerationValueGroup;
@@ -51,7 +52,7 @@ import org.polarsys.capella.core.ui.properties.fields.TextAreaValueGroup;
  */
 public class DiagramManagementPropertySection extends AbstractSection {
 
-  private WeakReference<DRepresentation> _representation;
+  private WeakReference<DRepresentationDescriptor> _descriptor;
   private BooleanValueGroup _visibleInDocGroup;
   private BooleanValueGroup _visibleInLMGroup;
   private EnumerationValueGroup _status;
@@ -74,10 +75,9 @@ public class DiagramManagementPropertySection extends AbstractSection {
       /**
        * {@inheritDoc}
        */
-      @SuppressWarnings("synthetic-access")
       @Override
       public void loadComboValue() {
-        _valueField.select(RepresentationAnnotationHelper.isVisibleInDoc(_representation.get()) ? 0 : 1);
+        _valueField.select(RepresentationAnnotationHelper.isVisibleInDoc(_descriptor.get()) ? 0 : 1);
       }
 
       /**
@@ -86,7 +86,9 @@ public class DiagramManagementPropertySection extends AbstractSection {
       @Override
       protected void fillComboField(CCombo comboField) {
         if (comboField.equals(_valueField)) {
-          updateAnnotation(IRepresentationAnnotationConstants.NotVisibleInDoc, Boolean.valueOf(_comboItems[_valueField.getSelectionIndex()]));
+          transactional(x -> {
+            RepresentationAnnotationHelper.setVisibleInDoc(x, Boolean.valueOf(_comboItems[_valueField.getSelectionIndex()]));
+          });
         }
       }
     };
@@ -96,10 +98,9 @@ public class DiagramManagementPropertySection extends AbstractSection {
       /**
        * {@inheritDoc}
        */
-      @SuppressWarnings("synthetic-access")
       @Override
       public void loadComboValue() {
-        _valueField.select(RepresentationAnnotationHelper.isVisibleInLM(_representation.get()) ? 0 : 1);
+        _valueField.select(RepresentationAnnotationHelper.isVisibleInLM(_descriptor.get()) ? 0 : 1);
       }
 
       /**
@@ -108,7 +109,9 @@ public class DiagramManagementPropertySection extends AbstractSection {
       @Override
       protected void fillComboField(CCombo comboField) {
         if (comboField.equals(_valueField)) {
-          updateAnnotation(IRepresentationAnnotationConstants.NotVisibleInLM, Boolean.valueOf(_comboItems[_valueField.getSelectionIndex()]));
+          transactional(x -> {
+            RepresentationAnnotationHelper.setVisibleInLM(x, Boolean.valueOf(_comboItems[_valueField.getSelectionIndex()]));
+          });
         }
       }
     };
@@ -120,17 +123,14 @@ public class DiagramManagementPropertySection extends AbstractSection {
        */
       @Override
       protected void setDataValue(EObject object, EStructuralFeature feature, Object value) {
-        String val = ICommonConstants.EMPTY_STRING;
-        if (value instanceof AbstractNamedElement) {
-          val = ((AbstractNamedElement) value).getName();
-        }
-        updateAnnotation(IRepresentationAnnotationConstants.ProgressStatus, IRepresentationAnnotationConstants.PROGRESS_VALUE_KEYVALUE, val);
+        transactional(x -> {
+          RepresentationAnnotationHelper.setProgressStatus(x, (EObject)value);
+        });
       }
 
       /**
        * {@inheritDoc}
        */
-      @SuppressWarnings("synthetic-access")
       @Override
       protected List<EObject> getAvailableValues() {
         List<EObject> result = new ArrayList<EObject>(0);
@@ -138,7 +138,7 @@ public class DiagramManagementPropertySection extends AbstractSection {
             BusinessQueriesProvider.getInstance().getContribution(CapellacorePackage.Literals.CAPELLA_ELEMENT,
                 CapellacorePackage.Literals.CAPELLA_ELEMENT__STATUS);
         if (null != query) {
-          result.addAll(query.getAvailableElements((CapellaElement) CapellaAdapterHelper.resolveSemanticObject(_representation.get(), true)));
+          result.addAll(query.getAvailableElements((CapellaElement) CapellaAdapterHelper.resolveSemanticObject(_descriptor.get(), true)));
         }
         return result;
       }
@@ -146,32 +146,26 @@ public class DiagramManagementPropertySection extends AbstractSection {
       /**
        * {@inheritDoc}
        */
-      @SuppressWarnings("synthetic-access")
       @Override
       protected List<EObject> getCurrentValues() {
         List<EObject> result = new ArrayList<EObject>(0);
-
-        String value = RepresentationAnnotationHelper.getProgressStatus(_representation.get());
-        if (null != value) {
-          for (EObject element : getAvailableValues()) {
-            if (value.equals(((AbstractNamedElement) element).getName())) {
-              result.add(element);
-            }
-          }
+        EnumerationPropertyLiteral value = RepresentationAnnotationHelper.getProgressStatus(_descriptor.get());
+        if (value != null) {
+          result.add(value);
         }
         return result;
       }
     };
+    
     _status.setDisplayedInWizard(displayedInWizard);
 
     _review = new TextAreaValueGroup(_status.getParent(), Messages.ReviewGroup_Label, getWidgetFactory(), true) {
       /**
        * {@inheritDoc}
        */
-      @SuppressWarnings("synthetic-access")
       @Override
       public void loadTextValue() {
-        valueField.setText(RepresentationAnnotationHelper.getStatusReview(_representation.get()));
+        valueField.setText(RepresentationAnnotationHelper.getStatusReview(_descriptor.get()));
       }
 
       /**
@@ -179,11 +173,10 @@ public class DiagramManagementPropertySection extends AbstractSection {
        */
       @Override
       protected void setDataValue(EObject object, EStructuralFeature feature, Object value) {
-        String val = ICommonConstants.EMPTY_STRING;
-        if (value instanceof String) {
-          val = (String) value;
-        }
-        updateAnnotation(IRepresentationAnnotationConstants.StatusReview, IRepresentationAnnotationConstants.REVIEW_VALUE_KEYVALUE, val);
+        final String val = (value instanceof String) ? (String)value : ICommonConstants.EMPTY_STRING;
+        transactional(x -> {
+          RepresentationAnnotationHelper.setStatusReview(x, val);
+        });
       }
     };
     _review.setDisplayedInWizard(displayedInWizard);
@@ -196,9 +189,9 @@ public class DiagramManagementPropertySection extends AbstractSection {
   public void dispose() {
     super.dispose();
 
-    if (null != _representation) {
-      _representation.clear();
-      _representation = null;
+    if (null != _descriptor) {
+      _descriptor.clear();
+      _descriptor = null;
     }
   }
 
@@ -206,15 +199,14 @@ public class DiagramManagementPropertySection extends AbstractSection {
    * @param source
    * @param value
    */
-  protected void updateAnnotation(final String source, final Boolean value) {
+  protected void transactional(Consumer<DRepresentationDescriptor> f) {
     executeCommmand(new AbstractReadWriteCommand() {
       /**
        * {@inheritDoc}
        */
-      @SuppressWarnings("synthetic-access")
       @Override
       public Collection<?> getAffectedObjects() {
-        return Collections.singleton(_representation.get());
+        return Collections.singleton(_descriptor.get());
       }
 
       /**
@@ -229,43 +221,8 @@ public class DiagramManagementPropertySection extends AbstractSection {
        * {@inheritDoc}
        */
       @Override
-      @SuppressWarnings("synthetic-access")
       public void run() {
-        RepresentationAnnotationHelper.setAnnotation(_representation.get(), source, value);
-      }
-    });
-  }
-
-  /**
-   * @param source
-   * @param value
-   */
-  protected void updateAnnotation(final String source, final String key, final String value) {
-    executeCommmand(new AbstractReadWriteCommand() {
-      /**
-       * {@inheritDoc}
-       */
-      @SuppressWarnings("synthetic-access")
-      @Override
-      public Collection<?> getAffectedObjects() {
-        return Collections.singleton(_representation.get());
-      }
-
-      /**
-       * {@inheritDoc}
-       */
-      @Override
-      public String getName() {
-        return Messages.RepresentationSection_Command_Representation_Publication_Label;
-      }
-
-      /**
-       * {@inheritDoc}
-       */
-      @Override
-      @SuppressWarnings("synthetic-access")
-      public void run() {
-        RepresentationAnnotationHelper.setAnnotation(_representation.get(), source, key, value);
+        f.accept(_descriptor.get());
       }
     });
   }
@@ -275,7 +232,7 @@ public class DiagramManagementPropertySection extends AbstractSection {
    * Default implementation registers an EMF adapter to listen to model changes if displayed in a wizard.
    */
   protected void loadData() {
-    super.loadData(_representation.get());
+    super.loadData(_descriptor.get());
     _visibleInDocGroup.loadComboValue();
     _visibleInLMGroup.loadComboValue();
     _status.loadComboValue();
@@ -306,19 +263,22 @@ public class DiagramManagementPropertySection extends AbstractSection {
     if (!selection.isEmpty()) {
       if (selection instanceof IStructuredSelection) {
         Object firstElement = ((IStructuredSelection) selection).getFirstElement();
-
+        
+        DRepresentationDescriptor descriptor = null;
+        
         if (firstElement instanceof DRepresentationDescriptor) {
-          firstElement = ((DRepresentationDescriptor) firstElement).getRepresentation();
+          descriptor = ((DRepresentationDescriptor) firstElement);
         }
 
         if (firstElement instanceof DRepresentation) {
-          _representation = new WeakReference<DRepresentation>((DRepresentation) firstElement);
+          descriptor = RepresentationHelper.getRepresentationDescriptor((DRepresentation)firstElement);
+          
         } else if (firstElement instanceof IDDiagramEditPart) {
           IDDiagramEditPart diagramEditPart = (IDDiagramEditPart) firstElement;
-          _representation = new WeakReference<DRepresentation>((DRepresentation) ((Diagram) diagramEditPart.getModel()).getElement());
-        } else {
-          _representation = null;
-        }
+          descriptor = RepresentationHelper.getRepresentationDescriptor(((DRepresentation) ((Diagram) diagramEditPart.getModel()).getElement()));
+        } 
+        
+        _descriptor = new WeakReference<DRepresentationDescriptor>(descriptor);
       }
       loadData();
     }

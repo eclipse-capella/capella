@@ -32,7 +32,6 @@ Require-Bundle: org.polarsys.capella.core.ui.toolkit;visibility:=reexport,
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.ui.properties,
- org.polarsys.capella.core.ui.properties.annotations,
  org.polarsys.capella.core.ui.properties.controllers,
  org.polarsys.capella.core.ui.properties.fields,
  org.polarsys.capella.core.ui.properties.helpers,

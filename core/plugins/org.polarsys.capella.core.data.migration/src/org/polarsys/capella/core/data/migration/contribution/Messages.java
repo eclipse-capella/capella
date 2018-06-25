@@ -22,6 +22,7 @@ public class Messages extends NLS {
   public static String MigrationAction_ConfirmationDialog_ToggleMessage;
   public static String MigrationAction_UidMigration;
   public static String MigrationAction_AnnotationMigration;
+  public static String MigrationAction_MissingStatusMigration;
 
   static {
     // initialize resource bundle

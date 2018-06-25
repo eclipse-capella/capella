@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.polarsys.capella.core.model.handler.helpers;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
@@ -79,35 +78,6 @@ public class RepresentationHelper {
   }
   
   /**
-   * Get all representation targeted by specified semantic elements.<br>
-   * Default implementation loops over specified elements and search for all representations in a specified element
-   * containment subtree.
-   *
-   * @return a not <code>null</code> collection.
-   */
-  public static Collection<DRepresentation> getAllRepresentationsTargetedBy(Collection<?> semanticElements) {
-    Set<DRepresentation> representations = new HashSet<DRepresentation>();
-    // Go through EObjects only.
-    Iterable<EObject> semanticEObjects = Iterables.filter(semanticElements, EObject.class);
-    for (EObject semanticEObject : semanticEObjects) {
-      Session session = SessionManager.INSTANCE.getSession(semanticEObject);
-      if (session != null) { // can happen during tests
-        representations.addAll(DialectManager.INSTANCE.getRepresentations(semanticEObject, session));
-        // Go trough element's subtree (sub elements have the same session as their parent).
-        TreeIterator<EObject> allChildrenOfCurrentElement = semanticEObject.eAllContents();
-
-        while (allChildrenOfCurrentElement.hasNext()) {
-          EObject child = allChildrenOfCurrentElement.next();
-
-          representations.addAll(DialectManager.INSTANCE.getRepresentations(child, session));
-        }
-      }
-    }
-
-    return representations;
-  }
-
-  /**
    * Get all representation descriptors targeted by specified semantic elements.<br>
    * Default implementation loops over specified elements and search for all representation descriptorss in a specified
    * element containment subtree.
@@ -167,31 +137,6 @@ public class RepresentationHelper {
         representationDescriptors.addAll(impactedRepDescs);
       }
     }
-  }
-
-  /**
-   * Get all representations where specified semantic element is displayed.
-   * 
-   * @deprecated use getAllRepresentationDescriptorsWhereSemanticElementIsDisplayed instead because using
-   *             {@link DRepresentationDescriptor} avoid loading the associated {@link DRepresentation} if not
-   *             necessary.
-   * @param semanticElement
-   * @param filteringRepresentationDescriptionClass
-   * @return a not <code>null</code> collection.
-   */
-  @Deprecated
-  public static Collection<DRepresentation> getAllRepresentationsWhereSemanticElementIsDisplayed(
-      EObject semanticElement, RunnableWithBooleanResult filteringCondition) {
-    Collection<DRepresentation> reps = new ArrayList<>();
-
-    Collection<DRepresentationDescriptor> repDescs = getAllRepresentationDescriptorsWhereSemanticElementIsDisplayed(
-        semanticElement, filteringCondition);
-
-    for (DRepresentationDescriptor dRepresentationDescriptor : repDescs) {
-      reps.add(dRepresentationDescriptor.getRepresentation());
-    }
-
-    return reps;
   }
 
   /**
@@ -279,12 +224,13 @@ public class RepresentationHelper {
   }
 
   /**
-   * @param source
-   * @param representation
+   * This method shall not be used to store annotation on diagram. Annotations shall be stored on DRepresentationDescriptor instead
+   * @use DAnnotationHelper.getAnnotation instead
    */
+  @Deprecated
   public static DAnnotation getAnnotation(String source, DRepresentation representation) {
     for (DAnnotation annotation : representation.getEAnnotations()) {
-      if (annotation.getSource().equals(source)) {
+      if (annotation.getSource() != null && annotation.getSource().equals(source)) {
         return annotation;
       }
     }
@@ -292,9 +238,10 @@ public class RepresentationHelper {
   }
 
   /**
-   * @param source
-   * @param representation
+   * This method shall not be used to store annotation on diagram. Annotations shall be stored on DRepresentationDescriptor instead
+   * @use DAnnotationHelper.createAnnotation instead
    */
+  @Deprecated
   public static DAnnotation createAnnotation(final String source, DRepresentation representation) {
     DAnnotation annotation = DescriptionFactory.eINSTANCE.createDAnnotation();
     annotation.setSource(source);
@@ -303,9 +250,10 @@ public class RepresentationHelper {
   }
 
   /**
-   * @param source
-   * @param representation
+   * This method shall not be used to store annotation on diagram. Annotations shall be stored on DRepresentationDescriptor instead
+   * @use DAnnotationHelper.removeAnnotation instead
    */
+  @Deprecated
   public static void removeAnnotation(String source, DRepresentation representation) {
     DAnnotation annotation = getAnnotation(source, representation);
     if (null != annotation) {

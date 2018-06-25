@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <!--
-  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -14,10 +14,22 @@
    <extension
          point="org.eclipse.core.runtime.adapters">
       <factory
-      	adaptableType="org.eclipse.sirius.viewpoint.DRefreshable"
+      	adaptableType="org.eclipse.sirius.viewpoint.DRepresentation"
       	class="org.polarsys.capella.core.platform.sirius.adapter.SiriusToCapellaAdapterFactory" >
       	<adapter type="org.polarsys.capella.common.data.modellingcore.ModelElement">
       	</adapter> 
+      </factory>
+      <factory
+      	adaptableType="org.eclipse.sirius.viewpoint.DRepresentationDescriptor"
+      	class="org.polarsys.capella.core.platform.sirius.adapter.SiriusToCapellaAdapterFactory" >
+      	<adapter type="org.polarsys.capella.common.data.modellingcore.ModelElement">
+      	</adapter> 
+      </factory>
+      <factory
+      	adaptableType="org.eclipse.sirius.viewpoint.DRepresentationElement"
+      	class="org.polarsys.capella.core.platform.sirius.adapter.SiriusToCapellaAdapterFactory" >
+      	<adapter type="org.polarsys.capella.common.data.modellingcore.ModelElement">
+      	</adapter>
       </factory>
    </extension>
 </plugin>
