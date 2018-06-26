@@ -103,7 +103,7 @@ public class RepresentationAnnotationHelper {
     if (!value.booleanValue()) {
       DAnnotationHelper.getAnnotation(source, representation, true);
     } else {
-      DAnnotationHelper.removeAnnotation(source, representation);
+      DAnnotationHelper.deleteAnnotation(source, representation);
     }
   }
 
@@ -118,7 +118,7 @@ public class RepresentationAnnotationHelper {
       annotation.getDetails().put(key, value);
 
     } else {
-      DAnnotationHelper.removeAnnotation(source, representation);
+      DAnnotationHelper.deleteAnnotation(source, representation);
     }
   }
   
@@ -129,7 +129,7 @@ public class RepresentationAnnotationHelper {
       annotation.getReferences().add(value);
 
     } else {
-      DAnnotationHelper.removeAnnotation(source, representation);
+      DAnnotationHelper.deleteAnnotation(source, representation);
     }
   }
 }

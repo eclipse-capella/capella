@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,23 +13,30 @@ package org.polarsys.capella.core.diagram.helpers;
 import java.util.Collection;
 
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.emf.common.command.AbstractCommand;
+import org.eclipse.emf.common.command.Command;
+import org.eclipse.emf.common.command.IdentityCommand;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.transaction.RecordingCommand;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
+import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.sirius.viewpoint.description.DAnnotation;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
+import org.polarsys.capella.core.diagram.helpers.naming.DAnnotationSourceConstants;
 import org.polarsys.capella.core.diagram.helpers.naming.DiagramDescriptionConstants;
 
-/**
- *
- */
+
 public class DiagramHelper {
 
   private static DiagramHelper instance;
@@ -163,6 +170,72 @@ public class DiagramHelper {
       return ((DRepresentation) decorator);
     }
     return (DRepresentation) EcoreUtil2.getFirstContainer(decorator, ViewpointPackage.Literals.DREPRESENTATION);
+  }
+  
+  /**
+   * Get the package name of a representation descriptor.
+   * @param descriptor
+   * @return the package name, or null if the descriptor has no package
+   */
+  public String getPackageName(DRepresentationDescriptor descriptor) {
+    String name = null;
+    DAnnotation annot = DAnnotationHelper.getAnnotation(DAnnotationSourceConstants.CAPELLA_DIAGRAM_PACKAGE, descriptor, false);
+    if (annot != null) {
+      name = annot.getDetails().get(DAnnotationSourceConstants.CAPELLA_DIAGRAM_PACKAGE_KEY);
+    }
+    return name;
+  }
+
+  /**
+   * Creates a command to set or clear the package name for a representation descriptor.
+   * Before creating a change command, inspect the current package name and if that is equal
+   * to the new name return null
+   * 
+   * @param descriptor
+   * @param name the new package name, or null to clear the package
+   */
+  public Command createSetPackageNameCommand(TransactionalEditingDomain domain, final DRepresentationDescriptor descriptor, final String name) {
+
+    // 
+    // If package is changed re-create the whole annotation to force a notification 
+    // from the descriptor which then causes a viewer refresh.
+    //
+    AbstractCommand command = null;
+    final DAnnotation annot = DAnnotationHelper.getAnnotation(DAnnotationSourceConstants.CAPELLA_DIAGRAM_PACKAGE, descriptor, false);
+
+    if (name != null) {
+
+      String currentValue = null;
+
+      if (annot != null) {
+        currentValue = annot.getDetails().get(DAnnotationSourceConstants.CAPELLA_DIAGRAM_PACKAGE_KEY);
+      }
+
+      if (currentValue == null || !currentValue.equals(name)) {
+        command = new RecordingCommand(domain) {
+          public void doExecute() {
+            if (annot != null) {
+              SiriusUtil.delete(annot);
+            }
+            DAnnotation annot = DAnnotationHelper.getAnnotation(DAnnotationSourceConstants.CAPELLA_DIAGRAM_PACKAGE, descriptor, true);
+            annot.getDetails().put(DAnnotationSourceConstants.CAPELLA_DIAGRAM_PACKAGE_KEY, name);
+          }
+        };
+        command.setLabel(Messages.DiagramHelper_0);
+      }
+
+    } else if ( annot != null) {
+      command = new RecordingCommand(domain) {
+        @Override
+        protected void doExecute() {
+          SiriusUtil.delete(annot);
+        }
+      };
+      command.setLabel(Messages.DiagramHelper_1);
+    }
+
+    return command;
+
   }
 
 }

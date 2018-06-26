@@ -1,0 +1,140 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _9ikm0J6BEeWcU-ojRg-Rxw
+Element-Name: RepresentationPackage
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _vpoagHrAEeiFH4aXYyDXfw
+Runtime-Version: 2.2.0.201706152316
+Save-Time: 7/3/18 12:06 PM
+Testcase-Type: ecl
+
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+get-view "Capella Project Explorer" | get-tree
+    | select "EOLE_AF/EOLE_AF.aird" | double-click
+
+//1
+get-view "Capella Project Explorer" | get-tree
+    | select "EOLE_AF/EOLE_AF.aird/EOLE_AF/Logical Architecture/Logical System/[LAB] Logical System - Logical Architecture Blank"
+with [get-view Properties | get-section Property | get-group "" | get-editbox -after [get-label "Package :"]] {
+    set-text a
+    key-type Enter
+}
+get-view "Capella Project Explorer" | get-tree 
+    | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Logical System/a/[LAB] Logical System - Logical Architecture Blank"
+
+//2
+get-view "Capella Project Explorer" | get-tree 
+    | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Logical System/[LAB] Logical System - Logical Architecture Blank with FC"
+with [get-view Properties | get-section Property | get-group "" | get-editbox -after [get-label "Package :"]] {
+    set-text a
+    key-type Enter
+}
+get-view "Capella Project Explorer" | get-tree 
+    | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Logical System/a/[LAB] Logical System - Logical Architecture Blank with FC"
+
+
+//3
+get-view "Capella Project Explorer" | get-tree 
+    | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Logical System/[LAB] Logical System - Logical Architecture Blank without connections"
+with [get-view Properties | get-section Property | get-group "" | get-editbox -after [get-label "Package :"]] {
+    set-text a
+    key-type Enter
+}
+get-view "Capella Project Explorer" | get-tree 
+    | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Logical System/a/[LAB] Logical System - Logical Architecture Blank without connections"
+
+//4
+get-view "Capella Project Explorer" | get-tree
+    | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Logical System/[LCBD] Logical System - Logical Component Breakdown"
+with [get-view Properties | get-section Property | get-group "" | get-editbox -after [get-label "Package :"]] {
+    set-text a
+    key-type Enter
+}
+get-view "Capella Project Explorer" | get-tree
+    | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Logical System/a/[LCBD] Logical System - Logical Component Breakdown"
+
+
+/////////////////////////////////////////////////////////////////////////////////////////
+
+
+//2
+get-view "Capella Project Explorer" | get-tree 
+    | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Logical System/a/[LAB] Logical System - Logical Architecture Blank with FC"
+with [get-view Properties | get-section Property | get-group "" | get-editbox -after [get-label "Package :"]] {
+    set-text b
+    key-type Enter
+}
+get-view "Capella Project Explorer" | get-tree 
+    | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Logical System/b/[LAB] Logical System - Logical Architecture Blank with FC"
+
+
+//3
+get-view "Capella Project Explorer" | get-tree 
+    | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Logical System/a/[LAB] Logical System - Logical Architecture Blank without connections"
+with [get-view Properties | get-section Property | get-group "" | get-editbox -after [get-label "Package :"]] {
+    set-text c
+    key-type Enter
+}
+get-view "Capella Project Explorer" | get-tree 
+    | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Logical System/c/[LAB] Logical System - Logical Architecture Blank without connections"
+
+//4
+get-view "Capella Project Explorer" | get-tree
+    | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Logical System/a/[LCBD] Logical System - Logical Component Breakdown"
+with [get-view Properties | get-section Property | get-group "" | get-editbox -after [get-label "Package :"]] {
+    set-text d
+    key-type Enter
+}
+get-view "Capella Project Explorer" | get-tree
+    | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Logical System/d/[LCBD] Logical System - Logical Component Breakdown"
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+
+
+//1
+get-view "Capella Project Explorer" | get-tree 
+    | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Logical System/a/[LAB] Logical System - Logical Architecture Blank"
+with [get-view Properties | get-section Property | get-group "" | get-editbox -after [get-label "Package :"]] {
+    set-text ""
+    key-type Enter
+}
+get-view "Capella Project Explorer" | get-tree 
+    | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Logical System/[LAB] Logical System - Logical Architecture Blank"
+
+//2
+get-view "Capella Project Explorer" | get-tree 
+    | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Logical System/b/[LAB] Logical System - Logical Architecture Blank with FC"
+with [get-view Properties | get-section Property | get-group "" | get-editbox -after [get-label "Package :"]] {
+    set-text ""
+    key-type Enter
+}
+get-view "Capella Project Explorer" | get-tree 
+    | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Logical System/[LAB] Logical System - Logical Architecture Blank with FC"
+    
+    
+//3
+get-view "Capella Project Explorer" | get-tree 
+    | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Logical System/c/[LAB] Logical System - Logical Architecture Blank without connections"
+with [get-view Properties | get-section Property | get-group "" | get-editbox -after [get-label "Package :"]] {
+    set-text ""
+    key-type Enter
+}
+get-view "Capella Project Explorer" | get-tree 
+    | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Logical System/[LAB] Logical System - Logical Architecture Blank without connections"
+
+//4
+get-view "Capella Project Explorer" | get-tree
+    | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Logical System/d/[LCBD] Logical System - Logical Component Breakdown"
+with [get-view Properties | get-section Property | get-group "" | get-editbox -after [get-label "Package :"]] {
+    set-text ""
+    key-type Enter
+}
+get-view "Capella Project Explorer" | get-tree
+    | select "EOLE_AF/*EOLE_AF.aird/EOLE_AF/Logical Architecture/Logical System/[LCBD] Logical System - Logical Component Breakdown"
+
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

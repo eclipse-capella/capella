@@ -125,7 +125,7 @@ public class ContextualDiagramHelper {
   public void setContextualElements(DRepresentationDescriptor representation, Collection<EObject> elements) {
     if (representation != null) {
       if ((elements == null) || (elements.size() == 0)) {
-        DAnnotationHelper.removeAnnotation(IRepresentationAnnotationConstants.ContextualElements, representation);
+        DAnnotationHelper.deleteAnnotation(IRepresentationAnnotationConstants.ContextualElements, representation);
 
       } else {
         DAnnotation annotation = DAnnotationHelper.getAnnotation(IRepresentationAnnotationConstants.ContextualElements, representation, true);

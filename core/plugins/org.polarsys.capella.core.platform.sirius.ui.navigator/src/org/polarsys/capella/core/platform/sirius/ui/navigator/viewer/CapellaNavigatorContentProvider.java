@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,9 +14,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.eclipse.core.resources.IFile;
@@ -51,6 +53,7 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.navigator.SaveablesProvider;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
@@ -71,6 +74,7 @@ import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.Part;
+import org.polarsys.capella.core.diagram.helpers.DiagramHelper;
 import org.polarsys.capella.core.libraries.model.CapellaModel;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
@@ -140,6 +144,54 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
           }
         }
         children = selectedChildren.toArray();
+      }
+
+      if (parentElement instanceof EObject) {
+        children = rewriteChildrenForRepresentationPackages((EObject) parentElement, children);
+      }
+      
+      return children;
+
+    }
+
+    @Override
+    public Object getParent(Object element) {
+      Object parent = super.getParent(element);
+      if (element instanceof DRepresentationDescriptor && parent instanceof EObject) {
+        String packageName = DiagramHelper.getService().getPackageName((DRepresentationDescriptor) element);
+        if (packageName != null) {
+          RepresentationPackage p = new RepresentationPackage(packageName, (EObject) parent); 
+          parent = p;
+        }
+      }
+      return parent;
+    }
+
+    //
+    // https://bugs.polarsys.org/show_bug.cgi?id=2110
+    // Rewrite the children[] to place diagrams into subpackages
+    //
+    private Object[] rewriteChildrenForRepresentationPackages(EObject parentElement, Object[] children) {
+      Map<String, RepresentationPackage> name2Package = new HashMap<String, RepresentationPackage>();
+      for (int i = 0; i < children.length; i++) {
+        if (children[i] instanceof DRepresentationDescriptor) {
+          DRepresentationDescriptor descriptor = (DRepresentationDescriptor) children[i];
+          String name = DiagramHelper.getService().getPackageName(descriptor);
+          if (name != null) {
+            RepresentationPackage pkg = name2Package.get(name); 
+            if (pkg == null) {
+              pkg = new RepresentationPackage(name, parentElement);
+              name2Package.put(name, pkg);
+              children[i] = pkg;
+            } else {
+              Object[] tmp = new Object[children.length - 1];
+              System.arraycopy(children, 0, tmp, 0, i);
+              System.arraycopy(children, i + 1, tmp, i, children.length - i - 1);
+              children = tmp;
+              i--;
+            }
+          }
+        }
       }
       return children;
     }
@@ -238,8 +290,10 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
         && isCapellaProjectDisplayed(ProjectExt.getProject((EObject) element))) {
       // In the CapellaProjectExplorer, parent of a Project/Library is actually the Project file 
       // (depending of preferences).
-	  parent = _sessionContentProvider.getParent(element);
-	} else if ((element instanceof EObject) && (((EObject) element).eContainer() instanceof Component)) {
+      parent = _sessionContentProvider.getParent(element);
+    } else if (element instanceof RepresentationPackage) {
+      parent = ((RepresentationPackage) element).getParent();
+    } else if ((element instanceof EObject) && (((EObject) element).eContainer() instanceof Component)) {
       EObject eObject = (EObject) element;
       Component component = (Component) eObject.eContainer();
       if (isImplicitView(component)) {
@@ -379,7 +433,8 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
         merged.addAll(Arrays.asList(getChildren(((Part) element).getOwnedAbstractType())));
         merged.remove(((Part) element).getOwnedAbstractType());
         return merged.toArray();
-
+      } else if (element instanceof RepresentationPackage) {
+        result = ((RepresentationPackage) element).getChildren();
       } else {
         // Other cases are delegated to the session content provider.
         result = _sessionContentProvider.getChildren(element);
@@ -605,6 +660,11 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
           //and an additional notification on the new target semantic element
           localNotification = new ViewerNotification(notification, notification.getNewValue(), true, true);
         }
+
+        if (notification.getFeature() == DescriptionPackage.Literals.DMODEL_ELEMENT__EANNOTATIONS && notification.getNotifier() instanceof DRepresentationDescriptor) {
+          localNotification = new ViewerNotification(notification, ((DRepresentationDescriptor)notification.getNotifier()).getTarget(), true, true);
+        }
+
       }
       
       super.notifyChanged(localNotification);
