@@ -53,7 +53,7 @@ public abstract class DAnnotationReferenceController implements IMultipleSemanti
    * @param semanticElement
    */
   public void clear(EObject semanticElement) {
-    DAnnotationHelper.removeAnnotation(dAnnotationSource, (DModelElement) semanticElement);
+    DAnnotationHelper.deleteAnnotation(dAnnotationSource, (DModelElement) semanticElement);
   }
 
 }

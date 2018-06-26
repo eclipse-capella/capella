@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.polarsys.capella.core.diagram.helpers;
 
+import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
 import org.eclipse.sirius.viewpoint.description.DModelElement;
 import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
@@ -36,10 +37,10 @@ public class DAnnotationHelper {
    * @param source
    * @param representation
    */
-  public static void removeAnnotation(String source, DModelElement representation) {
+  public static void deleteAnnotation(String source, DModelElement representation) {
     DAnnotation annotation = getAnnotation(source, representation, false);
     if (annotation != null) {
-      representation.getEAnnotations().remove(annotation);
+      SiriusUtil.delete(annotation);
     }
   }
 

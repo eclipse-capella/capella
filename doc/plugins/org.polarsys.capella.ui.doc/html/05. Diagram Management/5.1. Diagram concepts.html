@@ -1,5 +1,178 @@
-<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>5.1. Diagram concepts</title><link type="text/css" rel="stylesheet" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css"/></head><body><h1 id="Diagram_Concepts">Diagram Concepts</h1><p>A diagram is a partial (exhaustive in some cases) view of the model content with a graphical representation of nodes and links.</p><h2 id="Diagram_Refreshing_Strategies">Diagram Refreshing Strategies</h2><p>Diagrams may no represent the latest state the model they represent. For instance, if the model is modified directly in the Capella Project Explorer, the related diagrams may not represent the model anymore (because of addition, deletion, renaming, &hellip;).</p><p>There are several refresh strategies:</p><ul><li><b>At opening</b> (i.e. the diagrams are systematically refreshed 	when being opened).</li><li><b>Automatic Refresh</b> (i.e. the diagrams are refreshed 	automatically if they are open, they always represent the latest 	state of the model).</li><li><b>Manual Refresh </b>(i.e. refreshing a diagram is an explicit 	action performed by the user when necessary.)</li></ul><p>To manually refresh diagrams, two methods are available:</p><ul><li>The button 	<img height="28" width="39" border="0" src="Images/5.1.%20Diagram%20concepts_html_35899bf3.png"/> 	in the diagram toolbar to refresh the currently displayed diagram.</li><li>The contextual menu command of the Project Explorer to refresh all 	diagrams in the model or a subset of diagrams below a model element:</li></ul><p><img height="444" width="529" border="0" src="Images/5.1.%20Diagram%20concepts_html_2651df52.png"/></p><p>To change the refreshing strategy, see the diagram-related Preferences.</p><h2 id="Blank_and_Contextual_Diagrams.2C_Contextual_Diagram_Elements">Blank and Contextual Diagrams, Contextual Diagram Elements</h2><p><br/>
-<br/></p><table border="1"><tr><td><p><img height="48" width="48" border="0" src="Images/5.1.%20Diagram%20concepts_html_3c78e109.png"/></p></td><td><p>The 				strategy in Capella is slowly moving from having a clear 				distinction between blank and contextual diagrams towards having 				only blank diagrams with selected contextual elements. This trend 				starts with version 2.2.0 in the end of 2011 and will continue in 				the first semester of 2012.</p></td></tr></table><p><br/>
-<br/></p><h3 id="Blank_Diagrams">Blank Diagrams</h3><p><b>Blank diagrams are the most common diagrams in Capella. Blank means the user decides which elements should appear on the diagram</b>. This allows him to build focused diagrams, with specific purposes.</p><h3 id="Contextual_Diagrams">Contextual Diagrams</h3><p><b>Contextual diagram are focused on one specific element. These diagrams have specific refresh rues</b>. Examples:</p><ul><li>A contextual dataflow diagram is centered on one specific Function 	(which label appears in bold). The refresh strategy is to 	automatically display all the other Functions exchanging information 	with the current Function.</li><li>A contextual external interface diagram is centered on one specific 	Component. The refresh strategy is to automatically display all 	Interfaces provided by the current Component, and all the Components 	providing / requiring these Interfaces.</li></ul><h3 id="Contextual_Diagram_Elements">Contextual Diagram Elements</h3><p><b>The idea of diagrams with contextual elements is to unify Blank and Contextual diagrams</b>. <b>All diagrams are blank, but the user can decide that a given diagram is going to be contextual to a selected subset of elements</b>.</p><p>Example of elements in Physical Architecture: A Functional Chain goes through three sets of Functions / Behaviour Components / Nodes.</p><p><img height="241" width="714" border="0" src="Images/5.1.%20Diagram%20concepts_html_4bcfe8db.png"/></p><p>Using the Properties View of the diagram, the Functional Chain FC1 is set as a contextual element for the current diagram (several elements could be set as contextual). At this stage, the new diagram only contains two pieces of the Functional Chain and does not even display the Functional Chain.</p><p><img height="500" width="950" border="0" src="Images/5.1_Contextual_Diagram_Elements.png"/></p><p>The result is seen in the Properties View.</p><p><img height="50" width="600" border="0" src="Images/5.1_Contextual_Diagram_Elements2.png"/></p><p>The next refresh <img height="28" width="39" border="0" src="Images/5.1.%20Diagram%20concepts_html_35899bf3.png"/> on the diagram automatically creates the missing pieces of the Functional Chain. Any semantic change of the Functional Chain (addition of steps, etc.) will automatically be taken into account in this diagram.</p><p><img height="429" width="558" border="0" src="Images/5.1.%20Diagram%20concepts_html_m67259d01.png"/></p><p>Below is another example. The Behaviour Component BC2 is set as contextual: the other Components it is communicating with are automatically displayed.</p><p><img height="247" width="1036" border="0" src="Images/5.1.%20Diagram%20concepts_html_68c21683.png"/></p><h2 id="Layout_Management">Layout Management</h2><h3 id="Pin_.2F_Unpin_Diagram_Elements">Pin / Unpin Diagram Elements</h3><p>Diagram element pinning allows marking specific elements in a diagram as having a fixed location so that they are not moved by the Arrange All action. Once the end user has performed a first layout effort, the Arrange All action can still be called for new elements without risking harming the positioning of existing elements.</p><p>When diagram elements are selected the diagram toolbar contains two dedicated buttons to pin / unpin selected elements.</p><p><img height="180" width="467" border="0" src="Images/5.1.%20Diagram%20concepts_html_5a167562.png"/></p><p>When no diagram element is selected, the diagram toolbar contains a button for displaying a dialog showing the pin / unpin status of all elements.</p><p><img height="535" width="370" border="0" src="Images/5.1.%20Diagram%20concepts_html_m17eb4be9.png"/></p><h3 id="Arrange_All_Bordered_Nodes">Arrange All Bordered Nodes</h3><p>In addition to the standard automatic layout, this specific action allows to arrange the edges so that they are as short as possible. This action moves the ports of a node / container when necessary. It is useful when the position of the nodes and containers has already been defined and edges still need a better layout.</p><p><img height="250" width="900" border="0" src="Images/5.1.%20Diagram%20concepts_html_m12b23fb.png"/></p><p><br/>
-<br/></p><table border="1"><tr><td><p><img height="44" width="44" border="0" src="Images/5.1.%20Diagram%20concepts_html_m1fd6c4f8.png"/></p></td><td><p><u><b>Diagram ergonomics:</b></u> 				Learn more with DoReMi Viewpoint online Help</p><p>Miscellaneous features improve the end user 				experience with diagrams. These features are documented in the 				included online help of Capella / DoReMi (available from 				the menu <i>Help / Help Contents / 				ViewPoint User Guide</i>). Among these 				features:</p><p><img height="589" width="818" border="0" src="Images/5.1.%20Diagram%20concepts_html_m4244975a.png"/></p></td></tr></table><p><br/>
-<br/></p></body></html>
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>5.1. Diagram concepts</title>
+		<link type="text/css" rel="stylesheet" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css"/>
+	</head>
+	<body>
+		<h1 id="Diagram_Concepts">Diagram Concepts</h1>
+		<p>A diagram is a partial (exhaustive in some cases) view of the model content with a graphical representation of nodes and links.</p>
+		<h2 id="Common_Diagram_Properties">Common Diagram Properties</h2>
+		<p>The following properties are common to all diagrams. They can be edited in the Properties View by selecting the diagram in the project explorer. The Properties View can be opened by selecting 
+			<i>Window-&gt;Show View-&gt;Properties</i> from the menu bar.
+		</p>
+		<p>
+			<b> Name </b>
+		</p>
+		<p>The 
+			<i>Name</i> property allows to change the name of the diagram.
+		</p>
+		<p>
+			<b> Package </b>
+		</p>
+		<p>The 
+			<i>Package</i> property allows to show the diagram in a subfolder under the diagram's semantic element in the capella project explorer.
+			By default, the is property is empty, and the capella project explorer shows the diagram as a direct child of the model element targeted
+			by the diagram:
+		</p>
+		<p>
+			<img height="40" width="306" border="0" src="Images/diagram_pkg_default.png"/>
+		</p>
+		<p>Setting the package property to 'sample', will show the Diagram in a folder with that label under the target element:</p>
+		<p>
+			<img height="56" width="327" border="0" src="Images/diagram_pkg_subpkg.png"/>
+		</p>
+		<p>Note that there is only one level of depth for diagram packages, and a Diagram can belong to only one package.</p>
+		<p>
+			<b> Elements of Interest</b>
+		</p>
+		<p>The 
+			<i>Elements of Interest</i> property allows to associate a Diagram with an arbitrary list of model elements that are of special interest
+			to the diagram. The Semantic Browser view displays the relation between a Diagram and its Elements of Interest.
+		</p>
+		<h2 id="Diagram_Refreshing_Strategies">Diagram Refreshing Strategies</h2>
+		<p>Diagrams may no represent the latest state the model they represent. For instance, if the model is modified directly in the Capella Project Explorer, the related diagrams may not represent the model anymore (because of addition, deletion, renaming, &hellip;).</p>
+		<p>There are several refresh strategies:</p>
+		<ul>
+			<li>
+				<b>At opening</b> (i.e. the diagrams are systematically refreshed 	when being opened).
+			</li>
+			<li>
+				<b>Automatic Refresh</b> (i.e. the diagrams are refreshed 	automatically if they are open, they always represent the latest 	state of the model).
+			</li>
+			<li>
+				<b>Manual Refresh </b>(i.e. refreshing a diagram is an explicit 	action performed by the user when necessary.)
+			</li>
+		</ul>
+		<p>To manually refresh diagrams, two methods are available:</p>
+		<ul>
+			<li>The button 	
+				<img height="28" width="39" border="0" src="Images/5.1.%20Diagram%20concepts_html_35899bf3.png"/> 	in the diagram toolbar to refresh the currently displayed diagram.
+			</li>
+			<li>The contextual menu command of the Project Explorer to refresh all 	diagrams in the model or a subset of diagrams below a model element:</li>
+		</ul>
+		<p>
+			<img height="444" width="529" border="0" src="Images/5.1.%20Diagram%20concepts_html_2651df52.png"/>
+		</p>
+		<p>To change the refreshing strategy, see the diagram-related Preferences.</p>
+		<h2 id="Blank_and_Contextual_Diagrams.2C_Contextual_Diagram_Elements">Blank and Contextual Diagrams, Contextual Diagram Elements</h2>
+		<p>
+			<br/>
+
+			<br/>
+		</p>
+		<table border="1">
+			<tr>
+				<td>
+					<p>
+						<img height="48" width="48" border="0" src="Images/5.1.%20Diagram%20concepts_html_3c78e109.png"/>
+					</p>
+				</td>
+				<td>
+					<p>The 				strategy in Capella is slowly moving from having a clear 				distinction between blank and contextual diagrams towards having 				only blank diagrams with selected contextual elements. This trend 				starts with version 2.2.0 in the end of 2011 and will continue in 				the first semester of 2012.</p>
+				</td>
+			</tr>
+		</table>
+		<p>
+			<br/>
+
+			<br/>
+		</p>
+		<h3 id="Blank_Diagrams">Blank Diagrams</h3>
+		<p>
+			<b>Blank diagrams are the most common diagrams in Capella. Blank means the user decides which elements should appear on the diagram</b>. This allows him to build focused diagrams, with specific purposes.
+		</p>
+		<h3 id="Contextual_Diagrams">Contextual Diagrams</h3>
+		<p>
+			<b>Contextual diagram are focused on one specific element. These diagrams have specific refresh rues</b>. Examples:
+		</p>
+		<ul>
+			<li>A contextual dataflow diagram is centered on one specific Function 	(which label appears in bold). The refresh strategy is to 	automatically display all the other Functions exchanging information 	with the current Function.</li>
+			<li>A contextual external interface diagram is centered on one specific 	Component. The refresh strategy is to automatically display all 	Interfaces provided by the current Component, and all the Components 	providing / requiring these Interfaces.</li>
+		</ul>
+		<h3 id="Contextual_Diagram_Elements">Contextual Diagram Elements</h3>
+		<p>
+			<b>The idea of diagrams with contextual elements is to unify Blank and Contextual diagrams</b>. 
+			<b>All diagrams are blank, but the user can decide that a given diagram is going to be contextual to a selected subset of elements</b>.
+		</p>
+		<p>Example of elements in Physical Architecture: A Functional Chain goes through three sets of Functions / Behaviour Components / Nodes.</p>
+		<p>
+			<img height="241" width="714" border="0" src="Images/5.1.%20Diagram%20concepts_html_4bcfe8db.png"/>
+		</p>
+		<p>Using the Properties View of the diagram, the Functional Chain FC1 is set as a contextual element for the current diagram (several elements could be set as contextual). At this stage, the new diagram only contains two pieces of the Functional Chain and does not even display the Functional Chain.</p>
+		<p>
+			<img height="500" width="950" border="0" src="Images/5.1_Contextual_Diagram_Elements.png"/>
+		</p>
+		<p>The result is seen in the Properties View.</p>
+		<p>
+			<img height="50" width="600" border="0" src="Images/5.1_Contextual_Diagram_Elements2.png"/>
+		</p>
+		<p>The next refresh 
+			<img height="28" width="39" border="0" src="Images/5.1.%20Diagram%20concepts_html_35899bf3.png"/> on the diagram automatically creates the missing pieces of the Functional Chain. Any semantic change of the Functional Chain (addition of steps, etc.) will automatically be taken into account in this diagram.
+		</p>
+		<p>
+			<img height="429" width="558" border="0" src="Images/5.1.%20Diagram%20concepts_html_m67259d01.png"/>
+		</p>
+		<p>Below is another example. The Behaviour Component BC2 is set as contextual: the other Components it is communicating with are automatically displayed.</p>
+		<p>
+			<img height="247" width="1036" border="0" src="Images/5.1.%20Diagram%20concepts_html_68c21683.png"/>
+		</p>
+		<h2 id="Layout_Management">Layout Management</h2>
+		<h3 id="Pin_.2F_Unpin_Diagram_Elements">Pin / Unpin Diagram Elements</h3>
+		<p>Diagram element pinning allows marking specific elements in a diagram as having a fixed location so that they are not moved by the Arrange All action. Once the end user has performed a first layout effort, the Arrange All action can still be called for new elements without risking harming the positioning of existing elements.</p>
+		<p>When diagram elements are selected the diagram toolbar contains two dedicated buttons to pin / unpin selected elements.</p>
+		<p>
+			<img height="180" width="467" border="0" src="Images/5.1.%20Diagram%20concepts_html_5a167562.png"/>
+		</p>
+		<p>When no diagram element is selected, the diagram toolbar contains a button for displaying a dialog showing the pin / unpin status of all elements.</p>
+		<p>
+			<img height="535" width="370" border="0" src="Images/5.1.%20Diagram%20concepts_html_m17eb4be9.png"/>
+		</p>
+		<h3 id="Arrange_All_Bordered_Nodes">Arrange All Bordered Nodes</h3>
+		<p>In addition to the standard automatic layout, this specific action allows to arrange the edges so that they are as short as possible. This action moves the ports of a node / container when necessary. It is useful when the position of the nodes and containers has already been defined and edges still need a better layout.</p>
+		<p>
+			<img height="250" width="900" border="0" src="Images/5.1.%20Diagram%20concepts_html_m12b23fb.png"/>
+		</p>
+		<p>
+			<br/>
+
+			<br/>
+		</p>
+		<table border="1">
+			<tr>
+				<td>
+					<p>
+						<img height="44" width="44" border="0" src="Images/5.1.%20Diagram%20concepts_html_m1fd6c4f8.png"/>
+					</p>
+				</td>
+				<td>
+					<p><u>
+						<b>Diagram ergonomics:</b></u> 				Learn more with DoReMi Viewpoint online Help
+					</p>
+					<p>Miscellaneous features improve the end user 				experience with diagrams. These features are documented in the 				included online help of Capella / DoReMi (available from 				the menu 
+						<i>Help / Help Contents / 				ViewPoint User Guide</i>). Among these 				features:
+					</p>
+					<p>
+						<img height="589" width="818" border="0" src="Images/5.1.%20Diagram%20concepts_html_m4244975a.png"/>
+					</p>
+				</td>
+			</tr>
+		</table>
+		<p>
+			<br/>
+
+			<br/>
+		</p>
+	</body>
+</html>
