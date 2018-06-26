@@ -5,16 +5,16 @@ Element-Name: CapellaExplorerFilters
 Element-Type: context
 Element-Version: 2.0
 Id: _l_hsIAA_EeimXaiNP7dJhg
-Runtime-Version: 2.3.0.201712190725
-Save-Time: 1/23/18 2:17 PM
+Runtime-Version: 2.3.0.201803290557
+Save-Time: 6/25/18 3:31 PM
 
 ------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
 Content-Type: text/ecl
 Entry-Name: .ecl.context
 
 get-button "View Menu" | click
-get-view "Capella Project Explorer" | get-menu "Customize View..." | click
-with [get-window "Available Customizations"] {
+get-view "Capella Project Explorer" | get-menu "Filters and Customization..." | click
+with [get-window "Filters and Customization"] {
     get-tab-folder | get-tab-item Filters | click
     with [get-table] {
     

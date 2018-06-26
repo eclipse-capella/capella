@@ -6,8 +6,8 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _QblmIKj2Eee0yuaysMB3Rg
-Runtime-Version: 2.1.0.201606221726
-Save-Time: 3/21/18 2:32 PM
+Runtime-Version: 2.3.0.201803290557
+Save-Time: 6/25/18 6:09 PM
 Testcase-Type: ecl
 
 ------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
@@ -34,8 +34,8 @@ get-window "New System Data Flow Blank" | get-button OK | click
 
 //Ensure that port and exchanges are hidden
 get-button "View Menu" | click
-get-view "Capella Project Explorer" | get-menu "Customize View..." | click
-with [get-window "Available Customizations"] {
+get-view "Capella Project Explorer" | get-menu "Filters and Customization..." | click
+with [get-window "Filters and Customization"] {
     get-tab-folder | get-tab-item Filters | click
     with [get-table] {
         get-item "Functional Exchanges" | check
@@ -123,7 +123,7 @@ with [get-editor "[SDFB] Root System Function"] {
             mouse-press 55 47 button3 -height 68 -width 148
             mouse-release 55 47 button3 2097152 -height 68 -width 148
         }
-        get-menu "REC \\/ RPL/Create a REC from selection" | click
+        get-menu "REC \\/ RPL/Create REC/From selection..." | click
     }
 }
 get-window "Replicable Elements" | get-button OK | click
@@ -192,7 +192,7 @@ with [get-editor "[SDFB] Root System Function"] {
             mouse-press 55 47 button3 -height 68 -width 148
             mouse-release 55 47 button3 2097152 -height 68 -width 148
         }
-        get-menu "REC \\/ RPL/Update REC from selection" | click
+        get-menu "REC \\/ RPL/Update REC/From selection..." | click
     }
 	
 }
@@ -230,7 +230,7 @@ with [get-editor "[SDFB] Root System Function" -index 1 | get-diagram -index 1] 
         mouse-press 210 88 button3 -height 394 -width 604
         mouse-release 210 88 button3 2097152 -height 394 -width 604
     }
-    get-menu "REC \\/ RPL/Instantiate a RPL from a REC" | click
+    get-menu "REC \\/ RPL/Instantiate RPL from REC" | click
 }
 with [get-window "Replicable Elements"] {
     get-group "" | get-button "Browse available elements" | click
@@ -511,7 +511,7 @@ with [get-editor "[SDFB] Root System Function" -index 2 | get-diagram -index 1] 
         mouse-press 229 382 button3 -height 687 -width 1042
         mouse-release 229 382 button3 2097152 -height 687 -width 1042
     }
-    get-menu "REC \\/ RPL/Instantiate a RPL from a REC" | click
+    get-menu "REC \\/ RPL/Instantiate RPL from REC" | click
 }
 with [get-window "Replicable Elements"] {
     get-group "" | get-button "Browse available elements" | click
