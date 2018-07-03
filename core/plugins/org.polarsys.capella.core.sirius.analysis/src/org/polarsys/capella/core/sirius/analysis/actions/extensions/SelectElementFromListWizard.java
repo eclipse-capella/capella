@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -35,7 +35,7 @@ import org.polarsys.capella.core.ui.properties.providers.CapellaTransfertViewerL
  */
 public class SelectElementFromListWizard extends AbstractExternalJavaAction {
   @SuppressWarnings({ "unchecked", "rawtypes" })
-  public Object execute(EObject context, List scope_p, String wizardMessage_p, boolean multiple_p) {
+  public Object execute(EObject context, List scope_p, String wizardMessage_p, boolean multiple, boolean displayDialog) {
     String wizardMessage = wizardMessage_p;
     List<? extends EObject> scope = scope_p;
     if (wizardMessage == null) {
@@ -44,6 +44,9 @@ public class SelectElementFromListWizard extends AbstractExternalJavaAction {
     if (scope == null) {
       scope = Collections.emptyList();
     }
+    if(scope.size() == 1 && !displayDialog){
+      return scope.get(0);
+    }
     boolean expandViewer = CapellaUIPropertiesPlugin.getDefault().isAllowedExpandSingleViewerContent();
     int viewerExpandLevel = expandViewer ? AbstractTreeViewer.ALL_LEVELS : 0;
     SelectElementsDialog selectionDialog = new SelectElementsDialog(getShell(),
@@ -51,14 +54,14 @@ public class SelectElementFromListWizard extends AbstractExternalJavaAction {
             Messages.SelectElementFromListWizard_Title,
             wizardMessage,
             new ArrayList<EObject>(scope),
-            multiple_p,
+            multiple,
             null, viewerExpandLevel);
 
     Object result = WIZARD_CANCELED;
     if (Window.OK == selectionDialog.open()) {
       List<? extends EObject> selectedElements = selectionDialog.getResult();
       result = selectedElements;
-      if (!multiple_p && !selectedElements.isEmpty()) {
+      if (!multiple && !selectedElements.isEmpty()) {
         // Mono selection case.
         result = selectedElements.get(0);
       }
@@ -77,12 +80,14 @@ public class SelectElementFromListWizard extends AbstractExternalJavaAction {
     String wizardMessage = (String) parameters.get(WIZARD_MESSAGE);
     String resultVariable = (String) parameters.get(RESULT_VARIABLE);
     String sMultiple = (String) parameters.get(MULTIPLE);
+    String sDisplayDialog = (String) parameters.get(DISPLAY_DIALOG_FOR_ONE_ELEMENT);
 
     Assert.isNotNull(context);
     Assert.isNotNull(resultVariable);
     boolean multiple = ("true".equals(sMultiple)) ? true : false; //$NON-NLS-1$
+    boolean displayDialog = sDisplayDialog == null ? true : ("true".equals(sDisplayDialog)) ? true : false;
 
-    Object result = execute(context, scope, wizardMessage, multiple);
+    Object result = execute(context, scope, wizardMessage, multiple, displayDialog);
     InterpreterUtil.getInterpreter(context).setVariable(resultVariable, result);
   }
 }
