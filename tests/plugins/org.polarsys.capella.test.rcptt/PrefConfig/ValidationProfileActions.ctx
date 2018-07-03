@@ -5,8 +5,8 @@ Element-Name: ValidationProfileActions
 Element-Type: context
 Element-Version: 2.0
 Id: _ZR3fQKKHEeaAAPJPtfviTA
-Runtime-Version: 2.1.0.201605312320
-Save-Time: 2/22/18 1:44 PM
+Runtime-Version: 2.3.0.201803290557
+Save-Time: 6/25/18 5:47 PM
 
 ------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
 Content-Type: text/ecl
@@ -18,7 +18,7 @@ proc referenceConfigProject [val capellaProjectName] [val configProjectName]{
 	with [get-window [concat "Properties for " $capellaProjectName] ] {
 	    get-tree | select "Capella Project References"
 	    get-table | get-item $configProjectName | check
-	    get-button OK | click
+	    get-button "Apply and Close" | click
 	}
 }
 
@@ -34,7 +34,7 @@ proc selectOnlyQualityConstraints {
 	        get-item "Capella/Quality" | check
 	    }
 	    get-button Apply | click
-	    get-button OK | click
+	    get-button "Apply and Close" | click
 	}
 }
 
@@ -98,7 +98,7 @@ proc exportEPFFileToConfigProject [val configProjectName] {
 	get-menu "Window/Show View/Other..." | click
 	with [get-window "Show View"] {
 	    get-tree | select "General/Project Explorer"
-	    get-button OK | click
+	    get-button "Open" | click
 	}
 	with [get-view "Project Explorer"] {
 	    with [get-tree] {
@@ -133,7 +133,7 @@ proc selectSomeConstraints_step1 {
 	        get-item "DCOM_15 - Exchange item allocation consistency" | check
 	        get-item "DCOM_16 - Interface Exchange item allocation consistency" | uncheck
 	    }
-	    get-button OK | click
+	    get-button "Apply and Close" | click
 	}
 }
 
@@ -157,7 +157,7 @@ proc selectSomeConstraints_step2 {
 	        get-item "DCOM_15 - Exchange item allocation consistency" | uncheck
 	        get-item "DCOM_16 - Interface Exchange item allocation consistency" | check
 	    }
-	    get-button OK | click
+	    get-button "Apply and Close" | click
 	}
 }
 
@@ -181,7 +181,7 @@ proc selectSomeConstraints_validation {
 	        checkPropertyItemSelected "DCOM_15 - Exchange item allocation consistency" true
 	        checkPropertyItemSelected "DCOM_16 - Interface Exchange item allocation consistency" true
 	    }
-	    get-button OK | click
+	    get-button "Apply and Close" | click
 	}
 }
 
@@ -332,7 +332,7 @@ proc "changePreferences" [val projectName] {
 	    get-group Log | get-button "Enable log in Information view" | uncheck
 	
 		// Quit the window
-		get-button OK | click
+		get-button "Apply and Close" | click
 	}
 }
 
@@ -531,7 +531,7 @@ proc "restoreDefaultPreferences" [val projectName] {
 	    get-button "Restore Defaults" | click
 	    get-button Apply | click
 	    
-	    get-button OK | click
+	    get-button "Apply and Close" | click
 	
 	}
 }
@@ -548,7 +548,7 @@ proc checkValidationProfile {
 	        get-item "Capella/Design" | check
 	    }
 	    get-button Apply | click
-	    get-button OK | click
+	    get-button "Apply and Close" | click
 	}
 	
 	// Check config ConfigProject1_preferences
