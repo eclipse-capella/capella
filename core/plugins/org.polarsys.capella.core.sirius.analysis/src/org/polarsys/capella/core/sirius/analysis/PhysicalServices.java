@@ -15,6 +15,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -479,8 +480,8 @@ public class PhysicalServices {
 
   public EObject createPhysicalPath(EObject context, List<EObject> views, EObject source) {
 
-    if (!views.isEmpty()) {
-      List<PhysicalLink> newList = new ArrayList<PhysicalLink>();
+    if (!views.isEmpty() && source != null) {
+      List<PhysicalLink> newList = new ArrayList<>();
       for (EObject aSelectedElement : views) {
         if ((aSelectedElement instanceof DEdge) && (((DEdge) aSelectedElement).getTarget() != null)
             && (((DEdge) aSelectedElement).getTarget() instanceof PhysicalLink)) {
@@ -498,7 +499,7 @@ public class PhysicalServices {
       return PhysicalPathExt.createPhysicalPath(container, newList, sourcePath);
 
     }
-    return context;
+    return null;
   }
 
   public boolean canBeInvolvedInPhysicalPath(EObject source) {
@@ -515,8 +516,8 @@ public class PhysicalServices {
   }
 
   public List<EObject> getAvailableSourcesOfPhysicalPath(EObject context, List<EObject> views) {
-    HashMap<Part, Integer> parts = new HashMap<Part, Integer>();
-    List<EObject> result = new ArrayList<EObject>();
+    HashMap<Part, Integer> parts = new HashMap<>();
+    List<EObject> result = new ArrayList<>();
     for (EObject aSelectedElement : views) {
       if ((aSelectedElement instanceof DEdge) && (((DEdge) aSelectedElement).getTarget() != null)
           && (((DEdge) aSelectedElement).getTarget() instanceof PhysicalLink)) {
@@ -566,7 +567,7 @@ public class PhysicalServices {
   }
 
   public boolean isValidPhysicalPathSelection(EObject context, List<EObject> views) {
-    SimpleOrientedGraph<Part> graph = new SimpleOrientedGraph<Part>();
+    SimpleOrientedGraph<Part> graph = new SimpleOrientedGraph<>();
     if (!views.isEmpty()) {
       for (EObject aSelectedElement : views) {
         if ((aSelectedElement instanceof DEdge) && (((DEdge) aSelectedElement).getTarget() != null)
@@ -584,7 +585,7 @@ public class PhysicalServices {
             return false;
           }
         }
-        return graph.isValid();
+        return graph.isValid() && !getAvailableSourcesOfPhysicalPath(context, views).isEmpty();
       }
       return false;
     }
@@ -1456,7 +1457,7 @@ public class PhysicalServices {
       incoming.retainAll(outgoing);
       incoming.removeAll(PhysicalPathExt.getFlatPhysicalLinks(path));
 
-      Collection<Part> targetParts = new HashSet<Part>();
+      Collection<Part> targetParts = new LinkedHashSet<>();
       targetParts.addAll(PhysicalPathExt.getFlatPhysicalPathFirstParts(path));
       targetParts.addAll(PhysicalPathExt.getFlatPhysicalPathLastParts(path));
 
