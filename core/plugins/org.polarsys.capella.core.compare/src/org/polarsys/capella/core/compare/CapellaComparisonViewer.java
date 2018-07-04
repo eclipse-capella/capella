@@ -85,7 +85,7 @@ public class CapellaComparisonViewer extends ComparisonViewer {
       public boolean select(Viewer viewer_p, Object parentElement_p, Object element_p) {
         if (element_p instanceof IMatch) {
           IMatch match = (IMatch)element_p;
-          if (match.get(Role.TARGET) instanceof DRepresentation &&
+          if (match.get(Role.TARGET) instanceof DRepresentation ||
               match.get(Role.REFERENCE) instanceof DRepresentation)
             return false;
         }
