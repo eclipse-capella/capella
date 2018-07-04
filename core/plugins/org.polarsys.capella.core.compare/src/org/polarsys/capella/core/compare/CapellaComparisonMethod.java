@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,7 @@ import static org.eclipse.emf.diffmerge.impl.policies.ConfigurableMatchPolicy.Ma
 import static org.eclipse.emf.diffmerge.impl.policies.ConfigurableMatchPolicy.MatchCriterionKind.INTRINSIC_ID;
 import static org.eclipse.emf.diffmerge.impl.policies.ConfigurableMatchPolicy.MatchCriterionKind.SEMANTICS;
 import static org.eclipse.emf.diffmerge.impl.policies.ConfigurableMatchPolicy.MatchCriterionKind.STRUCTURE;
+import static org.polarsys.capella.core.compare.CapellaMatchPolicy.CRITERION_INTRINSIC_ID_SIRIUS_DIAGRAM;
 import static org.polarsys.capella.core.compare.CapellaMatchPolicy.CRITERION_INTRINSIC_ID_SID;
 import static org.polarsys.capella.core.compare.CapellaMatchPolicy.CRITERION_SEMANTICS_P2L;
 
@@ -31,8 +32,11 @@ import org.eclipse.emf.diffmerge.impl.policies.ComparisonConfigurator;
 import org.eclipse.emf.diffmerge.ui.sirius.SiriusComparisonMethod;
 import org.eclipse.emf.diffmerge.ui.specification.IComparisonMethodFactory;
 import org.eclipse.emf.diffmerge.ui.specification.IModelScopeDefinition;
+import org.eclipse.emf.diffmerge.ui.viewers.AbstractComparisonViewer;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.jface.viewers.ILabelProvider;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.ui.IActionBars;
 import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory;
 
 
@@ -44,23 +48,34 @@ public class CapellaComparisonMethod extends SiriusComparisonMethod {
   /** The "transfer data between independent models" configurator */
   public static final IComparisonConfigurator CONFIGURATOR_P2L =
       new ComparisonConfigurator(
-          Messages.CapellaComparisonMethod_Usage_Transition,
-          Messages.CapellaComparisonMethod_Usage_Transition_Tooltip,
+          org.polarsys.capella.core.compare.Messages.CapellaComparisonMethod_Usage_Transition,
+          org.polarsys.capella.core.compare.Messages.CapellaComparisonMethod_Usage_Transition_Tooltip,
           Arrays.asList(INTRINSIC_ID, EXTRINSIC_ID),
-          Arrays.asList(CRITERION_INTRINSIC_ID_SID));
+          Arrays.asList(CRITERION_INTRINSIC_ID_SID, CRITERION_INTRINSIC_ID_SIRIUS_DIAGRAM));
   
   /** The "compare versions of the same model" configurator */
   public static final IComparisonConfigurator CONFIGURATOR_SID =
     new ComparisonConfigurator(
-        Messages.CapellaComparisonMethod_Usage_P2L,
-        Messages.CapellaComparisonMethod_Usage_P2L_Tooltip,
+        org.polarsys.capella.core.compare.Messages.CapellaComparisonMethod_Usage_P2L,
+        org.polarsys.capella.core.compare.Messages.CapellaComparisonMethod_Usage_P2L_Tooltip,
         Arrays.asList(INTRINSIC_ID, EXTRINSIC_ID, STRUCTURE, SEMANTICS),
         Arrays.asList(
             CRITERION_STRUCTURE_ROOTS,
             CRITERION_SEMANTICS_DEFAULTCONTENTS,
             CRITERION_SEMANTICS_P2L));
   
-  
+  /** 
+   * The "compare versions of the same model" configurator 
+   * Override the CONFIGURATOR_VERSIONS defined in the ConfigurableComparisonMethod
+   * in order to force the fine grained criterion activated by default.
+   */
+  public static final IComparisonConfigurator UPDATED_CONFIGURATOR_VERSIONS =
+    new ComparisonConfigurator(
+        org.eclipse.emf.diffmerge.ui.Messages.ConfigurableComparisonMethod_Usage_Versions,
+        org.eclipse.emf.diffmerge.ui.Messages.ConfigurableComparisonMethod_Usage_Versions_Tooltip,
+        Arrays.asList(INTRINSIC_ID, EXTRINSIC_ID),
+        Arrays.asList(
+            CRITERION_INTRINSIC_ID_SIRIUS_DIAGRAM));
   /**
    * Constructor
    * @param leftScopeDef a non-null scope definition
@@ -80,10 +95,11 @@ public class CapellaComparisonMethod extends SiriusComparisonMethod {
   @Override
   protected List<IComparisonConfigurator> createConfigurators() {
     List<IComparisonConfigurator> result = new LinkedList<IComparisonConfigurator>();
-    result.add(CONFIGURATOR_VERSIONS);
+    result.add(UPDATED_CONFIGURATOR_VERSIONS);
     result.add(CONFIGURATOR_P2L);
     result.add(CONFIGURATOR_DATA_TRANSFER);
     result.add(CONFIGURATOR_SID);
+    
     return result;
   }
   
@@ -119,6 +135,14 @@ public class CapellaComparisonMethod extends SiriusComparisonMethod {
   @Override
   protected IMergePolicy createMergePolicy() {
     return new CapellaMergePolicy();
+  }
+  
+  /**
+   * @see org.eclipse.emf.diffmerge.ui.specification.ext.AbstractComparisonMethod#doCreateComparisonViewer(org.eclipse.swt.widgets.Composite, org.eclipse.ui.IActionBars)
+   */
+  @Override
+  public AbstractComparisonViewer doCreateComparisonViewer(Composite parent_p, IActionBars actionBars_p) {
+    return new CapellaComparisonViewer(parent_p, actionBars_p);
   }
   
   /**
