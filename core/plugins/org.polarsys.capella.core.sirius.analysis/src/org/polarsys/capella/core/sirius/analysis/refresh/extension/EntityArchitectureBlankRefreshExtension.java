@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,11 +14,14 @@ import java.util.Collection;
 
 import org.apache.log4j.Logger;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.business.api.refresh.IRefreshExtension;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 import org.polarsys.capella.core.diagram.helpers.ContextualDiagramHelper;
+import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.core.sirius.analysis.CsServices;
 import org.polarsys.capella.core.sirius.analysis.DDiagramContents;
 import org.polarsys.capella.core.sirius.analysis.DiagramServices;
@@ -36,11 +39,12 @@ public class EntityArchitectureBlankRefreshExtension extends AbstractRefreshExte
   /**
    * @see org.eclipse.sirius.business.api.refresh.IRefreshExtension#beforeRefresh(org.eclipse.sirius.DDiagram)
    */
-  public void beforeRefresh(DDiagram diagram_p) {
+  public void beforeRefresh(DDiagram diagram) {
 
-    Collection<EObject> contextualElements = ContextualDiagramHelper.getService().getContextualElements(diagram_p);
+    DRepresentationDescriptor descriptor = RepresentationHelper.getRepresentationDescriptor(diagram);
+    Collection<EObject> contextualElements = ContextualDiagramHelper.getService().getContextualElements(descriptor);
 
-    DDiagramContents context = FaServices.getFaServices().getDDiagramContents(diagram_p);
+    DDiagramContents context = FaServices.getFaServices().getDDiagramContents(diagram);
 
     // -------------------------------------
     // Show in diagram related contextual elements
@@ -55,7 +59,7 @@ public class EntityArchitectureBlankRefreshExtension extends AbstractRefreshExte
     // Reorder elements in best containers
     // -------------------------------------
     try {
-      CsServices.getService().refreschEntitiesArchitecture(getComponentMapping(diagram_p), diagram_p);
+      CsServices.getService().refreschEntitiesArchitecture(getComponentMapping(diagram), diagram);
     } catch (Exception e) {
       Logger.getLogger(IReportManagerDefaultComponents.DIAGRAM).error(Messages.RefreshExtension_ErrorOnReordering, e);
     }
@@ -64,10 +68,10 @@ public class EntityArchitectureBlankRefreshExtension extends AbstractRefreshExte
   /**
    * @see org.eclipse.sirius.business.api.refresh.IRefreshExtension#postRefresh(org.eclipse.sirius.DDiagram)
    */
-  public void postRefresh(DDiagram diagram_p) {
+  public void postRefresh(DDiagram diagram) {
 
     try {
-      FunctionalChainServices.getFunctionalChainServices().updateFunctionalChainStyles(diagram_p);
+      FunctionalChainServices.getFunctionalChainServices().updateFunctionalChainStyles(diagram);
     } catch (Exception e) {
       Logger.getLogger(IReportManagerDefaultComponents.DIAGRAM).error(Messages.RefreshExtension_ErrorOnUpdateFunctionalChainStyle, e);
     }

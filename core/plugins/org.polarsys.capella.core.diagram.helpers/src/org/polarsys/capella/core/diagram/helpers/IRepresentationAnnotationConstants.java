@@ -46,4 +46,10 @@ public interface IRepresentationAnnotationConstants {
    * 
    */
   public static final String REVIEW_VALUE_KEYVALUE = "value"; //$NON-NLS-1$
+  
+  /** 
+   * Key used to store contextual elements
+   */
+  public static final String ContextualElements = "http://www.polarsys.org/capella/dannotation/ContextualElements"; //$NON-NLS-1$
+
 }

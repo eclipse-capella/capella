@@ -40,6 +40,7 @@ import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
+import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
 import org.eclipse.sirius.diagram.AbstractDNode;
@@ -366,10 +367,11 @@ public class CsServices {
    * @return
    */
   public boolean isFilterContextualElement(EObject object, DDiagram diagram) {
-    if (ContextualDiagramHelper.getService().hasContextualElements(diagram)) {
+    DRepresentationDescriptor descriptor = new DRepresentationQuery(diagram).getRepresentationDescriptor();
+    if (ContextualDiagramHelper.getService().hasContextualElements(descriptor)) {
       for (FilterDescription filter : diagram.getActivatedFilters()) {
         if (IMappingNameConstants.SHOW_CONTEXTUAL_ELEMENTS.equals(filter.getName())) {
-          if (ContextualDiagramHelper.getService().getContextualElements(diagram).contains(object)) {
+          if (ContextualDiagramHelper.getService().getContextualElements(descriptor).contains(object)) {
             return true;
           }
         }
@@ -4675,7 +4677,8 @@ public class CsServices {
    */
   public void showABContextualElements(DDiagram diagram) {
     DDiagramContents context = FaServices.getFaServices().getDDiagramContents(diagram);
-    showABContextualElements(context, ContextualDiagramHelper.getService().getContextualElements(diagram));
+    DRepresentationDescriptor descriptor = new DRepresentationQuery(diagram).getRepresentationDescriptor();
+    showABContextualElements(context, ContextualDiagramHelper.getService().getContextualElements(descriptor));
   }
 
   /**

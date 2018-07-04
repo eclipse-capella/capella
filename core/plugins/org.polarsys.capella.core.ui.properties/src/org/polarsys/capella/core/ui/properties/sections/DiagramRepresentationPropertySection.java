@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -44,6 +44,7 @@ import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.core.diagram.helpers.ContextualDiagramHelper;
+import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.core.model.handler.provider.CapellaReadOnlyHelper;
 import org.polarsys.capella.core.ui.properties.controllers.RepresentationContextualElementsController;
 import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticField;
@@ -54,7 +55,7 @@ import org.polarsys.capella.core.ui.properties.fields.RepresentationContextualEl
  * This implementation overrides common implementation to adapt it to {@link DRepresentation}.
  */
 public class DiagramRepresentationPropertySection extends AbstractSection {
-  private WeakReference<DRepresentation> _representation;
+  private WeakReference<DRepresentationDescriptor> _descriptor;
   private Text _nameTextField;
   private FocusAdapter _focusAdapter;
   private KeyAdapter _keyAdapter;
@@ -65,7 +66,7 @@ public class DiagramRepresentationPropertySection extends AbstractSection {
    */
   protected void commitNameChanged() {
     // Precondition : name must be different to execute the command.
-    if (_nameTextField.getText().equals(_representation.get().getName())) {
+    if (_nameTextField.getText().equals(_descriptor.get().getName())) {
       return;
     }
     executeCommmand(new AbstractReadWriteCommand() {
@@ -75,7 +76,7 @@ public class DiagramRepresentationPropertySection extends AbstractSection {
       @SuppressWarnings("synthetic-access")
       @Override
       public Collection<?> getAffectedObjects() {
-        return Collections.singleton(_representation);
+        return Collections.singleton(_descriptor);
       }
 
       /**
@@ -91,7 +92,7 @@ public class DiagramRepresentationPropertySection extends AbstractSection {
        */
       @SuppressWarnings("synthetic-access")
       public void run() {
-        _representation.get().setName(_nameTextField.getText());
+        _descriptor.get().setName(_nameTextField.getText());
       }
     });
   }
@@ -151,6 +152,7 @@ public class DiagramRepresentationPropertySection extends AbstractSection {
 
   /**
    * Create name widget.
+   * 
    * @param widgetFactory
    * @param textGroup
    */
@@ -167,11 +169,11 @@ public class DiagramRepresentationPropertySection extends AbstractSection {
    * @param widgetFactory
    * @param rootParentComposite
    */
-  protected void createContextualElementsWidget(TabbedPropertySheetWidgetFactory widgetFactory, Composite rootParentComposite) {
+  protected void createContextualElementsWidget(TabbedPropertySheetWidgetFactory widgetFactory,
+      Composite rootParentComposite) {
     boolean displayedInWizard = isDisplayedInWizard();
-    _contextualElementsField =
-        new RepresentationContextualElementsField(getReferencesGroup(), Messages.ContextualElements_Label, getWidgetFactory(),
-            new RepresentationContextualElementsController());
+    _contextualElementsField = new RepresentationContextualElementsField(getReferencesGroup(),
+        Messages.ContextualElements_Label, getWidgetFactory(), new RepresentationContextualElementsController());
     _contextualElementsField.setDisplayedInWizard(displayedInWizard);
   }
 
@@ -182,12 +184,12 @@ public class DiagramRepresentationPropertySection extends AbstractSection {
   public void dispose() {
     super.dispose();
 
-    if (null != _representation) {
+    if (null != _descriptor) {
       // Unregister...
-      CapellaReadOnlyHelper.unregister(_representation.get(), this);
+      CapellaReadOnlyHelper.unregister(_descriptor.get(), this);
 
-      _representation.clear();
-      _representation = null;
+      _descriptor.clear();
+      _descriptor = null;
     }
   }
 
@@ -205,7 +207,7 @@ public class DiagramRepresentationPropertySection extends AbstractSection {
         // Get the command.
         Command command = ((EMFCommandOperation) operation).getCommand();
         // Is the current capella element involved in this command ?
-        if (command.getAffectedObjects().contains(_representation)) {
+        if (command.getAffectedObjects().contains(_descriptor)) {
           // If so, let's refresh the content.
           refresh();
         }
@@ -218,14 +220,15 @@ public class DiagramRepresentationPropertySection extends AbstractSection {
    */
   protected void loadData() {
     String name = ICommonConstants.EMPTY_STRING;
-    if (null != _representation) {
-      name = _representation.get().getName();
+    if (null != _descriptor) {
+      name = _descriptor.get().getName();
     }
 
     _nameTextField.setText(name);
-    if (_contextualElementsField != null) {
-      _contextualElementsField.loadData(_representation.get());
-      boolean isContextual = ContextualDiagramHelper.getService().isContextualRepresentation(_representation.get());
+    
+    if (_contextualElementsField != null && _descriptor != null) {
+      _contextualElementsField.loadData(_descriptor.get());
+      boolean isContextual = ContextualDiagramHelper.getService().isContextualRepresentation(_descriptor.get());
       _contextualElementsField.setEnabled(isContextual);
     }
   }
@@ -243,12 +246,13 @@ public class DiagramRepresentationPropertySection extends AbstractSection {
    */
   @Override
   public boolean select(Object toTest) {
-    return (toTest instanceof DRepresentationDescriptor) || (toTest instanceof DRepresentation) || (toTest instanceof IDDiagramEditPart);
+    return (toTest instanceof DRepresentationDescriptor) || (toTest instanceof DRepresentation)
+        || (toTest instanceof IDDiagramEditPart);
   }
 
   @Override
   protected ExecutionManager getExecutionManager() {
-    return TransactionHelper.getExecutionManager(_representation.get());
+    return TransactionHelper.getExecutionManager(_descriptor.get());
   }
 
   /**
@@ -258,33 +262,36 @@ public class DiagramRepresentationPropertySection extends AbstractSection {
   public void setInput(IWorkbenchPart part, ISelection selection) {
     if (!selection.isEmpty()) {
       // Unregister...
-      if (null != _representation) {
-        CapellaReadOnlyHelper.unregister(_representation.get(), this);
+      if (null != _descriptor) {
+        CapellaReadOnlyHelper.unregister(_descriptor.get(), this);
       }
 
       if (selection instanceof IStructuredSelection) {
         Object firstElement = ((IStructuredSelection) selection).getFirstElement();
 
-        if (firstElement instanceof DRepresentationDescriptor) {
-          firstElement = ((DRepresentationDescriptor) firstElement).getRepresentation();
-        }
-        
-        if (firstElement instanceof DRepresentation) {
-          _representation = new WeakReference<DRepresentation>((DRepresentation) firstElement);
-        } else if (firstElement instanceof IDDiagramEditPart) {
+        if (firstElement instanceof IDDiagramEditPart) {
           IDDiagramEditPart diagramEditPart = (IDDiagramEditPart) firstElement;
-          _representation = new WeakReference<DRepresentation>((DRepresentation) ((Diagram) diagramEditPart.getModel()).getElement());
+          firstElement = ((DRepresentation) ((Diagram) diagramEditPart.getModel()).getElement());
+        }
+        if (firstElement instanceof DRepresentation) {
+          firstElement = RepresentationHelper.getRepresentationDescriptor((DRepresentation) firstElement);
+        }
+        if (firstElement instanceof DRepresentationDescriptor) {
+          _descriptor = new WeakReference<DRepresentationDescriptor>((DRepresentationDescriptor) firstElement);
+        
         } else {
-          _representation = null;
+          _descriptor = null;
         }
       }
+      
       loadData();
 
       // Register....
-      if (null != _representation) {
-        register(_representation.get());
+      if (null != _descriptor) {
+        register(_descriptor.get());
       }
     }
+
   }
 
   /**

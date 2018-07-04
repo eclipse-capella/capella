@@ -37,14 +37,27 @@ import org.polarsys.capella.core.diagram.helpers.DAnnotationHelper;
 import org.polarsys.capella.core.diagram.helpers.IRepresentationAnnotationConstants;
 import org.polarsys.capella.core.model.handler.helpers.CapellaAdapterHelper;
 import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
+import org.polarsys.capella.shared.id.handler.IdManager;
+import org.polarsys.capella.shared.id.handler.ResourceSetScope;
 
 /**
  * This class migrates annotation from DRepresentation to DRepresentationDescriptor
  */
 public class DAnnotationDescriptorContribution extends AbstractMigrationContribution {
 
+  /**
+   * Legacy annotation key for Contextual Elements
+   */
+  public static final String contextual_elements = "CONTEXTUAL_ELEMENTS"; //$NON-NLS-1$
+
+  /**
+   * Legacy annotation key for Initialize Diagram Elements
+   */
   public static final String allocating_diagrams = "INITIALIZATION_REALIZING"; //$NON-NLS-1$
 
+  /**
+   * Legacy annotation key for Initialize Diagram Elements
+   */
   public static final String allocated_diagrams = "INITIALIZATION_REALIZED"; //$NON-NLS-1$
 
   HashMap<String, DRepresentationDescriptor> descriptors = new HashMap<String, DRepresentationDescriptor>();
@@ -84,7 +97,7 @@ public class DAnnotationDescriptorContribution extends AbstractMigrationContribu
       try {
         DRepresentationDescriptor descriptor = descriptors.get(diagram.getUid());
         if (descriptor != null) {
-          int nb = migrate(diagram, descriptor);
+          int nb = migrate(diagram, descriptor, resourceSet);
           i += nb;
         }
       } catch (Exception e) {
@@ -100,7 +113,7 @@ public class DAnnotationDescriptorContribution extends AbstractMigrationContribu
     }
   }
 
-  private int migrate(DRepresentation diagram, DRepresentationDescriptor descriptor) {
+  private int migrate(DRepresentation diagram, DRepresentationDescriptor descriptor, ResourceSet resourceSet) {
     int result = 0;
 
     // Remove annotations from Initialize From Existing Diagram, since never used and tooled.
@@ -179,6 +192,33 @@ public class DAnnotationDescriptorContribution extends AbstractMigrationContribu
       }
       RepresentationHelper.removeAnnotation(IRepresentationAnnotationConstants.StatusReview, diagram);
     }
+    
+
+    // Move contextual elements annotation towards the descriptor
+    annotation = RepresentationHelper.getAnnotation(contextual_elements, diagram);
+    if (annotation != null) {
+      DAnnotation newAnnotation = null;
+      for (String id : annotation.getDetails().values()) {
+        EObject object = IdManager.getInstance().getEObject(id, new ResourceSetScope(resourceSet));
+        if (object != null) {
+          if (newAnnotation == null) {
+            newAnnotation = DAnnotationHelper.createAnnotation(IRepresentationAnnotationConstants.ContextualElements, descriptor);
+          }
+          newAnnotation.getReferences().add(object);
+          
+        } else {
+          Logger logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.DEFAULT);
+          IStatus status = new Status(IStatus.WARNING, Activator.PLUGIN_ID, NLS.bind(
+              org.polarsys.capella.core.data.migration.contribution.Messages.MigrationAction_MissingContextualElementMigration,
+              descriptor.getName(), id));
+          LogExt.log(logger, status);
+        }
+      }
+
+      RepresentationHelper.removeAnnotation(contextual_elements, diagram);
+      result++;
+    }
+    
     return result;
   }
 

@@ -265,10 +265,10 @@ public class RepresentationHelper {
    * Returns all related Capella resources
    */
   @SuppressWarnings("unchecked")
-  public static Collection<Resource> getSemanticResources(DRepresentation representation) {
+  public static Collection<Resource> getSemanticResources(DRepresentationDescriptor representation) {
 
-    if ((representation != null) && (representation instanceof DSemanticDecorator)) {
-      EObject root = ((DSemanticDecorator) representation).getTarget();
+    if (representation != null) {
+      EObject root = ((DRepresentationDescriptor) representation).getTarget();
       // if session is opened, return all defined resources from session
       if (root != null) {
         Collection<Resource> resources = new HashSet<Resource>();

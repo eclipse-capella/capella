@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetWidgetFactory;
@@ -30,7 +30,7 @@ import org.polarsys.capella.core.ui.properties.helpers.NamingHelper;
  */
 public class RepresentationContextualElementsField extends BrowseSemanticField {
 
-  protected WeakReference<DRepresentation> _representation;
+  protected WeakReference<DRepresentationDescriptor> _descriptor;
 
   /**
    * Controller associated to this semantic field.
@@ -74,14 +74,14 @@ public class RepresentationContextualElementsField extends BrowseSemanticField {
   /**
    * @param dRepresentation
    */
-  public void loadData(DRepresentation dRepresentation) {
-    _representation = new WeakReference<DRepresentation>(dRepresentation);
+  public void loadData(DRepresentationDescriptor dRepresentation) {
+    _descriptor = new WeakReference<DRepresentationDescriptor>(dRepresentation);
     setValueTextField(_controller.loadValues(dRepresentation));
   }
 
   @Override
   protected ExecutionManager getExecutionManager() {
-    return TransactionHelper.getExecutionManager(_representation.get());
+    return TransactionHelper.getExecutionManager(_descriptor.get());
   }
 
   /**
@@ -92,17 +92,17 @@ public class RepresentationContextualElementsField extends BrowseSemanticField {
   protected void handleOpenButtonClicked(final Button button) {
     AbstractReadWriteCommand command = new AbstractReadWriteCommand() {
       public void run() {
-        List<EObject> currentElements = _controller.readOpenValues(_representation.get(), false);
-        List<EObject> availableElements = _controller.readOpenValues(_representation.get(), true);
+        List<EObject> currentElements = _controller.readOpenValues(_descriptor.get(), false);
+        List<EObject> availableElements = _controller.readOpenValues(_descriptor.get(), true);
         availableElements.removeAll(currentElements);
 
-        String title = _representation.get().getName();
-        String message = NamingHelper.getDefaultMessage(_representation.get(), "contextual elements"); //$NON-NLS-1$
+        String title = _descriptor.get().getName();
+        String message = NamingHelper.getDefaultMessage(_descriptor.get(), "contextual elements"); //$NON-NLS-1$
 
         // calling selection wizard
         List<EObject> allResults = DialogHelper.openTransferDialog(button, currentElements, availableElements, title, message);
         if (allResults != null) {
-          List<EObject> writeOpenValues = _controller.writeOpenValues(_representation.get(), allResults);
+          List<EObject> writeOpenValues = _controller.writeOpenValues(_descriptor.get(), allResults);
           // Update the widget according to user selection.
           setValueTextField(writeOpenValues);
         }
@@ -120,7 +120,7 @@ public class RepresentationContextualElementsField extends BrowseSemanticField {
       public void run() {
         List<EObject> allResults = new ArrayList<EObject>();
         if (allResults != null) {
-          List<EObject> writeOpenValues = _controller.writeOpenValues(_representation.get(), allResults);
+          List<EObject> writeOpenValues = _controller.writeOpenValues(_descriptor.get(), allResults);
           // Update the widget according to user selection.
           setValueTextField(writeOpenValues);
         }

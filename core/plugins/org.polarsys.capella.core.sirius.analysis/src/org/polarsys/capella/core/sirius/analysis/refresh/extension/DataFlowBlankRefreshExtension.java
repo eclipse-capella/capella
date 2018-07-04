@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,14 +15,17 @@ import java.util.HashSet;
 
 import org.apache.log4j.Logger;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.business.api.refresh.IRefreshExtension;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 import org.polarsys.capella.core.data.fa.ExchangeCategory;
 import org.polarsys.capella.core.diagram.helpers.ContextualDiagramHelper;
+import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.core.sirius.analysis.DDiagramContents;
 import org.polarsys.capella.core.sirius.analysis.FaServices;
 import org.polarsys.capella.core.sirius.analysis.FunctionalChainServices;
@@ -35,15 +38,16 @@ public class DataFlowBlankRefreshExtension extends AbstractRefreshExtension impl
   /**
    * @see org.eclipse.sirius.business.api.refresh.IRefreshExtension#postRefresh(org.eclipse.sirius.DDiagram)
    */
-  public void beforeRefresh(DDiagram diagram_p) {
+  public void beforeRefresh(DDiagram diagram) {
 
     // -------------------------------------
     // Show in diagram related contextual elements
     // -------------------------------------
-    DDiagramContents context = FaServices.getFaServices().getDDiagramContents(diagram_p);
+    DDiagramContents context = FaServices.getFaServices().getDDiagramContents(diagram);
 
     try {
-      Collection<EObject> contextualElements = ContextualDiagramHelper.getService().getContextualElements(diagram_p);
+      DRepresentationDescriptor descriptor = RepresentationHelper.getRepresentationDescriptor(diagram);
+      Collection<EObject> contextualElements = ContextualDiagramHelper.getService().getContextualElements(descriptor);
       FaServices.getFaServices().showDFContextualElements(context, contextualElements);
 
     } catch (Exception e) {
@@ -70,7 +74,7 @@ public class DataFlowBlankRefreshExtension extends AbstractRefreshExtension impl
     // -------------------------------------
 
     try {
-      FaServices.getFaServices().reorderFAElements(diagram_p);
+      FaServices.getFaServices().reorderFAElements(diagram);
     } catch (Exception e) {
       Logger.getLogger(IReportManagerDefaultComponents.DIAGRAM).error(Messages.RefreshExtension_ErrorOnReordering, e);
     }
@@ -80,9 +84,9 @@ public class DataFlowBlankRefreshExtension extends AbstractRefreshExtension impl
   /**
    * @see org.eclipse.sirius.business.api.refresh.IRefreshExtension#postRefresh(org.eclipse.sirius.DDiagram)
    */
-  public void postRefresh(DDiagram diagram_p) {
+  public void postRefresh(DDiagram diagram) {
     try {
-      FunctionalChainServices.getFunctionalChainServices().updateFunctionalChainStyles(diagram_p);
+      FunctionalChainServices.getFunctionalChainServices().updateFunctionalChainStyles(diagram);
     } catch (Exception e) {
       Logger.getLogger(IReportManagerDefaultComponents.DIAGRAM).error(Messages.RefreshExtension_ErrorOnUpdateFunctionalChainStyle, e);
     }

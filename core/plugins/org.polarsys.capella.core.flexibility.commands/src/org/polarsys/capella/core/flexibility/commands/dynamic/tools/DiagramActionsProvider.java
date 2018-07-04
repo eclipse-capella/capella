@@ -89,6 +89,7 @@ import org.polarsys.capella.core.data.pa.PhysicalFunction;
 import org.polarsys.capella.core.diagram.helpers.ContextualDiagramHelper;
 import org.polarsys.capella.core.flexibility.commands.actions.DefaultAction;
 import org.polarsys.capella.core.flexibility.commands.dynamic.IActionsProvider;
+import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.core.sirius.analysis.CapellaServices;
 import org.polarsys.capella.core.sirius.analysis.DiagramServices;
 import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
@@ -357,14 +358,15 @@ public class DiagramActionsProvider implements IActionsProvider {
         for (EObject element : getSelectedEObjects()) {
           DRepresentation representation = getDynamicRepresentation(element);
           diagrams.put(element, representation);
-          ContextualDiagramHelper.getService().setContextualElements(representation, new ArrayList<EObject>());
+          
+          ContextualDiagramHelper.getService().setContextualElements(RepresentationHelper.getRepresentationDescriptor(representation), new ArrayList<EObject>());
         }
 
         for (EObject element : diagrams.keySet()) {
           DRepresentation representation = diagrams.get(element);
-          Collection<EObject> contextual = ContextualDiagramHelper.getService().getContextualElements(representation);
+          Collection<EObject> contextual = ContextualDiagramHelper.getService().getContextualElements(RepresentationHelper.getRepresentationDescriptor(representation));
           contextual.add(element);
-          ContextualDiagramHelper.getService().setContextualElements(representation, contextual);
+          ContextualDiagramHelper.getService().setContextualElements(RepresentationHelper.getRepresentationDescriptor(representation), contextual);
         }
 
         for (DRepresentation representation : diagrams.values()) {
