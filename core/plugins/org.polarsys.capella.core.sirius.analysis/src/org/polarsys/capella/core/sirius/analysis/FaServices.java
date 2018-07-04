@@ -289,15 +289,15 @@ public class FaServices {
    * @return displayed incoming and outgoing functional Exchanges called by show/hide FunctionalExchanges tools
    *         (DataFlow Blank Diagrams) used in oa, logical, context, physical
    */
-  public List<FunctionalExchange> getDisplayedFunctionalExchanges(DSemanticDecorator selectedElement) {
-    List<FunctionalExchange> result = new ArrayList<FunctionalExchange>();
+  public Collection<FunctionalExchange> getDisplayedFunctionalExchanges(DSemanticDecorator selectedElement) {
+    Collection<FunctionalExchange> result = new HashSet<FunctionalExchange>();
     // current DiagramElements
     if (selectedElement instanceof AbstractDNode) {
       result = getDisplayedFunctionalExchangesFromAbstractDNode((AbstractDNode) selectedElement);
 
       // Consider Sub Containers of current DiagramElement
       for (AbstractDNode dNodeContainer : DiagramServices.getDiagramServices().getAllNodeContainers(selectedElement)) {
-        List<FunctionalExchange> subFunctionEdges = getDisplayedFunctionalExchangesFromAbstractDNode(dNodeContainer);
+        Collection<FunctionalExchange> subFunctionEdges = getDisplayedFunctionalExchangesFromAbstractDNode(dNodeContainer);
         if (!subFunctionEdges.isEmpty()) {
           result.addAll(subFunctionEdges);
         }
@@ -306,7 +306,7 @@ public class FaServices {
       // Consider Sub Nodes of current DiagramElement
       List<DNode> allNodes = DiagramServices.getDiagramServices().getAllNodes(selectedElement);
       for (DNode aDNode : allNodes) {
-        List<FunctionalExchange> subFunctionEdges = getDisplayedFunctionalExchangesFromAbstractDNode(aDNode);
+        Collection<FunctionalExchange> subFunctionEdges = getDisplayedFunctionalExchangesFromAbstractDNode(aDNode);
         if (!subFunctionEdges.isEmpty()) {
           result.addAll(subFunctionEdges);
         }
@@ -322,9 +322,9 @@ public class FaServices {
    * @param selectedElement
    * @return
    */
-  public List<FunctionalExchange> getDisplayedFunctionalExchangesFromAbstractDNode(AbstractDNode selectedElement) {
-    List<FunctionalExchange> returnedList = new ArrayList<FunctionalExchange>();
-    List<DEdge> incomingOutgoingEdges = new ArrayList<DEdge>();
+  public Collection<FunctionalExchange> getDisplayedFunctionalExchangesFromAbstractDNode(AbstractDNode selectedElement) {
+    Collection<FunctionalExchange> returnedSet = new HashSet<FunctionalExchange>();
+    Collection<DEdge> incomingOutgoingEdges = new HashSet<DEdge>();
 
     if (selectedElement.getTarget() instanceof AbstractFunction) {
       // consider the boarder nodes (inputpin, outputpin)
@@ -345,10 +345,10 @@ public class FaServices {
     // filter functionalExchanges
     for (DEdge anEdge : incomingOutgoingEdges) {
       if (anEdge.getTarget() instanceof FunctionalExchange) {
-        returnedList.add((FunctionalExchange) anEdge.getTarget());
+        returnedSet.add((FunctionalExchange) anEdge.getTarget());
       }
     }
-    return returnedList;
+    return returnedSet;
   }
 
   public boolean isOriented(ComponentExchange connection) {
@@ -1749,10 +1749,9 @@ public class FaServices {
     AbstractShowHide shService = new ShowHideFunctionalExchange(content);
     DiagramContext context = shService.new DiagramContext();
 
-    List<FunctionalExchange> exchanges = getDisplayedFunctionalExchanges(currentFunctionView);
+    Collection<FunctionalExchange> exchanges = getDisplayedFunctionalExchanges(currentFunctionView);
     for (FunctionalExchange exchange : exchanges) {
       if (selectedExchangesSet.contains(exchange)) {
-        shService.show(exchange, context);
         selectedExchangesSet.remove(exchange);
       } else {
         shService.hide(exchange, context);
