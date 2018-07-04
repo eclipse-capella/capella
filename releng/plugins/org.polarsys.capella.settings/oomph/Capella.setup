@@ -403,16 +403,20 @@
         <repositoryList
             name="Oxygen">
           <repository
-              url="https://ci.polarsys.org/capella/view/Capella-master/job/capella-master/lastSuccessfulBuild/artifact/releng/plugins/org.polarsys.capella.rcp.site/target/repository/"/>
+              url="http://download.polarsys.org/capella/core/updates/nightly/1.3.x/org.polarsys.capella.rcp.site"/>
           <repository
-              url="https://ci.polarsys.org/capella/view/Capella-master/job/capella-master/lastSuccessfulBuild/artifact/releng/plugins/org.polarsys.capella.egf.site/target/repository/"/>
+              url="http://download.polarsys.org/capella/core/updates/nightly/1.3.x/org.polarsys.capella.egf.site"/>
+          <repository
+              url="http://download.polarsys.org/capella/core/updates/nightly/1.3.x/org.polarsys.capella.richtext.site"/>
         </repositoryList>
         <repositoryList
             name="Neon">
           <repository
-              url="https://ci.polarsys.org/capella/view/Capella-v1.2.x/job/capella-v1.2.x/lastSuccessfulBuild/artifact/releng/plugins/org.polarsys.capella.rcp.site/target/repository/"/>
+              url="http://download.polarsys.org/capella/core/updates/nightly/1.2.x/org.polarsys.capella.rcp.site"/>
           <repository
-              url="https://ci.polarsys.org/capella/view/Capella-v1.2.x/job/capella-v1.2.x/lastSuccessfulBuild/artifact/releng/plugins/org.polarsys.capella.egf.site/target/repository/"/>
+              url="http://download.polarsys.org/capella/core/updates/nightly/1.2.x/org.polarsys.capella.egf.site"/>
+          <repository
+              url="http://download.polarsys.org/capella/core/updates/nightly/1.2.x/org.polarsys.capella.richtext.site"/>
         </repositoryList>
       </targlet>
       <targlet
