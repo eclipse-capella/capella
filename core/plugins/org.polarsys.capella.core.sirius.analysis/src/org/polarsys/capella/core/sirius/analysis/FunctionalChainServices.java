@@ -21,6 +21,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.BorderedStyle;
@@ -443,11 +444,21 @@ public class FunctionalChainServices {
 	 * @return
 	 */
 	public boolean isValidInternalLinkEdge(FunctionalChain chain, EdgeTarget currentSourceNode, EdgeTarget currentTargetNode) {
-		if (currentSourceNode == null) {
+		if (currentSourceNode == null || currentSourceNode.getIncomingEdges().isEmpty()) {
 			return false;
 		}
-		if (currentTargetNode == null) {
+		if (currentTargetNode == null || currentTargetNode.getOutgoingEdges().isEmpty()) {
 			return false;
+		}
+		
+		// At least one incoming edge should be visible
+		if(!hasVisibleEdge(currentSourceNode.getIncomingEdges())){
+		  return false;
+		}
+		
+		// At least one outgoing edge should be visible
+		if(!hasVisibleEdge(currentTargetNode.getOutgoingEdges())){
+		  return false;
 		}
 
 		EObject sourceParent = currentSourceNode.eContainer();
@@ -459,7 +470,15 @@ public class FunctionalChainServices {
 		return false;
 	}
 
-	/**
+	private boolean hasVisibleEdge(EList<DEdge> edges) {
+	  for(DEdge edge : edges){
+	    if(edge.isVisible()){
+	      return true;
+	    }
+	  }
+    return false;
+  }
+  /**
 	 * Create or return an internal link between both nodes.
 	 */
 	protected DEdge retrieveInternalLink(EdgeTarget sourceNode, EdgeTarget targetNode, FunctionalChain fc, RGBValues color) {
