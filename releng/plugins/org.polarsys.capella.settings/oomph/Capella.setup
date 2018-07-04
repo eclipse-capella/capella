@@ -1182,8 +1182,7 @@
     <setupTask
         xsi:type="git:GitCloneTask"
         id="git.clone.tools"
-        remoteURI="capella/capella-tools.git"
-        checkoutBranch="master">
+        remoteURI="capella/capella-tools.git">
       <annotation
           source="http://www.eclipse.org/oomph/setup/InducedChoices">
         <detail
