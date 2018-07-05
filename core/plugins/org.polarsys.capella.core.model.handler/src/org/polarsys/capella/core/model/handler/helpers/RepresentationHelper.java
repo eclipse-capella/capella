@@ -10,9 +10,11 @@
  *******************************************************************************/
 package org.polarsys.capella.core.model.handler.helpers;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -33,7 +35,6 @@ import org.eclipse.sirius.business.internal.session.danalysis.DAnalysisSessionIm
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
-import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
 import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
@@ -62,21 +63,25 @@ public class RepresentationHelper {
 
   /**
    * Get selected representations.
-   * @param selectedElements A list of selected elements.
+   * 
+   * @param selectedElements
+   *          A list of selected elements.
    * @return A not <code>null</code> (possibly empty) collection of representations.
    */
   public static Collection<DRepresentationDescriptor> getSelectedDescriptors(Collection<?> selectedElements) {
-    return CapellaAdapterHelper.resolveEObjects(selectedElements).stream().filter(x -> x instanceof DRepresentationDescriptor ||  x instanceof DRepresentation ).map(new Function<Object, DRepresentationDescriptor>() {
-      @Override
-      public DRepresentationDescriptor apply(Object t) {
-        if (t instanceof DRepresentation) {
-          return new DRepresentationQuery((DRepresentation)t).getRepresentationDescriptor();
-        }
-        return (DRepresentationDescriptor)t;
-      }
-    }).collect(Collectors.toList());
+    return CapellaAdapterHelper.resolveEObjects(selectedElements).stream()
+        .filter(x -> x instanceof DRepresentationDescriptor || x instanceof DRepresentation)
+        .map(new Function<Object, DRepresentationDescriptor>() {
+          @Override
+          public DRepresentationDescriptor apply(Object t) {
+            if (t instanceof DRepresentation) {
+              return new DRepresentationQuery((DRepresentation) t).getRepresentationDescriptor();
+            }
+            return (DRepresentationDescriptor) t;
+          }
+        }).collect(Collectors.toList());
   }
-  
+
   /**
    * Get all representation descriptors targeted by specified semantic elements.<br>
    * Default implementation loops over specified elements and search for all representation descriptorss in a specified
@@ -224,7 +229,9 @@ public class RepresentationHelper {
   }
 
   /**
-   * This method shall not be used to store annotation on diagram. Annotations shall be stored on DRepresentationDescriptor instead
+   * This method shall not be used to store annotation on diagram. Annotations shall be stored on
+   * DRepresentationDescriptor instead
+   * 
    * @use DAnnotationHelper.getAnnotation instead
    */
   @Deprecated
@@ -238,7 +245,9 @@ public class RepresentationHelper {
   }
 
   /**
-   * This method shall not be used to store annotation on diagram. Annotations shall be stored on DRepresentationDescriptor instead
+   * This method shall not be used to store annotation on diagram. Annotations shall be stored on
+   * DRepresentationDescriptor instead
+   * 
    * @use DAnnotationHelper.createAnnotation instead
    */
   @Deprecated
@@ -250,7 +259,9 @@ public class RepresentationHelper {
   }
 
   /**
-   * This method shall not be used to store annotation on diagram. Annotations shall be stored on DRepresentationDescriptor instead
+   * This method shall not be used to store annotation on diagram. Annotations shall be stored on
+   * DRepresentationDescriptor instead
+   * 
    * @use DAnnotationHelper.removeAnnotation instead
    */
   @Deprecated
@@ -364,6 +375,28 @@ public class RepresentationHelper {
       DRepresentationDescriptor descriptor = getRepresentationDescriptor(representation);
       if (descriptor != null) {
         result.add(descriptor);
+      }
+    }
+    return result;
+  }
+
+  /**
+   * Returns all representation descriptors containing an annotation referencing at least one element of
+   * the given list
+   */
+  public static Collection<DRepresentationDescriptor> getAllRepresentationDescriptorsAnnotatedBy(List<EObject> objects) {
+    Collection<DRepresentationDescriptor> result = new ArrayList<DRepresentationDescriptor>();
+    if (!objects.isEmpty()) {
+      Session session = SessionManager.INSTANCE.getSession(objects.iterator().next());
+      if (session != null) {
+        for (DRepresentationDescriptor descriptor : DialectManager.INSTANCE.getAllRepresentationDescriptors(session)) {
+          for (DAnnotation annotation : descriptor.getEAnnotations()) {
+            if (!Collections.disjoint(annotation.getReferences(), objects)) {
+              result.add(descriptor);
+              break;
+            }
+          }
+        }
       }
     }
     return result;
