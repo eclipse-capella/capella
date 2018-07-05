@@ -132,7 +132,7 @@ public class RepresentationHelper {
 
     return representations;
   }
-  
+
   /**
    * Get all representation descriptors targeted by specified semantic elements.<br>
    * Default implementation loops over specified elements and search for all representation descriptorss in a specified element
@@ -454,6 +454,28 @@ public class RepresentationHelper {
       DRepresentationDescriptor descriptor = getRepresentationDescriptor(representation);
       if (descriptor != null) {
         result.add(descriptor);
+      }
+    }
+    return result;
+  }
+
+  /**
+   * Returns all representation descriptors containing an annotation referencing at least one element of
+   * the given list
+   */
+  public static Collection<DRepresentationDescriptor> getAllRepresentationDescriptorsAnnotatedBy(List<EObject> objects) {
+    Collection<DRepresentationDescriptor> result = new ArrayList<DRepresentationDescriptor>();
+    if (!objects.isEmpty()) {
+      Session session = SessionManager.INSTANCE.getSession(objects.iterator().next());
+      if (session != null) {
+        for (DRepresentationDescriptor descriptor : DialectManager.INSTANCE.getAllRepresentationDescriptors(session)) {
+          for (DAnnotation annotation : descriptor.getEAnnotations()) {
+            if (!Collections.disjoint(annotation.getReferences(), objects)) {
+              result.add(descriptor);
+              break;
+            }
+          }
+        }
       }
     }
     return result;
