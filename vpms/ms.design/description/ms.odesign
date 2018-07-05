@@ -221,7 +221,7 @@
       </intersection>
     </ownedRepresentations>
     <ownedRepresentationExtensions xsi:type="description_2:DiagramExtensionDescription" name="mode" viewpointURI="viewpoint:/org.polarsys.capella.core.sirius.analysis/Common" representationName="Modes &amp; States">
-      <metamodel href="http://www.polarsys.org/capella/core/cs/1.1.0#/"/>
+      <metamodel href="http://www.polarsys.org/capella/core/cs/1.2.0#/"/>
       <layers name="LAB_Layer_ModeAutomata" label="ModeAutomata">
         <toolSections name="modeAutomata" label="Mode Automata">
           <reusedTools xsi:type="tool_1:EdgeCreationDescription" href="../../org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Modes%20%26%20States']/@defaultLayer/@toolSections.0/@ownedTools[name='Transition']"/>
@@ -244,7 +244,7 @@
     </ownedRepresentationExtensions>
     <ownedRepresentationExtensions xsi:type="description_2:DiagramExtensionDescription" name="LAConfigurations" viewpointURI="viewpoint:/org.polarsys.capella.core.sirius.analysis/Logical Architecture" representationName="Logical Architecture Blank">
       <metamodel href="../../org.polarsys.capella.vp.ms/models/ms.ecore#/"/>
-      <metamodel href="http://www.polarsys.org/capella/core/cs/1.1.0#/"/>
+      <metamodel href="http://www.polarsys.org/capella/core/cs/1.2.0#/"/>
       <layers name="LAB_Layer_Configuration" label="Configurations">
         <nodeMappings name="LAB_Layer_ConfigurationNode" createElements="false" domainClass="ms.CSConfiguration">
           <style xsi:type="style:LozengeNodeDescription" showIcon="false" sizeComputationExpression="10" labelPosition="node" resizeKind="NSEW">
