@@ -142,15 +142,6 @@
 			<topic href="html/05. Diagram Management/5.1. Diagram concepts.html#Arrange_All_Bordered_Nodes" label="Arrange All Bordered Nodes"></topic>
 		</topic>
 	</topic>
-	<topic href="html/05. Diagram Management/5.2. Advanced Management of Diagrams.html" label="Advanced Management of Diagrams">
-		<topic href="html/05. Diagram Management/5.2. Advanced Management of Diagrams.html#SYNCHRONIZED_AND_UNSYNCHRONIZED_DIAGRAMS:_AN_EXAMPLE" label="Synchronized and Unsynchronized Diagrams"></topic>
-		<topic href="html/05. Diagram Management/5.2. Advanced Management of Diagrams.html#Removing_hidden_elements_from_diagrams" label="Removing Hidden Elements from Diagrams"></topic>
-		<topic href="html/05. Diagram Management/5.2. Advanced Management of Diagrams.html#Example" label="Example"></topic>
-	</topic>
-	<topic href="html/05. Diagram Management/5.3. Diagram Business Copy Paste.html" label="The Diagram Business Copy-Paste">
-		<topic href="html/05. Diagram Management/5.3. Diagram Business Copy Paste.html#Example_of_Logical_Architecture_Diagram" label="Example of Logical Architecture Diagram"></topic>
-		<topic href="html/05. Diagram Management/5.3. Diagram Business Copy Paste.html#Example:_Component_External_Interfaces_Diagram" label="Example: Component External Interfaces Diagram"></topic>
-	</topic>
 	<topic href="html/05. Diagram Management/5.4. Typologie of Capella Diagrams.html" label="Typology of Capella Diagrams">
 		<topic href="html/05. Diagram Management/5.4. Typologie of Capella Diagrams.html#Class_Diagrams" label="Class Diagrams"></topic>
 		<topic href="html/05. Diagram Management/5.4. Typologie of Capella Diagrams.html#State_and_Mode_Diagrams" label="Mode State Diagrams"></topic>
@@ -160,33 +151,18 @@
 		<topic href="html/05. Diagram Management/5.4. Typologie of Capella Diagrams.html#Interface_Diagrams" label="Interface Diagrams"></topic>
 		<topic href="html/05. Diagram Management/5.4. Typologie of Capella Diagrams.html#Scenarios" label="Scenarios"></topic>
 	</topic>
+	<topic href="html/05. Diagram Management/5.2. Advanced Management of Diagrams.html" label="Advanced Management of Diagrams">
+		<topic href="html/05. Diagram Management/5.2. Advanced Management of Diagrams.html#SYNCHRONIZED_AND_UNSYNCHRONIZED_DIAGRAMS:_AN_EXAMPLE" label="Synchronized and Unsynchronized Diagrams"></topic>
+		<topic href="html/05. Diagram Management/5.2. Advanced Management of Diagrams.html#Removing_hidden_elements_from_diagrams" label="Removing Hidden Elements from Diagrams"></topic>
+		<topic href="html/05. Diagram Management/5.2. Advanced Management of Diagrams.html#Example" label="Example"></topic>
+	</topic>
+	<topic href="html/05. Diagram Management/5.3. Diagram Business Copy Paste.html" label="Diagram Business Copy-Paste">
+		<topic href="html/05. Diagram Management/5.3. Diagram Business Copy Paste.html#Example_of_Logical_Architecture_Diagram" label="Example of Logical Architecture Diagram"></topic>
+		<topic href="html/05. Diagram Management/5.3. Diagram Business Copy Paste.html#Example:_Component_External_Interfaces_Diagram" label="Example: Component External Interfaces Diagram"></topic>
+	</topic>
 	<topic href="html/05. Diagram Management/5.5. Creation of Functional Chains and Physical Paths.html" label="Creation of Functional Chains and Physical Paths">
 		<topic href="html/05. Diagram Management/5.5. Creation of Functional Chains and Physical Paths.html#Functional_Chains_and_Operational_Processes" label="Functional Chains and Operational Processes"></topic>
 		<topic href="html/05. Diagram Management/5.5. Creation of Functional Chains and Physical Paths.html#Physical_Paths" label="Physical Paths"></topic>
-	</topic>
-	<topic href="html/05. Diagram Management/5.6. Diagrams Tips and Tricks.html" label="Diagrams Tips and Tricks">
-		<topic href="html/05. Diagram Management/5.6. Diagrams Tips and Tricks.html#Setting_Default_Style_for_Links:_Oblique_or_Rectilinear" label="Setting Default Style for Links: Oblique or Rectilinear"></topic>
-		<topic href="html/05. Diagram Management/5.6. Diagrams Tips and Tricks.html#Uniform_Distribution_Tools" label="Uniform Distribution Tools"></topic>
-		<topic href="html/05. Diagram Management/5.6. Diagrams Tips and Tricks.html#Reset_Origin" label="Reset Origin"></topic>
-		<topic href="html/05. Diagram Management/5.6. Diagrams Tips and Tricks.html#Select_All" label="Select All"></topic>
-		<topic href="html/05. Diagram Management/5.6. Diagrams Tips and Tricks.html#Auto_Size" label="Auto Size"></topic>
-		<topic href="html/05. Diagram Management/5.6. Diagrams Tips and Tricks.html#Make_Same_Width_.2F_Height" label="Make Same Width / Height"></topic>
-		<topic href="html/05. Diagram Management/5.6. Diagrams Tips and Tricks.html#Grid_Visible" label="Grid Visible"></topic>
-		<topic href="html/05. Diagram Management/5.6. Diagrams Tips and Tricks.html#Snap_to_Grid" label="Snap to Grid"></topic>
-		<topic href="html/05. Diagram Management/5.6. Diagrams Tips and Tricks.html#Snap_to_Shapes" label="Snap to Shapes">
-			<topic href="html/05. Diagram Management/5.6. Diagrams Tips and Tricks.html#snape_to_shapes_with_inner_nodes" label="snape to shapes with inner nodes"></topic>
-		</topic>
-		<topic href="html/05. Diagram Management/5.6. Diagrams Tips and Tricks.html#Copy_.2F_Paste_Layout" label="Copy / Paste Layout"></topic>
-		<topic href="html/05. Diagram Management/5.6. Diagrams Tips and Tricks.html#Selection" label="Selection">
-			<topic href="html/05. Diagram Management/5.6. Diagrams Tips and Tricks.html#Left_to_right" label="Left to right"></topic>
-			<topic href="html/05. Diagram Management/5.6. Diagrams Tips and Tricks.html#Right_to_Left" label="Right to Left"></topic>
-		</topic>
-		<topic href="html/05. Diagram Management/5.6. Diagrams Tips and Tricks.html#Copy_Paste_Of_Notes" label="Copy Paste Of Notes"></topic>
-		<topic href="html/05. Diagram Management/5.6. Diagrams Tips and Tricks.html#Create_Several_Elements_in_Row" label="Create Several Elements in Row"></topic>
-		<topic href="html/05. Diagram Management/5.6. Diagrams Tips and Tricks.html#Quick_Search" label="Quick Search"></topic>
-		<topic href="html/05. Diagram Management/5.6. Diagrams Tips and Tricks.html#Export_as_Images" label="Export as Images"></topic>
-		<topic href="html/05. Diagram Management/5.6. Diagrams Tips and Tricks.html#Compound_Move_Of_Edge_With_Label_And_Connected_Ports" label="Compound Move Of Edge With Label And Connected Ports"></topic>
-		<topic href="html/05. Diagram Management/5.6. Diagrams Tips and Tricks.html#Hide_Container_Border" label="Hide Container Border"></topic>
 	</topic>
 	<topic href="html/05. Diagram Management/Allocating Functions on Components.html" label="Allocating Functions on Components">
     <topic href="html/05. Diagram Management/Allocating Functions on Components.html#Allocating_Leaves_Functions" label="Allocating Leaves Functions">
@@ -198,13 +174,13 @@
     </topic>
     </topic>
 	</topic>
-      <anchor id="Diagram Management"/>
       <topic href="html/05. Diagram Management/5.7. Computed simplified links.html" label="Computed Links between Parent Components">
          <topic href="html/05. Diagram Management/5.7. Computed simplified links.html#Computed_Component_Exchanges" label="Computed Component Exchanges">
          </topic>
          <topic href="html/05. Diagram Management/5.7. Computed simplified links.html#Computed_Physical_Links" label="Computed Physical Links">
          </topic>
       </topic>
+      <anchor id="Diagram Management"/>
    </topic>
     <topic label="Modelling Wizards and Accelerators">
     <topic href="html/07. Modelling Wizards and Accelerators/7.1. Modeling accelerators.html" label="Modeling Accelerators">

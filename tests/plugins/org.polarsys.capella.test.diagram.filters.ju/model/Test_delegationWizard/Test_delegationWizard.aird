@@ -11,11 +11,11 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_BWmHkBcdEeSY-4saSvHI4g">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_LbVKAHnGEea0Df0HniJfuA" name="[IDB] TEST" repPath="#_TF_64JFxEeemoaFOWaTTWw">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_LbVKAHnGEea0Df0HniJfuA" name="[IDB] TEST" repPath="#_LAI0sBcdEeSY-4saSvHI4g">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Test_delegationWizard.melodymodeller#067681fa-7fb0-48c1-b481-cf7b38991080"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_LbVxEHnGEea0Df0HniJfuA" name="[CII] TEST" repPath="#_TGmX0JFxEeemoaFOWaTTWw">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_LbVxEHnGEea0Df0HniJfuA" name="[CII] TEST" repPath="#_CzKgEBfJEeSXZMS_M02sJw">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']"/>
         <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Test_delegationWizard.melodymodeller#067681fa-7fb0-48c1-b481-cf7b38991080"/>
       </ownedRepresentationDescriptors>
@@ -33,7 +33,7 @@
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']"/>
     </ownedViews>
   </viewpoint:DAnalysis>
-  <diagram:DSemanticDiagram xmi:id="_LAI0sBcdEeSY-4saSvHI4g" name="[IDB] TEST" uid="_TF_64JFxEeemoaFOWaTTWw">
+  <diagram:DSemanticDiagram xmi:id="_LAI0sBcdEeSY-4saSvHI4g" name="[IDB] TEST" uid="_LAI0sBcdEeSY-4saSvHI4g">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_LAJbwBcdEeSY-4saSvHI4g" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_LAJbwRcdEeSY-4saSvHI4g" type="Sirius" element="_LAI0sBcdEeSY-4saSvHI4g" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="_PTA_IBcdEeSY-4saSvHI4g" type="2002" element="_PSpywBcdEeSY-4saSvHI4g">
@@ -1221,7 +1221,7 @@
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="Test_delegationWizard.melodymodeller#067681fa-7fb0-48c1-b481-cf7b38991080"/>
   </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram xmi:id="_CzKgEBfJEeSXZMS_M02sJw" name="[CII] TEST" uid="_TGmX0JFxEeemoaFOWaTTWw">
+  <diagram:DSemanticDiagram xmi:id="_CzKgEBfJEeSXZMS_M02sJw" name="[CII] TEST" uid="_CzKgEBfJEeSXZMS_M02sJw">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_CzLHIBfJEeSXZMS_M02sJw" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_CzLHIRfJEeSXZMS_M02sJw" type="Sirius" element="_CzKgEBfJEeSXZMS_M02sJw" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="_CzLHIxfJEeSXZMS_M02sJw" type="2002" element="_CzKgERfJEeSXZMS_M02sJw">

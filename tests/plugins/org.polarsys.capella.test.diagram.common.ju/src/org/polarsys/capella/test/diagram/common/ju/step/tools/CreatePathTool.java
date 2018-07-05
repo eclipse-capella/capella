@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,30 +11,24 @@
 package org.polarsys.capella.test.diagram.common.ju.step.tools;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.impl.EStoreEObjectImpl.EStoreFeatureMap;
-import org.eclipse.emf.validation.internal.modeled.model.validation.Feature;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.junit.Assert;
-import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.PhysicalLink;
 import org.polarsys.capella.core.data.cs.PhysicalPath;
-import org.polarsys.capella.core.data.fa.FaPackage;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
-import org.polarsys.capella.core.data.pa.PaPackage;
-import org.polarsys.capella.core.model.helpers.PhysicalLinkExt;
 import org.polarsys.capella.test.diagram.common.ju.context.DiagramContext;
+import org.polarsys.capella.test.diagram.common.ju.headless.HeadlessResultOpProvider;
+import org.polarsys.capella.test.diagram.common.ju.headless.IHeadlessResult;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.ArgumentType;
 
-public class CreatePathTool extends AbstractToolStep {
+public class CreatePathTool extends AbstractToolStep<Object> {
 
   protected String element;
   protected EClass  clazz;
@@ -44,6 +38,20 @@ public class CreatePathTool extends AbstractToolStep {
     super(context, toolName);
     this.element = element;
     this.links = links;
+  }
+  
+  @Override
+  protected void preRunTest() {
+    IHeadlessResult result = new IHeadlessResult (){
+      @Override
+      public Object getResult(Collection<? extends EObject> selections, Map<String, Object> parameters) {
+        @SuppressWarnings("rawtypes")
+        List scope = (List) parameters.get("scope");
+        return scope.get(0);
+      }
+    };
+    HeadlessResultOpProvider.INSTANCE.setCurrentOp(result);
+    super.preRunTest();
   }
 
   @Override

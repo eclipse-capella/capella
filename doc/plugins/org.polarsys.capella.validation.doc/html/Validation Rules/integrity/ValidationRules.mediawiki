@@ -258,3 +258,10 @@
 |-
 | colspan="2" |This rule detects forbidden references. For example, a Logical Architecture Class cannot extend a Physical Architecture Class.
 |}
+<br>
+{| class="VALIDATION-RULE"
+! |[[Image:../../Images/error.gif|ERROR]]
+|  I_39 - Validate inter-model references
+|-
+| colspan="2" |This rule live validation rule detects illegal inter-model references: An element in model A can only reference an element in model B if A has declared a "Library Reference" to B. 
+|}

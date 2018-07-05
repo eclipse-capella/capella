@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,7 +16,7 @@ import java.util.HashSet;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
+import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.core.data.capellacommon.AbstractCapabilityPkg;
 import org.polarsys.capella.core.data.capellacore.Involvement;
@@ -272,10 +272,10 @@ public class TableCapabilitiesServices {
 
     if (scenariosUsed.size() > 0) {
       for (int i = 0; i < scenariosUsed.size() - 1; i++) {
-        res += EObjectLabelProviderHelper.getText(scenariosUsed.get(i));
+        res += EObjectExt.getText(scenariosUsed.get(i));
         res += ICommonConstants.SEMICOLON_CHARACTER;
       }
-      res += EObjectLabelProviderHelper.getText(scenariosUsed.get(scenariosUsed.size() - 1));
+      res += EObjectExt.getText(scenariosUsed.get(scenariosUsed.size() - 1));
     }
     return res;
   }

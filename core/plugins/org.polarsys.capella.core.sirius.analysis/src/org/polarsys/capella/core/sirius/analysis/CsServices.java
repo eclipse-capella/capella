@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -33,7 +33,6 @@ import org.eclipse.core.commands.ParameterizedCommand;
 import org.eclipse.core.commands.common.NotDefinedException;
 import org.eclipse.core.expressions.EvaluationContext;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -56,7 +55,6 @@ import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
 import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.GraphicalFilter;
-import org.eclipse.sirius.diagram.business.internal.metamodel.spec.DNodeContainerSpec;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
@@ -82,6 +80,7 @@ import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.common.data.modellingcore.FinalizableElement;
 import org.polarsys.capella.common.data.modellingcore.InformationsExchanger;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
+import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.mdsofa.common.misc.Couple;
@@ -105,6 +104,7 @@ import org.polarsys.capella.core.data.capellacore.Generalization;
 import org.polarsys.capella.core.data.capellacore.ModellingArchitecture;
 import org.polarsys.capella.core.data.capellacore.ModellingBlock;
 import org.polarsys.capella.core.data.capellacore.NamedElement;
+import org.polarsys.capella.core.data.capellacore.PropertyValueGroup;
 import org.polarsys.capella.core.data.capellacore.Relationship;
 import org.polarsys.capella.core.data.capellacore.Type;
 import org.polarsys.capella.core.data.cs.AbstractActor;
@@ -2757,6 +2757,74 @@ public class CsServices {
     }
     return element;
   }
+  
+  /**
+   * Used to show the link between a PV/PVG and its containing PVG
+   */
+  public Collection<CapellaElement> PVinPVG(CapellaElement elem) {
+    Collection<CapellaElement> result = new ArrayList<CapellaElement>();
+    for (EObject content : elem.eContents()) {
+      if (content instanceof AbstractPropertyValue || content instanceof PropertyValueGroup) {
+        result.add((CapellaElement) content);
+      }
+    }
+    return result;
+  }
+
+  /**
+   * Used to show the link between a PV/PVG and and a component (while the PV/PVG may be applied to a component, only the part is represented in the diagram!)
+   */
+  public Collection<CapellaElement> computeValuedElements(CapellaElement elem) {
+    Collection<CapellaElement> result = new ArrayList<CapellaElement>();
+    if (elem instanceof AbstractPropertyValue) {
+      AbstractPropertyValue PV = (AbstractPropertyValue) elem;
+      for (CapellaElement element : PV.getValuedElements()) {
+        result.add(element);
+        if (element instanceof Component) {
+          Component comp = (Component) element;
+          for (Partition part : comp.getRepresentingPartitions()) {
+            result.add(part);
+          }
+        }
+      }
+    } else if (elem instanceof PropertyValueGroup) {
+      PropertyValueGroup PV = (PropertyValueGroup) elem;
+      for (CapellaElement element : PV.getValuedElements()) {
+        result.add(element);
+        if (element instanceof Component) {
+          Component comp = (Component) element;
+          for (Partition part : comp.getRepresentingPartitions()) {
+            result.add(part);
+          }
+        }
+      }
+    }
+    return result;
+  }
+
+  /**
+   * Used to show the applied PV/PVG (while the PV/PVG may be applied to a component, only the part is represented in
+   * the diagram!)
+   */
+  public Collection<CapellaElement> computeAppliedPV(CapellaElement elem) {
+    Collection<CapellaElement> result = new ArrayList<CapellaElement>();
+    result.addAll(elem.getAppliedPropertyValueGroups());
+    result.addAll(elem.getAppliedPropertyValues());
+    // if we have a part, we also add the PV and PVG applied to the type
+    if (elem instanceof Part) {
+      Part part = (Part) elem;
+      result.addAll(part.getType().getAppliedPropertyValueGroups());
+      result.addAll(part.getType().getAppliedPropertyValues());
+    }
+    return result;
+  }
+
+  /**
+   * Return the label to be displayed for PV / PVG in diagrams
+   */
+  public String computePVLabel(EObject PV) {
+    return EObjectExt.getText(PV);
+  }
 
   /**
    * Return Customized label for component
@@ -2766,7 +2834,7 @@ public class CsServices {
    * @return : customized lable for component
    */
   public String computeComponentLabel(EObject component) {
-    return EObjectLabelProviderHelper.getText(component);
+    return EObjectExt.getText(component);
   }
 
   public String computePartLabelMultiPartOnly(Part part) {
@@ -2793,14 +2861,15 @@ public class CsServices {
         return getDefaultKindLabel(part);
       }
 
-      return mul + ICommonConstants.WHITE_SPACE_CHARACTER + EObjectLabelProviderHelper.getText(part);
+      return mul + ICommonConstants.WHITE_SPACE_CHARACTER + EObjectExt.getText(part);
     }
 
     if (part.getName().length() == 0) {
       return "[" + part.eClass().getName() + "]"; //$NON-NLS-2$ //$NON-NLS-1$
     }
 
-    return part.getName();
+    //if we are in mono part mode, we display the name of the type
+    return EObjectExt.getText(part.getType());
   }
 
   public String computePartLabelMultiPartMode(Part part) {
@@ -2820,7 +2889,7 @@ public class CsServices {
         return getDefaultKindLabel(part);
       }
 
-      return mul + ICommonConstants.WHITE_SPACE_CHARACTER + EObjectLabelProviderHelper.getText(part);
+      return mul + ICommonConstants.WHITE_SPACE_CHARACTER + EObjectExt.getText(part);
     }
 
     String result = ICommonConstants.EMPTY_STRING;
@@ -2837,7 +2906,7 @@ public class CsServices {
   }
 
   private String getDefaultKindLabel(Part part) {
-    return ICommonConstants.WHITE_SPACE_CHARACTER + EObjectLabelProviderHelper.getText(part);
+    return ICommonConstants.WHITE_SPACE_CHARACTER + EObjectExt.getText(part);
   }
 
   private String getCardValue(Part part, NumericValue card) {
@@ -5264,7 +5333,7 @@ public class CsServices {
             name = ModeStateMachineServices.getService()
                 .getIncomingFunctionalExchangeLabel((FunctionalExchange) trigger);
           } else
-            name = EObjectLabelProviderHelper.getText(trigger);
+            name = EObjectExt.getText(trigger);
           if (trigger instanceof ChangeEvent) {
             ChangeEvent changeEvent = (ChangeEvent) trigger;
             name = "(" + changeEvent.getKind() + ") "; //$NON-NLS-1$ //$NON-NLS-2$
@@ -5319,7 +5388,7 @@ public class CsServices {
               result.append(ModeStateMachineServices.getService()
                   .getOutgoingFunctionalExchangeLabel((FunctionalExchange) effect));
             } else
-              result.append(EObjectLabelProviderHelper.getText(effect));
+              result.append(EObjectExt.getText(effect));
           }
         }
       }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,7 +11,9 @@
 package org.polarsys.capella.core.transition.diagram.helpers;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
@@ -31,6 +33,8 @@ import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.transition.common.context.TransitionContext;
 import org.polarsys.capella.core.transition.diagram.handlers.DiagramDescriptionHelper;
 import org.polarsys.capella.core.transition.diagram.handlers.IDiagramHandler;
+import org.polarsys.capella.shared.id.handler.IScope;
+import org.polarsys.capella.shared.id.handler.IdManager;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 /**
@@ -162,14 +166,22 @@ public class DiagramTransitionTraceability implements IDiagramTraceability {
 
     Session session = DiagramHelper.getService().getSession(representation);
     if (session != null) {
-      for (Resource resource : session.getAllSessionResources()) {
+      for (final Resource resource : session.getAllSessionResources()) {
         if (annotation.getDetails() != null) {
           for (String value : annotation.getDetails().values()) {
             try {
               if ((value == null) || value.isEmpty()) {
                 continue;
               }
-              EObject element = resource.getEObject(value);
+              // Bug 2014 - Impacts of new UID implementation while transitioning diagrams
+              // We initialize the scope for IdManager with the current resource in the loop as same as the previous implementation.
+              EObject element = IdManager.getInstance().getEObject(value, new IScope() {
+                
+                @Override
+                public List<Resource> getResources() {
+                  return Arrays.asList(resource);
+                }
+              });
               if (element != null && !element.eIsProxy() && (element instanceof DRepresentation) 
             		  && !diagrams.contains(element)) {
                   diagrams.add((DRepresentation) element);
@@ -199,8 +211,9 @@ public class DiagramTransitionTraceability implements IDiagramTraceability {
     if (annotation == null) {
       annotation = RepresentationHelper.createAnnotation(annotationId, realized);
     }
-
-    String id = realizing.eResource().getURIFragment(realizing);
+    // Bug 2014 - Impacts of new UID implementation while transitioning diagrams
+    // Using IdManager in order to take into account the new UID implementation.
+    String id = IdManager.getInstance().getId(realizing);
     for (String value : annotation.getDetails().values()) {
       if ((value != null) && value.equals(id)) {
         return Status.OK_STATUS;

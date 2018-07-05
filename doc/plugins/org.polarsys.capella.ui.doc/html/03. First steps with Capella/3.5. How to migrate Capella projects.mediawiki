@@ -25,8 +25,6 @@ Some additional migration commands are available on semantic and diagram files a
  
 <br>
 <br>
-Version specific information are available in the corresponding 				Capella Software Center Operator Manual.
- 
         
 {| border="1"
 |-
@@ -35,7 +33,7 @@ Version specific information are available in the corresponding 				Capella Soft
 
  
 | 
-Version specific information are available in the corresponding 				Capella Software Center Operator Manual.
+At the end of the migration of a project, we recommend to run a manual global refresh of all diagrams on the migrated project (See Capella Guide > User Manual > Diagram Management > Diagram Concepts > Diagram Refreshing Strategies).
 
  
 |}  

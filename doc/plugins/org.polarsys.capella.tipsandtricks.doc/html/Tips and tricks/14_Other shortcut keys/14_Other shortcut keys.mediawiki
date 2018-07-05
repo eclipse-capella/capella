@@ -1,4 +1,13 @@
 =Others shortcut key=
+
+==Search==
+
+* '''CTRL-O ''': opens a pop up listing all elements on the diagram. Selecting one of these elements brings the focus on this element and centers the diagram on this element.
+
+==Tools==
+
+* '''CTRL ''': When creating elements with the palette of a diagram, holding the CTRL key allows keeping the current creation tool active for another creation.
+
 ==Resizing elements==
 
 There are specific shortcuts to change the resize behavior:

@@ -324,18 +324,7 @@
                name="Dependencies"
                description="Select elements from model">
         </property>
-        
-        
-         <property
-               class="org.polarsys.capella.common.re.rpl2re.create.properties.SuffixesProperty"
-               enabled="true"
-               group="org.polarsys.capella.common.re.description.replicableElementGroup"
-               id="suffixes"
-               name="Suffixes">
-         </property>
-         
-         
-         
+
         <property
                class="org.polarsys.capella.common.re.rpl2re.create.properties.MergeSourceScopeProperty"
                enabled="true"
@@ -616,17 +605,6 @@
                name="Compliancy">
          </property>
          
-         <property
-               class="org.polarsys.capella.common.flexibility.properties.property.BooleanPropertyPreference"
-               enabled="true"
-               group="org.polarsys.capella.common.re.description.replicableElementGroup"
-               id="useDefaultLocation"
-               name="Use default location for RPL elements">
-               
-               <parameter
-                     id="scope" value="org.polarsys.capella.common.re">
-               </parameter>
-         </property>
          
          
          
@@ -668,6 +646,39 @@
                group="org.polarsys.capella.common.re.description.replicableElementGroup"
                id="readOnly"
                name="Enforce RPL Compliance On The Fly">
+         </property>
+         <property
+               class="org.polarsys.capella.common.re.properties.ParentLocatorProperty"
+               enabled="true"
+               group="replicableElementGroup"
+               id="parentLocatorOption"
+               name="Parent Location">
+            <option
+                  enabled="true"
+                  id="defaultLocator"
+                  name="Use default locations"
+                  value="defaultLocator">
+            </option>
+            <option
+                  enabled="true"
+                  id="packageLocator"
+                  name="Create specific packages"
+                  value="packageLocator">
+            </option>
+            <option
+                  enabled="true"
+                  id="manualLocator"
+                  name="Locate parents manually"
+                  value="manualLocator">
+            </option>
+            <parameter
+                  id="default"
+                  value="defaultLocator">
+            </parameter>
+            <parameter
+                  id="scope"
+                  value="org.polarsys.capella.common.re">
+            </parameter>
          </property>
          
      </properties>
@@ -741,20 +752,7 @@
                id="currentCompliancy"
                name="Compliancy">
          </property>
-         
-         <property
-               class="org.polarsys.capella.common.flexibility.properties.property.BooleanPropertyPreference"
-               enabled="true"
-               group="org.polarsys.capella.common.re.description.replicableElementGroup"
-               id="useDefaultLocation"
-               name="Use default location for RPL elements">
-               
-               <parameter
-                     id="scope" value="org.polarsys.capella.common.re">
-               </parameter>
-               
-         </property>
-         
+
          <property
                class="org.polarsys.capella.common.re.re2rpl.update.properties.ReplicaProperty"
                enabled="true"
@@ -787,6 +785,41 @@
                name="Enforce RPL Compliance On The Fly">
          </property>
          
+         <property
+               class="org.polarsys.capella.common.re.properties.ParentLocatorProperty"
+               enabled="true"
+               group="replicableElementGroup"
+               id="parentLocatorOption"
+               name="Parent Location">
+            <option
+                  enabled="true"
+                  id="defaultLocator"
+                  name="Use default locations"
+                  value="defaultLocator">
+            </option>
+            <option
+                  enabled="true"
+                  id="packageLocator"
+                  name="Create specific packages"
+                  value="packageLocator">
+            </option>
+            <option
+                  enabled="true"
+                  id="manualLocator"
+                  name="Locate parents manually"
+                  value="manualLocator">
+            </option>
+            <parameter
+                  id="default"
+                  value="defaultLocator">
+            </parameter>
+            <parameter
+                  id="scope"
+                  value="org.polarsys.capella.common.re">
+            </parameter>
+         </property>
+         
+         
      </properties>
         
    </extension>
@@ -803,8 +836,8 @@
     
     <command id="org.polarsys.capella.common.re.createRec"
           categoryId="org.polarsys.capella.common.re"
-          description="Create a REC from selection"
-          name="Create a REC from selection">
+          description="Create REC from selection"
+          name="Create REC from selection">
     </command>
     
     <command id="org.polarsys.capella.common.re.updateCur"
@@ -821,8 +854,8 @@
     
     <command id="org.polarsys.capella.common.re.createReplica"
           categoryId="org.polarsys.capella.common.re"
-          description="Instantiate a RPL from a REC"
-          name="Instantiate a RPL from a REC">
+          description="Instantiate RPL from REC"
+          name="Instantiate RPL from REC">
     </command>
     
     <command id="org.polarsys.capella.common.re.updateReplica"
@@ -846,13 +879,7 @@
    </extension>
 
    <extension point="org.eclipse.ui.commandImages"> <!-- should be named org.eclipse.core.commandImages -->
-        <image commandId="org.polarsys.capella.common.re.createRec"
-               icon="icons/full/etool16/ReplicableElement.gif">
-        </image>
         
-        <image commandId="org.polarsys.capella.common.re.updateCur"
-               icon="icons/full/etool16/ReplicableElement.gif">
-        </image>
         
         <image commandId="org.polarsys.capella.common.re.updateDef"
                icon="icons/full/etool16/ReplicableElement.gif">

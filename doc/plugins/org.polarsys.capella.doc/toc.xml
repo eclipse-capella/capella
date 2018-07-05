@@ -13,6 +13,8 @@
 <toc label="Capella Guide" topic="html/toc.html" sort="false">
    <topic label="Release Note">
       <topic label="API changes">
+         <topic href="html/Release note/API_1.1.x-1.2.0_to_1.2.x.html" label="Capella 1.1.x/1.2.0 to 1.2.x">
+         </topic>
          <topic href="html/Release note/API_1.0.x_to_1.1.x.html" label="Capella 1.0.x to 1.1.x">
          </topic>
       </topic>
@@ -23,6 +25,8 @@
          </topic>
          <topic href="html/Release note/M2_0.8.x_to_1.0.x.html" label="Capella 0.8.x to 1.0.x">
          </topic>
+      </topic>
+      <topic href="html/Release note/KnownIssues.html" label="Known Issues">
       </topic>
    </topic>
    <topic label="User Manual">

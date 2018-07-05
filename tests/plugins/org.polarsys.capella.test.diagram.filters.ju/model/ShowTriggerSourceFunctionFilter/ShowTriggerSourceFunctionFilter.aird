@@ -8,7 +8,7 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_CXrukLiYEeaEl8pe_NNa6A">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_EqZYELiYEeaEl8pe_NNa6A" name="[SDFB] Root System Function" repPath="#_8R2NoJFwEeemoaFOWaTTWw">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_EqZYELiYEeaEl8pe_NNa6A" name="[SDFB] Root System Function" repPath="#_EqbNQLiYEeaEl8pe_NNa6A">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="ShowTriggerSourceFunctionFilter.melodymodeller#4c0e2f71-3fc1-48f4-8c8a-7a872344f596"/>
       </ownedRepresentationDescriptors>
@@ -18,7 +18,7 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_CX_QkLiYEeaEl8pe_NNa6A">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_IRCuoLiYEeaEl8pe_NNa6A" name="[MSM] Default Region" repPath="#_8R_-oJFwEeemoaFOWaTTWw">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_IRCuoLiYEeaEl8pe_NNa6A" name="[MSM] Default Region" repPath="#_IRCuobiYEeaEl8pe_NNa6A">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']"/>
         <target xmi:type="org.polarsys.capella.core.data.capellacommon:Region" href="ShowTriggerSourceFunctionFilter.melodymodeller#56405be6-4632-4b9d-8676-a505d72fb1bd"/>
       </ownedRepresentationDescriptors>
@@ -33,7 +33,7 @@
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']"/>
     </ownedViews>
   </viewpoint:DAnalysis>
-  <diagram:DSemanticDiagram xmi:id="_EqbNQLiYEeaEl8pe_NNa6A" name="[SDFB] Root System Function" uid="_8R2NoJFwEeemoaFOWaTTWw">
+  <diagram:DSemanticDiagram xmi:id="_EqbNQLiYEeaEl8pe_NNa6A" name="[SDFB] Root System Function" uid="_EqbNQLiYEeaEl8pe_NNa6A">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_EqbNQbiYEeaEl8pe_NNa6A" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_EqbNQriYEeaEl8pe_NNa6A"/>
     </ownedAnnotationEntries>
@@ -153,7 +153,7 @@
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.ctx:SystemFunction" href="ShowTriggerSourceFunctionFilter.melodymodeller#4c0e2f71-3fc1-48f4-8c8a-7a872344f596"/>
   </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram xmi:id="_IRCuobiYEeaEl8pe_NNa6A" name="[MSM] Default Region" uid="_8R_-oJFwEeemoaFOWaTTWw">
+  <diagram:DSemanticDiagram xmi:id="_IRCuobiYEeaEl8pe_NNa6A" name="[MSM] Default Region" uid="_IRCuobiYEeaEl8pe_NNa6A">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_IRCuoriYEeaEl8pe_NNa6A" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_IRCuo7iYEeaEl8pe_NNa6A"/>
     </ownedAnnotationEntries>

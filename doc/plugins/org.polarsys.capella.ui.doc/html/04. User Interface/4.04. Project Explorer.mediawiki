@@ -92,8 +92,20 @@ For example, when masking Trace elements, the difference is the following. The P
  
 <center>[[Image:Images/4.04.%20Project%20Explorer_html_116eb088.png|691x342px]]</center>
 
+{| border="1"
+|-
+| 
+<center>[[Image:Images/4.04.%20Project%20Explorer_html_3c78e109.png|48x48px]]</center>
+
  
-Note that the Component and Functional Exchanges are hidden by default with Capella.
+| 
+Note that the elements below are hidden by default with Capella:
+
+* Component
+* Functional Exchanges
+* Part
+ 
+|}  
 
  
 == Commands of the Contextual Menu ==
@@ -151,20 +163,15 @@ The contextual menu on a diagram allows to rename or clone an existing diagram (
  
 == Synchronization with other Views ==
  
-Some other views, such as the Semantic Browser and the Properties view, are automatically updated regarding the element that is currently selected in the Project Explorer.
-
-         
-{| border="1"
-|-
-| 
-<center>[[Image:Images/4.04.%20Project%20Explorer_html_3c78e109.png|48x48px]]</center>
-
- 
-| 
-From 				the Diagram Editor, the Semantic Browser and the Information 				View, typing F8 on a specific element instantaneously selects 				this element in the Project Explorer.
-
- 
-|}  
+# Some other views, such as the Semantic Browser and the Properties view, are automatically updated regarding the element that is currently selected in the Project Explorer.
+# From the Diagram Editor, the Semantic Browser and the Information View, we can navigate a selected element or its related elements in the Capella Project Explorer by choosing one of the options below from the right-click contextual menu:
+#* Show in Capella Explorer (F8)
+#* Show Related Element(s) in Capella Explorer (F7)
+#* Go To
+If the selected element or its related element(s) are not currently visible in the Capella Explorer due to the activation of some filters, there will be a prompted dialog to inform the user and propose to the user a quick fix, which will look for which active filters might have hidden the selected element(s) and then deactivate them so that the selected element(s) will be visible and focused on the Capella Explorer.
+<center>[[Image:Images/4.04.%20Project%20Explorer_ShowInCapellaExplorer_QuickFix.PNG]]</center>
+If the quick fix is not possible, an information dialog will be displayed.
+<center>[[Image:Images/4.04.%20Project%20Explorer_ShowInCapellaExplorer_NotFound.PNG]]</center>
 == Search Field ==
  
 A research field based on regular expressions is available on the top of the Project Explorer. It is convenient to quickly locate elements in the hierarchy, based on just a part of their name.

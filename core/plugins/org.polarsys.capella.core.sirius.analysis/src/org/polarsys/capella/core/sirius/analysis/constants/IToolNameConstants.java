@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,6 +20,12 @@ public interface IToolNameConstants {
   //
   // Diagram Tools
   //
+
+  //
+  // Common tools on all diagrams
+  //
+  String TOOL_COMMON_INSERT_REMOVE_PV = "Applied Property Values";
+  String TOOL_COMMON_INSERT_REMOVE_PVG = "Applied Property Value Groups";
 
   String TOOL_CREATE_PHYSICAL_PATH = "Physical Path";//$NON-NLS-1$
   String TOOL_CREATE_FUNCTIONAL_CHAIN = "Functional Chain";//$NON-NLS-1$
@@ -1492,4 +1498,11 @@ public interface IToolNameConstants {
   String TABLE_TOOL_REQ_SFIR = "System Functional Interface Requirement"; //$NON-NLS-1$
   String TABLE_TOOL_REQ_SNFR = "System Non Functional Requirement"; //$NON-NLS-1$
   String TABLE_TOOL_REQ_SNFIR = "System Non Functional Interface Requirement"; //$NON-NLS-1$
+
+  /**
+   * Tool on IS, ES diagrams to create multiple instance roles for identical represented
+   */
+  String TOOL_SCENARIO_MULTI_INSTANCEROLE_COMPONENT = "Add multiple lifelines for an existing Component"; //$NON-NLS-1$
+  String TOOL_SCENARIO_MULTI_INSTANCEROLE_ACTOR = "Add multiple lifelines for an existing Actor"; //$NON-NLS-1$
+  String TOOL_OES_MULTI_INSTANCEROLE_ENTITYACTOR = "Add multiple lifelines for an existing Entity / Actor"; //$NON-NLS-1$
 }

@@ -265,6 +265,9 @@ public class MoveHelper {
         CsPackage.Literals.BLOCK_ARCHITECTURE);
     BlockArchitecture arch2 = (BlockArchitecture) EcoreUtil2.getFirstContainer(element2,
         CsPackage.Literals.BLOCK_ARCHITECTURE);
+    if (arch1 == arch2) {
+      return true;
+    }
     if (arch1 == null) {
       // arch1 can be null when the object is a copy (clipboard) and have
       // no parent yet
@@ -276,9 +279,6 @@ public class MoveHelper {
           || (pkg.equals(EpbsPackage.eINSTANCE) && (arch2 instanceof EPBSArchitecture))) {
         return true;
       }
-    } 
-    if (arch1.eClass() == arch2.eClass()) {
-      return true;
     }
     return false;
   }

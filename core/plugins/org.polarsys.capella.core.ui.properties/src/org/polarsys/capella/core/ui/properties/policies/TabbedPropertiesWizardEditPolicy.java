@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,6 +17,7 @@ import org.eclipse.gef.Request;
 import org.eclipse.gef.RequestConstants;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
+import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.AbstractSiriusEditPolicy;
 import org.eclipse.sirius.diagram.ui.tools.api.command.GMFCommandWrapper;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
@@ -49,21 +50,25 @@ public class TabbedPropertiesWizardEditPolicy extends AbstractSiriusEditPolicy {
       final DSemanticDecorator semanticDecorator = this.getFirstDecorateSemanticElement();
       if (CapellaResourceHelper.isSemanticElement(semanticDecorator.getTarget())) {
         final EObject modelElement = semanticDecorator.getTarget();
-        Command cmd = new ICommandProxy(new GMFCommandWrapper(getEditingDomain(), new IdentityCommand(getEditingDomain()) {
+        if (semanticDecorator instanceof DDiagramElement
+            && !((DDiagramElement) semanticDecorator).getParentDiagram().isIsInShowingMode()) {
+          Command cmd = new ICommandProxy(
+              new GMFCommandWrapper(getEditingDomain(), new IdentityCommand(getEditingDomain()) {
 
-          @Override
-          public void execute() {
-            new OpenCustomWizardCommand(modelElement).run();
-          }
+                @Override
+                public void execute() {
+                  new OpenCustomWizardCommand(modelElement).run();
+                }
 
-          @Override
-          public String getLabel() {
-            return Messages.CustomWizardHandler_Command_Title;
-          }
+                @Override
+                public String getLabel() {
+                  return Messages.CustomWizardHandler_Command_Title;
+                }
 
-        }));
+              }));
 
-        return cmd;
+          return cmd;
+        }
       }
     }
     return null;

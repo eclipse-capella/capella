@@ -13,10 +13,10 @@
    <description url="http://www.polarsys.org/capella">
       Capella
    </description>
-   <feature id="org.polarsys.capella.headless.feature" version="1.2.0.qualifier">
+   <feature id="org.polarsys.capella.headless.feature" version="1.2.1.qualifier">
       <category name="org.polarsys.capella.headless"/>
    </feature>
-   <!--feature id="org.polarsys.capella.headless.feature.source" version="1.2.0.qualifier">
+   <!--feature id="org.polarsys.capella.headless.feature.source" version="1.2.1.qualifier">
       <category name="org.polarsys.capella.headless.source"/>
    </feature-->
    <category-def name="org.polarsys.capella.headless" label="Capella Headless"/>

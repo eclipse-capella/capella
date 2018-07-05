@@ -67,8 +67,8 @@ export BUILD_TYPE_PREFIX="N"
 echo "Cmd line : mkdir -p $TARGET_DIR_PRODUCT"
 mkdir -p "$TARGET_DIR_PRODUCT"
 # The actual publication of products
-echo "Cmd line : cp -dR "$WORKSPACE/$PRODUCTS_FOLDER/"capella-*.zip $TARGET_DIR_PRODUCT"
-cp -dR "$WORKSPACE/$PRODUCTS_FOLDER/"capella-*.zip "$TARGET_DIR_PRODUCT"
+echo "Cmd line : mv -f "$WORKSPACE/$PRODUCTS_FOLDER/"capella-*.zip $TARGET_DIR_PRODUCT"
+mv -f "$WORKSPACE/$PRODUCTS_FOLDER/"capella-*.zip "$TARGET_DIR_PRODUCT"
 
 # Manifest file
 MANIFEST_NAME="Manifest$COMPONENT_NAME.txt"
@@ -80,11 +80,16 @@ echo "IC Build number : $BUILD_NUMBER" > $MANIFEST_FILE
 echo "IC Build url : $MASTER_BUILD_URL/$BUILD_NUMBER/" >> $MANIFEST_FILE
 echo "Products nightly path : $TARGET_DIR_PRODUCT" >>  $MANIFEST_FILE
 echo "Products nightly url list :  " >>  $MANIFEST_FILE
+echo "Products nightly url folder :  $URL_PRODUCT_PREFIX/$BUILD_TYPE/$FULL_VERSION/?d" >>  $MANIFEST_FILE
 for f in "$WORKSPACE/$PRODUCTS_FOLDER/"capella-*.zip ; do
 	echo "    $URL_PRODUCT_PREFIX/$BUILD_TYPE/$FULL_VERSION/$(basename $f)" >> $MANIFEST_FILE
 done
+
 echo "Products nightly manifest url :  $URL_PRODUCT_PREFIX/$BUILD_TYPE/$FULL_VERSION/$MANIFEST_NAME" >>  $MANIFEST_FILE
 
 # Copy manifest to published site
 echo "CMD line : cp -dR $MANIFEST_FILE $TARGET_DIR_PRODUCT"
 cp -dR $MANIFEST_FILE $TARGET_DIR_PRODUCT
+
+# Display Manifest on command output
+cat $MANIFEST_FILE

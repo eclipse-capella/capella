@@ -23,17 +23,17 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_pElr0HfWEeWlb9TXJEF0tw">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_kT4PoHQuEeamAMxs9g9ZYQ" name="[PD] Test1 - Package Dependencies" repPath="#_TUXOYJFuEeemoaFOWaTTWw">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_kT4PoHQuEeamAMxs9g9ZYQ" name="[PD] Test1 - Package Dependencies" repPath="#_RSoU0XjOEeWzAMolg4MmaA">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Package%20Dependencies']"/>
         <target xmi:type="org.polarsys.capella.core.data.information:DataPkg" href="PackageCycle6.melodymodeller#75593593-9dc5-4be8-b6a4-5118ea2c36ac"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_kT4PoXQuEeamAMxs9g9ZYQ" name="[PD] Test2 - Package Dependencies" repPath="#_TUgYUJFuEeemoaFOWaTTWw">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_kT4PoXQuEeamAMxs9g9ZYQ" name="[PD] Test2 - Package Dependencies" repPath="#_0g1H8HjOEeWzAMolg4MmaA">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Package%20Dependencies']"/>
         <target xmi:type="org.polarsys.capella.core.data.information:DataPkg" href="PackageCycle6.melodymodeller#dc8f6a8e-ad9e-480f-b399-e677da359a95"/>
       </ownedRepresentationDescriptors>
     </ownedViews>
   </viewpoint:DAnalysis>
-  <diagram:DSemanticDiagram xmi:id="_RSoU0XjOEeWzAMolg4MmaA" name="[PD] Test1 - Package Dependencies" uid="_TUXOYJFuEeemoaFOWaTTWw">
+  <diagram:DSemanticDiagram xmi:id="_RSoU0XjOEeWzAMolg4MmaA" name="[PD] Test1 - Package Dependencies" uid="_RSoU0XjOEeWzAMolg4MmaA">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_RSoU0njOEeWzAMolg4MmaA" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_RSoU03jOEeWzAMolg4MmaA"/>
     </ownedAnnotationEntries>
@@ -180,7 +180,7 @@
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Package%20Dependencies']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.information:DataPkg" href="PackageCycle6.melodymodeller#75593593-9dc5-4be8-b6a4-5118ea2c36ac"/>
   </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram xmi:id="_0g1H8HjOEeWzAMolg4MmaA" name="[PD] Test2 - Package Dependencies" uid="_TUgYUJFuEeemoaFOWaTTWw">
+  <diagram:DSemanticDiagram xmi:id="_0g1H8HjOEeWzAMolg4MmaA" name="[PD] Test2 - Package Dependencies" uid="_0g1H8HjOEeWzAMolg4MmaA">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_0g1H8XjOEeWzAMolg4MmaA" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_0g1H8njOEeWzAMolg4MmaA"/>
     </ownedAnnotationEntries>

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,8 +22,12 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
+import org.eclipse.emf.edit.domain.EditingDomain;
+import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.polarsys.capella.common.helpers.query.MDEQueries;
+import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.platform.sirius.ted.SemanticCrossReferencer;
 import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.SemanticEditingDomain;
 
@@ -190,5 +194,43 @@ public class EObjectExt extends EcoreUtil2 {
       }
     }
     return rs;
+  }
+
+  /**
+   * This method shall replace EObjectLabelProviderHelper.getText() until bugzilla 2036 is solved
+   */
+  public static String getText(EObject object) {
+    IItemLabelProvider provider = getItemLabelProvider(object);
+    String label = ICommonConstants.EMPTY_STRING;
+
+    if (null != provider) {
+      label = provider.getText(object);
+    }
+    return label;
+  }
+  
+  /**
+   * Get the generated item provider for given object.
+   * @param object
+   * @return<code>null</code> if one of parameters is <code>null</code> or if no provider is found.
+   */
+  protected static IItemLabelProvider getItemLabelProvider(EObject object) {
+    // Precondition.
+    if (null == object) {
+      return null;
+    }
+    
+    EditingDomain editingDomain = TransactionHelper.getEditingDomain(object);
+    
+    // Precondition.
+    if (null == editingDomain) {
+      editingDomain = AdapterFactoryEditingDomain.getEditingDomainFor(object);
+    }
+    
+    // Precondition.
+    if (null == editingDomain || !(editingDomain instanceof AdapterFactoryEditingDomain)) {
+      return null;
+    }
+    return (IItemLabelProvider) ((AdapterFactoryEditingDomain) editingDomain).getAdapterFactory().adapt(object, IItemLabelProvider.class);
   }
 }

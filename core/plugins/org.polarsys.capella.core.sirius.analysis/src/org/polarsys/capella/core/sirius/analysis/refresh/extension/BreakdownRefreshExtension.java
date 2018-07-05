@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -207,9 +207,8 @@ public class BreakdownRefreshExtension implements IRefreshExtension {
       if (!visitedElements.contains(parent)) {
         visitedElements.add(parent);
         visitedObjects.add(parent.getTarget());
-        EdgeTarget edgeTarget = (EdgeTarget) parent;
-        if (edgeTarget == element_p) {
-          for (DEdge edge : edgeTarget.getOutgoingEdges()) {
+        if (parent == element_p && parent instanceof EdgeTarget) {
+          for (DEdge edge : ((EdgeTarget)parent).getOutgoingEdges()) {
             if (edge.getTargetNode() != null && edge.getTargetNode() instanceof DDiagramElement) {
               parents.addLast((DDiagramElement) edge.getTargetNode());
             }

@@ -15,7 +15,7 @@
   <parent>
     <groupId>org.polarsys</groupId>
     <artifactId>org.polarsys.capella</artifactId>
-    <version>1.2.0-SNAPSHOT</version>
+    <version>1.2.1-SNAPSHOT</version>
     <relativePath>../../</relativePath>
   </parent>
   <groupId>org.polarsys</groupId>
@@ -141,6 +141,7 @@
         <module>org.polarsys.capella.core.projection.systemfunction</module>
         <module>org.polarsys.capella.core.queries.helpers</module>
         <module>org.polarsys.capella.core.re</module>
+        <module>org.polarsys.capella.core.re.project</module>
         <module>org.polarsys.capella.core.re.ui</module>
         <module>org.polarsys.capella.core.re.ui.quickfix</module>
         <module>org.polarsys.capella.core.re.updateconnections.ui</module>

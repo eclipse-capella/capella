@@ -11,7 +11,7 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_o8BtoBiyEeSENJbByTODmA">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_u-eKEHQuEeamAMxs9g9ZYQ" name="[CDB] TEST" repPath="#_RldKoJFwEeemoaFOWaTTWw">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_u-eKEHQuEeamAMxs9g9ZYQ" name="[CDB] TEST" repPath="#_qN-dsBiyEeSENJbByTODmA">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.information:DataPkg" href="Project_validation11.melodymodeller#199f6adc-5476-4007-8d39-0468aa0a11c9"/>
       </ownedRepresentationDescriptors>
@@ -29,7 +29,7 @@
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']"/>
     </ownedViews>
   </viewpoint:DAnalysis>
-  <diagram:DSemanticDiagram xmi:id="_qN-dsBiyEeSENJbByTODmA" name="[CDB] TEST" uid="_RldKoJFwEeemoaFOWaTTWw">
+  <diagram:DSemanticDiagram xmi:id="_qN-dsBiyEeSENJbByTODmA" name="[CDB] TEST" uid="_qN-dsBiyEeSENJbByTODmA">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_qN_EwBiyEeSENJbByTODmA" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_qN_EwRiyEeSENJbByTODmA" type="Sirius" element="_qN-dsBiyEeSENJbByTODmA" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="_rw7eMBiyEeSENJbByTODmA" type="2003" element="_rwtbwBiyEeSENJbByTODmA">

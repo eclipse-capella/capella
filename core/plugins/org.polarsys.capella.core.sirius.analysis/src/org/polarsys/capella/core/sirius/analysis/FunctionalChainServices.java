@@ -1,10 +1,10 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *  
+ *
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
@@ -21,6 +21,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.BorderedStyle;
@@ -41,6 +42,7 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.RGBValues;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.swt.graphics.RGB;
+import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.helpers.SimpleOrientedGraph;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
@@ -442,11 +444,21 @@ public class FunctionalChainServices {
 	 * @return
 	 */
 	public boolean isValidInternalLinkEdge(FunctionalChain chain, EdgeTarget currentSourceNode, EdgeTarget currentTargetNode) {
-		if (currentSourceNode == null) {
+		if (currentSourceNode == null || currentSourceNode.getIncomingEdges().isEmpty()) {
 			return false;
 		}
-		if (currentTargetNode == null) {
+		if (currentTargetNode == null || currentTargetNode.getOutgoingEdges().isEmpty()) {
 			return false;
+		}
+		
+		// At least one incoming edge should be visible
+		if(!hasVisibleEdge(currentSourceNode.getIncomingEdges())){
+		  return false;
+		}
+		
+		// At least one outgoing edge should be visible
+		if(!hasVisibleEdge(currentTargetNode.getOutgoingEdges())){
+		  return false;
 		}
 
 		EObject sourceParent = currentSourceNode.eContainer();
@@ -458,7 +470,15 @@ public class FunctionalChainServices {
 		return false;
 	}
 
-	/**
+	private boolean hasVisibleEdge(EList<DEdge> edges) {
+	  for(DEdge edge : edges){
+	    if(edge.isVisible()){
+	      return true;
+	    }
+	  }
+    return false;
+  }
+  /**
 	 * Create or return an internal link between both nodes.
 	 */
 	protected DEdge retrieveInternalLink(EdgeTarget sourceNode, EdgeTarget targetNode, FunctionalChain fc, RGBValues color) {
@@ -691,7 +711,7 @@ public class FunctionalChainServices {
 	 }
 
 	 public String getFunctionalChainLabel(FunctionalChain fc, DDiagram diagram) {
-		 String label = fc.getName();
+		 String label = EObjectExt.getText(fc);
 
 		 boolean isComplete = isCompleteFunctionalChain(fc, diagram);
 		 boolean isValid = FunctionalChainExt.isFunctionalChainValid(fc);

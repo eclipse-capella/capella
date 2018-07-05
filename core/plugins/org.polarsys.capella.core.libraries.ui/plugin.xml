@@ -260,8 +260,9 @@
       <view
             category="org.polarsys.capella.views.category.incubation"
             class="org.polarsys.capella.core.libraries.ui.move.MoveStagingView"
+            icon="icons/transfer_16x16.png"
             id="org.polarsys.capella.core.libraries.ui.moveview"
-            name="Move Elements View"
+            name="Transfer"
             restorable="true">
       </view>
    </extension>

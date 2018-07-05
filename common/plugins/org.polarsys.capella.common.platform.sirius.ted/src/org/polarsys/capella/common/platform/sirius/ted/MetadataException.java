@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,39 +14,44 @@ import org.eclipse.core.runtime.IStatus;
 
 public class MetadataException extends RuntimeException {
 
-	private IStatus status;
+  private IStatus status;
 
-	public MetadataException() {
-		super();
-	}
+  public MetadataException() {
+    super();
+  }
 
-	public IStatus getStatus() {
-		return status;
-	}
+  public IStatus getStatus() {
+    return status;
+  }
 
-	public MetadataException(IStatus status) {
-		this(childMessages(status), status);
-	}
+  public MetadataException(IStatus status) {
+    this(childMessages(status), status);
+  }
 
-	public MetadataException(String message, IStatus status) {
-		super(message);
-		this.status = status;
-	}
+  public MetadataException(String message, IStatus status) {
+    super(message);
+    this.status = status;
+  }
 
-	protected static String childMessages(IStatus status) {
-		String result = "";
-		int i = 0;
-		for (IStatus child : status.getChildren()) {
-			result += child.getMessage();
-			if (i < status.getChildren().length - 1) {
-				result += "\n";
-			}
-			if (i < status.getChildren().length) {
-				result += "\n";
-			}
-			i++;
-		}
-		return result;
-	}
+  protected static String childMessages(IStatus status) {
+    String result = "";
+    int i = 0;
+    if (status.getChildren().length > 0) {
+      for (IStatus child : status.getChildren()) {
+        result += child.getMessage();
+        if (i < status.getChildren().length - 1) {
+          result += "\n";
+        }
+        if (i < status.getChildren().length) {
+          result += "\n";
+        }
+        i++;
+      }
+    } else {
+      result += status.getMessage();
+    }
+
+    return result;
+  }
 
 }

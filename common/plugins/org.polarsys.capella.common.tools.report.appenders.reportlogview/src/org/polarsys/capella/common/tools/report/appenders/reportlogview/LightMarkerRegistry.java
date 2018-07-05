@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,6 +25,8 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.IContentProvider;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.ui.views.markers.MarkerViewUtil;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.helpers.validation.IValidationConstants;
@@ -283,7 +285,10 @@ public class LightMarkerRegistry implements IMarkerSource {
         for (Object data : diagnostic.getData()) {
           if (data instanceof ModelElement) {
             ModelElement element = (ModelElement) data;
-            pathAttributes += element.getFullLabel() + ICommonConstants.LINE_SEPARATOR;
+            Session session = SessionManager.INSTANCE.getSession(element);
+            if (session != null) {
+            	pathAttributes += element.getFullLabel() + ICommonConstants.LINE_SEPARATOR;
+            }
           }
         }
         return pathAttributes;

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -31,15 +31,13 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.equinox.app.IApplicationContext;
-import org.eclipse.osgi.util.NLS;
 import org.polarsys.capella.common.application.CommonArgumentsConstants;
-import org.polarsys.capella.common.bundle.FeatureHelper;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 import org.polarsys.capella.common.tools.report.util.LogExt;
+import org.polarsys.capella.core.af.integration.CapellaMetadataProvider;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
-import org.polarsys.capella.core.model.handler.helpers.CapellaFeatureHelper;
 
 /**
  */
@@ -94,7 +92,7 @@ public class AbstractCommandLine implements ICommandLine {
     } catch (CoreException exception) {
       logErrorAndThrowException(Messages.refresh_problem);
     }
-
+    
     // is filepath empty ?
     if (isEmtyOrNull(argHelper.getFilePath())) {
       logErrorAndThrowException(Messages.representation_mandatory);
@@ -180,37 +178,11 @@ public class AbstractCommandLine implements ICommandLine {
    * @param modeller
    * @return
    */
-  private void compliancyCheck(IFile modeller) throws CommandLineException {
-    // Check the detected version.
-    // Migration can only migrate from n-1 to n versions.
-    // Get major & minor version in given capella resource.
-    String fileToMigrateVersion = CapellaFeatureHelper.getDetectedVersion(modeller).substring(0, 5);
-    int fileToMigrateRelease = getReleaseVersion(fileToMigrateVersion);
-    int fileToMigrateMajorVersion = getMajorVersion(fileToMigrateVersion);
-    // Current version
-    String version = FeatureHelper.getCapellaVersion(false);
-    if (null != version) {
-      String capellaCurrentVersion = version.substring(0, 5);
-      int currentRelease = getReleaseVersion(capellaCurrentVersion);
-      int currentMajorVersion = getMajorVersion(capellaCurrentVersion);
-      // Compare versions...
-      if (fileToMigrateRelease != currentRelease) {
-        String formattedMessage = NLS.bind(Messages.Error_needMigrationMessage,
-            new String[] { modeller.getFullPath().toString() });
-        throw new CommandLineException(formattedMessage);
-      } else if (currentMajorVersion != fileToMigrateMajorVersion) {
-        String formattedMessage = NLS.bind(Messages.Error_needMigrationMessage,
-            new String[] { modeller.getFullPath().toString() });
-        throw new CommandLineException(formattedMessage);
-
-      }
-
-    } else {
-      String formattedMessage = NLS.bind(Messages.Error_CorruptedMessage,
-          new String[] { modeller.getFullPath().toString() });
-      throw new CommandLineException(formattedMessage);
+  public void compliancyCheck(IFile modeller) throws CommandLineException {
+    IStatus status = new CapellaMetadataProvider().checkVersion(modeller);
+    if (!status.isOK()) {
+      throw new CommandLineException(status.getMessage());
     }
-
   }
 
   /**
@@ -526,7 +498,7 @@ public class AbstractCommandLine implements ICommandLine {
     URI uri = URI.createFileURI(segments.get(0));
     for (int i = 1; i < segments.size(); i++)
       uri = uri.appendSegment(segments.get(i));
-    return uri.toFileString();
+    return URI.decode(uri.toFileString());
   }
 
   public List<String> getImportedProjects() {

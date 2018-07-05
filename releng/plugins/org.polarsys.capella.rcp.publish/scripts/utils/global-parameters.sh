@@ -38,8 +38,8 @@ export PRODUCT_NAME=capella
 # Target platform path
 export TARGET_PATH="releng/plugins/org.polarsys.capella.targets/full"
 
-# Job name
-export JOB_NAME=capella-master
+# Job name (already provided by jenkins)
+# export JOB_NAME=capella-master
 
 # The root folder for all Capella artifacts
 export PUBLISH_FOLDER_ROOT="/home/data/httpd/download.polarsys.org/$PRODUCT_NAME/core"

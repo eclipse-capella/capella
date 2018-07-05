@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,13 +12,13 @@ package org.polarsys.capella.core.sirius.ui.actions;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.osgi.util.NLS;
@@ -26,7 +26,6 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.ui.tools.api.util.SWTUtil;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
@@ -40,6 +39,7 @@ import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.tools.report.appenders.usage.UsageMonitoringLogger;
 import org.polarsys.capella.common.tools.report.appenders.usage.util.UsageMonitoring.EventStatus;
 import org.polarsys.capella.core.sirius.ui.Messages;
+import org.polarsys.capella.core.sirius.ui.SiriusUIPlugin;
 import org.polarsys.capella.core.sirius.ui.closeproject.SessionCloseManager;
 import org.polarsys.capella.core.sirius.ui.helper.SessionHelper;
 
@@ -96,16 +96,9 @@ public class CloseSessionAction extends BaseSelectionListenerAction {
     IRunnableWithProgress closeSessionOperation = new CloseSessionOperation(sessions);
 
     Shell activeShell = PlatformUI.getWorkbench().getDisplay().getActiveShell();
-    ProgressMonitorDialog monitor = new ProgressMonitorDialog(activeShell);
-    try {
-      monitor.run(false, false, closeSessionOperation);
-    } catch (final InvocationTargetException ite) {
-      SiriusPlugin.getDefault().error("the program was not able close the session", ite); //$NON-NLS-1$
-    } catch (final InterruptedException ie) {
-      SiriusPlugin.getDefault().warning("the close session action was interrupted", ie); //$NON-NLS-1$
-    }
+    SiriusUIPlugin.getDefault().runSaveOperation(activeShell, closeSessionOperation);
   }
-
+  
   /**
    * Get the sessions from internal structured selection.
    *
@@ -194,7 +187,6 @@ public class CloseSessionAction extends BaseSelectionListenerAction {
         SessionCloseManager.closeUISession(uiSession, saveIsNeeded);
       }
       SessionCloseManager.closeSession(session);
-      SessionCloseManager.cleanSession(session);
     }
 
     /**

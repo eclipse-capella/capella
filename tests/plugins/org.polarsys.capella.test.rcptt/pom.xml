@@ -16,11 +16,10 @@
 	<parent>
 		<groupId>org.polarsys</groupId>
 		<artifactId>org.polarsys.capella.tests.plugins</artifactId>
-		<version>1.2.0-SNAPSHOT</version>
+		<version>1.2.2-SNAPSHOT</version>
 	</parent>
 	<groupId>org.polarsys</groupId>
 	<artifactId>org.polarsys.capella.test.rcptt</artifactId>
-	<packaging>rcpttTest</packaging>
 
 	<pluginRepositories>
 		<pluginRepository>
@@ -45,6 +44,19 @@
 				<artifactId>rcptt-maven-plugin</artifactId>
 				<version>${rcptt-version}</version>
 				<extensions>true</extensions>
+				<executions>
+					
+					<execution>
+						<id>run-rcptt-in-test-phase</id>
+			            <phase>test</phase>
+			            <goals>
+			              <goal>resources</goal>
+			              <goal>execute</goal>
+			            </goals>
+					</execution>
+					
+				</executions>
+				
 				<configuration>
 					<runner>
 						<version>${rcptt-runner-version}</version>

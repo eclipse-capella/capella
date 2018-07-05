@@ -3890,7 +3890,22 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 		   new String[] {
 		   });	
 		addAnnotation
+		  (getScenario_OwnedInstanceRoles(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
 		  (getScenario_OwnedMessages(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getScenario_OwnedTimeLapses(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getScenario_OwnedConstraintDurations(), 
 		   source, 
 		   new String[] {
 		   });	
@@ -3919,6 +3934,16 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
+		  (instanceRoleEClass, 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getInstanceRole_RepresentedInstance(), 
+		   source, 
+		   new String[] {
 		   });	
 		addAnnotation
 		  (getAbstractCapability_PreCondition(), 
@@ -3990,6 +4015,31 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 		   });	
 		addAnnotation
 		  (getInteractionOperand_Guard(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (stateFragmentEClass, 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getStateFragment_RelatedAbstractState(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getStateFragment_RelatedAbstractFunction(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (constraintDurationEClass, 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getConstraintDuration_Duration(), 
 		   source, 
 		   new String[] {
 		   });	

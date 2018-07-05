@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.common.re;singleton:=true
-Bundle-Version: 1.2.0.qualifier
+Bundle-Version: 1.2.1.qualifier
 Bundle-Activator: org.polarsys.capella.common.re.Activator
 Bundle-Vendor: %providerName
 Require-Bundle: org.eclipse.core.runtime,
@@ -13,8 +13,9 @@ Require-Bundle: org.eclipse.core.runtime,
  org.polarsys.capella.common.queries;visibility:=reexport,
  org.polarsys.capella.common.libraries,
  org.polarsys.capella.common.model.helpers,
- org.polarsys.capella.common.transition;visibility:=reexport
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+ org.polarsys.capella.common.transition;visibility:=reexport,
+ com.google.guava;bundle-version="[15.0.0,16.0.0)"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
 Export-Package: org.polarsys.capella.common.re,

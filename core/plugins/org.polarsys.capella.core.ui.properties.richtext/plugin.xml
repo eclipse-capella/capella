@@ -70,4 +70,16 @@
             strategy="org.polarsys.capella.core.ui.properties.richtext.navigation.CapellaNavigationModelElement">
       </openStrategy>
    </extension>
+   <extension
+         point="org.polarsys.kitalpha.richtext.widget.editorInputFeatureContribution">
+      <featureContribution
+            class="org.polarsys.capella.core.ui.properties.richtext.contribution.CapellaEditorInputFeatureContribution">
+      </featureContribution>
+   </extension>
+   <extension
+         point="org.polarsys.kitalpha.richtext.widget.editorWidgetContribution">
+      <editorWidgetContribution
+            class="org.polarsys.capella.core.ui.properties.richtext.CapellaMDERichtextWidgetEditorImpl">
+      </editorWidgetContribution>
+   </extension>
 </plugin>

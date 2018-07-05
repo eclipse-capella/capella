@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,11 +28,12 @@ public class IdManager {
   // The cache to store all contributors
   private static List<IIdHandler> __contributedIdHandlers;
 
+  private IIdHandler defaultIdHandler;
   /**
    * 
    */
   private IdManager() {
-    // do nothing
+    defaultIdHandler = new XMLResourceIdHandler();
   }
 
   /**
@@ -60,11 +61,13 @@ public class IdManager {
    * 
    */
   public String getId(EObject object) {
+    String id = null;
     for (IIdHandler handler : getContributedIdHandlers()) {
-      String id = handler.getId(object);
+      id = handler.getId(object);
       if (null != id) return id;
     }
-    return null;
+    id = defaultIdHandler.getId(object);
+    return id;
   }
 
   /**

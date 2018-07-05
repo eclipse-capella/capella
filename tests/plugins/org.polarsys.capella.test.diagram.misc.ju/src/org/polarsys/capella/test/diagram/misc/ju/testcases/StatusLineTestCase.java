@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,7 +25,6 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.navigator.CommonViewer;
-import org.polarsys.capella.core.data.ctx.SystemFunction;
 import org.polarsys.capella.core.libraries.model.ICapellaModel;
 import org.polarsys.capella.core.libraries.utils.ScopeModelWrapper;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaCommonNavigator;
@@ -106,7 +105,7 @@ public class StatusLineTestCase extends BasicTestCase {
     DRepresentationDescriptor sdfb = null;
     Session session = getSession(projectTestName);
     for (DView entry : session.getOwnedViews()) {
-      if (entry.getViewpoint().getName().equals("System Analysis")) {
+      if (entry.getViewpoint().getName().equals("System Analysis") && entry.getOwnedRepresentationDescriptors().size() > 0) {
         sdfb = entry.getOwnedRepresentationDescriptors().get(0);
       }
     }
@@ -120,24 +119,7 @@ public class StatusLineTestCase extends BasicTestCase {
         statusLineMsg.equals(
             "StatusLine::StatusLine::System Analysis::System Functions::Root System Function::[SDFB] Root System Function (Synchronized)"));
 
-    SystemFunction rootSF = (SystemFunction) IdManager.getInstance().getEObject(SA__ROOTSF, scope);
-    SiriusSemanticBrowserView semanticBrowserViewer = getSemanticBrowserViewer();
-    IStatusLineManager sbStatusLineManager = semanticBrowserViewer.getViewSite().getActionBars().getStatusLineManager();
-    semanticBrowserViewer.setInput(rootSF);
-    
-    // Select the Root System Function element in Semantic Browser
-    /*semanticBrowserViewer.updateStatusLine(new StructuredSelection(rootSF));
-    statusLineMsg = getStatusLineMessage(sbStatusLineManager);
-    assertTrue(
-        "The displayed message in status bar should be StatusLine::StatusLine::System Analysis::System Functions::Root System Function",
-        statusLineMsg.equals("StatusLine::StatusLine::System Analysis::System Functions::Root System Function"));
-
-    // Select the SFDB descriptor in Semantic Browser
-    semanticBrowserViewer.updateStatusLine(sdfbSelection);
-    statusLineMsg = getStatusLineMessage(sbStatusLineManager);
-    assertTrue(
-        "The displayed message in status bar should be StatusLine::StatusLine::System Analysis::System Functions::Root System Function::[SDFB] Root System Function (Synchronized)",
-        statusLineMsg.equals(
-            "StatusLine::StatusLine::System Analysis::System Functions::Root System Function::[SDFB] Root System Function (Synchronized)"));*/
+    // Reset selection to null to avoid problems during session close with test framework
+    viewer.setSelection(null);
   }
 }

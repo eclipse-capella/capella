@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<!--
+    Copyright (c) 2017 THALES GLOBAL SERVICES.
+    All rights reserved. This program and the accompanying materials
+    are made available under the terms of the Eclipse Public License v1.0
+    which accompanies this distribution, and is available at
+    http://www.eclipse.org/legal/epl-v10.html
+      
+    Contributors:
+       Thales - initial API and implementation
+ -->
+
+<plugin>
+   <extension
+         point="org.eclipse.ui.commands">
+         <command
+               description="%cmdCreateRECLibraryContent_description"
+               id="org.polarsys.capella.core.re.project.createREC"
+               name="%cmdCreateRECLibraryContent_name">
+      	</command>
+      	<command
+             description="%cmdUpdateRECLibraryContent_description"
+             id="org.polarsys.capella.core.re.project.updateREC"
+             name="%cmdUpdateRECLibraryContent_name">
+      	</command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+           <handler
+                 class="org.polarsys.capella.core.re.project.handlers.ProjectRecHandler$Create"
+                 commandId="org.polarsys.capella.core.re.project.createREC">
+              <activeWhen>
+                 <and>
+                    <count
+                          value="1">
+                    </count>
+                    <iterate>
+                       <and>
+                          <instanceof
+                                value="org.eclipse.emf.ecore.EObject">
+                          </instanceof>
+                          <test
+                                forcePluginActivation="true"
+                                property="org.polarsys.capella.core.re.project.properties.inLibrary">
+                          </test>
+                       </and>
+                    </iterate>
+                 </and>
+              </activeWhen>
+           </handler>
+           <handler
+                 class="org.polarsys.capella.core.re.project.handlers.ProjectRecHandler$Update"
+                 commandId="org.polarsys.capella.core.re.project.updateREC">
+              <activeWhen>
+                 <and>
+                    <count
+                          value="1">
+                    </count>
+                    <iterate>
+                       <and>
+                          <instanceof
+                                value="org.eclipse.emf.ecore.EObject">
+                          </instanceof>
+                          <test
+                                forcePluginActivation="true"
+                                property="org.polarsys.capella.core.re.project.properties.inLibrary">
+                          </test>
+                          <or>
+                             <test
+                                   forcePluginActivation="true"
+                                   property="org.polarsys.capella.core.re.updateconnections.ui.tester.isRecCatalogElement">
+                             </test>
+                             <test
+                                   forcePluginActivation="true"
+                                   property="org.polarsys.capella.core.re.project.properties.isRecElement">
+                             </test>
+                          </or>
+                       </and>
+                    </iterate>
+                 </and>
+              </activeWhen>
+           </handler>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+         <menuContribution
+            allPopups="false"
+            locationURI="popup:org.polarsys.capella.common.re.updateRecMenu?after=org.polarsys.capella.common.re.updateCur">
+          <command
+                commandId="org.polarsys.capella.core.re.project.updateREC"
+                label="%menu_UpdateRECLibraryContent"
+                style="push">
+            <visibleWhen
+                  checkEnabled="true">
+            </visibleWhen>
+         </command>
+      </menuContribution>
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:org.polarsys.capella.common.re.createRecMenu?after=org.polarsys.capella.common.re.createRec">
+         <command
+               commandId="org.polarsys.capella.core.re.project.createREC"
+               label="%menu_CreateRECLibraryContent"
+               style="push">
+            <visibleWhen
+                  checkEnabled="true">
+            </visibleWhen>
+         </command>
+      </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.core.expressions.propertyTesters">
+      <propertyTester
+            class="org.polarsys.capella.core.re.project.ReProjectPropertyTester"
+            id="org.polarsys.capella.core.re.project.propertyTester"
+            namespace="org.polarsys.capella.core.re.project.properties"
+            properties="inLibrary,isRecElement"
+            type="java.lang.Object">
+      </propertyTester>
+   </extension>
+
+</plugin>

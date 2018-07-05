@@ -1,22 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="Capella" uid="org.polarsys.capella.rcp.product" id="org.polarsys.capella.rcp.product" application="org.polarsys.capella.core.platform.sirius.ui.perspective.id" version="1.2.0.qualifier" useFeatures="true" includeLaunchers="true">
+<product name="Capella" uid="org.polarsys.capella.rcp.product" id="org.polarsys.capella.rcp.product" application="org.polarsys.capella.core.platform.sirius.ui.perspective.id" version="1.2.1.qualifier" useFeatures="true" includeLaunchers="true">
 
    <configIni use="default">
    </configIni>
 
    <launcherArgs>
-      <programArgsLin>--launcher.GTK_version
-2
-      </programArgsLin>
       <vmArgs>-Dosgi.requiredJavaVersion=1.8
 -Xms1000m
 -Xmx3000m
 -Xss4m
       </vmArgs>
-      <vmArgsLin>-Dorg.eclipse.swt.browser.DefaultType=mozilla
-      </vmArgsLin>
       <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts
       </vmArgsMac>
    </launcherArgs>
@@ -71,6 +66,7 @@
       <feature id="org.eclipse.sirius.aql"/>
       <feature id="org.eclipse.acceleo.query"/>
       <feature id="org.eclipse.sirius.runtime.ide.ui.acceleo"/>
+	  <feature id="org.eclipse.nebula.widgets.richtext.feature"/>
       <feature id="org.polarsys.capella.rcp.feature"/>
       <feature id="org.polarsys.kitalpha.ad.feature"/>
       <feature id="org.polarsys.kitalpha.ad.integration.emde.feature"/>
@@ -92,6 +88,7 @@
       <feature id="org.polarsys.kitalpha.resourcereuse.feature"/>
       <feature id="org.polarsys.kitalpha.resourcereuse.ui.feature"/>
       <feature id="org.polarsys.kitalpha.transposer.feature"/>
+	  <feature id="org.polarsys.kitalpha.richtext.widget.feature"/>
    </features>
 
    <configurations>

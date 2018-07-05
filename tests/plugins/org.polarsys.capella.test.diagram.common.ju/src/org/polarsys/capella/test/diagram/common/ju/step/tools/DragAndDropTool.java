@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.polarsys.capella.test.diagram.common.ju.step.tools;
 
-import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertEquals;
 
 import java.util.Collection;
 
@@ -59,10 +59,15 @@ public class DragAndDropTool extends AbstractToolStep<DDiagramElement> {
     _newElements = DiagramHelper.getOwnedElements(element);
     _newElements.removeAll(_elements);
 
-    if (_newElements.size() != 1) {
-      assertFalse(true);
+    validateNewElements(_newElements);
     }
 
+  /**
+   * This default implementation checks if there is exactly one new element, but subclasses may override.
+   * @param newElements the new elements after the drop
+   */
+  protected void validateNewElements(Collection<DDiagramElement> newElements) {
+    assertEquals(1, _newElements.size());
   }
 
   @Override

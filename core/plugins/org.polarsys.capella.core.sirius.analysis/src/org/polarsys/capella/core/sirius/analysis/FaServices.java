@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -61,7 +61,7 @@ import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.common.data.modellingcore.InformationsExchanger;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.data.modellingcore.TraceableElement;
-import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
+import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.sirius.decorators.loader.SiriusDecoratorsManager;
@@ -72,6 +72,7 @@ import org.polarsys.capella.core.data.capellacore.InvolvedElement;
 import org.polarsys.capella.core.data.capellacore.Involvement;
 import org.polarsys.capella.core.data.capellacore.ModellingBlock;
 import org.polarsys.capella.core.data.capellacore.NamedElement;
+import org.polarsys.capella.core.data.capellacore.PropertyValueGroup;
 import org.polarsys.capella.core.data.cs.AbstractDeploymentLink;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
@@ -171,7 +172,7 @@ public class FaServices {
     if ("".equals(fe.getName()) || (null == fe.getName())) { //$NON-NLS-1$
       return "<undefined>"; //$NON-NLS-1$
     }
-    return EObjectLabelProviderHelper.getText(fe);
+    return EObjectExt.getText(fe);
   }
 
   /**
@@ -289,15 +290,15 @@ public class FaServices {
    * @return displayed incoming and outgoing functional Exchanges called by show/hide FunctionalExchanges tools
    *         (DataFlow Blank Diagrams) used in oa, logical, context, physical
    */
-  public List<FunctionalExchange> getDisplayedFunctionalExchanges(DSemanticDecorator selectedElement) {
-    List<FunctionalExchange> result = new ArrayList<FunctionalExchange>();
+  public Collection<FunctionalExchange> getDisplayedFunctionalExchanges(DSemanticDecorator selectedElement) {
+    Collection<FunctionalExchange> result = new HashSet<FunctionalExchange>();
     // current DiagramElements
     if (selectedElement instanceof AbstractDNode) {
       result = getDisplayedFunctionalExchangesFromAbstractDNode((AbstractDNode) selectedElement);
 
       // Consider Sub Containers of current DiagramElement
       for (AbstractDNode dNodeContainer : DiagramServices.getDiagramServices().getAllNodeContainers(selectedElement)) {
-        List<FunctionalExchange> subFunctionEdges = getDisplayedFunctionalExchangesFromAbstractDNode(dNodeContainer);
+        Collection<FunctionalExchange> subFunctionEdges = getDisplayedFunctionalExchangesFromAbstractDNode(dNodeContainer);
         if (!subFunctionEdges.isEmpty()) {
           result.addAll(subFunctionEdges);
         }
@@ -306,7 +307,7 @@ public class FaServices {
       // Consider Sub Nodes of current DiagramElement
       List<DNode> allNodes = DiagramServices.getDiagramServices().getAllNodes(selectedElement);
       for (DNode aDNode : allNodes) {
-        List<FunctionalExchange> subFunctionEdges = getDisplayedFunctionalExchangesFromAbstractDNode(aDNode);
+        Collection<FunctionalExchange> subFunctionEdges = getDisplayedFunctionalExchangesFromAbstractDNode(aDNode);
         if (!subFunctionEdges.isEmpty()) {
           result.addAll(subFunctionEdges);
         }
@@ -322,9 +323,9 @@ public class FaServices {
    * @param selectedElement
    * @return
    */
-  public List<FunctionalExchange> getDisplayedFunctionalExchangesFromAbstractDNode(AbstractDNode selectedElement) {
-    List<FunctionalExchange> returnedList = new ArrayList<FunctionalExchange>();
-    List<DEdge> incomingOutgoingEdges = new ArrayList<DEdge>();
+  public Collection<FunctionalExchange> getDisplayedFunctionalExchangesFromAbstractDNode(AbstractDNode selectedElement) {
+    Collection<FunctionalExchange> returnedSet = new HashSet<FunctionalExchange>();
+    Collection<DEdge> incomingOutgoingEdges = new HashSet<DEdge>();
 
     if (selectedElement.getTarget() instanceof AbstractFunction) {
       // consider the boarder nodes (inputpin, outputpin)
@@ -345,10 +346,10 @@ public class FaServices {
     // filter functionalExchanges
     for (DEdge anEdge : incomingOutgoingEdges) {
       if (anEdge.getTarget() instanceof FunctionalExchange) {
-        returnedList.add((FunctionalExchange) anEdge.getTarget());
+        returnedSet.add((FunctionalExchange) anEdge.getTarget());
       }
     }
-    return returnedList;
+    return returnedSet;
   }
 
   public boolean isOriented(ComponentExchange connection) {
@@ -1171,7 +1172,7 @@ public class FaServices {
       if (isControlNode(target)) {
         return decorateString(ICommonConstants.EMPTY_STRING, decorator);
       }
-      return decorateString(EObjectLabelProviderHelper.getText(target), decorator);
+      return decorateString(EObjectExt.getText(target), decorator);
     }
     return decorateString(ICommonConstants.EMPTY_STRING, decorator);
   }
@@ -1749,10 +1750,9 @@ public class FaServices {
     AbstractShowHide shService = new ShowHideFunctionalExchange(content);
     DiagramContext context = shService.new DiagramContext();
 
-    List<FunctionalExchange> exchanges = getDisplayedFunctionalExchanges(currentFunctionView);
+    Collection<FunctionalExchange> exchanges = getDisplayedFunctionalExchanges(currentFunctionView);
     for (FunctionalExchange exchange : exchanges) {
       if (selectedExchangesSet.contains(exchange)) {
-        shService.show(exchange, context);
         selectedExchangesSet.remove(exchange);
       } else {
         shService.hide(exchange, context);
@@ -3735,7 +3735,8 @@ public class FaServices {
     // get all displayed functions in the diagram
     for (DDiagramElement aContainer : diagram.getContainers()) {
       if ((aContainer != null) && (aContainer.getTarget() != null)
-          && FaServices.getFaServices().isAbstractFunctionVisibleInDFB((AbstractDNode) aContainer, diagram)) {
+          && FaServices.getFaServices().isAbstractFunctionVisibleInDFB((AbstractDNode) aContainer, diagram)
+          && !(aContainer.getTarget() instanceof PropertyValueGroup)) {
         elementsInDiagram.put(aContainer.getTarget(), aContainer);
         if (aContainer.getTarget() instanceof AbstractFunction) {
           allFunctionsInDiagram.put((AbstractFunction) aContainer.getTarget(), (AbstractDNode) aContainer);
@@ -4192,8 +4193,8 @@ public class FaServices {
       DNodeContainer containerView) {
     Set<AbstractFunction> leaveFunctions = new HashSet<AbstractFunction>();
 
-    // retrieve all allocated functions of this component or entities (including roles)
-    if (componentOrPart instanceof Part) {
+    // Retrieve all allocated functions of this component or entities (including roles)
+    if (componentOrPart instanceof Part && ((Part) componentOrPart).getAbstractType() != null) {
       leaveFunctions.addAll(((Component) (((Part) componentOrPart).getAbstractType())).getAllocatedFunctions());
 
     } else if (componentOrPart instanceof Component) {
@@ -4209,7 +4210,7 @@ public class FaServices {
       }
     }
 
-    // add leaves of sub components only if it is not displayed, recursively
+    // Add leaves of sub components only if it is not displayed, recursively
     Set<EObject> subComponents = new HashSet<EObject>();
     if (componentOrPart instanceof Component) {
       subComponents.addAll(ComponentExt.getSubUsedComponents((Component) componentOrPart));
@@ -4588,7 +4589,7 @@ public class FaServices {
         }
       }
     } else {
-      result.append(EObjectLabelProviderHelper.getText(exchange));
+      result.append(EObjectExt.getText(exchange));
     }
     return decorateString(result.toString(), exchange);
   }
@@ -4647,7 +4648,7 @@ public class FaServices {
     StringBuilder result = new StringBuilder();
     List<? extends AbstractExchangeItem> selectEIList;
     selectEIList = exchange.getExchangedItems();
-    result.append(EObjectLabelProviderHelper.getText(exchange));
+    result.append(EObjectExt.getText(exchange));
     result.append(" "); //$NON-NLS-1$
     result.append("["); //$NON-NLS-1$
     int indice = 0;
@@ -4720,7 +4721,7 @@ public class FaServices {
       List<AbstractExchangeItem> exchangedItems) {
     int indice = 0;
     if (showName) {
-      result.append(exchange.getName());
+      result.append(EObjectExt.getText(exchange));
     }
 
     if (showExchangeItems || showExchangeItemsWithOutFE) {
@@ -5051,7 +5052,7 @@ public class FaServices {
     if ((null != exchange) && (exchange instanceof PhysicalLink)) {
       PhysicalLink pl = (PhysicalLink) exchange;
       if (!isHidePhysicalLinksNamesEnable(exchange, diagram)) {
-        return pl.getName();
+        return EObjectExt.getText(pl);
       }
     }
     return centerLabel;

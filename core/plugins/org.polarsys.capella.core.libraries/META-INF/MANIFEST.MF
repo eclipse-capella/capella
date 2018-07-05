@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.libraries;singleton:=true
-Bundle-Version: 1.2.0.qualifier
+Bundle-Version: 1.2.1.qualifier
 Bundle-Activator: org.polarsys.capella.core.libraries.Activator
 Bundle-Vendor: %providerName
 Require-Bundle: org.polarsys.capella.common.flexibility.properties,
@@ -13,7 +13,6 @@ Require-Bundle: org.polarsys.capella.common.flexibility.properties,
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.libraries,
- org.polarsys.capella.core.libraries.interModelInconsistencyDetection,
  org.polarsys.capella.core.libraries.model,
  org.polarsys.capella.core.libraries.nature,
  org.polarsys.capella.core.libraries.properties,

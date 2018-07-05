@@ -170,6 +170,7 @@ public class PreferencesHelper {
         capellaProject = resourceFile.getProject();
       }
     } else if ((activePage != null) && (activePage.getActiveEditor() != null)
+        && (activePage.getActiveEditor().getEditorInput() != null)
         && (activePage.getActiveEditor().getEditorInput().getName() != null)) {
       capellaProject = getProjectByEditorName(activePage.getActiveEditor().getEditorInput().getName());
     }
@@ -447,7 +448,8 @@ public class PreferencesHelper {
         public boolean visit(IResource resource) throws CoreException {
           IProject prj = resource != null ? resource.getProject() : null;
           IProject configurationProject = (prj != null) && prj.isOpen() && (prj.getReferencedProjects().length > 0)
-              ? prj.getReferencedProjects()[0] : null;
+              ? prj.getReferencedProjects()[0]
+              : null;
           if ((null != configurationProject)) {
             IFolder preferenceFolder = (configurationProject.getProject() != null)
                 && (configurationProject.getProject().getFolder(".settings/") != null) //$NON-NLS-1$

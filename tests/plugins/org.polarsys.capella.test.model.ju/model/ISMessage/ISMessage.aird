@@ -8,11 +8,11 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_UMEjYCVZEeWL7eg45C1qMw">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_w5ZjcHnFEea0Df0HniJfuA" name="[IDB] Logical System - Interfaces Diagram Blank" repPath="#_i42scJFtEeemoaFOWaTTWw">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_w5ZjcHnFEea0Df0HniJfuA" name="[IDB] Logical System - Interfaces Diagram Blank" repPath="#_XmhRACVZEeWL7eg45C1qMw">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="ISMessage.melodymodeller#63a230d1-bc0b-4c89-967e-d23b8871de75"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_w5ZjcXnFEea0Df0HniJfuA" name="[IS] CapabilityRealization 1 - Interface Scenario" repPath="#_i5SxUJFtEeemoaFOWaTTWw">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_w5ZjcXnFEea0Df0HniJfuA" name="[IS] CapabilityRealization 1 - Interface Scenario" repPath="#_i8vF4CVaEeWL7eg45C1qMw">
         <description xmi:type="description_2:SequenceDiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']"/>
         <target xmi:type="org.polarsys.capella.core.data.interaction:Scenario" href="ISMessage.melodymodeller#8ac9b288-55d1-43a9-bc2d-901a44799443"/>
       </ownedRepresentationDescriptors>
@@ -33,7 +33,7 @@
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']"/>
     </ownedViews>
   </viewpoint:DAnalysis>
-  <diagram:DSemanticDiagram xmi:id="_XmhRACVZEeWL7eg45C1qMw" name="[IDB] Logical System - Interfaces Diagram Blank" uid="_i42scJFtEeemoaFOWaTTWw">
+  <diagram:DSemanticDiagram xmi:id="_XmhRACVZEeWL7eg45C1qMw" name="[IDB] Logical System - Interfaces Diagram Blank" uid="_XmhRACVZEeWL7eg45C1qMw">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_Xm2BICVZEeWL7eg45C1qMw" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_Xm2oMCVZEeWL7eg45C1qMw" type="Sirius" element="_XmhRACVZEeWL7eg45C1qMw" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="_YBqU4CVZEeWL7eg45C1qMw" type="2002" element="_YA11gCVZEeWL7eg45C1qMw">
@@ -809,7 +809,7 @@
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="ISMessage.melodymodeller#63a230d1-bc0b-4c89-967e-d23b8871de75"/>
   </diagram:DSemanticDiagram>
-  <sequence:SequenceDDiagram xmi:id="_i8vF4CVaEeWL7eg45C1qMw" name="[IS] CapabilityRealization 1 - Interface Scenario" uid="_i5SxUJFtEeemoaFOWaTTWw">
+  <sequence:SequenceDDiagram xmi:id="_i8vF4CVaEeWL7eg45C1qMw" name="[IS] CapabilityRealization 1 - Interface Scenario" uid="_i8vF4CVaEeWL7eg45C1qMw">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_i8vs8CVaEeWL7eg45C1qMw" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_i8vs8SVaEeWL7eg45C1qMw" type="Sirius" element="_i8vF4CVaEeWL7eg45C1qMw" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="_jzmccCVaEeWL7eg45C1qMw" type="2001" element="_xDhIwHnFEea0Df0HniJfuA">

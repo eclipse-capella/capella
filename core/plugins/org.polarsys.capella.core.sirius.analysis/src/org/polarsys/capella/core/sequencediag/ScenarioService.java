@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,10 +14,12 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Stack;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.description.filter.FilterDescription;
@@ -25,7 +27,7 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.polarsys.capella.common.data.modellingcore.AbstractExchangeItem;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.data.modellingcore.AbstractType;
-import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
+import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.queries.filters.IQueryFilter;
 import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
@@ -36,9 +38,12 @@ import org.polarsys.capella.core.data.capellacommon.AbstractState;
 import org.polarsys.capella.core.data.capellacore.Constraint;
 import org.polarsys.capella.core.data.capellacore.NamedElement;
 import org.polarsys.capella.core.data.cs.AbstractActor;
+import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.ExchangeItemAllocation;
+import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.cs.SystemComponent;
+import org.polarsys.capella.core.data.ctx.SystemAnalysis;
 import org.polarsys.capella.core.data.epbs.EPBSArchitecture;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
@@ -75,12 +80,14 @@ import org.polarsys.capella.core.data.interaction.properties.controllers.Interfa
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.oa.Entity;
 import org.polarsys.capella.core.data.oa.OperationalActivity;
+import org.polarsys.capella.core.data.oa.OperationalAnalysis;
 import org.polarsys.capella.core.data.oa.Role;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.diagram.helpers.naming.DiagramDescriptionConstants;
 import org.polarsys.capella.core.libraries.extendedqueries.QueryIdentifierConstants;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.TriStateBoolean;
+import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.ScenarioExt;
 import org.polarsys.capella.core.model.helpers.SequenceMessageExt;
@@ -89,6 +96,10 @@ import org.polarsys.capella.core.sirius.analysis.CapellaServices;
 import org.polarsys.capella.core.sirius.analysis.IMappingNameConstants;
 import org.polarsys.capella.core.sirius.analysis.InformationServices;
 import org.polarsys.capella.core.sirius.analysis.SequenceDiagramServices;
+
+import com.google.common.base.Predicate;
+import com.google.common.base.Predicates;
+import com.google.common.collect.Collections2;
 
 /**
  * Services to manipulate Capella scenario.
@@ -237,15 +248,30 @@ public class ScenarioService {
   }
 
   public String getInstanceRoleLabel(InstanceRole ir) {
-    AbstractInstance part = ir.getRepresentedInstance();
-    AbstractType type = part.getAbstractType();
+    StringBuilder result = new StringBuilder();
 
-    boolean multipart = TriStateBoolean.True.equals(CapellaProjectHelper.isReusableComponentsDriven(type));
-    if (multipart && (type != null)) {
-      return part.getName() + ICommonConstants.COLON_CHARACTER + type.getName();
+    AbstractInstance representedInstance = ir.getRepresentedInstance();
+    AbstractType type = representedInstance.getAbstractType();
+
+    if (type == null || TriStateBoolean.True.equals(CapellaProjectHelper.isReusableComponentsDriven(type))) {
+      result.append(EObjectExt.getText(representedInstance));
+    } else {
+      result.append(EObjectExt.getText(type));
     }
-    return part.getName();
 
+    // we check if the scenario contains other lifelines refering to the same part
+    if (ir.eContainer() instanceof Scenario) {
+      Scenario scenario = (Scenario) ir.eContainer();
+      for (InstanceRole element : scenario.getOwnedInstanceRoles()) {
+        if (element!=ir && element.getRepresentedInstance() == ir.getRepresentedInstance()) {
+          result.insert(0, " : ") //$NON-NLS-1$
+            .insert(0, EObjectExt.getText(ir));
+          break;
+        }
+      }
+    }
+
+    return result.toString();
   }
 
   /**
@@ -463,7 +489,7 @@ public class ScenarioService {
     if ("".equals(fe.getName()) || (null == fe.getName())) { //$NON-NLS-1$
       return "<undefined>"; //$NON-NLS-1$
     }
-    return EObjectLabelProviderHelper.getText(fe);
+    return EObjectExt.getText(fe);
   }
 
   public static String getShowCEEIParams(AbstractEventOperation op, List<? extends AbstractExchangeItem> eiOnMessage) {
@@ -1216,9 +1242,75 @@ public class ScenarioService {
   public String addScenarioPrefix(String name, String prefix) {
 
     if (!name.startsWith(prefix)) {
-      name = prefix + " " + name;
+      name = prefix + " " + name; //$NON-NLS-1$
     }
 
     return name;
   }
+
+
+  public Collection<Part> getAllMultiInstanceRoleParts(Scenario scenario) {
+
+    BlockArchitecture ba = BlockArchitectureExt.getRootBlockArchitecture(scenario);
+
+    Collection<EObject> roots = new ArrayList<EObject>();
+    if (ba instanceof OperationalAnalysis) {
+      OperationalAnalysis oa = (OperationalAnalysis) ba;
+      roots.add(oa.getOwnedOperationalContext());
+      roots.add(oa.getOwnedEntityPkg());
+    } else if (ba instanceof SystemAnalysis) {
+      SystemAnalysis sa = (SystemAnalysis) ba;
+      roots.add(sa.getOwnedSystemContext());
+    } else if (ba instanceof LogicalArchitecture) {
+      LogicalArchitecture la = (LogicalArchitecture) ba;
+      roots.add(la.getOwnedLogicalContext());
+      roots.add(la.getOwnedLogicalComponent());
+    } else if (ba instanceof PhysicalArchitecture) {
+      PhysicalArchitecture pa = (PhysicalArchitecture) ba;
+      roots.add(pa.getOwnedPhysicalContext());
+      roots.add(pa.getOwnedPhysicalComponent());
+    } else if (ba instanceof EPBSArchitecture) {
+      EPBSArchitecture epbs = (EPBSArchitecture) ba;
+      roots.add(epbs.getOwnedEPBSContext());
+      roots.add(epbs.getOwnedConfigurationItem());
+    }
+
+    return getAllParts(Collections2.filter(roots, Predicates.notNull()));
+  }
+
+
+  public Collection<Part> getAllMultiInstanceRoleComponentParts(Scenario scenario){
+    // select wizard wants a list
+    return
+        new ArrayList<Part>(Collections2.filter(getAllMultiInstanceRoleParts(scenario), new Predicate<Part>() {
+      @Override
+      public boolean apply(Part input) {
+        return !(input.getAbstractType() instanceof AbstractActor);
+      }
+    }));
+  }
+
+
+  public Collection<Part> getAllMultiInstanceRoleActorParts(Scenario scenario){
+    // select wizard wants a list
+    return new ArrayList<Part>(Collections2.filter(getAllMultiInstanceRoleParts(scenario), new Predicate<Part>() {
+      @Override
+      public boolean apply(Part input) {
+        return input.getAbstractType() instanceof AbstractActor;
+      }
+    }));
+  }
+
+  private Collection<Part> getAllParts(Collection<EObject> roots){
+    Collection<Part> result = new ArrayList<Part>();
+    for (Iterator<EObject> it = EcoreUtil.getAllContents(roots); it.hasNext();) {
+      EObject next = it.next();
+      if (next instanceof Part) {
+        result.add((Part) next);
+      }
+    }
+    return result;
+  }
+
+
 }

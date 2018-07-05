@@ -22,7 +22,7 @@ To manually refresh diagrams, two methods are available:
 * The button 	[[Image:Images/5.1.%20Diagram%20concepts_html_35899bf3.png|39x28px]] 	in the diagram toolbar to refresh the currently displayed diagram.
 * The contextual menu command of the Project Explorer to refresh all 	diagrams in the model or a subset of diagrams below a model element:
  
-[[Image:Images/5.1.%20Diagram%20concepts_html_2651df52.png|347x116px]]
+[[Image:Images/5.1.%20Diagram%20concepts_html_2651df52.png|529x444px]]
 
  
 To change the refreshing strategy, see the diagram-related Preferences.

@@ -5,11 +5,11 @@
     <semanticResources>Project_validation9.afm</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_-_QrwBQGEeSbjJMOqU-XlA">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_C2vVAHQvEeamAMxs9g9ZYQ" name="[IDB] System - Interfaces Diagram Blank" repPath="#_eja14JFwEeemoaFOWaTTWw">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_C2vVAHQvEeamAMxs9g9ZYQ" name="[IDB] System - Interfaces Diagram Blank" repPath="#_DVco4BQHEeSbjJMOqU-XlA">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.ctx:System" href="Project_validation9.melodymodeller#863c9584-8a1c-4927-9c23-386e49accf61"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_C2vVAXQvEeamAMxs9g9ZYQ" name="[CDB] Data - Class Diagram Blank" repPath="#_ej4v8JFwEeemoaFOWaTTWw">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_C2vVAXQvEeamAMxs9g9ZYQ" name="[CDB] Data - Class Diagram Blank" repPath="#_tyiZsBQJEeSbjJMOqU-XlA">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.information:DataPkg" href="Project_validation9.melodymodeller#3f4fe222-4ab7-4d9d-94b7-6d259cb3c557"/>
       </ownedRepresentationDescriptors>
@@ -33,7 +33,7 @@
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/EPBS.odesign#//@ownedViewpoints[name='EPBS%20architecture']"/>
     </ownedViews>
   </viewpoint:DAnalysis>
-  <diagram:DSemanticDiagram xmi:id="_DVco4BQHEeSbjJMOqU-XlA" name="[IDB] System - Interfaces Diagram Blank" uid="_eja14JFwEeemoaFOWaTTWw">
+  <diagram:DSemanticDiagram xmi:id="_DVco4BQHEeSbjJMOqU-XlA" name="[IDB] System - Interfaces Diagram Blank" uid="_DVco4BQHEeSbjJMOqU-XlA">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_DVeeEBQHEeSbjJMOqU-XlA" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_DVeeERQHEeSbjJMOqU-XlA" type="Sirius" element="_DVco4BQHEeSbjJMOqU-XlA" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="_9QwtIBQHEeSbjJMOqU-XlA" type="2003" element="_9Qj40BQHEeSbjJMOqU-XlA">
@@ -1070,7 +1070,7 @@
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.ctx:System" href="Project_validation9.melodymodeller#863c9584-8a1c-4927-9c23-386e49accf61"/>
   </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram xmi:id="_tyiZsBQJEeSbjJMOqU-XlA" name="[CDB] Data - Class Diagram Blank" uid="_ej4v8JFwEeemoaFOWaTTWw">
+  <diagram:DSemanticDiagram xmi:id="_tyiZsBQJEeSbjJMOqU-XlA" name="[CDB] Data - Class Diagram Blank" uid="_tyiZsBQJEeSbjJMOqU-XlA">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_tyiZshQJEeSbjJMOqU-XlA" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_tyiZsxQJEeSbjJMOqU-XlA" type="Sirius" element="_tyiZsBQJEeSbjJMOqU-XlA" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="_uQ2GUBQJEeSbjJMOqU-XlA" type="2003" element="_uQ0RIBQJEeSbjJMOqU-XlA">

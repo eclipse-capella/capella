@@ -1,10 +1,10 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *  
+ *
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
@@ -19,7 +19,7 @@ import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.common.libraries.ILibraryManager;
 import org.polarsys.capella.common.libraries.IModel;
 
-/** 
+/**
  * @author Erwan Brottier
  */
 public class DependencyViolation implements InterModelInconsistency {
@@ -28,7 +28,7 @@ public class DependencyViolation implements InterModelInconsistency {
 	protected EObject target;
 	protected EReference reference;
 	protected List<EObject> involvedObjects;
-	
+
 	public DependencyViolation(EObject source, EObject target, EReference reference) {
 		this.source = source;
 		this.target = target;
@@ -43,14 +43,26 @@ public class DependencyViolation implements InterModelInconsistency {
 		return involvedObjects;
 	}
 
+	public EObject getSource() {
+	  return source;
+	}
+
+	public EObject getTarget() {
+	  return target;
+	}
+
+	public EReference getEReference() {
+	  return reference;
+	}
+
 	@Override
 	public String getTypeName() {
 		return "dependency violation"; //$NON-NLS-1$
 	}
-	
+
 	public String getViolatedDependencyDescription() {
 		IModel sourceModel = ILibraryManager.INSTANCE.getModel(source);
-		IModel targetModel = ILibraryManager.INSTANCE.getModel(target);		
+		IModel targetModel = ILibraryManager.INSTANCE.getModel(target);
 		return sourceModel.getIdentifier().getName()+" -> "+targetModel.getIdentifier().getName(); //$NON-NLS-1$
 	}
 

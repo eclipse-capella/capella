@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -139,14 +139,17 @@ public class DiagramDescriptionPropertySection extends AbstractSection {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void refresh() {
-        loadData();
+        if (shouldRefresh()) {
+            loadData();
+        }
     }
 
+    public boolean shouldRefresh() {
+        return descriptionGroup == null || descriptionGroup.shouldRefresh();
+    }
+    
     /**
      * {@inheritDoc}
      */
@@ -200,4 +203,19 @@ public class DiagramDescriptionPropertySection extends AbstractSection {
     public List<AbstractSemanticField> getSemanticFields() {
         return Collections.emptyList();
     }
+    
+    @Override
+    public void aboutToBeHidden() {
+      if (descriptionGroup != null)
+        descriptionGroup.aboutToBeHidden();
+      super.aboutToBeHidden();
+    }
+    
+    @Override
+    public void aboutToBeShown() {
+      if (descriptionGroup != null)
+        descriptionGroup.aboutToBeShown();
+      super.aboutToBeShown();
+    }
+    
 }

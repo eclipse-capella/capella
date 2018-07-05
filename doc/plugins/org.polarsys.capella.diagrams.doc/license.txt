@@ -85,6 +85,7 @@ ActorRealisation.gif
 ActorRealization.gif
 ActorsDiagram.gif
 Actor_WB.gif
+AddInstanceRole.gif
 AspectPkg.gif
 Association.gif
 AsyncSequenceMessage.gif

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -150,8 +150,11 @@ public class Rule_FunctionalExchange_Interface extends InterfaceGenerationRule {
     return map;
   }
 
-  private void logMultipleInfosFound(EObject exchange){
-    _logger.error(new EmbeddedMessage("Skipping generation for functional exchange " + EObjectLabelProviderHelper.getText(exchange) + " which has inconsistent or multiple port/ce allocations", _logger.getName(), exchange));
+  private void logMultipleInfosFound(EObject exchange, ITransfo transfo){
+    // Do not log error in the Information view when this rule is executed during a model validation
+    if(!transfo.isDryRun()){
+      _logger.error(new EmbeddedMessage("Skipping generation for functional exchange " + EObjectLabelProviderHelper.getText(exchange) + " which has inconsistent or multiple port/ce allocations", _logger.getName(), exchange));      
+    }
   }
 
   private void logNoInfosFound(EObject element) {
@@ -191,7 +194,7 @@ public class Rule_FunctionalExchange_Interface extends InterfaceGenerationRule {
       } else if (infos.isEmpty()){
         logNoInfosFound(element); // internal exchange
       } else {
-        logMultipleInfosFound(element); // exchange is somehow allocated multiple times/and/or/inconsistently
+        logMultipleInfosFound(element, transfo); // exchange is somehow allocated multiple times/and/or/inconsistently
         }
       infomap.put((FunctionalExchange) element, result);
       }

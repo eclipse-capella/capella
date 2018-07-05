@@ -11,6 +11,8 @@
        Thales - initial API and implementation
 -->
 <toc label="Diagrams" link_to="PLUGINS_ROOT/org.polarsys.capella.doc/toc.xml#diagram" sort="true">
+   <topic href="html/Diagrams/diagrams.html#Common_Diagram_Tools" label="Common Diagram Tools">
+   </topic>
 <topic href="html/Diagrams/diagrams.html#Activity_Interaction_Scenario" label="Activity Interaction Scenario">
 	</topic>
 	<topic href="html/Diagrams/diagrams.html#Capability_Realization_Blank" label="Capability Realization Blank">

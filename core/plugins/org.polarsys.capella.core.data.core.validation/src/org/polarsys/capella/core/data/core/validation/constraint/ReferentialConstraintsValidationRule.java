@@ -137,6 +137,7 @@ public class ReferentialConstraintsValidationRule extends AbstractValidationRule
 
   }
 
+
   private void validateSetting(EObject source, EReference ref, EObject target, Collection<IStatus> results, IValidationContext ctx) {
 
     IBusinessQuery query = BusinessQueriesProvider.getInstance().getContribution(source.eClass(), ref);

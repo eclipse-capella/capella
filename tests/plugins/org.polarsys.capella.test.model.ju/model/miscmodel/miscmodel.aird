@@ -5,7 +5,7 @@
     <semanticResources>miscmodel.afm</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_OamFsJljEeOT3c8lYGAdUA">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_HuWt8CQoEee31KLVa0lB_Q" name="[MSM] Default Region" repPath="#_45y0EJFtEeemoaFOWaTTWw">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_HuWt8CQoEee31KLVa0lB_Q" name="[MSM] Default Region" repPath="#_HuX8ECQoEee31KLVa0lB_Q">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']"/>
         <target xmi:type="org.polarsys.capella.core.data.capellacommon:Region" href="miscmodel.melodymodeller#fc3926fb-2c44-4301-a73d-c3a1aaca5ce2"/>
       </ownedRepresentationDescriptors>
@@ -29,7 +29,7 @@
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']"/>
     </ownedViews>
   </viewpoint:DAnalysis>
-  <diagram:DSemanticDiagram xmi:id="_HuX8ECQoEee31KLVa0lB_Q" name="[MSM] Default Region" uid="_45y0EJFtEeemoaFOWaTTWw">
+  <diagram:DSemanticDiagram xmi:id="_HuX8ECQoEee31KLVa0lB_Q" name="[MSM] Default Region" uid="_HuX8ECQoEee31KLVa0lB_Q">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_HuX8ESQoEee31KLVa0lB_Q" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_HuX8EiQoEee31KLVa0lB_Q"/>
     </ownedAnnotationEntries>

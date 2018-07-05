@@ -12,7 +12,7 @@
 <feature
       id="org.polarsys.capella.core.feature"
       label="%featureName"
-      version="1.2.0.qualifier"
+      version="1.2.1.qualifier"
       provider-name="%providerName">
 
    <description>
@@ -32,7 +32,7 @@
          version="0.0.0"/>
 
    <includes
-         id="org.polarsys.capella.core.properties.description.feature"
+         id="org.polarsys.capella.core.properties.richtext.feature"
          version="0.0.0"/>
 
 </feature>

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -32,18 +32,13 @@ import org.polarsys.capella.core.data.migration.context.MigrationContext;
 
 public class BackupResourceContribution extends AbstractMigrationContribution {
 
-  Boolean _backupModels = null;
+  //Backup flag shall not be asked after each migration
+  static Boolean _backupModels = null;
 
-  /*
-   * (non-Javadoc)
-   * @see org.polarsys.capella.core.data.migration.contribution.AbstractMigrationContribution#dispose()
-   */
-  @Override
-  public void dispose(MigrationContext context) {
-    super.dispose(context);
+  public static void dispose() {
     _backupModels = null;
   }
-
+  
   /**
    * Allow to check conditions before running the migration.
    * @param fileToMigrate

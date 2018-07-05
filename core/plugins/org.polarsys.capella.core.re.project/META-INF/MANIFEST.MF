@@ -1,0 +1,24 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Capella REC Project Plugin
+Bundle-SymbolicName: org.polarsys.capella.core.re.project;singleton:=true
+Bundle-Version: 1.2.1.qualifier
+Bundle-Activator: org.polarsys.capella.core.re.project.ReProjectActivator
+Bundle-Vendor: Eclipse.org
+Require-Bundle: org.eclipse.osgi,
+ org.eclipse.jface,
+ org.eclipse.core.runtime,
+ org.eclipse.sirius,
+ org.polarsys.capella.core.platform.sirius.ui.project,
+ org.eclipse.ui,
+ org.eclipse.emf.diffmerge,
+ org.polarsys.capella.common.libraries.gen,
+ org.polarsys.capella.common.re.gen,
+ org.polarsys.capella.common.re;bundle-version="1.2.0",
+ org.polarsys.capella.core.re,
+ org.polarsys.capella.common.re.ui,
+ org.polarsys.capella.common.flexibility.wizards,
+ org.polarsys.capella.core.libraries.ui
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-Localization: plugin
+Bundle-ActivationPolicy: lazy

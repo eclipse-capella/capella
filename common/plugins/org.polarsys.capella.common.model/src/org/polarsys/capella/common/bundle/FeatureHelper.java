@@ -26,6 +26,8 @@ public class FeatureHelper {
 
   /**
    * Get the Capella feature version.
+   * This method doesn't work on Debug mode.
+   * 
    * @param fullVersionNumber
    * @return a not <code>null</code> string.
    */

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,6 +24,7 @@ import org.polarsys.capella.core.data.interaction.InstanceRole;
 import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.capella.core.data.interaction.ScenarioKind;
 import org.polarsys.capella.core.data.interaction.StateFragment;
+import org.polarsys.capella.core.data.oa.Role;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.ScenarioExt;
@@ -68,17 +69,17 @@ public class MDCHK_StateFragment_ES_OES_AllocatedFunction extends AbstractValida
     // Is the StateFragment related AbstractFunction allocated by instance role's Component ?
     InstanceRole instanceRole = StateFragmentExt.getCoveredInstanceRole(stateFragment);
     AbstractInstance representedInstance = instanceRole.getRepresentedInstance();
-    if (representedInstance != null && !CapellaServices.getService().isAllocatedFunction(representedInstance, relatedFunction, representedInstance.getAbstractType())) {
+    // Bug 1996 - https://bugs.polarsys.org/show_bug.cgi?id=1996
+    EObject type = representedInstance instanceof Role ? representedInstance : representedInstance.getAbstractType();
+    if (representedInstance != null && !CapellaServices.getService().isAllocatedFunction(representedInstance, relatedFunction, type)) {
       Component component = InstanceRoleExt.getComponent(instanceRole);
       String relatedFunctionMetaClassLabel = EObjectLabelProviderHelper.getMetaclassLabel(relatedFunction, false);
       String scenarioMetaClassLabel = EObjectLabelProviderHelper.getMetaclassLabel(containingScenario, false);
       String componentMetaClassLabel = EObjectLabelProviderHelper.getMetaclassLabel(component, false);
       String deployed = (BlockArchitectureExt.getRootBlockArchitecture(containingScenario) instanceof PhysicalArchitecture) ? "/deployed" : ""; //$NON-NLS-1$ //$NON-NLS-2$
 
-      String componentName = null;
-      if (null != component) {
-        componentName = component.getName();
-      }
+      String componentName = component != null ? component.getName() : EObjectLabelProviderHelper.getText(representedInstance);
+      componentMetaClassLabel = componentMetaClassLabel != null ? componentMetaClassLabel : EObjectLabelProviderHelper.getMetaclassLabel(representedInstance, false);
       return ctx.createFailureStatus(relatedFunction.getName(), relatedFunctionMetaClassLabel,
           containingScenario.getName(), scenarioMetaClassLabel, componentName, componentMetaClassLabel, deployed);
     }

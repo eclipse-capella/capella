@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -47,6 +47,15 @@ import org.polarsys.capella.core.platform.sirius.ui.navigator.CapellaNavigatorPl
 public class ExplorerDropAdapterAssistant extends AbstractCapellaDropAdapterAssistant {
 
   protected BasicDropConstraints _basicDropConstraints = null;
+  private final MoveHelper moveHelper;
+
+  public ExplorerDropAdapterAssistant(MoveHelper moveHelper) {
+    this.moveHelper = moveHelper;
+  }
+
+  public ExplorerDropAdapterAssistant() {
+    this(MoveHelper.getInstance());
+  }
 
   protected BasicDropConstraints getBasicConstraints() {
     if (_basicDropConstraints == null) {
@@ -56,7 +65,7 @@ public class ExplorerDropAdapterAssistant extends AbstractCapellaDropAdapterAssi
   }
 
   protected MoveHelper getMoveHelper() {
-    return MoveHelper.getInstance();
+    return moveHelper;
   }
 
   /**

@@ -1,4 +1,31 @@
-         
+=== Common Diagram Tools ===
+
+This section lists tools that are available on all Capella diagrams. These tools are always found in the tool section "Common Tools".
+
+{| border="1"
+|-
+| 	Constraint
+| [[Image:Images/icons/full/obj16/Constraint.gif]]
+| 		Create a new Constraint.
+|-
+| 	ConstraintElementScenario
+| [[Image:Images/icons/full/obj16/ClassCarries.gif]]
+| 		Allocate a Source Constraint to an available Target Capella Element.
+|-
+| 	Constraints
+| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
+|-
+| 	Applied Property Values
+| [[Image:Images/icons/full/obj16/ShowHide.gif]]
+| 		Creates or deletes graphical objects corresponding to existing Property Values. Removing a Property Value graphical object does not delete this Property Value from the model. This tool does not modify the semantic model.
+|-
+| 	Applied Property Value Groups 	
+| [[Image:Images/icons/full/obj16/ShowHide.gif]]
+| 		Creates or deletes graphical objects corresponding to existing Property Value Groups. Removing a Property Value Group graphical object does not delete this Property Value Group from the model. This tool does not modify the semantic model.
+|}
+
+
 == Activity Interaction Scenario ==
                                                                                                                                                                                                                                     
 {| border="1"
@@ -54,19 +81,7 @@
 | 	Duration 	
 | [[Image:Images/icons/full/obj16/BracketEdgeStyle.gif]] 
 | 		Create a new constraint duration between two interaction fragments of the sequence diagram. 	
-|-
-| 	Constraint 	
-| [[Image:Images/icons/full/obj16/Constraint.gif]] 
-| 		Create a new Constraint. 	
-|-
-| 	ConstraintElementScenario 	
-| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
-| 		Allocate a Source Constraint to an available Target Capella Element. 	
-|-
-| 	Constraints 	
-| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
-| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
-|}    
+|}
 === Sample ===
 [[Image:Images/diagrams/EOLE/OAS_Operational Activity Scenario.jpg|Sample will be available soon]]    
 == Capability Realization Blank ==
@@ -148,18 +163,6 @@
 | 	Relationships 	
 | [[Image:Images/icons/full/obj16/ShowHide.gif]] 
 | 		Insert/Remove Relationships 	
-|-
-| 	Constraint 	
-| [[Image:Images/icons/full/obj16/Constraint.gif]] 
-| 		Create a new Constraint. 	
-|-
-| 	ConstraintElement 	
-| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
-| 		Allocate a Source Constraint to an available Target Capella Element. 	
-|-
-| 	Constraints 	
-| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
-| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
 |}    
 === Sample ===
 [[Image:Images/diagrams/EOLE/CRB_Capability Realization Blank.jpg|Sample will be available soon]]    
@@ -349,18 +352,6 @@
 | [[Image:Images/icons/full/obj16/ShowHide.gif]] 
 | 		Insert/Remove Relationships 	
 |-
-| 	Constraint 	
-| [[Image:Images/icons/full/obj16/Constraint.gif]] 
-| 		Creates a new Constraint. 	
-|-
-| 	ConstraintElement 	
-| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
-| 		Allocate a Source Constraint to an available Target Capella Element. 	
-|-
-| 	Constraints 	
-| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
-| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
-|-
 | 	Interface Package 	
 | [[Image:Images/icons/full/obj16/ClassPkg.gif]] 
 | 		Creates a new Interface Package. 	
@@ -449,10 +440,16 @@
 |-
 | 	Actors 	
 | [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+|
+|-
+| 	Add multiple lifelines for an existing Actor
+| [[Image:Images/icons/full/obj16/AddInstanceRole.gif]]
+| 	Creates a new Lifeline representing an existing Actor. This allows to have multiple Lifelines representing the same Actor in a single scenario. 
 | 
 |-
-| 	Component 	
-| [[Image:Images/icons/full/obj16/ComponentInstance.gif]] 
+| 	Add multiple lifelines for an existing Component
+| [[Image:Images/icons/full/obj16/AddInstanceRole.gif]]
+| 	Creates a new Lifeline representing an existing Component. This allows to have multiple Lifelines representing the same Component in a single scenario. 
 | 
 |-
 | 	Functional Exchange 	
@@ -530,18 +527,6 @@
 | 	Duration 	
 | [[Image:Images/icons/full/obj16/BracketEdgeStyle.gif]] 
 | 		Create a new constraint duration between two interaction fragments of the sequence diagram. 	
-|-
-| 	Constraint 	
-| [[Image:Images/icons/full/obj16/Constraint.gif]] 
-| 		Create a new Constraint. 	
-|-
-| 	ConstraintElement 	
-| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
-| 		Allocate a Source Constraint to an available Target Capella Element. 	
-|-
-| 	Constraints 	
-| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
-| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
 |}    
 === Sample ===
 [[Image:Images/diagrams/EOLE/ES_Exchange Scenario.jpg|Sample will be available soon]]    
@@ -591,6 +576,16 @@
 |-
 | 	Actors 	
 | [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 
+|-
+| 	Add multiple lifelines for an existing Actor
+| [[Image:Images/icons/full/obj16/AddInstanceRole.gif]]
+| 	Creates a new Lifeline representing an existing Actor. This allows to have multiple Lifelines representing the same Actor in a single scenario. 
+| 
+|-
+| 	Add multiple lifelines for an existing Component
+| [[Image:Images/icons/full/obj16/AddInstanceRole.gif]]
+| 	Creates a new Lifeline representing an existing Component. This allows to have multiple Lifelines representing the same Component in a single scenario. 
 | 
 |-
 | 	Shared Data/Event  	
@@ -668,18 +663,6 @@
 | 	Operand 	
 | [[Image:Images/icons/full/obj16/InteractionOperand.gif]] 
 | 		Creates a new Operand within the target Combined Fragment.  	
-|-
-| 	Constraint 	
-| [[Image:Images/icons/full/obj16/Constraint.gif]] 
-| 		Create a new Constraint. 	
-|-
-| 	ConstraintElement 	
-| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
-| 		Allocate a Source Constraint to an available Target Capella Element. 	
-|-
-| 	Constraints 	
-| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
-| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
 |}    
 === Sample ===
 [[Image:Images/diagrams/EOLE/IS_Interface Scenario.jpg|Sample will be available soon]]    
@@ -718,18 +701,6 @@
 | 	Contained In 	
 | [[Image:Images/icons/full/obj16/containedIn.png]] 
 | 		Move a Source Configuration Item Part from its Container to Target Configuration Item Part. 	
-|-
-| 	Constraint 	
-| [[Image:Images/icons/full/obj16/Constraint.gif]] 
-| 		Create a new Constraint. 	
-|-
-| 	ConstraintElement 	
-| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
-| 		Allocate a Source Constraint to an available Target Capella Element. 	
-|-
-| 	Constraints 	
-| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
-| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
 |}    
 === Sample ===
 [[Image:Images/diagrams/EOLE/CIBD_Configuration Items Breakdown.jpg|Sample will be available soon]]    
@@ -788,18 +759,6 @@
 | 	Relationships 	
 | [[Image:Images/icons/full/obj16/ShowHide.gif]] 
 | 		Insert/Remove Relationships 	
-|-
-| 	Constraint 	
-| [[Image:Images/icons/full/obj16/Constraint.gif]] 
-| 		Create a new Constraint. 	
-|-
-| 	ConstraintElement 	
-| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
-| 		Allocate a Source Constraint to an available Target Capella Element. 	
-|-
-| 	Constraints 	
-| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
-| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
 |}    
 === Sample ===
 [[Image:Images/diagrams/EOLE/CC_Contextual Capabilty.jpg|Sample will be available soon]]    
@@ -810,18 +769,6 @@
 | 	Involve Component 	
 | [[Image:Images/icons/full/obj16/Insert.gif]] 
 | 		Create a new Involvement relationship between the Source Capability and Target Component. This tool opens a selection wizard to select an available Component. 	
-|-
-| 	Constraint 	
-| [[Image:Images/icons/full/obj16/Constraint.gif]] 
-| 		Create a new Constraint. 	
-|-
-| 	ConstraintElement 	
-| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
-| 		Allocate a Source Constraint to an available Target Capella Element. 	
-|-
-| 	Constraints 	
-| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
-| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
 |}    
 === Sample ===
 [[Image:Images/diagrams/EOLE/CRI_Contextual Capability Realization Involvement.jpg|Sample will be available soon]]    
@@ -920,18 +867,6 @@
 | 	Exchange Item Elements 	
 | [[Image:Images/icons/full/obj16/ShowHide.gif]] 
 | 		Insert/Remove Exchange Items Elements. Removing an Exchange Item Element graphical object from a diagram does not delete the Exchange Item Element from the model. This tool does not modify the semantic model. 	
-|-
-| 	Constraint 	
-| [[Image:Images/icons/full/obj16/Constraint.gif]] 
-| 		Create a new Constraint. 	
-|-
-| 	ConstraintElement 	
-| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
-| 		Allocate a Source Constraint to an available Target Capella Element. 	
-|-
-| 	Constraints 	
-| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
-| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
 |}    
 === Sample ===
 [[Image:Images/diagrams/EOLE/CDI_Contextual Component Detailed Interfaces.jpg|Sample will be available soon]]    
@@ -1038,18 +973,6 @@
 | 	Exchange Items 	
 | [[Image:Images/icons/full/obj16/ShowHide.gif]] 
 | 		Insert/Remove Exchange Items. Removing an Exchange Item graphical object from a diagram does not delete the Exchange Item from the model. This tool does not modify the semantic model. 	
-|-
-| 	Constraint 	
-| [[Image:Images/icons/full/obj16/Constraint.gif]] 
-| 		Create a new Constraint. 	
-|-
-| 	ConstraintElement 	
-| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
-| 		Allocate a Source Constraint to an available Target Capella Element. 	
-|-
-| 	Constraints 	
-| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
-| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
 |}    
 === Sample ===
 [[Image:Images/diagrams/EOLE/CEI_ Contextual Component External Interfaces.jpg|Sample will be available soon]]    
@@ -1152,18 +1075,6 @@
 | 	Exchange Items 	
 | [[Image:Images/icons/full/obj16/ShowHide.gif]] 
 | 		Insert/Remove Exchange Items. Removing an Exchange Item graphical object from a diagram does not delete the Exchange Item from the model. This tool does not modify the semantic model. 	
-|-
-| 	Constraint 	
-| [[Image:Images/icons/full/obj16/Constraint.gif]] 
-| 		Create a new Constraint. 	
-|-
-| 	ConstraintElement 	
-| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
-| 		Allocate a Source Constraint to an available Target Capella Element. 	
-|-
-| 	Constraints 	
-| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
-| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
 |}    
 === Sample ===
 [[Image:Images/diagrams/EOLE/CII_Contextual Component Internal Interfaces.jpg|Sample will be available soon]]    
@@ -1202,18 +1113,6 @@
 | 	Relationships 	
 | [[Image:Images/icons/full/obj16/ShowHide.gif]] 
 | 		Insert/Remove Relationships 	
-|-
-| 	Constraint 	
-| [[Image:Images/icons/full/obj16/Constraint.gif]] 
-| 		Create a new Constraint. 	
-|-
-| 	ConstraintElement 	
-| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
-| 		Allocate a Source Constraint to an available Target Capella Element. 	
-|-
-| 	Constraints 	
-| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
-| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
 |}    
 === Sample ===
 [[Image:Images/diagrams/EOLE/CM_Contextual Mission.jpg|Sample will be available soon]]    
@@ -1264,18 +1163,6 @@
 | 	Relationships 	
 | [[Image:Images/icons/full/obj16/ShowHide.gif]] 
 | 		Insert/Remove Relationships 	
-|-
-| 	Constraint 	
-| [[Image:Images/icons/full/obj16/Constraint.gif]] 
-| 		Create a new Constraint. 	
-|-
-| 	ConstraintElement 	
-| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
-| 		Allocate a Source Constraint to an available Target Capella Element. 	
-|-
-| 	Constraints 	
-| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
-| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
 |}    
 === Sample ===
 [[Image:Images/diagrams/EOLE/COC_Contextual Operational Capabilty.jpg|Sample will be available soon]]    
@@ -1289,19 +1176,6 @@
 |-
 | 	Actor Generalization 	
 | [[Image:Images/icons/full/obj16/Generalization.gif]] 
-| 
-|-
-| 	Constraint 	
-| [[Image:Images/icons/full/obj16/Constraint.gif]] 
-| 		Create a new Constraint. 	
-|-
-| 	ConstraintElement 	
-| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
-| 		Allocate a Source Constraint to an available Target Capella Element. 	
-|-
-| 	Constraints 	
-| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
-| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
 |}    
 === Sample ===
 [[Image:Images/diagrams/EOLE/CSA_Contextual System Actors.jpg|Sample will be available soon]]    
@@ -1352,18 +1226,6 @@
 | 	Realized Physical Artifacts 	
 | [[Image:Images/icons/full/obj16/ShowHide.gif]] 
 | 		Create or delete graphical objects corresponding to already realized Physical Artifacts. Removing a Physical Artifacts graphical object from a Configuration Item does not delete the realization relationship between this Configuration Item and the Physical Artifact. This tool does not modify the semantic model. 	
-|-
-| 	Constraint 	
-| [[Image:Images/icons/full/obj16/Constraint.gif]] 
-| 		Create a new Constraint. 	
-|-
-| 	ConstraintElement 	
-| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
-| 		Allocate a Source Constraint to an available Target Capella Element. 	
-|-
-| 	Constraints 	
-| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
-| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
 |}    
 === Sample ===
 [[Image:Images/diagrams/EOLE/EAB_EPBS Architecture Blank.jpg|Sample will be available soon]]    
@@ -1390,18 +1252,6 @@
 | 	Involve Functional Exchange & Target Functional Chain 	
 | [[Image:Images/icons/full/obj16/FunctionalChainReference.gif]] 
 | 		Creates two new steps respectively referencing one existing outgoing Functional Exchange and a target Functional Chain. 	
-|-
-| 	Constraint 	
-| [[Image:Images/icons/full/obj16/Constraint.gif]] 
-| 		Create a new Constraint. 	
-|-
-| 	ConstraintElement 	
-| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
-| 		Allocate a Source Constraint to an available Target Capella Element. 	
-|-
-| 	Constraints 	
-| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
-| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
 |-
 | 	Initialization from existing diagram 	
 | [[Image:Images/icons/full/obj16/DAnalysis.png]] 
@@ -1492,18 +1342,6 @@
 | 	Duration 	
 | [[Image:Images/icons/full/obj16/BracketEdgeStyle.gif]] 
 | 		Create a new constraint duration between two interaction fragments of the sequence diagram. 	
-|-
-| 	Constraint 	
-| [[Image:Images/icons/full/obj16/Constraint.gif]] 
-| 		Create a new Constraint. 	
-|-
-| 	ConstraintElement 	
-| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
-| 		Allocate a Source Constraint to an available Target Capella Element. 	
-|-
-| 	Constraints 	
-| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
-| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
 |}    
 === Sample ===
 [[Image:Images/diagrams/EOLE/FS_Function Scenario.jpg|Sample will be available soon]]    
@@ -1538,18 +1376,6 @@
 | 	Exchange Item Allocations 	
 | [[Image:Images/icons/full/obj16/ShowHide.gif]] 
 | 		Insert/Remove Exchange Items Allocations. Removing an Exchange Item Allocation graphical object from a diagram does not delete the Exchange Item Allocation from the model. This tool does not modify the semantic model. An Exchange Item allocation is a reference relationship from an Interface to an Exchange Item. 	
-|-
-| 	Constraint 	
-| [[Image:Images/icons/full/obj16/Constraint.gif]] 
-| 		Create a new Constraint. 	
-|-
-| 	ConstraintElement 	
-| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
-| 		Allocate a Source Constraint to an available Target Capella Element. 	
-|-
-| 	Constraints 	
-| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
-| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
 |}    
 === Sample ===
 [[Image:Images/diagrams/EOLE/ID_Interface Diagram.jpg|Sample will be available soon]]    
@@ -1685,18 +1511,6 @@
 | [[Image:Images/icons/full/obj16/ShowHide.gif]] 
 | 		Insert/Remove Relationships 	
 |-
-| 	Constraint 	
-| [[Image:Images/icons/full/obj16/Constraint.gif]] 
-| 		Create a new Constraint. 	
-|-
-| 	ConstraintElement 	
-| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
-| 		Allocate a Source Constraint to an available Target Capella Element. 	
-|-
-| 	Constraints 	
-| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
-| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
-|-
 | 	Initialization from existing diagram 	
 | [[Image:Images/icons/full/obj16/DAnalysis.png]] 
 | 		Initializes the current diagram according to an existing diagram defined in the previous architecture. It adds realizing elements for each element from the source diagram and preserves layout between diagrams. This tool does not modify the semantic model. 	
@@ -1815,18 +1629,6 @@
 | [[Image:Images/icons/full/obj16/ShowHide.gif]] 
 | 		&#91;Unsynchronized diagrams only&#93; Create or delete graphical objects corresponding to Component Ports. This tool does not modify the semantic model. 	
 |-
-| 	Constraint 	
-| [[Image:Images/icons/full/obj16/Constraint.gif]] 
-| 		Create a new Constraint. 	
-|-
-| 	ConstraintElement 	
-| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
-| 		Allocate a Source Constraint to an available Target Capella Element. 	
-|-
-| 	Constraints 	
-| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
-| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
-|-
 | 	Logical Function 	
 | [[Image:Images/icons/full/obj16/LogicalFunction.gif]] 
 | 		Creates a new Logical Function and allocates it to the target Logical Component / Actor. 	
@@ -1920,18 +1722,6 @@
 | 	Contained In 	
 | [[Image:Images/icons/full/obj16/containedIn.png]] 
 | 		Sets the target Logical Component as the new container of the source Logical Component 	
-|-
-| 	Constraint 	
-| [[Image:Images/icons/full/obj16/Constraint.gif]] 
-| 		Create a new Constraint. 	
-|-
-| 	ConstraintElement 	
-| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
-| 		Allocate a Source Constraint to an available Target Capella Element. 	
-|-
-| 	Constraints 	
-| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
-| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
 |}    
 === Sample ===
 [[Image:Images/diagrams/EOLE/LCBD_Logical Component Breakdown.jpg|Sample will be available soon]]    
@@ -2003,18 +1793,6 @@
 | [[Image:Images/icons/full/obj16/ShowHide.gif]] 
 | 		Regroup all displayed Functional Exchanges matching the selected Category (ies) by simplified Category-based Exchanges.  	
 |-
-| 	Constraint 	
-| [[Image:Images/icons/full/obj16/Constraint.gif]] 
-| 		Create a new Constraint. 	
-|-
-| 	ConstraintElement 	
-| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
-| 		Allocate a Source Constraint to an available Target Capella Element. 	
-|-
-| 	Constraints 	
-| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
-| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
-|-
 | 	Initialization from existing diagram 	
 | [[Image:Images/icons/full/obj16/DAnalysis.png]] 
 | 		Initializes the current diagram according to an existing diagram defined in the previous architecture. It adds realizing elements for each element from the source diagram and preserves layout between diagrams. This tool does not modify the semantic model. 	
@@ -2064,18 +1842,6 @@
 | 	Contained In 	
 | [[Image:Images/icons/full/obj16/containedIn.png]] 
 | 		Sets the target Function as the new container of the source Function 	
-|-
-| 	Constraint 	
-| [[Image:Images/icons/full/obj16/Constraint.gif]] 
-| 		Create a new Constraint. 	
-|-
-| 	ConstraintElement 	
-| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
-| 		Allocate a Source Constraint to an available Target Capella Element. 	
-|-
-| 	Constraints 	
-| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
-| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
 |}    
 === Sample ===
 [[Image:Images/diagrams/EOLE/LFBD_Logical Function Breakdown.jpg|Sample will be available soon]]    
@@ -2122,18 +1888,6 @@
 | 	Relationships 	
 | [[Image:Images/icons/full/obj16/ShowHide.gif]] 
 | 		Insert/Remove Relationships 	
-|-
-| 	Constraint 	
-| [[Image:Images/icons/full/obj16/Constraint.gif]] 
-| 		Create a new Constraint. 	
-|-
-| 	ConstraintElement 	
-| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
-| 		Allocate a Source Constraint to an available Target Capella Element. 	
-|-
-| 	Constraints 	
-| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
-| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
 |}    
 === Sample ===
 [[Image:Images/diagrams/EOLE/MB_Missions Blank.jpg|Sample will be available soon]]    
@@ -2192,18 +1946,6 @@
 | 	Relationships 	
 | [[Image:Images/icons/full/obj16/ShowHide.gif]] 
 | 		Insert/Remove Relationships. Create or delete graphical objects corresponding to already existing Exploitation / Extension / Inclusion / Generalization relationships. Removing a Relationship graphical object from the diagram does not delete the Relationship from the model. This tool does not modify the semantic model. 	
-|-
-| 	Constraint 	
-| [[Image:Images/icons/full/obj16/Constraint.gif]] 
-| 		Create a new Constraint. 	
-|-
-| 	ConstraintElement 	
-| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
-| 		Allocate a Source Constraint to an available Target Capella Element. 	
-|-
-| 	Constraints 	
-| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
-| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
 |}    
 === Sample ===
 [[Image:Images/diagrams/EOLE/MCB_Mission Capabilities Blank.jpg|Sample will be available soon]]    
@@ -2278,18 +2020,6 @@
 | 	Transition 	
 | [[Image:Images/icons/full/obj16/StateTransition.gif]] 
 | 		Creates a Transition between the source and target States or Modes 	
-|-
-| 	Constraint 	
-| [[Image:Images/icons/full/obj16/Constraint.gif]] 
-| 		Create a new Constraint. 	
-|-
-| 	ConstraintElement 	
-| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
-| 		Allocate a Source Constraint to an available Target Capella Element. 	
-|-
-| 	Constraints 	
-| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
-| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
 |}    
 === Sample ===
 [[Image:Images/diagrams/EOLE/M-S_Modes and States.jpg|Sample will be available soon]]    
@@ -2356,18 +2086,6 @@
 | 	Transition 	
 | [[Image:Images/icons/full/obj16/StateTransition.gif]] 
 | 		Creates a Transition between the source and target States or Modes 	
-|-
-| 	Constraint 	
-| [[Image:Images/icons/full/obj16/Constraint.gif]] 
-| 		Create a new Constraint. 	
-|-
-| 	ConstraintElement 	
-| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
-| 		Allocate a Source Constraint to an available Target Capella Element. 	
-|-
-| 	Constraints 	
-| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
-| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
 |}    
 === Sample ===
 [[Image:Images/diagrams/EOLE/MSM_Mode State Machine.jpg|Sample will be available soon]]    
@@ -2382,18 +2100,6 @@
 | 	Contained In 	
 | [[Image:Images/icons/full/obj16/containedIn.png]] 
 | 		Sets the target Operational Activity as the new container of the source Operational Activity 	
-|-
-| 	Constraint 	
-| [[Image:Images/icons/full/obj16/Constraint.gif]] 
-| 		Create a new Constraint. 	
-|-
-| 	ConstraintElement 	
-| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
-| 		Allocate a Source Constraint to an available Target Capella Element. 	
-|-
-| 	Constraints 	
-| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
-| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
 |}    
 === Sample ===
 [[Image:Images/diagrams/EOLE/OABD_Operational Activity Breakdown.jpg|Sample will be available soon]]    
@@ -2420,18 +2126,6 @@
 | 	Operational Processes 	
 | [[Image:Images/icons/full/obj16/ShowHide.gif]] 
 | 		Insert/Remove Operational Processes. Create or delete graphical objects corresponding to already existing Operational Processes. Removing an Operational Process graphical object from the diagram does not delete the Operational Process from the model. This tool does not modify the semantic model. 	
-|-
-| 	Constraint 	
-| [[Image:Images/icons/full/obj16/Constraint.gif]] 
-| 		Create a new Constraint. 	
-|-
-| 	ConstraintElement 	
-| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
-| 		Allocate a Source Constraint to an available Target Capella Element. 	
-|-
-| 	Constraints 	
-| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
-| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
 |-
 | 	Activities from Mode / State 	
 | [[Image:Images/icons/full/obj16/Mode.gif]] 
@@ -2498,18 +2192,6 @@
 | 	Relationships 	
 | [[Image:Images/icons/full/obj16/ShowHide.gif]] 
 | 		Insert/Remove Relationships 	
-|-
-| 	Constraint 	
-| [[Image:Images/icons/full/obj16/Constraint.gif]] 
-| 		Create a new Constraint. 	
-|-
-| 	ConstraintElement 	
-| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
-| 		Allocate a Source Constraint to an available Target Capella Element. 	
-|-
-| 	Constraints 	
-| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
-| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
 |}    
 === Sample ===
 [[Image:Images/diagrams/EOLE/OCB_Operational Capabilities Blank.jpg|Sample will be available soon]]    
@@ -2540,18 +2222,6 @@
 | 	Communication Means 	
 | [[Image:Images/icons/full/obj16/ShowHide.gif]] 
 | 		Insert/Remove Communication Means. Create or delete graphical objects corresponding to already existing Communication Means and the corresponding source/target Operational Entity if they are not present on the diagram yet. Removing a Communication Mean graphical object from the diagram does not delete the Communication Mean from the model. This tool does not modify the semantic model. 	
-|-
-| 	Constraint 	
-| [[Image:Images/icons/full/obj16/Constraint.gif]] 
-| 		Create a new Constraint. 	
-|-
-| 	ConstraintElement 	
-| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
-| 		Allocate a Source Constraint to an available Target Capella Element. 	
-|-
-| 	Constraints 	
-| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
-| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
 |-
 | 	Role 	
 | [[Image:Images/icons/full/obj16/Role.gif]] 
@@ -2626,18 +2296,6 @@
 | 	Contained In 	
 | [[Image:Images/icons/full/obj16/containedIn.png]] 
 | 		Sets the target Operational Entity as the new container of the source Operational Entity 	
-|-
-| 	Constraint 	
-| [[Image:Images/icons/full/obj16/Constraint.gif]] 
-| 		Create a new Constraint. 	
-|-
-| 	ConstraintElement 	
-| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
-| 		Allocate a Source Constraint to an available Target Capella Element. 	
-|-
-| 	Constraints 	
-| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
-| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
 |}    
 === Sample ===
 [[Image:Images/diagrams/EOLE/OEBD_Operational Entity Breakdown.jpg|Sample will be available soon]]    
@@ -2663,6 +2321,11 @@
 |-
 | 	Operational Entities / roles 	
 | [[Image:Images/icons/full/obj16/ShowHide.gif]] 
+| 
+|-
+| 	Add multiple lifelines for existing Entities / Roles
+| [[Image:Images/icons/full/obj16/AddInstanceRole.gif]]
+| 	Creates a new Lifeline representing an existing Actor / Entity. This allows to have multiple Lifelines representing the same Actor / Entity in a single scenario. 
 | 
 |-
 | 	Interaction with Return Branch 	
@@ -2732,18 +2395,6 @@
 | 	Duration 	
 | [[Image:Images/icons/full/obj16/BracketEdgeStyle.gif]] 
 | 		Create a new constraint duration between two interaction fragments of the sequence diagram. 	
-|-
-| 	Constraint 	
-| [[Image:Images/icons/full/obj16/Constraint.gif]] 
-| 		Create a new Constraint. 	
-|-
-| 	ConstraintElement 	
-| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
-| 		Allocate a Source Constraint to an available Target Capella Element. 	
-|-
-| 	Constraints 	
-| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
-| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
 |}    
 === Sample ===
 [[Image:Images/diagrams/EOLE/OES_Operational Entity Scenario.jpg|Sample will be available soon]]    
@@ -2770,18 +2421,6 @@
 | 	Involve Interaction & Target Operational Process 	
 | [[Image:Images/icons/full/obj16/FunctionalChainReference.gif]] 
 | 		Creates two new steps respectively referencing one existing outgoing Functional Exchange and a target Functional Chain. 	
-|-
-| 	Constraint 	
-| [[Image:Images/icons/full/obj16/Constraint.gif]] 
-| 		Create a new Constraint. 	
-|-
-| 	ConstraintElement 	
-| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
-| 		Allocate a Source Constraint to an available Target Capella Element. 	
-|-
-| 	Constraints 	
-| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
-| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
 |}    
 === Sample ===
 [[Image:Images/diagrams/EOLE/OPD_Operational Process Description.jpg|Sample will be available soon]]    
@@ -2796,18 +2435,6 @@
 | 	Operational Roles 	
 | [[Image:Images/icons/full/obj16/ShowHide.gif]] 
 | 		Insert/Remove Operational Roles. Creates or deletes graphical objects corresponding to already existing Operational Roles. Removing an Operational Role graphical object from the diagram does not delete the Operational Role from the model. This tool does not modify the semantic model. 	
-|-
-| 	Constraint 	
-| [[Image:Images/icons/full/obj16/Constraint.gif]] 
-| 		Create a new Constraint. 	
-|-
-| 	ConstraintElement 	
-| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
-| 		Allocate a Source Constraint to an available Target Capella Element. 	
-|-
-| 	Constraints 	
-| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
-| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
 |-
 | 	Operational Activity 	
 | [[Image:Images/icons/full/obj16/OperationalActivity.gif]] 
@@ -2850,18 +2477,6 @@
 | 	Dependencies 	
 | [[Image:Images/icons/full/obj16/ShowHide.gif]] 
 | 		Insert/Remove Dependent Packages 	
-|-
-| 	Constraint 	
-| [[Image:Images/icons/full/obj16/Constraint.gif]] 
-| 		Create a new Constraint. 	
-|-
-| 	ConstraintElement 	
-| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
-| 		Allocate a Source Constraint to an available Target Capella Element. 	
-|-
-| 	Constraints 	
-| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
-| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
 |}    
 === Sample ===
 [[Image:Images/diagrams/EOLE/PD_Package Dependencies.jpg|Sample will be available soon]]    
@@ -2944,18 +2559,6 @@
 | 	Ports 	
 | [[Image:Images/icons/full/obj16/ShowHide.gif]] 
 | 		&#91;Unsynchronized diagrams only&#93; Creates or deletes graphical objects corresponding to Physical Ports. This tool does not modify the semantic model. 	
-|-
-| 	Constraint 	
-| [[Image:Images/icons/full/obj16/Constraint.gif]] 
-| 		Create a new Constraint. 	
-|-
-| 	ConstraintElement 	
-| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
-| 		Allocate a Source Constraint to an available Target Capella Element. 	
-|-
-| 	Constraints 	
-| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
-| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
 |-
 | 	Deploy Behavior PC 	
 | [[Image:Images/icons/full/obj16/PhysicalComponent.gif]] 
@@ -3142,18 +2745,6 @@
 | 	Contained In 	
 | [[Image:Images/icons/full/obj16/containedIn.png]] 
 | 		Sets the target Component as the new container of the source Component 	
-|-
-| 	Constraint 	
-| [[Image:Images/icons/full/obj16/Constraint.gif]] 
-| 		Create a new Constraint. 	
-|-
-| 	ConstraintElement 	
-| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
-| 		Allocate a Source Constraint to an available Target Capella Element. 	
-|-
-| 	Constraints 	
-| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
-| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
 |}    
 === Sample ===
 [[Image:Images/diagrams/EOLE/PCBD_Physical Component Breakdown.jpg|Sample will be available soon]]    
@@ -3225,18 +2816,6 @@
 | [[Image:Images/icons/full/obj16/ShowHide.gif]] 
 | 		Switch between the representation of individual Physical Links and their representation as Category-based Physical Links. 	
 |-
-| 	Constraint 	
-| [[Image:Images/icons/full/obj16/Constraint.gif]] 
-| 		Create a new Constraint. 	
-|-
-| 	ConstraintElement 	
-| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
-| 		Allocate a Source Constraint to an available Target Capella Element. 	
-|-
-| 	Constraints 	
-| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
-| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
-|-
 | 	Initialization from existing diagram 	
 | [[Image:Images/icons/full/obj16/DAnalysis.png]] 
 | 		Initializes the current diagram according to an existing diagram defined in the previous architecture. It adds realizing elements for each element from the source diagram and preserves layout between diagrams. This tool does not modify the semantic model. 	
@@ -3286,18 +2865,6 @@
 | 	Contained In 	
 | [[Image:Images/icons/full/obj16/containedIn.png]] 
 | 		Sets the target Function as the new container of the source Function 	
-|-
-| 	Constraint 	
-| [[Image:Images/icons/full/obj16/Constraint.gif]] 
-| 		Create a new Constraint. 	
-|-
-| 	ConstraintElement 	
-| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
-| 		Allocate a Source Constraint to an available Target Capella Element. 	
-|-
-| 	Constraints 	
-| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
-| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
 |}    
 === Sample ===
 [[Image:Images/diagrams/EOLE/PFBD_Physical Function Breakdown.jpg|Sample will be available soon]]    
@@ -3328,18 +2895,6 @@
 | 	Involve Physical Link & Target Physical Path 	
 | [[Image:Images/icons/full/obj16/PhysicalPathReference.gif]] 
 | 		Creates two new steps respectively referencing one existing outgoing Physical Link and a target Physical Path. 	
-|-
-| 	Constraint 	
-| [[Image:Images/icons/full/obj16/Constraint.gif]] 
-| 		Create a new Constraint. 	
-|-
-| 	ConstraintElement 	
-| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
-| 		Allocate a Source Constraint to an available Target Capella Element. 	
-|-
-| 	Constraints 	
-| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
-| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
 |}    
 === Sample ===
 [[Image:Images/diagrams/EOLE/PPD_Physical Path Description.jpg|Sample will be available soon]]    
@@ -3430,18 +2985,6 @@
 | 	Component Ports 	
 | [[Image:Images/icons/full/obj16/ShowHide.gif]] 
 | 		Insert/Remove Ports 	
-|-
-| 	Constraint 	
-| [[Image:Images/icons/full/obj16/Constraint.gif]] 
-| 		Create a new Constraint. 	
-|-
-| 	ConstraintElement 	
-| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
-| 		Allocate a Source Constraint to an available Target Capella Element. 	
-|-
-| 	Constraints 	
-| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
-| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
 |-
 | 	System Function 	
 | [[Image:Images/icons/full/obj16/SystemFunction.gif]] 
@@ -3593,18 +3136,6 @@
 | [[Image:Images/icons/full/obj16/ShowHide.gif]] 
 | 		Switch between the representation of individual Component Exchanges and their representation as Category-based Component Exchanges. 	
 |-
-| 	Constraint 	
-| [[Image:Images/icons/full/obj16/Constraint.gif]] 
-| 		Create a new Constraint. 	
-|-
-| 	ConstraintElement 	
-| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
-| 		Allocate a Source Constraint to an available Target Capella Element. 	
-|-
-| 	Constraints 	
-| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
-| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
-|-
 | 	Initialization from existing diagram 	
 | [[Image:Images/icons/full/obj16/DAnalysis.png]] 
 | 		Initializes the current diagram according to an existing diagram defined in the previous architecture. It adds realizing elements for each element from the source diagram and preserves layout between diagrams. This tool does not modify the semantic model. 	
@@ -3654,18 +3185,6 @@
 | 	Contained In 	
 | [[Image:Images/icons/full/obj16/containedIn.png]] 
 | 		Sets the target Function as the new container of the source Function 	
-|-
-| 	Constraint 	
-| [[Image:Images/icons/full/obj16/Constraint.gif]] 
-| 		Create a new Constraint. 	
-|-
-| 	ConstraintElement 	
-| [[Image:Images/icons/full/obj16/ClassCarries.gif]] 
-| 		Allocate a Source Constraint to an available Target Capella Element. 	
-|-
-| 	Constraints 	
-| [[Image:Images/icons/full/obj16/ShowHide.gif]] 
-| 		Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model. 	
 |}    
 === Sample ===
 [[Image:Images/diagrams/EOLE/SFBD_System Function Breakdown.jpg|Sample will be available soon]] 

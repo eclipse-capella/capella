@@ -19,7 +19,7 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_-RFRkLxDEeSC5uxsBRe41Q">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_mZXiMHQ-Eea1QKmGa7FbBw" name="[MCB] Capabilities - Mission Capabilities Blank" repPath="#_aaCGAJFtEeemoaFOWaTTWw">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_mZXiMHQ-Eea1QKmGa7FbBw" name="[MCB] Capabilities - Mission Capabilities Blank" repPath="#_AS28ELxEEeSC5uxsBRe41Q">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.ctx:CapabilityPkg" href="I_34_Test_OK.melodymodeller#8dd9a64f-d1d8-45a9-b314-10de73487f16"/>
       </ownedRepresentationDescriptors>
@@ -31,7 +31,7 @@
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/EPBS.odesign#//@ownedViewpoints[name='EPBS%20architecture']"/>
     </ownedViews>
   </viewpoint:DAnalysis>
-  <diagram:DSemanticDiagram xmi:id="_AS28ELxEEeSC5uxsBRe41Q" name="[MCB] Capabilities - Mission Capabilities Blank" uid="_aaCGAJFtEeemoaFOWaTTWw">
+  <diagram:DSemanticDiagram xmi:id="_AS28ELxEEeSC5uxsBRe41Q" name="[MCB] Capabilities - Mission Capabilities Blank" uid="_AS28ELxEEeSC5uxsBRe41Q">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_AS3jILxEEeSC5uxsBRe41Q" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_AS3jIbxEEeSC5uxsBRe41Q" type="Sirius" element="_AS28ELxEEeSC5uxsBRe41Q" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="_BHWUELxEEeSC5uxsBRe41Q" type="2001" element="_BHKt4LxEEeSC5uxsBRe41Q">

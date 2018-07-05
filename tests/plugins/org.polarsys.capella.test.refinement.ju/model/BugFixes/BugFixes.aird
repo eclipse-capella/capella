@@ -5,7 +5,7 @@
     <semanticResources>BugFixes.afm</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_v0zV0FL_EeWjDoBKeHuEjA">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_Kx_ukHnFEeaA5rJ--wMQRA" name="[IS] Capability 1 - Interface Scenario" repPath="#_6ElosJFsEeemoaFOWaTTWw">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_Kx_ukHnFEeaA5rJ--wMQRA" name="[IS] Capability 1 - Interface Scenario" repPath="#_3JwxMFL_EeWjDoBKeHuEjA">
         <description xmi:type="description_1:SequenceDiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']"/>
         <target xmi:type="org.polarsys.capella.core.data.interaction:Scenario" href="BugFixes.melodymodeller#c9b5f676-ab93-4262-8d68-7393ae786f0b"/>
       </ownedRepresentationDescriptors>
@@ -29,7 +29,7 @@
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']"/>
     </ownedViews>
   </viewpoint:DAnalysis>
-  <sequence:SequenceDDiagram xmi:id="_3JwxMFL_EeWjDoBKeHuEjA" name="[IS] Capability 1 - Interface Scenario" uid="_6ElosJFsEeemoaFOWaTTWw">
+  <sequence:SequenceDDiagram xmi:id="_3JwxMFL_EeWjDoBKeHuEjA" name="[IS] Capability 1 - Interface Scenario" uid="_3JwxMFL_EeWjDoBKeHuEjA">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_3JxYQFL_EeWjDoBKeHuEjA" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_3JxYQVL_EeWjDoBKeHuEjA" type="Sirius" element="_3JwxMFL_EeWjDoBKeHuEjA" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="_3JxYQ1L_EeWjDoBKeHuEjA" type="2001" element="_37MLMHnFEea0Df0HniJfuA">

@@ -5,8 +5,8 @@ Element-Name: InitEnvironmentForPattern
 Element-Type: context
 Element-Version: 2.0
 Id: _56REoGYJEeaVsIgvj-cA7g
-Runtime-Version: 2.0.2.201511100828
-Save-Time: 8/19/16 5:48 PM
+Runtime-Version: 2.3.0.201712190725
+Save-Time: 1/19/18 3:28 PM
 
 ------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
 Content-Type: text/ecl
@@ -21,6 +21,7 @@ get-view "Capella Project Explorer" | get-menu "Customize View..." | click
 with [get-window "Available Customizations"] {
     get-tab-folder | get-tab-item Filters | click
     get-table | get-item "Functional Exchanges" | uncheck
+    get-table | get-item "Parts" | uncheck
     get-button OK | click
 }
 ------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--
