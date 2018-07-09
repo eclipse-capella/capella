@@ -547,7 +547,6 @@
             <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="foregroundColor" value="//@userColorsPalettes[name=null]/@entries[name='0VP_MS_color_config_disabled']"/>
             <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="strokeColor" value="//@userColorsPalettes[name=null]/@entries[name='0VP_MS_color_config_disabled']"/>
             <featureCustomizations xsi:type="description:EAttributeCustomization" applyOnAll="true" attributeName="lineStyle" value="dash"/>
-            <featureCustomizations xsi:type="description:EAttributeCustomization" applyOnAll="true" attributeName="borderLineStyle" value="dash"/>
           </vsmElementCustomizations>
         </customization>
       </layers>
