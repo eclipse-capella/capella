@@ -21,8 +21,7 @@ import org.polarsys.capella.common.ui.actions.ModelAdaptation;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 
 /**
- * Tester which is able to check that a selected object is from 
- * the correct Capella meta-class
+ * Tester which is able to check that a selected object is from the correct Capella meta-class
  * 
  * 
  * Added tester featureIsA to test if a feature value of an EObject is typed by a specific EClass
@@ -30,52 +29,53 @@ import org.polarsys.capella.common.data.modellingcore.ModelElement;
 public class MetaclassPropertyTester extends PropertyTester {
 
   /**
-   * @see org.eclipse.core.expressions.IPropertyTester#test(java.lang.Object, java.lang.String, java.lang.Object[], java.lang.Object)
+   * @see org.eclipse.core.expressions.IPropertyTester#test(java.lang.Object, java.lang.String, java.lang.Object[],
+   *      java.lang.Object)
    */
-	public boolean test(Object object, String propertyName, Object[] params, Object testedValue) {
-		if (propertyName.equals("classOf")) { //$NON-NLS-1$
-			// Getting the Capella element
-			ModelElement element = ModelAdaptation.adaptToCapella(object);
-			if (element == null)
-				return false;
-			String className = (String) testedValue;
-			if (element.eClass().getName().equals(className))
-				return true;
+  public boolean test(Object object, String propertyName, Object[] params, Object testedValue) {
+    if (propertyName.equals("classOf")) { //$NON-NLS-1$
+      // Getting the Capella element
+      ModelElement element = ModelAdaptation.adaptToCapella(object);
+      if (element == null)
+        return false;
+      String className = (String) testedValue;
+      if (element.eClass().getName().equals(className))
+        return true;
 
-			List<EClass> classes = element.eClass().getEAllSuperTypes();
-			for (EClass clazz : classes) {
-				if (clazz.getName().equals(className))
-					return true;
-			}
+      List<EClass> classes = element.eClass().getEAllSuperTypes();
+      for (EClass clazz : classes) {
+        if (clazz.getName().equals(className))
+          return true;
+      }
 
-		} else if (propertyName.equals("featureIsA") || propertyName.equals("graphicalFeatureIsA")) {//$NON-NLS-1$ //$NON-NLS-2$
-			// Getting the Capella element
-			ModelElement element = ModelAdaptation.adaptToCapella(object);
-			if (element == null)
-				return false;
-			if (params.length == 0)
-				return false;
-			Object feature = params[0];
-			if (!(feature instanceof String))
-				return false;
+    } else if (propertyName.equals("featureIsA") || propertyName.equals("graphicalFeatureIsA")) {//$NON-NLS-1$ //$NON-NLS-2$
+      // Getting the Capella element
+      ModelElement element = ModelAdaptation.adaptToCapella(object);
+      if (element == null)
+        return false;
+      if (params.length == 0)
+        return false;
+      Object feature = params[0];
+      if (!(feature instanceof String))
+        return false;
 
-			String featureName = (String) feature;
-			String className = (String) testedValue;
-			EStructuralFeature sfeature = element.eClass().getEStructuralFeature(featureName);
+      String featureName = (String) feature;
+      String className = (String) testedValue;
+      EStructuralFeature sfeature = element.eClass().getEStructuralFeature(featureName);
 
-			Object res = element.eGet(sfeature);
-			if (res instanceof EObject) {
-				EObject result = (EObject) res;
-				if (result.eClass().getName().equals(className))
-					return true;
+      Object res = element.eGet(sfeature);
+      if (res instanceof EObject) {
+        EObject result = (EObject) res;
+        if (result.eClass().getName().equals(className))
+          return true;
 
-				List<EClass> classes = result.eClass().getEAllSuperTypes();
-				for (EClass clazz : classes) {
-					if (clazz.getName().equals(className))
-						return true;
-				}
-			}
-		}
-		return false;
-	}
+        List<EClass> classes = result.eClass().getEAllSuperTypes();
+        for (EClass clazz : classes) {
+          if (clazz.getName().equals(className))
+            return true;
+        }
+      }
+    }
+    return false;
+  }
 }

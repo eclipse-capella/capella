@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -41,7 +41,6 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Layout;
-import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.ToolBar;
 import org.eclipse.ui.PlatformUI;
 import org.polarsys.capella.common.flexibility.properties.schema.IProperty;
@@ -108,19 +107,8 @@ public class SelectListRenderer extends AbstractRenderer {
     }
 
     // Populate contextMenu and set selection to getViewer()
-    if (!getPopupLocation().isEmpty()) {
-      context = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getService(IEclipseContext.class);
-      popupPopulator =
-          new ToolbarPopulator(popupManager, getPopupLocation(), rendererContext, this, getViewer().getClientViewer(), PlatformUI.getWorkbench()
-              .getActiveWorkbenchWindow());
-      ContextInjectionFactory.inject(popupPopulator, context);
-      popupPopulator.populate();
-
-      // Register the contextMenu on the view
-      Menu menu = popupManager.createContextMenu(getViewer().getClientViewer().getControl());
-      getViewer().getClientViewer().getControl().setMenu(menu);
-    }
-
+    // As we use the TreeAndListViewer, it is registered in createTreeViewer()
+    
     if (dataLabelProvider != null) {
       dataLabelProvider.setViewer(getViewer().getClientViewer());
     }
@@ -141,7 +129,7 @@ public class SelectListRenderer extends AbstractRenderer {
   }
 
   protected String getPopupLocation() {
-    return "";
+    return "popup";
   }
 
   protected String getToolbarLocation() {
@@ -352,6 +340,12 @@ public class SelectListRenderer extends AbstractRenderer {
 
     // Create a TreeAndListViewer.
     viewer = new TreeAndListViewer(parent, isMultipleSelection(), style) {
+      
+      @Override
+      public String getContextMenuLocation() {
+        return getPopupLocation();
+      }
+      
       /**
        * Overridden to set the viewer in the label provider at creation time.
        * @see org.polarsys.capella.common.ui.toolkit.viewers.TreeAndListViewer#doClientViewer(org.eclipse.swt.widgets.Composite)

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,18 +11,19 @@
 package org.polarsys.capella.core.platform.sirius.ui;
 
 import org.eclipse.core.expressions.PropertyTester;
-
+import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.ui.actions.ModelAdaptation;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.ComponentContext;
 import org.polarsys.capella.core.data.cs.Part;
+import org.polarsys.capella.core.data.ctx.SystemFunction;
 import org.polarsys.capella.core.data.epbs.ConfigurationItem;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.data.information.datavalue.LiteralNumericValue;
 import org.polarsys.capella.core.model.utils.CapellaLayerCheckingExt;
-import org.polarsys.capella.common.data.modellingcore.ModelElement;
 
 /**
  *
@@ -53,7 +54,11 @@ public class ActionPropertyTester extends PropertyTester {
           return isPropagationPortRealizationsFromCE(element);
         }
         if ("convertClassPrimitive".equals(actionName)) { //$NON-NLS-1$
-        	return isConvertPrimitive(element);
+          return element instanceof SystemFunction;
+        	//return isConvertPrimitive(element);
+        }
+        if ("transformLiteralNumericValue".equals(actionName)) { //$NON-NLS-1$
+          return element instanceof LiteralNumericValue;
         }
       }
     }

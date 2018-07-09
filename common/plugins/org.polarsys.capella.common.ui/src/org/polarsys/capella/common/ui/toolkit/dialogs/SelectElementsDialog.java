@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -47,6 +47,9 @@ import org.polarsys.capella.common.ui.toolkit.viewers.data.DataLabelProvider;
  * Dialog to select {@link ModelElement} through {@link AbstractData}.<br>
  */
 public class SelectElementsDialog extends AbstractViewerDialog {
+  
+  public static final String SELECT_ELEMENTS_DIALOG = "org.polarsys.capella.common.ui.toolkit.dialogs.selectElements";
+  
   /**
    * Undefined context constant.<br>
    * Use this context to enable computation on {@link ILinkSelection} contribution mechanism without an explicit context object.
@@ -209,6 +212,12 @@ public class SelectElementsDialog extends AbstractViewerDialog {
   protected void createTreeViewer(Composite parent) {
     // Create a TreeAndListViewer.
     _viewer = new TreeAndListViewer(parent, _displayedElements, _context, _multiSelection, _contentProvider, _labelProvider, getTreeViewerStyle(), _treeViewerExpandLevel) {
+
+      @Override
+      public String getContextMenuLocation() {
+        return SELECT_ELEMENTS_DIALOG;
+      }
+      
       /**
        * Overridden to set the viewer in the label provider at creation time.
        * @see org.polarsys.capella.common.ui.toolkit.viewers.TreeAndListViewer#doClientViewer(org.eclipse.swt.widgets.Composite)

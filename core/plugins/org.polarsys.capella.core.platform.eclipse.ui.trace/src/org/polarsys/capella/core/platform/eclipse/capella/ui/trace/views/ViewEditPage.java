@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,6 +11,12 @@
 package org.polarsys.capella.core.platform.eclipse.capella.ui.trace.views;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.jface.action.Action;
+import org.eclipse.jface.action.ActionContributionItem;
+import org.eclipse.jface.action.IAction;
+import org.eclipse.jface.action.IMenuListener;
+import org.eclipse.jface.action.IMenuManager;
+import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.util.Util;
 import org.eclipse.jface.viewers.DoubleClickEvent;
@@ -23,36 +29,29 @@ import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.MouseAdapter;
 import org.eclipse.swt.events.MouseEvent;
-import org.eclipse.swt.events.SelectionAdapter;
-import org.eclipse.swt.events.SelectionEvent;
-import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Image;
-import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.widgets.Menu;
-import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.swt.widgets.Text;
-import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.ui.toolkit.editors.Editor;
+import org.polarsys.capella.common.ui.toolkit.viewers.menu.ModalContextMenuExtender;
 import org.polarsys.capella.core.data.capellacommon.GenericTrace;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellacore.Trace;
 import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.requirement.RequirementsTrace;
 import org.polarsys.capella.core.model.helpers.query.CapellaQueries;
 import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.MDTrace;
 import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.messages.Messages;
-import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.messages.TraceUtil;
 import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.views.components.TraceTreeViewer;
 import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.views.components.TraceTreeViewer.TraceType;
 import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.views.providers.IImageKeys;
@@ -62,8 +61,8 @@ import org.polarsys.capella.core.ui.resources.CapellaUIResourcesPlugin;
 import org.polarsys.capella.core.ui.toolkit.dialogs.CapellaWizardDialog;
 
 /**
- * <code>ViewEditPage</code> is the page wizard presenting the two treeviewer for targetElements and sourceElements, but also the model element selection for
- * adding and update.
+ * <code>ViewEditPage</code> is the page wizard presenting the two treeviewer for targetElements and sourceElements, but
+ * also the model element selection for adding and update.
  */
 public class ViewEditPage extends WizardPage {
 
@@ -73,54 +72,6 @@ public class ViewEditPage extends WizardPage {
   private TraceTreeViewer _rightTraceViewer;
 
   private Text _statusBarText;
-
-  private Menu _editMenu;
-
-  private SelectionListener _menuListener = new SelectionAdapter() {
-    /**
-     * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
-     */
-    @Override
-    public void widgetSelected(SelectionEvent e_p) {
-      MenuItem item = (MenuItem) e_p.widget;
-      if (item.getText().equals(Messages.getString("ViewEditPage.edit_menu.text"))) { //$NON-NLS-1$
-        final Trace currentTrace = (Trace) item.getData();
-        Editor traceEditor = new Editor(new TracePageContentProvider(), new TraceStore(currentTrace)) {
-          /**
-           * @see org.eclipse.jface.wizard.Wizard#getDefaultPageImage()
-           */
-          @Override
-          public Image getDefaultPageImage() {
-            Image image = null;
-            if (null != getStore()) {
-              ImageDescriptor pngImageDescriptor = CapellaUIResourcesPlugin.getDefault().getPNGImage(currentTrace.eClass());
-              image = (null != pngImageDescriptor) ? pngImageDescriptor.createImage() : super.getDefaultPageImage();
-            }
-            return image;
-          }
-          /**
-           * @see org.eclipse.jface.wizard.Wizard#performFinish()
-           */
-          public boolean performFinish() {
-            // the store must be done in the context of a transaction
-            TransactionHelper.getExecutionManager(currentTrace).execute(new AbstractReadWriteCommand(){
-              public void run() {
-                page.store();
-              }
-            });
-            return true;
-          }
-        };
-        CapellaWizardDialog dlg = new CapellaWizardDialog(getShell(), traceEditor);
-        dlg.open();
-      } else if (item.getText().equals(Messages.getString("ViewEditPage.show_in_explorer_menu.text"))) { //$NON-NLS-1$
-        final CapellaElement currentSelection = (CapellaElement) item.getData();
-        if (PlatformUI.isWorkbenchRunning()) {
-          TraceUtil.findAndSelectElement(currentSelection);
-        }
-      }
-    }
-  };
 
   /**
    * @param pageName_p
@@ -147,6 +98,72 @@ public class ViewEditPage extends WizardPage {
     return composite;
   }
 
+  private class EditAction extends Action {
+
+    private boolean isLeftPane = false;
+
+    public EditAction(boolean isLeftPane) {
+      this.isLeftPane = isLeftPane;
+    }
+
+    protected ISelection getSelection() {
+      if (isLeftPane) {
+        return _leftTraceViewer.getClientViewer().getSelection();
+      }
+      return _rightTraceViewer.getClientViewer().getSelection();
+    }
+
+    @Override
+    public boolean isEnabled() {
+      IStructuredSelection selection = (IStructuredSelection) getSelection();
+      if (!selection.isEmpty()) {
+        Object a = selection.getFirstElement();
+        return (a instanceof GenericTrace) || (a instanceof RequirementsTrace);
+      }
+      return false;
+    }
+
+    @Override
+    public void runWithEvent(Event event) {
+      super.runWithEvent(event);
+
+      ISelection source = getSelection();
+
+      final Trace currentTrace = (Trace) ((IStructuredSelection) source).getFirstElement();
+
+      Editor traceEditor = new Editor(new TracePageContentProvider(), new TraceStore(currentTrace)) {
+        /**
+         * @see org.eclipse.jface.wizard.Wizard#getDefaultPageImage()
+         */
+        @Override
+        public Image getDefaultPageImage() {
+          Image image = null;
+          if (null != getStore()) {
+            ImageDescriptor pngImageDescriptor = CapellaUIResourcesPlugin.getDefault()
+                .getPNGImage(currentTrace.eClass());
+            image = (null != pngImageDescriptor) ? pngImageDescriptor.createImage() : super.getDefaultPageImage();
+          }
+          return image;
+        }
+
+        /**
+         * @see org.eclipse.jface.wizard.Wizard#performFinish()
+         */
+        public boolean performFinish() {
+          // the store must be done in the context of a transaction
+          TransactionHelper.getExecutionManager(currentTrace).execute(new AbstractReadWriteCommand() {
+            public void run() {
+              page.store();
+            }
+          });
+          return true;
+        }
+      };
+      CapellaWizardDialog dlg = new CapellaWizardDialog(getShell(), traceEditor);
+      dlg.open();
+    }
+  }
+
   /**
    * @see org.eclipse.jface.dialogs.IDialogPage#createControl(org.eclipse.swt.widgets.Composite)
    */
@@ -170,7 +187,8 @@ public class ViewEditPage extends WizardPage {
     gdData.grabExcessVerticalSpace = false;
     gdData.horizontalSpan = 2;
     imageExplanation.setLayoutData(gdData);
-    imageExplanation.setImage(AbstractUIPlugin.imageDescriptorFromPlugin(MDTrace.PLUGIN_ID, IImageKeys.EXPLANATION).createImage());
+    imageExplanation
+        .setImage(AbstractUIPlugin.imageDescriptorFromPlugin(MDTrace.PLUGIN_ID, IImageKeys.EXPLANATION).createImage());
 
     // **Presentation of trace elements(source and target)
     Composite traceTreeComposite = new Composite(composite, SWT.FILL);
@@ -187,15 +205,41 @@ public class ViewEditPage extends WizardPage {
     _rightTraceViewer.getControl(traceTreeComposite);
     _rightTraceViewer.setWizardPage(this);
 
-    _editMenu = new Menu(traceTreeComposite.getShell());
-    MenuItem editMenuItem = new MenuItem(_editMenu, SWT.PUSH);
-    editMenuItem.setText(Messages.getString("ViewEditPage.edit_menu.text")); //$NON-NLS-1$
-    editMenuItem.addSelectionListener(_menuListener);
+    MenuManager m = new MenuManager();
+    Control c = _leftTraceViewer.getClientViewer().getControl();
+    m.setRemoveAllWhenShown(true);
+    m.addMenuListener(new IMenuListener() {
 
-    MenuItem showInExplorerItem = new MenuItem(_editMenu, SWT.PUSH);
-    showInExplorerItem.setText(Messages.getString("ViewEditPage.show_in_explorer_menu.text")); //$NON-NLS-1$
-    showInExplorerItem.addSelectionListener(_menuListener);
-    showInExplorerItem.setImage(CapellaUIResourcesPlugin.getDefault().getImage(org.polarsys.capella.core.ui.resources.IImageKeys.CAPELLA_EXPLORER_IMG_16));
+      @Override
+      public void menuAboutToShow(IMenuManager manager) {
+        IAction editAction = new EditAction(true);
+        editAction.setText(Messages.getString("ViewEditPage.edit_menu.text")); //$NON-NLS-1$
+        manager.add(new ActionContributionItem(editAction));
+
+      }
+    });
+    ModalContextMenuExtender.registerContextMenu(m,
+        "org.polarsys.capella.core.platform.eclipse.capella.ui.trace.views.leftPane",
+        _leftTraceViewer.getClientViewer());
+    c.setMenu(m.createContextMenu(c));
+
+    MenuManager m2 = new MenuManager();
+    Control c2 = _rightTraceViewer.getClientViewer().getControl();
+    m2.setRemoveAllWhenShown(true);
+    c2.setMenu(m2.createContextMenu(c2));
+    m2.addMenuListener(new IMenuListener() {
+
+      @Override
+      public void menuAboutToShow(IMenuManager manager) {
+        IAction editAction = new EditAction(false);
+        editAction.setText(Messages.getString("ViewEditPage.edit_menu.text")); //$NON-NLS-1$
+        manager.add(new ActionContributionItem(editAction));
+
+      }
+    });
+    ModalContextMenuExtender.registerContextMenu(m2,
+        "org.polarsys.capella.core.platform.eclipse.capella.ui.trace.views.rightPane",
+        _rightTraceViewer.getClientViewer());
 
     // Adding Status Text
     createStatusTextField(composite);
@@ -235,8 +279,11 @@ public class ViewEditPage extends WizardPage {
 
   /**
    * Gets the path.
-   * @param sysEng_p tghe system engineering.
-   * @param target_p The target element.
+   * 
+   * @param sysEng_p
+   *          tghe system engineering.
+   * @param target_p
+   *          The target element.
    * @return The path.
    */
   public String getPath(SystemEngineering sysEng_p, TraceableElement target_p) {
@@ -311,35 +358,7 @@ public class ViewEditPage extends WizardPage {
     @SuppressWarnings("synthetic-access")
     @Override
     public void mouseUp(MouseEvent e_p) {
-      if (e_p.button == 3) {
-        ISelection selection = _traceTreeViewer._treeViewer.getSelection();
-        if ((selection instanceof IStructuredSelection) && (((IStructuredSelection) selection).size() == 1)) {
-          Object elem = ((IStructuredSelection) selection).getFirstElement();
-
-          Point point = new Point(e_p.x, e_p.y);
-
-          point = Display.getCurrent().map(_traceTreeViewer._treeViewer.getControl(), null, point);
-          _editMenu.setLocation(point);
-          MenuItem editItem = _editMenu.getItem(0);
-          editItem.setEnabled(false);
-
-          MenuItem showItem = _editMenu.getItem(1);
-          showItem.setEnabled(false);
-
-          // only for Generic and Requirement Trace
-          if ((elem instanceof GenericTrace) || (elem instanceof RequirementsTrace)) {
-            editItem.setData(elem);
-            editItem.setEnabled(true);
-          }
-          if (elem instanceof TraceableElement) {
-            showItem.setData(elem);
-            showItem.setEnabled(true);
-          }
-
-          _editMenu.setVisible(true);
-        }
-      }
-
+      
     }
   }
 

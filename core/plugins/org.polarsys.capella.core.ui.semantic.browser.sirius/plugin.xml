@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <!--
-  Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -70,7 +70,9 @@
 <extension
          point="org.eclipse.ui.menus">
       <menuContribution
-            locationURI="popup:org.eclipse.ui.popup.any?after=navigateGroup">
+	      	allPopups="true"
+            locationURI="popup:org.eclipse.ui.popup.any?after=org.polarsys.capella.core.platform.sirius.ui.navigator.LocateInCapellaExplorer">
+            <!-- locationURI shall be org.eclipse.ui.popup.any?after=group.showIn, but we want ShowInSemanticBrowser right after the ShowInCapellaExplorer -->
          <command
                commandId="org.polarsys.capella.core.ui.semantic.browser.sirius.semanticBrowserSetSelectionCommand"
                id="org.polarsys.capella.core.ui.semantic.browser.sirius.semanticBrowserSetSelection"
@@ -83,31 +85,10 @@
             </visibleWhen>
          </command>
       </menuContribution>
-      <menuContribution
-            locationURI="popup:org.eclipse.ui.popup.any?after=group.show">
-         <command
-               commandId="org.polarsys.capella.core.ui.semantic.browser.sirius.semanticBrowserSetSelectionCommand"
-               id="org.polarsys.capella.core.ui.semantic.browser.sirius.semanticBrowserSetSelection2"
-               style="push">
-            <visibleWhen
-                  checkEnabled="true">
-               <reference
-                     definitionId="org.polarsys.capella.core.ui.semantic.browser.sirius.selectInSemanticBrowserSelectionDefinition">
-               </reference>
-            </visibleWhen>
-         </command>
-      </menuContribution>
+
+      
       <menuContribution
             locationURI="popup:org.polarsys.capella.core.ui.semantic.browser.view.SemanticBrowserID?after=additions">
-         <command
-               commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.locateInCapellaExplorerCommand"
-               style="push">
-            <visibleWhen>
-               <reference
-                     definitionId="org.polarsys.capella.core.ui.semantic.browser.sirius.selectInCapellaExplorerDefinition">
-               </reference>
-            </visibleWhen>
-         </command>
          <command
                commandId="org.polarsys.capella.core.ui.semantic.browser.sirius.openRepresentationCommand"
                id="org.polarsys.capella.core.ui.semantic.browser.sirius.opendiagram"
@@ -128,25 +109,16 @@
                </reference>
             </visibleWhen>
          </command>
-         <command
-               commandId="org.polarsys.capella.core.ui.semantic.browser.sirius.semanticBrowserSetSelectionCommand"
-               id="org.polarsys.capella.core.ui.semantic.browser.sirius.semanticBrowserSetSelection3"
-              style="push">
-            <visibleWhen
-                  checkEnabled="true">
-               <reference
-                     definitionId="org.polarsys.capella.core.ui.semantic.browser.sirius.selectInSemanticBrowserSelectionDefinition">
-               </reference>
-            </visibleWhen>
-         </command>
       </menuContribution>
    </extension>
+   
+   
 <extension
          point="org.eclipse.core.expressions.definitions">
       <definition
             id="org.polarsys.capella.core.ui.semantic.browser.sirius.selectInSemanticBrowserSelectionDefinition">
          <with
-               variable="activeMenuSelection">
+               variable="selection">
                <and>
                   <iterate>
                      <or>
@@ -162,27 +134,6 @@
                         value="1">
                   </count>
                </and>
-         </with>
-      </definition>
-      <definition
-            id="org.polarsys.capella.core.ui.semantic.browser.sirius.selectInCapellaExplorerDefinition">
-         <with
-               variable="activeMenuSelection">
-            <and>
-               <iterate>
-                  <or>
-                     <instanceof
-                           value="org.polarsys.kitalpha.emde.model.Element">
-                     </instanceof>
-                     <instanceof
-                           value="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
-                     </instanceof>
-                  </or>
-               </iterate>
-               <count
-                     value="1">
-               </count>
-            </and>
          </with>
       </definition>
       <definition

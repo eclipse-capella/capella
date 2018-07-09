@@ -21,12 +21,12 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.navigator.CommonNavigator;
+import org.eclipse.ui.part.IShowInTarget;
+import org.eclipse.ui.part.ShowInContext;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.tools.report.EmbeddedMessage;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
-import org.polarsys.capella.common.ui.actions.LocateFilteredElementsInCommonNavigatorAction;
 import org.polarsys.capella.common.ui.services.ISelectorInPackageExplorer;
 import org.polarsys.capella.core.data.capellacommon.AbstractCapabilityPkg;
 import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
@@ -77,16 +77,12 @@ public class SiriusSelectorInPackageExplorer implements ISelectorInPackageExplor
       try {
         // Gets the right explorer identifier.
         String viewId = CapellaPerspective.CAPELLA_PROJECT_EXPLORER_ID;
-
         IViewPart viewPart = page.showView(viewId);
-        if ((null != viewPart) && (viewPart instanceof CommonNavigator)) {
-          CommonNavigator navigator = (CommonNavigator) viewPart;
+        if (null != viewPart) {
           IStructuredSelection selection = new StructuredSelection(element);
-          navigator.getCommonViewer().setSelection(selection);
-          if(!LocateFilteredElementsInCommonNavigatorAction.isSetSelection(navigator.getCommonViewer(), selection)){
-            LocateFilteredElementsInCommonNavigatorAction locateFilteredElementsInCommonNavigatorAction = new LocateFilteredElementsInCommonNavigatorAction(viewId);
-            locateFilteredElementsInCommonNavigatorAction.run(selection);
-            navigator.getCommonViewer().setSelection(selection);
+          IShowInTarget showInTarget = (IShowInTarget) viewPart.getAdapter(IShowInTarget.class);
+          if (showInTarget != null) {
+            showInTarget.show(new ShowInContext(null, selection));
           }
         }
       } catch (PartInitException pie) {

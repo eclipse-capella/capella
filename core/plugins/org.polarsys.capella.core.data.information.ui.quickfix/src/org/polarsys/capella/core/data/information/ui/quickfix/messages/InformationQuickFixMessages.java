@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,7 +11,6 @@
 package org.polarsys.capella.core.data.information.ui.quickfix.messages;
 
 import org.eclipse.osgi.util.NLS;
-
 import org.polarsys.capella.core.data.information.ui.quickfix.InformationQuickFixActivator;
 
 /**
@@ -23,9 +22,6 @@ public class InformationQuickFixMessages extends NLS {
   public static String cycle_details_dialog_title;
   public static String cycle_details_dialog_message;
 
-  public static String goToReferencedElement;
-  public static String selectInSemanticBrowser;
-  
   public static String cycle_details_dialog_combo_lbl;
   public static String cycle_details_dialog_combo_all_cycles;
   public static String cycle_details_dialog_combo_cycle_prefix;

@@ -11,12 +11,17 @@
 package org.polarsys.capella.core.platform.sirius.ui.navigator.actions;
 
 import org.apache.log4j.Logger;
+import org.eclipse.core.resources.IMarker;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.GraphicalEditPart;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IAction;
+import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.osgi.util.NLS;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.ui.tools.api.views.common.item.ItemWrapper;
 import org.eclipse.sirius.viewpoint.DRepresentation;
@@ -25,15 +30,16 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IViewActionDelegate;
 import org.eclipse.ui.IViewPart;
-import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.IWorkbenchPartSite;
-import org.eclipse.ui.PartInitException;
+import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
-import org.polarsys.capella.common.tools.report.EmbeddedMessage;
+import org.eclipse.ui.part.IShowInTarget;
+import org.eclipse.ui.part.ShowInContext;
+import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
-import org.polarsys.capella.common.ui.actions.LocateFilteredElementsInCommonNavigatorAction;
+import org.polarsys.capella.common.ui.services.helper.EObjectImageProviderHelper;
 import org.polarsys.capella.common.ui.toolkit.browser.content.provider.wrapper.EObjectWrapper;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.epbs.ConfigurationItem;
@@ -41,6 +47,7 @@ import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.TriStateBoolean;
 import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
+import org.polarsys.capella.core.platform.sirius.ui.navigator.CapellaNavigatorPlugin;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaCommonNavigator;
 
 /**
@@ -50,6 +57,42 @@ public class LocateInCapellaExplorerAction implements IObjectActionDelegate, IVi
   private Logger logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.UI);
   private boolean ignoreWorkbenchPartSite;
   private IWorkbenchPartSite site;
+  ISelection selection = null;
+
+  public static IAction createLocateTowards(EObject referenced, String message, boolean useElementIcon) {
+    LocateInCapellaExplorerAction goToAction = new LocateInCapellaExplorerAction() {
+
+      @Override
+      protected ISelection getSelection() {
+        return new StructuredSelection(referenced);
+      }
+
+      @Override
+      public void run(IAction action) {
+        Object elementToSelectInCapellaExplorer = referenced;
+        // Keep the double check here, as getSemanticElement can return an element not from the model.
+        selectElementInCapellaExplorer(new StructuredSelection(elementToSelectInCapellaExplorer));
+      }
+    };
+
+    IAction action = new Action() {
+      @Override
+      public void run() {
+        goToAction.run(this);
+      }
+    };
+
+    // Ignore workbench part site, since in a dialog, site has no meaning.
+    goToAction.shouldIgnoreWorkbenchPartSite(true);
+
+    if (useElementIcon) {
+      action.setImageDescriptor(ImageDescriptor.createFromImage(EObjectImageProviderHelper.getImage(referenced)));
+    } else {
+      action.setImageDescriptor(CapellaNavigatorPlugin.getDefault().getImageDescriptor("capella_16.png"));
+    }
+    action.setText(NLS.bind(message, EObjectLabelProviderHelper.getText(referenced)));
+    return action;
+  }
 
   /**
    * Get the first selected element.
@@ -72,7 +115,7 @@ public class LocateInCapellaExplorerAction implements IObjectActionDelegate, IVi
    * @return <code>StructuredSelection.EMPTY</code> if no {@link IWorkbenchPart} is set to this action.
    */
   protected ISelection getSelection() {
-    return (null != site) ? site.getSelectionProvider().getSelection() : StructuredSelection.EMPTY;
+    return selection;
   }
 
   /**
@@ -119,22 +162,13 @@ public class LocateInCapellaExplorerAction implements IObjectActionDelegate, IVi
    * @param selection
    */
   protected void selectElementInCapellaExplorer(ISelection selection) {
-    try {
-      IWorkbenchPage activePage = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
-      // Get the Capella Explorer.
-      CapellaCommonNavigator explorerView = (CapellaCommonNavigator) activePage.findView(CapellaCommonNavigator.ID);
-      if (null == explorerView) {
-        // Show it if not found.
-        explorerView = (CapellaCommonNavigator) activePage.showView(CapellaCommonNavigator.ID);
+    IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+    if (window != null) {
+      IViewPart part = window.getActivePage().findView(CapellaCommonNavigator.ID); //$NON-NLS-1$
+      if (part != null) {
+        IShowInTarget showInTarget = (IShowInTarget) part.getAdapter(IShowInTarget.class);
+        showInTarget.show(new ShowInContext(null, selection));
       }
-      explorerView.selectReveal(selection);
-      if (!LocateFilteredElementsInCommonNavigatorAction.isSetSelection(explorerView.getCommonViewer(), (IStructuredSelection) selection)) {
-        LocateFilteredElementsInCommonNavigatorAction locateFilteredElementsInCommonNavigatorAction = new LocateFilteredElementsInCommonNavigatorAction(CapellaCommonNavigator.ID);
-        locateFilteredElementsInCommonNavigatorAction.run((IStructuredSelection) selection);
-        explorerView.selectReveal(selection);
-      }
-    } catch (PartInitException exception) {
-      logger.warn(new EmbeddedMessage(exception.getMessage(), IReportManagerDefaultComponents.UI), exception);
     }
   }
 
@@ -144,6 +178,7 @@ public class LocateInCapellaExplorerAction implements IObjectActionDelegate, IVi
    */
   public void selectionChanged(IAction action, ISelection selection) {
     // Do nothing here since we'd prefer getting the selection in a lazy way.
+    this.selection = selection;
   }
 
   /**
@@ -183,6 +218,9 @@ public class LocateInCapellaExplorerAction implements IObjectActionDelegate, IVi
     // Precondition.
     if (null == uiSelectedElement) {
       return result;
+    }
+    if (uiSelectedElement instanceof IMarker) {
+      return uiSelectedElement;
     }
     if (CapellaResourceHelper.isSemanticElement(uiSelectedElement)) {
       result = uiSelectedElement;

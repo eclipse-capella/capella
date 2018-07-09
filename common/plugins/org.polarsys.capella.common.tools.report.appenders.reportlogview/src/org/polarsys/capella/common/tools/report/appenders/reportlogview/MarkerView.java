@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -26,17 +26,14 @@ import org.eclipse.core.resources.IResourceChangeListener;
 import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.action.Separator;
+import org.eclipse.jface.util.OpenStrategy;
 import org.eclipse.jface.viewers.CellLabelProvider;
 import org.eclipse.jface.viewers.ColumnLabelProvider;
 import org.eclipse.jface.viewers.ColumnViewerToolTipSupport;
-import org.eclipse.jface.viewers.DoubleClickEvent;
-import org.eclipse.jface.viewers.IDoubleClickListener;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.ITreeContentProvider;
@@ -50,13 +47,18 @@ import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeColumn;
 import org.eclipse.ui.ISelectionListener;
+import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.IWorkbenchActionConstants;
 import org.eclipse.ui.IWorkbenchPart;
+import org.eclipse.ui.IWorkbenchWindow;
+import org.eclipse.ui.OpenAndLinkWithEditorHelper;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.commands.ICommandService;
-import org.eclipse.ui.handlers.IHandlerService;
 import org.eclipse.ui.handlers.RadioState;
+import org.eclipse.ui.part.IShowInSource;
+import org.eclipse.ui.part.IShowInTarget;
+import org.eclipse.ui.part.ShowInContext;
 import org.eclipse.ui.part.ViewPart;
-
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 
 /**
@@ -76,6 +78,8 @@ public class MarkerView extends ViewPart {
   
   /* FIXME this is only used by log view appender */
   public static final String MARKER_ID = VIEW_ID;
+
+  private static final String CAPELLA_PROJECT_EXPLORER_ID = "capella.project.explorer";
   
   private MarkerViewHelper helper;
   private MarkerViewColumns columns;
@@ -112,8 +116,8 @@ public class MarkerView extends ViewPart {
     ColumnViewerToolTipSupport.enableFor(viewer);
 
     createContextMenu();
-    hookDoubleClickAction();
     hookSelectionListeners();
+    addLinkWithEditorSupport();
     
     lightMarkers = LightMarkerRegistry.getInstance();
     helper = new MarkerViewHelper(lightMarkers, VIEW_ID);
@@ -131,14 +135,53 @@ public class MarkerView extends ViewPart {
     setFlavour(flavour);
 
     hookFlavourStateListener(flavourState);
-    
+
     
     IWorkspace workspace = ResourcesPlugin.getWorkspace();
     viewer.setInput(workspace.getRoot());
     
   }
-
   
+  /**
+   * Inspired from org.eclipse.ui.internal.views.markers.ExtendedMarkersView.addLinkWithEditorSupport
+   */
+  private void addLinkWithEditorSupport() {
+    new OpenAndLinkWithEditorHelper(viewer) {
+      @Override
+      protected void activate(ISelection selection) {
+        final int currentMode = OpenStrategy.getOpenMethod();
+        try {
+          OpenStrategy.setOpenMethod(OpenStrategy.DOUBLE_CLICK);
+          openSelectedMarkers(selection);
+        } finally {
+          OpenStrategy.setOpenMethod(currentMode);
+        }
+      }
+
+      @Override
+      protected void linkToEditor(ISelection selection) {
+        // Not supported by this part
+      }
+
+      @Override
+      protected void open(ISelection selection, boolean activate) {
+        openSelectedMarkers(selection);
+      }
+    };
+  }
+
+  protected void openSelectedMarkers(ISelection selection ) {
+    IShowInSource source = getAdapter(IShowInSource.class);
+    IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+    if (window != null) {
+      IViewPart part = window.getActivePage().findView(CAPELLA_PROJECT_EXPLORER_ID); //$NON-NLS-1$
+      if (part != null) {
+        IShowInTarget showInTarget = (IShowInTarget) part.getAdapter(IShowInTarget.class);
+        showInTarget.show(new ShowInContext(null, source.getShowInContext().getSelection()));
+      }
+    }
+  }
+
   private void hookFlavourStateListener(State state) {
     // install a listener on the state to switch flavours when needed
     flavourStateListener = new IStateListener(){
@@ -183,24 +226,6 @@ public class MarkerView extends ViewPart {
     m.add(new Separator("use")); //$NON-NLS-1$
     m.add(new Separator("settings")); //$NON-NLS-1$
     m.add(new Separator(IWorkbenchActionConstants.MB_ADDITIONS));
-  }
-  
-  /**
-   * Opens editor for the selected marker
-   */
-  protected void hookDoubleClickAction() {
-
-    viewer.addDoubleClickListener(new IDoubleClickListener() {
-      public void doubleClick(DoubleClickEvent event) {
-
-        IHandlerService service = (IHandlerService) getSite().getService(IHandlerService.class);
-        try {
-          service.executeCommand("org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.open", null); //$NON-NLS-1$
-        } catch (Exception e) {
-          MarkerViewPlugin.getDefault().getLog().log(new Status(IStatus.ERROR, MarkerViewPlugin.PLUGIN_ID, e.getLocalizedMessage(), e));
-        }
-      }
-    });
   }
   
   /**

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <!--
-  Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -48,53 +48,5 @@
             schemeId="org.polarsys.capella.core.defaultAcceleratorConfiguration"
             sequence="CTRL+ARROW_RIGHT">
       </key>
-   </extension>
-   <extension
-         point="org.eclipse.ui.menus">
-      <menuContribution
-            locationURI="popup:org.polarsys.capella.core.ui.semantic.browser.view.SemanticBrowserID?after=additions">
-            <command
-               commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.showInDiagramCommand"
-               id="org.polarsys.capella.core.ui.semantic.browser.showInDiagramAction"
-               style="push">
-            <visibleWhen
-                  checkEnabled="true">
-               <with
-                     variable="activeMenuSelection">
-                  <and>
-                     <iterate>
-                        <instanceof
-                              value="org.polarsys.kitalpha.emde.model.Element">
-                        </instanceof>
-                     </iterate>
-                     <count
-                           value="1">
-                     </count>
-                  </and>
-               </with>
-            </visibleWhen>
-         </command>
-            <command
-                  commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.showImpactAnalysisCommand"
-                  id="org.polarsys.capella.core.ui.semantic.browser.sirius.showImpactAnalysis"
-                  style="push">
-               <visibleWhen
-                     checkEnabled="true">
-                  <with
-                        variable="activeMenuSelection">
-                     <and>
-                        <iterate>
-                           <instanceof
-                                 value="org.polarsys.kitalpha.emde.model.Element">
-                           </instanceof>
-                        </iterate>
-                        <count
-                              value="1">
-                        </count>
-                     </and>
-                  </with>
-               </visibleWhen>
-            </command>
-      </menuContribution>
    </extension>
 </plugin>

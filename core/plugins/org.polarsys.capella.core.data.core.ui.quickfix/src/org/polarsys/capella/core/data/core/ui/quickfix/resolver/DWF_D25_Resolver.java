@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,57 +10,42 @@
  *******************************************************************************/
 package org.polarsys.capella.core.data.core.ui.quickfix.resolver;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
 import org.eclipse.core.resources.IMarker;
-import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
-import org.eclipse.emf.edit.provider.ItemProviderAdapter;
-import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.viewers.ISelection;
-import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TreeSelection;
-import org.eclipse.osgi.util.NLS;
-import org.eclipse.ui.IWorkbenchPage;
-import org.eclipse.ui.PlatformUI;
-
 import org.polarsys.capella.common.helpers.EcoreUtil2;
-import org.polarsys.capella.common.helpers.TransactionHelper;
+import org.polarsys.capella.common.mdsofa.common.misc.Couple;
 import org.polarsys.capella.common.ui.toolkit.viewers.AbstractContextMenuFiller;
 import org.polarsys.capella.common.utils.graph.BasicDirectedGraph;
 import org.polarsys.capella.common.utils.graph.IDirectedGraph;
 import org.polarsys.capella.common.utils.graph.SCCSearch;
-import org.polarsys.capella.common.mdsofa.common.misc.Couple;
-import org.polarsys.capella.core.data.core.ui.quickfix.CoreQuickFixActivator;
-import org.polarsys.capella.core.data.core.ui.quickfix.messages.CoreQuickFixMessages;
-import org.polarsys.capella.core.data.cs.CsPackage;
-import org.polarsys.capella.core.data.cs.InterfacePkg;
-import org.polarsys.capella.core.data.information.DataPkg;
-import org.polarsys.capella.core.data.information.InformationPackage;
 import org.polarsys.capella.core.data.capellacore.AbstractDependenciesPkg;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.capellacore.NamedElement;
 import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.capellamodeller.validation.MDCHK_SystemEngineering_Cycle_Dependencies;
+import org.polarsys.capella.core.data.core.ui.quickfix.messages.CoreQuickFixMessages;
+import org.polarsys.capella.core.data.cs.CsPackage;
+import org.polarsys.capella.core.data.cs.InterfacePkg;
+import org.polarsys.capella.core.data.information.DataPkg;
+import org.polarsys.capella.core.data.information.InformationPackage;
 import org.polarsys.capella.core.model.helpers.DataPkgExt;
 import org.polarsys.capella.core.model.helpers.InterfacePkgExt;
-import org.polarsys.capella.core.platform.sirius.ui.navigator.IImageKeys;
-import org.polarsys.capella.core.platform.sirius.ui.navigator.CapellaNavigatorPlugin;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.LocateInCapellaExplorerAction;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.Messages;
-import org.polarsys.capella.core.ui.semantic.browser.view.SemanticBrowserView;
 import org.polarsys.capella.core.validation.ui.ide.quickfix.AbstractCapellaMarkerResolution;
 import org.polarsys.capella.core.validation.ui.ide.quickfix.EObjectNavigatorDialog;
-import org.polarsys.capella.common.data.modellingcore.ModelElement;
 
 /**
  * Show details for package dependency cycles.
@@ -85,146 +70,55 @@ public class DWF_D25_Resolver extends AbstractCapellaMarkerResolution {
     final Collection<List<EObject>> cycles = result.getValue();
 
     // show the dialog
-    if(cycles !=null && cycles.iterator().hasNext()){
-    EObjectNavigatorDialog dialog =
-        new EObjectNavigatorDialog(cycles.iterator().next(), CoreQuickFixMessages.cycle_details_dialog_title,
-            CoreQuickFixMessages.cycle_details_dialog_message, CoreQuickFixMessages.cycle_details_dialog_combo_lbl,
-            CoreQuickFixMessages.cycle_details_dialog_combo_cycle_prefix);
+    if (cycles != null && cycles.iterator().hasNext()) {
+      EObjectNavigatorDialog dialog = new EObjectNavigatorDialog(cycles.iterator().next(),
+          CoreQuickFixMessages.cycle_details_dialog_title, CoreQuickFixMessages.cycle_details_dialog_message,
+          CoreQuickFixMessages.cycle_details_dialog_combo_lbl,
+          CoreQuickFixMessages.cycle_details_dialog_combo_cycle_prefix);
 
-    dialog.setCycles(cycles);
+      dialog.setCycles(cycles);
+      dialog.setContextMenuManagerFiller(new AbstractContextMenuFiller() {
 
-    dialog.setContextMenuManagerFiller(new AbstractContextMenuFiller() {
-      /**
-       * {@inheritDoc}
-       */
-      @SuppressWarnings("synthetic-access")
-      @Override
-      public void fillMenuManager(IMenuManager contextMenuManager, final ISelection selection) {
+        @Override
+        public void fillMenuManager(IMenuManager contextMenuManager, final ISelection selection) {
+          final EObject selectedEObject = (EObject) ((TreeSelection) selection).iterator().next();
 
-        final EObject selectedEObject = (EObject) ((TreeSelection) selection).iterator().next();
-
-        final LocateInCapellaExplorerAction selectInExplorerDelegate = new LocateInCapellaExplorerAction() {
-          @Override
-          protected ISelection getSelection() {
-            return selection;
-          }
-        };
-        // Ignore workbench part site, since in a dialog, site has no meaning.
-        selectInExplorerDelegate.shouldIgnoreWorkbenchPartSite(true);
-
-        IAction selectInExplorerAction = new Action() {
-          @Override
-          public void run() {
-            selectInExplorerDelegate.run(this);
-          }
-        };
-        selectInExplorerAction.setText(Messages.ImpactAnalysisAction_ShowInCapellaExplorer_Title);
-        selectInExplorerAction.setImageDescriptor(CapellaNavigatorPlugin.getDefault().getImageDescriptor(IImageKeys.IMG_SHOW_IN_CAPELLA_EXPLORER));
-
-        selectInExplorerDelegate.selectionChanged(selectInExplorerAction, selection);
-        if (selectInExplorerAction.isEnabled()) {
-          contextMenuManager.add(selectInExplorerAction);
-        }
-
-        final LocateInCapellaExplorerAction selectInSemanticBrowserDelegate = new LocateInCapellaExplorerAction() {
-          @Override
-          protected ISelection getSelection() {
-            return selection;
-          }
-        };
-        // Ignore workbench part site, since in a dialog, site has no meaning.
-        selectInSemanticBrowserDelegate.shouldIgnoreWorkbenchPartSite(true);
-
-        // open semantic browser and then select in explorer
-        IAction selectInSemanticBrowserAction = new Action() {
-          @Override
-          public void run() {
-            try {
-              activateSemanticBrowser();
-            } catch (CoreException e) {
-              // Do nothing
-            }
-            selectInSemanticBrowserDelegate.run(this);
-          }
-
-          private void activateSemanticBrowser() throws CoreException {
-            IWorkbenchPage activePage = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
-            SemanticBrowserView smView = (SemanticBrowserView) activePage.findView(SemanticBrowserView.SEMANTIC_BROWSER_ID);
-            if (null == smView) {
-              // Show it if not found.
-              smView = (SemanticBrowserView) activePage.showView(SemanticBrowserView.SEMANTIC_BROWSER_ID);
-            }
-            activePage.activate(smView);
-            smView.setInput(selectedEObject);
-          }
-        };
-
-        selectInSemanticBrowserAction.setText(CoreQuickFixMessages.selectInSemanticBrowser);
-        selectInSemanticBrowserAction.setImageDescriptor(CapellaNavigatorPlugin.getDefault().getImageDescriptor(IImageKeys.IMG_SHOW_IN_CAPELLA_EXPLORER));
-        selectInSemanticBrowserDelegate.selectionChanged(selectInSemanticBrowserAction, selection);
-        if (selectInSemanticBrowserAction.isEnabled()) {
-          contextMenuManager.add(selectInSemanticBrowserAction);
-        }
-
-        //
-        // Show elements referenced by selection...
-        //
-        if (!(selectedEObject instanceof AbstractDependenciesPkg)) {
-          for (Iterator<EObject> it = graph.getSucessors(selectedEObject); it.hasNext();) {
-            final EObject referenced = it.next();
-            if (referenced instanceof AbstractDependenciesPkg) {
-              continue; // this may happen because of the way we built up the dependency graph
+          //
+          // Show elements referenced by selection...
+          //
+          if (!(selectedEObject instanceof AbstractDependenciesPkg)) {
+            Collection<EObject> successors = new ArrayList<EObject>();
+            for (Iterator<EObject> it = graph.getSucessors(selectedEObject); it.hasNext();) {
+              EObject referenced = it.next();
+              if (referenced instanceof AbstractDependenciesPkg) {
+                continue; // this may happen because of the way we built up the dependency graph
+              }
+              successors.add(referenced);
             }
 
-            final LocateInCapellaExplorerAction delegate = new LocateInCapellaExplorerAction() {
-              @Override
-              protected ISelection getSelection() {
-                return selection;
+            for (EObject referenced : successors) {
+              IAction action = LocateInCapellaExplorerAction.createLocateTowards(referenced, Messages.LocateInCapellaExplorerAction_GoToReferencedElement, false);
+              if (action.isEnabled()) {
+                contextMenuManager.add(action);
               }
-
-              @Override
-              public void run(IAction action) {
-                Object elementToSelectInCapellaExplorer = referenced;
-                // Keep the double check here, as getSemanticElement can return error.
-                if ((elementToSelectInCapellaExplorer instanceof ModelElement)) {
-                  selectElementInCapellaExplorer(new StructuredSelection(elementToSelectInCapellaExplorer));
-                }
-              }
-            };
-            // Ignore workbench part site, since in a dialog, site has no meaning.
-            delegate.shouldIgnoreWorkbenchPartSite(true);
-
-            IAction openReferencedElementAction = new Action() {
-              @Override
-              public void run() {
-                delegate.run(this);
-              }
-            };
-
-            ItemProviderAdapter ipa = getItemProvider(referenced);
-            openReferencedElementAction.setText(NLS.bind(CoreQuickFixMessages.goToReferencedElement, new Object[] { ipa.getText(referenced) }));
-            openReferencedElementAction.setImageDescriptor(CoreQuickFixActivator.getDefault().getImageDescriptor("goto_16.png") //$NON-NLS-1$
-                );
-            selectInExplorerDelegate.selectionChanged(openReferencedElementAction, selection);
-            if (openReferencedElementAction.isEnabled()) {
-              contextMenuManager.add(openReferencedElementAction);
             }
           }
         }
-      } // END FILL MENU
-    });
+      });
 
-    dialog.open();
+      dialog.open();
     }
     return;
   }
 
   @Override
-	protected String[] getResolvableRuleIds() {
-		return noRuleIds;
-	}
+  protected String[] getResolvableRuleIds() {
+    return noRuleIds;
+  }
+
   /**
    * Helper to support the notion that each package depends on all its subpackages.
+   * 
    * @param current
    */
   private void addSubpackageDependencies(BasicDirectedGraph<? super EObject> graph, AbstractDependenciesPkg current) {
@@ -252,20 +146,11 @@ public class DWF_D25_Resolver extends AbstractCapellaMarkerResolution {
     AbstractDependenciesPkg adp = null;
 
     if (null != eobject) {
-      adp = (AbstractDependenciesPkg) EcoreUtil2.getFirstContainer(eobject, CapellacorePackage.Literals.ABSTRACT_DEPENDENCIES_PKG);
+      adp = (AbstractDependenciesPkg) EcoreUtil2.getFirstContainer(eobject,
+          CapellacorePackage.Literals.ABSTRACT_DEPENDENCIES_PKG);
     }
 
     return adp;
-  }
-
-  /**
-   * Get a generic item provider.
-   * @return an {@link ItemProviderAdapter} if any.
-   */
-  private ItemProviderAdapter getItemProvider(EObject object) {
-    AdapterFactoryEditingDomain editingDomain = (AdapterFactoryEditingDomain) TransactionHelper.getEditingDomain(object);
-    IItemLabelProvider provider = (IItemLabelProvider) editingDomain.getAdapterFactory().adapt(object, IItemLabelProvider.class);
-    return (ItemProviderAdapter) provider;
   }
 
   /**
@@ -282,7 +167,8 @@ public class DWF_D25_Resolver extends AbstractCapellaMarkerResolution {
   }
 
   public Couple<IDirectedGraph<EObject>, Collection<List<EObject>>> computeCycles(SystemEngineering se) {
-    Map<AbstractDependenciesPkg, Collection<AbstractDependenciesPkg>> pkgDeps = MDCHK_SystemEngineering_Cycle_Dependencies.getCycleOfDependencies(se);
+    Map<AbstractDependenciesPkg, Collection<AbstractDependenciesPkg>> pkgDeps = MDCHK_SystemEngineering_Cycle_Dependencies
+        .getCycleOfDependencies(se);
     if (pkgDeps == null) {
       return null;
     }
@@ -308,7 +194,8 @@ public class DWF_D25_Resolver extends AbstractCapellaMarkerResolution {
       }
       if (dependencyDescriptors != null) {
         for (AbstractDependenciesPkg pkgDependency : dependencyDescriptors.keySet()) {
-          Collection<Couple<EObject, Collection<EObject>>> objectDependencies = dependencyDescriptors.get(pkgDependency);
+          Collection<Couple<EObject, Collection<EObject>>> objectDependencies = dependencyDescriptors
+              .get(pkgDependency);
           // for every dependency A->B add the following edges to the graph:
           // - A->B itself
           // - x->A for _each_ AbstractDependencyPkg x in the containment hierarchy of A

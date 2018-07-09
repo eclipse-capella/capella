@@ -37,5 +37,6 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.projection.commands,
  org.polarsys.capella.core.projection.commands.actions,
+ org.polarsys.capella.core.projection.commands.handlers,
  org.polarsys.capella.core.projection.commands.internal;x-internal:=true
 Bundle-Localization: plugin

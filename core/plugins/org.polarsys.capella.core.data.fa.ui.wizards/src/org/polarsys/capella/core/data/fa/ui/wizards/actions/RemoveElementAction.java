@@ -29,15 +29,13 @@ import org.polarsys.capella.core.data.information.ExchangeItem;
 public abstract class RemoveElementAction extends Action {
   /** */
   protected TreeViewer treeViewer;
-  protected IStructuredSelection selection;
 
   /**
    * 
    */
-  public RemoveElementAction(IStructuredSelection selection, TreeViewer treeViewer) {
+  public RemoveElementAction(TreeViewer treeViewer) {
     super();
     this.treeViewer = treeViewer;
-    this.selection = selection;
   }
 
   /**
@@ -86,7 +84,8 @@ public abstract class RemoveElementAction extends Action {
    */
   @Override
   public boolean isEnabled() {
-    if (selection.size() == 1) {
+    IStructuredSelection selection = ((IStructuredSelection)treeViewer.getSelection());
+    if (selection != null && selection.size() == 1) {
       return (selection.getFirstElement() instanceof ExchangeItem);
     }
     return false;

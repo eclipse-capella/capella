@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,8 +28,8 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.Text;
-
 import org.polarsys.capella.common.ui.services.helper.ViewerHelper;
+import org.polarsys.capella.common.ui.toolkit.viewers.menu.ModalContextMenuExtender;
 import org.polarsys.capella.common.ui.toolkit.widgets.filter.PatternFilter;
 
 /**
@@ -43,6 +43,7 @@ public abstract class AbstractRegExpViewer extends FieldsViewer {
   private Menu _contextMenu;
   private MenuManager _contextMenuManager;
   private AbstractContextMenuFiller _contextMenuManagerFiller;
+  
   // The regular expression viewer filter.
   private PatternFilter _filter;
   // The regular expression text field.
@@ -67,8 +68,11 @@ public abstract class AbstractRegExpViewer extends FieldsViewer {
 
   /**
    * Constructs the regular expression viewer.
-   * @param parent : The parent composite.
-   * @param isMultipleSelection : multiple selection in tree option : default value : false
+   * 
+   * @param parent
+   *          : The parent composite.
+   * @param isMultipleSelection
+   *          : multiple selection in tree option : default value : false
    * @param style
    */
   public AbstractRegExpViewer(Composite parent, boolean isMultipleSelection, int style, int viewerExpandLevel) {
@@ -220,6 +224,13 @@ public abstract class AbstractRegExpViewer extends FieldsViewer {
   }
 
   /**
+   * Provide the ability to extends the location of the context menu
+   */
+  public String getContextMenuLocation() {
+    return "#PopupMenu";
+  }
+
+  /**
    * Gets the regular expression filter.
    * @return The regular expression filter.
    */
@@ -263,19 +274,23 @@ public abstract class AbstractRegExpViewer extends FieldsViewer {
    */
   protected void installContextMenu() {
     Control control = _clientViewer.getControl();
-    _contextMenuManager = new MenuManager("#Popup"); //$NON-NLS-1$
+    String location = getContextMenuLocation();
+    String menuName = location.replaceFirst("popup:", "");
+    _contextMenuManager = new MenuManager(menuName); //$NON-NLS-1$
     _contextMenuManager.setRemoveAllWhenShown(true);
     _contextMenuManager.addMenuListener(new IMenuListener() {
-      /**
-       * {@inheritDoc}
-       */
-      @SuppressWarnings("synthetic-access")
+
       public void menuAboutToShow(IMenuManager manager) {
         if (null != _contextMenuManagerFiller) {
           _contextMenuManagerFiller.fillMenuManager(_contextMenuManager, _clientViewer.getSelection());
         }
       }
+      
     });
+    
+    ModalContextMenuExtender.registerContextMenu(_contextMenuManager, location, _clientViewer);
+    
+    // Register the contextMenu on the view
     _contextMenu = _contextMenuManager.createContextMenu(control);
     control.setMenu(_contextMenu);
   }

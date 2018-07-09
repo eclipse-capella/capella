@@ -37,29 +37,44 @@
                separator="true">
          </insertionPoint>
          <insertionPoint
-               name="group.goto">
-         </insertionPoint>
-         <insertionPoint
                name="group.open"
                separator="true">
          </insertionPoint>
          <insertionPoint
                name="group.openWith"
-               separator="false">
+               separator="true">
          </insertionPoint>
+         
+         
+         
          <insertionPoint
                name="group.edit"
                separator="true">
          </insertionPoint>
          <insertionPoint
-               name="group.show"
+               name="group.semantic"
+               separator="true">
+         </insertionPoint>
+         
+         
+         <insertionPoint
+               name="group.showIn"
                separator="true">
          </insertionPoint>
          <insertionPoint
-               name="group.reorganize">
+               name="group.sendTo"
+               separator="true">
+         </insertionPoint>
+         
+         
+         <!-- Useless insertion points -->
+         <insertionPoint
+               name="group.reorganize"
+               separator="true">
          </insertionPoint>
          <insertionPoint
-               name="group.port">
+               name="group.port"
+               separator="true">
          </insertionPoint>
          <insertionPoint
                name="group.generate"
@@ -83,9 +98,11 @@
          </insertionPoint>
          
          
+         
+         <!-- Capella insertion points -->
          <insertionPoint 
                name="group.validation"
-               separator="false">
+               separator="true">
          </insertionPoint>
          
          <insertionPoint 
@@ -98,8 +115,6 @@
                separator="false">
          </insertionPoint>
          
-        
-         
          <insertionPoint 
                name="group.transition"
                separator="false">
@@ -110,18 +125,23 @@
                separator="false">
          </insertionPoint>
          
+          <insertionPoint 
+               name="group.allocation"
+               separator="false">
+         </insertionPoint>
+         
          <insertionPoint 
                name="group.accelerator"
                separator="false">
          </insertionPoint>
          
-         
-         
-         
+         <!-- Additional insertion points -->
          <insertionPoint
                name="additions"
                separator="true">
          </insertionPoint>
+         
+         <!-- Migration and properties -->
          <insertionPoint
                name="group.migration"
                separator="true">
@@ -1215,14 +1235,15 @@
    <extension
          point="org.eclipse.ui.menus">
          
-      <menuContribution locationURI="popup:capella.project.explorer#PopupMenu?before=group.show">
+      <menuContribution 
+      		locationURI="popup:capella.project.explorer#PopupMenu?after=group.edit">
          <command
                commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.refreshAird"
                id="org.polarsys.capella.core.platform.sirius.ui.navigator.refreshAird"
                label="%command.refreshDiagrams"
                style="push">
             <visibleWhen checkEnabled="true">
-               <with variable="activeMenuSelection">
+               <with variable="selection">
                   <and>
                      <iterate>
                         <or>
@@ -1255,7 +1276,7 @@
             <visibleWhen
                   checkEnabled="true">
                <with
-                     variable="activeMenuSelection">
+                     variable="selection">
                   <and>
                      <iterate>
                         <or>
@@ -1282,22 +1303,36 @@
             </visibleWhen>
          </command>
       </menuContribution>
+      
+      
+      
+      
       <menuContribution
-            locationURI="popup:org.eclipse.ui.popup.any?after=navigateGroup">
+     		allPopups="true"
+            locationURI="popup:org.eclipse.ui.popup.any?after=group.showIn">
          <command
                commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.locateInCapellaExplorerCommand"
-               id="org.polarsys.capella.core.platform.sirius.ui.navigator.LocateInCapellaExplorerActionFromDiagram"
+               id="org.polarsys.capella.core.platform.sirius.ui.navigator.LocateInCapellaExplorer"
                label="%showInCapellaExplorerAction"
                style="push">
             <visibleWhen
                   checkEnabled="true">
+               <and>
+               <with variable="activePartId">
+                    <not>
+                        <equals value="capella.project.explorer"/>
+                    </not>
+               </with>
                <with
-                     variable="activeMenuSelection">
+                     variable="selection">
                   <and>
                      <iterate>
                         <or>
                            <instanceof
                                  value="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+                           </instanceof>
+                           <instanceof
+                                 value="org.polarsys.kitalpha.emde.model.Element">
                            </instanceof>
                            <instanceof
                                  value="org.eclipse.sirius.table.metamodel.table.DTableElement">
@@ -1309,22 +1344,52 @@
                      </count>
                   </and>
                </with>
+               </and>
             </visibleWhen>
          </command>
-         <command
+         
+         <menu
+               icon="icons/capella_16.png"
+               label="%showSemanticInCapellaExplorerAction">
+               <visibleWhen
+                     checkEnabled="true">
+                        <reference
+                              definitionId="org.polarsys.capella.core.platform.sirius.ui.navigator.goto.expression">
+                        </reference>
+               </visibleWhen>
+               
+            <dynamic
+                  class="org.polarsys.capella.core.platform.sirius.ui.navigator.handlers.GotoRelatedElementsHandler"
+                  id="org.polarsys.capella.core.platform.sirius.ui.navigator.showRelatedElementFromDiagram2">
+            </dynamic>
+            
+	         <separator
+	               name="all" visible="true">
+	         </separator>
+	         
+            <command
                commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.showRelatedElementsCommand"
                id="org.polarsys.capella.core.platform.sirius.ui.navigator.showRelatedElementFromDiagram"
-               label="%showSemanticInCapellaExplorerAction"
+               label="%showAllSemanticInCapellaExplorerAction"
                style="push">
+               
             <visibleWhen
                   checkEnabled="true">
                <with
-                     variable="activeMenuSelection">
+                     variable="selection">
                   <and>
                      <iterate>
+                        <or>
+                        <instanceof
+                                 value="org.polarsys.kitalpha.emde.model.Element">
+                        </instanceof>
+                        <instanceof
+                                 value="org.eclipse.core.resources.IMarker">
+                        </instanceof>
                         <instanceof
                               value="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
                         </instanceof>
+                        </or>
                      </iterate>
                      <count
                            value="1">
@@ -1333,20 +1398,36 @@
                </with>
             </visibleWhen>
          </command>
-         <menu
-               icon="icons/capella_16.png"
-               label="%gotoRelatedElementsAction">
-            <dynamic
-                  class="org.polarsys.capella.core.platform.sirius.ui.navigator.handlers.GotoRelatedElementsHandler"
-                  id="org.polarsys.capella.core.platform.sirius.ui.navigator.showRelatedElementFromDiagram2">
-            </dynamic>
+         
          </menu>
-      </menuContribution>
-      <menuContribution
-            locationURI="popup:org.eclipse.ui.popup.any?after=org.polarsys.capella.core.sirius.diagram.editor.wizards">
-              <command
+         
+         <command
+               commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.showInDiagramCommand"
+               style="push">
+            <visibleWhen
+                  checkEnabled="true">
+                  
+               <with
+                     variable="selection">
+                  <and>
+                  	<iterate>                
+                         <or>
+                           <instanceof
+                                 value="org.polarsys.kitalpha.emde.model.Element">
+                           </instanceof>
+                        </or>
+                     </iterate>
+                     <count
+                           value="1">
+                     </count>
+                  </and>
+               </with>
+            </visibleWhen>
+            
+         </command>
+         
+         <command
                commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.showImpactAnalysisCommand"
-               id="%showImpactAnalysis"
                style="push">
             <visibleWhen
                   checkEnabled="true">
@@ -1355,7 +1436,10 @@
                   <and>
                   	<iterate>                
                          <or>
-                         		<and>
+                           <instanceof
+                                 value="org.polarsys.kitalpha.emde.model.Element">
+                           </instanceof>
+                         	<and>
                          		<instanceof
                                  	value="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
                            		</instanceof>
@@ -1364,8 +1448,7 @@
                            				value="org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart">
                            			</instanceof>
                            		</not>
-                         		</and>
-                           		
+                         	</and>
                            <instanceof
                                  value="org.eclipse.sirius.table.metamodel.table.DTableElement">
                            </instanceof>
@@ -1382,7 +1465,65 @@
       </menuContribution>
    </extension>
    
-   
+   <extension
+         point="org.eclipse.core.expressions.definitions">
+      <definition
+            id="org.polarsys.capella.core.platform.sirius.ui.navigator.goto.expression">
+            <with
+                  variable="selection">
+                  <iterate
+                        ifEmpty="false">
+                        <and>
+                        <or>
+                        <instanceof
+                                 	value="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+                        </instanceof>
+                        <instanceof
+                              value="org.polarsys.kitalpha.emde.model.Element">
+                        </instanceof>
+                        <instanceof
+                              value="org.eclipse.core.resources.IMarker">
+                        </instanceof>
+                        </or>
+	                    <test
+			                  forcePluginActivation="true"
+			                  property="org.polarsys.capella.core.platform.sirius.ui.navigator.goto">
+			            </test>
+                        </and>
+                  </iterate>
+            </with>
+      </definition>
+      
+   </extension>
+      
+      
+   <extension
+         point="org.eclipse.core.expressions.propertyTesters">
+         <propertyTester
+             id="org.polarsys.capella.core.platform.sirius.ui.navigator.goto.propertyTester"
+             type="org.polarsys.kitalpha.emde.model.Element"
+             namespace="org.polarsys.capella.core.platform.sirius.ui.navigator"
+             properties="goto"
+             class="org.polarsys.capella.core.platform.sirius.ui.navigator.property.GotoPropertyTester"
+         >
+         </propertyTester>
+         <propertyTester
+             id="org.polarsys.capella.core.platform.sirius.ui.navigator.goto.propertyTester"
+             type="org.eclipse.core.resources.IMarker"
+             namespace="org.polarsys.capella.core.platform.sirius.ui.navigator"
+             properties="goto"
+             class="org.polarsys.capella.core.platform.sirius.ui.navigator.property.GotoPropertyTester"
+         >
+         </propertyTester>
+         <propertyTester
+             id="org.polarsys.capella.core.platform.sirius.ui.navigator.goto.propertyTester2"
+             type="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart"
+             namespace="org.polarsys.capella.core.platform.sirius.ui.navigator"
+             properties="goto"
+             class="org.polarsys.capella.core.platform.sirius.ui.navigator.property.GotoPropertyTester"
+         >
+         </propertyTester>
+   </extension>
    <extension
          point="org.eclipse.ui.propertyPages">
       <page

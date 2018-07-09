@@ -16,7 +16,6 @@ Require-Bundle: org.eclipse.core.runtime,
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.common.tools.report.appenders.reportlogview,
- org.polarsys.capella.common.tools.report.appenders.reportlogview.actions,
  org.polarsys.capella.common.tools.report.appenders.reportlogview.extpoint,
  org.polarsys.capella.common.tools.report.appenders.reportlogview.handler
 Bundle-Activator: org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerViewPlugin
