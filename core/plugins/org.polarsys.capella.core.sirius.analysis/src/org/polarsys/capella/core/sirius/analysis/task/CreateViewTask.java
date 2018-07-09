@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -47,6 +47,7 @@ import org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription;
 import org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription;
 import org.eclipse.sirius.diagram.description.tool.NodeCreationDescription;
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys;
+import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
@@ -92,7 +93,7 @@ public class CreateViewTask extends AbstractCommandTask {
     this.containerView = containerView;
     this.diagram = (DSemanticDiagram) CapellaServices.getService().getDiagramContainer(containerView);
     this.outVariable = outVariable;
-    this.tool = getTool(diagram, toolId);
+    this.tool = getTool(toolId);
   }
 
   /**
@@ -100,7 +101,7 @@ public class CreateViewTask extends AbstractCommandTask {
    * @param toolId
    * @return
    */
-  private AbstractToolDescription getTool(DSemanticDiagram semanticDiagram, String toolId) {
+  private AbstractToolDescription getTool(String toolId) {
     AbstractToolDescription result = null;
     final Session session = SessionManager.INSTANCE.getSession(diagram.getTarget());
     final List<AbstractToolDescription> tools = new DiagramComponentizationManager()
@@ -167,12 +168,7 @@ public class CreateViewTask extends AbstractCommandTask {
       return true;
     }
     int currentInheritanceDistance = computeInheritanceDistance(createdObj, getDomainClass(currentMapping));
-
-    if ((currentInheritanceDistance != -1) && (previousInheritanceDistance > currentInheritanceDistance)) {
-      return true;
-    }
-
-    return false;
+    return (currentInheritanceDistance != -1) && (previousInheritanceDistance > currentInheritanceDistance);
   }
 
   protected DiagramElementMapping getBestMapping(EObject element, DiagramElementMapping containerMapping) {
@@ -202,7 +198,7 @@ public class CreateViewTask extends AbstractCommandTask {
    */
   protected Collection<DiagramElementMapping> getAllValidMappings(EObject element,
       DiagramElementMapping containerMapping) {
-    Collection<DiagramElementMapping> validMappings = new HashSet<DiagramElementMapping>();
+    Collection<DiagramElementMapping> validMappings = new HashSet<>();
 
     final DiagramDescription desc = diagram.getDescription();
     final Session session = SessionManager.INSTANCE.getSession(diagram.getTarget());
@@ -250,10 +246,8 @@ public class CreateViewTask extends AbstractCommandTask {
       // Remove mappings from an inactive layer
       Layer layer = (Layer) EcoreUtil2.getFirstContainer(mapping,
           org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.LAYER);
-      if (layer != null) {
-        if (!diagram.getActivatedLayers().contains(layer)) {
-          return false;
-        }
+      if (layer != null && !diagram.getActivatedLayers().contains(layer)) {
+        return false;
       }
 
       if (tool != null) {
@@ -337,10 +331,11 @@ public class CreateViewTask extends AbstractCommandTask {
   private DDiagramElement createNode(EObject element, DiagramElementMapping mapping, DragAndDropTarget containerView) {
     DDiagramElement newView = null;
     RefreshIdsHolder refreshId = RefreshIdsHolder.getOrCreateHolder(diagram);
+    ModelAccessor accessor = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(diagram);
     AbstractDNodeCandidate candidate = new AbstractDNodeCandidate((AbstractNodeMapping) mapping, element, containerView,
         refreshId);
     final DDiagramElementSynchronizer sync = new DDiagramElementSynchronizer(diagram,
-        InterpreterUtil.getInterpreter(element), null) {
+        InterpreterUtil.getInterpreter(element), accessor) {
       @Override
       public void refresh(final DDiagramElement newNode) {
         if (newNode instanceof DNode) {
