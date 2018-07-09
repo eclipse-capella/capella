@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -41,6 +41,7 @@ import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.sirius.business.api.control.SiriusControlCommand;
 import org.eclipse.sirius.business.api.control.SiriusUncontrolCommand;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
+import org.eclipse.sirius.business.api.resource.ResourceDescriptor;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync;
@@ -139,6 +140,36 @@ public class DesignerControlAction extends ControlAction {
       // Broadcast the notif to Capella cross referencers.
       // FIXME It might be interesting to broadcast this faked notif to the whole eAdapters() ?
       editingDomain.getCrossReferencer().notifyChanged(notification);
+    }
+    
+    @Override
+    protected void deleteResource(Resource res) {
+      for(DAnalysis dAnalysis : getDAnalysisToClean()){
+        for (ResourceDescriptor resDesc : dAnalysis.getSemanticResources()) {
+          if (resDesc.getResourceURI().equals(res.getURI())) {
+            dAnalysis.getSemanticResources().remove(resDesc);
+            break;
+          }
+        }
+      }
+
+      super.deleteResource(res);
+    }
+    
+    private Collection<DAnalysis> getDAnalysisToClean(){
+      List<DAnalysis> result = new ArrayList<>();
+      Session session = SessionManager.INSTANCE.getSession(semanticRoot);
+      if(session != null){
+        for(Resource resource : session.getAllSessionResources()){
+          for(EObject obj : resource.getContents()){
+            if(obj instanceof DAnalysis){
+              result.add((DAnalysis)obj);
+            }
+          }
+        }        
+      }
+      
+      return result;
     }
 
     /**
