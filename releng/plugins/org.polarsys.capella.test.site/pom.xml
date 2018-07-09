@@ -25,6 +25,7 @@
 	<version>1.3.0-SNAPSHOT</version>
 	
 	<properties>
+    	<sonar.skip>true</sonar.skip>
 		<packagedSiteName>org.polarsys.capella.test</packagedSiteName>
 	</properties>
 	
