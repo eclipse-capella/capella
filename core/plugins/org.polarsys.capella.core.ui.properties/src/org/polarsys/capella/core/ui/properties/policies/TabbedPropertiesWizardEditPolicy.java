@@ -48,10 +48,11 @@ public class TabbedPropertiesWizardEditPolicy extends AbstractSiriusEditPolicy {
   public Command getCommand(final Request request) {
     if (RequestConstants.REQ_OPEN.equals(request.getType())) {
       final DSemanticDecorator semanticDecorator = this.getFirstDecorateSemanticElement();
-      if (CapellaResourceHelper.isSemanticElement(semanticDecorator.getTarget())) {
+      if (semanticDecorator != null && CapellaResourceHelper.isSemanticElement(semanticDecorator.getTarget())) {
         final EObject modelElement = semanticDecorator.getTarget();
-        if (semanticDecorator instanceof DDiagramElement
-            && !((DDiagramElement) semanticDecorator).getParentDiagram().isIsInShowingMode()) {
+        if (modelElement != null
+            && semanticDecorator instanceof DDiagramElement
+               && !((DDiagramElement) semanticDecorator).getParentDiagram().isIsInShowingMode()) {
           Command cmd = new ICommandProxy(
               new GMFCommandWrapper(getEditingDomain(), new IdentityCommand(getEditingDomain()) {
 
