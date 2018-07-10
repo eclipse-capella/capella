@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -58,6 +58,7 @@ import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.AnnotationEntry;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
@@ -73,6 +74,7 @@ import org.polarsys.capella.common.ef.command.AbstractNonDirtyingCommand;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.mdsofa.common.helper.FileHelper;
 import org.polarsys.capella.core.diagram.helpers.ContextualDiagramHelper;
+import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.core.sirius.analysis.CapellaServices;
 import org.polarsys.capella.core.sirius.analysis.DiagramServices;
 import org.polarsys.capella.test.framework.api.CommonTestMessages;
@@ -767,9 +769,10 @@ public class DiagramHelper {
    */
   @SuppressWarnings("boxing")
   public static void checkDiagramContextualElements(DDiagram diagram, List<EObject> expectedContextualElementsList) {
-    boolean hasContextualElements = ContextualDiagramHelper.getService().hasContextualElements(diagram);
+    DRepresentationDescriptor descriptor = RepresentationHelper.getRepresentationDescriptor(diagram);
+    boolean hasContextualElements = ContextualDiagramHelper.getService().hasContextualElements(descriptor);
     Assert.assertTrue(MessageFormat.format(Messages.noContextualElement, diagram.getName()), hasContextualElements);
-    List<EObject> contextualElements = ContextualDiagramHelper.getService().getContextualElements(diagram);
+    List<EObject> contextualElements = ContextualDiagramHelper.getService().getContextualElements(descriptor);
     int expectedNumberOfContextualElements = expectedContextualElementsList.size();
     boolean sameSize = contextualElements.size() == expectedNumberOfContextualElements;
     Assert.assertTrue(MessageFormat.format(Messages.wrongNumberOfContextualElement, diagram.getName(),

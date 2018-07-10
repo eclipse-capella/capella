@@ -14,8 +14,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.core.diagram.helpers.ContextualDiagramHelper;
+import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.test.diagram.common.ju.context.DiagramContext;
 import org.polarsys.capella.test.diagram.common.ju.step.AbstractDiagramStep;
 import org.polarsys.capella.test.framework.helpers.TestHelper;
@@ -42,7 +44,8 @@ public class SetContextualElementsStep extends AbstractDiagramStep<DiagramContex
         for (String id : ids) {
           objects.add(getExecutionContext().getSemanticElement(id));
         }
-        ContextualDiagramHelper.getService().setContextualElements(getExecutionContext().getDiagram(), objects);
+        DRepresentationDescriptor descriptor = RepresentationHelper.getRepresentationDescriptor(getExecutionContext().getDiagram());
+        ContextualDiagramHelper.getService().setContextualElements(descriptor, objects);
       }
     });
   }

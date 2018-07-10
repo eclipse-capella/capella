@@ -23,6 +23,7 @@ public class Messages extends NLS {
   public static String MigrationAction_UidMigration;
   public static String MigrationAction_AnnotationMigration;
   public static String MigrationAction_MissingStatusMigration;
+  public static String MigrationAction_MissingContextualElementMigration;
 
   static {
     // initialize resource bundle

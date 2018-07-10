@@ -64,6 +64,15 @@ public class DAnnotationDescriptorContributionTest extends MigrationDiagram {
             DRepresentation representation2 = descriptor2.getRepresentation();
 
             DAnnotation annotation = null;
+
+            // create annotation on diagram for Contextual elements
+            annotation = DAnnotationHelper.getAnnotation(DAnnotationDescriptorContribution.contextual_elements, representation, true);
+            annotation.getDetails().put("id_0", descriptor.getTarget().eResource().getURIFragment(descriptor.getTarget()));
+            annotation.getDetails().put("id_1", descriptor.getTarget().eResource().getURIFragment(descriptor.getTarget().eContainer()));
+            
+            // create annotation on diagram for Contextual elements
+            annotation = DAnnotationHelper.getAnnotation(DAnnotationDescriptorContribution.contextual_elements, representation2, true);
+            annotation.getDetails().put("id_0", "toto");
             
             // create annotation on diagram for Initialize Diagram Elements
             annotation = DAnnotationHelper.getAnnotation(DAnnotationDescriptorContribution.allocated_diagrams, representation, true);
@@ -119,7 +128,8 @@ public class DAnnotationDescriptorContributionTest extends MigrationDiagram {
     annotation = DAnnotationHelper.getAnnotation(DAnnotationDescriptorContribution.allocating_diagrams, descriptor.getRepresentation(), false);
     assertTrue(annotation == null);
 
-    
+    // Progress Status 
+
     // annotation on descriptor for Doc must exist
     annotation = DAnnotationHelper.getAnnotation(IRepresentationAnnotationConstants.NotVisibleInDoc, descriptor, false);
     assertTrue(annotation != null);
@@ -138,7 +148,22 @@ public class DAnnotationDescriptorContributionTest extends MigrationDiagram {
     // annotation on descriptor for Progress Status must exist
     annotation = DAnnotationHelper.getAnnotation(IRepresentationAnnotationConstants.ProgressStatus, descriptor2, false);
     assertTrue(annotation == null);
+    
+    // Contextual elements
+    
+    // annotation on descriptor must exist with valid elements
+    annotation = DAnnotationHelper.getAnnotation(IRepresentationAnnotationConstants.ContextualElements, descriptor, false);
+    assertTrue(annotation.getReferences().size() == 2);
+    
+    // annotation on descriptor2 must not exist
+    annotation = DAnnotationHelper.getAnnotation(IRepresentationAnnotationConstants.ContextualElements, descriptor2, false);
+    assertTrue(annotation == null);
 
+    annotation = DAnnotationHelper.getAnnotation(DAnnotationDescriptorContribution.contextual_elements, descriptor.getRepresentation(), false);
+    assertTrue(annotation == null);
+
+    annotation = DAnnotationHelper.getAnnotation(DAnnotationDescriptorContribution.contextual_elements, descriptor.getRepresentation(), false);
+    assertTrue(annotation == null);
   }
 
 }
