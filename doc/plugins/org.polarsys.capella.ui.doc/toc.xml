@@ -131,6 +131,8 @@
    </topic>
    <topic label="Diagram Management">
    <topic href="html/05. Diagram Management/5.1. Diagram concepts.html" label="Diagram Concepts">
+      <topic href="html/05. Diagram Management/5.1. Diagram concepts.html#Common_Diagram_Properties" label="Common Diagram Properties">
+      </topic>
 		<topic href="html/05. Diagram Management/5.1. Diagram concepts.html#Diagram_Refreshing_Strategies" label="Diagram Refreshing Strategies"></topic>
 		<topic href="html/05. Diagram Management/5.1. Diagram concepts.html#Blank_and_Contextual_Diagrams.2C_Contextual_Diagram_Elements" label="Blank and Contextual Diagrams, Contextual Diagram Elements">
 			<topic href="html/05. Diagram Management/5.1. Diagram concepts.html#Blank_Diagrams" label="Blank Diagrams"></topic>
