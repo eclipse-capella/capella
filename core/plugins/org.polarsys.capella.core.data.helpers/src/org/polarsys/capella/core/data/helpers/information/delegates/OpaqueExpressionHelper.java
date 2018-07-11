@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 201* THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,12 +28,10 @@ public class OpaqueExpressionHelper {
   }
 
   public Object doSwitch(OpaqueExpression object, EStructuralFeature feature) {
-    Object ret = null;
 
     // no helper found... searching in super classes...
-    if(null == ret) {
-      ret = CapellaElementHelper.getInstance().doSwitch(object, feature);
-    }
+    Object ret = CapellaElementHelper.getInstance().doSwitch(object, feature);
+    
     if (null == ret) {
       ret = ValueSpecificationHelper.getInstance().doSwitch(object, feature);
     }

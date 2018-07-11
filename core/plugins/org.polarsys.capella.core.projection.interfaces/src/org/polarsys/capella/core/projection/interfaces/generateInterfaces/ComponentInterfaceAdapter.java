@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -36,7 +36,7 @@ class ComponentInterfaceAdapter implements InterfaceProvider, InterfaceRequirer 
   
   @Override
   public List<FunctionOutputPort> getFunctionOutputPorts() {
-    List<FunctionOutputPort> result = new ArrayList<FunctionOutputPort>();
+    List<FunctionOutputPort> result = new ArrayList<>();
     for (AbstractFunction function : component.getAllocatedFunctions()){
       for (OutputPin pin : function.getOutputs()){
         if (pin instanceof FunctionOutputPort){
@@ -49,7 +49,7 @@ class ComponentInterfaceAdapter implements InterfaceProvider, InterfaceRequirer 
 
   @Override
   public Collection<FunctionInputPort> getFunctionInputPorts() {
-    List<FunctionInputPort> result = new ArrayList<FunctionInputPort>();
+    List<FunctionInputPort> result = new ArrayList<>();
     for (AbstractFunction function : component.getAllocatedFunctions()){
       for (InputPin pin : function.getInputs()){
         if (pin instanceof FunctionInputPort){
@@ -80,8 +80,9 @@ class ComponentInterfaceAdapter implements InterfaceProvider, InterfaceRequirer 
     if (component == null) {
       if (other.component != null)
         return false;
-    } else if (!component.equals(other.component))
-      return false;
+    } else if (!component.equals(other.component)) {
+    	return false;
+    }
     return true;
   }
 

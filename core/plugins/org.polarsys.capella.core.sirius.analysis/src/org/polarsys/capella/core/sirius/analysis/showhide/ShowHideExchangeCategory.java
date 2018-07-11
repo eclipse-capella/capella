@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -47,7 +47,6 @@ public class ShowHideExchangeCategory extends ShowHideFunctionalExchange {
 
   public ShowHideExchangeCategory(DDiagramContents content) {
     super(content);
-    // TODO Auto-generated constructor stub
   }
 
   @Override
@@ -57,7 +56,6 @@ public class ShowHideExchangeCategory extends ShowHideFunctionalExchange {
 
   @Override
   protected boolean isValidSemanticView(EObject semantic, DSemanticDecorator semanticView, DiagramContext context) {
-    // TODO Auto-generated method stub
     return super.isValidSemanticView(semantic, semanticView, context);
   }
 
@@ -69,14 +67,12 @@ public class ShowHideExchangeCategory extends ShowHideFunctionalExchange {
       EObject target = view.getTarget();
       if ((target != null) && ((target instanceof FunctionPort || target instanceof ExchangeCategory))) {
         boolean result = true;
-        if (result) {
-          for (DEdge edge : ((EdgeTarget) view).getIncomingEdges()) {
-            if (getContent().isVisible(edge)) {
-              result = false;
-              break;
-            }
-          }
-        }
+        for (DEdge edge : ((EdgeTarget) view).getIncomingEdges()) {
+        	if (getContent().isVisible(edge)) {
+        		result = false;
+	            break;
+	        }
+	    }
         if (result) {
           for (DEdge edge : ((EdgeTarget) view).getOutgoingEdges()) {
             if (getContent().isVisible(edge)) {

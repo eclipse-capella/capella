@@ -76,7 +76,7 @@ public class NullRenderer extends AbstractRenderer {
    */
   @Override
   public void dispose(IRendererContext context) {
-
+	//Nothing here
   }
 
   /**

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -39,7 +39,7 @@ public class SuffixableHandler extends SubCommandHandler {
   @Override
   public Object execute(ExecutionEvent event) throws ExecutionException {
     ISelection selection = getSelection(event);
-    if(selection != null && selection instanceof IStructuredSelection){
+    if(selection instanceof IStructuredSelection){
       IStructuredSelection structuredSelection = (IStructuredSelection)selection;
       IRendererContext rcontext = ExecutionEventUtil.getRendererContext(event);
       IContext context = (IContext) rcontext.getPropertyContext().getSource();
@@ -76,12 +76,10 @@ public class SuffixableHandler extends SubCommandHandler {
                 rendererContext.getPropertyContext().getProperties().getProperty(IReConstants.PROPERTY__SCOPE));
 
         Collection<Object> values = new HashSet<Object>(selectedObjects);
-        if (values != null) {
           if (scopeElements != null) {
             values.removeAll(scopeElements);
           }
           setBaseEnabled(values.isEmpty());
-        }
       }
     }
   }
