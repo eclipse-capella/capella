@@ -19,15 +19,13 @@
 		<version>1.3.0-SNAPSHOT</version>
 		<relativePath>../../../</relativePath>
 	</parent>
-	<properties>
-    	<sonar.skip>true</sonar.skip>
-  	</properties>
 
 	<artifactId>org.polarsys.capella.rcp.site</artifactId>
 	<packaging>eclipse-repository</packaging>
 	<version>1.3.0-SNAPSHOT</version>
 	
 	<properties>
+    	<sonar.skip>true</sonar.skip>
 		<packagedSiteName>org.polarsys.capella.rcp</packagedSiteName>
 	</properties>
 
