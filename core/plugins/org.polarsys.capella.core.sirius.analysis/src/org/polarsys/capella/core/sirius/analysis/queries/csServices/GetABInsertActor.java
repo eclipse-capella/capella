@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,34 +16,33 @@ import java.util.HashSet;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-
+import org.polarsys.capella.common.queries.AbstractQuery;
+import org.polarsys.capella.common.queries.exceptions.QueryException;
+import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
+import org.polarsys.capella.common.queries.queryContext.IQueryContext;
+import org.polarsys.capella.common.queries.queryContext.QueryContext;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.TriStateBoolean;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.queries.QueryIdentifierConstants;
-import org.polarsys.capella.common.queries.AbstractQuery;
-import org.polarsys.capella.common.queries.exceptions.QueryException;
-import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
-import org.polarsys.capella.common.queries.queryContext.IQueryContext;
-import org.polarsys.capella.common.queries.queryContext.QueryContext;
 
 public class GetABInsertActor extends AbstractQuery {
 
   @Override
-  public List<Object> execute(Object input_p, IQueryContext context_p) throws QueryException {
-    Collection<? extends Component> components = new HashSet<Component>();
-    BlockArchitecture architecture = BlockArchitectureExt.getRootBlockArchitecture((EObject) input_p);
+  public List<Object> execute(Object input, IQueryContext qContext) throws QueryException {
+    Collection<? extends Component> components = new HashSet<>();
+    BlockArchitecture architecture = BlockArchitectureExt.getRootBlockArchitecture((EObject) input);
     components.addAll((List) QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_SUB_DEFINED_ACTORS, architecture, new QueryContext()));
     // if is not multi part model
     if (!TriStateBoolean.True.equals(CapellaProjectHelper.isReusableComponentsDriven(architecture))) {
       Component context = BlockArchitectureExt.getContext(architecture);
-      if ((context != null) && (components != null)) {
+      if (context != null) {
         // Remove component from existing part
         components.removeAll(QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_SUB_USED_COMPONENTS, context, new QueryContext()));
       }
     }
-    return new ArrayList<Object>(components);
+    return new ArrayList<>(components);
   }
 }

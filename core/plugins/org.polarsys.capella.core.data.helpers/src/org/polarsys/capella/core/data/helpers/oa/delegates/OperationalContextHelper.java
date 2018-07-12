@@ -30,13 +30,7 @@ public class OperationalContextHelper {
   }
 
   public Object doSwitch(OperationalContext element, EStructuralFeature feature) {
-    Object ret = null;
-
-    // no helper found... searching in super classes...
-    if (null == ret) {
-      ret = ComponentHelper.getInstance().doSwitch(element, feature);
-    }
-
-    return ret;
+	  // no helper found... searching in super classes...
+      return ComponentHelper.getInstance().doSwitch(element, feature);
   }
 }

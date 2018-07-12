@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,19 +24,14 @@ public class LogicalArchitectureRealizationHelper {
   }
 
   public static LogicalArchitectureRealizationHelper getInstance() {
-    if (instance == null)
-      instance = new LogicalArchitectureRealizationHelper();
+    if (instance == null) {
+    	instance = new LogicalArchitectureRealizationHelper();
+    }
     return instance;
   }
 
   public Object doSwitch(LogicalArchitectureRealization element, EStructuralFeature feature) {
-    Object ret = null;
-
-    // no helper found... searching in super classes...
-    if (null == ret) {
-      ret = ArchitectureAllocationHelper.getInstance().doSwitch(element, feature);
-    }
-
-    return ret;
+	  // no helper found... searching in super classes...
+      return ArchitectureAllocationHelper.getInstance().doSwitch(element, feature);
   }
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -93,7 +93,7 @@ class ProviderRequirerTracing implements TracingStrategy {
    * @return
    */
   private Collection<Interface> getTracingInterfaces(TraceableElement target, ProviderRequirerRole role, boolean singleRole){
-    Collection<Interface> result = new LinkedHashSet<Interface>();
+    Collection<Interface> result = new LinkedHashSet<>();
     for (AbstractTrace t : target.getIncomingTraces()){
       if (t instanceof TransfoLink && t.getSourceElement() instanceof Interface) {
         Interface iface = null;
@@ -121,16 +121,16 @@ class ProviderRequirerTracing implements TracingStrategy {
     
     for (AbstractTrace t : generated.getOutgoingTraces()){
       if (t instanceof TransfoLink){
-        if (provider != null) {
+        if (provider == null) {
           provider = getProvider((TransfoLink)t);
         }
-        if (requirer != null) {
+        if (requirer == null) {
           requirer = getRequirer((TransfoLink)t);
         }
       }
     }
     
-    if (provider != null || requirer != null && provider != requirer){
+    if (provider != null || requirer != null){
       result = new InterfaceInfo(provider, requirer, this);
     }
 
@@ -147,8 +147,7 @@ class ProviderRequirerTracing implements TracingStrategy {
 
   private Object getTarget(TransfoLink t, ProviderRequirerRole role){
     for (KeyValue kv : t.getKeyValuePairs()){
-      if (KEY_ROLE.equals(kv.getKey())){
-        if (role == ProviderRequirerRole.valueOf(kv.getValue())){
+      if (KEY_ROLE.equals(kv.getKey()) && role == ProviderRequirerRole.valueOf(kv.getValue())){
           TraceableElement provider = t.getTarget();
           if (provider instanceof ComponentPort){
             return new ComponentPortInterfaceAdapter((ComponentPort) provider);
@@ -157,7 +156,6 @@ class ProviderRequirerTracing implements TracingStrategy {
             return new ComponentInterfaceAdapter((Component) provider);
           }
         }
-      }
     }
     return null;
   }

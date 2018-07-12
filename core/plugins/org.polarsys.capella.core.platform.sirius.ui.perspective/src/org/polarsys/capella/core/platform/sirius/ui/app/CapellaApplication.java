@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2003, 2017 IBM Corporation and others.
+ * Copyright (c) 2003, 2018 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -101,9 +101,7 @@ public class CapellaApplication extends AbstractApplication implements IExecutab
           return EXIT_OK;
         }
       } finally {
-        if (shell != null) {
           shell.dispose();
-        }
       }
 
       // Run extensions from org.polarsys.capella.core.application.AppStart when the workbench is properly loaded
@@ -356,6 +354,8 @@ public class CapellaApplication extends AbstractApplication implements IExecutab
       FileInputStream is = new FileInputStream(versionFile);
       try {
         props.load(is);
+      }catch(Exception e){
+    	  // do nothing
       } finally {
         is.close();
       }
