@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -59,7 +59,7 @@ public class ExchangeItemAllocationSection extends NamedElementSection {
       protected void handleOpenButtonClicked(Button button) {
         super.handleOpenButtonClicked(button);
 
-        AbstractExchangeItem exchangeItem = (AbstractExchangeItem) _semanticElement.eGet(CsPackage.Literals.EXCHANGE_ITEM_ALLOCATION__ALLOCATED_ITEM);
+        AbstractExchangeItem exchangeItem = (AbstractExchangeItem) semanticElement.eGet(CsPackage.Literals.EXCHANGE_ITEM_ALLOCATION__ALLOCATED_ITEM);
         _transmissionProtocolGroup.synchronizeProtocolsStatus((exchangeItem instanceof ExchangeItem) ? ((ExchangeItem) exchangeItem).getExchangeMechanism() : null);
         _acquisitionProtocolGroup.synchronizeProtocolsStatus((exchangeItem instanceof ExchangeItem) ? ((ExchangeItem) exchangeItem).getExchangeMechanism() : null);
       }
@@ -104,7 +104,7 @@ public class ExchangeItemAllocationSection extends NamedElementSection {
    */
   @Override
   public List<AbstractSemanticField> getSemanticFields() {
-    List<AbstractSemanticField> fields = new ArrayList<AbstractSemanticField>();
+    List<AbstractSemanticField> fields = new ArrayList<>();
 
     fields.addAll(super.getSemanticFields());
     fields.add(_acquisitionProtocolGroup);

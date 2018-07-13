@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 IBM Corporation and others.
+ * Copyright (c) 2006, 2018 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -55,7 +55,7 @@ public class ProjectActionProvider extends CommonActionProvider {
 
   private Shell shell;
 
-  private CapellaEditActionGroup _editActionGroup;
+  private CapellaEditActionGroup editActionGroup;
 
   @Override
   public void fillActionBars(IActionBars actionBars) {
@@ -68,7 +68,7 @@ public class ProjectActionProvider extends CommonActionProvider {
     actionBars.setGlobalActionHandler(IDEActionFactory.CLOSE_UNRELATED_PROJECTS.getId(), closeUnrelatedProjectsAction);
     updateActionBars();
     // Capella Action Group.
-    _editActionGroup.fillActionBars(actionBars);
+    editActionGroup.fillActionBars(actionBars);
   }
 
   /**
@@ -101,7 +101,7 @@ public class ProjectActionProvider extends CommonActionProvider {
       if (next instanceof IProject) {
         project = (IProject) next;
       } else if (next instanceof IAdaptable) {
-        project = (IProject) ((IAdaptable) next).getAdapter(IProject.class);
+        project = ((IAdaptable) next).getAdapter(IProject.class);
       }
 
       if (project == null) {
@@ -131,7 +131,7 @@ public class ProjectActionProvider extends CommonActionProvider {
       }
     }
     // Capella Action Group.
-    _editActionGroup.fillContextMenu(menu);
+    editActionGroup.fillContextMenu(menu);
   }
 
   /**
@@ -146,11 +146,11 @@ public class ProjectActionProvider extends CommonActionProvider {
    * @see org.eclipse.ui.internal.navigator.resources.actions.ResourceMgmtActionProvider#init(org.eclipse.ui.navigator.ICommonActionExtensionSite)
    */
   @Override
-  public void init(ICommonActionExtensionSite site_p) {
-    super.init(site_p);
-    shell = site_p.getViewSite().getShell();
+  public void init(ICommonActionExtensionSite site) {
+    super.init(site);
+    shell = site.getViewSite().getShell();
     makeActions();
-    _editActionGroup = new CapellaEditActionGroup(shell);
+    editActionGroup = new CapellaEditActionGroup(shell);
   }
 
   protected void makeActions() {
@@ -181,9 +181,9 @@ public class ProjectActionProvider extends CommonActionProvider {
    * @see org.eclipse.ui.actions.ActionGroup#setContext(org.eclipse.ui.actions.ActionContext)
    */
   @Override
-  public void setContext(ActionContext context_p) {
-    super.setContext(context_p);
-    _editActionGroup.setContext(context_p);
+  public void setContext(ActionContext context) {
+    super.setContext(context);
+    editActionGroup.setContext(context);
   }
 
   @Override
@@ -194,6 +194,6 @@ public class ProjectActionProvider extends CommonActionProvider {
     closeUnrelatedProjectsAction.selectionChanged(selection);
     closeProjectAction.selectionChanged(selection);
     // Capella Action Group.
-    _editActionGroup.updateActionBars();
+    editActionGroup.updateActionBars();
   }
 }

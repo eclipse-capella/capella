@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -49,8 +49,8 @@ public class KeyValueGroup extends AbstractSemanticField {
    * @param textGroup
    */
   private void createKeyTextField(Group textGroup) {
-    _widgetFactory.createCLabel(textGroup, Messages.getString("KeyValueGroup.Key.Label")); //$NON-NLS-1$
-    _keyField = _widgetFactory.createText(textGroup, ""); //$NON-NLS-1$
+    widgetFactory.createCLabel(textGroup, Messages.getString("KeyValueGroup.Key.Label")); //$NON-NLS-1$
+    _keyField = widgetFactory.createText(textGroup, ""); //$NON-NLS-1$
     _keyField.addFocusListener(this);
     _keyField.addKeyListener(this);
     _keyField.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
@@ -60,8 +60,8 @@ public class KeyValueGroup extends AbstractSemanticField {
    * @param textGroup
    */
   private void createValueTextField(Group textGroup) {
-    _widgetFactory.createCLabel(textGroup, Messages.getString("KeyValueGroup.Value.Label")); //$NON-NLS-1$
-    _valueField = _widgetFactory.createText(textGroup, ""); //$NON-NLS-1$
+    widgetFactory.createCLabel(textGroup, Messages.getString("KeyValueGroup.Value.Label")); //$NON-NLS-1$
+    _valueField = widgetFactory.createText(textGroup, ""); //$NON-NLS-1$
     _valueField.addFocusListener(this);
     _valueField.addKeyListener(this);
     _valueField.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
@@ -74,11 +74,11 @@ public class KeyValueGroup extends AbstractSemanticField {
   public void loadData(EObject semanticElement) {
     loadData(semanticElement, null);
 
-    if (null != _semanticElement) {
+    if (null != semanticElement) {
       if (null != _keyField)
-        setTextValue(_keyField, _semanticElement, CapellacorePackage.eINSTANCE.getKeyValue_Key());
+        setTextValue(_keyField, semanticElement, CapellacorePackage.eINSTANCE.getKeyValue_Key());
       if (null != _valueField)
-        setTextValue(_valueField, _semanticElement, CapellacorePackage.eINSTANCE.getKeyValue_Value());
+        setTextValue(_valueField, semanticElement, CapellacorePackage.eINSTANCE.getKeyValue_Value());
     }
   }
 
@@ -88,9 +88,9 @@ public class KeyValueGroup extends AbstractSemanticField {
   @Override
   protected void fillTextField(Text textField) {
     if (textField.equals(_keyField)) {
-      setDataValue(_semanticElement, CapellacorePackage.eINSTANCE.getKeyValue_Key(), _keyField.getText());
+      setDataValue(semanticElement, CapellacorePackage.eINSTANCE.getKeyValue_Key(), _keyField.getText());
     } else if (textField.equals(_valueField)) {
-      setDataValue(_semanticElement, CapellacorePackage.eINSTANCE.getKeyValue_Value(), _valueField.getText());
+      setDataValue(semanticElement, CapellacorePackage.eINSTANCE.getKeyValue_Value(), _valueField.getText());
     }
   }
 

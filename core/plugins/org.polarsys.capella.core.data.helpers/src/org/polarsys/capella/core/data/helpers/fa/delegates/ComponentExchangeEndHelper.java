@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,27 +21,24 @@ public class ComponentExchangeEndHelper {
 	private static ComponentExchangeEndHelper instance;
 
 	private ComponentExchangeEndHelper() {
-    // do nothing
+      // Do nothing
 	}
 
 	public static ComponentExchangeEndHelper getInstance(){
-		if(instance == null)
+		if(instance == null) {
 			instance = new ComponentExchangeEndHelper();
+		}
 		return instance;
 	}
 
-	public Object doSwitch(ComponentExchangeEnd element,EStructuralFeature feature) {
-		Object ret = null;
+	public Object doSwitch(ComponentExchangeEnd element, EStructuralFeature feature) {
 
 		// no helper found... searching in super classes...
-    if (null == ret) {
-      ret = InformationsExchangerHelper.getInstance().doSwitch(element, feature);
-    }
-    if (null == ret) {
-      ret = CapellaElementHelper.getInstance().doSwitch(element, feature);
-    }
-
+		Object ret = InformationsExchangerHelper.getInstance().doSwitch(element, feature);
+		
+		if (null == ret) {
+			ret = CapellaElementHelper.getInstance().doSwitch(element, feature);
+		}
 		return ret;
 	}
-	
 }

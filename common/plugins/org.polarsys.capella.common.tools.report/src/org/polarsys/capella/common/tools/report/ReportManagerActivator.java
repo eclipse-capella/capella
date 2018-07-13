@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,17 +14,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Appender;
+import org.apache.log4j.Logger;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.Plugin;
 import org.osgi.framework.BundleContext;
-
-import org.polarsys.capella.common.tools.report.appenders.IFlushableAppenders;
 import org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper;
+import org.polarsys.capella.common.tools.report.appenders.IFlushableAppenders;
 
 /**
  * The activator class controls the plug-in life cycle
  */
 public class ReportManagerActivator extends Plugin {
+  
+  private static final Logger logger = Logger.getLogger(ReportManagerActivator.class.getName());
 
   private static final String APPENDERS_EXTENSION_ID = "Log4jAppendersExtension"; //$NON-NLS-1$
   private static final String FLUSHABLE_APPENDERS_EXTENSION_ID = "AppenderOutputFlushCapability"; //$NON-NLS-1$
@@ -33,8 +35,8 @@ public class ReportManagerActivator extends Plugin {
 
   private static final String REPORT_PLUGIN_ID = "org.polarsys.capella.common.tools.report"; //$NON-NLS-1$
 
-  private List<Appender> _appenders;
-  private List<IFlushableAppenders> _flushableappenders;
+  private List<Appender> appenders;
+  private List<IFlushableAppenders> flushableAppenders;
 
   public ReportManagerActivator() {
     plugin = this;
@@ -44,41 +46,41 @@ public class ReportManagerActivator extends Plugin {
    * Get Appender(s) that contributed to plugin 'Log4jAppendersExtension' extension point
    */
   public List<Appender> getAppenders() {
-    if ((_appenders == null) || (_appenders.size() == 0)) {
+    if ((appenders == null) || (appenders.isEmpty())) {
       try {
-        _appenders = new ArrayList<Appender>();
+        appenders = new ArrayList<>();
         IConfigurationElement[] appendersProvider = ExtensionPointHelper.getConfigurationElements(REPORT_PLUGIN_ID, APPENDERS_EXTENSION_ID);
         for (IConfigurationElement configurationElement : appendersProvider) {
           Appender newAppender = (Appender) ExtensionPointHelper.createInstance(configurationElement, ExtensionPointHelper.ATT_CLASS);
           if (null != newAppender) {
-            _appenders.add(newAppender);
+            appenders.add(newAppender);
           }
         }
-      } catch (Throwable ex) {
-        ex.printStackTrace();
+      } catch (Exception ex) {
+    	  logger.error(ex.getMessage(), ex);
       }
     }
-    return _appenders;
+    return appenders;
   }
 
   /**
-   * Get Appender(s) that contributed to plugin 'AppenderOutputFlushCapability' extension point
+   * Get Appender(s) that contributed to plug-in 'AppenderOutputFlushCapability' extension point
    */
   public List<IFlushableAppenders> getFlushableAppenders() {
-    if ((_flushableappenders == null) || (_flushableappenders.size() == 0)) {
+    if ((flushableAppenders == null) || (flushableAppenders.isEmpty())) {
       try {
-        _flushableappenders = new ArrayList<IFlushableAppenders>();
+    	  flushableAppenders = new ArrayList<>();
         IConfigurationElement[] appendersProvider = ExtensionPointHelper.getConfigurationElements(REPORT_PLUGIN_ID, FLUSHABLE_APPENDERS_EXTENSION_ID);
         for (IConfigurationElement configurationElement : appendersProvider) {
           IFlushableAppenders newAppender = (IFlushableAppenders) ExtensionPointHelper.createInstance(configurationElement, ExtensionPointHelper.ATT_CLASS);
-          _flushableappenders.add(newAppender);
+          flushableAppenders.add(newAppender);
         }
 
-      } catch (Throwable ex) {
-        ex.printStackTrace();
+      } catch (Exception ex) {
+    	  logger.error(ex.getMessage(), ex);
       }
     }
-    return _flushableappenders;
+    return flushableAppenders;
   }
 
   /**

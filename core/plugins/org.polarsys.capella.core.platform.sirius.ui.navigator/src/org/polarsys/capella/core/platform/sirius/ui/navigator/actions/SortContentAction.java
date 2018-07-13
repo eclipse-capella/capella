@@ -114,7 +114,7 @@ public class SortContentAction extends BaseSelectionListenerAction {
 
   @SuppressWarnings("rawtypes")
   protected Collection<EObject> filterNonEObjects(Collection elements) {
-    Collection<EObject> result = new ArrayList<EObject>();
+    Collection<EObject> result = new ArrayList<>();
     for (Object elt : elements) {
       if (elt instanceof EObject) {
         result.add((EObject) elt);

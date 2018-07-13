@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -83,17 +83,17 @@ public class MultipleSemanticField extends BrowseSemanticField {
   protected void handleOpenButtonClicked(final Button button) {
     AbstractReadWriteCommand command = new AbstractReadWriteCommand() {
       public void run() {
-        List<EObject> currentElements = _controller.readOpenValues(_semanticElement, _semanticFeature, false);
-        List<EObject> availableElements = _controller.readOpenValues(_semanticElement, _semanticFeature, true);
+        List<EObject> currentElements = _controller.readOpenValues(semanticElement, semanticFeature, false);
+        List<EObject> availableElements = _controller.readOpenValues(semanticElement, semanticFeature, true);
         availableElements.removeAll(currentElements);
 
-        String title = NamingHelper.getDefaultTitle(_semanticElement);
-        String message = NamingHelper.getDefaultMessage(_semanticElement, (_semanticFeature != null) ? _semanticFeature.getName() : ""); //$NON-NLS-1$
+        String title = NamingHelper.getDefaultTitle(semanticElement);
+        String message = NamingHelper.getDefaultMessage(semanticElement, (semanticFeature != null) ? semanticFeature.getName() : ""); //$NON-NLS-1$
         
         // calling selection wizard
         List<EObject> allResults = openTransferDialog(button, currentElements, availableElements, title, message);
         if (null != allResults) {
-          List<EObject> writeOpenValues = _controller.writeOpenValues(_semanticElement, _semanticFeature, allResults);
+          List<EObject> writeOpenValues = _controller.writeOpenValues(semanticElement, semanticFeature, allResults);
           // Update the widget according to user selection.
           setValueTextField(writeOpenValues);
         }

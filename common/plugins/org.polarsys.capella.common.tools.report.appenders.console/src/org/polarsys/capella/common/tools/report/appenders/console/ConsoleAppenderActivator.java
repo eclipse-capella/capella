@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,16 +10,18 @@
  *******************************************************************************/
 package org.polarsys.capella.common.tools.report.appenders.console;
 
+import org.apache.log4j.Logger;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.Plugin;
 import org.osgi.framework.BundleContext;
-
 import org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper;
 
 /**
  * The activator class controls the plug-in life cycle
  */
 public class ConsoleAppenderActivator extends Plugin {
+  
+  private static final Logger logger = Logger.getLogger(ConsoleAppenderActivator.class.getName());
 
   private static final String CONSOLE_EXTENSION_ID = "ConsoleExtension"; //$NON-NLS-1$
   // The shared instance
@@ -28,7 +30,7 @@ public class ConsoleAppenderActivator extends Plugin {
   // The plug-in ID
   public static final String PLUGIN_ID = "org.polarsys.capella.common.tools.report.appenders.console"; //$NON-NLS-1$
 
-  private IReportConsole _consoleAppender;
+  private IReportConsole consoleAppender;
 
   /**
    * The constructor
@@ -38,21 +40,21 @@ public class ConsoleAppenderActivator extends Plugin {
   }
 
   /**
-   * Get Console Appender that contributed to plugin 'ConsoleExtension' extension point
+   * Get Console Appender that contributed to plug-in 'ConsoleExtension' extension point
    * @return
    */
   public IReportConsole getReportConsole() {
-    if (_consoleAppender == null) {
+    if (consoleAppender == null) {
       try {
         IConfigurationElement[] consoleProvider = ExtensionPointHelper.getConfigurationElements(PLUGIN_ID, CONSOLE_EXTENSION_ID);
         for (IConfigurationElement configurationElement : consoleProvider) {
-          _consoleAppender = (IReportConsole) ExtensionPointHelper.createInstance(configurationElement, ExtensionPointHelper.ATT_CLASS);
+          consoleAppender = (IReportConsole) ExtensionPointHelper.createInstance(configurationElement, ExtensionPointHelper.ATT_CLASS);
         }
-      } catch (Throwable ex) {
-        ex.printStackTrace();
+      } catch (Exception ex) {
+    	  logger.error(ex.getMessage(), ex);
       }
     }
-    return _consoleAppender;
+    return consoleAppender;
   }
 
   /*

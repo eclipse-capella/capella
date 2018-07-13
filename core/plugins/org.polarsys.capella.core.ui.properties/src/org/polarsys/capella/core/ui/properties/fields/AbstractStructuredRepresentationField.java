@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -70,7 +70,7 @@ public abstract class AbstractStructuredRepresentationField extends AbstractSema
    * Create the actions.
    */
   private void createActions(Composite parent) {
-    CLabel label = _widgetFactory.createCLabel(_delegatedViewer.getViewerGroup(parent), _label);
+    CLabel label = widgetFactory.createCLabel(_delegatedViewer.getViewerGroup(parent), _label);
     label.setLayoutData(new GridData(SWT.FILL, GridData.VERTICAL_ALIGN_FILL, true, false));
 
     createCustomActions(parent);
@@ -97,7 +97,7 @@ public abstract class AbstractStructuredRepresentationField extends AbstractSema
    * @return a not <code>null</code> instance.
    */
   protected Button createTableButton(Composite parent, Image image, final Runnable runnable) {
-    Button tableButton = _widgetFactory.createButton(_delegatedViewer.getViewerGroup(parent), null, SWT.PUSH);
+    Button tableButton = widgetFactory.createButton(_delegatedViewer.getViewerGroup(parent), null, SWT.PUSH);
     tableButton.setImage(image);
     tableButton.setLayoutData(new GridData(GridData.END, GridData.VERTICAL_ALIGN_FILL, false, false));
     tableButton.addSelectionListener(new SelectionAdapter() {
@@ -122,7 +122,7 @@ public abstract class AbstractStructuredRepresentationField extends AbstractSema
    */
   @Override
   public void loadData(EObject semanticElement) {
-    loadData(semanticElement, _semanticFeature);
+    loadData(semanticElement, semanticFeature);
   }
 
   /**
@@ -144,8 +144,8 @@ public abstract class AbstractStructuredRepresentationField extends AbstractSema
    */
   @SuppressWarnings("unchecked")
   protected List<EObject> getReferencedElementsByContainedOnes() {
-    List<EObject> containedElements = (List<EObject>) _semanticElement.eGet(_semanticFeature);
-    ArrayList<EObject> referencedElements = new ArrayList<EObject>(0);
+    List<EObject> containedElements = (List<EObject>) semanticElement.eGet(semanticFeature);
+    ArrayList<EObject> referencedElements = new ArrayList<>(0);
     // Collect referenced elements according specified referenced feature.
     for (EObject containedElement : containedElements) {
       if (_referencedFeature != null) {
@@ -164,8 +164,8 @@ public abstract class AbstractStructuredRepresentationField extends AbstractSema
 
   @SuppressWarnings("unchecked")
   protected List<EObject> getContainedElementsfor(List<EObject> referencedElements) {
-    List<EObject> result = new ArrayList<EObject>(0);
-    Iterator<EObject> containedElements = ((List<EObject>) _semanticElement.eGet(_semanticFeature)).iterator();
+    List<EObject> result = new ArrayList<>(0);
+    Iterator<EObject> containedElements = ((List<EObject>) semanticElement.eGet(semanticFeature)).iterator();
     // Iterate over contained elements to delete the ones that refer selected referenced elements.
     while (containedElements.hasNext()) {
       EObject containedElement = containedElements.next();
@@ -183,7 +183,7 @@ public abstract class AbstractStructuredRepresentationField extends AbstractSema
    */
   protected void refreshViewer() {
     // Refresh the viewer.
-    loadData(_semanticElement);
+    loadData(semanticElement);
   }
 
   /**

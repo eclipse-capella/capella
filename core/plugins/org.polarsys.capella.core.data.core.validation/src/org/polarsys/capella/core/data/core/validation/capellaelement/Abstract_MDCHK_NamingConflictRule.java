@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -55,7 +55,7 @@ public abstract class Abstract_MDCHK_NamingConflictRule extends AbstractValidati
   private ModellingcoreConflictSwitch modellingcoreSwitch;
 
   public Abstract_MDCHK_NamingConflictRule() {
-    capellaSwitch = new CapellaSwitch<Boolean>();
+    capellaSwitch = new CapellaSwitch<>();
     informationSwitch = new InformationConflictSwitch();
     modellingcoreSwitch = new ModellingcoreConflictSwitch();
     capellaSwitch.setInformation(informationSwitch);
@@ -74,7 +74,7 @@ public abstract class Abstract_MDCHK_NamingConflictRule extends AbstractValidati
    */
   private static final String TYPE_PREFIX = " ("; //$NON-NLS-1$
 
-  List<AbstractNamedElement> conflictCandidates = new ArrayList<AbstractNamedElement>();
+  List<AbstractNamedElement> conflictCandidates = new ArrayList<>();
 
   @Override
   public IStatus validate(IValidationContext ctx) {
@@ -84,10 +84,10 @@ public abstract class Abstract_MDCHK_NamingConflictRule extends AbstractValidati
       // Do not check "naming conflicts" under scenarios and capabilities
       if ((eObj instanceof CapellaElement) && !((eObj instanceof AbstractCapability) || (eObj instanceof Scenario))) {
         // This collection will store the conflicts statuses
-        Collection<IStatus> statuses = new ArrayList<IStatus>();
+        Collection<IStatus> statuses = new ArrayList<>();
         boolean hasConflict = false;
         // Creates a Map which will map each type with a list of the instances names of this type
-        Map<EClass, List<AbstractNamedElement>> typesAndNames = new HashMap<EClass, List<AbstractNamedElement>>();
+        Map<EClass, List<AbstractNamedElement>> typesAndNames = new HashMap<>();
         CapellaElement elt = (CapellaElement) eObj;
 
         for (EObject obj : elt.eContents()) {
@@ -143,7 +143,7 @@ public abstract class Abstract_MDCHK_NamingConflictRule extends AbstractValidati
     if (!typesAndNames.containsKey(currentElement.eClass())) {
       // This type doesn't have a map entry
       // Creates the map entry for the type
-      List<AbstractNamedElement> elements = new ArrayList<AbstractNamedElement>();
+      List<AbstractNamedElement> elements = new ArrayList<>();
       elements.add(currentElement);
       typesAndNames.put(currentElement.eClass(), elements);
 
@@ -151,7 +151,7 @@ public abstract class Abstract_MDCHK_NamingConflictRule extends AbstractValidati
       // this type already has a map entry
       conflictCandidates = typesAndNames.get(currentElement.eClass());
 
-      Set<AbstractNamedElement> conflictingElements = new HashSet<AbstractNamedElement>();
+      Set<AbstractNamedElement> conflictingElements = new HashSet<>();
       for (AbstractNamedElement conflictCandidate : conflictCandidates) {
         if (currentElement instanceof ComponentExchange) {
           hasConflictComponentExchange(conflictingElements, conflictCandidate, (ComponentExchange) currentElement);
@@ -164,11 +164,10 @@ public abstract class Abstract_MDCHK_NamingConflictRule extends AbstractValidati
 
         } else if (hasConflict(currentElement, conflictCandidates)) {
           conflictingElements.add(currentElement);
-
         }
       }
 
-      if ((conflictingElements != null) && !conflictingElements.isEmpty()) {
+      if (!conflictingElements.isEmpty()) {
         hasConflict = true;
         for (Object element : conflictingElements) {
           AbstractNamedElement abstractNamedElement = (AbstractNamedElement) element;

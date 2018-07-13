@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -63,49 +63,49 @@ public class PropertyGroup extends AbstractSemanticField {
   public PropertyGroup(Composite parent, TabbedPropertySheetWidgetFactory widgetFactory) {
     super(widgetFactory);
 
-    Group group = _widgetFactory.createGroup(parent, ""); //$NON-NLS-1$
+    Group group = widgetFactory.createGroup(parent, ""); //$NON-NLS-1$
     group.setLayout(new GridLayout(6, false));
     group.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 
     // Role
-    _widgetFactory.createCLabel(group, Messages.getString("Property.RoleLabel")); //$NON-NLS-1$
-    roleTextField = _widgetFactory.createText(group, ""); //$NON-NLS-1$
+    widgetFactory.createCLabel(group, Messages.getString("Property.RoleLabel")); //$NON-NLS-1$
+    roleTextField = widgetFactory.createText(group, ""); //$NON-NLS-1$
     roleTextField.addFocusListener(this);
     roleTextField.addKeyListener(this);
     GridData gd = new GridData(GridData.FILL_HORIZONTAL);
     gd.horizontalSpan = 4;
     roleTextField.setLayoutData(gd);
 
-    Group checkGroup = _widgetFactory.createGroup(group, ""); //$NON-NLS-1$
+    Group checkGroup = widgetFactory.createGroup(group, ""); //$NON-NLS-1$
     checkGroup.setLayout(new GridLayout(5, true));
     gd = new GridData(GridData.FILL_HORIZONTAL);
     gd.horizontalSpan = 5;
     checkGroup.setLayoutData(gd);
-    propertyBooleanPropertiesCheckbox = new PropertyBooleanPropertiesCheckbox(checkGroup, _widgetFactory, true, true, false);
-    multiplicityElementBooleanPropertiesCheckbox = new MultiplicityElementBooleanPropertiesCheckbox(checkGroup, _widgetFactory, true, true, true, true);
-    featureBooleanPropertiesCheckbox = new FeatureBooleanPropertiesCheckbox(checkGroup, _widgetFactory, true, true);
+    propertyBooleanPropertiesCheckbox = new PropertyBooleanPropertiesCheckbox(checkGroup, widgetFactory, true, true, false);
+    multiplicityElementBooleanPropertiesCheckbox = new MultiplicityElementBooleanPropertiesCheckbox(checkGroup, widgetFactory, true, true, true, true);
+    featureBooleanPropertiesCheckbox = new FeatureBooleanPropertiesCheckbox(checkGroup, widgetFactory, true, true);
 
-    aggregationKindGroup = new AggregationKindGroup(group, _widgetFactory);
+    aggregationKindGroup = new AggregationKindGroup(group, widgetFactory);
 
     createNavigableCheckbox(checkGroup);
 
-    abstractTypeField = new SimpleSemanticField(group, Messages.getString("TypedElement.TypeLabel"), _widgetFactory, new TypedElementController()); //$NON-NLS-1$
+    abstractTypeField = new SimpleSemanticField(group, Messages.getString("TypedElement.TypeLabel"), widgetFactory, new TypedElementController()); //$NON-NLS-1$
 
     minCardField = new SimpleEditableSemanticField(group,
-        Messages.getString("MultiplicityElement.MinCardLabel"), _widgetFactory, "", new MultiplicityElementCardController(), true, 0); //$NON-NLS-1$ //$NON-NLS-2$
+        Messages.getString("MultiplicityElement.MinCardLabel"), widgetFactory, "", new MultiplicityElementCardController(), true, 0); //$NON-NLS-1$ //$NON-NLS-2$
     minCardField.setDisplayedInWizard(true);
 
     maxCardField = new SimpleEditableSemanticField(group,
-        Messages.getString("MultiplicityElement.MaxCardLabel"), _widgetFactory, "", new MultiplicityElementCardController(), true, 1); //$NON-NLS-1$ //$NON-NLS-2$
+        Messages.getString("MultiplicityElement.MaxCardLabel"), widgetFactory, "", new MultiplicityElementCardController(), true, 1); //$NON-NLS-1$ //$NON-NLS-2$
     maxCardField.setDisplayedInWizard(true);
 
-    minValueField = new SimpleEditableSemanticField(group, Messages.getString("MultiplicityElement.MinValueLabel"), _widgetFactory, "", new MultiplicityElementValueController()); //$NON-NLS-1$ //$NON-NLS-2$
-    maxValueField = new SimpleEditableSemanticField(group, Messages.getString("MultiplicityElement.MaxValueLabel"), _widgetFactory, "", new MultiplicityElementValueController()); //$NON-NLS-1$ //$NON-NLS-2$
+    minValueField = new SimpleEditableSemanticField(group, Messages.getString("MultiplicityElement.MinValueLabel"), widgetFactory, "", new MultiplicityElementValueController()); //$NON-NLS-1$ //$NON-NLS-2$
+    maxValueField = new SimpleEditableSemanticField(group, Messages.getString("MultiplicityElement.MaxValueLabel"), widgetFactory, "", new MultiplicityElementValueController()); //$NON-NLS-1$ //$NON-NLS-2$
     defaultValueField = new SimpleEditableSemanticField(group,
-        Messages.getString("MultiplicityElement.DefaultValueLabel"), _widgetFactory, "", new MultiplicityElementValueController()); //$NON-NLS-1$ //$NON-NLS-2$
-    nullValueField = new SimpleEditableSemanticField(group, Messages.getString("MultiplicityElement.NullValueLabel"), _widgetFactory, "", new MultiplicityElementValueController()); //$NON-NLS-1$ //$NON-NLS-2$
+        Messages.getString("MultiplicityElement.DefaultValueLabel"), widgetFactory, "", new MultiplicityElementValueController()); //$NON-NLS-1$ //$NON-NLS-2$
+    nullValueField = new SimpleEditableSemanticField(group, Messages.getString("MultiplicityElement.NullValueLabel"), widgetFactory, "", new MultiplicityElementValueController()); //$NON-NLS-1$ //$NON-NLS-2$
 
-    visibilityKindGroup = new VisibilityKindGroup(group, _widgetFactory);
+    visibilityKindGroup = new VisibilityKindGroup(group, widgetFactory);
   }
 
   /**
@@ -113,7 +113,7 @@ public class PropertyGroup extends AbstractSemanticField {
    * @param widgetFactory
    */
   protected void createNavigableCheckbox(Group checkGroup) {
-    navigableCheckbox = new NavigableCheckbox(checkGroup, _widgetFactory);
+    navigableCheckbox = new NavigableCheckbox(checkGroup, widgetFactory);
   }
 
   /**
@@ -123,8 +123,8 @@ public class PropertyGroup extends AbstractSemanticField {
   public void loadData(EObject semanticElement) {
     loadData(semanticElement, null);
 
-    if (null != _semanticElement) {
-      setTextValue(roleTextField, _semanticElement, ModellingcorePackage.eINSTANCE.getAbstractNamedElement_Name());
+    if (null != semanticElement) {
+      setTextValue(roleTextField, semanticElement, ModellingcorePackage.eINSTANCE.getAbstractNamedElement_Name());
     }
 
     featureBooleanPropertiesCheckbox.loadData(semanticElement);
@@ -223,7 +223,7 @@ public class PropertyGroup extends AbstractSemanticField {
   @Override
   protected void fillTextField(Text textField) {
     if (textField.equals(roleTextField)) {
-      setDataValue(_semanticElement, ModellingcorePackage.eINSTANCE.getAbstractNamedElement_Name(), roleTextField.getText());
+      setDataValue(semanticElement, ModellingcorePackage.eINSTANCE.getAbstractNamedElement_Name(), roleTextField.getText());
     }
   }
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,17 +11,19 @@
 
 package org.polarsys.capella.common.ui.toolkit.editors;
 
+import org.apache.log4j.Logger;
 import org.eclipse.jface.wizard.IWizard;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Shell;
-
 import org.polarsys.capella.common.ui.services.UIUtil;
 
 /**
  * The basic editor dialog. This editor type is not application modal.
  */
 public class BasicEditorDialog extends WizardDialog {
+	
+  private static final Logger logger = Logger.getLogger(BasicEditorDialog.class.getName());
 
   /**
    * Constructs the basic editor dialog. Removes the modal feature of the wizard dialog.
@@ -59,8 +61,8 @@ public class BasicEditorDialog extends WizardDialog {
       UIUtil.setDialogOpen(true);
       return super.open();
 
-    } catch (Throwable e) {
-      e.printStackTrace();
+    } catch (Exception ex) {
+      logger.error(ex.getMessage());
       UIUtil.setDialogOpen(false);
       return getReturnCode();
     }
@@ -74,7 +76,7 @@ public class BasicEditorDialog extends WizardDialog {
     try {
       UIUtil.setDialogOpen(false);
       super.finishPressed();
-    } catch (Throwable ex) {
+    } catch (Exception ex) {
       UIUtil.setDialogOpen(false);
     } finally {
       UIUtil.setDialogOpen(false);

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -73,7 +73,7 @@ public abstract class AbstractSemanticKindGroup extends AbstractSemanticButtonGr
    * @return a not <code>null</code> object.
    */
   protected Group createGroup(Composite parent, String label, boolean enabled, int numColumns) {
-    _group = _widgetFactory.createGroup(parent, label);
+    _group = widgetFactory.createGroup(parent, label);
     _group.setLayout(new GridLayout(numColumns, true));
     GridData gd = new GridData(GridData.FILL_HORIZONTAL);
     gd.horizontalSpan = ((GridLayout) parent.getLayout()).numColumns;
@@ -87,7 +87,7 @@ public abstract class AbstractSemanticKindGroup extends AbstractSemanticButtonGr
    */
   @Override
   public void loadData(EObject semanticElement) {
-    loadData(semanticElement, _semanticFeature);
+    loadData(semanticElement, semanticFeature);
   }
 
   /**
@@ -97,7 +97,7 @@ public abstract class AbstractSemanticKindGroup extends AbstractSemanticButtonGr
   public void loadData(EObject capellaElement, EStructuralFeature feature) {
     super.loadData(capellaElement, feature);
 
-    Object value = _semanticElement.eGet(_semanticFeature);
+    Object value = semanticElement.eGet(semanticFeature);
     if (null == value) {
       Button defaultBtn = getDefaultSemanticField();
       if (null != defaultBtn) {
@@ -140,7 +140,7 @@ public abstract class AbstractSemanticKindGroup extends AbstractSemanticButtonGr
   protected void setValue(final Object value) {
     AbstractReadWriteCommand command = new AbstractReadWriteCommand() {
       public void run() {
-        _semanticElement.eSet(_semanticFeature, value);
+        semanticElement.eSet(semanticFeature, value);
       }
     };
     executeCommand(command);

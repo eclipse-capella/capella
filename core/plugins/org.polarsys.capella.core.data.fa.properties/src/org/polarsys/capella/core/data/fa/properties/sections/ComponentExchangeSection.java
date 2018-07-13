@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,7 +19,6 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
-import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
 import org.polarsys.capella.core.business.queries.capellacore.BusinessQueriesProvider;
 import org.polarsys.capella.core.data.core.properties.sections.NamedElementSection;
@@ -28,7 +27,6 @@ import org.polarsys.capella.core.data.fa.properties.controllers.ComponentExchang
 import org.polarsys.capella.core.data.fa.properties.controllers.ComponentExchange_AllocatedFunctionalExchangesController;
 import org.polarsys.capella.core.data.fa.properties.controllers.ComponentExchange_RealizedComponentExchangesController;
 import org.polarsys.capella.core.data.fa.properties.fields.ComponentExchangeKindGroup;
-import org.polarsys.capella.core.model.helpers.delete.DeleteHelper;
 import org.polarsys.capella.core.ui.properties.controllers.AbstractMultipleSemanticFieldController;
 import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticField;
 import org.polarsys.capella.core.ui.properties.fields.MultipleSemanticField;
@@ -80,7 +78,7 @@ public class ComponentExchangeSection extends NamedElementSection {
         new ComponentExchangeCategoriesController()) {
       @Override
       protected void removeAllDataValue(EObject element, EStructuralFeature feature) {
-        _controller.writeOpenValues(_semanticElement, _semanticFeature, (List) Collections.emptyList());
+        _controller.writeOpenValues(semanticElement, semanticFeature, (List) Collections.emptyList());
       }
     };
     categoriesField.setDisplayedInWizard(displayedInWizard);
@@ -122,7 +120,7 @@ public class ComponentExchangeSection extends NamedElementSection {
    */
   @Override
   public List<AbstractSemanticField> getSemanticFields() {
-    List<AbstractSemanticField> fields = new ArrayList<AbstractSemanticField>();
+    List<AbstractSemanticField> fields = new ArrayList<>();
 
     fields.addAll(super.getSemanticFields());
     fields.add(allocatedExchangeItemsField);

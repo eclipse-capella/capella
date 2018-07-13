@@ -151,17 +151,17 @@ public class StateTransitionTriggerField extends ContainmentTableField {
       @Override
       public void run() {
         StateEvent stateEvent = (StateEvent) CapellacommonFactory.eINSTANCE.create(eventClass);
-        BlockArchitectureExt.getDataPkg(BlockArchitectureExt.getRootBlockArchitecture(_semanticElement)).getOwnedStateEvents().add(stateEvent);
+        BlockArchitectureExt.getDataPkg(BlockArchitectureExt.getRootBlockArchitecture(semanticElement)).getOwnedStateEvents().add(stateEvent);
         org.polarsys.capella.core.model.helpers.CapellaElementExt.creationService(stateEvent);
 
         if (CapellaUIPropertiesPlugin.getDefault().openWizard(stateEvent)) {
-          ((List<EObject>) _semanticElement.eGet(_semanticFeature)).add(stateEvent);
+          ((List<EObject>) semanticElement.eGet(semanticFeature)).add(stateEvent);
         } else {
           stateEvent.destroy();
         }
       }
     };
-    TransactionHelper.getExecutionManager(_semanticElement).execute(command);
+    TransactionHelper.getExecutionManager(semanticElement).execute(command);
     refreshViewer();
   }
 
@@ -173,17 +173,17 @@ public class StateTransitionTriggerField extends ContainmentTableField {
     AbstractReadWriteCommand command = new AbstractReadWriteCommand() {
       @Override
       public void run() {
-        List<EObject> currentElements = _controller.readOpenValues(_semanticElement, _semanticFeature, false);
-        List<EObject> availableElements = _controller.readOpenValues(_semanticElement, _semanticFeature, true);
+        List<EObject> currentElements = _controller.readOpenValues(semanticElement, semanticFeature, false);
+        List<EObject> availableElements = _controller.readOpenValues(semanticElement, semanticFeature, true);
         availableElements.removeAll(currentElements);
 
-        String title = NamingHelper.getDefaultTitle(_semanticElement);
-        String message = NamingHelper.getDefaultMessage(_semanticElement, (_semanticFeature != null) ? _semanticFeature.getName() : ""); //$NON-NLS-1$
+        String title = NamingHelper.getDefaultTitle(semanticElement);
+        String message = NamingHelper.getDefaultMessage(semanticElement, (semanticFeature != null) ? semanticFeature.getName() : ""); //$NON-NLS-1$
 
         // calling selection wizard
         List<EObject> allResults = DialogHelper.openTransferDialog(button, currentElements, availableElements, title, message);
         if (null != allResults) {
-          _controller.writeOpenValues(_semanticElement, _semanticFeature, allResults);
+          _controller.writeOpenValues(semanticElement, semanticFeature, allResults);
         }
       }
     };
@@ -208,8 +208,8 @@ public class StateTransitionTriggerField extends ContainmentTableField {
           public void run() {
 
             for (Object object : selectedReferencedElements) {
-              if (_semanticElement instanceof StateTransition) {
-                StateTransition transition = (StateTransition) _semanticElement;
+              if (semanticElement instanceof StateTransition) {
+                StateTransition transition = (StateTransition) semanticElement;
                 transition.getTriggers().remove(object);
               }
             }

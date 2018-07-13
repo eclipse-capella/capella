@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -34,26 +34,29 @@ import org.polarsys.capella.core.validation.utils.ValidationHelper;
  */
 public class ExportUtils {
 
-	private final static int COMPARATOR_IDX = 0;
-	private static IConfigurationElement[] quickFixContributions = getAllContributions();
+	private static final int COMPARATOR_IDX = 0;
+	
+	private ExportUtils() {
+		// Do nothing
+	}
 	
 
 	/**
 	 * Export validation rules.
 	 * 
-	 * @param dataExporter_p
-	 * @param filename_p
+	 * @param dataExporter
+	 * @param filename
 	 * @return <code>true</code> whether job was done, <code>false</code>
 	 *         otherwise.
 	 */
-	public static boolean exportValidationRules(DataExporter dataExporter_p,
-			String filename_p) {
+	public static boolean exportValidationRules(DataExporter dataExporter,
+			String filename) {
 
 		// TODO implements switch with selected Exporter...
 
 		boolean result = false;
 
-		List<String[]> data = new ArrayList<String[]>();
+		List<String[]> data = new ArrayList<>();
 
 		IEclipsePreferences preferences = new InstanceScope()
 				.getNode(CapellaValidationActivator.getDefault().getPluginId());
@@ -75,8 +78,8 @@ public class ExportUtils {
 		boolean addit = false;
 		for (IConstraintDescriptor icd : ValidationHelper
 				.getAllConstraintDescriptors()) {
-			addit = (!onlyActiveRules || (onlyActiveRules && icd.isEnabled() == true))
-					&& (!onlyCapellaRules || (onlyCapellaRules && getCategory(icd).getPath()
+			addit = (!onlyActiveRules || (icd.isEnabled() == true))
+					&& (!onlyCapellaRules || (getCategory(icd).getPath()
 							.startsWith(
 									CapellaConstraintFilter.CAPELLA_CONSTRAINT_CATEGORY_PATH)));
 
@@ -87,8 +90,8 @@ public class ExportUtils {
 
 		Comparator<String[]> comparator = new Comparator<String[]>() {
 
-			public int compare(String[] o1_p, String[] o2_p) {
-				return o1_p[COMPARATOR_IDX].compareTo(o2_p[COMPARATOR_IDX]);
+			public int compare(String[] o1, String[] o2) {
+				return o1[COMPARATOR_IDX].compareTo(o2[COMPARATOR_IDX]);
 			}
 
 		};
@@ -110,36 +113,29 @@ public class ExportUtils {
 		// Perform the job
 		//
 
-		result = dataExporter_p.exportToFile(filename_p, data);
+		result = dataExporter.exportToFile(filename, data);
 
 		return result;
 	}
 
-	static private String[] prepareCSVTXT(IConstraintDescriptor icd_p) {
-
-		Category category = getCategory(icd_p);
-
-		String[] result = new String[] { category.getPath(),
-				category.getName(), icd_p.getId(),
-				icd_p.getSeverity().getLocalizedName(),
-				String.valueOf(icd_p.isEnabled()),
-				icd_p.getEvaluationMode().getLocalizedName(),
-				icd_p.getDescription() };
-
-		return result;
+	private static String[] prepareCSVTXT(IConstraintDescriptor icd) {
+		Category category = getCategory(icd);
+		return new String[] { category.getPath(),
+				category.getName(), icd.getId(),
+				icd.getSeverity().getLocalizedName(),
+				String.valueOf(icd.isEnabled()),
+				icd.getEvaluationMode().getLocalizedName(),
+				icd.getDescription() };
 	}
 
 
-	static private IConfigurationElement[] getAllContributions() {
+	private static IConfigurationElement[] getAllContributions() {
 		String point = "org.polarsys.capella.core.validation.ui.ide.capellaQuickFix";
-		IConfigurationElement[] configurationElements = Platform
+		return Platform
 				.getExtensionRegistry().getConfigurationElementsFor(point);
-		return configurationElements;
 	}
 
-	static private Category getCategory(IConstraintDescriptor icd_p) {
-		return icd_p.getCategories().iterator().next();
+	private static Category getCategory(IConstraintDescriptor icd) {
+		return icd.getCategories().iterator().next();
 	}
-
-
 }

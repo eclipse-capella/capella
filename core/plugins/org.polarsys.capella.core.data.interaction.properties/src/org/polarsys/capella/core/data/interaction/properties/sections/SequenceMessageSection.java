@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -80,8 +80,8 @@ public class SequenceMessageSection extends NamedElementSection {
               @SuppressWarnings("synthetic-access")
               @Override
               public void run() {
-                SequenceMessageController.resetValue(_semanticElement);
-                setValueTextField(_semanticElement);
+                SequenceMessageController.resetValue(semanticElement);
+                setValueTextField(semanticElement);
                 refresh();
               }
             };
@@ -102,10 +102,10 @@ public class SequenceMessageSection extends NamedElementSection {
             AbstractReadWriteCommand command = new AbstractReadWriteCommand() {
               @Override
               public void run() {
-                SequenceMessage message = (SequenceMessage) _semanticElement;
+                SequenceMessage message = (SequenceMessage) semanticElement;
                 Scenario s = (Scenario) message.eContainer();
                 if (_controller instanceof InterfaceController) {
-                  EObject affectedElement = DialogProvider.openOperationDialog((SequenceMessage) _semanticElement);
+                  EObject affectedElement = DialogProvider.openOperationDialog((SequenceMessage) semanticElement);
                   if (affectedElement != null) {
                     InterfaceHelper.affectExchangeItem(message, (ExchangeItemAllocation) affectedElement);
                     ComponentExt.ensureUseAndImplementsForOperation(message, (ExchangeItemAllocation) affectedElement, false, (EObject) null);
@@ -137,7 +137,7 @@ public class SequenceMessageSection extends NamedElementSection {
 
               @Override
               public String getName() {
-                return "Edit " + _semanticElement.eGet(ModellingcorePackage.eINSTANCE.getAbstractNamedElement_Name()); //$NON-NLS-1$
+                return "Edit " + semanticElement.eGet(ModellingcorePackage.eINSTANCE.getAbstractNamedElement_Name()); //$NON-NLS-1$
               }
             };
             executeCommand(command);
@@ -220,7 +220,7 @@ public class SequenceMessageSection extends NamedElementSection {
    */
   @Override
   public List<AbstractSemanticField> getSemanticFields() {
-    List<AbstractSemanticField> fields = new ArrayList<AbstractSemanticField>();
+    List<AbstractSemanticField> fields = new ArrayList<>();
 
     fields.addAll(super.getSemanticFields());
     fields.add(exchangedItemsField);

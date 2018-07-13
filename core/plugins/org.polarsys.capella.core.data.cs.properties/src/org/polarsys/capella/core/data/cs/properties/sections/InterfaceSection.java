@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -83,20 +83,20 @@ public class InterfaceSection extends NamedElementSection {
        */
       @Override
       protected java.util.List<EObject> getAvailableElementsToAdd() {
-        final List<EObject> availableElements = new ArrayList<EObject>(0);
+        final List<EObject> availableElements = new ArrayList<>(0);
         AbstractReadOnlyCommand command = new AbstractReadOnlyCommand() {
           /**
            * {@inheritDoc}
            */
           @SuppressWarnings("synthetic-access")
           public void run() {
-            IBusinessQuery query = BusinessQueriesProvider.getInstance().getContribution(_semanticElement.eClass(), _semanticFeature);
+            IBusinessQuery query = BusinessQueriesProvider.getInstance().getContribution(semanticElement.eClass(), semanticFeature);
             if (null != query) {
-              availableElements.addAll(query.getAvailableElements(_semanticElement));
+              availableElements.addAll(query.getAvailableElements(semanticElement));
             }
           }
         };
-        TransactionHelper.getExecutionManager(_semanticElement).execute(command);
+        TransactionHelper.getExecutionManager(semanticElement).execute(command);
         return availableElements;
       }
     };
@@ -129,7 +129,7 @@ public class InterfaceSection extends NamedElementSection {
    */
   @Override
   public List<AbstractSemanticField> getSemanticFields() {
-    List<AbstractSemanticField> fields = new ArrayList<AbstractSemanticField>();
+    List<AbstractSemanticField> fields = new ArrayList<>();
 
     fields.addAll(super.getSemanticFields());
     fields.add(_containmentTableField);

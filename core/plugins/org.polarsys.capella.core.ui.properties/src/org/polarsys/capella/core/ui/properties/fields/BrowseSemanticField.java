@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -72,7 +72,7 @@ public class BrowseSemanticField extends AbstractSemanticField {
 	 */
 	public BrowseSemanticField(Composite parent_p, String label_p, TabbedPropertySheetWidgetFactory widgetFactory_p, int textFieldSpan_p) {
 		super(widgetFactory_p);
-		_labelTextField = _widgetFactory.createCLabel(parent_p, label_p);
+		_labelTextField = widgetFactory.createCLabel(parent_p, label_p);
 
 		createTextField(parent_p, textFieldSpan_p);
 	}
@@ -191,7 +191,7 @@ public class BrowseSemanticField extends AbstractSemanticField {
 							public void run() {
 								LiteralNumericValue newValue = DatavalueFactory.eINSTANCE.createLiteralNumericValue("");
 								newValue.setValue(menuitem1.getText());
-								_semanticElement.eSet(_semanticFeature, newValue);
+								semanticElement.eSet(semanticFeature, newValue);
 							}
 						};
 						executeCommand(cmd);
@@ -207,7 +207,7 @@ public class BrowseSemanticField extends AbstractSemanticField {
 							public void run() {
 								LiteralNumericValue newValue = DatavalueFactory.eINSTANCE.createLiteralNumericValue("");
 								newValue.setValue(menuitem2.getText());
-								_semanticElement.eSet(_semanticFeature, newValue);
+								semanticElement.eSet(semanticFeature, newValue);
 							}
 						};
 						executeCommand(cmd);
@@ -227,13 +227,13 @@ public class BrowseSemanticField extends AbstractSemanticField {
 	protected void createTextField(Composite parent, int textFieldSpan) {
 		// this intermediate composite have been created to allow a tooltip to be shown
 		// (because the text field is disabled, its own tooltip is never shown)
-		_valueTextContainer = _widgetFactory.createComposite(parent);
+		_valueTextContainer = widgetFactory.createComposite(parent);
 		GridData gd = new GridData(GridData.FILL_HORIZONTAL);
 		gd.horizontalSpan = textFieldSpan;
 		_valueTextContainer.setLayoutData(gd);
 		_valueTextContainer.setLayout(new GridLayout());
 
-		_valueTextField = _widgetFactory.createText(_valueTextContainer, ICommonConstants.EMPTY_STRING);
+		_valueTextField = widgetFactory.createText(_valueTextContainer, ICommonConstants.EMPTY_STRING);
 		gd = new GridData(GridData.FILL_HORIZONTAL);
 		gd.horizontalSpan = textFieldSpan;
 		gd.widthHint = _TEXTFIELD_DEFAULT_WIDTH;
@@ -378,7 +378,7 @@ public class BrowseSemanticField extends AbstractSemanticField {
 	 */
 	@Override
 	public void loadData(EObject semanticElement) {
-		loadData(semanticElement, _semanticFeature);
+		loadData(semanticElement, semanticFeature);
 	}
 
 	/**
@@ -416,10 +416,10 @@ public class BrowseSemanticField extends AbstractSemanticField {
 			if (object instanceof String) {
 				_valueTextField.setText((String) object);
 			} else if (object instanceof EObject) {
-				_valueTextField.setText(NamingHelper.getValue((EObject) object, _semanticFeature));
+				_valueTextField.setText(NamingHelper.getValue((EObject) object, semanticFeature));
 				_valueTextContainer.setToolTipText(getFullLabel((EObject) object));
 			} else if (object instanceof Collection<?>) {
-				_valueTextField.setText(EObjectExt2.formatValues((Collection<?>) object, _semanticFeature));
+				_valueTextField.setText(EObjectExt2.formatValues((Collection<?>) object, semanticFeature));
 			}
 		} else {
 			_valueTextField.setText(Messages.UndefinedValue);
@@ -486,7 +486,7 @@ public class BrowseSemanticField extends AbstractSemanticField {
 	 * Handle Delete button click event. Reset all data value in this field.
 	 */
 	protected void handleDeleteButtonClicked() {
-		AbstractReadWriteCommand command = getDeleteCommand(_semanticElement, _semanticFeature);
+		AbstractReadWriteCommand command = getDeleteCommand(semanticElement, semanticFeature);
 		executeCommand(command);
 	}
 

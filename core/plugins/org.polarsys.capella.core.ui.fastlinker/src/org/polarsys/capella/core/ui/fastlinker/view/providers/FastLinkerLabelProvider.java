@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -35,12 +35,14 @@ public class FastLinkerLabelProvider extends CapellaNavigatorLabelProvider {
 				while (it.hasNext()) {
 					Object current = it.next();
 					if (current instanceof EObject) {
-						if (eClass == null)
+						if (eClass == null) {
 							eClass = ((EObject) current).eClass();
+						}
 						else if (!((EObject) current).eClass().equals(eClass))
 							return null;
-					} else
+					} else {
 						return null;
+					}
 					return super.getImage(((Collection) object).iterator()
 							.next());
 				}
@@ -66,8 +68,9 @@ public class FastLinkerLabelProvider extends CapellaNavigatorLabelProvider {
 					if (current instanceof EObject) {
 						
 						array += ", " + super.getText(current);
-					} else
+					} else {
 						return null;
+					}
 
 				}
 				return eClass.getName() + " [ " + array.substring(2) + " ]";

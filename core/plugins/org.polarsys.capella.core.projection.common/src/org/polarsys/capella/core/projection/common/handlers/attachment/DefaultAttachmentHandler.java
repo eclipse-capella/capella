@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -38,23 +38,23 @@ public class DefaultAttachmentHandler implements IAttachmentHandler {
   /**
    * Returns whether the feature is available in the clazz
    */
-  public boolean isApplicable(EClass clazz_p, EStructuralFeature feature_p) {
-    return EcoreUtil2.isEqualOrSuperClass(feature_p.getEContainingClass(), clazz_p);
+  public boolean isApplicable(EClass clazz, EStructuralFeature feature) {
+    return EcoreUtil2.isEqualOrSuperClass(feature.getEContainingClass(), clazz);
   }
 
   @SuppressWarnings("unchecked")
-  public boolean attachElementByRel(EObject element_p, EObject relatedElement_p, EReference relationship_p) {
-    if (!isApplicable(element_p.eClass(), relationship_p)) {
+  public boolean attachElementByRel(EObject element, EObject relatedElement, EReference relationship) {
+    if (!isApplicable(element.eClass(), relationship)) {
       LogHelper.getInstance().warn(
           NLS.bind(Messages.TigerRelationshipHelper_FeatureNonApplicable,
-              new Object[] { relationship_p.getName(), ((EClass) (relationship_p.eContainer())).getName(), element_p.eClass().getName() }),
+              new Object[] { relationship.getName(), ((EClass) (relationship.eContainer())).getName(), element.eClass().getName() }),
           ProjectionMessages.Activity_Transformation);
 
-    } else if (!(relationship_p.isChangeable() && !relationship_p.isDerived())) {
+    } else if (!(relationship.isChangeable() && !relationship.isDerived())) {
       LogHelper.getInstance()
           .warn(
-              NLS.bind(Messages.TigerRelationshipHelper_FeatureDerivedOrNonChangeable, relationship_p.getName(),
-                  ((EClass) (relationship_p.eContainer())).getName()), ProjectionMessages.Activity_Transformation);
+              NLS.bind(Messages.TigerRelationshipHelper_FeatureDerivedOrNonChangeable, relationship.getName(),
+                  ((EClass) (relationship.eContainer())).getName()), ProjectionMessages.Activity_Transformation);
 
     } else {
 
@@ -63,63 +63,61 @@ public class DefaultAttachmentHandler implements IAttachmentHandler {
 
       try {
 
-        if (relationship_p.isContainment()) {
-          HoldingResourceHelper.ensureMoveElement(relatedElement_p, element_p);
+        if (relationship.isContainment()) {
+          HoldingResourceHelper.ensureMoveElement(relatedElement, element);
         }
 
-        if (relationship_p.isMany()) {
-          EList<EObject> tmp = ((EList<EObject>) element_p.eGet(relationship_p));
-          if (tmp.contains(relatedElement_p)) {
+        if (relationship.isMany()) {
+          EList<EObject> tmp = ((EList<EObject>) element.eGet(relationship));
+          if (tmp.contains(relatedElement)) {
             alreadyExist = true;
           } else {
-            tmp.add(relatedElement_p);
+            tmp.add(relatedElement);
             done = true;
           }
 
         } else {
-          if (relatedElement_p.equals(element_p.eGet(relationship_p))) {
+          if (relatedElement.equals(element.eGet(relationship))) {
             alreadyExist = true;
           } else {
-            element_p.eSet(relationship_p, relatedElement_p);
+            element.eSet(relationship, relatedElement);
             done = true;
           }
         }
-      } catch (ArrayStoreException exception) {
+      } catch (ArrayStoreException | IllegalArgumentException exception) {
         done = false;
-      } catch (IllegalArgumentException exception) {
-        done = false;
-      }
+      } 
 
       if (done) {
 
-        if (relationship_p.isContainment()) {
+        if (relationship.isContainment()) {
 
           LogHelper.getInstance().info(
-              NLS.bind(Messages.TigerRelationshipHelper_ContainedBy, new Object[] { EObjectLabelProviderHelper.getText(relatedElement_p),
-                                                                                   EObjectLabelProviderHelper.getText(element_p), relationship_p.getName() }),
-              new Object[] { relatedElement_p, element_p }, ICommonConstants.EMPTY_STRING);
+              NLS.bind(Messages.TigerRelationshipHelper_ContainedBy, new Object[] { EObjectLabelProviderHelper.getText(relatedElement),
+                                                                                   EObjectLabelProviderHelper.getText(element), relationship.getName() }),
+              new Object[] { relatedElement, element }, ICommonConstants.EMPTY_STRING);
         } else {
           LogHelper.getInstance().info(
-              NLS.bind(Messages.TigerRelationshipHelper_ReferencedBy, new Object[] { EObjectLabelProviderHelper.getText(relatedElement_p),
-                                                                                    EObjectLabelProviderHelper.getText(element_p), relationship_p.getName() }),
-              new Object[] { relatedElement_p, element_p }, ICommonConstants.EMPTY_STRING);
+              NLS.bind(Messages.TigerRelationshipHelper_ReferencedBy, new Object[] { EObjectLabelProviderHelper.getText(relatedElement),
+                                                                                    EObjectLabelProviderHelper.getText(element), relationship.getName() }),
+              new Object[] { relatedElement, element }, ICommonConstants.EMPTY_STRING);
 
         }
-      } else if (!done && !alreadyExist) {
-        if (relationship_p.isContainment()) {
+      } else if (!alreadyExist) {
+        if (relationship.isContainment()) {
           LogHelper.getInstance()
               .warn(
                   NLS.bind(
                       Messages.TigerRelationshipHelper_ShouldBeContainedBy,
-                      new Object[] { EObjectLabelProviderHelper.getText(relatedElement_p), EObjectLabelProviderHelper.getText(element_p),
-                                    relationship_p.getName() }), new Object[] { relatedElement_p, element_p }, ICommonConstants.EMPTY_STRING);
+                      new Object[] { EObjectLabelProviderHelper.getText(relatedElement), EObjectLabelProviderHelper.getText(element),
+                                    relationship.getName() }), new Object[] { relatedElement, element }, ICommonConstants.EMPTY_STRING);
         } else {
           LogHelper.getInstance()
               .warn(
                   NLS.bind(
                       Messages.TigerRelationshipHelper_ShouldBeReferencedBy,
-                      new Object[] { EObjectLabelProviderHelper.getText(relatedElement_p), EObjectLabelProviderHelper.getText(element_p),
-                                    relationship_p.getName() }), new Object[] { relatedElement_p, element_p }, ICommonConstants.EMPTY_STRING);
+                      new Object[] { EObjectLabelProviderHelper.getText(relatedElement), EObjectLabelProviderHelper.getText(element),
+                                    relationship.getName() }), new Object[] { relatedElement, element }, ICommonConstants.EMPTY_STRING);
 
         }
       }
@@ -130,72 +128,71 @@ public class DefaultAttachmentHandler implements IAttachmentHandler {
 
   /**
    * Updates an element by copying a element's property to a the transformed element's property
-   * @param sourceElement_p The source element
-   * @param property_p The name of the property
-   * @param transfo_p The transformation
+   * @param sourceElement The source element
+   * @param property The name of the property
+   * @param transfo The transformation
    */
-  public void updateElementAttribute(EObject sourceElement_p, EObject targetElement_p, EAttribute feature_p, IContext context_p) {
-    EAttribute attribute = feature_p;
-    if (isApplicable(sourceElement_p.eClass(), attribute)) {
-      Object valueSource = sourceElement_p.eGet(attribute);
-      if (isApplicable(targetElement_p.eClass(), attribute)) {
-        Object valueTarget = targetElement_p.eGet(attribute);
-        if (shouldUpdateAttribute(sourceElement_p, targetElement_p, feature_p, valueSource, valueTarget, context_p)) {
+  public void updateElementAttribute(EObject sourceElement, EObject targetElement, EAttribute feature, IContext context) {
+    EAttribute attribute = feature;
+    if (isApplicable(sourceElement.eClass(), attribute)) {
+      Object valueSource = sourceElement.eGet(attribute);
+      if (isApplicable(targetElement.eClass(), attribute)) {
+        Object valueTarget = targetElement.eGet(attribute);
+        if (shouldUpdateAttribute(sourceElement, targetElement, feature, valueSource, valueTarget, context)) {
           if (valueTarget != null) {
             LogHelper.getInstance().debug(
                 NLS.bind(Messages.TigerRelationshipHelper_UpdateAttribute, new Object[] { attribute.getName(),
-                                                                                         LogHelper.getInstance().getText(targetElement_p),
+                                                                                         LogHelper.getInstance().getText(targetElement),
                                                                                          LogHelper.getInstance().getText(valueTarget),
-                                                                                         LogHelper.getInstance().getText(valueSource) }), targetElement_p,
+                                                                                         LogHelper.getInstance().getText(valueSource) }), targetElement,
                 ProjectionMessages.Activity_Transformation);
           }
-          targetElement_p.eSet(attribute, valueSource);
+          targetElement.eSet(attribute, valueSource);
         }
       }
     }
   }
 
   @SuppressWarnings("unchecked")
-  protected Collection<EObject> retrieveReferenceAsList(EObject object_p, EReference reference_p) {
-    if (isApplicable(object_p.eClass(), reference_p)) {
-      Object sourceReference = object_p.eGet(reference_p);
+  protected Collection<EObject> retrieveReferenceAsList(EObject object, EReference reference) {
+    if (isApplicable(object.eClass(), reference)) {
+      Object sourceReference = object.eGet(reference);
       if (sourceReference instanceof Collection<?>) {
         return (Collection<EObject>) sourceReference;
       }
       return Collections.singleton((EObject) sourceReference);
     }
-    return Collections.EMPTY_LIST;
+    return Collections.emptyList();
   }
 
-  public void attachTracedElements(EObject source_p, EObject target_p, EReference feature_p, IContext context_p) {
-    for (EObject traced : retrieveReferenceAsList(source_p, feature_p)) {
-      for (EObject related : TraceabilityHandlerHelper.getInstance(context_p).retrieveTracedElements(traced, context_p)) {
-        attachElementByRel(target_p, related, feature_p);
+  public void attachTracedElements(EObject source, EObject target, EReference feature, IContext context) {
+    for (EObject traced : retrieveReferenceAsList(source, feature)) {
+      for (EObject related : TraceabilityHandlerHelper.getInstance(context).retrieveTracedElements(traced, context)) {
+        attachElementByRel(target, related, feature);
       }
     }
   }
 
-  public void attachToBestElement(EObject element_p, EObject result_p, EReference reference_p, IContext context_p) {
-    TigerRelationshipHelper.attachToBestElement(element_p, reference_p, context_p.getTransfo());
+  public void attachToBestElement(EObject element, EObject result, EReference reference, IContext context) {
+    TigerRelationshipHelper.attachToBestElement(element, reference, context.getTransfo());
   }
 
-  protected boolean shouldUpdateAttribute(EObject sourceElement_p, EObject targetElement_p, EAttribute feature_p, Object valueSource, Object valueTarget,
-      IContext context_p) {
+  protected boolean shouldUpdateAttribute(EObject sourceElement, EObject targetElement, EAttribute feature, Object valueSource, Object valueTarget,
+      IContext context) {
     return (((valueSource == null) && (valueTarget != null)) || ((valueSource != null) && !valueSource.equals(valueTarget)));
   }
 
   /**
    * {@inheritDoc}
    */
-  public void init(IContext context_p) {
+  public void init(IContext context) {
     //Nothing here
   }
 
   /**
    * {@inheritDoc}
    */
-  public void dispose(IContext context_p) {
+  public void dispose(IContext context) {
     //Nothing here
   }
-
 }

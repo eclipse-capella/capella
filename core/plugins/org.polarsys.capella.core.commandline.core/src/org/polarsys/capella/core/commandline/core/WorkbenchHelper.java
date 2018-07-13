@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,8 @@ package org.polarsys.capella.core.commandline.core;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
@@ -25,6 +27,12 @@ import org.eclipse.core.runtime.CoreException;
  *
  */
 public class WorkbenchHelper {
+   
+  private static final Logger logger = Logger.getLogger(WorkbenchHelper.class.getName());
+	
+  private WorkbenchHelper () {
+	  // To hide the implicit public one
+  }
 
   public static void exportZipFile(IResource resource, IFile theZipFile) {
     try {
@@ -61,12 +69,12 @@ public class WorkbenchHelper {
         //remember close it
 
       } finally {
-
+    	fos.close();
         zos.close();
       }
 
     } catch (Exception exception) {
-      exception.printStackTrace();
+    	logger.log(Level.SEVERE, exception.getMessage(), exception);
     }
   }
 }

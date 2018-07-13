@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -90,10 +90,8 @@ public class CapellaModelFilter extends ViewerFilter implements ModifyListener {
 
     Matcher matcher = _expPattern.matcher(name_p);
     if (_expPattern.pattern().startsWith(".*")) { //$NON-NLS-1$
-      if (!flag)
         flag = matcher.find();
     } else {
-      if (!flag)
         flag = matcher.matches();
     }
     if (children != null) {
@@ -102,8 +100,7 @@ public class CapellaModelFilter extends ViewerFilter implements ModifyListener {
           AbstractNamedElement element = (AbstractNamedElement) element_p;
           String name = element.getName();
           matcher = _expPattern.matcher(name);
-          if (_expPattern.pattern().startsWith(".*")) { //$NON-NLS-1$
-            if (!flag)
+          if (_expPattern.pattern().startsWith(".*") && !flag) { //$NON-NLS-1$
               flag = matcher.find();
           }
           if (!flag)
@@ -118,8 +115,8 @@ public class CapellaModelFilter extends ViewerFilter implements ModifyListener {
   }
 
   @SuppressWarnings("nls")
-  public void modifyText(ModifyEvent e_p) {
-    Text txt = (Text) e_p.widget;
+  public void modifyText(ModifyEvent modifyEvent) {
+    Text txt = (Text) modifyEvent.widget;
     String value = txt.getText();
     if (0 == value.length()) {
       _expPattern = null;
@@ -154,7 +151,8 @@ public class CapellaModelFilter extends ViewerFilter implements ModifyListener {
     value = value.replaceAll("^\\[*]", ".*"); //$NON-NLS-1$//$NON-NLS-2$
 
     if (value.contains("[")) {
-      int spos = 0, epos = 0;
+      int spos = 0; 
+      int epos = 0;
       while ((spos = value.indexOf("[", epos)) != -1) {
         value = value.substring(epos, value.indexOf("[", epos)).replace("*", ".*") + value.substring(spos);
         epos = value.indexOf("]", spos);
@@ -193,7 +191,7 @@ public class CapellaModelFilter extends ViewerFilter implements ModifyListener {
     try {
       // Compiles the regular expression with case insensitive mode.
       _expPattern = Pattern.compile(value, Pattern.CASE_INSENSITIVE);
-    } catch (RuntimeException exception_p) {
+    } catch (RuntimeException exception) {
       //
     }
     if (_viewer != null) {

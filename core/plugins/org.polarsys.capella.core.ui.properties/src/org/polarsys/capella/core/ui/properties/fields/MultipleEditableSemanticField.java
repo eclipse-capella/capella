@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -43,7 +43,7 @@ public class MultipleEditableSemanticField extends MultipleSemanticField {
   protected void handleAddButtonClicked() throws EditableSemanticFieldException {
     AbstractReadWriteCommand command = new AbstractReadWriteCommand() {
       public void run() {
-        List<EObject> values = ((IMultipleEditableSemanticFieldController) _controller).addValue(_semanticElement, _semanticFeature);
+        List<EObject> values = ((IMultipleEditableSemanticFieldController) _controller).addValue(semanticElement, semanticFeature);
         // Update the widget according to user selection.
         setValueTextField(values);
       }

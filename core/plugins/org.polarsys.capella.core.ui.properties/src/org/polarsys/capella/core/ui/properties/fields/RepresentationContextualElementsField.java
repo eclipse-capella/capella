@@ -30,12 +30,12 @@ import org.polarsys.capella.core.ui.properties.helpers.NamingHelper;
  */
 public class RepresentationContextualElementsField extends BrowseSemanticField {
 
-  protected WeakReference<DRepresentationDescriptor> _descriptor;
+  protected WeakReference<DRepresentationDescriptor> descriptor;
 
   /**
    * Controller associated to this semantic field.
    */
-  protected RepresentationContextualElementsController _controller;
+  protected RepresentationContextualElementsController controller;
 
   /**
    * Constructor.
@@ -62,7 +62,7 @@ public class RepresentationContextualElementsField extends BrowseSemanticField {
       RepresentationContextualElementsController controller, boolean hasAddBtn) {
     super(parent, label, widgetFactory, textFieldSpan);
 
-    _controller = controller;
+    this.controller = controller;
 
     if (hasAddBtn) {
       createAddButton(parent);
@@ -75,13 +75,13 @@ public class RepresentationContextualElementsField extends BrowseSemanticField {
    * @param dRepresentation
    */
   public void loadData(DRepresentationDescriptor dRepresentation) {
-    _descriptor = new WeakReference<DRepresentationDescriptor>(dRepresentation);
-    setValueTextField(_controller.loadValues(dRepresentation));
+    descriptor = new WeakReference<>(dRepresentation);
+    setValueTextField(controller.loadValues(dRepresentation));
   }
 
   @Override
   protected ExecutionManager getExecutionManager() {
-    return TransactionHelper.getExecutionManager(_descriptor.get());
+    return TransactionHelper.getExecutionManager(descriptor.get());
   }
 
   /**
@@ -92,17 +92,17 @@ public class RepresentationContextualElementsField extends BrowseSemanticField {
   protected void handleOpenButtonClicked(final Button button) {
     AbstractReadWriteCommand command = new AbstractReadWriteCommand() {
       public void run() {
-        List<EObject> currentElements = _controller.readOpenValues(_descriptor.get(), false);
-        List<EObject> availableElements = _controller.readOpenValues(_descriptor.get(), true);
+        List<EObject> currentElements = controller.readOpenValues(descriptor.get(), false);
+        List<EObject> availableElements = controller.readOpenValues(descriptor.get(), true);
         availableElements.removeAll(currentElements);
 
-        String title = _descriptor.get().getName();
-        String message = NamingHelper.getDefaultMessage(_descriptor.get(), "contextual elements"); //$NON-NLS-1$
+        String title = descriptor.get().getName();
+        String message = NamingHelper.getDefaultMessage(descriptor.get(), "contextual elements"); //$NON-NLS-1$
 
         // calling selection wizard
         List<EObject> allResults = DialogHelper.openTransferDialog(button, currentElements, availableElements, title, message);
         if (allResults != null) {
-          List<EObject> writeOpenValues = _controller.writeOpenValues(_descriptor.get(), allResults);
+          List<EObject> writeOpenValues = controller.writeOpenValues(descriptor.get(), allResults);
           // Update the widget according to user selection.
           setValueTextField(writeOpenValues);
         }
@@ -118,12 +118,10 @@ public class RepresentationContextualElementsField extends BrowseSemanticField {
   protected void handleDeleteButtonClicked() {
     AbstractReadWriteCommand command = new AbstractReadWriteCommand() {
       public void run() {
-        List<EObject> allResults = new ArrayList<EObject>();
-        if (allResults != null) {
-          List<EObject> writeOpenValues = _controller.writeOpenValues(_descriptor.get(), allResults);
-          // Update the widget according to user selection.
-          setValueTextField(writeOpenValues);
-        }
+        List<EObject> allResults = new ArrayList<>();
+        List<EObject> writeOpenValues = controller.writeOpenValues(descriptor.get(), allResults);
+        // Update the widget according to user selection.
+        setValueTextField(writeOpenValues);
       }
     };
     executeCommand(command);

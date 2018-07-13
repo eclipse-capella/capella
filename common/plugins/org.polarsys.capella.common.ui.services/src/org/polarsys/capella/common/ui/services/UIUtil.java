@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -26,14 +26,14 @@ import org.polarsys.capella.common.data.modellingcore.ModelElement;
  * 
  */
 public class UIUtil {
-  private static IDiagramServices __diagramServices = null;
+  private static IDiagramServices diagramServices = null;
 
-  private static UIUtil __instance = null;
-  private static ISelectorInPackageExplorer __selectorInPackageExplorer = null;
-  private static boolean _isDialogOpen = false;
+  private static UIUtil instance = null;
+  private static ISelectorInPackageExplorer selectorInPackageExplorer = null;
+  private static boolean isDialogOpen = false;
 
   // Log4j reference logger.
-  private Logger __logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.UI);
+  private Logger logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.UI);
 
   /**
    * Close the corresponding diagram view.
@@ -49,31 +49,31 @@ public class UIUtil {
   }
 
   private IDiagramServices getDiagramServices() {
-    if (__diagramServices == null) {
+    if (diagramServices == null) {
       try {
         IConfigurationElement[] configurationElements = ExtensionPointHelper.getConfigurationElements(IPlugin.ID, IPlugin.EXT_PT_DIAGRAM_SERVICES);
         for (IConfigurationElement configurationElement : configurationElements) {
-          __diagramServices = (IDiagramServices) ExtensionPointHelper.createInstance(configurationElement, ExtensionPointHelper.ATT_CLASS);
+          diagramServices = (IDiagramServices) ExtensionPointHelper.createInstance(configurationElement, ExtensionPointHelper.ATT_CLASS);
         }
-      } catch (Throwable ex) {
-        __logger.debug(new EmbeddedMessage(ex.getMessage(), IReportManagerDefaultComponents.UI));
+      } catch (Exception ex) {
+        logger.debug(new EmbeddedMessage(ex.getMessage(), IReportManagerDefaultComponents.UI));
       }
     }
-    return __diagramServices;
+    return diagramServices;
   }
 
   private ISelectorInPackageExplorer getSelectorInPackageExplorer() {
-    if (__selectorInPackageExplorer == null) {
+    if (selectorInPackageExplorer == null) {
       try {
         IConfigurationElement[] configurationElements = ExtensionPointHelper.getConfigurationElements(IPlugin.ID, IPlugin.EXT_PT_SELECT_IN_PACKAGE_EXPLORER);
         for (IConfigurationElement configurationElement : configurationElements) {
-          __selectorInPackageExplorer = (ISelectorInPackageExplorer) ExtensionPointHelper.createInstance(configurationElement, ExtensionPointHelper.ATT_CLASS);
+          selectorInPackageExplorer = (ISelectorInPackageExplorer) ExtensionPointHelper.createInstance(configurationElement, ExtensionPointHelper.ATT_CLASS);
         }
-      } catch (Throwable ex) {
-        __logger.debug(new EmbeddedMessage(ex.getMessage(), IReportManagerDefaultComponents.UI));
+      } catch (Exception ex) {
+        logger.debug(new EmbeddedMessage(ex.getMessage(), IReportManagerDefaultComponents.UI));
       }
     }
-    return __selectorInPackageExplorer;
+    return selectorInPackageExplorer;
   }
 
   /**
@@ -118,23 +118,23 @@ public class UIUtil {
    * @return The UI util instance.
    */
   public static UIUtil getInstance() {
-    if (__instance == null) {
-      __instance = new UIUtil();
+    if (instance == null) {
+      instance = new UIUtil();
     }
-    return __instance;
+    return instance;
   }
 
   /**
    * @return the isDialogOpen
    */
   public static boolean isDialogOpen() {
-    return _isDialogOpen;
+    return isDialogOpen;
   }
 
   /**
    * @param isDialogOpen the isDialogOpen to set
    */
-  public static void setDialogOpen(boolean isDialogOpen) {
-    _isDialogOpen = isDialogOpen;
+  public static void setDialogOpen(boolean isOpen) {
+    isDialogOpen = isOpen;
   }
 }

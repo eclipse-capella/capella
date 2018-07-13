@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -81,24 +81,24 @@ public class ReferenceTableField extends AbstractStructuredRepresentationField {
   protected void handleBrowse() {
     AbstractReadWriteCommand command = new AbstractReadWriteCommand() {
       public void run() {
-        IBusinessQuery query = BusinessQueriesProvider.getInstance().getContribution(CapellacorePackage.Literals.CAPELLA_ELEMENT, _semanticFeature);
+        IBusinessQuery query = BusinessQueriesProvider.getInstance().getContribution(CapellacorePackage.Literals.CAPELLA_ELEMENT, semanticFeature);
         if (null != query) {
-          List<EObject> currentElements = _controller.readOpenValues(_semanticElement, _semanticFeature, false);
-          List<EObject> availableElements = _controller.readOpenValues(_semanticElement, _semanticFeature, true);
+          List<EObject> currentElements = _controller.readOpenValues(semanticElement, semanticFeature, false);
+          List<EObject> availableElements = _controller.readOpenValues(semanticElement, semanticFeature, true);
           availableElements.removeAll(currentElements);
 
-          String title = NamingHelper.getDefaultTitle(_semanticElement);
-          String message = NamingHelper.getDefaultMessage(_semanticElement, (_semanticFeature != null) ? _semanticFeature.getName() : ""); //$NON-NLS-1$
+          String title = NamingHelper.getDefaultTitle(semanticElement);
+          String message = NamingHelper.getDefaultMessage(semanticElement, (semanticFeature != null) ? semanticFeature.getName() : ""); //$NON-NLS-1$
 
           // calling selection wizard
           List<EObject> allResults = DialogHelper.openTransferDialog(_browseBtn, currentElements, availableElements, title, message);
           if (null != allResults) {
-            _controller.writeOpenValues(_semanticElement, _semanticFeature, allResults);
+            _controller.writeOpenValues(semanticElement, semanticFeature, allResults);
           }
         }
       }
     };
-    TransactionHelper.getExecutionManager(_semanticElement).execute(command);
+    TransactionHelper.getExecutionManager(semanticElement).execute(command);
     refreshViewer();
   }
 
@@ -114,16 +114,16 @@ public class ReferenceTableField extends AbstractStructuredRepresentationField {
         if (!selectedReferencedElements.isEmpty()) {
           AbstractReadWriteCommand command = new AbstractReadWriteCommand() {
             public void run() {
-              if (_semanticFeature instanceof EReference && !((EReference) _semanticFeature).isContainment()) {
-                if (_semanticFeature.isMany()) {
-                  ((List<EObject>) _semanticElement.eGet(_semanticFeature)).removeAll(selectedReferencedElements);
+              if (semanticFeature instanceof EReference && !((EReference) semanticFeature).isContainment()) {
+                if (semanticFeature.isMany()) {
+                  ((List<EObject>) semanticElement.eGet(semanticFeature)).removeAll(selectedReferencedElements);
                 } else {
-                  _semanticElement.eSet(_semanticFeature, null);
+                  semanticElement.eSet(semanticFeature, null);
                 }
               }
             }
           };
-          TransactionHelper.getExecutionManager(_semanticElement).execute(command);
+          TransactionHelper.getExecutionManager(semanticElement).execute(command);
           refreshViewer();
         }
       }

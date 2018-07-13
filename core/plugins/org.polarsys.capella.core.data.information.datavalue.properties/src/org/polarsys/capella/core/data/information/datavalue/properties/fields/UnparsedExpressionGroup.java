@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -37,7 +37,7 @@ public class UnparsedExpressionGroup extends AbstractSemanticField {
   public UnparsedExpressionGroup(Composite parent, TabbedPropertySheetWidgetFactory widgetFactory) {
     super(widgetFactory);
 
-    Group textGroup = _widgetFactory.createGroup(parent, ""); //$NON-NLS-1$
+    Group textGroup = widgetFactory.createGroup(parent, ""); //$NON-NLS-1$
     textGroup.setLayout(new GridLayout(2, false));
     GridData gd = new GridData(GridData.FILL_HORIZONTAL);
     gd.horizontalSpan = 2;
@@ -51,11 +51,11 @@ public class UnparsedExpressionGroup extends AbstractSemanticField {
    * @param textGroup
    */
   private void createUnparsedExpressionField(Group textGroup) {
-    CLabel unparsedExpressionLabel = _widgetFactory.createCLabel(textGroup, Messages.getString("Expression.UnparsedExpressionLabel")); //$NON-NLS-1$
+    CLabel unparsedExpressionLabel = widgetFactory.createCLabel(textGroup, Messages.getString("Expression.UnparsedExpressionLabel")); //$NON-NLS-1$
     GridData gd = new GridData();
     gd.horizontalSpan = 2;
     unparsedExpressionLabel.setLayoutData(gd);
-    unparsedExpressionTextField = _widgetFactory.createText(textGroup, "", SWT.BORDER | SWT.WRAP | SWT.MULTI); //$NON-NLS-1$
+    unparsedExpressionTextField = widgetFactory.createText(textGroup, "", SWT.BORDER | SWT.WRAP | SWT.MULTI); //$NON-NLS-1$
     gd = new GridData(GridData.FILL_HORIZONTAL);
     gd.horizontalSpan = 2;
     gd.heightHint = 80;
@@ -71,9 +71,8 @@ public class UnparsedExpressionGroup extends AbstractSemanticField {
   public void loadData(EObject semanticElement) {
     loadData(semanticElement, null);
 
-    if (null != _semanticElement) {
-      if (null != unparsedExpressionTextField)
-        setTextValue(unparsedExpressionTextField, _semanticElement, DatavaluePackage.eINSTANCE.getAbstractExpressionValue_UnparsedExpression());
+    if (null != semanticElement && null != unparsedExpressionTextField) {
+        setTextValue(unparsedExpressionTextField, semanticElement, DatavaluePackage.eINSTANCE.getAbstractExpressionValue_UnparsedExpression());
     }
   }
 
@@ -83,7 +82,7 @@ public class UnparsedExpressionGroup extends AbstractSemanticField {
   @Override
   protected void fillTextField(Text textField) {
     if (textField.equals(unparsedExpressionTextField)) {
-      setDataValue(_semanticElement, DatavaluePackage.eINSTANCE.getAbstractExpressionValue_UnparsedExpression(), unparsedExpressionTextField.getText());
+      setDataValue(semanticElement, DatavaluePackage.eINSTANCE.getAbstractExpressionValue_UnparsedExpression(), unparsedExpressionTextField.getText());
     }
   }
 
@@ -92,7 +91,7 @@ public class UnparsedExpressionGroup extends AbstractSemanticField {
    */
   public void clearUnparsedExpressionField() {
     if (null != unparsedExpressionTextField) {
-      setDataValue(_semanticElement, DatavaluePackage.eINSTANCE.getAbstractExpressionValue_UnparsedExpression(), ""); //$NON-NLS-1$
+      setDataValue(semanticElement, DatavaluePackage.eINSTANCE.getAbstractExpressionValue_UnparsedExpression(), ""); //$NON-NLS-1$
       unparsedExpressionTextField.setText(""); //$NON-NLS-1$
     }
   }

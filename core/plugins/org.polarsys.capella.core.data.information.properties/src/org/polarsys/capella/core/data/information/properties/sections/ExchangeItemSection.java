@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -83,7 +83,7 @@ public class ExchangeItemSection extends GeneralizableElementSection {
           @SuppressWarnings("synthetic-access")
           public void run() {
             ExchangeItemElement item = InformationFactory.eINSTANCE.createExchangeItemElement();
-            ((List<EObject>) _semanticElement.eGet(_semanticFeature)).add(item);
+            ((List<EObject>) semanticElement.eGet(semanticFeature)).add(item);
             EditingDomain domain = TransactionHelper.getEditingDomain(item);
             Command cmd = CreationHelper.getAdditionnalCommand(domain, item);
             domain.getCommandStack().execute(cmd);
@@ -91,7 +91,7 @@ public class ExchangeItemSection extends GeneralizableElementSection {
             CapellaUIPropertiesPlugin.getDefault().openWizard(item);
           }
         };
-        TransactionHelper.getExecutionManager(_semanticElement).execute(command);
+        TransactionHelper.getExecutionManager(semanticElement).execute(command);
         refreshViewer();
       }
     };
@@ -137,7 +137,7 @@ public class ExchangeItemSection extends GeneralizableElementSection {
    */
   @Override
   public List<AbstractSemanticField> getSemanticFields() {
-    List<AbstractSemanticField> fields = new ArrayList<AbstractSemanticField>();
+    List<AbstractSemanticField> fields = new ArrayList<>();
 
     fields.addAll(super.getSemanticFields());
     fields.add(_exchangeItemBooleanPropertiesCheckbox);

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -73,6 +73,7 @@ public class CapellaSemanticMapping extends DefaultSemanticMapping {
    * Default constructor
    */
   public CapellaSemanticMapping() {
+	  // Do nothing
   }
 
 /**
@@ -80,25 +81,25 @@ public class CapellaSemanticMapping extends DefaultSemanticMapping {
  * @see org.eclipse.emf.diffmerge.patterns.diagram.sirius.extensions.DefaultSemanticMapping#conformsToMapping(org.eclipse.emf.ecore.EObject, org.eclipse.sirius.viewpoint.description.AbstractNodeMapping, boolean, boolean, org.eclipse.sirius.viewpoint.DContainer)
  */
   @Override
-  public boolean conformsToMapping(EObject semanticElt_p, AbstractNodeMapping mapping_p,
-      boolean considerPrecondition_p, boolean considerCandidates_p,
-      Object containerView_p) {
-    boolean businessOk = !isDummyMapping(mapping_p);
-    if (considerPrecondition_p && considerCandidates_p && ((containerView_p instanceof DDiagram)||(containerView_p instanceof DDiagramElementContainer))) {
+  public boolean conformsToMapping(EObject semanticElt, AbstractNodeMapping mapping,
+      boolean considerPrecondition, boolean considerCandidates,
+      Object containerView) {
+    boolean businessOk = !isDummyMapping(mapping);
+    if (considerPrecondition && considerCandidates && ((containerView instanceof DDiagram)||(containerView instanceof DDiagramElementContainer))) {
       // If full verification, check for business criteria
-      businessOk = businessOk && (!isSubcomponentMapping(mapping_p) ||
-          checkSubcomponent(getSemanticElement(containerView_p), semanticElt_p));
-      businessOk = businessOk && (!isPhysicalComponentMapping(mapping_p) ||
-          !isDeployed(semanticElt_p));
-      businessOk = businessOk && (!isDeploymentMapping(mapping_p) ||
-          checkDeployment(getSemanticElement(containerView_p), semanticElt_p));
+      businessOk = businessOk && (!isSubcomponentMapping(mapping) ||
+          checkSubcomponent(getSemanticElement(containerView), semanticElt));
+      businessOk = businessOk && (!isPhysicalComponentMapping(mapping) ||
+          !isDeployed(semanticElt));
+      businessOk = businessOk && (!isDeploymentMapping(mapping) ||
+          checkDeployment(getSemanticElement(containerView), semanticElt));
     }
-    boolean checkPrecondition = considerPrecondition_p &&
-        preconditionCanBeChecked(mapping_p);
-    boolean checkSemanticCandidates = considerCandidates_p &&
-        semanticCandidatesCanBeChecked(mapping_p);
+    boolean checkPrecondition = considerPrecondition &&
+        preconditionCanBeChecked(mapping);
+    boolean checkSemanticCandidates = considerCandidates &&
+        semanticCandidatesCanBeChecked(mapping);
     return businessOk && super.conformsToMapping(
-        semanticElt_p, mapping_p, checkPrecondition, checkSemanticCandidates, containerView_p);
+        semanticElt, mapping, checkPrecondition, checkSemanticCandidates, containerView);
   }
 
   
@@ -190,22 +191,22 @@ public class CapellaSemanticMapping extends DefaultSemanticMapping {
    * @param container_p a potentially null element
    * @param target_p a potentially null element
    */
-  private boolean checkDeployment(EObject container_p, EObject target_p) {
+  private boolean checkDeployment(EObject container, EObject target) {
     boolean allowTypeDeployment = false; // Decision here
     Part locationPart = null;
     AbstractPhysicalComponent locationType = null;
-    if (container_p instanceof Part)
-      locationPart = (Part)container_p;
-    else if (container_p instanceof AbstractPhysicalComponent && allowTypeDeployment)
-      locationType = (AbstractPhysicalComponent)container_p;
+    if (container instanceof Part)
+      locationPart = (Part)container;
+    else if (container instanceof AbstractPhysicalComponent && allowTypeDeployment)
+      locationType = (AbstractPhysicalComponent)container;
     else
       return false;
     Part targetPart = null;
     AbstractPhysicalComponent targetType = null;
-    if (target_p instanceof Part)
-      targetPart = (Part)target_p;
-    else if (target_p instanceof AbstractPhysicalComponent && allowTypeDeployment)
-      targetType = (AbstractPhysicalComponent)target_p;
+    if (target instanceof Part)
+      targetPart = (Part)target;
+    else if (target instanceof AbstractPhysicalComponent && allowTypeDeployment)
+      targetType = (AbstractPhysicalComponent)target;
     else
       return false;
     if (targetPart != null) {

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -34,7 +34,7 @@ public class StateTransitionGroup extends AbstractSemanticField {
   public StateTransitionGroup(Composite parent, TabbedPropertySheetWidgetFactory widgetFactory) {
     super(widgetFactory);
 
-    Group textGroup = _widgetFactory.createGroup(parent, ""); //$NON-NLS-1$
+    Group textGroup = widgetFactory.createGroup(parent, ""); //$NON-NLS-1$
     textGroup.setLayout(new GridLayout(2, false));
     GridData gd = new GridData(GridData.FILL_HORIZONTAL);
     gd.horizontalSpan = 2;
@@ -47,8 +47,8 @@ public class StateTransitionGroup extends AbstractSemanticField {
    * @param textGroup
    */
   private void createTriggerDescriptionTextField(Group textGroup) {
-    _widgetFactory.createCLabel(textGroup, Messages.getString("StateTransitionGroup.TriggerDescription.Label")); //$NON-NLS-1$
-    _triggerDescriptionField = _widgetFactory.createText(textGroup, ""); //$NON-NLS-1$
+    widgetFactory.createCLabel(textGroup, Messages.getString("StateTransitionGroup.TriggerDescription.Label")); //$NON-NLS-1$
+    _triggerDescriptionField = widgetFactory.createText(textGroup, ""); //$NON-NLS-1$
     _triggerDescriptionField.addFocusListener(this);
     _triggerDescriptionField.addKeyListener(this);
     _triggerDescriptionField.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
@@ -61,10 +61,8 @@ public class StateTransitionGroup extends AbstractSemanticField {
   public void loadData(EObject semanticElement) {
     loadData(semanticElement, null);
 
-    if (null != _semanticElement) {
-      if (null != _triggerDescriptionField) {
-        setTextValue(_triggerDescriptionField, _semanticElement, CapellacommonPackage.eINSTANCE.getStateTransition_TriggerDescription());
-      }
+    if (null != semanticElement && null != _triggerDescriptionField) {
+    	setTextValue(_triggerDescriptionField, semanticElement, CapellacommonPackage.eINSTANCE.getStateTransition_TriggerDescription());
     }
   }
 
@@ -74,7 +72,7 @@ public class StateTransitionGroup extends AbstractSemanticField {
   @Override
   protected void fillTextField(Text textField) {
     if (textField.equals(_triggerDescriptionField)) {
-      setDataValue(_semanticElement, CapellacommonPackage.eINSTANCE.getStateTransition_TriggerDescription(), _triggerDescriptionField.getText());
+      setDataValue(semanticElement, CapellacommonPackage.eINSTANCE.getStateTransition_TriggerDescription(), _triggerDescriptionField.getText());
     }
   }
 

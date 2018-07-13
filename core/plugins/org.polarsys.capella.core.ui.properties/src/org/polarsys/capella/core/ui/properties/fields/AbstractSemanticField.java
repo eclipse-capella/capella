@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -53,28 +53,28 @@ public abstract class AbstractSemanticField implements SelectionListener, FocusL
   /**
    * Current edited semantic element.
    */
-  protected EObject _semanticElement;
+  protected EObject semanticElement;
   /**
    * Handle semantic element's feature handled by this field.
    */
-  protected EStructuralFeature _semanticFeature;
+  protected EStructuralFeature semanticFeature;
 
   /**
    * The widget factory
    */
-  protected TabbedPropertySheetWidgetFactory _widgetFactory;
+  protected TabbedPropertySheetWidgetFactory widgetFactory;
 
   /**
    * Whether or not the field is displayed in a wizard.
    */
-  private boolean _displayedInWizard;
+  private boolean displayedInWizard;
 
   /**
    * Constructor.
    */
   protected AbstractSemanticField(TabbedPropertySheetWidgetFactory widgetFactory) {
-    _widgetFactory = widgetFactory;
-    _displayedInWizard = false;
+    this.widgetFactory = widgetFactory;
+    this.displayedInWizard = false;
   }
 
   /**
@@ -83,7 +83,7 @@ public abstract class AbstractSemanticField implements SelectionListener, FocusL
    * @return the displayedInWizard
    */
   public boolean isDisplayedInWizard() {
-    return _displayedInWizard;
+    return displayedInWizard;
   }
 
   /**
@@ -93,7 +93,7 @@ public abstract class AbstractSemanticField implements SelectionListener, FocusL
    *          the displayedInWizard to set
    */
   public void setDisplayedInWizard(boolean displayedInWizard) {
-    _displayedInWizard = displayedInWizard;
+    this.displayedInWizard = displayedInWizard;
   }
 
   /**
@@ -130,7 +130,7 @@ public abstract class AbstractSemanticField implements SelectionListener, FocusL
    * Retrieve the execution manager
    */
   protected ExecutionManager getExecutionManager() {
-    return TransactionHelper.getExecutionManager(_semanticElement);
+    return TransactionHelper.getExecutionManager(semanticElement);
   }
 
   /**
@@ -175,7 +175,7 @@ public abstract class AbstractSemanticField implements SelectionListener, FocusL
        */
       @Override
       public Collection<?> getAffectedObjects() {
-        return Collections.singletonList(_semanticElement);
+        return Collections.singletonList(semanticElement);
       }
 
       /**
@@ -200,7 +200,7 @@ public abstract class AbstractSemanticField implements SelectionListener, FocusL
       @Override
       public void commandRolledBack() {
         // Reload data >> refresh the UI.
-        loadData(_semanticElement);
+        loadData(semanticElement);
       }
     };
   }
@@ -232,7 +232,7 @@ public abstract class AbstractSemanticField implements SelectionListener, FocusL
       @Override
       public void commandRolledBack() {
         // Reload data >> refresh the UI.
-        loadData(_semanticElement);
+        loadData(semanticElement);
       }
     };
   }
@@ -244,8 +244,8 @@ public abstract class AbstractSemanticField implements SelectionListener, FocusL
    * @param semanticFeature
    */
   public void loadData(EObject semanticElement, EStructuralFeature semanticFeature) {
-    _semanticElement = semanticElement;
-    _semanticFeature = semanticFeature;
+    this.semanticElement = semanticElement;
+    this.semanticFeature = semanticFeature;
   }
 
   /**
@@ -270,7 +270,7 @@ public abstract class AbstractSemanticField implements SelectionListener, FocusL
   public void focusLost(FocusEvent event) {
     if (event != null) {
       Object source = event.getSource();
-      if ((source != null) && (source instanceof Text)) {
+      if (source instanceof Text) {
         fillTextField((Text) source);
       }
     }
@@ -289,15 +289,13 @@ public abstract class AbstractSemanticField implements SelectionListener, FocusL
    */
   @Override
   public void keyReleased(KeyEvent event) {
-    if (event != null) {
+    if (event != null && (displayedInWizard || event.character == SWT.CR)) {
       // this field can be used in two different contexts:
       // - in the property view: we don't want to create a command for each modification (unless it's a CR character)
       // - in a wizard dialog: all the modifications will be embedded in a single command
-      if (_displayedInWizard || (!_displayedInWizard && (event.character == SWT.CR))) {
-        Object source = event.getSource();
-        if ((source != null) && (source instanceof Text)) {
-          fillTextField((Text) source);
-        }
+      Object source = event.getSource();
+      if (source instanceof Text) {
+        fillTextField((Text) source);
       }
     }
   }
@@ -309,7 +307,7 @@ public abstract class AbstractSemanticField implements SelectionListener, FocusL
   public void widgetSelected(SelectionEvent event) {
     if (event != null) {
       Object source = event.getSource();
-      if ((source != null) && (source instanceof CCombo)) {
+      if (source instanceof CCombo) {
         fillComboField((CCombo) source);
       }
     }
@@ -500,7 +498,7 @@ public abstract class AbstractSemanticField implements SelectionListener, FocusL
       @Override
       public void run() {
         if ((feature instanceof EReference) && ((EReference) feature).isContainment()) {
-          List<EObject> containmentList = new ArrayList<EObject>((List<EObject>) object.eGet(feature));
+          List<EObject> containmentList = new ArrayList<>((List<EObject>) object.eGet(feature));
           for (EObject containedObject : containmentList) {
             deleteContainmentValue(containedObject);
           }
@@ -584,7 +582,7 @@ public abstract class AbstractSemanticField implements SelectionListener, FocusL
    * @return a not <code>null</code> instance.
    */
   protected Button createButton(Composite parent, Image image, String tooltip) {
-    Button button = _widgetFactory.createButton(parent, ICommonConstants.EMPTY_STRING, SWT.PUSH);
+    Button button = widgetFactory.createButton(parent, ICommonConstants.EMPTY_STRING, SWT.PUSH);
     button.setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_FILL));
     button.addSelectionListener(this);
     button.setImage(image);

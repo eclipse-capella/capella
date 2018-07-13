@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -35,7 +35,7 @@ public class BooleanValueGroup extends AbstractSemanticField {
   public BooleanValueGroup(Composite parent, String label, TabbedPropertySheetWidgetFactory widgetFactory) {
     super(widgetFactory);
 
-    Group comboGroup = _widgetFactory.createGroup(parent, ""); //$NON-NLS-1$
+    Group comboGroup = widgetFactory.createGroup(parent, ""); //$NON-NLS-1$
     comboGroup.setLayout(new GridLayout(2, false));
     GridData gd = new GridData(GridData.FILL_HORIZONTAL);
     gd.horizontalSpan = 2;
@@ -49,8 +49,8 @@ public class BooleanValueGroup extends AbstractSemanticField {
    * @param label
    */
   private void createValueComboField(Group comboGroup, String label) {
-    _widgetFactory.createCLabel(comboGroup, label);
-    _valueField = _widgetFactory.createCCombo(comboGroup, SWT.BORDER);
+    widgetFactory.createCLabel(comboGroup, label);
+    _valueField = widgetFactory.createCCombo(comboGroup, SWT.BORDER);
     _valueField.addSelectionListener(this);
     _valueField.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
     _valueField.setItems(_comboItems);
@@ -79,8 +79,8 @@ public class BooleanValueGroup extends AbstractSemanticField {
    *
    */
   public void loadComboValue() {
-    if (null != _valueField && null != _semanticElement && null != _semanticFeature) {
-      Object value = _semanticElement.eGet(_semanticFeature);
+    if (null != _valueField && null != semanticElement && null != semanticFeature) {
+      Object value = semanticElement.eGet(semanticFeature);
       if (value instanceof Boolean) {
         _valueField.select(((Boolean) value).booleanValue() ? 0 : 1);
       }
@@ -94,7 +94,7 @@ public class BooleanValueGroup extends AbstractSemanticField {
   protected void fillComboField(CCombo comboField) {
     if (comboField.equals(_valueField)) {
       Boolean value = Boolean.valueOf(_comboItems[_valueField.getSelectionIndex()]);
-      setDataValue(_semanticElement, _semanticFeature, value);
+      setDataValue(semanticElement, semanticFeature, value);
     }
   }
 
