@@ -368,11 +368,12 @@ public class CSConfigurationItemProvider extends NamedElementItemProvider implem
   /**
    * This returns CSConfiguration.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
    * 
-   * @generated
+   * @generated NOT
    */
   @Override
   public Object getImage(Object object) {
-    return overlayImage(object, getResourceLocator().getImage("full/obj16/CSConfiguration")); //$NON-NLS-1$
+    String suffix = ((CSConfiguration) object).getSelector().getLiteral();
+    return overlayImage(object, getResourceLocator().getImage("full/obj16/CSConfiguration_" + suffix)); //$NON-NLS-1$
   }
 
   /**
