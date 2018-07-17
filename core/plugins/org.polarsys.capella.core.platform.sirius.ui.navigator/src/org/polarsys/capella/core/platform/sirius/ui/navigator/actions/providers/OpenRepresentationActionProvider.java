@@ -22,7 +22,6 @@ import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.diagram.sequence.description.SequenceDiagramDescription;
-import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
@@ -42,7 +41,7 @@ public class OpenRepresentationActionProvider extends CommonActionProvider {
    * @see org.eclipse.ui.actions.ActionGroup#fillContextMenu(org.eclipse.jface.action.IMenuManager)
    */
   @Override
-  public void fillContextMenu(IMenuManager menu_p) {
+  public void fillContextMenu(IMenuManager menu) {
     IStructuredSelection selection = (IStructuredSelection) getContext().getSelection();
     Object firstElement = selection.getFirstElement();
     if (firstElement instanceof EObject) {
@@ -63,7 +62,7 @@ public class OpenRepresentationActionProvider extends CommonActionProvider {
             Collection<DRepresentationDescriptor> descriptors = DialectManager.INSTANCE
                 .getRepresentationDescriptors(description, currentSession);
             if (descriptors != null) {
-              Collection<DRepresentation> ownedRep = DialectManager.INSTANCE.getRepresentations(firstSelectedEObject,
+              Collection<DRepresentationDescriptor> ownedRep = DialectManager.INSTANCE.getRepresentationDescriptors(firstSelectedEObject,
                   currentSession);
               descriptors.retainAll(ownedRep);
               for (DRepresentationDescriptor descriptor : descriptors) {
@@ -83,7 +82,7 @@ public class OpenRepresentationActionProvider extends CommonActionProvider {
                       .getRepresentationDescriptors(sdd, currentSession);
                   if (descriptors != null) {
                     // Select only scenarios belonging to the Capability
-                    Collection<DRepresentationDescriptor> ownedDescriptors = new ArrayList<DRepresentationDescriptor>();
+                    Collection<DRepresentationDescriptor> ownedDescriptors = new ArrayList<>();
                     EList<Scenario> lstScenarios = ((AbstractCapability) firstSelectedEObject).getOwnedScenarios();
                     for (Scenario scenario : lstScenarios) {
                       Collection<DRepresentationDescriptor> repDescScenario = DialectManager.INSTANCE
@@ -106,7 +105,7 @@ public class OpenRepresentationActionProvider extends CommonActionProvider {
           }
           // Attaches the "Open Diagram / Table..." menu to group.new of the parent commonViewer contextual menu.
           if (openDiagramMenu.getSize() > 0) {
-            menu_p.appendToGroup(ICommonMenuConstants.GROUP_NEW, openDiagramMenu);
+            menu.appendToGroup(ICommonMenuConstants.GROUP_NEW, openDiagramMenu);
           }
         }
       }
