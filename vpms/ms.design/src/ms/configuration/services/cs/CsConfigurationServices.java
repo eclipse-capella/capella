@@ -28,13 +28,16 @@ import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.transaction.util.TransactionUtil;
+import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.table.metamodel.table.DTable;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
 import org.eclipse.sirius.viewpoint.description.DModelElement;
 import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
@@ -50,10 +53,8 @@ import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.cs.PhysicalLink;
 import org.polarsys.capella.core.data.cs.PhysicalPort;
-import org.polarsys.capella.core.data.ctx.Actor;
 import org.polarsys.capella.core.data.ctx.System;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
-import org.polarsys.capella.core.data.fa.AbstractFunctionalBlock;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.data.fa.FunctionInputPort;
 import org.polarsys.capella.core.data.fa.FunctionOutputPort;
@@ -177,14 +178,16 @@ public class CsConfigurationServices {
       }
       for (CSConfiguration configObject : configListFiltered) {
         for (AbstractFunction jObj : configObject.getFunctions()) {
-          if (configObject.getSelector().equals(configObject.getSelector().INCLUSION)) {
+          configObject.getSelector();
+          if (configObject.getSelector().equals(selector_Type.INCLUSION)) {
             functionListIncluded.add(jObj);
           } else {
             functionListExcluded.add(jObj);
           }
         }
         for (FunctionalChain jObj : configObject.getFunctionalChains()) {
-          if (configObject.getSelector().equals(configObject.getSelector().INCLUSION)) {
+          configObject.getSelector();
+          if (configObject.getSelector().equals(selector_Type.INCLUSION)) {
             for (AbstractFunction tObj : jObj.getInvolvedFunctions()) {
               functionListIncluded.add(tObj);
             }
@@ -196,7 +199,8 @@ public class CsConfigurationServices {
         }
 
         for (Component jObj : configObject.getComponents()) {
-          if (configObject.getSelector().equals(configObject.getSelector().INCLUSION)) {
+          configObject.getSelector();
+          if (configObject.getSelector().equals(selector_Type.INCLUSION)) {
             componentListIncluded.add(jObj);
           } else {
             componentListExcluded.add(jObj);
@@ -388,9 +392,9 @@ public class CsConfigurationServices {
     return false;
   }
 
-  private void getSelectedConfigurationsImpl(DNodeContainer view, boolean includeParents, Collection<CSConfiguration> result) {
+  private void getSelectedConfigurationsImpl(AbstractDNode view, boolean includeParents, Collection<CSConfiguration> result) {
 
-    DNodeContainer current = view;
+    AbstractDNode current = view;
 
     for (DNode dNode : current.getOwnedBorderedNodes()) {
       if (dNode.getTarget() instanceof CSConfiguration) {
@@ -400,16 +404,13 @@ public class CsConfigurationServices {
 
     if (includeParents) {
 
-      if (current.eContainer() instanceof DNodeContainer) {
+      if (current.eContainer() instanceof AbstractDNode) {
 
-        getSelectedConfigurationsImpl((DNodeContainer) current.eContainer(), includeParents, result);
+        getSelectedConfigurationsImpl((AbstractDNode) current.eContainer(), includeParents, result);
 
       } else if (current.eContainer() instanceof DSemanticDiagram) {
 
-        // configurations on canvas dont apply to actors
-        if (!(current.getTarget() instanceof Part && (((Part) current.getTarget()).getType() instanceof Actor))) {
-          getSelectedConfigurationsImpl((DSemanticDiagram) current.eContainer(), result);
-        }
+        getSelectedConfigurationsImpl((DSemanticDiagram) current.eContainer(), result);
 
       }
     }
@@ -420,7 +421,7 @@ public class CsConfigurationServices {
    * @param view
    * @return
    */
-  public Collection<CSConfiguration> getSelectedConfigurations(DNodeContainer view, Boolean includeParents) {
+  public Collection<CSConfiguration> getSelectedConfigurations(AbstractDNode view, boolean includeParents) {
     Collection<CSConfiguration> result = new ArrayList<CSConfiguration>();
     getSelectedConfigurationsImpl(view, includeParents, result);
     return result;
@@ -431,8 +432,8 @@ public class CsConfigurationServices {
     getSelectedConfigurationsImpl(diagram, result);
     return result;
   }
-
-  public Collection<CSConfiguration> getSelectedConfigurations(DNodeContainer node){
+  
+  public Collection<CSConfiguration> getSelectedConfigurations(AbstractDNode node){
     return getSelectedConfigurations(node, false);
   }
 
@@ -563,10 +564,10 @@ public class CsConfigurationServices {
 
     boolean result = true;
 
-    if (sourceComponentNode instanceof DNodeContainer && targetComponentNode instanceof DNodeContainer) {
+    if (sourceComponentNode instanceof AbstractDNode && targetComponentNode instanceof AbstractDNode) {
 
-      Collection<CSConfiguration> sourceConfigs = getSelectedConfigurations((DNodeContainer) sourceComponentNode, true);
-      Collection<CSConfiguration> targetConfigs = getSelectedConfigurations((DNodeContainer) targetComponentNode, true);
+      Collection<CSConfiguration> sourceConfigs = getSelectedConfigurations((AbstractDNode) sourceComponentNode, true);
+      Collection<CSConfiguration> targetConfigs = getSelectedConfigurations((AbstractDNode) targetComponentNode, true);
 
       boolean sResult = sourceConfigs.isEmpty();
       boolean tResult = targetConfigs.isEmpty();
@@ -594,9 +595,8 @@ public class CsConfigurationServices {
   }
 
   /*
-   * At least one of the displayed configurations on each 'side' of the exchange must include the exchange,
-   * or it is greyed out.
-   *
+   * The source and target ports must be available in the selected configuration for each source/target component
+   *    
    * @param context
    * @param view
    * @return
@@ -606,32 +606,28 @@ public class CsConfigurationServices {
     FunctionOutputPort source = context.getSourceFunctionOutputPort();
     FunctionInputPort target = context.getTargetFunctionInputPort();
 
-    AbstractFunction sourceFunction = (AbstractFunction) source.eContainer();
-    AbstractFunction targetFunction = (AbstractFunction) target.eContainer();
+    DDiagramElement sourceEdgeTarget = (DDiagramElement) ((DEdge) view).getSourceNode();
+    DDiagramElement targetEdgeTarget = (DDiagramElement) ((DEdge) view).getTargetNode();
+    
+    boolean sourceAvailable;
+    boolean targetAvailable;
 
-    Component sourceComponent = null;
-    Component targetComponent = null;
-
-    for (AbstractFunctionalBlock block : sourceFunction.getAllocationBlocks()) {
-      if (block instanceof Component) {
-        sourceComponent = (Component) block;
-      }
+    if (((DSemanticDecorator) sourceEdgeTarget).getTarget() == source){
+      sourceAvailable = isAvailableInSelectedConfigurationImpl(source, sourceEdgeTarget);
+      targetAvailable = isAvailableInSelectedConfigurationImpl(target, targetEdgeTarget);
+    } else {
+      targetAvailable = isAvailableInSelectedConfigurationImpl(source, sourceEdgeTarget);
+      sourceAvailable = isAvailableInSelectedConfigurationImpl(target, targetEdgeTarget);
     }
 
-    for (AbstractFunctionalBlock block : targetFunction.getAllocationBlocks()) {
-      if (block instanceof Component) {
-        targetComponent = (Component) block;
-      }
-    }
-
-    return isAvailableInSelectedConfigurationImpl(context, view, sourceComponent, targetComponent);
+    return sourceAvailable && targetAvailable;
 
   }
 
 
   private boolean isAvailableInSelectedConfigurationImpl(ModelElement context, DDiagramElement view) {
 
-    boolean result = true;
+    boolean result = false;
 
     if (context instanceof FunctionalExchange) {
 
@@ -647,18 +643,31 @@ public class CsConfigurationServices {
 
     } else {
 
-    if (view.eContainer() instanceof DNodeContainer) {
+      Collection<CSConfiguration> configs = Collections.emptyList();
       ModelElement target = context instanceof Part ? ((Part) context).getType() : context;
-      Collection<CSConfiguration> configs = getSelectedConfigurations((DNodeContainer) view.eContainer(), true);
-      result = configs.isEmpty();
+      
+      if (view.eContainer() instanceof AbstractDNode) {
+        configs = getSelectedConfigurations((AbstractDNode) view.eContainer(), true);
+      } else if (view.eContainer() instanceof DDiagram) {
+        configs = getSelectedConfigurations((DSemanticDiagram) view.eContainer());
+      }
+
+      boolean outOfScope = true;
+
       for (CSConfiguration c : configs) {
-        if (c.includes(target)) {
-          result = true;
-          break;
+        if (c.getScope().contains(target)) {
+          outOfScope = false;
+          if (c.includes(target)) {
+            result = true;
+            break;
+          }
         }
       }
+      
+      result |= outOfScope;
+
     }
-  }
+
     return result;
 
   }
@@ -681,14 +690,27 @@ public class CsConfigurationServices {
 
     ModelElement target = context instanceof Part ? ((Part) context).getType() : context;
 
-    for (CSConfiguration c : getSelectedConfigurations((DNodeContainer) view.eContainer(), true)) {
-      if (c.getSelector() == selector_Type.EXCLUSION && c.getElements().contains(target)) {
-        return 150;
-      }
+    if (target instanceof Component) {
+      return 200;
     }
+    
+//    for (CSConfiguration c : getSelectedConfigurations((DNodeContainer) view.eContainer(), true)) {
+//      if (c.getSelector() == selector_Type.EXCLUSION && c.getElements().contains(target)) {
+//        return 150;
+//      }
+//    }
+    
     return 220;
   }
+  
+  public int disabledElementLabelColor(ModelElement context, DDiagramElement view) {
+    return 120;
+  }
 
+  public String disabledElementWorkspacePathImage(ModelElement context, DDiagramElement view) {
+    return Images.getImagePath(context);
+  }
+  
   /**
    * Create a new {@link Configuration} for the type of a given {@link Part}
    *

@@ -545,8 +545,10 @@
           <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="service:isNotAvailableInSelectedConfiguration(view)">
             <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="color" value="//@userColorsPalettes[name=null]/@entries[name='0VP_MS_color_config_disabled']"/>
             <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="foregroundColor" value="//@userColorsPalettes[name=null]/@entries[name='0VP_MS_color_config_disabled']"/>
+            <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="backgroundColor" value="//@userColorsPalettes[name=null]/@entries[name='0VP_MS_color_config_disabled']"/>
             <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="strokeColor" value="//@userColorsPalettes[name=null]/@entries[name='0VP_MS_color_config_disabled']"/>
-            <featureCustomizations xsi:type="description:EAttributeCustomization" applyOnAll="true" attributeName="lineStyle" value="dash"/>
+            <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="labelColor" value="//@userColorsPalettes[name=null]/@entries[name='0VP_MS_color_config_disabled_label']"/>
+            <featureCustomizations xsi:type="description:EAttributeCustomization" applyOnAll="true" attributeName="workspacePath" value="service:disabledElementWorkspacePathImage(view)"/>
           </vsmElementCustomizations>
         </customization>
       </layers>
@@ -555,5 +557,6 @@
   </ownedViewpoints>
   <userColorsPalettes>
     <entries xsi:type="description:ComputedColor" name="0VP_MS_color_config_disabled" red="service:disabledElementColor(view)" green="service:disabledElementColor(view)" blue="service:disabledElementColor(view)"/>
+    <entries xsi:type="description:ComputedColor" name="0VP_MS_color_config_disabled_label" red="service:disabledElementLabelColor(view)" green="service:disabledElementLabelColor(view)" blue="service:disabledElementLabelColor(view)"/>
   </userColorsPalettes>
 </description:Group>
