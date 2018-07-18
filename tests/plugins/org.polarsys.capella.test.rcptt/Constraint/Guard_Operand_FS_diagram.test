@@ -1,0 +1,169 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Element-Name: Guard_Operand_FS_diagram
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _Tu4EkInOEeiZnJxeOaTCng
+Runtime-Version: 2.3.0.201806262310
+Save-Time: 7/18/18 11:18 AM
+Tags: constraint, Diagram_FS
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+- Associate a constraint as a Guard of Operand in FS diagram
+- On the FS diagram, the label of that operand is expected to be the label of  the constraint
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+get-view "Capella Project Explorer" | get-tree | get-menu "New/Capella Project" | click
+with [get-window "New Capella Project"] {
+    get-editbox | set-text Project
+    get-button Finish | click
+}
+
+//Create Contraint under "MA_Project01::MA_Project01::System Analysis::Capabilities"
+get-view "Capella Project Explorer" | get-tree | select "Project/Project.aird/Project/System Analysis/Capabilities" 
+    | get-menu "Add Capella Element/Constraint" | click
+get-view "Capella Project Explorer" | get-tree 
+    | get-item "Project/\\*Project.aird/Project/System Analysis/Capabilities/\\[Constraint\\]" 
+    | get-property childCount | equals 1 | verify-true
+
+// Set an OpaqueExpression with a text
+get-view "Capella Project Explorer" | get-tree 
+    | select "Project/*Project.aird/Project/System Analysis/Capabilities/[Constraint]/[Opaque Expression]"
+with [get-view Properties] {
+    click
+    with [get-section Property | get-group "" -index 1 | get-text-viewer] {
+        type-text Bonjour
+        key-type BackSpace -times 8
+        type-text "Hello "
+        key-type "M1+SPACE"
+    }
+}
+get-window -from "CompletionProposalPopup.createProposalSelector()" | get-table 
+    | select "\\/Project\\/Project\\/System Analysis\\/System Functions\\/Root System Function" | click -default
+with [get-view Properties | get-section Property | get-group "" -index 1 | get-text-viewer] {
+    set-caret-pos 1 27
+    type-text ", how are you?"
+    key-type Enter
+    key-type "M1+s"
+}
+
+get-view "Capella Project Explorer" | get-tree | select "Project/Project.aird/Project/System Analysis/Capabilities" 
+    | get-menu "Add Capella Element/Capability" | click
+    
+// Create a Function Scenario
+get-view "Capella Project Explorer" | get-tree 
+    | select "Project/*Project.aird/Project/System Analysis/Capabilities/Capability 1" 
+    | get-menu "New Diagram \\/ Table.../Function Scenario" | click
+    
+get-window "New Function Scenario" | get-button OK | click
+
+with [get-editor "[FS] Capability 1"] {
+    get-diagram -index 1 | get-edit-part -name "[FS] Capability 1" | mouse-move 735 109 -height 663 -width 1042
+    with [get-palette] {
+        get-palette-entry "Functional Exchange with return branch" | mouse-move 11 5 -height 52 -width 125
+        get-palette-entry Functions | mouse-move 31 22 -height 23 -width 125
+        with [get-palette-entry "System Function"] {
+            mouse-move 34 11 button1 -height 23 -width 125
+            mouse-press 34 11 button1 -height 23 -width 125
+            mouse-release 34 11 button1 524288 -height 23 -width 125
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "[FS] Capability 1"] {
+        mouse-move 160 59 button1 CTRL -height 663 -width 1042
+        mouse-press 160 59 button1 CTRL -height 663 -width 1042
+        mouse-release 160 59 button1 786432 -height 663 -width 1042
+    }
+    with [get-diagram -index 1 | get-edit-part -name "[FS] Capability 1"] {
+        mouse-move 460 51 -mask CTRL -height 663 -width 1042
+        mouse-hover 460 51 -mask CTRL -height 663 -width 1042
+        mouse-move 1041 42 -height 663 -width 1042
+    }
+    with [get-palette | get-palette-entry "System Function"] {
+        mouse-move 69 7 button1 -height 23 -width 125
+        mouse-press 69 7 button1 -height 23 -width 125
+        mouse-release 69 7 button1 524288 -height 23 -width 125
+    }
+    with [get-diagram -index 1 | get-edit-part -name "[FS] Capability 1"] {
+        mouse-move 505 48 button1 -height 663 -width 1042
+        mouse-press 505 48 button1 -height 663 -width 1042
+        mouse-release 505 48 button1 524288 -height 663 -width 1042
+    }
+    get-diagram -index 1 | get-edit-part -name "[FS] Capability 1" | mouse-move 909 49 -height 663 -width 1042
+}
+with [get-editor "[FS] Capability 1"] {
+    with [get-diagram -index 1 | get-edit-part -name "[FS] Capability 1"] {
+        mouse-move 113 69 button1 -height 663 -width 1042
+        mouse-press 113 69 button1 -height 663 -width 1042
+        mouse-release 113 69 button1 524288 -height 663 -width 1042
+    }
+    with [get-diagram -index 1 | get-edit-part -name "[FS] Capability 1"] {
+        mouse-move 97 209 button1 -height 663 -width 1042
+        mouse-press 97 209 button1 -height 663 -width 1042
+        mouse-release 97 209 button1 524288 -height 663 -width 1042
+    }
+    with [get-palette] {
+        with [get-palette-entry LOOP] {
+            mouse-move 34 9 button1 -height 23 -width 125
+            mouse-press 34 9 button1 -height 23 -width 125
+            mouse-release 34 9 button1 524288 -height 23 -width 125
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "[FS] Capability 1"] {
+        mouse-move 179 234 button1 -height 663 -width 1042
+        mouse-press 179 234 button1 -height 663 -width 1042
+        mouse-move 233 259 -mask 524288 -height 663 -width 1042
+        mouse-drag 600 319 button1 524288 -height 663 -width 1042
+        mouse-release 600 319 button1 524288 -height 663 -width 1042
+    }
+    with [get-diagram -index 1 | get-edit-part -name "[FS] Capability 1"] {
+        with [get-edit-part -name " LOOP"] {
+            with [get-edit-part -className CombinedFragmentCompartmentEditPart] {
+                mouse-move 22 16 button1 -height 90 -width 445
+                mouse-press 22 16 button1 -height 90 -width 445
+                mouse-release 22 16 button1 524288 -height 90 -width 445
+                mouse-hover 22 16 -height 90 -width 445
+            }
+            activate-direct-edit
+        }
+        mouse-move 97 294 button1 -height 663 -width 1042
+        mouse-press 97 294 button1 -height 663 -width 1042
+        mouse-release 97 294 button1 524288 -height 663 -width 1042
+        with [get-edit-part -name " LOOP" | get-edit-part -className CombinedFragmentCompartmentEditPart 
+            | get-edit-part -name ""] {
+            with [get-edit-part -className OperandCompartmentEditPart] {
+                mouse-move 0 24 button1 -height 60 -width 445
+                mouse-press 0 24 button1 -height 60 -width 445
+            }
+            with [get-handle MoveHandle] {
+                mouse-release 1 25 button1 524288 -height 62 -width 447
+                mouse-hover 1 25 -height 62 -width 447
+            }
+        }
+    }
+}
+get-view Properties | get-section Property | get-group -index 1 | get-button "Browse available elements" | click
+get-window "Selection Dialog" | get-tree | select "Project/Project/System Analysis/Capabilities/\\[Constraint\\]" 
+    | double-click
+    
+with [get-editor "[FS] Capability 1" | get-diagram -index 1 | get-edit-part -name "[FS] Capability 1"] {
+    get-edit-part -name " LOOP" | get-edit-part -className CombinedFragmentCompartmentEditPart | get-edit-part 
+        -name "[ Hello Root System Function, how are you?\r\n"
+        + " ]" | get-edit-part -className OperandCompartmentEditPart | mouse-release 120 16 button1 524288 -height 60 
+        -width 445
+    mouse-move 72 296 button1 -height 663 -width 1042
+    mouse-press 72 296 button1 -height 663 -width 1042
+    mouse-release 72 296 button1 524288 -height 663 -width 1042
+    get-edit-part -name " LOOP" | get-edit-part -className CombinedFragmentCompartmentEditPart | get-edit-part 
+        -name "[ Hello Root System Function, how are you?\r\n"
+        + " ]" | get-edit-part -className OperandCompartmentEditPart | mouse-move 42 18 -height 60 -width 445
+}
+
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

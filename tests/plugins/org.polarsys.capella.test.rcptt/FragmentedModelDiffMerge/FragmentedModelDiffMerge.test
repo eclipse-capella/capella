@@ -6,8 +6,8 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _s0WTkLfUEea5ZpGbd-RfXw
-Runtime-Version: 2.3.0.201712190725
-Save-Time: 1/23/18 2:27 PM
+Runtime-Version: 2.3.0.201806262310
+Save-Time: 7/20/18 1:35 PM
 Testcase-Type: ecl
 
 ------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
@@ -362,13 +362,38 @@ with [get-view "Capella Project Explorer" | get-tree] {
     get-menu "Compare With/Each Other as models" | click
 }
 get-window "EMF Diff/Merge" | get-button Finish | click
-with [get-editor "Compare ('fragmentedModel' - 'fragmentedModel')"] {
-    with [get-tree] {
-        key-type "M1+a"
-        select "fragmentedModel.aird (172)" "SA.airdfragment (169)"
-    }
-    get-button "Copy to the left" | click
+
+
+// Based on which side is the fragmentedModel2/fragmentedModel.aird, we have to choose the orientation for merging
+get-editor "Compare ('fragmentedModel' - 'fragmentedModel')" | get-button -index 9 | click
+get-menu -path "Update..." | click
+
+get-window "EMF Diff/Merge" | get-group Roles | get-editbox -after [get-label "Right:"] | get-property text 
+    | equals "fragmentedModel2/fragmentedModel.aird" | verify-true
+    
+if [get-window "EMF Diff/Merge" | get-group Roles | get-editbox -after [get-label "Right:"] | get-property text -raw | eq "fragmentedModel2/fragmentedModel.aird"] {
+	log -message "Should be a merge from left to right"
+	get-window "EMF Diff/Merge" | get-button Cancel | click
+	with [get-editor "Compare ('fragmentedModel' - 'fragmentedModel')"] {
+		with [get-tree] {
+       		key-type "M1+a"
+       		select "fragmentedModel.aird (172)" "SA.airdfragment (169)"
+    	}
+    	get-button "Copy to the right" | click
+    }	
+} -else {
+	log -message "Should be a merge from right to left"
+	get-window "EMF Diff/Merge" | get-button Cancel | click
+		
+	with [get-editor "Compare ('fragmentedModel' - 'fragmentedModel')"] {
+    	with [get-tree] {
+       		key-type "M1+a"
+       		select "fragmentedModel.aird (172)" "SA.airdfragment (169)"
+    	}
+    	get-button "Copy to the left" | click
+	}
 }
+
 get-window "Merge Operation" | get-button OK | click
 get-window "Merge Operation" | get-button OK | click
 with [get-editor "Compare ('fragmentedModel' - 'fragmentedModel')"] {

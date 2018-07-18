@@ -1,0 +1,98 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Element-Name: Pre_Post_Conditions_FS_diagram
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _LlxPcInOEeiZnJxeOaTCng
+Runtime-Version: 2.3.0.201806262310
+Save-Time: 7/18/18 11:18 AM
+Tags: constraint, Diagram_FS
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+- Add constraint as pre-condition and post-condition of a Scenario element
+- Verify the label of those conditions on the [FS] scenario diagram are as same as the constraint's label
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+// Create a Capella Project
+get-view "Capella Project Explorer" | get-tree | get-menu "New/Capella Project" | click
+with [get-window "New Capella Project"] {
+    get-editbox | set-text Project
+    get-button Finish | click
+}
+
+// Create Contraint under "MA_Project01::MA_Project01::System Analysis::Capabilities"
+get-view "Capella Project Explorer" | get-tree | select "Project/Project.aird/Project/System Analysis/Capabilities" 
+    | get-menu "Add Capella Element/Constraint" | click
+get-view "Capella Project Explorer" | get-tree 
+    | get-item "Project/\\*Project.aird/Project/System Analysis/Capabilities/\\[Constraint\\]" 
+    | get-property childCount | equals 1 | verify-true
+
+// Set an OpaqueExpression with a text
+get-view "Capella Project Explorer" | get-tree 
+    | select "Project/*Project.aird/Project/System Analysis/Capabilities/[Constraint]/[Opaque Expression]"
+with [get-view Properties] {
+    click
+    with [get-section Property | get-group "" -index 1 | get-text-viewer] {
+        type-text "Hello "
+        key-type "M1+SPACE"
+    }
+}
+
+get-window -from "CompletionProposalPopup.createProposalSelector()" | get-table 
+    | select "\\/Project\\/Project\\/System Analysis\\/System Functions\\/Root System Function" | click -default
+with [get-view Properties | get-section Property | get-group "" -index 1 | get-text-viewer] {
+    set-caret-pos 1 27
+    type-text ", how are you?"
+    key-type Enter
+    key-type "M1+s"
+}
+
+// Create a new Capability element
+get-view "Capella Project Explorer" | get-tree | select "Project/Project.aird/Project/System Analysis/Capabilities" 
+    | get-menu "Add Capella Element/Capability" | click
+    
+// Create a Function Scenario
+get-view "Capella Project Explorer" | get-tree 
+    | select "Project/*Project.aird/Project/System Analysis/Capabilities/Capability 1" 
+    | get-menu "New Diagram \\/ Table.../Function Scenario" | click
+get-window "New Function Scenario" | get-button OK | click
+
+// Set Precondition on scenario
+get-view "Capella Project Explorer" | get-tree 
+    | select "Project/*Project.aird/Project/System Analysis/Capabilities/Capability 1/[FS] Capability 1"
+    
+get-view Properties | get-section Property | get-group -index 2 | get-button "Browse available elements" | click
+get-window "Selection Dialog" | get-tree | select "Project/Project/System Analysis/Capabilities/\\[Constraint\\]" 
+    | double-click
+
+get-view Properties | get-section Property | get-group -index 2 | get-text-viewer | get-property text 
+    | equals "Hello Root System Function, how are you?" | verify-true
+    
+// Set postCondition on scenario
+get-view Properties | get-section Property | get-group -index 2 | get-button "Browse available elements" 
+    -after [get-label "Post-condition :"] | click
+get-window "Selection Dialog" | get-tree | select "Project/Project/System Analysis/Capabilities/\\[Constraint\\]" 
+    | double-click
+
+get-view Properties | get-section Property | get-group -index 2 | get-text-viewer 
+    -after [get-label "Post-condition :"] | get-property text | equals "Hello Root System Function, how are you?" 
+    | verify-true
+
+// Check on diagram preCondition and postCondition
+with [get-editor "[FS] Capability 1" | get-diagram -index 1 | get-edit-part -name "[FS] Capability 1"] {
+    get-edit-part -name "pre:Hello Root System Function, how are you?\r\n" | get-edit-part -className NoteEditPart 
+        | get-figure "0/0" | get-property "getText()" | equals "pre:Hello Root System Function, how are you?" 
+        | verify-true
+    get-edit-part -name "post:Hello Root System Function, how are you?\r\n" | get-edit-part -className NoteEditPart 
+        | get-figure "0/0" | get-property "getText()" | equals "post:Hello Root System Function, how are you?" 
+        | verify-true
+}
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--
