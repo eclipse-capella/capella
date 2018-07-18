@@ -10,3 +10,4 @@ These followings icons are made available under the terms of the Eclipse Public 
 /images/FunctionOutputPort.png - ms.design - ms.design/images/FunctionOutputPortPort.png
 /images/InFlowPort.png - ms.design - ms.design/images/InFlowPort.png
 /images/StandardPortSmall.png - ms.design - ms.design/images/StandardPortSmall.png
+/images/TransparentPort.png - ms.design - ms.design/images/TransparentPort.png

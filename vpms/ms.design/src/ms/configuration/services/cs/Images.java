@@ -32,7 +32,7 @@ public class Images {
     // Until rotation is solved, use the same grey box icon for all ports.
     //
     
-    if (e instanceof ComponentPort) {
+//    if (e instanceof ComponentPort) {
 //    
 //      if (PortExt.isInStrictFlowPort(e)) {
 //        return INFLOW_PORT;
@@ -47,23 +47,23 @@ public class Images {
 //      }
 //      
 //      return STANDARD_PORT_SMALL;
-      return FLOW_PORT;
-    }
-    
-    if (e instanceof FunctionOutputPort ) {
-      //return FUNCTION_OUTPUT_PORT;
-      return FLOW_PORT;
-    }
-    
-    if (e instanceof FunctionInputPort) {
-      //return FUNCTION_INPUT_PORT;
-      return FLOW_PORT;
-    }
-    
-    if (e instanceof PhysicalPort) {
-      //return STANDARD_PORT_SMALL;
-      return FLOW_PORT;
-    }
+//      return FLOW_PORT;
+//    }
+//    
+//    if (e instanceof FunctionOutputPort ) {
+//      //return FUNCTION_OUTPUT_PORT;
+//      return FLOW_PORT;
+//    }
+//    
+//    if (e instanceof FunctionInputPort) {
+//      //return FUNCTION_INPUT_PORT;
+//      return FLOW_PORT;
+//    }
+//    
+//    if (e instanceof PhysicalPort) {
+//      //return STANDARD_PORT_SMALL;
+//      return FLOW_PORT;
+//    }
 
     return null;
     

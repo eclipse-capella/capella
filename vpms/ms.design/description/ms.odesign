@@ -541,6 +541,9 @@
     </ownedRepresentationExtensions>
     <ownedRepresentationExtensions xsi:type="description_2:DiagramExtensionDescription" name="MS Style Customisations" viewpointURI="viewpoint:/org.polarsys.capella.core.sirius.analysis/((Logical Architecture)|(System Analysis)|(Physical Architecture)).*" representationName=".*Architecture Blank">
       <layers name="MS_Style_Customisations_Layer" optional="false">
+        <decorationDescriptionsSet>
+          <decorationDescriptions xsi:type="description:SemanticBasedDecoration" name="DisabledPort" position="CENTER" preconditionExpression="service:isNotAvailableInSelectedConfiguration(view)" imageExpression="/ms.design/images/TransparentPort.png" domainClass="Port"/>
+        </decorationDescriptionsSet>
         <customization>
           <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="service:isNotAvailableInSelectedConfiguration(view)">
             <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="color" value="//@userColorsPalettes[name=null]/@entries[name='0VP_MS_color_config_disabled']"/>
