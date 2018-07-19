@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -60,7 +60,7 @@ public class ArgumentAnalyzer {
    
    _strictMode = strictMode;
    
-   if (true == _strictMode) {
+   if (_strictMode) {
      // We can not manage both unknown flags and ordered ones. 
      _unknownFlagAsError = true;
    } else {
@@ -136,7 +136,7 @@ public class ArgumentAnalyzer {
     // Let's clean older result
     _values.clear();
     
-    if ( true == _strictMode ) {
+    if (_strictMode) {
       strictModeParsing(arguments);
     } else {
       defaultModeParsing(arguments);
@@ -232,7 +232,7 @@ public class ArgumentAnalyzer {
    * @return a {@link List} of flagId which are named flagName
    */
   protected List<String> getFlagIdPerName(String flagName) {
-    List<String> result = new ArrayList<String>();
+    List<String> result = new ArrayList<>();
     
     for (Entry<String, Flag> entry : _flags.entrySet()) {
       if (entry.getValue().getName().equals(flagName)) {
@@ -248,8 +248,8 @@ public class ArgumentAnalyzer {
   }
   
   protected void init() {
-    _flags = new LinkedHashMap<String, Flag>();
-    _values = new LinkedHashMap<String, List<String>>();
+    _flags = new LinkedHashMap<>();
+    _values = new LinkedHashMap<>();
   }
   
   /**
@@ -287,7 +287,7 @@ public class ArgumentAnalyzer {
         i += args.size();
         
       } else { // Undefined flag
-        if ( _unknownFlagAsError == true ) {
+        if (_unknownFlagAsError) {
           // We directly exit on the first unknown flag. 
           // It will be quickly raised to too incomprehensible in case of flag with arguments...
           throw new ArgumentAnalyzerException(
@@ -305,14 +305,14 @@ public class ArgumentAnalyzer {
     
     Iterator<Entry<String, Flag>> it = _flags.entrySet().iterator();
     String currentFlagId = null;
-    List<String> missingFlags = new ArrayList<String>();
+    List<String> missingFlags = new ArrayList<>();
     
     while (it.hasNext()) {
       Entry<String, Flag> entry = it.next();
       currentFlagId = entry.getKey();
       flag = entry.getValue();
       if (
-          flag.isMandatory() == true &&
+          flag.isMandatory() &&
           _values.containsKey(currentFlagId) == false 
       ) {
         missingFlags.add(currentFlagId);
@@ -323,7 +323,7 @@ public class ArgumentAnalyzer {
       throw new ArgumentAnalyzerException(
         NLS.bind(
           Messages.mandatoryFlagNotFound,
-          new Object[] {flag.getName(), currentFlagId}
+          new Object[] {flag != null ? flag.getName() : "", currentFlagId}
         )
       );
     }
@@ -400,7 +400,7 @@ public class ArgumentAnalyzer {
    */
   protected ArrayList<String> getArgumentData(String currentFlagId, String[] arguments, int currentIndex ) throws ArgumentAnalyzerException {
     
-    ArrayList<String> args = new ArrayList<String>();
+    ArrayList<String> args = new ArrayList<>();
     
     int i = currentIndex + 1;
     
@@ -432,5 +432,4 @@ public class ArgumentAnalyzer {
     
     return args;
   }
-  
 }

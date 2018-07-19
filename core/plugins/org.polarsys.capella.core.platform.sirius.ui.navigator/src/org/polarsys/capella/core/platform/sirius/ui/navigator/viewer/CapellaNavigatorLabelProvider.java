@@ -115,7 +115,7 @@ public class CapellaNavigatorLabelProvider extends MDEAdapterFactoryLabelProvide
       text = super.getText(((ItemWrapper) object).getWrappedObject());
     } else {
       // Fix due to 3.5 & 3.6 that have changed the implementation of IResource.toString().
-      IWorkbenchAdapter workbenchAdapter = (IWorkbenchAdapter) Platform.getAdapterManager().getAdapter(object,
+      IWorkbenchAdapter workbenchAdapter = Platform.getAdapterManager().getAdapter(object,
           IWorkbenchAdapter.class);
       text = (null != workbenchAdapter) ? workbenchAdapter.getLabel(object) : super.getText(object);
 
@@ -154,7 +154,7 @@ public class CapellaNavigatorLabelProvider extends MDEAdapterFactoryLabelProvide
       }
 
       if (element instanceof DRepresentationDescriptor) {
-        ArrayList<String> values = new ArrayList<String>(2);
+        ArrayList<String> values = new ArrayList<>(2);
 
         Object modelElement = ((DRepresentationDescriptor) element).getTarget();
         if (null != modelElement) {
@@ -202,7 +202,7 @@ public class CapellaNavigatorLabelProvider extends MDEAdapterFactoryLabelProvide
         if (null != containerPath) {
           path = containerPath.concat(STATUS_LINE_PATH_SEPARATOR).concat(path);
         }
-        if (containerPath.contains(STATUS_LINE_PATH_SEPARATOR)) {
+        if (containerPath != null && containerPath.contains(STATUS_LINE_PATH_SEPARATOR)) {
           container = null;
         } else {
           container = container.eContainer();

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -35,7 +35,6 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IBorderedShapeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.figures.BorderedNodeFigure;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.IBorderItemLocator;
-import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.WorkspaceImage;
@@ -178,8 +177,7 @@ public class RotativeImageEditPart extends WorkspaceImageEditPart implements ISt
    */
   @Override
   protected NodeFigure createNodePlate() {
-    DefaultSizeNodeFigure result = new AirStyleDefaultSizeNodeFigure(getMapMode().DPtoLP(40), getMapMode().DPtoLP(40));
-    return result;
+    return new AirStyleDefaultSizeNodeFigure(getMapMode().DPtoLP(40), getMapMode().DPtoLP(40));
   }
 
   /**
@@ -240,8 +238,8 @@ public class RotativeImageEditPart extends WorkspaceImageEditPart implements ISt
 
     private final RotativeImageEditPart editPart;
 
-    public SwitchImageListener(final RotativeImageEditPart editPart_p) {
-      this.editPart = editPart_p;
+    public SwitchImageListener(final RotativeImageEditPart editPart) {
+      this.editPart = editPart;
     }
 
     public void ancestorAdded(IFigure ancestor) {
@@ -297,7 +295,7 @@ public class RotativeImageEditPart extends WorkspaceImageEditPart implements ISt
         current = (IGraphicalEditPart) current.getParent();
       }
 
-      borderedNodeFigure = borderNodeEditPart.getBorderedFigure();
+      borderedNodeFigure = borderNodeEditPart != null ? borderNodeEditPart.getBorderedFigure() : null;
 
       return borderedNodeFigure;
     }
@@ -327,7 +325,5 @@ public class RotativeImageEditPart extends WorkspaceImageEditPart implements ISt
     public void figureMoved(IFigure source) {
       updateImage();
     }
-
   }
-
 }

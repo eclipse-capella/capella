@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -113,7 +113,7 @@ public class SelectFunctionalExchangeDialog extends SelectElementsDialog {
     }
 
     protected List<EObject> getAvailableElements() {
-      List<EObject> returnedList = new ArrayList<EObject>();
+      List<EObject> returnedList = new ArrayList<>();
       EClass createdEClass = getCreatedEClass();
       IBusinessQuery query = BusinessQueriesProvider.getInstance().getContribution(createdEClass, getExchangeItemReference(createdEClass));
 
@@ -147,7 +147,7 @@ public class SelectFunctionalExchangeDialog extends SelectElementsDialog {
 
       if (Window.OK == dialog.open()) {
         Object[] results = dialog.getResult();
-        List<EObject> resultObjects = new ArrayList<EObject>();
+        List<EObject> resultObjects = new ArrayList<>();
         for (Object result : results) {
           if (result instanceof EObject) {
             resultObjects.add((EObject) result);
@@ -229,7 +229,7 @@ public class SelectFunctionalExchangeDialog extends SelectElementsDialog {
      * @return
      */
     private List<? extends EObject> getAccessibleFunctions(FunctionPkg functionPkg) {
-      List<AbstractFunction> result = new ArrayList<AbstractFunction>();
+      List<AbstractFunction> result = new ArrayList<>();
       TreeIterator<EObject> it = functionPkg.eAllContents();
       while (it.hasNext()) {
         EObject obj = it.next();
@@ -306,7 +306,7 @@ public class SelectFunctionalExchangeDialog extends SelectElementsDialog {
   private Button _sourceFunctionClearButton;
 
   // caches for each listener type (source or target) the user selected function
-  public HashMap<ListenerType, AbstractNamedElement> _cache = new HashMap<ListenerType, AbstractNamedElement>();
+  public HashMap<ListenerType, AbstractNamedElement> _cache = new HashMap<>();
 
   private Text sourceFunctionName;
   private Button _targetFunctionButton;
@@ -336,7 +336,7 @@ public class SelectFunctionalExchangeDialog extends SelectElementsDialog {
     _sequenceMessage = message;
     _displayedElements = displayedElements;
     _creationType = creationType;
-    _allocatedExchangeItems = new ArrayList<EObject>();
+    _allocatedExchangeItems = new ArrayList<>();
     _sourceIR = sourceIR;
     _targetIR = targetIR;
   }
@@ -356,7 +356,7 @@ public class SelectFunctionalExchangeDialog extends SelectElementsDialog {
     };
     createNewExchangeButton.addSelectionListener(listener);
 
-    if (_displayedElements.size() == 0) {
+    if (_displayedElements.isEmpty()) {
       createNewExchangeButton.setSelection(true);
     } else {
       createNewExchangeButton.setSelection(false);
@@ -623,9 +623,11 @@ public class SelectFunctionalExchangeDialog extends SelectElementsDialog {
     } else if (parent instanceof OperationalActivity) {
       result = OaFactory.eINSTANCE.createOperationalActivity();
     }
-    parent.getOwnedFunctions().add(result);
-    CapellaElementExt.creationService(result);
-    result.setName(sourceFunctionName.getText());
+    if(result != null) {
+    	parent.getOwnedFunctions().add(result);
+    	CapellaElementExt.creationService(result);
+    	result.setName(sourceFunctionName.getText());
+    }
     return result;
   }
 
@@ -772,11 +774,7 @@ public class SelectFunctionalExchangeDialog extends SelectElementsDialog {
 
     }
 
-    List<? extends EObject> result = super.handleResult();
-    if (result.size() > 0) {
-    }
-    return result;
-
+    return super.handleResult();
   }
 
   @Override
@@ -832,18 +830,16 @@ public class SelectFunctionalExchangeDialog extends SelectElementsDialog {
     super.updateButtons(selection);
 
     // Update the exchange item list according to the selection
-    List<EObject> exchangeItems = new ArrayList<EObject>();
-    if (selection != null) {
+    List<EObject> exchangeItems = new ArrayList<>();
       if (selection instanceof TreeSelection) {
         Object element = ((TreeSelection) selection).getFirstElement();
-        if ((element != null) && (element instanceof EObject)) {
+        if (element instanceof EObject) {
           EReference reference = getExchangeItemReference(((EObject) element).eClass());
           if ((reference != null) && reference.isMany() && EcoreUtil2.isEqualOrSuperClass(reference.getEContainingClass(), ((EObject) element).eClass())) {
             exchangeItems.addAll((List<EObject>) ((EObject) element).eGet(reference));
           }
         }
       }
-    }
     updateExchangeItems(exchangeItems);
   }
 
@@ -859,7 +855,7 @@ public class SelectFunctionalExchangeDialog extends SelectElementsDialog {
         textDescription +=
             EObjectLabelProviderHelper.getText(_allocatedExchangeItems.get(i)) + ICommonConstants.COMMA_CHARACTER + ICommonConstants.WHITE_SPACE_CHARACTER;
       }
-      if (_allocatedExchangeItems.size() > 0) {
+      if (!_allocatedExchangeItems.isEmpty()) {
         textDescription += EObjectLabelProviderHelper.getText(_allocatedExchangeItems.get(_allocatedExchangeItems.size() - 1));
       }
       if (_allocatedExchangeItemsText != null) {

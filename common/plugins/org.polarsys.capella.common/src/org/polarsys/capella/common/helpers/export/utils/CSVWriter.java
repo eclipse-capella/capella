@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -129,8 +129,6 @@ public class CSVWriter {
 	 */
 	public void setDelimiter(char delimiter) {
 		_userSettings.Delimiter = delimiter;
-		
-		return;
 	}
 
 	public char getRecordDelimiter() {
@@ -145,8 +143,6 @@ public class CSVWriter {
 	public void setRecordDelimiter(char recordDelimiter) {
 		_useCustomRecordDelimiter = true;
 		_userSettings.RecordDelimiter = recordDelimiter;
-		
-		return;
 	}
 
 	/**
@@ -163,8 +159,6 @@ public class CSVWriter {
 	 */
 	public void setTextQualifier(char textQualifier) {
 		_userSettings.TextQualifier = textQualifier;
-		
-		return;
 	}
 
 	/**
@@ -181,8 +175,6 @@ public class CSVWriter {
 	 */
 	public void setUseTextQualifier(boolean useTextQualifier) {
 		_userSettings.UseTextQualifier = useTextQualifier;
-		
-		return;
 	}
 
 	public int getEscapeMode() {
@@ -191,14 +183,10 @@ public class CSVWriter {
 
 	public void setEscapeMode(int escapeMode) {
 		_userSettings.EscapeMode = escapeMode;
-		
-		return;
 	}
 
 	public void setComment(char comment) {
 		_userSettings.Comment = comment;
-		
-		return;
 	}
 
 	public char getComment() {
@@ -221,8 +209,6 @@ public class CSVWriter {
 	 */
 	public void setForceQualifier(boolean forceQualifier) {
 		_userSettings.ForceQualifier = forceQualifier;
-		
-		return;
 	}
 
 	/**
@@ -315,8 +301,6 @@ public class CSVWriter {
 		}
 
 		_firstColumn = false;
-		
-		return;
 	}
 
 	/**
@@ -327,8 +311,6 @@ public class CSVWriter {
 	 */
 	public void write(String content) throws IOException {
 		write(content, false);
-		
-		return;
 	}
 
 	/**
@@ -352,8 +334,6 @@ public class CSVWriter {
 		}
 
 		_firstColumn = true;
-		
-		return;
 	}
 
 	/**
@@ -370,8 +350,6 @@ public class CSVWriter {
 
 			endRecord();
 		}
-		
-		return;
 	}
 
 	/**
@@ -381,8 +359,6 @@ public class CSVWriter {
 	 */
 	public void writeRecord(String[] values) throws IOException {
 		writeRecord(values, false);
-		
-		return;
 	}
 
 	/**
@@ -401,8 +377,6 @@ public class CSVWriter {
 		}
 
 		_firstColumn = true;
-		
-		return;
 	}
 
 	private void checkInit() throws IOException {
@@ -412,8 +386,6 @@ public class CSVWriter {
 			}
 			_initialized = true;
 		}
-		
-		return;
 	}
 
 	/**
@@ -421,8 +393,6 @@ public class CSVWriter {
 	 */
 	public void flush() {
 		_outputStream.flush();
-		
-		return;
 	}
 
 	/**
@@ -434,8 +404,6 @@ public class CSVWriter {
 
 			_closed = true;
 		}
-		
-		return;
 	}
 
 	private void close(boolean closing) {
@@ -456,16 +424,12 @@ public class CSVWriter {
 
 			_closed = true;
 		}
-		
-		return;
 	}
 
 	private void checkClosed() throws IOException {
 		if (_closed) {
 			throw new IOException(CSVWriterMessages.errOutputStreamAlreadyClosed); 
 		}
-		
-		return;
 	}
 
 	/**
@@ -519,7 +483,7 @@ public class CSVWriter {
 		int found = original.indexOf(pattern);
 
 		if (found > -1) {
-			StringBuffer sb = new StringBuffer();
+			StringBuilder sb = new StringBuilder();
 			int start = 0;
 
 			while (found != -1) {
@@ -536,5 +500,4 @@ public class CSVWriter {
 		
 		return original;
 	}
-
 }

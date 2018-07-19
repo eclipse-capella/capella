@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -73,9 +73,11 @@ public class MDCHK_ComponentPort_Orientation extends AbstractModelConstraint {
 
     switch (result) {
       case 1:
-        return ctx.createFailureStatus("Orientation of source component port '" + sourceCompPort.getName() + "' cannot be 'IN'"); //$NON-NLS-1$ //$NON-NLS-2$
+    	String sourceCompPortName = sourceCompPort != null ? sourceCompPort.getName() : "Unknown";
+        return ctx.createFailureStatus("Orientation of source component port '" + sourceCompPortName + "' cannot be 'IN'"); //$NON-NLS-1$ //$NON-NLS-2$
       case 2:
-        return ctx.createFailureStatus("Orientation of target component port '" + targetCompPort.getName() + "' cannot be 'OUT'"); //$NON-NLS-1$ //$NON-NLS-2$
+    	  String targetCompPortName = targetCompPort != null ? targetCompPort.getName() : "Unknown";
+        return ctx.createFailureStatus("Orientation of target component port '" + targetCompPortName + "' cannot be 'OUT'"); //$NON-NLS-1$ //$NON-NLS-2$
       case 3:
         return ctx.createFailureStatus("ComponentExchange '" + exchange.getName() + "' has inconsistent component port orientations"); //$NON-NLS-1$ //$NON-NLS-2$
       case 4:
@@ -83,6 +85,5 @@ public class MDCHK_ComponentPort_Orientation extends AbstractModelConstraint {
       default:
         return ctx.createSuccessStatus();
     }
-
   }
 }

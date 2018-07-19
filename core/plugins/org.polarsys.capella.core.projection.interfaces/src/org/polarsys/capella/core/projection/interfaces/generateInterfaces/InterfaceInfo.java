@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -64,13 +64,15 @@ public class InterfaceInfo {
     if (provider == null) {
       if (other.provider != null)
         return false;
-    } else if (!provider.equals(other.provider))
-      return false;
+    } else if (!provider.equals(other.provider)) {
+    	return false;    	
+    }
     if (requirer == null) {
       if (other.requirer != null)
         return false;
-    } else if (!requirer.equals(other.requirer))
-      return false;
+    } else if (!requirer.equals(other.requirer)) {
+    	return false;    	
+    }
     return true;
   }
 
@@ -122,12 +124,12 @@ private Collection<FunctionalExchange> computeFunctionalExchanges(){
      return Collections.emptyList();
    }
 
-   Collection<FunctionalExchange> providerExchanges = new LinkedHashSet<FunctionalExchange>();
+   Collection<FunctionalExchange> providerExchanges = new LinkedHashSet<>();
    for (FunctionInputPort fip : provider.getFunctionInputPorts()){
      providerExchanges.addAll((Collection<? extends FunctionalExchange>) EObjectExt.getReferencers(fip, FaPackage.Literals.FUNCTIONAL_EXCHANGE, ActivityPackage.Literals.ACTIVITY_EDGE__TARGET));
    }
 
-   Collection<FunctionalExchange> requirerExchanges = new ArrayList<FunctionalExchange>();
+   Collection<FunctionalExchange> requirerExchanges = new ArrayList<>();
    for (FunctionOutputPort fop : requirer.getFunctionOutputPorts()){
      requirerExchanges.addAll((Collection<? extends FunctionalExchange>)EObjectExt.getReferencers(fop, FaPackage.Literals.FUNCTIONAL_EXCHANGE, ActivityPackage.Literals.ACTIVITY_EDGE__SOURCE));
    }
@@ -239,7 +241,7 @@ private Collection<FunctionalExchange> computeFunctionalExchanges(){
    * Find exchanges that the two ports have in common.
    */
   public Collection<ComponentExchange> getComponentExchanges() {
-    Collection<ComponentExchange> result = new ArrayList<ComponentExchange>();
+    Collection<ComponentExchange> result = new ArrayList<>();
     if (provider != null && requirer != null){
       for (ComponentExchange e : provider.getComponentExchanges()) {
         if (requirer.getComponentExchanges().contains(e)) {
@@ -251,7 +253,7 @@ private Collection<FunctionalExchange> computeFunctionalExchanges(){
   }
 
   private void errorMultipleExistingInterfacesFound(Collection<Interface> existing){
-    Collection<Object> elems = new ArrayList<Object>(existing);
+    Collection<Object> elems = new ArrayList<>(existing);
     if (provider != null){
       elems.add(provider.getEObject());
     }
@@ -278,7 +280,7 @@ private Collection<FunctionalExchange> computeFunctionalExchanges(){
   }
 
   public Collection<ExchangeItem> getExchangeItems(InterfaceGenerationPreferences prefs){
-    Collection<ExchangeItem> result = new LinkedHashSet<ExchangeItem>();
+    Collection<ExchangeItem> result = new LinkedHashSet<>();
     if (prefs.includeExchangeItemsFromFunctionalExchanges()){
       for (FunctionalExchange exchange : getFunctionalExchanges()){
         result.addAll(exchange.getExchangedItems());
@@ -310,8 +312,7 @@ private Collection<FunctionalExchange> computeFunctionalExchanges(){
   }
 
   void update(InterfaceGenerationPreferences prefs){
-    if (iface != null){
-      if (!updated){
+    if (iface != null && !updated){
         updated = true;
         traceStrategy.traceInterface(iface, this);
         ExchangeItemUpdater.updateAddMissing(iface, getExchangeItems(prefs));
@@ -324,7 +325,6 @@ private Collection<FunctionalExchange> computeFunctionalExchanges(){
             ExchangeItemUpdater.propagateExchangeItemsToFunctionPorts(e);
           }
         }
-      }
     }
   }
 

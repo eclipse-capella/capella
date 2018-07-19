@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -72,7 +72,7 @@ import org.polarsys.capella.core.model.helpers.naming.NamingConstants;
  */
 public class SkeletonMatchPolicy implements IMatchPolicy {
 
-  private final Map<Object, String> matchIDs = new HashMap<Object, String>();
+  private final Map<Object, String> matchIDs = new HashMap<>();
 
   private enum PredefinedType {
 
@@ -94,9 +94,9 @@ public class SkeletonMatchPolicy implements IMatchPolicy {
     private final String name;
     private final EClass type;
 
-    PredefinedType(String name_p, EClass type_p) {
-      name = name_p;
-      type = type_p;
+    PredefinedType(String name, EClass type) {
+      this.name = name;
+      this.type = type;
     }
 
     static PredefinedType getPredefinedType(EObject e) {
@@ -106,12 +106,10 @@ public class SkeletonMatchPolicy implements IMatchPolicy {
         result = PREDEFINED_DATA_PKG;
       }
 
-      if (result == null) {
-        if ((e instanceof NumericType) || (e instanceof StringType) || (e instanceof BooleanType)) {
-          for (PredefinedType key : values()) {
-            if (key.name.equals(((NamedElement) e).getName()) && key.type.isInstance(e) && (getPredefinedType(e.eContainer()) == PREDEFINED_DATA_PKG)) {
-              result = key;
-            }
+      if (result == null && ((e instanceof NumericType) || (e instanceof StringType) || (e instanceof BooleanType))) {
+        for (PredefinedType key : values()) {
+          if (key.name.equals(((NamedElement) e).getName()) && key.type.isInstance(e) && (getPredefinedType(e.eContainer()) == PREDEFINED_DATA_PKG)) {
+            result = key;
           }
         }
       }
@@ -143,8 +141,8 @@ public class SkeletonMatchPolicy implements IMatchPolicy {
       return null;
     }
 
-    private static boolean isRootFunction(EObject e_p) {
-      return (e_p instanceof AbstractFunction) && (EcoreUtil2.getFirstContainer(e_p, FaPackage.Literals.ABSTRACT_FUNCTION) == null);
+    private static boolean isRootFunction(EObject eObject) {
+      return (eObject instanceof AbstractFunction) && (EcoreUtil2.getFirstContainer(eObject, FaPackage.Literals.ABSTRACT_FUNCTION) == null);
     }
   }
 
@@ -217,9 +215,9 @@ public class SkeletonMatchPolicy implements IMatchPolicy {
     private final EClass eContainerClass;
     private final EStructuralFeature eContainingFeature;
 
-    private Key(EClass eContainerClass_p, EStructuralFeature eContainingFeature_p) {
-      eContainerClass = eContainerClass_p;
-      eContainingFeature = eContainingFeature_p;
+    private Key(EClass eContainerClass, EStructuralFeature eContainingFeature) {
+      this.eContainerClass = eContainerClass;
+      this.eContainingFeature = eContainingFeature;
     }
 
     @Override
@@ -230,7 +228,7 @@ public class SkeletonMatchPolicy implements IMatchPolicy {
     @Override
     public boolean equals(Object obj) {
       boolean result = false;
-      if (obj.getClass() == Key.class) {
+      if (obj != null && obj.getClass() == Key.class) {
         result = (eContainerClass == ((Key) obj).eContainerClass) && (eContainingFeature == ((Key) obj).eContainingFeature);
       }
       return result;

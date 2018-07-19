@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.polarsys.capella.core.ui.properties.wizards;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -153,7 +154,12 @@ public class EditCapellaCustomPropertyWizardPage extends WizardPage {
       }
 
       protected boolean checkIfHelpIsAvailable(EClass eclass) {
-        return ((null != eclass) && (null != HelpSystem.getHelpContent(generateHTMLLink(eclass))));
+    	  try(InputStream inputStream = HelpSystem.getHelpContent(generateHTMLLink(eclass))){
+    		  return ((null != eclass) && (null != inputStream));
+    	  }catch (Exception e) {
+    		  // Fail silently
+		}
+    	  return false;
       }
 
       public void helpRequested(HelpEvent e) {

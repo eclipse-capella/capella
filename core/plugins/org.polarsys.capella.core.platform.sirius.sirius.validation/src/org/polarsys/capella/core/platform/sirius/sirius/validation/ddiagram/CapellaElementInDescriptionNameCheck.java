@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -42,10 +42,10 @@ public class CapellaElementInDescriptionNameCheck extends AbstractValidationRule
   protected StringBuilder _description = null;
 
   @Override
-  public IStatus validate(final IValidationContext ctx_p) {
-    EObject target = ctx_p.getTarget();
+  public IStatus validate(final IValidationContext ctx) {
+    EObject target = ctx.getTarget();
     final IStatus[] result = { null };
-    if ((null != target) && (target instanceof CapellaElement)) {
+    if (target instanceof CapellaElement) {
       final CapellaElement capellaElement = (CapellaElement) target;
       String description = capellaElement.getDescription();
       if ((null != description) && !description.isEmpty()) {
@@ -119,7 +119,7 @@ public class CapellaElementInDescriptionNameCheck extends AbstractValidationRule
                 value = value.replaceAll("\\s+", " "); //$NON-NLS-1$//$NON-NLS-2$
                 if (!name.equals(value)) {
                   // IStatus createFailureStatus = createFailureStatus(ctx_p, new Object[] { value + " [in description instead of ] " + name });
-                  result[0] = ctx_p.createFailureStatus();
+                  result[0] = ctx.createFailureStatus();
                 }
                 // re-init for new element to be found
                 elementFound = null;
@@ -137,36 +137,40 @@ public class CapellaElementInDescriptionNameCheck extends AbstractValidationRule
           is.setCharacterStream(reader);
           saxParser.parse(is, handler);
 
-        } catch (SAXParseException ex_p) {
-          return ctx_p.createFailureStatus("Invalid description format at line " + ex_p.getLineNumber()); //$NON-NLS-1$
-        } catch (Exception exception_p) {
+        } catch (SAXParseException ex) {
+          return ctx.createFailureStatus("Invalid description format at line " + ex.getLineNumber()); //$NON-NLS-1$
+        } catch (Exception exception) {
           StringBuilder loggerMessage = new StringBuilder("Invalid description format"); //$NON-NLS-1$
-          _logger.debug(loggerMessage.toString(), exception_p);
+          _logger.debug(loggerMessage.toString(), exception);
 
         } finally {
           // unload every thing
-          reader.close();
-          saxParser.reset();
+          if(reader != null) {
+        	reader.close();        		
+          }
+          if(saxParser != null) {
+        	  saxParser.reset();        	  
+          }
         }
       }
     }
 
     if (null != result[0]) {
-      return ctx_p.createFailureStatus("HyperLinks to capella element or diagram in the description are not up to date"); //$NON-NLS-1$
+      return ctx.createFailureStatus("HyperLinks to capella element or diagram in the description are not up to date"); //$NON-NLS-1$
     }
-    return ctx_p.createSuccessStatus();
+    return ctx.createSuccessStatus();
   }
 
   /**
    * 
    */
-  protected String getName(EObject object_p) {
+  protected String getName(EObject object) {
     String result = null;
-    if (null != object_p) {
-      result = CapellaElementExt.getName(object_p);
+    if (null != object) {
+      result = CapellaElementExt.getName(object);
       if ((null == result) || result.isEmpty()) {
-        if (object_p instanceof DRepresentation) {
-          DRepresentation res = (DRepresentation) object_p;
+        if (object instanceof DRepresentation) {
+          DRepresentation res = (DRepresentation) object;
           String repName = res.getName();
           if (null != repName) {
             result = repName;

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -59,14 +59,13 @@ public class Rule_Association extends Rule_CapellaElement {
     // Update the navigability field members
     Association sourceElt = (Association) element_p;
     Association targetElt = (Association) Query.retrieveFirstTransformedElement(sourceElt, context_p.getTransfo());
-    if (null != targetElt && targetElt.getNavigableMembers().size() > 0)
+    if (null != targetElt && !targetElt.getNavigableMembers().isEmpty())
       targetElt.getNavigableMembers().removeAll(targetElt.getNavigableMembers());
     for (Property property : sourceElt.getNavigableMembers()) {
       Property targetProp = (Property) Query.retrieveFirstTransformedElement(property, context_p.getTransfo());
-      if (null != targetProp) {
+      if (null != targetProp && targetElt != null) {
         targetElt.getNavigableMembers().add(targetProp);
       }
     }
   }
-
 }

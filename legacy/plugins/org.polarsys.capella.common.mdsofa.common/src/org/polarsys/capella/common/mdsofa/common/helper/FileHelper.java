@@ -66,7 +66,11 @@ public class FileHelper {
    */
   public static URL getFileFullUrl(String fileRelativePath) {
     // Get the URI for given relative path.
-    return getFileFullUrl(getFileFullUri(fileRelativePath));
+    URI fileFullUri = getFileFullUri(fileRelativePath);
+    if(fileFullUri != null) {
+    	return getFileFullUrl(fileFullUri);    	
+    }
+    return null;
   }
 
   /**
@@ -278,49 +282,55 @@ public class FileHelper {
    *          Contents that should be written to pointed file.
    * @return
    */
-  public static boolean writeFile(String filePath, boolean ensureFolders, byte[] contents) {
-    boolean result = false;
-    FileChannel channel = null;
-    try {
-      // Get file full path from its relative one.
-      String fileFullPath = FileHelper.getFileFullUrl(FileHelper.getFileFullUri(filePath)).getFile();
-      // Should path be enforced ?
-      if (ensureFolders) {
-        ensurePathAvailability(fileFullPath);
-      }
-      // Make sure file is writable.
-      boolean fileWritable = makeFileWritable(filePath);
-      // Write content.
-      if (fileWritable) {
-        // Try and open the resulting file.
-        channel = new FileOutputStream(fileFullPath).getChannel();
-        // Write contents.
-        channel.write(ByteBuffer.wrap(contents));
-        result = true;
-        channel.close();
-      }
-    } catch (Exception exception) {
-      result = false;
-      StringBuilder loggerMessage = new StringBuilder("FileHelper.writeFile(..) _ "); //$NON-NLS-1$
-      loggerMessage.append("Failed to open channel in write mode for "); //$NON-NLS-1$
-      loggerMessage.append(filePath).append(" !"); //$NON-NLS-1$
-      logger.warn(loggerMessage.toString(), exception);
-    } finally {
-      if ((null != channel) && channel.isOpen()) {
-        try {
-          // Close the channel.
-          channel.close();
-        } catch (IOException exception) {
-          result = false;
-          StringBuilder loggerMessage = new StringBuilder("FileHelper.writeFile(..) _ "); //$NON-NLS-1$
-          loggerMessage.append("Failed to close opened channel in write mode ! "); //$NON-NLS-1$
-          loggerMessage.append(filePath).append(" may no longer be usable."); //$NON-NLS-1$
-          logger.warn(loggerMessage.toString(), exception);
-        }
-      }
-    }
-    return result;
-  }
+	public static boolean writeFile(String filePath, boolean ensureFolders, byte[] contents) {
+		boolean result = false;
+		FileChannel channel = null;
+		// Get file full path from its relative one.
+		URI fileFullUri = FileHelper.getFileFullUri(filePath);
+		if (fileFullUri != null) {
+			URL fileFullUrl = FileHelper.getFileFullUrl(fileFullUri);
+			if(fileFullUrl != null) {
+				String fileFullPath = fileFullUrl.getFile();
+				try (FileOutputStream fileOutputStream = new FileOutputStream(fileFullPath)) {
+					// Should path be enforced ?
+					if (ensureFolders) {
+						ensurePathAvailability(fileFullPath);
+					}
+					// Make sure file is writable.
+					boolean fileWritable = makeFileWritable(filePath);
+					// Write content.
+					if (fileWritable) {
+						// Try and open the resulting file.
+						channel = fileOutputStream.getChannel();
+						// Write contents.
+						channel.write(ByteBuffer.wrap(contents));
+						result = true;
+						channel.close();
+					}
+				} catch (Exception exception) {
+					result = false;
+					StringBuilder loggerMessage = new StringBuilder("FileHelper.writeFile(..) _ "); //$NON-NLS-1$
+					loggerMessage.append("Failed to open channel in write mode for "); //$NON-NLS-1$
+					loggerMessage.append(filePath).append(" !"); //$NON-NLS-1$
+					logger.warn(loggerMessage.toString(), exception);
+				} finally {
+					if ((null != channel) && channel.isOpen()) {
+						try {
+							// Close the channel.
+							channel.close();
+						} catch (IOException exception) {
+							result = false;
+							StringBuilder loggerMessage = new StringBuilder("FileHelper.writeFile(..) _ "); //$NON-NLS-1$
+							loggerMessage.append("Failed to close opened channel in write mode ! "); //$NON-NLS-1$
+							loggerMessage.append(filePath).append(" may no longer be usable."); //$NON-NLS-1$
+							logger.warn(loggerMessage.toString(), exception);
+						}
+					}
+				}
+			}
+		}
+		return result;
+	}
 
   /**
    * Rename file from source file relative path to destination relative path.

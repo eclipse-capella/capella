@@ -32,14 +32,14 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
  */
 public class BlockArchitectureRule extends org.polarsys.capella.core.transition.system.rules.cs.BlockArchitectureRule {
 
-  protected EObject transformDirectElement2(EObject element_p, IContext context_p, EClass clazz_p, Level level_p) {
+  protected EObject transformDirectElement2(EObject element, IContext context, EClass clazzz, Level level) {
     //Retrieve the existing architecture if any
     EObject result = null;
-    EClass targetType = clazz_p;
+    EClass targetType = clazzz;
 
-    EObject root = TransformationHandlerHelper.getInstance(context_p).getLevelElement(element_p, context_p);
+    EObject root = TransformationHandlerHelper.getInstance(context).getLevelElement(element, context);
     SystemEngineering target =
-        (SystemEngineering) TransformationHandlerHelper.getInstance(context_p).getBestTracedElement(root, context_p,
+        (SystemEngineering) TransformationHandlerHelper.getInstance(context).getBestTracedElement(root, context,
             CapellamodellerPackage.Literals.SYSTEM_ENGINEERING);
     if (target != null) {
       for (ModellingArchitecture archi : target.getOwnedArchitectures()) {
@@ -54,7 +54,7 @@ public class BlockArchitectureRule extends org.polarsys.capella.core.transition.
       EClass clazz = targetType;
       result = null;
 
-      if (clazz != null) {
+      if (clazz != null && target != null) {
         EPackage pkg = (EPackage) clazz.eContainer();
         result = pkg.getEFactoryInstance().create(clazz);
         //we need to attach it here
@@ -62,7 +62,6 @@ public class BlockArchitectureRule extends org.polarsys.capella.core.transition.
         //we must retrieve the existing one through the previous 'for'
         target.getOwnedArchitectures().add((ModellingArchitecture)result);
       }
-
     }
 
     //Theoretically, this should not be performed here, but log message requires a valid name
@@ -71,7 +70,7 @@ public class BlockArchitectureRule extends org.polarsys.capella.core.transition.
       ((AbstractNamedElement) result).setName(EObjectLabelProviderHelper.getMetaclassLabel(result, false) + Messages.TransitionedElement_Suffix);
     }
 
-    LevelHandlerHelper.getInstance(context_p).addScope(level_p, result, context_p);
+    LevelHandlerHelper.getInstance(context).addScope(level, result, context);
 
     return result;
   }
@@ -81,19 +80,18 @@ public class BlockArchitectureRule extends org.polarsys.capella.core.transition.
    * {@inheritDoc}
    */
   @Override
-  protected Collection<EObject> transformElement(EObject element_p, IContext context_p) {
-    Collection<EObject> elements = new LinkedList<EObject>();
+  protected Collection<EObject> transformElement(EObject element, IContext context) {
+    Collection<EObject> elements = new LinkedList<>();
     EObject item = null;
 
-    for (Level level : LevelHandlerHelper.getInstance(context_p).getLevels(context_p)) {
-      EClass clazz = LevelHandlerHelper.getInstance(context_p).getLevel(context_p, level);
+    for (Level level : LevelHandlerHelper.getInstance(context).getLevels(context)) {
+      EClass clazz = LevelHandlerHelper.getInstance(context).getLevel(context, level);
       if (clazz != null) {
-        item = transformDirectElement2(element_p, context_p, clazz, level);
+        item = transformDirectElement2(element, context, clazz, level);
         elements.add(item);
       }
     }
 
     return elements;
-
   }
 }

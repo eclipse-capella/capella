@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -173,11 +173,13 @@ public class CommandSelectionContainer {
     }
 
     // implements the inherited method
+    @Override
     public void dispose() {
       // no cached resources to dispose
     }
 
     // implements the inherited method
+    @Override
     public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
       // nothing to do
     }
@@ -201,10 +203,12 @@ public class CommandSelectionContainer {
       }
     }
 
+    @Override
     public void dispose() {
       // nothing to dispose
     }
 
+    @Override
     public void inputChanged(Viewer newViewer, Object oldInput, Object newInput) {
       if (viewer != null) {
         viewer.removeCheckStateListener(this);
@@ -349,17 +353,17 @@ public class CommandSelectionContainer {
      *          the category in the category tree
      */
     private void setDetails(ICategoryTreeNode category) {
-      String description = (category == null) ? null : category.getDescription();
+      String description = category == null ? null : category.getDescription();
 
       if (description == null) {
         description = NO_CATEGORY_DESCRIPTION;
       }
 
-      CategoryPreferences actualCategory = category.getCategory();
+      CategoryPreferences actualCategory = category != null ? category.getCategory() : null;
       // If we are a mandatory category then we must provide some cue to this fact.
       if ((actualCategory != null) && actualCategory.isMandatory()) {
         getDetailsArea().setText(
-            MessageFormat.format(PreferencesUIMessages.prefs_mandatory_category, new Object[] { description }));
+            MessageFormat.format(PreferencesUIMessages.prefs_mandatory_category, description));
 
       } else {
         getDetailsArea().setText(description);
@@ -374,7 +378,7 @@ public class CommandSelectionContainer {
      */
     private void setDetails(IItemNode constraint) {
       // lots of style info
-      List<StyleRange> styles = new java.util.ArrayList<StyleRange>(32);
+      List<StyleRange> styles = new java.util.ArrayList<>(32);
       getDetailsArea().setText(constraint.getDescription());
       getDetailsArea().setStyleRanges(styles.toArray(new StyleRange[styles.size()]));
     }
@@ -489,10 +493,8 @@ public class CommandSelectionContainer {
       public Image getImage(Object element) {
         ICategoryTreeNode node = (ICategoryTreeNode) element;
 
-        if (node.getCategory() != null) {
-          if (node.getCategory().isMandatory()) {
+        if (node.getCategory() != null && node.getCategory().isMandatory()) {
             return lockImage;
-          }
         }
 
         return null;

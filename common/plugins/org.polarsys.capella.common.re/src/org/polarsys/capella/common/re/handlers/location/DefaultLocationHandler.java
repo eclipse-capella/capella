@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -45,11 +45,11 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.common.MappingPossib
 
 public class DefaultLocationHandler implements ILocationHandler {
 
-  HashMap<EObject, EObject> currentLocation = new HashMap<EObject, EObject>();
+  HashMap<EObject, EObject> currentLocation = new HashMap<>();
 
-  HashMap<CatalogElementLink, EObject> locations = new HashMap<CatalogElementLink, EObject>();
+  HashMap<CatalogElementLink, EObject> locations = new HashMap<>();
 
-  HashMap<CatalogElementLink, EObject> defaultLocations = new HashMap<CatalogElementLink, EObject>();
+  HashMap<CatalogElementLink, EObject> defaultLocations = new HashMap<>();
 
   /**
    * {@inheritDoc}
@@ -305,11 +305,9 @@ public class DefaultLocationHandler implements ILocationHandler {
         }
       }
 
-      if (targetFeature != null) {
-        if (AttachmentHelper.getInstance(context).isApplicable(targetContainer.eClass(), targetFeature)) {
+      if (targetFeature != null && AttachmentHelper.getInstance(context).isApplicable(targetContainer.eClass(), targetFeature)) {
           defaultLocations.put(link, targetContainer);
           return targetContainer;
-        }
       }
     }
 
@@ -365,10 +363,8 @@ public class DefaultLocationHandler implements ILocationHandler {
     }
     if (rule != null) {
       EStructuralFeature targetFeature = rule.retrieveTargetContainementFeature(source, target, currentLocation, context);
-      if (targetFeature != null) {
-        if (AttachmentHelper.getInstance(context).isApplicable(currentLocation.eClass(), targetFeature)) {
-          return targetFeature;
-        }
+      if (targetFeature != null && AttachmentHelper.getInstance(context).isApplicable(currentLocation.eClass(), targetFeature)) {
+        return targetFeature;
       }
     }
     return source.eContainingFeature();
@@ -377,7 +373,7 @@ public class DefaultLocationHandler implements ILocationHandler {
 
   protected Iterator<EObject> retrieveDefaultContainers(CatalogElementLink link, CatalogElementLink oppositeLink, IContext context) {
 
-    Collection<Object> elementsContainers = new LinkedHashSet<Object>(); // order is important!
+    Collection<Object> elementsContainers = new LinkedHashSet<>(); // order is important!
 
     retrieveDefaultContainersForComposite(link, elementsContainers, context);
 
@@ -482,7 +478,7 @@ public class DefaultLocationHandler implements ILocationHandler {
         IProperty property = propertyContext.getProperties().getProperty(IReConstants.PROPERTY__LOCATION_SOURCE);
         if (property != null) {
           Object value = propertyContext.getCurrentValue(property);
-          if ((value != null) && (value instanceof EObject)) {
+          if (value instanceof EObject) {
             elementsContainers.add((EObject) propertyContext.getCurrentValue(property));
           }
         }
@@ -493,7 +489,7 @@ public class DefaultLocationHandler implements ILocationHandler {
         IProperty property = propertyContext.getProperties().getProperty(IReConstants.PROPERTY__LOCATION_TARGET);
         if (property != null) {
           Object value = propertyContext.getCurrentValue(property);
-          if ((value != null) && (value instanceof EObject)) {
+          if (value instanceof EObject) {
             elementsContainers.add((EObject) propertyContext.getCurrentValue(property));
           }
         }
@@ -508,7 +504,7 @@ public class DefaultLocationHandler implements ILocationHandler {
     CatalogElement element = ReplicableElementHandlerHelper.getInstance(context).getInitialTarget(context);
     Collection<CatalogElementLink> links = ReplicableElementHandlerHelper.getInstance(context).getElementsLinks(element);
 
-    Collection<EObject> siblings = new ArrayList<EObject>();
+    Collection<EObject> siblings = new ArrayList<>();
 
     for (CatalogElementLink linkA : links) {
       if ((linkA == null) || ((linkA.getOrigin() == null) || (linkA.getOrigin().getTarget() == null)) || (linkA.getOrigin().getTarget().eContainer() == null)) {
@@ -530,7 +526,7 @@ public class DefaultLocationHandler implements ILocationHandler {
     if (preferSameType) {
       for (Iterator<EObject> it = siblings.iterator(); it.hasNext(); ) {
         EObject next = it.next();
-        if (next.eClass() == link.getTarget().eClass()) {
+        if (link != null && next.eClass() == link.getTarget().eClass()) {
           it.remove();
           elementsContainers.add(next.eContainer());
         }
@@ -623,7 +619,7 @@ public class DefaultLocationHandler implements ILocationHandler {
         MappingPossibility mapping = ruleHandler.getApplicablePossibility(target);
         if (mapping != null) {
           IRule<?> rule = ruleHandler.getApplicablePossibility(target).getCompleteRule();
-          if ((rule != null) && (rule instanceof IRuleAttachment)) {
+          if (rule instanceof IRuleAttachment) {
             arule = (IRuleAttachment) rule;
           }
         }

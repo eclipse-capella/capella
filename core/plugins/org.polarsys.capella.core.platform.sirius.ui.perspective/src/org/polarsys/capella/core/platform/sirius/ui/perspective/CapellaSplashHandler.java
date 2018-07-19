@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2014 IBM Corporation and others.
+ * Copyright (c) 2007, 2018 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -43,7 +43,7 @@ public class CapellaSplashHandler extends BasicSplashHandler {
    * 
    */
   public CapellaSplashHandler() {
-    // do nothing
+    // Do nothing
   }
 
   /**
@@ -80,27 +80,29 @@ public class CapellaSplashHandler extends BasicSplashHandler {
     String buildId = "Unknown"; //$NON-NLS-1$
     String version = "Unknown"; //$NON-NLS-1$
     BufferedReader bufferedReader = null;
-    try {
-      InputStream inputStream = product.getDefiningBundle().getEntry("about.mappings").openConnection().getInputStream(); //$NON-NLS-1$
-      bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-      String line = null;
-      while ((line = bufferedReader.readLine()) != null) {
-        if (line.startsWith("0=")) //$NON-NLS-1$
-          version = line.substring(2);
-        if (line.startsWith("1=")) //$NON-NLS-1$
-          buildId = line.substring(2);
-      }
-    } catch (IOException e1) {
-      // ignore
-      e1.printStackTrace();
-    } finally {
-      if (bufferedReader != null) {
-        try {
-          bufferedReader.close();
-        } catch (IOException e1) {
-          // ignore
-        }
-      }
+    if(product != null) {
+    	try {
+    		InputStream inputStream = product.getDefiningBundle().getEntry("about.mappings").openConnection().getInputStream(); //$NON-NLS-1$
+    		bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+    		String line = null;
+    		while ((line = bufferedReader.readLine()) != null) {
+    			if (line.startsWith("0=")) //$NON-NLS-1$
+    				version = line.substring(2);
+    			if (line.startsWith("1=")) //$NON-NLS-1$
+    				buildId = line.substring(2);
+    		}
+    	} catch (IOException e1) {
+    		// ignore
+    		e1.printStackTrace();
+    	} finally {
+    		if (bufferedReader != null) {
+    			try {
+    				bufferedReader.close();
+    			} catch (IOException e1) {
+    				// ignore
+    			}
+    		}
+    	}    	
     }
 
     StringBuilder builder = new StringBuilder();

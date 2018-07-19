@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -110,7 +110,7 @@ public class DefaultAction extends Action {
 
   @SuppressWarnings("unchecked")
   protected List<?> getSelection(Class<?> objectType) {
-    List<Object> resultObjects = new ArrayList<Object>();
+    List<Object> resultObjects = new ArrayList<>();
     // Get selected objects if any.
     if (getSelectionProvider().getSelection() instanceof IStructuredSelection) {
       IStructuredSelection selectedObjects = (IStructuredSelection) getSelectionProvider().getSelection();
@@ -136,7 +136,7 @@ public class DefaultAction extends Action {
   protected Iterable<IResource> getResourceContents() {
     return new Iterable<IResource>() {
 
-      LinkedList<IResource> res = new LinkedList<IResource>((List) getSelection(IResource.class));
+      LinkedList<IResource> res = new LinkedList<>((List) getSelection(IResource.class));
 
       public Iterator<IResource> iterator() {
         return new Iterator<IResource>() {
@@ -184,7 +184,7 @@ public class DefaultAction extends Action {
           public boolean hasNext() {
             if ((current == null) && selecteds.hasNext()) {
               return true;
-            } else if (!current.hasNext()) {
+            } else if (current != null && !current.hasNext()) {
               return selecteds.hasNext();
             }
             return current.hasNext();
@@ -251,5 +251,4 @@ public class DefaultAction extends Action {
       System.out.println(str);
     }
   }
-
 }

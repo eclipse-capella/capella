@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -222,13 +222,17 @@ public class DeleteInValidHyperLinkInDescription {
             is.setCharacterStream(reader);
             saxParser.parse(is, handler);
 
-          } catch (Exception exception_p) {
-            _logger.error("Exception while quick fix : " + exception_p.toString()); //$NON-NLS-1$
+          } catch (Exception exception) {
+            _logger.error("Exception while quick fix : " + exception.toString()); //$NON-NLS-1$
             return false;
           } finally {
-            // reset parser and reader
-            reader.close();
-            saxParser.reset();
+        	  // reset parser and reader
+        	  if(reader != null) {
+        		  reader.close();        		  
+        	  }
+        	  if(saxParser != null) {
+        		  saxParser.reset();
+        	  }
           }
           // remove root
           String result = __description.toString().replaceAll(IConstantValidation.ROOT_NODE, ICommonConstants.EMPTY_STRING);

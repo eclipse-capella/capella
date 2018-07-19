@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -56,8 +56,6 @@ import org.polarsys.capella.core.data.fa.ComponentFunctionalAllocation;
 import org.polarsys.capella.core.data.fa.FaFactory;
 import org.polarsys.capella.core.data.fa.FaPackage;
 import org.polarsys.capella.core.data.fa.FunctionPkg;
-import org.polarsys.capella.core.data.fa.FunctionalChain;
-import org.polarsys.capella.core.data.fa.FunctionalChainInvolvement;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.data.information.Association;
 import org.polarsys.capella.core.data.information.InformationPackage;
@@ -109,7 +107,7 @@ public class BusinessHelper {
    * context
    */
   public Collection<EObject> addImplicitElements(EObject element, Object context, DSemanticDecorator graphicalContext) {
-    Collection<EObject> result = new HashSet<EObject>();
+    Collection<EObject> result = new HashSet<>();
     EObject container = element.eContainer();
     EObject graphicalTarget = null;
     if (graphicalContext != null) {
@@ -138,7 +136,7 @@ public class BusinessHelper {
                && (((PhysicalComponent) ((Part) element).getAbstractType()).getNature() == PhysicalComponentNature.BEHAVIOR)
                && (((PhysicalComponent) ((Part) graphicalTarget).getAbstractType()).getNature() == PhysicalComponentNature.NODE)) {
       EList<Part> deployingParts = ((Part)element).getDeployingParts();
-      boolean isAllocated = deployingParts.size() > 0;
+      boolean isAllocated = !deployingParts.isEmpty();
       if (!isAllocated)
         deployPhysicalPartOn((Part) element, (Part) graphicalTarget);
     } else if ((element instanceof AbstractFunction) && ((context instanceof Component) || (graphicalTarget instanceof Part))) {
@@ -150,7 +148,7 @@ public class BusinessHelper {
         component = (Component) context;
       } else {
         Part part = (Part) graphicalTarget;
-        if (part.getAbstractType() instanceof Component) {
+        if (part != null && part.getAbstractType() instanceof Component) {
           component = (Component) part.getAbstractType();
         }
       }
@@ -174,7 +172,7 @@ public class BusinessHelper {
           }
         }
         EList<AbstractFunctionalBlock> allocationBlocks = function.getAllocationBlocks();
-        boolean isAllocated = allocationBlocks.size() > 0;
+        boolean isAllocated = !allocationBlocks.isEmpty();
         if (mustCreate && !isAllocated) {
           ComponentFunctionalAllocation allocation = FaFactory.eINSTANCE.createComponentFunctionalAllocation();
           MiscUtil.setNewId(allocation);
@@ -224,7 +222,7 @@ public class BusinessHelper {
    * Return semantic elements which are implicitly coupled with the given semantic element in the context of their given representation context
    */
   public Set<EObject> getImplicitElements(EObject element, Object context) {
-    Set<EObject> result = new HashSet<EObject>();
+    Set<EObject> result = new HashSet<>();
     if ((element instanceof Part) && !isMultipartAllowed(element)) {
       // Whatever the diagram, parts are always coupled with their
       // type if there is a unique part per type
@@ -268,7 +266,7 @@ public class BusinessHelper {
    * Generalization of getImplicitElements to collections
    */
   public final Set<EObject> getImplicitElements(Collection<? extends EObject> elements, Object context) {
-    Set<EObject> result = new HashSet<EObject>();
+    Set<EObject> result = new HashSet<>();
     for (EObject element : elements) {
       result.addAll(getImplicitElements(element, context));
     }
@@ -292,7 +290,7 @@ public class BusinessHelper {
       return false;
     }
     // Other cases
-    Collection<EObject> mustBeIncluded = new ArrayList<EObject>();
+    Collection<EObject> mustBeIncluded = new ArrayList<>();
     if (element instanceof AbstractTrace) {
       // Traces and allocations require their source and target to be present
       AbstractTrace abstractTrace = (AbstractTrace) element;
