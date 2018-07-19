@@ -17,7 +17,9 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.gmf.runtime.diagram.ui.providers,
  org.eclipse.sirius.table,
  org.polarsys.capella.vp.ms,
- org.polarsys.capella.vp.ms.edit
+ org.polarsys.capella.vp.ms.edit,
+ org.eclipse.gmf.runtime.notation.edit,
+ org.eclipse.draw2d
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: ms.configuration.services.cs,

@@ -35,6 +35,7 @@ import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
+import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.table.metamodel.table.DTable;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
@@ -50,12 +51,14 @@ import org.polarsys.capella.core.data.capellacommon.FinalState;
 import org.polarsys.capella.core.data.capellacommon.Mode;
 import org.polarsys.capella.core.data.capellacommon.State;
 import org.polarsys.capella.core.data.cs.Component;
+import org.polarsys.capella.core.data.cs.Interface;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.cs.PhysicalLink;
 import org.polarsys.capella.core.data.cs.PhysicalPort;
 import org.polarsys.capella.core.data.ctx.System;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
+import org.polarsys.capella.core.data.fa.ComponentPort;
 import org.polarsys.capella.core.data.fa.FunctionInputPort;
 import org.polarsys.capella.core.data.fa.FunctionOutputPort;
 import org.polarsys.capella.core.data.fa.FunctionalChain;
@@ -501,10 +504,21 @@ public class CsConfigurationServices {
    * The selectable configurations on a part are the configurations of the parts component.
    */
   public Collection<CSConfiguration> getSelectableConfigurations(DNodeContainer container){
-    if (container.getTarget() instanceof Part && ((Part)container.getTarget()).getType() instanceof Component) {
-      return getOwnedConfigurations((Component) ((Part)container.getTarget()).getType());
+
+    Collection<CSConfiguration> result = Collections.emptyList();
+    Component comp = null;
+    
+    if (container.getTarget() instanceof Component) {
+      comp = (Component) container.getTarget();
+    } else if (container.getTarget() instanceof Part && ((Part)container.getTarget()).getType() instanceof Component) {
+      comp = (Component) ((Part)container.getTarget()).getType();
     }
-    return Collections.emptyList();
+
+    if (comp != null) {
+      result = getOwnedConfigurations(comp);
+    } 
+    
+    return result;
   }
 
   /**
@@ -641,15 +655,39 @@ public class CsConfigurationServices {
 
       result = isAvailableInSelectedConfigurationImpl((PhysicalLink) context, view);
 
-    } else {
+    } else if (context instanceof Interface) {
+
+      /*
+       * Interface is greyed out if all its connected component ports are greyed out
+       */
+      String dname = view.getParentDiagram().getDescription().getName();
+      if (DiagramConstants.CDI_NAME.equals(dname)) {
+        
+        for (DEdge edge : ((EdgeTarget) view).getIncomingEdges()) {
+          EObject target = edge.getTarget();          
+          if (target instanceof ComponentPort && isAvailableInSelectedConfiguration((ComponentPort) target, edge)) {
+            result = true;
+            break;
+          }
+
+        }
+
+      }
+    }  else {
+    
 
       Collection<CSConfiguration> configs = Collections.emptyList();
       ModelElement target = context instanceof Part ? ((Part) context).getType() : context;
-      
+
       if (view.eContainer() instanceof AbstractDNode) {
         configs = getSelectedConfigurations((AbstractDNode) view.eContainer(), true);
       } else if (view.eContainer() instanceof DDiagram) {
-        configs = getSelectedConfigurations((DSemanticDiagram) view.eContainer());
+
+        if (view instanceof DEdge && ((DEdge) view).getSourceNode() instanceof AbstractDNode) {
+          configs = getSelectedConfigurations((AbstractDNode)((DEdge)view).getSourceNode(), true);
+        } else {
+          configs = getSelectedConfigurations((DSemanticDiagram) view.eContainer());
+        }
       }
 
       boolean outOfScope = true;
@@ -703,12 +741,27 @@ public class CsConfigurationServices {
     return 220;
   }
   
+  public boolean isShowDisabledPortOverlay(ModelElement context, DDiagramElement view) {
+    
+    if (view instanceof DEdge) {
+      return false;
+    }
+    
+    // don't overlay provided/required ports, TODO that's a hack
+    String imagePath = Images.getImagePath(context, view);
+    if (imagePath != null && imagePath.contains("provided") || imagePath.contains("required")) {
+      return false;
+    }
+
+    return isNotAvailableInSelectedConfiguration(context, view);
+  }
+
   public int disabledElementLabelColor(ModelElement context, DDiagramElement view) {
     return 120;
   }
 
   public String disabledElementWorkspacePathImage(ModelElement context, DDiagramElement view) {
-    return Images.getImagePath(context);
+    return Images.getImagePath(context, view);
   }
   
   /**
@@ -945,6 +998,12 @@ public class CsConfigurationServices {
     }
 
     return result;
+  }
+  
+  
+
+  public boolean msConfigurationNodeCreationPrecondition(EObject container) {
+    return container instanceof Component | container instanceof Part;
   }
 
 }

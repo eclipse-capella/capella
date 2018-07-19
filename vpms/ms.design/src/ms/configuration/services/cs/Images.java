@@ -11,10 +11,7 @@
 package ms.configuration.services.cs;
 
 import org.eclipse.emf.ecore.EObject;
-import org.polarsys.capella.core.data.cs.PhysicalPort;
-import org.polarsys.capella.core.data.fa.ComponentPort;
-import org.polarsys.capella.core.data.fa.FunctionInputPort;
-import org.polarsys.capella.core.data.fa.FunctionOutputPort;
+import org.eclipse.sirius.diagram.DDiagramElement;
 
 public class Images {
 
@@ -26,47 +23,20 @@ public class Images {
   public static final String FLOW_PORT = "ms.design/images/FlowPort.gif";
   public static final String STANDARD_PORT_SMALL = "ms.design/images/StandardPortSmall.png";
 
-  public static String getImagePath(EObject e) {
+  public static String getImagePath(EObject element, DDiagramElement view) {
     
-    //
-    // Until rotation is solved, use the same grey box icon for all ports.
-    //
-    
-//    if (e instanceof ComponentPort) {
-//    
-//      if (PortExt.isInStrictFlowPort(e)) {
-//        return INFLOW_PORT;
-//      }
-//    
-//      if (PortExt.isOutStrictFlowPort(e)) {
-//        return OUTFLOW_PORT;
-//      }
-//    
-//      if (PortExt.isInoutStrictFlowPort(e)) {
-//        return FLOW_PORT;
-//      }
-//      
-//      return STANDARD_PORT_SMALL;
-//      return FLOW_PORT;
-//    }
-//    
-//    if (e instanceof FunctionOutputPort ) {
-//      //return FUNCTION_OUTPUT_PORT;
-//      return FLOW_PORT;
-//    }
-//    
-//    if (e instanceof FunctionInputPort) {
-//      //return FUNCTION_INPUT_PORT;
-//      return FLOW_PORT;
-//    }
-//    
-//    if (e instanceof PhysicalPort) {
-//      //return STANDARD_PORT_SMALL;
-//      return FLOW_PORT;
-//    }
+    String dname = view.getParentDiagram().getDescription().getName();
+
+    if (DiagramConstants.CDI_NAME.equals(dname)) {
+      return new ContextualComponentInterfacesImages().getImage(element, view);
+    }
+
+    if (DiagramConstants.CEI_NAME.equals(dname)) {
+      return new ContextualComponentInterfacesImages().getImage(element, view);
+    }
 
     return null;
-    
+
   }
   
 }
