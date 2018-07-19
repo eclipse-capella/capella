@@ -33,6 +33,7 @@ public class Messages extends NLS {
   public static String Summary_ColumnViewer_Label;
   public static String ReviewGroup_Label;
   public static String EOI_label;
+  public static String EOI_dialogMessage;
   public static String Package_label;
 
   static {

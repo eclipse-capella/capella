@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.workspace.EMFCommandOperation;
 import org.eclipse.gmf.runtime.notation.Diagram;
+import org.eclipse.jface.viewers.AbstractTreeViewer;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.business.api.query.DRepresentationQuery;
@@ -38,6 +39,7 @@ import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
@@ -48,9 +50,11 @@ import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
+import org.polarsys.capella.common.ui.toolkit.viewers.data.DataLabelProvider;
 import org.polarsys.capella.core.diagram.helpers.ContextualDiagramHelper;
 import org.polarsys.capella.core.diagram.helpers.DiagramHelper;
 import org.polarsys.capella.core.model.handler.provider.CapellaReadOnlyHelper;
+import org.polarsys.capella.core.ui.properties.CapellaUIPropertiesPlugin;
 import org.polarsys.capella.core.ui.properties.controllers.DAnnotationReferenceController;
 import org.polarsys.capella.core.ui.properties.controllers.EOIController;
 import org.polarsys.capella.core.ui.properties.controllers.RepresentationContextualElementsController;
@@ -58,6 +62,8 @@ import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticField;
 import org.polarsys.capella.core.ui.properties.fields.MultipleSemanticField;
 import org.polarsys.capella.core.ui.properties.fields.RepresentationContextualElementsField;
 import org.polarsys.capella.core.ui.properties.fields.TextValueGroup;
+import org.polarsys.capella.core.ui.properties.providers.CapellaTransfertViewerLabelProvider;
+import org.polarsys.capella.core.ui.toolkit.helpers.SelectionDialogHelper;
 
 /**
  * Section that displays a {@link DRepresentation} properties.<br>
@@ -198,6 +204,23 @@ public class DiagramRepresentationPropertySection extends AbstractSection {
         }
         setValueTextField((EObject) null);
       }
+
+
+      /*
+       * Overridden to customize title/message, and custom expand behaviour for the left tree viewer
+       */
+      @Override
+      protected List<EObject> openTransferDialog(Button button, List<EObject> currentElements,
+          List<EObject> availableElements, String title, String message) {
+        DataLabelProvider leftLabelProvider =  new CapellaTransfertViewerLabelProvider(TransactionHelper.getEditingDomain(availableElements));
+        DataLabelProvider rightLabelProvider =  new CapellaTransfertViewerLabelProvider(TransactionHelper.getEditingDomain(currentElements));
+        boolean expandLeftViewer = CapellaUIPropertiesPlugin.getDefault().isAllowedExpandLeftViewerContent();
+        boolean expandRightViewer = CapellaUIPropertiesPlugin.getDefault().isAllowedExpandRightViewerContent();
+        return SelectionDialogHelper.multiplePropertyTransfertDialogWizard(
+            button.getShell(), ((DRepresentationDescriptor)_semanticElement).getName(), Messages.EOI_dialogMessage, availableElements, currentElements, leftLabelProvider, rightLabelProvider,
+            expandLeftViewer ? 2 : 0, expandRightViewer ? AbstractTreeViewer.ALL_LEVELS : 0);
+        }
+
     };
     _eoiField.setDisplayedInWizard(isDisplayedInWizard());
   }
