@@ -1,0 +1,168 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Element-Name: MVSendToFromDiagram
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _zUikIHlOEeinH5hIqek0Nw
+Runtime-Version: 2.2.0.201705230341
+Save-Time: 7/19/18 11:43 AM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+- Tests Send To feature for diagram elements
+-- Send initial set of elements and test that they are present in the view
+-- Send new elements and test that the both initial and new elements are present in the view
+-- Send elements that are already present and test that the existing elements in the view have not changed
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+with [get-view "Capella Project Explorer" | get-tree] {
+    select "In-Flight Entertainment System/In-Flight Entertainment System.aird" | double-click
+    select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/Root System Function/\\[SDFB\\] Top Level Functional Overview" 
+        | double-click
+}
+with [get-editor "[SDFB] Top Level Functional Overview" | get-diagram -index 1] {
+    with [get-edit-part -name "[SDFB] Top Level Functional Overview"] {
+        mouse-move 6 277 -height 560 -width 840
+        mouse-move 311 320 -height 560 -width 840
+        get-edit-part -name "IFE System" | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart 
+            | mouse-move 3 242 -height 271 -width 201
+        with [get-edit-part -name "Entertain with IFE System" | get-edit-part -name FIP1 -index 1 
+            | get-target-connection -path 0 | get-edit-part -className DEdgeNameEditPart] {
+            mouse-move 65 14 button1 -height 32 -width 148
+            mouse-press 65 14 button1 -height 32 -width 148
+            mouse-release 65 14 button1 524288 -height 32 -width 148
+        }
+        mouse-move 221 350 -mask CTRL -height 560 -width 840
+        with [get-edit-part -name "IFE System" | get-edit-part -name FIP1 | get-target-connection -path 0 
+            | get-edit-part -className DEdgeNameEditPart] {
+            mouse-move 68 12 button1 CTRL -height 16 -width 209
+            mouse-press 68 12 button1 CTRL -height 16 -width 209
+            mouse-release 68 12 button1 786432 -height 16 -width 209
+            mouse-move 63 4 button3 -height 16 -width 209
+            mouse-press 63 4 button3 -height 16 -width 209
+            mouse-release 63 4 button3 2097152 -height 16 -width 209
+        }
+    }
+    get-menu -path "Send to Mass Visualization View/New Mass Visualization View" | click
+    with [get-edit-part -name "[SDFB] Top Level Functional Overview"] {
+        get-edit-part -name "IFE System" | get-edit-part -name FIP1 | get-target-connection -path 0 
+            | get-handle ConnectionEndpointHandle -index 1 | mouse-hover 6 44 -height 7 -width 7
+        get-edit-part -name "Entertain with IFE System" | get-edit-part 
+            -className DNodeContainerViewNodeContainerCompartmentEditPart | mouse-move 3 207 -height 271 -width 148
+    }
+}
+with [get-view "Mass Visualization" | get-canvas] {
+    get-property "getLayer().getGridLayer().getBodyLayer().getBodyDataLayer().getDataProvider().getList().FunctionalExchangeImpl[0].getClassName()" 
+        | equals "org.polarsys.capella.core.data.fa.impl.FunctionalExchangeImpl" | verify-true
+    get-property "getLayer().getGridLayer().getBodyLayer().getBodyDataLayer().getDataProvider().getList().FunctionalExchangeImpl[0].getId()" 
+        | equals "604081d7-e597-4441-b2e9-e002a9cb1ccd" | verify-true
+    get-property "getLayer().getGridLayer().getBodyLayer().getBodyDataLayer().getDataProvider().getList().FunctionalExchangeImpl[1].getClassName()" 
+        | equals "org.polarsys.capella.core.data.fa.impl.FunctionalExchangeImpl" | verify-true
+    get-property "getLayer().getGridLayer().getBodyLayer().getBodyDataLayer().getDataProvider().getList().FunctionalExchangeImpl[1].getId()" 
+        | equals "af919966-017f-44fa-856a-f680d604ded8" | verify-true
+    get-property "getLayer().getGridLayer().getBodyLayer().getBodyDataLayer().getDataProvider().getList().size()" 
+        | equals 2 | verify-true
+    get-property "getLayer().getGridLayer().getBodyLayer().getBodyDataLayer().getDataProvider().getRowCount()" 
+        | equals 2 | verify-true
+}
+with [get-editor "[SDFB] Top Level Functional Overview" | get-diagram -index 1] {
+    with [get-edit-part -name "[SDFB] Top Level Functional Overview"] {
+        mouse-move 15 271 -height 560 -width 840
+        mouse-move 181 295 -height 560 -width 840
+        with [get-edit-part -name "Entertain with IFE System" | get-edit-part -name FIP2 | get-target-connection 
+            -path 0 | get-edit-part -className DEdgeNameEditPart] {
+            mouse-move 34 11 button1 -height 16 -width 109
+            mouse-press 34 11 button1 -height 16 -width 109
+            mouse-release 34 11 button1 524288 -height 16 -width 109
+            mouse-hover 34 11 -height 16 -width 109
+        }
+        mouse-move 228 272 -height 560 -width 840
+        with [get-edit-part -name "Entertain with IFE System" | get-edit-part -name FIP1 | get-target-connection 
+            -path 0 | get-edit-part -className DEdgeNameEditPart] {
+            mouse-hover 44 17 -height 29 -width 140
+            mouse-move 44 17 button1 CTRL -height 29 -width 140
+            mouse-press 44 17 button1 CTRL -height 29 -width 140
+            mouse-release 44 17 button1 786432 -height 29 -width 140
+            mouse-hover 49 12 -height 29 -width 140
+            mouse-move 49 12 button3 -height 29 -width 140
+            mouse-press 49 12 button3 -height 29 -width 140
+            mouse-release 49 12 button3 2097152 -height 29 -width 140
+        }
+    }
+    get-menu -path "Send to Mass Visualization View/Mass Visualization" | click
+    with [get-edit-part -name "[SDFB] Top Level Functional Overview"] {
+        mouse-move 183 313 -height 560 -width 840
+        mouse-hover 183 313 -height 560 -width 840
+        get-edit-part -name "Entertain with IFE System" | get-edit-part 
+            -className DNodeContainerViewNodeContainerCompartmentEditPart | mouse-move 19 142 -height 271 -width 148
+    }
+}
+with [get-view "Mass Visualization" | get-canvas] {
+    get-property "getLayer().getGridLayer().getBodyLayer().getBodyDataLayer().getDataProvider().getList().FunctionalExchangeImpl[0].getClassName()" 
+        | equals "org.polarsys.capella.core.data.fa.impl.FunctionalExchangeImpl" | verify-true
+    get-property "getLayer().getGridLayer().getBodyLayer().getBodyDataLayer().getDataProvider().getList().FunctionalExchangeImpl[0].getId()" 
+        | equals "604081d7-e597-4441-b2e9-e002a9cb1ccd" | verify-true
+    get-property "getLayer().getGridLayer().getBodyLayer().getBodyDataLayer().getDataProvider().getList().FunctionalExchangeImpl[1].getClassName()" 
+        | equals "org.polarsys.capella.core.data.fa.impl.FunctionalExchangeImpl" | verify-true
+    get-property "getLayer().getGridLayer().getBodyLayer().getBodyDataLayer().getDataProvider().getList().FunctionalExchangeImpl[1].getId()" 
+        | equals "af919966-017f-44fa-856a-f680d604ded8" | verify-true
+    get-property "getLayer().getGridLayer().getBodyLayer().getBodyDataLayer().getDataProvider().getList().FunctionalExchangeImpl[2].getClassName()" 
+        | equals "org.polarsys.capella.core.data.fa.impl.FunctionalExchangeImpl" | verify-true
+    get-property "getLayer().getGridLayer().getBodyLayer().getBodyDataLayer().getDataProvider().getList().FunctionalExchangeImpl[2].getId()" 
+        | equals "7f88eaab-0c1f-456b-b32f-f65c5bf00454" | verify-true
+    get-property "getLayer().getGridLayer().getBodyLayer().getBodyDataLayer().getDataProvider().getList().FunctionalExchangeImpl[3].getClassName()" 
+        | equals "org.polarsys.capella.core.data.fa.impl.FunctionalExchangeImpl" | verify-true
+    get-property "getLayer().getGridLayer().getBodyLayer().getBodyDataLayer().getDataProvider().getList().FunctionalExchangeImpl[3].getId()" 
+        | equals "15c3b494-a0b8-4aca-b734-01978120cbd4" | verify-true
+    get-property "getLayer().getGridLayer().getBodyLayer().getBodyDataLayer().getDataProvider().getList().size()" 
+        | equals 4 | verify-true
+    get-property "getLayer().getGridLayer().getBodyLayer().getBodyDataLayer().getDataProvider().getRowCount()" 
+        | equals 4 | verify-true
+}
+with [get-editor "[SDFB] Top Level Functional Overview" | get-diagram -index 1] {
+    with [get-edit-part -name "[SDFB] Top Level Functional Overview"] {
+        mouse-move 10 219 -height 560 -width 840
+        mouse-move 181 243 -height 560 -width 840
+        with [get-edit-part -name "Entertain with IFE System" | get-edit-part -name FIP1 | get-target-connection 
+            -path 0 | get-edit-part -className DEdgeNameEditPart] {
+            mouse-move 28 16 button3 -height 29 -width 140
+            mouse-press 28 16 button3 -height 29 -width 140
+            mouse-release 28 16 button3 2097152 -height 29 -width 140
+        }
+    }
+    get-menu -path "Send to Mass Visualization View/Mass Visualization" | click
+    with [get-edit-part -name "[SDFB] Top Level Functional Overview"] {
+        mouse-move 526 324 -height 560 -width 840
+        mouse-move 5 346 -height 560 -width 840
+    }
+}
+with [get-view "Mass Visualization" | get-canvas] {
+    get-property "getLayer().getGridLayer().getBodyLayer().getBodyDataLayer().getDataProvider().getList().FunctionalExchangeImpl[0].getClassName()" 
+        | equals "org.polarsys.capella.core.data.fa.impl.FunctionalExchangeImpl" | verify-true
+    get-property "getLayer().getGridLayer().getBodyLayer().getBodyDataLayer().getDataProvider().getList().FunctionalExchangeImpl[0].getId()" 
+        | equals "604081d7-e597-4441-b2e9-e002a9cb1ccd" | verify-true
+    get-property "getLayer().getGridLayer().getBodyLayer().getBodyDataLayer().getDataProvider().getList().FunctionalExchangeImpl[1].getClassName()" 
+        | equals "org.polarsys.capella.core.data.fa.impl.FunctionalExchangeImpl" | verify-true
+    get-property "getLayer().getGridLayer().getBodyLayer().getBodyDataLayer().getDataProvider().getList().FunctionalExchangeImpl[1].getId()" 
+        | equals "af919966-017f-44fa-856a-f680d604ded8" | verify-true
+    get-property "getLayer().getGridLayer().getBodyLayer().getBodyDataLayer().getDataProvider().getList().FunctionalExchangeImpl[2].getClassName()" 
+        | equals "org.polarsys.capella.core.data.fa.impl.FunctionalExchangeImpl" | verify-true
+    get-property "getLayer().getGridLayer().getBodyLayer().getBodyDataLayer().getDataProvider().getList().FunctionalExchangeImpl[2].getId()" 
+        | equals "7f88eaab-0c1f-456b-b32f-f65c5bf00454" | verify-true
+    get-property "getLayer().getGridLayer().getBodyLayer().getBodyDataLayer().getDataProvider().getList().FunctionalExchangeImpl[3].getClassName()" 
+        | equals "org.polarsys.capella.core.data.fa.impl.FunctionalExchangeImpl" | verify-true
+    get-property "getLayer().getGridLayer().getBodyLayer().getBodyDataLayer().getDataProvider().getList().FunctionalExchangeImpl[3].getId()" 
+        | equals "15c3b494-a0b8-4aca-b734-01978120cbd4" | verify-true
+    get-property "getLayer().getGridLayer().getBodyLayer().getBodyDataLayer().getDataProvider().getList().size()" 
+        | equals 4 | verify-true
+    get-property "getLayer().getGridLayer().getBodyLayer().getBodyDataLayer().getDataProvider().getRowCount()" 
+        | equals 4 | verify-true
+}
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

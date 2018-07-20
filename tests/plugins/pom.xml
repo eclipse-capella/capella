@@ -31,7 +31,8 @@
       <activation>
         <activeByDefault>true</activeByDefault>
       </activation>
-      <modules>
+      <modules>      		
+      	<module>org.polarsys.capella.test.massactions.ju</module>      	
         <module>org.polarsys.capella.test.business.queries.ju</module>
         <module>org.polarsys.capella.test.diagram.common.ju</module>
         <module>org.polarsys.capella.test.diagram.filters.ju</module>

@@ -68,6 +68,8 @@
         <module>org.polarsys.capella.common.tools.report.ui</module>
         <module>org.polarsys.capella.common.transition</module>
         <module>org.polarsys.capella.common.ui</module>
+        <module>org.polarsys.capella.common.ui.massactions</module>
+        <module>org.polarsys.capella.common.ui.massactions.core</module>
         <module>org.polarsys.capella.common.ui.menu.dynamic</module>
         <module>org.polarsys.capella.common.ui.progress</module>
         <module>org.polarsys.capella.common.ui.services</module>

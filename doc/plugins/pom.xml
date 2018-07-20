@@ -35,6 +35,7 @@
       </activation>
       <modules>
         <module>org.polarsys.capella.commandline.doc</module>
+        <module>org.polarsys.capella.common.ui.massactions.doc</module>
         <module>org.polarsys.capella.core.re.updateconnections.doc</module>
         <module>org.polarsys.capella.diffmerge.doc</module>
         <module>org.polarsys.capella.patterns.doc</module>

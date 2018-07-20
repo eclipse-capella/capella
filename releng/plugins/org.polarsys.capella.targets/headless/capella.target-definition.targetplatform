@@ -30,7 +30,7 @@ location "http://download.eclipse.org/sirius/updates/stable/6.1.0-S20180713-1034
 	org.eclipse.sirius.runtime.aql.feature.group
 }
 
-location "https://ci.polarsys.org/kitalpha/job/Kitalpha_master/632/artifact/result/publish/kitalpha_runtime/site.p2" {
+location kitalpha-runtime-core-master "https://ci.polarsys.org/kitalpha/job/Kitalpha_master/902/artifact/releng/plugins/org.polarsys.kitalpha.releng.runtime.core.updatesite/target/repository" {
 	org.polarsys.kitalpha.ad.runtime.feature.feature.group lazy
 	org.polarsys.kitalpha.cadence.feature.feature.group lazy
 	org.polarsys.kitalpha.common.feature.feature.group lazy
@@ -46,7 +46,12 @@ location "https://ci.polarsys.org/kitalpha/job/Kitalpha_master/632/artifact/resu
 	org.polarsys.kitalpha.report.feature.feature.group lazy
 	org.polarsys.kitalpha.report.ui.feature.feature.group lazy
 	org.polarsys.kitalpha.transposer.feature.feature.group lazy
-	org.polarsys.kitalpha.doc.feature.feature.group lazy
+	org.polarsys.kitalpha.massactions.feature.feature.group lazy
+	org.polarsys.kitalpha.massactions.feature.source.feature.group lazy	
+}
+
+location kitalpha-runtime-master "https://ci.polarsys.org/kitalpha/job/Kitalpha_master/902/artifact/releng/plugins/org.polarsys.kitalpha.releng.sdk.updatesite/target/repository" {
+	org.polarsys.kitalpha.doc.feature.feature.group lazy	
 }
 
 location "http://download.eclipse.org/diffmerge/releases/0.9.0/emf-diffmerge-site" {

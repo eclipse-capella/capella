@@ -1,0 +1,7 @@
+= Tips and Tricks =
+
+== Synchronization with existing views ==
+The Mass Editing and Mass Visualization view is synchronized with existing Capella views such as the '''Properties view''' and the '''Semantic Browser'''. Selecting a row or editing a cell automatically enables this feature and allows you to explore in depth the selected element.
+
+== Multiple Mass Editing Views ==
+You can open multiple views and edit or visualize model elements in parallel, in order to do so please refer to the [[../help/topic/org.polarsys.kitalpha.massactions.doc/html/userManual/UserInterface.html?cp=8_2_0_2|Kitalpha documentation > User Interface]] section.
