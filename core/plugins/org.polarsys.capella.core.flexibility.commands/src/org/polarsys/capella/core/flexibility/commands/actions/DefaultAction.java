@@ -187,7 +187,7 @@ public class DefaultAction extends Action {
             } else if (current != null && !current.hasNext()) {
               return selecteds.hasNext();
             }
-            return current.hasNext();
+            return current != null ? current.hasNext() : false;
           }
 
           public EObject next() {

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -69,18 +69,15 @@ public class MultiplicityElementValueController extends AbstractSimpleEditableSe
       if (query != null) {
         List<EObject> availableElements = query.getAvailableElements(semanticElement);
         for (EObject capellaElement : availableElements) {
-          if (capellaElement instanceof AbstractType) {
-            if (capellaElement instanceof Classifier) {
+          if (capellaElement instanceof AbstractType && capellaElement instanceof Classifier) {
               EList<Feature> ownedFeatures = ((Classifier) capellaElement).getOwnedFeatures();
               for (Feature feature : ownedFeatures) {
                 if (feature instanceof Property) {
                   if (semanticElement instanceof TypedElement) {
                     AbstractType abstractType2 = ((TypedElement) semanticElement).getAbstractType();
                     AbstractType abstractType3 = ((Property) feature).getAbstractType();
-                    if (abstractType2 != null && abstractType3 != null) {
-                      if (abstractType2.eClass().equals(abstractType3.eClass()) && !feature.equals(semanticElement)) {
-                        list.add(feature);
-                      }
+                    if (abstractType2 != null && abstractType3 != null && abstractType2.eClass().equals(abstractType3.eClass()) && !feature.equals(semanticElement)) {
+                      list.add(feature);
                     }
                   } else {
                     if (!feature.equals(semanticElement))
@@ -88,7 +85,6 @@ public class MultiplicityElementValueController extends AbstractSimpleEditableSe
                   }
                 }
               }
-            }
           }
         }
       }
@@ -176,9 +172,8 @@ public class MultiplicityElementValueController extends AbstractSimpleEditableSe
           newValue = DatavalueFactory.eINSTANCE.createComplexValue(defaultName);
         }
 
-        if ((newValue != null) && (abstractType != null)) {
+        if (newValue != null) {
           newValue.setAbstractType(abstractType);
-          
           semanticElement.eSet(semanticFeature, newValue);
           if (editValueWizard(newValue)) {
             currentValue = newValue;

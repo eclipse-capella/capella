@@ -132,7 +132,7 @@ public class ScenarioExt {
       result.add(function);
     }
 
-    ArrayList<AbstractFunction> newElements = new ArrayList<AbstractFunction>();
+    ArrayList<AbstractFunction> newElements = new ArrayList<>();
 
     // Allow whole function for which all sub decompositions are already in result, recursively.
     do {
@@ -526,11 +526,13 @@ public class ScenarioExt {
     /*
      * Compute the new index and move !
      */
-    int newIndex = ownedAbstractEnds.indexOf(previousEnd) + 1;
-    if (newIndex >= ownedAbstractEnds.size()) {
-      newIndex = ownedAbstractEnds.size() - 1;
+    if(ownedAbstractEnds != null) {
+    	int newIndex = ownedAbstractEnds.indexOf(previousEnd) + 1;
+    	if (newIndex >= ownedAbstractEnds.size()) {
+    		newIndex = ownedAbstractEnds.size() - 1;
+    	}
+    	ownedAbstractEnds.move(newIndex, toMove);    	
     }
-    ownedAbstractEnds.move(newIndex, toMove);
     return toMove;
   }
 
@@ -806,7 +808,7 @@ public class ScenarioExt {
 
       if (((sourceArchitecture == null) || sourceArchitecture.equals(targetArchitecture))) {
         return ScenarioKind.DATA_FLOW.equals(sourceKind)
-               || (ScenarioKind.INTERACTION.equals(sourceKind) && (isFunctionalScenario(scenario2) || (scenario2.getOwnedInstanceRoles().size() == 0)));
+               || (ScenarioKind.INTERACTION.equals(sourceKind) && (isFunctionalScenario(scenario2) || (scenario2.getOwnedInstanceRoles().isEmpty())));
       }
 
       return true;
@@ -818,7 +820,7 @@ public class ScenarioExt {
       return ScenarioKind.DATA_FLOW.equals(targetKind);
 
     } else if (ScenarioKind.FUNCTIONAL.equals(sourceKind)) {
-      return ScenarioKind.INTERACTION.equals(targetKind) && (isFunctionalScenario(scenario2) || (scenario2.getOwnedInstanceRoles().size() == 0));
+      return ScenarioKind.INTERACTION.equals(targetKind) && (isFunctionalScenario(scenario2) || (scenario2.getOwnedInstanceRoles().isEmpty()));
     }
 
     return false;
@@ -1089,7 +1091,7 @@ public class ScenarioExt {
    * Does the given Scenario contain more than one InstanceRole with identical represented instances?
    */
   public static boolean isMultiInstanceRole(Scenario scenario) {
-    Collection<AbstractInstance> is = new HashSet<AbstractInstance>();
+    Collection<AbstractInstance> is = new HashSet<>();
     for (InstanceRole ir : scenario.getOwnedInstanceRoles()) {
       if (ir.getRepresentedInstance() != null && !is.add(ir.getRepresentedInstance())) {
         return true;

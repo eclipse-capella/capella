@@ -295,8 +295,8 @@ public class CsServices {
 
     Logger logger = Logger.getLogger(IReportManagerDefaultComponents.DIAGRAM);
 
-    IHandlerService handlerService = (IHandlerService) PlatformUI.getWorkbench().getService(IHandlerService.class);
-    ICommandService commandService = (ICommandService) PlatformUI.getWorkbench().getService(ICommandService.class);
+    IHandlerService handlerService = PlatformUI.getWorkbench().getService(IHandlerService.class);
+    ICommandService commandService = PlatformUI.getWorkbench().getService(ICommandService.class);
     if (handlerService == null || commandService == null) {
       logger.error("Cannot access to diagram initialization tool");
       return diagram;
@@ -316,17 +316,8 @@ public class CsServices {
 
     try {
       handlerService.executeCommandInContext(parameterizedCommand, null, context);
-    } catch (ExecutionException exception) {
-      logger.error("Errors occured while iagram initialization", exception);
-
-    } catch (NotDefinedException exception) {
-      logger.error("Errors occured while iagram initialization", exception);
-
-    } catch (NotEnabledException exception) {
-      logger.error("Errors occured while iagram initialization", exception);
-
-    } catch (NotHandledException exception) {
-      logger.error("Errors occured while iagram initialization", exception);
+    } catch (ExecutionException | NotDefinedException | NotEnabledException | NotHandledException exception) {
+      logger.error("Errors occured while diagram initialization", exception);
 
     }
     return diagram;
@@ -337,7 +328,7 @@ public class CsServices {
    * @return
    */
   public List<DRepresentation> getScopeInitializeDiagramFromExistingDiagram(DRepresentation diagram) {
-    List<DRepresentation> scope = new ArrayList<DRepresentation>();
+    List<DRepresentation> scope = new ArrayList<>();
     IDiagramTraceability handler = DiagramTraceabilityHelper.getService().getTraceabilityHandler(diagram,
         TRANSITION_TRACEABILITY);
 
@@ -346,11 +337,8 @@ public class CsServices {
     DRepresentationDescriptor descriptor = RepresentationHelper.getRepresentationDescriptor(diagram);
 
     for (DRepresentationDescriptor representation : DialectManager.INSTANCE.getAllRepresentationDescriptors(session)) {
-
-      if (handler.isRealizable(representation, descriptor)) {
-        if (!scope.contains(representation)) {
+      if (handler.isRealizable(representation, descriptor) && !scope.contains(representation)) {
           scope.add(representation.getRepresentation());
-        }
       }
     }
 
@@ -370,10 +358,8 @@ public class CsServices {
     DRepresentationDescriptor descriptor = new DRepresentationQuery(diagram).getRepresentationDescriptor();
     if (ContextualDiagramHelper.getService().hasContextualElements(descriptor)) {
       for (FilterDescription filter : diagram.getActivatedFilters()) {
-        if (IMappingNameConstants.SHOW_CONTEXTUAL_ELEMENTS.equals(filter.getName())) {
-          if (ContextualDiagramHelper.getService().getContextualElements(descriptor).contains(object)) {
-            return true;
-          }
+        if (IMappingNameConstants.SHOW_CONTEXTUAL_ELEMENTS.equals(filter.getName()) && ContextualDiagramHelper.getService().getContextualElements(descriptor).contains(object)) {
+          return true;
         }
       }
     }
@@ -414,8 +400,7 @@ public class CsServices {
    * @return the EObject
    */
   public Object getInterpreterVariable(EObject context, String name) {
-    Object result = InterpreterUtil.getInterpreter(context).getVariable(name);
-    return result;
+    return InterpreterUtil.getInterpreter(context).getVariable(name);
   }
 
   /**
@@ -437,7 +422,7 @@ public class CsServices {
   public boolean isPreferenceEnabled(EObject object, String preference) {
     if (object instanceof DSemanticDecorator) {
       DSemanticDecorator decorator = (DSemanticDecorator) object;
-      if ((decorator.getTarget() != null) && (decorator.getTarget() instanceof ModelElement)) {
+      if (decorator.getTarget() instanceof ModelElement) {
         return isMultipartMode((ModelElement) decorator.getTarget());
       }
     }
@@ -503,10 +488,10 @@ public class CsServices {
   }
 
   public DSemanticDecorator getRelatedFunctionView(DSemanticDecorator element) {
-    if ((element.getTarget() != null) && ((element.getTarget() instanceof AbstractFunction))) {
+    if (element.getTarget() instanceof AbstractFunction) {
       return element;
     }
-    if ((element.eContainer() != null) && (element.eContainer() instanceof DSemanticDecorator)) {
+    if (element.eContainer() instanceof DSemanticDecorator) {
       return getRelatedFunctionView((DSemanticDecorator) element.eContainer());
     }
     return null;
@@ -517,7 +502,7 @@ public class CsServices {
         && ((element.getTarget() instanceof Part) || (element.getTarget() instanceof Entity))) {
       return element;
     }
-    if ((element.eContainer() != null) && (element.eContainer() instanceof DSemanticDecorator)) {
+    if (element.eContainer() instanceof DSemanticDecorator) {
       return getRelatedPartView((DSemanticDecorator) element.eContainer());
     }
     return null;
@@ -528,7 +513,7 @@ public class CsServices {
         && ((element.getTarget() instanceof Part) || (element.getTarget() instanceof Entity))) {
       return (InformationsExchanger) element.getTarget();
     }
-    if ((element.eContainer() != null) && (element.eContainer() instanceof DSemanticDecorator)) {
+    if (element.eContainer() instanceof DSemanticDecorator) {
       return getRelatedPart((DSemanticDecorator) element.eContainer());
     }
     return null;
@@ -582,7 +567,7 @@ public class CsServices {
     Component component = (Component) ((DSemanticDecorator) column).getTarget();
     Interface relatedItf = (Interface) ((DSemanticDecorator) line).getTarget();
 
-    StringBuffer res = new StringBuffer();
+    StringBuilder res = new StringBuilder();
 
     if (ComponentExt.getAllImplementedInterfaces(component).contains(relatedItf)) {
       res.append(Messages.Diagram_TID_Implemented);
@@ -663,7 +648,7 @@ public class CsServices {
    * @return the parent component or block architecture
    */
   public Collection<EObject> getParentContainers(EObject current) {
-    LinkedList<EObject> elements = new LinkedList<EObject>();
+    LinkedList<EObject> elements = new LinkedList<>();
     elements.add(current);
     return getParentContainers(elements);
   }
@@ -676,10 +661,10 @@ public class CsServices {
    * @return parents component or block architecture
    */
   protected Collection<EObject> getParentContainers(Collection<EObject> currents) {
-    LinkedList<EObject> toVisits = new LinkedList<EObject>(currents);
-    Collection<EObject> parents = new java.util.HashSet<EObject>();
+    LinkedList<EObject> toVisits = new LinkedList<>(currents);
+    Collection<EObject> parents = new java.util.HashSet<>();
     // Access all hierarchy of components and blockarchitectures
-    while (toVisits.size() > 0) {
+    while (!toVisits.isEmpty()) {
       EObject owner = toVisits.removeFirst();
       EObject parent = getParentContainer(owner);
       if ((parent != null) && !parents.contains(parent)) {
@@ -716,7 +701,7 @@ public class CsServices {
    * @return all components which contains a part of the given component.
    */
   public Collection<Component> getContainersOfParts(Component component) {
-    Collection<Component> containers = new java.util.HashSet<Component>();
+    Collection<Component> containers = new java.util.HashSet<>();
 
     // Access to all container of parts
     for (Partition partition : component.getRepresentingPartitions()) {
@@ -728,7 +713,7 @@ public class CsServices {
       for (DeploymentTarget deploment : PartExt.getDeployingElements((Part) partition)) {
         if (deploment instanceof Part) {
           AbstractType type = (((Part) deploment)).getAbstractType();
-          if ((type != null) && (type instanceof Component)) {
+          if (type instanceof Component) {
             containers.add((Component) type);
           }
         }
@@ -745,7 +730,7 @@ public class CsServices {
    * @return all components which contains a part of the given component.
    */
   public Collection<Component> getContainersOfPart(Part part) {
-    Collection<Component> containers = new java.util.HashSet<Component>();
+    Collection<Component> containers = new java.util.HashSet<>();
 
     // Access to all container of parts
     EObject parent = getParentContainer(part);
@@ -756,7 +741,7 @@ public class CsServices {
     for (DeploymentTarget deploment : PartExt.getDeployingElements(part)) {
       if (deploment instanceof Part) {
         AbstractType type = (((Part) deploment)).getAbstractType();
-        if ((type != null) && (type instanceof Component)) {
+        if (type instanceof Component) {
           containers.add((Component) type);
         }
       }
@@ -787,7 +772,7 @@ public class CsServices {
    * @return the parent components by parts of the given component
    */
   public Collection<EObject> getParentContainersByParts(Component component) {
-    LinkedList<Component> elements = new LinkedList<Component>();
+    LinkedList<Component> elements = new LinkedList<>();
     elements.add(component);
     return getParentContainersByParts(elements);
   }
@@ -800,10 +785,10 @@ public class CsServices {
    * @return the parent components by parts of the given objects.
    */
   public Collection<EObject> getParentContainersByParts(Collection<Component> currents) {
-    LinkedList<EObject> toVisits = new LinkedList<EObject>(currents);
-    Collection<EObject> parents = new java.util.HashSet<EObject>();
+    LinkedList<EObject> toVisits = new LinkedList<>(currents);
+    Collection<EObject> parents = new java.util.HashSet<>();
     // Access all hierarchy of components and blockarchitectures
-    while (toVisits.size() > 0) {
+    while (!toVisits.isEmpty()) {
       EObject owner = toVisits.removeFirst();
       if (owner instanceof Component) {
         EObject parent = getParentContainer(owner);
@@ -827,7 +812,7 @@ public class CsServices {
    * Returns parents and brothers of parents components of parts of the given object
    */
   public Collection<EObject> getAvailableComponentsByNamespaceOfParts(Component component) {
-    LinkedList<EObject> ownerParts = new LinkedList<EObject>();
+    LinkedList<EObject> ownerParts = new LinkedList<>();
     ownerParts.addAll(getContainersOfParts(component));
     return ComponentExt.getAvailableComponentsByNamespaceOfParts(ownerParts);
   }
@@ -884,7 +869,7 @@ public class CsServices {
    * Returns related interfaces of components (implements, uses, provides, requires).
    */
   public Collection<Interface> getRelatedInterfaces(Component component) {
-    Collection<Interface> interfaces = new ArrayList<Interface>();
+    Collection<Interface> interfaces = new ArrayList<>();
 
     if (component != null) {
       interfaces.addAll(ComponentExt.getImplementedAndProvidedInterfaces(component));
@@ -898,7 +883,7 @@ public class CsServices {
    * Returns related interfaces of components (implements, uses, provides, requires).
    */
   public Collection<Interface> getAllRelatedInterfaces(Component component) {
-    Collection<Interface> interfaces = new ArrayList<Interface>();
+    Collection<Interface> interfaces = new ArrayList<>();
 
     if (component != null) {
       interfaces.addAll(ComponentExt.getAllImplementedAndProvidedInterfaces(component));
@@ -913,7 +898,7 @@ public class CsServices {
    */
   public void removeAllAllocatedInterfaces(Collection<Interface> interfaces) {
     // Remove all allocated interfaces
-    Collection<Interface> toRemove = new java.util.HashSet<Interface>();
+    Collection<Interface> toRemove = new java.util.HashSet<>();
     for (Interface inter : interfaces) {
       if (inter.getAllocatedInterfaces() != null) {
         for (Interface allocated : inter.getAllocatedInterfaces()) {
@@ -928,16 +913,16 @@ public class CsServices {
    * Returns the list with all interfaces which are in allocated components.
    */
   public Collection<Interface> getInterfacesFromAllocatedComponent(Component subComponent) {
-    Collection<Interface> interfaces = new ArrayList<Interface>();
+    Collection<Interface> interfaces = new ArrayList<>();
 
     // Add interfaces from allocated components
     if (subComponent.getAllocatedComponents() != null) {
-      LinkedList<Component> allocateds = new LinkedList<Component>();
+      LinkedList<Component> allocateds = new LinkedList<>();
       for (Component allocated : subComponent.getAllocatedComponents()) {
         allocateds.add(allocated); // addAll can throw an exception
       }
 
-      while (allocateds.size() > 0) {
+      while (!allocateds.isEmpty()) {
         Component allocated = allocateds.removeFirst();
         interfaces.addAll(getSubDefinedInterfaces(allocated));
         if (allocated.getAllocatedComponents() != null) {
@@ -955,16 +940,16 @@ public class CsServices {
    * Fills the list with all interfaces which are in allocated components.
    */
   public Collection<Interface> getRelatedInterfacesFromAllocatedComponent(Component subComponent) {
-    Collection<Interface> interfaces = new ArrayList<Interface>();
+    Collection<Interface> interfaces = new ArrayList<>();
 
     // Add interfaces from allocated components
     if (subComponent.getAllocatedComponents() != null) {
-      LinkedList<Component> allocateds = new LinkedList<Component>();
+      LinkedList<Component> allocateds = new LinkedList<>();
       for (Component allocated : subComponent.getAllocatedComponents()) {
         allocateds.add(allocated); // addAll can throw an exception
       }
 
-      while (allocateds.size() > 0) {
+      while (!allocateds.isEmpty()) {
         Component allocated = allocateds.removeFirst();
         interfaces.addAll(getRelatedInterfaces(allocated));
       }
@@ -977,16 +962,16 @@ public class CsServices {
    * Fills the list with all interfaces which are in allocated architectures.
    */
   public Collection<Interface> getInterfacesFromAllocatedArchitecture(BlockArchitecture architecture) {
-    Collection<Interface> interfaces = new ArrayList<Interface>();
+    Collection<Interface> interfaces = new ArrayList<>();
 
     // Add interfaces from allocated components
     if (architecture.getAllocatedArchitectures() != null) {
-      LinkedList<BlockArchitecture> allocateds = new LinkedList<BlockArchitecture>();
+      LinkedList<BlockArchitecture> allocateds = new LinkedList<>();
       for (BlockArchitecture allocated : architecture.getAllocatedArchitectures()) {
         allocateds.add(allocated); // addAll can throw an exception
       }
 
-      while (allocateds.size() > 0) {
+      while (!allocateds.isEmpty()) {
         BlockArchitecture allocated = allocateds.removeFirst();
         interfaces.addAll(getSubDefinedInterfaces(allocated));
         if (allocated.getAllocatedArchitectures() != null) {
@@ -1065,7 +1050,7 @@ public class CsServices {
    */
   public Collection<Component> filterPhysicalComponentsByNature(PhysicalComponent component,
       Collection<Component> components) {
-    Collection<Component> result = new java.util.ArrayList<Component>();
+    Collection<Component> result = new java.util.ArrayList<>();
     PhysicalComponentNature natureComponent = component.getNature();
     for (Component sub : components) {
       if (sub instanceof PhysicalComponent) {
@@ -1084,7 +1069,7 @@ public class CsServices {
    */
   // replaced by IQueryFilter RemoveActorsFilter
   public Collection<Component> filterNotActors(Collection<? extends EObject> components) {
-    Collection<Component> result = new java.util.ArrayList<Component>();
+    Collection<Component> result = new java.util.ArrayList<>();
     for (EObject sub : components) {
       if ((!(sub instanceof AbstractActor)) && (sub instanceof Component)) {
         if (!result.contains(sub)) {
@@ -1100,7 +1085,7 @@ public class CsServices {
    */
   // replaced by IQueryFilter KeepRealActorsFilter
   public Collection<Component> filterActors(Collection<? extends EObject> components) {
-    Collection<Component> result = new java.util.ArrayList<Component>();
+    Collection<Component> result = new java.util.ArrayList<>();
     for (EObject sub : components) {
       if ((sub instanceof AbstractActor)) {
         result.add((AbstractActor) sub);
@@ -1145,7 +1130,7 @@ public class CsServices {
    * namespace which haven't part) CCEI-Insert-Actor.
    */
   public Collection<Component> getCCEIInsertActor(Component component) {
-    Collection<Component> components = new java.util.HashSet<Component>();
+    Collection<Component> components = new java.util.HashSet<>();
 
     // Add components accessible by namespace
     components.addAll(ComponentExt.getSubDefinedActors(getArchitecture(component)));
@@ -1193,7 +1178,7 @@ public class CsServices {
    * Gets the brothers components.
    */
   public Collection<Component> getBrothersComponents(Component component) {
-    Collection<Component> components = new java.util.HashSet<Component>();
+    Collection<Component> components = new java.util.HashSet<>();
 
     // Add components which are brothers of component-parts
     for (Partition part : component.getRepresentingPartitions()) {
@@ -1244,7 +1229,7 @@ public class CsServices {
   }
 
   public Collection<Component> getSubComponents(EObject target) {
-    Collection<Component> components = new ArrayList<Component>();
+    Collection<Component> components = new ArrayList<>();
     if (null == target) {
       return components;
     }
@@ -1270,7 +1255,7 @@ public class CsServices {
     // In multipart mode or in EPBS Architecture Blank, we display parts
     if (isMultipartMode((ModelElement) target) || (getComponentType(decorator) instanceof ConfigurationItem)) {
 
-      Collection<Partition> components = new ArrayList<Partition>();
+      Collection<Partition> components = new ArrayList<>();
 
       Component targetComponent = null;
 
@@ -1742,8 +1727,8 @@ public class CsServices {
       ComponentPort port = (ComponentPort) ((DSemanticDecorator) edge.getSourceNode()).getTarget();
       Interface inter = (Interface) ((DSemanticDecorator) edge.getTargetNode()).getTarget();
 
-      List<ComponentPort> ports = new ArrayList<ComponentPort>();
-      List<ComponentPort> portsVisited = new ArrayList<ComponentPort>();
+      List<ComponentPort> ports = new ArrayList<>();
+      List<ComponentPort> portsVisited = new ArrayList<>();
       portsVisited.add(port);
       for (PortAllocation allocation : port.getOutgoingPortAllocations()) {
         if ((allocation.getAllocatedPort() instanceof ComponentPort)
@@ -1752,7 +1737,7 @@ public class CsServices {
         }
       }
 
-      while (ports.size() > 0) {
+      while (!ports.isEmpty()) {
         port = ports.remove(0);
         if (port.getProvidedInterfaces().contains(inter)
             && DiagramServices.getDiagramServices().isOnDiagram(edge.getParentDiagram(), port)) {
@@ -1779,8 +1764,8 @@ public class CsServices {
       ComponentPort port = (ComponentPort) ((DSemanticDecorator) edge.getSourceNode()).getTarget();
       Interface inter = (Interface) ((DSemanticDecorator) edge.getTargetNode()).getTarget();
 
-      List<ComponentPort> ports = new ArrayList<ComponentPort>();
-      List<ComponentPort> portsVisited = new ArrayList<ComponentPort>();
+      List<ComponentPort> ports = new ArrayList<>();
+      List<ComponentPort> portsVisited = new ArrayList<>();
       portsVisited.add(port);
       for (PortAllocation allocation : port.getIncomingPortAllocations()) {
         if ((allocation.getAllocatingPort() instanceof ComponentPort)
@@ -1789,7 +1774,7 @@ public class CsServices {
         }
       }
 
-      while (ports.size() > 0) {
+      while (!ports.isEmpty()) {
         port = ports.remove(0);
         if (port.getProvidedInterfaces().contains(inter)
             && DiagramServices.getDiagramServices().isOnDiagram(edge.getParentDiagram(), port)) {
@@ -1816,8 +1801,8 @@ public class CsServices {
       ComponentPort port = (ComponentPort) ((DSemanticDecorator) edge.getSourceNode()).getTarget();
       Interface inter = (Interface) ((DSemanticDecorator) edge.getTargetNode()).getTarget();
 
-      List<ComponentPort> ports = new ArrayList<ComponentPort>();
-      List<ComponentPort> portsVisited = new ArrayList<ComponentPort>();
+      List<ComponentPort> ports = new ArrayList<>();
+      List<ComponentPort> portsVisited = new ArrayList<>();
       portsVisited.add(port);
       for (PortAllocation allocation : port.getOutgoingPortAllocations()) {
         if ((allocation.getAllocatedPort() instanceof ComponentPort)
@@ -1826,7 +1811,7 @@ public class CsServices {
         }
       }
 
-      while (ports.size() > 0) {
+      while (!ports.isEmpty()) {
         port = ports.remove(0);
         if (port.getRequiredInterfaces().contains(inter)
             && DiagramServices.getDiagramServices().isOnDiagram(edge.getParentDiagram(), port)) {
@@ -1853,8 +1838,8 @@ public class CsServices {
       ComponentPort port = (ComponentPort) ((DSemanticDecorator) edge.getSourceNode()).getTarget();
       Interface inter = (Interface) ((DSemanticDecorator) edge.getTargetNode()).getTarget();
 
-      List<ComponentPort> ports = new ArrayList<ComponentPort>();
-      List<ComponentPort> portsVisited = new ArrayList<ComponentPort>();
+      List<ComponentPort> ports = new ArrayList<>();
+      List<ComponentPort> portsVisited = new ArrayList<>();
       portsVisited.add(port);
       for (PortAllocation allocation : port.getIncomingPortAllocations()) {
         if ((allocation.getAllocatingPort() instanceof ComponentPort)
@@ -1863,7 +1848,7 @@ public class CsServices {
         }
       }
 
-      while (ports.size() > 0) {
+      while (!ports.isEmpty()) {
         port = ports.remove(0);
         if (port.getRequiredInterfaces().contains(inter)
             && DiagramServices.getDiagramServices().isOnDiagram(edge.getParentDiagram(), port)) {
@@ -1885,7 +1870,7 @@ public class CsServices {
    * Returns parent component of the component.
    */
   protected List<Component> getSuperComponents(Component component) {
-    List<Component> comps = new ArrayList<Component>();
+    List<Component> comps = new ArrayList<>();
     EObject item = component;
     if (item == null) {
       return comps;
@@ -1919,11 +1904,11 @@ public class CsServices {
    * Returns sub components of the component.
    */
   public List<Component> getAllSubDefinedComponents(Component component) {
-    List<Component> comps = new ArrayList<Component>();
-    LinkedList<Component> subs = new LinkedList<Component>();
+    List<Component> comps = new ArrayList<>();
+    LinkedList<Component> subs = new LinkedList<>();
 
     subs.add(component);
-    while (subs.size() > 0) {
+    while (!subs.isEmpty()) {
       Component sub = subs.removeFirst();
       List<Component> internal = ComponentExt.getSubDefinedComponents(sub);
       comps.addAll(internal);
@@ -1936,11 +1921,11 @@ public class CsServices {
    * Returns sub components of the component.
    */
   public List<Component> getAllSubDefinedComponents(BlockArchitecture architecture) {
-    List<Component> comps = new ArrayList<Component>();
-    LinkedList<Component> subs = new LinkedList<Component>();
+    List<Component> comps = new ArrayList<>();
+    LinkedList<Component> subs = new LinkedList<>();
 
     subs.addAll(ComponentExt.getSubDefinedComponents(architecture));
-    while (subs.size() > 0) {
+    while (!subs.isEmpty()) {
       Component sub = subs.removeFirst();
       comps.add(sub);
       List<Component> internal = ComponentExt.getSubDefinedComponents(sub);
@@ -1959,11 +1944,11 @@ public class CsServices {
       Component comp = (Component) ((DSemanticDecorator) (edge.getSourceNode())).getTarget();
       Interface inter = (Interface) ((DSemanticDecorator) (edge.getTargetNode())).getTarget();
 
-      List<Component> comps = new ArrayList<Component>();
-      List<Component> compsVisited = new ArrayList<Component>();
+      List<Component> comps = new ArrayList<>();
+      List<Component> compsVisited = new ArrayList<>();
       comps.addAll(getSuperComponents(comp));
 
-      while (comps.size() > 0) {
+      while (!comps.isEmpty()) {
         comp = comps.remove(0);
         if (comp.getImplementedInterfaces().contains(inter)
             && DiagramServices.getDiagramServices().isOnDiagram(edge.getParentDiagram(), comp)) {
@@ -1989,11 +1974,11 @@ public class CsServices {
       Component comp = (Component) ((DSemanticDecorator) (edge.getSourceNode())).getTarget();
       Interface inter = (Interface) ((DSemanticDecorator) (edge.getTargetNode())).getTarget();
 
-      List<Component> comps = new ArrayList<Component>();
-      List<Component> compsVisited = new ArrayList<Component>();
+      List<Component> comps = new ArrayList<>();
+      List<Component> compsVisited = new ArrayList<>();
       comps.addAll(ComponentExt.getSubUsedComponents(comp));
 
-      while (comps.size() > 0) {
+      while (!comps.isEmpty()) {
         comp = comps.remove(0);
         if (comp.getImplementedInterfaces().contains(inter)
             && DiagramServices.getDiagramServices().isOnDiagram(edge.getParentDiagram(), comp)) {
@@ -2019,11 +2004,11 @@ public class CsServices {
       Component comp = (Component) ((DSemanticDecorator) (edge.getSourceNode())).getTarget();
       Interface inter = (Interface) ((DSemanticDecorator) (edge.getTargetNode())).getTarget();
 
-      List<Component> comps = new ArrayList<Component>();
-      List<Component> compsVisited = new ArrayList<Component>();
+      List<Component> comps = new ArrayList<>();
+      List<Component> compsVisited = new ArrayList<>();
       comps.addAll(getSuperComponents(comp));
 
-      while (comps.size() > 0) {
+      while (!comps.isEmpty()) {
         comp = comps.remove(0);
         if (comp.getUsedInterfaces().contains(inter)
             && DiagramServices.getDiagramServices().isOnDiagram(edge.getParentDiagram(), comp)) {
@@ -2049,11 +2034,11 @@ public class CsServices {
       Component comp = (Component) ((DSemanticDecorator) (edge.getSourceNode())).getTarget();
       Interface inter = (Interface) ((DSemanticDecorator) (edge.getTargetNode())).getTarget();
 
-      List<Component> comps = new ArrayList<Component>();
-      List<Component> compsVisited = new ArrayList<Component>();
+      List<Component> comps = new ArrayList<>();
+      List<Component> compsVisited = new ArrayList<>();
       comps.addAll(ComponentExt.getSubUsedComponents(comp));
 
-      while (comps.size() > 0) {
+      while (!comps.isEmpty()) {
         comp = comps.remove(0);
         if (comp.getUsedInterfaces().contains(inter)
             && DiagramServices.getDiagramServices().isOnDiagram(edge.getParentDiagram(), comp)) {
@@ -2182,11 +2167,11 @@ public class CsServices {
     }
 
     // Exclude PhysicalComponent nodes.
-    if ((sourceComponent != null) && (sourceComponent instanceof PhysicalComponent)) {
+    if (sourceComponent instanceof PhysicalComponent) {
       sourceValid = (sourceValid) ? ((PhysicalComponent) sourceComponent).getNature() != PhysicalComponentNature.NODE
           : false;
     }
-    if ((targetComponent != null) && (targetComponent instanceof PhysicalComponent)) {
+    if (targetComponent instanceof PhysicalComponent) {
       targetValid = (targetValid) ? ((PhysicalComponent) targetComponent).getNature() != PhysicalComponentNature.NODE
           : false;
     }
@@ -2312,7 +2297,7 @@ public class CsServices {
       sourceValid = true;
     } else if (preSource instanceof Part) {
       Type type = ((Part) preSource).getType();
-      if ((type != null) && (type instanceof Component)) {
+      if (type instanceof Component) {
         sourceValid = true;
       }
     } else if (preSource instanceof Component) {
@@ -2323,7 +2308,7 @@ public class CsServices {
       targetValid = true;
     } else if (preTarget instanceof Part) {
       Type type = ((Part) preTarget).getType();
-      if ((type != null) && (type instanceof Component)) {
+      if (type instanceof Component) {
         targetValid = true;
       }
     } else if (preTarget instanceof Component) {
@@ -2395,15 +2380,11 @@ public class CsServices {
     }
 
     // If connected to two ports, they should have same kind / orientation
-    if (preSource instanceof Port) {
-      if (!(preSource instanceof ComponentPort)) {
-        return false;
-      }
+    if (preSource instanceof Port && !(preSource instanceof ComponentPort)) {
+      return false;
     }
-    if (preTarget instanceof Port) {
-      if (!(preTarget instanceof ComponentPort)) {
-        return false;
-      }
+    if (preTarget instanceof Port && !(preTarget instanceof ComponentPort)) {
+      return false;
     }
 
     DSemanticDecorator sourcePart = preSourceView;
@@ -2419,9 +2400,9 @@ public class CsServices {
     }
 
     // If source NodeContainer contains target NodeContainer
-    if ((sourcePart != null) && (sourcePart instanceof AbstractDNode)
+    if ((sourcePart instanceof AbstractDNode)
         && ((sourcePart.getTarget() instanceof Part) || (sourcePart.getTarget() instanceof Component))) {
-      if ((targetPart != null) && (targetPart instanceof AbstractDNode)
+      if ((targetPart instanceof AbstractDNode)
           && ((targetPart.getTarget() instanceof Part) || (targetPart.getTarget() instanceof Component))) {
         if (sourcePart.eContents().contains(targetPart)) {
           return true;
@@ -2513,7 +2494,7 @@ public class CsServices {
   }
 
   public List<Component> getFirstComponents(ModellingBlock block) {
-    ArrayList<Component> result = new ArrayList<Component>();
+    ArrayList<Component> result = new ArrayList<>();
     result.add((Component) block);
     return result;
   }
@@ -2766,7 +2747,7 @@ public class CsServices {
    * Used to show the link between a PV/PVG and its containing PVG
    */
   public Collection<CapellaElement> PVinPVG(CapellaElement elem) {
-    Collection<CapellaElement> result = new ArrayList<CapellaElement>();
+    Collection<CapellaElement> result = new ArrayList<>();
     for (EObject content : elem.eContents()) {
       if (content instanceof AbstractPropertyValue || content instanceof PropertyValueGroup) {
         result.add((CapellaElement) content);
@@ -2779,10 +2760,10 @@ public class CsServices {
    * Used to show the link between a PV/PVG and and a component (while the PV/PVG may be applied to a component, only the part is represented in the diagram!)
    */
   public Collection<CapellaElement> computeValuedElements(CapellaElement elem) {
-    Collection<CapellaElement> result = new ArrayList<CapellaElement>();
+    Collection<CapellaElement> result = new ArrayList<>();
     if (elem instanceof AbstractPropertyValue) {
-      AbstractPropertyValue PV = (AbstractPropertyValue) elem;
-      for (CapellaElement element : PV.getValuedElements()) {
+      AbstractPropertyValue abstractPropertyValue = (AbstractPropertyValue) elem;
+      for (CapellaElement element : abstractPropertyValue.getValuedElements()) {
         result.add(element);
         if (element instanceof Component) {
           Component comp = (Component) element;
@@ -2792,8 +2773,8 @@ public class CsServices {
         }
       }
     } else if (elem instanceof PropertyValueGroup) {
-      PropertyValueGroup PV = (PropertyValueGroup) elem;
-      for (CapellaElement element : PV.getValuedElements()) {
+      PropertyValueGroup propertyValueGroup = (PropertyValueGroup) elem;
+      for (CapellaElement element : propertyValueGroup.getValuedElements()) {
         result.add(element);
         if (element instanceof Component) {
           Component comp = (Component) element;
@@ -2811,7 +2792,7 @@ public class CsServices {
    * the diagram!)
    */
   public Collection<CapellaElement> computeAppliedPV(CapellaElement elem) {
-    Collection<CapellaElement> result = new ArrayList<CapellaElement>();
+    Collection<CapellaElement> result = new ArrayList<>();
     result.addAll(elem.getAppliedPropertyValueGroups());
     result.addAll(elem.getAppliedPropertyValues());
     // if we have a part, we also add the PV and PVG applied to the type
@@ -2897,7 +2878,7 @@ public class CsServices {
     }
 
     String result = ICommonConstants.EMPTY_STRING;
-    if ((part.getAbstractType() != null) && (part.getAbstractType() instanceof ConfigurationItem)) {
+    if (part.getAbstractType() instanceof ConfigurationItem) {
       ConfigurationItem type = (ConfigurationItem) part.getAbstractType();
       result += "[" + type.getKind().getName() + "] "; //$NON-NLS-1$ //$NON-NLS-2$
     }
@@ -2924,14 +2905,14 @@ public class CsServices {
    * @return
    */
   public Collection<EObject> getComponentExchangeByGroupTargets(EObject source) {
-    Collection<EObject> semantics = new HashSet<EObject>();
+    Collection<EObject> semantics = new HashSet<>();
 
     EObject related = source;
     if (related instanceof Part) {
       Part sourcePart = (Part) related;
       Component sourceComponent = (Component) ((Part) related).getAbstractType();
 
-      Collection<ComponentExchange> relatedExchanges = new HashSet<ComponentExchange>();
+      Collection<ComponentExchange> relatedExchanges = new HashSet<>();
       relatedExchanges.addAll(ComponentExt.getAllRelatedComponentExchange(sourcePart));
       relatedExchanges.addAll(ComponentExt.getAllRelatedComponentExchange(sourceComponent, false));
 
@@ -2978,14 +2959,14 @@ public class CsServices {
   public Collection<CapellaElement> getComponentExchangeByGroupSemantics(EObject source, DSemanticDecorator sourceView,
       DSemanticDecorator targetView) {
 
-    Part sourcePart = (Part) ((DSemanticDecorator) sourceView).getTarget();
-    Part targetPart = (Part) ((DSemanticDecorator) targetView).getTarget();
+    Part sourcePart = (Part) sourceView.getTarget();
+    Part targetPart = (Part) targetView.getTarget();
 
     Component sourceComponent = (Component) sourcePart.getAbstractType();
     Component targetComponent = (Component) targetPart.getAbstractType();
 
     // Retrieve all related component exchange from source
-    Collection<CapellaElement> sources = new ArrayList<CapellaElement>();
+    Collection<CapellaElement> sources = new ArrayList<>();
     for (CapellaElement element : ComponentExt.getAllRelatedComponentExchange(sourcePart)) {
       if (!sources.contains(element)) {
         sources.add(element);
@@ -2998,7 +2979,7 @@ public class CsServices {
     }
 
     // Retrieve all related component exchange from target
-    Collection<CapellaElement> targets = new ArrayList<CapellaElement>();
+    Collection<CapellaElement> targets = new ArrayList<>();
     for (CapellaElement element : ComponentExt.getAllRelatedComponentExchange(targetPart)) {
       if (!targets.contains(element)) {
         targets.add(element);
@@ -3014,7 +2995,7 @@ public class CsServices {
     sources.retainAll(targets);
 
     // ordering is required since we use the crossReferencer to retrieve elements => hash dependent
-    List<CapellaElement> target2 = new ArrayList<CapellaElement>(sources);
+    List<CapellaElement> target2 = new ArrayList<>(sources);
     Collections.sort(target2, getComparator());
     return target2;
   }
@@ -3382,7 +3363,7 @@ public class CsServices {
 
     @Override
     public EObject getSource() {
-      if (link.getLinkEnds().size() > 0) {
+      if (!link.getLinkEnds().isEmpty()) {
         return link.getLinkEnds().get(0);
       }
       return null;
@@ -3478,7 +3459,7 @@ public class CsServices {
     @Override
     public Collection<? extends Port> getSourcePorts() {
       Port source = getSourcePort();
-      if ((source != null) && (source instanceof ComponentPort)) {
+      if (source instanceof ComponentPort) {
         return PortExt.getAllLinkedDelegatedComponentPorts((ComponentPort) source);
       }
       return Collections.singletonList(getSourcePort());
@@ -3487,7 +3468,7 @@ public class CsServices {
     @Override
     public Collection<? extends Port> getTargetPorts() {
       Port source = getTargetPort();
-      if ((source != null) && (source instanceof ComponentPort)) {
+      if (source instanceof ComponentPort) {
         return PortExt.getAllLinkedDelegatedComponentPorts((ComponentPort) source);
       }
       return Collections.singletonList(getTargetPort());
@@ -3815,26 +3796,20 @@ public class CsServices {
     return functionalExchangeWrapper;
   }
 
-  public boolean isOrientationAllowed(EObject context) {
-    Port sourcePort = getSourcePort(context);
-    Port targetPort = getTargetPort(context);
-    if ((null != sourcePort) && (null != targetPort)) {
-      if ((sourcePort instanceof ComponentPort) && (targetPort instanceof ComponentPort)) {
-        if ((((ComponentPort) sourcePort).getKind() == ComponentPortKind.STANDARD)
-            && (((ComponentPort) targetPort).getKind() == ComponentPortKind.STANDARD)) {
-          return true;
-        }
-      }
-    }
-    return false;
-  }
+	public boolean isOrientationAllowed(EObject context) {
+	  Port sourcePort = getSourcePort(context);
+	  Port targetPort = getTargetPort(context);
+	  return sourcePort instanceof ComponentPort && targetPort instanceof ComponentPort
+				&& ((ComponentPort) sourcePort).getKind() == ComponentPortKind.STANDARD
+				&& ((ComponentPort) targetPort).getKind() == ComponentPortKind.STANDARD;
+	}
 
   public Port getSourcePort(EObject context) {
-    if ((context != null) && (context instanceof ComponentExchange)) {
+    if (context instanceof ComponentExchange) {
       AbstractLink linkConnection = new ComponentExchangeWrapper();
       linkConnection.setData(context);
       return linkConnection.getSourcePort();
-    } else if ((context != null) && (context instanceof PhysicalLink)) {
+    } else if (context instanceof PhysicalLink) {
       AbstractLink linkConnection = new PhysicalLinkWrapper();
       linkConnection.setData(context);
       return linkConnection.getSourcePort();
@@ -3843,11 +3818,11 @@ public class CsServices {
   }
 
   public Port getTargetPort(EObject context) {
-    if ((context != null) && (context instanceof ComponentExchange)) {
+    if (context instanceof ComponentExchange) {
       AbstractLink linkConnection = new ComponentExchangeWrapper();
       linkConnection.setData(context);
       return linkConnection.getTargetPort();
-    } else if ((context != null) && (context instanceof PhysicalLink)) {
+    } else if (context instanceof PhysicalLink) {
       AbstractLink linkConnection = new PhysicalLinkWrapper();
       linkConnection.setData(context);
       return linkConnection.getTargetPort();
@@ -3887,15 +3862,11 @@ public class CsServices {
       }
 
       // Remove edge between part or port if not the good port
-      if (link.getSourcePort() != null) {
-        if (link.getSourcePort() != sourceElement.getTarget()) {
+      if (link.getSourcePort() != null && link.getSourcePort() != sourceElement.getTarget()) {
           return false;
-        }
       }
-      if (link.getTargetPort() != null) {
-        if (link.getTargetPort() != targetElement.getTarget()) {
+      if (link.getTargetPort() != null && link.getTargetPort() != targetElement.getTarget()) {
           return false;
-        }
       }
     }
 
@@ -3956,13 +3927,13 @@ public class CsServices {
     targetParents.remove(targetElement);
 
     // Retrieve the first parent of source which is not common with the target
-    HashSet<EObject> targetParentSet = new HashSet<EObject>(targetParents);
+    HashSet<EObject> targetParentSet = new HashSet<>(targetParents);
 
     EObject current = null;
     if (!sourceParents.isEmpty()) {
       current = sourceParents.removeLast();
       while ((current != null) && targetParentSet.contains(current)) {
-        if (sourceParents.size() > 0) {
+        if (!sourceParents.isEmpty()) {
           current = sourceParents.removeLast();
         } else {
           current = null;
@@ -4000,7 +3971,7 @@ public class CsServices {
   }
 
   public List<EObject> getLCBPartTarget(EObject element) {
-    List<EObject> result = new ArrayList<EObject>();
+    List<EObject> result = new ArrayList<>();
 
     if ((element instanceof Part) && (((Part) element).getAbstractType() != null)) {
       for (Partition part : ((PartitionableElement) (((Part) element).getAbstractType())).getRepresentingPartitions()) {
@@ -4014,13 +3985,13 @@ public class CsServices {
   }
 
   public List<EObject> getLCBPartSemanticElements(EObject element) {
-    List<EObject> result = new ArrayList<EObject>();
+    List<EObject> result = new ArrayList<>();
     result.add(element);
     return result;
   }
 
   public List<EObject> getLCBPartSemanticCandidates(EObject element) {
-    List<EObject> result = new ArrayList<EObject>();
+    List<EObject> result = new ArrayList<>();
     if (element instanceof Component) {
       result.addAll(ComponentExt.getSubParts((Component) element));
     }
@@ -4031,11 +4002,11 @@ public class CsServices {
    * Returns the sub-defined components which are defined in sub-used components
    */
   public Collection<Component> getSubDefinedByUsedComponents(Component component) {
-    LinkedList<Component> toVisit = new LinkedList<Component>();
-    Collection<Component> components = new HashSet<Component>();
+    LinkedList<Component> toVisit = new LinkedList<>();
+    Collection<Component> components = new HashSet<>();
     toVisit.add(component);
 
-    while (toVisit.size() > 0) {
+    while (!toVisit.isEmpty()) {
       Component visited = toVisit.removeFirst();
       components.add(visited);
       for (Component c : ComponentExt.getSubDefinedComponents(visited)) {
@@ -4061,7 +4032,7 @@ public class CsServices {
    *          included in the list)
    */
   protected LinkedList<EObject> getParents(EObject object, EClass clazz) {
-    LinkedList<EObject> parents = new LinkedList<EObject>();
+    LinkedList<EObject> parents = new LinkedList<>();
     EObject current = object;
 
     if (current == null) {
@@ -4185,19 +4156,15 @@ public class CsServices {
   }
 
   public List<ComponentExchange> getAssemblyComponentExchanges(ComponentPort port) {
-    List<ComponentExchange> res = PortExt.getAssemblyComponentExchanges(port);
-
-    return res;
+    return PortExt.getAssemblyComponentExchanges(port);
   }
 
   public List<ComponentExchange> getFlowComponentExchanges(ComponentPort port) {
-    List<ComponentExchange> res = PortExt.getFlowComponentExchanges(port);
-
-    return res;
+    return PortExt.getFlowComponentExchanges(port);
   }
 
   public Collection<CapellaElement> getAllRelatedLinks(Port port) {
-    Collection<CapellaElement> target = new ArrayList<CapellaElement>();
+    Collection<CapellaElement> target = new ArrayList<>();
 
     if (port instanceof ComponentPort) {
 
@@ -4231,10 +4198,10 @@ public class CsServices {
   public Collection<? extends EObject> getComponentExchangeByDelegationSemantics(EObject related, Object sourceView,
       Object targetView) {
 
-    Collection<CapellaElement> target = new ArrayList<CapellaElement>();
+    Collection<CapellaElement> target = new ArrayList<>();
 
-    if ((sourceView != null) && (sourceView instanceof EdgeTarget) && (targetView != null)
-        && (targetView instanceof EdgeTarget)) {
+    if (sourceView instanceof EdgeTarget
+        && targetView instanceof EdgeTarget) {
 
       EdgeTarget sourceNode = (EdgeTarget) sourceView;
       EdgeTarget targetNode = (EdgeTarget) targetView;
@@ -4253,7 +4220,7 @@ public class CsServices {
           target = sourceLinks;
 
           // retrains with related parts (for multipart mode)
-          Collection<EObject> a = new ArrayList<EObject>();
+          Collection<EObject> a = new ArrayList<>();
 
           Iterator<? extends EObject> it = target.iterator();
           while (it.hasNext()) {
@@ -4262,26 +4229,21 @@ public class CsServices {
               ComponentExchange cee = (ComponentExchange) ce;
               Part sourcePart = getSourcePart(cee);
               Part targetPart = getTargetPart(cee);
-              if (sourcePart != null) {
-                if (getRelatedPart((DSemanticDecorator) sourceNode) != sourcePart) {
-                  a.add(ce);
-                }
+              if (sourcePart != null && getRelatedPart((DSemanticDecorator) sourceNode) != sourcePart) {
+                a.add(ce);
               }
-              if (targetPart != null) {
-                if (getRelatedPart((DSemanticDecorator) targetNode) != targetPart) {
-                  a.add(ce);
-                }
+              if (targetPart != null && getRelatedPart((DSemanticDecorator) targetNode) != targetPart) {
+                a.add(ce);
               }
             }
           }
-
           target.removeAll(a);
         }
       }
     }
 
     // ordering is required since we use the crossReferencer to retrieve elements => hash dependent
-    List<CapellaElement> target2 = new ArrayList<CapellaElement>(target);
+    List<CapellaElement> target2 = new ArrayList<>(target);
     Collections.sort(target2, getComparator());
     return target2;
 
@@ -4318,7 +4280,7 @@ public class CsServices {
    * Returns the targets of a ComponentExchange (the component, the part, or the port according to the mode)
    */
   public Collection<? extends EObject> getComponentExchangeLowestTargets(EObject related) {
-    Collection<ComponentPort> target = new ArrayList<ComponentPort>();
+    Collection<ComponentPort> target = new ArrayList<>();
     if (related instanceof ComponentPort) {
       ComponentPort port = (ComponentPort) related;
 
@@ -4339,10 +4301,8 @@ public class CsServices {
             Collection<ComponentPort> ports = PortExt.getAllDelegatedComponentPorts((ComponentPort) connectedPort);
             ports.add((ComponentPort) connectedPort);
             for (ComponentPort delegatedPort : ports) {
-              if (PortExt.getDelegatedComponentPorts(delegatedPort).size() == 0) {
-                if (!target.contains(delegatedPort)) {
-                  target.add(delegatedPort);
-                }
+              if (PortExt.getDelegatedComponentPorts(delegatedPort).isEmpty() && !target.contains(delegatedPort)) {
+                target.add(delegatedPort);
               }
             }
           }
@@ -4355,7 +4315,7 @@ public class CsServices {
         ComponentPort result = objects.next();
         Collection<ComponentPort> resultPort = PortExt.getDelegatingComponentPorts(result);
         resultPort.retainAll(target);
-        if (resultPort.size() != 0) {
+        if (!resultPort.isEmpty()) {
           objects.remove();
         }
       }
@@ -4368,7 +4328,7 @@ public class CsServices {
    * Returns the targets of a ComponentExchange (the component, the part, or the port according to the mode)
    */
   public Collection<? extends EObject> getComponentExchangeByDelegationTargets(EObject related) {
-    Collection<CapellaElement> target = new ArrayList<CapellaElement>();
+    Collection<CapellaElement> target = new ArrayList<>();
     if (related instanceof ComponentPort) {
       ComponentPort port = (ComponentPort) related;
       for (Port relatedPort : PortExt.getAllLinkedDelegatedComponentPorts(port)) {
@@ -4489,7 +4449,7 @@ public class CsServices {
    * Returns all semantics candidates for a ComponentExchange link
    */
   public Collection<CapellaElement> getComponentExchangeSemantics(EObject element) {
-    Collection<CapellaElement> list = new ArrayList<CapellaElement>();
+    Collection<CapellaElement> list = new ArrayList<>();
 
     if (element instanceof Component) {
       list.addAll(ComponentExt.getAllOwnedComponentExchanges((Component) element));
@@ -4505,7 +4465,7 @@ public class CsServices {
    * Returns semantic elements which can be related of a namedElement
    */
   public List<EObject> getPartSemanticElements(NamedElement element) {
-    List<EObject> elements = new ArrayList<EObject>();
+    List<EObject> elements = new ArrayList<>();
 
     if (element instanceof Part) {
       elements.add(element);
@@ -4525,14 +4485,14 @@ public class CsServices {
     if (part.getAbstractType() instanceof Component) {
       return getAllocatedFunctions(((Component) part.getAbstractType()));
     }
-    return null;
+    return Collections.emptyList();
   }
 
   /**
    * Returns allocated logical functions for the given component
    */
   public List<AbstractFunction> getAllocatedFunctions(Component component) {
-    List<AbstractFunction> list = new ArrayList<AbstractFunction>();
+    List<AbstractFunction> list = new ArrayList<>();
 
     for (ComponentFunctionalAllocation alloc : component.getFunctionalAllocations()) {
       if (alloc.getFunction() != null) {
@@ -4563,15 +4523,14 @@ public class CsServices {
   public Collection<? extends NamedElement> getABShowHideActor(DSemanticDecorator view) {
     Component component = (Component) getComponentType(view);
     BlockArchitecture architecture = getArchitecture(component);
-    List<Part> parts = getParts(getContext(architecture), CsPackage.Literals.ABSTRACT_ACTOR, null);
-    return parts;
+    return getParts(getContext(architecture), CsPackage.Literals.ABSTRACT_ACTOR, null);
   }
 
   /**
    * Returns owned parts with the given eclass type
    */
   protected List<Part> getParts(PartitionableElement element, EClass eClass, EClass excludeEClass) {
-    List<Part> parts = new ArrayList<Part>();
+    List<Part> parts = new ArrayList<>();
     for (Partition part : ComponentExt.getSubParts(element)) {
       if ((part instanceof Part) && eClass.isInstance(part.getAbstractType())
           && (!((excludeEClass != null) && excludeEClass.isInstance(part.getAbstractType())))) {
@@ -4584,23 +4543,23 @@ public class CsServices {
   Couple<DNode, Boolean> createViewOrGetPort(DNodeContainer parent, Port target) {
     for (DNode node : parent.getOwnedBorderedNodes()) {
       if ((node.getTarget() != null) && node.getTarget().equals(target)) {
-        return new Couple<DNode, Boolean>(node, Boolean.FALSE);
+        return new Couple<>(node, Boolean.FALSE);
       }
     }
 
     DNode created = FaServices.getFaServices().createViewComponentPort(target, parent, parent.getParentDiagram());
-    return new Couple<DNode, Boolean>(created, Boolean.TRUE);
+    return new Couple<>(created, Boolean.TRUE);
   }
 
   Couple<DNode, Boolean> createViewOrGetPhysicalPort(DNodeContainer parent, Port target) {
     for (DNode node : parent.getOwnedBorderedNodes()) {
       if ((node.getTarget() != null) && node.getTarget().equals(target)) {
-        return new Couple<DNode, Boolean>(node, Boolean.FALSE);
+        return new Couple<>(node, Boolean.FALSE);
       }
     }
 
     DNode created = FaServices.getFaServices().createViewPhysicalPort(target, parent, parent.getParentDiagram());
-    return new Couple<DNode, Boolean>(created, Boolean.TRUE);
+    return new Couple<>(created, Boolean.TRUE);
   }
 
   /**
@@ -4618,14 +4577,14 @@ public class CsServices {
     if (elements != null) {
       for (DDiagramElement node : elements) {
         if ((node instanceof DNodeContainer) && (node.getTarget() != null) && node.getTarget().equals(target)) {
-          return new Couple<DNodeContainer, Boolean>((DNodeContainer) node, Boolean.FALSE);
+          return new Couple<>((DNodeContainer) node, Boolean.FALSE);
         }
       }
     }
 
     DNodeContainer created = FaServices.getFaServices().createViewPart(target, parent,
         CapellaServices.getService().getDiagramContainer(parent));
-    return new Couple<DNodeContainer, Boolean>(created, Boolean.TRUE);
+    return new Couple<>(created, Boolean.TRUE);
   }
 
   /**
@@ -4643,14 +4602,14 @@ public class CsServices {
     if (elements != null) {
       for (DDiagramElement node : elements) {
         if ((node instanceof DNodeContainer) && (node.getTarget() != null) && node.getTarget().equals(target)) {
-          return new Couple<DNodeContainer, Boolean>((DNodeContainer) node, Boolean.FALSE);
+          return new Couple<>((DNodeContainer) node, Boolean.FALSE);
         }
       }
     }
 
     DNodeContainer created = FaServices.getFaServices().createViewDeployedPart(target, parent,
         CapellaServices.getService().getDiagramContainer(parent));
-    return new Couple<DNodeContainer, Boolean>(created, Boolean.TRUE);
+    return new Couple<>(created, Boolean.TRUE);
   }
 
   @Deprecated
@@ -4662,7 +4621,7 @@ public class CsServices {
 
   public List<EObject> getDeployableLocations(DeployableElement element) {
 
-    ArrayList<EObject> parents = new ArrayList<EObject>();
+    ArrayList<EObject> parents = new ArrayList<>();
 
     for (AbstractDeploymentLink linka : element.getDeployingLinks()) {
       parents.add(linka.getLocation());
@@ -4692,14 +4651,14 @@ public class CsServices {
   public void showABContextualElements(DDiagramContents context, Collection<EObject> contextualElements) {
 
     DDiagram diagram = context.getDDiagram();
-    Collection<EObject> contextualParts = new HashSet<EObject>();
-    Collection<AbstractFunction> contextualFunctions = new HashSet<AbstractFunction>();
-    Collection<FunctionalExchange> contextualFunctionExchanges = new HashSet<FunctionalExchange>();
-    Collection<EObject> contextualFunctionalChains = new HashSet<EObject>();
-    Collection<EObject> contextualConnections = new HashSet<EObject>();
-    Collection<EObject> contextualPhysicalLinks = new HashSet<EObject>();
-    Collection<EObject> contextualModes = new HashSet<EObject>();
-    Collection<EObject> contextualScenarios = new HashSet<EObject>();
+    Collection<EObject> contextualParts = new HashSet<>();
+    Collection<AbstractFunction> contextualFunctions = new HashSet<>();
+    Collection<FunctionalExchange> contextualFunctionExchanges = new HashSet<>();
+    Collection<EObject> contextualFunctionalChains = new HashSet<>();
+    Collection<EObject> contextualConnections = new HashSet<>();
+    Collection<EObject> contextualPhysicalLinks = new HashSet<>();
+    Collection<EObject> contextualModes = new HashSet<>();
+    Collection<EObject> contextualScenarios = new HashSet<>();
 
     for (EObject contextualElement : contextualElements) {
 
@@ -4766,7 +4725,7 @@ public class CsServices {
   }
 
   public Collection<PhysicalLink> getAllDelegatesPhysicalLink(EObject contextualPart) {
-    Collection<PhysicalLink> result = new ArrayList<PhysicalLink>();
+    Collection<PhysicalLink> result = new ArrayList<>();
     for (PhysicalPort port : getContainedPhysicalPorts(contextualPart)) {
       result.addAll(PortExt.getDelegatedPhysicalLinks(port));
       result.addAll(PortExt.getDelegatingPhysicalLinks(port));
@@ -4866,12 +4825,12 @@ public class CsServices {
   Couple<DNode, Boolean> createViewOrGetFunction(DNodeContainer parent, AbstractFunction target) {
     for (DDiagramElement node : parent.getOwnedDiagramElements()) {
       if ((node instanceof DNode) && (node.getTarget() != null) && node.getTarget().equals(target)) {
-        return new Couple<DNode, Boolean>((DNode) node, Boolean.FALSE);
+        return new Couple<>((DNode) node, Boolean.FALSE);
       }
     }
 
     DNode created = FaServices.getFaServices().createViewABAbstractFunction(target, parent, parent.getParentDiagram());
-    return new Couple<DNode, Boolean>(created, Boolean.TRUE);
+    return new Couple<>(created, Boolean.TRUE);
   }
 
   /**
@@ -4883,12 +4842,12 @@ public class CsServices {
   Couple<DNode, Boolean> createViewOrGetFunctionPort(DNode parent, Pin target) {
     for (DNode node : parent.getOwnedBorderedNodes()) {
       if ((node.getTarget() != null) && node.getTarget().equals(target)) {
-        return new Couple<DNode, Boolean>(node, Boolean.FALSE);
+        return new Couple<>(node, Boolean.FALSE);
       }
     }
 
     DNode created = FaServices.getFaServices().createViewFunctionPort(target, parent, parent.getParentDiagram());
-    return new Couple<DNode, Boolean>(created, Boolean.TRUE);
+    return new Couple<>(created, Boolean.TRUE);
   }
 
   /**
@@ -4897,7 +4856,7 @@ public class CsServices {
    * @param rootComponent
    */
   public void createRepresentingPartIfNone(Component component) {
-    if (component.getRepresentingPartitions().size() == 0) {
+    if (component.getRepresentingPartitions().isEmpty()) {
       Part part = CsFactory.eINSTANCE.createPart();
       EObject parentContainer = getParentContainer(component);
       if (parentContainer instanceof BlockArchitecture) {
@@ -4919,7 +4878,7 @@ public class CsServices {
    * @return
    */
   public List<Component> getTargetsOfComponent_subComponents(Component component) {
-    List<Component> returnedList = new ArrayList<Component>();
+    List<Component> returnedList = new ArrayList<>();
     if (isMultipartMode(component)) {
       return returnedList;
     }
@@ -4933,7 +4892,7 @@ public class CsServices {
   }
 
   public List<EObject> getPCBPartSemanticCandidates(ModelElement element) {
-    List<EObject> result = new ArrayList<EObject>();
+    List<EObject> result = new ArrayList<>();
     if (!(element instanceof Component) || !isMultipartMode(element)) {
       return result;
     }
@@ -4961,24 +4920,18 @@ public class CsServices {
 
     if ((null != port) && (itf != null)) {
       EList<Interface> proviededInterfaces = port.getProvidedInterfaces();
-      if (!proviededInterfaces.isEmpty()) {
-        if (proviededInterfaces.contains(itf)) {
-          flag = true;
-          value = 1;
-
-        }
+      if (!proviededInterfaces.isEmpty() && proviededInterfaces.contains(itf)) {
+        flag = true;
+        value = 1;
       }
       EList<Interface> requiredInterfaces = port.getRequiredInterfaces();
-      if (!requiredInterfaces.isEmpty()) {
-        if (requiredInterfaces.contains(itf)) {
-          if (flag) {
-            value = 3;
-          } else {
-            value = 2;
-          }
+      if (!requiredInterfaces.isEmpty() && requiredInterfaces.contains(itf)) {
+        if (flag) {
+          value = 3;
+        } else {
+          value = 2;
         }
       }
-
     }
 
     return value;
@@ -4994,7 +4947,7 @@ public class CsServices {
    * @return list of component
    */
   public List<Component> getOppositeCompsOfUseAndSendingCommLink(EObject context) {
-    List<Component> result = new ArrayList<Component>(1);
+    List<Component> result = new ArrayList<>(1);
 
     if (context instanceof Component) {
       Component comp = (Component) context;
@@ -5047,7 +5000,7 @@ public class CsServices {
   public String getInterfaceExchangeItemLabel(EObject context, DSemanticDecorator sourceView,
       DSemanticDecorator targetView) {
 
-    StringBuffer result = new StringBuffer();
+    StringBuilder result = new StringBuilder();
     if ((null == sourceView) || (null == targetView)) {
       return result.toString();
     }
@@ -5060,7 +5013,7 @@ public class CsServices {
       // used links to implementer component
       List<Interface> allUsedInterfaces = ComponentExt.getUsedAndRequiredInterfaces(source);
       for (Interface interface1 : allUsedInterfaces) {
-        List<Component> components = new ArrayList<Component>();
+        List<Component> components = new ArrayList<>();
 
         components.addAll(interface1.getImplementorComponents());
         List<Component> providerComponent = InterfaceExt.getProviderComponent(interface1);
@@ -5115,7 +5068,7 @@ public class CsServices {
   public String getInterfaceExchangeItemLabelDiagramBased(EObject context, DSemanticDecorator sourceView,
       DSemanticDecorator targetView) {
 
-    StringBuffer result = new StringBuffer();
+    StringBuilder result = new StringBuilder();
     if ((null == sourceView) || (null == targetView)) {
       return result.toString();
     }
@@ -5135,22 +5088,20 @@ public class CsServices {
       // used links to implementer component
       List<Interface> allUsedInterfaces = ComponentExt.getUsedAndRequiredInterfaces(source);
       for (Interface interface1 : allUsedInterfaces) {
-        List<Component> components = new ArrayList<Component>();
+        List<Component> components = new ArrayList<>();
         components.addAll(interface1.getImplementorComponents());
         List<Component> providerComponent = InterfaceExt.getProviderComponent(interface1);
         if (!providerComponent.isEmpty()) {
           components.addAll(providerComponent);
         }
         for (Component component : components) {
-          if (target.equals(component)) {
+          if (target.equals(component) && diagramService.isOnDiagram(diagram, interface1)) {
             // add to result only if interface1 is found in diagram
-            if (diagramService.isOnDiagram(diagram, interface1)) {
-              if (result.toString().isEmpty()) {
-                result.append(interface1.getName());
-              } else {
-                result.append(", "); //$NON-NLS-1$
-                result.append(interface1.getName());
-              }
+            if (result.toString().isEmpty()) {
+              result.append(interface1.getName());
+            } else {
+              result.append(", "); //$NON-NLS-1$
+              result.append(interface1.getName());
             }
           }
         }
@@ -5163,21 +5114,18 @@ public class CsServices {
           List<Component> oppositeComponentUsingCrossref = getCompOfReceivingCommLinkUsingCrossRef(
               abstractExchangeItem);
           for (Component component : oppositeComponentUsingCrossref) {
-            if (target.equals(component)) {
+            if (target.equals(component) && diagramService.isOnDiagram(diagram, abstractExchangeItem)) {
               // add to result only if interface1 is found in diagram
-              if (diagramService.isOnDiagram(diagram, abstractExchangeItem)) {
                 if (result.toString().isEmpty()) {
                   result.append(abstractExchangeItem.getName());
                 } else {
                   result.append(", "); //$NON-NLS-1$
                   result.append(abstractExchangeItem.getName());
                 }
-              }
             }
           }
         }
       }
-
     }
     return result.toString();
   }
@@ -5215,18 +5163,16 @@ public class CsServices {
       // used links to implementer component
       List<Interface> allUsedInterfaces = ComponentExt.getUsedAndRequiredInterfaces(source);
       for (Interface interface1 : allUsedInterfaces) {
-        List<Component> components = new ArrayList<Component>();
+        List<Component> components = new ArrayList<>();
         components.addAll(interface1.getImplementorComponents());
         List<Component> providerComponent = InterfaceExt.getProviderComponent(interface1);
         if (!providerComponent.isEmpty()) {
           components.addAll(providerComponent);
         }
         for (Component component : components) {
-          if (target.equals(component)) {
+          if (target.equals(component) && diagramService.isOnDiagram(diagram, interface1)) {
             // add to result only if interface1 is found in diagram
-            if (diagramService.isOnDiagram(diagram, interface1)) {
-              return true;
-            }
+            return true;
           }
         }
       }
@@ -5238,16 +5184,13 @@ public class CsServices {
           List<Component> oppositeComponentUsingCrossref = getCompOfReceivingCommLinkUsingCrossRef(
               abstractExchangeItem);
           for (Component component : oppositeComponentUsingCrossref) {
-            if (target.equals(component)) {
+            if (target.equals(component) && diagramService.isOnDiagram(diagram, abstractExchangeItem)) {
               // add to result only if interface1 is found in diagram
-              if (diagramService.isOnDiagram(diagram, abstractExchangeItem)) {
-                return true;
-              }
+              return true;
             }
           }
         }
       }
-
     }
 
     return false;
@@ -5261,21 +5204,19 @@ public class CsServices {
    * @return List<Component>
    */
   public List<Component> getCompOfReceivingCommLinkUsingCrossRef(EObject eObj) {
-    List<Component> result = new ArrayList<Component>();
+    List<Component> result = new ArrayList<>();
 
     Collection<Setting> inverseReferences = CapellaElementExt.getInverseReferencesOfEObject(eObj);
 
     for (Setting setting : inverseReferences) {
       EObject eObject = setting.getEObject();
-      if (eObject != null) {
-        // filter CommunicationLink
-        if (eObject instanceof CommunicationLink) {
-          CommunicationLink link = (CommunicationLink) eObject;
-          if (CommunicationLinkExt.isReceiver(link)) {
-            EObject container = getParentContainer(link);
-            if ((container != null) && (container instanceof Component)) {
-              result.add((Component) container);
-            }
+      // filter CommunicationLink
+      if (eObject instanceof CommunicationLink) {
+        CommunicationLink link = (CommunicationLink) eObject;
+        if (CommunicationLinkExt.isReceiver(link)) {
+          EObject container = getParentContainer(link);
+          if (container instanceof Component) {
+            result.add((Component) container);
           }
         }
       }
@@ -5299,9 +5240,8 @@ public class CsServices {
         CommunicationLinkKind.CALL, CommunicationLinkKind.WRITE, CommunicationLinkKind.PRODUCE,
         CommunicationLinkKind.TRANSMIT };
     // get exchange : filter by list of prepared kind
-    Collection<AbstractExchangeItem> exchangeItemsByKinds = CommunicationLinkExt
+    return CommunicationLinkExt
         .getExchangeItemsByKinds(ownedCommunicationLinks, sending);
-    return exchangeItemsByKinds;
   }
 
   /**
@@ -5323,9 +5263,9 @@ public class CsServices {
    * @return : String
    */
   public String getStateTransitionLabel(EObject context, EObject view) {
-    StringBuffer result = new StringBuffer();
+    StringBuilder result = new StringBuilder();
 
-    if ((null != context) && (context instanceof StateTransition)) {
+    if (context instanceof StateTransition) {
       StateTransition transition = (StateTransition) context;
 
       // Trigger
@@ -5411,7 +5351,7 @@ public class CsServices {
 
     // store all displayed elements of the diagram
     Hashtable<Component, DNodeContainer> componentsInDiagram = new Hashtable<Component, DNodeContainer>();
-    Set<DNodeContainer> toBeMoved = new HashSet<DNodeContainer>(); // diagram elements to be moved
+    Set<DNodeContainer> toBeMoved = new HashSet<>(); // diagram elements to be moved
 
     // get all displayed components in the diagram
     for (AbstractDNode aContainer : diagram.getContainers()) {
@@ -5488,8 +5428,8 @@ public class CsServices {
    * @return : list of components
    */
   public List<CapellaElement> getAllComponentFromBlockArchitecture(EObject context, BlockArchitecture arch) {
-    List<CapellaElement> tempResult = new ArrayList<CapellaElement>();
-    List<CapellaElement> result = new ArrayList<CapellaElement>();
+    List<CapellaElement> tempResult = new ArrayList<>();
+    List<CapellaElement> result = new ArrayList<>();
     BlockArchitectureExt.getAllComponentsFromBlockArchitecture(arch, tempResult);
     for (CapellaElement capellaElement : tempResult) {
       if (!(capellaElement instanceof ComponentContext)) {
@@ -5513,8 +5453,8 @@ public class CsServices {
   public EObject showHideActors(EObject context, List<CapellaElement> selectedOperations, DDiagram diagram) {
 	    // This method is used in IDB and capability diagrams
 	if (selectedOperations == null) // for acceleo2aql
-	  selectedOperations = new ArrayList<CapellaElement>();
-    Map<CapellaElement, AbstractDNode> visibleElements = new HashMap<CapellaElement, AbstractDNode>();
+	  selectedOperations = new ArrayList<>();
+    Map<CapellaElement, AbstractDNode> visibleElements = new HashMap<>();
     // collect all the visible abstractActor element from the diagram
     for (DDiagramElement aNode : DiagramServices.getDiagramServices().getDiagramElements(diagram)) {
       EObject target = aNode.getTarget();
@@ -5539,7 +5479,7 @@ public class CsServices {
 
   public EObject showHideCapabilityRealizations(EObject context, List<CapellaElement> selectedOperations,
       DDiagram diagram) {
-    Map<CapellaElement, AbstractDNode> visibleElements = new HashMap<CapellaElement, AbstractDNode>();
+    Map<CapellaElement, AbstractDNode> visibleElements = new HashMap<>();
     // collect all the visible abstractActor element from the diagram
     for (DDiagramElement aNode : DiagramServices.getDiagramServices().getDiagramElements(diagram)) {
       EObject target = aNode.getTarget();
@@ -5595,22 +5535,12 @@ public class CsServices {
   }
 
   public AbstractNodeMapping getMappingCRBActor(EObject element, DDiagram diagram) {
-    boolean isContainerMapping = true;
 
     String mappingName = ""; //$NON-NLS-1$
-    if (IDiagramNameConstants.CAPABILITY_REALIZATION_BLANK.equals(diagram.getDescription().getName())) {
-      if (element instanceof AbstractActor) {
+    if (IDiagramNameConstants.CAPABILITY_REALIZATION_BLANK.equals(diagram.getDescription().getName()) && element instanceof AbstractActor) {
         mappingName = IMappingNameConstants.CRB_COMPONENT_MAPPING;
-      }
     }
-
-    if (isContainerMapping) {
-      ContainerMapping mapping = DiagramServices.getDiagramServices().getContainerMapping(diagram, mappingName);
-      return mapping;
-    }
-
-    NodeMapping mapping = DiagramServices.getDiagramServices().getNodeMapping(diagram, mappingName);
-    return mapping;
+    return DiagramServices.getDiagramServices().getContainerMapping(diagram, mappingName);
   }
 
   public AbstractNodeMapping getMappingCRBCapability(EObject element, DDiagram diagram) {
@@ -5625,13 +5555,10 @@ public class CsServices {
     }
 
     if (isContainerMapping) {
-      ContainerMapping mapping = DiagramServices.getDiagramServices().getContainerMapping(diagram, mappingName);
-      return mapping;
+      return DiagramServices.getDiagramServices().getContainerMapping(diagram, mappingName);
     }
 
-    NodeMapping mapping = DiagramServices.getDiagramServices().getNodeMapping(diagram, mappingName);
-    return mapping;
-
+    return DiagramServices.getDiagramServices().getNodeMapping(diagram, mappingName);
   }
 
   /**
@@ -5652,7 +5579,7 @@ public class CsServices {
 
   public void removeCapellaElement(EObject capellaElement) {
     // create empty list
-    if ((null != capellaElement) && (capellaElement instanceof CapellaElement)) {
+    if (capellaElement instanceof CapellaElement) {
       CapellaServices.getService().removeElement((CapellaElement) capellaElement);
     }
   }
@@ -5717,7 +5644,7 @@ public class CsServices {
    * Returns available components which are accessible CRB-Show-Hide-Component.
    */
   public Collection<Component> getCRBShowHideComponent(DSemanticDecorator decorator) {
-    Collection<Component> components = new ArrayList<Component>();
+    Collection<Component> components = new ArrayList<>();
 
     if ((decorator.getTarget() instanceof Component)) {
       return getCCIIShowHideComponent(decorator);
@@ -5745,7 +5672,7 @@ public class CsServices {
    */
   public Collection<Component> getCRBShowHideActors(EObject context) {
 
-    Collection<Component> components = new ArrayList<Component>();
+    Collection<Component> components = new ArrayList<>();
 
     // Add actors
     components.addAll(ComponentExt.getSubDefinedActors(getArchitecture(context)));
@@ -5757,7 +5684,7 @@ public class CsServices {
    * Returns available Capability Realization which are accessible by brothers-part CRA-Show-Hide-Component.
    */
   public Collection<CapabilityRealization> getCRBShowHideCapabilityRealizations(EObject context) {
-    Collection<CapabilityRealization> elements = new ArrayList<CapabilityRealization>();
+    Collection<CapabilityRealization> elements = new ArrayList<>();
     if (context instanceof CapellaElement) {
       elements.addAll(CapabilityRealizationExt.getAllCapabilityRealizationOfOneLayer((CapellaElement) context));
     }
@@ -5796,20 +5723,20 @@ public class CsServices {
   }
 
   public List<EObject> getConstraintToInsertInDiagram(EObject context) {
-    List<EObject> result = new ArrayList<EObject>(0);
+    List<EObject> result = new ArrayList<>(0);
 
     if (context instanceof DDiagram) {
       // return all the constraints of current level
       DSemanticDecorator diagram = (DSemanticDecorator) context;
       EObject target = diagram.getTarget();
-      if ((null != target) && (target instanceof ModelElement)) {
+      if (target instanceof ModelElement) {
         BlockArchitecture arch = BlockArchitectureExt.getRootBlockArchitecture(target);
         return BlockArchitectureExt.getAllConstraints(arch);
       }
     } else if (context instanceof DDiagramElement) {
       DDiagramElement element = (DDiagramElement) context;
       EObject target = element.getTarget();
-      if ((null != target) && (target instanceof ModelElement)) {
+      if (target instanceof ModelElement) {
         ModelElement capellaElement = (ModelElement) target;
         result.addAll(capellaElement.getConstraints());
       }
@@ -5831,7 +5758,7 @@ public class CsServices {
   public void createConstraintWithConstaintedElementInDiagram(EObject context, EObject constraint, DDiagram dDiagram,
     List<Constraint> constraintsInDiagram, boolean kindDiagram) {
 	if (constraintsInDiagram == null) // for acceleo2aql
-	  constraintsInDiagram = new ArrayList<Constraint>();
+	  constraintsInDiagram = new ArrayList<>();
     if ((null == context) || (null == constraint) || (null == dDiagram)) {
       return;
     }
@@ -5881,7 +5808,7 @@ public class CsServices {
       // create constriantElementLink does not exist in diagram
       if (null != constraintNode) {
         EObject target = constraintNode.getTarget();
-        if ((null != target) && (target instanceof Constraint)) {
+        if (target instanceof Constraint) {
           Constraint cst = (Constraint) target;
           EList<ModelElement> constrainedElements = cst.getConstrainedElements();
           for (ModelElement modelElement : constrainedElements) {
@@ -5974,7 +5901,7 @@ public class CsServices {
    */
   private List<ModelElement> getTargetToAddAsConstraintedElement(ModelElement target,
       DDiagramElement targetDiagramEle) {
-    List<ModelElement> result = new ArrayList<ModelElement>();
+    List<ModelElement> result = new ArrayList<>();
     // if targetDiagramElemnet deployed part
     // return the deployedElemnet link as target
     boolean flag = false;
@@ -6006,7 +5933,7 @@ public class CsServices {
    * @return
    */
   public List<EObject> targeFinderExpressionForConstraint(Constraint context) {
-    List<EObject> result = new ArrayList<EObject>();
+    List<EObject> result = new ArrayList<>();
     EList<ModelElement> constrainedElements = context.getConstrainedElements();
     for (ModelElement modelElement : constrainedElements) {
       // get deployed element for each partDeploymentLink
@@ -6338,7 +6265,7 @@ public class CsServices {
   }
 
   public Object getComputedComponentExchangeSemanticCandidates(final DDiagram diagram) {
-    Collection<ComponentExchange> result = new HashSet<ComponentExchange>();
+    Collection<ComponentExchange> result = new HashSet<>();
     final DDiagramContents context = new DDiagramContents(diagram);
     for (DDiagramElement dNode : context.getDiagramElements()) {
       EObject target = dNode.getTarget();
@@ -6376,7 +6303,7 @@ public class CsServices {
   }
 
   public Object getComputedPhysicalLinkSemanticCandidates(final DDiagram diagram) {
-    Collection<PhysicalLink> result = new ArrayList<PhysicalLink>();
+    Collection<PhysicalLink> result = new ArrayList<>();
     final DDiagramContents context = new DDiagramContents(diagram);
     for (DDiagramElement dNode : context.getDiagramElements()) {
       EObject target = dNode.getTarget();
@@ -6408,13 +6335,9 @@ public class CsServices {
     PhysicalLink pl = (PhysicalLink) communication;
 
     // Case 2
-    if (!isValidComputedLink(communication, pl.getSourcePhysicalPort(), pl.getTargetPhysicalPort(), sourceView,
+    return isValidComputedLink(communication, pl.getSourcePhysicalPort(), pl.getTargetPhysicalPort(), sourceView,
         targetView, IMappingNameConstants.LAB_COMPUTED_PHYSICAL_LINK, IMappingNameConstants.PAB_COMPUTED_PHYSICAL_LINK,
-        IFilterNameConstants.FILTER_LAB_HIDE_COMPUTED_PL, IFilterNameConstants.FILTER_PAB_HIDE_COMPUTED_PL)) {
-      return false;
-    }
-
-    return true;
+        IFilterNameConstants.FILTER_LAB_HIDE_COMPUTED_PL, IFilterNameConstants.FILTER_PAB_HIDE_COMPUTED_PL);
   }
 
   public boolean isValidComputedComponentExchangeEdge(EObject communication, DSemanticDecorator sourceView,
@@ -6455,13 +6378,9 @@ public class CsServices {
     }
     
     // Case 5
-    if (!isValidComputedLink(communication, ce.getSourcePort(), ce.getTargetPort(), sourceView, targetView,
+    return isValidComputedLink(communication, ce.getSourcePort(), ce.getTargetPort(), sourceView, targetView,
         IMappingNameConstants.LAB_COMPUTED_COMPONENT_EXCHANGE, IMappingNameConstants.PAB_COMPUTED_COMPONENT_EXCHANGE,
-        IFilterNameConstants.FILTER_LAB_HIDE_COMPUTED_CE, IFilterNameConstants.FILTER_PAB_HIDE_COMPUTED_CE)) {
-      return false;
-    }
-
-    return true;
+        IFilterNameConstants.FILTER_LAB_HIDE_COMPUTED_CE, IFilterNameConstants.FILTER_PAB_HIDE_COMPUTED_CE);
   }
 
   /**
@@ -6499,10 +6418,8 @@ public class CsServices {
       // Check that the part of the Port source is not deployed by the target Part
       DNodeContainer portParentNode = (DNodeContainer) sourceView.eContainer();
       EObject portParentNodeTarget = portParentNode.getTarget();
-      if (portParentNodeTarget instanceof Part) {
-        if (PartExt.isDeploying(targetPart, (Part) portParentNodeTarget)) {
-          return false;
-        }
+      if (portParentNodeTarget instanceof Part && PartExt.isDeploying(targetPart, (Part) portParentNodeTarget)) {
+        return false;
       }
     }
 
@@ -6521,10 +6438,8 @@ public class CsServices {
       // Check that the part of the Port target is not deployed by the source Part
       DNodeContainer portParentNode = (DNodeContainer) targetView.eContainer();
       EObject portParentNodeTarget = portParentNode.getTarget();
-      if (portParentNodeTarget instanceof Part) {
-        if (PartExt.isDeploying(sourcePart, (Part) portParentNodeTarget)) {
-          return false;
-        }
+      if (portParentNodeTarget instanceof Part && PartExt.isDeploying(sourcePart, (Part) portParentNodeTarget)) {
+        return false;
       }
     }
 
@@ -6574,7 +6489,7 @@ public class CsServices {
           if (sourceNode.getTarget() instanceof Port) {
             sourceNode = (DSemanticDecorator) sourceNode.eContainer();
           }
-          List<DDiagramElement> toCheck = new ArrayList<DDiagramElement>();
+          List<DDiagramElement> toCheck = new ArrayList<>();
           toCheck.add((DDiagramElement) sourceElement);
           toCheck.addAll(((DNodeContainer) sourceElement).getOwnedDiagramElements());
           Iterator<DDiagramElement> sourceElementContents = toCheck.iterator();
@@ -6621,7 +6536,7 @@ public class CsServices {
   private boolean isInnerPort(AbstractDNode node, Port port) {
     Iterator<DNode> ownedBorderedNodes = node.getOwnedBorderedNodes().iterator();
     while (ownedBorderedNodes.hasNext()) {
-      DDiagramElement diagramElement = (DDiagramElement) ownedBorderedNodes.next();
+      DDiagramElement diagramElement = ownedBorderedNodes.next();
       if (diagramElement.getTarget() == port && diagramElement.isVisible()) {
         return true;
       }
@@ -6647,7 +6562,7 @@ public class CsServices {
       // Port is on t
       Collection<Part> representingParts = ComponentExt.getRepresentingParts((Component) source.eContainer());
       if (diagramElement != null) {
-        List<EObject> result = new ArrayList<EObject>();
+        List<EObject> result = new ArrayList<>();
         if (diagramElement.isVisible()) {
           result.add(source);
         }
@@ -6664,12 +6579,12 @@ public class CsServices {
     } else if (source instanceof Part) {
       return getVisibleEdgeEnds(context, (Part) source, true);
     }
-    return null;
+    return Collections.emptyList();
   }
 
   private Collection<EObject> getVisibleEdgeEnds(DDiagramContents context, Part mainPart, boolean handleMainPart) {
-    List<EObject> result = new ArrayList<EObject>();
-    List<DeploymentTarget> toHandle = new ArrayList<DeploymentTarget>();
+    List<EObject> result = new ArrayList<>();
+    List<DeploymentTarget> toHandle = new ArrayList<>();
     if (handleMainPart) {
       toHandle.add(mainPart);
       addRelevantParts(context, mainPart, toHandle);
@@ -6693,7 +6608,7 @@ public class CsServices {
       }
     }
     for (DeploymentTarget deploymentTarget : toHandle) {
-      Collection<Part> relevantParts = new ArrayList<Part>();
+      Collection<Part> relevantParts = new ArrayList<>();
       relevantParts.add((Part) deploymentTarget);
       relevantParts.addAll(ComponentExt.getPartAncestors((Part) deploymentTarget));
       EObject firstVisibleAncestor = getFirstVisibleAncestor(context, relevantParts);

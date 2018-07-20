@@ -35,26 +35,21 @@ public class WorkbenchHelper {
   }
 
   public static void exportZipFile(IResource resource, IFile theZipFile) {
-    try {
-
-      final FileOutputStream fos = new FileOutputStream(theZipFile.getLocation().toOSString());
-      final ZipOutputStream zos = new ZipOutputStream(fos);
+    try (final FileOutputStream fos = new FileOutputStream(theZipFile.getLocation().toOSString()); final ZipOutputStream zos = new ZipOutputStream(fos)) {
 
       IResourceVisitor visitor = new IResourceVisitor() {
 
         @Override
         public boolean visit(IResource resource) throws CoreException {
           final byte[] buffer = new byte[1024];
-          try {
+          try (FileInputStream in = new FileInputStream(resource.getLocation().toOSString())) {
             if (resource instanceof IFile) {
               ZipEntry ze = new ZipEntry(resource.getFullPath().toString().substring(1));
               zos.putNextEntry(ze);
-              FileInputStream in = new FileInputStream(resource.getLocation().toOSString());
               int len;
               while ((len = in.read(buffer)) > 0) {
                 zos.write(buffer, 0, len);
               }
-              in.close();
               zos.closeEntry();
             }
           } catch (IOException exception) {
@@ -63,15 +58,8 @@ public class WorkbenchHelper {
           return true;
         }
       };
-
-      try {
-        resource.accept(visitor);
-        //remember close it
-
-      } finally {
-    	fos.close();
-        zos.close();
-      }
+      
+      resource.accept(visitor);
 
     } catch (Exception exception) {
     	logger.log(Level.SEVERE, exception.getMessage(), exception);

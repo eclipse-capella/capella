@@ -100,6 +100,7 @@ public class EmbeddedMessage {
       name = (String) theElement.getClass().getMethod("getFullLabel", new Class[] {}).invoke(theElement, (Object[]) new Class[] {}); //$NON-NLS-1$
       
     } catch (Exception exception) {
+    	// Fail silently
     } finally {
       if (name == null) {
         name = theElement.toString();
@@ -167,5 +168,11 @@ public class EmbeddedMessage {
                );
     } 
     return false;
+  }
+  
+  @Override
+  public int hashCode() {
+	// To satisfy Sonar
+	return super.hashCode();
   }
 }

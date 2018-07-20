@@ -228,7 +228,7 @@ protected static final Logger logger = ReportManagerRegistry.getInstance().subsc
 
     // Finds the first container of trace on top
     EObject currentObject = object;
-    while (object != null) {
+    while (currentObject != null) {
       // Structures can hold traces
       if (object instanceof Structure) {
         container = (Structure) object;

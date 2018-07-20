@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -44,7 +44,7 @@ public class GroupedAdapterFactoryContentProvider extends AdapterFactoryContentP
 
   protected Collection<Notification> notifications = null;
 
-  protected Collection<EObject> toRefresh = new HashSet<EObject>();
+  protected Collection<EObject> toRefresh = new HashSet<>();
 
   /**
    * @param adapterFactory
@@ -94,7 +94,7 @@ public class GroupedAdapterFactoryContentProvider extends AdapterFactoryContentP
     boolean shouldRefresh = true;
 
     synchronized (this) {
-      shouldRefresh = ((notifications != null) && (notifications.size() > 0)) || ((toRefresh != null) && (toRefresh.size() > 0));
+      shouldRefresh = ((notifications != null) && (!notifications.isEmpty())) || ((toRefresh != null) && (toRefresh.isEmpty()));
     }
 
     return shouldRefresh;
@@ -139,9 +139,9 @@ public class GroupedAdapterFactoryContentProvider extends AdapterFactoryContentP
     }
 
     if ((viewer != null) && (viewer.getControl() != null) && !viewer.getControl().isDisposed()) {
-      HashSet<ChangeNotification> duplicateNotifications = new HashSet<ChangeNotification>();
+      HashSet<ChangeNotification> duplicateNotifications = new HashSet<>();
 
-      if ((currentNotifications != null) && (currentNotifications.size() > 0)) {
+      if ((currentNotifications != null) && (!currentNotifications.isEmpty())) {
         viewerRefresh = new ViewerRefresh(viewer);
         for (Notification notification : currentNotifications) {
           ChangeNotification changeNotification = new ChangeNotification(notification);
@@ -152,15 +152,12 @@ public class GroupedAdapterFactoryContentProvider extends AdapterFactoryContentP
         }
 
         duplicateNotifications.clear();
-
-        if (viewerRefresh != null) {
-          viewerRefresh.run();
-          viewerRefresh = null;
-        }
+        viewerRefresh.run();
+        viewerRefresh = null;
         currentNotifications.clear();
       }
 
-      if ((currentRefresh != null) && (currentRefresh.size() > 0)) {
+      if ((currentRefresh != null) && (!currentRefresh.isEmpty())) {
         ((StructuredViewer) viewer).update(currentRefresh.toArray(), null);
         currentRefresh.clear();
       }
@@ -169,7 +166,7 @@ public class GroupedAdapterFactoryContentProvider extends AdapterFactoryContentP
 
   public synchronized void addNotification(Notification notification) {
     if (notifications == null) {
-      notifications = new ArrayList<Notification>();
+      notifications = new ArrayList<>();
     }
     notifications.add(notification);
   }
@@ -179,14 +176,14 @@ public class GroupedAdapterFactoryContentProvider extends AdapterFactoryContentP
    */
   protected synchronized void addNotifications(List<Notification> notifications) {
     if (this.notifications == null) {
-      this.notifications = new ArrayList<Notification>();
+      this.notifications = new ArrayList<>();
     }
     this.notifications.addAll(notifications);
   }
 
   public synchronized void addObject(EObject eObject) {
     if (toRefresh == null) {
-      toRefresh = new HashSet<EObject>();
+      toRefresh = new HashSet<>();
     }
     toRefresh.add(eObject);
   }
@@ -217,16 +214,16 @@ public class GroupedAdapterFactoryContentProvider extends AdapterFactoryContentP
      */
     @Deprecated
     public ChangeNotification(Object notifier, Object feature, Object newValue, int eventType) {
-      _notifierReference = new WeakReference<Object>(notifier);
-      _featureReference = new WeakReference<Object>(feature);
-      _newValueReference = new WeakReference<Object>(newValue);
+      _notifierReference = new WeakReference<>(notifier);
+      _featureReference = new WeakReference<>(feature);
+      _newValueReference = new WeakReference<>(newValue);
       _eventType = eventType;
     }
 
     public ChangeNotification(Notification notification) {
       this(notification.getNotifier(), notification.getFeature(), notification.getNewValue(), notification.getEventType());
       if (notification instanceof ViewerNotification) {
-        _element = new WeakReference<Object>(((ViewerNotification) notification).getElement());
+        _element = new WeakReference<>(((ViewerNotification) notification).getElement());
       }
     }
     

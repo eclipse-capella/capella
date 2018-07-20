@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -117,7 +117,7 @@ public class EcoreUtil2 {
    * @return a not <code>null</code> collection.
    */
   public static Collection<?> getAllContents(Collection<?> elements) {
-    Set<Object> allElements = new HashSet<Object>(elements);
+    Set<Object> allElements = new HashSet<>(elements);
     TreeIterator<EObject> eAllContents = org.eclipse.emf.ecore.util.EcoreUtil.getAllContents(elements, true);
     while (eAllContents.hasNext()) {
       allElements.add(eAllContents.next());
@@ -279,7 +279,7 @@ public class EcoreUtil2 {
    * @return a not <code>null</code> collection.
    */
   public static Collection<EObject> getReferencingElements(final EObject referencedElement, ECrossReferenceAdapter crossReferencer) {
-    HashSet<EObject> referencingElements = new HashSet<EObject>(0);
+    HashSet<EObject> referencingElements = new HashSet<>(0);
     // Search inverses relations for selected model element.
     Collection<Setting> inverseReferences = crossReferencer.getNonNavigableInverseReferences(referencedElement, true);
     // Elements that reference selected model element.
@@ -378,8 +378,8 @@ public class EcoreUtil2 {
         nameString = name.toString();
         isUnique = checkListName(list, nameString, feature, attribute);
         if (!isUnique) {
-          if (nameString.endsWith(Integer.valueOf(i).toString())) {
-            name.delete(name.length() - Integer.valueOf(i).toString().length(), name.length());
+          if (nameString.endsWith(Integer.toString(i))) {
+            name.delete(name.length() - Integer.toString(i).length(), name.length());
           }
           i = i + 1;
           name.append(i);
@@ -404,7 +404,7 @@ public class EcoreUtil2 {
     if ((feature == null) || feature.isMany()) {
       int counter = 0;
 
-      List<EObject> siblings = new ArrayList<EObject>();
+      List<EObject> siblings = new ArrayList<>();
       if (feature != null) {
         siblings.addAll((Collection<EObject>) container.eGet(feature));
       } else {
@@ -413,8 +413,8 @@ public class EcoreUtil2 {
       siblings.remove(object);
 
       // retrieving the naming attribute feature.
-      if ((siblings != null) && !siblings.isEmpty()) {
-        List<String> existingNames = new ArrayList<String>();
+      if (!siblings.isEmpty()) {
+        List<String> existingNames = new ArrayList<>();
         // list existing names.
         if (attribute != null) {
           for (Object sibling : siblings) {
@@ -459,7 +459,7 @@ public class EcoreUtil2 {
     if (null == containerClass) {
       return false;
     }
-    boolean result = isContainnedBy(eObject, new RunnableWithBooleanResult() {
+    return isContainnedBy(eObject, new RunnableWithBooleanResult() {
       /**
        * {@inheritDoc}
        */
@@ -469,7 +469,6 @@ public class EcoreUtil2 {
         setResult(Boolean.valueOf(containerClass.isInstance(container)));
       }
     });
-    return result;
   }
 
   /**
@@ -483,7 +482,7 @@ public class EcoreUtil2 {
     if (null == cls) {
       return false;
     }
-    boolean result = isContainnedBy(elt, new RunnableWithBooleanResult() {
+    return isContainnedBy(elt, new RunnableWithBooleanResult() {
       /**
        * {@inheritDoc}
        */
@@ -493,7 +492,6 @@ public class EcoreUtil2 {
         setResult(Boolean.valueOf(cls.isSuperTypeOf(container.eClass())));
       }
     });
-    return result;
   }
 
   /**
@@ -507,7 +505,7 @@ public class EcoreUtil2 {
     if (null == container) {
       return false;
     }
-    boolean result = isContainnedBy(elt, new RunnableWithBooleanResult() {
+    return isContainnedBy(elt, new RunnableWithBooleanResult() {
       /**
        * {@inheritDoc}
        */
@@ -517,7 +515,6 @@ public class EcoreUtil2 {
         setResult(Boolean.valueOf(container == owner));
       }
     });
-    return result;
   }
 
   /**
@@ -602,7 +599,7 @@ public class EcoreUtil2 {
       return false;
     }
     IFile file = getFile(resource);
-    return (null != file) ? file.isReadOnly() : false;
+    return (null != file) ? file.isReadOnly() : Boolean.FALSE;
   }
 
   /**

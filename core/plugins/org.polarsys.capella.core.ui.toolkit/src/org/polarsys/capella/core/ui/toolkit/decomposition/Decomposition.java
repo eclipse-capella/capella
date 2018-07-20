@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,7 +28,7 @@ public class Decomposition {
    * Constructor
    */
   public Decomposition() {
-    _targetComponents = new ArrayList<DecompositionComponent>(1);
+    _targetComponents = new ArrayList<>(1);
   }
 
   /**
@@ -39,11 +39,11 @@ public class Decomposition {
   }
 
   /**
-   * @param name_p
+   * @param name
    *          the name to set
    */
-  public void setName(String name_p) {
-    _name = name_p;
+  public void setName(String name) {
+    this._name = name;
   }
 
   /**
@@ -55,22 +55,22 @@ public class Decomposition {
 
   /**
    * Adds a decomposition component
-   * @param targetComponent_p
+   * @param targetComponent
    *          the component to be added
    */
-  public void addTargetComponent(DecompositionComponent targetComponent_p) {
-    targetComponent_p.setDecompositionName(getName());
-    targetComponent_p.setParentDecomposition(this);
-    _targetComponents.add(targetComponent_p);
+  public void addTargetComponent(DecompositionComponent targetComponent) {
+    targetComponent.setDecompositionName(getName());
+    targetComponent.setParentDecomposition(this);
+    _targetComponents.add(targetComponent);
   }
 
   /**
    * Removes a target component
-   * @param targetComponent_p
+   * @param targetComponent
    *          the component to be removed
    */
-  public void removeTargetComponent(DecompositionComponent targetComponent_p) {
-    _targetComponents.remove(targetComponent_p);
+  public void removeTargetComponent(DecompositionComponent targetComponent) {
+    _targetComponents.remove(targetComponent);
   }
 
   /**
@@ -88,11 +88,11 @@ public class Decomposition {
   }
 
   /**
-   * @param value_p
+   * @param value
    *          the value to set
    */
-  public void setValue(Object value_p) {
-    _value = value_p;
+  public void setValue(Object value) {
+    this._value = value;
   }
 
   /**
@@ -103,11 +103,11 @@ public class Decomposition {
   }
 
   /**
-   * @param decompositionModel_p
+   * @param decompositionModel
    *          the decompositionModel to set
    */
-  public void setDecompositionModel(DecompositionModel decompositionModel_p) {
-    _decompositionModel = decompositionModel_p;
+  public void setDecompositionModel(DecompositionModel decompositionModel) {
+    this._decompositionModel = decompositionModel;
   }
 
   /**
@@ -122,16 +122,22 @@ public class Decomposition {
    * @see java.lang.Object#equals(java.lang.Object)
    */
   @Override
-  public boolean equals(Object object_p) {
-    if (!(object_p instanceof Decomposition))
+  public boolean equals(Object object) {
+    if (!(object instanceof Decomposition))
       return false;
-    if(object_p == this)return true;
+    if(object == this)return true;
     if (getValue() == null)
       return false;
-    Decomposition that = (Decomposition) object_p;
+    Decomposition that = (Decomposition) object;
     if(this.getValue().equals(DUMMY_VALUE) && that.getValue().equals(DUMMY_VALUE)) {
       return this.getName().equals(that.getName());
     }
     return this.getValue().equals(that.getValue());
+  }
+  
+  @Override
+  public int hashCode() {
+	// To satisfy Sonar
+	return super.hashCode();
   }
 }

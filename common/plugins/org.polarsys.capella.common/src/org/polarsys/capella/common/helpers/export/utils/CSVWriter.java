@@ -40,7 +40,7 @@ public class CSVWriter {
 
 	private boolean _closed = false;
 
-	private final static String DEFAULT_CHARSET = "ISO-8859-1"; //$NON-NLS-1$
+	private static final String DEFAULT_CHARSET = "ISO-8859-1"; //$NON-NLS-1$
 	private static final int ESCAPE_MODE_DOUBLED = 1;
 	private static final int ESCAPE_MODE_BACKSLASH = 2;
 

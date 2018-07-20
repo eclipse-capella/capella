@@ -2169,7 +2169,7 @@ public class InformationServices {
           result = getAllocatedElementName(allocation);
         }
         // Case 4: hide only operation parameter
-        else if (onlyOperationParameterHide) {
+        else {
           AbstractExchangeItem allocatedItem = allocation.getAllocatedItem();
           if (allocatedItem instanceof ExchangeItem) {
             ExchangeItem item = (ExchangeItem) allocatedItem;
@@ -2248,19 +2248,17 @@ public class InformationServices {
       Collection<Property> associationProperties = getAssociationProperties(association);
       for (Property property : associationProperties) {
         AbstractType abstractType = property.getAbstractType();
-        if (null != abstractType) {
-          if (abstractType instanceof Class) {
-            Class cls = (Class) abstractType;
-            if (cls.isIsPrimitive()) {
-              return true;
-            } else if (abstractType instanceof org.polarsys.capella.core.data.information.Collection) {
+        if (abstractType instanceof Class) {
+          Class cls = (Class) abstractType;
+          if (cls.isIsPrimitive()) {
+            return true;
+          } else if (abstractType instanceof org.polarsys.capella.core.data.information.Collection) {
               org.polarsys.capella.core.data.information.Collection collection = (org.polarsys.capella.core.data.information.Collection) abstractType;
               if (collection.isIsPrimitive()) {
                 return true;
               }
             }
-          }
-        }
+         }
       }
     }
     return false;
@@ -2327,7 +2325,6 @@ public class InformationServices {
           result.add(displayedExhagneItem);
         }
       }
-
     }
 
     return result;

@@ -296,13 +296,13 @@ private Collection<FunctionalExchange> computeFunctionalExchanges(){
       }
     }
     
-    if (provider == null) {
+    if (provider == null && requirer != null) {
       for (FunctionOutputPort p : requirer.getFunctionOutputPorts()) {
         result.addAll(p.getOutgoingExchangeItems());
       }
     }
     
-    if (requirer == null){
+    if (requirer == null && provider != null){
       for (FunctionInputPort p : provider.getFunctionInputPorts()) {
         result.addAll(p.getIncomingExchangeItems());
       }

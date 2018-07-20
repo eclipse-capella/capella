@@ -188,8 +188,8 @@ public class CapellaSemanticMapping extends DefaultSemanticMapping {
   /**
    * Return whether the given target can be represented as a deployed component within
    * the given container
-   * @param container_p a potentially null element
-   * @param target_p a potentially null element
+   * @param container a potentially null element
+   * @param target a potentially null element
    */
   private boolean checkDeployment(EObject container, EObject target) {
     boolean allowTypeDeployment = false; // Decision here

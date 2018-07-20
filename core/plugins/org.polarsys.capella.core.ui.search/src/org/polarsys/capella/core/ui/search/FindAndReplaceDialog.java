@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -132,7 +132,7 @@ public class FindAndReplaceDialog extends SelectElementsDialog {
    * @param selection
    * @param treeViewerExpandLevel
    */
-  public FindAndReplaceDialog(Shell shell, SystemEngineering root, HashSet<EObject> modelElementContent, ISelection selection,
+  public FindAndReplaceDialog(Shell shell, SystemEngineering root, Set<EObject> modelElementContent, ISelection selection,
       int treeViewerExpandLevel) {
     this(shell, modelElementContent, treeViewerExpandLevel);
     this.currentSelection = selection;
@@ -268,11 +268,11 @@ public class FindAndReplaceDialog extends SelectElementsDialog {
     SetView<Element> impactedElts = Sets.union(Sets.union(matchingElementsForName, matchingElementsForSummary), matchingElementsForDescription);
 
     // no matching elements
-    if (impactedElts.size() == 0) {
+    if (impactedElts.isEmpty()) {
       MessageDialog.openInformation(getParentShell(), Messages.FindAndReplaceDialog_title, Messages.FindAndReplaceDialog_no_matching);
     }
     // Some elements matches => opens a preview dialog
-    if (impactedElts.size() > 0) {
+    if (!impactedElts.isEmpty()) {
       ImpactAnalysisDialog impactDialog =
           new ImpactAnalysisDialog(new ArrayList<EObject>(impactedElts), Messages.FindAndReplaceDialog_preview, NLS.bind(
               Messages.FindAndReplaceDialog_impacted_find_string, getFindString()));
@@ -334,13 +334,11 @@ public class FindAndReplaceDialog extends SelectElementsDialog {
       @Override
       protected String getName(EObject object) {
         String result = super.getName(object);
-        if ((null == result) || result.isEmpty()) {
-          if (object instanceof DRepresentation) {
-            DRepresentation res = (DRepresentation) object;
-            String repName = res.getName();
-            if (null != repName) {
-              result = repName;
-            }
+        if ((null == result || result.isEmpty()) && object instanceof DRepresentation) {
+          DRepresentation res = (DRepresentation) object;
+          String repName = res.getName();
+          if (null != repName) {
+            result = repName;
           }
         }
         return result;
@@ -394,11 +392,7 @@ public class FindAndReplaceDialog extends SelectElementsDialog {
     if (!ignoreWildCards) {
       return;
     }
-    if (ignoreWildCards) {
-      pattern = Pattern.compile(getFindString(), (ignoreCase ? Pattern.CASE_INSENSITIVE : 0) | Pattern.LITERAL);
-    } else {
-      pattern = Pattern.compile(getFindString(), ignoreCase ? Pattern.CASE_INSENSITIVE : 0);
-    }
+    pattern = Pattern.compile(getFindString(), (ignoreCase ? Pattern.CASE_INSENSITIVE : 0) | Pattern.LITERAL);
   }
 
   /**
@@ -421,8 +415,7 @@ public class FindAndReplaceDialog extends SelectElementsDialog {
    * @return
    */
   public String getFindString() {
-    String findText = header.getFindCombo().getText();
-    return findText;
+    return header.getFindCombo().getText();
   }
 
   /**
@@ -447,9 +440,9 @@ public class FindAndReplaceDialog extends SelectElementsDialog {
     }
     if (wholeExpression) {
       List<String> findExprList = Arrays.asList(getFindString().split(SPACE));
-      List<String> string_pList = Arrays.asList(string.split(SPACE));
+      List<String> stringPList = Arrays.asList(string.split(SPACE));
 
-      return matchExpressionList(string_pList, findExprList, ignoreCase);
+      return matchExpressionList(stringPList, findExprList, ignoreCase);
     }
     return pattern.matcher(string).find();
   }
@@ -465,7 +458,7 @@ public class FindAndReplaceDialog extends SelectElementsDialog {
   }
 
   public static boolean matchExpressionList(List<String> text, List<String> findExpr, boolean ignoreCase) {
-    if ((null == text) | (null == findExpr)) {
+    if ((null == text) || (null == findExpr)) {
       return false;
     }
     int textSize = text.size();
