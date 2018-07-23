@@ -1,12 +1,12 @@
 --- RCPTT testcase ---
 Format-Version: 1.0
 Context-Type: org.eclipse.rcptt.ctx.ecl
-Element-Name: ClearErrorLog
+Element-Name: CapellaClearErrorLog
 Element-Type: context
 Element-Version: 2.0
 Id: _0alKwJ6FEeWcU-ojRg-Rxa
-Runtime-Version: 2.1.0.201606221726
-Save-Time: 10/4/17 5:06 PM
+Runtime-Version: 2.3.0.201806262310
+Save-Time: 7/18/18 10:43 AM
 
 ------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
 Content-Type: text/ecl

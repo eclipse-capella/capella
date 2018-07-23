@@ -750,7 +750,7 @@
               <firstModelOperations xsi:type="tool_1:SetValue" featureName="triggerDescription" valueExpression="aql:arg0"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="Delete StateMode" precondition="aql: not self.makeUnion(diagram.target, diagram.target.ancestors())->includes(element)">
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="Delete StateMode" precondition="aql: not self.makeUnion(self.eContainerOrSelf(diagram::DDiagram).target, self.eContainerOrSelf(diagram::DDiagram).target.ancestors())->includes(element)">
             <element name="element"/>
             <elementView name="view"/>
             <containerView name="containerView"/>
@@ -1543,7 +1543,7 @@
               <firstModelOperations xsi:type="tool_1:SetValue" featureName="triggerDescription" valueExpression="aql:arg0"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="Delete StateMode" precondition="aql: not self.makeUnion(diagram.target, diagram.target.ancestors())->includes(element)">
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="Delete StateMode" precondition="aql: not self.makeUnion(self.eContainerOrSelf(diagram::DDiagram).target, self.eContainerOrSelf(diagram::DDiagram).target.ancestors())->includes(element)">
             <element name="element"/>
             <elementView name="view"/>
             <containerView name="containerView"/>
@@ -3820,7 +3820,7 @@
               <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:arg0"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="Delete_DataType" precondition="aql: not self.makeUnion(diagram.target, diagram.target.ancestors())->includes(element)">
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="Delete_DataType" precondition="aql: not self.makeUnion(self.eContainerOrSelf(diagram::DDiagram).target, self.eContainerOrSelf(diagram::DDiagram).target.ancestors())->includes(element)">
             <element name="element"/>
             <elementView name="view"/>
             <containerView name="containerView"/>
@@ -6279,7 +6279,7 @@
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="delete capella elements" precondition="aql: not self.makeUnion(diagram.target, diagram.target.ancestors())->includes(element)">
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="delete capella elements" precondition="aql: not self.makeUnion(self.eContainerOrSelf(diagram::DDiagram).target, self.eContainerOrSelf(diagram::DDiagram).target.ancestors())->includes(element)">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
@@ -7854,7 +7854,7 @@
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="delete capella elements" precondition="aql: not self.makeUnion(diagram.target, diagram.target.ancestors())->includes(element)">
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="delete capella elements" precondition="aql: not self.makeUnion(self.eContainerOrSelf(diagram::DDiagram).target, self.eContainerOrSelf(diagram::DDiagram).target.ancestors())->includes(element)">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
@@ -9545,7 +9545,7 @@
             </initialOperation>
             <edgeView name="edgeView"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="delete capella elements" precondition="aql: not self.makeUnion(diagram.target, diagram.target.ancestors())->includes(element)">
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="delete capella elements" precondition="aql: not self.makeUnion(self.eContainerOrSelf(diagram::DDiagram).target, self.eContainerOrSelf(diagram::DDiagram).target.ancestors())->includes(element)">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
@@ -11244,7 +11244,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="delete capella elements" precondition="aql: not self.makeUnion(diagram.target, diagram.target.ancestors())->includes(element)">
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="delete capella elements" precondition="aql: not self.makeUnion(self.eContainerOrSelf(diagram::DDiagram).target, self.eContainerOrSelf(diagram::DDiagram).target.ancestors())->includes(element)">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
@@ -12096,7 +12096,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="delete capella elements" precondition="aql: not self.makeUnion(diagram.target, diagram.target.ancestors())->includes(element)">
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="delete capella elements" precondition="aql: not self.makeUnion(self.eContainerOrSelf(diagram::DDiagram).target, self.eContainerOrSelf(diagram::DDiagram).target.ancestors())->includes(element)">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
@@ -13544,7 +13544,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="delete capella elements" precondition="aql: not self.makeUnion(diagram.target, diagram.target.ancestors())->includes(element)">
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="delete capella elements" precondition="aql: not self.makeUnion(self.eContainerOrSelf(diagram::DDiagram).target, self.eContainerOrSelf(diagram::DDiagram).target.ancestors())->includes(element)">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
@@ -14487,7 +14487,7 @@
             </initialOperation>
             <predecessor name="predecessor"/>
           </ownedTools>
-          <ownedTools xsi:type="tool_2:MessageCreationTool" documentation="Creates a new Sequence Message invoking a Interface Exchange Item allocation without return branch between the Source and Target Lifelines representing existing Component/Actor Parts. The kind of these Components/Actors is related to the Architecture. This tool opens a selection wizard to select an available existing Interface Exchange Item allocation or to create a new one to existing/new Interface." name="Sequence Message" precondition="aql:self.allowMessageCreation(preSource,preTarget,false,messageEndBefore.semanticEnd,messageEndAfter.semanticEnd)" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@edgeMappings[name='Basic%20message%20mapping']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/AsyncSequenceMessage.gif">
+          <ownedTools xsi:type="tool_2:MessageCreationTool" documentation="Creates a new Sequence Message invoking a Interface Exchange Item allocation without return branch between the Source and Target Lifelines representing existing Component/Actor Parts. The kind of these Components/Actors is related to the Architecture. This tool opens a selection wizard to select an available existing Interface Exchange Item allocation or to create a new one to existing/new Interface." name="Sequence Message" precondition="aql:self.allowMessageCreation2(preSource, preTarget, false, messageEndBefore, messageEndAfter)" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@edgeMappings[name='Basic%20message%20mapping']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/AsyncSequenceMessage.gif">
             <filters precondition="aql:(self.target.eContainerOrSelf(epbs::EPBSArchitecture)->size() != 0)" elementsToListen="aql:self.target.eContainerOrSelf(interaction::Scenario)">
               <listeners domainClass="interaction.Scenario" featureName="ownedAbstractEnds"/>
             </filters>
@@ -14583,7 +14583,7 @@
             <startingEndPredecessor name="messageEndBefore"/>
             <finishingEndPredecessor name="messageEndAfter"/>
           </ownedTools>
-          <ownedTools xsi:type="tool_2:MessageCreationTool" documentation="Creates a new Sequence Message invoking a Interface Exchange Item allocation with return branch between the Source and Target Lifelines representing existing Component/Actor Parts. The kind of these Components/Actors is related to the Architecture. This tool opens a selection wizard to select an available existing Interface Exchange Item allocation or to create a new one to existing/new Interface." name="Sequence Message with Return Branch" precondition="aql:if messageEndBefore != null and messageEndAfter != null then self.allowMessageCreation(preSource,preTarget,true,messageEndBefore.semanticEnd,messageEndAfter.semanticEnd) else self.allowMessageCreation(preSource,preTarget,true,null,null) endif" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@edgeMappings[name='Basic%20message%20mapping']" extraSourceMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping']/@borderedNodeMappings[name='default%20execution'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping']/@borderedNodeMappings[name='default%20execution']/@borderedNodeMappings[name='Execution']" extraTargetMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping']/@borderedNodeMappings[name='default%20execution']/@borderedNodeMappings[name='Execution'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping']/@borderedNodeMappings[name='default%20execution']">
+          <ownedTools xsi:type="tool_2:MessageCreationTool" documentation="Creates a new Sequence Message invoking a Interface Exchange Item allocation with return branch between the Source and Target Lifelines representing existing Component/Actor Parts. The kind of these Components/Actors is related to the Architecture. This tool opens a selection wizard to select an available existing Interface Exchange Item allocation or to create a new one to existing/new Interface." name="Sequence Message with Return Branch" precondition="aql:self.allowMessageCreation2(preSource, preTarget, false, messageEndBefore, messageEndAfter)" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@edgeMappings[name='Basic%20message%20mapping']" extraSourceMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping']/@borderedNodeMappings[name='default%20execution'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping']/@borderedNodeMappings[name='default%20execution']/@borderedNodeMappings[name='Execution']" extraTargetMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping']/@borderedNodeMappings[name='default%20execution']/@borderedNodeMappings[name='Execution'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping']/@borderedNodeMappings[name='default%20execution']">
             <filters precondition="aql:(self.target.eContainerOrSelf(epbs::EPBSArchitecture)->size() != 0)" elementsToListen="aql:self.target.eContainerOrSelf(interaction::Scenario)">
               <listeners domainClass="interaction.Scenario" featureName="ownedAbstractEnds"/>
             </filters>
@@ -15395,7 +15395,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="delete capella elements IS" precondition="aql: not self.makeUnion(diagram.target, diagram.target.ancestors())->includes(element)">
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="delete capella elements IS" precondition="aql: not self.makeUnion(self.eContainerOrSelf(diagram::DDiagram).target, self.eContainerOrSelf(diagram::DDiagram).target.ancestors())->includes(element)">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
@@ -15426,7 +15426,7 @@
               </firstModelOperations>
             </onEventMovedOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ToolDescription" documentation="Creates or deletes graphical objects corresponding to existing Exchange Contexts. Removing an Exchange Context graphical object does not delete the corresponding Constraint from the model. This tool does not modify the semantic model." name="ExchangeContext" label="Exchange Context" precondition="aql:element->filter(interaction::Scenario) > 0 or element->filter(interaction::SequenceMessage) > 0" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+          <ownedTools xsi:type="tool_1:ToolDescription" documentation="Creates or deletes graphical objects corresponding to existing Exchange Contexts. Removing an Exchange Context graphical object does not delete the corresponding Constraint from the model. This tool does not modify the semantic model." name="ExchangeContext" label="Exchange Context" precondition="aql:element.eAllContents(interaction::Scenario)->size() > 0 or element.eAllContents(interaction::SequenceMessage)->size() > 0" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <element name="element"/>
             <elementView name="elementView">
               <subVariables xsi:type="tool_1:AcceleoVariable" name="diagram" computationExpression="aql:elementView.eContainerOrSelf(diagram::DDiagram)"/>
@@ -16345,7 +16345,7 @@
             </tools>
           </ownedTools>
           <ownedTools xsi:type="tool:ToolGroup" name="FunctionalExchange">
-            <tools xsi:type="tool_2:MessageCreationTool" documentation="Creates a new Sequence Message invoking a Functional Exchange without return branch between the Source and Target Lifelines representing existing Component/Actor Parts. The kind of these Components/Actors is related to the Architecture. This tool opens a selection wizard to select an available existing Functional Exchange or to create a new one between existing/new allocated  Functions.&#xD;&#xA;This tool is masked as soon as a Component Exchange is displayed on the scenario." name="Functional Exchange" precondition="aql:if messageEndBefore != null and messageEndAfter != null then self.allowMessageCreation(preSource,preTarget,true,messageEndBefore.semanticEnd,messageEndAfter.semanticEnd) else self.allowMessageCreation(preSource,preTarget,true,null,null) endif" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@edgeMappings[name='Basic%20message%20mapping%20DF']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/AsyncSequenceMessage.gif">
+            <tools xsi:type="tool_2:MessageCreationTool" documentation="Creates a new Sequence Message invoking a Functional Exchange without return branch between the Source and Target Lifelines representing existing Component/Actor Parts. The kind of these Components/Actors is related to the Architecture. This tool opens a selection wizard to select an available existing Functional Exchange or to create a new one between existing/new allocated  Functions.&#xD;&#xA;This tool is masked as soon as a Component Exchange is displayed on the scenario." name="Functional Exchange" precondition="aql:self.allowMessageCreation2(preSource, preTarget, false, messageEndBefore, messageEndAfter)" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@edgeMappings[name='Basic%20message%20mapping%20DF']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/AsyncSequenceMessage.gif">
               <filters precondition="aql:self.target.eContainerOrSelf(interaction::Scenario).ownedEvents.operation->filter(fa::ComponentExchange)->size() > 0" elementsToListen="aql:self.target.eContainerOrSelf(interaction::Scenario)">
                 <listeners domainClass="interaction.Scenario" featureName="ownedInteractionFragments"/>
               </filters>
@@ -16438,7 +16438,7 @@
               <startingEndPredecessor name="messageEndBefore"/>
               <finishingEndPredecessor name="messageEndAfter"/>
             </tools>
-            <tools xsi:type="tool_2:MessageCreationTool" documentation="Creates a new Sequence Message invoking a Functional Exchange with return branch between the Source and Target Lifelines representing existing Component/Actor Parts. The kind of these Components/Actors is related to the Architecture. This tool opens a selection wizard to select an available existing Functional Exchange or to create a new one between existing/new allocated  Functions.&#xD;&#xA;This tool is masked as soon as a Component Exchange is displayed on the scenario. " name="Functional Exchange with Return Branch" precondition="aql:if messageEndBefore != null and messageEndAfter != null then self.allowMessageCreation(preSource,preTarget,true,messageEndBefore.semanticEnd,messageEndAfter.semanticEnd) else self.allowMessageCreation(preSource,preTarget,true,null,null) endif" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@edgeMappings[name='Basic%20message%20mapping%20DF']" extraSourceMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20DF']/@borderedNodeMappings[name='default%20execution%20DF'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20DF']/@borderedNodeMappings[name='default%20execution%20DF']/@borderedNodeMappings[name='Execution%20DF']" extraTargetMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20DF']/@borderedNodeMappings[name='default%20execution%20DF']/@borderedNodeMappings[name='Execution%20DF'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20DF']/@borderedNodeMappings[name='default%20execution%20DF']">
+            <tools xsi:type="tool_2:MessageCreationTool" documentation="Creates a new Sequence Message invoking a Functional Exchange with return branch between the Source and Target Lifelines representing existing Component/Actor Parts. The kind of these Components/Actors is related to the Architecture. This tool opens a selection wizard to select an available existing Functional Exchange or to create a new one between existing/new allocated  Functions.&#xD;&#xA;This tool is masked as soon as a Component Exchange is displayed on the scenario. " name="Functional Exchange with Return Branch" precondition="aql:self.allowMessageCreation2(preSource, preTarget, false, messageEndBefore, messageEndAfter)" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@edgeMappings[name='Basic%20message%20mapping%20DF']" extraSourceMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20DF']/@borderedNodeMappings[name='default%20execution%20DF'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20DF']/@borderedNodeMappings[name='default%20execution%20DF']/@borderedNodeMappings[name='Execution%20DF']" extraTargetMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20DF']/@borderedNodeMappings[name='default%20execution%20DF']/@borderedNodeMappings[name='Execution%20DF'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20DF']/@borderedNodeMappings[name='default%20execution%20DF']">
               <filters precondition="aql:self.target.eContainerOrSelf(interaction::Scenario).ownedEvents.operation->filter(fa::ComponentExchange)->size() > 0" elementsToListen="aql:self.target.eContainerOrSelf(interaction::Scenario)">
                 <listeners domainClass="interaction.Scenario" featureName="ownedInteractionFragments"/>
               </filters>
@@ -16556,7 +16556,7 @@
             </tools>
           </ownedTools>
           <ownedTools xsi:type="tool:ToolGroup" name="ComponentExchange">
-            <tools xsi:type="tool_2:MessageCreationTool" documentation="Creates a new Sequence Message invoking a Component Exchange without return branch between the Source and Target Lifelines representing existing Component/Actor Parts. The kind of these Components/Actors is related to the Architecture. This tool opens a selection wizard to select an available existing Component Exchange or to create a new one between these Components/Actors.This tool is masked as soon as a Functional Exchange is displayed on the scenario." name="Component Exchange" precondition="aql:if messageEndBefore != null and messageEndAfter != null then self.allowMessageCreation(preSource,preTarget,true,messageEndBefore.semanticEnd,messageEndAfter.semanticEnd) else self.allowMessageCreation(preSource,preTarget,true,null,null) endif" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@edgeMappings[name='Basic%20message%20mapping%20DF']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/AsyncSequenceMessage.gif">
+            <tools xsi:type="tool_2:MessageCreationTool" documentation="Creates a new Sequence Message invoking a Component Exchange without return branch between the Source and Target Lifelines representing existing Component/Actor Parts. The kind of these Components/Actors is related to the Architecture. This tool opens a selection wizard to select an available existing Component Exchange or to create a new one between these Components/Actors.This tool is masked as soon as a Functional Exchange is displayed on the scenario." name="Component Exchange" precondition="aql:self.allowMessageCreation2(preSource, preTarget, false, messageEndBefore, messageEndAfter)" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@edgeMappings[name='Basic%20message%20mapping%20DF']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/AsyncSequenceMessage.gif">
               <filters precondition="aql:self.target.eContainerOrSelf(interaction::Scenario).ownedEvents.operation->filter(fa::FunctionalExchange)->size() > 0" elementsToListen="aql:self.target.eContainerOrSelf(interaction::Scenario)">
                 <listeners domainClass="interaction.Scenario" featureName="ownedInteractionFragments"/>
               </filters>
@@ -16649,7 +16649,7 @@
               <startingEndPredecessor name="messageEndBefore"/>
               <finishingEndPredecessor name="messageEndAfter"/>
             </tools>
-            <tools xsi:type="tool_2:MessageCreationTool" documentation="Creates a new Sequence Message invoking a Component Exchange with return branch between the Source and Target Lifelines representing existing Component/Actor Parts. The kind of these Components/Actors is related to the Architecture. This tool opens a selection wizard to select an available existing Component Exchange or to create a new one between these Components/Actors.This tool is masked as soon as a Functional Exchange is displayed on the scenario." name="Component Exchange with Return Branch" precondition="aql:if messageEndBefore != null and messageEndAfter != null then self.allowMessageCreation(preSource,preTarget,true,messageEndBefore.semanticEnd,messageEndAfter.semanticEnd) else self.allowMessageCreation(preSource,preTarget,true,null,null) endif" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@edgeMappings[name='Basic%20message%20mapping%20DF']" extraSourceMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20DF']/@borderedNodeMappings[name='default%20execution%20DF'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20DF']/@borderedNodeMappings[name='default%20execution%20DF']/@borderedNodeMappings[name='Execution%20DF']" extraTargetMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20DF']/@borderedNodeMappings[name='default%20execution%20DF']/@borderedNodeMappings[name='Execution%20DF'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20DF']/@borderedNodeMappings[name='default%20execution%20DF']">
+            <tools xsi:type="tool_2:MessageCreationTool" documentation="Creates a new Sequence Message invoking a Component Exchange with return branch between the Source and Target Lifelines representing existing Component/Actor Parts. The kind of these Components/Actors is related to the Architecture. This tool opens a selection wizard to select an available existing Component Exchange or to create a new one between these Components/Actors.This tool is masked as soon as a Functional Exchange is displayed on the scenario." name="Component Exchange with Return Branch" precondition="aql:self.allowMessageCreation2(preSource, preTarget, false, messageEndBefore, messageEndAfter)" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@edgeMappings[name='Basic%20message%20mapping%20DF']" extraSourceMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20DF']/@borderedNodeMappings[name='default%20execution%20DF'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20DF']/@borderedNodeMappings[name='default%20execution%20DF']/@borderedNodeMappings[name='Execution%20DF']" extraTargetMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20DF']/@borderedNodeMappings[name='default%20execution%20DF']/@borderedNodeMappings[name='Execution%20DF'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20DF']/@borderedNodeMappings[name='default%20execution%20DF']">
               <filters precondition="aql:self.target.eContainerOrSelf(interaction::Scenario).ownedEvents.operation->filter(fa::FunctionalExchange)->size() > 0" elementsToListen="aql:self.target.eContainerOrSelf(interaction::Scenario)">
                 <listeners domainClass="interaction.Scenario" featureName="ownedInteractionFragments"/>
               </filters>
@@ -17158,7 +17158,7 @@
               </initialOperation>
             </tools>
           </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="delete capella elements DF" precondition="aql: not self.makeUnion(diagram.target, diagram.target.ancestors())->includes(element)">
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="delete capella elements DF" precondition="aql: not self.makeUnion(self.eContainerOrSelf(diagram::DDiagram).target, self.eContainerOrSelf(diagram::DDiagram).target.ancestors())->includes(element)">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
@@ -18070,7 +18070,7 @@
             </initialOperation>
             <predecessor name="predecessor"/>
           </ownedTools>
-          <ownedTools xsi:type="tool_2:MessageCreationTool" documentation="Creates a new Sequence Message invoking a  Functional Exchange with a return branch between the Source and Target Lifelines. This tool opens a selection wizard to select an available existing Functional Exchange or to create a new one." name="Functional Exchange with return branch" precondition="aql:if messageEndBefore != null and messageEndAfter != null then self.allowMessageCreation(preSource,preTarget,true,messageEndBefore.semanticEnd,messageEndAfter.semanticEnd) else self.allowMessageCreation(preSource,preTarget,true,null,null) endif" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@edgeMappings[name='Basic%20message%20mapping%20FS']" extraSourceMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20FS']/@borderedNodeMappings[name='default%20execution%20FS'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20FS']/@borderedNodeMappings[name='default%20execution%20FS']/@borderedNodeMappings[name='Execution%20FS']" extraTargetMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20FS']/@borderedNodeMappings[name='default%20execution%20FS']/@borderedNodeMappings[name='Execution%20FS'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20FS']/@borderedNodeMappings[name='default%20execution%20FS']">
+          <ownedTools xsi:type="tool_2:MessageCreationTool" documentation="Creates a new Sequence Message invoking a  Functional Exchange with a return branch between the Source and Target Lifelines. This tool opens a selection wizard to select an available existing Functional Exchange or to create a new one." name="Functional Exchange with return branch" precondition="aql:self.allowMessageCreation2(preSource, preTarget, false, messageEndBefore, messageEndAfter)" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@edgeMappings[name='Basic%20message%20mapping%20FS']" extraSourceMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20FS']/@borderedNodeMappings[name='default%20execution%20FS'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20FS']/@borderedNodeMappings[name='default%20execution%20FS']/@borderedNodeMappings[name='Execution%20FS']" extraTargetMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20FS']/@borderedNodeMappings[name='default%20execution%20FS']/@borderedNodeMappings[name='Execution%20FS'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20FS']/@borderedNodeMappings[name='default%20execution%20FS']">
             <sourceVariable name="source">
               <subVariables xsi:type="tool_1:AcceleoVariable" name="sourceIR" computationExpression="aql:if (self->filter(interaction::Execution)->size() > 0) then self.covered else self endif"/>
             </sourceVariable>
@@ -18185,7 +18185,7 @@
             <startingEndPredecessor name="messageEndBefore"/>
             <finishingEndPredecessor name="messageEndAfter"/>
           </ownedTools>
-          <ownedTools xsi:type="tool_2:MessageCreationTool" documentation="Creates a new Sequence Message invoking a  Functional Exchange without return branch between the Source and Target Lifelines. This tool opens a selection wizard to select an available existing Functional Exchange or to create a new one.&#xD;&#xA;" name="Functional Exchange" precondition="aql:if messageEndBefore != null and messageEndAfter != null then self.allowMessageCreation(preSource,preTarget,true,messageEndBefore.semanticEnd,messageEndAfter.semanticEnd) else self.allowMessageCreation(preSource,preTarget,true,null,null) endif" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@edgeMappings[name='Basic%20message%20mapping%20FS']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/AsyncSequenceMessage.gif">
+          <ownedTools xsi:type="tool_2:MessageCreationTool" documentation="Creates a new Sequence Message invoking a  Functional Exchange without return branch between the Source and Target Lifelines. This tool opens a selection wizard to select an available existing Functional Exchange or to create a new one.&#xD;&#xA;" name="Functional Exchange" precondition="aql:self.allowMessageCreation2(preSource, preTarget, false, messageEndBefore, messageEndAfter)" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@edgeMappings[name='Basic%20message%20mapping%20FS']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/AsyncSequenceMessage.gif">
             <sourceVariable name="source">
               <subVariables xsi:type="tool_1:AcceleoVariable" name="sourceIR" computationExpression="aql:if (self->filter(interaction::Execution)->size() > 0) then self.covered else self endif"/>
             </sourceVariable>
@@ -18277,7 +18277,7 @@
             <startingEndPredecessor name="messageEndBefore"/>
             <finishingEndPredecessor name="messageEndAfter"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="delete capella elements" precondition="aql: not self.makeUnion(diagram.target, diagram.target.ancestors())->includes(element)">
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="delete capella elements" precondition="aql: not self.makeUnion(self.eContainerOrSelf(diagram::DDiagram).target, self.eContainerOrSelf(diagram::DDiagram).target.ancestors())->includes(element)">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>

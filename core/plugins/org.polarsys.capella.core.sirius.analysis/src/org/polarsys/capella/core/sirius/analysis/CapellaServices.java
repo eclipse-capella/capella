@@ -232,12 +232,9 @@ public class CapellaServices {
 		return result;
 	}
 	
-	@SuppressWarnings("rawtypes")
 	/** used by aql queries */
 	public Object void2Null(EObject eObject, Object object) {
-		if (object instanceof Collection && ((Collection)object).size() == 0)
-			return null;
-		else if (object instanceof Set && ((Set)object).size() == 0)
+		if (object instanceof Collection && ((Collection<?>)object).isEmpty())
 			return null;
 		return object;
 	}

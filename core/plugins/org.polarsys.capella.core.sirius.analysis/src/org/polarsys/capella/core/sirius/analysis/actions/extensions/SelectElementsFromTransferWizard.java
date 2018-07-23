@@ -11,6 +11,7 @@
 package org.polarsys.capella.core.sirius.analysis.actions.extensions;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -86,7 +87,7 @@ public class SelectElementsFromTransferWizard extends AbstractExternalJavaAction
     handleTransferDialogInputs(initialSelection, dialog, availableElements, handleContext(context));
     // I can't think of a better way to handle the cancel case since Acceleo does not
     // distinguish the null value from an empty collection
-    Object result = (Window.OK == dialog.open()) ? dialog.getResult() : WIZARD_CANCELED;
+    Object result = (Window.OK == dialog.open()) ? Arrays.asList(dialog.getResult()) : WIZARD_CANCELED;
     InterpreterUtil.getInterpreter(context).setVariable(resultVariable, result);
   }
 

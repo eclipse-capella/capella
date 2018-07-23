@@ -484,6 +484,19 @@ public class SequenceDiagramServices {
     }
     return true;
   }
+  
+  // for acceleo2aql wrapper
+  public static boolean allowMessageCreation2(EObject current, EObject preSource, EObject preTarget, boolean withReturn, EObject eventEndBefore, EObject eventEndAfter) {
+    EObject preMessageEndBefore = null;
+    EventEnd eventEndBefore_ = (EventEnd) eventEndBefore;
+    if (eventEndBefore_ != null)
+      preMessageEndBefore = eventEndBefore_.getSemanticEnd();
+    EObject preMessageEndAfter = null;
+    EventEnd eventEndAfter_ = (EventEnd) eventEndAfter;
+    if (eventEndAfter_ != null)
+      preMessageEndAfter = eventEndAfter_.getSemanticEnd();  
+    return allowMessageCreation(current, preSource, preTarget, withReturn, preMessageEndBefore, preMessageEndAfter);
+  } 
 
   public static boolean allowMessageCreation(EObject current, EObject preSource, EObject preTarget, boolean withReturn,
       EObject endBefore, EObject endAfter) {
