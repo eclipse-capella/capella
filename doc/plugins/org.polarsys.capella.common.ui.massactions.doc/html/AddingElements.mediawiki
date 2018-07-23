@@ -1,0 +1,19 @@
+= Adding Elements =
+In order to populate your view with elements you can either drag and drop the selection into the Mass Editing or Mass Visualization view (the default Kitalpha behaviour) or use the '''Send to Mass Editing''' and the '''Send to Mass Visualization'''  contextual menu option (the Capella customization).  
+
+Note: Mass Editing can generally be applied to any type of model element that can be edited.
+
+== Drag and dropping ==
+You can drag and drop any individual element or a selection of elements into any of the Mass Editing or Mass Visualization view.
+Any view that contains model elements is a valid source for the selection, this includes but is not limited to the '''Project Explorer''', '''Semantic Browser''' and the '''Sirius Interpreter'''.
+
+[[Image:img/dragAndDrop.png|thumb|none|600px]]
+
+== Send to Mass Editing/Mass Visualization view==
+By opening the contextual menu for either an individual element or a selection of elements you have the choice to send it to the Mass Editing or the Mass Visualization view. This works for '''Project Explorer''' and for any '''Diagram element''' as illustrated in the screenshots below.
+
+[[Image:img/sendToProjectExplorer.png|thumb|none|500px]]
+
+[[Image:img/sendToDiagram.png|thumb|none|500px]]
+
+For consulting the editing and visualization capabilities for your newly added items please refer to the [[../help/topic/org.polarsys.kitalpha.massactions.doc/html/userManual/massEditing/EditingBehaviorAndInteractions.html?cp=8_2_0_3_0|Kitalpha documentation > Editing Behavior and Interactions]] section and the [[../help/topic/org.polarsys.kitalpha.massactions.doc/html/userManual/massVisualization/VisualizationBehaviorAndInteractions.html?cp=8_2_0_4_0|Kitalpha documentation > Visualization Behavior and Interactions]].
