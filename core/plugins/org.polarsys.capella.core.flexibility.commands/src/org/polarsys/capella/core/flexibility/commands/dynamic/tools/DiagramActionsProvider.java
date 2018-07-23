@@ -662,26 +662,26 @@ public class DiagramActionsProvider implements IActionsProvider {
       boolean hasProceed = false;
       for (EObject object : getSelectedEObjects()) {
 
-        if (true) {
+ //       if (true) {
           return;
-        }
-        if (object instanceof DDiagram) {
-          if (process((DDiagram) object)) {
-            hasProceed = true;
-          }
-
-        } else if (object instanceof SystemEngineering) {
-          Session session = SessionManager.INSTANCE.getSession(object);
-          if (session != null) {
-            for (DRepresentation representation : DialectManager.INSTANCE.getAllRepresentations(session)) {
-              if (representation instanceof DDiagram) {
-                if (process((DDiagram) representation)) {
-                  hasProceed = true;
-                }
-              }
-            }
-          }
-        }
+//        }
+//        if (object instanceof DDiagram) {
+//          if (process((DDiagram) object)) {
+//            hasProceed = true;
+//          }
+//
+//        } else if (object instanceof SystemEngineering) {
+//          Session session = SessionManager.INSTANCE.getSession(object);
+//          if (session != null) {
+//            for (DRepresentation representation : DialectManager.INSTANCE.getAllRepresentations(session)) {
+//              if (representation instanceof DDiagram) {
+//                if (process((DDiagram) representation)) {
+//                  hasProceed = true;
+//                }
+//              }
+//            }
+//          }
+//        }
       }
 
       if (!hasProceed) {

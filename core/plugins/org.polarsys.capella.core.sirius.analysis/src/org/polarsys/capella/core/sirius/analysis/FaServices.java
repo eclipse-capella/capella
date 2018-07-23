@@ -2453,23 +2453,15 @@ public class FaServices {
   public HashMapSet<ExchangeCategory, AbstractFunction> getAvailableCategoriesAndFunctionsToInsertInDataFlowBlank(
       AbstractDNode functionView, DDiagramContents content) {
 
-    HashMapSet<ExchangeCategory, AbstractFunction> returnedMap = new HashMapSet<ExchangeCategory, AbstractFunction>();
-    List<DNodeContainer> functionContainersInDiagram = new ArrayList<DNodeContainer>();
+    HashMapSet<ExchangeCategory, AbstractFunction> returnedMap = new HashMapSet<>();
+    List<DNodeContainer> functionContainersInDiagram = new ArrayList<>();
 
-    for (DDiagramElement element : DiagramServices.getDiagramServices().getDiagramElements(content.getDDiagram())) { // TODO
-      // We
-      // need
-      // to
-      // update
-      // this
-      // using
-      // DDiagramContent, but it must be
-      // consistent with all added views while
-      // S/H
+    for (DDiagramElement element : DiagramServices.getDiagramServices().getDiagramElements(content.getDDiagram())) { 
+    	// TODO We need to update this using DDiagramContent, but it must be consistent with all added views while S/H
       if (element instanceof AbstractDNode) {
         AbstractDNode aContainer = (AbstractDNode) element;
-        if ((aContainer.getTarget() != null) && (aContainer.getTarget() instanceof AbstractFunction)
-            && (aContainer instanceof DNodeContainer)) {
+        if (aContainer.getTarget() instanceof AbstractFunction
+            && aContainer instanceof DNodeContainer) {
           functionContainersInDiagram.add((DNodeContainer) aContainer);
         }
       }

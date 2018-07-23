@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -58,7 +58,7 @@ public class InheritanceConstraintForExchangeItemElement extends AbstractValidat
 			}
     }
     // check information
-    if (ei1 != null && ei2 != null) {
+    if (ei1 != null) {
     	if (t2 != null && !(t2 instanceof GeneralizableElement) &&  eie2.getKind() == ElementKind.TYPE) {
     		return ctx.createFailureStatus(
     				CapellaElementExt.getCapellaExplorerLabel(ei2), 
@@ -87,7 +87,7 @@ public class InheritanceConstraintForExchangeItemElement extends AbstractValidat
 		List<GeneralizableElement> genElts = typeLeaf.getSuper();
 		boolean res = genElts.contains(element);
 		for (int i = 0; !res && i < genElts.size(); i++) {
-			res = res || isInSuperType(element, genElts.get(i));
+			res =  isInSuperType(element, genElts.get(i));
 		}
 		return res;
 	}

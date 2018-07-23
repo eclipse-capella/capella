@@ -568,7 +568,7 @@ public class ScenarioService {
       fe = (FunctionalExchange) op;
     }
     StringBuilder result = new StringBuilder();
-    List<? extends AbstractExchangeItem> selectEIList = firstNonEmpty(eiOnMessage, fe.getExchangedItems());
+    List<? extends AbstractExchangeItem> selectEIList = firstNonEmpty(eiOnMessage, fe != null ? fe.getExchangedItems() : Collections.emptyList());
 
     result.append(getSafeName(fe));
 

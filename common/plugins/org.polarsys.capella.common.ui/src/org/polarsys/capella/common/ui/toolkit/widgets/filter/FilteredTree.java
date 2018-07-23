@@ -863,7 +863,7 @@ public class FilteredTree extends Composite {
       boolean initial = (initialText != null) && initialText.equals(filterText);
       if (initial) {
         filter.setPattern(null);
-      } else if (filterText != null) {
+      } else {
         filter.setPattern(filterText);
       }
 

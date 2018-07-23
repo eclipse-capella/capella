@@ -265,8 +265,6 @@ public class CsServices {
       if (diagram instanceof DDiagram) {
         // Disable initialization on non-empty diagram
 
-        if (diagram instanceof DDiagram) {
-
           if (DiagramHelper.getService().isA((DDiagram) diagram,
               IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
             if (((DDiagram) diagram).getOwnedDiagramElements().size() > 1) {
@@ -283,8 +281,6 @@ public class CsServices {
               return true;
             }
           }
-
-        }
       }
       return false;
     }
