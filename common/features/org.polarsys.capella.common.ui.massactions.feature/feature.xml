@@ -27,6 +27,10 @@
       [Enter License Description here.]
    </license>
 
+   <requires>
+      <import feature="org.polarsys.kitalpha.massactions.feature"/>
+   </requires>
+
    <plugin
          id="org.polarsys.capella.common.ui.massactions"
          download-size="0"

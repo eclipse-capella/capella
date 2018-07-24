@@ -51,7 +51,9 @@ location kitalpha-runtime-core-master "https://ci.polarsys.org/kitalpha/job/Kita
 	org.polarsys.kitalpha.common.feature.feature.group lazy
 	org.polarsys.kitalpha.model.common.commands.feature.feature.group lazy
 	org.polarsys.kitalpha.model.common.scrutiny.feature.feature.group lazy
+	org.polarsys.kitalpha.richtext.widget.feature.feature.group lazy
 	org.polarsys.kitalpha.richtext.widget.feature.source.feature.group lazy
+	org.polarsys.kitalpha.richtext.widget.ext.feature.feature.group lazy
 	org.polarsys.kitalpha.richtext.widget.ext.feature.source.feature.group lazy
 	org.polarsys.kitalpha.massactions.feature.feature.group lazy
 	org.polarsys.kitalpha.massactions.feature.source.feature.group lazy
@@ -70,9 +72,6 @@ location kitalpha-runtime-master "https://ci.polarsys.org/kitalpha/job/Kitalpha_
 	org.polarsys.kitalpha.report.feature.feature.group lazy
 	org.polarsys.kitalpha.report.ui.feature.feature.group lazy
 	org.polarsys.kitalpha.transposer.feature.feature.group lazy
-	org.polarsys.kitalpha.richtext.widget.doc.feature.feature.group lazy
-	org.polarsys.kitalpha.richtext.widget.feature.feature.group lazy
-	org.polarsys.kitalpha.richtext.widget.ext.feature.feature.group lazy
 	org.polarsys.kitalpha.doc.feature.feature.group lazy
 }
 
