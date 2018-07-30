@@ -693,7 +693,148 @@
         </toolSections>
       </layers>
     </ownedRepresentationExtensions>
-    <ownedRepresentationExtensions xsi:type="description_2:DiagramExtensionDescription" name="MS Style Customisations" viewpointURI="viewpoint:/org.polarsys.capella.core.sirius.analysis/((Logical Architecture)|(System Analysis)|(Physical Architecture)|(Common)).*" representationName="(.*Architecture Blank|Contextual Component (External|Detailed) Interfaces)">
+    <ownedRepresentationExtensions xsi:type="description_2:DiagramExtensionDescription" name="LADFBConfigurations" viewpointURI="viewpoint:/org.polarsys.capella.core.sirius.analysis/Logical Architecture" representationName="Logical Data Flow Blank">
+      <metamodel href="../../org.polarsys.capella.vp.ms/models/ms.ecore#/"/>
+      <metamodel href="http://www.polarsys.org/capella/core/cs/1.2.0#/"/>
+      <layers name="LADFB_Layer_Configuration" label="Configurations">
+        <nodeMappings name="LADFB_Layer_ConfigurationNode" createElements="false" domainClass="ms.CSConfiguration">
+          <style xsi:type="style:LozengeNodeDescription" showIcon="false" sizeComputationExpression="10" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+          </style>
+        </nodeMappings>
+        <toolSections name="LADFB_Layer_Configuration_Tool_Configuration" label="Configurations">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="LADFB_Layer_Configuration_Tool_Configuration_CreateConfiguration" label="Configuration" precondition="service:containerView.isDiagram" nodeMappings="//@ownedViewpoints[name='ms']/@ownedRepresentationExtensions[name='LADFBConfigurations']/@layers[name='LADFB_Layer_Configuration']/@nodeMappings[name='LADFB_Layer_ConfigurationNode']" iconPath="/ms.design/images/Configuration.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:container.createConfiguration">
+                <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='ms']/@ownedRepresentationExtensions[name='LADFBConfigurations']/@layers[name='LADFB_Layer_Configuration']/@nodeMappings[name='LADFB_Layer_ConfigurationNode']" containerViewExpression="var:diagram"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ToolDescription" name="LADFB_Layer_Configuration_Tool_Configuration_Configuration_Selection" label="Configuration Selection" precondition="service:elementView.isDiagram">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:ExternalJavaAction" name="LADFB_Layer_Configuration_Tool_Configuraton_Selection" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
+                  <parameters name="context" value="var:elementView"/>
+                  <parameters name="scope" value="service:elementView.getAllBlockConfigurations"/>
+                  <parameters name="initialSelection" value="service:elementView.getSelectedConfigurations"/>
+                  <parameters name="resultVariable" value="selection"/>
+                  <parameters name="wizardMessage" value="select Configuration to show their avalaible Functions"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% ! ($selection == &quot;WIZARD_CANCELED&quot;) %>">
+                  <subModelOperations xsi:type="tool:For" expression="&lt;%$elementView.getNotSelectedConfigurations($selection)%>" iteratorName="notSelectedConfiguration">
+                    <subModelOperations xsi:type="tool:DeleteView"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:For" expression="var:selection" iteratorName="selectedConfiguration">
+                    <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='ms']/@ownedRepresentationExtensions[name='LADFBConfigurations']/@layers[name='LADFB_Layer_Configuration']/@nodeMappings[name='LADFB_Layer_ConfigurationNode']" containerViewExpression="var:diagram" variableName="createdViewConfiguration"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </layers>
+    </ownedRepresentationExtensions>
+    <ownedRepresentationExtensions xsi:type="description_2:DiagramExtensionDescription" name="SADFBConfigurations" viewpointURI="viewpoint:/org.polarsys.capella.core.sirius.analysis/System Analysis" representationName="System Data Flow Blank">
+      <metamodel href="../../org.polarsys.capella.vp.ms/models/ms.ecore#/"/>
+      <metamodel href="http://www.polarsys.org/capella/core/cs/1.2.0#/"/>
+      <layers name="SADFB_Layer_Configuration" label="Configurations">
+        <nodeMappings name="SADFB_Layer_ConfigurationNode" createElements="false" domainClass="ms.CSConfiguration">
+          <style xsi:type="style:LozengeNodeDescription" showIcon="false" sizeComputationExpression="10" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+          </style>
+        </nodeMappings>
+        <toolSections name="SADFB_Layer_Configuration_Tool_Configuration" label="Configurations">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="SADFB_Layer_Configuration_Tool_Configuration_CreateConfiguration" label="Configuration" precondition="service:containerView.isDiagram" nodeMappings="//@ownedViewpoints[name='ms']/@ownedRepresentationExtensions[name='SADFBConfigurations']/@layers[name='SADFB_Layer_Configuration']/@nodeMappings[name='SADFB_Layer_ConfigurationNode']" iconPath="/ms.design/images/Configuration.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:container.createConfiguration">
+                <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='ms']/@ownedRepresentationExtensions[name='SADFBConfigurations']/@layers[name='SADFB_Layer_Configuration']/@nodeMappings[name='SADFB_Layer_ConfigurationNode']" containerViewExpression="var:diagram"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ToolDescription" name="SADFB_Layer_Configuration_Tool_Configuration_Configuration_Selection" label="Configuration Selection" precondition="service:elementView.isDiagram">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:ExternalJavaAction" name="SADFB_Layer_Configuration_Tool_Configuraton_Selection" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
+                  <parameters name="context" value="var:elementView"/>
+                  <parameters name="scope" value="service:elementView.getAllBlockConfigurations"/>
+                  <parameters name="initialSelection" value="service:elementView.getSelectedConfigurations"/>
+                  <parameters name="resultVariable" value="selection"/>
+                  <parameters name="wizardMessage" value="select Configuration to show their avalaible Functions"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% ! ($selection == &quot;WIZARD_CANCELED&quot;) %>">
+                  <subModelOperations xsi:type="tool:For" expression="&lt;%$elementView.getNotSelectedConfigurations($selection)%>" iteratorName="notSelectedConfiguration">
+                    <subModelOperations xsi:type="tool:DeleteView"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:For" expression="var:selection" iteratorName="selectedConfiguration">
+                    <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='ms']/@ownedRepresentationExtensions[name='SADFBConfigurations']/@layers[name='SADFB_Layer_Configuration']/@nodeMappings[name='SADFB_Layer_ConfigurationNode']" containerViewExpression="var:diagram" variableName="createdViewConfiguration"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </layers>
+    </ownedRepresentationExtensions>
+    <ownedRepresentationExtensions xsi:type="description_2:DiagramExtensionDescription" name="PADFBConfigurations" viewpointURI="viewpoint:/org.polarsys.capella.core.sirius.analysis/Physical Architecture" representationName="Physical Data Flow Blank">
+      <metamodel href="../../org.polarsys.capella.vp.ms/models/ms.ecore#/"/>
+      <metamodel href="http://www.polarsys.org/capella/core/cs/1.2.0#/"/>
+      <layers name="PADFB_Layer_Configuration" label="Configurations">
+        <nodeMappings name="PADFB_Layer_ConfigurationNode" createElements="false" domainClass="ms.CSConfiguration">
+          <style xsi:type="style:LozengeNodeDescription" showIcon="false" sizeComputationExpression="10" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+          </style>
+        </nodeMappings>
+        <toolSections name="PADFB_Layer_Configuration_Tool_Configuration" label="Configurations">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="PADFB_Layer_Configuration_Tool_Configuration_CreateConfiguration" label="Configuration" precondition="service:containerView.isDiagram" nodeMappings="//@ownedViewpoints[name='ms']/@ownedRepresentationExtensions[name='PADFBConfigurations']/@layers[name='PADFB_Layer_Configuration']/@nodeMappings[name='PADFB_Layer_ConfigurationNode']" iconPath="/ms.design/images/Configuration.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:container.createConfiguration">
+                <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='ms']/@ownedRepresentationExtensions[name='PADFBConfigurations']/@layers[name='PADFB_Layer_Configuration']/@nodeMappings[name='PADFB_Layer_ConfigurationNode']" containerViewExpression="var:diagram"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ToolDescription" name="PADFB_Layer_Configuration_Tool_Configuration_Configuration_Selection" label="Configuration Selection" precondition="service:elementView.isDiagram">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:ExternalJavaAction" name="PADFB_Layer_Configuration_Tool_Configuraton_Selection" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
+                  <parameters name="context" value="var:elementView"/>
+                  <parameters name="scope" value="service:elementView.getAllBlockConfigurations"/>
+                  <parameters name="initialSelection" value="service:elementView.getSelectedConfigurations"/>
+                  <parameters name="resultVariable" value="selection"/>
+                  <parameters name="wizardMessage" value="select Configuration to show their avalaible Functions"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% ! ($selection == &quot;WIZARD_CANCELED&quot;) %>">
+                  <subModelOperations xsi:type="tool:For" expression="&lt;%$elementView.getNotSelectedConfigurations($selection)%>" iteratorName="notSelectedConfiguration">
+                    <subModelOperations xsi:type="tool:DeleteView"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:For" expression="var:selection" iteratorName="selectedConfiguration">
+                    <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='ms']/@ownedRepresentationExtensions[name='PADFBConfigurations']/@layers[name='PADFB_Layer_Configuration']/@nodeMappings[name='PADFB_Layer_ConfigurationNode']" containerViewExpression="var:diagram" variableName="createdViewConfiguration"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </layers>
+    </ownedRepresentationExtensions>
+    <ownedRepresentationExtensions xsi:type="description_2:DiagramExtensionDescription" name="MS Style Customisations" viewpointURI="viewpoint:/org.polarsys.capella.core.sirius.analysis/((Logical Architecture)|(System Analysis)|(Physical Architecture)|(Common)).*" representationName="(.*Architecture Blank|Contextual Component (External|Detailed) Interfaces|.* Data Flow Blank)">
       <layers name="MS_Style_Customisations_Layer" optional="false">
         <decorationDescriptionsSet>
           <decorationDescriptions xsi:type="description:SemanticBasedDecoration" name="DisabledPort" position="CENTER" preconditionExpression="service:isShowDisabledPortOverlay(view)" imageExpression="/ms.design/images/TransparentPort.png" domainClass="Port"/>

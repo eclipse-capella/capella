@@ -50,12 +50,15 @@ import org.polarsys.capella.core.data.capellacommon.AbstractState;
 import org.polarsys.capella.core.data.capellacommon.FinalState;
 import org.polarsys.capella.core.data.capellacommon.Mode;
 import org.polarsys.capella.core.data.capellacommon.State;
+import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
+import org.polarsys.capella.core.data.cs.ComponentArchitecture;
 import org.polarsys.capella.core.data.cs.Interface;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.cs.PhysicalLink;
 import org.polarsys.capella.core.data.cs.PhysicalPort;
 import org.polarsys.capella.core.data.ctx.System;
+import org.polarsys.capella.core.data.ctx.SystemAnalysis;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.data.fa.ComponentPort;
@@ -63,9 +66,13 @@ import org.polarsys.capella.core.data.fa.FunctionInputPort;
 import org.polarsys.capella.core.data.fa.FunctionOutputPort;
 import org.polarsys.capella.core.data.fa.FunctionalChain;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
+import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.la.LogicalComponent;
+import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
+import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.CapellaElementExt;
+import org.polarsys.capella.core.model.helpers.ComponentArchitectureExt;
 import org.polarsys.capella.core.model.helpers.ComponentExchangeExt;
 import org.polarsys.capella.vp.ms.BooleanOperation;
 import org.polarsys.capella.vp.ms.CSConfiguration;
@@ -500,6 +507,23 @@ public class CsConfigurationServices {
     return result;
   }
 
+  public Collection<CSConfiguration> getAllBlockConfigurations(DSemanticDecorator decorator){
+    Collection<CSConfiguration> result = new ArrayList<CSConfiguration>();
+    EObject target = decorator.getTarget();
+    BlockArchitecture ba = BlockArchitectureExt.getRootBlockArchitecture(target);
+    if (ba instanceof ComponentArchitecture) {
+      ComponentArchitecture ca = (ComponentArchitecture) ba;
+      for (Component c : ComponentArchitectureExt.getComponentsFromComponentArchitecture(ca)) { 
+        result.addAll(getOwnedConfigurations(c));
+      }
+    }
+    return result;
+  }
+  
+  public boolean isDiagram(EObject e) {
+    return e instanceof DSemanticDiagram;
+  }
+
   /*
    * The selectable configurations on a part are the configurations of the parts component.
    */
@@ -776,6 +800,15 @@ public class CsConfigurationServices {
       cmp = (Component) context;
     } else if (context instanceof Part && ((Part) context).getType() instanceof Component) {
       cmp = (Component) ((Part) context).getType();
+    } else {
+      BlockArchitecture ba = BlockArchitectureExt.getRootBlockArchitecture(context);
+      if (ba instanceof SystemAnalysis) {
+        cmp = ((SystemAnalysis) ba).getOwnedSystem();
+      } else if (ba instanceof LogicalArchitecture) {
+        cmp = ((LogicalArchitecture)ba).getOwnedLogicalComponent();
+      } else if (ba instanceof PhysicalArchitecture) {
+        cmp = ((PhysicalArchitecture)ba).getOwnedPhysicalComponent();
+      }
     }
 
     if (cmp != null) {
