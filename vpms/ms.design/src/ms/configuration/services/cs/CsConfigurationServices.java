@@ -749,7 +749,7 @@ public class CsConfigurationServices {
     
     // don't overlay provided/required ports, TODO that's a hack
     String imagePath = Images.getImagePath(context, view);
-    if (imagePath != null && imagePath.contains("provided") || imagePath.contains("required")) {
+    if (imagePath != null && (imagePath.contains("provided") || imagePath.contains("required"))) {
       return false;
     }
 
