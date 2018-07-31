@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <!--
-  Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -17,7 +17,7 @@
                class="org.polarsys.capella.core.data.information.communication.properties.sections.CommunicationLinkSection"
                filter="org.polarsys.capella.core.data.information.communication.properties.sections.CommunicationLinkSection"
                id="org.polarsys.capella.core.data.information.communication.properties.sections.CommunicationLinkSection"
-               tab="Base">
+               tab="BaseCapella">
             <input
                   type="org.polarsys.capella.core.data.information.communication.CommunicationLink">
             </input>
@@ -25,7 +25,7 @@
          <propertySection
                class="org.polarsys.capella.core.data.information.communication.properties.sections.ExceptionSection"
                id="org.polarsys.capella.core.data.information.communication.properties.sections.ExceptionSection"
-               tab="Base">
+               tab="BaseCapella">
             <input
                   type="org.polarsys.capella.core.data.information.communication.Exception">
             </input>
@@ -33,7 +33,7 @@
          <propertySection
                class="org.polarsys.capella.core.data.information.communication.properties.sections.MessageReferenceSection"
                id="org.polarsys.capella.core.data.information.communication.properties.sections.MessageReferenceSection"
-               tab="Base">
+               tab="BaseCapella">
             <input
                   type="org.polarsys.capella.core.data.information.communication.MessageReference">
             </input>
@@ -41,7 +41,7 @@
          <propertySection
                class="org.polarsys.capella.core.data.information.communication.properties.sections.MessageSection"
                id="org.polarsys.capella.core.data.information.communication.properties.sections.MessageSection"
-               tab="Base">
+               tab="BaseCapella">
             <input
                   type="org.polarsys.capella.core.data.information.communication.Message">
             </input>
@@ -49,7 +49,7 @@
          <propertySection
                class="org.polarsys.capella.core.data.information.communication.properties.sections.SignalInstanceSection"
                id="org.polarsys.capella.core.data.information.communication.properties.sections.SignalInstanceSection"
-               tab="Base">
+               tab="BaseCapella">
             <input
                   type="org.polarsys.capella.core.data.information.communication.SignalInstance">
             </input>
@@ -57,7 +57,7 @@
          <propertySection
                class="org.polarsys.capella.core.data.information.communication.properties.sections.SignalSection"
                id="org.polarsys.capella.core.data.information.communication.properties.sections.SignalSection"
-               tab="Base">
+               tab="BaseCapella">
             <input
                   type="org.polarsys.capella.core.data.information.communication.Signal">
             </input>
@@ -70,37 +70,37 @@
                class="org.polarsys.capella.core.data.information.communication.properties.sections.CommunicationLinkSection"
                filter="org.polarsys.capella.core.data.information.communication.properties.sections.CommunicationLinkSection"
                id="org.polarsys.capella.core.data.information.communication.properties.sections.CommunicationLinkSection"
-               tab="Base">
+               tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.communication.properties.sections.ExceptionSection"
                filter="org.polarsys.capella.core.data.information.communication.properties.sections.ExceptionSection"
                id="org.polarsys.capella.core.data.information.communication.properties.sections.ExceptionSection"
-               tab="Base">
+               tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.communication.properties.sections.MessageReferenceSection"
                filter="org.polarsys.capella.core.data.information.communication.properties.sections.MessageReferenceSection"
                id="org.polarsys.capella.core.data.information.communication.properties.sections.MessageReferenceSection"
-               tab="Base">
+               tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.communication.properties.sections.MessageSection"
                filter="org.polarsys.capella.core.data.information.communication.properties.sections.MessageSection"
                id="org.polarsys.capella.core.data.information.communication.properties.sections.MessageSection"
-               tab="Base">
+               tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.communication.properties.sections.SignalInstanceSection"
                filter="org.polarsys.capella.core.data.information.communication.properties.sections.SignalInstanceSection"
                id="org.polarsys.capella.core.data.information.communication.properties.sections.SignalInstanceSection"
-               tab="Base">
+               tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.communication.properties.sections.SignalSection"
                filter="org.polarsys.capella.core.data.information.communication.properties.sections.SignalSection"
                id="org.polarsys.capella.core.data.information.communication.properties.sections.SignalSection"
-               tab="Base">
+               tab="BaseSiriusDiagram">
          </propertySection>
       </propertySections>
    </extension>
@@ -110,37 +110,37 @@
                class="org.polarsys.capella.core.data.information.communication.properties.sections.CommunicationLinkSection"
                filter="org.polarsys.capella.core.data.information.communication.properties.sections.CommunicationLinkSection"
                id="org.polarsys.capella.core.data.information.communication.properties.sections.CommunicationLinkSection"
-               tab="Base">
+               tab="BaseSiriusTable">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.communication.properties.sections.ExceptionSection"
                filter="org.polarsys.capella.core.data.information.communication.properties.sections.ExceptionSection"
                id="org.polarsys.capella.core.data.information.communication.properties.sections.ExceptionSection"
-               tab="Base">
+               tab="BaseSiriusTable">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.communication.properties.sections.MessageReferenceSection"
                filter="org.polarsys.capella.core.data.information.communication.properties.sections.MessageReferenceSection"
                id="org.polarsys.capella.core.data.information.communication.properties.sections.MessageReferenceSection"
-               tab="Base">
+               tab="BaseSiriusTable">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.communication.properties.sections.MessageSection"
                filter="org.polarsys.capella.core.data.information.communication.properties.sections.MessageSection"
                id="org.polarsys.capella.core.data.information.communication.properties.sections.MessageSection"
-               tab="Base">
+               tab="BaseSiriusTable">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.communication.properties.sections.SignalInstanceSection"
                filter="org.polarsys.capella.core.data.information.communication.properties.sections.SignalInstanceSection"
                id="org.polarsys.capella.core.data.information.communication.properties.sections.SignalInstanceSection"
-               tab="Base">
+               tab="BaseSiriusTable">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.communication.properties.sections.SignalSection"
                filter="org.polarsys.capella.core.data.information.communication.properties.sections.SignalSection"
                id="org.polarsys.capella.core.data.information.communication.properties.sections.SignalSection"
-               tab="Base">
+               tab="BaseSiriusTable">
          </propertySection>
       </propertySections>
    </extension>

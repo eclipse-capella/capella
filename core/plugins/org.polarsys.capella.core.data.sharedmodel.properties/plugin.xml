@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <!--
-  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -16,7 +16,7 @@
          <propertySection
                class="org.polarsys.capella.core.data.sharedmodel.properties.sections.GenericPkgSection"
                id="org.polarsys.capella.core.data.sharedmodel.properties.sections.GenericPkgSection"
-               tab="Base">
+               tab="BaseCapella">
             <input
                   type="org.polarsys.capella.core.data.sharedmodel.GenericPkg">
             </input>
@@ -24,7 +24,7 @@
          <propertySection
                class="org.polarsys.capella.core.data.sharedmodel.properties.sections.SharedPkgSection"
                id="org.polarsys.capella.core.data.sharedmodel.properties.sections.SharedPkgSection"
-               tab="Base">
+               tab="BaseCapella">
             <input
                   type="org.polarsys.capella.core.data.sharedmodel.SharedPkg">
             </input>
@@ -37,13 +37,13 @@
                class="org.polarsys.capella.core.data.sharedmodel.properties.sections.GenericPkgSection"
                filter="org.polarsys.capella.core.data.sharedmodel.properties.sections.GenericPkgSection"
                id="org.polarsys.capella.core.data.sharedmodel.properties.sections.GenericPkgSection"
-               tab="Base">
+               tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.sharedmodel.properties.sections.SharedPkgSection"
                filter="org.polarsys.capella.core.data.sharedmodel.properties.sections.SharedPkgSection"
                id="org.polarsys.capella.core.data.sharedmodel.properties.sections.SharedPkgSection"
-               tab="Base">
+               tab="BaseSiriusDiagram">
          </propertySection>
       </propertySections>
    </extension>
@@ -53,13 +53,13 @@
                class="org.polarsys.capella.core.data.sharedmodel.properties.sections.GenericPkgSection"
                filter="org.polarsys.capella.core.data.sharedmodel.properties.sections.GenericPkgSection"
                id="org.polarsys.capella.core.data.sharedmodel.properties.sections.GenericPkgSection"
-               tab="Base">
+               tab="BaseSiriusTable">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.sharedmodel.properties.sections.SharedPkgSection"
                filter="org.polarsys.capella.core.data.sharedmodel.properties.sections.SharedPkgSection"
                id="org.polarsys.capella.core.data.sharedmodel.properties.sections.SharedPkgSection"
-               tab="Base">
+               tab="BaseSiriusTable">
          </propertySection>
       </propertySections>
    </extension>

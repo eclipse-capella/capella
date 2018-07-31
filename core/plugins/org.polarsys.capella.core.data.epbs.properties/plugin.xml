@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <!--
-  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -17,7 +17,7 @@
                class="org.polarsys.capella.core.data.epbs.properties.sections.ConfigurationItemSection"
                filter="org.polarsys.capella.core.data.epbs.properties.sections.ConfigurationItemSection"
                id="org.polarsys.capella.core.data.epbs.properties.sections.ConfigurationItemSection"
-               tab="Base">
+               tab="BaseCapella">
             <input
                   type="org.polarsys.capella.core.data.epbs.ConfigurationItem">
             </input>
@@ -26,7 +26,7 @@
                class="org.polarsys.capella.core.data.epbs.properties.sections.ConfigurationItemPkgSection"
                filter="org.polarsys.capella.core.data.epbs.properties.sections.ConfigurationItemPkgSection"
                id="org.polarsys.capella.core.data.epbs.properties.sections.ConfigurationItemPkgSection"
-               tab="Base">
+               tab="BaseCapella">
             <input
                   type="org.polarsys.capella.core.data.epbs.ConfigurationItemPkg">
             </input>
@@ -35,7 +35,7 @@
                class="org.polarsys.capella.core.data.epbs.properties.sections.EPBSArchitecturePkgSection"
                filter="org.polarsys.capella.core.data.epbs.properties.sections.EPBSArchitecturePkgSection"
                id="org.polarsys.capella.core.data.epbs.properties.sections.EPBSArchitecturePkgSection"
-               tab="Base">
+               tab="BaseCapella">
             <input
                   type="org.polarsys.capella.core.data.epbs.EPBSArchitecturePkg">
             </input>
@@ -44,7 +44,7 @@
                class="org.polarsys.capella.core.data.epbs.properties.sections.EPBSArchitectureSection"
                filter="org.polarsys.capella.core.data.epbs.properties.sections.EPBSArchitectureSection"
                id="org.polarsys.capella.core.data.epbs.properties.sections.EPBSArchitectureSection"
-               tab="Base">
+               tab="BaseCapella">
             <input
                   type="org.polarsys.capella.core.data.epbs.EPBSArchitecture">
             </input>
@@ -53,7 +53,7 @@
                class="org.polarsys.capella.core.data.epbs.properties.sections.EPBSContextSection"
                filter="org.polarsys.capella.core.data.epbs.properties.sections.EPBSContextSection"
                id="org.polarsys.capella.core.data.epbs.properties.sections.EPBSContextSection"
-               tab="Base">
+               tab="BaseCapella">
             <input
                   type="org.polarsys.capella.core.data.epbs.EPBSContext">
             </input>
@@ -62,7 +62,7 @@
                class="org.polarsys.capella.core.data.epbs.properties.sections.PhysicalArchitectureRealizationSection"
                filter="org.polarsys.capella.core.data.epbs.properties.sections.PhysicalArchitectureRealizationSection"
                id="org.polarsys.capella.core.data.epbs.properties.sections.PhysicalArchitectureRealizationSection"
-               tab="Base">
+               tab="BaseCapella">
             <input
                   type="org.polarsys.capella.core.data.epbs.PhysicalArchitectureRealization">
             </input>
@@ -71,7 +71,7 @@
                class="org.polarsys.capella.core.data.epbs.properties.sections.PhysicalArtifactRealizationSection"
                filter="org.polarsys.capella.core.data.epbs.properties.sections.PhysicalArtifactRealizationSection"
                id="org.polarsys.capella.core.data.epbs.properties.sections.PhysicalArtifactRealizationSection"
-               tab="Base">
+               tab="BaseCapella">
             <input
                   type="org.polarsys.capella.core.data.epbs.PhysicalArtifactRealization">
             </input>
@@ -84,43 +84,43 @@
                class="org.polarsys.capella.core.data.epbs.properties.sections.ConfigurationItemSection"
                filter="org.polarsys.capella.core.data.epbs.properties.sections.ConfigurationItemSection"
                id="org.polarsys.capella.core.data.epbs.properties.sections.ConfigurationItemSection"
-               tab="Base">
+               tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.epbs.properties.sections.ConfigurationItemPkgSection"
                filter="org.polarsys.capella.core.data.epbs.properties.sections.ConfigurationItemPkgSection"
                id="org.polarsys.capella.core.data.epbs.properties.sections.ConfigurationItemPkgSection"
-               tab="Base">
+               tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.epbs.properties.sections.EPBSArchitecturePkgSection"
                filter="org.polarsys.capella.core.data.epbs.properties.sections.EPBSArchitecturePkgSection"
                id="org.polarsys.capella.core.data.epbs.properties.sections.EPBSArchitecturePkgSection"
-               tab="Base">
+               tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.epbs.properties.sections.EPBSArchitectureSection"
                filter="org.polarsys.capella.core.data.epbs.properties.sections.EPBSArchitectureSection"
                id="org.polarsys.capella.core.data.epbs.properties.sections.EPBSArchitectureSection"
-               tab="Base">
+               tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.epbs.properties.sections.EPBSContextSection"
                filter="org.polarsys.capella.core.data.epbs.properties.sections.EPBSContextSection"
                id="org.polarsys.capella.core.data.epbs.properties.sections.EPBSContextSection"
-               tab="Base">
+               tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.epbs.properties.sections.PhysicalArchitectureRealizationSection"
                filter="org.polarsys.capella.core.data.epbs.properties.sections.PhysicalArchitectureRealizationSection"
                id="org.polarsys.capella.core.data.epbs.properties.sections.PhysicalArchitectureRealizationSection"
-               tab="Base">
+               tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.epbs.properties.sections.PhysicalArtifactRealizationSection"
                filter="org.polarsys.capella.core.data.epbs.properties.sections.PhysicalArtifactRealizationSection"
                id="org.polarsys.capella.core.data.epbs.properties.sections.PhysicalArtifactRealizationSection"
-               tab="Base">
+               tab="BaseSiriusDiagram">
          </propertySection>
       </propertySections>
    </extension>
@@ -130,43 +130,43 @@
                class="org.polarsys.capella.core.data.epbs.properties.sections.ConfigurationItemSection"
                filter="org.polarsys.capella.core.data.epbs.properties.sections.ConfigurationItemSection"
                id="org.polarsys.capella.core.data.epbs.properties.sections.ConfigurationItemSection"
-               tab="Base">
+               tab="BaseSiriusTable">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.epbs.properties.sections.ConfigurationItemPkgSection"
                filter="org.polarsys.capella.core.data.epbs.properties.sections.ConfigurationItemPkgSection"
                id="org.polarsys.capella.core.data.epbs.properties.sections.ConfigurationItemPkgSection"
-               tab="Base">
+               tab="BaseSiriusTable">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.epbs.properties.sections.EPBSArchitecturePkgSection"
                filter="org.polarsys.capella.core.data.epbs.properties.sections.EPBSArchitecturePkgSection"
                id="org.polarsys.capella.core.data.epbs.properties.sections.EPBSArchitecturePkgSection"
-               tab="Base">
+               tab="BaseSiriusTable">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.epbs.properties.sections.EPBSArchitectureSection"
                filter="org.polarsys.capella.core.data.epbs.properties.sections.EPBSArchitectureSection"
                id="org.polarsys.capella.core.data.epbs.properties.sections.EPBSArchitectureSection"
-               tab="Base">
+               tab="BaseSiriusTable">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.epbs.properties.sections.EPBSContextSection"
                filter="org.polarsys.capella.core.data.epbs.properties.sections.EPBSContextSection"
                id="org.polarsys.capella.core.data.epbs.properties.sections.EPBSContextSection"
-               tab="Base">
+               tab="BaseSiriusTable">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.epbs.properties.sections.PhysicalArchitectureRealizationSection"
                filter="org.polarsys.capella.core.data.epbs.properties.sections.PhysicalArchitectureRealizationSection"
                id="org.polarsys.capella.core.data.epbs.properties.sections.PhysicalArchitectureRealizationSection"
-               tab="Base">
+               tab="BaseSiriusTable">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.epbs.properties.sections.PhysicalArtifactRealizationSection"
                filter="org.polarsys.capella.core.data.epbs.properties.sections.PhysicalArtifactRealizationSection"
                id="org.polarsys.capella.core.data.epbs.properties.sections.PhysicalArtifactRealizationSection"
-               tab="Base">
+               tab="BaseSiriusTable">
          </propertySection>
       </propertySections>
    </extension>
