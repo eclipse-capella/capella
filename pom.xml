@@ -26,7 +26,7 @@
 		<rcptt-version>2.1.0</rcptt-version>
 		<rcptt-runner-version>2.1.0</rcptt-runner-version>
 		<sonar-version>3.0.2</sonar-version>
-		<jacoco-version>0.7.4.201502262128</jacoco-version>
+		<jacoco-version>0.7.6.201602180812</jacoco-version>
 
 		<!-- for tycho -->
 		<tycho.scmUrl>scm:git:http://git.polarsys.org/c/capella/capella.git</tycho.scmUrl>
