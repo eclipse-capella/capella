@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,6 +18,8 @@ import org.polarsys.capella.test.diagram.tools.ju.lab.DragAndDropLF;
 import org.polarsys.capella.test.diagram.tools.ju.lab.ShowHideComponentExchangeWithCategoryTestCase;
 import org.polarsys.capella.test.diagram.tools.ju.lab.ShowHideComponentTestCase;
 import org.polarsys.capella.test.diagram.tools.ju.lab.ShowHideFETestCase;
+import org.polarsys.capella.test.diagram.tools.ju.lab.SwitchFunctionalCategoryHidingInternalEdgesTestCase;
+import org.polarsys.capella.test.diagram.tools.ju.lab.SwitchPhysicalLinkCategoryHidingInternalEdgesTestCase;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
 
@@ -43,6 +45,8 @@ public class LABDiagramToolsTestSuite extends BasicTestSuite {
     tests.add(new ConstraintRenameTestCase());
     tests.add(new ShowHideComponentExchangeWithCategoryTestCase());
     tests.add(new ShowHideFETestCase());
+    tests.add(new SwitchPhysicalLinkCategoryHidingInternalEdgesTestCase());
+    tests.add(new SwitchFunctionalCategoryHidingInternalEdgesTestCase());
     return tests;
   }
 

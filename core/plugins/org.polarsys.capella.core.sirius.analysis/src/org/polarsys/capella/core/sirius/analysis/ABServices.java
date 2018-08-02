@@ -1730,10 +1730,99 @@ public class ABServices {
       Collection<EObject> selectedElements, boolean showHiddenPhysicalLinks) {
     ABServices.getService().updateABPhysicalCategories(content);
 
-    DDiagram currentDiagram = content.getDDiagram();
-    Collection<DDiagramElement> sourceViews = new ArrayList<DDiagramElement>();
-
     // retrieve all part views where to apply the show/hide
+    Collection<DDiagramElement> sourceViews = computeRelatedSourceViewsToPhysicalLinks(content, context);
+
+    AbstractShowHide physicalCategoryShowHideService = new ShowHideABPhysicalCategory(content);
+    DiagramContext ctx = physicalCategoryShowHideService.new DiagramContext();
+    if (context instanceof DDiagramElement) {
+      ctx.setVariable(ShowHideABComponentExchange.SOURCE_PART_VIEWS, Collections.singletonList(context));
+    }
+
+    // Compute only once relatedPhysicalLinks and abShowHidePhysicalCategoriesScope of a source view
+    Map<DDiagramElement, Collection<PhysicalLink>> sourceViewToRelatedPhysicalLinksMap = new HashMap<>();
+    Map<DDiagramElement, HashMapSet<EObject, EObject>> abShowHidePhysicalCategoriesScopeMap = new HashMap<>();
+    for (DDiagramElement sourceView : sourceViews) {
+      EObject sourceViewTarget = sourceView.getTarget();
+      if (sourceViewTarget != null) {
+        Collection<PhysicalLink> relatedPhysicalLinks = getRelatedPhysicalLinks(sourceViewTarget);
+        
+        sourceViewToRelatedPhysicalLinksMap.put(sourceView, relatedPhysicalLinks);
+        abShowHidePhysicalCategoriesScopeMap.put(sourceView,
+            getABShowHidePhysicalCategoriesScope(sourceView, relatedPhysicalLinks));
+      }
+    }
+
+    // 1. SHOW OR HIDE PHYSICAL CATEGORIES
+    for (DDiagramElement sourceView : sourceViews) {
+      EObject sourceViewTarget = sourceView.getTarget();
+      if (sourceViewTarget != null) {
+        EObject source = sourceViewTarget;
+        HashMapSet<EObject, EObject> scopeSource = abShowHidePhysicalCategoriesScopeMap.get(sourceView);
+        for (EObject key : scopeSource.keySet()) {
+          PhysicalLinkCategory physicalLinkCategory = (PhysicalLinkCategory) key;
+          for (EObject target : scopeSource.get(key)) {
+            if (selectedElements.contains(key)) {
+              showABPhysicalCategory(physicalCategoryShowHideService, ctx, physicalLinkCategory, source, target, true);
+            } else {
+              showABPhysicalCategory(physicalCategoryShowHideService, ctx, physicalLinkCategory, source, target, false);
+            }
+          }
+        }
+      }
+    }
+
+    // 2. SHOW OR HIDE PHYSICAL LINKS
+    // In tool (showHiddenPhysicalLinks==true), user may have removed some categories, so he wants to display hidden
+    // physical links associated to them.
+    // In refresh (showHiddenPhysicalLinks==false), categories haven't been changed by the user, so he doesn't want to
+    // display hidden physical links,
+    // he just want to hide new physical links associated to displayed categories.
+    for (DDiagramElement sourceView : sourceViews) {
+      EObject sourceViewTarget = sourceView.getTarget();
+      if (sourceViewTarget != null) {
+        HashMapSet<EObject, EObject> scopeSource = abShowHidePhysicalCategoriesScopeMap.get(sourceView);
+
+        // Traverse the categories selected by the user
+        for (EObject key : scopeSource.keySet()) {
+          PhysicalLinkCategory category = (PhysicalLinkCategory) key;
+          for (PhysicalLink physicalLink : sourceViewToRelatedPhysicalLinksMap.get(sourceView)) {
+            if (physicalLink.getCategories().contains(key)) {
+              PhysicalPort sourcePort = (PhysicalPort) PhysicalLinkExt.getSourcePort(physicalLink);
+              PhysicalPort targetPort = (PhysicalPort) PhysicalLinkExt.getTargetPort(physicalLink);
+              if (selectedElements.contains(key)) {
+                displayABPhysicalCategoryPortDelegation(ctx, category, physicalLink,
+                    sourcePort, true, physicalCategoryShowHideService);
+                displayABPhysicalCategoryPortDelegation(ctx, category, physicalLink,
+                    targetPort, true, physicalCategoryShowHideService);
+                // Hide the physical link
+                physicalCategoryShowHideService.hide(physicalLink, ctx);
+              } else if (showHiddenPhysicalLinks) {
+                displayABPhysicalCategoryPortDelegation(ctx, category, physicalLink,
+                    sourcePort, false, physicalCategoryShowHideService);
+                displayABPhysicalCategoryPortDelegation(ctx, category, physicalLink,
+                    targetPort, false, physicalCategoryShowHideService);
+                
+                // Show the physical link
+                physicalCategoryShowHideService.show(physicalLink, ctx);
+              }
+            }
+          }
+        }
+      }
+    }
+    
+    // 3.
+    ABServices.getService().updateABPhysicalCategories(content);
+    content.commitDeferredActions();
+
+    return context;
+  }
+
+  private Collection<DDiagramElement> computeRelatedSourceViewsToPhysicalLinks(DDiagramContents content,
+      DSemanticDecorator context) {
+    DDiagram currentDiagram = content.getDDiagram();
+    Collection<DDiagramElement> sourceViews = new ArrayList<>();
     if (context instanceof DDiagramElement) {
       sourceViews.add((DDiagramElement) context);
     }
@@ -1756,92 +1845,7 @@ public class ABServices {
         }
       }
     }
-
-    AbstractShowHide categories = new ShowHideABPhysicalCategory(content);
-    DiagramContext ctx = categories.new DiagramContext();
-    if (context instanceof DDiagramElement) {
-      ctx.setVariable(ShowHideABComponentExchange.SOURCE_PART_VIEWS, Collections.singletonList(context));
-    }
-
-    // Compute only once relatedPhysicalLinks and abShowHidePhysicalCategoriesScope of a source view
-    Map<EObject, Collection<PhysicalLink>> relatedPhysicalLinksMap = new HashMap<EObject, Collection<PhysicalLink>>();
-    Map<DDiagramElement, HashMapSet<EObject, EObject>> abShowHidePhysicalCategoriesScopeMap = new HashMap<DDiagramElement, HashMapSet<EObject, EObject>>();
-    for (DDiagramElement sourceView : sourceViews) {
-      EObject sourceViewTarget = sourceView.getTarget();
-      if (sourceViewTarget != null) {
-        EObject source = sourceViewTarget;
-        Collection<PhysicalLink> relatedPhysicalLinks = getRelatedPhysicalLinks(source);
-
-        relatedPhysicalLinksMap.put(source, relatedPhysicalLinks);
-        abShowHidePhysicalCategoriesScopeMap.put(sourceView,
-            getABShowHidePhysicalCategoriesScope(sourceView, relatedPhysicalLinks));
-      }
-    }
-
-    // show or hide categorie links
-    for (DDiagramElement sourceView : sourceViews) {
-      EObject sourceViewTarget = sourceView.getTarget();
-      if (sourceViewTarget != null) {
-        EObject source = sourceViewTarget;
-        HashMapSet<EObject, EObject> scopeSource = abShowHidePhysicalCategoriesScopeMap.get(sourceView);
-        for (EObject key : scopeSource.keySet()) {
-
-          if (selectedElements.contains(key)) {
-            for (EObject target : scopeSource.get(key)) {
-              showABPhysicalCategory(categories, ctx, (PhysicalLinkCategory) key, source, target, true);
-            }
-          } else {
-            for (EObject target : scopeSource.get(key)) {
-              showABPhysicalCategory(categories, ctx, (PhysicalLinkCategory) key, source, target, false);
-            }
-          }
-        }
-      }
-    }
-
-    // In tool (showHiddenPhysicalLinks==true), user may have removed some categories, so he wants to display hidden
-    // physical links associated to them.
-    // In refresh (showHiddenPhysicalLinks==false), categories haven't been changed by the user, so he doesn't want to
-    // display hidden physical links,
-    // he just want to hide new physical links associated to displayed categories.
-    for (DDiagramElement sourceView : sourceViews) {
-      EObject sourceViewTarget = sourceView.getTarget();
-      if (sourceViewTarget != null) {
-        EObject source = sourceViewTarget;
-        HashMapSet<EObject, EObject> scopeSource = abShowHidePhysicalCategoriesScopeMap.get(sourceView);
-
-        // Traverse the categories selected by the user
-        for (EObject key : scopeSource.keySet()) {
-          PhysicalLinkCategory category = (PhysicalLinkCategory) key;
-          if (selectedElements.contains(key)) {
-            for (PhysicalLink exchange : relatedPhysicalLinksMap.get(source)) {
-              if (exchange.getCategories().contains(key)) {
-                displayABPhysicalCategoryPortDelegation(ctx, category, exchange,
-                    (PhysicalPort) PhysicalLinkExt.getSourcePort(exchange), true, categories);
-                displayABPhysicalCategoryPortDelegation(ctx, category, exchange,
-                    (PhysicalPort) PhysicalLinkExt.getTargetPort(exchange), true, categories);
-                categories.hide(exchange, ctx);
-              }
-            }
-          } else if (showHiddenPhysicalLinks) {
-            for (PhysicalLink exchange : relatedPhysicalLinksMap.get(source)) {
-              if (exchange.getCategories().contains(key)) {
-                displayABPhysicalCategoryPortDelegation(ctx, category, exchange,
-                    (PhysicalPort) PhysicalLinkExt.getSourcePort(exchange), false, categories);
-                displayABPhysicalCategoryPortDelegation(ctx, category, exchange,
-                    (PhysicalPort) PhysicalLinkExt.getTargetPort(exchange), false, categories);
-                categories.show(exchange, ctx);
-              }
-            }
-          }
-        }
-      }
-    }
-
-    ABServices.getService().updateABPhysicalCategories(content);
-
-    content.commitDeferredActions();
-    return context;
+    return sourceViews;
   }
 
   public EObject switchABComponentCategories(DSemanticDecorator context, Collection<EObject> scope,
@@ -2318,17 +2322,17 @@ public class ABServices {
     EObject relatedPart = CsServices.getService().getRelatedPart(context);
 
     if (relatedPart != null) {
-      for (PhysicalLink exchange : relatedPhysicalLinks) {
-        for (PhysicalLinkCategory value : exchange.getCategories()) {
-          Collection<? extends EObject> sourceParts = PhysicalLinkExt.getSourceParts(exchange);
-          Collection<? extends EObject> targetParts = PhysicalLinkExt.getTargetParts(exchange);
+      for (PhysicalLink physicalLink : relatedPhysicalLinks) {
+        for (PhysicalLinkCategory physicalLinkCategory : physicalLink.getCategories()) {
+          Collection<? extends EObject> sourceParts = PhysicalLinkExt.getSourceParts(physicalLink);
+          Collection<? extends EObject> targetParts = PhysicalLinkExt.getTargetParts(physicalLink);
           if (sourceParts.contains(relatedPart)) {
-            for (EObject related : targetParts) {
-              result.put(value, related);
+            for (EObject targetPart : targetParts) {
+              result.put(physicalLinkCategory, targetPart);
             }
           } else if (targetParts.contains(relatedPart)) {
-            for (EObject related : sourceParts) {
-              result.put(value, related);
+            for (EObject sourcePart : sourceParts) {
+              result.put(physicalLinkCategory, sourcePart);
             }
           }
         }

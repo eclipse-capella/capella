@@ -15,7 +15,6 @@ import java.util.HashSet;
 
 import org.apache.log4j.Logger;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.business.api.refresh.IRefreshExtension;
@@ -52,6 +51,13 @@ public class DataFlowBlankRefreshExtension extends AbstractRefreshExtension impl
 
     } catch (Exception e) {
       Logger.getLogger(IReportManagerDefaultComponents.DIAGRAM).error(Messages.RefreshExtension_ErrorOnContextualElements, e);
+    }
+    
+    // Update the internal edges for functional chains.
+    try {
+      FunctionalChainServices.getFunctionalChainServices().updateInternalFunctionalChains(diagram);
+    } catch (Exception e) {
+      Logger.getLogger(IReportManagerDefaultComponents.DIAGRAM).error(Messages.RefreshExtension_ErrorOnUpdateFunctionalChainStyle, e);
     }
 
     try {
@@ -93,29 +99,22 @@ public class DataFlowBlankRefreshExtension extends AbstractRefreshExtension impl
 
   }
 
-  protected void updateFunctionalExchangeCategories(DDiagramContents context_p) {
-
-    DDiagram diagram = context_p.getDDiagram();
-
+  protected void updateFunctionalExchangeCategories(DDiagramContents diagramContents) {
+    DDiagram diagram = diagramContents.getDDiagram();
     if (diagram.isSynchronized()) {
-      FaServices service = FaServices.getFaServices();
-      Collection<EObject> categories = new HashSet<EObject>();
-
+      // TODO Should I move this out of the if isSynchronized. Should it always switch FECategories?
       // Switch to FE categories
-      EdgeMapping edgeMapping = service.getMappingFECategory(diagram);
+      EdgeMapping edgeMapping = FaServices.getFaServices().getMappingFECategory(diagram);
       if (edgeMapping != null) {
-        for (DDiagramElement element : context_p.getDiagramElements(edgeMapping)) {
-          if ((element.getTarget() != null) && (element.getTarget() instanceof ExchangeCategory)) {
-            categories.add(element.getTarget());
+        Collection<ExchangeCategory> categories = new HashSet<>();
+        for (DDiagramElement element : diagramContents.getDiagramElements(edgeMapping)) {
+          EObject target = element.getTarget();
+          if (target instanceof ExchangeCategory) {
+            categories.add((ExchangeCategory) target);
           }
         }
-        FaServices.getFaServices().switchFECategories(context_p, (DSemanticDecorator) context_p.getDDiagram(), categories, false);
+        FaServices.getFaServices().switchFECategories(diagramContents, (DSemanticDecorator) diagram, categories, false);
       }
-
-    } else {
-      FaServices.getFaServices().updateFECategories(context_p);
     }
-
   }
-
 }

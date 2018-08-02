@@ -147,31 +147,265 @@ public class FunctionalChainServices {
 		}
 		return returnedList;
 	}
+	
+	/**
+	 * 1. Add internal edges for functional chains if not already existed
+	 * 2. Remove INVALID internal edges for functional chains.
+	 * @param diagram
+	 */
+	public void updateInternalFunctionalChains(DDiagram diagram) {
+    HashMap<FunctionalChain, DNode> functionalChainToNodeMap = computeFunctionalChainToNodeMap(diagram);
+    
+    HashMap<FunctionalExchange, Set<DEdge>> functionalExchangeToEdgesMap = computeFunctionalExchangeToEdgesMap(diagram);
+    
+    HashMap<FunctionalChain, Set<DEdge>> functionalChainToEdgesMap = computeFunctionalChainToEdgesMap(diagram);
+    
+    // remove internal links of functional chain if the Functional chain is not displayed
+    for (Entry<FunctionalChain, Set<DEdge>> entry : functionalChainToEdgesMap.entrySet()) {
+      FunctionalChain functionalChain = entry.getKey();
+      if (!functionalChainToNodeMap.containsKey(functionalChain)) {
+        Set<DEdge> edges = entry.getValue();
+        for (DEdge edge : edges) {
+          DiagramServices.getDiagramServices().removeEdgeView(edge);
+        }
+      }
+    }
 
+    Set<DEdge> visibleInternalLinks = new HashSet<>();
+    boolean isInOperationalAnalysis =
+        BlockArchitectureExt.getRootBlockArchitecture(((DSemanticDiagram) diagram).getTarget()) instanceof OperationalAnalysis;
+    if (!isInOperationalAnalysis) {
+      for (Entry<FunctionalChain, DNode> entry : functionalChainToNodeMap.entrySet()) {
+        FunctionalChain functionalChain = entry.getKey();
+        Set<DEdge> internalLinks = computeVisibleInternalLinks(functionalChain, functionalExchangeToEdgesMap);
+        visibleInternalLinks.addAll(internalLinks);
+      }
+    }
+
+    // Remove all internal links that are not visible.
+    for (Set<DEdge> edges : functionalChainToEdgesMap.values()) {
+      for (DEdge edge : edges) {
+        if (!visibleInternalLinks.contains(edge)) {
+          DiagramServices.getDiagramServices().removeEdgeView(edge);
+        }
+      }
+    }
+  }
+
+	/**
+	 * Update the style for functional chains.
+	 * Colored border, highlight edges.
+	 * @param diagram
+	 */
 	public void updateFunctionalChainStyles(DDiagram diagram) {
-		HashMap<FunctionalChain, DNode> displayedFC = new HashMap<FunctionalChain, DNode>(); // displayed Functional Chains
-		HashMap<FunctionalExchange, Set<DEdge>> displayedFE = new HashMap<FunctionalExchange, Set<DEdge>>(); // displayed Functional Exchanges
-		HashMap<FunctionalChain, Set<DEdge>> displayedIL = new HashMap<FunctionalChain, Set<DEdge>>(); // displayed Internal Links
-		HashMap<AbstractFunction, Set<DDiagramElement>> displayedFunctions = new HashMap<AbstractFunction, Set<DDiagramElement>>(); // displayed functions
-		HashMap<DDiagramElement, Set<FunctionalChain>> coloredFunctionNodes = new HashMap<DDiagramElement, Set<FunctionalChain>>(); // colored functions
-		Set<FunctionalChain> incompleteFC = new HashSet<FunctionalChain>(); // incomplete displayed functional chains
-		HashMap<DEdge, Set<FunctionalChain>> coloredFE = new HashMap<DEdge, Set<FunctionalChain>>(); // colored functional Exchanges
-		Set<DEdge> updatedInternalLinks = new HashSet<DEdge>();
+    HashMap<FunctionalChain, DNode> functionalChainToNodeMap = computeFunctionalChainToNodeMap(diagram);
+    
+    // The internal edges representing functional chains on diagram
+    HashMap<FunctionalChain, Set<DEdge>> functionalChainToEdgesMap = computeFunctionalChainToEdgesMap(diagram);
+    
+    HashMap<AbstractFunction, Set<DDiagramElement>> functionToDiagramElementsMap = computeFunctionToDiagramElementsMap(
+        diagram);
+    
+    HashMap<FunctionalExchange, Set<DEdge>> functionalExchangeToEdgesMap = computeFunctionalExchangeToEdgesMap(diagram);
+    
+    HashMap<DDiagramElement, Set<FunctionalChain>> coloredNodeToFunctionalChainsMap = computeColoredNodeToFunctionalChainsMap(
+        functionalChainToNodeMap, functionToDiagramElementsMap);
+    
+    HashMap<DEdge, Set<FunctionalChain>> coloredEdgeToFunctionalChainsMap = computeColoredEdgeToFunctionalChainsMap(
+        functionalChainToNodeMap, functionalExchangeToEdgesMap);
 
-		// find displayed Functional chains and functions
-		for (DDiagramElement aNode : diagram.getOwnedDiagramElements()) {
-			if ((aNode instanceof DNode) && (aNode.getTarget() != null) && (aNode.getTarget() instanceof FunctionalChain)) {
-				displayedFC.put((FunctionalChain) aNode.getTarget(), (DNode)aNode);
+		// update functions style
+		for (Entry<AbstractFunction, Set<DDiagramElement>> entry : functionToDiagramElementsMap.entrySet()) {
+			Set<DDiagramElement> functionNodes = entry.getValue();
+			for (DDiagramElement functionNode : functionNodes) {
+				if (!coloredNodeToFunctionalChainsMap.containsKey(functionNode)) {
+					resetFunctionStyle(functionNode);
+				}
 			}
 		}
-		// find displayed functions
+
+		for (Entry<FunctionalChain, DNode> entry : functionalChainToNodeMap.entrySet()) {
+		  FunctionalChain functionalChain = entry.getKey();
+		  DNode functionalChainNode = entry.getValue();
+		  
+			updateFunctionalChainNodeColor(functionalChainNode, functionalChainToNodeMap.values());
+			RGBValues functionalChainColor = ShapeUtil.getNodeColorStyle(functionalChainNode);
+			if (functionalChainColor == null) {
+				continue;
+			}
+			
+			// update style of source function of the chain
+			for (AbstractFunction function : FunctionalChainExt.getFlatFunctionalChainFirstFunctions(functionalChain)) {
+			  // source Node of the functional chain
+			  Set<DDiagramElement>  functionNodes = getBestDisplayedFunctionNode(function, functionToDiagramElementsMap);
+			  functionNodes = (functionNodes == null) ? new HashSet<>() : functionNodes;
+				for (DDiagramElement functionNode : functionNodes) {
+				  // color the border of the target function with the color of the functional chain
+          // black color if more than one functional chain
+				  RGBValues color = (coloredNodeToFunctionalChainsMap.get(functionNode).size() == 1) ? functionalChainColor : ShapeUtil.getBlackColor();
+				  customizeSourceFunctionStyle(functionNode, color);
+				}
+			}
+
+			// update style of target function of the chain
+			for (AbstractFunction function : FunctionalChainExt.getFlatFunctionalChainLastFunctions(functionalChain)) {
+			// target Node of the functional chain
+			  Set<DDiagramElement> functionNodes = getBestDisplayedFunctionNode(function, functionToDiagramElementsMap);
+			  functionNodes = (functionNodes == null) ? new HashSet<>() : functionNodes;
+				for (DDiagramElement functionNode : functionNodes) {
+				  // color the border of the target function with the color of the functional chain
+				  // black color if more than one functional chain
+				  RGBValues color = (coloredNodeToFunctionalChainsMap.get(functionNode).size() == 1) ? functionalChainColor : ShapeUtil.getBlackColor();
+				  customizeTargetFunctionStyle(functionNode, color);
+				}
+			}
+
+			// update style of internal links of functional chain(except in operational analysis architecture)
+			boolean isInOperationalAnalysis =
+					BlockArchitectureExt.getRootBlockArchitecture(((DSemanticDiagram) diagram).getTarget()) instanceof OperationalAnalysis;
+			if (!isInOperationalAnalysis) {
+			  // TODO: should we use getVisibleInternalLinks
+//			  Set<DEdge> internalLinks = getVisibleInternalLinks(functionalChain, functionalExchangeToEdgesMap);
+			  // For each internal edge representing the functional chain; decorate it with the color.
+			  Set<DEdge> internalLinks = functionalChainToEdgesMap.get(functionalChain);
+			  internalLinks = (internalLinks == null) ? new HashSet<>() : internalLinks;
+			  internalLinks.remove(null);
+        for (DEdge internalLink : internalLinks) {
+          customizeInternalLinksEdgeStyle(internalLink, functionalChainColor);
+        }
+			}
+			
+			// update style of functional exchange edges
+      for (FunctionalExchange functionalExchange : FunctionalChainExt.getFlatFunctionalExchanges(functionalChain)) {
+        if (functionalExchangeToEdgesMap.containsKey(functionalExchange)) {
+          Set<DEdge> edges = functionalExchangeToEdgesMap.get(functionalExchange);
+          for (DEdge edge : edges) {
+            // color the border of the target function with the color of the functional chain
+            // black color if more than one functional chain
+            RGBValues color = (coloredEdgeToFunctionalChainsMap.get(edge).size() == 1) ? functionalChainColor: ShapeUtil.getBlackColor();
+            customizeFunctionalExchangeEdgeStyle(edge, color);
+          }
+        }
+      }
+      
+      RefreshSiriusElement.refresh(functionalChainNode);
+    }
+
+		// reset functional exchanges with no associated functional chain
+		for (Set<DEdge> edges : functionalExchangeToEdgesMap.values()) {
+			for (DEdge edge : edges) {
+				if (!coloredEdgeToFunctionalChainsMap.containsKey(edge)) {
+					resetFunctionalExchangeStyle(edge);
+				}
+			}
+		}
+	}
+  private HashMap<DEdge, Set<FunctionalChain>> computeColoredEdgeToFunctionalChainsMap(
+      HashMap<FunctionalChain, DNode> functionalChainToNodeMap,
+      HashMap<FunctionalExchange, Set<DEdge>> functionalExchangeToEdgesMap) {
+    // compute map from NEED-TO-BE-COLORED Edge to the functional chains
+    HashMap<DEdge, Set<FunctionalChain>> coloredEdgeToFunctionalChainsMap = new HashMap<>(); // colored functional Exchanges
+		for (Entry<FunctionalChain, DNode> entry : functionalChainToNodeMap.entrySet()) {
+      FunctionalChain functionalChain = entry.getKey();
+      for (FunctionalExchange anExchange : FunctionalChainExt.getFlatFunctionalExchanges(functionalChain)) {
+        if (functionalExchangeToEdgesMap.containsKey(anExchange)) {
+          Set<DEdge> exchangeEdges = functionalExchangeToEdgesMap.get(anExchange);
+          for (DEdge exchangeEdge : exchangeEdges) {
+            Set<FunctionalChain> functionalChains = coloredEdgeToFunctionalChainsMap.get(exchangeEdge);
+            if (functionalChains == null) {
+              functionalChains = new HashSet<>();
+              coloredEdgeToFunctionalChainsMap.put(exchangeEdge, functionalChains);
+            }
+            functionalChains.add(functionalChain);
+          }
+        }
+      }
+		}
+    return coloredEdgeToFunctionalChainsMap;
+  }
+  
+  private HashMap<DDiagramElement, Set<FunctionalChain>> computeColoredNodeToFunctionalChainsMap(
+      HashMap<FunctionalChain, DNode> functionalChainToNodeMap,
+      HashMap<AbstractFunction, Set<DDiagramElement>> functionToDiagramElementsMap) {
+    // compute map from NEED-TO-BE-COLORED Node to the functional chains
+    HashMap<DDiagramElement, Set<FunctionalChain>> coloredElementToFunctionalChainsMap = new HashMap<>(); // colored functions
+		for (Entry<FunctionalChain, DNode> entry : functionalChainToNodeMap.entrySet()) {
+		  FunctionalChain functionalChain = entry.getKey();
+		  
+      Set<AbstractFunction> fcFunctions = new HashSet<>();
+      // source Node of the functional chain
+      Set<AbstractFunction> fcSourceFunctions = FunctionalChainExt.getFlatFunctionalChainFirstFunctions(functionalChain);
+      // target Node of the functional chain
+      Set<AbstractFunction> fcTargetFunctions = FunctionalChainExt.getFlatFunctionalChainLastFunctions(functionalChain);
+
+      fcFunctions.addAll(fcSourceFunctions);
+      fcFunctions.addAll(fcTargetFunctions);
+      
+      for (AbstractFunction function : fcFunctions) {
+        Set<DDiagramElement> functionNodes = getBestDisplayedFunctionNode(function, functionToDiagramElementsMap);
+        if (functionNodes != null) {
+          for (DDiagramElement functionNode : functionNodes) {
+            Set<FunctionalChain> functionalChains = coloredElementToFunctionalChainsMap.get(functionNode);
+            if (functionalChains == null) {
+              functionalChains = new HashSet<>();
+              coloredElementToFunctionalChainsMap.put(functionNode, functionalChains);
+            }
+            functionalChains.add(functionalChain);
+          }
+        }
+      }
+		}
+    return coloredElementToFunctionalChainsMap;
+  }
+  private HashMap<FunctionalChain, Set<DEdge>> computeFunctionalChainToEdgesMap(DDiagram diagram) {
+    // compute map from functional chain to its displaying edges on the diagram.
+    // they are internal edges.
+    HashMap<FunctionalChain, Set<DEdge>> functionalChainToEdgesMap = new HashMap<>(); // displayed Internal Links
+		for (DEdge edge : diagram.getEdges()) {
+      EObject edgeTarget = edge.getTarget();
+      if (edgeTarget instanceof FunctionalChain) {
+        FunctionalChain fc = (FunctionalChain) edgeTarget;
+        Set<DEdge> edges = functionalChainToEdgesMap.get(fc);
+        if (edges == null) {
+          edges = new HashSet<>();
+          functionalChainToEdgesMap.put(fc, edges);
+        }
+        edges.add(edge);
+      }
+    }
+    return functionalChainToEdgesMap;
+  }
+  
+  private HashMap<FunctionalExchange, Set<DEdge>> computeFunctionalExchangeToEdgesMap(DDiagram diagram) {
+    // compute map from functional exchange to its displaying edges on the diagram
+    HashMap<FunctionalExchange, Set<DEdge>> functionalExchangeToEdgesMap = new HashMap<>();
+		
+    for (DEdge edge : diagram.getEdges()) {
+			EObject edgeTarget = edge.getTarget();
+			if (edgeTarget instanceof FunctionalExchange) {
+				FunctionalExchange fe = (FunctionalExchange) edgeTarget;
+				Set<DEdge> edges = functionalExchangeToEdgesMap.get(fe);
+				if (edges == null) {
+					edges = new HashSet<>();
+					functionalExchangeToEdgesMap.put(fe, edges);
+				}
+				edges.add(edge);
+			}
+		}
+		
+		return functionalExchangeToEdgesMap;
+  }
+  
+  private HashMap<AbstractFunction, Set<DDiagramElement>> computeFunctionToDiagramElementsMap(DDiagram diagram) {
+    // compute map from function to its displaying diagram elements on the diagram
+    HashMap<AbstractFunction, Set<DDiagramElement>> functionToDiagramElementsMap = new HashMap<>();
 		for (DNode aNode : diagram.getNodes()) {
 			EObject target = aNode.getTarget();
 			if (target instanceof AbstractFunction) {
-				Set<DDiagramElement> set = displayedFunctions.get(target);
+				Set<DDiagramElement> set = functionToDiagramElementsMap.get(target);
 				if (set == null) {
-					set = new HashSet<DDiagramElement>();
-					displayedFunctions.put((AbstractFunction) target, set);
+					set = new HashSet<>();
+					functionToDiagramElementsMap.put((AbstractFunction) target, set);
 				}
 				set.add(aNode);
 			}
@@ -179,192 +413,28 @@ public class FunctionalChainServices {
 		for (DDiagramElement aContainer : diagram.getContainers()) {
 			EObject target = aContainer.getTarget();
 			if ((target instanceof AbstractFunction)) {
-				Set<DDiagramElement> set = displayedFunctions.get(target);
+				Set<DDiagramElement> set = functionToDiagramElementsMap.get(target);
 				if (set == null) {
-					set = new HashSet<DDiagramElement>();
-					displayedFunctions.put((AbstractFunction) target, set);
+					set = new HashSet<>();
+					functionToDiagramElementsMap.put((AbstractFunction) target, set);
 				}
 				set.add(aContainer);
 			}
 		}
-
-		// find displayed Functional Exchanges and Internal Links
-		for (DEdge anEdge : diagram.getEdges()) {
-			EObject edgeTarget = anEdge.getTarget();
-			if (edgeTarget instanceof FunctionalExchange) {
-				FunctionalExchange fe = (FunctionalExchange) edgeTarget;
-				Set<DEdge> edges = displayedFE.get(fe);
-				if (edges == null) {
-					edges = new HashSet<DEdge>();
-					displayedFE.put(fe, edges);
-				}
-				edges.add(anEdge);
-			}
-			if (edgeTarget instanceof FunctionalChain) {
-				if (!displayedIL.containsKey(edgeTarget)) {
-					Set<DEdge> newSet = new HashSet<DEdge>();
-					newSet.add(anEdge);
-					displayedIL.put((FunctionalChain) edgeTarget, newSet);
-				} else {
-					displayedIL.get(edgeTarget).add(anEdge);
-				}
+		
+		return functionToDiagramElementsMap;
+  }
+  
+  private HashMap<FunctionalChain, DNode> computeFunctionalChainToNodeMap(DDiagram diagram) {
+    // compute map from functional chain to its displaying DNode on the diagram
+    HashMap<FunctionalChain, DNode> functionalChainToNodeMap = new HashMap<>(); // displayed Functional Chains
+		for (DDiagramElement aNode : diagram.getOwnedDiagramElements()) {
+			if ((aNode instanceof DNode) && (aNode.getTarget() instanceof FunctionalChain)) {
+				functionalChainToNodeMap.put((FunctionalChain) aNode.getTarget(), (DNode)aNode);
 			}
 		}
-
-		// find source and target functions that must be colored
-		for (Entry<FunctionalChain, DNode> me : displayedFC.entrySet()) {
-			for (AbstractFunction aSourceFunction : FunctionalChainExt.getFlatFunctionalChainFirstFunctions(me.getKey())) {
-			  // source Node of the functional chain
-			  Set<DDiagramElement> sourceFunctionNodes = getBestDisplayedFunctionNode(aSourceFunction, displayedFunctions);
-				if (sourceFunctionNodes != null) {
-					for (DDiagramElement sourceFunctionNode : sourceFunctionNodes) {
-						if (!coloredFunctionNodes.containsKey(sourceFunctionNode)) {
-							Set<FunctionalChain> newSet = new HashSet<FunctionalChain>();
-							newSet.add(me.getKey());
-							coloredFunctionNodes.put(sourceFunctionNode, newSet);
-						} else {
-							coloredFunctionNodes.get(sourceFunctionNode).add(me.getKey());
-						}
-					}
-				}
-			}
-			for (AbstractFunction aTargetFunction : FunctionalChainExt.getFlatFunctionalChainLastFunctions(me.getKey())) {
-			  // target Node of the functional chain
-			  Set<DDiagramElement> targetFunctionNodes = getBestDisplayedFunctionNode(aTargetFunction, displayedFunctions);
-				if (targetFunctionNodes != null) {
-					for (DDiagramElement targetFunctionNode : targetFunctionNodes) {
-						if (!coloredFunctionNodes.containsKey(targetFunctionNode)) {
-							Set<FunctionalChain> newSet = new HashSet<FunctionalChain>();
-							newSet.add(me.getKey());
-							coloredFunctionNodes.put(targetFunctionNode, newSet);
-						} else {
-							coloredFunctionNodes.get(targetFunctionNode).add(me.getKey());
-						}
-					}
-				}
-			}
-			for (FunctionalExchange anExchange : FunctionalChainExt.getFlatFunctionalExchanges(me.getKey())) {
-				if (displayedFE.containsKey(anExchange)) {
-					Set<DEdge> exchangeEdges = displayedFE.get(anExchange);
-					for (DEdge exchangeEdge : exchangeEdges) {
-						if (!coloredFE.containsKey(exchangeEdge)) {
-							Set<FunctionalChain> newSet = new HashSet<FunctionalChain>();
-							newSet.add(me.getKey());
-							coloredFE.put(exchangeEdge, newSet);
-						} else {
-							coloredFE.get(exchangeEdge).add(me.getKey());
-						}
-					}
-				}
-			}
-		}
-
-		// remove internal Links if the Functional chain is not displayed
-		for (Entry<FunctionalChain, Set<DEdge>> me : displayedIL.entrySet()) {
-			if (!displayedFC.containsKey(me.getKey())) {
-				for (DEdge anEdge : me.getValue()) {
-					DiagramServices.getDiagramServices().removeEdgeView(anEdge);
-				}
-			}
-		}
-
-		// update functions style
-		for (Entry<AbstractFunction, Set<DDiagramElement>> me : displayedFunctions.entrySet()) {
-			Set<DDiagramElement> functionNodes = me.getValue();
-			for (DDiagramElement functionNode : functionNodes) {
-				if (!coloredFunctionNodes.containsKey(functionNode)) {
-					resetFunctionStyle(functionNode);
-				}
-			}
-		}
-
-		// customize source and target function styles
-		for (Entry<FunctionalChain, DNode> me : displayedFC.entrySet()) {
-
-			updateFunctionalChainNodeColor(me.getValue(), displayedFC.values());
-			RGBValues color = ShapeUtil.getNodeColorStyle(me.getValue());
-			if (color == null) {
-				continue;
-			}
-			// customize source function of the chain
-			for (AbstractFunction aSourceFunction : FunctionalChainExt.getFlatFunctionalChainFirstFunctions(me.getKey())) {
-			  // source Node of the functional chain
-			  Set<DDiagramElement>  sourceFunctionNodes = getBestDisplayedFunctionNode(aSourceFunction, displayedFunctions);
-				if (sourceFunctionNodes != null) {
-					for (DDiagramElement sourceFunctionNode : sourceFunctionNodes) {
-						if (coloredFunctionNodes.get(sourceFunctionNode).size() == 1) {
-							customizeSourceFunctionStyle(sourceFunctionNode, color);
-							// color the border of the source function with the color of the functional chain
-						} else {
-							// color source function in red
-							customizeSourceFunctionStyle(sourceFunctionNode, ShapeUtil.getBlackColor());
-						}
-					}
-				}
-			}
-
-			// customize target function of the chain
-			for (AbstractFunction aTargetFunction : FunctionalChainExt.getFlatFunctionalChainLastFunctions(me.getKey())) {
-			// target Node of the functional chain
-			  Set<DDiagramElement> targetFunctionNodes = getBestDisplayedFunctionNode(aTargetFunction, displayedFunctions);
-				if (targetFunctionNodes != null) {
-					for (DDiagramElement targetFunctionNode : targetFunctionNodes) {
-						if (coloredFunctionNodes.get(targetFunctionNode).size() == 1) {
-							// color the border of the target function with the color of the functional chain
-							customizeTargetFunctionStyle(targetFunctionNode, color);
-						} else {
-							// color target function in red
-							customizeTargetFunctionStyle(targetFunctionNode, ShapeUtil.getBlackColor());
-						}
-					}
-				}
-			}
-
-			boolean isInOperationalAnalysis =
-					BlockArchitectureExt.getRootBlockArchitecture(((DSemanticDiagram) diagram).getTarget()) instanceof OperationalAnalysis;
-			// customize internal links (except in operational analysis architecture)
-			Set<DEdge> internalLinks = new HashSet<DEdge>();
-			if (!isInOperationalAnalysis) {
-				internalLinks = updateInternalLinks(me.getKey(), displayedFE, displayedIL, color);
-				updatedInternalLinks.addAll(internalLinks);
-			}
-
-			// customize functional exchanges
-			for (FunctionalExchange anExchange : FunctionalChainExt.getFlatFunctionalExchanges(me.getKey())) {
-				if (displayedFE.containsKey(anExchange)) {
-					Set<DEdge> currentEdges = displayedFE.get(anExchange);
-					for (DEdge currentEdge : currentEdges) {
-						if ((coloredFE.get(currentEdge).size() == 1)) {
-							customizeFunctionalExchangeEdgeStyle(currentEdge, color);
-						} else {
-							customizeFunctionalExchangeEdgeStyle(currentEdge, ShapeUtil.getBlackColor());
-						}
-					}
-				} else {
-					incompleteFC.add(me.getKey());
-				}
-			}
-           RefreshSiriusElement.refresh(me.getValue());
-		}
-
-		// destroy old internal links
-		for (Set<DEdge> anInternalLinkSet : displayedIL.values()) {
-			for (DEdge anInternalLink : anInternalLinkSet) {
-				if (!updatedInternalLinks.contains(anInternalLink)) {
-					DiagramServices.getDiagramServices().removeEdgeView(anInternalLink);
-				}
-			}
-		}
-
-		// reset functional exchanges with no functional chain
-		for (Set<DEdge> aFEs : displayedFE.values()) {
-			for (DEdge aFE : aFEs) {
-				if (!coloredFE.containsKey(aFE)) {
-					resetFunctionalExchangeStyle(aFE);
-				}
-			}
-		}
-	}
+		return functionalChainToNodeMap;
+  }
 
 	/**
 	 * @param currentSourceNode
@@ -380,61 +450,81 @@ public class FunctionalChainServices {
 		return true;
 	}
 
-	protected Set<DEdge> updateInternalLinks(FunctionalChain fc, Map<FunctionalExchange, Set<DEdge>> displayedFunctionalExchanges,
-			Map<FunctionalChain, Set<DEdge>> displayedIL, RGBValues color) {
-		Set<DEdge> internalLinks = new HashSet<DEdge>();
+	/**
+	 * Get existing internal links or create new ones if not existing.
+	 * @param functionalChain
+	 * @param displayedFunctionalExchanges
+	 * @return
+	 */
+	private Set<DEdge> computeVisibleInternalLinks(FunctionalChain functionalChain, Map<FunctionalExchange, Set<DEdge>> displayedFunctionalExchanges) {
+		Set<DEdge> internalLinks = new HashSet<>();
 
 		// iterate over involved functional exchange
-		for (FunctionalChainInvolvement anInvolvement : FunctionalChainExt.getFlatInvolvementsOf(fc, FaPackage.Literals.FUNCTIONAL_EXCHANGE)) {
-			FunctionalExchange currentExchange = (FunctionalExchange) anInvolvement.getInvolved();
-			if (!displayedFunctionalExchanges.containsKey(currentExchange)) {
-				continue;
-			}
+		for (FunctionalChainInvolvement involvement : FunctionalChainExt.getFlatInvolvementsOf(functionalChain, FaPackage.Literals.FUNCTIONAL_EXCHANGE)) {
+			FunctionalExchange functionalExchange = (FunctionalExchange) involvement.getInvolved();
 
-			Set<DEdge> currentEdges = displayedFunctionalExchanges.get(currentExchange);
+			Collection<FunctionalExchange> previousExchanges = getFlatPreviousFunctionalExchanges(functionalChain, involvement);
+			Collection<FunctionalExchange> nextExchanges = getFlatNextFunctionalExchanges(functionalChain, involvement);
+			
+			Set<DEdge> currentEdges = displayedFunctionalExchanges.get(functionalExchange);
+			currentEdges = (currentEdges == null) ? new HashSet<>() : currentEdges;
 			for (DEdge currentEdge : currentEdges) {
 				if (currentEdge == null) {
 				  continue;
 				}
 			  EdgeTarget currentSourceNode = currentEdge.getSourceNode();
-				EdgeTarget currentTargetNode = currentEdge.getTargetNode();
 				if (isValidNodeForInternalLink(currentSourceNode)) {
-
-					Collection<FunctionalExchange> previousExchanges = getFlatPreviousFunctionalExchanges(fc, anInvolvement);
-					Collection<FunctionalExchange> nextExchanges = getFlatNextFunctionalExchanges(fc, anInvolvement);
-
 					// Display an internal link from previousExchange.target to exchange.source
-					for (FunctionalExchange elt : previousExchanges) {
-						if (displayedFunctionalExchanges.containsKey(elt)) {
-							Set<DEdge> edges = displayedFunctionalExchanges.get(elt);
-							for (DEdge edge : edges) {
-								if ((edge != null) && isValidNodeForInternalLink(edge.getTargetNode())
-										&& isValidInternalLinkEdge(fc, edge.getTargetNode(), currentSourceNode)) {
-									internalLinks.add(retrieveInternalLink(edge.getTargetNode(), currentSourceNode, fc, color));
-								}
-							}
+					for (FunctionalExchange prevFE : previousExchanges) {
+						Set<DEdge> prevEdges = displayedFunctionalExchanges.get(prevFE);
+						prevEdges = (prevEdges == null) ? new HashSet<>() : prevEdges;
+						prevEdges.remove(null); // Remove null, just in case.
+						
+						for (DEdge prevEdge : prevEdges) {
+              EdgeTarget internalLinkSourceNode = prevEdge.getTargetNode();
+              EdgeTarget internalLinkTargetNode = currentSourceNode;
+              
+              if (isValidNodeForInternalLink(internalLinkSourceNode)
+                  && isValidInternalLinkEdge(functionalChain, internalLinkSourceNode, internalLinkTargetNode)) {
+                
+                DEdge internalLink = getExistingInternalLink(internalLinkSourceNode, internalLinkTargetNode, functionalChain);
+                if (internalLink == null) {
+                  internalLink = createInternalLink(internalLinkSourceNode, internalLinkTargetNode, functionalChain);
+                }
+                internalLinks.add(internalLink);
+              
+              }
 						}
 					}
+				}
 
-					// Display an internal link from exchange.target to nextExchange.source
-					for (FunctionalExchange elt : nextExchanges) {
-						if (displayedFunctionalExchanges.containsKey(elt)) {
-							Set<DEdge> edges = displayedFunctionalExchanges.get(elt);
-							for (DEdge edge : edges) {
-								if ((edge != null) && isValidNodeForInternalLink(edge.getSourceNode())
-										&& isValidInternalLinkEdge(fc, currentTargetNode, edge.getSourceNode())) {
-									internalLinks.add(retrieveInternalLink(currentTargetNode, edge.getSourceNode(), fc, color));
-								}
-							}
-						}
-					}
+				EdgeTarget currentTargetNode = currentEdge.getTargetNode();
+				if (isValidNodeForInternalLink(currentTargetNode)) {
+				  // Display an internal link from exchange.target to nextExchange.source
+				  for (FunctionalExchange nextFE : nextExchanges) {
+				    Set<DEdge> nextEdges = displayedFunctionalExchanges.get(nextFE);
+				    nextEdges = (nextEdges == null) ? new HashSet<>() : nextEdges;
+				    nextEdges.remove(null); // Remove null, just in case.
+				    
+				    for (DEdge nextEdge : nextEdges) {
+				      EdgeTarget internalLinkTargetNode = nextEdge.getSourceNode();
+				      EdgeTarget internalLinkSourceNode = currentTargetNode;
+				      
+              if (isValidNodeForInternalLink(internalLinkTargetNode)
+				          && isValidInternalLinkEdge(functionalChain, internalLinkSourceNode, internalLinkTargetNode)) {
+				        DEdge internalLink = getExistingInternalLink(internalLinkSourceNode, internalLinkTargetNode, functionalChain);
+				        if (internalLink == null) {
+				          internalLink = createInternalLink(internalLinkSourceNode, internalLinkTargetNode, functionalChain);
+				        }
+                internalLinks.add(internalLink);
+				      }
+				    }
+				  }
 				}
 			}
 		}
 
-		if (internalLinks.contains(null)) {
-			internalLinks.remove(null);
-		}
+		internalLinks.remove(null);
 		return internalLinks;
 	}
 
@@ -446,34 +536,35 @@ public class FunctionalChainServices {
 	 */
 	public boolean isValidInternalLinkEdge(FunctionalChain chain, EdgeTarget currentSourceNode, EdgeTarget currentTargetNode) {
 		if (currentSourceNode == null || currentSourceNode.getIncomingEdges().isEmpty()) {
-			return false;
-		}
-		if (currentTargetNode == null || currentTargetNode.getOutgoingEdges().isEmpty()) {
-			return false;
-		}
-		
-		// At least one incoming edge should be visible
-		if(!hasVisibleEdge(currentSourceNode.getIncomingEdges())){
-		  return false;
-		}
-		
-		// At least one outgoing edge should be visible
-		if(!hasVisibleEdge(currentTargetNode.getOutgoingEdges())){
-		  return false;
-		}
+      return false;
+    }
+    if (currentTargetNode == null || currentTargetNode.getOutgoingEdges().isEmpty()) {
+      return false;
+    }
+    
+    // At least one incoming edge should be visible
+    if(!hasVisibleEdge(currentSourceNode.getIncomingEdges())){
+      return false;
+    }
+    
+    // At least one outgoing edge should be visible
+    if(!hasVisibleEdge(currentTargetNode.getOutgoingEdges())){
+      return false;
+    }
 
-		EObject sourceParent = currentSourceNode.eContainer();
-		EObject targetParent = currentTargetNode.eContainer();
-		// Allow internal links only on same parent (it is correct?)
-		if ((sourceParent != null) && (targetParent != null)) {
-			return sourceParent.equals(targetParent);
-		}
-		return false;
+    EObject sourceParent = currentSourceNode.eContainer();
+    EObject targetParent = currentTargetNode.eContainer();
+    // Allow internal links only on same parent (it is correct?)
+    if ((sourceParent != null) && (targetParent != null)) {
+      return sourceParent.equals(targetParent);
+    }
+    return false;
 	}
+	
 
 	private boolean hasVisibleEdge(EList<DEdge> edges) {
 	  for(DEdge edge : edges){
-	    if(edge.isVisible()){
+	    if(!DiagramServices.getDiagramServices().isHidden(edge)){
 	      return true;
 	    }
 	  }
@@ -482,23 +573,15 @@ public class FunctionalChainServices {
   /**
 	 * Create or return an internal link between both nodes.
 	 */
-	protected DEdge retrieveInternalLink(EdgeTarget sourceNode, EdgeTarget targetNode, FunctionalChain fc, RGBValues color) {
-		HashMap<EdgeTarget, DEdge> outgoingEdges = new HashMap<EdgeTarget, DEdge>(); // outgoing Edges with targetNode as key
-
-		// find displayed internal links
-		for (DEdge anEdge : DiagramServices.getDiagramServices().getOutgoingEdges(sourceNode)) {
-			if ((anEdge.getTarget() != null) && (anEdge.getTarget() instanceof FunctionalChain) && (anEdge.getTarget().equals(fc))) {
-				outgoingEdges.put(anEdge.getTargetNode(), anEdge);
+	protected DEdge getExistingInternalLink(EdgeTarget sourceNode, EdgeTarget targetNode, FunctionalChain fc) {
+		DEdge internalLink = null;
+		for (DEdge edge : DiagramServices.getDiagramServices().getOutgoingEdges(sourceNode)) {
+			if ((edge.getTarget() instanceof FunctionalChain) && edge.getTarget().equals(fc) && targetNode.equals(edge.getTargetNode())) {
+				internalLink = edge;
+				break;
 			}
 		}
 
-		DEdge internalLink = outgoingEdges.get(targetNode);
-		if (internalLink == null) {
-			internalLink = createInternalLink(sourceNode, targetNode, fc, color);
-		}
-		if (internalLink != null) {
-			customizeInternalLinksEdgeStyle(internalLink, color);
-		}
 		return internalLink;
 	}
 
@@ -540,7 +623,7 @@ public class FunctionalChainServices {
 	 * @param color
 	 * @return
 	 */
-	public DEdge createInternalLink(EdgeTarget sourceNode, EdgeTarget targetNode, FunctionalChain fc, RGBValues color) {
+	public DEdge createInternalLink(EdgeTarget sourceNode, EdgeTarget targetNode, FunctionalChain fc) {
 		DDiagram diagram = CapellaServices.getService().getDiagramContainer(sourceNode);
 		EdgeMapping mapping = getInternLinkEdgeMapping(diagram);
 		DEdge newEdge = DiagramServices.getDiagramServices().findDEdgeElement(diagram, sourceNode, targetNode, fc, mapping);
