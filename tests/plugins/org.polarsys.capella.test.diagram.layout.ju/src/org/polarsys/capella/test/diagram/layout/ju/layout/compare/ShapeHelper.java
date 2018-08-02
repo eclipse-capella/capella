@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -303,7 +303,7 @@ public class ShapeHelper {
     return null;
   }
 
-  private static PointList getRelativePointListForDEdge(Diagram diagram_p, DDiagramElement element_p) {
+  public static PointList getRelativePointListForDEdge(Diagram diagram_p, DDiagramElement element_p) {
 
     // if the input DDiagramElement element is not a DEdge, return null.
     if (!(element_p instanceof DEdge)) {
