@@ -10,7 +10,9 @@ Require-Bundle: org.eclipse.core.runtime,
  org.polarsys.capella.core.preferences,
  org.polarsys.capella.core.model.preferences,
  org.polarsys.capella.core.sirius.analysis,
- org.eclipse.sirius.diagram
+ org.eclipse.sirius.diagram,
+ org.eclipse.sirius.common.ui,
+ org.polarsys.capella.test.diagram.layout.ju
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.test.diagram.tools.ju,
