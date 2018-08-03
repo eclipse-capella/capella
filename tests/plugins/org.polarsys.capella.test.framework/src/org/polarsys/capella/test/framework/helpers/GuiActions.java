@@ -27,8 +27,9 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.jobs.IJobManager;
 import org.eclipse.core.runtime.jobs.Job;
-import org.eclipse.emf.common.ui.URIEditorInput;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.edit.command.CommandParameter;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
@@ -36,7 +37,6 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorReference;
 import org.eclipse.ui.IWorkbenchPage;
@@ -49,6 +49,8 @@ import org.eclipse.ui.handlers.IHandlerService;
 import org.eclipse.ui.progress.UIJob;
 import org.polarsys.capella.core.explorer.activity.ui.actions.OpenActivityExplorerAction;
 import org.polarsys.capella.core.model.obfuscator.actions.ObfuscateSessionAction;
+import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaCopyToClipboardCommand;
+import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaPasteCommand;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.RenameResourceAction;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.SortContentAction;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.SortSelectionAction;
@@ -385,5 +387,27 @@ public class GuiActions {
         page.closeEditors(editorsToClose.toArray(new IEditorReference[editorsToClose.size()]), false);
       }
     }
+  }
+  
+  /**
+   * Copy a list of elements and paste to a target element
+   * 
+   * @param ted
+   *          the transaction editing domain
+   * @param elementsToCopy
+   *          list of elements to copy
+   * @param targetElement
+   *          the target element to copy to
+   */
+  public static void copyAndPaste(TransactionalEditingDomain ted, Collection<EObject> elementsToCopy,
+      EObject targetElement) {
+    // Copy
+    CapellaCopyToClipboardCommand capellaCopyToClipboardCommand = new CapellaCopyToClipboardCommand(ted, elementsToCopy,
+        null);
+    ted.getCommandStack().execute(capellaCopyToClipboardCommand);
+    // Paste
+    CapellaPasteCommand capellaPasteCommand = new CapellaPasteCommand(ted, targetElement, null,
+        CommandParameter.NO_INDEX);
+    ted.getCommandStack().execute(capellaPasteCommand);
   }
 }
