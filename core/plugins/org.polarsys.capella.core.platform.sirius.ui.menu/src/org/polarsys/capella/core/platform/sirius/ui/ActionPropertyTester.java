@@ -54,8 +54,7 @@ public class ActionPropertyTester extends PropertyTester {
           return isPropagationPortRealizationsFromCE(element);
         }
         if ("convertClassPrimitive".equals(actionName)) { //$NON-NLS-1$
-          return element instanceof SystemFunction;
-        	//return isConvertPrimitive(element);
+          return isConvertPrimitive(element);
         }
         if ("transformLiteralNumericValue".equals(actionName)) { //$NON-NLS-1$
           return element instanceof LiteralNumericValue;
