@@ -1,0 +1,133 @@
+= API changes =
+
+== From Capella 1.2.x to 1.3.x ==
+
+=== Extensible Menus have been updated ===
+
+On Capella 1.2.x, menus were duplicated between several views and between graphical and semantic elements.
+There was often (but not always) two menu contributions, one working on graphical elements, and another one on semantic elements.
+
+On Capella 1.3.x, menus are no longer duplicated between views and existing menus have been merged into only one menu, available on all elements / views.
+A menuContribution can decide if it is enabled only on diagrams or semantic elements by contributing the <code>visibleWhen</code> attribute.
+
+==== Migrated menus ====
+
+{|
+! Name
+! Location
+! Old
+! New
+|-
+|rowspan="3"|Wizards
+|Project explorer
+|<code>org.polarsys.capella.core.wizards</code>
+|<code>org.polarsys.capella.core.wizards</code>
+|-
+|Semantic Browser
+|<code>org.polarsys.capella.core.semantic.browser.wizards?after=additions</code>
+|<code>org.polarsys.capella.core.wizards?after=additions</code>
+|-
+|Diagram
+|<code>org.polarsys.capella.core.sirius.diagram.editor.wizards?after=additions</code>
+|<code>org.polarsys.capella.core.wizards?after=additions</code>
+|-
+|rowspan="2"|Modeling Accelerators
+|Project explorer
+|<code>capella.project.explorer.menu.accelerator/groupAccelerator</code>
+|<code>org.polarsys.capella.core.accelerators?after=additions</code>
+|-
+|Diagram
+|<code>AcceleratorDiagramCommands/groupAccelerator</code>
+|<code>org.polarsys.capella.core.accelerators?after=additions</code>
+|-
+|rowspan="2"|Transitions
+|Project explorer
+|<code>capella.project.explorer.menu.transitions.diagram.preferences?after=group.transition</code>
+|<code>org.polarsys.capella.core.transitions?after=additions</code>
+|-
+|Diagram
+|<code>capella.project.explorer.menu.transitions.diagram.preferences?after=group.transition</code>
+|<code>org.polarsys.capella.core.transitions?after=additions</code>
+|-
+|rowspan="2"|Capella
+|Diagram (unused menu)
+|<code>CapellaDiagramCommands/groupValidation</code>
+|<code>org.eclipse.ui.popup.any?after=group.validation</code>
+|-
+|Diagram (unused menu)
+|<code>CapellaDiagramCommands?after=groupApplicative</code>
+|<code>any other group</code>
+|-
+|}
+
+=== Menu visibility ===
+On Capella 1.2.x, all menus contributions were contributed to all views. It was leading to have many unwanted menus such as REC/RPL available on unrelevant views.
+
+Menu contributions are (still) organized into several contribution points, among:
+{|
+! Name
+|-
+|group.showIn
+|-
+|group.sendTo
+|-
+|group.semantic
+|-
+|group.validation
+|-
+|group.rec
+|-
+|group.pattern
+|-
+|group.transition
+|-
+|group.wizard
+|-
+|group.allocation
+|-
+|group.accelerator
+|}
+
+To contribute to a group, you just have to contribute to it through locationUri <code>org.eclipse.ui.popup.any?after=group.validation</code>
+
+On Capella 1.3.x, all contributions (groups) are no '''longer provided automatically''' on all views (capella and contributed views).
+Only <code>group.showIn</code> and <code>group.sendTo</code> are registered across all Capella views. 
+
+In a contributed view (from viewpoint or addon), to have all navigation menus, it only requires to add following code in the <code>plugin.xml</code> of your view. (or any other group)
+
+<pre>
+<menuContribution locationURI="popup:org.polarsys.capella.xxxx?after=additions">
+     <separator name="group.showIn" visible="true" />
+     <separator name="group.sendTo" visible="true" />
+</menuContribution>
+</pre>
+
+
+=== Property Tester ===
+
+Some property tester working on semantic elements (<code>org.polarsys.capella.common.data.modellingcore.ModelElement</code>) works now on graphical elements (<code>org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart</code>)
+
+"graphical" property testers are now deprecated and are merged into the semantic one.
+{|
+! Type
+! Old
+! New
+|-
+|IGraphicalEditPart
+|org.polarsys.capella.core.platform.sirius.ui.graphicalActionMode
+|org.polarsys.capella.core.platform.sirius.ui.actionMode
+|-
+|IGraphicalEditPart
+|org.polarsys.capella.core.platform.sirius.ui.graphicalFeatureIsA
+|org.polarsys.capella.core.platform.sirius.ui.featureIsA
+|-
+|IGraphicalEditPart
+|org.polarsys.capella.core.platform.sirius.ui.graphicalLayerOfWithOutDataFlowScenario
+|org.polarsys.capella.core.platform.sirius.ui.layerOfWithOutDataFlowScenario
+|-
+|IGraphicalEditPart
+|org.polarsys.capella.core.platform.sirius.ui.graphicalLayerOf
+|org.polarsys.capella.core.platform.sirius.ui.layerOf
+|-
+|}
+

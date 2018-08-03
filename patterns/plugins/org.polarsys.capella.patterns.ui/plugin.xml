@@ -45,7 +45,7 @@
          point="org.eclipse.ui.menus">
       <menuContribution
             allPopups="true"
-            locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+            locationURI="popup:org.eclipse.ui.popup.any?after=group.pattern">
          <menu
                icon="platform:/plugin/org.eclipse.emf.diffmerge.patterns.ui.sirius/icons/full/pattern.gif"
                id="capella.menu.patterns"
@@ -71,6 +71,7 @@
             
          </menu>
       </menuContribution>
+      
       <menuContribution
             allPopups="false"
             locationURI="popup:capella.menu.patterns?after=additions">
@@ -78,10 +79,6 @@
                commandId="org.eclipse.emf.diffmerge.patterns.ui.sirius.command.browsecatalogs"
                style="push">
          </command>
-      </menuContribution>
-      <menuContribution
-            allPopups="false"
-            locationURI="popup:capella.menu.patterns?after=additions">
          <command
                commandId="org.eclipse.emf.diffmerge.patterns.ui.sirius.command.HighlightAllPatternsInstances"
                style="push">
@@ -90,27 +87,15 @@
                name="org.polarsys.capella.patterns.ui.separator15"
                visible="true">
          </separator>
-      </menuContribution>
-      <menuContribution
-            allPopups="false"
-            locationURI="popup:capella.menu.patterns?after=additions">
          <command
                commandId="org.eclipse.emf.diffmerge.patterns.ui.sirius.command.PatternInstanceExplorerSetSelectionCommand"
                icon="platform:/plugin/org.eclipse.emf.diffmerge.patterns.ui.sirius/icons/full/pattern.gif"
                style="push">
          </command>
-      </menuContribution>
-      <menuContribution
-            allPopups="false"
-            locationURI="popup:capella.menu.patterns?after=additions">
          <command
                commandId="org.eclipse.emf.diffmerge.patterns.ui.sirius.command.manageinstance"
                style="push">
          </command>
-      </menuContribution>
-      <menuContribution
-            allPopups="false"
-            locationURI="popup:capella.menu.patterns?after=additions">
          <command
                commandId="org.eclipse.emf.diffmerge.patterns.ui.sirius.command.createtamplate"
                style="push">
@@ -119,10 +104,6 @@
                name="org.polarsys.capella.patterns.ui.separator13"
                visible="true">
          </separator>
-      </menuContribution>
-      <menuContribution
-            allPopups="false"
-            locationURI="popup:capella.menu.patterns?after=additions">
          <command
                commandId="org.eclipse.emf.diffmerge.patterns.ui.sirius.command.resetinclusions"
                style="push">
@@ -131,27 +112,14 @@
                name="org.polarsys.capella.patterns.ui.separator12"
                visible="true">
          </separator>
-      </menuContribution>
-      <menuContribution
-            allPopups="false"
-            locationURI="popup:capella.menu.patterns?after=additions">
          <command
                commandId="org.eclipse.emf.diffmerge.patterns.ui.sirius.command.includepatterns"
                style="push">
          </command>
-      </menuContribution>
-      <menuContribution
-            allPopups="false"
-            locationURI="popup:capella.menu.patterns?after=additions">
          <command
                commandId="org.eclipse.emf.diffmerge.patterns.ui.sirius.command.createpattern"
                style="push">
          </command>
-      </menuContribution>
-      
-       <menuContribution
-            allPopups="false"
-            locationURI="popup:capella.menu.patterns?after=additions">
          <command
                commandId="org.eclipse.emf.diffmerge.patterns.ui.sirius.command.applypattern"
                mode="FORCE_TEXT"

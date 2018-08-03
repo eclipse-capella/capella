@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,8 +28,11 @@ public class Messages extends NLS {
   public static String RefreshRepresentation_7;
   public static String RefreshRepresentation_8;
   
+  
   public static String RefreshRepresentation_9;
   public static String RefreshRepresentation_10;
+
+  public static String GotoRelatedElementsHandler_name;
   
   public static String RemoveHiddenElementsHandler_NoDiagramDialog_Text;
   public static String RemoveHiddenElementsHandler_ConfirmRefreshDialog_Title;

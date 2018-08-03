@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -49,6 +49,7 @@ import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.common.tools.api.constant.CommonPreferencesConstants;
 import org.eclipse.sirius.common.ui.SiriusTransPlugin;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
+import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
@@ -72,6 +73,7 @@ import org.eclipse.ui.navigator.INavigatorContentService;
 import org.eclipse.ui.navigator.INavigatorSaveablesService;
 import org.eclipse.ui.navigator.SaveablesProvider;
 import org.eclipse.ui.part.IPageSite;
+import org.eclipse.ui.part.ShowInContext;
 import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.tabbed.ITabbedPropertySheetPageContributor;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
@@ -85,8 +87,10 @@ import org.polarsys.capella.common.ui.toolkit.widgets.filter.TreePatternFilter;
 import org.polarsys.capella.core.commands.preferences.util.PreferencesHelper;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
+import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.CapellaNavigatorPlugin;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.IImageKeys;
+import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.LocateFilteredElementsInCommonNavigatorAction;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.SelectionHelper;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.move.MoveDownAction;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.move.MoveUpAction;
@@ -792,6 +796,33 @@ public class CapellaCommonNavigator extends CommonNavigator implements IEditingD
     return super.getAdapter(adapter);
   }
 
+  @Override
+  public boolean show(ShowInContext context) {
+    ISelection selection = context.getSelection();
+    
+    if (selection != null && !selection.isEmpty()) {
+      ArrayList<Object> toReveal = new ArrayList<Object>();
+      for (Object element : ((IStructuredSelection) selection).toArray()) {
+        if (element instanceof DRepresentation) {
+          toReveal.add(RepresentationHelper.getRepresentationDescriptor((DRepresentation) element));
+        } else {
+          toReveal.add(element);
+        }
+      }
+      
+      IStructuredSelection newSelection = new StructuredSelection(toReveal);
+      selectReveal(newSelection);
+      if (!LocateFilteredElementsInCommonNavigatorAction.isSetSelection(this.getCommonViewer(), newSelection)) {
+        LocateFilteredElementsInCommonNavigatorAction locateFilteredElementsInCommonNavigatorAction = new LocateFilteredElementsInCommonNavigatorAction(getSite().getId());
+        locateFilteredElementsInCommonNavigatorAction.run((IStructuredSelection) newSelection);
+        selectReveal(newSelection);
+      }
+      return true;
+    }
+    
+    return false;
+  }
+  
   /**
    * @see org.eclipse.ui.navigator.CommonNavigator#getCommonViewer()
    */

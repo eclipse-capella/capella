@@ -18,10 +18,7 @@ import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
-import org.polarsys.capella.common.ui.actions.LocateFilteredElementsInCommonNavigatorAction;
-import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.internal.navigate.NavigationAdvisor;
-import org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaCommonNavigator;
 
 /**
  * The action to locate semantically a Capella model element into the Capella explorer from the diagram view.
@@ -37,7 +34,7 @@ public class SemanticLocateInCapellaExplorerAction extends LocateInCapellaExplor
     boolean result = false;
     if (!selection.isEmpty()) {
       Object element = getElement(getFirstSelectedElement(selection));
-      if ((null != element) && (CapellaResourceHelper.isSemanticElement(element))) {
+      if (null != element) {
         Set<EObject> navigableElements = NavigationAdvisor.getInstance().getNavigableElements((ModelElement) element);
         result = !navigableElements.isEmpty();
       }
@@ -51,20 +48,11 @@ public class SemanticLocateInCapellaExplorerAction extends LocateInCapellaExplor
   @Override
   public void run(IAction action) {
     Object object = getElement(getFirstSelectedElement(getSelection()));
-    if (!(CapellaResourceHelper.isSemanticElement(object))) {
-      // Must not be there, as isEnabled answered true.
-      return;
-    }
-    EObject modelElement = (EObject) object;
     // The new semantic object to select.
-    Set<EObject> navigableElements = NavigationAdvisor.getInstance().getNavigableElements(modelElement);
+    Set<EObject> navigableElements = NavigationAdvisor.getInstance().getNavigableElements(object);
     // If the navigation returns something else, select it.
     if (!navigableElements.isEmpty()) {
       selectElementInCapellaExplorer(new StructuredSelection(navigableElements.toArray()));
-    } 
-    else {
-      LocateFilteredElementsInCommonNavigatorAction locateFilteredElementsInCommonNavigatorAction = new LocateFilteredElementsInCommonNavigatorAction(CapellaCommonNavigator.ID);
-      locateFilteredElementsInCommonNavigatorAction.run(new StructuredSelection(navigableElements.toArray()));
     }
   }
 
@@ -75,6 +63,8 @@ public class SemanticLocateInCapellaExplorerAction extends LocateInCapellaExplor
   @Override
   public void selectionChanged(IAction action, ISelection selection) {
     super.selectionChanged(action, selection);
-    action.setEnabled(isEnabled(selection));
+    if (action != null) {
+      action.setEnabled(isEnabled(selection));
+    }
   }
 }

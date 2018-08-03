@@ -15,15 +15,12 @@ import org.eclipse.jface.action.Action;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.StructuredViewer;
-import org.polarsys.capella.common.ui.actions.LocateFilteredElementsInCommonNavigatorAction;
-import org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaCommonNavigator;
 
 /**
+ * Allow to select an object in a viewer.
  */
-public/**
-       * Allow to select an object in a viewer.
-       */
-class NavigateAction extends Action {
+@Deprecated
+public class NavigateAction extends Action {
   /**
    * Element to select.
    */
@@ -51,10 +48,5 @@ class NavigateAction extends Action {
   public void run() {
     IStructuredSelection selection = new StructuredSelection(element);
     viewer.setSelection(selection, true);
-    if (!LocateFilteredElementsInCommonNavigatorAction.isSetSelection(viewer, selection)) {
-      LocateFilteredElementsInCommonNavigatorAction locateFilteredElementsInCommonNavigatorAction = new LocateFilteredElementsInCommonNavigatorAction(CapellaCommonNavigator.ID);
-      locateFilteredElementsInCommonNavigatorAction.run(selection);
-      viewer.setSelection(selection, true);
-    }
   }
 }

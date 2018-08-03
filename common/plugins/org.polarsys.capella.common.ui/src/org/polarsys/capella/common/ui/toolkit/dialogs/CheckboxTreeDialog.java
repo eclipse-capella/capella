@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -30,7 +30,6 @@ import org.eclipse.jface.viewers.ViewerSorter;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Shell;
-
 import org.polarsys.capella.common.ui.providers.MDEAdapterFactoryLabelProvider;
 import org.polarsys.capella.common.ui.toolkit.viewers.RegExpCheckboxTreeViewer;
 
@@ -39,6 +38,9 @@ import org.polarsys.capella.common.ui.toolkit.viewers.RegExpCheckboxTreeViewer;
  * This tree viewer only handles <b>root nodes</b> with <b>leaf</b> nodes as children i.e depth == 1.
  */
 public class CheckboxTreeDialog<T extends EObject, U extends EObject> extends AbstractViewerDialog {
+
+  public static final String CHECKBOX_TREE_DIALOG = "org.polarsys.capella.common.ui.toolkit.dialogs.checkboxTree";
+  
   /**
    * A proxy to a semantic element, that will be displayed in the checkbox tree viewer.<br>
    * Internal usage only.
@@ -263,7 +265,12 @@ public class CheckboxTreeDialog<T extends EObject, U extends EObject> extends Ab
    * @return a not <code>null</code> instance.
    */
   protected RegExpCheckboxTreeViewer createCheckboxTreeViewer(Composite dialogAreaComposite) {
-    return new RegExpCheckboxTreeViewer(dialogAreaComposite);
+    return new RegExpCheckboxTreeViewer(dialogAreaComposite) {
+      @Override
+      public String getContextMenuLocation() {
+        return CHECKBOX_TREE_DIALOG;
+      }
+    };
   }
 
   /**

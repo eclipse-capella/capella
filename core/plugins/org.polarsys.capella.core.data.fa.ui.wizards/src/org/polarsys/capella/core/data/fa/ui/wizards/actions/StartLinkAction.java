@@ -32,7 +32,6 @@ public class StartLinkAction extends AbstractLinkAction {
   @Override
   public void run() {
     linkManager.startLinkFrom(((TreeSelection) treeViewer.getSelection()).toList());
-
     super.run();
   }
 

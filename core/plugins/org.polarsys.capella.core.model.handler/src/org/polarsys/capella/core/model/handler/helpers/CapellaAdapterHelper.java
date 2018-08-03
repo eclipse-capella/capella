@@ -90,7 +90,7 @@ public class CapellaAdapterHelper {
   /**
    * This method returns the list of EObject from the given objects.
    */
-  private static Collection<EObject> resolveSemanticObjects(Collection<?> objects, boolean onlySemantic) {
+  public static Collection<EObject> resolveSemanticObjects(Collection<?> objects, boolean onlySemantic) {
     return objects.stream().map( x -> resolveSemanticObject(x, onlySemantic)).collect(Collectors.toList());
   }
   

@@ -45,6 +45,8 @@ import org.polarsys.capella.core.ui.metric.MetricMessages;
  */
 public class ProgressMonitoringOverviewDialog extends AbstractExportDialog {
 
+  public static final String PROGRESS_MONITORING_DIALOG = "org.polarsys.capella.core.ui.metric.dialog.progressMonitoring";
+  
   private CCombo combo;
   private EObject root = null;
 
@@ -157,7 +159,13 @@ public class ProgressMonitoringOverviewDialog extends AbstractExportDialog {
   protected AbstractRegExpViewer createViewer(Composite parent) {
     // Create tree viewer.
     // Don't use the status bar of the viewer b
-    TreeAndListViewer treeViewer = new TreeAndListViewer(parent, false, IViewerStyle.SHOW_STATUS_BAR);
+    TreeAndListViewer treeViewer = new TreeAndListViewer(parent, false, IViewerStyle.SHOW_STATUS_BAR) {
+      @Override
+      public String getContextMenuLocation() {
+        return PROGRESS_MONITORING_DIALOG;
+      }
+    };
+    
     TreeViewer viewer = treeViewer.getClientViewer();
     TreeViewerColumn columnViewer = new TreeViewerColumn(viewer, SWT.LEFT | SWT.FILL);
     TreeColumn column = columnViewer.getColumn();

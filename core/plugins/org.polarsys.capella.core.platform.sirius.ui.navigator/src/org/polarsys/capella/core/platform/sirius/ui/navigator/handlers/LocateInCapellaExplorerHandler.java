@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,7 @@ import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.IWorkbenchPart;
 
 import org.polarsys.capella.common.ui.services.commands.AbstractLocateInViewPartHandler;
+import org.polarsys.capella.common.ui.services.commands.ActionCommandDelegate;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.LocateInCapellaExplorerAction;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaCommonNavigator;
 
@@ -36,10 +37,12 @@ public class LocateInCapellaExplorerHandler extends AbstractLocateInViewPartHand
    *      org.eclipse.ui.IWorkbenchPart, org.eclipse.core.commands.ExecutionEvent)
    */
   @Override
-  protected IViewPart handleSelection(ISelection selection_p, IWorkbenchPart activePart_p, ExecutionEvent event_p) {
+  protected IViewPart handleSelection(ISelection selection, IWorkbenchPart activePart, ExecutionEvent event) {
     LocateInCapellaExplorerAction relatedAction = new LocateInCapellaExplorerAction();
-    relatedAction.setActivePart(null, activePart_p);
-    relatedAction.run(null);
+    ActionCommandDelegate delegate = new ActionCommandDelegate(event);
+    relatedAction.selectionChanged(delegate, selection);
+    relatedAction.setActivePart(delegate, activePart);
+    relatedAction.run(delegate);
     return null;
   }
 }

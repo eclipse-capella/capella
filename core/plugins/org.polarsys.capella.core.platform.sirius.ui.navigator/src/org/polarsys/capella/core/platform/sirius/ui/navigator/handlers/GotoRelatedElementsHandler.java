@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,70 +11,59 @@
 package org.polarsys.capella.core.platform.sirius.ui.navigator.handlers;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
-import java.util.Set;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.action.ActionContributionItem;
+import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IContributionItem;
-import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.swt.widgets.Menu;
-import org.eclipse.ui.IWorkbenchPage;
-import org.eclipse.ui.IWorkbenchPart;
-import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.ISelectionService;
 import org.eclipse.ui.actions.CompoundContributionItem;
-import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
-import org.polarsys.capella.common.ui.services.helper.EObjectImageProviderHelper;
-import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
+import org.eclipse.ui.menus.IWorkbenchContribution;
+import org.eclipse.ui.services.IServiceLocator;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.CapellaNavigatorPlugin;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.IImageKeys;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.LocateInCapellaExplorerAction;
-import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.NavigateAction;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.internal.navigate.NavigationAdvisor;
-import org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaCommonNavigator;
 
 /**
  * Handler used to provide a Goto sub menu manager from Sirius diagram editor.
  */
-public class GotoRelatedElementsHandler extends CompoundContributionItem {
+public class GotoRelatedElementsHandler extends CompoundContributionItem implements IWorkbenchContribution {
+
   /**
    * No contribution.
    */
   private static final IContributionItem[] NO_CONTRIBUTION_ITEM = new IContributionItem[0];
 
+  IServiceLocator locator = null;
+  
+  @Override
+  public void initialize(IServiceLocator serviceLocator) {
+    locator = serviceLocator;
+  }
   /**
    * {@inheritDoc}
    */
   @Override
   protected IContributionItem[] getContributionItems() {
-    IWorkbenchPage activePage = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
-    IWorkbenchPart activePart = activePage.getActivePart();
-    CapellaCommonNavigator capellaCommonNavigator = (CapellaCommonNavigator) activePage.findView(CapellaCommonNavigator.ID);
-    if ((null == activePart) || (null == capellaCommonNavigator)) {
-      return NO_CONTRIBUTION_ITEM;
-    }
-    ISelection selection = activePart.getSite().getSelectionProvider().getSelection();
+    ISelectionService service = locator.getService(ISelectionService.class);
+    ISelection selection =  service.getSelection();
     if ((selection != null) && (selection instanceof IStructuredSelection)) {
 
       // Preconditions
-      EObject element = getModelElement(((IStructuredSelection) selection).getFirstElement());
+      Object element = getModelElement(((IStructuredSelection) selection).getFirstElement());
       if (null == element) {
         return NO_CONTRIBUTION_ITEM;
       }
-      if (!CapellaResourceHelper.isSemanticElement(element)) {
-        return NO_CONTRIBUTION_ITEM;
-      }
-
       List<IContributionItem> result = new ArrayList<IContributionItem>(0);
-      Set<EObject> navigableElements = NavigationAdvisor.getInstance().getNavigableElements(element);
+      Collection<EObject> navigableElements = getRelatedElements(element);
       for (EObject currentModelElement : navigableElements) {
-        // Create a navigate action that enables this navigation.
-        NavigateAction action = new NavigateAction(currentModelElement, capellaCommonNavigator.getCommonViewer());
-        action.setText(EObjectLabelProviderHelper.getText(currentModelElement));
-        action.setImageDescriptor(ImageDescriptor.createFromImage(EObjectImageProviderHelper.getImage(currentModelElement)));
-        result.add(new ActionContributionItem(action));
+        result.add(createNavigationTowards(currentModelElement));
       }
       return result.toArray(new IContributionItem[result.size()]);
     }
@@ -82,6 +71,15 @@ public class GotoRelatedElementsHandler extends CompoundContributionItem {
     return NO_CONTRIBUTION_ITEM;
   }
 
+  protected IContributionItem createNavigationTowards(EObject object) {
+    IAction action = LocateInCapellaExplorerAction.createLocateTowards(object, Messages.GotoRelatedElementsHandler_name, true);
+    return new ActionContributionItem(action);
+  }
+  
+  protected Collection<EObject> getRelatedElements(Object element) {
+    return  NavigationAdvisor.getInstance().getNavigableElements(element);
+  }
+  
   /**
    * {@inheritDoc}
    */
@@ -96,8 +94,11 @@ public class GotoRelatedElementsHandler extends CompoundContributionItem {
    * @param uiSelectedElement_p
    * @return
    */
-  protected EObject getModelElement(Object uiSelectedElement_p) {
+  protected Object getModelElement(Object uiSelectedElement_p) {
     Object semanticElement = LocateInCapellaExplorerAction.getElement(uiSelectedElement_p);
-    return (semanticElement instanceof EObject) ? (EObject) semanticElement : null;
+    return semanticElement;
   }
+
+
+  
 }

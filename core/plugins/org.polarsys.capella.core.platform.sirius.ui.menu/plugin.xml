@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <!--
-  Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -11,700 +11,254 @@
        Thales - initial API and implementation
 -->
 <plugin>
-   <extension id="org.polarsys.capella.core.sirius.menus.tig.popups" point="org.eclipse.ui.popupMenus">
-      <objectContribution id="org.polarsys.capella.core.sirius.menus.unsorted" objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
-         
-         <menu id="CapellaDiagramCommands" label="Capella" path="additions">
-            <groupMarker name="groupValidation">
-            </groupMarker>
-            <separator name="separator1">
-            </separator>
-            <groupMarker name="groupApplicative">
-            </groupMarker>
-            <separator name="separator2">
-            </separator>
-         </menu>
-         <!--menu
-               id="WizardDiagramCommands"
-               label="%wizardGroup_label">
-            <groupMarker
-                  name="groupWizards">
-            </groupMarker>
-         </menu-->
-         <!--menu
-               id="TransitionDiagramCommands"
-               label="%transitionGroup_label"
-               path="additions">
-            <groupMarker
-                  name="groupTransitions">
-            </groupMarker>
-            
-         </menu-->
-         <menu
-               id="AcceleratorDiagramCommands"
-               label="%acceleratorGroup_label"
-               path="group.accelerator">
-            <groupMarker
-                  name="groupAccelerator">
-            </groupMarker>
-         </menu>
-         <enablement>
-             <test property="org.polarsys.capella.core.platform.sirius.ui.classOf" forcePluginActivation="true" value="CapellaElement">
-             </test>
-         </enablement>
-         <!--action
-               class="org.polarsys.capella.core.platform.sirius.ui.actions.AllocationManagementWizardAction"
-               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_manage.gif"
-               id="org.polarsys.capella.core.platform.sirius.ui.actions.AllocationManagementWizardAction"
-               label="%AllocationManagement"
-               menubarPath="WizardDiagramCommands">
-         </action>
-         <action
-               class="org.polarsys.capella.core.platform.sirius.ui.actions.RequirementManagerWizardAction"
-               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_edit.gif"
-               id="org.polarsys.capella.core.platform.sirius.ui.actions.RequirementManagerWizardAction"
-               label="%RequirementManager"
-               menubarPath="WizardDiagramCommands/groupWizards">
-               
-         </action>
-         <action
-               class="org.polarsys.capella.core.platform.sirius.ui.actions.MDTraceViewEditAction"
-               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_trace.gif"
-               id="org.polarsys.capella.core.platform.sirius.ui.actions.MDTraceViewEditAction"
-               label="%TraceManager"
-               menubarPath="WizardDiagramCommands/groupWizards">
-         </action-->
-         <!--action
-               class="org.polarsys.capella.core.platform.sirius.ui.actions.CheckAction"
-               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_validate.gif"
-               id="org.polarsys.capella.core.platform.sirius.ui.actions.CheckAction"
-               label="%ValidateModel"
-               menubarPath="additions">
-         </action-->
-         <action
-               class="org.polarsys.capella.core.platform.sirius.ui.actions.CopyPathAction"
-               enablesFor="1"
-               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_copy_path.gif"
-               id="org.polarsys.capella.core.platform.sirius.ui.menu.CopyPathAction"
-               label="Copy Qualified Name"
-               menubarPath="BusinessCopyPasteMenuSirius">
-         </action>
-      </objectContribution>
-      
-     
-      
-      <objectContribution
-            id="org.polarsys.capella.core.sirius.explorer.menus"
-            objectClass="org.polarsys.capella.common.data.modellingcore.ModelElement">
-         <!--menu
-               id="capella.project.explorer.menu.wizards"
-               label="%wizardGroup_label">
-            <groupMarker
-                  name="groupWizards">
-            </groupMarker>
-         </menu>
-         <menu
-               id="capella.project.explorer.menu.transitions"
-               label="%transitionGroup_label">
-            <groupMarker
-                  name="groupTransitions">
-            </groupMarker>
-         </menu-->
-         <menu
-               id="capella.project.explorer.menu.accelerator"
-               label="%acceleratorGroup_label"
-               path="group.accelerator">
-            <groupMarker
-                  name="groupAccelerator">
-            </groupMarker>
-         </menu>
-         <!--action
-               class="org.polarsys.capella.core.platform.sirius.ui.actions.AllocationManagementWizardAction"
-               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_manage.gif"
-               id="org.polarsys.capella.core.platform.sirius.ui.actions.AllocationManagementWizardAction"
-               label="%AllocationManagement"
-               menubarPath="capella.project.explorer.menu.wizards">
-               
-               
-         </action>
-         <action
-               class="org.polarsys.capella.core.platform.sirius.ui.actions.RequirementManagerWizardAction"
-               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_edit.gif"
-               id="org.polarsys.capella.core.platform.sirius.ui.menu.requirementManagerWizardAction"
-               label="%RequirementManager"
-               menubarPath="capella.project.explorer.menu.wizards/groupWizards">
-               
-               
-         </action>
-         <action
-               class="org.polarsys.capella.core.platform.sirius.ui.actions.MDTraceViewEditAction"
-               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_trace.gif"
-               id="org.polarsys.capella.core.platform.sirius.ui.menu.action2"
-               label="%TraceManager"
-               menubarPath="capella.project.explorer.menu.wizards/groupWizards">
-               
-         </action-->
-         <action
-               class="org.polarsys.capella.core.platform.sirius.ui.actions.CopyPathAction"
-               enablesFor="1"
-               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_copy_path.gif"
-               id="org.polarsys.capella.core.platform.sirius.ui.menu.CopyPathAction2"
-               label="Copy Qualified Name"
-                menubarPath="group.edit">
-         </action>
-         
-         
-      </objectContribution>
-      <objectContribution
-            id="org.polarsys.capella.core.sirius.menus.graphical.synchronizeEIOnPorts"
-            objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
-         <enablement>
-         <test forcePluginActivation="true"
-               property="org.polarsys.capella.core.platform.sirius.ui.graphicalActionMode"
-               value="synchronizeEIOnPorts">
-         </test>
-         </enablement>
-         <action
-               class="org.polarsys.capella.core.platform.sirius.ui.actions.SynchronizeExchangeItemAllocationsAction"
-               enablesFor="1"
-               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
-               id="org.polarsys.capella.core.platform.sirius.ui.actions.SynchronizeEIOnPortsAction"
-               label="%SynchronizeEIOnPorts"
-               menubarPath="AcceleratorDiagramCommands/groupAccelerator">
-         </action>
-      </objectContribution>
-      <objectContribution
-            id="capella.project.explorer.toolsContributor.synchronizeEIOnPorts"
-            objectClass="org.polarsys.capella.common.data.modellingcore.ModelElement">
-         <action
-               class="org.polarsys.capella.core.platform.sirius.ui.actions.SynchronizeExchangeItemAllocationsAction"
-               enablesFor="1"
-               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
-               id="org.polarsys.capella.core.platform.sirius.ui.actions.SynchronizeEIOnPortsAction1"
-               label="%SynchronizeEIOnPorts"
-               menubarPath="capella.project.explorer.menu.accelerator/groupAccelerator">
-         </action>
-         <enablement>
-         <test forcePluginActivation="true"
-               property="org.polarsys.capella.core.platform.sirius.ui.actionMode"
-               value="synchronizeEIOnPorts">
-         </test>
-         </enablement>
-      </objectContribution>
-      <objectContribution
-            id="org.polarsys.capella.core.sirius.menus.graphical.propagationEIOnPorts"
-            objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
-            
-         <enablement>
-         <test forcePluginActivation="true"
-               property="org.polarsys.capella.core.platform.sirius.ui.graphicalActionMode"
-               value="propagationEIOnPorts">
-         </test> 
-           
-           <!--test forcePluginActivation="true" 
-                         property="org.polarsys.capella.core.commands.preferences.properties.capellaCommandsModelingPreferences"
-                         value="TEST_VALIDATION">
-           </test-->  
-         </enablement>
-         
-         <action
-               class="org.polarsys.capella.core.platform.sirius.ui.actions.PropagateExchangeItemAllocationsAction"
-               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
-               id="org.polarsys.capella.core.platform.sirius.ui.actions.PropagateEIOnPortsAction"
-               label="%PropagateEIOnPorts"
-               menubarPath="AcceleratorDiagramCommands/groupAccelerator">
-         </action>
-      </objectContribution>
-      <objectContribution
-            id="capella.project.explorer.toolsContributor.propagationEIOnPorts1"
-            objectClass="org.polarsys.capella.common.data.modellingcore.ModelElement">
-         <action
-               class="org.polarsys.capella.core.platform.sirius.ui.actions.PropagateExchangeItemAllocationsAction"
-               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
-               id="org.polarsys.capella.core.platform.sirius.ui.actions.PropagateEIOnPortsAction1"
-               label="%PropagateEIOnPorts"
-               menubarPath="capella.project.explorer.menu.accelerator/groupAccelerator">
-         </action>
-         
-         <enablement>
-         <test forcePluginActivation="true"
-               property="org.polarsys.capella.core.platform.sirius.ui.actionMode"
-               value="propagationEIOnPorts">
-         </test>   
-         </enablement>
-         
-      </objectContribution>
-      <objectContribution
-            id="org.polarsys.capella.core.sirius.menus.graphical.propagationPortRealizations1"
-            objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
-            
-         <enablement>
-         <test forcePluginActivation="true"
-               property="org.polarsys.capella.core.platform.sirius.ui.graphicalActionMode"
-               value="propagationPortRealizationsFromFE">
-         </test>   
-         </enablement>
-         
-         <action
-               class="org.polarsys.capella.core.platform.sirius.ui.actions.PortRealizationPropagationAction"
-               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
-               id="org.polarsys.capella.core.sirius.menus.graphical.propagationPortRealizations1"
-               label="%PropagatePortRealizationsFromFE"
-               menubarPath="AcceleratorDiagramCommands/groupAccelerator">
-         </action>
-      </objectContribution>
-      <objectContribution
-            id="org.polarsys.capella.core.sirius.menus.graphical.propagationPortRealizations2"
-            objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
-            
-         <enablement>
-         <test forcePluginActivation="true"
-               property="org.polarsys.capella.core.platform.sirius.ui.graphicalActionMode"
-               value="propagationPortRealizationsFromCE">
-         </test>   
-         </enablement>
-         
-         
-         <action
-               class="org.polarsys.capella.core.platform.sirius.ui.actions.PortRealizationPropagationAction"
-               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
-               id="org.polarsys.capella.core.sirius.menus.graphical.propagationPortRealizations2"
-               label="%PropagatePortRealizationsFromCE"
-               menubarPath="AcceleratorDiagramCommands/groupAccelerator">
-         </action>
-      </objectContribution>
-      
-      
-      <objectContribution
-            id="capella.project.explorer.toolsContributor.propagationPortRealizations1"
-            objectClass="org.polarsys.capella.common.data.modellingcore.ModelElement">
-         <action
-               class="org.polarsys.capella.core.platform.sirius.ui.actions.PortRealizationPropagationAction"
-               enablesFor="1"
-               id="org.polarsys.capella.core.sirius.menus.graphical.propagationPortRealizations1"
-               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
-               label="%PropagatePortRealizationsFromFE"
-               menubarPath="capella.project.explorer.menu.accelerator/groupAccelerator">
-         </action>
-         
-         <enablement>
-         <test forcePluginActivation="true"
-               property="org.polarsys.capella.core.platform.sirius.ui.actionMode"
-               value="propagationPortRealizationsFromFE">
-         </test>   
-         </enablement>
-         
-      </objectContribution>
-      
-      
-      <objectContribution
-            id="capella.project.explorer.toolsContributor.propagationPortRealizations3"
-            objectClass="org.polarsys.capella.common.data.modellingcore.ModelElement">
-            
-         <enablement>
-         <test forcePluginActivation="true"
-               property="org.polarsys.capella.core.platform.sirius.ui.actionMode"
-               value="propagationPortRealizationsFromCE">
-         </test>   
-         </enablement>
-         
-         <action
-               class="org.polarsys.capella.core.platform.sirius.ui.actions.PortRealizationPropagationAction"
-               enablesFor="1"
-               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
-               id="org.polarsys.capella.core.sirius.menus.graphical.propagationPortRealizations3"
-               label="%PropagatePortRealizationsFromCE"
-               menubarPath="capella.project.explorer.menu.accelerator/groupAccelerator">
-         </action>
-         
-      </objectContribution>
-      <objectContribution
-            adaptable="false"
-            id="capella.project.explorer.toolsContributor.TransformLiteralNumericValue"
-            objectClass="org.polarsys.capella.core.data.information.datavalue.LiteralNumericValue">
-         <action
-               class="org.polarsys.capella.core.platform.sirius.ui.actions.TransformLiteralNumericValueAction"
-               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
-               id="org.polarsys.capella.core.platform.sirius.ui.menu.TransformLiteralNumericValue"
-               label="Transform value to reference"
-               menubarPath="capella.project.explorer.menu.accelerator/groupAccelerator">
-         </action>
-      </objectContribution>
-      <objectContribution
-            adaptable="false"
-            id="org.polarsys.capella.core.sirius.menus.graphical.TransformLiteralNumericValue"
-            objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
-         <action
-               class="org.polarsys.capella.core.platform.sirius.ui.actions.TransformLiteralNumericValueAction"
-               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
-               id="org.polarsys.capella.core.platform.sirius.ui.menu.TransformLiteralNumericValue"
-               label="Transform value to reference"
-               menubarPath="AcceleratorDiagramCommands/groupAccelerator">
-         </action>
-         <enablement><test property="org.polarsys.capella.core.platform.sirius.ui.classOf" forcePluginActivation="true" value="LiteralNumericValue"></test></enablement>
-      </objectContribution>
-      <objectContribution
-            adaptable="false"
-            id="capella.project.explorer.toolsContributor.ConvertClassPrimitive"
-            objectClass="org.polarsys.capella.core.data.information.Class">
-         <action
-               class="org.polarsys.capella.core.platform.sirius.ui.actions.ConvertPrimitiveAction"
-               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
-               id="org.polarsys.capella.core.platform.sirius.ui.menu.ConvertClassPrimitive"
-               label="Transform to non-Primitive"
-               menubarPath="capella.project.explorer.menu.accelerator/groupAccelerator">
-         </action>
-         <enablement>
-            <test
-                  forcePluginActivation="true"
-                  property="org.polarsys.capella.core.platform.sirius.ui.actionMode"
-                  value="convertClassPrimitive">
-            </test>
-         </enablement>
-      </objectContribution>
-      <objectContribution
-            adaptable="false"
-            id="org.polarsys.capella.core.sirius.menus.graphical.ConvertClassPrimitive"
-            objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
-         <enablement>
-            <and> 
-            <test
-                  forcePluginActivation="true"
-                  property="org.polarsys.capella.core.platform.sirius.ui.classOf"
-                  value="Class">
-            </test>
-            <test
-                  forcePluginActivation="true"
-                  property="org.polarsys.capella.core.platform.sirius.ui.graphicalActionMode"
-                  value="convertClassPrimitive">
-            </test>
-            </and>
-         </enablement>
-         <action
-               class="org.polarsys.capella.core.platform.sirius.ui.actions.ConvertPrimitiveAction"
-               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
-               id="org.polarsys.capella.core.platform.sirius.ui.menu.ConvertClassPrimitive"
-               label="Transform to non-Primitive"
-               menubarPath="AcceleratorDiagramCommands/groupAccelerator">
-         </action>
-      </objectContribution>
-      
-      
-   </extension>
    
-   
-   
-   <!-- _____________________________________________________________________________________________________________________________ -->
-  
-  
-      <!-- Model Editor Contextual Transitions MENU -->
-  
-  
-
-
-
-    <extension
-         point="org.eclipse.ui.menus">
-          <menuContribution
-                allPopups="true"
-                locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+    <extension point="org.eclipse.ui.menus">
+    
+    	<!-- Sirius contribution. We want all our menu available on the diagram menu. Navigation on top. -->
+       <menuContribution
+                locationURI="popup:org.eclipse.gmf.runtime.diagram.ui.DiagramEditorContextMenu?after=navigateGroup">
+               
+              <separator name="group.showIn" visible="true" />
+              <separator name="group.sendTo" visible="true" />
+              
+       </menuContribution>
+       
+       <menuContribution
+                locationURI="popup:org.eclipse.gmf.runtime.diagram.ui.DiagramEditorContextMenu?after=additions">
                 
               <separator name="group.semantic" visible="true" />
-              <separator name="group.validation" visible="false" />
+              
+              <separator name="group.validation" visible="true" />
               <separator name="group.rec" visible="false" />
               <separator name="group.pattern" visible="false" />
               <separator name="group.transition" visible="false" />
               <separator name="group.wizard" visible="false" />
               <separator name="group.allocation" visible="false" />
               <separator name="group.accelerator" visible="false" />
-              <separator name="group.categories" visible="false" />
+              
+              <separator name="group.categories" visible="true" />
+              
       </menuContribution>
-      </extension>  
       
-    <extension
-         point="org.eclipse.ui.menus">
-          <menuContribution
-                allPopups="false"
+      <menuContribution
+                locationURI="popup:org.eclipse.gmf.runtime.diagram.ui.DiagramEditorContextMenu?after=additions">
+       
+              <menu id="CapellaDiagramCommands" label="Legacy Capella Commands">
+	               <separator name="groupValidation">
+    	           </separator>
+    	           <separator name="separator1">
+    	           </separator>
+	               <separator name="groupApplicative">
+    	           </separator>
+    	           <separator name="separator2">
+    	           </separator>
+              </menu>
+              
+       </menuContribution>
+       
+               
+       <!-- Semantic Browser -->
+       <menuContribution
+                locationURI="popup:org.polarsys.capella.core.ui.semantic.browser.view.SemanticBrowserID?after=additions">
+                
+              <separator name="group.showIn" visible="true" />
+              <separator name="group.sendTo" visible="true" />
+              
+       </menuContribution>
+       
+       <!-- Impact Analysis -->
+       <menuContribution
+                locationURI="popup:org.polarsys.capella.core.ui.toolkit.dialogs.impactAnalysis?after=additions">
+               
+              <separator name="group.showIn" visible="true" />
+              <separator name="group.sendTo" visible="true" />
+              
+       </menuContribution>
+       
+       <!-- Diff-Merge editor -->
+       <menuContribution
+                locationURI="popup:org.eclipse.compare.CompareEditor?after=additions">
+               
+              <separator name="group.showIn" visible="true" />
+              <separator name="group.sendTo" visible="true" />
+              
+       </menuContribution>
+       
+       <menuContribution
+                locationURI="popup:org.eclipse.emf.diffmerge.ui.defer.view?after=additions">
+               
+              <separator name="group.showIn" visible="true" />
+              <separator name="group.sendTo" visible="true" />
+              
+       </menuContribution>
+       
+       <!-- REC-RPL -->
+       <menuContribution
+                locationURI="popup:org.polarsys.capella.common.re.createRec?after=additions">
+               
+              <separator name="group.showIn" visible="true" />
+              <separator name="group.sendTo" visible="true" />
+              
+       </menuContribution>
+       
+       <menuContribution
+                locationURI="popup:org.polarsys.capella.common.re.createReplica.location?after=additions">
+               
+              <separator name="group.showIn" visible="true" />
+              <separator name="group.sendTo" visible="true" />
+              
+       </menuContribution>
+       
+       <!-- Progress Monitoring -->
+       <menuContribution
+                locationURI="popup:org.polarsys.capella.core.ui.metric.dialog.progressMonitoring?after=additions">
+               
+              <separator name="group.showIn" visible="true" />
+              <separator name="group.sendTo" visible="true" />
+              
+       </menuContribution>
+       
+       <!-- Select Elements -->
+       <menuContribution
+                locationURI="popup:org.polarsys.capella.common.ui.toolkit.dialogs.selectElements?after=additions">
+               
+              <separator name="group.showIn" visible="true" />
+              <separator name="group.sendTo" visible="true" />
+              
+       </menuContribution>
+       
+       <menuContribution
+                locationURI="popup:org.polarsys.capella.common.ui.toolkit.dialogs.transferTreeListElements.leftPane?after=additions">
+               
+              <separator name="group.showIn" visible="true" />
+              <separator name="group.sendTo" visible="true" />
+              
+       </menuContribution>
+       
+       <menuContribution
+                locationURI="popup:org.polarsys.capella.common.ui.toolkit.dialogs.transferTreeListElements.rightPane?after=additions">
+               
+              <separator name="group.showIn" visible="true" />
+              <separator name="group.sendTo" visible="true" />
+              
+       </menuContribution>
+       
+       <menuContribution
+                locationURI="popup:org.polarsys.capella.common.ui.toolkit.dialogs.checkboxTree?after=additions">
+               
+              <separator name="group.showIn" visible="true" />
+              <separator name="group.sendTo" visible="true" />
+              
+       </menuContribution>
+       
+       
+       <!-- Trace manager -->
+       
+       <menuContribution
+                locationURI="popup:org.polarsys.capella.core.platform.eclipse.capella.ui.trace.views.leftPane?after=additions">
+               
+              <separator name="group.showIn" visible="true" />
+              <separator name="group.sendTo" visible="true" />
+              
+       </menuContribution>
+       
+       
+       <menuContribution
+                locationURI="popup:org.polarsys.capella.core.platform.eclipse.capella.ui.trace.views.rightPane?after=additions">
+               
+              <separator name="group.showIn" visible="true" />
+              <separator name="group.sendTo" visible="true" />
+              
+       </menuContribution>
+       
+       
+       <!-- Information View -->
+      <menuContribution
+                locationURI="popup:org.polarsys.capella.common.tools.report.appenders.reportlogview.logview?after=navigation">
+               
+              <separator name="group.showIn" visible="true" />
+              
+       </menuContribution>
+       
+       
+       
+       
+       
+       <menuContribution
+                locationURI="popup:org.polarsys.capella.core.validation.ui.ide.quickfix.objectNavigator?after=additions">
+               
+              <separator name="group.showIn" visible="true" />
+              <separator name="group.sendTo" visible="true" />
+              
+       </menuContribution>
+       
+     </extension>
+
+     <extension point="org.eclipse.ui.menus">
+    
+       <!-- Legacy separators are inserted into the new ones -->
+       <menuContribution
+                locationURI="popup:org.eclipse.ui.popup.any?after=group.showIn">
+               
+              <separator name="group.goto" visible="true" />
+              <separator name="group.show" visible="true" />
+              
+       </menuContribution>
+      
+       <menuContribution
                 locationURI="popup:org.eclipse.ui.popup.any?after=group.transition">
          <menu 
-             id="capella.project.explorer.menu.transitions.diagram.preferences"  label="Transitions">
-             <visibleWhen checkEnabled="false">
-                   <reference
-                         definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.transitionVisibilityDiagramElementExpression">
-                   </reference>
-              </visibleWhen>
+             id="org.polarsys.capella.core.transitions" label="%transitionGroup_label">
+             
+             <menu id="capella.project.explorer.menu.transitions.diagram.preferences" label="Legacy Transitions Commands">
+             </menu>
+              
          </menu>
-                      
+       
       </menuContribution>
       
-      
-      </extension>
-  
-    <!-- Model Editor Contextual Wizards MENU -->
-       
-    <extension
-         point="org.eclipse.ui.menus"> 
-          <menuContribution
+      <menuContribution
             locationURI="popup:org.eclipse.ui.popup.any?after=group.wizard">
             
          <menu
-               id="org.polarsys.capella.core.sirius.diagram.editor.wizards"  label="Wizards">
-               <visibleWhen
-                     checkEnabled="false">
-                     <reference
-                           definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.wizardVisibilityDiagramElementExpression">
-                     </reference>
-               </visibleWhen>
-            
-         </menu>
-                      
-      </menuContribution>
-      
-      
-      
-      
-        <!-- Requirement Manager -->
-      <menuContribution  allPopups="true"
-            locationURI="popup:org.polarsys.capella.core.sirius.diagram.editor.wizards?after=additions">
-         <command commandId="org.polarsys.capella.core.platform.sirius.ui.actions.RequirementManagerWizardAction" 
-         style="push" 
-         icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_edit.gif" >  
-           <visibleWhen checkEnabled="false">
-            <with variable="selection">
-                <iterate>
-                        <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.wizardVisibilityDiagramElementExpression"/>
-                </iterate>
-            </with>
-          </visibleWhen>
-        </command> 
-      </menuContribution>
-      
-      <!-- Trace Manager -->
-      <menuContribution  allPopups="true"
-            locationURI="popup:org.polarsys.capella.core.sirius.diagram.editor.wizards?after=additions">
-         <command  commandId="org.polarsys.capella.core.platform.sirius.ui.actions.traceManagerCommand" 
-         style="push" 
-         icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_trace.gif" >  
-           <visibleWhen checkEnabled="false">
-            <with variable="selection">
-                <iterate>
-                        <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.wizardVisibilityDiagramElementExpression"/>
-                </iterate>
-            </with>
-          </visibleWhen>
-        </command> 
-      </menuContribution>
-      
-      
-      </extension>
-      
-        <!-- Semantic Browser Menu -->
-        
-        <extension
-         point="org.eclipse.ui.menus">
-          <menuContribution
-            locationURI="popup:org.polarsys.capella.core.ui.semantic.browser.view.SemanticBrowserID?after=additions">
-         <command
-               commandId="org.polarsys.capella.core.platform.sirius.ui.actions.AllocationManagementWizardAction"
-               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_manage.gif"
-               style="push">
+               id="org.polarsys.capella.core.wizards"  label="%wizardGroup_label">
                
-               <visibleWhen checkEnabled="false">
-                   <reference
-                         definitionId="org.polarsys.capella.core.semantic.ui.expression.transitionVisibilityModelElementExpression">
-                   </reference>
-              </visibleWhen>
-         </command>
-      </menuContribution>
-      
-     </extension>
-     
-     
-     
-     
-     
-      
-      <extension
-         point="org.eclipse.ui.menus">
-          <menuContribution
-            locationURI="popup:org.polarsys.capella.core.ui.semantic.browser.view.SemanticBrowserID?after=additions">
-            
-         <menu
-               id="org.polarsys.capella.core.semantic.browser.wizards"  label="Wizards">
-               <visibleWhen
-                     checkEnabled="false">
-                     <reference
-                           definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.wizardVisibilityDiagramElementExpression">
-                     </reference>
-               </visibleWhen>
-            
+              <menu id="org.polarsys.capella.core.semantic.browser.wizards" label="Legacy Wizards Commands">
+              </menu>
+              
+              <menu id="org.polarsys.capella.core.sirius.diagram.editor.wizards" label="Legacy Wizards Commands">
+		      </menu>
+		      
          </menu>
-                      
-      </menuContribution>
-   
-      
-      <!-- Requirement Manager -->
-      <menuContribution  allPopups="true"
-            locationURI="popup:org.polarsys.capella.core.semantic.browser.wizards?after=additions">
-         <command commandId="org.polarsys.capella.core.platform.sirius.ui.actions.RequirementManagerWizardAction" 
-         style="push" 
-         icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_edit.gif" >  
-           <visibleWhen checkEnabled="false">
-            <with variable="selection">
-                <iterate>
-                        <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.wizardVisibilityModelElementExpression"/>
-                </iterate>
-            </with>
-          </visibleWhen>
-        </command> 
+                     
       </menuContribution>
       
-      <!-- Trace Manager -->
-      <menuContribution  allPopups="true"
-            locationURI="popup:org.polarsys.capella.core.semantic.browser.wizards?after=additions">
-         <command  commandId="org.polarsys.capella.core.platform.sirius.ui.actions.traceManagerCommand" 
-         style="push" 
-         icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_trace.gif" >  
-           <visibleWhen checkEnabled="false">
-            <with variable="selection">
-                <iterate>
-                        <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.wizardVisibilityModelElementExpression"/>
-                </iterate>
-            </with>
-          </visibleWhen>
-        </command> 
-      </menuContribution>
       
-     </extension>
-      
- 
- 
- 
- 
- 
-      
-      
-     <extension
-         point="org.eclipse.ui.menus">
-         
+
       <menuContribution
-            locationURI="popup:capella.project.explorer#PopupMenu?after=group.wizard">
+            locationURI="popup:org.eclipse.ui.popup.any?after=group.accelerator">
+            
          <menu
-               id="org.polarsys.capella.core.wizards"  label="Wizards">
-               <visibleWhen
-                     checkEnabled="false">
-                     <reference
-                           definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.wizardVisibilityModelElementExpression">
-                     </reference>
-               </visibleWhen>
-            
+               id="org.polarsys.capella.core.accelerators" label="%acceleratorGroup_label">
+               
+               <separator name="groupAccelerator">
+		       </separator>
+		       
+              <menu id="AcceleratorDiagramCommands" label="Legacy Accelerators Commands">
+	               <separator name="groupAccelerator">
+    	           </separator>
+              </menu>
+              
+              <menu id="capella.project.explorer.menu.accelerator" label="Legacy Accelerators Commands">
+		            <separator name="groupAccelerator">
+		            </separator>
+		      </menu>
+		      
          </menu>
+         
+         
       </menuContribution>
       
-      <!-- Requirement Manager -->
-      <menuContribution  allPopups="true"
-            locationURI="popup:org.polarsys.capella.core.wizards?after=additions">
-         <command commandId="org.polarsys.capella.core.platform.sirius.ui.actions.RequirementManagerWizardAction" 
-         style="push" 
-         icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_edit.gif" >  
-           <visibleWhen checkEnabled="false">
-            <with variable="selection">
-                <iterate>
-                        <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.wizardVisibilityModelElementExpression"/>
-                </iterate>
-            </with>
-          </visibleWhen>
-        </command> 
-      </menuContribution>
-      
-      <!-- Trace Manager -->
-      <menuContribution  allPopups="true"
-            locationURI="popup:org.polarsys.capella.core.wizards?after=additions">
-         <command  commandId="org.polarsys.capella.core.platform.sirius.ui.actions.traceManagerCommand" 
-         style="push" 
-         icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_trace.gif" >  
-           <visibleWhen checkEnabled="false">
-            <with variable="selection">
-                <iterate>
-                        <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.wizardVisibilityModelElementExpression"/>
-                </iterate>
-            </with>
-          </visibleWhen>
-        </command> 
-      </menuContribution>
-      </extension>
-            
-       <extension
-         point="org.eclipse.ui.menus">
-            <!-- Allocation Management -->
-              <menuContribution  allPopups="true" locationURI="popup:capella.project.explorer#PopupMenu?after=org.polarsys.capella.core.wizards">
-                 <command commandId="org.polarsys.capella.core.platform.sirius.ui.actions.AllocationManagementWizardAction" 
-                    style="push" 
-                    icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_manage.gif">  
-                   <visibleWhen checkEnabled="false">
-                                <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.wizardVisibilityModelElementExpression"/>
-                  </visibleWhen>
-                </command> 
-             </menuContribution>
-       </extension>
-      
-       
-      <extension
-             point="org.eclipse.ui.menus">
-                  <menuContribution
-                        locationURI="popup:org.eclipse.ui.popup.any?after=group.allocation">
-                     <command
-                           commandId="org.polarsys.capella.core.platform.sirius.ui.actions.AllocationManagementWizardAction"
-                           icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_manage.gif"
-                           label="%AllocationManagement"
-                           style="push">
-                        <visibleWhen
-                              checkEnabled="false">
-                           <reference
-                                 definitionId="org.polarsys.capella.core.platform.sirius.ui.actions.expression.AllocationManagementWizardDiagramExpression">
-                           </reference>
-                        </visibleWhen>
-                     </command>
-                  </menuContribution>
-      </extension>
-      <extension
-            point="org.eclipse.ui.menus">
-         <menuContribution
-               allPopups="false"
-               locationURI="popup:org.eclipse.ui.popup.any?after=group.categories">
-            <menu
-                  id="org.polarsys.capella.core.sirius.diagram.editor.categories"
-                  label="Category">
-            </menu>
-         </menuContribution>
-         <menuContribution
-               allPopups="true"
-               locationURI="popup:org.polarsys.capella.core.sirius.diagram.editor.categories?after=additions">
-            <command
-                  commandId="org.polarsys.capella.core.platform.sirius.ui.actions.CreateCategoriesWizardAction"
-                  style="push">
-               <visibleWhen
-                     checkEnabled="false">
-                  <reference
-                        definitionId="org.polarsys.capella.core.platform.sirius.ui.menu.categories.visibilityInDiagramExpr">
-                  </reference>
-               </visibleWhen>
-            </command>
-         </menuContribution>
-         <menuContribution
-               allPopups="true"
-               locationURI="popup:org.polarsys.capella.core.sirius.diagram.editor.categories?after=additions">
-            <command
-                  commandId="org.polarsys.capella.core.platform.sirius.ui.actions.UpdateCategoriesWizardAction"
-                  style="push">
-               <visibleWhen
-                     checkEnabled="false">
-                  <reference
-                        definitionId="org.polarsys.capella.core.platform.sirius.ui.menu.categories.visibilityInDiagramExpr">
-                  </reference>
-               </visibleWhen>
-            </command>
-         </menuContribution>
       </extension>
          
       
@@ -714,75 +268,10 @@
             id="org.polarsys.capella.core.wizard.ui.category"
             name="Wizards">
       </category>
-      <category
-            id="org.polarsys.capella.core.wizard.ui.category"
-            name="Category">
-      </category>
-      <command
-               defaultHandler="org.polarsys.capella.core.platform.sirius.ui.actions.AllocationManagementWizardAction"
-               id="org.polarsys.capella.core.platform.sirius.ui.actions.AllocationManagementWizardAction"
-               name="%AllocationManagement"
-               >
-      </command>
-      <command
-               defaultHandler="org.polarsys.capella.core.platform.sirius.ui.actions.RequirementManagerWizardAction"
-               id="org.polarsys.capella.core.platform.sirius.ui.actions.RequirementManagerWizardAction"
-               name="%RequirementManager"
-               >
-      </command>
-      <command
-               defaultHandler="org.polarsys.capella.core.platform.sirius.ui.actions.MDTraceViewEditAction"
-               id="org.polarsys.capella.core.platform.sirius.ui.actions.traceManagerCommand"
-               name="%TraceManager"
-               >
-      </command>
-      <command
-            defaultHandler="org.polarsys.capella.core.platform.sirius.ui.actions.CreateCategoriesWizardAction"
-            id="org.polarsys.capella.core.platform.sirius.ui.actions.CreateCategoriesWizardAction"
-            name="Create Category">
-      </command>
-      <command
-            defaultHandler="org.polarsys.capella.core.platform.sirius.ui.actions.UpdateCategoriesWizardAction"
-            id="org.polarsys.capella.core.platform.sirius.ui.actions.UpdateCategoriesWizardAction"
-            name="Update Category">
-      </command>
       
-     </extension>    
+      </extension>
      
-     <extension point="org.eclipse.core.expressions.definitions">
-      <definition
-            id="org.polarsys.capella.core.transition.system.topdown.ui.expression.wizardVisibilityModelElementExpression">
-            <with
-                  variable="selection">
-                <iterate ifEmpty="false">
-                    <instanceof value="org.polarsys.capella.common.data.modellingcore.ModelElement"/>
-                </iterate>
-            </with>
-            
-      </definition>
-   </extension>
-   
-   <extension point="org.eclipse.core.expressions.definitions">
-      <definition
-            id="org.polarsys.capella.core.transition.system.topdown.ui.expression.wizardVisibilityDiagramElementExpression">
-            <with
-                  variable="selection">
-               <iterate ifEmpty="false">
-                        <instanceof value="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart"/>
-                </iterate>
-            </with>
-            
-      </definition>
-   </extension>
-
-   <extension point="org.eclipse.core.expressions.definitions">
-      <definition
-            id="org.polarsys.capella.core.platform.sirius.ui.actions.expression.AllocationManagementWizardDiagramExpression">
-           <iterate ifEmpty="false">
-                    <instanceof value="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart"/>
-            </iterate>
-      </definition>
-   </extension>
+     
    
  <!-- _________________________________ FIN TEMP ________________________________________________________-->
 
@@ -791,7 +280,7 @@
    <extension
          point="org.eclipse.core.expressions.propertyTesters">
          <propertyTester
-             id="org.polarsys.capella.core.platform.sirius.ui.metaclassPropertyTester"
+             id="org.polarsys.capella.core.platform.sirius.ui.graphicalMetaclassPropertyTester"
              type="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart"
              namespace="org.polarsys.capella.core.platform.sirius.ui"
              properties="classOf"
@@ -802,10 +291,29 @@
              id="org.polarsys.capella.core.platform.sirius.ui.metaclassPropertyTester"
              type="org.polarsys.capella.common.data.modellingcore.ModelElement"
              namespace="org.polarsys.capella.core.platform.sirius.ui"
+             properties="classOf"
+             class="org.polarsys.capella.core.platform.sirius.ui.MetaclassPropertyTester"
+         >
+         </propertyTester>
+         
+         
+         <propertyTester
+             id="org.polarsys.capella.core.platform.sirius.ui.metaclassPropertyTester"
+             type="org.polarsys.capella.common.data.modellingcore.ModelElement"
+             namespace="org.polarsys.capella.core.platform.sirius.ui"
              properties="featureIsA"
              class="org.polarsys.capella.core.platform.sirius.ui.MetaclassPropertyTester"
              >
          </propertyTester>
+         <propertyTester
+             id="org.polarsys.capella.core.platform.sirius.ui.graphicalMetaclassPropertyTester"
+             type="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart"
+             namespace="org.polarsys.capella.core.platform.sirius.ui"
+             properties="featureIsA"
+             class="org.polarsys.capella.core.platform.sirius.ui.MetaclassPropertyTester"
+             >
+         </propertyTester>
+         <!-- Deprecated -->
          <propertyTester
              id="org.polarsys.capella.core.platform.sirius.ui.metaclassPropertyTester"
              type="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart"
@@ -813,6 +321,8 @@
              properties="graphicalFeatureIsA"
              class="org.polarsys.capella.core.platform.sirius.ui.MetaclassPropertyTester">
          </propertyTester>
+         
+         
          <propertyTester
                class="org.polarsys.capella.core.platform.sirius.ui.LayerPropertyTester"
                id="org.polarsys.capella.core.platform.sirius.ui.layerPropertyTester2"
@@ -822,11 +332,21 @@
          </propertyTester>
          <propertyTester
                class="org.polarsys.capella.core.platform.sirius.ui.LayerPropertyTester"
+               id="org.polarsys.capella.core.platform.sirius.ui.graphicalLayerPropertyTester2"
+               namespace="org.polarsys.capella.core.platform.sirius.ui"
+               properties="layerOf"
+               type="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+         </propertyTester>
+         <!-- Deprecated -->
+         <propertyTester
+               class="org.polarsys.capella.core.platform.sirius.ui.LayerPropertyTester"
                id="org.polarsys.capella.core.platform.sirius.ui.layerPropertyTester3"
                namespace="org.polarsys.capella.core.platform.sirius.ui"
                properties="graphicalLayerOf"
                type="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
          </propertyTester>
+         
+         
          <propertyTester
                class="org.polarsys.capella.core.platform.sirius.ui.LayerPropertyTester"
                id="org.polarsys.capella.core.platform.sirius.ui.layerPropertyTester4"
@@ -836,16 +356,26 @@
          </propertyTester>
          <propertyTester
                class="org.polarsys.capella.core.platform.sirius.ui.LayerPropertyTester"
+               id="org.polarsys.capella.core.platform.sirius.ui.graphicalLayerPropertyTester4"
+               namespace="org.polarsys.capella.core.platform.sirius.ui"
+               properties="layerOfWithOutDataFlowScenario"
+               type="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+         </propertyTester>
+         <!-- Deprecated -->
+         <propertyTester
+               class="org.polarsys.capella.core.platform.sirius.ui.LayerPropertyTester"
                id="org.polarsys.capella.core.platform.sirius.ui.layerPropertyTester5"
                namespace="org.polarsys.capella.core.platform.sirius.ui"
                properties="graphicalLayerOfWithOutDataFlowScenario"
                type="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
          </propertyTester>
+         
+         
          <propertyTester
                class="org.polarsys.capella.core.platform.sirius.ui.ActionPropertyTester"
-               id="org.polarsys.capella.core.platform.sirius.ui.graphicalActionMode1"
+               id="org.polarsys.capella.core.platform.sirius.ui.graphicassctionMode1"
                namespace="org.polarsys.capella.core.platform.sirius.ui"
-               properties="graphicalActionMode"
+               properties="actionMode"
                type="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
          </propertyTester>
          <propertyTester
@@ -855,6 +385,15 @@
                properties="actionMode"
                type="org.polarsys.capella.common.data.modellingcore.ModelElement">
          </propertyTester>
+         <!-- Deprecated -->
+         <propertyTester
+               class="org.polarsys.capella.core.platform.sirius.ui.ActionPropertyTester"
+               id="org.polarsys.capella.core.platform.sirius.ui.graphicalActionMode1"
+               namespace="org.polarsys.capella.core.platform.sirius.ui"
+               properties="graphicalActionMode"
+               type="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+         </propertyTester>
+         
          
          <propertyTester
                class="org.polarsys.capella.core.platform.sirius.ui.CapellaPropertyTester"
@@ -866,78 +405,36 @@
          
       </extension>
       
-   <extension
-         point="org.polarsys.capella.core.preferences.capellaPreferences">
-      <category
-            description="Capella Wizards"
-            name="Wizards">
-         <item
-               enableByDefault="true"
-               id="org.polarsys.capella.core.platform.sirius.ui.actions.AllocationManagementWizardAction"
-               name="Allocation Management">
-         </item>
-         <item
-               enableByDefault="true"
-               id="org.polarsys.capella.core.platform.sirius.ui.actions.RequirementManagerWizardAction"
-               name="Requirement Manager">
-         </item>
-         <item
-               enableByDefault="true"
-               id="org.polarsys.capella.core.platform.sirius.ui.actions.traceManagerCommand"
-               name="Trace Manager">
-         </item>
-      </category>
-      <category
-            description="Managing categories for functional/component exchanges and physical links."
-            name="Category Management">
-         <item
-               description="Update categories for communication means, component exchanges, functional exchanges and physical links"
-               enableByDefault="true"
-               id="org.polarsys.capella.core.platform.sirius.ui.actions.UpdateCategoriesWizardAction"
-               name="Update Category">
-         </item>
-         <item
-               description="Create a category for communication means, component exchanges, functional exchanges and physical links"
-               enableByDefault="true"
-               id="org.polarsys.capella.core.platform.sirius.ui.actions.CreateCategoriesWizardAction"
-               name="Create Category">
-         </item>
-      </category>
-
-   </extension>   
    
    <extension point="org.eclipse.core.expressions.definitions">
-      <definition id="org.polarsys.capella.core.isInCapellaContext">
-      <with variable="selection">
-        <test property="org.polarsys.capella.core.platform.sirius.ui.isInCapellaContext"/>
-      </with>
-      </definition>
-      <definition
-            id="org.polarsys.capella.core.platform.sirius.ui.menu.categories.visibilityInDiagramExpr">
+   
+   		<definition
+            id="org.polarsys.capella.core.transition.system.topdown.ui.expression.wizardVisibilityModelElementExpression">
+            <with
+                  variable="selection">
                 <iterate ifEmpty="false">
-                <and>
-                   <or>
-                      <instanceof
-                            value="org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart">
-                      </instanceof>
-                      <instanceof
-                            value="org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart">
-                      </instanceof>
-                   </or>
-                   <not>
-                      <test
-                            property="org.polarsys.capella.core.platform.sirius.ui.graphicalLayerOf"
-                            value="OperationalAnalysis">
-                      </test>
-                   </not>
-                </and>
+                    <instanceof value="org.polarsys.capella.common.data.modellingcore.ModelElement"/>
                 </iterate>
+            </with>
+            
       </definition>
-   </extension>
-   
-   
-   
-   <extension point="org.eclipse.core.expressions.definitions">
+
+      <definition
+            id="org.polarsys.capella.core.transition.system.topdown.ui.expression.wizardVisibilityDiagramElementExpression">
+            <with
+                  variable="selection">
+               <iterate ifEmpty="false">
+                        <instanceof value="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart"/>
+                </iterate>
+            </with>
+      </definition>
+      
+      <definition id="org.polarsys.capella.core.isInCapellaContext">
+	      <with variable="selection">
+	        <test property="org.polarsys.capella.core.platform.sirius.ui.isInCapellaContext"/>
+	      </with>
+      </definition>
+      
       <definition
             id="org.polarsys.capella.core.transition.system.topdown.ui.expression.transitionVisibilityDiagramElementExpression">
                <with
@@ -959,10 +456,7 @@
                </and>
             </with>
       </definition>
-   </extension>
-   
-   
-   <extension point="org.eclipse.core.expressions.definitions">
+
       <definition
             id="org.polarsys.capella.core.semantic.ui.expression.transitionVisibilityModelElementExpression">
                <with

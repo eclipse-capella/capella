@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -48,6 +48,8 @@ import org.polarsys.capella.core.validation.ui.ide.messages.QuickfixMessages;
 
 public class EObjectNavigatorDialog extends AbstractMessageDialogWithViewer {
 
+  public static final String EOBJECT_NAVIGATOR_DIALOG = "org.polarsys.capella.core.validation.ui.ide.quickfix.objectNavigator";
+  
   /**
    * Label for our combo box
    */
@@ -273,6 +275,12 @@ public class EObjectNavigatorDialog extends AbstractMessageDialogWithViewer {
     // Create tree viewer.
     // Don't use the status bar of the viewer b
     TreeAndListViewer treeViewer = new TreeAndListViewer(parent, false, IViewerStyle.SHOW_STATUS_BAR) {
+      
+      @Override
+      public String getContextMenuLocation() {
+        return EOBJECT_NAVIGATOR_DIALOG;
+      }
+      
       /**
        * @see org.polarsys.capella.common.ui.toolkit.viewers.AbstractRegExpViewer#createControl(org.eclipse.swt.widgets.Composite)
        */

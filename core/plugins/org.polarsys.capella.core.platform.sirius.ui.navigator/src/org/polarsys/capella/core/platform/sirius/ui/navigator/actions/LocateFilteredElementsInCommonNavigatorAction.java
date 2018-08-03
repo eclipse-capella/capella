@@ -8,7 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.common.ui.actions;
+package org.polarsys.capella.core.platform.sirius.ui.navigator.actions;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,8 +33,6 @@ import org.eclipse.ui.navigator.INavigatorContentService;
  * This action will be executed if the navigated elements are not visible in the project explorer. Its responsibilities
  * is to find the effective filters applied on the navigated elements and deactivate them, so that the navigated
  * elements will be visible and focused on the project explorer.
- * 
- *
  */
 public class LocateFilteredElementsInCommonNavigatorAction {
   
@@ -108,7 +106,7 @@ public class LocateFilteredElementsInCommonNavigatorAction {
   protected boolean select(CommonNavigator commonNavigator, ViewerFilter viewerFilter, Object element) {
     boolean select = true;
     Object parent = element;
-    while (select && !(parent instanceof IFile)) {
+    while (select && parent != null && !(parent instanceof IFile)) {
       select = viewerFilter.select(commonNavigator.getCommonViewer(), null, parent);
       ITreeContentProvider contentProvider = (ITreeContentProvider) commonNavigator.getCommonViewer()
           .getContentProvider();
@@ -122,8 +120,9 @@ public class LocateFilteredElementsInCommonNavigatorAction {
     if(currentSelection.toArray().length > 0){
       List<?> currentList = currentSelection.toList();
       List<?> exptectedList = exptectedSelection.toList();
-      if(currentList.size() == exptectedList.size()){
-        return !currentList.retainAll(exptectedList);
+      if(currentList.size() == exptectedList.size()) {
+        List<?> result = new ArrayList<Object>(currentList);
+        return !result.retainAll(exptectedList);
       }
     }
     return false;
