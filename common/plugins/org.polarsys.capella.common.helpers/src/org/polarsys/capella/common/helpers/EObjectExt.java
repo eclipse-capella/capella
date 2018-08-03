@@ -97,22 +97,28 @@ public class EObjectExt extends EcoreUtil2 {
    * @param eObjectRef : EObject
    * @param eRef : EReference relation (if null, all references are considered)
    * @param editingDomain : SemanticEditingDomain
+   * @param ignoreDerivedFeature : whether derived feature is ignored while finding referencing objects
    * @return The list of referencing elements
    */
-  public static <T extends EObject> List<T> getReferencers(EObject eObjectRef, EReference eRef, SemanticEditingDomain editingDomain) {
+  public static <T extends EObject> List<T> getReferencers(EObject eObjectRef, EReference eRef, SemanticEditingDomain editingDomain, boolean ignoreDerivedFeature) {
     List<T> result = new ArrayList<T>();
 
     SemanticCrossReferencer crossReferencer = editingDomain.getCrossReferencer();
     if (eRef == null) {
       Collection<Setting> inverseReferences = crossReferencer.getInverseReferences(eObjectRef, editingDomain.getCrossReferencer().isResolveProxyEnabled());
       for (Setting setting : inverseReferences) {
+    	  if (ignoreDerivedFeature && setting.getEStructuralFeature().isDerived())
+    	    continue;
         if (!result.contains(setting.getEObject())) {
           result.add((T) setting.getEObject());
         }
       }
 
     } else {
-      Collection<Setting> inverseReferences = crossReferencer.getInverseReferences(eObjectRef, eRef, editingDomain.getCrossReferencer().isResolveProxyEnabled());
+      if (ignoreDerivedFeature && eRef.isDerived())
+        return result;
+      Collection<Setting> inverseReferences = crossReferencer.getInverseReferences(eObjectRef, eRef,
+          editingDomain.getCrossReferencer().isResolveProxyEnabled());
       for (Setting setting : inverseReferences) {
         if (!result.contains(setting.getEObject())) {
           result.add((T) setting.getEObject());
@@ -123,6 +129,17 @@ public class EObjectExt extends EcoreUtil2 {
     return result;
   }
 
+  /**
+   * This method retrieves all Object who have a EReference 'eRef' toward the Object 'eObjectRef'
+   * @param eObjectRef : EObject
+   * @param eRef : EReference relation (if null, all references are considered)
+   * @param editingDomain : SemanticEditingDomain
+   * @return The list of referencing elements
+   */
+  public static <T extends EObject> List<T> getReferencers(EObject eObjectRef, EReference eRef, SemanticEditingDomain editingDomain) {
+	  return getReferencers(eObjectRef, eRef, editingDomain, false);
+  }
+  
   /**
    * This method retrieves all Object who have any EReference from 'eRefs' toward the Object 'eObjectRef'
    * @param eObjectRef : EObject
