@@ -167,7 +167,7 @@
          point="org.eclipse.ui.menus">
       <menuContribution
             allPopups="true"
-            locationURI="popup:capella.project.explorer#PopupMenu?after=group.show">
+            locationURI="popup:org.eclipse.ui.popup.any?after=group.sendTo">
          <menu
                label="%view.visualization.sendTo.name">
             <dynamic
@@ -182,26 +182,10 @@
             </visibleWhen>
          </menu>
       </menuContribution>
+      
       <menuContribution
             allPopups="true"
-            locationURI="popup:org.eclipse.ui.popup.any?after=org.polarsys.capella.core.platform.sirius.ui.navigator.showRelatedElementFromDiagram">
-         <menu
-               label="%view.visualization.sendTo.name">
-            <dynamic
-                  class="org.polarsys.capella.common.ui.massactions.visualization.contributionitem.SendToMVMenuContributionItem"
-                  id="org.polarsys.capella.common.ui.massediting.dynamic9">
-            </dynamic>
-            <visibleWhen
-                  checkEnabled="false">
-               <reference
-                     definitionId="org.polarsys.capella.common.ui.massactions.sendToMassVisualizationVisibilityEnablementExpression">
-               </reference>
-            </visibleWhen>
-         </menu>
-      </menuContribution>
-      <menuContribution
-            allPopups="true"
-            locationURI="popup:capella.project.explorer#PopupMenu?after=group.show">
+            locationURI="popup:org.eclipse.ui.popup.any?after=group.sendTo">
          <menu
                label="%view.editing.sendTo.name">
             <dynamic
@@ -216,23 +200,39 @@
             </visibleWhen>
          </menu>
       </menuContribution>
-      <menuContribution
-            allPopups="true"
-            locationURI="popup:org.eclipse.ui.popup.any?after=org.polarsys.capella.core.platform.sirius.ui.navigator.showRelatedElementFromDiagram">
-         <menu
-               label="%view.editing.sendTo.name">
-            <dynamic
-                  class="org.polarsys.capella.common.ui.massactions.edit.contributionitem.SendToMEMenuContributionItem"
-                  id="org.polarsys.capella.common.ui.massediting.dynamic7">
-            </dynamic>
-            <visibleWhen
-                  checkEnabled="false">
-               <reference
-                     definitionId="org.polarsys.capella.common.ui.massactions.sendToMassEditionVisibilityEnablementExpression">
-               </reference>
-            </visibleWhen>
-         </menu>
-      </menuContribution>
+      
+       <menuContribution
+                locationURI="popup:org.polarsys.capella.common.ui.massactions.editing.view.rowHeader?after=additions">
+               
+              <separator name="group.showIn" visible="true" />
+              <separator name="group.sendTo" visible="true" />
+              
+       </menuContribution>
+       
+       <menuContribution
+                locationURI="popup:org.polarsys.capella.common.ui.massactions.editing.view.body?after=additions">
+               
+              <separator name="group.showIn" visible="true" />
+              <separator name="group.sendTo" visible="true" />
+              
+       </menuContribution>
+       
+       <menuContribution
+                locationURI="popup:org.polarsys.capella.common.ui.massactions.visualizing.view.rowHeader?after=additions">
+               
+              <separator name="group.showIn" visible="true" />
+              <separator name="group.sendTo" visible="true" />
+              
+       </menuContribution>
+       
+       <menuContribution
+                locationURI="popup:org.polarsys.capella.common.ui.massactions.visualizing.view.body?after=additions">
+               
+              <separator name="group.showIn" visible="true" />
+              <separator name="group.sendTo" visible="true" />
+              
+       </menuContribution>
+       
    </extension>
    <extension
          point="org.eclipse.ui.activities">
