@@ -48,12 +48,12 @@
          
          
          <insertionPoint
-               name="group.edit"
+               name="group.semantic"
                separator="true">
          </insertionPoint>
          <insertionPoint
-               name="group.semantic"
-               separator="true">
+               name="group.edit"
+               separator="false">
          </insertionPoint>
          
          
@@ -1169,6 +1169,7 @@
             name="%command.showRelatedElements.name">
       </command>
       <command
+            categoryId="org.polarsys.capella.core.platform.sirius.ui.navigator"
             defaultHandler="org.polarsys.capella.core.platform.sirius.ui.navigator.handlers.ShowImpactAnalysisHandler"
             id="org.polarsys.capella.core.platform.sirius.ui.navigator.showImpactAnalysisCommand"
             name="%showImpactAnalysis">
@@ -1197,18 +1198,10 @@
             commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.showInDiagramCommand"
             icon="icons/showInDiagram.gif">
       </image>
-         
-         
-         
-         
-         
-         
       <image
             commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.refreshAird"
             icon="icons/viewpoint.gif">
       </image>
-      
-      
       <image
             commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.removeHiddenElements"
             icon="icons/viewpoint.gif">
@@ -1221,7 +1214,6 @@
             commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.showRelatedElementsCommand"
             icon="icons/capella_16.png">
       </image>
-      
       <image
             commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.showImpactAnalysisCommand"
             icon="icons/elcl16/ch_callers.gif">
@@ -1236,7 +1228,7 @@
          point="org.eclipse.ui.menus">
          
       <menuContribution 
-      		locationURI="popup:capella.project.explorer#PopupMenu?after=group.edit">
+      		locationURI="popup:capella.project.explorer#PopupMenu?after=group.project">
          <command
                commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.refreshAird"
                id="org.polarsys.capella.core.platform.sirius.ui.navigator.refreshAird"
@@ -1308,7 +1300,6 @@
       
       
       <menuContribution
-     		allPopups="true"
             locationURI="popup:org.eclipse.ui.popup.any?after=group.showIn">
          <command
                commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.locateInCapellaExplorerCommand"
@@ -1328,6 +1319,9 @@
                   <and>
                      <iterate>
                         <or>
+                           <instanceof
+                                 value="org.eclipse.sirius.viewpoint.DRepresentationDescriptor">
+                           </instanceof>
                            <instanceof
                                  value="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
                            </instanceof>

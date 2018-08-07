@@ -14,12 +14,6 @@
 
 <extension point="org.eclipse.ui.commands">
 
-    <category
-          id="org.polarsys.capella.core.transition"
-          name="%category.name"
-          description="%category.description">
-    </category>
-    
     <command id="org.polarsys.capella.core.transition.diagram"
           categoryId="org.polarsys.capella.core.transition"
           description="%diagramTransition.description"

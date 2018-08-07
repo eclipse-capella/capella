@@ -180,10 +180,15 @@
     <extension point="org.eclipse.ui.menus">
     
        <menuContribution
-                allPopups="true"
                 locationURI="popup:org.eclipse.ui.popup.any?after=group.semantic">
            <command
                  commandId="org.polarsys.capella.core.platform.sirius.ui.actions.CopyPath">
+                 <visibleWhen
+                       checkEnabled="false">
+                       <reference
+                                 definitionId="org.polarsys.capella.core.platform.sirius.ui.actions.CopyPath.expression">
+                           </reference>
+                 </visibleWhen>
            </command>
        </menuContribution>
       
@@ -192,6 +197,69 @@
    
       <extension
          point="org.eclipse.core.expressions.definitions">
+      <definition
+            id="org.polarsys.capella.core.platform.sirius.ui.actions.RequirementManagerWizard.expression">
+            <with
+                  variable="selection">
+                  <iterate
+                        ifEmpty="false">
+                    <test
+		                  forcePluginActivation="true"
+		                  property="org.polarsys.capella.core.platform.sirius.ui.actionMode"
+		                  value="requirementManagerWizard">
+		            </test>
+                  </iterate>
+            </with>
+      </definition>
+      
+      <definition
+            id="org.polarsys.capella.core.platform.sirius.ui.actions.TraceManager.expression">
+            <with
+                  variable="selection">
+                  <iterate
+                        ifEmpty="false">
+                    <test
+		                  forcePluginActivation="true"
+		                  property="org.polarsys.capella.core.platform.sirius.ui.actionMode"
+		                  value="traceManager">
+		            </test>
+                  </iterate>
+            </with>
+      </definition>
+      
+      <definition
+            id="org.polarsys.capella.core.platform.sirius.ui.actions.AllocationManagement.expression">
+            <with
+                  variable="selection">
+                  <iterate
+                        ifEmpty="false">
+                    <test
+		                  forcePluginActivation="true"
+		                  property="org.polarsys.capella.core.platform.sirius.ui.actionMode"
+		                  value="allocationManagement">
+		            </test>
+                  </iterate>
+            </with>
+      </definition>
+      
+      <definition
+            id="org.polarsys.capella.core.platform.sirius.ui.actions.CopyPath.expression">
+            <with
+                  variable="selection">
+                  <iterate
+                        ifEmpty="false">
+                    <test
+		                  forcePluginActivation="true"
+		                  property="org.polarsys.capella.core.platform.sirius.ui.actionMode"
+		                  value="copyPath">
+		            </test>
+                  </iterate>
+            </with>
+      </definition>
+      
+      
+      
+      
       <definition
             id="org.polarsys.capella.core.platform.sirius.ui.actions.ConvertClassPrimitive.expression">
             <with
@@ -387,12 +455,24 @@
       <!-- Allocation Management -->
       <!-- Requirement Manager -->
       <!-- Trace Manager -->
-      <menuContribution  allPopups="true"
+      <menuContribution
             locationURI="popup:org.polarsys.capella.core.wizards?after=additions">
          <command commandId="org.polarsys.capella.core.platform.sirius.ui.actions.RequirementManagerWizardAction" >  
+         <visibleWhen
+                       checkEnabled="false">
+                       <reference
+                                 definitionId="org.polarsys.capella.core.platform.sirius.ui.actions.RequirementManagerWizard.expression">
+                           </reference>
+                 </visibleWhen>
         </command> 
         
         <command  commandId="org.polarsys.capella.core.platform.sirius.ui.actions.traceManagerCommand" >  
+        <visibleWhen
+                       checkEnabled="false">
+                       <reference
+                                 definitionId="org.polarsys.capella.core.platform.sirius.ui.actions.TraceManager.expression">
+                           </reference>
+                 </visibleWhen>
         </command> 
         
       </menuContribution>
@@ -401,27 +481,32 @@
             locationURI="popup:org.eclipse.ui.popup.any?after=group.allocation">
          <command
                commandId="org.polarsys.capella.core.platform.sirius.ui.actions.AllocationManagementWizardAction">
+               <visibleWhen
+                       checkEnabled="false">
+                       <reference
+                                 definitionId="org.polarsys.capella.core.platform.sirius.ui.actions.AllocationManagement.expression">
+                           </reference>
+                 </visibleWhen>
          </command>
       </menuContribution>
       
       
          <menuContribution
-               allPopups="false"
                locationURI="popup:org.eclipse.ui.popup.any?after=group.categories">
             <menu
                   id="org.polarsys.capella.core.sirius.diagram.editor.categories"
                   label="%CategoryMenu">
-                   <command
+               <command
                   commandId="org.polarsys.capella.core.platform.sirius.ui.actions.CreateCategoriesWizardAction"
                   style="push">
-               <visibleWhen
+                  <visibleWhen
                      checkEnabled="false">
-                  <reference
+                     <reference
                         definitionId="org.polarsys.capella.core.platform.sirius.ui.menu.categories.visibilityInDiagramExpr">
-                  </reference>
-               </visibleWhen>
-            </command>
-                  <command
+                     </reference>
+                  </visibleWhen>
+               </command>
+               <command
                   commandId="org.polarsys.capella.core.platform.sirius.ui.actions.UpdateCategoriesWizardAction"
                   style="push">
                <visibleWhen
@@ -443,60 +528,70 @@
          point="org.eclipse.ui.commands">
          
          <command
+         	   categoryId="org.polarsys.capella.core.semantic"
                defaultHandler="org.polarsys.capella.core.platform.sirius.ui.handlers.CopyPathHandler"
                id="org.polarsys.capella.core.platform.sirius.ui.actions.CopyPath"
                name="%CopyPath">
       </command>
       
       <command
+         	   categoryId="org.polarsys.capella.core.accelerators"
                defaultHandler="org.polarsys.capella.core.platform.sirius.ui.handlers.ConvertPrimitiveHandler"
                id="org.polarsys.capella.core.platform.sirius.ui.actions.ConvertClassPrimitive"
                name="%ConvertClassPrimitive" >
       </command>
       
       <command
+         	   categoryId="org.polarsys.capella.core.accelerators"
                defaultHandler="org.polarsys.capella.core.platform.sirius.ui.handlers.TransformLiteralNumericalValueHandler"
                id="org.polarsys.capella.core.platform.sirius.ui.actions.TransformLiteralNumericValue"
                name="%TransformLiteralNumericValue">
       </command>
       
       <command
+         	   categoryId="org.polarsys.capella.core.accelerators"
                defaultHandler="org.polarsys.capella.core.platform.sirius.ui.handlers.PortRealizationPropagationHandler"
                id="org.polarsys.capella.core.platform.sirius.ui.actions.PortRealizationPropagationFromCE"
                name="%PropagatePortRealizationsFromCE" >
       </command>
       
       <command
+         	   categoryId="org.polarsys.capella.core.accelerators"
                defaultHandler="org.polarsys.capella.core.platform.sirius.ui.handlers.PortRealizationPropagationHandler"
                id="org.polarsys.capella.core.platform.sirius.ui.actions.PortRealizationPropagationFromFE"
                name="%PropagatePortRealizationsFromFE" >
       </command>
       
       <command
+         	   categoryId="org.polarsys.capella.core.accelerators"
                defaultHandler="org.polarsys.capella.core.platform.sirius.ui.handlers.PropagateExchangeItemAllocationsHandler"
                id="org.polarsys.capella.core.platform.sirius.ui.actions.PropagateExchangeItemAllocations"
                name="%PropagateEIOnPorts">
       </command>
       
       <command
+         	   categoryId="org.polarsys.capella.core.accelerators"
                defaultHandler="org.polarsys.capella.core.platform.sirius.ui.handlers.SynchronizeExchangeItemAllocationsHandler"
                id="org.polarsys.capella.core.platform.sirius.ui.actions.SynchronizeExchangeItemAllocations"
                name="%SynchronizeEIOnPorts">
       </command>
       
       <command
+         	   categoryId="org.polarsys.capella.core.wizards"
                defaultHandler="org.polarsys.capella.core.platform.sirius.ui.actions.AllocationManagementWizardAction"
                id="org.polarsys.capella.core.platform.sirius.ui.actions.AllocationManagementWizardAction"
                name="%AllocationManagement"
                >
       </command>
       <command
+         	   categoryId="org.polarsys.capella.core.wizards"
                defaultHandler="org.polarsys.capella.core.platform.sirius.ui.actions.RequirementManagerWizardAction"
                id="org.polarsys.capella.core.platform.sirius.ui.actions.RequirementManagerWizardAction"
                name="%RequirementManager"
                >
       </command>
       <command
+         	   categoryId="org.polarsys.capella.core.wizards"
                defaultHandler="org.polarsys.capella.core.platform.sirius.ui.actions.MDTraceViewEditAction"
                id="org.polarsys.capella.core.platform.sirius.ui.actions.traceManagerCommand"
                name="%TraceManager"

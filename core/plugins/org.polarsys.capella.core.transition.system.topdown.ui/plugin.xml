@@ -154,216 +154,216 @@
          <command  commandId="org.polarsys.capella.core.transition.system.topdown.ui.commands.command2" style="push" icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif" >
             
          <visibleWhen checkEnabled="false">
-            <with variable="selection">
+            <and>
+           <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.transitionVisibilityModelElementExpression"/>
+                        <with variable="selection">
                 <iterate>
-                        <and>
-                        <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.transitionVisibilityModelElementExpression"/>
                             <test property="org.polarsys.capella.core.transition.system.topdown.transitionMode" forcePluginActivation="true"
                                value="transitionInterface">
                             </test>
-                        </and>
                 </iterate>
             </with>
+            </and>
         </visibleWhen>
        </command>
        
          <command  commandId="org.polarsys.capella.core.transition.system.topdown.ui.commands.command4"  style="push" icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif" >
          <visibleWhen checkEnabled="false">
-            <with variable="selection">
+            <and>
+           <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.transitionVisibilityModelElementExpression"/>
+                        <with variable="selection">
                 <iterate>
-                        <and>
-                        <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.transitionVisibilityModelElementExpression"/>
                             <test property="org.polarsys.capella.core.transition.system.topdown.transitionMode" forcePluginActivation="true"
                                value="transitionFunctional">
                             </test>
-                        </and>
                 </iterate>
             </with>
+            </and>
          </visibleWhen> 
          </command> 
          
          <command  commandId="org.polarsys.capella.core.transition.system.topdown.ui.commands.command6"  style="push" icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif" >
            
          <visibleWhen checkEnabled="false">
-            <with variable="selection">
+            <and>
+           <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.transitionVisibilityModelElementExpression"/>
+                        <with variable="selection">
                 <iterate>
-                        <and>
-                        <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.transitionVisibilityModelElementExpression"/>
                             <test property="org.polarsys.capella.core.transition.system.topdown.transitionMode" forcePluginActivation="true"
                                value="transitionStateMachine">
                             </test>
-                        </and>
                 </iterate>
             </with>
+            </and>
          </visibleWhen> 
            
         </command> 
          <command  commandId="org.polarsys.capella.core.transition.system.topdown.ui.commands.command8"  style="push" icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif" >  
           <visibleWhen checkEnabled="false">
-            <with variable="selection">
+            <and>
+           <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.transitionVisibilityModelElementExpression"/>
+                        <with variable="selection">
                 <iterate>
-                        <and>
-                        <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.transitionVisibilityModelElementExpression"/>
                             <test property="org.polarsys.capella.core.transition.system.topdown.transitionMode" forcePluginActivation="true"
                                value="transitionData">
                             </test>
-                        </and>
                 </iterate>
             </with>
+            </and>
          </visibleWhen> 
          </command> 
          <command  commandId="org.polarsys.capella.core.transition.system.topdown.ui.commands.command10"  style="push" icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif" >
           <visibleWhen checkEnabled="false">
-            <with variable="selection">
+            <and>
+           <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.transitionVisibilityModelElementExpression"/>
+                        <with variable="selection">
                 <iterate>
-                        <and>
-                        <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.transitionVisibilityModelElementExpression"/>
                             <test property="org.polarsys.capella.core.transition.system.topdown.transitionMode" forcePluginActivation="true"
                                value="transitionPropertyValue">
                             </test>
-                        </and>
                 </iterate>
             </with>
+            </and>
          </visibleWhen> 
          </command>
          <command  commandId="org.polarsys.capella.core.transition.system.topdown.ui.commands.command12"  style="push" icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif" >  
          <visibleWhen checkEnabled="false">
-            <with variable="selection">
+            <and>
+           <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.transitionVisibilityModelElementExpression"/>
+                        <with variable="selection">
                 <iterate>
-                        <and>
-                        <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.transitionVisibilityModelElementExpression"/>
                             <test property="org.polarsys.capella.core.transition.system.topdown.transitionMode" forcePluginActivation="true"
                                value="transitionExchangeItem">
                             </test>
-                        </and>
                 </iterate>
             </with>
+            </and>
          </visibleWhen> 
         </command>
          <command  commandId="org.polarsys.capella.core.transition.system.topdown.ui.commands.command14"  style="push" icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif" > 
           <visibleWhen checkEnabled="false">
-            <with variable="selection">
+            <and>
+           <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.transitionVisibilityModelElementExpression"/>
+                        <with variable="selection">
                 <iterate>
-                        <and>
-                        <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.transitionVisibilityModelElementExpression"/>
                             <test property="org.polarsys.capella.core.transition.system.topdown.transitionMode" forcePluginActivation="true"
                                value="transitionActor">
                             </test>
-                        </and>
                 </iterate>
             </with>
+            </and>
          </visibleWhen> 
         </command>
          <command  commandId="org.polarsys.capella.core.transition.system.topdown.ui.commands.command16"  style="push" icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif" >
            <visibleWhen checkEnabled="false">
-            <with variable="selection">
+            <and>
+           <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.transitionVisibilityModelElementExpression"/>
+                        <with variable="selection">
                 <iterate>
-                        <and>
-                        <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.transitionVisibilityModelElementExpression"/>
                             <test property="org.polarsys.capella.core.transition.system.topdown.transitionMode" forcePluginActivation="true"
                                value="transitionSystem">
                             </test>
-                        </and>
                 </iterate>
             </with>
+            </and>
          </visibleWhen> 
          </command>
          <command  commandId="org.polarsys.capella.core.transition.system.topdown.ui.commands.command18"  style="push" icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif" >
            <visibleWhen checkEnabled="false">
-            <with variable="selection">
+            <and>
+           <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.transitionVisibilityModelElementExpression"/>
+                        <with variable="selection">
                 <iterate>
-                        <and>
-                        <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.transitionVisibilityModelElementExpression"/>
                             <test property="org.polarsys.capella.core.transition.system.topdown.transitionMode" forcePluginActivation="true"
                                value="transitionLC2PC">
                             </test>
-                        </and>
                 </iterate>
             </with>
+            </and>
          </visibleWhen> 
         </command>
          <command  commandId="org.polarsys.capella.core.transition.system.topdown.ui.commands.command20"  style="push" icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif" > 
           <visibleWhen checkEnabled="false">
-            <with variable="selection">
+            <and>
+           <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.transitionVisibilityModelElementExpression"/>
+                        <with variable="selection">
                 <iterate>
-                        <and>
-                        <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.transitionVisibilityModelElementExpression"/>
                             <test property="org.polarsys.capella.core.transition.system.topdown.transitionMode" forcePluginActivation="true"
                                value="transitionOE2Actor">
                             </test>
-                        </and>
                 </iterate>
             </with>
+            </and>
          </visibleWhen> 
         </command>
          <command  commandId="org.polarsys.capella.core.transition.system.topdown.ui.commands.command22"  style="push" icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif" > 
           <visibleWhen checkEnabled="false">
-            <with variable="selection">
+            <and>
+           <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.transitionVisibilityModelElementExpression"/>
+                        <with variable="selection">
                 <iterate>
-                        <and>
-                        <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.transitionVisibilityModelElementExpression"/>
                             <test property="org.polarsys.capella.core.transition.system.topdown.transitionMode" forcePluginActivation="true"
                                value="transitionOE2System">
                             </test>
-                        </and>
                 </iterate>
             </with>
+            </and>
          </visibleWhen> 
         </command>
          <command  commandId="org.polarsys.capella.core.transition.system.topdown.ui.commands.command24"  style="push" icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif" >
           <visibleWhen checkEnabled="false">
-            <with variable="selection">
+            <and>
+           <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.transitionVisibilityModelElementExpression"/>
+                        <with variable="selection">
                 <iterate>
-                        <and>
-                        <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.transitionVisibilityModelElementExpression"/>
                             <test property="org.polarsys.capella.core.transition.system.topdown.transitionMode" forcePluginActivation="true"
                                value="transitionCapability">
                             </test>
-                        </and>
                 </iterate>
             </with>
+            </and>
          </visibleWhen> 
         </command>
          <command  commandId="org.polarsys.capella.core.transition.system.topdown.ui.commands.command26"  style="push" icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif" > 
           <visibleWhen checkEnabled="false">
-            <with variable="selection">
+            <and>
+           <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.transitionVisibilityModelElementExpression"/>
+                        <with variable="selection">
                 <iterate>
-                        <and>
-                        <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.transitionVisibilityModelElementExpression"/>
                             <test property="org.polarsys.capella.core.transition.system.topdown.transitionMode" forcePluginActivation="true"
                                value="transitionOC2SM">
                             </test>
-                        </and>
                 </iterate>
             </with>
+            </and>
          </visibleWhen> 
         </command>
          <command  commandId="org.polarsys.capella.core.transition.system.topdown.ui.commands.command28"  style="push" icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif" > 
           <visibleWhen checkEnabled="false">
-            <with variable="selection">
+            <and>
+               <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.transitionVisibilityModelElementExpression"/>
+                         <with variable="selection">
                 <iterate>
-                        <and>
-                            <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.transitionVisibilityModelElementExpression"/>
-                            <test property="org.polarsys.capella.core.transition.system.topdown.transitionMode" forcePluginActivation="true"
+                           <test property="org.polarsys.capella.core.transition.system.topdown.transitionMode" forcePluginActivation="true"
                                value="transitionOA2SC">
                             </test>
-                        </and>
                 </iterate>
             </with>
+            </and>
          </visibleWhen> 
         </command>
          <command  commandId="org.polarsys.capella.core.transition.system.topdown.ui.commands.command30"  style="push" icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif" >
           <visibleWhen checkEnabled="false">
-            <with variable="selection">
+            <and>
+               <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.transitionVisibilityModelElementExpression"/>
+                <with variable="selection">
                 <iterate>
-                        <and>
-                            <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.transitionVisibilityModelElementExpression"/>
-			                <test property="org.polarsys.capella.core.transition.system.topdown.transitionMode" forcePluginActivation="true"
+                            <test property="org.polarsys.capella.core.transition.system.topdown.transitionMode" forcePluginActivation="true"
                                value="transitionOA2SM">
                             </test>
-                        </and>
                 </iterate>
             </with>
+            </and>
          </visibleWhen> 
         </command>
       </menuContribution>
@@ -375,11 +375,8 @@
    
    <extension
          point="org.eclipse.ui.commands">
-      <category
-            id="org.polarsys.capella.core.transitions.ui.category"
-            name="Transitions">
-      </category>
 		 <command
+               categoryId="org.polarsys.capella.core.transitions"
                defaultHandler="org.polarsys.capella.core.transition.system.topdown.ui.handlers.InterfaceTransitionHandler"
                id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command2"
                name="%topdownTransition_Interface_label"
@@ -388,6 +385,7 @@
 		 
 
 		 <command
+               categoryId="org.polarsys.capella.core.transitions"
                defaultHandler="org.polarsys.capella.core.transition.system.topdown.ui.handlers.FunctionalTransitionHandler"
                id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command4"
                name="%topdownTransition_Functional_label"
@@ -395,6 +393,7 @@
          </command>
 
 		 <command
+               categoryId="org.polarsys.capella.core.transitions"
                defaultHandler="org.polarsys.capella.core.transition.system.topdown.ui.handlers.StateMachineTransitionHandler"
                id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command6"
                name="%topdownTransition_StateMachine_label"
@@ -402,6 +401,7 @@
          </command>
 
 		 <command
+               categoryId="org.polarsys.capella.core.transitions"
                defaultHandler="org.polarsys.capella.core.transition.system.topdown.ui.handlers.DataTransitionHandler"
                id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command8"
                name="%topdownTransition_Data_label"
@@ -409,6 +409,7 @@
          </command>
 		 
          <command
+               categoryId="org.polarsys.capella.core.transitions"
                defaultHandler="org.polarsys.capella.core.transition.system.topdown.ui.handlers.PropertyValueTransitionHandler"
                id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command10"
                name="%topdownTransition_PropertyValue_label"
@@ -416,6 +417,7 @@
          </command>
 
 		 <command
+               categoryId="org.polarsys.capella.core.transitions"
                defaultHandler="org.polarsys.capella.core.transition.system.topdown.ui.handlers.ExchangeItemTransitionHandler"
                id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command12"
                name="%topdownTransition_ExchangeItem_label"
@@ -423,6 +425,7 @@
          </command>
 
 		 <command
+               categoryId="org.polarsys.capella.core.transitions"
                defaultHandler="org.polarsys.capella.core.transition.system.topdown.ui.handlers.ActorTransitionHandler"
                id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command14"
                name="%topdownTransition_Actor_label"
@@ -430,6 +433,7 @@
          </command>
 
 		 <command
+               categoryId="org.polarsys.capella.core.transitions"
                defaultHandler="org.polarsys.capella.core.transition.system.topdown.ui.handlers.SystemTransitionHandler"
                id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command16"
                name="%topdownTransition_System_label"
@@ -437,6 +441,7 @@
          </command>
 		 
 		 <command
+               categoryId="org.polarsys.capella.core.transitions"
                defaultHandler="org.polarsys.capella.core.transition.system.topdown.ui.handlers.LC2PCTransitionHandler"
                id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command18"
                name="%topdownTransition_LC2PC_label"
@@ -444,6 +449,7 @@
          </command>
 		         
          <command
+               categoryId="org.polarsys.capella.core.transitions"
                defaultHandler="org.polarsys.capella.core.transition.system.topdown.ui.handlers.OE2ActorTransitionHandler"
                id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command20"
                name="%topdownTransition_OE2Actor_label"
@@ -451,6 +457,7 @@
          </command>
 
          <command
+               categoryId="org.polarsys.capella.core.transitions"
                defaultHandler="org.polarsys.capella.core.transition.system.topdown.ui.handlers.OE2SystemTransitionHandler"
                id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command22"
                name="%topdownTransition_OE2System_label"
@@ -458,6 +465,7 @@
          </command>
 
          <command
+               categoryId="org.polarsys.capella.core.transitions"
                defaultHandler="org.polarsys.capella.core.transition.system.topdown.ui.handlers.CapabilityTransitionHandler"
                id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command24"
                name="%topdownTransition_Capability_label"
@@ -465,6 +473,7 @@
          </command>
 
          <command
+               categoryId="org.polarsys.capella.core.transitions"
                defaultHandler="org.polarsys.capella.core.transition.system.topdown.ui.handlers.OC2SMTransitionHandler"
                id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command26"
                name="%topdownTransition_OC2SM_label"
@@ -472,6 +481,7 @@
          </command>
 
          <command
+               categoryId="org.polarsys.capella.core.transitions"
                defaultHandler="org.polarsys.capella.core.transition.system.topdown.ui.handlers.OA2SCTransitionHandler"
                id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command28"
                name="%topdownTransition_OA2SC_label"
@@ -479,6 +489,7 @@
          </command>
 
          <command
+               categoryId="org.polarsys.capella.core.transitions"
                defaultHandler="org.polarsys.capella.core.transition.system.topdown.ui.handlers.OA2SMTransitionHandler"
                id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command30"
                name="%topdownTransition_OA2SM_label"
@@ -494,7 +505,7 @@
                <with
                   variable="selection">
                <and>
-                  <iterate>
+                  <iterate ifEmpty="false">
                        <or>
                         <instanceof
                                    value="org.polarsys.capella.common.data.modellingcore.ModelElement">

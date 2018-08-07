@@ -22,7 +22,7 @@
                 
                  <visibleWhen checkEnabled="false">
                     <with variable="selection">
-                        <iterate>
+                        <iterate ifEmpty="false">
                         	<or>
                             <test property="org.polarsys.capella.core.platform.sirius.ui.classOf" forcePluginActivation="true" value="OperationalActivity"/>
                             <test property="org.polarsys.capella.core.platform.sirius.ui.classOf" forcePluginActivation="true" value="SystemFunction"/>
@@ -68,11 +68,8 @@
        
       <extension
          point="org.eclipse.ui.commands">
-           <category
-                id="org.polarsys.capella.core.wizard.ui.category"
-                name="Wizards">
-           </category>
            <command
+                   categoryId="org.polarsys.capella.core.wizards"
                    defaultHandler="org.polarsys.capella.core.data.fa.ui.wizards.actions.EIAllocationManagementWizardAction"
                    id="org.polarsys.capella.core.data.fa.ui.wizards.command.EIAllocationManagementWizardAction"
                    name="%EIAllocationManagement">

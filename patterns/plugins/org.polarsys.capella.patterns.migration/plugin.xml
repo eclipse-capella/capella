@@ -20,13 +20,11 @@
             name="%patternMigration"
             description="%patternMigration_description">
       </command>
-      
    </extension>
       <extension
          point="org.eclipse.ui.menus">
       <menuContribution
-            locationURI="popup:capella.project.explorer#PopupMenu?after=group.migration">
-            <menu label="%migrationMenu">
+            locationURI="popup:org.polarsys.capella.core.data.migration?after=additions">
             
             <command
                   commandId="org.polarsys.capella.patterns.migration"
@@ -35,8 +33,6 @@
                 </visibleWhen> 
             </command>
             
-            </menu>
-         
       </menuContribution>
    </extension>
    

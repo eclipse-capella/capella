@@ -10,14 +10,18 @@
  *******************************************************************************/
 package org.polarsys.capella.core.platform.sirius.ui;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.function.Predicate;
+
 import org.eclipse.core.expressions.PropertyTester;
+import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.ui.actions.ModelAdaptation;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.ComponentContext;
 import org.polarsys.capella.core.data.cs.Part;
-import org.polarsys.capella.core.data.ctx.SystemFunction;
 import org.polarsys.capella.core.data.epbs.ConfigurationItem;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
@@ -31,16 +35,17 @@ import org.polarsys.capella.core.model.utils.CapellaLayerCheckingExt;
 public class ActionPropertyTester extends PropertyTester {
 
   /**
-   * @see org.eclipse.core.expressions.IPropertyTester#test(java.lang.Object, java.lang.String, java.lang.Object[], java.lang.Object)
+   * @see org.eclipse.core.expressions.IPropertyTester#test(java.lang.Object, java.lang.String, java.lang.Object[],
+   *      java.lang.Object)
    */
   public boolean test(Object object_p, String propertyName_p, Object[] params_p, Object testedValue_p) {
     boolean result = false;
-    if (propertyName_p.equals("actionMode") || propertyName_p.equals("graphicalActionMode")) { //$NON-NLS-1$ //$NON-NLS-2$ 
+    if (propertyName_p.equals("actionMode") || propertyName_p.equals("graphicalActionMode")) { //$NON-NLS-1$ //$NON-NLS-2$
       // getting the capella element
       ModelElement element = ModelAdaptation.adaptToCapella(object_p);
       if ((element != null) && (element instanceof CapellaElement)) {
         String actionName = (String) testedValue_p;
-
+        
         if ("propagationEIOnPorts".equals(actionName)) { //$NON-NLS-1$
           return isPropagationEIOnPorts(element);
         }
@@ -57,22 +62,50 @@ public class ActionPropertyTester extends PropertyTester {
           return isConvertPrimitive(element);
         }
         if ("transformLiteralNumericValue".equals(actionName)) { //$NON-NLS-1$
-          return element instanceof LiteralNumericValue;
+          
+        }
+        if ("requirementManagerWizard".equals(actionName)) { //$NON-NLS-1$
+          return isRequirementManagerWizard(element);
+        }
+        if ("traceManager".equals(actionName)) { //$NON-NLS-1$
+          return isTraceManager(element);
+        }
+        if ("allocationManagement".equals(actionName)) { //$NON-NLS-1$
+          return isAllocationManagement(element);
+        }
+        if ("copyPath".equals(actionName)) { //$NON-NLS-1$
+          return isCopyPath(element);
         }
       }
     }
     return result;
   }
 
-  private boolean isConvertPrimitive(ModelElement element) {
-	if (element instanceof org.polarsys.capella.core.data.information.Class) {
-		org.polarsys.capella.core.data.information.Class cl = (org.polarsys.capella.core.data.information.Class) element;
-		return cl.isIsPrimitive();
-	}
-	return false;
-}
+  private boolean isCopyPath(ModelElement element) {
+    return true;
+  }
 
-/**
+  private boolean isAllocationManagement(ModelElement element) {
+    return true;
+  }
+
+  private boolean isTraceManager(ModelElement element) {
+    return true;
+  }
+
+  private boolean isRequirementManagerWizard(ModelElement element) {
+    return true;
+  }
+
+  private boolean isConvertPrimitive(ModelElement element) {
+    if (element instanceof org.polarsys.capella.core.data.information.Class) {
+      org.polarsys.capella.core.data.information.Class cl = (org.polarsys.capella.core.data.information.Class) element;
+      return cl.isIsPrimitive();
+    }
+    return false;
+  }
+
+  /**
    * @param element_p
    * @return
    */

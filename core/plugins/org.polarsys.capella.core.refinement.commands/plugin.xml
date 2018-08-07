@@ -22,10 +22,10 @@
                 locationURI="popup:org.polarsys.capella.core.transitions?after=additions">
              <command  commandId="org.polarsys.capella.core.refinement.commands.actions.scenarioRefinementAction"  style="push" icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif" >
              <visibleWhen checkEnabled="false">
-                <with variable="selection">
-                    <iterate>
-                            <and>
-                               <reference definitionId="org.polarsys.capella.core.refinement.commands.ui.expression.transitionVisibilityModelElementExpression"/>
+                <and>
+                    <reference definitionId="org.polarsys.capella.core.refinement.commands.ui.expression.transitionVisibilityModelElementExpression"/>
+                    <with variable="selection">
+                      <iterate>
                                 <or>
                                     <test
                                           forcePluginActivation="true"
@@ -44,9 +44,9 @@
                                     </test>
                 
                              </or>
-                            </and>
-                    </iterate>
-                </with>
+                      </iterate>
+                   </with>
+                </and>
              </visibleWhen> 
              </command> 
           </menuContribution>
@@ -244,14 +244,12 @@
              <command  commandId="refinementMode.propagateSystemInterfacesToLogicalSystem"  >
               <visibleWhen checkEnabled="false">
                 <with variable="selection">
-                 <and>
-                    <iterate>
+                    <iterate ifEmpty="false">
                           <test forcePluginActivation="true"
 			                  property="org.polarsys.capella.core.refinement.commands.refinementMode"
 			                  value="instanceOfSystem">
 			            </test>
                     </iterate>
-                    </and>
                 </with>
              </visibleWhen> 
              </command>
@@ -259,14 +257,12 @@
              <command  commandId="refinementMode.synchronizeLogicalInterfacesWithSystem"  >
               <visibleWhen checkEnabled="false">
                 <with variable="selection">
-                 <and>
-                    <iterate>
+                    <iterate ifEmpty="false">
                           <test forcePluginActivation="true"
 			                  property="org.polarsys.capella.core.refinement.commands.refinementMode"
 			                  value="instanceOfLogicalComponent">
 			            </test>
                     </iterate>
-                    </and>
                 </with>
              </visibleWhen> 
              </command>
@@ -274,14 +270,12 @@
              <command  commandId="refinementMode.propagateActorInterfacesToLogicalActors"  >
               <visibleWhen checkEnabled="false">
                 <with variable="selection">
-                 <and>
-                    <iterate>
+                    <iterate ifEmpty="false">
                           <test forcePluginActivation="true"
 			                  property="org.polarsys.capella.core.refinement.commands.refinementMode"
 			                  value="instanceOfSystemActorOrSystemActorPck">
 			            </test>
                     </iterate>
-                    </and>
                 </with>
              </visibleWhen> 
              </command>
@@ -290,14 +284,12 @@
              <command  commandId="refinementMode.synchronizeLogicalActorInterfacesWithSystem"  >
               <visibleWhen checkEnabled="false">
                 <with variable="selection">
-                 <and>
-                    <iterate>
+                    <iterate ifEmpty="false">
                           <test forcePluginActivation="true"
 			                  property="org.polarsys.capella.core.refinement.commands.refinementMode"
 			                  value="instanceOfLogicalActorOrLogicalActorPck">
 			            </test>
                     </iterate>
-                    </and>
                 </with>
              </visibleWhen> 
              </command>
@@ -307,14 +299,12 @@
              <command  commandId="refinementMode.propagateActorCommunicationLinksToLogicalSystem"  >
               <visibleWhen checkEnabled="false">
                 <with variable="selection">
-                 <and>
-                    <iterate>
+                    <iterate ifEmpty="false">
                           <test forcePluginActivation="true"
 			                  property="org.polarsys.capella.core.refinement.commands.refinementMode"
 			                  value="instanceOfSystemActorOrSystemActorPck">
 			            </test>
                     </iterate>
-                    </and>
                 </with>
              </visibleWhen> 
              </command>
@@ -325,14 +315,12 @@
              <command  commandId="refinementMode.synchronizeLogicalActorCommunicationLinksWithSystem"  >
               <visibleWhen checkEnabled="false">
                 <with variable="selection">
-                 <and>
-                    <iterate>
+                    <iterate ifEmpty="false">
                           <test forcePluginActivation="true"
 			                  property="org.polarsys.capella.core.refinement.commands.refinementMode"
 			                  value="instanceOfLogicalActorOrLogicalActorPck">
 			            </test>
                     </iterate>
-                    </and>
                 </with>
              </visibleWhen> 
              </command>
@@ -343,14 +331,12 @@
              <command  commandId="refinementMode.propagateSystemCommunicationLinksToLogicalSystem"  >
               <visibleWhen checkEnabled="false">
                 <with variable="selection">
-                 <and>
-                    <iterate>
+                    <iterate ifEmpty="false">
                           <test forcePluginActivation="true"
 			                  property="org.polarsys.capella.core.refinement.commands.refinementMode"
 			                  value="instanceOfSystem">
 			            </test>
                     </iterate>
-                    </and>
                 </with>
              </visibleWhen> 
              </command>
@@ -360,14 +346,12 @@
              <command  commandId="refinementMode.synchronizeLogicalCommunicationLinksWithSystem"  >
               <visibleWhen checkEnabled="false">
                 <with variable="selection">
-                 <and>
-                    <iterate>
+                    <iterate ifEmpty="false">
                           <test forcePluginActivation="true"
 			                  property="org.polarsys.capella.core.refinement.commands.refinementMode"
 			                  value="instanceOfLogicalComponent">
 			            </test>
                     </iterate>
-                    </and>
                 </with>
              </visibleWhen> 
              </command>
@@ -377,14 +361,12 @@
              <command  commandId="refinementMode.propagateInterfacesLCtoPC"  >
               <visibleWhen checkEnabled="false">
                 <with variable="selection">
-                 <and>
-                    <iterate>
+                    <iterate ifEmpty="false">
                           <test forcePluginActivation="true"
 			                  property="org.polarsys.capella.core.refinement.commands.refinementMode"
 			                  value="propagateInterfacesLCtoPC">
 			            </test>
                     </iterate>
-                    </and>
                 </with>
              </visibleWhen> 
              </command>
@@ -394,14 +376,12 @@
              <command  commandId="refinementMode.propagateInterfacesPCtoCI"  >
               <visibleWhen checkEnabled="false">
                 <with variable="selection">
-                 <and>
-                    <iterate>
+                    <iterate ifEmpty="false">
                           <test forcePluginActivation="true"
 			                  property="org.polarsys.capella.core.refinement.commands.refinementMode"
 			                  value="propagateInterfacesPCtoCI">
 			            </test>
                     </iterate>
-                    </and>
                 </with>
              </visibleWhen> 
              </command>
@@ -411,14 +391,12 @@
              <command  commandId="refinementMode.synchronizeInterfacesPC"  >
               <visibleWhen checkEnabled="false">
                 <with variable="selection">
-                 <and>
-                    <iterate>
+                    <iterate ifEmpty="false">
                           <test forcePluginActivation="true"
 			                  property="org.polarsys.capella.core.refinement.commands.refinementMode"
 			                  value="synchronizeInterfacesPC">
 			            </test>
                     </iterate>
-                    </and>
                 </with>
              </visibleWhen> 
              </command>
@@ -427,14 +405,12 @@
              <command  commandId="refinementMode.synchronizeInterfacesCI"  >
               <visibleWhen checkEnabled="false">
                 <with variable="selection">
-                 <and>
-                    <iterate>
+                    <iterate ifEmpty="false">
                           <test forcePluginActivation="true"
 			                  property="org.polarsys.capella.core.refinement.commands.refinementMode"
 			                  value="synchronizeInterfacesCI">
 			            </test>
                     </iterate>
-                    </and>
                 </with>
              </visibleWhen> 
              </command>
@@ -450,8 +426,7 @@
             id="org.polarsys.capella.core.refinement.commands.ui.expression.transitionVisibilityModelElementExpression">
                <with
                   variable="selection">
-               <and>
-                  <iterate>
+                  <iterate ifEmpty="false">
                        <or>
                         <instanceof
                               value="org.polarsys.capella.common.data.modellingcore.ModelElement">
@@ -464,7 +439,6 @@
                         </instanceof>
                        </or>
                   </iterate>
-               </and>
             </with>
       </definition>
    </extension>
@@ -504,14 +478,12 @@
              <command  commandId="org.polarsys.capella.core.refinement.commands.actions.addExistingSubScenarioAction"  style="push" icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_edit.gif" >
               <visibleWhen checkEnabled="false">
                 <with variable="selection">
-                 <and>
-                    <iterate>
+                    <iterate ifEmpty="false">
                             <test property="org.polarsys.capella.core.platform.sirius.ui.classOf"
                                  forcePluginActivation="true"
                                    value="Scenario">
                                 </test>
                     </iterate>
-                    </and>
                 </with>
              </visibleWhen> 
              </command>
@@ -519,14 +491,12 @@
              <command  commandId="org.polarsys.capella.core.refinement.commands.actions.addNewSubScenarioAction"  style="push" icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_edit.gif" >
               <visibleWhen checkEnabled="false">
                 <with variable="selection">
-                 <and>
-                    <iterate>
+                    <iterate ifEmpty="false">
                             <test property="org.polarsys.capella.core.platform.sirius.ui.classOf"
                                  forcePluginActivation="true"
                                    value="Scenario">
                                 </test>
                     </iterate>
-                 </and>
                 </with>
              </visibleWhen> 
              </command>

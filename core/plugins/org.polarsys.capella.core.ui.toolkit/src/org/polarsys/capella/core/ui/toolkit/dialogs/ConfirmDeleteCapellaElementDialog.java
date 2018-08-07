@@ -48,6 +48,10 @@ import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
  */
 public class ConfirmDeleteCapellaElementDialog extends ImpactAnalysisDialog {
 
+  public static final String DELETE_ANALYSIS_DIALOG_ELEMENTS = "org.polarsys.capella.core.ui.toolkit.dialogs.confirmDelete.elements";
+  
+  public static final String DELETE_ANALYSIS_DIALOG_REFERENCING_ELEMENTS = "org.polarsys.capella.core.ui.toolkit.dialogs.confirmDelete.referencingElements";
+  
   /*
    * Referencing elements viewer to deleted elements.
    */
@@ -109,7 +113,7 @@ public class ConfirmDeleteCapellaElementDialog extends ImpactAnalysisDialog {
     deletedElementsGroup.setLayout(new GridLayout());
     deletedElementsGroup.setLayoutData(new GridData(GridData.FILL_BOTH));
     // Create the viewer area with this group as parent.
-    elementsToDeleteViewer = this.createViewer(deletedElementsGroup);
+    elementsToDeleteViewer = this.createViewer(deletedElementsGroup, DELETE_ANALYSIS_DIALOG_ELEMENTS);
     elementsToDeleteViewer.setInput(getInitialInputData());
     // Add a button to display EMF resource as root nodes.
     createResourceCheckButton(deletedElementsGroup, elementsToDeleteViewer);
@@ -137,7 +141,7 @@ public class ConfirmDeleteCapellaElementDialog extends ImpactAnalysisDialog {
     referencingElementsGroup.setLayout(new GridLayout());
     referencingElementsGroup.setLayoutData(new GridData(GridData.FILL_BOTH));
     // Create the referencing element with this group as parent.
-    referencingElementsViewer = this.createViewer(referencingElementsGroup);
+    referencingElementsViewer = this.createViewer(referencingElementsGroup, DELETE_ANALYSIS_DIALOG_REFERENCING_ELEMENTS);
     // Set a label provider that allow decorator mechanism.
     referencingElementsViewer.setLabelProvider(new DecoratingLabelProvider(new ImpactAnalysisLabelProvider(referencingElementsViewer,
         DEFAULT_COLOR_FOR_RELEVANT_ELEMENTS), PlatformUI.getWorkbench().getDecoratorManager()));
@@ -192,22 +196,16 @@ public class ConfirmDeleteCapellaElementDialog extends ImpactAnalysisDialog {
     return 800; // With 2 viewers, we need more space.
   }
 
-  /**
-   * @see org.polarsys.capella.common.ui.toolkit.dialogs.AbstractMessageDialogWithViewer#createViewer(org.eclipse.swt.widgets.Composite)
-   */
-  @Override
-  protected TreeViewer createViewer(Composite parentComposite) {
+  protected TreeViewer createViewer(Composite parentComposite, String location) {
     // Create tree viewer.
     // Don't use the status bar of the viewer b
     TreeAndListViewer treeViewer = new TreeAndListViewer(parentComposite, this.isMultipleSelection, IViewerStyle.SHOW_STATUS_BAR) {
-      /**
-       * @see org.polarsys.capella.common.ui.toolkit.viewers.AbstractRegExpViewer#createControl(org.eclipse.swt.widgets.Composite)
-       */
+      
       @Override
-      protected void createControl(Composite parentComposite) {
-        super.createControl(parentComposite);
+      public String getContextMenuLocation() {
+        return location;
       }
-
+      
     };
 
     TreeViewer viewer = treeViewer.getClientViewer();
@@ -218,7 +216,7 @@ public class ConfirmDeleteCapellaElementDialog extends ImpactAnalysisDialog {
     viewer.setSorter(new ImpactAnalysisSorter());
     return viewer;
   }
-
+  
   /**
    * Create a check button to display (or not) the resource.
    * @param parentComposite

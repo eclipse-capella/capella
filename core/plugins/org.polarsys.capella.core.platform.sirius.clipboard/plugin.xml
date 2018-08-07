@@ -15,7 +15,7 @@
    <extension
          point="org.eclipse.ui.menus">
          <menuContribution
-               locationURI="popup:org.eclipse.gmf.runtime.diagram.ui.DiagramEditorContextMenu?after=edit">
+               locationURI="popup:org.eclipse.gmf.runtime.diagram.ui.DiagramEditorContextMenu?after=group.semantic">
                
                <menu id="BusinessCopyPasteMenuSirius" label="Capella Copy/Paste">
 	               <command

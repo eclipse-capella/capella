@@ -70,7 +70,6 @@
 <extension
          point="org.eclipse.ui.menus">
       <menuContribution
-	      	allPopups="true"
             locationURI="popup:org.eclipse.ui.popup.any?after=org.polarsys.capella.core.platform.sirius.ui.navigator.LocateInCapellaExplorer">
             <!-- locationURI shall be org.eclipse.ui.popup.any?after=group.showIn, but we want ShowInSemanticBrowser right after the ShowInCapellaExplorer -->
          <command

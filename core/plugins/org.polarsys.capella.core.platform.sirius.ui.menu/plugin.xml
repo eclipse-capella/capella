@@ -20,6 +20,7 @@
                
               <separator name="group.showIn" visible="true" />
               <separator name="group.sendTo" visible="true" />
+              <separator name="navigateGroup.separator" visible="true" /> <!-- To separate properly sendTo to other navigation tools -->
               
        </menuContribution>
        
@@ -63,6 +64,7 @@
                 
               <separator name="group.showIn" visible="true" />
               <separator name="group.sendTo" visible="true" />
+              <separator name="group.semantic" visible="true" />
               
        </menuContribution>
        
@@ -74,6 +76,26 @@
               <separator name="group.sendTo" visible="true" />
               
        </menuContribution>
+       
+       
+       <!-- Delete Confirmation Dialog -->
+       <menuContribution
+                locationURI="popup:org.polarsys.capella.core.ui.toolkit.dialogs.confirmDelete.elements?after=additions">
+               
+              <separator name="group.showIn" visible="true" />
+              <separator name="group.sendTo" visible="true" />
+              
+       </menuContribution>
+       
+       <menuContribution
+                locationURI="popup:org.polarsys.capella.core.ui.toolkit.dialogs.confirmDelete.referencingElements?after=additions">
+               
+              <separator name="group.showIn" visible="true" />
+              <separator name="group.sendTo" visible="true" />
+              
+       </menuContribution>
+       
+       
        
        <!-- Diff-Merge editor -->
        <menuContribution
@@ -265,17 +287,25 @@
       <extension
          point="org.eclipse.ui.commands">
       <category
-            id="org.polarsys.capella.core.wizard.ui.category"
-            name="Wizards">
+            id="org.polarsys.capella.core.semantic"
+            name="%semanticGroup_label">
+      </category>
+      <category
+            id="org.polarsys.capella.core.transitions"
+            name="%transitionGroup_label">
+      </category>
+      <category
+            id="org.polarsys.capella.core.wizards"
+            name="%wizardGroup_label">
+      </category>
+      <category
+            id="org.polarsys.capella.core.accelerators"
+            name="%acceleratorGroup_label">
       </category>
       
       </extension>
      
      
-   
- <!-- _________________________________ FIN TEMP ________________________________________________________-->
-
-   
    
    <extension
          point="org.eclipse.core.expressions.propertyTesters">
