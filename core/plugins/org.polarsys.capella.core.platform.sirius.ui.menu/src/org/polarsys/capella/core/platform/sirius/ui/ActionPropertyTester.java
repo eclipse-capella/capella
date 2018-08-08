@@ -62,7 +62,7 @@ public class ActionPropertyTester extends PropertyTester {
           return isConvertPrimitive(element);
         }
         if ("transformLiteralNumericValue".equals(actionName)) { //$NON-NLS-1$
-          
+          return element instanceof LiteralNumericValue;
         }
         if ("requirementManagerWizard".equals(actionName)) { //$NON-NLS-1$
           return isRequirementManagerWizard(element);
