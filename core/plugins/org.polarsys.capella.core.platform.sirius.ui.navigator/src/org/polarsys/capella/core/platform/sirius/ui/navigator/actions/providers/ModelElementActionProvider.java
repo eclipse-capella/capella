@@ -10,15 +10,24 @@
  *******************************************************************************/
 package org.polarsys.capella.core.platform.sirius.ui.navigator.actions.providers;
 
+import org.eclipse.jface.viewers.ISelectionProvider;
+import org.eclipse.ui.IActionBars;
+import org.eclipse.ui.actions.ActionFactory;
 import org.eclipse.ui.navigator.CommonActionProvider;
+import org.eclipse.ui.navigator.ICommonActionConstants;
 import org.eclipse.ui.navigator.ICommonActionExtensionSite;
+import org.eclipse.ui.navigator.ICommonViewerSite;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
+import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.OpenPropertiesAction;
+import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.SelectionHelper;
 
 /**
  * Action Provider for {@link ModelElement}.
  */
 public class ModelElementActionProvider extends CommonActionProvider {
 
+
+  private OpenPropertiesAction _openPropertiesAction;
 
 
   /**
@@ -27,13 +36,30 @@ public class ModelElementActionProvider extends CommonActionProvider {
   @Override
   public void dispose() {
     super.dispose();
+    
+    if (null != _openPropertiesAction) {
+      ISelectionProvider selectionProvider = getActionSite().getViewSite().getSelectionProvider();
+      selectionProvider.removeSelectionChangedListener(_openPropertiesAction);
+      _openPropertiesAction = null;
+    }
   }
 
+  @Override
+  public void fillActionBars(IActionBars actionBars) {
+    super.fillActionBars(actionBars);
+    actionBars.setGlobalActionHandler(ICommonActionConstants.OPEN, _openPropertiesAction);
+    actionBars.setGlobalActionHandler(ActionFactory.PROPERTIES.getId(), _openPropertiesAction);
+  }
   /**
    * @see org.eclipse.ui.navigator.CommonActionProvider#init(org.eclipse.ui.navigator.ICommonActionExtensionSite)
    */
   @Override
   public void init(ICommonActionExtensionSite site_p) {
     super.init(site_p);
+    
+    ICommonViewerSite commonViewSite = site_p.getViewSite();
+    _openPropertiesAction = new OpenPropertiesAction();
+    SelectionHelper.registerToSelectionChanges(_openPropertiesAction, commonViewSite.getSelectionProvider());
+
   }
 }
