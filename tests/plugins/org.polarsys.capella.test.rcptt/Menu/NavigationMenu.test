@@ -1,0 +1,118 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _4Zi_gEkPEeaoOLXB8A2oPA
+Element-Name: NavigationMenu
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _x3yKIJrrEeiYyJV_j_AxhQ
+Runtime-Version: 2.2.0.201705230341
+Save-Time: 8/8/18 1:08 PM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+Delete a SystemFunction which has a SDFB diagram. The tree which appears in the Delete Elements group must have two items: The IFE tree item and the DAnalysis tree item.
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+get-view "Capella Project Explorer" | get-tree
+    | select "In-Flight Entertainment System/In-Flight Entertainment System.aird" | double-click
+
+
+get-view "Capella Project Explorer" | get-tree 
+    | select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/Logical Architecture/Logical Functions/Root Logical Function" 
+    | get-menu -path "Validate Model" | click
+    
+get-window "Validation Problems" | get-button OK | click
+
+
+
+with [get-view "Capella Project Explorer" | get-tree] {
+    select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/Operational Analysis"
+    get-menu -path "Show in Semantic Browser" | get-property enablement | equals true | verify-true
+    get-menu -path "Copy Qualified Name" | get-property enablement | equals true | verify-true
+    get-menu -path "Show Impact Analysis..." | get-property enablement | equals true | verify-true
+}
+
+// Menus on Impact Analysis
+
+get-view "Capella Project Explorer" | get-tree 
+    | select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis" 
+    | get-menu -path "Show Impact Analysis..." | click
+    
+with [get-window "Impact Analysis"] {
+    get-group "Select a name to find" | get-editbox -after [get-label "? = any character, * = any string"] | set-focus
+    get-tree | select "In-Flight Entertainment System/In-Flight Entertainment System/Logical Architecture"
+}
+with [get-window "Impact Analysis" | get-tree] {
+    get-menu -path "Show in Capella Explorer" | get-property enablement | equals true | verify-true
+    get-menu -path "Show in Semantic Browser" | get-property enablement | equals true | verify-true
+}
+
+get-window "Impact Analysis" | get-tree 
+    | select "In-Flight Entertainment System/In-Flight Entertainment System/Logical Architecture/\\[System Analysis Realization\\] to System Analysis"
+get-window "Impact Analysis" | get-tree | get-menu -path "Show Related Element(s) in Capella Explorer/Show all" | get-property enablement | equals true | verify-true
+get-window "Impact Analysis" | get-button OK | click
+
+// Menu on Semantic Browser
+
+get-view "Semantic Browser" | click
+get-view "Capella Project Explorer" | get-tree 
+    | select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/IFE System"
+with [get-view "Semantic Browser"] {
+    get-button "Link content to workbench selection events" | click
+    get-tree | select "Realizing Logical Components/IFE System"
+}
+
+get-view "Semantic Browser" | get-tree | get-menu -path "Show in Capella Explorer" | get-property enablement | equals true | verify-true
+get-view "Semantic Browser" | get-tree | get-menu -path "Copy Qualified Name" | get-property enablement | equals true | verify-true
+    
+// Menus Wizards
+get-view "Capella Project Explorer" | get-tree 
+    | select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/IFE System"
+with [get-view "Capella Project Explorer" | get-tree] {
+    get-menu -path "Wizards/Requirement Manager" | get-property enablement | equals true | verify-true
+    get-menu -path "Wizards/Trace Manager" | get-property enablement | equals true | verify-true
+}
+
+get-view "Capella Project Explorer" | get-tree 
+    | select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/Logical Architecture/IFE System/Aircraft Front Servers"
+get-view "Capella Project Explorer" | get-tree | get-menu -path "Wizards/Logical Component Decomposition" | get-property enablement | equals true | verify-true
+
+get-view "Capella Project Explorer" | get-tree 
+    | select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/Logical Architecture/Logical Functions/Root Logical Function/Perform Cabin Management Activities"
+get-view "Capella Project Explorer" | get-tree | get-menu -path "Wizards/Function Port and EI Traceability Wizard" | get-property enablement | equals true | verify-true
+
+with [get-view "Fast Linker" | get-canvas] {
+    mouse-enter 290 235 -height 274 -width 393
+    mouse-move 290 235 -height 274 -width 393
+    mouse-exit 350 310 -height 274 -width 393
+}
+get-view "Capella Project Explorer" | get-tree 
+    | select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/Logical Architecture/Logical Functions/Root Logical Function/\\[LDFB\\] Top Level Functions" 
+    | double-click
+with [get-editor "[LDFB] Top Level Functions" | get-diagram -index 1 | get-edit-part 
+    -name "[LDFB] Top Level Functions"] {
+    mouse-move 281 260 -height 845 -width 1101
+    with [get-edit-part -name "Provide Aircraft Interface" | get-edit-part 
+        -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+        mouse-move 65 19 button1 -height 51 -width 540
+        mouse-press 65 19 button1 -height 51 -width 540
+        mouse-release 65 19 button1 524288 -height 51 -width 540
+        mouse-hover 65 19 -height 51 -width 540
+        mouse-press 65 19 button3 -height 51 -width 540
+        mouse-release 65 19 button3 2097152 -height 51 -width 540
+    }
+    get-edit-part -name "Entertain with IFE System" | get-edit-part 
+        -className DNodeContainerViewNodeContainerCompartmentEditPart | mouse-move 41 425 -height 531 -width 89
+}
+with [get-editor "[LDFB] Top Level Functions" | get-diagram -index 1] {
+    get-menu -path "Show in Capella Explorer" | get-property enablement | equals true | verify-true
+    get-menu -path "Show in Semantic Browser" | get-property enablement | equals true | verify-true
+}
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--
