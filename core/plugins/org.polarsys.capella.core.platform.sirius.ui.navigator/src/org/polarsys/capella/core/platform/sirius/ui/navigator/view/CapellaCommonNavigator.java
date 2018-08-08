@@ -49,7 +49,6 @@ import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.common.tools.api.constant.CommonPreferencesConstants;
 import org.eclipse.sirius.common.ui.SiriusTransPlugin;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
-import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
@@ -87,10 +86,10 @@ import org.polarsys.capella.common.ui.toolkit.widgets.filter.TreePatternFilter;
 import org.polarsys.capella.core.commands.preferences.util.PreferencesHelper;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
-import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.CapellaNavigatorPlugin;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.IImageKeys;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.LocateFilteredElementsInCommonNavigatorAction;
+import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.LocateInCapellaExplorerAction;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.SelectionHelper;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.move.MoveDownAction;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.move.MoveUpAction;
@@ -803,11 +802,7 @@ public class CapellaCommonNavigator extends CommonNavigator implements IEditingD
     if (selection != null && !selection.isEmpty()) {
       ArrayList<Object> toReveal = new ArrayList<Object>();
       for (Object element : ((IStructuredSelection) selection).toArray()) {
-        if (element instanceof DRepresentation) {
-          toReveal.add(RepresentationHelper.getRepresentationDescriptor((DRepresentation) element));
-        } else {
-          toReveal.add(element);
-        }
+        toReveal.add(LocateInCapellaExplorerAction.getElement(element));
       }
       
       IStructuredSelection newSelection = new StructuredSelection(toReveal);

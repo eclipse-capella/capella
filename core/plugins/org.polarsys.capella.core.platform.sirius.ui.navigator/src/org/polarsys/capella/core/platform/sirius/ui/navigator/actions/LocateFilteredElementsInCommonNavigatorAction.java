@@ -11,6 +11,8 @@
 package org.polarsys.capella.core.platform.sirius.ui.navigator.actions;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.LinkedHashSet;
 import java.util.List;
 
 import org.eclipse.core.resources.IFile;
@@ -59,11 +61,11 @@ public class LocateFilteredElementsInCommonNavigatorAction {
         .getFilterService();
 
     // The active filter makes the element hidden.
-    List<ICommonFilterDescriptor> effectiveFilterDescriptors = new ArrayList<>();
+    Collection<ICommonFilterDescriptor> effectiveFilterDescriptors = new LinkedHashSet<>();
     // The active filter id makes the element hidden.
-    List<String> effectiveFilterIds = new ArrayList<>();
+    Collection<String> effectiveFilterIds = new LinkedHashSet<>();
     // The active filter
-    List<String> activeFilterIds = new ArrayList<>();
+    Collection<String> activeFilterIds = new LinkedHashSet<>();
 
     ICommonFilterDescriptor[] visibleFilterDescriptors = capellaNavigatorFilterService.getVisibleFilterDescriptors();
     for (ICommonFilterDescriptor filterDescriptor : visibleFilterDescriptors) {

@@ -1317,7 +1317,7 @@
                <with
                      variable="selection">
                   <and>
-                     <iterate>
+                     <iterate ifEmpty="false">
                         <or>
                            <instanceof
                                  value="org.eclipse.sirius.viewpoint.DRepresentationDescriptor">
@@ -1333,9 +1333,6 @@
                            </instanceof>
                         </or>
                      </iterate>
-                     <count
-                           value="1">
-                     </count>
                   </and>
                </with>
                </and>

@@ -134,24 +134,7 @@ public class LocateInCapellaExplorerAction implements IObjectActionDelegate, IVi
     if (ignoreWorkbenchPartSite || (null != site)) {
       ISelection selection = getSelection();
       if (selection instanceof IStructuredSelection) {
-        Object uiSelectedElement = getFirstSelectedElement(selection);
-        Object elementToSelectInCapellaExplorer = null;
-        // If provided selection is a diagram or a table, let's select it in the capella explorer.
-        if (uiSelectedElement instanceof ItemWrapper) {
-          uiSelectedElement = ((ItemWrapper) uiSelectedElement).getWrappedObject();
-        }
-        if (uiSelectedElement instanceof DRepresentationDescriptor) {
-          elementToSelectInCapellaExplorer = uiSelectedElement;
-        } else {
-          // Get element from given selection.
-          elementToSelectInCapellaExplorer = getElement(uiSelectedElement);
-        }
-        // Keep the double check here, as getSemanticElement can return error.
-        if (CapellaResourceHelper.isSemanticElement(elementToSelectInCapellaExplorer)
-            || (elementToSelectInCapellaExplorer instanceof DRepresentation)
-            || (elementToSelectInCapellaExplorer instanceof DRepresentationDescriptor)) {
-          selectElementInCapellaExplorer(new StructuredSelection(elementToSelectInCapellaExplorer));
-        }
+          selectElementInCapellaExplorer(selection);
       }
     }
   }
@@ -219,12 +202,16 @@ public class LocateInCapellaExplorerAction implements IObjectActionDelegate, IVi
     if (null == uiSelectedElement) {
       return result;
     }
+    
     if (uiSelectedElement instanceof IMarker) {
       return uiSelectedElement;
     }
+    if (uiSelectedElement instanceof ItemWrapper) {
+      uiSelectedElement = ((ItemWrapper) uiSelectedElement).getWrappedObject();
+    }
     if (CapellaResourceHelper.isSemanticElement(uiSelectedElement)) {
       result = uiSelectedElement;
-
+      
     } else if (uiSelectedElement instanceof GraphicalEditPart) {
       GraphicalEditPart editPart = (GraphicalEditPart) uiSelectedElement;
       result = editPart.getModel();
@@ -235,7 +222,7 @@ public class LocateInCapellaExplorerAction implements IObjectActionDelegate, IVi
       if ((result instanceof DSemanticDecorator) && !(result instanceof DSemanticDiagram)) {
         DSemanticDecorator semanticDecorator = (DSemanticDecorator) result;
         result = semanticDecorator.getTarget();
-      }
+      } 
       if (result instanceof DRepresentation) {
         result = RepresentationHelper.getRepresentationDescriptor((DRepresentation) result);
       }
@@ -244,6 +231,12 @@ public class LocateInCapellaExplorerAction implements IObjectActionDelegate, IVi
       result = semanticDecorator.getTarget();
     } else if (uiSelectedElement instanceof EObjectWrapper) {
       result = ((EObjectWrapper) uiSelectedElement).getElement();
+    }
+    
+    if (uiSelectedElement instanceof DRepresentationDescriptor) {
+      result = uiSelectedElement;
+    } else if (uiSelectedElement instanceof DRepresentation) {
+      result = RepresentationHelper.getRepresentationDescriptor((DRepresentation) uiSelectedElement);
     }
 
     if (result instanceof Part) {
