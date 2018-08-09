@@ -47,7 +47,7 @@ location sirius-6.0.0 "http://download.eclipse.org/sirius/updates/stable/6.1.0-S
 }
 
 
-location kitalpha-runtime-core-master "https://ci.polarsys.org/kitalpha/job/Kitalpha_master/902/artifact/releng/plugins/org.polarsys.kitalpha.releng.runtime.core.updatesite/target/repository" {
+location kitalpha-runtime-core-master "https://ci.polarsys.org/kitalpha/job/Kitalpha_master/938/artifact/releng/plugins/org.polarsys.kitalpha.releng.runtime.core.updatesite/target/repository" {
 	org.polarsys.kitalpha.common.feature.feature.group lazy
 	org.polarsys.kitalpha.model.common.commands.feature.feature.group lazy
 	org.polarsys.kitalpha.model.common.scrutiny.feature.feature.group lazy
@@ -59,7 +59,7 @@ location kitalpha-runtime-core-master "https://ci.polarsys.org/kitalpha/job/Kita
 	org.polarsys.kitalpha.massactions.feature.source.feature.group lazy
 }
 
-location kitalpha-runtime-master "https://ci.polarsys.org/kitalpha/job/Kitalpha_master/902/artifact/releng/plugins/org.polarsys.kitalpha.releng.sdk.updatesite/target/repository" {
+location kitalpha-runtime-master "https://ci.polarsys.org/kitalpha/job/Kitalpha_master/938/artifact/releng/plugins/org.polarsys.kitalpha.releng.sdk.updatesite/target/repository" {
 	org.polarsys.kitalpha.ad.runtime.feature.feature.group lazy
 	org.polarsys.kitalpha.cadence.feature.feature.group lazy
 	org.polarsys.kitalpha.emde.feature.feature.group lazy
@@ -75,7 +75,7 @@ location kitalpha-runtime-master "https://ci.polarsys.org/kitalpha/job/Kitalpha_
 	org.polarsys.kitalpha.doc.feature.feature.group lazy
 }
 
-location kitalpha-sdk-master "https://ci.polarsys.org/kitalpha/view/Kitalpha-master/job/Kitalpha_master/902/artifact/releng/plugins/org.polarsys.kitalpha.releng.sdk.updatesite/target/repository" {
+location kitalpha-sdk-master "https://ci.polarsys.org/kitalpha/view/Kitalpha-master/job/Kitalpha_master/938/artifact/releng/plugins/org.polarsys.kitalpha.releng.sdk.updatesite/target/repository" {
 	org.polarsys.kitalpha.emde.sdk.feature.feature.group lazy
 }
 
