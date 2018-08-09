@@ -904,21 +904,6 @@ public class CapellaCommonNavigator extends CommonNavigator implements IEditingD
   }
 
   /**
-   * @see org.eclipse.ui.navigator.CommonNavigator#handleDoubleClick(org.eclipse.jface.viewers.DoubleClickEvent)
-   */
-  @Override
-  protected void handleDoubleClick(DoubleClickEvent event) {
-    super.handleDoubleClick(event);
-    // Add an additional behavior for ModelElement selection.
-    IStructuredSelection selection = (IStructuredSelection) event.getSelection();
-    Object element = selection.getFirstElement();
-
-    if (CapellaResourceHelper.isSemanticElement(element)) {
-      CapellaUIPropertiesPlugin.getDefault().openWizard(event, (EObject) element);
-    }
-  }
-
-  /**
    * @see org.eclipse.ui.navigator.CommonNavigator#init(org.eclipse.ui.IViewSite, org.eclipse.ui.IMemento)
    */
   @Override
