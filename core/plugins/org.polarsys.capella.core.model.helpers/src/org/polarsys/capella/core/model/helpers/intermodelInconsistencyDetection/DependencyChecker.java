@@ -104,7 +104,7 @@ public class DependencyChecker {
 				}
 			}
 		}
-		for (EObject source : EObjectExt.getReferencers(object, null, domain)) {
+		for (EObject source : EObjectExt.getReferencers(object, null, domain, true)) {
 			if (!checkLink(source, object, null))
 				return false;			
 		}
