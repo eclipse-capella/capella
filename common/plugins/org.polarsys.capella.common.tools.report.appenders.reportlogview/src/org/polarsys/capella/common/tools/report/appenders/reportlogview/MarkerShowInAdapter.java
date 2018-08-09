@@ -41,7 +41,9 @@ public class MarkerShowInAdapter implements IAdapterFactory {
       for (Object marker : selection.toArray()) {
         if (marker instanceof IMarker) {
           Collection<EObject> objects = MarkerViewHelper.getModelElementsFromMarker((IMarker) marker);
-          result.add(objects.iterator().next());
+          if (!objects.isEmpty()) {
+            result.add(objects.iterator().next());
+          }
         }
       }
       return new ShowInContext(view.getViewer(), new StructuredSelection(result.toArray()));
