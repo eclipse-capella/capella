@@ -27,6 +27,8 @@ import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.ef.command.ICommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
+import org.polarsys.capella.core.model.handler.provider.CapellaReadOnlyHelper;
+import org.polarsys.capella.core.model.handler.provider.IReadOnlySectionHandler;
 import org.polarsys.capella.core.ui.properties.helpers.NotificationHelper;
 import org.polarsys.capella.core.ui.properties.richtext.RichtextManager;
 import org.polarsys.kitalpha.richtext.common.intf.MDERichTextWidget;
@@ -210,6 +212,10 @@ public abstract class ElementDescriptionGroup {
         @SuppressWarnings("synthetic-access")
         @Override
         public void commandRolledBack() {
+          IReadOnlySectionHandler roHandler = CapellaReadOnlyHelper.getReadOnlySectionHandler();
+          if ((roHandler != null) && roHandler.isLockedByOthers(semanticElement))
+            return;
+          
           // Reload data >> refresh the UI.
           loadData(semanticElement, semanticFeature);
         }
@@ -223,7 +229,8 @@ public abstract class ElementDescriptionGroup {
    * @param enabled
    */
   public void setEnabled(boolean enabled) {
-        // do nothing
+    descriptionTextField.setEditable(enabled);
+    descriptionContainer.setEnabled(enabled);
   }
 
   /**
@@ -242,11 +249,12 @@ public abstract class ElementDescriptionGroup {
       } else {
         descriptionTextField.loadContent();
       }
+      
+      updateDescriptionEditability();
+      
     } catch (SWTException e) {
       // Catch SWT "Permission denied" exception raised by Nebula Richtext
     }
-    
-    updateDescriptionEditability();
   }
 
   /**
@@ -306,7 +314,6 @@ public abstract class ElementDescriptionGroup {
     // Only allow to edit the description using the property view when no
     // other editor concerning the same semantic element is opened
     boolean isEditable = MDERichtextWidgetHelper.getActiveMDERichTextEditors(semanticElement).isEmpty();
-    descriptionContainer.setEnabled(isEditable);
     descriptionContainer.setVisible(isEditable);
     if (isEditable) {
       // Hide the text about "existed editor"
