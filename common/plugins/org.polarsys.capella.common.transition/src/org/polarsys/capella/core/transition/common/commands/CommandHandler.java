@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,6 +28,7 @@ import org.polarsys.capella.common.ef.command.ICommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.helpers.operations.LongRunningListenersRegistry;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
+import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 
 /**
  *
@@ -52,7 +53,6 @@ public abstract class CommandHandler extends AbstractHandler {
 
   public EObject resolveSemanticObject(Object object) {
     EObject semantic = null;
-
     if (object != null) {
       if (object instanceof EObject) {
         semantic = (EObject) object;
@@ -62,6 +62,9 @@ public abstract class CommandHandler extends AbstractHandler {
         if (adapter instanceof EObject) {
           semantic = (EObject) adapter;
         }
+      }
+      if (!(CapellaResourceHelper.isSemanticElement(semantic))) {
+        return null;
       }
     }
     return semantic;
