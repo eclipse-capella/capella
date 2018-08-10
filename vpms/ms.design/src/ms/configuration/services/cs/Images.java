@@ -12,6 +12,9 @@ package ms.configuration.services.cs;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.polarsys.capella.core.data.fa.FunctionInputPort;
+import org.polarsys.capella.core.data.fa.FunctionOutputPort;
+import org.polarsys.capella.core.data.information.Port;
 
 public class Images {
 
@@ -35,6 +38,18 @@ public class Images {
       return new ContextualComponentInterfacesImages().getImage(element, view);
     }
 
+    if (element instanceof FunctionInputPort) {
+      return FUNCTION_INPUT_PORT;
+    }
+    
+    if (element instanceof FunctionOutputPort) {
+      return FUNCTION_OUTPUT_PORT;
+    }
+    
+    if (element instanceof Port) {
+      return FLOW_PORT;
+    }
+    
     return null;
 
   }
