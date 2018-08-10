@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,6 +11,8 @@
 package org.polarsys.capella.core.ui.toolkit.dialogs;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -34,12 +36,12 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.ui.PlatformUI;
-
 import org.polarsys.capella.common.ui.toolkit.viewers.IViewerStyle;
 import org.polarsys.capella.common.ui.toolkit.viewers.TreeAndListViewer;
 import org.polarsys.capella.common.ui.toolkit.viewers.data.DataContentProvider;
 import org.polarsys.capella.common.ui.toolkit.viewers.data.TreeData;
 import org.polarsys.capella.core.model.handler.helpers.CrossReferencerHelper;
+import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 
 /**
  * Confirm Capella elements deletion Tool dialog
@@ -162,7 +164,7 @@ public class ConfirmDeleteCapellaElementDialog extends ImpactAnalysisDialog {
           if (((TreeData) elementsToDeleteViewer.getInput()).isValid(currentSelectedElement)) {
             // Be careful, selected element could be an EMF Resource (if displayed).
             if (currentSelectedElement instanceof EObject) {
-              referencingElements.addAll(CrossReferencerHelper.getReferencingElements((EObject) currentSelectedElement));
+              referencingElements.addAll(getReferencingElements(currentSelectedElement));
             }
           }
         }
@@ -171,6 +173,15 @@ public class ConfirmDeleteCapellaElementDialog extends ImpactAnalysisDialog {
         ;
       }
     });
+  }
+
+  /**
+   * Returns the list of all referencing elements for the given element
+   */
+  protected Collection<? extends EObject> getReferencingElements(Object currentSelectedElement) {
+    List<EObject> objects = CrossReferencerHelper.getReferencingElements((EObject) currentSelectedElement);
+    objects.addAll(RepresentationHelper.getAllRepresentationDescriptorsAnnotatedBy(Collections.singletonList((EObject)currentSelectedElement)));
+    return objects;
   }
 
   /**

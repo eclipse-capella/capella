@@ -11,6 +11,7 @@
 package org.polarsys.capella.core.ui.properties.sections;
 
 import java.lang.ref.WeakReference;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -21,8 +22,10 @@ import org.eclipse.core.commands.operations.OperationHistoryFactory;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.workspace.EMFCommandOperation;
 import org.eclipse.gmf.runtime.notation.Diagram;
+import org.eclipse.jface.viewers.AbstractTreeViewer;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.business.api.query.DRepresentationQuery;
@@ -36,6 +39,7 @@ import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
@@ -46,14 +50,20 @@ import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
+import org.polarsys.capella.common.ui.toolkit.viewers.data.DataLabelProvider;
 import org.polarsys.capella.core.diagram.helpers.ContextualDiagramHelper;
+import org.polarsys.capella.core.diagram.helpers.DiagramHelper;
 import org.polarsys.capella.core.model.handler.provider.CapellaReadOnlyHelper;
+import org.polarsys.capella.core.ui.properties.CapellaUIPropertiesPlugin;
 import org.polarsys.capella.core.ui.properties.controllers.DAnnotationReferenceController;
 import org.polarsys.capella.core.ui.properties.controllers.EOIController;
 import org.polarsys.capella.core.ui.properties.controllers.RepresentationContextualElementsController;
 import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticField;
 import org.polarsys.capella.core.ui.properties.fields.MultipleSemanticField;
 import org.polarsys.capella.core.ui.properties.fields.RepresentationContextualElementsField;
+import org.polarsys.capella.core.ui.properties.fields.TextValueGroup;
+import org.polarsys.capella.core.ui.properties.providers.CapellaTransfertViewerLabelProvider;
+import org.polarsys.capella.core.ui.toolkit.helpers.SelectionDialogHelper;
 
 /**
  * Section that displays a {@link DRepresentation} properties.<br>
@@ -66,6 +76,8 @@ public class DiagramRepresentationPropertySection extends AbstractSection {
   private KeyAdapter _keyAdapter;
   private RepresentationContextualElementsField _contextualElementsField;
   private MultipleSemanticField _eoiField;
+  private TextValueGroup packageGroup;
+
 
   /**
    * Execute a command that changes the data model according to related widget.
@@ -149,12 +161,9 @@ public class DiagramRepresentationPropertySection extends AbstractSection {
       }
     };
 
-    // Create name widget.
     createNameWidget(widgetFactory, textGroup);
-
-    // Create Contextual Elements widget.
+    createPackageWidget(widgetFactory, textGroup);
     createContextualElementsWidget(widgetFactory, rootParentComposite);
-
     createEOIWidget(widgetFactory, rootParentComposite);
   }
 
@@ -167,7 +176,7 @@ public class DiagramRepresentationPropertySection extends AbstractSection {
     // Create Name text field.
     widgetFactory.createCLabel(textGroup, Messages.RepresentationSection_Name_Title);
     _nameTextField = widgetFactory.createText(textGroup, ICommonConstants.EMPTY_STRING);
-    _nameTextField.setLayoutData(new GridData(SWT.FILL, GridData.FILL, true, false));
+    _nameTextField.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
     _nameTextField.addFocusListener(_focusAdapter);
     _nameTextField.addKeyListener(_keyAdapter);
   }
@@ -195,8 +204,63 @@ public class DiagramRepresentationPropertySection extends AbstractSection {
         }
         setValueTextField((EObject) null);
       }
+
+
+      /*
+       * Overridden to customize title/message, and custom expand behaviour for the left tree viewer
+       */
+      @Override
+      protected List<EObject> openTransferDialog(Button button, List<EObject> currentElements,
+          List<EObject> availableElements, String title, String message) {
+        DataLabelProvider leftLabelProvider =  new CapellaTransfertViewerLabelProvider(TransactionHelper.getEditingDomain(availableElements));
+        DataLabelProvider rightLabelProvider =  new CapellaTransfertViewerLabelProvider(TransactionHelper.getEditingDomain(currentElements));
+        boolean expandLeftViewer = CapellaUIPropertiesPlugin.getDefault().isAllowedExpandLeftViewerContent();
+        boolean expandRightViewer = CapellaUIPropertiesPlugin.getDefault().isAllowedExpandRightViewerContent();
+        return SelectionDialogHelper.multiplePropertyTransfertDialogWizard(
+            button.getShell(), ((DRepresentationDescriptor)_semanticElement).getName(), Messages.EOI_dialogMessage, availableElements, currentElements, leftLabelProvider, rightLabelProvider,
+            expandLeftViewer ? 2 : 0, expandRightViewer ? AbstractTreeViewer.ALL_LEVELS : 0);
+        }
+
     };
     _eoiField.setDisplayedInWizard(isDisplayedInWizard());
+  }
+
+  protected void createPackageWidget(TabbedPropertySheetWidgetFactory widgetFactory, Composite parent) {
+    packageGroup = new TextValueGroup(parent, Messages.Package_label, widgetFactory, true) {
+
+      /**
+       * @param label
+       * @param hasResetBtn
+       */
+      protected void createValueTextField(String label, boolean hasResetBtn) {
+        _widgetFactory.createCLabel(parent, label);
+        valueField = _widgetFactory.createText(parent, ICommonConstants.EMPTY_STRING);
+        valueField.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+        addListeners();
+      }
+
+      @Override
+      public void loadTextValue() {
+        String name = DiagramHelper.getService().getPackageName((DRepresentationDescriptor)_semanticElement);
+        valueField.setText(name == null ? ICommonConstants.EMPTY_STRING : name);
+        updateResetBtnStatus();
+      }
+
+      @Override
+      protected void setDataValue(EObject object, EStructuralFeature feature, final Object value) {
+        TransactionalEditingDomain domain = TransactionHelper.getEditingDomain(object);
+        String newName = ((String) value).trim();
+        if (newName.isEmpty()) {
+          newName = null;
+        }
+        Command c = DiagramHelper.getService().createSetPackageNameCommand(domain, (DRepresentationDescriptor) object, newName);
+        if (c != null && c.canExecute()) {
+          domain.getCommandStack().execute(c);
+        }
+      }
+    };
+
+    packageGroup.setDisplayedInWizard(isDisplayedInWizard());
   }
 
   /**
@@ -254,6 +318,7 @@ public class DiagramRepresentationPropertySection extends AbstractSection {
     }
 
     _eoiField.loadData(new DRepresentationQuery(_representation.get()).getRepresentationDescriptor());
+    packageGroup.loadData(new DRepresentationQuery(_representation.get()).getRepresentationDescriptor(), null); 
 
   }
 
@@ -334,6 +399,6 @@ public class DiagramRepresentationPropertySection extends AbstractSection {
    */
   @Override
   public List<AbstractSemanticField> getSemanticFields() {
-    return Collections.<AbstractSemanticField>singletonList(_eoiField);
+    return Arrays.asList(_eoiField, packageGroup);
   }
 }

@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.polarsys.capella.core.diagram.helpers.naming.DAnnotationSourceConstants;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 
@@ -33,7 +34,7 @@ public class EOIController extends DAnnotationReferenceController {
     
     List<EObject> result = new ArrayList<EObject>();
     if (available) {
-      Session session = SessionManager.INSTANCE.getSession(semanticElement);
+      Session session = SessionManager.INSTANCE.getSession(((DRepresentationDescriptor)semanticElement).getTarget());
       for (Resource resource : session.getSemanticResources()) {
         if (CapellaResourceHelper.isCapellaResource(resource)) {
           for (Iterator<EObject> it = resource.getAllContents(); it.hasNext();) {

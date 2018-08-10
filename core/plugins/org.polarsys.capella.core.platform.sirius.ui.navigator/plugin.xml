@@ -223,6 +223,9 @@
                     <instanceof value="org.eclipse.emf.ecore.EObject"/>
                     <adapt type="org.eclipse.emf.ecore.EObject"/>
                     <instanceof value="org.eclipse.sirius.business.api.session.Session"/>
+                    <instanceof
+                          value="org.polarsys.capella.core.platform.sirius.ui.navigator.viewer.RepresentationPackage">
+                    </instanceof>
                 </or> 
          </possibleChildren>
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -141,6 +141,26 @@ public class XDFBDiagram extends DiagramContext {
 	    	new InsertRemoveTool(this, IToolNameConstants.TOOL_LDFB_SHOW_HIDE_FUNCTIONS, containerId).remove(id);
 	    } else if (type == Type.PA) {
 	    	new InsertRemoveTool(this, IToolNameConstants.TOOL_PDFB_SHOW_HIDE_FUNCTIONS, containerId).remove(id);
+	    }
+  }
+  
+  public void insertFunctionalExchange(String containerId, String id){
+	  if (type == Type.SA) {
+	  new InsertRemoveTool(this, IToolNameConstants.TOOL_SDFB_SHOW_HIDE_FUNCTIONAL_EXCHANGES, containerId).insert(id);
+    } else if (type == Type.LA) {
+    	new InsertRemoveTool(this, IToolNameConstants.TOOL_LDFB_SHOW_HIDE_FUNCTIONAL_EXCHANGES, containerId).insert(id);
+    } else if (type == Type.PA) {
+    	new InsertRemoveTool(this, IToolNameConstants.TOOL_PDFB_SHOW_HIDE_FUNCTIONAL_EXCHANGES, containerId).insert(id);
+    }
+  }
+  
+  public void removeFunctionalExchange(String containerId, String id){
+	  if (type == Type.SA) {
+		  new InsertRemoveTool(this, IToolNameConstants.TOOL_SDFB_SHOW_HIDE_FUNCTIONAL_EXCHANGES, containerId).remove(id);
+	    } else if (type == Type.LA) {
+	    	new InsertRemoveTool(this, IToolNameConstants.TOOL_LDFB_SHOW_HIDE_FUNCTIONAL_EXCHANGES, containerId).remove(id);
+	    } else if (type == Type.PA) {
+	    	new InsertRemoveTool(this, IToolNameConstants.TOOL_PDFB_SHOW_HIDE_FUNCTIONAL_EXCHANGES, containerId).remove(id);
 	    }
   }
 
