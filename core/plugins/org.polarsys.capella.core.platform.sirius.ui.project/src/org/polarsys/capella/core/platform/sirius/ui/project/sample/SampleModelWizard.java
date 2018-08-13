@@ -23,18 +23,25 @@ import java.util.zip.ZipFile;
 
 import org.eclipse.core.internal.resources.ProjectDescription;
 import org.eclipse.core.internal.resources.ProjectDescriptionReader;
+import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProjectDescription;
+import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.IResourceVisitor;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.core.runtime.AssertionFailedException;
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.CommonPlugin;
 import org.eclipse.emf.common.ui.CommonUIPlugin;
 import org.eclipse.emf.common.ui.wizard.AbstractExampleInstallerWizard;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.osgi.service.datalocation.Location;
 import org.eclipse.ui.wizards.datatransfer.ImportOperation;
 import org.eclipse.ui.wizards.datatransfer.ZipFileStructureProvider;
+import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
+import org.polarsys.capella.core.sirius.ui.actions.OpenSessionAction;
 import org.xml.sax.InputSource;
 
 /**
@@ -75,15 +82,23 @@ public class SampleModelWizard extends AbstractExampleInstallerWizard {
         if (file.isFile() && file.canRead()) {
           ZipFile zipFile = createZipFile(file);
           if (zipFile != null) {
-            ZipFileStructureProvider structureProvider = new ZipFileStructureProvider(zipFile);
-            for (Object folder : structureProvider.getChildren(structureProvider.getRoot())) {
-              for (Object subfile : structureProvider.getChildren(folder)) {
-                if (subfile instanceof ZipEntry
-                    && ((ZipEntry) subfile).getName().endsWith(IProjectDescription.DESCRIPTION_FILE_NAME)) {
-                  BufferedInputStream in = new BufferedInputStream(structureProvider.getContents((ZipEntry) subfile));
-                  ProjectDescription description = new ProjectDescriptionReader().read(new InputSource(in));
-                  return description;
+            try {
+              ZipFileStructureProvider structureProvider = new ZipFileStructureProvider(zipFile);
+              for (Object folder : structureProvider.getChildren(structureProvider.getRoot())) {
+                for (Object subfile : structureProvider.getChildren(folder)) {
+                  if (subfile instanceof ZipEntry
+                      && ((ZipEntry) subfile).getName().endsWith(IProjectDescription.DESCRIPTION_FILE_NAME)) {
+                    BufferedInputStream in = new BufferedInputStream(structureProvider.getContents((ZipEntry) subfile));
+                    ProjectDescription description = new ProjectDescriptionReader().read(new InputSource(in));
+                    return description;
+                  }
                 }
+              }
+            } finally {
+              try {
+                zipFile.close();
+              } catch (IOException e) {
+                // Ignore.
               }
             }
           }
@@ -96,6 +111,16 @@ public class SampleModelWizard extends AbstractExampleInstallerWizard {
     return null;
   }
 
+  protected Collection<URI> getSampleLocations() {
+    Collection<URI> result = new ArrayList<URI>();
+    Location location = Platform.getInstallLocation();
+    URL url = location.getURL();
+    URI uri = URI.createURI(url.toString());
+    URI sampleLocation = uri.trimSegments(2).appendSegment("Samples");
+    result.add(sampleLocation);
+    return result;
+  }
+
   @Override
   protected List<ProjectDescriptor> getProjectDescriptors() {
     if (install == true) {
@@ -106,18 +131,14 @@ public class SampleModelWizard extends AbstractExampleInstallerWizard {
       descriptors = new ArrayList<AbstractExampleInstallerWizard.ProjectDescriptor>();
 
       try {
-        Location location = Platform.getInstallLocation();
-        URL url = location.getURL();
-        URI uri = URI.createURI(url.toString());
-        URI sampleLocation = uri.trimSegments(2).appendSegment("Samples");
-
-        for (File zip : getOwnedZips(sampleLocation)) {
-          try {
-            URI fileUri = URI.createFileURI(zip.getAbsolutePath());
-            descriptors.add(new ExampleProjectDescriptor(fileUri));
-
-          } catch (Exception e) {
-            // Can't read the zip file
+        for (URI location : getSampleLocations()) {
+          for (File zip : getOwnedZips(location)) {
+            try {
+              URI fileUri = URI.createFileURI(zip.getAbsolutePath());
+              descriptors.add(new ExampleProjectDescriptor(fileUri));
+            } catch (Exception e) {
+              // Can't read the zip file
+            }
           }
         }
 
@@ -172,12 +193,28 @@ public class SampleModelWizard extends AbstractExampleInstallerWizard {
 
     } finally {
       install = false;
+      
+    }
+  }
+
+  @Override
+  protected void openFiles(IProgressMonitor progressMonitor) {
+    List<FileToOpen> filesToOpen = getFilesToOpen();
+    List<IFile> airds = new ArrayList<IFile>();
+    if (!filesToOpen.isEmpty()) {
+      for (FileToOpen open : filesToOpen) {
+        airds.add(open.getWorkspaceFile());
+      }
+      OpenSessionAction action = new OpenSessionAction();
+      action.selectionChanged(new StructuredSelection(airds));
+      action.run();
     }
   }
 
   /**
    * Highly inspired by the super method, but Capella sample models have a root folder which is not the expected case.
    */
+  @Override
   protected void installProjectFromFile(ProjectDescriptor projectDescriptor, IProgressMonitor progressMonitor)
       throws Exception {
     URI contentURI = projectDescriptor.getContentURI();
@@ -226,6 +263,7 @@ public class SampleModelWizard extends AbstractExampleInstallerWizard {
     }
   }
 
+  @Override
   protected void installProject(ProjectDescriptor projectDescriptor, ImportOperation importOperation,
       IProgressMonitor progressMonitor) throws Exception {
     importOperation.setCreateContainerStructure(false);
@@ -234,6 +272,34 @@ public class SampleModelWizard extends AbstractExampleInstallerWizard {
 
   @Override
   protected List<FileToOpen> getFilesToOpen() {
+    if (selected != null) {
+      Collection<IFile> airds = new ArrayList<IFile>();
+      List<FileToOpen> locations = new ArrayList<FileToOpen>();
+      try {
+        selected.getProject().accept(new IResourceVisitor() {
+
+          @Override
+          public boolean visit(IResource resource) throws CoreException {
+            if (CapellaResourceHelper.isAirdResource(resource, true)) {
+              airds.add((IFile) resource);
+            }
+            return true;
+          }
+        });
+      } catch (CoreException e) {
+        // Can't browse the project
+      }
+
+      for (IFile file : airds) {
+        locations.add(new FileToOpen() {
+          @Override
+          public IFile getWorkspaceFile() {
+            return file;
+          }
+        });
+      }
+      return locations;
+    }
     return Collections.emptyList();
   }
 
