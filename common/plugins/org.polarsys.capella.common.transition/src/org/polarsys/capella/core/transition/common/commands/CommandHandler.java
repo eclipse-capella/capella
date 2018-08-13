@@ -44,7 +44,7 @@ public abstract class CommandHandler extends AbstractHandler {
     Collection<EObject> result = new ArrayList<EObject>();
     for (Object object : elements) {
       EObject semantic = resolveSemanticObject(object);
-      if (semantic != null) {
+      if (semantic != null && CapellaResourceHelper.isSemanticElement(semantic)) {
         result.add(semantic);
       }
     }
@@ -56,15 +56,12 @@ public abstract class CommandHandler extends AbstractHandler {
     if (object != null) {
       if (object instanceof EObject) {
         semantic = (EObject) object;
-
+        
       } else if (object instanceof IAdaptable) {
         Object adapter = ((IAdaptable) object).getAdapter(EObject.class);
         if (adapter instanceof EObject) {
           semantic = (EObject) adapter;
         }
-      }
-      if (!(CapellaResourceHelper.isSemanticElement(semantic))) {
-        return null;
       }
     }
     return semantic;
