@@ -44,6 +44,7 @@ public class ExecutionManager {
 
   /**
    * Get in-use editing domain.
+   * 
    * @return
    */
   public TransactionalEditingDomain getEditingDomain() {
@@ -52,6 +53,7 @@ public class ExecutionManager {
 
   /**
    * Execute given command in associated editing domain.
+   * 
    * @param command
    */
   public void execute(ICommand command) {
@@ -69,6 +71,7 @@ public class ExecutionManager {
 
   /**
    * Execute a command in read-only mode.
+   * 
    * @param command
    * @param editingDomain
    */
@@ -82,6 +85,7 @@ public class ExecutionManager {
 
   /**
    * Execute a command in read-write mode.
+   * 
    * @param command
    * @param editingDomain
    */
@@ -98,6 +102,7 @@ public class ExecutionManager {
 
   /**
    * Create the recording command that should be executed.
+   * 
    * @param command
    * @param editingDomain
    * @return
@@ -142,8 +147,8 @@ public class ExecutionManager {
 
   /**
    * Capella Editing Domain id.<br>
-   * Must not be used outside this plug-in. Please use instead, the {@link ExecutionManagerRegistry} to get an {@link ExecutionManager} that points this editing
-   * domain.
+   * Must not be used outside this plug-in. Please use instead, the {@link ExecutionManagerRegistry} to get an
+   * {@link ExecutionManager} that points this editing domain.
    */
   static final String EDITING_DOMAIN_ID = "org.polarsys.capella.common.platform.sirius.ted.EditingDomain"; //$NON-NLS-1$
 
@@ -152,19 +157,28 @@ public class ExecutionManager {
    */
   protected TransactionalEditingDomain createEditingDomain() {
     // Ask the EMF transactional registry the capella editing domain from its id.
-    //return TransactionalEditingDomain.Registry.INSTANCE.getEditingDomain(EDITING_DOMAIN_ID);
-	TransactionalEditingDomain.Factory factory = getEditingDomainFactory();
-	if (null != factory) {
-	  return factory.createEditingDomain();
-	}
+    // return TransactionalEditingDomain.Registry.INSTANCE.getEditingDomain(EDITING_DOMAIN_ID);
+    TransactionalEditingDomain.Factory factory = getEditingDomainFactory();
+    if (null != factory) {
+      return factory.createEditingDomain();
+    }
     return null;
   }
 
   public TransactionalEditingDomain.Factory getEditingDomainFactory() {
-    IConfigurationElement configurationElement = ExtensionPointHelper.getConfigurationElement("org.eclipse.emf.transaction", "editingDomains", EDITING_DOMAIN_ID);
+    IConfigurationElement configurationElement = ExtensionPointHelper
+        .getConfigurationElement("org.eclipse.emf.transaction", "editingDomains", EDITING_DOMAIN_ID);
     if (null != configurationElement) {
       return (TransactionalEditingDomain.Factory) ExtensionPointHelper.createInstance(configurationElement, "factory");
     }
     return null;
+  }
+
+  /**
+   * Dispose the {@link ExecutionManager}. {@link ExecutionManager#dispose()} should be called after the dispose of the
+   * {@link TransactionalEditingDomain}.
+   */
+  public void dispose() {
+    this._editingDomain = null;
   }
 }

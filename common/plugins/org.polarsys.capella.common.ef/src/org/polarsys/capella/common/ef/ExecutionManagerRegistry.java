@@ -27,6 +27,7 @@ public class ExecutionManagerRegistry {
    * Unique instance reference.
    */
   private static ExecutionManagerRegistry __uniqueInstance;
+
   /**
    * The main map of (String, {@link ExecutionManager}).
    */
@@ -48,6 +49,7 @@ public class ExecutionManagerRegistry {
 
   /**
    * Get {@link ExecutionManagerRegistry} unique instance.
+   * 
    * @return
    */
   public static ExecutionManagerRegistry getInstance() {
@@ -70,18 +72,21 @@ public class ExecutionManagerRegistry {
 
   /**
    * Remove manager from all maps.
+   * 
    * @param executionManager
    */
   public void removeManager(ExecutionManager executionManager) {
     if ((executionManager != null) && (executionManager.getEditingDomain() != null)) {
       _managers.remove(executionManager.getEditingDomain());
+      executionManager.dispose();
     }
   }
 
   /**
    * Get execution manager from editing domain.<br>
    *
-   * @param editingDomain the editing domain.
+   * @param editingDomain
+   *          the editing domain.
    * @return the execution manager, or <code>null</code> if none could be found.
    */
   public ExecutionManager getExecutionManager(EditingDomain editingDomain) {

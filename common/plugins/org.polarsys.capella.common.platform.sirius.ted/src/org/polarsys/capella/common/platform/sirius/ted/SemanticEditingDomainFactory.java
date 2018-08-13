@@ -25,6 +25,7 @@ import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.command.AbstractCommand.NonDirtying;
 import org.eclipse.emf.common.command.Command;
+import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -45,6 +46,7 @@ import org.eclipse.emf.transaction.impl.TransactionChangeRecorder;
 import org.eclipse.emf.transaction.impl.TransactionalEditingDomainImpl;
 import org.eclipse.emf.workspace.ResourceUndoContext;
 import org.eclipse.emf.workspace.WorkspaceEditingDomainFactory;
+import org.eclipse.sirius.common.tools.api.util.SiriusCrossReferenceAdapter;
 import org.polarsys.capella.common.ef.domain.IEditingDomainListener;
 import org.polarsys.capella.common.ef.internal.command.WorkspaceCommandStackImpl;
 import org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper;
@@ -213,8 +215,8 @@ public class SemanticEditingDomainFactory extends WorkspaceEditingDomainFactory 
      * @param options
      */
     @SuppressWarnings("rawtypes")
-    protected void executeNonDirtyingCommand(Command command, Map options) throws InterruptedException,
-        RollbackException {
+    protected void executeNonDirtyingCommand(Command command, Map options)
+        throws InterruptedException, RollbackException {
       InternalTransaction tx = createTransaction(command, options);
 
       try {
@@ -280,12 +282,10 @@ public class SemanticEditingDomainFactory extends WorkspaceEditingDomainFactory 
         // Hopefully, the rollback is complete before this exception is thrown.
         // Log this exception as a warning.
         String message = "Error while executing a command:"; //$NON-NLS-1$
-        PlatformSiriusTedActivator
-            .getDefault()
-            .getLog()
-            .log(new Status(IStatus.WARNING, PlatformSiriusTedActivator.getDefault().getPluginId(), message, exception));
-        throw new RollbackException(new Status(IStatus.CANCEL, PlatformSiriusTedActivator.getDefault().getPluginId(),
-            message, exception));
+        PlatformSiriusTedActivator.getDefault().getLog().log(
+            new Status(IStatus.WARNING, PlatformSiriusTedActivator.getDefault().getPluginId(), message, exception));
+        throw new RollbackException(
+            new Status(IStatus.CANCEL, PlatformSiriusTedActivator.getDefault().getPluginId(), message, exception));
       }
     }
   }
@@ -323,7 +323,8 @@ public class SemanticEditingDomainFactory extends WorkspaceEditingDomainFactory 
      * 
      * @param stack
      */
-    public SemanticEditingDomain(AdapterFactory adapterFactory, TransactionalCommandStack stack, ResourceSet resourceSet) {
+    public SemanticEditingDomain(AdapterFactory adapterFactory, TransactionalCommandStack stack,
+        ResourceSet resourceSet) {
       super(adapterFactory, stack, resourceSet);
       // The cross referencer.
       SemanticResourceSet semanticResourceSet = getResourceSet();
@@ -342,6 +343,9 @@ public class SemanticEditingDomainFactory extends WorkspaceEditingDomainFactory 
      */
     @Override
     public void dispose() {
+
+      getResourceSet().unregisterAdapters();
+
       SemanticCommandStack workspaceCommandStack = (SemanticCommandStack) getCommandStack();
       workspaceCommandStack.flush();
       // Make sure Operation History don't retain Context for resources.
@@ -378,13 +382,13 @@ public class SemanticEditingDomainFactory extends WorkspaceEditingDomainFactory 
     private List<IEditingDomainListener> getEditingDomainListeners() {
       if (null == editingDomainListeners) {
         editingDomainListeners = new ArrayList<IEditingDomainListener>();
-        IConfigurationElement[] configurationElements = ExtensionPointHelper.getConfigurationElements(
-            "org.polarsys.capella.common.ef", "editingDomainListener");
+        IConfigurationElement[] configurationElements = ExtensionPointHelper
+            .getConfigurationElements("org.polarsys.capella.common.ef", "editingDomainListener");
         for (IConfigurationElement configurationElement : configurationElements) {
-          IEditingDomainListener instance = (IEditingDomainListener) ExtensionPointHelper.createInstance(
-              configurationElement, "class");
-          if(instance != null){
-            editingDomainListeners.add(instance);            
+          IEditingDomainListener instance = (IEditingDomainListener) ExtensionPointHelper
+              .createInstance(configurationElement, "class");
+          if (instance != null) {
+            editingDomainListeners.add(instance);
           }
         }
       }
@@ -417,7 +421,8 @@ public class SemanticEditingDomainFactory extends WorkspaceEditingDomainFactory 
     /**
      * 
      * 
-    // AbstractNonDirtyingCommand() {
+     * // AbstractNonDirtyingCommand() {
+     * 
      * @see org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain#getResourceSet()
      */
     @Override
@@ -493,19 +498,22 @@ public class SemanticEditingDomainFactory extends WorkspaceEditingDomainFactory 
      * Editing domain.
      */
     private EditingDomain editingDomain;
-    
+
     /**
      * General purpose cross referencer.
      */
     private SemanticCrossReferencer crossReferencer;
+
     /**
      * Data notifier.
      */
     private DataNotifier dataNotifier;
+
     /**
      * Is loading a resource ?
      */
     private volatile int resourcesLoading = 0;
+
     private volatile boolean forceResourcesLoading = false;
 
     /**
@@ -566,10 +574,50 @@ public class SemanticEditingDomainFactory extends WorkspaceEditingDomainFactory 
       return dataNotifier;
     }
 
+    public void unregisterAdapters() {
+      // Disable resolution of proxy for SiriusCrossReferenceAdapter of
+      // resourceSet
+      List<Adapter> adaptersToRemove = new ArrayList<Adapter>();
+      for (Adapter next : eAdapters()) {
+        if (next instanceof SiriusCrossReferenceAdapter) {
+          ((SiriusCrossReferenceAdapter) next).disableResolveProxy();
+          adaptersToRemove.add(next);
+        }
+      }
+      eAdapters().removeAll(adaptersToRemove);
+
+      // disable resolveProxy capability before clearing adapters on resources
+      for (Resource resource : getResources()) {
+        disableCrossReferencerResolve(resource);
+        resource.eAdapters().clear();
+      }
+
+      eAdapters().remove(dataNotifier);
+      dataNotifier = null;
+    }
+
+    /**
+     * Disable {@link SiriusCrossReferenceAdapter} resolveProxy capability on resource and all its contents
+     * 
+     * @param resource
+     *          the resource
+     */
+    private void disableCrossReferencerResolve(Resource resource) {
+      // Disable resolveProxy for SiriusCrossreferencerAdapter.
+      // SiriusCrossreferencerAdapter on EObject are also on resource,
+      // consequently we manage only the resource itself.
+      for (Adapter adapter : resource.eAdapters()) {
+        if (adapter instanceof SiriusCrossReferenceAdapter) {
+          ((SiriusCrossReferenceAdapter) adapter).disableResolveProxy();
+        }
+      }
+    }
+
     /**
      * 
      * @see org.eclipse.emf.edit.domain.IEditingDomainProvider#getEditingDomain()
      */
+    @Override
     public EditingDomain getEditingDomain() {
       return editingDomain;
     }
@@ -662,6 +710,7 @@ public class SemanticEditingDomainFactory extends WorkspaceEditingDomainFactory 
 
   /**
    * Do create a custom transactional editing domain using newly created custom custom stack.
+   * 
    * @param stack
    */
   protected TransactionalEditingDomain doCreateEditingDomain(TransactionalCommandStack stack) {
@@ -685,12 +734,12 @@ public class SemanticEditingDomainFactory extends WorkspaceEditingDomainFactory 
    */
   private void loadSemanticEditingDomainProviders() {
     // Load SemanticEditingDomain providers if any.
-    IConfigurationElement[] configurationElements = ExtensionPointHelper.getConfigurationElements(
-        "org.polarsys.capella.common.platform.sirius.ted", "semanticEditingDomainProviders"); //$NON-NLS-1$ //$NON-NLS-2$
+    IConfigurationElement[] configurationElements = ExtensionPointHelper
+        .getConfigurationElements("org.polarsys.capella.common.platform.sirius.ted", "semanticEditingDomainProviders"); //$NON-NLS-1$ //$NON-NLS-2$
     // Loop over contributed SemanticEditingDomain providers, must be only one.
     if (configurationElements.length > 0) {
-      semanticEditingDomainProviders = (ISemanticEditingDomainProviders) ExtensionPointHelper.createInstance(
-          configurationElements[0], ExtensionPointHelper.ATT_CLASS);
+      semanticEditingDomainProviders = (ISemanticEditingDomainProviders) ExtensionPointHelper
+          .createInstance(configurationElements[0], ExtensionPointHelper.ATT_CLASS);
     }
   }
 }
