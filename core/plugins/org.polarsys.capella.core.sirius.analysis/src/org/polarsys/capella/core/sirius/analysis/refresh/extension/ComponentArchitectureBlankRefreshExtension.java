@@ -20,7 +20,6 @@ import java.util.Set;
 
 import org.apache.log4j.Logger;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
@@ -96,7 +95,26 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractRefreshE
     } catch (Exception e) {
       Logger.getLogger(IReportManagerDefaultComponents.DIAGRAM).error(Messages.RefreshExtension_ErrorOnReordering, e);
     }
-
+    
+    // -------------------------------------
+    // Update the internal edges for physical paths and functional chains.
+    // -------------------------------------
+    try {
+      List<String> physicalPathSupportingDiagrams = Arrays.asList(IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME,
+          IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME, IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME);
+      if (physicalPathSupportingDiagrams.contains(diagram.getDescription().getName())) {
+        PhysicalServices.getService().updateInternalPhysicalPaths(diagram);
+      }
+    } catch (Exception e) {
+      Logger.getLogger(IReportManagerDefaultComponents.DIAGRAM).error(Messages.RefreshExtension_ErrorOnUpdatePhysicalPathStyle, e);
+    }
+    
+    try {
+      FunctionalChainServices.getFunctionalChainServices().updateInternalFunctionalChains(diagram);
+    } catch (Exception e) {
+      Logger.getLogger(IReportManagerDefaultComponents.DIAGRAM).error(Messages.RefreshExtension_ErrorOnUpdateFunctionalChainStyle, e);
+    }
+    
     // -------------------------------------
     // Update categories
     // -------------------------------------
@@ -209,28 +227,23 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractRefreshE
     }
   }
 
-  protected void updateFunctionalExchangeCategories(DDiagramContents context) {
-
-    DDiagram diagram = context.getDDiagram();
-
+  protected void updateFunctionalExchangeCategories(DDiagramContents diagramContents) {
+    DDiagram diagram = diagramContents.getDDiagram();
     if (diagram.isSynchronized()) {
-      Collection<EObject> categories = new HashSet<EObject>();
-
+      // TODO Should I move this out of the if isSynchronized. Should it always switch FECategories?
       // Switch to FE categories
-      DiagramElementMapping edgeMapping = context.getMapping(MappingConstantsHelper.getMappingFunctionalExchangeCategory(context.getDDiagram())); 
+      DiagramElementMapping edgeMapping = diagramContents.getMapping(MappingConstantsHelper.getMappingFunctionalExchangeCategory(diagramContents.getDDiagram())); 
       if (edgeMapping != null) {
-        for (DDiagramElement element : context.getDiagramElements(edgeMapping)) {
-          if ((element.getTarget() != null) && (element.getTarget() instanceof ExchangeCategory)) {
-            categories.add(element.getTarget());
+        Collection<ExchangeCategory> categories = new HashSet<>();
+        for (DDiagramElement element : diagramContents.getDiagramElements(edgeMapping)) {
+          EObject target = element.getTarget();
+          if (target instanceof ExchangeCategory) {
+            categories.add((ExchangeCategory) target);
           }
         }
-
-        FaServices.getFaServices().switchFECategories(context, (DSemanticDecorator) context.getDDiagram(), categories, false);
+        FaServices.getFaServices().switchFECategories(diagramContents, (DSemanticDecorator) diagram, categories, false);
       }
-
-    } else {
-      FaServices.getFaServices().updateFECategories(context);
-    }
+    } 
   }
 
   /**

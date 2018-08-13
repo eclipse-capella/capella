@@ -150,7 +150,6 @@ import org.polarsys.capella.core.sirius.analysis.showhide.ShowHideABComponentExc
 import org.polarsys.capella.core.sirius.analysis.showhide.ShowHideExchangeCategory;
 import org.polarsys.capella.core.sirius.analysis.showhide.ShowHideFunction;
 import org.polarsys.capella.core.sirius.analysis.showhide.ShowHideFunctionalExchange;
-import org.polarsys.capella.core.sirius.analysis.showhide.ShowHideInvisibleExchangeCategory;
 import org.polarsys.capella.core.sirius.analysis.tool.HashMapSet;
 
 /**
@@ -5083,138 +5082,124 @@ public class FaServices {
    * @param context
    * @param scope
    * @param initialSelection
-   * @param selectedElements in tool, the categories chosen by the user, in refresh, the displayed categories
+   * @param selectedExchangeCategories in tool, the categories chosen by the user, in refresh, the displayed categories
    * @return
    */
   public EObject switchFECategories(DSemanticDecorator context, Collection<EObject> scope,
-      Collection<EObject> initialSelection, Collection<EObject> selectedElements) {
+      Collection<EObject> initialSelection, Collection<ExchangeCategory> selectedExchangeCategories) {
     DDiagram currentDiagram = CapellaServices.getService().getDiagramContainer(context);
     DDiagramContents content = new DDiagramContents(currentDiagram);
-    return switchFECategories(content, context, selectedElements, true);
+    return switchFECategories(content, context, selectedExchangeCategories, true);
   }
 
   @Deprecated
   public EObject switchFECategories(DDiagramContents content, DSemanticDecorator context,
-      Collection<EObject> selectedElements) {
+      Collection<ExchangeCategory> selectedElements) {
     return switchFECategories(content, context, selectedElements, true);
   }
   
   public EObject switchFECategories(DDiagramContents content, DSemanticDecorator context,
-      Collection<EObject> selectedElements, boolean showHiddenExchanges ) {
-
-    FaServices.getFaServices().updateFECategories(content);
-
-    switchFEInvisibleCategories(content, context, selectedElements);
-
+      Collection<ExchangeCategory> selectedExchangeCategories, boolean showHiddenExchanges ) {
+    // TODO: Comment the line below because updateFECategories does not do anything
+//    FaServices.getFaServices().updateFECategories(content);
+    
+    // TODO: It is useless. The invisible exchange category edges will be shown below in showHideExchangeCategoryEdges without
+    // considering the visibility of edges;
+//    switchFEInvisibleCategories(content, context, selectedExchangeCategories);
     DDiagram currentDiagram = content.getDDiagram();
-    Collection<DDiagramElement> sourceViews = new HashSet<DDiagramElement>();
-    if (context instanceof DDiagramElement) {
-      sourceViews.add((DDiagramElement) context);
-    }
-    if (sourceViews.isEmpty()) {
-      for (DDiagramElement element : content.getDiagramElements(content.getMapping(MappingConstantsHelper.getMappingABAbstractFunction(currentDiagram)))) {
-        sourceViews.add(element);
-      }
+    
+    Collection<DDiagramElement> functionRelatedDiagramElements = new HashSet<>();
+    for (DDiagramElement element : content.getDiagramElements(content.getMapping(MappingConstantsHelper.getMappingABAbstractFunction(currentDiagram)))) {
+      functionRelatedDiagramElements.add(element);
     }
 
-    AbstractShowHide categories = new ShowHideExchangeCategory(content);
-    DiagramContext ctx = categories.new DiagramContext();
-    if (context instanceof DDiagramElement) {
-      ctx.setVariable(ShowHideABComponentExchange.SOURCE_PART_VIEWS, Collections.singletonList(context));
-    }
+    AbstractShowHide showHideExchangeCategoryService = new ShowHideExchangeCategory(content);
 
+    // 1. SHOW / HIDE EDGES OF EXCHANGE CATEGORIES
     // Display the categories between parts if they are part of selectedElements, or hide them
-    for (DDiagramElement sourceView : sourceViews) {
-      EObject sourceViewTarget = sourceView.getTarget();
-      if (sourceViewTarget != null) {
-        HashMapSet<EObject, Map.Entry<EObject, EObject>> scopeSource = getShowHideSubFECategoriesScope(sourceView);
-        for (EObject key : scopeSource.keySet()) {
-          if (selectedElements.contains(key)) {
-            for (Map.Entry<EObject, EObject> srcTarMap : scopeSource.get(key)) {
-              showFECategory(categories, ctx, (ExchangeCategory) key, srcTarMap.getKey(), srcTarMap.getValue(), true);
-            }
+    showHideExchangeCategoryEdges(content, functionRelatedDiagramElements, selectedExchangeCategories,
+        showHideExchangeCategoryService);
+    
+    // 2. SHOW / HIDE EDGES OF FUNCTIONAL EXCHANGES
+    showHideFunctionalExchanges(functionRelatedDiagramElements, selectedExchangeCategories,
+        showHideExchangeCategoryService, showHiddenExchanges);
+    
+//    TODO: Comment the line below because updateFECategories does not do anything
+//    FaServices.getFaServices().updateFECategories(content);
+
+    // 3. 
+    content.commitDeferredActions();
+
+    return context;
+  }
+
+  private void showHideExchangeCategoryEdges(DDiagramContents content,
+      Collection<DDiagramElement> functionRelatedDiagramElements,
+      Collection<ExchangeCategory> selectedExchangeCategories, AbstractShowHide showHideExchangeCategoryService) {
+    
+    DiagramContext ctx = showHideExchangeCategoryService.new DiagramContext();
+    for (DDiagramElement diagramElement : functionRelatedDiagramElements) {
+      EObject diagramElementTarget = diagramElement.getTarget();
+      if (diagramElementTarget instanceof AbstractFunction) {
+        AbstractFunction targetFunction = (AbstractFunction) diagramElementTarget;
+        
+        Map<ExchangeCategory, Map.Entry<AbstractFunction, AbstractFunction>> categoryToSourceTargetMap = getExchangeCategoryToSourceTargetMap(targetFunction);
+        for (Entry<ExchangeCategory, Entry<AbstractFunction, AbstractFunction>> entry : categoryToSourceTargetMap.entrySet()) {
+          ExchangeCategory category = entry.getKey();
+          Map.Entry<AbstractFunction, AbstractFunction> sourceTargetMap = entry.getValue();
+          
+          AbstractFunction source = sourceTargetMap.getKey();
+          AbstractFunction target = sourceTargetMap.getValue();
+          
+          if (selectedExchangeCategories.contains(category)) {
+            // Show the exchange category edge
+            showFECategory(showHideExchangeCategoryService, ctx, category, source, target, true);
           } else {
-            for (Map.Entry<EObject, EObject> srcTarMap : scopeSource.get(key)) {
-              showFECategory(categories, ctx, (ExchangeCategory) key,
-                  getBestFunctionContainer(srcTarMap.getKey(), content),
-                  getBestFunctionContainer(srcTarMap.getValue(), content), false);
-            }
+            // Hide the exchange category edge
+            showFECategory(showHideExchangeCategoryService, ctx, category, getBestFunctionContainer(source, content),
+                getBestFunctionContainer(target, content), false);
           }
         }
       }
     }
+  }
 
+  private void showHideFunctionalExchanges(Collection<DDiagramElement> functionRelatedDiagramElements,
+      Collection<ExchangeCategory> selectedExchangeCategories, AbstractShowHide showHideExchangeCategoryService,
+      boolean showHiddenExchanges) {
     // In tool (showHiddenExchanges==true), user may have removed some categories, so he wants to display hidden
     // exchanges associated to them.
     // In refresh (showHiddenExchanges==false), categories haven't been changed by the user, so he doesn't want to
     // display hidden exchanges,
     // he just want to hide new exchanges associated to displayed categories.    
-    ctx = categories.new DiagramContext();
-    for (DDiagramElement sourceView : sourceViews) {
-      EObject sourceViewTarget = sourceView.getTarget();
-      if (sourceViewTarget != null) {
-        HashMapSet<EObject, Map.Entry<EObject, EObject>> scopeSource = getShowHideSubFECategoriesScope(sourceView);
-        for (EObject key : scopeSource.keySet()) {
-          if (selectedElements.contains(key)) {
-            for (FunctionalExchange exchange : FunctionExt.getAllExchanges((AbstractFunction) sourceViewTarget)) {
-              if (exchange.getCategories().contains(key)) {
-                categories.hide(exchange, ctx);
-              }
-            }
-          } else if (showHiddenExchanges){
-            for (FunctionalExchange exchange : FunctionExt.getAllExchanges((AbstractFunction) sourceViewTarget)) {
-              if (exchange.getCategories().contains(key)) {
-                categories.show(exchange, ctx);
+    DiagramContext ctx = showHideExchangeCategoryService.new DiagramContext();
+    for (DDiagramElement diagramElement : functionRelatedDiagramElements) {
+      EObject diagramElementTarget = diagramElement.getTarget();
+      if (diagramElementTarget instanceof AbstractFunction) {
+        AbstractFunction targetFunction = (AbstractFunction) diagramElementTarget;
+        
+        Map<ExchangeCategory, Map.Entry<AbstractFunction, AbstractFunction>> categoryToSourceTargetMap = getExchangeCategoryToSourceTargetMap(targetFunction);
+        
+        for (Entry<ExchangeCategory, Entry<AbstractFunction, AbstractFunction>> entry : categoryToSourceTargetMap.entrySet()) {
+          ExchangeCategory category = entry.getKey();
+          
+          for (FunctionalExchange functionalExchange : FunctionExt.getAllExchanges(targetFunction)) {
+            if (functionalExchange.getCategories().contains(category)) {
+              if (selectedExchangeCategories.contains(category)) {
+                // Hide the functional exchange edge
+                showHideExchangeCategoryService.hide(functionalExchange, ctx);
+              } else {
+                if (showHiddenExchanges) {
+                  // Show the functional exchange edge 
+                  // Only in tool when user switches functional exchange vs exchange category 
+                  showHideExchangeCategoryService.show(functionalExchange, ctx);
+                }
               }
             }
           }
         }
       }
     }
-
-    FaServices.getFaServices().updateFECategories(content);
-
-    content.commitDeferredActions();
-    return context;
-  }
-
-  /**
-   * Do a Exchange/Category switch for hidden categories
-   * 
-   * @param content
-   * @param context
-   * @param selectedElements
-   * @return
-   */
-  public EObject switchFEInvisibleCategories(DDiagramContents content, DSemanticDecorator context,
-      Collection<EObject> selectedElements) {
-
-    DDiagram currentDiagram = content.getDDiagram();
-    Collection<DDiagramElement> invisibleCategoryEdges = new HashSet<DDiagramElement>();
-    for (DDiagramElement element : content.getDiagramElements(content.getMapping(MappingConstantsHelper.getMappingFunctionalExchangeCategory(currentDiagram)))) {
-      if (!element.isVisible()) {
-        invisibleCategoryEdges.add(element);
-      }
-    }
-
-    for (DDiagramElement categoryEdge : invisibleCategoryEdges) {
-      EObject categoryObj = categoryEdge.getTarget();
-      EObject srcFunc = ((DDiagramElement) ((DEdge) categoryEdge).getSourceNode().eContainer()).getTarget();
-      EObject tarFunc = ((DDiagramElement) ((DEdge) categoryEdge).getTargetNode().eContainer()).getTarget();
-
-      if ((categoryObj != null) && (categoryObj instanceof ExchangeCategory)) {
-        AbstractShowHide invCatSwitch = new ShowHideInvisibleExchangeCategory(content);
-        DiagramContext ctx = invCatSwitch.new DiagramContext();
-        if (selectedElements.contains(categoryObj)) {
-          showFECategory(invCatSwitch, ctx, (ExchangeCategory) categoryObj, srcFunc, tarFunc, true);
-        } else {
-          showFECategory(invCatSwitch, ctx, (ExchangeCategory) categoryObj, srcFunc, tarFunc, false);
-        }
-      }
-    }
-
-    content.commitDeferredActions();
-    return context;
   }
 
   /**
@@ -5253,115 +5238,6 @@ public class FaServices {
   }
 
   /**
-   * Refine the state of categories (e.g. invalid category edges are removed, etc.)
-   * 
-   * @param context
-   */
-  public void updateFECategories(DDiagramContents context) {
-    Collection<DEdge> toRemoveEdges = new HashSet<DEdge>();
-    Collection<AbstractDNode> toRemoveNodes = new HashSet<AbstractDNode>();
-    Collection<AbstractDNode> toHideNodes = new HashSet<AbstractDNode>();
-
-    DiagramElementMapping edgeMapping = context.getMapping(MappingConstantsHelper.getMappingFunctionalExchangeCategory(context.getDDiagram()));
-    DiagramElementMapping nodeMapping = context.getMapping(MappingConstantsHelper.getMappingFunctionalExchangeCategoryOutputPin(context.getDDiagram()));
-
-    // Retrieve all invalid edges to be removed
-    if (edgeMapping != null) {
-      for (DDiagramElement element : context.getDiagramElements(edgeMapping)) {
-        if (!(element instanceof DEdge)) {
-          continue;
-        }
-        DEdge edge = (DEdge) element;
-
-        boolean isValidEdge = isValidFECategoryEdge((ExchangeCategory) element.getTarget(),
-            (DSemanticDecorator) edge.getSourceNode(), (DSemanticDecorator) edge.getTargetNode());
-        if (!isValidEdge) {
-          toRemoveEdges.add(edge);
-        }
-      }
-    }
-
-    // Retrieve all nodes without incoming/outgoing edges to be removed
-    if (nodeMapping != null) {
-      for (DDiagramElement element : context.getDiagramElements(nodeMapping)) {
-        if (!(element instanceof EdgeTarget)) {
-          continue;
-        }
-        Collection<DEdge> edges = new ArrayList<DEdge>();
-        edges.addAll(((EdgeTarget) element).getIncomingEdges());
-        edges.addAll(((EdgeTarget) element).getOutgoingEdges());
-
-        if (edges.size() == 0) {
-          toRemoveNodes.add((AbstractDNode) element);
-        } else {
-          int nbRemoved = 0;
-          for (DEdge edge : edges) {
-            if (toRemoveEdges.contains(edge)) {
-              nbRemoved++;
-            }
-          }
-          if (nbRemoved == edges.size()) {
-            toRemoveNodes.add((AbstractDNode) element);
-          }
-        }
-      }
-    }
-
-    // Retrieve all nodes to be hidden or removed
-    Collection<DiagramElementMapping> nodeMappings = context.getMappings(MappingConstantsHelper.getMappingABPorts(context.getDDiagram()));
-    if (!nodeMappings.isEmpty()) {
-      Iterable<DDiagramElement> diagElements = context.getDiagramElements(nodeMappings);
-      for (DDiagramElement element : diagElements) {
-
-        if (!(element instanceof EdgeTarget)) {
-          continue;
-        }
-        Collection<DEdge> edges = new ArrayList<DEdge>();
-        edges.addAll(((EdgeTarget) element).getIncomingEdges());
-        edges.addAll(((EdgeTarget) element).getOutgoingEdges());
-
-        if (edges.size() != 0) {
-          int nbRemoved = 0;
-          int nbHidden = 0;
-          for (DEdge edge : edges) {
-
-            if (!context.isVisible(edge)) {
-              if (edge.getTarget() != null) {
-                EObject target = edge.getTarget();
-                if ((target instanceof ComponentExchange) && !(((ComponentExchange) target).getCategories().isEmpty())) {
-                  nbHidden++;
-                } else if ((target instanceof PhysicalLink) && !(((PhysicalLink) target).getCategories().isEmpty())) {
-                  nbHidden++;
-                }
-              }
-            } else if (toRemoveEdges.contains(edge)) {
-              nbRemoved++;
-            }
-          }
-          if (nbRemoved == edges.size()) {
-            toRemoveNodes.add((AbstractDNode) element);
-          } else if ((nbHidden + nbRemoved) == edges.size()) {
-            toHideNodes.add((AbstractDNode) element);
-          }
-        }
-      }
-    }
-
-    for (DEdge edge : toRemoveEdges) {
-      DiagramServices.getDiagramServices().removeEdgeView(edge);
-    }
-
-    for (AbstractDNode node : toHideNodes) {
-      context.deferredHide(node);
-    }
-
-    for (AbstractDNode node : toRemoveNodes) {
-      DiagramServices.getDiagramServices().removeAbstractDNodeView(node);
-    }
-
-  }
-
-  /**
    * Retrieve a map<ExchangeCategory, FunctionalExchange> of available category to display from the given source view
    * 
    * @param context
@@ -5386,31 +5262,19 @@ public class FaServices {
     return result;
   }
 
-  /**
-   * Retrieve a map of available category to display from the given source view (including those of sub-elements of the source view)
-   * 
-   * @param context
-   * @return
-   */
-  public HashMapSet<EObject, Map.Entry<EObject, EObject>> getShowHideSubFECategoriesScope(DSemanticDecorator context, List<FunctionalExchange> allExchanges) {
-    HashMapSet<EObject, Map.Entry<EObject, EObject>> result = new HashMapSet<EObject, Map.Entry<EObject, EObject>>();
-    for (FunctionalExchange fe : allExchanges) {
-      for (ExchangeCategory value : fe.getCategories()) {
-        Map.Entry<EObject, EObject> srcTar = new AbstractMap.SimpleEntry<EObject, EObject>(
+  private Map<ExchangeCategory, Map.Entry<AbstractFunction, AbstractFunction>> getExchangeCategoryToSourceTargetMap(AbstractFunction abstractFunction) {
+    HashMap<ExchangeCategory, Map.Entry<AbstractFunction, AbstractFunction>> result = new HashMap<>();
+    
+    List<FunctionalExchange> functionalExchanges = FunctionExt.getAllExchanges(abstractFunction);
+    
+    for (FunctionalExchange fe : functionalExchanges) {
+      for (ExchangeCategory category : fe.getCategories()) {
+        Map.Entry<AbstractFunction, AbstractFunction> sourceToTargetMap = new AbstractMap.SimpleEntry<>(
         FunctionExt.getIncomingAbstractFunction(fe), FunctionExt.getOutGoingAbstractFunction(fe));
-        result.put(value, srcTar);
+        result.put(category, sourceToTargetMap);
       }
     }
     return result;
-  }
-  
-  public HashMapSet<EObject, Map.Entry<EObject, EObject>> getShowHideSubFECategoriesScope(DSemanticDecorator context) {
-    EObject abstractFunction = context.getTarget();
-    if (abstractFunction != null && abstractFunction instanceof AbstractFunction) {
-      List<FunctionalExchange> allExchanges = FunctionExt.getAllExchanges((AbstractFunction) abstractFunction);
-      return getShowHideSubFECategoriesScope(context, allExchanges);
-    }
-    return new HashMapSet<EObject, Map.Entry<EObject, EObject>>();
   }
   
   public Collection<EObject> getSwitchFECategoriesScope(DSemanticDecorator context) {
@@ -5451,10 +5315,6 @@ public class FaServices {
 
     }
     return Collections.emptyList();
-  }
-
-  public boolean isValidFECategoryEdge(ExchangeCategory category, DSemanticDecorator source, DSemanticDecorator target) {
-    return true;
   }
 
   /**

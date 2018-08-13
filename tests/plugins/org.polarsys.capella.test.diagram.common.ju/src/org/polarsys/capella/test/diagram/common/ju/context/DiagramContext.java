@@ -10,8 +10,10 @@
  *******************************************************************************/
 package org.polarsys.capella.test.diagram.common.ju.context;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.EList;
@@ -21,7 +23,9 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
+import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.junit.Assert;
@@ -137,6 +141,54 @@ public class DiagramContext extends SessionContext {
 
   public void putView(String newIdentifier, DDiagramElement view) {
     getViewObjectMap().put(newIdentifier, view);
+  }
+  
+  /**
+   * If there is an edge whose semantic target is edgeId,
+   * between the source view whose semantic target is sourceId
+   * and the target view whose semantic target is targetId
+   * @param sourceId
+   * @param targetId
+   * @param edgeId
+   * @return
+   */
+  public boolean hasEdge(String sourceId, String targetId, String edgeId) {
+    EObject semanticSource = getSemanticElement(sourceId);
+    DSemanticDecorator viewSource = getView(semanticSource);
+    
+    Assert.assertTrue(NLS.bind(CommonTestMessages.objectRepresentationNotAvailableOnDiagram,
+        EObjectLabelProviderHelper.getText(viewSource)), viewSource != null);
+    
+    EObject semanticTarget = getSemanticElement(targetId);
+    DSemanticDecorator viewTarget = getView(semanticTarget);
+    
+    Assert.assertTrue(NLS.bind(CommonTestMessages.objectRepresentationNotAvailableOnDiagram,
+        EObjectLabelProviderHelper.getText(viewTarget)), viewTarget != null);
+    
+    Assert.assertTrue("The source should be of type EdgeTarget", viewSource instanceof EdgeTarget);
+    Assert.assertTrue("The target should be of type EdgeTarget", viewTarget instanceof EdgeTarget);
+    
+    EdgeTarget portSource = (EdgeTarget) viewSource;
+    EdgeTarget portTarget = (EdgeTarget) viewTarget;
+    
+    List<DEdge> relatedEdgesToSource = new ArrayList<>();
+    relatedEdgesToSource.addAll(portSource.getIncomingEdges());
+    relatedEdgesToSource.addAll(portSource.getOutgoingEdges());
+    
+    List<DEdge> relatedEdgesToTarget = new ArrayList<>();
+    relatedEdgesToTarget.addAll(portTarget.getIncomingEdges());
+    relatedEdgesToTarget.addAll(portTarget.getOutgoingEdges());
+    
+    boolean hasEdge = false;
+    for (DEdge edgeToTarget : relatedEdgesToTarget) {
+      for (DEdge edgeToSource : relatedEdgesToSource) {
+        if (edgeToTarget.equals(edgeToSource) && edgeToSource.getTarget().equals(getSemanticElement(edgeId))) {
+          hasEdge = true;
+          break;
+        }
+      }
+    }
+    return hasEdge;
   }
 
   public void hasView(String identifier) {

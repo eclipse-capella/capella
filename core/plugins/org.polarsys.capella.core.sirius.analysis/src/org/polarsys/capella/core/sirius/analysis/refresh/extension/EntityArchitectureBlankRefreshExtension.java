@@ -14,7 +14,6 @@ import java.util.Collection;
 
 import org.apache.log4j.Logger;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.business.api.refresh.IRefreshExtension;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
@@ -45,6 +44,13 @@ public class EntityArchitectureBlankRefreshExtension extends AbstractRefreshExte
     Collection<EObject> contextualElements = ContextualDiagramHelper.getService().getContextualElements(descriptor);
 
     DDiagramContents context = FaServices.getFaServices().getDDiagramContents(diagram);
+    
+    // Update the internal edges for functional chains
+    try {
+      FunctionalChainServices.getFunctionalChainServices().updateInternalFunctionalChains(diagram);
+    } catch (Exception e) {
+      Logger.getLogger(IReportManagerDefaultComponents.DIAGRAM).error(Messages.RefreshExtension_ErrorOnUpdateFunctionalChainStyle, e);
+    }
 
     // -------------------------------------
     // Show in diagram related contextual elements

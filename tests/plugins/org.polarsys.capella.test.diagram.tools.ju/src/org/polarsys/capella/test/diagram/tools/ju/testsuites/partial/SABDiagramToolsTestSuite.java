@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,8 @@ import java.util.List;
 import junit.framework.Test;
 
 import org.polarsys.capella.test.diagram.tools.ju.sab.SwitchCategoryOnParentFunctions;
+import org.polarsys.capella.test.diagram.tools.ju.sab.SwitchFunctionalCategoryHidingInternalEdgesTestCase;
+import org.polarsys.capella.test.diagram.tools.ju.sab.SwitchPhysicalLinkCategoryHidingInternalEdgesTestCase;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
 
@@ -35,6 +37,8 @@ public class SABDiagramToolsTestSuite extends BasicTestSuite {
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
     tests.add(new SwitchCategoryOnParentFunctions());
+    tests.add(new SwitchPhysicalLinkCategoryHidingInternalEdgesTestCase());
+    tests.add(new SwitchFunctionalCategoryHidingInternalEdgesTestCase());
     return tests;
   }
 
