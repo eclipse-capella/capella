@@ -1,0 +1,18 @@
+            
+= How to import a Capella Project Example? =
+
+# '''File -> New -> Example ...'''
+# Select '''Capella Project Example'''
+# The wizard dialog appears and proposes a list of available examples. An example decorated by a star means that it was already imported into your workspace, you have to click on the '''Rename''' button in order to be able to import it again. 
+
+[[Image:Images/3.8.%20How%20to%20import%20Capella%20Project%20Example_1.png]]
+[[Image:Images/3.8.%20How%20to%20import%20Capella%20Project%20Example_2.png]]
+
+<br>
+= How to create a new Capella Project Example? =
+# The sample project must be in the form of: '''toto/toto.zip'''
+# The sample project is placed in '''CAPELLA_INSTALLATION_PATH/Samples/toto/toto.zip'''
+# The import sample wizard dialog will propose a list of available examples including the newly added ones.
+[[Image:Images/3.8.%20How%20to%20add%20new%20Capella%20Project%20Example.png]]
+
+   
