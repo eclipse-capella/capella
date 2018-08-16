@@ -25,6 +25,14 @@
        </menuContribution>
        
        <menuContribution
+                locationURI="popup:org.eclipse.sirius.table.ui.CrossTableEditorID?after=additions">
+               
+              <separator name="group.showIn" visible="true" />
+              <separator name="group.sendTo" visible="true" />
+              
+       </menuContribution>
+       
+       <menuContribution
                 locationURI="popup:org.eclipse.gmf.runtime.diagram.ui.DiagramEditorContextMenu?after=additions">
                 
               <separator name="group.semantic" visible="true" />

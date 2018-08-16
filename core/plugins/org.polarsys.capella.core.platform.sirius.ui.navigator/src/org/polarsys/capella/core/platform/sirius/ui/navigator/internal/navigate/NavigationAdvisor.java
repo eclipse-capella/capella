@@ -49,6 +49,7 @@ import org.polarsys.capella.core.data.fa.AbstractFunctionalBlock;
 import org.polarsys.capella.core.data.fa.ExchangeCategory;
 import org.polarsys.capella.core.data.fa.FunctionalChainInvolvement;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
+import org.polarsys.capella.core.data.helpers.fa.services.FunctionExt;
 import org.polarsys.capella.core.data.information.AbstractInstance;
 import org.polarsys.capella.core.data.information.Association;
 import org.polarsys.capella.core.data.information.Collection;
@@ -82,6 +83,7 @@ import org.polarsys.capella.core.data.interaction.StateFragment;
 import org.polarsys.capella.core.data.oa.Role;
 import org.polarsys.capella.core.model.handler.AbstractModelElementRunnable;
 import org.polarsys.capella.core.model.handler.helpers.CapellaAdapterHelper;
+import org.polarsys.capella.core.model.helpers.AbstractFunctionExt;
 
 /**
  * Provides services to navigation from a {@link ModelElement} to other {@link ModelElement} according to semantic
@@ -188,7 +190,15 @@ public class NavigationAdvisor {
    * @return a list mapped to {@link AbstractFunction#getAllocationBlocks()} and realized functions.
    */
   List<EObject> handleAbstractFunctionNavigation(AbstractFunction function) {
-    return new ArrayList<EObject>(function.getAllocationBlocks());
+    List<EObject> allocationBlocks = new ArrayList<>();
+    
+    if (FunctionExt.isLeaf(function)) {
+      allocationBlocks.addAll(function.getAllocationBlocks());
+    } else {
+      allocationBlocks.addAll(AbstractFunctionExt.getMotherFunctionAllocation(function));
+    }
+    
+    return allocationBlocks;
   }
 
   /**

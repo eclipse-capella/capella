@@ -1363,31 +1363,9 @@
                id="org.polarsys.capella.core.platform.sirius.ui.navigator.showRelatedElementFromDiagram"
                label="%showAllSemanticInCapellaExplorerAction"
                style="push">
-               
-            <visibleWhen
-                  checkEnabled="true">
-               <with
-                     variable="selection">
-                  <and>
-                     <iterate>
-                        <or>
-                        <instanceof
-                                 value="org.polarsys.kitalpha.emde.model.Element">
-                        </instanceof>
-                        <instanceof
-                                 value="org.eclipse.core.resources.IMarker">
-                        </instanceof>
-                        <instanceof
-                              value="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
-                        </instanceof>
-                        </or>
-                     </iterate>
-                     <count
-                           value="1">
-                     </count>
-                  </and>
-               </with>
-            </visibleWhen>
+               <!-- Do not need to define visibleWhen for this Show All command. The visibleWhen of the menu showSemanticInCapellaExplorerAction  
+               is enough. If the menu is visible, then the Show All will be visible as well.
+               -->
          </command>
          
          </menu>
@@ -1462,25 +1440,16 @@
             id="org.polarsys.capella.core.platform.sirius.ui.navigator.goto.expression">
             <with
                   variable="selection">
+                  <!-- It should use the operator OR here instead of AND while iterating the list of selections. 
+                  If one selection statisfies, it is enough to show the menu.
+                   -->
                   <iterate
-                        ifEmpty="false">
-                        <and>
-                        <or>
-                        <instanceof
-                                 	value="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
-                        </instanceof>
-                        <instanceof
-                              value="org.polarsys.kitalpha.emde.model.Element">
-                        </instanceof>
-                        <instanceof
-                              value="org.eclipse.core.resources.IMarker">
-                        </instanceof>
-                        </or>
+                        ifEmpty="false"
+                        operator="or">
 	                    <test
 			                  forcePluginActivation="true"
-			                  property="org.polarsys.capella.core.platform.sirius.ui.navigator.goto">
+			                  property="org.polarsys.capella.core.platform.sirius.ui.navigator.propertyTesters.ableToGoTo">
 			            </test>
-                        </and>
                   </iterate>
             </with>
       </definition>
@@ -1491,28 +1460,11 @@
    <extension
          point="org.eclipse.core.expressions.propertyTesters">
          <propertyTester
-             id="org.polarsys.capella.core.platform.sirius.ui.navigator.goto.propertyTester"
-             type="org.polarsys.kitalpha.emde.model.Element"
-             namespace="org.polarsys.capella.core.platform.sirius.ui.navigator"
-             properties="goto"
-             class="org.polarsys.capella.core.platform.sirius.ui.navigator.property.GotoPropertyTester"
-         >
-         </propertyTester>
-         <propertyTester
-             id="org.polarsys.capella.core.platform.sirius.ui.navigator.goto.propertyTester"
-             type="org.eclipse.core.resources.IMarker"
-             namespace="org.polarsys.capella.core.platform.sirius.ui.navigator"
-             properties="goto"
-             class="org.polarsys.capella.core.platform.sirius.ui.navigator.property.GotoPropertyTester"
-         >
-         </propertyTester>
-         <propertyTester
-             id="org.polarsys.capella.core.platform.sirius.ui.navigator.goto.propertyTester2"
-             type="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart"
-             namespace="org.polarsys.capella.core.platform.sirius.ui.navigator"
-             properties="goto"
-             class="org.polarsys.capella.core.platform.sirius.ui.navigator.property.GotoPropertyTester"
-         >
+               class="org.polarsys.capella.core.platform.sirius.ui.navigator.property.GotoPropertyTester"
+               id="org.polarsys.capella.core.platform.sirius.ui.navigator.propertyTesters.ableToGoTo"
+               namespace="org.polarsys.capella.core.platform.sirius.ui.navigator.propertyTesters"
+               properties="ableToGoTo"
+               type="java.lang.Object">
          </propertyTester>
    </extension>
    <extension

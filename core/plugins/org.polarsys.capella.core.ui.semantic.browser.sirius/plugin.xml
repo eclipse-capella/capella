@@ -127,6 +127,9 @@
                         <instanceof
                               value="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
                         </instanceof>
+                        <instanceof
+                              value="org.eclipse.sirius.table.metamodel.table.DTableElement">
+                        </instanceof>
                      </or>
                   </iterate>
                   <count

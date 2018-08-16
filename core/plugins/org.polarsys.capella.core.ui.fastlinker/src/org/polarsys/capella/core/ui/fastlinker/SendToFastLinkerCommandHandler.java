@@ -24,9 +24,11 @@ import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IAbstractDiagramNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
+import org.eclipse.sirius.table.metamodel.table.DTableElement;
 import org.eclipse.ui.ISources;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.handlers.HandlerUtil;
+import org.polarsys.capella.core.model.handler.helpers.CapellaAdapterHelper;
 
 /**
  * Command handler used to send an element from a Capella part (viewers, diagrams) to the FastLinker.
@@ -84,6 +86,8 @@ public class SendToFastLinkerCommandHandler extends AbstractHandler {
 			if ((selectedElement instanceof IAbstractDiagramNodeEditPart) || (selectedElement instanceof IDiagramEdgeEditPart)) {
 				IDiagramElementEditPart diagramElement = (IDiagramElementEditPart) selectedElement;
 				ret.add(diagramElement.resolveTargetSemanticElement());
+			} else if(selectedElement instanceof DTableElement) {
+			  ret.add(CapellaAdapterHelper.resolveEObject(selectedElement));
 			} else if (selectedElement instanceof EObject) {
 				ret.add((EObject) selectedElement);
 			}
