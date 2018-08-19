@@ -24,26 +24,25 @@ public class FastLinkerLabelProvider extends CapellaNavigatorLabelProvider {
 	@Override
 	public Image getImage(Object object) {
 		if (object instanceof Collection) {
-			if (((Collection) object).isEmpty())
+			Collection<?> collection = (Collection<?>)object;
+			if (collection.isEmpty())
 				return null;
-			if (((Collection) object).size() == 1)
+			else if (collection.size() == 1)
 				return super
-						.getImage(((Collection) object).iterator().next());
+						.getImage(collection.iterator().next());
 			else {
-				EClass eClass = null;
-				Iterator it = ((Collection) object).iterator();
+				Object next = collection.iterator().next();
+				EClass eClass = ((EObject) next).eClass();
+				Iterator<?> it = collection.iterator();
 				while (it.hasNext()) {
 					Object current = it.next();
 					if (current instanceof EObject) {
-						if (eClass == null) {
-							eClass = ((EObject) current).eClass();
-						}
-						else if (!((EObject) current).eClass().equals(eClass))
+						if (!((EObject) current).eClass().equals(eClass))
 							return null;
 					} else {
 						return null;
 					}
-					return super.getImage(((Collection) object).iterator()
+					return super.getImage(collection.iterator()
 							.next());
 				}
 			}

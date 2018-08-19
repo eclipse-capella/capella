@@ -379,14 +379,18 @@ public class CSVWriter {
 		_firstColumn = true;
 	}
 
-	private void checkInit() throws IOException {
-		if (!_initialized) {
-			if (_fileName != null) {
-				_outputStream = new PrintWriter(new OutputStreamWriter(new FileOutputStream(_fileName), _charset));
-			}
-			_initialized = true;
-		}
-	}
+  private void checkInit() throws IOException {
+    try (FileOutputStream fileOutputStream = new FileOutputStream(_fileName)) {
+      if (!_initialized) {
+        if (_fileName != null) {
+          _outputStream = new PrintWriter(new OutputStreamWriter(fileOutputStream, _charset));
+        }
+        _initialized = true;
+      }
+    } catch (Exception e) {
+      // Fail silently
+    }
+  }
 
 	/**
 	 * Clears all buffers for the current writer and causes any buffered data to be written to the underlying device.

@@ -94,7 +94,7 @@ public class ProjectActionProvider extends CommonActionProvider {
     boolean hasClosedProjects = false;
     Iterator resources = selection.iterator();
 
-    while (resources.hasNext() && (!hasOpenProjects || !hasClosedProjects || isProjectSelection)) {
+    while (resources.hasNext()) {
       Object next = resources.next();
       IProject project = null;
 
@@ -139,7 +139,6 @@ public class ProjectActionProvider extends CommonActionProvider {
    */
   protected ImageDescriptor getImageDescriptor(String relativePath) {
     return IDEWorkbenchPlugin.getIDEImageDescriptor(relativePath);
-
   }
 
   /**

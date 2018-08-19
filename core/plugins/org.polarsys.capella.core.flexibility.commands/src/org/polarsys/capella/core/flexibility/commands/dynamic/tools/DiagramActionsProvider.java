@@ -473,7 +473,7 @@ public class DiagramActionsProvider implements IActionsProvider {
           boolean hasProceed = false;
           int nbProceed = 0;
           Collection<Resource> objects = getResources();
-          List<DAnalysis> analysises = new ArrayList<DAnalysis>();
+          List<DAnalysis> analysises = new ArrayList<>();
 
           getLogger().info(new EmbeddedMessage(objects.size() + " resources to be opened", IReportManagerDefaultComponents.UI)); //$NON-NLS-1$
 
@@ -495,7 +495,7 @@ public class DiagramActionsProvider implements IActionsProvider {
 
                           getLogger().info(
                               new EmbeddedMessage(NLS.bind("Get viewpoint definition ''{0}'' in ''{1}''", getName(view.getViewpoint()), //$NON-NLS-1$
-                                  getName(analysis.eResource()).toString()), IReportManagerDefaultComponents.UI));
+                                  getName(analysis.eResource())), IReportManagerDefaultComponents.UI));
                           viewpointsEnabled.put(key, Boolean.valueOf(analysis.getSelectedViews().contains(view)));
                         } else {
                           if ((viewpointsEnabled.get(key) != null) && !viewpointsEnabled.get(key).booleanValue()) {
@@ -549,19 +549,15 @@ public class DiagramActionsProvider implements IActionsProvider {
         }
 
         private String getKey(Viewpoint viewpoint) {
-          if (viewpoint instanceof InternalEObject) {
-            if (viewpoint.eIsProxy()) {
+          if (viewpoint instanceof InternalEObject && viewpoint.eIsProxy()) {
               return ((InternalEObject) viewpoint).eProxyURI().lastSegment();
-            }
           }
           return viewpoint.getName() + viewpoint.eResource().getURI().lastSegment();
         }
 
         private String getName(Object eResource) {
-          if (eResource instanceof InternalEObject) {
-            if (((InternalEObject) eResource).eIsProxy()) {
-              return ((InternalEObject) eResource).eProxyURI().toString();
-            }
+          if (eResource instanceof InternalEObject && ((InternalEObject) eResource).eIsProxy()) {
+            return ((InternalEObject) eResource).eProxyURI().toString();
           }
           if (eResource instanceof Viewpoint) {
             return ((Viewpoint) eResource).getName();
@@ -684,10 +680,10 @@ public class DiagramActionsProvider implements IActionsProvider {
 //        }
       }
 
-      if (!hasProceed) {
+//      if (!hasProceed) {
         getLogger().info(new EmbeddedMessage("No edges have been re-colored", IReportManagerDefaultComponents.UI)); //$NON-NLS-1$
 
-      }
+//      }
     }
 
     /**
