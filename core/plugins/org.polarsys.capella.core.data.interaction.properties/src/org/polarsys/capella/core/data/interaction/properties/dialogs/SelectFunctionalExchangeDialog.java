@@ -734,12 +734,12 @@ public class SelectFunctionalExchangeDialog extends SelectElementsDialog {
         FunctionalExchange fe = ensureFunctions(sourceFunctionName, targetFunctionName, functionalExchangeText);
         return Collections.singletonList(fe);
 
-      } else if (_creationType == DataflowDialogCreationType.COMPONENT_EXCHANGE) {
+      } else if (_creationType == DataflowDialogCreationType.COMPONENT_EXCHANGE && _sourceIR != null && _targetIR !=  null) {
         ComponentExchange componentExchange = null;
         Component srcComponent = (Component) _sourceIR.getRepresentedInstance().getAbstractType();
         Component tgtComponent = (Component) _targetIR.getRepresentedInstance().getAbstractType();
 
-        if (CapellaLayerCheckingExt.isInOperationalAnalysisLayer(_sourceIR == null ? _targetIR : _sourceIR)) {
+        if (CapellaLayerCheckingExt.isInOperationalAnalysisLayer(_sourceIR)) {
           componentExchange = OaFactory.eINSTANCE.createCommunicationMean();
           componentExchange.setSource((Entity) srcComponent);
           componentExchange.setTarget((Entity) tgtComponent);
@@ -761,7 +761,7 @@ public class SelectFunctionalExchangeDialog extends SelectElementsDialog {
         saveExchangeItems(componentExchange);
         return Collections.singletonList(componentExchange);
 
-      } else if (_creationType == DataflowDialogCreationType.FUNCTIONAL_EXCHANGE_SCENARIO) {
+      } else if (_creationType == DataflowDialogCreationType.FUNCTIONAL_EXCHANGE_SCENARIO && _sourceIR != null && _targetIR !=  null) {
         ActivityNode srcFunction = (ActivityNode) _sourceIR.getRepresentedInstance();
         ActivityNode dstFunction = (ActivityNode) _targetIR.getRepresentedInstance();
 

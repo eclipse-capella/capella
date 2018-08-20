@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,11 +24,9 @@ import org.eclipse.ui.internal.intro.impl.model.IntroModelRoot;
 import org.eclipse.ui.internal.util.PrefUtil;
 import org.eclipse.ui.intro.IIntroManager;
 import org.eclipse.ui.intro.config.CustomizableIntroPart;
-
 import org.polarsys.capella.common.bundle.FeatureHelper;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.core.platform.sirius.ui.PerspectivePreferences;
-import org.polarsys.capella.core.platform.sirius.ui.perspective.CapellaPerspective;
 import org.polarsys.capella.core.preferences.Activator;
 
 /**
@@ -123,18 +121,6 @@ public class CapellaWorkbenchWindowAdvisor extends IDEWorkbenchWindowAdvisor {
         activePage.hideActionSet("org.eclipse.ui.actionSet.openFiles"); //$NON-NLS-1$
       }
     });
-    // Get the current capella version (computed from feature version).
-    boolean updated = false; // TODO updateCapellaVersion()raises NPE.
-    if (updated) {
-      // If current perspective is the capella one, reset it to make sure Capella is safe.
-      if (CapellaPerspective.PERSPECTIVE_ID.equals(activePage.getPerspective().getId())) {
-        window.getShell().getDisplay().asyncExec(new Runnable() {
-          public void run() {
-            activePage.resetPerspective();
-          }
-        });
-      }
-    }
   }
 
   /**

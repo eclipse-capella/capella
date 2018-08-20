@@ -103,30 +103,23 @@ public class CSVExporter
       resultFile.close();
    }
 
-   private void createFile(String resultCVSFile)
-   {
-      try
-      {
-         File errorFile = new File(resultCVSFile);
-         if (errorFile.exists())
-         {
-            errorFile.delete();
-         }
+  private void createFile(String resultCVSFile) {
+    try (FileWriter csvFileWriter = new FileWriter(resultCVSFile)) {
+      File errorFile = new File(resultCVSFile);
+      if (errorFile.exists()) {
+        errorFile.delete();
+      }
 
-         resultFile = new PrintWriter(new BufferedWriter(new FileWriter(resultCVSFile)));
-      }
-      catch (FileNotFoundException e)
-      {
-         MessageBox lMessageBox = new MessageBox(new Shell(), SWT.OK);
-         lMessageBox.setText("Write EXCEL file");
-         lMessageBox.setMessage("Write operation failed \n" + e.getMessage());
-         lMessageBox.open();
-      }
-      catch (IOException e)
-      {
-         logger.log(Level.SEVERE, e.getMessage(), e);
-      }
-   }
+      resultFile = new PrintWriter(new BufferedWriter(csvFileWriter));
+    } catch (FileNotFoundException e) {
+      MessageBox lMessageBox = new MessageBox(new Shell(), SWT.OK);
+      lMessageBox.setText("Write EXCEL file");
+      lMessageBox.setMessage("Write operation failed \n" + e.getMessage());
+      lMessageBox.open();
+    } catch (IOException e) {
+      logger.log(Level.SEVERE, e.getMessage(), e);
+    }
+  }
 
    /**
     * writeField Write a String followed by a ";"
