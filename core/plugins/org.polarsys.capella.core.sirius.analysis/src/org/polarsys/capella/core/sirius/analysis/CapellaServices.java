@@ -2194,6 +2194,37 @@ public class CapellaServices {
     }
     return true;
   }
+  
+  /**
+   * 
+   * Function border should be dashed only in the specified use cases : 
+   * - ALL its leaf sub-functions are allocated to component/sub-component
+   * - Function is not allocated directly to the displayed component
+   * 
+   * @param function
+   * @param container
+   * @return Return whether the border of a function should be dashed or not.
+   */
+  public boolean isDashedFunction(AbstractFunction function, EObject container) {
+    if (AbstractFunctionExt.isLeaf(function)) {
+      List<Component> allocatingComponent = AbstractFunctionExt.getAllocatingComponents(function);
+      if (!allocatingComponent.isEmpty()) {
+        return allocatingComponent.get(0) != container;
+      }
+    } else {
+      List<AbstractFunction> allLeaves = FunctionExt.getAllLeafAbstractFunctions(function);
+      for (AbstractFunction leaf : allLeaves) {
+        List<Component> allocatingComponent = AbstractFunctionExt.getAllocatingComponents(leaf);
+        if (allocatingComponent.size() != 1 || allocatingComponent.get(0) != container) {
+          // Function is not a leaf and at least one of its leaf is not allocated to given
+          // Component
+          return false;
+        }
+      }
+      return true;
+    }
+    return false;
+  }
 
   protected boolean isAllocatedFunctionCommon(AbstractFunction function, EObject container,
       LinkedList<AbstractFunction> allocatedFunctions) {

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -172,7 +172,7 @@ public class ShowHideFunctions extends EmptyProject {
     XABDiagram xab = setUpDiagram(context, rootSF, rootCPS);
     xab.hasntView(GenericModel.FUNCTION_1_1);
     xab.insertAllocatedFunction(GenericModel.FUNCTION_1_1, GenericModel.COMPONENT_1_1_1);
-    checkFunction(xab, GenericModel.FUNCTION_1_1, true, false);
+    checkFunction(xab, GenericModel.FUNCTION_1_1, true, true);
   }
 
   /**
@@ -184,12 +184,12 @@ public class ShowHideFunctions extends EmptyProject {
     XABDiagram xab = setUpDiagram(context, rootSF, rootCPS);
     removeComponent(xab, GenericModel.COMPONENT_1_1_1, GenericModel.COMPONENT_1_1);
     xab.insertAllocatedFunction(GenericModel.FUNCTION_1_1, GenericModel.COMPONENT_1_1);
-    checkFunction(xab, GenericModel.FUNCTION_1_1, true, true);
+    checkFunction(xab, GenericModel.FUNCTION_1_1, true, false);
 
     removeComponent(xab, GenericModel.COMPONENT_1_1, GenericModel.COMPONENT_1);
     xab.hasntView(GenericModel.FUNCTION_1_1);
     xab.insertAllocatedFunction(GenericModel.FUNCTION_1_1, GenericModel.COMPONENT_1);
-    checkFunction(xab, GenericModel.FUNCTION_1_1, true, true);
+    checkFunction(xab, GenericModel.FUNCTION_1_1, true, false);
   }
 
   /**
