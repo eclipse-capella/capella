@@ -35,8 +35,8 @@ public class XDFBDiagram extends DiagramContext {
   }
 
   public static XDFBDiagram createDiagram(SessionContext executionContext, String targetIdentifier) {
-    BlockArchitecture architecture = BlockArchitectureExt.getRootBlockArchitecture(executionContext
-        .getSemanticElement(targetIdentifier));
+    BlockArchitecture architecture = BlockArchitectureExt
+        .getRootBlockArchitecture(executionContext.getSemanticElement(targetIdentifier));
     final BlockArchitectureExt.Type type = BlockArchitectureExt.getBlockArchitectureType(architecture);
 
     String name = null;
@@ -85,7 +85,7 @@ public class XDFBDiagram extends DiagramContext {
     }
     new CreateContainerTool(this, name, containerId, id).run();
   }
-  
+
   public void createActorFunction(String id) {
     createActorFunction(id, getDiagramId());
   }
@@ -101,8 +101,9 @@ public class XDFBDiagram extends DiagramContext {
     }
     new CreateContainerTool(this, name, containerId, id).run();
   }
-  
-  public void createFunctionalExchange(String id, String sourceViewId, String targetViewId, String newSourceIdentifier, String newTargetIdentifier) {
+
+  public void createFunctionalExchange(String id, String sourceViewId, String targetViewId, String newSourceIdentifier,
+      String newTargetIdentifier) {
     String name = null;
     if (type == Type.OA) {
       name = IToolNameConstants.TOOL_OAIB_CREATE_INTERACTION;
@@ -115,56 +116,60 @@ public class XDFBDiagram extends DiagramContext {
     }
     new CreateDEdgeTool(this, name, sourceViewId, targetViewId, id, newSourceIdentifier, newTargetIdentifier).run();
   }
-  
+
   public void createFunctionalExchange(String id, String sourceViewId, String targetViewId) {
     createFunctionalExchange(id, sourceViewId, targetViewId, null, null);
   }
 
   public void initializationFromExistingDiagram(DiagramContext existingContext) {
-    new InitializationFromExistingDiagramTool(this, IToolNameConstants.TOOL_SDFB_INITIALIZATION_FROM_EXISTING_DIAGRAM, existingContext).insert(existingContext.getDiagramId());
-  }
-  
-  public void insertFunction(String containerId, String id){
-	  if (type == Type.SA) {
-	  new InsertRemoveTool(this, IToolNameConstants.TOOL_SDFB_SHOW_HIDE_FUNCTIONS, containerId).insert(id);
-    } else if (type == Type.LA) {
-    	new InsertRemoveTool(this, IToolNameConstants.TOOL_LDFB_SHOW_HIDE_FUNCTIONS, containerId).insert(id);
-    } else if (type == Type.PA) {
-    	new InsertRemoveTool(this, IToolNameConstants.TOOL_PDFB_SHOW_HIDE_FUNCTIONS, containerId).insert(id);
-    }
-  }
-  
-  public void removeFunction(String containerId, String id){
-	  if (type == Type.SA) {
-		  new InsertRemoveTool(this, IToolNameConstants.TOOL_SDFB_SHOW_HIDE_FUNCTIONS, containerId).remove(id);
-	    } else if (type == Type.LA) {
-	    	new InsertRemoveTool(this, IToolNameConstants.TOOL_LDFB_SHOW_HIDE_FUNCTIONS, containerId).remove(id);
-	    } else if (type == Type.PA) {
-	    	new InsertRemoveTool(this, IToolNameConstants.TOOL_PDFB_SHOW_HIDE_FUNCTIONS, containerId).remove(id);
-	    }
-  }
-  
-  public void insertFunctionalExchange(String containerId, String id){
-	  if (type == Type.SA) {
-	  new InsertRemoveTool(this, IToolNameConstants.TOOL_SDFB_SHOW_HIDE_FUNCTIONAL_EXCHANGES, containerId).insert(id);
-    } else if (type == Type.LA) {
-    	new InsertRemoveTool(this, IToolNameConstants.TOOL_LDFB_SHOW_HIDE_FUNCTIONAL_EXCHANGES, containerId).insert(id);
-    } else if (type == Type.PA) {
-    	new InsertRemoveTool(this, IToolNameConstants.TOOL_PDFB_SHOW_HIDE_FUNCTIONAL_EXCHANGES, containerId).insert(id);
-    }
-  }
-  
-  public void removeFunctionalExchange(String containerId, String id){
-	  if (type == Type.SA) {
-		  new InsertRemoveTool(this, IToolNameConstants.TOOL_SDFB_SHOW_HIDE_FUNCTIONAL_EXCHANGES, containerId).remove(id);
-	    } else if (type == Type.LA) {
-	    	new InsertRemoveTool(this, IToolNameConstants.TOOL_LDFB_SHOW_HIDE_FUNCTIONAL_EXCHANGES, containerId).remove(id);
-	    } else if (type == Type.PA) {
-	    	new InsertRemoveTool(this, IToolNameConstants.TOOL_PDFB_SHOW_HIDE_FUNCTIONAL_EXCHANGES, containerId).remove(id);
-	    }
+    new InitializationFromExistingDiagramTool(this, IToolNameConstants.TOOL_SDFB_INITIALIZATION_FROM_EXISTING_DIAGRAM,
+        existingContext).insert(existingContext.getDiagramId());
   }
 
-  public void createFunctionalChain(String path, String ...links) {
+  public void insertFunction(String containerId, String id) {
+    if (type == Type.SA) {
+      new InsertRemoveTool(this, IToolNameConstants.TOOL_SDFB_SHOW_HIDE_FUNCTIONS, containerId).insert(id);
+    } else if (type == Type.LA) {
+      new InsertRemoveTool(this, IToolNameConstants.TOOL_LDFB_SHOW_HIDE_FUNCTIONS, containerId).insert(id);
+    } else if (type == Type.PA) {
+      new InsertRemoveTool(this, IToolNameConstants.TOOL_PDFB_SHOW_HIDE_FUNCTIONS, containerId).insert(id);
+    } else if (type == Type.OA) {
+      new InsertRemoveTool(this, IToolNameConstants.TOOL_OAIB_INSERT_REMOVE_OPERATIONAL_ACTIVITIES, containerId)
+          .insert(id);
+    }
+  }
+
+  public void removeFunction(String containerId, String id) {
+    if (type == Type.SA) {
+      new InsertRemoveTool(this, IToolNameConstants.TOOL_SDFB_SHOW_HIDE_FUNCTIONS, containerId).remove(id);
+    } else if (type == Type.LA) {
+      new InsertRemoveTool(this, IToolNameConstants.TOOL_LDFB_SHOW_HIDE_FUNCTIONS, containerId).remove(id);
+    } else if (type == Type.PA) {
+      new InsertRemoveTool(this, IToolNameConstants.TOOL_PDFB_SHOW_HIDE_FUNCTIONS, containerId).remove(id);
+    }
+  }
+
+  public void insertFunctionalExchange(String containerId, String id) {
+    if (type == Type.SA) {
+      new InsertRemoveTool(this, IToolNameConstants.TOOL_SDFB_SHOW_HIDE_FUNCTIONAL_EXCHANGES, containerId).insert(id);
+    } else if (type == Type.LA) {
+      new InsertRemoveTool(this, IToolNameConstants.TOOL_LDFB_SHOW_HIDE_FUNCTIONAL_EXCHANGES, containerId).insert(id);
+    } else if (type == Type.PA) {
+      new InsertRemoveTool(this, IToolNameConstants.TOOL_PDFB_SHOW_HIDE_FUNCTIONAL_EXCHANGES, containerId).insert(id);
+    }
+  }
+
+  public void removeFunctionalExchange(String containerId, String id) {
+    if (type == Type.SA) {
+      new InsertRemoveTool(this, IToolNameConstants.TOOL_SDFB_SHOW_HIDE_FUNCTIONAL_EXCHANGES, containerId).remove(id);
+    } else if (type == Type.LA) {
+      new InsertRemoveTool(this, IToolNameConstants.TOOL_LDFB_SHOW_HIDE_FUNCTIONAL_EXCHANGES, containerId).remove(id);
+    } else if (type == Type.PA) {
+      new InsertRemoveTool(this, IToolNameConstants.TOOL_PDFB_SHOW_HIDE_FUNCTIONAL_EXCHANGES, containerId).remove(id);
+    }
+  }
+
+  public void createFunctionalChain(String path, String... links) {
     new CreatePathTool(this, IToolNameConstants.TOOL_CREATE_FUNCTIONAL_CHAIN, path, links).run();
   }
 }

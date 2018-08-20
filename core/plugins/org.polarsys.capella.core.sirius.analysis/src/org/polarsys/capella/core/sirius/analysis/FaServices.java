@@ -247,9 +247,9 @@ public class FaServices {
    *         (DataFlow Blank Diagrams)
    */
   public List<FunctionalExchange> getAvailableFunctionalExchangesToInsert(DSemanticDecorator context) {
-    List<FunctionalExchange> returnedList = new ArrayList<FunctionalExchange>();
-    List<FunctionalExchange> allFunctionalExchanges = new ArrayList<FunctionalExchange>();
-    List<FunctionalExchange> existingExchangesInDiagram = new ArrayList<FunctionalExchange>();
+    List<FunctionalExchange> returnedList = new ArrayList<>();
+    List<FunctionalExchange> allFunctionalExchanges = new ArrayList<>();
+    List<FunctionalExchange> existingExchangesInDiagram = new ArrayList<>();
     AbstractFunction selectedFunction = null;
 
     if (!(context instanceof AbstractDNode)) {
@@ -371,8 +371,8 @@ public class FaServices {
    * @return called by show/hide ComponentExchanges tools (Architecture Blank Diagrams)
    */
   public Collection<ComponentExchange> getDisplayedConnections(DNodeContainer selectedElement) {
-    Collection<ComponentExchange> returnedList = new HashSet<ComponentExchange>();
-    List<DEdge> edges = new ArrayList<DEdge>();
+    Collection<ComponentExchange> returnedList = new HashSet<>();
+    List<DEdge> edges = new ArrayList<>();
 
     for (DNode aNode : selectedElement.getOwnedBorderedNodes()) {
       if (aNode.getTarget() instanceof ComponentPort) {
@@ -404,8 +404,8 @@ public class FaServices {
    * @return called by show/hide ComponentExchanges tools (Architecture Blank Diagrams)
    */
   public Collection<ComponentExchange> getAvailableConnectionsToInsert(DNodeContainer context) {
-    List<ComponentExchange> returnedList = new ArrayList<ComponentExchange>();
-    List<ComponentExchange> allComponentExchanges = new ArrayList<ComponentExchange>();
+    List<ComponentExchange> returnedList = new ArrayList<>();
+    List<ComponentExchange> allComponentExchanges = new ArrayList<>();
 
     EObject currentComponent = null;
     Part currentPart = null;
@@ -417,7 +417,7 @@ public class FaServices {
       currentComponent = CsServices.getService().getComponentType((Part) context.getTarget());
     }
 
-    if ((currentComponent != null) && (currentComponent instanceof Component)) {
+    if (currentComponent instanceof Component) {
 
       if (currentComponent instanceof Component) {
         for (ComponentPort aPort : ComponentExt.getOwnedComponentPort((Component) currentComponent)) {
@@ -453,7 +453,7 @@ public class FaServices {
    * @return called by show/hide FunctionalExchanges tools (Architecture Blank Diagrams)
    */
   public List<FunctionalExchange> getAvailableFunctionalExchangesToInsertInArchitectureBlank(AbstractDNode context) {
-    List<FunctionalExchange> returnedList = new ArrayList<FunctionalExchange>();
+    List<FunctionalExchange> returnedList = new ArrayList<>();
     List<FunctionalExchange> allFunctionalExchanges = getAvailableFunctionalExchangesToInsert(context);
     AbstractFunction selectedFunction = (AbstractFunction) context.getTarget();
     for (FunctionalExchange anExchange : allFunctionalExchanges) {
@@ -482,7 +482,7 @@ public class FaServices {
 
   private DNodeContainer getDisplayedFunctionContainer(EObject function, Collection<DNodeContainer> containers) {
     EObject currentFunction = function;
-    while ((currentFunction != null) && (currentFunction instanceof AbstractFunction)) {
+    while (currentFunction instanceof AbstractFunction) {
       for (DNodeContainer aContainer : containers) {
         if (aContainer.getTarget().equals(currentFunction)) {
           return aContainer;
@@ -582,13 +582,13 @@ public class FaServices {
     // A chain have some involved elements. Try to find them or there
     // containers in the shortest delay
 
-    HashMap<EObject, DDiagramElement> elements = new HashMap<EObject, DDiagramElement>();
+    Map<EObject, DDiagramElement> elements = new HashMap<>();
     DDiagram diagram = CapellaServices.getService().getDiagramContainer(view);
 
     // Find all involved elements of a functional chain
-    HashSet<EObject> involveds = new HashSet<EObject>();
-    HashSet<AbstractFunction> involvedFunctions = new HashSet<AbstractFunction>();
-    HashSet<FunctionalExchange> involvedExchanges = new HashSet<FunctionalExchange>();
+    Set<EObject> involveds = new HashSet<>();
+    Set<AbstractFunction> involvedFunctions = new HashSet<>();
+    Set<FunctionalExchange> involvedExchanges = new HashSet<>();
 
     for (FunctionalChain chain : chains) {
       involveds.add(chain);
@@ -751,7 +751,7 @@ public class FaServices {
    * @return
    */
   public List<AbstractFunction> getAvailableAbstractFunctionsToInsertInDataFlowBlank(DSemanticDecorator current) {
-    List<AbstractFunction> returnedFunctions = new ArrayList<AbstractFunction>();
+    List<AbstractFunction> returnedFunctions = new ArrayList<>();
     AbstractFunction currentFunction = null;
     EObject target = current.getTarget();
     if (current instanceof DDiagram) {
@@ -795,29 +795,29 @@ public class FaServices {
    */
   public EObject switchFunctionalExchangesCategories(EObject context,
       List<ExchangeCategory> selectedExchangeCategories, DDiagram diagram) {
-    Set<DEdge> exchangeCategoryEdgesToRemove = new HashSet<DEdge>(); // exchange
+    Set<DEdge> exchangeCategoryEdgesToRemove = new HashSet<>(); // exchange
     // category
     // edges
     // to
     // remove
-    Set<DEdge> functionalExchangeEdgesToRemove = new HashSet<DEdge>(); // functional
+    Set<DEdge> functionalExchangeEdgesToRemove = new HashSet<>(); // functional
     // exchange
     // edges
     // to
     // remove
-    Set<EdgeTarget> borderedNodesToCheck = new HashSet<EdgeTarget>(); // borderedNodes
+    Set<EdgeTarget> borderedNodesToCheck = new HashSet<>(); // borderedNodes
     // of
     // edges
     // to
     // remove
-    Set<ExchangeCategory> categoryToDisplay = new HashSet<ExchangeCategory>(); // categories
+    Set<ExchangeCategory> categoryToDisplay = new HashSet<>(); // categories
     // to
     // display
-    Set<ExchangeCategory> categoryToHide = new HashSet<ExchangeCategory>(); // categories
+    Set<ExchangeCategory> categoryToHide = new HashSet<>(); // categories
     // to
     // hide
     Set<ExchangeCategory> displayedCategories = getDisplayedExchangeCategoriesInDiagram(diagram);
-    Map<FunctionalExchange, DEdge> functionalExchangesInDiagram = new HashMap<FunctionalExchange, DEdge>(); // functional
+    Map<FunctionalExchange, DEdge> functionalExchangesInDiagram = new HashMap<>(); // functional
     // exchanges
     // in
     // diagram
@@ -862,7 +862,7 @@ public class FaServices {
     }
 
     // avoid double creation of functional exchanges
-    Set<FunctionalExchange> alreadyCreated = new HashSet<FunctionalExchange>();
+    Set<FunctionalExchange> alreadyCreated = new HashSet<>();
 
     // create or show functional exchange views and remove exchange category
     // views
@@ -918,7 +918,7 @@ public class FaServices {
       }
     }
 
-    Map<AbstractFunction, AbstractDNode> allFunctionsInDiagram = new HashMap<AbstractFunction, AbstractDNode>();
+    Map<AbstractFunction, AbstractDNode> allFunctionsInDiagram = new HashMap<>();
 
     // get all displayed functions in the diagram
     for (DDiagramElement aContainer : DiagramServices.getDiagramServices().getDiagramElements(diagram)) {
@@ -1387,7 +1387,7 @@ public class FaServices {
 
   private Set<FunctionalExchange> getAvailableFunctionalExchangesBetweeen2Functions(List<FunctionalExchange> exchanges,
       AbstractFunction sourceFunction, AbstractFunction targetFunction) {
-    Set<FunctionalExchange> returnedSet = new HashSet<FunctionalExchange>();
+    Set<FunctionalExchange> returnedSet = new HashSet<>();
     for (FunctionalExchange anExchange : exchanges) {
       if (EcoreUtil.isAncestor(sourceFunction, anExchange.getSource())
           && EcoreUtil.isAncestor(targetFunction, anExchange.getTarget())) {
@@ -1398,7 +1398,7 @@ public class FaServices {
   }
 
   private Set<ExchangeCategory> getVisibleExchangeCategoriesInDiagram(DDiagram diagram) {
-    Set<ExchangeCategory> returnedList = new HashSet<ExchangeCategory>();
+    Set<ExchangeCategory> returnedList = new HashSet<>();
     for (DEdge anEdge : diagram.getEdges()) {
       if ((anEdge.getTarget() instanceof ExchangeCategory) && (!returnedList.contains(anEdge.getTarget()))
           && (anEdge.isVisible())) {
@@ -1409,7 +1409,7 @@ public class FaServices {
   }
 
   private Set<ExchangeCategory> getDisplayedExchangeCategoriesInDiagram(DDiagram diagram) {
-    Set<ExchangeCategory> returnedList = new HashSet<ExchangeCategory>();
+    Set<ExchangeCategory> returnedList = new HashSet<>();
     for (DEdge anEdge : diagram.getEdges()) {
       if ((anEdge.getTarget() instanceof ExchangeCategory) && (!returnedList.contains(anEdge.getTarget()))) {
         returnedList.add((ExchangeCategory) anEdge.getTarget());
@@ -1427,24 +1427,21 @@ public class FaServices {
    * @return
    */
   public boolean isACategoryDisplayed(EObject o, DSemanticDecorator source, DSemanticDecorator target) {
-    // return false;
-    DSemanticDecorator source_d = source;
-    DSemanticDecorator target_d = target;
 
-    if (((source_d instanceof DNode) && !(DiagramServices.getDiagramServices().isABorderedNode((DNode) source_d)))) {
+    if (((source instanceof DNode) && !(DiagramServices.getDiagramServices().isABorderedNode((DNode) source)))) {
       return false;
     }
-    if (((target_d instanceof DNode) && !(DiagramServices.getDiagramServices().isABorderedNode((DNode) target_d)))) {
+    if (((target instanceof DNode) && !(DiagramServices.getDiagramServices().isABorderedNode((DNode) target)))) {
       return false;
     }
 
-    AbstractDNode sc = (AbstractDNode) source_d;
-    AbstractDNode tc = (AbstractDNode) target_d;
-    if (!(source_d.getTarget() instanceof AbstractFunction)) {
-      sc = (AbstractDNode) source_d.eContainer();
+    AbstractDNode sc = (AbstractDNode) source;
+    AbstractDNode tc = (AbstractDNode) target;
+    if (!(source.getTarget() instanceof AbstractFunction)) {
+      sc = (AbstractDNode) source.eContainer();
     }
-    if (!(target_d.getTarget() instanceof AbstractFunction)) {
-      tc = (AbstractDNode) target_d.eContainer();
+    if (!(target.getTarget() instanceof AbstractFunction)) {
+      tc = (AbstractDNode) target.eContainer();
     }
 
     FunctionalExchange exchange = null;
@@ -1452,7 +1449,7 @@ public class FaServices {
       exchange = (FunctionalExchange) o;
     }
 
-    DDiagram diagram = CapellaServices.getService().getDiagramContainer(source_d);
+    DDiagram diagram = CapellaServices.getService().getDiagramContainer(source);
 
     if (exchange == null) {
       return false;
@@ -1486,8 +1483,8 @@ public class FaServices {
   }
 
   List<DNodeContainer> getOwnedVisibleFunctionContainersInDataFlowBlank(DNodeContainer container, DDiagram diagram) {
-    List<DNodeContainer> returnedList = new ArrayList<DNodeContainer>();
-    Set<AbstractDNode> containers = new HashSet<AbstractDNode>();
+    List<DNodeContainer> returnedList = new ArrayList<>();
+    Set<AbstractDNode> containers = new HashSet<>();
     if (null == container) {
       containers.addAll(diagram.getContainers());
     } else {
@@ -1515,11 +1512,11 @@ public class FaServices {
    * @return the list of containers/nodes (whose target is a Function/ControlNode) displayed in the current view
    */
   public List<AbstractDNode> getDisplayedAbstractFunctionViews(DSemanticDecorator view) {
-    List<AbstractDNode> returnedList = new ArrayList<AbstractDNode>();
+    List<AbstractDNode> returnedList = new ArrayList<>();
     if (view instanceof DDiagram) {
       DDiagram diagram = (DDiagram) view;
       for (AbstractDNode aContainer : diagram.getContainers()) {
-        if ((aContainer.getTarget() != null) && (aContainer.getTarget() instanceof AbstractFunction)) {
+        if (aContainer.getTarget() instanceof AbstractFunction) {
           returnedList.add(aContainer);
         }
       }
@@ -1527,7 +1524,7 @@ public class FaServices {
     if (view instanceof DNodeContainer) {
       DNodeContainer currentContainer = (DNodeContainer) view;
       for (AbstractDNode aContainer : currentContainer.getContainers()) {
-        if ((aContainer.getTarget() != null) && (aContainer.getTarget() instanceof AbstractFunction)) {
+        if (aContainer.getTarget() instanceof AbstractFunction) {
           returnedList.add(aContainer);
         }
       }
@@ -1543,7 +1540,7 @@ public class FaServices {
    * @return the list of Functions/ControlNodes displayed in the current view
    */
   public List<AbstractFunction> getDisplayedAbstractFunctions(DSemanticDecorator view) {
-    List<AbstractFunction> returnedList = new ArrayList<AbstractFunction>();
+    List<AbstractFunction> returnedList = new ArrayList<>();
     for (AbstractDNode aView : getDisplayedAbstractFunctionViews(view)) {
       returnedList.add((AbstractFunction) aView.getTarget());
     }
@@ -1565,7 +1562,7 @@ public class FaServices {
     DSemanticDiagram diagram = (DSemanticDiagram) CapellaServices.getService().getDiagramContainer(view);
     DDiagramContents content = new DDiagramContents(diagram);
 
-    Set<AbstractDNode> toBeRemoved = new HashSet<AbstractDNode>();
+    Set<AbstractDNode> toBeRemoved = new HashSet<>();
 
     for (AbstractDNode aView : visibleFunctionViews) {
       if (!selectedFunctions.contains(aView.getTarget())) {
@@ -1582,7 +1579,7 @@ public class FaServices {
 
     // move borderedNodes Ports if possible
     for (AbstractDNode aView : toBeRemoved) {
-      HashSet<DNode> borderedNodes = new HashSet<DNode>();
+      Set<DNode> borderedNodes = new HashSet<>();
       borderedNodes.addAll(aView.getOwnedBorderedNodes());
       for (DNode aBorderedNode : borderedNodes) {
         if ((aBorderedNode.getTarget() != null)
@@ -1611,7 +1608,7 @@ public class FaServices {
       shService.hide(element.getTarget(), context);
     }
 
-    HashMap<AbstractFunction, AbstractDNode> showHideCategories = new HashMap<AbstractFunction, AbstractDNode>();
+    Map<AbstractFunction, AbstractDNode> showHideCategories = new HashMap<>();
 
     // add views
     for (AbstractFunction aFunction : selectedFunctions) {
@@ -1656,7 +1653,7 @@ public class FaServices {
   }
 
   public void removeAbstractFunctionAbstractCapabilityInvolvement(AbstractCapability capability, EObject target) {
-    Set<AbstractFunctionAbstractCapabilityInvolvement> toRemove = new HashSet<AbstractFunctionAbstractCapabilityInvolvement>();
+    Set<AbstractFunctionAbstractCapabilityInvolvement> toRemove = new HashSet<>();
     for (AbstractFunctionAbstractCapabilityInvolvement inv : capability
         .getOwnedAbstractFunctionAbstractCapabilityInvolvements()) {
       if (inv.getInvolved().equals(target)) {
@@ -1690,7 +1687,7 @@ public class FaServices {
    */
   private void moveBorderedNodeIfPossible(DNode aBorderedNode, Set<AbstractDNode> toBeRemoved, DDiagram diagram) {
     EObject container = aBorderedNode.eContainer();
-    while ((container != null) && (container instanceof DNodeContainer)) {
+    while (container instanceof DNodeContainer) {
       if (!toBeRemoved.contains(container)) {
         boolean canMove = true;
 
@@ -1740,9 +1737,9 @@ public class FaServices {
       List<FunctionalExchange> selectedExchanges) {
     DDiagram currentDiagram = CapellaServices.getService().getDiagramContainer(currentFunctionView);
     DDiagramContents content = getDDiagramContents(currentDiagram);
-    Set<FunctionalExchange> scopeSet = new HashSet<FunctionalExchange>();
+    Set<FunctionalExchange> scopeSet = new HashSet<>();
     scopeSet.addAll(scope);
-    Set<FunctionalExchange> selectedExchangesSet = new HashSet<FunctionalExchange>();
+    Set<FunctionalExchange> selectedExchangesSet = new HashSet<>();
     selectedExchangesSet.addAll(selectedExchanges);
 
     AbstractShowHide shService = new ShowHideFunctionalExchange(content);
@@ -1791,18 +1788,18 @@ public class FaServices {
       Collection<DDiagramElement> targetViews = context.getDiagramElements(targetFunction);
 
       AbstractDNode sourceView = null;
-      if (sourceViews.size() > 0) {
+      if (!sourceViews.isEmpty()) {
         sourceView = (AbstractDNode) sourceViews.iterator().next();
       }
       AbstractDNode targetView = null;
-      if (targetViews.size() > 0) {
+      if (!targetViews.isEmpty()) {
         targetView = (AbstractDNode) targetViews.iterator().next();
       }
 
       // Don't display functional exchange from/to internal exchanges
       if (currentFunctionView != null) {
-        boolean sourceIsChild = (EcoreUtil.isAncestor(((DSemanticDecorator) currentFunctionView).getTarget(), source));
-        boolean targetIsChild = (EcoreUtil.isAncestor(((DSemanticDecorator) currentFunctionView).getTarget(), target));
+        boolean sourceIsChild = (EcoreUtil.isAncestor(currentFunctionView.getTarget(), source));
+        boolean targetIsChild = (EcoreUtil.isAncestor(currentFunctionView.getTarget(), target));
         if (sourceIsChild && targetIsChild) {
           return;
         }
@@ -1820,7 +1817,7 @@ public class FaServices {
 
         if (EcoreUtil.isAncestor(aView, bView)) {
           EObject element = context.getElement(sourceFunction, exchange);
-          if ((element != null) && (element instanceof AbstractFunction)) {
+          if (element instanceof AbstractFunction) {
             if (!context.getDiagramElements(element).contains(sourceContainerView)) {
               sourceContainerView = context.getDDiagram();
             }
@@ -1828,7 +1825,7 @@ public class FaServices {
         }
         if (EcoreUtil.isAncestor(bView, aView)) {
           EObject element = context.getElement(targetFunction, exchange);
-          if ((element != null) && (element instanceof AbstractFunction)) {
+          if (element instanceof AbstractFunction) {
             if (!context.getDiagramElements(element).contains(targetContainerView)) {
               targetContainerView = context.getDDiagram();
             }
@@ -1840,11 +1837,11 @@ public class FaServices {
       // display best parent function of the source
       // (port or OperationalActivity)
       if (sourceView == null) {
-        if ((sourceContainerView != null) && (sourceContainerView instanceof AbstractDNode)) {
+        if (sourceContainerView instanceof AbstractDNode) {
           sourceView = (AbstractDNode) sourceContainerView;
         } else {
           EObject element = context.getElement(sourceFunction, exchange);
-          if ((element != null) && (element instanceof AbstractFunction)) {
+          if (element instanceof AbstractFunction) {
             sourceView = showDFAbstractFunction((AbstractFunction) element, context.getBestContainer(element), context);
           }
         }
@@ -1854,11 +1851,11 @@ public class FaServices {
       // display best parent function of the source
       // (port or OperationalActivity)
       if (targetView == null) {
-        if ((targetContainerView != null) && (targetContainerView instanceof AbstractDNode)) {
+        if (targetContainerView instanceof AbstractDNode) {
           targetView = (AbstractDNode) targetContainerView;
         } else {
           EObject element = context.getElement(targetFunction, exchange);
-          if ((element != null) && (element instanceof AbstractFunction)) {
+          if (element instanceof AbstractFunction) {
             targetView = showDFAbstractFunction((AbstractFunction) element, context.getBestContainer(element), context);
           }
         }
@@ -1920,7 +1917,7 @@ public class FaServices {
   public AbstractDNode showDFAbstractFunction(AbstractFunction function, DragAndDropTarget dContainer, DDiagramContents context) {
     ContainerMapping mapping = (ContainerMapping)context.getMapping(MappingConstantsHelper.getMappingDFFunction(context.getDDiagram()));
     Collection<DDiagramElement> views = context.getDiagramElements(function, mapping);
-    if (views.size() > 0) {
+    if (!views.isEmpty()) {
       return (AbstractDNode) views.iterator().next();
     }
 
@@ -2129,10 +2126,10 @@ public class FaServices {
   public Collection<? extends EObject> getFBDSemanticAbstractFunctions(AbstractFunction root) {
     Collection<? extends AbstractFunction> result = getAllAbstractFunctions(root);
     EObject container = root.eContainer();
-    if ((container != null) && (container instanceof FunctionPkg)) {
+    if (container instanceof FunctionPkg) {
       container = container.eContainer();
       // Remove the root function
-      if ((container != null) && (container instanceof BlockArchitecture)) {
+      if (container instanceof BlockArchitecture) {
         result.remove(root);
       }
     }
@@ -2198,11 +2195,9 @@ public class FaServices {
    */
   public EObject reconnectDFFunctionalExchangeSource(EObject functionalExchange, DSemanticDecorator edge,
       DSemanticDecorator oldNode, DSemanticDecorator newNode) {
-    if (edge instanceof DEdge) {
-      if (functionalExchange instanceof FunctionalExchange) {
+    if (edge instanceof DEdge && functionalExchange instanceof FunctionalExchange) {
         reconnectDFFunctionalExchange((FunctionalExchange) functionalExchange,
             ActivityPackage.Literals.ACTIVITY_EDGE__SOURCE, (DEdge) edge, oldNode, newNode);
-      }
     }
     return functionalExchange;
   }
@@ -2217,11 +2212,9 @@ public class FaServices {
    */
   public EObject reconnectDFFunctionalExchangeTarget(EObject functionalExchange, DSemanticDecorator edge,
       DSemanticDecorator oldNode, DSemanticDecorator newNode) {
-    if (edge instanceof DEdge) {
-      if (functionalExchange instanceof FunctionalExchange) {
+    if (edge instanceof DEdge && functionalExchange instanceof FunctionalExchange) {
         reconnectDFFunctionalExchange((FunctionalExchange) functionalExchange,
             ActivityPackage.Literals.ACTIVITY_EDGE__SOURCE, (DEdge) edge, oldNode, newNode);
-      }
     }
     return functionalExchange;
   }
@@ -2250,7 +2243,7 @@ public class FaServices {
       fe.setTarget(target);
     }
     EObject commonAncestor = CapellaServices.getService().getCommonAncestor(fe.getSource(), fe.getTarget());
-    if ((commonAncestor != null) && (commonAncestor instanceof AbstractFunction)
+    if (commonAncestor instanceof AbstractFunction
         && (!commonAncestor.equals(fe.eContainer()))) {
       ((AbstractFunction) commonAncestor).getOwnedFunctionalExchanges().add(fe);
     }
@@ -2260,9 +2253,9 @@ public class FaServices {
   public boolean isFunctionalExchangeReconnectable(FunctionalExchange fe, DDiagram diagram, EObject source,
       EObject target) {
 
-    Set<FunctionalChain> visibleFC = new HashSet<FunctionalChain>();
+    Set<FunctionalChain> visibleFC = new HashSet<>();
     for (DNode aNode : diagram.getNodes()) {
-      if ((aNode.getTarget() != null) && (aNode.getTarget() instanceof FunctionalChain)) {
+      if (aNode.getTarget() instanceof FunctionalChain) {
         visibleFC.add((FunctionalChain) aNode.getTarget());
       }
     }
@@ -2357,7 +2350,7 @@ public class FaServices {
     else if ((oldContainer instanceof Role) && (newComponent != null)) {
       Role oldRole = (Role) oldContainer;
       // remove activity allocation toward function
-      List<ActivityAllocation> removeAllocationLink = new ArrayList<ActivityAllocation>();
+      List<ActivityAllocation> removeAllocationLink = new ArrayList<>();
       EList<ActivityAllocation> allocations = oldRole.getActivityAllocations();
       for (ActivityAllocation activityAllocation : allocations) {
         OperationalActivity activity = activityAllocation.getActivity();
@@ -2375,7 +2368,7 @@ public class FaServices {
     else if ((oldComponent != null) && (newContainer instanceof Role)) {
       Role newRole = (Role) newContainer;
       // remove Component Functional Allocation toward function
-      List<ComponentFunctionalAllocation> removeAllocationLink = new ArrayList<ComponentFunctionalAllocation>();
+      List<ComponentFunctionalAllocation> removeAllocationLink = new ArrayList<>();
       EList<ComponentFunctionalAllocation> allocations = oldComponent.getOwnedFunctionalAllocation();
       for (ComponentFunctionalAllocation activityAllocation : allocations) {
         AbstractFunction fct = activityAllocation.getFunction();
@@ -2402,7 +2395,7 @@ public class FaServices {
 
   private void removeUseLessPortRealizationAndComponentExchangeAllocation(AbstractFunction function,
       Collection<AbstractFunction> functions) {
-    Collection<FunctionalExchange> functionalExchanges = new HashSet<FunctionalExchange>();
+    Collection<FunctionalExchange> functionalExchanges = new HashSet<>();
     for (AbstractFunction fct : functions) {
       // Find all PortRealization and component exchanges to be deleted
       for (Port port : FunctionExt.getOwnedFunctionPorts(fct)) {
@@ -2417,7 +2410,7 @@ public class FaServices {
   }
 
   private void removeComponentExchangeAllocations(Collection<FunctionalExchange> functionalExchanges) {
-    Collection<ComponentExchangeFunctionalExchangeAllocation> allocations = new HashSet<ComponentExchangeFunctionalExchangeAllocation>();
+    Collection<ComponentExchangeFunctionalExchangeAllocation> allocations = new HashSet<>();
 
     // Remove components exchanges realizing the functional exchanges
     for (FunctionalExchange exchange : functionalExchanges) {
@@ -2468,9 +2461,9 @@ public class FaServices {
     AbstractFunction function = (AbstractFunction) functionView.getTarget();
     for (FunctionalExchange anExchange : getAvailableFunctionalExchangesToInsert(functionView)) {
       AbstractFunction targetFunction = null;
-      if (EcoreUtil.isAncestor(function, anExchange.getSource())) {
+      if (EcoreUtil.isAncestor(function, anExchange.getSource()) && anExchange.getTarget().eContainer() instanceof AbstractFunction) {
         targetFunction = (AbstractFunction) anExchange.getTarget().eContainer();
-      } else {
+      } else if(anExchange.getSource().eContainer() instanceof AbstractFunction){
         targetFunction = (AbstractFunction) anExchange.getSource().eContainer();
       }
       DNodeContainer visibleFunctionInDiagram = getDisplayedFunctionContainer(targetFunction,
@@ -2494,8 +2487,8 @@ public class FaServices {
 
   public HashMapSet<ExchangeCategory, AbstractFunction> getCategoriesAndFunctionsInitialSelectionInDataFlowBlank(
       DNodeContainer functionView, DDiagramContents content) {
-    HashMapSet<ExchangeCategory, AbstractFunction> returnedMap = new HashMapSet<ExchangeCategory, AbstractFunction>();
-    List<DNodeContainer> functionContainersInDiagram = new ArrayList<DNodeContainer>();
+    HashMapSet<ExchangeCategory, AbstractFunction> returnedMap = new HashMapSet<>();
+    List<DNodeContainer> functionContainersInDiagram = new ArrayList<>();
 
     for (DDiagramElement element : DiagramServices.getDiagramServices().getDiagramElements(content.getDDiagram())) { // TODO
       // We
@@ -2509,7 +2502,7 @@ public class FaServices {
       // S/H
       if (element instanceof AbstractDNode) {
         AbstractDNode aContainer = (AbstractDNode) element;
-        if ((aContainer.getTarget() != null) && (aContainer.getTarget() instanceof AbstractFunction)
+        if (aContainer.getTarget() instanceof AbstractFunction
             && (aContainer instanceof DNodeContainer)) {
           functionContainersInDiagram.add((DNodeContainer) aContainer);
         }
@@ -2517,7 +2510,7 @@ public class FaServices {
     }
 
     for (DNode aBorderedNode : functionView.getOwnedBorderedNodes()) {
-      if ((aBorderedNode.getTarget() != null) && (aBorderedNode.getTarget() instanceof ExchangeCategory)) {
+      if (aBorderedNode.getTarget() instanceof ExchangeCategory) {
         ExchangeCategory aCategory = (ExchangeCategory) aBorderedNode.getTarget();
         for (DEdge anEdge : DiagramServices.getDiagramServices().getIncomingEdges(aBorderedNode, content.getDDiagram())) {
           if (anEdge.isVisible()) {
@@ -2593,10 +2586,10 @@ public class FaServices {
    */
   public ActivityNode getRelatedActivityNode(DSemanticDecorator sourceView) {
     if (sourceView != null) {
-      if ((sourceView.getTarget() != null) && (sourceView.getTarget() instanceof ActivityNode)) {
+      if (sourceView.getTarget() instanceof ActivityNode) {
         return (ActivityNode) sourceView.getTarget();
       }
-      if ((sourceView.eContainer() != null) && (sourceView.eContainer() instanceof DSemanticDecorator)) {
+      if (sourceView.eContainer() instanceof DSemanticDecorator) {
         return getRelatedActivityNode((DSemanticDecorator) sourceView.eContainer());
       }
     }
@@ -2798,20 +2791,16 @@ public class FaServices {
 
     if (sourcePart == null) {
       EObject sourceComponent = CsServices.getService().getComponentType(sourceView);
-      if ((sourceComponent != null) && (sourceComponent instanceof Component)) {
-        if ((((Component) sourceComponent).getRepresentingPartitions().size() > 0)
-            && (((Component) sourceComponent).getRepresentingPartitions().get(0) instanceof Part)) {
+      if (sourceComponent instanceof Component && !((Component) sourceComponent).getRepresentingPartitions().isEmpty()
+              && (((Component) sourceComponent).getRepresentingPartitions().get(0) instanceof Part)) {
           sourcePart = (Part) ((Component) sourceComponent).getRepresentingPartitions().get(0);
-        }
       }
     }
     if (targetPart == null) {
       EObject targetComponent = CsServices.getService().getComponentType(targetView);
-      if ((targetComponent != null) && (targetComponent instanceof Component)) {
-        if ((((Component) targetComponent).getRepresentingPartitions().size() > 0)
-            && (((Component) targetComponent).getRepresentingPartitions().get(0) instanceof Part)) {
+      if (targetComponent instanceof Component && !((Component) targetComponent).getRepresentingPartitions().isEmpty()
+              && (((Component) targetComponent).getRepresentingPartitions().get(0) instanceof Part)) {
           targetPart = (Part) ((Component) targetComponent).getRepresentingPartitions().get(0);
-        }
       }
     }
     if ((sourcePart == null) || (targetPart == null)) {
@@ -2924,12 +2913,12 @@ public class FaServices {
     InformationsExchanger targetPart = CsServices.getService().getRelatedPart(targetView);
 
     ComponentPort sourcePort = null;
-    if ((sourceView.getTarget() != null) && (sourceView.getTarget() instanceof ComponentPort)) {
+    if (sourceView.getTarget() instanceof ComponentPort) {
       sourcePort = (ComponentPort) sourceView.getTarget();
     }
 
     ComponentPort targetPort = null;
-    if ((targetView.getTarget() != null) && (targetView.getTarget() instanceof ComponentPort)) {
+    if (targetView.getTarget() instanceof ComponentPort) {
       targetPort = (ComponentPort) targetView.getTarget();
     }
 
@@ -2944,7 +2933,7 @@ public class FaServices {
   }
 
   public Collection<ComponentExchange> getRelatedComponentExchanges(NamedElement componentOrPart) {
-    Collection<ComponentExchange> relatedExchanges = new ArrayList<ComponentExchange>();
+    Collection<ComponentExchange> relatedExchanges = new ArrayList<>();
 
     // Retrieve all related component exchanges
     if (componentOrPart instanceof Component) {
@@ -2952,7 +2941,7 @@ public class FaServices {
 
     } else if (componentOrPart instanceof Part) {
       Part part = (Part) componentOrPart;
-      if ((part.getAbstractType() != null) && (part.getAbstractType() instanceof Component)) {
+      if (part.getAbstractType() instanceof Component) {
         Component component = (Component) ((Part) componentOrPart).getAbstractType();
 
         if (CsServices.getService().isMultipartMode(componentOrPart)) {
@@ -2979,13 +2968,13 @@ public class FaServices {
 
     // remove all delegation links
     // remove all incoming traceLinks from PhysicalLink
-    Collection<ModelElement> elements = new HashSet<ModelElement>();
+    Collection<ModelElement> elements = new HashSet<>();
     for (ComponentExchange connection : relatedExchanges) {
       // remove the tract link coming from physicaLink [specific]
       EList<AbstractTrace> incomingTraces = connection.getIncomingTraces();
       for (AbstractTrace abstractTrace : incomingTraces) {
         TraceableElement sourceElement = abstractTrace.getSourceElement();
-        if ((null != sourceElement) && (sourceElement instanceof PhysicalLink)) {
+        if (sourceElement instanceof PhysicalLink) {
           // remove the tractLink
           elements.add(abstractTrace);
         }
@@ -3048,7 +3037,7 @@ public class FaServices {
    */
   EObject removeUselessPortRealizations(Port port, boolean includeFunctionalRealization,
       boolean includeComponentRealization, boolean topDelegation, boolean bottomDelegation) {
-    Collection<EObject> elements = new HashSet<EObject>();
+    Collection<EObject> elements = new HashSet<>();
 
     if (port instanceof ComponentPort) {
       // Retrieve delegation to delete, according to parameters
@@ -3073,7 +3062,7 @@ public class FaServices {
       }
     }
 
-    Collection<Allocation> allocations = new HashSet<Allocation>();
+    Collection<Allocation> allocations = new HashSet<>();
     allocations.addAll(port.getIncomingPortAllocations());
     allocations.addAll(port.getOutgoingPortAllocations());
     allocations.addAll(port.getIncomingPortRealizations());
@@ -3226,10 +3215,8 @@ public class FaServices {
    */
   protected void moveFunctionalExchange(FunctionalExchange exchange) {
     EObject ancestor = CapellaServices.getService().getCommonAncestor(exchange.getSource(), exchange.getTarget());
-    if (ancestor != exchange.eContainer()) {
-      if (ancestor instanceof AbstractFunction) {
+    if (ancestor != exchange.eContainer() && ancestor instanceof AbstractFunction) {
         ((AbstractFunction) ancestor).getOwnedFunctionalExchanges().add(exchange);
-      }
     }
   }
 
@@ -3269,7 +3256,7 @@ public class FaServices {
    */
   protected void updateExchanges(PhysicalPort port, Part oldPart, Part newPart) {
     for (PhysicalLink exchange : PhysicalLinkExt.getAllRelatedPhysicalLinks(port)) {
-      if (exchange.getOwnedPhysicalLinkEnds().size() > 0) {
+      if (!exchange.getOwnedPhysicalLinkEnds().isEmpty()) {
         for (PhysicalLinkEnd anEnd : exchange.getOwnedPhysicalLinkEnds()) {
           if (anEnd.getPort().equals(port) && anEnd.getPart().equals(oldPart)) {
             anEnd.setPart(newPart);
@@ -3306,7 +3293,7 @@ public class FaServices {
    */
   protected void updateComponentExchanges(ComponentPort port, Part oldPart, Part newPart) {
     for (ComponentExchange exchange : port.getComponentExchanges()) {
-      if (exchange.getOwnedComponentExchangeEnds().size() > 0) {
+      if (!exchange.getOwnedComponentExchangeEnds().isEmpty()) {
         for (ComponentExchangeEnd anEnd : exchange.getOwnedComponentExchangeEnds()) {
           if ((anEnd.getPort() != null) && anEnd.getPort().equals(port) && (anEnd.getPart() != null)
               && anEnd.getPart().equals(oldPart)) {
@@ -3332,7 +3319,7 @@ public class FaServices {
    */
   protected void moveFunctionalExchanges(FunctionPort port) {
     List<ActivityEdge> edges;
-    List<FunctionalExchange> functionalExchanges = new ArrayList<FunctionalExchange>();
+    List<FunctionalExchange> functionalExchanges = new ArrayList<>();
 
     if (port instanceof FunctionInputPort) {
       edges = ((FunctionInputPort) port).getIncoming();
@@ -3417,7 +3404,7 @@ public class FaServices {
    * @return the functional exchanges
    */
   protected Collection<FunctionalExchange> getFunctionalExchanges(Port port) {
-    Collection<FunctionalExchange> exchanges = new HashSet<FunctionalExchange>();
+    Collection<FunctionalExchange> exchanges = new HashSet<>();
 
     if (port instanceof ComponentPort) {
       exchanges = FunctionalExt.getFunctionalExchanges((ComponentPort) port);
@@ -3565,16 +3552,16 @@ public class FaServices {
       this.container = container;
       this.parent = parent;
       function = (AbstractFunction) container.getTarget();
-      incomingExchangeCategories = new HashMap<ExchangeCategory, DNode>();
-      outgoingExchangeCategories = new HashMap<ExchangeCategory, DNode>();
-      functionPorts = new HashMap<FunctionPort, DNode>();
-      categoryNodesToRemove = new HashSet<DNode>();
+      incomingExchangeCategories = new HashMap<>();
+      outgoingExchangeCategories = new HashMap<>();
+      functionPorts = new HashMap<>();
+      categoryNodesToRemove = new HashSet<>();
 
       String outputMappingName = MappingConstantsHelper.getMappingFunctionalExchangeCategoryOutputPin(diagram);
       String inputMappingName = MappingConstantsHelper.getMappingFunctionalExchangeCategoryInputPin(diagram);
      
       for (DNode aNode : container.getOwnedBorderedNodes()) {
-        if ((aNode.getTarget() != null) && (aNode.getTarget() instanceof FunctionPort)) {
+        if (aNode.getTarget() instanceof FunctionPort) {
           functionPorts.put((FunctionPort) aNode.getTarget(), aNode);
         }
         if ((aNode.getTarget() != null) && (aNode.getActualMapping().getName().equals(inputMappingName))) {
@@ -3663,7 +3650,7 @@ public class FaServices {
     }
 
     public Set<DNode> getCategoryNodes() {
-      Set<DNode> nodes = new HashSet<DNode>();
+      Set<DNode> nodes = new HashSet<>();
 
       nodes.addAll(getIncomingExchangeCategories().values());
       nodes.addAll(getOutgoingExchangeCategories().values());
@@ -3678,8 +3665,8 @@ public class FaServices {
     }
 
     public void setIncomingOutgoingExchangeCategories(DDiagram diagram) {
-      this.incomingExchangeCategories = new HashMap<ExchangeCategory, DNode>();
-      this.outgoingExchangeCategories = new HashMap<ExchangeCategory, DNode>();
+      this.incomingExchangeCategories = new HashMap<>();
+      this.outgoingExchangeCategories = new HashMap<>();
       
       String outputMappingName = MappingConstantsHelper.getMappingFunctionalExchangeCategoryOutputPin(diagram);
       String inputMappingName = MappingConstantsHelper.getMappingFunctionalExchangeCategoryInputPin(diagram);
@@ -3707,19 +3694,19 @@ public class FaServices {
    * @see org.eclipse.sirius.business.api.refresh.IRefreshExtension#beforeRefresh(org.eclipse.sirius.DDiagram)
    */
   public void reorderFAElements(DDiagram diagram) {
-    Hashtable<EObject, DDiagramElement> elementsInDiagram = new Hashtable<EObject, DDiagramElement>(); // all
+    Hashtable<EObject, DDiagramElement> elementsInDiagram = new Hashtable<>(); // all
     // displayed
     // elements
     // in
     // the
     // diagram
-    Set<DDiagramElement> toBeMoved = new HashSet<DDiagramElement>(); // diagram
+    Set<DDiagramElement> toBeMoved = new HashSet<>(); // diagram
     // elements
     // to
     // be
     // moved
-    Set<FunctionPort> functionPortsInDiagram = new HashSet<FunctionPort>();
-    Map<AbstractFunction, AbstractDNode> allFunctionsInDiagram = new HashMap<AbstractFunction, AbstractDNode>();
+    Set<FunctionPort> functionPortsInDiagram = new HashSet<>();
+    Map<AbstractFunction, AbstractDNode> allFunctionsInDiagram = new HashMap<>();
     DDiagramContents content = new DDiagramContents(diagram);
 
     // get all displayed functions in the diagram
@@ -3775,7 +3762,7 @@ public class FaServices {
       while ((parent instanceof AbstractFunction) || (parent instanceof FunctionPkg)) {
         // test if a parent of the function appears in the diagram
         DDiagramElement parentGraphicalElement = elementsInDiagram.get(parent);
-        if ((null != parentGraphicalElement) && (parentGraphicalElement instanceof DNodeContainer)
+        if (parentGraphicalElement instanceof DNodeContainer
             && CapellaServices.getService().isVisibleInDiagram(diagram, parentGraphicalElement)
             && canContainSubContainer(parentGraphicalElement)) {
           DNodeContainer nodeContainer = (DNodeContainer) parentGraphicalElement;
@@ -3803,7 +3790,7 @@ public class FaServices {
       EObject parent = anElement.getTarget().eContainer();
       while ((parent instanceof AbstractFunction) || (parent instanceof FunctionPkg)) {
         DDiagramElement parentGraphicalElement = elementsInDiagram.get(parent);
-        if ((null != parentGraphicalElement) && (parentGraphicalElement instanceof DNodeContainer)) {
+        if (parentGraphicalElement instanceof DNodeContainer) {
           DNodeContainer nodeContainer = (DNodeContainer) parentGraphicalElement;
           if (!nodeContainer.getOwnedDiagramElements().contains(anElement)) {
             nodeContainer.getOwnedDiagramElements().add(anElement);
@@ -3814,7 +3801,7 @@ public class FaServices {
       }
     }
 
-    Set<DNodeContainer> ownedVisibleFunctionContainers = new HashSet<DNodeContainer>();
+    Set<DNodeContainer> ownedVisibleFunctionContainers = new HashSet<>();
     for (DDiagramElement anElement : diagram.getOwnedDiagramElements()) {
       if ((anElement instanceof DNodeContainer) && (anElement.getTarget() instanceof AbstractFunction)
           && (FaServices.getFaServices().isAbstractFunctionVisibleInDFB((DNodeContainer) anElement, diagram))) {
@@ -3989,10 +3976,10 @@ public class FaServices {
    */
   public void moveUpBorderedNodes(DNodeContainer container, DDiagram diagram, FunctionContainer parentContainer) {
 
-    Set<DDiagramElement> ownedDiagramElements = new HashSet<DDiagramElement>();
+    Set<DDiagramElement> ownedDiagramElements = new HashSet<>();
     ownedDiagramElements.addAll(container.getOwnedDiagramElements());
 
-    Set<DNode> ownedBorderedNodes = new HashSet<DNode>();
+    Set<DNode> ownedBorderedNodes = new HashSet<>();
     ownedBorderedNodes.addAll(container.getOwnedBorderedNodes());
     
     String outputMappingName = MappingConstantsHelper.getMappingFunctionalExchangeCategoryOutputPin(diagram);
@@ -4000,7 +3987,7 @@ public class FaServices {
     
     // move up controlNodes as Ports and function ports
     for (DNode aBorderedNode : ownedBorderedNodes) {
-      if ((aBorderedNode.getTarget() != null) && (aBorderedNode.getTarget() instanceof FunctionPort)
+      if (aBorderedNode.getTarget() instanceof FunctionPort
           && CapellaServices.getService().isVisibleInDiagram(diagram, aBorderedNode)
           && !CapellaServices.getService().isSynchronized(diagram)) {
         if (parentContainer.getFunctionPorts().containsKey(aBorderedNode.getTarget())) {
@@ -4014,7 +4001,7 @@ public class FaServices {
           parentContainer.getFunctionPorts().put((FunctionPort) aBorderedNode.getTarget(), aBorderedNode);
         }
       }
-      if ((aBorderedNode.getTarget() != null) && (aBorderedNode.getTarget() instanceof ExchangeCategory)
+      if (aBorderedNode.getTarget() instanceof ExchangeCategory
           && CapellaServices.getService().isVisibleInDiagram(diagram, aBorderedNode)) {
         if (aBorderedNode.getActualMapping().getName().equals(inputMappingName)) {
           if (!parentContainer.getIncomingExchangeCategories().containsKey(aBorderedNode.getTarget())) {
@@ -4055,7 +4042,7 @@ public class FaServices {
   protected AbstractFunction getBestPortFunctionContainer(ActivityNode port, AbstractFunction function1,
       AbstractFunction function2) {
     EObject container = port.eContainer();
-    while ((container != null) && (container instanceof AbstractFunction)) {
+    while (container instanceof AbstractFunction) {
       if (container.equals(function1)) {
         return function1;
       }
@@ -4078,8 +4065,8 @@ public class FaServices {
    *          the current diagram
    */
   protected void removeNodeAndMoveEdges(DNode toBeRemoved, DNode existingChildNode, DDiagram diagram) {
-    Set<DEdge> incomingExchanges = new HashSet<DEdge>();
-    Set<DEdge> outgoingExchanges = new HashSet<DEdge>();
+    Set<DEdge> incomingExchanges = new HashSet<>();
+    Set<DEdge> outgoingExchanges = new HashSet<>();
     incomingExchanges.addAll(DiagramServices.getDiagramServices().getIncomingEdges(existingChildNode, diagram));
     outgoingExchanges.addAll(DiagramServices.getDiagramServices().getOutgoingEdges(existingChildNode, diagram));
 
@@ -4129,7 +4116,7 @@ public class FaServices {
       return null;
     }
     EObject functionContainer = port.eContainer();
-    while ((functionContainer != null) && (functionContainer instanceof AbstractFunction)) {
+    while (functionContainer instanceof AbstractFunction) {
       if (functions.containsKey(functionContainer)) {
         return functions.get(functionContainer);
       }
@@ -4158,7 +4145,7 @@ public class FaServices {
   public List<AbstractFunction> getShowableAllocatedFunctions(EObject componentOrPart, DNodeContainer containerView) {
 
     // showable functions are:
-    List<AbstractFunction> showableFunctions = new ArrayList<AbstractFunction>();
+    List<AbstractFunction> showableFunctions = new ArrayList<>();
 
     if (componentOrPart instanceof Part) {
       // - allocated functions of this components
@@ -4180,7 +4167,7 @@ public class FaServices {
 
   protected Set<AbstractFunction> getLeavesFunctionsOfSubComponentsNotDisplayed(EObject componentOrPart,
       DNodeContainer containerView) {
-    Set<AbstractFunction> leaveFunctions = new HashSet<AbstractFunction>();
+    Set<AbstractFunction> leaveFunctions = new HashSet<>();
 
     // Retrieve all allocated functions of this component or entities (including roles)
     if (componentOrPart instanceof Part && ((Part) componentOrPart).getAbstractType() != null) {
@@ -4200,7 +4187,7 @@ public class FaServices {
     }
 
     // Add leaves of sub components only if it is not displayed, recursively
-    Set<EObject> subComponents = new HashSet<EObject>();
+    Set<EObject> subComponents = new HashSet<>();
     if (componentOrPart instanceof Component) {
       subComponents.addAll(ComponentExt.getSubUsedComponents((Component) componentOrPart));
 
@@ -4255,11 +4242,11 @@ public class FaServices {
   }
 
   public EObject insertRemoveAllocatedFunctions(DNodeContainer containerView, List<AbstractFunction> selectedFunctions) {
-    HashMap<AbstractFunction, DNode> visibleFunctions = new HashMap<AbstractFunction, DNode>();
+    HashMap<AbstractFunction, DNode> visibleFunctions = new HashMap<>();
 
     for (DDiagramElement aElement : containerView.getOwnedDiagramElements()) {
-      if ((aElement.getTarget() != null) && (aElement.getTarget() instanceof AbstractFunction)
-          && (aElement instanceof DNode)) {
+      if (aElement.getTarget() instanceof AbstractFunction
+          && aElement instanceof DNode) {
         visibleFunctions.put((AbstractFunction) aElement.getTarget(), (DNode) aElement);
       }
     }
@@ -4306,7 +4293,7 @@ public class FaServices {
       return allAbstractFunctions;
     }
 
-    return new ArrayList<AbstractFunction>(0);
+    return new ArrayList<>(0);
   }
 
   public List<AbstractFunction> getAllLeafFunctions(ModellingBlock block) {
@@ -4318,7 +4305,7 @@ public class FaServices {
    * Return all the recursive functions from given Block Architecture
    */
   public List<FunctionalChain> getAllFunctionalChains(BlockArchitecture blockArchitecture) {
-    List<FunctionalChain> functionalChains = new ArrayList<FunctionalChain>(0);
+    List<FunctionalChain> functionalChains = new ArrayList<>(0);
 
     // collect all functions
     List<AbstractFunction> allAbstractFunctions = FunctionExt.getAllAbstractFunctions(blockArchitecture);
@@ -4368,7 +4355,7 @@ public class FaServices {
     }
 
     // Collect all physical artifacts
-    List<CapellaElement> physicalArtifacts = new ArrayList<CapellaElement>(0);
+    List<CapellaElement> physicalArtifacts = new ArrayList<>(0);
     List<PhysicalComponent> allPhysicalComponents = PhysicalArchitectureExt
         .getAllPhysicalComponents((PhysicalArchitecture) arch);
     for (PhysicalComponent physicalComponent : allPhysicalComponents) {
@@ -4384,7 +4371,7 @@ public class FaServices {
 
     if (oldContainer instanceof Part) {
       EObject componentType = CsServices.getService().getComponentType((Part) oldContainer);
-      if ((componentType != null) && (componentType instanceof ConfigurationItem)) {
+      if (componentType instanceof ConfigurationItem) {
         oldComponent = (ConfigurationItem) componentType;
       }
     } else if (oldContainer instanceof ConfigurationItem) {
@@ -4393,7 +4380,7 @@ public class FaServices {
 
     if (newContainer instanceof Part) {
       EObject componentType = CsServices.getService().getComponentType((Part) newContainer);
-      if ((componentType != null) && (componentType instanceof ConfigurationItem)) {
+      if (componentType instanceof ConfigurationItem) {
         newComponent = (ConfigurationItem) componentType;
       }
     } else if (newContainer instanceof ConfigurationItem) {
@@ -4405,7 +4392,7 @@ public class FaServices {
       EList<PhysicalArtifactRealization> oldArtifactRealizations = oldComponent.getOwnedPhysicalArtifactRealizations();
       EList<PhysicalArtifactRealization> newArtifactRealizations = newComponent.getOwnedPhysicalArtifactRealizations();
       // list of target artifacts in newConatiner
-      List<TraceableElement> newArtifactRealizationsTarget = new ArrayList<TraceableElement>();
+      List<TraceableElement> newArtifactRealizationsTarget = new ArrayList<>();
       for (PhysicalArtifactRealization artifactRealization : newArtifactRealizations) {
         TraceableElement targetElement = artifactRealization.getTargetElement();
         if ((null != targetElement)) {
@@ -4460,7 +4447,7 @@ public class FaServices {
     StringBuilder result = new StringBuilder();
 
     if (showFunctionalExchangeName) {
-      ArrayList<FunctionalExchange> fes = new ArrayList<FunctionalExchange>();
+      ArrayList<FunctionalExchange> fes = new ArrayList<>();
       for (ComponentExchangeFunctionalExchangeAllocation allocation : exchange
           .getOutgoingComponentExchangeFunctionalExchangeAllocations()) {
         if ((allocation.getAllocatedFunctionalExchange() != null)
@@ -4479,7 +4466,7 @@ public class FaServices {
           }
         }
       }
-      if (fes.size() == 0) {
+      if (fes.isEmpty()) {
         List<AbstractExchangeItem> exchangedItems = getRelatedExchangeItems(exchange, false);
         getExchangeWithExchangeItemsLabel(exchange, false, (!showExchangeItems && !showExchangeItemsWithOutFE)
             || exchangedItems.isEmpty(), showExchangeItems, showExchangeItemsWithOutFE, result, exchangedItems);
@@ -4487,7 +4474,7 @@ public class FaServices {
 
     } else {
       // create unique list
-      List<AbstractExchangeItem> exchangedItems = new UniqueEList<AbstractExchangeItem>(0);
+      List<AbstractExchangeItem> exchangedItems = new UniqueEList<>(0);
       // showExchangeItems
       if (showExchangeItems) {
         exchangedItems.addAll(getRelatedExchangeItems(exchange, true));
@@ -4563,7 +4550,7 @@ public class FaServices {
       }
       if (showExchangeItems || showExchangeItemsParameters) {
         List<? extends AbstractExchangeItem> selectEIList = exchange.getExchangedItems();
-        if (selectEIList.size() != 0) {
+        if (!selectEIList.isEmpty()) {
           result.append("["); //$NON-NLS-1$
         }
         for (AbstractExchangeItem ei : selectEIList) {
@@ -4573,7 +4560,7 @@ public class FaServices {
             result.append(", "); //$NON-NLS-1$
           }
         }
-        if (selectEIList.size() != 0) {
+        if (!selectEIList.isEmpty()) {
           result.append("]"); //$NON-NLS-1$
         }
       }
@@ -4606,7 +4593,7 @@ public class FaServices {
     } else {
       result.append("("); //$NON-NLS-1$
       // looking for information
-      List<ExchangeItemElement> eies = new ArrayList<ExchangeItemElement>();
+      List<ExchangeItemElement> eies = new ArrayList<>();
       for (AbstractExchangeItem aei : selectEIList) {
         if (aei instanceof ExchangeItem) {
           ExchangeItem ei = (ExchangeItem) aei;
@@ -4657,7 +4644,7 @@ public class FaServices {
 
   private List<AbstractExchangeItem> getRelatedExchangeItems(ComponentExchange exchange, boolean inDepth) {
     // exchangeItems
-    List<AbstractExchangeItem> exchangedItems = new ArrayList<AbstractExchangeItem>();
+    List<AbstractExchangeItem> exchangedItems = new ArrayList<>();
     exchangedItems.addAll(exchange.getConvoyedInformations());
     if (inDepth) {
       for (ComponentExchangeFunctionalExchangeAllocation allocation : exchange
@@ -4678,10 +4665,10 @@ public class FaServices {
 
   private List<AbstractExchangeItem> getRelatedExchangeItems(FunctionalExchange exchange) {
     // exchangeItems
-    List<AbstractExchangeItem> exchangedItems = new ArrayList<AbstractExchangeItem>();
+    List<AbstractExchangeItem> exchangedItems = new ArrayList<>();
 
     exchangedItems.addAll(exchange.getExchangedItems());
-    if (exchangedItems.size() == 0) {
+    if (exchangedItems.isEmpty()) {
       for (CapellaElement capellaElement : AbstractFunctionExt.getExchangeSourceAndTargetPorts(exchange)) {
         if (capellaElement instanceof FunctionInputPort) {
           FunctionInputPort inPutPort = (FunctionInputPort) capellaElement;
@@ -4714,7 +4701,7 @@ public class FaServices {
     }
 
     if (showExchangeItems || showExchangeItemsWithOutFE) {
-      if (showName && (exchangedItems.size() > 0)) {
+      if (showName && !exchangedItems.isEmpty()) {
         result.append(" ("); //$NON-NLS-1$
       }
       for (AbstractExchangeItem ei : exchangedItems) {
@@ -4724,7 +4711,7 @@ public class FaServices {
           result.append(", "); //$NON-NLS-1$
         }
       }
-      if (showName && (exchangedItems.size() > 0)) {
+      if (showName && !exchangedItems.isEmpty()) {
         result.append(")"); //$NON-NLS-1$
       }
     }
@@ -4818,11 +4805,11 @@ public class FaServices {
    * @param contextualElements
    */
   public void showDFContextualElements(DDiagramContents diagramContent, Collection<EObject> contextualElements) {
-    Collection<AbstractFunction> contextualFunctions = new HashSet<AbstractFunction>();
-    Collection<FunctionalExchange> contextualFunctionalExchanges = new HashSet<FunctionalExchange>();
-    Collection<EObject> contextualFunctionalChains = new HashSet<EObject>();
-    Collection<EObject> contextualModes = new HashSet<EObject>();
-    Collection<EObject> contextualScenarios = new HashSet<EObject>();
+    Collection<AbstractFunction> contextualFunctions = new HashSet<>();
+    Collection<FunctionalExchange> contextualFunctionalExchanges = new HashSet<>();
+    Collection<EObject> contextualFunctionalChains = new HashSet<>();
+    Collection<EObject> contextualModes = new HashSet<>();
+    Collection<EObject> contextualScenarios = new HashSet<>();
 
     for (EObject contextualElement : contextualElements) {
       if (contextualElement instanceof AbstractFunction) {
@@ -5024,7 +5011,7 @@ public class FaServices {
     // The manual refresh of the diagram does not take into account the
     // EmptySting
     String centerLabel = Character.toString(ICommonConstants.WHITE_SPACE_CHARACTER);
-    if ((null != exchange) && (exchange instanceof FunctionalExchange)) {
+    if (exchange instanceof FunctionalExchange) {
       FunctionalExchange fe = (FunctionalExchange) exchange;
       if (!isHideFunctionalExchangesNamesEnable(exchange, diagram)) {
         return fe.getName();
@@ -5038,7 +5025,7 @@ public class FaServices {
     // The manual refresh of the diagram does not take into account the
     // EmptySting
     String centerLabel = Character.toString(ICommonConstants.WHITE_SPACE_CHARACTER);
-    if ((null != exchange) && (exchange instanceof PhysicalLink)) {
+    if (exchange instanceof PhysicalLink) {
       PhysicalLink pl = (PhysicalLink) exchange;
       if (!isHidePhysicalLinksNamesEnable(exchange, diagram)) {
         return EObjectExt.getText(pl);
@@ -5224,10 +5211,8 @@ public class FaServices {
       }
       // Else, return its best container
       DragAndDropTarget node = content.getBestContainer(abstractFunction);
-      if (abstractFunction instanceof AbstractFunction) {
-        if (node instanceof DDiagram) {
-          return null;
-        }
+      if (abstractFunction instanceof AbstractFunction && node instanceof DDiagram) {
+        return null;
       }
       if ((node instanceof DSemanticDecorator) && (!(node instanceof DDiagram))) {
         return ((DSemanticDecorator) node).getTarget();
@@ -5244,9 +5229,9 @@ public class FaServices {
    * @return
    */
   public HashMapSet<EObject, EObject> getShowHideFECategoriesScope(DSemanticDecorator context) {
-    HashMapSet<EObject, EObject> result = new HashMapSet<EObject, EObject>();
+    HashMapSet<EObject, EObject> result = new HashMapSet<>();
     EObject abstractFunction = context.getTarget();
-    if ((abstractFunction != null) && (abstractFunction instanceof AbstractFunction)) {
+    if (abstractFunction instanceof AbstractFunction) {
       for (FunctionalExchange fe : FunctionExt.getOutGoingExchange((AbstractFunction) abstractFunction)) {
         for (ExchangeCategory value : fe.getCategories()) {
           result.put(value, FunctionExt.getOutGoingAbstractFunction(fe));
@@ -5279,20 +5264,20 @@ public class FaServices {
   
   public Collection<EObject> getSwitchFECategoriesScope(DSemanticDecorator context) {
     if (context instanceof DDiagram) {
-      HashSet<EObject> values = new HashSet<EObject>();
+      HashSet<EObject> values = new HashSet<>();
       DDiagramContents ctx = new DDiagramContents((DDiagram) context);
 
       EdgeMapping dfFEMapping = getMappingDFFunctionalExchange(ctx.getDDiagram());
       EdgeMapping abFEMapping = getMappingABFunctionalExchange(ctx.getDDiagram());
 
       for (DDiagramElement element : ctx.getDiagramElements(dfFEMapping)) {
-        if ((element.getTarget() != null) && (element.getTarget() instanceof FunctionalExchange)) {
+        if (element.getTarget() instanceof FunctionalExchange) {
           values.addAll(((FunctionalExchange) element.getTarget()).getCategories());
         }
       }
 
       for (DDiagramElement element : ctx.getDiagramElements(abFEMapping)) {
-        if ((element.getTarget() != null) && (element.getTarget() instanceof FunctionalExchange)) {
+        if (element.getTarget() instanceof FunctionalExchange) {
           values.addAll(((FunctionalExchange) element.getTarget()).getCategories());
         }
       }
@@ -5395,10 +5380,10 @@ public class FaServices {
    */
   public Collection<EObject> getSwitchFECategoriesInitialSelection(DSemanticDecorator context) {
     if (context instanceof DDiagram) {
-      HashSet<EObject> values = new HashSet<EObject>();
+      HashSet<EObject> values = new HashSet<>();
       DDiagramContents ctx = new DDiagramContents((DDiagram) context);
       for (DDiagramElement element : ctx.getDiagramElements(getMappingExchangeCategory(ctx.getDDiagram()))) {
-        if ((element.getTarget() != null) && (element.getTarget() instanceof CapellaElement)) {
+        if (element.getTarget() instanceof CapellaElement) {
           values.add(element.getTarget());
         }
       }
@@ -5416,7 +5401,7 @@ public class FaServices {
    */
   public HashMapSet<EObject, EObject> getShowHideFECategoriesInitialSelection(DSemanticDecorator context) {
     HashMapSet<EObject, EObject> scope = getShowHideFECategoriesScope(context);
-    HashMapSet<EObject, EObject> result = new HashMapSet<EObject, EObject>();
+    HashMapSet<EObject, EObject> result = new HashMapSet<>();
 
     DDiagram diagram = CapellaServices.getService().getDiagramContainer(context);
     EdgeMapping edgeMapping = getMappingExchangeCategory(diagram);

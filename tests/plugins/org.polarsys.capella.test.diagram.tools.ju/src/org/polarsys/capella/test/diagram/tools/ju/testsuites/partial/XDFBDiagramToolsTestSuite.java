@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.polarsys.capella.test.diagram.tools.ju.xdfb.CreateFunctionalChain;
+import org.polarsys.capella.test.diagram.tools.ju.xdfb.OAIBShowHideOA;
 import org.polarsys.capella.test.diagram.tools.ju.xdfb.XDFBShowHideFunctionalExchange;
 import org.polarsys.capella.test.diagram.tools.ju.xdfb.XDFBShowHideFunctions;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
@@ -39,7 +40,7 @@ public class XDFBDiagramToolsTestSuite extends BasicTestSuite {
     tests.add(new XDFBShowHideFunctions());
     tests.add(new XDFBShowHideFunctionalExchange());
     tests.add(new CreateFunctionalChain());
+    tests.add(new OAIBShowHideOA());
     return tests;
   }
-
 }
