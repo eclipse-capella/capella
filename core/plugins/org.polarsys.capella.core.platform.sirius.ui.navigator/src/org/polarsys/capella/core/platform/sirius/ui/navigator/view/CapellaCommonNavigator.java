@@ -33,7 +33,6 @@ import org.eclipse.jface.dialogs.IDialogSettings;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.util.IPropertyChangeListener;
 import org.eclipse.jface.util.PropertyChangeEvent;
-import org.eclipse.jface.viewers.DoubleClickEvent;
 import org.eclipse.jface.viewers.IContentProvider;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionProvider;
@@ -85,11 +84,9 @@ import org.polarsys.capella.common.ui.toolkit.widgets.filter.StringMatcherFactor
 import org.polarsys.capella.common.ui.toolkit.widgets.filter.TreePatternFilter;
 import org.polarsys.capella.core.commands.preferences.util.PreferencesHelper;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.CapellaNavigatorPlugin;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.IImageKeys;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.LocateFilteredElementsInCommonNavigatorAction;
-import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.LocateInCapellaExplorerAction;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.SelectionHelper;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.move.MoveDownAction;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.move.MoveUpAction;
@@ -798,20 +795,17 @@ public class CapellaCommonNavigator extends CommonNavigator implements IEditingD
   @Override
   public boolean show(ShowInContext context) {
     ISelection selection = context.getSelection();
-    
-    if (selection != null && !selection.isEmpty()) {
-      ArrayList<Object> toReveal = new ArrayList<Object>();
-      for (Object element : ((IStructuredSelection) selection).toArray()) {
-        toReveal.add(LocateInCapellaExplorerAction.getElement(element));
+    if (selection instanceof IStructuredSelection && !selection.isEmpty()) {
+      IStructuredSelection structuredSelection = (IStructuredSelection) selection;
+      
+      selectReveal(structuredSelection);
+      
+      if (!LocateFilteredElementsInCommonNavigatorAction.isSetSelection(this.getCommonViewer(), structuredSelection)) {
+        LocateFilteredElementsInCommonNavigatorAction locateFilteredElementsInCommonNavigatorAction = new LocateFilteredElementsInCommonNavigatorAction(getSite().getId());
+        locateFilteredElementsInCommonNavigatorAction.run((IStructuredSelection) structuredSelection);
+        selectReveal(structuredSelection);
       }
       
-      IStructuredSelection newSelection = new StructuredSelection(toReveal);
-      selectReveal(newSelection);
-      if (!LocateFilteredElementsInCommonNavigatorAction.isSetSelection(this.getCommonViewer(), newSelection)) {
-        LocateFilteredElementsInCommonNavigatorAction locateFilteredElementsInCommonNavigatorAction = new LocateFilteredElementsInCommonNavigatorAction(getSite().getId());
-        locateFilteredElementsInCommonNavigatorAction.run((IStructuredSelection) newSelection);
-        selectReveal(newSelection);
-      }
       return true;
     }
     

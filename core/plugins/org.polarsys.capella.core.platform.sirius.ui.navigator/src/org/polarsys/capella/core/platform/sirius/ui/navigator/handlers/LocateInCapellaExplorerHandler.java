@@ -10,8 +10,12 @@
  *******************************************************************************/
 package org.polarsys.capella.core.platform.sirius.ui.navigator.handlers;
 
+import java.util.ArrayList;
+
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.IWorkbenchPart;
 
@@ -40,7 +44,20 @@ public class LocateInCapellaExplorerHandler extends AbstractLocateInViewPartHand
   protected IViewPart handleSelection(ISelection selection, IWorkbenchPart activePart, ExecutionEvent event) {
     LocateInCapellaExplorerAction relatedAction = new LocateInCapellaExplorerAction();
     ActionCommandDelegate delegate = new ActionCommandDelegate(event);
-    relatedAction.selectionChanged(delegate, selection);
+    
+    // Calculate the semantic elements to be selected in the navigator here, instead of inside the CapellaCommonNavigator;
+    // The CapellaCommonNavigator is used for all type of selection in the navigator, so handling 
+    // the semantic elements in it is too late.
+    // It causes the selection of Part always points to its AbstractType (Actor i.e)
+    ArrayList<Object> semanticElementsToSelect = new ArrayList<>();
+    if (selection instanceof IStructuredSelection) {
+      Object[] selectedElements = ((IStructuredSelection) selection).toArray();
+      for (Object element : selectedElements) {
+        semanticElementsToSelect.add(LocateInCapellaExplorerAction.getElement(element));
+      }
+    }
+    
+    relatedAction.selectionChanged(delegate, new StructuredSelection(semanticElementsToSelect));
     relatedAction.setActivePart(delegate, activePart);
     relatedAction.run(delegate);
     return null;
