@@ -97,25 +97,6 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractRefreshE
     }
     
     // -------------------------------------
-    // Update the internal edges for physical paths and functional chains.
-    // -------------------------------------
-    try {
-      List<String> physicalPathSupportingDiagrams = Arrays.asList(IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME,
-          IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME, IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME);
-      if (physicalPathSupportingDiagrams.contains(diagram.getDescription().getName())) {
-        PhysicalServices.getService().updateInternalPhysicalPaths(diagram);
-      }
-    } catch (Exception e) {
-      Logger.getLogger(IReportManagerDefaultComponents.DIAGRAM).error(Messages.RefreshExtension_ErrorOnUpdatePhysicalPathStyle, e);
-    }
-    
-    try {
-      FunctionalChainServices.getFunctionalChainServices().updateInternalFunctionalChains(diagram);
-    } catch (Exception e) {
-      Logger.getLogger(IReportManagerDefaultComponents.DIAGRAM).error(Messages.RefreshExtension_ErrorOnUpdateFunctionalChainStyle, e);
-    }
-    
-    // -------------------------------------
     // Update categories
     // -------------------------------------
 
@@ -479,8 +460,8 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractRefreshE
    */
   @Override
   public void postRefresh(DDiagram diagram) {
-
     try {
+      FunctionalChainServices.getFunctionalChainServices().updateInternalFunctionalChains(diagram);
       FunctionalChainServices.getFunctionalChainServices().updateFunctionalChainStyles(diagram);
     } catch (Exception e) {
       Logger.getLogger(IReportManagerDefaultComponents.DIAGRAM).error(Messages.RefreshExtension_ErrorOnUpdateFunctionalChainStyle, e);
@@ -490,6 +471,7 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractRefreshE
       List<String> physicalPathSupportingDiagrams = Arrays.asList(IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME,
           IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME, IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME);
       if (physicalPathSupportingDiagrams.contains(diagram.getDescription().getName())) {
+        PhysicalServices.getService().updateInternalPhysicalPaths(diagram);
         PhysicalServices.getService().updatePhysicalPathStyles(diagram);
       }
     } catch (Exception e) {

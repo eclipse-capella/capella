@@ -1046,7 +1046,7 @@ public class PhysicalServices {
     return null;
   }
 
-  private boolean isValidInternalLinkEdge(EdgeTarget currentSourceNode, EdgeTarget currentTargetNode) {
+  public boolean isValidInternalLinkEdge(EdgeTarget currentSourceNode, EdgeTarget currentTargetNode) {
     if (currentSourceNode == null) {
       return false;
     }

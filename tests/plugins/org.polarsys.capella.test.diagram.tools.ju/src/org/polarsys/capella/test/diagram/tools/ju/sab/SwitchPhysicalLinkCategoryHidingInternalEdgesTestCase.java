@@ -27,11 +27,11 @@ import junit.framework.Test;
 public class SwitchPhysicalLinkCategoryHidingInternalEdgesTestCase extends AbstractDiagramTestCase {
   
   private static String DIAGRAM_NAME = "[SAB] System";
-  private static String INTERNAL_PHYSICAL_PATH_TO_BE_REMOVED = "eb401899-08cc-4c54-8233-8ff6d3f4899d";
-  private static String PORT_TO_BE_HIDDEN = "a5a40ad5-57c9-49ae-a681-f3461b9670b1";
-  private static String PORT_2 = "802a25ea-22ea-4608-a9de-4d885d3f7992";
-  private static String PHYSICAL_LINK_TO_BE_HIDDEN = "c7b15680-b118-482b-9373-ad230a29cc56";
-  private static String PHYSICAL_LINK_CATEGORY_TO_BE_SHOWN = "3f49fcea-3c7f-4057-a6f6-f310b085863a";
+  private static String INTERNAL_PHYSICAL_PATH_IN_A4 = "eb401899-08cc-4c54-8233-8ff6d3f4899d";
+  private static String PORT_1_INTERNAL_PHYSICAL_PATH_IN_A4 = "a5a40ad5-57c9-49ae-a681-f3461b9670b1";
+  private static String PORT_2_INTERNAL_PHYSICAL_PATH_IN_A4 = "802a25ea-22ea-4608-a9de-4d885d3f7992";
+  private static String PL_2 = "c7b15680-b118-482b-9373-ad230a29cc56";
+  private static String PHYSICAL_LINK_CATEGORY_1 = "3f49fcea-3c7f-4057-a6f6-f310b085863a";
   
 
   public void test() throws Exception {
@@ -42,26 +42,32 @@ public class SwitchPhysicalLinkCategoryHidingInternalEdgesTestCase extends Abstr
     
     // Switch to physical link category
     new SwitchTool(diagramContext, IToolNameConstants.TOOL_SAB_INSERT_REMOVE_PHYSICAL_LINKS_CATEGORIES)
-    .insert(PHYSICAL_LINK_CATEGORY_TO_BE_SHOWN);
+    .insert(PHYSICAL_LINK_CATEGORY_1);
 
-    diagramContext.hasView(PHYSICAL_LINK_CATEGORY_TO_BE_SHOWN);
+    diagramContext.hasView(PHYSICAL_LINK_CATEGORY_1);
     
-    Assert.assertFalse("The internal physical path should be removed", diagramContext.hasEdge(PORT_TO_BE_HIDDEN, PORT_2, INTERNAL_PHYSICAL_PATH_TO_BE_REMOVED));
+    Assert.assertFalse("The internal physical path should be removed", 
+        diagramContext.hasEdge(PORT_1_INTERNAL_PHYSICAL_PATH_IN_A4, 
+            PORT_2_INTERNAL_PHYSICAL_PATH_IN_A4, 
+            INTERNAL_PHYSICAL_PATH_IN_A4));
     
-    diagramContext.hasHiddenView(PORT_TO_BE_HIDDEN);
+    diagramContext.hasHiddenView(PORT_1_INTERNAL_PHYSICAL_PATH_IN_A4);
     
-    diagramContext.hasHiddenView(PHYSICAL_LINK_TO_BE_HIDDEN);
+    diagramContext.hasHiddenView(PL_2);
     
     // Switch again to physical link
     new SwitchTool(diagramContext, IToolNameConstants.TOOL_SAB_INSERT_REMOVE_PHYSICAL_LINKS_CATEGORIES)
-    .remove(PHYSICAL_LINK_CATEGORY_TO_BE_SHOWN);
-    diagramContext.hasntView(PHYSICAL_LINK_CATEGORY_TO_BE_SHOWN);
+    .remove(PHYSICAL_LINK_CATEGORY_1);
+    diagramContext.hasntView(PHYSICAL_LINK_CATEGORY_1);
     
-    Assert.assertTrue("The internal physical path should be added", diagramContext.hasEdge(PORT_TO_BE_HIDDEN, PORT_2, INTERNAL_PHYSICAL_PATH_TO_BE_REMOVED));
+    Assert.assertTrue("The internal physical path should be added", 
+        diagramContext.hasEdge(PORT_1_INTERNAL_PHYSICAL_PATH_IN_A4, 
+            PORT_2_INTERNAL_PHYSICAL_PATH_IN_A4, 
+            INTERNAL_PHYSICAL_PATH_IN_A4));
     
-    diagramContext.hasView(PORT_TO_BE_HIDDEN);
+    diagramContext.hasView(PORT_1_INTERNAL_PHYSICAL_PATH_IN_A4);
     
-    diagramContext.hasView(PHYSICAL_LINK_TO_BE_HIDDEN);
+    diagramContext.hasView(PL_2);
   }
 
   @Override

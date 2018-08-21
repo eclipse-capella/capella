@@ -53,13 +53,6 @@ public class DataFlowBlankRefreshExtension extends AbstractRefreshExtension impl
       Logger.getLogger(IReportManagerDefaultComponents.DIAGRAM).error(Messages.RefreshExtension_ErrorOnContextualElements, e);
     }
     
-    // Update the internal edges for functional chains.
-    try {
-      FunctionalChainServices.getFunctionalChainServices().updateInternalFunctionalChains(diagram);
-    } catch (Exception e) {
-      Logger.getLogger(IReportManagerDefaultComponents.DIAGRAM).error(Messages.RefreshExtension_ErrorOnUpdateFunctionalChainStyle, e);
-    }
-
     try {
       updateFunctionalExchangeCategories(context);
     } catch (Exception e) {
@@ -92,6 +85,7 @@ public class DataFlowBlankRefreshExtension extends AbstractRefreshExtension impl
    */
   public void postRefresh(DDiagram diagram) {
     try {
+      FunctionalChainServices.getFunctionalChainServices().updateInternalFunctionalChains(diagram);
       FunctionalChainServices.getFunctionalChainServices().updateFunctionalChainStyles(diagram);
     } catch (Exception e) {
       Logger.getLogger(IReportManagerDefaultComponents.DIAGRAM).error(Messages.RefreshExtension_ErrorOnUpdateFunctionalChainStyle, e);

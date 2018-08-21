@@ -45,13 +45,6 @@ public class EntityArchitectureBlankRefreshExtension extends AbstractRefreshExte
 
     DDiagramContents context = FaServices.getFaServices().getDDiagramContents(diagram);
     
-    // Update the internal edges for functional chains
-    try {
-      FunctionalChainServices.getFunctionalChainServices().updateInternalFunctionalChains(diagram);
-    } catch (Exception e) {
-      Logger.getLogger(IReportManagerDefaultComponents.DIAGRAM).error(Messages.RefreshExtension_ErrorOnUpdateFunctionalChainStyle, e);
-    }
-
     // -------------------------------------
     // Show in diagram related contextual elements
     // -------------------------------------
@@ -75,8 +68,8 @@ public class EntityArchitectureBlankRefreshExtension extends AbstractRefreshExte
    * @see org.eclipse.sirius.business.api.refresh.IRefreshExtension#postRefresh(org.eclipse.sirius.DDiagram)
    */
   public void postRefresh(DDiagram diagram) {
-
     try {
+      FunctionalChainServices.getFunctionalChainServices().updateInternalFunctionalChains(diagram);
       FunctionalChainServices.getFunctionalChainServices().updateFunctionalChainStyles(diagram);
     } catch (Exception e) {
       Logger.getLogger(IReportManagerDefaultComponents.DIAGRAM).error(Messages.RefreshExtension_ErrorOnUpdateFunctionalChainStyle, e);

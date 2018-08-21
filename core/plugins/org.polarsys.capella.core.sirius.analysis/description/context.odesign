@@ -3864,7 +3864,7 @@
             </tools>
           </ownedTools>
           <ownedTools xsi:type="tool_1:PopupMenu" name="Physical Path">
-            <menuItemDescription xsi:type="tool_1:OperationAction" name="Create a Physical Path" precondition="&lt;%isValidPhysicalPathSelection($views)%>">
+            <menuItemDescription xsi:type="tool_1:OperationAction" name="Create a Physical Path" precondition="&lt;%isValidPhysicalPathSelection($views)%>" forceRefresh="true">
               <view name="views"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $views%>">

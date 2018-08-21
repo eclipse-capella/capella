@@ -1330,26 +1330,7 @@ public class ABServices {
 
   public boolean isValidABPhysicalPathInternalLinkEdge(PhysicalPath path, DSemanticDecorator source,
       DSemanticDecorator target) {
-    if (source instanceof EdgeTarget) {
-      HashSet<DEdge> edges = new HashSet<DEdge>();
-      EdgeTarget src = (EdgeTarget) source;
-      edges.addAll(DiagramServices.getDiagramServices().getIncomingEdges(src));
-      edges.addAll(DiagramServices.getDiagramServices().getOutgoingEdges(src));
-
-      int nbEdges = 0;
-      for (DEdge edge : edges) {
-        if ((edge != null) && edge.getTarget().equals(path)) {
-          if (edge.getSourceNode().equals(target)) {
-            nbEdges++;
-          }
-          if (edge.getTargetNode().equals(target)) {
-            nbEdges++;
-          }
-        }
-      }
-      return nbEdges <= 1;
-    }
-    return true;
+    return PhysicalServices.getService().isValidInternalLinkEdge((EdgeTarget) source, (EdgeTarget) target);
   }
 
   public boolean isValidFunctionalExchangeCategoryEdge(ExchangeCategory category, DSemanticDecorator source,

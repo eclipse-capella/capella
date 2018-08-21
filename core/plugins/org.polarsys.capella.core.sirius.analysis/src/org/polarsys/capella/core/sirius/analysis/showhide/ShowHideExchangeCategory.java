@@ -12,6 +12,8 @@ package org.polarsys.capella.core.sirius.analysis.showhide;
 
 import java.util.Collection;
 
+import org.eclipse.emf.common.util.BasicEList;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
@@ -26,6 +28,7 @@ import org.polarsys.capella.core.data.fa.ExchangeCategory;
 import org.polarsys.capella.core.data.fa.FunctionInputPort;
 import org.polarsys.capella.core.data.fa.FunctionOutputPort;
 import org.polarsys.capella.core.data.fa.FunctionPort;
+import org.polarsys.capella.core.data.fa.FunctionalChain;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.data.oa.Entity;
 import org.polarsys.capella.core.sirius.analysis.ABServices;
@@ -61,30 +64,23 @@ public class ShowHideExchangeCategory extends ShowHideFunctionalExchange {
 
   @Override
   protected boolean mustHide(DDiagramElement view, DiagramContext context) {
-
-    // A function port must be hidden if no edges or hidden edges
+    // A function port must be hidden if no edges whose target is not FunctionalChain are visible
     if (view.getDiagramElementMapping() instanceof AbstractNodeMapping) {
       EObject target = view.getTarget();
-      if ((target != null) && ((target instanceof FunctionPort || target instanceof ExchangeCategory))) {
-        boolean result = true;
-        for (DEdge edge : ((EdgeTarget) view).getIncomingEdges()) {
-        	if (getContent().isVisible(edge)) {
-        		result = false;
-	            break;
-	        }
-	    }
-        if (result) {
-          for (DEdge edge : ((EdgeTarget) view).getOutgoingEdges()) {
-            if (getContent().isVisible(edge)) {
-              result = false;
-              break;
-            }
+      if ((target instanceof FunctionPort) || (target instanceof ExchangeCategory)) {
+        EList<DEdge> relatedEdges = new BasicEList<>();
+        relatedEdges.addAll(((EdgeTarget) view).getIncomingEdges());
+        relatedEdges.addAll(((EdgeTarget) view).getOutgoingEdges());
+        
+        for (DEdge edge : relatedEdges) {
+          if (edge != null && !(edge.getTarget() instanceof FunctionalChain) && getContent().isVisible(edge)) {
+            return false;
           }
         }
-        return result;
+        
+        return true;
       }
     }
-
     return super.mustHide(view, context);
   }
 

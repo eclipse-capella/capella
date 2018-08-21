@@ -27,11 +27,11 @@ import junit.framework.Test;
 public class SwitchFunctionalCategoryHidingInternalEdgesTestCase extends AbstractDiagramTestCase {
   
   private static String DIAGRAM_NAME = "[SAB] System";
-  private static String INTERNAL_FUNCTIONAL_CHAIN_TO_BE_REMOVED = "0a2d13d6-16d9-4db2-b9db-086fbb5dc598";
-  private static String PORT_TO_BE_HIDDEN = "95d0dc89-dc2b-4aea-9a89-603800737958";
-  private static String PORT_2 = "7e826b22-79f2-4ba7-b48b-b37a6f502dad";
-  private static String FUNCTIONAL_EXCHANGE_TO_BE_HIDDEN = "7342d8d0-26bd-48fb-bf7a-c3b2a4508e25";
-  private static String EXCHANGE_CATEGORY_TO_BE_SHOWN = "6c4433a6-b67c-4c5c-9e0d-1bba6879e1bf";
+  private static String INTERNAL_FUNCTIONAL_CHAIN_IN_SYSTEM_FUNCTION_4 = "0a2d13d6-16d9-4db2-b9db-086fbb5dc598";
+  private static String PORT_OUT_INTERNAL_FUNCTIONAL_CHAIN_IN_SYSTEM_FUNCTION_4 = "95d0dc89-dc2b-4aea-9a89-603800737958";
+  private static String PORT_IN_INTERNAL_FUNCTIONAL_CHAIN_IN_SYSTEM_FUNCTION_4 = "7e826b22-79f2-4ba7-b48b-b37a6f502dad";
+  private static String FUNCTIONAL_EXCHANGE_2 = "7342d8d0-26bd-48fb-bf7a-c3b2a4508e25";
+  private static String EXCHANGE_CATEGORY_1 = "6c4433a6-b67c-4c5c-9e0d-1bba6879e1bf";
   
 
   public void test() throws Exception {
@@ -42,26 +42,32 @@ public class SwitchFunctionalCategoryHidingInternalEdgesTestCase extends Abstrac
     
     // Switch to exchange category
     new SwitchTool(diagramContext, IToolNameConstants.TOOL_SAB_INSERT_REMOVE_EXCHANGE_CATEGORIES)
-    .insert(EXCHANGE_CATEGORY_TO_BE_SHOWN);
+    .insert(EXCHANGE_CATEGORY_1);
 
-    diagramContext.hasView(EXCHANGE_CATEGORY_TO_BE_SHOWN);
+    diagramContext.hasView(EXCHANGE_CATEGORY_1);
     
-    Assert.assertFalse("The internal physical path should be removed", diagramContext.hasEdge(PORT_TO_BE_HIDDEN, PORT_2, INTERNAL_FUNCTIONAL_CHAIN_TO_BE_REMOVED));
+    Assert.assertFalse("The internal functional chain should be removed", 
+        diagramContext.hasEdge(PORT_OUT_INTERNAL_FUNCTIONAL_CHAIN_IN_SYSTEM_FUNCTION_4, 
+            PORT_IN_INTERNAL_FUNCTIONAL_CHAIN_IN_SYSTEM_FUNCTION_4, 
+            INTERNAL_FUNCTIONAL_CHAIN_IN_SYSTEM_FUNCTION_4));
     
-    diagramContext.hasHiddenView(PORT_TO_BE_HIDDEN);
+    diagramContext.hasHiddenView(PORT_OUT_INTERNAL_FUNCTIONAL_CHAIN_IN_SYSTEM_FUNCTION_4);
     
-    diagramContext.hasHiddenView(FUNCTIONAL_EXCHANGE_TO_BE_HIDDEN);
+    diagramContext.hasHiddenView(FUNCTIONAL_EXCHANGE_2);
     
     // Switch again to functional exchange
     new SwitchTool(diagramContext, IToolNameConstants.TOOL_SAB_INSERT_REMOVE_EXCHANGE_CATEGORIES)
-    .remove(EXCHANGE_CATEGORY_TO_BE_SHOWN);
-    diagramContext.hasntView(EXCHANGE_CATEGORY_TO_BE_SHOWN);
+    .remove(EXCHANGE_CATEGORY_1);
+    diagramContext.hasntView(EXCHANGE_CATEGORY_1);
     
-    Assert.assertTrue("The internal physical path should be added", diagramContext.hasEdge(PORT_TO_BE_HIDDEN, PORT_2, INTERNAL_FUNCTIONAL_CHAIN_TO_BE_REMOVED));
+    Assert.assertTrue("The internal functional chain should be added", 
+        diagramContext.hasEdge(PORT_OUT_INTERNAL_FUNCTIONAL_CHAIN_IN_SYSTEM_FUNCTION_4, 
+            PORT_IN_INTERNAL_FUNCTIONAL_CHAIN_IN_SYSTEM_FUNCTION_4, 
+            INTERNAL_FUNCTIONAL_CHAIN_IN_SYSTEM_FUNCTION_4));
     
-    diagramContext.hasView(PORT_TO_BE_HIDDEN);
+    diagramContext.hasView(PORT_OUT_INTERNAL_FUNCTIONAL_CHAIN_IN_SYSTEM_FUNCTION_4);
     
-    diagramContext.hasView(FUNCTIONAL_EXCHANGE_TO_BE_HIDDEN);
+    diagramContext.hasView(FUNCTIONAL_EXCHANGE_2);
   }
 
   @Override
