@@ -37,7 +37,6 @@ import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
-import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorPart;
@@ -220,7 +219,7 @@ public class RefreshDiagramsCommandHandler extends AbstractDiagramCommandHandler
       representationsToRefresh = new ArrayList<DRepresentationDescriptor>();
       Collection<DRepresentationDescriptor> allSessionRepresentations = DialectManager.INSTANCE.getAllRepresentationDescriptors(session);
       for (DRepresentationDescriptor representation : allSessionRepresentations) {
-           EObject associatedModelElement = ((DSemanticDecorator) representation).getTarget();
+           EObject associatedModelElement = representation.getTarget();
           if (EcoreUtil.isAncestor((ModelElement) selectedElement, associatedModelElement)) {
             representationsToRefresh.add(representation);
           }
@@ -230,7 +229,7 @@ public class RefreshDiagramsCommandHandler extends AbstractDiagramCommandHandler
       representationsToRefresh = DialectManager.INSTANCE.getAllRepresentationDescriptors(session);
     }
 
-    if (representationsToRefresh.size() == 0) {
+    if (representationsToRefresh.isEmpty()) {
       // If no representation, show information dialog
       MessageDialog.openInformation(PlatformUI.getWorkbench().getDisplay().getActiveShell(),
           Messages.RefreshRepresentation_9, Messages.RefreshRepresentation_10);
