@@ -30,6 +30,7 @@ import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.action.ToolBarManager;
 import org.eclipse.jface.dialogs.IDialogSettings;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.util.IPropertyChangeListener;
 import org.eclipse.jface.util.PropertyChangeEvent;
@@ -43,6 +44,7 @@ import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
+import org.eclipse.osgi.util.NLS;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.common.tools.api.constant.CommonPreferencesConstants;
@@ -59,6 +61,7 @@ import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.IMemento;
 import org.eclipse.ui.IViewSite;
 import org.eclipse.ui.PartInitException;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.Saveable;
 import org.eclipse.ui.WorkbenchException;
 import org.eclipse.ui.XMLMemento;
@@ -798,12 +801,21 @@ public class CapellaCommonNavigator extends CommonNavigator implements IEditingD
     if (selection instanceof IStructuredSelection && !selection.isEmpty()) {
       IStructuredSelection structuredSelection = (IStructuredSelection) selection;
       
+      // Before selecting, check if any active filter hides the selected element
+      // If so, propose dialog to deactivate
+      LocateFilteredElementsInCommonNavigatorAction locateFilteredElementsInCommonNavigatorAction = new LocateFilteredElementsInCommonNavigatorAction(getSite().getId());
+      locateFilteredElementsInCommonNavigatorAction.run(structuredSelection);
+      
+      // Then select the elements
       selectReveal(structuredSelection);
       
-      if (!LocateFilteredElementsInCommonNavigatorAction.isSetSelection(this.getCommonViewer(), structuredSelection)) {
-        LocateFilteredElementsInCommonNavigatorAction locateFilteredElementsInCommonNavigatorAction = new LocateFilteredElementsInCommonNavigatorAction(getSite().getId());
-        locateFilteredElementsInCommonNavigatorAction.run((IStructuredSelection) structuredSelection);
-        selectReveal(structuredSelection);
+      ISelection actualSelection = getCommonViewer().getSelection();
+      
+      // After doing selection, if no element was selected, then no element found.
+      if (actualSelection == null || actualSelection.isEmpty()) {
+        MessageDialog.openInformation(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
+            NLS.bind(Messages.LocateInCommonNavigator_SelectedElementNotVisible_Title, getPartName()),
+            NLS.bind(Messages.LocateInCommonNavigator_SelectedElementNotVisible_2, getPartName()));
       }
       
       return true;

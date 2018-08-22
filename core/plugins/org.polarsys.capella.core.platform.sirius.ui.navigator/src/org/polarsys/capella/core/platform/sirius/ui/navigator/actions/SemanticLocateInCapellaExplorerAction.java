@@ -11,11 +11,13 @@
 
 package org.polarsys.capella.core.platform.sirius.ui.navigator.actions;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.internal.navigate.NavigationAdvisor;
@@ -47,9 +49,19 @@ public class SemanticLocateInCapellaExplorerAction extends LocateInCapellaExplor
    */
   @Override
   public void run(IAction action) {
-    Object object = getElement(getFirstSelectedElement(getSelection()));
-    // The new semantic object to select.
-    Set<EObject> navigableElements = NavigationAdvisor.getInstance().getNavigableElements(object);
+    // Instead of calculating navigable elements for only the first selected element,
+    // we must calculate for all selected ones.
+    // Bug 2150. If not, on clicking "Show All", only one element will be selected.
+    
+    // The semantic elements to select.
+    Set<EObject> navigableElements = new HashSet<>();
+    
+    if (getSelection() instanceof IStructuredSelection) {
+      for (Object selectedElement : ((IStructuredSelection) getSelection()).toList()) {
+        navigableElements.addAll(NavigationAdvisor.getInstance().getNavigableElements(selectedElement));
+      }
+    }
+    
     // If the navigation returns something else, select it.
     if (!navigableElements.isEmpty()) {
       selectElementInCapellaExplorer(new StructuredSelection(navigableElements.toArray()));

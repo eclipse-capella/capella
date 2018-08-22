@@ -45,9 +45,8 @@ public class Messages extends NLS {
 
   public static String LocateInCommonNavigator_SelectedElementNotVisible_0;
   public static String LocateInCommonNavigator_SelectedElementNotVisible_1;
-  public static String LocateInCommonNavigator_SelectedElementNotVisible_2;
-  public static String LocateInCommonNavigator_SelectedElementNotVisible_Title;
   
+  public static String LocateInCommonNavigator_SelectedElementNotVisible_Title;
   static {
     // initialize resource bundle
     NLS.initializeMessages(BUNDLE_NAME, Messages.class);

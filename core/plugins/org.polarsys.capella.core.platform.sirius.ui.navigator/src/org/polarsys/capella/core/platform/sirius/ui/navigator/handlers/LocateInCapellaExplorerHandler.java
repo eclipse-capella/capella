@@ -11,6 +11,8 @@
 package org.polarsys.capella.core.platform.sirius.ui.navigator.handlers;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.jface.viewers.ISelection;
@@ -45,11 +47,15 @@ public class LocateInCapellaExplorerHandler extends AbstractLocateInViewPartHand
     LocateInCapellaExplorerAction relatedAction = new LocateInCapellaExplorerAction();
     ActionCommandDelegate delegate = new ActionCommandDelegate(event);
     
-    // Calculate the semantic elements to be selected in the navigator here, instead of inside the CapellaCommonNavigator;
+    // - Calculate the semantic elements to be selected in the navigator here, instead of inside the CapellaCommonNavigator;
     // The CapellaCommonNavigator is used for all type of selection in the navigator, so handling 
     // the semantic elements in it is too late.
     // It causes the selection of Part always points to its AbstractType (Actor i.e)
-    ArrayList<Object> semanticElementsToSelect = new ArrayList<>();
+    
+    // - Bug 2150: Should use the Set to avoid duplicating elements
+    // If not, in LocateFilteredElementsInCommonNavigatorAction.isSetSelection() will give False even though all
+    // semantic elements were selected.
+    Set<Object> semanticElementsToSelect = new HashSet<>();
     if (selection instanceof IStructuredSelection) {
       Object[] selectedElements = ((IStructuredSelection) selection).toArray();
       for (Object element : selectedElements) {
@@ -57,7 +63,7 @@ public class LocateInCapellaExplorerHandler extends AbstractLocateInViewPartHand
       }
     }
     
-    relatedAction.selectionChanged(delegate, new StructuredSelection(semanticElementsToSelect));
+    relatedAction.selectionChanged(delegate, new StructuredSelection(semanticElementsToSelect.toArray()));
     relatedAction.setActivePart(delegate, activePart);
     relatedAction.run(delegate);
     return null;

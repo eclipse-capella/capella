@@ -10,17 +10,14 @@
  *******************************************************************************/
 package org.polarsys.capella.core.platform.sirius.ui.navigator.actions;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedHashSet;
-import java.util.List;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.ITreeContentProvider;
-import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.ui.IViewPart;
@@ -98,10 +95,6 @@ public class LocateFilteredElementsInCommonNavigatorAction {
         activeFilterIds.removeAll(effectiveFilterIds);
         capellaNavigatorFilterService.activateFilterIdsAndUpdateViewer(activeFilterIds.toArray(new String[0]));
       }
-    } else {
-      MessageDialog.openInformation(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
-          NLS.bind(Messages.LocateInCommonNavigator_SelectedElementNotVisible_Title, commonNavigator.getPartName()),
-          NLS.bind(Messages.LocateInCommonNavigator_SelectedElementNotVisible_2, commonNavigator.getPartName()));
     }
   }
 
@@ -115,18 +108,5 @@ public class LocateFilteredElementsInCommonNavigatorAction {
       parent = contentProvider.getParent(parent);
     }
     return select;
-  }
-  
-  public static boolean isSetSelection(StructuredViewer viewer, IStructuredSelection exptectedSelection) {
-    IStructuredSelection currentSelection = (IStructuredSelection) viewer.getSelection();
-    if(currentSelection.toArray().length > 0){
-      List<?> currentList = currentSelection.toList();
-      List<?> exptectedList = exptectedSelection.toList();
-      if(currentList.size() == exptectedList.size()) {
-        List<?> result = new ArrayList<Object>(currentList);
-        return !result.retainAll(exptectedList);
-      }
-    }
-    return false;
   }
 }
