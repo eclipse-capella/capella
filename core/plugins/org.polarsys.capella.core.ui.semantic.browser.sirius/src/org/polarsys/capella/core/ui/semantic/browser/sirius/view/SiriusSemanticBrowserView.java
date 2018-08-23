@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,7 @@ import org.eclipse.jface.viewers.ITreeSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.table.metamodel.table.DTable;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.ui.IWorkbenchPart;
 import org.polarsys.capella.common.ui.toolkit.browser.content.provider.wrapper.EObjectWrapper;
 import org.polarsys.capella.core.ui.semantic.browser.sirius.actions.DiagramOpenAction;
@@ -38,21 +39,24 @@ public class SiriusSemanticBrowserView extends SemanticBrowserView {
    * @see org.polarsys.capella.core.ui.semantic.browser.view.SemanticBrowserView#handleDoubleClick(org.eclipse.jface.viewers.DoubleClickEvent)
    */
   @Override
-  protected void handleDoubleClick(DoubleClickEvent event_p) {
-    super.handleDoubleClick(event_p);
-    ITreeSelection selection = (ITreeSelection) event_p.getSelection();
+  protected void handleDoubleClick(DoubleClickEvent event) {
+    ITreeSelection selection = (ITreeSelection) event.getSelection();
     if (!selection.isEmpty()) {
       Object selectedElement = selection.getFirstElement();
       if (selectedElement instanceof EObjectWrapper) {
         selectedElement = ((EObjectWrapper) selectedElement).getElement();
       }
-      if ((selectedElement instanceof DSemanticDiagram) || (selectedElement instanceof DTable)) {
+      if (selectedElement instanceof DRepresentationDescriptor || selectedElement instanceof DSemanticDiagram || selectedElement instanceof DTable) {
         DiagramOpenAction action = new DiagramOpenAction();
         // Open related diagram editor.
         action.init(this);
-        action.selectionChanged(null, new StructuredSelection(selectedElement));
+        action.selectionChanged(null, new StructuredSelection(selectedElement instanceof DRepresentationDescriptor ? ((DRepresentationDescriptor) selectedElement).getRepresentation() : selectedElement));
         action.run(null);
+        // if it is DRepresentation; then open the representation and return immediately.
+        // Do not run into super.handleDoubleClick in order to avoid opening the wizard properties
+        return;
       }
     }
+    super.handleDoubleClick(event);
   }
 }
