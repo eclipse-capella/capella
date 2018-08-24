@@ -41,9 +41,9 @@ import org.eclipse.sirius.diagram.WorkspaceImage;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramBorderNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IStyleEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.WorkspaceImageEditPart;
-import org.eclipse.sirius.diagram.ui.tools.api.figure.AirStyleDefaultSizeNodeFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.WorkspaceImageFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.locator.DBorderItemLocator;
+import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.AirStyleDefaultSizeNodeFigure;
 
 /**
  * Specific Edit Part for rotative image
