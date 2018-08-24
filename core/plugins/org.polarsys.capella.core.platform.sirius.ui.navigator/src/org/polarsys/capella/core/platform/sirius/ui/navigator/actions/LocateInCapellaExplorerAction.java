@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.polarsys.capella.core.platform.sirius.ui.navigator.actions;
 
-import org.apache.log4j.Logger;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.GraphicalEditPart;
@@ -37,8 +36,6 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.IShowInTarget;
 import org.eclipse.ui.part.ShowInContext;
 import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
-import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
-import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 import org.polarsys.capella.common.ui.services.helper.EObjectImageProviderHelper;
 import org.polarsys.capella.common.ui.toolkit.browser.content.provider.wrapper.EObjectWrapper;
 import org.polarsys.capella.core.data.cs.Part;
@@ -54,7 +51,6 @@ import org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaCommon
  * The action to locate a Capella model element into the Capella explorer from the diagram view.
  */
 public class LocateInCapellaExplorerAction implements IObjectActionDelegate, IViewActionDelegate {
-  private Logger logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.UI);
   private boolean ignoreWorkbenchPartSite;
   private IWorkbenchPartSite site;
   ISelection selection = null;
@@ -132,7 +128,6 @@ public class LocateInCapellaExplorerAction implements IObjectActionDelegate, IVi
    */
   public void run(IAction action) {
     if (ignoreWorkbenchPartSite || (null != site)) {
-      ISelection selection = getSelection();
       if (selection instanceof IStructuredSelection) {
           selectElementInCapellaExplorer(selection);
       }
@@ -149,7 +144,7 @@ public class LocateInCapellaExplorerAction implements IObjectActionDelegate, IVi
     if (window != null) {
       IViewPart part = window.getActivePage().findView(CapellaCommonNavigator.ID); //$NON-NLS-1$
       if (part != null) {
-        IShowInTarget showInTarget = (IShowInTarget) part.getAdapter(IShowInTarget.class);
+        IShowInTarget showInTarget = part.getAdapter(IShowInTarget.class);
         showInTarget.show(new ShowInContext(null, selection));
       }
     }

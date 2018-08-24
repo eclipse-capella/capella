@@ -16,7 +16,8 @@ Require-Bundle: org.eclipse.core.runtime,
  org.polarsys.capella.core.platform.sirius.ui.navigator,
  org.eclipse.sirius.table.ui;visibility:=reexport,
  org.eclipse.sirius.common.ui,
- org.polarsys.capella.common.tools.report.appenders.usage
+ org.polarsys.capella.common.tools.report.appenders.usage,
+ org.eclipse.jface
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Vendor: %providerName
