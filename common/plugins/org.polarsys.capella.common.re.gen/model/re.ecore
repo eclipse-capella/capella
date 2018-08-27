@@ -96,13 +96,19 @@
         eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject" changeable="false"
         volatile="true" transient="true" derived="true">
       <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="ownedLinks.target"/>
+      </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="replicatedElements" upperBound="-1"
         eType="#//CatalogElement" changeable="false" volatile="true" transient="true"
         derived="true">
       <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="opposite"/>
+        <details key="viatra.expression" value="origin"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="retrieve all referencing elements which have the current element as origin"/>
       </eAnnotations>

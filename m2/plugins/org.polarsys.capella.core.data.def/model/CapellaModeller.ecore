@@ -201,7 +201,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="containedOperationalAnalysis"
         upperBound="-1" eType="ecore:EClass OperationalAnalysis.ecore#//OperationalAnalysis"
         changeable="false" volatile="true" transient="true" derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="ownedArchitectures"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic">
         <details key="feature" value="ownedArchitectures"/>
       </eAnnotations>
@@ -214,7 +217,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="containedSystemAnalysis"
         upperBound="-1" eType="ecore:EClass ContextArchitecture.ecore#//SystemAnalysis"
         changeable="false" volatile="true" transient="true" derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="ownedArchitectures"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic">
         <details key="feature" value="ownedArchitectures"/>
       </eAnnotations>
@@ -227,7 +233,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="containedLogicalArchitectures"
         upperBound="-1" eType="ecore:EClass LogicalArchitecture.ecore#//LogicalArchitecture"
         changeable="false" volatile="true" transient="true" derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="ownedArchitectures"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic">
         <details key="feature" value="ownedArchitectures"/>
       </eAnnotations>
@@ -240,7 +249,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="containedPhysicalArchitectures"
         upperBound="-1" eType="ecore:EClass PhysicalArchitecture.ecore#//PhysicalArchitecture"
         changeable="false" volatile="true" transient="true" derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="ownedArchitectures"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic">
         <details key="feature" value="ownedArchitectures"/>
       </eAnnotations>
@@ -253,7 +265,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="containedEPBSArchitectures"
         upperBound="-1" eType="ecore:EClass EPBSArchitecture.ecore#//EPBSArchitecture"
         changeable="false" volatile="true" transient="true" derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="ownedArchitectures"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic">
         <details key="feature" value="ownedArchitectures"/>
       </eAnnotations>
@@ -266,7 +281,6 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="containedSharedPkgs" upperBound="-1"
         eType="ecore:EClass SharedModel.ecore#//SharedPkg" changeable="false" volatile="true"
         transient="true" derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
       <eAnnotations source="http://www.polarsys.org/capella/semantic">
         <details key="feature" value="ownedArchitectures"/>
       </eAnnotations>
@@ -274,6 +288,10 @@
         <details key="UML/SysML semantic equivalences" value="keyword::none"/>
         <details key="explanation" value="Derived and transient"/>
         <details key="constraints" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="unimplemented"/>
+        <details key="viatra.expression" value="ownedArchitectures as SharedPkg, but SharedPkg is not a subclass of ModellingArchitecture !"/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
