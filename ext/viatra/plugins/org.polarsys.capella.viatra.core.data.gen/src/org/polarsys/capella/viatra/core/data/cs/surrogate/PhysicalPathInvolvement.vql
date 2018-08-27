@@ -1,0 +1,42 @@
+/*******************************************************************************
+ * Copyright (c) 2006, 2019 THALES DMS FRANCE.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
+
+/* Generated file */
+
+package org.polarsys.capella.viatra.core.data.cs.surrogate
+
+import "http://www.polarsys.org/capella/core/cs/1.3.0"
+
+// Start of user code for imports 
+import "http://www.polarsys.org/capella/core/core/1.3.0"
+
+// End of user code
+
+@Surrogate(feature="previousInvolvements")
+pattern PhysicalPathInvolvement__previousInvolvements(self : PhysicalPathInvolvement, target : PhysicalPathInvolvement) {
+	PhysicalPathInvolvement.nextInvolvements(target, self);
+// TODO understand why we should verify that target is in the same path than self ...
+PhysicalPath.ownedPhysicalPathInvolvements(pp, self);
+PhysicalPath.ownedPhysicalPathInvolvements(pp, target);
+}
+
+@Surrogate(feature="involvedElement")
+pattern PhysicalPathInvolvement__involvedElement(self : PhysicalPathInvolvement, target : AbstractPathInvolvedElement) {
+	PhysicalPathInvolvement.involved(self, target);
+}
+
+@Surrogate(feature="involvedComponent")
+pattern PhysicalPathInvolvement__involvedComponent(self : PhysicalPathInvolvement, target : Component) {
+	PhysicalPathInvolvement.involved(self, part);
+Part.type(part, target);
+}
+
+

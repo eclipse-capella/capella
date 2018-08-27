@@ -1,0 +1,55 @@
+/*******************************************************************************
+ * Copyright (c) 2006, 2019 THALES DMS FRANCE.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
+
+/* Generated file */
+
+package org.polarsys.capella.viatra.core.data.interaction.surrogate
+
+import "http://www.polarsys.org/capella/core/interaction/1.3.0"
+
+// Start of user code for imports 
+import "http://www.polarsys.org/capella/core/information/1.3.0"
+import "http://www.polarsys.org/capella/core/cs/1.3.0"
+import "http://www.polarsys.org/capella/core/fa/1.3.0"
+
+// End of user code
+
+@Surrogate(feature="invokedOperation")
+pattern SequenceMessage__invokedOperation(self : SequenceMessage, target : AbstractEventOperation) {
+	SequenceMessage.receivingEnd.event(self, ero);
+	EventReceiptOperation.operation(ero, target);
+} or {
+	SequenceMessage.sendingEnd.event(self, eso);
+	EventSentOperation.operation(eso, target);
+
+}
+
+@Surrogate(feature="sendingPart")
+pattern SequenceMessage__sendingPart(self : SequenceMessage, target : Part) {
+	SequenceMessage.sendingEnd.covered.representedInstance(self, target);
+}
+
+@Surrogate(feature="receivingPart")
+pattern SequenceMessage__receivingPart(self : SequenceMessage, target : Part) {
+	SequenceMessage.receivingEnd.covered.representedInstance(self, target);
+}
+
+@Surrogate(feature="sendingFunction")
+pattern SequenceMessage__sendingFunction(self : SequenceMessage, target : AbstractFunction) {
+	SequenceMessage.sendingEnd.covered.representedInstance(self, target);
+}
+
+@Surrogate(feature="receivingFunction")
+pattern SequenceMessage__receivingFunction(self : SequenceMessage, target : AbstractFunction) {
+	SequenceMessage.receivingEnd.covered.representedInstance(self, target);
+}
+
+

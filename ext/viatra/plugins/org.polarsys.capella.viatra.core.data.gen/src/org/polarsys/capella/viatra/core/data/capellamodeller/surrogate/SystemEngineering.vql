@@ -1,0 +1,53 @@
+/*******************************************************************************
+ * Copyright (c) 2006, 2019 THALES DMS FRANCE.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
+
+/* Generated file */
+
+package org.polarsys.capella.viatra.core.data.capellamodeller.surrogate
+
+import "http://www.polarsys.org/capella/core/modeller/1.3.0"
+
+// Start of user code for imports 
+import "http://www.polarsys.org/capella/core/core/1.3.0"
+import "http://www.polarsys.org/capella/core/oa/1.3.0"
+import "http://www.polarsys.org/capella/core/ctx/1.3.0"
+import "http://www.polarsys.org/capella/core/la/1.3.0"
+import "http://www.polarsys.org/capella/core/pa/1.3.0"
+import "http://www.polarsys.org/capella/core/epbs/1.3.0"
+
+// End of user code
+
+@Surrogate(feature="containedOperationalAnalysis")
+pattern SystemEngineering__containedOperationalAnalysis(self : SystemEngineering, target : OperationalAnalysis) {
+	SystemEngineering.ownedArchitectures(self, target);
+}
+
+@Surrogate(feature="containedSystemAnalysis")
+pattern SystemEngineering__containedSystemAnalysis(self : SystemEngineering, target : SystemAnalysis) {
+	SystemEngineering.ownedArchitectures(self, target);
+}
+
+@Surrogate(feature="containedLogicalArchitectures")
+pattern SystemEngineering__containedLogicalArchitectures(self : SystemEngineering, target : LogicalArchitecture) {
+	SystemEngineering.ownedArchitectures(self, target);
+}
+
+@Surrogate(feature="containedPhysicalArchitectures")
+pattern SystemEngineering__containedPhysicalArchitectures(self : SystemEngineering, target : PhysicalArchitecture) {
+	SystemEngineering.ownedArchitectures(self, target);
+}
+
+@Surrogate(feature="containedEPBSArchitectures")
+pattern SystemEngineering__containedEPBSArchitectures(self : SystemEngineering, target : EPBSArchitecture) {
+	SystemEngineering.ownedArchitectures(self, target);
+}
+
+

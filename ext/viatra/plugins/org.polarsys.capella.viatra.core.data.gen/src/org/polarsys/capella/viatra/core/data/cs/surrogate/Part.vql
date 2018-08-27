@@ -1,0 +1,45 @@
+/*******************************************************************************
+ * Copyright (c) 2006, 2019 THALES DMS FRANCE.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
+
+/* Generated file */
+
+package org.polarsys.capella.viatra.core.data.cs.surrogate
+
+import "http://www.polarsys.org/capella/core/cs/1.3.0"
+
+// Start of user code for imports 
+import "http://www.polarsys.org/capella/core/core/1.3.0"
+
+// End of user code
+
+@Surrogate(feature="providedInterfaces")
+pattern Part__providedInterfaces(self : Part, target : Interface) {
+	Part.type(self, component);
+Component.providedInterfaces(component, target);
+}
+
+@Surrogate(feature="requiredInterfaces")
+pattern Part__requiredInterfaces(self : Part, target : Interface) {
+	Part.type(self, component);
+Component.requiredInterfaces(component, target);
+}
+
+@Surrogate(feature="deployedParts")
+pattern Part__deployedParts(self : Part, target : Part) {
+	Part.deploymentLinks.deployedElement(self, target);
+}
+
+@Surrogate(feature="deployingParts")
+pattern Part__deployingParts(self : Part, target : Part) {
+	Part.deployingLinks.location(self, target);
+}
+
+
