@@ -107,7 +107,7 @@ public class AirdMigrationRunnable extends ModelMigrationRunnable {
               //We want the loaded version information, even if there is no Sirius migration needed. maybe we have some too
               RepresentationsFileVersionSAXParser parser = new RepresentationsFileVersionSAXParser(getURI());
               String loadedVersion = parser.getVersion(new NullProgressMonitor());
-              getDefaultLoadOptions().put("VERSION", loadedVersion);
+              getDefaultLoadOptions().put(SiriusMigrationContribution.SIRIUS_VERSION, loadedVersion);
 
             }
           };
@@ -115,6 +115,9 @@ public class AirdMigrationRunnable extends ModelMigrationRunnable {
         
       }.createResource(uri);
       
+    } else if (CapellaResourceHelper.AFM_FILE_EXTENSION.equals(uri.fileExtension())) {
+      //we want to use the default resource for this one.
+      return null;
     }
 
     return super.doCreateResource(uri, context);

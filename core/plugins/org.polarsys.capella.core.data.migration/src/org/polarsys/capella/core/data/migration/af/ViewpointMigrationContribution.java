@@ -12,20 +12,20 @@ package org.polarsys.capella.core.data.migration.af;
 
 import java.util.Map;
 
-import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.MultiStatus;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.emf.ecore.xmi.XMLResource;
-import org.eclipse.gmf.runtime.emf.core.resources.GMFResource;
 import org.eclipse.osgi.util.NLS;
+import org.eclipse.sirius.business.api.resource.ResourceDescriptor;
+import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.osgi.framework.Version;
-import org.polarsys.capella.common.bundle.FeatureHelper;
 import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.core.af.integration.AFIntegrationPlugin;
@@ -37,7 +37,6 @@ import org.polarsys.capella.core.data.migration.contribution.AbstractMigrationCo
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaFeatureHelper;
 import org.polarsys.kitalpha.ad.metadata.helpers.MetadataHelper;
-import org.polarsys.kitalpha.ad.metadata.helpers.ViewpointMetadata;
 import org.polarsys.kitalpha.ad.services.manager.ViewpointManager;
 
 /**
@@ -55,7 +54,7 @@ public class ViewpointMigrationContribution extends AbstractMigrationContributio
 
   @Override
   public IStatus preMigrationExecute(IResource fileToMigrate, MigrationContext context, boolean checkVersion) {
-    
+
     if (fileToMigrate instanceof IFile && MetadataHelper.isMetadataResource(fileToMigrate)) {
       return checkAFM(fileToMigrate, context, checkVersion);
 
@@ -118,7 +117,7 @@ public class ViewpointMigrationContribution extends AbstractMigrationContributio
             return version;
           }
         }
-        
+
         // We check for additional missing viewpoints
         for (String id : viewpointUsages.keySet()) {
           if (ViewpointManager.getViewpoint(id) == null) {
@@ -126,7 +125,7 @@ public class ViewpointMigrationContribution extends AbstractMigrationContributio
                 "The viewpoint '" + id + "' is missing"));
           }
         }
-        
+
         return status;
       }
     } catch (Exception e) {
@@ -134,7 +133,7 @@ public class ViewpointMigrationContribution extends AbstractMigrationContributio
       status.add(new Status(IStatus.ERROR, AFIntegrationPlugin.getSymbolicName(), e.getMessage()));
       return status;
     }
-    
+
     return Status.OK_STATUS;
 
   }
@@ -157,6 +156,37 @@ public class ViewpointMigrationContribution extends AbstractMigrationContributio
     }
 
     return Status.OK_STATUS;
+  }
+
+  @Override
+  public void postMigrationExecute(ExecutionManager executionManager, ResourceSet resourceSet,
+      MigrationContext context) {
+
+    if (CapellaResourceHelper.isAirdResource(context.getResource(), true)) {
+      Resource resource = resourceSet.getResource(EcoreUtil2.getURI(context.getResource()), false);
+      Resource initMetadata = MetadataHelper.initMetadata(resource);
+      if (initMetadata != null) {
+        boolean found = false;
+        EObject eObject = resource.getContents().get(0);
+        if (eObject instanceof DAnalysis) {
+          DAnalysis analysis = (DAnalysis) eObject;
+          ResourceDescriptor descriptor = new ResourceDescriptor(initMetadata.getURI());
+          URI descriptorURI = descriptor.getResourceURI();
+          EList<ResourceDescriptor> semanticResources = analysis.getSemanticResources();
+          for (ResourceDescriptor semanticResource : semanticResources) {
+            URI semanticResourceURI = semanticResource.getResourceURI();
+            String str = URI.encodeFragment(semanticResourceURI.toString(), true);
+            if (str.equals(descriptorURI.toString())) {
+              found = true;
+              break;
+            }
+          }
+          if (!found) {
+            semanticResources.add(descriptor);
+          }
+        }
+      }
+    }
   }
 
   /**

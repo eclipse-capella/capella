@@ -79,6 +79,7 @@ public class MigrationConstants {
   public static final String MIGRATION_KIND__SCF = "MIGRATION_KIND__SCF";
   public static final String MIGRATION_KIND__PATTERN = "MIGRATION_KIND__PATTERN";
   public static final String MIGRATION_KIND__CHECK_MISSING_VP = "MIGRATION_KIND__CHECK_MISSING_VP";
+  @Deprecated
   public static final String MIGRATION_KIND__AFM = "MIGRATION_KIND__AFM";
   public static final String MIGRATION_KIND__SEMANTIC = "MIGRATION_KIND__SEMANTIC";
   public static final String MIGRATION_KIND__DIAGRAM = "MIGRATION_KIND__DIAGRAM";

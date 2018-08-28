@@ -178,9 +178,6 @@
             class="org.polarsys.capella.core.data.migration.aird.AirdMigrationContributor">
       </migrationContributor>
       <migrationContributor
-         class="org.polarsys.capella.core.data.migration.af.MetadataUpdateContributor">
-      </migrationContributor>
-      <migrationContributor
          class="org.polarsys.capella.core.data.migration.af.ViewpointMigrationContributor"> 
       </migrationContributor>
       
