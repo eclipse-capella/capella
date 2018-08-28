@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -127,19 +127,11 @@ public class SequenceDiagramServices {
   }
 
   public static EObject getSendingEndEvent(SequenceMessage message) {
-    MessageEnd end = message.getSendingEnd();
-    if (end == null) {
-      return getReceivingEndEvent(message);
-    }
-    return end;
+    return message.getSendingEnd();
   }
 
   public static EObject getReceivingEndEvent(SequenceMessage message) {
-    MessageEnd end = message.getReceivingEnd();
-    if (end == null) {
-      return getSendingEndEvent(message);
-    }
-    return end;
+    return message.getReceivingEnd();
   }
 
   public static EObject getSendingEnd(SequenceMessage message) {
