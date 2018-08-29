@@ -37,8 +37,8 @@ import org.polarsys.capella.core.diagram.helpers.DAnnotationHelper;
 import org.polarsys.capella.core.diagram.helpers.IRepresentationAnnotationConstants;
 import org.polarsys.capella.core.model.handler.helpers.CapellaAdapterHelper;
 import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
+import org.polarsys.capella.core.model.handler.helpers.SemanticResourcesScope;
 import org.polarsys.capella.shared.id.handler.IdManager;
-import org.polarsys.capella.shared.id.handler.ResourceSetScope;
 
 /**
  * This class migrates annotation from DRepresentation to DRepresentationDescriptor
@@ -113,6 +113,7 @@ public class DAnnotationDescriptorContribution extends AbstractMigrationContribu
     }
   }
 
+  @SuppressWarnings("deprecation")
   private int migrate(DRepresentation diagram, DRepresentationDescriptor descriptor, ResourceSet resourceSet) {
     int result = 0;
 
@@ -199,7 +200,7 @@ public class DAnnotationDescriptorContribution extends AbstractMigrationContribu
     if (annotation != null) {
       DAnnotation newAnnotation = null;
       for (String id : annotation.getDetails().values()) {
-        EObject object = IdManager.getInstance().getEObject(id, new ResourceSetScope(resourceSet));
+        EObject object = IdManager.getInstance().getEObject(id, new SemanticResourcesScope(resourceSet));
         if (object != null) {
           if (newAnnotation == null) {
             newAnnotation = DAnnotationHelper.createAnnotation(IRepresentationAnnotationConstants.ContextualElements, descriptor);
