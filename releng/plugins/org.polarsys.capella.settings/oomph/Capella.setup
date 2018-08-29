@@ -256,7 +256,7 @@
         <repositoryList
             name="Neon">
           <repository
-              url="http://download.eclipse.org/sirius/updates/stable/5.1.2-S20180518-120822/neon"/>
+              url="http://download.eclipse.org/sirius/updates/releases/5.1.2/neon"/>
         </repositoryList>
         <repositoryList
             name="Oxygen">
@@ -315,7 +315,7 @@
         <repositoryList
             name="Neon">
           <repository
-              url="http://download.eclipse.org/modeling/amalgam/updates/stable/1.9.0-S20180522/capella"/>
+              url="http://download.eclipse.org/modeling/amalgam/updates/stable/1.9.0-S20180528/capella"/>
         </repositoryList>
       </targlet>
       <targlet
@@ -326,22 +326,6 @@
             name="">
           <repository
               url="http://download.eclipse.org/sirius/updates/legacy/1.1.0"/>
-        </repositoryList>
-      </targlet>
-      <targlet
-          name="EGF SDK"
-          activeRepositoryList="${eclipse.target.platform}">
-        <requirement
-            name="org.eclipse.egf.sdk.feature.group"/>
-        <repositoryList
-            name="Oxygen">
-          <repository
-              url="https://hudson.eclipse.org/egf/job/buckminster-egf-oxygen/lastSuccessfulBuild/artifact/result/publish/org.eclipse.egf.site/site.p2"/>
-        </repositoryList>
-        <repositoryList
-            name="Neon">
-          <repository
-              url="https://hudson.eclipse.org/egf/job/buckminster-egf-neon/lastSuccessfulBuild/artifact/result/publish/org.eclipse.egf.site/site.p2"/>
         </repositoryList>
       </targlet>
       <targlet
@@ -465,9 +449,11 @@
         <repositoryList
             name="Oxygen">
           <repository
-              url="https://ci.polarsys.org/kitalpha/job/Kitalpha_master/680/artifact/result/publish/kitalpha_runtime/site.p2"/>
+              url="https://ci.polarsys.org/kitalpha/job/Kitalpha_master/938/artifact/releng/plugins/org.polarsys.kitalpha.releng.runtime.core.updatesite/target/repository"/>
           <repository
-              url="https://ci.polarsys.org/kitalpha/job/Kitalpha_master/680/artifact/result/publish/kitalpha_sdk/site.p2"/>
+              url="https://ci.polarsys.org/kitalpha/job/Kitalpha_master/938/artifact/releng/plugins/org.polarsys.kitalpha.releng.sdk.updatesite/target/repository"/>
+          <repository
+              url="https://ci.eclipse.org/egf/job/tycho-egf-oxygen/lastSuccessfulBuild/artifact/releng/org.eclipse.egf.core.updatesite/target/repository"/>
         </repositoryList>
         <repositoryList
             name="Neon">
@@ -477,6 +463,8 @@
               url="https://ci.polarsys.org/kitalpha/job/Kitalpha-v1.2.x/63/artifact/releng/plugins/org.polarsys.kitalpha.releng.runtime.updatesite/target/repository"/>
           <repository
               url="https://ci.polarsys.org/kitalpha/job/Kitalpha-v1.2.x/63/artifact/releng/plugins/org.polarsys.kitalpha.releng.sdk.updatesite/target/repository"/>
+          <repository
+              url="http://download.eclipse.org/egf/updates/1.5.1/neon"/>
         </repositoryList>
       </targlet>
       <targlet
@@ -518,6 +506,14 @@
           version="JavaSE-1.8"
           location="${jre.location-1.8}">
         <description>Define the JRE needed to compile and run the Java projects of ${scope.project.label} 1.2.x+</description>
+      </setupTask>
+      <setupTask
+          xsi:type="setup.targlets:TargletTask">
+        <targlet
+            name="Kitalpha-1.3.x">
+          <requirement
+              name="org.polarsys.kitalpha.massactions.feature.feature.group"/>
+        </targlet>
       </setupTask>
       <description>Capella master development</description>
     </stream>
@@ -665,14 +661,6 @@
   <project name="Capella Developer"
       logicalProjectContainer="/">
     <setupTask
-        xsi:type="setup:EclipseIniTask"
-        disabled="true"
-        option="-Doomph.redirection.capella="
-        value="https://git.polarsys.org/c/capella/capella.git/plain/releng/plugins/org.polarsys.capella.rcp.target/oomph/Capella.setup->${git.clone.capella.location|uri}/releng/plugins/org.polarsys.capella.rcp.target/oomph/Capella.setup"
-        vm="true">
-      <description>Redirect to local setup file allows testing changes before pushing them back to git. Disabled atm because does not work with branches other than master.</description>
-    </setupTask>
-    <setupTask
         xsi:type="git:GitCloneTask"
         id="git.clone.capella"
         remoteURI="capella/capella.git">
@@ -759,7 +747,7 @@
               pattern=".*\.validation(\..*)?"/>
           <operand
               xsi:type="workingsets:ExclusionPredicate"
-              excludedWorkingSet="//@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.8 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.9"/>
+              excludedWorkingSet="//@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.8 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.9"/>
           <operand
               xsi:type="predicates:RepositoryPredicate"
               project="org.polarsys.capella.common"/>
@@ -774,7 +762,7 @@
               pattern=".*\.properties(\..*)?"/>
           <operand
               xsi:type="workingsets:ExclusionPredicate"
-              excludedWorkingSet="//@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.8"/>
+              excludedWorkingSet="//@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.8"/>
           <operand
               xsi:type="predicates:RepositoryPredicate"
               project="org.polarsys.capella.common"/>
@@ -789,7 +777,7 @@
               pattern=".*\.quickfix(\..*)?"/>
           <operand
               xsi:type="workingsets:ExclusionPredicate"
-              excludedWorkingSet="//@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.8"/>
+              excludedWorkingSet="//@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.8"/>
           <operand
               xsi:type="predicates:RepositoryPredicate"
               project="org.polarsys.capella.common"/>
@@ -804,7 +792,7 @@
               pattern=".*\.transition(\..*)?"/>
           <operand
               xsi:type="workingsets:ExclusionPredicate"
-              excludedWorkingSet="//@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.8 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.9"/>
+              excludedWorkingSet="//@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.8 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.9"/>
           <operand
               xsi:type="predicates:RepositoryPredicate"
               project="org.polarsys.capella.common"/>
@@ -819,7 +807,7 @@
               pattern=".*\.sirius(\..*)?"/>
           <operand
               xsi:type="workingsets:ExclusionPredicate"
-              excludedWorkingSet="//@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.8"/>
+              excludedWorkingSet="//@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.8"/>
           <operand
               xsi:type="predicates:RepositoryPredicate"
               project="org.polarsys.capella.common"/>
@@ -834,7 +822,7 @@
               pattern=".*/common/.*"/>
           <operand
               xsi:type="workingsets:ExclusionPredicate"
-              excludedWorkingSet="//@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.2 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.3 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.0 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.7 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.5 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.4 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.1 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.8 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.9 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.11"/>
+              excludedWorkingSet="//@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.2 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.3 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.0 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.7 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.5 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.4 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.1 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.8 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.9 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.11"/>
           <operand
               xsi:type="predicates:RepositoryPredicate"
               project="org.polarsys.capella.common"/>
@@ -849,7 +837,7 @@
               pattern=".*/core/.*"/>
           <operand
               xsi:type="workingsets:ExclusionPredicate"
-              excludedWorkingSet="//@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.0 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.2 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.3 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.5 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.4 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.1 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.8 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.9 //@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.11"/>
+              excludedWorkingSet="//@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.0 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.2 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.3 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.5 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.4 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.1 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.8 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.9 //@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.11"/>
           <operand
               xsi:type="predicates:RepositoryPredicate"
               project="org.polarsys.capella.common"/>
@@ -876,7 +864,7 @@
               pattern=".*\.test(\..*)?"/>
           <operand
               xsi:type="workingsets:ExclusionPredicate"
-              excludedWorkingSet="//@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.8"/>
+              excludedWorkingSet="//@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.8"/>
           <operand
               xsi:type="predicates:RepositoryPredicate"
               project="org.polarsys.capella.common"/>
@@ -894,7 +882,7 @@
               project="org.polarsys.capella.common"/>
           <operand
               xsi:type="workingsets:ExclusionPredicate"
-              excludedWorkingSet="//@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.8"/>
+              excludedWorkingSet="//@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.8"/>
         </predicate>
       </workingSet>
       <workingSet
@@ -906,7 +894,7 @@
               pattern=".*/doc/.*"/>
           <operand
               xsi:type="workingsets:ExclusionPredicate"
-              excludedWorkingSet="//@projects[name='Capella%20Developer']/@setupTasks.3/@workingSets.8"/>
+              excludedWorkingSet="//@projects[name='Capella%20Developer']/@setupTasks.2/@workingSets.8"/>
           <operand
               xsi:type="predicates:RepositoryPredicate"
               project="org.polarsys.capella.common"/>
@@ -939,6 +927,13 @@
           value="Oxygen"
           defaultValue="Oxygen"
           storageURI="scope://Workspace"/>
+      <setupTask
+          xsi:type="setup:EclipseIniTask"
+          option="-Doomph.redirection.capella="
+          value="http://git.polarsys.org/c/capella/capella.git/plain/releng/plugins/org.polarsys.capella.settings/oomph/Capella.setup->${git.clone.capella.location|uri}/releng/plugins/org.polarsys.capella.settings/oomph/Capella.setup"
+          vm="true">
+        <description>Redirect to local setup file allows testing changes before pushing them back to git. Disabled atm because does not work with branches other than master.</description>
+      </setupTask>
     </stream>
     <stream
         name="v1.2.x">
