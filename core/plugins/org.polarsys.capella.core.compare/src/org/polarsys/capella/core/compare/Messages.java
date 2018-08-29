@@ -24,12 +24,8 @@ public class Messages extends NLS {
   public static String CapellaComparisonMethod_Usage_P2L_Tooltip;
   public static String CapellaComparisonMethod_Usage_Transition;
   public static String CapellaComparisonMethod_Usage_Transition_Tooltip;
-  public static String CapellaComparisonViewer_MenuItemShowDiagramContent_Title;
-  public static String CapellaComparisonViewer_MenuItemShowDiagramContent_Tooltip;
   public static String CapellaMatchPolicy_Criterion_ExchangeEnds;
   public static String CapellaMatchPolicy_Criterion_ExchangeEnds_Tooltip;
-  public static String CapellaMatchPolicy_Criterion_ID_Sirius_Diagram;
-  public static String CapellaMatchPolicy_Criterion_ID_Sirius_Diagram_Tooltip;
   public static String CapellaMatchPolicy_Criterion_P2L;
   public static String CapellaMatchPolicy_Criterion_P2L_Tooltip;
   public static String CapellaMatchPolicy_Criterion_SIDs;

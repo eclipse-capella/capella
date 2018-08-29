@@ -16,7 +16,6 @@ import static org.eclipse.emf.diffmerge.impl.policies.ConfigurableMatchPolicy.Ma
 import static org.eclipse.emf.diffmerge.impl.policies.ConfigurableMatchPolicy.MatchCriterionKind.INTRINSIC_ID;
 import static org.eclipse.emf.diffmerge.impl.policies.ConfigurableMatchPolicy.MatchCriterionKind.SEMANTICS;
 import static org.eclipse.emf.diffmerge.impl.policies.ConfigurableMatchPolicy.MatchCriterionKind.STRUCTURE;
-import static org.polarsys.capella.core.compare.CapellaMatchPolicy.CRITERION_INTRINSIC_ID_SIRIUS_DIAGRAM;
 import static org.polarsys.capella.core.compare.CapellaMatchPolicy.CRITERION_INTRINSIC_ID_SID;
 import static org.polarsys.capella.core.compare.CapellaMatchPolicy.CRITERION_SEMANTICS_P2L;
 
@@ -32,11 +31,8 @@ import org.eclipse.emf.diffmerge.impl.policies.ComparisonConfigurator;
 import org.eclipse.emf.diffmerge.ui.sirius.SiriusComparisonMethod;
 import org.eclipse.emf.diffmerge.ui.specification.IComparisonMethodFactory;
 import org.eclipse.emf.diffmerge.ui.specification.IModelScopeDefinition;
-import org.eclipse.emf.diffmerge.ui.viewers.AbstractComparisonViewer;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.jface.viewers.ILabelProvider;
-import org.eclipse.swt.widgets.Composite;
-import org.eclipse.ui.IActionBars;
 import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory;
 
 
@@ -51,7 +47,7 @@ public class CapellaComparisonMethod extends SiriusComparisonMethod {
           org.polarsys.capella.core.compare.Messages.CapellaComparisonMethod_Usage_Transition,
           org.polarsys.capella.core.compare.Messages.CapellaComparisonMethod_Usage_Transition_Tooltip,
           Arrays.asList(INTRINSIC_ID, EXTRINSIC_ID),
-          Arrays.asList(CRITERION_INTRINSIC_ID_SID, CRITERION_INTRINSIC_ID_SIRIUS_DIAGRAM));
+          Arrays.asList(CRITERION_INTRINSIC_ID_SID));
   
   /** The "compare versions of the same model" configurator */
   public static final IComparisonConfigurator CONFIGURATOR_SID =
@@ -74,8 +70,8 @@ public class CapellaComparisonMethod extends SiriusComparisonMethod {
         org.eclipse.emf.diffmerge.ui.Messages.ConfigurableComparisonMethod_Usage_Versions,
         org.eclipse.emf.diffmerge.ui.Messages.ConfigurableComparisonMethod_Usage_Versions_Tooltip,
         Arrays.asList(INTRINSIC_ID, EXTRINSIC_ID),
-        Arrays.asList(
-            CRITERION_INTRINSIC_ID_SIRIUS_DIAGRAM));
+        Arrays.asList());
+  
   /**
    * Constructor
    * @param leftScopeDef a non-null scope definition
@@ -135,14 +131,6 @@ public class CapellaComparisonMethod extends SiriusComparisonMethod {
   @Override
   protected IMergePolicy createMergePolicy() {
     return new CapellaMergePolicy();
-  }
-  
-  /**
-   * @see org.eclipse.emf.diffmerge.ui.specification.ext.AbstractComparisonMethod#doCreateComparisonViewer(org.eclipse.swt.widgets.Composite, org.eclipse.ui.IActionBars)
-   */
-  @Override
-  public AbstractComparisonViewer doCreateComparisonViewer(Composite parent_p, IActionBars actionBars_p) {
-    return new CapellaComparisonViewer(parent_p, actionBars_p);
   }
   
   /**
