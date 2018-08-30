@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="cs" nsURI="http://www.polarsys.org/capella/core/cs/1.2.0" nsPrefix="org.polarsys.capella.core.data.cs">
-  <eAnnotations source="http://www.polarsys.org/kitalpha/dsl/2007/dslfactory">
+  <eAnnotations source="http://www.polarsys.org/kitalpha/emde/1.0.0/extension">
     <details key="trackResourceModification" value="true"/>
     <details key="useUUIDs" value="false"/>
     <details key="useIDAttributes" value="true"/>
@@ -18,13 +18,6 @@
     <details key="reference documentation" value="none"/>
   </eAnnotations>
   <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
-  <eAnnotations source="http://www.polarsys.org/kitalpha/emde/1.0.0/extension">
-    <details key="trackResourceModification" value="true"/>
-    <details key="useUUIDs" value="false"/>
-    <details key="useIDAttributes" value="true"/>
-    <details key="extensibleProviderFactory" value="true"/>
-    <details key="childCreationExtenders" value="true"/>
-  </eAnnotations>
   <eClassifiers xsi:type="ecore:EClass" name="BlockArchitecturePkg" abstract="true"
       eSuperTypes="CapellaCore.ecore#//ModellingArchitecturePkg">
     <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">

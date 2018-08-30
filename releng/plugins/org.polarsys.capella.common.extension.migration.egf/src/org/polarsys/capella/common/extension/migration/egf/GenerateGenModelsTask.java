@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,7 +10,10 @@
  *******************************************************************************/
 package org.polarsys.capella.common.extension.migration.egf;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -23,6 +26,8 @@ import org.eclipse.emf.codegen.ecore.genmodel.GenModel;
 import org.eclipse.emf.codegen.ecore.genmodel.GenPackage;
 import org.eclipse.emf.codegen.ecore.genmodel.GenResourceKind;
 import org.eclipse.emf.common.util.BasicMonitor;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 
 /**
  * 
@@ -52,7 +57,8 @@ public class GenerateGenModelsTask implements ITaskProduction {
 			
 			public void setGenModelParameters(GenModel genModel_p) {
 				super.setGenModelParameters(genModel_p);
-				genModel_p.setCopyrightText(" Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.\n All rights reserved. This program and the accompanying materials\n are made available under the terms of the Eclipse Public License v1.0\n which accompanies this distribution, and is available at\n http://www.eclipse.org/legal/epl-v10.html\n\n Contributors:\n    Thales - initial API and implementation");
+				int year = Calendar.getInstance().get(Calendar.YEAR);
+				genModel_p.setCopyrightText(" Copyright (c) 2006, "+year+" THALES GLOBAL SERVICES.\n All rights reserved. This program and the accompanying materials\n are made available under the terms of the Eclipse Public License v1.0\n which accompanies this distribution, and is available at\n http://www.eclipse.org/legal/epl-v10.html\n\n Contributors:\n    Thales - initial API and implementation");
 				
 				//Add a customization for set melody extension (to be discussed)
 				if ("CapellaModeller".equals(genModel_p.getModelName())) {
@@ -76,7 +82,34 @@ public class GenerateGenModelsTask implements ITaskProduction {
 		genModelGenerator.setRootExtendsInterface("org.eclipse.emf.ecore.EObject");
 		genModelGenerator.setOperationReflection(false);
 
-		genModels_p.add(genModelGenerator.execute(new BasicMonitor()));
+		GenModel model = genModelGenerator.execute(new BasicMonitor());
+		adaptGenPackagesToEcoreAnnotations(model);
+		
+		genModels_p.add(model);
+	}
+
+	private void adaptGenPackagesToEcoreAnnotations(GenModel model) {
+		for (GenPackage genPackage : model.getAllGenPackagesWithClassifiers()) {
+			String annotation = null;		
+			EPackage ecorePackage = genPackage.getEcorePackage();
+			annotation = EcoreUtil.getAnnotation(ecorePackage, "http://www.polarsys.org/kitalpha/emde/1.0.0/extension", "childCreationExtenders");
+			if (annotation != null) {
+				genPackage.setChildCreationExtenders(Boolean.parseBoolean(annotation));
+			}
+
+			annotation = EcoreUtil.getAnnotation(ecorePackage, "http://www.polarsys.org/kitalpha/emde/1.0.0/extension", "extensibleProviderFactory");
+			if (annotation != null) {
+				genPackage.setExtensibleProviderFactory(Boolean.parseBoolean(annotation));
+			}
+
+			try {
+				genPackage.eResource().save(Collections.EMPTY_MAP);
+				genPackage.getEcorePackage().eResource().save(Collections.EMPTY_MAP);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+
 	}
 
 	public void postExecute(ITaskProductionContext productionContext,
