@@ -151,13 +151,19 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="source" lowerBound="1"
         eType="ecore:EClass ../../org.polarsys.capella.common.data.def/model/ModellingCore.ecore#//TraceableElement"
         changeable="false" volatile="true" transient="true" derived="true" resolveProxies="false">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="sourceElement"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
         eType="ecore:EClass ../../org.polarsys.capella.common.data.def/model/ModellingCore.ecore#//TraceableElement"
         changeable="false" volatile="true" transient="true" derived="true" resolveProxies="false">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="targetElement"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
     </eStructuralFeatures>
   </eClassifiers>
@@ -317,7 +323,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="relatedCapellaElements"
         upperBound="-1" eType="ecore:EClass CapellaCore.ecore#//CapellaElement" changeable="false"
         volatile="true" transient="true" derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="patternbody"/>
+        <details key="viatra.expression" value="Requirement.incomingTraces(self, rt);&#xD;&#xA;&#x9;RequirementsTrace.sourceElement(rt, target);"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
       <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
         <details key="UML/SysML semantic equivalences" value="keyword::none"/>
