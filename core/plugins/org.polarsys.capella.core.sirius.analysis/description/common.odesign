@@ -3116,14 +3116,14 @@
         <containerMappings name="DT_Dummy" semanticCandidatesExpression="ocl:Set {}" domainClass="EObject" childrenPresentation="List"/>
         <containerMappings name="DT_PVG" createElements="false" domainClass="PropertyValueGroup" childrenPresentation="List">
           <deletionDescription href="context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']"/>
-          <subNodeMappings name="DT_PVinPVG" semanticCandidatesExpression="feature:eContents" domainClass="AbstractPropertyValue">
+          <subNodeMappings name="DT_PVinPVG" semanticCandidatesExpression="feature:eContents" synchronizationLock="true" domainClass="AbstractPropertyValue">
             <style xsi:type="style:SquareDescription" labelExpression="&lt;%computePVLabel()%>" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </style>
           </subNodeMappings>
-          <subNodeMappings name="DT_PVGinPVG" semanticCandidatesExpression="feature:eContents" domainClass="PropertyValueGroup">
+          <subNodeMappings name="DT_PVGinPVG" semanticCandidatesExpression="feature:eContents" synchronizationLock="true" domainClass="PropertyValueGroup">
             <style xsi:type="style:SquareDescription" labelExpression="&lt;%computePVLabel()%>" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
