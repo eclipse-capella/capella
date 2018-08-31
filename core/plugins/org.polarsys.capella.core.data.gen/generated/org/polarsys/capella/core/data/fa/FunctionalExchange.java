@@ -97,6 +97,7 @@ public interface FunctionalExchange extends NamedElement, Relationship, Involved
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalExchange_InvolvingFunctionalChains()
 	 * @see org.polarsys.capella.core.data.fa.FunctionalChain#getInvolvedFunctionalExchanges
 	 * @model opposite="involvedFunctionalExchanges" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='FunctionalExchange.involvingInvolvements(self, fci);\r\nFunctionalChainInvolvement.involver(fci, target);'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the functional chains in which this exchange is involved\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
@@ -151,6 +152,7 @@ public interface FunctionalExchange extends NamedElement, Relationship, Involved
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalExchange_AllocatingComponentExchanges()
 	 * @see org.polarsys.capella.core.data.fa.ComponentExchange#getAllocatedFunctionalExchanges
 	 * @model opposite="allocatedFunctionalExchanges" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='incomingComponentExchangeFunctionalExchangeRealizations.allocatingComponentExchange'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the component exchanges associated to this functional exchange, e.g. the exchanges between the components to which the source/destination of this functional exchange are allocated.\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
@@ -180,6 +182,7 @@ public interface FunctionalExchange extends NamedElement, Relationship, Involved
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalExchange_IncomingComponentExchangeFunctionalExchangeRealizations()
 	 * @see org.polarsys.capella.core.data.fa.ComponentExchangeFunctionalExchangeAllocation#getAllocatedFunctionalExchange
 	 * @model opposite="allocatedFunctionalExchange" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='incomingTraces'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the allocation links between component exchanges and functional exchanges, that have this functional exchange as their destination\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -208,6 +211,7 @@ public interface FunctionalExchange extends NamedElement, Relationship, Involved
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalExchange_IncomingFunctionalExchangeRealizations()
 	 * @see org.polarsys.capella.core.data.fa.FunctionalExchangeRealization#getRealizedFunctionalExchange
 	 * @model opposite="realizedFunctionalExchange" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='incomingTraces'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) the realization links between functional exchanges, that have this functional exchange as their destination\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -236,6 +240,7 @@ public interface FunctionalExchange extends NamedElement, Relationship, Involved
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalExchange_OutgoingFunctionalExchangeRealizations()
 	 * @see org.polarsys.capella.core.data.fa.FunctionalExchangeRealization#getRealizingFunctionalExchange
 	 * @model opposite="realizingFunctionalExchange" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='outgoingTraces'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the realization links between functional exchanges, that have this functional exchange as their origin\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -262,6 +267,7 @@ public interface FunctionalExchange extends NamedElement, Relationship, Involved
 	 * @return the value of the '<em>Categories</em>' reference list.
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalExchange_Categories()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='opposite' viatra.expression='exchanges'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the exchange categories (families) to which this functional exchange belongs\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='' constraints='none'"
 	 * @generated
@@ -313,6 +319,7 @@ public interface FunctionalExchange extends NamedElement, Relationship, Involved
 	 * @return the value of the '<em>Source Function Output Port</em>' reference.
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalExchange_SourceFunctionOutputPort()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='source'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
 	 */
@@ -337,6 +344,7 @@ public interface FunctionalExchange extends NamedElement, Relationship, Involved
 	 * @return the value of the '<em>Target Function Input Port</em>' reference.
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalExchange_TargetFunctionInputPort()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='target'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
 	 */
@@ -364,6 +372,7 @@ public interface FunctionalExchange extends NamedElement, Relationship, Involved
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalExchange_RealizedFunctionalExchanges()
 	 * @see org.polarsys.capella.core.data.fa.FunctionalExchange#getRealizingFunctionalExchanges
 	 * @model opposite="realizingFunctionalExchanges" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='FunctionalExchangeRealization.sourceElement(fer, self);\r\nFunctionalExchangeRealization.targetElement(fer, target);'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
 	 */
@@ -391,6 +400,7 @@ public interface FunctionalExchange extends NamedElement, Relationship, Involved
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalExchange_RealizingFunctionalExchanges()
 	 * @see org.polarsys.capella.core.data.fa.FunctionalExchange#getRealizedFunctionalExchanges
 	 * @model opposite="realizedFunctionalExchanges" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='FunctionalExchangeRealization.targetElement(fer, self);\r\nFunctionalExchangeRealization.sourceElement(fer, target);'"
 	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated

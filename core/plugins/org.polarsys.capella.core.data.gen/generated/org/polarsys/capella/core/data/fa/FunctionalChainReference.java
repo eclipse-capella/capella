@@ -45,6 +45,7 @@ public interface FunctionalChainReference extends FunctionalChainInvolvement {
 	 * @return the value of the '<em>Referenced Functional Chain</em>' reference.
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChainReference_ReferencedFunctionalChain()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='involved'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
 	 */

@@ -32,9 +32,8 @@ import org.polarsys.capella.core.data.information.datavalue.DatavaluePackage;
  * <!-- end-user-doc -->
  * @see org.polarsys.capella.core.data.information.InformationFactory
  * @model kind="package"
- *        annotation="http://www.polarsys.org/kitalpha/dsl/2007/dslfactory trackResourceModification='true' useUUIDs='false' useIDAttributes='true' extensibleProviderFactory='true' childCreationExtenders='true'"
- *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Information aims at defining the data transmission language (named Information due to the namespacing strange effects if it would have been named Data). It includes the notion of data as well as the different data communication means.\r\n[source: Capella study]' usage\040guideline='none' used\040in\040levels='operational,system,logical,physical,epbs' usage\040examples='none' constraints='This package depends on the model CapellaCore.ecore' comment/notes='none' reference\040documentation='n/a'"
  *        annotation="http://www.polarsys.org/kitalpha/emde/1.0.0/extension trackResourceModification='true' useUUIDs='false' useIDAttributes='true' extensibleProviderFactory='true' childCreationExtenders='true'"
+ *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Information aims at defining the data transmission language (named Information due to the namespacing strange effects if it would have been named Data). It includes the notion of data as well as the different data communication means.\r\n[source: Capella study]' usage\040guideline='none' used\040in\040levels='operational,system,logical,physical,epbs' usage\040examples='none' constraints='This package depends on the model CapellaCore.ecore' comment/notes='none' reference\040documentation='n/a'"
  * @generated
  */
 public interface InformationPackage extends EPackage {

@@ -50,6 +50,7 @@ public interface ComponentExchangeFunctionalExchangeAllocation extends AbstractF
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getComponentExchangeFunctionalExchangeAllocation_AllocatedFunctionalExchange()
 	 * @see org.polarsys.capella.core.data.fa.FunctionalExchange#getIncomingComponentExchangeFunctionalExchangeRealizations
 	 * @model opposite="incomingComponentExchangeFunctionalExchangeRealizations" required="true" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='targetElement'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the functional exchange involved in this allocation link\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -77,6 +78,7 @@ public interface ComponentExchangeFunctionalExchangeAllocation extends AbstractF
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getComponentExchangeFunctionalExchangeAllocation_AllocatingComponentExchange()
 	 * @see org.polarsys.capella.core.data.fa.ComponentExchange#getOutgoingComponentExchangeFunctionalExchangeAllocations
 	 * @model opposite="outgoingComponentExchangeFunctionalExchangeAllocations" required="true" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='sourceElement'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the connection involved in this allocation relationship\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated

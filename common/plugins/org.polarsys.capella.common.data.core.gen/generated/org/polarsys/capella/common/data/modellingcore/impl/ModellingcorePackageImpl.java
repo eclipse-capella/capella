@@ -1010,14 +1010,12 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 		// Create annotations
 		// http://www.polarsys.org/capella/2007/UML2Mapping
 		createUML2MappingAnnotations();
-		// http://www.polarsys.org/kitalpha/dsl/2007/dslfactory
-		createDslfactoryAnnotations();
+		// http://www.polarsys.org/kitalpha/emde/1.0.0/extension
+		createExtensionAnnotations();
 		// http://www.polarsys.org/kitalpha/ecore/documentation
 		createDocumentationAnnotations();
 		// http://www.polarsys.org/capella/semantic
 		createSemanticAnnotations();
-		// http://www.polarsys.org/kitalpha/emde/1.0.0/extension
-		createExtensionAnnotations();
 		// http://www.polarsys.org/capella/2007/BusinessInformation
 		createBusinessInformationAnnotations();
 		// http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping
@@ -1116,26 +1114,6 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 		   new String[] {
 			 "featureName", "client", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Dependency" //$NON-NLS-1$ //$NON-NLS-2$
-		   });
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://www.polarsys.org/kitalpha/dsl/2007/dslfactory</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createDslfactoryAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/dsl/2007/dslfactory"; //$NON-NLS-1$	
-		addAnnotation
-		  (this, 
-		   source, 
-		   new String[] {
-			 "trackResourceModification", "true", //$NON-NLS-1$ //$NON-NLS-2$
-			 "useUUIDs", "false", //$NON-NLS-1$ //$NON-NLS-2$
-			 "useIDAttributes", "true", //$NON-NLS-1$ //$NON-NLS-2$
-			 "extensibleProviderFactory", "true", //$NON-NLS-1$ //$NON-NLS-2$
-			 "childCreationExtenders", "true" //$NON-NLS-1$ //$NON-NLS-2$
 		   });
 	}
 
@@ -2455,41 +2433,57 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 		  (getModelElement_Constraints(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "opposite", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "constrainedElements" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getInformationsExchanger_IncomingInformationFlows(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "opposite", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "target" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getInformationsExchanger_OutgoingInformationFlows(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "opposite", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "source" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getInformationsExchanger_InformationFlows(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "AbstractInformationFlow.source(target, self);\r\n} or {\r\n\tAbstractInformationFlow.target(target, self);" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getTraceableElement_IncomingTraces(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "opposite", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "targetElement" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getTraceableElement_OutgoingTraces(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "opposite", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "sourceElement" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getAbstractType_AbstractTypedElements(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "opposite", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "abstractType" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getAbstractConstraint_Context(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "opposite", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "ownedConstraints" //$NON-NLS-1$ //$NON-NLS-2$
 		   });
 	}
 

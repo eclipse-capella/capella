@@ -346,6 +346,7 @@ public interface Requirement extends Namespace {
 	 * @return the value of the '<em>Related Capella Elements</em>' reference list.
 	 * @see org.polarsys.capella.core.data.requirement.RequirementPackage#getRequirement_RelatedCapellaElements()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='Requirement.incomingTraces(self, rt);\r\n\tRequirementsTrace.sourceElement(rt, target);'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
 	 */

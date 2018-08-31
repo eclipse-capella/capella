@@ -51,6 +51,7 @@ public interface ComponentFunctionalAllocation extends AbstractFunctionAllocatio
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getComponentFunctionalAllocation_Function()
 	 * @see org.polarsys.capella.core.data.fa.AbstractFunction#getComponentFunctionalAllocations
 	 * @model opposite="componentFunctionalAllocations" required="true" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='targetElement'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the function involved in this allocation link\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -78,6 +79,7 @@ public interface ComponentFunctionalAllocation extends AbstractFunctionAllocatio
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getComponentFunctionalAllocation_Block()
 	 * @see org.polarsys.capella.core.data.fa.AbstractFunctionalBlock#getFunctionalAllocations
 	 * @model opposite="functionalAllocations" required="true" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='sourceElement'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the block involved in this allocation link\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated

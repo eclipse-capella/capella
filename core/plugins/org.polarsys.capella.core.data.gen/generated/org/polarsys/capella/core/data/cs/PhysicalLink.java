@@ -161,6 +161,7 @@ public interface PhysicalLink extends AbstractPhysicalPathLink, AbstractPhysical
 	 * @return the value of the '<em>Categories</em>' reference list.
 	 * @see org.polarsys.capella.core.data.cs.CsPackage#getPhysicalLink_Categories()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='opposite' viatra.expression='links'"
 	 * @generated
 	 */
 
@@ -184,6 +185,7 @@ public interface PhysicalLink extends AbstractPhysicalPathLink, AbstractPhysical
 	 * @return the value of the '<em>Source Physical Port</em>' reference.
 	 * @see org.polarsys.capella.core.data.cs.CsPackage#getPhysicalLink_SourcePhysicalPort()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='unimplemented' viatra.expression='Unable to match on a positional criteria linkEnds[0] '"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
 	 */
@@ -208,6 +210,7 @@ public interface PhysicalLink extends AbstractPhysicalPathLink, AbstractPhysical
 	 * @return the value of the '<em>Target Physical Port</em>' reference.
 	 * @see org.polarsys.capella.core.data.cs.CsPackage#getPhysicalLink_TargetPhysicalPort()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='unimplemented' viatra.expression='Unable to match on a positional criteria linkEnds[1] '"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
 	 */
@@ -233,6 +236,7 @@ public interface PhysicalLink extends AbstractPhysicalPathLink, AbstractPhysical
 	 * @return the value of the '<em>Realized Physical Links</em>' reference list.
 	 * @see org.polarsys.capella.core.data.cs.CsPackage#getPhysicalLink_RealizedPhysicalLinks()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='PhysicalLinkRealization.sourceElement(plr, self);\r\nPhysicalLinkRealization.targetElement(plr, target);'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='none' constraints='none' comment/notes='none'"
 	 * @generated
 	 */
@@ -258,6 +262,7 @@ public interface PhysicalLink extends AbstractPhysicalPathLink, AbstractPhysical
 	 * @return the value of the '<em>Realizing Physical Links</em>' reference list.
 	 * @see org.polarsys.capella.core.data.cs.CsPackage#getPhysicalLink_RealizingPhysicalLinks()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='PhysicalLinkRealization.targetElement(plr, self);\r\nPhysicalLinkRealization.sourceElement(plr, target);'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='none' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
 	 * @generated

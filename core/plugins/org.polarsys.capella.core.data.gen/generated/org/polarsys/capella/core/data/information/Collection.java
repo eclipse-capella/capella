@@ -299,6 +299,7 @@ public interface Collection extends Classifier, MultiplicityElement, DataValueCo
 	 * @model resolveProxies="false" transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='ownedOperation' featureOwner='Class'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='operations'"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='ownedFeatures'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='The operations associated to this collection\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::DataType::ownedOperation' explanation='none' constraints='none'"
 	 *        annotation="http://www.polarsys.org/capella/semantic feature='ownedFeatures'"

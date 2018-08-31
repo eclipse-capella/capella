@@ -82,6 +82,7 @@ public interface AbstractState extends NamedElement, IState {
 	 * @return the value of the '<em>Realized Abstract States</em>' reference list.
 	 * @see org.polarsys.capella.core.data.capellacommon.CapellacommonPackage#getAbstractState_RealizedAbstractStates()
 	 * @model resolveProxies="false" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='AbstractStateRealization.realizingAbstractState(asr, self);\r\nAbstractStateRealization.realizedAbstractState(asr, target);\r\n'"
 	 * @generated
 	 */
 
@@ -106,6 +107,7 @@ public interface AbstractState extends NamedElement, IState {
 	 * @return the value of the '<em>Realizing Abstract States</em>' reference list.
 	 * @see org.polarsys.capella.core.data.capellacommon.CapellacommonPackage#getAbstractState_RealizingAbstractStates()
 	 * @model resolveProxies="false" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='AbstractStateRealization.realizedAbstractState(asr, self);\r\nAbstractStateRealization.realizingAbstractState(asr, target);\r\n'"
 	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
 	 * @generated
 	 */
@@ -131,6 +133,7 @@ public interface AbstractState extends NamedElement, IState {
 	 * @return the value of the '<em>Outgoing</em>' reference list.
 	 * @see org.polarsys.capella.core.data.capellacommon.CapellacommonPackage#getAbstractState_Outgoing()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='opposite' viatra.expression='source'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Specifies the transitions departing from this vertex.\r\n[source:UML Superstructure v2.2]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Opposite reference of uml::Transition::source' constraints='Order must be computed'"
 	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
@@ -158,6 +161,7 @@ public interface AbstractState extends NamedElement, IState {
 	 * @return the value of the '<em>Incoming</em>' reference list.
 	 * @see org.polarsys.capella.core.data.capellacommon.CapellacommonPackage#getAbstractState_Incoming()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='opposite' viatra.expression='target'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Specifies the transitions entering this vertex.\r\n[source:UML Superstructure v2.2]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Opposite reference of uml::Transition::target' constraints='Order must be computed'"
 	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
@@ -185,6 +189,7 @@ public interface AbstractState extends NamedElement, IState {
 	 * @return the value of the '<em>Involver Regions</em>' reference list.
 	 * @see org.polarsys.capella.core.data.capellacommon.CapellacommonPackage#getAbstractState_InvolverRegions()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='opposite' viatra.expression='involvedStates'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='none' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='none' constraints='none'"
 	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"

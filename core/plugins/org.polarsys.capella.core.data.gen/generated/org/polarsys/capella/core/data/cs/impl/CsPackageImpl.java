@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.polarsys.capella.common.data.activity.ActivityPackage;
+import org.polarsys.capella.common.data.behavior.BehaviorPackage;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
 import org.polarsys.capella.core.data.capellacommon.impl.CapellacommonPackageImpl;
@@ -92,6 +93,7 @@ import org.polarsys.capella.core.data.requirement.RequirementPackage;
 import org.polarsys.capella.core.data.requirement.impl.RequirementPackageImpl;
 import org.polarsys.capella.core.data.sharedmodel.SharedmodelPackage;
 import org.polarsys.capella.core.data.sharedmodel.impl.SharedmodelPackageImpl;
+import org.polarsys.kitalpha.emde.model.EmdePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -420,7 +422,10 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 		isInited = true;
 
 		// Initialize simple dependencies
+		ModellingcorePackage.eINSTANCE.eClass();
+		EmdePackage.eINSTANCE.eClass();
 		ActivityPackage.eINSTANCE.eClass();
+		BehaviorPackage.eINSTANCE.eClass();
 
 		// Obtain or create and register interdependencies
 		CapellamodellerPackageImpl theCapellamodellerPackage = (CapellamodellerPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(CapellamodellerPackage.eNS_URI) instanceof CapellamodellerPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(CapellamodellerPackage.eNS_URI) : CapellamodellerPackage.eINSTANCE);
@@ -2376,14 +2381,12 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 		createResource(eNS_URI);
 
 		// Create annotations
-		// http://www.polarsys.org/kitalpha/dsl/2007/dslfactory
-		createDslfactoryAnnotations();
+		// http://www.polarsys.org/kitalpha/emde/1.0.0/extension
+		createExtensionAnnotations();
 		// http://www.polarsys.org/kitalpha/ecore/documentation
 		createDocumentationAnnotations();
 		// http://www.polarsys.org/capella/semantic
 		createSemanticAnnotations();
-		// http://www.polarsys.org/kitalpha/emde/1.0.0/extension
-		createExtensionAnnotations();
 		// http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping
 		createMappingAnnotations();
 		// http://www.polarsys.org/capella/2007/BusinessInformation
@@ -2396,26 +2399,6 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 		createDerivedAnnotations();
 		// http://www.polarsys.org/capella/2007/ImpactAnalysis/Ignore
 		createIgnoreAnnotations();
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://www.polarsys.org/kitalpha/dsl/2007/dslfactory</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createDslfactoryAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/dsl/2007/dslfactory"; //$NON-NLS-1$	
-		addAnnotation
-		  (this, 
-		   source, 
-		   new String[] {
-			 "trackResourceModification", "true", //$NON-NLS-1$ //$NON-NLS-2$
-			 "useUUIDs", "false", //$NON-NLS-1$ //$NON-NLS-2$
-			 "useIDAttributes", "true", //$NON-NLS-1$ //$NON-NLS-2$
-			 "extensibleProviderFactory", "true", //$NON-NLS-1$ //$NON-NLS-2$
-			 "childCreationExtenders", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });
 	}
 
 	/**
@@ -6049,341 +6032,477 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 		  (getBlockArchitecture_ProvisionedArchitectureAllocations(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "outgoingTraces" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getBlockArchitecture_ProvisioningArchitectureAllocations(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "incomingTraces" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getBlockArchitecture_AllocatedArchitectures(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "provisionedArchitectureAllocations.allocatedArchitecture" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getBlockArchitecture_AllocatingArchitectures(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "provisioningArchitectureAllocations.allocatingArchitecture" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getComponent_UsedInterfaceLinks(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "ownedInterfaceUses" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getComponent_UsedInterfaces(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "usedInterfaceLinks.usedInterface" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getComponent_ImplementedInterfaceLinks(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "ownedInterfaceImplementations" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getComponent_ImplementedInterfaces(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "implementedInterfaceLinks.implementedInterface" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getComponent_ProvisionedComponentAllocations(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "outgoingTraces" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getComponent_ProvisioningComponentAllocations(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "incomingTraces" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getComponent_AllocatedComponents(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "provisionedComponentAllocations.allocatedComponent" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getComponent_AllocatingComponents(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "provisioningComponentAllocations.allocatingComponent" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getComponent_ProvidedInterfaces(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "containedComponentPorts.providedInterfaces" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getComponent_RequiredInterfaces(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "containedComponentPorts.requiredInterfaces" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getComponent_ContainedComponentPorts(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "ownedFeatures" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getComponent_ContainedParts(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "ownedFeatures" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getComponent_ContainedPhysicalPorts(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "ownedFeatures" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getPart_ProvidedInterfaces(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "Part.type(self, component);\r\nComponent.providedInterfaces(component, target);" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getPart_RequiredInterfaces(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "Part.type(self, component);\r\nComponent.requiredInterfaces(component, target);" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getPart_DeployedParts(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "deploymentLinks.deployedElement" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getPart_DeployingParts(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "deployingLinks.location" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getArchitectureAllocation_AllocatedArchitecture(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "targetElement" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getArchitectureAllocation_AllocatingArchitecture(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "sourceElement" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getComponentAllocation_AllocatedComponent(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "targetElement" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getComponentAllocation_AllocatingComponent(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "sourceElement" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getSystemComponent_ParticipationsInCapabilityRealizations(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "involvingCapabilityRealizationInvolvements" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getInterface_ImplementorComponents(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "interfaceImplementations.interfaceImplementor" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getInterface_UserComponents(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "interfaceUses.interfaceUser" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getInterface_InterfaceImplementations(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "opposite", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "implementedInterface" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getInterface_InterfaceUses(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "opposite", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "usedInterface" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getInterface_ProvisioningInterfaceAllocations(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "incomingTraces" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getInterface_AllocatingInterfaces(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "provisioningInterfaceAllocations.allocatingInterfaceAllocator" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getInterface_AllocatingComponents(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "provisioningInterfaceAllocations.allocatingInterfaceAllocator" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getInterface_ExchangeItems(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "ownedExchangeItemAllocations.allocatedItem" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getInterface_RequiringComponents(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "Interface.requiringComponentPorts(self, port);\r\nComponent.containedComponentPorts(target, port);" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getInterface_RequiringComponentPorts(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "opposite", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "requiredInterfaces" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getInterface_ProvidingComponents(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "Interface.providingComponentPorts(self, port);\r\nComponent.containedComponentPorts(target, port);" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getInterface_ProvidingComponentPorts(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "opposite", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "providedInterfaces" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getInterface_RealizingLogicalInterfaces(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "ContextInterfaceRealization.targetElement(cir, self); \r\nContextInterfaceRealization.sourceElement(cir, target); " //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getInterface_RealizedContextInterfaces(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "ContextInterfaceRealization.sourceElement(cir, self);\r\nContextInterfaceRealization.targetElement(cir, target);" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getInterface_RealizingPhysicalInterfaces(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "LogicalInterfaceRealization.targetElement(cir, self); \r\nLogicalInterfaceRealization.sourceElement(cir, target); " //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getInterface_RealizedLogicalInterfaces(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "LogicalInterfaceRealization.sourceElement(cir, self);\r\nLogicalInterfaceRealization.targetElement(cir, target); " //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getInterfaceImplementation_InterfaceImplementor(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "opposite", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "ownedInterfaceImplementations" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getInterfaceUse_InterfaceUser(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "opposite", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "ownedInterfaceUses" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getInterfaceAllocation_AllocatedInterface(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "targetElement" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getInterfaceAllocation_AllocatingInterfaceAllocator(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "sourceElement" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getInterfaceAllocator_ProvisionedInterfaceAllocations(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "outgoingTraces" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getInterfaceAllocator_AllocatedInterfaces(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "provisionedInterfaceAllocations.allocatedInterface" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getExchangeItemAllocation_AllocatingInterface(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "opposite", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "ownedExchangeItemAllocations" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getDeployableElement_DeployingLinks(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "opposite", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "deployedElement" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getDeploymentTarget_DeploymentLinks(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "opposite", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "location" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getAbstractPhysicalArtifact_AllocatorConfigurationItems(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "PhysicalArtifactRealization.targetElement(par, self);\r\nPhysicalArtifactRealization.allocatingComponent(par, target);" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getAbstractPhysicalLinkEnd_InvolvedLinks(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "PhysicalLink.linkEnds(target, self);\r\n} or {\r\n\tPhysicalLinkEnd.port(ple, self);\t\r\n\tPhysicalLink.linkEnds(target, ple);" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getPhysicalLink_Categories(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "opposite", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "links" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getPhysicalLink_SourcePhysicalPort(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "unimplemented", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "Unable to match on a positional criteria linkEnds[0] " //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getPhysicalLink_TargetPhysicalPort(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "unimplemented", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "Unable to match on a positional criteria linkEnds[1] " //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getPhysicalLink_RealizedPhysicalLinks(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "PhysicalLinkRealization.sourceElement(plr, self);\r\nPhysicalLinkRealization.targetElement(plr, target);" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getPhysicalLink_RealizingPhysicalLinks(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "PhysicalLinkRealization.targetElement(plr, self);\r\nPhysicalLinkRealization.sourceElement(plr, target);" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getPhysicalPath_FirstPhysicalPathInvolvements(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "freeform", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "pattern PhysicalPath__firstPhysicalPathInvolvements(self : PhysicalPath, target : PhysicalPathInvolvement) {\r\n\tPhysicalPath.ownedPhysicalPathInvolvements(self, target);\r\n\tPhysicalPathInvolvement.involved(target, _);\r\n\tneg find _PreviousInvolvement(target, _);\r\n}\r\nprivate pattern _PreviousInvolvement(ppi : PhysicalPathInvolvement, previous : PhysicalPathInvolvement) {\r\n\tPhysicalPathInvolvement.previousInvolvements(ppi, previous);\r\n}\r\n" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getPhysicalPath_RealizedPhysicalPaths(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "PhysicalPathRealization.sourceElement(ppr, self);\r\nPhysicalPathRealization.targetElement(ppr, target);" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getPhysicalPath_RealizingPhysicalPaths(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "PhysicalPathRealization.targetElement(ppr, self);\r\nPhysicalPathRealization.sourceElement(ppr, target);" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getPhysicalPathInvolvement_PreviousInvolvements(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "PhysicalPathInvolvement.nextInvolvements(target, self);\r\n// TODO understand why we should verify that target is in the same path than self ...\r\nPhysicalPath.ownedPhysicalPathInvolvements(pp, self);\r\nPhysicalPath.ownedPhysicalPathInvolvements(pp, target);" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getPhysicalPathInvolvement_InvolvedElement(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "involved" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getPhysicalPathInvolvement_InvolvedComponent(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "PhysicalPathInvolvement.involved(self, part);\r\nPart.type(part, target);" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getPhysicalPathReference_ReferencedPhysicalPath(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "involved" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getPhysicalPort_AllocatedComponentPorts(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "ComponentPortAllocation.allocatingPort(ppr, self);\r\nComponentPortAllocation.allocatedPort(ppr, target);" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getPhysicalPort_RealizedPhysicalPorts(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "PhysicalPortRealization.sourceElement(ppr, self);\r\nPhysicalPortRealization.targetElement(ppr, target);" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getPhysicalPort_RealizingPhysicalPorts(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "PhysicalPortRealization.targetElement(ppr, self);\r\nPhysicalPortRealization.sourceElement(ppr, target);" //$NON-NLS-1$ //$NON-NLS-2$
 		   });
 	}
 

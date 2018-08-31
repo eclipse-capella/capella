@@ -48,7 +48,7 @@ import org.polarsys.capella.core.data.fa.AbstractFunction;
  * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getScenario()
  * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='Scenario'"
  *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping metaclass='Interaction' stereotype='eng.Scenario'"
- *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Definition of a dynamic behaviour composed of the following information :\r\nContext, objective, pre-conditions, post-conditions, used capabilities, involved roles & actors, operational exchanges & interactions, processes and activities. Ability to be validated. Temporal & performance description.Criticity.\r\nScenarios can be gathered in a set of Use Cases.\r\n\r\nA scenario describes a temporal dynamic interaction between actors (included the system or possibly its components) through their exchanges, it also describes the initialisation and the evolution of the context of the interaction.\r\n[source:ARCADIA encyclopedia v0.8.0]\r\n\r\nA scenario is similar to UML Interaction concept :\r\nAn interaction is a unit of behavior that focuses on the observable exchange of information between\r\nConnectableElements.\r\n\r\nA scenario can be compared to an UML sequence diagram :\r\nA sequence diagram describes an Interaction by focusing on the sequence of Messages that are exchanged, along with\r\ntheir corresponding OccurrenceSpecifications on the Lifelines.\r\n[source:UML Superstructure v2.2]' usage\040guideline='n/a' used\040in\040levels='operational, system, logical, physical' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
+ *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Definition of a dynamic behaviour composed of the following information :\r\nContext, objective, pre-conditions, post-conditions, used capabilities, involved roles &amp; actors, operational exchanges &amp; interactions, processes and activities. Ability to be validated. Temporal &amp; performance description.Criticity.\r\nScenarios can be gathered in a set of Use Cases.\r\n\r\nA scenario describes a temporal dynamic interaction between actors (included the system or possibly its components) through their exchanges, it also describes the initialisation and the evolution of the context of the interaction.\r\n[source:ARCADIA encyclopedia v0.8.0]\r\n\r\nA scenario is similar to UML Interaction concept :\r\nAn interaction is a unit of behavior that focuses on the observable exchange of information between\r\nConnectableElements.\r\n\r\nA scenario can be compared to an UML sequence diagram :\r\nA sequence diagram describes an Interaction by focusing on the sequence of Messages that are exchanged, along with\r\ntheir corresponding OccurrenceSpecifications on the Lifelines.\r\n[source:UML Superstructure v2.2]' usage\040guideline='n/a' used\040in\040levels='operational, system, logical, physical' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='uml::Interaction' explanation='none' constraints='none'"
  * @generated
  */
@@ -451,6 +451,7 @@ public interface Scenario extends Namespace, AbstractBehavior {
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the SequenceMessage list, in sequence order' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='ownedInstanceRoles.representedInstance'"
 	 * @generated
 	 */
 
@@ -477,6 +478,7 @@ public interface Scenario extends Namespace, AbstractBehavior {
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the SequenceMessage list, in sequence order' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='ownedInstanceRoles.representedInstance'"
 	 * @generated
 	 */
 
@@ -503,6 +505,7 @@ public interface Scenario extends Namespace, AbstractBehavior {
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='none' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='Scenario.ownedTimeLapses(self, iu);\r\nInteractionUse.referencedScenario(iu, target);'"
 	 * @generated
 	 */
 
@@ -531,6 +534,7 @@ public interface Scenario extends Namespace, AbstractBehavior {
 	 * @model opposite="realizingScenarios" transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='none' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='Scenario.outgoingTraces(self, sr);\r\nScenarioRealization.realizedScenario(sr, target);'"
 	 * @generated
 	 */
 
@@ -559,6 +563,7 @@ public interface Scenario extends Namespace, AbstractBehavior {
 	 * @model opposite="realizedScenarios" transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='none' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='Scenario.incomingTraces(self, sr);\r\nScenarioRealization.realizingScenario(sr, target);'"
 	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
 	 * @generated
 	 */

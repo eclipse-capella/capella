@@ -376,6 +376,7 @@ public interface CapellaElement extends TraceableElement, PublishableElement {
 	 * @return the value of the '<em>Applied Requirements</em>' reference list.
 	 * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getCapellaElement_AppliedRequirements()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='RequirementsTrace.sourceElement(rt, self);\r\nRequirementsTrace.targetElement(rt, target);'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
 	 */

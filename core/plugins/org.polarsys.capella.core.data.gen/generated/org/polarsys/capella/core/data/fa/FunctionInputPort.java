@@ -76,6 +76,7 @@ public interface FunctionInputPort extends FunctionPort, InputPin {
 	 * @return the value of the '<em>Incoming Functional Exchanges</em>' reference list.
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionInputPort_IncomingFunctionalExchanges()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='incoming'"
 	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated

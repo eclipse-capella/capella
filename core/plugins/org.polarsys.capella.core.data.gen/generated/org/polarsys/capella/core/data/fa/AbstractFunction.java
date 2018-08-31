@@ -234,6 +234,7 @@ public interface AbstractFunction extends Namespace, InvolvedElement, AbstractIn
 	 * @return the value of the '<em>Sub Functions</em>' reference list.
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getAbstractFunction_SubFunctions()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='freeform' viatra.expression='pattern AbstractFunction__subFunctions(self : AbstractFunction, target : AbstractFunction) {\r\n\t// sub function directly in function\r\n\tAbstractFunction.ownedFunctions(self, target);\r\n} or { // sub function in function first level package\r\n\tfind _AbstractFunction__ownedFunctionPkgs(self, pkg);\r\n\tfind _FunctionPkg__ownedFunctions(pkg, target);\r\n}\r\nor { // sub function in function first level package sub packages\r\n\tfind _AbstractFunction__ownedFunctionPkgs(self, pkg);\r\n\tfind _FunctionPkg__ownedFunctionPkgs+(pkg, subpkg);\r\n\tfind _FunctionPkg__ownedFunctions(subpkg, target);\r\n}\r\n\r\nprivate pattern _AbstractFunction__ownedFunctionPkgs(af : AbstractFunction, ownedpkg : FunctionPkg) {\r\n\tOperationalActivity.ownedOperationalActivityPkgs(af, ownedpkg);\r\n} or {\r\n\tSystemFunction.ownedSystemFunctionPkgs(af, ownedpkg);\r\n} or {\r\n\tLogicalFunction.ownedLogicalFunctionPkgs(af, ownedpkg);\r\n} or {\r\n\tPhysicalFunction.ownedPhysicalFunctionPkgs(af, ownedpkg);\r\n}\r\n\r\nprivate pattern _FunctionPkg__ownedFunctionPkgs(pkg : FunctionPkg, ownedpkg : FunctionPkg) {\r\n\tOperationalActivityPkg.ownedOperationalActivityPkgs(pkg, ownedpkg);\r\n} or {\r\n\tSystemFunctionPkg.ownedSystemFunctionPkgs(pkg, ownedpkg);\r\n} or {\r\n\tLogicalFunctionPkg.ownedLogicalFunctionPkgs(pkg, ownedpkg);\r\n} or {\r\n\tPhysicalFunctionPkg.ownedPhysicalFunctionPkgs(pkg, ownedpkg);\r\n}\r\n\r\nprivate pattern _FunctionPkg__ownedFunctions(pkg : FunctionPkg, af : AbstractFunction) {\r\n\tOperationalActivityPkg.ownedOperationalActivities(pkg, af);\r\n} or {\r\n\tSystemFunctionPkg.ownedSystemFunctions(pkg, af);\r\n} or {\r\n\tLogicalFunctionPkg.ownedLogicalFunctions(pkg, af);\r\n} or {\r\n\tPhysicalFunctionPkg.ownedPhysicalFunctions(pkg, af);\r\n}\r\n'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) the children functions of this function\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -262,6 +263,7 @@ public interface AbstractFunction extends Namespace, InvolvedElement, AbstractIn
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getAbstractFunction_OutFunctionRealizations()
 	 * @see org.polarsys.capella.core.data.fa.FunctionRealization#getAllocatingFunction
 	 * @model opposite="allocatingFunction" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='outgoingTraces'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='function realization links that have this function as their origin\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -290,6 +292,7 @@ public interface AbstractFunction extends Namespace, InvolvedElement, AbstractIn
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getAbstractFunction_InFunctionRealizations()
 	 * @see org.polarsys.capella.core.data.fa.FunctionRealization#getAllocatedFunction
 	 * @model opposite="allocatedFunction" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='incomingTraces'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the function realisation links that have this function as their destination\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -318,6 +321,7 @@ public interface AbstractFunction extends Namespace, InvolvedElement, AbstractIn
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getAbstractFunction_ComponentFunctionalAllocations()
 	 * @see org.polarsys.capella.core.data.fa.ComponentFunctionalAllocation#getFunction
 	 * @model opposite="function" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='incomingTraces'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the mediator classes that implement the allocation of this function to/from components (blocks)\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -346,6 +350,7 @@ public interface AbstractFunction extends Namespace, InvolvedElement, AbstractIn
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getAbstractFunction_AllocationBlocks()
 	 * @see org.polarsys.capella.core.data.fa.AbstractFunctionalBlock#getAllocatedFunctions
 	 * @model opposite="allocatedFunctions" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='componentFunctionalAllocations.block'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the blocks to/from which this function is allocated\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -397,6 +402,7 @@ public interface AbstractFunction extends Namespace, InvolvedElement, AbstractIn
 	 * @return the value of the '<em>Involving Capabilities</em>' reference list.
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getAbstractFunction_InvolvingCapabilities()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='AbstractFunction.involvingInvolvements(self, afaci);\r\nAbstractFunctionAbstractCapabilityInvolvement.capability(afaci, target);'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
@@ -424,6 +430,7 @@ public interface AbstractFunction extends Namespace, InvolvedElement, AbstractIn
 	 * @return the value of the '<em>Involving Capability Realizations</em>' reference list.
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getAbstractFunction_InvolvingCapabilityRealizations()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='AbstractFunction.involvingInvolvements(self, afaci);\r\nAbstractFunctionAbstractCapabilityInvolvement.capability(afaci, target);'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
@@ -453,6 +460,7 @@ public interface AbstractFunction extends Namespace, InvolvedElement, AbstractIn
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getAbstractFunction_InvolvingFunctionalChains()
 	 * @see org.polarsys.capella.core.data.fa.FunctionalChain#getInvolvedFunctions
 	 * @model opposite="involvedFunctions" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='AbstractFunction.involvingInvolvements(self, fci);\r\nFunctionalChainInvolvement.involver(fci, target);'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the functional chains that involve this function\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
@@ -480,6 +488,7 @@ public interface AbstractFunction extends Namespace, InvolvedElement, AbstractIn
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getAbstractFunction_LinkedStateMachine()
 	 * @model resolveProxies="false" transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='linkedFunction'"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='behavior'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the state machine associated to this function\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -506,6 +515,7 @@ public interface AbstractFunction extends Namespace, InvolvedElement, AbstractIn
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getAbstractFunction_LinkedFunctionSpecification()
 	 * @model resolveProxies="false" transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='linkedFunctionSpecification'"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='behavior'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the function specification with which this function complies\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated

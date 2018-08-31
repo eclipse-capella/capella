@@ -85,6 +85,7 @@ public interface SystemFunction extends AbstractFunction {
 	 * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystemFunction_AllocatorActors()
 	 * @see org.polarsys.capella.core.data.ctx.Actor#getAllocatedSystemFunctions
 	 * @model opposite="allocatedSystemFunctions" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='ComponentFunctionalAllocation.targetElement(cfa, self);\r\nComponentFunctionalAllocation.sourceElement(cfa, target);'"
 	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -113,6 +114,7 @@ public interface SystemFunction extends AbstractFunction {
 	 * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystemFunction_AllocatorSystems()
 	 * @see org.polarsys.capella.core.data.ctx.System#getAllocatedSystemFunctions
 	 * @model opposite="allocatedSystemFunctions" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='ComponentFunctionalAllocation.targetElement(cfa, self);\r\nComponentFunctionalAllocation.sourceElement(cfa, target);'"
 	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -141,6 +143,7 @@ public interface SystemFunction extends AbstractFunction {
 	 * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystemFunction_RealizedOperationalActivities()
 	 * @see org.polarsys.capella.core.data.oa.OperationalActivity#getRealizingSystemFunctions
 	 * @model opposite="realizingSystemFunctions" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='outFunctionRealizations.allocatedFunction'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
 	 */
@@ -168,6 +171,7 @@ public interface SystemFunction extends AbstractFunction {
 	 * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystemFunction_RealizingLogicalFunctions()
 	 * @see org.polarsys.capella.core.data.la.LogicalFunction#getRealizedSystemFunctions
 	 * @model opposite="realizedSystemFunctions" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='inFunctionRealizations.allocatingFunction'"
 	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -194,6 +198,7 @@ public interface SystemFunction extends AbstractFunction {
 	 * @return the value of the '<em>Contained System Functions</em>' reference list.
 	 * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystemFunction_ContainedSystemFunctions()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='ownedFunctions'"
 	 *        annotation="http://www.polarsys.org/capella/semantic feature='ownedFunctions'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -220,6 +225,7 @@ public interface SystemFunction extends AbstractFunction {
 	 * @return the value of the '<em>Children System Functions</em>' reference list.
 	 * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystemFunction_ChildrenSystemFunctions()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='subFunctions'"
 	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='list of children system functions\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"

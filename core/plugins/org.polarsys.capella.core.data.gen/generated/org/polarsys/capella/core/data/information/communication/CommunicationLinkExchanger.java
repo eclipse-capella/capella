@@ -87,6 +87,7 @@ public interface CommunicationLinkExchanger extends EObject {
 	 * @return the value of the '<em>Produce</em>' reference list.
 	 * @see org.polarsys.capella.core.data.information.communication.CommunicationPackage#getCommunicationLinkExchanger_Produce()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='CommunicationLinkExchanger.ownedCommunicationLinks(self, target);\r\nCommunicationLink.kind(target, ::PRODUCE);'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) list of all production CommunicationLinks' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
 	 * @generated
@@ -113,6 +114,7 @@ public interface CommunicationLinkExchanger extends EObject {
 	 * @return the value of the '<em>Consume</em>' reference list.
 	 * @see org.polarsys.capella.core.data.information.communication.CommunicationPackage#getCommunicationLinkExchanger_Consume()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='CommunicationLinkExchanger.ownedCommunicationLinks(self, target);\r\nCommunicationLink.kind(target, ::CONSUME);'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) list of all consumption CommunicationLinks' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
 	 * @generated
@@ -139,6 +141,7 @@ public interface CommunicationLinkExchanger extends EObject {
 	 * @return the value of the '<em>Send</em>' reference list.
 	 * @see org.polarsys.capella.core.data.information.communication.CommunicationPackage#getCommunicationLinkExchanger_Send()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='CommunicationLinkExchanger.ownedCommunicationLinks(self, target);\r\nCommunicationLink.kind(target, ::SEND);'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) list of all sending CommunicationLinks' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
 	 * @generated
@@ -165,6 +168,7 @@ public interface CommunicationLinkExchanger extends EObject {
 	 * @return the value of the '<em>Receive</em>' reference list.
 	 * @see org.polarsys.capella.core.data.information.communication.CommunicationPackage#getCommunicationLinkExchanger_Receive()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='CommunicationLinkExchanger.ownedCommunicationLinks(self, target);\r\nCommunicationLink.kind(target, ::RECEIVE);'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) list of all receiving CommunicationLinks' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
 	 * @generated
@@ -191,6 +195,7 @@ public interface CommunicationLinkExchanger extends EObject {
 	 * @return the value of the '<em>Call</em>' reference list.
 	 * @see org.polarsys.capella.core.data.information.communication.CommunicationPackage#getCommunicationLinkExchanger_Call()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='CommunicationLinkExchanger.ownedCommunicationLinks(self, target);\r\nCommunicationLink.kind(target, ::CALL);'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) list of all calling CommunicationLinks' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
 	 * @generated
@@ -217,6 +222,7 @@ public interface CommunicationLinkExchanger extends EObject {
 	 * @return the value of the '<em>Execute</em>' reference list.
 	 * @see org.polarsys.capella.core.data.information.communication.CommunicationPackage#getCommunicationLinkExchanger_Execute()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='CommunicationLinkExchanger.ownedCommunicationLinks(self, target);\r\nCommunicationLink.kind(target, ::EXECUTE);'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) list of all execution CommunicationLinks' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
 	 * @generated
@@ -243,6 +249,7 @@ public interface CommunicationLinkExchanger extends EObject {
 	 * @return the value of the '<em>Write</em>' reference list.
 	 * @see org.polarsys.capella.core.data.information.communication.CommunicationPackage#getCommunicationLinkExchanger_Write()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='CommunicationLinkExchanger.ownedCommunicationLinks(self, target);\r\nCommunicationLink.kind(target, ::WRITE);'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) list of all writing CommunicationLinks' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
 	 * @generated
@@ -269,6 +276,7 @@ public interface CommunicationLinkExchanger extends EObject {
 	 * @return the value of the '<em>Access</em>' reference list.
 	 * @see org.polarsys.capella.core.data.information.communication.CommunicationPackage#getCommunicationLinkExchanger_Access()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='CommunicationLinkExchanger.ownedCommunicationLinks(self, target);\r\nCommunicationLink.kind(target, ::ACCESS);'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) list of all accessing CommunicationLinks' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
 	 * @generated
@@ -295,6 +303,7 @@ public interface CommunicationLinkExchanger extends EObject {
 	 * @return the value of the '<em>Acquire</em>' reference list.
 	 * @see org.polarsys.capella.core.data.information.communication.CommunicationPackage#getCommunicationLinkExchanger_Acquire()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='CommunicationLinkExchanger.ownedCommunicationLinks(self, target);\r\nCommunicationLink.kind(target, ::ACQUIRE);'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) list of all acquiring CommunicationLinks' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
 	 * @generated
@@ -321,6 +330,7 @@ public interface CommunicationLinkExchanger extends EObject {
 	 * @return the value of the '<em>Transmit</em>' reference list.
 	 * @see org.polarsys.capella.core.data.information.communication.CommunicationPackage#getCommunicationLinkExchanger_Transmit()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='CommunicationLinkExchanger.ownedCommunicationLinks(self, target);\r\nCommunicationLink.kind(target, ::TRANSMIT);'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) list of all transmitting CommunicationLinks' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
 	 * @generated

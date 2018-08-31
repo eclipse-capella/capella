@@ -79,6 +79,7 @@ public interface Classifier extends GeneralizableElement {
 	 * @return the value of the '<em>Contained Properties</em>' reference list.
 	 * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getClassifier_ContainedProperties()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='ownedFeatures'"
 	 *        annotation="http://www.polarsys.org/capella/semantic feature='ownedFeatures'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated

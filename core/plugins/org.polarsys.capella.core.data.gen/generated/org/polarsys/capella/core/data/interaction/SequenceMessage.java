@@ -231,6 +231,7 @@ public interface SequenceMessage extends NamedElement {
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the AbstractEventOperation triggered by this sequence message' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='SequenceMessage.receivingEnd.event(self, ero);\r\n\tEventReceiptOperation.operation(ero, target);\r\n} or {\r\n\tSequenceMessage.sendingEnd.event(self, eso);\r\n\tEventSentOperation.operation(eso, target);\r\n'"
 	 * @generated
 	 */
 
@@ -279,6 +280,7 @@ public interface SequenceMessage extends NamedElement {
 	 * @return the value of the '<em>Sending Part</em>' reference.
 	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getSequenceMessage_SendingPart()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='sendingEnd.covered.representedInstance'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
 	 */
@@ -303,6 +305,7 @@ public interface SequenceMessage extends NamedElement {
 	 * @return the value of the '<em>Receiving Part</em>' reference.
 	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getSequenceMessage_ReceivingPart()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='receivingEnd.covered.representedInstance'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
 	 */
@@ -327,6 +330,7 @@ public interface SequenceMessage extends NamedElement {
 	 * @return the value of the '<em>Sending Function</em>' reference.
 	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getSequenceMessage_SendingFunction()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='sendingEnd.covered.representedInstance'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
 	 */
@@ -351,6 +355,7 @@ public interface SequenceMessage extends NamedElement {
 	 * @return the value of the '<em>Receiving Function</em>' reference.
 	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getSequenceMessage_ReceivingFunction()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='receivingEnd.covered.representedInstance'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
 	 */

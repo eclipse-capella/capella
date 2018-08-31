@@ -50,6 +50,7 @@ public interface ActivityExchange extends AbstractInformationFlow {
 	 * @return the value of the '<em>Realizing Activity Flows</em>' reference list.
 	 * @see org.polarsys.capella.common.data.activity.ActivityPackage#getActivityExchange_RealizingActivityFlows()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='realizations'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Determines which ActivityEdges will realize the specified flow.\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated

@@ -127,6 +127,7 @@ public interface GeneralizableElement extends Type {
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='superGeneralization'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) the links to this classifier\'s parent(s)\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Classifier::generalization' explanation='none' constraints='Order must be computed'"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='opposite' viatra.expression='sub'"
 	 * @generated
 	 */
 
@@ -153,6 +154,7 @@ public interface GeneralizableElement extends Type {
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) the links to this classifier\'s child(ren)\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Opposite reference of uml::Generalization::general' constraints='Order must be computed'"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='opposite' viatra.expression='^super'"
 	 * @generated
 	 */
 
@@ -179,6 +181,7 @@ public interface GeneralizableElement extends Type {
 	 * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getGeneralizableElement_Super()
 	 * @see org.polarsys.capella.core.data.capellacore.GeneralizableElement#getSub
 	 * @model opposite="sub" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='superGeneralizations.^super'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) parent classifiers\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -207,6 +210,7 @@ public interface GeneralizableElement extends Type {
 	 * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getGeneralizableElement_Sub()
 	 * @see org.polarsys.capella.core.data.capellacore.GeneralizableElement#getSuper
 	 * @model opposite="super" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='subGeneralizations.sub'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) children classifiers\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated

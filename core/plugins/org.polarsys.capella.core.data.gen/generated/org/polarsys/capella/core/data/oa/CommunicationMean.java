@@ -49,6 +49,7 @@ public interface CommunicationMean extends NamedRelationship, ComponentExchange 
 	 * @return the value of the '<em>Source Entity</em>' reference.
 	 * @see org.polarsys.capella.core.data.oa.OaPackage#getCommunicationMean_SourceEntity()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='source'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
 	 */
@@ -73,6 +74,7 @@ public interface CommunicationMean extends NamedRelationship, ComponentExchange 
 	 * @return the value of the '<em>Target Entity</em>' reference.
 	 * @see org.polarsys.capella.core.data.oa.OaPackage#getCommunicationMean_TargetEntity()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='target'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
 	 */

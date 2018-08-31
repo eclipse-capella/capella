@@ -45,6 +45,9 @@ location kitalpha-runtime-core-master "https://ci.polarsys.org/kitalpha/job/Kita
 	org.polarsys.kitalpha.patterns.feature.feature.group lazy
 	org.polarsys.kitalpha.report.feature.feature.group lazy
 	org.polarsys.kitalpha.report.ui.feature.feature.group lazy
+	org.polarsys.kitalpha.resourcereuse.feature.feature.group lazy
+	org.polarsys.kitalpha.resourcereuse.emfscheme.feature.feature.group lazy
+	org.polarsys.kitalpha.resourcereuse.ui.feature.feature.group lazy
 	org.polarsys.kitalpha.transposer.feature.feature.group lazy
 	org.polarsys.kitalpha.massactions.feature.feature.group lazy
 	org.polarsys.kitalpha.massactions.feature.source.feature.group lazy	

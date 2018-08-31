@@ -113,6 +113,7 @@ public interface State extends AbstractState {
 	 * @return the value of the '<em>Available Abstract Functions</em>' reference list.
 	 * @see org.polarsys.capella.core.data.capellacommon.CapellacommonPackage#getState_AvailableAbstractFunctions()
 	 * @model resolveProxies="false" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='opposite' viatra.expression='availableInStates'"
 	 * @generated
 	 */
 
@@ -137,6 +138,7 @@ public interface State extends AbstractState {
 	 * @return the value of the '<em>Available Functional Chains</em>' reference list.
 	 * @see org.polarsys.capella.core.data.capellacommon.CapellacommonPackage#getState_AvailableFunctionalChains()
 	 * @model resolveProxies="false" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='opposite' viatra.expression='availableInStates'"
 	 * @generated
 	 */
 
@@ -161,6 +163,7 @@ public interface State extends AbstractState {
 	 * @return the value of the '<em>Available Abstract Capabilities</em>' reference list.
 	 * @see org.polarsys.capella.core.data.capellacommon.CapellacommonPackage#getState_AvailableAbstractCapabilities()
 	 * @model resolveProxies="false" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='opposite' viatra.expression='availableInStates'"
 	 * @generated
 	 */
 

@@ -29,9 +29,8 @@ import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
  * @see org.polarsys.capella.core.data.capellamodeller.CapellamodellerFactory
  * @model kind="package"
  *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping profileName='Capella'"
- *        annotation="http://www.polarsys.org/kitalpha/dsl/2007/dslfactory trackResourceModification='true' useUUIDs='false' useIDAttributes='true' extensibleProviderFactory='true'"
- *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='CapellaModeller aims at defining project level concepts.\r\n[source: Capella study]' usage\040guideline='none' used\040in\040levels='operational,system,logical,physical,epbs' usage\040examples='none' constraints='This package depends on the model CapellaCore.ecore' comment/notes='none' reference\040documentation='n/a'"
  *        annotation="http://www.polarsys.org/kitalpha/emde/1.0.0/extension trackResourceModification='true' useUUIDs='false' useIDAttributes='true' extensibleProviderFactory='true'"
+ *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='CapellaModeller aims at defining project level concepts.\r\n[source: Capella study]' usage\040guideline='none' used\040in\040levels='operational,system,logical,physical,epbs' usage\040examples='none' constraints='This package depends on the model CapellaCore.ecore' comment/notes='none' reference\040documentation='n/a'"
  * @generated
  */
 public interface CapellamodellerPackage extends EPackage {

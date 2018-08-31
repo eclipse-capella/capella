@@ -33,7 +33,7 @@ import org.polarsys.capella.core.data.ctx.SystemAnalysis;
  * </ul>
  *
  * @see org.polarsys.capella.core.data.oa.OaPackage#getOperationalAnalysis()
- * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Model describing operational need - organisations, actors, operational activities & related items - associated to (created during) a modelling phase' usage\040guideline='n/a' used\040in\040levels='operational' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
+ * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Model describing operational need - organisations, actors, operational activities &amp; related items - associated to (created during) a modelling phase' usage\040guideline='n/a' used\040in\040levels='operational' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='uml::Package' explanation='none' constraints='none'"
  * @generated
  */
@@ -219,6 +219,7 @@ public interface OperationalAnalysis extends BlockArchitecture {
 	 * @return the value of the '<em>Contained Operational Capability Pkg</em>' reference.
 	 * @see org.polarsys.capella.core.data.oa.OaPackage#getOperationalAnalysis_ContainedOperationalCapabilityPkg()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='ownedAbstractCapabilityPkg'"
 	 *        annotation="http://www.polarsys.org/capella/semantic feature='ownedAbstractCapabilityPkg'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -244,6 +245,7 @@ public interface OperationalAnalysis extends BlockArchitecture {
 	 * @return the value of the '<em>Contained Operational Activity Pkg</em>' reference.
 	 * @see org.polarsys.capella.core.data.oa.OaPackage#getOperationalAnalysis_ContainedOperationalActivityPkg()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='ownedFunctionPkg'"
 	 *        annotation="http://www.polarsys.org/capella/semantic feature='ownedFunctionPkg'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -272,6 +274,7 @@ public interface OperationalAnalysis extends BlockArchitecture {
 	 * @see org.polarsys.capella.core.data.oa.OaPackage#getOperationalAnalysis_AllocatingSystemAnalyses()
 	 * @see org.polarsys.capella.core.data.ctx.SystemAnalysis#getAllocatedOperationalAnalyses
 	 * @model opposite="allocatedOperationalAnalyses" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='allocatingArchitectures'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
 	 * @generated

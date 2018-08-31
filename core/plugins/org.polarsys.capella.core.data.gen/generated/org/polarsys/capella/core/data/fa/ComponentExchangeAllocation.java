@@ -48,6 +48,7 @@ public interface ComponentExchangeAllocation extends Allocation {
 	 * @return the value of the '<em>Component Exchange Allocated</em>' reference.
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getComponentExchangeAllocation_ComponentExchangeAllocated()
 	 * @model required="true" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='targetElement'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='The connection being allocated\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -73,6 +74,7 @@ public interface ComponentExchangeAllocation extends Allocation {
 	 * @return the value of the '<em>Component Exchange Allocator</em>' reference.
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getComponentExchangeAllocation_ComponentExchangeAllocator()
 	 * @model required="true" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='sourceElement'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='The element that allocates the connection\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated

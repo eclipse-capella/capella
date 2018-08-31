@@ -80,6 +80,7 @@ public interface InterfaceAllocator extends CapellaElement {
 	 * @see org.polarsys.capella.core.data.cs.CsPackage#getInterfaceAllocator_ProvisionedInterfaceAllocations()
 	 * @see org.polarsys.capella.core.data.cs.InterfaceAllocation#getAllocatingInterfaceAllocator
 	 * @model opposite="allocatingInterfaceAllocator" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='outgoingTraces'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) the interface allocation links involving this interface allocator\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -106,6 +107,7 @@ public interface InterfaceAllocator extends CapellaElement {
 	 * @return the value of the '<em>Allocated Interfaces</em>' reference list.
 	 * @see org.polarsys.capella.core.data.cs.CsPackage#getInterfaceAllocator_AllocatedInterfaces()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='provisionedInterfaceAllocations.allocatedInterface'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) direct references to the Interfaces being allocated by this interface allocator\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated

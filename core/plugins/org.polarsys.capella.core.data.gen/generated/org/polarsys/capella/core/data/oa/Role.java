@@ -108,6 +108,7 @@ public interface Role extends AbstractInstance {
 	 * @see org.polarsys.capella.core.data.oa.OaPackage#getRole_RoleAllocations()
 	 * @see org.polarsys.capella.core.data.oa.RoleAllocation#getRole
 	 * @model opposite="role" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='incomingTraces'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='list of allocations between this operational role, and operational entities\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -136,6 +137,7 @@ public interface Role extends AbstractInstance {
 	 * @see org.polarsys.capella.core.data.oa.OaPackage#getRole_ActivityAllocations()
 	 * @see org.polarsys.capella.core.data.oa.ActivityAllocation#getRole
 	 * @model opposite="role" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='outgoingTraces'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) list of allocations of this role to/from operation activities\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -162,6 +164,7 @@ public interface Role extends AbstractInstance {
 	 * @return the value of the '<em>Allocating Entities</em>' reference list.
 	 * @see org.polarsys.capella.core.data.oa.OaPackage#getRole_AllocatingEntities()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='roleAllocations.entity'"
 	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -188,6 +191,7 @@ public interface Role extends AbstractInstance {
 	 * @return the value of the '<em>Allocated Operational Activities</em>' reference list.
 	 * @see org.polarsys.capella.core.data.oa.OaPackage#getRole_AllocatedOperationalActivities()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='activityAllocations.activity'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
 	 */

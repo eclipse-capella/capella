@@ -60,6 +60,9 @@ location "http://download.polarsys.org/kitalpha/updates/stable/runtime/1.2.0" {
 	org.polarsys.kitalpha.patterns.feature.feature.group lazy
 	org.polarsys.kitalpha.report.feature.feature.group lazy
 	org.polarsys.kitalpha.report.ui.feature.feature.group lazy
+	org.polarsys.kitalpha.resourcereuse.feature.feature.group lazy
+	org.polarsys.kitalpha.resourcereuse.emfscheme.feature.feature.group lazy
+	org.polarsys.kitalpha.resourcereuse.ui.feature.feature.group lazy
 	org.polarsys.kitalpha.transposer.feature.feature.group lazy
 	org.polarsys.kitalpha.richtext.widget.feature.feature.group lazy
 	org.polarsys.kitalpha.doc.feature.feature.group lazy

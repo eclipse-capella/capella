@@ -76,6 +76,7 @@ public interface FunctionOutputPort extends FunctionPort, OutputPin {
 	 * @return the value of the '<em>Outgoing Functional Exchanges</em>' reference list.
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionOutputPort_OutgoingFunctionalExchanges()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='outgoing'"
 	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated

@@ -59,6 +59,7 @@ public interface InstanceRole extends NamedElement {
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='abstractEnds'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the start/end points of interactions that are attached to this lifeline\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Lifeline::coveredBy' explanation='none' constraints='Order must be computed'"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='opposite' viatra.expression='covered'"
 	 * @generated
 	 */
 

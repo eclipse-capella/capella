@@ -48,6 +48,7 @@ public interface Involvement extends Relationship {
 	 * @return the value of the '<em>Involver</em>' reference.
 	 * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getInvolvement_Involver()
 	 * @model required="true" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='opposite' viatra.expression='involvedInvolvements'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Link to the element that involves\r\n[Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Dependency::client' explanation='none' constraints='Multiplicity must be [0..1]'"
 	 * @generated

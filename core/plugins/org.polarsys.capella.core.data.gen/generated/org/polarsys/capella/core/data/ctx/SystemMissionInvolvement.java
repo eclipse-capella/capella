@@ -54,6 +54,7 @@ public interface SystemMissionInvolvement extends Involvement {
 	 * @model opposite="involvedSystem" required="true" transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='client' featureOwner='Dependency'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='mission'"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='involver'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Link to a Mission that the System is involved in\r\n[source:Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -83,6 +84,7 @@ public interface SystemMissionInvolvement extends Involvement {
 	 * @model opposite="participationsInMissions" required="true" transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='supplier' featureOwner='Dependency'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='system'"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='involved'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Link to a system that is involved in the system mission\r\n[source:Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated

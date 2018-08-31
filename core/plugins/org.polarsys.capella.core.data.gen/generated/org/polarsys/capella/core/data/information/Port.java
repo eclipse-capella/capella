@@ -64,6 +64,7 @@ public interface Port extends NamedElement {
 	 * @see org.polarsys.capella.core.data.information.InformationPackage#getPort_IncomingPortRealizations()
 	 * @see org.polarsys.capella.core.data.information.PortRealization#getRealizedPort
 	 * @model opposite="realizedPort" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='incomingTraces'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='contains the list of port realization link(s) pointing from other (typically lower level) port(s) to this port\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -92,6 +93,7 @@ public interface Port extends NamedElement {
 	 * @see org.polarsys.capella.core.data.information.InformationPackage#getPort_OutgoingPortRealizations()
 	 * @see org.polarsys.capella.core.data.information.PortRealization#getRealizingPort
 	 * @model opposite="realizingPort" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='outgoingTraces'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) list of port realization links starting from this port, and pointing to other (typically higher-level) ports.\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -146,6 +148,7 @@ public interface Port extends NamedElement {
 	 * @see org.polarsys.capella.core.data.information.InformationPackage#getPort_IncomingPortAllocations()
 	 * @see org.polarsys.capella.core.data.information.PortAllocation#getAllocatedPort
 	 * @model opposite="allocatedPort" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='incomingTraces'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) list of allocation links pointing from other model elements, to this port\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -174,6 +177,7 @@ public interface Port extends NamedElement {
 	 * @see org.polarsys.capella.core.data.information.InformationPackage#getPort_OutgoingPortAllocations()
 	 * @see org.polarsys.capella.core.data.information.PortAllocation#getAllocatingPort
 	 * @model opposite="allocatingPort" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='outgoingTraces'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) list of allocations links, starting from this port towards other model elements to which this port needs to be allocated\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated

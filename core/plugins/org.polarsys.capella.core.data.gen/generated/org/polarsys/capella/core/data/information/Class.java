@@ -206,6 +206,7 @@ public interface Class extends GeneralClass {
 	 * @see org.polarsys.capella.core.data.information.InformationPackage#getClass_RealizedClasses()
 	 * @see org.polarsys.capella.core.data.information.Class#getRealizingClasses
 	 * @model opposite="realizingClasses" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='Class.outgoingTraces(self, ir);\r\nInformationRealization.targetElement(ir, target); '"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='class(es) realized by this class' constraints='none' comment/notes='none'"
 	 * @generated
 	 */
@@ -233,6 +234,7 @@ public interface Class extends GeneralClass {
 	 * @see org.polarsys.capella.core.data.information.InformationPackage#getClass_RealizingClasses()
 	 * @see org.polarsys.capella.core.data.information.Class#getRealizedClasses
 	 * @model opposite="realizedClasses" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='Class.incomingTraces(self, ir);\r\nInformationRealization.sourceElement(ir, target); '"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='class(es) realizing this class' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
 	 * @generated

@@ -50,6 +50,7 @@ public interface ComponentExchangeRealization extends ExchangeSpecificationReali
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getComponentExchangeRealization_AllocatedComponentExchange()
 	 * @see org.polarsys.capella.core.data.fa.ComponentExchange#getIncomingComponentExchangeRealizations
 	 * @model opposite="incomingComponentExchangeRealizations" required="true" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='targetElement'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the connection that is being allocated by/from the other connection involved in this link\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -77,6 +78,7 @@ public interface ComponentExchangeRealization extends ExchangeSpecificationReali
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getComponentExchangeRealization_AllocatingComponentExchange()
 	 * @see org.polarsys.capella.core.data.fa.ComponentExchange#getOutgoingComponentExchangeRealizations
 	 * @model opposite="outgoingComponentExchangeRealizations" required="true" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='sourceElement'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the connection that is allocating that other connection involved in this link \r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated

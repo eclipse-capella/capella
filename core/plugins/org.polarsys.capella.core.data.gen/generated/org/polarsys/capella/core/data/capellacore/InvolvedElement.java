@@ -49,6 +49,7 @@ public interface InvolvedElement extends CapellaElement {
 	 * @return the value of the '<em>Involving Involvements</em>' reference list.
 	 * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getInvolvedElement_InvolvingInvolvements()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='opposite' viatra.expression='involved'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Link to the set of involvement relationships for which the element is involved with the role of the element which involves another one\r\n[source:Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and Transient' constraints='none'"
 	 * @generated

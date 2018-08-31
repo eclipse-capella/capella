@@ -54,6 +54,7 @@ public interface InterfaceImplementation extends Relationship {
 	 * @model opposite="implementedInterfaceLinks" required="true" transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='implementingClassifier' featureOwner='InterfaceRealization'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='Interface Implementor'"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='opposite' viatra.expression='ownedInterfaceImplementations'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='References the Component that owns this Interface implementation.\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated

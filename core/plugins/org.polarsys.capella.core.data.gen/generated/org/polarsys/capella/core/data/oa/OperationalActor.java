@@ -51,6 +51,7 @@ public interface OperationalActor extends Entity {
 	 * @see org.polarsys.capella.core.data.oa.OaPackage#getOperationalActor_RealizingSystemActors()
 	 * @see org.polarsys.capella.core.data.ctx.Actor#getRealizedOperationalActors
 	 * @model opposite="realizedOperationalActors" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='OperationalActor.incomingTraces(self, oar);\r\n\tOperationalActorRealization.allocatingComponent(oar, target);'"
 	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated

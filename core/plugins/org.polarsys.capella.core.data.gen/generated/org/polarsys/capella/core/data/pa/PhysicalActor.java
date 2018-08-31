@@ -82,6 +82,7 @@ public interface PhysicalActor extends AbstractPhysicalComponent, AbstractActor 
 	 * @return the value of the '<em>Logical Actor Realizations</em>' reference list.
 	 * @see org.polarsys.capella.core.data.pa.PaPackage#getPhysicalActor_LogicalActorRealizations()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='provisionedComponentAllocations'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) the relationship links between this physical actor and the logical actor(s) that it realizes\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -110,6 +111,7 @@ public interface PhysicalActor extends AbstractPhysicalComponent, AbstractActor 
 	 * @see org.polarsys.capella.core.data.pa.PaPackage#getPhysicalActor_AllocatedPhysicalFunctions()
 	 * @see org.polarsys.capella.core.data.pa.PhysicalFunction#getAllocatorPhysicalActors
 	 * @model opposite="allocatorPhysicalActors" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='allocatedFunctions'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
 	 */
@@ -137,6 +139,7 @@ public interface PhysicalActor extends AbstractPhysicalComponent, AbstractActor 
 	 * @see org.polarsys.capella.core.data.pa.PaPackage#getPhysicalActor_RealizedLogicalActors()
 	 * @see org.polarsys.capella.core.data.la.LogicalActor#getRealizingPhysicalActors
 	 * @model opposite="realizingPhysicalActors" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='allocatedComponents'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
 	 */
@@ -162,6 +165,7 @@ public interface PhysicalActor extends AbstractPhysicalComponent, AbstractActor 
 	 * @return the value of the '<em>Deployed Physical Components</em>' reference list.
 	 * @see org.polarsys.capella.core.data.pa.PaPackage#getPhysicalActor_DeployedPhysicalComponents()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='Part.abstractType(part, self);\r\n\tPart.deploymentLinks.deployedElement(part, deployedPart);\r\n\tPart.abstractType(deployedPart, target);\r\n} or {\r\n\tPart.abstractType(part, self);\r\n\tPart.deploymentLinks.deployedElement(part, target);'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
 	 */

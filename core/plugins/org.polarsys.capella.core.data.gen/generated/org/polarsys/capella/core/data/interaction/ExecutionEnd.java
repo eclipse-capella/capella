@@ -52,6 +52,7 @@ public interface ExecutionEnd extends AbstractEnd {
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='execution'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the Execution to which this ExecutionEnd is attached\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::ExecutionOccurrenceSpecification::execution' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='Execution.start(target, self);\r\n} or {\r\n\tExecution.finish(target, self);'"
 	 * @generated
 	 */
 
