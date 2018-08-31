@@ -20,6 +20,8 @@ import org.eclipse.osgi.util.NLS;
 public class Messages extends NLS {
   private static final String BUNDLE_NAME = "org.polarsys.capella.core.compare.messages"; //$NON-NLS-1$
   public static String CapellaComparisonFactory_Label;
+  public static String CapellaComparisonMethod_Usage_Default;
+  public static String CapellaComparisonMethod_Usage_Default_Tooltip;
   public static String CapellaComparisonMethod_Usage_P2L;
   public static String CapellaComparisonMethod_Usage_P2L_Tooltip;
   public static String CapellaComparisonMethod_Usage_Transition;

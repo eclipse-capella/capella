@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.polarsys.capella.core.compare;
 
+import static org.eclipse.emf.diffmerge.gmf.GMFMatchPolicy.CRITERION_SEMANTICS_DIAGRAMS_VIEWBYELEMENT;
+import static org.eclipse.emf.diffmerge.gmf.GMFMatchPolicy.CRITERION_SEMANTICS_DIAGRAMS_VIEWBYTYPE;
 import static org.eclipse.emf.diffmerge.impl.policies.ConfigurableMatchPolicy.CRITERION_SEMANTICS_DEFAULTCONTENTS;
 import static org.eclipse.emf.diffmerge.impl.policies.ConfigurableMatchPolicy.CRITERION_STRUCTURE_ROOTS;
 import static org.eclipse.emf.diffmerge.impl.policies.ConfigurableMatchPolicy.MatchCriterionKind.EXTRINSIC_ID;
@@ -61,16 +63,18 @@ public class CapellaComparisonMethod extends SiriusComparisonMethod {
             CRITERION_SEMANTICS_P2L));
   
   /** 
-   * The "compare versions of the same model" configurator 
-   * Override the CONFIGURATOR_VERSIONS defined in the ConfigurableComparisonMethod
-   * in order to force the fine grained criterion activated by default.
+   * The "Capella default" configurator 
+   * Based on IDs for semantic elements and semantic criteria for graphical elements.
    */
-  public static final IComparisonConfigurator UPDATED_CONFIGURATOR_VERSIONS =
+  public static final IComparisonConfigurator CONFIGURATOR_CAPELLA_DEFAULT =
     new ComparisonConfigurator(
-        org.eclipse.emf.diffmerge.ui.Messages.ConfigurableComparisonMethod_Usage_Versions,
-        org.eclipse.emf.diffmerge.ui.Messages.ConfigurableComparisonMethod_Usage_Versions_Tooltip,
-        Arrays.asList(INTRINSIC_ID, EXTRINSIC_ID),
-        Arrays.asList());
+        Messages.CapellaComparisonMethod_Usage_Default,
+        Messages.CapellaComparisonMethod_Usage_Default_Tooltip,
+        Arrays.asList(INTRINSIC_ID, EXTRINSIC_ID, SEMANTICS),
+        Arrays.asList(
+            CRITERION_SEMANTICS_DIAGRAMS_VIEWBYELEMENT,
+            CRITERION_SEMANTICS_DIAGRAMS_VIEWBYTYPE));
+  
   
   /**
    * Constructor
@@ -83,6 +87,7 @@ public class CapellaComparisonMethod extends SiriusComparisonMethod {
       IModelScopeDefinition rightScopeDef, IModelScopeDefinition ancestorScopeDef,
       IComparisonMethodFactory factory) {
     super(leftScopeDef, rightScopeDef, ancestorScopeDef, factory);
+    initializeConfiguration();
   }
   
   /**
@@ -91,11 +96,11 @@ public class CapellaComparisonMethod extends SiriusComparisonMethod {
   @Override
   protected List<IComparisonConfigurator> createConfigurators() {
     List<IComparisonConfigurator> result = new LinkedList<IComparisonConfigurator>();
-    result.add(UPDATED_CONFIGURATOR_VERSIONS);
+    result.add(CONFIGURATOR_CAPELLA_DEFAULT);
+    result.add(CONFIGURATOR_VERSIONS);
     result.add(CONFIGURATOR_P2L);
     result.add(CONFIGURATOR_DATA_TRANSFER);
     result.add(CONFIGURATOR_SID);
-    
     return result;
   }
   
@@ -148,6 +153,13 @@ public class CapellaComparisonMethod extends SiriusComparisonMethod {
   @Override
   protected ILabelProvider getCustomLabelProvider() {
     return CapellaDiffMergeLabelProvider.getInstance();
+  }
+  
+  /**
+   * Set the initial configuration of the comparison method
+   */
+  protected void initializeConfiguration() {
+    CONFIGURATOR_CAPELLA_DEFAULT.apply(this);
   }
   
 }

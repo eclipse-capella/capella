@@ -16,7 +16,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.diffmerge.api.scopes.IModelScope;
-import org.eclipse.emf.diffmerge.gmf.GMFMatchPolicy;
 import org.eclipse.emf.diffmerge.sirius.SiriusMatchPolicy;
 import org.eclipse.emf.diffmerge.structures.common.comparable.ComparableTreeMap;
 import org.eclipse.emf.ecore.EClass;
@@ -166,16 +165,6 @@ public class CapellaMatchPolicy extends SiriusMatchPolicy {
    */
   public CapellaMatchPolicy() {
     super();
-    // if model is aird;
-    setUseCriterion(MatchCriterionKind.EXTRINSIC_ID, true);
-    setUseCriterion(MatchCriterionKind.INTRINSIC_ID, true);
-    setUseCriterion(MatchCriterionKind.SEMANTICS, true);
-
-    setUseCriterion(MatchCriterionKind.SEMANTICS, true);
-    
-    setUseFineGrainedCriterion(GMFMatchPolicy.CRITERION_SEMANTICS_DIAGRAMS_VIEWBYELEMENT, true);
-    setUseFineGrainedCriterion(GMFMatchPolicy.CRITERION_SEMANTICS_DIAGRAMS_VIEWBYTYPE, true);
-    
   }
   
   /**
