@@ -15,7 +15,7 @@
          point="org.eclipse.emf.validation.constraintProviders">
       <constraintProvider>
          <package
-               namespaceUri="http://www.polarsys.org/capella/core/core/1.2.0">
+               namespaceUri="http://www.polarsys.org/capella/core/core/1.3.0">
          </package>
          <constraints
                categories="capella.category/design/well-formedness/data">
@@ -417,7 +417,7 @@ This rule checks that an capella element doesn&apos;t contain any naming conflic
       </constraintProvider>
       <constraintProvider>
          <package
-               namespaceUri="http://www.polarsys.org/capella/core/modeller/1.2.0">
+               namespaceUri="http://www.polarsys.org/capella/core/modeller/1.3.0">
          </package>
          <constraints
                categories="capella.category/design/well-formedness/data">
@@ -508,7 +508,7 @@ This rule checks that an capella element doesn&apos;t contain any naming conflic
       </constraintProvider>
       <constraintProvider>
          <package
-               namespaceUri="http://www.polarsys.org/capella/common/core/1.2.0">
+               namespaceUri="http://www.polarsys.org/capella/common/core/1.3.0">
          </package>
          <constraints
                categories="capella.category/transition/justification/generic">

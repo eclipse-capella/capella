@@ -1090,7 +1090,7 @@
             mapping="org.polarsys.capella.common.re"
             purpose="org.polarsys.capella.common.re">
          <domain
-               id="http://www.polarsys.org/capella/common/re/1.2.0">
+               id="http://www.polarsys.org/capella/common/re/1.3.0">
          </domain>
       </handlers>
       <handlers
@@ -1384,7 +1384,7 @@
          point="org.polarsys.capella.common.model.helpers.helper">
       <helperImpl
             class="org.polarsys.capella.common.re.helpers.ReHelper"
-            nsURI="http://www.polarsys.org/capella/common/re/1.2.0">
+            nsURI="http://www.polarsys.org/capella/common/re/1.3.0">
       </helperImpl>
    </extension>
    

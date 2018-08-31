@@ -19,7 +19,7 @@
 <!--@generated-->
   <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated re -->
-      <package class="org.polarsys.capella.common.re.RePackage" genModel="model/re.genmodel" uri="http://www.polarsys.org/capella/common/re/1.2.0"/>
+      <package class="org.polarsys.capella.common.re.RePackage" genModel="model/re.genmodel" uri="http://www.polarsys.org/capella/common/re/1.3.0"/>
    </extension>
 
    

@@ -15,126 +15,126 @@
          point="org.polarsys.capella.common.model.helpers.helper">
       <helperImpl
             class="org.polarsys.capella.core.data.helpers.cs.CompositeStructureHelper"
-            nsURI="http://www.polarsys.org/capella/core/cs/1.2.0">
+            nsURI="http://www.polarsys.org/capella/core/cs/1.3.0">
       </helperImpl>
    </extension>
    <extension
          point="org.polarsys.capella.common.model.helpers.helper">
       <helperImpl
             class="org.polarsys.capella.core.data.helpers.ctx.SystemAnalysisHelper"
-            nsURI="http://www.polarsys.org/capella/core/ctx/1.2.0">
+            nsURI="http://www.polarsys.org/capella/core/ctx/1.3.0">
       </helperImpl>
    </extension>
     <extension
          point="org.polarsys.capella.common.model.helpers.helper">
       <helperImpl
             class="org.polarsys.capella.core.data.helpers.epbs.EPBSArchitectureHelper"
-            nsURI="http://www.polarsys.org/capella/core/epbs/1.2.0">
+            nsURI="http://www.polarsys.org/capella/core/epbs/1.3.0">
       </helperImpl>
    </extension>
    <extension
          point="org.polarsys.capella.common.model.helpers.helper">
       <helperImpl
             class="org.polarsys.capella.core.data.helpers.fa.FunctionalAnalysisHelper"
-            nsURI="http://www.polarsys.org/capella/core/fa/1.2.0">
+            nsURI="http://www.polarsys.org/capella/core/fa/1.3.0">
       </helperImpl>
    </extension>
    <extension
          point="org.polarsys.capella.common.model.helpers.helper">
       <helperImpl
             class="org.polarsys.capella.core.data.helpers.information.InformationHelper"
-            nsURI="http://www.polarsys.org/capella/core/information/1.2.0">
+            nsURI="http://www.polarsys.org/capella/core/information/1.3.0">
       </helperImpl>
    </extension>
    <extension
          point="org.polarsys.capella.common.model.helpers.helper">
       <helperImpl
             class="org.polarsys.capella.core.data.helpers.information.InformationHelper"
-            nsURI="http://www.polarsys.org/capella/core/information/communication/1.2.0">
+            nsURI="http://www.polarsys.org/capella/core/information/communication/1.3.0">
       </helperImpl>
    </extension>
    <extension
          point="org.polarsys.capella.common.model.helpers.helper">
       <helperImpl
             class="org.polarsys.capella.core.data.helpers.information.InformationHelper"
-            nsURI="http://www.polarsys.org/capella/core/information/datavalue/1.2.0">
+            nsURI="http://www.polarsys.org/capella/core/information/datavalue/1.3.0">
       </helperImpl>
    </extension>
    <extension
          point="org.polarsys.capella.common.model.helpers.helper">
       <helperImpl
             class="org.polarsys.capella.core.data.helpers.information.InformationHelper"
-            nsURI="http://www.polarsys.org/capella/core/information/datatype/1.2.0">
+            nsURI="http://www.polarsys.org/capella/core/information/datatype/1.3.0">
       </helperImpl>
    </extension>
    <extension
          point="org.polarsys.capella.common.model.helpers.helper">
       <helperImpl
             class="org.polarsys.capella.core.data.helpers.interaction.CapellaInteractionHelper"
-            nsURI="http://www.polarsys.org/capella/core/interaction/1.2.0">
+            nsURI="http://www.polarsys.org/capella/core/interaction/1.3.0">
       </helperImpl>
    </extension>
    <extension
          point="org.polarsys.capella.common.model.helpers.helper">
       <helperImpl
             class="org.polarsys.capella.core.data.helpers.la.LogicalArchitectureHelper"
-            nsURI="http://www.polarsys.org/capella/core/la/1.2.0">
+            nsURI="http://www.polarsys.org/capella/core/la/1.3.0">
       </helperImpl>
    </extension>
    <extension
          point="org.polarsys.capella.common.model.helpers.helper">
       <helperImpl
             class="org.polarsys.capella.core.data.helpers.capellacommon.CapellaCommonHelper"
-            nsURI="http://www.polarsys.org/capella/core/common/1.2.0">
+            nsURI="http://www.polarsys.org/capella/core/common/1.3.0">
       </helperImpl>
    </extension>
    <extension
          point="org.polarsys.capella.common.model.helpers.helper">
       <helperImpl
             class="org.polarsys.capella.core.data.helpers.capellacore.CapellaCoreHelper"
-            nsURI="http://www.polarsys.org/capella/core/core/1.2.0">
+            nsURI="http://www.polarsys.org/capella/core/core/1.3.0">
       </helperImpl>
    </extension>
    <extension
          point="org.polarsys.capella.common.model.helpers.helper">
       <helperImpl
             class="org.polarsys.capella.core.data.helpers.capellamodeller.CapellaModellerHelper"
-            nsURI="http://www.polarsys.org/capella/core/modeller/1.2.0">
+            nsURI="http://www.polarsys.org/capella/core/modeller/1.3.0">
       </helperImpl>
    </extension>
    <extension
          point="org.polarsys.capella.common.model.helpers.helper">
       <helperImpl
             class="org.polarsys.capella.core.data.helpers.oa.OperationalAnalysisHelper"
-            nsURI="http://www.polarsys.org/capella/core/oa/1.2.0">
+            nsURI="http://www.polarsys.org/capella/core/oa/1.3.0">
       </helperImpl>
    </extension>
    <extension
          point="org.polarsys.capella.common.model.helpers.helper">
       <helperImpl
             class="org.polarsys.capella.core.data.helpers.pa.PhysicalArchitectureHelper"
-            nsURI="http://www.polarsys.org/capella/core/pa/1.2.0">
+            nsURI="http://www.polarsys.org/capella/core/pa/1.3.0">
       </helperImpl>
    </extension>
    <extension
          point="org.polarsys.capella.common.model.helpers.helper">
       <helperImpl
             class="org.polarsys.capella.core.data.helpers.pa.PhysicalArchitectureHelper"
-            nsURI="http://www.polarsys.org/capella/core/pa/deployment/1.2.0">
+            nsURI="http://www.polarsys.org/capella/core/pa/deployment/1.3.0">
       </helperImpl>
    </extension>
    <extension
          point="org.polarsys.capella.common.model.helpers.helper">
       <helperImpl
             class="org.polarsys.capella.core.data.helpers.requirement.RequirementHelper"
-            nsURI="http://www.polarsys.org/capella/core/requirement/1.2.0">
+            nsURI="http://www.polarsys.org/capella/core/requirement/1.3.0">
       </helperImpl>
    </extension>
    <extension
          point="org.polarsys.capella.common.model.helpers.helper">
       <helperImpl
             class="org.polarsys.capella.core.data.helpers.sharedmodel.SharedModelHelper"
-            nsURI="http://www.polarsys.org/capella/core/sharedmodel/1.2.0">
+            nsURI="http://www.polarsys.org/capella/core/sharedmodel/1.3.0">
       </helperImpl>
    </extension>
 </plugin>

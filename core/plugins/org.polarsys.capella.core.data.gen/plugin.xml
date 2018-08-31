@@ -19,7 +19,7 @@
 <!--@generated-->
   <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated CapellaModeller -->
-      <package class="org.polarsys.capella.core.data.capellamodeller.CapellamodellerPackage" genModel="model/CapellaModeller.genmodel" uri="http://www.polarsys.org/capella/core/modeller/1.2.0"/>
+      <package class="org.polarsys.capella.core.data.capellamodeller.CapellamodellerPackage" genModel="model/CapellaModeller.genmodel" uri="http://www.polarsys.org/capella/core/modeller/1.3.0"/>
    </extension>
 
    
@@ -33,7 +33,7 @@
 <!--@generated-->
   <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated CapellaModeller -->
-      <package class="org.polarsys.capella.core.data.capellacore.CapellacorePackage" genModel="model/CapellaModeller.genmodel" uri="http://www.polarsys.org/capella/core/core/1.2.0"/>
+      <package class="org.polarsys.capella.core.data.capellacore.CapellacorePackage" genModel="model/CapellaModeller.genmodel" uri="http://www.polarsys.org/capella/core/core/1.3.0"/>
    </extension>
 
    
@@ -47,7 +47,7 @@
 <!--@generated-->
   <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated CapellaModeller -->
-      <package class="org.polarsys.capella.core.data.oa.OaPackage" genModel="model/CapellaModeller.genmodel" uri="http://www.polarsys.org/capella/core/oa/1.2.0"/>
+      <package class="org.polarsys.capella.core.data.oa.OaPackage" genModel="model/CapellaModeller.genmodel" uri="http://www.polarsys.org/capella/core/oa/1.3.0"/>
    </extension>
 
    
@@ -61,7 +61,7 @@
 <!--@generated-->
   <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated CapellaModeller -->
-      <package class="org.polarsys.capella.core.data.ctx.CtxPackage" genModel="model/CapellaModeller.genmodel" uri="http://www.polarsys.org/capella/core/ctx/1.2.0"/>
+      <package class="org.polarsys.capella.core.data.ctx.CtxPackage" genModel="model/CapellaModeller.genmodel" uri="http://www.polarsys.org/capella/core/ctx/1.3.0"/>
    </extension>
 
    
@@ -75,7 +75,7 @@
 <!--@generated-->
   <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated CapellaModeller -->
-      <package class="org.polarsys.capella.core.data.la.LaPackage" genModel="model/CapellaModeller.genmodel" uri="http://www.polarsys.org/capella/core/la/1.2.0"/>
+      <package class="org.polarsys.capella.core.data.la.LaPackage" genModel="model/CapellaModeller.genmodel" uri="http://www.polarsys.org/capella/core/la/1.3.0"/>
    </extension>
 
    
@@ -89,7 +89,7 @@
 <!--@generated-->
   <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated CapellaModeller -->
-      <package class="org.polarsys.capella.core.data.pa.PaPackage" genModel="model/CapellaModeller.genmodel" uri="http://www.polarsys.org/capella/core/pa/1.2.0"/>
+      <package class="org.polarsys.capella.core.data.pa.PaPackage" genModel="model/CapellaModeller.genmodel" uri="http://www.polarsys.org/capella/core/pa/1.3.0"/>
    </extension>
 
    
@@ -103,7 +103,7 @@
 <!--@generated-->
   <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated CapellaModeller -->
-      <package class="org.polarsys.capella.core.data.pa.deployment.DeploymentPackage" genModel="model/CapellaModeller.genmodel" uri="http://www.polarsys.org/capella/core/pa/deployment/1.2.0"/>
+      <package class="org.polarsys.capella.core.data.pa.deployment.DeploymentPackage" genModel="model/CapellaModeller.genmodel" uri="http://www.polarsys.org/capella/core/pa/deployment/1.3.0"/>
    </extension>
 
    
@@ -117,7 +117,7 @@
 <!--@generated-->
   <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated CapellaModeller -->
-      <package class="org.polarsys.capella.core.data.epbs.EpbsPackage" genModel="model/CapellaModeller.genmodel" uri="http://www.polarsys.org/capella/core/epbs/1.2.0"/>
+      <package class="org.polarsys.capella.core.data.epbs.EpbsPackage" genModel="model/CapellaModeller.genmodel" uri="http://www.polarsys.org/capella/core/epbs/1.3.0"/>
    </extension>
 
    
@@ -131,7 +131,7 @@
 <!--@generated-->
   <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated CapellaModeller -->
-      <package class="org.polarsys.capella.core.data.sharedmodel.SharedmodelPackage" genModel="model/CapellaModeller.genmodel" uri="http://www.polarsys.org/capella/core/sharedmodel/1.2.0"/>
+      <package class="org.polarsys.capella.core.data.sharedmodel.SharedmodelPackage" genModel="model/CapellaModeller.genmodel" uri="http://www.polarsys.org/capella/core/sharedmodel/1.3.0"/>
    </extension>
 
    
@@ -145,7 +145,7 @@
 <!--@generated-->
   <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated CapellaModeller -->
-      <package class="org.polarsys.capella.core.data.requirement.RequirementPackage" genModel="model/CapellaModeller.genmodel" uri="http://www.polarsys.org/capella/core/requirement/1.2.0"/>
+      <package class="org.polarsys.capella.core.data.requirement.RequirementPackage" genModel="model/CapellaModeller.genmodel" uri="http://www.polarsys.org/capella/core/requirement/1.3.0"/>
    </extension>
 
    
@@ -159,7 +159,7 @@
 <!--@generated-->
   <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated CapellaModeller -->
-      <package class="org.polarsys.capella.core.data.capellacommon.CapellacommonPackage" genModel="model/CapellaModeller.genmodel" uri="http://www.polarsys.org/capella/core/common/1.2.0"/>
+      <package class="org.polarsys.capella.core.data.capellacommon.CapellacommonPackage" genModel="model/CapellaModeller.genmodel" uri="http://www.polarsys.org/capella/core/common/1.3.0"/>
    </extension>
 
    
@@ -173,7 +173,7 @@
 <!--@generated-->
   <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated CapellaModeller -->
-      <package class="org.polarsys.capella.core.data.information.InformationPackage" genModel="model/CapellaModeller.genmodel" uri="http://www.polarsys.org/capella/core/information/1.2.0"/>
+      <package class="org.polarsys.capella.core.data.information.InformationPackage" genModel="model/CapellaModeller.genmodel" uri="http://www.polarsys.org/capella/core/information/1.3.0"/>
    </extension>
 
    
@@ -187,7 +187,7 @@
 <!--@generated-->
   <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated CapellaModeller -->
-      <package class="org.polarsys.capella.core.data.information.communication.CommunicationPackage" genModel="model/CapellaModeller.genmodel" uri="http://www.polarsys.org/capella/core/information/communication/1.2.0"/>
+      <package class="org.polarsys.capella.core.data.information.communication.CommunicationPackage" genModel="model/CapellaModeller.genmodel" uri="http://www.polarsys.org/capella/core/information/communication/1.3.0"/>
    </extension>
 
    
@@ -201,7 +201,7 @@
 <!--@generated-->
   <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated CapellaModeller -->
-      <package class="org.polarsys.capella.core.data.information.datatype.DatatypePackage" genModel="model/CapellaModeller.genmodel" uri="http://www.polarsys.org/capella/core/information/datatype/1.2.0"/>
+      <package class="org.polarsys.capella.core.data.information.datatype.DatatypePackage" genModel="model/CapellaModeller.genmodel" uri="http://www.polarsys.org/capella/core/information/datatype/1.3.0"/>
    </extension>
 
    
@@ -215,7 +215,7 @@
 <!--@generated-->
   <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated CapellaModeller -->
-      <package class="org.polarsys.capella.core.data.information.datavalue.DatavaluePackage" genModel="model/CapellaModeller.genmodel" uri="http://www.polarsys.org/capella/core/information/datavalue/1.2.0"/>
+      <package class="org.polarsys.capella.core.data.information.datavalue.DatavaluePackage" genModel="model/CapellaModeller.genmodel" uri="http://www.polarsys.org/capella/core/information/datavalue/1.3.0"/>
    </extension>
 
    
@@ -229,7 +229,7 @@
 <!--@generated-->
   <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated CapellaModeller -->
-      <package class="org.polarsys.capella.core.data.cs.CsPackage" genModel="model/CapellaModeller.genmodel" uri="http://www.polarsys.org/capella/core/cs/1.2.0"/>
+      <package class="org.polarsys.capella.core.data.cs.CsPackage" genModel="model/CapellaModeller.genmodel" uri="http://www.polarsys.org/capella/core/cs/1.3.0"/>
    </extension>
 
    
@@ -243,7 +243,7 @@
 <!--@generated-->
   <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated CapellaModeller -->
-      <package class="org.polarsys.capella.core.data.fa.FaPackage" genModel="model/CapellaModeller.genmodel" uri="http://www.polarsys.org/capella/core/fa/1.2.0"/>
+      <package class="org.polarsys.capella.core.data.fa.FaPackage" genModel="model/CapellaModeller.genmodel" uri="http://www.polarsys.org/capella/core/fa/1.3.0"/>
    </extension>
 
    
@@ -257,7 +257,7 @@
 <!--@generated-->
   <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated CapellaModeller -->
-      <package class="org.polarsys.capella.core.data.interaction.InteractionPackage" genModel="model/CapellaModeller.genmodel" uri="http://www.polarsys.org/capella/core/interaction/1.2.0"/>
+      <package class="org.polarsys.capella.core.data.interaction.InteractionPackage" genModel="model/CapellaModeller.genmodel" uri="http://www.polarsys.org/capella/core/interaction/1.3.0"/>
    </extension>
 
    

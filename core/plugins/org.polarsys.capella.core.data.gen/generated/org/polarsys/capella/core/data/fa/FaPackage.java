@@ -52,7 +52,7 @@ public interface FaPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://www.polarsys.org/capella/core/fa/1.2.0"; //$NON-NLS-1$
+	String eNS_URI = "http://www.polarsys.org/capella/core/fa/1.3.0"; //$NON-NLS-1$
 
 	/**
 	 * The package namespace name.
