@@ -24,7 +24,7 @@ location "http://download.eclipse.org/releases/oxygen/201803211000" {
 	com.ibm.icu
 }
 
-location "http://download.eclipse.org/sirius/updates/stable/6.1.0-S20180811-163511/oxygen" {
+location "http://download.eclipse.org/sirius/updates/stable/6.1.0-S20180831-112606/oxygen" {
 	org.eclipse.sirius.doc.feature.feature.group
 	org.eclipse.sirius.doc.feature.source.feature.group
 	org.eclipse.sirius.runtime.feature.group
