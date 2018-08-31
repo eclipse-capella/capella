@@ -47,6 +47,8 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute re.ecore#//CatalogElement/environment"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute re.ecore#//CatalogElement/suffix"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute re.ecore#//CatalogElement/purpose"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute re.ecore#//CatalogElement/readOnly"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute re.ecore#//CatalogElement/version"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute re.ecore#//CatalogElement/tags"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference re.ecore#//CatalogElement/origin"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference re.ecore#//CatalogElement/currentCompliancy"/>

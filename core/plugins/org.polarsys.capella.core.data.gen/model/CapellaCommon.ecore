@@ -102,13 +102,19 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="source" lowerBound="1"
         eType="ecore:EClass ../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//TraceableElement"
         changeable="false" volatile="true" transient="true" derived="true" resolveProxies="false">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="sourceElement"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
         eType="ecore:EClass ../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//TraceableElement"
         changeable="false" volatile="true" transient="true" derived="true" resolveProxies="false">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="targetElement"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
     </eStructuralFeatures>
   </eClassifiers>
@@ -178,7 +184,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="involvedCapabilityRealizationInvolvedElement"
         lowerBound="1" eType="#//CapabilityRealizationInvolvedElement" changeable="false"
         volatile="true" transient="true" derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="involved"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="(automatically computed) the involved element&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -211,7 +220,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="involvingCapabilityRealizationInvolvements"
         upperBound="-1" eType="#//CapabilityRealizationInvolvement" changeable="false"
         volatile="true" transient="true" derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="involvingInvolvements"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="the capability realization involvement relationships in which this element is referenced&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -378,19 +390,28 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="availableAbstractFunctions"
         upperBound="-1" eType="ecore:EClass FunctionalAnalysis.ecore#//AbstractFunction"
         changeable="false" volatile="true" transient="true" derived="true" resolveProxies="false">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="opposite"/>
+        <details key="viatra.expression" value="availableInStates"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="availableFunctionalChains"
         upperBound="-1" eType="ecore:EClass FunctionalAnalysis.ecore#//FunctionalChain"
         changeable="false" volatile="true" transient="true" derived="true" resolveProxies="false">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="opposite"/>
+        <details key="viatra.expression" value="availableInStates"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="availableAbstractCapabilities"
         upperBound="-1" eType="ecore:EClass Interaction.ecore#//AbstractCapability"
         changeable="false" volatile="true" transient="true" derived="true" resolveProxies="false">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="opposite"/>
+        <details key="viatra.expression" value="availableInStates"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="entry" upperBound="-1"
@@ -516,13 +537,19 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="realizedAbstractStates"
         upperBound="-1" eType="#//AbstractState" changeable="false" volatile="true"
         transient="true" derived="true" resolveProxies="false">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="patternbody"/>
+        <details key="viatra.expression" value="AbstractStateRealization.realizingAbstractState(asr, self);&#xD;&#xA;AbstractStateRealization.realizedAbstractState(asr, target);&#xD;&#xA;"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="realizingAbstractStates"
         upperBound="-1" eType="#//AbstractState" changeable="false" volatile="true"
         transient="true" derived="true" resolveProxies="false">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="patternbody"/>
+        <details key="viatra.expression" value="AbstractStateRealization.realizedAbstractState(asr, self);&#xD;&#xA;AbstractStateRealization.realizingAbstractState(asr, target);&#xD;&#xA;"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic">
         <details key="excludefrom" value="xmlpivot"/>
       </eAnnotations>
@@ -530,7 +557,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="outgoing" upperBound="-1"
         eType="#//StateTransition" changeable="false" volatile="true" transient="true"
         derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="opposite"/>
+        <details key="viatra.expression" value="source"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="Specifies the transitions departing from this vertex.&#xD;&#xA;[source:UML Superstructure v2.2]"/>
         <details key="constraints" value="none"/>
@@ -548,7 +578,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="incoming" upperBound="-1"
         eType="#//StateTransition" changeable="false" volatile="true" transient="true"
         derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="opposite"/>
+        <details key="viatra.expression" value="target"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="Specifies the transitions entering this vertex.&#xD;&#xA;[source:UML Superstructure v2.2]"/>
         <details key="constraints" value="none"/>
@@ -565,7 +598,10 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="involverRegions" upperBound="-1"
         eType="#//Region" changeable="false" volatile="true" transient="true" derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="opposite"/>
+        <details key="viatra.expression" value="involvedStates"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="none"/>
         <details key="constraints" value="none"/>
@@ -712,13 +748,19 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="realizedStateTransitions"
         upperBound="-1" eType="#//StateTransition" changeable="false" volatile="true"
         transient="true" derived="true" resolveProxies="false">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="patternbody"/>
+        <details key="viatra.expression" value="StateTransitionRealization.realizingStateTransition(asr, self);&#xD;&#xA;StateTransitionRealization.realizedStateTransition(asr, target);&#xD;&#xA;"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="realizingStateTransitions"
         upperBound="-1" eType="#//StateTransition" changeable="false" volatile="true"
         transient="true" derived="true" resolveProxies="false">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="patternbody"/>
+        <details key="viatra.expression" value="StateTransitionRealization.realizedStateTransition(asr, self);&#xD;&#xA;StateTransitionRealization.realizingStateTransition(asr, target);&#xD;&#xA;"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic">
         <details key="excludefrom" value="xmlpivot"/>
       </eAnnotations>
@@ -851,7 +893,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="realizedAbstractState"
         lowerBound="1" eType="#//AbstractState" changeable="false" volatile="true"
         transient="true" derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="targetElement"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="destination of the realization link : the abstract state that is being realized&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -866,7 +911,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="realizingAbstractState"
         lowerBound="1" eType="#//AbstractState" changeable="false" volatile="true"
         transient="true" derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="sourceElement"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="the source of the realization link : the abstract state that is realizing another abstract state&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -898,7 +946,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="realizedStateTransition"
         lowerBound="1" eType="#//StateTransition" changeable="false" volatile="true"
         transient="true" derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="targetElement"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="destination of the realization link : the state transition that is being realized&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -913,7 +964,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="realizingStateTransition"
         lowerBound="1" eType="#//StateTransition" changeable="false" volatile="true"
         transient="true" derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="sourceElement"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="the source of the realization link : the state transition that is realizing another state transition&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -1061,7 +1115,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="realizedEvent" lowerBound="1"
         eType="#//StateEvent" changeable="false" volatile="true" transient="true"
         derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="targetElement"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="destination of the realization link : the state event that is being realized&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -1076,7 +1133,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="realizingEvent" lowerBound="1"
         eType="#//StateEvent" changeable="false" volatile="true" transient="true"
         derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="sourceElement"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="the source of the realization link : the state event that is realizing another abstract state&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>

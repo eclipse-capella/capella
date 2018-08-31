@@ -133,7 +133,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="containedCapabilityPkg"
         eType="#//CapabilityPkg" changeable="false" volatile="true" transient="true"
         derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="ownedAbstractCapabilityPkg"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic">
         <details key="feature" value="ownedAbstractCapabilityPkg"/>
       </eAnnotations>
@@ -146,7 +149,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="containedSystemFunctionPkg"
         eType="#//SystemFunctionPkg" changeable="false" volatile="true" transient="true"
         derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="ownedFunctionPkg"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic">
         <details key="feature" value="ownedFunctionPkg"/>
       </eAnnotations>
@@ -172,7 +178,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="allocatedOperationalAnalysisRealizations"
         upperBound="-1" eType="#//OperationalAnalysisRealization" changeable="false"
         volatile="true" transient="true" derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="provisionedArchitectureAllocations"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="(automatically computed) reference to operational analysis elements that this system analysis is realizing&#xD;&#xA;[source:Capella study]"/>
         <details key="constraints" value="none"/>
@@ -187,7 +196,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="allocatedOperationalAnalyses"
         upperBound="-1" eType="ecore:EClass OperationalAnalysis.ecore#//OperationalAnalysis"
         changeable="false" volatile="true" transient="true" derived="true" eOpposite="OperationalAnalysis.ecore#//OperationalAnalysis/allocatingSystemAnalyses">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="allocatedArchitectures"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
         <details key="UML/SysML semantic equivalences" value="keyword::none"/>
         <details key="explanation" value="Derived and transient"/>
@@ -198,7 +210,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="allocatingLogicalArchitectures"
         upperBound="-1" eType="ecore:EClass LogicalArchitecture.ecore#//LogicalArchitecture"
         changeable="false" volatile="true" transient="true" derived="true" eOpposite="LogicalArchitecture.ecore#//LogicalArchitecture/allocatedSystemAnalyses">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="allocatingArchitectures"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
         <details key="UML/SysML semantic equivalences" value="keyword::none"/>
         <details key="explanation" value="Derived and transient"/>
@@ -240,7 +255,10 @@
         <details key="Label" value="contributedCapabilitySpecificationUseCases"/>
       </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="participationsInCapabilities.capability"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="the Capabilities to which this System contributes&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -266,7 +284,10 @@
         <details key="Label" value="participationsInCapabilities"/>
       </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="involvingInvolvements"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="(automatically computed) the links to Capabilities to which this System contributes&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -285,7 +306,10 @@
         <details key="Label" value="contributedMissions"/>
       </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="participationsInMissions.mission"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="(automatically computed) the Missions to which this System contributes&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -311,7 +335,10 @@
         <details key="Label" value="participationsInMissions"/>
       </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="involvingInvolvements"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="(automatically computed) the links to the Missions to which this System contributes&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -360,7 +387,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="allocatedEntityRealizations"
         upperBound="-1" eType="#//OperationalEntityRealization" changeable="false"
         volatile="true" transient="true" derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="provisionedComponentAllocations"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="(automatically computed) the links from operational entities being realized by this System&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -375,7 +405,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="allocatedSystemFunctions"
         upperBound="-1" eType="#//SystemFunction" changeable="false" volatile="true"
         transient="true" derived="true" eOpposite="#//SystemFunction/allocatorSystems">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="allocatedFunctions"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
       <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
         <details key="UML/SysML semantic equivalences" value="keyword::none"/>
@@ -386,7 +419,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="realizedEntities" upperBound="-1"
         eType="ecore:EClass OperationalAnalysis.ecore#//Entity" changeable="false"
         volatile="true" transient="true" derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="patternbody"/>
+        <details key="viatra.expression" value="OperationalEntityRealization.sourceElement(oer, self);&#xD;&#xA;OperationalEntityRealization.allocatedComponent(oer, target);"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
       <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
         <details key="UML/SysML semantic equivalences" value="keyword::none"/>
@@ -397,7 +433,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="realizingLogicalComponents"
         upperBound="-1" eType="ecore:EClass LogicalArchitecture.ecore#//LogicalComponent"
         changeable="false" volatile="true" transient="true" derived="true" eOpposite="LogicalArchitecture.ecore#//LogicalComponent/realizedSystems">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="allocatingComponents"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic">
         <details key="excludefrom" value="xmlpivot"/>
       </eAnnotations>
@@ -442,7 +481,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="allocatorActors" upperBound="-1"
         eType="#//Actor" changeable="false" volatile="true" transient="true" derived="true"
         eOpposite="#//Actor/allocatedSystemFunctions">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="patternbody"/>
+        <details key="viatra.expression" value="ComponentFunctionalAllocation.targetElement(cfa, self);&#xD;&#xA;ComponentFunctionalAllocation.sourceElement(cfa, target);"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic">
         <details key="excludefrom" value="xmlpivot"/>
       </eAnnotations>
@@ -455,7 +497,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="allocatorSystems" upperBound="-1"
         eType="#//System" changeable="false" volatile="true" transient="true" derived="true"
         eOpposite="#//System/allocatedSystemFunctions">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="patternbody"/>
+        <details key="viatra.expression" value="ComponentFunctionalAllocation.targetElement(cfa, self);&#xD;&#xA;ComponentFunctionalAllocation.sourceElement(cfa, target);"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic">
         <details key="excludefrom" value="xmlpivot"/>
       </eAnnotations>
@@ -468,7 +513,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="realizedOperationalActivities"
         upperBound="-1" eType="ecore:EClass OperationalAnalysis.ecore#//OperationalActivity"
         changeable="false" volatile="true" transient="true" derived="true" eOpposite="OperationalAnalysis.ecore#//OperationalActivity/realizingSystemFunctions">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="outFunctionRealizations.allocatedFunction"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
       <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
         <details key="UML/SysML semantic equivalences" value="keyword::none"/>
@@ -479,7 +527,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="realizingLogicalFunctions"
         upperBound="-1" eType="ecore:EClass LogicalArchitecture.ecore#//LogicalFunction"
         changeable="false" volatile="true" transient="true" derived="true" eOpposite="LogicalArchitecture.ecore#//LogicalFunction/realizedSystemFunctions">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="inFunctionRealizations.allocatingFunction"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic">
         <details key="excludefrom" value="xmlpivot"/>
       </eAnnotations>
@@ -492,7 +543,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="containedSystemFunctions"
         upperBound="-1" eType="#//SystemFunction" changeable="false" volatile="true"
         transient="true" derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="ownedFunctions"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic">
         <details key="feature" value="ownedFunctions"/>
       </eAnnotations>
@@ -505,7 +559,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="childrenSystemFunctions"
         upperBound="-1" eType="#//SystemFunction" changeable="false" volatile="true"
         transient="true" derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="subFunctions"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic">
         <details key="excludefrom" value="xmlpivot"/>
       </eAnnotations>
@@ -711,7 +768,10 @@
         <details key="Label" value="participationsInMissions"/>
       </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="involvingInvolvements"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="(automatically computed) the list of links between this actor and the Missions in which it is involved&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -734,7 +794,10 @@
         <details key="Label" value="participationsInCapabilities"/>
       </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="involvingInvolvements"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="(automatically computed) the list of links between this actor and the Capabilities in which it is involved&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -757,7 +820,10 @@
         <details key="Label" value="participationsInCapabilityRealizations"/>
       </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="involvingCapabilityRealizationInvolvements"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="(automatically computed) the list of links between this actor and the CapabilityRealization in which it is involved&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -776,7 +842,10 @@
         <details key="Label" value="contributedMissions"/>
       </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="participationsInMissions.mission"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="(automatically computed) the list of Missions in which this actor is involved&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -798,7 +867,10 @@
         <details key="Label" value="contributedCapabilitySpecificationUseCases"/>
       </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="participationsInCapabilities.capability"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="(automatically computed) the list of Capabilities in which this actor is involved&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -862,7 +934,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="allocatedSystemFunctions"
         upperBound="-1" eType="#//SystemFunction" changeable="false" volatile="true"
         transient="true" derived="true" eOpposite="#//SystemFunction/allocatorActors">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="allocatedFunctions"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
       <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
         <details key="UML/SysML semantic equivalences" value="keyword::none"/>
@@ -873,7 +948,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="realizedEntities" upperBound="-1"
         eType="ecore:EClass OperationalAnalysis.ecore#//Entity" changeable="false"
         volatile="true" transient="true" derived="true" eOpposite="OperationalAnalysis.ecore#//Entity/realizingActors">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="patternbody"/>
+        <details key="viatra.expression" value="OperationalEntityRealization.sourceElement(oer, self);&#xD;&#xA;OperationalEntityRealization.allocatedComponent(oer, target);"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
       <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
         <details key="UML/SysML semantic equivalences" value="keyword::none"/>
@@ -884,7 +962,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="realizedOperationalActors"
         upperBound="-1" eType="ecore:EClass OperationalAnalysis.ecore#//OperationalActor"
         changeable="false" volatile="true" transient="true" derived="true" eOpposite="OperationalAnalysis.ecore#//OperationalActor/realizingSystemActors">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="patternbody"/>
+        <details key="viatra.expression" value="OperationalActorRealization.sourceElement(oer, self);&#xD;&#xA;OperationalActorRealization.allocatedComponent(oer, target);"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
       <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
         <details key="UML/SysML semantic equivalences" value="keyword::none"/>
@@ -895,7 +976,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="realizingLogicalActors"
         upperBound="-1" eType="ecore:EClass LogicalArchitecture.ecore#//LogicalActor"
         changeable="false" volatile="true" transient="true" derived="true" eOpposite="LogicalArchitecture.ecore#//LogicalActor/realizedSystemActors">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="allocatingComponents"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic">
         <details key="excludefrom" value="xmlpivot"/>
       </eAnnotations>
@@ -940,7 +1024,10 @@
         <details key="Label" value="actor"/>
       </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="involved"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="Link to a system actor that is involved in the system capability.&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -963,7 +1050,10 @@
         <details key="Label" value="capability"/>
       </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="involver"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="Link to the system capability involving the actor&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -1010,7 +1100,10 @@
         <details key="Label" value="actor"/>
       </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="involved"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="Link to a system actor that is involved in the system mission&#xD;&#xA;[source:Capella study]"/>
         <details key="constraints" value="none"/>
@@ -1033,7 +1126,10 @@
         <details key="Label" value="mission"/>
       </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="involver"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="Link to the system mission related to the actor&#xD;&#xA;[source:Capella study]"/>
         <details key="constraints" value="none"/>
@@ -1230,7 +1326,10 @@
         <details key="Label" value="participatingActors"/>
       </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="involvedActors.actor"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="(computed automatically) the Actors involved in this Mission&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -1249,7 +1348,10 @@
         <details key="Label" value="participatingSystems"/>
       </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="ownedSystemMissionInvolvement.system"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="the System involved in this Mission&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -1273,7 +1375,10 @@
         <details key="Label" value="invovledActors"/>
       </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="involvedInvolvements"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="(automatically computed) the links to Actors that are involved in this Mission&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -1295,7 +1400,10 @@
         <details key="Label" value="missionSupplierLinks"/>
       </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="ownedSystemMissionInvolvement"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="(automatically computed) the link to the System involved in this mission&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -1314,7 +1422,10 @@
         <details key="Label" value="exploitedCapabilityUseCases"/>
       </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="ownedCapabilityExploitations.capability"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="(automatically computed) the list of Capabilities that this Mission exploits&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -1432,7 +1543,10 @@
         <details key="Label" value="mission"/>
       </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="involver"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="Link to a Mission that the System is involved in&#xD;&#xA;[source:Capella study]"/>
         <details key="constraints" value="none"/>
@@ -1455,7 +1569,10 @@
         <details key="Label" value="system"/>
       </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="involved"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="Link to a system that is involved in the system mission&#xD;&#xA;[source:Capella study]"/>
         <details key="constraints" value="none"/>
@@ -1545,7 +1662,10 @@
         <details key="Label" value="involvedActors"/>
       </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="involvedInvolvements"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="(automatically computed) the links between Actors and this Capability&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -1567,7 +1687,10 @@
         <details key="Label" value="capabilitySupplierLinks"/>
       </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="ownedSystemCapabilityInvolvement"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="(automatically computed) the link to the System being involved in this Capability&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -1586,7 +1709,10 @@
         <details key="Label" value="participatingActors"/>
       </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="involvedActors.actor"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="(automatically computed) the Actors involved with this Capability&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -1605,7 +1731,10 @@
         <details key="Label" value="participatingSystems"/>
       </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="ownedSystemCapabilityInvolvement.system"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="(automatically computed) the System involved in this Capability&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -1639,7 +1768,10 @@
         <details key="explanation" value="Opposite reference of uml::Include::addition"/>
         <details key="constraints" value="uml::NamedElement::clientDependency elements on which CapabilityExploitation stereotype or any stereotype that inherits from it is applied&#xD;&#xA;Order must be computed"/>
       </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="opposite"/>
+        <details key="viatra.expression" value="capability"/>
+      </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="purposeMissions" upperBound="-1"
         eType="#//Mission" changeable="false" volatile="true" transient="true" derived="true"
@@ -1648,7 +1780,10 @@
         <details key="Label" value="purposeMissions"/>
       </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="purposes.mission"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="(automatically computed) the Mission(s) that this Capability supports&#xD;&#xA;[source: Capella study]"/>
         <details key="constraints" value="none"/>
@@ -1666,7 +1801,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="realizedOperationalCapabilities"
         upperBound="-1" eType="ecore:EClass OperationalAnalysis.ecore#//OperationalCapability"
         changeable="false" volatile="true" transient="true" derived="true" eOpposite="OperationalAnalysis.ecore#//OperationalCapability/realizingCapabilities">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="patternbody"/>
+        <details key="viatra.expression" value="AbstractCapabilityRealization.sourceElement(acr, self);&#xD;&#xA;AbstractCapabilityRealization.realizedCapability(acr, target);"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
       <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
         <details key="UML/SysML semantic equivalences" value="keyword::none"/>
@@ -1677,7 +1815,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="realizingCapabilityRealizations"
         upperBound="-1" eType="ecore:EClass LogicalArchitecture.ecore#//CapabilityRealization"
         changeable="false" volatile="true" transient="true" derived="true" eOpposite="LogicalArchitecture.ecore#//CapabilityRealization/realizedCapabilities">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="patternbody"/>
+        <details key="viatra.expression" value="AbstractCapabilityRealization.targetElement(acr, self);&#xD;&#xA;AbstractCapabilityRealization.realizingCapability(acr, target);"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic">
         <details key="excludefrom" value="xmlpivot"/>
       </eAnnotations>
@@ -1714,7 +1855,10 @@
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="mission" lowerBound="1"
         eType="#//Mission" changeable="false" volatile="true" transient="true" derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="opposite"/>
+        <details key="viatra.expression" value="ownedCapabilityExploitations"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
         <details key="featureName" value="includingCase"/>
         <details key="featureOwner" value="Include"/>
@@ -1860,7 +2004,10 @@
         <details key="Label" value="capability"/>
       </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="involver"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="the Capability involved in this relationship&#xD;&#xA;[source:Capella study]"/>
         <details key="constraints" value="none"/>
@@ -1883,7 +2030,10 @@
         <details key="Label" value="system"/>
       </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
-      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="involved"/>
+      </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="The System involved in this relationship&#xD;&#xA;[source:Capella study]"/>
         <details key="constraints" value="none"/>
