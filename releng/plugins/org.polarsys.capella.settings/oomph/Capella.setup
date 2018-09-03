@@ -276,12 +276,12 @@
         <repositoryList
             name="Neon">
           <repository
-              url="http://download.eclipse.org/diffmerge/releases/0.9.0/emf-diffmerge-site"/>
+              url="http://download.eclipse.org/diffmerge/releases/0.11.0/emf-diffmerge-site"/>
         </repositoryList>
         <repositoryList
             name="Oxygen">
           <repository
-              url="http://download.eclipse.org/diffmerge/releases/0.9.0/emf-diffmerge-site"/>
+              url="http://download.eclipse.org/diffmerge/releases/0.11.0/emf-diffmerge-site"/>
         </repositoryList>
       </targlet>
       <targlet
@@ -294,12 +294,12 @@
         <repositoryList
             name="Neon">
           <repository
-              url="http://download.eclipse.org/diffmerge/releases/0.9.0/edm-patterns-site"/>
+              url="http://download.eclipse.org/diffmerge/releases/0.11.0/edm-patterns-site"/>
         </repositoryList>
         <repositoryList
             name="Oxygen">
           <repository
-              url="http://download.eclipse.org/diffmerge/releases/0.9.0/edm-patterns-site"/>
+              url="http://download.eclipse.org/diffmerge/releases/0.11.0/edm-patterns-site"/>
         </repositoryList>
       </targlet>
       <targlet

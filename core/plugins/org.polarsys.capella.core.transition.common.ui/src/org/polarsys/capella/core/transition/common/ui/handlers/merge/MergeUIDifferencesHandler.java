@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,6 +19,7 @@ import org.eclipse.emf.diffmerge.api.diff.IDifference;
 import org.eclipse.emf.diffmerge.ui.util.DiffMergeDialog;
 import org.eclipse.emf.diffmerge.ui.viewers.AbstractComparisonViewer;
 import org.eclipse.emf.diffmerge.ui.viewers.ComparisonViewer;
+import org.eclipse.emf.diffmerge.ui.viewers.DefaultUserProperties;
 import org.eclipse.emf.diffmerge.ui.viewers.EMFDiffNode;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.dialogs.IDialogConstants;
@@ -135,10 +136,10 @@ public class MergeUIDifferencesHandler extends DefaultMergeHandler {
         .get(ITransitionConstants.TRANSITION_TARGET_EDITING_DOMAIN);
 
     MergeEMFDiffNode diffNode = new MergeEMFDiffNode(context, domain, true, false);
-    diffNode.setDefaultIncrementalMode(true);
-    diffNode.setDefaultCoverChildren(true);
-    diffNode.setDefaultShowImpact(true);
-    diffNode.setUndoRedoSupported(false);
+    diffNode.setUserPropertyValue(DefaultUserProperties.P_DEFAULT_INCREMENTAL_MODE, true);
+    diffNode.setUserPropertyValue(DefaultUserProperties.P_DEFAULT_COVER_CHILDREN, true);
+    diffNode.setUserPropertyValue(DefaultUserProperties.P_DEFAULT_SHOW_MERGE_IMPACT, true);
+    diffNode.setUserPropertyValue(DefaultUserProperties.P_SUPPORT_UNDO_REDO, false);
     diffNode.setLeftRole(Role.REFERENCE);
     diffNode.setMergeAllOnLeft(true);
     diffNode.setMergeAllOnRight(false);

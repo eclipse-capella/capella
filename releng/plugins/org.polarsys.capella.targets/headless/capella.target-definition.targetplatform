@@ -57,13 +57,13 @@ location kitalpha-runtime-master "https://ci.polarsys.org/kitalpha/job/Kitalpha_
 	org.polarsys.kitalpha.doc.feature.feature.group lazy	
 }
 
-location "http://download.eclipse.org/diffmerge/releases/0.9.0/emf-diffmerge-site" {
+location "http://download.eclipse.org/diffmerge/releases/0.11.0/emf-diffmerge-site" {
 	org.eclipse.emf.diffmerge.feature.feature.group lazy
 	org.eclipse.emf.diffmerge.sirius.feature.feature.group lazy
 	org.eclipse.emf.diffmerge.gmf.feature.feature.group lazy
 }
 
-location "http://download.eclipse.org/diffmerge/releases/0.9.0/edm-patterns-site" {
+location "http://download.eclipse.org/diffmerge/releases/0.11.0/edm-patterns-site" {
 	org.eclipse.emf.diffmerge.patterns.sdk.feature.feature.group lazy
 	org.eclipse.emf.diffmerge.patterns.sirius.sdk.feature.feature.group lazy
 }
