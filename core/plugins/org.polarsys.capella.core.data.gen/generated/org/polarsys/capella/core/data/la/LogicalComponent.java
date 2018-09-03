@@ -170,6 +170,7 @@ public interface LogicalComponent extends SystemComponent {
 	 * @return the value of the '<em>System Realizations</em>' reference list.
 	 * @see org.polarsys.capella.core.data.la.LaPackage#getLogicalComponent_SystemRealizations()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='provisionedComponentAllocations'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the system realization links that point to/from this component\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -197,6 +198,7 @@ public interface LogicalComponent extends SystemComponent {
 	 * @see org.polarsys.capella.core.data.la.LaPackage#getLogicalComponent_SubLogicalComponents()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='subActors'"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='ownedPartitions.type'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) the children components of this logical component\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
@@ -226,6 +228,7 @@ public interface LogicalComponent extends SystemComponent {
 	 * @see org.polarsys.capella.core.data.la.LaPackage#getLogicalComponent_AllocatedLogicalFunctions()
 	 * @see org.polarsys.capella.core.data.la.LogicalFunction#getAllocatorLogicalComponents
 	 * @model opposite="allocatorLogicalComponents" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='allocatedFunctions'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
 	 */
@@ -253,6 +256,7 @@ public interface LogicalComponent extends SystemComponent {
 	 * @see org.polarsys.capella.core.data.la.LaPackage#getLogicalComponent_RealizingPhysicalComponents()
 	 * @see org.polarsys.capella.core.data.pa.PhysicalComponent#getRealizedLogicalComponents
 	 * @model opposite="realizedLogicalComponents" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='allocatingComponents'"
 	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -281,6 +285,7 @@ public interface LogicalComponent extends SystemComponent {
 	 * @see org.polarsys.capella.core.data.la.LaPackage#getLogicalComponent_RealizedSystems()
 	 * @see org.polarsys.capella.core.data.ctx.System#getRealizingLogicalComponents
 	 * @model opposite="realizingLogicalComponents" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='allocatedComponents'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
 	 */

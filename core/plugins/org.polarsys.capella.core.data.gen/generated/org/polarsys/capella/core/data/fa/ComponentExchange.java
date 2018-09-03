@@ -157,6 +157,7 @@ public interface ComponentExchange extends AbstractEvent, AbstractEventOperation
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getComponentExchange_AllocatedFunctionalExchanges()
 	 * @see org.polarsys.capella.core.data.fa.FunctionalExchange#getAllocatingComponentExchanges
 	 * @model opposite="allocatingComponentExchanges" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='outgoingComponentExchangeFunctionalExchangeAllocations.allocatedFunctionalExchange'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the functional exchanges associated with this component exchange (e.g. the functional exchanges that happen between functions allocated to the two components involved in this component exchange)\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -185,6 +186,7 @@ public interface ComponentExchange extends AbstractEvent, AbstractEventOperation
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getComponentExchange_IncomingComponentExchangeRealizations()
 	 * @see org.polarsys.capella.core.data.fa.ComponentExchangeRealization#getAllocatedComponentExchange
 	 * @model opposite="allocatedComponentExchange" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='incomingTraces'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the component exchange realization links that have this component exchange as their destination\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -213,6 +215,7 @@ public interface ComponentExchange extends AbstractEvent, AbstractEventOperation
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getComponentExchange_OutgoingComponentExchangeRealizations()
 	 * @see org.polarsys.capella.core.data.fa.ComponentExchangeRealization#getAllocatingComponentExchange
 	 * @model opposite="allocatingComponentExchange" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='outgoingTraces'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) the component exchange realization links that have this component exchange as their source\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -241,6 +244,7 @@ public interface ComponentExchange extends AbstractEvent, AbstractEventOperation
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getComponentExchange_OutgoingComponentExchangeFunctionalExchangeAllocations()
 	 * @see org.polarsys.capella.core.data.fa.ComponentExchangeFunctionalExchangeAllocation#getAllocatingComponentExchange
 	 * @model opposite="allocatingComponentExchange" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='outgoingTraces'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) the allocation links between functional exchanges and component exchanges, for which this component exchange is the source\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -346,6 +350,7 @@ public interface ComponentExchange extends AbstractEvent, AbstractEventOperation
 	 * @return the value of the '<em>Source Port</em>' reference.
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getComponentExchange_SourcePort()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='ComponentExchange.source(self, target);\r\n} or {\r\n\tComponentExchange.source(self, cee);\r\n\tComponentExchangeEnd.port(cee, target);'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
 	 */
@@ -370,6 +375,7 @@ public interface ComponentExchange extends AbstractEvent, AbstractEventOperation
 	 * @return the value of the '<em>Source Part</em>' reference.
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getComponentExchange_SourcePart()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='ComponentExchange.source(self, target);\r\n} or {\r\n\tComponentExchange.source(self, cee);\r\n\tComponentExchangeEnd.part(cee, target);'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
 	 */
@@ -394,6 +400,7 @@ public interface ComponentExchange extends AbstractEvent, AbstractEventOperation
 	 * @return the value of the '<em>Target Port</em>' reference.
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getComponentExchange_TargetPort()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='ComponentExchange.target(self, target);\r\n} or {\r\n\tComponentExchange.target(self, cee);\r\n\tComponentExchangeEnd.port(cee, target);'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
 	 */
@@ -418,6 +425,7 @@ public interface ComponentExchange extends AbstractEvent, AbstractEventOperation
 	 * @return the value of the '<em>Target Part</em>' reference.
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getComponentExchange_TargetPart()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='ComponentExchange.target(self, target);\r\n} or {\r\n\tComponentExchange.target(self, cee);\r\n\tComponentExchangeEnd.part(cee, target);'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
 	 */
@@ -443,6 +451,7 @@ public interface ComponentExchange extends AbstractEvent, AbstractEventOperation
 	 * @return the value of the '<em>Categories</em>' reference list.
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getComponentExchange_Categories()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='opposite' viatra.expression='exchanges'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the exchange categories (families) to which this functional exchange belongs\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='' constraints='none'"
 	 * @generated
@@ -469,6 +478,7 @@ public interface ComponentExchange extends AbstractEvent, AbstractEventOperation
 	 * @return the value of the '<em>Allocator Physical Links</em>' reference list.
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getComponentExchange_AllocatorPhysicalLinks()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='ComponentExchange.incomingTraces(self, cea);\r\nComponentExchangeAllocation.componentExchangeAllocator(cea, target);'"
 	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -497,6 +507,7 @@ public interface ComponentExchange extends AbstractEvent, AbstractEventOperation
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getComponentExchange_RealizedComponentExchanges()
 	 * @see org.polarsys.capella.core.data.fa.ComponentExchange#getRealizingComponentExchanges
 	 * @model opposite="realizingComponentExchanges" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='ComponentExchange.outgoingTraces(self, cer);\r\nComponentExchangeRealization.allocatedComponentExchange(cer, target);'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
 	 */
@@ -524,6 +535,7 @@ public interface ComponentExchange extends AbstractEvent, AbstractEventOperation
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getComponentExchange_RealizingComponentExchanges()
 	 * @see org.polarsys.capella.core.data.fa.ComponentExchange#getRealizedComponentExchanges
 	 * @model opposite="realizedComponentExchanges" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='ComponentExchange.incomingTraces(self, cer);\r\nComponentExchangeRealization.allocatingComponentExchange(cer, target);'"
 	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated

@@ -129,6 +129,7 @@ public interface CommunicationItem extends Classifier, DataValueContainer {
 	 * @model resolveProxies="false" transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='ownedAttribute' featureOwner='StructuredClassifier'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='properties'"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='ownedFeatures'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='attributes of the communication item\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::specific' explanation='no found equivalent since the three children (Exception, Signal, Message) have different hierarchies. The specific rule should  create a package, stored the Properties in this package, and finally create a packageImport under the NamedElement reference for the element' constraints='elements inside the imported package on which a Property stereotype or any stereotype that inherits from it  is applied'"
 	 * @generated

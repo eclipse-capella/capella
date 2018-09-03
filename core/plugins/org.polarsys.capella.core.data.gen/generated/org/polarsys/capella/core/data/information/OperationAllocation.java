@@ -49,6 +49,7 @@ public interface OperationAllocation extends Allocation {
 	 * @return the value of the '<em>Allocated Operation</em>' reference.
 	 * @see org.polarsys.capella.core.data.information.InformationPackage#getOperationAllocation_AllocatedOperation()
 	 * @model required="true" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='targetElement'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='contains the \"target\" of the allocation link\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -74,6 +75,7 @@ public interface OperationAllocation extends Allocation {
 	 * @return the value of the '<em>Allocating Operation</em>' reference.
 	 * @see org.polarsys.capella.core.data.information.InformationPackage#getOperationAllocation_AllocatingOperation()
 	 * @model required="true" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='sourceElement'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='contains the \"source\" of the allocation link\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated

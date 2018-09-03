@@ -52,6 +52,7 @@ public interface AbstractInstance extends Property {
 	 * @return the value of the '<em>Representing Instance Roles</em>' reference list.
 	 * @see org.polarsys.capella.core.data.information.InformationPackage#getAbstractInstance_RepresentingInstanceRoles()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='opposite' viatra.expression='representedInstance'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
 	 */

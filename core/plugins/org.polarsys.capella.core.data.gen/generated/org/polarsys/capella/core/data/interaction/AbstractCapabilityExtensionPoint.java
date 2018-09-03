@@ -55,6 +55,7 @@ public interface AbstractCapabilityExtensionPoint extends NamedRelationship {
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='abstractCapability'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the Capability to which this extension point belongs\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::ExtensionPoint::useCase' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='opposite' viatra.expression='abstractCapabilityExtensionPoints'"
 	 * @generated
 	 */
 

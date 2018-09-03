@@ -227,6 +227,7 @@ public interface Property extends Feature, TypedElement, MultiplicityElement, Fi
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='association'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='an association relationship related to this Property\r\n[source: Capella study]\r\n\r\nReferences the association of which this property is a member, if any.\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Property::owningAssociation, uml::Property::association' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='opposite' viatra.expression='navigableMembers'"
 	 * @generated
 	 */
 

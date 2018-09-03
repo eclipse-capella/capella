@@ -79,6 +79,7 @@ public interface FunctionalChainInvolvement extends Involvement {
 	 * @return the value of the '<em>Previous Functional Chain Involvements</em>' reference list.
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChainInvolvement_PreviousFunctionalChainInvolvements()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='FunctionalChainInvolvement.nextFunctionalChainInvolvements(target, self);\r\n// TODO understand why we should verify that target is in the same chain than self ...\r\nFunctionalChain.ownedFunctionalChainInvolvements(fc, self);\r\nFunctionalChain.ownedFunctionalChainInvolvements(fc, target);'"
 	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -128,6 +129,7 @@ public interface FunctionalChainInvolvement extends Involvement {
 	 * @return the value of the '<em>Involved Element</em>' reference.
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChainInvolvement_InvolvedElement()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='involved'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
 	 */

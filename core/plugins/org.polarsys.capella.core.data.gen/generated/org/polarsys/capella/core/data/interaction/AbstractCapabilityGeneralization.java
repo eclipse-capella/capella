@@ -97,6 +97,7 @@ public interface AbstractCapabilityGeneralization extends Relationship {
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='super'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the child Capability\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Generalization::specific' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='opposite' viatra.expression='superGeneralizations'"
 	 * @generated
 	 */
 

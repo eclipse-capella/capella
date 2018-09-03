@@ -83,6 +83,7 @@ public interface LogicalActor extends AbstractActor {
 	 * @return the value of the '<em>System Actor Realizations</em>' reference list.
 	 * @see org.polarsys.capella.core.data.la.LaPackage#getLogicalActor_SystemActorRealizations()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='provisionedComponentAllocations'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) the list of actor realization links where this logical actor is involved\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -109,6 +110,7 @@ public interface LogicalActor extends AbstractActor {
 	 * @return the value of the '<em>Participations In Capability Realizations</em>' reference list.
 	 * @see org.polarsys.capella.core.data.la.LaPackage#getLogicalActor_ParticipationsInCapabilityRealizations()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='involvingCapabilityRealizationInvolvements'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) the involvement links between this logical actor and actor capability realizations\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -137,6 +139,7 @@ public interface LogicalActor extends AbstractActor {
 	 * @see org.polarsys.capella.core.data.la.LaPackage#getLogicalActor_AllocatedLogicalFunctions()
 	 * @see org.polarsys.capella.core.data.la.LogicalFunction#getAllocatorLogicalActors
 	 * @model opposite="allocatorLogicalActors" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='allocatedFunctions'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
 	 */
@@ -164,6 +167,7 @@ public interface LogicalActor extends AbstractActor {
 	 * @see org.polarsys.capella.core.data.la.LaPackage#getLogicalActor_RealizedSystemActors()
 	 * @see org.polarsys.capella.core.data.ctx.Actor#getRealizingLogicalActors
 	 * @model opposite="realizingLogicalActors" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='allocatedComponents'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
 	 */
@@ -191,6 +195,7 @@ public interface LogicalActor extends AbstractActor {
 	 * @see org.polarsys.capella.core.data.la.LaPackage#getLogicalActor_RealizingPhysicalActors()
 	 * @see org.polarsys.capella.core.data.pa.PhysicalActor#getRealizedLogicalActors
 	 * @model opposite="realizedLogicalActors" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='allocatingComponents'"
 	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated

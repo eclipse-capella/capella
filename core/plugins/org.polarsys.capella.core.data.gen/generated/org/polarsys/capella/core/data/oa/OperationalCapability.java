@@ -132,6 +132,7 @@ public interface OperationalCapability extends AbstractCapability, Namespace {
 	 * @see org.polarsys.capella.core.data.oa.OaPackage#getOperationalCapability_RealizingCapabilities()
 	 * @see org.polarsys.capella.core.data.ctx.Capability#getRealizedOperationalCapabilities
 	 * @model opposite="realizedOperationalCapabilities" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='OperationalCapability.incomingTraces(self, acr);\r\nAbstractCapabilityRealization.realizingCapability(acr, target);'"
 	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -158,6 +159,7 @@ public interface OperationalCapability extends AbstractCapability, Namespace {
 	 * @return the value of the '<em>Involved Entities</em>' reference list.
 	 * @see org.polarsys.capella.core.data.oa.OaPackage#getOperationalCapability_InvolvedEntities()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='OperationalCapability.involvedInvolvements(self, eoci);\r\nEntityOperationalCapabilityInvolvement.entity(eoci, target);'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
 	 */

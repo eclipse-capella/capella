@@ -39,7 +39,7 @@ import org.polarsys.capella.core.data.oa.OperationalAnalysis;
  * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystemAnalysis()
  * @model annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='System Analysis'"
  *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping metaclass='Package' stereotype='eng.ContextArchitecture'"
- *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Model describing functional and non-functional issues - functions & related items - associated to (created during) a modelling phase' usage\040guideline='n/a' used\040in\040levels='system' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
+ *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Model describing functional and non-functional issues - functions &amp; related items - associated to (created during) a modelling phase' usage\040guideline='n/a' used\040in\040levels='system' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='uml::Package' explanation='none' constraints='none'"
  * @generated
  */
@@ -231,6 +231,7 @@ public interface SystemAnalysis extends ComponentArchitecture {
 	 * @return the value of the '<em>Contained Capability Pkg</em>' reference.
 	 * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystemAnalysis_ContainedCapabilityPkg()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='ownedAbstractCapabilityPkg'"
 	 *        annotation="http://www.polarsys.org/capella/semantic feature='ownedAbstractCapabilityPkg'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -256,6 +257,7 @@ public interface SystemAnalysis extends ComponentArchitecture {
 	 * @return the value of the '<em>Contained System Function Pkg</em>' reference.
 	 * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystemAnalysis_ContainedSystemFunctionPkg()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='ownedFunctionPkg'"
 	 *        annotation="http://www.polarsys.org/capella/semantic feature='ownedFunctionPkg'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -308,6 +310,7 @@ public interface SystemAnalysis extends ComponentArchitecture {
 	 * @return the value of the '<em>Allocated Operational Analysis Realizations</em>' reference list.
 	 * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystemAnalysis_AllocatedOperationalAnalysisRealizations()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='provisionedArchitectureAllocations'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) reference to operational analysis elements that this system analysis is realizing\r\n[source:Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -336,6 +339,7 @@ public interface SystemAnalysis extends ComponentArchitecture {
 	 * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystemAnalysis_AllocatedOperationalAnalyses()
 	 * @see org.polarsys.capella.core.data.oa.OperationalAnalysis#getAllocatingSystemAnalyses
 	 * @model opposite="allocatingSystemAnalyses" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='allocatedArchitectures'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
 	 */
@@ -363,6 +367,7 @@ public interface SystemAnalysis extends ComponentArchitecture {
 	 * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystemAnalysis_AllocatingLogicalArchitectures()
 	 * @see org.polarsys.capella.core.data.la.LogicalArchitecture#getAllocatedSystemAnalyses
 	 * @model opposite="allocatedSystemAnalyses" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='allocatingArchitectures'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
 	 * @generated

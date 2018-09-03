@@ -53,6 +53,7 @@ public interface ComponentAllocation extends Allocation {
 	 * @see org.polarsys.capella.core.data.cs.CsPackage#getComponentAllocation_AllocatedComponent()
 	 * @see org.polarsys.capella.core.data.cs.Component#getProvisioningComponentAllocations
 	 * @model opposite="provisioningComponentAllocations" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='targetElement'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Specifies the allocated component\r\n[source: Capella study]\r\n\r\nSpecifies the targets of the DirectedRelationship.\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -80,6 +81,7 @@ public interface ComponentAllocation extends Allocation {
 	 * @see org.polarsys.capella.core.data.cs.CsPackage#getComponentAllocation_AllocatingComponent()
 	 * @see org.polarsys.capella.core.data.cs.Component#getProvisionedComponentAllocations
 	 * @model opposite="provisionedComponentAllocations" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='sourceElement'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Specifies the allocating component\r\n[source: Capella study]\r\n\r\nSpecifies the targets of the DirectedRelationship.\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated

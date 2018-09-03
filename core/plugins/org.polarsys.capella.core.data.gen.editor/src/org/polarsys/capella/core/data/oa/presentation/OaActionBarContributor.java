@@ -60,6 +60,7 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.jface.window.Window;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
@@ -75,8 +76,13 @@ import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.dialogs.ElementListSelectionDialog;
 import org.polarsys.capella.core.data.capellamodeller.presentation.CapellaModellerEditorPlugin;
+import org.polarsys.kitalpha.ad.metadata.helpers.LibraryHelper;
 import org.polarsys.kitalpha.emde.ui.actions.EmdeViewerFilterAction;
 import org.polarsys.kitalpha.emde.ui.i18n.Messages;
+import org.polarsys.kitalpha.resourcereuse.emfscheme.helpers.ModelReuseHelper;
+import org.polarsys.kitalpha.resourcereuse.emfscheme.utils.services.ResourceSetLoaderServices;
+import org.polarsys.kitalpha.resourcereuse.model.SearchCriteria;
+import org.polarsys.kitalpha.resourcereuse.ui.dialog.ResourceReuseSelectionDialog;
 
 /**
  * This is the action bar contributor for the Oa model editor.
@@ -88,6 +94,38 @@ import org.polarsys.kitalpha.emde.ui.i18n.Messages;
 public class OaActionBarContributor
 	extends EditingDomainActionBarContributor
 	implements ISelectionChangedListener, IPropertyChangeListener {
+	private final class SchemeLoadResourceAction extends Action {
+
+		public SchemeLoadResourceAction() {
+			super("Load Reusable Resource...");
+			URI uri = URI.createURI("platform:/plugin/org.polarsys.kitalpha.resourcereuse.emfscheme.ui/icons/searchView.gif");
+			setImageDescriptor(ExtendedImageRegistry.INSTANCE.getImageDescriptor(uri));
+		}
+		
+			@Override
+		public void run() {
+			if (activeEditorPart instanceof IViewerProvider) {
+				Viewer viewer = ((IViewerProvider) activeEditorPart).getViewer();
+				if (viewer == null) 
+					return ;
+				ResourceReuseSelectionDialog dialog = new ResourceReuseSelectionDialog(activeEditor.getSite().getShell());
+				
+				if (dialog.open() == Window.OK) {
+					EObject selection = currentResource.getContents().get(0);
+					SearchCriteria criteria = dialog.getCriteria();
+					URI modelToLoad = ModelReuseHelper.createModelReuseURI(criteria);
+					try {
+						Resource res = ResourceSetLoaderServices.loadResourceForCurrentResourceSet(selection, modelToLoad);
+						if (res != null)
+							LibraryHelper.add(currentResource.getResourceSet(), currentResource.getURI(), modelToLoad);
+					} catch (Exception e) {
+						CapellaModellerEditorPlugin.INSTANCE.log(e);
+					}
+				}
+			}
+		}
+	}
+
 	private final class RefreshViewerAction extends Action {
 		private RefreshViewerAction() {
 			super(CapellaModellerEditorPlugin.INSTANCE.getString("_UI_RefreshViewer_menu_item")); //$NON-NLS-1$
@@ -166,80 +204,11 @@ public class OaActionBarContributor
 	 		 * @generated
 	 		 */
 			@Override      		      		
-			protected Control createDialogArea(Composite parent) {
-				Composite composite = (Composite)super.createDialogArea(parent);
-				Composite buttonComposite = (Composite)composite.getChildren()[0];
-				Button browseRegisteredPackagesButton = new Button(buttonComposite, SWT.PUSH);
-				browseRegisteredPackagesButton.setText(EcoreEditorPlugin.INSTANCE.getString("_UI_BrowseRegisteredPackages_label")); //$NON-NLS-1$
-				prepareBrowseRegisteredPackagesButton(browseRegisteredPackagesButton); {
-					FormData data = new FormData();
-					Control [] children = buttonComposite.getChildren();
-					data.left = new FormAttachment(0, 0);
-					data.right = new FormAttachment(children[0], -CONTROL_OFFSET);
-					browseRegisteredPackagesButton.setLayoutData(data);
-				}
-				return composite;
-			}
-			
-			/**
-	 		 * <!-- begin-user-doc -->
-	 		 * <!-- end-user-doc -->
-	 		 * @generated
-	 		 */
-			protected void prepareBrowseRegisteredPackagesButton(Button browseRegisteredPackagesButton) {
-				browseRegisteredPackagesButton.addSelectionListener(
-					new SelectionAdapter() {
-						/**
-	 		 			 * <!-- begin-user-doc -->
-	 		 			 * <!-- end-user-doc -->
-	 		 			 * @generated
-	 		 			 */										
-						@Override      		 
-						public void widgetSelected(SelectionEvent event) {
-							RegisteredPackageDialog registeredPackageDialog = new RegisteredPackageDialog(getShell());
-							registeredPackageDialog.open();
-							Object [] result = registeredPackageDialog.getResult();
-							if (result != null) {
-								List<?> nsURIs = Arrays.asList(result);
-								ResourceSet resourceSet = new ResourceSetImpl();
-								resourceSet.getURIConverter().getURIMap().putAll(EcorePlugin.computePlatformURIMap());
-								StringBuffer uris = new StringBuffer();
-								Map<String, URI> ePackageNsURItoGenModelLocationMap = EcorePlugin.getEPackageNsURIToGenModelLocationMap();
-								for (int i = 0, length = result.length; i < length; i++) {
-									URI location = ePackageNsURItoGenModelLocationMap.get(result[i]);
-									Resource resource = resourceSet.getResource(location, true);
-									EcoreUtil.resolveAll(resource);
-								}
-								for (Resource resource : resourceSet.getResources()) {
-									for (TreeIterator<?> j = 
-										new EcoreUtil.ContentTreeIterator<Object>(resource.getContents()) {
-											private static final long serialVersionUID = 1L;		
-											@Override
-											protected Iterator<? extends EObject> getEObjectChildren(EObject eObject) {
-												return 
-													eObject instanceof EPackage ? 
-													((EPackage)eObject).getESubpackages().iterator() : 
-													Collections.<EObject>emptyList().iterator();
-											}
-										};
-										j.hasNext();) {
-											Object content = j.next();
-											if (content instanceof EPackage) {
-												EPackage ePackage = (EPackage)content;
-												if (nsURIs.contains(ePackage.getNsURI())) {
-													uris.append(resource.getURI());
-													uris.append("  ");
-													break;
-												}
-										}
-									}
-								}
-								uriField.setText((uriField.getText() + "  " + uris.toString()).trim());
-							}
-						}
-					}
-				);      
-			}
+			protected boolean processResource(Resource resource) {
+		    	ResourceSet resourceSet = domain.getResourceSet();
+				LibraryHelper.add(resourceSet, resourceSet.getResources().get(0).getURI(), resource.getURI());
+		      return true;
+		    }
 		}
     
 		/**
@@ -310,6 +279,14 @@ public class OaActionBarContributor
 	 */
 	protected IAction refreshViewerAction =
 		new RefreshViewerAction();
+
+	/**
+	 * This action load resource from resourcereuse/emfscheme
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected IAction schemeLoadResourceAction = new SchemeLoadResourceAction();
 
 	/**
 	 * This will contain one {@link org.eclipse.emf.edit.ui.action.CreateChildAction} corresponding to each descriptor
@@ -710,8 +687,7 @@ public class OaActionBarContributor
 	protected void addGlobalActions(IMenuManager menuManager) {
 		menuManager.insertAfter("additions-end", new Separator("ui-actions")); //$NON-NLS-1$ //$NON-NLS-2$
 		menuManager.insertAfter("ui-actions", showPropertiesViewAction); //$NON-NLS-1$
-
-		refreshViewerAction.setEnabled(refreshViewerAction.isEnabled());		
+		menuManager.insertBefore("additions-end", schemeLoadResourceAction); //$NON-NLS-1$
 		menuManager.insertAfter("ui-actions", refreshViewerAction); //$NON-NLS-1$
 
 		super.addGlobalActions(menuManager);

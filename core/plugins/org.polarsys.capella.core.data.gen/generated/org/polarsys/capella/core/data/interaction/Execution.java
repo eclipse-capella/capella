@@ -52,6 +52,7 @@ public interface Execution extends TimeLapse {
 	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='covered' featureOwner='InteractionFragment'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the instance role that performs this Execution\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::InteractionFragment::covered' explanation='none' constraints='Multiplicity must be [1..1]'"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='Execution.start.coveredInstanceRoles(self, target);\r\n} or {\r\n\tExecution.finish.coveredInstanceRoles(self, target);'"
 	 * @generated
 	 */
 

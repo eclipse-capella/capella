@@ -165,6 +165,7 @@ public interface FunctionalChain extends NamedElement, InvolverElement, Involved
 	 * @return the value of the '<em>Involved Functional Chain Involvements</em>' reference list.
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChain_InvolvedFunctionalChainInvolvements()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='ownedFunctionalChainInvolvements'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) the list of involvement relationships included in this functional chain\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -193,6 +194,7 @@ public interface FunctionalChain extends NamedElement, InvolverElement, Involved
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChain_InvolvedFunctions()
 	 * @see org.polarsys.capella.core.data.fa.AbstractFunction#getInvolvingFunctionalChains
 	 * @model opposite="involvingFunctionalChains" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='involvedElements'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) the functions involved in this functional chain\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -221,6 +223,7 @@ public interface FunctionalChain extends NamedElement, InvolverElement, Involved
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChain_InvolvedFunctionalExchanges()
 	 * @see org.polarsys.capella.core.data.fa.FunctionalExchange#getInvolvingFunctionalChains
 	 * @model opposite="involvingFunctionalChains" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='involvedElements'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) the functional exchanges involved in this functional chain\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -247,6 +250,7 @@ public interface FunctionalChain extends NamedElement, InvolverElement, Involved
 	 * @return the value of the '<em>Involved Elements</em>' reference list.
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChain_InvolvedElements()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='involvedFunctionalChainInvolvements.involved'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) the list of model elements involved in this functional chain\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -273,6 +277,7 @@ public interface FunctionalChain extends NamedElement, InvolverElement, Involved
 	 * @return the value of the '<em>Enacted Functions</em>' reference list.
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChain_EnactedFunctions()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='involvedFunctions'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) the functions involved in this functional chain\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -299,6 +304,7 @@ public interface FunctionalChain extends NamedElement, InvolverElement, Involved
 	 * @return the value of the '<em>Enacted Functional Blocks</em>' reference list.
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChain_EnactedFunctionalBlocks()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='enactedFunctions.allocationBlocks'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) the functional blocks involved in this functional chain\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -350,6 +356,7 @@ public interface FunctionalChain extends NamedElement, InvolverElement, Involved
 	 * @return the value of the '<em>First Functional Chain Involvements</em>' reference list.
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChain_FirstFunctionalChainInvolvements()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='freeform' viatra.expression='pattern FunctionalChain__firstFunctionalChainInvolvements(self : FunctionalChain, target : FunctionalChainInvolvement) {\r\n\tFunctionalChain.ownedFunctionalChainInvolvements(self, target);\r\n\tFunctionalChainInvolvement.involved(target, _);\r\n\tneg find _PreviousInvolvement(target, _);\r\n}\r\nprivate pattern _PreviousInvolvement(fci : FunctionalChainInvolvement, previous : FunctionalChainInvolvement) {\r\n\tFunctionalChainInvolvement.previousFunctionalChainInvolvements(fci, previous);\r\n}\r\n'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
 	 */
@@ -375,6 +382,7 @@ public interface FunctionalChain extends NamedElement, InvolverElement, Involved
 	 * @return the value of the '<em>Involving Capabilities</em>' reference list.
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChain_InvolvingCapabilities()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='FunctionalChain.involvingInvolvements(self, fcaci);\r\nFunctionalChainAbstractCapabilityInvolvement.capability(fcaci, target);'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
@@ -402,6 +410,7 @@ public interface FunctionalChain extends NamedElement, InvolverElement, Involved
 	 * @return the value of the '<em>Involving Capability Realizations</em>' reference list.
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChain_InvolvingCapabilityRealizations()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='FunctionalChain.involvingInvolvements(self, fcaci);\r\nFunctionalChainAbstractCapabilityInvolvement.capability(fcaci, target);'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
@@ -429,6 +438,7 @@ public interface FunctionalChain extends NamedElement, InvolverElement, Involved
 	 * @return the value of the '<em>Realized Functional Chains</em>' reference list.
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChain_RealizedFunctionalChains()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='FunctionalChainRealization.sourceElement(fcr, self);\r\nFunctionalChainRealization.targetElement(fcr, target);'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
 	 */
@@ -454,6 +464,7 @@ public interface FunctionalChain extends NamedElement, InvolverElement, Involved
 	 * @return the value of the '<em>Realizing Functional Chains</em>' reference list.
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChain_RealizingFunctionalChains()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='FunctionalChainRealization.targetElement(fcr, self);\r\nFunctionalChainRealization.sourceElement(fcr, target);'"
 	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated

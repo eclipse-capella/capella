@@ -103,6 +103,7 @@ public interface ActivityEdge extends AbstractRelationship {
 	 * @return the value of the '<em>In Activity Partition</em>' reference.
 	 * @see org.polarsys.capella.common.data.activity.ActivityPackage#getActivityEdge_InActivityPartition()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='opposite' viatra.expression='ownedEdges'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Partitions containing the edge\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -128,6 +129,7 @@ public interface ActivityEdge extends AbstractRelationship {
 	 * @return the value of the '<em>In Interruptible Region</em>' reference.
 	 * @see org.polarsys.capella.common.data.activity.ActivityPackage#getActivityEdge_InInterruptibleRegion()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='opposite' viatra.expression='ownedEdges'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) Region containing this edge\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -153,6 +155,7 @@ public interface ActivityEdge extends AbstractRelationship {
 	 * @return the value of the '<em>In Structured Node</em>' reference.
 	 * @see org.polarsys.capella.common.data.activity.ActivityPackage#getActivityEdge_InStructuredNode()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='opposite' viatra.expression='ownedEdges'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Structured activity node containing the edge\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated

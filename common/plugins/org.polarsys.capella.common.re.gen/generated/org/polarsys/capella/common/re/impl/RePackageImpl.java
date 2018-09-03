@@ -891,11 +891,15 @@ public class RePackageImpl extends EPackageImpl implements RePackage {
 		  (getCatalogElement_ReferencedElements(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "ownedLinks.target" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getCatalogElement_ReplicatedElements(), 
 		   source, 
 		   new String[] {
+			 "viatra.variant", "opposite", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "origin" //$NON-NLS-1$ //$NON-NLS-2$
 		   });
 	}
 

@@ -27,7 +27,7 @@ import org.polarsys.capella.core.data.capellacore.NamedElement;
  *
  * @see org.polarsys.capella.core.data.oa.OaPackage#getOperationalScenario()
  * @model abstract="true"
- *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Definition of a dynamic behaviour composed of the following information:\r\nContext, objective, pre-conditions, post-conditions, used capabilities, involved roles & actors, operational exchanges & interactions, processes and activities. Ability to be validated. Temporal & performance description.Criticity.\r\nScenarios can be gathered in a set of Use Cases.' usage\040guideline='n/a' used\040in\040levels='operational' usage\040examples='n/a' constraints='none' comment/notes='not used/implemented as of Capella 1.0.3' reference\040documentation='none'"
+ *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Definition of a dynamic behaviour composed of the following information:\r\nContext, objective, pre-conditions, post-conditions, used capabilities, involved roles &amp; actors, operational exchanges &amp; interactions, processes and activities. Ability to be validated. Temporal &amp; performance description.Criticity.\r\nScenarios can be gathered in a set of Use Cases.' usage\040guideline='n/a' used\040in\040levels='operational' usage\040examples='n/a' constraints='none' comment/notes='not used/implemented as of Capella 1.0.3' reference\040documentation='none'"
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='' explanation='uml::UseCase' constraints='none'"
  * @generated
  */

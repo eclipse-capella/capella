@@ -82,6 +82,7 @@ public interface GenericTrace extends Trace {
 	 * @return the value of the '<em>Source</em>' reference.
 	 * @see org.polarsys.capella.core.data.capellacommon.CapellacommonPackage#getGenericTrace_Source()
 	 * @model resolveProxies="false" required="true" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='sourceElement'"
 	 * @generated
 	 */
 
@@ -105,6 +106,7 @@ public interface GenericTrace extends Trace {
 	 * @return the value of the '<em>Target</em>' reference.
 	 * @see org.polarsys.capella.core.data.capellacommon.CapellacommonPackage#getGenericTrace_Target()
 	 * @model resolveProxies="false" required="true" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='targetElement'"
 	 * @generated
 	 */
 

@@ -105,6 +105,7 @@ public interface PhysicalPath extends NamedElement, ComponentExchangeAllocator, 
 	 * @return the value of the '<em>First Physical Path Involvements</em>' reference list.
 	 * @see org.polarsys.capella.core.data.cs.CsPackage#getPhysicalPath_FirstPhysicalPathInvolvements()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='freeform' viatra.expression='pattern PhysicalPath__firstPhysicalPathInvolvements(self : PhysicalPath, target : PhysicalPathInvolvement) {\r\n\tPhysicalPath.ownedPhysicalPathInvolvements(self, target);\r\n\tPhysicalPathInvolvement.involved(target, _);\r\n\tneg find _PreviousInvolvement(target, _);\r\n}\r\nprivate pattern _PreviousInvolvement(ppi : PhysicalPathInvolvement, previous : PhysicalPathInvolvement) {\r\n\tPhysicalPathInvolvement.previousInvolvements(ppi, previous);\r\n}\r\n'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
 	 */
@@ -156,6 +157,7 @@ public interface PhysicalPath extends NamedElement, ComponentExchangeAllocator, 
 	 * @return the value of the '<em>Realized Physical Paths</em>' reference list.
 	 * @see org.polarsys.capella.core.data.cs.CsPackage#getPhysicalPath_RealizedPhysicalPaths()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='PhysicalPathRealization.sourceElement(ppr, self);\r\nPhysicalPathRealization.targetElement(ppr, target);'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='none' constraints='none' comment/notes='none'"
 	 * @generated
 	 */
@@ -181,6 +183,7 @@ public interface PhysicalPath extends NamedElement, ComponentExchangeAllocator, 
 	 * @return the value of the '<em>Realizing Physical Paths</em>' reference list.
 	 * @see org.polarsys.capella.core.data.cs.CsPackage#getPhysicalPath_RealizingPhysicalPaths()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='PhysicalPathRealization.targetElement(ppr, self);\r\nPhysicalPathRealization.sourceElement(ppr, target);'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='none' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
 	 * @generated

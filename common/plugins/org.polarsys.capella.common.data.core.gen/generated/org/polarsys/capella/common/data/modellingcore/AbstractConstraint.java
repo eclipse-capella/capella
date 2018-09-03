@@ -100,6 +100,7 @@ public interface AbstractConstraint extends ModelElement {
 	 * @return the value of the '<em>Context</em>' reference.
 	 * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getAbstractConstraint_Context()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='opposite' viatra.expression='ownedConstraints'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Specifies the element that is the context for evaluating this constraint, which is the Constraint\'s parent element.'"
 	 * @generated
 	 */

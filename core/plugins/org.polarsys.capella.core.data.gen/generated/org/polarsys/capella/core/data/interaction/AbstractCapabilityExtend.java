@@ -98,6 +98,7 @@ public interface AbstractCapabilityExtend extends Relationship {
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='extension'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the Capability that realizes the extension\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Extend::extension' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='opposite' viatra.expression='^extends'"
 	 * @generated
 	 */
 

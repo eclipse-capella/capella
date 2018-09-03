@@ -31,9 +31,8 @@ import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
  * <!-- end-user-doc -->
  * @see org.polarsys.capella.core.data.information.datavalue.DatavalueFactory
  * @model kind="package"
- *        annotation="http://www.polarsys.org/kitalpha/dsl/2007/dslfactory trackResourceModification='true' useUUIDs='false' useIDAttributes='true' extensibleProviderFactory='true' childCreationExtenders='true'"
- *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='sub-package containing the definition of all predefined kinds of data values\r\n[source: Capella study]' usage\040guideline='none' used\040in\040levels='system,logical,physical' usage\040examples='none' constraints='none' comment/notes='none' reference\040documentation='n/a'"
  *        annotation="http://www.polarsys.org/kitalpha/emde/1.0.0/extension trackResourceModification='true' useUUIDs='false' useIDAttributes='true' extensibleProviderFactory='true' childCreationExtenders='true'"
+ *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='sub-package containing the definition of all predefined kinds of data values\r\n[source: Capella study]' usage\040guideline='none' used\040in\040levels='system,logical,physical' usage\040examples='none' constraints='none' comment/notes='none' reference\040documentation='n/a'"
  * @generated
  */
 public interface DatavaluePackage extends EPackage {

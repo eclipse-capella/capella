@@ -49,6 +49,7 @@ public interface AbstractFunctionAbstractCapabilityInvolvement extends Involveme
 	 * @return the value of the '<em>Capability</em>' reference.
 	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getAbstractFunctionAbstractCapabilityInvolvement_Capability()
 	 * @model required="true" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='involver'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
 	 */
@@ -73,6 +74,7 @@ public interface AbstractFunctionAbstractCapabilityInvolvement extends Involveme
 	 * @return the value of the '<em>Function</em>' reference.
 	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getAbstractFunctionAbstractCapabilityInvolvement_Function()
 	 * @model required="true" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='involved'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
 	 */

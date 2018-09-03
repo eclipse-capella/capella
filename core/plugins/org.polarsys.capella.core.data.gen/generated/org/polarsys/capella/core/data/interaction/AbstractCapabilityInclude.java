@@ -97,6 +97,7 @@ public interface AbstractCapabilityInclude extends Relationship {
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='inclusion'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the Capability performing the inclusion of the other Capability\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Include::includingCase' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='opposite' viatra.expression='includes'"
 	 * @generated
 	 */
 

@@ -48,6 +48,7 @@ public interface ScenarioRealization extends Allocation {
 	 * @return the value of the '<em>Realized Scenario</em>' reference.
 	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getScenarioRealization_RealizedScenario()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='targetElement'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the scenario that is being realized by/from the other scenario' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -73,6 +74,7 @@ public interface ScenarioRealization extends Allocation {
 	 * @return the value of the '<em>Realizing Scenario</em>' reference.
 	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getScenarioRealization_RealizingScenario()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='sourceElement'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the scenario that realizes (to) the other scenario' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated

@@ -182,6 +182,7 @@ public interface ExchangeItem extends AbstractExchangeItem, AbstractEvent, Abstr
 	 * @return the value of the '<em>Allocator Interfaces</em>' reference list.
 	 * @see org.polarsys.capella.core.data.information.InformationPackage#getExchangeItem_AllocatorInterfaces()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='ExchangeItemAllocation.allocatedItem(eia, self);\r\nExchangeItemAllocation.allocatingInterface(eia, target);'"
 	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -210,6 +211,7 @@ public interface ExchangeItem extends AbstractExchangeItem, AbstractEvent, Abstr
 	 * @see org.polarsys.capella.core.data.information.InformationPackage#getExchangeItem_RealizedExchangeItems()
 	 * @see org.polarsys.capella.core.data.information.ExchangeItem#getRealizingExchangeItems
 	 * @model opposite="realizingExchangeItems" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='ExchangeItem.outgoingTraces(self, ir);\r\nInformationRealization.targetElement(ir, target); '"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='class(es) realized by this class' constraints='none' comment/notes='none'"
 	 * @generated
 	 */
@@ -237,6 +239,7 @@ public interface ExchangeItem extends AbstractExchangeItem, AbstractEvent, Abstr
 	 * @see org.polarsys.capella.core.data.information.InformationPackage#getExchangeItem_RealizingExchangeItems()
 	 * @see org.polarsys.capella.core.data.information.ExchangeItem#getRealizedExchangeItems
 	 * @model opposite="realizedExchangeItems" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='ExchangeItem.incomingTraces(self, ir);\r\nInformationRealization.sourceElement(ir, target); '"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='class(es) realizing this class' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
 	 * @generated
@@ -265,6 +268,7 @@ public interface ExchangeItem extends AbstractExchangeItem, AbstractEvent, Abstr
 	 * @see org.polarsys.capella.core.data.information.InformationPackage#getExchangeItem_RealizingOperations()
 	 * @see org.polarsys.capella.core.data.information.Operation#getRealizedExchangeItems
 	 * @model opposite="realizedExchangeItems" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='ExchangeItem.incomingTraces(self, eir);\r\nExchangeItemRealization.realizingOperation(eir, target); '"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='class(es) realizing this class' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
 	 * @generated

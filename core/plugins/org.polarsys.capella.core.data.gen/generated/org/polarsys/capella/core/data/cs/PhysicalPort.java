@@ -109,6 +109,7 @@ public interface PhysicalPort extends Partition, Port, AbstractPhysicalArtifact,
 	 * @see org.polarsys.capella.core.data.cs.CsPackage#getPhysicalPort_AllocatedComponentPorts()
 	 * @see org.polarsys.capella.core.data.fa.ComponentPort#getAllocatingPhysicalPorts
 	 * @model opposite="allocatingPhysicalPorts" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='ComponentPortAllocation.allocatingPort(ppr, self);\r\nComponentPortAllocation.allocatedPort(ppr, target);'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
 	 */
@@ -134,6 +135,7 @@ public interface PhysicalPort extends Partition, Port, AbstractPhysicalArtifact,
 	 * @return the value of the '<em>Realized Physical Ports</em>' reference list.
 	 * @see org.polarsys.capella.core.data.cs.CsPackage#getPhysicalPort_RealizedPhysicalPorts()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='PhysicalPortRealization.sourceElement(ppr, self);\r\nPhysicalPortRealization.targetElement(ppr, target);'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='none' constraints='none' comment/notes='none'"
 	 * @generated
 	 */
@@ -159,6 +161,7 @@ public interface PhysicalPort extends Partition, Port, AbstractPhysicalArtifact,
 	 * @return the value of the '<em>Realizing Physical Ports</em>' reference list.
 	 * @see org.polarsys.capella.core.data.cs.CsPackage#getPhysicalPort_RealizingPhysicalPorts()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='PhysicalPortRealization.targetElement(ppr, self);\r\nPhysicalPortRealization.sourceElement(ppr, target);'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='none' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
 	 * @generated

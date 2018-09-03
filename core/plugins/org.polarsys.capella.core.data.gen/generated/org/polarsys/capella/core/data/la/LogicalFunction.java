@@ -85,6 +85,7 @@ public interface LogicalFunction extends AbstractFunction {
 	 * @see org.polarsys.capella.core.data.la.LaPackage#getLogicalFunction_AllocatorLogicalActors()
 	 * @see org.polarsys.capella.core.data.la.LogicalActor#getAllocatedLogicalFunctions
 	 * @model opposite="allocatedLogicalFunctions" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='LogicalFunction.incomingTraces(self, cfa);\r\nComponentFunctionalAllocation.sourceElement(cfa, target);'"
 	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -113,6 +114,7 @@ public interface LogicalFunction extends AbstractFunction {
 	 * @see org.polarsys.capella.core.data.la.LaPackage#getLogicalFunction_AllocatorLogicalComponents()
 	 * @see org.polarsys.capella.core.data.la.LogicalComponent#getAllocatedLogicalFunctions
 	 * @model opposite="allocatedLogicalFunctions" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='LogicalFunction.incomingTraces(self, cfa);\r\nComponentFunctionalAllocation.sourceElement(cfa, target);'"
 	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -141,6 +143,7 @@ public interface LogicalFunction extends AbstractFunction {
 	 * @see org.polarsys.capella.core.data.la.LaPackage#getLogicalFunction_RealizedSystemFunctions()
 	 * @see org.polarsys.capella.core.data.ctx.SystemFunction#getRealizingLogicalFunctions
 	 * @model opposite="realizingLogicalFunctions" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='outFunctionRealizations.allocatedFunction'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
 	 */
@@ -168,6 +171,7 @@ public interface LogicalFunction extends AbstractFunction {
 	 * @see org.polarsys.capella.core.data.la.LaPackage#getLogicalFunction_RealizingPhysicalFunctions()
 	 * @see org.polarsys.capella.core.data.pa.PhysicalFunction#getRealizedLogicalFunctions
 	 * @model opposite="realizedLogicalFunctions" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='inFunctionRealizations.allocatingFunction'"
 	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -194,6 +198,7 @@ public interface LogicalFunction extends AbstractFunction {
 	 * @return the value of the '<em>Contained Logical Functions</em>' reference list.
 	 * @see org.polarsys.capella.core.data.la.LaPackage#getLogicalFunction_ContainedLogicalFunctions()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='ownedFunctions'"
 	 *        annotation="http://www.polarsys.org/capella/semantic feature='ownedFunctions'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
@@ -220,6 +225,7 @@ public interface LogicalFunction extends AbstractFunction {
 	 * @return the value of the '<em>Children Logical Functions</em>' reference list.
 	 * @see org.polarsys.capella.core.data.la.LaPackage#getLogicalFunction_ChildrenLogicalFunctions()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='subFunctions'"
 	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='list of children logical functions\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"

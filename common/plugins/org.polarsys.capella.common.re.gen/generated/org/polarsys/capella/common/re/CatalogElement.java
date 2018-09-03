@@ -491,6 +491,7 @@ public interface CatalogElement extends ReDescriptionElement, ReElementContainer
 	 * @return the value of the '<em>Referenced Elements</em>' reference list.
 	 * @see org.polarsys.capella.common.re.RePackage#getCatalogElement_ReferencedElements()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='ownedLinks.target'"
 	 * @generated
 	 */
 
@@ -512,6 +513,7 @@ public interface CatalogElement extends ReDescriptionElement, ReElementContainer
 	 * @return the value of the '<em>Replicated Elements</em>' reference list.
 	 * @see org.polarsys.capella.common.re.RePackage#getCatalogElement_ReplicatedElements()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='opposite' viatra.expression='origin'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='retrieve all referencing elements which have the current element as origin'"
 	 * @generated
 	 */
