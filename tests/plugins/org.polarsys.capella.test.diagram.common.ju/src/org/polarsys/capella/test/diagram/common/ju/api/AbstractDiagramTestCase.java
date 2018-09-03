@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,6 +14,8 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.common.tools.api.constant.CommonPreferencesConstants;
+import org.eclipse.sirius.common.ui.SiriusTransPlugin;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
@@ -38,6 +40,9 @@ public abstract class AbstractDiagramTestCase extends BasicTestCase {
   public void run(TestResult result) {
     DiagramHelper.setPrefereneRefreshOnOpening(false);
     DiagramHelper.setPreferenceAutoRefresh(false);
+
+    // We will have to change this when we will test sirius migration popup. (https://bugs.eclipse.org/bugs/show_bug.cgi?id=536995)
+    SiriusTransPlugin.getPlugin().getPreferenceStore().setValue(CommonPreferencesConstants.PREF_ASK_TO_SAVE_RESOURCE_AFTER_MIGRATION, Boolean.FALSE);
     super.run(result);
   }
 
