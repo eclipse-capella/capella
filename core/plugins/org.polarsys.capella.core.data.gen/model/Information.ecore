@@ -2,7 +2,7 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="information" nsURI="http://www.polarsys.org/capella/core/information/1.2.0"
     nsPrefix="org.polarsys.capella.core.data.information">
-  <eAnnotations source="http://www.polarsys.org/kitalpha/dsl/2007/dslfactory">
+  <eAnnotations source="http://www.polarsys.org/kitalpha/emde/1.0.0/extension">
     <details key="trackResourceModification" value="true"/>
     <details key="useUUIDs" value="false"/>
     <details key="useIDAttributes" value="true"/>
@@ -19,13 +19,6 @@
     <details key="reference documentation" value="n/a"/>
   </eAnnotations>
   <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
-  <eAnnotations source="http://www.polarsys.org/kitalpha/emde/1.0.0/extension">
-    <details key="trackResourceModification" value="true"/>
-    <details key="useUUIDs" value="false"/>
-    <details key="useIDAttributes" value="true"/>
-    <details key="extensibleProviderFactory" value="true"/>
-    <details key="childCreationExtenders" value="true"/>
-  </eAnnotations>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractInstance" abstract="true" eSuperTypes="#//Property">
     <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
       <details key="Label" value="AbstractInstance"/>
@@ -2955,7 +2948,7 @@
   </eClassifiers>
   <eSubpackages name="communication" nsURI="http://www.polarsys.org/capella/core/information/communication/1.2.0"
       nsPrefix="org.polarsys.capella.core.data.information.communication">
-    <eAnnotations source="http://www.polarsys.org/kitalpha/dsl/2007/dslfactory">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/emde/1.0.0/extension">
       <details key="trackResourceModification" value="true"/>
       <details key="useUUIDs" value="false"/>
       <details key="useIDAttributes" value="true"/>
@@ -2972,13 +2965,6 @@
       <details key="reference documentation" value="n/a"/>
     </eAnnotations>
     <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
-    <eAnnotations source="http://www.polarsys.org/kitalpha/emde/1.0.0/extension">
-      <details key="trackResourceModification" value="true"/>
-      <details key="useUUIDs" value="false"/>
-      <details key="useIDAttributes" value="true"/>
-      <details key="extensibleProviderFactory" value="true"/>
-      <details key="childCreationExtenders" value="true"/>
-    </eAnnotations>
     <eClassifiers xsi:type="ecore:EClass" name="CommunicationItem" abstract="true"
         eSuperTypes="CapellaCore.ecore#//Classifier #//datavalue/DataValueContainer">
       <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
@@ -3796,7 +3782,7 @@
   </eSubpackages>
   <eSubpackages name="datatype" nsURI="http://www.polarsys.org/capella/core/information/datatype/1.2.0"
       nsPrefix="org.polarsys.capella.core.data.information.datatype">
-    <eAnnotations source="http://www.polarsys.org/kitalpha/dsl/2007/dslfactory">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/emde/1.0.0/extension">
       <details key="trackResourceModification" value="true"/>
       <details key="useUUIDs" value="false"/>
       <details key="useIDAttributes" value="true"/>
@@ -3813,13 +3799,6 @@
       <details key="reference documentation" value="n/a"/>
     </eAnnotations>
     <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
-    <eAnnotations source="http://www.polarsys.org/kitalpha/emde/1.0.0/extension">
-      <details key="trackResourceModification" value="true"/>
-      <details key="useUUIDs" value="false"/>
-      <details key="useIDAttributes" value="true"/>
-      <details key="extensibleProviderFactory" value="true"/>
-      <details key="childCreationExtenders" value="true"/>
-    </eAnnotations>
     <eClassifiers xsi:type="ecore:EClass" name="DataType" abstract="true" eSuperTypes="CapellaCore.ecore#//GeneralizableElement #//datavalue/DataValueContainer ../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//FinalizableElement">
       <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
         <details key="Label" value="DataType"/>
@@ -4533,7 +4512,7 @@
   </eSubpackages>
   <eSubpackages name="datavalue" nsURI="http://www.polarsys.org/capella/core/information/datavalue/1.2.0"
       nsPrefix="org.polarsys.capella.core.data.information.datavalue">
-    <eAnnotations source="http://www.polarsys.org/kitalpha/dsl/2007/dslfactory">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/emde/1.0.0/extension">
       <details key="trackResourceModification" value="true"/>
       <details key="useUUIDs" value="false"/>
       <details key="useIDAttributes" value="true"/>
@@ -4550,13 +4529,6 @@
       <details key="reference documentation" value="n/a"/>
     </eAnnotations>
     <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
-    <eAnnotations source="http://www.polarsys.org/kitalpha/emde/1.0.0/extension">
-      <details key="trackResourceModification" value="true"/>
-      <details key="useUUIDs" value="false"/>
-      <details key="useIDAttributes" value="true"/>
-      <details key="extensibleProviderFactory" value="true"/>
-      <details key="childCreationExtenders" value="true"/>
-    </eAnnotations>
     <eClassifiers xsi:type="ecore:EClass" name="DataValue" abstract="true" eSuperTypes="CapellaCore.ecore#//NamedElement ../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//ValueSpecification">
       <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
         <details key="Label" value="DataValue"/>

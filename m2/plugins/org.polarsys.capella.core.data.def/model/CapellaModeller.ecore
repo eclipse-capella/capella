@@ -5,7 +5,7 @@
   <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
     <details key="profileName" value="Capella"/>
   </eAnnotations>
-  <eAnnotations source="http://www.polarsys.org/kitalpha/dsl/2007/dslfactory">
+  <eAnnotations source="http://www.polarsys.org/kitalpha/emde/1.0.0/extension">
     <details key="trackResourceModification" value="true"/>
     <details key="useUUIDs" value="false"/>
     <details key="useIDAttributes" value="true"/>
