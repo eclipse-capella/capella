@@ -24,6 +24,7 @@ import java.util.stream.Collectors;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.query.RepresentationDescriptionQuery;
@@ -43,6 +44,7 @@ import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.utils.RunnableWithBooleanResult;
 import org.polarsys.capella.core.data.cs.AbstractActor;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
+import org.polarsys.capella.shared.id.handler.IScope;
 
 import com.google.common.collect.Iterables;
 
@@ -357,6 +359,33 @@ public class RepresentationHelper {
    */
   public static DRepresentationDescriptor getRepresentationDescriptor(DRepresentation representation) {
     return new DRepresentationQuery(representation).getRepresentationDescriptor();
+  }
+  
+  /**
+   * Get the representation descriptor whose UID or repPath equals to the parameter id.
+   */
+  public static DRepresentationDescriptor getRepresentationDescriptor(ResourceSet resourceSet, String id) {
+    IScope capellaSemanticResourceScope = new SemanticResourcesScope(resourceSet);
+    List<Resource> capellaSemanticResources = capellaSemanticResourceScope.getResources();
+    Resource resource = capellaSemanticResources.stream().findFirst().orElse(null);
+    Session session = SessionManager.INSTANCE.getSession(resource);
+    Collection<DRepresentationDescriptor> representationDescriptors = DialectManager.INSTANCE.getAllRepresentationDescriptors(session);
+    for (DRepresentationDescriptor representationDescriptor : representationDescriptors) {
+      
+      String descriptorFragment;
+      try {
+        descriptorFragment = representationDescriptor.getRepPath().getResourceURI().fragment();
+      } catch (NullPointerException e) {
+        descriptorFragment = "";
+      }
+      
+      String descriptorUid = representationDescriptor.getUid();
+      
+      if (id.equals(descriptorFragment) || id.equals(descriptorUid)) {
+        return representationDescriptor;
+      }
+    }
+    return null;
   }
 
   /**
