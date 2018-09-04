@@ -1799,7 +1799,7 @@
         </nodeMappings>
         <nodeMappings name="DT_PV" createElements="false" domainClass="AbstractPropertyValue">
           <deletionDescription href="context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']"/>
-          <style xsi:type="style:SquareDescription" labelExpression="service:computePVLabel" labelPosition="node" resizeKind="NSEW">
+          <style xsi:type="style:SquareDescription" labelExpression="service:computePVLabel" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW" width="10" height="5">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
