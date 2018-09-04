@@ -4803,9 +4803,6 @@
             <mask mask="{0}"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self">
-                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.representedInstance">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:arg0"/>
-                </subModelOperations>
                 <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:arg0"/>
               </firstModelOperations>
             </initialOperation>
