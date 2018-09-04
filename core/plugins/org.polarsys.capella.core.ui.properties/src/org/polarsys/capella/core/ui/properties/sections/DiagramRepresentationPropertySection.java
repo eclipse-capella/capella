@@ -19,6 +19,8 @@ import org.eclipse.core.commands.operations.IUndoableOperation;
 import org.eclipse.core.commands.operations.OperationHistoryEvent;
 import org.eclipse.core.commands.operations.OperationHistoryFactory;
 import org.eclipse.emf.common.command.Command;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.workspace.EMFCommandOperation;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.jface.viewers.ISelection;
@@ -46,8 +48,11 @@ import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.core.diagram.helpers.ContextualDiagramHelper;
 import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.core.model.handler.provider.CapellaReadOnlyHelper;
+import org.polarsys.capella.core.ui.properties.controllers.DAnnotationReferenceController;
+import org.polarsys.capella.core.ui.properties.controllers.EOIController;
 import org.polarsys.capella.core.ui.properties.controllers.RepresentationContextualElementsController;
 import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticField;
+import org.polarsys.capella.core.ui.properties.fields.MultipleSemanticField;
 import org.polarsys.capella.core.ui.properties.fields.RepresentationContextualElementsField;
 
 /**
@@ -60,6 +65,7 @@ public class DiagramRepresentationPropertySection extends AbstractSection {
   private FocusAdapter _focusAdapter;
   private KeyAdapter _keyAdapter;
   private RepresentationContextualElementsField _contextualElementsField;
+  private MultipleSemanticField _eoiField;
 
   /**
    * Execute a command that changes the data model according to related widget.
@@ -148,6 +154,8 @@ public class DiagramRepresentationPropertySection extends AbstractSection {
 
     // Create Contextual Elements widget.
     createContextualElementsWidget(widgetFactory, rootParentComposite);
+
+    createEOIWidget(widgetFactory, rootParentComposite);
   }
 
   /**
@@ -175,6 +183,21 @@ public class DiagramRepresentationPropertySection extends AbstractSection {
     _contextualElementsField = new RepresentationContextualElementsField(getReferencesGroup(),
         Messages.ContextualElements_Label, getWidgetFactory(), new RepresentationContextualElementsController());
     _contextualElementsField.setDisplayedInWizard(displayedInWizard);
+  }
+
+  protected void createEOIWidget(TabbedPropertySheetWidgetFactory widgetFactory, Composite rootParentComposite) { 
+    _eoiField = new MultipleSemanticField(getReferencesGroup(), Messages.EOI_label, widgetFactory, new EOIController()) {
+
+      @Override
+      protected void doDeleteCommand(EObject element, EStructuralFeature feature) {
+        ((DAnnotationReferenceController)_controller).clear(element);
+        if (_valueEditBtn != null) {
+          _valueEditBtn.setEnabled(true);
+        }
+        setValueTextField((EObject) null);
+      }
+    };
+    _eoiField.setDisplayedInWizard(isDisplayedInWizard());
   }
 
   /**
@@ -231,6 +254,9 @@ public class DiagramRepresentationPropertySection extends AbstractSection {
       boolean isContextual = ContextualDiagramHelper.getService().isContextualRepresentation(_descriptor.get());
       _contextualElementsField.setEnabled(isContextual);
     }
+
+    _eoiField.loadData(_descriptor.get());
+
   }
 
   /**
@@ -314,6 +340,6 @@ public class DiagramRepresentationPropertySection extends AbstractSection {
    */
   @Override
   public List<AbstractSemanticField> getSemanticFields() {
-    return Collections.emptyList();
+    return Collections.<AbstractSemanticField>singletonList(_eoiField);
   }
 }
