@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.polarsys.capella.core.diagram.helpers;
 
+import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
 import org.eclipse.sirius.viewpoint.description.DModelElement;
 import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
@@ -29,20 +30,6 @@ public class DAnnotationHelper {
     annotation.setSource(source);
     representation.getEAnnotations().add(annotation);
     return annotation;
-  }
-
-  /**
-   * Remove the first annotation with a given source from a given model element
-   * @param source
-   * @param representation
-   */
-  public static boolean removeAnnotation(String source, DModelElement representation) {
-    DAnnotation annotation = getAnnotation(source, representation, false);
-    if (annotation != null) {
-      representation.getEAnnotations().remove(annotation);
-      return true;
-    }
-    return false;
   }
 
   /**
@@ -77,5 +64,19 @@ public class DAnnotationHelper {
     return getAnnotation(source, representation, false) != null;
   }
 
-  
+  /**
+   * Delete the first annotation with a given source from a given model element
+   * @param source
+   * @param representation
+   * @return true if an annotation was deleted, false otherwise
+   */
+  public static boolean deleteAnnotation(String source, DModelElement representation) {
+    DAnnotation annotation = getAnnotation(source, representation, false);
+    if (annotation != null) {
+      SiriusUtil.delete(annotation);
+      return true;
+    }
+    return false;
+  }
+
 }

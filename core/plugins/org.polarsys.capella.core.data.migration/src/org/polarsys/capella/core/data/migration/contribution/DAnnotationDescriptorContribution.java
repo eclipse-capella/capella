@@ -118,10 +118,10 @@ public class DAnnotationDescriptorContribution extends AbstractMigrationContribu
     int result = 0;
 
     // Remove annotations from Initialize From Existing Diagram, since never used and tooled.
-    if (DAnnotationHelper.removeAnnotation(allocating_diagrams, diagram)) {
+    if (DAnnotationHelper.deleteAnnotation(allocating_diagrams, diagram)) {
       result++;
     }
-    if (DAnnotationHelper.removeAnnotation(allocated_diagrams, diagram)) {
+    if (DAnnotationHelper.deleteAnnotation(allocated_diagrams, diagram)) {
       result++;
     }
 

@@ -37,6 +37,8 @@ import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.FontData;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.ISharedImages;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.model.IWorkbenchAdapter;
 import org.eclipse.ui.navigator.IDescriptionProvider;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
@@ -94,6 +96,8 @@ public class CapellaNavigatorLabelProvider extends MDEAdapterFactoryLabelProvide
       }
     } else if (object instanceof ItemWrapper) {
       image = super.getImage(((ItemWrapper) object).getWrappedObject());
+    } else if (object instanceof RepresentationPackage) {
+      image = PlatformUI.getWorkbench().getSharedImages().getImage(ISharedImages.IMG_OBJ_FOLDER);
     } else if (!(object instanceof IResource)) {
       image = super.getImage(object);
     }
@@ -113,6 +117,8 @@ public class CapellaNavigatorLabelProvider extends MDEAdapterFactoryLabelProvide
       text = ((ItemDecorator) object).getText();
     } else if (object instanceof ItemWrapper) {
       text = super.getText(((ItemWrapper) object).getWrappedObject());
+    } else if (object instanceof RepresentationPackage) {
+      return (((RepresentationPackage) object).getName());
     } else {
       // Fix due to 3.5 & 3.6 that have changed the implementation of IResource.toString().
       IWorkbenchAdapter workbenchAdapter = Platform.getAdapterManager().getAdapter(object,

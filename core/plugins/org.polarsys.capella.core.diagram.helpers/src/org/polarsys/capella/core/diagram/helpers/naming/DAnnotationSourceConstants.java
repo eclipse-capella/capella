@@ -20,6 +20,13 @@ public class DAnnotationSourceConstants {
    * semantic model elements which are of some special interest to the
    * related representation.
    */
-  public static final String CAPELLA_ELEMENT_OF_INTEREST = "https://www.polarsys.org/capella/dannotation/eoi"; 
+  public static final String CAPELLA_ELEMENT_OF_INTEREST = "https://www.polarsys.org/capella/dannotation/eoi";  //$NON-NLS-1$
+
+  /**
+   * Package annotation. Used on DRepresentationDescriptors to organize 
+   * diagrams into packages.
+   */
+  public static final String CAPELLA_DIAGRAM_PACKAGE = "https://www.polarsys.org/capella/dannotation/package"; //$NON-NLS-1$
+  public static final String CAPELLA_DIAGRAM_PACKAGE_KEY = "name"; //$NON-NLS-1$
 
 }
