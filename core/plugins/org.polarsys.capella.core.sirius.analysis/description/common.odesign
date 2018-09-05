@@ -15619,9 +15619,6 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self">
                 <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:arg0"/>
-                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="feature:representedInstance">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:arg0"/>
-                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -17529,9 +17526,6 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self">
                 <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:arg0"/>
-                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="feature:representedInstance">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:arg0"/>
-                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -18310,9 +18304,6 @@
             <mask mask="{0}"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self">
-                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="feature:representedInstance">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:arg0"/>
-                </subModelOperations>
                 <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:arg0"/>
               </firstModelOperations>
             </initialOperation>
