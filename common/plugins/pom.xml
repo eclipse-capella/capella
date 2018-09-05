@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  Copyright (c) 2016, 2017 THALES GLOBAL SERVICES.
+  Copyright (c) 2016, 2018 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -76,7 +76,6 @@
         <module>org.polarsys.capella.common.ui.toolkit</module>
         <module>org.polarsys.capella.common.ui.toolkit.browser</module>
         <module>org.polarsys.capella.common.ui.toolkit.services</module>
-        <module>org.polarsys.capella.common.xmisupport</module>
         <module>org.polarsys.capella.shared.id.handler</module>
       </modules>
     </profile>
@@ -113,7 +112,6 @@
         <module>org.polarsys.capella.common.tools.report</module>
         <module>org.polarsys.capella.common.tools.report.appenders.usage</module>
         <module>org.polarsys.capella.common.transition</module>
-        <module>org.polarsys.capella.common.xmisupport</module>
         <module>org.polarsys.capella.shared.id.handler</module>
       </modules>
     </profile>
