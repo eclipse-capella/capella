@@ -31,7 +31,6 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.description.AnnotationEntry;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.DiagramHelper;
-import org.polarsys.capella.test.framework.api.BasicTestCase;
 import org.polarsys.capella.test.framework.helpers.IResourceHelpers;
 import org.polarsys.capella.test.migration.ju.helpers.MigrationHelper;
 
@@ -45,7 +44,7 @@ import org.polarsys.capella.test.migration.ju.helpers.MigrationHelper;
  * @author S0070513
  *
  */
-public class MigrateAirdFrom_12X_To_130_PreservingRepresentationUid_TestCase extends BasicTestCase {
+public class MigrateAirdFrom_12X_To_130_PreservingRepresentationUid_TestCase extends MigrateAirdAbstractTestCase {
   private IProject project;
   private static final String PROJECT_NAME = "121";
   private static final String AIRD_FILE_NAME = "121.aird";
@@ -75,24 +74,9 @@ public class MigrateAirdFrom_12X_To_130_PreservingRepresentationUid_TestCase ext
   }
 
   private void keepTrackingOriginalUid() {
-    Resource airdResource = getAirdResource();
-    try {
-      airdResource.load(null);
-      TreeIterator<EObject> resourceContentsIterator = airdResource.getAllContents();
-      while (resourceContentsIterator.hasNext()) {
-        EObject element = (EObject) resourceContentsIterator.next();
-        if (element instanceof DRepresentation) {
-          DRepresentation representation = (DRepresentation) element;
-          String name = representation.getName();
-          String uid = representation.getUid();
-          representationNameToUidIn12X.put(name, uid);
-        }
-      }
-    } catch (IOException e) {
-      e.printStackTrace();
-    } finally {
-      airdResource.unload();
-    }
+    // Manually keep tracking representation name vs its uid value in 1.2.1
+    representationNameToUidIn12X.put("New State Machine and Capability Function Matrix", "_aOjjcK-OEeimG9qCvLIFzA");
+    representationNameToUidIn12X.put("[OAIB] Root Operational Activity", "_SKtBwK-OEeimG9qCvLIFzA");
   }
 
   private Resource getAirdResource() {

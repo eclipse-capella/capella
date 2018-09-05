@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:concern="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:org.polarsys.capella.core.data.ctx="http://www.polarsys.org/capella/core/ctx/1.2.0" xmlns:org.polarsys.capella.core.data.information="http://www.polarsys.org/capella/core/information/1.2.0" xmlns:org.polarsys.capella.core.data.information.communication="http://www.polarsys.org/capella/core/information/communication/1.2.0" xmlns:org.polarsys.capella.core.data.la="http://www.polarsys.org/capella/core/la/1.2.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/concern http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.polarsys.org/capella/core/information/communication/1.2.0 http://www.polarsys.org/capella/core/information/1.2.0#//communication http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
-  <viewpoint:DAnalysis uid="_2W_JUE_yEeWYOYp6IHwA3Q" selectedViews="_2joeME_yEeWYOYp6IHwA3Q _2j_DgE_yEeWYOYp6IHwA3Q _2kD8AE_yEeWYOYp6IHwA3Q _2kOUEE_yEeWYOYp6IHwA3Q _2kVBwE_yEeWYOYp6IHwA3Q _2keLsE_yEeWYOYp6IHwA3Q _2k_wIE_yEeWYOYp6IHwA3Q" version="14.1.0.201808080808">
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:concern="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:org.polarsys.capella.core.data.ctx="http://www.polarsys.org/capella/core/ctx/1.3.0" xmlns:org.polarsys.capella.core.data.information="http://www.polarsys.org/capella/core/information/1.3.0" xmlns:org.polarsys.capella.core.data.information.communication="http://www.polarsys.org/capella/core/information/communication/1.3.0" xmlns:org.polarsys.capella.core.data.la="http://www.polarsys.org/capella/core/la/1.3.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/concern http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.polarsys.org/capella/core/information/communication/1.3.0 http://www.polarsys.org/capella/core/information/1.3.0#//communication http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
+  <viewpoint:DAnalysis uid="_2W_JUE_yEeWYOYp6IHwA3Q" selectedViews="_2joeME_yEeWYOYp6IHwA3Q _2j_DgE_yEeWYOYp6IHwA3Q _2kD8AE_yEeWYOYp6IHwA3Q _2kOUEE_yEeWYOYp6IHwA3Q _2kVBwE_yEeWYOYp6IHwA3Q _2keLsE_yEeWYOYp6IHwA3Q _2k_wIE_yEeWYOYp6IHwA3Q" version="14.1.0.201808300808">
     <semanticResources>reconciliation.communicationlinks.melodymodeller</semanticResources>
     <semanticResources>reconciliation.communicationlinks.afm</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_2joeME_yEeWYOYp6IHwA3Q">
@@ -38,7 +38,7 @@
     </ownedViews>
   </viewpoint:DAnalysis>
   <diagram:DSemanticDiagram uid="_3OesUFFCEeWTo_sFebnhNg" name="[IDB] Logical System - Interfaces Diagram Blank">
-    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_3O7YQFFCEeWTo_sFebnhNg" source="GMF_DIAGRAMS">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_3O7YQFFCEeWTo_sFebnhNg" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_3O7YQVFCEeWTo_sFebnhNg" type="Sirius" element="_3OesUFFCEeWTo_sFebnhNg" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="_3pmiEFFCEeWTo_sFebnhNg" type="2002" element="_3otKMFFCEeWTo_sFebnhNg">
           <children xmi:type="notation:Node" xmi:id="_3pwTEFFCEeWTo_sFebnhNg" type="5006"/>
@@ -243,7 +243,7 @@
         </edges>
       </data>
     </ownedAnnotationEntries>
-    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_5XJJwGa-EeWEG7T7oMt8YQ" source="DANNOTATION_CUSTOMIZATION_KEY">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_5XJJwGa-EeWEG7T7oMt8YQ" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_5XJJwWa-EeWEG7T7oMt8YQ"/>
     </ownedAnnotationEntries>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_3otKMFFCEeWTo_sFebnhNg" name="LC1" outgoingEdges="_4hMvEHs1EeaIfY15UCx5Ag _4hRAgHs1EeaIfY15UCx5Ag _4hSOoHs1EeaIfY15UCx5Ag _4hTcwHs1EeaIfY15UCx5Ag _4hUq4Hs1EeaIfY15UCx5Ag _4hV5AHs1EeaIfY15UCx5Ag">
@@ -407,7 +407,7 @@
     <target xmi:type="org.polarsys.capella.core.data.la:LogicalComponent" href="reconciliation.communicationlinks.melodymodeller#0405bcc1-0f91-4aff-b423-b721d8c9ada5"/>
   </diagram:DSemanticDiagram>
   <diagram:DSemanticDiagram uid="_h0lYkFYOEeWQlsgDn-S-Sg" name="[IDB] System - Interfaces Diagram Blank">
-    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_h1RVEFYOEeWQlsgDn-S-Sg" source="GMF_DIAGRAMS">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_h1RVEFYOEeWQlsgDn-S-Sg" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_h1RVEVYOEeWQlsgDn-S-Sg" type="Sirius" element="_h0lYkFYOEeWQlsgDn-S-Sg" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="_k60JsFYOEeWQlsgDn-S-Sg" type="2002" element="_k6hOwFYOEeWQlsgDn-S-Sg">
           <children xmi:type="notation:Node" xmi:id="_k60wwFYOEeWQlsgDn-S-Sg" type="5006"/>
@@ -610,7 +610,7 @@
         </edges>
       </data>
     </ownedAnnotationEntries>
-    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_5YvsQGa-EeWEG7T7oMt8YQ" source="DANNOTATION_CUSTOMIZATION_KEY">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_5YvsQGa-EeWEG7T7oMt8YQ" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_5YvsQWa-EeWEG7T7oMt8YQ"/>
     </ownedAnnotationEntries>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_k6hOwFYOEeWQlsgDn-S-Sg" name="A1" outgoingEdges="_4iWloHs1EeaIfY15UCx5Ag _4iXMsHs1EeaIfY15UCx5Ag _4iYa0Hs1EeaIfY15UCx5Ag _4iZB4Hs1EeaIfY15UCx5Ag _4iaQAHs1EeaIfY15UCx5Ag _4ia3EHs1EeaIfY15UCx5Ag _4icFMHs1EeaIfY15UCx5Ag _4ifvkHs1EeaIfY15UCx5Ag _4ikBAHs1EeaIfY15UCx5Ag" incomingEdges="_4ifvkHs1EeaIfY15UCx5Ag _4ikBAHs1EeaIfY15UCx5Ag">
@@ -781,7 +781,7 @@
     <target xmi:type="org.polarsys.capella.core.data.ctx:System" href="reconciliation.communicationlinks.melodymodeller#7a581275-a180-44dc-9526-b6b0b3636288"/>
   </diagram:DSemanticDiagram>
   <diagram:DSemanticDiagram uid="_bGJmIFYYEeWQlsgDn-S-Sg" name="[IDB] Logical System - Interfaces Diagram Blank">
-    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_bGKNMFYYEeWQlsgDn-S-Sg" source="GMF_DIAGRAMS">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_bGKNMFYYEeWQlsgDn-S-Sg" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_bGKNMVYYEeWQlsgDn-S-Sg" type="Sirius" element="_bGJmIFYYEeWQlsgDn-S-Sg" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="_baFOwFYYEeWQlsgDn-S-Sg" type="2002" element="_bZ0wEFYYEeWQlsgDn-S-Sg">
           <children xmi:type="notation:Node" xmi:id="_baF10FYYEeWQlsgDn-S-Sg" type="5006"/>
@@ -984,7 +984,7 @@
         </edges>
       </data>
     </ownedAnnotationEntries>
-    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_5YvsQma-EeWEG7T7oMt8YQ" source="DANNOTATION_CUSTOMIZATION_KEY">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_5YvsQma-EeWEG7T7oMt8YQ" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_5YvsQ2a-EeWEG7T7oMt8YQ"/>
     </ownedAnnotationEntries>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_bZ0wEFYYEeWQlsgDn-S-Sg" name="LA1" outgoingEdges="_4i8bgHs1EeaIfY15UCx5Ag _4i-QsHs1EeaIfY15UCx5Ag _4i_e0Hs1EeaIfY15UCx5Ag _4jAF4Hs1EeaIfY15UCx5Ag _4jAs8Hs1EeaIfY15UCx5Ag _4jB7EHs1EeaIfY15UCx5Ag _4jCiIHs1EeaIfY15UCx5Ag _4jE-YHs1EeaIfY15UCx5Ag _4jHaoHs1EeaIfY15UCx5Ag" incomingEdges="_4jE-YHs1EeaIfY15UCx5Ag _4jHaoHs1EeaIfY15UCx5Ag">

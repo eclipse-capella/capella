@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:org.polarsys.capella.core.data.ctx="http://www.polarsys.org/capella/core/ctx/1.2.0" xmlns:org.polarsys.capella.core.data.fa="http://www.polarsys.org/capella/core/fa/1.2.0" xmlns:org.polarsys.capella.core.data.oa="http://www.polarsys.org/capella/core/oa/1.2.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
-  <viewpoint:DAnalysis uid="_pqJj8kJPEei5Pfkv4wYo9A" selectedViews="_pqJj80JPEei5Pfkv4wYo9A _pqJj9EJPEei5Pfkv4wYo9A _pqJj9UJPEei5Pfkv4wYo9A _pqJj9kJPEei5Pfkv4wYo9A _pqJj90JPEei5Pfkv4wYo9A _pqJj-UJPEei5Pfkv4wYo9A _pqJj-0JPEei5Pfkv4wYo9A" version="14.1.0.201808080808">
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:org.polarsys.capella.core.data.ctx="http://www.polarsys.org/capella/core/ctx/1.3.0" xmlns:org.polarsys.capella.core.data.fa="http://www.polarsys.org/capella/core/fa/1.3.0" xmlns:org.polarsys.capella.core.data.oa="http://www.polarsys.org/capella/core/oa/1.3.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
+  <viewpoint:DAnalysis uid="_pqJj8kJPEei5Pfkv4wYo9A" selectedViews="_pqJj80JPEei5Pfkv4wYo9A _pqJj9EJPEei5Pfkv4wYo9A _pqJj9UJPEei5Pfkv4wYo9A _pqJj9kJPEei5Pfkv4wYo9A _pqJj90JPEei5Pfkv4wYo9A _pqJj-UJPEei5Pfkv4wYo9A _pqJj-0JPEei5Pfkv4wYo9A" version="14.1.0.201808300808">
     <semanticResources>TestModel.afm</semanticResources>
     <semanticResources>TestModel.melodymodeller</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_pqJj80JPEei5Pfkv4wYo9A">
@@ -34,10 +34,10 @@
     </ownedViews>
   </viewpoint:DAnalysis>
   <diagram:DSemanticDiagram uid="_pqJj_EJPEei5Pfkv4wYo9A" name="[OABD] Root Operational Activity">
-    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_pqTU8EJPEei5Pfkv4wYo9A" source="DANNOTATION_CUSTOMIZATION_KEY">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_pqTU8EJPEei5Pfkv4wYo9A" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_pqTU8UJPEei5Pfkv4wYo9A"/>
     </ownedAnnotationEntries>
-    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_pqTU8kJPEei5Pfkv4wYo9A" source="GMF_DIAGRAMS">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_pqTU8kJPEei5Pfkv4wYo9A" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_pqTU80JPEei5Pfkv4wYo9A" type="Sirius" element="_pqJj_EJPEei5Pfkv4wYo9A" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="_pqTU9EJPEei5Pfkv4wYo9A" type="2001" element="_pqTVSkJPEei5Pfkv4wYo9A">
           <children xmi:type="notation:Node" xmi:id="_pqTU9UJPEei5Pfkv4wYo9A" type="5002">
@@ -241,10 +241,10 @@
     <target xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="TestModel.melodymodeller#22a54231-9ee3-453a-a9e1-a5c7858658f7"/>
   </diagram:DSemanticDiagram>
   <diagram:DSemanticDiagram uid="_pqTVYEJPEei5Pfkv4wYo9A" name="[SDFB] Root System Function">
-    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_pqTVYUJPEei5Pfkv4wYo9A" source="DANNOTATION_CUSTOMIZATION_KEY">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_pqTVYUJPEei5Pfkv4wYo9A" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_pqTVYkJPEei5Pfkv4wYo9A"/>
     </ownedAnnotationEntries>
-    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_pqTVY0JPEei5Pfkv4wYo9A" source="GMF_DIAGRAMS">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_pqTVY0JPEei5Pfkv4wYo9A" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_pqTVZEJPEei5Pfkv4wYo9A" type="Sirius" element="_pqTVYEJPEei5Pfkv4wYo9A" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="_pqTVZUJPEei5Pfkv4wYo9A" type="2002" element="_pqTV5UJPEei5Pfkv4wYo9A">
           <children xmi:type="notation:Node" xmi:id="_pqTVZkJPEei5Pfkv4wYo9A" type="5006"/>

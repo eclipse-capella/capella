@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--Capella_Version_1.2.0-->
+<!--Capella_Version_1.3.0-->
 <org.eclipse.emf.diffmerge.patterns.core:PatternRepository xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:common_1.0.0="http://www.polarsys.org/capella/core/common/1.0.0"
     xmlns:core_1.0.0="http://www.polarsys.org/capella/core/core/1.0.0" xmlns:cs_1.0.0="http://www.polarsys.org/capella/core/cs/1.0.0"
@@ -13,7 +13,7 @@
       id="c833aa94-a2c2-41b6-8337-5cb517219baf" name="MVC Component: MVC Component"
       description="MVC pattern" version="1.0">
     <authors>T0088906</authors>
-    <executionEnvironments>Melody Advance 4.3.x</executionEnvironments>
+    <executionEnvironments>Melody Advance 4.4.x</executionEnvironments>
     <roles xsi:type="org.eclipse.emf.diffmerge.patterns.templates:TemplatePatternRole"
         id="6fff5224-5a16-4101-af29-06d825236669" name="MVC Component: MVC Component"
         description="" additionKind="ANY_CONTAINMENT" exclusive="true"/>
@@ -383,6 +383,11 @@
         name="MVC Component" abstractType="#f124d3f0-74cb-4795-b365-59e1cdaa5f6e"/>
     <templateElements xsi:type="cs_1.0.0:Part" id="f371bcdc-bd5c-4901-a1dc-8678fd3a4beb"
         name="MVC Component" abstractType="#f124d3f0-74cb-4795-b365-59e1cdaa5f6e"/>
+    <templateElements xsi:type="cs_1.0.0:Part" id="f371bcdc-bd5c-4901-a1dc-8678fd3a4beb"
+        name="MVC Component" abstractType="#f124d3f0-74cb-4795-b365-59e1cdaa5f6e"/>
+    <templateElements xsi:type="fa_1.0.0:FunctionalExchange" id="d6a94c2a-d2ec-42e8-bf93-dbe4571803b5"
+        name="Apply Users Actions" target="#fefbf5e5-95b2-4c04-a7ce-d61c94f983e6"
+        source="#ad1aad0c-1a6c-47cb-813a-20bab0adb557" exchangedItems="#3e473e5d-7072-4fdb-984c-14b9f499d6cb"/>
     <templateElements xsi:type="fa_1.0.0:FunctionalExchange" id="d6a94c2a-d2ec-42e8-bf93-dbe4571803b5"
         name="Apply Users Actions" target="#fefbf5e5-95b2-4c04-a7ce-d61c94f983e6"
         source="#ad1aad0c-1a6c-47cb-813a-20bab0adb557" exchangedItems="#3e473e5d-7072-4fdb-984c-14b9f499d6cb"/>
@@ -403,6 +408,8 @@
       <outputs xsi:type="fa_1.0.0:FunctionOutputPort" id="0479d7b1-27db-467f-a4b0-741af6ac6d69"
           name="FOP 2" outgoingExchangeItems="#c33f3d08-97f4-4ae8-b7ad-13137dd3f162"/>
     </templateElements>
+    <templateElements xsi:type="la_1.0.0:LogicalFunction" id="31a787d5-cf1a-4f5e-934c-5cdd3d4a1c9e"
+        name="Manage View"/>
     <templateElements xsi:type="la_1.0.0:LogicalFunction" id="31a787d5-cf1a-4f5e-934c-5cdd3d4a1c9e"
         name="Manage View"/>
     <templateElements xsi:type="la_1.0.0:LogicalFunction" id="31a787d5-cf1a-4f5e-934c-5cdd3d4a1c9e"
@@ -629,11 +636,13 @@
         name="MVC Component"/>
     <templateElements xsi:type="la_1.0.0:LogicalComponent" id="f124d3f0-74cb-4795-b365-59e1cdaa5f6e"
         name="MVC Component"/>
+    <templateElements xsi:type="la_1.0.0:LogicalComponent" id="f124d3f0-74cb-4795-b365-59e1cdaa5f6e"
+        name="MVC Component"/>
   </patterns>
   <patterns xsi:type="org.eclipse.emf.diffmerge.patterns.templates:TemplatePattern"
       id="c41dcc9c-f0a1-4173-9b56-d41c13c607df" name="Pattern_WithStyle_Layout" version="1.0">
     <authors>Administrator</authors>
-    <executionEnvironments>Melody Advance 4.3.x</executionEnvironments>
+    <executionEnvironments>Melody Advance 4.4.x</executionEnvironments>
     <roles xsi:type="org.eclipse.emf.diffmerge.patterns.templates:TemplatePatternRole"
         id="d06314c9-9597-4831-9be1-cf0e2e56a1a3" name="LogicalFunctions" description=""
         additionKind="ANY_CONTAINMENT" exclusive="true"/>

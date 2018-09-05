@@ -4,18 +4,18 @@
 <org.eclipse.emf.diffmerge.patterns.core:PatternRepository xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org.eclipse.emf.diffmerge.patterns.core="http://org.eclipse.com/emf/diffmerge/patterns/core/1.0.0"
     xmlns:org.eclipse.emf.diffmerge.patterns.templates="http://org.eclipse.com/emf/diffmerge/patterns/templates/1.0.0"
-    xmlns:org.polarsys.capella.core.data.cs="http://www.polarsys.org/capella/core/cs/1.2.0"
-    xmlns:org.polarsys.capella.core.data.fa="http://www.polarsys.org/capella/core/fa/1.2.0"
-    xmlns:org.polarsys.capella.core.data.information="http://www.polarsys.org/capella/core/information/1.2.0"
-    xmlns:org.polarsys.capella.core.data.pa="http://www.polarsys.org/capella/core/pa/1.2.0"
-    xmlns:org.polarsys.capella.core.data.pa.deployment="http://www.polarsys.org/capella/core/pa/deployment/1.2.0"
+    xmlns:org.polarsys.capella.core.data.cs="http://www.polarsys.org/capella/core/cs/1.3.0"
+    xmlns:org.polarsys.capella.core.data.fa="http://www.polarsys.org/capella/core/fa/1.3.0"
+    xmlns:org.polarsys.capella.core.data.information="http://www.polarsys.org/capella/core/information/1.3.0"
+    xmlns:org.polarsys.capella.core.data.pa="http://www.polarsys.org/capella/core/pa/1.3.0"
+    xmlns:org.polarsys.capella.core.data.pa.deployment="http://www.polarsys.org/capella/core/pa/deployment/1.3.0"
     id="20345221-ba33-42ff-925a-3559e26494d5"
     name="templatePattern">
   <patterns xsi:type="org.eclipse.emf.diffmerge.patterns.templates:TemplatePattern"
       id="e0d3ecde-0a6f-4d3f-a89d-80a0e5d1a69c" name="node_to_function" version="1.0"
       template="true">
     <authors>Administrateur</authors>
-    <executionEnvironments>Capella 1.3.x</executionEnvironments>
+    <executionEnvironments>Melody Advance 4.4.x</executionEnvironments>
     <roles xsi:type="org.eclipse.emf.diffmerge.patterns.templates:TemplatePatternRole"
         id="c140d0ba-4044-4e82-8b8b-123182883117" name="nodePart" description="" additionKind="ANY_CONTAINMENT"
         exclusive="true" templateElements="#cac9b473-6c58-491e-b660-5817eae5a5df"/>
@@ -83,7 +83,7 @@
   <patterns xsi:type="org.eclipse.emf.diffmerge.patterns.templates:TemplatePattern"
       id="ce88310b-dff8-43c7-b2c2-c571ce588e8d" name="patternFromTemplate" version="1.0">
     <authors>Administrateur</authors>
-    <executionEnvironments>Capella 1.3.x</executionEnvironments>
+    <executionEnvironments>Melody Advance 4.4.x</executionEnvironments>
     <roles xsi:type="org.eclipse.emf.diffmerge.patterns.templates:TemplatePatternRole"
         id="75a6a446-bb86-471e-9224-abda4d3fdae2" name="nodePart" description="" additionKind="ANY_CONTAINMENT"
         exclusive="true" templateElements="#72893891-6716-4c71-bdd8-b40bb5b15822"/>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:org.polarsys.capella.core.data.ctx="http://www.polarsys.org/capella/core/ctx/1.2.0" xmlns:table="http://www.eclipse.org/sirius/table/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/table/description/1.1.0 http://www.eclipse.org/sirius/table/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter">
-  <viewpoint:DAnalysis uid="_iFrJsDNYEeieBf4kJpEPiQ" selectedViews="_iklTQDNYEeieBf4kJpEPiQ _i-XFMDNYEeieBf4kJpEPiQ _i_BzkDNYEeieBf4kJpEPiQ _jAEVYDNYEeieBf4kJpEPiQ _jAaToDNYEeieBf4kJpEPiQ _jAelEDNYEeieBf4kJpEPiQ _jApkMDNYEeieBf4kJpEPiQ" version="14.1.0.201808080808">
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:org.polarsys.capella.core.data.ctx="http://www.polarsys.org/capella/core/ctx/1.3.0" xmlns:table="http://www.eclipse.org/sirius/table/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/table/description/1.1.0 http://www.eclipse.org/sirius/table/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter">
+  <viewpoint:DAnalysis uid="_iFrJsDNYEeieBf4kJpEPiQ" selectedViews="_iklTQDNYEeieBf4kJpEPiQ _i-XFMDNYEeieBf4kJpEPiQ _i_BzkDNYEeieBf4kJpEPiQ _jAEVYDNYEeieBf4kJpEPiQ _jAaToDNYEeieBf4kJpEPiQ _jAelEDNYEeieBf4kJpEPiQ _jApkMDNYEeieBf4kJpEPiQ" version="14.1.0.201808300808">
     <semanticResources>RichtextTestModel.afm</semanticResources>
     <semanticResources>RichtextTestModel.melodymodeller</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_iklTQDNYEeieBf4kJpEPiQ">
@@ -34,10 +34,10 @@
     </ownedViews>
   </viewpoint:DAnalysis>
   <diagram:DSemanticDiagram uid="_lcZN4DNYEeieBf4kJpEPiQ" name="[SDFB] Root System Function">
-    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_lcZN4TNYEeieBf4kJpEPiQ" source="DANNOTATION_CUSTOMIZATION_KEY">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_lcZN4TNYEeieBf4kJpEPiQ" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_lcZN4jNYEeieBf4kJpEPiQ"/>
     </ownedAnnotationEntries>
-    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_lcvzMDNYEeieBf4kJpEPiQ" source="GMF_DIAGRAMS">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_lcvzMDNYEeieBf4kJpEPiQ" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_lcvzMTNYEeieBf4kJpEPiQ" type="Sirius" element="_lcZN4DNYEeieBf4kJpEPiQ" measurementUnit="Pixel">
         <styles xmi:type="notation:DiagramStyle" xmi:id="_lcvzMjNYEeieBf4kJpEPiQ"/>
       </data>

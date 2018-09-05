@@ -24,7 +24,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.emf.ecore.xmi.XMIResource;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.sirius.business.api.session.CustomDataConstants;
@@ -32,23 +31,23 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.description.AnnotationEntry;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.DiagramHelper;
-import org.polarsys.capella.test.framework.api.BasicTestCase;
 import org.polarsys.capella.test.framework.helpers.IResourceHelpers;
 import org.polarsys.capella.test.migration.ju.helpers.MigrationHelper;
 
 /**
- * In 1.2.0 xmi:id is used as the main reference for representations.
- * In 1.3.0 uid is used as the main reference for representations.
+ * In 1.2.0 xmi:id is used as the main reference for representations. In 1.3.0 uid is used as the main reference for
+ * representations.
  * 
  * Migrating a model from 1.2.0 to 1.3.0 will set uid in 1.3.0 with the value of xmi:id in 1.2.0
  * 
  * Make sure:
  * 
  * DRepresentation.Uid.1.3.0 == DRepresentationDescriptor.RepPath.1.3.0 = DRepresentation.XmiId.1.2.0
+ * 
  * @author S0070513
  *
  */
-public class MigrateAirdFrom_120_To_130_PreservingRepresentationUid_TestCase extends BasicTestCase {
+public class MigrateAirdFrom_120_To_130_PreservingRepresentationUid_TestCase extends MigrateAirdAbstractTestCase {
   private IProject project;
   private static final String PROJECT_NAME = "120";
   private static final String AIRD_FILE_NAME = "120.aird";
@@ -78,24 +77,9 @@ public class MigrateAirdFrom_120_To_130_PreservingRepresentationUid_TestCase ext
   }
 
   private void keepTrackingXmiID120() {
-    Resource airdResource = getAirdResource();
-    try {
-      airdResource.load(null);
-      TreeIterator<EObject> resourceContentsIterator = airdResource.getAllContents();
-      while (resourceContentsIterator.hasNext()) {
-        EObject element = (EObject) resourceContentsIterator.next();
-        if (element instanceof DRepresentation) {
-          DRepresentation representation = (DRepresentation) element;
-          String name = representation.getName();
-          String xmiId = ((XMIResource) airdResource).getID(representation);
-          representationNameToXmiIDIn120.put(name, xmiId);
-        }
-      }
-    } catch (IOException e) {
-      e.printStackTrace();
-    } finally {
-      airdResource.unload();
-    }
+    // Manually keep tracking representation name vs its xmi:id value in 1.2.0
+    representationNameToXmiIDIn120.put("New State Machine and Capability Function Matrix", "_nzNbQK-OEeibHe3cCXTW2w");
+    representationNameToXmiIDIn120.put("[OAIB] Root Operational Activity", "_mqffsK-OEeibHe3cCXTW2w");
   }
 
   private Resource getAirdResource() {

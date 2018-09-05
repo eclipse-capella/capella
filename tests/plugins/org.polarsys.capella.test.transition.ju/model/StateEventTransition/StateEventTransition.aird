@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:org.polarsys.capella.core.data.capellacommon="http://www.polarsys.org/capella/core/common/1.2.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
-  <viewpoint:DAnalysis uid="_3fhdkRoQEee7Y7y_i2JAkQ" selectedViews="_3oAEIBoQEee7Y7y_i2JAkQ _3oS_EBoQEee7Y7y_i2JAkQ _3ocwEBoQEee7Y7y_i2JAkQ _3ovrABoQEee7Y7y_i2JAkQ _3pCl8BoQEee7Y7y_i2JAkQ _3pWH8BoQEee7Y7y_i2JAkQ _3ppC4BoQEee7Y7y_i2JAkQ" version="14.1.0.201808080808">
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:org.polarsys.capella.core.data.capellacommon="http://www.polarsys.org/capella/core/common/1.3.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
+  <viewpoint:DAnalysis uid="_3fhdkRoQEee7Y7y_i2JAkQ" selectedViews="_3oAEIBoQEee7Y7y_i2JAkQ _3oS_EBoQEee7Y7y_i2JAkQ _3ocwEBoQEee7Y7y_i2JAkQ _3ovrABoQEee7Y7y_i2JAkQ _3pCl8BoQEee7Y7y_i2JAkQ _3pWH8BoQEee7Y7y_i2JAkQ _3ppC4BoQEee7Y7y_i2JAkQ" version="14.1.0.201808300808">
     <semanticResources>StateEventTransition.melodymodeller</semanticResources>
     <semanticResources>StateEventTransition.afm</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_3oAEIBoQEee7Y7y_i2JAkQ">
@@ -30,10 +30,10 @@
     </ownedViews>
   </viewpoint:DAnalysis>
   <diagram:DSemanticDiagram uid="_8YGWEBoQEee7Y7y_i2JAkQ" name="[MSM] Default Region">
-    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_8YGWERoQEee7Y7y_i2JAkQ" source="DANNOTATION_CUSTOMIZATION_KEY">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_8YGWERoQEee7Y7y_i2JAkQ" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_8YGWEhoQEee7Y7y_i2JAkQ"/>
     </ownedAnnotationEntries>
-    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_8YGWFBoQEee7Y7y_i2JAkQ" source="GMF_DIAGRAMS">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_8YGWFBoQEee7Y7y_i2JAkQ" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_8YGWFRoQEee7Y7y_i2JAkQ" type="Sirius" element="_8YGWEBoQEee7Y7y_i2JAkQ" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="_8t94YhoQEee7Y7y_i2JAkQ" type="2002" element="_SNrj8B3PEeejjYO-zACrJg">
           <children xmi:type="notation:Node" xmi:id="_8uHCUBoQEee7Y7y_i2JAkQ" type="5006"/>
