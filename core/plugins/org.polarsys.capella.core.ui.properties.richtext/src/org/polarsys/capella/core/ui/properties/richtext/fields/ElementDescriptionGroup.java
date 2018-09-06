@@ -23,6 +23,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetWidgetFactory;
+import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.ef.command.ICommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
@@ -148,7 +149,7 @@ public abstract class ElementDescriptionGroup {
               owner.eSet(feature, editorText);
             }
           };
-          executeCommand(command);
+          executeCommand(command, owner, feature);
         }
       }
     });
@@ -161,7 +162,7 @@ public abstract class ElementDescriptionGroup {
    * 
    * @param command
    */
-  protected void executeCommand(final ICommand command) {
+  protected void executeCommand(final ICommand command, final EObject owner, final EStructuralFeature feature) {
     // Precondition
     if ((null == command)) {
       return;
@@ -187,7 +188,7 @@ public abstract class ElementDescriptionGroup {
         @SuppressWarnings("synthetic-access")
         @Override
         public Collection<?> getAffectedObjects() {
-          return Collections.singletonList(semanticElement);
+          return Collections.singletonList(owner);
         }
 
         /**
@@ -213,16 +214,19 @@ public abstract class ElementDescriptionGroup {
         @Override
         public void commandRolledBack() {
           IReadOnlySectionHandler roHandler = CapellaReadOnlyHelper.getReadOnlySectionHandler();
-          if ((roHandler != null) && roHandler.isLockedByOthers(semanticElement))
+          if ((roHandler != null) && roHandler.isLockedByOthers(owner))
             return;
           
           // Reload data >> refresh the UI.
-          loadData(semanticElement, semanticFeature);
+          loadData(owner, feature);
         }
       };
     }
     // Execute it against the TED.
-    TransactionHelper.getExecutionManager(semanticElement).execute(cmd);
+    ExecutionManager executionManager = TransactionHelper.getExecutionManager(owner);
+    if(executionManager != null) {
+        executionManager.execute(cmd);        
+    }
   }
 
   /**
