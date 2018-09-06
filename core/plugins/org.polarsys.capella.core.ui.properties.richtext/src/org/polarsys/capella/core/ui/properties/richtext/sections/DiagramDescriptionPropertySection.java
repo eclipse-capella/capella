@@ -72,7 +72,7 @@ public class DiagramDescriptionPropertySection extends AbstractSection {
      * @param textGroup
      */
     protected void createDescriptionWidget(TabbedPropertySheetWidgetFactory widgetFactory, Composite parent) {
-        descriptionGroup = new CapellaElementDescriptionGroup(parent, widgetFactory);
+        descriptionGroup = new CapellaElementDescriptionGroup(parent, widgetFactory, this);
     }
 
     /**
@@ -172,10 +172,10 @@ public class DiagramDescriptionPropertySection extends AbstractSection {
                 }
 
                 if (firstElement instanceof DRepresentation) {
-                    representation = new WeakReference<DRepresentation>((DRepresentation) firstElement);
+                    representation = new WeakReference<>((DRepresentation) firstElement);
                 } else if (firstElement instanceof IDDiagramEditPart) {
                     IDDiagramEditPart diagramEditPart = (IDDiagramEditPart) firstElement;
-                    representation = new WeakReference<DRepresentation>((DRepresentation) ((Diagram) diagramEditPart.getModel()).getElement());
+                    representation = new WeakReference<>((DRepresentation) ((Diagram) diagramEditPart.getModel()).getElement());
                 } else {
                     representation = null;
                 }
