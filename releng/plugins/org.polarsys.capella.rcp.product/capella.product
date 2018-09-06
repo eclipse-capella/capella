@@ -86,6 +86,7 @@
       <feature id="org.polarsys.kitalpha.report.ui.feature"/>
       <feature id="org.polarsys.kitalpha.resourcereuse.feature"/>
       <feature id="org.polarsys.kitalpha.resourcereuse.emfscheme.feature"/>
+      <feature id="org.polarsys.kitalpha.resourcereuse.emfscheme.ui.feature"/>
       <feature id="org.polarsys.kitalpha.resourcereuse.ui.feature"/>
       <feature id="org.polarsys.kitalpha.transposer.feature"/>
       <feature id="org.polarsys.kitalpha.richtext.widget.feature"/>

@@ -43,5 +43,6 @@ Require-Bundle: org.eclipse.core.runtime,
  org.polarsys.kitalpha.ad.metadata,
  org.polarsys.kitalpha.resourcereuse.ui,
  org.polarsys.kitalpha.resourcereuse.emfscheme,
+ org.polarsys.kitalpha.resourcereuse.emfscheme.ui,
  org.polarsys.kitalpha.resourcereuse.emfscheme.utils
 Bundle-ActivationPolicy: lazy
