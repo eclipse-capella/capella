@@ -64,7 +64,7 @@ public class CapellaDescriptionPropertySection extends AbstractSection {
         rootParentComposite.setLayout(new GridLayout());
         rootParentComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
 
-        descriptionGroup = new CapellaElementDescriptionGroup(rootParentComposite, (aTabbedPropertySheetPage != null) ? getWidgetFactory() : null);
+        descriptionGroup = new CapellaElementDescriptionGroup(rootParentComposite, (aTabbedPropertySheetPage != null) ? getWidgetFactory() : null, this);
     }
 
     /**
