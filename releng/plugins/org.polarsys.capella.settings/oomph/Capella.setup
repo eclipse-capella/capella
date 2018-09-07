@@ -310,7 +310,7 @@
         <repositoryList
             name="Oxygen">
           <repository
-              url="http://download.eclipse.org/modeling/amalgam/updates/milestones/1.9.0RC1/capella"/>
+              url="http://download.eclipse.org/modeling/amalgam/updates/stable/1.9.0-S20180903/capella"/>
         </repositoryList>
         <repositoryList
             name="Neon">
@@ -449,9 +449,9 @@
         <repositoryList
             name="Oxygen">
           <repository
-              url="https://ci.polarsys.org/kitalpha/job/Kitalpha_master/938/artifact/releng/plugins/org.polarsys.kitalpha.releng.runtime.core.updatesite/target/repository"/>
+              url="https://ci.polarsys.org/kitalpha/job/Kitalpha_master/967/artifact/releng/plugins/org.polarsys.kitalpha.releng.runtime.core.updatesite/target/repository"/>
           <repository
-              url="https://ci.polarsys.org/kitalpha/job/Kitalpha_master/938/artifact/releng/plugins/org.polarsys.kitalpha.releng.sdk.updatesite/target/repository"/>
+              url="https://ci.polarsys.org/kitalpha/job/Kitalpha_master/967/artifact/releng/plugins/org.polarsys.kitalpha.releng.sdk.updatesite/target/repository"/>
           <repository
               url="https://ci.eclipse.org/egf/job/tycho-egf-oxygen/lastSuccessfulBuild/artifact/releng/org.eclipse.egf.core.updatesite/target/repository"/>
         </repositoryList>
@@ -513,6 +513,12 @@
             name="Kitalpha-1.3.x">
           <requirement
               name="org.polarsys.kitalpha.massactions.feature.feature.group"/>
+          <requirement
+              name="org.polarsys.kitalpha.resourcereuse.feature.feature.group"/>
+          <requirement
+              name="org.polarsys.kitalpha.resourcereuse.emfscheme.feature.feature.group"/>
+          <requirement
+              name="org.polarsys.kitalpha.resourcereuse.ui.feature.feature.group"/>
         </targlet>
       </setupTask>
       <description>Capella master development</description>
