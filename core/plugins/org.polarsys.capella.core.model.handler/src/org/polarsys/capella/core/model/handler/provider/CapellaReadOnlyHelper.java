@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,43 +12,48 @@ package org.polarsys.capella.core.model.handler.provider;
 
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.emf.ecore.EObject;
-
 import org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper;
 import org.polarsys.capella.core.model.handler.ModelHandlerPlugin;
 
 /**
  */
 public class CapellaReadOnlyHelper {
+    
+  private static Object syncObj = new Object();
   /**
    * Read only section handler (shared for all instances).
    */
-  private static IReadOnlySectionHandler __readOnlySectionHandler;
-
+  private static IReadOnlySectionHandler readOnlySectionHandler;
+  
   /**
    * Flag used to know if IReadOnlySectionHandler has been lookup.
    */
-  private static boolean __alreadyLookup;
+  private static boolean alreadyLookup;
+  
+  private CapellaReadOnlyHelper () {
+      // To hide the implicit public one.
+  }
 
   /**
-   * @param element_p
-   * @param listener_p
+   * @param element
+   * @param listener
    */
-  public static IReadOnlySectionHandler register(EObject element_p, IReadOnlyListener listener_p) {
+  public static IReadOnlySectionHandler register(EObject element, IReadOnlyListener listener) {
     IReadOnlySectionHandler readOnlyHandler = getReadOnlySectionHandler();
-    if ((null != readOnlyHandler) && (null != element_p)) {
-      readOnlyHandler.register(element_p, listener_p);
+    if ((null != readOnlyHandler) && (null != element)) {
+      readOnlyHandler.register(element, listener);
     }
     return readOnlyHandler;
   }
 
   /**
-   * @param element_p
-   * @param listener_p
+   * @param element
+   * @param listener
    */
-  public static IReadOnlySectionHandler unregister(EObject element_p, IReadOnlyListener listener_p) {
+  public static IReadOnlySectionHandler unregister(EObject element, IReadOnlyListener listener) {
     IReadOnlySectionHandler readOnlyHandler = getReadOnlySectionHandler();
-    if ((null != readOnlyHandler) && (null != element_p)) {
-      readOnlyHandler.unregister(element_p, listener_p);
+    if ((null != readOnlyHandler) && (null != element)) {
+      readOnlyHandler.unregister(element, listener);
     }
     return readOnlyHandler;
   }
@@ -57,24 +62,31 @@ public class CapellaReadOnlyHelper {
    * Get the unique {@link IReadOnlySectionHandler}.
    */
   public static IReadOnlySectionHandler getReadOnlySectionHandler() {
-    if (!__alreadyLookup && (null == __readOnlySectionHandler)) {
-      __readOnlySectionHandler = getReadOnlySectionHandlerContributor();
-      __alreadyLookup = true;
+    synchronized (syncObj) {
+        if (!alreadyLookup && readOnlySectionHandler == null) {
+            readOnlySectionHandler = getContributedReadOnlySectionHandler();
+            alreadyLookup = true;
+        }
     }
-    return __readOnlySectionHandler;
+    return readOnlySectionHandler;
   }
 
   /**
    * Get the unique {@link IReadOnlySectionHandler}.
    */
-  private static IReadOnlySectionHandler getReadOnlySectionHandlerContributor() {
+  private static IReadOnlySectionHandler getContributedReadOnlySectionHandler() {
     // Load IReadOnlySectionHandler contributor if any.
     IConfigurationElement[] configurationElements =
         ExtensionPointHelper.getConfigurationElements(ModelHandlerPlugin.PLUGIN_ID, "readOnlySectionHandler"); //$NON-NLS-1$
-    // Loop over contributed IReadOnlySectionHandler contributor, must be only one.
+    // Loop over contributed IReadOnlySectionHandler and add them to the delegate.
     if (configurationElements.length > 0) {
-      return (IReadOnlySectionHandler) ExtensionPointHelper.createInstance(configurationElements[0], ExtensionPointHelper.ATT_CLASS);
+      ReadOnlySectionHandlerDelegate delegate = new ReadOnlySectionHandlerDelegate();
+      for(IConfigurationElement cfgElement : configurationElements){
+        delegate.addHandler((IReadOnlySectionHandler) ExtensionPointHelper.createInstance(cfgElement, ExtensionPointHelper.ATT_CLASS));
+      }
+      return delegate;
     }
+    // If no one is contributed, return null.
     return null;
   }
 }
