@@ -90,6 +90,10 @@
             class="org.polarsys.capella.core.libraries.provider.LibrariesDerivedSemanticResourceProvider">
       </derivedSemanticResourceProvider>
    </extension>
-
-
+   <extension
+         point="org.polarsys.capella.core.model.handler.readOnlySectionHandler">
+      <readOnlySectionHandler
+            class="org.polarsys.capella.core.libraries.provider.LibAwareReadOnlySectionHandler">
+      </readOnlySectionHandler>
+   </extension>
 </plugin>
