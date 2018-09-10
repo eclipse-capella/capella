@@ -34,6 +34,7 @@ import org.polarsys.capella.test.diagram.common.ju.api.AbstractDiagramTestCase;
 import org.polarsys.capella.test.diagram.common.ju.context.CommonDiagram;
 import org.polarsys.capella.test.diagram.common.ju.context.DiagramContext;
 import org.polarsys.capella.test.framework.context.SessionContext;
+import org.polarsys.capella.test.framework.helpers.TestHelper;
 
 /**
  * Tests the common diagram tools on the IFE sample model.
@@ -73,7 +74,7 @@ public class CommonToolsTest extends AbstractDiagramTestCase {
     s.getTransactionalEditingDomain().getCommandStack().execute(new RecordingCommand(ed) {
       @Override
       protected void doExecute() {
-        Project proj = (Project) s.getSemanticResources().iterator().next().getContents().get(0);
+        Project proj = (Project) TestHelper.getSemanticResource(s).getContents().get(0);
         pv = CapellacoreFactory.eINSTANCE.createBooleanPropertyValue();
         pvg = CapellacoreFactory.eINSTANCE.createPropertyValueGroup();
         pvg.getOwnedPropertyValues().add(CapellacoreFactory.eINSTANCE.createBooleanPropertyValue());
