@@ -10,9 +10,7 @@
 
 <br>
 = How to add an existing Capella project as an example? =
-# The sample project must be in the form of: '''toto/toto.zip'''
-# The sample project is placed in '''CAPELLA_INSTALLATION_PATH/Samples/toto/toto.zip'''
+# The sample project must be a zip containing the project folder
+# The sample project shall be placed in sample folder like '''CAPELLA_INSTALLATION_PATH/samples/model.zip''' or located under a sub folder like '''CAPELLA_INSTALLATION_PATH/samples/model/model.zip'''
 # The import sample wizard dialog will propose a list of available examples including the newly added ones.
 [[Image:Images/3.8.%20How%20to%20add%20new%20Capella%20Project%20Example.png]]
-
-   

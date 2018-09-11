@@ -12,6 +12,7 @@ package org.polarsys.capella.core.platform.sirius.ui.project.sample;
 
 import java.io.BufferedInputStream;
 import java.io.File;
+import java.io.FilenameFilter;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -116,7 +117,7 @@ public class SampleModelWizard extends AbstractExampleInstallerWizard {
     Location location = Platform.getInstallLocation();
     URL url = location.getURL();
     URI uri = URI.createURI(url.toString());
-    URI sampleLocation = uri.trimSegments(2).appendSegment("Samples");
+    URI sampleLocation = uri.trimSegments(2).appendSegment("samples");
     result.add(sampleLocation);
     return result;
   }
@@ -153,14 +154,16 @@ public class SampleModelWizard extends AbstractExampleInstallerWizard {
 
   protected Collection<File> getOwnedZips(URI sampleLocation) {
     Collection<File> zips = new ArrayList<File>();
-
-    File file = new File(sampleLocation.toFileString());
-    if (file.exists() && file.isDirectory()) {
-      for (File fil : file.listFiles()) {
-        if (fil.isDirectory()) {
-          for (File zip : fil.listFiles(new ZipFilenameFilter())) {
+    FilenameFilter zipFilter = new ZipFilenameFilter();
+    File folder = new File(sampleLocation.toFileString());
+    if (folder.exists() && folder.isDirectory()) {
+      for (File file : folder.listFiles()) {
+        if (file.isDirectory()) {
+          for (File zip : file.listFiles(zipFilter)) {
             zips.add(zip);
           }
+        } else if (zipFilter.accept(file.getParentFile(), file.getName())) {
+          zips.add(file);
         }
       }
     }
