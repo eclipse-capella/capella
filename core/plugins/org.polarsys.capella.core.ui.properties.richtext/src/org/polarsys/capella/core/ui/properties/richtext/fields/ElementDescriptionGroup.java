@@ -65,7 +65,7 @@ public abstract class ElementDescriptionGroup {
 
   protected Composite parentComposite;
 
-  private static final String EXISTED_EDITOR_TEXT = "The description is currenty opened in an editor. Please use this editor to edit your description."; //$NON-NLS-1$
+  private static final String EXISTED_EDITOR_TEXT = "The description is currently opened in an editor. Please use this editor to edit your description."; //$NON-NLS-1$
 
   /**
    * @param parent
@@ -330,5 +330,9 @@ public abstract class ElementDescriptionGroup {
     }
     // Recalculate the layout
     parentComposite.layout(true);
+  }
+  
+  public boolean shouldRefresh(){
+    return descriptionTextField == null || !descriptionTextField.hasFocus();
   }
 }
