@@ -46,14 +46,17 @@ public class SwitchFunctionalCategoryHidingInternalEdgesTestCase extends Abstrac
 
     diagramContext.hasView(EXCHANGE_CATEGORY_1);
     
+    // The internal functional chain should be removed
     Assert.assertFalse("The internal functional chain should be removed", 
         diagramContext.hasEdge(PORT_OUT_INTERNAL_FUNCTIONAL_CHAIN_IN_SYSTEM_FUNCTION_4, 
             PORT_IN_INTERNAL_FUNCTIONAL_CHAIN_IN_SYSTEM_FUNCTION_4, 
             INTERNAL_FUNCTIONAL_CHAIN_IN_SYSTEM_FUNCTION_4));
     
+    // The port of switched exchange edge is hidden
     diagramContext.hasHiddenView(PORT_OUT_INTERNAL_FUNCTIONAL_CHAIN_IN_SYSTEM_FUNCTION_4);
     
-    diagramContext.hasHiddenView(FUNCTIONAL_EXCHANGE_2);
+    // The exchange edge is removed after switching
+    diagramContext.hasntView(FUNCTIONAL_EXCHANGE_2);
     
     // Switch again to functional exchange
     new SwitchTool(diagramContext, IToolNameConstants.TOOL_SAB_INSERT_REMOVE_EXCHANGE_CATEGORIES)

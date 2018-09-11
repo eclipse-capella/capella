@@ -120,6 +120,7 @@ import org.polarsys.capella.core.data.cs.InterfaceImplementation;
 import org.polarsys.capella.core.data.cs.InterfaceUse;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.cs.PhysicalLink;
+import org.polarsys.capella.core.data.cs.PhysicalLinkCategory;
 import org.polarsys.capella.core.data.cs.PhysicalPort;
 import org.polarsys.capella.core.data.ctx.ActorPkg;
 import org.polarsys.capella.core.data.ctx.CtxFactory;
@@ -129,6 +130,7 @@ import org.polarsys.capella.core.data.ctx.SystemAnalysis;
 import org.polarsys.capella.core.data.epbs.ConfigurationItem;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
+import org.polarsys.capella.core.data.fa.ComponentExchangeCategory;
 import org.polarsys.capella.core.data.fa.ComponentExchangeKind;
 import org.polarsys.capella.core.data.fa.ComponentFunctionalAllocation;
 import org.polarsys.capella.core.data.fa.ComponentPort;
@@ -3274,8 +3276,32 @@ public class CsServices {
   public boolean isValidComponentExchangeEdge(EObject communication, DSemanticDecorator source,
       DSemanticDecorator target) {
     if (communication instanceof ComponentExchange) {
-      return isValidLinkEdge(getComponentExchangeWrapper((ComponentExchange) communication), source, target, true);
+      return isValidLinkEdge(getComponentExchangeWrapper((ComponentExchange) communication), source, target, true) && !isComponentExchangeCategoryEdgeDisplayed((ComponentExchange) communication, source, target);
     }
+    return false;
+  }
+  
+  public boolean isComponentExchangeCategoryEdgeDisplayed(ComponentExchange exchange, DSemanticDecorator source, DSemanticDecorator target) {
+    Set<DEdge> edgesOfSource = getEdgesOnOwnedBoderedNodesOfContainer(source);
+    Set<DEdge> edgesOfTarget = getEdgesOnOwnedBoderedNodesOfContainer(target);
+    
+    if (edgesOfTarget.isEmpty() || edgesOfSource.isEmpty()) {
+      return false;
+    }
+
+    edgesOfTarget.retainAll(edgesOfSource);
+    Set<DEdge> commonEdges = edgesOfTarget;
+
+    for (DEdge edge : commonEdges) {
+      EObject edgeTarget = edge.getTarget();
+      if (edgeTarget instanceof ComponentExchangeCategory) {
+        ComponentExchangeCategory category = (ComponentExchangeCategory) edgeTarget;
+        if (category.getExchanges().contains(exchange)) {
+          return true;
+        }
+      }
+    }
+
     return false;
   }
 
@@ -3315,7 +3341,44 @@ public class CsServices {
    * Returns whether the edge is the edge which should be displayed for a Connection.
    */
   public boolean isValidPhysicalLinkEdge(PhysicalLink link, DSemanticDecorator source, DSemanticDecorator target) {
-    return isValidLinkEdge(getPhysicalLinkWrapper(link), source, target, true);
+    return isValidLinkEdge(getPhysicalLinkWrapper(link), source, target, true) && !isPhysicalCategoryEdgeDisplayed(link, source, target);
+  }
+  
+  public boolean isPhysicalCategoryEdgeDisplayed(PhysicalLink link, DSemanticDecorator source, DSemanticDecorator target) {
+    Set<DEdge> edgesOfSource = getEdgesOnOwnedBoderedNodesOfContainer(source);
+    Set<DEdge> edgesOfTarget = getEdgesOnOwnedBoderedNodesOfContainer(target);
+    
+
+    if (edgesOfTarget.isEmpty() || edgesOfSource.isEmpty()) {
+      return false;
+    }
+
+    edgesOfTarget.retainAll(edgesOfSource);
+    Set<DEdge> commonEdges = edgesOfTarget;
+
+    for (DEdge edge : commonEdges) {
+      EObject edgeTarget = edge.getTarget();
+      if (edgeTarget instanceof PhysicalLinkCategory) {
+        PhysicalLinkCategory category = (PhysicalLinkCategory) edgeTarget;
+        if (category.getLinks().contains(link)) {
+          return true;
+        }
+      }
+    }
+
+    return false;
+  }
+
+  private Set<DEdge> getEdgesOnOwnedBoderedNodesOfContainer(DSemanticDecorator source) {
+    Set<DEdge> edges = new HashSet<>();
+    if (source instanceof DNode) {
+      AbstractDNode portContainer = (AbstractDNode) source.eContainer();
+      for (DNode borderedNode : portContainer.getOwnedBorderedNodes()) {
+        edges.addAll(borderedNode.getOutgoingEdges());
+        edges.addAll(borderedNode.getIncomingEdges());
+      }
+    }
+    return edges;
   }
 
   /**

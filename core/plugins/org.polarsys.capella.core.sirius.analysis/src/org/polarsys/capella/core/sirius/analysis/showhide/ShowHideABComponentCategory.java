@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -201,8 +201,8 @@ public class ShowHideABComponentCategory extends ShowHideABComponentExchange {
   @Override
   protected boolean hideInsteadOfRemoveView(DDiagramElement element_p, DiagramContext context_p) {
     EObject target = element_p.getTarget();
-    // We want to hide (not remove views) of CE and CP if diagram is synchronized
-    if ((target != null) && ((target instanceof ComponentExchange) || (target instanceof ComponentPort))) {
+    // We want to hide (not remove views) of the port if diagram is synchronized
+    if (target instanceof ComponentPort) {
       return getContent().getDDiagram().isSynchronized();
     }
     return super.hideInsteadOfRemoveView(element_p, context_p);

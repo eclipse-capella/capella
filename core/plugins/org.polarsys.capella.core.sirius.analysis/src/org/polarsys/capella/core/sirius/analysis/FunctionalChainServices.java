@@ -50,6 +50,7 @@ import org.polarsys.capella.core.commands.preferences.util.PreferencesHelper;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.AbstractFunctionalChainContainer;
+import org.polarsys.capella.core.data.fa.ExchangeCategory;
 import org.polarsys.capella.core.data.fa.FaFactory;
 import org.polarsys.capella.core.data.fa.FaPackage;
 import org.polarsys.capella.core.data.fa.FunctionalChain;
@@ -175,21 +176,21 @@ public class FunctionalChainServices {
       }
     }
 
-    Set<DEdge> visibleInternalLinks = new HashSet<>();
     boolean isInOperationalAnalysis =
         BlockArchitectureExt.getRootBlockArchitecture(((DSemanticDiagram) diagram).getTarget()) instanceof OperationalAnalysis;
     if (!isInOperationalAnalysis) {
       for (Entry<FunctionalChain, DNode> entry : functionalChainToNodeMap.entrySet()) {
         FunctionalChain functionalChain = entry.getKey();
-        Set<DEdge> internalLinks = computeVisibleInternalLinks(functionalChain, functionalExchangeToEdgesMap);
-        visibleInternalLinks.addAll(internalLinks);
+        Set<DEdge> internalLinks = createNecessaryInternalLinks(functionalChain, functionalExchangeToEdgesMap);
       }
     }
 
-    // Remove all internal links that are not visible.
-    for (Set<DEdge> edges : functionalChainToEdgesMap.values()) {
+    // Remove all internal links that are not valid.
+    for (Entry<FunctionalChain, Set<DEdge>> entry  : functionalChainToEdgesMap.entrySet()) {
+      FunctionalChain chain = entry.getKey();
+      Set<DEdge> edges = entry.getValue();
       for (DEdge edge : edges) {
-        if (!visibleInternalLinks.contains(edge)) {
+        if (!isValidInternalLinkEdge(chain, edge.getSourceNode(), edge.getTargetNode())) {
           DiagramServices.getDiagramServices().removeEdgeView(edge);
         }
       }
@@ -455,13 +456,13 @@ public class FunctionalChainServices {
 	}
 
 	/**
-	 * Get existing internal links or create new ones if not existing.
+	 * Create new internal links for the functional chain and related functional exchanges if not already existing.
 	 * @param functionalChain
 	 * @param displayedFunctionalExchanges
 	 * @return
 	 */
-	private Set<DEdge> computeVisibleInternalLinks(FunctionalChain functionalChain, Map<FunctionalExchange, Set<DEdge>> displayedFunctionalExchanges) {
-		Set<DEdge> internalLinks = new HashSet<>();
+	private Set<DEdge> createNecessaryInternalLinks(FunctionalChain functionalChain, Map<FunctionalExchange, Set<DEdge>> displayedFunctionalExchanges) {
+		Set<DEdge> newInternalLinks = new HashSet<>();
 
 		// iterate over involved functional exchange
 		for (FunctionalChainInvolvement involvement : FunctionalChainExt.getFlatInvolvementsOf(functionalChain, FaPackage.Literals.FUNCTIONAL_EXCHANGE)) {
@@ -494,9 +495,8 @@ public class FunctionalChainServices {
                 DEdge internalLink = getExistingInternalLink(internalLinkSourceNode, internalLinkTargetNode, functionalChain);
                 if (internalLink == null) {
                   internalLink = createInternalLink(internalLinkSourceNode, internalLinkTargetNode, functionalChain);
+                  newInternalLinks.add(internalLink);
                 }
-                internalLinks.add(internalLink);
-              
               }
 						}
 					}
@@ -519,8 +519,8 @@ public class FunctionalChainServices {
 				        DEdge internalLink = getExistingInternalLink(internalLinkSourceNode, internalLinkTargetNode, functionalChain);
 				        if (internalLink == null) {
 				          internalLink = createInternalLink(internalLinkSourceNode, internalLinkTargetNode, functionalChain);
+				          newInternalLinks.add(internalLink);
 				        }
-                internalLinks.add(internalLink);
 				      }
 				    }
 				  }
@@ -528,8 +528,7 @@ public class FunctionalChainServices {
 			}
 		}
 
-		internalLinks.remove(null);
-		return internalLinks;
+		return newInternalLinks;
 	}
 
 	/**
@@ -707,7 +706,7 @@ public class FunctionalChainServices {
 
 		 return result;
 	 }
-
+	 
 	 public void customizeFunctionalExchangeEdgeStyle(DEdge edge, RGBValues color) {
 		 // get current style size of an edge
 		 EdgeStyle edgeStyle = edge.getOwnedStyle();
