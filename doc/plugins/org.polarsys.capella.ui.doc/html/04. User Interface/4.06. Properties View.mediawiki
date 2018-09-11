@@ -81,6 +81,27 @@ Right-clicking on the hyperlinks to open the referenced diagram.
  
 [[Image:Images/4.06.%20Properties%20View_html_35d5a95e.png]]
 
+----
+
+'''Disable Richtext'''
+
+In case you encounter some blocking issues using the rich text editor, you can disable rich text which will be replaced by a simple field to edit directly XHTML, to do so please open the eclipse.ini file located
+in the Capella installation directory and add the java property -Ddisable.nebula.richtext=true as shown below:
+
+
+ -startup
+ ...
+ --launcher.library
+ ...
+ -nl
+ en
+ -vmargs
+ -Dosgi.requiredJavaVersion=xx
+ -Xms1000m
+ -Xmx3000m
+ -Xss4m
+ '''-Ddisable.nebula.richtext=true'''
+
 
 {| border="1"
 |-
