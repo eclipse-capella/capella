@@ -82,4 +82,17 @@ public class RichtextManager {
     }
   }
   
+  /**
+   * Returns whether the nebula rich text is enable or disabled by the end-user.
+   * It's provided as a fallback solution is case of issues with richtext.
+   * By default richtext is enabled.
+   * @return
+   */
+  public boolean isRichTextEnabled() {
+      String property = System.getProperty("disable.nebula.richtext");
+      if(property != null) {
+          return !Boolean.valueOf(property);            
+      }
+      return true;
+  }
 }
