@@ -148,26 +148,27 @@ public class CapellaDescriptionPropertySection extends AbstractSection {
      *      org.eclipse.jface.viewers.ISelection)
      */
     @Override
-    public void setInput(IWorkbenchPart part, ISelection selection) {
-        if (selection instanceof StructuredSelection) {
-            EObject elt = CapellaAdapterHelper
-                    .resolveSemanticObject(((StructuredSelection) selection).getFirstElement());
-            if (elt instanceof CapellaElement && elt.eClass().equals(CsPackage.eINSTANCE.getPart())) {
-                boolean allowMultiplePart = TriStateBoolean.True
-                        .equals(CapellaProjectHelper.isReusableComponentsDriven((Part) elt));
-                if (!allowMultiplePart) {
-                    AbstractType type = ((Part) elt).getAbstractType();
-                    if ((type != null) && !(type instanceof ConfigurationItem)) {
-                        super.setInput(part, new StructuredSelection(type));
-                        loadData((CapellaElement) type);
-                        return;
-                    }
-                }
-                loadData((CapellaElement) elt);
+  public void setInput(IWorkbenchPart part, ISelection selection) {
+    if (selection instanceof StructuredSelection) {
+      EObject elt = CapellaAdapterHelper.resolveSemanticObject(((StructuredSelection) selection).getFirstElement());
+      if (elt instanceof CapellaElement) {
+        if (elt.eClass().equals(CsPackage.eINSTANCE.getPart())) {
+          boolean allowMultiplePart = TriStateBoolean.True
+              .equals(CapellaProjectHelper.isReusableComponentsDriven((Part) elt));
+          if (!allowMultiplePart) {
+            AbstractType type = ((Part) elt).getAbstractType();
+            if ((type != null) && !(type instanceof ConfigurationItem)) {
+              super.setInput(part, new StructuredSelection(type));
+              loadData((CapellaElement) type);
+              return;
             }
+          }
         }
-        super.setInput(part, selection);
+        loadData((CapellaElement) elt);
+      }
     }
+    super.setInput(part, selection);
+  }
 
     /**
      * @see org.eclipse.jface.viewers.IFilter#select(java.lang.Object)
