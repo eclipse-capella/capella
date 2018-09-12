@@ -17,7 +17,7 @@
                   lang="Java"
                   mode="Batch"
                   name="DWF_D_48 - Dangling LinkedText hyperlinks in OpaqueExpressions"
-                  severity="WARNING"
+                  severity="ERROR"
                   statusCode="1">
               <message>
                  OpaqueExpression {0} contains one or more dangling element references
