@@ -7,7 +7,6 @@
       </appInfo>
       <documentation>
          Read Only section handler.
-This extension mustbe contributed only once.
       </documentation>
    </annotation>
 
