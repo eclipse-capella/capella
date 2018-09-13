@@ -77,6 +77,22 @@
             </basicQuery>
          </categoryQuery>
       </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.sirius.contextualElement"
+            isTopLevel="true"
+            name="Contextual Elements">
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.sirius.annotation.eoi.RepresentationToContextualElement">
+            </basicQuery>
+         </categoryQuery>
+         <availableForType
+               class="org.eclipse.sirius.viewpoint.DRepresentationDescriptor">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencedElementBrowser">
+         </targetBrowserId>
+      </category>
    </extension>
 
 </plugin>
