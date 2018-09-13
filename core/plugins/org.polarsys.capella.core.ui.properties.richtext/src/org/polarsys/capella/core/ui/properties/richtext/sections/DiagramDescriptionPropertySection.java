@@ -34,6 +34,8 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetWidgetFactory;
 import org.polarsys.capella.core.model.handler.provider.CapellaReadOnlyHelper;
 import org.polarsys.capella.core.model.handler.provider.IReadOnlySectionHandler;
 import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticField;
+import org.polarsys.capella.core.ui.properties.fields.TextAreaValueGroup;
+import org.polarsys.capella.core.ui.properties.richtext.RichtextManager;
 import org.polarsys.capella.core.ui.properties.richtext.fields.CapellaElementDescriptionGroup;
 import org.polarsys.capella.core.ui.properties.sections.AbstractSection;
 
@@ -47,6 +49,11 @@ public class DiagramDescriptionPropertySection extends AbstractSection {
     private WeakReference<DRepresentation> representation;
 
     protected CapellaElementDescriptionGroup descriptionGroup;
+    
+    /**
+     * In case Richtext is disabled, we replace Richtext widget by this text group.
+     */
+    private TextAreaValueGroup descriptionFallbackGroup;
 
     /**
      * {@inheritDoc}
@@ -71,9 +78,14 @@ public class DiagramDescriptionPropertySection extends AbstractSection {
      * @param widgetFactory
      * @param textGroup
      */
-    protected void createDescriptionWidget(TabbedPropertySheetWidgetFactory widgetFactory, Composite parent) {
-        descriptionGroup = new CapellaElementDescriptionGroup(parent, widgetFactory);
+  protected void createDescriptionWidget(TabbedPropertySheetWidgetFactory widgetFactory, Composite parent) {
+    if (RichtextManager.getInstance().isRichTextEnabled()) {
+      descriptionGroup = new CapellaElementDescriptionGroup(parent, widgetFactory, this);
+    } else {
+      descriptionFallbackGroup = new TextAreaValueGroup(rootParentComposite, "", getWidgetFactory(), true);
+      descriptionFallbackGroup.setDisplayedInWizard(isDisplayedInWizard());
     }
+  }
 
     /**
      * {@inheritDoc}
@@ -136,7 +148,9 @@ public class DiagramDescriptionPropertySection extends AbstractSection {
 
         if (descriptionGroup != null) {
             descriptionGroup.loadData(representation.get(), DescriptionPackage.Literals.DOCUMENTED_ELEMENT__DOCUMENTATION);
-        }
+        }else if(descriptionFallbackGroup != null) {
+          descriptionFallbackGroup.loadData(representation.get(), DescriptionPackage.Literals.DOCUMENTED_ELEMENT__DOCUMENTATION);
+      }
     }
 
     @Override
@@ -172,10 +186,10 @@ public class DiagramDescriptionPropertySection extends AbstractSection {
                 }
 
                 if (firstElement instanceof DRepresentation) {
-                    representation = new WeakReference<DRepresentation>((DRepresentation) firstElement);
+                    representation = new WeakReference<>((DRepresentation) firstElement);
                 } else if (firstElement instanceof IDDiagramEditPart) {
                     IDDiagramEditPart diagramEditPart = (IDDiagramEditPart) firstElement;
-                    representation = new WeakReference<DRepresentation>((DRepresentation) ((Diagram) diagramEditPart.getModel()).getElement());
+                    representation = new WeakReference<>((DRepresentation) ((Diagram) diagramEditPart.getModel()).getElement());
                 } else {
                     representation = null;
                 }
@@ -201,6 +215,9 @@ public class DiagramDescriptionPropertySection extends AbstractSection {
      */
     @Override
     public List<AbstractSemanticField> getSemanticFields() {
+      if(descriptionFallbackGroup != null) {
+        return Collections.singletonList(descriptionFallbackGroup);
+      }
         return Collections.emptyList();
     }
     
@@ -217,5 +234,4 @@ public class DiagramDescriptionPropertySection extends AbstractSection {
         descriptionGroup.aboutToBeShown();
       super.aboutToBeShown();
     }
-    
 }

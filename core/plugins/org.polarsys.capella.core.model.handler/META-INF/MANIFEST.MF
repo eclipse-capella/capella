@@ -8,11 +8,11 @@ Require-Bundle: com.google.guava,
  org.eclipse.core.runtime,
  org.eclipse.sirius.diagram,
  org.eclipse.sirius.table,
- org.polarsys.capella.common.data.helpers,
+ org.polarsys.kitalpha.ad.metadata.model.edit,
  org.polarsys.capella.core.data.gen;visibility:=reexport,
  org.polarsys.capella.core.data.gen.edit,
- org.polarsys.kitalpha.ad.metadata.model.edit,
- org.polarsys.capella.common.libraries.gen
+ org.polarsys.capella.common.data.helpers,
+ org.polarsys.capella.common.libraries
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.model.handler,

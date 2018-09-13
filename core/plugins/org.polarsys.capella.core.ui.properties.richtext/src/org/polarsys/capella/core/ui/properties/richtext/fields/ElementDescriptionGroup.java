@@ -13,6 +13,10 @@ package org.polarsys.capella.core.ui.properties.richtext.fields;
 import java.util.Collection;
 import java.util.Collections;
 
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.swt.SWT;
@@ -22,7 +26,10 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.ui.progress.UIJob;
+import org.eclipse.ui.views.properties.tabbed.ISection;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetWidgetFactory;
+import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.ef.command.ICommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
@@ -30,6 +37,7 @@ import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.core.model.handler.provider.CapellaReadOnlyHelper;
 import org.polarsys.capella.core.model.handler.provider.IReadOnlySectionHandler;
 import org.polarsys.capella.core.ui.properties.helpers.NotificationHelper;
+import org.polarsys.capella.core.ui.properties.richtext.CapellaUIPropertiesRichtextPlugin;
 import org.polarsys.capella.core.ui.properties.richtext.RichtextManager;
 import org.polarsys.kitalpha.richtext.common.intf.MDERichTextWidget;
 import org.polarsys.kitalpha.richtext.common.intf.SaveStrategy;
@@ -40,6 +48,9 @@ import org.polarsys.kitalpha.richtext.widget.helper.MDERichtextWidgetHelper;
  * @author Joao Barata
  */
 public abstract class ElementDescriptionGroup {
+  
+    
+  private static final String FAMILY_DEFERRED_REFRESH = CapellaUIPropertiesRichtextPlugin.PLUGIN_ID + ".refreshJobFamily";
 
   /**
    * Current edited semantic element.
@@ -50,6 +61,11 @@ public abstract class ElementDescriptionGroup {
    * Handle semantic element's feature handled by this field.
    */
   protected EStructuralFeature semanticFeature;
+  
+  /**
+   * The section where this element is created.
+   */
+  private ISection section;
 
   /**
    * Text widget.
@@ -70,7 +86,7 @@ public abstract class ElementDescriptionGroup {
    * @param parent
    * @param widgetFactory
    */
-  public ElementDescriptionGroup(Composite parent, TabbedPropertySheetWidgetFactory widgetFactory) {
+  public ElementDescriptionGroup(Composite parent, TabbedPropertySheetWidgetFactory widgetFactory, ISection section) {
     super();
 
     parentComposite = parent;
@@ -88,7 +104,7 @@ public abstract class ElementDescriptionGroup {
       }
       @Override
       protected void checkSubclass() {
-        return;
+          // Do nothing
       }
     };
     if (widgetFactory != null) {
@@ -98,6 +114,8 @@ public abstract class ElementDescriptionGroup {
     descriptionContainer.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
 
     descriptionTextField = createDescriptionField(descriptionContainer);
+    
+    this.section = section;
   }
 
   /**
@@ -148,7 +166,7 @@ public abstract class ElementDescriptionGroup {
               owner.eSet(feature, editorText);
             }
           };
-          executeCommand(command);
+          executeCommand(command, owner, feature);
         }
       }
     });
@@ -161,7 +179,7 @@ public abstract class ElementDescriptionGroup {
    * 
    * @param command
    */
-  protected void executeCommand(final ICommand command) {
+  protected void executeCommand(final ICommand command, final EObject owner, final EStructuralFeature feature) {
     // Precondition
     if ((null == command)) {
       return;
@@ -187,7 +205,7 @@ public abstract class ElementDescriptionGroup {
         @SuppressWarnings("synthetic-access")
         @Override
         public Collection<?> getAffectedObjects() {
-          return Collections.singletonList(semanticElement);
+          return Collections.singletonList(owner);
         }
 
         /**
@@ -213,25 +231,57 @@ public abstract class ElementDescriptionGroup {
         @Override
         public void commandRolledBack() {
           IReadOnlySectionHandler roHandler = CapellaReadOnlyHelper.getReadOnlySectionHandler();
-          if ((roHandler != null) && roHandler.isLockedByOthers(semanticElement))
+          if ((roHandler != null) && roHandler.isLockedByOthers(owner))
             return;
           
           // Reload data >> refresh the UI.
-          loadData(semanticElement, semanticFeature);
+          loadData(owner, feature);
         }
       };
     }
     // Execute it against the TED.
-    TransactionHelper.getExecutionManager(semanticElement).execute(cmd);
+    ExecutionManager executionManager = TransactionHelper.getExecutionManager(owner);
+    if(executionManager != null) {
+        executionManager.execute(cmd);        
+    }
   }
 
   /**
    * @param enabled
    */
   public void setEnabled(boolean enabled) {
-    descriptionTextField.setEditable(enabled);
+      try {
+          if(descriptionTextField.isReady()) {
+              descriptionTextField.setEditable(enabled);
+          }else {
+              scheduleDeferredRefresh();
+          }
+      }catch (Exception e) {
+          // If setEditable throws an exception, we schedule a deferred refresh
+          scheduleDeferredRefresh();
+    }
     descriptionContainer.setEnabled(enabled);
   }
+
+  private void scheduleDeferredRefresh() {
+    Job[] jobs = Job.getJobManager().find(FAMILY_DEFERRED_REFRESH);
+    if(section != null && jobs.length == 0) {
+        UIJob job = new UIJob("Deferred Section Refresh") {
+            
+            @Override
+            public IStatus runInUIThread(IProgressMonitor monitor) {
+                section.refresh();
+                return Status.OK_STATUS;
+            }
+            
+            @Override
+            public boolean belongsTo(Object family) {
+                return FAMILY_DEFERRED_REFRESH.equals(family);
+            }
+        };
+        job.schedule(1000);        
+    }
+}
 
   /**
    * @param element
