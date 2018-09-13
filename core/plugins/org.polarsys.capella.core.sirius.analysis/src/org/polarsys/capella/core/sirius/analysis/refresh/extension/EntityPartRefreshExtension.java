@@ -28,7 +28,7 @@ public class EntityPartRefreshExtension extends AbstractRefreshExtension impleme
 	 */
 	public void beforeRefresh(DDiagram diagram_p) 
 	{
-		CsServices.getService().refreschEntitiesArchitecture(getComponentMapping(diagram_p), diagram_p);  
+		CsServices.getService().refreshEntitiesArchitecture(getComponentMapping(diagram_p), diagram_p);  
 	}
 
 	/**

@@ -58,7 +58,7 @@ public class EntityArchitectureBlankRefreshExtension extends AbstractRefreshExte
     // Reorder elements in best containers
     // -------------------------------------
     try {
-      CsServices.getService().refreschEntitiesArchitecture(getComponentMapping(diagram), diagram);
+      CsServices.getService().refreshEntitiesArchitecture(getComponentMapping(diagram), diagram);
     } catch (Exception e) {
       Logger.getLogger(IReportManagerDefaultComponents.DIAGRAM).error(Messages.RefreshExtension_ErrorOnReordering, e);
     }
