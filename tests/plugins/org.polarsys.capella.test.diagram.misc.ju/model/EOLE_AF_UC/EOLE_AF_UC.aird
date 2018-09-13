@@ -8109,7 +8109,7 @@
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_xDxagmggEeWAz8zv5hFgEA" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_xDxag2ggEeWAz8zv5hFgEA"/>
     </ownedAnnotationEntries>
-    <ownedDiagramElements xmi:type="diagram:DNode" uid="_u5jo0NRWEd6hC4Vp4U-AQQ" name="TemperatureFunctionalChain (incomplete)" tooltipText="" width="2" height="2" resizeKind="NSEW">
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_u5jo0NRWEd6hC4Vp4U-AQQ" name="TemperatureFunctionalChain" tooltipText="" width="2" height="2" resizeKind="NSEW">
       <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="EOLE_AF_UC.melodymodeller#cb3df51b-2d90-44a3-bec5-86082dbedd12"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChain" href="EOLE_AF_UC.melodymodeller#cb3df51b-2d90-44a3-bec5-86082dbedd12"/>
       <ownedStyle xmi:type="diagram:Square" uid="_oqwBwA0ZEeCx_oK3y2koig" borderSize="1" borderSizeComputationExpression="1" width="2" height="2" color="24,114,248">

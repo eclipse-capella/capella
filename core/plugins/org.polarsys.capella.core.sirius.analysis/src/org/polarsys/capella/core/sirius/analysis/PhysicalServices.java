@@ -50,6 +50,8 @@ import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.helpers.SimpleOrientedGraph;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
 import org.polarsys.capella.core.business.queries.capellacore.BusinessQueriesProvider;
+import org.polarsys.capella.core.commands.preferences.service.ScopedCapellaPreferencesStore;
+import org.polarsys.capella.core.commands.preferences.util.PreferencesHelper;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellacore.InvolvedElement;
 import org.polarsys.capella.core.data.cs.AbstractActor;
@@ -88,6 +90,7 @@ import org.polarsys.capella.core.model.helpers.PhysicalComponentExt;
 import org.polarsys.capella.core.model.helpers.PhysicalPathExt;
 import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
 import org.polarsys.capella.core.sirius.analysis.constants.MappingConstantsHelper;
+import org.polarsys.capella.core.sirius.analysis.preferences.DiagramsPreferencePage;
 import org.polarsys.capella.core.sirius.analysis.tool.HashMapSet;
 
 /**
@@ -1194,38 +1197,42 @@ public class PhysicalServices {
   }
 
   public boolean isCompletePhysicalPath(PhysicalPath path, DDiagram diagram) {
-    Set<PhysicalLink> visibleLinks = new HashSet<>();
+    Collection<PhysicalLink> physicalLinksOnThePath = PhysicalPathExt.getFlatPhysicalLinks(path);
+
+    int numberOfVisibleRelatedPLEdges = 0;
+
     for (DEdge anEdge : diagram.getEdges()) {
-      if (anEdge.getTarget() instanceof PhysicalLink) {
-        visibleLinks.add((PhysicalLink) anEdge.getTarget());
+      if (anEdge.isVisible()) {
+        EObject edgeTarget = anEdge.getTarget();
+        if (edgeTarget instanceof PhysicalLink && physicalLinksOnThePath.contains(edgeTarget)) {
+          numberOfVisibleRelatedPLEdges++;
+        }
       }
     }
-    for (PhysicalLink link : PhysicalPathExt.getFlatPhysicalLinks(path)) {
-      if (!(visibleLinks.contains(link))) {
-        return false;
-      }
-    }
-    return true;
+    
+    return numberOfVisibleRelatedPLEdges == physicalLinksOnThePath.size();
   }
 
   public String getPhysicalPathLabel(PhysicalPath path, DDiagram diagram) {
     String label = EObjectExt.getText(path);
 
     boolean isComplete = isCompletePhysicalPath(path, diagram);
+    boolean displayIncompleteLabel = !isComplete && ScopedCapellaPreferencesStore.getBoolean(DiagramsPreferencePage.NAME_PREF_DISPLAY_INCOMPLETE_IN_PHYSICAL_PATH_LABEL, PreferencesHelper.getProject(path));
     boolean isValid = PhysicalPathExt.isPhysicalPathValid(path);
-    if (!isComplete || !isValid) {
+    boolean displayInvalidLabel = !isValid && ScopedCapellaPreferencesStore.getBoolean(DiagramsPreferencePage.NAME_PREF_DISPLAY_INVALID_IN_PHYSICAL_PATH_LABEL, PreferencesHelper.getProject(path));
+    if (displayIncompleteLabel || displayInvalidLabel) {
       label = label + " ("; //$NON-NLS-1$
     }
-    if (!isComplete) {
+    if (displayIncompleteLabel) {
       label = label + INCOMPLETE_PHYSICAL_PATH_LABEL;
     }
-    if (!isComplete && !isValid) {
+    if (displayIncompleteLabel && displayInvalidLabel) {
       label = label + ", "; //$NON-NLS-1$
     }
     if (!isValid) {
       label = label + INVALID_PHYSICAL_PATH_LABEL;
     }
-    if (!isComplete || !isValid) {
+    if (displayIncompleteLabel || displayInvalidLabel) {
       label = label + ")"; //$NON-NLS-1$
     }
     return label;

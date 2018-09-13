@@ -489,4 +489,34 @@
              algorithm="org.polarsys.capella.core.sirius.analysis.queries.configurationItemServices.GetAllRealizablePhysicalArtefacts"></queryAlgorithm>
     </querySpecification>    
  </extension>
+ <extension
+       point="org.eclipse.ui.preferencePages">
+    <page
+          category="org.polarsys.capella.core.platform.sirius.ui.actions.Capella.page"
+          class="org.polarsys.capella.core.sirius.analysis.preferences.DiagramsPreferencePage"
+          id="org.polarsys.capella.core.sirius.analysis.preferences.DiagramsPreferencePage"
+          name="Diagrams">
+    </page>
+ </extension>
+ <extension
+       point="org.eclipse.core.runtime.preferences">
+    <initializer
+          class="org.polarsys.capella.core.sirius.analysis.preferences.DiagramPreferenceInitializer">
+    </initializer>
+ </extension>
+ <extension
+       point="org.eclipse.ui.propertyPages">
+    <page
+          category="org.polarsys.capella.core.platform.sirius.ui.actions.Capella.page"
+          class="org.polarsys.capella.core.sirius.analysis.preferences.DiagramsPreferencePage"
+          id="org.polarsys.capella.core.sirius.analysis.preferences.DiagramsPreferencePage"
+          name="Diagrams"
+          objectClass="org.eclipse.core.resources.IProject">
+       <enabledWhen>
+          <reference
+                definitionId="org.polarsys.capella.core.preferences.project.property.pages.visibilityExpression">
+          </reference>
+       </enabledWhen>
+    </page>
+ </extension>
 </plugin>
