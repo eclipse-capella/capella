@@ -38,10 +38,12 @@ public class LibAwareReadOnlySectionHandler implements IReadOnlySectionHandler {
 
     @Override
     public boolean isLockedByOthers(EObject semanticElement) {
+      if(semanticElement != null){
         TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(semanticElement);
         if(domain != null) {
-            return isLockedByOthers(ILibraryManager.INSTANCE.getModel(domain), ILibraryManager.INSTANCE.getModel(semanticElement));
-        }
+          return isLockedByOthers(ILibraryManager.INSTANCE.getModel(domain), ILibraryManager.INSTANCE.getModel(semanticElement));
+        }        
+      }
         return false;
     }
 
@@ -51,7 +53,10 @@ public class LibAwareReadOnlySectionHandler implements IReadOnlySectionHandler {
 
     @Override
     public boolean isControllable(EObject semanticElement) {
+      if(semanticElement != null){
         TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(semanticElement);
-        return domain != null ? domain.isControllable(semanticElement) : false;
+        return domain != null ? domain.isControllable(semanticElement) : false;        
+      }
+      return false;
     }
 }
