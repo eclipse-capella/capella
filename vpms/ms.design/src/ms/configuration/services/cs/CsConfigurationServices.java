@@ -764,20 +764,24 @@ public class CsConfigurationServices {
     
     return 220;
   }
-  
+
+
   public boolean isShowDisabledPortOverlay(ModelElement context, DDiagramElement view) {
     
-    if (view instanceof DEdge) {
-      return false;
-    }
+    throw new UnsupportedOperationException("Overlays not working with Capella 1.2.1, see https://bugs.polarsys.org/show_bug.cgi?id=2115");
     
-    // don't overlay provided/required ports, TODO that's a hack
-    String imagePath = Images.getImagePath(context, view);
-    if (imagePath != null && (imagePath.contains("provided") || imagePath.contains("required"))) {
-      return false;
-    }
-
-    return isNotAvailableInSelectedConfiguration(context, view);
+    // some edges map to port, so don't add the overlay here
+//    if (view instanceof DEdge) {
+//      return false;
+//    }
+//    
+//    // don't overlay provided/required ports
+//    String imagePath = Images.getImagePath(context, view);
+//    if (imagePath != null && (imagePath.contains("provided") || imagePath.contains("required"))) {
+//      return false;
+//    }
+//
+//    return isNotAvailableInSelectedConfiguration(context, view);
   }
 
   public int disabledElementLabelColor(ModelElement context, DDiagramElement view) {
