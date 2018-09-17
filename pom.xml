@@ -145,6 +145,8 @@
 						<feature id="org.eclipse.nebula.widgets.richtext.feature" />
 						<feature id="org.polarsys.kitalpha.richtext.mde.tools.sirius.feature" />
 						<feature id="org.polarsys.kitalpha.richtext.widget.feature" />
+						<plugin id="org.polarsys.capella.vp.ms.af"/>
+						<plugin id="org.polarsys.capella.vp.ms.doc"/>
 					</excludes>
 				</configuration>
 			</plugin>
