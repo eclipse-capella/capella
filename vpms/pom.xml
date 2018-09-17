@@ -32,6 +32,8 @@
 	  <module>org.polarsys.capella.vp.ms.feature</module>
 	  <module>org.polarsys.capella.vp.ms.site</module>
 	  <module>org.polarsys.capella.vp.ms.ui</module>
+	  <module>org.polarsys.capella.vp.ms.af</module>
+	  <module>org.polarsys.capella.vp.ms.doc</module>
 	</modules>
 
 </project>
