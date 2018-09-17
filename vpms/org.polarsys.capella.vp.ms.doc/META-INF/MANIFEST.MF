@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: org.polarsys.capella.vp.ms.doc;singleton:=true
+Bundle-Version: 0.10.0.qualifier
+Bundle-Vendor: %providerName
+Automatic-Module-Name: org.polarsys.capella.vp.ms.doc
+Bundle-Localization: plugin
