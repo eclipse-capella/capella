@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ASCII"?>
+<vp:Viewpoint xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sirius="http://www.polarsys.org/kitalpha/ad/sirius/1.0.0" xmlns:vp="http://www.polarsys.org/kitalpha/ad/viewpoint/1.0.0" name="ms" id="org.polarsys.capella.vp.ms" vpid="_rs4akLUdEeWSn8ImNVQfrQ" version="0.10.0.qualifier">
+  <metamodel>
+    <models href="../../org.polarsys.capella.vp.ms/models/ms.ecore#/"/>
+  </metamodel>
+  <representation>
+    <representations xsi:type="sirius:SiriusRepresentation">
+      <odesign href="../../ms.design/description/ms.odesign#/"/>
+    </representations>
+  </representation>
+</vp:Viewpoint>
