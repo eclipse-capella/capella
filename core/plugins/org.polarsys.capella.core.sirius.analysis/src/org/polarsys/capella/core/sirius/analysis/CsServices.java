@@ -16,7 +16,6 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -258,29 +257,29 @@ public class CsServices {
       return true;
     }
 
-    DRepresentationDescriptor descriptor = RepresentationHelper.getRepresentationDescriptor((DRepresentation)diagram);
+    DRepresentationDescriptor descriptor = RepresentationHelper.getRepresentationDescriptor((DRepresentation) diagram);
     if (handler.isRealizingable(descriptor)) {
       handler.dispose();
 
       if (diagram instanceof DDiagram) {
         // Disable initialization on non-empty diagram
 
-          if (DiagramHelper.getService().isA((DDiagram) diagram,
-              IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
-            if (((DDiagram) diagram).getOwnedDiagramElements().size() > 1) {
-              return true;
-            }
-          } else if (DiagramHelper.getService().isA((DDiagram) diagram,
-              IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
-            if (((DDiagram) diagram).getOwnedDiagramElements().size() > 1) {
-              return true;
-            }
-          } else {
-            // Disable initialization on non-empty diagram
-            if (!((DDiagram) diagram).getOwnedDiagramElements().isEmpty()) {
-              return true;
-            }
+        if (DiagramHelper.getService().isA((DDiagram) diagram,
+            IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+          if (((DDiagram) diagram).getOwnedDiagramElements().size() > 1) {
+            return true;
           }
+        } else if (DiagramHelper.getService().isA((DDiagram) diagram,
+            IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+          if (((DDiagram) diagram).getOwnedDiagramElements().size() > 1) {
+            return true;
+          }
+        } else {
+          // Disable initialization on non-empty diagram
+          if (!((DDiagram) diagram).getOwnedDiagramElements().isEmpty()) {
+            return true;
+          }
+        }
       }
       return false;
     }
@@ -334,7 +333,7 @@ public class CsServices {
 
     for (DRepresentationDescriptor representation : DialectManager.INSTANCE.getAllRepresentationDescriptors(session)) {
       if (handler.isRealizable(representation, descriptor) && !scope.contains(representation)) {
-          scope.add(representation.getRepresentation());
+        scope.add(representation.getRepresentation());
       }
     }
 
@@ -354,7 +353,8 @@ public class CsServices {
     DRepresentationDescriptor descriptor = new DRepresentationQuery(diagram).getRepresentationDescriptor();
     if (ContextualDiagramHelper.getService().hasContextualElements(descriptor)) {
       for (FilterDescription filter : diagram.getActivatedFilters()) {
-        if (IMappingNameConstants.SHOW_CONTEXTUAL_ELEMENTS.equals(filter.getName()) && ContextualDiagramHelper.getService().getContextualElements(descriptor).contains(object)) {
+        if (IMappingNameConstants.SHOW_CONTEXTUAL_ELEMENTS.equals(filter.getName())
+            && ContextualDiagramHelper.getService().getContextualElements(descriptor).contains(object)) {
           return true;
         }
       }
@@ -2738,7 +2738,7 @@ public class CsServices {
     }
     return element;
   }
-  
+
   /**
    * Used to show the link between a PV/PVG and its containing PVG
    */
@@ -2753,7 +2753,8 @@ public class CsServices {
   }
 
   /**
-   * Used to show the link between a PV/PVG and and a component (while the PV/PVG may be applied to a component, only the part is represented in the diagram!)
+   * Used to show the link between a PV/PVG and and a component (while the PV/PVG may be applied to a component, only
+   * the part is represented in the diagram!)
    */
   public Collection<CapellaElement> computeValuedElements(CapellaElement elem) {
     Collection<CapellaElement> result = new ArrayList<>();
@@ -2849,7 +2850,7 @@ public class CsServices {
       return "[" + part.eClass().getName() + "]"; //$NON-NLS-2$ //$NON-NLS-1$
     }
 
-    //if we are in mono part mode, we display the name of the type
+    // if we are in mono part mode, we display the name of the type
     return EObjectExt.getText(part.getType());
   }
 
@@ -3792,13 +3793,13 @@ public class CsServices {
     return functionalExchangeWrapper;
   }
 
-	public boolean isOrientationAllowed(EObject context) {
-	  Port sourcePort = getSourcePort(context);
-	  Port targetPort = getTargetPort(context);
-	  return sourcePort instanceof ComponentPort && targetPort instanceof ComponentPort
-				&& ((ComponentPort) sourcePort).getKind() == ComponentPortKind.STANDARD
-				&& ((ComponentPort) targetPort).getKind() == ComponentPortKind.STANDARD;
-	}
+  public boolean isOrientationAllowed(EObject context) {
+    Port sourcePort = getSourcePort(context);
+    Port targetPort = getTargetPort(context);
+    return sourcePort instanceof ComponentPort && targetPort instanceof ComponentPort
+        && ((ComponentPort) sourcePort).getKind() == ComponentPortKind.STANDARD
+        && ((ComponentPort) targetPort).getKind() == ComponentPortKind.STANDARD;
+  }
 
   public Port getSourcePort(EObject context) {
     if (context instanceof ComponentExchange) {
@@ -3859,10 +3860,10 @@ public class CsServices {
 
       // Remove edge between part or port if not the good port
       if (link.getSourcePort() != null && link.getSourcePort() != sourceElement.getTarget()) {
-          return false;
+        return false;
       }
       if (link.getTargetPort() != null && link.getTargetPort() != targetElement.getTarget()) {
-          return false;
+        return false;
       }
     }
 
@@ -4196,8 +4197,7 @@ public class CsServices {
 
     Collection<CapellaElement> target = new ArrayList<>();
 
-    if (sourceView instanceof EdgeTarget
-        && targetView instanceof EdgeTarget) {
+    if (sourceView instanceof EdgeTarget && targetView instanceof EdgeTarget) {
 
       EdgeTarget sourceNode = (EdgeTarget) sourceView;
       EdgeTarget targetNode = (EdgeTarget) targetView;
@@ -5112,12 +5112,12 @@ public class CsServices {
           for (Component component : oppositeComponentUsingCrossref) {
             if (target.equals(component) && diagramService.isOnDiagram(diagram, abstractExchangeItem)) {
               // add to result only if interface1 is found in diagram
-                if (result.toString().isEmpty()) {
-                  result.append(abstractExchangeItem.getName());
-                } else {
-                  result.append(", "); //$NON-NLS-1$
-                  result.append(abstractExchangeItem.getName());
-                }
+              if (result.toString().isEmpty()) {
+                result.append(abstractExchangeItem.getName());
+              } else {
+                result.append(", "); //$NON-NLS-1$
+                result.append(abstractExchangeItem.getName());
+              }
             }
           }
         }
@@ -5236,8 +5236,7 @@ public class CsServices {
         CommunicationLinkKind.CALL, CommunicationLinkKind.WRITE, CommunicationLinkKind.PRODUCE,
         CommunicationLinkKind.TRANSMIT };
     // get exchange : filter by list of prepared kind
-    return CommunicationLinkExt
-        .getExchangeItemsByKinds(ownedCommunicationLinks, sending);
+    return CommunicationLinkExt.getExchangeItemsByKinds(ownedCommunicationLinks, sending);
   }
 
   /**
@@ -5337,81 +5336,71 @@ public class CsServices {
     return result.toString();
   }
 
-  /**
-   * @param diagram
-   */
-  public void refreschEntitiesArchitecture(ContainerMapping mapping, DDiagram diagram) {
+  public void refreshEntitiesArchitecture(ContainerMapping mapping, DDiagram diagram) {
     if (null == mapping) {
       return;
     }
 
-    // store all displayed elements of the diagram
-    Hashtable<Component, DNodeContainer> componentsInDiagram = new Hashtable<Component, DNodeContainer>();
-    Set<DNodeContainer> toBeMoved = new HashSet<>(); // diagram elements to be moved
+    // local cache for fast access to components and their containers
+    HashMap<Component, DNodeContainer> componentContainerMap = new HashMap<>();
 
-    // get all displayed components in the diagram
-    for (AbstractDNode aContainer : diagram.getContainers()) {
-      if ((aContainer != null) && (aContainer.getTarget() != null)
-          && CapellaServices.getService().isVisibleInDiagram(diagram, aContainer)
-          && (aContainer.getTarget() instanceof Component) && aContainer.getDiagramElementMapping().equals(mapping)) {
-        componentsInDiagram.put((Component) aContainer.getTarget(), (DNodeContainer) aContainer);
+    // containers that should be analyzed in order to determine if they should be moved
+    Set<DNodeContainer> containersToAnalyze = new HashSet<>();
+
+    // construct the local cache for components and containers
+    for (DDiagramElementContainer container : diagram.getContainers()) {
+      boolean shouldAnalyze = container instanceof DNodeContainer && container.getTarget() instanceof Component
+          && container.getDiagramElementMapping().equals(mapping);
+
+      if (shouldAnalyze) {
+        Component component = (Component) container.getTarget();
+        DNodeContainer nodeContainer = (DNodeContainer) container;
+
+        componentContainerMap.put(component, nodeContainer);
+
+        // only analyze visible containers
+        if (CapellaServices.getService().isVisibleInDiagram(diagram, container)) {
+          containersToAnalyze.add(nodeContainer);
+        }
       }
     }
 
-    // first iteration (to avoid null container)
-    // the elements to be moved are temporarily placed in the diagram
-    for (DNodeContainer anElement : componentsInDiagram.values()) {
+    // containers to move
+    Set<DNodeContainer> containersToMove = new HashSet<>();
 
-      Component currentComponent = (Component) anElement.getTarget();
+    // extract the components that should be moved
+    for (DNodeContainer container : containersToAnalyze) {
+      Component component = (Component) container.getTarget();
+      Component parentComponent = ComponentExt.getParent(component);
+      DNodeContainer parentContainer = componentContainerMap.get(parentComponent);
 
-      // case if the actual container is not available any more :
-      if (anElement.eContainer() instanceof DNodeContainer) {
-        PartitionableElement actualParentContainer = (PartitionableElement) ((DNodeContainer) anElement.eContainer())
-            .getTarget();
-        if (!ComponentExt.getDirectParents(currentComponent).contains(actualParentContainer)) {
-          diagram.getOwnedDiagramElements().add(anElement);
-          toBeMoved.add(anElement);
-          continue;
-        }
-      }
+      // parent is deleted || parent does not contain the child
+      boolean shouldMove = parentContainer == null || !parentContainer.getOwnedDiagramElements().contains(container);
 
-      // case if the actual container is available for the current Component
-      Component parent = ComponentExt.getParent(currentComponent);
-      while (parent != null) {
-        // test if a parent of the component appears in the diagram
-        DNodeContainer parentGraphicalElement = componentsInDiagram.get(parent);
-        if ((null != parentGraphicalElement)
-            && CapellaServices.getService().isVisibleInDiagram(diagram, parentGraphicalElement)
-            && !parentGraphicalElement.getOwnedDiagramElements().contains(anElement)) {
-
-          // if the parent (diagramElement) does not contain the current component (diagramElement)
-          // the current component (diagramElement) must be moved
-          diagram.getOwnedDiagramElements().add(anElement);
-          toBeMoved.add(anElement);
-          break;
-        }
-        parent = ComponentExt.getParent(parent);
+      if (shouldMove) {
+        diagram.getOwnedDiagramElements().add(container);
+        containersToMove.add(container);
       }
     }
 
-    // second iteration
-    // the elements are correctly moved
-    for (DNodeContainer aContainer : toBeMoved) {
-      if (aContainer.getTarget() == null) {
-        continue;
-      }
-      // for each parent of the component to be moved, we tests if a diagramElement representing the parent appears in
-      // the diagram
-      // When a parent is found in the diagram, we moved the component and stop.
-      Component parent = ComponentExt.getParent((Component) aContainer.getTarget());
-      while (parent != null) {
-        DNodeContainer parentGraphicalElement = componentsInDiagram.get(parent);
-        if ((null != parentGraphicalElement)
-            && !parentGraphicalElement.getOwnedDiagramElements().contains(aContainer)) {
-          parentGraphicalElement.getOwnedDiagramElements().add(aContainer);
+    // move the dirty components to their new parent
+    for (DNodeContainer container : containersToMove) {
+      Component component = (Component) container.getTarget();
+      Component parentComponent = ComponentExt.getParent(component);
+
+      while (parentComponent != null) {
+        DNodeContainer parentContainer = componentContainerMap.get(parentComponent);
+
+        boolean parentIsValid = parentContainer != null
+            && !parentContainer.getOwnedDiagramElements().contains(container)
+            && CapellaServices.getService().isVisibleInDiagram(diagram, parentContainer);
+
+        if (parentIsValid) {
+          parentContainer.getOwnedDiagramElements().add(container);
           break;
         }
-        parent = ComponentExt.getParent(parent);
+
+        parentComponent = ComponentExt.getParent(parentComponent);
       }
     }
   }
@@ -5447,9 +5436,9 @@ public class CsServices {
    */
 
   public EObject showHideActors(EObject context, List<CapellaElement> selectedOperations, DDiagram diagram) {
-	    // This method is used in IDB and capability diagrams
-	if (selectedOperations == null) // for acceleo2aql
-	  selectedOperations = new ArrayList<>();
+    // This method is used in IDB and capability diagrams
+    if (selectedOperations == null) // for acceleo2aql
+      selectedOperations = new ArrayList<>();
     Map<CapellaElement, AbstractDNode> visibleElements = new HashMap<>();
     // collect all the visible abstractActor element from the diagram
     for (DDiagramElement aNode : DiagramServices.getDiagramServices().getDiagramElements(diagram)) {
@@ -5533,8 +5522,9 @@ public class CsServices {
   public AbstractNodeMapping getMappingCRBActor(EObject element, DDiagram diagram) {
 
     String mappingName = ""; //$NON-NLS-1$
-    if (IDiagramNameConstants.CAPABILITY_REALIZATION_BLANK.equals(diagram.getDescription().getName()) && element instanceof AbstractActor) {
-        mappingName = IMappingNameConstants.CRB_COMPONENT_MAPPING;
+    if (IDiagramNameConstants.CAPABILITY_REALIZATION_BLANK.equals(diagram.getDescription().getName())
+        && element instanceof AbstractActor) {
+      mappingName = IMappingNameConstants.CRB_COMPONENT_MAPPING;
     }
     return DiagramServices.getDiagramServices().getContainerMapping(diagram, mappingName);
   }
@@ -5581,21 +5571,21 @@ public class CsServices {
   }
 
   public boolean isPrimitive(EObject context) {
-	  if (context instanceof Class)
-		  return ((Class) context).isIsPrimitive();
-	  else
-		  return false;
+    if (context instanceof Class)
+      return ((Class) context).isIsPrimitive();
+    else
+      return false;
   }
-  
+
   public boolean isAbstract(EObject context) {
     // DataType, Class
     if (context instanceof GeneralizableElement) {
       GeneralizableElement genEle = (GeneralizableElement) context;
       return genEle.isAbstract();
-    }    
+    }
     // DataValue
     else if (context instanceof DataValue) {
-      DataValue value = (DataValue) context;      
+      DataValue value = (DataValue) context;
       return value.isAbstract();
     }
     // Property
@@ -5752,9 +5742,9 @@ public class CsServices {
    *          = true if (Diagram), false if (Scenario)
    */
   public void createConstraintWithConstaintedElementInDiagram(EObject context, EObject constraint, DDiagram dDiagram,
-    List<Constraint> constraintsInDiagram, boolean kindDiagram) {
-	if (constraintsInDiagram == null) // for acceleo2aql
-	  constraintsInDiagram = new ArrayList<>();
+      List<Constraint> constraintsInDiagram, boolean kindDiagram) {
+    if (constraintsInDiagram == null) // for acceleo2aql
+      constraintsInDiagram = new ArrayList<>();
     if ((null == context) || (null == constraint) || (null == dDiagram)) {
       return;
     }
@@ -6361,7 +6351,7 @@ public class CsServices {
         return false;
       }
     }
-    
+
     // Case 4
     // Check that target component is not a Node
     EObject target = targetView.getTarget();
@@ -6372,7 +6362,7 @@ public class CsServices {
         return false;
       }
     }
-    
+
     // Case 5
     return isValidComputedLink(communication, ce.getSourcePort(), ce.getTargetPort(), sourceView, targetView,
         IMappingNameConstants.LAB_COMPUTED_COMPONENT_EXCHANGE, IMappingNameConstants.PAB_COMPUTED_COMPONENT_EXCHANGE,
