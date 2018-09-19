@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <!--
-  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -17,7 +17,7 @@
                class="org.polarsys.capella.core.data.information.properties.sections.AssociationSection"
                filter="org.polarsys.capella.core.data.information.properties.sections.AssociationSection"
                id="org.polarsys.capella.core.data.information.section.Association"
-               tab="Base">
+               tab="BaseCapella">
           	<input
                  type="org.polarsys.capella.core.data.information.Association">
           	</input>
@@ -26,7 +26,7 @@
                class="org.polarsys.capella.core.data.information.properties.sections.ClassSection"
                filter="org.polarsys.capella.core.data.information.properties.sections.ClassSection"
                id="org.polarsys.capella.core.data.information.section.Class"
-               tab="Base">
+               tab="BaseCapella">
             <input
                   type="org.polarsys.capella.core.data.information.Class">
             </input>
@@ -35,7 +35,7 @@
                class="org.polarsys.capella.core.data.information.properties.sections.CollectionSection"
                filter="org.polarsys.capella.core.data.information.properties.sections.CollectionSection"
                id="org.polarsys.capella.core.data.information.section.Collection"
-               tab="Base">
+               tab="BaseCapella">
             <input
                   type="org.polarsys.capella.core.data.information.Collection">
             </input>
@@ -44,7 +44,7 @@
                class="org.polarsys.capella.core.data.information.properties.sections.DataPkgSection"
                filter="org.polarsys.capella.core.data.information.properties.sections.DataPkgSection"
                id="org.polarsys.capella.core.data.information.section.DataPkg"
-               tab="Base">
+               tab="BaseCapella">
             <input
                   type="org.polarsys.capella.core.data.information.DataPkg">
             </input>
@@ -53,7 +53,7 @@
                class="org.polarsys.capella.core.data.information.properties.sections.DomainElementSection"
                filter="org.polarsys.capella.core.data.information.properties.sections.DomainElementSection"
                id="org.polarsys.capella.core.data.information.section.DomainElement"
-               tab="Base">
+               tab="BaseCapella">
             <input
                   type="org.polarsys.capella.core.data.information.DomainElement">
             </input>
@@ -62,7 +62,7 @@
                class="org.polarsys.capella.core.data.information.properties.sections.ExchangeItemSection"
                filter="org.polarsys.capella.core.data.information.properties.sections.ExchangeItemSection"
                id="org.polarsys.capella.core.data.information.section.ExchangeItem"
-               tab="Base">
+               tab="BaseCapella">
           	<input
                  type="org.polarsys.capella.core.data.information.ExchangeItem">
           	</input>
@@ -71,7 +71,7 @@
                class="org.polarsys.capella.core.data.information.properties.sections.ExchangeItemElementSection"
                filter="org.polarsys.capella.core.data.information.properties.sections.ExchangeItemElementSection"
                id="org.polarsys.capella.core.data.information.section.ExchangeItemElement"
-               tab="Base">
+               tab="BaseCapella">
           	<input
                  type="org.polarsys.capella.core.data.information.ExchangeItemElement">
           	</input>
@@ -80,7 +80,7 @@
                class="org.polarsys.capella.core.data.information.properties.sections.ExchangeItemInstanceSection"
                filter="org.polarsys.capella.core.data.information.properties.sections.ExchangeItemInstanceSection"
                id="org.polarsys.capella.core.data.information.section.ExchangeItemInstance"
-               tab="Base">
+               tab="BaseCapella">
           	<input
                  type="org.polarsys.capella.core.data.information.ExchangeItemInstance">
           	</input>
@@ -89,7 +89,7 @@
                class="org.polarsys.capella.core.data.information.properties.sections.ExchangeItemRealizationSection"
                filter="org.polarsys.capella.core.data.information.properties.sections.ExchangeItemRealizationSection"
                id="org.polarsys.capella.core.data.information.section.ExchangeItemRealization"
-               tab="Base">
+               tab="BaseCapella">
           	<input
                  type="org.polarsys.capella.core.data.information.ExchangeItemRealization">
           	</input>
@@ -98,7 +98,7 @@
                class="org.polarsys.capella.core.data.information.properties.sections.InformationRealizationSection"
                filter="org.polarsys.capella.core.data.information.properties.sections.InformationRealizationSection"
                id="org.polarsys.capella.core.data.information.section.InformationRealization"
-               tab="Base">
+               tab="BaseCapella">
             <input
                   type="org.polarsys.capella.core.data.information.InformationRealization">
             </input>
@@ -107,7 +107,7 @@
                class="org.polarsys.capella.core.data.information.properties.sections.KeyPartSection"
                filter="org.polarsys.capella.core.data.information.properties.sections.KeyPartSection"
                id="org.polarsys.capella.core.data.information.section.KeyPart"
-               tab="Base">
+               tab="BaseCapella">
             <input
                   type="org.polarsys.capella.core.data.information.KeyPart">
             </input>
@@ -116,7 +116,7 @@
                class="org.polarsys.capella.core.data.information.properties.sections.OperationAllocationSection"
                filter="org.polarsys.capella.core.data.information.properties.sections.OperationAllocationSection"
                id="org.polarsys.capella.core.data.information.section.OperationAllocation"
-               tab="Base">
+               tab="BaseCapella">
             <input
                   type="org.polarsys.capella.core.data.information.OperationAllocation">
             </input>
@@ -125,7 +125,7 @@
                class="org.polarsys.capella.core.data.information.properties.sections.ParameterSection"
                filter="org.polarsys.capella.core.data.information.properties.sections.ParameterSection"
                id="org.polarsys.capella.core.data.information.section.Parameter"
-               tab="Base">
+               tab="BaseCapella">
             <input
                   type="org.polarsys.capella.core.data.information.Parameter">
             </input>
@@ -134,7 +134,7 @@
                class="org.polarsys.capella.core.data.information.properties.sections.PortAllocationSection"
                filter="org.polarsys.capella.core.data.information.properties.sections.PortAllocationSection"
                id="org.polarsys.capella.core.data.information.section.PortAllocation"
-               tab="Base">
+               tab="BaseCapella">
             <input
                   type="org.polarsys.capella.core.data.information.PortAllocation">
             </input>
@@ -143,7 +143,7 @@
                class="org.polarsys.capella.core.data.information.properties.sections.PortRealizationSection"
                filter="org.polarsys.capella.core.data.information.properties.sections.PortRealizationSection"
                id="org.polarsys.capella.core.data.information.section.PortRealization"
-               tab="Base">
+               tab="BaseCapella">
             <input
                   type="org.polarsys.capella.core.data.information.PortRealization">
             </input>
@@ -152,7 +152,7 @@
                class="org.polarsys.capella.core.data.information.properties.sections.PropertySection"
                filter="org.polarsys.capella.core.data.information.properties.sections.PropertySection"
                id="org.polarsys.capella.core.data.information.section.Property"
-               tab="Base">
+               tab="BaseCapella">
             <input
                   type="org.polarsys.capella.core.data.information.Property">
             </input>
@@ -161,7 +161,7 @@
                class="org.polarsys.capella.core.data.information.properties.sections.ServiceSection"
                filter="org.polarsys.capella.core.data.information.properties.sections.ServiceSection"
                id="org.polarsys.capella.core.data.information.section.Service"
-               tab="Base">
+               tab="BaseCapella">
             <input
                   type="org.polarsys.capella.core.data.information.Service">
             </input>
@@ -170,7 +170,7 @@
                class="org.polarsys.capella.core.data.information.properties.sections.UnionPropertySection"
                filter="org.polarsys.capella.core.data.information.properties.sections.UnionPropertySection"
                id="org.polarsys.capella.core.data.information.section.UnionProperty"
-               tab="Base">
+               tab="BaseCapella">
             <input
                   type="org.polarsys.capella.core.data.information.UnionProperty">
             </input>
@@ -179,7 +179,7 @@
                class="org.polarsys.capella.core.data.information.properties.sections.UnionSection"
                filter="org.polarsys.capella.core.data.information.properties.sections.UnionSection"
                id="org.polarsys.capella.core.data.information.section.Union"
-               tab="Base">
+               tab="BaseCapella">
             <input
                   type="org.polarsys.capella.core.data.information.Union">
             </input>
@@ -188,7 +188,7 @@
                class="org.polarsys.capella.core.data.information.properties.sections.UnitSection"
                filter="org.polarsys.capella.core.data.information.properties.sections.UnitSection"
                id="org.polarsys.capella.core.data.information.section.Unit"
-               tab="Base">
+               tab="BaseCapella">
             <input
                   type="org.polarsys.capella.core.data.information.Unit">
             </input>
@@ -201,121 +201,121 @@
                class="org.polarsys.capella.core.data.information.properties.sections.AssociationSection"
                filter="org.polarsys.capella.core.data.information.properties.sections.AssociationSection"
                id="org.polarsys.capella.core.data.information.section.AssociationBasePropertySection"
-               tab="Base">
+               tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.properties.sections.ClassSection"
                filter="org.polarsys.capella.core.data.information.properties.sections.ClassSection"
                id="org.polarsys.capella.core.data.information.section.ClassBasePropertySection"
-               tab="Base">
+               tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.properties.sections.CollectionSection"
                filter="org.polarsys.capella.core.data.information.properties.sections.CollectionSection"
                id="org.polarsys.capella.core.data.information.section.CollectionBasePropertySection"
-               tab="Base">
+               tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.properties.sections.DataPkgSection"
                filter="org.polarsys.capella.core.data.information.properties.sections.DataPkgSection"
                id="org.polarsys.capella.core.data.information.section.DataPkgBasePropertySection"
-               tab="Base">
+               tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.properties.sections.DomainElementSection"
                filter="org.polarsys.capella.core.data.information.properties.sections.DomainElementSection"
                id="org.polarsys.capella.core.data.information.section.DomainElementBasePropertySection"
-               tab="Base">
+               tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.properties.sections.ExchangeItemSection"
                filter="org.polarsys.capella.core.data.information.properties.sections.ExchangeItemSection"
                id="org.polarsys.capella.core.data.information.section.ExchangeItemBasePropertySection"
-               tab="Base">
+               tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.properties.sections.ExchangeItemElementSection"
                filter="org.polarsys.capella.core.data.information.properties.sections.ExchangeItemElementSection"
                id="org.polarsys.capella.core.data.information.section.ExchangeItemElementBasePropertySection"
-               tab="Base">
+               tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.properties.sections.ExchangeItemInstanceSection"
                filter="org.polarsys.capella.core.data.information.properties.sections.ExchangeItemInstanceSection"
                id="org.polarsys.capella.core.data.information.section.ExchangeItemInstanceBasePropertySection"
-               tab="Base">
+               tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.properties.sections.ExchangeItemRealizationSection"
                filter="org.polarsys.capella.core.data.information.properties.sections.ExchangeItemRealizationSection"
                id="org.polarsys.capella.core.data.information.section.ExchangeItemRealizationBasePropertySection"
-               tab="Base">
+               tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.properties.sections.InformationRealizationSection"
                filter="org.polarsys.capella.core.data.information.properties.sections.InformationRealizationSection"
                id="org.polarsys.capella.core.data.information.section.InformationRealizationBasePropertySection"
-               tab="Base">
+               tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.properties.sections.KeyPartSection"
                filter="org.polarsys.capella.core.data.information.properties.sections.KeyPartSection"
                id="org.polarsys.capella.core.data.information.section.KeyPartBasePropertySection"
-               tab="Base">
+               tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.properties.sections.OperationAllocationSection"
                filter="org.polarsys.capella.core.data.information.properties.sections.OperationAllocationSection"
                id="org.polarsys.capella.core.data.information.section.OperationAllocationBasePropertySection"
-               tab="Base">
+               tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.properties.sections.ParameterSection"
                filter="org.polarsys.capella.core.data.information.properties.sections.ParameterSection"
                id="org.polarsys.capella.core.data.information.section.ParameterBasePropertySection"
-               tab="Base">
+               tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.properties.sections.PortAllocationSection"
                filter="org.polarsys.capella.core.data.information.properties.sections.PortAllocationSection"
                id="org.polarsys.capella.core.data.information.section.PortAllocationBasePropertySection"
-               tab="Base">
+               tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.properties.sections.PortRealizationSection"
                filter="org.polarsys.capella.core.data.information.properties.sections.PortRealizationSection"
                id="org.polarsys.capella.core.data.information.section.PortRealizationBasePropertySection"
-               tab="Base">
+               tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.properties.sections.PropertySection"
                filter="org.polarsys.capella.core.data.information.properties.sections.PropertySection"
                id="org.polarsys.capella.core.data.information.section.PropertyBasePropertySection"
-               tab="Base">
+               tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.properties.sections.ServiceSection"
                filter="org.polarsys.capella.core.data.information.properties.sections.ServiceSection"
                id="org.polarsys.capella.core.data.information.section.ServiceBasePropertySection"
-               tab="Base">
+               tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.properties.sections.UnionPropertySection"
                filter="org.polarsys.capella.core.data.information.properties.sections.UnionPropertySection"
                id="org.polarsys.capella.core.data.information.section.UnionPropertyBasePropertySection"
-               tab="Base">
+               tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.properties.sections.UnionSection"
                filter="org.polarsys.capella.core.data.information.properties.sections.UnionSection"
                id="org.polarsys.capella.core.data.information.section.UnionBasePropertySection"
-               tab="Base">
+               tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.properties.sections.UnitSection"
                filter="org.polarsys.capella.core.data.information.properties.sections.UnitSection"
                id="org.polarsys.capella.core.data.information.section.UnitBasePropertySection"
-               tab="Base">
+               tab="BaseSiriusDiagram">
          </propertySection>
       </propertySections>
    </extension>
@@ -325,121 +325,121 @@
                class="org.polarsys.capella.core.data.information.properties.sections.AssociationSection"
                filter="org.polarsys.capella.core.data.information.properties.sections.AssociationSection"
                id="org.polarsys.capella.core.data.information.section.AssociationBasePropertySection"
-               tab="Base">
+               tab="BaseSiriusTable">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.properties.sections.ClassSection"
                filter="org.polarsys.capella.core.data.information.properties.sections.ClassSection"
                id="org.polarsys.capella.core.data.information.section.ClassBasePropertySection"
-               tab="Base">
+               tab="BaseSiriusTable">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.properties.sections.CollectionSection"
                filter="org.polarsys.capella.core.data.information.properties.sections.CollectionSection"
                id="org.polarsys.capella.core.data.information.section.CollectionBasePropertySection"
-               tab="Base">
+               tab="BaseSiriusTable">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.properties.sections.DataPkgSection"
                filter="org.polarsys.capella.core.data.information.properties.sections.DataPkgSection"
                id="org.polarsys.capella.core.data.information.section.DataPkgBasePropertySection"
-               tab="Base">
+               tab="BaseSiriusTable">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.properties.sections.DomainElementSection"
                filter="org.polarsys.capella.core.data.information.properties.sections.DomainElementSection"
                id="org.polarsys.capella.core.data.information.section.DomainElementBasePropertySection"
-               tab="Base">
+               tab="BaseSiriusTable">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.properties.sections.ExchangeItemSection"
                filter="org.polarsys.capella.core.data.information.properties.sections.ExchangeItemSection"
                id="org.polarsys.capella.core.data.information.section.ExchangeItemBasePropertySection"
-               tab="Base">
+               tab="BaseSiriusTable">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.properties.sections.ExchangeItemElementSection"
                filter="org.polarsys.capella.core.data.information.properties.sections.ExchangeItemElementSection"
                id="org.polarsys.capella.core.data.information.section.ExchangeItemElementBasePropertySection"
-               tab="Base">
+               tab="BaseSiriusTable">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.properties.sections.ExchangeItemInstanceSection"
                filter="org.polarsys.capella.core.data.information.properties.sections.ExchangeItemInstanceSection"
                id="org.polarsys.capella.core.data.information.section.ExchangeItemInstanceBasePropertySection"
-               tab="Base">
+               tab="BaseSiriusTable">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.properties.sections.ExchangeItemRealizationSection"
                filter="org.polarsys.capella.core.data.information.properties.sections.ExchangeItemRealizationSection"
                id="org.polarsys.capella.core.data.information.section.ExchangeItemRealizationBasePropertySection"
-               tab="Base">
+               tab="BaseSiriusTable">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.properties.sections.InformationRealizationSection"
                filter="org.polarsys.capella.core.data.information.properties.sections.InformationRealizationSection"
                id="org.polarsys.capella.core.data.information.section.InformationRealizationBasePropertySection"
-               tab="Base">
+               tab="BaseSiriusTable">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.properties.sections.KeyPartSection"
                filter="org.polarsys.capella.core.data.information.properties.sections.KeyPartSection"
                id="org.polarsys.capella.core.data.information.section.KeyPartBasePropertySection"
-               tab="Base">
+               tab="BaseSiriusTable">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.properties.sections.OperationAllocationSection"
                filter="org.polarsys.capella.core.data.information.properties.sections.OperationAllocationSection"
                id="org.polarsys.capella.core.data.information.section.OperationAllocationBasePropertySection"
-               tab="Base">
+               tab="BaseSiriusTable">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.properties.sections.ParameterSection"
                filter="org.polarsys.capella.core.data.information.properties.sections.ParameterSection"
                id="org.polarsys.capella.core.data.information.section.ParameterBasePropertySection"
-               tab="Base">
+               tab="BaseSiriusTable">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.properties.sections.PortAllocationSection"
                filter="org.polarsys.capella.core.data.information.properties.sections.PortAllocationSection"
                id="org.polarsys.capella.core.data.information.section.PortAllocationBasePropertySection"
-               tab="Base">
+               tab="BaseSiriusTable">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.properties.sections.PortRealizationSection"
                filter="org.polarsys.capella.core.data.information.properties.sections.PortRealizationSection"
                id="org.polarsys.capella.core.data.information.section.PortRealizationBasePropertySection"
-               tab="Base">
+               tab="BaseSiriusTable">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.properties.sections.PropertySection"
                filter="org.polarsys.capella.core.data.information.properties.sections.PropertySection"
                id="org.polarsys.capella.core.data.information.section.PropertyBasePropertySection"
-               tab="Base">
+               tab="BaseSiriusTable">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.properties.sections.ServiceSection"
                filter="org.polarsys.capella.core.data.information.properties.sections.ServiceSection"
                id="org.polarsys.capella.core.data.information.section.ServiceBasePropertySection"
-               tab="Base">
+               tab="BaseSiriusTable">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.properties.sections.UnionPropertySection"
                filter="org.polarsys.capella.core.data.information.properties.sections.UnionPropertySection"
                id="org.polarsys.capella.core.data.information.section.UnionPropertyBasePropertySection"
-               tab="Base">
+               tab="BaseSiriusTable">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.properties.sections.UnionSection"
                filter="org.polarsys.capella.core.data.information.properties.sections.UnionSection"
                id="org.polarsys.capella.core.data.information.section.UnionBasePropertySection"
-               tab="Base">
+               tab="BaseSiriusTable">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.information.properties.sections.UnitSection"
                filter="org.polarsys.capella.core.data.information.properties.sections.UnitSection"
                id="org.polarsys.capella.core.data.information.section.UnitBasePropertySection"
-               tab="Base">
+               tab="BaseSiriusTable">
          </propertySection>
       </propertySections>
    </extension>

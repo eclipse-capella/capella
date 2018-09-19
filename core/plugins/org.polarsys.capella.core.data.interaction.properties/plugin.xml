@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <!--
-  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -16,7 +16,7 @@
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.AbstractCapabilityExtendSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.AbstractCapabilityExtendSection"
-               tab="Base">
+               tab="BaseCapella">
             <input
                   type="org.polarsys.capella.core.data.interaction.AbstractCapabilityExtend">
             </input>
@@ -24,7 +24,7 @@
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.AbstractCapabilityExtensionPointSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.AbstractCapabilityExtensionPointSection"
-               tab="Base">
+               tab="BaseCapella">
             <input
                   type="org.polarsys.capella.core.data.interaction.AbstractCapabilityExtensionPoint">
             </input>
@@ -32,7 +32,7 @@
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.AbstractCapabilityGeneralizationSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.AbstractCapabilityGeneralizationSection"
-               tab="Base">
+               tab="BaseCapella">
             <input
                   type="org.polarsys.capella.core.data.interaction.AbstractCapabilityGeneralization">
             </input>
@@ -40,7 +40,7 @@
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.AbstractCapabilityIncludeSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.AbstractCapabilityIncludeSection"
-               tab="Base">
+               tab="BaseCapella">
             <input
                   type="org.polarsys.capella.core.data.interaction.AbstractCapabilityInclude">
             </input>
@@ -48,7 +48,7 @@
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.AbstractCapabilityRealizationSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.AbstractCapabilityRealizationSection"
-               tab="Base">
+               tab="BaseCapella">
             <input
                   type="org.polarsys.capella.core.data.interaction.AbstractCapabilityRealization">
             </input>
@@ -56,7 +56,7 @@
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.AbstractFunctionAbstractCapabilityInvolvementSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.AbstractFunctionAbstractCapabilityInvolvementSection"
-               tab="Base">
+               tab="BaseCapella">
             <input
                   type="org.polarsys.capella.core.data.interaction.AbstractFunctionAbstractCapabilityInvolvement">
             </input>
@@ -64,7 +64,7 @@
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.ArmTimerEventSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.ArmTimerEventSection"
-               tab="Base">
+               tab="BaseCapella">
             <input
                   type="org.polarsys.capella.core.data.interaction.ArmTimerEvent">
             </input>
@@ -72,7 +72,7 @@
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.CancelTimerEventSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.CancelTimerEventSection"
-               tab="Base">
+               tab="BaseCapella">
             <input
                   type="org.polarsys.capella.core.data.interaction.CancelTimerEvent">
             </input>
@@ -80,7 +80,7 @@
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.CombinedFragmentSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.CombinedFragmentSection"
-               tab="Base">
+               tab="BaseCapella">
             <input
                   type="org.polarsys.capella.core.data.interaction.CombinedFragment">
             </input>
@@ -88,7 +88,7 @@
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.ConstraintDurationSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.ConstraintDurationSection"
-               tab="Base">
+               tab="BaseCapella">
             <input
                   type="org.polarsys.capella.core.data.interaction.ConstraintDuration">
             </input>
@@ -96,7 +96,7 @@
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.CreationEventSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.CreationEventSection"
-               tab="Base">
+               tab="BaseCapella">
             <input
                   type="org.polarsys.capella.core.data.interaction.CreationEvent">
             </input>
@@ -104,7 +104,7 @@
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.DestructionEventSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.DestructionEventSection"
-               tab="Base">
+               tab="BaseCapella">
             <input
                   type="org.polarsys.capella.core.data.interaction.DestructionEvent">
             </input>
@@ -112,7 +112,7 @@
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.EventReceiptOperationSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.EventReceiptOperationSection"
-               tab="Base">
+               tab="BaseCapella">
             <input
                   type="org.polarsys.capella.core.data.interaction.EventReceiptOperation">
             </input>
@@ -120,7 +120,7 @@
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.EventSentOperationSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.EventSentOperationSection"
-               tab="Base">
+               tab="BaseCapella">
             <input
                   type="org.polarsys.capella.core.data.interaction.EventSentOperation">
             </input>
@@ -128,7 +128,7 @@
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.ExecutionEndSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.ExecutionEndSection"
-               tab="Base">
+               tab="BaseCapella">
             <input
                   type="org.polarsys.capella.core.data.interaction.ExecutionEnd">
             </input>
@@ -136,7 +136,7 @@
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.ExecutionEventSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.ExecutionEventSection"
-               tab="Base">
+               tab="BaseCapella">
             <input
                   type="org.polarsys.capella.core.data.interaction.ExecutionEvent">
             </input>
@@ -144,7 +144,7 @@
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.ExecutionSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.ExecutionSection"
-               tab="Base">
+               tab="BaseCapella">
             <input
                   type="org.polarsys.capella.core.data.interaction.Execution">
             </input>
@@ -152,7 +152,7 @@
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.FragmentEndSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.FragmentEndSection"
-               tab="Base">
+               tab="BaseCapella">
             <input
                   type="org.polarsys.capella.core.data.interaction.FragmentEnd">
             </input>
@@ -160,7 +160,7 @@
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.FunctionalChainAbstractCapabilityInvolvementSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.FunctionalChainAbstractCapabilityInvolvementSection"
-               tab="Base">
+               tab="BaseCapella">
             <input
                   type="org.polarsys.capella.core.data.interaction.FunctionalChainAbstractCapabilityInvolvement">
             </input>
@@ -168,7 +168,7 @@
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.GateSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.GateSection"
-               tab="Base">
+               tab="BaseCapella">
             <input
                   type="org.polarsys.capella.core.data.interaction.Gate">
             </input>
@@ -176,7 +176,7 @@
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.InstanceRoleSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.InstanceRoleSection"
-               tab="Base">
+               tab="BaseCapella">
             <input
                   type="org.polarsys.capella.core.data.interaction.InstanceRole">
             </input>
@@ -184,7 +184,7 @@
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.InteractionOperandSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.InteractionOperandSection"
-               tab="Base">
+               tab="BaseCapella">
             <input
                   type="org.polarsys.capella.core.data.interaction.InteractionOperand">
             </input>
@@ -192,7 +192,7 @@
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.InteractionStateSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.InteractionStateSection"
-               tab="Base">
+               tab="BaseCapella">
             <input
                   type="org.polarsys.capella.core.data.interaction.InteractionState">
             </input>
@@ -200,7 +200,7 @@
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.InteractionUseSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.InteractionUseSection"
-               tab="Base">
+               tab="BaseCapella">
             <input
                   type="org.polarsys.capella.core.data.interaction.InteractionUse">
             </input>
@@ -208,7 +208,7 @@
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.MergeLinkSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.MergeLinkSection"
-               tab="Base">
+               tab="BaseCapella">
             <input
                   type="org.polarsys.capella.core.data.interaction.MergeLink">
             </input>
@@ -216,7 +216,7 @@
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.MessageEndSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.MessageEndSection"
-               tab="Base">
+               tab="BaseCapella">
             <input
                   type="org.polarsys.capella.core.data.interaction.MessageEnd">
             </input>
@@ -224,7 +224,7 @@
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.RefinementLinkSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.RefinementLinkSection"
-               tab="Base">
+               tab="BaseCapella">
             <input
                   type="org.polarsys.capella.core.data.interaction.RefinementLink">
             </input>
@@ -232,7 +232,7 @@
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.ScenarioRealizationSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.ScenarioRealizationSection"
-               tab="Base">
+               tab="BaseCapella">
             <input
                   type="org.polarsys.capella.core.data.interaction.ScenarioRealization">
             </input>
@@ -240,7 +240,7 @@
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.ScenarioSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.ScenarioSection"
-               tab="Base">
+               tab="BaseCapella">
             <input
                   type="org.polarsys.capella.core.data.interaction.Scenario">
             </input>
@@ -248,7 +248,7 @@
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.SequenceMessageSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.SequenceMessageSection"
-               tab="Base">
+               tab="BaseCapella">
             <input
                   type="org.polarsys.capella.core.data.interaction.SequenceMessage">
             </input>
@@ -256,7 +256,7 @@
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.StateFragmentSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.StateFragmentSection"
-               tab="Base">
+               tab="BaseCapella">
             <input
                   type="org.polarsys.capella.core.data.interaction.StateFragment">
             </input>
@@ -269,187 +269,187 @@
                class="org.polarsys.capella.core.data.interaction.properties.sections.AbstractCapabilityExtendSection"
                filter="org.polarsys.capella.core.data.interaction.properties.sections.AbstractCapabilityExtendSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.AbstractCapabilityExtendSection"
-               tab="Base">
+               tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.AbstractCapabilityExtensionPointSection"
                filter="org.polarsys.capella.core.data.interaction.properties.sections.AbstractCapabilityExtensionPointSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.AbstractCapabilityExtensionPointSection"
-               tab="Base">
+               tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.AbstractCapabilityGeneralizationSection"
                filter="org.polarsys.capella.core.data.interaction.properties.sections.AbstractCapabilityGeneralizationSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.AbstractCapabilityGeneralizationSection"
-               tab="Base">
+               tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.AbstractCapabilityIncludeSection"
                filter="org.polarsys.capella.core.data.interaction.properties.sections.AbstractCapabilityIncludeSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.AbstractCapabilityIncludeSection"
-               tab="Base">
+               tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.AbstractCapabilityRealizationSection"
                filter="org.polarsys.capella.core.data.interaction.properties.sections.AbstractCapabilityRealizationSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.AbstractCapabilityRealizationSection"
-               tab="Base">
+               tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.AbstractFunctionAbstractCapabilityInvolvementSection"
                filter="org.polarsys.capella.core.data.interaction.properties.sections.AbstractFunctionAbstractCapabilityInvolvementSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.AbstractFunctionAbstractCapabilityInvolvementSection"
-               tab="Base">
+               tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.ArmTimerEventSection"
                filter="org.polarsys.capella.core.data.interaction.properties.sections.ArmTimerEventSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.ArmTimerEventSection"
-               tab="Base">
+               tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.CancelTimerEventSection"
                filter="org.polarsys.capella.core.data.interaction.properties.sections.CancelTimerEventSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.CancelTimerEventSection"
-               tab="Base">
+               tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.CombinedFragmentSection"
                filter="org.polarsys.capella.core.data.interaction.properties.sections.CombinedFragmentSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.CombinedFragmentSection"
-               tab="Base">
+               tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.ConstraintDurationSection"
                filter="org.polarsys.capella.core.data.interaction.properties.sections.ConstraintDurationSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.ConstraintDurationSection"
-               tab="Base">
+               tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.CreationEventSection"
                filter="org.polarsys.capella.core.data.interaction.properties.sections.CreationEventSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.CreationEventSection"
-               tab="Base">
+               tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.DestructionEventSection"
                filter="org.polarsys.capella.core.data.interaction.properties.sections.DestructionEventSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.DestructionEventSection"
-               tab="Base">
+               tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.EventReceiptOperationSection"
                filter="org.polarsys.capella.core.data.interaction.properties.sections.EventReceiptOperationSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.EventReceiptOperationSection"
-               tab="Base">
+               tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.EventSentOperationSection"
                filter="org.polarsys.capella.core.data.interaction.properties.sections.EventSentOperationSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.EventSentOperationSection"
-               tab="Base">
+               tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.ExecutionEndSection"
                filter="org.polarsys.capella.core.data.interaction.properties.sections.ExecutionEndSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.ExecutionEndSection"
-               tab="Base">
+               tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.ExecutionEventSection"
                filter="org.polarsys.capella.core.data.interaction.properties.sections.ExecutionEventSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.ExecutionEventSection"
-               tab="Base">
+               tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.ExecutionSection"
                filter="org.polarsys.capella.core.data.interaction.properties.sections.ExecutionSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.ExecutionSection"
-               tab="Base">
+               tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.FragmentEndSection"
                filter="org.polarsys.capella.core.data.interaction.properties.sections.FragmentEndSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.FragmentEndSection"
-               tab="Base">
+               tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.FunctionalChainAbstractCapabilityInvolvementSection"
                filter="org.polarsys.capella.core.data.interaction.properties.sections.FunctionalChainAbstractCapabilityInvolvementSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.FunctionalChainAbstractCapabilityInvolvementSection"
-               tab="Base">
+               tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.GateSection"
                filter="org.polarsys.capella.core.data.interaction.properties.sections.GateSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.GateSection"
-               tab="Base">
+               tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.InstanceRoleSection"
                filter="org.polarsys.capella.core.data.interaction.properties.sections.InstanceRoleSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.InstanceRoleSection"
-               tab="Base">
+               tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.InteractionOperandSection"
                filter="org.polarsys.capella.core.data.interaction.properties.sections.InteractionOperandSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.InteractionOperandSection"
-               tab="Base">
+               tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.InteractionStateSection"
                filter="org.polarsys.capella.core.data.interaction.properties.sections.InteractionStateSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.InteractionStateSection"
-               tab="Base">
+               tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.InteractionUseSection"
                filter="org.polarsys.capella.core.data.interaction.properties.sections.InteractionUseSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.InteractionUseSection"
-               tab="Base">
+               tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.MergeLinkSection"
                filter="org.polarsys.capella.core.data.interaction.properties.sections.MergeLinkSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.MergeLinkSection"
-               tab="Base">
+               tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.MessageEndSection"
                filter="org.polarsys.capella.core.data.interaction.properties.sections.MessageEndSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.MessageEndSection"
-               tab="Base">
+               tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.RefinementLinkSection"
                filter="org.polarsys.capella.core.data.interaction.properties.sections.RefinementLinkSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.RefinementLinkSection"
-               tab="Base">
+               tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.ScenarioRealizationSection"
                filter="org.polarsys.capella.core.data.interaction.properties.sections.ScenarioRealizationSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.ScenarioRealizationSection"
-               tab="Base">
+               tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.ScenarioSection"
                filter="org.polarsys.capella.core.data.interaction.properties.sections.ScenarioSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.ScenarioSection"
-               tab="Base">
+               tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.SequenceMessageSection"
                filter="org.polarsys.capella.core.data.interaction.properties.sections.SequenceMessageSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.SequenceMessageSection"
-               tab="Base">
+               tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.StateFragmentSection"
                filter="org.polarsys.capella.core.data.interaction.properties.sections.StateFragmentSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.StateFragmentSection"
-               tab="Base">
+               tab="BaseSiriusDiagram">
          </propertySection>
       </propertySections>
    </extension>
@@ -459,187 +459,187 @@
                class="org.polarsys.capella.core.data.interaction.properties.sections.AbstractCapabilityExtendSection"
                filter="org.polarsys.capella.core.data.interaction.properties.sections.AbstractCapabilityExtendSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.AbstractCapabilityExtendSection"
-               tab="Base">
+               tab="BaseSiriusTable">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.AbstractCapabilityExtensionPointSection"
                filter="org.polarsys.capella.core.data.interaction.properties.sections.AbstractCapabilityExtensionPointSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.AbstractCapabilityExtensionPointSection"
-               tab="Base">
+               tab="BaseSiriusTable">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.AbstractCapabilityGeneralizationSection"
                filter="org.polarsys.capella.core.data.interaction.properties.sections.AbstractCapabilityGeneralizationSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.AbstractCapabilityGeneralizationSection"
-               tab="Base">
+               tab="BaseSiriusTable">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.AbstractCapabilityIncludeSection"
                filter="org.polarsys.capella.core.data.interaction.properties.sections.AbstractCapabilityIncludeSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.AbstractCapabilityIncludeSection"
-               tab="Base">
+               tab="BaseSiriusTable">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.AbstractCapabilityRealizationSection"
                filter="org.polarsys.capella.core.data.interaction.properties.sections.AbstractCapabilityRealizationSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.AbstractCapabilityRealizationSection"
-               tab="Base">
+               tab="BaseSiriusTable">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.AbstractFunctionAbstractCapabilityInvolvementSection"
                filter="org.polarsys.capella.core.data.interaction.properties.sections.AbstractFunctionAbstractCapabilityInvolvementSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.AbstractFunctionAbstractCapabilityInvolvementSection"
-               tab="Base">
+               tab="BaseSiriusTable">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.ArmTimerEventSection"
                filter="org.polarsys.capella.core.data.interaction.properties.sections.ArmTimerEventSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.ArmTimerEventSection"
-               tab="Base">
+               tab="BaseSiriusTable">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.CancelTimerEventSection"
                filter="org.polarsys.capella.core.data.interaction.properties.sections.CancelTimerEventSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.CancelTimerEventSection"
-               tab="Base">
+               tab="BaseSiriusTable">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.CombinedFragmentSection"
                filter="org.polarsys.capella.core.data.interaction.properties.sections.CombinedFragmentSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.CombinedFragmentSection"
-               tab="Base">
+               tab="BaseSiriusTable">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.ConstraintDurationSection"
                filter="org.polarsys.capella.core.data.interaction.properties.sections.ConstraintDurationSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.ConstraintDurationSection"
-               tab="Base">
+               tab="BaseSiriusTable">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.CreationEventSection"
                filter="org.polarsys.capella.core.data.interaction.properties.sections.CreationEventSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.CreationEventSection"
-               tab="Base">
+               tab="BaseSiriusTable">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.DestructionEventSection"
                filter="org.polarsys.capella.core.data.interaction.properties.sections.DestructionEventSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.DestructionEventSection"
-               tab="Base">
+               tab="BaseSiriusTable">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.EventReceiptOperationSection"
                filter="org.polarsys.capella.core.data.interaction.properties.sections.EventReceiptOperationSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.EventReceiptOperationSection"
-               tab="Base">
+               tab="BaseSiriusTable">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.EventSentOperationSection"
                filter="org.polarsys.capella.core.data.interaction.properties.sections.EventSentOperationSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.EventSentOperationSection"
-               tab="Base">
+               tab="BaseSiriusTable">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.ExecutionEndSection"
                filter="org.polarsys.capella.core.data.interaction.properties.sections.ExecutionEndSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.ExecutionEndSection"
-               tab="Base">
+               tab="BaseSiriusTable">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.ExecutionEventSection"
                filter="org.polarsys.capella.core.data.interaction.properties.sections.ExecutionEventSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.ExecutionEventSection"
-               tab="Base">
+               tab="BaseSiriusTable">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.ExecutionSection"
                filter="org.polarsys.capella.core.data.interaction.properties.sections.ExecutionSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.ExecutionSection"
-               tab="Base">
+               tab="BaseSiriusTable">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.FragmentEndSection"
                filter="org.polarsys.capella.core.data.interaction.properties.sections.FragmentEndSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.FragmentEndSection"
-               tab="Base">
+               tab="BaseSiriusTable">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.FunctionalChainAbstractCapabilityInvolvementSection"
                filter="org.polarsys.capella.core.data.interaction.properties.sections.FunctionalChainAbstractCapabilityInvolvementSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.FunctionalChainAbstractCapabilityInvolvementSection"
-               tab="Base">
+               tab="BaseSiriusTable">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.GateSection"
                filter="org.polarsys.capella.core.data.interaction.properties.sections.GateSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.GateSection"
-               tab="Base">
+               tab="BaseSiriusTable">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.InstanceRoleSection"
                filter="org.polarsys.capella.core.data.interaction.properties.sections.InstanceRoleSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.InstanceRoleSection"
-               tab="Base">
+               tab="BaseSiriusTable">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.InteractionOperandSection"
                filter="org.polarsys.capella.core.data.interaction.properties.sections.InteractionOperandSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.InteractionOperandSection"
-               tab="Base">
+               tab="BaseSiriusTable">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.InteractionStateSection"
                filter="org.polarsys.capella.core.data.interaction.properties.sections.InteractionStateSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.InteractionStateSection"
-               tab="Base">
+               tab="BaseSiriusTable">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.InteractionUseSection"
                filter="org.polarsys.capella.core.data.interaction.properties.sections.InteractionUseSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.InteractionUseSection"
-               tab="Base">
+               tab="BaseSiriusTable">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.MergeLinkSection"
                filter="org.polarsys.capella.core.data.interaction.properties.sections.MergeLinkSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.MergeLinkSection"
-               tab="Base">
+               tab="BaseSiriusTable">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.MessageEndSection"
                filter="org.polarsys.capella.core.data.interaction.properties.sections.MessageEndSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.MessageEndSection"
-               tab="Base">
+               tab="BaseSiriusTable">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.RefinementLinkSection"
                filter="org.polarsys.capella.core.data.interaction.properties.sections.RefinementLinkSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.RefinementLinkSection"
-               tab="Base">
+               tab="BaseSiriusTable">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.ScenarioRealizationSection"
                filter="org.polarsys.capella.core.data.interaction.properties.sections.ScenarioRealizationSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.ScenarioRealizationSection"
-               tab="Base">
+               tab="BaseSiriusTable">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.ScenarioSection"
                filter="org.polarsys.capella.core.data.interaction.properties.sections.ScenarioSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.ScenarioSection"
-               tab="Base">
+               tab="BaseSiriusTable">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.SequenceMessageSection"
                filter="org.polarsys.capella.core.data.interaction.properties.sections.SequenceMessageSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.SequenceMessageSection"
-               tab="Base">
+               tab="BaseSiriusTable">
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.interaction.properties.sections.StateFragmentSection"
                filter="org.polarsys.capella.core.data.interaction.properties.sections.StateFragmentSection"
                id="org.polarsys.capella.core.data.interaction.properties.sections.StateFragmentSection"
-               tab="Base">
+               tab="BaseSiriusTable">
          </propertySection>
       </propertySections>
    </extension>

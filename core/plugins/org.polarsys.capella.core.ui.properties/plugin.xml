@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <!--
-  Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -43,37 +43,37 @@
          <propertyTab
                label="%capellaLabel"
                category="default"
-               id="Base">
+               id="BaseCapella">
          </propertyTab>
          <propertyTab
                label="%managementLabel"
                category="default"
-               id="Management"
-               afterTab="Base">
+               id="ManagementCapella"
+               afterTab="BaseCapella">
          </propertyTab>
          <propertyTab
                label="%descriptionLabel"
                category="default"
-               id="Description"
-               afterTab="Management">
+               id="DescriptionCapella"
+               afterTab="ManagementCapella">
          </propertyTab>
          <propertyTab
                label="%simpleDescriptionLabel"
                category="default"
-               id="SimpleDescription"
-               afterTab="Description">
+               id="SimpleDescriptionCapella"
+               afterTab="DescriptionCapella">
          </propertyTab>
          <propertyTab
                label="%extensionsLabel"
                category="extended"
-               id="Extensions"
-               afterTab="SimpleDescription">
+               id="ExtensionsCapella"
+               afterTab="SimpleDescriptionCapella">
          </propertyTab>
          <propertyTab
                label="Expert"
                category="advanced"
-               id="Advanced"
-               afterTab="Extensions">
+               id="AdvancedCapella"
+               afterTab="ExtensionsCapella">
          </propertyTab>
       </propertyTabs>
    </extension>
@@ -84,31 +84,31 @@
          <propertyTab
                label="%capellaLabel"
                category="semantic &amp; extension"
-               id="Base">
+               id="BaseSiriusDiagram">
          </propertyTab>
          <propertyTab
                label="%managementLabel"
                category="semantic &amp; extension"
-               id="Management"
-               afterTab="Base">
+               id="ManagementSiriusDiagram"
+               afterTab="BaseSiriusDiagram">
          </propertyTab>
          <propertyTab
                label="%descriptionLabel"
                category="semantic &amp; extension"
-               id="Description"
-               afterTab="Management">
+               id="DescriptionSiriusDiagram"
+               afterTab="ManagementSiriusDiagram">
          </propertyTab>
          <propertyTab
                label="%simpleDescriptionLabel"
                category="semantic &amp; extension"
-               id="SimpleDescription"
-               afterTab="Description">
+               id="SimpleDescriptionSiriusDiagram"
+               afterTab="DescriptionSiriusDiagram">
          </propertyTab>
          <propertyTab
                label="%extensionsLabel"
                category="semantic &amp; extension"
-               id="Extensions"
-               afterTab="SimpleDescription">
+               id="ExtensionsSiriusDiagram"
+               afterTab="SimpleDescriptionSiriusDiagram">
          </propertyTab>
       </propertyTabs>
    </extension>
@@ -119,42 +119,42 @@
          <propertyTab
                label="%capellaLabel"
                category="default"
-               id="Base">
+               id="BaseSiriusTable">
          </propertyTab>
          <propertyTab
                label="%managementLabel"
                category="default"
-               id="Management"
-               afterTab="Base">
+               id="ManagementSiriusTable"
+               afterTab="BaseSiriusTable">
          </propertyTab>
          <propertyTab
                label="%descriptionLabel"
                category="default"
-               id="Description"
-               afterTab="Management">
+               id="DescriptionSiriusTable"
+               afterTab="ManagementSiriusTable">
          </propertyTab>
          <propertyTab
                label="%simpleDescriptionLabel"
                category="default"
-               id="SimpleDescription"
-               afterTab="Description">
+               id="SimpleDescriptionSiriusTable"
+               afterTab="DescriptionSiriusTable">
          </propertyTab>
          <propertyTab
                label="%extensionsLabel"
                category="default"
-               id="Extensions"
-               afterTab="SimpleDescription">
+               id="ExtensionsSiriusTable"
+               afterTab="SimpleDescriptionSiriusTable">
          </propertyTab>
       </propertyTabs>
    </extension>
    <extension point="org.eclipse.ui.views.properties.tabbed.propertySections">
       <propertySections contributorId="org.polarsys.capella.core.data.capellamodeller.properties">
-         <propertySection tab="Advanced"
+         <propertySection tab="AdvancedCapella"
                class="org.polarsys.capella.core.ui.properties.sections.CapellaAdvancedPropertySection"
                id="org.polarsys.capella.common.data.modellingcore.section.advanced.ModelElement">
           	<input type="org.eclipse.emf.ecore.EObject"/>
          </propertySection>
-         <propertySection tab="Management"
+         <propertySection tab="ManagementCapella"
                class="org.polarsys.capella.core.ui.properties.sections.CapellaManagementPropertySection"
 			   filter="org.polarsys.capella.core.ui.properties.sections.CapellaManagementPropertySection"
                id="org.polarsys.capella.core.ui.properties.sections.CapellaManagementPropertySection.navigator">
@@ -162,7 +162,7 @@
                   type="org.polarsys.capella.core.data.capellacore.CapellaElement">
             </input>
          </propertySection>
-         <propertySection tab="Extensions"
+         <propertySection tab="ExtensionsCapella"
                class="org.polarsys.capella.core.ui.properties.sections.CapellaExtensionsPropertySection"
 			   filter="org.polarsys.capella.core.ui.properties.sections.CapellaExtensionsPropertySection"
                id="org.polarsys.capella.core.ui.properties.sections.CapellaExtensionsPropertySection.navigator">
@@ -170,7 +170,7 @@
                   type="org.polarsys.capella.core.data.capellacore.CapellaElement">
             </input>
          </propertySection>
-         <propertySection tab="Management"
+         <propertySection tab="ManagementCapella"
                class="org.polarsys.capella.core.ui.properties.sections.DiagramManagementPropertySection"
                filter="org.polarsys.capella.core.ui.properties.sections.DiagramManagementPropertySection"
                id="org.polarsys.capella.core.ui.properties.section.DiagramManagementPropertySection.navigator">
@@ -178,7 +178,7 @@
                   type="org.eclipse.sirius.viewpoint.DRepresentationDescriptor">
             </input>
          </propertySection>
-         <propertySection tab="Base"
+         <propertySection tab="BaseCapella"
                class="org.polarsys.capella.core.ui.properties.sections.DiagramRepresentationPropertySection"
                filter="org.polarsys.capella.core.ui.properties.sections.DiagramRepresentationPropertySection"
                id="org.polarsys.capella.core.ui.properties.section.DiagramRepresentationPropertySection.navigator">
@@ -190,17 +190,17 @@
    </extension>
    <extension point="org.eclipse.ui.views.properties.tabbed.propertySections">
 	  <propertySections contributorId="org.eclipse.sirius.diagram.ui">
-         <propertySection tab="Management"
+         <propertySection tab="ManagementSiriusDiagram"
                class="org.polarsys.capella.core.ui.properties.sections.CapellaManagementPropertySection"
 			   filter="org.polarsys.capella.core.ui.properties.sections.CapellaManagementPropertySection"
                id="org.polarsys.capella.core.ui.properties.sections.CapellaManagementPropertySection.diagram">
          </propertySection>
-         <propertySection tab="Extensions"
+         <propertySection tab="ExtensionsSiriusDiagram"
                class="org.polarsys.capella.core.ui.properties.sections.CapellaExtensionsPropertySection"
 			   filter="org.polarsys.capella.core.ui.properties.sections.CapellaExtensionsPropertySection"
                id="org.polarsys.capella.core.ui.properties.sections.CapellaExtensionsPropertySection.diagram">
          </propertySection>
-         <propertySection tab="Management"
+         <propertySection tab="ManagementSiriusDiagram"
                class="org.polarsys.capella.core.ui.properties.sections.DiagramManagementPropertySection"
 			   filter="org.polarsys.capella.core.ui.properties.sections.DiagramManagementPropertySection"
                id="org.polarsys.capella.core.ui.properties.sections.DiagramManagementPropertySection.diagram">
@@ -208,7 +208,7 @@
                   type="org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart">
             </input>
          </propertySection>
-         <propertySection tab="Base"
+         <propertySection tab="BaseSiriusDiagram"
                class="org.polarsys.capella.core.ui.properties.sections.DiagramRepresentationPropertySection"
                filter="org.polarsys.capella.core.ui.properties.sections.DiagramRepresentationPropertySection"
                id="org.polarsys.capella.core.ui.properties.section.DiagramRepresentationPropertySection.diagram">
@@ -220,12 +220,12 @@
    </extension>
    <extension point="org.eclipse.ui.views.properties.tabbed.propertySections">
 	  <propertySections contributorId="org.eclipse.sirius.table.ui.EditorID">
-         <propertySection tab="Management"
+         <propertySection tab="ManagementSiriusTable"
                class="org.polarsys.capella.core.ui.properties.sections.CapellaManagementPropertySection"
 			   filter="org.polarsys.capella.core.ui.properties.sections.CapellaManagementPropertySection"
                id="org.polarsys.capella.core.ui.properties.sections.CapellaManagementPropertySection.table">
          </propertySection>
-         <propertySection tab="Extensions"
+         <propertySection tab="ExtensionsSiriusTable"
                class="org.polarsys.capella.core.ui.properties.sections.CapellaExtensionsPropertySection"
 			   filter="org.polarsys.capella.core.ui.properties.sections.CapellaExtensionsPropertySection"
                id="org.polarsys.capella.core.ui.properties.sections.CapellaExtensionsPropertySection.table">
