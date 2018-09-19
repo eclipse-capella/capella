@@ -45,6 +45,8 @@ import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.swt.graphics.RGB;
 import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.helpers.SimpleOrientedGraph;
+import org.polarsys.capella.core.commands.preferences.service.ScopedCapellaPreferencesStore;
+import org.polarsys.capella.core.commands.preferences.util.PreferencesHelper;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.AbstractFunctionalChainContainer;
@@ -58,9 +60,11 @@ import org.polarsys.capella.core.data.helpers.fa.services.FunctionExt;
 import org.polarsys.capella.core.data.interaction.AbstractCapability;
 import org.polarsys.capella.core.data.interaction.FunctionalChainAbstractCapabilityInvolvement;
 import org.polarsys.capella.core.data.oa.OperationalAnalysis;
+import org.polarsys.capella.core.data.oa.OperationalProcess;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.FunctionalChainExt;
 import org.polarsys.capella.core.sirius.analysis.constants.MappingConstantsHelper;
+import org.polarsys.capella.core.sirius.analysis.preferences.DiagramsPreferencePage;
 import org.polarsys.capella.core.sirius.analysis.tool.HashMapSet;
 
 /**
@@ -778,40 +782,53 @@ public class FunctionalChainServices {
 		 return null;
 	 }
 
-	 public boolean isCompleteFunctionalChain(FunctionalChain fc, DDiagram diagram) {
-		 Set<FunctionalExchange> visibleFE = new HashSet<FunctionalExchange>();
-		 for (DEdge anEdge : diagram.getEdges()) {
-			 if ((anEdge.getTarget() != null) && (anEdge.getTarget() instanceof FunctionalExchange)) {
-				 visibleFE.add((FunctionalExchange) anEdge.getTarget());
-			 }
-		 }
-
-		 for (FunctionalExchange anElement : FunctionalChainExt.getFlatFunctionalExchanges(fc)) {
-			 if (!(visibleFE.contains(anElement))) {
-				 return false;
-			 }
-		 }
-		 return true;
-	 }
+  public boolean isCompleteFunctionalChain(FunctionalChain fc, DDiagram diagram) {
+    Set<FunctionalExchange> functionalExchangesOnTheChain = FunctionalChainExt.getFlatFunctionalExchanges(fc);
+    
+    int numberOfVisibleRelatedFEEdges = 0;
+    
+    for (DEdge anEdge : diagram.getEdges()) {
+      if (anEdge.isVisible()) {
+        EObject edgeTarget = anEdge.getTarget();
+        if (edgeTarget instanceof FunctionalExchange && functionalExchangesOnTheChain.contains(edgeTarget)) {
+          numberOfVisibleRelatedFEEdges++;
+        }
+      }
+    }
+    
+    return numberOfVisibleRelatedFEEdges == functionalExchangesOnTheChain.size();
+  }
 
 	 public String getFunctionalChainLabel(FunctionalChain fc, DDiagram diagram) {
 		 String label = EObjectExt.getText(fc);
 
 		 boolean isComplete = isCompleteFunctionalChain(fc, diagram);
 		 boolean isValid = FunctionalChainExt.isFunctionalChainValid(fc);
-		 if (!isComplete || !isValid) {
+		 
+		 boolean displayIncompleteLabel = !isComplete;
+		 boolean displayInvalidLabel = !isValid;
+		 
+		 if (fc instanceof OperationalProcess) {
+		   displayIncompleteLabel &= ScopedCapellaPreferencesStore.getBoolean(DiagramsPreferencePage.NAME_PREF_DISPLAY_INCOMPLETE_IN_OPERATIONAL_PROCESS_LABEL, PreferencesHelper.getProject(fc));
+		   displayInvalidLabel &= ScopedCapellaPreferencesStore.getBoolean(DiagramsPreferencePage.NAME_PREF_DISPLAY_INVALID_IN_OPERATIONAL_PROCESS_LABEL, PreferencesHelper.getProject(fc));
+		 } else {
+		   displayIncompleteLabel &= ScopedCapellaPreferencesStore.getBoolean(DiagramsPreferencePage.NAME_PREF_DISPLAY_INCOMPLETE_IN_FUNCTIONAL_CHAIN_LABEL, PreferencesHelper.getProject(fc));
+		   displayInvalidLabel &= ScopedCapellaPreferencesStore.getBoolean(DiagramsPreferencePage.NAME_PREF_DISPLAY_INVALID_IN_FUNCTIONAL_CHAIN_LABEL, PreferencesHelper.getProject(fc));
+		 }
+		 
+		 if (displayIncompleteLabel || displayInvalidLabel) {
 			 label = label + " ("; //$NON-NLS-1$
 		 }
-		 if (!isComplete) {
+		 if (displayIncompleteLabel) {
 			 label = label + INCOMPLETE_FUNCTIONAL_CHAIN_LABEL;
 		 }
-		 if (!isComplete && !isValid) {
+		 if (displayIncompleteLabel && displayInvalidLabel) {
 			 label = label + ", "; //$NON-NLS-1$
 		 }
-		 if (!isValid) {
+		 if (displayInvalidLabel) {
 			 label = label + INVALID_FUNCTIONAL_CHAIN_LABEL;
 		 }
-		 if (!isComplete || !isValid) {
+		 if (displayIncompleteLabel || displayInvalidLabel) {
 			 label = label + ")"; //$NON-NLS-1$
 		 }
 		 return label;

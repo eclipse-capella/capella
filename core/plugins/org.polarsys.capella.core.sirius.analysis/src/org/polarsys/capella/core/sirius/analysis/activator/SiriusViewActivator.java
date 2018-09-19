@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,6 +22,7 @@ import org.eclipse.sirius.query.legacy.preferences.AcceleoPreferenceConstants;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
+import org.polarsys.capella.core.sirius.analysis.preferences.DiagramPreferenceInitializer;
 
 public class SiriusViewActivator extends AbstractUIPlugin {
 
@@ -37,6 +38,7 @@ public class SiriusViewActivator extends AbstractUIPlugin {
 
   /**
    * {@inheritDoc}
+   * 
    * @see org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext)
    */
   @Override
@@ -54,15 +56,19 @@ public class SiriusViewActivator extends AbstractUIPlugin {
     // use java services before specific acceleo files
     IEclipsePreferences preferences = DefaultScope.INSTANCE.getNode(AcceleoInterpreterPlugin.PLUGIN_ID);
     preferences.putBoolean(AcceleoPreferenceConstants.PREF_USE_SPECIFIC_SCRIPTS_FIRST, false);
-    
+
     // Modify palette tool name with a custom end user label
     Messages.ArrangeBorderNodesAction_actionText = CapellaMessages.ArrangeBorderNodesAction_actionText;
     Messages.ArrangeBorderNodesAction_commandLabel = CapellaMessages.ArrangeBorderNodesAction_commandLabel;
     Messages.ArrangeBorderNodesAction_toolbarActionText = CapellaMessages.ArrangeBorderNodesAction_toolbarActionText;
+
+    // Initialize preference values
+    new DiagramPreferenceInitializer();
   }
 
   /**
    * {@inheritDoc}
+   * 
    * @see org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext)
    */
   @Override
