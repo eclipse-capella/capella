@@ -54,7 +54,8 @@ public class SwitchPhysicalLinkCategoryHidingInternalEdgesTestCase extends Abstr
     
     diagramContext.hasHiddenView(PORT_1_INTERNAL_PHYSICAL_PATH_IN_LA_4);
     
-    diagramContext.hasHiddenView(PL_2);
+    // The physical link is removed after switching
+    diagramContext.hasntView(PL_2);
     
     // Switch again to physical link
     new SwitchTool(diagramContext, IToolNameConstants.TOOL_LAB_INSERT_REMOVE_PHYSICAL_LINKS_CATEGORIES)

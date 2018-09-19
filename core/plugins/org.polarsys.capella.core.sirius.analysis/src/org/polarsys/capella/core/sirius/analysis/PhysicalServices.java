@@ -65,6 +65,7 @@ import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.DeployableElement;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.cs.PhysicalLink;
+import org.polarsys.capella.core.data.cs.PhysicalLinkCategory;
 import org.polarsys.capella.core.data.cs.PhysicalLinkEnd;
 import org.polarsys.capella.core.data.cs.PhysicalPath;
 import org.polarsys.capella.core.data.cs.PhysicalPathInvolvement;
@@ -757,10 +758,10 @@ public class PhysicalServices {
     HashMap<PhysicalLink, DEdge> displayedPhysicalLinks = computePhysicalLinkToEdgeMap(diagram);
     
     // Find displayed Internal Links
-    HashMap<PhysicalPath, Set<DEdge>> displayedIL = computePhysicalPathToEdgesMap(diagram);
+    HashMap<PhysicalPath, Set<DEdge>> physicalPathToVisibleInternalEdges = computePhysicalPathToEdgesMap(diagram);
 
     // Remove internal Links if the physical path is not displayed
-    for (Entry<PhysicalPath, Set<DEdge>> entry : displayedIL.entrySet()) {
+    for (Entry<PhysicalPath, Set<DEdge>> entry : physicalPathToVisibleInternalEdges.entrySet()) {
       PhysicalPath physicalPath = entry.getKey();
       if (!displayedPaths.containsKey(physicalPath)) {
         Set<DEdge> physicalPathEdges = entry.getValue();
@@ -770,21 +771,21 @@ public class PhysicalServices {
       }
     }
 
-    Set<DEdge> updatedInternalLinks = new HashSet<>();
     for (Entry<PhysicalPath, DNode> entry : displayedPaths.entrySet()) {
       PhysicalPath physicalPath = entry.getKey();
       Set<DEdge> internalLinks = updatePhysicalPathInternalLinks(physicalPath, displayedPhysicalLinks);
-      updatedInternalLinks.addAll(internalLinks);
     }
 
-    // Destroy old internal links
-    for (Set<DEdge> anInternalLinkSet : displayedIL.values()) {
-      for (DEdge anInternalLink : anInternalLinkSet) {
-        if (!updatedInternalLinks.contains(anInternalLink)) {
-          DiagramServices.getDiagramServices().removeEdgeView(anInternalLink);
+    // Remove INVALID internal link edge
+    for (Entry<PhysicalPath, Set<DEdge>> entry : physicalPathToVisibleInternalEdges.entrySet()) {
+      Set<DEdge> edges = entry.getValue();
+      for (DEdge edge : edges) {
+        if (!isValidInternalLinkEdge(edge.getSourceNode(), edge.getTargetNode())) {
+          DiagramServices.getDiagramServices().removeEdgeView(edge);
         }
       }
     }
+    
   }
   
   public void updatePhysicalPathStyles(DDiagram diagram) {
@@ -826,7 +827,6 @@ public class PhysicalServices {
           customizePhysicalLinkEdgeStyle(currentEdge, color);
         }
       }
-      RefreshSiriusElement.refresh(node);
     }
 
     // Reset physical links with no physical path

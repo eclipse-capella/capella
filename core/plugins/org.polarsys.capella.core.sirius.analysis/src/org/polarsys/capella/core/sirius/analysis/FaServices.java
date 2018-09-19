@@ -5089,12 +5089,7 @@ public class FaServices {
   
   public EObject switchFECategories(DDiagramContents content, DSemanticDecorator context,
       Collection<ExchangeCategory> selectedExchangeCategories, boolean showHiddenExchanges ) {
-    // TODO: Comment the line below because updateFECategories does not do anything
-//    FaServices.getFaServices().updateFECategories(content);
     
-    // TODO: It is useless. The invisible exchange category edges will be shown below in showHideExchangeCategoryEdges without
-    // considering the visibility of edges;
-//    switchFEInvisibleCategories(content, context, selectedExchangeCategories);
     DDiagram currentDiagram = content.getDDiagram();
     
     Collection<DDiagramElement> functionRelatedDiagramElements = new HashSet<>();
@@ -5112,9 +5107,6 @@ public class FaServices {
     // 2. SHOW / HIDE EDGES OF FUNCTIONAL EXCHANGES
     showHideFunctionalExchanges(functionRelatedDiagramElements, selectedExchangeCategories,
         showHideExchangeCategoryService, showHiddenExchanges);
-    
-//    TODO: Comment the line below because updateFECategories does not do anything
-//    FaServices.getFaServices().updateFECategories(content);
 
     // 3. 
     content.commitDeferredActions();

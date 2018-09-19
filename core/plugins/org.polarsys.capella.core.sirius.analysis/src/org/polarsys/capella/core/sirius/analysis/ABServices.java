@@ -1205,8 +1205,21 @@ public class ABServices {
     return (getRelatedPhysicalLinks(sourcePart).size() == 0);
 
   }
-
+  
   public boolean isValidABFunctionalExchangeEdge(EObject context, DSemanticDecorator sourceView,
+      DSemanticDecorator targetView) {
+    
+    boolean isValid = true;
+    
+    isValid &= (context instanceof FunctionalExchange);
+    isValid &= (sourceView != targetView);
+    isValid &= !CapellaServices.getService().areInternalEdgePorts(sourceView, targetView);
+    isValid &= !FaServices.getFaServices().isACategoryDisplayed(context, sourceView, targetView);
+    
+    return isValid;
+  }
+
+  public boolean isValidABInteractionEdge(EObject context, DSemanticDecorator sourceView,
       DSemanticDecorator targetView) {
     if (!(context instanceof FunctionalExchange) || (sourceView == targetView)) {
       return false;

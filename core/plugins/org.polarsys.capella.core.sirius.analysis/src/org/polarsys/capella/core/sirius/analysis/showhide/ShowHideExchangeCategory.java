@@ -242,8 +242,8 @@ public class ShowHideExchangeCategory extends ShowHideFunctionalExchange {
   @Override
   protected boolean hideInsteadOfRemoveView(DDiagramElement element, DiagramContext context) {
     EObject target = element.getTarget();
-    // We want to hide (not remove views) of FE and FP if diagram is synchronized
-    if ((target != null) && ((target instanceof FunctionalExchange) || (target instanceof FunctionPort))) {
+    // We want to hide (not remove views) of the port if diagram is synchronized
+    if (target instanceof FunctionPort) {
       return getContent().getDDiagram().isSynchronized();
     }
     return super.hideInsteadOfRemoveView(element, context);
