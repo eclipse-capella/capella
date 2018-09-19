@@ -256,6 +256,16 @@ public class CapellaCloneDiagramCommand extends AbstractCommand {
   }
 
   /**
+   * Returns a list of clones DRepresentationDescriptor.
+   * 
+   * @return _clones.
+   */
+  @Override
+  public Collection<DRepresentationDescriptor> getResult() {
+    return _clones;
+  }
+
+  /**
    * Clone event type.
    */
   protected enum EventType {

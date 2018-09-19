@@ -49,6 +49,7 @@ import org.eclipse.ui.handlers.IHandlerService;
 import org.eclipse.ui.progress.UIJob;
 import org.polarsys.capella.core.explorer.activity.ui.actions.OpenActivityExplorerAction;
 import org.polarsys.capella.core.model.obfuscator.actions.ObfuscateSessionAction;
+import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaCloneDiagramCommand;
 import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaCopyToClipboardCommand;
 import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaPasteCommand;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.RenameResourceAction;
@@ -409,5 +410,18 @@ public class GuiActions {
     CapellaPasteCommand capellaPasteCommand = new CapellaPasteCommand(ted, targetElement, null,
         CommandParameter.NO_INDEX);
     ted.getCommandStack().execute(capellaPasteCommand);
+  }
+  
+  /**
+   * Clone a diagram and all this attach element
+   * 
+   * @param descriptors
+   *          the representations to clone 
+
+   */
+  public static Collection<DRepresentationDescriptor> CloneDiagram(Collection<DRepresentationDescriptor> descriptors) {
+    CapellaCloneDiagramCommand capellaCloneDiagramCommand = new CapellaCloneDiagramCommand(descriptors);
+    capellaCloneDiagramCommand.execute();
+    return capellaCloneDiagramCommand.getResult();
   }
 }
