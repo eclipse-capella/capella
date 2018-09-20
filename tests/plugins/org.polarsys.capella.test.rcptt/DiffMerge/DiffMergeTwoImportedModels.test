@@ -6,8 +6,8 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _bgBLEEJQEeiEYaQR9fY4DQ
-Runtime-Version: 2.3.0.201801290011
-Save-Time: 4/17/18 5:25 PM
+Runtime-Version: 2.3.0.201806262310
+Save-Time: 9/19/18 6:29 PM
 Testcase-Type: ecl
 
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
@@ -27,7 +27,7 @@ get-window "EMF Diff/Merge" | get-group "Comparison method" | get-button "Config
 // The criterions are "Technical IDs", "Property IDs"
 // The fine grained criterion is "Prefer Sirius intrinsic ID when possible."
 get-window "Comparison Configuration" | get-group "Predefined usages" 
-    | get-button "Diff/merge between different versions of the same model" | get-property selected | equals true 
+    | get-button "Capella default: different versions of the same Capella / Team for Capella model" | get-property selected | equals true 
     | verify-true
 with [get-window "Comparison Configuration"] {
     get-button "Show advanced settings >>" | click
@@ -36,64 +36,61 @@ with [get-window "Comparison Configuration"] {
 with [get-window "Comparison Configuration" | get-group "Absolute criteria"] {
     get-button "Technical IDs" | get-property selected | equals true | verify-true
     get-button "Property IDs" | get-property selected | equals true | verify-true
-    get-button "Prefer Sirius intrinsic ID when possible." | get-property selected | equals true | verify-true
 }
 
 // Execute the diff/merge command
 get-window "Comparison Configuration" | get-button OK | click
 get-window "EMF Diff/Merge" | get-button Finish | click
 
-// Verify that the 2 models have 564 differences in terms of diagram contents
-get-editor "Compare ('TestModel' - 'TestModel')" | get-tree | get-item -path "TestModel.aird \\(564\\)" 
-    | get-property "getText()" | equals "TestModel.aird (564)" | verify-true
+// Verify that the 2 models have 293 differences in terms of diagram contents
+get-editor "Compare ('TestModel' - 'TestModel')" | get-tree | get-item -path "TestModel.aird \\(293\\)" 
+    | get-property "getText()" | equals "TestModel.aird (293)" | verify-true
 
 with [get-editor "Compare ('TestModel' - 'TestModel')" | get-tree] {
-// Verify that the 2 models have 222 differences in terms of diagram contents at the OA level
-    get-item -path "TestModel.aird \\(564\\)/Operational Analysis \\(222\\)" | get-property "getText()" 
-        | equals "Operational Analysis (222)" | verify-true
-// Verify that the 2 models have 222 differences in the diagram OABD
+// Verify that the 2 models have 113 differences in terms of diagram contents at the OA level
+    get-item -path "TestModel.aird \\(293\\)/Operational Analysis \\(113\\)" | get-property "getText()" 
+        | equals "Operational Analysis (113)" | verify-true
+// Verify that the 2 models have 112 differences in the diagram OABD
     get-item 
-        -path "TestModel.aird \\(564\\)/Operational Analysis \\(222\\)/\\[OABD\\] Root Operational Activity \\(222\\)" 
-        | get-property "getText()" | equals "[OABD] Root Operational Activity (222)" | verify-true
-// Verify that the 2 models have 342 differences in terms of diagram contents at the SA level
-    get-item -path "TestModel.aird \\(564\\)/System Analysis \\(342\\)" | get-property "getText()" 
-        | equals "System Analysis (342)" | verify-true
-// Verify that the 2 models have 342 differences in the diagram SDFB
-    get-item -path "TestModel.aird \\(564\\)/System Analysis \\(342\\)/\\[SDFB\\] Root System Function \\(342\\)" 
-        | get-property "getText()" | equals "[SDFB] Root System Function (342)" | verify-true
+        -path "TestModel.aird \\(293\\)/Operational Analysis \\(113\\)/\\[OABD\\] Root Operational Activity \\(112\\)" 
+        | get-property "getText()" | equals "[OABD] Root Operational Activity (112)" | verify-true
+// Verify that the 2 models have 173 differences in terms of diagram contents at the SA level
+    get-item -path "TestModel.aird \\(293\\)/System Analysis \\(173\\)" | get-property "getText()" 
+        | equals "System Analysis (173)" | verify-true
+// Verify that the 2 models have 172 differences in the diagram SDFB
+    get-item -path "TestModel.aird \\(293\\)/System Analysis \\(173\\)/\\[SDFB\\] Root System Function \\(172\\)" 
+        | get-property "getText()" | equals "[SDFB] Root System Function (172)" | verify-true
 }
 
 // Deactivate the filter that hides differences in terms of diagram contents.
 get-editor "Compare ('TestModel' - 'TestModel')" | get-button -index 9 | click
-get-menu -path "Show diagram contents" | click
+
 with [get-editor "Compare ('TestModel' - 'TestModel')" | get-tree] {
-// Verify that the 2 models have 222 differences in the diagram OABD
+// Verify that the 2 models have 111 differences in the diagram OABD
     get-item 
-        -path "TestModel.aird \\(564\\)/Operational Analysis \\(222\\)/\\[OABD\\] Root Operational Activity \\(222\\)/Representation: \\[OABD\\] Root Operational Activity \\(222\\)" 
-        | get-property "getText()" | equals "Representation: [OABD] Root Operational Activity (222)" | verify-true
+        -path "TestModel.aird \\(293\\)/Operational Analysis \\(113\\)/\\[OABD\\] Root Operational Activity \\(112\\)/Representation: \\[OABD\\] Root Operational Activity \\(111\\)" 
+        | get-property "getText()" | equals "Representation: [OABD] Root Operational Activity (111)" | verify-true
 // Verify that the 2 models have 86 differences related to "Annotation Entry GMF_DIAGRAMS" in the OABD diagram
     get-item 
-        -path "TestModel.aird \\(564\\)/Operational Analysis \\(222\\)/\\[OABD\\] Root Operational Activity \\(222\\)/Representation: \\[OABD\\] Root Operational Activity \\(222\\)/Annotation Entry GMF_DIAGRAMS \\(86\\)" 
+        -path "TestModel.aird \\(293\\)/Operational Analysis \\(113\\)/\\[OABD\\] Root Operational Activity \\(112\\)/Representation: \\[OABD\\] Root Operational Activity \\(111\\)/Annotation Entry GMF_DIAGRAMS \\(86\\)" 
         | get-property "getText()" | equals "Annotation Entry GMF_DIAGRAMS (86)" | verify-true
-// Verify that the 2 models have 342 differences in the diagram SDFB
+// Verify that the 2 models have 171 differences in the diagram SDFB
     get-item 
-        -path "TestModel.aird \\(564\\)/System Analysis \\(342\\)/\\[SDFB\\] Root System Function \\(342\\)/Representation: \\[SDFB\\] Root System Function \\(342\\)" 
-        | get-property "getText()" | equals "Representation: [SDFB] Root System Function (342)" | verify-true
+        -path "TestModel.aird \\(293\\)/System Analysis \\(173\\)/\\[SDFB\\] Root System Function \\(172\\)/Representation: \\[SDFB\\] Root System Function \\(171\\)" 
+        | get-property "getText()" | equals "Representation: [SDFB] Root System Function (171)" | verify-true
 // Verify that the 2 models have 128 differences related to "Annotation Entry GMF_DIAGRAMS" in the SDFB diagram
     get-item 
-        -path "TestModel.aird \\(564\\)/System Analysis \\(342\\)/\\[SDFB\\] Root System Function \\(342\\)/Representation: \\[SDFB\\] Root System Function \\(342\\)/Annotation Entry GMF_DIAGRAMS \\(128\\)" 
+        -path "TestModel.aird \\(293\\)/System Analysis \\(173\\)/\\[SDFB\\] Root System Function \\(172\\)/Representation: \\[SDFB\\] Root System Function \\(171\\)/Annotation Entry GMF_DIAGRAMS \\(128\\)" 
         | get-property "getText()" | equals "Annotation Entry GMF_DIAGRAMS (128)" | verify-true
 }
 // Activate again the filter that hides differences in terms of diagram contents.
 get-editor "Compare ('TestModel' - 'TestModel')" | get-button -index 9 | click
-get-menu -path "Show diagram contents" | click
 
 // Merge the 2 models from right to left
 with [get-editor "Compare ('TestModel' - 'TestModel')"] {
-    get-tree | select "TestModel.aird (564)"
-    get-button "Copy to the left" | click
+    get-tree | select "TestModel.aird (293)"
+    get-button "Transfer changes to the right" | click
 }
-get-window "Merge Operation" | get-button OK | click
 get-window "Merge Operation" | get-button OK | click
 // Save the results of merge operation
 get-button "Save (M1+S)" | click
@@ -110,6 +107,7 @@ with [get-view "Capella Project Explorer" | get-tree] {
 }
 // Verify that we have now 0 difference between 2 models.
 get-window "EMF Diff/Merge" | get-button Finish | click
+get-window "EMF Diff/Merge" | get-button OK | click
 get-editor "Compare ('TestModel' - 'TestModel')" | get-tree | get-property "getChildren().length" | equals 0 
     | verify-true
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--
