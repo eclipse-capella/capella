@@ -1,0 +1,37 @@
+<!--
+  Copyright (c) 2018 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+
+
+= Viewpoint activation =
+
+Before using the Mode & States viewpoint, it needs to be activated.
+In order to do so, you need to:
+
+Open the Viewpoint Manager view by choosing Window / Show View / Other...
+
+[[Image:showview.png]]
+
+Type viewpoint in the search field and choose the Viewpoint Manager view
+
+[[Image:showview2.png]]
+
+The Viewpoint Manager view opens. Select a model element in order to synchronize the view with the status of a model.
+By default, the viewpoint is "unreferenced"
+
+[[Image:viewpointmanager.png]]
+
+Right click on the "ms" viewpoint and select reference
+
+[[Image:activation.png]]
+
+The viewpoint is now "active" and can be used
+
+[[Image:activated.png]]

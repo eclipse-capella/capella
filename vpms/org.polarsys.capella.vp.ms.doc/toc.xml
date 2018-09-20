@@ -5,6 +5,9 @@
    <topic href="html/introduction.html" label="Introduction">
       <anchor id="Introduction"/>
    </topic>
+   <topic href="html/activation.html" label="Viewpoint activation">
+      <anchor id="Activation"/>
+   </topic>
    <topic href="html/configurations.html" label="Working with Configurations">
       <anchor id="Configurations"/>
    </topic>
