@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,21 +17,28 @@ import java.util.List;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.UnexecutableCommand;
-import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.business.api.logger.RuntimeLoggerInterpreter;
+import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
+import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
+import org.eclipse.sirius.tools.api.interpreter.InterpreterRegistry;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
-import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.OperationAction;
-import org.junit.Assert;
+import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
+import org.polarsys.capella.core.sirius.analysis.tool.StringUtil;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.ArgumentType;
 
 /**
  */
 public class OperationActionToolDescriptionWrapper extends AbstractCommonToolWrapper {
 
-  public OperationActionToolDescriptionWrapper(AbstractToolDescription tool, IDiagramCommandFactory commandFactory) {
+  public OperationActionToolDescriptionWrapper(OperationAction tool, IDiagramCommandFactory commandFactory) {
     super(tool, commandFactory);
   }
 
@@ -44,32 +51,37 @@ public class OperationActionToolDescriptionWrapper extends AbstractCommonToolWra
 
     Command cmd = UnexecutableCommand.INSTANCE;
 
-    if (isContextOk()) {
-      AbstractToolDescription tool = _tool;
-      OperationAction operationAction = findOperationAction(tool);
-      Assert.assertNotNull("Warning ! Operation Action not found for tool " + tool.getName(), operationAction); //$NON-NLS-1$
+    if (isContextOk() && isPreconditionOk()) {
       Collection<DSemanticDecorator> col = (Collection<DSemanticDecorator>) _arguments.get(ArgumentType.COLLECTION);
-      cmd = _diagramCommandFactory.buildOperationActionFromTool(operationAction, col);
+      cmd = _diagramCommandFactory.buildOperationActionFromTool((OperationAction) _tool, col);
     }
     return cmd;
   }
 
-  /**
-   * Find an OperationAction in a tool eContents
-   * @param eContents
-   * @return the first OperationAction encounter in a tool eContents
-   */
-  private OperationAction findOperationAction(AbstractToolDescription tool) {
-    boolean found = false;
-    OperationAction operationActionResult = null;
-    EList<EObject> eContents = tool.eContents();
-    for (int i = 0; i < eContents.size() && !found; i++) {
-      EObject content = eContents.get(i);
-      if (content instanceof OperationAction) {
-        operationActionResult = (OperationAction) content;
+  public boolean isPreconditionOk() {
+    final String precondition = _tool.getPrecondition();
+    if ((precondition != null) && !StringUtil.isEmpty(precondition)) {
+      
+      Collection<DSemanticDecorator> col = (Collection<DSemanticDecorator>) _arguments.get(ArgumentType.COLLECTION);
+      EObject semantic = ((DDiagramElement)col.iterator().next()).getTarget();
+       InterpreterRegistry interpreterRegistry = SiriusPlugin.getDefault().getInterpreterRegistry();
+      final IInterpreter interpreter = interpreterRegistry.getInterpreter(semantic);
+
+      interpreter.setVariable("views", col);
+      interpreter.setVariable(IInterpreterSiriusVariables.DIAGRAM, ((DDiagramElement)col.iterator().next()).getParentDiagram());
+
+      RuntimeLoggerInterpreter decorate = RuntimeLoggerManager.INSTANCE.decorate(interpreter);
+      EAttribute abstractToolDescription_Precondition = ToolPackage.eINSTANCE.getAbstractToolDescription_Precondition();
+
+      final boolean result = decorate.evaluateBoolean(semantic, _tool, abstractToolDescription_Precondition);
+      if (!result) {
+        return false;
       }
+
+      interpreter.unSetVariable(IInterpreterSiriusVariables.DIAGRAM);
+      interpreter.unSetVariable("views");
     }
-    return operationActionResult;
+    return true;
   }
 
   /**

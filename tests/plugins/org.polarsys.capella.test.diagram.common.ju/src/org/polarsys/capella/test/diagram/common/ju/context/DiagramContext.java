@@ -103,6 +103,7 @@ public class DiagramContext extends SessionContext {
       return (DSemanticDiagram) _diagram;
     }
     DSemanticDecorator view = null;
+    // Try to retrieve a view previously created by a tool
     if (getViewObjectMap().containsKey(semanticIdentifier)) {
       view = getViewObjectMap().get(semanticIdentifier);
       // view can be stored in the map but not present anymore on the diagram
@@ -112,10 +113,18 @@ public class DiagramContext extends SessionContext {
       }
     }
     if (view == null) {
-      // Catch to avoid The method getView(String) is ambiguous for the type DiagramContext
+      // Try to retrieve the view based on the semantic element id
       view = getView((EObject) getSemanticElement(semanticIdentifier));
       if (view instanceof DDiagramElement) {
         putView(semanticIdentifier, (DDiagramElement) view);
+      }
+    }
+    if (view == null) {
+      // Try to retrieve the view based on the uid of the view
+      EObject o = _diagram.eResource().getEObject(semanticIdentifier);
+      if (o instanceof DDiagramElement) {
+        putView(semanticIdentifier, (DDiagramElement) o);
+        view = (DDiagramElement)o;
       }
     }
     return view;
@@ -250,6 +259,11 @@ public class DiagramContext extends SessionContext {
 
   public DiagramContext open() {
     new OpenDiagramStep(this).run();
+    return this;
+  }
+
+  public DiagramContext close() {
+    org.polarsys.capella.test.diagram.common.ju.wrapper.utils.DiagramHelper.closeEditor(getSession(), getDiagram());
     return this;
   }
 

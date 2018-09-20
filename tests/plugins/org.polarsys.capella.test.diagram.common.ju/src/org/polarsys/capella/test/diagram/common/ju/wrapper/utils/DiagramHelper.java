@@ -557,6 +557,18 @@ public class DiagramHelper {
   }
 
   /**
+   * Close a 'diagram'
+   * 
+   * @param session
+   * @param diagram
+   * @return
+   */
+  public static void closeEditor(Session session, DDiagram diagram) {
+    IEditorPart editor = getDiagramEditor(session, diagram);
+    DialectUIManager.INSTANCE.closeEditor(editor, true);
+  }
+  
+  /**
    * Open a 'diagram' e.g. a {@link DRepresentation}.
    * 
    * @param session
@@ -797,6 +809,11 @@ public class DiagramHelper {
     Assert.assertTrue(data instanceof Diagram);
     final Diagram diagram = (Diagram) data;
     return diagram;
+  }
+
+  public static boolean isDiagramElementSelectable(DDiagramElement element) {
+    DDiagramElementQuery query = new DDiagramElementQuery(element);
+    return !(query.isIndirectlyCollapsed() || query.isFiltered() || query.isIndirectlyHidden() || query.isIndirectlyFolded());
   }
 
   public static boolean isDiagramElementFiltered(DDiagramElement element) {

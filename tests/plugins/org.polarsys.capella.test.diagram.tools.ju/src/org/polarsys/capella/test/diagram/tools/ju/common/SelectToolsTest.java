@@ -1,0 +1,96 @@
+/*******************************************************************************
+ * Copyright (c) 2018 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
+package org.polarsys.capella.test.diagram.tools.ju.common;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
+
+import org.eclipse.sirius.business.api.dialect.DialectManager;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.diagram.AbstractDNode;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DNodeContainer;
+import org.eclipse.sirius.diagram.description.DiagramDescription;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.polarsys.capella.test.diagram.common.ju.api.AbstractDiagramTestCase;
+import org.polarsys.capella.test.diagram.common.ju.context.CommonDiagram;
+import org.polarsys.capella.test.diagram.common.ju.context.DiagramContext;
+import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.DiagramHelper;
+import org.polarsys.capella.test.framework.context.SessionContext;
+
+/**
+ * Test whether the selection tools are properly selecting expected elements
+ */
+public class SelectToolsTest extends AbstractDiagramTestCase {
+
+  protected SessionContext sc;
+  protected Session s;
+
+  protected Collection<DiagramDescription> testedDiagrams = new HashSet<DiagramDescription>();
+
+  @Override
+  protected String getRequiredTestModel() {
+    return "In-Flight Entertainment System"; //$NON-NLS-1$
+  }
+
+  @Override
+  public void test() throws Exception {
+
+    s = getSession(getRequiredTestModel());
+    sc = new SessionContext(s);
+
+    // For each kind of diagrams from sample project, check if select tools are working.
+    HashSet<DiagramDescription> descriptions = new HashSet<DiagramDescription>();
+    for (DRepresentation rep : DialectManager.INSTANCE.getAllRepresentations(s)) {
+      if (rep instanceof DDiagram) {
+        DDiagram diagram = (DDiagram) rep;
+        if (!descriptions.contains(diagram.getDescription())) {
+          descriptions.add(diagram.getDescription());
+          testCommonTools(diagram);
+        }
+      }
+    }
+  }
+
+  protected void testCommonTools(DDiagram rep) {
+
+    CommonDiagram cd = new CommonDiagram(sc, rep);
+    DiagramContext dc = cd.open();
+
+    // For each kind of elements displayed in the diagram, check if select tools are working.
+    HashSet<DiagramElementMapping> mapping = new HashSet<DiagramElementMapping>();
+
+    for (DDiagramElement de : new ArrayList<DDiagramElement>(dc.getDiagram().getOwnedDiagramElements())) {
+      if (DiagramHelper.isDiagramElementSelectable(de)) {
+        if (!mapping.contains(de.getDiagramElementMapping())) {
+          mapping.add(de.getDiagramElementMapping());
+          if (de instanceof DNodeContainer) {
+            cd.selectOwnedElements(de.getUid());
+          }
+          if (de instanceof AbstractDNode) {
+            cd.selectRelatedEdges(de.getUid());
+          }
+          if (de instanceof AbstractDNode) {
+            cd.selectOwnedPorts(de.getUid());
+          }
+          cd.selectSameType(de.getUid());
+          cd.selectSameMapping(de.getUid());
+        }
+      }
+    }
+
+    dc.close();
+  }
+
+}
