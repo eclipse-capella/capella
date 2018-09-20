@@ -6,7 +6,7 @@ Element-Version: 3.0
 External-Reference: 
 Id: _4W6WAKnCEee0yuaysMB3Rg
 Runtime-Version: 2.3.0.201806262310
-Save-Time: 7/18/18 10:48 AM
+Save-Time: 9/20/18 2:15 PM
 Testcase-Type: ecl
 
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
@@ -26,49 +26,17 @@ get-view "Capella Project Explorer" | get-tree | get-item ConfigProject1 | get-p
 get-view "Capella Project Explorer" | get-tree | get-menu "New/Capella Project" | click
 with [get-window "New Capella Project"] {
     get-editbox | set-text ModelProject
-    with [get-button "Next >"] {
-        click
-        click
-    }
-}
-//Select all viewpoints
-with [get-window "New Capella Project" | get-table] {
-    select ""
-    get-cell 0 0 | check
-}
-with [get-window "New Capella Project" | get-table] {
-    select [get-item "" -index 1]
-    get-cell 1 0 | check
-}
-with [get-window "New Capella Project" | get-table] {
-    select [get-item "" -index 2]
-    get-cell 2 0 | check
-}
-with [get-window "New Capella Project" | get-table] {
-    select [get-item "" -index 3]
-    get-cell 3 0 | check
-}
-with [get-window "New Capella Project" | get-table] {
-    select [get-item "" -index 4]
-    get-cell 4 0 | check
-}
-with [get-window "New Capella Project" | get-table] {
-    select [get-item "" -index 5]
-    get-cell 5 0 | check
-}
-with [get-window "New Capella Project" | get-table] {
-    select [get-item "" -index 6]
-    get-cell 6 0 | check
+    get-button "Next >" | click
+    get-button Finish | click
 }
 
 //Set the configuration project
-get-window "New Capella Project" | get-button "Next >" | click
-with [get-window "New Capella Project" | get-table] {
-    select ""
-    get-cell 0 0 | check
+get-view "Capella Project Explorer" | get-tree | select ModelProject | get-menu -path Properties | click
+with [get-window "Properties for ModelProject"] {
+    get-tree | select "Capella Project References"
+    get-table | get-item -path ConfigProject1 | check
+    get-button "Apply and Close" | click
 }
-
-get-window "New Capella Project" | get-button Finish | click
 
 
 //Ensure that configuration project is linked
@@ -126,7 +94,6 @@ get-view "Capella Project Explorer" | get-tree
     
     
 //Create a diagram with a Functional Exchange
-
 get-view "Capella Project Explorer" | get-tree 
     | select "ModelProject/*ModelProject.aird/ModelProject/System Analysis/System Functions/Root System Function" 
     | get-menu "New Diagram \\/ Table.../System Data Flow Blank" | click
@@ -168,8 +135,6 @@ with [get-editor "[SDFB] Root System Function"] {
         }
     }
     with [get-diagram -index 1 | get-edit-part -name "[SDFB] Root System Function"] {
-        mouse-move 765 138 -height 687 -width 1042
-        mouse-move 337 210 -height 687 -width 1042
         with [get-edit-part -name "SystemFunction 1" | get-edit-part 
             -className DNodeContainerViewNodeContainerCompartmentEditPart] {
             mouse-move 124 31 button1 -height 68 -width 148
