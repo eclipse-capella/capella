@@ -1,0 +1,57 @@
+<!--
+  Copyright (c) 2018 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+
+
+= Introduction =
+
+Purpose of the Modes & States viewpoint for Capella is to enrich the capabilities regarding the definition of Modes & States, but also the capabilities in order to analyze their consistency.
+In order to do so, the concepts of "Configurations" and "Situations" are introduced.
+
+== Definitions ==
+
+* A '''Mode'''  is a behavior '''''expected''''' of the system or a component, in some '''''chosen''''' conditions.
+* A '''State''' is a behavior '''''undergone''''' by the system or a component, in some conditions '''''imposed''''' by the environment.
+* A '''Configuration''' is a set of System or model items that are globally '''''available or unavailable''''' in a given mode or state
+* A '''Situation''' is a '''''combination''''' of states and modes representing the conditions of '''''superposition''''' of these states and modes simultaneously at a given instant.
+
+[[Image:situation.png]]
+
+== Overall Process ==
+
+The propose process for analyzing consistency of Modes & States definition is the following:
+
+
+=== 1 - Define the Modes & States of the System, Actors, Components ===
+''Insert image of a modes/states machine'' 
+
+=== 2 - Define atomic configurations ===
+Atomic configurations are defined in order to specify the elements (components, functions, ports, exchanges) which are available or not a mode or state.
+''Insert image of a Configuration Elements table and visualization on a LAB diagram'' 
+
+=== 3 - Associate atomic configurations to Modes & States ===
+[[Image:modesstatesandatomicconfig.png]]
+''Insert image of a Mode and Configuration table'' 
+
+=== 4 - Check atomic configurations consistency ===
+As several Configurations can be linked to one Mode or State, consistency of the superposition of all the configuration for each Mode or State need to be checked.
+
+=== 5 - Identify Situations of Interest ===
+A lot of combinations can be possible based on the definition of the different Modes and States.
+Only the Situations of Interest are formalized by defining their specific superposition of Modes and States.
+
+=== 6 - Define the Expected Configurations ===
+For each Situation of Interest, an Expected Configuration is defined in order to define the expected functional content (functional chains, scenarios) for the situation.
+
+=== 7 - Compare Global Computed Configurations vs. Expected Configurations  ===
+Finally, a global configuration is computed from the superposition of the atomic configuration and compared to the expected configuration.
+The capabilities of the system (in term of components, functions, ports, exchanges) in the situation is compared to the expected functional content (in term of functional chains, scenarios).
+
+[[Image:overallprocess.png]]

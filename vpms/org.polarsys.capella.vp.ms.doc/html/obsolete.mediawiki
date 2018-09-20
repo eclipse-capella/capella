@@ -1,0 +1,34 @@
+<!--
+  Copyright (c) 2018 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+
+
+= Obsolete / Deprecated Features =
+
+== Configuration Access ==
+
+''' Note: As of today, it is not advised to modify the configuration access which is by default "Full" '''
+
+During the development, it was discussed which elements a configuration may include or not. The prototype supports three different options called “Configuration Access”. The three modes will be explained with the help of the following sample model. Configuration 1 is an empty configuration:
+
+[[Image:example11.png]]
+
+'''Flat''': In this mode, a configuration may not include elements of subcomponents. Only its allocated functions, deployed/child components its owned ports and related functional chains may be included.
+For the example, the only allowed Elements for Configuration 1 would be "Child" and "Deployed".
+
+'''Subcomponents'''. In this mode, a configuration may additionally include elements of its child components, but not elements of deployed components.
+For the example, the allowed additional elements for Configuration 1 would be the Physical Port on "Child".
+
+'''Full'''  In this mode, a configuration may additionally include elements of deployed components. This is the current default mode. 
+For the example, the allowed additional elements would be the Physical Function, its port, and the component port on the deployed component.
+
+The default access mode for new Configuration elements can be changed in the Capella Modes and States Preferences:
+
+[[Image:example12.png]]

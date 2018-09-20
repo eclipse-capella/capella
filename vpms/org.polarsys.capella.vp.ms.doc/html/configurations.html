@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	</head>
+	<body>
+		<h1 id="Working_with_Configurations">Working with Configurations</h1>
+		<p>The Modes and States viewpoint adds the concept of “Configurations”. A configuration is associated to a component and describes the set of elements of the component that is active or enabled when the component is in a certain mode or state.
+			Configurations can be seen in the Project Explorer under the Component on which they are defined.</p>
+		<p>
+			<img border="0" src="example2.png"/>
+		</p>
+		<h2 id="Configuration_Element_table">Configuration Element table</h2>
+		<p>The easiest way to edit configurations for a component is by using the crosstable diagram "Configuration Elements":</p>
+		<p>
+			<img border="0" src="example3.png"/>
+		</p>
+		<p>A configuration may include functions, ports, components, and functional chains (
+			<b>TO BE UPDATED</b> ).
+			The "Configuration Elements" crosstable has several filters to show only elements of interest:
+		</p>
+		<p>
+			<img border="0" src="example10.png"/>
+		</p>
+		<h2 id="Configurations_defined_by_Inclusion_.2F_Exclusion">Configurations defined by Inclusion / Exclusion</h2>
+		<p>It is possible to define the elements of a configuration by inclusion (the default) or by exclusion:</p>
+		<p>
+			<img border="0" src="example13.png"/>
+		</p>
+		<p>When using inclusion, the elements that are selected in the configuration make up the active elements of the configuration. All other elements in the configuration scope are inactive/disabled in the configuration. 
+			When using exclusion, the elements that are selected in the configuration make up the inactive elements of the configuration. All other elements in the configuration scope are active/enabled in the configuration.
+			You can nicely see the effect of inclusion/exclusion when you change between inclusion/exclusion in an open xAB diagram with the configurations layer activated. In the example below, the function "Open Doors" the only referenced element by the configuration:</p>
+		<p>Element selection set to inclusion, the only active element is the "Doors Open" function.</p>
+		<p>
+			<img border="0" src="example14.png"/>
+		</p>
+		<p>The same configuration, with element selection set to exclusion, all elements except the "Doors Open" function are active.</p>
+		<p>
+			<img border="0" src="example15.png"/>
+		</p>
+		<h2 id="Automatic_inclusion_.2F_exclusion">Automatic inclusion / exclusion</h2>
+		<p>
+			<b>COMING SOON</b> 
+		</p>
+		<h2 id="Configurations_Layer_for_Diagrams">Configurations Layer for Diagrams</h2>
+		<p>This viewpoint also adds an additional "Configurations" layer to the following types of diagrams:</p>
+		<ul>
+			<li>Architecture Diagrams (SAB, LAB and PAB)</li>
+			<li>Interface Diagrams (CEI, CDI)</li>
+			<li>DataFlow Diagrams (SDFB, LDFB, PDFB)</li>
+			<li>Scenario Diagrams (ES, IS) - 
+				<b>comming soon</b> 
+			</li>
+		</ul>
+		<p>
+			<img border="0" src="example5.png"/>
+		</p>
+		<p>When the layer is active, two new tools are available in the palette:</p>
+		<p>
+			<img border="0" src="example6.png"/>
+		</p>
+		<p>The "Configuration" and creates a new configuration element. A configuration
+			is always associated to a single component, so the tool must be used on
+			a component node. If the underlying diagram represents a component, the tool can also be used on the diagram canvas.</p>
+		<p>The "Configuration Selection" tool is also used on components and allows the addition of existing components to the diagram. </p>
+		<p>When a configuration is applied on a component, the components elements that are not active in the configuration are greyed out:</p>
+		<p>
+			<i>Layer not activated:</i> 
+		</p>
+		<p>
+			<img border="0" src="example1.png"/>
+		</p>
+		<p>
+			<i>Layer activated:</i> 
+		</p>
+		<p>
+			<img border="0" src="example7.png"/>
+		</p>
+		<p>Note how the Avionics subcomponent is also greyed out, since the Flight configuration does not explicitly mark the component as active. If the Avionics component is included in the configuration:</p>
+		<p>
+			<img border="0" src="example8.png"/>
+		</p>
+		<p>It will no longer be greyed out:</p>
+		<p>
+			<img border="0" src="example9.png"/>
+		</p>
+		<h2 id="Child_Configurations">Child Configurations</h2>
+		<p>
+			<b>THIS FUNCTIONALITY IS NOT YET FULLY IMPLEMENTED</b> 
+		</p>
+		<p>A configuration may define a set of child configurations. When such a configuration is active, all of its child configurations are active too. The possible set of child configurations is limited to the configurations defined in subcomponents of the configurations own component. Child configuration relationships can be established by using either the properties view:
+			In xAB diagrams, child configuration relationships can be shown by selecting "Show child configuration relationships" in the diagram toolbar:</p>
+		<p>
+			<img border="0" src="example16.png"/>
+		</p>
+		<p>It is then possible to establish child relations by using the "Add child configuration" edge tool:</p>
+		<p>
+			<img border="0" src="example17.png"/>
+		</p>
+		<p>To remove a relationship, simple delete the relationship edge in the diagram.</p>
+		<h2 id="Mode_and_Configuration_table">Mode and Configuration table</h2>
+		<p>The last step is to associate the two configurations to the operation modes of the Airplane. This is done with the crosstable "Mode and Configuration":</p>
+		<p>
+			<img border="0" src="example4.png"/>
+		</p>
+	</body>
+</html>

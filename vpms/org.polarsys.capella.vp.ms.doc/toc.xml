@@ -2,10 +2,19 @@
 <?NLS TYPE="org.eclipse.help.toc"?>
 
 <toc label="Capella Modes &amp; States Viewpoint">
-   <topic href="html/ms.html" label="Concepts">
-      <anchor id="concepts"/>
+   <topic href="html/introduction.html" label="Introduction">
+      <anchor id="Introduction"/>
+   </topic>
+   <topic href="html/configurations.html" label="Working with Configurations">
+      <anchor id="Configurations"/>
+   </topic>
+   <topic href="html/situations.html" label="Working with Situations">
+      <anchor id="Situations"/>
    </topic>
    <topic href="html/validationrules.html" label="Validation Rules">
       <anchor id="Validation Rules"/>
+   </topic>
+   <topic href="html/obsolete.html" label="Deprecated/Obsolete Features">
+      <anchor id="Obsolete"/>
    </topic>
 </toc>

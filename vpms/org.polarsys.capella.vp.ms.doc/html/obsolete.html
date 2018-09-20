@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	</head>
+	<body>
+		<h1 id="Obsolete_.2F_Deprecated_Features">Obsolete / Deprecated Features</h1>
+		<h2 id="Configuration_Access">Configuration Access</h2>
+		<p>
+			<b> Note: As of today, it is not advised to modify the configuration access which is by default "Full" </b>
+		</p>
+		<p>During the development, it was discussed which elements a configuration may include or not. The prototype supports three different options called “Configuration Access”. The three modes will be explained with the help of the following sample model. Configuration 1 is an empty configuration:</p>
+		<p>
+			<img border="0" src="example11.png"/>
+		</p>
+		<p>
+			<b>Flat</b>: In this mode, a configuration may not include elements of subcomponents. Only its allocated functions, deployed/child components its owned ports and related functional chains may be included.
+			For the example, the only allowed Elements for Configuration 1 would be "Child" and "Deployed".
+		</p>
+		<p>
+			<b>Subcomponents</b>. In this mode, a configuration may additionally include elements of its child components, but not elements of deployed components.
+			For the example, the allowed additional elements for Configuration 1 would be the Physical Port on "Child".
+		</p>
+		<p>
+			<b>Full</b>  In this mode, a configuration may additionally include elements of deployed components. This is the current default mode. 
+			For the example, the allowed additional elements would be the Physical Function, its port, and the component port on the deployed component.
+		</p>
+		<p>The default access mode for new Configuration elements can be changed in the Capella Modes and States Preferences:</p>
+		<p>
+			<img border="0" src="example12.png"/>
+		</p>
+	</body>
+</html>

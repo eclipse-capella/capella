@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	</head>
+	<body>
+		<h1 id="Introduction">Introduction</h1>
+		<p>Purpose of the Modes &amp; States viewpoint for Capella is to enrich the capabilities regarding the definition of Modes &amp; States, but also the capabilities in order to analyze their consistency.
+			In order to do so, the concepts of "Configurations" and "Situations" are introduced.</p>
+		<h2 id="Definitions">Definitions</h2>
+		<ul>
+			<li>A 
+				<b>Mode</b>  is a behavior 
+				<b>
+					<i>expected</i>
+				</b> of the system or a component, in some 
+				<b>
+					<i>chosen</i>
+				</b> conditions.
+			</li>
+			<li>A 
+				<b>State</b> is a behavior 
+				<b>
+					<i>undergone</i>
+				</b> by the system or a component, in some conditions 
+				<b>
+					<i>imposed</i>
+				</b> by the environment.
+			</li>
+			<li>A 
+				<b>Configuration</b> is a set of System or model items that are globally 
+				<b>
+					<i>available or unavailable</i>
+				</b> in a given mode or state
+			</li>
+			<li>A 
+				<b>Situation</b> is a 
+				<b>
+					<i>combination</i>
+				</b> of states and modes representing the conditions of 
+				<b>
+					<i>superposition</i>
+				</b> of these states and modes simultaneously at a given instant.
+			</li>
+		</ul>
+		<p>
+			<img border="0" src="situation.png"/>
+		</p>
+		<h2 id="Overall_Process">Overall Process</h2>
+		<p>The propose process for analyzing consistency of Modes &amp; States definition is the following:</p>
+		<h3 id="1_-_Define_the_Modes_.26_States_of_the_System.2C_Actors.2C_Components">1 - Define the Modes &amp; States of the System, Actors, Components</h3>
+		<p>
+			<i>Insert image of a modes/states machine</i> 
+		</p>
+		<h3 id="2_-_Define_atomic_configurations">2 - Define atomic configurations</h3>
+		<p>Atomic configurations are defined in order to specify the elements (components, functions, ports, exchanges) which are available or not a mode or state.
+
+			<i>Insert image of a Configuration Elements table and visualization on a LAB diagram</i> 
+		</p>
+		<h3 id="3_-_Associate_atomic_configurations_to_Modes_.26_States">3 - Associate atomic configurations to Modes &amp; States</h3>
+		<p>
+			<img border="0" src="modesstatesandatomicconfig.png"/>
+
+			<i>Insert image of a Mode and Configuration table</i> 
+		</p>
+		<h3 id="4_-_Check_atomic_configurations_consistency">4 - Check atomic configurations consistency</h3>
+		<p>As several Configurations can be linked to one Mode or State, consistency of the superposition of all the configuration for each Mode or State need to be checked.</p>
+		<h3 id="5_-_Identify_Situations_of_Interest">5 - Identify Situations of Interest</h3>
+		<p>A lot of combinations can be possible based on the definition of the different Modes and States.
+			Only the Situations of Interest are formalized by defining their specific superposition of Modes and States.</p>
+		<h3 id="6_-_Define_the_Expected_Configurations">6 - Define the Expected Configurations</h3>
+		<p>For each Situation of Interest, an Expected Configuration is defined in order to define the expected functional content (functional chains, scenarios) for the situation.</p>
+		<h3 id="7_-_Compare_Global_Computed_Configurations_vs._Expected_Configurations">7 - Compare Global Computed Configurations vs. Expected Configurations</h3>
+		<p>Finally, a global configuration is computed from the superposition of the atomic configuration and compared to the expected configuration.
+			The capabilities of the system (in term of components, functions, ports, exchanges) in the situation is compared to the expected functional content (in term of functional chains, scenarios).</p>
+		<p>
+			<img border="0" src="overallprocess.png"/>
+		</p>
+	</body>
+</html>
