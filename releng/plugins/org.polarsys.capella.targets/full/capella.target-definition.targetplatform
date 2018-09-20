@@ -109,7 +109,8 @@ location sirius-query-legacy-1.1.0 "http://download.eclipse.org/sirius/updates/l
 	org.eclipse.sirius.query.legacy.feature.source.feature.group
 }
 
-location egf "https://ci.eclipse.org/egf/job/tycho-egf-oxygen/lastSuccessfulBuild/artifact/releng/org.eclipse.egf.core.updatesite/target/repository/" {
+// "https://ci.eclipse.org/egf/job/tycho-egf-oxygen/lastSuccessfulBuild/artifact/releng/org.eclipse.egf.core.updatesite/target/repository/"
+location egf "http://download.eclipse.org/egf/updates/1.6.0/oxygen/" {
 	org.eclipse.egf.sdk.feature.feature.group	
 }
 
