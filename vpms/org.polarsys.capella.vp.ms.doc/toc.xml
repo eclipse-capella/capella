@@ -5,4 +5,7 @@
    <topic href="html/ms.html" label="Concepts">
       <anchor id="concepts"/>
    </topic>
+   <topic href="html/validationrules.html" label="Validation Rules">
+      <anchor id="Validation Rules"/>
+   </topic>
 </toc>
