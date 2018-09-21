@@ -45,3 +45,4 @@ logo_capella_big.png
 6.4. Commands preferences_html_m67bd7302.png
 6.5_Usage%20monitoring1.png
 6.5_Usage%20monitoring2.png
+DiagramsPreference.PNG
