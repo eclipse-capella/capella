@@ -26,6 +26,11 @@ public interface IToolNameConstants {
   //
   String TOOL_COMMON_INSERT_REMOVE_PV = "Applied Property Values";
   String TOOL_COMMON_INSERT_REMOVE_PVG = "Applied Property Value Groups";
+  String TOOL_COMMON_SELECT_SAME_TYPE = "SameType";
+  String TOOL_COMMON_SELECT_SAME_MAPPING = "SameMapping";
+  String TOOL_COMMON_SELECT_OWNED_PORTS = "OwnedPorts";
+  String TOOL_COMMON_SELECT_OWNED_ELEMENTS = "OwnedElements";
+  String TOOL_COMMON_SELECT_RELATED_EDGES = "OwnedEdges";
 
   String TOOL_CREATE_PHYSICAL_PATH = "Physical Path";//$NON-NLS-1$
   String TOOL_CREATE_FUNCTIONAL_CHAIN = "Functional Chain";//$NON-NLS-1$

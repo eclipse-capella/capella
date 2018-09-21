@@ -16,6 +16,7 @@ import org.polarsys.capella.core.sirius.analysis.constants.IToolNameConstants;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateAbstractDNodeTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateDEdgeTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.InsertRemoveTool;
+import org.polarsys.capella.test.diagram.common.ju.step.tools.SelectTool;
 import org.polarsys.capella.test.framework.context.SessionContext;
 
 public class CommonDiagram extends DiagramContext {
@@ -62,6 +63,26 @@ public class CommonDiagram extends DiagramContext {
 
   public void removePVG(String id, String containerId) {
     new InsertRemoveTool(this, IToolNameConstants.TOOL_COMMON_INSERT_REMOVE_PVG, containerId).remove(id);
+  }
+  
+  public void selectSameType(String id) {
+    new SelectTool(this, IToolNameConstants.TOOL_COMMON_SELECT_SAME_TYPE).ensurePrecondition(true).select(id);
+  }
+  
+  public void selectSameMapping(String id) {
+    new SelectTool(this, IToolNameConstants.TOOL_COMMON_SELECT_SAME_MAPPING).ensurePrecondition(true).select(id);
+  }
+
+  public void selectOwnedPorts(String id) {
+    new SelectTool(this, IToolNameConstants.TOOL_COMMON_SELECT_OWNED_PORTS).ensurePrecondition(true).select(id);
+  }
+
+  public void selectOwnedElements(String id) {
+    new SelectTool(this, IToolNameConstants.TOOL_COMMON_SELECT_OWNED_ELEMENTS).ensurePrecondition(true).select(id);
+  }
+
+  public void selectRelatedEdges(String id) {
+    new SelectTool(this, IToolNameConstants.TOOL_COMMON_SELECT_RELATED_EDGES).ensurePrecondition(true).select(id);
   }
 
 }
