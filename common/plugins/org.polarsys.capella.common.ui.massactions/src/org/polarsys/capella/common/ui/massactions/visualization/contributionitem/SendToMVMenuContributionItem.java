@@ -50,30 +50,32 @@ public class SendToMVMenuContributionItem extends CompoundContributionItem imple
     IViewReference[] viewReferences = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
         .getViewReferences();
 
-    List<IViewPart> meViewParts = Stream.of(viewReferences).map(viewRef -> viewRef.getView(false))
-        .filter(viewPart -> viewPart instanceof CapellaMVView).collect(Collectors.toList());
+    // We put the stream in a try-with-resource to satisfy Sonar
+    try (Stream<IViewReference> viewReferenceStream = Stream.of(viewReferences)) {
+      List<IViewPart> meViewParts = viewReferenceStream.map(viewRef -> viewRef.getView(false))
+          .filter(viewPart -> viewPart instanceof CapellaMVView).collect(Collectors.toList());
 
-    IContributionItem[] contributionItems;
+      IContributionItem[] contributionItems;
 
-    if (meViewParts.isEmpty()) {
-      contributionItems = new IContributionItem[1];
-      IContributionItem defaultViewOption = createContributionItem(NEW_MASS_VISUALIZATION_VIEW_TEXT,
-          MACapellaActivator.MV_VIEW_ID, null);
-      contributionItems[0] = defaultViewOption;
+      if (meViewParts.isEmpty()) {
+        contributionItems = new IContributionItem[1];
+        IContributionItem defaultViewOption = createContributionItem(NEW_MASS_VISUALIZATION_VIEW_TEXT,
+            MACapellaActivator.MV_VIEW_ID, null);
+        contributionItems[0] = defaultViewOption;
 
-    } else {
-      contributionItems = new IContributionItem[meViewParts.size()];
+      } else {
+        contributionItems = new IContributionItem[meViewParts.size()];
 
-      for (int i = 0; i < meViewParts.size(); i++) {
-        IViewPart viewPart = meViewParts.get(i);
-        IContributionItem contributionItem = createContributionItem(viewPart.getTitle(), viewPart.getViewSite().getId(),
-            viewPart.getViewSite().getSecondaryId());
+        for (int i = 0; i < meViewParts.size(); i++) {
+          IViewPart viewPart = meViewParts.get(i);
+          IContributionItem contributionItem = createContributionItem(viewPart.getTitle(),
+              viewPart.getViewSite().getId(), viewPart.getViewSite().getSecondaryId());
 
-        contributionItems[i] = contributionItem;
+          contributionItems[i] = contributionItem;
+        }
       }
+      return contributionItems;
     }
-
-    return contributionItems;
   }
 
   protected IContributionItem createContributionItem(String itemLabel, String primaryViewId, String secondaryViewId) {
@@ -90,5 +92,4 @@ public class SendToMVMenuContributionItem extends CompoundContributionItem imple
 
     return new CommandContributionItem(parameter);
   }
-
 }
