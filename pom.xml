@@ -270,6 +270,9 @@
 				<packagedSiteName>org.polarsys.capella.rcp.product</packagedSiteName>
 			</properties>
 			<modules>
+				<!-- sample -->
+				<module>samples</module>
+			
 				<module>common/features/org.polarsys.capella.common.feature</module>
 				<module>common/features/org.polarsys.capella.common.ui.feature</module>
 				<module>common/features/org.polarsys.capella.common.ui.massactions.feature</module>

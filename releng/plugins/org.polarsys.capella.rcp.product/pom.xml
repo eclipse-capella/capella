@@ -90,25 +90,27 @@
 							</goals>
 							<configuration>
 								<target>
-									
-									<!-- Create a zip from the sample model -->
-									<zip destfile="../../../samples/IFE_samplemodel.zip">
-										<zipfileset dir="../../../samples/In-Flight Entertainment System" prefix="In-Flight Entertainment System"/>
-									</zip>
-									<delete dir="../../../samples/In-Flight Entertainment System" includeemptydirs="true"/>
-									
 									<!-- Create the Capella .zip with 2 folders (capella/eclipse + capella/samples) -->
 									<zip destfile="${project.build.directory}/products/capella-${unqualifiedVersion}.${buildQualifier}-linux-gtk-x86_64.zip">
 										<zipfileset dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/linux/gtk/x86_64" prefix="capella/eclipse"/>
-										<zipfileset dir="../../../samples" prefix="capella/samples"/>
+										<zipfileset dir="../../../samples" prefix="capella/samples">
+											<exclude name="target/**"/>
+											<exclude name="pom.xml"/>
+										</zipfileset>
 									</zip>
 									<zip destfile="${project.build.directory}/products/capella-${unqualifiedVersion}.${buildQualifier}-macosx-cocoa-x86_64.zip">
 										<zipfileset dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/macosx/cocoa/x86_64" prefix="capella"/>
-										<zipfileset dir="../../../samples" prefix="capella/samples"/>
+										<zipfileset dir="../../../samples" prefix="capella/samples">
+											<exclude name="target/**"/>
+											<exclude name="pom.xml"/>
+										</zipfileset>
 									</zip>
 									<zip destfile="${project.build.directory}/products/capella-${unqualifiedVersion}.${buildQualifier}-win32-win32-x86_64.zip">
 										<zipfileset dir="${project.build.directory}/products/org.polarsys.capella.rcp.product/win32/win32/x86_64" prefix="capella/eclipse"/>
-										<zipfileset dir="../../../samples" prefix="capella/samples"/>
+										<zipfileset dir="../../../samples" prefix="capella/samples">
+											<exclude name="target/**"/>
+											<exclude name="pom.xml"/>
+										</zipfileset>
 									</zip>
 								</target>
 							</configuration>
