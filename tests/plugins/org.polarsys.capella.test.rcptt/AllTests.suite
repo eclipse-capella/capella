@@ -5,8 +5,8 @@ Element-Type: testsuite
 Element-Version: 2.0
 Id: _H2g9YMEUEeWqb6y2_gGIKQ
 Manually-Ordered: true
-Runtime-Version: 2.1.0.201606221726
-Save-Time: 9/5/18 3:37 PM
+Runtime-Version: 2.2.0.201705230341
+Save-Time: 9/25/18 10:34 AM
 
 ------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8
 Content-Type: text/testcase
@@ -37,6 +37,7 @@ _tEBy8KkGEee0yuaysMB3Rg	// kind: 'test' name: 'AccessPolicyRecRpl' path: 'Librar
 _vh5p8KkOEee0yuaysMB3Rg	// kind: 'test' name: 'CloseDelete' path: 'Library/CloseDelete.test'
 _yKF9QK86Eee2vO1UksePLw	// kind: 'test' name: 'TriggerEvent' path: 'ModeAndState/TriggerEvent.test'
 _QblmIKj2Eee0yuaysMB3Rg	// kind: 'test' name: 'RecRpl' path: 'RecRpl/RecRpl.test'
+_T-55YMCcEeidDq4eRTARFA	// kind: 'test' name: 'TransitionUI' path: 'Transition/TransitionUI.test'
 _GJay8KkbEee0yuaysMB3Rg	// kind: 'test' name: 'CommandConfigurability' path: 'ValidationProfile/CommandConfigurability.test'
 _4W6WAKnCEee0yuaysMB3Rg	// kind: 'test' name: 'ProjectConfiguration' path: 'ValidationProfile/ProjectConfiguration.test'
 _8tBCsOSeEeeF_6848eoV8Q	// kind: 'test' name: 'HidePartsByDefaultInProjectExplorer' path: 'ProjectExplorer/HidePartsByDefaultInProjectExplorer.test'

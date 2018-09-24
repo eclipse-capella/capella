@@ -1,0 +1,73 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Element-Name: TransitionUI
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _T-55YMCcEeidDq4eRTARFA
+Runtime-Version: 2.2.0.201705230341
+Save-Time: 9/25/18 10:35 AM
+Testcase-Type: ecl
+
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+//This test checks Merge All button and Apply button.
+
+// Create new Capella Project
+get-view "Capella Project Explorer" | get-tree | get-menu "New/Capella Project" | click
+with [get-window "New Capella Project"] {
+    get-editbox | set-text project
+    get-button Finish | click
+}
+
+//Create a function and perform a transition of it.
+with [get-view "Capella Project Explorer" | get-tree] {
+    select "project/project.aird/project/System Analysis/System Functions/Root System Function" | get-menu 
+        -path "Add Capella Element/System Function" | click
+    select "project/*project.aird/project/System Analysis/System Functions/Root System Function" | get-menu 
+        -path "Transitions/Functional Transition" | click
+}
+
+with [get-window "Progress Information" | get-window "Functional Transition"] {
+	
+	//Merge all to the right shall be enabled, located at the first position.
+	with [get-button "Copy all to the right"] {
+    	get-property enablement | equals true | verify-true
+    	get-property index | equals 0 | verify-true
+    }
+	//Merge all to the left shall be disabled, located at the first position.
+    with [get-button "Copy all to the left"] {
+        get-property enablement | equals false | verify-true
+        get-property index | equals 0 | verify-true
+    }
+    
+    //Merge all to the left shall be disabled, located at the first position.
+    with [get-button "Apply"] {
+        get-property enablement | equals true | verify-true
+    }
+}
+
+//Click on the merge all button.
+get-window "Progress Information" | get-window "Functional Transition" | get-button "Copy all to the right" | click
+
+
+with [get-window "Progress Information" | get-window "Functional Transition"] {
+	
+	//Merge all to the right shall be enabled, located at the first position.
+	with [get-button "Copy all to the right"] {
+    	get-property enablement | equals false | verify-true
+    	get-property index | equals 0 | verify-true
+    }
+    //Merge all to the left shall be disabled, located at the first position.
+    with [get-button "Apply"] {
+        get-property enablement | equals false | verify-true
+    }
+    get-tree | get-property itemCount | equals 0 | verify-true
+}
+
+get-window "Progress Information" | get-window "Functional Transition" | get-button Cancel | click
+
+
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--
