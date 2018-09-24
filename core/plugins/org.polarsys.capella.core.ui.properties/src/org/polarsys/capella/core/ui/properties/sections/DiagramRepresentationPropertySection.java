@@ -309,19 +309,15 @@ public class DiagramRepresentationPropertySection extends AbstractSection {
     String name = ICommonConstants.EMPTY_STRING;
     if (null != _descriptor) {
       name = _descriptor.get().getName();
+      _eoiField.loadData(_descriptor.get());
+      packageGroup.loadData(_descriptor.get(), null); 
+      if (_contextualElementsField != null) {
+        _contextualElementsField.loadData(_descriptor.get());
+        boolean isContextual = ContextualDiagramHelper.getService().isContextualRepresentation(_descriptor.get());
+        _contextualElementsField.setEnabled(isContextual);
+      }
     }
-
     _nameTextField.setText(name);
-    
-    if (_contextualElementsField != null && _descriptor != null) {
-      _contextualElementsField.loadData(_descriptor.get());
-      boolean isContextual = ContextualDiagramHelper.getService().isContextualRepresentation(_descriptor.get());
-      _contextualElementsField.setEnabled(isContextual);
-    }
-
-    _eoiField.loadData(_descriptor.get());
-    packageGroup.loadData(_descriptor.get(), null); 
-
   }
 
   /**
