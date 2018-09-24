@@ -211,6 +211,16 @@
        </menuContribution>
        
        
+       <!-- Transition -->
+       <menuContribution
+                locationURI="popup:org.polarsys.capella.core.transition.common.ui.diffmerge?after=additions">
+               
+              <separator name="group.showIn" visible="true" />
+              <separator name="group.sendTo" visible="true" />
+              
+       </menuContribution>
+       
+       
        
        
        

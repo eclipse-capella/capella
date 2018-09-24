@@ -23,16 +23,19 @@ import org.eclipse.emf.diffmerge.diffdata.EMatch;
 import org.eclipse.emf.diffmerge.ui.diffuidata.ComparisonSelection;
 import org.eclipse.emf.diffmerge.ui.viewers.ComparisonViewer;
 import org.eclipse.emf.diffmerge.ui.viewers.EMFDiffNode;
+import org.eclipse.emf.diffmerge.ui.viewers.HeaderViewer;
 import org.eclipse.emf.diffmerge.ui.viewers.MergeChoiceData;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.ActionContributionItem;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IContributionManager;
+import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.action.ToolBarManager;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.util.IPropertyChangeListener;
 import org.eclipse.jface.util.PropertyChangeEvent;
+import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.swt.custom.BusyIndicator;
 import org.eclipse.swt.widgets.Composite;
@@ -40,7 +43,9 @@ import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.swt.widgets.ToolBar;
 import org.eclipse.ui.IActionBars;
+import org.eclipse.ui.IWorkbenchPartSite;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.polarsys.capella.common.ui.toolkit.viewers.menu.ModalContextMenuExtender;
 import org.polarsys.capella.core.transition.common.ui.Activator;
 
 public class DiffComparisonViewer extends ComparisonViewer {
@@ -50,12 +55,47 @@ public class DiffComparisonViewer extends ComparisonViewer {
 
   private static final String CHECKOUT_ACTION_ALL = "checkout_action_all.gif";
 
+  private static final String DIFFMERGE_VIEWER_MENU = "org.polarsys.capella.core.transition.common.ui.diffmerge";
+
   private static boolean mergeAllInProgress = false;
 
   private static boolean mergeAllSucceed = false;
 
   public DiffComparisonViewer(Composite parent) {
     super(parent);
+    _isExternallySynced = false;
+  }
+
+  /**
+   * The viewer is launched inside a modal window, using a site is unrelevant. It also lead to selection
+   * inconsistencies. (the Diffmerge viewer manipulating selection of the active part, when closing the modal window,
+   * the selection of the activePart will be empty)
+   */
+  @Override
+  protected IWorkbenchPartSite getSite() {
+    return null;
+  }
+
+  /**
+   * The viewer is launched inside a modal window, sync with external views is impossible. It can only be done with
+   * contextual menus.
+   */
+  protected ActionContributionItem createItemSyncExternal(IContributionManager context) {
+    return null;
+  }
+
+  /**
+   * Register the context menu on a modal window
+   */
+  @Override
+  protected MenuManager createViewerContextMenus(HeaderViewer<?> viewer, boolean useLocalSelectionProvider) {
+    MenuManager manager = super.createViewerContextMenus(viewer, useLocalSelectionProvider);
+
+    ISelectionProvider selectionProvider = useLocalSelectionProvider ? viewer.getInnerViewer()
+        : getMultiViewerSelectionProvider();
+    ModalContextMenuExtender.registerContextMenu(manager, DIFFMERGE_VIEWER_MENU, selectionProvider);
+
+    return manager;
   }
 
   public DiffComparisonViewer(Composite parent, IActionBars actionBars) {
@@ -153,7 +193,7 @@ public class DiffComparisonViewer extends ComparisonViewer {
             || PROPERTY_ACTIVATION_MERGE_TO_LEFT.equals(event.getProperty())
             || PROPERTY_ACTIVATION_MERGE_TO_RIGHT.equals(event.getProperty())) {
           EMFDiffNode input = getInput();
-          
+
           if (input instanceof MergeEMFDiffNode) {
             MergeEMFDiffNode mergeInput = (MergeEMFDiffNode) input;
             // enable merge all button if the other model is editable and there are differences to merge
