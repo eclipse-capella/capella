@@ -18,9 +18,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-
-import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
+import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 
 /**
  * 
@@ -61,7 +60,10 @@ public class SiriusToCapellaAdapterFactory implements IAdapterFactory {
 
   public Object getAdapter(Object adaptableObject_p, Class adapterType) {
     EObject result = adaptToBusinessElement(adaptableObject_p);
-    return result;
+    if (adapterType != null && adapterType.isInstance(result)) {
+      return result;
+    }
+    return null;
   }
 
   public Class<?>[] getAdapterList() {
