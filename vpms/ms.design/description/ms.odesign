@@ -835,18 +835,7 @@
       </layers>
     </ownedRepresentationExtensions>
     <ownedRepresentationExtensions xsi:type="description_2:DiagramExtensionDescription" name="MS Style Customisations" viewpointURI="viewpoint:/org.polarsys.capella.core.sirius.analysis/((Logical Architecture)|(System Analysis)|(Physical Architecture)|(Common)).*" representationName="(.*Architecture Blank|Contextual Component (External|Detailed) Interfaces|.* Data Flow Blank)">
-      <layers name="MS_Style_Customisations_Layer" optional="false">
-        <customization>
-          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="service:isNotAvailableInSelectedConfiguration(view)">
-            <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="color" value="//@userColorsPalettes[name=null]/@entries[name='0VP_MS_color_config_disabled']"/>
-            <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="foregroundColor" value="//@userColorsPalettes[name=null]/@entries[name='0VP_MS_color_config_disabled']"/>
-            <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="backgroundColor" value="//@userColorsPalettes[name=null]/@entries[name='0VP_MS_color_config_disabled']"/>
-            <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="strokeColor" value="//@userColorsPalettes[name=null]/@entries[name='0VP_MS_color_config_disabled']"/>
-            <featureCustomizations xsi:type="description:EReferenceCustomization" applyOnAll="true" referenceName="labelColor" value="//@userColorsPalettes[name=null]/@entries[name='0VP_MS_color_config_disabled_label']"/>
-            <featureCustomizations xsi:type="description:EAttributeCustomization" applyOnAll="true" attributeName="workspacePath" value="service:disabledElementWorkspacePathImage(view)"/>
-          </vsmElementCustomizations>
-        </customization>
-      </layers>
+      <layers name="MS_Style_Customisations_Layer" optional="false"/>
     </ownedRepresentationExtensions>
     <ownedJavaExtensions qualifiedClassName="ms.configuration.services.cs.CsConfigurationServices"/>
   </ownedViewpoints>

@@ -44,6 +44,8 @@ import org.polarsys.capella.vp.ms.CSConfiguration;
 import org.polarsys.capella.vp.ms.Comparison;
 import org.polarsys.capella.vp.ms.Result;
 import org.polarsys.capella.vp.ms.access_Type;
+import org.polarsys.capella.vp.ms.ui.preferences.InitializeConfigurationAccessDialog;
+import org.polarsys.capella.vp.ms.ui.preferences.MsPreferenceConstants;
 import org.polarsys.kitalpha.emde.model.EmdePackage;
 
 import com.google.common.collect.ArrayListMultimap;
@@ -110,7 +112,7 @@ public class CSConfigurationListener extends ResourceSetListenerImpl implements 
         IPreferenceStore store = new ScopedPreferenceStore(new ProjectScope(project), Activator.PLUGIN_ID);
 
         String accessLiteral = Platform.getPreferencesService().getString(Activator.PLUGIN_ID,
-            MsUIConstants.PREF_DEFAULT_CONFIGURATION_ACCESS, "", null); //$NON-NLS-1$
+            MsPreferenceConstants.PREF_DEFAULT_CONFIGURATION_ACCESS, "", null); //$NON-NLS-1$
 
         // String accessLiteral = store.getString(MsUIConstants.PREF_DEFAULT_CONFIGURATION_ACCESS);
 
@@ -118,7 +120,7 @@ public class CSConfigurationListener extends ResourceSetListenerImpl implements 
 
         if (accessLiteral.isEmpty()) {
           new InitializeConfigurationAccessDialog(Display.getCurrent().getActiveShell(), store).open();
-          accessLiteral = store.getString(MsUIConstants.PREF_DEFAULT_CONFIGURATION_ACCESS);
+          accessLiteral = store.getString(MsPreferenceConstants.PREF_DEFAULT_CONFIGURATION_ACCESS);
           if (accessLiteral.isEmpty()) {
             throw new RollbackException(new Status(IStatus.CANCEL, Activator.PLUGIN_ID, "User canceled operation")); //$NON-NLS-1$
           }

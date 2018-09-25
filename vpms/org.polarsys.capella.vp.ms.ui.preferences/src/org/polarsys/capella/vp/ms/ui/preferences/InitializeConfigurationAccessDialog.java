@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.vp.ms.ui;
+package org.polarsys.capella.vp.ms.ui.preferences;
 
 import java.io.IOException;
 import java.util.MissingResourceException;
@@ -56,7 +56,7 @@ public class InitializeConfigurationAccessDialog extends MessageDialog {
   }
 
   protected Control createCustomArea(Composite parent) {
-    editor = new RadioGroupFieldEditor(MsUIConstants.PREF_DEFAULT_CONFIGURATION_ACCESS,
+    editor = new RadioGroupFieldEditor(MsPreferenceConstants.PREF_DEFAULT_CONFIGURATION_ACCESS,
         Messages.InitializeConfigurationAccessDialog_label, 1, labelsAndValues, parent, false);
     editor.fillIntoGrid(parent, 1);
     editor.setPreferenceStore(store);

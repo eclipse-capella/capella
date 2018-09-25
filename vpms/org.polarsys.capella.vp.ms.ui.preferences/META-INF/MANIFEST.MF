@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: org.polarsys.capella.vp.ms.ui.preferences;singleton:=true
+Bundle-Version: 0.11.0.qualifier
+Bundle-Activator: org.polarsys.capella.vp.ms.ui.preferences.Activator
+Bundle-Vendor: %providerName
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.polarsys.capella.vp.ms.edit
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Automatic-Module-Name: org.polarsys.capella.vp.ms.ui.preferences
+Bundle-ActivationPolicy: lazy
+Export-Package: org.polarsys.capella.vp.ms.ui.preferences

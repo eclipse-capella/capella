@@ -52,4 +52,11 @@
         </editor>
      </paletteProvider>
   </extension>
+  <extension
+        point="org.eclipse.sirius.refreshExtensionProvider">
+     <refreshExtensionProvider
+           priority="highest"
+           providerClass="ms.design.MsRefreshExtensionProvider">
+     </refreshExtensionProvider>
+  </extension>
 </plugin>

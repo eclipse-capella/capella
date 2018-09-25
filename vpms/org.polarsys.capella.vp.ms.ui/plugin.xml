@@ -79,21 +79,6 @@
      </editingDomainListener>
   </extension>
   <extension
-        point="org.eclipse.ui.preferencePages">
-     <page
-           category="org.polarsys.capella.core.platform.sirius.ui.actions.Capella.page"
-           class="org.polarsys.capella.vp.ms.ui.MsPreferencePage"
-           id="org.polarsys.capella.vp.ms.ui.preferencePage"
-           name="Modes and States Preferences">
-     </page>
-  </extension>
-  <extension
-        point="org.eclipse.core.runtime.preferences">
-     <initializer
-           class="org.polarsys.capella.vp.ms.ui.MsPreferencePage$Initializer">
-     </initializer>
-  </extension>
-  <extension
         point="org.polarsys.capella.common.ui.toolkit.browser.contentProviderCategory">
      <category
            id="org.polarsys.capella.vp.ms.ui.CSConfiguration.Elements"

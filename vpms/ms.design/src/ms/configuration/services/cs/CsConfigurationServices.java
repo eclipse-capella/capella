@@ -15,11 +15,15 @@ package ms.configuration.services.cs;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
 
 import javax.security.auth.login.Configuration;
 
+import org.eclipse.core.runtime.Platform;
+import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -28,6 +32,8 @@ import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.transaction.util.TransactionUtil;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
@@ -36,7 +42,9 @@ import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.EdgeTarget;
+import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.Layer;
+import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.table.metamodel.table.DTable;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
@@ -66,6 +74,7 @@ import org.polarsys.capella.core.data.fa.FunctionInputPort;
 import org.polarsys.capella.core.data.fa.FunctionOutputPort;
 import org.polarsys.capella.core.data.fa.FunctionalChain;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
+import org.polarsys.capella.core.data.interaction.InstanceRole;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
@@ -84,6 +93,7 @@ import org.polarsys.capella.vp.ms.Result;
 import org.polarsys.capella.vp.ms.Situation;
 import org.polarsys.capella.vp.ms.selector_Type;
 import org.polarsys.capella.vp.ms.provider.MsEditPlugin;
+import org.polarsys.capella.vp.ms.ui.preferences.MsPreferenceConstants;
 //import org.polarsys.capella.vp.ms.ui.MsUICommandHandler;
 import org.polarsys.kitalpha.emde.model.ElementExtension;
 
@@ -102,6 +112,34 @@ public class CsConfigurationServices {
   protected List<CSConfiguration> configListFiltered = new ArrayList<CSConfiguration>();
   protected List<CSConfiguration> configList = new ArrayList<CSConfiguration>();
 
+  public EObject msCreateInstanceRoleConfigurationLinks(InstanceRole ir, DNode irNode, Object[] selection) {
+    
+    Collection<CSConfiguration> toRemove = new ArrayList<CSConfiguration>();
+    Collection<CSConfiguration> toAdd = new ArrayList<CSConfiguration>();
+
+    for (DEdge edge : irNode.getOutgoingEdges()) {
+      if (edge.getTargetNode() instanceof DSemanticDecorator && ((DSemanticDecorator)edge).getTarget() instanceof CSConfiguration) {
+        toRemove.add((CSConfiguration) ((DSemanticDecorator)edge).getTarget());
+      }
+    }
+    
+    for (Object o : selection) {
+      if (!toRemove.remove(o)) {
+        toAdd.add((CSConfiguration) o);
+      }
+    }
+
+    Session session = SessionManager.INSTANCE.getSession(irNode);
+    EdgeMapping edgeMapping = (EdgeMapping) session.getTransactionalEditingDomain().getResourceSet().getEObject(MsMappingConstants.ES_Edge_InstanceRole_Configuration, false);
+    NodeMapping nodeMapping = (NodeMapping) session.getTransactionalEditingDomain().getResourceSet().getEObject(MsMappingConstants.ES_Node_Configuration, false);
+
+    for (CSConfiguration c : toAdd) {
+      nodeMapping.createNode(c, irNode.getParentDiagram(), irNode.getParentDiagram());
+    }
+    
+    return ir;
+  }
+  
   public static boolean canCompleteChildConfigurationRelation(CSConfiguration source, CSConfiguration target) {
     AdapterFactoryEditingDomain domain = (AdapterFactoryEditingDomain) AdapterFactoryEditingDomain
         .getEditingDomainFor(source);
@@ -545,34 +583,16 @@ public class CsConfigurationServices {
     return result;
   }
 
-  /**
-   * Verify if a given {@link AbstractFunction} is available at least in one of the graphically selected
-   * {@link Configuration}s of the {@link Component} container of the {@link AbstractFunction}
-   *
-   * @param context
-   *          the {@link AbstractFunction}
-   * @param view
-   *          the {@link DNode} of the {@link AbstractFunction}
-   * @return <code>true</code> if the {@link AbstractFunction} is available, else <code>false</code> .
-   */
-  public boolean isAvailableInSelectedConfiguration(ModelElement context, DDiagramElement view) {
-
-    if (!isConfigurationsLayerActive(view.getParentDiagram())) {
-      return true;
-    }
-    return isAvailableInSelectedConfigurationImpl(context, view);
-  }
-
-  private boolean isAvailableInSelectedConfigurationImpl(ComponentExchange context, DDiagramElement view) {
+  private CSConfigurationStyle refreshCEStyle(ComponentExchange context, DDiagramElement view) {
 
     Component source = ComponentExchangeExt.getSourceComponent(context);
     Component target = ComponentExchangeExt.getTargetComponent(context);
 
-    return isAvailableInSelectedConfigurationImpl(context, view, source, target);
+    return refreshStyle(context, view, source, target);
 
   }
 
-  private boolean isAvailableInSelectedConfigurationImpl(PhysicalLink context, DDiagramElement view) {
+  private CSConfigurationStyle refreshPLStyle(PhysicalLink context, DDiagramElement view) {
 
     PhysicalPort source = context.getSourcePhysicalPort();
     PhysicalPort target = context.getTargetPhysicalPort();
@@ -580,15 +600,16 @@ public class CsConfigurationServices {
     Component sourceComponent = (Component) source.eContainer();
     Component targetComponent = (Component) target.eContainer();
 
-    return isAvailableInSelectedConfigurationImpl(context, view, sourceComponent, targetComponent);
+    return refreshStyle(context, view, sourceComponent, targetComponent);
 
   }
 
-  private boolean isAvailableInSelectedConfigurationImpl(ModelElement link, DDiagramElement view, Component sourceComponent, Component targetComponent) {
+  private CSConfigurationStyle refreshStyle(ModelElement link, DDiagramElement view, Component sourceComponent, Component targetComponent) {
 
     DDiagramElement sourceComponentNode = null;
     DDiagramElement targetComponentNode = null;
 
+    // FIXME some diagrams are not targeting components?
     for (DDiagramElement elem : view.getParentDiagram().getDiagramElements()) {
       if (elem.getTarget() instanceof Part) {
         if (((Part) elem.getTarget()).getType() == sourceComponent) {
@@ -600,7 +621,7 @@ public class CsConfigurationServices {
       }
     }
 
-    boolean result = true;
+    CSConfigurationStyle result = getCSConfigurationStyle(view).clear();
 
     if (sourceComponentNode instanceof AbstractDNode && targetComponentNode instanceof AbstractDNode) {
 
@@ -624,7 +645,11 @@ public class CsConfigurationServices {
         }
       }
 
-      result = sResult && tResult;
+      if (sResult && tResult) {
+        result.addClass("included");
+      } else {
+        result.addClass("excluded");
+      }
 
     }
 
@@ -639,7 +664,7 @@ public class CsConfigurationServices {
    * @param view
    * @return
    */
-  private boolean isAvailableInSelectedConfigurationImpl(FunctionalExchange context, DDiagramElement view) {
+  private CSConfigurationStyle refreshFEStyle(FunctionalExchange context, DDiagramElement view) {
 
     FunctionOutputPort source = context.getSourceFunctionOutputPort();
     FunctionInputPort target = context.getTargetFunctionInputPort();
@@ -647,61 +672,76 @@ public class CsConfigurationServices {
     DDiagramElement sourceEdgeTarget = (DDiagramElement) ((DEdge) view).getSourceNode();
     DDiagramElement targetEdgeTarget = (DDiagramElement) ((DEdge) view).getTargetNode();
     
-    boolean sourceAvailable;
-    boolean targetAvailable;
+    CSConfigurationStyle sourceStyle;
+    CSConfigurationStyle targetStyle;
 
     if (((DSemanticDecorator) sourceEdgeTarget).getTarget() == source){
-      sourceAvailable = isAvailableInSelectedConfigurationImpl(source, sourceEdgeTarget);
-      targetAvailable = isAvailableInSelectedConfigurationImpl(target, targetEdgeTarget);
+      sourceStyle = refreshStyle(source, sourceEdgeTarget);
+      targetStyle = refreshStyle(target, targetEdgeTarget);
     } else {
-      targetAvailable = isAvailableInSelectedConfigurationImpl(source, sourceEdgeTarget);
-      sourceAvailable = isAvailableInSelectedConfigurationImpl(target, targetEdgeTarget);
+      targetStyle = refreshStyle(source, sourceEdgeTarget);
+      sourceStyle = refreshStyle(target, targetEdgeTarget);
     }
 
-    return sourceAvailable && targetAvailable;
-
+    CSConfigurationStyle style = getCSConfigurationStyle(view).clear();
+    for (String s : sourceStyle.style) {
+      style.addClass(s);
+    }
+    for (String s : targetStyle.style) {
+      style.addClass(s);
+    }
+    
+    return style;
   }
 
+  public CSConfigurationStyle refreshStyle(EObject context, DDiagramElement view) {
 
-  private boolean isAvailableInSelectedConfigurationImpl(ModelElement context, DDiagramElement view) {
-
-    boolean result = false;
+    if (!isConfigurationsLayerActive(view.getParentDiagram())) {
+      return getCSConfigurationStyle(view).clear();
+    }
+    
+    CSConfigurationStyle result = null;
 
     if (context instanceof FunctionalExchange) {
 
-      result = isAvailableInSelectedConfigurationImpl((FunctionalExchange) context, view);
-
+      result = refreshFEStyle((FunctionalExchange) context, view);
+      
     } else if (context instanceof ComponentExchange) {
 
-      result = isAvailableInSelectedConfigurationImpl((ComponentExchange) context, view);
+      result = refreshCEStyle((ComponentExchange) context, view);
 
     } else if (context instanceof PhysicalLink) {
 
-      result = isAvailableInSelectedConfigurationImpl((PhysicalLink) context, view);
+      result = refreshPLStyle((PhysicalLink) context, view);
 
-    } else if (context instanceof Interface) {
+    } else { 
+      
+      result = getCSConfigurationStyle(view).clear();
+
+      if (context instanceof Interface) {
 
       /*
-       * Interface is greyed out if all its connected component ports are greyed out
+       * Interface is excluded if all its connected component ports are excluded
        */
       String dname = view.getParentDiagram().getDescription().getName();
       if (DiagramConstants.CDI_NAME.equals(dname)) {
         
         for (DEdge edge : ((EdgeTarget) view).getIncomingEdges()) {
-          EObject target = edge.getTarget();          
-          if (target instanceof ComponentPort && isAvailableInSelectedConfiguration((ComponentPort) target, edge)) {
-            result = true;
-            break;
+          EObject target = edge.getTarget();
+          if (target instanceof ComponentPort) {
+            CSConfigurationStyle portStyle = refreshStyle(target, edge);
+            if (portStyle.hasClass("excluded")) {
+              result.addClass("excluded");
+              break;
+            }
           }
-
         }
-
       }
-    }  else {
-    
+
+      } else {
 
       Collection<CSConfiguration> configs = Collections.emptyList();
-      ModelElement target = context instanceof Part ? ((Part) context).getType() : context;
+      EObject target = context instanceof Part ? ((Part) context).getType() : context;
 
       if (view.eContainer() instanceof AbstractDNode) {
         configs = getSelectedConfigurations((AbstractDNode) view.eContainer(), true);
@@ -714,57 +754,77 @@ public class CsConfigurationServices {
         }
       }
 
-      boolean outOfScope = true;
-
-      for (CSConfiguration c : configs) {
+      for (Iterator<CSConfiguration> it = configs.iterator(); it.hasNext();) {
+        CSConfiguration c = it.next();
         if (c.getScope().contains(target)) {
-          outOfScope = false;
-          if (c.includes(target)) {
-            result = true;
-            break;
+          if (c.includes((ModelElement)target)) {//FIXME cast
+            result.addClass("included");
+          } else {
+            result.addClass("excluded");
           }
+        } else {
+          it.remove();
         }
       }
-      
-      result |= outOfScope;
-
+      }
     }
 
     return result;
 
   }
 
-  /**
-   * FIXME doc Verify if a given {@link AbstractFunction} is not available in all graphically selected
-   * {@link Configuration}s of the {@link Component} container of the {@link AbstractFunction}
-   *
-   * @param context
-   *          the {@link AbstractFunction}
-   * @param view
-   *          the {@link DNode} of the {@link AbstractFunction}
-   * @return <code>true</code> if the {@link AbstractFunction} is not available, else <code>false</code> .
-   */
-  public boolean isNotAvailableInSelectedConfiguration(ModelElement context, DDiagramElement view) {
-    return !isAvailableInSelectedConfiguration(context, view);
+  private CSConfigurationStyle getCSConfigurationStyle(DDiagramElement view) {
+    CSConfigurationStyle style = (CSConfigurationStyle) EcoreUtil.getExistingAdapter(view, CSConfigurationStyle.class);
+    if (style == null) {
+      style = new CSConfigurationStyle();
+      view.eAdapters().add(style);
+    }
+    return style;
+  }
+  
+  public static class CSConfigurationStyle extends AdapterImpl {
+    private Collection<String> style = new HashSet<String>();
+    public CSConfigurationStyle clear() {
+      style.clear();
+      return this;
+    }
+    public CSConfigurationStyle addClass(String clazz) {
+      style.add(clazz);
+      return this;
+    }
+    public boolean hasClass(String clazz) {
+      return style.contains(clazz);
+    }
+    public boolean isAdapterForType(Object type) {
+      return type == CSConfigurationStyle.class;
+    }
+  }
+  
+  public boolean msStyleCustomizationPredicate(ModelElement context, DDiagramElement view) {
+    return false;
   }
 
   public int disabledElementColor(ModelElement context, DDiagramElement view) {
-
-    ModelElement target = context instanceof Part ? ((Part) context).getType() : context;
-
-    if (target instanceof Component) {
+    boolean isComponent = (context instanceof Part ? ((Part) context).getType() : context) instanceof Component;
+    if (isComponent) {
       return 200;
+    } else {
+      return 220;
     }
-    
-//    for (CSConfiguration c : getSelectedConfigurations((DNodeContainer) view.eContainer(), true)) {
-//      if (c.getSelector() == selector_Type.EXCLUSION && c.getElements().contains(target)) {
-//        return 150;
-//      }
-//    }
-    
-    return 220;
   }
 
+
+  public static boolean isConsistentIncludeRequired() {
+    return Platform.getPreferencesService().getBoolean(
+       org.polarsys.capella.vp.ms.ui.preferences.Activator.PLUGIN_ID,
+       MsPreferenceConstants.PREF_DEFAULT_CONSISTEN_INCLUDE_REQUIRED, true, null); //$NON-NLS-1$ 
+  }
+
+  public static boolean isMarkConflictingInclusions() {
+    return Platform.getPreferencesService().getBoolean(
+        org.polarsys.capella.vp.ms.ui.preferences.Activator.PLUGIN_ID,
+        MsPreferenceConstants.PREF_DEFAULT_MARK_CONFLICTS, true, null); //$NON-NLS-1$ 
+  }
 
   public boolean isShowDisabledPortOverlay(ModelElement context, DDiagramElement view) {
     
