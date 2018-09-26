@@ -111,7 +111,7 @@ public class CSConfigurationListener extends ResourceSetListenerImpl implements 
         IProject project = ResourcesPlugin.getWorkspace().getRoot().findMember(uri.toPlatformString(true)).getProject();
         IPreferenceStore store = new ScopedPreferenceStore(new ProjectScope(project), Activator.PLUGIN_ID);
 
-        String accessLiteral = Platform.getPreferencesService().getString(Activator.PLUGIN_ID,
+        String accessLiteral = Platform.getPreferencesService().getString(org.polarsys.capella.vp.ms.ui.preferences.Activator.PLUGIN_ID,
             MsPreferenceConstants.PREF_DEFAULT_CONFIGURATION_ACCESS, "", null); //$NON-NLS-1$
 
         // String accessLiteral = store.getString(MsUIConstants.PREF_DEFAULT_CONFIGURATION_ACCESS);
