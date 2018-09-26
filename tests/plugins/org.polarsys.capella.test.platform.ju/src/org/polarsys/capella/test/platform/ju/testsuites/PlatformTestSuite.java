@@ -15,6 +15,7 @@ import java.util.List;
 
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
+import org.polarsys.capella.test.platform.ju.testcases.CapellaCDOGenerationOfDerivedFeature;
 import org.polarsys.capella.test.platform.ju.testcases.CapellaDefaultEditorEnabled;
 import org.polarsys.capella.test.platform.ju.testcases.CapellaPlatformVersionNotNull;
 
@@ -40,6 +41,7 @@ public class PlatformTestSuite extends BasicTestSuite {
     List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
     tests.add(new CapellaPlatformVersionNotNull());
     tests.add(new CapellaDefaultEditorEnabled());
+    tests.add(new CapellaCDOGenerationOfDerivedFeature());
     return tests;
   }
 
