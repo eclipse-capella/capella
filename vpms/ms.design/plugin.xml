@@ -55,7 +55,7 @@
   <extension
         point="org.eclipse.sirius.refreshExtensionProvider">
      <refreshExtensionProvider
-           priority="highest"
+           priority="normal"
            providerClass="ms.design.MsRefreshExtensionProvider">
      </refreshExtensionProvider>
   </extension>
