@@ -14,9 +14,11 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.polarsys.capella.common.ui.massactions.core.edit.table.CapellaMETable;
+import org.polarsys.capella.common.ui.massactions.shared.helper.CapellaMASelectionHelper;
 import org.polarsys.capella.common.ui.massactions.shared.property.PropertyViewManager;
 import org.polarsys.kitalpha.massactions.core.table.IMATable;
 import org.polarsys.kitalpha.massactions.edit.MEView;
+import org.polarsys.kitalpha.massactions.shared.helper.MASelectionHelper;
 
 /**
  * A Capella Mass Editing view extension of the default {@link MEView}.
@@ -49,5 +51,9 @@ public class CapellaMEView extends MEView {
       return super.getAdapter(adapter);
     }
   }
-
+  
+  @Override
+  protected MASelectionHelper createSelectionHelper() {
+    return new CapellaMASelectionHelper();
+  }
 }

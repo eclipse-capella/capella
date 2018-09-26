@@ -24,7 +24,6 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.handlers.HandlerUtil;
-import org.polarsys.capella.common.ui.massactions.shared.helper.CapellaMASelectionHelper;
 import org.polarsys.kitalpha.massactions.edit.MEView;
 import org.polarsys.kitalpha.massactions.shared.view.MAView;
 
@@ -61,7 +60,7 @@ public abstract class AbstractSentToCommandHandler extends AbstractHandler {
         maView.setViewName(MAView.getViewName(maView.getPartName(), secondaryViewId));        
       }
       ISelection selection = HandlerUtil.getCurrentSelection(event);
-      Collection<EObject> selectionData = CapellaMASelectionHelper.getElementsFromSelection(selection);
+      Collection<EObject> selectionData = maView.getSelectionHelper().getElementsFromSelection(selection);
 
       maView.dataChanged(selectionData);
 
