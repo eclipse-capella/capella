@@ -290,7 +290,7 @@ public class FaServices {
    *         (DataFlow Blank Diagrams) used in oa, logical, context, physical
    */
   public Collection<FunctionalExchange> getDisplayedFunctionalExchanges(DSemanticDecorator selectedElement) {
-    Collection<FunctionalExchange> result = new HashSet<FunctionalExchange>();
+    Collection<FunctionalExchange> result = new HashSet<>();
     // current DiagramElements
     if (selectedElement instanceof AbstractDNode) {
       result = getDisplayedFunctionalExchangesFromAbstractDNode((AbstractDNode) selectedElement);
@@ -313,7 +313,9 @@ public class FaServices {
       }
     }
 
-    return result;
+    // This cast to ArrayList is necessary since this method is also used in Transfer Wizard service which expects a
+    // List as parameter
+    return new ArrayList<>(result);
   }
 
   /**
