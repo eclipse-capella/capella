@@ -91,9 +91,12 @@
                      <instanceof
                            value="org.eclipse.emf.ecore.EObject">
                      </instanceof>
-                     <instanceof
-                           value="org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart">
-                     </instanceof>
+                     <adapt
+                           type="org.polarsys.kitalpha.emde.model.Element">
+                     </adapt>
+                       <adapt
+                             type="org.eclipse.sirius.viewpoint.DRepresentationDescriptor">
+                       </adapt>
                   </or>
                </iterate>
             </with>
@@ -105,9 +108,12 @@
                      <instanceof
                            value="org.eclipse.emf.ecore.EObject">
                      </instanceof>
-                     <instanceof
-                           value="org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart">
-                     </instanceof>
+                     <adapt
+                           type="org.polarsys.kitalpha.emde.model.Element">
+                     </adapt>
+                       <adapt
+                             type="org.eclipse.sirius.viewpoint.DRepresentationDescriptor">
+                       </adapt>
                   </or>
                </iterate>
             </with>
@@ -124,9 +130,12 @@
                      <instanceof
                            value="org.eclipse.emf.ecore.EObject">
                      </instanceof>
-                     <instanceof
-                           value="org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart">
-                     </instanceof>
+                     <adapt
+                           type="org.polarsys.kitalpha.emde.model.Element">
+                     </adapt>
+                       <adapt
+                             type="org.eclipse.sirius.viewpoint.DRepresentationDescriptor">
+                       </adapt>
                   </or>
                </iterate>
             </with>
@@ -138,9 +147,12 @@
                      <instanceof
                            value="org.eclipse.emf.ecore.EObject">
                      </instanceof>
-                     <instanceof
-                           value="org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart">
-                     </instanceof>
+                     <adapt
+                           type="org.polarsys.kitalpha.emde.model.Element">
+                     </adapt>
+                       <adapt
+                             type="org.eclipse.sirius.viewpoint.DRepresentationDescriptor">
+                       </adapt>
                   </or>
                </iterate>
             </with>

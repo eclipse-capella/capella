@@ -10,10 +10,7 @@
  *******************************************************************************/
 package org.polarsys.capella.core.platform.sirius.ui.navigator.actions;
 
-import org.eclipse.core.resources.IMarker;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.gef.GraphicalEditPart;
-import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.resource.ImageDescriptor;
@@ -21,11 +18,7 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.osgi.util.NLS;
-import org.eclipse.sirius.diagram.DSemanticDiagram;
-import org.eclipse.sirius.ui.tools.api.views.common.item.ItemWrapper;
 import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
-import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IViewActionDelegate;
 import org.eclipse.ui.IViewPart;
@@ -37,13 +30,11 @@ import org.eclipse.ui.part.IShowInTarget;
 import org.eclipse.ui.part.ShowInContext;
 import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.common.ui.services.helper.EObjectImageProviderHelper;
-import org.polarsys.capella.common.ui.toolkit.browser.content.provider.wrapper.EObjectWrapper;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.epbs.ConfigurationItem;
-import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
+import org.polarsys.capella.core.model.handler.helpers.CapellaAdapterHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.TriStateBoolean;
-import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.CapellaNavigatorPlugin;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaCommonNavigator;
 
@@ -192,56 +183,16 @@ public class LocateInCapellaExplorerAction implements IObjectActionDelegate, IVi
    * @return a semantic element or a {@link DRepresentation}.
    */
   public static Object getElement(Object uiSelectedElement) {
-    Object result = null;
-    // Precondition.
-    if (null == uiSelectedElement) {
-      return result;
-    }
+    Object semanticElement = CapellaAdapterHelper.resolveSemanticObject(uiSelectedElement, true);
     
-    if (uiSelectedElement instanceof IMarker) {
-      return uiSelectedElement;
-    }
-    if (uiSelectedElement instanceof ItemWrapper) {
-      uiSelectedElement = ((ItemWrapper) uiSelectedElement).getWrappedObject();
-    }
-    if (CapellaResourceHelper.isSemanticElement(uiSelectedElement)) {
-      result = uiSelectedElement;
-      
-    } else if (uiSelectedElement instanceof GraphicalEditPart) {
-      GraphicalEditPart editPart = (GraphicalEditPart) uiSelectedElement;
-      result = editPart.getModel();
-      if (result instanceof View) {
-        View view = (View) result;
-        result = view.getElement();
-      }
-      if ((result instanceof DSemanticDecorator) && !(result instanceof DSemanticDiagram)) {
-        DSemanticDecorator semanticDecorator = (DSemanticDecorator) result;
-        result = semanticDecorator.getTarget();
-      } 
-      if (result instanceof DRepresentation) {
-        result = RepresentationHelper.getRepresentationDescriptor((DRepresentation) result);
-      }
-    } else if ((uiSelectedElement instanceof DSemanticDecorator) && !(uiSelectedElement instanceof DSemanticDiagram)) {
-      DSemanticDecorator semanticDecorator = (DSemanticDecorator) uiSelectedElement;
-      result = semanticDecorator.getTarget();
-    } else if (uiSelectedElement instanceof EObjectWrapper) {
-      result = ((EObjectWrapper) uiSelectedElement).getElement();
-    }
-    
-    if (uiSelectedElement instanceof DRepresentationDescriptor) {
-      result = uiSelectedElement;
-    } else if (uiSelectedElement instanceof DRepresentation) {
-      result = RepresentationHelper.getRepresentationDescriptor((DRepresentation) uiSelectedElement);
-    }
-
-    if (result instanceof Part) {
+    if (semanticElement instanceof Part) {
       boolean allowMultiplePart = TriStateBoolean.True
-          .equals(CapellaProjectHelper.isReusableComponentsDriven((Part) result));
-      if (!allowMultiplePart && !(((Part) result).getAbstractType() instanceof ConfigurationItem)) {
-        result = ((Part) result).getAbstractType();
+          .equals(CapellaProjectHelper.isReusableComponentsDriven((Part) semanticElement));
+      if (!allowMultiplePart && !(((Part) semanticElement).getAbstractType() instanceof ConfigurationItem)) {
+        semanticElement = ((Part) semanticElement).getAbstractType();
       }
     }
 
-    return result;
+    return semanticElement;
   }
 }

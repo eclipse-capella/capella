@@ -10,20 +10,14 @@
  *******************************************************************************/
 package org.polarsys.capella.core.ui.semantic.browser.sirius.helpers;
 
-import java.util.List;
-
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.gef.EditPart;
-import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.sirius.viewpoint.DRepresentationElement;
-import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.ui.IWorkbenchPart;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.epbs.ConfigurationItem;
+import org.polarsys.capella.core.model.handler.helpers.CapellaAdapterHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.TriStateBoolean;
 import org.polarsys.capella.core.ui.semantic.browser.sirius.view.SiriusSemanticBrowserView;
@@ -44,31 +38,9 @@ public class SiriusSelectionHelper {
       if (selection instanceof IStructuredSelection) {
         IStructuredSelection selection_l = (IStructuredSelection) selection;
         Object firstElement = selection_l.getFirstElement();
-        if (firstElement instanceof CapellaElement) {
-          // Selection of a CapellaElement from a standard EMF editor for instance.
-          result = firstElement;
-        } else if (firstElement instanceof EditPart) {
-          // Selection of a graphical element in a GMF-based diagram editor.
-          EditPart selectedEditPart = (EditPart) firstElement;
-          View view = (View) selectedEditPart.getModel();
-          if (view.getElement() instanceof DSemanticDecorator) {
-            DSemanticDecorator diagram = (DSemanticDecorator) view.getElement();
-            if (null != diagram) {
-              // diagram may be null when there is a note in the diagram
-              // So here, there is a test to check whether this instance is null or not
-              result = diagram.getTarget();
-            }
-          }
-        } else if (firstElement instanceof DSemanticDecorator) {
-          DSemanticDecorator vpe = (DSemanticDecorator) firstElement;
-          result = vpe.getTarget();
-        } else if (firstElement instanceof DRepresentationElement) {
-          DRepresentationElement vpe = (DRepresentationElement) firstElement;
-          List<EObject> elements = vpe.getSemanticElements();
-          for (EObject element : elements) {
-            result = element;
-          }
-        } else {
+        // adapt to the Element
+        result = CapellaAdapterHelper.resolveSemanticObject(firstElement, true);
+        if (result == null) {
           result = Platform.getAdapterManager().getAdapter(firstElement, EObject.class);
         }
       }

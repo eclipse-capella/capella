@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,7 +12,6 @@ package org.polarsys.capella.core.ui.fastlinker;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
@@ -21,10 +20,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.sirius.diagram.ui.edit.api.part.IAbstractDiagramNodeEditPart;
-import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
-import org.eclipse.sirius.table.metamodel.table.DTableElement;
 import org.eclipse.ui.ISources;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.handlers.HandlerUtil;
@@ -80,18 +76,14 @@ public class SendToFastLinkerCommandHandler extends AbstractHandler {
 		if (!(selection instanceof IStructuredSelection)) {
 			return null;
 		}
-		Collection<EObject> ret = new ArrayList<EObject>();
-		List selectedElements = ((IStructuredSelection) selection).toList();
-		for (Object selectedElement : selectedElements)
-			if ((selectedElement instanceof IAbstractDiagramNodeEditPart) || (selectedElement instanceof IDiagramEdgeEditPart)) {
-				IDiagramElementEditPart diagramElement = (IDiagramElementEditPart) selectedElement;
-				ret.add(diagramElement.resolveTargetSemanticElement());
-			} else if(selectedElement instanceof DTableElement) {
-			  ret.add(CapellaAdapterHelper.resolveEObject(selectedElement));
-			} else if (selectedElement instanceof EObject) {
-				ret.add((EObject) selectedElement);
+		Collection<EObject> ret = new ArrayList<>();
+		for (Object selectedElement : ((IStructuredSelection) selection).toList()) {
+		  EObject semanticElement = CapellaAdapterHelper.resolveSemanticObject(selectedElement, true);
+		  if (semanticElement != null) {
+				ret.add(semanticElement);
 			}
-		if (selectedElements.isEmpty())
+		}
+		if (ret.isEmpty())
 			return null;
 		return ret;
 	}

@@ -207,6 +207,7 @@
                 locationURI="popup:org.polarsys.capella.common.tools.report.appenders.reportlogview.logview?after=navigation">
                
               <separator name="group.showIn" visible="true" />
+              <separator name="group.sendTo" visible="true" />
               
        </menuContribution>
        

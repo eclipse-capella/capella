@@ -14,22 +14,34 @@
    <extension
          point="org.eclipse.core.runtime.adapters">
       <factory
-      	adaptableType="org.eclipse.sirius.viewpoint.DRepresentation"
+      	adaptableType="org.eclipse.sirius.viewpoint.DSemanticDecorator"
       	class="org.polarsys.capella.core.platform.sirius.adapter.SiriusToCapellaAdapterFactory" >
-      	<adapter type="org.polarsys.capella.common.data.modellingcore.ModelElement">
+      	<adapter type="org.polarsys.kitalpha.emde.model.Element">
       	</adapter> 
       </factory>
       <factory
-      	adaptableType="org.eclipse.sirius.viewpoint.DRepresentationDescriptor"
+      	adaptableType="org.eclipse.gef.EditPart"
       	class="org.polarsys.capella.core.platform.sirius.adapter.SiriusToCapellaAdapterFactory" >
-      	<adapter type="org.polarsys.capella.common.data.modellingcore.ModelElement">
+      	<adapter type="org.polarsys.kitalpha.emde.model.Element">
       	</adapter> 
       </factory>
       <factory
-      	adaptableType="org.eclipse.sirius.viewpoint.DRepresentationElement"
+      	adaptableType="org.eclipse.core.resources.IMarker"
       	class="org.polarsys.capella.core.platform.sirius.adapter.SiriusToCapellaAdapterFactory" >
-      	<adapter type="org.polarsys.capella.common.data.modellingcore.ModelElement">
-      	</adapter>
+      	<adapter type="org.polarsys.kitalpha.emde.model.Element">
+      	</adapter> 
+      </factory>
+      <factory
+      	adaptableType="org.polarsys.capella.common.ui.toolkit.browser.content.provider.wrapper.EObjectWrapper"
+      	class="org.polarsys.capella.core.platform.sirius.adapter.SiriusToCapellaAdapterFactory" >
+      	<adapter type="org.polarsys.kitalpha.emde.model.Element">
+      	</adapter> 
+      </factory>
+      <factory
+      	adaptableType="org.eclipse.sirius.ui.tools.api.views.common.item.ItemWrapper"
+      	class="org.polarsys.capella.core.platform.sirius.adapter.SiriusToCapellaAdapterFactory" >
+      	<adapter type="org.polarsys.kitalpha.emde.model.Element">
+      	</adapter> 
       </factory>
    </extension>
 </plugin>

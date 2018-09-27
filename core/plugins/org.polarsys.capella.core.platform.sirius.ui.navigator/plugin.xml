@@ -1318,25 +1318,25 @@
                     </not>
                </with>
                <with
-                     variable="selection">
-                  <and>
-                     <iterate ifEmpty="false">
-                        <or>
-                           <instanceof
-                                 value="org.eclipse.sirius.viewpoint.DRepresentationDescriptor">
-                           </instanceof>
-                           <instanceof
-                                 value="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
-                           </instanceof>
-                           <instanceof
-                                 value="org.polarsys.kitalpha.emde.model.Element">
-                           </instanceof>
-                           <instanceof
-                                 value="org.eclipse.sirius.table.metamodel.table.DTableElement">
-                           </instanceof>
-                        </or>
-                     </iterate>
-                  </and>
+                 variable="selection">
+                 <iterate
+                       ifEmpty="false"
+                       operator="or">
+                    <or>
+                       <instanceof
+                             value="org.polarsys.kitalpha.emde.model.Element">
+                       </instanceof>
+                       <adapt
+                             type="org.polarsys.kitalpha.emde.model.Element">
+                       </adapt>
+                       <instanceof
+                             value="org.eclipse.sirius.viewpoint.DRepresentationDescriptor">
+                       </instanceof>
+                       <adapt
+                             type="org.eclipse.sirius.viewpoint.DRepresentationDescriptor">
+                       </adapt>
+                    </or>
+                 </iterate>
                </with>
                </and>
             </visibleWhen>
@@ -1382,12 +1382,15 @@
                <with
                      variable="selection">
                   <and>
-                  	<iterate>                
-                         <or>
-                           <instanceof
-                                 value="org.polarsys.kitalpha.emde.model.Element">
-                           </instanceof>
-                        </or>
+                  	<iterate>
+                 		<or>
+                       		<instanceof
+                             	value="org.polarsys.kitalpha.emde.model.Element">
+                       		</instanceof>
+                       		<adapt
+                             	type="org.polarsys.kitalpha.emde.model.Element">
+                       		</adapt>
+                    	</or>
                      </iterate>
                      <count
                            value="1">
@@ -1406,24 +1409,14 @@
                <with
                      variable="activeMenuSelection">
                   <and>
-                  	<iterate>                
-                         <or>
+                  	<iterate>
+              			<or>
                            <instanceof
                                  value="org.polarsys.kitalpha.emde.model.Element">
                            </instanceof>
-                         	<and>
-                         		<instanceof
-                                 	value="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
-                           		</instanceof>
-                         		<not>
-                           			<instanceof
-                           				value="org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart">
-                           			</instanceof>
-                           		</not>
-                         	</and>
-                           <instanceof
-                                 value="org.eclipse.sirius.table.metamodel.table.DTableElement">
-                           </instanceof>
+                           <adapt
+                                 type="org.polarsys.kitalpha.emde.model.Element">
+                           </adapt>
                         </or>
                      </iterate>
                      <count
@@ -1449,14 +1442,13 @@
                   <iterate
                         ifEmpty="false"
                         operator="or">
-	                    <test
-			                  forcePluginActivation="true"
-			                  property="org.polarsys.capella.core.platform.sirius.ui.navigator.propertyTesters.ableToGoTo">
-			            </test>
+                    <test
+                          forcePluginActivation="true"
+                          property="org.polarsys.capella.core.platform.sirius.ui.navigator.propertyTesters.ableToGoTo">
+                    </test>
                   </iterate>
             </with>
       </definition>
-      
    </extension>
       
       

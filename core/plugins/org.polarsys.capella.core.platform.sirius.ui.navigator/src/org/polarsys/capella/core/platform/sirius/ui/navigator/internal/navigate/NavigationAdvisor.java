@@ -114,28 +114,28 @@ public class NavigationAdvisor {
    * @return a not <code>null</code> set, empty if nothing found. Returned set can't contain <code>null</code> value.
    */
   public Set<EObject> getNavigableElements(Object receiver) {
-   
     HashSet<EObject> navigableElements = new HashSet<EObject>(0);
-    
-    EObject element = CapellaAdapterHelper.resolveEObject(receiver);
-    if (element != null) {
-      List<AbstractModelElementRunnable> navigationHandlers = getNavigationHandler(element);
-      if (!navigationHandlers.isEmpty()) {
-        for (AbstractModelElementRunnable modelElementRunnable : navigationHandlers) {
-          // Set to the navigation handler the current selection.
-          modelElementRunnable.setElement(element);
-          // Run it.
-          modelElementRunnable.run();
-          // Get the result.
-          navigableElements.addAll(modelElementRunnable.getResult());
+
+    if (receiver instanceof IMarker) {
+      navigableElements.addAll(MarkerViewHelper.getModelElementsFromMarker((IMarker) receiver));
+
+    } else {
+      EObject element = CapellaAdapterHelper.resolveSemanticObject(receiver, true);
+      if (element != null) {
+        List<AbstractModelElementRunnable> navigationHandlers = getNavigationHandler(element);
+        if (!navigationHandlers.isEmpty()) {
+          for (AbstractModelElementRunnable modelElementRunnable : navigationHandlers) {
+            // Set to the navigation handler the current selection.
+            modelElementRunnable.setElement(element);
+            // Run it.
+            modelElementRunnable.run();
+            // Get the result.
+            navigableElements.addAll(modelElementRunnable.getResult());
+          }
         }
       }
-      
-    } else if (receiver instanceof IMarker) {
-      navigableElements.addAll(MarkerViewHelper.getModelElementsFromMarker((IMarker)receiver));
-      
     }
-    
+
     // Trim potential null value added by navigation handlers.
     navigableElements.remove(null);
     return navigableElements;

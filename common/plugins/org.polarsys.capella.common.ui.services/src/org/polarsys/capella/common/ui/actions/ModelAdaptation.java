@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,6 +20,7 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
+import org.polarsys.kitalpha.emde.model.Element;
 
 /**
  * The Capella adaptation.
@@ -66,10 +67,10 @@ public class ModelAdaptation {
         // GMF level adaptation
         Object dnodeElement = ((IAdaptable) element).getAdapter(EObject.class);
         if (dnodeElement != null) {
-          EObject obj = (EObject) Platform.getAdapterManager().getAdapter(dnodeElement, ModelElement.class);
+          EObject obj = (EObject) Platform.getAdapterManager().getAdapter(dnodeElement, Element.class);
           // Business level adaptation
           if (obj == null) {
-            obj = (EObject) Platform.getAdapterManager().loadAdapter(dnodeElement, ModelElement.class.getName());
+            obj = (EObject) Platform.getAdapterManager().loadAdapter(dnodeElement, Element.class.getName());
           }
           if (obj instanceof ModelElement) {
             result = (ModelElement) obj;
