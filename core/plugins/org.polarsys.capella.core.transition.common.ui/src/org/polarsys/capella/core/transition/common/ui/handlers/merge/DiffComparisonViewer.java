@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,21 +25,20 @@ import org.eclipse.emf.diffmerge.ui.viewers.ComparisonViewer;
 import org.eclipse.emf.diffmerge.ui.viewers.EMFDiffNode;
 import org.eclipse.emf.diffmerge.ui.viewers.MergeChoiceData;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.jface.action.Action;
+import org.eclipse.jface.action.ActionContributionItem;
+import org.eclipse.jface.action.IAction;
+import org.eclipse.jface.action.IContributionManager;
+import org.eclipse.jface.action.ToolBarManager;
 import org.eclipse.jface.resource.ImageDescriptor;
-import org.eclipse.jface.resource.ImageRegistry;
 import org.eclipse.jface.util.IPropertyChangeListener;
 import org.eclipse.jface.util.PropertyChangeEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.BusyIndicator;
-import org.eclipse.swt.events.SelectionAdapter;
-import org.eclipse.swt.events.SelectionEvent;
-import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.swt.widgets.ToolBar;
-import org.eclipse.swt.widgets.ToolItem;
 import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.polarsys.capella.core.transition.common.ui.Activator;
@@ -48,7 +47,7 @@ public class DiffComparisonViewer extends ComparisonViewer {
 
   /** The name of the "merge all" image */
   private static final String CHECKIN_ACTION_ALL = "checkin_action_all.gif";
-  
+
   private static final String CHECKOUT_ACTION_ALL = "checkout_action_all.gif";
 
   private static boolean mergeAllInProgress = false;
@@ -64,10 +63,10 @@ public class DiffComparisonViewer extends ComparisonViewer {
   }
 
   protected MenuItem createMenuSupportUndoRedo(Menu menu) {
-    //We don't want to create an Undo/Redo menu, we are in a global transaction while the whole process
+    // We don't want to create an Undo/Redo menu, we are in a global transaction while the whole process
     return null;
   }
-  
+
   @Override
   protected void inputChanged(final Object input, Object oldInput) {
     super.inputChanged(input, oldInput);
@@ -106,38 +105,44 @@ public class DiffComparisonViewer extends ComparisonViewer {
     }
     return result;
   }
-  
-  protected Image getImage(String key) {
-    ImageRegistry reg = Activator.getDefault().getImageRegistry();
-    Image image = reg.get(key);
-    if (image == null) {
-      ImageDescriptor desc = AbstractUIPlugin.imageDescriptorFromPlugin(Activator.PLUGIN_ID, "icons/ctool16/"+key);
-      image = desc.createImage();
-      reg.put(key, image);
-    }
-    return reg.get(key);
+
+  protected ImageDescriptor getImageDescriptor(String key) {
+    ImageDescriptor desc = AbstractUIPlugin.imageDescriptorFromPlugin(Activator.PLUGIN_ID, "icons/ctool16/" + key);
+    return desc;
   }
-  
+
   /**
    * Create the "merge all" tool to the given side in the given tool bar and return it
-   * @param toolbar a non-null tool bar
-   * @param onLeft whether the side is left
+   * 
+   * @param manager
+   *          a non-null tool bar
+   * @param onLeft
+   *          whether the side is left
    * @return a potentially null tool item
    */
-  protected ToolItem createToolMergeAll(ToolBar toolbar, final boolean onLeft) {
-    final ToolItem result = new ToolItem(toolbar, SWT.PUSH);
-    // Image
-    String imageKey = onLeft ? CHECKIN_ACTION_ALL : CHECKOUT_ACTION_ALL;
-    result.setImage(getImage(imageKey));
-    // Tool tip
-    result.setToolTipText(onLeft ? Messages.ComparisonViewer_MergeAllOnLeftTooltip : Messages.ComparisonViewer_MergeAllOnRightTooltip);
+  protected ActionContributionItem createToolMergeAll(IContributionManager manager, final boolean onLeft) {
 
-    // Selection
-    result.addSelectionListener(new SelectionAdapter() {
-      public void widgetSelected(SelectionEvent event) {
+    final IAction action = new Action() {
+      /**
+       * @see org.eclipse.jface.action.Action#run()
+       */
+      @Override
+      public void run() {
         mergeAll();
       }
-    });
+    };
+    // Image
+    String imageKey = onLeft ? CHECKIN_ACTION_ALL : CHECKOUT_ACTION_ALL;
+    action.setImageDescriptor(getImageDescriptor(imageKey));
+
+    // Tool tip
+    action.setToolTipText(
+        onLeft ? Messages.ComparisonViewer_MergeAllOnLeftTooltip : Messages.ComparisonViewer_MergeAllOnRightTooltip);
+    action.setEnabled(false);
+
+    ActionContributionItem result = new ActionContributionItem(action);
+    manager.add(result);
+
     // Activation
     addPropertyChangeListener(new IPropertyChangeListener() {
       /**
@@ -148,13 +153,11 @@ public class DiffComparisonViewer extends ComparisonViewer {
             || PROPERTY_ACTIVATION_MERGE_TO_LEFT.equals(event.getProperty())
             || PROPERTY_ACTIVATION_MERGE_TO_RIGHT.equals(event.getProperty())) {
           EMFDiffNode input = getInput();
-          if (input != null) {
-            if (input instanceof MergeEMFDiffNode) {
-              MergeEMFDiffNode mergeInput = (MergeEMFDiffNode) input;
-              
-              // enable merge all button if the other model is editable and there are differences to merge
-              result.setEnabled(mergeInput.isMergeAllEnabled(onLeft));
-            }
+          
+          if (input instanceof MergeEMFDiffNode) {
+            MergeEMFDiffNode mergeInput = (MergeEMFDiffNode) input;
+            // enable merge all button if the other model is editable and there are differences to merge
+            action.setEnabled(mergeInput.isMergeAllEnabled(onLeft));
           }
         } else if (CompareEditorInput.DIRTY_STATE.equals(event.getProperty())) {
           if (Boolean.TRUE.equals(event.getNewValue())) {
@@ -163,9 +166,10 @@ public class DiffComparisonViewer extends ComparisonViewer {
         }
       }
     });
+
     return result;
   }
-  
+
   @Override
   protected boolean interactionsRequiredForMerge(MergeChoiceData choices, EMFDiffNode input,
       List<EMatch> selectedMatches) {
@@ -175,14 +179,17 @@ public class DiffComparisonViewer extends ComparisonViewer {
     return super.interactionsRequiredForMerge(choices, input, selectedMatches);
   }
 
-  @Override
   protected void setupToolsDetailsSide(ToolBar toolbar, boolean onLeft) {
-    createToolMergeAll(toolbar, onLeft);
-    super.setupToolsDetailsSide(toolbar, onLeft);
+    ToolBarManager toolbarManager = new ToolBarManager(toolbar);
+    createToolMergeAll(toolbarManager, onLeft);
+    createItemMerge(toolbarManager, !onLeft);
+    createItemIgnore(toolbarManager, onLeft);
+    createItemDelete(toolbarManager, onLeft);
+    toolbarManager.update(true);
   }
 
-  boolean mergeAll(){
-    IEditableModelScope  scope = getComparison().getScope(getInput().getRoleForSide(true));
+  boolean mergeAll() {
+    IEditableModelScope scope = getComparison().getScope(getInput().getRoleForSide(true));
     List<EObject> root = scope.getContents();
     ComparisonSelection selection = asComparisonSelection(new StructuredSelection(root));
     mergeAllInProgress = true;
