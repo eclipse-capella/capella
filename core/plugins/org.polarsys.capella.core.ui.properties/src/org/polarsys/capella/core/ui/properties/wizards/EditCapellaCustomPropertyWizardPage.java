@@ -48,7 +48,7 @@ import org.polarsys.capella.core.ui.resources.CapellaUIResourcesPlugin;
 /**
  */
 public class EditCapellaCustomPropertyWizardPage extends WizardPage {
-	
+
   private FormToolkit toolkit;
 
   private HelpListener helpListener = null;
@@ -58,6 +58,7 @@ public class EditCapellaCustomPropertyWizardPage extends WizardPage {
 
   /**
    * Constructor.
+   * 
    * @param pageName
    * @param element
    * @param metaclassLabel
@@ -76,12 +77,13 @@ public class EditCapellaCustomPropertyWizardPage extends WizardPage {
 
   /**
    * Create a default composite to host page widgets.
+   * 
    * @param parent
    * @param numColumns
    * @return
    */
   private Composite createComposite(Composite parent, FormToolkit toolkit) {
-	ScrolledForm scrolledContainer = toolkit.createScrolledForm(parent);
+    ScrolledForm scrolledContainer = toolkit.createScrolledForm(parent);
     setControl(scrolledContainer);
     // Get the content of this scrolled form.
     Composite content = scrolledContainer.getBody();
@@ -107,7 +109,8 @@ public class EditCapellaCustomPropertyWizardPage extends WizardPage {
     // Get the edited model element.
     EObject object = getEObject();
     // Load the Custom section according to given element.
-    Map<String, IAbstractSection> mySections = CustomPropertyHelper.getCustomPropertySection(object, CapellaUIPropertiesPlugin.PROPERTIES_CONTRIBUTOR, false);
+    Map<String, IAbstractSection> mySections = CustomPropertyHelper.getCustomPropertySection(object,
+        CapellaUIPropertiesPlugin.PROPERTIES_CONTRIBUTOR, false);
     Iterator<Entry<String, IAbstractSection>> entries = mySections.entrySet().iterator();
     while (entries.hasNext()) {
       // Get the current entry.
@@ -129,7 +132,7 @@ public class EditCapellaCustomPropertyWizardPage extends WizardPage {
         CTabItem tabItem = new CTabItem(tabFolder, SWT.NONE);
         tabItem.setControl(tabItemContent);
         // Set tab item name with value got from section extension.
-        tabItem.setText(entry.getKey());
+        tabItem.setText(CustomPropertyHelper.getPropertyTabLabelFromID(entry.getKey()));
         // Set appropriate background color.
         section.setParentBackgroundColor(parent.getDisplay().getSystemColor(SWT.COLOR_WHITE));
         section.createControls(tabItemContent, null);
@@ -154,12 +157,12 @@ public class EditCapellaCustomPropertyWizardPage extends WizardPage {
       }
 
       protected boolean checkIfHelpIsAvailable(EClass eclass) {
-    	  try(InputStream inputStream = HelpSystem.getHelpContent(generateHTMLLink(eclass))){
-    		  return ((null != eclass) && (null != inputStream));
-    	  }catch (Exception e) {
-    		  // Fail silently
-		}
-    	  return false;
+        try (InputStream inputStream = HelpSystem.getHelpContent(generateHTMLLink(eclass))) {
+          return ((null != eclass) && (null != inputStream));
+        } catch (Exception e) {
+          // Fail silently
+        }
+        return false;
       }
 
       public void helpRequested(HelpEvent e) {
@@ -196,7 +199,8 @@ public class EditCapellaCustomPropertyWizardPage extends WizardPage {
 
       protected String generateHTMLLink(EClass eclass) {
         return "/org.polarsys.capella.core.doc.user/html/editors/" + //$NON-NLS-1$
-                        eclass.getEPackage().getName() + ICommonConstants.SLASH_CHARACTER + eclass.getName() + ICommonConstants.POINT_CHARACTER + "html"; //$NON-NLS-1$
+        eclass.getEPackage().getName() + ICommonConstants.SLASH_CHARACTER + eclass.getName()
+            + ICommonConstants.POINT_CHARACTER + "html"; //$NON-NLS-1$
       }
     };
 
@@ -220,7 +224,7 @@ public class EditCapellaCustomPropertyWizardPage extends WizardPage {
       comp = null;
     }
 
-    //memory leaks, sections weren't disposed
+    // memory leaks, sections weren't disposed
     if (null != sections) {
       for (ISection section : sections) {
         section.dispose();
@@ -231,6 +235,7 @@ public class EditCapellaCustomPropertyWizardPage extends WizardPage {
 
   /**
    * Get the model element that the wizard is open for.
+   * 
    * @return a not <code>null</code> element.
    */
   protected EObject getEObject() {

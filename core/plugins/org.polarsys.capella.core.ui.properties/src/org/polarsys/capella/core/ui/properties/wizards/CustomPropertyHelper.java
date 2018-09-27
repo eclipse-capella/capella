@@ -42,15 +42,25 @@ import org.polarsys.capella.common.flexibility.wizards.ui.tabbed.PropertiesTabDe
  * Helper to load all sections declared in the platform for a metaclass and a property section contributor id.
  */
 public class CustomPropertyHelper {
+  private CustomPropertyHelper() {
+    // Private constructor
+  }
+  
   private static final String EXTPT_SECTIONS = "propertySections"; //$NON-NLS-1$
   private static final String ATT_CONTRIBUTOR_ID = "contributorId"; //$NON-NLS-1$
   private static final String ELEMENT_SECTION = "propertySection"; //$NON-NLS-1$
   private static final String ELEMENT_INPUT = "input"; //$NON-NLS-1$
   private static final String ELEMENT_TAB = "tab"; //$NON-NLS-1$
   private static final String ATT_INPUT_TYPE = "type"; //$NON-NLS-1$
+  private static final String PROPERTY_TABS = "propertyTabs"; //$NON-NLS-1$
+  private static final String PROPERTY_TAB = "propertyTab"; //$NON-NLS-1$
+  private static final String PROPERTY_TAB_ID = "id"; //$NON-NLS-1$
+  private static final String PROPERTY_TAB_LABEL = "label"; //$NON-NLS-1$
+  private static Map<String, String> propertyTabIdLabelMap;
 
   /**
    * Get the custom property sections for given parameters.
+   * 
    * @param metaclass
    * @param contributorId
    * @return
@@ -61,13 +71,15 @@ public class CustomPropertyHelper {
 
   /**
    * Get the custom property sections for given parameters.
+   * 
    * @param metaclass
    * @param contributorId
    * @param strict
    * @return
    */
-  public static Map<String, IAbstractSection> getCustomPropertySection(EObject object, String contributorId, boolean strict) {
-    Map<String, IAbstractSection> result = new HashMap<String, IAbstractSection>(0);
+  public static Map<String, IAbstractSection> getCustomPropertySection(EObject object, String contributorId,
+      boolean strict) {
+    Map<String, IAbstractSection> result = new HashMap<>(0);
     // Preconditions
     if ((null == object) || (null == contributorId)) {
       return result;
@@ -78,7 +90,7 @@ public class CustomPropertyHelper {
     while (it.hasNext()) {
       String key = it.next();
       List<Object> values = map.get(key);
-      if (values.size() > 0) {
+      if (!values.isEmpty()) {
         for (Object value : values) {
           if (value instanceof IAbstractSection && ((IAbstractSection) value).select(object)) {
             result.put(key, (IAbstractSection) value);
@@ -89,7 +101,7 @@ public class CustomPropertyHelper {
 
     // we use a TreeMap because the keys are sorted
     // if we don't, the 'Description' tabitem is put before the 'Base' tabitem
-    return new TreeMap<String, IAbstractSection>(result);
+    return new TreeMap<>(result);
   }
 
   /**
@@ -101,7 +113,7 @@ public class CustomPropertyHelper {
     if (null != contributorId) {
       Map<String, List<Object>> map = getAllPropertySections(metaclass, contributorId, false);
       List<Object> values = map.get(key);
-      if (values.size() > 0) {
+      if (!values.isEmpty()) {
         Object value = values.get(0);
         if (value instanceof AbstractPropertySection) {
           return (AbstractPropertySection) value;
@@ -113,19 +125,21 @@ public class CustomPropertyHelper {
 
   /**
    * Get all the property sections for given parameters.
+   * 
    * @param metaclass
    * @param contributorId
    * @param strict
    * @return
    */
-  private static Map<String, List<Object>> getAllPropertySections(EObject object, String contributorId, boolean strict) {
-    Map<String, List<Object>> result = new HashMap<String, List<Object>>();
+  private static Map<String, List<Object>> getAllPropertySections(EObject object, String contributorId,
+      boolean strict) {
+    Map<String, List<Object>> result = new HashMap<>();
 
     String metaClassName = object.eClass().getInstanceClassName();
     List<String> allMetaClassNames = getAllMetaClassNames(object.eClass());
 
-    IConfigurationElement[] propertySectionsElements =
-        ExtensionPointHelper.getConfigurationElements(FrameworkUtil.getBundle(TabDescriptor.class).getSymbolicName(), EXTPT_SECTIONS);
+    IConfigurationElement[] propertySectionsElements = ExtensionPointHelper
+        .getConfigurationElements(FrameworkUtil.getBundle(TabDescriptor.class).getSymbolicName(), EXTPT_SECTIONS);
     for (IConfigurationElement propertySectionsElement : propertySectionsElements) {
       // Get the contributor id.
       String id = propertySectionsElement.getAttribute(ATT_CONTRIBUTOR_ID);
@@ -140,12 +154,14 @@ public class CustomPropertyHelper {
           for (IConfigurationElement element : elements) {
             String readMetaClass = element.getAttribute(ATT_INPUT_TYPE);
             // Search one that matches the current metaclass.
-            if ((strict && metaClassName.equals(readMetaClass)) || (!strict && allMetaClassNames.contains(readMetaClass))) {
+            if ((strict && metaClassName.equals(readMetaClass))
+                || (!strict && allMetaClassNames.contains(readMetaClass))) {
               // Get the name of tab for this section.
-              Object section = ExtensionPointHelper.createInstance(propertySectionElement, ExtensionPointHelper.ATT_CLASS);
+              Object section = ExtensionPointHelper.createInstance(propertySectionElement,
+                  ExtensionPointHelper.ATT_CLASS);
               List<Object> lst = result.get(key);
               if (null == lst) {
-                lst = new ArrayList<Object>();
+                lst = new ArrayList<>();
               }
               // this list can potentially contains several sections
               // we insert at first position the one that strictly matches 'metaclass'
@@ -164,15 +180,18 @@ public class CustomPropertyHelper {
     SubPropertiesTabDescriptorProvider provider = new SubPropertiesTabDescriptorProvider() {
 
       @Override
-      protected ITabDescriptor createTabDescriptor(IPropertyContext context, IRendererContext rendererContext, IPropertyGroup mainGroup) {
+      protected ITabDescriptor createTabDescriptor(IPropertyContext context, IRendererContext rendererContext,
+          IPropertyGroup mainGroup) {
         return new PropertiesTabDescriptor(context, rendererContext, mainGroup) {
 
           @Override
-          protected ISectionDescriptor createSectionDescriptor(IPropertyContext context, IRendererContext rendererContext, IPropertyGroup group) {
+          protected ISectionDescriptor createSectionDescriptor(IPropertyContext context,
+              IRendererContext rendererContext, IPropertyGroup group) {
             return new PropertiesSectionDescriptor(context, rendererContext, group) {
 
               @Override
-              protected ISection createSection(IPropertyContext context, IRendererContext renderers, IPropertyGroup group) {
+              protected ISection createSection(IPropertyContext context, IRendererContext renderers,
+                  IPropertyGroup group) {
                 return new CapellaPropertySection(context, renderers, group);
               }
 
@@ -192,7 +211,7 @@ public class CustomPropertyHelper {
           ISection section = sectionDescriptor.getSectionClass();
           List<Object> lst = result.get(descriptor.getText());
           if (null == lst) {
-            lst = new ArrayList<Object>();
+            lst = new ArrayList<>();
           }
           lst.add(section);
           result.put(descriptor.getText(), lst);
@@ -208,11 +227,33 @@ public class CustomPropertyHelper {
    * @return
    */
   protected static List<String> getAllMetaClassNames(EClass eclass) {
-    List<String> allNames = new ArrayList<String>();
+    List<String> allNames = new ArrayList<>();
     for (EClass ecls : eclass.getEAllSuperTypes()) {
       allNames.add(ecls.getInstanceClassName());
     }
     allNames.add(eclass.getInstanceClassName());
     return allNames;
+  }
+
+  /**
+   * 
+   * @param tabID
+   * @return the tab label corresponding to the tab ID
+   */
+  public static String getPropertyTabLabelFromID(String tabID) {
+    if (propertyTabIdLabelMap == null) {
+      propertyTabIdLabelMap = new HashMap<>();
+      IConfigurationElement[] propertyTabsElements = ExtensionPointHelper
+          .getConfigurationElements(FrameworkUtil.getBundle(TabDescriptor.class).getSymbolicName(), PROPERTY_TABS);
+      for (IConfigurationElement propertyTabsElement : propertyTabsElements) {
+        IConfigurationElement[] propertyTabElements = propertyTabsElement.getChildren(PROPERTY_TAB);
+        for (IConfigurationElement propertyTabElement : propertyTabElements) {
+          String id = propertyTabElement.getAttribute(PROPERTY_TAB_ID);
+          String label = propertyTabElement.getAttribute(PROPERTY_TAB_LABEL);
+          propertyTabIdLabelMap.put(id, label);
+        }
+      }
+    }
+    return propertyTabIdLabelMap.get(tabID);
   }
 }

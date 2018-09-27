@@ -6,8 +6,8 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _VqGRgDS6EeepRL_NUeNEXg
-Runtime-Version: 2.3.0.201806262310
-Save-Time: 7/20/18 9:17 AM
+Runtime-Version: 2.1.0.201606221726
+Save-Time: 9/28/18 10:22 AM
 Testcase-Type: ecl
 
 ------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
@@ -31,10 +31,10 @@ with [get-view "Capella Project Explorer" | get-tree] {
     click -default
 }
 with [get-window Scenario] {
-    get-tab-folder | get-tab-item Base | click
+    get-tab-folder | get-tab-item Capella | click
     get-group "" -index 1 | get-button "Create a new element / Edit an existing element" | click
     with [get-window "Opaque Expression"] {
-        get-tab-folder | get-tab-item Base | click
+        get-tab-folder | get-tab-item Capella | click
         get-group "" -index 1 | get-button | click
         with [get-window "Add OpaqueExpression element"] {
             get-editbox -after [get-label "Enter language name"] | set-text preconds
