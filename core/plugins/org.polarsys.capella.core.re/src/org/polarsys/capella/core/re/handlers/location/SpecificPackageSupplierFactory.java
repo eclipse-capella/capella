@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,7 +17,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Supplier;
 
-import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
@@ -36,6 +35,7 @@ import org.polarsys.capella.core.data.capellacore.PropertyValueGroup;
 import org.polarsys.capella.core.data.capellacore.PropertyValuePkg;
 import org.polarsys.capella.core.data.capellacore.Structure;
 import org.polarsys.capella.core.data.capellacore.util.CapellacoreSwitch;
+import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.Interface;
@@ -103,6 +103,7 @@ import org.polarsys.capella.core.data.pa.PhysicalFunction;
 import org.polarsys.capella.core.data.pa.PhysicalFunctionPkg;
 import org.polarsys.capella.core.data.pa.util.PaSwitch;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
+import org.polarsys.capella.core.model.helpers.ProjectExt;
 import org.polarsys.capella.core.model.helpers.SystemAnalysisExt;
 import org.polarsys.capella.core.model.helpers.naming.NamingConstants;
 
@@ -122,15 +123,6 @@ public class SpecificPackageSupplierFactory {
 
   private BlockArchitecture destinationBlock;
 
-
-  /**
-   * Create a new instance where the destination resource is the same resource as the elements for which packages
-   * are searched.
-   */
-  public SpecificPackageSupplierFactory() {
-    this(null);
-  }
-
   /**
    * @param destinationResource the resource in which we create packages; the resource in which the RPL will 'live'
    */
@@ -140,15 +132,15 @@ public class SpecificPackageSupplierFactory {
     Collection<Switch<Supplier<EObject>>> theSwitches = Arrays.asList(
         new Capellacommon(),
         new Capellacore(),
+        new Communication(),
+        new Cs(),
+        new Ctx(),
         new Datatype(),
         new Datavalue(),
-        new Datavalue(),
-        new Communication(),
+        new Fa(),
         new Information(),
-        new Cs(),
-        new Oa(),
-        new Ctx(),
         new La(),
+        new Oa(),
         new Pa()
     );
 
@@ -178,20 +170,10 @@ public class SpecificPackageSupplierFactory {
     BlockArchitecture packagedElementBlock = BlockArchitectureExt.getRootBlockArchitecture(packagedElement);
 
     if (packagedElementBlock != null) {
-
       EClass clazz = packagedElementBlock.eClass();
-      Resource resource = destinationResource == null ? packagedElement.eResource() : destinationResource;
-
-      for (TreeIterator<EObject> it = resource.getAllContents(); it.hasNext();) {
-        EObject next = it.next();
-        if (next instanceof BlockArchitecture) {
-          if (next.eClass() == clazz) {
-            result = (BlockArchitecture) next;
-          } else {
-            it.prune(); // no need to descend into a different block
-          }
-        }
-      }
+      Resource resource = destinationResource;
+      Project project = ProjectExt.getProject(resource);
+      result = BlockArchitectureExt.getBlockArchitecture(clazz, project);
     }
     return result;
   }

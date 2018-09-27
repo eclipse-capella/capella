@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -67,8 +67,8 @@ public class IReConstants {
   public static final String UNMODIFIABLE_ELEMENTS = "capella.re.UNMODIFIABLE_ELEMENTS";
   public static final String SHARED_ELEMENTS = "capella.re.SHARED_ELEMENTS";
 
-  public static final String TRACEABILITY_ATTACHMENT_HANDLER = "TRACEABILITY_ATTACHMENT_HANDLER";
-
+  public static final String TRACEABILITY_LOCATION_HANDLER = "TRACEABILITY_LOCATION_HANDLER";
+  
   public static final String ATTRIBUTE_HANDLER = "ATTRIBUTE_HANDLER";
   public static final String LOCATION_HANDLER = "LOCATION_HANDLER";
   public static final String REPLICABLE_ELEMENT_HANDLER = "REPLICABLE_ELEMENT_HANDLER";

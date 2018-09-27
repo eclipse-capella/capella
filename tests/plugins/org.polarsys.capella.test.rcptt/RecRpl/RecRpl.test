@@ -5,8 +5,8 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _QblmIKj2Eee0yuaysMB3Rg
-Runtime-Version: 2.3.0.201806262310
-Save-Time: 7/19/18 1:29 PM
+Runtime-Version: 2.2.0.201705230341
+Save-Time: 9/26/18 4:09 PM
 Testcase-Type: ecl
 
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
@@ -201,7 +201,6 @@ with [get-editor "[SDFB] Root System Function"] {
 get-window "Replicable Elements" | get-button OK | click
 with [get-window "Update REC from selection"] {
     get-button Apply | click
-    get-window "Merge Operation" | get-button OK | click
 }
 
 // Check that REC contains 6 elements, and Sub Function is tagged with [REC] tag
@@ -369,9 +368,7 @@ with [get-editor "[SDFB] Root System Function" -index 1] {
 }
 get-window "Replicable Elements" | get-button OK | click
 with [get-window "Update selected RPL from its REC"] {
-    get-button "Copy all to the right" | click
-    get-window "Merge Operation" | get-button OK | click
-    get-button OK | click
+    get-button "Apply" | click
 }
 get-editor "[SDFB] Root System Function" -index 1 | get-diagram -index 1 | get-edit-part 
     -name "[SDFB] Root System Function" | mouse-move 151 558 -height 687 -width 1042
@@ -486,7 +483,6 @@ with [get-editor "[SDFB] Root System Function" -index 1 | get-diagram -index 1] 
 get-window "Replicable Elements" | get-button OK | click
 with [get-window "Update REC from selected RPL"] {
     get-button Apply | click
-    get-window "Merge Operation" | get-button OK | click
 }
 get-editor "[SDFB] Root System Function" -index 1 | get-diagram -index 1 | get-edit-part 
     -name "[SDFB] Root System Function" | mouse-move 500 480 -height 687 -width 1042
@@ -652,7 +648,6 @@ with [get-window "Replicable Elements"] {
 }
 with [get-window "Update selected RPL from its REC"] {
     get-button Apply | click
-    get-window "Merge Operation" | get-button OK | click
 }
 get-editor "[SDFB] Root System Function" -index 2 | get-diagram -index 1 | get-edit-part 
     -name "[SDFB] Root System Function" | mouse-move 109 672 -height 687 -width 1042

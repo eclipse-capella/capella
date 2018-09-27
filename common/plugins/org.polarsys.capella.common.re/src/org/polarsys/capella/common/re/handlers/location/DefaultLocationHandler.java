@@ -23,18 +23,19 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.polarsys.capella.common.flexibility.properties.schema.IProperty;
 import org.polarsys.capella.common.flexibility.properties.schema.IPropertyContext;
 import org.polarsys.capella.common.re.CatalogElement;
 import org.polarsys.capella.common.re.CatalogElementLink;
 import org.polarsys.capella.common.re.constants.IReConstants;
 import org.polarsys.capella.common.re.handlers.replicable.ReplicableElementHandlerHelper;
+import org.polarsys.capella.common.re.handlers.traceability.LocationTraceabilityHandler;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.handlers.attachment.AttachmentHelper;
 import org.polarsys.capella.core.transition.common.handlers.contextscope.ContextScopeHandlerHelper;
 import org.polarsys.capella.core.transition.common.handlers.options.IPropertyHandler;
 import org.polarsys.capella.core.transition.common.handlers.options.OptionsHandlerHelper;
-import org.polarsys.capella.core.transition.common.handlers.traceability.TraceabilityHandlerHelper;
 import org.polarsys.capella.core.transition.common.rules.IRuleAttachment;
 import org.polarsys.kitalpha.transposer.rules.handler.api.IRulesHandler;
 import org.polarsys.kitalpha.transposer.rules.handler.exceptions.possibilities.MappingPossibilityResolutionException;
@@ -68,65 +69,36 @@ public class DefaultLocationHandler implements ILocationHandler {
       return true;
     }
 
-    CatalogElement sourceElement = ReplicableElementHandlerHelper.getInstance(context).getSource(context);
-    CatalogElement targetElement = ReplicableElementHandlerHelper.getInstance(context).getTarget(context);
-
-    // Retrieve if the given Link is from the Source or the Target
-    boolean isSource = false;
     CatalogElement elementSource = link.getSource();
+    
+    //If the link is not linked to a REC-RPL, it is invalid
     if (elementSource == null) {
       return true;
     }
 
-    if (elementSource.equals(sourceElement)) {
-      isSource = true;
-    } else if (elementSource.equals(targetElement)) {
-      isSource = false;
-    }
+    // Retrieve if the given Link is from the Source or the Target
+    boolean isLinkFromSource = ReplicableElementHandlerHelper.getInstance(context).isFromSource(context, link);
 
-    // Retrieve if the selected Resource is for the Source or the Target
-    boolean isSelectionForSource = false;
-    String value = (String) context.get(IReConstants.COMMAND__CURRENT_VALUE);
-    if (IReConstants.COMMAND__UPDATE_DEFINITION_REPLICA_FROM_REPLICA.equals(value)) {
-      isSelectionForSource = true;
-
-    } else if (IReConstants.COMMAND__CREATE_REPLICABLE_ELEMENT.equals(value)) {
-      isSelectionForSource = true;
-    } // when creating a RPL, user can select the REC instead of a real location..., isSelectionForSource should be true in that case
-
-    Resource destinationResource = getDestinationResource(context);
-
-    // Change the resource according to selection
-    Resource sourceElementResource;
-    Resource targetElementResource;
-    Resource sourceResource = (sourceElement == null) || ((sourceElementResource = sourceElement.eResource()) == null) ? destinationResource : sourceElementResource;
-    Resource targetResource = (targetElement == null) || ((targetElementResource = targetElement.eResource()) == null) ? destinationResource : targetElementResource;
-    if (isSelectionForSource) {
-      sourceResource = destinationResource;
+    if (isLinkFromSource) {
+      //If link is for source side, check that given location is on same project than source
+      CatalogElement sourceElement = ReplicableElementHandlerHelper.getInstance(context).getInitialSource(context);
+      Resource sourceResource = EcoreUtil.getRootContainer(sourceElement).eResource();
+      Resource locationResource = EcoreUtil.getRootContainer(location).eResource();
+      if (sourceResource != locationResource) {
+        return true;
+      }
+      
     } else {
-      targetResource = destinationResource;
+      //If link is for target side, check that given location is on same project than target
+      CatalogElement targetElement = ReplicableElementHandlerHelper.getInstance(context).getInitialTarget(context);
+      Resource targetResource = EcoreUtil.getRootContainer(targetElement).eResource();
+      Resource locationResource = EcoreUtil.getRootContainer(location).eResource();
+      if (targetResource != locationResource) {
+        return true;
+      }
     }
-
-    // If REC and RPL are not located in the same resource, we exclude all containers not located in the targetElement's resource.
-    if (isSource && (sourceResource != location.eResource())) {
-      return true;
-    } else if (!isSource && (targetResource != location.eResource())) {
-      return true;
-    }
-
+    
     return false;
-  }
-
-  /**
-   * Find the destination resource of the current operation, i.e. the resoure that contains the
-   * elements that were selected when the operation was invoked.
-   *
-   * @param context the transition context
-   * @return the destination resource
-   */
-  protected final Resource getDestinationResource(IContext context) {
-    Collection<EObject> elements = (Collection<EObject>) context.get(ITransitionConstants.TRANSITION_SOURCES);
-    return elements.iterator().next().eResource();
   }
 
   /**
@@ -310,27 +282,33 @@ public class DefaultLocationHandler implements ILocationHandler {
           return targetContainer;
       }
     }
+    
+    EObject defaultContainer = retrieveDefaultContainerFromRule(arule, link, oppositeLink, context);
+    defaultLocations.put(link, defaultContainer);
+    return defaultContainer;
+    
+  }
 
+  private EObject retrieveDefaultContainerFromRule(IRuleAttachment arule, CatalogElementLink link,
+      CatalogElementLink oppositeLink, IContext context) {
+
+    boolean isLinkFromSource = ReplicableElementHandlerHelper.getInstance(context).isFromSource(context, link);
+    
     try {
-      CatalogElementLink linkOrigin = link.getOrigin();
-      EObject other = TraceabilityHandlerHelper.getInstance(context).retrieveSourceElements(link.getTarget(), context).iterator().next();
-
       if (arule != null) {
-        EObject result = arule.retrieveDefaultContainer(linkOrigin == null ? other : linkOrigin.getTarget(), link.getTarget(), context);
+        LocationTraceabilityHandler.update(isLinkFromSource, context);
+        EObject result = arule.retrieveDefaultContainer(oppositeLink.getTarget(), link.getTarget(), context);
 
         if (result != null) {
           if (!isValidContainement(result, link.getTarget())) {
-            defaultLocations.put(link, null);
             return null;
           }
           // If REC and RPL are not located in the same resource, we exclude all containers not located in the destination's resource.
           if (isInvalidResourceLocation(link, result, context)) {
-            defaultLocations.put(link, null);
             return null;
           }
         }
 
-        defaultLocations.put(link, result);
         return result;
       }
 
@@ -338,7 +316,6 @@ public class DefaultLocationHandler implements ILocationHandler {
       exception.printStackTrace();
     }
 
-    defaultLocations.put(link, null);
     return null;
   }
 
@@ -379,7 +356,6 @@ public class DefaultLocationHandler implements ILocationHandler {
 
     String parentLocator = getParentLocator(context);
     if (parentLocator == null || IReConstants.LOCATOR_OPTION_DEFAULT.equals(parentLocator) || IReConstants.LOCATOR_OPTION_MANUAL.equals(parentLocator)) {
-
       retrieveDefaultContainersFromSelection(link, oppositeLink, elementsContainers, context);
       retrieveDefaultContainersFromSiblingLinks(link, elementsContainers, false, context);
 
@@ -543,25 +519,23 @@ public class DefaultLocationHandler implements ILocationHandler {
   // We look in the selection if there is a compatible element to store the linkSource (the rack when instanciating the card)
   private void retrieveDefaultContainersFromSelection(CatalogElementLink link, CatalogElementLink oppositeLink,
       Collection<? super EObject> elementsContainers, IContext context) {
-    Collection<EObject> elements = (Collection<EObject>) context.get(ITransitionConstants.TRANSITION_SOURCES);
-    if (elements != null) {
-      for (EObject ppp : elements) {
-
-        for (EObject item : getRelatedElements(ppp)) {
+    Collection<EObject> selection = (Collection<EObject>) context.get(ITransitionConstants.TRANSITION_SOURCES);
+    if (selection != null) {
+      for (EObject selectedItem : selection) {
+        for (EObject item : getRelatedElements(selectedItem)) {
           if (isInvalidResourceLocation(link, item, context)) {
             continue;
           }
           // if the selection is a REC, we add the container of the type (thus in the REC) of the RPL element as a possible location
           if (item instanceof CatalogElement) {
-              String value = (String) context.get(IReConstants.COMMAND__CURRENT_VALUE);
               // specific case when parameters are reversed
-              if (IReConstants.COMMAND__UPDATE_DEFINITION_REPLICA_FROM_REPLICA.equals(value)) {
+              if (IReConstants.COMMAND__UPDATE_DEFINITION_REPLICA_FROM_REPLICA.equals(context.get(IReConstants.COMMAND__CURRENT_VALUE))) {
               	elementsContainers.add(oppositeLink.getTarget().eContainer());
-              }
-              // nominal case
-              else {
+              } else {
+                // nominal case
               	elementsContainers.add(link.getOrigin().getTarget().eContainer());
               }
+              
           } else {
             if (isInitialSelectionValidContainer(item, link, context)) {
               elementsContainers.add(item);
