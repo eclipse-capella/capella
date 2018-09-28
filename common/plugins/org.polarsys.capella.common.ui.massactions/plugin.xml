@@ -15,9 +15,10 @@
    <extension
          point="org.eclipse.ui.views">
       <view
-      		allowMultiple="true"
+            allowMultiple="true"
             category="org.polarsys.capella.views.category"
             class="org.polarsys.capella.common.ui.massactions.edit.CapellaMEView"
+            icon="icons/full/obj16/me_view.gif"
             id="org.polarsys.capella.common.ui.massactions.editing.view"
             name="%view.editing.name"
             restorable="false">
@@ -26,6 +27,7 @@
             allowMultiple="true"
             category="org.polarsys.capella.views.category"
             class="org.polarsys.capella.common.ui.massactions.visualization.CapellaMVView"
+            icon="icons/full/obj16/mv_view.gif"
             id="org.polarsys.capella.common.ui.massactions.visualizing.view"
             name="%view.visualization.name"
             restorable="false">
@@ -37,6 +39,9 @@
             targetID="capella.sirius.perspective">
          <viewShortcut
                id="org.polarsys.capella.common.ui.massactions.editing.view">
+         </viewShortcut>
+         <viewShortcut
+               id="org.polarsys.capella.common.ui.massactions.visualizing.view">
          </viewShortcut>
       </perspectiveExtension>
    </extension>
@@ -169,6 +174,7 @@
             allPopups="true"
             locationURI="popup:org.eclipse.ui.popup.any?after=group.sendTo">
          <menu
+               icon="icons/full/obj16/mv_view.gif"
                label="%view.visualization.sendTo.name">
             <dynamic
                   class="org.polarsys.capella.common.ui.massactions.visualization.contributionitem.SendToMVMenuContributionItem"
@@ -187,6 +193,7 @@
             allPopups="true"
             locationURI="popup:org.eclipse.ui.popup.any?after=group.sendTo">
          <menu
+               icon="icons/full/obj16/me_view.gif"
                label="%view.editing.sendTo.name">
             <dynamic
                   class="org.polarsys.capella.common.ui.massactions.edit.contributionitem.SendToMEMenuContributionItem"
