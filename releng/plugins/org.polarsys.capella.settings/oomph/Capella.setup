@@ -261,7 +261,7 @@
         <repositoryList
             name="Oxygen">
           <repository
-              url="http://download.eclipse.org/sirius/updates/milestones/6.1.0M3/oxygen"/>
+              url="http://download.eclipse.org/sirius/updates/milestones/6.1.0M4/oxygen"/>
         </repositoryList>
       </targlet>
       <targlet
