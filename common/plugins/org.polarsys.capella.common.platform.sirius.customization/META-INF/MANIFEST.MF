@@ -14,10 +14,10 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.emf.common.ui,
  org.eclipse.sirius.common,
  org.eclipse.sirius.diagram.ui,
- org.polarsys.capella.shared.id.handler
+ org.polarsys.capella.shared.id.handler,
+ org.eclipse.sirius.common.ui
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.common.platform.sirius.customisation,
- org.polarsys.capella.common.platform.sirius.customisation.resourcelocator,
  org.polarsys.capella.common.platform.sirius.customisation.uicallback
 Bundle-Localization: plugin

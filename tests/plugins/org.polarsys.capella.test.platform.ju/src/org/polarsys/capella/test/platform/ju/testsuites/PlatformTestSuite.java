@@ -16,6 +16,7 @@ import java.util.List;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
 import org.polarsys.capella.test.platform.ju.testcases.CapellaPlatformVersionNotNull;
+import org.polarsys.capella.test.platform.ju.testcases.CapellaSiriusCustomisationEnabled;
 
 import junit.framework.Test;
 
@@ -37,6 +38,7 @@ public class PlatformTestSuite extends BasicTestSuite {
   @Override
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
+    tests.add(new CapellaSiriusCustomisationEnabled());
     tests.add(new CapellaPlatformVersionNotNull());
     return tests;
   }

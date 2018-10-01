@@ -32,10 +32,6 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.validation.service.ModelValidationService;
 import org.eclipse.jface.viewers.ILabelDecorator;
 import org.eclipse.jface.viewers.ILabelProviderListener;
-import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
-import org.eclipse.sirius.common.tools.api.constant.CommonPreferencesConstants;
-import org.eclipse.sirius.common.ui.SiriusTransPlugin;
-import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.application.IWorkbenchWindowConfigurer;
 import org.eclipse.ui.application.WorkbenchWindowAdvisor;
@@ -110,10 +106,9 @@ public class CapellaWorkbenchAdvisor extends IDEWorkbenchAdvisor {
   public void preStartup() {
     super.preStartup();
 
-    // Load SiriusEdit
-    SiriusEditPlugin.getPlugin().getPreferenceStore().setValue(SiriusPreferencesKeys.PREF_EMPTY_AIRD_FRAGMENT_ON_CONTROL.name(), true);
-    // Disable Sirius Pre-commit listener behavior since Capella has the same one.
-    SiriusTransPlugin.getPlugin().getPreferenceStore().setValue(CommonPreferencesConstants.PREF_DEFENSIVE_EDIT_VALIDATION, false);
+    //Ensure that Sirius customization are properly overidden by loading customisation plugin
+    org.polarsys.capella.common.platform.sirius.customisation.SiriusPlugin.getDefault();
+    
     // force all workspace operations to be undoable
     // That's the easiest way to avoid undo operation on a capella project creation from clipboard (copy/paste).
     IUndoContext workspaceUndoContext = WorkspaceUndoUtil.getWorkspaceUndoContext();
