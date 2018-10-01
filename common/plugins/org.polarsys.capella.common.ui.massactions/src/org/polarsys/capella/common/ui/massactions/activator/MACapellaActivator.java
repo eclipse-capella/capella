@@ -10,7 +10,15 @@
  *******************************************************************************/
 package org.polarsys.capella.common.ui.massactions.activator;
 
+import java.net.URL;
+
+import org.eclipse.core.runtime.FileLocator;
+import org.eclipse.core.runtime.IPath;
+import org.eclipse.core.runtime.Path;
+import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.jface.resource.ImageRegistry;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
 
 /**
@@ -23,6 +31,7 @@ public class MACapellaActivator extends AbstractUIPlugin {
 
   // The plug-in ID
   public static final String PLUGIN_ID = "org.polarsys.capella.common.ui.massactions"; //$NON-NLS-1$
+  
   public static final String ME_VIEW_ID = "org.polarsys.capella.common.ui.massactions.editing.view";
   public static final String MV_VIEW_ID = "org.polarsys.capella.common.ui.massactions.visualizing.view";
 
@@ -33,6 +42,14 @@ public class MACapellaActivator extends AbstractUIPlugin {
   public static final String SEND_TO_MV_VIEW_COMMAND_ID = "org.polarsys.capella.common.ui.massactions.command.SendToMassVisualizationView";
   public static final String SEND_TO_MV_VIEW_COMMAND_PARAMETER_PRIMARY_ID = "org.polarsys.capella.common.ui.massactions.command.SendToMassVisualizationView.primaryViewId";
   public static final String SEND_TO_MV_VIEW_COMMAND_PARAMETER_SECONDARY_ID = "org.polarsys.capella.common.ui.massactions.command.SendToMassVisualizationView.secondaryViewId";
+  
+  public static final IPath ICONS_PATH = new Path("icons/full");
+  public static final String OBJ = "obj16/";
+  
+  public static final String ME_VIEW_OBJ = "ME_VIEW_OBJ";
+  public static final String ME_NEW_VIEW_OBJ = "ME_NEW_VIEW_OBJ";
+  public static final String MV_VIEW_OBJ = "MV_VIEW_OBJ";
+  public static final String MV_NEW_VIEW_OBJ = "MV_NEW_VIEW_OBJ";
 
   // The shared instance
   private static MACapellaActivator plugin;
@@ -75,4 +92,30 @@ public class MACapellaActivator extends AbstractUIPlugin {
     return plugin;
   }
 
+  @Override
+  protected void initializeImageRegistry(ImageRegistry reg) {
+    IPath path = ICONS_PATH.append(OBJ).append("me_new_view.gif");//$NON-NLS-1$
+    ImageDescriptor imageDescriptor = createImageDescriptor(getDefault().getBundle(), path);
+    reg.put(ME_NEW_VIEW_OBJ, imageDescriptor);
+    
+    path = ICONS_PATH.append(OBJ).append("me_view.gif");//$NON-NLS-1$
+    imageDescriptor = createImageDescriptor(getDefault().getBundle(), path);
+    reg.put(ME_VIEW_OBJ, imageDescriptor);
+    
+    path = ICONS_PATH.append(OBJ).append("mv_new_view.gif");//$NON-NLS-1$
+    imageDescriptor = createImageDescriptor(getDefault().getBundle(), path);
+    reg.put(MV_NEW_VIEW_OBJ, imageDescriptor);
+    
+    path = ICONS_PATH.append(OBJ).append("mv_view.gif");//$NON-NLS-1$
+    imageDescriptor = createImageDescriptor(getDefault().getBundle(), path);
+    reg.put(MV_VIEW_OBJ, imageDescriptor);
+  }
+  
+  private ImageDescriptor createImageDescriptor(Bundle bundle, IPath path) {
+    URL url= FileLocator.find(bundle, path, null);
+    if (url != null) {
+      return ImageDescriptor.createFromURL(url);
+    }
+    return null;
+  }
 }

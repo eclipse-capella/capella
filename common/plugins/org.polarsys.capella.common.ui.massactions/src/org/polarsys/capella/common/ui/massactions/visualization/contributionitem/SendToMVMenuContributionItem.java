@@ -10,22 +10,9 @@
  *******************************************************************************/
 package org.polarsys.capella.common.ui.massactions.visualization.contributionitem;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
-import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.ui.IViewPart;
-import org.eclipse.ui.IViewReference;
-import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.actions.CompoundContributionItem;
-import org.eclipse.ui.menus.CommandContributionItem;
-import org.eclipse.ui.menus.CommandContributionItemParameter;
-import org.eclipse.ui.menus.IWorkbenchContribution;
-import org.eclipse.ui.services.IServiceLocator;
 import org.polarsys.capella.common.ui.massactions.activator.MACapellaActivator;
+import org.polarsys.capella.common.ui.massactions.shared.menu.AbstractSendToMenuContributionItem;
 import org.polarsys.capella.common.ui.massactions.visualization.CapellaMVView;
 
 /**
@@ -34,62 +21,47 @@ import org.polarsys.capella.common.ui.massactions.visualization.CapellaMVView;
  * @author Sandu Postaru
  *
  */
-public class SendToMVMenuContributionItem extends CompoundContributionItem implements IWorkbenchContribution {
+public class SendToMVMenuContributionItem extends AbstractSendToMenuContributionItem {
 
-  private static final String NEW_MASS_VISUALIZATION_VIEW_TEXT = "New Mass Visualization View";
-  private IServiceLocator serviceLocator;
+  private static final String MASS_VISUALIZATION_VIEW_NAME = "Mass Visualization";
 
   @Override
-  public void initialize(IServiceLocator serviceLocator) {
-    this.serviceLocator = serviceLocator;
+  protected String getViewID() {
+    return MACapellaActivator.MV_VIEW_ID;
   }
 
   @Override
-  protected IContributionItem[] getContributionItems() {
-
-    IViewReference[] viewReferences = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
-        .getViewReferences();
-
-    // We put the stream in a try-with-resource to satisfy Sonar
-    try (Stream<IViewReference> viewReferenceStream = Stream.of(viewReferences)) {
-      List<IViewPart> meViewParts = viewReferenceStream.map(viewRef -> viewRef.getView(false))
-          .filter(viewPart -> viewPart instanceof CapellaMVView).collect(Collectors.toList());
-
-      IContributionItem[] contributionItems;
-
-      if (meViewParts.isEmpty()) {
-        contributionItems = new IContributionItem[1];
-        IContributionItem defaultViewOption = createContributionItem(NEW_MASS_VISUALIZATION_VIEW_TEXT,
-            MACapellaActivator.MV_VIEW_ID, null);
-        contributionItems[0] = defaultViewOption;
-
-      } else {
-        contributionItems = new IContributionItem[meViewParts.size()];
-
-        for (int i = 0; i < meViewParts.size(); i++) {
-          IViewPart viewPart = meViewParts.get(i);
-          IContributionItem contributionItem = createContributionItem(viewPart.getTitle(),
-              viewPart.getViewSite().getId(), viewPart.getViewSite().getSecondaryId());
-
-          contributionItems[i] = contributionItem;
-        }
-      }
-      return contributionItems;
-    }
+  protected String getViewName() {
+    return MASS_VISUALIZATION_VIEW_NAME;
+  }
+  
+  @Override
+  protected String getCommandID() {
+    return MACapellaActivator.SEND_TO_MV_VIEW_COMMAND_ID;
   }
 
-  protected IContributionItem createContributionItem(String itemLabel, String primaryViewId, String secondaryViewId) {
+  @Override
+  protected String getCommandParameterPrimaryID() {
+    return MACapellaActivator.SEND_TO_MV_VIEW_COMMAND_PARAMETER_PRIMARY_ID;
+  }
 
-    Map<String, String> parameters = new HashMap<>();
-    parameters.put(MACapellaActivator.SEND_TO_MV_VIEW_COMMAND_PARAMETER_PRIMARY_ID, primaryViewId);
-    parameters.put(MACapellaActivator.SEND_TO_MV_VIEW_COMMAND_PARAMETER_SECONDARY_ID, secondaryViewId);
+  @Override
+  protected String getCommandParameterSecondaryID() {
+    return MACapellaActivator.SEND_TO_MV_VIEW_COMMAND_PARAMETER_SECONDARY_ID;
+  }
 
-    CommandContributionItemParameter parameter = new CommandContributionItemParameter(serviceLocator, "",
-        MACapellaActivator.SEND_TO_MV_VIEW_COMMAND_ID, CommandContributionItem.STYLE_PULLDOWN);
-    parameter.label = itemLabel;
-    parameter.tooltip = itemLabel;
-    parameter.parameters = parameters;
+  @Override
+  protected boolean isMassView(IViewPart viewPart) {
+    return viewPart instanceof CapellaMVView;
+  }
 
-    return new CommandContributionItem(parameter);
+  @Override
+  protected String getNewViewIcon() {
+    return MACapellaActivator.MV_NEW_VIEW_OBJ;
+  }
+
+  @Override
+  protected String getExistingViewIcon() {
+    return MACapellaActivator.MV_VIEW_OBJ;
   }
 }

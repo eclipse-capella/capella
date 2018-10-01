@@ -10,23 +10,8 @@
  *******************************************************************************/
 package org.polarsys.capella.common.ui.massactions.visualization.commands;
 
-import java.util.Collection;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.eclipse.core.commands.AbstractHandler;
-import org.eclipse.core.commands.ExecutionEvent;
-import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.jface.viewers.ISelection;
-import org.eclipse.ui.IViewPart;
-import org.eclipse.ui.IWorkbenchPage;
-import org.eclipse.ui.PartInitException;
-import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.handlers.HandlerUtil;
 import org.polarsys.capella.common.ui.massactions.activator.MACapellaActivator;
-import org.polarsys.capella.common.ui.massactions.shared.helper.CapellaMASelectionHelper;
-import org.polarsys.kitalpha.massactions.visualize.MVView;
+import org.polarsys.capella.common.ui.massactions.shared.menu.AbstractSentToCommandHandler;
 
 /**
  * A command handler for the 'Send To Mass Visualization' action.
@@ -34,32 +19,15 @@ import org.polarsys.kitalpha.massactions.visualize.MVView;
  * @author Sandu Postaru
  *
  */
-public class SentToMVCommandHandler extends AbstractHandler {
-
-  private static final Log log = LogFactory.getLog(SentToMVCommandHandler.class);
+public class SentToMVCommandHandler extends AbstractSentToCommandHandler {
 
   @Override
-  public Object execute(ExecutionEvent event) throws ExecutionException {
-
-    String primaryViewId = event.getParameter(MACapellaActivator.SEND_TO_MV_VIEW_COMMAND_PARAMETER_PRIMARY_ID);
-    String secondaryViewId = event.getParameter(MACapellaActivator.SEND_TO_MV_VIEW_COMMAND_PARAMETER_SECONDARY_ID);
-
-    try {
-      IViewPart viewPart = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().showView(primaryViewId,
-          secondaryViewId, IWorkbenchPage.VIEW_VISIBLE);
-
-      MVView meView = (MVView) viewPart;
-      ISelection selection = HandlerUtil.getCurrentSelection(event);
-      Collection<EObject> selectionData = CapellaMASelectionHelper.getElementsFromSelection(selection);
-
-      meView.dataChanged(selectionData);
-
-    } catch (PartInitException e) {
-      log.error(e.getMessage());
-    }
-
-    // the result of the execution, must be null (see method documentation)
-    return null;
+  protected String getCommandParameterPrimaryID() {
+    return MACapellaActivator.SEND_TO_MV_VIEW_COMMAND_PARAMETER_PRIMARY_ID;
   }
 
+  @Override
+  protected String getCommandParameterSecondaryID() {
+    return MACapellaActivator.SEND_TO_MV_VIEW_COMMAND_PARAMETER_SECONDARY_ID;
+  }
 }
