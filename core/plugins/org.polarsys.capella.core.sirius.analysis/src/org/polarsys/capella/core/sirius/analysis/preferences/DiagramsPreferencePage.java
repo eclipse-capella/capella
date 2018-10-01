@@ -65,6 +65,22 @@ public class DiagramsPreferencePage extends AbstractDefaultPreferencePage {
   protected void createFieldEditors() {
 
     final Composite fieldEditorParent = getFieldEditorParent();
+    
+    // Preference for Operational Process
+    Group groupOperationalProcess = createGroup(LABEL_GROUP_OPERATIONAL_PROCESS, LABEL_GROUP_OPERATIONAL_PROCESS,
+        fieldEditorParent);
+
+    PreferenceField fieldEditorOP1 = new PreferenceField(NAME_PREF_DISPLAY_INCOMPLETE_IN_OPERATIONAL_PROCESS_LABEL,
+        LABEL_PREF_DISPLAY_INCOMPLETE_IN_OPERATIONAL_PROCESS_LABEL, groupOperationalProcess);
+    addField(fieldEditorOP1, UserProfileModeEnum.Expert, groupOperationalProcess, ProjectScope.class);
+    fieldEditorOP1.getChangeControl(groupOperationalProcess)
+        .setToolTipText(TOOLTIP_PREF_DISPLAY_INCOMPLETE_IN_OPERATIONAL_PROCESS_LABEL);
+
+    PreferenceField fieldEditorOP2 = new PreferenceField(NAME_PREF_DISPLAY_INVALID_IN_OPERATIONAL_PROCESS_LABEL,
+        LABEL_PREF_DISPLAY_INVALID_IN_OPERATIONAL_PROCESS_LABEL, groupOperationalProcess);
+    addField(fieldEditorOP2, UserProfileModeEnum.Expert, groupOperationalProcess, ProjectScope.class);
+    fieldEditorOP2.getChangeControl(groupOperationalProcess)
+        .setToolTipText(TOOLTIP_PREF_DISPLAY_INVALID_IN_OPERATIONAL_PROCESS_LABEL);
 
     // Preference for Functional Chain
     Group groupFunctionalChain = createGroup(LABEL_GROUP_FUNCTIONAL_CHAIN, LABEL_GROUP_FUNCTIONAL_CHAIN,
@@ -96,22 +112,7 @@ public class DiagramsPreferencePage extends AbstractDefaultPreferencePage {
     addField(fieldEditorPP2, UserProfileModeEnum.Expert, groupPhysicalPath, ProjectScope.class);
     fieldEditorPP2.getChangeControl(groupPhysicalPath)
         .setToolTipText(TOOLTIP_PREF_DISPLAY_INVALID_IN_PHYSICAL_PATH_LABEL);
-
-    // Preference for Operational Process
-    Group groupOperationalProcess = createGroup(LABEL_GROUP_OPERATIONAL_PROCESS, LABEL_GROUP_OPERATIONAL_PROCESS,
-        fieldEditorParent);
-
-    PreferenceField fieldEditorOP1 = new PreferenceField(NAME_PREF_DISPLAY_INCOMPLETE_IN_OPERATIONAL_PROCESS_LABEL,
-        LABEL_PREF_DISPLAY_INCOMPLETE_IN_OPERATIONAL_PROCESS_LABEL, groupOperationalProcess);
-    addField(fieldEditorOP1, UserProfileModeEnum.Expert, groupOperationalProcess, ProjectScope.class);
-    fieldEditorOP1.getChangeControl(groupOperationalProcess)
-        .setToolTipText(TOOLTIP_PREF_DISPLAY_INCOMPLETE_IN_OPERATIONAL_PROCESS_LABEL);
-
-    PreferenceField fieldEditorOP2 = new PreferenceField(NAME_PREF_DISPLAY_INVALID_IN_OPERATIONAL_PROCESS_LABEL,
-        LABEL_PREF_DISPLAY_INVALID_IN_OPERATIONAL_PROCESS_LABEL, groupOperationalProcess);
-    addField(fieldEditorOP2, UserProfileModeEnum.Expert, groupOperationalProcess, ProjectScope.class);
-    fieldEditorOP2.getChangeControl(groupOperationalProcess)
-        .setToolTipText(TOOLTIP_PREF_DISPLAY_INVALID_IN_OPERATIONAL_PROCESS_LABEL);
+ 
   }
 
   @Override

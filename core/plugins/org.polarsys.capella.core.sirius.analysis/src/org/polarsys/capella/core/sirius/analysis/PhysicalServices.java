@@ -1229,7 +1229,7 @@ public class PhysicalServices {
     if (displayIncompleteLabel && displayInvalidLabel) {
       label = label + ", "; //$NON-NLS-1$
     }
-    if (!isValid) {
+    if (displayInvalidLabel) {
       label = label + INVALID_PHYSICAL_PATH_LABEL;
     }
     if (displayIncompleteLabel || displayInvalidLabel) {
