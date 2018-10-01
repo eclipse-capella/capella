@@ -1,0 +1,187 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _QY_SsMVqEei8vKj86crSrA
+Element-Name: RecRplFragmentedModel
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _g1Gg0MVfEei8vKj86crSrA
+Runtime-Version: 2.3.0.201806262310
+Save-Time: 10/1/18 1:57 PM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+Tests the content of the "location" area for a fragmented model.
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+////////////////////////// check EPBS Architecture
+with [get-view "Capella Project Explorer" | get-tree] {
+    select "frag-model/frag-model.aird" | double-click
+    select "frag-model/frag-model.aird/frag-model/EPBS Architecture" | get-menu 
+        -path "REC \\/ RPL/Instantiate RPL from REC" | click
+}
+
+// invoke the REC/RPL dialog
+with [get-window "Replicable Elements"] {
+    get-group "" | get-button "Browse available elements" | click
+    with [get-window "Selection Dialog"] {
+        get-group "Select a name to find" | get-editbox -after [get-label "? = any character, * = any string"] 
+            | set-focus
+        get-tree | select "frag-library/frag-library/REC Catalog/LA_REC" | double-click
+    }
+}
+
+// check the dialogs
+with [get-window "Replicable Elements" | get-tree -index 1] {
+    get-property "getItems().TreeItem[0].getText()" | equals "frag-model" | verify-true
+    get-property "getItems().TreeItem[0].getItemCount()" | equals 4 | verify-true
+    get-property "getItems().TreeItem[0].getItems().TreeItem[0].getText()" | equals "Library Dependencies" | verify-true
+    get-property "getItems().TreeItem[0].getItems().TreeItem[0].getItemCount()" | equals 1 | verify-true
+    get-property "getItems().TreeItem[0].getItems().TreeItem[1].getText()" | equals ProgressStatus | verify-true
+    get-property "getItems().TreeItem[0].getItems().TreeItem[1].getItemCount()" | equals 1 | verify-true
+    get-property "getItems().TreeItem[0].getItems().TreeItem[2].getText()" 
+        | equals "[projectApproach] SingletonComponents" | verify-true
+    get-property "getItems().TreeItem[0].getItems().TreeItem[2].getItemCount()" | equals 0 | verify-true
+    get-property "getItems().TreeItem[0].getItems().TreeItem[3].getText()" | equals "frag-model" | verify-true
+    get-property "getItems().TreeItem[0].getItems().TreeItem[3].getItemCount()" | equals 1 | verify-true
+}
+get-window "Replicable Elements" | get-button Cancel | click
+
+
+
+
+////////////////////////// check Physical Architecture
+get-view "Capella Project Explorer" | get-tree | select "frag-model/frag-model.aird/frag-model/Physical Architecture" 
+    | get-menu -path "REC \\/ RPL/Instantiate RPL from REC" | click
+    
+// invoke the REC/RPL dialog
+with [get-window "Replicable Elements"] {
+    get-group "" | get-button "Browse available elements" | click
+    with [get-window "Selection Dialog"] {
+        get-group "Select a name to find" | get-editbox -after [get-label "? = any character, * = any string"] 
+            | set-focus
+        get-tree | select "frag-library/frag-library/REC Catalog/PA_REC" | double-click
+    }
+}
+
+// check the dialogs
+with [get-window "Replicable Elements" | get-tree -index 1] {
+    get-property "getItems().TreeItem[0].getText()" | equals "frag-model" | verify-true
+    get-property "getItems().TreeItem[0].getItemCount()" | equals 4 | verify-true
+    get-property "getItems().TreeItem[0].getItems().TreeItem[0].getText()" | equals "Library Dependencies" | verify-true
+    get-property "getItems().TreeItem[0].getItems().TreeItem[0].getItemCount()" | equals 1 | verify-true
+    get-property "getItems().TreeItem[0].getItems().TreeItem[1].getText()" | equals ProgressStatus | verify-true
+    get-property "getItems().TreeItem[0].getItems().TreeItem[1].getItemCount()" | equals 1 | verify-true
+    get-property "getItems().TreeItem[0].getItems().TreeItem[2].getText()" 
+        | equals "[projectApproach] SingletonComponents" | verify-true
+    get-property "getItems().TreeItem[0].getItems().TreeItem[2].getItemCount()" | equals 0 | verify-true
+    get-property "getItems().TreeItem[0].getItems().TreeItem[3].getText()" | equals "frag-model" | verify-true
+    get-property "getItems().TreeItem[0].getItems().TreeItem[3].getItemCount()" | equals 1 | verify-true
+}
+get-window "Replicable Elements" | get-button Cancel | click
+
+
+
+
+////////////////////////// check Logical Architecture
+get-view "Capella Project Explorer" | get-tree | select "frag-model/frag-model.aird/frag-model/Logical Architecture" 
+    | get-menu -path "REC \\/ RPL/Instantiate RPL from REC" | click
+    
+// invoke the REC/RPL dialog
+with [get-window "Replicable Elements"] {
+    get-group "" | get-button "Browse available elements" | click
+    with [get-window "Selection Dialog"] {
+        get-group "Select a name to find" | get-editbox -after [get-label "? = any character, * = any string"] 
+            | set-focus
+        get-tree | select "frag-library/frag-library/REC Catalog/LA_REC" | double-click
+    }
+}
+
+// check the dialogs
+with [get-window "Replicable Elements" | get-tree -index 1] {
+    get-property "getItems().TreeItem[0].getText()" | equals "frag-model" | verify-true
+    get-property "getItems().TreeItem[0].getItemCount()" | equals 4 | verify-true
+    get-property "getItems().TreeItem[0].getItems().TreeItem[0].getText()" | equals "Library Dependencies" | verify-true
+    get-property "getItems().TreeItem[0].getItems().TreeItem[0].getItemCount()" | equals 1 | verify-true
+    get-property "getItems().TreeItem[0].getItems().TreeItem[1].getText()" | equals ProgressStatus | verify-true
+    get-property "getItems().TreeItem[0].getItems().TreeItem[1].getItemCount()" | equals 1 | verify-true
+    get-property "getItems().TreeItem[0].getItems().TreeItem[2].getText()" 
+        | equals "[projectApproach] SingletonComponents" | verify-true
+    get-property "getItems().TreeItem[0].getItems().TreeItem[2].getItemCount()" | equals 0 | verify-true
+    get-property "getItems().TreeItem[0].getItems().TreeItem[3].getText()" | equals "frag-model" | verify-true
+    get-property "getItems().TreeItem[0].getItems().TreeItem[3].getItemCount()" | equals 1 | verify-true
+}
+get-window "Replicable Elements" | get-button Cancel | click
+
+
+
+
+////////////////////////// check System Analysys
+get-view "Capella Project Explorer" | get-tree | select "frag-model/frag-model.aird/frag-model/System Analysis" 
+    | get-menu -path "REC \\/ RPL/Instantiate RPL from REC" | click
+    
+// invoke the REC/RPL dialog
+with [get-window "Replicable Elements"] {
+    get-group "" | get-button "Browse available elements" | click
+    with [get-window "Selection Dialog"] {
+        get-group "Select a name to find" | get-editbox -after [get-label "? = any character, * = any string"] 
+            | set-focus
+        get-tree | select "frag-library/frag-library/REC Catalog/SA_REC" | double-click
+    }
+}
+
+// check the dialogs
+with [get-window "Replicable Elements" | get-tree -index 1] {
+    get-property "getItems().TreeItem[0].getText()" | equals "frag-model" | verify-true
+    get-property "getItems().TreeItem[0].getItemCount()" | equals 4 | verify-true
+    get-property "getItems().TreeItem[0].getItems().TreeItem[0].getText()" | equals "Library Dependencies" | verify-true
+    get-property "getItems().TreeItem[0].getItems().TreeItem[0].getItemCount()" | equals 1 | verify-true
+    get-property "getItems().TreeItem[0].getItems().TreeItem[1].getText()" | equals ProgressStatus | verify-true
+    get-property "getItems().TreeItem[0].getItems().TreeItem[1].getItemCount()" | equals 1 | verify-true
+    get-property "getItems().TreeItem[0].getItems().TreeItem[2].getText()" 
+        | equals "[projectApproach] SingletonComponents" | verify-true
+    get-property "getItems().TreeItem[0].getItems().TreeItem[2].getItemCount()" | equals 0 | verify-true
+    get-property "getItems().TreeItem[0].getItems().TreeItem[3].getText()" | equals "frag-model" | verify-true
+    get-property "getItems().TreeItem[0].getItems().TreeItem[3].getItemCount()" | equals 1 | verify-true
+}
+get-window "Replicable Elements" | get-button Cancel | click
+
+
+
+
+////////////////////////// check Operational Analysys
+get-view "Capella Project Explorer" | get-tree | select "frag-model/frag-model.aird/frag-model/Operational Analysis" 
+    | get-menu -path "REC \\/ RPL/Instantiate RPL from REC" | click
+    
+// invoke the REC/RPL dialog
+with [get-window "Replicable Elements"] {
+    get-group "" | get-button "Browse available elements" | click
+    with [get-window "Selection Dialog"] {
+        get-group "Select a name to find" | get-editbox -after [get-label "? = any character, * = any string"] 
+            | set-focus
+        get-tree | select "frag-library/frag-library/REC Catalog/OA_REC" | double-click
+    }
+}
+
+// check the dialogs
+with [get-window "Replicable Elements" | get-tree -index 1] {
+    get-property "getItems().TreeItem[0].getText()" | equals "frag-model" | verify-true
+    get-property "getItems().TreeItem[0].getItemCount()" | equals 4 | verify-true
+    get-property "getItems().TreeItem[0].getItems().TreeItem[0].getText()" | equals "Library Dependencies" | verify-true
+    get-property "getItems().TreeItem[0].getItems().TreeItem[0].getItemCount()" | equals 1 | verify-true
+    get-property "getItems().TreeItem[0].getItems().TreeItem[1].getText()" | equals ProgressStatus | verify-true
+    get-property "getItems().TreeItem[0].getItems().TreeItem[1].getItemCount()" | equals 1 | verify-true
+    get-property "getItems().TreeItem[0].getItems().TreeItem[2].getText()" 
+        | equals "[projectApproach] SingletonComponents" | verify-true
+    get-property "getItems().TreeItem[0].getItems().TreeItem[2].getItemCount()" | equals 0 | verify-true
+    get-property "getItems().TreeItem[0].getItems().TreeItem[3].getText()" | equals "frag-model" | verify-true
+    get-property "getItems().TreeItem[0].getItems().TreeItem[3].getItemCount()" | equals 1 | verify-true
+}
+get-window "Replicable Elements" | get-button Cancel | click
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

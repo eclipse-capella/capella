@@ -5,8 +5,8 @@ Element-Type: testsuite
 Element-Version: 2.0
 Id: _H2g9YMEUEeWqb6y2_gGIKQ
 Manually-Ordered: true
-Runtime-Version: 2.2.0.201705230341
-Save-Time: 9/25/18 10:34 AM
+Runtime-Version: 2.3.0.201806262310
+Save-Time: 10/1/18 1:55 PM
 
 ------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8
 Content-Type: text/testcase
@@ -36,7 +36,6 @@ _GSPGkK6TEee2vO1UksePLw	// kind: 'test' name: 'SequenceMessageProtocol' path: 'I
 _tEBy8KkGEee0yuaysMB3Rg	// kind: 'test' name: 'AccessPolicyRecRpl' path: 'Library/AccessPolicyRecRpl.test'
 _vh5p8KkOEee0yuaysMB3Rg	// kind: 'test' name: 'CloseDelete' path: 'Library/CloseDelete.test'
 _yKF9QK86Eee2vO1UksePLw	// kind: 'test' name: 'TriggerEvent' path: 'ModeAndState/TriggerEvent.test'
-_QblmIKj2Eee0yuaysMB3Rg	// kind: 'test' name: 'RecRpl' path: 'RecRpl/RecRpl.test'
 _T-55YMCcEeidDq4eRTARFA	// kind: 'test' name: 'TransitionUI' path: 'Transition/TransitionUI.test'
 _GJay8KkbEee0yuaysMB3Rg	// kind: 'test' name: 'CommandConfigurability' path: 'ValidationProfile/CommandConfigurability.test'
 _4W6WAKnCEee0yuaysMB3Rg	// kind: 'test' name: 'ProjectConfiguration' path: 'ValidationProfile/ProjectConfiguration.test'
@@ -56,5 +55,7 @@ _x3yKIJrrEeiYyJV_j_AxhQ	// kind: 'test' name: 'NavigationMenu' path: 'Menu/Navig
 _wlapMHoDEeiaPKaUZLw7uw	// kind: 'test' name: 'RepresentationElementsOfInterest' path: 'RepresentationElementsOfInterest.test'
 _vpoagHrAEeiFH4aXYyDXfw	// kind: 'test' name: 'RepresentationPackage' path: 'RepresentationPackage.test'
 _d6NhQLEMEeiU1LYbc1uWDg	// kind: 'test' name: 'DoubleClickOnRepresentation' path: 'SemanticBrowser/DoubleClickOnRepresentation.test'
+_QblmIKj2Eee0yuaysMB3Rg	// kind: 'test' name: 'RecRpl' path: 'RecRpl/RecRpl.test'
+_g1Gg0MVfEei8vKj86crSrA	// kind: 'test' name: 'RecRplFragmentedModel' path: 'RecRpl/FragmentedModel.test'
 
 ------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8--

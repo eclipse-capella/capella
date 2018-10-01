@@ -53,6 +53,7 @@ import org.polarsys.capella.test.recrpl.ju.testcases.compliance.BatchBlackboxCom
 import org.polarsys.capella.test.recrpl.ju.testcases.compliance.BlackboxComplianceTest1;
 import org.polarsys.capella.test.recrpl.ju.testcases.compliance.BlackboxComplianceTest2;
 import org.polarsys.capella.test.recrpl.ju.testcases.compliance.BlackboxComplianceTest3;
+import org.polarsys.capella.test.recrpl.ju.testcases.fragmented.CreateRPLOnFragmentedModel;
 
 import junit.framework.Test;
 
@@ -106,6 +107,7 @@ public class RecRplTestSuite extends BasicTestSuite {
     tests.add(new CreateRPL_SpecificPackages_Combined());
     tests.add(new CompositeREC());
     tests.add(new LocationOnUpdate());
+    tests.add(new CreateRPLOnFragmentedModel());
     return tests;
   }
 
