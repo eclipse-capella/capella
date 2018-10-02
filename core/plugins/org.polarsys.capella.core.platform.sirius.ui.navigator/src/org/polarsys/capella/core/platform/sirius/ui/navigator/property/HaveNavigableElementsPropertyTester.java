@@ -13,10 +13,9 @@ package org.polarsys.capella.core.platform.sirius.ui.navigator.property;
 import org.eclipse.core.expressions.PropertyTester;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.internal.navigate.NavigationAdvisor;
 
-public class GotoPropertyTester extends PropertyTester {
+public class HaveNavigableElementsPropertyTester extends PropertyTester {
 
   public boolean test(Object receiver, String property, Object[] args, Object expectedValue) {
     return !NavigationAdvisor.getInstance().getNavigableElements(receiver).isEmpty();
   }
-
 }

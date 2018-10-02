@@ -1322,20 +1322,25 @@
                  <iterate
                        ifEmpty="false"
                        operator="or">
-                    <or>
-                       <instanceof
-                             value="org.polarsys.kitalpha.emde.model.Element">
-                       </instanceof>
-                       <adapt
-                             type="org.polarsys.kitalpha.emde.model.Element">
-                       </adapt>
-                       <instanceof
-                             value="org.eclipse.sirius.viewpoint.DRepresentationDescriptor">
-                       </instanceof>
-                       <adapt
-                             type="org.eclipse.sirius.viewpoint.DRepresentationDescriptor">
-                       </adapt>
-                    </or>
+                       <and>
+                       		<or>
+		                       <instanceof
+		                             value="org.polarsys.kitalpha.emde.model.Element">
+		                       </instanceof>
+		                       <adapt
+		                             type="org.polarsys.kitalpha.emde.model.Element">
+		                       </adapt>
+		                       <instanceof
+		                             value="org.eclipse.sirius.viewpoint.DRepresentationDescriptor">
+		                       </instanceof>
+		                       <adapt
+		                             type="org.eclipse.sirius.viewpoint.DRepresentationDescriptor">
+		                       </adapt>
+		                    </or>
+		                    <reference
+                          		definitionId="org.polarsys.capella.common.platform.sirius.ted.definition.checkElementOfOpenedSessionOnCompareEditorPartOnly">
+                        	</reference>
+                       </and>
                  </iterate>
                </with>
                </and>
@@ -1347,9 +1352,39 @@
                label="%showSemanticInCapellaExplorerAction">
                <visibleWhen
                      checkEnabled="true">
-                        <reference
-                              definitionId="org.polarsys.capella.core.platform.sirius.ui.navigator.goto.expression">
-                        </reference>
+                        <with
+			                  variable="selection">
+			                  <!-- It should use the operator OR here instead of AND while iterating the list of selections. 
+			                  If one selection statisfies, it is enough to show the menu.
+			                   -->
+			                  <iterate
+			                        ifEmpty="false"
+			                        operator="or">
+			                        <and>
+				                 		<or>
+				                       		<instanceof
+				                             	value="org.polarsys.kitalpha.emde.model.Element">
+				                       		</instanceof>
+				                       		<adapt
+				                             	type="org.polarsys.kitalpha.emde.model.Element">
+				                       		</adapt>
+				                       		<instanceof
+					                             value="org.eclipse.sirius.viewpoint.DRepresentationDescriptor">
+					                       </instanceof>
+					                       <adapt
+					                             type="org.eclipse.sirius.viewpoint.DRepresentationDescriptor">
+					                       </adapt>
+				                    	</or>
+				                    	<reference
+			                          		definitionId="org.polarsys.capella.common.platform.sirius.ted.definition.checkElementOfOpenedSessionOnCompareEditorPartOnly">
+			                        	</reference>
+			                        	<test
+				                          forcePluginActivation="true"
+				                          property="org.polarsys.capella.core.platform.sirius.ui.navigator.property.haveNavigableElementsPropertyTester">
+				                    	</test>
+			                  		</and>
+			                  </iterate>
+			            </with>
                </visibleWhen>
                
             <dynamic
@@ -1383,14 +1418,19 @@
                      variable="selection">
                   <and>
                   	<iterate>
-                 		<or>
-                       		<instanceof
-                             	value="org.polarsys.kitalpha.emde.model.Element">
-                       		</instanceof>
-                       		<adapt
-                             	type="org.polarsys.kitalpha.emde.model.Element">
-                       		</adapt>
-                    	</or>
+                  		<and>
+	                 		<or>
+	                       		<instanceof
+	                             	value="org.polarsys.kitalpha.emde.model.Element">
+	                       		</instanceof>
+	                       		<adapt
+	                             	type="org.polarsys.kitalpha.emde.model.Element">
+	                       		</adapt>
+	                    	</or>
+	                    	<reference
+                          		definitionId="org.polarsys.capella.common.platform.sirius.ted.definition.checkElementOfOpenedSessionOnCompareEditorPartOnly">
+                        	</reference>
+                  		</and>
                      </iterate>
                      <count
                            value="1">
@@ -1410,14 +1450,19 @@
                      variable="activeMenuSelection">
                   <and>
                   	<iterate>
-              			<or>
-                           <instanceof
-                                 value="org.polarsys.kitalpha.emde.model.Element">
-                           </instanceof>
-                           <adapt
-                                 type="org.polarsys.kitalpha.emde.model.Element">
-                           </adapt>
-                        </or>
+                  		<and>
+	              			<or>
+	                           <instanceof
+	                                 value="org.polarsys.kitalpha.emde.model.Element">
+	                           </instanceof>
+	                           <adapt
+	                                 type="org.polarsys.kitalpha.emde.model.Element">
+	                           </adapt>
+	                        </or>
+	                        <reference
+                          		definitionId="org.polarsys.capella.common.platform.sirius.ted.definition.checkElementOfOpenedSessionOnCompareEditorPartOnly">
+                        	</reference>
+                  		</and>
                      </iterate>
                      <count
                            value="1">
@@ -1429,38 +1474,23 @@
          
       </menuContribution>
    </extension>
-   
-   <extension
-         point="org.eclipse.core.expressions.definitions">
-      <definition
-            id="org.polarsys.capella.core.platform.sirius.ui.navigator.goto.expression">
-            <with
-                  variable="selection">
-                  <!-- It should use the operator OR here instead of AND while iterating the list of selections. 
-                  If one selection statisfies, it is enough to show the menu.
-                   -->
-                  <iterate
-                        ifEmpty="false"
-                        operator="or">
-                    <test
-                          forcePluginActivation="true"
-                          property="org.polarsys.capella.core.platform.sirius.ui.navigator.propertyTesters.ableToGoTo">
-                    </test>
-                  </iterate>
-            </with>
-      </definition>
-   </extension>
-      
       
    <extension
          point="org.eclipse.core.expressions.propertyTesters">
          <propertyTester
-               class="org.polarsys.capella.core.platform.sirius.ui.navigator.property.GotoPropertyTester"
-               id="org.polarsys.capella.core.platform.sirius.ui.navigator.propertyTesters.ableToGoTo"
-               namespace="org.polarsys.capella.core.platform.sirius.ui.navigator.propertyTesters"
-               properties="ableToGoTo"
+               class="org.polarsys.capella.core.platform.sirius.ui.navigator.property.HaveNavigableElementsPropertyTester"
+               id="org.polarsys.capella.core.platform.sirius.ui.navigator.property.haveNavigableElementsPropertyTester"
+               namespace="org.polarsys.capella.core.platform.sirius.ui.navigator.property"
+               properties="haveNavigableElementsPropertyTester"
                type="java.lang.Object">
          </propertyTester>
+         <propertyTester
+            class="org.polarsys.capella.core.platform.sirius.ui.navigator.property.ItemWrapperPropertyTester"
+            id="org.polarsys.capella.core.platform.sirius.ui.navigator.ItemWrapperPropertyTester"
+            namespace="org.polarsys.capella.core.platform.sirius.ui.navigator"
+            properties="itemWrapperPropertyTester"
+            type="java.lang.Object">
+  		</propertyTester>
    </extension>
    <extension
          point="org.eclipse.ui.propertyPages">
@@ -1490,17 +1520,6 @@
       </page>
    </extension>
    
-   <extension
-         point="org.eclipse.core.expressions.propertyTesters">
-      <propertyTester
-            class="org.polarsys.capella.core.platform.sirius.ui.navigator.property.ItemWrapperPropertyTester"
-            id="org.polarsys.capella.core.platform.sirius.ui.navigator.ItemWrapperPropertyTester"
-            namespace="org.polarsys.capella.core.platform.sirius.ui.navigator"
-            properties="itemWrapperPropertyTester"
-            type="java.lang.Object">
-      </propertyTester>
-   </extension>
-
    <extension
          point="org.polarsys.capella.core.preferences.capellaPreferences">
       <category

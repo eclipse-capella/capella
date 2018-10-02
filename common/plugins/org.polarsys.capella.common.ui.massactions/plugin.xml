@@ -81,82 +81,29 @@
    <extension
          point="org.eclipse.core.expressions.definitions">
       <definition
-            id="org.polarsys.capella.common.ui.massactions.sendToMassEditionVisibilityEnablementExpression">
-         <or>
-            <with
-                  variable="activeMenuSelection">
-               <iterate
-                     ifEmpty="false">
-                  <or>
-                     <instanceof
-                           value="org.eclipse.emf.ecore.EObject">
-                     </instanceof>
-                     <adapt
-                           type="org.polarsys.kitalpha.emde.model.Element">
-                     </adapt>
-                       <adapt
-                             type="org.eclipse.sirius.viewpoint.DRepresentationDescriptor">
-                       </adapt>
-                  </or>
-               </iterate>
-            </with>
-            <with
-                  variable="selection">
-               <iterate
-                     ifEmpty="false">
-                  <or>
-                     <instanceof
-                           value="org.eclipse.emf.ecore.EObject">
-                     </instanceof>
-                     <adapt
-                           type="org.polarsys.kitalpha.emde.model.Element">
-                     </adapt>
-                       <adapt
-                             type="org.eclipse.sirius.viewpoint.DRepresentationDescriptor">
-                       </adapt>
-                  </or>
-               </iterate>
-            </with>
-         </or>
-      </definition>
-      <definition
-            id="org.polarsys.capella.common.ui.massactions.sendToMassVisualizationVisibilityEnablementExpression">
-         <or>
-            <with
-                  variable="activeMenuSelection">
-               <iterate
-                     ifEmpty="false">
-                  <or>
-                     <instanceof
-                           value="org.eclipse.emf.ecore.EObject">
-                     </instanceof>
-                     <adapt
-                           type="org.polarsys.kitalpha.emde.model.Element">
-                     </adapt>
-                       <adapt
-                             type="org.eclipse.sirius.viewpoint.DRepresentationDescriptor">
-                       </adapt>
-                  </or>
-               </iterate>
-            </with>
-            <with
-                  variable="selection">
-               <iterate
-                     ifEmpty="false">
-                  <or>
-                     <instanceof
-                           value="org.eclipse.emf.ecore.EObject">
-                     </instanceof>
-                     <adapt
-                           type="org.polarsys.kitalpha.emde.model.Element">
-                     </adapt>
-                       <adapt
-                             type="org.eclipse.sirius.viewpoint.DRepresentationDescriptor">
-                       </adapt>
-                  </or>
-               </iterate>
-            </with>
-         </or>
+            id="org.polarsys.capella.common.ui.massactions.sendToMassViewOrEditorVisibilityEnablementExpression">
+		    <with
+		          variable="selection">
+		       <iterate
+		             ifEmpty="false">
+		             <and>
+		                  <or>
+		                     <instanceof
+		                           value="org.eclipse.emf.ecore.EObject">
+		                     </instanceof>
+		                     <adapt
+		                           type="org.polarsys.kitalpha.emde.model.Element">
+		                     </adapt>
+		                       <adapt
+		                             type="org.eclipse.sirius.viewpoint.DRepresentationDescriptor">
+		                       </adapt>
+		                  </or>
+		                  <reference
+                  				definitionId="org.polarsys.capella.common.platform.sirius.ted.definition.checkElementOfOpenedSessionOnCompareEditorPartOnly">
+                    		</reference>
+		             </and>
+		       </iterate>
+		    </with>
       </definition>
    </extension>
    <extension
@@ -166,7 +113,7 @@
             commandId="org.polarsys.capella.common.ui.massactions.command.SendToMassEditingView">
          <enabledWhen>
             <reference
-                  definitionId="org.polarsys.capella.common.ui.massactions.sendToMassEditionVisibilityEnablementExpression">
+                  definitionId="org.polarsys.capella.common.ui.massactions.sendToMassViewOrEditorVisibilityEnablementExpression">
             </reference>
          </enabledWhen>
       </handler>
@@ -175,7 +122,7 @@
             commandId="org.polarsys.capella.common.ui.massactions.command.SendToMassVisualizationView">
          <enabledWhen>
             <reference
-                  definitionId="org.polarsys.capella.common.ui.massactions.sendToMassEditionVisibilityEnablementExpression">
+                  definitionId="org.polarsys.capella.common.ui.massactions.sendToMassViewOrEditorVisibilityEnablementExpression">
             </reference>
          </enabledWhen>
       </handler>
@@ -195,7 +142,7 @@
             <visibleWhen
                   checkEnabled="false">
                <reference
-                     definitionId="org.polarsys.capella.common.ui.massactions.sendToMassVisualizationVisibilityEnablementExpression">
+                     definitionId="org.polarsys.capella.common.ui.massactions.sendToMassViewOrEditorVisibilityEnablementExpression">
                </reference>
             </visibleWhen>
          </menu>
@@ -214,7 +161,7 @@
             <visibleWhen
                   checkEnabled="false">
                <reference
-                     definitionId="org.polarsys.capella.common.ui.massactions.sendToMassEditionVisibilityEnablementExpression">
+                     definitionId="org.polarsys.capella.common.ui.massactions.sendToMassViewOrEditorVisibilityEnablementExpression">
                </reference>
             </visibleWhen>
          </menu>

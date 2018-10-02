@@ -4,11 +4,13 @@ Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.common.platform.sirius.ted;singleton:=true
 Bundle-Version: 1.3.0.qualifier
 Bundle-Vendor: %providerName
-Export-Package: org.polarsys.capella.common.platform.sirius.ted
+Export-Package: org.polarsys.capella.common.platform.sirius.ted,
+ org.polarsys.capella.common.platform.sirius.ted.property.testers
 Require-Bundle: org.eclipse.sirius;visibility:=reexport,
  org.eclipse.sirius.common;visibility:=reexport,
  org.eclipse.sirius.ecore.extender;visibility:=reexport,
- org.polarsys.capella.common.ef;visibility:=reexport
+ org.polarsys.capella.common.ef;visibility:=reexport,
+ org.eclipse.core.expressions
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Activator: org.polarsys.capella.common.platform.sirius.ted.PlatformSiriusTedActivator

@@ -91,11 +91,11 @@
          point="org.eclipse.core.expressions.definitions">
       <definition
             id="org.polarsys.capella.core.ui.fastlinker.sendToFastLinkerVisibilityEnablementExpression">
-         <or>
-            <with
-                  variable="activeMenuSelection">
-                  <iterate
-                        ifEmpty="false">
+        <with
+              variable="selection">
+              <iterate
+                    ifEmpty="false">
+                 <and>
                      <or>
                         <instanceof
                               value="org.polarsys.kitalpha.emde.model.Element">
@@ -104,23 +104,12 @@
                               type="org.polarsys.kitalpha.emde.model.Element">
                         </adapt>
                      </or>
-                  </iterate>
-            </with>
-            <with
-                  variable="selection">
-                  <iterate
-                        ifEmpty="false">
-                     <or>
-                        <instanceof
-                              value="org.polarsys.kitalpha.emde.model.Element">
-                        </instanceof>
-                        <adapt
-                              type="org.polarsys.kitalpha.emde.model.Element">
-                        </adapt>
-                     </or>
-                  </iterate>
-            </with>
-         </or>
+                     <reference
+                  		definitionId="org.polarsys.capella.common.platform.sirius.ted.definition.checkElementOfOpenedSessionOnCompareEditorPartOnly">
+                	</reference>
+                 </and>
+              </iterate>
+        </with>
       </definition>
    </extension>
    <extension

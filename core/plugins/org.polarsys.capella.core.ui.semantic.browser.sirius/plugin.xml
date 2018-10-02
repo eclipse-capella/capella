@@ -121,14 +121,19 @@
                variable="selection">
                <and>
                   <iterate>
-                     <or>
-                        <instanceof
-                              value="org.polarsys.kitalpha.emde.model.Element">
-                        </instanceof>
-                        <adapt
-                              type="org.polarsys.kitalpha.emde.model.Element">
-                        </adapt>
-                     </or>
+                  	<and>
+	                     <or>
+	                        <instanceof
+	                              value="org.polarsys.kitalpha.emde.model.Element">
+	                        </instanceof>
+	                        <adapt
+	                              type="org.polarsys.kitalpha.emde.model.Element">
+	                        </adapt>
+	                     </or>
+	                     <reference
+                      		definitionId="org.polarsys.capella.common.platform.sirius.ted.definition.checkElementOfOpenedSessionOnCompareEditorPartOnly">
+                    	</reference>
+                  	</and>
                   </iterate>
                   <count
                         value="1">
