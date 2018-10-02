@@ -19,6 +19,7 @@ import org.polarsys.capella.test.platform.ju.testcases.CapellaCDOGenerationOfDer
 import org.polarsys.capella.test.platform.ju.testcases.CapellaDefaultEditorEnabled;
 import org.polarsys.capella.test.platform.ju.testcases.CapellaPlatformVersionNotNull;
 import org.polarsys.capella.test.platform.ju.testcases.CapellaSiriusCustomisationEnabled;
+import org.polarsys.capella.test.platform.ju.testcases.InvalidRepresentationDescriptorAdapterFactory;
 
 import junit.framework.Test;
 
@@ -43,6 +44,7 @@ public class PlatformTestSuite extends BasicTestSuite {
     tests.add(new CapellaSiriusCustomisationEnabled());
     tests.add(new CapellaPlatformVersionNotNull());
     tests.add(new CapellaDefaultEditorEnabled());
+    tests.add(new InvalidRepresentationDescriptorAdapterFactory());
     tests.add(new CapellaCDOGenerationOfDerivedFeature());
     return tests;
   }
