@@ -37,6 +37,7 @@ import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
+import org.polarsys.capella.core.model.handler.helpers.CapellaAdapterHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.TriStateBoolean;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
@@ -62,6 +63,10 @@ public class ShowInDiagramAction extends BaseSelectionListenerAction implements 
   public void run() {
 
     Object selectedElement = getStructuredSelection().getFirstElement();
+    Object adaptedElement = CapellaAdapterHelper.resolveSemanticObject(selectedElement, true);
+    
+    selectedElement = (adaptedElement == null) ? selectedElement : adaptedElement;
+    
     // Precondition : ignore null or non ModelElement.
     if (!(CapellaResourceHelper.isSemanticElement(selectedElement))) {
       return;

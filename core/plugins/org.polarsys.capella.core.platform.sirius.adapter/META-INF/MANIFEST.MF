@@ -7,7 +7,12 @@ Bundle-Activator: org.polarsys.capella.core.platform.sirius.adapter.Activator
 Bundle-Vendor: %providerName
 Require-Bundle: org.eclipse.sirius.diagram;visibility:=reexport,
  org.polarsys.capella.core.services;visibility:=reexport,
- org.polarsys.capella.core.model.handler
+ org.polarsys.capella.core.model.handler,
+ org.eclipse.gef,
+ org.eclipse.gmf.runtime.notation,
+ org.eclipse.sirius.ui,
+ org.polarsys.capella.common.ui.toolkit.browser,
+ org.polarsys.capella.common.tools.report.appenders.reportlogview
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.platform.sirius.adapter
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8

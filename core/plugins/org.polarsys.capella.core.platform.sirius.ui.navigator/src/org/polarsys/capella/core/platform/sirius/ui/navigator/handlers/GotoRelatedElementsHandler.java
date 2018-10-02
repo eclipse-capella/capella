@@ -62,7 +62,8 @@ public class GotoRelatedElementsHandler extends CompoundContributionItem impleme
     if ((selection != null) && (selection instanceof IStructuredSelection)) {
 
       // Preconditions
-      Object element = getModelElement(((IStructuredSelection) selection).getFirstElement());
+      Object firstElement = ((IStructuredSelection) selection).getFirstElement();
+      Object element = getModelElement(firstElement);
       if (null == element) {
         return NO_CONTRIBUTION_ITEM;
       }
@@ -129,9 +130,8 @@ public class GotoRelatedElementsHandler extends CompoundContributionItem impleme
    * @param uiSelectedElement_p
    * @return
    */
-  protected Object getModelElement(Object uiSelectedElement_p) {
-    Object semanticElement = LocateInCapellaExplorerAction.getElement(uiSelectedElement_p);
-    return semanticElement;
+  protected Object getModelElement(Object uiSelectedElement) {
+    return LocateInCapellaExplorerAction.getElement(uiSelectedElement);
   }
 
 

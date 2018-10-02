@@ -11,15 +11,19 @@
 
 package org.polarsys.capella.core.platform.sirius.adapter;
 
-import java.util.List;
-
+import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.runtime.IAdapterFactory;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
-import org.eclipse.sirius.viewpoint.DRepresentationElement;
+import org.eclipse.gef.EditPart;
+import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.sirius.ui.tools.api.views.common.item.ItemWrapper;
+import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.polarsys.capella.common.data.modellingcore.ModelElement;
+import org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerViewHelper;
+import org.polarsys.capella.common.ui.toolkit.browser.content.provider.wrapper.EObjectWrapper;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
+import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
+import org.polarsys.kitalpha.emde.model.Element;
 
 /**
  * 
@@ -28,33 +32,43 @@ import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 public class SiriusToCapellaAdapterFactory implements IAdapterFactory {
 
   /**
-   * @param object_p
+   * @param object
    * @return
    */
-  public EObject adaptToBusinessElement(Object object_p) {
-    if (object_p instanceof DSemanticDecorator) {
-      DSemanticDecorator vpe = (DSemanticDecorator) object_p;
-      EObject element = vpe.getTarget();
-      if (CapellaResourceHelper.isSemanticElement(element)) {
-        return element;
-      }
+  public EObject adaptToBusinessElement(Object object) {
+    if (object instanceof ItemWrapper) {
+      object = ((ItemWrapper) object).getWrappedObject();
     }
-    if (object_p instanceof DRepresentationDescriptor) {
-      DRepresentationDescriptor vpe = (DRepresentationDescriptor) object_p;
-      EObject element = vpe.getTarget();
-      if (CapellaResourceHelper.isSemanticElement(element)) {
-        return element;
-      }
+    if (object instanceof EObjectWrapper) {
+      object = ((EObjectWrapper) object).getElement();
     }
-    if (object_p instanceof DRepresentationElement) {
-      DRepresentationElement vpe = (DRepresentationElement) object_p;
-      List<EObject> elements = vpe.getSemanticElements();
-      for (EObject element : elements) {
-        if (CapellaResourceHelper.isSemanticElement(element)) {
-          return element;
+    if (object instanceof EditPart) {
+      EditPart editPart = (EditPart) object;
+      Object editPartModel = editPart.getModel();
+      if (editPartModel instanceof View) {
+        EObject siriusElement = ((View) editPartModel).getElement();
+        if (siriusElement instanceof DSemanticDecorator) {
+          return ((DSemanticDecorator) siriusElement).getTarget();
+        } 
+        if (siriusElement instanceof DRepresentation) {
+          return RepresentationHelper.getRepresentationDescriptor((DRepresentation) siriusElement);
         }
       }
     }
+    
+    // It is for DRepresentationElement and DTableElement
+    if (object instanceof DSemanticDecorator) {
+      DSemanticDecorator vpe = (DSemanticDecorator) object;
+      EObject element = vpe.getTarget();
+      if (CapellaResourceHelper.isSemanticElement(element)) {
+        return element;
+      }
+    }
+    
+    if (object instanceof IMarker) {
+       return MarkerViewHelper.getModelElementsFromMarker((IMarker) object).get(0);
+    }
+    
     return null;
   }
 
@@ -67,6 +81,6 @@ public class SiriusToCapellaAdapterFactory implements IAdapterFactory {
   }
 
   public Class<?>[] getAdapterList() {
-    return new Class[] { ModelElement.class };
+    return new Class[] { Element.class };
   }
 }

@@ -78,9 +78,10 @@
                style="push">
             <visibleWhen
                   checkEnabled="true">
-               <reference
-                     definitionId="org.polarsys.capella.core.ui.semantic.browser.sirius.selectInSemanticBrowserSelectionDefinition">
-               </reference>
+                  	<reference
+                     	definitionId="org.polarsys.capella.core.ui.semantic.browser.sirius.selectInSemanticBrowserSelectionDefinition">
+               		</reference>
+               
             </visibleWhen>
          </command>
       </menuContribution>
@@ -124,12 +125,9 @@
                         <instanceof
                               value="org.polarsys.kitalpha.emde.model.Element">
                         </instanceof>
-                        <instanceof
-                              value="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
-                        </instanceof>
-                        <instanceof
-                              value="org.eclipse.sirius.table.metamodel.table.DTableElement">
-                        </instanceof>
+                        <adapt
+                              type="org.polarsys.kitalpha.emde.model.Element">
+                        </adapt>
                      </or>
                   </iterate>
                   <count

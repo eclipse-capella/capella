@@ -13,18 +13,19 @@ package org.polarsys.capella.core.model.handler.helpers;
 import java.util.Collection;
 import java.util.stream.Collectors;
 
+import org.eclipse.core.runtime.Adapters;
 import org.eclipse.core.runtime.IAdaptable;
-import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.polarsys.capella.common.data.modellingcore.AbstractType;
-import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.epbs.ConfigurationItem;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.TriStateBoolean;
+import org.polarsys.kitalpha.emde.model.Element;
 
 /**
  *
@@ -63,11 +64,11 @@ public class CapellaAdapterHelper {
       return resolveEObject((EObject) object, onlySemantic);
       
     } else if (object instanceof IAdaptable) {
-      Object adapter = ((IAdaptable) object).getAdapter(EObject.class);
-      
-      if (adapter instanceof EObject) {
-        return resolveEObject((EObject) adapter, onlySemantic);
-      }
+      EObject adapter = ((IAdaptable) object).getAdapter(EObject.class);
+      if (adapter == null) {
+        return resolveEObject(object, onlySemantic);
+      } 
+      return resolveEObject(adapter, onlySemantic);
     }
     
     return null;
@@ -97,9 +98,20 @@ public class CapellaAdapterHelper {
   /**
    * This method 
    */
-  private static EObject resolveEObject(EObject object, boolean onlySemantic) {
-    if (!onlySemantic && (object instanceof DRepresentationDescriptor || object instanceof DRepresentation)) {
-      return object;
+  private static EObject resolveEObject(Object object, boolean onlySemantic) {
+    if ((object instanceof DRepresentationDescriptor) || (object instanceof DRepresentation)) {
+      if (onlySemantic) {
+        if (object instanceof DSemanticDecorator) {
+          return ((DSemanticDecorator) object).getTarget();
+        } else if (object instanceof DRepresentationDescriptor) {
+          return ((DRepresentationDescriptor) object).getTarget();
+        }
+      } else {
+        if (object instanceof DRepresentation) {
+          return RepresentationHelper.getRepresentationDescriptor((DRepresentation) object);
+        }
+        return (EObject) object;
+      }
     }
     return getBusinessObject(object);
   }
@@ -108,24 +120,19 @@ public class CapellaAdapterHelper {
    * Business level adaptation
    * @param object
    */
-  private static EObject getBusinessObject(EObject object) {
+  private static EObject getBusinessObject(Object object) {
     if (object != null) {
       if (CapellaResourceHelper.isSemanticElement(object)) {
-        return getRelatedSemanticObject(object);
+        return getRelatedSemanticObject((EObject)object);
       }
-      EObject obj = (EObject) Platform.getAdapterManager().getAdapter(object, ModelElement.class);
-      if (obj == null) {
-        obj = (EObject) Platform.getAdapterManager().loadAdapter(object, ModelElement.class.getName());
+      EObject obj = Adapters.adapt(object, Element.class, true);
+      if (obj != null) {
+        // null can happen when we try to adapt a non semantic element (notes, text, ...)
+        if ((null != obj.eContainer()) && (null != obj.eResource())) {
+          // null can happen when a diagram shows a deleted element
+          return getRelatedSemanticObject(obj);
+        }
       }
-      if (null == obj) {
-        // can happen when we try to adapt a non semantic element (notes, text, ...)
-        return null;
-      }
-      if ((null == obj.eContainer()) || (null == obj.eResource())) {
-        // can happen when a diagram shows a deleted element
-        return null;
-      }
-      return getRelatedSemanticObject(obj);
     }
     return null;
   }

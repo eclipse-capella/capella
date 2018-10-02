@@ -15,11 +15,10 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.polarsys.capella.core.model.handler.helpers.CapellaAdapterHelper;
 
 /**
  * A selection helper, providing some utility methods.
@@ -43,38 +42,13 @@ public class CapellaMASelectionHelper {
     List<EObject> eObjects = new ArrayList<>();
 
     for (Object selectedElement : selectedElements) {
-      EObject eObject = resolveSemanticObject(selectedElement);
+      EObject eObject = CapellaAdapterHelper.resolveSemanticObject(selectedElement, false);
 
       if (eObject != null) {
         eObjects.add(eObject);
       }
     }
     return eObjects;
-  }
-
-  public static EObject resolveSemanticObject(Object object) {
-    EObject semantic = null;
-
-    if (object != null) {
-      if (object instanceof EObject) {
-        semantic = (EObject) object;
-
-      } else if (object instanceof IAdaptable) {
-        Object adapter = ((IAdaptable) object).getAdapter(EObject.class);
-        if (adapter instanceof EObject) {
-          semantic = (EObject) adapter;
-        }
-      }
-    }
-
-    if (semantic instanceof DSemanticDecorator) {
-      Object adapter = ((DSemanticDecorator) semantic).getTarget();
-      if (adapter instanceof EObject) {
-        semantic = (EObject) adapter;
-      }
-    }
-
-    return semantic;
   }
 
 }
