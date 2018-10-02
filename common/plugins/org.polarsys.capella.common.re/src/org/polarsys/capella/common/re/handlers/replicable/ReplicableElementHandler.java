@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -46,7 +46,6 @@ import org.polarsys.capella.core.transition.common.handlers.attachment.Attachmen
 import org.polarsys.capella.core.transition.common.handlers.contextscope.ContextScopeHandlerHelper;
 import org.polarsys.capella.core.transition.common.handlers.options.IPropertyHandler;
 import org.polarsys.capella.core.transition.common.handlers.options.OptionsHandlerHelper;
-import org.polarsys.capella.core.transition.common.handlers.traceability.ITraceabilityHandler;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 /**
@@ -215,7 +214,7 @@ public class ReplicableElementHandler implements IReplicableElementHandler {
     return element;
   }
 
-  public CatalogElementLink addLink(IContext context, ITraceabilityHandler handler, CatalogElement element, EObject value, EObject oppositeValue) {
+  public CatalogElementLink addLink(IContext context, CatalogElement element, EObject value, EObject oppositeValue) {
 
     for (CatalogElementLink link : ReplicableElementHandlerHelper.getInstance(context).getAllElementsLinks(element)) {
       if (value.equals(link.getTarget())) {
@@ -234,7 +233,6 @@ public class ReplicableElementHandler implements IReplicableElementHandler {
     CatalogElementLink link = ReFactory.eINSTANCE.createCatalogElementLink();
     link.setSource(element);
     link.setTarget(value);
-    handler.attachTraceability(link, value, context);
     getLinks(context).add(link);
     element.getOwnedLinks().add(link);
     return link;
@@ -758,6 +756,19 @@ public class ReplicableElementHandler implements IReplicableElementHandler {
       return Collections.emptyList();
     }
     return ((Collection) context.get(IReConstants.ADDITIONAL_ELEMENTS_TO_DELETE));
+  }
+
+  public boolean isFromSource(IContext context, CatalogElementLink link) {
+
+    // Retrieve if the given Link is from the Source or the Target
+    CatalogElement sourceElement = ReplicableElementHandlerHelper.getInstance(context).getInitialSource(context);
+    CatalogElement elementSource = link.getSource();
+    boolean isLinkFromSource = false;
+    if (elementSource.equals(sourceElement)) {
+      isLinkFromSource = true;
+    }
+    
+    return isLinkFromSource;
   }
 
 }

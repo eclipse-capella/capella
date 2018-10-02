@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -30,7 +30,6 @@ import org.polarsys.capella.core.transition.common.constants.ITransitionConstant
 import org.polarsys.capella.core.transition.common.handlers.contextscope.ContextScopeHandlerHelper;
 import org.polarsys.capella.core.transition.common.handlers.notify.INotifyChangeEvent;
 import org.polarsys.capella.core.transition.common.handlers.notify.INotifyListener;
-import org.polarsys.capella.core.transition.common.handlers.traceability.ITraceabilityHandler;
 import org.polarsys.capella.core.transition.common.merge.ExtendedComparison;
 import org.polarsys.capella.core.transition.common.merge.scope.IModelScopeFilter;
 import org.polarsys.capella.core.transition.common.merge.scope.ReferenceModelScope;
@@ -39,14 +38,12 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 public abstract class ReScope extends ReferenceModelScope implements INotifyListener {
 
   CatalogElement element;
-  ITraceabilityHandler handler;
   
   Collection<? extends EObject> _initialElements;
   
-  public ReScope(CatalogElement element, ITraceabilityHandler handler, Collection<? extends EObject> elements, IContext context) {
+  public ReScope(CatalogElement element, Collection<? extends EObject> elements, IContext context) {
     super(elements, context);
     this.element = element;
-    this.handler = handler;
     this._initialElements = elements;
   }
 
@@ -84,7 +81,7 @@ public abstract class ReScope extends ReferenceModelScope implements INotifyList
       IMatch match = comparison.getMapping().getMatchFor(value, destinationRole);
       EObject oppositeValue = match.get(oppositeRole);
 
-      CatalogElementLink link = ReplicableElementHandlerHelper.getInstance(context).addLink(context, handler, element, value, oppositeValue);
+      CatalogElementLink link = ReplicableElementHandlerHelper.getInstance(context).addLink(context, element, value, oppositeValue);
       ContextScopeHandlerHelper.getInstance(context).add(destinationScope, link, context);
 
       if (!isSource()) {
@@ -93,7 +90,7 @@ public abstract class ReScope extends ReferenceModelScope implements INotifyList
         if (source != null) {
           if (oppositeValue != null) {
             if (shouldAddTraceability(value, oppositeRole, context)) {
-              link = ReplicableElementHandlerHelper.getInstance(context).addLink(context, handler, source, oppositeValue, value);
+              link = ReplicableElementHandlerHelper.getInstance(context).addLink(context, source, oppositeValue, value);
               ContextScopeHandlerHelper.getInstance(context).add(oppositeScope, link, context);
             }
           }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.polarsys.capella.core.re.activities;
 
-import org.polarsys.capella.core.re.handlers.traceability.CapellaMatchConfiguration;
+import org.polarsys.capella.core.re.handlers.traceability.CapellaLocationTraceabilityConfiguration;
 import org.polarsys.capella.core.transition.common.handlers.IHandler;
 import org.polarsys.capella.core.transition.common.handlers.traceability.CompoundTraceabilityHandler;
 
@@ -26,7 +26,7 @@ public class InitializeReMgtActivity extends org.polarsys.capella.common.re.acti
    * @return
    */
   @Override
-  protected IHandler createDefaultTraceabilityTransformationHandler() {
-    return new CompoundTraceabilityHandler(new CapellaMatchConfiguration());
+  protected IHandler createDefaultTraceabilityLocationHandler() {
+    return new CompoundTraceabilityHandler(new CapellaLocationTraceabilityConfiguration());
   }
 }

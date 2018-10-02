@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,7 +29,7 @@ import org.polarsys.capella.common.re.CatalogElementLink;
 import org.polarsys.capella.common.re.RecCatalog;
 import org.polarsys.capella.common.re.constants.IReConstants;
 import org.polarsys.capella.common.re.helpers.ReplicableElementExt;
-import org.polarsys.capella.common.re.queries.CatalogElement_AllUsedElements;
+import org.polarsys.capella.common.re.queries.CatalogElement_UsedElements;
 import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
@@ -154,7 +154,7 @@ public abstract class RecRplTestCase extends BasicTestCase {
     assertTrue(RPL.getOrigin().equals(REC));
 
     // All elements from REC should be newly created and linked to the RPL
-    for (Object element : QueryInterpretor.executeQuery(CatalogElement_AllUsedElements.class.getSimpleName(), REC, new QueryContext())) {
+    for (Object element : QueryInterpretor.executeQuery(CatalogElement_UsedElements.class.getSimpleName(), REC, new QueryContext())) {
       EObject ref = ReplicableElementExt.getReferencingElement(RPL, (EObject) element);
       assertTrue((ref != null) && (ref != element));
     }

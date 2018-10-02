@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,6 +20,7 @@ import java.util.Set;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.helpers.EObjectExt;
@@ -40,6 +41,7 @@ import org.polarsys.capella.core.data.cs.InterfacePkg;
 import org.polarsys.capella.core.data.ctx.Actor;
 import org.polarsys.capella.core.data.ctx.ActorPkg;
 import org.polarsys.capella.core.data.ctx.CtxFactory;
+import org.polarsys.capella.core.data.ctx.CtxPackage;
 import org.polarsys.capella.core.data.ctx.OperationalAnalysisRealization;
 import org.polarsys.capella.core.data.ctx.System;
 import org.polarsys.capella.core.data.ctx.SystemAnalysis;
@@ -50,6 +52,7 @@ import org.polarsys.capella.core.data.epbs.ConfigurationItem;
 import org.polarsys.capella.core.data.epbs.EPBSArchitecture;
 import org.polarsys.capella.core.data.epbs.EPBSContext;
 import org.polarsys.capella.core.data.epbs.EpbsFactory;
+import org.polarsys.capella.core.data.epbs.EpbsPackage;
 import org.polarsys.capella.core.data.epbs.PhysicalArchitectureRealization;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
@@ -60,6 +63,7 @@ import org.polarsys.capella.core.data.information.DataPkg;
 import org.polarsys.capella.core.data.information.ExchangeItem;
 import org.polarsys.capella.core.data.information.InformationFactory;
 import org.polarsys.capella.core.data.la.LaFactory;
+import org.polarsys.capella.core.data.la.LaPackage;
 import org.polarsys.capella.core.data.la.LogicalActor;
 import org.polarsys.capella.core.data.la.LogicalActorPkg;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
@@ -71,12 +75,14 @@ import org.polarsys.capella.core.data.la.SystemAnalysisRealization;
 import org.polarsys.capella.core.data.oa.Entity;
 import org.polarsys.capella.core.data.oa.EntityPkg;
 import org.polarsys.capella.core.data.oa.OaFactory;
+import org.polarsys.capella.core.data.oa.OaPackage;
 import org.polarsys.capella.core.data.oa.OperationalActivity;
 import org.polarsys.capella.core.data.oa.OperationalActivityPkg;
 import org.polarsys.capella.core.data.oa.OperationalAnalysis;
 import org.polarsys.capella.core.data.oa.OperationalContext;
 import org.polarsys.capella.core.data.pa.LogicalArchitectureRealization;
 import org.polarsys.capella.core.data.pa.PaFactory;
+import org.polarsys.capella.core.data.pa.PaPackage;
 import org.polarsys.capella.core.data.pa.PhysicalActor;
 import org.polarsys.capella.core.data.pa.PhysicalActorPkg;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
@@ -127,6 +133,30 @@ public class BlockArchitectureExt {
 		}
 	}
 	
+	/**
+	 * Return the block architecture from the given type in the given project
+	 */
+  public static BlockArchitecture getBlockArchitecture(EClass clazz, Project project) {    
+    SystemEngineering system = SystemEngineeringExt.getSystemEngineering(project);
+    
+    if (OaPackage.Literals.OPERATIONAL_ANALYSIS.equals(clazz)) {
+      return SystemEngineeringExt.getOperationalAnalysis(system);
+      
+    } else if (CtxPackage.Literals.SYSTEM_ANALYSIS.equals(clazz)) {
+      return SystemEngineeringExt.getSystemAnalysis(system);
+      
+    } else if (LaPackage.Literals.LOGICAL_ARCHITECTURE.equals(clazz)) {
+      return SystemEngineeringExt.getLogicalArchitecture(system);
+      
+    } else if (PaPackage.Literals.PHYSICAL_ARCHITECTURE.equals(clazz)) {
+      return SystemEngineeringExt.getPhysicalArchitecture(system);
+      
+    } else if (EpbsPackage.Literals.EPBS_ARCHITECTURE.equals(clazz)) {
+      return SystemEngineeringExt.getEPBSArchitecture(system);    
+    }
+    return null;
+  }
+  
   /**
    * Returns all architectures allocated by the architecture and also the given architecture
    */

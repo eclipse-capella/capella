@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,18 +21,13 @@ import org.polarsys.capella.common.re.CatalogElement;
 import org.polarsys.capella.common.re.activities.InitializeDiffMergeActivity;
 import org.polarsys.capella.common.re.constants.IReConstants;
 import org.polarsys.capella.common.re.handlers.replicable.ReplicableElementHandlerHelper;
-import org.polarsys.capella.common.re.handlers.traceability.ReConfiguration;
 import org.polarsys.capella.common.re.merge.scope.ReSourceScope;
 import org.polarsys.capella.common.re.merge.scope.ReTargetScope;
 import org.polarsys.capella.common.re.rpl2re.merge.AvoidSuffixesToRecCategoryFilter;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
-import org.polarsys.capella.core.transition.common.handlers.IHandler;
 import org.polarsys.capella.core.transition.common.handlers.contextscope.ContextScopeHandlerHelper;
 import org.polarsys.capella.core.transition.common.handlers.merge.IMergeHandler;
 import org.polarsys.capella.core.transition.common.handlers.options.OptionsHandlerHelper;
-import org.polarsys.capella.core.transition.common.handlers.traceability.CompoundTraceabilityHandler;
-import org.polarsys.capella.core.transition.common.handlers.traceability.ITraceabilityHandler;
-import org.polarsys.capella.core.transition.common.handlers.traceability.config.ITraceabilityConfiguration;
 import org.polarsys.capella.core.transition.common.merge.scope.IModelScopeFilter;
 import org.polarsys.capella.core.transition.common.merge.scope.PartialRootedModelScope;
 import org.polarsys.kitalpha.cadence.core.api.parameter.ActivityParameters;
@@ -79,9 +74,7 @@ public class InitializeDiffMergeUpdateReActivity extends InitializeDiffMergeActi
     scopeElements.remove(source);
     scopeElements.remove(target);
 
-    ITraceabilityHandler handler = (ITraceabilityHandler) context
-        .get(ITransitionConstants.TRACEABILITY_SOURCE_MERGE_HANDLER);
-    IEditableModelScope sourceScope = new ReSourceScope(source, handler, scopeElements, context);
+    IEditableModelScope sourceScope = new ReSourceScope(source, scopeElements, context);
     context.put(ITransitionConstants.MERGE_REFERENCE_SCOPE, sourceScope);
     ((PartialRootedModelScope) sourceScope).build(getReferenceFilter(context));
 
@@ -121,9 +114,7 @@ public class InitializeDiffMergeUpdateReActivity extends InitializeDiffMergeActi
     scopeElements.remove(source);
     scopeElements.remove(target);
 
-    ITraceabilityHandler handler = (ITraceabilityHandler) context
-        .get(ITransitionConstants.TRACEABILITY_TARGET_MERGE_HANDLER);
-    IEditableModelScope targetScope = new ReTargetScope(target, handler, scopeElements, context);
+    IEditableModelScope targetScope = new ReTargetScope(target, scopeElements, context);
     context.put(ITransitionConstants.MERGE_TARGET_SCOPE, targetScope);
     ((PartialRootedModelScope) targetScope).build(getTargetFilter(context));
 
@@ -143,34 +134,12 @@ public class InitializeDiffMergeUpdateReActivity extends InitializeDiffMergeActi
 
   @Override
   protected IStatus initializeTraceabilitySourceHandler(IContext context, ActivityParameters activityParams) {
-    return super.initializeTraceabilitySourceHandler(context, activityParams);
+    return Status.OK_STATUS;
   }
 
   @Override
   protected IStatus initializeTraceabilityTargetHandler(IContext context, ActivityParameters activityParams) {
-    return super.initializeTraceabilityTargetHandler(context, activityParams);
-  }
-
-  /**
-   * Create default traceability handler for source of diffMerge
-   */
-  @Override
-  protected IHandler createDefaultTraceabilitySourceHandler(IContext context) {
-    CatalogElement source = ReplicableElementHandlerHelper.getInstance(context).getSource(context);
-    ITraceabilityConfiguration configuration = new ReConfiguration(source);
-    return new CompoundTraceabilityHandler(configuration);
-  }
-
-  /**
-   * Create default traceability handler for target of diffMerge
-   */
-  @Override
-  protected IHandler createDefaultTraceabilityTargetHandler(IContext context) {
-    CatalogElement source = ReplicableElementHandlerHelper.getInstance(context).getSource(context);
-    CatalogElement target = ReplicableElementHandlerHelper.getInstance(context).getTarget(context);
-
-    ITraceabilityConfiguration configuration = new ReConfiguration(source, target);
-    return new CompoundTraceabilityHandler(configuration);
+    return Status.OK_STATUS;
   }
 
   @Override
