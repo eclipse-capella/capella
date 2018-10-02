@@ -35,9 +35,9 @@ import org.polarsys.capella.core.ui.properties.providers.CapellaTransfertViewerL
  */
 public class SelectElementFromListWizard extends AbstractExternalJavaAction {
   @SuppressWarnings({ "unchecked", "rawtypes" })
-  public Object execute(EObject context, List scope_p, String wizardMessage_p, boolean multiple, boolean displayDialog) {
+  public Object execute(EObject context, Collection scope_p, String wizardMessage_p, boolean multiple, boolean displayDialog) {
     String wizardMessage = wizardMessage_p;
-    List<? extends EObject> scope = scope_p;
+    Collection scope = scope_p;
     if (wizardMessage == null) {
       wizardMessage = ICommonConstants.EMPTY_STRING;
     }
@@ -45,7 +45,7 @@ public class SelectElementFromListWizard extends AbstractExternalJavaAction {
       scope = Collections.emptyList();
     }
     if(scope.size() == 1 && !displayDialog){
-      return scope.get(0);
+      return scope.iterator().next();
     }
     boolean expandViewer = CapellaUIPropertiesPlugin.getDefault().isAllowedExpandSingleViewerContent();
     int viewerExpandLevel = expandViewer ? AbstractTreeViewer.ALL_LEVELS : 0;
@@ -76,7 +76,7 @@ public class SelectElementFromListWizard extends AbstractExternalJavaAction {
   public void execute(Collection<? extends EObject> selections, Map<String, Object> parameters) {
 
     EObject context = (EObject) parameters.get(CONTEXT);
-    List scope = (List) parameters.get(SCOPE);
+    Collection scope = (Collection) parameters.get(SCOPE);
     String wizardMessage = (String) parameters.get(WIZARD_MESSAGE);
     String resultVariable = (String) parameters.get(RESULT_VARIABLE);
     String sMultiple = (String) parameters.get(MULTIPLE);
