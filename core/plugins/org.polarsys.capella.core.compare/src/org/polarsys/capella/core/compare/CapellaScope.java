@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -73,6 +73,28 @@ public class CapellaScope extends SiriusScope {
    */
   public CapellaScope(URI uri, ResourceSet resourceSet, boolean readOnly) {
     super(uri, resourceSet, readOnly);
+    // Do not explicitly assign _ignoreCapellaVersions: it may be assigned via super constructor
+  }
+  
+  /**
+   * Constructor
+   * @param uris a non-null collection of URIs of resources to load as roots
+   * @param editingDomain a non-null editing domain that encompasses the scope
+   * @param readOnly whether the scope should be read-only, if supported
+   */
+  public CapellaScope(Collection<URI> uris, EditingDomain editingDomain, boolean readOnly) {
+    super(uris, editingDomain, readOnly);
+    // Do not explicitly assign _ignoreCapellaVersions: it may be assigned via super constructor
+  }
+  
+  /**
+   * Constructor
+   * @param uris a non-null collection of URIs of resources to load as roots
+   * @param resourceSet a non-null resource set where the resources must be loaded
+   * @param readOnly whether the scope is in read-only mode, if applicable
+   */
+  public CapellaScope(Collection<URI> uris, ResourceSet resourceSet, boolean readOnly) {
+    super(uris, resourceSet, readOnly);
     // Do not explicitly assign _ignoreCapellaVersions: it may be assigned via super constructor
   }
   
@@ -264,7 +286,7 @@ public class CapellaScope extends SiriusScope {
    * @see org.eclipse.emf.diffmerge.impl.scopes.FragmentedModelScope#getRelevantReferencedResources(org.eclipse.emf.ecore.EObject)
    */
   @Override
-  protected final List<Resource> getRelevantReferencedResources(EObject element) {
+  protected List<Resource> getRelevantReferencedResources(EObject element) {
     // Filter out metamodels because of Sirius bug that adds eMDE.ecore to the models
     // referenced by DAnalysis (DAnalysis_Models)
     List<Resource> result = super.getRelevantReferencedResources(element);
