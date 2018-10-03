@@ -333,9 +333,9 @@ public class CsServices {
 
     DRepresentationDescriptor descriptor = RepresentationHelper.getRepresentationDescriptor(diagram);
 
-    for (DRepresentationDescriptor representation : DialectManager.INSTANCE.getAllRepresentationDescriptors(session)) {
-      if (handler.isRealizable(representation, descriptor) && !scope.contains(representation)) {
-        scope.add(representation.getRepresentation());
+    for (DRepresentationDescriptor representationDescriptor : DialectManager.INSTANCE.getAllRepresentationDescriptors(session)) {
+      if (handler.isRealizable(representationDescriptor, descriptor) && !scope.contains(representationDescriptor.getRepresentation())) {
+        scope.add(representationDescriptor.getRepresentation());
       }
     }
 
@@ -1097,21 +1097,6 @@ public class CsServices {
    * namespace which haven't part) CCEI-Insert-Component.
    */
   public Collection<Component> getCCEIInsertComponent(Component component) {
-    // OLD CODE
-    // Collection<Component> components = new java.util.HashSet<Component>();
-    //
-    // // Add components accessible by namespace
-    // components.addAll(ComponentExt.getAvailableComponentsByNamespace(getParentContainer(component)));
-    //
-    // // Remove component from existing part
-    // components.removeAll(ComponentExt.getSubUsedComponents(getContext(component)));
-    //
-    // // Remove current component and remove all containers of current component
-    // components.remove(component);
-    // components.removeAll(getParentContainersByParts(component));
-    //
-    // return components;
-    // NEW CODE (REDIRECTION)
     Collection<Component> result = null;
     EObject element = getParentContainer(component);
     if (element instanceof Component) {
@@ -1211,8 +1196,7 @@ public class CsServices {
    * Returns available components which are accessible by brothers-part IB-Show-Hide-Component.
    */
   public Collection<Component> getIBShowHideActors(Component component) {
-    Collection<Component> components = getCCEIShowHideActors(component);
-    return components;
+    return getCCEIShowHideActors(component);
   }
 
   /**
@@ -1377,16 +1361,14 @@ public class CsServices {
   public boolean isGeneralizableForReConnect(final EObject context, EObject newSource, EObject newTarget) {
 
     // return false if source(Class) is not primitive and target(Class) is primitive
-    if ((newSource instanceof Class) && (newTarget instanceof Class)) {
-      if (((Class) newSource).isIsPrimitive() && !((Class) newTarget).isIsPrimitive()) {
-        return false;
-      }
+    if (newSource instanceof Class && newTarget instanceof Class && ((Class) newSource).isIsPrimitive()
+        && !((Class) newTarget).isIsPrimitive()) {
+      return false;
     }
     // return false if target(Class) is not primitive and source(Class) is primitive
-    if ((newSource instanceof Class) && (newTarget instanceof Class)) {
-      if (!((Class) newSource).isIsPrimitive() && ((Class) newTarget).isIsPrimitive()) {
-        return false;
-      }
+    if (newSource instanceof Class && newTarget instanceof Class && !((Class) newSource).isIsPrimitive()
+        && ((Class) newTarget).isIsPrimitive()) {
+      return false;
     }
 
     if ((newSource instanceof PhysicalQuantity) && (newTarget instanceof NumericType)) {
@@ -1695,11 +1677,7 @@ public class CsServices {
       return true;
     }
 
-    if (isAnAncestor(source, target)) {
-      return true;
-    }
-
-    return false;
+    return isAnAncestor(source, target);
   }
 
   /**
@@ -2190,13 +2168,11 @@ public class CsServices {
     while (!isCorrectlyNamed) {
       boolean nameExist = false;
       for (EObject object : part.eContainer().eContents()) {
-        if (object instanceof Part) {
-          if (((Part) object).getName().equals(name)) {
-            i++;
-            name = racine + ICommonConstants.WHITE_SPACE_CHARACTER + i;
-            nameExist = true;
-            break;
-          }
+        if (object instanceof Part && ((Part) object).getName().equals(name)) {
+          i++;
+          name = racine + ICommonConstants.WHITE_SPACE_CHARACTER + i;
+          nameExist = true;
+          break;
         }
       }
       if (!nameExist) {
@@ -3069,10 +3045,8 @@ public class CsServices {
     if (firstCE instanceof ComponentExchange) {
       Part part = getSourcePart((ComponentExchange) firstCE);
       Part viewPart = ((Part) source.getTarget());
-      if (part != null) {
-        if (!part.equals(viewPart)) {
-          return false;
-        }
+      if (part != null && !part.equals(viewPart)) {
+        return false;
       }
     }
 
@@ -3080,10 +3054,9 @@ public class CsServices {
     // check the activation of the filters
     if (diagram != null) {
       for (FilterDescription filter : diagram.getActivatedFilters()) {
-        if (IMappingNameConstants.HIDE_CE_BY_GROUP_ORIENTED.equals(filter.getName())) {
-          if (isFirstFilterActive(filter, diagram)) {
-            return false;
-          }
+        if (IMappingNameConstants.HIDE_CE_BY_GROUP_ORIENTED.equals(filter.getName())
+            && isFirstFilterActive(filter, diagram)) {
+          return false;
         }
       }
     }
@@ -3127,10 +3100,8 @@ public class CsServices {
     // check the activation of the filters
     if (diagram != null) {
       for (FilterDescription filter : diagram.getActivatedFilters()) {
-        if (IMappingNameConstants.HIDE_CE_BY_GROUP.equals(filter.getName())) {
-          if (isFirstFilterActive(filter, diagram)) {
-            return false;
-          }
+        if (IMappingNameConstants.HIDE_CE_BY_GROUP.equals(filter.getName()) && isFirstFilterActive(filter, diagram)) {
+          return false;
         }
       }
     }
@@ -3146,10 +3117,9 @@ public class CsServices {
       for (DEdge edge : diagram.getEdges()) {
         if (!edge.getGraphicalFilters().isEmpty()) {
           for (GraphicalFilter appliedFilter : edge.getGraphicalFilters()) {
-            if (appliedFilter instanceof AppliedCompositeFilters) {
-              if (((AppliedCompositeFilters) appliedFilter).getCompositeFilterDescriptions().contains(filter)) {
-                return false;
-              }
+            if (appliedFilter instanceof AppliedCompositeFilters
+                && ((AppliedCompositeFilters) appliedFilter).getCompositeFilterDescriptions().contains(filter)) {
+              return false;
             }
           }
         }
@@ -3187,10 +3157,9 @@ public class CsServices {
     // check the activation of the filters
     if (diagram != null) {
       for (FilterDescription filter : diagram.getActivatedFilters()) {
-        if (IMappingNameConstants.HIDE_CE_BY_DELEGATION.equals(filter.getName())) {
-          if (isFirstFilterActive(filter, diagram)) {
-            return false;
-          }
+        if (IMappingNameConstants.HIDE_CE_BY_DELEGATION.equals(filter.getName())
+            && isFirstFilterActive(filter, diagram)) {
+          return false;
         }
       }
     }
@@ -3256,7 +3225,7 @@ public class CsServices {
       }
     }
 
-    return isUndoublonLink(source, target);// isValidLinkEdge(link, source, target, true);
+    return isUndoublonLink(source, target);
   }
 
   /**
@@ -3276,7 +3245,8 @@ public class CsServices {
   public boolean isValidComponentExchangeEdge(EObject communication, DSemanticDecorator source,
       DSemanticDecorator target) {
     if (communication instanceof ComponentExchange) {
-      return isValidLinkEdge(getComponentExchangeWrapper((ComponentExchange) communication), source, target, true) && !isComponentExchangeCategoryEdgeDisplayed((ComponentExchange) communication, source, target);
+      return isValidLinkEdge(getComponentExchangeWrapper((ComponentExchange) communication), source, target, true)
+          && !isComponentExchangeCategoryEdgeDisplayed((ComponentExchange) communication, source, target);
     }
     return false;
   }
@@ -4009,8 +3979,6 @@ public class CsServices {
           }
         }
       }
-    } else {
-      valid = true;
     }
 
     return valid;
@@ -4123,12 +4091,12 @@ public class CsServices {
 
     DDiagram diagram = CapellaServices.getService().getDiagramContainer(view);
     Collection<EObject> sems = ((DRepresentationElement) view).getSemanticElements();
-    Collection<ComponentExchange> exchanges = new ArrayList<ComponentExchange>();
+    Collection<ComponentExchange> exchanges = new ArrayList<>();
 
     for (EObject semantic : sems) {
       if (semantic instanceof ComponentExchange) {
         if (((ComponentExchange) semantic).getKind() == ComponentExchangeKind.DELEGATION) {
-          return " "; //$NON-NLS-1$ ;
+          return " "; //$NON-NLS-1$
         }
         exchanges.add((ComponentExchange) semantic);
       }
@@ -4155,7 +4123,7 @@ public class CsServices {
     for (EObject semantic : sems) {
       if (semantic instanceof ComponentExchange) {
         if (((ComponentExchange) semantic).getKind() == ComponentExchangeKind.DELEGATION) {
-          return " "; //$NON-NLS-1$ ;
+          return " "; //$NON-NLS-1$
         }
         exchanges.add((ComponentExchange) semantic);
 
@@ -4188,7 +4156,7 @@ public class CsServices {
 
       if (semantic instanceof ComponentExchange) {
         if (((ComponentExchange) semantic).getKind() == ComponentExchangeKind.DELEGATION) {
-          return " "; //$NON-NLS-1$ ;
+          return " "; //$NON-NLS-1$
         }
         InformationsExchanger port = ((ComponentExchange) semantic).getSource();
         EObject ownerComponent = port.eContainer();
@@ -5596,11 +5564,10 @@ public class CsServices {
     boolean isContainerMapping = true;
 
     String mappingName = ""; //$NON-NLS-1$
-    if (IDiagramNameConstants.CAPABILITY_REALIZATION_BLANK.equals(diagram.getDescription().getName())) {
-      if (element instanceof CapabilityRealization) {
-        mappingName = IMappingNameConstants.CRB_CAPABILITY_REALIZATION_MAPPING;
-        isContainerMapping = false;
-      }
+    if (IDiagramNameConstants.CAPABILITY_REALIZATION_BLANK.equals(diagram.getDescription().getName())
+        && element instanceof CapabilityRealization) {
+      mappingName = IMappingNameConstants.CRB_CAPABILITY_REALIZATION_MAPPING;
+      isContainerMapping = false;
     }
 
     if (isContainerMapping) {
@@ -5634,10 +5601,10 @@ public class CsServices {
   }
 
   public boolean isPrimitive(EObject context) {
-    if (context instanceof Class)
+    if (context instanceof Class) {
       return ((Class) context).isIsPrimitive();
-    else
-      return false;
+    }
+    return false;
   }
 
   public boolean isAbstract(EObject context) {
@@ -5853,9 +5820,8 @@ public class CsServices {
       constraintNode = diagramServices.createNode(constraintNodeMapping, constraint, dDiagram, dDiagram);
     }
 
-    if (!dDiagram.isSynchronized() && (null != constaintEdgeMapping)) {
+    if (!dDiagram.isSynchronized() && null != constaintEdgeMapping && null != constraintNode) {
       // create constriantElementLink does not exist in diagram
-      if (null != constraintNode) {
         EObject target = constraintNode.getTarget();
         if (target instanceof Constraint) {
           Constraint cst = (Constraint) target;
@@ -5869,9 +5835,9 @@ public class CsServices {
               for (DEdge dEdge : outgoingEdges) {
                 EdgeTarget edgeTargetNode = dEdge.getTargetNode();
                 if (null != edgeTargetNode) {
-                  EObject edgeTargetNode_target = ((DDiagramElement) edgeTargetNode).getTarget();
+                  EObject edgeTargetNodeTarget = ((DDiagramElement) edgeTargetNode).getTarget();
                   // check if edge exist between 'modelElement' and given Constraint
-                  if ((null != edgeTargetNode_target) && edgeTargetNode_target.equals(modelElement)) {
+                  if ((null != edgeTargetNodeTarget) && edgeTargetNodeTarget.equals(modelElement)) {
                     // no need to create an edge
                     edgeExist = true;
                     break;
@@ -5889,7 +5855,6 @@ public class CsServices {
             }
           }
         }
-      }
     }
   }
 
@@ -5933,11 +5898,9 @@ public class CsServices {
    */
   private ModelElement getProperTargetToMoveConstraint(ModelElement target, DDiagramElement targetDiagramEle) {
     DiagramElementMapping diagramElementMapping = targetDiagramEle.getDiagramElementMapping();
-    if (null != diagramElementMapping) {
-      if (diagramElementMapping.getName()
-          .equals(IMappingNameConstants.PAB_PHYSICAL_COMPONENT_DEPLOYMENT_MAPPING_NAME)) {
-        return null;
-      }
+    if (null != diagramElementMapping && diagramElementMapping.getName()
+        .equals(IMappingNameConstants.PAB_PHYSICAL_COMPONENT_DEPLOYMENT_MAPPING_NAME)) {
+      return null;
     }
     return target;
   }
@@ -5955,17 +5918,14 @@ public class CsServices {
     // return the deployedElemnet link as target
     boolean flag = false;
     DiagramElementMapping diagramElementMapping = targetDiagramEle.getDiagramElementMapping();
-    if (null != diagramElementMapping) {
-      if (diagramElementMapping.getName()
-          .equals(IMappingNameConstants.PAB_PHYSICAL_COMPONENT_DEPLOYMENT_MAPPING_NAME)) {
-        if (target instanceof Part) {
-          Part part = (Part) target;
-          EList<AbstractDeploymentLink> deployingLinks = part.getDeployingLinks();
-          if ((null != deployingLinks) && !deployingLinks.isEmpty()) {
-            result.addAll(deployingLinks);
-            flag = true;
-          }
-        }
+    if (null != diagramElementMapping
+        && diagramElementMapping.getName().equals(IMappingNameConstants.PAB_PHYSICAL_COMPONENT_DEPLOYMENT_MAPPING_NAME)
+        && target instanceof Part) {
+      Part part = (Part) target;
+      EList<AbstractDeploymentLink> deployingLinks = part.getDeployingLinks();
+      if ((null != deployingLinks) && !deployingLinks.isEmpty()) {
+        result.addAll(deployingLinks);
+        flag = true;
       }
     }
     if (!flag) {
@@ -6236,7 +6196,6 @@ public class CsServices {
    * @param object
    * @return
    */
-  @SuppressWarnings("restriction")
   public boolean isProvidedEdge(EObject object) {
     if (object instanceof DEdge) {
       DEdge currentEdge = (DEdge) object;
@@ -6264,7 +6223,6 @@ public class CsServices {
    * @param object
    * @return
    */
-  @SuppressWarnings("restriction")
   public boolean isRequiredEdge(EObject object) {
     if (object instanceof DEdge) {
       DEdge currentEdge = (DEdge) object;
@@ -6641,18 +6599,7 @@ public class CsServices {
       addRelevantParts(context, mainPart, toHandle);
     }
     for (DeploymentTarget element : PartExt.getDeployingElements(mainPart)) {
-      boolean isChildView = false;
-      for (DDiagramElement diagElt : context.getDiagramElements(element)) {
-        if (diagElt instanceof DNodeContainer) {
-          DNodeContainer node = (DNodeContainer) diagElt;
-          for (DDiagramElement elt : node.getOwnedDiagramElements()) {
-            if (mainPart.equals(elt.getTarget()) && elt.isVisible()) {
-              isChildView = true;
-            }
-          }
-        }
-      }
-      if (!isChildView) {
+      if (!isChildView(context, mainPart, element)) {
         toHandle.add(element);
       }
     }
@@ -6666,6 +6613,20 @@ public class CsServices {
       }
     }
     return result;
+  }
+
+  private boolean isChildView(DDiagramContents context, Part mainPart, DeploymentTarget element) {
+    for (DDiagramElement diagElt : context.getDiagramElements(element)) {
+      if (diagElt instanceof DNodeContainer) {
+        DNodeContainer node = (DNodeContainer) diagElt;
+        for (DDiagramElement elt : node.getOwnedDiagramElements()) {
+          if (mainPart.equals(elt.getTarget()) && elt.isVisible()) {
+            return true;
+          }
+        }
+      }
+    }
+    return false;
   }
 
   private void addRelevantParts(DDiagramContents context, Part mainPart, List<DeploymentTarget> toHandle) {
