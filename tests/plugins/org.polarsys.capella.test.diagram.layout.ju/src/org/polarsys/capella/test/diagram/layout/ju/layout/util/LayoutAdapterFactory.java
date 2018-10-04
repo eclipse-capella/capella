@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,6 +14,7 @@ import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.viewpoint.DRefreshable;
 import org.polarsys.capella.test.diagram.layout.ju.layout.Bounds;
 import org.polarsys.capella.test.diagram.layout.ju.layout.DiagramLayout;
 import org.polarsys.capella.test.diagram.layout.ju.layout.EdgeLayout;
@@ -121,6 +122,10 @@ public class LayoutAdapterFactory extends AdapterFactoryImpl {
       @Override
       public Adapter caseSize(Size object) {
         return createSizeAdapter();
+      }
+      @Override
+      public Adapter caseDRefreshable(DRefreshable object) {
+        return createDRefreshableAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object) {
@@ -279,6 +284,20 @@ public class LayoutAdapterFactory extends AdapterFactoryImpl {
    * @generated
    */
   public Adapter createSizeAdapter() {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.sirius.viewpoint.DRefreshable <em>DRefreshable</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.sirius.viewpoint.DRefreshable
+   * @generated
+   */
+  public Adapter createDRefreshableAdapter() {
     return null;
   }
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,7 @@ package org.polarsys.capella.test.diagram.layout.ju.layout.util;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
+import org.eclipse.sirius.viewpoint.DRefreshable;
 import org.polarsys.capella.test.diagram.layout.ju.layout.Bounds;
 import org.polarsys.capella.test.diagram.layout.ju.layout.DiagramLayout;
 import org.polarsys.capella.test.diagram.layout.ju.layout.EdgeLayout;
@@ -87,12 +88,14 @@ public class LayoutSwitch<T> extends Switch<T> {
         T result = caseDiagramLayout(diagramLayout);
         if (result == null) result = caseISemanticLayout(diagramLayout);
         if (result == null) result = caseILayout(diagramLayout);
+        if (result == null) result = caseDRefreshable(diagramLayout);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
       case LayoutPackage.ILAYOUT: {
         ILayout iLayout = (ILayout)theEObject;
         T result = caseILayout(iLayout);
+        if (result == null) result = caseDRefreshable(iLayout);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -100,6 +103,7 @@ public class LayoutSwitch<T> extends Switch<T> {
         ISemanticLayout iSemanticLayout = (ISemanticLayout)theEObject;
         T result = caseISemanticLayout(iSemanticLayout);
         if (result == null) result = caseILayout(iSemanticLayout);
+        if (result == null) result = caseDRefreshable(iSemanticLayout);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -108,6 +112,7 @@ public class LayoutSwitch<T> extends Switch<T> {
         T result = caseEdgeLayout(edgeLayout);
         if (result == null) result = caseISemanticLayout(edgeLayout);
         if (result == null) result = caseILayout(edgeLayout);
+        if (result == null) result = caseDRefreshable(edgeLayout);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -116,6 +121,7 @@ public class LayoutSwitch<T> extends Switch<T> {
         T result = caseNodeLayout(nodeLayout);
         if (result == null) result = caseISemanticLayout(nodeLayout);
         if (result == null) result = caseILayout(nodeLayout);
+        if (result == null) result = caseDRefreshable(nodeLayout);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -124,6 +130,7 @@ public class LayoutSwitch<T> extends Switch<T> {
         T result = caseNoteLayout(noteLayout);
         if (result == null) result = caseISemanticLayout(noteLayout);
         if (result == null) result = caseILayout(noteLayout);
+        if (result == null) result = caseDRefreshable(noteLayout);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -304,6 +311,21 @@ public class LayoutSwitch<T> extends Switch<T> {
    * @generated
    */
   public T caseSize(Size object) {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>DRefreshable</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>DRefreshable</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseDRefreshable(DRefreshable object) {
     return null;
   }
 

@@ -150,10 +150,12 @@ public class ShapeHelper {
 
       if (currentElement instanceof DEdge) {
         PointList edgePoints = getDraw2DPointListForDEdge(diagram, currentElement);
-        for (int i = 0; i < edgePoints.size(); i++) {
-          Point currentPoint = edgePoints.getPoint(i);
-          if (currentPoint != null) {
-            map.put(currentPoint, currentElement);
+        if (edgePoints != null) {
+          for (int i = 0; i < edgePoints.size(); i++) {
+            Point currentPoint = edgePoints.getPoint(i);
+            if (currentPoint != null) {
+              map.put(currentPoint, currentElement);
+            }
           }
         }
       } else {
