@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,19 +27,23 @@ import org.polarsys.capella.core.ui.semantic.browser.sirius.view.SiriusSemanticB
 public class SiriusSelectionHelper {
   /**
    * Handle selection for specified parameters.
+   * 
    * @param part
    * @param selection
-   * @param handleSemanticBrowserSelectionEvent <code>true</code> means selection coming from the semantic browser itself are handled.
+   * @param handleSemanticBrowserSelectionEvent
+   *          <code>true</code> means selection coming from the semantic browser itself are handled.
    * @return <code>null</code> means nothing to select.
    */
-  public static Object handleSelection(IWorkbenchPart part, ISelection selection, boolean handleSemanticBrowserSelectionEvent) {
+  public static Object handleSelection(IWorkbenchPart part, ISelection selection,
+      boolean handleSemanticBrowserSelectionEvent) {
     Object result = null;
-    if (selection != null && !selection.isEmpty() && (handleSemanticBrowserSelectionEvent || !(part instanceof SiriusSemanticBrowserView))) {
+    if (selection != null && !selection.isEmpty()
+        && (handleSemanticBrowserSelectionEvent || !(part instanceof SiriusSemanticBrowserView))) {
       if (selection instanceof IStructuredSelection) {
         IStructuredSelection selection_l = (IStructuredSelection) selection;
         Object firstElement = selection_l.getFirstElement();
         // adapt to the Element
-        result = CapellaAdapterHelper.resolveSemanticObject(firstElement, true);
+        result = CapellaAdapterHelper.resolveSemanticObject(firstElement, false);
         if (result == null) {
           result = Platform.getAdapterManager().getAdapter(firstElement, EObject.class);
         }
@@ -47,7 +51,8 @@ public class SiriusSelectionHelper {
     }
 
     if (result instanceof Part) {
-      boolean allowMultiplePart = TriStateBoolean.True.equals(CapellaProjectHelper.isReusableComponentsDriven((Part) result));
+      boolean allowMultiplePart = TriStateBoolean.True
+          .equals(CapellaProjectHelper.isReusableComponentsDriven((Part) result));
       if (!allowMultiplePart) {
         if (!(((Part) result).getAbstractType() instanceof ConfigurationItem)) {
           result = ((Part) result).getAbstractType();
@@ -61,6 +66,7 @@ public class SiriusSelectionHelper {
   /**
    * Handle selection for specified parameters.<br>
    * Default implementation ignores selection coming from the semantic browser itself.
+   * 
    * @param part
    * @param selection
    * @return <code>null</code> means nothing to select.
