@@ -93,6 +93,22 @@
                id="ReferencedElementBrowser">
          </targetBrowserId>
       </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.sirius.representationDescriptorTargetElement"
+            isTopLevel="true"
+            name="Target Element">
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.sirius.diagram.RepresentationDescriptorTargetElement">
+            </basicQuery>
+         </categoryQuery>
+         <availableForType
+               class="org.eclipse.sirius.viewpoint.DRepresentationDescriptor">
+         </availableForType>
+         <targetBrowserId
+               id="CurrentElementBrowser">
+         </targetBrowserId>
+      </category>
    </extension>
 
 </plugin>
