@@ -11,6 +11,8 @@
 
 package org.polarsys.capella.core.platform.sirius.adapter;
 
+import java.util.List;
+
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.runtime.IAdapterFactory;
 import org.eclipse.emf.ecore.EObject;
@@ -64,11 +66,13 @@ public class SiriusToCapellaAdapterFactory implements IAdapterFactory {
         return element;
       }
     }
-    
+
     if (object instanceof IMarker) {
-       return MarkerViewHelper.getModelElementsFromMarker((IMarker) object).get(0);
+      List<EObject> objects = MarkerViewHelper.getModelElementsFromMarker((IMarker) object);
+      if (!objects.isEmpty()) {
+        return objects.get(0);
+      }
     }
-    
     return null;
   }
 

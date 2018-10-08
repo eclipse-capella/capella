@@ -1,0 +1,69 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _fUPc0EMPEeiEYaQR9fY4DQ
+Element-Name: DiffMergeOptions
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _CsgiEMrwEei7vIn3hr_36g
+Runtime-Version: 2.2.0.201705230341
+Save-Time: 10/8/18 1:48 PM
+Testcase-Type: ecl
+
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+// Execute the Diff/Merge command
+with [get-view "Capella Project Explorer" | get-tree] {
+    select "DiffMerge_Fragment_Model_Import_2/DiffMerge_Fragment_Model.aird" "DiffMerge_Fragment_Model_Import_1/DiffMerge_Fragment_Model.aird"
+    get-menu -path "Compare With/Each Other as models" | click
+}
+// Check if the options for diff/merge have been well selected.
+get-window "EMF Diff/Merge" | get-group "Comparison method" | get-combo | get-property selection 
+    | equals "Configurable comparison method supporting Capella models" | verify-true
+get-window "EMF Diff/Merge" | get-group "Comparison method" | get-button "Configure..." | click
+
+// Check the predefine usage
+get-window "Comparison Configuration" | get-group "Predefined usages" 
+    | get-button "Diff/merge between different versions of the same Capella / Team for Capella model" 
+    | get-property selected | equals true | verify-true
+    
+// Check the advance setting
+with [get-window "Comparison Configuration"] {
+    get-button "Show advanced settings >>" | click
+}
+
+//Check options on Matching Tab
+with [get-window "Comparison Configuration" | get-tab-folder] {
+    get-tab-item Matching | click
+}
+with [get-window "Comparison Configuration"] {
+    with [get-group "Absolute criteria"] {
+        get-button "Technical IDs" | get-property selected | equals true | verify-true
+        get-button "Property IDs" | get-property selected | equals true | verify-true
+    }
+    with [get-group "Relative criteria"] {
+        get-button Names | get-property selected | equals false | verify-true
+        get-button Structure | get-property selected | equals false | verify-true
+        get-button Semantics | get-property selected | equals true | verify-true
+        get-button "Match default model contents" | get-property selected | equals false | verify-true
+        get-button "Capella: Match project with library" | get-property selected | equals false | verify-true
+        get-button "Capella: Match equivalent technical elements" | get-property selected | equals false | verify-true
+        get-button "Diagrams: Match shapes according to represented elements" | get-property selected | equals true 
+            | verify-true
+        get-button "Diagrams: Match remaining shapes according to type" | get-property selected | equals true 
+            | verify-true
+    }
+}
+
+// Check options on Misc Tab
+with [get-window "Comparison Configuration" | get-tab-folder] {
+    get-tab-item Misc | click
+}
+get-window "Comparison Configuration" | get-button "Use cache" | get-property selected | equals true | verify-true
+get-window "Comparison Configuration" | get-tab-folder | get-tab-item Main | click
+
+get-window "Comparison Configuration" | get-button OK | click
+get-window "EMF Diff/Merge" | get-button Cancel | click
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--
