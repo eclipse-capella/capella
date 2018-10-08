@@ -1413,30 +1413,47 @@
                style="push">
             <visibleWhen
                   checkEnabled="true">
-                  
-               <with
-                     variable="selection">
-                  <and>
-                  	<iterate>
-                  		<and>
-	                 		<or>
-	                       		<instanceof
-	                             	value="org.polarsys.kitalpha.emde.model.Element">
-	                       		</instanceof>
-	                       		<adapt
-	                             	type="org.polarsys.kitalpha.emde.model.Element">
-	                       		</adapt>
-	                    	</or>
-	                    	<reference
-                          		definitionId="org.polarsys.capella.common.platform.sirius.ted.definition.checkElementOfOpenedSessionOnCompareEditorPartOnly">
-                        	</reference>
-                  		</and>
-                     </iterate>
-                     <count
-                           value="1">
-                     </count>
-                  </and>
-               </with>
+               <and>
+               		<with variable="activePartId">
+               			<and>
+		                    <not>
+		                        <equals value="org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditorID"/>
+		                    </not>
+		                    <not>
+		                        <equals value="org.eclipse.sirius.table.ui.CrossTableEditorID"/>
+		                    </not>
+		                    <not>
+		                        <equals value="org.eclipse.sirius.table.ui.EditionTableEditorID"/>
+		                    </not>
+		                    <not>
+		                        <equals value="org.eclipse.sirius.tree.ui.EditorID"/>
+		                    </not>
+               			</and>
+	               </with>
+	               <with
+	                     variable="selection">
+	                  <and>
+	                  	<iterate>
+	                  		<and>
+		                 		<or>
+		                       		<instanceof
+		                             	value="org.polarsys.kitalpha.emde.model.Element">
+		                       		</instanceof>
+		                       		<adapt
+		                             	type="org.polarsys.kitalpha.emde.model.Element">
+		                       		</adapt>
+		                    	</or>
+		                    	<reference
+	                          		definitionId="org.polarsys.capella.common.platform.sirius.ted.definition.checkElementOfOpenedSessionOnCompareEditorPartOnly">
+	                        	</reference>
+	                  		</and>
+	                     </iterate>
+	                     <count
+	                           value="1">
+	                     </count>
+	                  </and>
+	               </with>
+               </and>
             </visibleWhen>
             
          </command>
