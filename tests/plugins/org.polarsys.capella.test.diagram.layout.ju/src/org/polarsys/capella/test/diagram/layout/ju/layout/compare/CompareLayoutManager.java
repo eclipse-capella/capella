@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -32,7 +32,10 @@ import org.eclipse.emf.diffmerge.diffdata.impl.EComparisonImpl;
 import org.eclipse.emf.diffmerge.impl.policies.DefaultMergePolicy;
 import org.eclipse.emf.diffmerge.impl.scopes.RootedModelScope;
 import org.eclipse.emf.diffmerge.ui.util.DiffMergeDialog;
+import org.eclipse.emf.diffmerge.ui.viewers.AbstractComparisonViewer;
+import org.eclipse.emf.diffmerge.ui.viewers.ComparisonViewer;
 import org.eclipse.emf.diffmerge.ui.viewers.EMFDiffNode;
+import org.eclipse.emf.diffmerge.ui.viewers.HeaderViewer;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -42,7 +45,11 @@ import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.Shape;
 import org.eclipse.gmf.runtime.notation.ShapeStyle;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.jface.action.ActionContributionItem;
+import org.eclipse.jface.action.IContributionManager;
+import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
+import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.Session;
@@ -58,10 +65,14 @@ import org.eclipse.sirius.diagram.description.filter.FilterDescription;
 import org.eclipse.sirius.ui.tools.api.actions.export.ExportAction;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Shell;
+import org.eclipse.ui.IEditorPart;
+import org.eclipse.ui.IWorkbenchPartSite;
 import org.eclipse.ui.PlatformUI;
 import org.junit.Assert;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
+import org.polarsys.capella.common.ui.toolkit.viewers.menu.ModalContextMenuExtender;
 import org.polarsys.capella.shared.id.handler.IdManager;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.DiagramHelper;
 import org.polarsys.capella.test.diagram.layout.ju.layout.DiagramLayout;
@@ -78,7 +89,6 @@ import org.polarsys.capella.test.diagram.layout.ju.layout.Size;
 import org.polarsys.capella.test.diagram.layout.ju.layout.provider.LayoutItemProviderAdapterFactory;
 import org.polarsys.capella.test.diagram.layout.ju.layout.util.LayoutAdapterFactory;
 import org.polarsys.capella.test.diagram.layout.ju.layout.util.LayoutResourceImpl;
-import org.polarsys.capella.test.framework.helpers.SessionHelper;
 
 public class CompareLayoutManager {
 
@@ -93,7 +103,14 @@ public class CompareLayoutManager {
     layout.setSynchronized(representation.isSynchronized());
     layout.setDescription(representation.getDescription().getName());
 
-    DiagramHelper.opendiagramEditor(session, representation);
+    
+    IEditorPart editorWasOpened = DiagramHelper.getDiagramEditor(session, representation);
+    if (editorWasOpened == null) {
+      DiagramHelper.opendiagramEditor(session, representation);
+    } else {
+      editorWasOpened.getSite().getPage().activate(editorWasOpened);
+    }
+    
     Diagram diag = DiagramHelper.getDiagram(currentDiagram);
     Point refPoint = ShapeHelper.getClosestPointToOriginInDiagram(currentDiagram);
 
@@ -152,7 +169,9 @@ public class CompareLayoutManager {
     }
 
     try {
-      SessionHelper.closeEditors(session, false);
+      if (editorWasOpened != null) {
+        DiagramHelper.closeEditor(session, currentDiagram);
+      }
     } catch (RuntimeException e) {
       // Nothing here
     }
@@ -186,6 +205,15 @@ public class CompareLayoutManager {
     return sessionLayout;
   }
 
+  protected LayoutMatchPolicy matchPolicy;
+  
+  public LayoutMatchPolicy getLayoutMatchPolicy() {
+    if (matchPolicy == null) {
+      matchPolicy = new LayoutMatchPolicy();
+    }
+    return matchPolicy;
+  }
+  
   /**
    * Compare two layouts, returns a computed comparison
    */
@@ -196,7 +224,7 @@ public class CompareLayoutManager {
 
     EComparisonImpl impl = new EComparisonImpl(target, source);
 
-    impl.compute(new LayoutMatchPolicy(), new LayoutDiffPolicy(), new DefaultMergePolicy(), new NullProgressMonitor());
+    impl.compute(getLayoutMatchPolicy(), new LayoutDiffPolicy(), new DefaultMergePolicy(), new NullProgressMonitor());
 
     return impl;
   }
@@ -436,7 +464,41 @@ public class CompareLayoutManager {
 
     EMFDiffNode node = new EMFDiffNode(comparison);
     org.eclipse.emf.diffmerge.ui.util.DiffMergeDialog dialog = new DiffMergeDialog(
-        PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), DiffMergeDialog.class.getSimpleName(), node);
+        PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), DiffMergeDialog.class.getSimpleName(), node) {
+      @Override
+      protected AbstractComparisonViewer createComparisonViewer(Composite parent_p) {
+        // TODO Auto-generated method stub
+        return new ComparisonViewer(parent_p) {
+
+          @Override
+          protected IWorkbenchPartSite getSite() {
+            return null;
+          }
+
+          /**
+           * The viewer is launched inside a modal window, sync with external views is impossible. It can only be done with
+           * contextual menus.
+           */
+          protected ActionContributionItem createItemSyncExternal(IContributionManager context) {
+            return null;
+          }
+
+          /**
+           * Register the context menu on a modal window
+           */
+          @Override
+          protected MenuManager createViewerContextMenus(HeaderViewer<?> viewer, boolean useLocalSelectionProvider) {
+            MenuManager manager = super.createViewerContextMenus(viewer, useLocalSelectionProvider);
+
+            ISelectionProvider selectionProvider = useLocalSelectionProvider ? viewer.getInnerViewer()
+                : getMultiViewerSelectionProvider();
+            ModalContextMenuExtender.registerContextMenu(manager, "org.polarsys.capella.test.compareLayout.ui.diffmerge", selectionProvider);
+
+            return manager;
+          }
+        };
+      }
+    };
     dialog.open();
 
   }
