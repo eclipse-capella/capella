@@ -87,7 +87,6 @@ public class CapellaComparisonMethod extends SiriusComparisonMethod {
       IModelScopeDefinition rightScopeDef, IModelScopeDefinition ancestorScopeDef,
       IComparisonMethodFactory factory) {
     super(leftScopeDef, rightScopeDef, ancestorScopeDef, factory);
-    initializeConfiguration();
   }
   
   /**
@@ -156,10 +155,11 @@ public class CapellaComparisonMethod extends SiriusComparisonMethod {
   }
   
   /**
-   * Set the initial configuration of the comparison method
+   * @see org.eclipse.emf.diffmerge.ui.specification.ext.ConfigurableComparisonMethod#getDefaultConfigurator()
    */
-  protected void initializeConfiguration() {
-    CONFIGURATOR_CAPELLA_DEFAULT.apply(this);
+  @Override
+  public IComparisonConfigurator getDefaultConfigurator() {
+    return CONFIGURATOR_CAPELLA_DEFAULT;
   }
   
 }
