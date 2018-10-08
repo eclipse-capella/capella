@@ -27,27 +27,32 @@ public class SendToMEMenuContributionItem extends AbstractSendToMenuContribution
 
   @Override
   protected String getViewID() {
-    return MACapellaActivator.ME_VIEW_ID ;
+    return MACapellaActivator.ME_VIEW_ID;
   }
 
   @Override
   protected String getViewName() {
     return MASS_EDITING_VIEW_NAME;
   }
-  
+
   @Override
   protected String getCommandID() {
     return MACapellaActivator.SEND_TO_ME_VIEW_COMMAND_ID;
   }
 
   @Override
-  protected String getCommandParameterPrimaryID() {
+  protected String getCommandParameterPrimaryId() {
     return MACapellaActivator.SEND_TO_ME_VIEW_COMMAND_PARAMETER_PRIMARY_ID;
   }
 
   @Override
-  protected String getCommandParameterSecondaryID() {
+  protected String getCommandParameterSecondaryId() {
     return MACapellaActivator.SEND_TO_ME_VIEW_COMMAND_PARAMETER_SECONDARY_ID;
+  }
+
+  @Override
+  protected String getCommandParameterShouldCreateViewId() {
+    return MACapellaActivator.SEND_TO_ME_VIEW_COMMAND_PARAMTER_SHOULD_CREATE_VIEW_ID;
   }
 
   @Override

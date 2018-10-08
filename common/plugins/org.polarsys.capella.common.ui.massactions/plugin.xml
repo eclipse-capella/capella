@@ -61,6 +61,11 @@
                name="secondaryViewId"
                optional="false">
          </commandParameter>
+         <commandParameter
+               id="org.polarsys.capella.common.ui.massactions.command.SendToMassEditingView.shouldCreateViewId"
+               name="shouldCreateView"
+               optional="false">
+         </commandParameter>
       </command>
       <command
             description="%view.visualization.sendTo.description"
@@ -74,6 +79,11 @@
          <commandParameter
                id="org.polarsys.capella.common.ui.massactions.command.SendToMassVisualizationView.secondaryViewId"
                name="secondaryViewId"
+               optional="false">
+         </commandParameter>
+         <commandParameter
+               id="org.polarsys.capella.common.ui.massactions.command.SendToMassVisualizationView.shouldCreateViewId"
+               name="shouldCreateView"
                optional="false">
          </commandParameter>
       </command>

@@ -22,12 +22,17 @@ import org.polarsys.capella.common.ui.massactions.shared.menu.AbstractSentToComm
 public class SentToMVCommandHandler extends AbstractSentToCommandHandler {
 
   @Override
-  protected String getCommandParameterPrimaryID() {
+  protected String getCommandParameterPrimaryId() {
     return MACapellaActivator.SEND_TO_MV_VIEW_COMMAND_PARAMETER_PRIMARY_ID;
   }
 
   @Override
-  protected String getCommandParameterSecondaryID() {
+  protected String getCommandParameterSecondaryId() {
     return MACapellaActivator.SEND_TO_MV_VIEW_COMMAND_PARAMETER_SECONDARY_ID;
+  }
+
+  @Override
+  protected String getCommandParameterShouldCreateViewId() {
+    return MACapellaActivator.SEND_TO_MV_VIEW_COMMAND_PARAMTER_SHOULD_CREATE_VIEW_ID;
   }
 }

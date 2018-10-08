@@ -31,21 +31,23 @@ public class MACapellaActivator extends AbstractUIPlugin {
 
   // The plug-in ID
   public static final String PLUGIN_ID = "org.polarsys.capella.common.ui.massactions"; //$NON-NLS-1$
-  
+
   public static final String ME_VIEW_ID = "org.polarsys.capella.common.ui.massactions.editing.view";
   public static final String MV_VIEW_ID = "org.polarsys.capella.common.ui.massactions.visualizing.view";
 
   public static final String SEND_TO_ME_VIEW_COMMAND_ID = "org.polarsys.capella.common.ui.massactions.command.SendToMassEditingView";
   public static final String SEND_TO_ME_VIEW_COMMAND_PARAMETER_PRIMARY_ID = "org.polarsys.capella.common.ui.massactions.command.SendToMassEditingView.primaryViewId";
   public static final String SEND_TO_ME_VIEW_COMMAND_PARAMETER_SECONDARY_ID = "org.polarsys.capella.common.ui.massactions.command.SendToMassEditingView.secondaryViewId";
+  public static final String SEND_TO_ME_VIEW_COMMAND_PARAMTER_SHOULD_CREATE_VIEW_ID = "org.polarsys.capella.common.ui.massactions.command.SendToMassEditingView.shouldCreateViewId";
 
   public static final String SEND_TO_MV_VIEW_COMMAND_ID = "org.polarsys.capella.common.ui.massactions.command.SendToMassVisualizationView";
   public static final String SEND_TO_MV_VIEW_COMMAND_PARAMETER_PRIMARY_ID = "org.polarsys.capella.common.ui.massactions.command.SendToMassVisualizationView.primaryViewId";
   public static final String SEND_TO_MV_VIEW_COMMAND_PARAMETER_SECONDARY_ID = "org.polarsys.capella.common.ui.massactions.command.SendToMassVisualizationView.secondaryViewId";
-  
+  public static final String SEND_TO_MV_VIEW_COMMAND_PARAMTER_SHOULD_CREATE_VIEW_ID = "org.polarsys.capella.common.ui.massactions.command.SendToMassVisualizationView.shouldCreateViewId";
+
   public static final IPath ICONS_PATH = new Path("icons/full");
   public static final String OBJ = "obj16/";
-  
+
   public static final String ME_VIEW_OBJ = "ME_VIEW_OBJ";
   public static final String ME_NEW_VIEW_OBJ = "ME_NEW_VIEW_OBJ";
   public static final String MV_VIEW_OBJ = "MV_VIEW_OBJ";
@@ -97,22 +99,22 @@ public class MACapellaActivator extends AbstractUIPlugin {
     IPath path = ICONS_PATH.append(OBJ).append("me_new_view.gif");//$NON-NLS-1$
     ImageDescriptor imageDescriptor = createImageDescriptor(getDefault().getBundle(), path);
     reg.put(ME_NEW_VIEW_OBJ, imageDescriptor);
-    
+
     path = ICONS_PATH.append(OBJ).append("me_view.gif");//$NON-NLS-1$
     imageDescriptor = createImageDescriptor(getDefault().getBundle(), path);
     reg.put(ME_VIEW_OBJ, imageDescriptor);
-    
+
     path = ICONS_PATH.append(OBJ).append("mv_new_view.gif");//$NON-NLS-1$
     imageDescriptor = createImageDescriptor(getDefault().getBundle(), path);
     reg.put(MV_NEW_VIEW_OBJ, imageDescriptor);
-    
+
     path = ICONS_PATH.append(OBJ).append("mv_view.gif");//$NON-NLS-1$
     imageDescriptor = createImageDescriptor(getDefault().getBundle(), path);
     reg.put(MV_VIEW_OBJ, imageDescriptor);
   }
-  
+
   private ImageDescriptor createImageDescriptor(Bundle bundle, IPath path) {
-    URL url= FileLocator.find(bundle, path, null);
+    URL url = FileLocator.find(bundle, path, null);
     if (url != null) {
       return ImageDescriptor.createFromURL(url);
     }
