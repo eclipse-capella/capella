@@ -5,8 +5,8 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _tEBy8KkGEee0yuaysMB3Rg
-Runtime-Version: 2.3.0.201806262310
-Save-Time: 7/18/18 10:48 AM
+Runtime-Version: 2.2.0.201705230341
+Save-Time: 10/8/18 11:38 AM
 Testcase-Type: ecl
 
 ------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
@@ -277,7 +277,6 @@ with [get-view "Capella Project Explorer" | get-tree] {
 get-window "Replicable Elements" | get-button OK | click
 with [get-window "Update REC from selected RPL"] {
     get-button Apply | click
-    get-window "Merge Operation" | get-button OK | click
 }
 
 // There is an error in the Information View
@@ -337,7 +336,6 @@ get-view "Capella Project Explorer" | get-tree
 get-window "Replicable Elements" | get-button OK | click
 with [get-window "Update REC from selected RPL"] {
     get-button Apply | click
-    get-window "Merge Operation" | get-button OK | click
 }
 get-view "Capella Project Explorer" | get-tree 
     | get-item "MAProjectReadWriteLib/\\*MAProjectReadWriteLib.aird/LibProjectSuper/Logical Architecture/Logical System/LogicalComponent 1 \\[REC\\]" 
@@ -382,7 +380,6 @@ with [get-view "Capella Project Explorer" | get-tree] {
 get-window "Replicable Elements" | get-button OK | click
 with [get-window "Update REC from selected RPL"] {
     get-button Apply | click
-    get-window "Merge Operation" | get-button OK | click
 }
 with [get-view "Capella Project Explorer" | get-tree] {
     get-item "MAProjectReadWriteLib/\\*MAProjectReadWriteLib.aird/MAProjectReadWriteLib/REC Catalog/RPL1 \\[REC1\\]" 
@@ -431,7 +428,6 @@ get-view "Capella Project Explorer" | get-tree
 get-window "Replicable Elements" | get-button OK | click
 with [get-window "Update selected RPL from its REC"] {
     get-button "Copy all to the right" | click
-    get-window "Merge Operation" | get-button OK | click
     get-button OK | click
 }
 with [get-view "Capella Project Explorer" | get-tree] {
