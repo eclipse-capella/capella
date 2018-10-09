@@ -1,0 +1,43 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _0keAwAMFEeaSHsy4D5kUow
+Element-Name: SessionCloseAfterRestart
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _UP0hoMsNEeieIOBEw8jDWA
+Runtime-Version: 2.3.0.201806262310
+Save-Time: 10/9/18 10:31 AM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+- Create a new project
+- Restart Capella
+- Close the session
+=> Check that Activity Explorer is closed.
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+// Create a new project
+get-view "Capella Project Explorer" | get-tree | get-menu "New/Capella Project" | click
+with [get-window "New Capella Project"] {
+    get-editbox | set-text TestProject
+    get-button Finish | click
+}
+
+// Restart Capella
+restart-aut
+wait-until-eclipse-is-ready
+prepare-AUT-after-restart
+
+// Close the session
+get-view "Capella Project Explorer" | get-tree | select "TestProject/TestProject.aird" | get-menu Close | click
+
+// Check that Activity Explorer has been closed
+verify-error {get-editor TestProject}
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--
