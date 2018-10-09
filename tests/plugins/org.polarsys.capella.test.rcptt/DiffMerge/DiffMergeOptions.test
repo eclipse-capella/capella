@@ -6,8 +6,8 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _CsgiEMrwEei7vIn3hr_36g
-Runtime-Version: 2.2.0.201705230341
-Save-Time: 10/8/18 1:48 PM
+Runtime-Version: 2.3.0.201806262310
+Save-Time: 10/9/18 4:19 PM
 Testcase-Type: ecl
 
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
@@ -16,7 +16,7 @@ Entry-Name: .content
 
 // Execute the Diff/Merge command
 with [get-view "Capella Project Explorer" | get-tree] {
-    select "DiffMerge_Fragment_Model_Import_2/DiffMerge_Fragment_Model.aird" "DiffMerge_Fragment_Model_Import_1/DiffMerge_Fragment_Model.aird"
+    select "DiffMerge_Fragment_Model_Import_2/TestModel.aird" "DiffMerge_Fragment_Model_Import_1/TestModel.aird"
     get-menu -path "Compare With/Each Other as models" | click
 }
 // Check if the options for diff/merge have been well selected.
