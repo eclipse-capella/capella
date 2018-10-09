@@ -7,7 +7,7 @@ Element-Version: 3.0
 External-Reference: 
 Id: _j14TMHlNEeinH5hIqek0Nw
 Runtime-Version: 2.3.0.201806262310
-Save-Time: 9/20/18 11:53 AM
+Save-Time: 10/8/18 3:14 PM
 Testcase-Type: ecl
 
 ------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
@@ -96,7 +96,7 @@ with [get-editor "[SDFB] Top Level Functional Overview" | get-diagram -index 1] 
             mouse-release 48 8 button3 2097152 -height 16 -width 109
         }
     }
-    get-menu -path "Send to Mass Editing View/Mass Editing" | click
+    get-menu -path "Send to Mass Editing View/Mass Editing 1" | click
     with [get-edit-part -name "[SDFB] Top Level Functional Overview"] {
         mouse-move 545 337 -height 560 -width 840
         mouse-move 6 352 -height 560 -width 840
@@ -134,7 +134,7 @@ with [get-editor "[SDFB] Top Level Functional Overview" | get-diagram -index 1] 
             mouse-release 39 10 button3 2097152 -height 29 -width 140
         }
     }
-    get-menu -path "Send to Mass Editing View/Mass Editing" | click
+    get-menu -path "Send to Mass Editing View/Mass Editing 1" | click
     with [get-edit-part -name "[SDFB] Top Level Functional Overview"] {
         mouse-move 242 180 -height 560 -width 840
         with [get-edit-part -name "IFE System" | get-edit-part -name "VOD Movie Control Commands" 
@@ -154,7 +154,7 @@ with [get-editor "[SDFB] Top Level Functional Overview" | get-diagram -index 1] 
         mouse-drag 59 15 button3 2097152 -height 28 -width 142
         mouse-release 59 15 button3 2097152 -height 28 -width 142
     }
-    get-menu -path "Send to Mass Editing View/Mass Editing" | click
+    get-menu -path "Send to Mass Editing View/Mass Editing 1" | click
     with [get-edit-part -name "[SDFB] Top Level Functional Overview" | get-edit-part 
         -name "Entertain with IFE System"] {
         get-edit-part -name FIP1 | get-target-connection -path 0 | get-edit-part -className DEdgeNameEditPart 

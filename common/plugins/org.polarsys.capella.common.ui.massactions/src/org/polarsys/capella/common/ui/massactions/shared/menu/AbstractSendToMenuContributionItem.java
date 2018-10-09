@@ -31,31 +31,34 @@ import org.eclipse.ui.services.IServiceLocator;
 import org.polarsys.capella.common.ui.massactions.activator.MACapellaActivator;
 
 /**
- * A abstract contribution item for the 'Send To' mass  menu.
+ * A abstract contribution item for the 'Send To' mass menu.
  * 
  * @author Ali Akar
  *
  */
-public abstract class AbstractSendToMenuContributionItem extends CompoundContributionItem implements IWorkbenchContribution {
+public abstract class AbstractSendToMenuContributionItem extends CompoundContributionItem
+    implements IWorkbenchContribution {
 
   private IServiceLocator serviceLocator;
-  
+
   protected abstract String getViewID();
-  
+
   protected abstract String getViewName();
-  
+
   protected abstract String getCommandID();
-  
+
   protected abstract String getNewViewIcon();
-  
+
   protected abstract String getExistingViewIcon();
-  
-  protected abstract String getCommandParameterPrimaryID();
-  
-  protected abstract String getCommandParameterSecondaryID();
-  
+
+  protected abstract String getCommandParameterPrimaryId();
+
+  protected abstract String getCommandParameterSecondaryId();
+
+  protected abstract String getCommandParameterShouldCreateViewId();
+
   protected abstract boolean isMassView(IViewPart viewPart);
-  
+
   @Override
   public void initialize(IServiceLocator serviceLocator) {
     this.serviceLocator = serviceLocator;
@@ -69,46 +72,47 @@ public abstract class AbstractSendToMenuContributionItem extends CompoundContrib
 
     // We put the stream in a try-with-resource to satisfy Sonar
     try (Stream<IViewReference> viewReferenceStream = Stream.of(viewReferences)) {
-      List<IViewPart> mvViewParts = viewReferenceStream.map(viewRef -> viewRef.getView(false))
-          .filter(viewPart -> isMassView(viewPart)).collect(Collectors.toList());
+      List<IViewPart> maViewParts = viewReferenceStream.map(viewRef -> viewRef.getView(false)).filter(this::isMassView)
+          .collect(Collectors.toList());
 
       Collection<IContributionItem> contributionItems = new ArrayList<>();
-      
+
       // Add a contribution item to create a new view
       contributionItems.add(getNewViewContributionItem());
-      
+
       // Add a contribution item for each existing view
-      if (!mvViewParts.isEmpty()) {
+      if (!maViewParts.isEmpty()) {
         contributionItems.add(new Separator());
-        contributionItems.addAll(getExistingViewContributionItems(mvViewParts));
+        contributionItems.addAll(getExistingViewContributionItems(maViewParts));
       }
-      
+
       // Return the contribution items
       return contributionItems.toArray(new IContributionItem[contributionItems.size()]);
     }
   }
 
   protected IContributionItem getNewViewContributionItem() {
-    return createContributionItem(getNewViewText(), getNewViewIcon(),
-        getViewID(), null);
+    return createContributionItem(getNewViewText(), getNewViewIcon(), getViewID(), null, true);
   }
-  
-  protected Collection<IContributionItem> getExistingViewContributionItems(List<IViewPart> mvViewParts) {
+
+  protected Collection<IContributionItem> getExistingViewContributionItems(List<IViewPart> maViewParts) {
     Collection<IContributionItem> contributionItems = new ArrayList<>();
 
-    for (IViewPart viewPart : mvViewParts) {
+    for (IViewPart viewPart : maViewParts) {
       IContributionItem contributionItem = createContributionItem(viewPart.getTitle(), getExistingViewIcon(),
-          viewPart.getViewSite().getId(), viewPart.getViewSite().getSecondaryId());
+          viewPart.getViewSite().getId(), viewPart.getViewSite().getSecondaryId(), false);
       contributionItems.add(contributionItem);
     }
     return contributionItems;
   }
 
-  protected IContributionItem createContributionItem(String itemLabel, String iconKey,  String primaryViewId, String secondaryViewId) {
+  protected IContributionItem createContributionItem(String itemLabel, String iconKey, String primaryViewId,
+      String secondaryViewId, boolean shouldCreateViewId) {
 
     Map<String, String> parameters = new HashMap<>();
-    parameters.put(getCommandParameterPrimaryID(), primaryViewId);
-    parameters.put(getCommandParameterSecondaryID(), secondaryViewId);
+    parameters.put(getCommandParameterPrimaryId(), primaryViewId);
+    parameters.put(getCommandParameterSecondaryId(), secondaryViewId);
+    parameters.put(getCommandParameterShouldCreateViewId(), String.valueOf(shouldCreateViewId));
 
     CommandContributionItemParameter parameter = new CommandContributionItemParameter(serviceLocator, "",
         getCommandID(), CommandContributionItem.STYLE_PULLDOWN);
@@ -119,7 +123,7 @@ public abstract class AbstractSendToMenuContributionItem extends CompoundContrib
 
     return new CommandContributionItem(parameter);
   }
-  
+
   protected String getNewViewText() {
     return "New " + getViewName() + " View";
   }

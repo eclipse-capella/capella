@@ -36,29 +36,32 @@ import org.polarsys.kitalpha.massactions.shared.view.MAView;
 public abstract class AbstractSentToCommandHandler extends AbstractHandler {
 
   private static final Log log = LogFactory.getLog(AbstractSentToCommandHandler.class);
-  
-  protected abstract String getCommandParameterPrimaryID();
-  
-  protected abstract String getCommandParameterSecondaryID();
+
+  protected abstract String getCommandParameterPrimaryId();
+
+  protected abstract String getCommandParameterSecondaryId();
+
+  protected abstract String getCommandParameterShouldCreateViewId();
 
   @Override
   public Object execute(ExecutionEvent event) throws ExecutionException {
-    boolean updateViewName = false;
-    String primaryViewId = event.getParameter(getCommandParameterPrimaryID());
-    String secondaryViewId = event.getParameter(getCommandParameterSecondaryID());
-    if(secondaryViewId == null) {
-      secondaryViewId = MEView.getSecondaryViewId();
-      updateViewName = true;
-    }
+
+    String primaryViewId = event.getParameter(getCommandParameterPrimaryId());
+    String secondaryViewId = event.getParameter(getCommandParameterSecondaryId());
+    boolean shouldCreateView = Boolean.parseBoolean(event.getParameter(getCommandParameterShouldCreateViewId()));
+
+    // generate a fresh secondary view id, if a new view should be created
+    secondaryViewId = shouldCreateView ? MEView.getSecondaryViewId() : secondaryViewId;
 
     try {
       IViewPart viewPart = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().showView(primaryViewId,
           secondaryViewId, IWorkbenchPage.VIEW_VISIBLE);
 
       MAView maView = (MAView) viewPart;
-      if(updateViewName) {
-        maView.setViewName(MAView.getViewName(maView.getPartName(), secondaryViewId));        
+      if (shouldCreateView) {
+        maView.setViewName(MAView.getViewName(maView.getPartName(), secondaryViewId));
       }
+
       ISelection selection = HandlerUtil.getCurrentSelection(event);
       Collection<EObject> selectionData = maView.getSelectionHelper().getElementsFromSelection(selection);
 

@@ -34,20 +34,25 @@ public class SendToMVMenuContributionItem extends AbstractSendToMenuContribution
   protected String getViewName() {
     return MASS_VISUALIZATION_VIEW_NAME;
   }
-  
+
   @Override
   protected String getCommandID() {
     return MACapellaActivator.SEND_TO_MV_VIEW_COMMAND_ID;
   }
 
   @Override
-  protected String getCommandParameterPrimaryID() {
+  protected String getCommandParameterPrimaryId() {
     return MACapellaActivator.SEND_TO_MV_VIEW_COMMAND_PARAMETER_PRIMARY_ID;
   }
 
   @Override
-  protected String getCommandParameterSecondaryID() {
+  protected String getCommandParameterSecondaryId() {
     return MACapellaActivator.SEND_TO_MV_VIEW_COMMAND_PARAMETER_SECONDARY_ID;
+  }
+
+  @Override
+  protected String getCommandParameterShouldCreateViewId() {
+    return MACapellaActivator.SEND_TO_MV_VIEW_COMMAND_PARAMTER_SHOULD_CREATE_VIEW_ID;
   }
 
   @Override
