@@ -13,6 +13,7 @@ package org.polarsys.capella.core.model.helpers;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -102,7 +103,13 @@ public class ScenarioExt {
       }
       return result;
     }
-    return getAvailableFunctionsStateFragment((Component) instance.getAbstractType());
+
+    else if (instance.getAbstractType() instanceof Component) {
+      Component component = (Component) instance.getAbstractType();
+      return getAvailableFunctionsStateFragment(component);
+    }
+
+    return Collections.emptyList();
   }
 
   /**
@@ -228,6 +235,7 @@ public class ScenarioExt {
 
   /**
    * This method returns TRUE is the current scenario has been created from a refinement
+   * 
    * @param scenario
    * @return
    */
@@ -237,13 +245,15 @@ public class ScenarioExt {
 
   /**
    * This method returns the parent scenario of the current scenario
+   * 
    * @param scenario
    * @return
    */
   public static Scenario getUpperScenario(Scenario scenario) {
     Scenario upperScenario = null;
 
-    for (CapellaElement target : RefinementLinkExt.getRefinementRelatedTargetElements(scenario, InteractionPackage.Literals.SCENARIO)) {
+    for (CapellaElement target : RefinementLinkExt.getRefinementRelatedTargetElements(scenario,
+        InteractionPackage.Literals.SCENARIO)) {
       upperScenario = (Scenario) target;
     }
 
@@ -252,13 +262,15 @@ public class ScenarioExt {
 
   /**
    * This method returns the sub-scenario(s) of the current scenario
+   * 
    * @param scenario
    * @return
    */
   public static List<Scenario> getSubScenarios(Scenario scenario) {
     List<Scenario> subScenarios = new ArrayList<>();
 
-    for (CapellaElement source : RefinementLinkExt.getRefinementRelatedSourceElements(scenario, InteractionPackage.Literals.SCENARIO)) {
+    for (CapellaElement source : RefinementLinkExt.getRefinementRelatedSourceElements(scenario,
+        InteractionPackage.Literals.SCENARIO)) {
       subScenarios.add((Scenario) source);
     }
 
@@ -439,6 +451,7 @@ public class ScenarioExt {
 
   /**
    * This method returns the capability related to the given scenario
+   * 
    * @param scenario
    * @return AbstractCapability
    */
@@ -451,6 +464,7 @@ public class ScenarioExt {
 
   /**
    * This method returns the container of the given scenario
+   * 
    * @param scenario
    * @return CapellaElement
    */
@@ -460,6 +474,7 @@ public class ScenarioExt {
 
   /**
    * This method recursively returns the container of the given scenario
+   * 
    * @param elt
    * @return CapellaElement
    */
@@ -490,8 +505,11 @@ public class ScenarioExt {
   }
 
   /**
-   * Moves the end <code>toMove</code> on the beginning of the scenario. used in common.odesign, oa.odesign, sequences.odesign
-   * @param toMove the end to move
+   * Moves the end <code>toMove</code> on the beginning of the scenario. used in common.odesign, oa.odesign,
+   * sequences.odesign
+   * 
+   * @param toMove
+   *          the end to move
    * @return the moved end.
    */
   public static EObject moveEndOnBeginingOfScenario(final InteractionFragment toMove) {
@@ -501,9 +519,13 @@ public class ScenarioExt {
   }
 
   /**
-   * Moves the end <code>toMove</code> just after the end <code>previousEnd</code>. used in common.odesign, oa.odesign, sequences.odesign
-   * @param toMove the end to move
-   * @param previousEnd the previous end.
+   * Moves the end <code>toMove</code> just after the end <code>previousEnd</code>. used in common.odesign, oa.odesign,
+   * sequences.odesign
+   * 
+   * @param toMove
+   *          the end to move
+   * @param previousEnd
+   *          the previous end.
    * @return the moved end.
    */
   public static EObject moveEndOnScenario(final InteractionFragment toMove, final InteractionFragment previousEnd) {
@@ -515,28 +537,30 @@ public class ScenarioExt {
     }
 
     /*
-     * First of all: move the messageEnd to the end of the list if apply. if not, just add the messageEnd at the end of the list
+     * First of all: move the messageEnd to the end of the list if apply. if not, just add the messageEnd at the end of
+     * the list
      */
     if (ownedAbstractEnds != null && ownedAbstractEnds.contains(toMove)) {
       ownedAbstractEnds.move(ownedAbstractEnds.size() - 1, toMove);
-    } else if(ownedAbstractEnds != null) {
+    } else if (ownedAbstractEnds != null) {
       ownedAbstractEnds.add(toMove);
     }
 
     /*
      * Compute the new index and move !
      */
-    if(ownedAbstractEnds != null) {
-    	int newIndex = ownedAbstractEnds.indexOf(previousEnd) + 1;
-    	if (newIndex >= ownedAbstractEnds.size()) {
-    		newIndex = ownedAbstractEnds.size() - 1;
-    	}
-    	ownedAbstractEnds.move(newIndex, toMove);    	
+    if (ownedAbstractEnds != null) {
+      int newIndex = ownedAbstractEnds.indexOf(previousEnd) + 1;
+      if (newIndex >= ownedAbstractEnds.size()) {
+        newIndex = ownedAbstractEnds.size() - 1;
+      }
+      ownedAbstractEnds.move(newIndex, toMove);
     }
     return toMove;
   }
 
-  public static EObject moveInteractionFragmentAfter(InteractionFragment element, InteractionFragment elementReference) {
+  public static EObject moveInteractionFragmentAfter(InteractionFragment element,
+      InteractionFragment elementReference) {
     if (elementReference == null) {
       return moveEndOnBeginingOfScenario(element);
     }
@@ -549,8 +573,8 @@ public class ScenarioExt {
    * @param messageKind
    * @return
    */
-  public static List<CapellaElement> getAvailableExchangeItemsBetweenInstances(AbstractInstance sendingInstance, AbstractInstance receivingInstance,
-      MessageKind messageKind) {
+  public static List<CapellaElement> getAvailableExchangeItemsBetweenInstances(AbstractInstance sendingInstance,
+      AbstractInstance receivingInstance, MessageKind messageKind) {
     ExchangeItem involvedExchangeItem = null;
     if (sendingInstance instanceof ExchangeItemInstance) {
       involvedExchangeItem = (ExchangeItem) sendingInstance.getAbstractType();
@@ -562,8 +586,10 @@ public class ScenarioExt {
     BlockArchitecture architecture = ComponentExt.getRootBlockArchitecture(sendingInstance);
     List<CapellaElement> result = new ArrayList<>();
 
-    boolean isSharedDataAccess = (sendingInstance instanceof ExchangeItemInstance) || (receivingInstance instanceof ExchangeItemInstance);
-    Collection<ExchangeItem> items = QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_ALL_EXCHANGE_ITEMS_FOR_LIB, architecture, new QueryContext());
+    boolean isSharedDataAccess = (sendingInstance instanceof ExchangeItemInstance)
+        || (receivingInstance instanceof ExchangeItemInstance);
+    Collection<ExchangeItem> items = QueryInterpretor
+        .executeQuery(QueryIdentifierConstants.GET_ALL_EXCHANGE_ITEMS_FOR_LIB, architecture, new QueryContext());
     for (ExchangeItem item : items) {
       if (isSharedDataAccess) {
         if (item == involvedExchangeItem) {
@@ -571,11 +597,12 @@ public class ScenarioExt {
           result.addAll(ExchangeItemExt.getRelatedExchangeItemAllocations(item));
         }
       } else {
-        if ((messageKind == MessageKind.SYNCHRONOUS_CALL)
-            && ((item.getExchangeMechanism() == ExchangeMechanism.FLOW) || (item.getExchangeMechanism() == ExchangeMechanism.OPERATION))) {
+        if ((messageKind == MessageKind.SYNCHRONOUS_CALL) && ((item.getExchangeMechanism() == ExchangeMechanism.FLOW)
+            || (item.getExchangeMechanism() == ExchangeMechanism.OPERATION))) {
           result.add(item);
           result.addAll(ExchangeItemExt.getRelatedExchangeItemAllocations(item));
-        } else if ((messageKind == MessageKind.ASYNCHRONOUS_CALL) && (item.getExchangeMechanism() != ExchangeMechanism.UNSET)) {
+        } else if ((messageKind == MessageKind.ASYNCHRONOUS_CALL)
+            && (item.getExchangeMechanism() != ExchangeMechanism.UNSET)) {
           result.add(item);
           result.addAll(ExchangeItemExt.getRelatedExchangeItemAllocations(item));
         } else if ((messageKind == MessageKind.DELETE) || (messageKind == MessageKind.CREATE)) {
@@ -592,9 +619,9 @@ public class ScenarioExt {
     MessageEnd end = message.getReceivingEnd();
     List<Execution> allocations = (List) EObjectExt.getReferencers(end, InteractionPackage.Literals.TIME_LAPSE__START);
     for (Execution obj : allocations) {
-       if (obj.getFinish() instanceof MessageEnd) {
-         return ((MessageEnd) obj.getFinish()).getMessage();
-       }
+      if (obj.getFinish() instanceof MessageEnd) {
+        return ((MessageEnd) obj.getFinish()).getMessage();
+      }
     }
     return null;
   }
@@ -602,13 +629,15 @@ public class ScenarioExt {
   public static boolean hasReply(SequenceMessage message) {
     return getReply(message) != null;
   }
-  
+
   /**
    * Resolves ExchangeItemAllocatons using CommunicationLinks.
+   * 
    * @param message_p
    * @return
    */
-  public static List<CapellaElement> getRestrictedExchangeItems(InstanceRole source, InstanceRole target, boolean isSynchronous) {
+  public static List<CapellaElement> getRestrictedExchangeItems(InstanceRole source, InstanceRole target,
+      boolean isSynchronous) {
     List<CapellaElement> result = new ArrayList<>();
 
     // Gets the client and the provider of the sequence message
@@ -672,8 +701,8 @@ public class ScenarioExt {
 
     if (client != null) {
       for (CommunicationLink cl : CommunicationLinkExt.getAllCommunicationLinks(client)) {
-        if ((cl.getKind() == CommunicationLinkKind.CALL) || (cl.getKind() == CommunicationLinkKind.PRODUCE) || (cl.getKind() == CommunicationLinkKind.SEND)
-            || (cl.getKind() == CommunicationLinkKind.WRITE)) {
+        if ((cl.getKind() == CommunicationLinkKind.CALL) || (cl.getKind() == CommunicationLinkKind.PRODUCE)
+            || (cl.getKind() == CommunicationLinkKind.SEND) || (cl.getKind() == CommunicationLinkKind.WRITE)) {
           if (potentialEI.contains(cl.getExchangeItem())) {
             CommunicationLinkProtocol protocol = cl.getProtocol();
             if (cl.getKind() == CommunicationLinkKind.CALL) {
@@ -699,7 +728,8 @@ public class ScenarioExt {
         if (abstractExchangeItem == eiClient) {
           result.add((CapellaElement) eiClient);
           // communication pattern : on rajoute les EIA qui pointent vers cet EI
-          List<EObject> eiaPotentials = EObjectExt.getReferencers(abstractExchangeItem, CsPackage.Literals.EXCHANGE_ITEM_ALLOCATION__ALLOCATED_ITEM);
+          List<EObject> eiaPotentials = EObjectExt.getReferencers(abstractExchangeItem,
+              CsPackage.Literals.EXCHANGE_ITEM_ALLOCATION__ALLOCATED_ITEM);
           for (EObject eObject : eiaPotentials) {
             if (eObject instanceof ExchangeItemAllocation) {
               ExchangeItemAllocation eia = (ExchangeItemAllocation) eObject;
@@ -715,6 +745,7 @@ public class ScenarioExt {
 
   /**
    * Returns whether the scenario is a Functional Scenario (ie involves Functions)
+   * 
    * @param scenario
    * @return
    */
@@ -728,7 +759,9 @@ public class ScenarioExt {
   }
 
   /**
-   * Returns whether the scenario is a Data Flow behavioural Scenario (ie a DataFlow or Interaction scenario with messages use ComponentExchanges)
+   * Returns whether the scenario is a Data Flow behavioural Scenario (ie a DataFlow or Interaction scenario with
+   * messages use ComponentExchanges)
+   * 
    * @param scenario
    * @return
    */
@@ -744,7 +777,9 @@ public class ScenarioExt {
   }
 
   /**
-   * Returns whether the scenario is a Data Flow behavioural Scenario (ie a DataFlow or Interaction scenario with messages use FunctionalExchanges)
+   * Returns whether the scenario is a Data Flow behavioural Scenario (ie a DataFlow or Interaction scenario with
+   * messages use FunctionalExchanges)
+   * 
    * @param scenario
    * @return
    */
@@ -789,6 +824,7 @@ public class ScenarioExt {
 
   /**
    * Returns whether scenario can realize the given scenario2
+   * 
    * @param scenario
    * @param eobject
    * @return
@@ -807,8 +843,8 @@ public class ScenarioExt {
       BlockArchitecture targetArchitecture = BlockArchitectureExt.getRootBlockArchitecture(scenario2);
 
       if (((sourceArchitecture == null) || sourceArchitecture.equals(targetArchitecture))) {
-        return ScenarioKind.DATA_FLOW.equals(sourceKind)
-               || (ScenarioKind.INTERACTION.equals(sourceKind) && (isFunctionalScenario(scenario2) || (scenario2.getOwnedInstanceRoles().isEmpty())));
+        return ScenarioKind.DATA_FLOW.equals(sourceKind) || (ScenarioKind.INTERACTION.equals(sourceKind)
+            && (isFunctionalScenario(scenario2) || (scenario2.getOwnedInstanceRoles().isEmpty())));
       }
 
       return true;
@@ -820,16 +856,21 @@ public class ScenarioExt {
       return ScenarioKind.DATA_FLOW.equals(targetKind);
 
     } else if (ScenarioKind.FUNCTIONAL.equals(sourceKind)) {
-      return ScenarioKind.INTERACTION.equals(targetKind) && (isFunctionalScenario(scenario2) || (scenario2.getOwnedInstanceRoles().isEmpty()));
+      return ScenarioKind.INTERACTION.equals(targetKind)
+          && (isFunctionalScenario(scenario2) || (scenario2.getOwnedInstanceRoles().isEmpty()));
     }
 
     return false;
   }
 
   /**
-   * Look for possible part for creation/update of an instanceROle in a scenario exchange. Retrieves System in the logical architecture level
-   * @param any current object from the current scenario
-   * @param filter the parts we don't want to see.
+   * Look for possible part for creation/update of an instanceROle in a scenario exchange. Retrieves System in the
+   * logical architecture level
+   * 
+   * @param any
+   *          current object from the current scenario
+   * @param filter
+   *          the parts we don't want to see.
    * @return the owned part of the first ownerComponent or rootComponent
    */
   public static Collection<Part> getAllAvailablePartsIncludingSystem(final EObject any, final Collection<Part> filter) {
@@ -868,8 +909,11 @@ public class ScenarioExt {
 
   /**
    * Look for possible part for creation/update of an instanceROle in a scenario
-   * @param any current object from the current scenario
-   * @param filter the parts we don't want to see.
+   * 
+   * @param any
+   *          current object from the current scenario
+   * @param filter
+   *          the parts we don't want to see.
    * @return the owned part of the first ownerComponent or rootComponent
    */
   public static Collection<Part> getAllAvailableParts(final EObject any, final Collection<Part> filter) {
@@ -900,9 +944,12 @@ public class ScenarioExt {
   }
 
   /**
-   * @param result owned part of rootComponent
-   * @param rootComponent component
-   * @param filter the parts we don't want to see.
+   * @param result
+   *          owned part of rootComponent
+   * @param rootComponent
+   *          component
+   * @param filter
+   *          the parts we don't want to see.
    */
   private static void getAllOwnedPart(Collection<Part> result, Component rootComponent, Collection<Part> filter) {
     EList<Partition> ownedPartitions = rootComponent.getOwnedPartitions();
@@ -917,7 +964,8 @@ public class ScenarioExt {
   }
 
   public static List<AbstractActor> getAllActors(final EObject any) {
-    ModellingArchitecture architecture = (ModellingArchitecture) EcoreUtil2.getFirstContainer(any, CapellacorePackage.Literals.MODELLING_ARCHITECTURE);
+    ModellingArchitecture architecture = (ModellingArchitecture) EcoreUtil2.getFirstContainer(any,
+        CapellacorePackage.Literals.MODELLING_ARCHITECTURE);
     final List<AbstractActor> result = new LinkedList<>();
     // in the case of an epbs architecture, we must use the physical actors
     if (architecture instanceof EPBSArchitecture) {
@@ -941,12 +989,16 @@ public class ScenarioExt {
 
   /**
    * Returns all components for the architecture that owns the given object. used in oa.odesign, sequences.odesign
-   * @param any any object.
-   * @param filter the parts we don't want to see.
+   * 
+   * @param any
+   *          any object.
+   * @param filter
+   *          the parts we don't want to see.
    * @return all components for the architecture that owns the given object.
    */
   public static Collection<Part> getAllComponents(final EObject any, final Collection<Part> filter) {
-    ModellingArchitecture architecture = (ModellingArchitecture) EcoreUtil2.getFirstContainer(any, CapellacorePackage.Literals.MODELLING_ARCHITECTURE);
+    ModellingArchitecture architecture = (ModellingArchitecture) EcoreUtil2.getFirstContainer(any,
+        CapellacorePackage.Literals.MODELLING_ARCHITECTURE);
     Component rootComponent = null;
     if (architecture instanceof LogicalArchitecture) {
       rootComponent = ((LogicalArchitecture) architecture).getOwnedLogicalComponent();
@@ -962,8 +1014,8 @@ public class ScenarioExt {
 
         if (CsPackage.eINSTANCE.getPart().isInstance(next)) {
           final Part currentPart = (Part) next;
-          if (CsPackage.eINSTANCE.getComponent().isInstance(currentPart.getAbstractType()) && (!filter.contains(currentPart))
-              && (!currentPart.getAbstractType().equals(rootComponent))) {
+          if (CsPackage.eINSTANCE.getComponent().isInstance(currentPart.getAbstractType())
+              && (!filter.contains(currentPart)) && (!currentPart.getAbstractType().equals(rootComponent))) {
             result.add(currentPart);
           }
         }
@@ -1023,7 +1075,8 @@ public class ScenarioExt {
   }
 
   public static StateFragment getFragment(InteractionState state) {
-    List<TimeLapse> allocations = (List) EObjectExt.getReferencers(state, InteractionPackage.Literals.TIME_LAPSE__START);
+    List<TimeLapse> allocations = (List) EObjectExt.getReferencers(state,
+        InteractionPackage.Literals.TIME_LAPSE__START);
     if ((allocations.size() == 1) && (allocations.get(0) instanceof StateFragment)) {
       return (StateFragment) allocations.get(0);
     }
@@ -1070,7 +1123,8 @@ public class ScenarioExt {
             messagesOrdered.add(index, message);
             index++;
           }
-          if ((message.getSendingEnd() == null) && (message.getReceivingEnd() != null) && message.getReceivingEnd().equals(me)) {
+          if ((message.getSendingEnd() == null) && (message.getReceivingEnd() != null)
+              && message.getReceivingEnd().equals(me)) {
             // found message case
             // reposition the message in the list.
             messagesOrdered.remove(message);
