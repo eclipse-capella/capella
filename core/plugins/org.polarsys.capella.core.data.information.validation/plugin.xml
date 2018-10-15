@@ -62,7 +62,7 @@ You should perform another transition of the ExchangeItemElement from the lower 
                <target class="ExchangeItemElement">
                </target>
             </constraint>
-            <constraint class="org.polarsys.capella.core.data.information.validation.exchangeitem.ExchangeItemMechanismRestriction" id="TC_I_06" isEnabledByDefault="true" lang="Java" mode="Batch" name="TC_I_06 - PA ExchangeItem restriction on UNSET exchangeMechanism" severity="ERROR" statusCode="1">
+            <constraint class="org.polarsys.capella.core.data.information.validation.exchangeitem.ExchangeItemMechanismRestriction" id="TC_I_06" isEnabledByDefault="true" lang="Java" mode="Batch" name="TC_I_06 - PA ExchangeItem restriction on UNSET exchangeMechanism" severity="WARNING" statusCode="1">
                <message>
                   The {0} (ExchangeItem) must not have an UNSET Exchange Mechanism.
                </message>
