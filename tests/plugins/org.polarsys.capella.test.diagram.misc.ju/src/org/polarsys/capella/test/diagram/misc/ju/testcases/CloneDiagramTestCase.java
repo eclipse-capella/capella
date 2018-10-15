@@ -23,9 +23,11 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
+import org.polarsys.capella.test.diagram.common.ju.headless.selector.HeadlessCapellaAnalysisSelector;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.DiagramHelper;
 import org.polarsys.capella.test.framework.api.BasicTestCase;
 import org.polarsys.capella.test.framework.helpers.GuiActions;
+import org.polarsys.capella.test.framework.helpers.TestHelper;
 
 /**
  * Test the case when you select a diagram and clone it .
@@ -40,7 +42,15 @@ public class CloneDiagramTestCase extends BasicTestCase {
   public List<String> getRequiredTestModels() {
     return Arrays.asList(projectName);
   }
-
+  
+  @Override
+  protected void setUp() throws Exception {
+    super.setUp();
+    // The headless analysis selector should be initialized since the clone action can ask to select analysis
+    HeadlessCapellaAnalysisSelector.INSTANCE
+        .setSelectedURI(TestHelper.getAirdResource(getSession(projectName)).getURI());
+  }
+  
   @Override
   public void test() throws Exception {
     Session session = getSession(projectName);
