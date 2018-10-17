@@ -27,12 +27,8 @@ H1 {
 	LINE-HEIGHT: normal;
 	PADDING-TOP: 2px;
 	BORDER-BOTTOM: #336699 1px solid;
-	/* TEXT-TRANSFORM: lowercase; */
 }
 
-/* H1:FIRST-LETTER {
-	TEXT-TRANSFORM: capitalize;
-} */
 
 H2 {
 	PADDING-RIGHT: 2px;
@@ -44,12 +40,8 @@ H2 {
 	COLOR: #5DBFD4;
 	LINE-HEIGHT: normal;
 	PADDING-TOP: 2px;
-	TEXT-TRANSFORM: lowercase;
 }
 
-H2:FIRST-LETTER {
-	TEXT-TRANSFORM: capitalize;
-}
 
 H3 {
 	PADDING-RIGHT: 2px;
@@ -61,22 +53,87 @@ H3 {
 	COLOR: #5491A0;
 	LINE-HEIGHT: normal;
 	PADDING-TOP: 2px;
-	TEXT-TRANSFORM: lowercase;
 }
 
-H3:FIRST-LETTER {
-	TEXT-TRANSFORM: capitalize;
+
+table {
+	border: 2px solid #5491A0;
+	background-color: #EBF4FA;
+	border-spacing : 0;
+	border-collapse : collapse;
 }
 
-TABLE {
-	BORDER: 2px solid #00000;
-	FONT-STYLE: italic;
-	BACKGROUND-COLOR: #EBF4FA;
+table td {
+	border: 1px solid #5491A0;
+	padding: 6px;
 }
 
-TABLE TD {
-	BORDER: none;
+table th {
+	border: 1px solid #5491A0;
+	background-color: #C3E3F7;
+	padding: 6px;
 }
+
+table.VALIDATION-RULE  {
+	display:block;
+}
+table.VALIDATION-RULE tbody  {
+	display:block;
+}
+
+
+.removed-item {
+	color: #CD556A;
+}
+.added-item {
+	color: #57A557;
+}
+
+
+
+.label-error {
+	background-color: #CD556A;
+	color: white;
+}
+
+
+.labels {
+  display: inline-block;
+  text-align:left;
+	width:70px;
+}
+
+.label {
+	TEXT-TRANSFORM: uppercase;
+	FONT-WEIGHT: bold;
+	FONT-SIZE: 8px;
+	
+	padding:2px;
+	margin-right:2px;
+}
+
+.label-error {
+	background-color: #CD556A;
+	color: white;
+}
+
+
+.label-info {
+	background-color: #3984AD;
+	color: white;
+}
+
+.label-warning {
+	background-color: #FF9400;
+	color: white;
+}
+
+.label-success {
+	background-color: #57A557;
+	color: white;
+}
+
+
 
 .VALIDATION-RULE TD {
 	PADDING: 6px;

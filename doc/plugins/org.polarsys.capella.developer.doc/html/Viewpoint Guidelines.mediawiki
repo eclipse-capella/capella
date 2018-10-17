@@ -2,6 +2,15 @@
 
 To avoid performance issues, some guidelines must be followed.
 
+== Use representation descriptor instead of representation ==
+
+When an extension needs to retrieve representations (representation targeted by an element, representation per kind, representation that will be visible in documentation...) or need to store additional information about representations, please use their '''representation descriptors''' as much as possible instead of using/storing it in the representation.
+
+Indeed, in a Team for Capella context, a representation is not loaded until it is accessed through descriptor.getRepresentation() (which is the case when the user opens a representation), only its descriptor is.
+Descriptor may contains the required information that fulfill your needs about representations without have to load the content of the representation and can also be used to store information about it.
+
+Please also refer to Capella Release Notes.
+
 == Diagram extensions ==
 
 === Expressions in .odesigns ===
@@ -10,7 +19,7 @@ For performance reasons, when writing expressions in .odesigns it is recommended
 <li>Use Java services,</li>
 <li>Use AQL expressions,</li>
 <li>Not use Acceleo 2 expressions (Acceleo 2 is deprecated).</li>
-</ul> 
+</ul>
 
 === Semantic Candidate Expression ===
 This expression called at each diagram refresh should be the most efficient possible. It can be computed based on the displayed graphical elements using the variable *diagram*. When 'Import Mapping' are used, please ensure that semantic candidate expression has been updated accordingly to the semantic candidate expression of the imported mapping
