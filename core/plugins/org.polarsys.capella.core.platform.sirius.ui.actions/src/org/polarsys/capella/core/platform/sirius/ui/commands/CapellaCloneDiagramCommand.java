@@ -247,8 +247,7 @@ public class CapellaCloneDiagramCommand extends AbstractCommand {
   public void undo() {
     // Delete all cloned representations.
     for (DRepresentationDescriptor descriptor : _clones) {
-      Session session = SessionManager.INSTANCE
-          .getSession(((DSemanticDecorator) descriptor.getRepresentation()).getTarget());
+      Session session = SessionManager.INSTANCE.getSession(descriptor.getTarget());
       DialectManager.INSTANCE.deleteRepresentation(descriptor, session);
     }
     // Clean clones collection.
