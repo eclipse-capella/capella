@@ -53,6 +53,7 @@ import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
 import org.polarsys.capella.common.data.activity.InputPin;
 import org.polarsys.capella.common.data.activity.OutputPin;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
+import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.SemanticEditingDomain;
 import org.polarsys.capella.core.data.capellacommon.AbstractState;
 import org.polarsys.capella.core.data.capellacommon.FinalState;
@@ -60,7 +61,6 @@ import org.polarsys.capella.core.data.capellacommon.Mode;
 import org.polarsys.capella.core.data.capellacommon.State;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
-import org.polarsys.capella.core.data.cs.ComponentArchitecture;
 import org.polarsys.capella.core.data.cs.Interface;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.cs.PhysicalLink;
@@ -81,7 +81,6 @@ import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.CapellaElementExt;
-import org.polarsys.capella.core.model.helpers.ComponentArchitectureExt;
 import org.polarsys.capella.core.model.helpers.ComponentExchangeExt;
 import org.polarsys.capella.vp.ms.BooleanOperation;
 import org.polarsys.capella.vp.ms.CSConfiguration;
@@ -549,11 +548,8 @@ public class CsConfigurationServices {
     Collection<CSConfiguration> result = new ArrayList<CSConfiguration>();
     EObject target = decorator.getTarget();
     BlockArchitecture ba = BlockArchitectureExt.getRootBlockArchitecture(target);
-    if (ba instanceof ComponentArchitecture) {
-      ComponentArchitecture ca = (ComponentArchitecture) ba;
-      for (Component c : ComponentArchitectureExt.getComponentsFromComponentArchitecture(ca)) { 
-        result.addAll(getOwnedConfigurations(c));
-      }
+    if (ba != null) {
+      result.addAll((Collection<? extends CSConfiguration>) EObjectExt.getAll(ba,MsPackage.Literals.CS_CONFIGURATION));
     }
     return result;
   }
