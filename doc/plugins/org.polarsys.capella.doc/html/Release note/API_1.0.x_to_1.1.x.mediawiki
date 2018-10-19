@@ -1,6 +1,4 @@
-= API changes =
-
-== From Capella 1.0.x to 1.1.x ==
+= API changes from Capella 1.0.x to 1.1.x =
 
 === Migration to 1.1.x implies ===
 
