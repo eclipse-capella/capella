@@ -1,0 +1,195 @@
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>15_Navigation Menu</title>
+		<link type="text/css" rel="stylesheet" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css"/>
+	</head>
+	<body>
+		<h1 id="Navigation_Menu">Navigation Menu</h1>
+		<p>The navigation menu consists of several useful menu items that enables navigating an element between different views. For instance, from a selected graphical element on the diagram editor, users can navigate easily to its associated semantic element on the Capella Project Explorer. </p>
+		<p>The navigation menu is available for most of the views. However, based on the type of selected element and the active view, the menu can display with different items. </p>
+		<table class="wikitable">
+			<tr>
+				<td>Select a 
+					<b>Capella element</b> on the 
+					<b>Capella Project Explorer</b> view
+				</td>
+				<td>Select a 
+					<b>graphical element</b> on a scenario 
+					<b>diagram editor</b>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div class="thumb">
+						<div class="thumbinner" style="width:552px;">
+							<a href="../../Images/Tips81.png" class="image">
+								<img class="thumbimage" width="550" border="0" src="../../Images/Tips81.png"/>
+							</a>
+						</div>
+					</div>
+				</td>
+				<td>
+					<div class="thumb">
+						<div class="thumbinner" style="width:552px;">
+							<a href="../../Images/Tips82.png" class="image">
+								<img class="thumbimage" width="550" border="0" src="../../Images/Tips82.png"/>
+							</a>
+						</div>
+					</div>
+				</td>
+			</tr>
+		</table>
+		<h2 id="Menu_items">Menu items</h2>
+		<table class="wikitable">
+			<tr>
+				<td>Icon</td>
+				<td>Label</td>
+				<td>Shortcut</td>
+				<td>Action</td>
+			</tr>
+			<tr>
+				<td>
+					<img border="0" src="../../Images/IconShowInExplorer.png"/>
+				</td>
+				<td>
+					<i>Show in Capella Explorer</i>
+				</td>
+				<td>
+					<b>F8</b>
+				</td>
+				<td>
+					<ul>
+						<li>Open the 
+							<b>Project Explorer</b> view if not already opened and highlight the selected element in the explorer's tree.
+						</li>
+						<li>It's possible to select 
+							<b>many</b> elements.
+						</li>
+					</ul>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<img border="0" src="../../Images/IconSemanticBrowser.png"/>
+				</td>
+				<td>
+					<i>Show in Semantic Browser</i>
+				</td>
+				<td>
+					<b>F9</b>
+				</td>
+				<td>Open the 
+					<b>Semantic Browser</b> view if not already opened and refresh the view based on the selected element.
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<img border="0" src="../../Images/IconShowInExplorer.png"/>
+				</td>
+				<td>
+					<i>Show Related Element(s) in Capella Explorer</i>
+				</td>
+				<td>
+					<b>F7</b>
+				</td>
+				<td>
+					<ul>
+						<li>A sub-menu action is created for each related element.</li>
+						<li>If no related element found, the menu is not visible.</li>
+						<li>It's possible to select 
+							<b>many</b> elements.
+						</li>
+						<li>Click on each sub-menu action will opens the 
+							<b>Project Explorer</b> view if not already opened and highlights that related element in the explorer's tree.
+						</li>
+						<li>Shortcut 
+							<b>F7</b> highlights all related elements in the explorer's tree.
+						</li>
+					</ul>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<img border="0" src="../../Images/IconShowInDiagram.gif"/>
+				</td>
+				<td>
+					<i>Show in Diagram Editor</i>
+				</td>
+				<td>
+					<b>F10</b>
+				</td>
+				<td>If there is an 
+					<b>active diagram editor</b> and a graphical element on that diagram representing the selected element, highlight that graphical element.
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<img border="0" src="../../Images/IconImpactAnalysis.gif"/>
+				</td>
+				<td>
+					<i>Show Impact Analysis...</i>
+				</td>
+				<td></td>
+				<td>Show the 
+					<b>Impact Analysis</b> dialog for the selected element.
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<img border="0" src="../../Images/IconFastLinker.gif"/>
+				</td>
+				<td>
+					<i>Send to Fast Linker View</i>
+				</td>
+				<td>
+					<b>F6</b>
+				</td>
+				<td>If the selected element is valid, send that element to the view 
+					<b>Fast Linker</b>.
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<img border="0" src="../../Images/IconMassEdit.gif"/>
+				</td>
+				<td>
+					<i>Send to Mass Editing View</i>
+				</td>
+				<td></td>
+				<td>
+					<ul>
+						<li>Send selected element(s) to a new 
+							<b>Mass Editing</b> view or an existing one.
+						</li>
+						<li>It's possible to select 
+							<b>many</b> elements.
+						</li>
+						<li>If send to an existing view, it will aggregate new element(s) with exiting element(s) in the view.</li>
+					</ul>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<img border="0" src="../../Images/IconMassVisu.gif"/>
+				</td>
+				<td>
+					<i>Send to Mass Visualization View</i>
+				</td>
+				<td></td>
+				<td>
+					<ul>
+						<li>Send selected element(s) to a new 
+							<b>Mass Visualization </b> view or an existing one.
+						</li>
+						<li>It's possible to select 
+							<b>many</b> elements.
+						</li>
+						<li>If send to an existing view, it will aggregate new element(s) with exiting element(s) in the view.</li>
+					</ul>
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>

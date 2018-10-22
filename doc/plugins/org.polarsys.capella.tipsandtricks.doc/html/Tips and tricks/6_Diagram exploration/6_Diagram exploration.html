@@ -1,1 +1,225 @@
-<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>6_Diagram exploration</title><link type="text/css" rel="stylesheet" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css"/></head><body><h1 id="Diagram_Exploration">Diagram Exploration</h1><h2 id="Find_an_element_in_a_diagram">Find an element in a diagram</h2><p>The <b><i>Ctrl+o</i></b> command enables to display for a dedicated diagram, in an independent window (as following), every diagram elements.</p><p><img border="0" src="../../Images/Tips8.png"/></p><h2 id="View_switching">View switching</h2><p>Shortcuts are available to navigate between views:</p><ul><li><b>F8</b>: opens the explorer and highlights the diagram selected element or the semantic browser selected element in the ''<b>Project Explorer</b>.''</li></ul><p><img border="0" src="../../Images/Tips17.png"/></p><ul><li><b>Go To</b>: opens the explorer and highlights the element you chose in the <b><i>Project Explorer</i></b>.</li></ul><p><img border="0" src="../../Images/Tips18.png"/></p><h2 id="In_the_outline_view">In the outline view</h2><p>When the diagram is dense, the <b><i>Outline View</i></b> enables to navigate in the diagram per diagram area. </p><p><img border="0" src="../../Images/Tips19.png"/></p><h2 id="With_the_computer_mouse">With the computer mouse</h2><p>Directly in diagrams, it is possible to go through large diagrams and move in all directions (horizontally and vertically) thanks to the following commands:</p><ul><li>Space + Mouse left click </li><li>Mouse wheel click "Middle click"</li></ul><p><div class="thumb"><div class="thumbinner" style="width:702px;"><a href="../../Images/Tips72.png" class="image"><img class="thumbimage" width="700" border="0" src="../../Images/Tips72.png"/></a></div></div></p></body></html>
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>6_Diagram exploration</title>
+		<link type="text/css" rel="stylesheet" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css"/>
+	</head>
+	<body>
+		<h1 id="Diagram_Exploration">Diagram Exploration</h1>
+		<h2 id="Find_an_element_in_a_diagram">Find an element in a diagram</h2>
+		<p>The 
+			<b>
+				<i>Ctrl+o</i>
+			</b> command enables to display for a dedicated diagram, in an independent window (as following), every diagram elements.
+		</p>
+		<p>
+			<img border="0" src="../../Images/Tips8.png"/>
+		</p>
+		<h2 id="Diagram_outline">Diagram outline</h2>
+		<p>When the diagram is dense, the 
+			<b>
+				<i>Outline View</i>
+			</b> enables to navigate in the diagram per diagram area. 
+		</p>
+		<p>
+			<img border="0" src="../../Images/Tips19.png"/>
+		</p>
+		<h2 id="Scroll_in_a_large_diagram">Scroll in a large diagram</h2>
+		<p>If a diagram is large, it is possible to scroll easily through the diagram in all directions (both horizontally and vertically at the same time) by using on of the shortcuts below:</p>
+		<ul>
+			<li>
+				<b>Space</b> + 
+				<b>left click </b>
+			</li>
+			<li>
+				<b>Mouse wheel click</b>
+			</li>
+		</ul>
+		<p>
+			<div class="thumb">
+				<div class="thumbinner" style="width:702px;">
+					<a href="../../Images/Tips72.png" class="image">
+						<img class="thumbimage" width="700" border="0" src="../../Images/Tips72.png"/>
+					</a>
+				</div>
+			</div>
+		</p>
+		<h2 id="Selection_menu_in_diagram">Selection menu in diagram</h2>
+		<p>The new 
+			<b>Select</b> menu in diagram consists of tools for highlighting related elements to the selected element(s) on the diagram. For instance, on a SAB diagram, select a 
+			<i>function</i> and right click on the contextual menu 
+			<b>Select/Elements of Same Type</b> will select all functions on the SAB diagram.
+		</p>
+		<ul>
+			<li>Select 
+				<b>one</b> or 
+				<b>many</b> elements on the diagram and right-click to have the contextual menu.
+			</li>
+			<li>Based on those selected elements, tools will be dynamically added to the menu 
+				<b>Select</b>
+			</li>
+		</ul>
+		<p>
+			<div class="thumb">
+				<div class="thumbinner">
+					<a href="../../Images/Tips83.png" class="image">
+						<img class="thumbimage" border="0" src="../../Images/Tips83.png"/>
+					</a>
+				</div>
+			</div>
+		</p>
+		<p>The available tools are:</p>
+		<table class="wikitable">
+			<tr>
+				<td>
+					<b>Elements of Same Type</b>
+				</td>
+				<td>Select all elements on the active diagram which have the 
+					<b>same type</b> as the current selected element(s)
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<b>Resembling Elements</b>
+				</td>
+				<td>Select all elements on the active diagram which have the 
+					<b>same mapping</b> as the current selected element(s)
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<b>Owned ports</b>
+				</td>
+				<td>Select all ports on the active diagram which are owned by the current selected element(s)</td>
+			</tr>
+			<tr>
+				<td>
+					<b>Owned elements</b>
+				</td>
+				<td>Select all elements on the active diagram which are owned by the current selected element(s)</td>
+			</tr>
+			<tr>
+				<td>
+					<b>Related connections</b>
+				</td>
+				<td>Select all connections on the active diagram which are related to the current selected element(s)</td>
+			</tr>
+		</table>
+		<h2 id="Generic_connection_creation_tool">Generic connection creation tool</h2>
+		<p>A new tool called 
+			<b>Generic Connection Creation Tool</b> is added to the palette of diagram allowing create new edge more dynamically:
+		</p>
+		<ul>
+			<li>Select the tool icon 
+				<img border="0" src="../../Images/IconCreateEdgeView.gif"/> on the palette.
+			</li>
+			<li>Select a graphical element on the diagram as 
+				<b>source</b> of a new edge
+			</li>
+			<li>Select a graphical element on the diagram as 
+				<b>target</b> of a new edge
+			</li>
+			<li>According to the selected source and target, a list of possible types of edge will be proposed as a contextual menu. </li>
+		</ul>
+		<p>
+			<div class="thumb">
+				<div class="thumbinner">
+					<a href="../../Images/Tips84.png" class="image">
+						<img class="thumbimage" border="0" src="../../Images/Tips84.png"/>
+					</a>
+				</div>
+			</div>
+		</p>
+		<h2 id="Organize_diagrams_in_Project_Explorer_by_packages">Organize diagrams in Project Explorer by packages</h2>
+		<p>When the number of diagrams increases, it is necessary to organize them by packages. A package is just a label or a tag that represents why several diagrams can be grouped together.</p>
+		<p>In the view 
+			<b>Properties</b> of a diagram, it is possible to:
+		</p>
+		<ul>
+			<li>Create a new package</li>
+			<li>Add a diagram to an existing package</li>
+		</ul>
+		<p>
+			<div class="thumb">
+				<div class="thumbinner">
+					<a href="../../Images/Tips85.png" class="image">
+						<img class="thumbimage" border="0" src="../../Images/Tips85.png"/>
+					</a>
+				</div>
+			</div>
+		</p>
+		<h2 id="Visibility_Mode_-_new_Sirius_layer_to_manage_hidden_graphical_elements">Visibility Mode - new Sirius layer to manage hidden graphical elements</h2>
+		<p>The 
+			<b>Visibility Mode</b> allows to visualize all elements of the diagram: if an element is currently invisible because of an active filter or being hidden by user, it will be shown with transparency.
+		</p>
+		<p>This mode can be activated from the toolbar of diagram.</p>
+		<p>
+			<div class="thumb">
+				<div class="thumbinner">
+					<a href="../../Images/Tips86.png" class="image">
+						<img class="thumbimage" border="0" src="../../Images/Tips86.png"/>
+					</a>
+				</div>
+			</div>
+		</p>
+		<p>If the 
+			<b>Visibility Mode</b> is active, double-clicking on a graphical element will change its visibility (from visible to invisible and vice versa) without modifying semantic models:
+		</p>
+		<ul>
+			<li>If a selected diagram element is currently invisible and it is contained by an invisible element, both of them will be made visible.</li>
+			<li>If a selected diagram element is currently invisible and it contains hidden children, the element will be made visible and its children will be displayed with transparency.</li>
+			<li>If a selected diagram element is an edge, it will change the visibility of its source and target as well.</li>
+			<li>If a selected diagram element is currently invisible because of an active filter, a dialog will be prompted to ask for deactivating the filter.</li>
+			<li>If a selected diagram element is currently invisible because of an inactive layer, a dialog will be prompted to ask for activating the layer.</li>
+		</ul>
+		<table border="1">
+			<tr>
+				<td>
+					<p>
+						<img height="48" width="48" border="0" src="../../Images/InfoIcon.png"/>
+					</p>
+				</td>
+				<td>
+					<p>This 
+						<b>Visibility Mode</b> is not persisted: when a diagram is closed, the mode is automatically disabled.
+					</p>
+				</td>
+			</tr>
+		</table>
+		<h2 id="Note_as_graphical_link_toward_other_diagram">Note as graphical link toward other diagram</h2>
+		<p>The new tool 
+			<b>Representation Link</b> in the palette allows to create a graphical link toward an existing diagram. 
+		</p>
+		<ul>
+			<li>The linked diagram is represented as a node element</li>
+			<li>The content of note is synchronized with the name of linked diagram</li>
+			<li>
+				<b>Double-clicking</b> on the note will open the linked diagram
+			</li>
+		</ul>
+		<p>
+			<div class="thumb">
+				<div class="thumbinner">
+					<a href="../../Images/Tips90.png" class="image">
+						<img class="thumbimage" border="0" src="../../Images/Tips90.png"/>
+					</a>
+				</div>
+			</div>
+		</p>
+		<h2 id="Refresh_many_representations_at_once">Refresh many representations at once</h2>
+		<p>On the 
+			<b>Capella Project Explorer</b>, it is possible to refresh at once many 
+			<i>sub</i>-representations related to a selected element.
+		</p>
+		<p>
+			<div class="thumb">
+				<div class="thumbinner" style="width:482px;">
+					<a href="../../Images/Tips92.png" class="image">
+						<img class="thumbimage" width="480" border="0" src="../../Images/Tips92.png"/>
+					</a>
+				</div>
+			</div>
+		</p>
+	</body>
+</html>

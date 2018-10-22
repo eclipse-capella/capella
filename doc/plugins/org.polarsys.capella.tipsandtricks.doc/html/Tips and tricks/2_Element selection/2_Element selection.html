@@ -1,2 +1,90 @@
-<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>2_Element selection</title><link type="text/css" rel="stylesheet" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css"/></head><body><h1 id="Element_Selection">Element Selection</h1><h2 id="Automatic_Cursor_Selection_Of_Diagram_Elements">Automatic Cursor Selection Of Diagram Elements</h2><p>When a diagram displays a lot of elements (components, functions, edges...) it can be fastidious to select some of them to apply a specific styling or other.</p><p>That's why, two selection modes are available with the mouse cursor:</p><ol><li><b><i>From the left to the right: </i></b>to select the elements contained in the selection area (Figure 1). (for example if you want to select all ports of a component on the same side without selecting the exchanges or the component itself.)</li><li><b><i>From the right to the left: </i></b>to select the elements contained in the selection area <b><i>AND</i></b> also those which cross it (Figure 2). (for example if you want to select exchanges without their ports.)</li></ol><p><div class="thumb"><div class="thumbinner" style="width:802px;"><a href="../../Images/Tips1.png" class="image"><img class="thumbimage" width="800" border="0" src="../../Images/Tips1.png"/></a><div class="thumbcaption">Figure 1: Cursor selection from the left to the right</div></div></div></p><p><div class="thumb"><div class="thumbinner" style="width:802px;"><a href="../../Images/Tips2.png" class="image"><img class="thumbimage" width="800" border="0" src="../../Images/Tips2.png"/></a><div class="thumbcaption">Figure 2: Cursor selection from the right to the left</div></div></div></p><h2 id="Selection_with_ALT_.2B_Continuous_Mouse_Click">Selection with ALT + Continuous Mouse Click</h2><p>In a diagram containing multiple hierarchical components equipped with border nodes (PAB, LAB, SAB, SDFB ...), the user can select elements using continuous left mouse button click, but it's not easy to select multiple inner components without selecting the parent, even more difficult when the diagram's white background is not displayed due to a zoom.
-In that case, use Alt + continuous left mouse click to select elements without selecting the element behind the first click.</p><p>Same behavior of the mouse selection from <b>Right to Left</b> and <b>Left to Right</b> will be applied with the Alt button.</p><h2 id="Connectors_Selection">Connectors Selection</h2><p>Connectors can be selected one by one. As it can be fastidious to select all the connectors of a diagram one by one, to change the routing style or remove bend point for example, use the button <b><i>Select All Connectors</i></b> on the diagram menu instead.</p><p><img border="0" src="../../Images/TT7.png"/></p></body></html>
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>2_Element selection</title>
+		<link type="text/css" rel="stylesheet" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css"/>
+	</head>
+	<body>
+		<h1 id="Element_Selection">Element Selection</h1>
+		<h2 id="Automatic_Cursor_Selection_Of_Diagram_Elements">Automatic Cursor Selection Of Diagram Elements</h2>
+		<p>When a diagram displays a lot of elements (components, functions, edges...) it can be fastidious to select some of them to apply a specific styling or other.</p>
+		<p>That's why, two selection modes are available with the mouse cursor:</p>
+		<ol>
+			<li>
+				<b>
+					<i>From the left to the right: </i>
+				</b>to select the elements contained in the selection area (Figure 1). (for example if you want to select all ports of a component on the same side without selecting the exchanges or the component itself.)
+			</li>
+			<li>
+				<b>
+					<i>From the right to the left: </i>
+				</b>to select the elements contained in the selection area 
+				<b>
+					<i>AND</i>
+				</b> also those which cross it (Figure 2). (for example if you want to select exchanges without their ports.)
+			</li>
+		</ol>
+		<p>
+			<div class="thumb">
+				<div class="thumbinner" style="width:802px;">
+					<a href="../../Images/Tips1.png" class="image">
+						<img class="thumbimage" width="800" border="0" src="../../Images/Tips1.png"/>
+					</a>
+					<div class="thumbcaption">Figure 1: Cursor selection from the left to the right</div>
+				</div>
+			</div>
+		</p>
+		<p>
+			<div class="thumb">
+				<div class="thumbinner" style="width:802px;">
+					<a href="../../Images/Tips2.png" class="image">
+						<img class="thumbimage" width="800" border="0" src="../../Images/Tips2.png"/>
+					</a>
+					<div class="thumbcaption">Figure 2: Cursor selection from the right to the left</div>
+				</div>
+			</div>
+		</p>
+		<h2 id="Connectors_Selection">Connectors Selection</h2>
+		<p>Connectors can be selected one by one. As it can be fastidious to select all the connectors of a diagram one by one, to change the routing style or remove bend point for example, use the button 
+			<b>
+				<i>Select All Connectors</i>
+			</b> on the diagram menu instead.
+		</p>
+		<p>
+			<img border="0" src="../../Images/TT7.png"/>
+		</p>
+		<h2 id="Select_only_elements_of_container_with_ALT">Select only elements of container with ALT</h2>
+		<p>On a diagram like 
+			<i>Physical Architecture Blank - PAB</i>, a component node may contain many child-component nodes inside itself. It is difficult to select the child-components without selecting the parent-component because usually the first click will be on the parent-component's background.
+		</p>
+		<p>By combining with the 
+			<b>ALT</b> button, the selection will ignore the parent-component or more specifically the element on which the first click happened.
+		</p>
+		<p>
+			<div class="thumb">
+				<div class="thumbinner" style="width:802px;">
+					<a href="../../Images/Tips88.png" class="image">
+						<img class="thumbimage" width="800" border="0" src="../../Images/Tips88.png"/>
+					</a>
+				</div>
+			</div>
+		</p>
+		<table border="1">
+			<tr>
+				<td>
+					<p>
+						<img height="48" width="48" border="0" src="../../Images/InfoIcon.png"/>
+					</p>
+				</td>
+				<td>
+					<p>Moving mouse 
+						<b>Right to Left</b> or 
+						<b>Left to Right</b> and pushing the 
+						<b>ALT</b> button will combine the two ways of selecting.
+					</p>
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>

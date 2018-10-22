@@ -8,4 +8,25 @@ You should unsynchronize a diagram to:
 * keep a diagram display unchanged even if additional elements (ports, sub components ...) are added in the model, for documentary purpose for instance.
 * control the elements displayed without hiding unwanted ones.
 
+==Display of synchronization status for diagrams==
 
+{| class="wikitable"
+|-
+|rowspan="2"|Synchronization Status
+|Message on the bottom status bar
+|Decorator on the corner of diagram
+|-
+|
+* Select a diagram on the Capella project explorer
+|
+* Activate the preference: '''''Sirius / Sirius Diagram / Show synchronize status decorator on diagram'''''
+* Open a diagram
+|-
+|Synchronized
+|[[File:../../Images/Tips77.png|thumbnail|]]
+|[[File:../../Images/Tips79.png|thumbnail|]]
+|-
+|Unsynchronized
+|[[File:../../Images/Tips78.png|thumbnail|]]
+|[[File:../../Images/Tips80.png|thumbnail|]]
+|}
