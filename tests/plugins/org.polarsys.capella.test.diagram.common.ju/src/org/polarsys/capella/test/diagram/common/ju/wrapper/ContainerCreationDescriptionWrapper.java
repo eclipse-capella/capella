@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -26,90 +26,84 @@ import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.ArgumentType;
 
 public class ContainerCreationDescriptionWrapper extends AbstractSingleSelectionWrapper {
 
-	public ContainerCreationDescriptionWrapper(AbstractToolDescription tool, IDiagramCommandFactory commandFactory) {
-		super(tool, commandFactory);
-	}
+  public ContainerCreationDescriptionWrapper(AbstractToolDescription tool, IDiagramCommandFactory commandFactory) {
+    super(tool, commandFactory);
+  }
 
-	/**
-	 * @see org.polarsys.capella.test.common.ju.tool.AbstractCmdToolWrapper#createCommand()
-	 */
-	@Override
-	public Command createCommand() {
-		
-		Command cmd = UnexecutableCommand.INSTANCE;
-		
-		if ( isContextOk() ) {
-			ContainerCreationDescription tool = (ContainerCreationDescription) _tool;
-			
-			EObject container = (EObject) _arguments.get(ArgumentType.CONTAINER_VIEW);
-			
-			if (container instanceof DNodeContainer) {
-				cmd = _diagramCommandFactory.buildCreateContainerCommandFromTool(
-					(DNodeContainer) container,
-					tool
-				);	
-			} else {
-				cmd = _diagramCommandFactory.buildCreateContainerCommandFromTool(
-						(DDiagram) container,
-						tool
-					);
-			}
-			
-			changeCmdContext(cmd);
-		}
-		
-		return cmd;		
-	}
+  /**
+   * @see org.polarsys.capella.test.common.ju.tool.AbstractCmdToolWrapper#createCommand()
+   */
+  @Override
+  public Command createCommand() {
 
-	/**
-	 * @see org.polarsys.capella.test.common.ju.tool.AbstractCmdToolWrapper#isContextOk()
-	 */
-	@Override
-	public boolean isContextOk() {
-		
-		boolean ret = true;
-		
-		if ( !isArgumentsAreSet() ) {
-			ret = false;
-		}	
+    Command cmd = UnexecutableCommand.INSTANCE;
 
-		// Now, let's perform job
-		if (ret) {
-			
-			EObject container = (EObject) 
-				_arguments.get(ArgumentType.CONTAINER_VIEW)
-			;
-			
-			boolean shouldCreate = false;
-			ContainerCreationDescription tool = (ContainerCreationDescription) _tool; 
-			
-			if (container instanceof DDiagramElementContainer) {	
-				DDiagramElementContainer viewNodeContainer = (DDiagramElementContainer) container;
-		    	final ContainerMapping containerMapping = viewNodeContainer.getActualMapping();
-		        if (containerMapping != null) {
-		            final Iterator<ContainerMapping> it = tool.getContainerMappings().iterator();
-		            shouldCreate = false;
-		            while (it.hasNext()) {
-		                final ContainerMapping curMapping = it.next();
-		                if (containerMapping.getAllNodeMappings().contains(curMapping)) {
-		                    shouldCreate = true;
-		                    break;
-		                } else if (containerMapping.getAllContainerMappings().contains(curMapping)) {
-		                    shouldCreate = true;
-		                    break;
-		                }
-		            }   
-		        } else { // No mapping 
-		        	shouldCreate = true;
-		        }
-			} else if (container instanceof DDiagram){
-				// FIXME DDiagram case: to check, as previous case, must be done to be coherent
-				shouldCreate = true;
-			}
-			ret = shouldCreate;
-		}
-			
-		return ret;
-	}
-	
+    if (isContextOk()) {
+      ContainerCreationDescription tool = (ContainerCreationDescription) _tool;
+
+      EObject container = (EObject) _arguments.get(ArgumentType.CONTAINER_VIEW);
+
+      if (container instanceof DNodeContainer) {
+        cmd = _diagramCommandFactory.buildCreateContainerCommandFromTool((DNodeContainer) container, tool);
+      } else {
+        cmd = _diagramCommandFactory.buildCreateContainerCommandFromTool((DDiagram) container, tool);
+      }
+
+      if (!UnexecutableCommand.INSTANCE.equals(cmd)) {
+        changeCmdContext(cmd);
+      }
+    }
+
+    return cmd;
+  }
+
+  /**
+   * @see org.polarsys.capella.test.common.ju.tool.AbstractCmdToolWrapper#isContextOk()
+   */
+  @Override
+  public boolean isContextOk() {
+
+    boolean ret = true;
+
+    if (!isArgumentsAreSet()) {
+      ret = false;
+    }
+
+    // Now, let's perform job
+    if (ret) {
+
+      EObject container = (EObject) _arguments.get(ArgumentType.CONTAINER_VIEW);
+
+      boolean shouldCreate = false;
+      ContainerCreationDescription tool = (ContainerCreationDescription) _tool;
+
+      if (container instanceof DDiagramElementContainer) {
+        DDiagramElementContainer viewNodeContainer = (DDiagramElementContainer) container;
+        final ContainerMapping containerMapping = viewNodeContainer.getActualMapping();
+        if (containerMapping != null) {
+          final Iterator<ContainerMapping> it = tool.getContainerMappings().iterator();
+          shouldCreate = false;
+          while (it.hasNext()) {
+            final ContainerMapping curMapping = it.next();
+            if (containerMapping.getAllNodeMappings().contains(curMapping)) {
+              shouldCreate = true;
+              break;
+            } else if (containerMapping.getAllContainerMappings().contains(curMapping)) {
+              shouldCreate = true;
+              break;
+            }
+          }
+        } else { // No mapping
+          shouldCreate = true;
+        }
+      } else if (container instanceof DDiagram) {
+        // FIXME DDiagram case: to check, as previous case, must be done to be coherent
+        shouldCreate = true;
+      }
+      ret = shouldCreate;
+    }
+
+    return ret;
+  }
+
 }

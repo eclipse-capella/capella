@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -36,8 +36,6 @@ import org.polarsys.capella.core.data.capellacommon.FinalState;
 import org.polarsys.capella.core.data.capellacommon.Region;
 import org.polarsys.capella.core.data.capellacommon.State;
 import org.polarsys.capella.core.data.capellacommon.StateMachine;
-import org.polarsys.capella.core.data.capellacommon.impl.ModeImpl;
-import org.polarsys.capella.core.data.capellacommon.impl.StateImpl;
 import org.polarsys.capella.core.data.capellacore.ModellingArchitecture;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
@@ -71,6 +69,7 @@ import org.polarsys.capella.core.data.pa.PhysicalComponentPkg;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.CapellaElementExt;
 import org.polarsys.capella.core.model.helpers.InterfaceExt;
+import org.polarsys.capella.core.model.helpers.StateExt;
 import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
 
 /**
@@ -360,15 +359,16 @@ public class MoveHelper {
 
     if (targetElement.eContainer() != null && !(source instanceof FinalState)) {
       EObject targetContainer = targetElement.eContainer();
+      
       if (!CapellaModelPreferencesPlugin.getDefault().isMixedModeStateAllowed()) {
         boolean isSameType = true;
         // Check source/target type compatibility if target is a Mode/State
         if (targetContainer instanceof State) {
           isSameType = targetContainer.eClass() == source.eClass();
+          
         } else if (targetContainer instanceof StateMachine) {
-          isSameType = getAllModeState(((StateMachine) targetContainer).getOwnedRegions().get(0)).size() > 0 ? getAllModeState(
-              ((StateMachine) targetContainer).getOwnedRegions().get(0)).get(0).eClass() == source.eClass()
-              : true;
+          List<State> states = getAllModeState(((StateMachine) targetContainer).getOwnedRegions().get(0));
+          isSameType = !states.isEmpty() ? states.get(0).eClass() == source.eClass() : true;
         }
         // Move is allowed only when source and target are not mixed
         return isSameType && !isDownwardModeStateHierarchyMixed(source) && !isModeStateHierarchyMixed(targetContainer);
@@ -423,15 +423,16 @@ public class MoveHelper {
    * @return
    */
   public static List<State> getModeStateHierarchy(EObject container) {
-    List<State> stateModeLst = new ArrayList<State>();
+    List<State> stateModeLst = new ArrayList<>();
     if (container instanceof State) {
       // Add contained modes/states
       Iterator<EObject> iter = EcoreUtil.getAllContents(container, true);
 
       while (iter.hasNext()) {
         EObject eObj = iter.next();
-        if ((eObj.getClass() == StateImpl.class) || (eObj.getClass() == ModeImpl.class))
+        if (StateExt.isStrictModeState(eObj)) { 
           stateModeLst.add((State) eObj);
+        }
       }
 
       // Add itself
@@ -443,14 +444,16 @@ public class MoveHelper {
         stateModeLst.add((State) parentState);
         parentState = EcoreUtil2.getFirstContainer(parentState, CapellacommonPackage.eINSTANCE.getState());
       }
+      
     } else if (container instanceof StateMachine) {
       // Add contained modes/states only
       Iterator<EObject> iter = EcoreUtil.getAllContents(container, true);
 
       while (iter.hasNext()) {
         EObject eObj = iter.next();
-        if ((eObj.getClass() == StateImpl.class) || (eObj.getClass() == ModeImpl.class))
+        if (StateExt.isStrictModeState(eObj)) {
           stateModeLst.add((State) eObj);
+        }
       }
     }
     return stateModeLst;
@@ -463,14 +466,15 @@ public class MoveHelper {
    * @return
    */
   public static List<State> getDownwardModeStateHierarchy(State state) {
-    List<State> stateModeLst = new ArrayList<State>();
+    List<State> stateModeLst = new ArrayList<>();
     // Add contained modes/states
     Iterator<EObject> iter = EcoreUtil.getAllContents(state, true);
 
     while (iter.hasNext()) {
       EObject eObj = iter.next();
-      if ((eObj.getClass() == StateImpl.class) || (eObj.getClass() == ModeImpl.class))
+      if (StateExt.isStrictModeState(eObj)) {
         stateModeLst.add((State) eObj);
+      }
     }
 
     // Add itself
@@ -485,14 +489,15 @@ public class MoveHelper {
    * @return list of Modes/States
    */
   public static List<State> getAllModeState(Region region) {
-    List<State> stateModeLst = new ArrayList<State>();
+    List<State> stateModeLst = new ArrayList<>();
     // Add contained modes/states only
     Iterator<EObject> iter = EcoreUtil.getAllContents(region, true);
 
     while (iter.hasNext()) {
       EObject eObj = iter.next();
-      if ((eObj.getClass() == StateImpl.class) || (eObj.getClass() == ModeImpl.class))
+      if (StateExt.isStrictModeState(eObj)) {
         stateModeLst.add((State) eObj);
+      }
     }
 
     return stateModeLst;
