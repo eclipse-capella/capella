@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -43,12 +43,12 @@ import org.polarsys.capella.core.ui.properties.providers.CapellaTransfertViewerL
  */
 public class SelectElementsFromTransferWizard extends AbstractExternalJavaAction {
 
-  @SuppressWarnings({ "unchecked", "rawtypes" })
+  @SuppressWarnings({ "unchecked" })
   public void execute(Collection<? extends EObject> selections, Map<String, Object> parameters) {
 
     EObject context = (EObject) parameters.get(CONTEXT);
-    List<EObject> scope = (List) parameters.get(SCOPE);
-    List<EObject> initialSelection = (List) parameters.get(INITIAL_SELECTION);
+    Collection<EObject> scope = (Collection<EObject>) parameters.get(SCOPE);
+    Collection<EObject> initialSelection = (Collection<EObject>) parameters.get(INITIAL_SELECTION);
     String wizardMessage = (String) parameters.get(WIZARD_MESSAGE);
     String resultVariable = (String) parameters.get(RESULT_VARIABLE);
 
@@ -62,6 +62,7 @@ public class SelectElementsFromTransferWizard extends AbstractExternalJavaAction
     if (null == initialSelection) {
       initialSelection = Collections.emptyList();
     }
+
     // Create a transfer dialog.
     TransferTreeListDialog dialog;
     boolean expandLeftViewer = CapellaUIPropertiesPlugin.getDefault().isAllowedExpandLeftViewerContent();
@@ -69,22 +70,25 @@ public class SelectElementsFromTransferWizard extends AbstractExternalJavaAction
     int leftViewerExpandLevel = expandLeftViewer ? AbstractTreeViewer.ALL_LEVELS : 0;
     int rightViewerExpandLevel = expandRightViewer ? AbstractTreeViewer.ALL_LEVELS : 0;
 
-    if ((scope.size() != 0) && (scope.get(0) instanceof InstanceRole)) {
+    if (!scope.isEmpty() && (scope.iterator().next() instanceof InstanceRole)) {
       dialog = new TransferTreeListDialog(getShell(), Messages.SelectElementFromListWizard_Title, wizardMessage,
-        new IRDataLabelProvider(TransactionHelper.getEditingDomain(scope)),
-        new IRDataLabelProvider(TransactionHelper.getEditingDomain(scope)), leftViewerExpandLevel, rightViewerExpandLevel);
+          new IRDataLabelProvider(TransactionHelper.getEditingDomain(scope)),
+          new IRDataLabelProvider(TransactionHelper.getEditingDomain(scope)), leftViewerExpandLevel,
+          rightViewerExpandLevel);
     } else {
       dialog = new TransferTreeListDialog(getShell(), Messages.SelectElementFromListWizard_Title, wizardMessage,
-        getCustoLabelProvider(),
-        getCustoLabelProvider(), leftViewerExpandLevel, rightViewerExpandLevel);
+          getCustoLabelProvider(), getCustoLabelProvider(), leftViewerExpandLevel, rightViewerExpandLevel);
     }
 
     // Create the list of available elements.
-    List<EObject> availableElements = new ArrayList<EObject>(scope);
+    List<EObject> availableElements = new ArrayList<>(scope);
     // Remove from available elements already selected elements.
     availableElements.removeAll(initialSelection);
+
     // Handle transfer dialog inputs.
-    handleTransferDialogInputs(initialSelection, dialog, availableElements, handleContext(context));
+    List<EObject> initialTransferDialogSelection = new ArrayList<>(initialSelection);
+    handleTransferDialogInputs(initialTransferDialogSelection, dialog, availableElements, handleContext(context));
+
     // I can't think of a better way to handle the cancel case since Acceleo does not
     // distinguish the null value from an empty collection
     Object result = (Window.OK == dialog.open()) ? Arrays.asList(dialog.getResult()) : WIZARD_CANCELED;
@@ -94,6 +98,7 @@ public class SelectElementsFromTransferWizard extends AbstractExternalJavaAction
   /**
    * Handle specified context.<br>
    * Default implementation returns <code>null</code>.
+   * 
    * @param context
    * @return can be <code>null</code>.
    */
@@ -103,13 +108,14 @@ public class SelectElementsFromTransferWizard extends AbstractExternalJavaAction
 
   /**
    * Handle transfer dialog inputs (i.e left and right viewers inputs).
+   * 
    * @param initialSelection
    * @param dialog
    * @param availableElements
    * @param context
    */
-  protected void handleTransferDialogInputs(List<EObject> initialSelection, TransferTreeListDialog dialog, List<EObject> availableElements,
-      Object context) {
+  protected void handleTransferDialogInputs(List<EObject> initialSelection, TransferTreeListDialog dialog,
+      List<EObject> availableElements, Object context) {
     dialog.setLeftInput(availableElements, context);
     dialog.setRightInput(initialSelection, context);
   }
