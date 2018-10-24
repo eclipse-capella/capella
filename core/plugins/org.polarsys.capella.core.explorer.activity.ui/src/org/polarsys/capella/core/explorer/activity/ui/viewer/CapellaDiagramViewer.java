@@ -17,8 +17,6 @@ import org.eclipse.amalgam.explorer.activity.ui.api.editor.pages.helper.Selectio
 import org.eclipse.amalgam.explorer.activity.ui.api.editor.pages.viewers.DiagramViewer;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.action.IAction;
-import org.eclipse.jface.action.IMenuListener2;
-import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.viewers.DoubleClickEvent;
@@ -43,7 +41,7 @@ import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.CapellaNavigatorPlugin;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.CloneAction;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.LocateInCapellaExplorerAction;
-import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.move.representation.MoveRepresentationAction;
+import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.move.representation.MoveRepresentationMenuManager;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.viewer.CapellaNavigatorLabelProvider;
 import org.polarsys.capella.core.sirius.ui.actions.DeleteRepresentationAction;
 import org.polarsys.capella.core.sirius.ui.actions.OpenRepresentationsAction;
@@ -52,7 +50,7 @@ import org.polarsys.capella.core.sirius.ui.actions.RenameRepresentationAction;
 public class CapellaDiagramViewer extends DiagramViewer {
 
   private static final String GROUP_MOVE = "Move"; //$NON-NLS-1$
-  private MoveRepresentationAction moveDiagramAction;
+  private MoveRepresentationMenuManager moveRepresentationMenu;
   private OpenRepresentationsAction openRepresentation;
   private RenameRepresentationAction renameRepresentationAction;
   private BaseSelectionListenerAction showInCapellaExplorerAction;
@@ -88,27 +86,6 @@ public class CapellaDiagramViewer extends DiagramViewer {
     declareViewerActions(contextMenuManager, treeViewer);
     Menu contextMenu = contextMenuManager.createContextMenu(control);
     control.setMenu(contextMenu);
-
-    contextMenuManager.addMenuListener(new IMenuListener2() {
-      /**
-       * {@inheritDoc}
-       */
-      @SuppressWarnings("synthetic-access")
-      public void menuAboutToHide(IMenuManager manager) {
-        manager.remove(MoveRepresentationAction.MOVE_DIAGRAMS_MENU_ID);
-        // Make sure action contained list are freed at each selection
-        // time.
-        moveDiagramAction.dispose();
-      }
-
-      /**
-       * {@inheritDoc}
-       */
-      @SuppressWarnings("synthetic-access")
-      public void menuAboutToShow(IMenuManager manager) {
-        manager.appendToGroup(GROUP_MOVE, moveDiagramAction.fillContextMenu((IStructuredSelection) treeViewer.getSelection()));
-      }
-    });
 
     return contextMenuManager;
   }
@@ -177,8 +154,10 @@ public class CapellaDiagramViewer extends DiagramViewer {
     contextMenuManager.add(deleteRepresentationAction);
 
     contextMenuManager.add(new Separator(GROUP_MOVE));
-    moveDiagramAction = new MoveRepresentationAction();
-    SelectionHelper.registerToSelectionChanges(moveDiagramAction, selectionProvider);
+    moveRepresentationMenu = new MoveRepresentationMenuManager();
+    SelectionHelper.registerToSelectionChanges(moveRepresentationMenu, selectionProvider);
+    contextMenuManager.appendToGroup(GROUP_MOVE, moveRepresentationMenu);
+    
     renameRepresentationAction = new RenameRepresentationAction() {
 
       @Override
@@ -219,10 +198,10 @@ public class CapellaDiagramViewer extends DiagramViewer {
       selectionProvider.removeSelectionChangedListener(openRepresentation);
       openRepresentation = null;
     }
-    if (null != moveDiagramAction) {
-      selectionProvider.removeSelectionChangedListener(moveDiagramAction);
-      moveDiagramAction.dispose();
-      moveDiagramAction = null;
+    if (null != moveRepresentationMenu) {
+      selectionProvider.removeSelectionChangedListener(moveRepresentationMenu);
+      moveRepresentationMenu.dispose();
+      moveRepresentationMenu = null;
     }
     if (null != cloneAction) {
       selectionProvider.removeSelectionChangedListener(cloneAction);

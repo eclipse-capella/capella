@@ -5,13 +5,14 @@ Element-Type: testsuite
 Element-Version: 2.0
 Id: _BiAI4MsTEei-lPwnfaLAUA
 Runtime-Version: 2.3.0.201806262310
-Save-Time: 10/8/18 5:58 PM
+Save-Time: 10/24/18 10:30 AM
 
 ------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8
 Content-Type: text/testcase
 Entry-Name: testcase-items
 
 _x3yKIJrrEeiYyJV_j_AxhQ	// kind: 'test' name: 'NavigationMenu' path: 'NavigationMenu.test'
-_Idm30MsNEei-lPwnfaLAUA	// kind: 'test' name: 'ShowInDiagramEditor.test' path: 'ShowInDiagramEditor_test.test'
+_Idm30MsNEei-lPwnfaLAUA	// kind: 'test' name: 'ShowInDiagramEditor.test' path: 'ShowInDiagramEditor.test'
+_tBkd0NdfEeiFia3ZpEwxKw	// kind: 'test' name: 'MoveRepresentation' path: 'MoveRepresentation.test'
 
 ------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8--
