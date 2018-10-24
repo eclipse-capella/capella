@@ -17,10 +17,10 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.command.AbstractCommand;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.util.EcoreUtil.Copier;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.common.tools.api.util.SiriusCopier;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
@@ -164,7 +164,7 @@ public class CapellaCloneDiagramCommand extends AbstractCommand {
     // Copy all representations.
     for (DRepresentationDescriptor descriptor : _descriptors) {
       // Copy all the Dannotation of DRepresentationDescriptor
-      Copier copier = new Copier();
+      SiriusCopier copier = new SiriusCopier();
       Collection<DAnnotation> results = copier.copyAll(descriptor.getEAnnotations());
       copier.copyReferences();
 
