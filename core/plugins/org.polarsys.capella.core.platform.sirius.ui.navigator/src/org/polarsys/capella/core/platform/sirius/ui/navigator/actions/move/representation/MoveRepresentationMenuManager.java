@@ -13,6 +13,7 @@ package org.polarsys.capella.core.platform.sirius.ui.navigator.actions.move.repr
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 import org.eclipse.emf.ecore.resource.Resource;
@@ -40,17 +41,16 @@ public class MoveRepresentationMenuManager extends MenuManager implements ISelec
   public void initializeSubMenus(ISelection selection) {
     // Remove existing menu items
     this.removeAll();
-    
+
     List<?> selectionList = ((IStructuredSelection) selection).toList();
     Collection<DRepresentationDescriptor> descriptors = RepresentationHelper.getSelectedDescriptors(selectionList);
-    
+
     if (!descriptors.isEmpty()) {
       Session session = null;
 
       // Retrieve given sessions. If they belongs to the same session, we continue
-      List<Session> sessions = descriptors.stream().map(descriptor -> descriptor.getTarget())
-          .map(t -> SessionManager.INSTANCE.getSession(t)).distinct().filter(s -> s != null)
-          .collect(Collectors.toList());
+      List<Session> sessions = descriptors.stream().map(DRepresentationDescriptor::getTarget)
+          .map(SessionManager.INSTANCE::getSession).distinct().filter(Objects::nonNull).collect(Collectors.toList());
 
       // If all selected elements were EObjects, retrieve editing domain if elements are from the same session
       if (sessions.size() == 1) {
@@ -61,8 +61,8 @@ public class MoveRepresentationMenuManager extends MenuManager implements ISelec
           : new ArrayList<>(((DAnalysisSession) session).getAllSessionResources());
 
       // Retrieve resources of descriptors
-      Collection<Resource> representationResources = descriptors.stream().map(d -> d.eResource()).distinct()
-          .collect(Collectors.toList());
+      Collection<Resource> representationResources = descriptors.stream().map(DRepresentationDescriptor::eResource)
+          .collect(Collectors.toSet());
 
       // target resources are those of the session but not the selected representations.
       // TODO: the case when 2 selected representations belong to 2 different resources
@@ -70,15 +70,15 @@ public class MoveRepresentationMenuManager extends MenuManager implements ISelec
 
       if (!availableTargetResources.isEmpty()) {
         for (final Resource availableTargetResource : availableTargetResources) {
-          
+
           Collection<DAnalysis> availableDAnalysys = EcoreUtil.getObjectsByType(availableTargetResource.getContents(),
               ViewpointPackage.eINSTANCE.getDAnalysis());
-          
+
           for (DAnalysis dAnalysis : availableDAnalysys) {
             IAction action = new MoveRepresentationAction((DAnalysisSession) session, descriptors, dAnalysis);
             this.add(action);
           }
-          
+
         }
       }
     }

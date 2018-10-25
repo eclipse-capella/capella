@@ -14,7 +14,8 @@ import java.util.Collection;
 
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.resource.ImageDescriptor;
-import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
@@ -53,11 +54,11 @@ public class MoveRepresentationAction extends Action {
   @Override
   public void run() {
     ExecutionManager executionManager = TransactionHelper.getExecutionManager(descriptors);
-    
+
     if (executionManager == null) {
       return;
     }
-    
+
     executionManager.execute(new AbstractReadWriteCommand() {
       public void run() {
         IEditingSession uiSession = SessionUIManager.INSTANCE.getUISession(session);
@@ -69,18 +70,23 @@ public class MoveRepresentationAction extends Action {
         for (DRepresentationDescriptor descriptor : descriptors) {
           session.moveRepresentation(targetAnalysis, descriptor);
         }
-        
-        // The representation is moved to a new resource, so the menu item needs to be updated as well.
-        // Reset the selection so that the menu will be re-built.
+
+        // The representation is moved to a new resource, so the dynamic menu item needs to be reconstructed in order to
+        // take into account this change.
         try {
-          PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActivePart().getSite()
-          .getSelectionProvider().setSelection(StructuredSelection.EMPTY);
+          ISelectionProvider selectionProvider = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
+              .getActivePart().getSite().getSelectionProvider();
+
+          // We force the selection update in order to reconstruct the dynamic menu.
+          ISelection currentSelection = selectionProvider.getSelection();
+          selectionProvider.setSelection(currentSelection);
+
         } catch (NullPointerException e) {
           // Safely to do nothing.
         }
-        
+
       }
-      
+
       private void closeOpenedEditor(IEditingSession uiSession, DRepresentationDescriptor descriptor) {
         if (descriptor.isLoadedRepresentation()) {
           IEditorPart editor = uiSession.getEditor(descriptor.getRepresentation());
