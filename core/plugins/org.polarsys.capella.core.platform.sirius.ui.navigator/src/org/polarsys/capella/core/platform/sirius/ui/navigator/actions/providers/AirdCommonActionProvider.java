@@ -40,110 +40,111 @@ import org.polarsys.capella.core.sirius.ui.helper.SessionHelper;
  * The AIRD action provider.
  */
 public class AirdCommonActionProvider extends CommonActionProvider {
-  // The action to create a new session.
-  private OpenSessionAction openSessionAction;
-  // The save action is driven by CapellaSaveable.
+    // The action to create a new session.
+    private OpenSessionAction openSessionAction;
+    // The save action is driven by CapellaSaveable.
 
-  private CloseSessionAction closeSessionAction;
-  private IWorkbenchAction saveAction;
+    private CloseSessionAction closeSessionAction;
 
-  /**
-   * @see org.eclipse.ui.actions.ActionGroup#dispose()
-   */
-  @Override
-  public void dispose() {
-    ISelectionProvider selectionProvider = getActionSite().getViewSite().getSelectionProvider();
-    if (null != openSessionAction) {
-      selectionProvider.removeSelectionChangedListener(openSessionAction);
-      openSessionAction = null;
-    }
-    if (null != closeSessionAction) {
-      selectionProvider.removeSelectionChangedListener(closeSessionAction);
-      closeSessionAction = null;
-    }
-    if (null != saveAction) {
-      saveAction.dispose();
-      saveAction = null;
-    }
-    super.dispose();
-  }
+    private IWorkbenchAction saveAction;
 
-  /**
-   * @see org.eclipse.ui.navigator.CommonActionProvider#init(org.eclipse.ui.navigator.ICommonActionExtensionSite)
-   */
-  @Override
-  public void init(ICommonActionExtensionSite site) {
-    super.init(site);
-    ISelectionProvider selectionProvider = site.getViewSite().getSelectionProvider();
-    openSessionAction = new OpenSessionAction();
-    
-    SelectionHelper.registerToSelectionChanges(openSessionAction, selectionProvider);
-
-    closeSessionAction = new CloseSessionAction();
-    SelectionHelper.registerToSelectionChanges(closeSessionAction, selectionProvider);
-    ICommonViewerSite commonViewSite = site.getViewSite();
-    if (!(commonViewSite instanceof ICommonViewerWorkbenchSite)) {
-      return;
-    }
-    ICommonViewerWorkbenchSite commonViewerWorkbenchSite = (ICommonViewerWorkbenchSite) commonViewSite;
-    saveAction = ActionFactory.SAVE.create(commonViewerWorkbenchSite.getWorkbenchWindow());
-  }
-
-
-  /**
-   * @see org.eclipse.ui.actions.ActionGroup#fillActionBars(org.eclipse.ui.IActionBars)
-   */
-  @Override
-  public void fillActionBars(IActionBars actionBars) {
-    if (openSessionAction.isEnabled()) {
-      actionBars.setGlobalActionHandler(ICommonActionConstants.OPEN, openSessionAction);
-    }
-    actionBars.setGlobalActionHandler(ActionFactory.CLOSE.getId(), closeSessionAction);
-  }
-
-  /**
-   * @see org.eclipse.ui.actions.ActionGroup#fillContextMenu(org.eclipse.jface.action.IMenuManager)
-   */
-  @Override
-  public void fillContextMenu(IMenuManager menu) {
-    updateActionBars();
-    menu.appendToGroup(ICommonMenuConstants.GROUP_OPEN, openSessionAction);
-    menu.appendToGroup(ICommonMenuConstants.GROUP_BUILD, closeSessionAction);
-    menu.appendToGroup(ICommonMenuConstants.GROUP_BUILD, saveAction);
-  }
-
-  /**
-   * @see org.eclipse.ui.actions.ActionGroup#updateActionBars()
-   */
-  @Override
-  public void updateActionBars() {
-    IStructuredSelection structuredSelection = (IStructuredSelection) getContext().getSelection();
-    Iterator<?> selectedElements = structuredSelection.iterator();
-    boolean canOpen = true;
-    boolean canClose = true;
-    boolean canSelectViewpoints = true;
-    while (selectedElements.hasNext()) {
-      Object selectedElement = selectedElements.next();
-      if ((selectedElement instanceof IFile) && ((IFile)selectedElement).getFileExtension().equals(CapellaResourceHelper.AIRD_FILE_EXTENSION)) {
-        // Update open session.
-        IFile airdFile = (IFile) selectedElement;
-        Session session = SessionHelper.getSessionForDiagramFile(airdFile);
-        if (null == session) {
-          canSelectViewpoints &= false;
-          canClose &= false;
-        } else {
-          canOpen &= false;
+    /**
+     * @see org.eclipse.ui.actions.ActionGroup#dispose()
+     */
+    @Override
+    public void dispose() {
+        ISelectionProvider selectionProvider = getActionSite().getViewSite().getSelectionProvider();
+        if (null != openSessionAction) {
+            selectionProvider.removeSelectionChangedListener(openSessionAction);
+            openSessionAction = null;
         }
-        
-        // if the aird selected is not inside a Capella project, we don't open the dashboard
-        if(!CapellaResourceHelper.isProjectOfType(airdFile.getProject(), Arrays.asList(CapellaNature.ID, LibraryNature.ID))){
-          openSessionAction.setOpenActivityExplorer(false);
-        } else {
-        	boolean toOpen = org.eclipse.amalgam.explorer.activity.ui.api.actions.OpenSessionAction.getActivityExplorerPreference();
-        	openSessionAction.setOpenActivityExplorer(toOpen);        }
-      }
+        if (null != closeSessionAction) {
+            selectionProvider.removeSelectionChangedListener(closeSessionAction);
+            closeSessionAction = null;
+        }
+        if (null != saveAction) {
+            saveAction.dispose();
+            saveAction = null;
+        }
+        super.dispose();
     }
-    openSessionAction.setEnabled(canOpen);
-    closeSessionAction.setEnabled(canClose);
-  }
+
+    /**
+     * @see org.eclipse.ui.navigator.CommonActionProvider#init(org.eclipse.ui.navigator.ICommonActionExtensionSite)
+     */
+    @Override
+    public void init(ICommonActionExtensionSite site) {
+        super.init(site);
+        ISelectionProvider selectionProvider = site.getViewSite().getSelectionProvider();
+        openSessionAction = new OpenSessionAction(true);
+
+        SelectionHelper.registerToSelectionChanges(openSessionAction, selectionProvider);
+
+        closeSessionAction = new CloseSessionAction();
+        SelectionHelper.registerToSelectionChanges(closeSessionAction, selectionProvider);
+        ICommonViewerSite commonViewSite = site.getViewSite();
+        if (!(commonViewSite instanceof ICommonViewerWorkbenchSite)) {
+            return;
+        }
+        ICommonViewerWorkbenchSite commonViewerWorkbenchSite = (ICommonViewerWorkbenchSite) commonViewSite;
+        saveAction = ActionFactory.SAVE.create(commonViewerWorkbenchSite.getWorkbenchWindow());
+    }
+
+    /**
+     * @see org.eclipse.ui.actions.ActionGroup#fillActionBars(org.eclipse.ui.IActionBars)
+     */
+    @Override
+    public void fillActionBars(IActionBars actionBars) {
+        if (openSessionAction.isEnabled()) {
+            actionBars.setGlobalActionHandler(ICommonActionConstants.OPEN, openSessionAction);
+        }
+        actionBars.setGlobalActionHandler(ActionFactory.CLOSE.getId(), closeSessionAction);
+    }
+
+    /**
+     * @see org.eclipse.ui.actions.ActionGroup#fillContextMenu(org.eclipse.jface.action.IMenuManager)
+     */
+    @Override
+    public void fillContextMenu(IMenuManager menu) {
+        updateActionBars();
+        menu.appendToGroup(ICommonMenuConstants.GROUP_OPEN, openSessionAction);
+        menu.appendToGroup(ICommonMenuConstants.GROUP_BUILD, closeSessionAction);
+        menu.appendToGroup(ICommonMenuConstants.GROUP_BUILD, saveAction);
+    }
+
+    /**
+     * @see org.eclipse.ui.actions.ActionGroup#updateActionBars()
+     */
+    @Override
+    public void updateActionBars() {
+        IStructuredSelection structuredSelection = (IStructuredSelection) getContext().getSelection();
+        Iterator<?> selectedElements = structuredSelection.iterator();
+        boolean canOpen = true;
+        boolean canClose = true;
+        boolean canSelectViewpoints = true;
+        while (selectedElements.hasNext()) {
+            Object selectedElement = selectedElements.next();
+            if ((selectedElement instanceof IFile) && ((IFile) selectedElement).getFileExtension().equals(CapellaResourceHelper.AIRD_FILE_EXTENSION)) {
+                // Update open session.
+                IFile airdFile = (IFile) selectedElement;
+                Session session = SessionHelper.getSessionForDiagramFile(airdFile);
+                if (null == session) {
+                    canSelectViewpoints &= false;
+                    canClose &= false;
+                } else {
+                    canOpen &= false;
+                }
+
+                // if the aird selected is not inside a Capella project, we don't open the dashboard
+                if (!CapellaResourceHelper.isProjectOfType(airdFile.getProject(), Arrays.asList(CapellaNature.ID, LibraryNature.ID))) {
+                    openSessionAction.setOpenActivityExplorer(false);
+                } else {
+                    boolean toOpen = org.eclipse.amalgam.explorer.activity.ui.api.actions.OpenSessionAction.getActivityExplorerPreference();
+                    openSessionAction.setOpenActivityExplorer(toOpen);
+                }
+            }
+        }
+        openSessionAction.setEnabled(canOpen);
+        closeSessionAction.setEnabled(canClose);
+    }
 }

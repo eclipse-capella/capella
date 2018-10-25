@@ -23,16 +23,16 @@ import org.polarsys.capella.core.sirius.ui.actions.OpenSessionAction;
  */
 public class HeadlessOpenSessionAction extends OpenSessionAction {
 
-  protected List<IFile> sessionFiles = new ArrayList<IFile>();
+    protected List<IFile> sessionFiles = new ArrayList<IFile>();
 
-  public HeadlessOpenSessionAction(List<IFile> sessionFiles_p) {
-    super();
-    sessionFiles = sessionFiles_p;
-  }
+    public HeadlessOpenSessionAction(List<IFile> sessionFiles_p) {
+        super(false);
+        sessionFiles = sessionFiles_p;
+    }
 
-  @Override
-  public IStructuredSelection getStructuredSelection() {
-    return new StructuredSelection(sessionFiles);
-  }
+    @Override
+    public IStructuredSelection getStructuredSelection() {
+        return new StructuredSelection(sessionFiles);
+    }
 
 }
