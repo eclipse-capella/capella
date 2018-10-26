@@ -40,15 +40,15 @@ public class DiagramMiscTestSuite extends BasicTestSuite {
   @Override
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
-//    tests.add(new Bug1006TestCase());
-//    tests.add(new Bug1024TestCase());
-//    tests.add(new Bug1512TestCase());
-//    tests.add(new InterfacePortSizeTestCase());
-//    tests.add(new OpenAllAvailableDDiagramsTestCase());
-//    tests.add(new CheckDiagramDirtyStateOnOpeningTestCase());
-//    tests.add(new StatusLineTestCase());
-//    tests.add(new Bug1917TestCase());
-//    tests.add(new Bug2145TestCase());
+    tests.add(new Bug1006TestCase());
+    tests.add(new Bug1024TestCase());
+    tests.add(new Bug1512TestCase());
+    tests.add(new InterfacePortSizeTestCase());
+    tests.add(new OpenAllAvailableDDiagramsTestCase());
+    tests.add(new CheckDiagramDirtyStateOnOpeningTestCase());
+    tests.add(new StatusLineTestCase());
+    tests.add(new Bug1917TestCase());
+    tests.add(new Bug2145TestCase());
     tests.add(new CloneDiagramTestCase());
     return tests;
   }
