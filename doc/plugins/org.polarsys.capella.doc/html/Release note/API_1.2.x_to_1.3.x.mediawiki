@@ -439,7 +439,6 @@ Some property tester working on semantic elements (<code>org.polarsys.capella.co
 
 ==== Changes in <code>org.polarsys.capella.common.ui.massactions</code>====
 * <span class="labels"><span class="label label-success">Added</span></span>[[File:../Images/jcu_obj.png|16px]] <code>org.polarsys.capella.common.ui.massactions.activator.MACapellaActivator</code>
-* <span class="labels"><span class="label label-success">Added</span></span>[[File:../Images/methpub_obj.png|16px]] <code>org.polarsys.capella.common.ui.massactions.activator.MACapellaActivator.Path()</code>
 * <span class="labels"><span class="label label-success">Added</span></span>[[File:../Images/methpub_obj.png|16px]] <code>org.polarsys.capella.common.ui.massactions.activator.MACapellaActivator.MACapellaActivator()</code>
 * <span class="labels"><span class="label label-success">Added</span></span>[[File:../Images/methpub_obj.png|16px]][[File:../Images/over_co.png|8px]] <code>org.polarsys.capella.common.ui.massactions.activator.MACapellaActivator.start(BundleContext)</code>
 * <span class="labels"><span class="label label-success">Added</span></span>[[File:../Images/methpub_obj.png|16px]][[File:../Images/over_co.png|8px]] <code>org.polarsys.capella.common.ui.massactions.activator.MACapellaActivator.stop(BundleContext)</code>
@@ -531,6 +530,7 @@ Some property tester working on semantic elements (<code>org.polarsys.capella.co
 * <span class="labels"><span class="label label-success">Added</span></span>[[File:../Images/methpub_obj.png|16px]] <code>org.polarsys.capella.core.commandline.core.AbstractCommandLine.compliancyCheck(IFile)</code>
 
 ==== Changes in <code>org.polarsys.capella.core.compare</code>====
+* <span class="labels"><span class="label label-success">Added</span></span>[[File:../Images/methpub_obj.png|16px]][[File:../Images/over_co.png|8px]] <code>org.polarsys.capella.core.compare.CapellaComparisonMethod.getDefaultConfigurator()</code>
 * <span class="labels"><span class="label label-success">Added</span></span>[[File:../Images/methpub_obj.png|16px]] <code>org.polarsys.capella.core.compare.CapellaScope.CapellaScope(Collection<URI>, EditingDomain, boolean)</code>
 * <span class="labels"><span class="label label-success">Added</span></span>[[File:../Images/methpub_obj.png|16px]] <code>org.polarsys.capella.core.compare.CapellaScope.CapellaScope(Collection<URI>, ResourceSet, boolean)</code>
 * <span class="labels"><span class="label label-success">Added</span></span>[[File:../Images/jcu_obj.png|16px]] <code>org.polarsys.capella.core.compare.CapellaScopeFactory</code>
@@ -728,10 +728,6 @@ Some property tester working on semantic elements (<code>org.polarsys.capella.co
 * <span class="labels"><span class="label label-success">Added</span></span>[[File:../Images/jcu_obj.png|16px]] <code>org.polarsys.capella.core.data.information.ui.quickfix.resolver.DeleteConstraintResolver</code>
 * <span class="labels"><span class="label label-success">Added</span></span>[[File:../Images/methpub_obj.png|16px]][[File:../Images/over_co.png|8px]] <code>org.polarsys.capella.core.data.information.ui.quickfix.resolver.DeleteConstraintResolver.getElementToDelete(Object)</code>
 
-==== Changes in <code>org.polarsys.capella.core.data.interaction.properties</code>====
-* <span class="labels"><span class="label label-error">Removed</span></span>[[File:../Images/methpub_obj.png|16px]] <code>org.polarsys.capella.core.data.interaction.properties.dialogs.SelectFunctionalExchangeDialog.AbstractNamedElement>()</code>
-* <span class="labels"><span class="label label-success">Added</span></span>[[File:../Images/methpub_obj.png|16px]] <code>org.polarsys.capella.core.data.interaction.properties.dialogs.SelectFunctionalExchangeDialog.HashMap<>()</code>
-
 ==== Changes in <code>org.polarsys.capella.core.data.la.ui.wizards</code>====
 * <span class="labels"><span class="label label-success">Added</span></span>[[File:../Images/methpub_obj.png|16px]][[File:../Images/over_co.png|8px]] <code>org.polarsys.capella.core.common.ui.wizards.NameValuePairImpl.hashCode()</code>
 
@@ -797,6 +793,10 @@ Some property tester working on semantic elements (<code>org.polarsys.capella.co
 * <span class="labels"><span class="label label-success">Added</span></span>[[File:../Images/methpub_obj.png|16px]] <code>org.polarsys.capella.core.diagram.helpers.RepresentationAnnotationHelper.setStatusReview(DRepresentationDescriptor, String)</code>
 * <span class="labels"><span class="label label-success">Added</span></span>[[File:../Images/jcu_obj.png|16px]] <code>org.polarsys.capella.core.diagram.helpers.naming.DAnnotationSourceConstants</code>
 
+==== Changes in <code>org.polarsys.capella.core.explorer.activity.ui</code>====
+* <span class="labels"><span class="label label-error">Removed</span></span>[[File:../Images/methpub_obj.png|16px]] <code>org.polarsys.capella.core.explorer.activity.ui.viewer.CapellaDiagramViewer.menuAboutToHide(IMenuManager)</code>
+* <span class="labels"><span class="label label-error">Removed</span></span>[[File:../Images/methpub_obj.png|16px]] <code>org.polarsys.capella.core.explorer.activity.ui.viewer.CapellaDiagramViewer.menuAboutToShow(IMenuManager)</code>
+
 ==== Changes in <code>org.polarsys.capella.core.libraries.ui</code>====
 * <span class="labels"><span class="label label-success">Added</span></span>[[File:../Images/methpub_obj.png|16px]] <code>org.polarsys.capella.core.libraries.ui.move.MoveStagingView.selectElementInCapellaExplorer(ISelection)</code>
 
@@ -853,6 +853,9 @@ Some property tester working on semantic elements (<code>org.polarsys.capella.co
 * <span class="labels"><span class="label label-success">Added</span></span>[[File:../Images/methpub_obj.png|16px]] <code>org.polarsys.capella.core.model.helpers.PhysicalPathExt.getFlatInvolvements(PhysicalPath)</code>
 * <span class="labels"><span class="label label-success">Added</span></span>[[File:../Images/methpub_obj.png|16px]] <code>org.polarsys.capella.core.model.helpers.ProjectExt.getProject(Resource)</code>
 * <span class="labels"><span class="label label-success">Added</span></span>[[File:../Images/methpub_obj.png|16px]] <code>org.polarsys.capella.core.model.helpers.ScenarioExt.isMultiInstanceRole(Scenario)</code>
+* <span class="labels"><span class="label label-success">Added</span></span>[[File:../Images/methpub_obj.png|16px]] <code>org.polarsys.capella.core.model.helpers.StateExt.isStrictState(EObject)</code>
+* <span class="labels"><span class="label label-success">Added</span></span>[[File:../Images/methpub_obj.png|16px]] <code>org.polarsys.capella.core.model.helpers.StateExt.isMode(EObject)</code>
+* <span class="labels"><span class="label label-success">Added</span></span>[[File:../Images/methpub_obj.png|16px]] <code>org.polarsys.capella.core.model.helpers.StateExt.isStrictModeState(EObject)</code>
 * <span class="labels"><span class="label label-success">Added</span></span>[[File:../Images/methpub_obj.png|16px]] <code>org.polarsys.capella.core.model.helpers.intermodelInconsistencyDetection.DependencyViolation.getSource()</code>
 * <span class="labels"><span class="label label-success">Added</span></span>[[File:../Images/methpub_obj.png|16px]] <code>org.polarsys.capella.core.model.helpers.intermodelInconsistencyDetection.DependencyViolation.getTarget()</code>
 * <span class="labels"><span class="label label-success">Added</span></span>[[File:../Images/methpub_obj.png|16px]] <code>org.polarsys.capella.core.model.helpers.intermodelInconsistencyDetection.DependencyViolation.getEReference()</code>
@@ -868,7 +871,6 @@ Some property tester working on semantic elements (<code>org.polarsys.capella.co
 
 ==== Changes in <code>org.polarsys.capella.core.model.skeleton</code>====
 * <span class="labels"><span class="label label-success">Added</span></span>[[File:../Images/jcu_obj.png|16px]] <code>org.polarsys.capella.core.model.skeleton.CapellaModelSkeleton</code>
-* <span class="labels"><span class="label label-success">Added</span></span>[[File:../Images/methpub_obj.png|16px]] <code>org.polarsys.capella.core.model.skeleton.CapellaModelSkeleton.URI.createURI()</code>
 * <span class="labels"><span class="label label-success">Added</span></span>[[File:../Images/methpub_obj.png|16px]] <code>org.polarsys.capella.core.model.skeleton.CapellaModelSkeleton.Builder(ExecutionManager)</code>
 * <span class="labels"><span class="label label-success">Added</span></span>[[File:../Images/methpub_obj.png|16px]] <code>org.polarsys.capella.core.model.skeleton.CapellaModelSkeleton.setURI(URI)</code>
 * <span class="labels"><span class="label label-success">Added</span></span>[[File:../Images/methpub_obj.png|16px]] <code>org.polarsys.capella.core.model.skeleton.CapellaModelSkeleton.setRootType(EClass)</code>
@@ -934,6 +936,19 @@ Some property tester working on semantic elements (<code>org.polarsys.capella.co
 * <span class="labels"><span class="label label-success">Added</span></span>[[File:../Images/jcu_obj.png|16px]] <code>org.polarsys.capella.core.platform.sirius.ui.navigator.actions.OpenPropertiesAction</code>
 * <span class="labels"><span class="label label-success">Added</span></span>[[File:../Images/methpub_obj.png|16px]] <code>org.polarsys.capella.core.platform.sirius.ui.navigator.actions.OpenPropertiesAction.OpenPropertiesAction()</code>
 * <span class="labels"><span class="label label-success">Added</span></span>[[File:../Images/methpub_obj.png|16px]][[File:../Images/over_co.png|8px]] <code>org.polarsys.capella.core.platform.sirius.ui.navigator.actions.OpenPropertiesAction.run()</code>
+* <span class="labels"><span class="label label-error">Removed</span></span>[[File:../Images/methpub_obj.png|16px]] <code>org.polarsys.capella.core.platform.sirius.ui.navigator.actions.move.representation.MoveRepresentationAction.MoveRepresentationAction()</code>
+* <span class="labels"><span class="label label-error">Removed</span></span>[[File:../Images/methpub_obj.png|16px]] <code>org.polarsys.capella.core.platform.sirius.ui.navigator.actions.move.representation.MoveRepresentationAction.run(IAction)</code>
+* <span class="labels"><span class="label label-error">Removed</span></span>[[File:../Images/methpub_obj.png|16px]] <code>org.polarsys.capella.core.platform.sirius.ui.navigator.actions.move.representation.MoveRepresentationAction.dispose()</code>
+* <span class="labels"><span class="label label-error">Removed</span></span>[[File:../Images/methpub_obj.png|16px]][[File:../Images/over_co.png|8px]] <code>org.polarsys.capella.core.platform.sirius.ui.navigator.actions.move.representation.MoveRepresentationAction.updateSelection(IStructuredSelection)</code>
+* <span class="labels"><span class="label label-success">Added</span></span>[[File:../Images/methpub_obj.png|16px]] <code>org.polarsys.capella.core.platform.sirius.ui.navigator.actions.move.representation.MoveRepresentationAction.MoveRepresentationAction(DAnalysisSession, Collection<DRepresentationDescriptor>, DAnalysis)</code>
+* <span class="labels"><span class="label label-error">Removed</span></span>[[File:../Images/methpub_obj.png|16px]] <code>org.polarsys.capella.core.platform.sirius.ui.navigator.actions.move.representation.MoveRepresentationAction.getMoveActions()</code>
+* <span class="labels"><span class="label label-error">Removed</span></span>[[File:../Images/methpub_obj.png|16px]] <code>org.polarsys.capella.core.platform.sirius.ui.navigator.actions.move.representation.MoveRepresentationAction.fillContextMenu(IStructuredSelection)</code>
+* <span class="labels"><span class="label label-error">Removed</span></span>[[File:../Images/methpub_obj.png|16px]][[File:../Images/over_co.png|8px]] <code>org.polarsys.capella.core.platform.sirius.ui.navigator.actions.move.representation.MoveRepresentationAction.isDirty()</code>
+* <span class="labels"><span class="label label-error">Removed</span></span>[[File:../Images/methpub_obj.png|16px]][[File:../Images/over_co.png|8px]] <code>org.polarsys.capella.core.platform.sirius.ui.navigator.actions.move.representation.MoveRepresentationAction.isDynamic()</code>
+* <span class="labels"><span class="label label-success">Added</span></span>[[File:../Images/jcu_obj.png|16px]] <code>org.polarsys.capella.core.platform.sirius.ui.navigator.actions.move.representation.MoveRepresentationMenuManager</code>
+* <span class="labels"><span class="label label-success">Added</span></span>[[File:../Images/methpub_obj.png|16px]] <code>org.polarsys.capella.core.platform.sirius.ui.navigator.actions.move.representation.MoveRepresentationMenuManager.MoveRepresentationMenuManager()</code>
+* <span class="labels"><span class="label label-success">Added</span></span>[[File:../Images/methpub_obj.png|16px]] <code>org.polarsys.capella.core.platform.sirius.ui.navigator.actions.move.representation.MoveRepresentationMenuManager.initializeSubMenus(ISelection)</code>
+* <span class="labels"><span class="label label-success">Added</span></span>[[File:../Images/methpub_obj.png|16px]][[File:../Images/over_co.png|8px]] <code>org.polarsys.capella.core.platform.sirius.ui.navigator.actions.move.representation.MoveRepresentationMenuManager.selectionChanged(SelectionChangedEvent)</code>
 * <span class="labels"><span class="label label-error">Removed</span></span>[[File:../Images/methpub_obj.png|16px]][[File:../Images/over_co.png|8px]] <code>org.polarsys.capella.core.platform.sirius.ui.navigator.actions.providers.ModelElementActionProvider.isDirty()</code>
 * <span class="labels"><span class="label label-error">Removed</span></span>[[File:../Images/methpub_obj.png|16px]][[File:../Images/over_co.png|8px]] <code>org.polarsys.capella.core.platform.sirius.ui.navigator.actions.providers.ModelElementActionProvider.isDynamic()</code>
 * <span class="labels"><span class="label label-error">Removed</span></span>[[File:../Images/methpub_obj.png|16px]][[File:../Images/over_co.png|8px]] <code>org.polarsys.capella.core.platform.sirius.ui.navigator.actions.providers.ModelElementActionProvider.fillContextMenu(IMenuManager)</code>
@@ -985,10 +1000,6 @@ Some property tester working on semantic elements (<code>org.polarsys.capella.co
 
 ==== Changes in <code>org.polarsys.capella.core.preferences</code>====
 * <span class="labels"><span class="label label-success">Added</span></span>[[File:../Images/methpub_obj.png|16px]][[File:../Images/over_co.png|8px]] <code>org.polarsys.capella.core.commands.preferences.properties.PreferencesExpression.hashCode()</code>
-* <span class="labels"><span class="label label-error">Removed</span></span>[[File:../Images/methpub_obj.png|16px]] <code>org.polarsys.capella.core.commands.preferences.service.ConfigurableFieldEditorPreferencePage.Composite>()</code>
-* <span class="labels"><span class="label label-success">Added</span></span>[[File:../Images/methpub_obj.png|16px]] <code>org.polarsys.capella.core.commands.preferences.service.ConfigurableFieldEditorPreferencePage.HashMap<>()</code>
-* <span class="labels"><span class="label label-error">Removed</span></span>[[File:../Images/methpub_obj.png|16px]] <code>org.polarsys.capella.core.commands.preferences.service.ConfigurableFieldEditorPreferencePage.ArrayList<Composite>()</code>
-* <span class="labels"><span class="label label-success">Added</span></span>[[File:../Images/methpub_obj.png|16px]] <code>org.polarsys.capella.core.commands.preferences.service.ConfigurableFieldEditorPreferencePage.ArrayList<>()</code>
 * <span class="labels"><span class="label label-error">Removed</span></span>[[File:../Images/methpub_obj.png|16px]][[File:../Images/over_co.png|8px]] <code>org.polarsys.capella.core.commands.preferences.service.ScopedCapellaPreferencesStore.addPropertyChangeListener(org.eclipse.jface.util.IPropertyChangeListener)</code>
 * <span class="labels"><span class="label label-warning">Deprecated</span></span>[[File:../Images/methpub_obj.png|16px]] <code>org.polarsys.capella.core.commands.preferences.service.ScopedCapellaPreferencesStore.getInt(boolean, String)</code>
 * <span class="labels"><span class="label label-warning">Deprecated</span></span>[[File:../Images/methpub_obj.png|16px]] <code>org.polarsys.capella.core.commands.preferences.service.ScopedCapellaPreferencesStore.getBoolean(boolean, String)</code>

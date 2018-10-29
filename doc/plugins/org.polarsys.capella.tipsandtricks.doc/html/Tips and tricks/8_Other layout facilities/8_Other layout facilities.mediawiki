@@ -72,7 +72,15 @@ When you '''select an edge or a label''', graphical link appears between them:
  
 To quickly copy paste Notes on a diagram, '''click on CTRL and move the Notes''': new Notes are created.
 
-[[File:../../Images/TipsCopyNote.png|thumbnail|800px|]]
+[[File:../../Images/TipsCopyNote.png|thumbnail|500px|]]
  
-<br>
-<br>
+==Add vertical blank space on sequence diagrams==
+On a sequence diagram, instead of moving vertically each graphical element in order to have more space, it is possible to do it more easily by using the combination:
+
+* Hold '''Ctrl'''
+* Hold '''Shift'''
+* Hold '''Left-Mouse'''
+* Move the mouse downwards. 
+
+ 
+[[File:../../Images/Tips91.png|thumbnail|900px|]]

@@ -13,20 +13,27 @@ That's why, two selection modes are available with the mouse cursor:
 
 [[File:../../Images/Tips2.png|thumbnail|800px|Figure 2: Cursor selection from the right to the left]]
 
-
-==Selection with ALT + Continuous Mouse Click==
-
-In a diagram containing multiple hierarchical components equipped with border nodes (PAB, LAB, SAB, SDFB ...), the user can select elements using continuous left mouse button click, but it's not easy to select multiple inner components without selecting the parent, even more difficult when the diagram's white background is not displayed due to a zoom.
-In that case, use Alt + continuous left mouse click to select elements without selecting the element behind the first click.
-
-Same behavior of the mouse selection from '''Right to Left''' and '''Left to Right''' will be applied with the Alt button.
-
 ==Connectors Selection==
 
 Connectors can be selected one by one. As it can be fastidious to select all the connectors of a diagram one by one, to change the routing style or remove bend point for example, use the button '''''Select All Connectors''''' on the diagram menu instead.
 
 
-[[Image:../../Images/TT7.png]]
+[[File:../../Images/TT7.png]]
 
+==Select only elements of container with ALT==
 
+On a diagram like ''Physical Architecture Blank - PAB'', a component node may contain many child-component nodes inside itself. It is difficult to select the child-components without selecting the parent-component because usually the first click will be on the parent-component's background.
 
+By combining with the '''ALT''' button, the selection will ignore the parent-component or more specifically the element on which the first click happened.
+
+[[File:../../Images/Tips88.png|thumbnail|800px|]]
+
+{| border="1"
+|-
+| 
+[[Image:../../Images/InfoIcon.png|48x48px]]
+
+|
+Moving mouse '''Right to Left''' or '''Left to Right''' and pushing the '''ALT''' button will combine the two ways of selecting.
+ 
+|} 

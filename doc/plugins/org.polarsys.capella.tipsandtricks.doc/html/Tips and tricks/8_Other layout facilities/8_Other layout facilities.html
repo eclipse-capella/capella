@@ -1,5 +1,158 @@
-<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>8_Other layout facilities</title><link type="text/css" rel="stylesheet" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css"/></head><body><h1 id="Other_Layout_Facilities">Other Layout Facilities</h1><p>In order to <b>facilitate the layout set up of elements on diagrams</b>, some Diagram facilities exist:  </p><h2 id="Elements_Alignment">Elements Alignment</h2><p>If you select several elements, you can align them on the right, middle, left, top...</p><p><img border="0" src="../../Images/Tips20.png"/></p><h2 id="Elements_Distribution">Elements Distribution</h2><p>If you select several elements, you can distribute them vertically, horizontally (i.e ensure that there is a gap of the same size between each element in the chosen direction).</p><p><img border="0" src="../../Images/Tips21.png"/></p><h2 id="Layout_commands_to_set_edges_with_connected_ports_vertical_or_horizontal">Layout commands to set edges with connected ports vertical or horizontal</h2><p>The goal of this feature is to <b>assist user to set edge selection vertical or horizontal</b> in order to help exchange layout. If the edge is connected to "ports", the <b>"port" is moved too</b>.''
-To do this, it is recommended to arrange all connected ports first, then use the right-to-left multiple selection.</p><p><div class="thumb"><div class="thumbinner" style="width:602px;"><a href="../../Images/Tips22.png" class="image"><img class="thumbimage" width="600" border="0" src="../../Images/Tips22.png"/></a></div></div></p><h2 id="Arrange_connected_ports">Arrange connected ports</h2><p>In addition to the standard automatic layout, this specific action allows <b>to arrange automatically the edges/ports so that they are as short as possible by preserving routing style</b>. This action moves the ports of a node / container when necessary. It is useful when the positions of the nodes and containers have already been defined and edges still need a better layout.</p><p><div class="thumb"><div class="thumbinner" style="width:702px;"><a href="../../Images/8_4_Arrange.png" class="image"><img class="thumbimage" width="700" border="0" src="../../Images/8_4_Arrange.png"/></a></div></div></p><p><br/></p><table border="1"><tr><td><p><img height="48" width="48" border="0" src="../../Images/InfoIcon.png"/></p></td><td><p>Graphical elements have to be unpinned before running this action. To unpin an element, choose "Unpin selected elements on the diagram menu"</p></td></tr></table><p><br/></p><h2 id="Multi_selection_for_graphical_move_of_ports.2Bexchanges">Multi selection for graphical move of ports+exchanges</h2><p>This feature aims to <b>move the group {edge, labels, ports}</b> in a single operation when using the <b><i>F3 shortcut</i></b> and drag/move the edge.</p><p>Moreover, by selecting multiple edges with ports and pressing <b><i>F3</i></b> key, you can move them simultaneously:</p><p><img border="0" src="../../Images/Tips23.png"/></p><h2 id="Snap_back_labels_on_edge_selection">Snap back labels on edge selection</h2><p>Although there is already a button to snap back a label to it original position on label selection, a new button "<i>Snap Back Label(s)</i>" <b>on edge selection</b> allows to snap back all labels (source, middle, target) of this edge at the same time:</p><p><div class="thumb"><div class="thumbinner" style="width:802px;"><a href="../../Images/Tips73.png" class="image"><img class="thumbimage" width="800" border="0" src="../../Images/Tips73.png"/></a></div></div></p><h2 id="Display_link_between_an_edge_and_its_label">Display link between an edge and its label</h2><p>It is a new preference added in <b>Sirius &gt; Sirius Diagram &gt; Connections</b>:
-<div class="thumb"><div class="thumbinner" style="width:702px;"><a href="../../Images/Tips74.png" class="image"><img class="thumbimage" width="700" border="0" src="../../Images/Tips74.png"/></a></div></div></p><p>When you <b>select an edge or a label</b>, graphical link appears between them:
-<div class="thumb"><div class="thumbinner" style="width:702px;"><a href="../../Images/Tips75.png" class="image"><img class="thumbimage" width="700" border="0" src="../../Images/Tips75.png"/></a></div></div></p><h2 id="Copy_Paste_Of_Notes">Copy Paste Of Notes</h2><p>To quickly copy paste Notes on a diagram, <b>click on CTRL and move the Notes</b>: new Notes are created.</p><p><div class="thumb"><div class="thumbinner" style="width:802px;"><a href="../../Images/TipsCopyNote.png" class="image"><img class="thumbimage" width="800" border="0" src="../../Images/TipsCopyNote.png"/></a></div></div></p><p><br/>
-<br/></p></body></html>
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>8_Other layout facilities</title>
+		<link type="text/css" rel="stylesheet" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css"/>
+	</head>
+	<body>
+		<h1 id="Other_Layout_Facilities">Other Layout Facilities</h1>
+		<p>In order to 
+			<b>facilitate the layout set up of elements on diagrams</b>, some Diagram facilities exist:  
+		</p>
+		<h2 id="Elements_Alignment">Elements Alignment</h2>
+		<p>If you select several elements, you can align them on the right, middle, left, top...</p>
+		<p>
+			<img border="0" src="../../Images/Tips20.png"/>
+		</p>
+		<h2 id="Elements_Distribution">Elements Distribution</h2>
+		<p>If you select several elements, you can distribute them vertically, horizontally (i.e ensure that there is a gap of the same size between each element in the chosen direction).</p>
+		<p>
+			<img border="0" src="../../Images/Tips21.png"/>
+		</p>
+		<h2 id="Layout_commands_to_set_edges_with_connected_ports_vertical_or_horizontal">Layout commands to set edges with connected ports vertical or horizontal</h2>
+		<p>The goal of this feature is to 
+			<b>assist user to set edge selection vertical or horizontal</b> in order to help exchange layout. If the edge is connected to "ports", the 
+			<b>"port" is moved too</b>.''
+			To do this, it is recommended to arrange all connected ports first, then use the right-to-left multiple selection.
+		</p>
+		<p>
+			<div class="thumb">
+				<div class="thumbinner" style="width:602px;">
+					<a href="../../Images/Tips22.png" class="image">
+						<img class="thumbimage" width="600" border="0" src="../../Images/Tips22.png"/>
+					</a>
+				</div>
+			</div>
+		</p>
+		<h2 id="Arrange_connected_ports">Arrange connected ports</h2>
+		<p>In addition to the standard automatic layout, this specific action allows 
+			<b>to arrange automatically the edges/ports so that they are as short as possible by preserving routing style</b>. This action moves the ports of a node / container when necessary. It is useful when the positions of the nodes and containers have already been defined and edges still need a better layout.
+		</p>
+		<p>
+			<div class="thumb">
+				<div class="thumbinner" style="width:702px;">
+					<a href="../../Images/8_4_Arrange.png" class="image">
+						<img class="thumbimage" width="700" border="0" src="../../Images/8_4_Arrange.png"/>
+					</a>
+				</div>
+			</div>
+		</p>
+		<p>
+			<br/>
+		</p>
+		<table border="1">
+			<tr>
+				<td>
+					<p>
+						<img height="48" width="48" border="0" src="../../Images/InfoIcon.png"/>
+					</p>
+				</td>
+				<td>
+					<p>Graphical elements have to be unpinned before running this action. To unpin an element, choose "Unpin selected elements on the diagram menu"</p>
+				</td>
+			</tr>
+		</table>
+		<p>
+			<br/>
+		</p>
+		<h2 id="Multi_selection_for_graphical_move_of_ports.2Bexchanges">Multi selection for graphical move of ports+exchanges</h2>
+		<p>This feature aims to 
+			<b>move the group {edge, labels, ports}</b> in a single operation when using the 
+			<b>
+				<i>F3 shortcut</i>
+			</b> and drag/move the edge.
+		</p>
+		<p>Moreover, by selecting multiple edges with ports and pressing 
+			<b>
+				<i>F3</i>
+			</b> key, you can move them simultaneously:
+		</p>
+		<p>
+			<img border="0" src="../../Images/Tips23.png"/>
+		</p>
+		<h2 id="Snap_back_labels_on_edge_selection">Snap back labels on edge selection</h2>
+		<p>Although there is already a button to snap back a label to it original position on label selection, a new button "
+			<i>Snap Back Label(s)</i>" 
+			<b>on edge selection</b> allows to snap back all labels (source, middle, target) of this edge at the same time:
+		</p>
+		<p>
+			<div class="thumb">
+				<div class="thumbinner" style="width:802px;">
+					<a href="../../Images/Tips73.png" class="image">
+						<img class="thumbimage" width="800" border="0" src="../../Images/Tips73.png"/>
+					</a>
+				</div>
+			</div>
+		</p>
+		<h2 id="Display_link_between_an_edge_and_its_label">Display link between an edge and its label</h2>
+		<p>It is a new preference added in 
+			<b>Sirius &gt; Sirius Diagram &gt; Connections</b>:
+
+			<div class="thumb">
+				<div class="thumbinner" style="width:702px;">
+					<a href="../../Images/Tips74.png" class="image">
+						<img class="thumbimage" width="700" border="0" src="../../Images/Tips74.png"/>
+					</a>
+				</div>
+			</div>
+		</p>
+		<p>When you 
+			<b>select an edge or a label</b>, graphical link appears between them:
+
+			<div class="thumb">
+				<div class="thumbinner" style="width:702px;">
+					<a href="../../Images/Tips75.png" class="image">
+						<img class="thumbimage" width="700" border="0" src="../../Images/Tips75.png"/>
+					</a>
+				</div>
+			</div>
+		</p>
+		<h2 id="Copy_Paste_Of_Notes">Copy Paste Of Notes</h2>
+		<p>To quickly copy paste Notes on a diagram, 
+			<b>click on CTRL and move the Notes</b>: new Notes are created.
+		</p>
+		<p>
+			<div class="thumb">
+				<div class="thumbinner" style="width:502px;">
+					<a href="../../Images/TipsCopyNote.png" class="image">
+						<img class="thumbimage" width="500" border="0" src="../../Images/TipsCopyNote.png"/>
+					</a>
+				</div>
+			</div>
+		</p>
+		<h2 id="Add_vertical_blank_space_on_sequence_diagrams">Add vertical blank space on sequence diagrams</h2>
+		<p>On a sequence diagram, instead of moving vertically each graphical element in order to have more space, it is possible to do it more easily by using the combination:</p>
+		<ul>
+			<li>Hold 
+				<b>Ctrl</b>
+			</li>
+			<li>Hold 
+				<b>Shift</b>
+			</li>
+			<li>Hold 
+				<b>Left-Mouse</b>
+			</li>
+			<li>Move the mouse downwards. </li>
+		</ul>
+		<p>
+			<div class="thumb">
+				<div class="thumbinner" style="width:902px;">
+					<a href="../../Images/Tips91.png" class="image">
+						<img class="thumbimage" width="900" border="0" src="../../Images/Tips91.png"/>
+					</a>
+				</div>
+			</div>
+		</p>
+	</body>
+</html>

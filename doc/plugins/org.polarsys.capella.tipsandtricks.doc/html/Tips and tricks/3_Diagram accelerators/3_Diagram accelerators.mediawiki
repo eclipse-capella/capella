@@ -12,6 +12,12 @@ For more details, please refer to the section ''Capella Guide > User Manual > Di
 
 This feature is often coupled with “Synchronizing Diagram” capability in order to master the visibility of the elements in the resulting Diagram, see section below “Unsynchronize your diagram”.
 
+==Elements of Interest==
+
+'''Elements of Interest''' is a property of diagram allowing to associate the diagram with some model elements for the purpose of navigation or documentation.
+
+[[File:../../Images/Tips89.png|thumbnail|]]
+
 ==Diagram Accelerators==
 From a diagram, Capella provides some tools called accelerators allowing automated synchronization or generations of model elements.
 
