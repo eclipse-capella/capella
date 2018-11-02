@@ -153,7 +153,7 @@
 !|[[Image:../../../../Images/error.gif|ERROR]]
 |DWF_D_25 - Dependency Cycle Detection 
 |-
-| colspan="2"|This rule detects Cycle of Dependencies. 
+| colspan="2"|This rule detects Cycle of Dependencies between packages. 
 |}            
 <br>         
 {| class="VALIDATION-RULE"
@@ -333,14 +333,21 @@
 <br>         
 {| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/error.gif|ERROR]]
-|DWF_D_53 - Property Or Role Overriding Is Not Allowed 
+|DWF_D_53 - Property Or Role Overriding Is Not Allowed
 |-
-| colspan="2"|A property/role in a class shall not have the same name as a property/role of a super-class 
+| colspan="2"|A property/role in a class shall not have the same name as a property/role of a super-class
 |}            
 <br>         
 {| class="VALIDATION-RULE"
 !|[[Image:../../../../Images/error.gif|ERROR]]
 |DWF_D_54 - Property Or Role Respects Covariance  
 |-
-| colspan="2"|If class K inherits class C, if property or association role is owned by C with type/class A and redefined in K with type/class B, then B inherits (or is equal to) A. 
+| colspan="2"|If class K inherits class C, if property or association role is owned by C with type/class A and redefined in K with type/class B, then B inherits (or is equal to) A.
+|}
+<br>         
+{| class="VALIDATION-RULE"
+!|[[Image:../../../../Images/error.gif|ERROR]]
+|DWF_D_55 [Live] - Validate Data Pkg Dependency Cycle
+|-
+| colspan="2"|This rule detects Cycle of Dependencies between Data packages.
 |}   

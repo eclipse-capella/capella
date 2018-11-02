@@ -34,7 +34,7 @@ import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
  * An element in model A can only reference an element in model B if there is a LibraryReference
  * from A to B. This live validation rule finds references that violate this restriction.
  */
-public class InterModelConsistencyValidationRule extends AbstractValidationRule {
+public class InterModelConsistencyLiveValidationRule extends AbstractValidationRule {
 
   @Override
   public IStatus validate(IValidationContext ctx) {
@@ -45,14 +45,14 @@ public class InterModelConsistencyValidationRule extends AbstractValidationRule 
       return ctx.createSuccessStatus();
     }
 
-    for (Notification n : ctx.getAllEvents()) {
+    for (Notification notification : ctx.getAllEvents()) {
 
-      if (n.getNotifier() instanceof EObject) {
-        // make sure this rule is evaluated only once per transaction
-        ctx.skipCurrentConstraintFor((EObject) n.getNotifier());
-        if (CapellaResourceHelper.isSemanticElement(n.getNotifier())) {
+      if (notification.getNotifier() instanceof EObject) {
+        // Make sure this rule is evaluated only once per transaction
+        ctx.skipCurrentConstraintFor((EObject) notification.getNotifier());
+        if (CapellaResourceHelper.isSemanticElement(notification.getNotifier())) {
           if (linkChecker == null) {
-            TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(n.getNotifier());
+            TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(notification.getNotifier());
             if (domain instanceof SemanticEditingDomain) {
               linkChecker = new DependencyChecker((SemanticEditingDomain) domain);
             } else {
@@ -60,16 +60,16 @@ public class InterModelConsistencyValidationRule extends AbstractValidationRule 
             }
           }
 
-          if (n.getFeature() instanceof EReference) {
-            EReference ref = (EReference) n.getFeature();
+          if (notification.getFeature() instanceof EReference) {
+            EReference ref = (EReference) notification.getFeature();
             Collection<EObject> check = Collections.emptyList();
-            if (n.getEventType() == Notification.SET || n.getEventType() == Notification.ADD) {
-              EObject newValue = (EObject) n.getNewValue();
+            if (notification.getEventType() == Notification.SET || notification.getEventType() == Notification.ADD) {
+              EObject newValue = (EObject) notification.getNewValue();
               if (newValue != null) {
                 check = Collections.singleton(newValue);
               }
-            } else if (n.getEventType() == Notification.ADD_MANY) {
-              check = ((Collection<EObject>)n.getNewValue());
+            } else if (notification.getEventType() == Notification.ADD_MANY) {
+              check = ((Collection<EObject>)notification.getNewValue());
             }
             if (ref.isContainment()) {
               for (EObject e : check) {
@@ -77,7 +77,7 @@ public class InterModelConsistencyValidationRule extends AbstractValidationRule 
               }
             } else {
               for (EObject e : check) {
-                linkChecker.checkLink((EObject) n.getNotifier(), e, ref);
+                linkChecker.checkLink((EObject) notification.getNotifier(), e, ref);
               }
             }
           }
@@ -85,8 +85,8 @@ public class InterModelConsistencyValidationRule extends AbstractValidationRule 
     }
   }
 
-  if (linkChecker != null && linkChecker.getDependencyViolations().size() > 0) {
-    Collection<IStatus> children = new ArrayList<IStatus>();
+  if (linkChecker != null && !linkChecker.getDependencyViolations().isEmpty()) {
+    Collection<IStatus> children = new ArrayList<>();
     for (DependencyViolation v : linkChecker.getDependencyViolations()) {
       Object[] args = new Object[] {
           v.getSource(),

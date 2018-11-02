@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,6 +14,8 @@ package org.polarsys.capella.core.model.helpers.intermodelInconsistencyDetection
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
@@ -34,22 +36,22 @@ import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFact
 public class DependencyChecker {
 
 	protected SemanticEditingDomain domain;
-	protected HashMap<EObject, HashSet<EObject>> correctLinks = new HashMap<EObject, HashSet<EObject>>();
-	protected HashMap<IModelIdentifier, HashSet<IModelIdentifier>> modelIndentifier2AllReferencedModelIdentifiers = new HashMap<IModelIdentifier, HashSet<IModelIdentifier>>();
-	protected HashSet<DependencyViolation> dependencyViolations = new HashSet<DependencyViolation>();
+	protected Map<EObject, Set<EObject>> correctLinks = new HashMap<>();
+	protected Map<IModelIdentifier, Set<IModelIdentifier>> modelIndentifier2AllReferencedModelIdentifiers = new HashMap<>();
+	protected Set<DependencyViolation> dependencyViolations = new HashSet<>();
 	
 	public DependencyChecker(SemanticEditingDomain domain) {
 		this.domain = domain;
 	}
 	
-	public HashSet<DependencyViolation> getDependencyViolations() {
+	public Set<DependencyViolation> getDependencyViolations() {
 		return dependencyViolations;
 	}
 	
-	public HashSet<IModelIdentifier> getAllReferencedLibraryIdentifiers(IModel model) {
-		HashSet<IModelIdentifier> res = modelIndentifier2AllReferencedModelIdentifiers.get(model.getIdentifier());
+	public Set<IModelIdentifier> getAllReferencedLibraryIdentifiers(IModel model) {
+		Set<IModelIdentifier> res = modelIndentifier2AllReferencedModelIdentifiers.get(model.getIdentifier());
 		if (res == null) {
-			res = new HashSet<IModelIdentifier>();
+			res = new HashSet<>();
 			for (IModel referencedModel : LibraryManagerExt.getAllReferences(model))
 				res.add(referencedModel.getIdentifier());
 			modelIndentifier2AllReferencedModelIdentifiers.put(model.getIdentifier(), res);
@@ -88,13 +90,14 @@ public class DependencyChecker {
 			if (!ref.isDerived()) {
 				Object o = object.eGet(ref);
 				if (o != null) {
-					HashSet<EObject> targetedObjects = new HashSet<EObject>();
+					Set<EObject> targetedObjects = new HashSet<>();
 					if (o instanceof List<?>) {
 						for (Object item : (List<?>) o)
 							if (item instanceof EObject)
 								targetedObjects.add((EObject) item);
-					} else if (o instanceof EObject)
-						targetedObjects.add((EObject) o);
+					} else if (o instanceof EObject) {
+					  targetedObjects.add((EObject) o);					  
+					}
 					for (EObject target : targetedObjects) {
 						if (!checkLink(object, target, ref))
 							return false;
@@ -112,16 +115,12 @@ public class DependencyChecker {
 	}
 	
 	protected void declareLinkAsCorrect(EObject source, EObject target) {
-		HashSet<EObject> list = correctLinks.get(source);
-		if (list == null) {
-			list = new HashSet<EObject>();
-			correctLinks.put(source, list);
-		}
+    Set<EObject> list = correctLinks.computeIfAbsent(source, f -> new HashSet<>());
 		list.add(target);		
 	}
 	
 	protected boolean doesLinkHasBeenDeclaredAsCorrect(EObject source, EObject target) {
-		HashSet<EObject> list = correctLinks.get(source);
+		Set<EObject> list = correctLinks.get(source);
 		return list != null && list.contains(target);
 	}
 }

@@ -220,7 +220,9 @@ public class EObjectNavigatorDialog extends AbstractMessageDialogWithViewer {
     containingComposite.setLayout(layout);
     containingComposite.setLayoutData(new GridData(GridData.FILL_BOTH));
 
-    createSelectCycleArea(containingComposite);
+    if (cycles.size() > 1) {
+      createSelectCycleArea(containingComposite);
+    }
 
     // Create the viewer area.
     createViewerArea(containingComposite);

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,8 +11,8 @@
 package org.polarsys.capella.core.model.helpers.intermodelInconsistencyDetection;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.Stack;
 
 public class TarjanAlgorithm {
@@ -26,20 +26,20 @@ public class TarjanAlgorithm {
 	/** to check if v is visited **/
 	private boolean[] visited;
 	/** to store given graph **/
-	private HashSet<Integer>[] graph;
+	private Set<Integer>[] graph;
 	/** to store all scc **/
 	private List<List<Integer>> sccComp;
 	private Stack<Integer> stack;
 
 	/** function to get all strongly connected components **/
-	public List<List<Integer>> getSCComponents(HashSet<Integer>[] graph) {
+	public List<List<Integer>> getSCComponents(Set<Integer>[] graph) {
 		V = graph.length;
 		// Do not clone the graph
 		this.graph = graph;
 		low = new int[V];
 		visited = new boolean[V];
-		stack = new Stack<Integer>();
-		sccComp = new ArrayList<List<Integer>>();
+		stack = new Stack<>();
+		sccComp = new ArrayList<>();
 		for (int v = 0; v < V; v++)
 			if (!visited[v])
 				dfs(v);
@@ -62,7 +62,7 @@ public class TarjanAlgorithm {
 			low[v] = min;
 			return;
 		}
-		List<Integer> component = new ArrayList<Integer>();
+		List<Integer> component = new ArrayList<>();
 		int w;
 		do {
 			w = stack.pop();
