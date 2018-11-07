@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.polarsys.capella.test.diagram.layout.ju.layout.impl;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -357,6 +358,17 @@ public class EdgeLayoutImpl extends MinimalEObjectImpl.Container implements Edge
    * <!-- end-user-doc -->
    * @generated
    */
+  public void refresh() {
+    // TODO: implement this method
+    // Ensure that you remove @generated or mark it @generated NOT
+    throw new UnsupportedOperationException();
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
     switch (featureID) {
@@ -498,6 +510,21 @@ public class EdgeLayoutImpl extends MinimalEObjectImpl.Container implements Edge
         return target != null;
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+    switch (operationID) {
+      case LayoutPackage.EDGE_LAYOUT___REFRESH:
+        refresh();
+        return null;
+    }
+    return super.eInvoke(operationID, arguments);
   }
 
   /**

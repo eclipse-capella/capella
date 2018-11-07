@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,10 +23,12 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.junit.Assert;
 import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.core.diagram.helpers.DiagramHelper;
+import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.core.sirius.analysis.DiagramServices;
 import org.polarsys.capella.test.diagram.common.ju.step.crud.ClearDiagramStep;
 import org.polarsys.capella.test.diagram.common.ju.step.crud.OpenDiagramStep;
@@ -53,6 +55,11 @@ public class DiagramContext extends SessionContext {
   private Map<String, DDiagramElement> _viewObjectMap;
 
   private String _type;
+
+  public static DiagramContext getDiagram(SessionContext executionContext, String targetIdentifier) {
+    DRepresentationDescriptor descriptor = RepresentationHelper.getRepresentationDescriptor(executionContext.getSession().getTransactionalEditingDomain().getResourceSet(), targetIdentifier);
+    return (DiagramContext) new DiagramContext(executionContext, ((DDiagram)descriptor.getRepresentation()));
+  }
 
   public Map<String, DDiagramElement> getViewObjectMap() {
     if (null == _viewObjectMap) {
@@ -86,6 +93,10 @@ public class DiagramContext extends SessionContext {
     return _diagram;
   }
 
+  public DRepresentationDescriptor getDiagramDescriptor() {
+    return RepresentationHelper.getRepresentationDescriptor(_diagram);
+  }
+  
   public String getDiagramId() {
     return diagramIdentifier;
   }

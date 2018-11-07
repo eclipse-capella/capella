@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.polarsys.capella.test.diagram.filters.ju.testsuites.DiagramFiltersTestSuite;
+import org.polarsys.capella.test.diagram.layout.ju.testsuites.LayoutTestSuite;
 import org.polarsys.capella.test.diagram.misc.ju.testsuites.DiagramMiscTestSuite;
 import org.polarsys.capella.test.diagram.tools.ju.testsuites.main.DiagramToolsTestSuite;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
@@ -39,7 +40,9 @@ public class RunInUIStep5TestSuite extends BasicTestSuite {
     tests.add(new DiagramToolsTestSuite());
     tests.add(new DiagramFiltersTestSuite());
     tests.add(new DiagramMiscTestSuite());
-    //tests.add(new DocTestSuite());
+    tests.add(new LayoutTestSuite());
+
+    // tests.add(new DocTestSuite());
     return tests;
   }
 

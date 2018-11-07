@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.polarsys.capella.test.diagram.layout.ju.layout.impl;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -287,6 +288,17 @@ public class NoteLayoutImpl extends MinimalEObjectImpl.Container implements Note
    * <!-- end-user-doc -->
    * @generated
    */
+  public void refresh() {
+    // TODO: implement this method
+    // Ensure that you remove @generated or mark it @generated NOT
+    throw new UnsupportedOperationException();
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
     switch (featureID) {
@@ -405,6 +417,21 @@ public class NoteLayoutImpl extends MinimalEObjectImpl.Container implements Note
         return bounds != null;
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+    switch (operationID) {
+      case LayoutPackage.NOTE_LAYOUT___REFRESH:
+        refresh();
+        return null;
+    }
+    return super.eInvoke(operationID, arguments);
   }
 
   /**

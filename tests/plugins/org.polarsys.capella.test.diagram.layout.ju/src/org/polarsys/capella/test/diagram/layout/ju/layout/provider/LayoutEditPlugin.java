@@ -13,6 +13,7 @@ package org.polarsys.capella.test.diagram.layout.ju.layout.provider;
 import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.provider.EcoreEditPlugin;
+import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 /**
  * This is the central singleton for the Layout edit plugin.
@@ -47,6 +48,7 @@ public final class LayoutEditPlugin extends EMFPlugin {
     super
       (new ResourceLocator [] {
          EcoreEditPlugin.INSTANCE,
+         SiriusEditPlugin.INSTANCE,
        });
   }
 

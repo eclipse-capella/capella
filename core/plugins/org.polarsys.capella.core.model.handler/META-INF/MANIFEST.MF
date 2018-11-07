@@ -13,7 +13,7 @@ Require-Bundle: com.google.guava,
  org.polarsys.capella.core.data.gen.edit,
  org.polarsys.capella.common.data.helpers,
  org.polarsys.capella.common.libraries
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.model.handler,
  org.polarsys.capella.core.model.handler.advisor,
@@ -28,3 +28,4 @@ Export-Package: org.polarsys.capella.core.model.handler,
  org.polarsys.capella.core.model.handler.validation
 Bundle-Activator: org.polarsys.capella.core.model.handler.ModelHandlerPlugin
 Bundle-Localization: plugin
+Automatic-Module-Name: org.polarsys.capella.core.model.handler

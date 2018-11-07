@@ -22,6 +22,7 @@ import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.query.RepresentationDescriptionQuery;
 import org.eclipse.sirius.business.api.session.Session;
@@ -43,6 +44,7 @@ import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.cs.AbstractActor;
 import org.polarsys.capella.core.data.interaction.InteractionPackage;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
+import org.polarsys.capella.shared.id.handler.IScope;
 
 import com.google.common.collect.Iterables;
 
@@ -135,12 +137,13 @@ public class RepresentationHelper {
 
   /**
    * Get all representation descriptors targeted by specified semantic elements.<br>
-   * Default implementation loops over specified elements and search for all representation descriptorss in a specified element
-   * containment subtree.
+   * Default implementation loops over specified elements and search for all representation descriptorss in a specified
+   * element containment subtree.
    *
    * @return a not <code>null</code> collection.
    */
-  public static Collection<DRepresentationDescriptor> getAllRepresentationDescriptorsTargetedBy(Collection<?> semanticElements) {
+  public static Collection<DRepresentationDescriptor> getAllRepresentationDescriptorsTargetedBy(
+      Collection<?> semanticElements) {
     Set<DRepresentationDescriptor> representations = new HashSet<DRepresentationDescriptor>();
     // Go through EObjects only.
     Iterable<EObject> semanticEObjects = Iterables.filter(semanticElements, EObject.class);
@@ -439,6 +442,34 @@ public class RepresentationHelper {
   }
 
   /**
+   * Get the representation descriptor whose UID or repPath equals to the parameter id.
+   */
+  public static DRepresentationDescriptor getRepresentationDescriptor(ResourceSet resourceSet, String id) {
+    IScope capellaSemanticResourceScope = new SemanticResourcesScope(resourceSet);
+    List<Resource> capellaSemanticResources = capellaSemanticResourceScope.getResources();
+    Resource resource = capellaSemanticResources.stream().findFirst().orElse(null);
+    Session session = SessionManager.INSTANCE.getSession(resource);
+    Collection<DRepresentationDescriptor> representationDescriptors = DialectManager.INSTANCE
+        .getAllRepresentationDescriptors(session);
+    for (DRepresentationDescriptor representationDescriptor : representationDescriptors) {
+
+      String descriptorFragment;
+      try {
+        descriptorFragment = representationDescriptor.getRepPath().getResourceURI().fragment();
+      } catch (NullPointerException e) {
+        descriptorFragment = "";
+      }
+
+      String descriptorUid = representationDescriptor.eResource().getURIFragment(representationDescriptor);
+
+      if (id.equals(descriptorFragment) || id.equals(descriptorUid)) {
+        return representationDescriptor;
+      }
+    }
+    return null;
+  }
+
+  /**
    * Retrieves all the descriptors related to the given representations
    *
    * @param representations
@@ -460,10 +491,10 @@ public class RepresentationHelper {
   }
 
   /**
-   * Returns all representation descriptors containing an annotation referencing at least one element of
-   * the given list
+   * Returns all representation descriptors containing an annotation referencing at least one element of the given list
    */
-  public static Collection<DRepresentationDescriptor> getAllRepresentationDescriptorsAnnotatedBy(List<EObject> objects) {
+  public static Collection<DRepresentationDescriptor> getAllRepresentationDescriptorsAnnotatedBy(
+      List<EObject> objects) {
     Collection<DRepresentationDescriptor> result = new ArrayList<DRepresentationDescriptor>();
     if (!objects.isEmpty()) {
       Session session = SessionManager.INSTANCE.getSession(objects.iterator().next());
