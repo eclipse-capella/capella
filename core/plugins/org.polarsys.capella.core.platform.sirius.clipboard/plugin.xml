@@ -24,6 +24,10 @@
 	               <command
 	                     commandId="org.polarsys.capella.core.platform.sirius.clipboard.paste">
 	               </command>
+                <command
+                      commandId="org.polarsys.capella.core.platform.sirius.clipboard.cut"
+                      style="push">
+                </command>
 	               <command
 	                     commandId="org.polarsys.capella.core.platform.sirius.clipboard.pasteStyleOnly">
 	               </command>
@@ -69,6 +73,12 @@
             schemeId="org.polarsys.capella.core.defaultAcceleratorConfiguration"
             sequence="M1+C">
       </key>
+      <key
+            commandId="org.polarsys.capella.core.platform.sirius.clipboard.cut"
+            contextId="org.eclipse.sirius.diagram.ui.diagramContext"
+            schemeId="org.polarsys.capella.core.defaultAcceleratorConfiguration"
+            sequence="M1+X">
+      </key>
    </extension>
    <extension
          point="org.eclipse.ui.commands">
@@ -113,6 +123,14 @@
             id="org.polarsys.capella.core.platform.sirius.clipboard.pasteLayoutOnly"
             name="Paste with layout only">
       </command>
+      <command
+            categoryId="org.polarsys.capella.core.platform.sirius.clipboard.category"
+            description="Capella Diagram Cut"
+            id="org.polarsys.capella.core.platform.sirius.clipboard.cut"
+            name="Cut">
+      </command>
+      
+      
    </extension>
    <extension
          point="org.eclipse.ui.statusHandlers">
