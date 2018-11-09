@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,9 +19,8 @@ import org.eclipse.ui.ISelectionService;
 import org.eclipse.ui.actions.CompoundContributionItem;
 import org.eclipse.ui.menus.IWorkbenchContribution;
 import org.eclipse.ui.services.IServiceLocator;
-
-import org.polarsys.capella.common.ui.actions.ModelAdaptation;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
+import org.polarsys.capella.common.ui.actions.ModelAdaptation;
 
 /**
  * A wrapper to the ContributionItem used to create elements on Capella Specific case: we use the serviceLocator to retrieve selection made on the TreeViewer
@@ -50,13 +49,7 @@ public class DynamicCreateContributionItem extends CompoundContributionItem impl
         public ISelection getSelection() {
           ISelectionService selectionService = (ISelectionService) locator.getService(ISelectionService.class);
           final ISelection selection = selectionService.getSelection();
-          ModelElement element = getSelectedElement(selection);
-
-          if (element == null) {
-            return selectionService.getSelection();
-          }
-
-          return new StructuredSelection(element);
+          return new StructuredSelection(ModelAdaptation.adaptToCapellaElements(selection));
         }
 
         @Override
@@ -74,7 +67,9 @@ public class DynamicCreateContributionItem extends CompoundContributionItem impl
    * Get model element form current selection.
    * @param _selection
    * @return could be <code>null</code>
+   * @deprecated
    */
+  @Deprecated
   protected ModelElement getSelectedElement(Object _selection) {
     ModelElement element = ModelAdaptation.adaptToCapella(_selection);
     // if ((element == null) && (_selection instanceof IAdaptable)) {
