@@ -3926,7 +3926,6 @@
             </basicQuery>
          </categoryQuery>
       </category>
-
       <category
             id="capella.semantic.queries.Actor_RefiningOperationalActor_sysring"
             isTopLevel="true"
@@ -5333,6 +5332,22 @@
          </categoryQuery>
       </category>
       <category
+            id="org.polarsys.capella.core.semantic.queries.Capability_extendingCapabilities"
+            isTopLevel="true"
+            name="Extending Capabilities">
+         <availableForType
+               class="org.polarsys.capella.core.data.interaction.AbstractCapability">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencingElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.Capability_extendingCapabilities">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+      <category
             id="org.polarsys.capella.core.semantic.queries.Capability_includedCapabilities"
             isTopLevel="true"
             name="Included Capabilities">
@@ -5345,6 +5360,22 @@
          <categoryQuery>
             <basicQuery
                   class="org.polarsys.capella.core.semantic.queries.basic.queries.Capability_includedCapabilities">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.Capability_includingCapabilities"
+            isTopLevel="true"
+            name="Including Capabilities">
+         <availableForType
+               class="org.polarsys.capella.core.data.interaction.AbstractCapability">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencingElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.Capability_includingCapabilities">
             </basicQuery>
          </categoryQuery>
       </category>
