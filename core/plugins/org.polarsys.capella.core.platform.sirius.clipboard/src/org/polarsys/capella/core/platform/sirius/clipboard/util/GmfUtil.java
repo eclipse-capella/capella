@@ -167,5 +167,23 @@ public final class GmfUtil {
     figure.translateToAbsolute(bounds);
     Point swtPoint = new org.eclipse.swt.graphics.Point(bounds.x, bounds.y);
     return canvas.getDisplay().map(canvas, null, swtPoint);
-  }  
+  }
+  
+  /**
+   * 
+   * @param elements
+   * @return the context diagram of the given elements. It assumes that all elements are owned by the same diagram.
+   */
+  public static String getContextDiagram(List<? extends EObject> elements) {
+    for (EObject obj : elements) {
+      if (obj instanceof View) {
+        EObject element = ((View) obj).getElement();
+        String contextDiagram = SiriusUtil.getContextDiagram(element);
+        if (contextDiagram != null) {
+          return contextDiagram;
+        }
+      }
+    }
+    return null;
+  }
 }

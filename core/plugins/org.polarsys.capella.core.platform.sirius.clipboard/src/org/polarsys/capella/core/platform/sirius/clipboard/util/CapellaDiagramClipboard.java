@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -56,6 +56,9 @@ public class CapellaDiagramClipboard {
   // Keep layouts and styles of copied element in the Clipboard
   private final CapellaDiagramFormatDataManager formatDataManager;
   
+  // Keep the name of the diagram from which the objects are copied to the Clipboard
+  private String contextDiagram;
+  
   /**
    * Basic constructor
    */
@@ -74,6 +77,8 @@ public class CapellaDiagramClipboard {
   public void copy(List<? extends View> toCopy) {
     assert toCopy != null;
     clear();
+    // Set the context diagram
+    setContextDiagram(GmfUtil.getContextDiagram(toCopy));
     // Remember GMF original elements
     _gmfElements.addAll(toCopy);
     // Remember Sirius original elements
@@ -151,5 +156,21 @@ public class CapellaDiagramClipboard {
   public List<View> getGmfElements() {
     return Collections.unmodifiableList(_gmfElements);
   }
+
+
+  /**
+   * Set the name of the diagram from which the objects are copied to the Clipboard.
+   * @param contextDiagram
+   */
+  public void setContextDiagram(String contextDiagram) {
+    this.contextDiagram = contextDiagram;
+  }
   
+  /**
+   * 
+   * @return the name of the diagram from which the objects on the Clipboard were copied.
+   */
+  public String getContextDiagram() {
+    return contextDiagram;
+  }
 }
