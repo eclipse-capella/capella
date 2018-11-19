@@ -1083,6 +1083,22 @@
             id="---------- ComponentPort ---------">
       </category>
       <category
+            id="org.polarsys.capella.core.semantic.queries.basic.queries.ComponentPortAllocatingPhysicalPorts"
+            isTopLevel="true"
+            name="Allocating Physical Ports">
+         <availableForType
+               class="org.polarsys.capella.core.data.fa.ComponentPort">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencingElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.ComponentPortAllocatingPhysicalPorts">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+      <category
             id="org.polarsys.capella.core.semantic.queries.basic.queries.ComponentPortIncomingComponentExchanges"
             isTopLevel="true"
             name="Incoming Component Exchanges">
@@ -2343,6 +2359,22 @@
                         class="org.polarsys.capella.core.semantic.queries.basic.queries.PhysicalLinkSourceAndTarget">
                   </basicQuery>
                </itemQueries>
+            </category>
+            <category
+                  id="org.polarsys.capella.core.semantic.queries.basic.queries.PhysicalPortAllocatedComponentPorts"
+                  isTopLevel="true"
+                  name="Allocated Component Ports">
+               <availableForType
+                     class="org.polarsys.capella.core.data.cs.PhysicalPort">
+               </availableForType>
+               <targetBrowserId
+                     id="ReferencedElementBrowser">
+               </targetBrowserId>
+               <categoryQuery>
+                  <basicQuery
+                        class="org.polarsys.capella.core.semantic.queries.basic.queries.PhysicalPortAllocatedComponentPorts">
+                  </basicQuery>
+               </categoryQuery>
             </category>
             <category
                   id="org.polarsys.capella.core.semantic.queries.basic.queries.PhysicalPortOutgoingDelgations"
