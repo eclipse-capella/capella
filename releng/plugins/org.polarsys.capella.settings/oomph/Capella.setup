@@ -310,7 +310,7 @@
         <repositoryList
             name="Oxygen">
           <repository
-              url="http://download.eclipse.org/modeling/amalgam/updates/stable/1.9.0-S20180903/capella"/>
+              url="http://download.eclipse.org/modeling/amalgam/updates/stable/1.10.0-S20181119/capella"/>
         </repositoryList>
         <repositoryList
             name="Neon">
