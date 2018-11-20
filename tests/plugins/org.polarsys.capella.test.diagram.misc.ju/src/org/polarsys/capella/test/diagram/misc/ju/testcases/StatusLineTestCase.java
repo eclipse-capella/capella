@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.action.IStatusLineManager;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DView;
@@ -109,6 +110,9 @@ public class StatusLineTestCase extends BasicTestCase {
         sdfb = entry.getOwnedRepresentationDescriptors().get(0);
       }
     }
+    
+    // Load all representations (so that the status is the same in case of lazy loading)
+    DialectManager.INSTANCE.getAllRepresentations(session);
     
     // Select the SFDB descriptor in Project Explorer
     ISelection sdfbSelection = new StructuredSelection(sdfb);
