@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,6 +22,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
@@ -30,7 +31,6 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.EcoreUtil.Copier;
-import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.gmf.runtime.emf.clipboard.core.ClipboardUtil;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.View;
@@ -90,11 +90,11 @@ public class CapellaDiagramPasteCommand extends AbstractResultCommand {
    * 
    */
   public CapellaDiagramPasteCommand(List<? extends View> targets, boolean restoreStyles) {
-    assert targets != null;
+    Assert.isNotNull(targets);
     this.isRestoreStyles = restoreStyles;
-    this.targets = new ArrayList<View>(targets);
+    this.targets = new ArrayList<>(targets);
     this.suffix = null;
-    this.pastedSiriusElementsMapping = new HashMap<DRepresentationElement, DRepresentationElement>();
+    this.pastedSiriusElementsMapping = new HashMap<>();
     this.isStandbyUsage = checkStandbyUsage();
   }
 
@@ -187,8 +187,8 @@ public class CapellaDiagramPasteCommand extends AbstractResultCommand {
    * Return whether the user simply copy/pasted without selecting a paste target
    */
   protected boolean checkStandbyUsage() {
-    Set<EObject> copySelection = new HashSet<EObject>(CapellaDiagramClipboard.getInstance().getSiriusElements());
-    Set<EObject> pasteSelection = new HashSet<EObject>(LayerUtil.toSirius(targets));
+    Set<EObject> copySelection = new HashSet<>(CapellaDiagramClipboard.getInstance().getSiriusElements());
+    Set<EObject> pasteSelection = new HashSet<>(LayerUtil.toSirius(targets));
     return copySelection.equals(pasteSelection);
   }
 
@@ -240,8 +240,8 @@ public class CapellaDiagramPasteCommand extends AbstractResultCommand {
    */
   protected List<EObject> reconcileSiriusAndSemanticLayers(Iterable<? extends EObject> siriusElements,
       Iterable<? extends EObject> siriusOrigins, List<EObject> semanticOrigins, List<EObject> semanticCopies) {
-    List<EObject> result = new LinkedList<EObject>();
-    Collection<EObject> toDelete = new ArrayList<EObject>();
+    List<EObject> result = new LinkedList<>();
+    Collection<EObject> toDelete = new ArrayList<>();
     for (EObject siriusElement : siriusElements) {
       reconcileSiriusElement(siriusElement, semanticOrigins, semanticCopies, siriusOrigins, result, toDelete);
       Iterator<EObject> it = siriusElement.eAllContents();
@@ -316,11 +316,6 @@ public class CapellaDiagramPasteCommand extends AbstractResultCommand {
    */
   @SuppressWarnings("unchecked")
   protected Collection<EObject> pasteSiriusElements(final String data, EObject target) {
-
-    if (!(target.eResource() instanceof XMLResource)) {
-      //org.eclipse.gmf.runtime.emf.clipboard.core.IClipboardSupport doesn't support any other resources than XMLResource
-      throw new RuntimeException(Messages.CapellaDiagramPasteAction_Unsupported);
-    }
     
     Collection<EObject> result = ClipboardUtil.pasteElementsFromString(data, target, null, null);
     if ((result != null) && !result.isEmpty()) {
@@ -369,7 +364,7 @@ public class CapellaDiagramPasteCommand extends AbstractResultCommand {
     List<EObject> result = null;
     // Get locations of original elements
     List<StorageLocation> locations = getInstantiationLocationsForAddition(origins, source, target);
-    if (locations != null) {
+    if(!locations.isEmpty()) {
       assert origins.size() == locations.size();
       // Compute suffix for names uniqueness
       suffix = getCommonSuffix(origins, locations);
@@ -446,14 +441,14 @@ public class CapellaDiagramPasteCommand extends AbstractResultCommand {
    * Return a sorted copy of the given collection where
    */
   protected List<EObject> sortBySibling(Collection<EObject> elements) {
-    ArrayList<EObject> result = new ArrayList<EObject>(elements.size());
+    ArrayList<EObject> result = new ArrayList<>(elements.size());
     // Classify elements by location
-    Map<StorageLocation, List<EObject>> siblings = new HashMap<StorageLocation, List<EObject>>();
+    Map<StorageLocation, List<EObject>> siblings = new HashMap<>();
     for (EObject element : elements) {
       StorageLocation location = new StorageLocation(element.eContainer(), element.eContainmentFeature());
       List<EObject> localSiblings = siblings.get(location);
       if (null == localSiblings) {
-        localSiblings = new ArrayList<EObject>();
+        localSiblings = new ArrayList<>();
         siblings.put(location, localSiblings);
       }
       localSiblings.add(element);
@@ -492,7 +487,7 @@ public class CapellaDiagramPasteCommand extends AbstractResultCommand {
    * Among the given copies, remove those which are not meaningful according to business criteria
    */
   protected void filterOutUnrelevantSemanticElements(List<EObject> copies) {
-    Collection<EObject> toDelete = new ArrayList<EObject>();
+    Collection<EObject> toDelete = new ArrayList<>();
     for (EObject copy : copies) {
       // Keep roots, only consider their content
       TreeIterator<EObject> it = copy.eAllContents();
@@ -547,14 +542,13 @@ public class CapellaDiagramPasteCommand extends AbstractResultCommand {
    * the given elements at the given locations
    */
   protected String getCommonSuffix(List<EObject> origins, List<StorageLocation> locations) {
-    final List<List<EObject>> childrenList = new ArrayList<List<EObject>>(origins.size());
-    final List<String> names = new ArrayList<String>(origins.size());
+    final List<List<EObject>> childrenList = new ArrayList<>(origins.size());
+    final List<String> names = new ArrayList<>(origins.size());
     for (int i = 0; i < origins.size(); i++) {
       names.add(NamingUtil.getName(origins.get(i)));
       childrenList.add(getElementsAtLocation(locations.get(i)));
     }
-    final String result = NamingUtil.getSuffixForUniqueNames(childrenList, names);
-    return result;
+    return NamingUtil.getSuffixForUniqueNames(childrenList, names);
   }
 
   /**
@@ -564,7 +558,7 @@ public class CapellaDiagramPasteCommand extends AbstractResultCommand {
    */
   protected List<EObject> getSemanticRootsForCopy(Collection<? extends EObject> selectedSiriusElements,
       EObject semanticTarget) {
-    List<EObject> result = new ArrayList<EObject>();
+    List<EObject> result = new ArrayList<>();
     for (EObject siriusElement : selectedSiriusElements) {
       if (siriusElement instanceof DSemanticDecorator) {
         EObject semanticElement = ((DSemanticDecorator) siriusElement).getTarget();
@@ -587,13 +581,11 @@ public class CapellaDiagramPasteCommand extends AbstractResultCommand {
    */
   protected List<StorageLocation> getInstantiationLocationsForAddition(List<EObject> elements, EObject source,
       EObject target) {
-    List<StorageLocation> result = new ArrayList<StorageLocation>();
+    List<StorageLocation> result = new ArrayList<>();
     for (EObject element : elements) {
       StorageLocation location = getInstantiationLocation(element, source, target);
-      if (location.supportsAddition()) {
+      if (location != null && location.supportsAddition()) {
         result.add(location);
-      } else {
-        return null;
       }
     }
     return result;

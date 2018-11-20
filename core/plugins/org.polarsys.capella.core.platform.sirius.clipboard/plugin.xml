@@ -113,8 +113,6 @@
             id="org.polarsys.capella.core.platform.sirius.clipboard.pasteLayoutOnly"
             name="Paste with layout only">
       </command>
-      
-      
    </extension>
    <extension
          point="org.eclipse.ui.statusHandlers">
@@ -126,6 +124,14 @@
                value="org.polarsys.capella.core.platform.sirius.clipboard">
          </parameter>
       </statusHandler>
+   </extension>
+   <extension
+         point="org.eclipse.gmf.runtime.emf.clipboard.core.clipboardSupport">
+      <factory
+            class="org.polarsys.capella.core.platform.sirius.clipboard.support.CapellaClipboardSupportFactory"
+            policy="org.polarsys.capella.core.platform.sirius.clipboard.support.CapellaClipboardSupportPolicy"
+            priority="highest">
+      </factory>
    </extension>
 
 </plugin>
