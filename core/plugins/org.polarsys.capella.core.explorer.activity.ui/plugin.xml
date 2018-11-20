@@ -288,13 +288,13 @@
                %SystemAnalysisActivityExplorerPage_DefineActorsMissionsCapabilitiesSection_Description
             </Description>
             <Activity
-                  class="org.polarsys.capella.core.explorer.activity.ui.hyperlinkadapter.la.PerformAutomatedCapabilitiesTransitionAdapter"
+                  class="org.polarsys.capella.core.explorer.activity.ui.hyperlinkadapter.sa.PerformOpCapabilityToSystemCapabilityTransitionAdapter"
                   id="org.polarsys.capella.core.explorer.activity.ui.section.sa.transition.capabilities"
                   image="icons/full/ctool/transition.png"
                   index="1"
-                  name="%LogicalArchitectureActivityExplorerPage_PerformTransitionOfCapabilities_Title">
+                  name="%SystemAnalysisActivityExplorerPage_PerformTransitionOfCapabilities_Title">
                <Description>
-                  %LogicalArchitectureActivityExplorerPage_PerformTransitionOfCapabilities_Description
+                  %SystemAnalysisActivityExplorerPage_PerformTransitionOfCapabilities_Description
                </Description>
             </Activity>
             <Activity
