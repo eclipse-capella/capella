@@ -98,6 +98,37 @@
           </basicQuery>
        </categoryQuery>
     </category>
+	<category
+	      id="org.polarsys.capella.core.semantic.queries.GeneralizableElementAllSuperGE"
+	      isTopLevel="true"
+	      name="Super Types">
+	   <categoryQuery>
+	      <basicQuery
+	            class="org.polarsys.capella.core.semantic.queries.basic.queries.GeneralizableElementAllSuperGE">
+	      </basicQuery>
+	   </categoryQuery>
+	   <targetBrowserId
+	         id="ReferencedElementBrowser">
+	   </targetBrowserId>
+	   <availableForType
+	         class="org.polarsys.capella.core.data.capellacore.GeneralizableElement">
+	   </availableForType>
+	</category>
+    <category
+          id="org.polarsys.capella.core.semantic.queries.GeneralizableElementAllSubGE"
+          isTopLevel="true"
+          name="Sub Types">
+       <targetBrowserId
+             id="ReferencingElementBrowser">
+       </targetBrowserId>
+       <availableForType
+             class="org.polarsys.capella.core.data.capellacore.GeneralizableElement">
+       </availableForType>
+       <categoryQuery>
+          <basicQuery
+                class="org.polarsys.capella.core.semantic.queries.basic.queries.GeneralizableElementAllSubGE"></basicQuery>
+       </categoryQuery>
+    </category>
       <category
             id="------------- Component ----------------">
       </category>
@@ -435,6 +466,27 @@
          </itemQueries>
       </category>
       <category
+            id="capella.semantic.queries.Interface_inheritedExchangeItem"
+            isTopLevel="true"
+            name="Inherited Exchange Items">
+         <targetBrowserId
+               id="ReferencedElementBrowser">
+         </targetBrowserId>
+         <availableForType
+               class="org.polarsys.capella.core.data.cs.Interface">
+         </availableForType>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.InterfaceInheritedExchangesItems">
+            </basicQuery>
+         </categoryQuery>
+         <itemQueries>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.ExchangesItemExchangeItemElements">
+            </basicQuery>
+         </itemQueries>
+      </category>
+      <category
             id="org.polarsys.capella.core.semantic.queries.Interface_provisioningInterfaces"
             isTopLevel="true"
             name="Refining Interfaces">
@@ -482,7 +534,37 @@
             </basicQuery>
          </categoryQuery>
       </category>
-      
+      <category
+              id="org.polarsys.capella.core.semantic.queries.GeneralizableElementAllSuperGE"
+              isTopLevel="true"
+              name="Generalized Interfaces">
+           <categoryQuery>
+              <basicQuery
+                    class="org.polarsys.capella.core.semantic.queries.basic.queries.GeneralizableElementAllSuperGE">
+              </basicQuery>
+           </categoryQuery>
+           <targetBrowserId
+                 id="ReferencedElementBrowser">
+           </targetBrowserId>
+           <availableForType
+                class="org.polarsys.capella.core.data.cs.Interface">
+           </availableForType>
+      </category>
+      <category
+              id="org.polarsys.capella.core.semantic.queries.GeneralizableElementAllSubGE"
+              isTopLevel="true"
+              name="Generalizing Interfaces">
+           <targetBrowserId
+                 id="ReferencingElementBrowser">
+           </targetBrowserId>
+           <availableForType
+                 class="org.polarsys.capella.core.data.cs.Interface">
+           </availableForType>
+           <categoryQuery>
+              <basicQuery
+                    class="org.polarsys.capella.core.semantic.queries.basic.queries.GeneralizableElementAllSubGE"></basicQuery>
+           </categoryQuery>
+      </category>
       <category
             id="------------- Physical Component -------------">
       </category>
@@ -1979,37 +2061,6 @@
                   <basicQuery
                         class="org.polarsys.capella.core.semantic.queries.basic.queries.FunctionalExchangeOperationalProcess">
                   </basicQuery>
-               </categoryQuery>
-            </category>
-            <category
-                  id="org.polarsys.capella.core.semantic.queries.GeneralizableElementAllSuperGE"
-                  isTopLevel="true"
-                  name="Super Types">
-               <categoryQuery>
-                  <basicQuery
-                        class="org.polarsys.capella.core.semantic.queries.basic.queries.GeneralizableElementAllSuperGE">
-                  </basicQuery>
-               </categoryQuery>
-               <targetBrowserId
-                     id="ReferencedElementBrowser">
-               </targetBrowserId>
-               <availableForType
-                     class="org.polarsys.capella.core.data.capellacore.GeneralizableElement">
-               </availableForType>
-            </category>
-            <category
-                  id="org.polarsys.capella.core.semantic.queries.GeneralizableElementAllSubGE"
-                  isTopLevel="true"
-                  name="Sub Types">
-               <targetBrowserId
-                     id="ReferencingElementBrowser">
-               </targetBrowserId>
-               <availableForType
-                     class="org.polarsys.capella.core.data.capellacore.GeneralizableElement">
-               </availableForType>
-               <categoryQuery>
-                  <basicQuery
-                        class="org.polarsys.capella.core.semantic.queries.basic.queries.GeneralizableElementAllSubGE"></basicQuery>
                </categoryQuery>
             </category>
             <category
