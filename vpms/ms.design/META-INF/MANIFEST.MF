@@ -4,7 +4,7 @@ Bundle-Name: %pluginName
 Bundle-Vendor: %providerName
 Bundle-SymbolicName: ms.design;singleton:=true
 Bundle-Localization: plugin
-Bundle-Version: 0.11.0.qualifier
+Bundle-Version: 0.12.0.qualifier
 Bundle-Activator: ms.design.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
@@ -24,6 +24,6 @@ Require-Bundle: org.eclipse.ui,
  com.google.guava,
  org.polarsys.capella.core.data.gen
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: ms.configuration.services.cs,
  ms.design
