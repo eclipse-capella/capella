@@ -34,6 +34,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil.Copier;
 import org.eclipse.gmf.runtime.emf.clipboard.core.ClipboardUtil;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.osgi.util.NLS;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.diagram.DDiagram;
@@ -316,6 +317,12 @@ public class CapellaDiagramPasteCommand extends AbstractResultCommand {
    */
   @SuppressWarnings("unchecked")
   protected Collection<EObject> pasteSiriusElements(final String data, EObject target) {
+
+    String copyCtxtDiagram = CapellaDiagramClipboard.getInstance().getContextDiagram();
+    String pasteCtxtDiagram = SiriusUtil.getContextDiagram(target);
+    if (copyCtxtDiagram != null && pasteCtxtDiagram != null && !copyCtxtDiagram.equals(pasteCtxtDiagram)) {
+      throw new RuntimeException(NLS.bind(Messages.CapellaDiagramPasteAction_Unsupported, pasteCtxtDiagram, copyCtxtDiagram));
+    }
     
     Collection<EObject> result = ClipboardUtil.pasteElementsFromString(data, target, null, null);
     if ((result != null) && !result.isEmpty()) {
