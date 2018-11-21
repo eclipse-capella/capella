@@ -14,23 +14,24 @@ package org.polarsys.capella.core.semantic.queries.basic.queries;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 import org.polarsys.capella.common.helpers.query.IQuery;
-import org.polarsys.capella.core.data.capellacore.Type;
-import org.polarsys.capella.core.data.capellacore.TypedElement;
+import org.polarsys.capella.core.data.capellacommon.TransfoLink;
 
-public class TraceableElementIncomingTraceType implements IQuery {
+public class CapellaRelationshipsTransfoLinkSource implements IQuery {
 
   /**
    * @see org.polarsys.capella.common.helpers.query.IQuery#compute(java.lang.Object)
    */
   public List<Object> compute(Object object) {
     List<Object> result = new ArrayList<Object>();
-    if (object instanceof TypedElement) {
+    if (object instanceof TransfoLink) {
 
-      TypedElement element = (TypedElement) object;
-      Type elementKind = element.getType();
-      if (elementKind != null)
-        result.add(elementKind);
+      TransfoLink transfoLink = (TransfoLink) object;
+      TraceableElement element = transfoLink.getSourceElement();
+      if (null != element) {
+        result.add(element);
+      }
     }
     return result;
   }

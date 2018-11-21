@@ -101,7 +101,7 @@
 	<category
 	      id="org.polarsys.capella.core.semantic.queries.GeneralizableElementAllSuperGE"
 	      isTopLevel="true"
-	      name="Super Types">
+	      name="Generalized Elements">
 	   <categoryQuery>
 	      <basicQuery
 	            class="org.polarsys.capella.core.semantic.queries.basic.queries.GeneralizableElementAllSuperGE">
@@ -117,7 +117,7 @@
     <category
           id="org.polarsys.capella.core.semantic.queries.GeneralizableElementAllSubGE"
           isTopLevel="true"
-          name="Sub Types">
+          name="Generalizing Elements">
        <targetBrowserId
              id="ReferencingElementBrowser">
        </targetBrowserId>
@@ -214,6 +214,38 @@
          <categoryQuery>
             <basicQuery
                   class="org.polarsys.capella.core.semantic.queries.basic.queries.CapellaRelationshipsAllocationSource">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.CapellaRelationshipsTransfoLinkTarget"
+            isTopLevel="true"
+            name="Target">
+         <availableForType
+               class="org.polarsys.capella.core.data.capellacommon.TransfoLink">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencedElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.CapellaRelationshipsTransfoLinkTarget">
+            </basicQuery>
+         </categoryQuery>
+      </category>   
+      <category
+            id="org.polarsys.capella.core.semantic.queries.CapellaRelationshipsTransfoLinkSource"
+            isTopLevel="true"
+            name="Source">
+         <availableForType
+               class="org.polarsys.capella.core.data.capellacommon.TransfoLink">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencingElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.CapellaRelationshipsTransfoLinkSource">
             </basicQuery>
          </categoryQuery>
       </category>
@@ -621,37 +653,6 @@
                   class="org.polarsys.capella.core.semantic.queries.basic.queries.Interface_involvingScenarios">
             </basicQuery>
          </categoryQuery>
-      </category>
-      <category
-              id="org.polarsys.capella.core.semantic.queries.GeneralizableElementAllSuperGE"
-              isTopLevel="true"
-              name="Generalized Interfaces">
-           <categoryQuery>
-              <basicQuery
-                    class="org.polarsys.capella.core.semantic.queries.basic.queries.GeneralizableElementAllSuperGE">
-              </basicQuery>
-           </categoryQuery>
-           <targetBrowserId
-                 id="ReferencedElementBrowser">
-           </targetBrowserId>
-           <availableForType
-                class="org.polarsys.capella.core.data.cs.Interface">
-           </availableForType>
-      </category>
-      <category
-              id="org.polarsys.capella.core.semantic.queries.GeneralizableElementAllSubGE"
-              isTopLevel="true"
-              name="Generalizing Interfaces">
-           <targetBrowserId
-                 id="ReferencingElementBrowser">
-           </targetBrowserId>
-           <availableForType
-                 class="org.polarsys.capella.core.data.cs.Interface">
-           </availableForType>
-           <categoryQuery>
-              <basicQuery
-                    class="org.polarsys.capella.core.semantic.queries.basic.queries.GeneralizableElementAllSubGE"></basicQuery>
-           </categoryQuery>
       </category>
       <category
             id="------------- Physical Component -------------">
@@ -2116,10 +2117,10 @@
                   id="------------ AbstractType ---------------"
                   isTopLevel="false">
             </category>
-            <category
+             <category
                   id="org.polarsys.capella.core.semantic.queries.AbstractTypeAbstractTypedElement"
                   isTopLevel="true"
-                  name="Typed Elements">
+                  name="Inherited of Typing Elements">
                <availableForType
                      class="org.polarsys.capella.common.data.modellingcore.AbstractType">
                </availableForType>
@@ -3926,6 +3927,7 @@
             </basicQuery>
          </categoryQuery>
       </category>
+
       <category
             id="capella.semantic.queries.Actor_RefiningOperationalActor_sysring"
             isTopLevel="true"
@@ -5752,12 +5754,12 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.basic.queries.AbstractTypeTypedElements"
             isTopLevel="true"
-            name="Typed Elements">
+            name="Typing Elements">
          <availableForType
                class="org.polarsys.capella.core.data.capellacore.Type">
          </availableForType>
          <targetBrowserId
-               id="ReferencedElementBrowser">
+               id="ReferencingElementBrowser">
          </targetBrowserId>
          <categoryQuery>
             <basicQuery
@@ -5769,7 +5771,6 @@
                   class="org.polarsys.capella.core.semantic.queries.basic.queries.CapellaElementOwner">
             </basicQuery>
          </itemQueries>
-         
       </category>
       <category
             id="----------- Property  ---------------">
@@ -6440,7 +6441,7 @@
          </categoryQuery>
          <itemQueries>
             <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.TraceableElementIncomingTraceType">
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.TraceableElementTraceType">
             </basicQuery>
          </itemQueries>
       </category>
@@ -6459,6 +6460,11 @@
                   class="org.polarsys.capella.core.semantic.queries.basic.queries.TraceableElementOutgoingTrace">
             </basicQuery>
          </categoryQuery>
+         <itemQueries>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.TraceableElementTraceType">
+            </basicQuery>
+         </itemQueries>
       </category>
       <category
             id="org.polarsys.capella.core.semantic.queries.basic.queries.DataValueRefReferencedValue01"
@@ -6715,6 +6721,26 @@
          <categoryQuery>
             <basicQuery
                   class="org.polarsys.capella.core.semantic.queries.basic.queries.CRRealizingCR">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+      <category
+            id="-----------Collection--------"
+            isTopLevel="false">
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.CollectionType"
+            isTopLevel="true"
+            name="Type">
+         <availableForType
+               class="org.polarsys.capella.core.data.information.Collection">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencedElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.CollectionType">
             </basicQuery>
          </categoryQuery>
       </category>
