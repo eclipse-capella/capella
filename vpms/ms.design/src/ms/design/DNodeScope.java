@@ -8,11 +8,18 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package ms.configuration.services.cs;
+package ms.design;
 
-public class DiagramConstants {
+import org.eclipse.sirius.diagram.DNode;
 
-  public final static String CDI_NAME = "Contextual Component Detailed Interfaces";
-  public final static String CEI_NAME = "Contextual Component External Interfaces";
-  public final static String EXCHANGE_SCENARIO = "Component Exchanges Scenario";
+public class DNodeScope extends AbstractDNodeScope {
+
+  DNodeScope(Scope parent, DNode element) {
+    super(parent, element);
+  }
+
+  @Override
+  public <T> T accept(ScopeVisitor<T> visitor) {
+    return visitor.visitDNodeScope(this);
+  }
 }

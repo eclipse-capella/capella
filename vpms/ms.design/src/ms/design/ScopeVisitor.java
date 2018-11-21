@@ -8,11 +8,12 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package ms.configuration.services.cs;
+package ms.design;
 
-public class DiagramConstants {
-
-  public final static String CDI_NAME = "Contextual Component Detailed Interfaces";
-  public final static String CEI_NAME = "Contextual Component External Interfaces";
-  public final static String EXCHANGE_SCENARIO = "Component Exchanges Scenario";
+public interface ScopeVisitor<T> {
+  default T visitDiagramScope(DiagramScope ds) { return null; }
+  default T visitAbstracDNodeScope(AbstractDNodeScope asd) { return null; }
+  default T visitDNodeContainerScope(DNodeContainerScope dnc) { return null; }
+  default T visitDNodeScope(DNodeScope dns) { return null; }
+  default T visitDefaultScope(DefaultScope ds) { return null; }
 }

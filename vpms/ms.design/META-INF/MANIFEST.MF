@@ -20,7 +20,9 @@ Require-Bundle: org.eclipse.ui,
  org.polarsys.capella.vp.ms.edit,
  org.eclipse.gmf.runtime.notation.edit,
  org.eclipse.draw2d,
- org.polarsys.capella.vp.ms.ui.preferences
+ org.polarsys.capella.vp.ms.ui.preferences,
+ com.google.guava,
+ org.polarsys.capella.core.data.gen
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: ms.configuration.services.cs,

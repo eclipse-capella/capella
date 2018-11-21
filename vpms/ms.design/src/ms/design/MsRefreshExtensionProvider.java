@@ -11,31 +11,21 @@
 package ms.design;
 
 import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.diagram.EdgeStyle;
-import org.eclipse.sirius.diagram.FlatContainerStyle;
-import org.eclipse.sirius.diagram.Square;
-import org.eclipse.sirius.diagram.WorkspaceImage;
 import org.eclipse.sirius.diagram.business.api.refresh.IRefreshExtension;
 import org.eclipse.sirius.diagram.business.api.refresh.IRefreshExtensionProvider;
-import org.eclipse.sirius.viewpoint.BasicLabelStyle;
-import org.eclipse.sirius.viewpoint.RGBValues;
-import org.eclipse.sirius.viewpoint.Style;
+import org.eclipse.sirius.diagram.business.api.refresh.RefreshExtensionService;
+import org.eclipse.sirius.diagram.business.internal.helper.refresh.RefreshExtensionProviderDescriptor;
+import org.polarsys.capella.core.diagram.helpers.naming.DiagramDescriptionConstants;
 
 import ms.configuration.services.cs.CsConfigurationServices;
-import ms.configuration.services.cs.Images;
+import ms.configuration.services.cs.DiagramConstants;
 
-public class MsRefreshExtensionProvider implements IRefreshExtensionProvider, IRefreshExtension {
+public class MsRefreshExtensionProvider implements IRefreshExtensionProvider {
 
-  private static RGBValues conflictColor= RGBValues.create(255, 165, 0);
-  private static RGBValues excludeColor= RGBValues.create(220, 220, 220);
-  private static RGBValues excludeForegroundColor = RGBValues.create(200, 200, 200);
-  private static RGBValues excludeBackroundColor = RGBValues.create(200, 200, 200);
-  private static RGBValues excludeLabelColor = RGBValues.create(120, 120, 120);
-  
-  public MsRefreshExtensionProvider() {
-    // TODO Auto-generated constructor stub
-  }
+  private CSSRefreshExtension css;
+  private AbstractMsRefreshExtension scenarioRefresh = new ScenarioMsRefreshExtension(getCSSRefreshExtension());
+  private AbstractMsRefreshExtension interfaceRefresh = new InterfaceDiagramMsRefreshExtension(getCSSRefreshExtension());
+  private AbstractMsRefreshExtension defaultRefresh = new DefaultMsRefreshExtension(getCSSRefreshExtension());
 
   @Override
   public boolean provides(DDiagram diagram) {
@@ -43,95 +33,26 @@ public class MsRefreshExtensionProvider implements IRefreshExtensionProvider, IR
   }
 
   @Override
-  public IRefreshExtension getRefreshExtension(DDiagram viewPoint) {
-    return this;
-  }
-
-  @Override
-  public void beforeRefresh(DDiagram dDiagram) {
-   
-  }
-
-  private void applyConflict(DDiagramElement element) {
-    
-    Style style = element.getStyle();
-   
-    if (style instanceof Square) {
-      ((Square) style).setColor(conflictColor);
-    } else if (style instanceof EdgeStyle) {
-      ((EdgeStyle) style).setStrokeColor(conflictColor);
-    } else {
-      applyExclude(element);
+  public IRefreshExtension getRefreshExtension(DDiagram diagram) {
+    IRefreshExtension refresh = defaultRefresh;
+    if (DiagramDescriptionConstants.INTERFACE_SCENARIO.equals(diagram.getDescription().getName())
+        || DiagramConstants.EXCHANGE_SCENARIO.equals(diagram.getDescription().getName())) {
+      refresh = scenarioRefresh;
+    } else if (DiagramConstants.CDI_NAME.equals(diagram.getDescription().getName())) { 
+      refresh = interfaceRefresh;
     }
+    return refresh;
   }
-  
-  private void applyExclude(DDiagramElement element) {
-    
-    Style style = element.getStyle();
-    if (style instanceof BasicLabelStyle) {
-      ((BasicLabelStyle)style).setLabelColor(excludeLabelColor);
-    }
 
-    if (style instanceof FlatContainerStyle) {
-      ((FlatContainerStyle)style).setBackgroundColor(excludeBackroundColor);
-      ((FlatContainerStyle)style).setForegroundColor(excludeForegroundColor);
-    } else if (style instanceof Square) {
-      ((Square) style).setColor(excludeColor);
-    } else if (style instanceof EdgeStyle) {
-      ((EdgeStyle) style).setStrokeColor(excludeColor);
-      if (((EdgeStyle)style).getCenterLabelStyle() != null){
-        ((EdgeStyle) style).getCenterLabelStyle().setLabelColor(excludeLabelColor);
-      }
-    } else if (style instanceof WorkspaceImage) {
-      ((WorkspaceImage) style).setWorkspacePath(Images.getImagePath(element.getTarget(), element));
-    }
-  }
-  
-  private void refreshStyle(DDiagramElement element, CsConfigurationServices cs) {
-
-    CsConfigurationServices.CSConfigurationStyle style = cs.refreshStyle(element.getTarget(), element);
-
-    if (CsConfigurationServices.isConsistentIncludeRequired()) {
-
-      // all configs must include the element, otherwise it's greyed out
-      
-      if (style.hasClass("excluded")) {
-      
-        if (CsConfigurationServices.isMarkConflictingInclusions() && style.hasClass("included")) {
-          
-          applyConflict(element);
-          
-        } else {
-
-          applyExclude(element);
-         
+  private CSSRefreshExtension getCSSRefreshExtension() {
+    if (css == null) {
+      for (RefreshExtensionProviderDescriptor d : RefreshExtensionService.getInstance().getProviders()) {
+        if (CSSRefreshExtension.class.getName().equals(d.getProviderClassName())){
+          css = (CSSRefreshExtension) d.getProviderInstance();
         }
-        
-      }
-      
-    } else {
-     
-      // at least one config must include the element, otherwise it's greyed out
-      if (!style.hasClass("included") && style.hasClass("excluded")) {
-        
-        applyExclude(element);
-        
-      }
-
-    }
-
-   }
-  
-
-  @Override
-  public void postRefresh(DDiagram dDiagram) {
-
-    CsConfigurationServices cs = new CsConfigurationServices();
-
-    for (DDiagramElement e : dDiagram.getDiagramElements()) {
-      if (e instanceof DDiagramElement) {
-        refreshStyle(e, cs);
       }
     }
+    return css;
   }
+
 }

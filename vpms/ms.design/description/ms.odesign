@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" name="ms" version="12.0.0.2017041100">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_3="http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" name="ms" version="12.0.0.2017041100">
   <ownedViewpoints name="ms">
     <ownedRepresentations xsi:type="description_1:CrossTableDescription" name="MS_Function_Configuration" label="Configuration Elements" domainClass="cs.Component">
       <ownedLineMappings name="MS_F_C_ComponentsRoot" domainClass="Component" semanticCandidatesExpression="service:table.msComponentRoot(root)" headerLabelExpression="feature:name">
@@ -828,6 +828,104 @@
                     <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='ms']/@ownedRepresentationExtensions[name='PADFBConfigurations']/@layers[name='PADFB_Layer_Configuration']/@nodeMappings[name='PADFB_Layer_ConfigurationNode']" containerViewExpression="var:diagram" variableName="createdViewConfiguration"/>
                   </subModelOperations>
                 </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </layers>
+    </ownedRepresentationExtensions>
+    <ownedRepresentationExtensions xsi:type="description_2:DiagramExtensionDescription" name="ESConfigurations" viewpointURI="viewpoint:/org.polarsys.capella.core.sirius.analysis/Common" representationName="Component Exchanges Scenario">
+      <metamodel href="../../org.polarsys.capella.vp.ms/models/ms.ecore#/"/>
+      <metamodel href="http://www.polarsys.org/capella/core/cs/1.2.0#/"/>
+      <layers name="ES_Layer_Configuration" label="Configurations">
+        <nodeMappings name="ES_Layer_ConfigurationNode" createElements="false" domainClass="ms.CSConfiguration">
+          <style xsi:type="style:LozengeNodeDescription" showIcon="false" sizeComputationExpression="10" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="ES_Layer_InstanceRole_Configuration_Edge" createElements="false" targetMapping="//@ownedViewpoints[name='ms']/@ownedRepresentationExtensions[name='ESConfigurations']/@layers[name='ES_Layer_Configuration']/@nodeMappings[name='ES_Layer_ConfigurationNode']" targetFinderExpression="service:msScenarioInstanceRoleConfigurationFinder">
+          <sourceMapping xsi:type="description_3:InstanceRoleMapping" href="../../org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20DF']"/>
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <toolSections name="ES_Layer_Configuration_Tool_Configuration" label="Configurations">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="ES_Layer_Configuration_Tool_Configuration_CreateConfiguration" label="Configuration" precondition="service:containerView.isDiagram" nodeMappings="//@ownedViewpoints[name='ms']/@ownedRepresentationExtensions[name='ESConfigurations']/@layers[name='ES_Layer_Configuration']/@nodeMappings[name='ES_Layer_ConfigurationNode']" iconPath="/ms.design/images/Configuration.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:container.createConfiguration">
+                <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='ms']/@ownedRepresentationExtensions[name='ESConfigurations']/@layers[name='ES_Layer_Configuration']/@nodeMappings[name='ES_Layer_ConfigurationNode']" containerViewExpression="var:diagram"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ToolDescription" name="ES_Layer_Configuration_Tool_Configuration_Configuration_Selection" label="Configuration Selection" precondition="service:elementView.msScenarioConfigurationSelectionPrecondition">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool:ExternalJavaAction" name="ES_Layer_Configuration_Tool_Configuraton_Selection" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
+                  <parameters name="context" value="var:elementView"/>
+                  <parameters name="scope" value="service:elementView.getAllBlockConfigurations"/>
+                  <parameters name="initialSelection" value="service:elementView.getSelectedConfigurations"/>
+                  <parameters name="resultVariable" value="selection"/>
+                  <parameters name="wizardMessage" value="Add or remove Configurations from the diagram"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:element.msShowHideScenarioConfigurationsTool(elementView, selection)"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </layers>
+    </ownedRepresentationExtensions>
+    <ownedRepresentationExtensions xsi:type="description_2:DiagramExtensionDescription" name="ISConfigurations" viewpointURI="viewpoint:/org.polarsys.capella.core.sirius.analysis/Common" representationName="Component Interfaces Scenario">
+      <metamodel href="../../org.polarsys.capella.vp.ms/models/ms.ecore#/"/>
+      <metamodel href="http://www.polarsys.org/capella/core/cs/1.2.0#/"/>
+      <layers name="IS_Layer_Configuration" label="Configurations">
+        <nodeMappings name="IS_Layer_ConfigurationNode" createElements="false" domainClass="ms.CSConfiguration">
+          <style xsi:type="style:LozengeNodeDescription" showIcon="false" sizeComputationExpression="10" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="IS_Layer_InstanceRole_Configuration_Edge" createElements="false" targetMapping="//@ownedViewpoints[name='ms']/@ownedRepresentationExtensions[name='ISConfigurations']/@layers[name='IS_Layer_Configuration']/@nodeMappings[name='IS_Layer_ConfigurationNode']" targetFinderExpression="service:msScenarioInstanceRoleConfigurationFinder">
+          <sourceMapping xsi:type="description_3:InstanceRoleMapping" href="../../org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping']"/>
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <toolSections name="IS_Layer_Configuration_Tool_Configuration" label="Configurations">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="IS_Layer_Configuration_Tool_Configuration_CreateConfiguration" label="Configuration" precondition="service:containerView.isDiagram" nodeMappings="//@ownedViewpoints[name='ms']/@ownedRepresentationExtensions[name='ISConfigurations']/@layers[name='IS_Layer_Configuration']/@nodeMappings[name='IS_Layer_ConfigurationNode']" iconPath="/ms.design/images/Configuration.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:container.createConfiguration">
+                <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='ms']/@ownedRepresentationExtensions[name='ISConfigurations']/@layers[name='IS_Layer_Configuration']/@nodeMappings[name='IS_Layer_ConfigurationNode']" containerViewExpression="var:diagram"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ToolDescription" name="IS_Layer_Configuration_Tool_Configuration_Configuration_Selection" label="Configuration Selection" precondition="service:elementView.msScenarioConfigurationSelectionPrecondition">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool:ExternalJavaAction" name="IS_Layer_Configuration_Tool_Configuraton_Selection" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
+                  <parameters name="context" value="var:elementView"/>
+                  <parameters name="scope" value="service:elementView.getAllBlockConfigurations"/>
+                  <parameters name="initialSelection" value="service:elementView.getSelectedConfigurations"/>
+                  <parameters name="resultVariable" value="selection"/>
+                  <parameters name="wizardMessage" value="Add or remove Configurations from the diagram"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:element.msShowHideScenarioConfigurationsTool(elementView, selection)"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
