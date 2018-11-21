@@ -1726,7 +1726,7 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.StateFragmentRelatedFunctions"
             isTopLevel="true"
-            name="Related Functions">
+            name="Related Function">
          <targetBrowserId
                id="ReferencedElementBrowser">
          </targetBrowserId>
@@ -1742,7 +1742,7 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.StateFragmentRelatedStates"
             isTopLevel="true"
-            name="Related States">
+            name="Related State">
          <targetBrowserId
                id="ReferencedElementBrowser">
          </targetBrowserId>
