@@ -442,7 +442,7 @@ public class RepresentationHelper {
   }
 
   /**
-   * Get the representation descriptor whose UID or repPath equals to the parameter id.
+   * Get the representation descriptor whose xmiid or repPath equals to the parameter id.
    */
   public static DRepresentationDescriptor getRepresentationDescriptor(ResourceSet resourceSet, String id) {
     IScope capellaSemanticResourceScope = new SemanticResourcesScope(resourceSet);
@@ -460,9 +460,9 @@ public class RepresentationHelper {
         descriptorFragment = "";
       }
 
-      String descriptorUid = representationDescriptor.eResource().getURIFragment(representationDescriptor);
+      String descriptorXmiid = representationDescriptor.eResource().getURIFragment(representationDescriptor);
 
-      if (id.equals(descriptorFragment) || id.equals(descriptorUid)) {
+      if (id.equals(descriptorFragment) || id.equals(descriptorXmiid)) {
         return representationDescriptor;
       }
     }
