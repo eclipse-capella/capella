@@ -5384,7 +5384,7 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.AbstractCapabilitySuper"
             isTopLevel="true"
-            name="Super">
+            name="Generalized Elements">
          <availableForType
                class="org.polarsys.capella.core.data.interaction.AbstractCapability">
          </availableForType>
@@ -5400,7 +5400,7 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.AbstractCapabilitySub"
             isTopLevel="true"
-            name="Sub">
+            name="Generalizing Elements">
          <availableForType
                class="org.polarsys.capella.core.data.interaction.AbstractCapability">
          </availableForType>
