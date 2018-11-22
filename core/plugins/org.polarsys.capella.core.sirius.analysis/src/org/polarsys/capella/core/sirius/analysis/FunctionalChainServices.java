@@ -50,7 +50,6 @@ import org.polarsys.capella.core.commands.preferences.util.PreferencesHelper;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.AbstractFunctionalChainContainer;
-import org.polarsys.capella.core.data.fa.ExchangeCategory;
 import org.polarsys.capella.core.data.fa.FaFactory;
 import org.polarsys.capella.core.data.fa.FaPackage;
 import org.polarsys.capella.core.data.fa.FunctionalChain;
@@ -91,7 +90,7 @@ public class FunctionalChainServices {
 	 * Returns all semantics of source views for the given chain
 	 */
 	public Collection<EObject> getFunctionalChainSources(FunctionalChain chain) {
-		HashSet<EObject> result = new HashSet<EObject>();
+		Set<EObject> result = new HashSet<>();
 
 		// Source of InternalLink is targets of Functional Exchanges
 		for (FunctionalExchange exchange : FunctionalChainExt.getFlatFunctionalExchanges(chain)) {
@@ -105,7 +104,7 @@ public class FunctionalChainServices {
 	 * Returns all semantics of target views for the given chain
 	 */
 	public Collection<EObject> getFunctionalChainTargets(FunctionalChain chain) {
-		HashSet<EObject> result = new HashSet<EObject>();
+		Set<EObject> result = new HashSet<>();
 
 		// Target of InternalLink is sources of Functional Exchanges
 		for (FunctionalExchange exchange : FunctionalChainExt.getFlatFunctionalExchanges(chain)) {
@@ -181,7 +180,7 @@ public class FunctionalChainServices {
     if (!isInOperationalAnalysis) {
       for (Entry<FunctionalChain, DNode> entry : functionalChainToNodeMap.entrySet()) {
         FunctionalChain functionalChain = entry.getKey();
-        Set<DEdge> internalLinks = createNecessaryInternalLinks(functionalChain, functionalExchangeToEdgesMap);
+        createNecessaryInternalLinks(functionalChain, functionalExchangeToEdgesMap);
       }
     }
 
@@ -565,12 +564,13 @@ public class FunctionalChainServices {
 	}
 	
 
-	private boolean hasVisibleEdge(EList<DEdge> edges) {
-	  for(DEdge edge : edges){
-	    if(!DiagramServices.getDiagramServices().isHidden(edge)){
-	      return true;
-	    }
-	  }
+  private boolean hasVisibleEdge(EList<DEdge> edges) {
+    for (DEdge edge : edges) {
+      if (!DiagramServices.getDiagramServices().isHidden(edge)
+          && !DiagramServices.getDiagramServices().isFiltered(edge)) {
+        return true;
+      }
+    }
     return false;
   }
   /**
@@ -593,10 +593,10 @@ public class FunctionalChainServices {
 	 * @return
 	 */
 	protected Collection<FunctionalExchange> getFlatPreviousFunctionalExchanges(FunctionalChain fc, FunctionalChainInvolvement fci) {
-		Collection<FunctionalExchange> result = new HashSet<FunctionalExchange>();
+		Collection<FunctionalExchange> result = new HashSet<>();
 
 		for (FunctionalChainInvolvement involvment : FunctionalChainExt.getFlatPreviousExchangeInvolvements(fci)) {
-			if ((involvment.getInvolved() != null) && (involvment.getInvolved() instanceof FunctionalExchange)) {
+			if (involvment.getInvolved() instanceof FunctionalExchange) {
 				result.add((FunctionalExchange) involvment.getInvolved());
 			}
 		}
@@ -609,10 +609,10 @@ public class FunctionalChainServices {
 	 * @return
 	 */
 	protected Collection<FunctionalExchange> getFlatNextFunctionalExchanges(FunctionalChain fc, FunctionalChainInvolvement fci) {
-		Collection<FunctionalExchange> result = new HashSet<FunctionalExchange>();
+		Collection<FunctionalExchange> result = new HashSet<>();
 
 		for (FunctionalChainInvolvement involvment : FunctionalChainExt.getFlatNextExchangeInvolvements(fci)) {
-			if ((involvment.getInvolved() != null) && (involvment.getInvolved() instanceof FunctionalExchange)) {
+			if (involvment.getInvolved() instanceof FunctionalExchange) {
 				result.add((FunctionalExchange) involvment.getInvolved());
 			}
 		}
@@ -772,7 +772,7 @@ public class FunctionalChainServices {
 			 return displayedFunctions.get(function);
 		 }
 		 EObject ancestor = function.eContainer();
-		 while ((ancestor != null) && (ancestor instanceof AbstractFunction)) {
+		 while (ancestor instanceof AbstractFunction) {
 			 if (displayedFunctions.containsKey(ancestor)) {
 				 return displayedFunctions.get(ancestor);
 			 }
@@ -835,7 +835,7 @@ public class FunctionalChainServices {
 
 	 public void updateFunctionalChainNodeColor(DNode fcNode, Collection<DNode> visibleFunctionalChains) {
 		 RGBValues color = ShapeUtil.getNodeColorStyle(fcNode);
-		 LinkedList<RGB> colorList = new LinkedList<RGB>();
+		 LinkedList<RGB> colorList = new LinkedList<>();
 
 		 RGB blue = new RGB(24, 114, 248);
 		 RGB yellow = new RGB(249, 252, 103);
@@ -876,7 +876,7 @@ public class FunctionalChainServices {
 	 }
 
 	 public List<FunctionalExchange> getAvailableExchanges(EObject context, AbstractFunction source, AbstractFunction target) {
-		 List<FunctionalExchange> returnedFunctionalExchanges = new ArrayList<FunctionalExchange>();
+		 List<FunctionalExchange> returnedFunctionalExchanges = new ArrayList<>();
 		 List<FunctionalExchange> incoming = FunctionExt.getIncomingExchange(target);
 		 List<FunctionalExchange> outgoing = FunctionExt.getOutGoingExchange(source);
 		 for (FunctionalExchange aFunctionalExchange : incoming) {
@@ -893,7 +893,7 @@ public class FunctionalChainServices {
 
 	 public EObject createFunctionalChain(EObject context, List<EObject> views) {
 		 if (!views.isEmpty()) {
-			 List<EObject> newList = new ArrayList<EObject>();
+			 List<EObject> newList = new ArrayList<>();
 			 AbstractFunction aFunction = null;
 			 for (EObject aSelectedElement : views) {
 				 if ((aSelectedElement instanceof DDiagramElement) && (((DDiagramElement) aSelectedElement).getTarget() != null)) {
@@ -962,12 +962,12 @@ public class FunctionalChainServices {
 	 }
 
 	 protected List<FunctionalExchange> getOutgoingEdgeFunctionalExchanges(DNode node) {
-		 List<FunctionalExchange> existingInvolvedFE = new ArrayList<FunctionalExchange>();
+		 List<FunctionalExchange> existingInvolvedFE = new ArrayList<>();
 		 for (DEdge anEdge : DiagramServices.getDiagramServices().getOutgoingEdges(node)) {
 
-			 if ((anEdge.getTarget() != null) && (anEdge.getTarget() instanceof FunctionalChainInvolvement)) {
+			 if (anEdge.getTarget() instanceof FunctionalChainInvolvement) {
 				 FunctionalChainInvolvement currentInv = (FunctionalChainInvolvement) anEdge.getTarget();
-				 if ((currentInv.getInvolved() != null) && (currentInv.getInvolved() instanceof FunctionalExchange)) {
+				 if (currentInv.getInvolved() instanceof FunctionalExchange) {
 					 existingInvolvedFE.add((FunctionalExchange) currentInv.getInvolved());
 				 }
 			 }
@@ -976,7 +976,7 @@ public class FunctionalChainServices {
 	 }
 
 	 public List<FunctionalExchange> getFCDInvolveFunctionalExchangeAndFunctionScope(DNode node) {
-		 List<FunctionalExchange> returnedList = new ArrayList<FunctionalExchange>();
+		 List<FunctionalExchange> returnedList = new ArrayList<>();
 		 List<FunctionalExchange> existingInvolvedFE = getOutgoingEdgeFunctionalExchanges(node);
 
 		 FunctionalChainInvolvement selectedInvolvement = (FunctionalChainInvolvement) node.getTarget();
@@ -990,7 +990,7 @@ public class FunctionalChainServices {
 	 }
 
 	 public HashMapSet<FunctionalExchange, FunctionalChain> getFCDInvolveFunctionalExchangeAndFunctionalChainScope(DNode node) {
-		 HashMapSet<FunctionalExchange, FunctionalChain> set = new HashMapSet<FunctionalExchange, FunctionalChain>();
+		 HashMapSet<FunctionalExchange, FunctionalChain> set = new HashMapSet<>();
 		 if ((node == null) || (node.getTarget() == null) || node.getTarget().eIsProxy()) {
 			 return set;
 		 }
@@ -1052,7 +1052,7 @@ public class FunctionalChainServices {
 			  return;
 		  }
 
-		  FunctionalChainInvolvement iSource = (FunctionalChainInvolvement) ((DSemanticDecorator) context).getTarget();
+		  FunctionalChainInvolvement iSource = (FunctionalChainInvolvement) context.getTarget();
 
 		  for (FunctionalExchange exchange : selection.keySet()) {
 			  for (FunctionalChain chain : selection.get(exchange)) {
@@ -1147,7 +1147,7 @@ public class FunctionalChainServices {
 
 		  // remove all chains owning the current chain
 		  List<FunctionalChain> chains = FunctionalChainExt.getAllFunctionalChains(architecture);
-		  List<FunctionalChain> result = new LinkedList<FunctionalChain>();
+		  List<FunctionalChain> result = new LinkedList<>();
 
 		  for (FunctionalChain definedChain : chains) {
 			  boolean toAdd = true;
@@ -1178,7 +1178,7 @@ public class FunctionalChainServices {
 		  if (currentInvolvement.equals(involvementToFind)) {
 			  return true;
 		  }
-		  Set<FunctionalChainInvolvement> involvements = new HashSet<FunctionalChainInvolvement>(visitedInvolvements);
+		  Set<FunctionalChainInvolvement> involvements = new HashSet<>(visitedInvolvements);
 		  involvements.add(currentInvolvement);
 		  for (FunctionalChainInvolvement aNext : currentInvolvement.getNextFunctionalChainInvolvements()) {
 			  if (findInvolvementInNext(aNext, involvementToFind, involvements)) {

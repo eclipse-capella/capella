@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -32,6 +32,7 @@ import org.polarsys.capella.test.diagram.filters.ju.testcases.HideDelegatedCommu
 import org.polarsys.capella.test.diagram.filters.ju.testcases.HideDelegatedCommunicationLinksForIDB;
 import org.polarsys.capella.test.diagram.filters.ju.testcases.HideDelegatedUseImplementationLinksForCII;
 import org.polarsys.capella.test.diagram.filters.ju.testcases.HideDelegatedUseImplementationLinksForIDB;
+import org.polarsys.capella.test.diagram.filters.ju.testcases.HideFunctionalExchangesTestCase;
 import org.polarsys.capella.test.diagram.filters.ju.testcases.HideTechnicalInterfaceForCDB;
 import org.polarsys.capella.test.diagram.filters.ju.testcases.HideTechnicalInterfaceForCDI;
 import org.polarsys.capella.test.diagram.filters.ju.testcases.HideTechnicalInterfaceForCEI;
@@ -83,6 +84,7 @@ public class DiagramFiltersTestSuite extends BasicTestSuite {
     tests.add(new HideComputedLinksForPABTestCase5());
     tests.add(new HideComputedLinksForPABTestCase6());
     tests.add(new HideComputedLinksForPABTestCase7());
+    tests.add(new HideFunctionalExchangesTestCase());
     return tests;
   }
 
