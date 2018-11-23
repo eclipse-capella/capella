@@ -78,6 +78,14 @@
       <anchor id="First steps with Capella"/>
       <topic href="html/03. First steps with Capella/3.8. How to import Capella Project Example.html" label="How to import/create a Capella Project Example?">
       </topic>
+        <topic href="html/03. First steps with Capella/3.9. How to install Capella and Addons.html" label="How to install Capella and Addons ?">
+           <topic href="html/03. First steps with Capella/3.9. How to install Capella and Addons.html#Capella_Installation" label="Capella Installation">
+           </topic>
+           <topic href="html/03. First steps with Capella/3.9. How to install Capella and Addons.html#Addons_Installation" label="Addons Installation">
+           </topic>
+           <topic href="html/03. First steps with Capella/3.9. How to install Capella and Addons.html#Restriction" label="Restriction">
+           </topic>
+        </topic>
    </topic>
      <topic label="User Interface">
      <topic href="html/04. User Interface/4.01. Capella Perspective.html" label="Capella Perspective Overview"></topic>
