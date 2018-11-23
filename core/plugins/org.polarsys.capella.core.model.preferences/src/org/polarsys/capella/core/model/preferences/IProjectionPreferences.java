@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -103,5 +103,27 @@ public class IProjectionPreferences {
 
   @Deprecated
   public static Boolean DEFAULT_GENERATE_COMPONENTPORT = Boolean.TRUE;
+  
+  /**
+   * FC2FS Scenario Initialization preference
+   */
+  public static final String PREFS_FC2FS_SEQUENCE_MESSAGE_STRATEGY = "transition.fc2fs.sequence.message.strategy";
+
+  public static final String OPTION_FC2FS_MESSAGE_ONE_WAY = "fc2fs.msg.one.way";
+
+  public static final String OPTION_FC2FS_MESSAGE_WITH_REPLY = "fc2fs.msg.with.reply";
+
+  public static final String PREFS_FC2FS_SEQUENCE_MESSAGE_STRATEGY_DEFAULT = OPTION_FC2FS_MESSAGE_ONE_WAY;
+
+  /**
+   * OP2OAS Scenario Initialization preference
+   */
+  public static final String PREFS_OP2OAS_SEQUENCE_MESSAGE_STRATEGY = "transition.op2oas.sequence.message.strategy";
+
+  public static final String OPTION_OP2OAS_MESSAGE_ONE_WAY = "op2oas.msg.one.way";
+
+  public static final String OPTION_OP2OAS_MESSAGE_WITH_REPLY = "op2oas.msg.with.reply";
+
+  public static final String PREFS_OP2OAS_SEQUENCE_MESSAGE_STRATEGY_DEFAULT = OPTION_OP2OAS_MESSAGE_ONE_WAY;
   
 }
