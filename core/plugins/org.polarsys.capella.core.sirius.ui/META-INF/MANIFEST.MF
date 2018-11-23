@@ -8,6 +8,7 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-localization: plugin
 Require-Bundle: org.eclipse.ui.ide,
  org.eclipse.ui.navigator,
+ org.eclipse.ltk.core.refactoring,
  org.eclipse.sirius.common,
  org.eclipse.sirius.common.ui,
  org.eclipse.sirius.ecore.extender,

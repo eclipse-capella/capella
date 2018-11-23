@@ -13,7 +13,6 @@ package org.polarsys.capella.core.platform.sirius.ui.navigator.viewer;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -24,9 +23,6 @@ import org.apache.log4j.Logger;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
-import org.eclipse.core.resources.IResourceChangeEvent;
-import org.eclipse.core.resources.IResourceChangeListener;
-import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.emf.common.notify.Notification;
@@ -54,7 +50,6 @@ import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
-import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.navigator.SaveablesProvider;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
@@ -86,8 +81,7 @@ import org.polarsys.kitalpha.ad.metadata.helpers.MetadataHelper;
 /**
  * The Capella navigator content provider.
  */
-public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryContentProvider implements
-    IResourceChangeListener, IAdaptable {
+public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryContentProvider implements IAdaptable {
   // Log4j reference logger.
   private static final Logger __logger = ReportManagerRegistry.getInstance().subscribe(
       IReportManagerDefaultComponents.UI);
@@ -214,11 +208,6 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
    */
   public CapellaNavigatorContentProvider() {
     super(CapellaAdapterFactoryProvider.getInstance().getAdapterFactory());
-
-    // Add in workspace resource changes notification mechanism.
-    ResourcesPlugin.getWorkspace().addResourceChangeListener(this, IResourceChangeEvent.PRE_DELETE); // PRE_CLOSE is
-                                                                                                     // handled by the
-    // CloseAction.
 
     // Instantiate a customized session content provider.
     CustomizedSessionWrapperContentProvider customizedSessionWrapperContentProvider = new CustomizedSessionWrapperContentProvider(
@@ -557,36 +546,11 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
   public void dispose() {
     NavigatorEditingDomainDispatcher.unregisterNotifyChangedListener(this);
 
-    // Remove from workspace resource changes notification mechanism.
-    ResourcesPlugin.getWorkspace().removeResourceChangeListener(this);
-
     if (null != _sessionContentProvider) {
       _sessionContentProvider.dispose();
       _sessionContentProvider = null;
     }
     super.dispose();
-  }
-
-  /**
-   * @see org.eclipse.core.resources.IResourceChangeListener#resourceChanged(org.eclipse.core.resources.IResourceChangeEvent)
-   */
-  @Override
-  public void resourceChanged(final IResourceChangeEvent event) {
-    switch (event.getType()) {
-    case IResourceChangeEvent.PRE_DELETE: {
-      if (null != event.getResource()) {
-        Display.getDefault().syncExec(new Runnable() {
-
-          @Override
-          public void run() {
-            IProject project = (IProject) event.getResource();
-            SessionHelper.closeUiSessions(Collections.singletonList(project));
-          }
-        });
-      }
-      break;
-    }
-    }
   }
 
   /**
@@ -688,5 +652,4 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
       }
     }
   }
-
 }

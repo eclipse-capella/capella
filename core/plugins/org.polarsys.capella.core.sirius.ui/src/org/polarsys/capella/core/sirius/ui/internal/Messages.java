@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,6 +20,9 @@ public class Messages extends NLS {
   public static String UncontrolMessageDialog_AdditionnalMessage;
   public static String UncontrolMessageDialog_Message;
   public static String UncontrolMessageDialog_Title;
+  public static String update_workspace_image_paths;
+  public static String collecting_diagrams;
+  public static String updating_diagram;
   static {
     // initialize resource bundle
     NLS.initializeMessages(BUNDLE_NAME, Messages.class);
