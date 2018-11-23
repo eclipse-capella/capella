@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?NLS TYPE="org.eclipse.help.toc"?>
 <!--
-  Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -62,6 +62,14 @@
       <anchor id="Workbench Basics"/>
    </topic>
      <topic label="First steps with Capella">
+        <topic href="html/03. First steps with Capella/3.8. How to install Capella and Addons.html" label="How to install Capella and Addons ?">
+           <topic href="html/03. First steps with Capella/3.8. How to install Capella and Addons.html#Capella_Installation" label="Capella Installation">
+           </topic>
+           <topic href="html/03. First steps with Capella/3.8. How to install Capella and Addons.html#Addons_Installation" label="Addons Installation">
+           </topic>
+           <topic href="html/03. First steps with Capella/3.8. How to install Capella and Addons.html#Restriction" label="Restriction">
+           </topic>
+        </topic>
      <topic href="html/03. First steps with Capella/3.1. Starting Capella.html" label="Starting Capella"></topic>
      <topic href="html/03. First steps with Capella/3.2. How to create a new Capella Project.html" label="How to Create a New Capella Project?"></topic>
      <topic href="html/03. First steps with Capella/3.3. How to import an existing Capella Project.html" label="How to Import an Existing Project in a Workspace?"></topic>
