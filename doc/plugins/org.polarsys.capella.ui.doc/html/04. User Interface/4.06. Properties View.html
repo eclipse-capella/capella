@@ -1,5 +1,105 @@
-<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>4.06. Properties View</title><link type="text/css" rel="stylesheet" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css"/></head><body><h1 id="Capella_Properties_View">Capella Properties View</h1><h2 id="Introduction">Introduction</h2><p>The Properties View is the place where the characteristics of each Capella elements are entered and displayed. This view is synchronized with the current selection on the diagram or in the project explorer.</p><p><br/></p><p><img height="570" width="650" border="0" src="Images/4.06_Properties_View1.png"/></p><p><br/></p><p><b>Capella Editors are also available as dialogs</b>, accessed with a double-click on any element. The content is exactly the same as in the Properties Views.</p><p><img height="400" width="600" border="0" src="Images/4.06_Properties_View2.png"/></p><p>Capella editors contain 4 sections: semantic properties, description, extensions, management.</p><h2 id="Capella_Section_.28Semantic_Properties.29">Capella Section (Semantic Properties)</h2><p>This section displays the most important semantic information about the current element. It also allows defining relationships between elements.</p><p><img height="300" width="600" border="0" src="Images/4.06_Properties_View3.png"/></p><h2 id="Description_Section">Description Section</h2><p>The Descriptions section allows editing text descriptions for model elements.</p><p><img border="0" src="Images/4.06.%20Properties%20View_html_m602830a9.png"/></p><table border="1"><tr><td><p><img height="34" width="34" border="0" src="Images/Warning_ExclamationPoint.png"/></p></td><td><p>If the text field looses the focus during the edition, especially when editing the description of a diagram that is currently open, it is recommended to uncheck the Link with Editor button.</p><p><img height="74" width="255" border="0" src="Images/LinkWithEditorButton.png"/></p></td></tr></table><p>Insertion of hyperlink to other model elements, existing diagrams or URLs are possible using the dedicated button of the toolbar.</p><p><img border="0" src="Images/4.06.%20Properties%20View_html_3563deb8.png"/></p><p>It is also possible to insert images by using the dedicated button of the toolbar.</p><p><img border="0" src="Images/4.06.%20Properties%20View_html_3563deb9.png"/></p><p>To get more editing options, open the Description in a dedicated Editor. To do so, click on the second button of the toolbar. A new Editor will open.</p><p><img border="0" src="Images/4.06.%20Properties%20View_html_3a2738b6.png"/></p><p><img border="0" src="Images/4.06.%20Properties%20View_html_598f5164.png"/></p><table border="1"><tr><td><p><img height="34" width="34" border="0" src="Images/Warning_ExclamationPoint.png"/></p></td><td><p>To avoid synchronization problems between the Description field of the Properties view and the dedicated Editor. It is recommended to have only one tool open at the same time to modify the text.</p></td></tr></table><p>Right-clicking on the hyperlinks to open the referenced diagram.</p><p><img border="0" src="Images/4.06.%20Properties%20View_html_35d5a95e.png"/></p><p><hr/></p><p><b>Disable Richtext</b></p><p>In case you encounter some blocking issues using the rich text editor, you can disable rich text which will be replaced by a simple field to edit directly XHTML, to do so please open the eclipse.ini file located
-in the Capella installation directory and add the java property -Ddisable.nebula.richtext=true as shown below:</p><pre>-startup
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<link type="text/css" rel="stylesheet" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css"/>
+	</head>
+	<body>
+		<h1 id="Capella_Properties_View">Capella Properties View</h1>
+		<h2 id="Introduction">Introduction</h2>
+		<p>The Properties View is the place where the characteristics of each Capella elements are entered and displayed. This view is synchronized with the current selection on the diagram or in the project explorer.</p>
+		<p>
+			<br/>
+		</p>
+		<p>
+			<img height="570" width="650" border="0" src="Images/4.06_Properties_View1.png"/>
+		</p>
+		<p>
+			<br/>
+		</p>
+		<p>
+			<b>Capella Editors are also available as dialogs</b>, accessed with a double-click on any element. The content is exactly the same as in the Properties Views.
+		</p>
+		<p>
+			<img height="400" width="600" border="0" src="Images/4.06_Properties_View2.png"/>
+		</p>
+		<p>Capella editors contain 4 sections: semantic properties, description, extensions, management.</p>
+		<h2 id="Capella_Section_.28Semantic_Properties.29">Capella Section (Semantic Properties)</h2>
+		<p>This section displays the most important semantic information about the current element. It also allows defining relationships between elements.</p>
+		<p>
+			<img height="300" width="600" border="0" src="Images/4.06_Properties_View3.png"/>
+		</p>
+		<h2 id="Description_Section">Description Section</h2>
+		<p>The Descriptions section allows editing text descriptions for model elements.</p>
+		<p>
+			<img border="0" src="Images/4.06.%20Properties%20View_html_m602830a9.png"/>
+		</p>
+		<table border="1">
+			<tr>
+				<td>
+					<p>
+						<img height="34" width="34" border="0" src="Images/Warning_ExclamationPoint.png"/>
+					</p>
+				</td>
+				<td>
+					<p>If the text field looses the focus during the edition, especially when editing the description of a diagram that is currently open, it is recommended to uncheck the Link with Editor button.</p>
+					<p>
+						<img height="74" width="255" border="0" src="Images/LinkWithEditorButton.png"/>
+					</p>
+				</td>
+			</tr>
+		</table>
+		<p>Insertion of hyperlink to other model elements, existing diagrams or URLs are possible using the dedicated button of the toolbar.</p>
+		<p>
+			<img border="0" src="Images/4.06.%20Properties%20View_html_3563deb8.png"/>
+		</p>
+		<p>It is also possible to insert images by using the dedicated button of the toolbar.</p>
+		<p>
+			<img border="0" src="Images/4.06.%20Properties%20View_html_3563deb9.png"/>
+		</p>
+		<p>To get more editing options, open the Description in a dedicated Editor. To do so, click on the second button of the toolbar. A new Editor will open.</p>
+		<p>
+			<img border="0" src="Images/4.06.%20Properties%20View_html_3a2738b6.png"/>
+		</p>
+		<p>
+			<img border="0" src="Images/4.06.%20Properties%20View_html_598f5164.png"/>
+		</p>
+		<table border="1">
+			<tr>
+				<td>
+					<p>
+						<img height="34" width="34" border="0" src="Images/Warning_ExclamationPoint.png"/>
+					</p>
+				</td>
+				<td>
+					<p>To avoid synchronization problems between the Description field of the Properties view and the dedicated Editor. It is recommended to have only one tool open at the same time to modify the text.</p>
+				</td>
+			</tr>
+		</table>
+		<p>Right-clicking on the hyperlinks to open the referenced diagram.</p>
+		<p>
+			<img border="0" src="Images/4.06.%20Properties%20View_html_35d5a95e.png"/>
+		</p>
+		<p>
+			<b>Spellchecking</b>
+		</p>
+		<p>For Windows version, the feature spellchecking is activated by default on Windows 8 and later. When typing a misspelled word in the rich text editor, it will be highlighted with a red underline.</p>
+		<p>If not activated, there are two possibilities:</p>
+		<ul>
+			<li>Verify whether the language pack used for spellchecking is installed on the system. If you want to check the typing in French, the French language package must be installed on the Windows. One way to verify the available languages for spellchecking is to look at the folder 
+				<b>%AppData%\Microsoft\Spelling</b>
+			</li>
+			<li>Override the registry value for the feature control 
+				<b>HKEY_CURRENT_USER / SOFTWARE / Internet Explorer / Main / FeatureControl / FEATURE_SPELLCHECKING / eclipse.exe = (DWORD) 00000001</b> and then restart the application.
+			</li>
+		</ul>
+		<p><hr/>
+
+			<b>Disable Richtext</b>
+		</p>
+		<p>In case you encounter some blocking issues using the rich text editor, you can disable rich text which will be replaced by a simple field to edit directly XHTML, to do so please open the eclipse.ini file located
+			in the Capella installation directory and add the java property -Ddisable.nebula.richtext=true as shown below:</p>
+		<pre>-startup
 ...
 --launcher.library
 ...
@@ -11,6 +111,114 @@ en
 -Xmx3000m
 -Xss4m
 <b>-Ddisable.nebula.richtext=true</b>
-</pre><table border="1"><tr><td><p><img height="48" width="48" border="0" src="Images/4.02.%20Tips%20and%20Tricks_html_3c78e109.png"/></p></td><td><p>Fore more information, please refer to <a href="/wiki/../help/topic/org.polarsys.kitalpha.richtext.widget.doc/html/usersGuide/usersguide.html" title="../help/topic/org.polarsys.kitalpha.richtext.widget.doc/html/usersGuide/usersguide.html">the user's guide of MDE Rich Text Widget</a> provided by Kitalpha.</p></td></tr></table><h2 id="Extensions_Section">Extensions Section</h2><p>The Extensions section allows defining which Property Values apply to the current element. Explicitly setting this relationship is useful when applied Property Values are not contained by the current element.</p><p>For example, one could imagine storing all the non functional properties of all elements in thematic packages (safety, performance, human factors, etc.) instead of having these properties spread all over the model.</p><p><img height="230" width="900" border="0" src="Images/4.06_Properties_View_Extensions.png"/></p><p>Capella properties are also available in dialog boxes, using a double-click on elements in the diagrams. The Capella properties are a simplified version of the Eclipse ones.</p><h2 id="Management_Section">Management Section</h2><p>The Management section contains non semantic information about the current element.</p><p><img height="268" width="530" border="0" src="Images/4.06.%20Properties%20View_html_82fa288.png"/></p><p><br/>
-<br/></p><table border="1"><tr><td><p><b>Field</b></p></td><td><p><b>Description</b></p></td><td><p><b>Default</b></p></td></tr><tr><td><p><b>Visible in 					Documentation</b></p></td><td><p>Specifies whether 					this element is exposed to the Documentation Generation tool.</p></td><td><p>True</p></td></tr><tr><td><p><b>Visible in Link 					Manager</b></p></td><td><p>Specifies whether 					the current element is exposed to the Link Manager tool, for 					example for traceability with Requirements.</p></td><td><p>True</p></td></tr><tr><td><p><b>Progress Status</b></p></td><td><p>Not all elements 					in the design phase of a System have the same maturity (some are 					Drafts, some need to be reviewed, etc.). This field allows 					setting the maturity level of the current Element.</p></td><td><p>&lt;blank&gt;</p></td></tr><tr><td><p><b>Review</b></p></td><td><p>This field allows adding a comment on the progress status of the 					current element.</p><p>When this field is 					not empty a validation rule throws a warning.</p></td><td><p>empty</p></td></tr></table><p><br/>
-<br/></p></body></html>
+</pre>
+		<table border="1">
+			<tr>
+				<td>
+					<p>
+						<img height="48" width="48" border="0" src="Images/4.02.%20Tips%20and%20Tricks_html_3c78e109.png"/>
+					</p>
+				</td>
+				<td>
+					<p>Fore more information, please refer to 
+						<a href="/wiki/../help/topic/org.polarsys.kitalpha.richtext.widget.doc/html/usersGuide/usersguide.html" title="../help/topic/org.polarsys.kitalpha.richtext.widget.doc/html/usersGuide/usersguide.html">the user's guide of MDE Rich Text Widget</a> provided by Kitalpha.
+					</p>
+				</td>
+			</tr>
+		</table>
+		<h2 id="Extensions_Section">Extensions Section</h2>
+		<p>The Extensions section allows defining which Property Values apply to the current element. Explicitly setting this relationship is useful when applied Property Values are not contained by the current element.</p>
+		<p>For example, one could imagine storing all the non functional properties of all elements in thematic packages (safety, performance, human factors, etc.) instead of having these properties spread all over the model.</p>
+		<p>
+			<img height="230" width="900" border="0" src="Images/4.06_Properties_View_Extensions.png"/>
+		</p>
+		<p>Capella properties are also available in dialog boxes, using a double-click on elements in the diagrams. The Capella properties are a simplified version of the Eclipse ones.</p>
+		<h2 id="Management_Section">Management Section</h2>
+		<p>The Management section contains non semantic information about the current element.</p>
+		<p>
+			<img height="268" width="530" border="0" src="Images/4.06.%20Properties%20View_html_82fa288.png"/>
+		</p>
+		<p>
+			<br/>
+
+			<br/>
+		</p>
+		<table border="1">
+			<tr>
+				<td>
+					<p>
+						<b>Field</b>
+					</p>
+				</td>
+				<td>
+					<p>
+						<b>Description</b>
+					</p>
+				</td>
+				<td>
+					<p>
+						<b>Default</b>
+					</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>
+						<b>Visible in 					Documentation</b>
+					</p>
+				</td>
+				<td>
+					<p>Specifies whether 					this element is exposed to the Documentation Generation tool.</p>
+				</td>
+				<td>
+					<p>True</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>
+						<b>Visible in Link 					Manager</b>
+					</p>
+				</td>
+				<td>
+					<p>Specifies whether 					the current element is exposed to the Link Manager tool, for 					example for traceability with Requirements.</p>
+				</td>
+				<td>
+					<p>True</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>
+						<b>Progress Status</b>
+					</p>
+				</td>
+				<td>
+					<p>Not all elements 					in the design phase of a System have the same maturity (some are 					Drafts, some need to be reviewed, etc.). This field allows 					setting the maturity level of the current Element.</p>
+				</td>
+				<td>
+					<p>&lt;blank&gt;</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>
+						<b>Review</b>
+					</p>
+				</td>
+				<td>
+					<p>This field allows adding a comment on the progress status of the 					current element.</p>
+					<p>When this field is 					not empty a validation rule throws a warning.</p>
+				</td>
+				<td>
+					<p>empty</p>
+				</td>
+			</tr>
+		</table>
+		<p>
+			<br/>
+
+			<br/>
+		</p>
+	</body>
+</html>
