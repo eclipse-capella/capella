@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,11 +13,15 @@ package org.polarsys.capella.core.sirius.ui.actions;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.apache.log4j.Logger;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.sirius.business.api.query.DRepresentationDescriptorQuery;
 import org.eclipse.sirius.diagram.sequence.description.SequenceDiagramDescription;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.table.metamodel.table.description.CrossTableDescription;
@@ -44,7 +48,7 @@ public class OpenRepresentationsAction extends BaseSelectionListenerAction {
   // Log4j reference logger.
   private static final Logger LOGGER = ReportManagerRegistry.getInstance()
       .subscribe(IReportManagerDefaultComponents.UI);
-  
+
   private DRepresentationDescriptor descriptor;
 
   /**
@@ -78,11 +82,25 @@ public class OpenRepresentationsAction extends BaseSelectionListenerAction {
       imageDescriptor = AbstractUIPlugin.imageDescriptorFromPlugin(DiagramUIPlugin.ID,
           "/icons/full/obj16/DDiagram.gif"); //$NON-NLS-1$
     }
-    
+
     if (null == imageDescriptor) {
       imageDescriptor = ImageDescriptor.getMissingImageDescriptor();
     }
     setImageDescriptor(imageDescriptor);
+  }
+
+  @Override
+  protected boolean updateSelection(IStructuredSelection selection) {
+    return !getOpenableRepresentationDescriptors(selection).isEmpty();
+  }
+
+  /**
+   * The action is enabled if at least one valid representation
+   */
+  private List<DRepresentationDescriptor> getOpenableRepresentationDescriptors(IStructuredSelection selection) {
+    return RepresentationHelper.getSelectedDescriptors(selection.toList()).stream()
+        .filter(descriptor -> new DRepresentationDescriptorQuery((DRepresentationDescriptor) descriptor)
+            .isRepresentationValid()).collect(Collectors.toList());
   }
 
   /**
@@ -93,11 +111,11 @@ public class OpenRepresentationsAction extends BaseSelectionListenerAction {
     Collection<DRepresentationDescriptor> reps;
     if (descriptor != null) {
       reps = Collections.singletonList(descriptor);
-      
+
     } else {
-      reps = RepresentationHelper.getSelectedDescriptors(getStructuredSelection().toList());
+      reps = getOpenableRepresentationDescriptors(getStructuredSelection());
     }
-    
+
     // Precondition
     if (reps.isEmpty()) {
       return;
@@ -110,15 +128,15 @@ public class OpenRepresentationsAction extends BaseSelectionListenerAction {
 
     IRunnableWithProgress runnable = new OpenRepresentationsRunnable(reps, false);
     ProgressMonitorDialog progressDialog = new ProgressMonitorDialog(Display.getDefault().getActiveShell());
-    
+
     try {
       progressDialog.run(false, false, runnable);
       UsageMonitoringLogger.getInstance().log(eventName, eventContext, EventStatus.OK, addendum);
-      
+
     } catch (InvocationTargetException e) {
       LOGGER.debug(new EmbeddedMessage(e.getMessage(), IReportManagerDefaultComponents.UI));
       UsageMonitoringLogger.getInstance().log(eventName, eventContext, EventStatus.ERROR, addendum);
-      
+
     } catch (InterruptedException e) {
       LOGGER.debug(new EmbeddedMessage(e.getMessage(), IReportManagerDefaultComponents.UI));
       UsageMonitoringLogger.getInstance().log(eventName, eventContext, EventStatus.ERROR, addendum);
