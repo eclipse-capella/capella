@@ -18,13 +18,18 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.jface.viewers.IColorProvider;
 import org.eclipse.jface.viewers.IFontProvider;
+import org.eclipse.sirius.business.api.query.DRepresentationDescriptorQuery;
+import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionStatus;
 import org.eclipse.sirius.common.ui.tools.api.view.common.item.ItemDecorator;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.diagram.sequence.description.SequenceDiagramDescription;
+import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
 import org.eclipse.sirius.ui.tools.api.views.common.item.ItemWrapper;
 import org.eclipse.sirius.ui.tools.api.views.common.item.RepresentationDescriptionItem;
 import org.eclipse.sirius.ui.tools.api.views.common.item.ViewpointItem;
@@ -33,6 +38,7 @@ import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.FontData;
 import org.eclipse.swt.graphics.Image;
@@ -54,10 +60,12 @@ import org.polarsys.capella.core.sirius.ui.helper.SessionHelper;
 /**
  * The Capella navigator label provider.
  */
-public class CapellaNavigatorLabelProvider extends MDEAdapterFactoryLabelProvider implements IDescriptionProvider,
-    IFontProvider {
+public class CapellaNavigatorLabelProvider extends MDEAdapterFactoryLabelProvider
+    implements IDescriptionProvider, IFontProvider, IColorProvider {
   private static final String STATUS_LINE_PATH_SEPARATOR = "::"; //$NON-NLS-1$
   private Font _italicFont;
+
+  private static final String DISABLED_REPRESENTATION_SUFFIX = "_disabled"; //$NON-NLS-1$
 
   /**
    * Constructs the Capella navigator label provider.
@@ -75,12 +83,21 @@ public class CapellaNavigatorLabelProvider extends MDEAdapterFactoryLabelProvide
   }
 
   /**
+   * Part related to DRepresentationDescriptor case is copied from
+   * org.eclipse.sirius.ui.tools.internal.views.common.navigator.SiriusCommonLabelProvider.getImage(Object)
+   * 
    * @see org.eclipse.emf.transaction.ui.provider.TransactionalAdapterFactoryLabelProvider#getImage(java.lang.Object)
    */
   @Override
   public Image getImage(Object object) {
     Image image = null;
-    if (object instanceof Session) {
+    DRepresentationDescriptor representationDescriptor = getRepresentationDescriptor(object);
+    if (representationDescriptor != null) {
+      image = super.getImage(representationDescriptor);
+      if (!new DRepresentationDescriptorQuery(representationDescriptor).isRepresentationValid()) {
+        image = getDisabledImage(representationDescriptor, image);
+      }
+    } else if (object instanceof Session) {
       image = SessionLabelProviderHelper.getInstance().getSessionLabelProvider().getImage(object);
     } else if (object instanceof ItemDecorator) {
       image = ((ItemDecorator) object).getImage();
@@ -101,7 +118,49 @@ public class CapellaNavigatorLabelProvider extends MDEAdapterFactoryLabelProvide
     } else if (!(object instanceof IResource)) {
       image = super.getImage(object);
     }
+
     return image;
+  }
+
+  /**
+   * Returns a gray image for the given representation descriptor
+   */
+  private Image getDisabledImage(DRepresentationDescriptor representationDescriptor, Image image) {
+    StringBuilder sB = new StringBuilder();
+    sB.append(DRepresentationDescriptor.class.getName());
+    RepresentationDescription description = representationDescriptor.getDescription();
+    if (description != null) {
+      sB.append(ICommonConstants.UNDERSCORE_CHARACTER);
+      sB.append(description.getClass().getName());
+    }
+    sB.append(DISABLED_REPRESENTATION_SUFFIX);
+
+    String key = sB.toString();
+    Image disabledImage = CapellaNavigatorPlugin.getDefault().getImageRegistry().get(key);
+    if (disabledImage == null) {
+      ImageDescriptor desc = ImageDescriptor.createFromImage(image);
+      ImageDescriptor disabledDesc = ImageDescriptor.createWithFlags(desc, SWT.IMAGE_DISABLE);
+      CapellaNavigatorPlugin.getDefault().getImageRegistry().put(key, disabledDesc);
+      disabledImage = CapellaNavigatorPlugin.getDefault().getImageRegistry().get(key);
+    }
+    return disabledImage;
+  }
+
+  /**
+   * Return the representation descriptor of the given element if it is related to a descriptor
+   */
+  private DRepresentationDescriptor getRepresentationDescriptor(Object element) {
+    Object candidateElement = element;
+    if (element instanceof ItemWrapper) {
+      candidateElement = ((ItemWrapper) element).getWrappedObject();
+    }
+    DRepresentationDescriptor descriptor = null;
+    if (candidateElement instanceof DRepresentation) {
+      descriptor = new DRepresentationQuery((DRepresentation) candidateElement).getRepresentationDescriptor();
+    } else if (candidateElement instanceof DRepresentationDescriptor) {
+      descriptor = (DRepresentationDescriptor) candidateElement;
+    }
+    return descriptor;
   }
 
   /**
@@ -121,7 +180,7 @@ public class CapellaNavigatorLabelProvider extends MDEAdapterFactoryLabelProvide
       return (((RepresentationPackage) object).getName());
     } else {
       // Fix due to 3.5 & 3.6 that have changed the implementation of IResource.toString().
-      IWorkbenchAdapter workbenchAdapter = (IWorkbenchAdapter) Platform.getAdapterManager().getAdapter(object,
+      IWorkbenchAdapter workbenchAdapter = Platform.getAdapterManager().getAdapter(object,
           IWorkbenchAdapter.class);
       text = (null != workbenchAdapter) ? workbenchAdapter.getLabel(object) : super.getText(object);
 
@@ -136,6 +195,29 @@ public class CapellaNavigatorLabelProvider extends MDEAdapterFactoryLabelProvide
     }
 
     return text;
+  }
+
+  /**
+   * This method is mainly copied from
+   * org.eclipse.sirius.ui.tools.internal.views.common.navigator.SiriusCommonLabelProvider.getForeground(Object)
+   * 
+   * @see org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider#getForeground(java.lang.Object)
+   */
+  @Override
+  public Color getForeground(final Object element) {
+    DRepresentationDescriptor representationDescriptor = getRepresentationDescriptor(element);
+    if (representationDescriptor != null) {
+      try {
+        if (!new DRepresentationDescriptorQuery(representationDescriptor).isRepresentationValid()) {
+          return VisualBindingManager.getDefault().getColorFromName("light_gray"); //$NON-NLS-1$
+        }
+      } catch (IllegalStateException | NullPointerException e) {
+        // This can happen when trying to get the label of a CDOObject
+        // which transaction has just been closed
+        // Nothing to do, null will returned
+      }
+    }
+    return super.getForeground(element);
   }
 
   /**
@@ -161,9 +243,9 @@ public class CapellaNavigatorLabelProvider extends MDEAdapterFactoryLabelProvide
       } else {
         representationName = ((DRepresentation) element).getName();
         // Adapts the representation into a Capella element (it returns its Capella container).
-        modelElement = Platform.getAdapterManager().getAdapter((DRepresentation) element, ModelElement.class);
+        modelElement = Platform.getAdapterManager().getAdapter(element, ModelElement.class);
         if (null == modelElement) {
-          modelElement = Platform.getAdapterManager().loadAdapter((DRepresentation) element, ModelElement.class.getName());
+          modelElement = Platform.getAdapterManager().loadAdapter(element, ModelElement.class.getName());
         }
       }
       if (null != modelElement) {
