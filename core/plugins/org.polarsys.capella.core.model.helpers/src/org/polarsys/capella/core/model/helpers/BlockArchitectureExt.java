@@ -98,8 +98,12 @@ import org.polarsys.capella.core.model.helpers.query.CapellaQueries;
 /**
  */
 public class BlockArchitectureExt {
+  
+  private BlockArchitectureExt() {
+    // To hide the implicit public one.
+  }
 
-	public static enum Type {OA, SA, LA, PA, EPBS};
+	public enum Type {OA, SA, LA, PA, EPBS}
 	
 	public static Type getBlockArchitectureType(BlockArchitecture block) {
 		if (block instanceof OperationalAnalysis)
@@ -161,13 +165,13 @@ public class BlockArchitectureExt {
    * Returns all architectures allocated by the architecture and also the given architecture
    */
   public static Collection<BlockArchitecture> getAllAllocatedArchitectures(BlockArchitecture architecture) {
-    LinkedList<BlockArchitecture> listArchitectures = new LinkedList<BlockArchitecture>();
-    Collection<BlockArchitecture> allocatedArchitectures = new HashSet<BlockArchitecture>();
+    LinkedList<BlockArchitecture> listArchitectures = new LinkedList<>();
+    Collection<BlockArchitecture> allocatedArchitectures = new HashSet<>();
 
     if (architecture != null) {
       listArchitectures.add(architecture);
 
-      while (listArchitectures.size() > 0) {
+      while (!listArchitectures.isEmpty()) {
         BlockArchitecture current = listArchitectures.removeFirst();
         allocatedArchitectures.add(current);
 
@@ -186,13 +190,13 @@ public class BlockArchitectureExt {
    * Returns all architectures allocating by the architecture and also the given architecture
    */
   public static Collection<BlockArchitecture> getAllAllocatingArchitectures(BlockArchitecture architecture) {
-    LinkedList<BlockArchitecture> listArchitectures = new LinkedList<BlockArchitecture>();
-    Collection<BlockArchitecture> allocatingArchitectures = new HashSet<BlockArchitecture>();
+    LinkedList<BlockArchitecture> listArchitectures = new LinkedList<>();
+    Collection<BlockArchitecture> allocatingArchitectures = new HashSet<>();
 
     if (architecture != null) {
       listArchitectures.add(architecture);
 
-      while (listArchitectures.size() > 0) {
+      while (!listArchitectures.isEmpty()) {
         BlockArchitecture current = listArchitectures.removeFirst();
         allocatingArchitectures.add(current);
 
@@ -212,7 +216,7 @@ public class BlockArchitectureExt {
    */
   public static List<ExchangeItem> getAllExchangeItems(BlockArchitecture architecture) {
     // TO-DO Reimplements this. From AbstractScenarioHelper.
-    List<ExchangeItem> result = new ArrayList<ExchangeItem>();
+    List<ExchangeItem> result = new ArrayList<>();
     SystemEngineering se = SystemEngineeringExt.getSystemEngineering(architecture);
     TreeIterator<EObject> allContents = se.eAllContents();
     while (allContents.hasNext()) {
@@ -222,17 +226,16 @@ public class BlockArchitectureExt {
       }
       // if the current object is a block architecture situated after the current architecture,
       // break the function, the job is done.
-      if (object instanceof BlockArchitecture) {
-        if (se.getOwnedArchitectures().indexOf(object) > se.getOwnedArchitectures().indexOf(architecture)) {
+      if (object instanceof BlockArchitecture
+          && se.getOwnedArchitectures().indexOf(object) > se.getOwnedArchitectures().indexOf(architecture)) {
           return result;
-        }
       }
     }
     return result;
   }
 
   public static List<ComponentExchange> getAllComponentExchanges(BlockArchitecture architecture) {
-    List<ComponentExchange> instList = new ArrayList<ComponentExchange>();
+    List<ComponentExchange> instList = new ArrayList<>();
     for (EObject obj : EObjectExt.getAll(architecture, FaPackage.Literals.COMPONENT_EXCHANGE)) {
       instList.add((ComponentExchange) obj);
     }
@@ -260,7 +263,7 @@ public class BlockArchitectureExt {
    * @return all previous architectures of anArchitecture
    */
   public static List<BlockArchitecture> getPreviousBlockArchitectures(final BlockArchitecture anArchitecture) {
-    List<BlockArchitecture> returnedList = new ArrayList<BlockArchitecture>();
+    List<BlockArchitecture> returnedList = new ArrayList<>();
     SystemEngineering sysEng = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(anArchitecture);
     OperationalAnalysis oa = SystemEngineeringExt.getOwnedOperationalAnalysis(sysEng);
     if ((oa != null) && anArchitecture.equals(oa)) {
@@ -300,7 +303,7 @@ public class BlockArchitectureExt {
    *         architecture
    */
   public static List<BlockArchitecture> getRootAndPreviousBlockArchitectures(final EObject context) {
-    List<BlockArchitecture> returnedList = new ArrayList<BlockArchitecture>();
+    List<BlockArchitecture> returnedList = new ArrayList<>();
     BlockArchitecture root = getRootBlockArchitecture(context);
     if (root == null) {
       return returnedList;
@@ -358,17 +361,9 @@ public class BlockArchitectureExt {
    * Returns whether the element use a default ActorPkg name
    */
   public static boolean isDefaultNameActorPkg(AbstractNamedElement pkg) {
-    if (NamingConstants.CreateSysAnalysisCmd_actors_pkg_name.equals(pkg.getName())) {
-      return true;
-    
-    } else if (NamingConstants.CreateLogicalArchCmd_actors_pkg_name.equals(pkg.getName())) {
-      return true;
-    
-    } else if (NamingConstants.CreatePhysicalArchCmd_actors_pkg_name.equals(pkg.getName())) {
-      return true;
-    
-    } 
-    return false;
+    return NamingConstants.CreateSysAnalysisCmd_actors_pkg_name.equals(pkg.getName())
+        || NamingConstants.CreateLogicalArchCmd_actors_pkg_name.equals(pkg.getName())
+        || NamingConstants.CreatePhysicalArchCmd_actors_pkg_name.equals(pkg.getName());
   }
 
   /**
@@ -387,11 +382,7 @@ public class BlockArchitectureExt {
    * Returns whether the element use a default DataPkg name
    */
   public static boolean isDefaultNameDataPkg(AbstractNamedElement pkg) {
-    if (NamingConstants.CreateCommonCmd_data_pkg_name.equals(pkg.getName())) {
-      return true;
-    
-    } 
-    return false;
+    return NamingConstants.CreateCommonCmd_data_pkg_name.equals(pkg.getName());
   }
   
   /**
@@ -405,7 +396,7 @@ public class BlockArchitectureExt {
    * Retrieve the Requirement pkg from the given architecture
    */
   public static Structure getRequirementsPkg(BlockArchitecture architecture, boolean create) {
-    if ((architecture.getOwnedRequirementPkgs().size() == 0) && create) {
+    if (architecture.getOwnedRequirementPkgs().isEmpty() && create) {
       // to externalize when constants in skeleton will be into helpers.
       RequirementsPkg pkg = RequirementFactory.eINSTANCE.createRequirementsPkg(NamingConstants.CreateCommonCmd_requirements_pkg_name); //$NON-NLS-1$
       architecture.getOwnedRequirementPkgs().add(pkg);
@@ -420,10 +411,7 @@ public class BlockArchitectureExt {
    * Returns whether the element use a default RequirementPkg name
    */
   public static boolean isDefaultNameRequirementsPkg(AbstractNamedElement pkg) {
-    if (NamingConstants.CreateCommonCmd_requirements_pkg_name.equals(pkg.getName())) {
-      return true;
-    }
-    return false;
+    return NamingConstants.CreateCommonCmd_requirements_pkg_name.equals(pkg.getName());
   }
   
   /**
@@ -468,17 +456,9 @@ public class BlockArchitectureExt {
    * Returns whether the element use a default CapabilityPkg name
    */
   public static boolean isDefaultNameAbstractCapabilityPkg(AbstractNamedElement pkg) {
-    if (NamingConstants.CreateOpAnalysisCmd_operationalCapabilities_pkg_name.equals(pkg.getName())) {
-      return true;
-    
-    } else if (NamingConstants.CreateSysAnalysisCmd_capabilities_pkg_name.equals(pkg.getName())) {
-      return true;
-
-    } else if (NamingConstants.CreateCommonCmd_capability_realisation_pkg_name.equals(pkg.getName())) {
-      return true;
-
-    } 
-    return false;
+    return NamingConstants.CreateOpAnalysisCmd_operationalCapabilities_pkg_name.equals(pkg.getName())
+        || NamingConstants.CreateSysAnalysisCmd_capabilities_pkg_name.equals(pkg.getName())
+        || NamingConstants.CreateCommonCmd_capability_realisation_pkg_name.equals(pkg.getName());
   }
 
   
@@ -495,10 +475,7 @@ public class BlockArchitectureExt {
    * Returns whether the element use a default InterfacePkg name
    */
   public static boolean isDefaultNameInterfacePkg(AbstractNamedElement pkg) {
-    if (NamingConstants.CreateCommonCmd_interfaces_pkg_name.equals(pkg.getName())) {
-      return true;
-    } 
-    return false;
+    return NamingConstants.CreateCommonCmd_interfaces_pkg_name.equals(pkg.getName());
   }
 
   
@@ -604,19 +581,10 @@ public class BlockArchitectureExt {
    * Returns whether the element use a default FunctionPkg name
    */
   public static boolean isDefaultNameFunctionPkg(AbstractNamedElement pkg) {
-    if (NamingConstants.CreateOpAnalysisCmd_operationalActivities_pkg_name.equals(pkg.getName())) {
-      return true;
-    
-    } else if (NamingConstants.CreateSysAnalysisCmd_system_functions_pkg_name.equals(pkg.getName())) {
-      return true;
-
-    } else if (NamingConstants.CreateLogicalArchCmd_logicalFunctions_pkg_name.equals(pkg.getName())) {
-      return true;
-
-    } else if (NamingConstants.CreatePhysicalArchCmd_physicalFunctions_pkg_name.equals(pkg.getName())) {
-      return true;
-    }
-    return false;
+    return NamingConstants.CreateOpAnalysisCmd_operationalActivities_pkg_name.equals(pkg.getName())
+        || NamingConstants.CreateSysAnalysisCmd_system_functions_pkg_name.equals(pkg.getName())
+        || NamingConstants.CreateLogicalArchCmd_logicalFunctions_pkg_name.equals(pkg.getName())
+        || NamingConstants.CreatePhysicalArchCmd_physicalFunctions_pkg_name.equals(pkg.getName());
   }
 
   /**
@@ -683,19 +651,10 @@ public class BlockArchitectureExt {
    * Returns whether the element use a default Function name
    */
   public static boolean isDefaultNameRootFunction(AbstractNamedElement element) {
-    if (NamingConstants.CreateOpAnalysisCmd_operationalActivity_root_name.equals(element.getName())) {
-      return true;
-    
-    } else if (NamingConstants.CreateSysAnalysisCmd_system_function_root_name.equals(element.getName())) {
-      return true;
-
-    } else if (NamingConstants.CreateLogicalArchCmd_logicalFunction_root_name.equals(element.getName())) {
-      return true;
-
-    } else if (NamingConstants.CreatePhysicalArchCmd_physicalFunction_root_name.equals(element.getName())) {
-      return true;
-    }
-    return false;
+    return NamingConstants.CreateOpAnalysisCmd_operationalActivity_root_name.equals(element.getName())
+        || NamingConstants.CreateSysAnalysisCmd_system_function_root_name.equals(element.getName())
+        || NamingConstants.CreateLogicalArchCmd_logicalFunction_root_name.equals(element.getName())
+        || NamingConstants.CreatePhysicalArchCmd_physicalFunction_root_name.equals(element.getName());
   }
   
   /**
@@ -744,19 +703,10 @@ public class BlockArchitectureExt {
    * Returns whether the element use a default First Component name
    */
   public static boolean isDefaultNameFirstComponent(AbstractNamedElement element) {
-    if (NamingConstants.CreateSysAnalysisCmd_system_name.equals(element.getName())) {
-      return true;
-    
-    } else if (NamingConstants.CreateLogicalArchCmd_logicalComponent_name.equals(element.getName())) {
-      return true;
-
-    } else if (NamingConstants.CreatePhysicalArchCmd_physicalComponent_name.equals(element.getName())) {
-      return true;
-
-    } else if (NamingConstants.CreateEPBSArchCmd_configurationItem_name.equals(element.getName())) {
-      return true;
-    }
-    return false;
+    return NamingConstants.CreateSysAnalysisCmd_system_name.equals(element.getName())
+        || NamingConstants.CreateLogicalArchCmd_logicalComponent_name.equals(element.getName())
+        || NamingConstants.CreatePhysicalArchCmd_physicalComponent_name.equals(element.getName())
+        || NamingConstants.CreateEPBSArchCmd_configurationItem_name.equals(element.getName());
   }
   
   /**
@@ -901,7 +851,7 @@ public class BlockArchitectureExt {
    * @return
    */
   public static Collection<Component> getAllComponents(BlockArchitecture blockArch) {
-    Collection<Component> result = new ArrayList<Component>();
+    Collection<Component> result = new ArrayList<>();
     if (null != blockArch) {
       Set<EObject> epbsSet = EObjectExt.getAll(blockArch, CsPackage.Literals.COMPONENT);
       for (EObject cp : epbsSet) {
@@ -940,7 +890,7 @@ public class BlockArchitectureExt {
    * @param availableElements
    */
   public static void getAllComponentsFromOA(BlockArchitecture blockArch, List<CapellaElement> availableElements) {
-    if ((null != blockArch) && (blockArch instanceof OperationalAnalysis)) {
+    if (blockArch instanceof OperationalAnalysis) {
       OperationalAnalysis arch = (OperationalAnalysis) blockArch;
       // OperationalContext
       OperationalContext context = arch.getOwnedOperationalContext();
@@ -958,7 +908,7 @@ public class BlockArchitectureExt {
    * @param availableElements
    */
   public static void getAllComponentsFromSA(BlockArchitecture blockArch, List<CapellaElement> availableElements) {
-    if ((null != blockArch) && (blockArch instanceof SystemAnalysis)) {
+    if (blockArch instanceof SystemAnalysis) {
       SystemAnalysis ca = (SystemAnalysis) blockArch;
       // System Context
       SystemContext ownedSystemContext = ca.getOwnedSystemContext();
@@ -982,7 +932,7 @@ public class BlockArchitectureExt {
    * @param availableElements
    */
   public static void getAllComponentsFromLA(BlockArchitecture blockArch, List<CapellaElement> availableElements) {
-    if ((null != blockArch) && (blockArch instanceof LogicalArchitecture)) {
+    if (blockArch instanceof LogicalArchitecture) {
       LogicalArchitecture logArch = (LogicalArchitecture) blockArch;
       // LogicalContext
       LogicalContext ownedLogicalContext = logArch.getOwnedLogicalContext();
@@ -1002,7 +952,7 @@ public class BlockArchitectureExt {
    * @param availableElements
    */
   public static void getAllComponentsFromPA(BlockArchitecture blockArch, List<CapellaElement> availableElements) {
-    if ((null != blockArch) && (blockArch instanceof PhysicalArchitecture)) {
+    if (blockArch instanceof PhysicalArchitecture) {
       PhysicalArchitecture phyArch = (PhysicalArchitecture) blockArch;
       // PhysicalContext
       PhysicalContext ownedPhysicalContext = phyArch.getOwnedPhysicalContext();
@@ -1022,7 +972,7 @@ public class BlockArchitectureExt {
    * @param availableElements
    */
   public static void getAllComponentsFromEPBS(BlockArchitecture blockArch, List<CapellaElement> availableElements) {
-    if ((null != blockArch) && (blockArch instanceof EPBSArchitecture)) {
+    if (blockArch instanceof EPBSArchitecture) {
       EPBSArchitecture epbsArch = (EPBSArchitecture) blockArch;
       // EPBSContext
       EPBSContext ownedEPBSContext = epbsArch.getOwnedEPBSContext();
@@ -1040,7 +990,7 @@ public class BlockArchitectureExt {
    * @return List<Component>
    */
   public static List<Component> getFirstComponents(ModellingArchitecture architecture) {
-    List<Component> result = new ArrayList<Component>(1);
+    List<Component> result = new ArrayList<>(1);
 
     if (architecture instanceof OperationalAnalysis) {
       OperationalAnalysis archi = (OperationalAnalysis) architecture;
@@ -1095,7 +1045,6 @@ public class BlockArchitectureExt {
       if (null != ci) {
         result.add(ci);
       }
-
     }
 
     return result;
@@ -1107,7 +1056,7 @@ public class BlockArchitectureExt {
    * @return return only the previous architecture of anArchitecture
    */
   public static List<BlockArchitecture> getPreviousBlockArchitecture(final BlockArchitecture anArchitecture) {
-    List<BlockArchitecture> result = new ArrayList<BlockArchitecture>();
+    List<BlockArchitecture> result = new ArrayList<>();
 
     if (null != anArchitecture) {
       // oa does not have any previous arch
@@ -1133,7 +1082,7 @@ public class BlockArchitectureExt {
    * @return
    */
   public static List<BlockArchitecture> getPreviousBlockArchitectureByFunctinoalWay(final BlockArchitecture anArchitecture) {
-    List<BlockArchitecture> result = new ArrayList<BlockArchitecture>();
+    List<BlockArchitecture> result = new ArrayList<>();
     if (anArchitecture instanceof SystemAnalysis) {
       SystemAnalysis sa = (SystemAnalysis) anArchitecture;
       EList<OperationalAnalysisRealization> allocatedOperationalAnalysisRealizations = sa.getAllocatedOperationalAnalysisRealizations();
@@ -1180,7 +1129,7 @@ public class BlockArchitectureExt {
    * @return
    */
   public static List<BlockArchitecture> getPreviousBlockArchitectureByClassicWay(final BlockArchitecture anArchitecture) {
-    List<BlockArchitecture> result = new ArrayList<BlockArchitecture>();
+    List<BlockArchitecture> result = new ArrayList<>();
     if (null != anArchitecture) {
       SystemEngineering sysEng = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(anArchitecture);
 
@@ -1216,7 +1165,7 @@ public class BlockArchitectureExt {
    * @return
    */
   public static List<EObject> getAllConstraints(EObject anElement) {
-    List<EObject> result = new ArrayList<EObject>();
+    List<EObject> result = new ArrayList<>();
     if (null == anElement) {
       return result;
     }

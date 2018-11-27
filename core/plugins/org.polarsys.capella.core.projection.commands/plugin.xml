@@ -81,6 +81,14 @@
                commandId="org.polarsys.capella.core.transfo.commands.actions.GenerateInterfacesAction"
                icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif">
          </image>
+         <image
+               commandId="org.polarsys.capella.core.projection.commands.ui.commands.command21"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif">
+         </image>
+         <image
+               commandId="org.polarsys.capella.core.projection.commands.ui.commands.command23"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif">
+         </image>
          
       </extension>
       
@@ -328,14 +336,53 @@
             </with>
             </and>
          </visibleWhen> 
+         </command>
+         <command
+               commandId="org.polarsys.capella.core.projection.commands.ui.commands.command21"
+               style="push">
+            <visibleWhen
+                  checkEnabled="false">
+               <and>
+                  <reference
+                        definitionId="org.polarsys.capella.core.projection.commands.ui.expression.transitionVisibilityModelElementExpression">
+                  </reference>
+                  <with
+                        variable="selection">
+                     <iterate>
+                        <test
+                              forcePluginActivation="true"
+                              property="org.polarsys.capella.core.platform.sirius.ui.projectionMode"
+                              value="transitionFC2FS">
+                        </test>
+                     </iterate>
+                  </with>
+               </and>
+            </visibleWhen>
+         </command>
+         <command
+               commandId="org.polarsys.capella.core.projection.commands.ui.commands.command23"
+               style="push">
+            <visibleWhen
+                  checkEnabled="false">
+               <and>
+                  <reference
+                        definitionId="org.polarsys.capella.core.projection.commands.ui.expression.transitionVisibilityModelElementExpression">
+                  </reference>
+                  <with
+                        variable="selection">
+                     <iterate>
+                        <test
+                              forcePluginActivation="true"
+                              property="org.polarsys.capella.core.platform.sirius.ui.projectionMode"
+                              value="transitionOP2OAS">
+                        </test>
+                     </iterate>
+                  </with>
+               </and>
+            </visibleWhen>
          </command> 
-      </menuContribution>
-        
+       </menuContribution>
       </extension>
-      
-      
-      
-         
          
       <extension   point="org.eclipse.ui.commands">
           <category
@@ -411,7 +458,16 @@
                name="%transitionFS2FS_LAtoPA_label"
                >
          </command>
-                  
+         <command
+               defaultHandler="org.polarsys.capella.core.projection.commands.handlers.FC2FSHandler"
+               id="org.polarsys.capella.core.projection.commands.ui.commands.command21"
+               name="%transitionFC2FS_label">
+         </command>
+         <command
+               defaultHandler="org.polarsys.capella.core.projection.commands.handlers.FC2FSHandler"
+               id="org.polarsys.capella.core.projection.commands.ui.commands.command23"
+               name="%transitionOP2OAS_label">
+         </command>
      </extension>
    
    <extension

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -40,6 +40,17 @@ public class PreferenceHelper {
       }
     }
     return false;
+  }
+  
+  protected String getStringValue(String id, String defaultValue) {
+    IProperty property = properties.getProperty(id);
+    if (property != null) {
+      Object value = property.getValue(propertyContext);
+      if(value != null) {
+        return value.toString();
+      }
+    }
+    return defaultValue;
   }
 
   /**
@@ -128,5 +139,17 @@ public class PreferenceHelper {
   @Deprecated
   public boolean generateComponentPort() {
     return getBooleanValue(IProjectionPreferences.PREFS_GENERATE_COMPONENTPORT);
+  }
+  
+  public boolean isFC2FSCreateMsgWithReply() {
+    return IProjectionPreferences.OPTION_FC2FS_MESSAGE_WITH_REPLY
+        .equals(getStringValue(IProjectionPreferences.PREFS_FC2FS_SEQUENCE_MESSAGE_STRATEGY,
+            IProjectionPreferences.PREFS_FC2FS_SEQUENCE_MESSAGE_STRATEGY_DEFAULT));
+  }
+
+  public boolean isOP2OASCreateMsgWithReply() {
+    return IProjectionPreferences.OPTION_OP2OAS_MESSAGE_WITH_REPLY
+        .equals(getStringValue(IProjectionPreferences.PREFS_OP2OAS_SEQUENCE_MESSAGE_STRATEGY,
+            IProjectionPreferences.PREFS_OP2OAS_SEQUENCE_MESSAGE_STRATEGY_DEFAULT));
   }
 }

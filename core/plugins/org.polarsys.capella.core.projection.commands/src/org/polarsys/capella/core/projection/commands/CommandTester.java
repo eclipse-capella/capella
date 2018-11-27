@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,8 @@ package org.polarsys.capella.core.projection.commands;
 import org.eclipse.core.expressions.PropertyTester;
 
 import org.polarsys.capella.common.ui.actions.ModelAdaptation;
+import org.polarsys.capella.core.data.fa.FunctionalChain;
+import org.polarsys.capella.core.data.oa.OperationalProcess;
 import org.polarsys.capella.core.projection.common.TransitionHelper;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 
@@ -21,12 +23,12 @@ public class CommandTester extends PropertyTester {
   /**
    * @see org.eclipse.core.expressions.IPropertyTester#test(java.lang.Object, java.lang.String, java.lang.Object[], java.lang.Object)
    */
-  public boolean test(Object object_p, String propertyName_p, Object[] params_p, Object testedValue_p) {
-    if (propertyName_p.equals("projectionMode") || propertyName_p.equals("graphicalProjectionMode")) { //$NON-NLS-1$ //$NON-NLS-2$
-      ModelElement element = ModelAdaptation.adaptToCapella(object_p);
+  public boolean test(Object object, String propertyName, Object[] params, Object testedValue) {
+    if (propertyName.equals("projectionMode") || propertyName.equals("graphicalProjectionMode")) { //$NON-NLS-1$ //$NON-NLS-2$
+      ModelElement element = ModelAdaptation.adaptToCapella(object);
 
-      if ((element != null) && (testedValue_p instanceof String)) {
-        String value = (String) testedValue_p;
+      if ((element != null) && (testedValue instanceof String)) {
+        String value = (String) testedValue;
 
         if (value.startsWith("transition")) { //$NON-NLS-1$
           value = value.substring(10);
@@ -108,6 +110,12 @@ public class CommandTester extends PropertyTester {
           } else if (value.equals("FS2FS-LAPA")) { //$NON-NLS-1$
             return TransitionHelper.getService().isFS2FSForLAPATransitionAvailable(element);
 
+          } else if (value.equals("FC2FS")) {
+            return element instanceof FunctionalChain && !(element instanceof OperationalProcess)
+                && TransitionHelper.getService().isFC2FSTransitionAvailable((FunctionalChain)element);
+          } else if (value.equals("OP2OAS")) {
+            return element instanceof OperationalProcess
+                && TransitionHelper.getService().isOP2OASTransitionAvailable((OperationalProcess) element);
           }
 
         } else if (value.startsWith("generate")) { //$NON-NLS-1$

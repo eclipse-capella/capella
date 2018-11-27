@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <!--
-  Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -41,6 +41,11 @@
                parent="defaultGroup">
          </group>
          
+          <group
+               id="transition.scenario.initialization"
+               name="%transition.scenario.initialization"
+               parent="defaultGroup">
+         </group>
          
          <property
                class="org.polarsys.capella.core.transition.system.topdown.preferences.BooleanPropertyPreference"
@@ -184,13 +189,8 @@
                      value="false">
                </parameter>
          </property>
-         
-         
-         
-     </properties>
-     
-     
 
+     </properties>
      
      
      <properties
@@ -318,16 +318,72 @@
                </parameter>
          </property>
          
-         
-         
+         <property
+               class="org.polarsys.capella.core.transition.system.topdown.preferences.StringPropertyPreference"
+               enabled="true"
+               group="transition.scenario.initialization"
+               id="transition.fc2fs.sequence.message.strategy"
+               name="%transition.fc2fs.sequence.message.strategy"
+               description="%transition.fc2fs.sequence.message.strategy.description">
+            <parameter
+                  id="scope"
+                  value="org.polarsys.capella.core.projection.preferences">
+            </parameter>
+            <parameter
+                  id="default"
+                  value="fc2fs.msg.one.way">
+            </parameter>
+            <option
+                  enabled="true"
+                  id="transition.fc2fs.sequence.message.one.way"
+                  name="%transition.fc2fs.sequence.message.one.way"
+                  description="%transition.fc2fs.sequence.message.one.way.description"
+                  value="fc2fs.msg.one.way">
+            </option>
+            <option
+                  enabled="true"
+                  id="transition.fc2fs.sequence.message.with.reply"
+                  name="%transition.fc2fs.sequence.message.with.reply"
+                  description="%transition.fc2fs.sequence.message.with.reply.description"
+                  value="fc2fs.msg.with.reply">
+            </option>
+         </property>
+         <property
+               class="org.polarsys.capella.core.transition.system.topdown.preferences.StringPropertyPreference"
+               enabled="true"
+               group="transition.scenario.initialization"
+               id="transition.op2oas.sequence.message.strategy"
+               name="%transition.op2oas.sequence.message.strategy"
+               description="%transition.op2oas.sequence.message.strategy.description">
+            <parameter
+                  id="scope"
+                  value="org.polarsys.capella.core.projection.preferences">
+            </parameter>
+            <parameter
+                  id="default"
+                  value="op2oas.msg.one.way">
+            </parameter>
+            <option
+                  enabled="true"
+                  id="transition.op2oas.sequence.message.one.way"
+                  name="%transition.op2oas.sequence.message.one.way"
+                  description="%transition.op2oas.sequence.message.one.way.description"
+                  value="op2oas.msg.one.way">
+            </option>
+            <option
+                  enabled="true"
+                  id="transition.op2oas.sequence.message.with.reply"
+                  name="%transition.op2oas.sequence.message.with.reply"
+                  description="%transition.op2oas.sequence.message.with.reply.description"
+                  value="op2oas.msg.with.reply">
+            </option>
+         </property>
             
      </properties>
      
      <properties
             id="capella.core.transition.system.topdown.lc2pc">
             <inheritance properties="capella.core.transition.system.topdown" />
-            
-            
          
          <property
                class="org.polarsys.capella.core.transition.system.topdown.preferences.StringPropertyPreference"

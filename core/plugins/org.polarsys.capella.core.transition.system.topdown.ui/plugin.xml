@@ -135,6 +135,14 @@
                   property="projection.interfaces.createCE"
                   renderer="checkboxRenderer">
         </propertyBinding>
+        <propertyBinding
+              property="transition.fc2fs.sequence.message.strategy"
+              renderer="optionRenderer">
+        </propertyBinding>
+        <propertyBinding
+              property="transition.op2oas.sequence.message.strategy"
+              renderer="optionRenderer">
+        </propertyBinding>
       </bindings>
       
       
