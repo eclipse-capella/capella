@@ -6,7 +6,7 @@ Element-Version: 2.0
 Id: _H2g9YMEUEeWqb6y2_gGIKQ
 Manually-Ordered: true
 Runtime-Version: 2.3.0.201806262310
-Save-Time: 10/10/18 11:31 AM
+Save-Time: 11/27/18 11:01 AM
 
 ------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8
 Content-Type: text/testcase
@@ -51,5 +51,6 @@ _QblmIKj2Eee0yuaysMB3Rg	// kind: 'test' name: 'RecRpl' path: 'RecRpl/RecRpl.test
 _g1Gg0MVfEei8vKj86crSrA	// kind: 'test' name: 'RecRplFragmentedModel' path: 'RecRpl/FragmentedModel.test'
 _BiAI4MsTEei-lPwnfaLAUA	// kind: 'suite' name: 'Menu' path: 'Menu/Menu.suite'
 _7G5xkMxuEeiPxbJ-SrbizA	// kind: 'suite' name: 'MassActionsTestSuite' path: 'MassActions/MassActionsTestSuite.suite'
+_1BG1wOzgEeighIRKUyQgZw	// kind: 'test' name: 'RenameCapellaProject' path: 'ProjectExplorer/RenameCapellaProject.test'
 
 ------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8--
