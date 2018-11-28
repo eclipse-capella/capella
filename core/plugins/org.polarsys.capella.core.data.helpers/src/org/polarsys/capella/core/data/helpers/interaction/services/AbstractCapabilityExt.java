@@ -241,7 +241,7 @@ public class AbstractCapabilityExt {
       AbstractCapability subCap = generalization.getSub();
       if ((subCap != null) && !subCap.equals(currentCapability) && !capabilityList.contains(subCap)) {
         capabilityList.add(subCap);
-        getInheritanceHierarchyRecursively(capabilityList, subCap);
+        getSubInheritanceHierarchyRecursively(capabilityList, subCap);
       }
     }
   }
