@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,10 +17,12 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.ui.forms.events.HyperlinkEvent;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
+import org.polarsys.capella.core.data.capellacommon.AbstractCapabilityPkg;
 import org.polarsys.capella.core.data.capellamodeller.Project;
-import org.polarsys.capella.core.data.oa.OperationalCapability;
+import org.polarsys.capella.core.data.oa.OperationalAnalysis;
 import org.polarsys.capella.core.explorer.activity.ui.hyperlinkadapter.AbstractCapellaHyperlinkAdapter;
-import org.polarsys.capella.core.explorer.activity.ui.hyperlinkadapter.ModelSelectionHelper;
+import org.polarsys.capella.core.model.helpers.AbstractCapabilityPkgExt;
+import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.ModelQueryHelper;
 import org.polarsys.capella.core.transition.system.topdown.ui.commands.ITransitionCommandConstants;
 import org.polarsys.capella.core.transition.system.topdown.ui.commands.TransitionUICommandHelper;
@@ -45,10 +47,14 @@ public class PerformOpCapabilityToSystemCapabilityTransitionAdapter extends Abst
   @Override
   protected void linkPressed(HyperlinkEvent event, EObject rootSemanticModel, Session session) {
     if (rootSemanticModel instanceof Project) {
-      List<OperationalCapability> operationalCapabilities = ModelSelectionHelper
-          .selectOperationalCapabilities((Project) rootSemanticModel);
-      TransitionUICommandHelper.getInstance().executeCommand(ITransitionCommandConstants.CapabilityTransition,
-          (List) operationalCapabilities);
+      OperationalAnalysis operationalAnalysis = ModelQueryHelper.getOperationalAnalysis((Project)rootSemanticModel);
+      if(operationalAnalysis != null) {
+        AbstractCapabilityPkg capabilityPkg = BlockArchitectureExt.getAbstractCapabilityPkg(operationalAnalysis);
+        if(capabilityPkg != null) {
+          TransitionUICommandHelper.getInstance().executeCommand(ITransitionCommandConstants.CapabilityTransition,
+              (List) AbstractCapabilityPkgExt.getAllAbstractCapabilities(capabilityPkg));          
+        }
+      }
     }
   }
 }
