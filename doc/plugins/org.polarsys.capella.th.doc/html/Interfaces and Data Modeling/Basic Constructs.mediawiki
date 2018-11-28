@@ -11,7 +11,6 @@ A data type is a special kind of classifier, similar to a class. It differs from
 
 
 
-Note that Capella does not provide a way to distinguish primitive classes from non-primitive classes in class diagrams.
 
 ===Simple Type===
 

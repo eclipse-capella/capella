@@ -12,7 +12,6 @@
 		<p><center>
 			<img border="0" src="Images\image004.png"/></center>
 		</p>
-		<p>Note that Capella does not provide a way to distinguish primitive classes from non-primitive classes in class diagrams.</p>
 		<h3 id="Simple_Type">Simple Type</h3>
 		<p>Capella provides five different families of simple data types: [ Boolean Type], [ Enumeration], [ Numeric Type], [ String Type] and [ Physical Quantity]. </p>
 		<p><center>
@@ -35,7 +34,7 @@
 			<img border="0" src="Images\image008.png"/></center>
 		</p>
 		<h4 id="PhysicalQuantity">PhysicalQuantity</h4>
-		<p>Physical Quantity is a specific kind of Numeric Type. It represents a physical �dimension� and is associated to Unit (meter, gram, volt, etc.).</p>
+		<p>Physical Quantity is a specific kind of Numeric Type. It represents a physical “dimension” and is associated to Unit (meter, gram, volt, etc.).</p>
 		<h5 id="Unit">Unit</h5>
 		<p>A Unit of measurement is a definite magnitude of a physical quantity, defined and adopted by convention and/or by law, that is used as a standard for measurement of the same physical quantity. Units are used in Physical Quantity data types and [ Numeric Values].</p>
 		<p>The speed of a car, for instance, can be expressed in terms of km/h (or mile/h, depending on the country).</p>
@@ -46,7 +45,7 @@
 		<p><center>
 			<img border="0" src="Images\image010.png"/></center>
 		</p>
-		<p>Speed can also be a Physical Quantity, with another Unit. We could even define two different Speed types, with different units�</p>
+		<p>Speed can also be a Physical Quantity, with another Unit. We could even define two different Speed types, with different units…</p>
 		<p><center>
 			<img border="0" src="Images\image011.png"/></center>
 		</p>
@@ -66,17 +65,17 @@
 		</p>
 		<h4 id="StringType">StringType</h4>
 		<p>A String Type is a kind of simple data type, representing a sequence of characters. A String defines a piece of text. The semantics of the string itself depends on its purpose; it can be a comment, computational language expression, OCL expression, etc.</p>
-		<p>In our example, the owner of the car could be a person, with a first name and a last name. The first name and the last name are of kind String Type. Hence we define a specific String Type named �Name�.</p>
+		<p>In our example, the owner of the car could be a person, with a first name and a last name. The first name and the last name are of kind String Type. Hence we define a specific String Type named “Name”.</p>
 		<p><center>
 			<img border="0" src="Images\image015.png"/></center>
 		</p>
 		<h3 id="Complex_Type">Complex Type</h3>
-		<p>In Capella , simple types cannot own [ Properties]. So if we need structured data types, we have to create Classes, but then we have to specify that these classes are �[ primitive]�. These primitive classes play the role of complex types.</p>
+		<p>In Capella , simple types cannot own [ Properties]. So if we need structured data types, we have to create Classes, but then we have to specify that these classes are “[ primitive]”. These primitive classes play the role of complex types.</p>
 		<p><center>
 			<img border="0" src="Images\image016.png"/></center>
 		</p>
 		<p>Primitive Classes can be used to type other Class Properties, but cannot be the source or target of [ associations]. Primitive means instances of the class have no identity in the context of the system.</p>
-		<p>Let us give an example. If we need a Date type containing three properties like year, month, and day, we have to create a �primitive� class. </p>
+		<p>Let us give an example. If we need a Date type containing three properties like year, month, and day, we have to create a “primitive” class. </p>
 		<p><center>
 			<img border="0" src="Images\image017.png"/></center>
 		</p>
@@ -87,7 +86,7 @@
 		<p><center>
 			<img border="0" src="Images\image019.png"/></center>
 		</p>
-		<p>Two instances of the Date Class with the same property values cannot be distinguished&nbsp;; A date does not have any intrinsic identity, contrary to a car or a person, it is a �&nbsp;primitive&nbsp;� class or complex type.</p>
+		<p>Two instances of the Date Class with the same property values cannot be distinguished&nbsp;; A date does not have any intrinsic identity, contrary to a car or a person, it is a «&nbsp;primitive&nbsp;» class or complex type.</p>
 		<h3 id="Class">Class</h3>
 		<p>A Class is a complex classifier.</p>
 		<p>The purpose of a Class is to specify a classification of objects and to specify the features that characterize the structure and behavior of those objects. </p>
@@ -95,7 +94,7 @@
 		<p><center>
 			<img border="0" src="Images\image020.png"/></center>
 		</p>
-		<p>Classes are the Capella declination of the UML concept of �Class�. So, many possibilities given by the UML Class Diagram are available here: classes can be associated and generalized, etc.</p>
+		<p>Classes are the Capella declination of the UML concept of “Class”. So, many possibilities given by the UML Class Diagram are available here: classes can be associated and generalized, etc.</p>
 		<h4 id="Class_Editor">Class Editor</h4>
 		<p><center>
 			<img border="0" src="Images\image021.png"/></center>
@@ -226,21 +225,21 @@
 		<p><center>
 			<img border="0" src="Images\image024.png"/></center>
 		</p>
-		<p>Key properties are noted with a �&amp;� prefix.</p>
+		<p>Key properties are noted with a “&amp;” prefix.</p>
 		<p>Note that a key is said to be composite when it is made of several parts or a unique complex part, whereas simple keys are specified by a unique simple property.</p>
-		<p>Let us give a simple example of an association role being part of a key: a Ground Antenna is both identified by its own antenna number and the Ground Station it is related to (Ground Antennas are numbered by: Ground Antenna 1, 2 3 � of Ground Station STA1).</p>
+		<p>Let us give a simple example of an association role being part of a key: a Ground Antenna is both identified by its own antenna number and the Ground Station it is related to (Ground Antennas are numbered by: Ground Antenna 1, 2 3 … of Ground Station STA1).</p>
 		<p><center>
 			<img border="0" src="Images\image025.png"/></center>
 		</p>
 		<h4 id="Cardinality">Cardinality</h4>
 		<p>By default, each instance of a Class will bear exactly one value for each Property of the Class: Min. Card = Max. Card = 1.</p>
-		<p>We can specify that a property is optional, by setting its Min. Card to �0� instead of �1�. We can also specify that a property may have several values by setting the Max. Card to more than 1.</p>
-		<p>In France, for instance, when a child is born and declared, the parents must give him/her at least one first name, but there is no official number limit. The order of declaration is important, and the first one is the official first name. Let us also specify an optional middle name �</p>
+		<p>We can specify that a property is optional, by setting its Min. Card to “0” instead of “1”. We can also specify that a property may have several values by setting the Max. Card to more than 1.</p>
+		<p>In France, for instance, when a child is born and declared, the parents must give him/her at least one first name, but there is no official number limit. The order of declaration is important, and the first one is the official first name. Let us also specify an optional middle name …</p>
 		<p><center>
 			<img border="0" src="Images\image026.png"/></center>
 		</p>
 		<p>The cardinality bounds are typically shown in the format: </p>
-		<p>&lt;lower-bound&gt; �..� &lt;upper-bound&gt;</p>
+		<p>&lt;lower-bound&gt; ‘..’ &lt;upper-bound&gt;</p>
 		<p>where &lt;lower-bound&gt; is an integer and &lt;upper-bound&gt; is an unlimited natural number. The star character (*) is used as part of a cardinality specification to represent the unlimited (or infinite) upper bound.</p>
 		<p><center>
 			<img border="0" src="Images\image027.png"/></center>
@@ -367,7 +366,7 @@
 				</td>
 			</tr>
 		</table>
-		<p>These features, when specified for a property, overwrite those, if any, defined for the property�s type.</p>
+		<p>These features, when specified for a property, overwrite those, if any, defined for the property’s type.</p>
 		<p>As a good practice, defining these features in types should be preferred to defining them in properties. When features are defined in types the model is clearer. A drawback of this practice is that it leads to defining a larger number of types.</p>
 		<h5 id="Default_Value">Default Value</h5>
 		<p>When an object is instantiated in a class, for every attribute of the class that has a specified default, if an initial value of the attribute is not specified explicitly for the instantiation, then the default value specification is evaluated to set the initial value of the attribute for the object [UML].</p>
@@ -377,7 +376,7 @@
 			<img border="0" src="Images\image028.png"/></center>
 		</p>
 		<h5 id="Null_Value">Null Value</h5>
-		<p>If the null value is defined for a type, wherever a value of this type is expected, the null value shall be provided to actually specify �no value�. The null value of a type is the concrete (physical) value to specify �no value� from a logical point of view.</p>
+		<p>If the null value is defined for a type, wherever a value of this type is expected, the null value shall be provided to actually specify “no value”. The null value of a type is the concrete (physical) value to specify “no value” from a logical point of view.</p>
 		<p>The null value can be overwritten in a subtype.</p>
 		<h5 id="Min.2FMax">Min/Max</h5>
 		<p>Minimum and maximum values for range.</p>
@@ -401,7 +400,7 @@
 		<p>Abstract class names are displayed in italics in diagrams (look at 
 			<i>Vehicle</i> in the following CDB).
 		</p>
-		<p>In our example, let us speak also about motorbikes. Cars and motorbikes are �vehicles�. We can create an abstract Class �Vehicle� that will factorize all the common properties for cars and motorbikes.</p>
+		<p>In our example, let us speak also about motorbikes. Cars and motorbikes are “vehicles”. We can create an abstract Class “Vehicle” that will factorize all the common properties for cars and motorbikes.</p>
 		<p><center>
 			<img border="0" src="Images\image030.png"/></center>
 		</p>
@@ -416,7 +415,7 @@
 			<img border="0" src="Images\image032.png"/></center>
 		</p>
 		<h4 id="isPrimitive">isPrimitive</h4>
-		<p>When a class is tagged �isPrimitive�, it becomes a [ Complex Type].</p>
+		<p>When a class is tagged “isPrimitive”, it becomes a [ Complex Type].</p>
 		<p>Primitive Classes can be used to type other Class Properties, but cannot be the source or target of [ associations]. Primitive means instances of the class have no identity in the context of the system. </p>
 		<p>Warning: as a consequence, converting a class to a primitive might delete all its associations. It depends on your Capella preferences.</p>
 		<h3 id="Values">Values</h3>
@@ -440,13 +439,13 @@
 			<li>25e-03</li>
 			<li>-1</li>
 		</ul>
-		<p>In our example, we just wanted to express that the minimum mileage value is �0�.</p>
+		<p>In our example, we just wanted to express that the minimum mileage value is “0”.</p>
 		<p><center>
 			<img border="0" src="Images\image033.png"/></center>
 		</p>
 		<h4 id="Enumeration_Literal">Enumeration Literal</h4>
 		<p>An Enumeration Literal is a user-defined possible [ Enumeration] instance.</p>
-		<p>We can specify the precise list of available colors for cars. Let us begin�</p>
+		<p>We can specify the precise list of available colors for cars. Let us begin…</p>
 		<p><center>
 			<img border="0" src="Images\image034.png"/></center>
 		</p>
@@ -474,22 +473,22 @@
 		<ul>
 			<li>'NONE'</li>
 			<li>'January 2014'</li>
-			<li>�John Doe�</li>
+			<li>‘John Doe’</li>
 		</ul>
 		<p><center>
 			<img border="0" src="Images\image038.png"/></center>
 		</p>
 		<p>These String Literals can then be used in default and null values of properties typed by a String data type.</p>
 		<h3 id="Association">Association</h3>
-		<p>An Association is a semantic relationship between two Classes (or Unions and Collections). �Association� represents a relationship shared among the instances of two classes.</p>
+		<p>An Association is a semantic relationship between two Classes (or Unions and Collections). “Association” represents a relationship shared among the instances of two classes.</p>
 		<p><center>
 			<img border="0" src="Images\image039.png"/></center>
 		</p>
 		<p>An association is normally drawn as a solid line connecting two types, or a solid line connecting a single classifier to itself (the two ends are distinct).</p>
-		<p>Note: Distinction between �attribute� and �association� properties should be made upon the basis of the type of the element linked to the class:</p>
+		<p>Note: Distinction between “attribute” and “association” properties should be made upon the basis of the type of the element linked to the class:</p>
 		<ul>
-			<li>Relationship towards a �Data type� or a �primitive Class� leads to the creation of a single class property.</li>
-			<li>Relationship towards a non-primitive �Class� is achieved through the creation of an association between the two classes.</li>
+			<li>Relationship towards a “Data type” or a “primitive Class” leads to the creation of a single class property.</li>
+			<li>Relationship towards a non-primitive “Class” is achieved through the creation of an association between the two classes.</li>
 		</ul>
 		<p>As a consequence, it is neither possible to create an association towards a Datatype / primitive Class, neither possible to type a single Property with a non-primitive Class.</p>
 		<p>In our example, imagine we just need the last name for the owner of a car, assuming there are no homonyms, the following simple model would be sufficient.</p>
@@ -511,11 +510,11 @@
 		<ul>
 			<li>isOrdered : Boolean</li>
 		</ul>
-		<p>For a multivalued multiplicity (Max. Card &gt; 1), this attribute specifies whether the values in an instantiation of this element are sequentially ordered. Default is false. See � [ isOrdered].</p>
+		<p>For a multivalued multiplicity (Max. Card &gt; 1), this attribute specifies whether the values in an instantiation of this element are sequentially ordered. Default is false. See § [ isOrdered].</p>
 		<ul>
 			<li>isUnique : Boolean</li>
 		</ul>
-		<p>For a multivalued multiplicity (Max. Card &gt; 1), this attributes specifies whether the values in an instantiation of this element are unique. Default is true. See � [ isUnique].</p>
+		<p>For a multivalued multiplicity (Max. Card &gt; 1), this attributes specifies whether the values in an instantiation of this element are unique. Default is true. See § [ isUnique].</p>
 		<p>Typical cardinalities are:</p>
 		<ul>
 			<li>[0..1] = optional</li>
@@ -525,11 +524,11 @@
 			<li>[0..*] = [*] = any number</li>
 			<li>[1..1] = [1] = exactly one</li>
 		</ul>
-		<p>A cardinality with zero as the lower bound and an unspecified upper bound may use the alternative notation containing a single star �*� instead of �0..*�. In Capella , as for Properties, the default is supposed to be �1..1�, and is not displayed.</p>
+		<p>A cardinality with zero as the lower bound and an unspecified upper bound may use the alternative notation containing a single star “*” instead of “0..*”. In Capella , as for Properties, the default is supposed to be “1..1”, and is not displayed.</p>
 		<p><center>
 			<img border="0" src="Images\image043.png"/></center>
 		</p>
-		<p>If the lower bound is equal to the upper bound, then an alternate notation is to use the string containing just the upper bound. For example, �4� is semantically equivalent to �4..4� (exactly 4). </p>
+		<p>If the lower bound is equal to the upper bound, then an alternate notation is to use the string containing just the upper bound. For example, “4” is semantically equivalent to “4..4” (exactly 4). </p>
 		<p><center>
 			<img border="0" src="Images\image044.png"/></center>
 		</p>
@@ -570,7 +569,7 @@
 			<img border="0" src="Images\image050.jpg"/></center>
 		</p>
 		<h4 id="Name">Name</h4>
-		<p>It is also possible to give a name to the association itself, instead of or in addition to the role names. Take care: by default, the name of the association does not appear on the diagram! You have to deactivate the default filter called �association label�.</p>
+		<p>It is also possible to give a name to the association itself, instead of or in addition to the role names. Take care: by default, the name of the association does not appear on the diagram! You have to deactivate the default filter called “association label”.</p>
 		<p><center>
 			<img border="0" src="Images\image051.png"/></center>
 		</p>
@@ -600,12 +599,12 @@
 		<p>Take care also that if you ever change the name of a Class, the names of the roles pointing to it will not be changed automatically!</p>
 		<h4 id="Aggregation.2C_composition">Aggregation, composition</h4>
 		<p>When Aggregation Kind of a role is ASSOCIATION, the association is a simple association. For this role, the origin class has a reference to the target class which shall own or inherit a key.</p>
-		<p>�Aggregation� is a variant of the "has a" association relationship; aggregation is more specific than association. It is an association that represents a part-of relationship. </p>
+		<p>“Aggregation” is a variant of the "has a" association relationship; aggregation is more specific than association. It is an association that represents a part-of relationship. </p>
 		<p><center>
 			<img border="0" src="Images\image057.png"/></center>
 		</p>
 		<p>Take care: as this concept does not have a universally agreed semantics (it is a semantic variation point in UML), it is advised not to use it unless you define a clear semantics for your project.</p>
-		<p>�Composition� (or composite aggregation) is a strong form of aggregation that requires a part instance be included in at most one composite at a time. If a composite is deleted, all of its parts are normally deleted with it. Note that a part can (where allowed) be removed from a composite before the composite is deleted, and thus not be deleted as part of the composite. Compositions may be linked in a directed acyclic graph with transitive deletion characteristics; that is, deleting an element in one part of the graph will also result in the deletion of all elements of the composition subgraph below that element.</p>
+		<p>“Composition” (or composite aggregation) is a strong form of aggregation that requires a part instance be included in at most one composite at a time. If a composite is deleted, all of its parts are normally deleted with it. Note that a part can (where allowed) be removed from a composite before the composite is deleted, and thus not be deleted as part of the composite. Compositions may be linked in a directed acyclic graph with transitive deletion characteristics; that is, deleting an element in one part of the graph will also result in the deletion of all elements of the composition subgraph below that element.</p>
 		<p>Composition is represented by a black diamond on the origin end of the association.</p>
 		<p><center>
 			<img border="0" src="Images\image058.png"/></center>
@@ -640,7 +639,7 @@
 		<p><center>
 			<img border="0" src="Images\image065.png"/></center>
 		</p>
-		<p>A Generalization is shown as a line with a hollow triangle as an arrowhead between the symbols representing the involved classes. The arrowhead points to the symbol representing the general class. The Generalization relationship is also shown in the Properties sheet under the topic �Super�, which indicates the super-class.</p>
+		<p>A Generalization is shown as a line with a hollow triangle as an arrowhead between the symbols representing the involved classes. The arrowhead points to the symbol representing the general class. The Generalization relationship is also shown in the Properties sheet under the topic “Super”, which indicates the super-class.</p>
 		<p><center>
 			<img border="0" src="Images\image066.png"/></center>
 		</p>
@@ -666,7 +665,7 @@
 		<p><center>
 			<img border="0" src="Images\image068.jpg"/></center>
 		</p>
-		<p>It is highly recommended not to put all the types �&nbsp;flat&nbsp;� in the 
+		<p>It is highly recommended not to put all the types «&nbsp;flat&nbsp;» in the 
 			<i>Data</i> existing package. Inside 
 			<i>Classes</i>, and 
 			<i>Basic Types</i>, we could have created subpackages to better structure the Data Model. Usually classes and basic types are mixed in packages for the structuration in packages shall rely on business criteria and not on type kind (class vs datatype). A useful recommendation is to limit the number of datatypes and classes in a package to 20.
@@ -714,7 +713,7 @@
 		<p><center>
 			<img border="0" src="Images\image075.jpg"/></center>
 		</p>
-		<p>Only the �Hide Association Labels� filter is activated by default. We have given examples of this filter and the following one: �Hide Role Labels� in the [ Association Name �].</p>
+		<p>Only the “Hide Association Labels” filter is activated by default. We have given examples of this filter and the following one: “Hide Role Labels” in the [ Association Name §].</p>
 		<h5 id="Hide_Properties">Hide Properties</h5>
 		<p>This filter hides the properties inside classes. But it does not hide the literals inside the basic types.</p>
 		<p><center>
@@ -760,7 +759,7 @@
 			<li>Exchange Items and Interfaces group and structure some data sets in order to be used in a dedicated context, based on exchanges between entities (functions, components)</li>
 		</ul>
 		<p>If only data model was used to structure context-dependent exchanged data, this could lead either to very complex data structures (trying to deal simultaneously with multiple uses), or very numerous, partially redundant data structures (thus compromising the understanding of semantic data definition).</p>
-		<p>Exchange Items can be defined in order to group references to a set of data, to be considered in a coherent manner for functional exchanges. Furthermore, some non-functional properties may need to be attached to this set of data: coherency of use in this context, simultaneousness of transport, same quality of service, periodicity� And here again, the need also exists to indicate that several exchanges should carry the same set of data. </p>
+		<p>Exchange Items can be defined in order to group references to a set of data, to be considered in a coherent manner for functional exchanges. Furthermore, some non-functional properties may need to be attached to this set of data: coherency of use in this context, simultaneousness of transport, same quality of service, periodicity… And here again, the need also exists to indicate that several exchanges should carry the same set of data. </p>
 		<p>Note that:</p>
 		<p>- An Exchange or port can implement many Exchange Items for complex communication;</p>
 		<p>- Data to be allocated to a port or exchange are in fact allocated to it through one or more Exchange items.</p>
@@ -775,7 +774,7 @@
 				<ul>
 					<li>same communication principles</li>
 					<li>simultaneity of transportation</li>
-					<li>same non-functional properties (e.g. security level, integrity requirement, expected performance�)</li>
+					<li>same non-functional properties (e.g. security level, integrity requirement, expected performance…)</li>
 					<li>indivisibility (an exchange item is atomic)</li>
 				</ul>
 			</li>
@@ -785,9 +784,9 @@
 		<ul>
 			<li>structuring ports/exchanges in order to organize exchanged data</li>
 			<li>avoiding to define several times the same set of data when used in several ports/exchanges</li>
-			<li>imposing a unification of interactions or exchanges of the same kind everywhere in the system (e.g. standard for messaging, protocols, �)</li>
+			<li>imposing a unification of interactions or exchanges of the same kind everywhere in the system (e.g. standard for messaging, protocols, …)</li>
 			<li>constituting a checkable contract in exchanges with outside the system</li>
-			<li>carrying a requested communication principle if necessary (e.g. event, dataflow, message, service, shared data, continuous flow�).</li>
+			<li>carrying a requested communication principle if necessary (e.g. event, dataflow, message, service, shared data, continuous flow…).</li>
 		</ul>
 		<p><center>
 			<img border="0" src="Images\image084.png"/></center>
@@ -966,7 +965,7 @@
 			<img border="0" src="Images\image101.png"/></center>
 		</p>
 		<p>Note that for p11, isComposite must be true as Class1 does not have a key property, but p12 can be a reference (isComposite = False), as Class2 inherits its key from Class4.</p>
-		<p>Observe also that it is possible to restrain the Exchange Item Element to a subset of the Class (or data type) properties. In our example, parameter p 21 of Operation 2 could reference only property Class4::a21 through the �Referenced Properties� field.</p>
+		<p>Observe also that it is possible to restrain the Exchange Item Element to a subset of the Class (or data type) properties. In our example, parameter p 21 of Operation 2 could reference only property Class4::a21 through the “Referenced Properties” field.</p>
 		<p><center>
 			<img border="0" src="Images\image102.png"/></center>
 		</p>
@@ -974,7 +973,7 @@
 			<img border="0" src="Images\image103.png"/></center>
 		</p>
 		<p>When an Exchange Item has a communication mechanism of type EVENT, FLOW, or SHARED _DATA, its Exchange Item Elements are either of type MEMBER or TYPE,</p>
-		<p>If the Exchange Item Element is of Kind TYPE, the Exchange Item only owns this Exchange Item Element, and the structure of the Exchange Item is completely defined by the type of the Exchange Item Element, and its features: cardinality, �is composite�, �is ordered� and �is unique�.</p>
+		<p>If the Exchange Item Element is of Kind TYPE, the Exchange Item only owns this Exchange Item Element, and the structure of the Exchange Item is completely defined by the type of the Exchange Item Element, and its features: cardinality, ’is composite’, ‘is ordered’ and ‘is unique’.</p>
 		<p>Else, all its Exchange Item Elements are of type MEMBER, and each Exchange Item Element enables to define a structural property of the owning Exchange Item, in the same way as class [ properties] define structural properties of a class.</p>
 		<h3 id="Interface">Interface</h3>
 		<p>Interfaces are contracts specifying how components can interact with each other. Interfaces are defined by grouping Exchange Items.</p>
@@ -1034,7 +1033,7 @@
 		<p><center>
 			<img border="0" src="Images\image115.png"/></center>
 		</p>
-		<p>A big difference between Scenario and Data Flow Blank diagrams is that you can specify duration constraints on scenarios, and also loops, alternatives or optional conditions with the �combined fragment� concept.</p>
+		<p>A big difference between Scenario and Data Flow Blank diagrams is that you can specify duration constraints on scenarios, and also loops, alternatives or optional conditions with the “combined fragment” concept.</p>
 		<p><center>
 			<img border="0" src="Images\image116.png"/></center>
 		</p>
