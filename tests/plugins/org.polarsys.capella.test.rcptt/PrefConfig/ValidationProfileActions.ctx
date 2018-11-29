@@ -5,8 +5,8 @@ Element-Name: ValidationProfileActions
 Element-Type: context
 Element-Version: 2.0
 Id: _ZR3fQKKHEeaAAPJPtfviTA
-Runtime-Version: 2.3.0.201803290557
-Save-Time: 6/25/18 5:47 PM
+Runtime-Version: 2.3.0.201806262310
+Save-Time: 11/29/18 12:58 PM
 
 ------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
 Content-Type: text/ecl
@@ -251,7 +251,7 @@ proc "checkDefaultPreferences" [val projectName] {
 	        checkPropertyButtonSelected "Propagate logical component breakdown in physical architecture" true
 	        checkPropertyButtonSelected "Propagate only leaf logical component in physical architecture" false
 	    }
-	    with [get-group "Interface generation"] {
+	    with [get-group "Interface Generation"] {
 	        checkPropertyButtonSelected "Propagate Exchange Items from Functional Exchange to Function Ports" true
 	        checkPropertyButtonSelected "Create component exchange between provider/requirer ports" false
 	    }
@@ -325,7 +325,7 @@ proc "changePreferences" [val projectName] {
 	    with [get-group "Logical Components to Physical Components"] {
 	        get-button "Propagate only leaf logical component in physical architecture" | click
 	    }
-	    with [get-group "Interface generation"] {
+	    with [get-group "Interface Generation"] {
 	        get-button "Propagate Exchange Items from Functional Exchange to Function Ports" | uncheck
 	        get-button "Create component exchange between provider/requirer ports" | check
 	    }
@@ -405,7 +405,7 @@ proc "checkChangedPreferences" [val projectName] {
 	        get-button "Propagate only leaf logical component in physical architecture" | get-property selected 
 	            | equals true | verify-true
 	    }
-	    with [get-group "Interface generation"] {
+	    with [get-group "Interface Generation"] {
 	        get-button "Propagate Exchange Items from Functional Exchange to Function Ports" | get-property selected | equals false 
 	            | verify-true
 	        get-button "Create component exchange between provider/requirer ports" | get-property selected | equals true 
@@ -488,7 +488,7 @@ proc "checkUnchangedPreferencesProject1" [val projectName] {
 	        get-button "Propagate only leaf logical component in physical architecture" | get-property selected 
 	            | equals true | verify-true
 	    }
-	    with [get-group "Interface generation"] {
+	    with [get-group "Interface Generation"] {
 	        get-button "Propagate Exchange Items from Functional Exchange to Function Ports" | get-property selected | equals false 
 	            | verify-true
 	        get-button "Create component exchange between provider/requirer ports" | get-property selected | equals true 
