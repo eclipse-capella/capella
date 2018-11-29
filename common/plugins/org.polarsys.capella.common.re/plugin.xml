@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <!--
-  Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2017, 2018 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -15,47 +15,45 @@
    <extension
          name="Property view"
          point="org.polarsys.capella.common.flexibility.properties">
-      
       <properties
-            id="org.polarsys.capella.common.re.ReNamedElement">
-
+            id="org.polarsys.capella.common.re.ReAbstractElement">
          <group
                id="org.polarsys.capella.common.properties.replicableElement"
                name="Replicable Element">
          </group>
-         
          <group
                id="org.polarsys.capella.common.properties.replicableElement.information"
-               parent="org.polarsys.capella.common.properties.replicableElement"
-               name="Information">
+               name="Information"
+               parent="org.polarsys.capella.common.properties.replicableElement">
          </group>
-         
          <group
                id="org.polarsys.capella.common.properties.replicableElement.information.name"
-               parent="org.polarsys.capella.common.properties.replicableElement.information"
-               name="Name">
+               name="Name"
+               parent="org.polarsys.capella.common.properties.replicableElement.information">
          </group>
-         
          <group
                id="org.polarsys.capella.common.properties.replicableElement.information.content"
-               parent="org.polarsys.capella.common.properties.replicableElement.information"
-               name="Content">
+               name="Content"
+               parent="org.polarsys.capella.common.properties.replicableElement.information">
          </group>
-         
+      </properties>
+      
+      <properties
+            id="org.polarsys.capella.common.re.ReNamedElement">
          <property
                class="org.polarsys.capella.common.flexibility.properties.property.EAdaptableFeatureProperty"
                enabled="true"
                group="org.polarsys.capella.common.properties.replicableElement.information.name"
                id="org.polarsys.capella.common.re.ReNamedElement_name"
                name="Name">
-            <argument
+            <parameter
                   id="eclass"
                   value="org.polarsys.capella.common.re.ReNamedElement">
-            </argument>
-            <argument
+            </parameter>
+            <parameter
                   id="feature"
                   value="name">
-            </argument>
+            </parameter>
          </property>
          
       </properties>
@@ -69,14 +67,14 @@
                group="org.polarsys.capella.common.properties.replicableElement.information.name"
                id="org.polarsys.capella.common.re.ReDescriptionElement_description"
                name="Description">
-            <argument
+            <parameter
                   id="eclass"
                   value="org.polarsys.capella.common.re.ReDescriptionElement">
-            </argument>
-            <argument
+            </parameter>
+            <parameter
                   id="feature"
                   value="description">
-            </argument>
+            </parameter>
          </property>
          
       </properties>
@@ -90,14 +88,14 @@
                group="org.polarsys.capella.common.properties.replicableElement.information.name"
                id="org.polarsys.capella.common.re.ReNamedElement_suffix"
                name="Suffix">
-            <argument
+            <parameter
                   id="eclass"
                   value="org.polarsys.capella.common.re.CatalogElement">
-            </argument>
-            <argument
+            </parameter>
+            <parameter
                   id="feature"
                   value="suffix">
-            </argument>
+            </parameter>
          </property>
        
        
@@ -107,14 +105,14 @@
                group="org.polarsys.capella.common.properties.replicableElement.information.content"
                id="org.polarsys.capella.common.re.CatalogElement_author"
                name="Author">
-            <argument
+            <parameter
                   id="eclass"
                   value="org.polarsys.capella.common.re.CatalogElement">
-            </argument>
-            <argument
+            </parameter>
+            <parameter
                   id="feature"
                   value="author">
-            </argument>
+            </parameter>
          </property>
          
          <property
@@ -123,14 +121,14 @@
                group="org.polarsys.capella.common.properties.replicableElement.information.content"
                id="org.polarsys.capella.common.re.CatalogElement_environment"
                name="Environment">
-            <argument
+            <parameter
                   id="eclass"
                   value="org.polarsys.capella.common.re.CatalogElement">
-            </argument>
-            <argument
+            </parameter>
+            <parameter
                   id="feature"
                   value="environment">
-            </argument>
+            </parameter>
          </property>
          
          <property
@@ -139,14 +137,14 @@
                group="org.polarsys.capella.common.properties.replicableElement.information.content"
                id="org.polarsys.capella.common.re.CatalogElement_tags"
                name="Tags">
-            <argument
+            <parameter
                   id="eclass"
                   value="org.polarsys.capella.common.re.CatalogElement">
-            </argument>
-            <argument
+            </parameter>
+            <parameter
                   id="feature"
                   value="tags">
-            </argument>
+            </parameter>
          </property>
          <property
                class="org.polarsys.capella.common.flexibility.properties.property.EAdaptableFeatureProperty"
@@ -154,16 +152,34 @@
                group="org.polarsys.capella.common.properties.replicableElement.information.content"
                id="org.polarsys.capella.common.re.CatalogElement_readOnly"
                name="Enforce RPL Compliance On The Fly">
-               <argument
+               <parameter
                   id="eclass"
                   value="org.polarsys.capella.common.re.CatalogElement">
-               </argument>
-               <argument
+               </parameter>
+               <parameter
                   id="feature"
                   value="readOnly">
-            </argument>
+            </parameter>
          </property>
          
+      </properties>
+      <properties
+            id="org.polarsys.capella.common.re.CatalogElementLink">
+         <property
+               class="org.polarsys.capella.common.flexibility.properties.property.EAdaptableFeatureProperty"
+               enabled="true"
+               group="org.polarsys.capella.common.properties.replicableElement.information.content"
+               id="org.polarsys.capella.common.re.CatalogElementLink.suffixed"
+               name="Suffixed">
+            <parameter
+                  id="eclass"
+                  value="org.polarsys.capella.common.re.CatalogElementLink">
+            </parameter>
+            <parameter
+                  id="feature"
+                  value="suffixed">
+            </parameter>
+         </property>
       </properties>
       
       
@@ -314,6 +330,15 @@
             id="org.polarsys.capella.common.re.rpl2re">
           <inheritance properties="org.polarsys.capella.common.re" />
             
+         
+        <property
+               class="org.polarsys.capella.common.re.properties.SuffixReminderProperty"
+               description="Reminds the user to manually set the suffix"
+               enabled="true"
+               group="org.polarsys.capella.common.re.description"
+               id="suffixReminder"
+               name="Suffix reminder">
+        </property>
          
          
         <property
@@ -1379,7 +1404,6 @@
          
    </extension>
    
-   
    <extension
          point="org.polarsys.capella.common.model.helpers.helper">
       <helperImpl
@@ -1387,6 +1411,7 @@
             nsURI="http://www.polarsys.org/capella/common/re/1.2.0">
       </helperImpl>
    </extension>
+   
    
    
 </plugin>

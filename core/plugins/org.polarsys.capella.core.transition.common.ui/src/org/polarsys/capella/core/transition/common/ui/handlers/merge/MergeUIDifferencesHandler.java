@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,6 +29,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.handlers.merge.DefaultMergeHandler;
+import org.polarsys.capella.core.transition.common.ui.dialogs.TransitionDiffMergeDialog;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 /**
@@ -60,32 +61,13 @@ public class MergeUIDifferencesHandler extends DefaultMergeHandler {
   }
 
   protected DiffMergeDialog createDiffDialog(final IContext context, Display display, final MergeEMFDiffNode diffNode) {
-    DiffMergeDialog dialog = new DiffMergeDialog(display.getActiveShell(),
+
+    DiffMergeDialog dialog = new TransitionDiffMergeDialog(display.getActiveShell(),
         (String) context.get(ITransitionConstants.COMMAND_NAME), diffNode) {
 
-      private final static int ID_APPLY_ALL_CHANGES = IDialogConstants.CLIENT_ID + 1;
       private DiffComparisonViewer viewer;
 
-      /**
-       * @see org.eclipse.jface.dialogs.Dialog#createButtonsForButtonBar(org.eclipse.swt.widgets.Composite)
-       */
       @Override
-      protected void createButtonsForButtonBar(Composite parent) {
-        createButton(parent, IDialogConstants.CANCEL_ID, IDialogConstants.CANCEL_LABEL, false);
-        // add the apply all changes button only if the right model can be editable
-        if (_input.isEditionPossible(false)) {
-          Button applyAllChangesButton = createButton(parent, ID_APPLY_ALL_CHANGES, Messages.MergeUIDifferencesHandler_ApplyAllChanges, false);
-          applyAllChangesButton.setEnabled(((MergeEMFDiffNode)_input).isMergeAllEnabled(true));
-        }
-        
-        createOKButton(parent);
-        
-        Button applyAllChangesButton = getButton(ID_APPLY_ALL_CHANGES);
-        if (applyAllChangesButton != null) {
-          parent.getShell().setDefaultButton(applyAllChangesButton);
-        }
-      }
-      
       protected AbstractComparisonViewer createComparisonViewer(Composite parent) {
         viewer = new DiffComparisonViewer(parent) {
 
@@ -94,29 +76,29 @@ public class MergeUIDifferencesHandler extends DefaultMergeHandler {
             super.registerCategories(node);
             initializeCategories(context, diffNode);
           }
-
         };
-        
-        // the apply all changes button must be enable only if the right model is editable and there are differences to merge
+
+        // the apply all changes button must be enable only if the right model is editable and there are differences to
+        // merge
         viewer.addPropertyChangeListener(new IPropertyChangeListener() {
-          
+
           @Override
           public void propertyChange(PropertyChangeEvent event) {
             Button applyAllChangesButton = getButton(ID_APPLY_ALL_CHANGES);
             if (applyAllChangesButton != null && (ComparisonViewer.PROPERTY_CURRENT_INPUT.equals(event.getProperty())
                 || ComparisonViewer.PROPERTY_ACTIVATION_MERGE_TO_LEFT.equals(event.getProperty())
                 || ComparisonViewer.PROPERTY_ACTIVATION_MERGE_TO_RIGHT.equals(event.getProperty()))) {
-              applyAllChangesButton.setEnabled(((MergeEMFDiffNode)_input).isMergeAllEnabled(true));
+              applyAllChangesButton.setEnabled(((MergeEMFDiffNode) _input).isMergeAllEnabled(true));
             }
           }
         });
-        
+
         return viewer;
       }
 
-
+      @Override
       protected void buttonPressed(int buttonId) {
-        if (buttonId == ID_APPLY_ALL_CHANGES){
+        if (buttonId == ID_APPLY_ALL_CHANGES) {
           if (viewer.mergeAll()) {
             okPressed();
           }
@@ -126,7 +108,7 @@ public class MergeUIDifferencesHandler extends DefaultMergeHandler {
       }
 
     };
-    
+
     return dialog;
   }
 
