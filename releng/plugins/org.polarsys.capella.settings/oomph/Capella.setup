@@ -460,11 +460,11 @@
         <repositoryList
             name="Neon">
           <repository
-              url="https://ci.polarsys.org/kitalpha/job/Kitalpha-v1.2.x/72/artifact/releng/plugins/org.polarsys.kitalpha.releng.runtime.core.updatesite/target/repository"/>
+              url="https://ci.polarsys.org/kitalpha/job/Kitalpha-v1.2.x/82/artifact/releng/plugins/org.polarsys.kitalpha.releng.runtime.core.updatesite/target/repository"/>
           <repository
-              url="https://ci.polarsys.org/kitalpha/job/Kitalpha-v1.2.x/72/artifact/releng/plugins/org.polarsys.kitalpha.releng.runtime.updatesite/target/repository"/>
+              url="https://ci.polarsys.org/kitalpha/job/Kitalpha-v1.2.x/82/artifact/releng/plugins/org.polarsys.kitalpha.releng.runtime.updatesite/target/repository"/>
           <repository
-              url="https://ci.polarsys.org/kitalpha/job/Kitalpha-v1.2.x/72/artifact/releng/plugins/org.polarsys.kitalpha.releng.sdk.updatesite/target/repository"/>
+              url="https://ci.polarsys.org/kitalpha/job/Kitalpha-v1.2.x/82/artifact/releng/plugins/org.polarsys.kitalpha.releng.sdk.updatesite/target/repository"/>
           <repository
               url="http://download.eclipse.org/egf/updates/1.5.1/neon"/>
         </repositoryList>
