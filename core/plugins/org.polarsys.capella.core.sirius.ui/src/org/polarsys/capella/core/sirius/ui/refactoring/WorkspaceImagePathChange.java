@@ -37,6 +37,9 @@ import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.helpers.TransactionHelper;
+import org.polarsys.capella.core.data.capellamodeller.Project;
+import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
+import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
 import org.polarsys.capella.core.sirius.ui.helper.ResourceHelper;
 import org.polarsys.capella.core.sirius.ui.helper.SessionHelper;
 
@@ -125,12 +128,28 @@ public class WorkspaceImagePathChange extends Change {
               updateWorkspaceImagePath(diagram);
             }
           }
+          // If it's an IProject rename => rename Capella model objects: Project & SystemEngineering
+          if (position == 0) {
+            renameRelevantCapellaObjects(session);
+          }
         }
       });
 
       saveSession(session, pm);
     }
     return null;
+  }
+  
+  private void renameRelevantCapellaObjects(Session session) {
+    Project capellaProject = SessionHelper.getCapellaProject(session);
+    if (capellaProject != null) {
+      capellaProject.setName(renameArguments.getNewName());
+      // Rename the model object SystemEngineering
+      SystemEngineering systemEngineering = SystemEngineeringExt.getSystemEngineering(capellaProject);
+      if (systemEngineering != null) {
+        systemEngineering.setName(renameArguments.getNewName());
+      }
+    }
   }
 
   private void saveSession(Session session, IProgressMonitor pm) {
