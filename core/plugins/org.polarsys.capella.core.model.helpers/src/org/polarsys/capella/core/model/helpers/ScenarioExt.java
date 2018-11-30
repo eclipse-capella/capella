@@ -401,6 +401,10 @@ public class ScenarioExt {
       }
     }
 
+    List<Component> allocatedComponents = getFunctionAllocatedComponents(scenario);
+    if (!allocatedComponents.isEmpty()) {
+      cpntSet.addAll(allocatedComponents);
+    }
     return cpntSet;
   }
 
@@ -415,6 +419,28 @@ public class ScenarioExt {
     }
 
     return partSet;
+  }
+  
+  /**
+   * @param scenario
+   * @return list of components which have allocated functions involved in the given scenario
+   */
+  public static List<Component> getFunctionAllocatedComponents(Scenario scenario) {
+    List<Component> result = new ArrayList<>();
+
+    EList<InstanceRole> ownedInstances = scenario.getOwnedInstanceRoles();
+    for (InstanceRole instance : ownedInstances) {
+      AbstractInstance representedInstance = instance.getRepresentedInstance();
+      if (representedInstance instanceof AbstractFunction) {
+        List<Component> componentsFunc = AbstractFunctionExt
+            .getMotherAllFunctionAllocation((AbstractFunction) representedInstance);
+        if (!componentsFunc.isEmpty()) {
+          result.addAll(componentsFunc);
+        }
+      }
+    }
+
+    return result;
   }
 
   /**

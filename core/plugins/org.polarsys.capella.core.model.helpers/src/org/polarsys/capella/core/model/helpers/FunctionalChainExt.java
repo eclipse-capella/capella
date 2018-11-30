@@ -38,6 +38,7 @@ import org.polarsys.capella.common.menu.dynamic.CreationHelper;
 import org.polarsys.capella.common.utils.graph.CycleDetectionUtils;
 import org.polarsys.capella.common.utils.graph.IDirectedGraph;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
+import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.AbstractFunctionalChainContainer;
 import org.polarsys.capella.core.data.fa.FaFactory;
@@ -856,6 +857,28 @@ public class FunctionalChainExt {
     return new FunctionalChainExt().new FunctionalChainDirectedGraph(functionalChain);
   }
 
+  /**
+   * @param functionalChain
+   * @return list of components which have allocated functions involved in the given functional chain 
+   */
+  public static List<Component> getComponents(FunctionalChain functionalChain) {
+    List<Component> result = new ArrayList<Component>();
+
+    EList<InvolvedElement> involvedElements = functionalChain.getInvolvedElements();
+    for (InvolvedElement involvedElement : involvedElements) {
+      if (involvedElement instanceof AbstractFunction) {
+        List<Component> componentsFunc = AbstractFunctionExt
+            .getMotherAllFunctionAllocation((AbstractFunction) involvedElement);
+        if (!componentsFunc.isEmpty()) {
+          result.addAll(componentsFunc);
+        }
+      }
+    }
+
+    return result;
+  }
+  
+  
   /**
    * The directed graph behind a FunctionalChain. Normally to be used for cycle detection
    */

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -39,7 +39,9 @@ public class CapabilityExt {
   public static void addInvolvedActor(Capability capability1, Actor actor) {
     if ((capability1 != null) && (actor != null)) {
       if (!getInvolvedActors(capability1).contains(actor)) {
-        Capability capability = (Capability) capability1.eContainer();
+        Capability capability = capability1;
+        if(capability1.eContainer() instanceof Capability)
+          capability = (Capability) capability1.eContainer();
         ActorCapabilityInvolvement involvementLnk = CtxFactory.eINSTANCE.createActorCapabilityInvolvement();
 
         capability.getOwnedActorCapabilityInvolvements().add(involvementLnk);

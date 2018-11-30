@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -471,6 +471,34 @@ public class AbstractFunctionExt {
       return Collections.emptyList();
     }
     return Collections.singletonList(commonAncestor);
+  }
+  
+  /**
+   * Returns all components that have as allocated functions the given function or to its sub-functions
+   * @param motherFunction
+   *            the parent function
+   */
+  public static List<Component> getMotherAllFunctionAllocation(AbstractFunction motherFunction) {
+    // If motherFunction is already allocated to a component/actor
+    List<Component> motherFunctionAllocatingComponents = getAllocatingComponents(motherFunction);
+    if (!motherFunctionAllocatingComponents.isEmpty()) {
+      return motherFunctionAllocatingComponents;
+    }
+    // Get all owned functions of the motherFunction
+    List<AbstractFunction> owned = FunctionExt.getAllAbstractFunctions(motherFunction);
+    if (null == owned || owned.isEmpty()) {
+      return Collections.emptyList();
+    }
+    // Gather all allocating Components of all owned functions
+    List<Component> allAllocatingComponents = new ArrayList<Component>();
+    for (AbstractFunction func : owned) {
+      Collection<Component> allocatingComponents = getAllocatingComponents(func);
+      if (!allocatingComponents.isEmpty()) {
+        allAllocatingComponents.addAll(allocatingComponents);
+      }
+    }
+
+    return allAllocatingComponents;
   }
 
 	/**
