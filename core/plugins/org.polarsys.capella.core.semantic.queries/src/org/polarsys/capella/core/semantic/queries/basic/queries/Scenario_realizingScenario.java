@@ -26,20 +26,20 @@ import org.polarsys.capella.common.helpers.query.IQuery;
 public class Scenario_realizingScenario implements IQuery {
 
   public Scenario_realizingScenario() {
-    // do nothing
+    // Do nothing
   }
 
-  /** 
+  /**
    * @see org.polarsys.capella.common.helpers.query.IQuery#compute(java.lang.Object)
    */
   public List<Object> compute(Object object) {
-    List<Object> result = new ArrayList<Object>();
+    List<Object> result = new ArrayList<>();
     if (object instanceof Scenario) {
       Scenario af = (Scenario) object;
       for (AbstractTrace functionRealisation : af.getIncomingTraces()) {
         if (functionRealisation instanceof ScenarioRealization) {
           TraceableElement element = functionRealisation.getSourceElement();
-          if (element != null && element instanceof Scenario) {
+          if (element instanceof Scenario) {
             result.add(element);
           }
         }

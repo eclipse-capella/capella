@@ -25,13 +25,12 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.ISelection;
-import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.ui.actions.ModelAdaptation;
 import org.polarsys.capella.core.data.fa.FunctionalChain;
-import org.polarsys.capella.core.projection.commands.util.FC2FSTransformation;
+import org.polarsys.capella.core.projection.commands.util.FC2FSHelper;
+import org.polarsys.capella.core.projection.commands.util.FC2FSInitialization;
 
 public class FC2FSHandler extends AbstractHandler {
 
@@ -50,22 +49,18 @@ public class FC2FSHandler extends AbstractHandler {
           } catch (NotDefinedException e) {
             logger.error(e.getMessage(), e);
           }
-          FC2FSTransformation transformation = new FC2FSTransformation();
-          transformation.execute(funcChains);
+          FC2FSInitialization initialization = new FC2FSInitialization();
+          initialization.execute(funcChains);
         }
       };
 
       try {
-        new ProgressMonitorDialog(getActiveShell()).run(false, false, runnable);
+        new ProgressMonitorDialog(FC2FSHelper.getActiveShell()).run(false, false, runnable);
       } catch (Exception exception) {
         logger.error(exception.getMessage(), exception);
       }
     }
     return null;
-  }
-
-  private Shell getActiveShell() {
-    return Display.getDefault().getActiveShell();
   }
 
   private Collection<FunctionalChain> getFunctionalChainFromSelection() {

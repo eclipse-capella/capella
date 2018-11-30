@@ -66,6 +66,7 @@ public class CapellaSavingEMFResource extends SavingEMFResource {
   protected XMLSave createXMLSave() {
     return new XMISaveImpl(createXMLHelper()) {
 
+      @Override
       protected void saveElement(InternalEObject o, EStructuralFeature f) {
         // do not save cross-resource-contained objects as hrefs, because
         // the clipboard resource must actually duplicate all of the
@@ -73,6 +74,7 @@ public class CapellaSavingEMFResource extends SavingEMFResource {
         saveElement((EObject) o, f);
       }
 
+      @Override
       protected void saveElement(EObject o, EStructuralFeature f) {
         if (excludedObjects.contains(o)) {
           return;
@@ -92,6 +94,7 @@ public class CapellaSavingEMFResource extends SavingEMFResource {
        * @see org.eclipse.emf.ecore.xmi.impl.XMLSaveImpl#sameDocMany(org.eclipse.emf.ecore.EObject,
        *      org.eclipse.emf.ecore.EStructuralFeature)
        */
+      @Override
       protected int sameDocMany(EObject o, EStructuralFeature f) {
         InternalEList values = (InternalEList) helper.getValue(o, f);
         if (values.isEmpty()) {
@@ -112,6 +115,7 @@ public class CapellaSavingEMFResource extends SavingEMFResource {
        * @see org.eclipse.emf.ecore.xmi.impl.XMLSaveImpl#sameDocSingle(org.eclipse.emf.ecore.EObject,
        *      org.eclipse.emf.ecore.EStructuralFeature)
        */
+      @Override
       protected int sameDocSingle(EObject o, EStructuralFeature f) {
         InternalEObject value = (InternalEObject) helper.getValue(o, f);
         if (value == null) {

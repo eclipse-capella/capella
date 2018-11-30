@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,13 +12,17 @@
 package org.polarsys.capella.core.model.utils;
 
 import java.text.MessageFormat;
+import java.util.Collection;
+import java.util.Iterator;
 
+import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
+import org.polarsys.capella.core.data.capellacore.NamedElement;
 import org.polarsys.capella.core.data.cs.ExchangeItemAllocation;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.epbs.ConfigurationItem;
@@ -37,6 +41,11 @@ import org.polarsys.capella.core.data.interaction.SequenceMessage;
 /**
  */
 public class NamingHelper {
+
+  private NamingHelper() {
+    // To hide the implicit public one.
+  }
+
   /**
    * @param element
    *          element whose value is requested
@@ -76,5 +85,19 @@ public class NamingHelper {
     }
 
     return Messages.getString("UndefinedValue"); //$NON-NLS-1$
+  }
+
+  public static String toString(Collection<NamedElement> elements) {
+    Assert.isLegal(elements != null);
+
+    StringBuilder builder = new StringBuilder();
+    Iterator<NamedElement> iterator = elements.iterator();
+    while (iterator.hasNext()) {
+      builder.append(iterator.next().getName());
+      if (iterator.hasNext()) {
+        builder.append(", ");
+      }
+    }
+    return builder.toString();
   }
 }

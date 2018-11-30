@@ -111,11 +111,10 @@ public class CommandTester extends PropertyTester {
             return TransitionHelper.getService().isFS2FSForLAPATransitionAvailable(element);
 
           } else if (value.equals("FC2FS")) {
-            return element instanceof FunctionalChain && !(element instanceof OperationalProcess)
-                && TransitionHelper.getService().isFC2FSTransitionAvailable((FunctionalChain)element);
+            return element instanceof FunctionalChain && !(element instanceof OperationalProcess);
+          
           } else if (value.equals("OP2OAS")) {
-            return element instanceof OperationalProcess
-                && TransitionHelper.getService().isOP2OASTransitionAvailable((OperationalProcess) element);
+            return element instanceof OperationalProcess;
           }
 
         } else if (value.startsWith("generate")) { //$NON-NLS-1$

@@ -10,22 +10,15 @@
  *******************************************************************************/
 package org.polarsys.capella.core.projection.common;
 
-import java.util.List;
-
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 import org.polarsys.capella.common.data.modellingcore.AbstractType;
-import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.common.data.modellingcore.TraceableElement;
-import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.core.data.capellacommon.AbstractCapabilityPkg;
 import org.polarsys.capella.core.data.capellacommon.AbstractState;
-import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
 import org.polarsys.capella.core.data.capellacommon.StateMachine;
 import org.polarsys.capella.core.data.capellacommon.StateTransition;
-import org.polarsys.capella.core.data.capellacommon.TransfoLink;
 import org.polarsys.capella.core.data.capellacore.AbstractPropertyValue;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellacore.EnumerationPropertyType;
@@ -74,7 +67,6 @@ import org.polarsys.capella.core.data.oa.OperationalActor;
 import org.polarsys.capella.core.data.oa.OperationalAnalysis;
 import org.polarsys.capella.core.data.oa.OperationalCapability;
 import org.polarsys.capella.core.data.oa.OperationalCapabilityPkg;
-import org.polarsys.capella.core.data.oa.OperationalProcess;
 import org.polarsys.capella.core.data.pa.AbstractPhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalActor;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
@@ -723,40 +715,5 @@ public class TransitionHelper {
             || (object instanceof AbstractPropertyValue) || (object instanceof EnumerationPropertyType))
         && EcoreUtil2.isContainedBy(object, CsPackage.Literals.BLOCK_ARCHITECTURE)
         && !(CapellaLayerCheckingExt.isAOrInEPBSLayer((CapellaElement) object)));
-  }
-  
-  /**
-   * 
-   * @param fc
-   *          The FunctionalChain
-   * @return false if in the same block architecture of the given functional chain, we find a functional scenario
-   *         referencing it
-   *
-   */
-  public boolean isFC2FSTransitionAvailable(FunctionalChain fc) {
-    List<EObject> referencers = EObjectExt.getReferencers(fc, CapellacommonPackage.Literals.TRANSFO_LINK,
-        ModellingcorePackage.eINSTANCE.getAbstractTrace_TargetElement());
-    BlockArchitecture fcBlockArchitecture = BlockArchitectureExt.getRootBlockArchitecture(fc);
-    for (EObject referencer : referencers) {
-      if (referencer instanceof TransfoLink && referencer.eContainer() instanceof Scenario
-          && isFunctionalScenario((Scenario) referencer.eContainer())) {
-        Scenario scenario = (Scenario) referencer.eContainer();
-        BlockArchitecture scenarioBlockArchitecture = BlockArchitectureExt.getRootBlockArchitecture(scenario);
-        if (EcoreUtil.equals(fcBlockArchitecture, scenarioBlockArchitecture)) {
-          return false;
-        }
-      }
-    }
-    return true;
-  }
-  
-  /**
-   * 
-   * @param op
-   *          The OperationalProcess
-   * @return
-   */
-  public boolean isOP2OASTransitionAvailable(OperationalProcess op) {
-    return isFC2FSTransitionAvailable(op);
   }
 }
