@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.osgi.util.NLS;
+import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.common.re.CatalogElement;
 import org.polarsys.capella.common.re.CatalogElementKind;
 import org.polarsys.capella.common.re.CatalogElementLink;
@@ -123,12 +124,10 @@ public class AttachmentActivity extends AbstractActivity {
     if (object instanceof CatalogElementLink) {
       CatalogElementLink link = (CatalogElementLink) object;
       EObject target = link.getTarget();
-      if ((target != null) && (target instanceof CatalogElement)) {
+      if (target instanceof CatalogElement) {
         CatalogElement element = (CatalogElement) target;
-        if (link.getSource().getKind() != CatalogElementKind.RPL) {
-          if (element.getKind() == CatalogElementKind.RPL) {
-            element.setKind(CatalogElementKind.REC_RPL);
-          }
+        if (link.getSource().getKind() != CatalogElementKind.RPL && element.getKind() == CatalogElementKind.RPL) {
+          element.setKind(CatalogElementKind.REC_RPL);
           // maybe we should set also the kind for all element.subrpls
         }
       }
@@ -150,9 +149,8 @@ public class AttachmentActivity extends AbstractActivity {
       if (linkSuffixable == null) {
         return;
       }
-      EObject target = ((CatalogElementLink) linkSuffixable).getTarget();
+      EObject target = suffixLink.getTarget();
       if (target != null) {
-
         if (link1 != linkSuffixable) {
           for (String feature : new ArrayList<String>(link.getUnsynchronizedFeatures())) {
             if (!suffixLink.getUnsynchronizedFeatures().contains(feature)) {
@@ -167,7 +165,25 @@ public class AttachmentActivity extends AbstractActivity {
         }
         if (AttributesHandlerHelper.getInstance(context).isSuffixable(target, context)) {
           if (!(link.isSuffixed())) {
-            link.setSuffixed(true);
+            String value = (String) context.get(IReConstants.COMMAND__CURRENT_VALUE);
+            // if the current command is "Update selected RPL from its REC":
+            if (IReConstants.COMMAND__UPDATE_A_REPLICA_FROM_REPLICABLE.equals(value)) {
+              EObject linkContainer = link.eContainer();
+              if (linkContainer instanceof CatalogElement) {
+                CatalogElement rpl = (CatalogElement) linkContainer;
+
+                // get the updated name
+                String expectedName = EObjectLabelProviderHelper.getText(target) + rpl.getSuffix();
+
+                // get the name of the element
+                String currentName = EObjectLabelProviderHelper.getText(link.getTarget());
+
+                // if the name was updated, also update the 'suffixed' feature
+                link.setSuffixed(expectedName.equals(currentName));
+              }
+            } else {
+              link.setSuffixed(true);
+            }
           }
         } else {
           if (link.isSuffixed()) {
@@ -249,20 +265,18 @@ public class AttachmentActivity extends AbstractActivity {
       }
     }
 
-    if (location != null) {
-      if (location instanceof CatalogElementLink) {
-        IMatch match2 = comparison.getMapping().getMatchFor(((CatalogElementLink) location).getTarget(), oppositeRole);
-        if (match2 == null) {
-          match2 = comparison.getMapping().getMatchFor(((CatalogElementLink) location).getTarget(), destinationRole);
-        }
-        if (match2 != null) {
-          location = match2.get(destinationRole);
-        } else {
-          // No match, location is not in the scope of the diffmerge.
-          // This can occurs when instanciating sub replicas: a sub replica's element can be located inside
-          // a super replica's element which is not present in the scope at the time where instanciating the sub replica.
-          // It will be stored when re-updating the super-replica.
-        }
+    if (location instanceof CatalogElementLink) {
+      IMatch match2 = comparison.getMapping().getMatchFor(((CatalogElementLink) location).getTarget(), oppositeRole);
+      if (match2 == null) {
+        match2 = comparison.getMapping().getMatchFor(((CatalogElementLink) location).getTarget(), destinationRole);
+      }
+      if (match2 != null) {
+        location = match2.get(destinationRole);
+      } else {
+        // No match, location is not in the scope of the diffmerge.
+        // This can occurs when instanciating sub replicas: a sub replica's element can be located inside
+        // a super replica's element which is not present in the scope at the time where instanciating the sub replica.
+        // It will be stored when re-updating the super-replica.
       }
     }
 
@@ -288,14 +302,11 @@ public class AttachmentActivity extends AbstractActivity {
    */
   protected boolean attachElement(IContext context, EObject source, EObject container, EStructuralFeature feature) {
 
-    if ((container != null) && (feature != null)) {
-      if (AttachmentHelper.getInstance(context).isApplicable(container.eClass(), feature)) {
-        AttachmentHelper.getInstance(context).attachElementByReference(container, source, (EReference) feature);
-        return true;
-      }
+    if (container != null && feature != null && AttachmentHelper.getInstance(context).isApplicable(container.eClass(), feature)) {
+      AttachmentHelper.getInstance(context).attachElementByReference(container, source, (EReference) feature);
+      return true;
     }
 
     return false;
   }
-
 }

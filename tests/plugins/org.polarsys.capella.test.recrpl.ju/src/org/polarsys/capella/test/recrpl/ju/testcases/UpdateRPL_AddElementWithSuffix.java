@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -49,11 +49,11 @@ public class UpdateRPL_AddElementWithSuffix extends Re {
     assertEquals(LF1name + suffix, ((LogicalFunction) RPL_LF1).getName());
     assertEquals(LF2name + suffix, ((LogicalFunction) RPL_LF2).getName());
 
-    // Rename the RPL LF2 without suffix even if it is suffixable, update RPL should not rename it
+    // Rename the RPL LF2 without suffix even if it is suffixable, update RPL should rename it
     ((LogicalFunction) RPL_LF2).setName("suffixableRenamed"); // we set a name without suffix on a suffixable element
     updateReplica(Collections.singletonList((EObject) RPL), RPL);
     assertEquals(LF1name + suffix, ((LogicalFunction) RPL_LF1).getName());
-    assertEquals("suffixableRenamed", ((LogicalFunction) RPL_LF2).getName());
+    assertEquals(LF2name + suffix, ((LogicalFunction) RPL_LF2).getName());
 
     // update the REC adding LF3, rename REC LF1 with newName
     updateCur(getObjects(LF1, LF2, LF3), REC);
@@ -62,19 +62,19 @@ public class UpdateRPL_AddElementWithSuffix extends Re {
 
     // update the RPL with new suffix:
     // - must update RPL LF1 since its finish with previous suffix
-    // - should not update RPL LF2 since doesn't contains previous suffix
+    // - RPL LF2 should be suffixed even if it doesn't end with the previous suffix
     // - RPL LF3 should be suffixed
     String newSuffix = "NEW";
     updateReplica(Collections.singletonList((EObject) RPL), RPL, newSuffix);
     EObject RPL_LF3 = ReplicableElementExt.getReferencingElement(RPL, getObject(LF3));
     assertEquals(((LogicalFunction) RPL_LF1).getName(), "newName" + newSuffix);
-    assertEquals(((LogicalFunction) RPL_LF2).getName(), "suffixableRenamed");
+    assertEquals(((LogicalFunction) RPL_LF2).getName(), LF2name + newSuffix);
     assertEquals(((LogicalFunction) RPL_LF3).getName(), LF3name + newSuffix);
 
     // Another update should do nothing more
     updateReplica(Collections.singletonList((EObject) RPL), RPL, newSuffix);
     assertEquals(((LogicalFunction) RPL_LF1).getName(), "newName" + newSuffix);
-    assertEquals(((LogicalFunction) RPL_LF2).getName(), "suffixableRenamed");
+    assertEquals(((LogicalFunction) RPL_LF2).getName(), LF2name + newSuffix);
     assertEquals(((LogicalFunction) RPL_LF3).getName(), LF3name + newSuffix);
 
     // If user disables SuffixedElementPropagationCategoryFilter, all names should be synchronized with suffix
