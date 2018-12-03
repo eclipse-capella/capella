@@ -248,18 +248,18 @@ public class CapellaNavigatorLabelProvider extends MDEAdapterFactoryLabelProvide
           modelElement = Platform.getAdapterManager().loadAdapter(element, ModelElement.class.getName());
         }
       }
+      String path = ICommonConstants.EMPTY_STRING;
       if (null != modelElement) {
         // Builds and formats the DRepresentation path.
         String containerPath = getDescription(modelElement);
-        String path = containerPath.concat(STATUS_LINE_PATH_SEPARATOR).concat(representationName);
-
-        path = path.concat(getSiriusMessage(element));
-
+        path = containerPath.concat(STATUS_LINE_PATH_SEPARATOR);
         if (path.startsWith(slash)) {
           path = path.substring(1);
         }
-        result = path.replaceAll(slash, STATUS_LINE_PATH_SEPARATOR);
       }
+      path = path.concat(representationName).concat(getSiriusMessage(element));
+      result = path.replaceAll(slash, STATUS_LINE_PATH_SEPARATOR);
+      
     } else if (element instanceof ItemWrapper) {
       // Adapts the representation into a Capella element (it returns its Capella container).
       ItemWrapper item = (ItemWrapper) element;
@@ -310,8 +310,12 @@ public class CapellaNavigatorLabelProvider extends MDEAdapterFactoryLabelProvide
         element = ((View) model).getElement();
     }
 
-    if (element instanceof DRepresentationDescriptor)
+    if (element instanceof DRepresentationDescriptor) {
+      if (!new DRepresentationDescriptorQuery((DRepresentationDescriptor)element).isRepresentationValid()) {
+        return " (Invalid)";
+      }
       element = ((DRepresentationDescriptor) element).getRepresentation();
+    }
 
     if (element instanceof EObject) {
       DDiagram diagram = null;

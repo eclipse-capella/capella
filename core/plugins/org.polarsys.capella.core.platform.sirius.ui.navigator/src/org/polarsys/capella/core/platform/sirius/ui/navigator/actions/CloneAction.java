@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,6 +17,7 @@ import java.util.List;
 
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.TreeViewer;
+import org.eclipse.sirius.business.api.query.DRepresentationDescriptorQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.ui.tools.api.views.common.item.ItemWrapper;
@@ -26,10 +27,10 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.BaseSelectionListenerAction;
-
+import org.polarsys.capella.common.helpers.TransactionHelper;
+import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaCloneDiagramCommand;
 import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaCloneDiagramCommand.ICloneListener;
-import org.polarsys.capella.common.helpers.TransactionHelper;
 
 /**
  * Clone action.
@@ -66,17 +67,19 @@ public class CloneAction extends BaseSelectionListenerAction {
       if (element instanceof ItemWrapper) {
         element = ((ItemWrapper) element).getWrappedObject();
       }
-      if (element instanceof DRepresentationDescriptor) {
-        element = ((DRepresentationDescriptor) element).getRepresentation();
-      }
-      // Got a representation, store it.
       if (element instanceof DRepresentation) {
-        // Lazy initialization.
-        if (null == result) {
-          result = new ArrayList<DRepresentation>(1);
+        element = RepresentationHelper.getRepresentationDescriptor((DRepresentation)element);
+      }
+      if (element instanceof DRepresentationDescriptor) {
+        if (new DRepresentationDescriptorQuery((DRepresentationDescriptor) element).isRepresentationValid()) {
+          // Lazy initialization.
+          if (null == result) {
+            result = new ArrayList<DRepresentation>(1);
+          }
+          element = ((DRepresentationDescriptor) element).getRepresentation();
+          // Add representation.
+          result.add((DRepresentation) element);
         }
-        // Add representation.
-        result.add((DRepresentation) element);
       }
     }
     // Do not return a null collection.
@@ -158,7 +161,7 @@ public class CloneAction extends BaseSelectionListenerAction {
   protected boolean updateSelection(IStructuredSelection selection) {
     List<?> selectedElements = selection.toList();
     _representations = getSelectedRepresentations(selectedElements);
-    // Enable action only if all selected elements are representations.
+    // Enable action only if all selected elements are valid representations.
     int size = selectedElements.size();
     return (size > 0) && (size == _representations.size());
   }

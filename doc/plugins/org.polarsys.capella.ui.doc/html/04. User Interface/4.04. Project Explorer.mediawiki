@@ -75,6 +75,24 @@ The * character in 				front of the project explorer View title indicates the mo
 <br>
 <br>
 
+== Appearance ==
+
+=== REC / RPL ===
+
+Elements that are used in a REC or a RPL are decorated with a tag [REC] / [RPL] aside the name of the element.
+
+This decoration can be disabled by using preference ''Windows > Preferences > General > Appearance > Label decorations > Instantiation Text Decorator''
+
+=== Representation ===
+
+Some representations may be displayed as gray, meaning that the representation is invalid and can no longer be opened. It includes representation:
+
+- without represented element or whose element has been detached or deleted
+
+- which can not be reached because it has been deleted
+
+- or its url is malformed (representationDescriptor.repPath links towards an invalid representation) 
+
  
 == Customizing the Content of the Project Explorer ==
  
@@ -101,12 +119,13 @@ For example, when masking Trace elements, the difference is the following. The P
 | 
 Note that the elements below are hidden by default with Capella:
 
-* Component
 * Functional Exchanges
 * Part
  
 |}  
 
+ 
+ 
  
 == Commands of the Contextual Menu ==
  
@@ -172,6 +191,8 @@ If the selected element or its related element(s) are not currently visible in t
 <center>[[Image:Images/4.04.%20Project%20Explorer_ShowInCapellaExplorer_QuickFix.PNG]]</center>
 If the quick fix is not possible, an information dialog will be displayed.
 <center>[[Image:Images/4.04.%20Project%20Explorer_ShowInCapellaExplorer_NotFound.PNG]]</center>
+
+
 == Search Field ==
  
 A research field based on regular expressions is available on the top of the Project Explorer. It is convenient to quickly locate elements in the hierarchy, based on just a part of their name.
