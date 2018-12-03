@@ -21,7 +21,6 @@ import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.sirius.business.api.query.DRepresentationDescriptorQuery;
 import org.eclipse.sirius.diagram.sequence.description.SequenceDiagramDescription;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.table.metamodel.table.description.CrossTableDescription;
@@ -99,8 +98,7 @@ public class OpenRepresentationsAction extends BaseSelectionListenerAction {
    */
   private List<DRepresentationDescriptor> getOpenableRepresentationDescriptors(IStructuredSelection selection) {
     return RepresentationHelper.getSelectedDescriptors(selection.toList()).stream()
-        .filter(descriptor -> new DRepresentationDescriptorQuery((DRepresentationDescriptor) descriptor)
-            .isRepresentationValid()).collect(Collectors.toList());
+        .filter(RepresentationHelper::isValid).collect(Collectors.toList());
   }
 
   /**

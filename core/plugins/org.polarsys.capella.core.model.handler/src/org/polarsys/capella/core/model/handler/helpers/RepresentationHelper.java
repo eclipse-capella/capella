@@ -26,6 +26,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
+import org.eclipse.sirius.business.api.query.DRepresentationDescriptorQuery;
 import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.query.RepresentationDescriptionQuery;
 import org.eclipse.sirius.business.api.query.SiriusReferenceFinder;
@@ -429,5 +430,13 @@ public class RepresentationHelper {
       }
     }
     return result;
+  }
+
+  /**
+   * Returns whether the given descriptor is valid
+   * @see org.eclipse.sirius.business.api.query.DRepresentationDescriptorQuery.isRepresentationValid
+   */
+  public static boolean isValid(DRepresentationDescriptor descriptor) {
+    return new DRepresentationDescriptorQuery(descriptor).isRepresentationValid();
   }
 }

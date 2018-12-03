@@ -98,6 +98,7 @@
 	<topic href="html/04. User Interface/4.03. Activity Browser.html" label="Capella Overview / Activity Browser"></topic>
 	<topic href="html/04. User Interface/4.04. Project Explorer.html" label="Capella Project Explorer">
 		<topic href="html/04. User Interface/4.04. Project Explorer.html#Opening.2C_Visualizing_and_Closing_a_Model" label="Opening, Visualizing and Closing a Model"></topic>
+		<topic href="html/04. User Interface/4.04. Project Explorer.html#Appearance" label="Appearance"></topic>
 		<topic href="html/04. User Interface/4.04. Project Explorer.html#Customizing_the_Content_of_the_Project_Explorer" label="Customizing the Content of the Project Explorer"></topic>
 		<topic href="html/04. User Interface/4.04. Project Explorer.html#Commands_of_the_Contextual_Menu" label="Commands of the Contextual Menu"></topic>
 		<topic href="html/04. User Interface/4.04. Project Explorer.html#Synchronization_with_other_Views" label="Synchronization with other Views"></topic>
@@ -128,6 +129,7 @@
 		<topic href="html/04. User Interface/4.08. Information View.html#Filters" label="Filters"></topic>
 		<topic href="html/04. User Interface/4.08. Information View.html#Export" label="Export"></topic>
 	</topic>
+	<topic href="html/04. User Interface/Status Line.html" label="Status Line"></topic>
 	<topic href="html/04. User Interface/4.09. Outline.html" label="Outline View"></topic>
 	<topic href="html/04. User Interface/4.10. Change Recorder View.html" label="Change Recorder View"></topic>
 	<topic href="html/04. User Interface/4.11. FastLinker.html" label="Fast Linker View">

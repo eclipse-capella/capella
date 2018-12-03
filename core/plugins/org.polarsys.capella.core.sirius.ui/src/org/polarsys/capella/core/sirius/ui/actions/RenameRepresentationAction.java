@@ -15,7 +15,6 @@ import java.util.stream.Collectors;
 
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.window.Window;
-import org.eclipse.sirius.business.api.query.DRepresentationDescriptorQuery;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.common.ui.tools.api.dialog.RenameDialog;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
@@ -56,9 +55,7 @@ public class RenameRepresentationAction extends BaseSelectionListenerAction {
   private List<DRepresentationDescriptor> getRenamableRepresentationDescriptors(IStructuredSelection selection) {
     IReadOnlySectionHandler handler = CapellaReadOnlyHelper.getReadOnlySectionHandler();
     return RepresentationHelper.getSelectedDescriptors(selection.toList()).stream()
-        .filter(descriptor -> new DRepresentationDescriptorQuery((DRepresentationDescriptor) descriptor)
-            .isRepresentationValid())
-        .filter(descriptor -> {
+        .filter(RepresentationHelper::isValid).filter(descriptor -> {
           return (handler == null || (handler != null && !handler.isLockedByOthers(descriptor)));
         }).collect(Collectors.toList());
   }

@@ -12,6 +12,7 @@ package org.polarsys.capella.core.platform.sirius.ui.navigator.actions;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.TreeViewer;
@@ -126,8 +127,8 @@ public class CloneAction extends BaseSelectionListenerAction {
   @Override
   protected boolean updateSelection(IStructuredSelection selection) {
     List<?> selectedElements = selection.toList();
-    _descriptors = RepresentationHelper.getSelectedDescriptors(selectedElements);
-    // Enable action only if all selected elements are representations.
+    _descriptors = RepresentationHelper.getSelectedDescriptors(selectedElements).stream().filter(RepresentationHelper::isValid).collect(Collectors.toList());
+    // Enable action only if all selected elements are valid representations.
     int size = selectedElements.size();
     return (size > 0) && (size == _descriptors.size());
   }

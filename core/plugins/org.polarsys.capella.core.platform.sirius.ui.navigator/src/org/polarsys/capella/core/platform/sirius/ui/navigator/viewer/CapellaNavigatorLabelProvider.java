@@ -23,7 +23,6 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.IColorProvider;
 import org.eclipse.jface.viewers.IFontProvider;
-import org.eclipse.sirius.business.api.query.DRepresentationDescriptorQuery;
 import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionStatus;
@@ -98,7 +97,7 @@ public class CapellaNavigatorLabelProvider extends MDEAdapterFactoryLabelProvide
     Optional<DRepresentationDescriptor> repDesc = getRepresentationDescriptor(object);
     if (repDesc.isPresent()) {
       image = super.getImage(repDesc.get());
-      if (!new DRepresentationDescriptorQuery(repDesc.get()).isRepresentationValid()) {
+      if (!RepresentationHelper.isValid(repDesc.get())) {
         image = getDisabledImage(repDesc.get(), image);
       }
     } else if (object instanceof Session) {
@@ -201,7 +200,7 @@ public class CapellaNavigatorLabelProvider extends MDEAdapterFactoryLabelProvide
     Optional<DRepresentationDescriptor> repDesc = getRepresentationDescriptor(element);
     if (repDesc.isPresent()) {
       try {
-        if (!new DRepresentationDescriptorQuery(repDesc.get()).isRepresentationValid()) {
+        if (!RepresentationHelper.isValid(repDesc.get())) {
           return VisualBindingManager.getDefault().getColorFromName("light_gray"); //$NON-NLS-1$
         }
       } catch (IllegalStateException | NullPointerException e) {
@@ -234,21 +233,19 @@ public class CapellaNavigatorLabelProvider extends MDEAdapterFactoryLabelProvide
         element = (new DRepresentationQuery((DRepresentation) element)).getRepresentationDescriptor();
       }
 
-      if (element instanceof DRepresentationDescriptor) {
-        ArrayList<String> values = new ArrayList<>(2);
+      ArrayList<String> values = new ArrayList<>(2);
 
-        Object modelElement = ((DRepresentationDescriptor) element).getTarget();
-        if (null != modelElement) {
-          values.add(getDescription(modelElement));
-        }
-
-        String representationName = ((DRepresentationDescriptor) element).getName();
-        if (null != representationName) {
-          values.add(representationName + getSiriusMessage((DRepresentationDescriptor) element));
-        }
-
-        result = String.join(STATUS_LINE_PATH_SEPARATOR, values);
+      Object modelElement = ((DRepresentationDescriptor) element).getTarget();
+      if (null != modelElement) {
+        values.add(getDescription(modelElement));
       }
+
+      String representationName = ((DRepresentationDescriptor) element).getName();
+      if (null != representationName) {
+        values.add(representationName + getSiriusMessage((DRepresentationDescriptor) element));
+      }
+
+      result = String.join(STATUS_LINE_PATH_SEPARATOR, values);
 
     } else if (element instanceof ItemWrapper) {
       // Adapts the representation into a Capella element (it returns its Capella container).
@@ -297,7 +294,10 @@ public class CapellaNavigatorLabelProvider extends MDEAdapterFactoryLabelProvide
   private String getSiriusMessage(DRepresentationDescriptor element) {
     String result = ICommonConstants.EMPTY_STRING;
 
-    if (!element.isLoadedRepresentation()) {
+    if (!RepresentationHelper.isValid((DRepresentationDescriptor)element)) {
+      return " (Invalid)";
+
+    } else if (!element.isLoadedRepresentation()) {
       result = " (Not Loaded)";
 
     } else {
