@@ -101,7 +101,7 @@ public class RepresentationHelper {
       if (selectedObject instanceof DSemanticDecorator) {
         representations.add(selectedObject);
       }
-    } else {
+    } else if (selectedObject != null) {
       representations.add(selectedObject);
     }
   }
