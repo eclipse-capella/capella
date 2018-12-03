@@ -3,6 +3,7 @@
 
 <product name="Capella" uid="org.polarsys.capella.rcp.product" id="org.polarsys.capella.rcp.product" application="org.polarsys.capella.core.platform.sirius.ui.perspective.id" version="1.2.2.qualifier" useFeatures="true" includeLaunchers="true">
 
+
    <configIni use="default">
    </configIni>
 
@@ -21,7 +22,6 @@
    <splash
       location="org.polarsys.capella.core.platform.sirius.ui.perspective" />
    <launcher>
-      <solaris/>
       <win useIco="false">
          <bmp
             winSmallHigh="../org.polarsys.capella.rcp/icons/Capella16x16.bmp"
@@ -41,6 +41,7 @@
       <solaris include="false">org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8</solaris>
       <windows include="false">org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8</windows>
    </vm>
+
 
    <plugins>
    </plugins>
@@ -66,7 +67,7 @@
       <feature id="org.eclipse.sirius.aql"/>
       <feature id="org.eclipse.acceleo.query"/>
       <feature id="org.eclipse.sirius.runtime.ide.ui.acceleo"/>
-	  <feature id="org.eclipse.nebula.widgets.richtext.feature"/>
+      <feature id="org.eclipse.nebula.widgets.richtext.feature"/>
       <feature id="org.polarsys.capella.rcp.feature"/>
       <feature id="org.polarsys.kitalpha.ad.feature"/>
       <feature id="org.polarsys.kitalpha.ad.integration.emde.feature"/>
@@ -88,7 +89,8 @@
       <feature id="org.polarsys.kitalpha.resourcereuse.feature"/>
       <feature id="org.polarsys.kitalpha.resourcereuse.ui.feature"/>
       <feature id="org.polarsys.kitalpha.transposer.feature"/>
-	  <feature id="org.polarsys.kitalpha.richtext.widget.feature"/>
+      <feature id="org.polarsys.kitalpha.richtext.widget.feature"/>
+      <feature id="org.polarsys.kitalpha.ad.runtime.feature"/>
    </features>
 
    <configurations>
