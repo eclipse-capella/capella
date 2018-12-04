@@ -212,4 +212,9 @@ public class CapellaDescriptionPropertySection extends AbstractSection {
     public boolean shouldRefresh() {
         return descriptionGroup == null || descriptionGroup.shouldRefresh();
     }
+    
+    @Override
+    public void performFinish() {
+      descriptionGroup.save();
+    }
 }

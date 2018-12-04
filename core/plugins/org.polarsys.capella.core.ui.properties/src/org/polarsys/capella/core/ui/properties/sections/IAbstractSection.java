@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,5 +23,11 @@ public interface IAbstractSection extends IFilter, ISection {
   public void loadData(EObject object);
 
   public void setParentBackgroundColor(Color color);
+  
+  /**
+   * An IAbstractSection can be contributed via the PropertyWizard. This method is called when the Finish button is
+   * pressed on the wizard.
+   */
+  public void performFinish();
 
 }
