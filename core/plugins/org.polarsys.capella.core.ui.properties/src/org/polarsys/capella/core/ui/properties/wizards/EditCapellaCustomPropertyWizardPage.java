@@ -38,9 +38,8 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.help.IWorkbenchHelpSystem;
 import org.eclipse.ui.views.properties.tabbed.ISection;
-
-import org.polarsys.capella.common.ui.services.helper.FormHelper;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
+import org.polarsys.capella.common.ui.services.helper.FormHelper;
 import org.polarsys.capella.core.ui.properties.CapellaUIPropertiesPlugin;
 import org.polarsys.capella.core.ui.properties.sections.IAbstractSection;
 import org.polarsys.capella.core.ui.resources.CapellaUIResourcesPlugin;
@@ -241,4 +240,11 @@ public class EditCapellaCustomPropertyWizardPage extends WizardPage {
   protected EObject getEObject() {
     return ((EditCapellaCustomPropertyWizard) getWizard()).getEObject();
   }
+
+  public void performFinish() {
+    // Propergate the Finish action to sections
+    sections.stream().filter(IAbstractSection.class::isInstance).map(IAbstractSection.class::cast)
+        .forEach(IAbstractSection::performFinish);
+  }
+
 }

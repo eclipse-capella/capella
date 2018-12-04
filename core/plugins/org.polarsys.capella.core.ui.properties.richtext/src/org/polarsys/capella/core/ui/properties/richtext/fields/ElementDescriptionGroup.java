@@ -346,11 +346,15 @@ public abstract class ElementDescriptionGroup {
     setDataValue(semanticElement, semanticFeature, newDescription);
   }
 
-  /**
-   * @see org.eclipse.emf.IRichTextSaveable.runtime.capella.richtext.IEEFRichTextSaveable#save(java.lang.String)
-   */
   public void save(String value) {
     saveDescription(value);
+  }
+  
+  /**
+   * Save the text field's content
+   */
+  public void save() {
+    descriptionTextField.saveContent();
   }
 
   /**
