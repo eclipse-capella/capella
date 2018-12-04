@@ -138,7 +138,8 @@ In case the path is too long, some files can not be opened by Capella and this w
 
 Example in the [[../help/topic/org.polarsys.capella.ui.doc/html/04.%20User%20Interface/4.06.%20Properties%20View.html#Description_Section |Description Section ]].
 
-The limit is '''115''' characters in the path of the Capella directory before the eclipse folder: <CAPELLA_INSTALLATION_DIR>/eclipse.
+The limit is '''115''' characters in the path of the Capella directory to the eclipse folder: <CAPELLA_INSTALLATION_DIR>/eclipse.
+
  
 '''Note: the "space" character is counted like three characters (%20)'''.
 
