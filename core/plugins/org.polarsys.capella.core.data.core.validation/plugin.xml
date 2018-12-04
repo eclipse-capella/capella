@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <!--
-  Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
+  Copyright (c) 2018 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -551,6 +551,33 @@ This rule checks that an capella element doesn&apos;t contain any naming conflic
                </description>
                <target
                      class="AbstractTrace">
+               </target>
+            </constraint>
+         </constraints>
+      </constraintProvider>
+      <constraintProvider>
+         <package
+               namespaceUri="http://www.polarsys.org/capella/core/core/1.3.0">
+         </package>
+         <constraints
+               categories="capella.category/integrity">
+            <constraint
+                  class="org.polarsys.capella.core.data.core.validation.constraint.UniqueInvolvementConstraint"
+                  id="I_40"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="I_40 - Equivalent Involvement Elements"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  Message body provided by implementation
+               </message>
+               <description>
+                  Checks that there are no equivalent Involvement elements. Two Involvements elements are equivalent if they have identical types and identical source and target elements.
+               </description>
+               <target
+                     class="Involvement">
                </target>
             </constraint>
          </constraints>
