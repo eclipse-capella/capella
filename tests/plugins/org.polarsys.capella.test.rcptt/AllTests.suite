@@ -5,9 +5,8 @@ Element-Type: testsuite
 Element-Version: 2.0
 Id: _H2g9YMEUEeWqb6y2_gGIKQ
 Manually-Ordered: true
-Runtime-Version: 2.3.0.201806262310
-Save-Time: 11/28/18 11:41 AM
-
+Runtime-Version: 2.2.0.201705230341
+Save-Time: 1/4/19 2:44 PM
 
 ------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8
 Content-Type: text/testcase
@@ -48,12 +47,10 @@ _HHJUwEMREeiEYaQR9fY4DQ	// kind: 'suite' name: 'DiffMerge' path: 'DiffMerge/Diff
 _wlapMHoDEeiaPKaUZLw7uw	// kind: 'test' name: 'RepresentationElementsOfInterest' path: 'RepresentationElementsOfInterest.test'
 _vpoagHrAEeiFH4aXYyDXfw	// kind: 'test' name: 'RepresentationPackage' path: 'RepresentationPackage.test'
 _d6NhQLEMEeiU1LYbc1uWDg	// kind: 'test' name: 'DoubleClickOnRepresentation' path: 'SemanticBrowser/DoubleClickOnRepresentation.test'
-_QblmIKj2Eee0yuaysMB3Rg	// kind: 'test' name: 'RecRpl' path: 'RecRpl/RecRpl.test'
-_g1Gg0MVfEei8vKj86crSrA	// kind: 'test' name: 'RecRplFragmentedModel' path: 'RecRpl/FragmentedModel.test'
+_UcVhUPfIEeiaU_LTMcHjMQ	// kind: 'suite' name: 'RecRpl' path: 'RecRpl/RecRpl.suite'
 _BiAI4MsTEei-lPwnfaLAUA	// kind: 'suite' name: 'Menu' path: 'Menu/Menu.suite'
 _7G5xkMxuEeiPxbJ-SrbizA	// kind: 'suite' name: 'MassActionsTestSuite' path: 'MassActions/MassActionsTestSuite.suite'
 _1BG1wOzgEeighIRKUyQgZw	// kind: 'test' name: 'RenameCapellaProject' path: 'ProjectExplorer/RenameCapellaProject.test'
 __N9vAPL5EeighIRKUyQgZw	// kind: 'suite' name: 'CopyPasteCutTestSuite' path: 'CopyPasteCut/CopyPasteCutTestSuite.suite'
-
 
 ------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8--

@@ -1,0 +1,18 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Element-Name: RecRpl
+Element-Type: testsuite
+Element-Version: 2.0
+Id: _UcVhUPfIEeiaU_LTMcHjMQ
+Runtime-Version: 2.2.0.201705230341
+Save-Time: 1/4/19 2:44 PM
+
+------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8
+Content-Type: text/testcase
+Entry-Name: testcase-items
+
+_YjzF8PfIEeiaU_LTMcHjMQ	// kind: 'test' name: 'RecRplSetSuffix' path: 'RecRplSetSuffix.test'
+_QblmIKj2Eee0yuaysMB3Rg	// kind: 'test' name: 'RecRpl' path: 'RecRpl.test'
+_g1Gg0MVfEei8vKj86crSrA	// kind: 'test' name: 'RecRplFragmentedModel' path: 'FragmentedModel.test'
+
+------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8--
