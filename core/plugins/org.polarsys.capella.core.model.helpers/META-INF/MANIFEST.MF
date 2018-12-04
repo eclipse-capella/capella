@@ -16,6 +16,7 @@ Require-Bundle: org.apache.commons.lang,
  com.google.guava;bundle-version="15.0.0"
 Export-Package: org.polarsys.capella.core.model.helpers,
  org.polarsys.capella.core.model.helpers.delete,
+ org.polarsys.capella.core.model.helpers.formatterLabels,
  org.polarsys.capella.core.model.helpers.intermodelInconsistencyDetection,
  org.polarsys.capella.core.model.helpers.listeners,
  org.polarsys.capella.core.model.helpers.move,

@@ -80,6 +80,7 @@ public class CapellaElementGoToResolver implements IMarkerResolution2 {
   public void run(IMarker marker) {
     LocateInCapellaExplorerAction selectElementAction = new LocateInCapellaExplorerAction();
     selectElementAction.selectionChanged(null, new StructuredSelection(modelElement));
+    selectElementAction.shouldIgnoreWorkbenchPartSite(true);
     selectElementAction.run(null);
   }
 
