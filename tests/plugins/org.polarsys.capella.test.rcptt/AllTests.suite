@@ -5,8 +5,8 @@ Element-Type: testsuite
 Element-Version: 2.0
 Id: _H2g9YMEUEeWqb6y2_gGIKQ
 Manually-Ordered: true
-Runtime-Version: 2.2.0.201706152316
-Save-Time: 7/2/18 3:02 PM
+Runtime-Version: 2.3.0.201806262310
+Save-Time: 12/4/18 2:50 PM
 
 ------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8
 Content-Type: text/testcase
@@ -36,5 +36,6 @@ _0kJfgCbIEeieRPPEeacKyA	// kind: 'suite' name: 'DetachmentTestSuite' path: 'deta
 _HHJUwEMREeiEYaQR9fY4DQ	// kind: 'suite' name: 'DiffMerge' path: 'DiffMerge/DiffMerge.suite'
 _wlapMHoDEeiaPKaUZLw7uw	// kind: 'test' name: 'RepresentationElementsOfInterest' path: 'RepresentationElementsOfInterest.test'
 _vpoagHrAEeiFH4aXYyDXfw	// kind: 'test' name: 'RepresentationPackage' path: 'RepresentationPackage.test'
+_UcVhUPfIEeiaU_LTMcHjMQ	// kind: 'suite' name: 'RecRpl' path: 'RecRpl/RecRpl.suite'
 
 ------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8--
