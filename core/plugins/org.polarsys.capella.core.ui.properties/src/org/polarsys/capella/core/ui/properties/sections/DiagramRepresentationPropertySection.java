@@ -305,21 +305,21 @@ public class DiagramRepresentationPropertySection extends AbstractSection {
    * Reload widgets according to data model.
    */
   protected void loadData() {
-    String name = ICommonConstants.EMPTY_STRING;
-    if (null != _representation) {
-      name = _representation.get().getName();
+    if (null != _representation && _representation.get() != null) {
+      _nameTextField.setText(_representation.get().getName());
+
+      if (_contextualElementsField != null) {
+        _contextualElementsField.loadData(_representation.get());
+        boolean isContextual = ContextualDiagramHelper.getService().isContextualRepresentation(_representation.get());
+        _contextualElementsField.setEnabled(isContextual);
+      }
+
+      _eoiField.loadData(new DRepresentationQuery(_representation.get()).getRepresentationDescriptor());
+      packageGroup.loadData(new DRepresentationQuery(_representation.get()).getRepresentationDescriptor(), null); 
+    } else {
+      _nameTextField.setText(ICommonConstants.EMPTY_STRING);
+      _contextualElementsField.setEnabled(false);
     }
-
-    _nameTextField.setText(name);
-    if (_contextualElementsField != null) {
-      _contextualElementsField.loadData(_representation.get());
-      boolean isContextual = ContextualDiagramHelper.getService().isContextualRepresentation(_representation.get());
-      _contextualElementsField.setEnabled(isContextual);
-    }
-
-    _eoiField.loadData(new DRepresentationQuery(_representation.get()).getRepresentationDescriptor());
-    packageGroup.loadData(new DRepresentationQuery(_representation.get()).getRepresentationDescriptor(), null); 
-
   }
 
   /**
