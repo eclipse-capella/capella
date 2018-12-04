@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <!--
-  Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2017, 2018 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -63,6 +63,13 @@
             property="org.polarsys.capella.common.re.CatalogElement_readOnly"
             renderer="checkboxRenderer">
         </propertyBinding>
+      </bindings>
+      <bindings
+            properties="org.polarsys.capella.common.re.CatalogElementLink">
+         <propertyBinding
+               property="org.polarsys.capella.common.re.CatalogElementLink.suffixed"
+               renderer="checkboxRenderer">
+         </propertyBinding>
       </bindings>
       
       
