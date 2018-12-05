@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -106,7 +106,8 @@ public class EditCapellaCustomPropertyWizardPage extends WizardPage {
     // Get the edited model element.
     EObject object = getEObject();
     // Load the Custom section according to given element.
-    Map<String, IAbstractSection> sections = CustomPropertyHelper.getCustomPropertySection(object, CapellaUIPropertiesPlugin.PROPERTIES_CONTRIBUTOR, false);
+    Map<String, IAbstractSection> sections = CustomPropertyHelper.getCustomPropertySection(object,
+        CapellaUIPropertiesPlugin.PROPERTIES_CONTRIBUTOR, false);
     Iterator<Entry<String, IAbstractSection>> entries = sections.entrySet().iterator();
     while (entries.hasNext()) {
       // Get the current entry.
@@ -190,7 +191,8 @@ public class EditCapellaCustomPropertyWizardPage extends WizardPage {
 
       protected String generateHTMLLink(EClass eclass) {
         String result = "/org.polarsys.capella.core.doc.user/html/editors/" + //$NON-NLS-1$
-                        eclass.getEPackage().getName() + ICommonConstants.SLASH_CHARACTER + eclass.getName() + ICommonConstants.POINT_CHARACTER + "html" //$NON-NLS-1$
+        eclass.getEPackage().getName() + ICommonConstants.SLASH_CHARACTER + eclass.getName()
+            + ICommonConstants.POINT_CHARACTER + "html" //$NON-NLS-1$
         ;
         return result;
       }
@@ -216,7 +218,7 @@ public class EditCapellaCustomPropertyWizardPage extends WizardPage {
       _comp = null;
     }
 
-    //memory leaks, sections weren't disposed
+    // memory leaks, sections weren't disposed
     if (null != _sections) {
       for (ISection section : _sections) {
         section.dispose();
@@ -233,6 +235,12 @@ public class EditCapellaCustomPropertyWizardPage extends WizardPage {
    */
   protected EObject getEObject() {
     return ((EditCapellaCustomPropertyWizard) getWizard()).getEObject();
+  }
+
+  public void performFinish() {
+    // Propergate the Finish action to sections
+    _sections.stream().filter(IAbstractSection.class::isInstance).map(IAbstractSection.class::cast)
+        .forEach(IAbstractSection::performFinish);
   }
 
 }
