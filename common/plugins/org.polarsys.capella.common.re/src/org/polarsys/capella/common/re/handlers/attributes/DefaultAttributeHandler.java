@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,7 +24,6 @@ import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.common.re.CatalogElement;
 import org.polarsys.capella.common.re.CatalogElementLink;
 import org.polarsys.capella.common.re.constants.IReConstants;
-import org.polarsys.capella.core.transition.common.handlers.contextscope.ContextScopeHandlerHelper;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 /**
@@ -86,30 +85,23 @@ public class DefaultAttributeHandler implements IAttributeHandler {
     if (object instanceof CatalogElementLink) {
       CatalogElementLink catalogElementLink = (CatalogElementLink) object;
       CatalogElementLink origin = catalogElementLink.getOrigin();
-      
+
+      // Current name of the element
       value += getDefaultName(catalogElementLink.getTarget(), context, pContext);
 
-      // If the element is suffixed, we want to append the suffix of the origin element.
+      // If the element is suffixed
       if (origin != null && AttributesHandlerHelper.getInstance(context).isSuffixable(origin.getTarget(), context)) {
         IProperty property = pContext.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__SUFFIX);
-        String suffix = (String) pContext.getCurrentValue(property);
+        String newSuffix = (String) pContext.getCurrentValue(property);
 
-        // If element name was ending by original suffix, we remove it before appending the new suffix
-        String originalSuffix = ((CatalogElement) catalogElementLink.eContainer()).getSuffix();
+        // name of the corresponding REC element + the new suffix
+        String newValue = getDefaultName(origin.getTarget(), context, pContext) + newSuffix; 
 
-        if (originalSuffix == null) {
-          value += suffix;
-        } else if (value.endsWith(originalSuffix)) {
-          value = value.substring(0, value.length() - originalSuffix.length());
-          value += suffix;
-        } else if (ContextScopeHandlerHelper.getInstance(context).contains(IReConstants.CREATED_LINKS, catalogElementLink, context)) {
-          value += suffix;
+        // If its name is updated, we display its current name and the new name
+        if (!value.equals(newValue)) {
+          value += " -> ";
+          value += newValue;
         }
-        // If element name doesn't have the same name than the source name, we ignore it
-        // String oriName = getDefaultName(((CatalogElementLink) object).getOrigin().getTarget(), context, pContext);
-        // if (value.equals(oriName)) {
-        // value += suffix;
-        // }
       }
 
     } else if (object instanceof CatalogElement) {
