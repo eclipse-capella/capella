@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
-Bundle-SymbolicName: org.polarsys.capella.test.richtext.ju
+Bundle-SymbolicName: org.polarsys.capella.test.richtext.ju;singleton:=true
 Bundle-Version: 1.2.2.qualifier
 Bundle-Activator: org.polarsys.capella.test.richtext.ju.RichtextTestPlugin
 Require-Bundle: org.eclipse.core.runtime,
@@ -9,9 +9,12 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.sirius.diagram.ui,
  org.eclipse.gmf.runtime.diagram.ui.resources.editor,
  org.eclipse.sirius.table.ui,
- org.polarsys.capella.core.ui.properties.richtext
+ org.polarsys.capella.core.ui.properties.richtext,
+ org.polarsys.capella.core.ui.properties,
+ org.polarsys.kitalpha.richtext.widget.ext,
+ org.polarsys.kitalpha.richtext.common
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Export-Package: org.polarsys.capella.test.richtext.ju,
