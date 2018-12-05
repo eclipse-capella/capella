@@ -83,7 +83,7 @@
       <properties
             id="org.polarsys.capella.common.re.CatalogElement">
          <property
-               class="org.polarsys.capella.common.flexibility.properties.property.EAdaptableFeatureProperty"
+               class="org.polarsys.capella.common.re.properties.CatalogElementSuffixProperty"
                enabled="true"
                group="org.polarsys.capella.common.properties.replicableElement.information.name"
                id="org.polarsys.capella.common.re.ReNamedElement_suffix"
@@ -166,7 +166,7 @@
       <properties
             id="org.polarsys.capella.common.re.CatalogElementLink">
          <property
-               class="org.polarsys.capella.common.flexibility.properties.property.EAdaptableFeatureProperty"
+               class="org.polarsys.capella.common.re.properties.CatalogElementLinkSuffixProperty"
                enabled="true"
                group="org.polarsys.capella.common.properties.replicableElement.information.content"
                id="org.polarsys.capella.common.re.CatalogElementLink.suffixed"
