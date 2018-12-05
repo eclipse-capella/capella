@@ -19,6 +19,7 @@ import org.polarsys.capella.test.diagram.misc.ju.testsuites.DiagramMiscTestSuite
 import org.polarsys.capella.test.diagram.tools.ju.testsuites.main.DiagramToolsTestSuite;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
+import org.polarsys.capella.test.richtext.ju.testsuites.RichtextTestSuite;
 
 import junit.framework.Test;
 
@@ -41,6 +42,7 @@ public class RunInUIStep5TestSuite extends BasicTestSuite {
     tests.add(new DiagramFiltersTestSuite());
     tests.add(new DiagramMiscTestSuite());
     tests.add(new LayoutTestSuite());
+    tests.add(new RichtextTestSuite());
 
     // tests.add(new DocTestSuite());
     return tests;
