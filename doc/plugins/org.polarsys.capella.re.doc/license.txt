@@ -48,6 +48,8 @@ org.polarsys.capella.doc/html/**/Images
 8.2. Basic Use Case_html_m76b1c545.png
 8.2. Basic Use Case_html_mf6bfd89.png
 8.2_Basic_Use_Case.png
+8.3. add_remove_suffix_via_properties_view.png
+8.3. add_remove_suffix.png
 8.3. Update REC-RPL_html_25dc09c.png
 8.3. Update REC-RPL_html_2b539e6f.png
 8.3. Update REC-RPL_html_2e9a447c.png
