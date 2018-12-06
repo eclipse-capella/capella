@@ -18,6 +18,7 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Export-Package: org.polarsys.capella.test.richtext.ju,
+ org.polarsys.capella.test.richtext.ju.mocks,
  org.polarsys.capella.test.richtext.ju.testcases,
  org.polarsys.capella.test.richtext.ju.testsuites
 Automatic-Module-Name: org.polarsys.capella.test.richtext.ju
