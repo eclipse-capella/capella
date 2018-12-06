@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -46,9 +46,7 @@ public class Rule_DWF_D_35 extends AbstractRulesOnDesignTest {
 	protected List<String> getScopeDefinition() {
 		return Arrays.asList(new String[] {
 				"1521c7b7-25ca-4ded-bec5-3e5ba4b3597d",
-				"a5d48b79-3077-47a6-baae-e8d301fd0fa2",
-				"01d6e841-d111-4349-8f02-92db8f8187cd",
-				"ec4e1750-6730-489e-be78-1290b27add32" });
+				"01d6e841-d111-4349-8f02-92db8f8187cd"});
 	}
 
 	/**
@@ -61,7 +59,7 @@ public class Rule_DWF_D_35 extends AbstractRulesOnDesignTest {
 						new OracleDefinition(
 								"01d6e841-d111-4349-8f02-92db8f8187cd", 1),
 						new OracleDefinition(
-								"ec4e1750-6730-489e-be78-1290b27add32", 1) });
+								"1521c7b7-25ca-4ded-bec5-3e5ba4b3597d", 0) });
 	}
 
 }
