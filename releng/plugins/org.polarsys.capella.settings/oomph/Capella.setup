@@ -258,7 +258,7 @@
         <repositoryList
             name="Neon">
           <repository
-              url="http://download.eclipse.org/sirius/updates/stable/5.1.4-S20181116-115750/neon"/>
+              url="http://download.eclipse.org/sirius/updates/stable/5.1.4-S20181130-113030/neon"/>
         </repositoryList>
         <repositoryList
             name="Oxygen">
@@ -460,11 +460,11 @@
         <repositoryList
             name="Neon">
           <repository
-              url="https://ci.polarsys.org/kitalpha/job/Kitalpha-v1.2.x/82/artifact/releng/plugins/org.polarsys.kitalpha.releng.runtime.core.updatesite/target/repository"/>
+              url="https://ci.polarsys.org/kitalpha/job/Kitalpha-v1.2.x/88/artifact/releng/plugins/org.polarsys.kitalpha.releng.runtime.core.updatesite/target/repository"/>
           <repository
-              url="https://ci.polarsys.org/kitalpha/job/Kitalpha-v1.2.x/82/artifact/releng/plugins/org.polarsys.kitalpha.releng.runtime.updatesite/target/repository"/>
+              url="https://ci.polarsys.org/kitalpha/job/Kitalpha-v1.2.x/88/artifact/releng/plugins/org.polarsys.kitalpha.releng.runtime.updatesite/target/repository"/>
           <repository
-              url="https://ci.polarsys.org/kitalpha/job/Kitalpha-v1.2.x/82/artifact/releng/plugins/org.polarsys.kitalpha.releng.sdk.updatesite/target/repository"/>
+              url="https://ci.polarsys.org/kitalpha/job/Kitalpha-v1.2.x/88/artifact/releng/plugins/org.polarsys.kitalpha.releng.sdk.updatesite/target/repository"/>
           <repository
               url="http://download.eclipse.org/egf/updates/1.5.1/neon"/>
         </repositoryList>
