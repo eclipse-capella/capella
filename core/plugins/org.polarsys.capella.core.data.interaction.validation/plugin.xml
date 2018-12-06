@@ -235,7 +235,7 @@ Whatever the level, UNSET Scenarios raise an error.
             </constraint>
             <constraint class="org.polarsys.capella.core.data.interaction.validation.stateFragment.MDCHK_StateFragment_FS_OAS_StateModeAvailability" id="DWF_DS_22" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_DS_22 - OAS/FS AbstractFunction availability in Mode/State" severity="ERROR" statusCode="1">
                <message>
-                  StateFragment related to {0} ({1}) is inconsistent in {2} ({3}) ({4} ({5}) is not available for related {1}).
+                  {0} ({1}) is an invalid choice for the {2} ({3}) because is not available in {4} ({5}).
                </message>
                <target class="StateFragment">
                </target>

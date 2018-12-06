@@ -276,7 +276,7 @@
             </constraint>
             <constraint class="org.polarsys.capella.core.data.fa.validation.functionalChain.FunctionalChainFunctionActiveInState" id="DWF_DF_05" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_DF_05 - Functional chain involved functions active in state" severity="WARNING" statusCode="1">
                <message>
-                  Function{3} {1} involved in {0}({4}) {2} not active in relevant State/Mode.
+                  {0} ({1}) contains at least one State/Mode which is not available in one of the functions involved in this {1}.
                </message>
                <description>
                   This check ensures that all the functions involved in FunctionalChain are also active in modes and states as FunctionChain.
@@ -617,6 +617,25 @@ NodePC=Physical Component of nature NODE
                </target>
                <description>
                   This rule ensures that Component Exchange allocates valid functional exchanges (regarding ports directions).
+               </description>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.fa.validation.function.MDCHK_Function_StateAllocation"
+                  id="DWF_DC_35"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_DC_35 - Function is not available in at least one Mode/State allocated to a functional chain in which the function is involved"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0} (Function) is not available in at least one Mode/State allocated to a functional chain in which the {1} is involved.
+               </message>
+               <target
+                     class="AbstractFunction">
+               </target>
+               <description>
+               	  Check that the function is available in all the Mode/State allocated to a functional chain in which the function is involved.
                </description>
             </constraint>
          </constraints>

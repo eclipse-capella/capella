@@ -12,16 +12,24 @@
 queryIdentifier = org.polarsys.capella.core.business.queries.oa.OperationalCapability_AvailableInStates-getAvailableElements
 inputId = 4b46f4a1-5bdf-4df4-8394-e3f4fb99a829
 resultIds = {
+    cb1e80f2-f500-406b-bab5-80f67a79f835
+    cdd27fa5-b8bb-4f45-9b4a-acd8b7c28f1c
+    dc946715-e546-4267-9d20-9a1928e99352
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.oa.OperationalCapability_AvailableInStates-getCurrentElements
 inputId = 4b46f4a1-5bdf-4df4-8394-e3f4fb99a829
 resultIds = {
+    6630cfdc-3004-489c-80c1-4ed27f1912a6
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.oa.OperationalCapability_AvailableInStates-getAvailableElements
 inputId = aa6965b0-9e92-489c-80c2-03edd5e51cc5
 resultIds = {
+    6630cfdc-3004-489c-80c1-4ed27f1912a6
+    cb1e80f2-f500-406b-bab5-80f67a79f835
+    cdd27fa5-b8bb-4f45-9b4a-acd8b7c28f1c
+    dc946715-e546-4267-9d20-9a1928e99352
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.oa.OperationalCapability_AvailableInStates-getCurrentElements
@@ -32,6 +40,10 @@ resultIds = {
 queryIdentifier = org.polarsys.capella.core.business.queries.oa.OperationalCapability_AvailableInStates-getAvailableElements
 inputId = 21f77d8e-53ae-4fb7-af7a-fa0842dc3471
 resultIds = {
+    6630cfdc-3004-489c-80c1-4ed27f1912a6
+    cb1e80f2-f500-406b-bab5-80f67a79f835
+    cdd27fa5-b8bb-4f45-9b4a-acd8b7c28f1c
+    dc946715-e546-4267-9d20-9a1928e99352
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.oa.OperationalCapability_AvailableInStates-getCurrentElements
@@ -42,6 +54,10 @@ resultIds = {
 queryIdentifier = org.polarsys.capella.core.business.queries.oa.OperationalCapability_AvailableInStates-getAvailableElements
 inputId = 31530839-ef92-4e5c-a203-303c6842d5ff
 resultIds = {
+    6630cfdc-3004-489c-80c1-4ed27f1912a6
+    cb1e80f2-f500-406b-bab5-80f67a79f835
+    cdd27fa5-b8bb-4f45-9b4a-acd8b7c28f1c
+    dc946715-e546-4267-9d20-9a1928e99352
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.oa.OperationalCapability_AvailableInStates-getCurrentElements

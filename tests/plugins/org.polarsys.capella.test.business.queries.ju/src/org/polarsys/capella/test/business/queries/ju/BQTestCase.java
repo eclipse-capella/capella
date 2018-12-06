@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -40,9 +40,13 @@ public abstract class BQTestCase extends BasicTestCase {
 	public abstract String getProjectForTest();
 	
 	public abstract String getBQFullQualifiedName();
+	
+	public String getTestCaseName() {
+	  return getBQFullQualifiedName();
+	}
 
 	public File getTestSuiteFile() {
-		return BQTestHelpers.getTestSuiteFile(getPluginFolder(), getBQFullQualifiedName(), getProjectForTest());
+		return BQTestHelpers.getTestSuiteFile(getPluginFolder(), getTestCaseName(), getProjectForTest());
 	}
 	
 	@Override
@@ -61,9 +65,9 @@ public abstract class BQTestCase extends BasicTestCase {
 		Session sessionForTest = getSessionForTestModel(getProjectForTest());
 		
 		// Begin test
-		logger.addTextLn(BQTestConstants.PROMPT_STRING+" Test validation for query " + queryIdentifier); //$NON-NLS-1$
+		logger.addTextLn(BQTestConstants.PROMPT_STRING+" Test validation for query " + getTestCaseName()); //$NON-NLS-1$
 		BQTestCaseValidator validator = new BQTestCaseValidator();
-		boolean result = validator.process(new SilentLogger(), queryIdentifier, businessQuery, testSuiteFile, sessionForTest);		
+		boolean result = validator.process(new SilentLogger(), getTestCaseName(), businessQuery, testSuiteFile, sessionForTest);		
 
 		// Assertion
 		String message = validator.getResultDescription();
