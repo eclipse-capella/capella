@@ -20,6 +20,7 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.polarsys.capella.common.data.modellingcore.AbstractType;
+import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.epbs.ConfigurationItem;
@@ -34,43 +35,45 @@ public class CapellaAdapterHelper {
 
   /**
    * Returns the semantic element for the given object.
-   * @see it is similar than resolveSemanticObject(object, false)
-   * It shall have be called resolveEObject.
    * 
-   * @param object must not be a list
+   * @see it is similar than resolveSemanticObject(object, false) It shall have be called resolveEObject.
+   * 
+   * @param object
+   *          must not be a list
    */
   @Deprecated
   public static EObject resolveSemanticObject(Object object) {
     return resolveEObject(object);
   }
-  
+
   /**
    * Returns the semantic element for the given object.
+   * 
    * @see it is similar than resolveSemanticObject(object, false)
    * 
-   * @param object must not be a list
+   * @param object
+   *          must not be a list
    */
   public static EObject resolveEObject(Object object) {
     return resolveSemanticObject(object, false);
   }
 
-  
   /**
-   * Returns the semantic element for the given object.
-   * According to onlySemantic, if the element is a Sirius representation, it returns the semantic element associated.
+   * Returns the semantic element for the given object. According to onlySemantic, if the element is a Sirius
+   * representation, it returns the semantic element associated.
    */
   public static EObject resolveSemanticObject(Object object, boolean onlySemantic) {
     if (object instanceof EObject) {
       return resolveEObject((EObject) object, onlySemantic);
-      
+
     } else if (object instanceof IAdaptable) {
       EObject adapter = ((IAdaptable) object).getAdapter(EObject.class);
       if (adapter == null) {
         return resolveEObject(object, onlySemantic);
-      } 
+      }
       return resolveEObject(adapter, onlySemantic);
     }
-    
+
     return null;
   }
 
@@ -80,23 +83,23 @@ public class CapellaAdapterHelper {
   public static Collection<EObject> resolveEObjects(Collection<?> objects) {
     return resolveSemanticObjects(objects, false);
   }
-  
+
   /**
    * This method returns the list of semantic objects from the given objects.
    */
   public static Collection<EObject> resolveSemanticsObjects(Collection<?> objects) {
     return resolveSemanticObjects(objects, true);
   }
-  
+
   /**
    * This method returns the list of EObject from the given objects.
    */
   public static Collection<EObject> resolveSemanticObjects(Collection<?> objects, boolean onlySemantic) {
-    return objects.stream().map( x -> resolveSemanticObject(x, onlySemantic)).collect(Collectors.toList());
+    return objects.stream().map(x -> resolveSemanticObject(x, onlySemantic)).collect(Collectors.toList());
   }
-  
+
   /**
-   * This method 
+   * This method
    */
   private static EObject resolveEObject(Object object, boolean onlySemantic) {
     if ((object instanceof DRepresentationDescriptor) || (object instanceof DRepresentation)) {
@@ -118,17 +121,18 @@ public class CapellaAdapterHelper {
 
   /**
    * Business level adaptation
+   * 
    * @param object
    */
   private static EObject getBusinessObject(Object object) {
     if (object != null) {
       if (CapellaResourceHelper.isSemanticElement(object)) {
-        return getRelatedSemanticObject((EObject)object);
+        return getRelatedSemanticObject((EObject) object);
       }
       EObject obj = Adapters.adapt(object, Element.class, true);
       if (obj != null) {
         // null can happen when we try to adapt a non semantic element (notes, text, ...)
-        if ((null != obj.eContainer()) && (null != obj.eResource())) {
+        if ((obj instanceof Project || null != obj.eContainer()) && (null != obj.eResource())) {
           // null can happen when a diagram shows a deleted element
           return getRelatedSemanticObject(obj);
         }
@@ -138,7 +142,8 @@ public class CapellaAdapterHelper {
   }
 
   /**
-   * @param object object to adapt
+   * @param object
+   *          object to adapt
    * @return adapted object
    */
   private static EObject getRelatedSemanticObject(EObject object) {
