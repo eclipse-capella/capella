@@ -32,7 +32,8 @@ public class RichtextTestSuite extends BasicTestSuite {
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
     tests.add(new RichtextOpenLinkTest());
-    tests.add(new FinishOnPropertyWizard());
+    // FIXME This test cannot be launched on Linux environment due to the XULRunner bug
+    // tests.add(new FinishOnPropertyWizard());
     return tests;
   }
 
