@@ -14,10 +14,16 @@ package org.polarsys.capella.core.projection.commands.util;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.polarsys.capella.common.data.activity.ActivityNode;
+import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
+import org.polarsys.capella.core.data.capellacommon.CapellacommonFactory;
+import org.polarsys.capella.core.data.capellacommon.TransfoLink;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.FunctionalChain;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
@@ -36,41 +42,92 @@ import org.polarsys.capella.core.data.interaction.SequenceMessage;
 import org.polarsys.capella.core.data.oa.OperationalProcess;
 import org.polarsys.capella.core.diagram.helpers.naming.DiagramNamingConstants;
 import org.polarsys.capella.core.model.helpers.refmap.Pair;
+import org.polarsys.capella.core.model.utils.NamingHelper;
 
-public class FC2FSTransformation {
+public class FC2FSInitialization {
+
+  private static final Logger logger = ReportManagerRegistry.getInstance()
+      .subscribe(FC2FSInitialization.class.getName());
+
+  private boolean isLogEnabled = false;
 
   private Map<EObject, EObject> mapping;
 
+  // This list is filled while creating event sent operations
+  private List<InstanceRole> orderedInstRoles = new ArrayList<>();
+
+  public FC2FSInitialization() {
+    isLogEnabled = FC2FSHelper.isLogEnabled();
+  }
+
   public void execute(Collection<FunctionalChain> funcChains) {
 
+    Collection<Pair<FunctionalChain, Scenario>> fc2ScenarioPairs = new ArrayList<>();
     // Read the preference
     boolean isMsgWithReply = FC2FSHelper.isCreateMsgWithReply(funcChains.iterator().next());
 
-    Collection<Pair<FunctionalChain, Scenario>> fc2ScenarioPairs = new ArrayList<>();
-
     for (FunctionalChain fc : funcChains) {
-      // Functional Chain => Scenario
-      Scenario scenario = toScenario(fc);
-
-      // Create InstanceRole for each function
-      for (AbstractFunction func : fc.getInvolvedFunctions()) {
-        toInstanceRole(func, scenario);
-      }
-
-      // Create a sequence message for each FunctionalExchange
-      if (isMsgWithReply) {
-        createSequenceMessagesWithReply(fc, scenario);
+      logInfo("Looking up existing Scenarios...");
+      // Look for existing scenarios and ask the user if he want to continue when found Scenarios
+      Collection<Scenario> availableInitializedScenarios = FC2FSHelper.getAvailableInitializedScenarios(fc);
+      if (!availableInitializedScenarios.isEmpty()) {
+        if (MessageDialog.openQuestion(FC2FSHelper.getActiveShell(), "Confirm Initialization",
+            "Are you sure you want to initialize new Scenario for " + fc.getName()
+                + "? Initialized Scenario(s) found.")) {
+          doExecute(fc, isMsgWithReply, fc2ScenarioPairs);
+        }
       } else {
-        createSequenceMessages(fc, scenario);
+        doExecute(fc, isMsgWithReply, fc2ScenarioPairs);
       }
-      fc2ScenarioPairs.add(new Pair<FunctionalChain, Scenario>(fc, scenario));
     }
 
-    // Add to the model
-    FC2FSHelper.addToModel(fc2ScenarioPairs);
+    if (!fc2ScenarioPairs.isEmpty()) {
+      // Add to the model
+      logInfo("Adding created Scenario to the model");
+      FC2FSHelper.addToModel(fc2ScenarioPairs);
+      logInfo("Initialization finished");
+    }
+  }
+
+  @SuppressWarnings({ "rawtypes", "unchecked" })
+  private void doExecute(FunctionalChain fc, boolean isMsgWithReply,
+      Collection<Pair<FunctionalChain, Scenario>> fc2ScenarioPairs) {
+
+    logInfo("Perform initialization from " + fc.eClass().getName() + " " + fc.getName());
+    // Functional Chain => Scenario
+    Scenario scenario = toScenario(fc);
+
+    // Create InstanceRole for each function
+    for (AbstractFunction func : fc.getInvolvedFunctions()) {
+      toInstanceRole(func, scenario);
+    }
+
+    // Create a sequence message for each FunctionalExchange
+    if (isMsgWithReply) {
+      createSequenceMessagesWithReply(fc, scenario);
+    } else {
+      createSequenceMessages(fc, scenario);
+    }
+    // Reorder the InstanceRoles in the Scenario
+    logInfo("Reordering InstanceRoles...");
+    logInfo("Old order: " + NamingHelper.toString((List) scenario.getOwnedInstanceRoles()));
+    reorderInstanceRoles(scenario);
+    logInfo("New order: " + NamingHelper.toString((List) scenario.getOwnedInstanceRoles()));
+
+    // Add the pairs collection
+    fc2ScenarioPairs.add(new Pair<FunctionalChain, Scenario>(fc, scenario));
+  }
+
+  private void reorderInstanceRoles(Scenario scenario) {
+    int position = 0;
+    for (InstanceRole instRole : orderedInstRoles) {
+      scenario.getOwnedInstanceRoles().move(position, instRole);
+      position++;
+    }
   }
 
   private void createSequenceMessagesWithReply(FunctionalChain fc, Scenario scenario) {
+    logInfo("Functional Chain with return branch is enabled");
     for (FunctionalExchange fe : fc.getInvolvedFunctionalExchanges()) {
       // Send Message
       SequenceMessage sequenceMessage = createSequenceMessage(scenario, fe, MessageKind.ASYNCHRONOUS_CALL);
@@ -92,6 +149,7 @@ public class FC2FSTransformation {
   }
 
   private void createSequenceMessages(FunctionalChain fc, Scenario scenario) {
+    logInfo("Functional Chain without return branch is enabled");
     for (FunctionalExchange fe : fc.getInvolvedFunctionalExchanges()) {
       SequenceMessage sequenceMessage = createSequenceMessage(scenario, fe, MessageKind.ASYNCHRONOUS_CALL);
 
@@ -119,13 +177,19 @@ public class FC2FSTransformation {
   }
 
   private Scenario toScenario(FunctionalChain fc) {
-    Scenario scenario = InteractionFactory.eINSTANCE.createScenario(getScenarioName(fc));
+    Scenario scenario = InteractionFactory.eINSTANCE.createScenario(getDefaultScenarioName(fc));
     scenario.setKind(getScenarioKind(fc));
+    // Add a trace from the scenario to the functional chain
+    TransfoLink trace = CapellacommonFactory.eINSTANCE.createTransfoLink();
+    trace.setTargetElement(fc);
+    trace.setSourceElement(scenario);
+    scenario.getOwnedTraces().add(trace);
     getMapping().put(fc, scenario);
+    logInfo("Create Scenario " + scenario.getName() + " of kind " + scenario.getKind());
     return scenario;
   }
 
-  private String getScenarioName(FunctionalChain fc) {
+  private String getDefaultScenarioName(FunctionalChain fc) {
     if (fc instanceof OperationalProcess) {
       return "[" + DiagramNamingConstants.ACTIVITY_SCENARIO_PREFIX + "] " + fc.getName();
     }
@@ -146,6 +210,7 @@ public class FC2FSTransformation {
       scenario.getOwnedInstanceRoles().add(instanceRole);
       instanceRole.setRepresentedInstance(func);
       getMapping().put(func, instanceRole);
+      logInfo("Create InstanceRole " + instanceRole.getName());
     }
   }
 
@@ -153,6 +218,7 @@ public class FC2FSTransformation {
     SequenceMessage sequenceMessage = InteractionFactory.eINSTANCE.createSequenceMessage(fe.getName());
     scenario.getOwnedMessages().add(sequenceMessage);
     sequenceMessage.setKind(kind);
+    logInfo("Create SequenceMessage " + sequenceMessage.getName() + " of kind " + kind);
     return sequenceMessage;
   }
 
@@ -201,6 +267,12 @@ public class FC2FSTransformation {
     scenario.getOwnedEvents().add(eventSentOp);
     sendingEnd.setEvent(eventSentOp);
     eventSentOp.setOperation(fe);
+
+    // Look for the InstanceRole mapped from the source of the given functional exchange
+    EObject eObject = getMapping().get(getFunctionalExchangeSource(fe));
+    if (eObject instanceof InstanceRole && !orderedInstRoles.contains(eObject)) {
+      orderedInstRoles.add((InstanceRole) eObject);
+    }
   }
 
   private void createEventReceiptOperation(Scenario scenario, FunctionalExchange fe, MessageEnd receivingEnd) {
@@ -232,5 +304,11 @@ public class FC2FSTransformation {
       mapping = new HashMap<>();
     }
     return mapping;
+  }
+
+  private void logInfo(String msg) {
+    if (isLogEnabled) {
+      logger.info(msg);
+    }
   }
 }

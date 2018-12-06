@@ -152,4 +152,8 @@ public class PreferenceHelper {
         .equals(getStringValue(IProjectionPreferences.PREFS_OP2OAS_SEQUENCE_MESSAGE_STRATEGY,
             IProjectionPreferences.PREFS_OP2OAS_SEQUENCE_MESSAGE_STRATEGY_DEFAULT));
   }
+  
+  public boolean isFC2FSLogEnabled() {
+    return getBooleanValue(ITopDownConstants.OPTIONS_LOG);
+  }
 }

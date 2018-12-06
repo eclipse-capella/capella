@@ -19,31 +19,43 @@
             id="capella.core.transition.system.topdown">
             <inheritance properties="capella.core.transition.system" />
          <group
-               id="scope"
-               name="%group.scope"
+               id="iterative.Transitions"
+               name="%iterative.Transitions"
                parent="defaultGroup">
          </group>
-         
          <group
-               id="logGroup"
-               name="%group.logGroup">
+               id="scope"
+               name="%group.scope"
+               parent="iterative.Transitions">
          </group>
-         
          <group
-               id="log"
-               name="%group.log"
-               parent="logGroup">
+               id="transition.generation.ports"
+               name="%transition.generation.ports"
+               parent="iterative.Transitions">
          </group>
-         
          <group
                id="transition.propertyValue"
                name="%group.transition.propertyValue.name"
+               parent="iterative.Transitions">
+         </group>
+         <group
+               id="scope.propertyValue"
+               name="%group.scope.propertyValue.name"
+               parent="scope">
+         </group>        
+         <group
+               id="initializations"
+               name="%initializations"
                parent="defaultGroup">
          </group>
-         
-          <group
+         <group
                id="transition.scenario.initialization"
                name="%transition.scenario.initialization"
+               parent="initializations">
+         </group>
+         <group
+               id="log"
+               name="%group.log"
                parent="defaultGroup">
          </group>
          
@@ -130,14 +142,6 @@
                      value="true">
                </parameter>
          </property>
-         
-         
-         <group
-               id="scope.propertyValue"
-               name="%group.scope.propertyValue.name"
-               parent="scope">
-         </group>
-         
          
          <property
                class="org.polarsys.capella.core.transition.system.topdown.preferences.BooleanPropertyPreference"
@@ -279,17 +283,6 @@
             
          <inheritance properties="capella.core.transition" />
          
-         <group
-               id="transition.generation"
-               name="%transition.generation">
-         </group>
-         
-         <group
-               id="transition.generation.ports"
-               name="%transition.generation.ports"
-               parent="transition.generation">
-         </group>
-         
          <property
                class="org.polarsys.capella.core.transition.system.topdown.preferences.BooleanPropertyPreference"
                enabled="true"
@@ -388,7 +381,7 @@
          <property
                class="org.polarsys.capella.core.transition.system.topdown.preferences.StringPropertyPreference"
                enabled="true"
-               group="defaultGroup"
+               group="iterative.Transitions"
                id="projection.lcpc.mode"
                name="%transition.lcpc.name"
                description="%transition.lcpc.description">
