@@ -21,7 +21,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.osgi.util.NLS;
-import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.common.re.CatalogElement;
 import org.polarsys.capella.common.re.CatalogElementKind;
 import org.polarsys.capella.common.re.CatalogElementLink;
@@ -169,36 +168,21 @@ public class AttachmentActivity extends AbstractActivity {
             }
           }
         }
-        if (AttributesHandlerHelper.getInstance(context).isSuffixable(target, context)) {
-          if (!(link.isSuffixed())) {
-            String value = (String) context.get(IReConstants.COMMAND__CURRENT_VALUE);
-            // if the current command is "Update selected RPL from its REC":
-            if (IReConstants.COMMAND__UPDATE_A_REPLICA_FROM_REPLICABLE.equals(value)) {
-              EObject linkContainer = link.eContainer();
-              if (linkContainer instanceof CatalogElement) {
-                CatalogElement rpl = (CatalogElement) linkContainer;
 
-                // get the updated name
-                String expectedName = EObjectLabelProviderHelper.getText(target) + rpl.getSuffix();
-
-                // get the name of the element
-                String currentName = EObjectLabelProviderHelper.getText(link.getTarget());
-
-                // if the name was updated, also update the 'suffixed' feature
-                link.setSuffixed(expectedName.equals(currentName));
-              }
-            } else {
+        // If the command is "Update the selected RPL from its REC", do not update the 'suffixed' feature of the link
+        String value = (String) context.get(IReConstants.COMMAND__CURRENT_VALUE);
+        if (!IReConstants.COMMAND__UPDATE_A_REPLICA_FROM_REPLICABLE.equals(value)) {
+          if (AttributesHandlerHelper.getInstance(context).isSuffixable(target, context)) {
+            if (!(link.isSuffixed())) {
               link.setSuffixed(true);
             }
-          }
-        } else {
-          if (link.isSuffixed()) {
-            link.setSuffixed(false);
+          } else {
+            if (link.isSuffixed()) {
+              link.setSuffixed(false);
+            }
           }
         }
-
       }
-
     }
   }
 
