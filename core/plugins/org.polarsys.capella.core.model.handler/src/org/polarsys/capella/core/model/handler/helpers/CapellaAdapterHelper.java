@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,6 +15,7 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
+import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.epbs.ConfigurationItem;
@@ -28,6 +29,10 @@ import org.polarsys.capella.common.data.modellingcore.ModelElement;
  */
 public class CapellaAdapterHelper {
 
+  private CapellaAdapterHelper() {
+    // Private constructor
+  }
+  
   /**
    * @param object
    */
@@ -57,13 +62,15 @@ public class CapellaAdapterHelper {
    */
   private static EObject resolveEObject(EObject object, boolean onlySemantic) {
     if (!onlySemantic && (object instanceof DRepresentationDescriptor || object instanceof DRepresentation)) {
-      return (object instanceof DRepresentationDescriptor) ? ((DRepresentationDescriptor) object).getRepresentation() : object;
+      return (object instanceof DRepresentationDescriptor) ? ((DRepresentationDescriptor) object).getRepresentation()
+          : object;
     }
     return getBusinessObject(object);
   }
 
   /**
    * Business level adaptation
+   * 
    * @param object
    */
   private static EObject getBusinessObject(EObject object) {
@@ -72,7 +79,7 @@ public class CapellaAdapterHelper {
         return getRelatedSemanticObject(object);
       }
 
-      EObject obj = (EObject) Platform.getAdapterManager().getAdapter(object, ModelElement.class);
+      EObject obj = Platform.getAdapterManager().getAdapter(object, ModelElement.class);
       if (obj == null) {
         obj = (EObject) Platform.getAdapterManager().loadAdapter(object, ModelElement.class.getName());
       }
@@ -80,7 +87,7 @@ public class CapellaAdapterHelper {
         // can happen when we try to adapt a non semantic element (notes, text, ...)
         return null;
       }
-      if ((null == obj.eContainer()) || (null == obj.eResource())) {
+      if ((null == obj.eContainer() && !(obj instanceof Project)) || (null == obj.eResource())) {
         // can happen when a diagram shows a deleted element
         return null;
       }
@@ -90,7 +97,8 @@ public class CapellaAdapterHelper {
   }
 
   /**
-   * @param object object to adapt
+   * @param object
+   *          object to adapt
    * @return adapted object
    */
   private static EObject getRelatedSemanticObject(EObject object) {
