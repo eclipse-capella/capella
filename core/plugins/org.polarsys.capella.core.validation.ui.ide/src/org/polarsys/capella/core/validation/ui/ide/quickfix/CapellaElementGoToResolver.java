@@ -90,4 +90,8 @@ public class CapellaElementGoToResolver implements IMarkerResolution2 {
   public String getDescription() {
     return null;
   }
+  
+  public EObject getModelElement() {
+    return modelElement;
+  }
 }

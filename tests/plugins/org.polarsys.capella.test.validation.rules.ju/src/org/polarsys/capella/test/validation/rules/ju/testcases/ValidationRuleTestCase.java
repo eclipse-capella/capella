@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,6 +15,9 @@ import java.util.Collections;
 import java.util.Hashtable;
 import java.util.List;
 
+import org.eclipse.core.resources.IMarker;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -26,11 +29,14 @@ import org.eclipse.emf.validation.service.IConstraintFilter;
 import org.eclipse.emf.validation.service.ModelValidationService;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.polarsys.capella.common.helpers.EObjectExt;
+import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.helpers.validation.ConstraintStatusDiagnostic;
 import org.polarsys.capella.common.re.ReAbstractElement;
+import org.polarsys.capella.common.tools.report.appenders.reportlogview.LightMarkerRegistry;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.libraries.model.ICapellaModel;
+import org.polarsys.capella.core.model.handler.markers.ICapellaValidationConstants;
 import org.polarsys.capella.core.validation.CapellaValidationActivator;
 import org.polarsys.capella.test.framework.api.BasicTestCase;
 import org.polarsys.capella.test.framework.api.OracleDefinition;
@@ -53,6 +59,7 @@ public abstract class ValidationRuleTestCase extends BasicTestCase {
   // these values are obtained by using methods defined in concrete test cases
   protected String ruleID = getRuleID();
   protected EClass targetedEClass = getTargetedEClass();
+  protected boolean quickFix = getCheckQuickFix();
 
   // internal variables
   protected IConstraintDescriptor ruleDescriptor;
@@ -75,6 +82,14 @@ public abstract class ValidationRuleTestCase extends BasicTestCase {
 
   /** returns the oracle definition to be checked */
   protected abstract List<OracleDefinition> getOracleDefinitions();
+  
+  protected boolean getCheckQuickFix() {
+    return false;
+  }
+  
+  protected IStatus testCheckQuickFix(List<IMarker> markers) {
+    return Status.OK_STATUS;
+  }
 
   @Override
   protected void setUp() throws Exception {
@@ -135,6 +150,7 @@ public abstract class ValidationRuleTestCase extends BasicTestCase {
     ICapellaModel model = getTestModel(getRequiredTestModel());
     List<EObject> objectsToValidate = getTestScope(model);
     List<OracleDefinition> oracleDefinitions = getOracleDefinitions();
+    List<IMarker> markers = new ArrayList<IMarker>();
     if (oracleDefinitions != null) {
       // prepare oracle table
       for (OracleDefinition definition : oracleDefinitions) {
@@ -147,11 +163,17 @@ public abstract class ValidationRuleTestCase extends BasicTestCase {
         String objectID = getId(object);
         OracleDefinition oracleDef = objectID2OracleDefinition.get(objectID);
         Diagnostic diagnostic = diagnostician.validate(object);
-
+        
         if ((diagnostic.getSeverity() == Diagnostic.OK) && (oracleDef != null) && oracleDef.getNbExpectedErrors() > 0) {
           fail("Validation rule " + ruleID + " has not detected an error on object " + objectID + " while it must be the case"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
         } else {
           if (diagnostic.getSeverity() != Diagnostic.OK) {
+            for(Diagnostic diag : diagnostic.getChildren()) {
+              IMarker marker = LightMarkerRegistry.getInstance().createMarker(EcoreUtil2.getFile(object.eResource()), diag, ICapellaValidationConstants.CAPELLA_MARKER_ID);
+              if(marker != null) {
+                markers.add(marker);
+              }
+            }
             assertExpectedRuleHasBeenThrown(diagnostic, object);
             if (oracleDef != null) {
               oracleDef.countOneError();
@@ -181,6 +203,13 @@ public abstract class ValidationRuleTestCase extends BasicTestCase {
           fail("Validation rule " + ruleID + " has detected " + nbFoundErrors + " error(s) instead of " + nbExpectedErrors + " error(s) on object " + oracleDef.getObjectID()); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
         }
 
+      }
+      
+      if(getCheckQuickFix()) {
+        IStatus status = testCheckQuickFix(markers);
+        if(status != null && !status.isOK()) {
+          fail(status.getMessage());
+        }
       }
     }
   }
