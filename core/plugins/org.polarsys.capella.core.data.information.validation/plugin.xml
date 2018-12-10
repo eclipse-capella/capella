@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <!--
-  Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+  Copyright (c) 2018 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -630,14 +630,14 @@ contains the partition {2} (Partitionable Element)  typed by {0} (Partitionable 
               <target class="AbstractBooleanValue">
               </target>
            </constraint>
-           <constraint class="org.polarsys.capella.core.data.information.validation.dataValue.EnumerationValueFamilyTypeCheck" id="DWF_D_35" isEnabledByDefault="false" lang="Java" mode="Batch" name="DWF_D_35 - Enumeration Value Family Type check" severity="WARNING" statusCode="1">
+           <constraint class="org.polarsys.capella.core.data.information.validation.dataValue.EnumerationReferenceTypeCheck" id="DWF_D_35" isEnabledByDefault="false" lang="Java" mode="Batch" name="DWF_D_35 - Enumeration Value Family Type check" severity="WARNING" statusCode="1">
               <message>
                  &quot;{0}&quot; (DataValue) referenced as {1} should be typed.
               </message>
               <description>
-                 This rule ensures that EnumerationLiteral and EnumerationReference are Typed.
+                 This rule enforces that EnumerationReference elements are Typed.
               </description>
-              <target class="AbstractEnumerationValue">
+              <target class="EnumerationReference">
               </target>
            </constraint>
            <constraint class="org.polarsys.capella.core.data.information.validation.dataValue.StringValueFamilyTypeCheck" id="DWF_D_33" isEnabledByDefault="false" lang="Java" mode="Batch" name="DWF_D_33 - String Value Family Type check" severity="WARNING" statusCode="1">
@@ -688,6 +688,24 @@ contains the partition {2} (Partitionable Element)  typed by {0} (Partitionable 
                  This rule ensures that a data value defined directly in its name space (class, datatype, package) have a name.
               </description>
               <target class="DataValue">
+              </target>
+           </constraint>
+            <constraint 
+            	class="org.polarsys.capella.core.data.information.validation.dataValue.EnumerationLiteralType" 
+            	id="DWF_D_56" 
+            	isEnabledByDefault="true" 
+            	lang="Java" 
+            	mode="Batch" 
+            	name="DWF_D_56 - EnumerationLiteral Type check" 
+            	severity="WARNING" 
+            	statusCode="1">
+              <message>
+                 "{0}" (EnumerationLiteral) with current type {1} should be typed by its parent {2}.
+              </message>
+              <description>
+                 This rule enforces that EnumerationLiteral elements are typed by their parent.
+              </description>
+              <target class="EnumerationLiteral">
               </target>
            </constraint>
            <constraint class="org.polarsys.capella.core.data.information.validation.dataValue.EnumerationLiteralDomainValueCheck" id="DWF_D_44" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_D_44 - Enumeration Literals Domain Values Constraints" severity="WARNING" statusCode="1">
