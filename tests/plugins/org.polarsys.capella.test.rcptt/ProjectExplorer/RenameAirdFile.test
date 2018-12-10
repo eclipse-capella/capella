@@ -1,0 +1,39 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _a7XuAPxtEeizXJIMPEzGTQ
+Element-Name: RenameAirdFile
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _914eMPxvEeizXJIMPEzGTQ
+Runtime-Version: 2.3.0.201806262310
+Save-Time: 12/11/18 3:34 PM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+ From Capella Explorer :
+- Right-click .aird file and run rename action 
+- Enter a new name
+=> Verify that the new name of .aird file and the new name of .afm file are updated
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+// // Select the .aird file in the Capella Project Explorer and press F2 to rename it
+with [get-view "Capella Project Explorer" | get-tree] {
+	select "renameTest 1  2/renameTest 1  2.aird" | key-type F2
+	with [get-editbox] {
+		set-text "renameTest12.aird"
+	}
+}
+with [get-view "Capella Project Explorer" | get-tree] {
+    get-item -path "renameTest 1  2/renameTest12.aird" | get-property "getText()" | equals "renameTest12.aird" 
+        | verify-true
+    get-item -path "renameTest 1  2/renameTest12.afm" | get-property "getText()" | equals "renameTest12.afm" 
+        | verify-true
+}
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--
