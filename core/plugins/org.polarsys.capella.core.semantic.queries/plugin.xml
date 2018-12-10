@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <!--
-  Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
+  Copyright (c) 2018 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -131,6 +131,230 @@
     </category>
     <category
             id="---------- CapellaRelationships ----------">
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.CapellaRelationshipsInterfaceUseTarget"
+            isTopLevel="true"
+            name="Target">
+         <availableForType
+               class="org.polarsys.capella.core.data.cs.InterfaceUse">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencedElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.CapellaRelationshipsInterfaceUseTarget">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.CapellaRelationshipsInterfaceUseSource"
+            isTopLevel="true"
+            name="Source">
+         <availableForType
+               class="org.polarsys.capella.core.data.cs.InterfaceUse">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencingElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.CapellaRelationshipsInterfaceUseSource">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.CapellaRelationshipsInterfaceImplementationTarget"
+            isTopLevel="true"
+            name="Target">
+         <availableForType
+               class="org.polarsys.capella.core.data.cs.InterfaceImplementation">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencedElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.CapellaRelationshipsInterfaceImplementationTarget">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.CapellaRelationshipsInterfaceImplementationSource"
+            isTopLevel="true"
+            name="Source">
+         <availableForType
+               class="org.polarsys.capella.core.data.cs.InterfaceImplementation">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencingElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.CapellaRelationshipsInterfaceImplementationSource">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.CapellaRelationshipsInvolvementTarget"
+            isTopLevel="true"
+            name="Target">
+         <availableForType
+               class="org.polarsys.capella.core.data.capellacore.Involvement">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencedElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.CapellaRelationshipsInvolvementTarget">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.CapellaRelationshipsInvolvementSource"
+            isTopLevel="true"
+            name="Source">
+         <availableForType
+               class="org.polarsys.capella.core.data.capellacore.Involvement">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencingElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.CapellaRelationshipsInvolvementSource">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.CapellaRelationshipsCapabilityExploitationTarget"
+            isTopLevel="true"
+            name="Target">
+         <availableForType
+               class="org.polarsys.capella.core.data.ctx.CapabilityExploitation">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencedElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.CapellaRelationshipsCapabilityExploitationTarget">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.CapellaRelationshipsCapabilityExploitationSource"
+            isTopLevel="true"
+            name="Source">
+         <availableForType
+               class="org.polarsys.capella.core.data.ctx.CapabilityExploitation">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencingElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.CapellaRelationshipsCapabilityExploitationSource">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.CapellaRelationshipsAbstractCapabilityExtendTarget"
+            isTopLevel="true"
+            name="Target">
+         <availableForType
+               class="org.polarsys.capella.core.data.interaction.AbstractCapabilityExtend">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencedElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.CapellaRelationshipsAbstractCapabilityExtendTarget">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.CapellaRelationshipsAbstractCapabilityExtendSource"
+            isTopLevel="true"
+            name="Source">
+         <availableForType
+               class="org.polarsys.capella.core.data.interaction.AbstractCapabilityExtend">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencingElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.CapellaRelationshipsAbstractCapabilityExtendSource">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.CapellaRelationshipsAbstractCapabilityIncludeTarget"
+            isTopLevel="true"
+            name="Target">
+         <availableForType
+               class="org.polarsys.capella.core.data.interaction.AbstractCapabilityInclude">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencedElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.CapellaRelationshipsAbstractCapabilityIncludeTarget">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.CapellaRelationshipsAbstractCapabilityIncludeSource"
+            isTopLevel="true"
+            name="Source">
+         <availableForType
+               class="org.polarsys.capella.core.data.interaction.AbstractCapabilityInclude">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencingElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.CapellaRelationshipsAbstractCapabilityIncludeSource">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.CapellaRelationshipsAbstractCapabilityGeneralizationTarget"
+            isTopLevel="true"
+            name="Target">
+         <availableForType
+               class="org.polarsys.capella.core.data.interaction.AbstractCapabilityGeneralization">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencedElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.CapellaRelationshipsAbstractCapabilityGeneralizationTarget">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.CapellaRelationshipsAbstractCapabilityGeneralizationSource"
+            isTopLevel="true"
+            name="Source">
+         <availableForType
+               class="org.polarsys.capella.core.data.interaction.AbstractCapabilityGeneralization">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencingElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.CapellaRelationshipsAbstractCapabilityGeneralizationSource">
+            </basicQuery>
+         </categoryQuery>
       </category>
       <category
             id="org.polarsys.capella.core.semantic.queries.CapellaRelationshipsGeneralizationTarget"
@@ -1608,6 +1832,70 @@
             id="------------- SequenceMessage ----------------">
       </category>
       <category
+            id="org.polarsys.capella.core.semantic.queries.SequenceMessageFunctionSource"
+            isTopLevel="true"
+            name="Source">
+         <availableForType
+               class="org.polarsys.capella.core.data.interaction.SequenceMessage">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencingElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.SequenceMessageFunctionSource">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.SequenceMessageFunctionTarget"
+            isTopLevel="true"
+            name="Target">
+         <availableForType
+               class="org.polarsys.capella.core.data.interaction.SequenceMessage">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencedElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.SequenceMessageFunctionTarget">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.SequenceMessagePartSource"
+            isTopLevel="true"
+            name="Source">
+         <availableForType
+               class="org.polarsys.capella.core.data.interaction.SequenceMessage">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencingElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.SequenceMessagePartSource">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.SequenceMessagePartTarget"
+            isTopLevel="true"
+            name="Target">
+         <availableForType
+               class="org.polarsys.capella.core.data.interaction.SequenceMessage">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencedElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.SequenceMessagePartTarget">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+      <category
             id="org.polarsys.capella.core.semantic.queries.SequenceMessage_parentScenario"
             isTopLevel="true"
             name="Parent Scenario">
@@ -1623,7 +1911,6 @@
             </basicQuery>
          </categoryQuery>
       </category>
-      
       <category
             id="org.polarsys.capella.core.semantic.queries.SequenceMessage_refinedSequenceMessage"
             isTopLevel="true"
@@ -2079,7 +2366,7 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.CommunicationLinkExchangeItem"
             isTopLevel="true"
-            name="ExchangeItem">
+            name="Target">
          <targetBrowserId
                id="ReferencedElementBrowser">
          </targetBrowserId>
@@ -2100,7 +2387,7 @@
             <category
             id="org.polarsys.capella.core.semantic.queries.CommunicationLinkComponent"
             isTopLevel="true"
-            name="Component">
+            name="Source">
          <targetBrowserId
                id="ReferencingElementBrowser">
          </targetBrowserId>
@@ -4736,7 +5023,7 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.CommunicationMean_source"
             isTopLevel="true"
-            name="Source Entity">
+            name="Source">
          <targetBrowserId
                id="ReferencingElementBrowser">
          </targetBrowserId>
@@ -4752,7 +5039,7 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.CommunicationMean_target"
             isTopLevel="true"
-            name="Target Entity">
+            name="Target">
          <targetBrowserId
                id="ReferencedElementBrowser">
          </targetBrowserId>
