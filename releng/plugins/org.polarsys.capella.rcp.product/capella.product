@@ -90,7 +90,7 @@
       <feature id="org.polarsys.kitalpha.resourcereuse.ui.feature"/>
       <feature id="org.polarsys.kitalpha.transposer.feature"/>
       <feature id="org.polarsys.kitalpha.richtext.widget.feature"/>
-      	
+      <feature id="org.polarsys.kitalpha.ad.runtime.feature"/>
    </features>
 
    <configurations>
