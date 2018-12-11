@@ -247,4 +247,8 @@ public class EditCapellaCustomPropertyWizardPage extends WizardPage {
         .forEach(IAbstractSection::performFinish);
   }
 
+  public Collection<ISection> getSections() {
+    return sections;
+  }
+
 }
