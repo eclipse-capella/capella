@@ -33,6 +33,13 @@ This section displays the most important semantic information about the current 
 == Description Section ==
  
 The Descriptions section allows editing text descriptions for model elements.
+{| border="1"
+|-
+| 
+[[Image:Images/Warning_ExclamationPoint.png|34x34px]]
+| 
+If the description section doesn't work, for example the buttons are missing and you can't edit nothing in the text area, please check the log error, the cause can be due to a long installation path.
+|}  
 
  
 [[Image:Images/4.06.%20Properties%20View_html_m602830a9.png]]
