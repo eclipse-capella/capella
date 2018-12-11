@@ -28,4 +28,5 @@ Require-Bundle: org.polarsys.capella.test.business.queries.ju;visibility:=reexpo
  org.polarsys.capella.test.re.updateconnections.ju;visibility:=reexport,
  org.polarsys.capella.test.commandline.ju;visibility:=reexport,
  org.polarsys.capella.test.migration.ju;visibility:=reexport,
- org.polarsys.capella.test.massactions.ju;visibility:=reexport
+ org.polarsys.capella.test.massactions.ju;visibility:=reexport,
+ org.polarsys.capella.test.richtext.ju;visibility:=reexport
