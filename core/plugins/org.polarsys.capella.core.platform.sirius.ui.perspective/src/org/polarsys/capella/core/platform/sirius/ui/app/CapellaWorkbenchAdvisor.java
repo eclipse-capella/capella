@@ -22,7 +22,6 @@ import org.eclipse.core.commands.operations.OperationHistoryFactory;
 import org.eclipse.core.internal.jobs.JobManager;
 import org.eclipse.core.internal.jobs.JobMessages;
 import org.eclipse.core.internal.registry.ExtensionRegistry;
-import org.eclipse.core.internal.runtime.Activator;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExtensionPoint;
 import org.eclipse.core.runtime.IPath;
@@ -32,10 +31,6 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.validation.service.ModelValidationService;
 import org.eclipse.jface.viewers.ILabelDecorator;
 import org.eclipse.jface.viewers.ILabelProviderListener;
-import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
-import org.eclipse.sirius.common.tools.api.constant.CommonPreferencesConstants;
-import org.eclipse.sirius.common.ui.SiriusTransPlugin;
-import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.application.IWorkbenchWindowConfigurer;
 import org.eclipse.ui.application.WorkbenchWindowAdvisor;
@@ -44,7 +39,6 @@ import org.eclipse.ui.internal.WorkbenchMessages;
 import org.eclipse.ui.internal.ide.IDEWorkbenchErrorHandler;
 import org.eclipse.ui.internal.ide.IDEWorkbenchPlugin;
 import org.eclipse.ui.internal.ide.application.IDEWorkbenchAdvisor;
-import org.eclipse.ui.internal.misc.StatusUtil;
 import org.eclipse.ui.statushandlers.AbstractStatusHandler;
 import org.eclipse.ui.statushandlers.StatusAdapter;
 import org.eclipse.ui.statushandlers.WorkbenchStatusDialogManager;
@@ -88,7 +82,7 @@ public class CapellaWorkbenchAdvisor extends IDEWorkbenchAdvisor {
   private static final String BUILD_ID_TAG = "BuildId"; //$NON-NLS-1$
 
   private static final int limitLengthOfPath = 115;
-
+  private static final int fileCharAdd = 6;
   private AbstractStatusHandler ideWorkbenchErrorHandler;
 
   /**
@@ -193,12 +187,11 @@ public class CapellaWorkbenchAdvisor extends IDEWorkbenchAdvisor {
       ModelValidationService.getInstance().loadXmlConstraintDeclarations();
       PreferencesHelper.initializeCapellaPreferencesFromEPFFile();
       File systemDirectory = new File(System.getProperty("eclipse.home.location"));
-      int lengthDirectory = systemDirectory.getAbsolutePath().length();
+      int lengthDirectory = systemDirectory.toString().substring(fileCharAdd).length();
       if (System.getProperty("os.name").contains("Windows")) {
         if (lengthDirectory > limitLengthOfPath) {
           IDEWorkbenchPlugin.log(
               "The current installation path is too long (Windows Maximum Path Length Limitation). Certain components such as Capella Properties description may not work properly.");
-
         }
       }
     } catch (Exception e) {
