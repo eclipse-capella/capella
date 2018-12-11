@@ -60,6 +60,7 @@ import org.polarsys.capella.core.platform.sirius.clipboard.util.StorageLocation;
 /**
  * A command which pastes Capella diagrammatic and semantic elements based on business criteria
  */
+@SuppressWarnings("restriction")
 public class CapellaDiagramPasteCommand extends AbstractResultCommand {
 
   // The non-null list of GMF elements to paste into
@@ -110,6 +111,16 @@ public class CapellaDiagramPasteCommand extends AbstractResultCommand {
    * @see java.lang.Runnable#run()
    */
   public void run() {
+    
+    // Check the diagram from where the objects are copied and the diagram where to paste if they are if different kind
+    EObject siriusTarget = LayerUtil.getSiriusElement(getGmfTarget());
+    String copyCtxtDiagram = CapellaDiagramClipboard.getInstance().getContextDiagram();
+    String pasteCtxtDiagram = SiriusUtil.getContextDiagram(siriusTarget);
+    if (copyCtxtDiagram != null && pasteCtxtDiagram != null && !copyCtxtDiagram.equals(pasteCtxtDiagram)) {
+      throw new RuntimeException(
+          NLS.bind(Messages.CapellaDiagramPasteAction_Unsupported, pasteCtxtDiagram, copyCtxtDiagram));
+    }
+    
     // Capella layer
     EObject semanticSource = getSemanticSource();
     EObject semanticTarget = getSemanticTarget();
@@ -132,7 +143,6 @@ public class CapellaDiagramPasteCommand extends AbstractResultCommand {
       EcoreUtil.resolveAll(target);
     }
     
-    EObject siriusTarget = LayerUtil.getSiriusElement(getGmfTarget());
     CapellaDiagramClipboard clipboard = CapellaDiagramClipboard.getInstance();
     if (clipboard.isEmpty() || SiriusUtil.layoutIsConstrained(siriusTarget)) {
       // Do not handle graphical layer if the clipboard is empty or
@@ -159,19 +169,18 @@ public class CapellaDiagramPasteCommand extends AbstractResultCommand {
    * @param result
    */
   private void resolveIncoherences(EObject eObj) {
-    //If a Node references an Edge not coming from that Node, remove the reference
-    if (eObj instanceof DNode)
-    {
+    // If a Node references an Edge not coming from that Node, remove the reference
+    if (eObj instanceof DNode) {
       DNode aNode = (DNode) eObj;
-      //Check incoming edges
+      // Check incoming edges
       List<DEdge> incomingEdgesToRemove = new ArrayList<>();
       for (DEdge anEdge : aNode.getIncomingEdges())
         if (anEdge.getTargetNode() != aNode)
           incomingEdgesToRemove.add(anEdge);
       for (DEdge toRemove : incomingEdgesToRemove)
         aNode.getIncomingEdges().remove(toRemove);
-      
-      //Check outgoing edges
+
+      // Check outgoing edges
       List<DEdge> outgoingEdgesToRemove = new ArrayList<>();
       for (DEdge anEdge : aNode.getOutgoingEdges())
         if (anEdge.getSourceNode() != aNode)
@@ -179,7 +188,7 @@ public class CapellaDiagramPasteCommand extends AbstractResultCommand {
       for (DEdge toRemove : outgoingEdgesToRemove)
         aNode.getOutgoingEdges().remove(toRemove);
     }
-    
+
     for (EObject child : eObj.eContents())
       resolveIncoherences(child);
   }
@@ -318,41 +327,42 @@ public class CapellaDiagramPasteCommand extends AbstractResultCommand {
   @SuppressWarnings("unchecked")
   protected Collection<EObject> pasteSiriusElements(final String data, EObject target) {
 
-    String copyCtxtDiagram = CapellaDiagramClipboard.getInstance().getContextDiagram();
-    String pasteCtxtDiagram = SiriusUtil.getContextDiagram(target);
-    if (copyCtxtDiagram != null && pasteCtxtDiagram != null && !copyCtxtDiagram.equals(pasteCtxtDiagram)) {
-      throw new RuntimeException(NLS.bind(Messages.CapellaDiagramPasteAction_Unsupported, pasteCtxtDiagram, copyCtxtDiagram));
-    }
-    
     Collection<EObject> result = ClipboardUtil.pasteElementsFromString(data, target, null, null);
     if ((result != null) && !result.isEmpty()) {
-      // Relocate DEdges in DDiagram instead of target if needed
-      if (!(target instanceof DDiagram)) {
-        DDiagram siriusDiagram = SiriusUtil.getDiagram(target);
-        if (siriusDiagram != null) {
-          for (EObject pasted : result) {
-            if ((pasted instanceof DEdge) && (pasted.eContainer() != siriusDiagram)) {
-              siriusDiagram.getOwnedDiagramElements().add((DEdge) pasted);
-            }
-          }
-        }
-      }
-
-      if (isRestoreStyles) {
-        // We replace the current style
-        for (EObject pasted : result) {
-          if (pasted instanceof DDiagramElement) {
-            DDiagramElement element = (DDiagramElement) pasted;
-            Session session = SessionManager.INSTANCE.getSession(element.getTarget());
-            MappingHelper mappingHelper = new MappingHelper(session.getInterpreter());
-            Style bestStyle = mappingHelper.getBestStyle((element).getDiagramElementMapping(), element.getTarget(), pasted, pasted.eContainer(), element.getParentDiagram());
-            new SetStyleSwitch(bestStyle).doSwitch(pasted);
-          }
-        }
-      }
-      
+      relocateEdges(target, result);
     }
     return result;
+  }
+
+  private void relocateEdges(EObject target, Collection<EObject> result) {
+    // Relocate DEdges in DDiagram instead of target if needed
+    if (!(target instanceof DDiagram)) {
+      DDiagram siriusDiagram = SiriusUtil.getDiagram(target);
+      if (siriusDiagram != null) {
+        for (EObject pasted : result) {
+          if ((pasted instanceof DEdge) && (pasted.eContainer() != siriusDiagram)) {
+            siriusDiagram.getOwnedDiagramElements().add((DEdge) pasted);
+          }
+        }
+      }
+    }
+
+    if (isRestoreStyles) {
+      restoreStyles(result);
+    }
+  }
+
+  private void restoreStyles(Collection<EObject> result) {
+    // We replace the current style
+    for (EObject pasted : result) {
+      if (pasted instanceof DDiagramElement) {
+        DDiagramElement element = (DDiagramElement) pasted;
+        Session session = SessionManager.INSTANCE.getSession(element.getTarget());
+        MappingHelper mappingHelper = new MappingHelper(session.getInterpreter());
+        Style bestStyle = mappingHelper.getBestStyle((element).getDiagramElementMapping(), element.getTarget(), pasted, pasted.eContainer(), element.getParentDiagram());
+        new SetStyleSwitch(bestStyle).doSwitch(pasted);
+      }
+    }
   }
 
   /**
