@@ -87,7 +87,7 @@ public class CapellaWorkbenchAdvisor extends IDEWorkbenchAdvisor {
    */
   private static final String BUILD_ID_TAG = "BuildId"; //$NON-NLS-1$
 
-  private static final int limitLengthOfPath = 110;
+  private static final int limitLengthOfPath = 115;
 
   private AbstractStatusHandler ideWorkbenchErrorHandler;
 
