@@ -16,8 +16,10 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
 import org.eclipse.emf.validation.model.ConstraintStatus;
+import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.interaction.AbstractCapability;
+import org.polarsys.capella.core.data.oa.OperationalCapability;
 import org.polarsys.capella.core.data.ctx.System;
 
 import java.util.ArrayList;
@@ -26,7 +28,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.polarsys.capella.core.model.helpers.formatterLabels.FormatterLabels;
 import org.polarsys.capella.core.model.helpers.AbstractCapabilityExt;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 
@@ -76,13 +77,22 @@ public class MDCHK_Capability_Components_Involved extends AbstractValidationRule
 
   private void addCtxStatus(Collection<IStatus> statuses, IValidationContext ctx, EObject eObj,
       AbstractCapability capability, Component element) {
-    Object[] msgArguments = new Object[] { capability.getName(), FormatterLabels.getLevelOfCapability(capability),
-        element.getName(), FormatterLabels.getLevelOfComponents(element),
-        FormatterLabels.getFunctionalChainType(capability) + " or scenarios" };
+    Object[] msgArguments = new Object[] { capability.getName(),
+        EObjectLabelProviderHelper.getMetaclassLabel(capability, false), element.getName(),
+        EObjectLabelProviderHelper.getMetaclassLabel(element, false),
+        getFunctionalChainType(capability) + " or scenarios" };
     Collection<EObject> resultLocus = new ArrayList<EObject>();
     resultLocus.add(capability);
     resultLocus.add(element);
     statuses.add(ConstraintStatus.createStatus(ctx, eObj, resultLocus, IStatus.INFO, ERROR_CODE,
         Messages.DWF_CA_07_Validator_Message, msgArguments));
+  }
+
+  private String getFunctionalChainType(AbstractCapability capability) {
+    String type = "functional chains";
+    if (capability instanceof OperationalCapability)
+      type = "operational processes";
+
+    return type;
   }
 }

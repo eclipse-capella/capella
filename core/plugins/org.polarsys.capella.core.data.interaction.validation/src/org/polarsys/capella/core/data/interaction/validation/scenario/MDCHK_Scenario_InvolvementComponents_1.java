@@ -24,7 +24,6 @@ import org.eclipse.emf.validation.model.ConstraintStatus;
 
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
-import org.polarsys.capella.core.data.fa.FunctionPkg;
 import org.polarsys.capella.core.data.helpers.fa.services.FunctionExt;
 import org.polarsys.capella.core.data.information.AbstractInstance;
 import org.polarsys.capella.core.data.information.ExchangeItem;
@@ -38,7 +37,7 @@ import org.polarsys.capella.core.model.helpers.ScenarioExt;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
-import org.polarsys.capella.core.model.helpers.formatterLabels.FormatterLabels;
+import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 
 public class MDCHK_Scenario_InvolvementComponents_1 extends AbstractValidationRule {
   private static final int ERROR_CODE = 1;
@@ -119,7 +118,7 @@ public class MDCHK_Scenario_InvolvementComponents_1 extends AbstractValidationRu
   private void addCtxStatus(Collection<IStatus> statuses, IValidationContext ctx_p, EObject eObj,
       AbstractCapability usecase, ModelElement element, String elementName, String contextName) {
     Object[] argMessage = new Object[] { elementName, contextName, usecase.getName(),
-        FormatterLabels.getLevelOfCapability(usecase) };
+        EObjectLabelProviderHelper.getMetaclassLabel(usecase, false) };
     Collection<EObject> resultLocus = new ArrayList<EObject>();
     resultLocus.add(eObj);
     resultLocus.add(usecase);
@@ -127,5 +126,5 @@ public class MDCHK_Scenario_InvolvementComponents_1 extends AbstractValidationRu
     statuses.add(ConstraintStatus.createStatus(ctx_p, eObj, resultLocus, IStatus.ERROR, ERROR_CODE,
         Messages.DCOM_05_Validator_Message, argMessage));
   }
-  
+
 }

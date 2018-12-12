@@ -17,13 +17,13 @@ import java.util.List;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.ui.IMarkerResolution;
+import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerViewHelper;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.interaction.AbstractCapability;
-import org.polarsys.capella.core.data.interaction.ui.quickfix.generator.command.AddInvolvedCompoenentCommand;
+import org.polarsys.capella.core.data.interaction.ui.quickfix.resolver.AddInvolvedElementsResolver;
 import org.polarsys.capella.core.validation.ui.ide.quickfix.AbstractMarkerResolutionGenerator;
 import org.polarsys.capella.core.validation.ui.ide.quickfix.CapellaElementGoToResolver;
-import org.polarsys.capella.core.validation.ui.ide.quickfix.CommandMarkerResolution;
 
 public class DWF_CA_08_Resolutions extends AbstractMarkerResolutionGenerator {
 
@@ -38,16 +38,17 @@ public class DWF_CA_08_Resolutions extends AbstractMarkerResolutionGenerator {
     for (EObject element : modelElements) {
       if (element instanceof AbstractCapability) {
         capability = (AbstractCapability) element;
-        resolutions.add(new CapellaElementGoToResolver("Capability", element));
+        resolutions
+            .add(new CapellaElementGoToResolver(EObjectLabelProviderHelper.getMetaclassLabel(element, false), element));
       } else if (element instanceof Component) {
         component = (Component) element;
-        resolutions.add(new CapellaElementGoToResolver("Component", element));
+        resolutions
+            .add(new CapellaElementGoToResolver(EObjectLabelProviderHelper.getMetaclassLabel(element, false), element));
       }
     }
 
     if (capability != null && component != null) {
-      resolutions.add(new CommandMarkerResolution(
-          new AddInvolvedCompoenentCommand("Create involvment ", capability, component, modelElements)));
+      Helper_Resolutions.addResolution(capability, component, resolutions, getRuleId());
     }
 
     return resolutions.toArray(new IMarkerResolution[0]);
@@ -57,4 +58,5 @@ public class DWF_CA_08_Resolutions extends AbstractMarkerResolutionGenerator {
   protected String getRuleId() {
     return "org.polarsys.capella.core.data.interaction.validation.DWF_CA_08";
   }
+
 }
