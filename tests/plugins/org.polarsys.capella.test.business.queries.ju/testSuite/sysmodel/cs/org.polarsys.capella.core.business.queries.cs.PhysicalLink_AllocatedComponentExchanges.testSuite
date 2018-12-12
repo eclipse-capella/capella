@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,8 +12,8 @@
 queryIdentifier = org.polarsys.capella.core.business.queries.cs.PhysicalLink_AllocatedComponentExchanges-getAvailableElements
 inputId = e8ba8d88-f527-4b2e-add2-eb717daa6839
 resultIds = {
-    ef8570d5-7124-4e4d-ae39-c92cb527cff6
     22d3f829-2db8-4129-a396-b4530580cc0e
+    ef8570d5-7124-4e4d-ae39-c92cb527cff6
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.cs.PhysicalLink_AllocatedComponentExchanges-getCurrentElements
@@ -57,8 +57,8 @@ resultIds = {
 queryIdentifier = org.polarsys.capella.core.business.queries.cs.PhysicalLink_AllocatedComponentExchanges-getAvailableElements
 inputId = c9a5bdcd-73aa-40f7-8edc-d6c8d5ffd73d
 resultIds = {
-    9c8af0b7-38e8-4fa0-8a8b-0ff60f24c64b
     96d430b1-fe08-4ac2-8a3e-b5900e4aa41a
+    9c8af0b7-38e8-4fa0-8a8b-0ff60f24c64b
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.cs.PhysicalLink_AllocatedComponentExchanges-getCurrentElements
@@ -196,10 +196,10 @@ resultIds = {
 queryIdentifier = org.polarsys.capella.core.business.queries.cs.PhysicalLink_AllocatedComponentExchanges-getAvailableElements
 inputId = 7d4f981f-04d6-4be2-8692-cbfdcd582908
 resultIds = {
-    47b87c8b-9d4f-4531-83a0-33605b32894a
-    e5274eb2-84e4-4c2a-8818-9dad8ee095ca
-    8f44caf2-b8e2-4c4a-9289-9bbba5d01d91
     2089fff5-b658-46fc-8388-382511f1b187
+    47b87c8b-9d4f-4531-83a0-33605b32894a
+    8f44caf2-b8e2-4c4a-9289-9bbba5d01d91
+    e5274eb2-84e4-4c2a-8818-9dad8ee095ca
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.cs.PhysicalLink_AllocatedComponentExchanges-getCurrentElements

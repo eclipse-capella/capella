@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,10 +12,10 @@
 queryIdentifier = org.polarsys.capella.core.business.queries.pa.PhysicalActor_InheritedActors-getAvailableElements
 inputId = d2f2b89e-e727-43e1-a83f-97af3850387c
 resultIds = {
-    93e48ebb-c768-487d-ab87-dbae9a79308b
     3d5a3608-0af2-4750-928a-6e13a676a07b
-    ed542859-19dd-4d24-977c-6464e71b6d16
+    93e48ebb-c768-487d-ab87-dbae9a79308b
     a4917194-4c32-443f-bdaa-412950062088
+    ed542859-19dd-4d24-977c-6464e71b6d16
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.pa.PhysicalActor_InheritedActors-getCurrentElements
@@ -26,10 +26,10 @@ resultIds = {
 queryIdentifier = org.polarsys.capella.core.business.queries.pa.PhysicalActor_InheritedActors-getAvailableElements
 inputId = 93e48ebb-c768-487d-ab87-dbae9a79308b
 resultIds = {
-    d2f2b89e-e727-43e1-a83f-97af3850387c
     3d5a3608-0af2-4750-928a-6e13a676a07b
-    ed542859-19dd-4d24-977c-6464e71b6d16
     a4917194-4c32-443f-bdaa-412950062088
+    d2f2b89e-e727-43e1-a83f-97af3850387c
+    ed542859-19dd-4d24-977c-6464e71b6d16
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.pa.PhysicalActor_InheritedActors-getCurrentElements
@@ -40,9 +40,9 @@ resultIds = {
 queryIdentifier = org.polarsys.capella.core.business.queries.pa.PhysicalActor_InheritedActors-getAvailableElements
 inputId = 3d5a3608-0af2-4750-928a-6e13a676a07b
 resultIds = {
-    d2f2b89e-e727-43e1-a83f-97af3850387c
     93e48ebb-c768-487d-ab87-dbae9a79308b
     a4917194-4c32-443f-bdaa-412950062088
+    d2f2b89e-e727-43e1-a83f-97af3850387c
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.pa.PhysicalActor_InheritedActors-getCurrentElements
@@ -54,9 +54,9 @@ resultIds = {
 queryIdentifier = org.polarsys.capella.core.business.queries.pa.PhysicalActor_InheritedActors-getAvailableElements
 inputId = ed542859-19dd-4d24-977c-6464e71b6d16
 resultIds = {
-    d2f2b89e-e727-43e1-a83f-97af3850387c
     93e48ebb-c768-487d-ab87-dbae9a79308b
     a4917194-4c32-443f-bdaa-412950062088
+    d2f2b89e-e727-43e1-a83f-97af3850387c
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.pa.PhysicalActor_InheritedActors-getCurrentElements
@@ -67,9 +67,9 @@ resultIds = {
 queryIdentifier = org.polarsys.capella.core.business.queries.pa.PhysicalActor_InheritedActors-getAvailableElements
 inputId = a4917194-4c32-443f-bdaa-412950062088
 resultIds = {
-    d2f2b89e-e727-43e1-a83f-97af3850387c
-    93e48ebb-c768-487d-ab87-dbae9a79308b
     3d5a3608-0af2-4750-928a-6e13a676a07b
+    93e48ebb-c768-487d-ab87-dbae9a79308b
+    d2f2b89e-e727-43e1-a83f-97af3850387c
     ed542859-19dd-4d24-977c-6464e71b6d16
 }
 

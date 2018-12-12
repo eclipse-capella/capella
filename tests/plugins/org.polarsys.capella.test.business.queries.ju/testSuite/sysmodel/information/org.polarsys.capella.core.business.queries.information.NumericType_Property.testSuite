@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -62,9 +62,9 @@ resultIds = {
 queryIdentifier = org.polarsys.capella.core.business.queries.information.NumericType_Property-getAvailableElements
 inputId = e6c1b0e1-1f90-4ce2-ad69-a2ca2bdd2f5d
 resultIds = {
-    e7a452ae-c288-4375-a4b3-a9dc4fc9eb26
     3989f655-4869-4f5c-9400-f3db45024646
     398bc2ae-791c-43c6-9265-9ac7d7f789c3
+    e7a452ae-c288-4375-a4b3-a9dc4fc9eb26
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.information.NumericType_Property-getCurrentElements

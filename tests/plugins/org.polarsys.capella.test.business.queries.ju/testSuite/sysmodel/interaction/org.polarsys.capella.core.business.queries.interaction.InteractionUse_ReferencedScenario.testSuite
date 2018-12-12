@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,9 +12,9 @@
 queryIdentifier = org.polarsys.capella.core.business.queries.interaction.InteractionUse_ReferencedScenario-getAvailableElements
 inputId = d74c3df8-166d-4cd4-adc3-34ff779da306
 resultIds = {
+    04823c08-0017-496c-b5b7-c9eebd887f5d
     963c9cef-0ccf-4f86-b7fb-b05a35c4f2ef
     bd4dd89a-e21a-487a-819c-062b538b0d70
-    04823c08-0017-496c-b5b7-c9eebd887f5d
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.interaction.InteractionUse_ReferencedScenario-getCurrentElements
@@ -26,9 +26,9 @@ resultIds = {
 queryIdentifier = org.polarsys.capella.core.business.queries.interaction.InteractionUse_ReferencedScenario-getAvailableElements
 inputId = 64849164-7636-4c29-8171-9f75ffa818b6
 resultIds = {
-    ade8ba6a-3a69-4549-97be-bed5c717d5ee
     0c622e93-ef31-4dea-9ef2-f66c6cb6e1e7
     963c9cef-0ccf-4f86-b7fb-b05a35c4f2ef
+    ade8ba6a-3a69-4549-97be-bed5c717d5ee
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.interaction.InteractionUse_ReferencedScenario-getCurrentElements

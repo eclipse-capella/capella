@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,8 +19,8 @@ queryIdentifier = org.polarsys.capella.core.business.queries.la.LogicalComponent
 inputId = e6f8a038-0fc9-48b7-9910-2f665c9fad74
 resultIds = {
     13ce6dbf-29e4-48a7-8ff6-9857d570a4c7
-    a7696e8d-410d-4b58-94b9-fb306af2000b
     9c749b58-6a1a-465c-9e94-e184229355f2
+    a7696e8d-410d-4b58-94b9-fb306af2000b
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.la.LogicalComponent_InvolvedRealizations-getAvailableElements
@@ -41,8 +41,8 @@ resultIds = {
 queryIdentifier = org.polarsys.capella.core.business.queries.la.LogicalComponent_InvolvedRealizations-getCurrentElements
 inputId = 74ed4abe-9090-4a66-be37-741e139487ba
 resultIds = {
-    1e8b6132-a356-45d8-97cd-9a6bdcd5d768
     13ce6dbf-29e4-48a7-8ff6-9857d570a4c7
+    1e8b6132-a356-45d8-97cd-9a6bdcd5d768
     a7696e8d-410d-4b58-94b9-fb306af2000b
 }
 
@@ -76,8 +76,8 @@ resultIds = {
 queryIdentifier = org.polarsys.capella.core.business.queries.la.LogicalComponent_InvolvedRealizations-getCurrentElements
 inputId = 44f5531d-6388-4bad-a448-c796cf5afa0a
 resultIds = {
-    1e8b6132-a356-45d8-97cd-9a6bdcd5d768
     13ce6dbf-29e4-48a7-8ff6-9857d570a4c7
+    1e8b6132-a356-45d8-97cd-9a6bdcd5d768
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.la.LogicalComponent_InvolvedRealizations-getAvailableElements
