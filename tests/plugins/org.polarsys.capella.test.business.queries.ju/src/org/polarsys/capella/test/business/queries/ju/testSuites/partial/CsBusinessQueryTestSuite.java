@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,8 +14,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import junit.framework.Test;
-
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.cs.Component_ImplementedInterfaces;
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.cs.ExchangeItemAllocation_AllocatedItem;
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.cs.InterfaceImpl_ImplementedInterface;
@@ -29,6 +27,7 @@ import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.cs.Part_
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.cs.PhysicalLinkCategory_Links;
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.cs.PhysicalLink_AllocatedComponentExchanges;
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.cs.PhysicalLink_Categories;
+import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.cs.PhysicalLink_LinkEnds;
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.cs.PhysicalLink_RealizedPhysicalLinks;
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.cs.PhysicalPath_AllocatedComponentExchanges;
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.cs.PhysicalPath_RealizedPhysicalPaths;
@@ -37,6 +36,8 @@ import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.cs.Physi
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.cs.PhysicalPort_RealizedPhysicalPorts;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
+
+import junit.framework.Test;
 
 /**
  * @author Erwan Brottier
@@ -65,6 +66,7 @@ public class CsBusinessQueryTestSuite extends BasicTestSuite {
     tests.add(new Part_Type());
     tests.add(new PhysicalLink_AllocatedComponentExchanges());
     tests.add(new PhysicalLink_Categories());
+    tests.add(new PhysicalLink_LinkEnds());
     tests.add(new PhysicalLink_RealizedPhysicalLinks());
     tests.add(new PhysicalLinkCategory_Links());
     tests.add(new PhysicalPath_AllocatedComponentExchanges());

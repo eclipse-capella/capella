@@ -10,22 +10,22 @@
  *******************************************************************************/
  
 queryIdentifier = org.polarsys.capella.core.business.queries.information.Collection_NullValue-getAvailableElements
-inputId = 36b14cab-ce68-4fbf-add2-1e33e489e2e6
-resultIds = {
-}
-
-queryIdentifier = org.polarsys.capella.core.business.queries.information.Collection_NullValue-getAvailableElements
 inputId = f4bdbaed-1add-4bf7-8bb0-8daad7238492
 resultIds = {
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.information.Collection_NullValue-getCurrentElements
-inputId = 36b14cab-ce68-4fbf-add2-1e33e489e2e6
+inputId = f4bdbaed-1add-4bf7-8bb0-8daad7238492
 resultIds = {
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.information.Collection_NullValue-getAvailableElements
-inputId = f4bdbaed-1add-4bf7-8bb0-8daad7238492
+inputId = 36b14cab-ce68-4fbf-add2-1e33e489e2e6
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.information.Collection_NullValue-getCurrentElements
+inputId = 36b14cab-ce68-4fbf-add2-1e33e489e2e6
 resultIds = {
 }
 

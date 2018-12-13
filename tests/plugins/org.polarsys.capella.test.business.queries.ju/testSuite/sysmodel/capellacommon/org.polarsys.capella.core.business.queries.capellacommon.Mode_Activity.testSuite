@@ -67,3 +67,8 @@ resultIds = {
     fc11f2f3-e505-4626-9d8e-1720d1f0b677
 }
 
+queryIdentifier = org.polarsys.capella.core.business.queries.capellacommon.Mode_Activity-getCurrentElements
+inputId = b6c6b1c7-371c-4f81-aae2-4abd14deafe3
+resultIds = {
+}
+

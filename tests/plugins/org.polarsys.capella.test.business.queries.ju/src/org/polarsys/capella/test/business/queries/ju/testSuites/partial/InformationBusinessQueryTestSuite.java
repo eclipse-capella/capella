@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,11 +14,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import junit.framework.Test;
-
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.information.*;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
+
+import junit.framework.Test;
 
 /**
  * @author Erwan Brottier
@@ -102,8 +102,11 @@ public class InformationBusinessQueryTestSuite extends BasicTestSuite {
     tests.add(new NumericValue_Type());
     tests.add(new NumericValueReference_Unit());
     tests.add(new Parameter_DefaultValue());
+    tests.add(new Parameter_DefaultValue());
     tests.add(new Parameter_MaxCardinality());
+    tests.add(new Parameter_MaxValue());
     tests.add(new Parameter_MinCardinality());
+    tests.add(new Parameter_MinValue());
     tests.add(new Parameter_NullValue());
     tests.add(new Parameter_Type());
     tests.add(new PhysicalQuantity_DefaultValue());
