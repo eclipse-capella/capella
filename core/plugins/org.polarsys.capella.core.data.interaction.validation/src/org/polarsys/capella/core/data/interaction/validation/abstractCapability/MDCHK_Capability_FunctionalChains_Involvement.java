@@ -17,9 +17,8 @@ import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
 import org.eclipse.emf.validation.model.ConstraintStatus;
 import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
-import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.interaction.AbstractCapability;
-import org.polarsys.capella.core.data.oa.OperationalCapability;
+import org.polarsys.capella.core.data.fa.FunctionalChain;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -30,7 +29,7 @@ import java.util.Set;
 import org.polarsys.capella.core.model.helpers.AbstractCapabilityExt;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 
-public class MDCHK_Capability_Components_NotInvolved extends AbstractValidationRule {
+public class MDCHK_Capability_FunctionalChains_Involvement extends AbstractValidationRule {
   private static final int ERROR_CODE = 1;
 
   @Override
@@ -44,22 +43,13 @@ public class MDCHK_Capability_Components_NotInvolved extends AbstractValidationR
       if (eObj instanceof AbstractCapability) {
 
         AbstractCapability capability = (AbstractCapability) eObj;
-        List<Component> components = AbstractCapabilityExt.getInvolvedComponents(capability);
-        List<Component> componentsInCapabilityScenarios = AbstractCapabilityExt
-            .getComponentsFromAbstractCapabilityScenarios(capability);
-        List<Component> componentsInCapabilityFunctionalChains = AbstractCapabilityExt
-            .getComponentsFromAbstractCapabilityFunctionalChains(capability);
-        Set<Component> allReferencedComponents = new HashSet<Component>();
-
-        if (!componentsInCapabilityScenarios.isEmpty())
-          allReferencedComponents.addAll(componentsInCapabilityScenarios);
-
-        if (!componentsInCapabilityFunctionalChains.isEmpty())
-          allReferencedComponents.addAll(componentsInCapabilityFunctionalChains);
-
-        allReferencedComponents.removeAll(components);
-        for (Component element : allReferencedComponents) {
-          addCtxStatus(statuses, ctx, eObj, capability, element);
+        List<FunctionalChain> functionalChains = capability.getOwnedFunctionalChains();
+        Set<FunctionalChain> functionalChainsInvolved = new HashSet<FunctionalChain>(
+            AbstractCapabilityExt.getFunctionalChains(capability));
+        for (FunctionalChain functionalChain : functionalChains) {
+          if (!functionalChainsInvolved.contains(functionalChain)) {
+            addCtxStatus(statuses, ctx, eObj, capability, functionalChain);
+          }
         }
       }
     }
@@ -71,22 +61,15 @@ public class MDCHK_Capability_Components_NotInvolved extends AbstractValidationR
   }
 
   private void addCtxStatus(Collection<IStatus> statuses, IValidationContext ctx, EObject eObj,
-      AbstractCapability capability, Component element) {
-    Object[] msgArguments = new Object[] { capability.getName(), EObjectLabelProviderHelper.getMetaclassLabel(capability, false),
-        element.getName(), EObjectLabelProviderHelper.getMetaclassLabel(element, false),
-        getFunctionalChainType(capability) + " or scenarios" };
+      AbstractCapability capability, FunctionalChain functionalChain) {
+    Object[] msgArguments = new Object[] { capability.getName(),
+        EObjectLabelProviderHelper.getMetaclassLabel(capability, false), functionalChain.getName(),
+        EObjectLabelProviderHelper.getMetaclassLabel(functionalChain, false), capability.getName(),
+        EObjectLabelProviderHelper.getMetaclassLabel(capability, false) };
     Collection<EObject> resultLocus = new ArrayList<EObject>();
     resultLocus.add(capability);
-    resultLocus.add(element);
+    resultLocus.add(functionalChain);
     statuses.add(ConstraintStatus.createStatus(ctx, eObj, resultLocus, IStatus.INFO, ERROR_CODE,
-        Messages.DWF_CA_08_Validator_Message, msgArguments));
-  }
-  
-  private String getFunctionalChainType(AbstractCapability capability) {
-    String type = "functional chains";
-    if (capability instanceof OperationalCapability)
-      type = "operational processes";
-
-    return type;
+        Messages.DWF_CA_09_Validator_Message, msgArguments));
   }
 }

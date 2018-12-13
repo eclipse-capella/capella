@@ -19,15 +19,13 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.ui.IMarkerResolution;
 import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerViewHelper;
-import org.polarsys.capella.core.data.cs.Component;
-import org.polarsys.capella.core.data.fa.AbstractFunction;
+import org.polarsys.capella.core.data.fa.FunctionalChain;
 import org.polarsys.capella.core.data.interaction.AbstractCapability;
-import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.capella.core.data.interaction.ui.quickfix.resolver.AddInvolvedElementsResolver;
 import org.polarsys.capella.core.validation.ui.ide.quickfix.AbstractMarkerResolutionGenerator;
 import org.polarsys.capella.core.validation.ui.ide.quickfix.CapellaElementGoToResolver;
 
-public class DCOM_05_Resolutions extends AbstractMarkerResolutionGenerator {
+public class DWF_CA_09_Resolutions extends AbstractMarkerResolutionGenerator {
 
   @Override
   protected IMarkerResolution[] doGetResolutions(IMarker marker) {
@@ -36,33 +34,21 @@ public class DCOM_05_Resolutions extends AbstractMarkerResolutionGenerator {
     List<EObject> modelElements = MarkerViewHelper.getModelElementsFromMarker(marker);
 
     AbstractCapability capability = null;
-    AbstractFunction function = null;
-    Component component = null;
+    FunctionalChain functionalChain = null;
     for (EObject element : modelElements) {
-      if (element instanceof Scenario) {
-        resolutions
-            .add(new CapellaElementGoToResolver(EObjectLabelProviderHelper.getMetaclassLabel(element, false), element));
-      } else if (element instanceof AbstractCapability) {
+      if (element instanceof AbstractCapability) {
         capability = (AbstractCapability) element;
         resolutions
             .add(new CapellaElementGoToResolver(EObjectLabelProviderHelper.getMetaclassLabel(element, false), element));
-      } else if (element instanceof AbstractFunction) {
-        function = (AbstractFunction) element;
-        resolutions
-            .add(new CapellaElementGoToResolver(EObjectLabelProviderHelper.getMetaclassLabel(element, false), element));
-      } else if (element instanceof Component) {
-        component = (Component) element;
+      } else if (element instanceof FunctionalChain) {
+        functionalChain = (FunctionalChain) element;
         resolutions
             .add(new CapellaElementGoToResolver(EObjectLabelProviderHelper.getMetaclassLabel(element, false), element));
       }
     }
 
-    if (capability != null && component != null) {
-      Helper_Resolutions.addResolution(capability, component, resolutions, getRuleId());
-    }
-
-    if (capability != null && function != null) {
-      Helper_Resolutions.addResolution(capability, function, resolutions, getRuleId());
+    if (capability != null && functionalChain != null) {
+      Helper_Resolutions.addResolution(capability, functionalChain, resolutions, getRuleId());
     }
 
     return resolutions.toArray(new IMarkerResolution[0]);
@@ -70,6 +56,6 @@ public class DCOM_05_Resolutions extends AbstractMarkerResolutionGenerator {
 
   @Override
   protected String getRuleId() {
-    return "org.polarsys.capella.core.data.interaction.validation.DCOM_05";
+    return "org.polarsys.capella.core.data.interaction.validation.DWF_CA_09";
   }
 }

@@ -103,6 +103,10 @@
             markerType="org.polarsys.capella.core.validation.markers">
       </markerResolutionGenerator>
       <markerResolutionGenerator
+            class="org.polarsys.capella.core.data.interaction.ui.quickfix.generator.DWF_CA_09_Resolutions"
+            markerType="org.polarsys.capella.core.validation.markers">
+      </markerResolutionGenerator>
+      <markerResolutionGenerator
             class="org.polarsys.capella.core.data.interaction.ui.quickfix.generator.DCOM_05_Resolutions"
             markerType="org.polarsys.capella.core.validation.markers">
       </markerResolutionGenerator>

@@ -247,7 +247,7 @@ Whatever the level, UNSET Scenarios raise an error.
          <constraints categories="capella.category/design/completeness">
             <constraint class="org.polarsys.capella.core.data.interaction.validation.scenario.MDCHK_Scenario_InvolvementComponents_1" id="DCOM_05" isEnabledByDefault="true" lang="Java" mode="Batch" name="DCOM_05 - Scenario components capability involvement check" severity="ERROR" statusCode="1">
                <message>
-                  Message generated dinamicaly
+                  Message generated dinamically
                </message>
                <description>
                   This rule checks that a scenario component involves in a capability.
@@ -326,7 +326,7 @@ If Capability resides in SystemAnalysis layer. It should be relalized by a Capab
 	               severity="INFO"
 	               statusCode="1">
 	            <message>
-	               Message generated dinamicaly
+	               Message generated dinamically
 	            </message>
 	            <description>
 	               This rule checks that if the involved Actors in the current Capacity are present in at least one operational process or functional chain or scenario.
@@ -345,10 +345,29 @@ If Capability resides in SystemAnalysis layer. It should be relalized by a Capab
 	               severity="INFO"
 	               statusCode="1">
 	            <message>
-	               Message generated dinamicaly
+	               Message generated dinamically
 	            </message>
 	            <description>
 	               This rule checks that if the current Capability has actors that are not involved but are present in at least one operational process or functional chain or scenario related to the capability.
+	            </description>
+	            <target
+	                  class="AbstractCapability">
+	            </target>
+            </constraint>
+            <constraint
+	               class="org.polarsys.capella.core.data.interaction.validation.abstractCapability.MDCHK_Capability_FunctionalChains_Involvement"
+	               id="DWF_CA_09"
+	               isEnabledByDefault="true"
+	               lang="java"
+	               mode="Batch"
+	               name="DWF_CA_09 - Capability check if the current Capability has functional chains that are not involved but are related to the capability"
+	               severity="INFO"
+	               statusCode="1">
+	            <message>
+	               Message generated dinamically
+	            </message>
+	            <description>
+	               This rule checks that if the current capability has related operational processes or functionals chains that are not involved with the capability.
 	            </description>
 	            <target
 	                  class="AbstractCapability">

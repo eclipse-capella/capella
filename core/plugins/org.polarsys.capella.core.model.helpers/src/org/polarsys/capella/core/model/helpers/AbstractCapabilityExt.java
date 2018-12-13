@@ -16,19 +16,23 @@ import java.util.List;
 import java.util.Set;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
 import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.ctx.Capability;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
+import org.polarsys.capella.core.data.fa.FaFactory;
 import org.polarsys.capella.core.data.fa.FunctionalChain;
+import org.polarsys.capella.core.data.fa.FunctionalChainInvolvement;
 import org.polarsys.capella.core.data.helpers.ctx.services.CapabilityExt;
 import org.polarsys.capella.core.data.helpers.ctx.services.OperationalCapabilityExt;
-import org.polarsys.capella.core.data.information.AbstractInstance;
 import org.polarsys.capella.core.data.interaction.AbstractCapability;
+import org.polarsys.capella.core.data.interaction.AbstractFunctionAbstractCapabilityInvolvement;
 import org.polarsys.capella.core.data.interaction.FunctionalChainAbstractCapabilityInvolvement;
-import org.polarsys.capella.core.data.interaction.InstanceRole;
+import org.polarsys.capella.core.data.interaction.InteractionFactory;
 import org.polarsys.capella.core.data.interaction.InteractionPackage;
 import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.capella.core.data.la.CapabilityRealization;
@@ -36,7 +40,6 @@ import org.polarsys.capella.core.data.oa.Entity;
 import org.polarsys.capella.core.data.oa.OperationalCapability;
 import org.polarsys.capella.core.data.capellacommon.AbstractCapabilityPkg;
 import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
-import org.polarsys.capella.core.data.capellacore.InvolvedElement;
 
 /**
  * AbstractCapability helpers
@@ -169,7 +172,7 @@ public class AbstractCapabilityExt {
    * @param abstractCapability
    *          the capability which's functional chains are retrieved
    */
-  protected static List<FunctionalChain> getFunctionalChains(AbstractCapability abstractCapability) {
+  public static List<FunctionalChain> getFunctionalChains(AbstractCapability abstractCapability) {
 
     List<FunctionalChain> functionalChains = new ArrayList<FunctionalChain>();
     EList<FunctionalChainAbstractCapabilityInvolvement> chainsLink = abstractCapability
@@ -183,5 +186,32 @@ public class AbstractCapabilityExt {
     }
     return functionalChains;
   }
+  
+  /**
+   * This method adds involved function to a capability.
+   * 
+   * @param abstractCapability
+   *          the capability to which the function will be involved
+   *  @param function
+   *          the function which will be added in the involved functions list of the abstractCapability
+   */
+  public static void addInvolvedFunction(AbstractCapability capability, AbstractFunction function) {
+    AbstractFunctionAbstractCapabilityInvolvement link = InteractionFactory.eINSTANCE.createAbstractFunctionAbstractCapabilityInvolvement();
+    link.setInvolved(function);
+    capability.getOwnedAbstractFunctionAbstractCapabilityInvolvements().add(link);
+  }
 
+  /**
+   * This method adds involved functional chain to a capability.
+   * 
+   * @param abstractCapability
+   *          the capability to which the functionalChain will be involved
+   *  @param functionalChain
+   *          the functionalChain which will be added in the involved functional chains list of the abstractCapability
+   */
+  public static void addInvolvedFunctionalChain(AbstractCapability capability, FunctionalChain functionalChain) {
+    FunctionalChainAbstractCapabilityInvolvement link = InteractionFactory.eINSTANCE.createFunctionalChainAbstractCapabilityInvolvement();
+    link.setInvolved(functionalChain);
+    capability.getOwnedFunctionalChainAbstractCapabilityInvolvements().add(link);
+  }
 }

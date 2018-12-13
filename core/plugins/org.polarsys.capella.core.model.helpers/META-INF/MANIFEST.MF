@@ -13,10 +13,10 @@ Require-Bundle: org.apache.commons.lang,
  org.polarsys.capella.core.data.helpers;visibility:=reexport,
  org.polarsys.capella.core.model.preferences,
  org.polarsys.capella.common.libraries,
- com.google.guava;bundle-version="15.0.0"
+ com.google.guava;bundle-version="15.0.0",
+ org.eclipse.emf.ecore
 Export-Package: org.polarsys.capella.core.model.helpers,
  org.polarsys.capella.core.model.helpers.delete,
- org.polarsys.capella.core.model.helpers.formatterLabels,
  org.polarsys.capella.core.model.helpers.intermodelInconsistencyDetection,
  org.polarsys.capella.core.model.helpers.listeners,
  org.polarsys.capella.core.model.helpers.move,
