@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,7 +20,7 @@ import org.polarsys.capella.common.queries.queryContext.IQueryContext;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.information.MultiplicityElement;
 
-public class GetCurrent_Parameter_MaxValue extends AbstractQuery {
+public class GetCurrent_Parameter_MinValue extends AbstractQuery {
 
   @SuppressWarnings({ "rawtypes", "unchecked" })
   @Override
@@ -37,8 +37,8 @@ public class GetCurrent_Parameter_MaxValue extends AbstractQuery {
     List<CapellaElement> currentElements = new ArrayList<CapellaElement>();
     if (element instanceof MultiplicityElement) {
       MultiplicityElement mElement = (MultiplicityElement) element;
-      if (mElement.getOwnedMaxValue() != null) {
-        currentElements.add(mElement.getOwnedMaxValue());
+      if (mElement.getOwnedMinValue() != null) {
+        currentElements.add(mElement.getOwnedMinValue());
       }
     }
     return currentElements;
