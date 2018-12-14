@@ -12,6 +12,12 @@
 queryIdentifier = org.polarsys.capella.core.business.queries.capellacore.CapellaElement_Status-getAvailableElements
 inputId = ebd6a4dd-f1d3-4b5f-bb8b-c5ff6c5cfed2
 resultIds = {
+    ccc7dc43-21bd-42bf-b03c-1d04e52e92fb
+    157780be-2eee-4ab0-bd42-bbef1579baa7
+    88d2566a-2f69-4fa7-9f8a-35fa6ae4fbd8
+    047b7341-4610-49cd-ac74-c6db585fb84b
+    19e3e105-0e82-4ad1-9cfe-b37651259ef8
+    12f9c21c-a72e-4051-b611-619c940552eb
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.capellacore.CapellaElement_Status-getCurrentElements
