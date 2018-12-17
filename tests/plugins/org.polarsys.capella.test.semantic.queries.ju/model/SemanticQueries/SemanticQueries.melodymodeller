@@ -334,6 +334,11 @@
             <ownedEvents xsi:type="org.polarsys.capella.core.data.interaction:ExecutionEvent"
                 id="d53daa62-8f5b-4fbf-aa4b-5e82e617f83c"/>
           </ownedScenarios>
+          <ownedScenarios xsi:type="org.polarsys.capella.core.data.interaction:Scenario"
+              id="62ad1c45-1069-4848-8feb-f5d169b273ed" name="[IS] Capability 1" kind="INTERFACE">
+            <ownedInstanceRoles xsi:type="org.polarsys.capella.core.data.interaction:InstanceRole"
+                id="f8bd215b-9048-4fe6-beef-bdc26588765d" name="System" representedInstance="#6c73b240-71ee-40ee-a214-2bb963c8ab20"/>
+          </ownedScenarios>
           <ownedAbstractFunctionAbstractCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.interaction:AbstractFunctionAbstractCapabilityInvolvement"
               id="1ad7f2cf-5d39-44b0-994d-bb7df41298ba" involved="#41fcceae-87f0-45dc-a644-6d8ac3e4563b"/>
           <ownedAbstractFunctionAbstractCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.interaction:AbstractFunctionAbstractCapabilityInvolvement"
@@ -607,6 +612,9 @@
       </ownedFunctionPkg>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.la:CapabilityRealizationPkg"
           id="7f696210-08b4-492f-b9f4-26912aa5b5fd" name="Capabilities">
+        <ownedTraces xsi:type="org.polarsys.capella.core.data.interaction:RefinementLink"
+            id="2922b720-9b9c-4103-b404-43308630e9e3" targetElement="#055865bd-7993-4d80-adc5-819088a2b53b"
+            sourceElement="#7f696210-08b4-492f-b9f4-26912aa5b5fd"/>
         <ownedCapabilityRealizations xsi:type="org.polarsys.capella.core.data.la:CapabilityRealization"
             id="aed377e4-51e3-46ff-9efd-21172936af86" name="Capability 1">
           <ownedFunctionalChains xsi:type="org.polarsys.capella.core.data.fa:FunctionalChain"
@@ -624,6 +632,18 @@
               id="051e7da6-0c31-41a7-ae0e-d21eae951cd7" involved="#37af6f3b-2a72-494f-928d-8ce375e1e957"/>
           <ownedSystemComponentCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:SystemComponentCapabilityRealizationInvolvement"
               id="ff8409d2-b1b6-426b-b4eb-b8d94657f457" involved="#e3c12d76-4afd-442e-96c5-d8b8be8cb0d9"/>
+        </ownedCapabilityRealizations>
+        <ownedCapabilityRealizations xsi:type="org.polarsys.capella.core.data.la:CapabilityRealization"
+            id="f5906fbb-2d85-4b38-a99e-241490527ffa" name="Capability 1">
+          <ownedTraces xsi:type="org.polarsys.capella.core.data.interaction:RefinementLink"
+              id="2b288415-89ef-4053-8c64-b9eecc70bed4" targetElement="#c25c6355-166e-4d53-ba1d-627b047d7f9b"
+              sourceElement="#f5906fbb-2d85-4b38-a99e-241490527ffa"/>
+          <ownedScenarios xsi:type="org.polarsys.capella.core.data.interaction:Scenario"
+              id="b6914398-45c3-4577-bdb9-150383fce2b7" name="[IS] Capability 1" kind="INTERFACE">
+            <ownedTraces xsi:type="org.polarsys.capella.core.data.interaction:RefinementLink"
+                id="36932cc3-b3d0-4823-9320-45c5f1c8855a" targetElement="#62ad1c45-1069-4848-8feb-f5d169b273ed"
+                sourceElement="#b6914398-45c3-4577-bdb9-150383fce2b7"/>
+          </ownedScenarios>
         </ownedCapabilityRealizations>
       </ownedAbstractCapabilityPkg>
       <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"

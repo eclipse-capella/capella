@@ -16,19 +16,19 @@ import java.util.List;
 
 import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 import org.polarsys.capella.common.helpers.query.IQuery;
-import org.polarsys.capella.core.data.capellacommon.TransfoLink;
+import org.polarsys.capella.core.data.capellacore.Trace;
 
-public class CapellaRelationshipsTransfoLinkTarget implements IQuery {
+public class CapellaRelationshipsTraceSource implements IQuery {
 
   /**
    * @see org.polarsys.capella.common.helpers.query.IQuery#compute(java.lang.Object)
    */
   public List<Object> compute(Object object) {
     List<Object> result = new ArrayList<Object>();
-    if (object instanceof TransfoLink) {
+    if (object instanceof Trace) {
 
-      TransfoLink transfoLink = (TransfoLink) object;
-      TraceableElement element = transfoLink.getTargetElement();
+      Trace trace = (Trace) object;
+      TraceableElement element = trace.getSourceElement();
       if (null != element) {
         result.add(element);
       }
