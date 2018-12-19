@@ -442,34 +442,34 @@
          </categoryQuery>
       </category>
       <category
-            id="org.polarsys.capella.core.semantic.queries.CapellaRelationshipsTransfoLinkTarget"
+            id="org.polarsys.capella.core.semantic.queries.CapellaRelationshipsTraceTarget"
             isTopLevel="true"
             name="Target">
          <availableForType
-               class="org.polarsys.capella.core.data.capellacommon.TransfoLink">
+               class="org.polarsys.capella.core.data.capellacore.Trace">
          </availableForType>
          <targetBrowserId
                id="ReferencedElementBrowser">
          </targetBrowserId>
          <categoryQuery>
             <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.CapellaRelationshipsTransfoLinkTarget">
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.CapellaRelationshipsTraceTarget">
             </basicQuery>
          </categoryQuery>
       </category>   
       <category
-            id="org.polarsys.capella.core.semantic.queries.CapellaRelationshipsTransfoLinkSource"
+            id="org.polarsys.capella.core.semantic.queries.CapellaRelationshipsTraceSource"
             isTopLevel="true"
             name="Source">
          <availableForType
-               class="org.polarsys.capella.core.data.capellacommon.TransfoLink">
+               class="org.polarsys.capella.core.data.capellacore.Trace">
          </availableForType>
          <targetBrowserId
                id="ReferencingElementBrowser">
          </targetBrowserId>
          <categoryQuery>
             <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.CapellaRelationshipsTransfoLinkSource">
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.CapellaRelationshipsTraceSource">
             </basicQuery>
          </categoryQuery>
       </category>
@@ -5850,7 +5850,7 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.AbstractCapabilityInvolvedFunctionalChainsSA"
             isTopLevel="true"
-            name="Involved FunctionalChain">
+            name="Involved Functional Chains">
          <availableForType
                class="org.polarsys.capella.core.data.ctx.Capability">
          </availableForType>

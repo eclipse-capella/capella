@@ -227,7 +227,7 @@ public class LightMarkerRegistry implements IMarkerSource {
       boolean purgeable = false;
 
       // Delete the EMF object only if the internal object it's referencing has been deleted
-      if (diagnostic.getSource().equals("org.eclipse.emf.ecore")) {
+      if (diagnostic.getSource() != null && diagnostic.getSource().equals("org.eclipse.emf.ecore")) {
         for (Object o : diagnostic.getData()) {
           if (o instanceof EObject && ((EObject) o).eResource() == null && !((EObject) o).eIsProxy()) {
             purgeable = true;

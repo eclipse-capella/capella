@@ -49,6 +49,8 @@ import org.polarsys.capella.test.semantic.queries.ju.testcases.CapellaRelationsh
 import org.polarsys.capella.test.semantic.queries.ju.testcases.CapellaRelationshipsInterfaceUseTarget;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.CapellaRelationshipsInvolvementSource;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.CapellaRelationshipsInvolvementTarget;
+import org.polarsys.capella.test.semantic.queries.ju.testcases.CapellaRelationshipsTraceSource;
+import org.polarsys.capella.test.semantic.queries.ju.testcases.CapellaRelationshipsTraceTarget;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.ComponentAllocatingPhysicalPorts;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.EntryExitPoint_ParentRegionTest;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.ExchangeItem_realizedEI;
@@ -130,6 +132,8 @@ public class SemanticQueriesTestSuite extends BasicTestSuite {
     tests.add(new CapellaRelationshipsInterfaceImplementationTarget());
     tests.add(new CapellaRelationshipsInterfaceUseSource());
     tests.add(new CapellaRelationshipsInterfaceUseTarget());
+    tests.add(new CapellaRelationshipsTraceSource());
+    tests.add(new CapellaRelationshipsTraceTarget());
     tests.add(new SequenceMessageFunctionSource());
     tests.add(new SequenceMessageFunctionTarget());
     tests.add(new SequenceMessagePartSource());
