@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,19 +25,22 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-
 import org.polarsys.capella.common.helpers.EcoreUtil2;
-import org.polarsys.capella.core.data.cs.InterfacePkg;
-import org.polarsys.capella.core.data.information.DataPkg;
 import org.polarsys.capella.core.data.capellacore.AbstractDependenciesPkg;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
+import org.polarsys.capella.core.data.capellacore.ModellingArchitecture;
 import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
-import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
+import org.polarsys.capella.core.data.cs.InterfacePkg;
+import org.polarsys.capella.core.data.information.DataPkg;
 
 /**
  */
 public class AbstractDependenciesPkgExt {
 
+  private AbstractDependenciesPkgExt() {
+    //  To hide the implicit public one.
+  }
+  
   /**
    * @param pkg
    * @return all packages that pkg directly depends on
@@ -55,7 +58,7 @@ public class AbstractDependenciesPkgExt {
 	*/
 	public static Collection<AbstractDependenciesPkg> getDependencies2(
 			AbstractDependenciesPkg pkg) {
-		Collection<AbstractDependenciesPkg> dependencies = new HashSet<AbstractDependenciesPkg>();
+		Collection<AbstractDependenciesPkg> dependencies = new HashSet<>();
 		if (pkg instanceof DataPkg) {
 			dependencies.addAll(DataPkgExt
 				.getDataPkgDependenciesHierarchy((DataPkg) pkg));
@@ -74,7 +77,7 @@ public class AbstractDependenciesPkgExt {
    * @return The dependencies of pkg, i.e. all packages that pkg directly depends on
    */
   public static Collection<AbstractDependenciesPkg> getDependencies(AbstractDependenciesPkg pkg) {
-    Collection<AbstractDependenciesPkg> dependencies = new HashSet<AbstractDependenciesPkg>();
+    Collection<AbstractDependenciesPkg> dependencies = new HashSet<>();
     if (pkg instanceof DataPkg) {
       dependencies.addAll(DataPkgExt.getDataPkgDependencies((DataPkg) pkg));
     }
@@ -92,8 +95,8 @@ public class AbstractDependenciesPkgExt {
    */
   public static Collection<AbstractDependenciesPkg> getInverseDependencies(AbstractDependenciesPkg pkg) {
 
-    List<AbstractDependenciesPkg> result = new ArrayList<AbstractDependenciesPkg>();
-    List<AbstractDependenciesPkg> all = new ArrayList<AbstractDependenciesPkg>();
+    List<AbstractDependenciesPkg> result = new ArrayList<>();
+    List<AbstractDependenciesPkg> all = new ArrayList<>();
 
     // find all AbstractDependenciesPkg in the resource set.
     Resource res = pkg.eResource();
@@ -140,15 +143,15 @@ public class AbstractDependenciesPkgExt {
    * @param targetPackage
    * @return test if we add a dependency between sourcePackage and targetPackage it does not create any cycle
    */
-  public static boolean isADependencyAvailable(AbstractDependenciesPkg sourcePackage, AbstractDependenciesPkg targetPackage) {
+  public static boolean isADependencyAvailable(AbstractDependenciesPkg sourcePackage,
+      AbstractDependenciesPkg targetPackage) {
     if (EcoreUtil.equals(sourcePackage, targetPackage) || EcoreUtil.isAncestor(sourcePackage, targetPackage)) {
       return true;
     }
     if (EcoreUtil.isAncestor(targetPackage, sourcePackage)) {
       return false;
     }
-    Map<AbstractDependenciesPkg, Collection<AbstractDependenciesPkg>> graphOfDependencies =
-        new HashMap<AbstractDependenciesPkg, Collection<AbstractDependenciesPkg>>();
+    Map<AbstractDependenciesPkg, Collection<AbstractDependenciesPkg>> graphOfDependencies = new HashMap<>();
     // construction of the dependency graph from the linked element
     buildGraphOfDependencies(targetPackage, graphOfDependencies);
     // return false if the source element or its parents are in the dependency graph.
@@ -165,10 +168,11 @@ public class AbstractDependenciesPkgExt {
    * @return all InterfacePkgs and DataPkgs in the systemEngineering
    */
   public static Collection<AbstractDependenciesPkg> getAllPackages(SystemEngineering root) {
-    Collection<AbstractDependenciesPkg> returnedList = new ArrayList<AbstractDependenciesPkg>();
-    PhysicalArchitecture pa = SystemEngineeringExt.getOwnedPhysicalArchitecture(root);
-    returnedList.addAll(DataPkgExt.getAllDataPkgs(pa));
-    returnedList.addAll(InterfacePkgExt.getAllInterfacePkgs(pa));
+    Set<AbstractDependenciesPkg> returnedList = new HashSet<>();
+    for(ModellingArchitecture architecture : root.getOwnedArchitectures()) {
+      returnedList.addAll(DataPkgExt.getAllDataPkgsInCurrentBlockArchitectures(architecture));
+      returnedList.addAll(InterfacePkgExt.getAllInterfacePkgsInCurrentBlockArchitectures(architecture));      
+    }
     return returnedList;
   }
 
@@ -178,17 +182,18 @@ public class AbstractDependenciesPkgExt {
    * @param result
    * @param eobject
    */
-  static void checkDependenciesAndAddToResult(Map<AbstractDependenciesPkg, Collection<EObject>> result, EObject eobject) {
+  static void checkDependenciesAndAddToResult(Map<AbstractDependenciesPkg, Collection<EObject>> result,
+      EObject eobject) {
     if (null != eobject) {
-      AbstractDependenciesPkg adp = (AbstractDependenciesPkg) EcoreUtil2.getFirstContainer(eobject, CapellacorePackage.Literals.ABSTRACT_DEPENDENCIES_PKG);
+      AbstractDependenciesPkg adp = (AbstractDependenciesPkg) EcoreUtil2.getFirstContainer(eobject,
+          CapellacorePackage.Literals.ABSTRACT_DEPENDENCIES_PKG);
       if (adp != null) {
         if (!result.containsKey(adp)) {
-          Set<EObject> set = new HashSet<EObject>();
+          Set<EObject> set = new HashSet<>();
           result.put(adp, set);
         }
         result.get(adp).add(eobject);
       }
     }
   }
-
 }

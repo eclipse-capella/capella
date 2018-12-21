@@ -238,6 +238,7 @@
 |-
 | colspan="2" |This rule detects inter-model inconsistencies (dependency violations and inter-model cycles). 
 |}
+<br>
 {| class="VALIDATION-RULE"
 ! |[[Image:../../Images/warning.gif|WARNING]]
 |  I_35 - Related functional exchanges must have identical names
@@ -263,5 +264,5 @@
 ! |[[Image:../../Images/error.gif|ERROR]]
 |  I_39 - Validate inter-model references
 |-
-| colspan="2" |This rule live validation rule detects illegal inter-model references: An element in model A can only reference an element in model B if A has declared a "Library Reference" to B. 
+| colspan="2" |This live validation rule detects illegal inter-model references: An element in model A can only reference an element in model B if A has declared a "Library Reference" to B. 
 |}

@@ -1867,7 +1867,7 @@ public class InformationServices {
     DDiagram diagram = CapellaServices.getService().getDiagramContainer(elementView);
     DDiagramContents content = new DDiagramContents(diagram);
 
-    Map<EObject, AbstractDNode> existingTypes = new HashMap<EObject, AbstractDNode>();
+    Map<EObject, AbstractDNode> existingTypes = new HashMap<>();
     for (EObject currentContainer : DiagramServices.getDiagramServices().getAllContainersAndNodeLists(elementView)) {
       AbstractDNode aContainer = (AbstractDNode) currentContainer;
       if ((aContainer.getTarget() instanceof Class)
@@ -1900,7 +1900,7 @@ public class InformationServices {
     ContainerMapping mapping = getMappingCDBType(semantic, context.getDDiagram());
     DragAndDropTarget container = context.getBestContainer(semantic);
     Collection<DDiagramElement> views = context.getDiagramElements(semantic, mapping, (DSemanticDecorator) container);
-    if (views.size() > 0) {
+    if (!views.isEmpty()) {
       return (AbstractDNode) views.iterator().next();
     }
     AbstractDNode result = DiagramServices.getDiagramServices().createAbstractDNodeContainer(mapping, semantic,
@@ -1919,7 +1919,7 @@ public class InformationServices {
     ContainerMapping mapping = getMappingCDBInterface(semantic, context.getDDiagram());
     DragAndDropTarget container = context.getBestContainer(semantic);
     Collection<DDiagramElement> views = context.getDiagramElements(semantic, mapping, (DSemanticDecorator) container);
-    if (views.size() > 0) {
+    if (!views.isEmpty()) {
       return (AbstractDNode) views.iterator().next();
     }
     AbstractDNode result = DiagramServices.getDiagramServices().createAbstractDNodeContainer(mapping, semantic,
@@ -2436,7 +2436,7 @@ public class InformationServices {
         }
         // role name (consider only if filter is disable)
         if (!hideRoleNameEnable
-            && (asso.getNavigableMembers().contains(pro) || !(asso.getNavigableMembers().size() == 1))) {
+            && (asso.getNavigableMembers().contains(pro) || asso.getNavigableMembers().size() != 1)) {
           beginLabel.append(pro.getName());
         }
         // Show Modifiers suffix
@@ -2510,7 +2510,7 @@ public class InformationServices {
         }
         // role name (consider only if filter is disable)
         if (!hideRoleNameEnable
-            && (asso.getNavigableMembers().contains(pro) || !(asso.getNavigableMembers().size() == 1))) {
+            && (asso.getNavigableMembers().contains(pro) || asso.getNavigableMembers().size() != 1)) {
           endLabel.append(pro.getName());
         }
         // Show Modifiers
@@ -3283,7 +3283,7 @@ public class InformationServices {
    */
   public Collection<AbstractDependenciesPkg> getDependentPackages2(final AbstractDependenciesPkg pkg,
       final DDiagram diagram) {
-    Collection<AbstractDependenciesPkg> depPkgs = new HashSet<AbstractDependenciesPkg>();
+    Collection<AbstractDependenciesPkg> depPkgs = new HashSet<>();
     for (AbstractDependenciesPkg depPkg : AbstractDependenciesPkgExt.getDependencies2(pkg)) {
       if (shouldDisplayed(pkg, depPkg, diagram)) {
         depPkgs.add(depPkg);

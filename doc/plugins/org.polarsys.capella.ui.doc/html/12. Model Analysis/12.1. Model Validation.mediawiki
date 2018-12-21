@@ -70,15 +70,24 @@ Activating / deactivating a rule or a rule category is possible from the Prefere
 
  
 [[Image:Images/12.1.%20Model%20Validation_html_mf186e68.png|800x300px]]
-
  
 <br>
 <br>
-
  
 For example, it might not be wise to have the Transition Category active or to launch the validation from the root project element if the current work objective is to only focus on Logical Architecture without taking into consideration the System Analysis or the Physical Architecture.
 
- 
+== Live Validation Rules == 
+
+Some rules are also running  in live mode, that means they run while you are modifying the model. All live rules are prefixed with the [Live] prefix in the Preferences window as shown below (You can also activate and deactivate live rules):
+
+<br>
+<br>
+
+[[Image:Images/12.1.%20Model%20Validation_html_mf186e69.png|800x500px]]
+
+<br>
+<br>
+
 == Validation Results ==
  
 Results are displayed in the Information View.

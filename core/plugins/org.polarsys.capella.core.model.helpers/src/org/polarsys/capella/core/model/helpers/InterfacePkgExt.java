@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.polarsys.capella.common.data.modellingcore.AbstractExchangeItem;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
+import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.mdsofa.common.misc.Couple;
 import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
 import org.polarsys.capella.core.data.capellacore.AbstractDependenciesPkg;
@@ -32,6 +33,7 @@ import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.ComponentArchitecture;
+import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.Interface;
 import org.polarsys.capella.core.data.cs.InterfacePkg;
 import org.polarsys.capella.core.data.helpers.information.services.ExchangeItemExt;
@@ -101,7 +103,7 @@ public class InterfacePkgExt {
     List<Interface> list = new ArrayList<Interface>(1);
     Object container = component.eContainer();
     if (isLayerVisibilityRequired) {
-      if (container instanceof System) {
+      if (container instanceof org.polarsys.capella.core.data.ctx.System) {
         return list;// return if System has come in the recursion level
       } else if (container instanceof SystemEngineering) {
         return list; // return if SystemEngineering has come in the recursion
@@ -139,7 +141,7 @@ public class InterfacePkgExt {
     List<Interface> list = new ArrayList<Interface>(1);
     Object container = compArch.eContainer();
     if (isLayerVisibilityRequired) {
-      if (container instanceof System) {
+      if (container instanceof org.polarsys.capella.core.data.ctx.System) {
         return list;// return if System has come in the recursion level
       } else if (container instanceof SystemEngineering) {
         return list; // return if SystemEngineering has come in the recursion
@@ -161,7 +163,7 @@ public class InterfacePkgExt {
     List<Interface> list = new ArrayList<Interface>(1);
     Object container = compArch.eContainer();
     if (isLayerVisibilityRequired) {
-      if (container instanceof System) {
+      if (container instanceof org.polarsys.capella.core.data.ctx.System) {
         return list;// return if System has come in the recursion level
       } else if (container instanceof SystemEngineering) {
         return list; // return if SystemEngineering has come in the recursion
@@ -542,5 +544,17 @@ public class InterfacePkgExt {
 		}
 		return dependencies;
 	}
-
+	
+	 /**
+   * @param context
+   * @return all InterfacePkgs which are in current block architecture
+   */
+  public static Collection<InterfacePkg> getAllInterfacePkgsInCurrentBlockArchitectures(EObject context) {
+    Set<InterfacePkg> result = new HashSet<>();
+    BlockArchitecture aArchitecture = BlockArchitectureExt.getRootBlockArchitecture(context);
+    for(EObject intefacePkg :  EObjectExt.getAll(aArchitecture, CsPackage.Literals.INTERFACE_PKG)){
+      result.add((InterfacePkg)intefacePkg);
+    }
+    return result;
+  }
 }

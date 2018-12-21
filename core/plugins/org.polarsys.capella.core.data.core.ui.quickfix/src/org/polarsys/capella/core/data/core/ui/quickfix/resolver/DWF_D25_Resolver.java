@@ -12,20 +12,25 @@ package org.polarsys.capella.core.data.core.ui.quickfix.resolver;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
 import org.eclipse.core.resources.IMarker;
+import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.validation.model.IConstraintStatus;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.TreeSelection;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
+import org.polarsys.capella.common.helpers.validation.ConstraintStatusDiagnostic;
 import org.polarsys.capella.common.mdsofa.common.misc.Couple;
+import org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerViewHelper;
 import org.polarsys.capella.common.ui.toolkit.viewers.AbstractContextMenuFiller;
 import org.polarsys.capella.common.utils.graph.BasicDirectedGraph;
 import org.polarsys.capella.common.utils.graph.IDirectedGraph;
@@ -34,7 +39,7 @@ import org.polarsys.capella.core.data.capellacore.AbstractDependenciesPkg;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.capellacore.NamedElement;
 import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
-import org.polarsys.capella.core.data.capellamodeller.validation.MDCHK_SystemEngineering_Cycle_Dependencies;
+import org.polarsys.capella.core.data.capellamodeller.validation.PkgDependenciesCycleValidationRule;
 import org.polarsys.capella.core.data.core.ui.quickfix.messages.CoreQuickFixMessages;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.InterfacePkg;
@@ -57,19 +62,21 @@ public class DWF_D25_Resolver extends AbstractCapellaMarkerResolution {
    */
   public void run(IMarker marker) {
 
-    List<EObject> tgts = getModelElements(marker); // The root system Engineering as first element
+    // Get the cycle from the marker
+    List<AbstractDependenciesPkg> cycle = getMarkerCycle(marker);
 
-    SystemEngineering se = (SystemEngineering) tgts.get(0);
-    Couple<IDirectedGraph<EObject>, Collection<List<EObject>>> result = computeCycles(se);
-
-    if (result == null) {
+    // Return if empty
+    if (cycle.isEmpty()) {
       return;
     }
+
+    // Create the cycle graph
+    Couple<IDirectedGraph<EObject>, Collection<List<EObject>>> result = computeCycleGraph(buildMapOfCycles(cycle));
 
     final IDirectedGraph<EObject> graph = result.getKey();
     final Collection<List<EObject>> cycles = result.getValue();
 
-    // show the dialog
+    // Show the dialog
     if (cycles != null && cycles.iterator().hasNext()) {
       EObjectNavigatorDialog dialog = new EObjectNavigatorDialog(cycles.iterator().next(),
           CoreQuickFixMessages.cycle_details_dialog_title, CoreQuickFixMessages.cycle_details_dialog_message,
@@ -87,7 +94,7 @@ public class DWF_D25_Resolver extends AbstractCapellaMarkerResolution {
           // Show elements referenced by selection...
           //
           if (!(selectedEObject instanceof AbstractDependenciesPkg)) {
-            Collection<EObject> successors = new ArrayList<EObject>();
+            Collection<EObject> successors = new ArrayList<>();
             for (Iterator<EObject> it = graph.getSucessors(selectedEObject); it.hasNext();) {
               EObject referenced = it.next();
               if (referenced instanceof AbstractDependenciesPkg) {
@@ -97,7 +104,8 @@ public class DWF_D25_Resolver extends AbstractCapellaMarkerResolution {
             }
 
             for (EObject referenced : successors) {
-              IAction action = LocateInCapellaExplorerAction.createLocateTowards(referenced, Messages.LocateInCapellaExplorerAction_GoToReferencedElement, false);
+              IAction action = LocateInCapellaExplorerAction.createLocateTowards(referenced,
+                  Messages.LocateInCapellaExplorerAction_GoToReferencedElement, false);
               if (action.isEnabled()) {
                 contextMenuManager.add(action);
               }
@@ -108,7 +116,6 @@ public class DWF_D25_Resolver extends AbstractCapellaMarkerResolution {
 
       dialog.open();
     }
-    return;
   }
 
   @Override
@@ -166,22 +173,28 @@ public class DWF_D25_Resolver extends AbstractCapellaMarkerResolution {
     System.out.println(builder);
   }
 
-  public Couple<IDirectedGraph<EObject>, Collection<List<EObject>>> computeCycles(SystemEngineering se) {
-    Map<AbstractDependenciesPkg, Collection<AbstractDependenciesPkg>> pkgDeps = MDCHK_SystemEngineering_Cycle_Dependencies
-        .getCycleOfDependencies(se);
-    if (pkgDeps == null) {
-      return null;
+  private Map<AbstractDependenciesPkg, Collection<AbstractDependenciesPkg>> buildMapOfCycles(
+      List<AbstractDependenciesPkg> cycle) {
+    Map<AbstractDependenciesPkg, Collection<AbstractDependenciesPkg>> result = new HashMap<>();
+    for (AbstractDependenciesPkg pkg : cycle) {
+      List<AbstractDependenciesPkg> cycleCopy = new ArrayList<>(cycle);
+      cycleCopy.remove(pkg);
+      result.put(pkg, cycleCopy);
     }
+    return result;
+  }
 
-    // { package P => dependencyInductions }
+  public Couple<IDirectedGraph<EObject>, Collection<List<EObject>>> computeCycleGraph(Map<AbstractDependenciesPkg, Collection<AbstractDependenciesPkg>> mapOfCycles) {
+
+    // package P => dependencyInductions
     // dependencyInduction: someEObject A => list of dependent objects inside P
     Map<AbstractDependenciesPkg, Collection<Couple<EObject, Collection<EObject>>>> dependencyDescriptors = null;
 
     // create an extended dependency graph to compute cycles
-    final BasicDirectedGraph<EObject> graph = new BasicDirectedGraph<EObject>();
+    final BasicDirectedGraph<EObject> graph = new BasicDirectedGraph<>();
 
     EClass eclass = null;
-    for (AbstractDependenciesPkg current : pkgDeps.keySet()) {
+    for (AbstractDependenciesPkg current : mapOfCycles.keySet()) {
 
       // each package implicitly depends per definition on all its subpackages
       addSubpackageDependencies(graph, current);
@@ -193,16 +206,14 @@ public class DWF_D25_Resolver extends AbstractCapellaMarkerResolution {
         dependencyDescriptors = InterfacePkgExt.getInterfacePkgDependenciesHierarchy2((InterfacePkg) current);
       }
       if (dependencyDescriptors != null) {
-        for (AbstractDependenciesPkg pkgDependency : dependencyDescriptors.keySet()) {
-          Collection<Couple<EObject, Collection<EObject>>> objectDependencies = dependencyDescriptors
-              .get(pkgDependency);
+        for (Map.Entry<AbstractDependenciesPkg,Collection<Couple<EObject,Collection<EObject>>>> entry : dependencyDescriptors.entrySet()) {
           // for every dependency A->B add the following edges to the graph:
           // - A->B itself
           // - x->A for _each_ AbstractDependencyPkg x in the containment hierarchy of A
           // to express an implicit dependency from A's package to A
           // - B->y for _each_ AbstractDependencyPkg in B's containment hierarchy,
           // to express an implicit dependency from B to its package hierarchy
-          for (Couple<EObject, Collection<EObject>> objectDependency : objectDependencies) {
+          for (Couple<EObject, Collection<EObject>> objectDependency : entry.getValue()) {
             EObject dependent = objectDependency.getKey();
             EObject container = dependent.eContainer();
             while (container != null) {
@@ -214,7 +225,7 @@ public class DWF_D25_Resolver extends AbstractCapellaMarkerResolution {
               }
             }
             for (EObject dependee : objectDependency.getValue()) {
-              AbstractDependenciesPkg pkg = pkgDependency;
+              AbstractDependenciesPkg pkg = entry.getKey();
               while (pkg != null) {
                 graph.addEdge(dependee, pkg); // B->y
                 if (pkg.eContainer() instanceof AbstractDependenciesPkg) {
@@ -295,4 +306,30 @@ public class DWF_D25_Resolver extends AbstractCapellaMarkerResolution {
     return new Couple<IDirectedGraph<EObject>, Collection<List<EObject>>>(graph, scc);
   }
 
+  private List<AbstractDependenciesPkg> getMarkerCycle(IMarker marker) {
+    List<AbstractDependenciesPkg> result = new ArrayList<>();
+    Diagnostic diagnostic = MarkerViewHelper.getDiagnostic(marker);
+    if (diagnostic instanceof ConstraintStatusDiagnostic) {
+      IConstraintStatus constraintStatus = ((ConstraintStatusDiagnostic) diagnostic).getConstraintStatus();
+      if (constraintStatus != null) {
+        for (EObject obj : constraintStatus.getResultLocus()) {
+          if (obj instanceof AbstractDependenciesPkg) {
+            result.add((AbstractDependenciesPkg) obj);
+          }
+        }
+      }
+    }
+    return result;
+  }
+  
+  public Couple<IDirectedGraph<EObject>, Collection<List<EObject>>> computeCyclesGraph(SystemEngineering context){
+    PkgDependenciesCycleValidationRule rule = new PkgDependenciesCycleValidationRule();
+    List<List<AbstractDependenciesPkg>> interPackageCycles = rule.getInterPackageCycles(context);
+    Map<AbstractDependenciesPkg, Collection<AbstractDependenciesPkg>> mapOfCycles = new HashMap<>();
+    for(List<AbstractDependenciesPkg> cycle : interPackageCycles) {
+      Map<AbstractDependenciesPkg, Collection<AbstractDependenciesPkg>> builtMapOfCycles = buildMapOfCycles(cycle);
+      mapOfCycles.putAll(builtMapOfCycles);
+    }
+    return computeCycleGraph(mapOfCycles);
+  }
 }

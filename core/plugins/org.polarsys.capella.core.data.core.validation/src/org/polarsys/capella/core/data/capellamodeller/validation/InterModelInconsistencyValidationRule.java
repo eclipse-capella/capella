@@ -22,7 +22,8 @@ import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 /** 
  * @author Erwan Brottier
  */
-public class SystemEngineering_InterModelInconsistencyDetection extends AbstractValidationRule {
+// I_34 (Batch)
+public class InterModelInconsistencyValidationRule extends AbstractValidationRule {
 	
 	/**
 	 * @see org.eclipse.emf.validation.AbstractModelConstraint#validate(org.eclipse.emf.validation.IValidationContext)
@@ -30,9 +31,9 @@ public class SystemEngineering_InterModelInconsistencyDetection extends Abstract
 	@Override
 	public IStatus validate(IValidationContext ctx) {
 		List<InterModelInconsistency> inconsistencies = new InterModelInconsistencyDetector().getInterModelInconsistencies((SystemEngineering) ctx.getTarget());		 
-		if (inconsistencies.size() > 0) {			
-			return ctx.createFailureStatus(new Object[] {inconsistencies.size()});
-		} else
-			return ctx.createSuccessStatus();
+		if (inconsistencies.isEmpty()) {			
+		    return ctx.createSuccessStatus();
+		}
+		return ctx.createFailureStatus(inconsistencies.toArray());
 	}
 }

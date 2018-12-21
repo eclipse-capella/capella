@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -32,9 +32,9 @@ import org.polarsys.capella.core.data.information.Property;
 public class AssociationExt {
 
   public static Collection<Classifier> getLinkedClassifiers(Association association) {
-    Collection<Classifier> returnedClassifiers = new HashSet<Classifier>();
+    Collection<Classifier> returnedClassifiers = new HashSet<>();
     for (Property aProperty : getProperties(association)) {
-      if ((aProperty.getType() != null) && (aProperty.getType() instanceof Classifier)) {
+      if (aProperty.getType() instanceof Classifier) {
         returnedClassifiers.add((Classifier) aProperty.getType());
       }
     }
@@ -42,9 +42,9 @@ public class AssociationExt {
   }
 
   public static Set<Classifier> getOwnedMembersClassifiers(Association association) {
-    Set<Classifier> returnedClassifiers = new HashSet<Classifier>();
+    Set<Classifier> returnedClassifiers = new HashSet<>();
     for (Property aProperty : getOwnedMembersProperties(association)) {
-      if ((aProperty.getType() != null) && (aProperty.getType() instanceof Classifier)) {
+      if (aProperty.getType() instanceof Classifier) {
         returnedClassifiers.add((Classifier) aProperty.getType());
       }
     }
@@ -52,9 +52,9 @@ public class AssociationExt {
   }
 
   public static Set<Classifier> getNavigableMembersClassifiers(Association association) {
-    Set<Classifier> returnedClassifiers = new HashSet<Classifier>();
+    Set<Classifier> returnedClassifiers = new HashSet<>();
     for (Property aProperty : getNavigableMembersProperties(association)) {
-      if ((aProperty.getType() != null) && (aProperty.getType() instanceof Classifier)) {
+      if (aProperty.getType() instanceof Classifier) {
         returnedClassifiers.add((Classifier) aProperty.getType());
       }
     }
@@ -75,7 +75,7 @@ public class AssociationExt {
   }
 
   public static Collection<Property> getProperties(Association association) {
-    Collection<Property> returnedProperties = new HashSet<Property>();
+    Collection<Property> returnedProperties = new HashSet<>();
 
     returnedProperties.addAll(association.getNavigableMembers());
     returnedProperties.addAll(association.getOwnedMembers());
@@ -84,7 +84,7 @@ public class AssociationExt {
   }
 
   public static Collection<Property> getOwnedMembersProperties(Association association) {
-    Collection<Property> returnedProperties = new HashSet<Property>();
+    Collection<Property> returnedProperties = new HashSet<>();
 
     returnedProperties.addAll(association.getOwnedMembers());
 
@@ -92,7 +92,7 @@ public class AssociationExt {
   }
 
   public static Collection<Property> getNavigableMembersProperties(Association association) {
-    Collection<Property> returnedProperties = new HashSet<Property>();
+    Collection<Property> returnedProperties = new HashSet<>();
 
     returnedProperties.addAll(association.getNavigableMembers());
 
@@ -128,13 +128,11 @@ public class AssociationExt {
       AssociationExt.moveToBestContainer(assoc);
 
     }
-    return;
-
   }
 
   public static void moveToBestContainer(Association association) {
     EObject bestAncestor = getLinkedClassifiersCommonAncestor(association);
-    if ((bestAncestor != null) && (bestAncestor instanceof AssociationPkg) && !association.eContainer().equals(bestAncestor)) {
+    if (bestAncestor instanceof AssociationPkg && !association.eContainer().equals(bestAncestor)) {
       ((AssociationPkg) bestAncestor).getOwnedAssociations().add(association);
     }
   }
@@ -162,9 +160,8 @@ public class AssociationExt {
     EObject commonAncestor = EcoreUtil2.getCommonAncestor(linkedClassifiers);
     if (linkedClassifiers.contains(commonAncestor) && (linkedClassifiers.size() == 1)) {
       return null != commonAncestor ? commonAncestor.eContainer() : null;
-    } else {
-      return commonAncestor;
     }
+    return commonAncestor;
   }
 
   /**
