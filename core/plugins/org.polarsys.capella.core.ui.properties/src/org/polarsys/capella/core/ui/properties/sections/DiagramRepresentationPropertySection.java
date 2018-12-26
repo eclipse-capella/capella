@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -49,10 +49,10 @@ import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
-import org.polarsys.capella.core.diagram.helpers.ContextualDiagramHelper;
-import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
-import org.polarsys.capella.core.diagram.helpers.DiagramHelper;
 import org.polarsys.capella.common.ui.toolkit.viewers.data.DataLabelProvider;
+import org.polarsys.capella.core.diagram.helpers.ContextualDiagramHelper;
+import org.polarsys.capella.core.diagram.helpers.DiagramHelper;
+import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.core.model.handler.provider.CapellaReadOnlyHelper;
 import org.polarsys.capella.core.ui.properties.CapellaUIPropertiesPlugin;
 import org.polarsys.capella.core.ui.properties.controllers.DAnnotationReferenceController;
@@ -307,19 +307,24 @@ public class DiagramRepresentationPropertySection extends AbstractSection {
    */
   protected void loadData() {
     String name = ICommonConstants.EMPTY_STRING;
+    boolean isContextual = false;
+    
     if (null != _descriptor) {
       name = _descriptor.get().getName();
       _eoiField.loadData(_descriptor.get());
-      packageGroup.loadData(_descriptor.get(), null); 
+      packageGroup.loadData(_descriptor.get(), null);
       if (_contextualElementsField != null) {
+        isContextual = ContextualDiagramHelper.getService().isContextualRepresentation(_descriptor.get());
         _contextualElementsField.loadData(_descriptor.get());
-        boolean isContextual = ContextualDiagramHelper.getService().isContextualRepresentation(_descriptor.get());
-        _contextualElementsField.setEnabled(isContextual);
       }
+    }
+    
+    if (_contextualElementsField != null) {
+      _contextualElementsField.setEnabled(isContextual);
     }
     _nameTextField.setText(name);
   }
-
+  
   /**
    * {@inheritDoc}
    */
