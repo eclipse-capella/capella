@@ -14,13 +14,16 @@ package org.polarsys.capella.common.tools.report.config.registry;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Collection;
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.log4j.Appender;
+import org.apache.log4j.ConsoleAppender;
 import org.apache.log4j.Hierarchy;
+import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.IStatus;
@@ -31,6 +34,7 @@ import org.polarsys.capella.common.tools.report.ReportManagerActivator;
 import org.polarsys.capella.common.tools.report.StatusRenderer;
 import org.polarsys.capella.common.tools.report.appenders.IFlushableAppenders;
 import org.polarsys.capella.common.tools.report.appenders.ReportManagerFilter;
+import org.polarsys.capella.common.tools.report.config.ReportManagerConstants;
 import org.polarsys.capella.common.tools.report.config.persistence.ConfigurationInstance;
 import org.polarsys.capella.common.tools.report.config.persistence.CreateXmlConfiguration;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
@@ -119,11 +123,22 @@ public class ReportManagerRegistry {
     try {
       Logger root = Logger.getRootLogger();
 
+      // We don't want default level being overridden by a plugin
+      root.setLevel(Level.DEBUG);
+
+      // If any, console appenders must comply with levels defined in Windows/Preferences/MDE-Reporting preferences, so we add our filter mechanism on them
+      for (Enumeration<Appender> e = root.getAllAppenders(); e.hasMoreElements();) {
+        Appender appender = e.nextElement();
+        if (appender instanceof ConsoleAppender) {
+           appender.addFilter(new ReportManagerFilter(ReportManagerConstants.LOG_OUTPUT_CONSOLE));
+        }
+      }
+      
       for (Appender appender : ReportManagerActivator.getDefault().getAppenders()) {
         root.addAppender(appender);
         appender.addFilter(new ReportManagerFilter(appender));
       }
-
+      
       Hierarchy h = (Hierarchy) root.getLoggerRepository();
       EmbeddedMessageRenderer emRenderer = new EmbeddedMessageRenderer();
       h.addRenderer(EmbeddedMessage.class, emRenderer);
