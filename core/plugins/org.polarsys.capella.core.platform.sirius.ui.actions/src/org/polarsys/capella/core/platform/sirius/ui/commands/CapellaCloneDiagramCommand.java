@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.common.tools.api.util.SiriusCopier;
+import org.eclipse.sirius.tools.internal.SiriusCopierHelper;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
@@ -164,9 +164,7 @@ public class CapellaCloneDiagramCommand extends AbstractCommand {
     // Copy all representations.
     for (DRepresentationDescriptor descriptor : _descriptors) {
       // Copy all the Dannotation of DRepresentationDescriptor
-      SiriusCopier copier = new SiriusCopier();
-      Collection<DAnnotation> results = copier.copyAll(descriptor.getEAnnotations());
-      copier.copyReferences();
+      Collection<DAnnotation> results = SiriusCopierHelper.copyAllWithNoUidDuplication(descriptor.getEAnnotations());
 
       DRepresentation representation = descriptor.getRepresentation();
       if (representation instanceof DSemanticDecorator) {
