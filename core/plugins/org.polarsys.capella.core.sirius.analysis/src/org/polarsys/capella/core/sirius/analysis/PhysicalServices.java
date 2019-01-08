@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -39,15 +39,19 @@ import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.NodeMapping;
+import org.eclipse.sirius.diagram.description.impl.DiagramDescriptionImpl;
 import org.eclipse.sirius.diagram.description.style.EdgeStyleDescription;
 import org.eclipse.sirius.diagram.tools.api.command.view.RefreshSiriusElement;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.RGBValues;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.swt.graphics.RGB;
+import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.helpers.SimpleOrientedGraph;
+import org.polarsys.capella.common.utils.RunnableWithBooleanResult;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
 import org.polarsys.capella.core.business.queries.capellacore.BusinessQueriesProvider;
 import org.polarsys.capella.core.commands.preferences.service.ScopedCapellaPreferencesStore;
@@ -72,6 +76,8 @@ import org.polarsys.capella.core.data.cs.PhysicalPathInvolvement;
 import org.polarsys.capella.core.data.cs.PhysicalPathReference;
 import org.polarsys.capella.core.data.cs.PhysicalPort;
 import org.polarsys.capella.core.data.ctx.System;
+import org.polarsys.capella.core.data.fa.ComponentPort;
+import org.polarsys.capella.core.data.fa.ComponentPortAllocation;
 import org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt;
 import org.polarsys.capella.core.data.information.PartitionableElement;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
@@ -84,6 +90,7 @@ import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
 import org.polarsys.capella.core.data.pa.deployment.DeploymentFactory;
 import org.polarsys.capella.core.data.pa.deployment.PartDeploymentLink;
+import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.PartExt;
@@ -1663,4 +1670,59 @@ public class PhysicalServices {
 
     return component;
   }
+  
+  public List<ComponentPortAllocation> getDisplayedComponentPortAllocations(DNodeContainer selectedElement) {
+    List<ComponentPortAllocation> result = new ArrayList<>();
+    List<ComponentPortAllocation> allAllocations = getAllComponentPortAllocationAvailable(selectedElement);
+
+    DDiagram diagram = CapellaServices.getService().getDiagramContainer(selectedElement);
+    for (ComponentPortAllocation portAllocation : allAllocations) {
+      if(DiagramServices.getDiagramServices().getDiagramElement(diagram, portAllocation) != null)
+        result.add(portAllocation);
+    }
+    return result;
+  }
+
+  /**
+   * @param context
+   * @return called by show/hide Component Port Allocations tool (Physical Architecture Blank Diagram)
+   */
+  public List<ComponentPortAllocation> getAllComponentPortAllocationAvailable(DNodeContainer selectedElement) {
+
+    List<ComponentPortAllocation> result = new ArrayList<>();
+    
+    for (DNode dNode : selectedElement.getNodes()) {
+      
+      if (dNode.getTarget() instanceof PhysicalPort) {
+        EObject target = dNode.getTarget();
+        for (AbstractTrace trace : ((PhysicalPort) target).getOutgoingTraces()) {
+          if (trace instanceof ComponentPortAllocation) {
+            result.add((ComponentPortAllocation) trace);
+          }
+        }
+      } else if (dNode.getTarget() instanceof ComponentPort) {
+        EObject target = dNode.getTarget();
+        for (AbstractTrace trace : ((ComponentPort) target).getIncomingTraces()) {
+          if (trace instanceof ComponentPortAllocation) {
+            result.add((ComponentPortAllocation) trace);
+          }
+        }
+      }
+    }
+    return result;
+  }
+
+  /**
+   * @param context
+   * @return called by show/hide Component Port Allocations tool (Physical Architecture Blank Diagram)
+   */
+  public List<ComponentPortAllocation> getAvailableComponentPortAllocationToInsert(DNodeContainer selectedElement,
+      DDiagram diagram) {
+    List<ComponentPortAllocation> allAllocations = getAllComponentPortAllocationAvailable(selectedElement);
+    List<ComponentPortAllocation> existingAllocations = getDisplayedComponentPortAllocations(selectedElement);
+
+    allAllocations.removeAll(existingAllocations);
+    return allAllocations;
+  }
+
 }

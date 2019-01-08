@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -75,8 +75,10 @@ import org.polarsys.capella.core.data.fa.OrientationPortKind;
 import org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt;
 import org.polarsys.capella.core.data.helpers.fa.services.FunctionExt;
 import org.polarsys.capella.core.data.helpers.fa.services.FunctionPkgExt;
+import org.polarsys.capella.core.data.information.InformationFactory;
 import org.polarsys.capella.core.data.information.PartitionableElement;
 import org.polarsys.capella.core.data.information.Port;
+import org.polarsys.capella.core.data.information.PortAllocation;
 import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.capella.core.data.oa.ActivityAllocation;
 import org.polarsys.capella.core.data.oa.CommunicationMean;
@@ -100,8 +102,10 @@ import org.polarsys.capella.core.sirius.analysis.showhide.AbstractShowHide.Diagr
 import org.polarsys.capella.core.sirius.analysis.showhide.ShowHideABComponent;
 import org.polarsys.capella.core.sirius.analysis.showhide.ShowHideABComponentCategory;
 import org.polarsys.capella.core.sirius.analysis.showhide.ShowHideABComponentExchange;
+import org.polarsys.capella.core.sirius.analysis.showhide.ShowHideABComponentPortAllocation;
 import org.polarsys.capella.core.sirius.analysis.showhide.ShowHideABPhysicalCategory;
 import org.polarsys.capella.core.sirius.analysis.showhide.ShowHideABPhysicalLink;
+import org.polarsys.capella.core.sirius.analysis.showhide.ShowHideABPortAllocation;
 import org.polarsys.capella.core.sirius.analysis.showhide.ShowHideABRole;
 import org.polarsys.capella.core.sirius.analysis.showhide.ShowHideFunction;
 import org.polarsys.capella.core.sirius.analysis.showhide.ShowHideFunctionalExchange;
@@ -3061,6 +3065,57 @@ public class ABServices {
         FaServices.getFaServices().getMappingABComponentPortAllocation(diagram), nodeSource, nodeTarget, exchange);
     return context;
   }
+  
+  /**
+   * Create a port allocation in an architecture blank diagram. Create port if selected views are not targeting port
+   * 
+   * @param context
+   * @param sourceView
+   * @param targetView
+   * @return
+   */
+  public EObject createABPortAllocation(EObject context, DSemanticDecorator sourceView,
+      DSemanticDecorator targetView) {
+    EObject sourceTarget = sourceView.getTarget();
+    EObject targetTarget = targetView.getTarget();
+
+    DDiagram diagram = CapellaServices.getService().getDiagramContainer(sourceView);
+
+    EdgeTarget nodeSource = null;
+    EdgeTarget nodeTarget = null;
+
+    PortAllocation exchange = null;
+
+    // Create or retrieve sourcePort
+    ComponentPort sourcePort = null;
+    if (sourceTarget instanceof ComponentPort) {
+      sourcePort = (ComponentPort) sourceTarget;
+      nodeSource = (EdgeTarget) sourceView;
+    }
+
+    // Create or retrieve targetPort
+    FunctionPort targetPort = null;
+    if (targetTarget instanceof FunctionPort) {
+      targetPort = (FunctionPort) targetTarget;
+      nodeTarget = (EdgeTarget) targetView;
+    }
+
+    exchange = InformationFactory.eINSTANCE.createPortAllocation();
+    
+    exchange.setSourceElement(sourcePort);
+    exchange.setTargetElement(targetPort);
+    
+    // Attach to parent
+    Port container = sourcePort;
+    if ((container != null) && !container.equals(exchange.eContainer())) {
+      (container).getOwnedPortAllocations().add(exchange);
+    }
+
+    CapellaServices.getService().creationService(exchange);
+    DiagramServices.getDiagramServices().createEdge(
+        FaServices.getFaServices().getMappingABPortAllocation(diagram), nodeSource, nodeTarget, exchange);
+    return context;
+  }
 
   /**
    * Retrieve the edge mapping name for the given diagram
@@ -3189,5 +3244,63 @@ public class ABServices {
 
     return result;
   }
+  
+  /**
+   * Display given component port allocations
+   */
+  public EObject showABComponentPortAllocations(Collection<EObject> elements, DDiagramContents content) {
 
+    AbstractShowHide shService = new ShowHideABComponentPortAllocation(content);
+
+    for (EObject element : elements) {
+      DiagramContext context = shService.new DiagramContext();
+      shService.show(element, context);
+    }
+
+    return content.getDDiagram();
+  }
+
+  /**
+   * Hide given component port allocations
+   */
+  public EObject hideABComponentPortAllocations(Collection<EObject> elements, DDiagramContents content) {
+
+    AbstractShowHide shService = new ShowHideABComponentPortAllocation(content);
+
+    for (EObject element : elements) {
+      DiagramContext context = shService.new DiagramContext();
+      shService.hide(element, context);
+    }
+
+    return content.getDDiagram();
+  }
+
+  /**
+   * Display given component port allocations
+   */
+  public EObject showABPortAllocations(Collection<EObject> elements, DDiagramContents content) {
+    AbstractShowHide shService = new ShowHideABPortAllocation(content);
+
+    for (EObject element : elements) {
+      DiagramContext context = shService.new DiagramContext();
+      shService.show(element, context);
+    }
+
+    return content.getDDiagram();
+  }
+
+  /**
+   * Hide given component port allocations
+   */
+  public EObject hideABPortAllocations(Collection<EObject> elements, DDiagramContents content) {
+
+    AbstractShowHide shService = new ShowHideABPortAllocation(content);
+
+    for (EObject element : elements) {
+      DiagramContext context = shService.new DiagramContext();
+      shService.hide(element, context);
+    }
+
+    return content.getDDiagram();
+  }
 }

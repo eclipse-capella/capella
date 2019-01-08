@@ -2741,7 +2741,7 @@
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool_1:ToolGroup" name="Show/Hide ComponentExchanges and Categories">
-            <tools xsi:type="tool:ToolDescription" documentation="Create or delete graphical objects corresponding to existing Component Exchanges.&#xD;&#xA;The proposed Component Exchanges are the one incoming and outgoing from the Component target of the click.&#xD;&#xA;Opposite Components / Actors might be displayed on the diagram as well if they are not yet represented.&#xD;&#xA;This tool does not modify the semantic model." name="Show/Hide Connections" label="Component Exchanges" precondition="aql:(elementView.target.oclIsKindOf(cs::Part) and elementView.target.getComponentType().oclIsKindOf(cs::Component)) and (elementView->filter(diagram::DDiagram)->size() = 0)" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+            <tools xsi:type="tool:ToolDescription" documentation="Create or delete graphical objects corresponding to existing Component Exchanges.&#xD;&#xA;The proposed Component Exchanges are the one incoming and outgoing from the Component target of the click.&#xD;&#xA;Opposite Components / Actors might be displayed on the diagram as well if they are not yet represented.&#xD;&#xA;This tool does not modify the semantic model." name="Show/Hide Connections" label="Component Exchanges / Delegations" precondition="aql:(elementView.target.oclIsKindOf(cs::Part) and elementView.target.getComponentType().oclIsKindOf(cs::Component)) and (elementView->filter(diagram::DDiagram)->size() = 0)" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
               <element name="element"/>
               <elementView name="elementView"/>
               <initialOperation>
@@ -3292,12 +3292,7 @@
             <sourceViewVariable name="sourceView"/>
             <targetViewVariable name="targetView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:source">
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="PortAllocation" referenceName="ownedPortAllocations">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="sourceElement" valueExpression="aql:source"/>
-                  <subModelOperations xsi:type="tool:SetValue" featureName="targetElement" valueExpression="aql:target"/>
-                </subModelOperations>
-              </firstModelOperations>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:source.createABPortAllocation(sourceView,targetView)"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates new allocation relationships between selected Logical Functions and the target Logical Component. &#xD;&#xA;The newly allocated logical Functions are automatically displayed on the target Logical Component. &#xD;&#xA;This tool modifies the semantic model." name="Manage Function Allocation" label="Manage Function Allocation" precondition="aql:container.getComponentType().oclIsKindOf(cs::Component)" nodeMappings="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@subNodeMappings[name='LAB%20Logical%20Function']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Manage.gif">
@@ -3662,6 +3657,39 @@
                 </firstModelOperations>
               </initialOperation>
             </menuItemDescription>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ToolDescription" documentation="Insert/Remove Port Allocations" name="Port Allocations" precondition="aql:not (self.isNode()) and container.getComponentType().oclIsKindOf(cs::Component)" inverseSelectionOrder="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView">
+                <subModelOperations xsi:type="tool:ExternalJavaAction" name="SetVariable $displayedPortAllocations" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SetVariable">
+                  <parameters name="context" value="aql:elementView"/>
+                  <parameters name="variable" value="displayedPortAllocations"/>
+                  <parameters name="value" value="aql:self.void2Null(elementView.getDisplayedPortAllocations())"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:ExternalJavaAction" name="selectExchanges" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectLinksFromTransferWizard">
+                  <parameters name="context" value="aql:element"/>
+                  <parameters name="scope" value="aql:self.void2Null(self.getAvailablePortAllocationToInsert(diagram))"/>
+                  <parameters name="initialSelection" value="aql:displayedPortAllocations"/>
+                  <parameters name="resultVariable" value="selectedPortAllocations"/>
+                  <parameters name="wizardMessage" value="aql:'Select Port Allocations to show in ' + element.name + '.'"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:(selectedPortAllocations != 'WIZARD_CANCELED')">
+                  <subModelOperations xsi:type="tool:For" expression="aql:self.void2Null(selectedPortAllocations)">
+                    <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (displayedPortAllocations->includes(i))">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:i.showABPortAllocations(elementView)"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:For" expression="aql:self.void2Null(displayedPortAllocations)">
+                    <subModelOperations xsi:type="tool:If" conditionExpression="aql:not (selectedPortAllocations->includes(i))">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:i.hideABPortAllocations(elementView)"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().forceRefresh()"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
           </ownedTools>
         </toolSections>
         <toolSections name="Accelerators">

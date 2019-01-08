@@ -29,6 +29,7 @@ import org.polarsys.capella.core.data.capellacore.NamedElement;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.cs.PhysicalLink;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
+import org.polarsys.capella.core.data.fa.ComponentExchangeKind;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt;
 import org.polarsys.capella.core.data.helpers.fa.services.FunctionExt;
@@ -44,7 +45,7 @@ import org.polarsys.capella.core.ui.properties.CapellaUIPropertiesPlugin;
  */
 public class CapellaTransfertViewerLabelProvider extends DataLabelProvider {
 
-  private static String PATTERN1 = " [{0} -> {1}]"; //$NON-NLS-1$
+  private static String PATTERN1 = " [{0} -> {1}]{2}"; //$NON-NLS-1$
   private static String UNAMED = "<unnamed>"; //$NON-NLS-1$
   
   private boolean disableLabelComputation;
@@ -100,6 +101,7 @@ public class CapellaTransfertViewerLabelProvider extends DataLabelProvider {
     NamedElement targetElement = null;
     String sourceLabel = null;
     String targetLabel = null;
+    String sufixLabel = "";
 
     if ((object instanceof ComponentExchange) && !(object instanceof CommunicationMean)) {
       ComponentExchange connection = (ComponentExchange) object;
@@ -111,6 +113,9 @@ public class CapellaTransfertViewerLabelProvider extends DataLabelProvider {
       } else {
         sourceElement = ComponentExchangeExt.getSourceComponent(connection);
         targetElement = ComponentExchangeExt.getTargetComponent(connection);
+      }
+      if (connection.getKind() == ComponentExchangeKind.DELEGATION) {
+        sufixLabel = " [DELEGATION]";
       }
     } else if (object instanceof CommunicationMean) {
       // Communication mean @OA level
@@ -166,6 +171,6 @@ public class CapellaTransfertViewerLabelProvider extends DataLabelProvider {
     } else {
       targetLabel = targetElement.getName();
     }
-    return super.getText(object) + MessageFormat.format(PATTERN1, new Object[] { sourceLabel, targetLabel });
+    return super.getText(object) + MessageFormat.format(PATTERN1, new Object[] { sourceLabel, targetLabel, sufixLabel });
   }
 }

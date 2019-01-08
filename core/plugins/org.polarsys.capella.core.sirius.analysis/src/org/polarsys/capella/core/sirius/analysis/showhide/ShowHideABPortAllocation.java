@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,10 +14,9 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.polarsys.capella.core.data.cs.PhysicalPort;
 import org.polarsys.capella.core.data.fa.ComponentPort;
-import org.polarsys.capella.core.data.fa.ComponentPortAllocation;
-import org.polarsys.capella.core.model.helpers.ComponentPortAllocationExt;
+import org.polarsys.capella.core.data.fa.FunctionPort;
+import org.polarsys.capella.core.data.information.PortAllocation;
 import org.polarsys.capella.core.sirius.analysis.CsServices;
 import org.polarsys.capella.core.sirius.analysis.DDiagramContents;
 import org.polarsys.capella.core.sirius.analysis.FaServices;
@@ -29,12 +28,12 @@ import org.polarsys.capella.core.sirius.analysis.tool.HashMapSet;
  * containers of category pins must be set with sourceParts and targetParts variables
  * 
  */
-public class ShowHideABComponentPortAllocation extends ShowHideABPhysicalLink {
+public class ShowHideABPortAllocation extends ShowHideABComponentExchange {
 
   /**
    * @param content_p
    */
-  public ShowHideABComponentPortAllocation(DDiagramContents content_p) {
+  public ShowHideABPortAllocation(DDiagramContents content_p) {
     super(content_p);
   }
 
@@ -42,36 +41,34 @@ public class ShowHideABComponentPortAllocation extends ShowHideABPhysicalLink {
    * {@inheritDoc}
    */
   @Override
-  @SuppressWarnings("unchecked")
   public HashMapSet<String, EObject> getRelatedObjects(EObject semantic_p, DiagramContext context_p) {
     HashMapSet<String, EObject> value = super.getRelatedObjects(semantic_p, context_p);
     ContextItemElement lastContext = context_p.getLast();
 
-    if (lastContext.getValue() instanceof ComponentPortAllocation) {
-      ComponentPortAllocation exchange = (ComponentPortAllocation) lastContext.getValue();
-      EObject source = ComponentPortAllocationExt.getSourcePort(exchange);
-      EObject target = ComponentPortAllocationExt.getTargetPort(exchange);
-      if (source == null) {
-        source = ComponentPortAllocationExt.getSourcePart(exchange);
+    if (lastContext.getValue() instanceof PortAllocation) {
+      PortAllocation exchange = (PortAllocation) lastContext.getValue();
+      EObject source = exchange.getSourceElement();
+      EObject target = exchange.getTargetElement();
+      if (source != null) {
+        value.put(SOURCE, source);
       }
-      if (target == null) {
-        target = ComponentPortAllocationExt.getTargetPart(exchange);
+      if (target != null) {
+        value.put(TARGET, target);
       }
-      value.put(SOURCE, source);
-      value.put(TARGET, target);
-
     }
 
     return value;
   }
 
+  @SuppressWarnings("deprecation")
   @Override
-  public DiagramElementMapping getMapping(EObject semantic_p, DiagramContext context_p, HashMapSet<String, DSemanticDecorator> relatedViews_p) {
+  public DiagramElementMapping getMapping(EObject semantic_p, DiagramContext context_p,
+      HashMapSet<String, DSemanticDecorator> relatedViews_p) {
     DiagramElementMapping mapping = super.getMapping(semantic_p, context_p, relatedViews_p);
     ContextItemElement lastContext = context_p.getLast();
 
-    if (lastContext.getValue() instanceof ComponentPortAllocation) {
-      mapping = FaServices.getFaServices().getMappingABComponentPortAllocation(getContent().getDDiagram());
+    if (lastContext.getValue() instanceof PortAllocation) {
+      mapping = FaServices.getFaServices().getMappingABPortAllocation(getContent().getDDiagram());
     }
 
     return mapping;
@@ -81,9 +78,10 @@ public class ShowHideABComponentPortAllocation extends ShowHideABPhysicalLink {
    * {@inheritDoc}
    */
   @Override
-  protected boolean mustShow(DSemanticDecorator source_p, DSemanticDecorator target_p, EObject exchange_p, EdgeMapping edgeMapping_p) {
-    if (exchange_p instanceof ComponentPortAllocation) {
-      return CsServices.getService().isValidComponentPortAllocationEdge((ComponentPortAllocation) exchange_p, source_p, target_p);
+  protected boolean mustShow(DSemanticDecorator source_p, DSemanticDecorator target_p, EObject exchange_p,
+      EdgeMapping edgeMapping_p) {
+    if (exchange_p instanceof PortAllocation) {
+      return CsServices.getService().isValidPortAllocationEdge((PortAllocation) exchange_p, source_p, target_p);
     }
     return super.mustShow(source_p, target_p, exchange_p, edgeMapping_p);
   }
@@ -92,8 +90,8 @@ public class ShowHideABComponentPortAllocation extends ShowHideABPhysicalLink {
   protected boolean mustHide(ContextItemElement originCouple_p, DiagramContext context_p) {
     EObject semantic = originCouple_p.getValue();
 
-    // We want to hide component port
-    if (semantic instanceof ComponentPortAllocation) {
+    // We want to hide the port allocation
+    if (semantic instanceof PortAllocation) {
       return true;
     }
     
