@@ -1,0 +1,92 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _4Zi_gEkPEeaoOLXB8A2oPA
+Element-Name: RecRplSetSuffix
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _YjzF8PfIEeiaU_LTMcHjMQ
+Runtime-Version: 2.3.0.201806262310
+Save-Time: 12/4/18 3:18 PM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+We test here two things:
+
+- The enablement of the 'Suffixed' property in the Create REC / Update REC dialog
+- The value of the 'Suffixed' property for CatalogElementLink in the property view
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+// Import IFE
+with [get-view "Capella Project Explorer" | get-tree] {
+    select "In-Flight Entertainment System/In-Flight Entertainment System.aird" | double-click
+    select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/Displayed VOD Movie Data" 
+        | get-menu -path "REC \\/ RPL/Create REC/From selection..." | click
+}
+
+// Create the REC
+with [get-window "Replicable Elements"] {
+    with [get-group "" -index 1] {
+        get-tree 
+            | select "In-Flight Entertainment System/In-Flight Entertainment System/System Analysis/System Functions/Displayed VOD Movie Data"
+        // Add suffix
+        get-button "Add/remove suffix on elements" | click
+    }
+    get-button OK | click
+}
+
+// Verify that the REC Suffixed property is TRUE
+get-view Properties | click
+get-view "Capella Project Explorer" | get-tree 
+    | select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/Catalog/REC1/Link to 'Displayed VOD Movie Data'"
+get-view Properties | get-section Information | get-group "" | get-button | get-property selected | equals true 
+    | verify-true
+    
+// Create RPL
+get-view "Capella Project Explorer" | get-tree 
+    | select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions" 
+    | get-menu -path "REC \\/ RPL/Instantiate RPL from REC" | click
+with [get-window "Replicable Elements"] {
+    get-group "" | get-button "Browse available elements" | click
+    with [get-window "Selection Dialog"] {
+        get-group "Select a name to find" | get-editbox -after [get-label "? = any character, * = any string"] 
+            | set-focus
+        get-tree | select "In-Flight Entertainment System/In-Flight Entertainment System/Catalog/REC1" | double-click
+    }
+    get-button OK | click
+}
+
+// Verify that the RPL Suffixed property is TRUE
+get-view "Capella Project Explorer" | get-tree 
+    | select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/Catalog/RPL1 [REC1]/Link to 'Displayed VOD Movie Data'"
+get-view Properties | get-section Information | get-group "" | get-button | get-property selected | equals true 
+    | verify-true
+    
+
+// Update REC and set Suffixed property to FALSE
+get-view "Capella Project Explorer" | get-tree 
+    | select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/Displayed VOD Movie Data [REC]" 
+    | get-menu -path "REC \\/ RPL/Update REC/From selection..." | click
+with [get-window "Replicable Elements"] {
+    with [get-group "" -index 1] {
+        get-tree 
+            | select "In-Flight Entertainment System/In-Flight Entertainment System/System Analysis/System Functions/Displayed VOD Movie Data [REC] [+SUFFIX]"
+        // Remove suffix
+        get-button "Add/remove suffix on elements" | click
+    }
+    get-button OK | click
+}
+get-window "Update REC from selection" | get-button OK | click
+
+// Verify that the REC Suffixed property is FALSE
+get-view "Capella Project Explorer" | get-tree 
+    | select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/Catalog/REC1/Link to 'Displayed VOD Movie Data'"
+get-view Properties | get-section Information | get-group "" | get-button | get-property selected | equals false 
+    | verify-true
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--
