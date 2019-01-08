@@ -64,6 +64,13 @@
             renderer="checkboxRenderer">
         </propertyBinding>
       </bindings>
+      <bindings
+            properties="org.polarsys.capella.common.re.CatalogElementLink">
+         <propertyBinding
+               property="org.polarsys.capella.common.re.CatalogElementLink.suffixed"
+               renderer="checkboxRenderer">
+         </propertyBinding>
+      </bindings>
       
       
    </extension>
