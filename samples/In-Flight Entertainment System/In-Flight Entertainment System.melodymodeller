@@ -1673,14 +1673,6 @@
           <ownedScenarios xsi:type="org.polarsys.capella.core.data.interaction:Scenario"
               id="fa8dc626-68de-4e83-b9b9-2a1aa7813b7c" name="[FS] Perform Audio Announcement"
               kind="FUNCTIONAL">
-            <ownedConstraints xsi:type="org.polarsys.capella.core.data.capellacore:Constraint"
-                id="9f39d190-6235-4dac-821f-ad0392eebed2" name="">
-              <ownedSpecification xsi:type="org.polarsys.capella.core.data.information.datavalue:OpaqueExpression"
-                  id="6ec404d2-3b62-4fd5-aadd-bf2f134b1a63">
-                <bodies>PTV player is playing a VOD movie</bodies>
-                <languages>capella:linkedText</languages>
-              </ownedSpecification>
-            </ownedConstraints>
             <ownedInstanceRoles xsi:type="org.polarsys.capella.core.data.interaction:InstanceRole"
                 id="3f4fc37a-cfd1-4e21-9a0f-c60ded8923f0" name="Listen to Audio Announcement"
                 representedInstance="#e04025f9-6b52-4377-bac1-78d0bf2f8fed"/>
@@ -3569,10 +3561,6 @@
         </ownedMissions>
         <ownedMissions xsi:type="org.polarsys.capella.core.data.ctx:Mission" id="cdfe2a5a-5069-4055-be2c-96be11552fa9"
             name="Provide Administration Means and Runtime Management">
-          <ownedActorMissionInvolvements xsi:type="org.polarsys.capella.core.data.ctx:ActorMissionInvolvement"
-              id="c2a5bff2-8d7c-4dda-8e4f-d57c0c840d7e" involved="#d475ed7d-4644-4461-97d4-b52772c9b425"/>
-          <ownedActorMissionInvolvements xsi:type="org.polarsys.capella.core.data.ctx:ActorMissionInvolvement"
-              id="cab611ef-12c2-4027-a9e9-7ba90587ffb6" involved="#d475ed7d-4644-4461-97d4-b52772c9b425"/>
           <ownedSystemMissionInvolvement xsi:type="org.polarsys.capella.core.data.ctx:SystemMissionInvolvement"
               id="ab176606-5f38-464f-8c50-7e112f8bd734" involved="#e0a46739-7e50-4ea6-b198-0e5efb9ce68f"/>
           <ownedCapabilityExploitations xsi:type="org.polarsys.capella.core.data.ctx:CapabilityExploitation"
@@ -9561,24 +9549,8 @@
                       </ownedStates>
                       <ownedTransitions xsi:type="org.polarsys.capella.core.data.capellacommon:StateTransition"
                           id="acdf1a44-f0cd-4a0a-ad11-f5f1f35d6756" triggerDescription=""
-                          guard="#ef4dae32-4ef1-4a0b-a41f-0cb84ff4770c" source="#0a65b216-6ce5-4d16-b4e1-1cfa89dbbe67"
-                          target="#afc7e130-d4ac-4edd-acb2-6ef2fa45c556" triggers="#df26fc8b-2837-40a0-ac8a-96ad5c39f9ac">
-                        <ownedConstraints xsi:type="org.polarsys.capella.core.data.capellacore:Constraint"
-                            id="3600ce28-beb7-4d1d-a440-c16e2cd5eb86" name="">
-                          <ownedSpecification xsi:type="org.polarsys.capella.core.data.information.datavalue:OpaqueExpression"
-                              id="7cb62cae-cee0-4019-8638-18522d46d378">
-                            <bodies>dezdezdez  fezfdzefez</bodies>
-                            <languages>capella:linkedText</languages>
-                          </ownedSpecification>
-                        </ownedConstraints>
-                        <ownedConstraints xsi:type="org.polarsys.capella.core.data.capellacore:Constraint"
-                            id="ef4dae32-4ef1-4a0b-a41f-0cb84ff4770c" name="">
-                          <ownedSpecification xsi:type="org.polarsys.capella.core.data.information.datavalue:OpaqueExpression"
-                              id="049b28c3-b164-445f-93a7-b4826272047c">
-                            <bodies>&lt;a href=&quot;e5bebd43-6881-4c89-be4a-7cc97632df51&quot;/>.&lt;a href=&quot;af503302-d4f6-4a93-87b6-e958e9370286&quot;/></bodies>
-                            <languages>capella:linkedText</languages>
-                          </ownedSpecification>
-                        </ownedConstraints>
+                          source="#0a65b216-6ce5-4d16-b4e1-1cfa89dbbe67" target="#afc7e130-d4ac-4edd-acb2-6ef2fa45c556"
+                          triggers="#df26fc8b-2837-40a0-ac8a-96ad5c39f9ac">
                         <ownedStateTransitionRealizations xsi:type="org.polarsys.capella.core.data.capellacommon:StateTransitionRealization"
                             id="f740e192-9e4d-4838-a013-38f9ca7cbf2d" targetElement="#26009e33-1109-4c48-8df9-44c5a9b6d26f"
                             sourceElement="#acdf1a44-f0cd-4a0a-ad11-f5f1f35d6756"/>
@@ -13068,14 +13040,10 @@
           <ownedFunctionalChains xsi:type="org.polarsys.capella.core.data.fa:FunctionalChain"
               id="f53e78f2-08f5-437f-964b-583a12ecf181" name="Resume VOD Movie">
             <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvement"
-                id="54aa7ac9-9abc-4714-94c2-35d9c97c6a62" involved="#8daae3ab-944b-4ade-9896-0d51c62ef3e8"
-                nextFunctionalChainInvolvements="#1484a4f1-fb2a-4ac3-9924-bc0caefc8507"/>
+                id="54aa7ac9-9abc-4714-94c2-35d9c97c6a62" involved="#8daae3ab-944b-4ade-9896-0d51c62ef3e8"/>
             <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvement"
                 id="3ad2aea0-9ab2-454f-9a07-54cea6810855" involved="#241dcfae-1880-45f9-bf2c-32b0cbe736b7"
                 nextFunctionalChainInvolvements="#8c9452cc-677a-47ab-add3-43d37880b24a"/>
-            <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvement"
-                id="1484a4f1-fb2a-4ac3-9924-bc0caefc8507" involved="#42b917a3-2f0a-46a7-acbe-d7a1c4c4354d"
-                nextFunctionalChainInvolvements="#3ad2aea0-9ab2-454f-9a07-54cea6810855"/>
             <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvement"
                 id="2a88fdd3-c6bd-4dc9-87c6-b069f30b9586" involved="#ac5be58c-aa92-4247-8c8f-9867ddbd6289"
                 nextFunctionalChainInvolvements="#2f6303b6-6c03-407a-89de-08270767f69c"/>

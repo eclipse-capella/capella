@@ -571,7 +571,7 @@ This rule checks that an capella element doesn&apos;t contain any naming conflic
                   lang="Java"
                   mode="Batch"
                   name="I_26 - Equivalent Trace Elements"
-                  severity="WARNING"
+                  severity="ERROR"
                   statusCode="1">
                <message>
                   Message body provided by implementation
@@ -598,7 +598,7 @@ This rule checks that an capella element doesn&apos;t contain any naming conflic
                   lang="Java"
                   mode="Batch"
                   name="I_40 - Equivalent Involvement Elements"
-                  severity="WARNING"
+                  severity="ERROR"
                   statusCode="1">
                <message>
                   Message body provided by implementation

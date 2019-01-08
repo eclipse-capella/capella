@@ -20,6 +20,8 @@ import org.eclipse.emf.validation.model.ConstraintStatus;
 import org.polarsys.capella.core.data.capellacore.InvolvedElement;
 import org.polarsys.capella.core.data.capellacore.Involvement;
 import org.polarsys.capella.core.data.capellacore.InvolverElement;
+import org.polarsys.capella.core.data.cs.PhysicalPathInvolvement;
+import org.polarsys.capella.core.data.fa.FunctionalChainInvolvement;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 
 /*
@@ -45,8 +47,13 @@ public class UniqueInvolvementConstraint extends AbstractValidationRule {
       Collection<Involvement> equivalentInvolvements = new ArrayList<Involvement>();
       for (Involvement inv : involvementLinks) {
 
-        if (inv.getInvolved().equals(involvementTarget)) {
-          equivalentInvolvements.add(inv);
+        // We need to ignore Involvements of type FunctionalChainInvolvement and PhyiscalPathInvolvement
+        // Duplicates of these Involvement types are valid
+        if (!(inv instanceof FunctionalChainInvolvement || inv instanceof PhysicalPathInvolvement)) {
+
+          if (inv.getInvolved().equals(involvementTarget)) {
+            equivalentInvolvements.add(inv);
+          }
         }
       }
 
