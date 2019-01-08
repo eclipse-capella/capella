@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,6 +12,7 @@
 package org.polarsys.capella.common.flexibility.wizards.renderer;
 
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.bindings.keys.IKeyLookup;
 import org.eclipse.jface.resource.JFaceResources;
 import org.eclipse.swt.SWT;
@@ -29,9 +30,9 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.polarsys.capella.common.flexibility.properties.schema.IEditableProperty;
 import org.polarsys.capella.common.flexibility.properties.schema.IProperty;
-import org.polarsys.capella.common.flexibility.wizards.Activator;
 import org.polarsys.capella.common.flexibility.wizards.constants.ICommonConstants;
 import org.polarsys.capella.common.flexibility.wizards.schema.IRendererContext;
+import org.polarsys.capella.common.flexibility.wizards.ui.util.StatusLabelHelper;
 import org.polarsys.capella.common.ui.services.swt.events.AbstractKeyAdapter;
 
 /**
@@ -94,7 +95,7 @@ public class TextRenderer extends AbstractRenderer {
        */
       @Override
       public void setBackground(Color color) {
-        //Avoid default background color to be set
+        // Avoid default background color to be set
         if ((color != null) && !color.equals(getShell().getDisplay().getSystemColor(SWT.COLOR_WIDGET_BACKGROUND))) {
           super.setBackground(color);
         }
@@ -197,8 +198,7 @@ public class TextRenderer extends AbstractRenderer {
     if (isValidationEnd()) {
       validateControl = createImageControl(rootTextControl);
     }
-    validateControl.setImage(Activator.getDefault().getImage("full/etool16/empty.gif"));
-
+    StatusLabelHelper.updateImage(Status.OK_STATUS, validateControl);
   }
 
   protected void handleCRKeyStoke(IRendererContext context) {
@@ -273,7 +273,6 @@ public class TextRenderer extends AbstractRenderer {
     setBackgroundTextControl(defaultColor);
     Object value = context.getPropertyContext().getDefaultValue(property);
     updatedValue(property, context, value);
-
   }
 
   /**
@@ -295,9 +294,7 @@ public class TextRenderer extends AbstractRenderer {
       Object value = property.toType(newValue, rendererContext.getPropertyContext());
       IStatus diag = property.validate(value, rendererContext.getPropertyContext());
 
-      if (!validateControl.isDisposed()) {
-        validateControl.setToolTipText(diag.getMessage());
-      }
+      StatusLabelHelper.updateTooltip(diag, validateControl, true);
       String text = getLabelProvider(rendererContext).getText(value);
 
       if (isImage() && !imageControl.isDisposed()) {
@@ -318,35 +315,32 @@ public class TextRenderer extends AbstractRenderer {
         textControl.setEditable(isEditable(property, rendererContext));
         textControl.setText(text);
 
-        if (isColoredOnValidation() && (diag != null)) {
-          if (diag.isOK()) {
-            validateControl.setImage(Activator.getDefault().getImage("full/etool16/empty.gif"));
-            if (!defaultColor.equals(rootTextControl.getBackground())) {
-              setBackgroundTextControl(defaultColor);
-            }
+        if (isColoredOnValidation()) {
+          StatusLabelHelper.updateImage(diag, validateControl);
 
-            if (!isEditable(property, rendererContext)) {
-              if (!disabledColor.equals(rootTextControl.getBackground())) {
-                setBackgroundTextControl(disabledColor);
+          if (diag != null) {
+            if (diag.isOK()) {
+              if (!defaultColor.equals(rootTextControl.getBackground())) {
+                setBackgroundTextControl(defaultColor);
+              }
+              if (!isEditable(property, rendererContext)) {
+                if (!disabledColor.equals(rootTextControl.getBackground())) {
+                  setBackgroundTextControl(disabledColor);
+                }
+              }
+            } else if (diag.matches(IStatus.INFO)) {
+              if (!defaultColor.equals(rootTextControl.getBackground())) {
+                setBackgroundTextControl(defaultColor);
+              }
+            } else if (diag.matches(IStatus.WARNING)) {
+              if (!warningColor.equals(rootTextControl.getBackground())) {
+                setBackgroundTextControl(warningColor);
+              }
+            } else if (diag.matches(IStatus.ERROR)) {
+              if (!errorColor.equals(rootTextControl.getBackground())) {
+                setBackgroundTextControl(errorColor);
               }
             }
-
-          } else if (diag.matches(IStatus.INFO)) {
-            if (!defaultColor.equals(rootTextControl.getBackground())) {
-              setBackgroundTextControl(defaultColor);
-            }
-            validateControl.setImage(Activator.getDefault().getImage("full/etool16/info_tsk.gif"));
-
-          } else if (diag.matches(IStatus.WARNING)) {
-            if (!warningColor.equals(rootTextControl.getBackground())) {
-              setBackgroundTextControl(warningColor);
-            }
-            validateControl.setImage(Activator.getDefault().getImage("full/etool16/warn_tsk.gif"));
-          } else if (diag.matches(IStatus.ERROR)) {
-            if (!errorColor.equals(rootTextControl.getBackground())) {
-              setBackgroundTextControl(errorColor);
-            }
-            validateControl.setImage(Activator.getDefault().getImage("full/etool16/error_tsk.gif"));
           }
         }
       }
