@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2018, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,14 +12,18 @@ package org.polarsys.capella.common.ui.massactions.shared.menu;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.jface.action.Separator;
+import org.eclipse.ui.ISelectionService;
 import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.IViewReference;
 import org.eclipse.ui.PlatformUI;
@@ -29,11 +33,13 @@ import org.eclipse.ui.menus.CommandContributionItemParameter;
 import org.eclipse.ui.menus.IWorkbenchContribution;
 import org.eclipse.ui.services.IServiceLocator;
 import org.polarsys.capella.common.ui.massactions.activator.MACapellaActivator;
+import org.polarsys.capella.common.ui.massactions.shared.helper.CapellaMASelectionHelper;
+import org.polarsys.kitalpha.massactions.shared.view.MAView;
 
 /**
  * A abstract contribution item for the 'Send To' mass menu.
  * 
- * @author Ali Akar
+ * @author Sandu Postaru
  *
  */
 public abstract class AbstractSendToMenuContributionItem extends CompoundContributionItem
@@ -59,11 +65,18 @@ public abstract class AbstractSendToMenuContributionItem extends CompoundContrib
 
   protected abstract boolean isMassView(IViewPart viewPart);
 
+  protected CapellaMASelectionHelper selectionHelper;
+
   @Override
   public void initialize(IServiceLocator serviceLocator) {
     this.serviceLocator = serviceLocator;
+    this.selectionHelper = new CapellaMASelectionHelper();
   }
 
+  /**
+   * Contribution items are created only for valid MAView targets. A valid target either has a null editing domain,
+   * meaning that no elements are present yet, or has the same editing domain as the current user selection.
+   */
   @Override
   protected IContributionItem[] getContributionItems() {
 
@@ -72,8 +85,21 @@ public abstract class AbstractSendToMenuContributionItem extends CompoundContrib
 
     // We put the stream in a try-with-resource to satisfy Sonar
     try (Stream<IViewReference> viewReferenceStream = Stream.of(viewReferences)) {
-      List<IViewPart> maViewParts = viewReferenceStream.map(viewRef -> viewRef.getView(false)).filter(this::isMassView)
-          .collect(Collectors.toList());
+
+      // The current elements selected by the user
+      ISelectionService selectionService = serviceLocator.getService(ISelectionService.class);
+      TransactionalEditingDomain selectionEditingDomain = selectionHelper
+          .getEditingDomainFromSelectionService(selectionService);
+
+      List<MAView> maViewParts = Collections.emptyList();
+
+      // The selection elements share the same editing domain
+      if (selectionEditingDomain != null) {
+
+        // Filter all the MAViews that have the same editing domain as the current selection
+        maViewParts = viewReferenceStream.map(viewRef -> viewRef.getView(false)).filter(this::isMassView)
+            .map(MAView.class::cast).filter(validMAViewTarget(selectionEditingDomain)).collect(Collectors.toList());
+      }
 
       Collection<IContributionItem> contributionItems = new ArrayList<>();
 
@@ -95,7 +121,7 @@ public abstract class AbstractSendToMenuContributionItem extends CompoundContrib
     return createContributionItem(getNewViewText(), getNewViewIcon(), getViewID(), null, true);
   }
 
-  protected Collection<IContributionItem> getExistingViewContributionItems(List<IViewPart> maViewParts) {
+  protected Collection<IContributionItem> getExistingViewContributionItems(List<MAView> maViewParts) {
     Collection<IContributionItem> contributionItems = new ArrayList<>();
 
     for (IViewPart viewPart : maViewParts) {
@@ -127,4 +153,18 @@ public abstract class AbstractSendToMenuContributionItem extends CompoundContrib
   protected String getNewViewText() {
     return "New " + getViewName() + " View";
   }
+
+  /**
+   * A valid target predicate for the current MAView. The editing domain may be null, meaning that the view does not
+   * contain any elements and thus any selection is valid. Otherwise the editing domain of the view must match the
+   * selection editing domain.
+   * 
+   * @param selectionEditingDomain
+   *          the selection editing domain
+   * @return if the current MAView is a valid target for the selectionServiceEditing domain
+   */
+  private Predicate<? super MAView> validMAViewTarget(TransactionalEditingDomain selectionEditingDomain) {
+    return view -> view.getEditingDomain() == null || view.getEditingDomain().equals(selectionEditingDomain);
+  }
+
 }
