@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2018, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,11 +29,11 @@ public class EnumerationLiteralTypeResolver extends AbstractCapellaMarkerResolut
   public void run(IMarker marker) {
 
     final EObject value = getModelElements(marker).get(0);
-    if ((null != value) && (value instanceof EnumerationLiteral)) {
+    if (value instanceof EnumerationLiteral) {
 
       EnumerationLiteral enumLiteral = (EnumerationLiteral) value;
       EObject container = enumLiteral.eContainer();
-      if (container != null && container instanceof Enumeration) {
+      if (container instanceof Enumeration) {
 
         Enumeration eNum = (Enumeration) container;
         AbstractReadWriteCommand comm = new AbstractReadWriteCommand() {

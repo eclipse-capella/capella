@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -3118,7 +3118,8 @@ public class InformationServices {
       // Get all dataPkg (consider layers)
       EObject diagramTarget = diagram.getTarget();
       // get all dataVales and add to result list
-      return QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_DATA_VALUES_FOR_LIB, diagramTarget);
+      result.addAll(QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_DATA_VALUES_FOR_LIB, diagramTarget));
+      return filterEnumLiteral(result);
     }
     /*
      * If DNode Container (assume target as DataPkg)
@@ -3166,7 +3167,23 @@ public class InformationServices {
         }
       }
     }
-    return result;
+    return filterEnumLiteral(result);
+  }
+
+  /**
+   * Removes the EnumrationLiterals which are contained in Enumeration.
+   * @param values
+   * @return
+   */
+  private List<DataValue> filterEnumLiteral(List<DataValue> values) {
+    Iterator<DataValue> iterator = new ArrayList<>(values).iterator();
+    while (iterator.hasNext()) {
+      DataValue next = iterator.next();
+      if (next instanceof EnumerationLiteral && next.eContainer() instanceof Enumeration) {
+        values.remove(next);
+      }
+    }
+    return values;
   }
 
   /**
