@@ -1,0 +1,53 @@
+/*******************************************************************************
+ * Copyright (c) 2006, 2019 THALES DMS FRANCE.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
+
+/* Generated file */
+
+package org.polarsys.capella.viatra.core.data.la.surrogate
+
+import "http://www.polarsys.org/capella/core/la/1.3.0"
+
+// Start of user code for imports 
+import "http://www.polarsys.org/capella/core/cs/1.3.0"
+import "http://www.polarsys.org/capella/core/information/1.3.0"
+import "http://www.polarsys.org/capella/core/fa/1.3.0"
+import "http://www.polarsys.org/capella/core/pa/1.3.0"
+import "http://www.polarsys.org/capella/core/ctx/1.3.0"
+import "http://www.polarsys.org/capella/core/core/1.3.0"
+
+// End of user code
+
+@Surrogate(feature="systemRealizations")
+pattern LogicalComponent__systemRealizations(self : LogicalComponent, target : SystemRealization) {
+	LogicalComponent.provisionedComponentAllocations(self, target);
+}
+
+@Surrogate(feature="subLogicalComponents")
+pattern LogicalComponent__subLogicalComponents(self : LogicalComponent, target : LogicalComponent) {
+	LogicalComponent.ownedPartitions.type(self, target);
+}
+
+@Surrogate(feature="allocatedLogicalFunctions")
+pattern LogicalComponent__allocatedLogicalFunctions(self : LogicalComponent, target : LogicalFunction) {
+	LogicalComponent.allocatedFunctions(self, target);
+}
+
+@Surrogate(feature="realizingPhysicalComponents")
+pattern LogicalComponent__realizingPhysicalComponents(self : LogicalComponent, target : PhysicalComponent) {
+	LogicalComponent.allocatingComponents(self, target);
+}
+
+@Surrogate(feature="realizedSystems")
+pattern LogicalComponent__realizedSystems(self : LogicalComponent, target : System) {
+	LogicalComponent.allocatedComponents(self, target);
+}
+
+

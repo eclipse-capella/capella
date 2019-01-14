@@ -1,0 +1,124 @@
+/*******************************************************************************
+ * Copyright (c) 2006, 2019 THALES DMS FRANCE.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
+
+/* Generated file */
+
+package org.polarsys.capella.viatra.core.data.fa.surrogate
+
+import "http://www.polarsys.org/capella/core/fa/1.3.0"
+
+// Start of user code for imports 
+import "http://www.polarsys.org/capella/core/oa/1.3.0"
+import "http://www.polarsys.org/capella/core/common/1.3.0"
+import "http://www.polarsys.org/capella/core/ctx/1.3.0"
+import "http://www.polarsys.org/capella/core/la/1.3.0"
+import "http://www.polarsys.org/capella/core/pa/1.3.0"
+import "http://www.polarsys.org/capella/common/core/1.3.0"
+import "http://www.polarsys.org/capella/core/core/1.3.0"
+import "http://www.polarsys.org/capella/core/interaction/1.3.0"
+import "http://www.polarsys.org/capella/common/activity/1.3.0"
+
+// End of user code
+
+@Surrogate(feature="subFunctions")
+pattern AbstractFunction__subFunctions(self : AbstractFunction, target : AbstractFunction) {
+	// sub function directly in function
+	AbstractFunction.ownedFunctions(self, target);
+} or { // sub function in function first level package
+	find _AbstractFunction__ownedFunctionPkgs(self, pkg);
+	find _FunctionPkg__ownedFunctions(pkg, target);
+}
+or { // sub function in function first level package sub packages
+	find _AbstractFunction__ownedFunctionPkgs(self, pkg);
+	find _FunctionPkg__ownedFunctionPkgs+(pkg, subpkg);
+	find _FunctionPkg__ownedFunctions(subpkg, target);
+}
+
+private pattern _AbstractFunction__ownedFunctionPkgs(af : AbstractFunction, ownedpkg : FunctionPkg) {
+	OperationalActivity.ownedOperationalActivityPkgs(af, ownedpkg);
+} or {
+	SystemFunction.ownedSystemFunctionPkgs(af, ownedpkg);
+} or {
+	LogicalFunction.ownedLogicalFunctionPkgs(af, ownedpkg);
+} or {
+	PhysicalFunction.ownedPhysicalFunctionPkgs(af, ownedpkg);
+}
+
+private pattern _FunctionPkg__ownedFunctionPkgs(pkg : FunctionPkg, ownedpkg : FunctionPkg) {
+	OperationalActivityPkg.ownedOperationalActivityPkgs(pkg, ownedpkg);
+} or {
+	SystemFunctionPkg.ownedSystemFunctionPkgs(pkg, ownedpkg);
+} or {
+	LogicalFunctionPkg.ownedLogicalFunctionPkgs(pkg, ownedpkg);
+} or {
+	PhysicalFunctionPkg.ownedPhysicalFunctionPkgs(pkg, ownedpkg);
+}
+
+private pattern _FunctionPkg__ownedFunctions(pkg : FunctionPkg, af : AbstractFunction) {
+	OperationalActivityPkg.ownedOperationalActivities(pkg, af);
+} or {
+	SystemFunctionPkg.ownedSystemFunctions(pkg, af);
+} or {
+	LogicalFunctionPkg.ownedLogicalFunctions(pkg, af);
+} or {
+	PhysicalFunctionPkg.ownedPhysicalFunctions(pkg, af);
+}
+
+
+@Surrogate(feature="outFunctionRealizations")
+pattern AbstractFunction__outFunctionRealizations(self : AbstractFunction, target : FunctionRealization) {
+	AbstractFunction.outgoingTraces(self, target);
+}
+
+@Surrogate(feature="inFunctionRealizations")
+pattern AbstractFunction__inFunctionRealizations(self : AbstractFunction, target : FunctionRealization) {
+	AbstractFunction.incomingTraces(self, target);
+}
+
+@Surrogate(feature="componentFunctionalAllocations")
+pattern AbstractFunction__componentFunctionalAllocations(self : AbstractFunction, target : ComponentFunctionalAllocation) {
+	AbstractFunction.incomingTraces(self, target);
+}
+
+@Surrogate(feature="allocationBlocks")
+pattern AbstractFunction__allocationBlocks(self : AbstractFunction, target : AbstractFunctionalBlock) {
+	AbstractFunction.componentFunctionalAllocations.block(self, target);
+}
+
+@Surrogate(feature="involvingCapabilities")
+pattern AbstractFunction__involvingCapabilities(self : AbstractFunction, target : Capability) {
+	AbstractFunction.involvingInvolvements(self, afaci);
+AbstractFunctionAbstractCapabilityInvolvement.capability(afaci, target);
+}
+
+@Surrogate(feature="involvingCapabilityRealizations")
+pattern AbstractFunction__involvingCapabilityRealizations(self : AbstractFunction, target : CapabilityRealization) {
+	AbstractFunction.involvingInvolvements(self, afaci);
+AbstractFunctionAbstractCapabilityInvolvement.capability(afaci, target);
+}
+
+@Surrogate(feature="involvingFunctionalChains")
+pattern AbstractFunction__involvingFunctionalChains(self : AbstractFunction, target : FunctionalChain) {
+	AbstractFunction.involvingInvolvements(self, fci);
+FunctionalChainInvolvement.involver(fci, target);
+}
+
+@Surrogate(feature="linkedStateMachine")
+pattern AbstractFunction__linkedStateMachine(self : AbstractFunction, target : StateMachine) {
+	AbstractFunction.behavior(self, target);
+}
+
+@Surrogate(feature="linkedFunctionSpecification")
+pattern AbstractFunction__linkedFunctionSpecification(self : AbstractFunction, target : FunctionSpecification) {
+	AbstractFunction.behavior(self, target);
+}
+
+

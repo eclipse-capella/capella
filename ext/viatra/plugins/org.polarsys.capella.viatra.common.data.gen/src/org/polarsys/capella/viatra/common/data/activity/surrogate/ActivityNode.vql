@@ -1,0 +1,47 @@
+/*******************************************************************************
+ * Copyright (c) 2006, 2019 THALES DMS FRANCE.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
+
+/* Generated file */
+
+package org.polarsys.capella.viatra.common.data.activity.surrogate
+
+import "http://www.polarsys.org/capella/common/activity/1.3.0"
+
+// Start of user code for imports 
+
+// End of user code
+
+@Surrogate(feature="inActivityPartition")
+pattern ActivityNode__inActivityPartition(self : ActivityNode, target : ActivityPartition) {
+	ActivityPartition.ownedNodes(target, self);
+}
+
+@Surrogate(feature="inInterruptibleRegion")
+pattern ActivityNode__inInterruptibleRegion(self : ActivityNode, target : InterruptibleActivityRegion) {
+	InterruptibleActivityRegion.ownedNodes(target, self);
+}
+
+@Surrogate(feature="inStructuredNode")
+pattern ActivityNode__inStructuredNode(self : ActivityNode, target : InterruptibleActivityRegion) {
+	InterruptibleActivityRegion.ownedNodes(target, self);
+}
+
+@Surrogate(feature="outgoing")
+pattern ActivityNode__outgoing(self : ActivityNode, target : ActivityEdge) {
+	ActivityEdge.source(target, self);
+}
+
+@Surrogate(feature="incoming")
+pattern ActivityNode__incoming(self : ActivityNode, target : ActivityEdge) {
+	ActivityEdge.target(target, self);
+}
+
+

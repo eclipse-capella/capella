@@ -1,0 +1,68 @@
+/*******************************************************************************
+ * Copyright (c) 2006, 2019 THALES DMS FRANCE.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
+
+/* Generated file */
+
+package org.polarsys.capella.viatra.core.data.fa.surrogate
+
+import "http://www.polarsys.org/capella/core/fa/1.3.0"
+
+// Start of user code for imports 
+import "http://www.polarsys.org/capella/common/core/1.3.0"
+import "http://www.polarsys.org/capella/core/information/1.3.0"
+import "http://www.polarsys.org/capella/core/cs/1.3.0"
+
+// End of user code
+
+@Surrogate(feature="componentExchanges")
+pattern ComponentPort__componentExchanges(self : ComponentPort, target : ComponentExchange) {
+	ComponentPort.informationFlows(self, target);
+} or {
+	ComponentExchangeEnd.port(cee, self);
+	ComponentExchange.ownedComponentExchangeEnds(target, cee);
+}
+
+@Surrogate(feature="allocatedFunctionPorts")
+pattern ComponentPort__allocatedFunctionPorts(self : ComponentPort, target : FunctionPort) {
+	ComponentPort.outgoingPortAllocations.allocatedPort(self, target);
+}
+
+@Surrogate(feature="delegatedComponentPorts")
+pattern ComponentPort__delegatedComponentPorts(self : ComponentPort, target : ComponentPort) {
+	ComponentPort.outgoingInformationFlows(self, ce);
+ComponentExchange.kind(ce, ::DELEGATION);
+ComponentExchange.targetPort(ce, target);
+}
+
+@Surrogate(feature="delegatingComponentPorts")
+pattern ComponentPort__delegatingComponentPorts(self : ComponentPort, target : ComponentPort) {
+	ComponentPort.incomingInformationFlows(self, ce);
+ComponentExchange.kind(ce, ::DELEGATION);
+ComponentExchange.sourcePort(ce, target);
+}
+
+@Surrogate(feature="allocatingPhysicalPorts")
+pattern ComponentPort__allocatingPhysicalPorts(self : ComponentPort, target : PhysicalPort) {
+	ComponentPort.incomingTraces(self, cpa);
+ComponentPortAllocation.allocatingPort(cpa, target);
+}
+
+@Surrogate(feature="realizedComponentPorts")
+pattern ComponentPort__realizedComponentPorts(self : ComponentPort, target : ComponentPort) {
+	ComponentPort.outgoingPortRealizations.realizedPort(self, target);
+}
+
+@Surrogate(feature="realizingComponentPorts")
+pattern ComponentPort__realizingComponentPorts(self : ComponentPort, target : ComponentPort) {
+	ComponentPort.incomingPortRealizations.realizingPort(self, target);
+}
+
+

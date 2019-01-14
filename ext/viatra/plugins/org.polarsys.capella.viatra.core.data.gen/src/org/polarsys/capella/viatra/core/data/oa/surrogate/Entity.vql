@@ -1,0 +1,69 @@
+/*******************************************************************************
+ * Copyright (c) 2006, 2019 THALES DMS FRANCE.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
+
+/* Generated file */
+
+package org.polarsys.capella.viatra.core.data.oa.surrogate
+
+import "http://www.polarsys.org/capella/core/oa/1.3.0"
+
+// Start of user code for imports 
+import "http://www.polarsys.org/capella/common/core/1.3.0"
+import "http://www.polarsys.org/capella/core/information/1.3.0"
+import "http://www.polarsys.org/capella/core/fa/1.3.0"
+import "http://www.polarsys.org/capella/core/core/1.3.0"
+import "http://www.polarsys.org/capella/core/ctx/1.3.0"
+import "http://www.polarsys.org/capella/core/cs/1.3.0"
+
+// End of user code
+
+@Surrogate(feature="roleAllocations")
+pattern Entity__roleAllocations(self : Entity, target : RoleAllocation) {
+	Entity.outgoingTraces(self, target);
+}
+
+@Surrogate(feature="subEntities")
+pattern Entity__subEntities(self : Entity, target : Entity) {
+	Entity.ownedPartitions.type(self, target);
+}
+
+@Surrogate(feature="allocatedOperationalActivities")
+pattern Entity__allocatedOperationalActivities(self : Entity, target : OperationalActivity) {
+	Entity.allocatedFunctions(self, target);
+}
+
+@Surrogate(feature="allocatedRoles")
+pattern Entity__allocatedRoles(self : Entity, target : Role) {
+	Entity.roleAllocations.role(self, target);
+}
+
+@Surrogate(feature="realizingSystems")
+pattern Entity__realizingSystems(self : Entity, target : System) {
+	Entity.incomingTraces(self, oer);
+	OperationalEntityRealization.allocatingComponent(oer, target);
+} or {
+	Entity.incomingTraces(self, oar);
+	OperationalActorRealization.allocatingComponent(oar, target);
+}
+
+@Surrogate(feature="realizingActors")
+pattern Entity__realizingActors(self : Entity, target : Actor) {
+	Entity.incomingTraces(self, oer);
+	OperationalEntityRealization.allocatingComponent(oer, target);
+}
+
+@Surrogate(feature="involvingOperationalCapabilities")
+pattern Entity__involvingOperationalCapabilities(self : Entity, target : OperationalCapability) {
+	Entity.involvingInvolvements(self, eoci);
+EntityOperationalCapabilityInvolvement.capability(eoci, target);
+}
+
+

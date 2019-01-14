@@ -1,0 +1,52 @@
+/*******************************************************************************
+ * Copyright (c) 2006, 2019 THALES DMS FRANCE.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
+
+/* Generated file */
+
+package org.polarsys.capella.viatra.core.data.pa.surrogate
+
+import "http://www.polarsys.org/capella/core/pa/1.3.0"
+
+// Start of user code for imports 
+import "http://www.polarsys.org/capella/common/core/1.3.0"
+import "http://www.polarsys.org/capella/core/fa/1.3.0"
+import "http://www.polarsys.org/capella/core/la/1.3.0"
+
+// End of user code
+
+@Surrogate(feature="allocatorPhysicalActors")
+pattern PhysicalFunction__allocatorPhysicalActors(self : PhysicalFunction, target : PhysicalActor) {
+	PhysicalFunction.incomingTraces(self, cfa);
+ComponentFunctionalAllocation.sourceElement(cfa, target);
+}
+
+@Surrogate(feature="allocatorPhysicalComponents")
+pattern PhysicalFunction__allocatorPhysicalComponents(self : PhysicalFunction, target : PhysicalComponent) {
+	PhysicalFunction.incomingTraces(self, cfa);
+ComponentFunctionalAllocation.sourceElement(cfa, target);
+}
+
+@Surrogate(feature="realizedLogicalFunctions")
+pattern PhysicalFunction__realizedLogicalFunctions(self : PhysicalFunction, target : LogicalFunction) {
+	PhysicalFunction.outFunctionRealizations.allocatedFunction(self, target);
+}
+
+@Surrogate(feature="containedPhysicalFunctions")
+pattern PhysicalFunction__containedPhysicalFunctions(self : PhysicalFunction, target : PhysicalFunction) {
+	PhysicalFunction.ownedFunctions(self, target);
+}
+
+@Surrogate(feature="childrenPhysicalFunctions")
+pattern PhysicalFunction__childrenPhysicalFunctions(self : PhysicalFunction, target : PhysicalFunction) {
+	PhysicalFunction.subFunctions(self, target);
+}
+
+

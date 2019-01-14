@@ -1,0 +1,113 @@
+/*******************************************************************************
+ * Copyright (c) 2006, 2019 THALES DMS FRANCE.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
+
+/* Generated file */
+
+package org.polarsys.capella.viatra.core.data.cs.surrogate
+
+import "http://www.polarsys.org/capella/core/cs/1.3.0"
+
+// Start of user code for imports 
+import "http://www.polarsys.org/capella/common/core/1.3.0"
+import "http://www.polarsys.org/capella/core/fa/1.3.0"
+import "http://www.polarsys.org/capella/core/la/1.3.0"
+import "http://www.polarsys.org/capella/core/pa/1.3.0"
+import "http://www.polarsys.org/capella/core/information/1.3.0"
+
+// End of user code
+
+@Surrogate(feature="implementorComponents")
+pattern Interface__implementorComponents(self : Interface, target : Component) {
+	Interface.interfaceImplementations.interfaceImplementor(self, target);
+}
+
+@Surrogate(feature="userComponents")
+pattern Interface__userComponents(self : Interface, target : Component) {
+	Interface.interfaceUses.interfaceUser(self, target);
+}
+
+@Surrogate(feature="interfaceImplementations")
+pattern Interface__interfaceImplementations(self : Interface, target : InterfaceImplementation) {
+	InterfaceImplementation.implementedInterface(target, self);
+}
+
+@Surrogate(feature="interfaceUses")
+pattern Interface__interfaceUses(self : Interface, target : InterfaceUse) {
+	InterfaceUse.usedInterface(target, self);
+}
+
+@Surrogate(feature="provisioningInterfaceAllocations")
+pattern Interface__provisioningInterfaceAllocations(self : Interface, target : InterfaceAllocation) {
+	Interface.incomingTraces(self, target);
+}
+
+@Surrogate(feature="allocatingInterfaces")
+pattern Interface__allocatingInterfaces(self : Interface, target : Interface) {
+	Interface.provisioningInterfaceAllocations.allocatingInterfaceAllocator(self, target);
+}
+
+@Surrogate(feature="allocatingComponents")
+pattern Interface__allocatingComponents(self : Interface, target : Component) {
+	Interface.provisionedInterfaceAllocations.allocatingInterfaceAllocator(self, target);
+}
+
+@Surrogate(feature="exchangeItems")
+pattern Interface__exchangeItems(self : Interface, target : ExchangeItem) {
+	Interface.ownedExchangeItemAllocations.allocatedItem(self, target);
+}
+
+@Surrogate(feature="requiringComponents")
+pattern Interface__requiringComponents(self : Interface, target : Component) {
+	Interface.requiringComponentPorts(self, port);
+Component.containedComponentPorts(target, port);
+}
+
+@Surrogate(feature="requiringComponentPorts")
+pattern Interface__requiringComponentPorts(self : Interface, target : ComponentPort) {
+	ComponentPort.requiredInterfaces(target, self);
+}
+
+@Surrogate(feature="providingComponents")
+pattern Interface__providingComponents(self : Interface, target : Component) {
+	Interface.providingComponentPorts(self, port);
+Component.containedComponentPorts(target, port);
+}
+
+@Surrogate(feature="providingComponentPorts")
+pattern Interface__providingComponentPorts(self : Interface, target : ComponentPort) {
+	ComponentPort.providedInterfaces(target, self);
+}
+
+@Surrogate(feature="realizingLogicalInterfaces")
+pattern Interface__realizingLogicalInterfaces(self : Interface, target : Interface) {
+	ContextInterfaceRealization.targetElement(cir, self); 
+ContextInterfaceRealization.sourceElement(cir, target); 
+}
+
+@Surrogate(feature="realizedContextInterfaces")
+pattern Interface__realizedContextInterfaces(self : Interface, target : Interface) {
+	ContextInterfaceRealization.sourceElement(cir, self);
+ContextInterfaceRealization.targetElement(cir, target);
+}
+
+@Surrogate(feature="realizingPhysicalInterfaces")
+pattern Interface__realizingPhysicalInterfaces(self : Interface, target : Interface) {
+	LogicalInterfaceRealization.targetElement(cir, self); 
+LogicalInterfaceRealization.sourceElement(cir, target); 
+}
+
+@Surrogate(feature="realizedLogicalInterfaces")
+pattern Interface__realizedLogicalInterfaces(self : Interface, target : Interface) {
+	LogicalInterfaceRealization.sourceElement(cir, self);
+LogicalInterfaceRealization.targetElement(cir, target); 
+}
+
+

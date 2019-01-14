@@ -23,6 +23,7 @@ location eclipse-releases-oxygen "http://download.eclipse.org/releases/oxygen/20
 	org.eclipse.emf.transaction.feature.group
 	org.eclipse.equinox.executable.feature.group
 	com.ibm.icu
+	org.eclipse.viatra.query.sdk.feature.source.feature.group
 }
 
 location sirius-6.1.1 "http://download.eclipse.org/sirius/updates/milestones/6.1.1rc1/oxygen" {

@@ -1,0 +1,84 @@
+/*******************************************************************************
+ * Copyright (c) 2006, 2019 THALES DMS FRANCE.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
+
+/* Generated file */
+
+package org.polarsys.capella.viatra.core.data.pa.surrogate
+
+import "http://www.polarsys.org/capella/core/pa/1.3.0"
+
+// Start of user code for imports 
+import "http://www.polarsys.org/capella/core/cs/1.3.0"
+import "http://www.polarsys.org/capella/core/information/1.3.0"
+import "http://www.polarsys.org/capella/common/core/1.3.0"
+import "http://www.polarsys.org/capella/core/la/1.3.0"
+import "http://www.polarsys.org/capella/core/fa/1.3.0"
+import "http://www.polarsys.org/capella/core/core/1.3.0"
+
+// End of user code
+
+@Surrogate(feature="logicalComponentRealizations")
+pattern PhysicalComponent__logicalComponentRealizations(self : PhysicalComponent, target : LogicalComponentRealization) {
+	PhysicalComponent.provisionedComponentAllocations(self, target);
+}
+
+@Surrogate(feature="logicalInterfaceRealizations")
+pattern PhysicalComponent__logicalInterfaceRealizations(self : PhysicalComponent, target : LogicalInterfaceRealization) {
+	PhysicalComponent.provisionedInterfaceAllocations(self, target);
+}
+
+@Surrogate(feature="subPhysicalComponents")
+pattern PhysicalComponent__subPhysicalComponents(self : PhysicalComponent, target : PhysicalComponent) {
+	PhysicalComponent.ownedPartitions.type(self, target);
+}
+
+@Surrogate(feature="realizedLogicalComponents")
+pattern PhysicalComponent__realizedLogicalComponents(self : PhysicalComponent, target : LogicalComponent) {
+	PhysicalComponent.outgoingTraces(self, lcr);
+	LogicalComponentRealization.targetElement(lcr, target);
+}
+
+@Surrogate(feature="allocatedPhysicalFunctions")
+pattern PhysicalComponent__allocatedPhysicalFunctions(self : PhysicalComponent, target : PhysicalFunction) {
+	PhysicalComponent.allocatedFunctions(self, target);
+}
+
+@Surrogate(feature="deployedPhysicalComponents")
+pattern PhysicalComponent__deployedPhysicalComponents(self : PhysicalComponent, target : PhysicalComponent) {
+	Part.abstractType(part, self);
+	Part.deploymentLinks.deployedElement(part, deployedPart);
+	Part.abstractType(deployedPart, target);
+} or {
+	Part.abstractType(part, self);
+	Part.deploymentLinks.deployedElement(part, target);
+}
+
+@Surrogate(feature="deployingPhysicalComponents")
+pattern PhysicalComponent__deployingPhysicalComponents(self : PhysicalComponent, target : PhysicalComponent) {
+	Part.abstractType(part, self);
+	Part.deployingLinks.location(part, deployedPart);
+	Part.abstractType(deployedPart, target);
+} or {
+	Part.abstractType(part, self);
+	Part.deploymentLinks.deployedElement(part, target);
+}
+
+@Surrogate(feature="deployingPhysicalActors")
+pattern PhysicalComponent__deployingPhysicalActors(self : PhysicalComponent, target : PhysicalActor) {
+	Part.abstractType(part, self);
+	Part.deployingLinks.location(part, deployedPart);
+	Part.abstractType(deployedPart, target);
+} or {
+	Part.abstractType(part, self);
+	Part.deploymentLinks.deployedElement(part, target);
+}
+
+
