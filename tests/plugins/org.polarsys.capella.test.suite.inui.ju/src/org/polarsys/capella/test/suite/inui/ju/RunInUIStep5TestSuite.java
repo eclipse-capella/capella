@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,6 +20,7 @@ import org.polarsys.capella.test.diagram.tools.ju.testsuites.main.DiagramToolsTe
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
 import org.polarsys.capella.test.massactions.ju.testsuites.MassActionsTestSuite;
+import org.polarsys.capella.test.platform.ju.testsuites.PlatformTestSuite;
 import org.polarsys.capella.test.richtext.ju.testsuites.RichtextTestSuite;
 
 import junit.framework.Test;
@@ -45,6 +46,7 @@ public class RunInUIStep5TestSuite extends BasicTestSuite {
     tests.add(new MassActionsTestSuite());
     tests.add(new LayoutTestSuite());
     tests.add(new RichtextTestSuite());
+    tests.add(new PlatformTestSuite());
 
     // tests.add(new DocTestSuite());
     return tests;

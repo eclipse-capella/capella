@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,6 +15,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
@@ -24,7 +26,11 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -233,5 +239,28 @@ public class TestHelper {
       Assert.fail(exception.getMessage());
     }
     return result;
+  }
+  
+  /**
+   * 
+   * @return all derived references from Capella packages
+   */
+  public static Set<EReference> getAllCapellaDerivedReferences() {
+    Set<EReference> allDerivedReferences = new HashSet<>();
+    for (String nsURI : EPackage.Registry.INSTANCE.keySet()) {
+      if (nsURI.startsWith("http://www.polarsys.org/capella")) {
+        EPackage ePackage = EPackage.Registry.INSTANCE.getEPackage(nsURI);
+        for (EClassifier eClassifier : ePackage.getEClassifiers())
+          if (eClassifier instanceof EClass) {
+            EClass eClass = (EClass) eClassifier;
+            for (EReference eReference : eClass.getEReferences()) {
+              if (eReference.isDerived()) {
+                allDerivedReferences.add(eReference);
+              }
+            }
+          }
+      }
+    }
+    return allDerivedReferences;
   }
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,6 +20,7 @@ import org.polarsys.capella.test.platform.ju.testcases.CapellaDefaultEditorEnabl
 import org.polarsys.capella.test.platform.ju.testcases.CapellaPlatformVersionNotNull;
 import org.polarsys.capella.test.platform.ju.testcases.CapellaSiriusCustomisationEnabled;
 import org.polarsys.capella.test.platform.ju.testcases.InvalidRepresentationDescriptorAdapterFactory;
+import org.polarsys.capella.test.platform.ju.testcases.ViatraSurrogateAllDerivedFeaturesImplemented;
 
 import junit.framework.Test;
 
@@ -46,6 +47,7 @@ public class PlatformTestSuite extends BasicTestSuite {
     tests.add(new CapellaDefaultEditorEnabled());
     tests.add(new InvalidRepresentationDescriptorAdapterFactory());
     tests.add(new CapellaCDOGenerationOfDerivedFeature());
+    tests.add(new ViatraSurrogateAllDerivedFeaturesImplemented());
     return tests;
   }
 
