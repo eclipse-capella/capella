@@ -80,7 +80,7 @@ public class MDCHK_Capability_Components_Involved extends AbstractValidationRule
     Object[] msgArguments = new Object[] { capability.getName(),
         EObjectLabelProviderHelper.getMetaclassLabel(capability, false), element.getName(),
         EObjectLabelProviderHelper.getMetaclassLabel(element, false),
-        getFunctionalChainType(capability) + " or scenarios" };
+        getFunctionalChainType(capability) + " or Scenarios" };
     Collection<EObject> resultLocus = new ArrayList<EObject>();
     resultLocus.add(capability);
     resultLocus.add(element);
@@ -89,9 +89,9 @@ public class MDCHK_Capability_Components_Involved extends AbstractValidationRule
   }
 
   private String getFunctionalChainType(AbstractCapability capability) {
-    String type = "functional chains";
+    String type = "Functional Chains";
     if (capability instanceof OperationalCapability)
-      type = "operational processes";
+      type = "Operational Processes";
 
     return type;
   }
