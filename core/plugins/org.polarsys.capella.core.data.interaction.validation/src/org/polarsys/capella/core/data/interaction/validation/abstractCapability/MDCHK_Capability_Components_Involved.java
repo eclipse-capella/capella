@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2018, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -84,7 +84,7 @@ public class MDCHK_Capability_Components_Involved extends AbstractValidationRule
     Collection<EObject> resultLocus = new ArrayList<EObject>();
     resultLocus.add(capability);
     resultLocus.add(element);
-    statuses.add(ConstraintStatus.createStatus(ctx, eObj, resultLocus, IStatus.INFO, ERROR_CODE,
+    statuses.add(ConstraintStatus.createStatus(ctx, eObj, resultLocus, IStatus.ERROR, ERROR_CODE,
         Messages.DWF_CA_07_Validator_Message, msgArguments));
   }
 
