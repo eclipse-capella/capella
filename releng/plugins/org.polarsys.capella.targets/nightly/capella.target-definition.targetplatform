@@ -24,7 +24,7 @@ location eclipse-releases-oxygen "http://download.eclipse.org/releases/oxygen/20
 	com.ibm.icu
 }
 
-location sirius-6.1.1 "http://download.eclipse.org/sirius/updates/milestones/6.1.1rc1/oxygen" {
+location sirius-6.1.x "http://download.eclipse.org/sirius/updates/milestones/6.1.2rc1/oxygen" {
 	org.eclipse.sirius.doc.feature.feature.group
 	org.eclipse.sirius.runtime.feature.group
 	org.eclipse.sirius.runtime.source.feature.group
