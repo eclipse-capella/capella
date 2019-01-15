@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,6 +18,8 @@ import java.util.List;
 import java.util.Set;
 
 import org.eclipse.core.resources.IMarker;
+import org.eclipse.emf.common.util.BasicDiagnostic;
+import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.validation.service.IConstraintDescriptor;
 import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.jface.action.MenuManager;
@@ -56,10 +58,16 @@ public class QuickFixAllConstraintMarkersHandler extends QuickfixHandler {
     }
 
     Collection<IContributionItem> items = new ArrayList<IContributionItem>();
-
+    
     IConstraintDescriptor selectedMarkerDesc = MarkerViewHelper.getConstraintDescriptor(selection.get(0));
+    Diagnostic diagnostic = (Diagnostic) selection.get(0).getAdapter(Diagnostic.class);
+    Diagnostic basicDiagnostic = null;
+    
+    if(diagnostic instanceof BasicDiagnostic) {
+      basicDiagnostic = (BasicDiagnostic) diagnostic;
+    }
 
-    if (selectedMarkerDesc != null) {
+    if (selectedMarkerDesc != null || basicDiagnostic != null) {
 
       List<IMarker> sameConstraintMarkers = new ArrayList<IMarker>();
 
@@ -68,8 +76,15 @@ public class QuickFixAllConstraintMarkersHandler extends QuickfixHandler {
       // get all markers that has the same constraint id
       for (IMarker marker : allMarkers) {
 
-        if (MarkerViewHelper.getConstraintDescriptor(marker) == selectedMarkerDesc) {
+        if ((selectedMarkerDesc != null) && (MarkerViewHelper.getConstraintDescriptor(marker) == selectedMarkerDesc)) {
           sameConstraintMarkers.add(marker);
+        }
+        else if (basicDiagnostic != null) {
+          Diagnostic diag = (Diagnostic) marker.getAdapter(Diagnostic.class);
+          if ((diag != null) && diag.getSource().equals(basicDiagnostic.getSource())
+              && (diag.getCode() == basicDiagnostic.getCode())) {
+              sameConstraintMarkers.add(marker);
+          }
         }
       }
       // no other similar markers

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -92,6 +92,7 @@ final public class MarkerResolutionCache {
 
     // Workaround to support a quickfix for Class Dangling Reference
     allConstraintsIds.add("org.eclipse.emf.ecore.4");
+    allConstraintsIds.add("org.eclipse.emf.ecore.16");
 
     Set<String> ids = null; // the constraint ids obtained from the contribution to the extension point
     for (AbstractCapellaMarkerResolution key : map.keySet()) {

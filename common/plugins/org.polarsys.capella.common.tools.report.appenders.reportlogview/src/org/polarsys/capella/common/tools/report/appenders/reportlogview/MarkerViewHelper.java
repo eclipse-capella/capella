@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,6 +25,7 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.model.Category;
@@ -159,6 +160,10 @@ public class MarkerViewHelper {
             result = result.substring(lastDot + 1);
           }
         }
+      }
+      else if (diag instanceof BasicDiagnostic) {
+        BasicDiagnostic basigDiag = (BasicDiagnostic) diag;
+        return basigDiag.getSource() + "." + basigDiag.getCode();
       }
 //    }
     return result;
