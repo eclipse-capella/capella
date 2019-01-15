@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -48,7 +48,7 @@ public interface IMappingNameConstants {
   String HIDE_REGION_NAMES = "HideRegionNames";//$NON-NLS-1$
   String DISPLAY_REGION_NAME_ON_ENTRY_EXIT_POINTS = "DisplayRegionNameOnEntryExitPoints";//$NON-NLS-1$
   String SHOW_TRIGGER_SOURCE_FUNCTION = "ShowTriggerFESource";//$NON-NLS-1$
-  
+
   /**
    * Entity Architecture
    */
@@ -237,7 +237,7 @@ public interface IMappingNameConstants {
   String SAB_PHYSICAL_PATH_INTERNAL_LINK_MAPPING_NAME = "SAB_InternPhysicalPathLink"; //$NON-NLS-1$
   String SAB_PHYSICAL_PATH_END = "SAB_PhysicalPathEnd"; //$NON-NLS-1$
   String SAB_PHYSICAL_CATEGORY_MAPPING_NAME = "SAB_PhysicalCategory"; //$NON-NLS-1$
-  String COC_ENTITY_MAPPING_NAME = "COC2_Entities"; //$NON-NLS-1$  
+  String COC_ENTITY_MAPPING_NAME = "COC2_Entities"; //$NON-NLS-1$
 
   String SAB_PHYSICAL_CATEGORY_PIN_MAPPING_NAME = "SAB_PhysicalCategory_Pin"; //$NON-NLS-1$
 
@@ -308,7 +308,7 @@ public interface IMappingNameConstants {
   String PAB_PHYSICAL_PATH_END = "PAB_PhysicalPathEnd"; //$NON-NLS-1$
   String PAB_COMPONENT_PORT_MAPPING_NAME = "PAB_Port"; //$NON-NLS-1$
   String PAB_PHYSICAL_PORT_MAPPING_NAME = PAB_COMPONENT_PORT_MAPPING_NAME;
-  String PAB_CONNECTION_MAPPING_NAME = "PAB_Exchange"; //$NON-NLS-1$ 
+  String PAB_CONNECTION_MAPPING_NAME = "PAB_Exchange"; //$NON-NLS-1$
   String PAB_EXCHANGE_CATEGORY_INPUTPORT_MAPPING_NAME = "PAB InputPin by Categorie"; //$NON-NLS-1$
   String PAB_EXCHANGE_CATEGORY_OUTPUTPORT_MAPPING_NAME = "PAB OutputPin by Categorie"; //$NON-NLS-1$
   String PAB_EXCHANGE_CATEGORY_MAPPING_NAME = "PAB_FunctionExchange by Categorie"; //$NON-NLS-1$
@@ -526,4 +526,11 @@ public interface IMappingNameConstants {
   String SHOW_CE_EXCHANGE_CONTEXT = "ShowCEExchangeContext"; //$NON-NLS-1$
   String SHOW_FE_EXCHANGE_CONTEXT = "ShowFEExchangeContext"; //$NON-NLS-1$
   String SHOW_EI_EXCHANGE_CONTEXT = "ShowEIExchangeContext"; //$NON-NLS-1$
+
+  // Contextual Capability Realization Involvement Diagram
+  String CCRI_ACTOR = "CCRI Actor";
+  String CCRI_COMPONENT = "CCRI Component";
+  String CCRI_CAPABILITY_REALIZATION = "CCRI CapabilityRealization";
+  String CCRI_ACTOR_CAPABILITY_REALIZATION_INVOLVEMENT = "CCRI ActorCapabilityRealizationInvolvement";
+  String CCRI_SYSTEM_COMPONENT_CAPABILITY_REALIZATION_INVOLVEMENT = "CCRI involvement";
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -1061,6 +1061,22 @@ public class DiagramServices {
     };
   }
 
+  public DDiagramElement getDiagramElements(DDiagram diagram, DiagramElementMapping mapping, EObject semanticElement) {
+
+    Collection<DSemanticDecorator> views = getDiagramElements(diagram, semanticElement);
+
+    // There may be more views attached to the same semantic element, we want only its graphical Node representation
+    for (DSemanticDecorator view : views) {
+
+      if (view instanceof DDiagramElement && ((DDiagramElement) view).getMapping().equals(mapping)) {
+
+        return (DDiagramElement) view;
+      }
+    }
+
+    return null;
+  }
+
   public Iterable<DDiagramElement> getDiagramElements(DDiagramElement diagramElement, DiagramElementMapping mapping) {
     boolean isEdgeMapping = mapping instanceof EdgeMapping || mapping instanceof EdgeMappingImport;
 
@@ -1238,7 +1254,8 @@ public class DiagramServices {
           // Search all edit parts linked to selected object.
           List<IGraphicalEditPart> allEditParts = dialectViewer.findEditPartsForElement((EObject) selectedElement,
               IGraphicalEditPart.class);
-          // Iterate over retrieved edit parts to remove the ones related to 'label' edit part.
+          // Iterate over retrieved edit parts to remove the ones related to 'label' edit
+          // part.
           for (Iterator<IGraphicalEditPart> iterator = allEditParts.iterator(); iterator.hasNext();) {
             IGraphicalEditPart editPart = iterator.next();
 

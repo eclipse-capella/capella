@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -58,8 +58,8 @@ public class ScenarioContraintsService {
       Execution e = (Execution) object;
       System.out.print("moving execution " + e.getName()); //$NON-NLS-1$
     } else if (object instanceof SequenceMessage) {
-        SequenceMessage msg = (SequenceMessage) object;
-        System.out.print("moving message " + msg.getName()); //$NON-NLS-1$
+      SequenceMessage msg = (SequenceMessage) object;
+      System.out.print("moving message " + msg.getName()); //$NON-NLS-1$
     } else if (object instanceof InteractionState) {
       InteractionState is = (InteractionState) object;
       System.out.print("moving interaction state " + is.getName()); //$NON-NLS-1$
@@ -72,9 +72,9 @@ public class ScenarioContraintsService {
     return object;
   }
 
-  
   private static void display(EventEnd e) {
-    if (e == null) System.out.print("*NULL*"); //$NON-NLS-1$
+    if (e == null)
+      System.out.print("*NULL*"); //$NON-NLS-1$
     if (e instanceof SingleEventEnd) {
       displaySingle((SingleEventEnd) e);
     }
@@ -84,11 +84,11 @@ public class ScenarioContraintsService {
   }
 
   private static void displaySingle(SingleEventEnd see) {
-    System.out.print(" (" +see.eClass().getName() + ") " + ((InteractionFragment) see.getSemanticEnd()).getName()); //$NON-NLS-1$ //$NON-NLS-2$
+    System.out.print(" (" + see.eClass().getName() + ") " + ((InteractionFragment) see.getSemanticEnd()).getName()); //$NON-NLS-1$ //$NON-NLS-2$
   }
 
   private static void displayCompound(CompoundEventEnd cee) {
-    System.out.print(" (" +cee.eClass().getName() + ") " + ((InteractionFragment) cee.getSemanticEnd()).getName()); //$NON-NLS-1$ //$NON-NLS-2$
+    System.out.print(" (" + cee.eClass().getName() + ") " + ((InteractionFragment) cee.getSemanticEnd()).getName()); //$NON-NLS-1$ //$NON-NLS-2$
     System.out.print(" [ "); //$NON-NLS-1$
     for (EventEnd ee : cee.getEventEnds()) {
       display(ee);
@@ -97,8 +97,8 @@ public class ScenarioContraintsService {
   }
 
   /**
-   * CHeck if the component (actor, system, logical or physicalComponent) is involved into the capability containing the scenario taken into parameters used in
-   * common.odesign
+   * CHeck if the component (actor, system, logical or physicalComponent) is involved into the capability containing the
+   * scenario taken into parameters used in common.odesign
    */
   public static Scenario ensureCapabilityInvolvment(Scenario scenario, InvolvedElement component) {
     AbstractCapability capability = (AbstractCapability) scenario.eContainer();
@@ -115,36 +115,40 @@ public class ScenarioContraintsService {
     } else if (component instanceof Actor) {
       result = CtxFactory.eINSTANCE.createActorCapabilityInvolvement();
       ((Capability) capability).getOwnedActorCapabilityInvolvements().add((ActorCapabilityInvolvement) result);
-    } else if (component instanceof SystemComponent) {
-      result = CsFactory.eINSTANCE.createSystemComponentCapabilityRealizationInvolvement();
-      ((CapabilityRealization) capability).getOwnedSystemComponentCapabilityRealizations().add((SystemComponentCapabilityRealizationInvolvement) result);
     } else if (component instanceof AbstractActor) {
       result = CsFactory.eINSTANCE.createActorCapabilityRealizationInvolvement();
-      ((CapabilityRealization) capability).getOwnedActorCapabilityRealizations().add((ActorCapabilityRealizationInvolvement) result);
+      ((CapabilityRealization) capability).getOwnedActorCapabilityRealizations()
+          .add((ActorCapabilityRealizationInvolvement) result);
+    } else if (component instanceof SystemComponent) {
+      result = CsFactory.eINSTANCE.createSystemComponentCapabilityRealizationInvolvement();
+      ((CapabilityRealization) capability).getOwnedSystemComponentCapabilityRealizations()
+          .add((SystemComponentCapabilityRealizationInvolvement) result);
     } else if (component instanceof Entity) {
-    	result = OaFactory.eINSTANCE.createEntityOperationalCapabilityInvolvement();
-    	((OperationalCapability) capability).getOwnedEntityOperationalCapabilityInvolvements().add((EntityOperationalCapabilityInvolvement) result);
+      result = OaFactory.eINSTANCE.createEntityOperationalCapabilityInvolvement();
+      ((OperationalCapability) capability).getOwnedEntityOperationalCapabilityInvolvements()
+          .add((EntityOperationalCapabilityInvolvement) result);
     } else if (component instanceof AbstractFunction) {
-    	result = InteractionFactory.eINSTANCE.createAbstractFunctionAbstractCapabilityInvolvement();
-    	capability.getOwnedAbstractFunctionAbstractCapabilityInvolvements().add ((AbstractFunctionAbstractCapabilityInvolvement) result);
+      result = InteractionFactory.eINSTANCE.createAbstractFunctionAbstractCapabilityInvolvement();
+      capability.getOwnedAbstractFunctionAbstractCapabilityInvolvements()
+          .add((AbstractFunctionAbstractCapabilityInvolvement) result);
     }
-    if(result != null){
+    if (result != null) {
       result.setInvolved(component);
     }
     return scenario;
   }
 
   public void reorderInstanceRole(EObject context, EObject irToMove, EObject predecessor) {
-	  InstanceRole ir = (InstanceRole) irToMove;
-	  InstanceRole pred = (InstanceRole) predecessor;
-	  Scenario scenario = (Scenario) ir.eContainer();
-	  
-	  scenario.getOwnedInstanceRoles().remove(ir);
-	  if (predecessor == null) {
-		  scenario.getOwnedInstanceRoles().add(0, ir);
-	  } else {
-		  int pos =  scenario.getOwnedInstanceRoles().indexOf(pred);
-		  scenario.getOwnedInstanceRoles().add(pos + 1, ir);
-	  }
+    InstanceRole ir = (InstanceRole) irToMove;
+    InstanceRole pred = (InstanceRole) predecessor;
+    Scenario scenario = (Scenario) ir.eContainer();
+
+    scenario.getOwnedInstanceRoles().remove(ir);
+    if (predecessor == null) {
+      scenario.getOwnedInstanceRoles().add(0, ir);
+    } else {
+      int pos = scenario.getOwnedInstanceRoles().indexOf(pred);
+      scenario.getOwnedInstanceRoles().add(pos + 1, ir);
+    }
   }
 }
