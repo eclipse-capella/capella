@@ -925,6 +925,13 @@
             name="%common.filter.viewpointsfolderitem.name">
       </commonFilter>
       <commonFilter
+            activeByDefault="false"
+            class="org.eclipse.sirius.ui.tools.internal.views.common.navigator.filter.InvalidRepresentationCommonFilter"
+            description="%common.filter.invalidRepresentation.description"
+            id="capella.project.explorer.filters.invalidRepresentation"
+            name="%common.filter.invalidRepresentation.name">
+      </commonFilter>
+      <commonFilter
             activeByDefault="true"
             class="org.polarsys.capella.core.platform.sirius.ui.navigator.filters.MergedScenarioFilter"
             description="%common.filter.mergedscenario.filter.description"
