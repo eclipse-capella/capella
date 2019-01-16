@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <!--
-  Copyright (c) 2018 THALES GLOBAL SERVICES.
+  Copyright (c) 2018, 2019 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -307,7 +307,7 @@ This rule checks that an element doesn&apos;t contain a naming conflict between 
                <target class="Property">
                </target>
             </constraint>
-            <constraint class="org.polarsys.capella.core.data.information.validation.union.UnionPropertyQualifierConsistency" id="DWF_D_13" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_D_13 Consistency of Qualifier values" severity="ERROR" statusCode="1">
+            <constraint class="org.polarsys.capella.core.data.information.validation.union.UnionPropertyQualifierConsistency" id="DWF_D_13" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_D_13 - Consistency of Qualifier values" severity="ERROR" statusCode="1">
                <message>
                   Qualifier nature  {0}({1}) of  {2}(UnionProperty) is not compatible with the nature of the Discriminant Type ({3}).
                </message>
@@ -600,7 +600,7 @@ contains the partition {2} (Partitionable Element)  typed by {0} (Partitionable 
         <package namespaceUri="http://www.polarsys.org/capella/core/information/datatype/1.3.0">
         </package>
         <constraints categories="capella.category/design/well-formedness/data">
-           <constraint class="org.polarsys.capella.core.data.information.validation.dataValue.LiteralBooleanValueType" id="DWF_D_26" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_D_26 LiteralBooleanValuel Type" severity="WARNING" statusCode="1">
+           <constraint class="org.polarsys.capella.core.data.information.validation.dataValue.LiteralBooleanValueType" id="DWF_D_26" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_D_26 - LiteralBooleanValuel Type" severity="WARNING" statusCode="1">
               <message>
                  {0}(EnumerationLiteral) must be typed by its parent {1}(BooleanType).
               </message>
@@ -716,6 +716,25 @@ contains the partition {2} (Partitionable Element)  typed by {0} (Partitionable 
                  This rule ensures that enumeration literals domain values are typed according to the type of their container enumeration domain type.
               </description>
               <target class="Enumeration">
+              </target>
+           </constraint>
+           <constraint
+                 class="org.polarsys.capella.core.data.information.validation.dataValue.EnumerationLiteraContainingFeatureCheck"
+                 id="DWF_D_57"
+                 isEnabledByDefault="true"
+                 lang="Java"
+                 mode="Batch"
+                 name="DWF_D_57 - EnumerationLiteral Containing Feature"
+                 severity="ERROR"
+                 statusCode="1">
+              <message>
+                 EnumrationLiteral {0} is aggregated in ownedDataValues feature of Enumeration {1} instead of ownedLiterals feature.
+              </message>
+              <description>
+                 This rule checks that the EnumerationLiteral is aggregated in the ownedLiterals feature of the Enumration and not in the ownedDataValues feature.
+              </description>
+              <target
+                    class="EnumerationLiteral">
               </target>
            </constraint>
         </constraints>

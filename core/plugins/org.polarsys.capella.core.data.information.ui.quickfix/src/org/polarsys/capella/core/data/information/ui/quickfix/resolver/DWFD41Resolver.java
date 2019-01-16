@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -31,7 +31,7 @@ public class DWFD41Resolver extends AbstractCapellaMarkerResolution{
 	  public void run(IMarker marker) {
 		  
 	    final EObject eObj = getModelElements(marker).get(0);
-	    if ((null != eObj) && (eObj instanceof Class)) {
+	    if (eObj instanceof Class) {
 	    	
 	    	//read write command
 		    AbstractReadWriteCommand collectElementsCommand = new AbstractReadWriteCommand() {
