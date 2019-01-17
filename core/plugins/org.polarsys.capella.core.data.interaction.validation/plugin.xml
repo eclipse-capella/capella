@@ -348,7 +348,7 @@ If Capability resides in SystemAnalysis layer. It should be relalized by a Capab
 	               Message generated dinamically
 	            </message>
 	            <description>
-	               This rule checks that if the current Capability has actors that are not involved but are present in at least one operational process or functional chain or scenario related to the capability.
+	               This rule checks that if the current Capability has Actors that are not involved but are present in at least one Operational Process or Functional Chain or Scenario related to the Capability.
 	            </description>
 	            <target
 	                  class="AbstractCapability">
