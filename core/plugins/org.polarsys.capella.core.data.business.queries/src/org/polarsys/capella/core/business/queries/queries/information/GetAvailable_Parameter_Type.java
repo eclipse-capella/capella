@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -72,9 +72,6 @@ public class GetAvailable_Parameter_Type extends AbstractQuery {
 	 * (and all of its subpackages) of the Shared Assets Package.
 	 * </p>
 	 * <p>
-	 * Except The current type itself
-	 * </p>
-	 * <p>
 	 * Refer MQRY_Parameter_Type_1
 	 * </p>
 	 * @see org.polarsys.capella.core.business.queries.capellacore.core.business.queries.IBusinessQuery#getAvailableElements(EObject)
@@ -139,8 +136,6 @@ public class GetAvailable_Parameter_Type extends AbstractQuery {
 				DataPkg dataPkg = comp.getOwnedDataPkg();
 				if (dataPkg != null) {
 					for (EObject element : DataPkgExt.getAllTypesFromDataPkgForPropsNParams(dataPkg)) {
-						if (element.equals(type))
-							continue;
 						availableElements.add(element);
 					}
 				}
@@ -154,12 +149,9 @@ public class GetAvailable_Parameter_Type extends AbstractQuery {
 		EObject container = currentParameter.eContainer();
 		if (container instanceof Operation) {
 			Operation operation = (Operation) container;
-			AbstractType type = currentParameter.getType();
 			List<DataPkg> dataPkgList = OperationExt.getDataPkgsFromParentHierarchy(operation);
 			for (DataPkg dataPkg : dataPkgList) {
 				for (EObject element : DataPkgExt.getAllTypesFromDataPkgForPropsNParams(dataPkg)) {
-					if (element.equals(type))
-						continue;
 					availableElements.add(element);
 				}
 			}
@@ -173,20 +165,15 @@ public class GetAvailable_Parameter_Type extends AbstractQuery {
 		EObject container = currentParameter.eContainer();
 		if (container instanceof Operation) {
 			Operation operation = (Operation) container;
-			AbstractType type = currentParameter.getType();
 			BlockArchitecture compArch = OperationExt.getRootBlockArchitecture(operation);
 			if (null != compArch) {
 				for (CapellaElement element : InterfacePkgExt.getAllInterfaces(compArch.getOwnedInterfacePkg())) {
-					if (element.equals(type))
-						continue;
 					availableElements.add(element);
 				}
 			} else {
 				Component comp = OperationExt.getRootComponent(operation);
 				if (comp != null) {
 					for (CapellaElement element : InterfacePkgExt.getAllInterfaces(comp.getOwnedInterfacePkg())) {
-						if (element.equals(type))
-							continue;
 						availableElements.add(element);
 					}
 				}
@@ -200,10 +187,7 @@ public class GetAvailable_Parameter_Type extends AbstractQuery {
 		EObject container = currentParameter.eContainer();
 		if (container instanceof Operation) {
 			Operation operation = (Operation) container;
-			AbstractType type = currentParameter.getType();
 			for (CapellaElement element : OperationExt.getOwnedInterfacesFromParentHierarchy(operation)) {
-				if (element.equals(type))
-					continue;
 				availableElements.add(element);
 			}
 			availableElements.addAll(getRule_MQRY_Parameter_Type_14_1(currentParameter));
@@ -213,31 +197,22 @@ public class GetAvailable_Parameter_Type extends AbstractQuery {
 
 	private List<EObject> getRule_MQRY_Parameter_Type_15(Parameter currenParameter, SystemEngineering systemEngineering) {
 		List<EObject> availableElements = new ArrayList<EObject>(1);
-		AbstractType type = currenParameter.getType();
 		for (SharedPkg sharedPkg : SystemEngineeringExt.getSharedPkgs(systemEngineering)) {
 			DataPkg dataPkg = sharedPkg.getOwnedDataPkg();
 			if (dataPkg != null) {
 				for (EObject element : DataPkgExt.getAllTypesFromDataPkgForPropsNParams(dataPkg)) {
-					if (element.equals(type))
-						continue;
 					availableElements.add(element);
 				}
 			}
 			GenericPkg pkg = sharedPkg.getOwnedGenericPkg();
 			if (pkg != null) {
 				for (CapellaElement element : GenericPkgExt.getAllDataTypes(pkg)) {
-					if (element.equals(type))
-						continue;
 					availableElements.add(element);
 				}
 				for (CapellaElement element : GenericPkgExt.getAllClasses(pkg)) {
-					if (element.equals(type))
-						continue;
 					availableElements.add(element);
 				}
 				for (CapellaElement element : GenericPkgExt.getAllInterfaces(pkg)) {
-					if (element.equals(type))
-						continue;
 					availableElements.add(element);
 				}
 			}
@@ -247,13 +222,10 @@ public class GetAvailable_Parameter_Type extends AbstractQuery {
 
 	private List<CapellaElement> getRule_MQRY_Parameter_Type_16(Parameter currenParameter, SystemEngineering systemEngineering) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-		AbstractType type = currenParameter.getType();
 		for (SharedPkg sharedPkg : SystemEngineeringExt.getSharedPkgs(systemEngineering)) {
 			GenericPkg pkg = sharedPkg.getOwnedGenericPkg();
 			if (pkg != null) {
 				for (CapellaElement element : GenericPkgExt.getAllInterfaces(pkg)) {
-					if (element.equals(type))
-						continue;
 					availableElements.add(element);
 				}
 			}
@@ -273,8 +245,6 @@ public class GetAvailable_Parameter_Type extends AbstractQuery {
 			DataPkg dataPkg = DataPkgExt.getDataPkgOfBlockArchitecture(arch);
 			if (dataPkg != null) {
 				for (EObject element : DataPkgExt.getAllTypesFromDataPkgForPropsNParams(dataPkg)) {
-					if (element.equals(type))
-						continue;
 					availableElements.add(element);
 				}
 			}
@@ -320,15 +290,12 @@ public class GetAvailable_Parameter_Type extends AbstractQuery {
 		EObject container = currentParameter.eContainer();
 		if (container instanceof Operation) {
 			Operation operation = (Operation) container;
-			AbstractType type = currentParameter.getType();
 			BlockArchitecture arch = OperationExt.getRootBlockArchitecture(operation);
 			SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(currentParameter);
 			OperationalAnalysis oa = SystemEngineeringExt.getOwnedOperationalAnalysis(systemEngineering);
 			if (null != oa) {
 				if (null != oa) {
 					for (CapellaElement element : InterfacePkgExt.getAllInterfaces(oa.getOwnedInterfacePkg())) {
-						if (element.equals(type))
-							continue;
 						availableElements.add(element);
 					}
 				}
@@ -336,8 +303,6 @@ public class GetAvailable_Parameter_Type extends AbstractQuery {
 				SystemAnalysis ca = SystemEngineeringExt.getOwnedSystemAnalysis(systemEngineering);
 				if (null != ca) {
 					for (CapellaElement element : InterfacePkgExt.getAllInterfaces(ca.getOwnedInterfacePkg())) {
-						if (element.equals(type))
-							continue;
 						availableElements.add(element);
 					}
 				}
@@ -347,8 +312,6 @@ public class GetAvailable_Parameter_Type extends AbstractQuery {
 					SystemAnalysis ctx = SystemEngineeringExt.getOwnedSystemAnalysis(systemEngineering);
 					if (null != ctx) {
 						for (CapellaElement element : InterfacePkgExt.getAllInterfaces(ctx.getOwnedInterfacePkg())) {
-							if (element.equals(type))
-								continue;
 							availableElements.add(element);
 						}
 					}
@@ -357,8 +320,6 @@ public class GetAvailable_Parameter_Type extends AbstractQuery {
 					LogicalArchitecture logArch = SystemEngineeringExt.getOwnedLogicalArchitecture(systemEngineering);
 					if (logArch != null) {
 						for (CapellaElement element : InterfacePkgExt.getAllInterfaces(logArch.getOwnedInterfacePkg())) {
-							if (element.equals(type))
-								continue;
 							availableElements.add(element);
 						}
 					}
@@ -367,8 +328,6 @@ public class GetAvailable_Parameter_Type extends AbstractQuery {
 					PhysicalArchitecture physArch = SystemEngineeringExt.getOwnedPhysicalArchitecture(systemEngineering);
 					if (physArch != null) {
 						for (CapellaElement element : InterfacePkgExt.getAllInterfaces(physArch.getOwnedInterfacePkg())) {
-							if (element.equals(type))
-								continue;
 							availableElements.add(element);
 						}
 					}

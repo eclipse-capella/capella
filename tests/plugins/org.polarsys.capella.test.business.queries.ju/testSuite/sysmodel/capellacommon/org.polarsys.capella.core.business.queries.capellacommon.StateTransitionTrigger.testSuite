@@ -21,6 +21,7 @@ resultIds = {
     2827aadd-5234-4363-a64c-36271d1d7646
     29e2852c-ba1d-4bc5-9f90-a55b6c80f44e
     2aba8b7f-af58-43ed-80a8-6e1172ebe861
+    433a5e3c-c3fa-4fbc-8e11-da1caef15a22
     729cb165-7e35-4186-98e9-269c3e602505
     7f7dceb3-065c-45e0-a54f-e4d0eb2a504d
     857c688f-5c57-4e2c-ab3e-d8d6ad4bb1a7
@@ -59,6 +60,7 @@ resultIds = {
     2827aadd-5234-4363-a64c-36271d1d7646
     29e2852c-ba1d-4bc5-9f90-a55b6c80f44e
     2aba8b7f-af58-43ed-80a8-6e1172ebe861
+    433a5e3c-c3fa-4fbc-8e11-da1caef15a22
     729cb165-7e35-4186-98e9-269c3e602505
     7f7dceb3-065c-45e0-a54f-e4d0eb2a504d
     857c688f-5c57-4e2c-ab3e-d8d6ad4bb1a7
@@ -115,6 +117,7 @@ resultIds = {
     defb208d-b5be-4627-ae2f-602478a809ce
     e2f84dc4-a5b7-4a6a-b0b1-8f682ecd82e6
     e9c3deee-02f5-4620-9066-f6de2c4e7c16
+    fc11f2f3-e505-4626-9d8e-1720d1f0b677
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.capellacommon.StateTransitionTrigger-getCurrentElements
@@ -245,6 +248,7 @@ resultIds = {
     1bb3b800-830b-4db9-ba2a-fe1756cceca1
     1cb43832-b71e-4d96-a9ad-d24afa135080
     1f9ae54b-7baf-436b-ab58-6da2ab6527d0
+    25d37d2d-bb81-4019-9140-7dc456fdd52c
     2827aadd-5234-4363-a64c-36271d1d7646
     29e2852c-ba1d-4bc5-9f90-a55b6c80f44e
     2aba8b7f-af58-43ed-80a8-6e1172ebe861
@@ -361,6 +365,7 @@ resultIds = {
     1f9ae54b-7baf-436b-ab58-6da2ab6527d0
     25d37d2d-bb81-4019-9140-7dc456fdd52c
     2827aadd-5234-4363-a64c-36271d1d7646
+    29e2852c-ba1d-4bc5-9f90-a55b6c80f44e
     2aba8b7f-af58-43ed-80a8-6e1172ebe861
     433a5e3c-c3fa-4fbc-8e11-da1caef15a22
     729cb165-7e35-4186-98e9-269c3e602505

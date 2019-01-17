@@ -123,6 +123,6 @@ resultIds = {
 queryIdentifier = org.polarsys.capella.core.business.queries.pa.PhysicalActor_UsedInterfaces-getCurrentElements
 inputId = a4917194-4c32-443f-bdaa-412950062088
 resultIds = {
-    ecf5300b-3eb4-4e1a-9b93-56f00d2182aa
+    8c689d4b-edd1-4548-bac9-0dae826c9be2
 }
 

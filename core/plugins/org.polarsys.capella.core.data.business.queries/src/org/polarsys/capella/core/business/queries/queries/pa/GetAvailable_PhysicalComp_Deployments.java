@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -51,7 +51,6 @@ public class GetAvailable_PhysicalComp_Deployments extends AbstractQuery {
 		availableElements = ListExt.removeDuplicates(availableElements);
 		availableElements.remove(element.eContainer());
 		availableElements.remove(element);
-		availableElements.removeAll(getCurrentElements(element, false));
 		return availableElements;
 	}
 

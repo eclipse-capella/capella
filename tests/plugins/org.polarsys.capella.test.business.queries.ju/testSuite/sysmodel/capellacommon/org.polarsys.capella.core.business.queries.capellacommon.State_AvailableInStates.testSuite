@@ -15,6 +15,7 @@ resultIds = {
     1cda633f-074d-48ef-b671-41268be9ee05
     28b7a614-2eb7-46a1-8f9f-3c096092b26d
     391f335f-1511-4f1e-a53b-66eff1912de7
+    7004d3bd-a68d-47dc-9ca6-6dbf18c40c1e
     d2e0ce90-abc6-4f36-aae7-5d6c1d3d49ce
     e64aa4b7-8e0b-4002-8fbd-7f7965bdbb2a
     e7a625c3-82ca-4559-ae28-8ac82cb1c509
@@ -49,6 +50,7 @@ resultIds = {
     1cda633f-074d-48ef-b671-41268be9ee05
     28b7a614-2eb7-46a1-8f9f-3c096092b26d
     391f335f-1511-4f1e-a53b-66eff1912de7
+    7004d3bd-a68d-47dc-9ca6-6dbf18c40c1e
     d2e0ce90-abc6-4f36-aae7-5d6c1d3d49ce
     e64aa4b7-8e0b-4002-8fbd-7f7965bdbb2a
     e7a625c3-82ca-4559-ae28-8ac82cb1c509
@@ -81,6 +83,7 @@ queryIdentifier = org.polarsys.capella.core.business.queries.capellacommon.State
 inputId = 7e970ef4-dec9-4629-8204-7c481ed99ddd
 resultIds = {
     1bb3b800-830b-4db9-ba2a-fe1756cceca1
+    1e4876cd-8cc0-4a97-a2fd-8d32f0c65848
     252f9917-170a-4d65-83f8-a5b651164a95
     4879f6c9-6642-4a89-b1a2-d33e853a5069
     5d1eff9f-332f-4880-9575-5b519b46e78a

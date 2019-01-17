@@ -92,7 +92,7 @@ resultIds = {
 queryIdentifier = org.polarsys.capella.core.business.queries.capellacommon.State_Activity-getCurrentElements
 inputId = 7e970ef4-dec9-4629-8204-7c481ed99ddd
 resultIds = {
-    1e4876cd-8cc0-4a97-a2fd-8d32f0c65848
+    e9c3deee-02f5-4620-9066-f6de2c4e7c16
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.capellacommon.State_Activity-getAvailableElements

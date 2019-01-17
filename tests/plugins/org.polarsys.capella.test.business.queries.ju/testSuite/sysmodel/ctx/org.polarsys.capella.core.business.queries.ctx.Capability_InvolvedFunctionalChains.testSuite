@@ -25,6 +25,7 @@ queryIdentifier = org.polarsys.capella.core.business.queries.ctx.Capability_Invo
 inputId = a2730933-77d1-4a89-998b-9a9115a45ff0
 resultIds = {
     0f49d1ed-75b4-4d60-bc1f-11a29168bf1d
+    74e65d52-1ca3-41f9-b8b1-cf2b076c220d
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.ctx.Capability_InvolvedFunctionalChains-getCurrentElements

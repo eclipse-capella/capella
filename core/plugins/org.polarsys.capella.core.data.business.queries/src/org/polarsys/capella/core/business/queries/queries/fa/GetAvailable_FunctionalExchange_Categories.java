@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -40,10 +40,6 @@ public class GetAvailable_FunctionalExchange_Categories extends AbstractQuery {
 		if (element instanceof FunctionalExchange) {
 			FunctionalExchange functionalExchange = (FunctionalExchange) element;
 			availableElements.addAll(getRule_MQRY_FunctionalExchange_Categories_11(functionalExchange));
-			List<CapellaElement> currentElements = getCurrentElements(functionalExchange, false);
-			if (!currentElements.isEmpty() && !availableElements.isEmpty()) {
-				availableElements.removeAll(currentElements);
-			}
 		}
 		return availableElements;
 	}

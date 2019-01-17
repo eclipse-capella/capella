@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,7 +23,6 @@ import org.polarsys.capella.core.data.ctx.ActorPkg;
 import org.polarsys.capella.core.data.ctx.Mission;
 import org.polarsys.capella.core.data.ctx.MissionPkg;
 import org.polarsys.capella.core.data.ctx.SystemAnalysis;
-import org.polarsys.capella.core.data.helpers.ctx.services.ActorExt;
 import org.polarsys.capella.core.data.helpers.ctx.services.ActorPkgExt;
 import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
 import org.polarsys.capella.core.model.helpers.query.CapellaQueries;
@@ -40,8 +39,7 @@ public class GetAvailable_Mission_InteractingActors extends AbstractQuery {
 
 	/** 
 	 * <p>
-	 * Gets all the actors that can interact with the mission except those that
-	 * are already interacting.
+	 * Gets all the actors that can interact with the mission
 	 * </p>
 	 * <p>
 	 * Refer MQRY_ Mission_InteractingActors_1
@@ -69,8 +67,7 @@ public class GetAvailable_Mission_InteractingActors extends AbstractQuery {
 
 	/** 
 	 * <p>
-	 * Gets all the actors that can interact with the mission except those that
-	 * are already interacting.
+	 * Gets all the actors that can interact with the mission
 	 * </p>
 	 * <p>
 	 * Refer MQRY_ Mission_Interactions_11
@@ -84,8 +81,6 @@ public class GetAvailable_Mission_InteractingActors extends AbstractQuery {
 		if (actorPkg != null) {
 			for (Actor actor : ActorPkgExt.getAllActors(actorPkg)) {
 				if ((actor == null))
-					continue;
-				if (ActorExt.isInteracting(actor, currentMission))
 					continue;
 				availableElements.add(actor);
 			}

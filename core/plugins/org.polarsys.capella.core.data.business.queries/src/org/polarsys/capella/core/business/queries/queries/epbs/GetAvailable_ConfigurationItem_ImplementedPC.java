@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,7 +28,6 @@ import org.polarsys.capella.core.data.epbs.EPBSArchitecture;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecturePkg;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
-import org.polarsys.capella.core.model.helpers.ConfigurationItemExt;
 import org.polarsys.capella.core.model.helpers.PhysicalArchitectureExt;
 import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
 import org.polarsys.capella.core.model.helpers.query.CapellaQueries;
@@ -74,9 +73,6 @@ public class GetAvailable_ConfigurationItem_ImplementedPC extends AbstractQuery 
 		if (null != physicalArchPkg) {
 			for (PhysicalArchitecture physicalArch : physicalArchPkg.getOwnedPhysicalArchitectures()) {
 				for (PhysicalComponent pc : PhysicalArchitectureExt.getAllPhysicalComponents(physicalArch)) {
-					if (ConfigurationItemExt.hasImplementedPC(currentConfigurationItem, pc)) {
-						continue;
-					}
 					availableElements.add(pc);
 				}
 			}
@@ -84,9 +80,6 @@ public class GetAvailable_ConfigurationItem_ImplementedPC extends AbstractQuery 
 		PhysicalArchitecture physicalArch = SystemEngineeringExt.getOwnedPhysicalArchitecture(systemEngineering);
 		if (null != physicalArch) {
 			for (PhysicalComponent pc : PhysicalArchitectureExt.getAllPhysicalComponents(physicalArch)) {
-				if (ConfigurationItemExt.hasImplementedPC(currentConfigurationItem, pc)) {
-					continue;
-				}
 				availableElements.add(pc);
 			}
 		}
@@ -116,9 +109,7 @@ public class GetAvailable_ConfigurationItem_ImplementedPC extends AbstractQuery 
 				while (allContents.hasNext()) {
 					EObject object = (EObject) allContents.next();
 					if (object.eClass().equals(cls)) {
-						if (!configurationItem.getAllocatedPhysicalArtifacts().contains(object)) {
 							availableElements.add((CapellaElement) object);
-						}
 					}
 				}
 			}

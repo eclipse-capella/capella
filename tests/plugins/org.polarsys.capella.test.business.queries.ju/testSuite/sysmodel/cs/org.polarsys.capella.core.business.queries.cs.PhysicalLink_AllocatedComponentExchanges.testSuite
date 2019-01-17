@@ -13,6 +13,7 @@ queryIdentifier = org.polarsys.capella.core.business.queries.cs.PhysicalLink_All
 inputId = e8ba8d88-f527-4b2e-add2-eb717daa6839
 resultIds = {
     22d3f829-2db8-4129-a396-b4530580cc0e
+    6e6061c1-4fad-45c6-8c52-f5b0336af126
     ef8570d5-7124-4e4d-ae39-c92cb527cff6
 }
 
@@ -25,6 +26,7 @@ resultIds = {
 queryIdentifier = org.polarsys.capella.core.business.queries.cs.PhysicalLink_AllocatedComponentExchanges-getAvailableElements
 inputId = aec26949-f470-4b3c-8ab0-d0f17acab758
 resultIds = {
+    a0008d71-64de-4467-845f-fd0215e1aa0d
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.cs.PhysicalLink_AllocatedComponentExchanges-getCurrentElements
@@ -46,6 +48,7 @@ resultIds = {
 queryIdentifier = org.polarsys.capella.core.business.queries.cs.PhysicalLink_AllocatedComponentExchanges-getAvailableElements
 inputId = 41b8f149-8469-49cf-b2e9-9f088edb05b5
 resultIds = {
+    ef7a60ef-ee62-4c33-b5df-1e7bee89ebca
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.cs.PhysicalLink_AllocatedComponentExchanges-getCurrentElements
@@ -57,6 +60,7 @@ resultIds = {
 queryIdentifier = org.polarsys.capella.core.business.queries.cs.PhysicalLink_AllocatedComponentExchanges-getAvailableElements
 inputId = c9a5bdcd-73aa-40f7-8edc-d6c8d5ffd73d
 resultIds = {
+    6e0ea7e5-3a28-40f8-a1b8-2b42f2b71dff
     96d430b1-fe08-4ac2-8a3e-b5900e4aa41a
     9c8af0b7-38e8-4fa0-8a8b-0ff60f24c64b
 }
@@ -70,6 +74,7 @@ resultIds = {
 queryIdentifier = org.polarsys.capella.core.business.queries.cs.PhysicalLink_AllocatedComponentExchanges-getAvailableElements
 inputId = 412bc070-86d0-4266-80ae-f1ad891c6c23
 resultIds = {
+    c8cfa778-610f-4d79-8a2b-f9d175ce9f04
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.cs.PhysicalLink_AllocatedComponentExchanges-getCurrentElements
@@ -86,7 +91,6 @@ resultIds = {
 queryIdentifier = org.polarsys.capella.core.business.queries.cs.PhysicalLink_AllocatedComponentExchanges-getCurrentElements
 inputId = 6a358546-f5ff-4a77-971b-4fdc75ab21a3
 resultIds = {
-    fe5cad4d-cbe3-4beb-9bea-0b5246a3059d
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.cs.PhysicalLink_AllocatedComponentExchanges-getAvailableElements
@@ -102,6 +106,7 @@ resultIds = {
 queryIdentifier = org.polarsys.capella.core.business.queries.cs.PhysicalLink_AllocatedComponentExchanges-getAvailableElements
 inputId = c2f78527-bff2-4c3e-b95f-0cffbafa3d57
 resultIds = {
+    3a9da695-5dd1-45bf-a872-b1c19c614ac5
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.cs.PhysicalLink_AllocatedComponentExchanges-getCurrentElements
@@ -113,6 +118,7 @@ resultIds = {
 queryIdentifier = org.polarsys.capella.core.business.queries.cs.PhysicalLink_AllocatedComponentExchanges-getAvailableElements
 inputId = 4a2cada0-6b17-4e98-ba3d-b2a332d5aa13
 resultIds = {
+    61e5076b-cfb9-4565-95fa-a91235bb6f99
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.cs.PhysicalLink_AllocatedComponentExchanges-getCurrentElements
@@ -124,6 +130,7 @@ resultIds = {
 queryIdentifier = org.polarsys.capella.core.business.queries.cs.PhysicalLink_AllocatedComponentExchanges-getAvailableElements
 inputId = 1f7abc02-a5cf-4b6f-93f5-a40757cd16c1
 resultIds = {
+    933b60da-0f1f-48d9-89f5-2cd486b9f587
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.cs.PhysicalLink_AllocatedComponentExchanges-getCurrentElements
@@ -185,6 +192,7 @@ resultIds = {
 queryIdentifier = org.polarsys.capella.core.business.queries.cs.PhysicalLink_AllocatedComponentExchanges-getAvailableElements
 inputId = 9a138898-0aae-4fd6-a527-ad552984a87e
 resultIds = {
+    8a201422-da70-478f-9686-f4a8f3312796
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.cs.PhysicalLink_AllocatedComponentExchanges-getCurrentElements
@@ -420,6 +428,7 @@ resultIds = {
 queryIdentifier = org.polarsys.capella.core.business.queries.cs.PhysicalLink_AllocatedComponentExchanges-getAvailableElements
 inputId = 15348d39-e6f1-42b5-a3bc-dfecdfd26f3d
 resultIds = {
+    3cb24967-346b-4880-b3d6-2a2267c3f5cc
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.cs.PhysicalLink_AllocatedComponentExchanges-getCurrentElements
@@ -431,6 +440,7 @@ resultIds = {
 queryIdentifier = org.polarsys.capella.core.business.queries.cs.PhysicalLink_AllocatedComponentExchanges-getAvailableElements
 inputId = 0e3c55cd-eb43-4cc8-aebe-6452ba19d1b2
 resultIds = {
+    c92a227f-a522-4d17-bf7b-0900d5b0207c
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.cs.PhysicalLink_AllocatedComponentExchanges-getCurrentElements
@@ -442,6 +452,7 @@ resultIds = {
 queryIdentifier = org.polarsys.capella.core.business.queries.cs.PhysicalLink_AllocatedComponentExchanges-getAvailableElements
 inputId = 7d8e90af-7608-4b5b-8259-8e6cc2694161
 resultIds = {
+    0cd20551-d4d7-4606-aeb1-e06cf7f9f204
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.cs.PhysicalLink_AllocatedComponentExchanges-getCurrentElements
@@ -453,6 +464,7 @@ resultIds = {
 queryIdentifier = org.polarsys.capella.core.business.queries.cs.PhysicalLink_AllocatedComponentExchanges-getAvailableElements
 inputId = 639d4380-aa33-4f76-bf1c-614784ae21ce
 resultIds = {
+    f51c8013-212d-4eda-ba31-93929f2a4c5e
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.cs.PhysicalLink_AllocatedComponentExchanges-getCurrentElements
@@ -464,6 +476,7 @@ resultIds = {
 queryIdentifier = org.polarsys.capella.core.business.queries.cs.PhysicalLink_AllocatedComponentExchanges-getAvailableElements
 inputId = 00beae9a-1717-47dc-b989-1f51b944e873
 resultIds = {
+    e49f5538-a3f2-4ce5-ae22-a0eccba0a577
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.cs.PhysicalLink_AllocatedComponentExchanges-getCurrentElements
@@ -475,6 +488,7 @@ resultIds = {
 queryIdentifier = org.polarsys.capella.core.business.queries.cs.PhysicalLink_AllocatedComponentExchanges-getAvailableElements
 inputId = 66fdbd2c-c7ac-4bee-ac85-3524b1fc4da0
 resultIds = {
+    0d7009a8-d542-4814-b319-18ea42720b4b
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.cs.PhysicalLink_AllocatedComponentExchanges-getCurrentElements
@@ -486,6 +500,7 @@ resultIds = {
 queryIdentifier = org.polarsys.capella.core.business.queries.cs.PhysicalLink_AllocatedComponentExchanges-getAvailableElements
 inputId = 826895fe-3db6-4621-b599-d5bbfdfd74c0
 resultIds = {
+    9d923267-afa3-431a-ad99-e5005bfcb9b9
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.cs.PhysicalLink_AllocatedComponentExchanges-getCurrentElements
@@ -497,6 +512,7 @@ resultIds = {
 queryIdentifier = org.polarsys.capella.core.business.queries.cs.PhysicalLink_AllocatedComponentExchanges-getAvailableElements
 inputId = 70dfa783-5ceb-4fb4-9593-ea4618a6106b
 resultIds = {
+    c6d52219-26b3-4459-9056-e78d6614fd4c
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.cs.PhysicalLink_AllocatedComponentExchanges-getCurrentElements
@@ -508,6 +524,7 @@ resultIds = {
 queryIdentifier = org.polarsys.capella.core.business.queries.cs.PhysicalLink_AllocatedComponentExchanges-getAvailableElements
 inputId = 666b7615-5f5d-4540-b524-385bd33c21db
 resultIds = {
+    7f8108ce-a21b-4a63-b421-2a82a1fc4532
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.cs.PhysicalLink_AllocatedComponentExchanges-getCurrentElements
@@ -519,6 +536,7 @@ resultIds = {
 queryIdentifier = org.polarsys.capella.core.business.queries.cs.PhysicalLink_AllocatedComponentExchanges-getAvailableElements
 inputId = 91b2c00d-bb18-412b-8d3a-4272ba6f7e31
 resultIds = {
+    eb3f2674-7f74-40e8-b9fb-fd61426dec64
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.cs.PhysicalLink_AllocatedComponentExchanges-getCurrentElements
@@ -530,6 +548,7 @@ resultIds = {
 queryIdentifier = org.polarsys.capella.core.business.queries.cs.PhysicalLink_AllocatedComponentExchanges-getAvailableElements
 inputId = 3b26615f-6d79-442b-a02e-ec75d5f48402
 resultIds = {
+    14850af6-71f3-461a-a266-9dd34f5cdd78
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.cs.PhysicalLink_AllocatedComponentExchanges-getCurrentElements
@@ -541,6 +560,7 @@ resultIds = {
 queryIdentifier = org.polarsys.capella.core.business.queries.cs.PhysicalLink_AllocatedComponentExchanges-getAvailableElements
 inputId = adf82147-9e1d-4c5e-9372-95974d6bd10e
 resultIds = {
+    f36c2580-bec2-4745-8003-0561b456aef7
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.cs.PhysicalLink_AllocatedComponentExchanges-getCurrentElements
@@ -552,6 +572,7 @@ resultIds = {
 queryIdentifier = org.polarsys.capella.core.business.queries.cs.PhysicalLink_AllocatedComponentExchanges-getAvailableElements
 inputId = 628a2f57-ff01-4c23-b8ca-fce345c1c584
 resultIds = {
+    b5cdea27-317e-434d-a111-3281e3528e1c
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.cs.PhysicalLink_AllocatedComponentExchanges-getCurrentElements
@@ -563,6 +584,7 @@ resultIds = {
 queryIdentifier = org.polarsys.capella.core.business.queries.cs.PhysicalLink_AllocatedComponentExchanges-getAvailableElements
 inputId = 69fa80e5-9a08-446e-9ac9-f9f9cfea5034
 resultIds = {
+    fba409f9-01a9-4d25-8a33-66b7dbb0f54c
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.cs.PhysicalLink_AllocatedComponentExchanges-getCurrentElements
@@ -574,6 +596,7 @@ resultIds = {
 queryIdentifier = org.polarsys.capella.core.business.queries.cs.PhysicalLink_AllocatedComponentExchanges-getAvailableElements
 inputId = 0b8f3390-3662-4f86-b687-0be0c805e914
 resultIds = {
+    bb759954-98cd-47e5-b416-92f0303d253a
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.cs.PhysicalLink_AllocatedComponentExchanges-getCurrentElements
@@ -585,6 +608,7 @@ resultIds = {
 queryIdentifier = org.polarsys.capella.core.business.queries.cs.PhysicalLink_AllocatedComponentExchanges-getAvailableElements
 inputId = ce43c6d9-900d-4cab-a34e-d0688215e138
 resultIds = {
+    ebccfa90-8a62-4bba-b762-6390ae4772aa
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.cs.PhysicalLink_AllocatedComponentExchanges-getCurrentElements
@@ -596,6 +620,7 @@ resultIds = {
 queryIdentifier = org.polarsys.capella.core.business.queries.cs.PhysicalLink_AllocatedComponentExchanges-getAvailableElements
 inputId = 6c6492cc-2115-42d5-ae4f-40a8dff1de75
 resultIds = {
+    2c8fb1b2-3a4d-453f-adbd-7e46ac9c27fb
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.cs.PhysicalLink_AllocatedComponentExchanges-getCurrentElements

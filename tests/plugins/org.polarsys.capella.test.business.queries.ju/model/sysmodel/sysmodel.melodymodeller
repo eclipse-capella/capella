@@ -6822,7 +6822,7 @@ Stop the event</bodies>
                 id="f627d052-d193-4445-9f07-9e2670654e3f" name="Initial1"/>
             <ownedStates xsi:type="org.polarsys.capella.core.data.capellacommon:Mode"
                 id="7e970ef4-dec9-4629-8204-7c481ed99ddd" name="Nominal" referencedStates="#fd11a518-b8fb-411b-b246-ddbe72f88cc2 #0ab641dd-e51a-4333-a9b2-4de57dc0fe52 #3c7c58e7-52fb-4c5e-b1e9-d5c09c9c3116"
-                doActivity="#1e4876cd-8cc0-4a97-a2fd-8d32f0c65848">
+                doActivity="#e9c3deee-02f5-4620-9066-f6de2c4e7c16">
               <ownedRegions xsi:type="org.polarsys.capella.core.data.capellacommon:Region"
                   id="159bb663-b60a-4a7d-b9ba-054e588ae9fc" name="region" involvedStates="#fd11a518-b8fb-411b-b246-ddbe72f88cc2 #0ab641dd-e51a-4333-a9b2-4de57dc0fe52 #3c7c58e7-52fb-4c5e-b1e9-d5c09c9c3116">
                 <ownedStates xsi:type="org.polarsys.capella.core.data.capellacommon:State"
@@ -12327,7 +12327,7 @@ stop sequence</bodies>
         <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="f329736f-04fc-4d1d-8e88-78add71a36bb"
             name="Orchestra" abstractType="#967ba5b0-c43f-45ad-b48c-fac5ab727601"/>
         <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="d9a91e4b-cfaf-4626-8e6a-875c6245785b"
-            name="MDK_COMPONENT" abstractType="#f8a76974-36a2-4ada-9025-c5c6e2b4d848"/>
+            name="PC 23" abstractType="#da0faa88-19bd-4141-8fa0-08968061b829"/>
         <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="756c6a1c-58a2-4dd7-ae22-40416590e0dc"
             name="Bus" abstractType="#378832be-24af-4673-baea-0bb4c9d406c1"/>
         <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="67a4864f-37ee-4231-aac4-3f99c6530da5"
@@ -12388,11 +12388,7 @@ stop sequence</bodies>
               id="f082fc7d-f634-4af9-819f-309315b344ce" involved="#c9fb1fe6-8b47-47a6-8584-167f5cc5dbeb"/>
         </ownedPhysicalPath>
         <ownedPhysicalLinks xsi:type="org.polarsys.capella.core.data.cs:PhysicalLink"
-            id="6a358546-f5ff-4a77-971b-4fdc75ab21a3" name="PL1" linkEnds="#46cbfa11-8dfb-4f65-8bbe-fac27139a364 #7cb2b223-3ded-48f6-8dba-ffeb4265e241">
-          <ownedComponentExchangeAllocations xsi:type="org.polarsys.capella.core.data.fa:ComponentExchangeAllocation"
-              id="5c5b0ba6-d826-4c80-9ee0-fab855f19be9" targetElement="#fe5cad4d-cbe3-4beb-9bea-0b5246a3059d"
-              sourceElement="#6a358546-f5ff-4a77-971b-4fdc75ab21a3"/>
-        </ownedPhysicalLinks>
+            id="6a358546-f5ff-4a77-971b-4fdc75ab21a3" name="PL1" linkEnds="#46cbfa11-8dfb-4f65-8bbe-fac27139a364 #7cb2b223-3ded-48f6-8dba-ffeb4265e241"/>
         <ownedPhysicalLinks xsi:type="org.polarsys.capella.core.data.cs:PhysicalLink"
             id="f661f5ea-db74-4dc5-8017-a56008da49c2" name="PL 2" linkEnds="#262b0e5d-5c77-40d9-8488-a976192de0b3 #33088d35-4f21-4218-b8db-31c4aa4cf65e"/>
         <ownedPhysicalLinks xsi:type="org.polarsys.capella.core.data.cs:PhysicalLink"
@@ -12432,11 +12428,7 @@ stop sequence</bodies>
         <ownedPhysicalComponents xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponent"
             id="b2434a70-fbae-4f10-9e44-b00e40356ef0" name="SERVER" nature="NODE">
           <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:PhysicalPort"
-              id="7cb2b223-3ded-48f6-8dba-ffeb4265e241" name="FIP 1">
-            <ownedComponentPortAllocations xsi:type="org.polarsys.capella.core.data.fa:ComponentPortAllocation"
-                id="a23ae4a4-8c94-4935-8329-34016696b376" targetElement="#189e5a11-c780-4ea7-8ba4-a010c70a8487"
-                sourceElement="#7cb2b223-3ded-48f6-8dba-ffeb4265e241"/>
-          </ownedFeatures>
+              id="7cb2b223-3ded-48f6-8dba-ffeb4265e241" name="FIP 1"/>
           <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:PhysicalPort"
               id="e3a0b0d8-9d9b-4746-92cb-21c1167a0c32" name="FIP 2">
             <ownedComponentPortAllocations xsi:type="org.polarsys.capella.core.data.fa:ComponentPortAllocation"
@@ -12447,11 +12439,7 @@ stop sequence</bodies>
         <ownedPhysicalComponents xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponent"
             id="d363adb3-2b8a-455d-b16a-3d59b840f1a8" name="PC" nature="NODE">
           <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:PhysicalPort"
-              id="46cbfa11-8dfb-4f65-8bbe-fac27139a364" name="FOP 2">
-            <ownedComponentPortAllocations xsi:type="org.polarsys.capella.core.data.fa:ComponentPortAllocation"
-                id="b2e06211-57bb-4ce2-bb57-e4076fd6e326" targetElement="#cb403adc-0165-4b49-a763-40cbba4225af"
-                sourceElement="#46cbfa11-8dfb-4f65-8bbe-fac27139a364"/>
-          </ownedFeatures>
+              id="46cbfa11-8dfb-4f65-8bbe-fac27139a364" name="FOP 2"/>
           <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:PhysicalPort"
               id="33088d35-4f21-4218-b8db-31c4aa4cf65e" name="PP 2"/>
           <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:PhysicalPort"
@@ -14232,9 +14220,9 @@ stop sequence</bodies>
                 sourceElement="#8957875d-d73f-465b-a84c-9f086e96659d"/>
           </ownedFeatures>
           <ownedFeatures xsi:type="org.polarsys.capella.core.data.fa:ComponentPort"
-              id="420a509e-e624-408b-a2fd-e86c1f8037e3" name="CP 2" requiredInterfaces="#274a18b0-f305-40f6-85cc-9ac78b2931d0"/>
+              id="420a509e-e624-408b-a2fd-e86c1f8037e3" name="CP 2" requiredInterfaces="#20bd0700-2ea1-4a1a-b744-4c2bf10752f7"/>
           <ownedInterfaceUses xsi:type="org.polarsys.capella.core.data.cs:InterfaceUse"
-              id="584e16a8-9e15-40b2-a0d9-ffb212200d5e" usedInterface="#ecf5300b-3eb4-4e1a-9b93-56f00d2182aa"/>
+              id="584e16a8-9e15-40b2-a0d9-ffb212200d5e" usedInterface="#8c689d4b-edd1-4548-bac9-0dae826c9be2"/>
         </ownedPhysicalActors>
       </ownedPhysicalActorPkg>
       <ownedLogicalArchitectureRealizations xsi:type="org.polarsys.capella.core.data.pa:LogicalArchitectureRealization"
@@ -14340,7 +14328,7 @@ stop sequence</bodies>
         <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="5029a25c-a415-4bd7-8165-2cee15359b36"
             name="HWCI 4" abstractType="#47996e36-08b0-4931-8ef8-8c3dba3f3466"/>
         <ownedFeatures xsi:type="org.polarsys.capella.core.data.fa:ComponentPort"
-            id="aaab59c1-83a2-4344-82da-26115d8b251b" name="" providedInterfaces="#32bd64a5-4a3f-41fc-89aa-b8b590d57e77"/>
+            id="aaab59c1-83a2-4344-82da-26115d8b251b" name=""/>
         <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="a7645020-a002-4c06-8c0c-c7dd8748d2fc"
             name="HWCI 5" abstractType="#faa75d05-7aab-4329-b153-4ceddbfa11c2"/>
         <ownedInterfaceUses xsi:type="org.polarsys.capella.core.data.cs:InterfaceUse"
@@ -14352,7 +14340,7 @@ stop sequence</bodies>
         <ownedConfigurationItems xsi:type="org.polarsys.capella.core.data.epbs:ConfigurationItem"
             id="5a9aa865-a6ad-4341-bc0d-ecd88ab84bec" name="COTSCI 1" kind="COTSCI">
           <ownedFeatures xsi:type="org.polarsys.capella.core.data.fa:ComponentPort"
-              id="a1f9aacf-0631-44e5-8fbb-7309915eed24" name="" providedInterfaces="#32bd64a5-4a3f-41fc-89aa-b8b590d57e77"/>
+              id="a1f9aacf-0631-44e5-8fbb-7309915eed24" name=""/>
           <ownedInterfaceUses xsi:type="org.polarsys.capella.core.data.cs:InterfaceUse"
               id="bc0cef51-a7ac-4d08-bf3c-5d2535404922" usedInterface="#133b62c7-2351-4b3c-aad0-71576ccc6a5b"/>
           <ownedInterfaceImplementations xsi:type="org.polarsys.capella.core.data.cs:InterfaceImplementation"

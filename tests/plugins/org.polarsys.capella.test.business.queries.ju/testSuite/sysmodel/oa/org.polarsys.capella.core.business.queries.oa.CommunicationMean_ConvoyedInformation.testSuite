@@ -12,6 +12,7 @@
 queryIdentifier = org.polarsys.capella.core.business.queries.oa.CommunicationMean_ConvoyedInformation-getAvailableElements
 inputId = 0df5c9fd-14bb-4694-b112-f1f2c034dc56
 resultIds = {
+    151aad4d-910a-479b-b375-66c94b9f2e33
     857c688f-5c57-4e2c-ab3e-d8d6ad4bb1a7
 }
 

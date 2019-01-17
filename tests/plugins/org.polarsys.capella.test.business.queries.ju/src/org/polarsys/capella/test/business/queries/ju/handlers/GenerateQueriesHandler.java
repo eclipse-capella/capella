@@ -128,7 +128,6 @@ public class GenerateQueriesHandler extends AbstractUiHandler {
       List<EObject> res = null;
       if (methodName.equals(BQTestConstants.GET_AVAILABLE_METHOD_NAME)) {
         res = businessQuery.getAvailableElements(input);
-
       } else if (methodName.equals(BQTestConstants.GET_CURRENT_METHOD_NAME)) {
         res = businessQuery.getCurrentElements(input, false);
       }

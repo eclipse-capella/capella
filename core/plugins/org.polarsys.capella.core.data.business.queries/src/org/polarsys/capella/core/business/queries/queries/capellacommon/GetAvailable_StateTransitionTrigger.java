@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,7 +19,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.queries.AbstractQuery;
-import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
 import org.polarsys.capella.core.data.capellacommon.StateEvent;
 import org.polarsys.capella.core.data.capellacommon.StateTransition;
@@ -40,14 +39,12 @@ public class GetAvailable_StateTransitionTrigger extends AbstractQuery {
   @Override
   public List<Object> execute(Object input, IQueryContext context) {
     List<Object> availableElements = getAvailableElements(input, context);
-    List<CapellaElement> currentElements = QueryInterpretor.executeQuery("GetCurrent_StateTransitionTrigger", input, context);//$NON-NLS-1$
-    availableElements.removeAll(currentElements);
     return availableElements;
   }
 
   public static List<Object> getAvailableElements(Object input, IQueryContext context) {
     CapellaElement inputElement = (CapellaElement) input;
-    List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
+    List<Object> availableElements = new ArrayList<>();
     BlockArchitecture arch = SystemEngineeringExt.getRootBlockArchitecture(inputElement);
     if (arch != null) {
       for (BlockArchitecture block : BlockArchitectureExt.getAllAllocatedArchitectures(arch)) {
@@ -55,7 +52,7 @@ public class GetAvailable_StateTransitionTrigger extends AbstractQuery {
         while (allContents.hasNext()) {
           Object object = allContents.next();
           if ((object instanceof ExchangeItem) || (object instanceof Operation) || (object instanceof StateEvent)) {
-            availableElements.add((CapellaElement) object);
+            availableElements.add(object);
           }
         }
       }
@@ -67,7 +64,7 @@ public class GetAvailable_StateTransitionTrigger extends AbstractQuery {
       }
     }
 
-    return (List) availableElements;
+    return availableElements;
   }
 
   /**

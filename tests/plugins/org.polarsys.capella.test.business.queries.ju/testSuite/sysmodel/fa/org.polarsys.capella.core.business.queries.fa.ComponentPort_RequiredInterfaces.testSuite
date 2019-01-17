@@ -3389,7 +3389,7 @@ resultIds = {
 queryIdentifier = org.polarsys.capella.core.business.queries.fa.ComponentPort_RequiredInterfaces-getCurrentElements
 inputId = 420a509e-e624-408b-a2fd-e86c1f8037e3
 resultIds = {
-    274a18b0-f305-40f6-85cc-9ac78b2931d0
+    20bd0700-2ea1-4a1a-b744-4c2bf10752f7
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.fa.ComponentPort_RequiredInterfaces-getAvailableElements

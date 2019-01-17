@@ -28,6 +28,7 @@ inputId = 846f0de7-30f7-473a-8c30-792acde12fee
 resultIds = {
     891fbfa2-3c99-4f78-9639-603d59d3c489
     913c22e1-6262-4f7b-a6f8-9a32252c8733
+    a591fd6d-1fc5-4422-acab-724c726108e5
     d7140c7d-c7d3-4e79-971c-af8bbb33176f
     f24e2d78-e400-4a29-a86c-2b038080ab83
 }
@@ -241,6 +242,7 @@ resultIds = {
     64ba59b9-9ad1-41bf-8afb-ba19309d00a9
     696429e7-c3ee-468e-b3f1-0e750bbae1f3
     735c8f33-832a-4c62-a9e0-e52866571a7a
+    846f0de7-30f7-473a-8c30-792acde12fee
     891fbfa2-3c99-4f78-9639-603d59d3c489
     8a9ecf3c-92fc-4309-be8c-2dd960c01af7
     913c22e1-6262-4f7b-a6f8-9a32252c8733
@@ -269,6 +271,7 @@ inputId = ed9cb2fd-2126-4f38-a2af-fed14e328a40
 resultIds = {
     891fbfa2-3c99-4f78-9639-603d59d3c489
     913c22e1-6262-4f7b-a6f8-9a32252c8733
+    a591fd6d-1fc5-4422-acab-724c726108e5
     d7140c7d-c7d3-4e79-971c-af8bbb33176f
     f24e2d78-e400-4a29-a86c-2b038080ab83
 }
@@ -685,6 +688,7 @@ resultIds = {
     9226be72-916f-4508-a199-27ddd7000613
     987de4e1-54bb-47bf-be68-99f28216057c
     a382fa94-b414-4ec9-bf68-73c3d9b0e72a
+    ace1a80f-ee24-45e8-8289-bcd5bb1f027c
     bc0969e0-b9db-4726-a0bb-edb39d546c79
     da20e3f5-6234-4323-b8f7-0be4e320fedb
     ed9cb2fd-2126-4f38-a2af-fed14e328a40
@@ -700,6 +704,7 @@ resultIds = {
 queryIdentifier = org.polarsys.capella.core.business.queries.interaction.Scenario_RealizedScenario-getAvailableElements
 inputId = fe418390-9faf-454c-8cf5-ee28fba85fd6
 resultIds = {
+    ed9cb2fd-2126-4f38-a2af-fed14e328a40
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.interaction.Scenario_RealizedScenario-getCurrentElements
@@ -864,6 +869,7 @@ resultIds = {
 queryIdentifier = org.polarsys.capella.core.business.queries.interaction.Scenario_RealizedScenario-getAvailableElements
 inputId = 795f4a99-67e2-43c9-8915-d3f92dcf4978
 resultIds = {
+    fe418390-9faf-454c-8cf5-ee28fba85fd6
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.interaction.Scenario_RealizedScenario-getCurrentElements
@@ -875,6 +881,7 @@ resultIds = {
 queryIdentifier = org.polarsys.capella.core.business.queries.interaction.Scenario_RealizedScenario-getAvailableElements
 inputId = 6d29c16d-8682-4972-8f12-40462aa0564c
 resultIds = {
+    06c29a67-9421-431b-bfea-1c77280e32ca
     795f4a99-67e2-43c9-8915-d3f92dcf4978
     bc0969e0-b9db-4726-a0bb-edb39d546c79
     fe418390-9faf-454c-8cf5-ee28fba85fd6

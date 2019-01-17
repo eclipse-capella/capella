@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -75,7 +75,7 @@ public class GetAvailable_Connection_ConnectionFunctionalExchangeAllocations ext
 				FunctionalExchange exchange = (FunctionalExchange) capellaElement;
 				EList<AbstractTrace> incomingTraces = exchange.getIncomingTraces();
 				for (AbstractTrace abstractTrace : incomingTraces) {
-					if (abstractTrace instanceof ComponentExchangeFunctionalExchangeAllocation) {
+					if (abstractTrace instanceof ComponentExchangeFunctionalExchangeAllocation && ((ComponentExchangeFunctionalExchangeAllocation)abstractTrace).getAllocatingComponentExchange() != element) {
 						allReadyAllocatedExchanges.add(capellaElement);
 					}
 				}
