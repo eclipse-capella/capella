@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -4785,6 +4785,34 @@ public class CsServices {
         new DDiagramContents(CapellaServices.getService().getDiagramContainer(currentElementView)));
     return currentElementView;
   }
+  
+  public EObject showABComponentPortAllocations(Collection<EObject> contextualComponentPortAllocations,
+      DSemanticDecorator currentElementView) {
+    ABServices.getService().showABComponentPortAllocations(contextualComponentPortAllocations,
+        new DDiagramContents(CapellaServices.getService().getDiagramContainer(currentElementView)));
+    return currentElementView;
+  }
+
+  public EObject hideABComponentPortAllocations(Collection<EObject> contextualComponentPortAllocations,
+      DSemanticDecorator currentElementView) {
+    ABServices.getService().hideABComponentPortAllocations(contextualComponentPortAllocations,
+        new DDiagramContents(CapellaServices.getService().getDiagramContainer(currentElementView)));
+    return currentElementView;
+  }
+
+  public EObject showABPortAllocations(Collection<EObject> contextualPortAllocations,
+      DSemanticDecorator currentElementView) {
+    ABServices.getService().showABPortAllocations(contextualPortAllocations,
+        new DDiagramContents(CapellaServices.getService().getDiagramContainer(currentElementView)));
+    return currentElementView;
+  }
+
+  public EObject hideABPortAllocations(Collection<EObject> contextualPortAllocations,
+      DSemanticDecorator currentElementView) {
+    ABServices.getService().hideABPortAllocations(contextualPortAllocations,
+        new DDiagramContents(CapellaServices.getService().getDiagramContainer(currentElementView)));
+    return currentElementView;
+  }
 
   /**
    * used in context, logical, oa, physical
@@ -4808,6 +4836,23 @@ public class CsServices {
     return showABPhysicalLink(Collections.singleton(physicalLinkToShow), currentElementView);
   }
 
+  public EObject showABComponentPortAllocations(EObject componentPortAllocationToShow,
+      DSemanticDecorator currentElementView) {
+    return showABComponentPortAllocations(Collections.singleton(componentPortAllocationToShow), currentElementView);
+  }
+
+  public EObject hideABComponentPortAllocations(EObject portAllocationToHide, DSemanticDecorator currentElementView) {
+    return hideABComponentPortAllocations(Collections.singleton(portAllocationToHide), currentElementView);
+  }
+
+  public EObject showABPortAllocations(EObject portAllocationToShow, DSemanticDecorator currentElementView) {
+    return showABPortAllocations(Collections.singleton(portAllocationToShow), currentElementView);
+  }
+
+  public EObject hideABPortAllocations(EObject portAllocationToHide, DSemanticDecorator currentElementView) {
+    return hideABPortAllocations(Collections.singleton(portAllocationToHide), currentElementView);
+  }
+  
   /**
    * Display a component in the best container (display deployment in their deploying component) used in context,
    * logical, oa, physical

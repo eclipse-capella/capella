@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,6 +17,7 @@ import org.polarsys.capella.test.diagram.tools.ju.xab.CreatePhysicalPath;
 import org.polarsys.capella.test.diagram.tools.ju.xab.ShowHideComponentExchanges;
 import org.polarsys.capella.test.diagram.tools.ju.xab.ShowHideFunctions;
 import org.polarsys.capella.test.diagram.tools.ju.xab.ShowHidePhysicalLinks;
+import org.polarsys.capella.test.diagram.tools.ju.xab.ShowHidePortAllocations;
 import org.polarsys.capella.test.diagram.tools.ju.xab.CreateFunctionalChain;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
@@ -44,6 +45,8 @@ public class XABDiagramToolsTestSuite extends BasicTestSuite {
     tests.add(new ShowHideComponentExchanges());
     tests.add(new ShowHidePhysicalLinks());
     tests.add(new ShowHideFunctions());
+    
+    tests.add(new ShowHidePortAllocations());
     return tests;
   }
 

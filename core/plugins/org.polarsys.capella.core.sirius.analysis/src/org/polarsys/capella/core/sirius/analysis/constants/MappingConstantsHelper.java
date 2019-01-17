@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -191,6 +191,20 @@ public class MappingConstantsHelper {
     String description = diagram.getDescription().getName();
     if (equals(description, IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.PAB_COMPONENT_PORT_ALLOCATION_MAPPING_NAME;
+    }
+    return mappingName;
+  }
+  
+  public static String getMappingABPortAllocation(DDiagram diagram) {
+
+    String mappingName = null;
+    String description = diagram.getDescription().getName();
+    if (equals(description, IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+      mappingName = IMappingNameConstants.SAB_FUNCTION_PORT_ALLOCATION_MAPPING_NAME;
+    } else if (equals(description, IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+      mappingName = IMappingNameConstants.LAB_FUNCTION_PORT_ALLOCATION_MAPPING_NAME;
+    } else if (equals(description, IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+      mappingName = IMappingNameConstants.PAB_FUNCTION_PORT_ALLOCATION_MAPPING_NAME;
     }
     return mappingName;
   }
