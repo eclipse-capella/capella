@@ -43,6 +43,7 @@ resultIds = {
     93e48ebb-c768-487d-ab87-dbae9a79308b
     a4917194-4c32-443f-bdaa-412950062088
     d2f2b89e-e727-43e1-a83f-97af3850387c
+    ed542859-19dd-4d24-977c-6464e71b6d16
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.pa.PhysicalActor_InheritedActors-getCurrentElements
