@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,27 +11,37 @@
 package org.polarsys.capella.core.business.queries.queries.interaction;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
+import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.data.modellingcore.AbstractTypedElement;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.queries.AbstractQuery;
-import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.cs.AbstractActor;
+import org.polarsys.capella.core.data.cs.BlockArchitecture;
+import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.AbstractFunctionalArchitecture;
 import org.polarsys.capella.core.data.fa.FaPackage;
 import org.polarsys.capella.core.data.fa.FunctionPkg;
 import org.polarsys.capella.core.data.helpers.fa.services.FunctionPkgExt;
+import org.polarsys.capella.core.data.information.ExchangeItem;
+import org.polarsys.capella.core.data.information.ExchangeItemInstance;
+import org.polarsys.capella.core.data.information.Partition;
 import org.polarsys.capella.core.data.interaction.InstanceRole;
 import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.capella.core.data.interaction.ScenarioKind;
 import org.polarsys.capella.core.data.oa.OperationalActivity;
+import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.ScenarioExt;
+import org.polarsys.capella.core.model.helpers.queries.GetAllExchangeItems;
+import org.polarsys.capella.core.model.helpers.queries.filters.OnlySharedDataOrEventOrUnsetFilter;
 import org.polarsys.capella.core.model.helpers.query.CapellaQueries;
 
 public class GetAvailable_InstanceRole_RepresentedInstance extends AbstractQuery {
@@ -44,6 +54,17 @@ public class GetAvailable_InstanceRole_RepresentedInstance extends AbstractQuery
     if (capellaElement instanceof InstanceRole) {
       Scenario scenario = (Scenario) capellaElement.eContainer();
       InstanceRole ir = (InstanceRole) capellaElement;
+
+      if (ir.getRepresentedInstance() instanceof ExchangeItemInstance) {
+        List<Object> exchangeItems = new GetAllExchangeItems().execute(ir, context);
+        for (Iterator<Object> it = exchangeItems.iterator(); it.hasNext();) {
+          ExchangeItem ei = (ExchangeItem) it.next();
+          if (new OnlySharedDataOrEventOrUnsetFilter().keepElement(ei, context)) {
+            availableElements.addAll(ei.getOwnedExchangeItemInstances());
+          }
+        }      
+      }
+
       SystemEngineering sysEng = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(capellaElement);
       if (sysEng != null) {
         if (scenario.getKind() == ScenarioKind.FUNCTIONAL) {
@@ -59,8 +80,8 @@ public class GetAvailable_InstanceRole_RepresentedInstance extends AbstractQuery
         } else {
           throw new IllegalArgumentException();
         }
-        availableElements.removeAll(QueryInterpretor.executeQuery("GetCurrent_InstanceRole_RepresentedInstance", ir, context));//$NON-NLS-1$
       }
+
     }
     return (List) availableElements;
   }
@@ -75,17 +96,8 @@ public class GetAvailable_InstanceRole_RepresentedInstance extends AbstractQuery
     FunctionPkg fpackage = archi.getOwnedFunctionPkg();
     for (Object obj : EcoreUtil2.getAllContents(FunctionPkgExt.getOwnedFunctions(fpackage))) {
       if (obj instanceof AbstractFunction) {
-        AbstractFunction af = (AbstractFunction) obj;
-        boolean found = false;
-        for (InstanceRole ir : scenario.getOwnedInstanceRoles()) {
-          if (ir.getRepresentedInstance() == obj) {
-            found = true;
-          }
+          result.add((CapellaElement) obj);
         }
-        if (!found) {
-          result.add(af);
-        }
-      }
     }
     return result;
   }
@@ -95,17 +107,23 @@ public class GetAvailable_InstanceRole_RepresentedInstance extends AbstractQuery
    */
   private List<CapellaElement> getAvailableElementsForComponents(Scenario scenario) {
     List<CapellaElement> result = new ArrayList<CapellaElement>();
-    List<Part> excluded = new ArrayList<Part>();
-    for (InstanceRole ir : scenario.getOwnedInstanceRoles()) {
-      if (ir.getRepresentedInstance() instanceof Part) {
-        excluded.add((Part) ir.getRepresentedInstance());
-      }
-    }
-    result.addAll(ScenarioExt.getAllAvailableParts(scenario, excluded));
+    result.addAll(ScenarioExt.getAllAvailableParts(scenario, Collections.emptyList()));
     for (AbstractActor aa : ScenarioExt.getAllActors(scenario)) {
       for (AbstractTypedElement ate : aa.getAbstractTypedElements()) {
-        if ((ate instanceof Part) && !excluded.contains(ate)) {
+        if ((ate instanceof Part)) {
           result.add((Part) ate);
+        }
+      }
+    }
+
+    // Any Scenario can have instance roles for its architecture root component?
+    BlockArchitecture ba = BlockArchitectureExt.getRootBlockArchitecture(scenario);
+    for (EObject e : ba.eContents()) {
+      if (e instanceof Component) {
+        for (Partition te : ((Component) e).getRepresentingPartitions()) {
+          if (te instanceof Part) {
+            result.add(te);
+          }
         }
       }
     }
@@ -117,13 +135,7 @@ public class GetAvailable_InstanceRole_RepresentedInstance extends AbstractQuery
    * @return
    */
   private java.util.Collection<? extends CapellaElement> getAvailableElementsForEntities(Scenario scenario) {
-    List<Part> excluded = new ArrayList<Part>();
-    for (InstanceRole ir : scenario.getOwnedInstanceRoles()) {
-      if (ir.getRepresentedInstance() instanceof Part) {
-        excluded.add((Part) ir.getRepresentedInstance());
-      }
-    }
-    return ScenarioExt.getAllComponents(scenario, excluded);
+    return ScenarioExt.getAllComponents(scenario, Collections.emptyList());
   }
 
 }
