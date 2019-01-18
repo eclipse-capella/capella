@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -473,6 +473,10 @@ class MarkerViewColumns {
                   result = Messages.MarkerLabelProvider_EcoreDiagnosticSourceLabel;
                 }
               }
+            }
+            else if (MarkerViewHelper.getSource((IMarker) element).equals(MarkerViewHelper.ECORE_DIAGNOSTIC_SOURCE)) {
+              result = result.replace(MarkerViewHelper.ECORE_DIAGNOSTIC_SOURCE,
+                  Messages.MarkerLabelProvider_EcoreDiagnosticSourceLabel);
             }
           }
           return result;
