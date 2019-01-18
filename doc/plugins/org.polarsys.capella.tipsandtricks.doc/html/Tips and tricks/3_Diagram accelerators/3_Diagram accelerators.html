@@ -60,6 +60,9 @@
 			<i>Capella Guide &gt; User Manual &gt; Modelling Wizards and Accelerators</i>.
 		</p>
 		<h2 id="Initialize_Diagram">Initialize Diagram</h2>
+		<p>The idea is to initialize a diagram from another one based on information in the model. Then apply the layout from a third diagram, a template one for instance.</p>
+		<p>Note: A recommended best practice is to capitalize the layout creation effort in a diagram and use it as a reference to apply the layout on other diagrams and keep their display consistent.</p>
+		<p>In order to save time when information can be deduced from the model, Capella is able to initialize diagrams from others, not only in a same layer but also between different layers, based on realization links.</p>
 		<table border="1">
 			<tr>
 				<td>
@@ -72,11 +75,33 @@
 				</td>
 			</tr>
 		</table>
-		<p>The idea is to initialize a diagram from another one based on information in the model. Then apply the layout from a third diagram, a template one for instance.</p>
-		<p>Note: A recommended best practice is to capitalize the layout creation effort in a diagram and use it as a reference to apply the layout on other diagrams and keep their display consistent.</p>
-		<p>In order to save time when information can be deduced from the model, Capella is able to initialize diagrams from others, not only in a same layer but also between different layers, based on realization links.  </p>
+		<h3 id="Initialize_FS_from_a_FC_and_OAS_from_an_OP">Initialize FS from a FC and OAS from an OP</h3>
+		<p>On a Functional Chain, you can run the command from the Transitions menu "Functional Chain to Functional Scenario Initialization" to create a Functional Scenario. Each time you run this command you will create a new scenario.</p>
+		<p>
+			<img height="650" width="700" border="0" src="../../Images/FC2FS_cmd.png"/>
+		</p>
+		<p>On an Operational Process, you can run the command from the Transitions menu "Operational Process to Operational Activity Scenario Initialization" to create an Operational Activity Scenario. Each time you run this command you will create a new scenario.</p>
+		<p>
+			<img height="650" width="700" border="0" src="../../Images/OP2OAS_cmd.png"/>
+		</p>
+		<table border="1">
+			<tr>
+				<td>
+					<p>
+						<img height="48" width="48" border="0" src="../../Images/InfoIcon.png"/>
+					</p>
+				</td>
+				<td>
+					<p>In the Capella Transition/Generation preference page, you can control the creation of interactions between instance roles  during initialization (with or without return branch).</p>
+					<p>
+						<img height="150" width="500" border="0" src="../../Images/Pref_FC2FS.png"/>
+					</p>
+				</td>
+			</tr>
+		</table>
+		<h3 id="Initialize_an_ES_from_a_FS">Initialize an ES from a FS</h3>
 		<ul>
-			<li>For example, in the 
+			<li>A first use case, in the 
 				<i>System Analysis</i>, from a 
 				<i>Function Scenario</i>, you can initialize an 
 				<i>Exchange Scenario</i> thanks to the 
@@ -107,7 +132,7 @@
 			<dd>The resulting ES Scenario is deduced from the model: the System and Actors allocating the functions displayed in the original FS Scenario.</dd>
 		</dl>
 		<ul>
-			<li>Another example from the 
+			<li>A second use case, from the 
 				<i>System Analysis</i> to the 
 				<i>Logical Architecture</i> is that you can also initialize an 
 				<i>Exchange Scenario</i> thanks to the 
