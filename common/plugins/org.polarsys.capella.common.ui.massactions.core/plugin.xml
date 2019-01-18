@@ -30,8 +30,8 @@
    <extension
          point="org.polarsys.kitalpha.massactions.core.columnfilter">
       <columnFilter
-            class="org.polarsys.capella.common.ui.massactions.core.shared.extensions.columnfilter.CapellaEditionColumnFilter"
-            displayName="Editing">
+            class="org.polarsys.capella.common.ui.massactions.core.shared.extensions.columnfilter.CapellaDefaultColumnFilter"
+            displayName="Default">
       </columnFilter>
    </extension>
 

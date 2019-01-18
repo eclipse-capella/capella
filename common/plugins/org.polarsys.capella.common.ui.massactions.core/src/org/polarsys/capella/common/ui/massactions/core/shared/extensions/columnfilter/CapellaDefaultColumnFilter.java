@@ -31,12 +31,12 @@ import org.polarsys.kitalpha.massactions.core.extensions.columnfilter.AbstractMA
  * @author Sandu Postaru
  *
  */
-public class CapellaEditionColumnFilter extends AbstractMAColumnFilter {
+public class CapellaDefaultColumnFilter extends AbstractMAColumnFilter {
 
   protected Set<String> hiddenColumnsId;
   protected boolean configured;
 
-  public CapellaEditionColumnFilter() {
+  public CapellaDefaultColumnFilter() {
     super();
     this.hiddenColumnsId = new HashSet<>();
     this.configured = false;
