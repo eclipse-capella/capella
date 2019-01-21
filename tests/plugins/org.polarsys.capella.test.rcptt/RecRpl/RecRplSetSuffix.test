@@ -7,7 +7,7 @@ Element-Version: 3.0
 External-Reference: 
 Id: _YjzF8PfIEeiaU_LTMcHjMQ
 Runtime-Version: 2.3.0.201806262310
-Save-Time: 12/4/18 3:18 PM
+Save-Time: 1/21/19 11:00 AM
 Testcase-Type: ecl
 
 ------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
@@ -44,13 +44,13 @@ with [get-window "Replicable Elements"] {
 // Verify that the REC Suffixed property is TRUE
 get-view Properties | click
 get-view "Capella Project Explorer" | get-tree 
-    | select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/Catalog/REC1/Link to 'Displayed VOD Movie Data'"
+    | select "In-Flight Entertainment System/*In-Flight Entertainment System.aird/In-Flight Entertainment System/Catalog/REC1/Link to 'Displayed VOD Movie Data'"
 get-view Properties | get-section Information | get-group "" | get-button | get-property selected | equals true 
     | verify-true
     
 // Create RPL
 get-view "Capella Project Explorer" | get-tree 
-    | select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions" 
+    | select "In-Flight Entertainment System/*In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions" 
     | get-menu -path "REC \\/ RPL/Instantiate RPL from REC" | click
 with [get-window "Replicable Elements"] {
     get-group "" | get-button "Browse available elements" | click
@@ -64,14 +64,14 @@ with [get-window "Replicable Elements"] {
 
 // Verify that the RPL Suffixed property is TRUE
 get-view "Capella Project Explorer" | get-tree 
-    | select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/Catalog/RPL1 [REC1]/Link to 'Displayed VOD Movie Data'"
+    | select "In-Flight Entertainment System/*In-Flight Entertainment System.aird/In-Flight Entertainment System/Catalog/RPL1 [REC1]/Link to 'Displayed VOD Movie Data'"
 get-view Properties | get-section Information | get-group "" | get-button | get-property selected | equals true 
     | verify-true
     
 
 // Update REC and set Suffixed property to FALSE
 get-view "Capella Project Explorer" | get-tree 
-    | select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/Displayed VOD Movie Data [REC]" 
+    | select "In-Flight Entertainment System/*In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/Displayed VOD Movie Data [REC]" 
     | get-menu -path "REC \\/ RPL/Update REC/From selection..." | click
 with [get-window "Replicable Elements"] {
     with [get-group "" -index 1] {
@@ -86,7 +86,7 @@ get-window "Update REC from selection" | get-button OK | click
 
 // Verify that the REC Suffixed property is FALSE
 get-view "Capella Project Explorer" | get-tree 
-    | select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/Catalog/REC1/Link to 'Displayed VOD Movie Data'"
+    | select "In-Flight Entertainment System/*In-Flight Entertainment System.aird/In-Flight Entertainment System/Catalog/REC1/Link to 'Displayed VOD Movie Data'"
 get-view Properties | get-section Information | get-group "" | get-button | get-property selected | equals false 
     | verify-true
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--
