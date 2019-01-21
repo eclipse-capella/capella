@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2018, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -51,7 +51,9 @@ import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.TriS
 
 /**
  * Ensure that Components and Parts are always moved together across projects.
+ * @deprecated will be removed in 1.4.0
  */
+@Deprecated
 public class PartComponentMoveListener extends CapellaContainmentTreeListener {
 
   @Override
