@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,8 +18,6 @@ public class Messages extends NLS {
   public static String MoveStagingView_clearParentActionTooltip;
   public static String MoveStagingView_destinationSectionDescription;
   public static String MoveStagingView_destinationSectionTitle;
-  public static String MoveStagingView_formText;
-  public static String MoveStagingView_formTitle;
   public static String MoveStagingView_stageSectionDescription;
   public static String MoveStagingView_stageSectionTitle;
   public static String MoveStagingView_unstageActionTooltip;
