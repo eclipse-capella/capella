@@ -44,8 +44,6 @@ import org.polarsys.capella.test.framework.helpers.IResourceHelpers;
  */
 public class GenerateQueriesHandler extends AbstractUiHandler {
 
-  private static final String TEST_CASES_DATA = "\\$TEST_CASES_DATA\\$"; //$NON-NLS-1$
-
   @Override
   public Object execute(ExecutionEvent event) throws ExecutionException {
 
