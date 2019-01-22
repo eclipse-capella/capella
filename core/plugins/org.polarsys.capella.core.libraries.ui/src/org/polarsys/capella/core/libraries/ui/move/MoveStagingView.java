@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -652,7 +652,7 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
   }
 
   private void updateActions() {
-    executeAction.setEnabled(stage.canExecute());
+    executeAction.setEnabled(stage != null && stage.canExecute());
   }
 
   class StageLabelDecorator extends CellLabelProvider implements ILabelDecorator {
