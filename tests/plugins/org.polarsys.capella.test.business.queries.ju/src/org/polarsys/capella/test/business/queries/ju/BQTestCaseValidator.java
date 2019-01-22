@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -164,7 +164,7 @@ public class BQTestCaseValidator {
 		} else {
 			List<String> errorDescriptions = new ArrayList<String>();
 			if (nbTestCaseFailed > 0)
-				errorDescriptions.add(nbTestCaseFailed + " test case(s) fail(s)"); //$NON-NLS-1$
+				errorDescriptions.add(nbTestCaseFailed + " out of " + nbTestCases + " test case(s) fail(s)"); //$NON-NLS-1$
 			if (nbInputNotFound > 0)
 				errorDescriptions.add(nbInputNotFound + " input not found"); //$NON-NLS-1$
 			if (nbRaisedExceptions > 0)
@@ -177,7 +177,13 @@ public class BQTestCaseValidator {
 				message.append(errorDescriptions.get(i));
 				if (i < errorDescriptions.size() - 1)
 					message.append(", "); //$NON-NLS-1$
-			}			
+			}
+
+			for (BQValidationError e : getErrors()) {
+			  message.append(e.toString());
+			  message.append("\n");
+			}
+
 		}
 		return message.toString();		
 	}
