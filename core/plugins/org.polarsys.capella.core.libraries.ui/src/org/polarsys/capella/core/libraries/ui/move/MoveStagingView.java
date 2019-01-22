@@ -20,6 +20,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.debug.internal.ui.DebugPluginImages;
 import org.eclipse.debug.ui.IDebugUIConstants;
 import org.eclipse.emf.common.notify.AdapterFactory;
@@ -85,7 +86,10 @@ import org.eclipse.swt.widgets.ToolBar;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeColumn;
 import org.eclipse.ui.IWorkbenchActionConstants;
+import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPart;
+import org.eclipse.ui.IWorkbenchWindow;
+import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.BaseSelectionListenerAction;
 import org.eclipse.ui.commands.ICommandImageService;
@@ -103,11 +107,13 @@ import org.polarsys.capella.common.libraries.IModel;
 import org.polarsys.capella.common.libraries.manager.LibraryManager;
 import org.polarsys.capella.common.libraries.manager.LibraryManagerExt;
 import org.polarsys.capella.core.libraries.model.ICapellaModel;
+import org.polarsys.capella.core.libraries.ui.Activator;
 import org.polarsys.capella.core.model.helpers.move.CapellaMoveHelper;
 import org.polarsys.capella.core.model.helpers.move.Stage;
 import org.polarsys.capella.core.model.helpers.move.StageListener;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.LocateInCapellaExplorerAction;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.drop.ExplorerDropAdapterAssistant;
+import org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaCommonNavigator;
 
 import com.google.common.collect.Lists;
 
@@ -992,6 +998,12 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
   private static class MyLocateInCapellaExplorerAction extends LocateInCapellaExplorerAction {
     @Override
     public void selectElementInCapellaExplorer(ISelection selection) {
+      IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+      try {
+        window.getActivePage().showView(CapellaCommonNavigator.ID, null, IWorkbenchPage.VIEW_ACTIVATE);
+      } catch (PartInitException e) {
+        Activator.getDefault().getLog().log(new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getLocalizedMessage(), e));
+      }
       super.selectElementInCapellaExplorer(selection);
     }
   }
