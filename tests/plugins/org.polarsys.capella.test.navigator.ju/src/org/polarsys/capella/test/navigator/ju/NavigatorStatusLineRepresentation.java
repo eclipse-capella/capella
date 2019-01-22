@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2018, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,7 +29,7 @@ public class NavigatorStatusLineRepresentation extends BasicTestCase {
 
   @Override
   public List<String> getRequiredTestModels() {
-    return Arrays.asList("InvalidRepresentations");
+    return Arrays.asList("emptyDiagram");
   }
 
   @Override
@@ -38,7 +38,7 @@ public class NavigatorStatusLineRepresentation extends BasicTestCase {
     CapellaCommonNavigator navigator = (CapellaCommonNavigator) PlatformUI.getWorkbench().getActiveWorkbenchWindow()
         .getActivePage().findView(CapellaCommonNavigator.ID);
 
-    Session session = getSession("InvalidRepresentations");
+    Session session = getSession("emptyDiagram");
     Collection<DRepresentationDescriptor> descriptors = DialectManager.INSTANCE.getAllRepresentationDescriptors(session);
 
     //On all invalid representations, it shall display an (Invalid) tag
