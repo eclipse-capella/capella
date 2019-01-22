@@ -87,6 +87,8 @@ import org.eclipse.swt.widgets.TreeColumn;
 import org.eclipse.ui.IWorkbenchActionConstants;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.actions.BaseSelectionListenerAction;
+import org.eclipse.ui.commands.ICommandImageService;
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.Section;
@@ -127,7 +129,17 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
   Section stageSection;
   Section destinationSection;
 
+  /**
+   * This executes the transfer
+   */
   IAction executeAction;
+
+  /**
+   * Actions on the left viewer
+   */
+  IAction addRequiredAction;
+  IAction addAllRequiredAction;
+  IAction unstageAction;
 
   public Stage getStage(){
     return stage;
@@ -414,26 +426,20 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
     gd = new GridData(SWT.CENTER, SWT.TOP, false, false);
     stageViewerToolbar.setLayoutData(gd);
 
-    ImageDescriptor descriptor = DebugPluginImages.getImageRegistry().getDescriptor(IDebugUIConstants.IMG_LCL_REMOVE);
-    final IAction unstageAction = new Action("", descriptor) { //$NON-NLS-1$
-      @Override
-      public void run() {
-        if (stage != null) {
-          stage.removeAll(stageViewer.getStructuredSelection().toList());
-        }
-      }
-    };
+    unstageAction = new UnstageAction();
+    addRequiredAction = new AddRequiredAction();
+    addAllRequiredAction = new AddAllRequiredAction();
 
-    unstageAction.setToolTipText(Messages.MoveStagingView_unstageActionTooltip);
-    stageViewer.addSelectionChangedListener(new ISelectionChangedListener() {
-      @Override
-      public void selectionChanged(SelectionChangedEvent event) {
-        unstageAction.setEnabled(stage.getElements().containsAll(stageViewer.getStructuredSelection().toList()));
-      }
-    });
+    stageViewer.addSelectionChangedListener((ISelectionChangedListener) addRequiredAction);
+    stageViewer.addSelectionChangedListener((ISelectionChangedListener) unstageAction);
+    stageViewer.addSelectionChangedListener((ISelectionChangedListener) addAllRequiredAction);
 
-    unstageAction.setEnabled(false);
     stageViewerToolBarManager.add(unstageAction);
+    stageViewerToolBarManager.add(addRequiredAction);
+    stageViewerToolBarManager.add(addAllRequiredAction);
+
+    stageViewer.setSelection(StructuredSelection.EMPTY);
+
     stageViewerToolBarManager.update(true);
 
     MenuManager stageContextMenu = new MenuManager();
@@ -653,7 +659,98 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
 
   private void updateActions() {
     executeAction.setEnabled(stage != null && stage.canExecute());
+    ((BaseSelectionListenerAction)unstageAction).selectionChanged(stageViewer.getStructuredSelection());
+    ((BaseSelectionListenerAction)addRequiredAction).selectionChanged(stageViewer.getStructuredSelection());
+    ((BaseSelectionListenerAction)addAllRequiredAction).selectionChanged(stageViewer.getStructuredSelection());
   }
+
+  private class UnstageAction extends BaseSelectionListenerAction {
+    private UnstageAction() {
+      super("");
+      ICommandImageService service = getViewSite().getService(ICommandImageService.class);
+      setImageDescriptor(service.getImageDescriptor("org.polarsys.capella.common.re.subcommands.delete"));
+      setToolTipText(Messages.MoveStagingView_unstageActionTooltip);
+    }
+
+    @SuppressWarnings("unchecked")
+    @Override
+    public void run() {
+        stage.removeAll(getStructuredSelection().toList());
+    }
+
+    @Override
+    protected boolean updateSelection(IStructuredSelection selection) {
+      return stage != null && stage.getElements().containsAll(selection.toList());
+    }
+  }
+
+  private abstract class AbstractAddRequiredAction extends BaseSelectionListenerAction {
+
+    protected AbstractAddRequiredAction(String text) {
+      super(text);
+    }
+
+    @Override
+    protected boolean updateSelection(IStructuredSelection selection) {
+      boolean enabled = false;
+      for (Iterator<?> it = selection.iterator(); it.hasNext();) {
+        EObject next = (EObject) it.next();
+        if (stage != null && stage.getBackreferences(next).size() > 0) {
+          enabled = true;
+          break;
+        }
+      }
+      return enabled;
+    }
+
+  }
+
+  private class AddRequiredAction extends AbstractAddRequiredAction {
+    private AddRequiredAction() {
+      super("");
+      ICommandImageService service = getViewSite().getService(ICommandImageService.class);
+      setImageDescriptor(service.getImageDescriptor("org.polarsys.capella.common.re.subcommands.browse.addSelectionDependencies"));
+      setToolTipText(Messages.MoveStagingView_addRequiredElementsTooltip);
+    }
+
+    @Override
+    public void run() {
+        Collection<EObject> toAdd = new LinkedHashSet<EObject>();
+        for (Iterator<?> it = getStructuredSelection().iterator(); it.hasNext();) {
+          EObject next = (EObject) it.next();
+          toAdd.addAll(stage.getBackreferences(next).values());
+        }
+        stage.addAll(toAdd);
+    }
+
+  }
+
+  private class AddAllRequiredAction extends AbstractAddRequiredAction {
+
+    protected AddAllRequiredAction() {
+      super("");
+      ICommandImageService service = getViewSite().getService(ICommandImageService.class);
+      setImageDescriptor(service.getImageDescriptor("org.polarsys.capella.common.re.subcommands.browse.addDependencies"));
+      setToolTipText(Messages.MoveStagingView_addAllRequiredElementsTooltip);
+    }
+
+    public void run() {
+
+      @SuppressWarnings("unchecked") 
+      Collection<EObject> input = getStructuredSelection().toList();
+
+      while (!input.isEmpty()) {
+        Collection<EObject> backrefs = new LinkedHashSet<EObject>();
+        for (EObject e : input) {
+          backrefs.addAll(stage.getBackreferences(e).values());
+        }
+        stage.addAll(backrefs);
+        input = backrefs;
+      }
+    }
+
+  }
+
 
   class StageLabelDecorator extends CellLabelProvider implements ILabelDecorator {
 
