@@ -82,6 +82,23 @@ To manually install your addon:
 *  Extract the contents of the downloaded archive into <CAPELLA_INSTALLATION_DIR>/eclipse/dropins directory
 Check that the extraction process has finished without error.
 *  Start Capella
+
+
+{| border="1"
+|-
+| 
+[[Image:Images/Warning.png|34x34px]]
+
+ 
+| 
+- Make sure that the installed addon as dropin has a valid structure. The structure is similar to:
+* '''<addon name>\eclipse\plugins\*''' 
+* '''<addon name>\eclipse\features\* '''
+
+- The structure is different from the one of an '''update site'''. The '''update site''' does have the '''artifacts.jar''' and '''content.jar''' which might cause problems for installing a plug-in.
+ 
+|}
+
 ==== As Update Site ====
 *  Download the addon as an update site
 *  Start Capella
@@ -101,26 +118,26 @@ Check that the extraction process has finished without error.
 The following procedure for verifying the successful installation of addons, assumes that Capella is well installed and fully functional.
 
 '''Plugins Verification'''
-*  Start Capella
+*  Start Capella with the option '''-clean'''. It forces the application to clear the cached data and to rebuild its configuration after installing a plug-in.
 *  Open '''Help''' using the menu toolbar
 *  Select '''About Capella'''
 *  Select '''Installation Details'''
 *  Select '''Plugins''' tab
 *  Scroll down the list
-Check that the plugins that correspond to the addon are displayed. 
+* Check that the plugins that correspond to the add-on are displayed.
+* Open '''Error Log''' view and verify there is not any error message relating to the installed add-on.
+* If no problem happens, remove this '''-clean''' parameter to avoid starting performance issues for next times.
 
 {| border="1"
 |-
 | 
-[[Image:Images/3.4.%20How%20to%20copy%20or%20export%20a%20Melody%20Advance%20Project_html_723ed3f9.png|34x34px]]
+[[Image:Images/Warning.png|34x34px]]
 
  
 | 
-After updating the installation of Capella, do not forget to restart the application.
+- After updating the installation of Capella, do not forget to restart the application with the option '''-clean'''. Remove this option for the next times to avoid starting performance issues.
 
- 
-Do not forget to switch to a new workspace when the configuration is modified, since some information are cached by Eclipse (Java version, etc...).
-
+- Do not forget to switch to a new workspace when the configuration is modified, since some information are cached by Eclipse (Java version, etc...).
  
 |}
 == Restriction ==
@@ -128,7 +145,7 @@ Do not forget to switch to a new workspace when the configuration is modified, s
 {| border="1"
 |-
 | 
-[[Image:Images/3.4.%20How%20to%20copy%20or%20export%20a%20Melody%20Advance%20Project_html_723ed3f9.png|34x34px]]
+[[Image:Images/Warning.png|34x34px]]
 
  
 | 
