@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -44,7 +44,6 @@ public class InformationBusinessQueryTestSuite extends BasicTestSuite {
     tests.add(new BooleanReference_ReferencedValue());
     tests.add(new BooleanType_DefaultValue());
     tests.add(new BooleanType_InheritedBooleanType());
-    tests.add(new BooleanType_Property());
     tests.add(new BooleanType_RealizedBooleanType());
     tests.add(new Class_InheritedClasses());
     tests.add(new Class_RealizedClasses());
@@ -97,7 +96,6 @@ public class InformationBusinessQueryTestSuite extends BasicTestSuite {
     tests.add(new NumericType_MaxValue());
     tests.add(new NumericType_MinValue());
     tests.add(new NumericType_NullValue());
-    tests.add(new NumericType_Property());
     tests.add(new NumericType_RealizedNumericType());
     tests.add(new NumericValue_Type());
     tests.add(new NumericValueReference_Unit());
@@ -114,7 +112,6 @@ public class InformationBusinessQueryTestSuite extends BasicTestSuite {
     tests.add(new PhysicalQuantity_MaxValue());
     tests.add(new PhysicalQuantity_MinValue());
     tests.add(new PhysicalQuantity_NullValue());
-    tests.add(new PhysicalQuantity_Property());
     tests.add(new PhysicalQuantity_RealizedPhysicalQuantity());
     tests.add(new PhysicalQuantity_Unit());
     tests.add(new Property_DefaultValue());
@@ -137,7 +134,6 @@ public class InformationBusinessQueryTestSuite extends BasicTestSuite {
     tests.add(new StringType_MaxLength());
     tests.add(new StringType_MinLength());
     tests.add(new StringType_NullValue());
-    tests.add(new StringType_Property());
     tests.add(new StringType_RealizedStringType());
     tests.add(new StringValue_Type());
     tests.add(new UnaryExpression_Operand());
@@ -145,7 +141,6 @@ public class InformationBusinessQueryTestSuite extends BasicTestSuite {
     tests.add(new UnaryExpression_Unit());
     tests.add(new Union_DefaultProperty());
     tests.add(new Union_Discriminant());
-    tests.add(new Union_DiscriminantType());
     tests.add(new Union_InheritedClasses());
     tests.add(new UnionProperty_DefaultValue());
     tests.add(new UnionProperty_MaxCardinality());
