@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EContentsEList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
@@ -94,7 +95,7 @@ public class ReferentialConstraintsValidationRule extends AbstractValidationRule
 
     for (EObject e : targets) {
       if (validateIncoming) {
-        validateIncomingReferences(e, results, ctx);
+        validateIncomingReferences(e, results, ctx, targets);
       }
       validateOutgoingReferences(e, results, ctx);
     }
@@ -121,18 +122,20 @@ public class ReferentialConstraintsValidationRule extends AbstractValidationRule
 
   }
 
-  private void validateIncomingReferences(EObject element, Collection<IStatus> results, IValidationContext ctx){
+  private void validateIncomingReferences(EObject element, Collection<IStatus> results, IValidationContext ctx, Collection<EObject> sourceFilter){
     SemanticEditingDomain domain = (SemanticEditingDomain) TransactionUtil.getEditingDomain(element);
     for (EStructuralFeature.Setting s : domain.getCrossReferencer().getInverseReferences(element)) {
       EObject source = s.getEObject();
-      EReference ref = (EReference) s.getEStructuralFeature();
-      if (!ref.isContainment() &&  !ref.isContainer()) {
-        validateSetting(source, ref, element, results, ctx);
+      if (!EcoreUtil.isAncestor(sourceFilter, source)) { // If we do not already validate the source,ref,target triple during validateOutgoing
+        EReference ref = (EReference) s.getEStructuralFeature();
+        if (!ref.isContainment() &&  !ref.isContainer()) {
+          validateSetting(source, ref, element, results, ctx);
+        }
       }
     }
 
     for (EObject e : element.eContents()) {
-      validateIncomingReferences(e, results, ctx);
+      validateIncomingReferences(e, results, ctx, sourceFilter);
     }
 
   }
