@@ -247,10 +247,10 @@ Whatever the level, UNSET Scenarios raise an error.
          <constraints categories="capella.category/design/completeness">
             <constraint class="org.polarsys.capella.core.data.interaction.validation.scenario.MDCHK_Scenario_InvolvementComponents_1" id="DCOM_05" isEnabledByDefault="true" lang="Java" mode="Batch" name="DCOM_05 - Scenario Components Capability involvement check" severity="ERROR" statusCode="1">
                <message>
-                  Message generated dinamically
+                  Message generated dynamically
                </message>
                <description>
-                  This rule checks that a Scenario Component involves in a Capability.
+                  This rule checks that a Component which appears in a Scenario of a Capability is also involved in the Capability.
                </description>
                <target class="Scenario">
                </target>
@@ -326,7 +326,7 @@ If Capability resides in SystemAnalysis layer. It should be relalized by a Capab
 	               severity="ERROR"
 	               statusCode="1">
 	            <message>
-	               Message generated dinamically
+	               Message generated dynamically
 	            </message>
 	            <description>
 	               This rule checks if the involved Actors in the current Capability are present in at least one Operational Process or Functional Chain or Scenario.
@@ -345,7 +345,7 @@ If Capability resides in SystemAnalysis layer. It should be relalized by a Capab
 	               severity="ERROR"
 	               statusCode="1">
 	            <message>
-	               Message generated dinamically
+	               Message generated dynamically
 	            </message>
 	            <description>
 	               This rule checks that if the current Capability has Actors that are not involved but are present in at least one Operational Process or Functional Chain or Scenario related to the Capability.
@@ -364,7 +364,7 @@ If Capability resides in SystemAnalysis layer. It should be relalized by a Capab
 	               severity="ERROR"
 	               statusCode="1">
 	            <message>
-	               Message generated dinamically
+	               Message generated dynamically
 	            </message>
 	            <description>
 	               This rule checks that if the current Capability has related Operational Processes or Functionals Chains that are not involved with the Capability.
