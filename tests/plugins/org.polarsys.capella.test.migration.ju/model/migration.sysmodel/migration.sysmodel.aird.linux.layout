@@ -17525,62 +17525,62 @@
     <appliedFilters>ModelExtensionFilter</appliedFilters>
     <ownedLayouts xsi:type="layout:NodeLayout" id="a7696e8d-410d-4b58-94b9-fb306af2000b" name="UC1" actualMapping="CCRI CapabilityRealization">
       <appliedStyles>borderColor: 0,0,0</appliedStyles>
-      <bounds x="240" y="288" width="60" height="40"/>
+      <bounds x="270" y="132" width="60" height="40"/>
     </ownedLayouts>
     <ownedLayouts xsi:type="layout:NodeLayout" id="74ed4abe-9090-4a66-be37-741e139487ba" name="LC1" actualMapping="CCRI Component">
       <appliedStyles>borderColor: 0,0,0</appliedStyles>
-      <bounds x="420" y="120" width="70" height="61"/>
+      <bounds x="260" y="0" width="70" height="61"/>
     </ownedLayouts>
     <ownedLayouts xsi:type="layout:NodeLayout" id="9d407730-701d-4bdb-b0e5-510cd0204642" name="LC2" actualMapping="CCRI Component">
       <appliedStyles>borderColor: 0,0,0</appliedStyles>
-      <bounds x="96" y="60" width="70" height="61"/>
+      <bounds x="140" y="0" width="70" height="61"/>
     </ownedLayouts>
     <ownedLayouts xsi:type="layout:NodeLayout" id="2274f0e5-d819-46ce-9a89-80e8c5ddcff1" name="LogicalComponent 11" actualMapping="CCRI Component">
       <appliedStyles>borderColor: 0,0,0</appliedStyles>
-      <bounds x="0" y="0" width="70" height="61"/>
+      <bounds x="400" y="0" width="70" height="61"/>
     </ownedLayouts>
     <ownedLayouts xsi:type="layout:NodeLayout" id="e6f8a038-0fc9-48b7-9910-2f665c9fad74" name="Logical System" actualMapping="CCRI Component">
       <appliedStyles>borderColor: 0,0,0</appliedStyles>
-      <bounds x="0" y="0" width="70" height="61"/>
+      <bounds x="520" y="0" width="70" height="61"/>
     </ownedLayouts>
-    <ownedLayouts xsi:type="layout:NodeLayout" id="72f5a360-f681-45c3-a62c-a47e22be4c4b" name="Actor3" actualMapping="CCRI Component">
+    <ownedLayouts xsi:type="layout:NodeLayout" id="72f5a360-f681-45c3-a62c-a47e22be4c4b" name="Actor3" actualMapping="CCRI Actor">
       <appliedStyles>borderColor: 0,0,0</appliedStyles>
-      <bounds x="240" y="60" width="70" height="61"/>
+      <bounds x="0" y="0" width="75" height="66"/>
     </ownedLayouts>
-    <ownedLayouts xsi:type="layout:EdgeLayout" id="f1e9a850-5b6b-4c55-9294-93c2865f026d" name="" actualMapping="CCRI involvement" source="//@ownedLayouts.71/@ownedLayouts.0" target="//@ownedLayouts.71/@ownedLayouts.5">
+    <ownedLayouts xsi:type="layout:EdgeLayout" id="f1e9a850-5b6b-4c55-9294-93c2865f026d" name="" actualMapping="CCRI ActorCapabilityRealizationInvolvement" source="//@ownedLayouts.71/@ownedLayouts.0" target="//@ownedLayouts.71/@ownedLayouts.5">
       <appliedStyles>strokeColor: 0,0,0</appliedStyles>
       <appliedStyles>centeredColor: 0,0,0</appliedStyles>
       <appliedStyles>edgeRouting: straight</appliedStyles>
-      <bendpoints x="275" y="288"/>
-      <bendpoints x="275" y="103"/>
+      <bendpoints x="300" y="132"/>
+      <bendpoints x="37" y="47"/>
     </ownedLayouts>
     <ownedLayouts xsi:type="layout:EdgeLayout" id="6d65339f-c5b3-4868-9519-acffa71e33f5" name="" actualMapping="CCRI involvement" source="//@ownedLayouts.71/@ownedLayouts.0" target="//@ownedLayouts.71/@ownedLayouts.1">
       <appliedStyles>strokeColor: 0,0,0</appliedStyles>
       <appliedStyles>centeredColor: 0,0,0</appliedStyles>
       <appliedStyles>edgeRouting: straight</appliedStyles>
-      <bendpoints x="293" y="294"/>
-      <bendpoints x="429" y="170"/>
+      <bendpoints x="295" y="132"/>
+      <bendpoints x="295" y="50"/>
     </ownedLayouts>
     <ownedLayouts xsi:type="layout:EdgeLayout" id="89f35936-b5b2-4756-a4c4-a877602a0ca0" name="" actualMapping="CCRI involvement" source="//@ownedLayouts.71/@ownedLayouts.0" target="//@ownedLayouts.71/@ownedLayouts.2">
       <appliedStyles>strokeColor: 0,0,0</appliedStyles>
       <appliedStyles>centeredColor: 0,0,0</appliedStyles>
       <appliedStyles>edgeRouting: straight</appliedStyles>
-      <bendpoints x="257" y="289"/>
-      <bendpoints x="150" y="110"/>
+      <bendpoints x="279" y="137"/>
+      <bendpoints x="204" y="50"/>
     </ownedLayouts>
     <ownedLayouts xsi:type="layout:EdgeLayout" id="b7f8bb83-6a85-4d81-85a4-5769c7e0e67a" name="" actualMapping="CCRI involvement" source="//@ownedLayouts.71/@ownedLayouts.0" target="//@ownedLayouts.71/@ownedLayouts.3">
       <appliedStyles>strokeColor: 0,0,0</appliedStyles>
       <appliedStyles>centeredColor: 0,0,0</appliedStyles>
       <appliedStyles>edgeRouting: straight</appliedStyles>
-      <bendpoints x="253" y="291"/>
-      <bendpoints x="60" y="50"/>
+      <bendpoints x="322" y="137"/>
+      <bendpoints x="402" y="33"/>
     </ownedLayouts>
     <ownedLayouts xsi:type="layout:EdgeLayout" id="706f5670-9d86-439b-b80d-932d6ea9f7bf" name="" actualMapping="CCRI involvement" source="//@ownedLayouts.71/@ownedLayouts.0" target="//@ownedLayouts.71/@ownedLayouts.4">
       <appliedStyles>strokeColor: 0,0,0</appliedStyles>
       <appliedStyles>centeredColor: 0,0,0</appliedStyles>
       <appliedStyles>edgeRouting: straight</appliedStyles>
-      <bendpoints x="253" y="291"/>
-      <bendpoints x="60" y="50"/>
+      <bendpoints x="322" y="137"/>
+      <bendpoints x="529" y="46"/>
     </ownedLayouts>
     <appliedLayers>default layer</appliedLayers>
   </ownedLayouts>

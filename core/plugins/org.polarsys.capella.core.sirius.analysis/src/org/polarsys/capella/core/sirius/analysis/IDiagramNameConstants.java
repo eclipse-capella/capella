@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -37,6 +37,7 @@ public interface IDiagramNameConstants extends DiagramDescriptionConstants {
   String PHYSICAL_PATH_DIAGRAM_NAME = "Physical Path Description"; //$NON-NLS-1$
   String STATE_AND_MODE_MATRIX = "State And Mode - Matrix"; //$NON-NLS-1$
   String CAPABILITY_REALIZATION_BLANK = "Capability Realization Blank"; //$NON-NLS-1$
+  String CONTEXTUAL_CAPABILITY_REALIZATION_INVOLVEMENT = "Contextual Capability Realization Involvement"; //$NON-NLS-1$
 
   /**
    * Operational Analysis diagrams
@@ -44,7 +45,7 @@ public interface IDiagramNameConstants extends DiagramDescriptionConstants {
   String CONTEXTUAL_OPERATIONAL_ACTIVITY_INTERACTION_DIAGRAM_NAME = "Contextual Operational Activity Interaction"; //$NON-NLS-1$
   String OPERATIONAL_ACTIVITY_BREAKDOWN_DIAGRAM_NAME = "Operational Activity Breakdown"; //$NON-NLS-1$
   String OPERATIONAL_ACTIVITY_INTERACTION_BLANK_DIAGRAM_NAME = "Operational Activity " //$NON-NLS-1$
-                                                                                   + DiagramDescriptionConstants.INTERACTION_BLANK_DIAGRAM_NAME; //$NON-NLS-1$
+      + DiagramDescriptionConstants.INTERACTION_BLANK_DIAGRAM_NAME; // $NON-NLS-1$
   String OPERATIONAL_ENTITY_BLANK_DIAGRAM_NAME = "Operational Entity Blank"; //$NON-NLS-1$
   String OPERATIONAL_ENTITY_BREAKDOWN_DIAGRAM_NAME = "Operational Entity Breakdown"; //$NON-NLS-1$
   String OPERATIONAL_INTERACTION_SCENARIO_DIAGRAM_NAME = "Operational Interaction Scenario"; //$NON-NLS-1$

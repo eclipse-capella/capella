@@ -201,7 +201,12 @@
         </ownedLogicalFunctions>
       </ownedFunctionPkg>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.la:CapabilityRealizationPkg"
-          id="38ae657c-3382-4a42-b734-4d343e37be35" name="Capabilities"/>
+          id="38ae657c-3382-4a42-b734-4d343e37be35" name="Capabilities">
+        <ownedCapabilityRealizations xsi:type="org.polarsys.capella.core.data.la:CapabilityRealization"
+            id="2e82c298-dfdd-4a30-9bd7-6d50ecab3df7" name="MyLogicalCapabilityRealization"/>
+        <ownedCapabilityRealizations xsi:type="org.polarsys.capella.core.data.la:CapabilityRealization"
+            id="f3a072ae-fdcf-4470-87b0-db28a51a3e16" name="CapabilityRealization 2"/>
+      </ownedAbstractCapabilityPkg>
       <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"
           id="ebd4079b-d099-4e27-ac15-45ebadfd9d7f" name="Interfaces"/>
       <ownedDataPkg xsi:type="org.polarsys.capella.core.data.information:DataPkg"
@@ -239,7 +244,17 @@
         </ownedPhysicalFunctions>
       </ownedFunctionPkg>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.la:CapabilityRealizationPkg"
-          id="5d9a75a5-d2a2-46a9-8955-b811371058c4" name="Capabilities"/>
+          id="5d9a75a5-d2a2-46a9-8955-b811371058c4" name="Capabilities">
+        <ownedCapabilityRealizations xsi:type="org.polarsys.capella.core.data.la:CapabilityRealization"
+            id="a75a0f75-102e-464d-8ea3-c846002da06b" name="MyPhysicalCapabilityRealization"/>
+        <ownedCapabilityRealizations xsi:type="org.polarsys.capella.core.data.la:CapabilityRealization"
+            id="84c42672-f5ad-4cb9-bbd9-4131cf32d267" name="CapabilityRealization 2"/>
+        <ownedCapabilityRealizations xsi:type="org.polarsys.capella.core.data.la:CapabilityRealization"
+            id="5976aae5-748a-44c9-a17f-5c3e49836d17" name="CapabilityRealization 3">
+          <ownedActorCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:ActorCapabilityRealizationInvolvement"
+              id="f54130b4-ba40-42e2-a3d9-975cab54adb0" involved="#891fe554-6197-4aac-875e-c00654c4988f"/>
+        </ownedCapabilityRealizations>
+      </ownedAbstractCapabilityPkg>
       <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"
           id="d9509bad-635d-49cb-9aff-e9fe73e225b8" name="Interfaces"/>
       <ownedDataPkg xsi:type="org.polarsys.capella.core.data.information:DataPkg"
@@ -248,6 +263,10 @@
           id="68c25613-bf31-4c3c-8692-fc19b7e3c610" name="Physical Context">
         <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="daf77bec-0815-4f4b-b72b-6c7916c4d326"
             name="Physical System" abstractType="#1f03fa74-6c06-479c-bba0-f1f905f5a0f8"/>
+        <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="21486958-4d34-4b1d-9f9d-3d2c7d3e84f8"
+            name="PhysicalActor 1" abstractType="#64768d41-dd56-471b-b942-1e82a4cc1975"/>
+        <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="97e26132-ebf6-4e07-9b32-f7ca64e88612"
+            name="PhysicalActor 2" abstractType="#891fe554-6197-4aac-875e-c00654c4988f"/>
       </ownedPhysicalContext>
       <ownedPhysicalComponent xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponent"
           id="1f03fa74-6c06-479c-bba0-f1f905f5a0f8" name="Physical System">
@@ -272,7 +291,12 @@
             sourceElement="#1f03fa74-6c06-479c-bba0-f1f905f5a0f8"/>
       </ownedPhysicalComponent>
       <ownedPhysicalActorPkg xsi:type="org.polarsys.capella.core.data.pa:PhysicalActorPkg"
-          id="ae35b775-dc2e-438e-9303-b5f8ad6c9b8c" name="Physical Actors"/>
+          id="ae35b775-dc2e-438e-9303-b5f8ad6c9b8c" name="Physical Actors">
+        <ownedPhysicalActors xsi:type="org.polarsys.capella.core.data.pa:PhysicalActor"
+            id="64768d41-dd56-471b-b942-1e82a4cc1975" name="PhysicalActor 1" kind="PERSON"/>
+        <ownedPhysicalActors xsi:type="org.polarsys.capella.core.data.pa:PhysicalActor"
+            id="891fe554-6197-4aac-875e-c00654c4988f" name="PhysicalActor 2" kind="PERSON"/>
+      </ownedPhysicalActorPkg>
       <ownedLogicalArchitectureRealizations xsi:type="org.polarsys.capella.core.data.pa:LogicalArchitectureRealization"
           id="478c34ea-cfd4-4df5-9cab-4d24ed951e72" targetElement="#09d6a7a9-3746-4ee9-8e6e-597326a129e5"
           sourceElement="#3cb4db7f-ac64-4a31-92f3-24f9e497d4c2"/>

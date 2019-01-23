@@ -59,6 +59,7 @@ import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
 import org.polarsys.capella.common.ui.toolkit.dialogs.TransferTreeListDialog;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
 import org.polarsys.capella.core.business.queries.capellacore.BusinessQueriesProvider;
+import org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvement;
 import org.polarsys.capella.core.data.capellacore.AbstractDependenciesPkg;
 import org.polarsys.capella.core.data.capellacore.AbstractExchangeItemPkg;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
@@ -77,6 +78,7 @@ import org.polarsys.capella.core.data.cs.Interface;
 import org.polarsys.capella.core.data.cs.InterfaceImplementation;
 import org.polarsys.capella.core.data.cs.InterfacePkg;
 import org.polarsys.capella.core.data.cs.InterfaceUse;
+import org.polarsys.capella.core.data.cs.SystemComponent;
 import org.polarsys.capella.core.data.cs.SystemComponentCapabilityRealizationInvolvement;
 import org.polarsys.capella.core.data.ctx.ActorPkg;
 import org.polarsys.capella.core.data.ctx.SystemAnalysis;
@@ -166,13 +168,13 @@ public class InformationServices {
   /**
    * 
    */
-  private static final String THROWS_WITH_WHITE_SPACE_CHAR = ICommonConstants.WHITE_SPACE_CHARACTER
-      + "throws" + ICommonConstants.WHITE_SPACE_CHARACTER; //$NON-NLS-1$
+  private static final String THROWS_WITH_WHITE_SPACE_CHAR = ICommonConstants.WHITE_SPACE_CHARACTER + "throws" //$NON-NLS-1$
+      + ICommonConstants.WHITE_SPACE_CHARACTER;
   /**
    * 
    */
-  private static final String RETURN_WITH_WHITE_SPACE_CHAR = ICommonConstants.WHITE_SPACE_CHARACTER
-      + "returns" + ICommonConstants.WHITE_SPACE_CHARACTER; //$NON-NLS-1$
+  private static final String RETURN_WITH_WHITE_SPACE_CHAR = ICommonConstants.WHITE_SPACE_CHARACTER + "returns" //$NON-NLS-1$
+      + ICommonConstants.WHITE_SPACE_CHARACTER;
   private static InformationServices service = null;
   public String COMMA_WITH_SPACE = ", "; //$NON-NLS-1$
 
@@ -478,14 +480,16 @@ public class InformationServices {
         if (atLeastOneMulEleIsNamed && !mulEleName.equals(ICommonConstants.EMPTY_STRING)) {
           first = setQualifier(sb, qualifier, first);
           // direction, name, type and Cardinality
-          parameterToStringReturnAndException(sb, retrievedMulEle, typeToMulEles.getKey(), mulEleName, false, true, true, false);
+          parameterToStringReturnAndException(sb, retrievedMulEle, typeToMulEles.getKey(), mulEleName, false, true,
+              true, false);
         }
       }
       // since only one type is selected from may be multiple unNamed
       // Types, there is no need of cardinality
       if (!atLeastOneMulEleIsNamed) {
         first = setQualifier(sb, qualifier, first);
-        parameterToStringReturnAndException(sb, null, typeToMulEles.getKey(), ICommonConstants.EMPTY_STRING, false, true, true, false);
+        parameterToStringReturnAndException(sb, null, typeToMulEles.getKey(), ICommonConstants.EMPTY_STRING, false,
+            true, true, false);
       }
     }
   }
@@ -515,12 +519,12 @@ public class InformationServices {
     if (showName) {
       // Direction
       if (showDirection && parameter instanceof ExchangeItemElement) {
-          ExchangeItemElement exchangeItemElement = (ExchangeItemElement) parameter;
-          ParameterDirection direction = exchangeItemElement.getDirection();
-          if (ElementKind.MEMBER.equals(exchangeItemElement.getKind()) && null != direction) {
-              sb.append(direction.getName());
-              sb.append(ICommonConstants.WHITE_SPACE_CHARACTER);
-          }
+        ExchangeItemElement exchangeItemElement = (ExchangeItemElement) parameter;
+        ParameterDirection direction = exchangeItemElement.getDirection();
+        if (ElementKind.MEMBER.equals(exchangeItemElement.getKind()) && null != direction) {
+          sb.append(direction.getName());
+          sb.append(ICommonConstants.WHITE_SPACE_CHARACTER);
+        }
       }
       sb.append(name);
       sb.append(ICommonConstants.COLON_CHARACTER);
@@ -553,7 +557,8 @@ public class InformationServices {
     String resultMax = PropertyNamingHelper.getCardValue(parameter.getOwnedMaxCard());
 
     if (!((parameter.getOwnedMaxCard() instanceof LiteralNumericValue)
-        && (parameter.getOwnedMinCard() instanceof LiteralNumericValue) && "1".equals(resultMin) && "1".equals(resultMax))) { //$NON-NLS-1$ //$NON-NLS-2$
+        && (parameter.getOwnedMinCard() instanceof LiteralNumericValue) && "1".equals(resultMin) //$NON-NLS-1$
+        && "1".equals(resultMax))) { //$NON-NLS-1$
       sb.append("["); //$NON-NLS-1$
       sb.append(resultMin);
       sb.append(".."); //$NON-NLS-1$
@@ -676,8 +681,10 @@ public class InformationServices {
 
   public String computeLabel(Property property) {
     if (property instanceof Port) {
-      // Acceleo bug: it doesn't retrieve the best method according inheritance, it return the first method
-      // compatible with the parameter. (so if the method computeLabel(Port) was defined before this method,
+      // Acceleo bug: it doesn't retrieve the best method according inheritance, it
+      // return the first method
+      // compatible with the parameter. (so if the method computeLabel(Port) was
+      // defined before this method,
       // it will return it !!
       return computeLabel((Port) property);
     }
@@ -718,7 +725,8 @@ public class InformationServices {
    * @return the String
    */
   public String computeLabelWithoutType(ExchangeItemElement element) {
-    StringBuilder result = new StringBuilder(PropertyNamingHelper.multiplicityToStringDisplay(element) + " " + element.getName()); //$NON-NLS-1$
+    StringBuilder result = new StringBuilder(
+        PropertyNamingHelper.multiplicityToStringDisplay(element) + " " + element.getName()); //$NON-NLS-1$
     EList<Property> referencedProperties = element.getReferencedProperties();
     if (!referencedProperties.isEmpty()) {
       result.append(" {"); //$NON-NLS-1$
@@ -803,12 +811,14 @@ public class InformationServices {
 
   public AssociationPkg getAssociationPkgCandidate(Class sourceClass, Association association, Class targeClass) {
     EObject associationPkgCandidate = null;
-    // if association is unidirectional return the datapkg containing the association source class
+    // if association is unidirectional return the datapkg containing the
+    // association source class
     if (AssociationExt.isUnidirectional(association)) {
       associationPkgCandidate = sourceClass.eContainer();
 
-    } else { // the association is bidirectional or has no direction => return the common ancestor of the source and
-             // target classes
+    } else { // the association is bidirectional or has no direction => return the common
+      // ancestor of the source and
+      // target classes
       EObject commonAncestor = CapellaServices.getService().getCommonAncestor(sourceClass, targeClass);
       associationPkgCandidate = EcoreUtil2.getFirstContainer(commonAncestor,
           InformationPackage.Literals.ASSOCIATION_PKG);
@@ -924,8 +934,8 @@ public class InformationServices {
     Map<CapellaElement, AbstractDNode> visibleElements = new HashMap<>();
     for (AbstractDNode aNode : ((DNodeList) context).getOwnedElements()) {
       if ((aNode.getTarget() != null)
-          && ((aNode.getTarget() instanceof Operation) || (aNode.getTarget() instanceof ExchangeItemElement) || (aNode
-              .getTarget() instanceof ExchangeItemAllocation))) {
+          && ((aNode.getTarget() instanceof Operation) || (aNode.getTarget() instanceof ExchangeItemElement)
+              || (aNode.getTarget() instanceof ExchangeItemAllocation))) {
         visibleElements.put((CapellaElement) aNode.getTarget(), aNode);
       }
     }
@@ -978,8 +988,8 @@ public class InformationServices {
         // Check if the current node is an Abstract Node and if the
         // target is a DataValue not null
         if (nodeTarget instanceof DataValue && aNode instanceof AbstractDNode) {
-            // Add DataValue to the visible element list
-            visibleElements.put((CapellaElement) nodeTarget, (AbstractDNode) aNode);
+          // Add DataValue to the visible element list
+          visibleElements.put((CapellaElement) nodeTarget, (AbstractDNode) aNode);
         }
 
       }
@@ -1063,7 +1073,8 @@ public class InformationServices {
         mappingName = dataSubDataValueMappingName;
       } else if (((DSemanticDecorator) context).getTarget() instanceof DataPkg) {
         mappingName = dataDataValueMappingName;
-      } else if (((DSemanticDecorator) context).getTarget() instanceof org.polarsys.capella.core.data.information.Collection) {
+      } else if (((DSemanticDecorator) context)
+          .getTarget() instanceof org.polarsys.capella.core.data.information.Collection) {
         mappingName = dataSubDataValueMappingName;
       }
     }
@@ -1089,15 +1100,16 @@ public class InformationServices {
       } else if (((DSemanticDecorator) context).getTarget() instanceof ExchangeItem) {
         mappingName = IMappingNameConstants.IDB_EXCHANGE_ITEM_ELEMENT_MAPPING_NAME;
       }
-    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_DETAILED_INTERFACES_DIAGRAM_NAME.equals(diagram
-        .getDescription().getName())) {
+    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_DETAILED_INTERFACES_DIAGRAM_NAME
+        .equals(diagram.getDescription().getName())) {
       if (((DSemanticDecorator) context).getTarget() instanceof Interface) {
         mappingName = IMappingNameConstants.CCDI_OPERATION_MAPPING_NAME;
       } else if (((DSemanticDecorator) context).getTarget() instanceof ExchangeItem) {
         mappingName = IMappingNameConstants.CCDI_EXCHANGE_ITEM_ELEMENT_MAPPING_NAME;
       }
-    } else if (((DSemanticDecorator) context).getTarget() instanceof Interface && IDiagramNameConstants.INTERFACE_DIAGRAM_NAME.equals(diagram.getDescription().getName())) {
-        mappingName = IMappingNameConstants.ID_EXCHANGE_ITEM_MAPPING_NAME;
+    } else if (((DSemanticDecorator) context).getTarget() instanceof Interface
+        && IDiagramNameConstants.INTERFACE_DIAGRAM_NAME.equals(diagram.getDescription().getName())) {
+      mappingName = IMappingNameConstants.ID_EXCHANGE_ITEM_MAPPING_NAME;
     }
 
     NodeMapping mapping = DiagramServices.getDiagramServices().getNodeMapping(diagram, mappingName);
@@ -1205,9 +1217,8 @@ public class InformationServices {
     // remove association from diagram [if unSynchronized]
     for (DEdge existingRelationship : diagram.getEdges()) {
       EObject target = existingRelationship.getTarget();
-      if ((target != null)
-          && (contextView.equals(existingRelationship.getSourceNode()) || contextView.equals(existingRelationship
-              .getTargetNode()))) {
+      if ((target != null) && (contextView.equals(existingRelationship.getSourceNode())
+          || contextView.equals(existingRelationship.getTargetNode()))) {
         if (!diagram.isSynchronized() || (target instanceof Generalization)) {
           // filter selected relationship in wizard
           if (!allSelectedLinksFromWizard.contains(target) && isValideRelationShip(target, context, content)) {
@@ -1246,8 +1257,8 @@ public class InformationServices {
       return true;
     }
 
-    if (target instanceof org.polarsys.capella.core.data.information.Collection || 
-    		target instanceof ExchangeItemElement || target instanceof Constraint) {
+    if (target instanceof org.polarsys.capella.core.data.information.Collection || target instanceof ExchangeItemElement
+        || target instanceof Constraint) {
       isValid = false;
     }
     return isValid;
@@ -1366,12 +1377,12 @@ public class InformationServices {
       returnedPackages = DataPkgExt.getRecursiveSubDataPkgs(currentPkg);
     }
 
-    if(returnedPackages != null) {
-    	for (AbstractDNode aContainer : diagram.getContainers()) {
-    		if (aContainer.getTarget() instanceof DataPkg) {
-    			returnedPackages.remove(aContainer.getTarget());
-    		}
-    	}
+    if (returnedPackages != null) {
+      for (AbstractDNode aContainer : diagram.getContainers()) {
+        if (aContainer.getTarget() instanceof DataPkg) {
+          returnedPackages.remove(aContainer.getTarget());
+        }
+      }
     }
     return returnedPackages;
   }
@@ -1398,12 +1409,12 @@ public class InformationServices {
       InterfacePkg currentPkg = (InterfacePkg) ((DNodeContainer) elementView).getTarget();
       returnedPackages = InterfacePkgExt.getRecursiveSubInterfacePkgs(currentPkg);
     }
-    if(returnedPackages != null) {
-    	for (AbstractDNode aContainer : diagram.getContainers()) {
-    		if (aContainer.getTarget() instanceof InterfacePkg) {
-    			returnedPackages.remove(aContainer.getTarget());
-    		}
-    	}    	
+    if (returnedPackages != null) {
+      for (AbstractDNode aContainer : diagram.getContainers()) {
+        if (aContainer.getTarget() instanceof InterfacePkg) {
+          returnedPackages.remove(aContainer.getTarget());
+        }
+      }
     }
     return returnedPackages;
   }
@@ -1652,14 +1663,20 @@ public class InformationServices {
     boolean expandRightViewer = CapellaUIPropertiesPlugin.getDefault().isAllowedExpandRightViewerContent();
     int leftViewerExpandLevel = expandLeftViewer ? AbstractTreeViewer.ALL_LEVELS : 0;
     int rightViewerExpandLevel = expandRightViewer ? AbstractTreeViewer.ALL_LEVELS : 0;
-    
-    TransferTreeListDialog dialog = new TransferTreeListDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow()
-        .getShell(), Messages.InformationServices_PackageDependency_Title, NLS.bind(
-        Messages.InformationServices_PackageDependency_Message, subject.getName()), new DependencyLabelProvider(deps,
-        inverseDeps, subject), // two
-                               // instances
-                               // required
-        new DependencyLabelProvider(deps, inverseDeps, subject), leftViewerExpandLevel, rightViewerExpandLevel); // or enabled/disabled fonts will mess up
+
+    TransferTreeListDialog dialog = new TransferTreeListDialog(
+        PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
+        Messages.InformationServices_PackageDependency_Title,
+        NLS.bind(Messages.InformationServices_PackageDependency_Message, subject.getName()),
+        new DependencyLabelProvider(deps, inverseDeps, subject), // two
+        // instances
+        // required
+        new DependencyLabelProvider(deps, inverseDeps, subject), leftViewerExpandLevel, rightViewerExpandLevel); // or
+    // enabled/disabled
+    // fonts
+    // will
+    // mess
+    // up
 
     List<AbstractDependenciesPkg> left = new ArrayList<>(); // unselected
     List<AbstractDependenciesPkg> right = new ArrayList<>(); // selected
@@ -2006,7 +2023,8 @@ public class InformationServices {
    * @return
    */
   public Collection<EObject> getCDBAssociationSemanticCandidates(DDiagram diagram) {
-    // Use a HashSet to avoid to have twice the same Association. This occurs when an Association has the same class as source and target.
+    // Use a HashSet to avoid to have twice the same Association. This occurs when
+    // an Association has the same class as source and target.
     Collection<EObject> candidateAssociations = new HashSet<>();
     for (DDiagramElement dNode : diagram.getDiagramElements()) {
       if (dNode instanceof AbstractDNode) {
@@ -2051,7 +2069,9 @@ public class InformationServices {
   }
 
   /**
-   * Semantic Candidates Expression: resolve a list of candidate ExchangeItemElements that could be displayed in the given diagram. 
+   * Semantic Candidates Expression: resolve a list of candidate ExchangeItemElements that could be displayed in the
+   * given diagram.
+   * 
    * @param diagram
    * @return
    */
@@ -2069,7 +2089,7 @@ public class InformationServices {
     }
     return candidateExchangeItemElements;
   }
-  
+
   /**
    * used in common (CDB)
    * 
@@ -2140,7 +2160,7 @@ public class InformationServices {
       ExchangeItemAllocation allocation = (ExchangeItemAllocation) exchangeItemAllocation;
       // get Diagram
       DDiagram diagram = CapellaServices.getService().getDiagramContainer(view);
-      
+
       if (diagram != null) {
         EList<FilterDescription> activatedFilters = diagram.getActivatedFilters();
         boolean allParameterHide = false;
@@ -2158,11 +2178,11 @@ public class InformationServices {
 
         // Case 1: hide all parameter and also operation parameter
         if (allParameterHide && onlyOperationParameterHide) {
-        	result = getAllocatedElementName(allocation);
+          result = getAllocatedElementName(allocation);
         }
         // Case 2: hide nothing
         else if (!onlyOperationParameterHide && !allParameterHide) {
-        	result = computeLabel(allocation);
+          result = computeLabel(allocation);
         }
         // Case 3: hide all parameter
         else if (allParameterHide) {
@@ -2211,7 +2231,7 @@ public class InformationServices {
             ExchangeItemAllocation eia = (ExchangeItemAllocation) target;
             AbstractExchangeItem allocatedItem = eia.getAllocatedItem();
             if (allocatedItem != null && allocatedItem.equals(eiTarget)) {
-                return false;
+              return false;
             }
           }
 
@@ -2253,12 +2273,12 @@ public class InformationServices {
           if (cls.isIsPrimitive()) {
             return true;
           } else if (abstractType instanceof org.polarsys.capella.core.data.information.Collection) {
-              org.polarsys.capella.core.data.information.Collection collection = (org.polarsys.capella.core.data.information.Collection) abstractType;
-              if (collection.isIsPrimitive()) {
-                return true;
-              }
+            org.polarsys.capella.core.data.information.Collection collection = (org.polarsys.capella.core.data.information.Collection) abstractType;
+            if (collection.isIsPrimitive()) {
+              return true;
             }
-         }
+          }
+        }
       }
     }
     return false;
@@ -2721,6 +2741,7 @@ public class InformationServices {
    * @common.odesign show/hide links from CRB Diagram
    */
   public void showHideCRBRelationships(EObject sourceView, List<EObject> selectedElements) {
+
     DDiagram diagram = CapellaServices.getService().getDiagramContainer(sourceView);
     DiagramServices diagramServices = DiagramServices.getDiagramServices();
     EObject sourceTarget = ((DSemanticDecorator) sourceView).getTarget();
@@ -2785,6 +2806,120 @@ public class InformationServices {
   }
 
   /**
+   * Return all the available links from CRI Diagram (i.e involvement)
+   * 
+   * @param context
+   * @return
+   */
+  public List<CapellaElement> getAvailableLinksForCRIDiagram(EObject context) {
+
+    List<CapellaElement> result = new ArrayList<>();
+    EObject target = ((DSemanticDecorator) context).getTarget();
+
+    if (target instanceof CapabilityRealization) {
+
+      CapabilityRealization element = (CapabilityRealization) target;
+
+      // involvement System Component
+      EList<SystemComponentCapabilityRealizationInvolvement> systemCapRealInvols = element
+          .getOwnedSystemComponentCapabilityRealizations();
+      if (!systemCapRealInvols.isEmpty()) {
+        result.addAll(systemCapRealInvols);
+      }
+      // involvement Actor
+      EList<ActorCapabilityRealizationInvolvement> ownedActorCapabilityRealizations = element
+          .getOwnedActorCapabilityRealizations();
+      if (!ownedActorCapabilityRealizations.isEmpty()) {
+        result.addAll(ownedActorCapabilityRealizations);
+      }
+    }
+    return result;
+  }
+
+  /**
+   * return existing links from CRI Diagram
+   */
+  public List<CapellaElement> getExistingLinksFromCRIDiagram(EObject sourceView) {
+
+    List<CapellaElement> result = new ArrayList<>();
+    DDiagram diagramContainer = CapellaServices.getService().getDiagramContainer(sourceView);
+    EObject sourceTarget = ((DSemanticDecorator) sourceView).getTarget();
+    if ((null != sourceTarget) && (null != diagramContainer)) {
+      List<CapellaElement> availableLinksForCRIDiagram = getAvailableLinksForCRIDiagram(sourceView);
+      if ((sourceTarget instanceof CapabilityRealization) || (sourceTarget instanceof AbstractActor)) {
+        // add edges from diagram
+        for (CapellaElement capellaElement : availableLinksForCRIDiagram) {
+          if (DiagramServices.getDiagramServices().isOnDiagram(diagramContainer, capellaElement)) {
+            result.add(capellaElement);
+          }
+        }
+      }
+    }
+    return result;
+  }
+
+  /**
+   * @common.odesign show/hide links from CRI Diagram
+   */
+  public void showHideCRIRelationships(EObject sourceView, List<EObject> selectedElements) {
+
+    DDiagram diagram = CapellaServices.getService().getDiagramContainer(sourceView);
+    DiagramServices diagramServices = DiagramServices.getDiagramServices();
+    EObject sourceTarget = ((DSemanticDecorator) sourceView).getTarget();
+    if (null == diagram) {
+      return;
+    }
+
+    // Remove Elements From Diagram (only if diagram is synchronized)
+    //
+    if (!diagram.isSynchronized()) {
+      List<CapellaElement> existingElements = getExistingLinksFromCRIDiagram(sourceView);
+      // existing elements to be removed
+      if (null != selectedElements) {
+        existingElements.removeAll(selectedElements);
+      }
+      List<DEdge> edges = new ArrayList<>();
+      if ((sourceTarget instanceof CapabilityRealization) || (sourceTarget instanceof AbstractActor)) {
+        // remove use and implementation links
+        for (DEdge representation : diagram.getEdges()) {
+          EObject target = representation.getTarget();
+          // sourceNode check
+          EdgeTarget sourceNode = representation.getSourceNode();
+          // mapping check (use and implementation)
+          List<String> mappingCheckList = new ArrayList<>();
+          mappingCheckList.add(IMappingNameConstants.CCRI_ACTOR_CAPABILITY_REALIZATION_INVOLVEMENT);
+          mappingCheckList.add(IMappingNameConstants.CCRI_SYSTEM_COMPONENT_CAPABILITY_REALIZATION_INVOLVEMENT);
+          if ((null != sourceNode) && sourceNode.equals(sourceView) && (null != target)
+              && existingElements.contains(target) && isValidActualMapping(representation, mappingCheckList)) {
+            // collect the representation to remove
+            edges.add(representation);
+          }
+        }
+      }
+      // remove the representation via iterator
+      Iterator<DEdge> iterator = edges.iterator();
+      while (iterator.hasNext()) {
+        DEdge dEdge = iterator.next();
+        // remove edgeView action
+        diagramServices.removeEdgeView(dEdge);
+      }
+    }
+
+    // Create Edge if needed
+    //
+    if (selectedElements != null) {
+      for (EObject selectedElement : selectedElements) {
+        // when sourceView is Component
+        if ((selectedElement instanceof SystemComponentCapabilityRealizationInvolvement)
+            || (selectedElement instanceof ActorCapabilityRealizationInvolvement)) {
+          // create edge view and target if needed
+          createEdgeViewWithTargetViewIfNeeded(sourceView, diagram, selectedElement);
+        }
+      }
+    }
+  }
+
+  /**
    * Return actual mapping based on targetElement(a capella Element) from a Diagram
    * 
    * @param diagram
@@ -2792,23 +2927,32 @@ public class InformationServices {
    * @return
    */
   private AbstractNodeMapping getTargetMappingOfGivenEdgeFromGivenDiagram(DDiagram diagram, EObject targetElement) {
-    AbstractNodeMapping acturalMapping = null;
+    AbstractNodeMapping actualMapping = null;
     if ((null == diagram) || (targetElement == null)) {
-      return acturalMapping;
+      return actualMapping;
     }
     DiagramServices diagramServices = DiagramServices.getDiagramServices();
     if (diagram.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.CAPABILITY_REALIZATION_BLANK)) {
       if ((targetElement instanceof AbstractActor) || (targetElement instanceof Component)) {
-        acturalMapping = diagramServices.getContainerMapping(diagram, IMappingNameConstants.CRB_COMPONENT_MAPPING);
+        actualMapping = diagramServices.getContainerMapping(diagram, IMappingNameConstants.CRB_COMPONENT_MAPPING);
       } else if (targetElement instanceof CapabilityRealization) {
-        acturalMapping = diagramServices.getNodeMapping(diagram,
+        actualMapping = diagramServices.getNodeMapping(diagram,
             IMappingNameConstants.CRB_CAPABILITY_REALIZATION_MAPPING);
       }
-    } else if (targetElement instanceof Interface && diagram.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.INTERFACES_BLANK_DIAGRAM_NAME)) {
-        acturalMapping = diagramServices.getContainerMapping(diagram, IMappingNameConstants.IDB_INTERFACE_MAPPING_NAME);
+    } else if (targetElement instanceof Interface
+        && diagram.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.INTERFACES_BLANK_DIAGRAM_NAME)) {
+      actualMapping = diagramServices.getContainerMapping(diagram, IMappingNameConstants.IDB_INTERFACE_MAPPING_NAME);
+    } else if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.CONTEXTUAL_CAPABILITY_REALIZATION_INVOLVEMENT)) {
+
+      if (targetElement instanceof AbstractActor) {
+        actualMapping = diagramServices.getNodeMapping(diagram, IMappingNameConstants.CCRI_ACTOR);
+      } else if (targetElement instanceof SystemComponent) {
+        actualMapping = diagramServices.getNodeMapping(diagram, IMappingNameConstants.CCRI_COMPONENT);
+      }
     }
 
-    return acturalMapping;
+    return actualMapping;
   }
 
   /**
@@ -2828,11 +2972,11 @@ public class InformationServices {
         result.add(DiagramServices.getDiagramServices().getEdgeMapping(diagram,
             IMappingNameConstants.CRB_INVOLVEMENT_MAPPING));
       } else if (element instanceof AbstractCapabilityExtend) {
-        result.add(DiagramServices.getDiagramServices().getEdgeMapping(diagram,
-            IMappingNameConstants.CRB_EXTENDS_MAPPING));
+        result.add(
+            DiagramServices.getDiagramServices().getEdgeMapping(diagram, IMappingNameConstants.CRB_EXTENDS_MAPPING));
       } else if (element instanceof AbstractCapabilityInclude) {
-        result.add(DiagramServices.getDiagramServices().getEdgeMapping(diagram,
-            IMappingNameConstants.CRB_INCLIDE_MAPPING));
+        result.add(
+            DiagramServices.getDiagramServices().getEdgeMapping(diagram, IMappingNameConstants.CRB_INCLIDE_MAPPING));
       } else if (element instanceof AbstractCapabilityGeneralization) {
         result.add(DiagramServices.getDiagramServices().getEdgeMapping(diagram,
             IMappingNameConstants.CRB_CAP_GENERALIZATION_MAPPING));
@@ -2860,6 +3004,18 @@ public class InformationServices {
             IMappingNameConstants.IDB_PROVIDED_INTERFACE_MAPPING_NAME));
         result.add(DiagramServices.getDiagramServices().getEdgeMapping(diagram,
             IMappingNameConstants.IDB_REQUIRED_INTERFACE_MAPPING_NAME));
+      }
+    } else
+    // CONTEXTUAL CAPABILITY REALIZATION INVOLVEMENT DIAGRAM
+    if (diagram.getDescription().getName()
+        .equalsIgnoreCase(IDiagramNameConstants.CONTEXTUAL_CAPABILITY_REALIZATION_INVOLVEMENT)) {
+
+      if (element instanceof SystemComponentCapabilityRealizationInvolvement) {
+        result.add(DiagramServices.getDiagramServices().getEdgeMapping(diagram,
+            IMappingNameConstants.CCRI_SYSTEM_COMPONENT_CAPABILITY_REALIZATION_INVOLVEMENT));
+      } else if (element instanceof ActorCapabilityRealizationInvolvement) {
+        result.add(
+            DiagramServices.getDiagramServices().getEdgeMapping(diagram, IMappingNameConstants.CCRI_ACTOR_CAPABILITY_REALIZATION_INVOLVEMENT));
       }
     }
 
@@ -2896,8 +3052,8 @@ public class InformationServices {
       }
 
       if (contextualElement instanceof Classifier) {
-        contextualRelationships.addAll(CapellaServices.getService().getRelatedAssociations(
-            (Classifier) contextualElement));
+        contextualRelationships
+            .addAll(CapellaServices.getService().getRelatedAssociations((Classifier) contextualElement));
       }
 
       if (contextualElement instanceof GeneralizableElement) {
@@ -2950,7 +3106,7 @@ public class InformationServices {
     // insert special character "::"
     StringBuilder result = new StringBuilder();
     Iterator<String> itResultList = resultList.iterator();
-    while(itResultList.hasNext()) {
+    while (itResultList.hasNext()) {
       result.append(itResultList.next());
       if (itResultList.hasNext()) {
         result.append("::");
@@ -2973,7 +3129,7 @@ public class InformationServices {
 
     // check if full name need to be calculated until some element
     if (checkUntileGivenElement && ((null == dElelementContinerTarget) || context.equals(dElelementContinerTarget))) {
-        return resultList;
+      return resultList;
     }
 
     // if root add symbol
@@ -3319,7 +3475,8 @@ public class InformationServices {
    * @return
    */
   public boolean shouldDisplayed(AbstractDependenciesPkg src, AbstractDependenciesPkg tar, DDiagram diagram) {
-    // If the dependency between two packages is primitive then it should be displayed
+    // If the dependency between two packages is primitive then it should be
+    // displayed
     if (isPrimitiveDependency(src, tar)) {
       return true;
     }
@@ -3353,7 +3510,8 @@ public class InformationServices {
       }
 
       for (DependencyPair dep : depPairs) {
-        // For each dependency, if there's a child dependency that should be displayed but not, display the dependency
+        // For each dependency, if there's a child dependency that should be displayed
+        // but not, display the dependency
         // in question
         if (shouldDisplayed(dep.src, dep.tar, diagram) && !isDisplayed(dep.src, dep.tar, diagram)) {
           return true;
@@ -3374,7 +3532,8 @@ public class InformationServices {
       }
 
       for (DependencyPair dep : depPairs) {
-        // For each dependency, if there's a child dependency that should be displayed but not, display the dependency
+        // For each dependency, if there's a child dependency that should be displayed
+        // but not, display the dependency
         // in question
         if (shouldDisplayed(dep.src, dep.tar, diagram) && !isDisplayed(dep.src, dep.tar, diagram)) {
           return true;
@@ -3394,7 +3553,8 @@ public class InformationServices {
       }
 
       for (DependencyPair dep : depPairs) {
-        // For each dependency, if there's a child dependency that should be displayed but not, display the dependency
+        // For each dependency, if there's a child dependency that should be displayed
+        // but not, display the dependency
         // in question
         if (shouldDisplayed(dep.src, tar, diagram) && !isDisplayed(dep.src, tar, diagram)
             && shouldDisplayed(src, dep.tar, diagram) && !isDisplayed(src, dep.tar, diagram)) {
