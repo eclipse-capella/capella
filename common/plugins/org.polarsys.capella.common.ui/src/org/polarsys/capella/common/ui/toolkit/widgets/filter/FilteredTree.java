@@ -754,6 +754,7 @@ public class FilteredTree extends Composite {
   protected void init(int treeStyle, PatternFilter filter) {
     patternFilter = filter;
     showFilterControls = PlatformUI.getPreferenceStore().getBoolean(IWorkbenchPreferenceConstants.SHOW_FILTERED_TEXTS);
+    narrowingDown = true;
     createControl(parent, treeStyle);
     createRefreshJob();
     setInitialText(WorkbenchMessages.FilteredTree_FilterMessage);
@@ -817,7 +818,6 @@ public class FilteredTree extends Composite {
   public void setInitialText(String text) {
     initialText = text;
     setFilterText(initialText);
-    textChanged();
   }
 
   /**
