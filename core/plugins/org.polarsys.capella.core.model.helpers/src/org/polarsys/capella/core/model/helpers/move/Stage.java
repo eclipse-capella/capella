@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,6 +17,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.ListenerList;
@@ -26,9 +28,11 @@ import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EContentsEList;
+import org.eclipse.emf.ecore.util.EContentsEList.FeatureIterator;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
@@ -38,11 +42,9 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.osgi.util.NLS;
 import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
-import org.polarsys.capella.core.model.helpers.listeners.PartComponentMoveListener;
+import org.polarsys.capella.core.data.information.InformationPackage;
 
-import com.google.common.base.Predicate;
 import com.google.common.collect.ArrayListMultimap;
-import com.google.common.collect.Collections2;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Multimap;
 
@@ -65,6 +67,21 @@ public class Stage {
   Multimap<EObject, EStructuralFeature.Setting> backrefs = ArrayListMultimap.create();
 
   private final Multimap<EObject, Diagnostic> diagnostics = ArrayListMultimap.create();
+
+  /* these are the potential backreferences to check for all added elements
+   * we check all non derived refs, plus the component-part ref to ensure that 
+   * components and parts must be moved together. The part-component exception
+   * is a first step towards 'synthetic' constraints, i.e. we might one day want to say:
+   * "When you move X, you have to move Y, even if there is no modeled relation
+   * between X and Y"
+   */
+  private final Predicate<EReference> BACKREF_PREDICATE = new Predicate<EReference>() {
+    @Override
+    public boolean test(EReference t) {
+      return !t.isDerived() ||
+          t == InformationPackage.Literals.PARTITIONABLE_ELEMENT__REPRESENTING_PARTITIONS;
+    }
+  };
 
   public Stage(TransactionalEditingDomain domain){
     this.domain = domain;
@@ -102,12 +119,12 @@ public class Stage {
   }
 
   public Collection<EObject> getElementsWithoutNewParent() {
-    return Collections2.filter(getElements(), new Predicate<EObject>() {
+    return getElements().parallelStream().filter(new Predicate<EObject>() {
       @Override
-      public boolean apply(EObject input) {
+      public boolean test(EObject input) {
         return !plannedParents.containsKey(input);
       }
-    });
+    }).collect(Collectors.toList());
   }
 
   public Collection<EObject> getElements(){
@@ -158,7 +175,7 @@ public class Stage {
       throw new IllegalArgumentException(Messages.Stage_different_editing_domains_not_allowed);
     }
 
-    // if parent was already added there is nothing to do
+    // if e itself or parent of e was already added there is nothing to do
     if (EcoreUtil.isAncestor(delegate, e)){
       return;
     }
@@ -199,12 +216,11 @@ public class Stage {
   }
 
   private void addBackrefs(EObject e){
-    EContentsEList.FeatureIterator<?> it = (EContentsEList.FeatureIterator)e.eCrossReferences().iterator();
+    EContentsEList.FeatureIterator<EObject> it = (FeatureIterator<EObject>) e.eCrossReferences().iterator();
     while (it.hasNext()){
       EObject referenced = (EObject) it.next();
-      EStructuralFeature feature = it.feature();
-      if (!feature.isDerived()){
-
+      EReference ref = (EReference) it.feature();
+      if (BACKREF_PREDICATE.test(ref)){
 
         if (!Iterators.contains(EcoreUtil.getAllContents(delegate), referenced) && !delegate.contains(referenced)){
           // the referenced object is not staged
@@ -213,8 +229,8 @@ public class Stage {
             // don't consider cases where the referenced object is in a different project/library
             // FIXME this is probably even more complicated when multiple libraries are involved..
 
-            backrefs.put(referenced, ((InternalEObject) e).eSetting(it.feature()));
-            diagnostics.put(e, new BasicDiagnostic(Diagnostic.ERROR, SOURCE, CODE_BACKREF, Messages.Stage_diagnostic_backref, new Object[] {e, referenced, it.feature() }));
+            backrefs.put(referenced, ((InternalEObject) e).eSetting(ref));
+            diagnostics.put(e, new BasicDiagnostic(Diagnostic.ERROR, SOURCE, CODE_BACKREF, Messages.Stage_diagnostic_backref, new Object[] {e, referenced, ref }));
           }
 
         }
@@ -320,14 +336,8 @@ public class Stage {
 
       };
 
-      ResourceSetListener l = new PartComponentMoveListener();
-      try {
-        domain.addResourceSetListener(l);
-        domain.getCommandStack().execute(rc);
-        result = (IStatus) rc.getResult().iterator().next();
-      } finally {
-        domain.removeResourceSetListener(l);
-      }
+      domain.getCommandStack().execute(rc);
+      result = (IStatus) rc.getResult().iterator().next();
 
     }
     return result;

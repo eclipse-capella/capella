@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2018, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -38,6 +38,11 @@ import org.polarsys.capella.core.model.helpers.listeners.PartComponentMoveListen
 import org.polarsys.capella.core.model.skeleton.CapellaModelSkeleton;
 import org.polarsys.capella.test.framework.api.BasicTestCase;
 
+/**
+ * @deprecated parts no longer auto-move
+ * @param <C>
+ */
+@Deprecated 
 public abstract class AbstractMoveTestCase<C extends Component> extends BasicTestCase {
 
   ExecutionManager manager;
