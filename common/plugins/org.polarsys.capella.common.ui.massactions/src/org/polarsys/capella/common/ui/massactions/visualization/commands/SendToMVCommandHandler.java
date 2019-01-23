@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2018, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,7 +11,7 @@
 package org.polarsys.capella.common.ui.massactions.visualization.commands;
 
 import org.polarsys.capella.common.ui.massactions.activator.MACapellaActivator;
-import org.polarsys.capella.common.ui.massactions.shared.menu.AbstractSentToCommandHandler;
+import org.polarsys.capella.common.ui.massactions.shared.menu.AbstractSendToCommandHandler;
 
 /**
  * A command handler for the 'Send To Mass Visualization' action.
@@ -19,7 +19,7 @@ import org.polarsys.capella.common.ui.massactions.shared.menu.AbstractSentToComm
  * @author Sandu Postaru
  *
  */
-public class SentToMVCommandHandler extends AbstractSentToCommandHandler {
+public class SendToMVCommandHandler extends AbstractSendToCommandHandler {
 
   @Override
   protected String getCommandParameterPrimaryId() {
