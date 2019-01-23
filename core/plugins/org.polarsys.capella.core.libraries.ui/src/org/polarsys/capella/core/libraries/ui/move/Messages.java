@@ -21,6 +21,8 @@ public class Messages extends NLS {
   public static String MoveStagingView_stageSectionDescription;
   public static String MoveStagingView_stageSectionTitle;
   public static String MoveStagingView_unstageActionTooltip;
+  public static String MoveStagingView_addRequiredElementsTooltip;
+  public static String MoveStagingView_addAllRequiredElementsTooltip;
   static {
     // initialize resource bundle
     NLS.initializeMessages(BUNDLE_NAME, Messages.class);
