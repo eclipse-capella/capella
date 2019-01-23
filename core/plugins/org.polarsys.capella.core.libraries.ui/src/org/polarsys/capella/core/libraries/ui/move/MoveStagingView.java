@@ -48,6 +48,8 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IAction;
+import org.eclipse.jface.action.IMenuListener;
+import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.action.ToolBarManager;
@@ -119,6 +121,16 @@ import com.google.common.collect.Lists;
 
 public class MoveStagingView extends ViewPart implements ISelectionProvider, ITabbedPropertySheetPageContributor {
 
+  /**
+   * The context menu id for the stage viewer
+   */
+  public final static String STAGEVIEWER_CONTEXT_MENU = "org.polarsys.capella.core.libraries.ui.moveview.stageViewer"; //$NON-NLS-1$
+  
+  /**
+   * The context menu id for the destination viewer
+   */
+  public final static String DESTINATIONVIEWER_CONTEXT_MENU = "org.polarsys.capella.core.libraries.ui.moveview.destinationViewer"; //$NON-NLS-1$
+
   TreeViewer stageViewer;
   TreeViewer destinationViewer;
   ColumnViewerInformationControlToolTipSupport tooltipSupport;
@@ -147,6 +159,11 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
   IAction addAllRequiredAction;
   IAction unstageAction;
 
+  /**
+   * Actions on the right viewer
+   */
+  IAction clearParentAction;
+  
   public Stage getStage(){
     return stage;
   }
@@ -449,9 +466,25 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
     stageViewerToolBarManager.update(true);
 
     MenuManager stageContextMenu = new MenuManager();
-    stageContextMenu.add(new Separator(IWorkbenchActionConstants.MB_ADDITIONS));
+    stageContextMenu.setRemoveAllWhenShown(true);
+    stageContextMenu.addMenuListener(new IMenuListener() {
+      @Override
+      public void menuAboutToShow(IMenuManager manager) {
+        if (unstageAction.isEnabled()) {
+          manager.add(unstageAction);
+        }
+        if (addRequiredAction.isEnabled()) {
+          manager.add(addRequiredAction);
+        }
+        if (addAllRequiredAction.isEnabled()) {
+          manager.add(addAllRequiredAction);
+        }
+        manager.add(new Separator(IWorkbenchActionConstants.MB_ADDITIONS));
+      }
+    });
+
     stageViewer.getControl().setMenu(stageContextMenu.createContextMenu(stageViewer.getControl()));
-    getViewSite().registerContextMenu("org.polarsys.capella.core.libraries.ui.moveview.stageViewer", stageContextMenu, stageViewer); //$NON-NLS-1$
+    getViewSite().registerContextMenu(STAGEVIEWER_CONTEXT_MENU, stageContextMenu, stageViewer);
 
   }
 
@@ -579,33 +612,30 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
     gd = new GridData(SWT.CENTER, SWT.TOP, false, false);
     destinationViewerToolbar.setLayoutData(gd);
 
-    ImageDescriptor descriptor = DebugPluginImages.getImageRegistry().getDescriptor(IDebugUIConstants.IMG_LCL_REMOVE);
-    final IAction clearParentAction = new Action("", descriptor) { //$NON-NLS-1$
-      @Override
-      public void run() {
-        for (Object e : destinationViewer.getStructuredSelection().toList()) {
-          stage.setParent((EObject) e, null);
-        }
-      }
-    };
+    clearParentAction = new ClearParentAction();
 
-    clearParentAction.setToolTipText(Messages.MoveStagingView_clearParentActionTooltip);
+    destinationViewer.addSelectionChangedListener((ISelectionChangedListener) clearParentAction);
 
-    destinationViewer.addSelectionChangedListener(new ISelectionChangedListener() {
-      @Override
-      public void selectionChanged(SelectionChangedEvent event) {
-        clearParentAction.setEnabled(stage.getElements().containsAll(destinationViewer.getStructuredSelection().toList()));
-      }
-    });
-
-    clearParentAction.setEnabled(false);
     destinationViewerToolBarManager.add(clearParentAction);
     destinationViewerToolBarManager.update(true);
 
     MenuManager destinationContextMenu = new MenuManager();
-    destinationContextMenu.add(new Separator(IWorkbenchActionConstants.MB_ADDITIONS));
+    destinationContextMenu.setRemoveAllWhenShown(true);
+    destinationContextMenu.addMenuListener(new IMenuListener() {
+
+      @Override
+      public void menuAboutToShow(IMenuManager manager) {
+        if (clearParentAction.isEnabled()) {
+          manager.add(clearParentAction);
+        }
+        destinationContextMenu.add(new Separator(IWorkbenchActionConstants.MB_ADDITIONS));
+      }
+    });
+
+    destinationViewer.setSelection(StructuredSelection.EMPTY);
+    
     destinationViewer.getControl().setMenu(destinationContextMenu.createContextMenu(destinationViewer.getControl()));
-    getViewSite().registerContextMenu("org.polarsys.capella.core.libraries.ui.moveview.destinationViewer", destinationContextMenu, destinationViewer); //$NON-NLS-1$
+    getViewSite().registerContextMenu(DESTINATIONVIEWER_CONTEXT_MENU, destinationContextMenu, destinationViewer);
   }
 
 
@@ -665,17 +695,52 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
 
   private void updateActions() {
     executeAction.setEnabled(stage != null && stage.canExecute());
+
     ((BaseSelectionListenerAction)unstageAction).selectionChanged(stageViewer.getStructuredSelection());
     ((BaseSelectionListenerAction)addRequiredAction).selectionChanged(stageViewer.getStructuredSelection());
     ((BaseSelectionListenerAction)addAllRequiredAction).selectionChanged(stageViewer.getStructuredSelection());
+
+    ((BaseSelectionListenerAction)clearParentAction).selectionChanged(destinationViewer.getStructuredSelection());
   }
 
-  private class UnstageAction extends BaseSelectionListenerAction {
-    private UnstageAction() {
-      super("");
+  private class AbstractDeleteAction extends BaseSelectionListenerAction {
+
+    @Deprecated // use CommandImageConstants from 1.4 on 
+    private static final String DELETE_IMAGE = "org.polarsys.capella.common.re.subcommands.delete"; //$NON-NLS-1$
+
+    protected AbstractDeleteAction(String text) {
+      super(text);
       ICommandImageService service = getViewSite().getService(ICommandImageService.class);
-      setImageDescriptor(service.getImageDescriptor("org.polarsys.capella.common.re.subcommands.delete"));
-      setToolTipText(Messages.MoveStagingView_unstageActionTooltip);
+      setImageDescriptor(service.getImageDescriptor(DELETE_IMAGE));
+    }
+
+    @Override
+    protected boolean updateSelection(IStructuredSelection selection) {
+      return stage != null && !selection.isEmpty() && stage.getElements().containsAll(selection.toList());
+    }
+    
+  }
+  
+  private final class ClearParentAction extends AbstractDeleteAction {
+
+    private ClearParentAction() {
+      super(Messages.MoveStagingView_clearParentLabel);
+      setToolTipText(Messages.MoveStagingView_clearParentLabel);
+    }
+
+    @Override
+    public void run() {
+      for (Object e : destinationViewer.getStructuredSelection().toList()) {
+        stage.setParent((EObject) e, null);
+      }
+    }
+
+  }
+
+  private class UnstageAction extends AbstractDeleteAction {
+    private UnstageAction() {
+      super(Messages.MoveStagingView_unstageLabel);
+      setToolTipText(Messages.MoveStagingView_unstageLabel);
     }
 
     @SuppressWarnings("unchecked")
@@ -684,10 +749,6 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
         stage.removeAll(getStructuredSelection().toList());
     }
 
-    @Override
-    protected boolean updateSelection(IStructuredSelection selection) {
-      return stage != null && stage.getElements().containsAll(selection.toList());
-    }
   }
 
   private abstract class AbstractAddRequiredAction extends BaseSelectionListenerAction {
@@ -712,11 +773,11 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
   }
 
   private class AddRequiredAction extends AbstractAddRequiredAction {
+
     private AddRequiredAction() {
-      super("");
-      ICommandImageService service = getViewSite().getService(ICommandImageService.class);
-      setImageDescriptor(service.getImageDescriptor("org.polarsys.capella.common.re.subcommands.browse.addSelectionDependencies"));
-      setToolTipText(Messages.MoveStagingView_addRequiredElementsTooltip);
+      super(Messages.MoveStagingView_addRequiredElementsLabel);
+      setImageDescriptor(Activator.getDefault().getImageDescriptor("full/etool16/add_dependencies.gif")); //$NON-NLS-1$
+      setToolTipText(Messages.MoveStagingView_addRequiredElementsLabel);
     }
 
     @Override
@@ -734,10 +795,9 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
   private class AddAllRequiredAction extends AbstractAddRequiredAction {
 
     protected AddAllRequiredAction() {
-      super("");
-      ICommandImageService service = getViewSite().getService(ICommandImageService.class);
-      setImageDescriptor(service.getImageDescriptor("org.polarsys.capella.common.re.subcommands.browse.addDependencies"));
-      setToolTipText(Messages.MoveStagingView_addAllRequiredElementsTooltip);
+      super(Messages.MoveStagingView_addAllRequiredElementsLabel);
+      setImageDescriptor(Activator.getDefault().getImageDescriptor("full/etool16/add_alldependencies.gif")); //$NON-NLS-1$
+      setToolTipText(Messages.MoveStagingView_addAllRequiredElementsLabel);
     }
 
     public void run() {

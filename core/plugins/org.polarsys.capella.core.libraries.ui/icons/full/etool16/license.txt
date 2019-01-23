@@ -7,3 +7,5 @@ These followings icons are made available under the terms of the Eclipse Public 
 /icons/full/etool16/library_command_manage.png - capella.libraries.ui - capella.libraries.ui/icons/full/etool16/library_command_manage.png
 /icons/full/etool16/Library.gif - capella.libraries.ui - capella.libraries.ui/icons/full/etool16/Library.gif
 /icons/full/etool16/lrun_obj.png - org.eclipse.debug.ui - org.eclipse.debug.ui/icons/full/obj16/lrun_obj.png
+/icons/full/etool16/add_alldependencies.gif - org.polarsys.capella.common.re.ui - org.polarsys.capella.common.re.ui/icons/full/etoll16/add_alldependencies.gif
+/icons/full/etool16/add_dependencies.gif - org.polarsys.capella.common.re.ui - org.polarsys.capella.common.re.ui/icons/full/etoll16/add_dependencies.gif
