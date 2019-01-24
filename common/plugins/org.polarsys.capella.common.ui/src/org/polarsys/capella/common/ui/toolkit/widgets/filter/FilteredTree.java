@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -52,6 +52,7 @@ import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.ui.IImageKeys;
 import org.polarsys.capella.common.ui.MdeCommonUiActivator;
 import org.polarsys.capella.common.ui.services.swt.events.AbstractKeyAdapter;
+import org.polarsys.capella.common.ui.toolkit.viewers.ExpandableTreeViewer;
 
 /**
  * Copied from org.eclipse.ui.dialogs due to {@link PatternFilter} methods visibility.<br>
@@ -60,11 +61,12 @@ import org.polarsys.capella.common.ui.services.swt.events.AbstractKeyAdapter;
  * @since 3.2
  */
 public class FilteredTree extends Composite {
+  
   /**
    * Custom tree viewer subclass that clears the caches in patternFilter on any change to the tree. See bug 187200.
    * @since 3.3
    */
-  class NotifyingTreeViewer extends TreeViewer {
+  class NotifyingTreeViewer extends ExpandableTreeViewer {
     /**
      * Constructor.
      * @param parent
