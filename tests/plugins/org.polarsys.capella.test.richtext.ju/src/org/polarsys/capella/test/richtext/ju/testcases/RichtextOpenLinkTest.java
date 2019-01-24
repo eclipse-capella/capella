@@ -22,6 +22,7 @@ import org.eclipse.ui.PlatformUI;
 import org.polarsys.capella.core.data.ctx.SystemFunction;
 import org.polarsys.capella.core.libraries.model.ICapellaModel;
 import org.polarsys.capella.core.libraries.utils.ScopeModelWrapper;
+import org.polarsys.capella.core.platform.sirius.ui.services.SiriusSelectorInPackageExplorer;
 import org.polarsys.capella.core.ui.properties.richtext.navigation.CapellaNavigationModelElement;
 import org.polarsys.capella.shared.id.handler.IScope;
 import org.polarsys.capella.shared.id.handler.IdManager;
@@ -52,7 +53,10 @@ public class RichtextOpenLinkTest extends BasicTestCase {
     IScope scope = new ScopeModelWrapper(model);
     SystemFunction rootSF = (SystemFunction) IdManager.getInstance().getEObject(ROOT_SF, scope);
     assertNotNull(rootSF);
-
+    
+    // Just called to force plug-in activation
+    new SiriusSelectorInPackageExplorer();
+    
     // Test the opening of link to model element (Root SF)
     CapellaNavigationModelElement openLinkStrategy = new CapellaNavigationModelElement();
     openLinkStrategy.openLink(rootSF, ROOT_SF);
