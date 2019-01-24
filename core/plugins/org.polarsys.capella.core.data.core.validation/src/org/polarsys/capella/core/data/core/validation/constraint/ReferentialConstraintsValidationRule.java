@@ -154,9 +154,17 @@ public class ReferentialConstraintsValidationRule extends AbstractValidationRule
     if (query != null) {
       List<EObject> availableElements = query.getAvailableElements(source);
       if (!availableElements.contains(target)) {
-        results.add(ConstraintStatus.createStatus(ctx, Arrays.asList(source, target) ,
-            Messages.I_37_ReferenceConstraints_detail,
-            EObjectLabelProviderHelper.getText(source), EObjectLabelProviderHelper.getText(target), ref.getName()));
+
+        // If the target isn't available according to the query, see if it's one of the 
+        // current elements according to the query. This filters out
+        // some of the queries that use trace typed features to calculate
+        // derived elements, and these are useless here
+        List<EObject> currentElements = query.getCurrentElements(source, false);
+        if (currentElements.contains(target)) {          
+          results.add(ConstraintStatus.createStatus(ctx, Arrays.asList(source, target) ,
+              Messages.I_37_ReferenceConstraints_detail,
+              EObjectLabelProviderHelper.getText(source), EObjectLabelProviderHelper.getText(target), ref.getName()));
+        }
       }
     }
 
