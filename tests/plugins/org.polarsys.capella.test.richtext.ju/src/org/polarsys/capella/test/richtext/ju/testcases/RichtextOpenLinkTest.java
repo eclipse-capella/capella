@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2018, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -47,14 +47,19 @@ public class RichtextOpenLinkTest extends BasicTestCase {
   @Override
   public void test() throws Exception {
     ICapellaModel model = getTestModel("RichtextTestModel");
+    assertNotNull(model);
+    
     IScope scope = new ScopeModelWrapper(model);
     SystemFunction rootSF = (SystemFunction) IdManager.getInstance().getEObject(ROOT_SF, scope);
+    assertNotNull(rootSF);
 
     // Test the opening of link to model element (Root SF)
     CapellaNavigationModelElement openLinkStrategy = new CapellaNavigationModelElement();
     openLinkStrategy.openLink(rootSF, ROOT_SF);
     GuiActions.flushASyncGuiThread();
     IStructuredSelection currentSelection = GuiHelper.getCurrentSelectionInProjectExplorer();
+    assertNotNull(currentSelection);
+    assertNotNull(currentSelection.getFirstElement());
     assertTrue("Root System Function is not selected after the link is selected",
         currentSelection.getFirstElement().equals(rootSF));
 
