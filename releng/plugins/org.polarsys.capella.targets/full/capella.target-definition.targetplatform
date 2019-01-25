@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2018, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -47,7 +47,7 @@ location sirius-6.1.x "http://download.eclipse.org/sirius/updates/milestones/6.1
 	org.eclipse.sirius.runtime.ide.ui.acceleo.source.feature.group
 }
 
-location kitalpha-runtime-core-master "https://ci.polarsys.org/kitalpha/job/Kitalpha-v1.3.x/94/artifact/releng/plugins/org.polarsys.kitalpha.releng.runtime.core.updatesite/target/repository" {
+location kitalpha-runtime-core-master "https://ci.polarsys.org/kitalpha/job/Kitalpha-v1.3.x/97/artifact/releng/plugins/org.polarsys.kitalpha.releng.runtime.core.updatesite/target/repository" {
 	org.polarsys.kitalpha.ad.runtime.feature.feature.group
 	org.polarsys.kitalpha.cadence.feature.feature.group
 	org.polarsys.kitalpha.common.feature.feature.group
