@@ -142,30 +142,21 @@ public class MarkerViewHelper {
    * @param qualified whether the rule should be qualified or not
    * @return
    */
-  public static String getRuleID(IMarker marker, boolean qualified){
-    
+  public static String getRuleID(IMarker marker, boolean qualified) {
     String result = null;
+    Diagnostic diag = (Diagnostic) marker.getAdapter(Diagnostic.class);
+    if (diag instanceof ConstraintStatusDiagnostic) {
+      result = ((ConstraintStatusDiagnostic) diag).getConstraintStatus().getConstraint().getDescriptor().getId();
+      if (!qualified) {
 
-    // the deprecated attribute has preference for backwards compatibility
-//    result = marker.getAttribute(IValidationConstants.TAG_RULE_ID, null);
-    
-//    if (result == null){
-      Diagnostic diag = (Diagnostic) marker.getAdapter(Diagnostic.class);
-      if (diag instanceof ConstraintStatusDiagnostic) {
-        result = ((ConstraintStatusDiagnostic) diag).getConstraintStatus().getConstraint().getDescriptor().getId();
-        if (!qualified){
-        
-          int lastDot = result.lastIndexOf('.');
-          if ((lastDot >= 0) && (lastDot < (result.length() - 1))) {
-            result = result.substring(lastDot + 1);
-          }
+        int lastDot = result.lastIndexOf('.');
+        if ((lastDot >= 0) && (lastDot < (result.length() - 1))) {
+          result = result.substring(lastDot + 1);
         }
       }
-      else if (diag instanceof BasicDiagnostic) {
-        BasicDiagnostic basigDiag = (BasicDiagnostic) diag;
-        return basigDiag.getSource() + "." + basigDiag.getCode();
-      }
-//    }
+    } else if (diag instanceof BasicDiagnostic && diag.getSource() != null) {
+      return diag.getSource() + "." + diag.getCode();
+    }
     return result;
   }
 
