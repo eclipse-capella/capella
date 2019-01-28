@@ -2839,9 +2839,9 @@ public class InformationServices {
   /**
    * return existing links from CRI Diagram
    */
-  public List<CapellaElement> getExistingLinksFromCRIDiagram(EObject sourceView) {
+  public Set<CapellaElement> getExistingLinksFromCRIDiagram(EObject sourceView) {
 
-    List<CapellaElement> result = new ArrayList<>();
+    Set<CapellaElement> result = new HashSet<>();
     DDiagram diagramContainer = CapellaServices.getService().getDiagramContainer(sourceView);
     EObject sourceTarget = ((DSemanticDecorator) sourceView).getTarget();
     if ((null != sourceTarget) && (null != diagramContainer)) {
@@ -2871,9 +2871,8 @@ public class InformationServices {
     }
 
     // Remove Elements From Diagram (only if diagram is synchronized)
-    //
     if (!diagram.isSynchronized()) {
-      List<CapellaElement> existingElements = getExistingLinksFromCRIDiagram(sourceView);
+      Set<CapellaElement> existingElements = getExistingLinksFromCRIDiagram(sourceView);
       // existing elements to be removed
       if (null != selectedElements) {
         existingElements.removeAll(selectedElements);
@@ -2887,8 +2886,7 @@ public class InformationServices {
           EdgeTarget sourceNode = representation.getSourceNode();
           // mapping check (use and implementation)
           List<String> mappingCheckList = new ArrayList<>();
-          mappingCheckList.add(IMappingNameConstants.CCRI_ACTOR_CAPABILITY_REALIZATION_INVOLVEMENT);
-          mappingCheckList.add(IMappingNameConstants.CCRI_SYSTEM_COMPONENT_CAPABILITY_REALIZATION_INVOLVEMENT);
+          mappingCheckList.add(IMappingNameConstants.CCRI_CAPABILITY_REALIZATION_INVOLVEMENT);
           if ((null != sourceNode) && sourceNode.equals(sourceView) && (null != target)
               && existingElements.contains(target) && isValidActualMapping(representation, mappingCheckList)) {
             // collect the representation to remove
@@ -2896,12 +2894,10 @@ public class InformationServices {
           }
         }
       }
-      // remove the representation via iterator
-      Iterator<DEdge> iterator = edges.iterator();
-      while (iterator.hasNext()) {
-        DEdge dEdge = iterator.next();
-        // remove edgeView action
-        diagramServices.removeEdgeView(dEdge);
+      
+      for (DEdge edge : edges) {
+        
+        diagramServices.removeEdgeView(edge);
       }
     }
 
@@ -3012,10 +3008,10 @@ public class InformationServices {
 
       if (element instanceof SystemComponentCapabilityRealizationInvolvement) {
         result.add(DiagramServices.getDiagramServices().getEdgeMapping(diagram,
-            IMappingNameConstants.CCRI_SYSTEM_COMPONENT_CAPABILITY_REALIZATION_INVOLVEMENT));
+            IMappingNameConstants.CCRI_CAPABILITY_REALIZATION_INVOLVEMENT));
       } else if (element instanceof ActorCapabilityRealizationInvolvement) {
         result.add(
-            DiagramServices.getDiagramServices().getEdgeMapping(diagram, IMappingNameConstants.CCRI_ACTOR_CAPABILITY_REALIZATION_INVOLVEMENT));
+            DiagramServices.getDiagramServices().getEdgeMapping(diagram, IMappingNameConstants.CCRI_CAPABILITY_REALIZATION_INVOLVEMENT));
       }
     }
 

@@ -531,6 +531,5 @@ public interface IMappingNameConstants {
   String CCRI_ACTOR = "CCRI Actor";
   String CCRI_COMPONENT = "CCRI Component";
   String CCRI_CAPABILITY_REALIZATION = "CCRI CapabilityRealization";
-  String CCRI_ACTOR_CAPABILITY_REALIZATION_INVOLVEMENT = "CCRI ActorCapabilityRealizationInvolvement";
-  String CCRI_SYSTEM_COMPONENT_CAPABILITY_REALIZATION_INVOLVEMENT = "CCRI involvement";
+  String CCRI_CAPABILITY_REALIZATION_INVOLVEMENT = "CCRI involvement";
 }

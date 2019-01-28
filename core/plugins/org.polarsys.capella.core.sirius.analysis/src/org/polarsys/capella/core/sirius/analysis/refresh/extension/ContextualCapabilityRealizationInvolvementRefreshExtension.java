@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.polarsys.capella.core.sirius.analysis.refresh.extension;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.EdgeTarget;
@@ -36,24 +37,14 @@ public class ContextualCapabilityRealizationInvolvementRefreshExtension extends 
       return;
     }
 
-    // Get all graphical node mappings of the diagram so that we can create
-    // graphical elements with them
-    final NodeMapping actorNodeMapping = DiagramServices.getDiagramServices().getNodeMapping(diagram,
-        IMappingNameConstants.CCRI_ACTOR);
-    final NodeMapping componentNodeMapping = DiagramServices.getDiagramServices().getNodeMapping(diagram,
-        IMappingNameConstants.CCRI_COMPONENT);
     final NodeMapping capabilityRealizationMapping = DiagramServices.getDiagramServices().getNodeMapping(diagram,
         IMappingNameConstants.CCRI_CAPABILITY_REALIZATION);
-    final EdgeMapping actorCapabilityRealizationInvolvementMapping = DiagramServices.getDiagramServices()
-        .getEdgeMapping(diagram, IMappingNameConstants.CCRI_ACTOR_CAPABILITY_REALIZATION_INVOLVEMENT);
-    final EdgeMapping systemComponentCapabilityRealizationInvolvementMapping = DiagramServices.getDiagramServices()
-        .getEdgeMapping(diagram, IMappingNameConstants.CCRI_SYSTEM_COMPONENT_CAPABILITY_REALIZATION_INVOLVEMENT);
 
     // Get the main CapabilityRealization semantic object and its corresponding
     // graphical object
     final CapabilityRealization mainCapability = (CapabilityRealization) ((DSemanticDecorator) diagram).getTarget();
-    DDiagramElement mainCapabilityGraphicalNode = DiagramServices.getDiagramServices()
-        .getDiagramElements(diagram, capabilityRealizationMapping, mainCapability);
+    DDiagramElement mainCapabilityGraphicalNode = DiagramServices.getDiagramServices().getDiagramElements(diagram,
+        capabilityRealizationMapping, mainCapability);
 
     // If the graphical node is not already on the diagram, we create it
     if (null == mainCapabilityGraphicalNode) {
@@ -63,63 +54,100 @@ public class ContextualCapabilityRealizationInvolvementRefreshExtension extends 
       diagram.getOwnedDiagramElements().add(mainCapabilityGraphicalNode);
     }
 
-    // For each Actor linked to the main CapabilityRealization node with an
-    // Involvement link, we will create its graphical representation as well as the
-    // graphical representation of the link
-    DDiagramElement graphicalNode = null;
-    for (ActorCapabilityRealizationInvolvement inv : mainCapability.getInvolvedActors()) {
+    // We display elements related to the contextual capability only if the diagram is synchronized
+    NodeMapping actorNodeMapping = null;
+    NodeMapping componentNodeMapping = null;
+    EdgeMapping capabilityRealizationInvolvementMapping = null;
+    if (diagram.isSynchronized()) {
 
-      final AbstractActor currentActor = (AbstractActor) inv.getInvolved();
-      if (!DiagramServices.getDiagramServices().isOnDiagram(diagram, currentActor)) {
-        graphicalNode = actorNodeMapping.createNode(currentActor, mainCapability, diagram);
+      EList<ActorCapabilityRealizationInvolvement> actorInvolvements = mainCapability.getInvolvedActors();
+      EList<SystemComponentCapabilityRealizationInvolvement> componentInvolvements = mainCapability
+          .getInvolvedSystemComponents();
 
-        diagram.getOwnedDiagramElements().add(graphicalNode);
+      // Get all graphical node mappings of the diagram so that we can create
+      // graphical elements with them only if there are any present
+      if (!actorInvolvements.isEmpty()) {
+        actorNodeMapping = DiagramServices.getDiagramServices().getNodeMapping(diagram,
+            IMappingNameConstants.CCRI_ACTOR);
+        capabilityRealizationInvolvementMapping = DiagramServices.getDiagramServices().getEdgeMapping(diagram,
+            IMappingNameConstants.CCRI_CAPABILITY_REALIZATION_INVOLVEMENT);
       }
 
-      if (!DiagramServices.getDiagramServices().isOnDiagram(diagram, inv)) {
+      if (!componentInvolvements.isEmpty()) {
+        componentNodeMapping = DiagramServices.getDiagramServices().getNodeMapping(diagram,
+            IMappingNameConstants.CCRI_COMPONENT);
 
-        // If the target of the Involvement is not present on the diagram, we create it
-        if (null == graphicalNode) {
-
-          graphicalNode = DiagramServices.getDiagramServices().getDiagramElements(diagram, actorNodeMapping,
-              currentActor);
+        // We may have no actor involvements and as such we need the involvement mapping now
+        if (null == capabilityRealizationInvolvementMapping) {
+          capabilityRealizationInvolvementMapping = DiagramServices.getDiagramServices().getEdgeMapping(diagram,
+              IMappingNameConstants.CCRI_CAPABILITY_REALIZATION_INVOLVEMENT);
         }
-
-        final DDiagramElement graphicalEdge = DiagramServices.getDiagramServices().createEdge(
-            actorCapabilityRealizationInvolvementMapping, (EdgeTarget) mainCapabilityGraphicalNode,
-            (EdgeTarget) graphicalNode, inv);
-
-        diagram.getOwnedDiagramElements().add(graphicalEdge);
-      }
-    }
-
-    // For each Component linked to the main CapabilityRealization node with an
-    // Involvement link, we will create its graphical representation as well as the
-    // graphical representation of the link
-    graphicalNode = null;
-    for (SystemComponentCapabilityRealizationInvolvement inv : mainCapability.getInvolvedSystemComponents()) {
-
-      final SystemComponent currentComponent = (SystemComponent) inv.getInvolved();
-      if (!DiagramServices.getDiagramServices().isOnDiagram(diagram, currentComponent)) {
-        graphicalNode = componentNodeMapping.createNode(currentComponent, mainCapability, diagram);
-
-        diagram.getOwnedDiagramElements().add(graphicalNode);
       }
 
-      if (!DiagramServices.getDiagramServices().isOnDiagram(diagram, inv)) {
+      DDiagramElement graphicalNode = null;
+      if (null != actorNodeMapping) {
 
-        // If the target of the Involvement is not present on the diagram, we create it
-        if (null == graphicalNode) {
+        // For each Actor linked to the main CapabilityRealization node with an
+        // Involvement link, we will create its graphical representation as well as the
+        // graphical representation of the link
+        for (ActorCapabilityRealizationInvolvement inv : actorInvolvements) {
 
-          graphicalNode = DiagramServices.getDiagramServices().getDiagramElements(diagram, componentNodeMapping,
-              currentComponent);
+          final AbstractActor currentActor = (AbstractActor) inv.getInvolved();
+          if (!DiagramServices.getDiagramServices().isOnDiagram(diagram, currentActor)) {
+            graphicalNode = actorNodeMapping.createNode(currentActor, mainCapability, diagram);
+
+            diagram.getOwnedDiagramElements().add(graphicalNode);
+          }
+
+          if (!DiagramServices.getDiagramServices().isOnDiagram(diagram, inv)) {
+
+            // If the target of the Involvement is not present on the diagram, we create it
+            if (null == graphicalNode) {
+
+              graphicalNode = DiagramServices.getDiagramServices().getDiagramElements(diagram, actorNodeMapping,
+                  currentActor);
+            }
+
+            final DDiagramElement graphicalEdge = DiagramServices.getDiagramServices().createEdge(
+                capabilityRealizationInvolvementMapping, (EdgeTarget) mainCapabilityGraphicalNode,
+                (EdgeTarget) graphicalNode, inv);
+
+            diagram.getOwnedDiagramElements().add(graphicalEdge);
+          }
         }
+      }
 
-        final DDiagramElement graphicalEdge = DiagramServices.getDiagramServices().createEdge(
-            systemComponentCapabilityRealizationInvolvementMapping, (EdgeTarget) mainCapabilityGraphicalNode,
-            (EdgeTarget) graphicalNode, inv);
+      if (null != componentNodeMapping) {
 
-        diagram.getOwnedDiagramElements().add(graphicalEdge);
+        // For each Component linked to the main CapabilityRealization node with an
+        // Involvement link, we will create its graphical representation as well as the
+        // graphical representation of the link
+        graphicalNode = null;
+        for (SystemComponentCapabilityRealizationInvolvement inv : componentInvolvements) {
+
+          final SystemComponent currentComponent = (SystemComponent) inv.getInvolved();
+          if (!DiagramServices.getDiagramServices().isOnDiagram(diagram, currentComponent)) {
+            graphicalNode = componentNodeMapping.createNode(currentComponent, mainCapability, diagram);
+
+            diagram.getOwnedDiagramElements().add(graphicalNode);
+          }
+
+          if (!DiagramServices.getDiagramServices().isOnDiagram(diagram, inv)) {
+
+            // If the target of the Involvement is not present on the diagram, we create it
+            if (null == graphicalNode) {
+
+              graphicalNode = DiagramServices.getDiagramServices().getDiagramElements(diagram, componentNodeMapping,
+                  currentComponent);
+            }
+
+            final DDiagramElement graphicalEdge = DiagramServices.getDiagramServices().createEdge(
+                capabilityRealizationInvolvementMapping, (EdgeTarget) mainCapabilityGraphicalNode,
+                (EdgeTarget) graphicalNode, inv);
+
+            diagram.getOwnedDiagramElements().add(graphicalEdge);
+          }
+        }
       }
     }
   }
