@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,6 +23,12 @@ public class Messages extends NLS {
   public static String MoveStagingView_unstageLabel;
   public static String MoveStagingView_addRequiredElementsLabel;
   public static String MoveStagingView_addAllRequiredElementsLabel;
+  public static String MoveStagingView_unstageActionTooltip;
+  public static String ValidateExecuteListener_dialogCancelButton;
+  public static String ValidateExecuteListener_dialogMessage;
+  public static String ValidateExecuteListener_dialogProceedButton;
+  public static String ValidateExecuteListener_dialogTitle;
+
   static {
     // initialize resource bundle
     NLS.initializeMessages(BUNDLE_NAME, Messages.class);

@@ -43,6 +43,8 @@ import org.eclipse.emf.edit.ui.provider.DecoratingColumLabelProvider;
 import org.eclipse.emf.edit.ui.provider.DiagnosticDecorator;
 import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
 import org.eclipse.emf.transaction.ExceptionHandler;
+import org.eclipse.emf.transaction.ResourceSetListener;
+import org.eclipse.emf.transaction.RollbackException;
 import org.eclipse.emf.transaction.TransactionalCommandStack;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
@@ -53,6 +55,8 @@ import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.action.ToolBarManager;
+import org.eclipse.jface.dialogs.ErrorDialog;
+import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.resource.FontDescriptor;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.util.LocalSelectionTransfer;
@@ -70,6 +74,7 @@ import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerCell;
 import org.eclipse.jface.viewers.ViewerDropAdapter;
+import org.eclipse.jface.window.Window;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.dnd.DND;
 import org.eclipse.swt.dnd.DragSourceEvent;
@@ -84,6 +89,7 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.ToolBar;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeColumn;
@@ -108,6 +114,7 @@ import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.libraries.IModel;
 import org.polarsys.capella.common.libraries.manager.LibraryManager;
 import org.polarsys.capella.common.libraries.manager.LibraryManagerExt;
+import org.polarsys.capella.core.data.core.validation.constraint.ReferentialConstraintsResourceSetListener;
 import org.polarsys.capella.core.libraries.model.ICapellaModel;
 import org.polarsys.capella.core.libraries.ui.Activator;
 import org.polarsys.capella.core.model.helpers.move.CapellaMoveHelper;
@@ -226,9 +233,19 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
       stack.setExceptionHandler(newHandler);
       IStatus result = null;
       destinationViewer.getTree().setRedraw(false);
+      ResourceSetListener validateListener = new ReferentialConstraintsResourceSetListener(status -> {
+        ErrorDialog dialog = new MyStatusDialog(getViewSite().getShell(), status); 
+        dialog.setBlockOnOpen(true);
+        if (dialog.open() == Window.CANCEL) {
+          throw new RollbackException(status);
+        }
+      });
+      TransactionalEditingDomain domain = (TransactionalEditingDomain) stage.getEditingDomain();
+      domain.addResourceSetListener(validateListener);
       try {
         result = stage.execute();
       } finally {
+        domain.removeResourceSetListener(validateListener);
         stack.setExceptionHandler(oldHandler);
         if (result != null) {
           if (result.isOK()) {
@@ -1067,5 +1084,21 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
       super.selectElementInCapellaExplorer(selection);
     }
   }
+  
+  private static class MyStatusDialog extends ErrorDialog {
+
+    public MyStatusDialog(Shell parent, IStatus status) {
+      super(parent,Messages.ValidateExecuteListener_dialogTitle, Messages.ValidateExecuteListener_dialogMessage, status, Status.ERROR); 
+    }
+
+    @Override
+    protected void createButtonsForButtonBar(Composite parent) {
+      createDetailsButton(parent);
+      createButton(parent, IDialogConstants.OK_ID, Messages.ValidateExecuteListener_dialogProceedButton, false);
+      createButton(parent, IDialogConstants.CANCEL_ID, Messages.ValidateExecuteListener_dialogCancelButton, true);
+    }
+
+  }
+
 
 }

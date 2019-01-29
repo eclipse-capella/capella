@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <!--
-  Copyright (c) 2018 THALES GLOBAL SERVICES.
+  Copyright (c) 2018, 2019 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -372,25 +372,6 @@ This rule checks that an capella element doesn&apos;t contain any naming conflic
                </description>
                <target
                      class="Constraint">
-               </target>
-            </constraint>
-            <constraint
-                  class="org.polarsys.capella.core.data.core.validation.constraint.ReferentialConstraintsValidationRule"
-                  id="I_37"
-                  isEnabledByDefault="true"
-                  lang="Java"
-                  mode="Live"
-                  name="I_37 [Live] - Validate referential constraints during move"
-                  severity="ERROR"
-                  statusCode="1">
-               <message>
-                  Cannot move elements
-               </message>
-               <description>
-                  Detects moved elements and verifies that outgoing/incoming references from/to these elements and their content trees are still allowed. This validation rule is only executed if the move operation was executed in the Move Staging View.
-               </description>
-               <target
-                     class="CapellaElement">
                </target>
             </constraint>
             <constraint

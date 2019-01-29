@@ -79,7 +79,7 @@ public class Rule_I_37_38_ComponentExchange extends Rule_I37_38{
       }, "'C 1' cannot reference moved element 'CP 1' via 'source'");
 
       // can move both components + exchange
-      expectNoRollback(() -> {
+      executeCommand(() -> {
         libraryRootComponent.getOwnedLogicalComponents().add(lc1);
         libraryRootComponent.getOwnedLogicalComponents().add(lc2);
         libraryRootComponent.getOwnedComponentExchanges().add(ce);

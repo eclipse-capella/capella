@@ -88,7 +88,7 @@ public class Rule_I_37_38_PhysicalLink extends Rule_I37_38{
       }, "'PL 1' cannot reference moved element 'PP 1' via 'linkEnds'");
 
       // can move both components + exchange
-      expectNoRollback(() -> {
+      executeCommand(() -> {
         libraryRootComponent.getOwnedPhysicalComponents().add(pc1);
         libraryRootComponent.getOwnedPhysicalComponents().add(pc2);
         libraryRootComponent.getOwnedPhysicalLinks().add(pl);
