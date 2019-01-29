@@ -728,10 +728,10 @@ contains the partition {2} (Partitionable Element)  typed by {0} (Partitionable 
                  severity="ERROR"
                  statusCode="1">
               <message>
-                 EnumrationLiteral {0} is aggregated in ownedDataValues feature of Enumeration {1} instead of ownedLiterals feature.
+                 {0} (EnumerationLiteral) is aggregated in ownedDataValues feature of {1} (Enumeration) instead of ownedLiterals feature.
               </message>
               <description>
-                 This rule checks that the EnumerationLiteral is aggregated in the ownedLiterals feature of the Enumration and not in the ownedDataValues feature.
+                 This rule checks that the EnumerationLiteral is aggregated in the ownedLiterals feature of the Enumeration and not in the ownedDataValues feature.
               </description>
               <target
                     class="EnumerationLiteral">
