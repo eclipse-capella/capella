@@ -2475,6 +2475,9 @@
           <targetMapping xsi:type="description_1:ContainerMapping" href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@containerMappings[name='MSM_ModeState_Container']"/>
           <targetMapping xsi:type="description_1:NodeMapping" href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@nodeMappings[name='MSM_ModeState']"/>
           <targetMapping xsi:type="description_1:EdgeMapping" href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Mode%20State%20Machine']/@defaultLayer/@edgeMappings[name='MSM_Transition']"/>
+          <targetMapping xsi:type="description_1:NodeMapping" href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@nodeMappings[name='CCRI%20Component']"/>
+          <targetMapping xsi:type="description_1:NodeMapping" href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@nodeMappings[name='CCRI%20Actor']"/>
+          <targetMapping xsi:type="description_1:EdgeMapping" href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@edgeMappings[name='CCRI%20involvement']"/>
           <style lineStyle="dot">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription showIcon="false">
@@ -12097,13 +12100,13 @@
           </conditionnalStyles>
         </nodeMappings>
         <nodeMappings name="CCRI Actor" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" createElements="false" domainClass="AbstractActor">
-          <style xsi:type="style:WorkspaceImageDescription" sizeComputationExpression="-1" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/Actor.png">
+          <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="-1" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/Actor.png">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
         </nodeMappings>
         <nodeMappings name="CCRI Component" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" createElements="false" domainClass="SystemComponent">
-		  <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Component%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='Physical%20Component%20Breakdown']"/>
+          <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Component%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='Physical%20Component%20Breakdown']"/>
           <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Physical%20Architecture%20Blank']"/>
           <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='Contextual%20Component%20Detailed%20Interfaces']"/>
           <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='Contextual%20Component%20External%20Interfaces']"/>
@@ -12119,21 +12122,25 @@
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="aql:(self.eClass().name = 'PhysicalComponent') and (self.nature = pa::PhysicalComponentNature::NODE)">
-            <style xsi:type="style:SquareDescription" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow_Border']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow_Label']" sizeComputationExpression="8" labelPosition="node" resizeKind="NSEW" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow']"/>
+            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="-1" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/PhysicalComponentNodeBig.png">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
           </conditionnalStyles>
-          <conditionnalStyles predicateExpression="aql:(self.eClass().name = 'PhysicalComponent') and (self.nature = pa::PhysicalComponentNature::BEHAVIOUR)">
-            <style xsi:type="style:SquareDescription" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Label_Blue']" sizeComputationExpression="8" labelPosition="node" resizeKind="NSEW" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
-              <labelFormat>bold</labelFormat>
+          <conditionnalStyles predicateExpression="aql:(self.eClass().name = 'PhysicalComponent') and (self.nature = pa::PhysicalComponentNature::BEHAVIOR)">
+            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="-1" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/PhysicalComponent.png">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="aql:(self.target.eContainerOrSelf(epbs::EPBSArchitecture)->size() != 0)">
-            <style xsi:type="style:WorkspaceImageDescription" labelExpression="service:capellaLabelService(view, diagram)" sizeComputationExpression="5" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/CSCI.png">
+            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="service:capellaLabelService(view, diagram)" sizeComputationExpression="5" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/CSCI.png">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </conditionnalStyles>
         </nodeMappings>
-        <edgeMappings name="CCRI ActorCapabilityRealizationInvolvement" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" sourceMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@nodeMappings[name='CCRI%20CapabilityRealization']" targetMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@nodeMappings[name='CCRI%20Actor']" targetFinderExpression="feature:involved" sourceFinderExpression="feature:involver" domainClass="ActorCapabilityRealizationInvolvement" useDomainElement="true">
+        <edgeMappings name="CCRI involvement" label="CCRI Involvement" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" sourceMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@nodeMappings[name='CCRI%20CapabilityRealization']" targetMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@nodeMappings[name='CCRI%20Actor'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@nodeMappings[name='CCRI%20Component']" targetFinderExpression="feature:involved" sourceFinderExpression="feature:involver" domainClass="CapabilityRealizationInvolvement" useDomainElement="true">
           <style>
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription>
@@ -12141,16 +12148,8 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="CCRI involvement" label="CCRI SystemComponentCapabilityRealizationInvolvement" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" sourceMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@nodeMappings[name='CCRI%20CapabilityRealization']" targetMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@nodeMappings[name='CCRI%20Component']" targetFinderExpression="feature:involved" sourceFinderExpression="feature:involver" domainClass="CapabilityRealizationInvolvement" useDomainElement="true">
-          <style>
-            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <centerLabelStyleDescription>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            </centerLabelStyleDescription>
-          </style>
-        </edgeMappings>
-        <toolSections name="Involvements">
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="Capability Realization" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@nodeMappings[name='CCRI%20CapabilityRealization']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/CapabilityRealization.gif">
+        <toolSections name="Tools">
+          <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Creates a new Capability Realization" name="Capability Realization" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@nodeMappings[name='CCRI%20CapabilityRealization']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/CapabilityRealization.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -12161,7 +12160,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="Actor" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@nodeMappings[name='CCRI%20Actor']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Actor.gif">
+          <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Creates a new Logical Actor / Physical Actor (and creates a Part in the Context element of the current level)" name="Actor" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@nodeMappings[name='CCRI%20Actor']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Actor.gif">
             <filters precondition="aql:(self.target.eContainerOrSelf(epbs::EPBSArchitecture)->size() != 0)"/>
             <variable name="container"/>
             <viewVariable name="containerView"/>
@@ -12184,8 +12183,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="Component" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@nodeMappings[name='CCRI%20Component']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ComponentInstance.gif">
-            <filters precondition="aql:(self.target.eContainerOrSelf(epbs::EPBSArchitecture)->size() != 0)"/>
+          <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Creates a new Logical / Physical Component / Configuration Item (and creates a Part in the selected Container Component)" name="Component" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@nodeMappings[name='CCRI%20Component']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ComponentInstance.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -12194,6 +12192,7 @@
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.ownedPhysicalComponent">
                     <subModelOperations xsi:type="tool_1:CreateInstance" typeName="PhysicalComponent" referenceName="ownedPhysicalComponents">
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="nature" valueExpression="BEHAVIOR"/>
                     </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
@@ -12204,18 +12203,10 @@
                     </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="Configuration Item" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@nodeMappings[name='CCRI%20Component']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/CSCI.gif">
-            <filters precondition="aql:(self.target.eContainerOrSelf(epbs::EPBSArchitecture)->size() = 0)"/>
-            <variable name="container"/>
-            <viewVariable name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.getArchitecture()">
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.ownedConfigurationItem->size() > 0">
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.ownedConfigurationItem">
                     <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ConfigurationItem" referenceName="ownedConfigurationItems">
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="kind" valueExpression="SystemCI"/>
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.creationService()"/>
                     </subModelOperations>
                   </subModelOperations>
@@ -12223,8 +12214,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Actor Involvement" precondition="aql:not (self.isActorInvolvedWithCapability(preSource, preTarget))" edgeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@edgeMappings[name='CCRI%20ActorCapabilityRealizationInvolvement']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Use.gif">
-            <filters precondition="aql:(self.target.eContainerOrSelf(epbs::EPBSArchitecture)->size() != 0)"/>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" documentation="Creates a new Involvement relationship between the source Capability Realization and the target Component/Actor." name="Involvement" precondition="aql:not ((self.isActorInvolvedWithCapability(preSource, preTarget)) or (self.isSystemComponentInvolvedWithCapability(preSource, preTarget)))" edgeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@edgeMappings[name='CCRI%20involvement']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Use.gif">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -12232,29 +12222,21 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:source">
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:source.oclIsKindOf(la::CapabilityRealization)">
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ActorCapabilityRealizationInvolvement" referenceName="ownedActorCapabilityRealizations">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="involved" valueExpression="aql:target"/>
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:target.oclIsKindOf(cs::AbstractActor)">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ActorCapabilityRealizationInvolvement" referenceName="ownedActorCapabilityRealizations">
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="involved" valueExpression="aql:target"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not (target.oclIsKindOf(cs::AbstractActor))">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="SystemComponentCapabilityRealizationInvolvement" referenceName="ownedSystemComponentCapabilityRealizations">
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="involved" valueExpression="aql:target"/>
+                    </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Component Involvement" precondition="aql:not (self.isSystemComponentInvolvedWithCapability(preSource, preTarget))" edgeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@edgeMappings[name='CCRI%20involvement']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Use.gif">
-            <sourceVariable name="source"/>
-            <targetVariable name="target"/>
-            <sourceViewVariable name="sourceView"/>
-            <targetViewVariable name="targetView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:source">
-                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:source.oclIsKindOf(la::CapabilityRealization)">
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="SystemComponentCapabilityRealizationInvolvement" referenceName="ownedSystemComponentCapabilityRealizations">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="involved" valueExpression="aql:target"/>
-                  </subModelOperations>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool_1:ToolDescription" name="s/h Actors" label="Actors" precondition="aql:elementView->filter(diagram::DDiagram)->size() > 0" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+          <ownedTools xsi:type="tool_1:ToolDescription" documentation="Insert/Remove Actors" name="s/h Actors" label="Actors" precondition="aql:elementView->filter(diagram::DDiagram)->size() > 0" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <filters precondition="aql:(self.target.eContainerOrSelf(epbs::EPBSArchitecture)->size() != 0)"/>
             <element name="element">
               <subVariables xsi:type="tool_1:AcceleoVariable" name="semanticCandidate" computationExpression="AbstractActor"/>
@@ -12269,7 +12251,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ToolDescription" name="s/h Components" label="Components" precondition="aql:elementView->filter(diagram::DDiagram)->size() > 0" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+          <ownedTools xsi:type="tool_1:ToolDescription" documentation="Insert/Remove Components" name="s/h Components" label="Components" precondition="aql:elementView->filter(diagram::DDiagram)->size() > 0" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <filters precondition="aql:(self.target.eContainerOrSelf(epbs::EPBSArchitecture)->size() != 0)"/>
             <element name="element">
               <subVariables xsi:type="tool_1:AcceleoVariable" name="semanticCandidate" computationExpression="SystemComponent"/>
@@ -12284,7 +12266,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ToolDescription" name="s/h Capability Realization" label="Capability Realizations" precondition="aql:elementView->filter(diagram::DDiagram)->size() > 0" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+          <ownedTools xsi:type="tool_1:ToolDescription" documentation="Insert/Remove Capability Realizations" name="s/h Capability Realization" label="Capability Realizations" precondition="aql:elementView->filter(diagram::DDiagram)->size() > 0" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <element name="element">
               <subVariables xsi:type="tool_1:AcceleoVariable" name="semanticCandidate" computationExpression="CapabilityRealization"/>
             </element>

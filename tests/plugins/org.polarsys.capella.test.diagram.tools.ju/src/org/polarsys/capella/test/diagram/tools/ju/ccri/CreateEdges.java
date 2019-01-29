@@ -77,10 +77,10 @@ public class CreateEdges extends AbstractDiagramTestCase {
         createdPhysicalComponentNameAndID);
 
     new CreateEdgeTool(physicalDiagramContext,
-        IToolNameConstants.TOOL_CCRI_CREATE_ACTOR_CAPABILITY_REALIZATION_INVOLVEMENT_EDGE, "INV 1",
+        IToolNameConstants.TOOL_CCRI_CREATE_CAPABILITY_REALIZATION_INVOLVEMENT_EDGE, "INV 1",
         mainPhysicalCapabilityRealizationID, createdPhysicalActorNameAndID, 1).run();
     new CreateEdgeTool(physicalDiagramContext,
-        IToolNameConstants.TOOL_CCRI_CREATE_COMPONENT_CAPABILITY_REALIZATION_INVOLVEMENT_EDGE, "INV 2",
+        IToolNameConstants.TOOL_CCRI_CREATE_CAPABILITY_REALIZATION_INVOLVEMENT_EDGE, "INV 2",
         mainPhysicalCapabilityRealizationID, createdPhysicalComponentNameAndID, 1).run();
 
     // Same for the Logical level diagram
@@ -92,10 +92,10 @@ public class CreateEdges extends AbstractDiagramTestCase {
         createdLogicalComponentNameAndID);
 
     new CreateEdgeTool(logicalDiagramContext,
-        IToolNameConstants.TOOL_CCRI_CREATE_ACTOR_CAPABILITY_REALIZATION_INVOLVEMENT_EDGE, "INV 1",
+        IToolNameConstants.TOOL_CCRI_CREATE_CAPABILITY_REALIZATION_INVOLVEMENT_EDGE, "INV 1",
         mainLogicalCapabilityRealizationID, createdLogicalActorNameAndID, 1).run();
     new CreateEdgeTool(logicalDiagramContext,
-        IToolNameConstants.TOOL_CCRI_CREATE_COMPONENT_CAPABILITY_REALIZATION_INVOLVEMENT_EDGE, "INV 2",
+        IToolNameConstants.TOOL_CCRI_CREATE_CAPABILITY_REALIZATION_INVOLVEMENT_EDGE, "INV 2",
         mainLogicalCapabilityRealizationID, createdLogicalComponentNameAndID, 1).run();
   }
 
