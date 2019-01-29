@@ -14,40 +14,18 @@ package org.polarsys.capella.common.re.ui.handlers;
 import java.util.Collection;
 
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.polarsys.capella.common.ef.command.ICommand;
 import org.polarsys.capella.common.re.commands.CreateRecCommand;
 import org.polarsys.capella.common.re.handlers.CreateRecHandler;
 import org.polarsys.capella.common.re.ui.handlers.uihead.UIHeadHandler;
 import org.polarsys.capella.core.transition.common.commands.DefaultCommand;
 
-/**
- */
 public class CreateRecUiHandler extends CreateRecHandler {
 
-  /**
-   * {@inheritDoc}
-   */
   @Override
   protected ICommand createCommand(Collection<?> selection, IProgressMonitor progressMonitor) {
     DefaultCommand command = new CreateRecCommand(selection, progressMonitor);
     command.addParameters(new UIHeadHandler(false));
     return command;
   }
-
-  @Override
-  public EObject resolveSemanticObject(Object object) {
-    EObject semantic = super.resolveSemanticObject(object);
-    if (semantic != null) {
-      if (semantic instanceof DSemanticDecorator) {
-        Object adapter = ((DSemanticDecorator) semantic).getTarget();
-        if (adapter instanceof EObject) {
-          semantic = (EObject) adapter;
-        }
-      }
-    }
-    return semantic;
-  }
-
 }

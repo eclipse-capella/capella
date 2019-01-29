@@ -30,6 +30,7 @@ import org.polarsys.capella.common.helpers.operations.LongRunningListenersRegist
 import org.polarsys.capella.common.re.constants.IReConstants;
 import org.polarsys.capella.common.re.handlers.scope.DefaultDependenciesHandler;
 import org.polarsys.capella.common.re.ui.handlers.uihead.UIHeadHandler;
+import org.polarsys.capella.core.model.handler.helpers.CapellaAdapterHelper;
 import org.polarsys.capella.core.re.commands.CreateRecCommand;
 import org.polarsys.capella.core.re.commands.UpdateCurCommand;
 import org.polarsys.capella.core.re.project.ReProjectScope;
@@ -68,7 +69,7 @@ public abstract class ProjectRecHandler extends CommandHandler {
         ((LauncherCommand) cmd).setName(name);
       }
       if (cmd != null) {
-        TransactionHelper.getExecutionManager(getSemanticObjects(selection)).execute(cmd);
+        TransactionHelper.getExecutionManager(CapellaAdapterHelper.resolveSemanticsObjects(selection)).execute(cmd);
       } else {
         handleNullCommand();
       }
@@ -90,7 +91,7 @@ public abstract class ProjectRecHandler extends CommandHandler {
   protected ICommand createInterruptableCommand(Collection<?> selection, IProgressMonitor progressMonitor) throws InterruptedException {
     Collection<EObject> scope = ReProjectScope.getScope((EObject) selection.iterator().next(), progressMonitor);
     ICommand result = null;
-    if (scope.size() > 0) {
+    if (!scope.isEmpty()) {
       result = createRecProjectCommand(scope);
     }
     return result;
@@ -132,12 +133,12 @@ public abstract class ProjectRecHandler extends CommandHandler {
         new GenericParameter<IHandler>(IReConstants.DEPENDENCIES_HANDLER, new DefaultDependenciesHandler() {
           @Override
           public Collection<EObject> getScopeElements(Collection<EObject> initialScopeElements, Collection<EObject> scopeElements, IContext context) {
-            return new ArrayList<EObject>(initialScopeElements);
+            return new ArrayList<>(initialScopeElements);
           }
 
           @Override
           public Collection<EObject> getComplementaryScopeElements(Collection<EObject> initialScopeElements, Collection<EObject> scopeElements, IContext context) {
-            return new ArrayList<EObject>(initialScopeElements);
+            return new ArrayList<>(initialScopeElements);
           }
 
     }, Messages.ProjectRecHandler_OptionsHandler));

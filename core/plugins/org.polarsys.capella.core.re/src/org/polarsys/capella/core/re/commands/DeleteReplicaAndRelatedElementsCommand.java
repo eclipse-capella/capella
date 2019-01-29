@@ -21,14 +21,10 @@ import org.polarsys.capella.common.re.CatalogElement;
 import org.polarsys.capella.common.re.CatalogElementKind;
 import org.polarsys.capella.common.re.CatalogElementLink;
 import org.polarsys.capella.common.re.helpers.ReplicableElementExt;
+import org.polarsys.capella.core.model.handler.helpers.CapellaAdapterHelper;
 import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaDeleteCommand;
 import org.polarsys.capella.core.transition.common.commands.DefaultCommand;
-import org.polarsys.capella.core.transition.system.helpers.SemanticHelper;
 
-/**
- *  
- *
- */
 public class DeleteReplicaAndRelatedElementsCommand extends DefaultCommand {
 
 	/**
@@ -47,19 +43,19 @@ public class DeleteReplicaAndRelatedElementsCommand extends DefaultCommand {
 	
 	protected void performTransformation(Collection<?> source) {
 		
-			HashSet<CatalogElement> elements = new HashSet<CatalogElement>();
-			HashSet<EObject> elements_objects = new HashSet<EObject>();
-			for (Object selected : SemanticHelper.getSemanticObjects(source)) {
-				if (selected instanceof EObject) {
-					if (selected instanceof CatalogElement && ((CatalogElement) selected).getKind()!=CatalogElementKind.REC) {
-						elements.add((CatalogElement) selected);
-					} else {
-						elements.addAll(ReplicableElementExt.getReferencingReplicas((EObject) selected));
-					}
+	  Collection<EObject> semanticElements = CapellaAdapterHelper.resolveSemanticsObjects(source);
+			HashSet<CatalogElement> catalogElements = new HashSet<>();
+      for (EObject selected : semanticElements) {
+				if (selected instanceof CatalogElement && ((CatalogElement) selected).getKind()!=CatalogElementKind.REC) {
+					catalogElements.add((CatalogElement) selected);
+				} else {
+					catalogElements.addAll(ReplicableElementExt.getReferencingReplicas((EObject) selected));
 				}
 			}
-			for (CatalogElement selected : elements) {
-				elements_objects.addAll(elements);
+      
+      HashSet<EObject> elements_objects = new HashSet<>();
+			for (CatalogElement selected : catalogElements) {
+				elements_objects.addAll(catalogElements);
 				/* For each elements selected, search for its content */
 				for(CatalogElementLink elementLink : selected.getOwnedLinks()) {
 					if(elementLink.getTarget() instanceof ModelElement) {
@@ -72,9 +68,6 @@ public class DeleteReplicaAndRelatedElementsCommand extends DefaultCommand {
 			delete.execute();
 		}
 
-	/**
-	 * @return
-	 */
 	protected boolean isHeadless() {
 		return true;
 	}

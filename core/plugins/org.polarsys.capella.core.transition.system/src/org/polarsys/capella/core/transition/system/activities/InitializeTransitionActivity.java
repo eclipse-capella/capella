@@ -24,6 +24,7 @@ import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellamodeller.ModelRoot;
 import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
+import org.polarsys.capella.core.model.handler.helpers.CapellaAdapterHelper;
 import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.constants.Messages;
@@ -36,7 +37,6 @@ import org.polarsys.capella.core.transition.common.handlers.traceability.config.
 import org.polarsys.capella.core.transition.system.handlers.attachment.CapellaDefaultAttachmentHandler;
 import org.polarsys.capella.core.transition.system.handlers.traceability.config.MergeTargetConfiguration;
 import org.polarsys.capella.core.transition.system.handlers.transformation.CapellaTransformationHandler;
-import org.polarsys.capella.core.transition.system.helpers.SemanticHelper;
 import org.polarsys.kitalpha.cadence.core.api.parameter.ActivityParameters;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
@@ -66,11 +66,6 @@ public class InitializeTransitionActivity extends org.polarsys.capella.core.tran
     return status;
   }
 
-  /**
-   * @param context_p
-   * @param handler_p
-   * @param activityParams_p
-   */
   @Override
   protected IStatus initializeScopeRetrieverHandlers(IContext context, CompoundScopeRetriever handler, ActivityParameters activityParams) {
     // Add a scope retriever based on IRuleScope implementations
@@ -97,9 +92,8 @@ public class InitializeTransitionActivity extends org.polarsys.capella.core.tran
    * @param selection_p
    * @return
    */
-  protected Collection<Object> adaptSelection(Collection<Object> selection) {
-    Collection<Object> result = SemanticHelper.getSemanticObjects(selection);
-    return result;
+  protected Collection<EObject> adaptSelection(Collection<Object> selection) {
+    return CapellaAdapterHelper.resolveSemanticsObjects(selection);
   }
 
   /**
@@ -109,7 +103,7 @@ public class InitializeTransitionActivity extends org.polarsys.capella.core.tran
   @Override
   protected IStatus initializeSource(IContext context, ActivityParameters activityParams) {
     Collection<EObject> selection = (Collection<EObject>) context.get(ITransitionConstants.TRANSITION_SOURCES);
-    if (selection.size() > 0) {
+    if (!selection.isEmpty()) {
 
       EObject source = (EObject) selection.toArray()[0];
       if (!(source instanceof CapellaElement)) {
@@ -140,7 +134,7 @@ public class InitializeTransitionActivity extends org.polarsys.capella.core.tran
     Resource sourceResource = (Resource) context.get(ITransitionConstants.TRANSITION_SOURCE_RESOURCE);
     Resource outputResource = sourceResource;
 
-    if ((outputResource != null) && (outputResource.getContents().size() != 0)) {
+    if ((outputResource != null) && (!outputResource.getContents().isEmpty())) {
       context.put(ITransitionConstants.TRANSITION_TARGET_RESOURCE, outputResource);
       context.put(ITransitionConstants.TRANSITION_TARGET_EDITING_DOMAIN, TransactionUtil.getEditingDomain(outputResource));
 
@@ -183,9 +177,6 @@ public class InitializeTransitionActivity extends org.polarsys.capella.core.tran
     return new CompoundTraceabilityHandler(configuration);
   }
 
-  /**
-   * @param source_p
-   */
   protected void ensureOpening(EObject source) {
     Session session = SessionManager.INSTANCE.getSession(source);
     if ((session == null) && (source instanceof CapellaElement)) {
@@ -205,12 +196,10 @@ public class InitializeTransitionActivity extends org.polarsys.capella.core.tran
       }
     }
 
-    if (!project.getOwnedModelRoots().isEmpty()) {
-      if (project.getOwnedModelRoots().size() == 1) {
-        ModelRoot root = project.getOwnedModelRoots().iterator().next();
-        if (root instanceof SystemEngineering) {
-          return (SystemEngineering) root;
-        }
+    if (project.getOwnedModelRoots().size() == 1) {
+      ModelRoot root = project.getOwnedModelRoots().iterator().next();
+      if (root instanceof SystemEngineering) {
+        return (SystemEngineering) root;
       }
     }
 
