@@ -458,23 +458,23 @@ class MarkerViewColumns {
         public String getText(Object element) {
           String result = ICommonConstants.EMPTY_STRING;
           if (element instanceof IMarker) {
-            // If it's a validation rule id, we print that 
+            // If it's a validation rule id, we print that
             result = MarkerViewHelper.getRuleID((IMarker) element, false);
+            String markerSource = MarkerViewHelper.getSource((IMarker) element);
             if (result == null) {
               /*
                * Otherwise we use the marker diagnostic source as the label ...
                */
-              result = MarkerViewHelper.getSource((IMarker) element);
+              result = markerSource;
               if (result != null) {
                 /*
-                 * ... with a special label for basic emf validation results (e.g. unresolved proxies)
+                 * ... with a special label for basic EMF validation results (e.g. unresolved proxies)
                  */
                 if (result.equals(MarkerViewHelper.ECORE_DIAGNOSTIC_SOURCE)) {
                   result = Messages.MarkerLabelProvider_EcoreDiagnosticSourceLabel;
                 }
               }
-            }
-            else if (MarkerViewHelper.getSource((IMarker) element).equals(MarkerViewHelper.ECORE_DIAGNOSTIC_SOURCE)) {
+            } else if (markerSource != null && markerSource.equals(MarkerViewHelper.ECORE_DIAGNOSTIC_SOURCE)) {
               result = result.replace(MarkerViewHelper.ECORE_DIAGNOSTIC_SOURCE,
                   Messages.MarkerLabelProvider_EcoreDiagnosticSourceLabel);
             }
@@ -495,7 +495,7 @@ class MarkerViewColumns {
             if ((resolutions != null) && (resolutions.length > 0)) {
 
               if (hasAtLeastOneMultipleMarkerResolution(marker, resolutions)) {
-                return MarkerViewPlugin.getDefault().getImage("quickfixAll-repository.png"); //$NON-NLS-1$								
+                return MarkerViewPlugin.getDefault().getImage("quickfixAll-repository.png"); //$NON-NLS-1$
               }
               return MarkerViewPlugin.getDefault().getImage("quickfix.gif"); //$NON-NLS-1$
             }
@@ -520,7 +520,8 @@ class MarkerViewColumns {
           // handle multiple markers
           for (IMarkerResolution res : resolutions) {
             if (res instanceof WorkbenchMarkerResolution) {
-              IMarker[] similarMarkers = ((WorkbenchMarkerResolution) res).findOtherMarkers(sameConstraintMarkers.toArray(new IMarker[0]));
+              IMarker[] similarMarkers = ((WorkbenchMarkerResolution) res)
+                  .findOtherMarkers(sameConstraintMarkers.toArray(new IMarker[0]));
               if (similarMarkers.length > 1) {
                 return true;
               }
