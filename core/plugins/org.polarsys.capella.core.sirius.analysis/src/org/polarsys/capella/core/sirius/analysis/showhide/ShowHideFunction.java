@@ -93,7 +93,8 @@ public class ShowHideFunction extends ShowHideABRole {
   }
 
   @Override
-  protected boolean mustShow(ContextItemElement originCouple_p, DiagramContext context_p, HashMapSet<String, DSemanticDecorator> relatedViews_p) {
+  protected boolean mustShow(ContextItemElement originCouple_p, DiagramContext context_p,
+      HashMapSet<String, DSemanticDecorator> relatedViews_p) {
 
     if (originCouple_p.getValue() instanceof AbstractFunction) {
       // We don't reveal a parent function, if the getAncestor is already displayed somewhere
@@ -109,7 +110,8 @@ public class ShowHideFunction extends ShowHideABRole {
   }
 
   @Override
-  public DiagramElementMapping getMapping(EObject semantic_p, DiagramContext context_p, HashMapSet<String, DSemanticDecorator> relatedViews_p) {
+  public DiagramElementMapping getMapping(EObject semantic_p, DiagramContext context_p,
+      HashMapSet<String, DSemanticDecorator> relatedViews_p) {
     DiagramElementMapping mapping = super.getMapping(semantic_p, context_p, relatedViews_p);
 
     if (semantic_p instanceof AbstractFunction) {
@@ -121,7 +123,8 @@ public class ShowHideFunction extends ShowHideABRole {
   }
 
   @Override
-  protected Collection<DSemanticDecorator> retrieveDefaultContainer(EObject semantic_p, DiagramContext context_p, Collection<DSemanticDecorator> targetViews_p) {
+  protected Collection<DSemanticDecorator> retrieveDefaultContainer(EObject semantic_p, DiagramContext context_p,
+      Collection<DSemanticDecorator> targetViews_p) {
     if (!DiagramHelper.getService().isArchitectureBlank(getContent().getDDiagram())) {
       if ((semantic_p instanceof AbstractFunction)) {
         // If no container has been found for a function, use diagram to put the given function
@@ -144,7 +147,7 @@ public class ShowHideFunction extends ShowHideABRole {
 
   @Override
   protected boolean mustHide(DDiagramElement view_p, DiagramContext context_p) {
-    if (view_p.getTarget() instanceof OperationalActivity)
+    if (view_p.getTarget() instanceof AbstractFunction)
       return true;
     return super.mustHide(view_p, context_p);
   }
