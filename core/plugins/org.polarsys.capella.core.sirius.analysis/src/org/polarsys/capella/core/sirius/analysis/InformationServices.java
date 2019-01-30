@@ -59,7 +59,6 @@ import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
 import org.polarsys.capella.common.ui.toolkit.dialogs.TransferTreeListDialog;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
 import org.polarsys.capella.core.business.queries.capellacore.BusinessQueriesProvider;
-import org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvement;
 import org.polarsys.capella.core.data.capellacore.AbstractDependenciesPkg;
 import org.polarsys.capella.core.data.capellacore.AbstractExchangeItemPkg;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
@@ -3271,7 +3270,7 @@ public class InformationServices {
       EObject diagramTarget = diagram.getTarget();
       // get all dataVales and add to result list
       result.addAll(QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_DATA_VALUES_FOR_LIB, diagramTarget));
-      return filterEnumLiteral(result);
+      return filterDataValues(result);
     }
     /*
      * If DNode Container (assume target as DataPkg)
@@ -3319,19 +3318,22 @@ public class InformationServices {
         }
       }
     }
-    return filterEnumLiteral(result);
+    return filterDataValues(result);
   }
 
   /**
-   * Removes the EnumrationLiterals which are contained in Enumeration.
+   * Removes the EnumrationLiterals which are contained in Enumeration and LiteralBooleanValue which are contained in
+   * BooleanType.
+   * 
    * @param values
    * @return
    */
-  private List<DataValue> filterEnumLiteral(List<DataValue> values) {
+  private List<DataValue> filterDataValues(List<DataValue> values) {
     Iterator<DataValue> iterator = new ArrayList<>(values).iterator();
     while (iterator.hasNext()) {
       DataValue next = iterator.next();
-      if (next instanceof EnumerationLiteral && next.eContainer() instanceof Enumeration) {
+      if ((next instanceof EnumerationLiteral && next.eContainer() instanceof Enumeration)
+          || (next instanceof LiteralBooleanValue && next.eContainer() instanceof BooleanType)) {
         values.remove(next);
       }
     }

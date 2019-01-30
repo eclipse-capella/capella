@@ -53,8 +53,10 @@ import org.polarsys.capella.core.data.epbs.EpbsPackage;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.FunctionPkg;
 import org.polarsys.capella.core.data.information.Class;
+import org.polarsys.capella.core.data.information.datatype.BooleanType;
 import org.polarsys.capella.core.data.information.datatype.Enumeration;
 import org.polarsys.capella.core.data.information.datavalue.EnumerationLiteral;
+import org.polarsys.capella.core.data.information.datavalue.LiteralBooleanValue;
 import org.polarsys.capella.core.data.la.CapabilityRealization;
 import org.polarsys.capella.core.data.la.CapabilityRealizationPkg;
 import org.polarsys.capella.core.data.la.LaPackage;
@@ -93,86 +95,87 @@ public class MoveHelper {
    * @return
    */
   public IStatus checkSemanticRules(List<EObject> selectedElements, EObject inputTargetElement) {
-    boolean result = true;
+    boolean isOK = true;
 
     for (EObject selectedElement : selectedElements) {
-      if ((selectedElement instanceof ModelElement) && (inputTargetElement instanceof ModelElement)) {
+      if (isOK && selectedElement instanceof ModelElement && inputTargetElement instanceof ModelElement) {
         ModelElement elt = (ModelElement) selectedElement;
         ModelElement targetElement = (ModelElement) inputTargetElement;
 
         if ((elt instanceof FunctionPkg) && (targetElement instanceof FunctionPkg)) {
-          result = areInSameLayer(elt, targetElement) && !(targetElement.eContainer() instanceof BlockArchitecture);
+          isOK = areInSameLayer(elt, targetElement) && !(targetElement.eContainer() instanceof BlockArchitecture);
         } else if ((elt instanceof AbstractFunction) && (targetElement instanceof FunctionPkg)) {
-          result = areInSameLayer(elt, targetElement) && !(targetElement.eContainer() instanceof BlockArchitecture);
+          isOK = areInSameLayer(elt, targetElement) && !(targetElement.eContainer() instanceof BlockArchitecture);
 
         } else if ((elt instanceof LogicalComponentPkg) && (targetElement instanceof BlockArchitecture)) {
           // avoid dnd of pkg into architecture
-          result = false;
+          isOK = false;
 
         } else if ((elt instanceof PhysicalComponentPkg) && (targetElement instanceof BlockArchitecture)) {
           // avoid dnd of pkg into architecture
-          result = false;
+          isOK = false;
 
         } else if ((elt instanceof Component) && (elt.eContainer() instanceof BlockArchitecture)) {
           // Avoid dnd of root component
-          result = false;
+          isOK = false;
 
         } else if ((elt instanceof FunctionPkg) && (targetElement instanceof EPBSArchitecture)) {
-          result = false;
+          isOK = false;
         } else if ((elt instanceof InterfacePkg) && (targetElement instanceof EPBSArchitecture)) {
-          result = false;
+          isOK = false;
         } else if ((elt instanceof Capability)
             && !EcoreUtil2.isContainedBy(targetElement, CtxPackage.Literals.SYSTEM_ANALYSIS)) {
-          result = false;
+          isOK = false;
         } else if ((elt instanceof CapabilityRealization)
             && EcoreUtil2.isContainedBy(targetElement, CtxPackage.Literals.SYSTEM_ANALYSIS)) {
-          result = false;
+          isOK = false;
         } else if ((elt instanceof OperationalCapabilityPkg)
             && !EcoreUtil2.isContainedBy(targetElement, OaPackage.Literals.OPERATIONAL_ANALYSIS)) {
-          result = false;
+          isOK = false;
         } else if ((elt instanceof CapabilityPkg)
             && !EcoreUtil2.isContainedBy(targetElement, CtxPackage.Literals.SYSTEM_ANALYSIS)) {
-          result = false;
+          isOK = false;
         } else if ((elt instanceof CapabilityRealizationPkg)
             && !EcoreUtil2.isContainedBy(targetElement, LaPackage.Literals.LOGICAL_ARCHITECTURE)
             && !EcoreUtil2.isContainedBy(targetElement, PaPackage.Literals.PHYSICAL_ARCHITECTURE)
             && !EcoreUtil2.isContainedBy(targetElement, EpbsPackage.Literals.EPBS_ARCHITECTURE)) {
-          result = false;
+          isOK = false;
         } else if ((elt instanceof AbstractFunction) && (targetElement instanceof AbstractFunction)) {
           if (!areInSameLayer(elt, targetElement)) {
-            result = false;
+            isOK = false;
           }
         } else if ((elt instanceof Component) && (targetElement instanceof Component)) {
           if (!areInSameLayer(elt, targetElement)) {
-            result = false;
+            isOK = false;
           }
         } else if ((elt instanceof Interface) && (targetElement instanceof InterfacePkg)) {
-          result = isLegalInterfaceMode((Interface) elt, (InterfacePkg) targetElement);
+          isOK = isLegalInterfaceMode((Interface) elt, (InterfacePkg) targetElement);
         } else if ((elt instanceof Interface) && (targetElement instanceof Interface)) {
-          result = isLegalInterfaceMode((Interface) elt, (Interface) targetElement);
+          isOK = isLegalInterfaceMode((Interface) elt, (Interface) targetElement);
         } else if (elt instanceof Part) {
           AbstractType type = ((Part) elt).getAbstractType();
           if (type != null) {
             if (type.equals(targetElement) || targetElement instanceof Class || isDecomposedBy(targetElement, type)) {
-              result = false;
+              isOK = false;
             }
           }
         } else if (elt instanceof EnumerationLiteral) {
-          result = targetElement instanceof Enumeration;
+          isOK = targetElement instanceof Enumeration;
         }
         // If elt is a Mode or a State
         else if (elt instanceof State) {
           if (!(targetElement instanceof Region))
-            result = false;
+            isOK = false;
           else {
-            result = canMoveModeState((State) elt, (Region) targetElement);
+            isOK = canMoveModeState((State) elt, (Region) targetElement);
           }
+        } else if (elt instanceof LiteralBooleanValue) {
+          isOK = targetElement instanceof BooleanType;
         }
-
       }
     }
 
-    if (!result) {
+    if (!isOK) {
       // We should explain why !
       return new Status(IStatus.ERROR, "model.helpers", "Semantic rules failed.");
     }
