@@ -16,6 +16,7 @@ import org.polarsys.capella.core.sirius.analysis.constants.IToolNameConstants;
 import org.polarsys.capella.test.diagram.common.ju.step.crud.CreateDiagramStep;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateContainerTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateDEdgeTool;
+import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateNodeElementTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.InsertRemoveTool;
 import org.polarsys.capella.test.framework.context.SessionContext;
 
@@ -42,6 +43,26 @@ public class CDBDiagram extends DiagramContext {
   public void createAssociation(String classSourceId, String classTargetId, String id) {
     new CreateDEdgeTool(this, IToolNameConstants.TOOL_CDB_CREATE_ASSOCIATION, classSourceId, classTargetId, id).run();
   }
+  
+  public void createDataPackage(String id) {
+    new CreateContainerTool(this, IToolNameConstants.TOOL_CDB_CREATE_DATA_PACKAGE, getDiagramId(), id).run();
+  }
+  
+  public void createEnumeration(String id) {
+    new CreateContainerTool(this, IToolNameConstants.TOOL_CDB_CREATE_ENUMERATION, getDiagramId(), id).run();
+  }
+  
+  public void createEnumerationLiteral(String id, String containerId) {
+    new CreateNodeElementTool(this, IToolNameConstants.TOOL_CDB_CREATE_ENUMERATION_LITERAL, containerId, id).run();
+  }
+  
+  public void createBooleanType(String id) {
+    new CreateContainerTool(this, IToolNameConstants.TOOL_CDB_CREATE_BOOLEAN_TYPE, getDiagramId(), id).run();
+  }
+  
+  public void createLiteralBooleanValue(String id, String containerId) {
+    new CreateNodeElementTool(this, IToolNameConstants.TOOL_CDB_CREATE_BOOLEAN_LITERAL, containerId, id).run();
+  }
 
   public void removeType(String... ids) {
     new InsertRemoveTool(this, IToolNameConstants.TOOL_CDB_INSERT_REMOVE_TYPE).remove(ids);
@@ -49,6 +70,14 @@ public class CDBDiagram extends DiagramContext {
 
   public void insertType(String... ids) {
     new InsertRemoveTool(this, IToolNameConstants.TOOL_CDB_INSERT_REMOVE_TYPE).insert(ids);
+  }
+  
+  public void removeDataValues(String id, String containerId) {
+    new InsertRemoveTool(this, IToolNameConstants.TOOL_CDB_INSERT_REMOVE_DATA_VALUES, containerId).remove(id);
+  }
+
+  public void insertDataValues(String id, String containerId) {
+    new InsertRemoveTool(this, IToolNameConstants.TOOL_CDB_INSERT_REMOVE_DATA_VALUES, containerId).insert(id);
   }
 
 }
