@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.swt.widgets.Composite;
 import org.polarsys.capella.core.model.handler.provider.CapellaReadOnlyHelper;
 import org.polarsys.capella.core.model.handler.provider.IReadOnlyListener;
+import org.polarsys.capella.core.model.handler.provider.IReadOnlySectionHandler;
 import org.polarsys.kitalpha.richtext.nebula.widget.MDENebulaRichTextConfiguration;
 import org.polarsys.kitalpha.richtext.widget.MDERichtextWidgetEditorImpl;
 
@@ -41,10 +42,25 @@ public class CapellaMDERichtextWidgetEditorImpl extends MDERichtextWidgetEditorI
   public void bind(EObject owner, EStructuralFeature feature) {
     super.bind(owner, feature);
     CapellaReadOnlyHelper.register(getElement(), this);
+    IReadOnlySectionHandler roHandler = CapellaReadOnlyHelper.getReadOnlySectionHandler();
+    if ((roHandler != null) && roHandler.isLockedByOthers(owner)) {
+      setInitialEnabledState(false);
+    } else {
+      setInitialEnabledState(true);
+    }
   }
 
   @Override
   public void setEnabled(boolean enabled) {
+    if (!enabled)
+      setEditable(enabled);
+  }
+  
+  /**
+   * Set the initial enablement state of the section
+   * @param enabled
+   */
+  public void setInitialEnabledState(boolean enabled) {
     setEditable(enabled);
   }
 

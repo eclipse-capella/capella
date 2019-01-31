@@ -268,9 +268,9 @@ public abstract class AbstractSection extends AbstractPropertySection implements
     // Disable the section if the element is read only.
     IReadOnlySectionHandler roHandler = CapellaReadOnlyHelper.getReadOnlySectionHandler();
     if ((roHandler != null) && roHandler.isLockedByOthers(_capellaElement)) {
-      setEnabled(false);
+      setInitialEnabledState(false);
     } else {
-      setEnabled(true);
+      setInitialEnabledState(true);
     }
   }
 
@@ -329,6 +329,14 @@ public abstract class AbstractSection extends AbstractPropertySection implements
         semanticField.setEnabled(enabled);
       }
     }
+  }
+  
+  /**
+   * Set the initial enablement state of the section
+   * @param enabled
+   */
+  protected void setInitialEnabledState(boolean enabled) {
+    setEnabled(enabled);
   }
 
   /**
