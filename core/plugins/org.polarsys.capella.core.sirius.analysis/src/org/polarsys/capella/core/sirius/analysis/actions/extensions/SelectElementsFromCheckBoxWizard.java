@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -92,7 +92,6 @@ public class SelectElementsFromCheckBoxWizard extends AbstractExternalJavaAction
     } else {
       scope = (Map) FaServices.getFaServices().getAvailableCategoriesAndFunctionsToInsertInDataFlowBlank(context, content);
     }
-      scope = (Map) new HashMapSet<ExchangeCategory, AbstractFunction>();
 
     // Initial selection
     if (categoryType == component_category) {
@@ -110,7 +109,6 @@ public class SelectElementsFromCheckBoxWizard extends AbstractExternalJavaAction
     } else {
       initialSelection = (Map) FaServices.getFaServices().getCategoriesAndFunctionsInitialSelectionInDataFlowBlank((DNodeContainer) context, content);
     }
-      initialSelection = (Map) new HashMapSet<ExchangeCategory, AbstractFunction>();
 
     String wizardMessage = (String) parameters.get(WIZARD_MESSAGE);
     String resultVariable = (String) parameters.get(RESULT_VARIABLE);
