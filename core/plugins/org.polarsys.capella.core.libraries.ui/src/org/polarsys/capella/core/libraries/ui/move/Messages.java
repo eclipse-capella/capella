@@ -15,14 +15,14 @@ import org.eclipse.osgi.util.NLS;
 public class Messages extends NLS {
   private static final String BUNDLE_NAME = "org.polarsys.capella.core.libraries.ui.move.messages"; //$NON-NLS-1$
   public static String MoveStagingView_backrefTooltip;
-  public static String MoveStagingView_clearParentActionTooltip;
+  public static String MoveStagingView_clearParentLabel;
   public static String MoveStagingView_destinationSectionDescription;
   public static String MoveStagingView_destinationSectionTitle;
   public static String MoveStagingView_stageSectionDescription;
   public static String MoveStagingView_stageSectionTitle;
-  public static String MoveStagingView_unstageActionTooltip;
-  public static String MoveStagingView_addRequiredElementsTooltip;
-  public static String MoveStagingView_addAllRequiredElementsTooltip;
+  public static String MoveStagingView_unstageLabel;
+  public static String MoveStagingView_addRequiredElementsLabel;
+  public static String MoveStagingView_addAllRequiredElementsLabel;
   static {
     // initialize resource bundle
     NLS.initializeMessages(BUNDLE_NAME, Messages.class);
