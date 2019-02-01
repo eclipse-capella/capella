@@ -17,6 +17,7 @@ import junit.framework.Test;
 
 import org.polarsys.capella.test.diagram.tools.ju.cdb.CreateClass;
 import org.polarsys.capella.test.diagram.tools.ju.cdb.InsertRemoveClass;
+import org.polarsys.capella.test.diagram.tools.ju.cdb.InsertRemoveDataValues;
 import org.polarsys.capella.test.diagram.tools.ju.pd.CreateDependencies;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
@@ -39,6 +40,7 @@ public class CDBDiagramToolsTestSuite extends BasicTestSuite {
     tests.add(new CreateClass());
     tests.add(new InsertRemoveClass());
     tests.add(new CreateDependencies());
+    tests.add(new InsertRemoveDataValues());
     return tests;
   }
 
