@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -41,13 +41,13 @@ public class GetAvailable_FunctionOutputPort_OutGoingExchangeItems extends Abstr
   @Override
   public List<Object> execute(Object input, IQueryContext context) {
     CapellaElement element = (CapellaElement) input;
-    List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
+    List<Object> availableElements = new ArrayList<>();
     SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element);
     if (null == systemEngineering) {
-      return (List) availableElements;
+      return availableElements;
     }
     availableElements.addAll(getRule_MQRY_Service_ItemRealization_11(systemEngineering, element));
-    return (List) availableElements;
+    return availableElements;
   }
 
   /**
@@ -75,10 +75,6 @@ public class GetAvailable_FunctionOutputPort_OutGoingExchangeItems extends Abstr
         }
       }
 
-      // remove AbstractExchangeItem related to current
-      for (CapellaElement abstractExchangeItem : getCurrentElements(currentProperty, false)) {
-        availableElements.remove(abstractExchangeItem);
-      }
     }
 
     return availableElements;

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -44,11 +44,8 @@ public class GetAvailable_ComponentPort_AllocatedPort extends AbstractQuery {
 	public List<EObject> getAvailableElements(CapellaElement element) {
 		List<EObject> availableElements = new ArrayList<EObject>();
 		if (element instanceof Port) {
-			List<EObject> currentElements = getCurrentElements(element, false);
 			for (EObject port : getRule_MQRY_Port_AllocatedPorts_11((Port) element)) {
-				if (!currentElements.contains(port)) {
-					availableElements.add((CapellaElement) port);
-				}
+			  availableElements.add((CapellaElement) port);
 			}
 		}
 		availableElements = ListExt.removeDuplicates(availableElements);

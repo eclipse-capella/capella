@@ -484,7 +484,7 @@ resultIds = {
 queryIdentifier = org.polarsys.capella.core.business.queries.cs.InterfaceUse_UsedInterface-getCurrentElements
 inputId = 584e16a8-9e15-40b2-a0d9-ffb212200d5e
 resultIds = {
-    ecf5300b-3eb4-4e1a-9b93-56f00d2182aa
+    8c689d4b-edd1-4548-bac9-0dae826c9be2
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.cs.InterfaceUse_UsedInterface-getAvailableElements

@@ -1240,7 +1240,9 @@ resultIds = {
 queryIdentifier = org.polarsys.capella.core.business.queries.cs.Component_ImplementedInterfaces-getAvailableElements
 inputId = da0faa88-19bd-4141-8fa0-08968061b829
 resultIds = {
+    274a18b0-f305-40f6-85cc-9ac78b2931d0
     8610b70f-8e72-467b-9f48-67e63cba21a3
+    ecf5300b-3eb4-4e1a-9b93-56f00d2182aa
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.cs.Component_ImplementedInterfaces-getCurrentElements
@@ -1422,7 +1424,6 @@ queryIdentifier = org.polarsys.capella.core.business.queries.cs.Component_Implem
 inputId = f8a76974-36a2-4ada-9025-c5c6e2b4d848
 resultIds = {
     274a18b0-f305-40f6-85cc-9ac78b2931d0
-    8610b70f-8e72-467b-9f48-67e63cba21a3
     ecf5300b-3eb4-4e1a-9b93-56f00d2182aa
 }
 

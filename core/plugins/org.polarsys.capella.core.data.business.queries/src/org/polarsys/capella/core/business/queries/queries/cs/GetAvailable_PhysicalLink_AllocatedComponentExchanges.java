@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -73,17 +73,13 @@ public class GetAvailable_PhysicalLink_AllocatedComponentExchanges extends Abstr
 					ComponentExchange connection = (ComponentExchange) capellaElement;
 					EList<AbstractTrace> incomingTraces = connection.getIncomingTraces();
 					for (AbstractTrace abstractTrace : incomingTraces) {
-						if (abstractTrace instanceof ComponentExchangeAllocation) {
+						if (abstractTrace instanceof ComponentExchangeAllocation && (((ComponentExchangeAllocation)abstractTrace).getComponentExchangeAllocator() != element)) {
 							allReadyAllocatedConnection.add(capellaElement);
 						}
 					}
 				}
 			}
 			availableElements.removeAll(allReadyAllocatedConnection);
-			List<CapellaElement> currentElements = getCurrentElements(element, false);
-			for (CapellaElement capellaElement : currentElements) {
-				availableElements.remove(capellaElement);
-			}
 		}
 		availableElements = ListExt.removeDuplicates(availableElements);
 		return availableElements;

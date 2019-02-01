@@ -51,7 +51,6 @@ public class GetAvailable_PhysicalNode_Deployments extends AbstractQuery {
 		availableElements = ListExt.removeDuplicates(availableElements);
 		availableElements.remove(element.eContainer());
 		availableElements.remove(element);
-		availableElements.removeAll(getCurrentElements(element, false));
 		return availableElements;
 	}
 

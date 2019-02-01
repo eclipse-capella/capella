@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,20 +14,17 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import org.eclipse.emf.common.util.EList;
 import org.polarsys.capella.common.data.modellingcore.AbstractType;
-import org.polarsys.capella.common.libraries.IModel;
 import org.polarsys.capella.common.libraries.ILibraryManager;
+import org.polarsys.capella.common.libraries.IModel;
 import org.polarsys.capella.common.libraries.manager.LibraryManagerExt;
 import org.polarsys.capella.common.queries.AbstractQuery;
-import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
+import org.polarsys.capella.core.business.queries.queries.cs.GetAvailable_Part_DeployedElements;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.data.cs.AbstractDeploymentLink;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.Part;
-import org.polarsys.capella.core.data.information.Partition;
 import org.polarsys.capella.core.data.pa.PhysicalActor;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
@@ -35,7 +32,6 @@ import org.polarsys.capella.core.libraries.model.CapellaModel;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
-import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
 import org.polarsys.capella.core.queries.helpers.QueryExt;
 
 public class GetAvailable_Part_DeployedElements__Lib extends AbstractQuery {
@@ -61,35 +57,23 @@ public class GetAvailable_Part_DeployedElements__Lib extends AbstractQuery {
             if (!(currentPC.getNature().equals(PhysicalComponentNature.BEHAVIOR) && physicalComponent.getNature().equals(PhysicalComponentNature.NODE))
                 && !(currentPC.getNature().equals(PhysicalComponentNature.UNSET)) && !(physicalComponent.getNature().equals(PhysicalComponentNature.UNSET))
                 && !physicalComponent.equals(currentPC)) {
-              getValidDeployablePart(availableElements, parts, physicalComponent);
+              getValidDeployablePart(availableElements, parts, physicalComponent, currentPart);
             }
           }
         } else if (abstractType instanceof PhysicalActor) {
           for (PhysicalComponent physicalComponent : behaviourComps) {
             if (!(physicalComponent.getNature().equals(PhysicalComponentNature.NODE)) && !(physicalComponent.getNature().equals(PhysicalComponentNature.UNSET))) {
-              getValidDeployablePart(availableElements, parts, physicalComponent);
+              getValidDeployablePart(availableElements, parts, physicalComponent, currentPart);
             }
           }
         }
       }
     }
-    availableElements.removeAll(QueryInterpretor.executeQuery("GetCurrent_Part_DeployedElements", currentPart, context));//$NON-NLS-1$
     return (List) availableElements;
   }
 
-  private void getValidDeployablePart(List<CapellaElement> availableElements, Collection<Part> parts, Component physicalComponent) {
-    EList<Partition> representingPartitions = physicalComponent.getRepresentingPartitions();
-    for (Partition partition : representingPartitions) {
-      if (partition instanceof Part) {
-        Part part = (Part) partition;
-        if (!parts.contains(part)) {
-          EList<AbstractDeploymentLink> deployingLinks = part.getDeployingLinks();
-          if (CapellaModelPreferencesPlugin.getDefault().isMultipleDeploymentAllowed() || deployingLinks.isEmpty()) {
-            availableElements.add(part);
-          }
-        }
-      }
-    }
+  private void getValidDeployablePart(List<CapellaElement> availableElements, Collection<Part> parts, Component physicalComponent, Part currentPart) {
+    GetAvailable_Part_DeployedElements.getValidDeployablePart(availableElements, parts, physicalComponent, currentPart);
   }
 
 }

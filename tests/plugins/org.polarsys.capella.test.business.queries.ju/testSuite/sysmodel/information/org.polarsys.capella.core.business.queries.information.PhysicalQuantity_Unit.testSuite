@@ -12,6 +12,7 @@
 queryIdentifier = org.polarsys.capella.core.business.queries.information.PhysicalQuantity_Unit-getAvailableElements
 inputId = cd18be6a-15ca-4aac-803c-54c917b286cc
 resultIds = {
+    3a04a55f-dcd1-4c56-a22d-9946e2de867c
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.information.PhysicalQuantity_Unit-getCurrentElements

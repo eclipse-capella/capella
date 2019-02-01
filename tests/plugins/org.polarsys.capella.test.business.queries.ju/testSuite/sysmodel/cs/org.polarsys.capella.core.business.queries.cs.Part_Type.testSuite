@@ -2581,7 +2581,7 @@ resultIds = {
 queryIdentifier = org.polarsys.capella.core.business.queries.cs.Part_Type-getCurrentElements
 inputId = d9a91e4b-cfaf-4626-8e6a-875c6245785b
 resultIds = {
-    f8a76974-36a2-4ada-9025-c5c6e2b4d848
+    da0faa88-19bd-4141-8fa0-08968061b829
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.cs.Part_Type-getAvailableElements

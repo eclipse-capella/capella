@@ -12,6 +12,7 @@
 queryIdentifier = org.polarsys.capella.core.business.queries.fa.FunctionalChain_AvailableInStates-getAvailableElements
 inputId = 3da7e649-d663-4666-94db-47cb4746e48b
 resultIds = {
+    cdd27fa5-b8bb-4f45-9b4a-acd8b7c28f1c
     dc946715-e546-4267-9d20-9a1928e99352
 }
 

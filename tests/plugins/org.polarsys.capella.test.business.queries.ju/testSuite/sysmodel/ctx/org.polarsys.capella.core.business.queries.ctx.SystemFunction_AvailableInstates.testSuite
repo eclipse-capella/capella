@@ -125,6 +125,7 @@ queryIdentifier = org.polarsys.capella.core.business.queries.ctx.SystemFunction_
 inputId = 1e4876cd-8cc0-4a97-a2fd-8d32f0c65848
 resultIds = {
     40a24867-02cc-4407-b89e-6607c409c8cc
+    7e970ef4-dec9-4629-8204-7c481ed99ddd
     b6c6b1c7-371c-4f81-aae2-4abd14deafe3
     fd11a518-b8fb-411b-b246-ddbe72f88cc2
 }

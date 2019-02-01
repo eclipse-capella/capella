@@ -19,6 +19,7 @@ resultIds = {
     72f5a360-f681-45c3-a62c-a47e22be4c4b
     bd425a13-d22c-41d3-be18-a1a61bae7352
     c18d46b0-037a-447e-a162-90bd15b13537
+    f75ce897-dc5b-473a-8147-557ba79a0126
     f9cdd701-8d6a-4458-bc66-14e1323ceea9
 }
 
@@ -36,6 +37,7 @@ resultIds = {
     56ab8514-4c42-42ae-8799-9db4e6dcb1e2
     58868097-b5dd-41a8-adf0-73d89a0e07fa
     72f5a360-f681-45c3-a62c-a47e22be4c4b
+    bd425a13-d22c-41d3-be18-a1a61bae7352
     c18d46b0-037a-447e-a162-90bd15b13537
     f75ce897-dc5b-473a-8147-557ba79a0126
     f9cdd701-8d6a-4458-bc66-14e1323ceea9
@@ -54,6 +56,7 @@ resultIds = {
     19499ee1-1377-4355-85d3-7daa9af17d1d
     56ab8514-4c42-42ae-8799-9db4e6dcb1e2
     58868097-b5dd-41a8-adf0-73d89a0e07fa
+    72f5a360-f681-45c3-a62c-a47e22be4c4b
     bd425a13-d22c-41d3-be18-a1a61bae7352
     c18d46b0-037a-447e-a162-90bd15b13537
     f75ce897-dc5b-473a-8147-557ba79a0126
@@ -70,6 +73,7 @@ queryIdentifier = org.polarsys.capella.core.business.queries.pa.PhysicalActor_Lo
 inputId = ed542859-19dd-4d24-977c-6464e71b6d16
 resultIds = {
     05a520bc-4906-4b38-92a1-142d7ffcd666
+    19499ee1-1377-4355-85d3-7daa9af17d1d
     56ab8514-4c42-42ae-8799-9db4e6dcb1e2
     58868097-b5dd-41a8-adf0-73d89a0e07fa
     72f5a360-f681-45c3-a62c-a47e22be4c4b

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -59,9 +59,6 @@ public class GetAvailable_PhysicalQuantity_Unit extends AbstractQuery {
    * All the Units contained by the Value Package (and all of its sub-packages) of the Shared Assets Package.
    * </p>
    * <p>
-   * Except the current value itself
-   * </p>
-   * <p>
    * Refer MQRY_PhysicalDimension_DefaultUnit_1
    * </p>
    */
@@ -105,9 +102,6 @@ public class GetAvailable_PhysicalQuantity_Unit extends AbstractQuery {
         DataPkg dataPkg = comp.getOwnedDataPkg();
         if (null != dataPkg) {
           for (Unit unit : DataPkgExt.getAllUnits(dataPkg)) {
-            if (unit.equals(currentPhysicalDimension.getUnit())) {
-              continue;
-            }
             availableElements.add(unit);
           }
         }
@@ -124,9 +118,6 @@ public class GetAvailable_PhysicalQuantity_Unit extends AbstractQuery {
       for (DataPkg dataPkg : dataPkgList) {
         if (null != dataPkg) {
           for (Unit unit : DataPkgExt.getAllUnits(dataPkg)) {
-            if (unit.equals(currentPhysicalDimension.getUnit())) {
-              continue;
-            }
             availableElements.add(unit);
           }
         }
@@ -142,18 +133,12 @@ public class GetAvailable_PhysicalQuantity_Unit extends AbstractQuery {
       DataPkg dataPkg = sharedPkg.getOwnedDataPkg();
       if (null != dataPkg) {
         for (Unit unit : DataPkgExt.getAllUnits(dataPkg)) {
-          if (unit.equals(currentPhysicalDimension.getUnit())) {
-            continue;
-          }
           availableElements.add(unit);
         }
       }
       GenericPkg pkg = sharedPkg.getOwnedGenericPkg();
       if (pkg != null) {
         for (Unit unit : GenericPkgExt.getAllUnits(pkg)) {
-          if (unit.equals(currentPhysicalDimension.getUnit())) {
-            continue;
-          }
           availableElements.add(unit);
         }
       }
@@ -167,9 +152,6 @@ public class GetAvailable_PhysicalQuantity_Unit extends AbstractQuery {
       DataPkg dataPkg = DataPkgExt.getDataPkgOfBlockArchitecture(arch);
       if (null != dataPkg) {
         for (Unit unit : DataPkgExt.getAllUnits(dataPkg)) {
-          if (unit.equals(link)) {
-            continue;
-          }
           availableElements.add(unit);
         }
       }

@@ -57,6 +57,7 @@ queryIdentifier = org.polarsys.capella.core.business.queries.cs.PhysicalLink_Rea
 inputId = c9a5bdcd-73aa-40f7-8edc-d6c8d5ffd73d
 resultIds = {
     aec26949-f470-4b3c-8ab0-d0f17acab758
+    e8ba8d88-f527-4b2e-add2-eb717daa6839
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.cs.PhysicalLink_RealizedPhysicalLinks-getCurrentElements
@@ -68,6 +69,7 @@ resultIds = {
 queryIdentifier = org.polarsys.capella.core.business.queries.cs.PhysicalLink_RealizedPhysicalLinks-getAvailableElements
 inputId = 412bc070-86d0-4266-80ae-f1ad891c6c23
 resultIds = {
+    aec26949-f470-4b3c-8ab0-d0f17acab758
     e8ba8d88-f527-4b2e-add2-eb717daa6839
 }
 
