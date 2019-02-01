@@ -2265,18 +2265,6 @@ public class FaServices {
 
   public boolean isFunctionalExchangeReconnectable(FunctionalExchange fe, DDiagram diagram, EObject source,
       EObject target) {
-
-    Set<FunctionalChain> visibleFC = new HashSet<>();
-    for (DNode aNode : diagram.getNodes()) {
-      if (aNode.getTarget() instanceof FunctionalChain) {
-        visibleFC.add((FunctionalChain) aNode.getTarget());
-      }
-    }
-    for (FunctionalChain aFC : fe.getInvolvingFunctionalChains()) {
-      if (visibleFC.contains(aFC)) {
-        return true;
-      }
-    }
     if ((source instanceof InputPin) && (target instanceof OutputPin)) {
       return false;
     }
