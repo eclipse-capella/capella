@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -53,17 +53,14 @@ public class ReferentialConstraintsValidationRule extends AbstractValidationRule
 
     Collection<IStatus> results = new ArrayList<IStatus>();
 
-    boolean validateIncoming;
     Collection<EObject> targets = null;
 
-    if (ctx.getEventType() == EMFEventType.NULL) { // batch validation
+    if (!isLiveValidation(ctx)) {
 
-      validateIncoming = false;
       targets = Collections.singleton(ctx.getTarget());
 
-    } else { // live validation
+    } else {
 
-      validateIncoming = true;
       targets = new ArrayList<EObject>();
 
       for (Notification n : ctx.getAllEvents()) {
@@ -94,7 +91,8 @@ public class ReferentialConstraintsValidationRule extends AbstractValidationRule
     }
 
     for (EObject e : targets) {
-      if (validateIncoming) {
+      // only validate incoming references in live mode
+      if (isLiveValidation(ctx)) {
         validateIncomingReferences(e, results, ctx, targets);
       }
       validateOutgoingReferences(e, results, ctx);
@@ -116,8 +114,10 @@ public class ReferentialConstraintsValidationRule extends AbstractValidationRule
       validateSetting(element, ref, target, results, ctx);
     }
 
-    for (EObject e : element.eContents()) {
-      validateOutgoingReferences(e, results, ctx);
+    if (isLiveValidation(ctx)) {
+      for (EObject e : element.eContents()) {
+        validateOutgoingReferences(e, results, ctx);
+      }
     }
 
   }
@@ -134,12 +134,18 @@ public class ReferentialConstraintsValidationRule extends AbstractValidationRule
       }
     }
 
-    for (EObject e : element.eContents()) {
-      validateIncomingReferences(e, results, ctx, sourceFilter);
+
+    if (isLiveValidation(ctx)) {
+      for (EObject e : element.eContents()) {
+        validateIncomingReferences(e, results, ctx, sourceFilter);
+      }
     }
 
   }
 
+  private boolean isLiveValidation(IValidationContext ctx) {
+    return ctx.getEventType() != EMFEventType.NULL;
+  }
 
   private void validateSetting(EObject source, EReference ref, EObject target, Collection<IStatus> results, IValidationContext ctx) {
 
