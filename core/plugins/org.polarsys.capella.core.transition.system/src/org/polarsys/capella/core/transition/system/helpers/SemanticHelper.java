@@ -20,11 +20,10 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 
-/**
- *
- */
-public class SemanticHelper {
 
+@Deprecated
+public class SemanticHelper {
+  @Deprecated
   public static Collection<Object> getSemanticObjects(Collection<?> elements) {
     Collection<Object> result = new ArrayList<Object>();
     for (Object object : elements) {
@@ -35,7 +34,7 @@ public class SemanticHelper {
     }
     return result;
   }
-
+  @Deprecated
   public static Object resolveSemanticObject(Object object) {
     Object semantic = object;
     if (semantic != null) {

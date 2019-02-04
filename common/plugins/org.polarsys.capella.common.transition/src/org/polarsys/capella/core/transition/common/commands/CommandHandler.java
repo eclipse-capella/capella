@@ -11,7 +11,6 @@
 
 package org.polarsys.capella.core.transition.common.commands;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 
@@ -20,51 +19,37 @@ import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.commands.common.NotDefinedException;
 import org.eclipse.core.expressions.IEvaluationContext;
-import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
+import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.ef.command.ICommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.helpers.operations.LongRunningListenersRegistry;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
-import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
+import org.polarsys.capella.core.model.handler.helpers.CapellaAdapterHelper;
 
-/**
- *
- */
 public abstract class CommandHandler extends AbstractHandler {
 
   protected Collection<?> getInitialSelection(Object evaluationContext) {
     IEvaluationContext context = (IEvaluationContext) evaluationContext;
-    return getSemanticObjects((Collection<?>) context.getDefaultVariable());
+    return CapellaAdapterHelper.resolveSemanticsObjects((Collection<?>) context.getDefaultVariable());
   }
-
+  
+  /**
+   * Use method in CapellaAdapterHelper instead
+   */
+  @Deprecated
   public Collection<EObject> getSemanticObjects(Collection<?> elements) {
-    Collection<EObject> result = new ArrayList<EObject>();
-    for (Object object : elements) {
-      EObject semantic = resolveSemanticObject(object);
-      if (semantic != null && CapellaResourceHelper.isSemanticElement(semantic)) {
-        result.add(semantic);
-      }
-    }
-    return result;
+    return CapellaAdapterHelper.resolveSemanticsObjects(elements);
   }
 
+  /**
+   * Use method in CapellaAdapterHelper instead
+   */
+  @Deprecated
   public EObject resolveSemanticObject(Object object) {
-    EObject semantic = null;
-    if (object != null) {
-      if (object instanceof EObject) {
-        semantic = (EObject) object;
-        
-      } else if (object instanceof IAdaptable) {
-        Object adapter = ((IAdaptable) object).getAdapter(EObject.class);
-        if (adapter instanceof EObject) {
-          semantic = (EObject) adapter;
-        }
-      }
-    }
-    return semantic;
+    return CapellaAdapterHelper.resolveSemanticObject(object, true);
   }
 
   protected abstract ICommand createCommand(Collection<?> selection, IProgressMonitor progressMonitor);
@@ -82,17 +67,24 @@ public abstract class CommandHandler extends AbstractHandler {
   }
 
   public Object execute(Collection<?> selection, String name) throws ExecutionException {
-    try {
-      LongRunningListenersRegistry.getInstance().operationStarting(getClass());
-      ICommand cmd = createCommand(selection, new NullProgressMonitor());
-      if (cmd instanceof LauncherCommand) {
-        ((LauncherCommand) cmd).setName(name);
+    Collection<? extends EObject> selectedSemanticObjects = CapellaAdapterHelper.resolveSemanticsObjects(selection);
+    
+    if (!selectedSemanticObjects.isEmpty()) {
+      ExecutionManager executionManager = TransactionHelper.getExecutionManager(selectedSemanticObjects);
+      
+      if (executionManager != null) {
+        try {
+          LongRunningListenersRegistry.getInstance().operationStarting(getClass());
+          ICommand cmd = createCommand(selection, new NullProgressMonitor());
+          if (cmd instanceof LauncherCommand) {
+            ((LauncherCommand) cmd).setName(name);
+          }
+          executionManager.execute(cmd);
+        } finally {
+          LongRunningListenersRegistry.getInstance().operationEnded(getClass());
+        }
       }
-      TransactionHelper.getExecutionManager((Collection<? extends EObject>) getSemanticObjects(selection)).execute(cmd);
-    } finally {
-      LongRunningListenersRegistry.getInstance().operationEnded(getClass());
     }
-
     return null;
   }
 

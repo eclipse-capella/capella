@@ -13,8 +13,6 @@ package org.polarsys.capella.core.re.ui.handlers;
 import java.util.Collection;
 
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.polarsys.capella.common.ef.command.ICommand;
 
 public class DeleteReplicaAndRelatedElementsUiHandler extends org.polarsys.capella.core.re.handlers.DeleteReplicaAndRelatedElementsHandler {
@@ -22,23 +20,10 @@ public class DeleteReplicaAndRelatedElementsUiHandler extends org.polarsys.capel
 	  @Override
 	  protected ICommand createCommand(Collection<?> selection, IProgressMonitor progressMonitor) {
 	    return new org.polarsys.capella.core.re.commands.DeleteReplicaAndRelatedElementsCommand(selection, progressMonitor) {
+	      @Override
 	      protected boolean isHeadless() {
 	        return false;
 	      }
 	    };
-	  }
-
-	  @Override
-	  public EObject resolveSemanticObject(Object object) {
-	    EObject semantic = super.resolveSemanticObject(object);
-	    if (semantic != null) {
-	      if (semantic instanceof DSemanticDecorator) {
-	        Object adapter = ((DSemanticDecorator) semantic).getTarget();
-	        if (adapter instanceof EObject) {
-	          semantic = (EObject) adapter;
-	        }
-	      }
-	    }
-	    return semantic;
 	  }
 }

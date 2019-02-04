@@ -17,6 +17,7 @@ import junit.framework.Test;
 
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
+import org.polarsys.capella.test.model.ju.helpers.CapellaAdapterHelperTestCase;
 import org.polarsys.capella.test.model.ju.obfuscate.ObfuscateModelTestCase;
 import org.polarsys.capella.test.model.ju.rename.RenameModelTestSuite;
 import org.polarsys.capella.test.model.ju.sortContent.SortContentTestSuite;
@@ -59,6 +60,7 @@ public class ModelTestSuite extends BasicTestSuite {
     tests.add(new ObfuscateModelTestCase());
     tests.add(new DeleteElementTestSuite());
     tests.add(new DataListenerTestSuite());
+    tests.add(new CapellaAdapterHelperTestCase());
     return tests;
   }
 
