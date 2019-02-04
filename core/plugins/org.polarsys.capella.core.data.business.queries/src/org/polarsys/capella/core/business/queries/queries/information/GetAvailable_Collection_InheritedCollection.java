@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -130,26 +130,12 @@ public class GetAvailable_Collection_InheritedCollection extends AbstractQuery {
     if (null != blockArchitecture) {
       DataPkg dataPkg = blockArchitecture.getOwnedDataPkg();
       if (null != dataPkg) {
-        return getDataFromLevel(dataPkg, capellaElement);
+        return CapellaElementsHelperForBusinessQueries.getDataFromLevel(dataPkg, capellaElement, getAvailableEclassForSuperType());
       }
     }
     return Collections.emptyList();
   }
 
-  public List<EObject> getDataFromLevel(DataPkg dataPkg, CapellaElement capellaElement) {
-    List<EObject> returnValue = new ArrayList<EObject>();
-    // First gets the available elements regarding the types
-    List<EObject> availableElemsInTermOfTypes =
-        CapellaElementsHelperForBusinessQueries.getCapellaElementsInstancesOf(dataPkg, getAvailableEclassForSuperType(), capellaElement);
-    // Then verify that there is no generalization cycle
-    for (EObject elem : availableElemsInTermOfTypes) {
-      if ((elem instanceof GeneralizableElement) && (capellaElement instanceof GeneralizableElement)
-          && GeneralizableElementExt.isInheritancyCycleCompatible((GeneralizableElement) elem, (GeneralizableElement) capellaElement)) {
-        returnValue.add(elem);
-      }
-    }
-    return returnValue;
-  }
 
   protected EClass getAvailableEclassForSuperType() {
     return InformationPackage.Literals.COLLECTION;
@@ -164,7 +150,7 @@ public class GetAvailable_Collection_InheritedCollection extends AbstractQuery {
     for (Component cpnt : CapellaElementExt.getComponentHierarchy(element)) {
       DataPkg dataPkg = cpnt.getOwnedDataPkg();
       if (null != dataPkg) {
-        allDatas.addAll(getDataFromLevel(dataPkg, element));
+        allDatas.addAll(CapellaElementsHelperForBusinessQueries.getDataFromLevel(dataPkg, element, getAvailableEclassForSuperType()));
       }
     }
 
@@ -190,7 +176,7 @@ public class GetAvailable_Collection_InheritedCollection extends AbstractQuery {
         for (Component cpnt : componentHierarchy) {
           DataPkg dataPkg = cpnt.getOwnedDataPkg();
           if (null != dataPkg) {
-            for (EObject data : getDataFromLevel(dataPkg, element)) {
+            for (EObject data : CapellaElementsHelperForBusinessQueries.getDataFromLevel(dataPkg, element, getAvailableEclassForSuperType())) {
               if (!allDatas.contains(data)) {
                 allDatas.add(data);
               }

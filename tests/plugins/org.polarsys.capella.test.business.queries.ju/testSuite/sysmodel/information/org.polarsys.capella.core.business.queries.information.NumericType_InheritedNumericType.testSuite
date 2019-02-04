@@ -321,6 +321,7 @@ resultIds = {
 queryIdentifier = org.polarsys.capella.core.business.queries.information.NumericType_InheritedNumericType-getAvailableElements
 inputId = 7d1da46f-95c9-41c5-8c39-020b3bd9cb5b
 resultIds = {
+    0b8909a7-2b25-47c4-bef6-a62793566ec3
     2344816f-ce21-471f-b1c5-d10ba32f4131
     2769625c-6427-4400-81db-f5222f24a548
     373048a5-c757-4544-b906-67ef481dd6eb

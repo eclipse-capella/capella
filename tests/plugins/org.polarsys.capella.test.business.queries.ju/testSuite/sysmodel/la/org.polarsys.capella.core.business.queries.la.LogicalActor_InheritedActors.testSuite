@@ -49,6 +49,7 @@ queryIdentifier = org.polarsys.capella.core.business.queries.la.LogicalActor_Inh
 inputId = 72f5a360-f681-45c3-a62c-a47e22be4c4b
 resultIds = {
     05a520bc-4906-4b38-92a1-142d7ffcd666
+    19499ee1-1377-4355-85d3-7daa9af17d1d
     56ab8514-4c42-42ae-8799-9db4e6dcb1e2
     58868097-b5dd-41a8-adf0-73d89a0e07fa
     bd425a13-d22c-41d3-be18-a1a61bae7352

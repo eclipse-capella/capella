@@ -26,26 +26,28 @@ import org.polarsys.capella.core.data.pa.PaPackage;
 public class PhysicalActor_InheritedActors implements IBusinessQuery {
 
   @Override
-	public EClass getEClass() {
+  public EClass getEClass() {
     return PaPackage.Literals.PHYSICAL_ACTOR;
   }
 
   @Override
-	public List<EReference> getEStructuralFeatures() {
+  public List<EReference> getEStructuralFeatures() {
     return Collections.singletonList(CapellacorePackage.Literals.GENERALIZABLE_ELEMENT__SUPER);
   }
 
   @Override
   public List<EObject> getAvailableElements(EObject element) {
     QueryContext context = new QueryContext();
-		context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
-		return QueryInterpretor.executeQuery(QueryConstants.GET_AVAILABLE__PHYSICAL_ACTOR__INHERITED_ACTORS___LIB, element, context);
+    context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
+    return QueryInterpretor.executeQuery(QueryConstants.GET_AVAILABLE__PHYSICAL_ACTOR__INHERITED_ACTORS___LIB, element,
+        context);
   }
 
   @Override
   public List<EObject> getCurrentElements(EObject element, boolean onlyGenerated) {
     QueryContext context = new QueryContext();
-		context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
-		return QueryInterpretor.executeQuery(QueryConstants.GET_CURRENT__PHYSICAL_ACTOR__INHERITED_ACTORS, element, context);
+    context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
+    return QueryInterpretor.executeQuery(QueryConstants.GET_CURRENT__PHYSICAL_ACTOR__INHERITED_ACTORS, element,
+        context);
   }
 }

@@ -12,6 +12,7 @@
 queryIdentifier = org.polarsys.capella.core.business.queries.information.Collection_InheritedCollection-getAvailableElements
 inputId = f4bdbaed-1add-4bf7-8bb0-8daad7238492
 resultIds = {
+    36b14cab-ce68-4fbf-add2-1e33e489e2e6
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.information.Collection_InheritedCollection-getCurrentElements

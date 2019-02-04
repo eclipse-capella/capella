@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -865,4 +865,54 @@ public class CapellaElementsHelperForBusinessQueries {
     }
     return result;
   }
+
+  public static List<EObject> getDataFromLevel(DataPkg dataPkg, CapellaElement capellaElement, EClass type) {
+    List<EObject> returnValue = new ArrayList<EObject>();
+    List<EObject> availableElemsInTermOfTypes =
+        CapellaElementsHelperForBusinessQueries.getCapellaElementsInstancesOf(dataPkg, type, capellaElement);
+    for (EObject superCandidate : availableElemsInTermOfTypes) {
+      if ((superCandidate instanceof GeneralizableElement) && (capellaElement instanceof GeneralizableElement)
+          && isGoodSupertypeCandidate((GeneralizableElement)capellaElement, (GeneralizableElement)superCandidate)){
+        returnValue.add(superCandidate);
+      }
+    }
+    return returnValue;
+  }
+  
+  /**
+   * Verifies if the candidate is a good supertype candidate for the context element by checking
+   * <ul>
+   *  <li> they cannot be the same element </li>
+   *  <li> the context element is not already a supertype of the candidate, since that would introduce a cycle </li>
+   *  <li> the candidate cannot be a supertype of any existing supertype of the candidate </li>
+   * </ul>
+   * The third restriction is rather artificial, but that's how it was implemented before..
+   * @param context
+   * @param candidate
+   * @return
+   */
+  public static boolean isGoodSupertypeCandidate(GeneralizableElement context, GeneralizableElement candidate) {
+    return 
+        context != candidate // can't be a supertype of itself
+        && !GeneralizableElementExt.getAllSuperGeneralizableElements(candidate).contains(context) // can't introduce a cycle 
+        && !isSupertypeOfCurrentSupertypes(context, candidate); // can't be a supertype of current supertypes
+ }
+  
+  /**
+   * Is the candidate element a supertype of any of the current supertypes of the context element
+   * @param context
+   * @param candidate
+   * @return
+   */
+  public static boolean isSupertypeOfCurrentSupertypes(GeneralizableElement context, GeneralizableElement candidate) {
+   boolean result = false;
+   for (GeneralizableElement sup : context.getSuper()) {
+     if (GeneralizableElementExt.getAllSuperGeneralizableElements(sup).contains(candidate)) {
+       result = true;
+       break;
+     }
+   }
+   return result;
+ }
+
 }
