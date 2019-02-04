@@ -166,23 +166,6 @@ The difference between Completeness and Coverage can appear subtle. Completeness
       <binding
             category="capella.category"
             context="CapellaValidationRulesContext">
-         <excludeConstraint
-               ref="org.polarsys.capella.core.data.core.validation.I_37">
-         </excludeConstraint>
-      </binding>
-      <clientContext
-            default="false"
-            id="CapellaMoveElementsValidationContext">
-         <enablement>
-            <test
-                  property="org.polarsys.capella.common.ui.workbenchproperties.activePartId"
-                  value="org.polarsys.capella.core.libraries.ui.moveview">
-            </test>
-         </enablement>
-      </clientContext>
-      <binding
-            constraint="org.polarsys.capella.core.data.core.validation.I_37"
-            context="CapellaMoveElementsValidationContext">
       </binding>
    </extension>
    

@@ -13,9 +13,14 @@ package org.polarsys.capella.test.validation.rules.ju.testcases.i;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.transaction.RecordingCommand;
+import org.eclipse.emf.transaction.ResourceSetListener;
+import org.eclipse.emf.transaction.RollbackException;
+import org.eclipse.emf.transaction.TransactionalCommandStack;
 import org.eclipse.emf.validation.model.IConstraintStatus;
 import org.eclipse.emf.validation.service.IValidationListener;
 import org.eclipse.emf.validation.service.ModelValidationService;
@@ -30,6 +35,7 @@ import org.polarsys.capella.common.libraries.LibrariesFactory;
 import org.polarsys.capella.common.libraries.LibraryReference;
 import org.polarsys.capella.common.libraries.ModelInformation;
 import org.polarsys.capella.core.data.capellamodeller.CapellamodellerPackage;
+import org.polarsys.capella.core.data.core.validation.constraint.ReferentialConstraintsResourceSetListener;
 import org.polarsys.capella.core.libraries.model.CapellaLibraryExt;
 import org.polarsys.capella.core.model.skeleton.CapellaModelSkeleton;
 import org.polarsys.capella.test.framework.api.BasicTestCase;
@@ -43,7 +49,8 @@ public abstract class Rule_I37_38 extends BasicTestCase {
   CapellaModelSkeleton projectSkeleton;
   CapellaModelSkeleton librarySkeleton;
   IViewPart moveView;
-
+  ResourceSetListener validateExecuteListener;
+  
   @SuppressWarnings("nls")
   @Override
   public void setUp() throws Exception {
@@ -74,40 +81,42 @@ public abstract class Rule_I37_38 extends BasicTestCase {
       }
     });
 
-    // That's a hack to activate the live validation context for move rule I_36
-    // TODO maybe bind the move validation rule to an additional context which is only active when tests are running
-    moveView = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().showView("org.polarsys.capella.core.libraries.ui.moveview");
-
+    // Tests a variant that always rolls back the transaction when a reference error is encountered
+    validateExecuteListener = new ReferentialConstraintsResourceSetListener(ms -> { throw new RollbackException(ms); });
+    manager.getEditingDomain().addResourceSetListener(validateExecuteListener);
 
   }
 
 
   @Override
   public void tearDown() throws Exception {
-    PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().hideView(moveView);
+    manager.getEditingDomain().removeResourceSetListener(validateExecuteListener);
     ExecutionManagerRegistry.getInstance().removeManager(manager);
     super.tearDown();
   }
 
 
   /**
-   * Executes the runnable in a read write command and returns the rollback status for the command
-   * TODO move to ExecutionManager for 1.3 see https://bugs.polarsys.org/show_bug.cgi?id=1874
+   * Executes the runnable in a read write command.
+   * RollbackExceptions and InterruptedExceptions are forwarded to the caller.
+   * TODO move to ExecutionManager for 1.4 see https://bugs.polarsys.org/show_bug.cgi?id=1874
+   * 
    * @param r
-   * @return true if the command wasn't rolled back, false if the command was rolled back
+   * @throws RollbackException 
+   * @throws InterruptedException 
    */
-  protected boolean executeCommand(final Runnable r) {
-    AbstractReadWriteCommand arwc = new AbstractReadWriteCommand() {
+  protected void executeCommand(final Runnable r) throws InterruptedException, RollbackException {
+    RecordingCommand rc = new RecordingCommand(manager.getEditingDomain()) {
       @Override
-      public void run() {
+      protected void doExecute() {
         r.run();
       }
     };
-    manager.execute(arwc);
-    return !arwc.isRolledBack();
+    TransactionalCommandStack stack = (TransactionalCommandStack) manager.getEditingDomain().getCommandStack();
+    stack.execute(rc, Collections.emptyMap());
   }
 
-  protected void expectRollback(final Runnable r) {
+  protected void expectRollback(final Runnable r) throws InterruptedException {
     expectRollback(r, new String[0]);
   }
 
@@ -126,31 +135,22 @@ public abstract class Rule_I37_38 extends BasicTestCase {
   @SuppressWarnings("nls")
   // This could be improved a bit, by checking rule id and severity but
   // for now it's sufficient. TODO, move somewhere else
-  protected void expectRollback(final Runnable r, String... expectedErrors) {
+  protected void expectRollback(final Runnable r, String... expectedErrors) throws InterruptedException {
 
-    Collection<IConstraintStatus> result = new ArrayList<IConstraintStatus>();
-    IValidationListener listener = new IValidationListener() {
-      @Override
-      public void validationOccurred(ValidationEvent event) {
-        result.addAll(event.getValidationResults());
-      }
-    };
-    ModelValidationService.getInstance().addValidationListener(listener);
+    RollbackException expectedException = null;
 
     try {
-      assertFalse(executeCommand(r));
-    } finally {
-      ModelValidationService.getInstance().removeValidationListener(listener);
+      executeCommand(r);
+    } catch (RollbackException e){
+      expectedException = e;
     }
+
+    assertNotNull(expectedException);
 
     for (String expected : expectedErrors) {
-      assertNotNull("Expected validation error: " + expected, find(expected, result));
+      assertNotNull("Expected validation error: " + expected, find(expected, Collections.singleton(expectedException.getStatus())));
     }
 
-  }
-
-  protected void expectNoRollback(final Runnable r) {
-    assertTrue(executeCommand(r));
   }
 
 
@@ -162,7 +162,6 @@ public abstract class Rule_I37_38 extends BasicTestCase {
           return result;
         }
       } else {
-        System.out.println(s.getMessage());
         if (message.equals(s.getMessage())) {
           return s;
         }

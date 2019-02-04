@@ -63,7 +63,7 @@ public class Rule_I_37_38_FunctionalExchange extends Rule_I37_38{
       }, "'FunctionalExchange 1' cannot reference moved element 'FOP 1' via 'source'");
 
       // can move both functions + exchange
-      expectNoRollback(() -> {
+      executeCommand(() -> {
         libraryRootFunction.getOwnedFunctions().add(lf2);
         libraryRootFunction.getOwnedFunctions().add(lf1);
         libraryRootFunction.getOwnedFunctionalExchanges().add(fe);
