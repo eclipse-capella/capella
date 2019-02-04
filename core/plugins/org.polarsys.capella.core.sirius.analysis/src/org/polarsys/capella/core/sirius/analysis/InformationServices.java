@@ -3255,11 +3255,9 @@ public class InformationServices {
    */
   public List<DataValue> getAvailableDataValuesToInsert(final EObject elementView) {
 
-    // Initialization
-    List<DataPkg> listPackages = new ArrayList<>(1);
     List<DataValue> result = new ArrayList<>(1);
 
-    // get diagram
+    // Get diagram
     DSemanticDiagram diagram = (DSemanticDiagram) CapellaServices.getService().getDiagramContainer(elementView);
 
     /*
@@ -3268,7 +3266,7 @@ public class InformationServices {
     if (elementView.equals(diagram)) {
       // Get all dataPkg (consider layers)
       EObject diagramTarget = diagram.getTarget();
-      // get all dataVales and add to result list
+      // Get all dataVales and add to result list
       result.addAll(QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_DATA_VALUES_FOR_LIB, diagramTarget));
       return filterDataValues(result);
     }
@@ -3276,49 +3274,55 @@ public class InformationServices {
      * If DNode Container (assume target as DataPkg)
      */
     else if (elementView instanceof DNodeContainer) {
-      // get target
+      List<DataPkg> listPackages = new ArrayList<>(1);
+      // Get target
       EObject containerTarget = ((DNodeContainer) elementView).getTarget();
-      // if DataPkg
+      // If DataPkg
       if (containerTarget instanceof DataPkg) {
         DataPkg currentPkg = (DataPkg) containerTarget;
-        // get all dataPkg (recursively from current dataPkg)
+        // Get all dataPkg (recursively from current dataPkg)
         listPackages.add(currentPkg);
         listPackages.addAll(DataPkgExt.getRecursiveSubDataPkgs(currentPkg));
 
-        // get all dataVales and add to result
+        // Get all dataVales and add to result
         result.addAll(DataPkgExt.getDataValues(listPackages));
       }
+      return filterDataValues(result);
     }
     /*
      * If DNodeList (Class, DataType, etc)
      */
     else if (elementView instanceof DNodeList) {
-      // get target
+      // Get target
       EObject nodeListTarget = ((DNodeList) elementView).getTarget();
-      // if Class
+      // If Class
       if (nodeListTarget instanceof Class) {
         Class currentClass = (Class) nodeListTarget;
-        // add the DataValues from Class to the result list
+        // Add the DataValues from Class to the result list
         Iterator<DataValue> itDataValues = currentClass.getOwnedDataValues().iterator();
         while (itDataValues.hasNext()) {
           result.add(itDataValues.next());
         }
+        return filterDataValues(result);
       }
-      // if DataType
+      // If DataType
       else if (nodeListTarget instanceof DataType) {
         DataType currentDataType = (DataType) nodeListTarget;
-        // add the DataValues from DataType to the result list
+        // Add the DataValues from DataType to the result list
         result.addAll(DataTypeExt.getAllDataValuesFromDataType(currentDataType));
+        return (currentDataType instanceof Enumeration || currentDataType instanceof BooleanType) ? result
+            : filterDataValues(result);
       } else if (nodeListTarget instanceof org.polarsys.capella.core.data.information.Collection) {
         org.polarsys.capella.core.data.information.Collection currentClass = (org.polarsys.capella.core.data.information.Collection) nodeListTarget;
-        // add the DataValues from Class to the result list
+        // Add the DataValues from Class to the result list
         Iterator<DataValue> itDataValues = currentClass.getOwnedDataValues().iterator();
         while (itDataValues.hasNext()) {
           result.add(itDataValues.next());
         }
+        return filterDataValues(result);
       }
     }
-    return filterDataValues(result);
+    return result;
   }
 
   /**

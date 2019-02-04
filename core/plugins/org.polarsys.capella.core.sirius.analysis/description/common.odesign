@@ -4023,7 +4023,7 @@
             </initialOperation>
             <edgeView name="edgeView"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerDropDescription" name="D&amp;D DataValue From Project Explorer" precondition="aql:element.oclIsKindOf(datavalue::DataValue) and not (element.oclIsKindOf(datavalue::EnumerationLiteral)) and element.canBeDropped(newViewContainer)" forceRefresh="true" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_DataValue']" dragSource="PROJECT_EXPLORER">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="D&amp;D DataValue From Project Explorer" precondition="aql:element.oclIsKindOf(datavalue::DataValue) and not (element.oclIsKindOf(datavalue::EnumerationLiteral) or element.oclIsKindOf(datavalue::LiteralBooleanValue)) and element.canBeDropped(newViewContainer)" forceRefresh="true" inverseSelectionOrder="true" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_DataValue']" dragSource="PROJECT_EXPLORER">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
