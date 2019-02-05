@@ -72,6 +72,9 @@
     <querySpecification extendedQueryIdentifier="GetAvailable_Actor_FunctionalAllocation" queryIdentifier="GetAvailable_Actor_FunctionalAllocation__Lib">
       <queryAlgorithm algorithm="org.polarsys.capella.core.libraries.extendedqueries.GenericGetForLibWithCorrespondingArchitectureElement" />
     </querySpecification>
+    <querySpecification extendedQueryIdentifier="GetAvailable_Actor_InheritedActors" queryIdentifier="GetAvailable_Actor_InheritedActors__Lib">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.libraries.extendedqueries.ctx.GetAvailable_Actor_InheritedActors__Lib" />
+    </querySpecification>
     <querySpecification extendedQueryIdentifier="GetAvailable_System_FunctionalAllocation" queryIdentifier="GetAvailable_System_FunctionalAllocation__Lib">
       <queryAlgorithm algorithm="org.polarsys.capella.core.libraries.extendedqueries.GenericGetForLibWithCorrespondingArchitectureElement" />
     </querySpecification>
