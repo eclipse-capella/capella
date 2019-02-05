@@ -12,7 +12,7 @@ package org.polarsys.capella.test.suite.inui.ju;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import org.polarsys.capella.test.benchmarks.ju.suites.AllBenchmarksTestSuite;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
 
@@ -38,6 +38,7 @@ public class RunInUITestSuite extends BasicTestSuite {
     tests.add(new RunInUIStep3TestSuite());
     tests.add(new RunInUIStep4TestSuite());
     tests.add(new RunInUIStep5TestSuite());
+    tests.add(new AllBenchmarksTestSuite());
     return tests;
   }
 
