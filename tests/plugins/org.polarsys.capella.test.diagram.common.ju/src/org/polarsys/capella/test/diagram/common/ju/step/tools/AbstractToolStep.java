@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -59,6 +59,47 @@ public abstract class AbstractToolStep<A> extends AbstractDiagramStep<A> {
    */
   protected abstract void initToolArguments();
 
+  public void shouldFail() {
+    ToolHelper toolHelper = new ToolHelper(getExecutionContext().getSession(), getExecutionContext().getDiagram());
+
+    // Let's find the tool
+    // WARNING : CHECK TOOL ID NOT TOOL LABEL
+    AbstractToolDescription tool = null;
+    if (toolLabel != null) {
+      tool = toolHelper.getToolByLabel(toolName, toolLabel);
+    }
+    if (tool == null) {
+      tool = toolHelper.getTool(toolName);
+    }
+    if (tool == null) {
+      tool = toolHelper.getToolByLabel(toolName);
+    }
+    if (tool == null) {
+      tool = toolHelper.getToolByLabel(toolLabel);
+    }
+
+    Assert.assertNotNull(
+        NLS.bind(Messages.toolDoesNotExist, toolName, getExecutionContext().getDiagram().getDescription().getName()),
+        tool);
+
+    // Let's find it's wrapper
+    // this case is treated as a test but it fully depends of the test
+    // framework. It have to be interpreted as a log for test developer.
+    _toolWrapper = ToolWrapperFactory.INSTANCE.createToolCommandWrapper(tool);
+    Assert.assertNotNull(NLS.bind(Messages.toolWrapperNotAvailable, toolName), _toolWrapper);
+
+    // Let's initialize interesting data for the tool wrapper
+    initToolArguments();
+
+    // Let's check if all is arguments are well set.
+    IStatus isArgumentOk = _toolWrapper.checkArguments();
+    Assert.assertTrue(NLS.bind(Messages.toolWrapperArgumentErr, isArgumentOk.toString()), isArgumentOk.isOK());
+
+    // Let's check the context
+    boolean isContextOk = _toolWrapper.isContextOk();
+    Assert.assertFalse(NLS.bind(Messages.toolWrapperArgumentValueFailedErr, toolName), isContextOk);
+  }
+  
   public void cannotRun() {
 
     try {

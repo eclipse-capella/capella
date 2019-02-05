@@ -58,7 +58,7 @@ public class ShowHideComponentExchanges extends EmptyProject {
     Session session = getSession(getRequiredTestModel());
     SessionContext context = new SessionContext(session);
 
-    testContextualElements(context, PA__PHYSICAL_SYSTEM);
+    testOnXAB(context, PA__PHYSICAL_SYSTEM);
     testOnDeployedPhysicalComponents(context, PA__PHYSICAL_SYSTEM);
     testOnUnDeployedPhysicalComponents(context, PA__PHYSICAL_SYSTEM);
 
@@ -74,7 +74,7 @@ public class ShowHideComponentExchanges extends EmptyProject {
    * @param context
    * @param paPhysicalSystem
    */
-  private void testContextualElements(SessionContext context, String idSource) {
+  private void testOnXAB(SessionContext context, String idSource) {
     PABDiagram xab = PABDiagram.createDiagram(context, idSource);
     createSubComponent(xab, GenericModel.LC_1, xab.getDiagramId());
     createSubComponent(xab, GenericModel.LC_2, GenericModel.LC_1);

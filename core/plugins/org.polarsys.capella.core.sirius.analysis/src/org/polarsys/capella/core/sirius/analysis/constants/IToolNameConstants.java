@@ -1182,6 +1182,7 @@ public interface IToolNameConstants {
   String TOOL_PAB_INSERT_REMOVE_EXCHANGE_CATEGORIES = "Switch Functional Exchanges / Categories"; //$NON-NLS-1$
   String TOOL_PAB_INSERT_SCENARIO_ELEMENTS = TOOL_LAB_INSERT_SCENARIO_ELEMENTS;
   String TOOL_PAB_INSERT_STATEMODE_ELEMENTS = TOOL_LAB_INSERT_STATEMODE_ELEMENTS;
+  String TOOL_PAB_INSERT_REMOVE_COMPONENT_PORT_ALLOCATION = "Component Port Allocations";
 
   // Unsynchronized tools
   String TOOL_PAB_INSERT_REMOVE_PORTS = "Ports"; //$NON-NLS-1$
@@ -1489,7 +1490,6 @@ public interface IToolNameConstants {
   String TOOL_XAB_SHOW_HIDE_COMPONENTS = "Show/Hide Components"; //$NON-NLS-1$
   String TOOL_XAB_INSERT_REMOVE_COMPONENTS_MONOPART = "Insert/Remove Components mono part"; //$NON-NLS-1$
   String TOOL_PAB_INSERT_REMOVE_COMPONENTS_MONOPART = "Insert/remove Components mono part"; //$NON-NLS-1$
-  String TOOL_XAB_MANAGE_FUNCTION_ALLOCATION = "Manage Function Allocation"; //$NON-NLS-1$
 
   //
   // Representation Descriptions moved to IDiagramNameConstants
@@ -1519,4 +1519,41 @@ public interface IToolNameConstants {
   String TOOL_SCENARIO_MULTI_INSTANCEROLE_COMPONENT = "Add multiple lifelines for an existing Component"; //$NON-NLS-1$
   String TOOL_SCENARIO_MULTI_INSTANCEROLE_ACTOR = "Add multiple lifelines for an existing Actor"; //$NON-NLS-1$
   String TOOL_OES_MULTI_INSTANCEROLE_ENTITYACTOR = "Add multiple lifelines for an existing Entity / Actor"; //$NON-NLS-1$
+  
+  /*
+   * XAB
+   */
+  String TOOL_XAB_CREATE_PHYSICAL_LINK = "Physical Link"; //$NON-NLS-1$
+  String TOOL_XAB_CREATE_PHYSICAL_PORT = "Physical Port"; //$NON-NLS-1$
+  String TOOL_XAB_RECONNECT_PHYSICALLINK_SOURCE_ID = "Reconnect PhysicalLink Source"; //$NON-NLS-1$
+  String TOOL_XAB_RECONNECT_PHYSICALLINK_TARGET_ID = "Reconnect PhysicalLink Target"; //$NON-NLS-1$
+  String TOOL_XAB_SHOW_HIDE_PHYSICAL_LINK = "Show/Hide Physical Links"; //$NON-NLS-1$
+  String TOOL_XAB_CREATE_DELEGATION = "Delegation"; //$NON-NLS-1$
+  String TOOL_XAB_CREATE_COMPONENT_EXCHANGE_WITH_DELEGATIONS = "Component Exchange with Delegations"; //$NON-NLS-1$
+  String TOOL_XAB_CREATE_COMPONENT_EXCHANGE_WITH_PORTS = "Component Exchange with ports"; //$NON-NLS-1$
+  String TOOL_XAB_CREATE_COMPONENT_EXCHANGE_WITHOUT_PORTS = "Component Exchange without ports"; //$NON-NLS-1$
+  String TOOL_XAB_CREATE_COMPONENT_EXCHANGE_BETWEEN_TYPES = "Component Exchange between types"; //$NON-NLS-1$
+  String TOOL_XAB_CREATE_FUNCTIONAL_EXCHANGE = "Functional Exchange"; //$NON-NLS-1$
+  String TOOL_XAB_CREATE_INFLOW_PORT = "In Flow Port"; //$NON-NLS-1$
+  String TOOL_XAB_CREATE_OUTFLOW_PORT = "Out Flow Port"; //$NON-NLS-1$
+  String TOOL_XAB_CREATE_INOUT_FLOW_PORT = "InOut Flow Port"; //$NON-NLS-1$
+  String TOOL_XAB_CREATE_STANDARD_PORT = "Standard Port"; //$NON-NLS-1$
+  String TOOL_XAB_INSERT_ACTOR = "Show/Hide Actors"; //$NON-NLS-1$
+  String TOOL_XAB_CREATE_FUNCTION_INPUT_PORT = "Input Port"; //$NON-NLS-1$
+  String TOOL_XAB_CREATE_FUNCTION_OUTPUT_PORT = "Output Port"; //$NON-NLS-1$
+  String TOOL_XAB_CREATE_PORT_ALLOCATION = "Port Allocation"; //$NON-NLS-1$
+  String TOOL_XAB_INSERT_REMOVE_PORT_ALLOCATION = "Port Allocations"; //$NON-NLS-1$
+  String TOOL_XAB_CREATE_DUPLICATE = "Duplicate"; //$NON-NLS-1$
+  String TOOL_XAB_CREATE_GATHER = "Gather"; //$NON-NLS-1$
+  String TOOL_XAB_CREATE_ROUTE = "Route"; //$NON-NLS-1$
+  String TOOL_XAB_CREATE_SELECT = "Select"; //$NON-NLS-1$
+  String TOOL_XAB_CREATE_SPLIT = "Split"; //$NON-NLS-1$
+  String TOOL_XAB_MANAGE_FUNCTION_ALLOCATION = "Manage Function Allocation"; //$NON-NLS-1$
+  String TOOL_XAB_INSERT_REMOVE_EXCHANGE_CATEGORIES = "Switch Functional Exchanges / Categories"; //$NON-NLS-1$
+  String TOOL_XAB_INSERT_REMOVE_FUNCTIONAL_CHAINS = "Functional Chains"; //$NON-NLS-1$
+  String TOOL_XAB_INSERT_REMOVE_FUNCTION_PORTS = "Function Ports"; //$NON-NLS-1$
+  String TOOL_XAB_INSERT_REMOVE_CATEGORIES = "Categories"; //$NON-NLS-1$
+  String TOOL_XAB_INSERT_ELEMENTS_FROM_SCENARIO = "Elements from Scenario"; //$NON-NLS-1$
+  String TOOL_XAB_INSERT_FUNCTIONS_FROM_MODE_STATE = "Functions from Mode / State"; //$NON-NLS-1$
+  String TOOL_XAB_INSERT_REMOVE_PHYSICAL_PATH = "Show/Hide Physical Path"; //$NON-NLS-1$
 }
