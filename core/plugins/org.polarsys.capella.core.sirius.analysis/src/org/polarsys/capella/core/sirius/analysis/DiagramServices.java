@@ -655,10 +655,11 @@ public class DiagramServices {
    *          the semantic target
    * @return a stream containing elements for the diagram target that have the specified semantic target.
    */
-  protected Stream<DSemanticDecorator> getDiagramElementsStream(DRepresentation diagramTarget, EObject semanticTarget) {
+  protected Stream<DDiagramElement> getDiagramElementsStream(DRepresentation diagramTarget, EObject semanticTarget) {
     Session session = SessionManager.INSTANCE.getSession(semanticTarget);
     return session.getSemanticCrossReferencer().getInverseReferences(semanticTarget).stream()
-        .filter(isValidTargetFeature()).map(setting -> (DSemanticDecorator) setting.getEObject())
+        .filter(isValidTargetFeature()).filter(setting -> setting.getEObject() instanceof DDiagramElement)
+        .map(setting -> (DDiagramElement) setting.getEObject())
         .filter(decorator -> diagramTarget.equals(DiagramHelper.getService().getRepresentation(decorator)));
   }
 
@@ -671,7 +672,7 @@ public class DiagramServices {
    *          the semantic target
    * @return the element on the diagram target that has the semantic target.
    */
-  public EObject getDiagramElement(DDiagram diagramTarget, EObject semanticTarget) {
+  public DDiagramElement getDiagramElement(DDiagram diagramTarget, EObject semanticTarget) {
     return getDiagramElementsStream(diagramTarget, semanticTarget).findFirst().orElse(null);
   }
 
