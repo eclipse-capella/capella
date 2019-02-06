@@ -53,10 +53,16 @@ import org.polarsys.capella.core.sirius.analysis.FunctionalChainServices;
 import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
 import org.polarsys.capella.core.sirius.analysis.IMappingNameConstants;
 import org.polarsys.capella.core.sirius.analysis.PhysicalServices;
+import org.polarsys.capella.core.sirius.analysis.constants.IFilterNameConstants;
 import org.polarsys.capella.core.sirius.analysis.constants.MappingConstantsHelper;
+import org.polarsys.capella.core.sirius.analysis.helpers.FilterHelper;
 import org.polarsys.capella.core.sirius.analysis.tool.HashMapSet;
 
 public class ComponentArchitectureBlankRefreshExtension extends AbstractRefreshExtension implements IRefreshExtension {
+
+  private final List<String> monitoredFilters = Arrays.asList(IMappingNameConstants.HIDE_CE_BY_DELEGATION,
+      IMappingNameConstants.HIDE_CE_BY_GROUP, IMappingNameConstants.HIDE_CE_BY_GROUP_ORIENTED,
+      IFilterNameConstants.FILTER_XAB_HIDE_COMPUTED_CE, IFilterNameConstants.FILTER_XAB_HIDE_COMPUTED_PL);
 
   /**
    * @see org.eclipse.sirius.business.api.refresh.IRefreshExtension#beforeRefresh(org.eclipse.sirius.DDiagram)
@@ -64,6 +70,13 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractRefreshE
   public void beforeRefresh(DDiagram diagram) {
 
     DRepresentationDescriptor descriptor = RepresentationHelper.getRepresentationDescriptor(diagram);
+
+    // -------------------------------------
+    // Monitor some filters desactivation
+    // -------------------------------------
+
+    FilterHelper.monitorDesactivation(monitoredFilters, descriptor);
+
     Collection<EObject> contextualElements = ContextualDiagramHelper.getService().getContextualElements(descriptor);
 
     // -------------------------------------

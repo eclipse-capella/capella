@@ -230,10 +230,13 @@ public interface IFilterNameConstants {
   String FILTER_LAB_HIDE_SIMPLIFIED_GROUP_OF_COMPONENT_EXCHANGES_ID = "Hide Simplified Group of Component Exchanges"; //$NON-NLS-1$
   String FILTER_LAB_HIDE_SIMPLIFIED_ORIENTED_GROUPED_COMPONENT_EXCHANGES = "Hide Simplified Oriented Grouped Component Exchanges"; //$NON-NLS-1$
   String FILTER_LAB_HIDE_PHYSICAL_LINKS_NAME = "Hide Physical Links names"; //$NON-NLS-1$
-  String FILTER_LAB_HIDE_COMPUTED_CE = "Hide Computed Component Exchanges"; //$NON-NLS-1$
-  String FILTER_LAB_HIDE_COMPUTED_PL = "Hide Computed Physical Links"; //$NON-NLS-1$
 
-  
+  String FILTER_XAB_HIDE_COMPUTED_CE = "Hide Computed Component Exchanges"; //$NON-NLS-1$
+  String FILTER_XAB_HIDE_COMPUTED_PL = "Hide Computed Physical Links"; //$NON-NLS-1$
+
+  String FILTER_LAB_HIDE_COMPUTED_CE = FILTER_XAB_HIDE_COMPUTED_CE;
+  String FILTER_LAB_HIDE_COMPUTED_PL = FILTER_XAB_HIDE_COMPUTED_PL;
+
   // filter id
   String FILTER_LAB_HIDE_COMPONENT_EXCHANGES_ID = "Hide Connections"; //$NON-NLS-1$
   String FILTER_LAB_HIDE_PORT_ALLOCATIONS_ID = "Hide Port Realizations"; //$NON-NLS-1$
@@ -463,8 +466,8 @@ public interface IFilterNameConstants {
   String FILTER_PAB_HIDE_SIMPLIFIED_GROUP_OF_COMPONENT_EXCHANGES_ID = "Hide Simplified Group of Component Exchanges"; //$NON-NLS-1$
   String FILTER_PAB_HIDE_PORT_REALIZATIONS_ID = "Hide Port Realizations"; //$NON-NLS-1$
   String FILTER_PAB_HIDE_SIMPLIFIED_ORIENTED_GROUPED_COMPONENT_EXCHANGES = "Hide Simplified Oriented Grouped Component Exchanges"; //$NON-NLS-1$
-  String FILTER_PAB_HIDE_COMPUTED_CE = "Hide Computed Component Exchanges"; //$NON-NLS-1$
-  String FILTER_PAB_HIDE_COMPUTED_PL = "Hide Computed Physical Links"; //$NON-NLS-1$
+  String FILTER_PAB_HIDE_COMPUTED_CE = FILTER_XAB_HIDE_COMPUTED_CE;
+  String FILTER_PAB_HIDE_COMPUTED_PL = FILTER_XAB_HIDE_COMPUTED_PL;
 
   // filter id
   String FILTER_PAB_HIDE_COMPONENT_EXCHANGES_ID = "Hide Connections"; //$NON-NLS-1$

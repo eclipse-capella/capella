@@ -43,7 +43,6 @@ import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
 import org.eclipse.sirius.diagram.AbstractDNode;
-import org.eclipse.sirius.diagram.AppliedCompositeFilters;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
@@ -54,14 +53,12 @@ import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
 import org.eclipse.sirius.diagram.EdgeTarget;
-import org.eclipse.sirius.diagram.GraphicalFilter;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.IEdgeMapping;
 import org.eclipse.sirius.diagram.description.NodeMapping;
-import org.eclipse.sirius.diagram.description.filter.CompositeFilterDescription;
 import org.eclipse.sirius.diagram.description.filter.FilterDescription;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 import org.eclipse.sirius.viewpoint.DRepresentation;
@@ -211,6 +208,7 @@ import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin
 import org.polarsys.capella.core.model.utils.CapellaLayerCheckingExt;
 import org.polarsys.capella.core.sirius.analysis.constants.IFilterNameConstants;
 import org.polarsys.capella.core.sirius.analysis.constants.MappingConstantsHelper;
+import org.polarsys.capella.core.sirius.analysis.helpers.FilterHelper;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
@@ -3056,6 +3054,13 @@ public class CsServices {
   public boolean isValidComponentExchangeByGroupOrientedEdge(EObject semantic, DSemanticDecorator source,
       DSemanticDecorator target) {
 
+    DDiagram diagram = CapellaServices.getService().getDiagramContainer(source);
+    DRepresentationDescriptor descriptor = RepresentationHelper.getRepresentationDescriptor(diagram);
+    // check the activation of the filters
+    if (!FilterHelper.isDesactivatedOnce(IMappingNameConstants.HIDE_CE_BY_GROUP_ORIENTED, descriptor)) {
+      return false;
+    }
+
     // Retrieve the first correct semantic element between both elements
     Collection<CapellaElement> result = getComponentExchangeByGroupOrientedSemanticElts(source.getTarget(), source,
         target);
@@ -3072,16 +3077,6 @@ public class CsServices {
       }
     }
 
-    DDiagram diagram = CapellaServices.getService().getDiagramContainer(source);
-    // check the activation of the filters
-    if (diagram != null) {
-      for (FilterDescription filter : diagram.getActivatedFilters()) {
-        if (IMappingNameConstants.HIDE_CE_BY_GROUP_ORIENTED.equals(filter.getName())
-            && isFirstFilterActive(filter, diagram)) {
-          return false;
-        }
-      }
-    }
     return true;
   }
 
@@ -3096,6 +3091,12 @@ public class CsServices {
    */
   public boolean isValidComponentExchangeByGroupEdge(EObject communication, DSemanticDecorator source,
       DSemanticDecorator target) {
+
+    DDiagram diagram = CapellaServices.getService().getDiagramContainer(source);
+    DRepresentationDescriptor descriptor = RepresentationHelper.getRepresentationDescriptor(diagram);
+    if (!FilterHelper.isDesactivatedOnce(IMappingNameConstants.HIDE_CE_BY_GROUP, descriptor)) {
+      return false;
+    }
 
     EObject semantic = communication;
     // Retrieve the first correct semantic element between both elements
@@ -3118,36 +3119,19 @@ public class CsServices {
       }
     }
 
-    DDiagram diagram = CapellaServices.getService().getDiagramContainer(source);
-    // check the activation of the filters
-    if (diagram != null) {
-      for (FilterDescription filter : diagram.getActivatedFilters()) {
-        if (IMappingNameConstants.HIDE_CE_BY_GROUP.equals(filter.getName()) && isFirstFilterActive(filter, diagram)) {
-          return false;
-        }
-      }
-    }
     return true;
   }
 
   /**
    * Returns true whether the filter has been activated at least one time. Until the filter has not yet been activated,
    * edges are not created
+   * 
+   * @deprecated the description is not clear. Use FilterHelper.isDesactivatedOnce
    */
+  @Deprecated
   public boolean isFirstFilterActive(FilterDescription filter, DDiagram diagram) {
-    if (filter instanceof CompositeFilterDescription) {
-      for (DEdge edge : diagram.getEdges()) {
-        if (!edge.getGraphicalFilters().isEmpty()) {
-          for (GraphicalFilter appliedFilter : edge.getGraphicalFilters()) {
-            if (appliedFilter instanceof AppliedCompositeFilters
-                && ((AppliedCompositeFilters) appliedFilter).getCompositeFilterDescriptions().contains(filter)) {
-              return false;
-            }
-          }
-        }
-      }
-    }
-    return true;
+    DRepresentationDescriptor descriptor = RepresentationHelper.getRepresentationDescriptor(diagram);
+    return FilterHelper.isDesactivatedOnce(filter.getName(), descriptor);
   }
 
   /**
@@ -3168,22 +3152,17 @@ public class CsServices {
       return false;
     }
 
+    DDiagram diagram = CapellaServices.getService().getDiagramContainer(source);
+    DRepresentationDescriptor descriptor = RepresentationHelper.getRepresentationDescriptor(diagram);
+    if (!FilterHelper.isDesactivatedOnce(IMappingNameConstants.HIDE_CE_BY_DELEGATION, descriptor)) {
+      return false;
+    }
+
     Collection<? extends EObject> semantics = getComponentExchangeByDelegationSemantics(communication, source, target);
 
     // We needs to recompute this, sirius make supposition, if no semanticElements, semanticElements = target...
     if (semantics.isEmpty()) {
       return false;
-    }
-
-    DDiagram diagram = CapellaServices.getService().getDiagramContainer(source);
-    // check the activation of the filters
-    if (diagram != null) {
-      for (FilterDescription filter : diagram.getActivatedFilters()) {
-        if (IMappingNameConstants.HIDE_CE_BY_DELEGATION.equals(filter.getName())
-            && isFirstFilterActive(filter, diagram)) {
-          return false;
-        }
-      }
     }
 
     if (source instanceof EdgeTarget) {
@@ -6413,7 +6392,7 @@ public class CsServices {
     // Case 2
     return isValidComputedLink(communication, pl.getSourcePhysicalPort(), pl.getTargetPhysicalPort(), sourceView,
         targetView, IMappingNameConstants.LAB_COMPUTED_PHYSICAL_LINK, IMappingNameConstants.PAB_COMPUTED_PHYSICAL_LINK,
-        IFilterNameConstants.FILTER_LAB_HIDE_COMPUTED_PL, IFilterNameConstants.FILTER_PAB_HIDE_COMPUTED_PL);
+        IFilterNameConstants.FILTER_XAB_HIDE_COMPUTED_PL);
   }
 
   public boolean isValidComputedComponentExchangeEdge(EObject communication, DSemanticDecorator sourceView,
@@ -6456,7 +6435,7 @@ public class CsServices {
     // Case 5
     return isValidComputedLink(communication, ce.getSourcePort(), ce.getTargetPort(), sourceView, targetView,
         IMappingNameConstants.LAB_COMPUTED_COMPONENT_EXCHANGE, IMappingNameConstants.PAB_COMPUTED_COMPONENT_EXCHANGE,
-        IFilterNameConstants.FILTER_LAB_HIDE_COMPUTED_CE, IFilterNameConstants.FILTER_PAB_HIDE_COMPUTED_CE);
+        IFilterNameConstants.FILTER_XAB_HIDE_COMPUTED_CE);
   }
 
   /**
@@ -6465,7 +6444,7 @@ public class CsServices {
    */
   private boolean isValidComputedLink(EObject communication, Port sourcePort, Port targetPort,
       DSemanticDecorator sourceView, DSemanticDecorator targetView, String labMappingName, String pabMappingName,
-      String labFilterName, String pabFilterName) {
+      String filterName) {
 
     EObject source = sourceView.getTarget();
     EObject target = targetView.getTarget();
@@ -6481,6 +6460,13 @@ public class CsServices {
     }
 
     // Case 3
+    DDiagram diagram = CapellaServices.getService().getDiagramContainer(sourceView);
+    DRepresentationDescriptor descriptor = RepresentationHelper.getRepresentationDescriptor(diagram);
+    if (!FilterHelper.isDesactivatedOnce(filterName, descriptor)) {
+      return false;
+    }
+
+    // Case 4
     if (source instanceof Port && target instanceof Part) {
       Part targetPart = (Part) target;
       AbstractType sourceComponent = (AbstractType) source.eContainer();
@@ -6499,7 +6485,7 @@ public class CsServices {
       }
     }
 
-    // Case 4
+    // Case 5
     if (source instanceof Part && target instanceof Port) {
       Part sourcePart = (Part) source;
       AbstractType sourceComponent = sourcePart.getAbstractType();
@@ -6519,7 +6505,7 @@ public class CsServices {
       }
     }
 
-    // Case 5
+    // Case 6
     if (source instanceof Part && target instanceof Part) {
       Part sourcePart = (Part) source;
       Part targetPart = (Part) target;
@@ -6544,7 +6530,6 @@ public class CsServices {
       }
     }
 
-    DDiagram diagram = CapellaServices.getService().getDiagramContainer(sourceView);
     if (diagram != null) {
       DSemanticDecorator sourceElement = sourceView;
       DSemanticDecorator targetElement = targetView;
@@ -6554,7 +6539,7 @@ public class CsServices {
       if (targetElement.getTarget() instanceof Port) {
         targetElement = (DSemanticDecorator) targetElement.eContainer();
       }
-      // Case 6
+      // Case 7
       Collection<DSemanticDecorator> elements = DiagramServices.getDiagramServices().getDiagramElements(diagram,
           communication);
       for (DSemanticDecorator view : elements) {
@@ -6595,15 +6580,6 @@ public class CsServices {
             if (hasSrc && hasTrgt) {
               return false;
             }
-          }
-        }
-      }
-
-      // Case 7
-      for (FilterDescription filter : diagram.getActivatedFilters()) {
-        if (labFilterName.equals(filter.getName()) || pabFilterName.equals(filter.getName())) {
-          if (isFirstFilterActive(filter, diagram)) {
-            return false;
           }
         }
       }
