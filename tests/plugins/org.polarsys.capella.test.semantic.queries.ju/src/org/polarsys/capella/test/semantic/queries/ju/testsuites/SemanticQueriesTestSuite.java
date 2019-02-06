@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2018, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,6 +18,7 @@ import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.AbstractFunction_mother_activity_allocation;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.AbstractFunction_mother_function_allocation;
+import org.polarsys.capella.test.semantic.queries.ju.testcases.AbstractStateParentActiveElements;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.AbstractTypeTypingElements;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.AvailableForTypeClassExistTest;
 import org.polarsys.capella.test.semantic.queries.ju.testcases.CapabilityExtendedCapabilities;
@@ -138,6 +139,7 @@ public class SemanticQueriesTestSuite extends BasicTestSuite {
     tests.add(new SequenceMessageFunctionTarget());
     tests.add(new SequenceMessagePartSource());
     tests.add(new SequenceMessagePartTarget());
+    tests.add(new AbstractStateParentActiveElements());
     
     return tests;
   }

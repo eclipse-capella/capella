@@ -2044,6 +2044,23 @@
       </category>
       
       <category
+            id="org.polarsys.capella.core.semantic.queries.AbstractStateParentActiveElements"
+            isTopLevel="true"
+            name="Active Elements (computed)">
+         <targetBrowserId
+               id="ReferencingElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.AbstractStateParentActiveElements">
+            </basicQuery>
+         </categoryQuery>
+         <availableForType
+                     class="org.polarsys.capella.core.data.capellacommon.State">
+         </availableForType>
+      </category>
+      
+      <category
             id="org.polarsys.capella.core.semantic.queries.InstanceRole_representedInstance"
             isTopLevel="true"
             name="Represented Instance">
