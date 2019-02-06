@@ -333,8 +333,10 @@ public class CsServices {
 
     DRepresentationDescriptor descriptor = RepresentationHelper.getRepresentationDescriptor(diagram);
 
-    for (DRepresentationDescriptor representationDescriptor : DialectManager.INSTANCE.getAllRepresentationDescriptors(session)) {
-      if (handler.isRealizable(representationDescriptor, descriptor) && !scope.contains(representationDescriptor.getRepresentation())) {
+    for (DRepresentationDescriptor representationDescriptor : DialectManager.INSTANCE
+        .getAllRepresentationDescriptors(session)) {
+      if (handler.isRealizable(representationDescriptor, descriptor)
+          && !scope.contains(representationDescriptor.getRepresentation())) {
         scope.add(representationDescriptor.getRepresentation());
       }
     }
@@ -2508,6 +2510,26 @@ public class CsServices {
     return null;
   }
 
+  /**
+   * Returns the component type for the target.
+   * 
+   * @param target
+   *          the target.
+   * @return the component type for the target.
+   */
+  public EObject getComponentType(EObject target) {
+
+    if (target instanceof Component) {
+      return getComponentType((Component) target);
+    } else if (target instanceof Port) {
+      return getComponentType((Port) target);
+    } else if (target instanceof Part) {
+      return getComponentType((Part) target);
+    }
+
+    return null;
+  }
+
   @Deprecated
   // Replaced by getComponentType
   public EObject getRelatedComponent(Part element) {
@@ -3250,11 +3272,12 @@ public class CsServices {
     }
     return false;
   }
-  
-  public boolean isComponentExchangeCategoryEdgeDisplayed(ComponentExchange exchange, DSemanticDecorator source, DSemanticDecorator target) {
+
+  public boolean isComponentExchangeCategoryEdgeDisplayed(ComponentExchange exchange, DSemanticDecorator source,
+      DSemanticDecorator target) {
     Set<DEdge> edgesOfSource = getEdgesOnOwnedBoderedNodesOfContainer(source);
     Set<DEdge> edgesOfTarget = getEdgesOnOwnedBoderedNodesOfContainer(target);
-    
+
     if (edgesOfTarget.isEmpty() || edgesOfSource.isEmpty()) {
       return false;
     }
@@ -3311,13 +3334,14 @@ public class CsServices {
    * Returns whether the edge is the edge which should be displayed for a Connection.
    */
   public boolean isValidPhysicalLinkEdge(PhysicalLink link, DSemanticDecorator source, DSemanticDecorator target) {
-    return isValidLinkEdge(getPhysicalLinkWrapper(link), source, target, true) && !isPhysicalCategoryEdgeDisplayed(link, source, target);
+    return isValidLinkEdge(getPhysicalLinkWrapper(link), source, target, true)
+        && !isPhysicalCategoryEdgeDisplayed(link, source, target);
   }
-  
-  public boolean isPhysicalCategoryEdgeDisplayed(PhysicalLink link, DSemanticDecorator source, DSemanticDecorator target) {
+
+  public boolean isPhysicalCategoryEdgeDisplayed(PhysicalLink link, DSemanticDecorator source,
+      DSemanticDecorator target) {
     Set<DEdge> edgesOfSource = getEdgesOnOwnedBoderedNodesOfContainer(source);
     Set<DEdge> edgesOfTarget = getEdgesOnOwnedBoderedNodesOfContainer(target);
-    
 
     if (edgesOfTarget.isEmpty() || edgesOfSource.isEmpty()) {
       return false;
@@ -4785,7 +4809,7 @@ public class CsServices {
         new DDiagramContents(CapellaServices.getService().getDiagramContainer(currentElementView)));
     return currentElementView;
   }
-  
+
   public EObject showABComponentPortAllocations(Collection<EObject> contextualComponentPortAllocations,
       DSemanticDecorator currentElementView) {
     ABServices.getService().showABComponentPortAllocations(contextualComponentPortAllocations,
@@ -4852,7 +4876,7 @@ public class CsServices {
   public EObject hideABPortAllocations(EObject portAllocationToHide, DSemanticDecorator currentElementView) {
     return hideABPortAllocations(Collections.singleton(portAllocationToHide), currentElementView);
   }
-  
+
   /**
    * Display a component in the best container (display deployment in their deploying component) used in context,
    * logical, oa, physical
@@ -5867,39 +5891,39 @@ public class CsServices {
 
     if (!dDiagram.isSynchronized() && null != constaintEdgeMapping && null != constraintNode) {
       // create constriantElementLink does not exist in diagram
-        EObject target = constraintNode.getTarget();
-        if (target instanceof Constraint) {
-          Constraint cst = (Constraint) target;
-          EList<ModelElement> constrainedElements = cst.getConstrainedElements();
-          for (ModelElement modelElement : constrainedElements) {
-            // for all the constraintElements of the constraint in the diagram
-            // check if there is any edge, if not create one
-            if (diagramServices.isOnDiagram(dDiagram, modelElement)) {
-              EList<DEdge> outgoingEdges = constraintNode.getOutgoingEdges();
-              boolean edgeExist = false;
-              for (DEdge dEdge : outgoingEdges) {
-                EdgeTarget edgeTargetNode = dEdge.getTargetNode();
-                if (null != edgeTargetNode) {
-                  EObject edgeTargetNodeTarget = ((DDiagramElement) edgeTargetNode).getTarget();
-                  // check if edge exist between 'modelElement' and given Constraint
-                  if ((null != edgeTargetNodeTarget) && edgeTargetNodeTarget.equals(modelElement)) {
-                    // no need to create an edge
-                    edgeExist = true;
-                    break;
-                  }
+      EObject target = constraintNode.getTarget();
+      if (target instanceof Constraint) {
+        Constraint cst = (Constraint) target;
+        EList<ModelElement> constrainedElements = cst.getConstrainedElements();
+        for (ModelElement modelElement : constrainedElements) {
+          // for all the constraintElements of the constraint in the diagram
+          // check if there is any edge, if not create one
+          if (diagramServices.isOnDiagram(dDiagram, modelElement)) {
+            EList<DEdge> outgoingEdges = constraintNode.getOutgoingEdges();
+            boolean edgeExist = false;
+            for (DEdge dEdge : outgoingEdges) {
+              EdgeTarget edgeTargetNode = dEdge.getTargetNode();
+              if (null != edgeTargetNode) {
+                EObject edgeTargetNodeTarget = ((DDiagramElement) edgeTargetNode).getTarget();
+                // check if edge exist between 'modelElement' and given Constraint
+                if ((null != edgeTargetNodeTarget) && edgeTargetNodeTarget.equals(modelElement)) {
+                  // no need to create an edge
+                  edgeExist = true;
+                  break;
                 }
               }
-              if (!edgeExist) {
-                // get TargetView for the edge
-                EObject diagramElement = diagramServices.getDiagramElement(dDiagram, modelElement);
-                if (null != diagramElement) {
-                  // create an edge
-                  diagramServices.createEdge(constaintEdgeMapping, constraintNode, (EdgeTarget) diagramElement, target);
-                }
+            }
+            if (!edgeExist) {
+              // get TargetView for the edge
+              EObject diagramElement = diagramServices.getDiagramElement(dDiagram, modelElement);
+              if (null != diagramElement) {
+                // create an edge
+                diagramServices.createEdge(constaintEdgeMapping, constraintNode, (EdgeTarget) diagramElement, target);
               }
             }
           }
         }
+      }
     }
   }
 

@@ -111,10 +111,14 @@ public class PartExt {
   public static List<Part> getSubUsedAndDeployedParts(Part part) {
     List<Part> result = new ArrayList<Part>();
     result.addAll(PartExt.getDeployedParts(part));
-    if(part.getAbstractType() != null){
-      result.addAll(ComponentExt.getSubParts(((Component) part.getAbstractType())));      
+    if (part.getAbstractType() != null) {
+      result.addAll(ComponentExt.getSubParts(((Component) part.getAbstractType())));
     }
     return result;
+  }
+
+  public static List<Component> getSubUsedAndDeployedComponentsOfPart(Part part) {
+    return getComponentsOfParts(getSubUsedAndDeployedParts(part));
   }
 
   public static List<DeployableElement> getDeployedElements(Part part) {
