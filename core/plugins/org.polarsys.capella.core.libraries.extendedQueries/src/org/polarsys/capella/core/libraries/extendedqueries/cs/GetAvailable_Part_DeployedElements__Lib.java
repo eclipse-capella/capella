@@ -32,6 +32,7 @@ import org.polarsys.capella.core.libraries.model.CapellaModel;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
+import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
 import org.polarsys.capella.core.queries.helpers.QueryExt;
 
 public class GetAvailable_Part_DeployedElements__Lib extends AbstractQuery {
@@ -40,13 +41,14 @@ public class GetAvailable_Part_DeployedElements__Lib extends AbstractQuery {
   @Override
   public List<Object> execute(Object input, IQueryContext context) {
     Part currentPart = (Part) input;
-    List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
+    List<CapellaElement> availableElements = new ArrayList<>(1);
     Collection<Part> parts = ComponentExt.getPartAncestors(currentPart);
     AbstractType abstractType = currentPart.getAbstractType();
 
     IModel currentProject =  ILibraryManager.INSTANCE.getModel(currentPart);
     BlockArchitecture block = BlockArchitectureExt.getRootBlockArchitecture(currentPart);
     Collection<IModel> libraries = LibraryManagerExt.getAllActivesReferences(currentProject);
+    boolean isMultipleDeploymentAllowed = CapellaModelPreferencesPlugin.getDefault().isMultipleDeploymentAllowed();
     for (IModel library : libraries) {
       CapellaElement correspondingInput = (CapellaElement) QueryExt.getCorrespondingElementInLibrary(block, (CapellaModel) library);
       if ((null != abstractType) && ((abstractType instanceof PhysicalComponent) || (abstractType instanceof PhysicalActor))) {
@@ -57,13 +59,13 @@ public class GetAvailable_Part_DeployedElements__Lib extends AbstractQuery {
             if (!(currentPC.getNature().equals(PhysicalComponentNature.BEHAVIOR) && physicalComponent.getNature().equals(PhysicalComponentNature.NODE))
                 && !(currentPC.getNature().equals(PhysicalComponentNature.UNSET)) && !(physicalComponent.getNature().equals(PhysicalComponentNature.UNSET))
                 && !physicalComponent.equals(currentPC)) {
-              getValidDeployablePart(availableElements, parts, physicalComponent, currentPart);
+              getValidDeployablePart(availableElements, parts, physicalComponent, currentPart, isMultipleDeploymentAllowed);
             }
           }
         } else if (abstractType instanceof PhysicalActor) {
           for (PhysicalComponent physicalComponent : behaviourComps) {
             if (!(physicalComponent.getNature().equals(PhysicalComponentNature.NODE)) && !(physicalComponent.getNature().equals(PhysicalComponentNature.UNSET))) {
-              getValidDeployablePart(availableElements, parts, physicalComponent, currentPart);
+              getValidDeployablePart(availableElements, parts, physicalComponent, currentPart, isMultipleDeploymentAllowed);
             }
           }
         }
@@ -72,8 +74,7 @@ public class GetAvailable_Part_DeployedElements__Lib extends AbstractQuery {
     return (List) availableElements;
   }
 
-  private void getValidDeployablePart(List<CapellaElement> availableElements, Collection<Part> parts, Component physicalComponent, Part currentPart) {
-    GetAvailable_Part_DeployedElements.getValidDeployablePart(availableElements, parts, physicalComponent, currentPart);
+  private void getValidDeployablePart(List<CapellaElement> availableElements, Collection<Part> parts, Component physicalComponent, Part currentPart, boolean isMultipleDeploymentAllowed) {
+    GetAvailable_Part_DeployedElements.getValidDeployablePart(availableElements, parts, physicalComponent, currentPart, isMultipleDeploymentAllowed);
   }
-
 }

@@ -21,33 +21,31 @@ import org.polarsys.capella.common.data.modellingcore.AbstractTypedElement;
 
 public class MDCHK_Component_Deployment extends AbstractValidationRule {
 
+  public boolean isMultipleDeploymentAllowed() {
+    return CapellaModelPreferencesPlugin.getDefault().isMultipleDeploymentAllowed();
+  }
 
-	  public boolean isMultipleDeploymentAllowed() {
-	    return CapellaModelPreferencesPlugin.getDefault().isMultipleDeploymentAllowed();
-	  }
-	  
-	@Override
-	public IStatus validate(IValidationContext ctx_p) {
-		PhysicalComponent pc = (PhysicalComponent) ctx_p.getTarget();
-		
-		// obvious case
-		if (isMultipleDeploymentAllowed()) 
-			return ctx_p.createSuccessStatus();
-		
-		// we are interested to part
-		int nbDeploy = 0;
-		for (AbstractTypedElement ate: pc.getAbstractTypedElements()) {
-			if (ate instanceof Part) {
-				Part part = (Part) ate;
-				nbDeploy += part.getDeployingLinks().size();
-			}
-			
-		}
-		if (nbDeploy > 1) {
-			return createFailureStatus(ctx_p, new Object[] { pc.getName() });
-		}
+  @Override
+  public IStatus validate(IValidationContext ctx) {
+    PhysicalComponent pc = (PhysicalComponent) ctx.getTarget();
 
-		return ctx_p.createSuccessStatus();		
-	}
+    // Obvious case
+    if (isMultipleDeploymentAllowed())
+      return ctx.createSuccessStatus();
 
+    // We are interested to part
+    int nbDeploy = 0;
+    for (AbstractTypedElement ate : pc.getAbstractTypedElements()) {
+      if (ate instanceof Part) {
+        Part part = (Part) ate;
+        nbDeploy += part.getDeployingLinks().size();
+      }
+
+    }
+    if (nbDeploy > 1) {
+      return ctx.createFailureStatus(pc.getName());
+    }
+
+    return ctx.createSuccessStatus();
+  }
 }

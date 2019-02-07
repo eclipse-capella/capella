@@ -35,9 +35,10 @@ public class GetAvailable_Part_DeployedElements extends AbstractQuery {
   @Override
   public List<Object> execute(Object input, IQueryContext context) {
     Part currentPart = (Part) input;
-    List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
+    List<CapellaElement> availableElements = new ArrayList<>(1);
     Collection<Part> parts = ComponentExt.getPartAncestors(currentPart);
     AbstractType abstractType = currentPart.getAbstractType();
+    boolean isMultipleDeploymentAllowed = CapellaModelPreferencesPlugin.getDefault().isMultipleDeploymentAllowed();
     if ((null != abstractType) && ((abstractType instanceof PhysicalComponent) || (abstractType instanceof PhysicalActor))) {
       List<PhysicalComponent> behaviourComps = SystemEngineeringExt.getAllPhysicalComponents((CapellaElement) abstractType);
       if (abstractType instanceof PhysicalComponent) {
@@ -46,13 +47,13 @@ public class GetAvailable_Part_DeployedElements extends AbstractQuery {
           if (!(currentPC.getNature().equals(PhysicalComponentNature.BEHAVIOR) && physicalComponent.getNature().equals(PhysicalComponentNature.NODE))
               && !(currentPC.getNature().equals(PhysicalComponentNature.UNSET)) && !(physicalComponent.getNature().equals(PhysicalComponentNature.UNSET))
               && !physicalComponent.equals(currentPC)) {
-            getValidDeployablePart(availableElements, parts, physicalComponent, currentPart);
+            getValidDeployablePart(availableElements, parts, physicalComponent, currentPart, isMultipleDeploymentAllowed);
           }
         }
       } else if (abstractType instanceof PhysicalActor) {
         for (PhysicalComponent physicalComponent : behaviourComps) {
           if (!(physicalComponent.getNature().equals(PhysicalComponentNature.NODE)) && !(physicalComponent.getNature().equals(PhysicalComponentNature.UNSET))) {
-            getValidDeployablePart(availableElements, parts, physicalComponent, currentPart);
+            getValidDeployablePart(availableElements, parts, physicalComponent, currentPart, isMultipleDeploymentAllowed);
           }
         }
       }
@@ -60,12 +61,12 @@ public class GetAvailable_Part_DeployedElements extends AbstractQuery {
     return (List) availableElements;
   }
 
-  public static void getValidDeployablePart(List<CapellaElement> availableElements, Collection<Part> parts, Component physicalComponent, Part currentPart) {
+  public static void getValidDeployablePart(List<CapellaElement> availableElements, Collection<Part> parts, Component physicalComponent, Part currentPart, boolean isMultipleDeploymentAllowed) {
     for (Partition partition :  physicalComponent.getRepresentingPartitions()) {
       if (partition instanceof Part) {
         Part part = (Part) partition;
         if (!parts.contains(part)) {
-          if (CapellaModelPreferencesPlugin.getDefault().isMultipleDeploymentAllowed()) {
+          if (isMultipleDeploymentAllowed) {
             availableElements.add(part);
           } else {
             boolean alreadyDeployedElsewhere = false;
@@ -83,6 +84,4 @@ public class GetAvailable_Part_DeployedElements extends AbstractQuery {
       }
     }
   }
-  
-
 }
