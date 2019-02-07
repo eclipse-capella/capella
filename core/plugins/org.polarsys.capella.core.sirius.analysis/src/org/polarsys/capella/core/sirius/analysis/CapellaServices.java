@@ -108,7 +108,6 @@ import org.polarsys.capella.core.data.capellacore.Structure;
 import org.polarsys.capella.core.data.capellacore.TypedElement;
 import org.polarsys.capella.core.data.cs.AbstractActor;
 import org.polarsys.capella.core.data.cs.AbstractDeploymentLink;
-import org.polarsys.capella.core.data.cs.ActorCapabilityRealizationInvolvement;
 import org.polarsys.capella.core.data.cs.Block;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
@@ -171,6 +170,7 @@ import org.polarsys.capella.core.data.la.LogicalActor;
 import org.polarsys.capella.core.data.la.LogicalActorPkg;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.oa.ActivityAllocation;
+import org.polarsys.capella.core.data.oa.Entity;
 import org.polarsys.capella.core.data.oa.OperationalActivity;
 import org.polarsys.capella.core.data.oa.OperationalCapability;
 import org.polarsys.capella.core.data.oa.Role;
@@ -189,6 +189,7 @@ import org.polarsys.capella.core.model.helpers.CapellaElementExt;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.ExchangeItemExt;
 import org.polarsys.capella.core.model.helpers.FunctionalChainExt;
+import org.polarsys.capella.core.model.helpers.PartExt;
 import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
 import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaDeleteCommand;
 import org.polarsys.capella.core.sirius.analysis.tool.StringUtil;
@@ -2178,14 +2179,117 @@ public class CapellaServices {
     return isAllocatedFunctionCommon(function, container, allocatedFunctions);
   }
 
+  /**
+   * Returns true if the function can be displayed in the container which has the specified target, false otherwise.
+   * 
+   * @param function
+   *          the function
+   * @param container
+   *          the container target
+   * @param containerView
+   *          the container view
+   * @return true if the function can be displayed in the container which has the specified target, false otherwise.
+   * 
+   *         TODO This function should have a more meaningfull name such as shouldFunctionBeDisplayed, the current
+   *         isAllocatedFunction name is confusing. This should be changed in a non patch version.
+   */
   public boolean isAllocatedFunction(AbstractFunction function, EObject container, DNodeContainer containerView) {
-    LinkedList<AbstractFunction> allocatedFunctions = new LinkedList<>();
+    EObject containerTarget;
 
-    List<AbstractFunction> showableFunctions = FaServices.getFaServices().getShowableAllocatedFunctions(container,
-        containerView);
-    allocatedFunctions.addAll(showableFunctions);
+    if (function instanceof OperationalActivity) {
+      containerTarget = container;
+    } else {
+      containerTarget = CsServices.getService().getComponentType(container);
+    }
 
-    return isAllocatedFunctionCommon(function, container, allocatedFunctions);
+    // contains allocation blocks and allocation roles
+    Set<EObject> allocationObjects = AbstractFunctionExt.getAllocationBlocks(function).stream()
+        .filter(EObject.class::isInstance).map(EObject.class::cast).collect(Collectors.toSet());
+
+    // function directly contained in the containerTarget
+    if (allocationObjects.contains(containerTarget)) {
+      return true;
+    }
+
+    // none of the allocation blocks must be in this container
+    // otherwise we could just display the function in the visible container
+    for (EObject allocationObject : allocationObjects) {
+      if (DiagramServices.getDiagramServices().isIndirectlyOnDiagram(containerView, allocationObject)) {
+        return false;
+      }
+    }
+
+    // all the allocation blocks are not in the container, analyze the subcomponents
+    Set<EObject> subComponents = new HashSet<>();
+    if (container instanceof Component) {
+      subComponents.addAll(ComponentExt.getSubUsedComponents((Component) container));
+
+      if (container instanceof Entity) {
+        subComponents.addAll(((Entity) container).getAllocatedRoles());
+      }
+    } else if (container instanceof Part) {
+      subComponents.addAll(PartExt.getSubUsedAndDeployedComponentsOfPart((Part) container));
+    }
+
+    // not a single allocation block is visible in the container, and at least one is a direct subcomponent of target
+    if (!Collections.disjoint(subComponents, allocationObjects)) {
+      return true;
+    }
+
+    // not a direct subcomponent -> compute the subproblem on hidden subcomponents and stop at first match
+    for (EObject subComponent : subComponents) {
+      boolean isOnDiagram = DiagramServices.getDiagramServices().isIndirectlyOnDiagram(containerView, subComponent);
+
+      if (!isOnDiagram && isAllocatedFunction(function, subComponent, containerView)) {
+        return true;
+      }
+    }
+
+    // none of the hidden subcomponents is a valid target -> analyze children functions
+    EList<AbstractFunction> subFunctions = function.getSubFunctions();
+
+    if (subFunctions.isEmpty()) {
+      return false;
+    }
+
+    // an element can be displayed in a container, if all of its children can be displayed in that container
+    // compute the subproblem on all children
+    for (AbstractFunction subFunction : subFunctions) {
+      if (!isAllocatedFunction(subFunction, container, containerView)) {
+        return false;
+      }
+    }
+
+    return true;
+  }
+
+  protected boolean isAllocatedFunctionCommon(AbstractFunction function, EObject container,
+      LinkedList<AbstractFunction> allocatedFunctions) {
+    boolean result = false;
+
+    // can be added after
+    if (container instanceof Role) {
+      Role role = (Role) container;
+      for (ActivityAllocation alloc : role.getOwnedActivityAllocations()) {
+        if (alloc.getTargetElement() instanceof AbstractFunction) {
+          AbstractFunction alfunc = (AbstractFunction) alloc.getTargetElement();
+          allocatedFunctions.add(alfunc);
+        }
+      }
+    }
+
+    if (allocatedFunctions.contains(function)) {
+      result = true;
+    } else if (!FunctionExt.isLeaf(function)) {
+      LinkedList<AbstractFunction> leaves = getLeaves(function);
+      LinkedList<AbstractFunction> allocatedLeaves = new LinkedList<>(leaves);
+      allocatedLeaves.retainAll(allocatedFunctions);
+      if (allocatedLeaves.size() == leaves.size()) {
+        result = true;
+      }
+    }
+
+    return result;
   }
 
   /**
@@ -2245,34 +2349,6 @@ public class CapellaServices {
       return true;
     }
     return false;
-  }
-
-  protected boolean isAllocatedFunctionCommon(AbstractFunction function, EObject container,
-      LinkedList<AbstractFunction> allocatedFunctions) {
-    boolean result = false;
-
-    if (container instanceof Role) {
-      Role role = (Role) container;
-      for (ActivityAllocation alloc : role.getOwnedActivityAllocations()) {
-        if (alloc.getTargetElement() instanceof AbstractFunction) {
-          AbstractFunction alfunc = (AbstractFunction) alloc.getTargetElement();
-          allocatedFunctions.add(alfunc);
-        }
-      }
-    }
-
-    if (allocatedFunctions.contains(function)) {
-      result = true;
-    } else if (!FunctionExt.isLeaf(function)) {
-      LinkedList<AbstractFunction> leaves = getLeaves(function);
-      LinkedList<AbstractFunction> allocatedLeaves = new LinkedList<>(leaves);
-      allocatedLeaves.retainAll(allocatedFunctions);
-      if (allocatedLeaves.size() == leaves.size()) {
-        result = true;
-      }
-    }
-
-    return result;
   }
 
   /**

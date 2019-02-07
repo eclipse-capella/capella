@@ -82,7 +82,9 @@ import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.SemanticBasedDecoration;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PlatformUI;
+import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.diagram.helpers.DiagramHelper;
 import org.polarsys.capella.core.diagram.helpers.naming.DiagramNamingConstants;
 import org.polarsys.capella.core.model.utils.CapellaLayerCheckingExt;
@@ -592,6 +594,34 @@ public class DiagramServices {
         return true;
       }
     }
+    return false;
+  }
+
+  /**
+   * Checks if an element is directly displayed on a diagram, or indirectly through the type of a Part.
+   * 
+   * @param diagramElement
+   *          the diagram element
+   * @param semanticTarget
+   *          the semantic target
+   * @return true if an element is directly displayed on a diagram, or indirectly through the type of a Part, false
+   *         otherwise.
+   */
+  public boolean isIndirectlyOnDiagram(DNodeContainer diagramElement, EObject semanticTarget) {
+    for (DDiagramElement element : diagramElement.getContainers()) {
+      EObject elementTarget = element.getTarget();
+      if (elementTarget != null && elementTarget.equals(semanticTarget)) {
+        return true;
+      }
+
+      if (elementTarget instanceof Part) {
+        AbstractType partType = ((Part) elementTarget).getAbstractType();
+        if (partType != null && partType.equals(semanticTarget)) {
+          return true;
+        }
+      }
+    }
+
     return false;
   }
 
