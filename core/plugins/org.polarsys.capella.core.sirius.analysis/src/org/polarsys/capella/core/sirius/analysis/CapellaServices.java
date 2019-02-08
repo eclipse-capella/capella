@@ -2222,7 +2222,7 @@ public class CapellaServices {
     // all the allocation blocks are not in the container, analyze the subcomponents
     Set<EObject> subComponents = new HashSet<>();
     if (container instanceof Component) {
-      subComponents.addAll(ComponentExt.getSubUsedComponents((Component) container));
+      subComponents.addAll(ComponentExt.getSubUsedAndDeployedComponents((Component) container));
 
       if (container instanceof Entity) {
         subComponents.addAll(((Entity) container).getAllocatedRoles());

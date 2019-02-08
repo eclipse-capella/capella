@@ -109,8 +109,11 @@ public class ComponentExt {
 
   /**
    * This method adds an interface implementation.
-   * @param component the component who will implement the interface
-   * @param interf the implemented interface
+   * 
+   * @param component
+   *          the component who will implement the interface
+   * @param interf
+   *          the implemented interface
    */
   public static void addImplementedInterface(Component component, Interface interf) {
     if ((component != null) && (interf != null)) {
@@ -164,8 +167,11 @@ public class ComponentExt {
 
   /**
    * This method adds an interface usage.
-   * @param component the component who will use the interface
-   * @param interf the used interface
+   * 
+   * @param component
+   *          the component who will use the interface
+   * @param interf
+   *          the used interface
    */
   public static void addUsedInterface(Component component, Interface interf) {
     if ((component != null) && (interf != null)) {
@@ -179,9 +185,13 @@ public class ComponentExt {
 
   /**
    * This method adds a communication link.
-   * @param component the component who will use the interface
-   * @param communicationLink the communication link
-   * @param isGenerated true if usage is generated, false otherwise
+   * 
+   * @param component
+   *          the component who will use the interface
+   * @param communicationLink
+   *          the communication link
+   * @param isGenerated
+   *          true if usage is generated, false otherwise
    */
   public static void addCommunicationLink(Component component, CommunicationLink communicationLink) {
     if ((component != null) && (communicationLink != null)) {
@@ -213,6 +223,7 @@ public class ComponentExt {
 
   /**
    * Return all exchange items allocated by all functions port of the given component
+   * 
    * @param component
    * @return componentFunctionExchangeItems
    */
@@ -220,15 +231,19 @@ public class ComponentExt {
     Set<AbstractExchangeItem> componentFunctionExchangeItems = new HashSet<AbstractExchangeItem>();
     Set<AbstractFunction> allocatedFunctions = (Set<AbstractFunction>) ComponentExt.getAllocatedFunctions(component);
     for (AbstractFunction abstractFunction : allocatedFunctions) {
-      componentFunctionExchangeItems = (Set<AbstractExchangeItem>) AbstractFunctionExt.getAllExchangeItems(abstractFunction);
+      componentFunctionExchangeItems = (Set<AbstractExchangeItem>) AbstractFunctionExt
+          .getAllExchangeItems(abstractFunction);
     }
     return componentFunctionExchangeItems;
   }
 
   /**
    * This method removes an exchange item realization.
-   * @param component the component who is using the interface
-   * @param communicationLink the communication link
+   * 
+   * @param component
+   *          the component who is using the interface
+   * @param communicationLink
+   *          the communication link
    */
   public static void removeCommunicationLink(Component component, CommunicationLink communicationLink) {
     CommunicationLink link = null;
@@ -236,7 +251,8 @@ public class ComponentExt {
       ListIterator<CommunicationLink> it = component.getOwnedCommunicationLinks().listIterator();
       while (it.hasNext()) {
         CommunicationLink lnk = it.next();
-        if (lnk.getExchangeItem().equals(communicationLink.getExchangeItem()) && lnk.getProtocol().equals(communicationLink.getProtocol())
+        if (lnk.getExchangeItem().equals(communicationLink.getExchangeItem())
+            && lnk.getProtocol().equals(communicationLink.getProtocol())
             && lnk.getKind().equals(communicationLink.getKind())) {
           link = lnk;
         }
@@ -253,10 +269,12 @@ public class ComponentExt {
    * @param portStrategie
    * @param targetOnExchangeItem
    */
-  public static void ensureUseAndImplementsForOperation(SequenceMessage message, ExchangeItemAllocation selectedOperation, boolean portStrategie,
-      EObject targetOnExchangeItem) {
-    AbstractInstance roleSource = message.getSendingEnd() == null ? null : message.getSendingEnd().getCovered().getRepresentedInstance();
-    AbstractInstance roleTarget = message.getReceivingEnd() == null ? null : message.getReceivingEnd().getCovered().getRepresentedInstance();
+  public static void ensureUseAndImplementsForOperation(SequenceMessage message,
+      ExchangeItemAllocation selectedOperation, boolean portStrategie, EObject targetOnExchangeItem) {
+    AbstractInstance roleSource = message.getSendingEnd() == null ? null
+        : message.getSendingEnd().getCovered().getRepresentedInstance();
+    AbstractInstance roleTarget = message.getReceivingEnd() == null ? null
+        : message.getReceivingEnd().getCovered().getRepresentedInstance();
 
     Component src = null;
     Component tgt = null;
@@ -271,12 +289,14 @@ public class ComponentExt {
     }
 
     // communication pattern : if the message has an EIAllocation which is a READ, there is a logical
-    // inversion of use/implements. On departure of the message, it is the component which implements the interface allocating the shared data and not its use.
+    // inversion of use/implements. On departure of the message, it is the component which implements the interface
+    // allocating the shared data and not its use.
     if ((src == null) || (tgt == null)) {
       // To be a READ a message must have the following features:
       // - Its target must be an ExchangeItemInstance (on an Execution or directly on the InstanceRole),
       // - And it must be a SYNCHRONOUS CALL.
-      if ((roleTarget instanceof ExchangeItemInstance) && ((targetOnExchangeItem instanceof Execution) || (targetOnExchangeItem instanceof InstanceRole))
+      if ((roleTarget instanceof ExchangeItemInstance)
+          && ((targetOnExchangeItem instanceof Execution) || (targetOnExchangeItem instanceof InstanceRole))
           && (MessageKind.SYNCHRONOUS_CALL == message.getKind())) {
         Component temp = src;
         src = tgt;
@@ -373,7 +393,10 @@ public class ComponentExt {
 
   /**
    * This method retrieves all the implemented interfaces.
-   * @param cpnt the component whose implemented AND provided (by StandardPorts) interfaces will be retrieved (and all its inherited components)
+   * 
+   * @param cpnt
+   *          the component whose implemented AND provided (by StandardPorts) interfaces will be retrieved (and all its
+   *          inherited components)
    * @return List<Interface> the implemented interfaces
    */
   public static List<Interface> getAllImplementedAndProvidedInterfaces(Component cpnt) {
@@ -414,7 +437,9 @@ public class ComponentExt {
 
   /**
    * This method retrieves all the implemented interfaces.
-   * @param cpnt the component whose implemented interfaces will be retrieved (and all its inherited components)
+   * 
+   * @param cpnt
+   *          the component whose implemented interfaces will be retrieved (and all its inherited components)
    * @return List<Interface> the implemented interfaces
    */
   public static List<Interface> getAllImplementedInterfaces(Component cpnt) {
@@ -440,6 +465,7 @@ public class ComponentExt {
 
   /**
    * obtains all relationships ending to cpnt
+   * 
    * @param cpnt
    * @return
    */
@@ -452,6 +478,7 @@ public class ComponentExt {
 
   /**
    * obtains all relationships starting from cpnt
+   * 
    * @param cpnt
    * @return
    */
@@ -466,6 +493,7 @@ public class ComponentExt {
 
   /**
    * This method retrieves all the provided interfaces recursively
+   * 
    * @param component
    * @return
    */
@@ -497,8 +525,8 @@ public class ComponentExt {
   }
 
   /**
-   * Return all the connection related to given Component filter by Connection kind According to given includePortOfType, returns also CE from ports of the
-   * type
+   * Return all the connection related to given Component filter by Connection kind According to given
+   * includePortOfType, returns also CE from ports of the type
    */
   public static Collection<ComponentExchange> getAllRelatedComponentExchange(Part part, boolean includePortOfType) {
 
@@ -534,6 +562,7 @@ public class ComponentExt {
 
   /**
    * Return all the connection related to given Component filter by Connection kind
+   * 
    * @param component
    * @return
    */
@@ -543,10 +572,12 @@ public class ComponentExt {
 
   /**
    * Return all the connection related to given Component filter by Connection kind
+   * 
    * @param component
    * @return
    */
-  public static Collection<ComponentExchange> getAllRelatedComponentExchange(Component component, boolean addRelatedOfParts) {
+  public static Collection<ComponentExchange> getAllRelatedComponentExchange(Component component,
+      boolean addRelatedOfParts) {
     List<ComponentExchange> result = new ArrayList<ComponentExchange>();
 
     List<ComponentPort> ownedComponentPort = getOwnedComponentPort(component);
@@ -580,10 +611,12 @@ public class ComponentExt {
 
   /**
    * Return all the connection related to given Component filter by Connection kind
+   * 
    * @param component
    * @return
    */
-  public static Collection<ComponentExchange> getAllRelatedConnectionByKind(Component component, ComponentExchangeKind kind) {
+  public static Collection<ComponentExchange> getAllRelatedConnectionByKind(Component component,
+      ComponentExchangeKind kind) {
     List<ComponentExchange> result = new ArrayList<ComponentExchange>();
 
     if (null == component) {
@@ -607,6 +640,7 @@ public class ComponentExt {
 
   /**
    * This method retrieves all the required interfaces recursively
+   * 
    * @param component
    * @return
    */
@@ -633,6 +667,7 @@ public class ComponentExt {
 
   /**
    * get all the States and Modes from current Component
+   * 
    * @param ele
    * @param comp
    * @return
@@ -732,7 +767,10 @@ public class ComponentExt {
 
   /**
    * This method retrieves all the used interfaces.
-   * @param cpnt the component whose used AND required (by StandardPorts) interfaces will be retrieved (and all its inherited components)
+   * 
+   * @param cpnt
+   *          the component whose used AND required (by StandardPorts) interfaces will be retrieved (and all its
+   *          inherited components)
    * @return List<Interface> the used and required interfaces
    */
   public static List<Interface> getAllUsedAndRequiredInterfaces(Component cpnt) {
@@ -774,7 +812,9 @@ public class ComponentExt {
 
   /**
    * This method retrieves all the used interfaces.
-   * @param cpnt the component whose used interfaces will be retrieved (and all its inherited components)
+   * 
+   * @param cpnt
+   *          the component whose used interfaces will be retrieved (and all its inherited components)
    * @return List<Interface> the used interfaces
    */
   public static List<Interface> getAllUsedInterfaces(Component cpnt) {
@@ -860,6 +900,7 @@ public class ComponentExt {
 
   /**
    * This method is deprecated: cycles can occur in multi part mode.
+   * 
    * @param c1
    * @param c2
    * @return
@@ -888,7 +929,9 @@ public class ComponentExt {
 
   /**
    * Gets all the components contained in a component
-   * @param component the parent component
+   * 
+   * @param component
+   *          the parent component
    * @return list of components
    */
   static public List<Component> getComponentsFromComponent(Component component) {
@@ -958,8 +1001,9 @@ public class ComponentExt {
   }
 
   /**
-   * Retrieve the first common component ancestor for two elements with eClass = Port part or component return the common component ancestor between source
-   * and target if source is target, return the c1 unlike getCommonComponentAncestor
+   * Retrieve the first common component ancestor for two elements with eClass = Port part or component return the
+   * common component ancestor between source and target if source is target, return the c1 unlike
+   * getCommonComponentAncestor
    */
   public static EObject getFirstCommonComponentAncestor(EObject source, EObject target, boolean useDeployementLinks) {
     if ((source == null) || (target == null)) {
@@ -1037,6 +1081,7 @@ public class ComponentExt {
 
   /**
    * Get the most common ancestor of all given components. Returns <code>null</code> if none can be found.
+   * 
    * @param components
    * @return
    */
@@ -1053,10 +1098,12 @@ public class ComponentExt {
     }
     return commonAncestor;
   }
-  
+
   /**
    * This method retrieves the implemented AND provided (by Ports) interfaces
-   * @param component the component whose used and provided interfaces will be retrieved
+   * 
+   * @param component
+   *          the component whose used and provided interfaces will be retrieved
    * @return List<Interface> the used interfaces
    */
   public static List<Interface> getImplementedAndProvidedInterfaces(Component component) {
@@ -1073,7 +1120,9 @@ public class ComponentExt {
 
   /**
    * This method retrieves the implemented interfaces.
-   * @param component the component whose implemented interfaces will be retrieved
+   * 
+   * @param component
+   *          the component whose implemented interfaces will be retrieved
    * @return List<Interface> the implemented interfaces
    */
   public static List<Interface> getImplementedInterfaces(Component component) {
@@ -1093,9 +1142,13 @@ public class ComponentExt {
   }
 
   /**
-   * Gets all the interfaces implemented by the component <code>currentComp</code>, except those already implemented by <code>component</code>.
-   * @param currentComp the component from which all the implemented interfaces have to be listed
-   * @param component the component to be checked
+   * Gets all the interfaces implemented by the component <code>currentComp</code>, except those already implemented by
+   * <code>component</code>.
+   * 
+   * @param currentComp
+   *          the component from which all the implemented interfaces have to be listed
+   * @param component
+   *          the component to be checked
    * @return list of all implemented interfaces
    */
   static public List<Interface> getImplementedInterfacesFiltered(Component currentComp, Component component) {
@@ -1156,7 +1209,9 @@ public class ComponentExt {
 
   /**
    * This method gets all the interfaces in Parent's hierarchy of current LC
-   * @param component the Logical Component
+   * 
+   * @param component
+   *          the Logical Component
    * @return List of interfaces
    */
   public static List<Interface> getInterfacesFromComponentParentHierarchy(Component component) {
@@ -1176,7 +1231,9 @@ public class ComponentExt {
 
   /**
    * Gets the owned ports.
-   * @param component the given component
+   * 
+   * @param component
+   *          the given component
    * @return the owned port
    */
   public static List<ComponentPort> getOwnedComponentPort(Component component) {
@@ -1191,7 +1248,9 @@ public class ComponentExt {
 
   /**
    * Gets the owned flow ports.
-   * @param component the given component
+   * 
+   * @param component
+   *          the given component
    * @return the owned flow port
    */
   public static List<ComponentPort> getOwnedFlowPort(Component component) {
@@ -1206,7 +1265,9 @@ public class ComponentExt {
 
   /**
    * Gets the owned in flow ports.
-   * @param component the given component
+   * 
+   * @param component
+   *          the given component
    * @return the owned in flow port
    */
   public static List<ComponentPort> getOwnedInFlowPort(Component component) {
@@ -1221,13 +1282,16 @@ public class ComponentExt {
 
   /**
    * Gets the owned out flow ports.
-   * @param component the given component
+   * 
+   * @param component
+   *          the given component
    * @return the owned out flow port
    */
   public static List<ComponentPort> getOwnedOutFlowPort(Component component) {
     List<ComponentPort> returnedList = new ArrayList<ComponentPort>();
     for (Feature aFeature : component.getOwnedFeatures()) {
-      if ((aFeature instanceof ComponentPort) && PortExt.isOut((ComponentPort) aFeature) && PortExt.isFlowPort(aFeature)) {
+      if ((aFeature instanceof ComponentPort) && PortExt.isOut((ComponentPort) aFeature)
+          && PortExt.isFlowPort(aFeature)) {
         returnedList.add((ComponentPort) aFeature);
       }
     }
@@ -1236,7 +1300,9 @@ public class ComponentExt {
 
   /**
    * Gets the owned physical ports.
-   * @param component the given component
+   * 
+   * @param component
+   *          the given component
    * @return the owned physical port
    */
   public static List<PhysicalPort> getOwnedPhysicalPort(Component component) {
@@ -1251,7 +1317,9 @@ public class ComponentExt {
 
   /**
    * Check if the compnent has physical ports.
-   * @param component the given component
+   * 
+   * @param component
+   *          the given component
    */
   public static boolean hasPhysicalPort(Component component) {
     return !ComponentExt.getOwnedPhysicalPort(component).isEmpty();
@@ -1259,7 +1327,9 @@ public class ComponentExt {
 
   /**
    * Gets the owned ports.
-   * @param component the given component
+   * 
+   * @param component
+   *          the given component
    * @return the owned port
    */
   public static List<Port> getOwnedPort(Component component) {
@@ -1286,7 +1356,9 @@ public class ComponentExt {
 
   /**
    * Gets the owned standard ports.
-   * @param component the given component
+   * 
+   * @param component
+   *          the given component
    * @return the owned standard port
    */
   public static List<ComponentPort> getOwnedStandardPort(Component component) {
@@ -1301,7 +1373,9 @@ public class ComponentExt {
 
   /**
    * Get the Parent Component respecting the breakdown structure logic
-   * @param component : component whose parent we are looking for
+   * 
+   * @param component
+   *          : component whose parent we are looking for
    * @return parent component doesn't work for multipart
    */
   @Deprecated
@@ -1327,7 +1401,8 @@ public class ComponentExt {
     for (Partition partition : component.getRepresentingPartitions()) {
       if (partition instanceof Part) {
         for (Part componentAncestor : ComponentExt.getPartAncestors((Part) partition)) {
-          if ((componentAncestor.getAbstractType() != null) && (componentAncestor.getAbstractType() instanceof Component)) {
+          if ((componentAncestor.getAbstractType() != null)
+              && (componentAncestor.getAbstractType() instanceof Component)) {
             result.add((Component) componentAncestor.getAbstractType());
           }
         }
@@ -1341,7 +1416,8 @@ public class ComponentExt {
   }
 
   /**
-   * Returns recursively all parts which contains the given part. All representing partition of containers and all parts deploying the given part
+   * Returns recursively all parts which contains the given part. All representing partition of containers and all parts
+   * deploying the given part
    */
   public static Collection<Part> getPartAncestors(Part child, boolean addGeneralizationOfParents) {
     Collection<Part> result = new ArrayList<Part>();
@@ -1364,7 +1440,8 @@ public class ComponentExt {
 
             // Retrieve also generalization of
             if (addGeneralizationOfParents && (parent instanceof GeneralizableElement)) {
-              List<GeneralizableElement> elements = GeneralizableElementExt.getAllSuperGeneralizableElements((GeneralizableElement) parent);
+              List<GeneralizableElement> elements = GeneralizableElementExt
+                  .getAllSuperGeneralizableElements((GeneralizableElement) parent);
               container.addAll(elements);
             }
 
@@ -1448,6 +1525,7 @@ public class ComponentExt {
 
   /**
    * Returns all allocated functions of the given component
+   * 
    * @param component
    */
   public static Collection<AbstractFunction> getAllocatedFunctions(Component component) {
@@ -1478,6 +1556,7 @@ public class ComponentExt {
 
   /**
    * Return the related interfaces of component from References(use, implement, required and provided links)
+   * 
    * @param component
    * @return
    */
@@ -1497,6 +1576,7 @@ public class ComponentExt {
 
   /**
    * This method retrieves all the required interfaces.
+   * 
    * @param component
    * @return
    */
@@ -1513,7 +1593,8 @@ public class ComponentExt {
   }
 
   /**
-   * @param modelElement : any 'ModelElement'
+   * @param modelElement
+   *          : any 'ModelElement'
    * @return : 'BlockArchitecture', value can also be null
    */
   public static BlockArchitecture getRootBlockArchitecture(ModelElement modelElement) {
@@ -1535,7 +1616,9 @@ public class ComponentExt {
 
   /**
    * Gets the root component architecture from the current component
-   * @param component the current component
+   * 
+   * @param component
+   *          the current component
    * @return the root component architecture
    */
   static public ComponentArchitecture getRootComponentArchitecture(Component component) {
@@ -1708,6 +1791,10 @@ public class ComponentExt {
     return PartExt.getComponentsOfParts(getSubParts(component, false));
   }
 
+  public static List<Component> getSubUsedAndDeployedComponents(Component component) {
+    return PartExt.getComponentsOfParts(getSubParts(component, true));
+  }
+
   public static List<Component> getSubUsedComponents(Component component, boolean useDeploymentLinks) {
     return PartExt.getComponentsOfParts(getSubParts(component, useDeploymentLinks));
   }
@@ -1745,7 +1832,9 @@ public class ComponentExt {
 
   /**
    * This method retrieves the inherited components.
-   * @param cpnt The component source.
+   * 
+   * @param cpnt
+   *          The component source.
    * @return The list of inherited components.
    */
   public static List<Component> getSuperComponents(Component cpnt) {
@@ -1762,6 +1851,7 @@ public class ComponentExt {
 
   /**
    * Returns representing parts of given component.
+   * 
    * @param component
    * @return
    */
@@ -1779,7 +1869,9 @@ public class ComponentExt {
 
   /**
    * This method retrieves the used interfaces AND required (by Ports)
-   * @param component the component whose used and required interfaces will be retrieved
+   * 
+   * @param component
+   *          the component whose used and required interfaces will be retrieved
    * @return List<Interface> the used interfaces
    */
   public static List<Interface> getUsedAndRequiredInterfaces(Component component) {
@@ -1795,7 +1887,9 @@ public class ComponentExt {
 
   /**
    * This method retrieves the used interfaces.
-   * @param component the component whose used interfaces will be retrieved
+   * 
+   * @param component
+   *          the component whose used interfaces will be retrieved
    * @return List<Interface> the used interfaces
    */
   public static List<Interface> getUsedInterfaces(Component component) {
@@ -1814,9 +1908,13 @@ public class ComponentExt {
   }
 
   /**
-   * Gets all the interfaces used by the component <code>currentComp</code>, except those already used by <code>component</code>.
-   * @param currentComp the component from which all the used interfaces have to be listed
-   * @param component the component to be checked
+   * Gets all the interfaces used by the component <code>currentComp</code>, except those already used by
+   * <code>component</code>.
+   * 
+   * @param currentComp
+   *          the component from which all the used interfaces have to be listed
+   * @param component
+   *          the component to be checked
    * @return list of all used interfaces
    */
   static public List<Interface> getUsedInterfacesFiltered(Component currentComp, Component component) {
@@ -1959,6 +2057,7 @@ public class ComponentExt {
 
   /**
    * Retrieve part ancestors, deploying elements and owner
+   * 
    * @param currentPart
    * @param parents
    */
@@ -1982,7 +2081,8 @@ public class ComponentExt {
       EObject element = itElement.next();
       if (element instanceof Part) {
         AbstractType type = ((Part) element).getAbstractType();
-        if ((type instanceof PhysicalComponent) && (((PhysicalComponent) type).getNature() == PhysicalComponentNature.NODE)) {
+        if ((type instanceof PhysicalComponent)
+            && (((PhysicalComponent) type).getNature() == PhysicalComponentNature.NODE)) {
           itElement.remove();
         }
       }
@@ -1991,7 +2091,9 @@ public class ComponentExt {
   }
 
   /**
-   * Retrieve whether both given part can be considered as "brother-linked" It should be defined in the same component or be an actor/in the root system
+   * Retrieve whether both given part can be considered as "brother-linked" It should be defined in the same component
+   * or be an actor/in the root system
+   * 
    * @param source
    * @param target
    * @return
@@ -2048,8 +2150,11 @@ public class ComponentExt {
 
   /**
    * This method checks whether the component is implementing the interface
-   * @param component the component
-   * @param itf the interface implemented
+   * 
+   * @param component
+   *          the component
+   * @param itf
+   *          the interface implemented
    * @return true if the component is implementing the interface
    */
   static public boolean isImplementingInterface(Component component, Interface itf) {
@@ -2065,17 +2170,21 @@ public class ComponentExt {
 
   /**
    * This method checks w whether one of the component and all its super type is implementing the interface
+   * 
    * @param component
    * @param itf
    * @return true if the component is implementing the interface
    */
   static public boolean isImplementingInterfaceWithAllSuperType(Component component, Interface itf) {
-    List<GeneralizableElement> superGeneralizableElements = GeneralizableElementExt.getAllSuperGeneralizableElements(component);
+    List<GeneralizableElement> superGeneralizableElements = GeneralizableElementExt
+        .getAllSuperGeneralizableElements(component);
     superGeneralizableElements.add(component);
     for (CapellaElement generalizableElement : superGeneralizableElements) {
       if (generalizableElement instanceof Component) {
-        for (InterfaceImplementation interfaceImpl : ((Component) generalizableElement).getImplementedInterfaceLinks()) {
-          if ((null != interfaceImpl.getImplementedInterface()) && interfaceImpl.getImplementedInterface().equals(itf)) {
+        for (InterfaceImplementation interfaceImpl : ((Component) generalizableElement)
+            .getImplementedInterfaceLinks()) {
+          if ((null != interfaceImpl.getImplementedInterface())
+              && interfaceImpl.getImplementedInterface().equals(itf)) {
             return true;
           }
         }
@@ -2087,7 +2196,9 @@ public class ComponentExt {
 
   /**
    * This method evaluates if a Component is a leaf or not.
-   * @param component the Component evaluated
+   * 
+   * @param component
+   *          the Component evaluated
    * @return 'true' if leaf, 'false' otherwise
    */
   public static boolean isLeaf(Component component) {
@@ -2095,9 +2206,13 @@ public class ComponentExt {
   }
 
   /**
-   * Check if both the element are of same type as LogicalComponent or PhysicalComponent and also check if there eContainer is same Type
-   * @param me1 CapellaElement
-   * @param me2 CapellaElement
+   * Check if both the element are of same type as LogicalComponent or PhysicalComponent and also check if there
+   * eContainer is same Type
+   * 
+   * @param me1
+   *          CapellaElement
+   * @param me2
+   *          CapellaElement
    * @return true if both are LogicalComonent or PhysicalComponent - and both eContainer is Same Type of Element
    */
   public static boolean isSameTypeAndNotRootElement(EObject me1, EObject me2) {
@@ -2106,12 +2221,14 @@ public class ComponentExt {
     }
 
     if ((me1 instanceof LogicalComponent) && (me2 instanceof LogicalComponent)) {
-      if (!((((LogicalComponent) me1).eContainer() instanceof LogicalComponent) || !(((LogicalComponent) me2).eContainer() instanceof LogicalComponent))) {
+      if (!((((LogicalComponent) me1).eContainer() instanceof LogicalComponent)
+          || !(((LogicalComponent) me2).eContainer() instanceof LogicalComponent))) {
         return false;
       }
       return true;
     } else if ((me1 instanceof PhysicalComponent) && (me2 instanceof PhysicalComponent)) {
-      if (!((((PhysicalComponent) me1).eContainer() instanceof PhysicalComponent) || !(((PhysicalComponent) me2).eContainer() instanceof PhysicalComponent))) {
+      if (!((((PhysicalComponent) me1).eContainer() instanceof PhysicalComponent)
+          || !(((PhysicalComponent) me2).eContainer() instanceof PhysicalComponent))) {
         return false;
       }
       return true;
@@ -2121,8 +2238,11 @@ public class ComponentExt {
 
   /**
    * This method checks whether the component is using the interface
-   * @param component the component
-   * @param itf the interface used
+   * 
+   * @param component
+   *          the component
+   * @param itf
+   *          the interface used
    * @return true if the component is using the interface
    */
   static public boolean isUsingInterface(Component component, Interface itf) {
@@ -2138,12 +2258,14 @@ public class ComponentExt {
 
   /**
    * This method checks whether one of the component and all its super type is using the interface
+   * 
    * @param component
    * @param itf
    * @return true if the component is using the interface
    */
   static public boolean isUsingInterfaceWithAllSuperType(Component component, Interface itf) {
-    List<GeneralizableElement> superGeneralizableElements = GeneralizableElementExt.getAllSuperGeneralizableElements(component);
+    List<GeneralizableElement> superGeneralizableElements = GeneralizableElementExt
+        .getAllSuperGeneralizableElements(component);
     superGeneralizableElements.add(component);
     for (CapellaElement generalizableElement : superGeneralizableElements) {
       if (generalizableElement instanceof Component) {
@@ -2157,8 +2279,8 @@ public class ComponentExt {
     return false;
   }
 
-  private static Collection<EObject> createComponentExchangeAndDelegations(LinkedList<Part> sourceResults, ComponentPort sourcePort,
-      Deque<Part> targetResults, ComponentPort targetPort) {
+  private static Collection<EObject> createComponentExchangeAndDelegations(LinkedList<Part> sourceResults,
+      ComponentPort sourcePort, Deque<Part> targetResults, ComponentPort targetPort) {
 
     Collection<EObject> results = new HashSet<EObject>();
 
@@ -2185,13 +2307,14 @@ public class ComponentExt {
     }
 
     if (sourceResults.size() > 0) {
-      // Create a delegation from sourcePort to the top-level part previously computed, and change sourcePort to the top-level created port
+      // Create a delegation from sourcePort to the top-level part previously computed, and change sourcePort to the
+      // top-level created port
       finalSourcePart = sourceResults.removeFirst();
       while (sourceResults.size() > 0) {
         Part source = sourceResults.removeFirst();
-        ComponentExchange delegation =
-            ComponentExchangeExt.createComponentExchange(source, null, finalSourcePart, srcPort, ComponentExchangeKind.DELEGATION, sourceKind,
-                sourceOrientation, sourceKind, sourceOrientation, isMultipart);
+        ComponentExchange delegation = ComponentExchangeExt.createComponentExchange(source, null, finalSourcePart,
+            srcPort, ComponentExchangeKind.DELEGATION, sourceKind, sourceOrientation, sourceKind, sourceOrientation,
+            isMultipart);
         results.add(delegation);
         srcPort = (ComponentPort) ComponentExchangeExt.getSourcePort(delegation);
         finalSourcePart = source;
@@ -2199,13 +2322,14 @@ public class ComponentExt {
     }
 
     if (targetResults.size() > 0) {
-      // Create a delegation from targetPort to the top-level part previously computed, and change targetPort to the top-level created port
+      // Create a delegation from targetPort to the top-level part previously computed, and change targetPort to the
+      // top-level created port
       finalTargetPart = targetResults.removeFirst();
       while (targetResults.size() > 0) {
         Part target = targetResults.removeFirst();
-        ComponentExchange delegation =
-            ComponentExchangeExt.createComponentExchange(target, null, finalTargetPart, tgtPort, ComponentExchangeKind.DELEGATION, targetKind,
-                targetOrientation, targetKind, targetOrientation, isMultipart);
+        ComponentExchange delegation = ComponentExchangeExt.createComponentExchange(target, null, finalTargetPart,
+            tgtPort, ComponentExchangeKind.DELEGATION, targetKind, targetOrientation, targetKind, targetOrientation,
+            isMultipart);
         results.add(delegation);
         tgtPort = (ComponentPort) ComponentExchangeExt.getSourcePort(delegation);
         finalTargetPart = target;
@@ -2214,9 +2338,9 @@ public class ComponentExt {
 
     // Create a componentExchange between both top-level computed port
     if ((finalSourcePart != null) && (finalTargetPart != null)) {
-      ComponentExchange exchange =
-          ComponentExchangeExt.createComponentExchange(finalSourcePart, srcPort, finalTargetPart, tgtPort, ComponentExchangeKind.FLOW, sourceKind,
-              sourceOrientation, targetKind, targetOrientation, isMultipart);
+      ComponentExchange exchange = ComponentExchangeExt.createComponentExchange(finalSourcePart, srcPort,
+          finalTargetPart, tgtPort, ComponentExchangeKind.FLOW, sourceKind, sourceOrientation, targetKind,
+          targetOrientation, isMultipart);
       results.add(exchange);
     }
 
@@ -2224,7 +2348,9 @@ public class ComponentExt {
   }
 
   /**
-   * Create for two part a componentExchange between brother-linked parts and delegations from givens parts/ports to both brother-linked parts.
+   * Create for two part a componentExchange between brother-linked parts and delegations from givens parts/ports to
+   * both brother-linked parts.
+   * 
    * @param sourcePart
    * @param sourcePort
    * @param targetPart
@@ -2232,8 +2358,8 @@ public class ComponentExt {
    * @return
    */
   @SuppressWarnings({ "rawtypes", "unchecked" })
-  public static Collection<EObject> createComponentExchangeThroughDelegations(Part sourcePart, ComponentPort sourcePort, Part targetPart,
-      ComponentPort targetPort) {
+  public static Collection<EObject> createComponentExchangeThroughDelegations(Part sourcePart, ComponentPort sourcePort,
+      Part targetPart, ComponentPort targetPort) {
 
     Collection<EObject> results = new HashSet<EObject>();
 
@@ -2261,7 +2387,8 @@ public class ComponentExt {
         isBrothers = ComponentExt.isBrothers(source, target);
 
         if (isBrothers) {
-          results.addAll(createComponentExchangeAndDelegations(new LinkedList(sourceResults), sourcePort, new LinkedList(targetResults), targetPort));
+          results.addAll(createComponentExchangeAndDelegations(new LinkedList(sourceResults), sourcePort,
+              new LinkedList(targetResults), targetPort));
           isBrothers = true;
           targetResults.remove(target);
         } else {
@@ -2286,8 +2413,11 @@ public class ComponentExt {
 
   /**
    * This method removes an interface implementation.
-   * @param component the component who is implementing the interface
-   * @param interf the implemented interface
+   * 
+   * @param component
+   *          the component who is implementing the interface
+   * @param interf
+   *          the implemented interface
    */
   public static void removeImplementedInterface(Component component, Interface interf) {
     InterfaceImplementation realizationLink = null;
@@ -2309,7 +2439,8 @@ public class ComponentExt {
   public static void removeProvidedInterface(Component component, Interface interf) {
     ComponentPort stdPort = null;
     for (Partition partition : component.getOwnedPartitions()) {
-      if ((partition instanceof ComponentPort) && ((ComponentPort) partition).getProvidedInterfaces().contains(interf)) {
+      if ((partition instanceof ComponentPort)
+          && ((ComponentPort) partition).getProvidedInterfaces().contains(interf)) {
         stdPort = (ComponentPort) partition;
         stdPort.getProvidedInterfaces().remove(interf);
         break;
@@ -2323,7 +2454,8 @@ public class ComponentExt {
   public static void removeRequiredInterface(Component component, Interface interf) {
     ComponentPort stdPort = null;
     for (Partition partition : component.getOwnedPartitions()) {
-      if ((partition instanceof ComponentPort) && ((ComponentPort) partition).getRequiredInterfaces().contains(interf)) {
+      if ((partition instanceof ComponentPort)
+          && ((ComponentPort) partition).getRequiredInterfaces().contains(interf)) {
         stdPort = (ComponentPort) partition;
         stdPort.getRequiredInterfaces().remove(interf);
         break;
@@ -2333,8 +2465,11 @@ public class ComponentExt {
 
   /**
    * This method removes an interface usage.
-   * @param component the component who is using the interface
-   * @param interf the used interface
+   * 
+   * @param component
+   *          the component who is using the interface
+   * @param interf
+   *          the used interface
    */
   public static void removeUsedInterface(Component component, Interface interf) {
     InterfaceUse useLink = null;
@@ -2371,6 +2506,7 @@ public class ComponentExt {
 
   /**
    * Returns whether both ports are also linked by a componentExchange in brothers parts.
+   * 
    * @param exchange
    * @param sourcePart
    * @param targetPart
@@ -2379,7 +2515,8 @@ public class ComponentExt {
    * @return
    */
   @SuppressWarnings({ "unchecked", "rawtypes" })
-  public static boolean isComponentExchangeThroughDelegationsExists(Part sourcePart, Part targetPart, Port sourcePort, Port targetPort) {
+  public static boolean isComponentExchangeThroughDelegationsExists(Part sourcePart, Part targetPart, Port sourcePort,
+      Port targetPort) {
 
     LinkedList<Part> sourceResults = new LinkedList<Part>();
     LinkedList<Part> targetResults = new LinkedList<Part>();
@@ -2480,9 +2617,11 @@ public class ComponentExt {
   }
 
   /**
-   * From a component, returns its entire hierarchy as displayed in a blank architecture, with sub-component, as well as deployed them for the components of the
-   * physical level
-   * @param component the root component
+   * From a component, returns its entire hierarchy as displayed in a blank architecture, with sub-component, as well as
+   * deployed them for the components of the physical level
+   * 
+   * @param component
+   *          the root component
    * @return
    */
   public static List<Component> getAllSubUsedAndDeployedComponents(Component component) {
@@ -2506,6 +2645,7 @@ public class ComponentExt {
 
   /**
    * Removes duplicate in an EList of interfaces.
+   * 
    * @param list
    * @return
    */
