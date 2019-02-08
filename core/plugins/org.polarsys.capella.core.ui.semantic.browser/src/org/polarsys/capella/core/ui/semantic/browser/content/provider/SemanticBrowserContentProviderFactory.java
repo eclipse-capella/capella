@@ -17,7 +17,6 @@ import org.polarsys.capella.common.ui.toolkit.browser.content.provider.impl.Curr
 import org.polarsys.capella.common.ui.toolkit.browser.content.provider.impl.ReferencedElementCP;
 import org.polarsys.capella.common.ui.toolkit.browser.content.provider.impl.ReferencingElementCP;
 import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
-import org.polarsys.capella.core.ui.semantic.browser.view.SemanticBrowserView;
 
 /**
  * Content provider factory used for the semantic browser.
@@ -38,13 +37,16 @@ public class SemanticBrowserContentProviderFactory extends DefaultContentProvide
 
     return new CurrentElementCP(getAdapterFactory(), model) {
 
+      int lastNotification;
+
       /**
        * {@inheritDoc}
        */
       @Override
-      public void notifyChanged(Notification notification_p) {
-        if (SemanticBrowserView.isListeningToPageSelectionEvents()) {
-          super.notifyChanged(notification_p);
+      public void notifyChanged(Notification notification) {
+        if (model.isListeningToPageSelectionEvents() && notification.hashCode() != lastNotification) {
+          lastNotification = notification.hashCode();
+          super.notifyChanged(notification);
         }
       }
     };
@@ -57,13 +59,16 @@ public class SemanticBrowserContentProviderFactory extends DefaultContentProvide
   public ITreeContentProvider getReferencedContentProvider() {
     return new ReferencedElementCP(getAdapterFactory(), model) {
 
+      int lastNotification;
+
       /**
        * {@inheritDoc}
        */
       @Override
-      public void notifyChanged(Notification notification_p) {
-        if (SemanticBrowserView.isListeningToPageSelectionEvents()) {
-          super.notifyChanged(notification_p);
+      public void notifyChanged(Notification notification) {
+        if (model.isListeningToPageSelectionEvents() && notification.hashCode() != lastNotification) {
+          lastNotification = notification.hashCode();
+          super.notifyChanged(notification);
         }
       }
     };
@@ -76,13 +81,16 @@ public class SemanticBrowserContentProviderFactory extends DefaultContentProvide
   public ITreeContentProvider getReferencingContentProvider() {
     return new ReferencingElementCP(getAdapterFactory(), model) {
 
+      int lastNotification;
+
       /**
        * {@inheritDoc}
        */
       @Override
-      public void notifyChanged(Notification notification_p) {
-        if (SemanticBrowserView.isListeningToPageSelectionEvents()) {
-          super.notifyChanged(notification_p);
+      public void notifyChanged(Notification notification) {
+        if (model.isListeningToPageSelectionEvents() && notification.hashCode() != lastNotification) {
+          lastNotification = notification.hashCode();
+          super.notifyChanged(notification);
         }
       }
     };
