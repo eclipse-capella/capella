@@ -12,7 +12,9 @@ package org.polarsys.capella.common.tools.report.util;
 
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
+import org.apache.log4j.Priority;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.emf.common.util.Diagnostic;
 import org.polarsys.capella.common.tools.report.config.ReportManagerConstants;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 
@@ -35,6 +37,19 @@ public class LogExt {
     }
   }
   
+  /**
+   * Maps a diagnostic's severity to a Log4j Logger Priority
+   */
+  public static Priority convertSeverityToPriority(Diagnostic diag) {
+    Priority prio = null;
+    switch (diag.getSeverity()) {
+    case Diagnostic.ERROR: prio = Level.ERROR; break;
+    case Diagnostic.WARNING: prio = Level.WARN; break;
+    default: prio = Level.INFO;
+    }
+    return prio;
+  }
+
   public static void log(Logger logger, IStatus status) {
     logger.log(Level.toLevel(toPriority(status)), status);
   }

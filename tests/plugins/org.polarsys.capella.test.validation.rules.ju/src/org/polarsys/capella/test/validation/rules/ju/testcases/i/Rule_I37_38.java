@@ -14,19 +14,17 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Iterator;
 
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
+import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.transaction.RecordingCommand;
-import org.eclipse.emf.transaction.ResourceSetListener;
 import org.eclipse.emf.transaction.RollbackException;
 import org.eclipse.emf.transaction.TransactionalCommandStack;
-import org.eclipse.emf.validation.model.IConstraintStatus;
-import org.eclipse.emf.validation.service.IValidationListener;
-import org.eclipse.emf.validation.service.ModelValidationService;
-import org.eclipse.emf.validation.service.ValidationEvent;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.ui.IViewPart;
-import org.eclipse.ui.PlatformUI;
 import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.ef.ExecutionManagerRegistry;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
@@ -39,6 +37,7 @@ import org.polarsys.capella.core.data.core.validation.constraint.ReferentialCons
 import org.polarsys.capella.core.libraries.model.CapellaLibraryExt;
 import org.polarsys.capella.core.model.skeleton.CapellaModelSkeleton;
 import org.polarsys.capella.test.framework.api.BasicTestCase;
+import org.polarsys.capella.test.validation.rules.ju.TestValidationRulesPlugin;
 
 /**
  * Tests ability to move elements.
@@ -49,7 +48,6 @@ public abstract class Rule_I37_38 extends BasicTestCase {
   CapellaModelSkeleton projectSkeleton;
   CapellaModelSkeleton librarySkeleton;
   IViewPart moveView;
-  ResourceSetListener validateExecuteListener;
   
   @SuppressWarnings("nls")
   @Override
@@ -81,16 +79,11 @@ public abstract class Rule_I37_38 extends BasicTestCase {
       }
     });
 
-    // Tests a variant that always rolls back the transaction when a reference error is encountered
-    validateExecuteListener = new ReferentialConstraintsResourceSetListener(ms -> { throw new RollbackException(ms); });
-    manager.getEditingDomain().addResourceSetListener(validateExecuteListener);
-
   }
 
 
   @Override
   public void tearDown() throws Exception {
-    manager.getEditingDomain().removeResourceSetListener(validateExecuteListener);
     ExecutionManagerRegistry.getInstance().removeManager(manager);
     super.tearDown();
   }
@@ -116,59 +109,65 @@ public abstract class Rule_I37_38 extends BasicTestCase {
     stack.execute(rc, Collections.emptyMap());
   }
 
-  protected void expectRollback(final Runnable r) throws InterruptedException {
-    expectRollback(r, new String[0]);
-  }
 
-  /**
-   * Wrap the given runnable into an ICommand and execute it.
-   * If the command succeeds fail.
-   * If the command is rolled back, check validation events
-   * and search for expected validation error messages.
-   * If no validation status is found for any expected errors fail.
-   *
-   *
-   *
-   * @param r
-   * @param expectedErrors
-   */
-  @SuppressWarnings("nls")
-  // This could be improved a bit, by checking rule id and severity but
-  // for now it's sufficient. TODO, move somewhere else
-  protected void expectRollback(final Runnable r, String... expectedErrors) throws InterruptedException {
-
-    RollbackException expectedException = null;
-
+  protected void expectNoRollback(final Runnable r) throws InterruptedException, RollbackException {
+    ReferentialConstraintsRecorder recorder = new ReferentialConstraintsRecorder(manager.getEditingDomain(), new String[0]);
     try {
       executeCommand(r);
-    } catch (RollbackException e){
-      expectedException = e;
+    } finally {
+      recorder.dispose();
     }
-
-    assertNotNull(expectedException);
-
-    for (String expected : expectedErrors) {
-      assertNotNull("Expected validation error: " + expected, find(expected, Collections.singleton(expectedException.getStatus())));
-    }
-
   }
 
+  protected void expectRollback(final Runnable r, String... expectedErrors) throws InterruptedException {    
+    ReferentialConstraintsRecorder recorder = new ReferentialConstraintsRecorder(manager.getEditingDomain(), expectedErrors);
+    try {
+      executeCommand(r);
+    } catch (RollbackException expected) {
+      // that is expected
+    } finally {
+      recorder.dispose();
+    }
+    if (recorder.missingExpected.size() > 0) {
+      fail(String.join(System.lineSeparator(), recorder.missingExpected));
+    }
+  }
 
-  private IStatus find(String message, Collection<? extends IStatus> status) {
-    for (IStatus s : status) {
-      if (s.isMultiStatus()) {
-        IStatus result = find(message, Arrays.asList(s.getChildren()));
-        if (result != null) {
-          return result;
-        }
-      } else {
-        if (message.equals(s.getMessage())) {
-          return s;
+  private static class ReferentialConstraintsRecorder {
+
+    private Collection<String> missingExpected;
+    private final TransactionalEditingDomain domain;
+    private final ReferentialConstraintsResourceSetListener listener;
+
+    public ReferentialConstraintsRecorder(TransactionalEditingDomain domain, String...expectedErrors) {
+      this.missingExpected = new ArrayList<>(Arrays.asList(expectedErrors)); // we want to modify the collection later..
+      this.domain = domain;
+      listener = new ReferentialConstraintsResourceSetListener(this::handleDiagnostic);
+      domain.addResourceSetListener(listener);
+    }
+
+    public void handleDiagnostic(Diagnostic ms) throws RollbackException {
+      for (Iterator<String> it = missingExpected.iterator(); it.hasNext(); ) {
+        String expected = it.next();
+        if (findDiagnostic(expected, ms.getChildren()) != null) {
+          it.remove();
         }
       }
+      throw new RollbackException(new Status(IStatus.ERROR, TestValidationRulesPlugin.PLUGIN_ID, "rolling back"));  //$NON-NLS-1$
     }
-    return null;
-  }
 
+    private Diagnostic findDiagnostic(String message, Collection<Diagnostic> diagnostics) {
+      for(Diagnostic d : diagnostics) {
+        if (message.equals(d.getMessage())) {
+          return d;
+        }
+      }
+      return null;
+    }
+
+    private void dispose() {
+      domain.removeResourceSetListener(listener);
+    }
+  }
 
 }

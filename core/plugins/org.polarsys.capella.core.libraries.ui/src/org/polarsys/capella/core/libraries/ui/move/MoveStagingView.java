@@ -18,15 +18,20 @@ import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicReference;
 
+import org.apache.log4j.Priority;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.debug.internal.ui.DebugPluginImages;
 import org.eclipse.debug.ui.IDebugUIConstants;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.ui.ImageURIRegistry;
+import org.eclipse.emf.common.ui.dialogs.DiagnosticDialog;
 import org.eclipse.emf.common.ui.viewer.ColumnViewerInformationControlToolTipSupport;
 import org.eclipse.emf.common.ui.viewer.IUndecoratingLabelProvider;
+import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -105,7 +110,6 @@ import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.Section;
 import org.eclipse.ui.part.ViewPart;
-import org.eclipse.ui.statushandlers.StatusManager;
 import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.tabbed.ITabbedPropertySheetPageContributor;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
@@ -114,6 +118,8 @@ import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.libraries.IModel;
 import org.polarsys.capella.common.libraries.manager.LibraryManager;
 import org.polarsys.capella.common.libraries.manager.LibraryManagerExt;
+import org.polarsys.capella.common.tools.report.util.LogExt;
+import org.polarsys.capella.common.tools.report.util.ReportManagerDefaultComponents;
 import org.polarsys.capella.core.data.core.validation.constraint.ReferentialConstraintsResourceSetListener;
 import org.polarsys.capella.core.libraries.model.ICapellaModel;
 import org.polarsys.capella.core.libraries.ui.Activator;
@@ -227,35 +233,48 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
 
     @Override
     public void run() {
-      TransactionalCommandStack stack = (TransactionalCommandStack) stage.getEditingDomain().getCommandStack();
-      ExceptionHandler oldHandler = stack.getExceptionHandler();
-      TransactionErrorHandler newHandler = new TransactionErrorHandler();
-      stack.setExceptionHandler(newHandler);
-      IStatus result = null;
+      AtomicBoolean forcedMove = new AtomicBoolean();
+      AtomicReference<Diagnostic> referenceErrors = new AtomicReference<>();
       destinationViewer.getTree().setRedraw(false);
       ResourceSetListener validateListener = new ReferentialConstraintsResourceSetListener(status -> {
-        ErrorDialog dialog = new MyStatusDialog(getViewSite().getShell(), status); 
-        dialog.setBlockOnOpen(true);
+        referenceErrors.set(status);
+        MyDiagnosticDialog dialog = new MyDiagnosticDialog(getViewSite().getShell(), status); 
         if (dialog.open() == Window.CANCEL) {
-          throw new RollbackException(status);
+          throw new RollbackException(new Status(IStatus.CANCEL, Activator.PLUGIN_ID, Messages.MoveStagingView_CancelStatusMessage));
+        } else {
+          forcedMove.set(true);
         }
       });
       TransactionalEditingDomain domain = (TransactionalEditingDomain) stage.getEditingDomain();
       domain.addResourceSetListener(validateListener);
+      Diagnostic result = null;
       try {
-        result = stage.execute();
+        result = stage.executeWithDiagnostics();
+        report(result);
+        if (result.getSeverity() == Diagnostic.OK) {
+          boolean resetView = false;
+          Diagnostic referenceErrorDiagnostic = referenceErrors.get();
+          if (referenceErrorDiagnostic != null) {
+            report(referenceErrorDiagnostic);
+            String userDecision = null;
+            if (forcedMove.get()) {
+              userDecision = Messages.MoveStagingView_forced_move_message;
+              resetView = true;
+            } else {
+              userDecision = Messages.MoveStagingView_CancelStatusMessage;
+            }
+            report(new BasicDiagnostic(Activator.PLUGIN_ID, 0, userDecision, new Object[0]));
+          } else {
+            resetView = true;
+          }
+          if (resetView) {
+            reset();
+          } 
+        } else {
+          DiagnosticDialog.open(getViewSite().getShell(), Messages.MoveStagingView_fail_dialog_title, Messages.MoveStagingView_fail_dialog_message, result);
+        }
       } finally {
         domain.removeResourceSetListener(validateListener);
-        stack.setExceptionHandler(oldHandler);
-        if (result != null) {
-          if (result.isOK()) {
-            if (newHandler.handledException == null) {
-              reset();
-            }
-          } else {
-            StatusManager.getManager().handle(result, StatusManager.SHOW);
-          }
-        }
         destinationViewer.getTree().setRedraw(true);
       }
     }
@@ -265,6 +284,17 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
     getViewSite().getActionBars().getToolBarManager().add(executeAction);
   }
 
+
+  private void report(Diagnostic d) {
+    Priority prio = LogExt.convertSeverityToPriority(d);
+    if (d.getChildren().isEmpty()) {
+      ReportManagerDefaultComponents.getReportManagerForModel().log(prio, d);
+    } else {
+      for (Diagnostic child : d.getChildren()) {
+        report(child);
+      }
+    }
+  }
 
   // Mirrors selection of staged elements in the left view to the same elements in the right view and vice versa
   private void initSelectionSynchronizer() {
@@ -1062,16 +1092,6 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
     }
   }
 
-  private static class TransactionErrorHandler implements ExceptionHandler {
-
-    Exception handledException;
-
-    @Override
-    public void handleException(Exception e) {
-      handledException = e;
-    }
-  }
-
   private static class MyLocateInCapellaExplorerAction extends LocateInCapellaExplorerAction {
     @Override
     public void selectElementInCapellaExplorer(ISelection selection) {
@@ -1085,10 +1105,10 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
     }
   }
   
-  private static class MyStatusDialog extends ErrorDialog {
+  private static class MyDiagnosticDialog extends DiagnosticDialog {
 
-    public MyStatusDialog(Shell parent, IStatus status) {
-      super(parent,Messages.ValidateExecuteListener_dialogTitle, Messages.ValidateExecuteListener_dialogMessage, status, Status.ERROR); 
+    public MyDiagnosticDialog(Shell parent, Diagnostic diagnostic) {
+      super(parent, Messages.ValidateExecuteListener_dialogTitle, Messages.ValidateExecuteListener_dialogMessage, diagnostic, Diagnostic.ERROR | Diagnostic.WARNING); 
     }
 
     @Override
