@@ -387,7 +387,7 @@ This rule checks that an capella element doesn&apos;t contain any naming conflic
                   ''{0}'' cannot reference ''{1}'' via ''{2}'' 
                </message>
                <description>
-                  Detects moved elements and verifies that outgoing/incoming references from/to these elements and their content trees are still allowed. This validation rule is only executed if the move operation was executed in the Move Staging View.
+                  Verifies that an elements outgoing references are valid according to Capella business rules.
                </description>
                <target
                      class="CapellaElement">

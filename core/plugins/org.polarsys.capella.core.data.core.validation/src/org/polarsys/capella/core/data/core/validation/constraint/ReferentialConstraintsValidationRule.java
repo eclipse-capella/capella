@@ -44,7 +44,7 @@ public class ReferentialConstraintsValidationRule extends AbstractValidationRule
       @Override
       protected IStatus createStatus(EObject source, EObject target, EReference ref) {
         return ConstraintStatus.createStatus(ctx, Arrays.asList(source, target) ,
-            Messages.I_37_ReferenceConstraints_detail,
+            Messages.I_38_ReferenceConstraints_detail,
             EObjectLabelProviderHelper.getText(source), EObjectLabelProviderHelper.getText(target), ref.getName());
       }
     };
@@ -66,7 +66,7 @@ public class ReferentialConstraintsValidationRule extends AbstractValidationRule
       return ctx.createSuccessStatus();
     }
 
-    IStatus result = ConstraintStatus.createMultiStatus(ctx, Messages.I_37_ReferenceConstraints_title, new Object[0], results);
+    IStatus result = ConstraintStatus.createMultiStatus(ctx, Messages.I_38_ReferenceConstraints_title, new Object[0], results);
     return result;
   }
 
