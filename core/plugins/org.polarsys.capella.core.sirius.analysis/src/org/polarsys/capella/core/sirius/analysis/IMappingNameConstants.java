@@ -466,14 +466,14 @@ public interface IMappingNameConstants {
   String HIDE_PHYSICAL_LINKS_NAMES = "Hide Physical Links names";//$NON-NLS-1$
   String HIDE_INTERACTIONS_NAMES = "Hide Interactions names";//$NON-NLS-1$
   String HIDE_COMMUNICATION_MEANS_NAMES = "Hide Communication Means names";//$NON-NLS-1$
-  Object SHOW_FUNCTIONAL_EXCHANGES_ECHANGE_ITEMS = "Show Functional Exchanges [ExchangeItems]"; //$NON-NLS-1$
-  Object SHOW_COMPONENT_EXCHANGES_ECHANGE_ITEMS = "Show Component Exchanges [ExchangeItems]"; //$NON-NLS-1$
-  Object HIDE_CE_BY_DELEGATION = "Hide Simplified Diagram Based Component Exchanges"; //$NON-NLS-1$
-  Object HIDE_CE_BY_GROUP = "Hide Simplified Group of Component Exchanges"; //$NON-NLS-1$
-  Object HIDE_CE_BY_GROUP_ORIENTED = "Hide Simplified Oriented Grouped Component Exchanges"; //$NON-NLS-1$
+  String SHOW_FUNCTIONAL_EXCHANGES_ECHANGE_ITEMS = "Show Functional Exchanges [ExchangeItems]"; //$NON-NLS-1$
+  String SHOW_COMPONENT_EXCHANGES_ECHANGE_ITEMS = "Show Component Exchanges [ExchangeItems]"; //$NON-NLS-1$
+  String HIDE_CE_BY_DELEGATION = "Hide Simplified Diagram Based Component Exchanges"; //$NON-NLS-1$
+  String HIDE_CE_BY_GROUP = "Hide Simplified Group of Component Exchanges"; //$NON-NLS-1$
+  String HIDE_CE_BY_GROUP_ORIENTED = "Hide Simplified Oriented Grouped Component Exchanges"; //$NON-NLS-1$
 
-  Object SHOW_FUNCTIONAL_EXCHANGES_PARAMS = "Show Functional Exchanges (Parameters)"; //$NON-NLS-1$
-  Object SHOW_FUNCTIONAL_EXCHANGES_ECHANGE_ITEMS_PARAMS = "Show Functional Exchanges [ExchangeItems(Parameters)]"; //$NON-NLS-1$
+  String SHOW_FUNCTIONAL_EXCHANGES_PARAMS = "Show Functional Exchanges (Parameters)"; //$NON-NLS-1$
+  String SHOW_FUNCTIONAL_EXCHANGES_ECHANGE_ITEMS_PARAMS = "Show Functional Exchanges [ExchangeItems(Parameters)]"; //$NON-NLS-1$
   String CDB_SHOW_FULL_PATH = "Show Full Path";//$NON-NLS-1$
   String SHOW_CONTEXTUAL_ELEMENTS = "Show Contextual Elements";//$NON-NLS-1$
 

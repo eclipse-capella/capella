@@ -46,10 +46,15 @@ public interface IRepresentationAnnotationConstants {
    * 
    */
   public static final String REVIEW_VALUE_KEYVALUE = "value"; //$NON-NLS-1$
-  
-  /** 
+
+  /**
    * Key used to store contextual elements
    */
   public static final String ContextualElements = "http://www.polarsys.org/capella/dannotation/ContextualElements"; //$NON-NLS-1$
+
+  /**
+   * Used on DRepresentationDescriptors to denote some filters that have been desactivated by the user
+   */
+  public static final String DesactivatedFilters = "https://www.polarsys.org/capella/dannotation/DesactivatedFilters"; //$NON-NLS-1$
 
 }
