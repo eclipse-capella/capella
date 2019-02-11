@@ -6555,43 +6555,46 @@ public class CsServices {
         targetElement = (DSemanticDecorator) targetElement.eContainer();
       }
       // Case 6
-      DDiagramContents context = new DDiagramContents(diagram);
-      Collection<DEdge> edges = context.getEdges(communication);
-      for (DEdge edge : edges) {
-        if (edge.isVisible() && !(edge.getMapping().getName().equals(labMappingName)
-            || edge.getMapping().getName().equals(pabMappingName))) {
-          boolean hasSrc = false;
-          DSemanticDecorator sourceNode = (DSemanticDecorator) edge.getSourceNode();
-          if (sourceNode.getTarget() instanceof Port) {
-            sourceNode = (DSemanticDecorator) sourceNode.eContainer();
-          }
-          List<DDiagramElement> toCheck = new ArrayList<>();
-          toCheck.add((DDiagramElement) sourceElement);
-          toCheck.addAll(((DNodeContainer) sourceElement).getOwnedDiagramElements());
-          Iterator<DDiagramElement> sourceElementContents = toCheck.iterator();
-          while (!hasSrc && sourceElementContents.hasNext()) {
-            EObject next = sourceElementContents.next();
-            if (next == sourceNode) {
-              hasSrc = true;
+      Collection<DSemanticDecorator> elements = DiagramServices.getDiagramServices().getDiagramElements(diagram,
+          communication);
+      for (DSemanticDecorator view : elements) {
+        if (view instanceof DEdge) {
+          DEdge edge = (DEdge) view;
+          if (edge.isVisible() && !(edge.getMapping().getName().equals(labMappingName)
+              || edge.getMapping().getName().equals(pabMappingName))) {
+            boolean hasSrc = false;
+            DSemanticDecorator sourceNode = (DSemanticDecorator) edge.getSourceNode();
+            if (sourceNode.getTarget() instanceof Port) {
+              sourceNode = (DSemanticDecorator) sourceNode.eContainer();
             }
-          }
-          toCheck.clear();
-          boolean hasTrgt = false;
-          DSemanticDecorator targetNode = (DSemanticDecorator) edge.getTargetNode();
-          if (targetNode.getTarget() instanceof Port) {
-            targetNode = (DSemanticDecorator) targetNode.eContainer();
-          }
-          toCheck.add((DDiagramElement) targetElement);
-          toCheck.addAll(((DNodeContainer) targetElement).getOwnedDiagramElements());
-          Iterator<DDiagramElement> targetElementContents = toCheck.iterator();
-          while (!hasTrgt && targetElementContents.hasNext()) {
-            EObject next = targetElementContents.next();
-            if (next == targetNode) {
-              hasTrgt = true;
+            List<DDiagramElement> toCheck = new ArrayList<>();
+            toCheck.add((DDiagramElement) sourceElement);
+            toCheck.addAll(((DNodeContainer) sourceElement).getOwnedDiagramElements());
+            Iterator<DDiagramElement> sourceElementContents = toCheck.iterator();
+            while (!hasSrc && sourceElementContents.hasNext()) {
+              EObject next = sourceElementContents.next();
+              if (next == sourceNode) {
+                hasSrc = true;
+              }
             }
-          }
-          if (hasSrc && hasTrgt) {
-            return false;
+            toCheck.clear();
+            boolean hasTrgt = false;
+            DSemanticDecorator targetNode = (DSemanticDecorator) edge.getTargetNode();
+            if (targetNode.getTarget() instanceof Port) {
+              targetNode = (DSemanticDecorator) targetNode.eContainer();
+            }
+            toCheck.add((DDiagramElement) targetElement);
+            toCheck.addAll(((DNodeContainer) targetElement).getOwnedDiagramElements());
+            Iterator<DDiagramElement> targetElementContents = toCheck.iterator();
+            while (!hasTrgt && targetElementContents.hasNext()) {
+              EObject next = targetElementContents.next();
+              if (next == targetNode) {
+                hasTrgt = true;
+              }
+            }
+            if (hasSrc && hasTrgt) {
+              return false;
+            }
           }
         }
       }
@@ -6630,45 +6633,48 @@ public class CsServices {
   }
 
   private Collection<EObject> getVisibleEdgeEnds(DDiagram diagram, EObject source) {
-    DDiagramContents context = new DDiagramContents(diagram);
     // When it is a port, try to find the diagram element
     // corresponding to this port and return it
     if (source instanceof Port) {
-      DDiagramElement diagramElement = getDiagramElement(context, source);
+      DDiagramElement diagramElement = DiagramServices.getDiagramServices().getDiagramElement(diagram, source);
       // Port is on t
-      Collection<Part> representingParts = ComponentExt.getRepresentingParts((Component) source.eContainer());
       if (diagramElement != null) {
         List<EObject> result = new ArrayList<>();
         if (diagramElement.isVisible()) {
           result.add(source);
         }
         if (source.eContainer() instanceof Component) {
-          Part portParent = representingParts.iterator().next();
-          result.addAll(getVisibleEdgeEnds(context, portParent, false));
+          Collection<Part> representingParts = ComponentExt.getRepresentingParts((Component) source.eContainer());
+          if (!representingParts.isEmpty()) {
+            Part portParent = representingParts.iterator().next();
+            result.addAll(getVisibleEdgeEnds(diagram, portParent, false));
+          }
         }
         return result;
+
       } else if (source.eContainer() instanceof Component) {
-        Part portParent = representingParts.iterator().next();
-        return getVisibleEdgeEnds(context, portParent, true);
+        Collection<Part> representingParts = ComponentExt.getRepresentingParts((Component) source.eContainer());
+        if (!representingParts.isEmpty()) {
+          Part portParent = representingParts.iterator().next();
+          return getVisibleEdgeEnds(diagram, portParent, true);
+        }
       }
 
     } else if (source instanceof Part) {
-      return getVisibleEdgeEnds(context, (Part) source, true);
+      return getVisibleEdgeEnds(diagram, (Part) source, true);
     }
     return Collections.emptyList();
   }
 
-  private Collection<EObject> getVisibleEdgeEnds(DDiagramContents context, Part mainPart, boolean handleMainPart) {
+  private Collection<EObject> getVisibleEdgeEnds(DDiagram diagram, Part mainPart, boolean handleMainPart) {
     List<EObject> result = new ArrayList<>();
     List<DeploymentTarget> toHandle = new ArrayList<>();
     if (handleMainPart) {
       toHandle.add(mainPart);
-      addRelevantParts(context, mainPart, toHandle);
-    } else {
-      addRelevantParts(context, mainPart, toHandle);
     }
+    addRelevantParts(diagram, mainPart, toHandle);
     for (DeploymentTarget element : PartExt.getDeployingElements(mainPart)) {
-      if (!isChildView(context, mainPart, element)) {
+      if (!isChildView(diagram, mainPart, element)) {
         toHandle.add(element);
       }
     }
@@ -6676,7 +6682,7 @@ public class CsServices {
       Collection<Part> relevantParts = new ArrayList<>();
       relevantParts.add((Part) deploymentTarget);
       relevantParts.addAll(ComponentExt.getPartAncestors((Part) deploymentTarget));
-      EObject firstVisibleAncestor = getFirstVisibleAncestor(context, relevantParts);
+      EObject firstVisibleAncestor = getFirstVisibleAncestor(diagram, relevantParts);
       if (firstVisibleAncestor instanceof Part) {
         result.add(firstVisibleAncestor);
       }
@@ -6684,12 +6690,12 @@ public class CsServices {
     return result;
   }
 
-  private boolean isChildView(DDiagramContents context, Part mainPart, DeploymentTarget element) {
-    for (DDiagramElement diagElt : context.getDiagramElements(element)) {
-      if (diagElt instanceof DNodeContainer) {
-        DNodeContainer node = (DNodeContainer) diagElt;
-        for (DDiagramElement elt : node.getOwnedDiagramElements()) {
-          if (mainPart.equals(elt.getTarget()) && elt.isVisible()) {
+  private boolean isChildView(DDiagram diagram, Part mainPart, DeploymentTarget element) {
+    for (DSemanticDecorator view : DiagramServices.getDiagramServices().getDiagramElements(diagram, element)) {
+      if (view instanceof DNodeContainer) {
+        DNodeContainer node = (DNodeContainer) view;
+        for (DDiagramElement child : node.getOwnedDiagramElements()) {
+          if (mainPart.equals(child.getTarget()) && child.isVisible()) {
             return true;
           }
         }
@@ -6698,13 +6704,14 @@ public class CsServices {
     return false;
   }
 
-  private void addRelevantParts(DDiagramContents context, Part mainPart, List<DeploymentTarget> toHandle) {
-    Iterator<Part> partsIterator = ComponentExt.getRepresentingParts((Component) mainPart.eContainer()).iterator();
-    while (partsIterator.hasNext()) {
-      Part parentPart = partsIterator.next();
-      Collection<DDiagramElement> diagramElements = context.getDiagramElements(parentPart);
+  private void addRelevantParts(DDiagram diagram, Part mainPart, List<DeploymentTarget> toHandle) {
+    Iterator<Part> parts = ComponentExt.getRepresentingParts((Component) mainPart.eContainer()).iterator();
+    while (parts.hasNext()) {
+      Part parentPart = parts.next();
+      Collection<DSemanticDecorator> diagramElements = DiagramServices.getDiagramServices().getDiagramElements(diagram,
+          parentPart);
       int foundCount = 0;
-      for (DDiagramElement diagElt : diagramElements) {
+      for (DSemanticDecorator diagElt : diagramElements) {
         if (diagElt instanceof DNodeContainer) {
           DNodeContainer node = (DNodeContainer) diagElt;
           for (DDiagramElement elt : node.getOwnedDiagramElements()) {
@@ -6720,11 +6727,11 @@ public class CsServices {
     }
   }
 
-  private EObject getFirstVisibleAncestor(DDiagramContents context, Collection<Part> relevantParts) {
+  private EObject getFirstVisibleAncestor(DDiagram diagram, Collection<Part> relevantParts) {
     Iterator<Part> iterator = relevantParts.iterator();
     while (iterator.hasNext()) {
       Part part = iterator.next();
-      DDiagramElement diagramElement = getDiagramElement(context, part);
+      DDiagramElement diagramElement = DiagramServices.getDiagramServices().getDiagramElement(diagram, part);
       if (diagramElement != null && diagramElement.isVisible()) {
         return part;
       }
@@ -6732,9 +6739,4 @@ public class CsServices {
     return null;
   }
 
-  private DDiagramElement getDiagramElement(DDiagramContents context, EObject target) {
-    Iterable<DDiagramElement> diagramElements = context.getDiagramElements(target);
-    Iterator<DDiagramElement> iterator = diagramElements.iterator();
-    return iterator.hasNext() ? iterator.next() : null;
-  }
 }
