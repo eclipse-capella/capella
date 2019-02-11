@@ -10,6 +10,10 @@
  *******************************************************************************/
 package org.polarsys.capella.core.sirius.analysis.editpart;
 
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.diagram.core.util.ViewUtil;
 import org.eclipse.gmf.runtime.diagram.ui.services.editpart.AbstractEditPartProvider;
@@ -23,6 +27,20 @@ import org.eclipse.sirius.diagram.ui.internal.edit.parts.WorkspaceImageEditPart;
  * Specific Edit Part Provider for rotative image
  */
 public class RotativeImageEditPartProvider extends AbstractEditPartProvider {
+
+  public static Set<String> IMAGES_IDS = Stream
+      .of("/org.polarsys.capella.core.sirius.analysis/description/images/StandardPort_providedrequired.png", //$NON-NLS-1$
+          "/org.polarsys.capella.core.sirius.analysis/description/images/StandardPort_required.png", //$NON-NLS-1$
+          "/org.polarsys.capella.core.sirius.analysis/description/images/StandardPort_provided.png", //$NON-NLS-1$
+          "/org.polarsys.capella.core.sirius.analysis/description/images/StandardPort_2.png", //$NON-NLS-1$
+          "/org.polarsys.capella.core.sirius.analysis/description/images/InFlowPort.png", //$NON-NLS-1$
+          "/org.polarsys.capella.core.sirius.analysis/description/images/OutFlowPort.png", //$NON-NLS-1$
+          "/org.polarsys.capella.core.sirius.analysis/description/images/StandardPortSmall.png", //$NON-NLS-1$
+          "/org.polarsys.capella.core.sirius.analysis/description/images/FunctionInputPort.png", //$NON-NLS-1$
+          "/org.polarsys.capella.core.sirius.analysis/description/images/FunctionOutputPort.png", //$NON-NLS-1$
+          "/org.polarsys.capella.core.sirius.analysis/description/images/CategoryInput.png", //$NON-NLS-1$
+          "/org.polarsys.capella.core.sirius.analysis/description/images/CategoryOutput.png" //$NON-NLS-1$
+      ).collect(Collectors.toSet());;
 
   @Override
   protected Class<?> getNodeEditPartClass(final View view) {
@@ -56,17 +74,8 @@ public class RotativeImageEditPartProvider extends AbstractEditPartProvider {
     return super.getNodeEditPartClass(view);
   }
 
-  /**
-   * @param ownedStyle_p
-   * @return
-   */
   private boolean isRotative(WorkspaceImage ownedStyle_p) {
-    for (String imageId : RotativeImageEditPart.IMAGES_ID) {
-      if (ownedStyle_p.getWorkspacePath() != null && ownedStyle_p.getWorkspacePath().startsWith(imageId)) {
-        return true;
-      }
-    }
-    return false;
+    return IMAGES_IDS.contains(ownedStyle_p.getWorkspacePath());
   }
 
 }
