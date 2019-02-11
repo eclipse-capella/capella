@@ -214,7 +214,7 @@
    <extension
          point="org.eclipse.ui.views">
       <view
-            category="org.polarsys.capella.views.category.incubation"
+            category="org.polarsys.capella.views.category"
             class="org.polarsys.capella.core.libraries.ui.move.MoveStagingView"
             icon="icons/transfer_16x16.png"
             id="org.polarsys.capella.core.libraries.ui.moveview"
@@ -230,6 +230,15 @@
             id="org.polarsys.capella.core.libraries.ui.moveReset"
             name="Reset">
       </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="capella.sirius.perspective">
+         <viewShortcut
+               id="org.polarsys.capella.core.libraries.ui.moveview">
+         </viewShortcut>
+      </perspectiveExtension>
    </extension>
 
 </plugin>
