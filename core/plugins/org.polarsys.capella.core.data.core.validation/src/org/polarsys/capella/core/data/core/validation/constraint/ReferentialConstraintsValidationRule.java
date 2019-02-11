@@ -40,7 +40,7 @@ public class ReferentialConstraintsValidationRule extends AbstractValidationRule
   public IStatus validate(IValidationContext ctx) {
 
     boolean isLiveValidation = ctx.getEventType() != EMFEventType.NULL;
-    ReferentialConstraintsValidationHelper helper = new ReferentialConstraintsValidationHelper(isLiveValidation) {
+    ReferentialConstraintsValidationHelper<IStatus> helper = new ReferentialConstraintsValidationHelper<IStatus>(isLiveValidation) {
       @Override
       protected IStatus createStatus(EObject source, EObject target, EReference ref) {
         return ConstraintStatus.createStatus(ctx, Arrays.asList(source, target) ,

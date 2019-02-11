@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
@@ -26,7 +25,7 @@ import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFact
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
 import org.polarsys.capella.core.business.queries.capellacore.BusinessQueriesProvider;
 
-public abstract class ReferentialConstraintsValidationHelper {
+public abstract class ReferentialConstraintsValidationHelper<T> {
 
   final boolean liveValidation;
   
@@ -34,8 +33,8 @@ public abstract class ReferentialConstraintsValidationHelper {
     this.liveValidation = liveValidation;
   }
 
-  public Collection<IStatus> validate(Collection<EObject> targets) {
-    Collection<IStatus> result = new ArrayList<IStatus>();
+  public List<T> validate(Collection<EObject> targets) {
+    List<T> result = new ArrayList<>();
     for (EObject e : targets) {
       // only validate incoming references in live mode
       if (liveValidation) {
@@ -77,7 +76,7 @@ public abstract class ReferentialConstraintsValidationHelper {
     
   }
 
-  private void validateSetting(EObject source, EReference ref, EObject target, Collection<IStatus> results) {
+  private void validateSetting(EObject source, EReference ref, EObject target, Collection<T> results) {
 
     IBusinessQuery query = BusinessQueriesProvider.getInstance().getContribution(source.eClass(), ref);
 
@@ -90,7 +89,7 @@ public abstract class ReferentialConstraintsValidationHelper {
         // some of the queries that use trace typed features to calculate
         // derived elements, and these are useless here
         List<EObject> currentElements = query.getCurrentElements(source, false);
-        if (currentElements.contains(target)) {          
+        if (currentElements.contains(target)) {
           results.add(createStatus(source, target, ref));
         }
       }
@@ -98,7 +97,7 @@ public abstract class ReferentialConstraintsValidationHelper {
 
   }
 
-  public void validateOutgoingReferences(EObject element, Collection<IStatus> results) {
+  public void validateOutgoingReferences(EObject element, Collection<T> results) {
 
     for (EContentsEList.FeatureIterator<EObject> it = (EContentsEList.FeatureIterator<EObject>)element.eCrossReferences().iterator(); it.hasNext(); ) {
       EObject target = it.next();
@@ -114,7 +113,7 @@ public abstract class ReferentialConstraintsValidationHelper {
 
   }
 
-  public void validateIncomingReferences(EObject element, Collection<IStatus> results, Collection<EObject> sourceFilter){
+  public void validateIncomingReferences(EObject element, Collection<T> results, Collection<EObject> sourceFilter){
     SemanticEditingDomain domain = (SemanticEditingDomain) TransactionUtil.getEditingDomain(element);
     for (EStructuralFeature.Setting s : domain.getCrossReferencer().getInverseReferences(element)) {
       EObject source = s.getEObject();
@@ -134,6 +133,6 @@ public abstract class ReferentialConstraintsValidationHelper {
 
   }
 
-  protected abstract IStatus createStatus(EObject source, EObject target, EReference ref);
+  protected abstract T createStatus(EObject source, EObject target, EReference ref);
 
 }

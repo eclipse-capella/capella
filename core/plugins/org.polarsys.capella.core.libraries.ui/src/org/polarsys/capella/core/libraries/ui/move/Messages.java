@@ -23,6 +23,10 @@ public class Messages extends NLS {
   public static String MoveStagingView_unstageLabel;
   public static String MoveStagingView_addRequiredElementsLabel;
   public static String MoveStagingView_addAllRequiredElementsLabel;
+  public static String MoveStagingView_CancelStatusMessage;
+  public static String MoveStagingView_fail_dialog_message;
+  public static String MoveStagingView_fail_dialog_title;
+  public static String MoveStagingView_forced_move_message;
   public static String MoveStagingView_unstageActionTooltip;
   public static String ValidateExecuteListener_dialogCancelButton;
   public static String ValidateExecuteListener_dialogMessage;
