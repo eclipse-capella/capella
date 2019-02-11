@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,8 +27,6 @@ public class GenericModel {
   public static String ACTOR_PKG = "ACTOR_PKG";
   public static String INTERFACE_PKG = "INTERFACE_PKG";
   public static String DATA_PKG = "DATA_PKG";
-  
-
   
   public static String SCENARIO_1 = "SCENARIO 1";
   public static String INSTANCE_ROLE_1 = "INSTANCE_ROLE_1";
@@ -80,6 +78,13 @@ public class GenericModel {
 
   public static String COMPONENT_EXCHANGE_1 = "COMPONENT_EXCHANGE_1";
   public static String COMPONENT_EXCHANGE_2 = "COMPONENT_EXCHANGE_2";
+  public static String COMPONENT_EXCHANGE_3 = "COMPONENT_EXCHANGE_3";
+  public static String COMPONENT_EXCHANGE_4 = "COMPONENT_EXCHANGE_4";
+  public static String COMPONENT_EXCHANGE_5 = "COMPONENT_EXCHANGE_5";
+  public static String COMPONENT_EXCHANGE_6 = "COMPONENT_EXCHANGE_6";
+  public static String COMPONENT_EXCHANGE_7 = "COMPONENT_EXCHANGE_7";
+  public static String COMPONENT_EXCHANGE_8 = "COMPONENT_EXCHANGE_8";
+  public static String COMPONENT_EXCHANGE_9 = "COMPONENT_EXCHANGE_9";
   
   public static String MISSION_1 = "MISSION 1";
   public static String MISSION_2 = "MISSION 2";
@@ -242,4 +247,14 @@ public class GenericModel {
   public static String CL_4 = "CL_4";
   public static String CL_5 = "CL_5";
   public static String CL_6 = "CL_6";
+  
+  public static String PHYSICAL_LINK_1 = "PHYSICAL LINK 1";
+  public static String NODE_COMPONENT_1 = "NODE COMPONENT 1";
+  public static String DEPLOY_NODE_COMPONENT_1 = "DEPLOY NODE COMPONENT 2";
+  public static String BEHAVIOR_PC_1 = "BEHAVIOR PC 1";
+  public static String BEHAVIOR_PC_1_1 = "BEHAVIOR PC 1_1";
+  public static String BEHAVIOR_PC_1_2 = "BEHAVIOR PC 1_2";
+  public static String BEHAVIOR_PC_1_1_1 = "BEHAVIOR PC 1_1_1";
+  public static String DEPLOY_BEHAVIOR_PC_1 = "DEPLOY BEHAVIOR PC 1";
+  public static String DEPLOY_BEHAVIOR_PC_1_2_1 = "DEPLOY BEHAVIOR PC 1_2_1";
 }

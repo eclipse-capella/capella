@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,12 +20,9 @@ import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.CommonTools
 import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.DiagramActionsTestSuite;
 import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.ESDiagramToolsTestSuite;
 import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.IDBDiagramToolsTestSuite;
-import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.LABDiagramToolsTestSuite;
 import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.MCBDiagramToolsTestSuite;
 import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.MSDiagramToolsTestSuite;
 import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.MSMDiagramToolsTestSuite;
-import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.PABDiagramToolsTestSuite;
-import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.SABDiagramToolsTestSuite;
 import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.SFDBDiagramToolsTestSuite;
 import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.XABDiagramToolsTestSuite;
 import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.XBDiagramToolsTestSuite;
@@ -54,10 +51,7 @@ public class DiagramToolsTestSuite extends BasicTestSuite {
     tests.add(new SFDBDiagramToolsTestSuite());
     tests.add(new MSMDiagramToolsTestSuite());
     tests.add(new CDBDiagramToolsTestSuite());
-    tests.add(new LABDiagramToolsTestSuite());
     tests.add(new IDBDiagramToolsTestSuite());
-    tests.add(new PABDiagramToolsTestSuite());
-    tests.add(new SABDiagramToolsTestSuite());
     tests.add(new MCBDiagramToolsTestSuite());
     tests.add(new XABDiagramToolsTestSuite());
     tests.add(new ESDiagramToolsTestSuite());

@@ -20,6 +20,7 @@ public class Messages extends NLS {
 
   public static String toolWrapperArgumentErr;
   public static String toolWrapperArgumentValueErr;
+  public static String toolWrapperArgumentValueFailedErr;
   public static String toolWrapperNotAvailable;
 
   public static String toolDoesNotExist;

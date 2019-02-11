@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -104,6 +104,11 @@ public class BlockArchitectureExt {
   }
 
 	public enum Type {OA, SA, LA, PA, EPBS}
+	public enum FunctionType {SYSTEM_FUNCTION, DUPLICATE, GATHER, ROUTE, SELECT, SPLIT};
+	public enum FunctionPortType {IN_FUNCTION_PORT, OUT_FUNCTION_PORT};
+	public enum ComponentPortType {IN_FLOW_PORT, OUT_FLOW_PORT, IN_OUT_FLOW_PORT, STANDARD_PORT, PHYSICAL_PORT};
+	public enum LinkDirection {SOURCE, TARGET};
+	public enum ConfigurationItemType {COTS, CS, HW, INTERFACE, NDI, PRIME_ITEM, SYSTEM};
 	
 	public static Type getBlockArchitectureType(BlockArchitecture block) {
 		if (block instanceof OperationalAnalysis)
