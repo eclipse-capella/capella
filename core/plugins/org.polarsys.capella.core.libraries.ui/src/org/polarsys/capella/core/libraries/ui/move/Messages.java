@@ -16,6 +16,8 @@ public class Messages extends NLS {
   private static final String BUNDLE_NAME = "org.polarsys.capella.core.libraries.ui.move.messages"; //$NON-NLS-1$
   public static String MoveStagingView_backrefTooltip;
   public static String MoveStagingView_clearParentLabel;
+  public static String MoveStagingView_collapseAllAction_text;
+  public static String MoveStagingView_collapseAllAction_tooltip;
   public static String MoveStagingView_destinationSectionDescription;
   public static String MoveStagingView_destinationSectionTitle;
   public static String MoveStagingView_stageSectionDescription;
@@ -24,6 +26,8 @@ public class Messages extends NLS {
   public static String MoveStagingView_addRequiredElementsLabel;
   public static String MoveStagingView_addAllRequiredElementsLabel;
   public static String MoveStagingView_CancelStatusMessage;
+  public static String MoveStagingView_expandAllAction_text;
+  public static String MoveStagingView_expandAllAction_tooltip;
   public static String MoveStagingView_fail_dialog_message;
   public static String MoveStagingView_fail_dialog_title;
   public static String MoveStagingView_forced_move_message;

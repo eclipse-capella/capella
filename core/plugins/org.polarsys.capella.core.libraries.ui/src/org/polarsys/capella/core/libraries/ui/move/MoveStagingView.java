@@ -172,11 +172,17 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
   IAction addAllRequiredAction;
   IAction unstageAction;
 
+  IAction stageExpandAllAction;
+  IAction stageCollapseAllAction;
+
   /**
    * Actions on the right viewer
    */
   IAction clearParentAction;
   
+  IAction destExpandAllAction;
+  IAction destCollapseAllAction;
+
   public Stage getStage(){
     return stage;
   }
@@ -202,6 +208,7 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
     Composite stageSectionClient = toolkit.createComposite(stageSection);
     stageSectionClient.setLayout(new GridLayout(2, false));
     stageSection.setClient(stageSectionClient);
+
     createStageViewer(stageSectionClient);
 
     destinationSection = toolkit.createSection(form.getBody(),
@@ -459,6 +466,12 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
           });
 
           destinationViewer.setInput(stage.getEditingDomain().getResourceSet());
+
+          stageExpandAllAction.setEnabled(true);
+          stageCollapseAllAction.setEnabled(true);
+          destExpandAllAction.setEnabled(true);
+          destCollapseAllAction.setEnabled(true);
+
         }
 
         stage.addAll(dropped);
@@ -497,10 +510,18 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
     addRequiredAction = new AddRequiredAction();
     addAllRequiredAction = new AddAllRequiredAction();
 
+    stageExpandAllAction = new ExpandAllAction(stageViewer);
+    stageExpandAllAction.setEnabled(false);
+
+    stageCollapseAllAction = new CollapseAllAction(stageViewer);
+    stageCollapseAllAction.setEnabled(false);
+
     stageViewer.addSelectionChangedListener((ISelectionChangedListener) addRequiredAction);
     stageViewer.addSelectionChangedListener((ISelectionChangedListener) unstageAction);
     stageViewer.addSelectionChangedListener((ISelectionChangedListener) addAllRequiredAction);
 
+    stageViewerToolBarManager.add(stageExpandAllAction);
+    stageViewerToolBarManager.add(stageCollapseAllAction);
     stageViewerToolBarManager.add(unstageAction);
     stageViewerToolBarManager.add(addRequiredAction);
     stageViewerToolBarManager.add(addAllRequiredAction);
@@ -666,7 +687,16 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
 
     destinationViewer.addSelectionChangedListener((ISelectionChangedListener) clearParentAction);
 
+    destExpandAllAction = new ExpandAllAction(destinationViewer);
+    destExpandAllAction.setEnabled(false);
+
+    destCollapseAllAction = new CollapseAllAction(destinationViewer);
+    destCollapseAllAction.setEnabled(false);
+
+    destinationViewerToolBarManager.add(destExpandAllAction);
+    destinationViewerToolBarManager.add(destCollapseAllAction);
     destinationViewerToolBarManager.add(clearParentAction);
+
     destinationViewerToolBarManager.update(true);
 
     MenuManager destinationContextMenu = new MenuManager();
@@ -822,6 +852,58 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
 
   }
 
+  private class ExpandAllAction extends TreeViewerAction {
+    public ExpandAllAction(TreeViewer viewer) {
+      super(viewer);
+      setText(Messages.MoveStagingView_expandAllAction_text);
+      setToolTipText(Messages.MoveStagingView_expandAllAction_tooltip);
+      setImageDescriptor(((ICommandImageService)getViewSite().getService(ICommandImageService.class)).getImageDescriptor("org.eclipse.ui.navigate.expandAll")); //$NON-NLS-1$
+    }
+
+    @Override
+    public void run() {
+      try {
+        getViewer().getControl().setRedraw(false);
+        getViewer().expandAll();
+        getViewer().getTree().getColumn(0).pack();
+      } finally {
+        getViewer().getControl().setRedraw(true);
+      }
+    }
+  }
+
+  private abstract class TreeViewerAction extends Action {
+    
+    private final TreeViewer viewer;
+    private TreeViewerAction(TreeViewer viewer) {
+      this.viewer = viewer;
+    }
+    protected TreeViewer getViewer() {
+      return viewer;
+    }
+  }
+  
+  private class CollapseAllAction extends TreeViewerAction {
+    
+    public CollapseAllAction(TreeViewer viewer) {
+      super(viewer);
+      setText(Messages.MoveStagingView_collapseAllAction_text);
+      setToolTipText(Messages.MoveStagingView_collapseAllAction_tooltip);
+      setImageDescriptor(((ICommandImageService)getViewSite().getService(ICommandImageService.class)).getImageDescriptor("org.eclipse.ui.navigate.collapseAll")); //$NON-NLS-1$
+    }
+
+    @Override
+    public void run() {
+      try {
+        getViewer().getControl().setRedraw(false);
+        getViewer().collapseAll();
+        getViewer().getTree().getColumn(0).pack();
+      } finally {
+        getViewer().getControl().setRedraw(true);
+      }
+    }
+  }
+  
   private class AddRequiredAction extends AbstractAddRequiredAction {
 
     private AddRequiredAction() {
@@ -1067,6 +1149,10 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
       stage.dispose();
       stage = null;
     }
+    stageExpandAllAction.setEnabled(false);
+    stageCollapseAllAction.setEnabled(false);
+    destExpandAllAction.setEnabled(false);
+    destCollapseAllAction.setEnabled(false);
   }
 
   @Override
