@@ -8,53 +8,98 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.test.diagram.tools.ju.xab;
+package org.polarsys.capella.test.diagram.tools.ju.xab.showhide.functions;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.LineStyle;
 import org.eclipse.sirius.diagram.NodeStyle;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.FontFormat;
-import org.polarsys.capella.test.diagram.common.ju.context.PABDiagram;
 import org.polarsys.capella.test.diagram.common.ju.context.XABDiagram;
 import org.polarsys.capella.test.diagram.common.ju.context.XDFBDiagram;
 import org.polarsys.capella.test.diagram.tools.ju.model.EmptyProject;
 import org.polarsys.capella.test.framework.context.SessionContext;
 import org.polarsys.capella.test.framework.model.GenericModel;
 
-public class ShowHideFunctions extends EmptyProject {
+public abstract class AbstractShowHideFunctions extends EmptyProject {
 
-  @Override
-  public void test() throws Exception {
-    Session session = getSession(getRequiredTestModel());
-    SessionContext context = new SessionContext(session);
-
-    testOn(context, EmptyProject.OA__OPERATIONAL_ACTIVITIES__ROOT_OA, EmptyProject.OA__OPERATIONAL_CONTEXT);
-    testOn(context, EmptyProject.LA__ROOT_LF, EmptyProject.LA__LOGICAL_SYSTEM);
-    testOn(context, EmptyProject.PA__ROOT_PF, EmptyProject.PA__PHYSICAL_SYSTEM);
-
+  /**
+   * Common create component tool, that can be overrided with custom behavior by each level.
+   * 
+   * @param xab
+   *          the xab diagram
+   * @param componentId
+   *          component id
+   * @param containerId
+   *          container id
+   */
+  protected void createComponent(XABDiagram xab, String componentId, String containerId) {
+    xab.createComponent(componentId, containerId);
   }
 
   /**
-   * Perform the test on the given architecture
+   * Common create insert tool, that can be overrided with custom behavior by each level.
+   * 
+   * @param xab
+   *          the xab diagram
+   * @param componentId
+   *          component id
+   * @param containerId
+   *          container id
    */
-  protected void testOn(SessionContext context, String rootSF, String rootCPS) {
-    initialize(context, rootSF, rootCPS);
+  protected void insertComponent(XABDiagram xab, String id, String containerId) {
+    xab.insertComponent(id, containerId);
+  }
+
+  /**
+   * Common create remove tool, that can be overrided with custom behavior by each level.
+   * 
+   * @param xab
+   *          the xab diagram
+   * @param componentId
+   *          component id
+   * @param containerId
+   *          container id
+   */
+  protected void removeComponent(XABDiagram xab, String id, String containerId) {
+    xab.removeComponent(id, containerId);
+  }
+
+  /**
+   * Common scenarios that can be safely tested on all levels.
+   * 
+   * @param context
+   *          the context
+   * @param rootSF
+   *          root system function
+   * @param rootCPS
+   *          root component system
+   */
+  protected void testCommonScenarios(SessionContext context, String rootSF, String rootCPS) {
     testLeafFunctionInComponent(context, rootSF, rootCPS);
     testLeafFunctionInParentComponent(context, rootSF, rootCPS);
     testParentFunctionInComponent(context, rootSF, rootCPS);
     testParentFunctionInParentComponent(context, rootSF, rootCPS);
     testFunctionsMustHideIfShowSubComponent(context, rootSF, rootCPS);
-
   }
 
   /**
-   * Create a model
+   * Common model for all scenarios.
+   * 
+   * @param context
+   *          the context
+   * @param rootSF
+   *          root system function
+   * @param rootCPS
+   *          root component system
    */
   protected void initialize(SessionContext context, String rootSF, String rootCPS) {
+    initializeXDFB(context, rootSF, rootCPS);
+    initializeXAB(context, rootSF, rootCPS);
+  }
 
+  protected XDFBDiagram initializeXDFB(SessionContext context, String rootSF, String rootCPS) {
     XDFBDiagram xdfb = XDFBDiagram.createDiagram(context, rootSF);
     xdfb.createFunction(GenericModel.FUNCTION_1);
     xdfb.createFunction(GenericModel.FUNCTION_1_1, GenericModel.FUNCTION_1);
@@ -62,6 +107,10 @@ public class ShowHideFunctions extends EmptyProject {
     xdfb.createFunction(GenericModel.FUNCTION_1_1_2, GenericModel.FUNCTION_1_1);
     xdfb.createFunction(GenericModel.FUNCTION_1_2, GenericModel.FUNCTION_1);
 
+    return xdfb;
+  }
+
+  protected XABDiagram initializeXAB(SessionContext context, String rootSF, String rootCPS) {
     XABDiagram xab = XABDiagram.createDiagram(context, rootCPS);
     xab.clearDiagram();
     createComponent(xab, GenericModel.COMPONENT_1, xab.getDiagramId());
@@ -73,36 +122,13 @@ public class ShowHideFunctions extends EmptyProject {
     xab.manageAllocatedFunction(GenericModel.FUNCTION_1_1_2, GenericModel.COMPONENT_1_1_1);
     xab.manageAllocatedFunction(GenericModel.FUNCTION_1_2, GenericModel.COMPONENT_1_2);
 
-  }
-
-  private void createComponent(XABDiagram xab, String id, String containerId) {
-    if (xab instanceof PABDiagram) {
-      ((PABDiagram) xab).createBehaviorComponent(id, containerId);
-    } else {
-      xab.createComponent(id, containerId);
-    }
-  }
-
-  private void insertComponent(XABDiagram xab, String id, String containerId) {
-    if (xab instanceof PABDiagram) {
-      ((PABDiagram) xab).insertBehaviorComponent(id, containerId);
-    } else {
-      xab.insertComponent(id, containerId);
-    }
-  }
-
-  private void removeComponent(XABDiagram xab, String id, String containerId) {
-    if (xab instanceof PABDiagram) {
-      ((PABDiagram) xab).removeBehaviorComponent(id, containerId);
-    } else {
-      xab.removeComponent(id, containerId);
-    }
+    return xab;
   }
 
   /**
    * Create a diagram with components inside
    */
-  private XABDiagram setUpDiagram(SessionContext context, String rootSF, String rootCPS) {
+  protected XABDiagram setUpDiagram(SessionContext context, String rootSF, String rootCPS) {
 
     XABDiagram xab = XABDiagram.createDiagram(context, rootCPS);
     xab.clearDiagram();
@@ -120,7 +146,7 @@ public class ShowHideFunctions extends EmptyProject {
    * 
    * @param context
    */
-  private void testLeafFunctionInComponent(SessionContext context, String rootSF, String rootCPS) {
+  protected void testLeafFunctionInComponent(SessionContext context, String rootSF, String rootCPS) {
     XABDiagram xab = setUpDiagram(context, rootSF, rootCPS);
 
     xab.hasntView(GenericModel.FUNCTION_1_1_1);
@@ -139,7 +165,7 @@ public class ShowHideFunctions extends EmptyProject {
    * 
    * @param context
    */
-  private void testLeafFunctionInParentComponent(SessionContext context, String rootSF, String rootCPS) {
+  protected void testLeafFunctionInParentComponent(SessionContext context, String rootSF, String rootCPS) {
     XABDiagram xab = setUpDiagram(context, rootSF, rootCPS);
 
     removeComponent(xab, GenericModel.COMPONENT_1_1_1, GenericModel.COMPONENT_1_1);
@@ -168,7 +194,7 @@ public class ShowHideFunctions extends EmptyProject {
    * 
    * @param context
    */
-  private void testParentFunctionInComponent(SessionContext context, String rootSF, String rootCPS) {
+  protected void testParentFunctionInComponent(SessionContext context, String rootSF, String rootCPS) {
     XABDiagram xab = setUpDiagram(context, rootSF, rootCPS);
     xab.hasntView(GenericModel.FUNCTION_1_1);
     xab.insertAllocatedFunction(GenericModel.FUNCTION_1_1, GenericModel.COMPONENT_1_1_1);
@@ -180,7 +206,7 @@ public class ShowHideFunctions extends EmptyProject {
    * 
    * @param context
    */
-  private void testParentFunctionInParentComponent(SessionContext context, String rootSF, String rootCPS) {
+  protected void testParentFunctionInParentComponent(SessionContext context, String rootSF, String rootCPS) {
     XABDiagram xab = setUpDiagram(context, rootSF, rootCPS);
     removeComponent(xab, GenericModel.COMPONENT_1_1_1, GenericModel.COMPONENT_1_1);
     xab.insertAllocatedFunction(GenericModel.FUNCTION_1_1, GenericModel.COMPONENT_1_1);
@@ -197,7 +223,7 @@ public class ShowHideFunctions extends EmptyProject {
    * 
    * @param context
    */
-  private void testFunctionsMustHideIfShowSubComponent(SessionContext context, String rootSF, String rootCPS) {
+  protected void testFunctionsMustHideIfShowSubComponent(SessionContext context, String rootSF, String rootCPS) {
     XABDiagram xab = setUpDiagram(context, rootSF, rootCPS);
     removeComponent(xab, GenericModel.COMPONENT_1_2, GenericModel.COMPONENT_1);
     xab.insertAllocatedFunction(GenericModel.FUNCTION_1_2, GenericModel.COMPONENT_1);
@@ -205,7 +231,7 @@ public class ShowHideFunctions extends EmptyProject {
     xab.hasntView(GenericModel.FUNCTION_1_2);
   }
 
-  private void checkFunction(XABDiagram xab, String id, boolean mustBeItalic, boolean mustBeDash) {
+  protected void checkFunction(XABDiagram xab, String id, boolean mustBeItalic, boolean mustBeDash) {
 
     DSemanticDecorator view = xab.getView(id);
     if (view instanceof DNode) {

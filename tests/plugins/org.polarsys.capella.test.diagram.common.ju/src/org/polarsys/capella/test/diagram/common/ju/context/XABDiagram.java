@@ -58,19 +58,25 @@ public class XABDiagram extends CommonDiagram {
     final BlockArchitectureExt.Type type = BlockArchitectureExt.getBlockArchitectureType(architecture);
 
     String name = null;
-    if (type == Type.OA) {
-      name = IDiagramNameConstants.OPERATIONAL_ENTITY_BLANK_DIAGRAM_NAME;
-    } else if (type == Type.SA) {
+    switch (type) {
+    case OA:
+      return OABDiagram.createDiagram(executionContext, targetIdentifier);
+
+    case EPBS:
+      return EABDiagram.createDiagram(executionContext, targetIdentifier);
+
+    case PA:
+      return PABDiagram.createDiagram(executionContext, targetIdentifier);
+
+    case SA:
       name = IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME;
-    } else if (type == Type.LA) {
+      break;
+
+    case LA:
       name = IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME;
-    } else if (type == Type.PA) {
-      name = IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME;
+      break;
     }
 
-    if (type == Type.PA) {
-      return PABDiagram.createDiagram(executionContext, targetIdentifier);
-    }
     return (XABDiagram) new CreateDiagramStep(executionContext, targetIdentifier, name) {
       @Override
       public DiagramContext getResult() {
