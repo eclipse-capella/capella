@@ -30,7 +30,7 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.ui.ImageURIRegistry;
 import org.eclipse.emf.common.ui.dialogs.DiagnosticDialog;
 import org.eclipse.emf.common.ui.viewer.ColumnViewerInformationControlToolTipSupport;
-import org.eclipse.emf.common.ui.viewer.IUndecoratingLabelProvider;
+import org.eclipse.emf.common.ui.viewer.IStyledLabelDecorator;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.URI;
@@ -44,13 +44,11 @@ import org.eclipse.emf.edit.ui.EMFEditUIPlugin;
 import org.eclipse.emf.edit.ui.dnd.ViewerDragAdapter;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-import org.eclipse.emf.edit.ui.provider.DecoratingColumLabelProvider;
+import org.eclipse.emf.edit.ui.provider.DecoratingColumLabelProvider.StyledLabelProvider;
 import org.eclipse.emf.edit.ui.provider.DiagnosticDecorator;
 import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
-import org.eclipse.emf.transaction.ExceptionHandler;
 import org.eclipse.emf.transaction.ResourceSetListener;
 import org.eclipse.emf.transaction.RollbackException;
-import org.eclipse.emf.transaction.TransactionalCommandStack;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.jface.action.Action;
@@ -60,23 +58,24 @@ import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.action.ToolBarManager;
-import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.dialogs.IDialogConstants;
+import org.eclipse.jface.preference.JFacePreferences;
 import org.eclipse.jface.resource.FontDescriptor;
 import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.jface.resource.JFaceResources;
 import org.eclipse.jface.util.LocalSelectionTransfer;
 import org.eclipse.jface.viewers.CellLabelProvider;
-import org.eclipse.jface.viewers.ILabelDecorator;
+import org.eclipse.jface.viewers.DelegatingStyledCellLabelProvider;
 import org.eclipse.jface.viewers.ILabelProvider;
-import org.eclipse.jface.viewers.ILabelProviderListener;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.jface.viewers.StyledString;
+import org.eclipse.jface.viewers.StyledString.Styler;
 import org.eclipse.jface.viewers.TreeViewer;
-import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerCell;
 import org.eclipse.jface.viewers.ViewerDropAdapter;
 import org.eclipse.jface.window.Window;
@@ -87,9 +86,9 @@ import org.eclipse.swt.dnd.Transfer;
 import org.eclipse.swt.dnd.TransferData;
 import org.eclipse.swt.events.TreeEvent;
 import org.eclipse.swt.events.TreeListener;
-import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.graphics.TextStyle;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
@@ -150,7 +149,8 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
 
   FormToolkit toolkit;
 
-  final ComposedAdapterFactory cfac = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
+  private final AdapterFactory adapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
+  private final AdapterFactoryLabelProvider labelProvider = new AdapterFactoryLabelProvider(adapterFactory);
 
   Stage stage;
   StageListener listener;
@@ -362,7 +362,7 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
 
     stageViewer.setAutoExpandLevel(3);
 
-    stageViewer.setContentProvider(new AdapterFactoryContentProvider(new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE)){
+    stageViewer.setContentProvider(new AdapterFactoryContentProvider(adapterFactory){
 
       @Override
       public Object[] getElements(Object object) {
@@ -379,7 +379,6 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
       }
 
     });
-
 
     stageViewer.addDropSupport(DND.DROP_MOVE, new Transfer[] { LocalSelectionTransfer.getTransfer() }, new ViewerDropAdapter(stageViewer) {
 
@@ -449,8 +448,7 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
           };
           stage.addStageListener(listener);
           stageViewer.setInput(stage.getEditingDomain().getResourceSet());
-          stageViewer.setLabelProvider(
-              new DecoratingColumLabelProvider(new LabelProvider(cfac, stageViewer), new StageLabelDecorator()));
+          stageViewer.setLabelProvider(createLabelProvider(true));
           stageViewer.setFilters(new CollectionTreeFilter(stage.getElements(), false));
           tooltipSupport = new ColumnViewerInformationControlToolTipSupport(stageViewer, new DiagnosticDecorator.EditingDomainLocationListener(stage.getEditingDomain(), stageViewer) {
             @Override
@@ -461,7 +459,6 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
           });
 
           destinationViewer.setInput(stage.getEditingDomain().getResourceSet());
-
         }
 
         stage.addAll(dropped);
@@ -535,6 +532,12 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
 
   }
 
+  private CellLabelProvider createLabelProvider(boolean showErrorCount) {
+    return new DelegatingStyledCellLabelProvider(
+        new StyledLabelProvider(MoveStagingView.this.labelProvider,
+        new StageLabelDecorator(showErrorCount)));
+  }
+
   private void createDestinationViewer(Composite destinationSectionClient) {
     destinationViewer = new TreeViewer(toolkit.createTree(destinationSectionClient, SWT.BORDER | SWT.MULTI));
     TreeColumn column2 = new TreeColumn(destinationViewer.getTree(), SWT.LEFT);
@@ -545,9 +548,9 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
 
     destinationViewer.setAutoExpandLevel(3);
 
-    destinationViewer.setLabelProvider(
-        new DecoratingColumLabelProvider(new LabelProvider(cfac, destinationViewer), new StageLabelDecorator()));
-    destinationViewer.setContentProvider(new AdapterFactoryContentProvider(cfac) {
+    destinationViewer.setLabelProvider(createLabelProvider(false));
+
+    destinationViewer.setContentProvider(new AdapterFactoryContentProvider(MoveStagingView.this.adapterFactory) {
       @Override
       public Object[] getElements(Object object) {
         List<Object> result = new ArrayList<Object>();
@@ -864,9 +867,35 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
 
   }
 
+  /*  This decorates image labels with error markers,
+   *  adds the error count label decoration and applies font/color styles to the labels
+   */
+  class StageLabelDecorator extends CellLabelProvider implements IStyledLabelDecorator {
 
-  class StageLabelDecorator extends CellLabelProvider implements ILabelDecorator {
+    private boolean showErrorCount;
 
+    private Font boldFont;
+    private Styler boldFontStyler;
+
+    private Font italicFont;
+    private Styler italicFontStyler;
+
+    final Styler errorColorStyler = StyledString.createColorRegistryStyler(JFacePreferences.ERROR_COLOR, null);
+    final Styler greenColorStyler = new Styler() {
+      @Override
+      public void applyStyles(TextStyle textStyle) {
+        textStyle.foreground = FlexibilityColors.getColorRegistry().get(FlexibilityColors.FG_GREEN); 
+      }
+    };
+
+    StageLabelDecorator(){
+      showErrorCount = false;
+    }
+    
+    StageLabelDecorator(boolean showErrorCount){
+      this.showErrorCount = showErrorCount;
+    }
+    
     @Override
     public Image decorateImage(Image image, Object element) {
 
@@ -894,12 +923,7 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
       return text;
     }
 
-    protected void buildToolTipMessage(StringBuilder result, ILabelProvider labelProvider, Object object, Diagnostic diagnostic)
-    {
-      String message = diagnostic.getMessage();
-      ImageDescriptor imageDescriptor =
-        ExtendedImageRegistry.INSTANCE.getImageDescriptor
-          (EMFEditUIPlugin.INSTANCE.getImage(diagnostic.getSeverity() == Diagnostic.WARNING ? "full/ovr16/warning_ovr.gif" : "full/ovr16/error_ovr.gif")); //$NON-NLS-1$ //$NON-NLS-2$
+    protected void buildToolTipMessage(StringBuilder result, ILabelProvider labelProvider, Object object, Diagnostic diagnostic) {
 
       EObject target = (EObject) diagnostic.getData().get(1); // the referenced object
       EReference ref = (EReference) diagnostic.getData().get(2); // the reference
@@ -921,62 +945,114 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
       if (diags != null && diags.size() > 0) {
         Diagnostic d = diags.iterator().next();
         StringBuilder builder = new StringBuilder();
-
-        ILabelProvider labelProvider = (ILabelProvider) stageViewer.getLabelProvider();
-        if (labelProvider instanceof IUndecoratingLabelProvider)
-        {
-          final IUndecoratingLabelProvider undecoratingLabelProvider = (IUndecoratingLabelProvider)labelProvider;
-          labelProvider =
-            new ILabelProvider()
-            {
-              @Override
-              public void removeListener(ILabelProviderListener listener)
-              {
-                undecoratingLabelProvider.removeListener(listener);
-              }
-
-              @Override
-              public boolean isLabelProperty(Object element, String property)
-              {
-                return undecoratingLabelProvider.isLabelProperty(element, property);
-              }
-
-              @Override
-              public void dispose()
-              {
-                undecoratingLabelProvider.dispose();
-              }
-
-              @Override
-              public void addListener(ILabelProviderListener listener)
-              {
-                undecoratingLabelProvider.addListener(listener);
-              }
-
-              @Override
-              public String getText(Object element)
-              {
-                return undecoratingLabelProvider.getUndecoratedText(element);
-              }
-
-              @Override
-              public Image getImage(Object element)
-              {
-                return undecoratingLabelProvider.getUndecoratedImage(element);
-              }
-            };
-        }
-
         buildToolTipMessage(builder, labelProvider, element, d);
         return builder.toString();
       }
       return null;
     }
 
+    private int countChildrenBackreferences(EObject element) {
+      int result = 0;
+      for (Iterator<EObject> it = element.eAllContents(); it.hasNext();) {
+        if (stage.getBackreferences(it.next()).size() > 0) {
+          result++;
+        }
+      }
+      return result;
+    }
+
+    @Override
+    public StyledString decorateStyledText(StyledString styledString, Object element) {
+
+      final Styler fontStyler = getFontStyler(element);
+      Styler mainStyler = new Styler() {
+        @Override
+        public void applyStyles(TextStyle textStyle) {
+          Styler fontStyler = getFontStyler(element);
+          if (fontStyler != null) {
+            fontStyler.applyStyles(textStyle);
+          }
+          Styler colorStyler = getColorStyler(element);
+          if (colorStyler != null) {
+            colorStyler.applyStyles(textStyle);
+          }
+        }
+      };
+
+      styledString.setStyle(0, styledString.length(), mainStyler);
+
+      if (showErrorCount) {
+        int backrefs = countChildrenBackreferences((EObject) element);
+        if (backrefs > 0) {
+          Styler errorCountStyler = new Styler() {
+            @Override
+            public void applyStyles(TextStyle textStyle) {
+              if (fontStyler != null) {
+                fontStyler.applyStyles(textStyle);
+              }
+              errorColorStyler.applyStyles(textStyle);
+            }
+          };
+          styledString.append(" (" + String.valueOf(backrefs) + ")", errorCountStyler); //$NON-NLS-1$ //$NON-NLS-2$
+        }
+      }
+      return styledString;
+    }
+
+    private Styler getColorStyler(Object object) {
+      if (stage.hasBackreferences((EObject) object)) {
+        return errorColorStyler;
+      } else if (stage.getNewParent((EObject) object) != null) {
+        return greenColorStyler;
+      } 
+      return null;
+    }
+
+    private StyledString.Styler getFontStyler(Object object) {
+      if (stage.getElements().contains(object)) {
+        if (boldFontStyler == null) {
+          FontDescriptor descriptor = FontDescriptor.createFrom(JFaceResources.getDefaultFont()).setStyle(SWT.BOLD);
+          boldFont = descriptor.createFont(JFaceResources.getDefaultFont().getDevice());
+          boldFontStyler = new Styler() {
+            @Override
+            public void applyStyles(TextStyle textStyle) {
+              textStyle.font = boldFont;
+            }
+          };
+        }
+        return boldFontStyler;
+      } else if (object instanceof EObject && EcoreUtil.isAncestor(stage.getElements(), (EObject) object)) {
+        return null;
+      } else {
+        if (italicFontStyler == null) {
+          FontDescriptor descriptor = FontDescriptor.createFrom(JFaceResources.getDefaultFont()).setStyle(SWT.ITALIC);
+          italicFont = descriptor.createFont(JFaceResources.getDefaultFont().getDevice());
+          italicFontStyler = new Styler() {
+            @Override
+            public void applyStyles(TextStyle textStyle) {
+              // if it is italic, it must be gray, there are no combinations so take a shortcut here..
+              textStyle.font = italicFont;
+              textStyle.foreground = Display.getCurrent().getSystemColor(SWT.COLOR_DARK_GRAY);
+            }
+          };
+        }
+        return italicFontStyler;
+      }
+
+    }
+    
     @Override
     public void update(ViewerCell cell) {
-      // TODO Auto-generated method stub
-
+      /* not used */
+    }
+    
+    public void dispose() {
+      if (boldFont != null) {
+        boldFont.dispose();
+      }
+      if (italicFont != null) {
+        italicFont.dispose();
+      }
     }
 
   }
@@ -990,56 +1066,6 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
       }
       stage.dispose();
       stage = null;
-    }
-  }
-
-  class LabelProvider extends AdapterFactoryLabelProvider.FontAndColorProvider {
-
-  public LabelProvider(AdapterFactory adapterFactory, Viewer viewer) {
-      super(adapterFactory, viewer);
-  }
-
-    Font boldFont = null;
-    Font italicFont = null;
-
-    @Override
-    public void dispose() {
-      if (boldFont != null) {
-        boldFont.dispose();
-      }
-    }
-
-    @Override
-    public Font getFont(Object object) {
-      if (stage.getElements().contains(object)) {
-        if (boldFont == null) {
-          FontDescriptor descriptor = FontDescriptor.createFrom(getDefaultFont()).setStyle(SWT.BOLD);
-          boldFont = descriptor.createFont(getDefaultFont().getDevice());
-        }
-        return boldFont;
-      } else if (object instanceof EObject && EcoreUtil.isAncestor(stage.getElements(), (EObject) object)) {
-        return getDefaultFont();
-      } else {
-        if (italicFont == null) {
-          FontDescriptor descriptor = FontDescriptor.createFrom(getDefaultFont()).setStyle(SWT.ITALIC);
-          italicFont = descriptor.createFont(getDefaultFont().getDevice());
-        }
-        return italicFont;
-      }
-
-    }
-
-    @Override
-    public Color getForeground(Object object) {
-      if (stage.hasBackreferences((EObject) object)) {
-        return Display.getCurrent().getSystemColor(SWT.COLOR_RED);
-      } else if (stage.getNewParent((EObject) object) != null) {
-        return FlexibilityColors.getColorRegistry().get(FlexibilityColors.FG_GREEN);
-      }
-      if (!EcoreUtil.isAncestor(stage.getElements(), (EObject) object)) {
-        return Display.getCurrent().getSystemColor(SWT.COLOR_DARK_GRAY);
-      }
-      return super.getForeground(object);
     }
   }
 
@@ -1080,7 +1106,7 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
 
   @Override
   public void dispose() {
-    cfac.dispose();
+    labelProvider.dispose();
     if (toolkit != null) {
       toolkit.dispose();
     }
