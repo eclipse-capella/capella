@@ -22,10 +22,16 @@ import "http://www.polarsys.org/capella/core/core/1.3.0"
 
 @Surrogate(feature="previousFunctionalChainInvolvements")
 pattern FunctionalChainInvolvement__previousFunctionalChainInvolvements(self : FunctionalChainInvolvement, target : FunctionalChainInvolvement) {
-	FunctionalChainInvolvement.nextFunctionalChainInvolvements(target, self);
-// TODO understand why we should verify that target is in the same chain than self ...
-FunctionalChain.ownedFunctionalChainInvolvements(fc, self);
-FunctionalChain.ownedFunctionalChainInvolvements(fc, target);
+	FunctionalChainInvolvementLink.target(target, self);
+} or {
+	FunctionalChainInvolvementLink.source(self, target);
+}
+
+@Surrogate(feature="nextFunctionalChainInvolvements")
+pattern FunctionalChainInvolvement_nextFunctionalChainInvolvements(self : FunctionalChainInvolvement, target : FunctionalChainInvolvement) {
+	FunctionalChainInvolvementLink.source(target, self);
+} or {
+	FunctionalChainInvolvementLink.target(self, target);
 }
 
 @Surrogate(feature="involvedElement")

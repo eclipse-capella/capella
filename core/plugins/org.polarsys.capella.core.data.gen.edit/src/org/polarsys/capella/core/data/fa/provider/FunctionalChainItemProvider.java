@@ -37,6 +37,8 @@ import org.polarsys.capella.core.data.capellacore.provider.NamedElementItemProvi
 import org.polarsys.capella.core.data.fa.FaFactory;
 import org.polarsys.capella.core.data.fa.FaPackage;
 import org.polarsys.capella.core.data.fa.FunctionalChain;
+import org.polarsys.kitalpha.emde.extension.ExtensionModelManager;
+import org.polarsys.kitalpha.emde.extension.ModelExtensionHelper;
 import org.polarsys.kitalpha.emde.model.edit.provider.NewChildDescriptorHelper;
 
 /**
@@ -54,6 +56,19 @@ public class FunctionalChainItemProvider
 		IItemLabelProvider,
 		IItemPropertySource {
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected IItemPropertyDescriptor preConditionPropertyDescriptor;
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected IItemPropertyDescriptor postConditionPropertyDescriptor;
+
+	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -61,6 +76,41 @@ public class FunctionalChainItemProvider
 	 */
 	public FunctionalChainItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void checkChildCreationExtender(Object object) {
+		super.checkChildCreationExtender(object);
+		if (object instanceof EObject) {
+			EObject eObject = (EObject) object;
+			// Process FaPackage.Literals.FUNCTIONAL_CHAIN__PRE_CONDITION
+			if (preConditionPropertyDescriptor != null) {
+				Object preConditionValue = eObject.eGet(FaPackage.Literals.FUNCTIONAL_CHAIN__PRE_CONDITION, true);
+				if (preConditionValue != null && preConditionValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) preConditionValue)) {
+					itemPropertyDescriptors.remove(preConditionPropertyDescriptor);
+				} else if (preConditionValue == null && ExtensionModelManager.getAnyType(eObject, FaPackage.Literals.FUNCTIONAL_CHAIN__PRE_CONDITION) != null) {
+					itemPropertyDescriptors.remove(preConditionPropertyDescriptor);				  					
+				} else if (itemPropertyDescriptors.contains(preConditionPropertyDescriptor) == false) {
+					itemPropertyDescriptors.add(preConditionPropertyDescriptor);
+				}
+			}
+			// Process FaPackage.Literals.FUNCTIONAL_CHAIN__POST_CONDITION
+			if (postConditionPropertyDescriptor != null) {
+				Object postConditionValue = eObject.eGet(FaPackage.Literals.FUNCTIONAL_CHAIN__POST_CONDITION, true);
+				if (postConditionValue != null && postConditionValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) postConditionValue)) {
+					itemPropertyDescriptors.remove(postConditionPropertyDescriptor);
+				} else if (postConditionValue == null && ExtensionModelManager.getAnyType(eObject, FaPackage.Literals.FUNCTIONAL_CHAIN__POST_CONDITION) != null) {
+					itemPropertyDescriptors.remove(postConditionPropertyDescriptor);				  					
+				} else if (itemPropertyDescriptors.contains(postConditionPropertyDescriptor) == false) {
+					itemPropertyDescriptors.add(postConditionPropertyDescriptor);
+				}
+			}
+		}		
 	}
 
 	/**
@@ -89,6 +139,8 @@ public class FunctionalChainItemProvider
 			addInvolvingCapabilityRealizationsPropertyDescriptor(object);
 			addRealizedFunctionalChainsPropertyDescriptor(object);
 			addRealizingFunctionalChainsPropertyDescriptor(object);
+			addPreConditionPropertyDescriptor(object);
+			addPostConditionPropertyDescriptor(object);
 		}
 		// begin-extension-code
 		checkChildCreationExtender(object);
@@ -502,6 +554,58 @@ public class FunctionalChainItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Pre Condition feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addPreConditionPropertyDescriptor(Object object) {
+		// begin-extension-code
+		preConditionPropertyDescriptor = createItemPropertyDescriptor
+		// end-extension-code		
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_FunctionalChain_preCondition_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_FunctionalChain_preCondition_feature", "_UI_FunctionalChain_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 FaPackage.Literals.FUNCTIONAL_CHAIN__PRE_CONDITION,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+		// begin-extension-code
+				 null);
+		itemPropertyDescriptors.add(preConditionPropertyDescriptor);
+		// end-extension-code
+	}
+
+	/**
+	 * This adds a property descriptor for the Post Condition feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addPostConditionPropertyDescriptor(Object object) {
+		// begin-extension-code
+		postConditionPropertyDescriptor = createItemPropertyDescriptor
+		// end-extension-code		
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_FunctionalChain_postCondition_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_FunctionalChain_postCondition_feature", "_UI_FunctionalChain_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 FaPackage.Literals.FUNCTIONAL_CHAIN__POST_CONDITION,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+		// begin-extension-code
+				 null);
+		itemPropertyDescriptors.add(postConditionPropertyDescriptor);
+		// end-extension-code
+	}
+
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -515,6 +619,8 @@ public class FunctionalChainItemProvider
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(FaPackage.Literals.FUNCTIONAL_CHAIN__OWNED_FUNCTIONAL_CHAIN_INVOLVEMENTS);
 			childrenFeatures.add(FaPackage.Literals.FUNCTIONAL_CHAIN__OWNED_FUNCTIONAL_CHAIN_REALIZATIONS);
+			childrenFeatures.add(FaPackage.Literals.FUNCTIONAL_CHAIN__OWNED_SEQUENCE_NODES);
+			childrenFeatures.add(FaPackage.Literals.FUNCTIONAL_CHAIN__OWNED_SEQUENCE_LINKS);
 		}
 		return childrenFeatures;
 	}
@@ -584,6 +690,8 @@ public class FunctionalChainItemProvider
 				return;
 			case FaPackage.FUNCTIONAL_CHAIN__OWNED_FUNCTIONAL_CHAIN_INVOLVEMENTS:
 			case FaPackage.FUNCTIONAL_CHAIN__OWNED_FUNCTIONAL_CHAIN_REALIZATIONS:
+			case FaPackage.FUNCTIONAL_CHAIN__OWNED_SEQUENCE_NODES:
+			case FaPackage.FUNCTIONAL_CHAIN__OWNED_SEQUENCE_LINKS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -627,8 +735,56 @@ public class FunctionalChainItemProvider
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
+                        (FaPackage.Literals.FUNCTIONAL_CHAIN__OWNED_FUNCTIONAL_CHAIN_INVOLVEMENTS,
+                         FaFactory.eINSTANCE.createFunctionalChainInvolvementLink());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (FaPackage.Literals.FUNCTIONAL_CHAIN__OWNED_FUNCTIONAL_CHAIN_INVOLVEMENTS,
+                         FaFactory.eINSTANCE.createFunctionalChainInvolvementFunction());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
                         (FaPackage.Literals.FUNCTIONAL_CHAIN__OWNED_FUNCTIONAL_CHAIN_REALIZATIONS,
                          FaFactory.eINSTANCE.createFunctionalChainRealization());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (FaPackage.Literals.FUNCTIONAL_CHAIN__OWNED_SEQUENCE_NODES,
+                         FaFactory.eINSTANCE.createControlNode());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (FaPackage.Literals.FUNCTIONAL_CHAIN__OWNED_SEQUENCE_LINKS,
+                         FaFactory.eINSTANCE.createSequenceLink());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
                     }

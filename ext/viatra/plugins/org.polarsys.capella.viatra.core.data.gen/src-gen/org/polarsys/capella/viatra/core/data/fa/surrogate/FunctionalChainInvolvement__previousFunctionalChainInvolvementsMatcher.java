@@ -42,10 +42,9 @@ import org.polarsys.capella.viatra.core.data.fa.surrogate.util.FunctionalChainIn
  * 
  * {@literal @}Surrogate(feature="previousFunctionalChainInvolvements")
  * pattern FunctionalChainInvolvement__previousFunctionalChainInvolvements(self : FunctionalChainInvolvement, target : FunctionalChainInvolvement) {
- * 	FunctionalChainInvolvement.nextFunctionalChainInvolvements(target, self);
- * // TODO understand why we should verify that target is in the same chain than self ...
- * FunctionalChain.ownedFunctionalChainInvolvements(fc, self);
- * FunctionalChain.ownedFunctionalChainInvolvements(fc, target);
+ * 	FunctionalChainInvolvementLink.target(target, self);
+ * } or {
+ * 	FunctionalChainInvolvementLink.source(self, target);
  * }
  * </pre></code>
  * 

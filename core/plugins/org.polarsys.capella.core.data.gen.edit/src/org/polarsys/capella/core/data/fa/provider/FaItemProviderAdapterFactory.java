@@ -660,6 +660,98 @@ public class FaItemProviderAdapterFactory extends FaAdapterFactory implements Co
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.fa.FunctionalChainInvolvementLink} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected FunctionalChainInvolvementLinkItemProvider functionalChainInvolvementLinkItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.polarsys.capella.core.data.fa.FunctionalChainInvolvementLink}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createFunctionalChainInvolvementLinkAdapter() {
+		if (functionalChainInvolvementLinkItemProvider == null) {
+			functionalChainInvolvementLinkItemProvider = new FunctionalChainInvolvementLinkItemProvider(this);
+		}
+
+		return functionalChainInvolvementLinkItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.fa.SequenceLink} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected SequenceLinkItemProvider sequenceLinkItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.polarsys.capella.core.data.fa.SequenceLink}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createSequenceLinkAdapter() {
+		if (sequenceLinkItemProvider == null) {
+			sequenceLinkItemProvider = new SequenceLinkItemProvider(this);
+		}
+
+		return sequenceLinkItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.fa.FunctionalChainInvolvementFunction} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected FunctionalChainInvolvementFunctionItemProvider functionalChainInvolvementFunctionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.polarsys.capella.core.data.fa.FunctionalChainInvolvementFunction}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createFunctionalChainInvolvementFunctionAdapter() {
+		if (functionalChainInvolvementFunctionItemProvider == null) {
+			functionalChainInvolvementFunctionItemProvider = new FunctionalChainInvolvementFunctionItemProvider(this);
+		}
+
+		return functionalChainInvolvementFunctionItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.fa.ControlNode} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ControlNodeItemProvider controlNodeItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.polarsys.capella.core.data.fa.ControlNode}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createControlNodeAdapter() {
+		if (controlNodeItemProvider == null) {
+			controlNodeItemProvider = new ControlNodeItemProvider(this);
+		}
+
+		return controlNodeItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -809,6 +901,10 @@ public class FaItemProviderAdapterFactory extends FaAdapterFactory implements Co
 		if (componentPortItemProvider != null) componentPortItemProvider.dispose();
 		if (componentPortAllocationItemProvider != null) componentPortAllocationItemProvider.dispose();
 		if (componentPortAllocationEndItemProvider != null) componentPortAllocationEndItemProvider.dispose();
+		if (functionalChainInvolvementLinkItemProvider != null) functionalChainInvolvementLinkItemProvider.dispose();
+		if (sequenceLinkItemProvider != null) sequenceLinkItemProvider.dispose();
+		if (functionalChainInvolvementFunctionItemProvider != null) functionalChainInvolvementFunctionItemProvider.dispose();
+		if (controlNodeItemProvider != null) controlNodeItemProvider.dispose();
 	}
 
 	/**

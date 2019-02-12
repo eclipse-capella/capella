@@ -46,7 +46,6 @@ import org.polarsys.capella.core.data.information.ExchangeItem;
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.FunctionalChainInvolvementImpl#getInvolved <em>Involved</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.FunctionalChainInvolvementImpl#getNextFunctionalChainInvolvements <em>Next Functional Chain Involvements</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.FunctionalChainInvolvementImpl#getPreviousFunctionalChainInvolvements <em>Previous Functional Chain Involvements</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.fa.impl.FunctionalChainInvolvementImpl#getExchangedItems <em>Exchanged Items</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.FunctionalChainInvolvementImpl#getInvolvedElement <em>Involved Element</em>}</li>
  * </ul>
  *
@@ -63,41 +62,6 @@ public class FunctionalChainInvolvementImpl extends RelationshipImpl implements 
 	 * @ordered
 	 */
 	protected InvolvedElement involved;
-
-
-
-
-
-	/**
-	 * The cached value of the '{@link #getNextFunctionalChainInvolvements() <em>Next Functional Chain Involvements</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getNextFunctionalChainInvolvements()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<FunctionalChainInvolvement> nextFunctionalChainInvolvements;
-
-
-
-
-
-
-
-
-
-	/**
-	 * The cached value of the '{@link #getExchangedItems() <em>Exchanged Items</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getExchangedItems()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<ExchangeItem> exchangedItems;
-
-
-
 
 
 
@@ -245,10 +209,39 @@ public class FunctionalChainInvolvementImpl extends RelationshipImpl implements 
 
 	public EList<FunctionalChainInvolvement> getNextFunctionalChainInvolvements() {
 
-		if (nextFunctionalChainInvolvements == null) {
-			nextFunctionalChainInvolvements = new EObjectResolvingEList<FunctionalChainInvolvement>(FunctionalChainInvolvement.class, this, FaPackage.FUNCTIONAL_CHAIN_INVOLVEMENT__NEXT_FUNCTIONAL_CHAIN_INVOLVEMENTS);
-		}
-		return nextFunctionalChainInvolvements;
+
+    Object result = null;
+    // Helper that can get value for current feature.
+    IHelper helper = null;
+    // If current object is adaptable, ask it to get its IHelper.
+    if (this instanceof IAdaptable) {
+    	helper = (IHelper) ((IAdaptable) this).getAdapter(IHelper.class);
+    }
+    if (null == helper) {
+      // No helper found yet.
+      // Ask the platform to get the adapter 'IHelper.class' for current object.
+      IAdapterManager adapterManager = Platform.getAdapterManager();
+      helper = (IHelper) adapterManager.getAdapter(this, IHelper.class);
+    }
+    if (null == helper) {
+      EPackage package_l = eClass().getEPackage();
+      // Get the root package of the owner package.
+      EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+    } 
+    // A helper is found, let's use it. 
+    EAnnotation annotation = FaPackage.Literals.FUNCTIONAL_CHAIN_INVOLVEMENT__NEXT_FUNCTIONAL_CHAIN_INVOLVEMENTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    result = helper.getValue(this, FaPackage.Literals.FUNCTIONAL_CHAIN_INVOLVEMENT__NEXT_FUNCTIONAL_CHAIN_INVOLVEMENTS, annotation);
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<FunctionalChainInvolvement> resultAsList = (Collection<FunctionalChainInvolvement>) result;
+		return new EcoreEList.UnmodifiableEList<FunctionalChainInvolvement>(this, FaPackage.Literals.FUNCTIONAL_CHAIN_INVOLVEMENT__NEXT_FUNCTIONAL_CHAIN_INVOLVEMENTS, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
 	}
 
 
@@ -296,24 +289,6 @@ public class FunctionalChainInvolvementImpl extends RelationshipImpl implements 
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
-	}
-
-
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public EList<ExchangeItem> getExchangedItems() {
-
-		if (exchangedItems == null) {
-			exchangedItems = new EObjectResolvingEList<ExchangeItem>(ExchangeItem.class, this, FaPackage.FUNCTIONAL_CHAIN_INVOLVEMENT__EXCHANGED_ITEMS);
-		}
-		return exchangedItems;
 	}
 
 
@@ -395,8 +370,6 @@ public class FunctionalChainInvolvementImpl extends RelationshipImpl implements 
 				return getNextFunctionalChainInvolvements();
 			case FaPackage.FUNCTIONAL_CHAIN_INVOLVEMENT__PREVIOUS_FUNCTIONAL_CHAIN_INVOLVEMENTS:
 				return getPreviousFunctionalChainInvolvements();
-			case FaPackage.FUNCTIONAL_CHAIN_INVOLVEMENT__EXCHANGED_ITEMS:
-				return getExchangedItems();
 			case FaPackage.FUNCTIONAL_CHAIN_INVOLVEMENT__INVOLVED_ELEMENT:
 				if (resolve) return getInvolvedElement();
 				return basicGetInvolvedElement();
@@ -416,14 +389,6 @@ public class FunctionalChainInvolvementImpl extends RelationshipImpl implements 
 			case FaPackage.FUNCTIONAL_CHAIN_INVOLVEMENT__INVOLVED:
 					setInvolved((InvolvedElement)newValue);
 				return;
-			case FaPackage.FUNCTIONAL_CHAIN_INVOLVEMENT__NEXT_FUNCTIONAL_CHAIN_INVOLVEMENTS:
-				getNextFunctionalChainInvolvements().clear();
-				getNextFunctionalChainInvolvements().addAll((Collection<? extends FunctionalChainInvolvement>)newValue);
-				return;
-			case FaPackage.FUNCTIONAL_CHAIN_INVOLVEMENT__EXCHANGED_ITEMS:
-				getExchangedItems().clear();
-				getExchangedItems().addAll((Collection<? extends ExchangeItem>)newValue);
-				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -439,12 +404,6 @@ public class FunctionalChainInvolvementImpl extends RelationshipImpl implements 
 		switch (featureID) {
 			case FaPackage.FUNCTIONAL_CHAIN_INVOLVEMENT__INVOLVED:
 				setInvolved((InvolvedElement)null);
-				return;
-			case FaPackage.FUNCTIONAL_CHAIN_INVOLVEMENT__NEXT_FUNCTIONAL_CHAIN_INVOLVEMENTS:
-				getNextFunctionalChainInvolvements().clear();
-				return;
-			case FaPackage.FUNCTIONAL_CHAIN_INVOLVEMENT__EXCHANGED_ITEMS:
-				getExchangedItems().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -465,11 +424,9 @@ public class FunctionalChainInvolvementImpl extends RelationshipImpl implements 
 			case FaPackage.FUNCTIONAL_CHAIN_INVOLVEMENT__INVOLVED:
 				return involved != null;
 			case FaPackage.FUNCTIONAL_CHAIN_INVOLVEMENT__NEXT_FUNCTIONAL_CHAIN_INVOLVEMENTS:
-				return nextFunctionalChainInvolvements != null && !nextFunctionalChainInvolvements.isEmpty();
+				return !getNextFunctionalChainInvolvements().isEmpty();
 			case FaPackage.FUNCTIONAL_CHAIN_INVOLVEMENT__PREVIOUS_FUNCTIONAL_CHAIN_INVOLVEMENTS:
 				return !getPreviousFunctionalChainInvolvements().isEmpty();
-			case FaPackage.FUNCTIONAL_CHAIN_INVOLVEMENT__EXCHANGED_ITEMS:
-				return exchangedItems != null && !exchangedItems.isEmpty();
 			case FaPackage.FUNCTIONAL_CHAIN_INVOLVEMENT__INVOLVED_ELEMENT:
 				return basicGetInvolvedElement() != null;
 		}

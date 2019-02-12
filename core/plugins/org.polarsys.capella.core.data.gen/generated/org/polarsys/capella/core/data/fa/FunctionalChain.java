@@ -12,6 +12,7 @@ package org.polarsys.capella.core.data.fa;
 
 import org.eclipse.emf.common.util.EList;
 import org.polarsys.capella.core.data.capellacommon.State;
+import org.polarsys.capella.core.data.capellacore.Constraint;
 import org.polarsys.capella.core.data.capellacore.InvolvedElement;
 import org.polarsys.capella.core.data.capellacore.InvolverElement;
 import org.polarsys.capella.core.data.capellacore.NamedElement;
@@ -42,6 +43,10 @@ import org.polarsys.capella.core.data.la.CapabilityRealization;
  *   <li>{@link org.polarsys.capella.core.data.fa.FunctionalChain#getInvolvingCapabilityRealizations <em>Involving Capability Realizations</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.FunctionalChain#getRealizedFunctionalChains <em>Realized Functional Chains</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.FunctionalChain#getRealizingFunctionalChains <em>Realizing Functional Chains</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.fa.FunctionalChain#getPreCondition <em>Pre Condition</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.fa.FunctionalChain#getPostCondition <em>Post Condition</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.fa.FunctionalChain#getOwnedSequenceNodes <em>Owned Sequence Nodes</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.fa.FunctionalChain#getOwnedSequenceLinks <em>Owned Sequence Links</em>}</li>
  * </ul>
  *
  * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChain()
@@ -471,6 +476,124 @@ public interface FunctionalChain extends NamedElement, InvolverElement, Involved
 	 */
 
 	EList<FunctionalChain> getRealizingFunctionalChains();
+
+
+
+
+	/**
+	 * Returns the value of the '<em><b>Pre Condition</b></em>' reference.
+
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Pre Condition</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Pre Condition</em>' reference.
+	 * @see #setPreCondition(Constraint)
+	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChain_PreCondition()
+	 * @model
+	 * @generated
+	 */
+
+	Constraint getPreCondition();
+
+
+
+
+	/**
+	 * Sets the value of the '{@link org.polarsys.capella.core.data.fa.FunctionalChain#getPreCondition <em>Pre Condition</em>}' reference.
+
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Pre Condition</em>' reference.
+	 * @see #getPreCondition()
+	 * @generated
+	 */
+
+	void setPreCondition(Constraint value);
+
+
+
+
+	/**
+	 * Returns the value of the '<em><b>Post Condition</b></em>' reference.
+
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Post Condition</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Post Condition</em>' reference.
+	 * @see #setPostCondition(Constraint)
+	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChain_PostCondition()
+	 * @model
+	 * @generated
+	 */
+
+	Constraint getPostCondition();
+
+
+
+
+	/**
+	 * Sets the value of the '{@link org.polarsys.capella.core.data.fa.FunctionalChain#getPostCondition <em>Post Condition</em>}' reference.
+
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Post Condition</em>' reference.
+	 * @see #getPostCondition()
+	 * @generated
+	 */
+
+	void setPostCondition(Constraint value);
+
+
+
+
+	/**
+	 * Returns the value of the '<em><b>Owned Sequence Nodes</b></em>' containment reference list.
+	 * The list contents are of type {@link org.polarsys.capella.core.data.fa.ControlNode}.
+
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Owned Sequence Nodes</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Owned Sequence Nodes</em>' containment reference list.
+	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChain_OwnedSequenceNodes()
+	 * @model containment="true" resolveProxies="true"
+	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='' usage\040guideline='n/a' used\040in\040levels='operational,system,logical,physical' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
+	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 * @generated
+	 */
+
+	EList<ControlNode> getOwnedSequenceNodes();
+
+
+
+
+	/**
+	 * Returns the value of the '<em><b>Owned Sequence Links</b></em>' containment reference list.
+	 * The list contents are of type {@link org.polarsys.capella.core.data.fa.SequenceLink}.
+
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Owned Sequence Links</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Owned Sequence Links</em>' containment reference list.
+	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChain_OwnedSequenceLinks()
+	 * @model containment="true" resolveProxies="true"
+	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='' usage\040guideline='n/a' used\040in\040levels='operational,system,logical,physical' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
+	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 * @generated
+	 */
+
+	EList<SequenceLink> getOwnedSequenceLinks();
 
 
 

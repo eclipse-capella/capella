@@ -136,6 +136,7 @@ import org.polarsys.capella.core.data.fa.FunctionOutputPort;
 import org.polarsys.capella.core.data.fa.FunctionPkg;
 import org.polarsys.capella.core.data.fa.FunctionalChain;
 import org.polarsys.capella.core.data.fa.FunctionalChainInvolvement;
+import org.polarsys.capella.core.data.fa.FunctionalChainInvolvementLink;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.data.helpers.ctx.services.ActorPkgExt;
 import org.polarsys.capella.core.data.helpers.fa.services.FunctionExt;
@@ -2848,12 +2849,12 @@ public class CapellaServices {
     return CapellaEmbeddedLinkedTextEditorInput.getDefaultText(constraint, constraint.getName());
   }
 
-  public String getFCInvolvmentLabel(FunctionalChainInvolvement fci, DDiagram diagram) {
+  public String getFCInvolvmentLabel(FunctionalChainInvolvementLink fcil, DDiagram diagram) {
     boolean showExchangeItems = false;
     boolean showExchangeItemsParameters = false;
     boolean showFEEI = false;
 
-    FunctionalExchange fe = (FunctionalExchange) fci.getInvolved();
+    FunctionalExchange fe = (FunctionalExchange) fcil.getInvolved();
     String result = fe.getName();
     for (FilterDescription filter : diagram.getActivatedFilters()) {
       if (filter.getName().equals(IMappingNameConstants.SHOW_EXCHANGE_ITEMS)) {
@@ -2874,7 +2875,7 @@ public class CapellaServices {
         sb.append("["); //$NON-NLS-1$
       }
       int indice = 0;
-      EList<ExchangeItem> exchangedItems = fci.getExchangedItems();
+      EList<ExchangeItem> exchangedItems = fcil.getExchangedItems();
       if ((null == exchangedItems) || exchangedItems.isEmpty()) {
         for (AbstractExchangeItem ei : fe.getExchangedItems()) {
           sb.append(ExchangeItemExt.getEILabel(ei, showExchangeItemsParameters));

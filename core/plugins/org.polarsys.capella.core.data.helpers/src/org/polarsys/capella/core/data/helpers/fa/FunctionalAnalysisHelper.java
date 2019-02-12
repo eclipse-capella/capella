@@ -37,6 +37,7 @@ import org.polarsys.capella.core.data.fa.FunctionRealization;
 import org.polarsys.capella.core.data.fa.FunctionSpecification;
 import org.polarsys.capella.core.data.fa.FunctionalChain;
 import org.polarsys.capella.core.data.fa.FunctionalChainInvolvement;
+import org.polarsys.capella.core.data.fa.FunctionalChainInvolvementFunction;
 import org.polarsys.capella.core.data.fa.FunctionalChainRealization;
 import org.polarsys.capella.core.data.fa.FunctionalChainReference;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
@@ -62,6 +63,7 @@ import org.polarsys.capella.core.data.helpers.fa.delegates.FunctionOutputPortHel
 import org.polarsys.capella.core.data.helpers.fa.delegates.FunctionRealizationHelper;
 import org.polarsys.capella.core.data.helpers.fa.delegates.FunctionSpecificationHelper;
 import org.polarsys.capella.core.data.helpers.fa.delegates.FunctionalChainHelper;
+import org.polarsys.capella.core.data.helpers.fa.delegates.FunctionalChainInvolvementFunctionHelper;
 import org.polarsys.capella.core.data.helpers.fa.delegates.FunctionalChainInvolvementHelper;
 import org.polarsys.capella.core.data.helpers.fa.delegates.FunctionalChainReferenceHelper;
 import org.polarsys.capella.core.data.helpers.fa.delegates.FunctionalExchangeHelper;
@@ -91,6 +93,9 @@ public class FunctionalAnalysisHelper implements IHelper {
 		}
     else if (object instanceof FunctionalChainReference) {
       ret = FunctionalChainReferenceHelper.getInstance().doSwitch((FunctionalChainReference) object, feature);
+    }
+    else if (object instanceof FunctionalChainInvolvementFunction) {
+      ret = FunctionalChainInvolvementFunctionHelper.getInstance().doSwitch((FunctionalChainInvolvementFunction) object, feature);
     }
     else if (object instanceof FunctionalChainInvolvement) {
       ret = FunctionalChainInvolvementHelper.getInstance().doSwitch((FunctionalChainInvolvement) object, feature);

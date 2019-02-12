@@ -2247,6 +2247,42 @@ public interface OaPackage extends EPackage {
 	int OPERATIONAL_PROCESS__REALIZING_FUNCTIONAL_CHAINS = FaPackage.FUNCTIONAL_CHAIN__REALIZING_FUNCTIONAL_CHAINS;
 
 	/**
+	 * The feature id for the '<em><b>Pre Condition</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATIONAL_PROCESS__PRE_CONDITION = FaPackage.FUNCTIONAL_CHAIN__PRE_CONDITION;
+
+	/**
+	 * The feature id for the '<em><b>Post Condition</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATIONAL_PROCESS__POST_CONDITION = FaPackage.FUNCTIONAL_CHAIN__POST_CONDITION;
+
+	/**
+	 * The feature id for the '<em><b>Owned Sequence Nodes</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATIONAL_PROCESS__OWNED_SEQUENCE_NODES = FaPackage.FUNCTIONAL_CHAIN__OWNED_SEQUENCE_NODES;
+
+	/**
+	 * The feature id for the '<em><b>Owned Sequence Links</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATIONAL_PROCESS__OWNED_SEQUENCE_LINKS = FaPackage.FUNCTIONAL_CHAIN__OWNED_SEQUENCE_LINKS;
+
+	/**
 	 * The feature id for the '<em><b>Involving Operational Capabilities</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

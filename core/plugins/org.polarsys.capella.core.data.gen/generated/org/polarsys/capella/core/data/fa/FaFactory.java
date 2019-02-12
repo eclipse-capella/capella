@@ -246,6 +246,42 @@ public interface FaFactory extends EFactory {
 	ComponentPortAllocationEnd createComponentPortAllocationEnd();
 
 	/**
+	 * Returns a new object of class '<em>Functional Chain Involvement Link</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Functional Chain Involvement Link</em>'.
+	 * @generated
+	 */
+	FunctionalChainInvolvementLink createFunctionalChainInvolvementLink();
+
+	/**
+	 * Returns a new object of class '<em>Sequence Link</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Sequence Link</em>'.
+	 * @generated
+	 */
+	SequenceLink createSequenceLink();
+
+	/**
+	 * Returns a new object of class '<em>Functional Chain Involvement Function</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Functional Chain Involvement Function</em>'.
+	 * @generated
+	 */
+	FunctionalChainInvolvementFunction createFunctionalChainInvolvementFunction();
+
+	/**
+	 * Returns a new object of class '<em>Control Node</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Control Node</em>'.
+	 * @generated
+	 */
+	ControlNode createControlNode();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

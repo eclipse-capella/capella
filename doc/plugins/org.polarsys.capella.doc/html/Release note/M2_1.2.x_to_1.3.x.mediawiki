@@ -58,3 +58,28 @@ For a TypeA, referencing TypeB by the derived reference containing such annotati
 |
  N/A (this reference is not implemented/implementable by a Viatra pattern) 
 |}
+
+=== [Bugzilla 2392][M2] Add new concepts in Capella's meta-model for the enhancements of Functional Chain ===
+* The meta-class '''SequenceLinkEnd''' has been added.
+* The meta-class '''ReferenceHierarchyContext''' has been added.
+* The meta-class '''FunctionalChainInvolvementLink''' that inherits from ''FunctionalChainInvolvement'' and ''ReferenceHierarchyContext'' meta-class has been added.
+* The meta-class '''FunctionalChainInvolvementFunction''' that inherits from ''FunctionalChainInvolvement'' and ''SequenceLinkEnd'' meta-class has been added.
+* The meta-class '''SequenceLink''' that inherits from ''ReferenceHierarchyContext'' meta-class has been added.
+* The meta-class '''ControlNode''' that inherits from ''SequenceLinkEnd'' has been added.
+* The enumeration '''ControlNodeKind''' with 3 values OR, AND and ITERATE has been added.
+* The reference '''FunctionalChain.preCondition''' has been added.
+* The reference '''FunctionalChain.postCondition''' has been added.
+* The containment reference '''FunctionalChain.ownedSequenceNodes''' has been added.
+* The containment reference '''FunctionalChain.ownedSequenceLinks''' has been added.
+* The derived reference '''FunctionalChainInvolvementFunction.outgoingInvolvementLinks''' has been added.
+* The derived reference '''FunctionalChainInvolvementFunction.incomingInvolvementLinks''' has been added.
+* The reference '''FunctionalChainInvolvementLink.source''' has been added.
+* The reference '''FunctionalChainInvolvementLink.target''' has been added.
+* The reference '''FunctionalChainInvolvementLink.exchangeContext''' has been added.
+* The reference '''FunctionalChainInvolvement.exchangedItems''' has been moved to the concrete meta-class ''FunctionalChainInvolvementLink.exchangedItems''.
+* The reference '''FunctionalChainInvolvement.previousFunctionalChainInvolvements''' has been set as ''derived''.
+* The reference '''SequenceLink.links''' has been added.
+* The reference '''SequenceLink.source''' has been added.
+* The reference '''SequenceLink.target''' has been added.
+* The reference '''ReferenceHierarchyContext.sourceReferenceHierarchy''' has been added.
+* The reference '''ReferenceHierarchyContext.targetReferenceHierarchy''' has been added.

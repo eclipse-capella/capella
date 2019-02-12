@@ -197,7 +197,7 @@
                </description>
             </constraint>
             
-            <constraint class="org.polarsys.capella.core.data.fa.validation.functionalChainInvolvement.FunctionalChainInvolvement_ExchangeItems" 
+            <constraint class="org.polarsys.capella.core.data.fa.validation.functionalChainInvolvement.FunctionalChainInvolvementLink_ExchangeItems" 
                 id="DWF_DF_14" 
                 isEnabledByDefault="true" 
                 lang="Java"

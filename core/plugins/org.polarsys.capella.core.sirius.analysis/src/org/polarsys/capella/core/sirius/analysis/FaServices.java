@@ -2178,7 +2178,7 @@ public class FaServices {
         FunctionalChainInvolvement newFunctionInv;
         if (newFunctionInvolvements.isEmpty()) {
           // we add the new Function to the functional chain
-          newFunctionInv = FunctionalChainExt.createInvolvement(currentFunctionalChain, newFunction);
+          newFunctionInv = FunctionalChainExt.createInvolvementFunction(currentFunctionalChain, newFunction);
         } else {
           newFunctionInv = newFunctionInvolvements.iterator().next();
         }

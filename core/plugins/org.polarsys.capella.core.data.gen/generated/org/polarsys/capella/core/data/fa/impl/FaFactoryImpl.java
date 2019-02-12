@@ -118,6 +118,10 @@ public class FaFactoryImpl extends EFactoryImpl implements FaFactory {
 			case FaPackage.COMPONENT_PORT: return createComponentPort();
 			case FaPackage.COMPONENT_PORT_ALLOCATION: return createComponentPortAllocation();
 			case FaPackage.COMPONENT_PORT_ALLOCATION_END: return createComponentPortAllocationEnd();
+			case FaPackage.FUNCTIONAL_CHAIN_INVOLVEMENT_LINK: return createFunctionalChainInvolvementLink();
+			case FaPackage.SEQUENCE_LINK: return createSequenceLink();
+			case FaPackage.FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION: return createFunctionalChainInvolvementFunction();
+			case FaPackage.CONTROL_NODE: return createControlNode();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
 		}
@@ -141,6 +145,8 @@ public class FaFactoryImpl extends EFactoryImpl implements FaFactory {
 				return createComponentPortKindFromString(eDataType, initialValue);
 			case FaPackage.ORIENTATION_PORT_KIND:
 				return createOrientationPortKindFromString(eDataType, initialValue);
+			case FaPackage.CONTROL_NODE_KIND:
+				return createControlNodeKindFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
 		}
@@ -164,6 +170,8 @@ public class FaFactoryImpl extends EFactoryImpl implements FaFactory {
 				return convertComponentPortKindToString(eDataType, instanceValue);
 			case FaPackage.ORIENTATION_PORT_KIND:
 				return convertOrientationPortKindToString(eDataType, instanceValue);
+			case FaPackage.CONTROL_NODE_KIND:
+				return convertControlNodeKindToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
 		}
@@ -558,6 +566,70 @@ public class FaFactoryImpl extends EFactoryImpl implements FaFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public FunctionalChainInvolvementLink createFunctionalChainInvolvementLink() {
+		FunctionalChainInvolvementLinkImpl functionalChainInvolvementLink = new FunctionalChainInvolvementLinkImpl();
+    //begin-capella-code
+
+    functionalChainInvolvementLink.setId(IdGenerator.createId());
+
+
+    //end-capella-code
+		return functionalChainInvolvementLink;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SequenceLink createSequenceLink() {
+		SequenceLinkImpl sequenceLink = new SequenceLinkImpl();
+    //begin-capella-code
+
+    sequenceLink.setId(IdGenerator.createId());
+
+
+    //end-capella-code
+		return sequenceLink;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public FunctionalChainInvolvementFunction createFunctionalChainInvolvementFunction() {
+		FunctionalChainInvolvementFunctionImpl functionalChainInvolvementFunction = new FunctionalChainInvolvementFunctionImpl();
+    //begin-capella-code
+
+    functionalChainInvolvementFunction.setId(IdGenerator.createId());
+
+
+    //end-capella-code
+		return functionalChainInvolvementFunction;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ControlNode createControlNode() {
+		ControlNodeImpl controlNode = new ControlNodeImpl();
+    //begin-capella-code
+
+    controlNode.setId(IdGenerator.createId());
+
+
+    //end-capella-code
+		return controlNode;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public FunctionalChainKind createFunctionalChainKindFromString(EDataType eDataType, String initialValue) {
 		FunctionalChainKind result = FunctionalChainKind.get(initialValue);
 		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
@@ -650,6 +722,26 @@ public class FaFactoryImpl extends EFactoryImpl implements FaFactory {
 	 * @generated
 	 */
 	public String convertOrientationPortKindToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ControlNodeKind createControlNodeKindFromString(EDataType eDataType, String initialValue) {
+		ControlNodeKind result = ControlNodeKind.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertControlNodeKindToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

@@ -26,7 +26,6 @@ import org.polarsys.capella.core.data.information.ExchangeItem;
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.fa.FunctionalChainInvolvement#getNextFunctionalChainInvolvements <em>Next Functional Chain Involvements</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.FunctionalChainInvolvement#getPreviousFunctionalChainInvolvements <em>Previous Functional Chain Involvements</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.fa.FunctionalChainInvolvement#getExchangedItems <em>Exchanged Items</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.FunctionalChainInvolvement#getInvolvedElement <em>Involved Element</em>}</li>
  * </ul>
  *
@@ -53,7 +52,9 @@ public interface FunctionalChainInvolvement extends Involvement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Next Functional Chain Involvements</em>' reference list.
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChainInvolvement_NextFunctionalChainInvolvements()
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='none' constraints='none' comment/notes='none'"
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='freeform' viatra.expression='pattern FunctionalChainInvolvement_nextFunctionalChainInvolvements(self : FunctionalChainInvolvement, target : FunctionalChainInvolvement) {\r\n\tFunctionalChainInvolvementLink.source(target, self);\r\n} or {\r\n\tFunctionalChainInvolvementLink.target(self, target);\r\n}'"
+	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='none' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='' explanation='' constraints='none'"
 	 * @generated
 	 */
@@ -79,37 +80,12 @@ public interface FunctionalChainInvolvement extends Involvement {
 	 * @return the value of the '<em>Previous Functional Chain Involvements</em>' reference list.
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChainInvolvement_PreviousFunctionalChainInvolvements()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='FunctionalChainInvolvement.nextFunctionalChainInvolvements(target, self);\r\n// TODO understand why we should verify that target is in the same chain than self ...\r\nFunctionalChain.ownedFunctionalChainInvolvements(fc, self);\r\nFunctionalChain.ownedFunctionalChainInvolvements(fc, target);'"
-	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='freeform' viatra.expression='pattern FunctionalChainInvolvement__previousFunctionalChainInvolvements(self : FunctionalChainInvolvement, target : FunctionalChainInvolvement) {\r\n\tFunctionalChainInvolvementLink.target(target, self);\r\n} or {\r\n\tFunctionalChainInvolvementLink.source(self, target);\r\n}'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
 	 */
 
 	EList<FunctionalChainInvolvement> getPreviousFunctionalChainInvolvements();
-
-
-
-
-
-
-
-	/**
-	 * Returns the value of the '<em><b>Exchanged Items</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.information.ExchangeItem}.
-
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Exchanged Items</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Exchanged Items</em>' reference list.
-	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChainInvolvement_ExchangedItems()
-	 * @model annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='' explanation='' constraints='none'"
-	 * @generated
-	 */
-
-	EList<ExchangeItem> getExchangedItems();
 
 
 
