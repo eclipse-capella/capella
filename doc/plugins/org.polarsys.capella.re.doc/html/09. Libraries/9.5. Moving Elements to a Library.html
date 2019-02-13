@@ -6,50 +6,80 @@
 		<link type="text/css" rel="stylesheet" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css"/>
 	</head>
 	<body>
-		<table border="1">
-			<tr>
-				<td>
-					<p>
-						<img height="34" width="34" border="0" src="Images/9.1.%20Introduction_html_723ed3f9.png"/>
-					</p>
-				</td>
-				<td>
-					<pre>The procedures described here are part of a PROTOTYPE implementation
-</pre>
-				</td>
-			</tr>
-		</table>
 		<h1 id="Moving_existing_elements_to_a_Library">Moving existing elements to a Library</h1>
-		<p>This PROTOTYPE makes it possible to move elements from a project to a library. (Moving elements from a library to a project will be supported soon). Feel encouraged to report feedback in this bugzilla: 
-			<a href="https://bugs.polarsys.org/show_bug.cgi?id=1673">https://bugs.polarsys.org/show_bug.cgi?id=1673</a>
+		<p>Moving elements within the bounds of a single capella model is done via drag and drop in the capella project explorer. However, it is not possible to 
+			drag an element out of a capella model and drop it into one of its referenced libraries. This is to prevent cycles in the project/library graph. It is however still possible to move elements from a capella model to a library with the help of a special tool, and that tool is called the 
+			<i>Transfer View</i>. Before using the Transfer View, please read this documentation carefully.
 		</p>
 		<h2 id="Transfer_view">Transfer view</h2>
-		<p>When the Transfer view View (Window-&gt;Show View-&gt;Capella (Incubation)-&gt;Transfer) is opened for the first time, it looks like this:</p>
+		<p>When the Transfer View (Window-&gt;Show View-&gt;Transfer) is opened for the first time, it looks like this:</p>
 		<p>
-			<img height="398" width="935" border="0" src="Images//9.5_MoveElementsView_1.png"/> 
+			<img height="347" width="1079" border="0" src="Images//9.5_MoveElementsView_1.png"/> 
 		</p>
 		<p>1. The Selection Area shows all elements that should be moved in 
-			<b>bold</b>. Drag/Drop model elements from the Capella Project Explorer over this area to fill the view. To remove a selected element from the view, click the small 'x' on the right side of the Selection Area.
+			<b>bold</b>. Drag/Drop model elements from the Capella Project Explorer over this area to fill the view. If the dropped element has children, the children will be moved together with the selected element. To remove a selected element from the view, the 
+			<i>Unstage Element</i> (
+			<img height="20" width="21" border="0" src="Images//9.5_MoveElementsView_unstage.png"/>) action can be selected either via the context menu of the selection tree, or in the selection tree toolbar to the right side of the tree.
 		</p>
-		<p>2. The Destination Area shows the possible destinations for elements in the selection area. To set a new destination for a selected element, drag/drop the element from the selection area over a suitable parent in the destination area. Elements in the selection area for which a destination element has been selected will appear in green. To clear an already set destination for a selected element, click the small 'x' on the right side of the Destination Area.</p>
+		<p>2. The Destination Area shows the possible destinations for elements in the selection area. To set a new destination for a selected element, drag/drop the element from the selection area over a suitable parent in the destination area. Elements in the selection area for which a destination element has been selected will appear in green. To clear an already set destination for a selected element, use the 
+			<i>Clear Parent</i> (
+			<img height="20" width="21" border="0" src="Images//9.5_MoveElementsView_unstage.png"/>) action either via the Destination tree context menu, or the corresponding toolbar button to the right side of the tree.
+		</p>
 		<p>3. The execute button is initially disabled. As soon as a destination is set for 
-			<b>all</b> selected elements, and no referential problems (see below) are detected, the execute button will be enabled. Selecting the button executes performs semantic validation (see below) and executes the move operation unless semantic validation detected a problem.
+			<b>all</b> selected elements, and no referential problems (see below) are detected, the execute button will be enabled. Selecting the button moves elements to their new destination and performs a semantic validation (see below). The move operation will be also be logged to the Capella information view (Window-&gt;Show View-&gt;Information).
 		</p>
-		<p>4. It is also possible to reset the view by selecting the reset button.</p>
+		<p>4. The reset button will reset the view to its initial empty state.</p>
 		<h3 id="Illegal_Backreferences">Illegal Backreferences</h3>
-		<p>Sometimes it is not possible to move an element in isolation: For example a Class B that extends another Class A cannot be moved without moving A too: When Class B is dropped onto the Selection Area, this problem is detected and presented by drawing the Generalization child of A in red. Hovering over the element will show additional informations on this 
+		<p>It is rarely ever possible to move an element in isolation. Usually, an element is part of a graph, connected to other elements that belong together: For example a Class B that extends another Class A cannot be moved without moving A too, since that would introduce a reference cycle between the source project and the target library. The Transfer View detects this and visualizes it as follows: When Class B is dropped onto the Selection Area, the Generalization child of A will be marked red. Hovering over the marked element will show additional informations about this 
 			<i>illegal backreference</i>:
 		</p>
 		<p>
-			<img height="327" width="919" border="0" src="Images//9.5_MoveElementsView_2.png"/> 
+			<img height="300" width="1054" border="0" src="Images//9.5_MoveElementsView_2.png"/> 
 		</p>
-		<p>It is possible to click on the hyperlink in the tooltip to select the target element in the Capella project explorer. As long as one or more illegal backreferences are present, the execute button remains disabled. There are always multiple solutions to an illegal backreference: In this case, either add Class A to the Selection Area, or remove the Generalization element from the model. The view detects changes to the model and re-calculates backreferences automatically.</p>
-		<h3 id="Semantic_Validation">Semantic Validation</h3>
-		<p>When the execute button is clicked, all selected elements are moved to their new destination, and the semantic validation is performed:</p>
+		<p>It is possible to click on the hyperlink in the tooltip to select the target element in the Capella project explorer. To ease navigation to problematic elements, the total number of problematic child elements is shown in red parentheses next to each element in the tree.</p>
+		<p>As long as one or more backreferences are present, the execute button remains disabled. There are always multiple solutions to a backreference: In this example, either break the generalization, or add Class A to the selection area. The latter is done either via manual drag/drop, or by using one of the provided utility actions for backreference resolution:</p>
 		<ul>
-			<li>Capella verifies that no illegal references between libraries are introduced by the operation. </li>
-			<li>Capella verifies that existing references to and from moved elements are still valid. For example, it is not allowed for a Component to allocate a Function from a Library. If an already allocated Function is moved to a Library without moving the Component too, this rule is violated. </li>
+			<li>
+				<i>Add required elements</i> (
+				<img height="21" width="20" border="0" src="Images//9.5_MoveElementsView_addRequired.png"/>) adds direct backreferences for the selected element to the selection tree.
+			</li>
+			<li>
+				<i>Add all required elements</i> (
+				<img height="19" width="20" border="0" src="Images//9.5_MoveElementsView_addAllRequired.png"/>) adds direct backreferences for the selected element to the selection tree, and then recursively adds the backreferences for the added elements and so on. 
+			</li>
 		</ul>
-		<p>If the semantic validation phase detects one of the errors described above, an error dialog opens and the move action is aborted.</p>
+		<p>Both actions can be invoked either from the context menu of a marked element, or via the corresponding toolbar buttons next to the selection tree.</p>
+		<h3 id="Semantic_Validation">Semantic Validation</h3>
+		<p>When the execute button is clicked, all selected elements are moved to their new destination, and a semantic validation is performed:</p>
+		<ul>
+			<li>Capella verifies that no illegal references between libraries are introduced by the operation.</li>
+			<li>Capella verifies that existing references to and from moved elements are still valid. It is currently not possible to identify such a problem before the move is actually performed, which is why the validation must be performed only after the move completes.</li>
+		</ul>
+		<p>If no semantic validation problem is detected, the operation is finished, and the view resets to its initial empty state.</p>
+		<p>Otherwise, semantic validation problems will be displayed in a dialog. The dialog offers to either abort the move, or to force it. The two options exist to overcome the following limitation: Semantic validation cannot distinguish between problems that are introduced by the move itself, and between problems that already existed before the move was initiated. Two examples are given to illustrate this:</p>
+		<h3 id="Force_move_example">Force move example</h3>
+		<p>Given is a Class A which has a Property which itself has a non-primitive Type T. This is not allowed in Capella. When A and T are moved to a library, the semantic validation dialog will open:</p>
+		<p>
+			<img height="230" width="518" border="0" src="Images//9.5_MoveElementsView_forceExample.png"/>
+		</p>
+		<p>Since the displayed problem existed beforehand and was not introduced by the move itself, it is fine to force the move in this case.</p>
+		<h3 id="Cancel_move_example">Cancel move example</h3>
+		<p>Given is a Logical Function F which is allocated by a LogicalComponent C. When F is moved to a Library, the semantic validation dialog will open:</p>
+		<p>
+			<img height="230" width="518" border="0" src="Images//9.5_MoveElementsView_forceExample.png"/>
+		</p>
+		<p>It is not allowed that a Component allocates a Function that is in a Library. The problem was introduced by the move itself and didn't exist beforehand. Here, the correct decision would be to cancel the move.</p>
+		<h3 id="Semantic_validation_best_practices">Semantic validation best practices</h3>
+		<ul>
+			<li>A good way to avoid validation problems that are unrelated to the move, like in the first example, is to make sure that no referential problems exist before the move is executed: Enable model validation rule I_38 and perform a validation on the entire capella model. If rule I_38 detects any problems that involves elements that are to be moved, such problems should be resolved before trying to execute a move, since it is very likely that the same problems will be displayed in the semantic validation dialog when the move is executed.</li>
+		</ul>
+		<ul>
+			<li>If the semantic validation dialog opens, it is never wrong to cancel the move in order to to closely review the reported problems, as they are recorded also in the Capella information view (Window-&gt;Show View-&gt;Information). The state of the transfer view will be preserved, so it is possible to retry the move operation later.</li>
+		</ul>
+		<ul>
+			<li>The Transfer View selection is linked to the Semantic Browser view (Window-&gt;Show View-&gt;Semantic Browser). Using both views in combination when planning a move operation will give a bigger picture of possible impacts.</li>
+		</ul>
+		<h3 id="Impacts_on_Diagrams">Impacts on Diagrams</h3>
+		<p>Like any other model operation, moving elements can have an impact on existing Diagrams, both, in the source or the target project. Currently Capella has no tool to identify impacted diagrams. The semantic browser view (Window-&gt;Show View-&gt;Semantic Browser) can help with a manual impact analysis.</p>
 	</body>
 </html>
