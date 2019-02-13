@@ -27,7 +27,7 @@ public class GenericModel {
   public static String ACTOR_PKG = "ACTOR_PKG";
   public static String INTERFACE_PKG = "INTERFACE_PKG";
   public static String DATA_PKG = "DATA_PKG";
-  
+
   public static String SCENARIO_1 = "SCENARIO 1";
   public static String INSTANCE_ROLE_1 = "INSTANCE_ROLE_1";
   public static String INSTANCE_ROLE_2 = "INSTANCE_ROLE_2";
@@ -35,7 +35,7 @@ public class GenericModel {
   public static String PART_1 = "PART_1";
   public static String PART_2 = "PART_2";
   public static String PART_3 = "PART_3";
-  
+
   public static String ACTIVITY_1 = "ACTIVITY 1";
   public static String ACTIVITY_1_1 = "ACTIVITY 1_1";
   public static String ACTIVITY_2 = "ACTIVITY 2";
@@ -70,11 +70,15 @@ public class GenericModel {
   public static String COMPONENT_1_1_1 = "COMPONENT 1_1_1";
   public static String COMPONENT_1_1_2 = "COMPONENT 1_1_2";
   public static String COMPONENT_1_2 = "COMPONENT 1_2";
+  public static String COMPONENT_1_3 = "COMPONENT 1_3";
   public static String COMPONENT_2 = "COMPONENT 2";
   public static String COMPONENT_2_1 = "COMPONENT 2_1";
   public static String COMPONENT_2_2 = "COMPONENT 2_2";
   public static String COMPONENT_3 = "COMPONENT 3";
   public static String COMPONENT_4 = "COMPONENT 4";
+
+  public static String ROLE_1_4 = "ROLE 1_4";
+  public static String ROLE_1_1_3 = "ROLE 1_1_3";
 
   public static String COMPONENT_EXCHANGE_1 = "COMPONENT_EXCHANGE_1";
   public static String COMPONENT_EXCHANGE_2 = "COMPONENT_EXCHANGE_2";
@@ -85,7 +89,7 @@ public class GenericModel {
   public static String COMPONENT_EXCHANGE_7 = "COMPONENT_EXCHANGE_7";
   public static String COMPONENT_EXCHANGE_8 = "COMPONENT_EXCHANGE_8";
   public static String COMPONENT_EXCHANGE_9 = "COMPONENT_EXCHANGE_9";
-  
+
   public static String MISSION_1 = "MISSION 1";
   public static String MISSION_2 = "MISSION 2";
   public static String MISSION_3 = "MISSION 3";
@@ -108,13 +112,12 @@ public class GenericModel {
 
   public static String EXCHANGE_ITEM_ELEMENT_1 = "EXCHANGE_ITEM_ELEMENT_1";
   public static String EXCHANGE_ITEM_ELEMENT_2 = "EXCHANGE_ITEM_ELEMENT_2";
-  
+
   public static String GENERALIZATION_1 = "GENERALIZATION 1";
   public static String GENERALIZATION_2 = "GENERALIZATION 2";
   public static String GENERALIZATION_3 = "GENERALIZATION 3";
   public static String GENERALIZATION_4 = "GENERALIZATION 4";
 
-  
   public static String FUNCTION_1 = "Function 1";
   public static String FUNCTION_2 = "Function 2";
   public static String FUNCTION_3 = "Function 3";
@@ -126,6 +129,8 @@ public class GenericModel {
   public static String FUNCTION_1_1 = "Function 1_1";
   public static String FUNCTION_1_1_1 = "Function 1_1_1";
   public static String FUNCTION_1_1_2 = "Function 1_1_2";
+  public static String FUNCTION_1_1_3 = "Function 1_1_3";
+  public static String FUNCTION_1_1_4 = "Function 1_1_4";
 
   public static String FUNCTION_1_2 = "Function 1_2";
   public static String FUNCTION_1_3 = "Function 1_3";
@@ -133,15 +138,15 @@ public class GenericModel {
 
   public static String FUNCTION_INPUT_PORT_1 = "FIP1";
   public static String FUNCTION_INPUT_PORT_2 = "FIP2";
-  
+
   public static String FUNCTION_OUTPUT_PORT_1 = "FOP1";
   public static String FUNCTION_OUTPUT_PORT_2 = "FOP2";
-  
+
   public static String FUNCTIONAL_EXCHANGE_1 = "Functional Exchange 1";
   public static String FUNCTIONAL_EXCHANGE_2 = "Functional Exchange 2";
-  
+
   public static String EXCHANGE_CATEGORY_1 = "Exchange Category 1";
-  
+
   public static String COMPONENT_PORT_1 = "COMPONENT_PORT_1";
   public static String COMPONENT_PORT_2 = "COMPONENT_PORT_2";
   public static String COMPONENT_PORT_3 = "COMPONENT_PORT_3";
@@ -160,7 +165,7 @@ public class GenericModel {
   public static String MODE_4 = "Mode 4";
 
   public static String REGION_1 = "Region 1";
-  public static String REGION_2= "Region 2";
+  public static String REGION_2 = "Region 2";
   public static String REGION_3 = "Region 3";
   public static String REGION_4 = "Region 4";
 
@@ -195,7 +200,6 @@ public class GenericModel {
   public static String NODE_3_1 = "NODE 3_1";
   public static String NODE_4 = "NODE 4";
   public static String NODE_4_1 = "NODE 4_1";
-
 
   public static String BEHAVIOR_1 = "BEHAVIOR 1";
   public static String BEHAVIOR_1_1 = "BEHAVIOR 1_1";
@@ -247,7 +251,7 @@ public class GenericModel {
   public static String CL_4 = "CL_4";
   public static String CL_5 = "CL_5";
   public static String CL_6 = "CL_6";
-  
+
   public static String PHYSICAL_LINK_1 = "PHYSICAL LINK 1";
   public static String NODE_COMPONENT_1 = "NODE COMPONENT 1";
   public static String DEPLOY_NODE_COMPONENT_1 = "DEPLOY NODE COMPONENT 2";

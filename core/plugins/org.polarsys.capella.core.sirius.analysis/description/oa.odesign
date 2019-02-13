@@ -1262,7 +1262,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ToolDescription" documentation="Insert All Allocated Roles. Create graphical objects for all Roles already allocated to all Operational Entities appearing on the diagram. This tool does not modify the semantic model." name="Show/hide All Allocated Roles" label="All Allocated Roles" precondition="aql:elementView.oclIsKindOf(diagram::DDiagram)" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+          <ownedTools xsi:type="tool:ToolDescription" documentation="Insert All Allocated Roles. Create graphical objects for all Roles already allocated to all Operational Entities appearing on the diagram. This tool does not modify the semantic model." name="Show/hide All Allocated Roles" label="All Allocated Roles" precondition="aql:elementView.oclIsKindOf(diagram::DDiagram)" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <element name="element"/>
             <elementView name="elementView">
               <subVariables xsi:type="tool:AcceleoVariable" name="visibleEntities" computationExpression="aql:elementView.containers->select(container | container.target->filter(oa::Entity)->size() > 0)"/>
@@ -1283,7 +1283,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Insert/Remove Allocated Roles. Create or delete graphical objects corresponding to already allocated Roles. Removing a Role graphical object from an Operational Entity does not delete the allocation relationship between this Operational Entity and the Role. This tool does not modify the semantic model" name="Show/Hide Allocated Roles" label="Allocated Roles" precondition="aql:not (containerView.oclIsKindOf(diagram::DDiagram))" containerMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@containerMappings[name='OAB_Entity1']/@subContainerMappings[name='OAB_subRoles']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Insert/Remove Allocated Roles. Create or delete graphical objects corresponding to already allocated Roles. Removing a Role graphical object from an Operational Entity does not delete the allocation relationship between this Operational Entity and the Role. This tool does not modify the semantic model" name="Show/Hide Allocated Roles" label="Allocated Roles" precondition="aql:not (containerView.oclIsKindOf(diagram::DDiagram))" forceRefresh="true" containerMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@containerMappings[name='OAB_Entity1']/@subContainerMappings[name='OAB_subRoles']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
