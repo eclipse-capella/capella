@@ -25,7 +25,12 @@ public class SemanticBrowserModel implements ISemanticBrowserModel {
   protected boolean showPatterns = false; // default value
   protected boolean showDiagrams = true; // default value
   protected boolean limitateTreeExpansion = false; // default value
-  protected Hashtable<String, List<String>> browserID2ExpandedObjectHashcodes = new Hashtable<String, List<String>>();
+  protected Hashtable<String, List<String>> browserID2ExpandedObjectHashcodes = new Hashtable<>();
+
+  /**
+   * Whether or not the view is listening to page selection events.<br>
+   */
+  private boolean isListeningToPageSelectionEvents = false;
 
   @Override
   public boolean doesShowPatterns() {
@@ -33,8 +38,8 @@ public class SemanticBrowserModel implements ISemanticBrowserModel {
   }
 
   @Override
-  public void setShowPatterns(boolean showPatterns_p) {
-    showPatterns = showPatterns_p;
+  public void setShowPatterns(boolean showPatterns) {
+    this.showPatterns = showPatterns;
   }
 
   @Override
@@ -43,8 +48,8 @@ public class SemanticBrowserModel implements ISemanticBrowserModel {
   }
 
   @Override
-  public void setShowDiagrams(boolean showDiagrams_p) {
-    showDiagrams = showDiagrams_p;
+  public void setShowDiagrams(boolean showDiagrams) {
+    this.showDiagrams = showDiagrams;
   }
 
   @Override
@@ -53,18 +58,14 @@ public class SemanticBrowserModel implements ISemanticBrowserModel {
   }
 
   @Override
-  public void setLimitateTreeExpansion(boolean limitateTreeExpansion_p) {
-    limitateTreeExpansion = limitateTreeExpansion_p;
+  public void setLimitateTreeExpansion(boolean limitateTreeExpansion) {
+    this.limitateTreeExpansion = limitateTreeExpansion;
   }
 
   @Override
   public boolean doesShowCategory(ICategory category) {
-    if (!showDiagrams && category.getName().equals(DIAGRAM_CATEGORY_NAME)) {
-      return false;
-    } else if (!showPatterns && category.getName().equals(PATTERN_CATEGORY_NAME)) {
-      return false;
-    }
-    return true;
+    return !((!showDiagrams && category.getName().equals(DIAGRAM_CATEGORY_NAME))
+        || (!showPatterns && category.getName().equals(PATTERN_CATEGORY_NAME)));
   }
 
   @Override
@@ -82,10 +83,8 @@ public class SemanticBrowserModel implements ISemanticBrowserModel {
   public boolean getExpandedState(ICategory category, String browserID) {
     if (doesLimitateTreeExpansion()) {
       List<String> expandedObjects = browserID2ExpandedObjectHashcodes.get(browserID);
-      if (expandedObjects != null) {
-        if (!expandedObjects.contains(getHashcode(category))) {
-          return false;
-        }
+      if (expandedObjects != null && !expandedObjects.contains(getHashcode(category))) {
+        return false;
       }
     }
     return true;
@@ -98,12 +97,15 @@ public class SemanticBrowserModel implements ISemanticBrowserModel {
 
   @Override
   public List<String> getOrCreateHistory(String browserID) {
-    List<String> nonExpandedObjects = browserID2ExpandedObjectHashcodes.get(browserID);
-    if (nonExpandedObjects == null) {
-      nonExpandedObjects = new ArrayList<String>();
-      browserID2ExpandedObjectHashcodes.put(browserID, nonExpandedObjects);
-    }
-    return nonExpandedObjects;
+    return browserID2ExpandedObjectHashcodes.computeIfAbsent(browserID, f -> new ArrayList<>());
+  }
+
+  public void setListeningToPageSelectionEvents(boolean value) {
+    isListeningToPageSelectionEvents = value;
+  }
+
+  public boolean isListeningToPageSelectionEvents() {
+    return isListeningToPageSelectionEvents;
   }
 
   private String getHashcode(ICategory category) {

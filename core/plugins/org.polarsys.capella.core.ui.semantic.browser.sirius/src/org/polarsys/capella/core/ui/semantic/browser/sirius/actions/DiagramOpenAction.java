@@ -30,66 +30,70 @@ public class DiagramOpenAction {
   /**
    * Current selected diagram.
    */
-  private ISelection _selection;
+  private ISelection selection;
   /**
    * Semantic browser view.
    */
-  private SemanticBrowserView _semanticBrowserView;
+  private SemanticBrowserView semanticBrowserView;
 
   /**
    * 
    */
-  public void init(IWorkbenchPart part_p) {
-    _semanticBrowserView = (SemanticBrowserView) part_p;
+  public void init(IWorkbenchPart part) {
+    semanticBrowserView = (SemanticBrowserView) part;
   }
 
   /**
    * Post editor open handling method.<br>
-   * @param element_p
-   * @param openEditor_p
+   * 
+   * @param element
+   * @param openEditor
    */
-  protected void postEditorOpen(Object element_p, IEditorPart openEditor_p) {
-    //Nothing here
+  protected void postEditorOpen(Object element, IEditorPart openEditor) {
+    // Nothing here
   }
 
   /**
    * @see org.eclipse.ui.IActionDelegate#run(org.eclipse.jface.action.IAction)
    */
-  public void run(IAction action_p) {
-    IStructuredSelection structuredSelection = (IStructuredSelection) _selection;
+  public void run(IAction action) {
+    IStructuredSelection structuredSelection = (IStructuredSelection) selection;
     // This action is only available for DSemanticDiagram with at least one element.
     DRepresentationDescriptor representation = (DRepresentationDescriptor) structuredSelection.getFirstElement();
     // Get the current element before opening the diagram that changes the selection.
-    Object currentElement = _semanticBrowserView.getCurrentViewer().getInput();
-    // Deactivate listening events during diagram opening since the open editor will change it to something that is not the end-user concern.
-    boolean listeningToPageSelectionEvents = SemanticBrowserView.isListeningToPageSelectionEvents();
+    Object currentElement = semanticBrowserView.getCurrentViewer().getInput();
+    // Deactivate listening events during diagram opening since the open editor will change it to something that is not
+    // the end-user concern.
+    boolean listeningToPageSelectionEvents = semanticBrowserView.getModel().isListeningToPageSelectionEvents();
     EObject target = representation.getTarget();
     if (null != target) {
       try {
         if (listeningToPageSelectionEvents) {
-          _semanticBrowserView.deactivateListeningToPageSelectionEvents();
+          semanticBrowserView.deactivateListeningToPageSelectionEvents();
         }
         Session session = SessionManager.INSTANCE.getSession(target);
-        IEditorPart openEditor = DialectUIManager.INSTANCE.openEditor(session, representation.getRepresentation(), new NullProgressMonitor());
+        IEditorPart openEditor = DialectUIManager.INSTANCE.openEditor(session, representation.getRepresentation(),
+            new NullProgressMonitor());
         postEditorOpen(currentElement, openEditor);
 
       } finally {
         // Enable again the listening if needed.
         if (listeningToPageSelectionEvents) {
-          _semanticBrowserView.activateListeningToPageSelectionEvents();
+          semanticBrowserView.activateListeningToPageSelectionEvents();
         }
       }
     }
   }
 
   /**
-   * @see org.eclipse.ui.IActionDelegate#selectionChanged(org.eclipse.jface.action.IAction, org.eclipse.jface.viewers.ISelection)
+   * @see org.eclipse.ui.IActionDelegate#selectionChanged(org.eclipse.jface.action.IAction,
+   *      org.eclipse.jface.viewers.ISelection)
    */
-  public void selectionChanged(IAction action_p, ISelection selection_p) {
-    if (selection_p.isEmpty()) {
-      _selection = null;
+  public void selectionChanged(IAction action, ISelection selection) {
+    if (selection.isEmpty()) {
+      this.selection = null;
     } else {
-      _selection = selection_p;
+      this.selection = selection;
     }
   }
 }

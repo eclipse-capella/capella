@@ -29,8 +29,8 @@ public class SiriusSemanticBrowserView extends SemanticBrowserView {
    * {@inheritDoc}
    */
   @Override
-  protected Object handleWorkbenchPageSelectionEvent(IWorkbenchPart part_p, ISelection selection_p) {
-    return SiriusSelectionHelper.handleSelection(part_p, selection_p);
+  protected Object handleWorkbenchPageSelectionEvent(IWorkbenchPart part, ISelection selection) {
+    return SiriusSelectionHelper.handleSelection(part, selection);
   }
 
   /**
