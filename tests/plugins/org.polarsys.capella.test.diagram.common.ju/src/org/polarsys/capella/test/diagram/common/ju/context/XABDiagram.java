@@ -20,7 +20,10 @@ import org.eclipse.sirius.diagram.DNode;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.Part;
+import org.polarsys.capella.core.data.fa.AbstractFunction;
+import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
+import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt.ComponentPortType;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt.FunctionPortType;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt.FunctionType;
@@ -338,9 +341,27 @@ public class XABDiagram extends CommonDiagram {
     }
     new InsertRemoveTool(this, name, containerId).insert(id);
   }
+  
+  public void removeComponentExchange(String id, String containerId) {
+    String name = null;
+    if (type == Type.OA) {
+      name = IToolNameConstants.TOOL_OAB_SHOW_HIDE_COMMUNICATION_MEAN;
+    } else if (type == Type.SA) {
+      name = IToolNameConstants.TOOL_SAB_SHOW_HIDE_COMPONENT_EXCHANGE;
+    } else if (type == Type.LA) {
+      name = IToolNameConstants.TOOL_LAB_SHOW_HIDE_COMPONENT_EXCHANGE;
+    } else if (type == Type.PA) {
+      name = IToolNameConstants.TOOL_PAB_SHOW_HIDE_COMPONENT_EXCHANGE;
+    }
+    new InsertRemoveTool(this, name, containerId).remove(id);
+  }
 
   public void insertPhysicalLink(String id, String containerId) {
     new InsertRemoveTool(this, IToolNameConstants.TOOL_XAB_SHOW_HIDE_PHYSICAL_LINK, containerId).insert(id);
+  }
+  
+  public void removePhysicalLink(String id, String containerId) {
+    new InsertRemoveTool(this, IToolNameConstants.TOOL_XAB_SHOW_HIDE_PHYSICAL_LINK, containerId).remove(id);
   }
 
   public String getToolNameManageAllocatedFunction() {
@@ -656,5 +677,33 @@ public class XABDiagram extends CommonDiagram {
       name = IToolNameConstants.TOOL_LAB_REUSE_LOGICAL_ACTOR;
     }
     new SelectFromListTool(this, name, containerId, ids).select(ids);
+  }
+  
+  
+  @Override
+  public void hasntView(String identifier) {
+    super.hasntView(identifier);
+    checkContainedElements(identifier);
+  }
+  
+  public void checkContainedElements(String id) {
+    EObject semantic = getSemanticElement(id);
+
+    if(semantic != null) {
+      if(semantic instanceof Part) {
+        Part partSem = (Part) semantic;
+        if(partSem.getAbstractType() instanceof Component) {
+          Component component = (Component) partSem.getAbstractType();
+          Collection<ComponentExchange> ce = ComponentExt.getAllRelatedComponentExchange(component);
+          for(ComponentExchange c : ce) {
+            super.hasntView(c.getId());
+          }
+        }
+      }
+    }
+  }
+  
+  public BlockArchitectureExt.Type getDiagramType() {
+    return type;
   }
 }

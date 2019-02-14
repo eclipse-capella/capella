@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -204,6 +204,11 @@ public interface IFilterNameConstants {
   String FILTER_IS_SHOW_EXCHANGE_CONTEXT = "Show EI {Exchange Context}"; //$NON-NLS-1$
   String FILTER_IS_SHOW_EXCHANGE_CONTEXT_ID = "ShowEIExchangeContext"; //$NON-NLS-1$
 
+  // XAB Filters
+  String FILTER_XAB_HIDE_SIMPLIFIED_DIAGRAM_BASED_COMPONENT_EXCHANGES = "Hide Simplified Diagram Based Component Exchanges"; //$NON-NLS-1$
+  String FILTER_XAB_HIDE_SIMPLIFIED_GROUP_OF_COMPONENT_EXCHANGES_ID = "Hide Simplified Group of Component Exchanges"; //$NON-NLS-1$
+  String FILTER_XAB_HIDE_SIMPLIFIED_ORIENTED_GROUPED_COMPONENT_EXCHANGES = "Hide Simplified Oriented Grouped Component Exchanges"; //$NON-NLS-1$
+  
   // LAB filters - Logical Architecture Blank
   String FILTER_LAB_COLLAPSE_COMPONENT_PORTS = "Collapse Component Ports"; //$NON-NLS-1$
   String FILTER_LAB_COLLAPSE_FUNCTION_PORTS = "Collapse Function Ports"; //$NON-NLS-1$
@@ -225,10 +230,10 @@ public interface IFilterNameConstants {
   String FILTER_LAB_SHOW_ALLOCATED_FUNCTIONAL_EXCHANGES_ON_COMPONENT_EXCHANGES =
       "Show Allocated Functional Exchanges on Component Exchanges"; //$NON-NLS-1$
   String FILTER_LAB_HIDE_CROSS_FUNCTIONAL_EXCHANGES_OF_REUSABLE_COMPONENTS = "Hide cross Functional Exchanges of reusable Components"; //$NON-NLS-1$
-  String FILTER_LAB_HIDE_SIMPLIFIED_DIAGRAM_BASED_COMPONENT_EXCHANGES = "Hide Simplified Diagram Based Component Exchanges"; //$NON-NLS-1$
+  String FILTER_LAB_HIDE_SIMPLIFIED_DIAGRAM_BASED_COMPONENT_EXCHANGES = FILTER_XAB_HIDE_SIMPLIFIED_DIAGRAM_BASED_COMPONENT_EXCHANGES; //$NON-NLS-1$
   String FILTER_LAB_HIDE_SIMPLIFIED_GROUPED_COMPONENT_EXCHANGES = "Hide Simplified Grouped Component Exchanges"; //$NON-NLS-1$
-  String FILTER_LAB_HIDE_SIMPLIFIED_GROUP_OF_COMPONENT_EXCHANGES_ID = "Hide Simplified Group of Component Exchanges"; //$NON-NLS-1$
-  String FILTER_LAB_HIDE_SIMPLIFIED_ORIENTED_GROUPED_COMPONENT_EXCHANGES = "Hide Simplified Oriented Grouped Component Exchanges"; //$NON-NLS-1$
+  String FILTER_LAB_HIDE_SIMPLIFIED_GROUP_OF_COMPONENT_EXCHANGES_ID = FILTER_XAB_HIDE_SIMPLIFIED_GROUP_OF_COMPONENT_EXCHANGES_ID; //$NON-NLS-1$
+  String FILTER_LAB_HIDE_SIMPLIFIED_ORIENTED_GROUPED_COMPONENT_EXCHANGES = FILTER_XAB_HIDE_SIMPLIFIED_ORIENTED_GROUPED_COMPONENT_EXCHANGES; //$NON-NLS-1$
   String FILTER_LAB_HIDE_PHYSICAL_LINKS_NAME = "Hide Physical Links names"; //$NON-NLS-1$
 
   String FILTER_XAB_HIDE_COMPUTED_CE = "Hide Computed Component Exchanges"; //$NON-NLS-1$
@@ -461,11 +466,11 @@ public interface IFilterNameConstants {
   String FILTER_PAB_SHOW_ALLOCATED_FUNCTIONAL_EXCHANGES_ON_COMPONENT_EXCHANGES =
       "Show Allocated Functional Exchanges on Component Exchanges"; //$NON-NLS-1$
   String FILTER_PAB_HIDE_CROSS_FUNCTIONAL_EXCHANGES_OF_REUSABLE_COMPONENTS = "Hide cross Functional Exchanges of reusable Components"; //$NON-NLS-1$
-  String FILTER_PAB_HIDE_SIMPLIFIED_DIAGRAM_BASED_COMPONENT_EXCHANGES = "Hide Simplified Diagram Based Component Exchanges"; //$NON-NLS-1$
+  String FILTER_PAB_HIDE_SIMPLIFIED_DIAGRAM_BASED_COMPONENT_EXCHANGES = FILTER_XAB_HIDE_SIMPLIFIED_DIAGRAM_BASED_COMPONENT_EXCHANGES; //$NON-NLS-1$
   String FILTER_PAB_HIDE_SIMPLIFIED_GROUPED_COMPONENT_EXCHANGES = "Hide Simplified Grouped Component Exchanges"; //$NON-NLS-1$
-  String FILTER_PAB_HIDE_SIMPLIFIED_GROUP_OF_COMPONENT_EXCHANGES_ID = "Hide Simplified Group of Component Exchanges"; //$NON-NLS-1$
+  String FILTER_PAB_HIDE_SIMPLIFIED_GROUP_OF_COMPONENT_EXCHANGES_ID = FILTER_XAB_HIDE_SIMPLIFIED_GROUP_OF_COMPONENT_EXCHANGES_ID; //$NON-NLS-1$
   String FILTER_PAB_HIDE_PORT_REALIZATIONS_ID = "Hide Port Realizations"; //$NON-NLS-1$
-  String FILTER_PAB_HIDE_SIMPLIFIED_ORIENTED_GROUPED_COMPONENT_EXCHANGES = "Hide Simplified Oriented Grouped Component Exchanges"; //$NON-NLS-1$
+  String FILTER_PAB_HIDE_SIMPLIFIED_ORIENTED_GROUPED_COMPONENT_EXCHANGES = FILTER_XAB_HIDE_SIMPLIFIED_ORIENTED_GROUPED_COMPONENT_EXCHANGES; //$NON-NLS-1$
   String FILTER_PAB_HIDE_COMPUTED_CE = FILTER_XAB_HIDE_COMPUTED_CE;
   String FILTER_PAB_HIDE_COMPUTED_PL = FILTER_XAB_HIDE_COMPUTED_PL;
 
@@ -520,8 +525,8 @@ public interface IFilterNameConstants {
       "Show Allocated Functional Exchanges on Component Exchanges"; //$NON-NLS-1$
   String FILTER_SAB_HIDE_CROSS_FUNCTIONAL_EXCHANGES_OF_REUSABLE_COMPONENTS = "Hide cross Functional Exchanges of reusable Components"; //$NON-NLS-1$
   String FILTER_SAB_HIDE_SIMPLIFIED_GROUPED_COMPONENT_EXCHANGES = "Hide Simplified Grouped Component Exchanges"; //$NON-NLS-1$
-  String FILTER_SAB_HIDE_SIMPLIFIED_GROUPED_COMPONENT_EXCHANGES_ID = "Hide Simplified Group of Component Exchanges"; //$NON-NLS-1$
-  String FILTER_SAB_HIDE_SIMPLIFIED_ORIENTED_GROUPED_COMPONENT_EXCHANGES = "Hide Simplified Oriented Grouped Component Exchanges"; //$NON-NLS-1$
+  String FILTER_SAB_HIDE_SIMPLIFIED_GROUPED_COMPONENT_EXCHANGES_ID = FILTER_XAB_HIDE_SIMPLIFIED_GROUP_OF_COMPONENT_EXCHANGES_ID; //$NON-NLS-1$
+  String FILTER_SAB_HIDE_SIMPLIFIED_ORIENTED_GROUPED_COMPONENT_EXCHANGES = FILTER_XAB_HIDE_SIMPLIFIED_ORIENTED_GROUPED_COMPONENT_EXCHANGES; //$NON-NLS-1$
 
   // filter id
   String FILTER_SAB_HIDE_COMPONENT_EXCHANGES_ID = "Hide Connections"; //$NON-NLS-1$

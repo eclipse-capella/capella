@@ -59,11 +59,9 @@ public final class ShowHideFunctionsOA extends AbstractShowHideFunctions {
     xab.createRole(GenericModel.ROLE_1_1_3, GenericModel.COMPONENT_1_3);
     xab.createRole(GenericModel.ROLE_1_4, GenericModel.COMPONENT_1);
 
-    xab.manageAllocatedRolesInsert(GenericModel.ROLE_1_1_3, GenericModel.COMPONENT_1_3);
     xab.manageAllocatedFunction(GenericModel.FUNCTION_1_1_3, GenericModel.ROLE_1_1_3);
     xab.manageAllocatedFunction(GenericModel.FUNCTION_1_1_4, GenericModel.ROLE_1_1_3);
 
-    xab.manageAllocatedRolesInsert(GenericModel.ROLE_1_4, GenericModel.COMPONENT_1);
     xab.manageAllocatedFunction(GenericModel.FUNCTION_1_4, GenericModel.ROLE_1_4);
 
     return xab;

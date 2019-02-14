@@ -179,6 +179,7 @@ public abstract class XABDiagramsProject extends AbstractDiagramTestCase {
   public static final String PA__PAB_COMPONENT_PC3_2_PORT_PC1 = "5330e600-e77a-4bfd-beac-206621b6419c";
   public static final String PA__PAB_COMPONENT_PC4 = "7f2f46d0-9e76-418c-bd18-1d6845221d4b";
   public static final String PA__PAB_COMPONENT_PC6 = "77ea8311-e10e-4f70-86ff-bf3260777830";
+  public static final String PA__PAB_COMPONENT_PART_PC6 = "0cbac486-3671-45dd-890b-c04d4b226bc6";
   public static final String PA__PAB_COMPONENT_PC7 = "b61cce74-4df1-4c35-b52f-107a1a41236e";
   public static final String PA__PAB_COMPONENT_PC8 = "fdacc723-f8bc-4a99-b678-4c72d24098a9";
   public static final String PA__PAB_COMPONENT_EXCHANGE_1 = "6dde609b-0f07-48fd-9c23-1f991a8f59d6";

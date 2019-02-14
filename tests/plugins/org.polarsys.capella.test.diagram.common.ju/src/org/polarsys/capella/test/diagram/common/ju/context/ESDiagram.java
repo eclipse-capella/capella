@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,8 +12,10 @@ package org.polarsys.capella.test.diagram.common.ju.context;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Map;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
@@ -25,7 +27,6 @@ import org.polarsys.capella.core.sirius.analysis.constants.IToolNameConstants;
 import org.polarsys.capella.test.diagram.common.ju.step.crud.CreateDiagramStep;
 import org.polarsys.capella.test.diagram.common.ju.step.crud.OpenDiagramStep;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.AbstractToolStep;
-import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateDEdgeTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateNodeTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.InsertRemoveTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.sequence.MessageCreationTool;
@@ -145,6 +146,11 @@ public class ESDiagram extends DiagramContext {
     new InsertRemoveTool(this, name).remove(id);
   }
   
+  public void createComponentExchange(String componentExchange, String source, String target) {
+    String name = IToolNameConstants.TOOL_ES_CREATE_COMPONENT_EXCHANGE;
+    new MessageCreationTool(this, name, componentExchange, source, target).run();
+  }
+  
   public void createFunctionalExchange(String functionalExchange, String source, String target) {
     String name = IToolNameConstants.TOOL_ES_CREATE_FUNCTIONAL_EXCHANGE;
     new MessageCreationTool(this, name, functionalExchange, source, target).run();
@@ -154,6 +160,11 @@ public class ESDiagram extends DiagramContext {
 	 String name = IToolNameConstants.TOOL_ES_CREATE_ARM_TIMER;
 	 new TimerCreationTool(this, name, source, target).run();
   }
+  
+  public void cancelArmTimer(String source, String target){
+    String name = IToolNameConstants.TOOL_ES_CREATE_CANCEL_TIMER;
+    new TimerCreationTool(this, name, source, target).run();
+   }
   
   @Override
   //Override this method to switch between InstanceRole (appear in the diagram) and Part (appear in the Transfer wizard)
@@ -168,5 +179,42 @@ public class ESDiagram extends DiagramContext {
       }
     }
     return result;
+  }
+  
+  public String[] getGraphicalInsertedElements(String ...elements) {
+    Collection<String> ids = new HashSet<String>();
+    for(String element : elements) {
+      EObject obj = this.getSemanticElement(element);
+      if(obj instanceof InstanceRole) {
+          EList<InstanceRole> instances = (((InstanceRole) obj).getRepresentedInstance()).getRepresentingInstanceRoles();
+          for(InstanceRole instance : instances) {
+            ids.add(instance.getId());
+          }
+      }
+      else {
+        ids.add(element);
+      }
+    }
+    
+    String[] inserted = new String[ids.size()];
+    inserted = ids.toArray(inserted);
+    
+    return inserted;
+  }
+  
+  @Override
+  public void hasView(String identifiers) {
+    String [] ids = getGraphicalInsertedElements(identifiers);
+    super.hasViews(ids);
+  }
+  
+  @Override
+  public void hasntView(String identifiers) {
+    String [] ids = getGraphicalInsertedElements(identifiers);
+    super.hasntViews(ids);
+  }
+  
+  public BlockArchitectureExt.Type getDiagramType() {
+    return type;
   }
 }

@@ -27,16 +27,16 @@ public class ShowHideBehaviorPCGroup extends XABDiagramsProject {
         LA__LAB_FUNCTION_1, LA__LAB_COMPONENT_EXCHANGE_C1 };
 
     testOnXAB_DeployedBehaviorComponent(context, PA__PAB_DIAGRAM,
-        BlockArchitectureExt.Type.PA, PA__PAB_COMPONENT_PC3,
-        PA__PAB_COMPONENT_PC1, checkDCIds);
-
-    testOnXAB_DeployedBehaviorComponent(context, PA__PAB_DIAGRAM,
         BlockArchitectureExt.Type.PA, PA__PAB_COMPONENT_PC3_1,
         PA__PAB_COMPONENT_PC3, PA__PAB_COMPONENT_PORT_PC3_1_CP1);
-
+    
     testOnXAB_BehaviorComponent(context, PA__PAB_DIAGRAM, BlockArchitectureExt.Type.PA,
         PA__PAB_COMPONENT_PC3_2, PA__PAB_COMPONENT_PC3,
         PA__PAB_COMPONENT_PC3_2_PORT_PC1);
+    
+    testOnXAB_DeployedBehaviorComponent(context, PA__PAB_DIAGRAM,
+        BlockArchitectureExt.Type.PA, PA__PAB_COMPONENT_PC3,
+        PA__PAB_COMPONENT_PC1, checkDCIds);
   }
 
   public void testOnXAB_DeployedBehaviorComponent(SessionContext context, String diagramName,
