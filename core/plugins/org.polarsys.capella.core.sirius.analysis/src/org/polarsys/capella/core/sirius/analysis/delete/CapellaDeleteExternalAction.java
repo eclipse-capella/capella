@@ -12,6 +12,7 @@ package org.polarsys.capella.core.sirius.analysis.delete;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Map;
 
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -26,17 +27,23 @@ import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaDeleteComman
 import org.polarsys.capella.core.platform.sirius.ui.commands.Messages;
 
 public class CapellaDeleteExternalAction implements IExternalJavaAction {
+  private Map<Collection<? extends EObject>, Boolean> selectionDeletable;
+
+  public CapellaDeleteExternalAction() {
+    selectionDeletable = new HashMap<>();
+  }
+
   /**
    * @see org.eclipse.sirius.tools.api.ui.IExternalJavaAction#canExecute(java.util.Collection)
    */
-  public boolean canExecute(Collection<? extends EObject> selections_p) {
-    return CapellaDeleteAction.canDelete(selections_p);
+  public boolean canExecute(Collection<? extends EObject> selections) {
+    return selectionDeletable.computeIfAbsent(selections, CapellaDeleteAction::canDelete);
   }
 
   /**
    * @see org.eclipse.sirius.tools.api.ui.IExternalJavaAction#execute(java.util.Collection, java.util.Map)
    */
-  public void execute(final Collection<? extends EObject> selections_p, Map<String, Object> parameters_p) {
+  public void execute(final Collection<? extends EObject> selections, Map<String, Object> parameters) {
 
     final Collection<? extends EObject> selection = CapellaDeleteActionHook.getSelection();
     if ((selection == null) || selection.isEmpty()) {
@@ -51,7 +58,8 @@ public class CapellaDeleteExternalAction implements IExternalJavaAction {
        */
       public void run(IProgressMonitor monitor_p) throws InvocationTargetException, InterruptedException {
         monitor_p.beginTask(Messages.CapellaDeleteCommand_Label, IProgressMonitor.UNKNOWN);
-        CapellaDeleteCommand mdc = new CapellaDeleteCommand(TransactionHelper.getExecutionManager(selection), selection, false, false, true);
+        CapellaDeleteCommand mdc = new CapellaDeleteCommand(TransactionHelper.getExecutionManager(selection), selection,
+            false, false, true);
         if (mdc.canExecute()) {
           // Do execute the command !
           mdc.execute();
@@ -63,8 +71,8 @@ public class CapellaDeleteExternalAction implements IExternalJavaAction {
       // What's more, forking & asking delete command to ensure transaction leads to new issues.
       // See the CapellaDeleteActionHook for user confirmation mechanism.
       new ProgressMonitorDialog(PlatformUI.getWorkbench().getDisplay().getActiveShell()).run(false, false, runnable);
-    } catch (Exception exception_p) {
-      throw new RuntimeException(exception_p);
+    } catch (Exception exception) {
+      throw new RuntimeException(exception);
 
     } finally {
       // Don't forget to remove selection
