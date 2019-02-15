@@ -84,15 +84,6 @@ public interface FaFactory extends EFactory {
 	FunctionalChain createFunctionalChain();
 
 	/**
-	 * Returns a new object of class '<em>Functional Chain Involvement</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Functional Chain Involvement</em>'.
-	 * @generated
-	 */
-	FunctionalChainInvolvement createFunctionalChainInvolvement();
-
-	/**
 	 * Returns a new object of class '<em>Functional Chain Reference</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

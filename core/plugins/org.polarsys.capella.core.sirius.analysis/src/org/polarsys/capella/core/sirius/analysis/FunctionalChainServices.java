@@ -1183,65 +1183,6 @@ public class FunctionalChainServices {
     return new HashMapSet<FunctionalExchange, FunctionalChain>();
   }
 
-  /**
-   * @param context
-   * @param hashMapSet
-   * @param hashMapSet2
-   * @param hashMapSet3
-   */
-  public void involvedFCDFunctionalExchangeFunctionalChain(AbstractDNode context,
-      HashMapSet<FunctionalExchange, FunctionalChain> scope,
-      HashMapSet<FunctionalExchange, FunctionalChain> initialSelection,
-      HashMapSet<FunctionalExchange, FunctionalChain> selection) {
-
-    if ((context == null)) {
-      return;
-    }
-    DDiagram diagram = CapellaServices.getService().getDiagramContainer(context);
-    if ((diagram == null) || !(diagram instanceof DSemanticDecorator)) {
-      return;
-    }
-    FunctionalChain sourceFC = (FunctionalChain) ((DSemanticDecorator) diagram).getTarget();
-    EObject target = context.getTarget();
-    if ((target == null) || target.eIsProxy() || !(target instanceof FunctionalChainInvolvement)) {
-      return;
-    }
-
-    FunctionalChainInvolvement iSource = (FunctionalChainInvolvement) context.getTarget();
-
-    for (FunctionalExchange exchange : selection.keySet()) {
-      for (FunctionalChain chain : selection.get(exchange)) {
-        FunctionalChainInvolvement iExchange = FaFactory.eINSTANCE.createFunctionalChainInvolvement();
-        iExchange.setInvolved(exchange);
-        sourceFC.getOwnedFunctionalChainInvolvements().add(iExchange);
-        iSource.getNextFunctionalChainInvolvements().add(iExchange);
-
-        FunctionalChainReference iChain = FaFactory.eINSTANCE.createFunctionalChainReference();
-        iChain.setInvolved(chain);
-        sourceFC.getOwnedFunctionalChainInvolvements().add(iChain);
-        iExchange.getNextFunctionalChainInvolvements().add(iChain);
-
-        AbstractNodeMapping nodeMapping = DiagramServices.getDiagramServices().getAbstractNodeMapping(diagram,
-            IMappingNameConstants.FCD_FUNCTIONAL_CHAIN__MAPPING_NAME);
-        if (nodeMapping == null) {
-          return;
-        }
-        AbstractDNode node = DiagramServices.getDiagramServices().createAbstractDNode(nodeMapping, iChain, diagram,
-            diagram);
-        if (node == null) {
-          return;
-        }
-        EdgeMapping edgeMapping = DiagramServices.getDiagramServices().getEdgeMapping(diagram,
-            IMappingNameConstants.FCD_FUNCTIONAL_EXCHANGE__MAPPING_NAME);
-        if (edgeMapping == null) {
-          return;
-        }
-        DiagramServices.getDiagramServices().createEdge(edgeMapping, (EdgeTarget) context, (EdgeTarget) node,
-            iExchange);
-      }
-    }
-  }
-
   @Deprecated
   public List<FunctionalExchange> getAvailableFunctionalExchangeToInsertInFCD(DNode node) {
     return getFCDInvolveFunctionalExchangeAndFunctionScope(node);

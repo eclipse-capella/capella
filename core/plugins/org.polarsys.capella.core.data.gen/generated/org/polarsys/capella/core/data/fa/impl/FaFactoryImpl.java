@@ -100,7 +100,6 @@ public class FaFactoryImpl extends EFactoryImpl implements FaFactory {
 			case FaPackage.EXCHANGE_CONTAINMENT: return createExchangeContainment();
 			case FaPackage.FUNCTIONAL_EXCHANGE_SPECIFICATION: return createFunctionalExchangeSpecification();
 			case FaPackage.FUNCTIONAL_CHAIN: return createFunctionalChain();
-			case FaPackage.FUNCTIONAL_CHAIN_INVOLVEMENT: return createFunctionalChainInvolvement();
 			case FaPackage.FUNCTIONAL_CHAIN_REFERENCE: return createFunctionalChainReference();
 			case FaPackage.FUNCTION_INPUT_PORT: return createFunctionInputPort();
 			case FaPackage.FUNCTION_OUTPUT_PORT: return createFunctionOutputPort();
@@ -271,22 +270,6 @@ public class FaFactoryImpl extends EFactoryImpl implements FaFactory {
 
     //end-capella-code
 		return functionalChain;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public FunctionalChainInvolvement createFunctionalChainInvolvement() {
-		FunctionalChainInvolvementImpl functionalChainInvolvement = new FunctionalChainInvolvementImpl();
-    //begin-capella-code
-
-    functionalChainInvolvement.setId(IdGenerator.createId());
-
-
-    //end-capella-code
-		return functionalChainInvolvement;
 	}
 
 	/**

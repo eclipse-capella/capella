@@ -1331,7 +1331,8 @@
       <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="FunctionalChainInvolvement" eSuperTypes="CapellaCore.ecore#//Involvement">
+  <eClassifiers xsi:type="ecore:EClass" name="FunctionalChainInvolvement" abstract="true"
+      eSuperTypes="CapellaCore.ecore#//Involvement">
     <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
       <details key="description" value="specifies the involvement of a model element in a functional chain&#xD;&#xA;[source: Capella study]"/>
       <details key="usage guideline" value="n/a"/>

@@ -712,18 +712,6 @@ public class FunctionalChainItemProvider
                 {
                     CommandParameter commandParameter = createChildParameter
                         (FaPackage.Literals.FUNCTIONAL_CHAIN__OWNED_FUNCTIONAL_CHAIN_INVOLVEMENTS,
-                         FaFactory.eINSTANCE.createFunctionalChainInvolvement());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (FaPackage.Literals.FUNCTIONAL_CHAIN__OWNED_FUNCTIONAL_CHAIN_INVOLVEMENTS,
                          FaFactory.eINSTANCE.createFunctionalChainReference());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      

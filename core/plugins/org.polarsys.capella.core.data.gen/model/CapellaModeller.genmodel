@@ -1583,7 +1583,7 @@
     <genClasses image="false" ecoreClass="FunctionalAnalysis.ecore#//AbstractFunctionalChainContainer">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference FunctionalAnalysis.ecore#//AbstractFunctionalChainContainer/ownedFunctionalChains"/>
     </genClasses>
-    <genClasses ecoreClass="FunctionalAnalysis.ecore#//FunctionalChainInvolvement">
+    <genClasses image="false" ecoreClass="FunctionalAnalysis.ecore#//FunctionalChainInvolvement">
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference FunctionalAnalysis.ecore#//FunctionalChainInvolvement/nextFunctionalChainInvolvements"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference FunctionalAnalysis.ecore#//FunctionalChainInvolvement/previousFunctionalChainInvolvements"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference FunctionalAnalysis.ecore#//FunctionalChainInvolvement/involvedElement"/>

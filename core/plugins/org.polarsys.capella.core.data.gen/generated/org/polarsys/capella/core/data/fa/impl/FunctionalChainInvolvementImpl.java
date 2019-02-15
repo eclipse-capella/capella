@@ -51,7 +51,7 @@ import org.polarsys.capella.core.data.information.ExchangeItem;
  *
  * @generated
  */
-public class FunctionalChainInvolvementImpl extends RelationshipImpl implements FunctionalChainInvolvement {
+public abstract class FunctionalChainInvolvementImpl extends RelationshipImpl implements FunctionalChainInvolvement {
 
 	/**
 	 * The cached value of the '{@link #getInvolved() <em>Involved</em>}' reference.

@@ -246,29 +246,6 @@ public class FaItemProviderAdapterFactory extends FaAdapterFactory implements Co
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.fa.FunctionalChainInvolvement} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected FunctionalChainInvolvementItemProvider functionalChainInvolvementItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.fa.FunctionalChainInvolvement}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createFunctionalChainInvolvementAdapter() {
-		if (functionalChainInvolvementItemProvider == null) {
-			functionalChainInvolvementItemProvider = new FunctionalChainInvolvementItemProvider(this);
-		}
-
-		return functionalChainInvolvementItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.fa.FunctionalChainReference} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -883,7 +860,6 @@ public class FaItemProviderAdapterFactory extends FaAdapterFactory implements Co
 		if (exchangeContainmentItemProvider != null) exchangeContainmentItemProvider.dispose();
 		if (functionalExchangeSpecificationItemProvider != null) functionalExchangeSpecificationItemProvider.dispose();
 		if (functionalChainItemProvider != null) functionalChainItemProvider.dispose();
-		if (functionalChainInvolvementItemProvider != null) functionalChainInvolvementItemProvider.dispose();
 		if (functionalChainReferenceItemProvider != null) functionalChainReferenceItemProvider.dispose();
 		if (functionInputPortItemProvider != null) functionInputPortItemProvider.dispose();
 		if (functionOutputPortItemProvider != null) functionOutputPortItemProvider.dispose();
