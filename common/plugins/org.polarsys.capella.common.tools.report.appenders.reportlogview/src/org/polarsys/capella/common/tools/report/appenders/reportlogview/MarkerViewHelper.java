@@ -155,7 +155,9 @@ public class MarkerViewHelper {
         }
       }
     } else if (diag instanceof BasicDiagnostic && diag.getSource() != null) {
-      return diag.getSource() + "." + diag.getCode();
+      if(diag.getSource().equals(ECORE_DIAGNOSTIC_SOURCE))
+        return diag.getSource() + "." + diag.getCode();
+      return diag.getSource();
     }
     return result;
   }

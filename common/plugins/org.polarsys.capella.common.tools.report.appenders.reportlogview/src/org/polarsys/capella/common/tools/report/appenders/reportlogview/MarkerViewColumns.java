@@ -460,21 +460,7 @@ class MarkerViewColumns {
           if (element instanceof IMarker) {
             // If it's a validation rule id, we print that
             result = MarkerViewHelper.getRuleID((IMarker) element, false);
-            String markerSource = MarkerViewHelper.getSource((IMarker) element);
-            if (result == null) {
-              /*
-               * Otherwise we use the marker diagnostic source as the label ...
-               */
-              result = markerSource;
-              if (result != null) {
-                /*
-                 * ... with a special label for basic EMF validation results (e.g. unresolved proxies)
-                 */
-                if (result.equals(MarkerViewHelper.ECORE_DIAGNOSTIC_SOURCE)) {
-                  result = Messages.MarkerLabelProvider_EcoreDiagnosticSourceLabel;
-                }
-              }
-            } else if (markerSource != null && markerSource.equals(MarkerViewHelper.ECORE_DIAGNOSTIC_SOURCE)) {
+            if (result != null && result.startsWith(MarkerViewHelper.ECORE_DIAGNOSTIC_SOURCE)) {
               result = result.replace(MarkerViewHelper.ECORE_DIAGNOSTIC_SOURCE,
                   Messages.MarkerLabelProvider_EcoreDiagnosticSourceLabel);
             }
