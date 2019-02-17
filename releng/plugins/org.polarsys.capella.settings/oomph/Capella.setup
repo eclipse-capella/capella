@@ -451,9 +451,9 @@
         <repositoryList
             name="Oxygen">
           <repository
-              url="https://ci.polarsys.org/kitalpha/job/Kitalpha_master/1069/artifact/releng/plugins/org.polarsys.kitalpha.releng.runtime.core.updatesite/target/repository"/>
+              url="https://ci.polarsys.org/kitalpha/job/Kitalpha-v1.3.x/105/artifact/releng/plugins/org.polarsys.kitalpha.releng.runtime.core.updatesite/target/repository"/>
           <repository
-              url="https://ci.polarsys.org/kitalpha/job/Kitalpha_master/1069/artifact/releng/plugins/org.polarsys.kitalpha.releng.sdk.updatesite/target/repository"/>
+              url="https://ci.polarsys.org/kitalpha/job/Kitalpha-v1.3.x/105/artifact/releng/plugins/org.polarsys.kitalpha.releng.sdk.updatesite/target/repository"/>
           <repository
               url="http://download.eclipse.org/egf/updates/1.6.0/oxygen"/>
         </repositoryList>
@@ -521,6 +521,8 @@
               name="org.polarsys.kitalpha.resourcereuse.emfscheme.feature.feature.group"/>
           <requirement
               name="org.polarsys.kitalpha.resourcereuse.ui.feature.feature.group"/>
+          <requirement
+              name="org.polarsys.kitalpha.resourcereuse.emfscheme.ui.feature.feature.group"/>
         </targlet>
       </setupTask>
       <description>Capella master development</description>
