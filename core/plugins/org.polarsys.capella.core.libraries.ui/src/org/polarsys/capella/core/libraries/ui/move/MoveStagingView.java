@@ -79,6 +79,9 @@ import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.ViewerCell;
 import org.eclipse.jface.viewers.ViewerDropAdapter;
 import org.eclipse.jface.window.Window;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionListener;
+import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.dnd.DND;
 import org.eclipse.swt.dnd.DragSourceEvent;
@@ -131,7 +134,7 @@ import org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaCommon
 
 import com.google.common.collect.Lists;
 
-public class MoveStagingView extends ViewPart implements ISelectionProvider, ITabbedPropertySheetPageContributor {
+public class MoveStagingView extends ViewPart implements ISelectionProvider, ITabbedPropertySheetPageContributor, SessionListener {
 
   /**
    * The context menu id for the stage viewer
@@ -182,6 +185,11 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
   
   IAction destExpandAllAction;
   IAction destCollapseAllAction;
+
+  /**
+   * The session associated to the current transfer
+   */
+  Session session;
 
   public Stage getStage(){
     return stage;
@@ -431,6 +439,7 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
           // the first element is dropped onto the staging area
 
           stage = new Stage(EcoreUtil2.getEditingDomain(dropped));
+
           listener = new StageListener() {
 
             @Override
@@ -471,6 +480,8 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
           stageCollapseAllAction.setEnabled(true);
           destExpandAllAction.setEnabled(true);
           destCollapseAllAction.setEnabled(true);
+
+          initSessionListener(stage.getEditingDomain());
 
         }
 
@@ -551,6 +562,15 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
     stageViewer.getControl().setMenu(stageContextMenu.createContextMenu(stageViewer.getControl()));
     getViewSite().registerContextMenu(STAGEVIEWER_CONTEXT_MENU, stageContextMenu, stageViewer);
 
+  }
+
+  private void initSessionListener(EditingDomain editingDomain) {
+    for (Session session : SessionManager.INSTANCE.getSessions()) {
+      if (session.getTransactionalEditingDomain() == stage.getEditingDomain()) {
+        MoveStagingView.this.session = session;
+        session.addListener(MoveStagingView.this);
+      }
+    }
   }
 
   private CellLabelProvider createLabelProvider(boolean showErrorCount) {
@@ -1153,6 +1173,10 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
     stageCollapseAllAction.setEnabled(false);
     destExpandAllAction.setEnabled(false);
     destCollapseAllAction.setEnabled(false);
+    if (session != null) {
+      session.removeListener(this);
+      session = null;
+    }
   }
 
   @Override
@@ -1202,6 +1226,9 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
     if (tooltipSupport != null) {
       tooltipSupport.dispose();
     }
+    if (session != null) {
+      session.removeListener(this);
+    }
   }
 
   private static class MyLocateInCapellaExplorerAction extends LocateInCapellaExplorerAction {
@@ -1232,5 +1259,11 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
 
   }
 
+  @Override
+  public void notify(int changeKind) {
+    if (changeKind == SessionListener.CLOSING) {
+      reset();
+    }
+  }
 
 }
