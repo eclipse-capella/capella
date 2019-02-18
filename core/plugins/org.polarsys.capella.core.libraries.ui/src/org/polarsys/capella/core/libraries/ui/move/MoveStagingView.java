@@ -278,7 +278,7 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
             } else {
               userDecision = Messages.MoveStagingView_CancelStatusMessage;
             }
-            report(new BasicDiagnostic(Activator.PLUGIN_ID, 0, userDecision, new Object[0]));
+            report(new BasicDiagnostic(Stage.SOURCE, 0, userDecision, new Object[0]));
           } else {
             resetView = true;
           }

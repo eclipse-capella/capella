@@ -52,7 +52,7 @@ import com.google.common.collect.Multimap;
 
 public class Stage {
 
-  final static String SOURCE = "org.polarsys.capella.core.model"; //$NON-NLS-1$
+  public final static String SOURCE = Messages.Stage_diagnosticSource;
   final List<EObject> delegate = new ArrayList<EObject>();
 
   private TransactionalEditingDomain domain;

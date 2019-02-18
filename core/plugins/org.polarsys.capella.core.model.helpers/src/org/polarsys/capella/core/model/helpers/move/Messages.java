@@ -23,6 +23,7 @@ public class Messages extends NLS {
   public static String Stage_incomplete_with_backrefs;
   public static String Stage_incomplete_with_orphan;
   public static String Stage_executeDiagnostics_title;
+  public static String Stage_diagnosticSource;
   static {
     // initialize resource bundle
     NLS.initializeMessages(BUNDLE_NAME, Messages.class);
