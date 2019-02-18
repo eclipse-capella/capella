@@ -22,6 +22,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.UniqueEList;
@@ -5124,14 +5125,18 @@ public class FaServices {
 
     AbstractShowHide showHideExchangeCategoryService = new ShowHideExchangeCategory(content);
 
+    Map<AbstractFunction, List<FunctionalExchange>> mapFunction2AllExchanges = functionRelatedDiagramElements.stream()
+        .map(DDiagramElement::getTarget).distinct().filter(AbstractFunction.class::isInstance)
+        .map(AbstractFunction.class::cast).collect(Collectors.toMap(x -> x, FunctionExt::getAllExchanges));
+
     // 1. SHOW / HIDE EDGES OF EXCHANGE CATEGORIES
     // Display the categories between parts if they are part of selectedElements, or hide them
-    showHideExchangeCategoryEdges(content, functionRelatedDiagramElements, selectedExchangeCategories,
+    showHideExchangeCategoryEdges(content, mapFunction2AllExchanges, selectedExchangeCategories,
         showHideExchangeCategoryService);
 
     // 2. SHOW / HIDE EDGES OF FUNCTIONAL EXCHANGES
-    showHideFunctionalExchanges(functionRelatedDiagramElements, selectedExchangeCategories,
-        showHideExchangeCategoryService, showHiddenExchanges);
+    showHideFunctionalExchanges(mapFunction2AllExchanges, selectedExchangeCategories, showHideExchangeCategoryService,
+        showHiddenExchanges);
 
     // 3.
     content.commitDeferredActions();
@@ -5140,39 +5145,34 @@ public class FaServices {
   }
 
   private void showHideExchangeCategoryEdges(DDiagramContents content,
-      Collection<DDiagramElement> functionRelatedDiagramElements,
+      Map<AbstractFunction, List<FunctionalExchange>> mapFunction2AllExchanges,
       Collection<ExchangeCategory> selectedExchangeCategories, AbstractShowHide showHideExchangeCategoryService) {
 
     DiagramContext ctx = showHideExchangeCategoryService.new DiagramContext();
-    for (DDiagramElement diagramElement : functionRelatedDiagramElements) {
-      EObject diagramElementTarget = diagramElement.getTarget();
-      if (diagramElementTarget instanceof AbstractFunction) {
-        AbstractFunction targetFunction = (AbstractFunction) diagramElementTarget;
+    for (AbstractFunction targetFunction : mapFunction2AllExchanges.keySet()) {
+      Map<ExchangeCategory, Map.Entry<AbstractFunction, AbstractFunction>> categoryToSourceTargetMap = getExchangeCategoryToSourceTargetMap(
+          mapFunction2AllExchanges.get(targetFunction));
+      for (Entry<ExchangeCategory, Entry<AbstractFunction, AbstractFunction>> entry : categoryToSourceTargetMap
+          .entrySet()) {
+        ExchangeCategory category = entry.getKey();
+        Map.Entry<AbstractFunction, AbstractFunction> sourceTargetMap = entry.getValue();
 
-        Map<ExchangeCategory, Map.Entry<AbstractFunction, AbstractFunction>> categoryToSourceTargetMap = getExchangeCategoryToSourceTargetMap(
-            targetFunction);
-        for (Entry<ExchangeCategory, Entry<AbstractFunction, AbstractFunction>> entry : categoryToSourceTargetMap
-            .entrySet()) {
-          ExchangeCategory category = entry.getKey();
-          Map.Entry<AbstractFunction, AbstractFunction> sourceTargetMap = entry.getValue();
+        AbstractFunction source = sourceTargetMap.getKey();
+        AbstractFunction target = sourceTargetMap.getValue();
 
-          AbstractFunction source = sourceTargetMap.getKey();
-          AbstractFunction target = sourceTargetMap.getValue();
-
-          if (selectedExchangeCategories.contains(category)) {
-            // Show the exchange category edge
-            showFECategory(showHideExchangeCategoryService, ctx, category, source, target, true);
-          } else {
-            // Hide the exchange category edge
-            showFECategory(showHideExchangeCategoryService, ctx, category, getBestFunctionContainer(source, content),
-                getBestFunctionContainer(target, content), false);
-          }
+        if (selectedExchangeCategories.contains(category)) {
+          // Show the exchange category edge
+          showFECategory(showHideExchangeCategoryService, ctx, category, source, target, true);
+        } else {
+          // Hide the exchange category edge
+          showFECategory(showHideExchangeCategoryService, ctx, category, getBestFunctionContainer(source, content),
+              getBestFunctionContainer(target, content), false);
         }
       }
     }
   }
 
-  private void showHideFunctionalExchanges(Collection<DDiagramElement> functionRelatedDiagramElements,
+  private void showHideFunctionalExchanges(Map<AbstractFunction, List<FunctionalExchange>> mapFunction2AllExchanges,
       Collection<ExchangeCategory> selectedExchangeCategories, AbstractShowHide showHideExchangeCategoryService,
       boolean showHiddenExchanges) {
     // In tool (showHiddenExchanges==true), user may have removed some categories, so he wants to display hidden
@@ -5181,29 +5181,24 @@ public class FaServices {
     // display hidden exchanges,
     // he just want to hide new exchanges associated to displayed categories.
     DiagramContext ctx = showHideExchangeCategoryService.new DiagramContext();
-    for (DDiagramElement diagramElement : functionRelatedDiagramElements) {
-      EObject diagramElementTarget = diagramElement.getTarget();
-      if (diagramElementTarget instanceof AbstractFunction) {
-        AbstractFunction targetFunction = (AbstractFunction) diagramElementTarget;
+    for (AbstractFunction targetFunction : mapFunction2AllExchanges.keySet()) {
+      Map<ExchangeCategory, Map.Entry<AbstractFunction, AbstractFunction>> categoryToSourceTargetMap = getExchangeCategoryToSourceTargetMap(
+          mapFunction2AllExchanges.get(targetFunction));
 
-        Map<ExchangeCategory, Map.Entry<AbstractFunction, AbstractFunction>> categoryToSourceTargetMap = getExchangeCategoryToSourceTargetMap(
-            targetFunction);
+      for (Entry<ExchangeCategory, Entry<AbstractFunction, AbstractFunction>> entry : categoryToSourceTargetMap
+          .entrySet()) {
+        ExchangeCategory category = entry.getKey();
 
-        for (Entry<ExchangeCategory, Entry<AbstractFunction, AbstractFunction>> entry : categoryToSourceTargetMap
-            .entrySet()) {
-          ExchangeCategory category = entry.getKey();
-
-          for (FunctionalExchange functionalExchange : FunctionExt.getAllExchanges(targetFunction)) {
-            if (functionalExchange.getCategories().contains(category)) {
-              if (selectedExchangeCategories.contains(category)) {
-                // Hide the functional exchange edge
-                showHideExchangeCategoryService.hide(functionalExchange, ctx);
-              } else {
-                if (showHiddenExchanges) {
-                  // Show the functional exchange edge
-                  // Only in tool when user switches functional exchange vs exchange category
-                  showHideExchangeCategoryService.show(functionalExchange, ctx);
-                }
+        for (FunctionalExchange functionalExchange : mapFunction2AllExchanges.get(targetFunction)) {
+          if (functionalExchange.getCategories().contains(category)) {
+            if (selectedExchangeCategories.contains(category)) {
+              // Hide the functional exchange edge
+              showHideExchangeCategoryService.hide(functionalExchange, ctx);
+            } else {
+              if (showHiddenExchanges) {
+                // Show the functional exchange edge
+                // Only in tool when user switches functional exchange vs exchange category
+                showHideExchangeCategoryService.show(functionalExchange, ctx);
               }
             }
           }
@@ -5271,11 +5266,8 @@ public class FaServices {
   }
 
   private Map<ExchangeCategory, Map.Entry<AbstractFunction, AbstractFunction>> getExchangeCategoryToSourceTargetMap(
-      AbstractFunction abstractFunction) {
+      List<FunctionalExchange> functionalExchanges) {
     HashMap<ExchangeCategory, Map.Entry<AbstractFunction, AbstractFunction>> result = new HashMap<>();
-
-    List<FunctionalExchange> functionalExchanges = FunctionExt.getAllExchanges(abstractFunction);
-
     for (FunctionalExchange fe : functionalExchanges) {
       for (ExchangeCategory category : fe.getCategories()) {
         Map.Entry<AbstractFunction, AbstractFunction> sourceToTargetMap = new AbstractMap.SimpleEntry<>(
