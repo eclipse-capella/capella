@@ -28,6 +28,7 @@ import org.polarsys.capella.core.sirius.analysis.FaServices;
 import org.polarsys.capella.core.sirius.analysis.FunctionalChainServices;
 import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
 import org.polarsys.capella.core.sirius.analysis.IMappingNameConstants;
+import org.polarsys.capella.core.sirius.analysis.cache.FunctionalChainCache;
 
 /**
  * 
@@ -40,6 +41,8 @@ public class EntityArchitectureBlankRefreshExtension extends AbstractRefreshExte
    */
   public void beforeRefresh(DDiagram diagram) {
 
+    FunctionalChainCache.getInstance().reset();
+    
     DRepresentationDescriptor descriptor = RepresentationHelper.getRepresentationDescriptor(diagram);
     Collection<EObject> contextualElements = ContextualDiagramHelper.getService().getContextualElements(descriptor);
 
@@ -69,15 +72,15 @@ public class EntityArchitectureBlankRefreshExtension extends AbstractRefreshExte
    */
   public void postRefresh(DDiagram diagram) {
     try {
-      FunctionalChainServices.getFunctionalChainServices().updateInternalFunctionalChains(diagram);
       FunctionalChainServices.getFunctionalChainServices().updateFunctionalChainStyles(diagram);
     } catch (Exception e) {
       Logger.getLogger(IReportManagerDefaultComponents.DIAGRAM).error(Messages.RefreshExtension_ErrorOnUpdateFunctionalChainStyle, e);
     }
+
+    FunctionalChainCache.getInstance().reset();
   }
 
   /**
-   * 
    * @param diagram_p
    * @return
    */

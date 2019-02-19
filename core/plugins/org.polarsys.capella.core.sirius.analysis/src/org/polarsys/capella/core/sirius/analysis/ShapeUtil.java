@@ -60,6 +60,7 @@ import org.eclipse.sirius.viewpoint.description.FixedColor;
 import org.eclipse.sirius.viewpoint.description.InterpolatedColor;
 import org.eclipse.swt.graphics.RGB;
 import org.eclipse.ui.IEditorPart;
+import org.w3c.dom.css.RGBColor;
 
 /**
  * Utility class to handle style, size and location
@@ -70,7 +71,9 @@ public class ShapeUtil {
 
   /**
    * Convert a RGB value to RGBValues
-   * @param RGB color
+   * 
+   * @param RGB
+   *          color
    * @return RGBValues
    */
   public static RGBValues convertRGBtoRGBValues(RGB color) {
@@ -108,6 +111,7 @@ public class ShapeUtil {
 
   /**
    * Retrieve the GraphicalEditPart of a Node
+   * 
    * @param currentNode
    * @return
    */
@@ -132,6 +136,7 @@ public class ShapeUtil {
 
   /**
    * Get the Location of the currentNode (GMF Way)
+   * 
    * @param currentNode
    * @return the point Location width of the currentNode
    */
@@ -141,6 +146,7 @@ public class ShapeUtil {
 
   /**
    * Absolute Location of Node in diagram
+   * 
    * @param currentNode
    * @return
    */
@@ -159,6 +165,7 @@ public class ShapeUtil {
 
   /**
    * get the color of the node
+   * 
    * @param node
    * @return get the color of the node
    */
@@ -175,6 +182,7 @@ public class ShapeUtil {
 
   /**
    * Get the height of the currentNode (GMF Way)
+   * 
    * @param currentNode
    * @return Get the height of the currentNode
    */
@@ -193,6 +201,7 @@ public class ShapeUtil {
 
   /**
    * Get the height of the currentNode (Draw2D Way)
+   * 
    * @param currentNode
    * @return Get the height of the currentNode
    */
@@ -207,6 +216,7 @@ public class ShapeUtil {
 
   /**
    * Get the width of the currentNode (GMF Way)
+   * 
    * @param currentNode
    * @return Get the width of the currentNode
    */
@@ -224,6 +234,7 @@ public class ShapeUtil {
 
   /**
    * Get the width of the currentNode (Draw2D Way)
+   * 
    * @param currentNode
    * @return Get the height of the currentNode
    */
@@ -240,6 +251,7 @@ public class ShapeUtil {
 
   /**
    * Indicate if the icon label is shown on currentNode
+   * 
    * @param currentNode
    * @return true if he icon label is shown on currentNode, false otherwise
    */
@@ -268,7 +280,8 @@ public class ShapeUtil {
     if ((color1 == null) || (color2 == null)) {
       return false;
     }
-    return ((color1.getGreen() == color2.getGreen()) && (color1.getBlue() == color2.getBlue()) && (color1.getRed() == color2.getRed()));
+    return ((color1.getGreen() == color2.getGreen()) && (color1.getBlue() == color2.getBlue())
+        && (color1.getRed() == color2.getRed()));
   }
 
   public static void removeColorFromList(RGBValues colorToRemove, Collection<RGB> colorList) {
@@ -287,8 +300,11 @@ public class ShapeUtil {
 
   /**
    * Retrieve the GMF element of a Sirius Node from a GMF diagram
-   * @param Diagram diagram
-   * @param DDiagramElement siriusNode
+   * 
+   * @param Diagram
+   *          diagram
+   * @param DDiagramElement
+   *          siriusNode
    * @return the GMF element Node
    */
   public static View retrieveNode(Diagram diagram, DDiagramElement siriusNode) {
@@ -313,6 +329,7 @@ public class ShapeUtil {
 
   /**
    * Retrieve (recursive way) the GMF Node of a Sirius Node from a GMF anchor
+   * 
    * @param anchor
    * @param siriusNode
    * @return
@@ -339,6 +356,7 @@ public class ShapeUtil {
 
   /**
    * Set the Default Font color of label of the currentNode (GMF Way)
+   * 
    * @param currentNode.
    * @param color.
    * @return
@@ -354,21 +372,25 @@ public class ShapeUtil {
       color = FigureUtilities.integerToRGB((Integer) preferredValue);
     }
 
-    ViewUtil.setStructuralFeatureValue((View) gep.getAdapter(View.class), NotationPackage.eINSTANCE.getFontStyle_FontColor(),
-        FigureUtilities.RGBToInteger(color));
+    ViewUtil.setStructuralFeatureValue((View) gep.getAdapter(View.class),
+        NotationPackage.eINSTANCE.getFontStyle_FontColor(), FigureUtilities.RGBToInteger(color));
 
     preferredValue = gep.getPreferredValue(NotationPackage.eINSTANCE.getFontStyle_FontHeight());
 
-    ViewUtil.setStructuralFeatureValue((View) gep.getAdapter(View.class), NotationPackage.eINSTANCE.getFontStyle_FontHeight(), (Integer) preferredValue);
+    ViewUtil.setStructuralFeatureValue((View) gep.getAdapter(View.class),
+        NotationPackage.eINSTANCE.getFontStyle_FontHeight(), (Integer) preferredValue);
 
     preferredValue = gep.getPreferredValue(NotationPackage.eINSTANCE.getFontStyle_Bold());
 
-    ViewUtil.setStructuralFeatureValue((View) gep.getAdapter(View.class), NotationPackage.eINSTANCE.getFontStyle_Bold(), (Boolean) preferredValue);
+    ViewUtil.setStructuralFeatureValue((View) gep.getAdapter(View.class), NotationPackage.eINSTANCE.getFontStyle_Bold(),
+        (Boolean) preferredValue);
   }
 
   /**
    * Set the color format edge
-   * @param DEdge currentEdge
+   * 
+   * @param DEdge
+   *          currentEdge
    * @param color
    */
   public static void setEdgeColorStyle(DEdge currentEdge, RGB color) {
@@ -377,7 +399,8 @@ public class ShapeUtil {
       RGBValues c = convertRGBtoRGBValues(color);
       if ((edgeStyle != null) && !isSameColor(c, edgeStyle.getStrokeColor())) {
         edgeStyle.setStrokeColor(c);
-        ShapeUtil.addCustomisation(edgeStyle, new EStructuralFeature[] { DiagramPackage.Literals.EDGE_STYLE__STROKE_COLOR });
+        ShapeUtil.addCustomisation(edgeStyle,
+            new EStructuralFeature[] { DiagramPackage.Literals.EDGE_STYLE__STROKE_COLOR });
         getStyleHelper(currentEdge).refreshStyle(edgeStyle);
       }
     }
@@ -385,7 +408,9 @@ public class ShapeUtil {
 
   /**
    * Set the color format edge
-   * @param DEdge currentEdge
+   * 
+   * @param DEdge
+   *          currentEdge
    * @param color
    */
   public static void resetEdgeColorStyle(DEdge currentEdge, RGB color) {
@@ -394,7 +419,8 @@ public class ShapeUtil {
       RGBValues c = convertRGBtoRGBValues(color);
       if ((edgeStyle != null) && !isSameColor(c, edgeStyle.getStrokeColor())) {
         edgeStyle.setStrokeColor(c);
-        ShapeUtil.removeCustomisation(edgeStyle, new EStructuralFeature[] { DiagramPackage.Literals.EDGE_STYLE__STROKE_COLOR });
+        ShapeUtil.removeCustomisation(edgeStyle,
+            new EStructuralFeature[] { DiagramPackage.Literals.EDGE_STYLE__STROKE_COLOR });
         getStyleHelper(currentEdge).refreshStyle(edgeStyle);
       }
     }
@@ -402,7 +428,9 @@ public class ShapeUtil {
 
   /**
    * Set the thickness format Edge
-   * @param DEdge currentNode
+   * 
+   * @param DEdge
+   *          currentNode
    * @param Color
    * @return
    */
@@ -421,7 +449,9 @@ public class ShapeUtil {
 
   /**
    * Set the thickness format Edge
-   * @param DEdge currentNode
+   * 
+   * @param DEdge
+   *          currentNode
    * @param Color
    * @return
    */
@@ -440,6 +470,7 @@ public class ShapeUtil {
 
   /**
    * Set the Font color of label of the currentNode (GMF Way)
+   * 
    * @param currentNode.
    * @param color.
    * @return
@@ -448,8 +479,8 @@ public class ShapeUtil {
 
     GraphicalEditPart gep = getEditPart(currentNode);
 
-    ViewUtil.setStructuralFeatureValue((View) gep.getAdapter(View.class), NotationPackage.eINSTANCE.getFontStyle_FontColor(),
-        FigureUtilities.RGBToInteger(color));
+    ViewUtil.setStructuralFeatureValue((View) gep.getAdapter(View.class),
+        NotationPackage.eINSTANCE.getFontStyle_FontColor(), FigureUtilities.RGBToInteger(color));
 
     gep.refresh();
 
@@ -457,6 +488,7 @@ public class ShapeUtil {
 
   /**
    * Set the abscissa and ordinate location of the currentNode (GMF Way)
+   * 
    * @param currentNode
    * @param pX
    * @param pY
@@ -466,28 +498,35 @@ public class ShapeUtil {
 
     GraphicalEditPart gep = getEditPart(currentNode);
 
-    ViewUtil.setStructuralFeatureValue((View) gep.getAdapter(View.class), NotationPackage.eINSTANCE.getLocation_X(), Integer.valueOf(pX));
-    ViewUtil.setStructuralFeatureValue((View) gep.getAdapter(View.class), NotationPackage.eINSTANCE.getLocation_Y(), Integer.valueOf(pY));
+    ViewUtil.setStructuralFeatureValue((View) gep.getAdapter(View.class), NotationPackage.eINSTANCE.getLocation_X(),
+        Integer.valueOf(pX));
+    ViewUtil.setStructuralFeatureValue((View) gep.getAdapter(View.class), NotationPackage.eINSTANCE.getLocation_Y(),
+        Integer.valueOf(pY));
 
     gep.refresh();
   }
 
   /**
    * Set the point location of the currentNode (GMF Way)
+   * 
    * @param currentNode
    * @param Point
    * @return
    */
   public static void setLocation(Node currentNode, Point pPoint) {
     GraphicalEditPart gep = getEditPart(currentNode);
-    ViewUtil.setStructuralFeatureValue((View) gep.getAdapter(View.class), NotationPackage.eINSTANCE.getLocation_X(), Integer.valueOf(pPoint.x));
-    ViewUtil.setStructuralFeatureValue((View) gep.getAdapter(View.class), NotationPackage.eINSTANCE.getLocation_Y(), Integer.valueOf(pPoint.y));
+    ViewUtil.setStructuralFeatureValue((View) gep.getAdapter(View.class), NotationPackage.eINSTANCE.getLocation_X(),
+        Integer.valueOf(pPoint.x));
+    ViewUtil.setStructuralFeatureValue((View) gep.getAdapter(View.class), NotationPackage.eINSTANCE.getLocation_Y(),
+        Integer.valueOf(pPoint.y));
     gep.refresh();
   }
 
   /**
    * Set the border color format Node
-   * @param DNodeContainer currentNode
+   * 
+   * @param DNodeContainer
+   *          currentNode
    * @param Color
    * @return
    */
@@ -499,7 +538,8 @@ public class ShapeUtil {
         RGBValues vColor = convertRGBtoRGBValues(color);
         if (!isSameColor(vColor, bStyle.getBorderColor())) {
           bStyle.setBorderColor(vColor);
-          ShapeUtil.addCustomisation(style, new EStructuralFeature[] { DiagramPackage.Literals.BORDERED_STYLE__BORDER_COLOR });
+          ShapeUtil.addCustomisation(style,
+              new EStructuralFeature[] { DiagramPackage.Literals.BORDERED_STYLE__BORDER_COLOR });
           getStyleHelper(currentNode).refreshStyle(style);
           return true;
         }
@@ -510,7 +550,9 @@ public class ShapeUtil {
 
   /**
    * Set the border color format Node
-   * @param DNodeContainer currentNode
+   * 
+   * @param DNodeContainer
+   *          currentNode
    * @param Color
    * @return
    */
@@ -522,7 +564,8 @@ public class ShapeUtil {
         RGBValues vColor = convertRGBtoRGBValues(color);
         if (!isSameColor(vColor, bStyle.getBorderColor())) {
           bStyle.setBorderColor(vColor);
-          ShapeUtil.removeCustomisation(style, new EStructuralFeature[] { DiagramPackage.Literals.BORDERED_STYLE__BORDER_COLOR });
+          ShapeUtil.removeCustomisation(style,
+              new EStructuralFeature[] { DiagramPackage.Literals.BORDERED_STYLE__BORDER_COLOR });
           getStyleHelper(currentNode).refreshStyle(style);
           return true;
         }
@@ -533,7 +576,9 @@ public class ShapeUtil {
 
   /**
    * Set the border format Node
-   * @param DNodeContainer currentNode
+   * 
+   * @param DNodeContainer
+   *          currentNode
    * @param Color
    * @return
    */
@@ -544,7 +589,8 @@ public class ShapeUtil {
         BorderedStyle bStyle = (BorderedStyle) style;
         if (!bStyle.getBorderSize().equals(pThick)) {
           bStyle.setBorderSize(pThick);
-          ShapeUtil.addCustomisation(bStyle, new EStructuralFeature[] { DiagramPackage.Literals.BORDERED_STYLE__BORDER_SIZE });
+          ShapeUtil.addCustomisation(bStyle,
+              new EStructuralFeature[] { DiagramPackage.Literals.BORDERED_STYLE__BORDER_SIZE });
           getStyleHelper(currentNode).refreshStyle(bStyle);
           return true;
         }
@@ -555,7 +601,9 @@ public class ShapeUtil {
 
   /**
    * Set the border format Node
-   * @param DNodeContainer currentNode
+   * 
+   * @param DNodeContainer
+   *          currentNode
    * @param Color
    * @return
    */
@@ -566,7 +614,8 @@ public class ShapeUtil {
         BorderedStyle bStyle = (BorderedStyle) style;
         if (!bStyle.getBorderSize().equals(pThick)) {
           bStyle.setBorderSize(pThick);
-          ShapeUtil.removeCustomisation(bStyle, new EStructuralFeature[] { DiagramPackage.Literals.BORDERED_STYLE__BORDER_SIZE });
+          ShapeUtil.removeCustomisation(bStyle,
+              new EStructuralFeature[] { DiagramPackage.Literals.BORDERED_STYLE__BORDER_SIZE });
           getStyleHelper(currentNode).refreshStyle(bStyle);
           return true;
         }
@@ -577,8 +626,11 @@ public class ShapeUtil {
 
   /**
    * Set the color format Node
-   * @param DNode currentNode
-   * @param RGB color
+   * 
+   * @param DNode
+   *          currentNode
+   * @param RGB
+   *          color
    */
   public static void setColorStyle(DNode currentNode, RGB color) {
     if ((currentNode != null) && (color != null)) {
@@ -615,60 +667,70 @@ public class ShapeUtil {
 
   /**
    * Set the height of the currentNode (GMF Way)
+   * 
    * @param currentNode
    * @return
    */
   public static void setNodeHeight(Node currentNode, int pHeight) {
     GraphicalEditPart gep = getEditPart(currentNode);
-    ViewUtil.setStructuralFeatureValue((View) gep.getAdapter(View.class), NotationPackage.eINSTANCE.getSize_Height(), Integer.valueOf(pHeight));
+    ViewUtil.setStructuralFeatureValue((View) gep.getAdapter(View.class), NotationPackage.eINSTANCE.getSize_Height(),
+        Integer.valueOf(pHeight));
     gep.refresh();
   }
 
   /**
    * Set the width of the currentNode (GMF Way)
+   * 
    * @param currentNode
    * @return
    */
   public static void setNodeWidth(Node currentNode, int pWidth) {
     GraphicalEditPart gep = getEditPart(currentNode);
-    ViewUtil.setStructuralFeatureValue((View) gep.getAdapter(View.class), NotationPackage.eINSTANCE.getSize_Width(), Integer.valueOf(pWidth));
+    ViewUtil.setStructuralFeatureValue((View) gep.getAdapter(View.class), NotationPackage.eINSTANCE.getSize_Width(),
+        Integer.valueOf(pWidth));
     gep.refresh();
   }
 
   /**
    * Set the color to the shape representation Node
-   * @param Node currentNode
+   * 
+   * @param Node
+   *          currentNode
    * @param color
    */
   public static void setShapeColor(Node currentNode, RGB color) {
     GraphicalEditPart gep = getEditPart(currentNode);
 
-    ViewUtil.setStructuralFeatureValue((View) gep.getAdapter(View.class), NotationPackage.eINSTANCE.getFillStyle_FillColor(),
-        FigureUtilities.RGBToInteger(color));
+    ViewUtil.setStructuralFeatureValue((View) gep.getAdapter(View.class),
+        NotationPackage.eINSTANCE.getFillStyle_FillColor(), FigureUtilities.RGBToInteger(color));
 
     gep.refresh();
   }
 
   /**
    * Set the abscissa point location of the currentNode (GMF Way)
+   * 
    * @param currentNode
    * @param pX
    * @return
    */
   public static void setXLocation(Node currentNode, int pX) {
     GraphicalEditPart gep = getEditPart(currentNode);
-    ViewUtil.setStructuralFeatureValue((View) gep.getAdapter(View.class), NotationPackage.eINSTANCE.getLocation_X(), Integer.valueOf(pX));
+    ViewUtil.setStructuralFeatureValue((View) gep.getAdapter(View.class), NotationPackage.eINSTANCE.getLocation_X(),
+        Integer.valueOf(pX));
   }
 
   /**
    * Set the ordinate point location of the currentNode (GMF Way)
+   * 
    * @param currentNode
    * @param pY
    * @return
    */
   public static void setYLocation(Node currentNode, int pY) {
     GraphicalEditPart gep = getEditPart(currentNode);
-    ViewUtil.setStructuralFeatureValue((View) gep.getAdapter(View.class), NotationPackage.eINSTANCE.getLocation_X(), Integer.valueOf(pY));
+    ViewUtil.setStructuralFeatureValue((View) gep.getAdapter(View.class), NotationPackage.eINSTANCE.getLocation_X(),
+        Integer.valueOf(pY));
     gep.refresh();
   }
 
@@ -685,10 +747,12 @@ public class ShapeUtil {
         color = colors.getRGBValues((FixedColor) descColor);
 
       } else if (descColor instanceof ComputedColor) {
-        color = colors.getRGBValues((ComputedColor) descColor, aEdge.getTarget(), InterpreterUtil.getInterpreter(aEdge.getTarget()));
+        color = colors.getRGBValues((ComputedColor) descColor, aEdge.getTarget(),
+            InterpreterUtil.getInterpreter(aEdge.getTarget()));
 
       } else if (descColor instanceof InterpolatedColor) {
-        color = colors.getRGBValues((InterpolatedColor) descColor, aEdge.getTarget(), InterpreterUtil.getInterpreter(aEdge.getTarget()));
+        color = colors.getRGBValues((InterpolatedColor) descColor, aEdge.getTarget(),
+            InterpreterUtil.getInterpreter(aEdge.getTarget()));
       }
     }
 
@@ -737,7 +801,8 @@ public class ShapeUtil {
   }
 
   private static StyleHelper getStyleHelper(DSemanticDecorator semanticDecorator) {
-    return new StyleHelper(SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(semanticDecorator.getTarget()));
+    return new StyleHelper(
+        SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(semanticDecorator.getTarget()));
   }
 
   /**
@@ -778,5 +843,12 @@ public class ShapeUtil {
    */
   public static boolean isCustom(Style style) {
     return !style.getCustomFeatures().isEmpty();
+  }
+
+  public static RGBValues getColor(Collection<RGBValues> colors) {
+    if (colors.size() > 1) {
+      return getBlackColor();
+    }
+    return colors.iterator().next();
   }
 }

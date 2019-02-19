@@ -17,6 +17,7 @@ Require-Bundle: org.apache.commons.lang,
  org.eclipse.emf.ecore
 Export-Package: org.polarsys.capella.core.model.helpers,
  org.polarsys.capella.core.model.helpers.delete,
+ org.polarsys.capella.core.model.helpers.graph,
  org.polarsys.capella.core.model.helpers.intermodelInconsistencyDetection,
  org.polarsys.capella.core.model.helpers.listeners,
  org.polarsys.capella.core.model.helpers.move,
