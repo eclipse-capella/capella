@@ -26,7 +26,6 @@ import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.SemanticEditingDomain;
-import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaDeleteCommand;
 
 /**
  * A command stack listener used to retrieve elements created or relevant from the last command triggered on a command
@@ -34,12 +33,12 @@ import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaDeleteComman
  */
 public class NavigatorCommandStackListener implements CommandStackListener {
   // Field is never null
-  WeakReference<Command> _mostRecent = new WeakReference<Command>(null);
+  WeakReference<Command> mostRecent = new WeakReference<>(null);
 
-  ICommandStackSelectionProvider _callback;
+  ICommandStackSelectionProvider callback;
 
   public NavigatorCommandStackListener(ICommandStackSelectionProvider callback) {
-    _callback = callback;
+    this.callback = callback;
   }
 
   @Override
@@ -50,8 +49,8 @@ public class NavigatorCommandStackListener implements CommandStackListener {
 
     // We also get notified on rollbacks, so better verify if we've handled this command before
     // Not sure if this is the best solution.
-    if (_mostRecent.get() != mostRecentCommand) {
-      _mostRecent = new WeakReference<Command>(mostRecentCommand);
+    if (mostRecent.get() != mostRecentCommand) {
+      mostRecent = new WeakReference<>(mostRecentCommand);
     } else {
       return;
     }
@@ -66,37 +65,33 @@ public class NavigatorCommandStackListener implements CommandStackListener {
         // Take into account the first contained element, we don't want to select the other ones.
         // For instance, when creating a property for a class, we don't want to select its min & max cards.
         if (selectedElement != null) {
-          ISelection selection = new StructuredSelection(selectedElement);
-          if ((mostRecentCommand instanceof RecordingCommand)
-              && (mostRecentCommand.getLabel().startsWith(CapellaDeleteCommand.ID))) {
-            selection = handleDeleteCommand(affectedObjects);
-          }
-          selectionChanged(selection);
+          selectionChanged(new StructuredSelection(selectedElement));
         }
       }
     }
-
   }
 
   protected void selectionChanged(ISelection selection) {
-    _callback.commandStackSelectionChanged(selection);
+    this.callback.commandStackSelectionChanged(selection);
   }
 
   /**
    * Handle Delete commands.
    * 
    * @param affectedObjects
+   * @deprecated
    */
+  @Deprecated
   protected ISelection handleDeleteCommand(Collection<?> affectedObjects) {
-    List<EObject> elementsToSelect = new ArrayList<EObject>(0);
+    List<EObject> elementsToSelect = new ArrayList<>(0);
     for (Object affectedObject : affectedObjects) {
       if (affectedObject instanceof EObject) {
         EObject parent = null;
         try {
           parent = ((EObject) affectedObject).eContainer();
         } catch (Exception exception) {
-          // With CDO when closing the sirius session, a late event to select a cdo object can occur.
-          // If the underlying cdo transaction is closed, we can't call eContainer(). in that case don't select
+          // With CDO when closing the Sirius session, a late event to select a CDO object can occur.
+          // If the underlying CDO transaction is closed, we can't call eContainer(). in that case don't select
           // something.
         }
         if (null != parent) {
@@ -108,20 +103,13 @@ public class NavigatorCommandStackListener implements CommandStackListener {
   }
 
   /**
-   * Default implementations filters out all recording commands apart from {@link CapellaDeleteCommand} (identified by
-   * {@link CapellaDeleteCommand#ID}
+   * Default implementations filters out all recording commands.
    * 
    * @param mostRecentCommand
    * @return
    */
   protected boolean shouldSelectAndReveal(RecordingCommand mostRecentCommand) {
-    boolean shouldHandleMostRecentCommand;
-    if (mostRecentCommand.getLabel().startsWith(CapellaDeleteCommand.ID)) {
-      shouldHandleMostRecentCommand = true;
-    } else {
-      shouldHandleMostRecentCommand = false;
-    }
-    return shouldHandleMostRecentCommand;
+    return false;
   }
 
   /**
@@ -156,7 +144,7 @@ public class NavigatorCommandStackListener implements CommandStackListener {
         }
       }
     } else if (mostRecentCommand instanceof RecordingCommand) {
-       shouldHandleMostRecentCommand = shouldSelectAndReveal((RecordingCommand)mostRecentCommand);
+      shouldHandleMostRecentCommand = shouldSelectAndReveal((RecordingCommand) mostRecentCommand);
     }
     return shouldHandleMostRecentCommand;
   }
@@ -179,5 +167,4 @@ public class NavigatorCommandStackListener implements CommandStackListener {
       }
     }
   }
-
 }

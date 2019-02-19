@@ -15,8 +15,8 @@ import java.util.Set;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.BaseLabelProvider;
@@ -29,6 +29,11 @@ import org.polarsys.capella.core.model.helpers.listeners.CapellaModelDataListene
 /**
  */
 public class CapellaDataListenerForPropertySections extends CapellaModelDataListener {
+
+  /**
+   * Constant identifying the job family identifier for the background refresh Properties view job.
+   */
+  private static final String REFRESH_VIEW_JOB_FAMILY = "RefreshPropertiesViewJob";
 
   /**
    * 
@@ -52,17 +57,7 @@ public class CapellaDataListenerForPropertySections extends CapellaModelDataList
 
     Object notifier = notification.getNotifier();
     if (notifier instanceof EObject && !getPages().isEmpty()) {
-      UIJob refreshView = new UIJob(Display.getDefault(), "Refresh properties view") { //$NON-NLS-1$
-            @Override
-            public IStatus runInUIThread(IProgressMonitor monitor) {
-              for (TabbedPropertySheetPage page : getPages()) {
-                page.refresh();
-                page.labelProviderChanged(new LabelProviderChangedEvent(new BaseLabelProvider(), null));
-              }
-              return Status.OK_STATUS;
-            }
-          };
-      refreshView.run(new NullProgressMonitor());
+      scheduleRefreshPropertiesViewJob();
     }
   }
 
@@ -87,8 +82,40 @@ public class CapellaDataListenerForPropertySections extends CapellaModelDataList
    */
   public Set<TabbedPropertySheetPage> getPages() {
     if (null == pages) {
-      pages = new HashSet<TabbedPropertySheetPage>();
+      pages = new HashSet<>();
     }
     return pages;
+  }
+
+  private void scheduleRefreshPropertiesViewJob() {
+    Job[] jobs = Job.getJobManager().find(REFRESH_VIEW_JOB_FAMILY);
+    if (jobs.length == 0) {
+      new RefreshPropertiesViewJob().schedule();
+    } else {
+      // Waiting and Sleeping jobs can't be rescheduled. Only running jobs can be rescheduled when done. We add an
+      // else to handle notifications coming during the job running time.
+      jobs[0].schedule();
+    }
+  }
+
+  private class RefreshPropertiesViewJob extends UIJob {
+
+    public RefreshPropertiesViewJob() {
+      super(Display.getDefault(), REFRESH_VIEW_JOB_FAMILY);
+    }
+
+    @Override
+    public boolean belongsTo(Object family) {
+      return REFRESH_VIEW_JOB_FAMILY.equals(family);
+    }
+
+    @Override
+    public IStatus runInUIThread(IProgressMonitor monitor) {
+      for (TabbedPropertySheetPage page : getPages()) {
+        page.refresh();
+        page.labelProviderChanged(new LabelProviderChangedEvent(new BaseLabelProvider(), null));
+      }
+      return Status.OK_STATUS;
+    }
   }
 }

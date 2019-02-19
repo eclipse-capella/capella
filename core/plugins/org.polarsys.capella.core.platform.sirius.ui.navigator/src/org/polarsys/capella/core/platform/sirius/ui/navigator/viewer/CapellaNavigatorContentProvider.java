@@ -83,8 +83,8 @@ import org.polarsys.kitalpha.ad.metadata.helpers.MetadataHelper;
  */
 public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryContentProvider implements IAdaptable {
   // Log4j reference logger.
-  private static final Logger __logger = ReportManagerRegistry.getInstance().subscribe(
-      IReportManagerDefaultComponents.UI);
+  private static final Logger logger = ReportManagerRegistry.getInstance()
+      .subscribe(IReportManagerDefaultComponents.UI);
   /**
    * Keep synchronized with the plugin.xml extension declaration.
    */
@@ -97,12 +97,12 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
   /**
    * Session content provider.
    */
-  private ITreeContentProvider _sessionContentProvider;
+  private ITreeContentProvider sessionContentProvider;
 
   /**
    * The saveable provider.
    */
-  private CapellaSaveablesProvider _saveablesProvider;
+  private CapellaSaveablesProvider saveablesProvider;
 
   class CustomizedSessionWrapperContentProvider extends SessionWrapperContentProvider {
     /**
@@ -128,7 +128,7 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
       // Special behavior for ViewpointItems: don't return
       // RepresentationDescriptionItems which contain no diagram.
       if (parentElement instanceof ViewpointItem) {
-        ArrayList<Object> selectedChildren = new ArrayList<Object>(0);
+        ArrayList<Object> selectedChildren = new ArrayList<>(0);
         // Only RepresentationDescriptionItem with children are
         // considered.
         for (Object child : children) {
@@ -143,7 +143,7 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
       if (parentElement instanceof EObject) {
         children = rewriteChildrenForRepresentationPackages((EObject) parentElement, children);
       }
-      
+
       return children;
 
     }
@@ -154,7 +154,7 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
       if (element instanceof DRepresentationDescriptor && parent instanceof EObject) {
         String packageName = DiagramHelper.getService().getPackageName((DRepresentationDescriptor) element);
         if (packageName != null) {
-          RepresentationPackage p = new RepresentationPackage(packageName, (EObject) parent); 
+          RepresentationPackage p = new RepresentationPackage(packageName, (EObject) parent);
           parent = p;
         }
       }
@@ -166,13 +166,13 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
     // Rewrite the children[] to place diagrams into subpackages
     //
     private Object[] rewriteChildrenForRepresentationPackages(EObject parentElement, Object[] children) {
-      Map<String, RepresentationPackage> name2Package = new HashMap<String, RepresentationPackage>();
+      Map<String, RepresentationPackage> name2Package = new HashMap<>();
       for (int i = 0; i < children.length; i++) {
         if (children[i] instanceof DRepresentationDescriptor) {
           DRepresentationDescriptor descriptor = (DRepresentationDescriptor) children[i];
           String name = DiagramHelper.getService().getPackageName(descriptor);
           if (name != null) {
-            RepresentationPackage pkg = name2Package.get(name); 
+            RepresentationPackage pkg = name2Package.get(name);
             if (pkg == null) {
               pkg = new RepresentationPackage(name, parentElement);
               name2Package.put(name, pkg);
@@ -198,7 +198,7 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
   @SuppressWarnings("rawtypes")
   public Object getAdapter(Class clazz) {
     if (SaveablesProvider.class == clazz) {
-      return _saveablesProvider;
+      return saveablesProvider;
     }
     return null;
   }
@@ -216,11 +216,11 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
     // Put it in a grouping content provider.
     SiriusTransPlugin.getPlugin().getPreferenceStore()
         .setValue(CommonPreferencesConstants.PREF_GROUP_BY_CONTAINING_FEATURE, true);
-    _sessionContentProvider = new GroupingContentProvider(customizedSessionWrapperContentProvider);
+    sessionContentProvider = new GroupingContentProvider(customizedSessionWrapperContentProvider);
 
     // Create saveable provider.
-    if (null == _saveablesProvider) {
-      _saveablesProvider = new CapellaSaveablesProvider();
+    if (null == saveablesProvider) {
+      saveablesProvider = new CapellaSaveablesProvider();
     }
 
     NavigatorEditingDomainDispatcher.registerNotifyChangedListener(this);
@@ -233,7 +233,7 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
    * @return the sessionContentProvider
    */
   public ITreeContentProvider getSessionContentProvider() {
-    return _sessionContentProvider;
+    return sessionContentProvider;
   }
 
   /**
@@ -277,24 +277,23 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
       parent = getParent(mmResource);
     } else if ((element instanceof SystemEngineering)
         && isCapellaProjectDisplayed(ProjectExt.getProject((EObject) element))) {
-      // In the CapellaProjectExplorer, parent of a Project/Library is actually the Project file 
+      // In the CapellaProjectExplorer, parent of a Project/Library is actually the Project file
       // (depending of preferences).
-      parent = _sessionContentProvider.getParent(element);
+      parent = sessionContentProvider.getParent(element);
     } else if (element instanceof RepresentationPackage) {
       parent = ((RepresentationPackage) element).getParent();
     } else if ((element instanceof EObject) && (((EObject) element).eContainer() instanceof Component)) {
       EObject eObject = (EObject) element;
       Component component = (Component) eObject.eContainer();
-      if (isImplicitView(component)) {
-        if (component.eContainingFeature().equals(CsPackage.Literals.PART__OWNED_ABSTRACT_TYPE)) {
-          return getParent(component);
-          }
-        }
-        parent = _sessionContentProvider.getParent(element);
-	  } else {
-	    // Handle other cases.
-	    parent = _sessionContentProvider.getParent(element);
-	  }
+      if (isImplicitView(component)
+          && component.eContainingFeature().equals(CsPackage.Literals.PART__OWNED_ABSTRACT_TYPE)) {
+        return getParent(component);
+      }
+      parent = sessionContentProvider.getParent(element);
+    } else {
+      // Handle other cases.
+      parent = sessionContentProvider.getParent(element);
+    }
 
     return parent;
   }
@@ -342,10 +341,10 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
 
         if (referencingModel != null) {
 
-          LinkedList<Object> rootProject = new LinkedList<Object>();
-          LinkedList<Object> libraries = new LinkedList<Object>();
-          LinkedList<Object> others = new LinkedList<Object>();
-          HashSet<Resource> resourcesDone = new HashSet<Resource>();
+          LinkedList<Object> rootProject = new LinkedList<>();
+          LinkedList<Object> libraries = new LinkedList<>();
+          LinkedList<Object> others = new LinkedList<>();
+          HashSet<Resource> resourcesDone = new HashSet<>();
 
           // Add the main model to the top
           if (referencingModel instanceof CapellaModel) {
@@ -371,12 +370,12 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
           }
 
           // for any other children from sirius, we add it to the end
-          for (Object child : _sessionContentProvider.getChildren(element)) {
+          for (Object child : sessionContentProvider.getChildren(element)) {
 
-			if ((child instanceof Resource) && !resourcesDone.contains(child)
+            if ((child instanceof Resource) && !resourcesDone.contains(child)
                 && (!((Resource) child).getContents().isEmpty())) {
 
-				Resource childResource = (Resource) child;
+              Resource childResource = (Resource) child;
               // Don't handle semantic fragments as theirs
               // contents are displayed as children of model
               // elements.
@@ -392,8 +391,8 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
                     }
                   }
                 }
-              } else if (MetadataHelper.isMetadataResource(childResource)){
-            	// We don't want to display metadata node.
+              } else if (MetadataHelper.isMetadataResource(childResource)) {
+                // We don't want to display metadata node.
               } else {
                 others.addFirst(childResource.getContents());
               }
@@ -405,7 +404,7 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
             }
           }
 
-          LinkedList<Object> resultList = new LinkedList<Object>();
+          LinkedList<Object> resultList = new LinkedList<>();
           resultList.addAll(rootProject);
           resultList.addAll(libraries);
           resultList.addAll(others);
@@ -413,12 +412,12 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
           return resultList.toArray();
 
         }
-        return _sessionContentProvider.getChildren(element);
+        return sessionContentProvider.getChildren(element);
 
       } else if ((element instanceof Part) && isImplicitView(element)
           && (((Part) element).getOwnedAbstractType() != null)) {
-        ArrayList<Object> merged = new ArrayList<Object>();
-        merged.addAll(Arrays.asList(_sessionContentProvider.getChildren(element)));
+        ArrayList<Object> merged = new ArrayList<>();
+        merged.addAll(Arrays.asList(sessionContentProvider.getChildren(element)));
         merged.addAll(Arrays.asList(getChildren(((Part) element).getOwnedAbstractType())));
         merged.remove(((Part) element).getOwnedAbstractType());
         return merged.toArray();
@@ -426,7 +425,7 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
         result = ((RepresentationPackage) element).getChildren();
       } else {
         // Other cases are delegated to the session content provider.
-        result = _sessionContentProvider.getChildren(element);
+        result = sessionContentProvider.getChildren(element);
       }
     } catch (Exception e) {
       Logger.getLogger(IReportManagerDefaultComponents.UI).error("Error when retrieving children of " + element, e); //$NON-NLS-1$
@@ -439,8 +438,8 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
    * @return
    */
   protected boolean isImplicitView(Object part) {
-    boolean explicit = AbstractPreferencesInitializer.getBoolean(
-        ICapellaNavigatorPreferences.PREFERENCE_PART_EXPLICIT_VIEW, true);
+    boolean explicit = AbstractPreferencesInitializer
+        .getBoolean(ICapellaNavigatorPreferences.PREFERENCE_PART_EXPLICIT_VIEW, true);
     return !explicit;
   }
 
@@ -454,8 +453,8 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
    */
   @Deprecated
   protected boolean isCapellaProjectDisplayed() {
-    return AbstractPreferencesInitializer.getBoolean(
-        ICapellaNavigatorPreferences.PREFERENCE_SHOW_CAPELLA_PROJECT_CONCEPT, false);
+    return AbstractPreferencesInitializer
+        .getBoolean(ICapellaNavigatorPreferences.PREFERENCE_SHOW_CAPELLA_PROJECT_CONCEPT, false);
   }
 
   /**
@@ -465,8 +464,8 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
    */
   protected boolean isCapellaProjectDisplayed(EObject contentChild) {
     if (contentChild instanceof Project) {
-      return AbstractPreferencesInitializer.getBoolean(
-          ICapellaNavigatorPreferences.PREFERENCE_SHOW_CAPELLA_PROJECT_CONCEPT, contentChild);
+      return AbstractPreferencesInitializer
+          .getBoolean(ICapellaNavigatorPreferences.PREFERENCE_SHOW_CAPELLA_PROJECT_CONCEPT, contentChild);
     }
     return isCapellaProjectDisplayed();
   }
@@ -485,7 +484,7 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
     // resource, because we skip the Session item in the tree.
     if (null != session) {
 
-      List<Object> retainedChildren = new ArrayList<Object>(0);
+      List<Object> retainedChildren = new ArrayList<>(0);
       Object[] children = getChildren(session);
 
       for (Object object : children) {
@@ -534,7 +533,7 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
     } catch (CoreException exception) {
       StringBuilder loggerMessage = new StringBuilder("CapellaNavigatorContentProvider.getChildren(..) _ "); //$NON-NLS-1$
       loggerMessage.append(exception.getMessage());
-      __logger.warn(new EmbeddedMessage(loggerMessage.toString(), IReportManagerDefaultComponents.UI), exception);
+      logger.warn(new EmbeddedMessage(loggerMessage.toString(), IReportManagerDefaultComponents.UI), exception);
     }
     return result;
   }
@@ -546,9 +545,9 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
   public void dispose() {
     NavigatorEditingDomainDispatcher.unregisterNotifyChangedListener(this);
 
-    if (null != _sessionContentProvider) {
-      _sessionContentProvider.dispose();
-      _sessionContentProvider = null;
+    if (null != sessionContentProvider) {
+      sessionContentProvider.dispose();
+      sessionContentProvider = null;
     }
     super.dispose();
   }
@@ -606,31 +605,32 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
         // Capella Project parent.
         localNotification = new ViewerNotification(localNotification, ((EObject) notifier).eContainer());
       }
-      
+
       if (((notifier instanceof Component) && (((EObject) notifier).eContainer() instanceof Part))
           && isImplicitView(notifier)) {
         // Capella Project is not refresh, forward the notification on
         // parent part.
         localNotification = new ViewerNotification(localNotification, ((EObject) notifier).eContainer());
       }
-      
+
       if (notifier instanceof DRepresentationDescriptor) {
         if (notification.getFeature() == ViewpointPackage.Literals.DREPRESENTATION_DESCRIPTOR__TARGET) {
 
-          //We perform a notification on the old target semantic element
+          // We perform a notification on the old target semantic element
           localNotification = new ViewerNotification(notification, notification.getOldValue(), true, true);
           super.notifyChanged(localNotification);
 
-          //and an additional notification on the new target semantic element
+          // and an additional notification on the new target semantic element
           localNotification = new ViewerNotification(notification, notification.getNewValue(), true, true);
         }
 
-        if (notification.getFeature() == DescriptionPackage.Literals.DMODEL_ELEMENT__EANNOTATIONS && notification.getNotifier() instanceof DRepresentationDescriptor) {
-          localNotification = new ViewerNotification(notification, ((DRepresentationDescriptor)notification.getNotifier()).getTarget(), true, true);
+        if (notification.getFeature() == DescriptionPackage.Literals.DMODEL_ELEMENT__EANNOTATIONS
+            && notification.getNotifier() instanceof DRepresentationDescriptor) {
+          localNotification = new ViewerNotification(notification,
+              ((DRepresentationDescriptor) notification.getNotifier()).getTarget(), true, true);
         }
-
       }
-      
+
       super.notifyChanged(localNotification);
 
       // Search for additional updates, indeed elements that reference an
