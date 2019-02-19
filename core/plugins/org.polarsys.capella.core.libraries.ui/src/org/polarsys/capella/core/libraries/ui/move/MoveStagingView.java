@@ -803,12 +803,16 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
   }
 
   private void handleStageElementsRemoved(Collection<? extends EObject> elements) {
-    stageViewer.refresh(true);
-    destinationViewer.refresh(true);
-    stageViewer.getTree().getColumn(0).pack();
-    destinationViewer.getTree().getColumn(0).pack();
+    if (stage.getElements().isEmpty()) {
+      reset();
+    } else {
+      stageViewer.refresh(true);
+      destinationViewer.refresh(true);
+      stageViewer.getTree().getColumn(0).pack();
+      destinationViewer.getTree().getColumn(0).pack();
 
-    updateActions();
+      updateActions();
+    }
   }
 
   private void updateActions() {
