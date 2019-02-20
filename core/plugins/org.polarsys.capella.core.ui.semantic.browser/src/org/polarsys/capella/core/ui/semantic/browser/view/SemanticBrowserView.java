@@ -108,6 +108,7 @@ import org.polarsys.capella.core.ui.properties.CapellaTabbedPropertySheetPage;
 import org.polarsys.capella.core.ui.properties.CapellaUIPropertiesPlugin;
 import org.polarsys.capella.core.ui.semantic.browser.CapellaBrowserActivator;
 import org.polarsys.capella.core.ui.semantic.browser.CapellaBrowserPreferences;
+import org.polarsys.capella.core.ui.semantic.browser.actions.RefreshAction;
 import org.polarsys.capella.core.ui.semantic.browser.actions.SemanticBrowserActionFactory;
 import org.polarsys.capella.core.ui.semantic.browser.model.SemanticBrowserModel;
 
@@ -1227,6 +1228,7 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
           getModel().setListeningToPageSelectionEvents(isLinkedToSelection && isVisible);
           if (isLinkedToSelection) {
             getSite().getPage().addSelectionListener(getSelectionListener());
+            new RefreshAction(SemanticBrowserView.this).run();
           }
         }
       }
