@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,45 +8,34 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+
 package org.polarsys.capella.core.semantic.queries.basic.queries;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
-import org.eclipse.emf.ecore.EObject;
-
-import org.polarsys.capella.core.data.fa.FunctionalChainInvolvement;
-import org.polarsys.capella.core.data.capellacore.InvolvedElement;
 import org.polarsys.capella.common.helpers.query.IQuery;
+import org.polarsys.capella.core.data.fa.SequenceLink;
 
-/**
- * Return involved element of FunctionalChainInvolvement
- */
-abstract public class AbstractFCInvolvmentInvolved implements IQuery {
+public class SequenceLinkLinks implements IQuery {
 
   /**
    * 
    */
-  public AbstractFCInvolvmentInvolved() {
+  public SequenceLinkLinks() {
     // do nothing
   }
 
   /**
-   * current.getEnactedFunctions
+   * 
    * @see org.polarsys.capella.common.helpers.query.IQuery#compute(java.lang.Object)
    */
   public List<Object> compute(Object object) {
-    List<Object> result = new ArrayList<Object>(1);
-    if (object instanceof FunctionalChainInvolvement) {
-      FunctionalChainInvolvement chain = (FunctionalChainInvolvement) object;
-      InvolvedElement involved = chain.getInvolved();
-      if (null != involved && isInstaceOf(involved)) {
-    	 result.add(involved);
-      }
+    if (object instanceof SequenceLink) {
+      SequenceLink sequenceLink = (SequenceLink) object;
+      return new ArrayList<>(sequenceLink.getLinks());
     }
-    return result;
+    return Collections.emptyList();
   }
-  
-  public abstract boolean isInstaceOf(EObject involved);
-  
 }
