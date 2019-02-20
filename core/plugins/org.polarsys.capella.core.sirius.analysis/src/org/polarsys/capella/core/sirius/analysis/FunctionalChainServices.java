@@ -21,6 +21,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -34,7 +35,6 @@ import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.EdgeStyle;
 import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.MappingHelper;
-import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.filter.FilterDescription;
@@ -54,7 +54,6 @@ import org.polarsys.capella.core.data.capellacore.InvolvedElement;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.AbstractFunctionalChainContainer;
-import org.polarsys.capella.core.data.fa.FaFactory;
 import org.polarsys.capella.core.data.fa.FaPackage;
 import org.polarsys.capella.core.data.fa.FunctionalChain;
 import org.polarsys.capella.core.data.fa.FunctionalChainInvolvement;
@@ -1107,37 +1106,57 @@ public class FunctionalChainServices {
     return false;
   }
 
-  public List<AbstractFunction> getFCDInvolveFunctionScope(EObject container) {
+  /**
+   * Returns the scope used for the selection wizard in the Involve Function tool.
+   * 
+   * @param container
+   *          the container
+   * @return the scope used for the selection wizard in the Involve Function tool.
+   */
+  public List<AbstractFunction> computeFCIFunctionScope(EObject container) {
     BlockArchitecture architecture = BlockArchitectureExt.getRootBlockArchitecture(container);
-    return FunctionExt.getAllAbstractFunctions(architecture);
+
+    if (architecture != null) {
+      return FunctionExt.getAllAbstractFunctions(architecture);
+    }
+    return Collections.emptyList();
   }
 
-  protected List<FunctionalExchange> getOutgoingEdgeFunctionalExchanges(DNode node) {
-    List<FunctionalExchange> existingInvolvedFE = new ArrayList<>();
-    for (DEdge anEdge : DiagramServices.getDiagramServices().getOutgoingEdges(node)) {
+  /**
+   * Returns the outgoing Function Exchanges for the current node.
+   * 
+   * @param node
+   *          the node
+   * @return the outgoing Function Exchanges.
+   */
+  protected Set<FunctionalExchange> getOutgoingEdgeFunctionalExchanges(DNode node) {
 
-      if (anEdge.getTarget() instanceof FunctionalChainInvolvement) {
-        FunctionalChainInvolvement currentInv = (FunctionalChainInvolvement) anEdge.getTarget();
-        if (currentInv.getInvolved() instanceof FunctionalExchange) {
-          existingInvolvedFE.add((FunctionalExchange) currentInv.getInvolved());
-        }
-      }
-    }
-    return existingInvolvedFE;
+    return DiagramServices.getDiagramServices().getOutgoingEdges(node).stream().map(DEdge::getTarget)
+        .filter(FunctionalChainInvolvementLink.class::isInstance)
+        .map(link -> ((FunctionalChainInvolvementLink) link).getInvolved()).filter(FunctionalExchange.class::isInstance)
+        .map(FunctionalExchange.class::cast).collect(Collectors.toSet());
   }
 
-  public List<FunctionalExchange> getFCDInvolveFunctionalExchangeAndFunctionScope(DNode node) {
-    List<FunctionalExchange> returnedList = new ArrayList<>();
-    List<FunctionalExchange> existingInvolvedFE = getOutgoingEdgeFunctionalExchanges(node);
+  /**
+   * Returns the ordered scope used for the selection wizard in the Involve Functional Exchange and Function tool.
+   * 
+   * @param node
+   *          the container node
+   * @return the ordered scope used for the selection wizard in the Involve Functional Exchange and Function tool.
+   */
+  public List<FunctionalExchange> computeFCIFunctionalExchangeAndFunctionScope(DNode node) {
+    List<FunctionalExchange> availableFunctionExchanges = new ArrayList<>();
+    Set<FunctionalExchange> existingInvolvedFunctionalExchanges = getOutgoingEdgeFunctionalExchanges(node);
 
-    FunctionalChainInvolvement selectedInvolvement = (FunctionalChainInvolvement) node.getTarget();
-    for (FunctionalExchange aFE : FunctionalChainExt.getFlatOutgoingExchanges(selectedInvolvement)) {
-      if (!existingInvolvedFE.contains(aFE)) {
-        returnedList.add(aFE);
+    FunctionalChainInvolvementFunction selectedFunction = (FunctionalChainInvolvementFunction) node.getTarget();
+
+    for (FunctionalExchange functionalExchange : FunctionalChainExt.getFlatOutgoingExchanges(selectedFunction)) {
+      if (!existingInvolvedFunctionalExchanges.contains(functionalExchange)) {
+        availableFunctionExchanges.add(functionalExchange);
       }
     }
 
-    return returnedList;
+    return availableFunctionExchanges;
   }
 
   public HashMapSet<FunctionalExchange, FunctionalChain> getFCDInvolveFunctionalExchangeAndFunctionalChainScope(
@@ -1156,10 +1175,10 @@ public class FunctionalChainServices {
       return set;
     }
 
-    List<FunctionalExchange> existingInvolvedFE = getOutgoingEdgeFunctionalExchanges(node);
+    Set<FunctionalExchange> existingInvolvedFE = getOutgoingEdgeFunctionalExchanges(node);
     FunctionalChainInvolvement involvement = (FunctionalChainInvolvement) target;
     Collection<FunctionalExchange> outgoing = FunctionalChainExt.getFlatOutgoingExchanges(involvement);
-    Collection<FunctionalChain> chains = getFCDInvolveFunctionalChainScope((DSemanticDecorator) diagram);
+    Collection<FunctionalChain> chains = computeFCIFunctionalChainScope((DSemanticDecorator) diagram);
 
     for (FunctionalChain chain : chains) {
       Collection<FunctionalExchange> incoming = FunctionalChainExt.getFlatIncomingExchanges(chain);
@@ -1181,11 +1200,6 @@ public class FunctionalChainServices {
   public HashMapSet<FunctionalExchange, FunctionalChain> getFCDInvolveFunctionalExchangeAndFunctionalChainInitialSelection(
       AbstractDNode context) {
     return new HashMapSet<FunctionalExchange, FunctionalChain>();
-  }
-
-  @Deprecated
-  public List<FunctionalExchange> getAvailableFunctionalExchangeToInsertInFCD(DNode node) {
-    return getFCDInvolveFunctionalExchangeAndFunctionScope(node);
   }
 
   /**
@@ -1298,26 +1312,16 @@ public class FunctionalChainServices {
     return null;
   }
 
-  public boolean isValidFCDInvolveFunctionalChain(DSemanticDecorator context) {
+  public boolean isValidFCIFunctionalChain(DSemanticDecorator context) {
     return true;
   }
 
-  public boolean isValidFCDInvolveFunction(DSemanticDecorator context) {
+  public boolean isValidFCInvolveFunction(DSemanticDecorator context) {
     return true;
   }
 
-  public boolean isValidFCDInvolveFunctionalExchangeAndFunctionalChain(DSemanticDecorator context) {
-    if ((context == null) || (context instanceof DDiagram)) {
-      return false;
-    }
-    return true;
-  }
-
-  public boolean isValidFCDInvolveFunctionalExchangeAndFunction(DSemanticDecorator context) {
-    if ((context == null) || (context instanceof DDiagram)) {
-      return false;
-    }
-    return true;
+  public boolean isValidFCIFunctionalExchangeAndFunction(FunctionalChainInvolvement involvement) {
+    return involvement instanceof FunctionalChainInvolvementFunction;
   }
 
   /**
@@ -1335,15 +1339,13 @@ public class FunctionalChainServices {
    * Returns the scope used for for the selection wizard in Functional Chain Involvement tools. The scope can either
    * contain a function, or functional exchanges.
    * 
-   * @param context
-   *          the context
    * @param source
    *          the semantic source
    * @param target
    *          the semantic target.
    * @return the scope used for for the selection wizard in Functional Chain Involvement tools.
    */
-  public Collection<EObject> computeFCILinkScope(EObject context, FunctionalChainInvolvement sourceInvolvement,
+  public Collection<EObject> computeFCILinkScope(FunctionalChainInvolvement sourceInvolvement,
       FunctionalChainInvolvement targetInvolvement) {
 
     Collection<EObject> scope = new ArrayList<>();
@@ -1358,37 +1360,45 @@ public class FunctionalChainServices {
     return scope;
   }
 
-  public Collection<FunctionalChain> getFCDInvolveFunctionalChainScope(DSemanticDecorator diagram) {
-    EObject chain = diagram.getTarget();
-    if (!(chain instanceof FunctionalChain)) {
+  /**
+   * Returns the scope used for for the selection wizard in the Invoke Function Chain tool. The scope does not contain
+   * chains that would form a cycle in regards to the source chain.
+   * 
+   * @param diagram
+   *          the diagram
+   * @return the scope used for for the selection wizard in the Invoke Function Chain tool.
+   */
+  public Collection<FunctionalChain> computeFCIFunctionalChainScope(DSemanticDecorator diagram) {
+
+    EObject sourceChain = diagram.getTarget();
+    if (!(sourceChain instanceof FunctionalChain)) {
       return Collections.emptyList();
     }
 
-    BlockArchitecture architecture = BlockArchitectureExt.getRootBlockArchitecture(chain);
+    BlockArchitecture architecture = BlockArchitectureExt.getRootBlockArchitecture(sourceChain);
+    if (architecture == null) {
+      return Collections.emptyList();
+    }
 
-    // remove all chains owning the current chain
-    List<FunctionalChain> chains = FunctionalChainExt.getAllFunctionalChains(architecture);
-    List<FunctionalChain> result = new LinkedList<>();
+    List<FunctionalChain> possibleChains = FunctionalChainExt.getAllFunctionalChains(architecture);
+    List<FunctionalChain> scope = new ArrayList<>();
 
-    for (FunctionalChain definedChain : chains) {
-      boolean toAdd = true;
-      if (definedChain.equals(chain)) {
-        toAdd = false;
+    // remove possible cycles in regards to the sourceChain
+    for (FunctionalChain possibleChain : possibleChains) {
+      if (possibleChain.equals(sourceChain)) {
+        continue;
       }
-      if (toAdd) {
-        for (FunctionalChainInvolvement involvement : FunctionalChainExt.getFlatInvolvementsOf(definedChain,
-            FaPackage.Literals.FUNCTIONAL_CHAIN)) {
-          if (chain.equals(involvement.getInvolved())) {
-            toAdd = false;
-            break;
-          }
-        }
-      }
-      if (toAdd) {
-        result.add(definedChain);
+
+      Set<InvolvedElement> childrenChains = FunctionalChainExt
+          .getFlatInvolvementsOf(possibleChain, FaPackage.Literals.FUNCTIONAL_CHAIN).stream()
+          .map(FunctionalChainInvolvement::getInvolved).collect(Collectors.toSet());
+
+      if (!childrenChains.contains(sourceChain)) {
+        scope.add(possibleChain);
       }
     }
-    return result;
+
+    return scope;
   }
 
   /**
@@ -1401,7 +1411,7 @@ public class FunctionalChainServices {
    * @param visitedInvolvements
    *          the already visited involvements.
    * @return true if a direct/indirect connection exists between the current involvement and the goal involvement, false
-   *         otherwhise.
+   *         otherwise.
    */
   public boolean doesConnectionExist(FunctionalChainInvolvement currentInvolvement,
       FunctionalChainInvolvement goalInvolvement, Set<FunctionalChainInvolvement> visitedInvolvements) {
