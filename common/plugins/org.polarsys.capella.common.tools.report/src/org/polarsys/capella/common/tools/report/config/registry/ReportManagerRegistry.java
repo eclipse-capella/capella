@@ -66,8 +66,8 @@ public class ReportManagerRegistry {
 
     // Load configuration from XML configuration file
     if (configuration.isConfigurationFileExists()) {
-      HashMap<String, ConfigurationInstance> persisted = configuration.loadConfiguration();
-      HashMap<String, ConfigurationInstance> result = new HashMap<>(1);
+      Map<String, ConfigurationInstance> persisted = configuration.loadConfiguration();
+      Map<String, ConfigurationInstance> result = new HashMap<>(1);
 
       for (Map.Entry<String, ConfigurationInstance> entry : persisted.entrySet()) {
         if (entry.getKey() != null) {
