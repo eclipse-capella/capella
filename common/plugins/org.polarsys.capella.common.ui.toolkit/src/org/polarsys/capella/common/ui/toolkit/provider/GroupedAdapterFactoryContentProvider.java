@@ -14,6 +14,7 @@ package org.polarsys.capella.common.ui.toolkit.provider;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 
@@ -35,8 +36,8 @@ import org.eclipse.ui.progress.UIJob;
 import org.polarsys.capella.common.platform.sirius.ted.SiriusSessionListener;
 
 /**
- * A content provider which doens't sent async refresh of ui for each notification.
- * At end of transaction, for all notification received, we trigger only one refresh performing refreshes of all notified objects. 
+ * A content provider which doens't sent async refresh of ui for each notification. At end of transaction, for all
+ * notification received, we trigger only one refresh performing refreshes of all notified objects.
  */
 public class GroupedAdapterFactoryContentProvider extends AdapterFactoryContentProvider {
 
@@ -94,29 +95,39 @@ public class GroupedAdapterFactoryContentProvider extends AdapterFactoryContentP
     boolean shouldRefresh = true;
 
     synchronized (this) {
-      shouldRefresh = ((notifications != null) && (!notifications.isEmpty())) || ((toRefresh != null) && (toRefresh.isEmpty()));
+      shouldRefresh = refreshRequiredForNotifications(notifications) || refreshRequiredForEobject(toRefresh);
     }
 
     return shouldRefresh;
   }
 
+  protected boolean refreshRequiredForNotifications(Collection<Notification> notifications) {
+    return notifications != null && !notifications.isEmpty();
+  }
+
+  protected boolean refreshRequiredForEobject(Collection<EObject> toRefresh) {
+    return toRefresh != null && !toRefresh.isEmpty();
+  }
+
   public void notifyChanged2(Notification notification) {
-    // If the notification is an IViewerNotification, it specifies how ViewerRefresh should behave.  Otherwise fall
+    // If the notification is an IViewerNotification, it specifies how ViewerRefresh should behave. Otherwise fall
     // back to NotifyChangedToViewerRefresh, which determines how to refresh the viewer directly from the model
     // notification.
     if (notification instanceof IViewerNotification) {
       viewerRefresh.addNotification((IViewerNotification) notification);
 
     } else {
-      new NotifyChangedToViewerRefresh().refresh(viewer, notification.getNotifier(), notification.getEventType(), notification.getFeature(),
-          notification.getOldValue(), notification.getNewValue(), notification.getPosition());
+      new NotifyChangedToViewerRefresh().refresh(viewer, notification.getNotifier(), notification.getEventType(),
+          notification.getFeature(), notification.getOldValue(), notification.getNewValue(),
+          notification.getPosition());
     }
   }
 
   public void runRefresh() {
     if ((viewer != null) && (viewer.getControl() != null) && !viewer.getControl().isDisposed()) {
 
-      UIJob job = new UIJob(viewer.getControl().getDisplay(), Messages.GroupedAdapterFactoryContentProvider_RefreshViewer) {
+      UIJob job = new UIJob(viewer.getControl().getDisplay(),
+          Messages.GroupedAdapterFactoryContentProvider_RefreshViewer) {
         @Override
         public IStatus runInUIThread(IProgressMonitor monitor) {
           processRefresh();
@@ -144,10 +155,13 @@ public class GroupedAdapterFactoryContentProvider extends AdapterFactoryContentP
       if ((currentNotifications != null) && (!currentNotifications.isEmpty())) {
         viewerRefresh = new ViewerRefresh(viewer);
         for (Notification notification : currentNotifications) {
-          ChangeNotification changeNotification = new ChangeNotification(notification);
-          if (!duplicateNotifications.contains(changeNotification)) {
-            duplicateNotifications.add(changeNotification);
-            notifyChanged2(notification);
+          if (notification.getNotifier() instanceof EObject
+              && ((EObject) notification.getNotifier()).eResource() != null) {
+            ChangeNotification changeNotification = new ChangeNotification(notification);
+            if (!duplicateNotifications.contains(changeNotification)) {
+              duplicateNotifications.add(changeNotification);
+              notifyChanged2(notification);
+            }
           }
         }
 
@@ -165,10 +179,7 @@ public class GroupedAdapterFactoryContentProvider extends AdapterFactoryContentP
   }
 
   public synchronized void addNotification(Notification notification) {
-    if (notifications == null) {
-      notifications = new ArrayList<>();
-    }
-    notifications.add(notification);
+    addNotifications(Collections.singletonList(notification));
   }
 
   /**
@@ -200,33 +211,35 @@ public class GroupedAdapterFactoryContentProvider extends AdapterFactoryContentP
    * Name change notification
    */
   protected class ChangeNotification {
-    private WeakReference<Object> _notifierReference;
-    private WeakReference<Object> _featureReference;
-    private WeakReference<Object> _newValueReference;
-    private WeakReference<Object> _element;
-    private int _eventType;
+    private WeakReference<Object> notifierReference;
+    private WeakReference<Object> featureReference;
+    private WeakReference<Object> newValueReference;
+    private WeakReference<Object> element;
+    private int eventType;
 
     /**
      * Constructor.
+     * 
      * @param eventType
      * @param newValue
      * @param notifier
      */
     @Deprecated
     public ChangeNotification(Object notifier, Object feature, Object newValue, int eventType) {
-      _notifierReference = new WeakReference<>(notifier);
-      _featureReference = new WeakReference<>(feature);
-      _newValueReference = new WeakReference<>(newValue);
-      _eventType = eventType;
+      this.notifierReference = new WeakReference<>(notifier);
+      this.featureReference = new WeakReference<>(feature);
+      this.newValueReference = new WeakReference<>(newValue);
+      this.eventType = eventType;
     }
 
     public ChangeNotification(Notification notification) {
-      this(notification.getNotifier(), notification.getFeature(), notification.getNewValue(), notification.getEventType());
+      this(notification.getNotifier(), notification.getFeature(), notification.getNewValue(),
+          notification.getEventType());
       if (notification instanceof ViewerNotification) {
-        _element = new WeakReference<>(((ViewerNotification) notification).getElement());
+        element = new WeakReference<>(((ViewerNotification) notification).getElement());
       }
     }
-    
+
     /**
      * @see java.lang.Object#equals(java.lang.Object)
      */
@@ -238,24 +251,27 @@ public class GroupedAdapterFactoryContentProvider extends AdapterFactoryContentP
         ChangeNotification notification = (ChangeNotification) object;
         cr = true;
 
-        if (!(((_notifierReference.get() == null) && (notification._notifierReference.get() == null)) || ((_notifierReference.get() != null) && _notifierReference
-            .get().equals(notification._notifierReference.get())))) {
+        if (!(((this.notifierReference.get() == null) && (notification.notifierReference.get() == null))
+            || ((notifierReference.get() != null)
+                && notifierReference.get().equals(notification.notifierReference.get())))) {
           cr = false;
 
-        } else if (!(((_featureReference.get() == null) && (notification._featureReference.get() == null)) || ((_featureReference.get() != null) && _featureReference
-            .get().equals(notification._featureReference.get())))) {
+        } else if (!(((featureReference.get() == null) && (notification.featureReference.get() == null))
+            || ((featureReference.get() != null)
+                && featureReference.get().equals(notification.featureReference.get())))) {
           cr = false;
 
-        } else if (!(((_newValueReference.get() == null) && (notification._newValueReference.get() == null)) || ((_newValueReference.get() != null) && _newValueReference
-            .get().equals(notification._newValueReference.get())))) {
+        } else if (!(((newValueReference.get() == null) && (notification.newValueReference.get() == null))
+            || ((newValueReference.get() != null)
+                && newValueReference.get().equals(notification.newValueReference.get())))) {
           cr = false;
-          
-        } else if (_element != null && !(((_element.get() == null) && (notification._element.get() == null)) || ((_element.get() != null) && _element
-            .get().equals(notification._element.get())))) {
+
+        } else if (element != null && !(((element.get() == null) && (notification.element.get() == null))
+            || ((element.get() != null) && element.get().equals(notification.element.get())))) {
           cr = false;
         }
 
-        cr = (cr) ? _eventType == notification._eventType : false;
+        cr = (cr) ? eventType == notification.eventType : false;
       }
       return cr;
     }
@@ -267,19 +283,19 @@ public class GroupedAdapterFactoryContentProvider extends AdapterFactoryContentP
     public int hashCode() {
       // Based on Thinking In Java book : Overriding hashCode( ) chapter 11
       int result = 17;
-      if (_notifierReference.get() != null) {
-        result = (37 * result) + _notifierReference.get().hashCode();
+      if (notifierReference.get() != null) {
+        result = (37 * result) + notifierReference.get().hashCode();
       }
-      if (_featureReference.get() != null) {
-        result = (37 * result) + _featureReference.get().hashCode();
+      if (featureReference.get() != null) {
+        result = (37 * result) + featureReference.get().hashCode();
       }
-      if (_newValueReference.get() != null) {
-        result = (37 * result) + _newValueReference.get().hashCode();
+      if (newValueReference.get() != null) {
+        result = (37 * result) + newValueReference.get().hashCode();
       }
-      if (_element != null && _element.get() != null) {
-        result = (37 * result) + _element.get().hashCode();
+      if (element != null && element.get() != null) {
+        result = (37 * result) + element.get().hashCode();
       }
-      result = (37 * result) + _eventType;
+      result = (37 * result) + eventType;
       return result;
     }
   }
