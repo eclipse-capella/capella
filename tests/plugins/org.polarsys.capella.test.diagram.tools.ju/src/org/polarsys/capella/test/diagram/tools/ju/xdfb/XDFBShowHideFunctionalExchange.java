@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2018, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -57,7 +57,9 @@ public class XDFBShowHideFunctionalExchange extends EmptyProject {
 			PointList pointList = ShapeHelper.getRelativePointListForDEdge(diagram, fe2Edge);
 			Point firstPoint = pointList.getFirstPoint();
 			Point lastPoint = pointList.getLastPoint();
-			
+
+			DiagramHelper.setSynchronized(xdfb.getDiagram(), false);
+			xdfb.removeFunctionalExchange(GenericModel.FUNCTION_1, FE1);
 			xdfb.insertFunctionalExchange(GenericModel.FUNCTION_1, FE1);
 			
 			FE2view = xdfb.getView(FE2);

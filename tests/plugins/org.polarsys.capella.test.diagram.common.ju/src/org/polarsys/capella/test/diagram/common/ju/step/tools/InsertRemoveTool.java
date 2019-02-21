@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,6 +20,12 @@ import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.polarsys.capella.core.data.cs.Component;
+import org.polarsys.capella.core.data.cs.Part;
+import org.polarsys.capella.core.data.fa.AbstractFunction;
+import org.polarsys.capella.core.data.fa.ComponentExchange;
+import org.polarsys.capella.core.data.information.Partition;
+import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.sirius.analysis.actions.extensions.AbstractExternalJavaAction;
 import org.polarsys.capella.test.diagram.common.ju.context.DiagramContext;
 import org.polarsys.capella.test.diagram.common.ju.headless.HeadlessResultOpProvider;
@@ -136,6 +142,13 @@ public class InsertRemoveTool extends AbstractToolStep {
   @Override
   protected void preRunTest() {
     HeadlessResultOpProvider.INSTANCE.setCurrentOp(createOperation());
+    
+    for (String identifier : insertedElements) {
+      getExecutionContext().hasntView(identifier);
+    }
+    for (String identifier : removedElements) {
+      getExecutionContext().hasView(identifier);
+    }
     super.preRunTest();
   }
 
@@ -197,10 +210,9 @@ public class InsertRemoveTool extends AbstractToolStep {
       getExecutionContext().hasntView(identifier);
     }
   }
-
+  
   @Override
   public Object getResult() {
     return null;
   }
-
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -107,6 +107,9 @@ public abstract class DiagramObjectFilterTestCase extends BasicTestCase {
   	FilterDescription filter = DiagramHelper.getFilterForDiagram(diagram, filterName);
   	Assert.assertNotNull(MessageFormat.format(HelperMessages.filterNotFound, filterName, diagramName), filter);// test case check    
   	DiagramHelper.addFilterInDiagram(diagram, filter);
+  	
+  	// Refresh
+    DiagramHelper.refreshDiagram(diagram);
    
   	// check that filter is active
   	assertFilterActive(diagram, filterName);

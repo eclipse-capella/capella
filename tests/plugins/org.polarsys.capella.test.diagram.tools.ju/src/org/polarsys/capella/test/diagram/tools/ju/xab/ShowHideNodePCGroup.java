@@ -26,12 +26,13 @@ public class ShowHideNodePCGroup extends XABDiagramsProject {
     String[] checkIds = { PA__PAB_COMPONENT_PC8, PA__PAB_COMPONENT_PC3,
         LA__LAB_PHYSICAL_LINK_PL1 };
 
-    testOnXAB_NodeComponent(context, PA__PAB_DIAGRAM, BlockArchitectureExt.Type.PA,
-        PA__PAB_COMPONENT_PC1, checkIds);
-
     testOnXAB_DeployedNodeComponent(context, PA__PAB_DIAGRAM,
         BlockArchitectureExt.Type.PA, PA__PAB_COMPONENT_PC8,
         PA__PAB_COMPONENT_PC1);
+    
+    testOnXAB_NodeComponent(context, PA__PAB_DIAGRAM, BlockArchitectureExt.Type.PA,
+        PA__PAB_COMPONENT_PC1, checkIds);
+
   }
 
   public void testOnXAB_NodeComponent(SessionContext context, String diagramName,

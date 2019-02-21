@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -878,9 +878,6 @@ public class DiagramHelper {
         activatedFilters.add(filter);
         CompositeFilterApplicationBuilder builder = new CompositeFilterApplicationBuilder(diagram);
         builder.computeCompositeFilterApplications();
-        DialectManager.INSTANCE.refresh(diagram, new NullProgressMonitor());// refreshes
-                                                                            // the
-                                                                            // diagram
       }
     };
     TestHelper.getExecutionManager(diagram).execute(cmd);

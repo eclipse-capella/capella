@@ -52,20 +52,20 @@ public class InsertRemoveScenario extends ESProject {
   protected void testOn(SessionContext context, String sourceId) {
     ESDiagram diagramContext = ESDiagram.createDiagram(context, sourceId);
     //Actor
-    diagramContext.insertActor(GenericModel.ACTOR_1);
     diagramContext.removeActor(GenericModel.ACTOR_1);
+    diagramContext.insertActor(GenericModel.ACTOR_1);
 
     if (diagramContext instanceof PA_ESDiagram) {
       //Behavior component
-      diagramContext.insertComponent(GenericModel.COMPONENT_2);
       diagramContext.removeComponent(GenericModel.COMPONENT_2);
+      diagramContext.insertComponent(GenericModel.COMPONENT_2);
       //Node component
-      diagramContext.insertComponent(GenericModel.COMPONENT_3);
       diagramContext.removeComponent(GenericModel.COMPONENT_3);
+      diagramContext.insertComponent(GenericModel.COMPONENT_3);
     } else if (!(diagramContext instanceof SA_ESDiagram)) {
       //Insert/Remove tool does not exist for SA
-      diagramContext.insertComponent(GenericModel.COMPONENT_1);
       diagramContext.removeComponent(GenericModel.COMPONENT_1);
+      diagramContext.insertComponent(GenericModel.COMPONENT_1);
     }
   }
 
