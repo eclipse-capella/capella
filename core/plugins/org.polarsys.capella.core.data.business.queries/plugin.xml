@@ -1322,10 +1322,10 @@
     <querySpecification queryIdentifier="GetCurrent_FunctionOutputPort_RequiredInterface">
       <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.fa.GetCurrent_FunctionOutputPort_RequiredInterface" />
     </querySpecification>
-    <querySpecification queryIdentifier="GetAvailable_FunctionalChainInvolvement_ExchangeItems">
+    <querySpecification queryIdentifier="GetAvailable_FunctionalChainInvolvementLink_ExchangeItems">
       <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.fa.GetAvailable_FunctionalChainInvolvementLink_ExchangeItems" />
     </querySpecification>
-    <querySpecification queryIdentifier="GetCurrent_FunctionalChainInvolvement_ExchangeItems">
+    <querySpecification queryIdentifier="GetCurrent_FunctionalChainInvolvementLink_ExchangeItems">
       <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.fa.GetCurrent_FunctionalChainInvolvementLink_ExchangeItems" />
     </querySpecification>
     <querySpecification queryIdentifier="GetAvailable_FunctionalChain_AvailableInStates">
