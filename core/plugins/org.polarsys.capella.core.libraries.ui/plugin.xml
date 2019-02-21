@@ -126,6 +126,19 @@
                name="group.sendTo">
          </separator>
       </menuContribution>
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:org.eclipse.ui.popup.any?after=group.sendTo">
+         <command
+               commandId="org.polarsys.capella.core.libraries.ui.sendToTransferView"
+               icon="icons/transfer_16x16.png"
+               label="%sendToTransferViewLabel"
+               style="push">
+            <visibleWhen
+                  checkEnabled="true">
+            </visibleWhen>
+         </command>
+      </menuContribution>
    </extension>
       <extension
             point="org.polarsys.capella.common.flexibility.wizards">
@@ -209,7 +222,17 @@
             </equals>
          </activeWhen>
       </handler>
-         
+     <handler
+           class="org.polarsys.capella.core.libraries.ui.move.SendToTransferViewHandler"
+           commandId="org.polarsys.capella.core.libraries.ui.sendToTransferView">
+        <activeWhen>
+           <iterate>
+              <adapt
+                    type="org.eclipse.emf.ecore.EObject">
+              </adapt>
+           </iterate>
+        </activeWhen>
+     </handler>
    </extension>
    <extension
          point="org.eclipse.ui.views">
@@ -229,6 +252,11 @@
             description="Reset the view to start from the beginning"
             id="org.polarsys.capella.core.libraries.ui.moveReset"
             name="Reset">
+      </command>
+      <command
+            description="%sendToTransferViewDescription"
+            id="org.polarsys.capella.core.libraries.ui.sendToTransferView"
+            name="%sendToTransferViewLabel">
       </command>
    </extension>
    <extension

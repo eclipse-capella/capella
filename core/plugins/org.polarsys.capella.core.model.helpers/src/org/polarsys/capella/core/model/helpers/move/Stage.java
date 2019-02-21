@@ -86,6 +86,9 @@ public class Stage {
   };
 
   public Stage(TransactionalEditingDomain domain){
+    if (domain == null) {
+      throw new IllegalArgumentException("domain parameter cannot be null"); //$NON-NLS-1$
+    }
     this.domain = domain;
     stageListeners = new ListenerList<StageListener>();
     listener = new StageResourceSetListener(this);

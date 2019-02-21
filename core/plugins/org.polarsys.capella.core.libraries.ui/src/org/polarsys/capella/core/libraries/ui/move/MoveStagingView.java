@@ -152,6 +152,11 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
    */
   public final static String DESTINATIONVIEWER_CONTEXT_MENU = "org.polarsys.capella.core.libraries.ui.moveview.destinationViewer"; //$NON-NLS-1$
 
+  /**
+   * The transfer view id.
+   */
+  public static final String VIEW_ID = "org.polarsys.capella.core.libraries.ui.moveview"; //$NON-NLS-1$
+
   TreeViewer stageViewer;
   TreeViewer destinationViewer;
   ColumnViewerInformationControlToolTipSupport tooltipSupport;
@@ -199,8 +204,71 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
    */
   Session session;
 
+  /**
+   * Get the underlying stage model of the viewer, or null if the view has not been {@link #init(Collection) initialized}
+   * @return the stage 
+   */
   public Stage getStage(){
     return stage;
+  }
+
+  /**
+   * Initialize the view with the collection of elements. The elements must all belong to the same editing domain.
+   * Calling this method multiple times has no effect unless {@link #reset()} was called in between.
+   * 
+   * @param dropped the elements to initialize the viewer
+   */
+  public void init(Collection<EObject> dropped) {
+    if (stage == null) {
+      stage = new Stage(EcoreUtil2.getEditingDomain(dropped));
+
+      listener = new StageListener() {
+
+        @Override
+        public void stageChanged(Stage s) {
+          PlatformUI.getWorkbench().getDisplay().asyncExec(() -> handleStageChanged(s));
+        }
+
+        @Override
+        public void elementsAdded(Collection<EObject> elements) {
+          PlatformUI.getWorkbench().getDisplay().asyncExec(() -> handleStageElementsAdded(elements));
+        }
+
+        @Override
+        public void parentChanged(EObject staged, EObject oldParent, EObject newParent) {
+          PlatformUI.getWorkbench().getDisplay().asyncExec(() -> handleStageParentChanged(staged, oldParent, newParent));
+        }
+
+        @Override
+        public void elementsRemoved(Collection<? extends EObject> elements) {
+          PlatformUI.getWorkbench().getDisplay().asyncExec(() -> handleStageElementsRemoved(elements));
+        }
+      };
+      stage.addStageListener(listener);
+      stageViewer.setInput(stage.getEditingDomain().getResourceSet());
+      stageViewer.setLabelProvider(createLabelProvider(true));
+      stageViewer.setFilters(new CollectionTreeFilter(stage.getElements(), false));
+      tooltipSupport = new ColumnViewerInformationControlToolTipSupport(stageViewer, new DiagnosticDecorator.EditingDomainLocationListener(stage.getEditingDomain(), stageViewer) {
+        @Override
+        protected void setSelection(final Object object) {
+          MyLocateInCapellaExplorerAction action = new MyLocateInCapellaExplorerAction();
+          action.selectElementInCapellaExplorer(new StructuredSelection(object));
+        }
+      });
+
+      destinationViewer.setInput(stage.getEditingDomain().getResourceSet());
+
+      stageExpandAllAction.setEnabled(true);
+      stageCollapseAllAction.setEnabled(true);
+      destExpandAllAction.setEnabled(true);
+      destCollapseAllAction.setEnabled(true);
+      previousElementAction.setEnabled(true);
+      nextEleementAction.setEnabled(true);
+
+      initSessionListener(stage.getEditingDomain());
+      stage.addAll(dropped);
+    }
+
   }
 
   @Override
@@ -438,64 +506,13 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
 
       @Override
       public boolean performDrop(Object data) {
-
         // validate() ensures that this is safe
         @SuppressWarnings("unchecked") Collection<EObject> dropped = ((IStructuredSelection) data).toList();
-
         if (stage == null){
-
-          // the first element is dropped onto the staging area
-
-          stage = new Stage(EcoreUtil2.getEditingDomain(dropped));
-
-          listener = new StageListener() {
-
-            @Override
-            public void stageChanged(Stage s) {
-              PlatformUI.getWorkbench().getDisplay().asyncExec(() -> handleStageChanged(s));
-            }
-
-            @Override
-            public void elementsAdded(Collection<EObject> elements) {
-              PlatformUI.getWorkbench().getDisplay().asyncExec(() -> handleStageElementsAdded(elements));
-            }
-
-            @Override
-            public void parentChanged(EObject staged, EObject oldParent, EObject newParent) {
-              PlatformUI.getWorkbench().getDisplay().asyncExec(() -> handleStageParentChanged(staged, oldParent, newParent));
-            }
-
-            @Override
-            public void elementsRemoved(Collection<? extends EObject> elements) {
-              PlatformUI.getWorkbench().getDisplay().asyncExec(() -> handleStageElementsRemoved(elements));
-            }
-          };
-          stage.addStageListener(listener);
-          stageViewer.setInput(stage.getEditingDomain().getResourceSet());
-          stageViewer.setLabelProvider(createLabelProvider(true));
-          stageViewer.setFilters(new CollectionTreeFilter(stage.getElements(), false));
-          tooltipSupport = new ColumnViewerInformationControlToolTipSupport(stageViewer, new DiagnosticDecorator.EditingDomainLocationListener(stage.getEditingDomain(), stageViewer) {
-            @Override
-            protected void setSelection(final Object object) {
-              MyLocateInCapellaExplorerAction action = new MyLocateInCapellaExplorerAction();
-              action.selectElementInCapellaExplorer(new StructuredSelection(object));
-            }
-          });
-
-          destinationViewer.setInput(stage.getEditingDomain().getResourceSet());
-
-          stageExpandAllAction.setEnabled(true);
-          stageCollapseAllAction.setEnabled(true);
-          destExpandAllAction.setEnabled(true);
-          destCollapseAllAction.setEnabled(true);
-          previousElementAction.setEnabled(true);
-          nextEleementAction.setEnabled(true);
-
-          initSessionListener(stage.getEditingDomain());
-
+          init(dropped);
+        } else {
+          stage.addAll(dropped);
         }
-
-        stage.addAll(dropped);
         return true;
       }
 
