@@ -36,6 +36,10 @@ public class Messages extends NLS {
   public static String ValidateExecuteListener_dialogMessage;
   public static String ValidateExecuteListener_dialogProceedButton;
   public static String ValidateExecuteListener_dialogTitle;
+  public static String MoveStagingView_previousElementAction_text;
+  public static String MoveStagingView_previousElementAction_tooltip;
+  public static String MoveStagingView_nextElementAction_text;
+  public static String MoveStagingView_nextElementAction_tooltip;
 
   static {
     // initialize resource bundle

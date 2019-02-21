@@ -11,15 +11,18 @@
 package org.polarsys.capella.core.libraries.ui.move;
 
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Deque;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.function.Predicate;
 
 import org.apache.log4j.Priority;
 import org.eclipse.core.runtime.IStatus;
@@ -71,6 +74,7 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.StyledString;
@@ -96,6 +100,7 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.ToolBar;
 import org.eclipse.swt.widgets.Tree;
@@ -122,6 +127,7 @@ import org.polarsys.capella.common.libraries.manager.LibraryManager;
 import org.polarsys.capella.common.libraries.manager.LibraryManagerExt;
 import org.polarsys.capella.common.tools.report.util.LogExt;
 import org.polarsys.capella.common.tools.report.util.ReportManagerDefaultComponents;
+import org.polarsys.capella.common.ui.toolkit.ToolkitPlugin;
 import org.polarsys.capella.core.data.core.validation.constraint.ReferentialConstraintsResourceSetListener;
 import org.polarsys.capella.core.libraries.model.ICapellaModel;
 import org.polarsys.capella.core.libraries.ui.Activator;
@@ -178,6 +184,8 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
   IAction stageExpandAllAction;
   IAction stageCollapseAllAction;
 
+  IAction nextEleementAction;
+  IAction previousElementAction;
   /**
    * Actions on the right viewer
    */
@@ -480,6 +488,8 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
           stageCollapseAllAction.setEnabled(true);
           destExpandAllAction.setEnabled(true);
           destCollapseAllAction.setEnabled(true);
+          previousElementAction.setEnabled(true);
+          nextEleementAction.setEnabled(true);
 
           initSessionListener(stage.getEditingDomain());
 
@@ -527,12 +537,20 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
     stageCollapseAllAction = new CollapseAllAction(stageViewer);
     stageCollapseAllAction.setEnabled(false);
 
+    previousElementAction = new PreviousElementAction(stageViewer);
+    previousElementAction.setEnabled(false);
+
+    nextEleementAction = new NextElementAction(stageViewer);
+    nextEleementAction.setEnabled(false);
+
     stageViewer.addSelectionChangedListener((ISelectionChangedListener) addRequiredAction);
     stageViewer.addSelectionChangedListener((ISelectionChangedListener) unstageAction);
     stageViewer.addSelectionChangedListener((ISelectionChangedListener) addAllRequiredAction);
-
+    
     stageViewerToolBarManager.add(stageExpandAllAction);
     stageViewerToolBarManager.add(stageCollapseAllAction);
+    stageViewerToolBarManager.add(previousElementAction);
+    stageViewerToolBarManager.add(nextEleementAction);
     stageViewerToolBarManager.add(unstageAction);
     stageViewerToolBarManager.add(addRequiredAction);
     stageViewerToolBarManager.add(addAllRequiredAction);
@@ -816,7 +834,7 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
 
     @Override
     protected boolean updateSelection(IStructuredSelection selection) {
-      return stage != null && !selection.isEmpty() && stage.getElements().containsAll(selection.toList());
+      return stage != null && !selection.isEmpty();
     }
     
   }
@@ -830,11 +848,13 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
 
     @Override
     public void run() {
-      for (Object e : destinationViewer.getStructuredSelection().toList()) {
-        stage.setParent((EObject) e, null);
+      Collection<?> emfObjects = destinationViewer.getStructuredSelection().toList();
+      for (EObject e : stage.getElements()) {
+        if (EcoreUtil.isAncestor(emfObjects, stage.getNewParent(e))) {
+          stage.setParent(e, null);
+        }
       }
     }
-
   }
 
   private class UnstageAction extends AbstractDeleteAction {
@@ -843,10 +863,16 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
       setToolTipText(Messages.MoveStagingView_unstageLabel);
     }
 
-    @SuppressWarnings("unchecked")
     @Override
     public void run() {
-        stage.removeAll(getStructuredSelection().toList());
+      Collection<EObject> toRemove = new ArrayList<EObject>();
+      for (Iterator<EObject> it = EcoreUtil.getAllContents(getStructuredSelection().toList()); it.hasNext();) {
+        EObject next = it.next();
+        if (stage.getElements().contains(next)) {
+          toRemove.add(next);
+        }
+      }
+      stage.removeAll(toRemove);
     }
 
   }
@@ -967,6 +993,189 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
       }
     }
 
+  }
+
+  private class NavigateStageAction extends TreeViewerAction {
+
+    final boolean forward;
+
+    NavigateStageAction(TreeViewer viewer, boolean forward){
+      super(viewer);
+      this.forward = forward;
+    }
+
+
+    @Override
+    public void runWithEvent(Event event) {
+
+      Predicate<EObject> matcher = (event.stateMask & SWT.CONTROL) == SWT.CONTROL ? 
+          this::ctrlMatcher: this::defaultMatcher;
+
+      ITreeContentProvider cp = (ITreeContentProvider) getViewer().getContentProvider(); 
+      EObject selection = (EObject) ((IStructuredSelection)getViewer().getSelection()).getFirstElement();
+
+      // If no element is selected, start at the bottom when navigating backwards, and at the top
+      // when navigating forwards
+      if (selection == null) {
+        Object[] roots = cp.getElements(getViewer().getInput());
+        if (forward) {
+          selection = (EObject) roots[0];
+        } else {
+          selection = (EObject) roots[roots.length - 1];
+          while (cp.hasChildren(selection)) {
+            Object[] children = cp.getChildren(selection);
+            selection = (EObject) children[children.length - 1];
+          }
+        }
+      }
+
+      EObject root = selection;
+
+      EObject currentElement = matcher.test(root) ? root : null;
+      EObject nextElement = null;
+
+      while (nextElement == null && root != null) {
+
+        // skip the subtree of the selection root when searching backwards
+        if (forward) {
+            nextElement = searchDown(root, currentElement, matcher);
+        } else if (root != selection) {
+            nextElement = searchUp(root, matcher);
+        }
+
+        if (nextElement == null) {
+          EObject nextSubtree = forward ? getRightSibling(root) : getLeftSibling(root);
+          if (nextSubtree == null) { 
+
+            EObject parent = root.eContainer();
+
+            // check the parent when searching backwards since it's not covered by any of the subtrees
+            if (parent != null && !forward && matcher.test(parent)) {
+              nextElement = parent;
+            } else {
+              while (parent != null && nextSubtree == null) {
+                nextSubtree = forward ? getRightSibling(parent) : getLeftSibling(parent);
+                parent = parent.eContainer();
+              }
+            }
+          }
+          root = nextSubtree;
+        }
+      }
+
+      if (nextElement != null) {
+        getViewer().setSelection(new StructuredSelection(nextElement));
+        getViewer().reveal(nextElement);
+      }
+    }
+
+    private EObject getRightSibling(EObject e) {
+      Object[] siblings = getSiblings(e);
+      for (int i = 0; i < siblings.length - 1; i++) {
+        if (siblings[i] == e) {
+          return (EObject) siblings[i+1];
+        }
+      }
+      return null;
+    }
+
+    private EObject getLeftSibling(EObject e) {
+      Object[] siblings = getSiblings(e);
+      for (int i = 1; i < siblings.length; i++) {
+        if (siblings[i] == e) {
+            return (EObject) siblings[i-1];
+        }
+      }
+      return null;
+    }
+
+    private Object[] getSiblings(Object e) {
+      ITreeContentProvider tcp = (ITreeContentProvider) getViewer().getContentProvider();
+      Object parent = tcp.getParent(e);
+      Object[] siblings = null;
+      if (parent == null) {
+        siblings = tcp.getElements(getViewer().getInput());
+      } else {
+        siblings = tcp.getChildren(parent);
+      }
+      return siblings;
+    }
+
+    private EObject searchDown(EObject root, EObject current, Predicate<EObject> matcher) {
+      Deque<EObject> toWalk = new ArrayDeque<>();
+      toWalk.add(root);
+      while (toWalk.size() > 0) {
+        EObject next = toWalk.pop();
+        if (next != current && matcher.test(next)) {
+          return next;
+        }
+        Object[] children = ((ITreeContentProvider) getViewer().getContentProvider()).getChildren(next);
+        for (int i = children.length - 1; i >= 0; i--) {
+          toWalk.push((EObject) children[i]);
+        }
+      }
+      return null;
+    }
+
+    private EObject searchUp(EObject root, Predicate<EObject> matcher) {
+      Deque<EObject> postOrderRL = new ArrayDeque<>();
+      Deque<EObject> toWalk = new ArrayDeque<>();
+      toWalk.push(root);
+      while (!toWalk.isEmpty()) {
+        EObject next = toWalk.pop();
+        postOrderRL.push(next);
+        Object[] children = ((ITreeContentProvider) getViewer().getContentProvider()).getChildren(next);
+        for (int i = children.length - 1; i >= 0; i--) {
+          toWalk.push((EObject) children[i]);
+        }
+      }
+      while (!postOrderRL.isEmpty()) {
+        EObject next = postOrderRL.pop();
+        if (matcher.test(next)) {
+          return next;
+        }
+      }
+      return null;
+    }
+
+    private boolean hasBackreferenceMatcher(EObject e) {
+      return !stage.getBackreferences(e).isEmpty();
+    }
+
+    private boolean isStageElementMatcher(EObject e) {
+      return stage.getElements().contains(e);
+    }
+
+    private boolean hasNoNewParentMatcher(EObject e) {
+      return stage.getNewParent(e) == null;
+    }
+
+    private boolean ctrlMatcher(EObject e) {
+      return hasBackreferenceMatcher(e) || (isStageElementMatcher(e) && hasNoNewParentMatcher(e));
+    }
+
+    private boolean defaultMatcher(EObject e) {
+      return hasBackreferenceMatcher(e) || isStageElementMatcher(e);
+    }
+
+  }
+
+  private class PreviousElementAction extends NavigateStageAction {
+    public PreviousElementAction(TreeViewer viewer) {
+      super(viewer, false);
+      setText(Messages.MoveStagingView_previousElementAction_text);
+      setToolTipText(Messages.MoveStagingView_previousElementAction_tooltip);
+      setImageDescriptor(ToolkitPlugin.getDefault().getImageRegistry().getDescriptor(ToolkitPlugin.MOVE_UP_ITEM_IMAGE_ID));
+    }
+  }
+
+  private class NextElementAction extends NavigateStageAction {
+    public NextElementAction(TreeViewer viewer) {
+      super(viewer, true);
+      setText(Messages.MoveStagingView_nextElementAction_text);
+      setToolTipText(Messages.MoveStagingView_nextElementAction_tooltip);
+      setImageDescriptor(ToolkitPlugin.getDefault().getImageRegistry().getDescriptor(ToolkitPlugin.MOVE_DOWN_ITEM_IMAGE_ID));
+    }
   }
 
   /*  This decorates image labels with error markers,
@@ -1173,6 +1382,8 @@ public class MoveStagingView extends ViewPart implements ISelectionProvider, ITa
     stageCollapseAllAction.setEnabled(false);
     destExpandAllAction.setEnabled(false);
     destCollapseAllAction.setEnabled(false);
+    nextEleementAction.setEnabled(false);
+    previousElementAction.setEnabled(false);
     if (session != null) {
       session.removeListener(this);
       session = null;
