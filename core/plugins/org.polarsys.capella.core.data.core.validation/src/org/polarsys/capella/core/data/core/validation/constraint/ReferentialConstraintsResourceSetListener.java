@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.transaction.ResourceSetChangeEvent;
 import org.eclipse.emf.transaction.ResourceSetListenerImpl;
 import org.eclipse.emf.transaction.RollbackException;
+import org.eclipse.osgi.util.NLS;
 import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 
 /**
@@ -59,8 +60,12 @@ public class ReferentialConstraintsResourceSetListener extends ResourceSetListen
     ReferentialConstraintsValidationHelper<Diagnostic> helper = new ReferentialConstraintsValidationHelper<Diagnostic>(true) {
       @Override
       protected Diagnostic createStatus(EObject source, EObject target, EReference ref) {
-        return new BasicDiagnostic(Diagnostic.ERROR, PLUGIN_ID, 0, String.format("'%s' cannot reference moved element '%s' via '%s'", //$NON-NLS-1$
-            EObjectLabelProviderHelper.getText(source), EObjectLabelProviderHelper.getText(target), ref.getName()), new Object[] { source, target });
+        return new BasicDiagnostic(Diagnostic.ERROR, Messages.I_38_ReferenceConstraintsListener_ruleID, 0, NLS.bind(Messages.I_38_ReferenceConstraintsListener_detail,
+            new Object[] {
+                EObjectLabelProviderHelper.getText(source),
+                EObjectLabelProviderHelper.getText(target),
+                ref.getName(),
+            }), new Object[] { source, target });
       }
     };
 
