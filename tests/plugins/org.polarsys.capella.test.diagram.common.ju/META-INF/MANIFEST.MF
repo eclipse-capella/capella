@@ -20,6 +20,7 @@ Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: org.polarsys.capella.test.diagram.common.ju,
  org.polarsys.capella.test.diagram.common.ju.api,
+ org.polarsys.capella.test.diagram.common.ju.availableXDFBDiagramTools,
  org.polarsys.capella.test.diagram.common.ju.context,
  org.polarsys.capella.test.diagram.common.ju.headless,
  org.polarsys.capella.test.diagram.common.ju.headless.actions,

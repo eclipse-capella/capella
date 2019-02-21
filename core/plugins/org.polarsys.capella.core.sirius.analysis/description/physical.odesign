@@ -841,7 +841,7 @@
         <reusedMappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_PVGconnector']"/>
         <toolSections name="Functions">
           <ownedTools xsi:type="tool_1:ToolGroup" name="FunctionCreation">
-            <tools xsi:type="tool_1:ContainerCreationDescription" documentation="Creates a new Physical Function" name="Physical Function" precondition="aql:containerView.isValidCreationDFFunction() and (container.oclIsKindOf(la::CapabilityRealization) or container.allocationBlocks->filter(cs::AbstractActor)->size() = 0)" containerMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='PDFB_Function']">
+            <tools xsi:type="tool_1:ContainerCreationDescription" documentation="Creates a new Physical Function" name="Function" label="Physical Function" precondition="aql:containerView.isValidCreationDFFunction() and (container.oclIsKindOf(la::CapabilityRealization) or container.allocationBlocks->filter(cs::AbstractActor)->size() = 0)" containerMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='PDFB_Function']">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>

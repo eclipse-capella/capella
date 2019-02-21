@@ -17,23 +17,58 @@ import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
  */
 public interface IToolNameConstants {
 
-  //
-  // Diagram Tools
+  
+  // New Diagram Tools convention (tool name should be the same across all diagrams where the tool is available)
+  // =================================================================================================
+  
+  String TOOL_CREATE_FUNCTION = "Function";
+  String TOOL_CREATE_FUNCTION_DUPLICATE = "Duplicate";
+  String TOOL_CREATE_FUNCTION_GATHER = "Gather";
+  String TOOL_CREATE_FUNCTION_ROUTE = "Route";
+  String TOOL_CREATE_FUNCTION_SELECT = "Select";
+  String TOOL_CREATE_FUNCTION_SPLIT = "Split";
+  String TOOL_CREATE_ACTOR_FUNCTION = "Actor Function";
+  String TOOL_CREATE_INPUT_PORT = "Input Port";
+  String TOOL_CREATE_OUTPUT_PORT = "Output Port";
+  String TOOL_CREATE_FUNCTIONAL_EXCHANGE = "Functional Exchange";
+  String TOOL_CREATE_FUNCTIONAL_CHAIN = "Functional Chain";
+  String TOOL_CREATE_CONSTRAINT = "Constraint";
+  String TOOL_CREATE_CONSTRAINT_ELEMENT = "ConstraintElement";
+  String TOOL_CREATE_OPERATIONAL_ROLE = "Operational Role";
+  String TOOL_CREATE_OPERATIONAL_ACTIVITY = "Operational Activity";
+  String TOOL_CREATE_INTERACTION = "Interaction";
+  String TOOL_INSERT_REMOVE_FUNCTION_PORT = "Show/Hide Function Ports";
+  String TOOL_INSERT_REMOVE_FUNCTIONS = "Show/Hide Functions";
+  String TOOL_INSERT_REMOVE_FUNCTIONAL_EXCHANGES = "Functional Exchanges";
+  String TOOL_INSERT_REMOVE_FUNCTIONAL_CHAINS = "Show/Hide Functional Chains"; 
+  String TOOL_INSERT_REMOVE_EXCHANGE_CATEGORIES = "Exchange Categories";
+  String TOOL_INSERT_REMOVE_OPERATIONAL_ROLES = "Operational Roles";
+  String TOOL_INSERT_REMOVE_INTERACTIONS = "Interactions";
+  String TOOL_INSERT_REMOVE_ALLOCATED_ACTIVITIES = "Allocated Activities";
+  String TOOL_SHOW_ALL_ALLOCATED_ACTIVITIES = "All Allocated Activities";
+  String TOOL_MANAGE_ACTIVITY_ALLOCATION = "Manage Activity Allocation";
+  String TOOL_SWITCH_FUNCTIONAL_EXCHANGE_CATEGORIES = "Switch Functional Exchanges / Categories";
+  String TOOL_INSERT_REMOVE_CONSTRAINTS = "Show/Hide Constraints";
+  String TOOL_SWITCH_FUNCTIONAL_EXCHANGE_CATEGORY = "Switch Functional Exchanges / Categories";
+  String TOOL_INSERT_REMOVE_PV = "Applied Property Values";
+  String TOOL_INSERT_REMOVE_PVG = "Applied Property Value Groups";
+    
+  // =================================================================================================
+  // Old Diagram Tools convention
   //
 
   //
-  // Common tools on all diagrams
+  // Tools that are available to multiple types of diagrams
   //
-  String TOOL_COMMON_INSERT_REMOVE_PV = "Applied Property Values";
-  String TOOL_COMMON_INSERT_REMOVE_PVG = "Applied Property Value Groups";
   String TOOL_COMMON_SELECT_SAME_TYPE = "SameType";
   String TOOL_COMMON_SELECT_SAME_MAPPING = "SameMapping";
   String TOOL_COMMON_SELECT_OWNED_PORTS = "OwnedPorts";
   String TOOL_COMMON_SELECT_OWNED_ELEMENTS = "OwnedElements";
   String TOOL_COMMON_SELECT_RELATED_EDGES = "OwnedEdges";
-
+  String TOOL_COMMON_ELEMENTS_FROM_SCENARIO = "Elements from Scenario";
+  String TOOL_COOMON_FUNCTIONS_FROM_MODE_STATE = "Functions from Mode / State";
+  
   String TOOL_CREATE_PHYSICAL_PATH = "Physical Path";//$NON-NLS-1$
-  String TOOL_CREATE_FUNCTIONAL_CHAIN = "Functional Chain";//$NON-NLS-1$
 
   // Accelerators
   String TOOL_DIAGRAMINITIALIZATION = "DiagramInitialization";//$NON-NLS-1$
@@ -718,7 +753,7 @@ public interface IToolNameConstants {
   String TOOL_LDFB_INSERT_REMOVE_FUNCTIONAL_CHAINS = "Functional Chains"; //$NON-NLS-1$
   String TOOL_LDFB_INSERT_REMOVE_FUNCTIONAL_CHAIN_ELEMENTS = "Functional Chain Elements"; //$NON-NLS-1$
   String TOOL_LDFB_CREATE_CONSTRAINT = "Constraint"; //$NON-NLS-1$
-  String TOOL_LDFB_CREATE_CONSTRAINTELEMENT = "ConstraintElement"; //$NON-NLS-1$
+  String TOOL_LDFB_CREATE_CONSTRAINT_ELEMENT = "ConstraintElement"; //$NON-NLS-1$
   String TOOL_LDFB_INSERT_REMOVE_CONSTRAINTS = "Constraints"; //$NON-NLS-1$
   // Accelerators
   String TOOL_LDFB_INITIALIZATION_FROM_EXISTING_DIAGRAM = "Initialization from existing diagram"; //$NON-NLS-1$
@@ -956,6 +991,7 @@ public interface IToolNameConstants {
 
   String TOOL_OAIB_CREATE_OPERATIONAL_PROCESS = "Operational Process"; //$NON-NLS-1$
   String TOOL_OAIB_SHOW_HIDE_OA = "Show/Hide Operational Activity"; //$NON-NLS-1$
+  String TOOL_OAIB_SHOW_HIDE_OPERATIONAL_PROCESS = "Operational Processes"; //$NON-NLS-1$
   String TOOL_OAIB_SHOW_OPERATIONAL_PROCESS_ELT = "Show Operational Process Elements"; //$NON-NLS-1$
   String TOOL_OAIB_SHOW_HIDE_CONSTRAINTS = "Show/Hide Constraints"; //$NON-NLS-1$
   String TOOL_OAIB_SHOW_HIDE_INTERACTION = "Show/Hide Interaction"; //$NON-NLS-1$
@@ -1067,7 +1103,7 @@ public interface IToolNameConstants {
   String TOOL_OES_CREATE_OE = "Operational Entity"; //$NON-NLS-1$
   String TOOL_OES_CREATE_OA = "Operational Actor"; //$NON-NLS-1$
   String TOOL_OES_CREATE_ROLE = "Role"; //$NON-NLS-1$
-  String TOOL_OES_INSERT_REMOVE_OPERATIONAL_ENTITIES_ROLES = "Operational Entities / roles"; //$NON-NLS-1$
+  String TOOL_OES_INSERT_REMOVE_OPERATIONAL_ENTITIES_ROLES = "Operational Entities / roles";  //$NON-NLS-1$
   String TOOL_OES_CREATE_INTERACTION_WITH_RETURN_BRANCH = "Interaction with Return Branch"; //$NON-NLS-1$
   String TOOL_OES_CREATE_INTERACTION = "Interaction"; //$NON-NLS-1$
   String TOOL_OES_CREATE_MESSAGE = "Create message"; //$NON-NLS-1$
@@ -1440,7 +1476,7 @@ public interface IToolNameConstants {
   String TOOL_SDFB_INSERT_REMOVE_FUNCTIONAL_CHAINS = "Functional Chains"; //$NON-NLS-1$
   String TOOL_SDFB_CREATE_FUNCTIONAL_CHAIN_ELEMENTS = "Functional Chain Elements"; //$NON-NLS-1$
   String TOOL_SDFB_CREATE_CONSTRAINT = "Constraint"; //$NON-NLS-1$
-  String TOOL_SDFB_CREATE_CONSTRAINTELEMENT = "ConstraintElement"; //$NON-NLS-1$
+  String TOOL_SDFB_CREATE_CONSTRAINT_ELEMENT = "ConstraintElement"; //$NON-NLS-1$
   String TOOL_SDFB_INSERT_REMOVE_CONSTRAINTS = "Constraints"; //$NON-NLS-1$
 
   String TOOL_SDFB_INSERT_FUNCTIONS_FROM_MODE_STATE = "Functions from Mode / State"; //$NON-NLS-1$

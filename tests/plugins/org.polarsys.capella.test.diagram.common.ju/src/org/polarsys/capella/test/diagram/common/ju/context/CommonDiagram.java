@@ -50,25 +50,25 @@ public class CommonDiagram extends DiagramContext {
   }
 
   public void insertPV(String id, String containerId) {
-    new InsertRemoveTool(this, IToolNameConstants.TOOL_COMMON_INSERT_REMOVE_PV, containerId).insert(id);
+    new InsertRemoveTool(this, IToolNameConstants.TOOL_INSERT_REMOVE_PV, containerId).insert(id);
   }
 
   public void removePV(String id, String containerId) {
-    new InsertRemoveTool(this, IToolNameConstants.TOOL_COMMON_INSERT_REMOVE_PV, containerId).remove(id);
+    new InsertRemoveTool(this, IToolNameConstants.TOOL_INSERT_REMOVE_PV, containerId).remove(id);
   }
 
   public void insertPVG(String id, String containerId) {
-    new InsertRemoveTool(this, IToolNameConstants.TOOL_COMMON_INSERT_REMOVE_PVG, containerId).insert(id);
+    new InsertRemoveTool(this, IToolNameConstants.TOOL_INSERT_REMOVE_PVG, containerId).insert(id);
   }
 
   public void removePVG(String id, String containerId) {
-    new InsertRemoveTool(this, IToolNameConstants.TOOL_COMMON_INSERT_REMOVE_PVG, containerId).remove(id);
+    new InsertRemoveTool(this, IToolNameConstants.TOOL_INSERT_REMOVE_PVG, containerId).remove(id);
   }
-  
+
   public void selectSameType(String id) {
     new SelectTool(this, IToolNameConstants.TOOL_COMMON_SELECT_SAME_TYPE).ensurePrecondition(true).select(id);
   }
-  
+
   public void selectSameMapping(String id) {
     new SelectTool(this, IToolNameConstants.TOOL_COMMON_SELECT_SAME_MAPPING).ensurePrecondition(true).select(id);
   }

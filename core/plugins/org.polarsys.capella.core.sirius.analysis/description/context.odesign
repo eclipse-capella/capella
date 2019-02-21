@@ -2636,7 +2636,7 @@
         <reusedMappings xsi:type="description_1:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_PVGconnector']"/>
         <toolSections name="Functions">
           <ownedTools xsi:type="tool:ToolGroup" name="SystemFunctions">
-            <tools xsi:type="tool:ContainerCreationDescription" documentation="Creates a new System Function" name="System Function" precondition="aql:containerView.isValidCreationDFFunction() and (container.oclIsKindOf(ctx::Capability) or container.allocationBlocks->filter(cs::AbstractActor)->size() = 0)" containerMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']">
+            <tools xsi:type="tool:ContainerCreationDescription" documentation="Creates a new System Function" name="Function" label="System Function" precondition="aql:containerView.isValidCreationDFFunction() and (container.oclIsKindOf(ctx::Capability) or container.allocationBlocks->filter(cs::AbstractActor)->size() = 0)" containerMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>

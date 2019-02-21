@@ -155,6 +155,14 @@ public class ToolProviderHelper {
       return IToolNameConstants.TOOL_LAB_RECONNECT_CONNECTION_SOURCE;
     } else if (DDiagramHelper.isPAB(diagram_p)) {
       return IToolNameConstants.TOOL_PAB_RECONNECT_COMPONENTEXCHANGE_SOURCE;
+    } else if (DDiagramHelper.isOAIB(diagram_p)) {
+      return IToolNameConstants.TOOL_OAIB_RECONNECT_EXCHANGES;
+    } else if (DDiagramHelper.isSDFB(diagram_p)) {
+      return IToolNameConstants.TOOL_SDFB_RECONNECT_EXCHANGES;
+    } else if (DDiagramHelper.isLDFB(diagram_p)) {
+      return IToolNameConstants.TOOL_LDFB_RECONNECT_EXCHANGE;
+    } else if (DDiagramHelper.isPDFB(diagram_p)) {
+      return IToolNameConstants.TOOL_PDFB_RECONNECT_EXCHANGE;
     }
     return null;
   }
@@ -173,6 +181,14 @@ public class ToolProviderHelper {
       return IToolNameConstants.TOOL_LAB_RECONNECT_CONNECTION_TARGET;
     } else if (DDiagramHelper.isPAB(diagram_p)) {
       return IToolNameConstants.TOOL_PAB_RECONNECT_COMPONENTEXCHANGE_TARGET;
+    } else if (DDiagramHelper.isOAIB(diagram_p)) {
+      return IToolNameConstants.TOOL_OAIB_RECONNECT_EXCHANGES;
+    } else if (DDiagramHelper.isSDFB(diagram_p)) {
+      return IToolNameConstants.TOOL_SDFB_RECONNECT_EXCHANGES;
+    } else if (DDiagramHelper.isLDFB(diagram_p)) {
+      return IToolNameConstants.TOOL_LDFB_RECONNECT_EXCHANGE;
+    } else if (DDiagramHelper.isPDFB(diagram_p)) {
+      return IToolNameConstants.TOOL_PDFB_RECONNECT_EXCHANGE;
     }
     return null;
   }

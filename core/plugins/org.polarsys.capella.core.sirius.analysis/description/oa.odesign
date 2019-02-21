@@ -381,36 +381,6 @@
             <backgroundColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Orange_min']"/>
             <foregroundColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Orange']"/>
           </style>
-          <conditionnalStyles predicateExpression="service:isDuplicateFunction()">
-            <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql:view.computeFunctionLabel()" sizeComputationExpression="5" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionKind_Duplicate.png">
-              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            </style>
-          </conditionnalStyles>
-          <conditionnalStyles predicateExpression="service:isGatherFunction()">
-            <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql:view.computeFunctionLabel()" sizeComputationExpression="5" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionKind_Gather.png">
-              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            </style>
-          </conditionnalStyles>
-          <conditionnalStyles predicateExpression="service:isRouteFunction()">
-            <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql:view.computeFunctionLabel()" sizeComputationExpression="5" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionKind_Route.png">
-              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            </style>
-          </conditionnalStyles>
-          <conditionnalStyles predicateExpression="service:isSelectFunction()">
-            <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql:view.computeFunctionLabel()" sizeComputationExpression="5" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionKind_Select.png">
-              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            </style>
-          </conditionnalStyles>
-          <conditionnalStyles predicateExpression="service:isSplitFunction()">
-            <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql:view.computeFunctionLabel()" sizeComputationExpression="5" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/FunctionKind_Split.png">
-              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            </style>
-          </conditionnalStyles>
         </containerMappings>
         <reusedMappings xsi:type="description_2:NodeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']"/>
         <reusedMappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_ContrainedElements']"/>
@@ -419,7 +389,7 @@
         <reusedMappings xsi:type="description_2:ContainerMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_PVG']"/>
         <reusedMappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_PVGconnector']"/>
         <toolSections name="Activities">
-          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Creates a new Operational Activity " name="Operational Activity" precondition="aql:containerView.isValidCreationDFFunction()" containerMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']/@defaultLayer/@containerMappings[name='OAIB%20Operational%20Activity']">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Creates a new Operational Activity " name="Function" label="Operational Activity" precondition="aql:containerView.isValidCreationDFFunction()" containerMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']/@defaultLayer/@containerMappings[name='OAIB%20Operational%20Activity']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -436,7 +406,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Creates a new Interaction between the source and target Operational Activities" name="Interaction" precondition="aql:self.isValidCreationFunctionalExchange(preSource,preTarget)" edgeMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']/@defaultLayer/@edgeMappings[name='OAIB%20Interaction']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionalExchange_OA.gif" connectionStartPrecondition="aql:self.isValidCreationFunctionalExchange(preSource)">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Creates a new Interaction between the source and target Operational Activities" name="Functional Exchange" label="Interaction" precondition="aql:self.isValidCreationFunctionalExchange(preSource,preTarget)" edgeMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']/@defaultLayer/@edgeMappings[name='OAIB%20Interaction']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionalExchange_OA.gif" connectionStartPrecondition="aql:self.isValidCreationFunctionalExchange(preSource)">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -445,7 +415,7 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:source.createDFFunctionalExchange(sourceView,targetView)"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ToolDescription" documentation="Insert/Remove Operational Activities. Create or delete graphical objects corresponding to already existing Operational Activities. Removing an Operational Activity graphical object from the diagram does not delete the Operational Activity from the model. This tool does not modify the semantic model." name="Show/Hide Operational Activity" label="Operational Activities" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+          <ownedTools xsi:type="tool:ToolDescription" documentation="Insert/Remove Operational Activities. Create or delete graphical objects corresponding to already existing Operational Activities. Removing an Operational Activity graphical object from the diagram does not delete the Operational Activity from the model. This tool does not modify the semantic model." name="Show/Hide Functions" label="Operational Activities" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <element name="element"/>
             <elementView name="elementView">
               <subVariables xsi:type="tool:AcceleoVariable" name="visibleFunctions" computationExpression="aql:self.void2Null(elementView.getDisplayedAbstractFunctions()->select(getDisplayedAbstractFunction | getDisplayedAbstractFunction.allocationBlocks->filter(cs::AbstractActor)->size() = 0))"/>
@@ -472,7 +442,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ToolDescription" documentation="Insert/Remove Interactions. Create or delete graphical objects corresponding to already existing Interactions and the corresponding source/target Operational Activities if they are not present on the diagram yet. Removing an Interaction graphical object from the diagram does not delete the Interaction from the model. This tool does not modify the semantic model." name="Show/Hide Interaction" label="Interactions" precondition="aql:(elementView.target->filter(fa::AbstractFunction)->size() > 0) and (elementView->filter(diagram::DDiagram)->size() = 0)" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+          <ownedTools xsi:type="tool:ToolDescription" documentation="Insert/Remove Interactions. Create or delete graphical objects corresponding to already existing Interactions and the corresponding source/target Operational Activities if they are not present on the diagram yet. Removing an Interaction graphical object from the diagram does not delete the Interaction from the model. This tool does not modify the semantic model." name="Functional Exchanges" label="Interactions" precondition="aql:(elementView.target->filter(fa::AbstractFunction)->size() > 0) and (elementView->filter(diagram::DDiagram)->size() = 0)" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <element name="element"/>
             <elementView name="elementView">
               <subVariables xsi:type="tool:AcceleoVariable" name="displayedExchanges" computationExpression="aql:self.void2Null(elementView.getDisplayedFunctionalExchanges())"/>
@@ -494,7 +464,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Insert/Remove Operational Processes. Create or delete graphical objects corresponding to already existing Operational Processes. Removing an Operational Process graphical object from the diagram does not delete the Operational Process from the model. This tool does not modify the semantic model." name="Operational Processes" label="Operational Processes" nodeMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']/@defaultLayer/@nodeMappings[name='OAIB_OperationalProcessEnd']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Insert/Remove Operational Processes. Create or delete graphical objects corresponding to already existing Operational Processes. Removing an Operational Process graphical object from the diagram does not delete the Operational Process from the model. This tool does not modify the semantic model." name="Show/Hide Functional Chains" label="Operational Process" nodeMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Activity%20Interaction%20Blank']/@defaultLayer/@nodeMappings[name='OAIB_OperationalProcessEnd']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <variable name="container"/>
             <viewVariable name="containerView">
               <subVariables xsi:type="tool:AcceleoVariable" name="ownedElements" computationExpression="aql:containerView.getSetOfDiagramElements()"/>
