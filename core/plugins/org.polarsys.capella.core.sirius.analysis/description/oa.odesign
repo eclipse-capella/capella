@@ -5076,7 +5076,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Creates a new Involvement Link referencing a Interaction or a Operational Activity." name="Interaction" precondition="aql:self.isValidFCILink(preSource, preSourceView, preTarget, preTargetView)" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionalChainInvolvementLinkOA_ToExchange.gif">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Creates a new Involvement Link referencing a Interaction or a Operational Activity." name="Link" precondition="aql:self.isValidFCILink(preSource, preSourceView, preTarget, preTargetView)" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionalChainInvolvementLinkOA_ToExchange.gif">
             <edgeMappings href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@edgeMappings[name='FC_Exchange']"/>
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
