@@ -28,6 +28,7 @@ import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.core.sirius.analysis.DDiagramContents;
 import org.polarsys.capella.core.sirius.analysis.FaServices;
 import org.polarsys.capella.core.sirius.analysis.FunctionalChainServices;
+import org.polarsys.capella.core.sirius.analysis.cache.FunctionalChainCache;
 
 /**
  *
@@ -39,6 +40,8 @@ public class DataFlowBlankRefreshExtension extends AbstractRefreshExtension impl
    */
   public void beforeRefresh(DDiagram diagram) {
 
+    FunctionalChainCache.getInstance().reset();
+    
     // -------------------------------------
     // Show in diagram related contextual elements
     // -------------------------------------
@@ -85,12 +88,13 @@ public class DataFlowBlankRefreshExtension extends AbstractRefreshExtension impl
    */
   public void postRefresh(DDiagram diagram) {
     try {
-      FunctionalChainServices.getFunctionalChainServices().updateInternalFunctionalChains(diagram);
       FunctionalChainServices.getFunctionalChainServices().updateFunctionalChainStyles(diagram);
     } catch (Exception e) {
       Logger.getLogger(IReportManagerDefaultComponents.DIAGRAM).error(Messages.RefreshExtension_ErrorOnUpdateFunctionalChainStyle, e);
     }
 
+    FunctionalChainCache.getInstance().reset();
+    
   }
 
   protected void updateFunctionalExchangeCategories(DDiagramContents diagramContents) {

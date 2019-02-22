@@ -13,6 +13,7 @@ package org.polarsys.capella.test.diagram.tools.ju.testsuites.partial;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.polarsys.capella.test.diagram.tools.ju.xdfb.CompositeChainDisplay;
 import org.polarsys.capella.test.diagram.tools.ju.xdfb.CreateFunctionalChain;
 import org.polarsys.capella.test.diagram.tools.ju.xdfb.OAIBShowHideOA;
 import org.polarsys.capella.test.diagram.tools.ju.xdfb.XDFBShowHideFunctionalExchange;
@@ -41,6 +42,7 @@ public class XDFBDiagramToolsTestSuite extends BasicTestSuite {
     tests.add(new XDFBShowHideFunctionalExchange());
     tests.add(new CreateFunctionalChain());
     tests.add(new OAIBShowHideOA());
+    tests.add(new CompositeChainDisplay());
     return tests;
   }
 }
