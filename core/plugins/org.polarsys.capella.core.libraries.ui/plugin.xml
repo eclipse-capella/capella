@@ -226,7 +226,8 @@
            class="org.polarsys.capella.core.libraries.ui.move.SendToTransferViewHandler"
            commandId="org.polarsys.capella.core.libraries.ui.sendToTransferView">
         <activeWhen>
-           <iterate>
+           <iterate
+                 ifEmpty="false">
               <adapt
                     type="org.eclipse.emf.ecore.EObject">
               </adapt>
