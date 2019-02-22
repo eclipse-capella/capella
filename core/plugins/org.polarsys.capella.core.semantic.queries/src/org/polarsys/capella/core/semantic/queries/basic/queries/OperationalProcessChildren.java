@@ -15,21 +15,17 @@ import org.polarsys.capella.core.data.fa.FunctionalChain;
 import org.polarsys.capella.core.data.oa.OperationalProcess;
 
 /**
- * Return involved operational activities of the current operational process
- * 
- *
+ * return chains involved in operational process
  */
-public class OperationalProcessInvolvedOperationalActivities extends FunctionalChainInvolvementFunctions {
+public class OperationalProcessChildren extends FunctionalChainChildren {
 
-  /**
-   * 
-   */
-  public OperationalProcessInvolvedOperationalActivities() {
-    // do nothing
+  public OperationalProcessChildren() {
+    // Does nothing
   }
 
   @Override
-  protected boolean isValidInstanceOf(FunctionalChain functionalChain) {
-    return (functionalChain instanceof OperationalProcess);
+  public boolean isValidInstanceOf(FunctionalChain functionalChain) {
+    return functionalChain instanceof OperationalProcess;
   }
+
 }

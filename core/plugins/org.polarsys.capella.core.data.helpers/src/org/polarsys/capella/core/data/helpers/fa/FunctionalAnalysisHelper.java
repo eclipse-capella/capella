@@ -43,7 +43,10 @@ import org.polarsys.capella.core.data.fa.FunctionalChainReference;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.data.fa.FunctionalExchangeRealization;
 import org.polarsys.capella.core.data.fa.FunctionalExchangeSpecification;
+import org.polarsys.capella.core.data.fa.SequenceLink;
+import org.polarsys.capella.core.data.fa.SequenceLinkEnd;
 import org.polarsys.capella.core.data.helpers.capellacore.delegates.AllocationHelper;
+import org.polarsys.capella.core.data.helpers.capellacore.delegates.CapellaElementHelper;
 import org.polarsys.capella.core.data.helpers.capellacore.delegates.NamedElementHelper;
 import org.polarsys.capella.core.data.helpers.capellacore.delegates.RelationshipHelper;
 import org.polarsys.capella.core.data.helpers.fa.delegates.AbstractFunctionHelper;
@@ -156,6 +159,12 @@ public class FunctionalAnalysisHelper implements IHelper {
     }
     else if (object instanceof ComponentExchangeAllocation) {
       ret = ComponentExchangeAllocationHelper.getInstance().doSwitch((ComponentExchangeAllocation) object, feature);
+    }
+    else if (object instanceof SequenceLink) {
+      ret = CapellaElementHelper.getInstance().doSwitch((SequenceLink) object, feature);
+    }
+    else if (object instanceof SequenceLinkEnd) {
+      ret = CapellaElementHelper.getInstance().doSwitch((SequenceLinkEnd) object, feature);
     }
 
 		if (null != ret || feature.getUpperBound() == 1)
