@@ -39,8 +39,6 @@ public class FunctionalChainInvolvementLinkSection extends CapellaElementSection
 
   protected ConstraintReferenceGroup exchangeContext;
   private MultipleSemanticField exchangedItemsField;
-  private SimpleSemanticField sourceField;
-  private SimpleSemanticField targetField;
 
   /**
    * {@inheritDoc}
@@ -70,18 +68,6 @@ public class FunctionalChainInvolvementLinkSection extends CapellaElementSection
         });
     exchangedItemsField.setDisplayedInWizard(displayedInWizard);
 
-    sourceField = new SimpleSemanticField(getReferencesGroup(),
-        Messages.FunctionalChainInvolvementLinkSection_Source_Label, getWidgetFactory(),
-        new SimpleSemanticFieldController());
-    sourceField.setDisplayedInWizard(displayedInWizard);
-    sourceField.setEnabled(false);
-
-    targetField = new SimpleSemanticField(getReferencesGroup(),
-        Messages.FunctionalChainInvolvementLinkSection_Target_Label, getWidgetFactory(),
-        new SimpleSemanticFieldController());
-    targetField.setDisplayedInWizard(displayedInWizard);
-    targetField.setEnabled(false);
-
   }
 
   /**
@@ -101,8 +87,6 @@ public class FunctionalChainInvolvementLinkSection extends CapellaElementSection
       exchangedItemsField.setEnabled(false);
     }
 
-    sourceField.loadData(capellaElement, FaPackage.eINSTANCE.getFunctionalChainInvolvementLink_Source());
-    targetField.loadData(capellaElement, FaPackage.eINSTANCE.getFunctionalChainInvolvementLink_Target());
   }
 
   /**
@@ -125,8 +109,6 @@ public class FunctionalChainInvolvementLinkSection extends CapellaElementSection
     fields.addAll(super.getSemanticFields());
     fields.addAll(exchangeContext.getFields());
     fields.add(exchangedItemsField);
-    fields.add(sourceField);
-    fields.add(targetField);
 
     return fields;
   }
