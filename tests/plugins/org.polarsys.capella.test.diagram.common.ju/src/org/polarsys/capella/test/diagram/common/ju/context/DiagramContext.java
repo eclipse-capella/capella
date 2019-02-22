@@ -113,6 +113,7 @@ public class DiagramContext extends SessionContext {
     if (getDiagramId().equals(semanticIdentifier)) {
       return (DSemanticDiagram) _diagram;
     }
+    
     DSemanticDecorator view = null;
     // Try to retrieve a view previously created by a tool
     if (getViewObjectMap().containsKey(semanticIdentifier)) {

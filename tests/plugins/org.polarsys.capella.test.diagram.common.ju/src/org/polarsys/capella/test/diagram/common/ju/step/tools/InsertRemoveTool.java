@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,16 +10,27 @@
  *******************************************************************************/
 package org.polarsys.capella.test.diagram.common.ju.step.tools;
 
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
+import org.apache.commons.lang.ArrayUtils;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.polarsys.capella.common.helpers.EObjectExt;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.data.cs.Part;
+import org.polarsys.capella.core.data.interaction.StateFragment;
 import org.polarsys.capella.core.sirius.analysis.actions.extensions.AbstractExternalJavaAction;
 import org.polarsys.capella.test.diagram.common.ju.context.DiagramContext;
 import org.polarsys.capella.test.diagram.common.ju.headless.HeadlessResultOpProvider;
@@ -42,6 +53,10 @@ public class InsertRemoveTool extends AbstractToolStep {
   protected String[] toRemove;
   protected String[] insertedElements;
   protected String[] removedElements;
+  protected EReference[] insertedReferencedElementsFeatures;
+  protected EReference[] removedReferencedElementsFeatures;
+  protected EReference[] insertedReferencingElementsFeatures;
+  protected EReference[] removedReferencingElementsFeatures;
 
   public InsertRemoveTool(DiagramContext context, String toolName) {
     this(context, toolName, context.getDiagramId());
@@ -199,6 +214,8 @@ public class InsertRemoveTool extends AbstractToolStep {
     if (autoRefresh)
       DiagramHelper.refreshDiagram(getExecutionContext().getDiagram());
 
+    checkPostconditions();
+    
     for (String identifier : insertedElements) {
       getExecutionContext().hasView(identifier);
     }
@@ -207,6 +224,80 @@ public class InsertRemoveTool extends AbstractToolStep {
     }
   }
 
+  protected void checkPostconditions() {
+    initializeFeatures();
+    
+    if (insertedElements.length > 0) {
+      if (insertedReferencedElementsFeatures != null) {
+        insertedElements = applyReferencedFeatures(insertedReferencedElementsFeatures, insertedElements);
+      } else if (insertedReferencingElementsFeatures != null) {
+        insertedElements = applyReferencingFeatures(insertedReferencingElementsFeatures, insertedElements);
+      }
+    }
+
+    if (removedElements.length > 0) {
+      if (removedReferencedElementsFeatures != null) {
+        removedElements = applyReferencedFeatures(removedReferencedElementsFeatures, removedElements);
+      } else if (removedReferencingElementsFeatures != null) {
+        removedElements = applyReferencingFeatures(removedReferencingElementsFeatures, removedElements);
+      }
+    }
+  }
+
+  protected String[] applyReferencedFeatures(EReference[] features, String... elements) {
+    // apply feature in chain: (obj.eGet(feature1)).eGet(feature2)
+    for (EReference feature : features) {
+      elements = getReferencedElements(feature, elements);
+    }
+    return elements;
+  }
+  
+  protected String[] applyReferencingFeatures(EReference[] features, String... elements) {
+    // apply feature in chain: (obj.eGet(feature1)).eGet(feature2)
+    for (EReference feature : features) {
+      elements = getReferencingElements(feature, elements);
+    }
+    return elements;
+  }
+
+  @SuppressWarnings("unchecked")
+  protected String[] getReferencedElements(EReference feature, String... elements) {
+    Collection<CapellaElement> objs = new HashSet<CapellaElement>();
+    for (String element : elements) {
+      EObject obj = getExecutionContext().getSemanticElement(element);
+      Object object = obj.eGet(feature);
+      if (object instanceof EList) {
+        objs.addAll((EList<CapellaElement>) object);
+      } else if (object instanceof CapellaElement) {
+        objs.add(((CapellaElement) object));
+      }
+    }
+    return filterResults(objs);
+  }
+  
+  @SuppressWarnings("unchecked")
+  protected String[] getReferencingElements(EReference feature, String... elements) {
+    Collection<CapellaElement> objs = new HashSet<CapellaElement>();
+    for (String element : elements) {
+      objs.addAll((Collection<? extends CapellaElement>) EObjectExt
+          .getReferencers(getExecutionContext().getSemanticElement(element), feature).stream()
+          .collect(Collectors.toList()));
+    }
+    return filterResults(objs);
+  }
+  
+  protected String[] filterResults(Collection<CapellaElement> objs) {
+    DRepresentationDescriptor cRDescriptor = getExecutionContext().getDiagramDescriptor();
+    String[] results = objs.stream()
+        .filter(x -> x.eContainer() == cRDescriptor.getTarget())
+        .map(x -> x.getId()).toArray(size -> new String[size]);
+    
+    assertTrue(results.length > 0);
+    return results;
+  }
+
+  protected void initializeFeatures() { }
+  
   @Override
   public Object getResult() {
     return null;

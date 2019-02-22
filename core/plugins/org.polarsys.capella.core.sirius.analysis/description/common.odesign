@@ -18051,7 +18051,7 @@
         </containerMappings>
         <toolSections name="tools section" label="Scenarios Elements" reusedTools="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='ExchangeContext']">
           <ownedTools xsi:type="tool:ToolGroup" name="FunctionCreation">
-            <tools xsi:type="tool_2:InstanceRoleCreationTool" documentation=" Creates a new lifeline representing a System Function." name="System Function" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20FS']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/SystemFunction.gif">
+            <tools xsi:type="tool_2:InstanceRoleCreationTool" documentation=" Creates a new lifeline representing a System Function." name="Function" label="System Function" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20FS']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/SystemFunction.gif">
               <filters precondition="aql:self.target.eContainerOrSelf(ctx::SystemAnalysis)->size() = 0" elementsToListen="aql:self.target.eContainerOrSelf(interaction::Scenario)">
                 <listeners domainClass="interaction.Scenario" featureName="ownedAbstractEnds"/>
               </filters>
@@ -18076,7 +18076,7 @@
               </initialOperation>
               <predecessor name="predecessor"/>
             </tools>
-            <tools xsi:type="tool_2:InstanceRoleCreationTool" documentation=" Creates a new lifeline representing a System Function." name="Logical Function" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20FS']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/LogicalFunction.gif">
+            <tools xsi:type="tool_2:InstanceRoleCreationTool" documentation=" Creates a new lifeline representing a System Function." name="Function" label="Logical Function" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20FS']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/LogicalFunction.gif">
               <filters precondition="aql:self.target.eContainerOrSelf(la::LogicalArchitecture)->size() = 0" elementsToListen="aql:self.target.eContainerOrSelf(interaction::Scenario)">
                 <listeners domainClass="interaction.Scenario" featureName="ownedAbstractEnds"/>
               </filters>
@@ -18101,7 +18101,7 @@
               </initialOperation>
               <predecessor name="predecessor"/>
             </tools>
-            <tools xsi:type="tool_2:InstanceRoleCreationTool" documentation=" Creates a new lifeline representing a System Function." name="Physical Function" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20FS']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/PhysicalFunction.gif">
+            <tools xsi:type="tool_2:InstanceRoleCreationTool" documentation=" Creates a new lifeline representing a System Function." name="Function" label="Physical Function" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20FS']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/PhysicalFunction.gif">
               <filters precondition="aql:self.target.eContainerOrSelf(pa::PhysicalArchitecture)->size() = 0" elementsToListen="aql:self.target.eContainerOrSelf(interaction::Scenario)">
                 <listeners domainClass="interaction.Scenario" featureName="ownedAbstractEnds"/>
               </filters>
@@ -18237,7 +18237,7 @@
               <predecessor name="predecessor"/>
             </tools>
           </ownedTools>
-          <ownedTools xsi:type="tool_2:InstanceRoleCreationTool" documentation="Insert/Remove Functions. Creates or delete semantic Lifelines representing existing Functions. Removing a Lifeline from a scenario deletes incoming and outgoing sequence messages, but does not delete from model the represented Functions and related Functional Exchanges." name="Functions" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20FS']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+          <ownedTools xsi:type="tool_2:InstanceRoleCreationTool" documentation="Insert/Remove Functions. Creates or delete semantic Lifelines representing existing Functions. Removing a Lifeline from a scenario deletes incoming and outgoing sequence messages, but does not delete from model the represented Functions and related Functional Exchanges." name="Show/Hide Functions" label="Functions" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20FS']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>

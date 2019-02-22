@@ -21,6 +21,7 @@ public class CreateNodeTool extends CreateAbstractDNodeTool<DNode> {
     super(context, toolName, containerView, DNode.class);
   }
 
+  @Deprecated
   public CreateNodeTool(DiagramContext context, String toolName, String containerView, String newIdentifier) {
     super(context, toolName, containerView, newIdentifier, DNode.class);
   }

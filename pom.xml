@@ -37,7 +37,7 @@
 		<!-- for junit -->
 		<capella-product-id>org.polarsys.capella.rcp.product</capella-product-id>
 		<capella-application-id>org.polarsys.capella.core.platform.sirius.ui.perspective.id</capella-application-id>
-		<tycho.testArgLine>-Xms256m -Xmx2048m ${os-jvm-flags}</tycho.testArgLine>
+		<tycho.testArgLine>-Xms256m -Xmx3072m ${os-jvm-flags}</tycho.testArgLine>
 		<tests.ignoreFailures>true</tests.ignoreFailures>
 		<os-jvm-flags />
 

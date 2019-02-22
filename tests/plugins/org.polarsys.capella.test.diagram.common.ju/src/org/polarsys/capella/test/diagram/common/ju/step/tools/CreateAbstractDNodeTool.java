@@ -17,6 +17,7 @@ import java.util.Collection;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.test.diagram.common.ju.context.DiagramContext;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.ArgumentType;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.DiagramHelper;
@@ -29,6 +30,7 @@ public class CreateAbstractDNodeTool<T extends AbstractDNode> extends AbstractTo
   protected String targetContainerView;
   protected String containerView;
   protected Class<T> expectedDiagramElementType;
+  protected Class<?extends CapellaElement> expectedTargetType;
 
   protected Collection<DDiagramElement> elements;
   protected Collection<DDiagramElement> newElements;
@@ -36,13 +38,19 @@ public class CreateAbstractDNodeTool<T extends AbstractDNode> extends AbstractTo
   public CreateAbstractDNodeTool(DiagramContext context, String toolName, String containerView) {
     this(context, toolName, containerView, (Class<T>) null);
   }
-
+  
   public CreateAbstractDNodeTool(DiagramContext context, String toolName, String containerView,
       Class<T> expectedNodeType) {
     super(context, toolName);
     this.targetContainerView = containerView;
     this.containerView = containerView;
     this.expectedDiagramElementType = expectedNodeType;
+  }
+  
+  public CreateAbstractDNodeTool(DiagramContext context, String toolName, String containerView,
+      Class<T> expectedNodeType, Class<?extends CapellaElement> targetType) {
+    this(context, toolName, containerView, expectedNodeType);
+    this.expectedTargetType = targetType;
   }
 
   public CreateAbstractDNodeTool(DiagramContext context, String toolName, String containerView, String newIdentifier,
@@ -56,6 +64,12 @@ public class CreateAbstractDNodeTool<T extends AbstractDNode> extends AbstractTo
     this(context, toolName, targetContainerView, expectedNodeType);
     this.newIdentifier = newIdentifier;
     this.containerView = containerView;
+  }
+  
+  public CreateAbstractDNodeTool(DiagramContext context, String toolName, String targetContainerView, String containerView,
+      String newIdentifier, Class<T> expectedNodeType, Class<?extends CapellaElement> targetType) {
+    this(context, toolName, targetContainerView, newIdentifier, expectedNodeType);
+    this.expectedTargetType = targetType;
   }
   
   public CreateAbstractDNodeTool(DiagramContext context, String toolName, String containerView, String newIdentifier) {
@@ -106,21 +120,23 @@ public class CreateAbstractDNodeTool<T extends AbstractDNode> extends AbstractTo
   protected int expectedNewElements() {
     return 1;
   }
-
+  
   @Override
   protected void postRunTest() {
     super.postRunTest();
     DSemanticDecorator element = getContainerView();
     newElements = DiagramHelper.getOwnedElements(element);
     newElements.removeAll(elements);
-
+    
     if (newElements.size() != expectedNewElements()) {
       assertFalse(true);
     }
     if ((expectedDiagramElementType != null) && !(expectedDiagramElementType.isInstance(newElements.iterator().next()))) {
       assertFalse(true);
     }
-
+    if ((expectedTargetType != null) && !(expectedTargetType.isInstance(newElements.iterator().next().getTarget()))) {
+      assertFalse(true);
+    }
   }
 
   @Override

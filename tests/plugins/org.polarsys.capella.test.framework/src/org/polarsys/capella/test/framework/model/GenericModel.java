@@ -154,8 +154,15 @@ public class GenericModel {
 
   public static String FUNCTIONAL_EXCHANGE_1 = "Functional Exchange 1";
   public static String FUNCTIONAL_EXCHANGE_2 = "Functional Exchange 2";
-
+  public static String FUNCTIONAL_EXCHANGE_3 = "Functional Exchange 3";
+  public static String FUNCTIONAL_EXCHANGE_4 = "Functional Exchange 4";
+  public static String FUNCTIONAL_EXCHANGE_5 = "Functional Exchange 5";
+  public static String FUNCTIONAL_EXCHANGE_6 = "Functional Exchange 6";
+  
   public static String EXCHANGE_CATEGORY_1 = "Exchange Category 1";
+  
+  public static String EXCHANGE_ITEM_ALLOCATION_1 = "Exchange Item Allocation 1";
+  public static String EXCHANGE_ITEM_ALLOCATION_2 = "Exchange Item Allocation 2";
 
   public static String COMPONENT_PORT_1 = "COMPONENT_PORT_1";
   public static String COMPONENT_PORT_2 = "COMPONENT_PORT_2";

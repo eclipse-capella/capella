@@ -14,7 +14,6 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.sirius.analysis.constants.IToolNameConstants;
-import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateNodeTool;
 import org.polarsys.capella.test.framework.context.SessionContext;
 
 public class PA_ESDiagram extends ESDiagram {
@@ -22,13 +21,13 @@ public class PA_ESDiagram extends ESDiagram {
     super(type, context, diagram);
   }
   
-  public void createComponent(String id, PhysicalComponentNature compNature) {
-    String name = null;
+  public String createComponent(PhysicalComponentNature compNature) {
+    String tool = null;
     if (compNature == PhysicalComponentNature.BEHAVIOR) {
-      name = IToolNameConstants.TOOL_ES_CREATE_BEHAVIOR_PC;
+      tool = IToolNameConstants.TOOL_CREATE_BEHAVIOR_COMPONENT;
     } else if (compNature == PhysicalComponentNature.NODE) {
-      name = IToolNameConstants.TOOL_ES_CREATE_NODE_PC;
+      tool = IToolNameConstants.TOOL_CREATE_NODE_COMPONENT;
     }
-    new CreateNodeTool(this, name, getDiagramId(), id).run();
+    return createNodeElement(getDiagramId(), tool);
   }
 }

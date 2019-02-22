@@ -16,7 +16,6 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.sirius.business.api.session.Session;
@@ -135,5 +134,4 @@ public class SessionContext {
     // Let's perform the job
     getExecutionManager().execute(cmd);
   }
-  
 }

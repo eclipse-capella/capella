@@ -10,41 +10,27 @@
  *******************************************************************************/
 package org.polarsys.capella.test.diagram.common.ju.context;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Map;
-
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
-import org.polarsys.capella.core.data.interaction.InstanceRole;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt.Type;
 import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
 import org.polarsys.capella.core.sirius.analysis.constants.IToolNameConstants;
+import org.polarsys.capella.test.diagram.common.ju.context.SequenceDiagram.InsertRemoveInstanceRoleTool;
 import org.polarsys.capella.test.diagram.common.ju.step.crud.CreateDiagramStep;
 import org.polarsys.capella.test.diagram.common.ju.step.crud.OpenDiagramStep;
-import org.polarsys.capella.test.diagram.common.ju.step.tools.AbstractToolStep;
-import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateNodeTool;
-import org.polarsys.capella.test.diagram.common.ju.step.tools.InsertRemoveTool;
+import org.polarsys.capella.test.diagram.common.ju.step.tools.sequence.LostFoundMessageCreationTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.sequence.MessageCreationTool;
-import org.polarsys.capella.test.diagram.common.ju.step.tools.sequence.TimerCreationTool;
 import org.polarsys.capella.test.framework.context.SessionContext;
 
-public class ESDiagram extends DiagramContext {
-
-  BlockArchitectureExt.Type type = null;
-
+public class ESDiagram extends SequenceDiagram {
   public ESDiagram(BlockArchitectureExt.Type type, SessionContext context, DDiagram diagram) {
-    super(context, diagram);
-    this.type = type;
+    super(type, context, diagram);
   }
 
   public static ESDiagram createDiagram(SessionContext executionContext, String targetIdentifier) {
-    BlockArchitecture architecture = BlockArchitectureExt.getRootBlockArchitecture(executionContext
-        .getSemanticElement(targetIdentifier));
+    BlockArchitecture architecture = BlockArchitectureExt
+        .getRootBlockArchitecture(executionContext.getSemanticElement(targetIdentifier));
     final BlockArchitectureExt.Type type = BlockArchitectureExt.getBlockArchitectureType(architecture);
 
     String name = null;
@@ -54,6 +40,13 @@ public class ESDiagram extends DiagramContext {
       name = IDiagramNameConstants.DATA_FLOW_SCENARIO_DIAGRAM_NAME;
     }
 
+    if (type == Type.OA)
+      return (OA_ESDiagram) new CreateDiagramStep(executionContext, targetIdentifier, name) {
+        @Override
+        public DiagramContext getResult() {
+          return new OA_ESDiagram(type, getExecutionContext(), diagram);
+        }
+      }.run().open();
     if (type == Type.SA)
       return (SA_ESDiagram) new CreateDiagramStep(executionContext, targetIdentifier, name) {
         @Override
@@ -77,7 +70,8 @@ public class ESDiagram extends DiagramContext {
     }.run().open();
   }
 
-  public static ESDiagram openDiagram(SessionContext executionContext, String name, final BlockArchitectureExt.Type type) {
+  public static ESDiagram openDiagram(SessionContext executionContext, String name,
+      final BlockArchitectureExt.Type type) {
     return (ESDiagram) new OpenDiagramStep(executionContext, name) {
       @Override
       public DiagramContext getResult() {
@@ -86,135 +80,47 @@ public class ESDiagram extends DiagramContext {
     }.run().open();
   }
 
-  public void createActor(String id) {
-    String name = null;
-    if (type == Type.OA) {
-      name = IToolNameConstants.TOOL_OES_CREATE_OA;
-    } else {
-      name = IToolNameConstants.TOOL_ES_CREATE_ACTOR;
-    }
-    new CreateNodeTool(this, name, getDiagramId(), id).run();
+  public String createComponent() {
+    return createComponent(getDiagramId());
   }
 
-  public void insertActor(String id) {
-    String name = null;
-    if (type == Type.OA) {
-      name = IToolNameConstants.TOOL_OES_INSERT_REMOVE_OPERATIONAL_ENTITIES_ROLES;
-    } else {
-      name = IToolNameConstants.TOOL_ES_INSERT_ACTOR;
-    }
-    new InsertRemoveTool(this, name).insert(id);
-  }
-  
-  public void removeActor(String id) {
-    String name = null;
-    if (type == Type.OA) {
-      name = IToolNameConstants.TOOL_OES_INSERT_REMOVE_OPERATIONAL_ENTITIES_ROLES;
-    } else {
-      name = IToolNameConstants.TOOL_ES_INSERT_ACTOR;
-    }
-    new InsertRemoveTool(this, name).remove(id);
+  public String insertComponent(String id) {
+    InsertRemoveInstanceRoleTool tool = new InsertRemoveInstanceRoleTool(this,
+        IToolNameConstants.TOOL_INSERT_REMOVE_COMPONENTS);
+    tool.insert(id);
+    return id;
   }
 
-  public void createComponent(String id) {
-    String name = null;
-    if (type == Type.OA) {
-      name = IToolNameConstants.TOOL_OES_CREATE_OE;
-    } else {
-      name = IToolNameConstants.TOOL_ES_CREATE_COMPONENT;
-    }
-    new CreateNodeTool(this, name, getDiagramId(), id).run();
+  public String removeComponent(String id) {
+    InsertRemoveInstanceRoleTool tool = new InsertRemoveInstanceRoleTool(this,
+        IToolNameConstants.TOOL_INSERT_REMOVE_COMPONENTS);
+    tool.remove(id);
+    return id;
   }
 
-  public void insertComponent(String id) {
-    String name = null;
-    if (type == Type.OA) {
-      name = IToolNameConstants.TOOL_OES_INSERT_REMOVE_OPERATIONAL_ENTITIES_ROLES;
-    } else {
-      name = IToolNameConstants.TOOL_ES_INSERT_REMOVE_COMPONENTS;
-    }
-    new InsertRemoveTool(this, name).insert(id);
+  public String createComponent(String containerId) {
+    return createNodeElement(containerId, IToolNameConstants.TOOL_CREATE_COMPONENT);
   }
-  
-  public void removeComponent(String id) {
-    String name = null;
-    if (type == Type.OA) {
-      name = IToolNameConstants.TOOL_OES_INSERT_REMOVE_OPERATIONAL_ENTITIES_ROLES;
-    } else {
-      name = IToolNameConstants.TOOL_ES_INSERT_REMOVE_COMPONENTS;
-    }
-    new InsertRemoveTool(this, name).remove(id);
-  }
-  
+
   public void createComponentExchange(String componentExchange, String source, String target) {
-    String name = IToolNameConstants.TOOL_ES_CREATE_COMPONENT_EXCHANGE;
-    new MessageCreationTool(this, name, componentExchange, source, target).run();
+    new MessageCreationTool(this, IToolNameConstants.TOOL_CREATE_COMPONENT_EXCHANGE, componentExchange, source, target)
+        .run();
   }
-  
-  public void createFunctionalExchange(String functionalExchange, String source, String target) {
-    String name = IToolNameConstants.TOOL_ES_CREATE_FUNCTIONAL_EXCHANGE;
-    new MessageCreationTool(this, name, functionalExchange, source, target).run();
+
+  public void createComponentExchangeWithReturnBranch(String componentExchange, String source, String target) {
+    new MessageCreationTool(this, IToolNameConstants.TOOL_CREATE_COMPONENT_EXCHANGE_WITH_RETURN_BRANCH,
+        componentExchange, source, target, true).run();
   }
-  
-  public void createArmTimer(String source, String target){
-	 String name = IToolNameConstants.TOOL_ES_CREATE_ARM_TIMER;
-	 new TimerCreationTool(this, name, source, target).run();
+
+  // creates a sequence message that has only receiving end
+  public void createFoundFunctionalExchange(String functionalExchange, String target) {
+    String name = IToolNameConstants.TOOL_CREATE_FOUND_FUNCTIONAL_EXCHANGE;
+    new LostFoundMessageCreationTool(this, name, target, functionalExchange, null, target).run();
   }
-  
-  public void cancelArmTimer(String source, String target){
-    String name = IToolNameConstants.TOOL_ES_CREATE_CANCEL_TIMER;
-    new TimerCreationTool(this, name, source, target).run();
-   }
-  
-  @Override
-  //Override this method to switch between InstanceRole (appear in the diagram) and Part (appear in the Transfer wizard)
-  public Collection<EObject> adaptTool(AbstractToolStep tool, Map<String, Object> parameters,
-      Collection<EObject> semanticElements) {
-    Collection<EObject> result = new ArrayList<EObject>();
-    for (EObject element : semanticElements) {
-      if ((element instanceof InstanceRole)) {
-        result.add(((InstanceRole) element).getRepresentedInstance());
-      } else {
-        result.add(element);
-      }
-    }
-    return result;
-  }
-  
-  public String[] getGraphicalInsertedElements(String ...elements) {
-    Collection<String> ids = new HashSet<String>();
-    for(String element : elements) {
-      EObject obj = this.getSemanticElement(element);
-      if(obj instanceof InstanceRole) {
-          EList<InstanceRole> instances = (((InstanceRole) obj).getRepresentedInstance()).getRepresentingInstanceRoles();
-          for(InstanceRole instance : instances) {
-            ids.add(instance.getId());
-          }
-      }
-      else {
-        ids.add(element);
-      }
-    }
-    
-    String[] inserted = new String[ids.size()];
-    inserted = ids.toArray(inserted);
-    
-    return inserted;
-  }
-  
-  @Override
-  public void hasView(String identifiers) {
-    String [] ids = getGraphicalInsertedElements(identifiers);
-    super.hasViews(ids);
-  }
-  
-  @Override
-  public void hasntView(String identifiers) {
-    String [] ids = getGraphicalInsertedElements(identifiers);
-    super.hasntViews(ids);
-  }
-  
-  public BlockArchitectureExt.Type getDiagramType() {
-    return type;
+
+  // creates a sequence message that has only sending end
+  public void createLostFunctionalExchange(String functionalExchange, String source) {
+    String name = IToolNameConstants.TOOL_LOST_FUNCTIONAL_EXCHANGE;
+    new LostFoundMessageCreationTool(this, name, source, functionalExchange, source, null).run();
   }
 }

@@ -20,17 +20,17 @@ public class SA_ESDiagram extends ESDiagram {
   }
   
   @Override
-  public void createComponent(String id) {
+  public String createComponent(String id) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void insertComponent(String id) {
+  public String insertComponent(String id) {
     throw new UnsupportedOperationException();
   }
   
   @Override
-  public void removeComponent(String id) {
+  public String removeComponent(String id) {
     throw new UnsupportedOperationException();
   }
 }

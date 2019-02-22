@@ -23,6 +23,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.data.modellingcore.AbstractExchangeItem;
+import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
@@ -78,6 +79,7 @@ import org.polarsys.capella.core.data.interaction.ScenarioKind;
 import org.polarsys.capella.core.data.interaction.SequenceMessage;
 import org.polarsys.capella.core.data.interaction.StateFragment;
 import org.polarsys.capella.core.data.interaction.TimeLapse;
+import org.polarsys.capella.core.data.interaction.impl.InstanceRoleImpl;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.data.oa.ActivityAllocation;
@@ -1178,5 +1180,18 @@ public class ScenarioExt {
       }
     }
     return false;
+  }
+  
+
+  /**
+   * @param obj
+   * @return AbstractType
+   */
+  public static AbstractType getAbstractType(EObject obj) {
+    AbstractType type = null;
+    if (obj instanceof InstanceRole) {
+      type = ((InstanceRole) obj).getRepresentedInstance().getAbstractType();
+    }
+    return type;
   }
 }

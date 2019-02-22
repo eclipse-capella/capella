@@ -124,7 +124,8 @@ public abstract class AbstractToolWrapper {
       ArgumentData currentArgumentData = it.next();
       ArgumentType currentType = currentArgumentData.getType();
       
-      if ((currentType.equals(ArgumentType.PREDECESSOR) && (_arguments.get(currentType) == null))
+      if (((currentType.equals(ArgumentType.COLLECTION) && _arguments.get(currentType) == null))
+          || (currentType.equals(ArgumentType.PREDECESSOR) && (_arguments.get(currentType) == null))
           || (currentType.equals(ArgumentType.STARTINGENDPREDECESSOR) && (_arguments.get(currentType) == null))
           || (currentType.equals(ArgumentType.FINISHINGENDPREDECESSOR) && (_arguments.get(currentType) == null))) {
         result.add(new Status(Status.OK, TestDiagramCommonPlugin.PLUGIN_ID, currentType + " is ok"));

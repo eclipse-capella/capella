@@ -353,6 +353,11 @@ public class SkeletonHelper {
     createObject(elementId, containerId, CapellacommonPackage.Literals.REGION__OWNED_STATES,
         CapellacommonPackage.Literals.STATE, elementId, context);
   }
+  
+  public static void createStateMachine(final String containerId, final String elementId, final SessionContext context) {
+    createObject(elementId, containerId, CapellacommonPackage.Literals.REGION__OWNED_STATES,
+        CapellacommonPackage.Literals.STATE, elementId, context);
+  }
 
   public static void moveState(final String oldContainerId, final String newContainerId, final String elementId,
       final SessionContext context) {

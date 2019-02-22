@@ -19,7 +19,7 @@ import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.CCRIDiagram
 import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.CDBDiagramToolsTestSuite;
 import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.CommonToolsTestSuite;
 import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.DiagramActionsTestSuite;
-import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.ESDiagramToolsTestSuite;
+import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.SequenceDiagramToolsTestSuite;
 import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.IDBDiagramToolsTestSuite;
 import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.MCBDiagramToolsTestSuite;
 import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.MSDiagramToolsTestSuite;
@@ -56,7 +56,7 @@ public class DiagramToolsTestSuite extends BasicTestSuite {
     tests.add(new IDBDiagramToolsTestSuite());
     tests.add(new MCBDiagramToolsTestSuite());
     tests.add(new XABDiagramToolsTestSuite());
-    tests.add(new ESDiagramToolsTestSuite());
+    tests.add(new SequenceDiagramToolsTestSuite());
     tests.add(new XBDiagramToolsTestSuite());
     tests.add(new XDFBDiagramToolsTestSuite());
     tests.add(new DiagramActionsTestSuite());
