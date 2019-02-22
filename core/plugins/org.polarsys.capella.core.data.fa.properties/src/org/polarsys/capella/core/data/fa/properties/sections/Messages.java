@@ -45,14 +45,10 @@ public class Messages extends NLS {
   public static String FunctionalChainInvolvementSection_ExchangedItems_Label;
   public static String ComponentExchangeCategorySection_Exchanges_Label;
   public static String ComponentExchangeAllocatorSection_ComponentExchangeAllocations_Label;
-  public static String FunctionalChainInvolvementLinkSection_Source_Label;
-  public static String FunctionalChainInvolvementLinkSection_Target_Label;
   public static String FunctionalChainInvolvementFunctionSection_OutgoingInvolvementLinks_Label;
   public static String FunctionalChainInvolvementFunctionSection_IncomingInvolvementLinks_Label;
   public static String FunctionalChainSection_Precondition_Label;
   public static String FunctionalChainSection_Postcondition_Label;
-  public static String SequenceLinkSection_Source_Label;
-  public static String SequenceLinkSection_Target_Label;
   public static String SequenceLinkSection_Functional_Chain_Involvement_Links_Label;
   public static String SequenceLinkSection_Condition_Label;
   

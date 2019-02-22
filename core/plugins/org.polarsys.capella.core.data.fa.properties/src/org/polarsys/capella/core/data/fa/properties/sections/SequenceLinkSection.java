@@ -30,8 +30,6 @@ import org.polarsys.capella.core.ui.properties.fields.SimpleSemanticField;
 public class SequenceLinkSection extends CapellaElementSection {
 
   protected ConstraintReferenceGroup conditionField;
-  private SimpleSemanticField sourceField;
-  private SimpleSemanticField targetField;
 
   /**
    * Default constructor.
@@ -46,19 +44,9 @@ public class SequenceLinkSection extends CapellaElementSection {
   public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
     super.createControls(parent, aTabbedPropertySheetPage);
 
-    boolean displayedInWizard = isDisplayedInWizard();
-
     conditionField = new ConstraintReferenceGroup(Collections.singletonMap(Messages.SequenceLinkSection_Condition_Label,
         FaPackage.Literals.SEQUENCE_LINK__CONDITION));
     conditionField.createControls(rootParentComposite, getWidgetFactory(), isDisplayedInWizard());
-
-    sourceField = new SimpleSemanticField(getReferencesGroup(), Messages.SequenceLinkSection_Source_Label,
-        getWidgetFactory(), new SimpleSemanticFieldController());
-    sourceField.setDisplayedInWizard(displayedInWizard);
-
-    targetField = new SimpleSemanticField(getReferencesGroup(), Messages.SequenceLinkSection_Target_Label,
-        getWidgetFactory(), new SimpleSemanticFieldController());
-    targetField.setDisplayedInWizard(displayedInWizard);
 
   }
 
@@ -70,8 +58,6 @@ public class SequenceLinkSection extends CapellaElementSection {
     super.loadData(capellaElement);
 
     conditionField.loadData(capellaElement);
-    sourceField.loadData(capellaElement, FaPackage.Literals.SEQUENCE_LINK__SOURCE);
-    targetField.loadData(capellaElement, FaPackage.Literals.SEQUENCE_LINK__TARGET);
   }
 
   /**
@@ -92,8 +78,6 @@ public class SequenceLinkSection extends CapellaElementSection {
 
     fields.addAll(super.getSemanticFields());
     fields.addAll(conditionField.getFields());
-    fields.add(sourceField);
-    fields.add(targetField);
 
     return fields;
   }
