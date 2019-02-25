@@ -54,7 +54,7 @@ Since the displayed problem existed beforehand and was not introduced by the mov
 
 Given is a Logical Function F which is allocated by a LogicalComponent C. When F is moved to a Library, the semantic validation dialog will open:
 
-[[Image:Images//9.5_MoveElementsView_forceExample.png|518x230px]]
+[[Image:Images//9.5_MoveElementsView_cancelExample.png|518x230px]]
 
 It is not allowed that a Component allocates a Function that is in a Library. The problem was introduced by the move itself and didn't exist beforehand. Here, the correct decision would be to cancel the move.
 
