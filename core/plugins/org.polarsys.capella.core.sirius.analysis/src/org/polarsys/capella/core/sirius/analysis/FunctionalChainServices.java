@@ -75,6 +75,7 @@ import org.polarsys.capella.core.model.helpers.graph.InvolvementGraph.Involvemen
 import org.polarsys.capella.core.model.helpers.graph.InvolvementGraph.InvolvementNode;
 import org.polarsys.capella.core.sirius.analysis.cache.FunctionalChainCache;
 import org.polarsys.capella.core.sirius.analysis.constants.MappingConstantsHelper;
+import org.polarsys.capella.core.sirius.analysis.helpers.FunctionalChainReferenceHierarchyHelper;
 import org.polarsys.capella.core.sirius.analysis.preferences.DiagramsPreferencePage;
 import org.polarsys.capella.core.sirius.analysis.tool.HashMapSet;
 
@@ -820,15 +821,14 @@ public class FunctionalChainServices {
   }
 
   /**
-   * Returns the outgoing Function Exchanges for the current node.
+   * Returns the incoming and outgoing Function Exchanges for the current node.
    * 
    * @param node
    *          the node
    * @return the outgoing Function Exchanges.
    */
-  protected Set<FunctionalExchange> getOutgoingEdgeFunctionalExchanges(DNode node) {
-
-    return DiagramServices.getDiagramServices().getOutgoingEdges(node).stream().map(DEdge::getTarget)
+  protected Set<FunctionalExchange> getAllFunctionalExchanges(DNode node) {
+    return DiagramServices.getDiagramServices().getAllEdges(node).stream().map(DEdge::getTarget)
         .filter(FunctionalChainInvolvementLink.class::isInstance)
         .map(link -> ((FunctionalChainInvolvementLink) link).getInvolved()).filter(FunctionalExchange.class::isInstance)
         .map(FunctionalExchange.class::cast).collect(Collectors.toSet());
@@ -841,88 +841,33 @@ public class FunctionalChainServices {
    *          the container node
    * @return the ordered scope used for the selection wizard in the Involve Functional Exchange and Function tool.
    */
-  public List<FunctionalExchange> computeFCIFunctionalExchangeAndFunctionScope(DNode node) {
-    List<FunctionalExchange> availableFunctionExchanges = new ArrayList<>();
-    Set<FunctionalExchange> existingInvolvedFunctionalExchanges = getOutgoingEdgeFunctionalExchanges(node);
+  public Collection<FunctionalExchange> computeFCIFunctionalExchangeAndFunctionScope(DNode node) {
+    Set<FunctionalExchange> existingInvolvedFunctionalExchanges = getAllFunctionalExchanges(node);
 
     FunctionalChainInvolvementFunction selectedFunction = (FunctionalChainInvolvementFunction) node.getTarget();
 
-    for (FunctionalExchange functionalExchange : FunctionalChainExt.getFlatOutgoingExchanges(selectedFunction)) {
-      if (!existingInvolvedFunctionalExchanges.contains(functionalExchange)) {
-        availableFunctionExchanges.add(functionalExchange);
-      }
-    }
+    Collection<FunctionalExchange> possibleFunctionalExchanges = new LinkedHashSet<>();
+    possibleFunctionalExchanges.addAll(FunctionalChainExt.getFlatIncomingExchanges(selectedFunction));
+    possibleFunctionalExchanges.addAll(FunctionalChainExt.getFlatOutgoingExchanges(selectedFunction));
 
-    return availableFunctionExchanges;
-  }
+    possibleFunctionalExchanges.removeAll(existingInvolvedFunctionalExchanges);
 
-  public HashMapSet<FunctionalExchange, FunctionalChain> getFCDInvolveFunctionalExchangeAndFunctionalChainScope(
-      DNode node) {
-    HashMapSet<FunctionalExchange, FunctionalChain> set = new HashMapSet<>();
-    if ((node == null) || (node.getTarget() == null) || node.getTarget().eIsProxy()) {
-      return set;
-    }
-    EObject target = node.getTarget();
-    if (!(target instanceof FunctionalChainInvolvement)) {
-      return set;
-    }
-
-    DDiagram diagram = CapellaServices.getService().getDiagramContainer(node);
-    if (!(diagram instanceof DSemanticDecorator)) {
-      return set;
-    }
-
-    Set<FunctionalExchange> existingInvolvedFE = getOutgoingEdgeFunctionalExchanges(node);
-    FunctionalChainInvolvement involvement = (FunctionalChainInvolvement) target;
-    Collection<FunctionalExchange> outgoing = FunctionalChainExt.getFlatOutgoingExchanges(involvement);
-    Collection<FunctionalChain> chains = computeFCIFunctionalChainScope((DSemanticDecorator) diagram);
-
-    for (FunctionalChain chain : chains) {
-      Collection<FunctionalExchange> incoming = FunctionalChainExt.getFlatIncomingExchanges(chain);
-      incoming.retainAll(outgoing);
-      for (FunctionalExchange exchange : incoming) {
-        if (!existingInvolvedFE.contains(exchange)) {
-          set.put(exchange, chain);
-        }
-      }
-    }
-
-    return set;
+    return possibleFunctionalExchanges;
   }
 
   /**
-   * @param context
-   * @return
-   */
-  public HashMapSet<FunctionalExchange, FunctionalChain> getFCDInvolveFunctionalExchangeAndFunctionalChainInitialSelection(
-      AbstractDNode context) {
-    return new HashMapSet<FunctionalExchange, FunctionalChain>();
-  }
-
-  /**
-   * Precondition for the creation of a Functional Chain Involvement Link.
+   * Precondition for the creation of a Functional Chain Involvement Link having a Functional Exchange as Involved.
    * 
-   * @param context
-   *          the context
    * @param source
    *          the semantic source
-   * @param sourceView
-   *          the view source
+   * 
    * @param target
    *          the semantic target
-   * @param targetView
-   *          the view target
+   * 
    * @return true if a link can be created, false otherwise.
    */
-  public boolean isValidFCILink(EObject context, FunctionalChainInvolvementFunction source, EdgeTarget sourceView,
-      FunctionalChainInvolvementFunction target, EdgeTarget targetView) {
-
-    // same source and target but not same container
-    boolean sourceAndTargetAreSameObject = sourceView != targetView && source.getInvolved() == target.getInvolved();
-
-    if (sourceAndTargetAreSameObject) {
-      return true;
-    }
+  public boolean isValidFCILinkExchange(FunctionalChainInvolvementFunction source,
+      FunctionalChainInvolvementFunction target) {
 
     Collection<FunctionalExchange> commonExchanges = getFCDCommonFunctionalExchanges(source, target);
 
@@ -931,82 +876,65 @@ public class FunctionalChainServices {
   }
 
   /**
-   * Computes the Functional Chain Reference hierarchy. The hierarchy is maintained in a bottom to top fashion, meaning
-   * that the first element is the immediate Functional Chain Reference, and the last element is the root Functional
-   * Chain Reference.
+   * Precondition for the creation of a Functional Chain Involvement Link having a Function as Involved.
+   * 
+   * @param source
+   *          the semantic source
+   * @param sourceView
+   *          the source view
+   * @param target
+   *          the semantic target
+   * @param targetView
+   *          the target view
+   * @return true if a link can be created, false otherwise.
+   */
+  public boolean isValidFCILinkFunction(FunctionalChainInvolvementFunction source, EdgeTarget sourceView,
+      FunctionalChainInvolvementFunction target, EdgeTarget targetView) {
+    return sourceView != targetView && isSameFunctionInvolved(source, target);
+  }
+
+  /**
+   * Returns true if the same function is involved by both parameters, false otherwise.
+   * 
+   * @param sourceInvolvement
+   *          the source involvement parameter.
+   * @param targetInvolvement
+   *          the target involvement parameter.
+   * @return true if the same function is involved by both parameters, false otherwise
+   */
+  public boolean isSameFunctionInvolved(FunctionalChainInvolvement sourceInvolvement,
+      FunctionalChainInvolvement targetInvolvement) {
+    return sourceInvolvement.getInvolved() == targetInvolvement.getInvolved();
+  }
+
+  /**
+   * Computes the Functional Chain Reference hierarchy until reaching the endFunctionalChain. The hierarchy is
+   * maintained in a bottom to top fashion, meaning that the first element is the immediate Functional Chain Reference,
+   * and the last element is the Functional Chain Reference contained by the endFunctionalChain.
    * 
    * @param view
    *          the selected view.
+   * 
+   * @param endFunctionalChain
+   *          the end point of the hierarchy
    * @return the Functional Chain Reference hierarchy.
    */
-  public List<FunctionalChainReference> computeFCReferenceHierarchy(EdgeTarget view) {
-
-    List<FunctionalChainReference> referenceHierarchy = new ArrayList<>();
-    DSemanticDecorator container = (DSemanticDecorator) view.eContainer();
-
-    while (container != null) {
-      EObject target = container.getTarget();
-
-      if (target instanceof FunctionalChainReference) {
-        FunctionalChainReference functionalChainReference = (FunctionalChainReference) target;
-        referenceHierarchy.add(functionalChainReference);
-      }
-
-      container = (DSemanticDecorator) container.eContainer();
-    }
-
-    return referenceHierarchy;
+  public List<FunctionalChainReference> computeFCReferenceHierarchy(EdgeTarget view,
+      FunctionalChain endFunctionalChain) {
+    return FunctionalChainReferenceHierarchyHelper.computeHierarchy(view, endFunctionalChain);
   }
 
   /**
-   * Computes the Functional Chain hierarchy. The hierarchy is maintained in a bottom to top fashion, meaning that the
-   * first element is the immediate Functional Chain, and the last element is the root Functional Chain.
-   * 
-   * @param view
-   *          the selected view.
-   * @return the Functional Chain hierarchy.
-   */
-  public Set<FunctionalChain> computeFCHierarchy(EdgeTarget view) {
-    LinkedHashSet<FunctionalChain> hierarchy = new LinkedHashSet<>();
-
-    DSemanticDecorator container = (DSemanticDecorator) view.eContainer();
-
-    while (container != null) {
-      EObject target = container.getTarget();
-
-      if (target instanceof FunctionalChain) {
-        FunctionalChain functionalChain = (FunctionalChain) target;
-        hierarchy.add(functionalChain);
-      }
-
-      container = (DSemanticDecorator) container.eContainer();
-    }
-
-    return hierarchy;
-  }
-
-  /**
-   * Computes the first common Functional Chain, where first means the most immediate Functional Chain.
+   * Computes the Functional Chain that will serve as container for the new edge.
    * 
    * @param sourceView
    *          the source view
    * @param targetView
    *          the target view
-   * @return the first common Functional Chain.
+   * @return the Functional Chain that will serve as container for the new edge.
    */
-  public FunctionalChain computeFirstCommonFC(EdgeTarget sourceView, EdgeTarget targetView) {
-
-    Set<FunctionalChain> sourceFCHierarchy = computeFCHierarchy(sourceView);
-    Set<FunctionalChain> targetFCHierarchy = computeFCHierarchy(targetView);
-
-    // compute common hierarchy
-    sourceFCHierarchy.retainAll(targetFCHierarchy);
-
-    if (!sourceFCHierarchy.isEmpty()) {
-      return sourceFCHierarchy.iterator().next();
-    }
-
-    return null;
+  public FunctionalChain computeContainerFunctionalChain(EdgeTarget sourceView, EdgeTarget targetView) {
+    return FunctionalChainReferenceHierarchyHelper.computeContainerFunctionalChain(sourceView, targetView);
   }
 
   public boolean isValidFCIFunctionalChain(DSemanticDecorator context) {
@@ -1033,8 +961,9 @@ public class FunctionalChainServices {
   }
 
   /**
-   * Returns the scope used for for the selection wizard in Functional Chain Involvement tools. The scope can either
-   * contain a function, or functional exchanges.
+   * Returns the scope used for for the selection wizard in Functional Chain Involvement tools. Since the wizard is
+   * displayed only for Function Involvements binded by a Functional exchange, the scope only contains functional
+   * exchanges. For Functional Involvements binded by an Abstract function no wizard is displayed.
    * 
    * @param source
    *          the semantic source
@@ -1044,17 +973,7 @@ public class FunctionalChainServices {
    */
   public Collection<EObject> computeFCILinkScope(FunctionalChainInvolvement sourceInvolvement,
       FunctionalChainInvolvement targetInvolvement) {
-
-    Collection<EObject> scope = new ArrayList<>();
-    boolean isSameFunctionInvolved = sourceInvolvement.getInvolved() == targetInvolvement.getInvolved();
-
-    if (isSameFunctionInvolved) {
-      scope.add(sourceInvolvement.getInvolved());
-    } else {
-      scope.addAll(getFCDCommonFunctionalExchanges(sourceInvolvement, targetInvolvement));
-    }
-
-    return scope;
+    return new ArrayList<>(getFCDCommonFunctionalExchanges(sourceInvolvement, targetInvolvement));
   }
 
   /**

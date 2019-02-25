@@ -5050,8 +5050,8 @@
         <reusedMappings xsi:type="description_2:ContainerMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_PVG']"/>
         <reusedMappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_PVGconnector']"/>
         <reusedMappings xsi:type="description_2:ContainerMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@containerMappings[name='FC_FunctionalChainReference']"/>
-        <toolSections name="Operational Processes" label="Operational Processes">
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Involvement referencing the selected Operational Activity." name="Operational Activity" precondition="aql:containerView.isValidFCInvolveFunction()" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionalChainInvolvementFunction_OA.gif">
+        <toolSections name="Involvements" label="Involvements">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Involvement referencing the selected Operational Activity." name="Function" label="Operational Activity" precondition="aql:containerView.isValidFCInvolveFunction()" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionalChainInvolvementFunction_OA.gif">
             <nodeMappings href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@nodeMappings[name='FC_AbstractFunction']"/>
             <variable name="container"/>
             <viewVariable name="containerView"/>
@@ -5076,7 +5076,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Creates a new Involvement Link referencing a Interaction or a Operational Activity." name="Link" precondition="aql:self.isValidFCILink(preSource, preSourceView, preTarget, preTargetView)" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionalChainInvolvementLinkOA_ToExchange.gif">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Creates a new Involvement Link referencing a Interaction." name="Exchange" label="Interaction" precondition="aql:preSource.isValidFCILinkExchange(preTarget)" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionalChainInvolvementLinkOA_ToExchange.gif">
             <edgeMappings href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@edgeMappings[name='FC_Exchange']"/>
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
@@ -5092,20 +5092,65 @@
                   <parameters name="wizardMessage" value="Select a value to involve."/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:If" conditionExpression="aql:selectedValue != 'WIZARD_CANCELED'">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:sourceView.computeFirstCommonFC(targetView)">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:sourceView.computeContainerFunctionalChain(targetView)">
+                    <subModelOperations xsi:type="tool:Let" variableName="commonFC" valueExpression="aql:self"/>
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="FunctionalChainInvolvementLink" referenceName="ownedFunctionalChainInvolvements" variableName="involvementLink">
                       <subModelOperations xsi:type="tool:SetValue" featureName="source" valueExpression="aql:source"/>
                       <subModelOperations xsi:type="tool:SetValue" featureName="target" valueExpression="aql:target"/>
                       <subModelOperations xsi:type="tool:SetValue" featureName="involved" valueExpression="aql:selectedValue"/>
-                      <subModelOperations xsi:type="tool:SetValue" featureName="sourceReferenceHierarchy" valueExpression="aql:sourceView.computeFCReferenceHierarchy()"/>
-                      <subModelOperations xsi:type="tool:SetValue" featureName="targetReferenceHierarchy" valueExpression="aql:targetView.computeFCReferenceHierarchy()"/>
+                      <subModelOperations xsi:type="tool:SetValue" featureName="sourceReferenceHierarchy" valueExpression="aql:sourceView.computeFCReferenceHierarchy(commonFC)"/>
+                      <subModelOperations xsi:type="tool:SetValue" featureName="targetReferenceHierarchy" valueExpression="aql:targetView.computeFCReferenceHierarchy(commonFC)"/>
                     </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Creates a new Involvement referencing a Operational Process." name="Operational Process" precondition="aql:containerView.isValidFCIFunctionalChain()" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionalChainReference_OA.gif">
+          <ownedTools xsi:type="tool:ToolDescription" documentation="Creates a new Involvement Link referencing a Interaction, between the existing Operational Activity and a new Operational Activity." name="Exchange and Function" label="Interaction and Operational Activity" precondition="aql:container.isValidFCIFunctionalExchangeAndFunction()" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionalChainInvolvementLinkOA_AndFunction.gif">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView">
+                <subModelOperations xsi:type="tool:ExternalJavaAction" name="selectExchanges" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementFromListWizard">
+                  <parameters name="context" value="aql:element.involved"/>
+                  <parameters name="scope" value="aql:elementView.computeFCIFunctionalExchangeAndFunctionScope()"/>
+                  <parameters name="multiple" value="true"/>
+                  <parameters name="resultVariable" value="selectedExchanges"/>
+                  <parameters name="wizardMessage" value="aql:'Select Interactions to involve from ' + element.name + '.'"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:(selectedExchanges != 'WIZARD_CANCELED')">
+                  <subModelOperations xsi:type="tool:For" expression="aql:self.void2Null(selectedExchanges)" iteratorName="exchange">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:element.eContainer()">
+                      <subModelOperations xsi:type="tool:Switch">
+                        <cases conditionExpression="aql:element.involved.isFunctionSourceOfExchange(exchange)">
+                          <subModelOperations xsi:type="tool:CreateInstance" typeName="FunctionalChainInvolvementFunction" referenceName="ownedFunctionalChainInvolvements" variableName="newFunction">
+                            <subModelOperations xsi:type="tool:SetValue" featureName="involved" valueExpression="aql:exchange.getOutgoingAbstractFunction()"/>
+                          </subModelOperations>
+                          <subModelOperations xsi:type="tool:CreateInstance" typeName="FunctionalChainInvolvementLink" referenceName="ownedFunctionalChainInvolvements" variableName="involvementLink">
+                            <subModelOperations xsi:type="tool:SetValue" featureName="source" valueExpression="aql:element"/>
+                            <subModelOperations xsi:type="tool:SetValue" featureName="target" valueExpression="aql:newFunction"/>
+                            <subModelOperations xsi:type="tool:SetValue" featureName="involved" valueExpression="aql:exchange"/>
+                          </subModelOperations>
+                        </cases>
+                        <default>
+                          <subModelOperations xsi:type="tool:CreateInstance" typeName="FunctionalChainInvolvementFunction" referenceName="ownedFunctionalChainInvolvements" variableName="newFunction">
+                            <subModelOperations xsi:type="tool:SetValue" featureName="involved" valueExpression="aql:exchange.getIncomingAbstractFunction()"/>
+                          </subModelOperations>
+                          <subModelOperations xsi:type="tool:CreateInstance" typeName="FunctionalChainInvolvementLink" referenceName="ownedFunctionalChainInvolvements" variableName="involvementLink">
+                            <subModelOperations xsi:type="tool:SetValue" featureName="source" valueExpression="aql:newFunction"/>
+                            <subModelOperations xsi:type="tool:SetValue" featureName="target" valueExpression="aql:element"/>
+                            <subModelOperations xsi:type="tool:SetValue" featureName="involved" valueExpression="aql:exchange"/>
+                          </subModelOperations>
+                        </default>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().forceRefresh()"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Creates a new Involvement referencing a Operational Process." name="Functional Chain" label="Operational Process" precondition="aql:containerView.isValidFCIFunctionalChain()" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionalChainReference_OA.gif">
             <containerMappings href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@containerMappings[name='FC_FunctionalChainReference']"/>
             <variable name="container"/>
             <viewVariable name="containerView"/>
@@ -5130,34 +5175,21 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ToolDescription" documentation="Creates a new Involvement Link referencing a Interaction, having as source the existing Operational Activity and as target a new Operational Activity." name="Link and Target" precondition="aql:container.isValidFCIFunctionalExchangeAndFunction()" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionalChainInvolvementLinkOA_ToFunction.gif">
-            <element name="element"/>
-            <elementView name="elementView"/>
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Creates a new Involvement Link referencing an Operational Activity." name="Connect Functions" label="Connect Operational Activities" precondition="aql:preSource.isValidFCILinkFunction(preSourceView, preTarget, preTargetView)" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionalChainInvolvementLinkOA_ToFunction.gif">
+            <edgeMappings href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@edgeMappings[name='FC_Exchange']"/>
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView">
-                <subModelOperations xsi:type="tool:ExternalJavaAction" name="selectExchanges" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementFromListWizard">
-                  <parameters name="context" value="aql:element.involved"/>
-                  <parameters name="scope" value="aql:elementView.computeFCIFunctionalExchangeAndFunctionScope()"/>
-                  <parameters name="resultVariable" value="selectedExchanges"/>
-                  <parameters name="wizardMessage" value="aql:'Select Interactions to involve from ' + element.name + '.'"/>
-                </subModelOperations>
-                <subModelOperations xsi:type="tool:If" conditionExpression="aql:(selectedExchanges != 'WIZARD_CANCELED')">
-                  <subModelOperations xsi:type="tool:For" expression="aql:self.void2Null(selectedExchanges)" iteratorName="exchange">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:element.eContainer()">
-                      <subModelOperations xsi:type="tool:CreateInstance" typeName="FunctionalChainInvolvementFunction" referenceName="ownedFunctionalChainInvolvements" variableName="newFunction">
-                        <subModelOperations xsi:type="tool:SetValue" featureName="involved" valueExpression="aql:exchange.getOutgoingAbstractFunction()"/>
-                      </subModelOperations>
-                      <subModelOperations xsi:type="tool:CreateInstance" typeName="FunctionalChainInvolvementLink" referenceName="ownedFunctionalChainInvolvements" variableName="involvementLink">
-                        <subModelOperations xsi:type="tool:SetValue" featureName="source" valueExpression="aql:element"/>
-                        <subModelOperations xsi:type="tool:SetValue" featureName="target" valueExpression="aql:newFunction"/>
-                        <subModelOperations xsi:type="tool:SetValue" featureName="involved" valueExpression="aql:exchange"/>
-                        <subModelOperations xsi:type="tool:Let" variableName="referenceHierarchy" valueExpression="aql:elementView.computeFCReferenceHierarchy()"/>
-                        <subModelOperations xsi:type="tool:SetValue" featureName="sourceReferenceHierarchy" valueExpression="aql:referenceHierarchy"/>
-                        <subModelOperations xsi:type="tool:SetValue" featureName="targetReferenceHierarchy" valueExpression="aql:referenceHierarchy"/>
-                      </subModelOperations>
-                    </subModelOperations>
-                  </subModelOperations>
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.getDiagramContainer().forceRefresh()"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:sourceView.computeContainerFunctionalChain(targetView)">
+                <subModelOperations xsi:type="tool:Let" variableName="commonFC" valueExpression="aql:self"/>
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="FunctionalChainInvolvementLink" referenceName="ownedFunctionalChainInvolvements" variableName="involvementLink">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="source" valueExpression="aql:source"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="target" valueExpression="aql:target"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="involved" valueExpression="aql:source.involved"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="sourceReferenceHierarchy" valueExpression="aql:sourceView.computeFCReferenceHierarchy(commonFC)"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="targetReferenceHierarchy" valueExpression="aql:targetView.computeFCReferenceHierarchy(commonFC)"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>

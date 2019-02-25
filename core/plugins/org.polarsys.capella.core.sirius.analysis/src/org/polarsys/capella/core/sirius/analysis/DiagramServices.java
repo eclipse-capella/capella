@@ -932,7 +932,7 @@ public class DiagramServices {
   }
 
   public Set<DEdge> getIncomingEdges(EdgeTarget node, DDiagram diagram) {
-    Set<DEdge> returnedSet = new HashSet<DEdge>();
+    Set<DEdge> returnedSet = new HashSet<>();
     returnedSet.addAll(node.getIncomingEdges());
     returnedSet.retainAll(diagram.getEdges());
     return returnedSet;
@@ -944,10 +944,28 @@ public class DiagramServices {
   }
 
   public Set<DEdge> getOutgoingEdges(EdgeTarget node, DDiagram diagram) {
-    Set<DEdge> returnedSet = new HashSet<DEdge>();
+    Set<DEdge> returnedSet = new HashSet<>();
     returnedSet.addAll(node.getOutgoingEdges());
     returnedSet.retainAll(diagram.getEdges());
     return returnedSet;
+  }
+
+  public Set<DEdge> getOutgoingEdges(EdgeTarget node) {
+    DDiagram diagram = CapellaServices.getService().getDiagramContainer(node);
+    return getOutgoingEdges(node, diagram);
+  }
+
+  public Set<DEdge> getAllEdges(EdgeTarget node, DDiagram diagram) {
+    Set<DEdge> returnedSet = new HashSet<>();
+    returnedSet.addAll(node.getOutgoingEdges());
+    returnedSet.addAll(node.getIncomingEdges());
+    returnedSet.retainAll(diagram.getEdges());
+    return returnedSet;
+  }
+
+  public Set<DEdge> getAllEdges(EdgeTarget node) {
+    DDiagram diagram = CapellaServices.getService().getDiagramContainer(node);
+    return getAllEdges(node, diagram);
   }
 
   /**
@@ -962,14 +980,6 @@ public class DiagramServices {
    */
   public EList<EObject> getEdgeTargetCandidates(EdgeMapping edgeMapping, EObject context, DDiagram diagram) {
     return getEdgeMappingHelper(context).getEdgeTargetCandidates(edgeMapping, context, diagram);
-  }
-
-  public Set<DEdge> getOutgoingEdges(EdgeTarget node) {
-    DDiagram diagram = CapellaServices.getService().getDiagramContainer(node);
-    Set<DEdge> returnedSet = new HashSet<DEdge>();
-    returnedSet.addAll(node.getOutgoingEdges());
-    returnedSet.retainAll(diagram.getEdges());
-    return returnedSet;
   }
 
   /**
@@ -1653,15 +1663,15 @@ public class DiagramServices {
 
       if (view instanceof EdgeTarget) {
         EdgeTarget viewEdgeTarget = (EdgeTarget) view;
-        Collection<DEdge> directEdges = getAllEdges(viewEdgeTarget);
+        Collection<DEdge> directEdges = getEdges(viewEdgeTarget);
 
         edgesToSelect.addAll(directEdges);
       }
 
       if (view instanceof AbstractDNode) {
         AbstractDNode viewNode = (AbstractDNode) view;
-        Collection<DEdge> portEdges = viewNode.getOwnedBorderedNodes().stream()
-            .flatMap(port -> getAllEdges(port).stream()).collect(Collectors.toSet());
+        Collection<DEdge> portEdges = viewNode.getOwnedBorderedNodes().stream().flatMap(port -> getEdges(port).stream())
+            .collect(Collectors.toSet());
 
         edgesToSelect.addAll(portEdges);
       }
@@ -1670,7 +1680,7 @@ public class DiagramServices {
     return edgesToSelect;
   }
 
-  private Collection<DEdge> getAllEdges(EdgeTarget edgeTarget) {
+  private Collection<DEdge> getEdges(EdgeTarget edgeTarget) {
     HashSet<DEdge> allEdges = new HashSet<>();
     allEdges.addAll(edgeTarget.getIncomingEdges());
     allEdges.addAll(edgeTarget.getOutgoingEdges());
