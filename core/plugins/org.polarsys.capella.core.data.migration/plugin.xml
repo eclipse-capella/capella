@@ -166,6 +166,9 @@
       <migrationContribution
             class="org.polarsys.capella.core.data.migration.capella.OpaqueExpressionMigrationContribution">
       </migrationContribution>
+      <migrationContribution
+            class="org.polarsys.capella.core.data.migration.capella.FunctionalChainMigrationContribution">
+      </migrationContribution>
    </extension>
    
    
@@ -176,6 +179,9 @@
       </migrationContributor>
       <migrationContributor
             class="org.polarsys.capella.core.data.migration.aird.AirdMigrationContributor">
+      </migrationContributor>
+      <migrationContributor
+            class="org.polarsys.capella.core.data.migration.aird.FCDDiagramMigrationContributor">
       </migrationContributor>
       <migrationContributor
          class="org.polarsys.capella.core.data.migration.af.ViewpointMigrationContributor"> 

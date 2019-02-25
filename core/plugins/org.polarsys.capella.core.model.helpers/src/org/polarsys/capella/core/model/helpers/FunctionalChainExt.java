@@ -21,6 +21,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map.Entry;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
@@ -385,6 +386,64 @@ public class FunctionalChainExt {
     return result;
   }
 
+  /**
+   * 
+   * @param fcr
+   * @return a list of all first FCIFunctions and its hierarchical context included in a FunctionalChainReference
+   */
+  public static List<List<FunctionalChainInvolvement>> getFirstFlatHierachicalContexts(FunctionalChainReference fcr) {
+    List<FunctionalChainReference> hierarchicalContext = new ArrayList<>();
+    hierarchicalContext.add(fcr);
+    List<List<FunctionalChainInvolvement>> allHierarchicalContexts = getFlatHierachicalContexts(fcr,
+        hierarchicalContext);
+    return allHierarchicalContexts.stream()
+        .filter(fciCollection -> isFirstFunctionalChainInvolvement(fciCollection.get(0))).collect(Collectors.toList());
+  }
+
+  /**
+   * 
+   * @param fcr
+   * @return a list of all last FCIFunctions and its hierarchical context included in a FunctionalChainReference
+   */
+  public static List<List<FunctionalChainInvolvement>> getLastFlatHierachicalContexts(FunctionalChainReference fcr) {
+    List<FunctionalChainReference> hierarchicalContext = new ArrayList<>();
+    hierarchicalContext.add(fcr);
+    List<List<FunctionalChainInvolvement>> allHierarchicalContexts = getFlatHierachicalContexts(fcr,
+        hierarchicalContext);
+    return allHierarchicalContexts.stream()
+        .filter(fciCollection -> isLastFunctionalChainInvolvement(fciCollection.get(0))).collect(Collectors.toList());
+  }
+
+  /**
+   * 
+   * @param fcr
+   * @param currentContext
+   * @return a list of all FCIFunctions and its hierarchical context included in a FunctionalChainReference
+   */
+  public static List<List<FunctionalChainInvolvement>> getFlatHierachicalContexts(FunctionalChainReference fcr,
+      List<FunctionalChainReference> currentContext) {
+    List<List<FunctionalChainInvolvement>> allHierarchicalContexts = new ArrayList<>();
+    InvolvedElement involved = fcr.getInvolved();
+    if (involved instanceof FunctionalChain) {
+      FunctionalChain functionalChain = (FunctionalChain) involved;
+      for (FunctionalChainInvolvement involvement : functionalChain.getInvolvedFunctionalChainInvolvements()) {
+        if (involvement instanceof FunctionalChainInvolvementFunction) {
+          List<FunctionalChainInvolvement> fciAndHierarchicalContext = new ArrayList<>();
+          fciAndHierarchicalContext.add(involvement);
+          fciAndHierarchicalContext.addAll(currentContext);
+          allHierarchicalContexts.add(fciAndHierarchicalContext);
+        } else if (involvement instanceof FunctionalChainReference) {
+          List<FunctionalChainReference> childContext = new ArrayList<>();
+          childContext.add((FunctionalChainReference) involvement);
+          childContext.addAll(currentContext);
+          allHierarchicalContexts
+              .addAll(getFlatHierachicalContexts((FunctionalChainReference) involvement, childContext));
+        }
+      }
+    }
+    return allHierarchicalContexts;
+  }
+  
   /**
    * Highly related with org.polarsys.capella.core.data.fa.validation.functionalChain.MDCHK_FunctionalChain_Involvements_1
    * @param fc

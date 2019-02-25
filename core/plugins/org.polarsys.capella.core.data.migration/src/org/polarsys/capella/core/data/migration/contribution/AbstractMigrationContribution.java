@@ -118,7 +118,7 @@ public class AbstractMigrationContribution implements IMigrationContribution {
   public void preSaveResource(ExecutionManager executionManager, Resource resource, MigrationContext context) {
 
   }
-
+  
   /*
    * (non-Javadoc)
    * @see org.polarsys.capella.core.data.migration.contribution.IMigrationContribution#unaryPostMigrationExecute(org.eclipse .emf.common.notify.Notifier,
