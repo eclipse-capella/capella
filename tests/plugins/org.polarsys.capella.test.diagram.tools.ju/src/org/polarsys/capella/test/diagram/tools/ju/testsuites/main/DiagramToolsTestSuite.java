@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.polarsys.capella.test.diagram.tools.ju.es.MultiInstanceRoleTest;
+import org.polarsys.capella.test.diagram.tools.ju.fcd.FCDDiagramToolsTestSuite;
 import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.CCRIDiagramToolsTestSuite;
 import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.CDBDiagramToolsTestSuite;
 import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.CommonToolsTestSuite;
@@ -67,6 +68,7 @@ public class DiagramToolsTestSuite extends BasicTestSuite {
     tests.add(new CommonToolsTestSuite());
     tests.add(new MultiInstanceRoleTest());
     tests.add(new CCRIDiagramToolsTestSuite());
+    tests.add(new FCDDiagramToolsTestSuite());
     return tests;
   }
 

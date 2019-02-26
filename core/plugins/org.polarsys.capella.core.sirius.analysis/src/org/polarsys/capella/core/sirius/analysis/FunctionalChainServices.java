@@ -24,12 +24,15 @@ import java.util.stream.Collectors;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.gmf.runtime.notation.DrawerStyle;
+import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.BorderedStyle;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.EdgeStyle;
 import org.eclipse.sirius.diagram.EdgeTarget;
@@ -39,6 +42,7 @@ import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.filter.FilterDescription;
 import org.eclipse.sirius.diagram.description.style.BorderedStyleDescription;
 import org.eclipse.sirius.diagram.description.style.EdgeStyleDescription;
+import org.eclipse.sirius.diagram.ui.business.api.view.SiriusGMFHelper;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.RGBValues;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
@@ -83,11 +87,12 @@ import org.polarsys.capella.core.sirius.analysis.tool.HashMapSet;
  */
 public class FunctionalChainServices {
 
-  private static final Integer THICK_BORDER_SOURCE_FUNCTION = Integer.valueOf(4);
-  private static final Integer THICK_BORDER_TARGET_FUNCTION = Integer.valueOf(4);
-  private static final Integer THICK_EDGE_FUNCTIONAL_CHAIN = Integer.valueOf(4);
-  private static final String INCOMPLETE_FUNCTIONAL_CHAIN_LABEL = "incomplete"; //$NON-NLS-1$
-  private static final String INVALID_FUNCTIONAL_CHAIN_LABEL = "invalid"; //$NON-NLS-1$
+  public static final Integer THICK_BORDER_SOURCE_FUNCTION = Integer.valueOf(4);
+  public static final Integer THICK_BORDER_TARGET_FUNCTION = Integer.valueOf(4);
+  public static final Integer THICK_EDGE_FUNCTIONAL_CHAIN = Integer.valueOf(4);
+  public static final String INCOMPLETE_FUNCTIONAL_CHAIN_LABEL = "incomplete"; //$NON-NLS-1$
+  public static final String INVALID_FUNCTIONAL_CHAIN_LABEL = "invalid"; //$NON-NLS-1$
+  public static final String FCR_CONTAINER_COLLAPSED_INDICATOR = " [+]";
 
   private static FunctionalChainServices singleton = null;
 
@@ -1038,5 +1043,112 @@ public class FunctionalChainServices {
   public MappingHelper getMappingHelper(DSemanticDecorator semanticDecorator) {
     return new MappingHelper(
         SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(semanticDecorator.getTarget()));
+  }
+
+  /**
+   * Get the container for functional chain from the container for functional chain reference.
+   * 
+   * @param fcRefContainer
+   * @return
+   */
+  public DNodeContainer getFCContainerOfFCRContainer(DDiagramElement fcRefContainer) {
+    if (fcRefContainer != null) {
+      return fcRefContainer.eContents().stream().filter(DNodeContainer.class::isInstance)
+          .map(DNodeContainer.class::cast).findFirst().orElse(null);
+    }
+    return null;
+  }
+
+  /**
+   * Return the label of a FunctionalChainReference If the container is collapsed, the label is followed by this
+   * indicator " [+]"
+   * 
+   * @param fcrContainer
+   *          the FunctionalChainReference DNodeContainer
+   * @return the label
+   */
+  public String getFunctionalChainReferenceLabel(DNodeContainer fcrContainer) {
+    StringBuilder labelBuilder = new StringBuilder();
+    if (fcrContainer != null) {
+      FunctionalChainReference fcr = (FunctionalChainReference) fcrContainer.getTarget();
+      InvolvedElement fc = (fcr != null) ? fcr.getInvolved() : null;
+
+      if (fc != null) {
+        labelBuilder.append(fc.getLabel());
+      }
+
+      DNodeContainer fcContainer = getFCContainerOfFCRContainer(fcrContainer);
+      if (isContainerCollapsed(fcContainer)) {
+        labelBuilder.append(FCR_CONTAINER_COLLAPSED_INDICATOR);
+      }
+    }
+    return labelBuilder.toString();
+  }
+
+  public boolean isContainerCollapsed(DNodeContainer container) {
+    Node gmfNode = SiriusGMFHelper.getGmfNode(container);
+
+    if (gmfNode != null) {
+      for (Object subNode : gmfNode.getChildren()) {
+        if (subNode instanceof Node) {
+          for (Object style : ((Node) subNode).getStyles()) {
+            if (style instanceof DrawerStyle) {
+              return ((DrawerStyle) style).isCollapsed();
+            }
+          }
+        }
+      }
+    }
+
+    return false;
+  }
+
+  public boolean isInCollapsedHierarchy(DDiagramElement diagramElement) {
+    if (diagramElement != null) {
+      EObject parent = diagramElement.eContainer();
+      if (parent instanceof DNodeContainer) {
+        boolean containerCollapsed = isContainerCollapsed((DNodeContainer) parent);
+        if (containerCollapsed) {
+          return true;
+        }
+      }
+      if (parent instanceof DDiagram) {
+        return false;
+      }
+      return isInCollapsedHierarchy((DDiagramElement) parent);
+    }
+    return false;
+  }
+
+  public boolean canCreateFCILEdge(FunctionalChainInvolvementLink link, DDiagramElement sourceView, EObject source,
+      DDiagramElement targetView, EObject target) {
+
+    if (source == null || target == null)
+      return false;
+    if (sourceView == null || targetView == null)
+      return false;
+    if (source.equals(target))
+      return false;
+    if (sourceView.equals(targetView))
+      return false;
+
+    if (isInCollapsedHierarchy(sourceView))
+      return false;
+    if (isInCollapsedHierarchy(targetView))
+      return false;
+
+    if (sourceView instanceof DNodeContainer && source instanceof FunctionalChainReference) {
+      DNodeContainer fcContainer = getFCContainerOfFCRContainer(sourceView);
+      if (!isContainerCollapsed(fcContainer))
+        return false;
+    }
+
+    if (targetView instanceof DNodeContainer && target instanceof FunctionalChainReference) {
+      DNodeContainer fcContainer = getFCContainerOfFCRContainer(targetView);
+      if (!isContainerCollapsed(fcContainer))
+        return false;
+    }
+
+    return true;
   }
 }

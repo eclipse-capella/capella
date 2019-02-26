@@ -15,16 +15,19 @@ import java.util.Collection;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.command.AbstractCommand;
 import org.eclipse.emf.common.command.Command;
-import org.eclipse.emf.common.command.IdentityCommand;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.gmf.runtime.notation.DrawerStyle;
+import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DiagramPackage;
+import org.eclipse.sirius.diagram.ui.business.api.view.SiriusGMFHelper;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
@@ -236,6 +239,52 @@ public class DiagramHelper {
 
     return command;
 
+  }
+  
+  // Note that this method does not synchronize AbsoluteBoundsFilter for DNodeContainer.
+  public static void collapseContainer(TransactionalEditingDomain ted, DNodeContainer container) {
+    if (container != null && ted != null) {
+      ted.getCommandStack().execute(new RecordingCommand(ted) {
+
+        @Override
+        protected void doExecute() {
+          Node gmfNode = SiriusGMFHelper.getGmfNode(container);
+
+          for (Object subNode : gmfNode.getChildren()) {
+            if (subNode instanceof Node) {
+              for (Object style : ((Node) subNode).getStyles()) {
+                if (style instanceof DrawerStyle) {
+                  ((DrawerStyle) style).setCollapsed(true);
+                }
+              }
+            }
+          }
+        }
+      });
+    }
+  }
+
+  //Note that this method does not synchronize AbsoluteBoundsFilter for DNodeContainer.
+  public static void unCollapseContainer(TransactionalEditingDomain ted, DNodeContainer container) {
+    if (container != null && ted != null) {
+      ted.getCommandStack().execute(new RecordingCommand(ted) {
+
+        @Override
+        protected void doExecute() {
+          Node gmfNode = SiriusGMFHelper.getGmfNode(container);
+
+          for (Object subNode : gmfNode.getChildren()) {
+            if (subNode instanceof Node) {
+              for (Object style : ((Node) subNode).getStyles()) {
+                if (style instanceof DrawerStyle) {
+                  ((DrawerStyle) style).setCollapsed(false);
+                }
+              }
+            }
+          }
+        }
+      });
+    }
   }
 
 }

@@ -19028,7 +19028,37 @@
             </style>
           </conditionnalStyles>
         </nodeMappings>
-        <edgeMappings name="FC_Exchange" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20FE%20Involvement']" semanticCandidatesExpression="service:getAllFunctionalChainInvolvementLinks()" semanticElements="aql:self.makeUnion(self, self.involved)" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@nodeMappings[name='FC_AbstractFunction']" targetMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@nodeMappings[name='FC_AbstractFunction']" targetFinderExpression="aql:self.target" sourceFinderExpression="aql:self.source" domainClass="FunctionalChainInvolvementLink" useDomainElement="true">
+        <edgeMappings name="FC_Exchange" preconditionExpression="service:canCreateFCILEdge(sourceView, source, targetView, target)" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20FE%20Involvement']" semanticCandidatesExpression="service:getAllFunctionalChainInvolvementLinks()" semanticElements="aql:self.makeUnion(self, self.involved)" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@nodeMappings[name='FC_AbstractFunction']" targetMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@nodeMappings[name='FC_AbstractFunction']" targetFinderExpression="aql:self.target" sourceFinderExpression="aql:self.source" domainClass="FunctionalChainInvolvementLink" useDomainElement="true">
+          <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']">
+            <centerLabelStyleDescription labelExpression="aql:self.getFCInvolvmentLinkLabel(diagram)" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']"/>
+          </style>
+          <conditionnalStyles predicateExpression="aql:self.involved.isInOperationalAnalysis()">
+            <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Border_Orange']">
+              <centerLabelStyleDescription labelExpression="aql:self.getFCInvolvmentLinkLabel(diagram)" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Border_Orange']"/>
+            </style>
+          </conditionnalStyles>
+        </edgeMappings>
+        <edgeMappings name="FC_Edge_from_FCIF_to_CollapsedFCR" preconditionExpression="service:canCreateFCILEdge(sourceView, source, targetView, target)" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20FE%20Involvement']" semanticCandidatesExpression="service:getAllFunctionalChainInvolvementLinks()" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@nodeMappings[name='FC_AbstractFunction']" targetMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@containerMappings[name='FC_FunctionalChainReference']" targetFinderExpression="aql:self.targetReferenceHierarchy" sourceFinderExpression="aql:self.source" domainClass="FunctionalChainInvolvementLink" useDomainElement="true">
+          <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']">
+            <centerLabelStyleDescription labelExpression="aql:self.getFCInvolvmentLinkLabel(diagram)" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']"/>
+          </style>
+          <conditionnalStyles predicateExpression="aql:self.involved.isInOperationalAnalysis()">
+            <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Border_Orange']">
+              <centerLabelStyleDescription labelExpression="aql:self.getFCInvolvmentLinkLabel(diagram)" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Border_Orange']"/>
+            </style>
+          </conditionnalStyles>
+        </edgeMappings>
+        <edgeMappings name="FC_Edge_from_CollapsedFCR_to_FCIF" preconditionExpression="service:canCreateFCILEdge(sourceView, source, targetView, target)" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20FE%20Involvement']" semanticCandidatesExpression="service:getAllFunctionalChainInvolvementLinks()" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@containerMappings[name='FC_FunctionalChainReference']" targetMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@nodeMappings[name='FC_AbstractFunction']" targetFinderExpression="aql:self.target" sourceFinderExpression="aql:self.sourceReferenceHierarchy" domainClass="FunctionalChainInvolvementLink" useDomainElement="true">
+          <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']">
+            <centerLabelStyleDescription labelExpression="aql:self.getFCInvolvmentLinkLabel(diagram)" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']"/>
+          </style>
+          <conditionnalStyles predicateExpression="aql:self.involved.isInOperationalAnalysis()">
+            <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Border_Orange']">
+              <centerLabelStyleDescription labelExpression="aql:self.getFCInvolvmentLinkLabel(diagram)" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Border_Orange']"/>
+            </style>
+          </conditionnalStyles>
+        </edgeMappings>
+        <edgeMappings name="FC_Edge_from_CollapsedFCR_to_CollapsedFCR" preconditionExpression="service:canCreateFCILEdge(sourceView, source, targetView, target)" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20FE%20Involvement']" semanticCandidatesExpression="service:getAllFunctionalChainInvolvementLinks()" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@containerMappings[name='FC_FunctionalChainReference']" targetMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@containerMappings[name='FC_FunctionalChainReference']" targetFinderExpression="aql:self.targetReferenceHierarchy" sourceFinderExpression="aql:self.sourceReferenceHierarchy" domainClass="FunctionalChainInvolvementLink" useDomainElement="true">
           <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']">
             <centerLabelStyleDescription labelExpression="aql:self.getFCInvolvmentLinkLabel(diagram)" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']"/>
           </style>
@@ -19063,12 +19093,12 @@
               </style>
             </conditionnalStyles>
           </subContainerMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="aql:self.involved.name" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_FCD']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_FCD']">
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="service:view.getFunctionalChainReferenceLabel()" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_FCD']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_FCD']">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
           <conditionnalStyles predicateExpression="aql:self.involved.oclIsKindOf(oa::OperationalProcess)">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="aql:self.involved.name" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Orange_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Orange_min']">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="service:view.getFunctionalChainReferenceLabel()" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Orange_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Orange_min']">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
