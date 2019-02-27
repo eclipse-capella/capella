@@ -64,6 +64,8 @@ location kitalpha-runtime-core-master "https://ci.polarsys.org/kitalpha/job/Kita
 	org.polarsys.kitalpha.patterns.feature.feature.group
 	org.polarsys.kitalpha.report.feature.feature.group
 	org.polarsys.kitalpha.report.ui.feature.feature.group
+	org.polarsys.kitalpha.resourcereuse.emfscheme.feature.feature.group
+	org.polarsys.kitalpha.resourcereuse.emfscheme.ui.feature.feature.group
 	org.polarsys.kitalpha.resourcereuse.feature.feature.group
 	org.polarsys.kitalpha.resourcereuse.ui.feature.feature.group
 	org.polarsys.kitalpha.richtext.widget.feature.feature.group
@@ -76,8 +78,6 @@ location kitalpha-runtime-core-master "https://ci.polarsys.org/kitalpha/job/Kita
 location kitalpha-sdk-master "https://ci.polarsys.org/kitalpha/job/Kitalpha-v1.3.x/143/artifact/releng/plugins/org.polarsys.kitalpha.releng.sdk.updatesite/target/repository" {
 	org.polarsys.kitalpha.doc.feature.feature.group
 	org.polarsys.kitalpha.emde.sdk.feature.feature.group
-	org.polarsys.kitalpha.resourcereuse.emfscheme.feature.feature.group
-	org.polarsys.kitalpha.resourcereuse.emfscheme.ui.feature.feature.group
 }
 
 location diffmerge-core-master "http://download.eclipse.org/diffmerge/releases/0.11.0/emf-diffmerge-site" {
