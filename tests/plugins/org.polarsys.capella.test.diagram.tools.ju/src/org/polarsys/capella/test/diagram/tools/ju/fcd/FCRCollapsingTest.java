@@ -81,28 +81,13 @@ public class FCRCollapsingTest extends AbstractDiagramTestCase {
     DNodeContainer fc1Container = (DNodeContainer) diagramContext.getView(FUNCTIONALCHAIN_1);
     DNodeContainer fc2Container = (DNodeContainer) diagramContext.getView(FUNCTIONALCHAIN_2);
     DNodeContainer fc3Container = (DNodeContainer) diagramContext.getView(FUNCTIONALCHAIN_3);
-    
-    Assert.assertEquals("Existing edge from FCIF1 to FCIF2", true,
-        diagramContext.hasEdge(FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION_TO_LOGICALFUNCTION_1,
-            FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION_TO_LOGICALFUNCTION_2,
-            FUNCTIONAL_CHAIN_INVOLVEMENT_LINK_TO_FUNCTIONALEXCHANGE_1));
-
-    Assert.assertEquals("No edge from FCR1 to FCR2", false,
-        diagramContext.hasEdge(FUNCTIONAL_CHAIN_REFERENCE_TO_FUNCTIONALCHAIN_1,
-            FUNCTIONAL_CHAIN_REFERENCE_TO_FUNCTIONALCHAIN_2,
-            FUNCTIONAL_CHAIN_INVOLVEMENT_LINK_TO_FUNCTIONALEXCHANGE_1));
 
     DiagramHelper.collapseContainer(ted, fc1Container);
     DiagramHelper.collapseContainer(ted, fc2Container);
     DiagramHelper.collapseContainer(ted, fc3Container);
     diagramContext.refreshDiagram();
 
-    Assert.assertEquals("No edge from FCIF1 to FCIF2", false,
-        diagramContext.hasEdge(FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION_TO_LOGICALFUNCTION_1,
-            FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION_TO_LOGICALFUNCTION_2,
-            FUNCTIONAL_CHAIN_INVOLVEMENT_LINK_TO_FUNCTIONALEXCHANGE_1));
-
-    Assert.assertEquals("No edge from FCR1 to FCR2", false,
+    Assert.assertEquals("Existing edge from FCR1 to FCR2", true,
         diagramContext.hasEdge(FUNCTIONAL_CHAIN_REFERENCE_TO_FUNCTIONALCHAIN_1,
             FUNCTIONAL_CHAIN_REFERENCE_TO_FUNCTIONALCHAIN_2,
             FUNCTIONAL_CHAIN_INVOLVEMENT_LINK_TO_FUNCTIONALEXCHANGE_1));
@@ -111,11 +96,6 @@ public class FCRCollapsingTest extends AbstractDiagramTestCase {
     DiagramHelper.unCollapseContainer(ted, fc2Container);
     diagramContext.refreshDiagram();
 
-    Assert.assertEquals("No edge from FCIF1 to FCIF2", false,
-        diagramContext.hasEdge(FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION_TO_LOGICALFUNCTION_1,
-            FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION_TO_LOGICALFUNCTION_2,
-            FUNCTIONAL_CHAIN_INVOLVEMENT_LINK_TO_FUNCTIONALEXCHANGE_1));
-
     Assert.assertEquals("No edge from FCR1 to FCR2", false,
         diagramContext.hasEdge(FUNCTIONAL_CHAIN_REFERENCE_TO_FUNCTIONALCHAIN_1,
             FUNCTIONAL_CHAIN_REFERENCE_TO_FUNCTIONALCHAIN_2,
@@ -123,11 +103,6 @@ public class FCRCollapsingTest extends AbstractDiagramTestCase {
 
     DiagramHelper.unCollapseContainer(ted, fc3Container);
     diagramContext.refreshDiagram();
-    
-    Assert.assertEquals("Existing edge from FCIF1 to FCIF2", true,
-        diagramContext.hasEdge(FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION_TO_LOGICALFUNCTION_1,
-            FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION_TO_LOGICALFUNCTION_2,
-            FUNCTIONAL_CHAIN_INVOLVEMENT_LINK_TO_FUNCTIONALEXCHANGE_1));
   }
 
   /**
@@ -142,11 +117,6 @@ public class FCRCollapsingTest extends AbstractDiagramTestCase {
             FUNCTIONAL_CHAIN_REFERENCE_TO_FUNCTIONALCHAIN_2,
             FUNCTIONAL_CHAIN_INVOLVEMENT_LINK_TO_FUNCTIONALEXCHANGE_3));
 
-    Assert.assertEquals("Existing edge from FCIF5 to FCIF2", true,
-        diagramContext.hasEdge(FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION_TO_LOGICALFUNCTION_5,
-            FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION_TO_LOGICALFUNCTION_2,
-            FUNCTIONAL_CHAIN_INVOLVEMENT_LINK_TO_FUNCTIONALEXCHANGE_3));
-
     DiagramHelper.collapseContainer(ted, fc2Container); // target is collapsed but its parent (FCR3) is not collapsed.
     DiagramHelper.collapseContainer(ted, fc8Container); // source
     diagramContext.refreshDiagram();
@@ -156,35 +126,16 @@ public class FCRCollapsingTest extends AbstractDiagramTestCase {
             FUNCTIONAL_CHAIN_REFERENCE_TO_FUNCTIONALCHAIN_2,
             FUNCTIONAL_CHAIN_INVOLVEMENT_LINK_TO_FUNCTIONALEXCHANGE_3));
 
-    Assert.assertEquals("No edge from FCIF5 to FCIF2", false,
-        diagramContext.hasEdge(FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION_TO_LOGICALFUNCTION_5,
-            FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION_TO_LOGICALFUNCTION_2,
-            FUNCTIONAL_CHAIN_INVOLVEMENT_LINK_TO_FUNCTIONALEXCHANGE_3));
-
     DiagramHelper.unCollapseContainer(ted, fc2Container); // target
     diagramContext.refreshDiagram();
-    Assert.assertEquals("Existing edge from FCR8 to FCIF2", true,
-        diagramContext.hasEdge(FUNCTIONAL_CHAIN_REFERENCE_TO_FUNCTIONALCHAIN_8,
-            FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION_TO_LOGICALFUNCTION_2,
-            FUNCTIONAL_CHAIN_INVOLVEMENT_LINK_TO_FUNCTIONALEXCHANGE_3));
 
     Assert.assertEquals("No edge from FCR8 to FCR2", false,
         diagramContext.hasEdge(FUNCTIONAL_CHAIN_REFERENCE_TO_FUNCTIONALCHAIN_8,
             FUNCTIONAL_CHAIN_REFERENCE_TO_FUNCTIONALCHAIN_2,
             FUNCTIONAL_CHAIN_INVOLVEMENT_LINK_TO_FUNCTIONALEXCHANGE_3));
 
-    Assert.assertEquals("No edge from FCIF5 to FCIF2", false,
-        diagramContext.hasEdge(FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION_TO_LOGICALFUNCTION_5,
-            FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION_TO_LOGICALFUNCTION_2,
-            FUNCTIONAL_CHAIN_INVOLVEMENT_LINK_TO_FUNCTIONALEXCHANGE_3));
-
     DiagramHelper.unCollapseContainer(ted, fc8Container); // source
     diagramContext.refreshDiagram();
-
-    Assert.assertEquals("Existing edge from FCIF5 to FCIF2", true,
-        diagramContext.hasEdge(FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION_TO_LOGICALFUNCTION_5,
-            FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION_TO_LOGICALFUNCTION_2,
-            FUNCTIONAL_CHAIN_INVOLVEMENT_LINK_TO_FUNCTIONALEXCHANGE_3));
   }
 
   /**
@@ -199,11 +150,6 @@ public class FCRCollapsingTest extends AbstractDiagramTestCase {
             FUNCTIONAL_CHAIN_REFERENCE_TO_FUNCTIONALCHAIN_3,
             FUNCTIONAL_CHAIN_INVOLVEMENT_LINK_TO_FUNCTIONALEXCHANGE_3));
 
-    Assert.assertEquals("Existing edge from FCIF5 to FCIF2", true,
-        diagramContext.hasEdge(FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION_TO_LOGICALFUNCTION_5,
-            FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION_TO_LOGICALFUNCTION_2,
-            FUNCTIONAL_CHAIN_INVOLVEMENT_LINK_TO_FUNCTIONALEXCHANGE_3));
-
     DiagramHelper.collapseContainer(ted, fc8Container); // source
     DiagramHelper.collapseContainer(ted, fc3Container); // target parent
     diagramContext.refreshDiagram();
@@ -213,36 +159,16 @@ public class FCRCollapsingTest extends AbstractDiagramTestCase {
             FUNCTIONAL_CHAIN_REFERENCE_TO_FUNCTIONALCHAIN_3,
             FUNCTIONAL_CHAIN_INVOLVEMENT_LINK_TO_FUNCTIONALEXCHANGE_3));
 
-    Assert.assertEquals("No edge from FCIF5 to FCIF2", false,
-        diagramContext.hasEdge(FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION_TO_LOGICALFUNCTION_5,
-            FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION_TO_LOGICALFUNCTION_2,
-            FUNCTIONAL_CHAIN_INVOLVEMENT_LINK_TO_FUNCTIONALEXCHANGE_3));
-
     DiagramHelper.unCollapseContainer(ted, fc3Container); // target parent
     diagramContext.refreshDiagram();
-
-    Assert.assertEquals("Existing edge from FCR8 to FCIF2", true,
-        diagramContext.hasEdge(FUNCTIONAL_CHAIN_REFERENCE_TO_FUNCTIONALCHAIN_8,
-            FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION_TO_LOGICALFUNCTION_2,
-            FUNCTIONAL_CHAIN_INVOLVEMENT_LINK_TO_FUNCTIONALEXCHANGE_3));
 
     Assert.assertEquals("No edge from FCR8 to FCR3", false,
         diagramContext.hasEdge(FUNCTIONAL_CHAIN_REFERENCE_TO_FUNCTIONALCHAIN_8,
             FUNCTIONAL_CHAIN_REFERENCE_TO_FUNCTIONALCHAIN_3,
             FUNCTIONAL_CHAIN_INVOLVEMENT_LINK_TO_FUNCTIONALEXCHANGE_3));
 
-    Assert.assertEquals("No edge from FCIF5 to FCIF2", false,
-        diagramContext.hasEdge(FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION_TO_LOGICALFUNCTION_5,
-            FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION_TO_LOGICALFUNCTION_2,
-            FUNCTIONAL_CHAIN_INVOLVEMENT_LINK_TO_FUNCTIONALEXCHANGE_3));
-
     DiagramHelper.unCollapseContainer(ted, fc8Container);
     diagramContext.refreshDiagram();
-
-    Assert.assertEquals("Existing edge from FCIF5 to FCIF2", true,
-        diagramContext.hasEdge(FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION_TO_LOGICALFUNCTION_5,
-            FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION_TO_LOGICALFUNCTION_2,
-            FUNCTIONAL_CHAIN_INVOLVEMENT_LINK_TO_FUNCTIONALEXCHANGE_3));
   }
 
   /**
@@ -256,10 +182,6 @@ public class FCRCollapsingTest extends AbstractDiagramTestCase {
         diagramContext.hasEdge(FUNCTIONAL_CHAIN_REFERENCE_TO_FUNCTIONALCHAIN_2,
             FUNCTIONAL_CHAIN_REFERENCE_TO_FUNCTIONALCHAIN_4,
             FUNCTIONAL_CHAIN_INVOLVEMENT_LINK_TO_FUNCTIONALEXCHANGE_2));
-    Assert.assertEquals("Existing edge from FCIF2 to FCIF3", true,
-        diagramContext.hasEdge(FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION_TO_LOGICALFUNCTION_2,
-            FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION_TO_LOGICALFUNCTION_3,
-            FUNCTIONAL_CHAIN_INVOLVEMENT_LINK_TO_FUNCTIONALEXCHANGE_2));
 
     DiagramHelper.collapseContainer(ted, fc2Container); // source is collapsed but its parent (FCR3) is not collapsed.
     DiagramHelper.collapseContainer(ted, fc4Container); // target
@@ -270,26 +192,12 @@ public class FCRCollapsingTest extends AbstractDiagramTestCase {
             FUNCTIONAL_CHAIN_REFERENCE_TO_FUNCTIONALCHAIN_4,
             FUNCTIONAL_CHAIN_INVOLVEMENT_LINK_TO_FUNCTIONALEXCHANGE_2));
 
-    Assert.assertEquals("No edge from FCIF2 to FCIF3", false,
-        diagramContext.hasEdge(FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION_TO_LOGICALFUNCTION_2,
-            FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION_TO_LOGICALFUNCTION_3,
-            FUNCTIONAL_CHAIN_INVOLVEMENT_LINK_TO_FUNCTIONALEXCHANGE_2));
-
     DiagramHelper.unCollapseContainer(ted, fc4Container); // target
     diagramContext.refreshDiagram();
-    Assert.assertEquals("Existing edge from FCR2 to FCIF3", true,
-        diagramContext.hasEdge(FUNCTIONAL_CHAIN_REFERENCE_TO_FUNCTIONALCHAIN_2,
-            FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION_TO_LOGICALFUNCTION_3,
-            FUNCTIONAL_CHAIN_INVOLVEMENT_LINK_TO_FUNCTIONALEXCHANGE_2));
 
     Assert.assertEquals("No edge from FCR2 to FCR4", false,
         diagramContext.hasEdge(FUNCTIONAL_CHAIN_REFERENCE_TO_FUNCTIONALCHAIN_2,
             FUNCTIONAL_CHAIN_REFERENCE_TO_FUNCTIONALCHAIN_4,
-            FUNCTIONAL_CHAIN_INVOLVEMENT_LINK_TO_FUNCTIONALEXCHANGE_2));
-
-    Assert.assertEquals("No edge from FCIF2 to FCIF3", false,
-        diagramContext.hasEdge(FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION_TO_LOGICALFUNCTION_2,
-            FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION_TO_LOGICALFUNCTION_3,
             FUNCTIONAL_CHAIN_INVOLVEMENT_LINK_TO_FUNCTIONALEXCHANGE_2));
 
     DiagramHelper.unCollapseContainer(ted, fc2Container); // source
@@ -308,11 +216,6 @@ public class FCRCollapsingTest extends AbstractDiagramTestCase {
             FUNCTIONAL_CHAIN_REFERENCE_TO_FUNCTIONALCHAIN_4,
             FUNCTIONAL_CHAIN_INVOLVEMENT_LINK_TO_FUNCTIONALEXCHANGE_2));
 
-    Assert.assertEquals("Existing edge from FCIF2 to FCIF3", true,
-        diagramContext.hasEdge(FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION_TO_LOGICALFUNCTION_2,
-            FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION_TO_LOGICALFUNCTION_3,
-            FUNCTIONAL_CHAIN_INVOLVEMENT_LINK_TO_FUNCTIONALEXCHANGE_2));
-
     DiagramHelper.collapseContainer(ted, fc3Container); // source parent
     DiagramHelper.collapseContainer(ted, fc4Container); // target
     diagramContext.refreshDiagram();
@@ -322,26 +225,11 @@ public class FCRCollapsingTest extends AbstractDiagramTestCase {
             FUNCTIONAL_CHAIN_REFERENCE_TO_FUNCTIONALCHAIN_4,
             FUNCTIONAL_CHAIN_INVOLVEMENT_LINK_TO_FUNCTIONALEXCHANGE_2));
 
-    Assert.assertEquals("No edge from FCIF2 to FCIF3", false,
-        diagramContext.hasEdge(FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION_TO_LOGICALFUNCTION_2,
-            FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION_TO_LOGICALFUNCTION_3,
-            FUNCTIONAL_CHAIN_INVOLVEMENT_LINK_TO_FUNCTIONALEXCHANGE_2));
-
     DiagramHelper.unCollapseContainer(ted, fc4Container); // source parent
     diagramContext.refreshDiagram();
 
     Assert.assertEquals("Existing edge from FCR3 to FCIF3", true,
         diagramContext.hasEdge(FUNCTIONAL_CHAIN_REFERENCE_TO_FUNCTIONALCHAIN_3,
-            FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION_TO_LOGICALFUNCTION_3,
-            FUNCTIONAL_CHAIN_INVOLVEMENT_LINK_TO_FUNCTIONALEXCHANGE_2));
-
-    Assert.assertEquals("No edge from FCR3 to FCR4", false,
-        diagramContext.hasEdge(FUNCTIONAL_CHAIN_REFERENCE_TO_FUNCTIONALCHAIN_3,
-            FUNCTIONAL_CHAIN_REFERENCE_TO_FUNCTIONALCHAIN_4,
-            FUNCTIONAL_CHAIN_INVOLVEMENT_LINK_TO_FUNCTIONALEXCHANGE_2));
-
-    Assert.assertEquals("No edge from FCIF2 to FCIF3", false,
-        diagramContext.hasEdge(FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION_TO_LOGICALFUNCTION_2,
             FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION_TO_LOGICALFUNCTION_3,
             FUNCTIONAL_CHAIN_INVOLVEMENT_LINK_TO_FUNCTIONALEXCHANGE_2));
 
@@ -361,11 +249,6 @@ public class FCRCollapsingTest extends AbstractDiagramTestCase {
             FUNCTIONAL_CHAIN_REFERENCE_TO_FUNCTIONALCHAIN_2,
             FUNCTIONAL_CHAIN_INVOLVEMENT_LINK_TO_FUNCTIONALEXCHANGE_1));
 
-    Assert.assertEquals("Existing edge from FCIF1 to FCIF2", true,
-        diagramContext.hasEdge(FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION_TO_LOGICALFUNCTION_1,
-            FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION_TO_LOGICALFUNCTION_2,
-            FUNCTIONAL_CHAIN_INVOLVEMENT_LINK_TO_FUNCTIONALEXCHANGE_1));
-
     DiagramHelper.collapseContainer(ted, fc1Container); // source
     DiagramHelper.collapseContainer(ted, fc2Container); // target
     diagramContext.refreshDiagram();
@@ -375,22 +258,12 @@ public class FCRCollapsingTest extends AbstractDiagramTestCase {
             FUNCTIONAL_CHAIN_REFERENCE_TO_FUNCTIONALCHAIN_2,
             FUNCTIONAL_CHAIN_INVOLVEMENT_LINK_TO_FUNCTIONALEXCHANGE_1));
 
-    Assert.assertEquals("No edge from FCIF1 to FCIF2", false,
-        diagramContext.hasEdge(FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION_TO_LOGICALFUNCTION_1,
-            FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION_TO_LOGICALFUNCTION_2,
-            FUNCTIONAL_CHAIN_INVOLVEMENT_LINK_TO_FUNCTIONALEXCHANGE_1));
-
     DiagramHelper.unCollapseContainer(ted, fc1Container); // source
     DiagramHelper.unCollapseContainer(ted, fc2Container); // target
     diagramContext.refreshDiagram();
     Assert.assertEquals("No edge from FCR1 to FCR2", false,
         diagramContext.hasEdge(FUNCTIONAL_CHAIN_REFERENCE_TO_FUNCTIONALCHAIN_1,
             FUNCTIONAL_CHAIN_REFERENCE_TO_FUNCTIONALCHAIN_2,
-            FUNCTIONAL_CHAIN_INVOLVEMENT_LINK_TO_FUNCTIONALEXCHANGE_1));
-
-    Assert.assertEquals("Existing edge from FCIF1 to FCIF2", true,
-        diagramContext.hasEdge(FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION_TO_LOGICALFUNCTION_1,
-            FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION_TO_LOGICALFUNCTION_2,
             FUNCTIONAL_CHAIN_INVOLVEMENT_LINK_TO_FUNCTIONALEXCHANGE_1));
   }
 
@@ -405,11 +278,6 @@ public class FCRCollapsingTest extends AbstractDiagramTestCase {
             FUNCTIONAL_CHAIN_REFERENCE_TO_FUNCTIONALCHAIN_2,
             FUNCTIONAL_CHAIN_INVOLVEMENT_LINK_TO_FUNCTIONALEXCHANGE_1));
 
-    Assert.assertEquals("Existing edge from FCIF1 to FCIF2", true,
-        diagramContext.hasEdge(FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION_TO_LOGICALFUNCTION_1,
-            FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION_TO_LOGICALFUNCTION_2,
-            FUNCTIONAL_CHAIN_INVOLVEMENT_LINK_TO_FUNCTIONALEXCHANGE_1));
-
     DiagramHelper.collapseContainer(ted, fc2Container); // target
     diagramContext.refreshDiagram();
 
@@ -418,21 +286,11 @@ public class FCRCollapsingTest extends AbstractDiagramTestCase {
             FUNCTIONAL_CHAIN_REFERENCE_TO_FUNCTIONALCHAIN_2,
             FUNCTIONAL_CHAIN_INVOLVEMENT_LINK_TO_FUNCTIONALEXCHANGE_1));
 
-    Assert.assertEquals("No edge from FCIF1 to FCIF2", false,
-        diagramContext.hasEdge(FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION_TO_LOGICALFUNCTION_1,
-            FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION_TO_LOGICALFUNCTION_2,
-            FUNCTIONAL_CHAIN_INVOLVEMENT_LINK_TO_FUNCTIONALEXCHANGE_1));
-
     DiagramHelper.unCollapseContainer(ted, fc2Container); // target
     diagramContext.refreshDiagram();
     Assert.assertEquals("No edge from FCIF1 to FCR2", false,
         diagramContext.hasEdge(FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION_TO_LOGICALFUNCTION_1,
             FUNCTIONAL_CHAIN_REFERENCE_TO_FUNCTIONALCHAIN_2,
-            FUNCTIONAL_CHAIN_INVOLVEMENT_LINK_TO_FUNCTIONALEXCHANGE_1));
-
-    Assert.assertEquals("Existing edge from FCIF1 to FCIF2", true,
-        diagramContext.hasEdge(FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION_TO_LOGICALFUNCTION_1,
-            FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION_TO_LOGICALFUNCTION_2,
             FUNCTIONAL_CHAIN_INVOLVEMENT_LINK_TO_FUNCTIONALEXCHANGE_1));
   }
 
@@ -445,13 +303,8 @@ public class FCRCollapsingTest extends AbstractDiagramTestCase {
     Assert.assertEquals("No edge from FCR1 to FCIF2", false,
         diagramContext.hasEdge(FUNCTIONAL_CHAIN_REFERENCE_TO_FUNCTIONALCHAIN_1,
             FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION_TO_LOGICALFUNCTION_2,
-            FUNCTIONAL_CHAIN_INVOLVEMENT_LINK_TO_FUNCTIONALEXCHANGE_1));
 
-    Assert.assertEquals("Existing edge from FCIF1 to FCIF2", true,
-        diagramContext.hasEdge(FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION_TO_LOGICALFUNCTION_1,
-            FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION_TO_LOGICALFUNCTION_2,
             FUNCTIONAL_CHAIN_INVOLVEMENT_LINK_TO_FUNCTIONALEXCHANGE_1));
-
     DiagramHelper.collapseContainer(ted, fc1Container); // source
     diagramContext.refreshDiagram();
 
@@ -460,20 +313,10 @@ public class FCRCollapsingTest extends AbstractDiagramTestCase {
             FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION_TO_LOGICALFUNCTION_2,
             FUNCTIONAL_CHAIN_INVOLVEMENT_LINK_TO_FUNCTIONALEXCHANGE_1));
 
-    Assert.assertEquals("No edge from FCIF1 to FCIF2", false,
-        diagramContext.hasEdge(FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION_TO_LOGICALFUNCTION_1,
-            FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION_TO_LOGICALFUNCTION_2,
-            FUNCTIONAL_CHAIN_INVOLVEMENT_LINK_TO_FUNCTIONALEXCHANGE_1));
-
     DiagramHelper.unCollapseContainer(ted, fc1Container); // source
     diagramContext.refreshDiagram();
     Assert.assertEquals("No edge from FCR1 to FCIF2", false,
         diagramContext.hasEdge(FUNCTIONAL_CHAIN_REFERENCE_TO_FUNCTIONALCHAIN_1,
-            FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION_TO_LOGICALFUNCTION_2,
-            FUNCTIONAL_CHAIN_INVOLVEMENT_LINK_TO_FUNCTIONALEXCHANGE_1));
-
-    Assert.assertEquals("Existing edge from FCIF1 to FCIF2", true,
-        diagramContext.hasEdge(FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION_TO_LOGICALFUNCTION_1,
             FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION_TO_LOGICALFUNCTION_2,
             FUNCTIONAL_CHAIN_INVOLVEMENT_LINK_TO_FUNCTIONALEXCHANGE_1));
   }

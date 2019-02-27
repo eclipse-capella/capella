@@ -27,6 +27,7 @@ public class FCDDiagramToolsTestSuite extends BasicTestSuite {
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
     tests.add(new FCRCollapsingTest());
+    tests.add(new FCDReferenceHierarchyTest());
     return tests;
   }
 
