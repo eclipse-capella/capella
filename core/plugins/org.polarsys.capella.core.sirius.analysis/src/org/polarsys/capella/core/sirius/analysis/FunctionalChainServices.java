@@ -43,7 +43,6 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.RGBValues;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.swt.graphics.RGB;
-import org.polarsys.capella.common.data.modellingcore.AbstractExchangeItem;
 import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.helpers.SimpleOrientedGraph;
 import org.polarsys.capella.core.commands.preferences.service.ScopedCapellaPreferencesStore;
@@ -568,65 +567,47 @@ public class FunctionalChainServices {
     return numberOfVisibleRelatedFEEdges == functionalExchangesOnTheChain.size();
   }
 
-  // TODO Add filters for Functions
   public String getFCInvolvmentLinkLabel(FunctionalChainInvolvementLink involvementLink, DDiagram diagram) {
 
     String label = "";
     InvolvedElement involved = involvementLink.getInvolved();
 
     if (involved instanceof FunctionalExchange) {
+      FunctionalExchange functionalExchange = (FunctionalExchange) involvementLink.getInvolved();
+      label = functionalExchange.getName();
 
-      boolean showExchangeItems = false;
-      boolean showExchangeItemsParameters = false;
-      boolean showFEEI = false;
+      Set<String> filterNames = diagram.getActivatedFilters().stream().map(FilterDescription::getName)
+          .collect(Collectors.toSet());
 
-      FunctionalExchange fe = (FunctionalExchange) involvementLink.getInvolved();
-      label = fe.getName();
-      for (FilterDescription filter : diagram.getActivatedFilters()) {
-        if (filter.getName().equals(IMappingNameConstants.SHOW_EXCHANGE_ITEMS)) {
-          showExchangeItems = true;
-        }
-        if (filter.getName().equals(IMappingNameConstants.SHOW_EXCHANGE_ITEMS_PARAMETERS)) {
-          showExchangeItemsParameters = true;
-        }
-        if (filter.getName().equals(IMappingNameConstants.SHOW_FUNCTIONAL_EXCHANGES_ECHANGE_ITEMS)) {
-          showFEEI = true;
-        }
-      }
+      boolean showExchangeItems = filterNames.contains(IMappingNameConstants.SHOW_EXCHANGE_ITEMS);
+      boolean showExchangeItemsParameters = filterNames.contains(IMappingNameConstants.SHOW_EXCHANGE_ITEMS_PARAMETERS);
+      boolean showFEExchangeItems = filterNames.contains(IMappingNameConstants.SHOW_FUNCTIONAL_EXCHANGES_ECHANGE_ITEMS);
 
-      if (showExchangeItems || showFEEI) {
+      if (showExchangeItems || showFEExchangeItems) {
         StringBuilder sb = new StringBuilder();
-        if (showFEEI) {
+
+        if (showFEExchangeItems) {
           sb.append(label);
           sb.append("["); //$NON-NLS-1$
         }
-        int indice = 0;
-        EList<ExchangeItem> exchangedItems = involvementLink.getExchangedItems();
-        if ((null == exchangedItems) || exchangedItems.isEmpty()) {
-          for (AbstractExchangeItem ei : fe.getExchangedItems()) {
-            sb.append(ExchangeItemExt.getEILabel(ei, showExchangeItemsParameters));
-            indice++;
-            if (indice < fe.getExchangedItems().size()) {
-              sb.append(", "); //$NON-NLS-1$
-            }
-          }
-        } else {
-          for (AbstractExchangeItem ei : exchangedItems) {
-            sb.append(ExchangeItemExt.getEILabel(ei, showExchangeItemsParameters));
-            indice++;
-            if (indice < exchangedItems.size()) {
-              sb.append(", "); //$NON-NLS-1$
-            }
-          }
-        }
 
-        if (showFEEI) {
+        EList<ExchangeItem> exchangedItemsForLabel = involvementLink.getExchangedItems().isEmpty()
+            ? functionalExchange.getExchangedItems()
+            : involvementLink.getExchangedItems();
+
+        String exchangedItemsLabel = exchangedItemsForLabel.stream()
+            .map(ei -> ExchangeItemExt.getEILabel(ei, showExchangeItemsParameters).toString())
+            .collect(Collectors.joining(", "));
+
+        sb.append(exchangedItemsLabel);
+
+        if (showFEExchangeItems) {
           sb.append("]"); //$NON-NLS-1$
         }
-        return sb.toString();
+
+        label = sb.toString();
       }
     } else if (involved instanceof AbstractFunction) {
-
       AbstractFunction function = (AbstractFunction) involved;
       label = function.getName();
     }
