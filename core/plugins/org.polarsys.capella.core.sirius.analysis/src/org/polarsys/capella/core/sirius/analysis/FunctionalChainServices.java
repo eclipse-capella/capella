@@ -136,7 +136,9 @@ public class FunctionalChainServices {
         linksAcumulator.add((FunctionalChainInvolvementLink) involvement);
       } else if (involvement instanceof FunctionalChainReference) {
         FunctionalChain referencedChain = ((FunctionalChainReference) involvement).getReferencedFunctionalChain();
-        getAllFunctionalChainInvolvementLinks(referencedChain, linksAcumulator);
+        if (referencedChain != null) {
+          getAllFunctionalChainInvolvementLinks(referencedChain, linksAcumulator);
+        }
       }
     }
   }
