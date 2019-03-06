@@ -22,17 +22,17 @@ import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.DiagramHelper;
 
 public class CreateDEdgeTool extends AbstractToolStep<DEdge> {
 
-  String _sourceView;
-  String _targetView;
+  protected String _sourceView;
+  protected String _targetView;
   protected String _newIdentifier;
-  String _newSourceIdentifier;
-  String _newTargetIdentifier;
+  protected String _newSourceIdentifier;
+  protected String _newTargetIdentifier;
 
-  Collection<DDiagramElement> _sourceElements;
-  Collection<DDiagramElement> _targetElements;
-  Collection<DDiagramElement> _newSourceElements;
-  Collection<DDiagramElement> _newTargetElements;
-  Collection<DDiagramElement> _edgesElements;
+  protected Collection<DDiagramElement> _sourceElements;
+  protected Collection<DDiagramElement> _targetElements;
+  protected Collection<DDiagramElement> _newSourceElements;
+  protected Collection<DDiagramElement> _newTargetElements;
+  protected Collection<DDiagramElement> _edgesElements;
   protected Collection<DDiagramElement> _newEdgesElements;
 
   public CreateDEdgeTool(DiagramContext context, String toolName, String sourceView, String targetView) {
@@ -41,7 +41,7 @@ public class CreateDEdgeTool extends AbstractToolStep<DEdge> {
     _targetView = targetView;
   }
 
-  public CreateDEdgeTool(DiagramContext context, String toolName,String sourceView, String targetView,
+  public CreateDEdgeTool(DiagramContext context, String toolName, String sourceView, String targetView,
       String newIdentifier) {
     this(context, toolName, sourceView, targetView);
     _newIdentifier = newIdentifier;
