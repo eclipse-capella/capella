@@ -13,6 +13,7 @@ package org.polarsys.capella.test.framework.helpers;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
 import org.eclipse.amalgam.explorer.activity.ui.ActivityExplorerActivator;
@@ -39,6 +40,7 @@ import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorReference;
+import org.eclipse.ui.IWorkbenchCommandConstants;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPartSite;
 import org.eclipse.ui.IWorkbenchSite;
@@ -50,6 +52,7 @@ import org.eclipse.ui.progress.UIJob;
 import org.polarsys.capella.core.explorer.activity.ui.actions.OpenActivityExplorerAction;
 import org.polarsys.capella.core.model.obfuscator.actions.ObfuscateSessionAction;
 import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaCloneDiagramCommand;
+import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaCopyCommand;
 import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaCopyToClipboardCommand;
 import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaPasteCommand;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.RenameResourceAction;
@@ -215,7 +218,7 @@ public class GuiActions {
     while (jobs.size() > 0) {
       for (Job job : jobs) {
         try {
-          job.join(100,new NullProgressMonitor());
+          job.join(100, new NullProgressMonitor());
         } catch (InterruptedException e) {
           e.printStackTrace();
         }
@@ -246,7 +249,8 @@ public class GuiActions {
   public static void renameModelFile(IFile modelFile, final String newName) {
 
     // Execute the rename action
-    RenameResourceAction renameAction = new RenameResourceAction(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell()) {
+    RenameResourceAction renameAction = new RenameResourceAction(
+        PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell()) {
       @Override
       protected String queryNewResourceName(IResource resource) {
         return newName;
@@ -315,6 +319,16 @@ public class GuiActions {
 
   }
 
+  public static void copyElement(String commandId, EObject element) throws Exception {
+
+    ICommandService s = PlatformUI.getWorkbench().getService(ICommandService.class);
+    Command command = s.getCommand(IWorkbenchCommandConstants.EDIT_COPY);
+    IHandlerService hservice = PlatformUI.getWorkbench().getService(IHandlerService.class);
+    setCurrentSelection(element);
+    hservice.executeCommandInContext(ParameterizedCommand.generateCommand(command, null), null,
+        hservice.createContextSnapshot(true));
+  }
+
   /**
    * Open ActivityExplorersession by using the Capella action @see OpenActivityExplorerAction
    *
@@ -333,18 +347,18 @@ public class GuiActions {
    * @param file
    * @throws PartInitException
    */
-  protected static void setCurrentSelection(IFile file) throws PartInitException {
+  protected static void setCurrentSelection(Object selectedObject) throws PartInitException {
     IWorkbenchPartSite site = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActivePart()
         .getSite();
 
-    StructuredSelection selection = new StructuredSelection(file);
+    StructuredSelection selection = new StructuredSelection(selectedObject);
     CapellaCommonNavigator capellaProjectView = (CapellaCommonNavigator) PlatformUI.getWorkbench()
         .getActiveWorkbenchWindow().getActivePage().showView(CapellaCommonNavigator.ID);
 
     site.setSelectionProvider(capellaProjectView.getCommonViewer());
     site.getSelectionProvider().setSelection(selection);
   }
-  
+
   public static void obfuscate(IFile airdFile) {
     ObfuscateSessionAction obfuscateAction = new ObfuscateSessionAction();
     IStructuredSelection selection = new StructuredSelection(airdFile);
@@ -354,19 +368,23 @@ public class GuiActions {
 
   /**
    * This code is called when using the "Remove Hidden Elements" action
+   * 
    * @param session
    */
   public static void deleteHiddenElements(Session session, boolean isUnsyncDiagram) {
-    Collection<DRepresentationDescriptor> representationsToRefresh = DialectManager.INSTANCE.getAllRepresentationDescriptors(session);
+    Collection<DRepresentationDescriptor> representationsToRefresh = DialectManager.INSTANCE
+        .getAllRepresentationDescriptors(session);
     Job job = new DeleteHiddenElementsJob(representationsToRefresh, session, isUnsyncDiagram);
     job.setThread(Display.getDefault().getThread());
     job.setUser(true);
     job.schedule();
   }
- 
+
   public static void refreshAllSubRepresentations(IFile airdFile, Session session) {
-    Collection<DRepresentationDescriptor> representationsToRefresh = DialectManager.INSTANCE.getAllRepresentationDescriptors(session);
-    Job job = new RefreshDiagramsCommandHandler().new RefreshDiagramsJob(airdFile.getName(), representationsToRefresh, session, Display.getCurrent());
+    Collection<DRepresentationDescriptor> representationsToRefresh = DialectManager.INSTANCE
+        .getAllRepresentationDescriptors(session);
+    Job job = new RefreshDiagramsCommandHandler().new RefreshDiagramsJob(airdFile.getName(), representationsToRefresh,
+        session, Display.getCurrent());
     job.setThread(Display.getDefault().getThread());
     job.setUser(true);
     job.schedule();
@@ -377,7 +395,7 @@ public class GuiActions {
     if (page != null) {
       final IEditorReference[] editorReferences = page.getEditorReferences();
       final List<IEditorReference> editorsToClose = new ArrayList<IEditorReference>();
-      
+
       // Only take care of Sirius editors
       for (final IEditorReference editor : editorReferences) {
         if (editor.getEditor(false) instanceof IEditorPart)
@@ -389,7 +407,7 @@ public class GuiActions {
       }
     }
   }
-  
+
   /**
    * Copy a list of elements and paste to a target element
    * 
@@ -411,17 +429,30 @@ public class GuiActions {
         CommandParameter.NO_INDEX);
     ted.getCommandStack().execute(capellaPasteCommand);
   }
-  
+
   /**
    * Clone a diagram and all this attach element
    * 
    * @param descriptors
-   *          the representations to clone 
-
+   *          the representations to clone
+   * 
    */
   public static Collection<DRepresentationDescriptor> CloneDiagram(Collection<DRepresentationDescriptor> descriptors) {
     CapellaCloneDiagramCommand capellaCloneDiagramCommand = new CapellaCloneDiagramCommand(descriptors);
     capellaCloneDiagramCommand.execute();
     return capellaCloneDiagramCommand.getResult();
+  }
+
+  public static boolean canPasteElement(String string, EObject newTarget) {
+    ICommandService s = PlatformUI.getWorkbench().getService(ICommandService.class);
+    Command command = s.getCommand(IWorkbenchCommandConstants.EDIT_PASTE);
+    try {
+      setCurrentSelection(newTarget);
+      return command.isEnabled();
+      
+    } catch (Exception e) {
+      return false;
+    }
+    
   }
 }

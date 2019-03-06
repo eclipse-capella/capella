@@ -60,6 +60,7 @@ import org.polarsys.capella.core.model.helpers.move.MoveHelper;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.drop.DiagramDropAdapterAssistant;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.drop.ExplorerDropAdapterAssistant;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaCommonNavigator;
+import org.polarsys.capella.test.framework.helpers.GuiActions;
 import org.polarsys.capella.test.framework.helpers.TestHelper;
 import org.polarsys.capella.test.navigator.ju.model.NavigatorEmptyProject;
 
@@ -95,7 +96,8 @@ public class DragDropTest extends NavigatorEmptyProject {
 
     // Check function
     EObject systemFunction = createFunction(ROOT_SYSTEM_FUNCTION);
-    EObject systemFunction2 = createFunction(ROOT_SYSTEM_FUNCTION);
+
+    AbstractFunction systemFunction2 = createFunction(ROOT_SYSTEM_FUNCTION);
     EObject systemFunctionPkg = createFunctionPkg(ROOT_SYSTEM_FUNCTION);
     EObject systemFunctionPkg2 = createFunctionPkg(ROOT_SYSTEM_FUNCTION);
     EObject logicalFunction = createFunction(ROOT_LOGICAL_FUNCTION);
@@ -121,9 +123,12 @@ public class DragDropTest extends NavigatorEmptyProject {
 
     // Check functional chain
     EObject chain = createFunctionalChain(ROOT_SYSTEM_FUNCTION);
+    createFunctionalChainFunction(chain, systemFunction2);
     EObject capability = createCapability(SA_CAPABILITIES);
     EObject logicalCapability = createCapability(LA_CAPABILITIES);
     checkMoveDisabled(chain, LA_LOGICAL_FUNCTIONS);
+    checkCopyDisabled(chain, LA_LOGICAL_FUNCTIONS);
+    checkCopyEnabled(chain, capability);
     checkMoveAllowed(chain, capability);
     checkMoveAllowed(chain, systemFunction2);
     checkMoveDisabled(chain, logicalCapability);
@@ -131,7 +136,7 @@ public class DragDropTest extends NavigatorEmptyProject {
     // Check chain involvements
     EObject chain2 = createFunctionalChain(ROOT_SYSTEM_FUNCTION);
     checkMoveDisabled(createFunctionalChainLink(chain), chain2);
-    checkMoveDisabled(createFunctionalChainFunction(chain), chain2);
+    checkMoveDisabled(createFunctionalChainFunction(chain, systemFunction2), chain2);
     checkMoveDisabled(createFunctionalChainReference(chain), chain2);
 
     // Check interface pkg
@@ -195,6 +200,27 @@ public class DragDropTest extends NavigatorEmptyProject {
 
   }
 
+  private void checkCopyDisabled(EObject current, EObject newTarget) {
+    try {
+      GuiActions.copyElement(" ", current);
+      assertTrue(!GuiActions.canPasteElement(" ", newTarget));
+      
+      System.out.println();
+    } catch (Exception e) {
+      assertTrue(e.getMessage(), false);
+    }
+  }
+
+  private void checkCopyEnabled(EObject current, EObject newTarget) {
+    try {
+      GuiActions.copyElement(" ", current);
+      assertTrue(GuiActions.canPasteElement(" ", newTarget));
+      
+      System.out.println();
+    } catch (Exception e) {
+      assertTrue(e.getMessage(), false);
+    }
+  }
   private EObject createCapabilityPkg(EObject container) {
     if (container instanceof Component) {
       return create(container, LaPackage.Literals.CAPABILITY_REALIZATION_PKG);
@@ -278,8 +304,16 @@ public class DragDropTest extends NavigatorEmptyProject {
     return create(container, FaPackage.Literals.FUNCTIONAL_CHAIN_INVOLVEMENT_LINK);
   }
 
-  private FunctionalChainInvolvementFunction createFunctionalChainFunction(EObject container) {
-    return create(container, FaPackage.Literals.FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION);
+  private FunctionalChainInvolvementFunction createFunctionalChainFunction(EObject container, AbstractFunction function) {
+    FunctionalChainInvolvementFunction result = create(container, FaPackage.Literals.FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION);
+    AbstractReadWriteCommand create = new AbstractReadWriteCommand() {
+      @Override
+      public void run() {
+        result.setInvolved(function);
+      }
+    };
+    TestHelper.getExecutionManager(container).execute(create);
+    return result;
   }
 
   private FunctionalChainReference createFunctionalChainReference(EObject container) {

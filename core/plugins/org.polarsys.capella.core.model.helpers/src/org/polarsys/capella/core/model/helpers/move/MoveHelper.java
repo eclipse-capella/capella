@@ -75,6 +75,7 @@ import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.data.pa.PhysicalComponentPkg;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.CapellaElementExt;
+import org.polarsys.capella.core.model.helpers.FunctionalChainExt;
 import org.polarsys.capella.core.model.helpers.InterfaceExt;
 import org.polarsys.capella.core.model.helpers.StateExt;
 import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
@@ -190,7 +191,8 @@ public class MoveHelper {
         isOK = false;
 
       } else if (elt instanceof FunctionalChain) {
-        isOK = areInSameLayer((ModelElement) elt, (ModelElement) targetElement);
+        // Involved elements shall be in the same level than targetElement
+        isOK = ((FunctionalChain)elt).getInvolvedElements().stream().noneMatch(x -> !areInSameLayer(x, (ModelElement) targetElement));
       }
 
       if (!isOK) {
