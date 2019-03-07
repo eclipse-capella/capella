@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,24 +10,21 @@
  *******************************************************************************/
 package org.polarsys.capella.core.data.migration.aird;
 
-import org.eclipse.osgi.util.NLS;
+import org.eclipse.core.resources.IFile;
+import org.polarsys.capella.core.data.migration.MigrationConstants;
+import org.polarsys.capella.core.data.migration.MigrationRunnable;
 
 /**
- * I18n support.
  * 
  */
-public class Messages extends NLS {
-  private static final String BUNDLE_NAME = "org.polarsys.capella.core.data.migration.aird.messages"; //$NON-NLS-1$
-
-  public static String MigrationAction_DiagramMigration;
-  public static String MigrationAction_FCDDiagramMigration;
-
-  static {
-    // initialize resource bundle
-    NLS.initializeMessages(BUNDLE_NAME, Messages.class);
+public class FCDDiagramMigrationContributor extends AirdMigrationContributor {
+  @Override
+  public String getKind() {
+    return MigrationConstants.MIGRATION_KIND__FCDDIAGRAM;
   }
 
-  private Messages() {
-    // Do nothing.
+  @Override
+  public MigrationRunnable getRunnable(IFile file) {
+    return new FCDDiagramMigrationRunnable(file);
   }
 }

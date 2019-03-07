@@ -408,7 +408,6 @@ public abstract class MigrationRunnable extends AbstractMigrationRunnable {
         }
       }
     });
-
     return result[0];
   }
 
