@@ -45,8 +45,8 @@ public class Rule_I_28 extends AbstractRulesOnIntegrityTest {
 	 */
 	protected List<String> getScopeDefinition() {
 		return Arrays.asList(new String[] {
-				"a538ce35-8383-4555-9dd5-69aa62d3fd62",
-				"f3718ef8-f7de-44d7-99f7-9d240fa6e71f" });
+				"dbfca2b2-1ade-45f6-b7ce-82df05e63236",
+				"c20bab4e-686a-4cae-83d2-7cc7ea5dded7" });
 	}
 
 	/**
@@ -55,6 +55,6 @@ public class Rule_I_28 extends AbstractRulesOnIntegrityTest {
 	 */
 	protected List<OracleDefinition> getOracleDefinitions() {
 		return Arrays.asList(new OracleDefinition[] { new OracleDefinition(
-				"f3718ef8-f7de-44d7-99f7-9d240fa6e71f", 1) });
+				"c20bab4e-686a-4cae-83d2-7cc7ea5dded7", 1) });
 	}
 }

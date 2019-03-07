@@ -103,20 +103,21 @@ public class CapellaMetadataProvider implements IMetadataProvider {
       Version currentVersion = CapellaMetadataProvider.getCurrentVersion();
       return isMigrationRequired(fileVersion, currentVersion);
     }
-    
+
     return checkMetadata(file);
   }
 
   /**
-   * For a given file, retrieve if the model is fully compatible with the current platform.
-   * Checks current platform version and viewpoints.
+   * For a given file, retrieve if the model is fully compatible with the current platform. Checks current platform
+   * version and viewpoints.
    */
   public IStatus checkMetadata(IFile file) {
     IFile afm = getAFM(file);
 
     // If there is no afm file, we raise an error
     if (!afm.exists()) {
-      return new Status(IStatus.ERROR, AFIntegrationPlugin.getSymbolicName(), NLS.bind(Messages.NoMetadataException_Message, EcoreUtil2.getURI(file).toPlatformString(true)));
+      return new Status(IStatus.ERROR, AFIntegrationPlugin.getSymbolicName(),
+          NLS.bind(Messages.NoMetadataException_Message, EcoreUtil2.getURI(file).toPlatformString(true)));
     }
 
     ResourceSet set = new ResourceSetImpl();
@@ -144,13 +145,17 @@ public class CapellaMetadataProvider implements IMetadataProvider {
    */
   public IStatus checkMetadata(URI sessionResourceURI, ResourceSet set) {
     if (!ViewpointManager.getInstance(set).hasMetadata()) {
-      // If there is no afm file but the current check is about a capella project, we must raise an exception because the afm file is missing.
+      // If there is no afm file but the current check is about a capella project, we must raise an exception because
+      // the afm file is missing.
       if (CapellaResourceHelper.isCapellaProject(sessionResourceURI)) {
-        return new Status(IStatus.ERROR, AFIntegrationPlugin.getSymbolicName(), NLS.bind(Messages.NoMetadataException_Message, MetadataHelper.getViewpointMetadata(set).getExpectedMetadataStorageURI().toPlatformString(true)));
+        return new Status(IStatus.ERROR, AFIntegrationPlugin.getSymbolicName(),
+            NLS.bind(Messages.NoMetadataException_Message,
+                MetadataHelper.getViewpointMetadata(set).getExpectedMetadataStorageURI().toPlatformString(true)));
       }
     } else {
       // If there is an afm file, first we check if the capella viewpoint is present in the platform
-      org.polarsys.kitalpha.resourcereuse.model.Resource vp = ViewpointManager.getViewpoint(AFIntegrationPlugin.CAPELLA_VIEWPOINT_ID);
+      org.polarsys.kitalpha.resourcereuse.model.Resource vp = ViewpointManager
+          .getViewpoint(AFIntegrationPlugin.CAPELLA_VIEWPOINT_ID);
       if (vp != null) {
         // then, if the afm file has this capella viewpoint
         Version fileVersion = MetadataHelper.getViewpointMetadata(set).getVersion(vp);
@@ -165,7 +170,8 @@ public class CapellaMetadataProvider implements IMetadataProvider {
         }
       }
 
-      // If this viewpoint or another viewpoint is not compatible (not same major/minor), we raise a missing/incompatible viewpoint
+      // If this viewpoint or another viewpoint is not compatible (not same major/minor), we raise a
+      // missing/incompatible viewpoint
       IStatus result = ViewpointManager.checkViewpointsCompliancy(set);
       if (!result.isOK()) {
         return result;
@@ -179,21 +185,20 @@ public class CapellaMetadataProvider implements IMetadataProvider {
    * Returns whether the file of the given fileVersion requires a migration to be compatible to currentVersion
    */
   private IStatus isMigrationRequired(Version fileVersion, Version currentVersion) {
-    
+
     // if not the same major/minor we requires a migration
     if (!(fileVersion.getMajor() == currentVersion.getMajor() && fileVersion.getMinor() == currentVersion.getMinor())) {
-      return new Status(IStatus.ERROR, AFIntegrationPlugin.getSymbolicName(), Messages.WrongCapellaVersionException_Message);
+      return new Status(IStatus.ERROR, AFIntegrationPlugin.getSymbolicName(),
+          Messages.WrongCapellaVersionException_Message);
     }
 
-    // if model from 1.2.0 towards 1.2.x, we requires a migration
-    if ((fileVersion.getMajor() == 1 && fileVersion.getMinor() == 1)
-        || (fileVersion.getMajor() == 1 && fileVersion.getMinor() == 2 && fileVersion.getMicro() == 0)) {
-      if (currentVersion.getMajor() == 1 && currentVersion.getMinor() == 2 && currentVersion.getMicro() > 0) {
+    // if model from 1.3.0 towards 1.3.x, we requires a migration
+    if (fileVersion.getMajor() == 1 && fileVersion.getMinor() == 3 && fileVersion.getMicro() == 0) {
+      if (currentVersion.getMajor() == 1 && currentVersion.getMinor() == 3 && currentVersion.getMicro() > 0) {
         return new Status(IStatus.ERROR, AFIntegrationPlugin.getSymbolicName(),
             NLS.bind(Messages.WrongCapellaVersionException_DetailedMessage, fileVersion));
       }
     }
-
     return Status.OK_STATUS;
   }
 

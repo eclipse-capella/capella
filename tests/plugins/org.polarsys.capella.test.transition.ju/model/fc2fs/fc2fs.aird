@@ -930,8 +930,8 @@
       </data>
     </ownedAnnotationEntries>
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_CZYmUPVkEeiCbvVdS-LRVA" name="OperationalActivity 2" outgoingEdges="_CZhwRfVkEeiCbvVdS-LRVA" incomingEdges="_CZhwQPVkEeiCbvVdS-LRVA" width="10" height="5" resizeKind="NSEW">
-      <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvement" href="fc2fs.melodymodeller#64b972dc-be8b-4c8d-8be6-cbc9797ea609"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvement" href="fc2fs.melodymodeller#64b972dc-be8b-4c8d-8be6-cbc9797ea609"/>
+      <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementFunction" href="fc2fs.melodymodeller#64b972dc-be8b-4c8d-8be6-cbc9797ea609"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementFunction" href="fc2fs.melodymodeller#64b972dc-be8b-4c8d-8be6-cbc9797ea609"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="fc2fs.melodymodeller#206d18bf-a98f-496f-8fc8-cd2f70430d63"/>
       <ownedStyle xmi:type="diagram:Square" uid="_CZYmUfVkEeiCbvVdS-LRVA" borderSize="1" borderSizeComputationExpression="1" borderColor="91,64,64" labelPosition="node" width="10" height="5" color="247,218,116">
         <description xmi:type="style:SquareDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@nodeMappings[name='FC_AbstractFunction']/@conditionnalStyles.8/@style"/>
@@ -939,8 +939,8 @@
       <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@nodeMappings[name='FC_AbstractFunction']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_CZYmU_VkEeiCbvVdS-LRVA" name="OperationalActivity 1" outgoingEdges="_CZhwQPVkEeiCbvVdS-LRVA" width="10" height="5" resizeKind="NSEW">
-      <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvement" href="fc2fs.melodymodeller#60ceb34f-3513-4328-bf82-6fc5d06590f0"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvement" href="fc2fs.melodymodeller#60ceb34f-3513-4328-bf82-6fc5d06590f0"/>
+      <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementFunction" href="fc2fs.melodymodeller#60ceb34f-3513-4328-bf82-6fc5d06590f0"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementFunction" href="fc2fs.melodymodeller#60ceb34f-3513-4328-bf82-6fc5d06590f0"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="fc2fs.melodymodeller#8e8887f8-69ab-441e-a0fe-828ebd5123f1"/>
       <ownedStyle xmi:type="diagram:Square" uid="_CZYmVPVkEeiCbvVdS-LRVA" borderSize="1" borderSizeComputationExpression="1" borderColor="91,64,64" labelPosition="node" width="10" height="5" color="247,218,116">
         <description xmi:type="style:SquareDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@nodeMappings[name='FC_AbstractFunction']/@conditionnalStyles.8/@style"/>
@@ -948,8 +948,8 @@
       <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@nodeMappings[name='FC_AbstractFunction']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_CZYmVvVkEeiCbvVdS-LRVA" name="OperationalActivity 3" outgoingEdges="_CZhwSvVkEeiCbvVdS-LRVA" incomingEdges="_CZhwRfVkEeiCbvVdS-LRVA" width="10" height="5" resizeKind="NSEW">
-      <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvement" href="fc2fs.melodymodeller#3c8594a0-9ab5-4602-8231-aa1b2dc223f9"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvement" href="fc2fs.melodymodeller#3c8594a0-9ab5-4602-8231-aa1b2dc223f9"/>
+      <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementFunction" href="fc2fs.melodymodeller#3c8594a0-9ab5-4602-8231-aa1b2dc223f9"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementFunction" href="fc2fs.melodymodeller#3c8594a0-9ab5-4602-8231-aa1b2dc223f9"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="fc2fs.melodymodeller#1427c1c2-e6f8-49f6-9f87-11c22bb82e13"/>
       <ownedStyle xmi:type="diagram:Square" uid="_CZYmV_VkEeiCbvVdS-LRVA" borderSize="1" borderSizeComputationExpression="1" borderColor="91,64,64" labelPosition="node" width="10" height="5" color="247,218,116">
         <description xmi:type="style:SquareDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@nodeMappings[name='FC_AbstractFunction']/@conditionnalStyles.8/@style"/>
@@ -957,8 +957,8 @@
       <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@nodeMappings[name='FC_AbstractFunction']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_CZYmWfVkEeiCbvVdS-LRVA" name="OperationalActivity 4" outgoingEdges="_CZhwT_VkEeiCbvVdS-LRVA" incomingEdges="_CZhwSvVkEeiCbvVdS-LRVA" width="10" height="5" resizeKind="NSEW">
-      <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvement" href="fc2fs.melodymodeller#de988cb1-88e7-4888-9a9d-33aa8fa0bc0a"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvement" href="fc2fs.melodymodeller#de988cb1-88e7-4888-9a9d-33aa8fa0bc0a"/>
+      <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementFunction" href="fc2fs.melodymodeller#de988cb1-88e7-4888-9a9d-33aa8fa0bc0a"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementFunction" href="fc2fs.melodymodeller#de988cb1-88e7-4888-9a9d-33aa8fa0bc0a"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="fc2fs.melodymodeller#488f0df7-3559-406e-bab8-6e5252666b3b"/>
       <ownedStyle xmi:type="diagram:Square" uid="_CZYmWvVkEeiCbvVdS-LRVA" borderSize="1" borderSizeComputationExpression="1" borderColor="91,64,64" labelPosition="node" width="10" height="5" color="247,218,116">
         <description xmi:type="style:SquareDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@nodeMappings[name='FC_AbstractFunction']/@conditionnalStyles.8/@style"/>
@@ -966,8 +966,8 @@
       <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@nodeMappings[name='FC_AbstractFunction']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_CZYmXPVkEeiCbvVdS-LRVA" name="OperationalActivity 5" outgoingEdges="_eKANoPVkEeiCbvVdS-LRVA" incomingEdges="_CZhwT_VkEeiCbvVdS-LRVA" width="10" height="5" resizeKind="NSEW">
-      <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvement" href="fc2fs.melodymodeller#e0c52091-dde6-4400-af4f-754478afedca"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvement" href="fc2fs.melodymodeller#e0c52091-dde6-4400-af4f-754478afedca"/>
+      <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementFunction" href="fc2fs.melodymodeller#e0c52091-dde6-4400-af4f-754478afedca"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementFunction" href="fc2fs.melodymodeller#e0c52091-dde6-4400-af4f-754478afedca"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="fc2fs.melodymodeller#f51ca244-7bff-4f0f-8112-8f7b9ff5caea"/>
       <ownedStyle xmi:type="diagram:Square" uid="_CZYmXfVkEeiCbvVdS-LRVA" borderSize="1" borderSizeComputationExpression="1" borderColor="91,64,64" labelPosition="node" width="10" height="5" color="247,218,116">
         <description xmi:type="style:SquareDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@nodeMappings[name='FC_AbstractFunction']/@conditionnalStyles.8/@style"/>
@@ -975,8 +975,8 @@
       <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@nodeMappings[name='FC_AbstractFunction']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_eJ2cmvVkEeiCbvVdS-LRVA" name="OperationalActivity 2" incomingEdges="_eKANoPVkEeiCbvVdS-LRVA" width="10" height="5" resizeKind="NSEW">
-      <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvement" href="fc2fs.melodymodeller#6ec2aad6-4d91-43af-b5eb-34ec8db43c82"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvement" href="fc2fs.melodymodeller#6ec2aad6-4d91-43af-b5eb-34ec8db43c82"/>
+      <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementFunction" href="fc2fs.melodymodeller#6ec2aad6-4d91-43af-b5eb-34ec8db43c82"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementFunction" href="fc2fs.melodymodeller#6ec2aad6-4d91-43af-b5eb-34ec8db43c82"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.oa:OperationalActivity" href="fc2fs.melodymodeller#206d18bf-a98f-496f-8fc8-cd2f70430d63"/>
       <ownedStyle xmi:type="diagram:Square" uid="_eJ2cm_VkEeiCbvVdS-LRVA" borderSize="1" borderSizeComputationExpression="1" borderColor="91,64,64" labelPosition="node" width="10" height="5" color="247,218,116">
         <description xmi:type="style:SquareDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@nodeMappings[name='FC_AbstractFunction']/@conditionnalStyles.8/@style"/>
@@ -984,8 +984,8 @@
       <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@nodeMappings[name='FC_AbstractFunction']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_CZhwQPVkEeiCbvVdS-LRVA" name="Interaction 1" sourceNode="_CZYmU_VkEeiCbvVdS-LRVA" targetNode="_CZYmUPVkEeiCbvVdS-LRVA">
-      <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvement" href="fc2fs.melodymodeller#c41cd17b-ccd4-46fc-a1e4-adea18900c39"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvement" href="fc2fs.melodymodeller#c41cd17b-ccd4-46fc-a1e4-adea18900c39"/>
+      <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementLink" href="fc2fs.melodymodeller#c41cd17b-ccd4-46fc-a1e4-adea18900c39"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementLink" href="fc2fs.melodymodeller#c41cd17b-ccd4-46fc-a1e4-adea18900c39"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="fc2fs.melodymodeller#888e64d6-179f-46fe-a1e2-5588ba350983"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_CZhwQfVkEeiCbvVdS-LRVA" strokeColor="91,64,64">
         <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@edgeMappings[name='FC_Exchange']/@conditionnalStyles.0/@style"/>
@@ -994,8 +994,8 @@
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@edgeMappings[name='FC_Exchange']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_CZhwRfVkEeiCbvVdS-LRVA" name="Interaction 2" sourceNode="_CZYmUPVkEeiCbvVdS-LRVA" targetNode="_CZYmVvVkEeiCbvVdS-LRVA">
-      <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvement" href="fc2fs.melodymodeller#cb0e03f9-5dcc-449b-8703-016422a7bda1"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvement" href="fc2fs.melodymodeller#cb0e03f9-5dcc-449b-8703-016422a7bda1"/>
+      <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementLink" href="fc2fs.melodymodeller#cb0e03f9-5dcc-449b-8703-016422a7bda1"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementLink" href="fc2fs.melodymodeller#cb0e03f9-5dcc-449b-8703-016422a7bda1"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="fc2fs.melodymodeller#95eb4fa5-7128-4a58-aa6c-eba9bc4e034e"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_CZhwRvVkEeiCbvVdS-LRVA" strokeColor="91,64,64">
         <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@edgeMappings[name='FC_Exchange']/@conditionnalStyles.0/@style"/>
@@ -1004,8 +1004,8 @@
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@edgeMappings[name='FC_Exchange']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_CZhwSvVkEeiCbvVdS-LRVA" name="Interaction 3" sourceNode="_CZYmVvVkEeiCbvVdS-LRVA" targetNode="_CZYmWfVkEeiCbvVdS-LRVA">
-      <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvement" href="fc2fs.melodymodeller#a93bd9cf-4c2d-4ced-8d72-648da34ba59d"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvement" href="fc2fs.melodymodeller#a93bd9cf-4c2d-4ced-8d72-648da34ba59d"/>
+      <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementLink" href="fc2fs.melodymodeller#a93bd9cf-4c2d-4ced-8d72-648da34ba59d"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementLink" href="fc2fs.melodymodeller#a93bd9cf-4c2d-4ced-8d72-648da34ba59d"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="fc2fs.melodymodeller#faf55bef-2f80-429d-8631-2b317b19d1c3"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_CZhwS_VkEeiCbvVdS-LRVA" strokeColor="91,64,64">
         <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@edgeMappings[name='FC_Exchange']/@conditionnalStyles.0/@style"/>
@@ -1014,8 +1014,8 @@
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@edgeMappings[name='FC_Exchange']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_CZhwT_VkEeiCbvVdS-LRVA" name="Interaction 4" sourceNode="_CZYmWfVkEeiCbvVdS-LRVA" targetNode="_CZYmXPVkEeiCbvVdS-LRVA">
-      <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvement" href="fc2fs.melodymodeller#56ecd69f-b83a-4de5-9169-d9a30c6b2372"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvement" href="fc2fs.melodymodeller#56ecd69f-b83a-4de5-9169-d9a30c6b2372"/>
+      <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementLink" href="fc2fs.melodymodeller#56ecd69f-b83a-4de5-9169-d9a30c6b2372"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementLink" href="fc2fs.melodymodeller#56ecd69f-b83a-4de5-9169-d9a30c6b2372"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="fc2fs.melodymodeller#ff0ab3a8-aacd-4548-9bc3-e7fa73309e5a"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_CZhwUPVkEeiCbvVdS-LRVA" strokeColor="91,64,64">
         <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@edgeMappings[name='FC_Exchange']/@conditionnalStyles.0/@style"/>
@@ -1024,8 +1024,8 @@
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@edgeMappings[name='FC_Exchange']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_eKANoPVkEeiCbvVdS-LRVA" name="Interaction 5" sourceNode="_CZYmXPVkEeiCbvVdS-LRVA" targetNode="_eJ2cmvVkEeiCbvVdS-LRVA">
-      <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvement" href="fc2fs.melodymodeller#b8064337-b8d6-41ff-b1a7-423a98257583"/>
-      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvement" href="fc2fs.melodymodeller#b8064337-b8d6-41ff-b1a7-423a98257583"/>
+      <target xmi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementLink" href="fc2fs.melodymodeller#b8064337-b8d6-41ff-b1a7-423a98257583"/>
+      <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementLink" href="fc2fs.melodymodeller#b8064337-b8d6-41ff-b1a7-423a98257583"/>
       <semanticElements xmi:type="org.polarsys.capella.core.data.fa:FunctionalExchange" href="fc2fs.melodymodeller#fc8ec88a-4754-441d-a398-fe9d0ec2ae46"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_eKANofVkEeiCbvVdS-LRVA" strokeColor="91,64,64">
         <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@edgeMappings[name='FC_Exchange']/@conditionnalStyles.0/@style"/>

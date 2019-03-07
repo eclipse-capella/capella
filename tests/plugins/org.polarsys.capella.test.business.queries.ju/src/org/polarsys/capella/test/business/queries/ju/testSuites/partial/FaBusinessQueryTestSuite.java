@@ -35,7 +35,6 @@ import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.fa.Funct
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.fa.FunctionOutputPort_ProvidedInterface;
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.fa.FunctionOutputPort_RealizedFunctionOutputPort;
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.fa.FunctionOutputPort_RequiredInterface;
-import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.fa.FunctionalChainInvolvement_ExchangeItems;
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.fa.FunctionalChain_AvailableInStates;
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.fa.FunctionalChain_RealizedFunctionalChains;
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.fa.FunctionalExchange_Categories;
@@ -78,7 +77,6 @@ public class FaBusinessQueryTestSuite extends BasicTestSuite {
     tests.add(new ExchangeCategory_Exchanges());
     tests.add(new FunctionalChain_AvailableInStates());
     tests.add(new FunctionalChain_RealizedFunctionalChains());
-    tests.add(new FunctionalChainInvolvement_ExchangeItems());
     tests.add(new FunctionalExchange_Categories());
     tests.add(new FunctionalExchange_Source());
     tests.add(new FunctionalExchange_Target());

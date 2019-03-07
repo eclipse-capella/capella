@@ -60,7 +60,9 @@ public class FunctionalChainInvolvementHelper {
       FunctionalChainInvolvement element) {
     List<FunctionalChainInvolvement> ret = new ArrayList<>();
     if (element instanceof FunctionalChainInvolvementLink) {
-      ret.add(((FunctionalChainInvolvementLink) element).getSource());
+      FunctionalChainInvolvementFunction source = ((FunctionalChainInvolvementLink) element).getSource();
+      if (source != null)
+        ret.add(source);
     } else if (element instanceof FunctionalChainInvolvementFunction) {
       for (EObject anInverseReference : EObjectExt.getReferencers(element,
           FaPackage.Literals.FUNCTIONAL_CHAIN_INVOLVEMENT_LINK__TARGET)) {
@@ -75,7 +77,9 @@ public class FunctionalChainInvolvementHelper {
   protected List<FunctionalChainInvolvement> getNextFunctionalChainInvolvements(FunctionalChainInvolvement element) {
     List<FunctionalChainInvolvement> ret = new ArrayList<>();
     if (element instanceof FunctionalChainInvolvementLink) {
-      ret.add(((FunctionalChainInvolvementLink) element).getTarget());
+      FunctionalChainInvolvementFunction target = ((FunctionalChainInvolvementLink) element).getTarget();
+      if (target != null)
+        ret.add(target);
     } else if (element instanceof FunctionalChainInvolvementFunction) {
       for (EObject anInverseReference : EObjectExt.getReferencers(element,
           FaPackage.Literals.FUNCTIONAL_CHAIN_INVOLVEMENT_LINK__SOURCE)) {

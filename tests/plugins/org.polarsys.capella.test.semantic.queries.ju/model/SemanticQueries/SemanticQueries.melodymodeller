@@ -693,13 +693,12 @@
             id="e6a86efd-1b45-416c-80e7-1e424788b0ec" name="Root Logical Function">
           <ownedFunctionalChains xsi:type="org.polarsys.capella.core.data.fa:FunctionalChain"
               id="776631b3-a5f6-4163-af86-4c4a11e2b2c0" name="FunctionalChain 1">
-            <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvement"
-                id="37091b62-381f-4f92-af7b-bb82d3d78789" involved="#3cb38702-d351-48a7-8e7f-27700bc83ff8"
-                nextFunctionalChainInvolvements="#1f456b4c-ef77-487b-b386-b35b3c53cfcf"/>
-            <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvement"
+            <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementLink"
                 id="1f456b4c-ef77-487b-b386-b35b3c53cfcf" involved="#32e7eb00-a4b4-4c59-b8db-f4a956b5dd32"
-                nextFunctionalChainInvolvements="#cbddb1c6-4728-44b2-a2d2-82f4eeb45295"/>
-            <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvement"
+                source="#37091b62-381f-4f92-af7b-bb82d3d78789" target="#cbddb1c6-4728-44b2-a2d2-82f4eeb45295"/>
+            <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementFunction"
+                id="37091b62-381f-4f92-af7b-bb82d3d78789" involved="#3cb38702-d351-48a7-8e7f-27700bc83ff8"/>
+            <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementFunction"
                 id="cbddb1c6-4728-44b2-a2d2-82f4eeb45295" involved="#b87a57f7-c590-4d10-8604-c233669ebcc7"/>
           </ownedFunctionalChains>
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.la:LogicalFunction"
