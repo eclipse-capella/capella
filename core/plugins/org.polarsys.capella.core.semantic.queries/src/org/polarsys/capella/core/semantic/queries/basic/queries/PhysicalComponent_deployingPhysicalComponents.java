@@ -25,6 +25,8 @@ import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.common.data.modellingcore.AbstractTypedElement;
 import org.polarsys.capella.common.helpers.query.IQuery;
 
+import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
+
 /**
  *
  */
@@ -50,7 +52,7 @@ public class PhysicalComponent_deployingPhysicalComponents implements IQuery {
 			EList<AbstractTypedElement> abstractTypedElements = c.getAbstractTypedElements();
 			for (AbstractTypedElement abstractTypedElement : abstractTypedElements) {
 			  if (abstractTypedElement instanceof Part) {
-	        List<DeploymentTarget> deployingElements = PartExt.getDeployingElements((Part) abstractTypedElement);
+	        List<DeploymentTarget> deployingElements = getCache(PartExt::getDeployingElements, (Part) abstractTypedElement);
 	        for (DeploymentTarget deploymentTarget : deployingElements) {
             if (deploymentTarget instanceof Part) {
               AbstractType abstractType = ((Part) deploymentTarget).getAbstractType();

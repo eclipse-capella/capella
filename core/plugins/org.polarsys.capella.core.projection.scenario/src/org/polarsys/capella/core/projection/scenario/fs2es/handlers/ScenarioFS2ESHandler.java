@@ -42,21 +42,23 @@ import org.polarsys.capella.core.tiger.IResolver;
 import org.polarsys.capella.core.tiger.ITransfo;
 import org.polarsys.capella.core.tiger.TransfoException;
 
+import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
+
 public class ScenarioFS2ESHandler extends ScenarioHorizontalHandler {
 
-  private Collection<PartitionableElement> getAllocatingBlocks(AbstractFunction function_p) {
-    Collection<PartitionableElement> allocatingBlocks = new HashSet<PartitionableElement>();
+  private Collection<PartitionableElement> getAllocatingBlocks(AbstractFunction function) {
+    Collection<PartitionableElement> allocatingBlocks = new HashSet<>();
     // Retrieve all related parts
-    for (ComponentFunctionalAllocation allocation : function_p.getComponentFunctionalAllocations()) {
+    for (ComponentFunctionalAllocation allocation : function.getComponentFunctionalAllocations()) {
       AbstractFunctionalBlock block = allocation.getBlock();
-      if ((block != null) && (block instanceof PartitionableElement)) {
+      if (block instanceof PartitionableElement) {
         PartitionableElement element = (PartitionableElement) block;
         allocatingBlocks.add(element);
       }
     }
 
-    if (function_p instanceof OperationalActivity) {
-      for (ActivityAllocation allocation : ((OperationalActivity) function_p).getActivityAllocations()) {
+    if (function instanceof OperationalActivity) {
+      for (ActivityAllocation allocation : ((OperationalActivity) function).getActivityAllocations()) {
         Role allocatingRole = allocation.getRole();
         if (allocatingRole != null) {
           for (RoleAllocation roleAllocation : allocatingRole.getRoleAllocations()) {
@@ -72,20 +74,20 @@ public class ScenarioFS2ESHandler extends ScenarioHorizontalHandler {
   }
 
   /**
-   * @param function_p
+   * @param function
    * @return
    * @throws TransfoException
    */
-  private AbstractInstance getRelatedPart(InstanceRole role, AbstractFunction function_p, ITransfo transfo_p) {
-    List<EObject> elements = new ArrayList<EObject>();
+  private AbstractInstance getRelatedPart(InstanceRole role, AbstractFunction function, ITransfo transfo) {
+    List<EObject> elements = new ArrayList<>();
     boolean isMultiAllocation = false;
     int nbAllocation = 0;
 
     // Retrieve allocating blocks for the given function
-    Collection<PartitionableElement> allocatingBlocks = getAllocatingBlocks(function_p);
+    Collection<PartitionableElement> allocatingBlocks = getAllocatingBlocks(function);
 
     // if all leaf functions are allocated to the same component, we use it
-    Iterator<AbstractFunction> leafs = FunctionExt.getAllLeafAbstractFunctions(function_p).iterator();
+    Iterator<AbstractFunction> leafs = getCache(FunctionExt::getAllLeafAbstractFunctions, function).iterator();
     if (leafs.hasNext()) {
       AbstractFunction leaf = leafs.next();
       Collection<PartitionableElement> leafAllocatingBlocks = getAllocatingBlocks(leaf);
@@ -115,7 +117,7 @@ public class ScenarioFS2ESHandler extends ScenarioHorizontalHandler {
     }
 
     // Retrieve a resolver
-    IResolver resolver = ResolverFinalizer.getResolver(transfo_p);
+    IResolver resolver = ResolverFinalizer.getResolver(transfo);
     if (resolver == null) {
       // If no resolver, return the first
       return (AbstractInstance) elements.get(0);
@@ -131,7 +133,7 @@ public class ScenarioFS2ESHandler extends ScenarioHorizontalHandler {
     message = NLS.bind(message, EObjectLabelProviderHelper.getText(role), EObjectLabelProviderHelper.getText(role));
 
     List<EObject> result =
-        resolver.resolve(function_p, elements, CommonScenarioHelper.getTitle(transfo_p), message, false, transfo_p, new EObject[] { function_p });
+        resolver.resolve(function, elements, CommonScenarioHelper.getTitle(transfo), message, false, transfo, new EObject[] { function });
 
     if (result.size() > 0) {
       return (AbstractInstance) result.get(0);

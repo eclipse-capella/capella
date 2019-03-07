@@ -31,9 +31,11 @@ import org.polarsys.capella.core.data.information.Partition;
 import org.polarsys.capella.core.data.information.PartitionableElement;
 import org.polarsys.capella.core.data.information.Port;
 
+import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
 /**
  */
 public class PhysicalLinkExt {
+  
 
   public static Collection<PhysicalLinkEnd> getRelatedPhysicalLinkEnds(Port element) {
     HashSet<PhysicalLinkEnd> result = new HashSet<>();
@@ -80,7 +82,7 @@ public class PhysicalLinkExt {
     HashSet<PhysicalLink> result = new HashSet<>();
 
     for (PhysicalPort port : element.getContainedPhysicalPorts()) {
-      result.addAll(PhysicalLinkExt.getAllRelatedPhysicalLinks((PhysicalPort) port));
+      result.addAll(getCache(PhysicalLinkExt::getAllRelatedPhysicalLinks, (PhysicalPort) port));
     }
 
     return result;
@@ -117,7 +119,7 @@ public class PhysicalLinkExt {
 
     if (element.getAbstractType() instanceof Component) {
       Component component = ((Component) element.getAbstractType());
-      result.addAll(getAllRelatedPhysicalLinks(component));
+      result.addAll(getCache(PhysicalLinkExt::getAllRelatedPhysicalLinks, component));
     }
 
     for (PhysicalLinkEnd end : getRelatedPhysicalLinkEnds(element)) {

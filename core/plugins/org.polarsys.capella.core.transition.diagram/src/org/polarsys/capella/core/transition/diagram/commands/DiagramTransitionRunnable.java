@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.polarsys.capella.core.transition.diagram.commands;
 
+import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -547,7 +549,7 @@ public class DiagramTransitionRunnable extends AbstractProcessingCommands<DDiagr
           for (EObject semanticTarget : getTargetSemantics(semanticSource, sourceDescription, targetDescription)) {
         	  EObject targetSemantic= semanticTarget;
         	  if ((semanticTarget instanceof Component) && (semanticTarget.eContainer() instanceof BlockArchitecture)) {
-        		  for (Part part: ComponentExt.getRepresentingParts((Component) semanticTarget)) {
+        		  for (Part part: getCache(ComponentExt::getRepresentingParts, (Component) semanticTarget)) {
         		  targetSemantic = part;
         		  break;
         		  }

@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.polarsys.capella.core.platform.sirius.ui.navigator.actions;
 
+import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
+
 import java.util.Collection;
 
 import org.eclipse.emf.ecore.EObject;
@@ -78,7 +80,7 @@ public class ShowInDiagramAction extends BaseSelectionListenerAction implements 
         .isReusableComponentsDriven((EObject) selectedElement));
     if (!allowMultiplePart) {
       if (selectedElement instanceof Component) {
-        for (Part part : ComponentExt.getRepresentingParts((Component) selectedElement)) {
+        for (Part part : getCache(ComponentExt::getRepresentingParts, (Component) selectedElement)) {
           view = getPreferedView(part);
           if (view != null) {
             break;

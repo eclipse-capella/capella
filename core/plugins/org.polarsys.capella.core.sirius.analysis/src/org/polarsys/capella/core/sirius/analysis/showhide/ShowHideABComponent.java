@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DDiagramElement;
@@ -22,6 +23,7 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.CsPackage;
+import org.polarsys.capella.core.data.cs.DeploymentTarget;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.oa.Entity;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
@@ -30,6 +32,8 @@ import org.polarsys.capella.core.model.helpers.PartExt;
 import org.polarsys.capella.core.sirius.analysis.DDiagramContents;
 import org.polarsys.capella.core.sirius.analysis.constants.MappingConstantsHelper;
 import org.polarsys.capella.core.sirius.analysis.tool.HashMapSet;
+
+import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
 
 /**
  * A ShowHide definition for ABCategory containers of category pins must be set with sourceParts and targetParts
@@ -62,7 +66,7 @@ public class ShowHideABComponent extends AbstractShowHide {
     Collection<EObject> result = new ArrayList<EObject>();
     if (lastContext.getValue() instanceof Entity) {
       Entity entity = (Entity) lastContext.getValue();
-      Collection<Part> parts = ComponentExt.getRepresentingParts(entity);
+      Collection<Part> parts = getCache(ComponentExt::getRepresentingParts, entity);
       if (parts.size() > 0) {
         EObject targetContainer = EcoreUtil2.getFirstContainer(parts.iterator().next(), CsPackage.Literals.COMPONENT);
         if (targetContainer instanceof Entity) {
@@ -83,7 +87,7 @@ public class ShowHideABComponent extends AbstractShowHide {
       Collection<EObject> result3 = new HashSet<EObject>();
 
       if (containsDeployment) {
-        result3.addAll(PartExt.getDeployingElements(part));
+        result3.addAll(getCache(PartExt::getDeployingElements, part));
       }
 
       Collection<EObject> result2 = new HashSet<EObject>();
@@ -170,7 +174,7 @@ public class ShowHideABComponent extends AbstractShowHide {
     if ((originCouple_p.getAncestor() != null)) {
       if ((originCouple_p.getValue() instanceof Part)
           && (originCouple_p.getAncestor().getElement().getValue() instanceof Part)) {
-        if (!PartExt.getDeployingElements((Part) originCouple_p.getAncestor().getElement().getValue()).contains(
+        if (!getCache(PartExt::getDeployingElements, (Part) originCouple_p.getAncestor().getElement().getValue()).contains(
             (originCouple_p.getValue()))) {
           return true;
         }
@@ -184,24 +188,25 @@ public class ShowHideABComponent extends AbstractShowHide {
   }
 
   @Override
-  public DiagramElementMapping getMapping(EObject semantic_p, DiagramContext context_p,
-      HashMapSet<String, DSemanticDecorator> relatedViews_p) {
-    DiagramElementMapping mapping = super.getMapping(semantic_p, context_p, relatedViews_p);
+  public DiagramElementMapping getMapping(EObject semantic, DiagramContext context,
+      HashMapSet<String, DSemanticDecorator> relatedViews) {
+    DiagramElementMapping mapping = super.getMapping(semantic, context, relatedViews);
 
-    if (semantic_p instanceof Entity) {
-      mapping =  getContent().getMapping(MappingConstantsHelper.getMappingABComponent(semantic_p, getContent().getDDiagram()));
+    if (semantic instanceof Entity) {
+      mapping =  getContent().getMapping(MappingConstantsHelper.getMappingABComponent(semantic, getContent().getDDiagram()));
 
-    } else if (semantic_p instanceof Part) {
-      Part part = (Part) semantic_p;
-      if (containsDeployment && (PartExt.getDeployingElements(part).size() > 0)) {
-        Collection<DSemanticDecorator> targetViews = relatedViews_p.get(CONTAINER);
-        if (targetViews.size() != 0) {
-          if (PartExt.getDeployingElements((Part) semantic_p).contains((targetViews.iterator().next().getTarget()))) {
-            return getContent().getMapping(MappingConstantsHelper.getMappingABDeployedElement(getContent().getDDiagram()));
-          }
+    } else if (semantic instanceof Part) {
+      Part part = (Part) semantic;
+      List<DeploymentTarget> deployingElements = getCache(PartExt::getDeployingElements, part);
+      if (containsDeployment && !deployingElements.isEmpty()) {
+        Collection<DSemanticDecorator> targetViews = relatedViews.get(CONTAINER);
+        if (!targetViews.isEmpty() && deployingElements.contains((targetViews.iterator().next().getTarget()))) {
+          return getContent()
+              .getMapping(MappingConstantsHelper.getMappingABDeployedElement(getContent().getDDiagram()));
         }
       }
-      mapping = getContent().getMapping(MappingConstantsHelper.getMappingABComponent(semantic_p, getContent().getDDiagram()));
+      mapping = getContent()
+          .getMapping(MappingConstantsHelper.getMappingABComponent(semantic, getContent().getDDiagram()));
 
     }
     return mapping;

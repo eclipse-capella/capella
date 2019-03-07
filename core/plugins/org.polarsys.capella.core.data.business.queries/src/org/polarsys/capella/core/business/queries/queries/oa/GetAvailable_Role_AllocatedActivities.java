@@ -29,6 +29,8 @@ import org.polarsys.capella.core.data.oa.OperationalActivity;
 import org.polarsys.capella.core.data.oa.Role;
 import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
 
+import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
+
 public class GetAvailable_Role_AllocatedActivities extends AbstractQuery {
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
@@ -54,12 +56,12 @@ public class GetAvailable_Role_AllocatedActivities extends AbstractQuery {
 	 * same level Visibility Layer
 	 */
 	private List<CapellaElement> getRule_MQRY_Role_AvailableActivities_11(Role ele) {
-		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
+		List<CapellaElement> availableElements = new ArrayList<>();
 		BlockArchitecture currentBlockArchitecture = SystemEngineeringExt.getRootBlockArchitecture(ele);
 		if (currentBlockArchitecture != null) {
-			availableElements.addAll(FunctionExt.getAllLeafAbstractFunctions(currentBlockArchitecture));
+			availableElements.addAll(getCache(FunctionExt::getAllLeafAbstractFunctions, currentBlockArchitecture));
 		}
-		List<CapellaElement> listToRemove = new ArrayList<CapellaElement>();
+		List<CapellaElement> listToRemove = new ArrayList<>();
 		for (CapellaElement activity : availableElements) {
 			if (!EObjectExt.getReferencers(activity, OaPackage.Literals.ACTIVITY_ALLOCATION, ModellingcorePackage.Literals.ABSTRACT_TRACE__TARGET_ELEMENT).isEmpty()
 					|| !EObjectExt.getReferencers(activity, FaPackage.Literals.COMPONENT_FUNCTIONAL_ALLOCATION,
@@ -75,7 +77,7 @@ public class GetAvailable_Role_AllocatedActivities extends AbstractQuery {
 	 * @see org.polarsys.capella.core.business.queries.core.business.queries.IBusinessQuery#getCurrentElements(EObject,boolean)
 	 */
 	public List<CapellaElement> getCurrentElements(CapellaElement element, boolean onlyGenerated) {
-		List<CapellaElement> currentElements = new ArrayList<CapellaElement>();
+		List<CapellaElement> currentElements = new ArrayList<>();
 		if (element instanceof Role) {
 			for (ActivityAllocation anActivityAllocation : ((Role) element).getOwnedActivityAllocations()) {
 				TraceableElement targetElement = anActivityAllocation.getTargetElement();

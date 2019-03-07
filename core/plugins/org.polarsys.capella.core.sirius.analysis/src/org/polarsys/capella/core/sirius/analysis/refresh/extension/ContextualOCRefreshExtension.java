@@ -19,7 +19,6 @@ import java.util.Set;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.diagram.business.api.refresh.IRefreshExtension;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
@@ -30,12 +29,12 @@ import org.polarsys.capella.core.data.oa.OperationalCapability;
 import org.polarsys.capella.core.sirius.analysis.DiagramServices;
 import org.polarsys.capella.core.sirius.analysis.IMappingNameConstants;
 
-public class ContextualOCRefreshExtension extends AbstractRefreshExtension implements IRefreshExtension {
+public class ContextualOCRefreshExtension extends AbstractCacheAwareRefreshExtension {
 
   @Override
-  protected List<AbstractNodeMapping> getListOfMappingsToMove(DDiagram diagram_p) {
-    List<AbstractNodeMapping> returnedList = new ArrayList<AbstractNodeMapping>();
-    returnedList.add(DiagramServices.getDiagramServices().getAbstractNodeMapping(diagram_p, IMappingNameConstants.COC_ENTITY_MAPPING_NAME));
+  protected List<AbstractNodeMapping> getListOfMappingsToMove(DDiagram diagram) {
+    List<AbstractNodeMapping> returnedList = new ArrayList<>();
+    returnedList.add(DiagramServices.getDiagramServices().getAbstractNodeMapping(diagram, IMappingNameConstants.COC_ENTITY_MAPPING_NAME));
     return returnedList;
   }
 
@@ -43,16 +42,19 @@ public class ContextualOCRefreshExtension extends AbstractRefreshExtension imple
    * {@inheritDoc}
    * @see org.eclipse.sirius.business.api.refresh.IRefreshExtension#beforeRefresh(org.eclipse.sirius.DDiagram)
    */
+  @Override
   public void beforeRefresh(DDiagram diagram) {
+    super.beforeRefresh(diagram);
+    
     EObject diagramTarget = ((DSemanticDecorator) diagram).getTarget();
     if (diagramTarget instanceof OperationalCapability) {
       // current OC
       OperationalCapability capa = (OperationalCapability) diagramTarget;
       
       // store list of entities to create in diagram
-      List<Entity> entities = new LinkedList<Entity>();
+      List<Entity> entities = new LinkedList<>();
       // store list of oc to create in diagram
-      Set<AbstractCapability> ocs = new HashSet<AbstractCapability>();
+      Set<AbstractCapability> ocs = new HashSet<>();
       
       // Entity mapping
       AbstractNodeMapping entityMapping = DiagramServices.getDiagramServices().getAbstractNodeMapping(diagram, IMappingNameConstants.COC_ENTITY_MAPPING_NAME);
@@ -92,7 +94,7 @@ public class ContextualOCRefreshExtension extends AbstractRefreshExtension imple
         }
       }
       // sum two lists
-      List<CapellaElement> validElements = new ArrayList<CapellaElement>(0);
+      List<CapellaElement> validElements = new ArrayList<>(0);
       validElements.addAll(ocs);
       validElements.addAll(entities);
       
@@ -100,9 +102,4 @@ public class ContextualOCRefreshExtension extends AbstractRefreshExtension imple
       reorderElements(diagram);
     }
   }
-
-  public void postRefresh(DDiagram diagram) {
-    // Nothing here
-  }
-
 }

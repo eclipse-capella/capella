@@ -18,7 +18,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DNodeContainer;
-import org.eclipse.sirius.diagram.business.api.refresh.IRefreshExtension;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.NodeMapping;
@@ -36,32 +35,35 @@ import org.polarsys.capella.core.sirius.analysis.IMappingNameConstants;
  * Extended refresh to display the content of the focused module.
  *
  */
-public class ContextualComponentInternalInterfacesRefreshExtension extends AbstractRefreshExtension implements IRefreshExtension {
+public class ContextualComponentInternalInterfacesRefreshExtension extends AbstractCacheAwareRefreshExtension {
 
   /**
    * {@inheritDoc}
    *
    * @see org.eclipse.sirius.business.api.refresh.IRefreshExtension#beforeRefresh(org.eclipse.sirius.DDiagram)
    */
-  public void beforeRefresh(DDiagram diagram_p) {
-    if (((DSemanticDecorator) diagram_p).getTarget() == null) {
+  @Override
+  public void beforeRefresh(DDiagram diagram) {
+    super.beforeRefresh(diagram);
+    
+    if (((DSemanticDecorator) diagram).getTarget() == null) {
       //avoid refresh on dirty diagram
       return;
     }
 
-    EObject root = ((DSemanticDecorator) diagram_p).getTarget();
+    EObject root = ((DSemanticDecorator) diagram).getTarget();
 
     if (!(root instanceof Component)) {
       return;
     }
 
-    DDiagramContents content = new DDiagramContents(diagram_p);
+    DDiagramContents content = new DDiagramContents(diagram);
 
-    ContainerMapping componentMapping = DiagramServices.getDiagramServices().getContainerMapping(diagram_p, IMappingNameConstants.CCII_COMPONENT);
+    ContainerMapping componentMapping = DiagramServices.getDiagramServices().getContainerMapping(diagram, IMappingNameConstants.CCII_COMPONENT);
 
-    LinkedList<Component> components = new LinkedList<Component>();
-    List<Interface> interfaces = new LinkedList<Interface>();
-    List<CommunicationLink> links = new LinkedList<CommunicationLink>();
+    LinkedList<Component> components = new LinkedList<>();
+    List<Interface> interfaces = new LinkedList<>();
+    List<CommunicationLink> links = new LinkedList<>();
 
     //Add root element and subcomponent on the diagram
     Component component = (Component) root;
@@ -70,7 +72,7 @@ public class ContextualComponentInternalInterfacesRefreshExtension extends Abstr
 
     for (Component current : components) {
       if (!content.containsView(current, componentMapping)) {
-        DNodeContainer created = DiagramServices.getDiagramServices().createContainer(componentMapping, current, content.getBestContainer(current), diagram_p);
+        DNodeContainer created = DiagramServices.getDiagramServices().createContainer(componentMapping, current, content.getBestContainer(current), diagram);
         content.addView(created);
       }
       interfaces.addAll(CsServices.getService().getRelatedInterfaces(current));
@@ -78,20 +80,20 @@ public class ContextualComponentInternalInterfacesRefreshExtension extends Abstr
     }
 
     //add related interfaces on containing component
-    NodeMapping interfaceMapping = DiagramServices.getDiagramServices().getNodeMapping(diagram_p, IMappingNameConstants.CCII_INTERFACE);
+    NodeMapping interfaceMapping = DiagramServices.getDiagramServices().getNodeMapping(diagram, IMappingNameConstants.CCII_INTERFACE);
     for (final Interface itf : interfaces) {
       if (!content.containsView(itf, interfaceMapping)) {
-        AbstractDNode node = DiagramServices.getDiagramServices().createAbstractDNode(interfaceMapping, itf, content.getBestContainer(itf), diagram_p);
+        AbstractDNode node = DiagramServices.getDiagramServices().createAbstractDNode(interfaceMapping, itf, content.getBestContainer(itf), diagram);
         content.addView(node);
       }
     }
 
     //Add related exchange items on the diagram
-    NodeMapping exchangeItemMapping = DiagramServices.getDiagramServices().getNodeMapping(diagram_p, IMappingNameConstants.CCII_EXCHANGE_ITEM_MAPPING_NAME);
+    NodeMapping exchangeItemMapping = DiagramServices.getDiagramServices().getNodeMapping(diagram, IMappingNameConstants.CCII_EXCHANGE_ITEM_MAPPING_NAME);
     for (final CommunicationLink link : links) {
       AbstractExchangeItem item = link.getExchangeItem();
       if ((item != null) && !content.containsView(item, exchangeItemMapping)) {
-        AbstractDNode node = DiagramServices.getDiagramServices().createAbstractDNode(exchangeItemMapping, item, content.getBestContainer(item), diagram_p);
+        AbstractDNode node = DiagramServices.getDiagramServices().createAbstractDNode(exchangeItemMapping, item, content.getBestContainer(item), diagram);
         content.addView(node);
       }
     }
@@ -103,21 +105,11 @@ public class ContextualComponentInternalInterfacesRefreshExtension extends Abstr
    * @see org.polarsys.capella.core.sirius.analysis.refresh.extension.AbstractRefreshExtension#getListOfMappingsToMove(org.eclipse.sirius.DDiagram)
    */
   @Override
-  protected List<AbstractNodeMapping> getListOfMappingsToMove(DDiagram diagram_p) {
-    List<AbstractNodeMapping> returnedList = new ArrayList<AbstractNodeMapping>();
-    returnedList.add(DiagramServices.getDiagramServices().getContainerMapping(diagram_p, IMappingNameConstants.CCII_COMPONENT));
-    returnedList.add(DiagramServices.getDiagramServices().getNodeMapping(diagram_p, IMappingNameConstants.CCII_INTERFACE));
-    returnedList.add(DiagramServices.getDiagramServices().getNodeMapping(diagram_p, IMappingNameConstants.CCII_EXCHANGE_ITEM_MAPPING_NAME));
+  protected List<AbstractNodeMapping> getListOfMappingsToMove(DDiagram diagram) {
+    List<AbstractNodeMapping> returnedList = new ArrayList<>();
+    returnedList.add(DiagramServices.getDiagramServices().getContainerMapping(diagram, IMappingNameConstants.CCII_COMPONENT));
+    returnedList.add(DiagramServices.getDiagramServices().getNodeMapping(diagram, IMappingNameConstants.CCII_INTERFACE));
+    returnedList.add(DiagramServices.getDiagramServices().getNodeMapping(diagram, IMappingNameConstants.CCII_EXCHANGE_ITEM_MAPPING_NAME));
     return returnedList;
   }
-
-  /**
-   * {@inheritDoc}
-   *
-   * @see org.eclipse.sirius.business.api.refresh.IRefreshExtension#postRefresh(org.eclipse.sirius.DDiagram)
-   */
-  public void postRefresh(DDiagram diagram_p) {
-    // Nothing to do
-  }
-
 }

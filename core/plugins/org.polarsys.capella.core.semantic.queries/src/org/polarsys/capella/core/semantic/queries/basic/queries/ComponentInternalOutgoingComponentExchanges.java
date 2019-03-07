@@ -11,6 +11,8 @@
 
 package org.polarsys.capella.core.semantic.queries.basic.queries;
 
+import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -31,7 +33,7 @@ public class ComponentInternalOutgoingComponentExchanges extends ComponentOutgoi
 
   @Override
   protected Collection<ComponentExchange> getExchanges(Object object) {
-    List<ComponentExchange> exchanges = new ArrayList<ComponentExchange>();
+    List<ComponentExchange> exchanges = new ArrayList<>();
 
     Collection<Part> usedParts = ComponentExt.getAllSubUsedParts((Component) object, true);
     for (Part part : usedParts) {
@@ -41,9 +43,9 @@ public class ComponentInternalOutgoingComponentExchanges extends ComponentOutgoi
         }
       }
     }
-    usedParts.addAll(ComponentExt.getRepresentingParts((Component) object));
+    usedParts.addAll(getCache(ComponentExt::getRepresentingParts, (Component) object));
 
-    List<ComponentExchange> result = new ArrayList<ComponentExchange>();
+    List<ComponentExchange> result = new ArrayList<>();
 
     // If source or target is one of the used parts or representing parts, filter
     for (ComponentExchange pl : exchanges) {

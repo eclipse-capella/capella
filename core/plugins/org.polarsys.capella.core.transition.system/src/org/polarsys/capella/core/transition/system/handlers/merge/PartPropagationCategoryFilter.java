@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.polarsys.capella.core.transition.system.handlers.merge;
 
+import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
+
 import org.eclipse.emf.diffmerge.api.IMatch;
 import org.eclipse.emf.diffmerge.api.Role;
 import org.eclipse.emf.diffmerge.api.diff.IDifference;
@@ -44,7 +46,7 @@ public class PartPropagationCategoryFilter extends CategoryFilter {
       ExtendedComparison comparison = (ExtendedComparison) context.get(ITransitionConstants.MERGE_COMPARISON);
       EObject target = presence.getElementMatch().get(Role.REFERENCE);
       if (target instanceof Component) {
-        for (Part part : ComponentExt.getRepresentingParts((Component) target)) {
+        for (Part part : getCache(ComponentExt::getRepresentingParts, (Component) target)) {
           IMatch match = comparison.getMapping().getMatchFor(part, Role.REFERENCE);
           IElementPresence matchPresence = match.getElementPresenceDifference();
           if (matchPresence != null) {

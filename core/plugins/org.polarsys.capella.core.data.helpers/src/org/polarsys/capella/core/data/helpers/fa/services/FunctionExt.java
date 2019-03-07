@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.polarsys.capella.core.data.helpers.fa.services;
 
+import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -214,7 +216,7 @@ public class FunctionExt {
 		List<FunctionalExchange> result = getOutGoingExchange(function);
 
 		for (AbstractFunction abstractFunction : function.getOwnedFunctions()) {
-			List<FunctionalExchange> outgoings = getAllOutgoingExchanges(abstractFunction);
+			List<FunctionalExchange> outgoings = getCache(FunctionExt::getAllOutgoingExchanges, abstractFunction);
 			for (FunctionalExchange activityEdge : outgoings) {
 				// If the functional exchange of the sub-function goes out of
 				// the scope of the function
@@ -240,7 +242,7 @@ public class FunctionExt {
 		List<FunctionalExchange> result = getIncomingExchange(function);
 
 		for (AbstractFunction abstractFunction : function.getOwnedFunctions()) {
-			List<FunctionalExchange> incomings = getAllIncomingExchanges(abstractFunction);
+			List<FunctionalExchange> incomings = getCache(FunctionExt::getAllIncomingExchanges, abstractFunction);
 			for (FunctionalExchange activityEdge : incomings) {
 				// If the functional exchange of the sub-function goes out of
 				// the scope of the function
@@ -261,8 +263,8 @@ public class FunctionExt {
 	 */
 	public static List<FunctionalExchange> getAllExchanges(AbstractFunction function) {
 		List<FunctionalExchange> result = new BasicEList<>();
-    result.addAll(getAllIncomingExchanges(function));
-    result.addAll(getAllOutgoingExchanges(function));
+    result.addAll(getCache(FunctionExt::getAllIncomingExchanges, function));
+    result.addAll(getCache(FunctionExt::getAllOutgoingExchanges, function));
 		return result;
 	}
 
@@ -399,7 +401,7 @@ public class FunctionExt {
 		}
 
 		for (AbstractFunction aSubFunction : aFunction.getOwnedFunctions()) {
-			returnedList.addAll(FunctionExt.getAllFunctionPkgs(aSubFunction));
+			returnedList.addAll(getCache(FunctionExt::getAllFunctionPkgs, aSubFunction));
 		}
 
 		for (FunctionPkg aFunctionPkg : getOwnedFunctionPkgs(aFunction)) {
@@ -443,7 +445,7 @@ public class FunctionExt {
 	 */
 	public static List<AbstractFunction> getAllLeafAbstractFunctions(AbstractFunction function) {
 		List<AbstractFunction> returnedList = new ArrayList<>();
-		for (AbstractFunction abstractFunction : getAllAbstractFunctions(function)) {
+		for (AbstractFunction abstractFunction : getCache(FunctionExt::getAllAbstractFunctions, function)) {
 			if (isLeaf(abstractFunction)) {
 				returnedList.add(abstractFunction);
 			}
@@ -567,7 +569,7 @@ public class FunctionExt {
 	public static Collection<FunctionalExchange> getAllOwnedFunctionalExchanges(AbstractFunction function) {
 		EList<FunctionalExchange> functionExchanges = new BasicEList<>();
 
-		List<AbstractFunction> subFunctions = getAllAbstractFunctions(function);
+		List<AbstractFunction> subFunctions = getCache(FunctionExt::getAllAbstractFunctions, function);
 		for (AbstractFunction abstractFunction : subFunctions) {
 			functionExchanges.addAll(abstractFunction.getOwnedFunctionalExchanges());
 		}

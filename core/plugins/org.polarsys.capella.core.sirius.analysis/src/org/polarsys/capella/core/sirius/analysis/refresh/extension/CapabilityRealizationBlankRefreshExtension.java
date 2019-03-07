@@ -15,7 +15,6 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.diagram.business.api.refresh.IRefreshExtension;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.polarsys.capella.core.data.la.CapabilityRealizationPkg;
@@ -26,15 +25,15 @@ import org.polarsys.capella.core.sirius.analysis.IMappingNameConstants;
  * Extended refresh to display the content of the focused module.
  * 
  */
-public class CapabilityRealizationBlankRefreshExtension extends AbstractRefreshExtension implements IRefreshExtension {
+public class CapabilityRealizationBlankRefreshExtension extends AbstractCacheAwareRefreshExtension {
 
   /**
    * @see org.polarsys.capella.core.sirius.analysis.refresh.extension.AbstractRefreshExtension#getListOfMappingsToMove(org.eclipse.sirius.DDiagram)
    */
   @Override
-  protected List<AbstractNodeMapping> getListOfMappingsToMove(DDiagram diagram_p) {
-    List<AbstractNodeMapping> returnedList = new ArrayList<AbstractNodeMapping>();
-    returnedList.add(DiagramServices.getDiagramServices().getContainerMapping(diagram_p, IMappingNameConstants.CRB_COMPONENT_MAPPING));
+  protected List<AbstractNodeMapping> getListOfMappingsToMove(DDiagram diagram) {
+    List<AbstractNodeMapping> returnedList = new ArrayList<>();
+    returnedList.add(DiagramServices.getDiagramServices().getContainerMapping(diagram, IMappingNameConstants.CRB_COMPONENT_MAPPING));
     return returnedList;
   }
 
@@ -43,26 +42,19 @@ public class CapabilityRealizationBlankRefreshExtension extends AbstractRefreshE
    * 
    * @see org.eclipse.sirius.business.api.refresh.IRefreshExtension#beforeRefresh(org.eclipse.sirius.DDiagram)
    */
-  public void beforeRefresh(DDiagram diagram_p) {
-    if (((DSemanticDecorator) diagram_p).getTarget() == null) {
+  @Override
+  public void beforeRefresh(DDiagram diagram) {
+    super.beforeRefresh(diagram);
+    
+    if (((DSemanticDecorator) diagram).getTarget() == null) {
       // avoid refresh on dirty diagram
       return;
     }
-    EObject root = ((DSemanticDecorator) diagram_p).getTarget();
+    EObject root = ((DSemanticDecorator) diagram).getTarget();
     if (!(root instanceof CapabilityRealizationPkg)) {
       return;
     }
 
-    reorderElements(diagram_p);
+    reorderElements(diagram);
   }
-
-  /**
-   * {@inheritDoc}
-   * 
-   * @see org.eclipse.sirius.business.api.refresh.IRefreshExtension#postRefresh(org.eclipse.sirius.DDiagram)
-   */
-  public void postRefresh(DDiagram diagram_p) {
-    // Nothing to do
-  }
-
 }

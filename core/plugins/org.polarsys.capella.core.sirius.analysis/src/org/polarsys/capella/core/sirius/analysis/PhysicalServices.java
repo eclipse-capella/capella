@@ -101,6 +101,8 @@ import org.polarsys.capella.core.sirius.analysis.constants.MappingConstantsHelpe
 import org.polarsys.capella.core.sirius.analysis.preferences.DiagramsPreferencePage;
 import org.polarsys.capella.core.sirius.analysis.tool.HashMapSet;
 
+import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
+
 /**
  */
 public class PhysicalServices {
@@ -1357,8 +1359,8 @@ public class PhysicalServices {
 
   public List<PhysicalLink> getAvailablePhysicaLinks(PhysicalPath path, Part source, Part target) {
     List<PhysicalLink> returnedPhysicalLinks = new ArrayList<>();
-    Collection<PhysicalLink> incoming = PhysicalLinkExt.getAllRelatedPhysicalLinks(target);
-    Collection<PhysicalLink> outgoing = PhysicalLinkExt.getAllRelatedPhysicalLinks(source);
+    Collection<PhysicalLink> incoming = getCache(PhysicalLinkExt::getAllRelatedPhysicalLinks, target);
+    Collection<PhysicalLink> outgoing = getCache(PhysicalLinkExt::getAllRelatedPhysicalLinks, source);
     List<AbstractPathInvolvedElement> involvedElements = PhysicalPathExt.getInvolvedElements(path);
     for (PhysicalLink aPhysicalLink : incoming) {
       if (outgoing.contains(aPhysicalLink) && !involvedElements.contains(aPhysicalLink)) {
@@ -1417,8 +1419,8 @@ public class PhysicalServices {
     PhysicalPathInvolvement selectedInvolvement = (PhysicalPathInvolvement) node.getTarget();
     List<AbstractPathInvolvedElement> involvedElements = PhysicalPathExt
         .getInvolvedElements((PhysicalPath) selectedInvolvement.eContainer());
-    for (PhysicalLink aLink : PhysicalLinkExt
-        .getAllRelatedPhysicalLinks((Part) selectedInvolvement.getInvolvedElement())) {
+    for (PhysicalLink aLink : getCache(PhysicalLinkExt::getAllRelatedPhysicalLinks,
+        (Part) selectedInvolvement.getInvolvedElement())) {
       if (!existingInvolvedLinks.contains(aLink) && !involvedElements.contains(aLink)) {
         returnedList.add(aLink);
       }

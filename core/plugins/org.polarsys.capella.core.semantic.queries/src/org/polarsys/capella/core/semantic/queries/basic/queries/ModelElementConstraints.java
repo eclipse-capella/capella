@@ -11,6 +11,8 @@
 
 package org.polarsys.capella.core.semantic.queries.basic.queries;
 
+import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
@@ -67,8 +69,8 @@ public class ModelElementConstraints implements IQuery {
    * If the element is a component, get the constraints associated to its parts
    */
   private Set<AbstractConstraint> compute(Component component) {
-    Set<AbstractConstraint> result = new HashSet<AbstractConstraint>();
-    Collection<Part> parts = ComponentExt.getRepresentingParts(component);
+    Set<AbstractConstraint> result = new HashSet<>();
+    Collection<Part> parts = getCache(ComponentExt::getRepresentingParts, component);
     for (AbstractTypedElement part : parts) {
       for (AbstractConstraint constraint : part.getConstraints())
         result.add(constraint);

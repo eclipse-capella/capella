@@ -22,6 +22,8 @@ import org.polarsys.capella.core.transition.system.topdown.constants.ITopDownCon
 import org.polarsys.capella.core.transition.system.topdown.handlers.transformation.TopDownTransformationHelper;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
+import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
+
 /**
  *
  */
@@ -55,7 +57,7 @@ public class AbstractFunctionAttachmentHelper implements IHandler {
 
     if (!map.containsKey(function_p)) {
       int nb = 0;
-      for (AbstractFunction sub : FunctionExt.getFirstLevelAbstractFunctions(function_p)) {
+      for (AbstractFunction sub : getCache(FunctionExt::getFirstLevelAbstractFunctions, function_p)) {
 
         if (FunctionExt.isLeaf(sub)) {
           boolean isTransform = TopDownTransformationHelper.getInstance(context_p).isTracedInTarget(sub, context_p);

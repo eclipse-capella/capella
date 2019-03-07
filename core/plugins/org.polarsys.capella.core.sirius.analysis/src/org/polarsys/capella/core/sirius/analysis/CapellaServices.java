@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.polarsys.capella.core.sirius.analysis;
 
+import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -1139,7 +1141,7 @@ public class CapellaServices {
       }
 
     }
-    returnedFunctions.addAll(FunctionExt.getAllAbstractFunctions(rootFunction));
+    returnedFunctions.addAll(getCache(FunctionExt::getAllAbstractFunctions, rootFunction));
     returnedFunctions.removeAll(ownedNodes);
 
     if (allGraphicalContainers != null) {
@@ -2305,7 +2307,7 @@ public class CapellaServices {
         return false;
       }
     } else {
-      List<AbstractFunction> allLeaves = FunctionExt.getAllLeafAbstractFunctions(function);
+      List<AbstractFunction> allLeaves = getCache(FunctionExt::getAllLeafAbstractFunctions, function);
       for (AbstractFunction leaf : allLeaves) {
         List<Component> allocatingComponent = AbstractFunctionExt.getAllocatingComponents(leaf);
         if (allocatingComponent.size() != 1 || allocatingComponent.get(0) != container) {
@@ -2334,7 +2336,7 @@ public class CapellaServices {
         return allocatingComponent.get(0) != container;
       }
     } else {
-      List<AbstractFunction> allLeaves = FunctionExt.getAllLeafAbstractFunctions(function);
+      List<AbstractFunction> allLeaves = getCache(FunctionExt::getAllLeafAbstractFunctions, function);
       for (AbstractFunction leaf : allLeaves) {
         List<Component> allocatingComponent = AbstractFunctionExt.getAllocatingComponents(leaf);
         if (allocatingComponent.size() != 1 || allocatingComponent.get(0) != container) {

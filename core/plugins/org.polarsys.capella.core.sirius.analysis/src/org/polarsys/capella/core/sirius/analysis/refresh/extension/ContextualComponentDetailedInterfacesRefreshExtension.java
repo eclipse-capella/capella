@@ -14,7 +14,6 @@ import java.util.Set;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.diagram.business.api.refresh.IRefreshExtension;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.polarsys.capella.common.data.modellingcore.AbstractExchangeItem;
@@ -29,14 +28,17 @@ import org.polarsys.capella.core.sirius.analysis.IMappingNameConstants;
  * Extended refresh to display the content of the focused module.
  * 
  */
-public class ContextualComponentDetailedInterfacesRefreshExtension extends AbstractRefreshExtension implements IRefreshExtension {
+public class ContextualComponentDetailedInterfacesRefreshExtension extends AbstractCacheAwareRefreshExtension {
  
   /**
    * {@inheritDoc}
    * 
    * @see org.eclipse.sirius.business.api.refresh.IRefreshExtension#beforeRefresh(org.eclipse.sirius.DDiagram)
    */
+  @Override
   public void beforeRefresh(DDiagram diagram) {
+    super.beforeRefresh(diagram);
+    
     if (((DSemanticDecorator) diagram).getTarget()==null) {
       //avoid refresh on dirty diagram
       return;
@@ -64,14 +66,4 @@ public class ContextualComponentDetailedInterfacesRefreshExtension extends Abstr
     }
     
   }
-
-  /**
-   * {@inheritDoc}
-   * 
-   * @see org.eclipse.sirius.business.api.refresh.IRefreshExtension#postRefresh(org.eclipse.sirius.DDiagram)
-   */
-  public void postRefresh(DDiagram diagram) {
-    //Nothing to do
-  }
-
 }

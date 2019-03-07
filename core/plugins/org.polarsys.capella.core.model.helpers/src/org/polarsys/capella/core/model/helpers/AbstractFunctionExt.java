@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.polarsys.capella.core.model.helpers;
 
+import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -399,7 +401,7 @@ public class AbstractFunctionExt {
    * @return the components the function is allocated to
    */
   public static List<Component> getAllocatingComponents(AbstractFunction function) {
-    List<Component> result = new ArrayList<Component>();
+    List<Component> result = new ArrayList<>();
     if (null != function.getAllocationBlocks()) {
       for (AbstractFunctionalBlock block : function.getAllocationBlocks()) {
         if (block instanceof Component) {
@@ -450,15 +452,15 @@ public class AbstractFunctionExt {
       return motherFunctionAllocatingComponents;
     }
     // Get all leaves functions of the motherFunction
-    List<AbstractFunction> leaves = FunctionExt.getAllLeafAbstractFunctions(motherFunction);
+    List<AbstractFunction> leaves = getCache(FunctionExt::getAllLeafAbstractFunctions, motherFunction);
     if (null == leaves || leaves.isEmpty()) {
       return Collections.emptyList();
     }
     // Gather all allocating Components of all leaves
-    List<Component> allAllocatingComponents = new ArrayList<Component>();
+    List<Component> allAllocatingComponents = new ArrayList<>();
     for (AbstractFunction leaf : leaves) {
       Collection<Component> allocatingComponents = getAllocatingComponents(leaf);
-      if (allocatingComponents == null || allocatingComponents.isEmpty()) {
+      if (allocatingComponents.isEmpty()) {
         // A leaf is not allocated -> stop here
         return Collections.emptyList();
       }
@@ -485,12 +487,12 @@ public class AbstractFunctionExt {
       return motherFunctionAllocatingComponents;
     }
     // Get all owned functions of the motherFunction
-    List<AbstractFunction> owned = FunctionExt.getAllAbstractFunctions(motherFunction);
+    List<AbstractFunction> owned = getCache(FunctionExt::getAllAbstractFunctions, motherFunction);
     if (null == owned || owned.isEmpty()) {
       return Collections.emptyList();
     }
     // Gather all allocating Components of all owned functions
-    List<Component> allAllocatingComponents = new ArrayList<Component>();
+    List<Component> allAllocatingComponents = new ArrayList<>();
     for (AbstractFunction func : owned) {
       Collection<Component> allocatingComponents = getAllocatingComponents(func);
       if (!allocatingComponents.isEmpty()) {
@@ -555,9 +557,8 @@ public class AbstractFunctionExt {
    * @return the list of leaves of type Operational Activity
    */
   public static List<OperationalActivity> getAllLeafOperationalActivities(OperationalActivity activity) {
-    List<OperationalActivity> result = new ArrayList<OperationalActivity>();
-    for (AbstractFunction abstractFunction : org.polarsys.capella.core.data.helpers.fa.services.FunctionExt
-        .getAllAbstractFunctions(activity)) {
+    List<OperationalActivity> result = new ArrayList<>();
+    for (AbstractFunction abstractFunction : getCache(FunctionExt::getAllAbstractFunctions, activity)) {
       if (org.polarsys.capella.core.data.helpers.fa.services.FunctionExt.isLeaf(abstractFunction)
           && (abstractFunction instanceof OperationalActivity)) {
         result.add((OperationalActivity) abstractFunction);

@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.polarsys.capella.core.diagram.helpers;
 
+import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -203,7 +205,7 @@ public class ContextualDiagramHelper {
           boolean valid = !(component instanceof ComponentContext);
           if (valid) {
             if (multiPart && !isOA) {
-              result.addAll(ComponentExt.getRepresentingParts(component));
+              result.addAll(getCache(ComponentExt::getRepresentingParts, component));
             } else {
               result.add(component);
             }

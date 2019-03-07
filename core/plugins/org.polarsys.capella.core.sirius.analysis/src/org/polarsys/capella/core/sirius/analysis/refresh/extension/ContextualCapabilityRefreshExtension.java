@@ -17,7 +17,6 @@ import java.util.Set;
 
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.diagram.business.api.refresh.IRefreshExtension;
 import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.polarsys.capella.core.data.capellacore.GeneralizableElement;
@@ -30,17 +29,20 @@ import org.polarsys.capella.core.sirius.analysis.CapellaServices;
 import org.polarsys.capella.core.sirius.analysis.DiagramServices;
 import org.polarsys.capella.core.sirius.analysis.IMappingNameConstants;
 
-public class ContextualCapabilityRefreshExtension extends AbstractRefreshExtension implements IRefreshExtension {
+public class ContextualCapabilityRefreshExtension extends AbstractCacheAwareRefreshExtension {
 
+  @Override
   public void beforeRefresh(DDiagram diagram) {
+    super.beforeRefresh(diagram);
+    
     if (((DSemanticDecorator) diagram).getTarget() == null) {
       // avoid refresh on dirty diagram
       return;
     }
 
-    List<Actor> actors = new LinkedList<Actor>();
-    Set<AbstractCapability> capabilities = new HashSet<AbstractCapability>();
-    List<Mission> missions = new LinkedList<Mission>();
+    List<Actor> actors = new LinkedList<>();
+    Set<AbstractCapability> capabilities = new HashSet<>();
+    List<Mission> missions = new LinkedList<>();
 
     final NodeMapping actorNodeMapping = DiagramServices.getDiagramServices().getNodeMapping(diagram, IMappingNameConstants.CC_COMPONENT_MAPPING_NAME);
     final NodeMapping capaNodeMapping = DiagramServices.getDiagramServices().getNodeMapping(diagram, IMappingNameConstants.CC_CAPABILITY_MAPPING_NAME);
@@ -87,9 +89,4 @@ public class ContextualCapabilityRefreshExtension extends AbstractRefreshExtensi
       }
     }
   }
-
-  public void postRefresh(DDiagram diagram) {
-    // Nothing here
-  }
-
 }

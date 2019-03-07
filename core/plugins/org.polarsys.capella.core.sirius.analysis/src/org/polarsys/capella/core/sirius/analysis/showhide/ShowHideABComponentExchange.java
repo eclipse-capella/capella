@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.polarsys.capella.core.sirius.analysis.showhide;
 
+import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
+
 import java.util.Collection;
 
 import org.eclipse.emf.ecore.EObject;
@@ -106,7 +108,7 @@ public class ShowHideABComponentExchange extends ShowHideFunctionalExchange {
 
     } else if (lastContext.getValue() instanceof ComponentPort) {
       ComponentPort port = (ComponentPort) lastContext.getValue();
-      value.putAll(CONTAINER, (Collection<EObject>) (Collection<? extends EObject>) ComponentExt.getRepresentingParts(PortExt.getRelatedComponent(port)));
+      value.putAll(CONTAINER, (Collection<EObject>) (Collection<? extends EObject>) getCache(ComponentExt::getRepresentingParts, PortExt.getRelatedComponent(port)));
     }
 
     return value;

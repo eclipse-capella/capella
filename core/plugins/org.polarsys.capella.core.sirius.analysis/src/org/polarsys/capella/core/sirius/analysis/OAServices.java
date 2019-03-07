@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.polarsys.capella.core.sirius.analysis;
 
+import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -179,7 +181,7 @@ public class OAServices {
       list.addAll(getOutgoingAndIncomingExchanges(oa));
 
       // get all children
-      List<AbstractFunction> allAbstractFunctions = FunctionExt.getAllAbstractFunctions(oa);
+      List<AbstractFunction> allAbstractFunctions = getCache(FunctionExt::getAllAbstractFunctions, oa);
       for (AbstractFunction abstractFunction : allAbstractFunctions) {
         list.addAll(getOutgoingAndIncomingExchanges(abstractFunction));
       }

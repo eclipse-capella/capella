@@ -17,7 +17,6 @@ import org.apache.log4j.Logger;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.diagram.business.api.refresh.IRefreshExtension;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
@@ -33,12 +32,14 @@ import org.polarsys.capella.core.sirius.analysis.cache.FunctionalChainCache;
 /**
  *
  */
-public class DataFlowBlankRefreshExtension extends AbstractRefreshExtension implements IRefreshExtension {
+public class DataFlowBlankRefreshExtension extends AbstractCacheAwareRefreshExtension {
 
   /**
    * @see org.eclipse.sirius.business.api.refresh.IRefreshExtension#postRefresh(org.eclipse.sirius.DDiagram)
    */
+  @Override
   public void beforeRefresh(DDiagram diagram) {
+    super.beforeRefresh(diagram);
 
     FunctionalChainCache.getInstance().reset();
     
@@ -86,6 +87,7 @@ public class DataFlowBlankRefreshExtension extends AbstractRefreshExtension impl
   /**
    * @see org.eclipse.sirius.business.api.refresh.IRefreshExtension#postRefresh(org.eclipse.sirius.DDiagram)
    */
+  @Override
   public void postRefresh(DDiagram diagram) {
     try {
       FunctionalChainServices.getFunctionalChainServices().updateFunctionalChainStyles(diagram);
@@ -95,6 +97,7 @@ public class DataFlowBlankRefreshExtension extends AbstractRefreshExtension impl
 
     FunctionalChainCache.getInstance().reset();
     
+    super.postRefresh(diagram);
   }
 
   protected void updateFunctionalExchangeCategories(DDiagramContents diagramContents) {

@@ -15,7 +15,6 @@ import java.util.Collection;
 import org.apache.log4j.Logger;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.diagram.business.api.refresh.IRefreshExtension;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
@@ -34,12 +33,14 @@ import org.polarsys.capella.core.sirius.analysis.cache.FunctionalChainCache;
  * 
  */
 //TODO : merge this refresh extension with component Architecture Refresh Extension 
-public class EntityArchitectureBlankRefreshExtension extends AbstractRefreshExtension implements IRefreshExtension {
+public class EntityArchitectureBlankRefreshExtension extends AbstractCacheAwareRefreshExtension {
 
   /**
    * @see org.eclipse.sirius.business.api.refresh.IRefreshExtension#beforeRefresh(org.eclipse.sirius.DDiagram)
    */
+  @Override
   public void beforeRefresh(DDiagram diagram) {
+    super.beforeRefresh(diagram);
 
     FunctionalChainCache.getInstance().reset();
     
@@ -70,6 +71,7 @@ public class EntityArchitectureBlankRefreshExtension extends AbstractRefreshExte
   /**
    * @see org.eclipse.sirius.business.api.refresh.IRefreshExtension#postRefresh(org.eclipse.sirius.DDiagram)
    */
+  @Override
   public void postRefresh(DDiagram diagram) {
     try {
       FunctionalChainServices.getFunctionalChainServices().updateFunctionalChainStyles(diagram);
@@ -78,18 +80,19 @@ public class EntityArchitectureBlankRefreshExtension extends AbstractRefreshExte
     }
 
     FunctionalChainCache.getInstance().reset();
+    super.postRefresh(diagram);
   }
 
   /**
-   * @param diagram_p
+   * 
+   * @param diagram
    * @return
    */
-  public ContainerMapping getComponentMapping(DDiagram diagram_p) {
-    if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.OPERATIONAL_ENTITY_BLANK_DIAGRAM_NAME)) {
-      return DiagramServices.getDiagramServices().getContainerMapping(diagram_p, IMappingNameConstants.OAB_ENTITY_MAPPING_NAME);
+  public ContainerMapping getComponentMapping(DDiagram diagram) {
+    if (diagram.getDescription().getName().equals(IDiagramNameConstants.OPERATIONAL_ENTITY_BLANK_DIAGRAM_NAME)) {
+      return DiagramServices.getDiagramServices().getContainerMapping(diagram, IMappingNameConstants.OAB_ENTITY_MAPPING_NAME);
     }
 
     return null;
   }
-
 }

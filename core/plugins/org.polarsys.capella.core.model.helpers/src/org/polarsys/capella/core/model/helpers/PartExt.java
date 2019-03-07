@@ -39,6 +39,8 @@ import org.polarsys.capella.core.data.pa.AbstractPhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.data.pa.deployment.PartDeploymentLink;
 
+import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
+
 /**
  * Part helpers
  */
@@ -72,13 +74,13 @@ public class PartExt {
    * @return
    */
   public static final List<ComponentExchange> getComponentExchanges(Part part) {
-    List<ComponentExchange> componentExchanges = new ArrayList<ComponentExchange>();
+    List<ComponentExchange> componentExchanges = new ArrayList<>();
     for (AbstractInformationFlow flow : part.getInformationFlows()) {
       if (flow instanceof ComponentExchange) {
         componentExchanges.add((ComponentExchange) flow);
       }
     }
-    for (ComponentExchangeEnd end : FunctionalExt.getRelatedComponentExchangeEnds(part)) {
+    for (ComponentExchangeEnd end : getCache(FunctionalExt::getRelatedComponentExchangeEnds, part)) {
       EObject owner = end.eContainer();
       if (owner instanceof ComponentExchange) {
         componentExchanges.add((ComponentExchange) owner);
@@ -262,8 +264,8 @@ public class PartExt {
   }
 
   public static List<Part> getAllPartsFromPhysicalArchitecture(PhysicalArchitecture blockArch) {
-    List<CapellaElement> components = new ArrayList<CapellaElement>();
-    List<Part> result = new ArrayList<Part>();
+    List<CapellaElement> components = new ArrayList<>();
+    List<Part> result = new ArrayList<>();
     BlockArchitectureExt.getAllComponentsFromPA(blockArch, components);
     for (CapellaElement aComponent : components) {
       if (aComponent instanceof AbstractPhysicalComponent) {
@@ -285,8 +287,8 @@ public class PartExt {
    */
   @SuppressWarnings({ "unchecked", "rawtypes" })
   public static Collection<Part> getFirstPartAncestors(Part currentPart) {
-    LinkedList<Part> parents = new LinkedList<Part>();
-    parents.addAll((Collection) PartExt.getDeployingElements(currentPart));
+    LinkedList<Part> parents = new LinkedList<>();
+    parents.addAll((Collection)getCache(PartExt::getDeployingElements, currentPart));
     Component directParent = ComponentExt.getDirectParent(currentPart);
     if (null != directParent) {
       parents.addAll((Collection) directParent.getRepresentingPartitions());

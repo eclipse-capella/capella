@@ -45,6 +45,8 @@ import org.polarsys.capella.common.data.helpers.activity.delegates.ActivityNodeH
 import org.polarsys.capella.common.data.helpers.modellingcore.delegates.AbstractTypeHelper;
 import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 
+import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
+
 public class AbstractFunctionHelper {
   private static AbstractFunctionHelper instance;
 
@@ -175,7 +177,7 @@ public class AbstractFunctionHelper {
   }
 
   protected List<AbstractFunction> getSubFunctions(AbstractFunction element) {
-    return (List<AbstractFunction>) FunctionExt.getFirstLevelAbstractFunctions(element);
+    return (List<AbstractFunction>) getCache(FunctionExt::getFirstLevelAbstractFunctions, element);
   }
 
   protected List<FunctionalChain> getInvolvingFunctionalChains(AbstractFunction element) {

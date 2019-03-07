@@ -14,7 +14,6 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.EdgeTarget;
-import org.eclipse.sirius.diagram.business.api.refresh.IRefreshExtension;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
@@ -26,12 +25,12 @@ import org.polarsys.capella.core.data.la.CapabilityRealization;
 import org.polarsys.capella.core.sirius.analysis.DiagramServices;
 import org.polarsys.capella.core.sirius.analysis.IMappingNameConstants;
 
-public class ContextualCapabilityRealizationInvolvementRefreshExtension extends AbstractRefreshExtension
-    implements IRefreshExtension {
+public class ContextualCapabilityRealizationInvolvementRefreshExtension extends AbstractCacheAwareRefreshExtension {
 
   @Override
   public void beforeRefresh(DDiagram diagram) {
-
+    super.beforeRefresh(diagram);
+    
     if (((DSemanticDecorator) diagram).getTarget() == null) {
       // avoid refresh on dirty diagram
       return;
@@ -151,10 +150,4 @@ public class ContextualCapabilityRealizationInvolvementRefreshExtension extends 
       }
     }
   }
-
-  @Override
-  public void postRefresh(DDiagram dDiagram) {
-    // nothing here
-  }
-
 }
