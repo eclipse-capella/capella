@@ -18,6 +18,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 
+import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
@@ -155,8 +156,8 @@ public class GroupedAdapterFactoryContentProvider extends AdapterFactoryContentP
       if ((currentNotifications != null) && (!currentNotifications.isEmpty())) {
         viewerRefresh = new ViewerRefresh(viewer);
         for (Notification notification : currentNotifications) {
-          if (notification.getNotifier() instanceof EObject
-              && ((EObject) notification.getNotifier()).eResource() != null) {
+          Object notifier = notification.getNotifier();
+          if (!(notifier instanceof EObject && ((EObject)notifier).eResource() == null)) {
             ChangeNotification changeNotification = new ChangeNotification(notification);
             if (!duplicateNotifications.contains(changeNotification)) {
               duplicateNotifications.add(changeNotification);
