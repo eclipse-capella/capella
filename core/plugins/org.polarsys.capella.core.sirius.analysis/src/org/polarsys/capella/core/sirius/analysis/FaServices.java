@@ -152,6 +152,7 @@ import org.polarsys.capella.core.sirius.analysis.showhide.ShowHideABComponentExc
 import org.polarsys.capella.core.sirius.analysis.showhide.ShowHideExchangeCategory;
 import org.polarsys.capella.core.sirius.analysis.showhide.ShowHideFunction;
 import org.polarsys.capella.core.sirius.analysis.showhide.ShowHideFunctionalExchange;
+import org.polarsys.capella.core.sirius.analysis.showhide.ShowHideInvisibleExchangeCategory;
 import org.polarsys.capella.core.sirius.analysis.tool.HashMapSet;
 
 /**
@@ -5106,6 +5107,38 @@ public class FaServices {
     return switchFECategories(content, context, selectedExchangeCategories, true);
   }
 
+  public EObject switchFEInvisibleCategories(DDiagramContents content, DSemanticDecorator context,
+      Collection<ExchangeCategory> selectedElements) {
+
+    DDiagram currentDiagram = content.getDDiagram();
+    Collection<DDiagramElement> invisibleCategoryEdges = new HashSet<DDiagramElement>();
+    for (DDiagramElement element : content.getDiagramElements(
+        content.getMapping(MappingConstantsHelper.getMappingFunctionalExchangeCategory(currentDiagram)))) {
+      if (!element.isVisible()) {
+        invisibleCategoryEdges.add(element);
+      }
+    }
+
+    for (DDiagramElement categoryEdge : invisibleCategoryEdges) {
+      EObject categoryObj = categoryEdge.getTarget();
+      EObject srcFunc = ((DDiagramElement) ((DEdge) categoryEdge).getSourceNode().eContainer()).getTarget();
+      EObject tarFunc = ((DDiagramElement) ((DEdge) categoryEdge).getTargetNode().eContainer()).getTarget();
+
+      if (categoryObj instanceof ExchangeCategory) {
+        AbstractShowHide invCatSwitch = new ShowHideInvisibleExchangeCategory(content);
+        DiagramContext ctx = invCatSwitch.new DiagramContext();
+        if (selectedElements.contains(categoryObj)) {
+          showFECategory(invCatSwitch, ctx, (ExchangeCategory) categoryObj, srcFunc, tarFunc, true);
+        } else {
+          showFECategory(invCatSwitch, ctx, (ExchangeCategory) categoryObj, srcFunc, tarFunc, false);
+        }
+      }
+    }
+
+    content.commitDeferredActions();
+    return context;
+  }
+
   @Deprecated
   public EObject switchFECategories(DDiagramContents content, DSemanticDecorator context,
       Collection<ExchangeCategory> selectedElements) {
@@ -5114,6 +5147,8 @@ public class FaServices {
 
   public EObject switchFECategories(DDiagramContents content, DSemanticDecorator context,
       Collection<ExchangeCategory> selectedExchangeCategories, boolean showHiddenExchanges) {
+
+    switchFEInvisibleCategories(content, context, selectedExchangeCategories);
 
     DDiagram currentDiagram = content.getDDiagram();
 
