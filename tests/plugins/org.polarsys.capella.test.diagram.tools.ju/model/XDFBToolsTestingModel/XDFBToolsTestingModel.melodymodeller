@@ -145,6 +145,8 @@
             id="e4e11594-6ed0-4873-a156-6cc12d004626" name="PropertyValueGroup 1"/>
         <ownedCategories xsi:type="org.polarsys.capella.core.data.fa:ExchangeCategory"
             id="14bb40fb-6356-4fc0-a04d-197e969a7fb7" name="ExchangeCategory 1" exchanges="#bc07162f-965a-4274-836a-bdd123d79f17"/>
+        <ownedCategories xsi:type="org.polarsys.capella.core.data.fa:ExchangeCategory"
+            id="d3814040-7dd3-449c-b07c-0f84a5fe3732" name="EC_SubFunc" exchanges="#4680484b-241a-4b46-b556-a30ec3a5594a"/>
         <ownedSystemFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
             id="d560188d-bfa0-4a6b-a7ec-ef1a0a5a3415" name="Root System Function">
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
@@ -174,6 +176,19 @@
                 id="e8895d1a-9300-4d96-8a20-f7b1f3a37239" targetElement="#0a26bac4-820d-4f00-8fba-0ccce778d112"
                 sourceElement="#db085e88-3350-47d7-9b16-fa6d2bbc438c"/>
           </ownedFunctions>
+          <ownedFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
+              id="ea873320-04e5-4845-9b2b-fdbdfe3fc1ea" name="Parent">
+            <ownedFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
+                id="1a76d607-2b80-432e-97b1-06ef5fd29f50" name="Child">
+              <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
+                  id="95966967-34c2-4b5d-93d9-1fd31bbe73ce" name="FOP 1"/>
+            </ownedFunctions>
+          </ownedFunctions>
+          <ownedFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
+              id="a650ff02-0217-4da8-a4d1-c28d4f581b6a" name="SF_Target">
+            <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
+                id="5c6b0d46-e21d-4ed9-9f00-08da1d112f2b" name="FIP 1"/>
+          </ownedFunctions>
           <ownedFunctionRealizations xsi:type="org.polarsys.capella.core.data.fa:FunctionRealization"
               id="85f64546-2e3b-4155-921c-2fecacaf4431" targetElement="#1e2462db-b15c-4705-982d-93562d3e4094"
               sourceElement="#d560188d-bfa0-4a6b-a7ec-ef1a0a5a3415"/>
@@ -187,6 +202,9 @@
                 id="8589739d-f1bc-4a4c-a71b-31a97e3b20b4" targetElement="#974840cd-407c-41c8-9922-7d86b58c0333"
                 sourceElement="#fec2d7c5-83b0-40be-9d40-a7ee4bc9fc3e"/>
           </ownedFunctionalExchanges>
+          <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
+              id="4680484b-241a-4b46-b556-a30ec3a5594a" name="FE_SubFunc" target="#5c6b0d46-e21d-4ed9-9f00-08da1d112f2b"
+              source="#95966967-34c2-4b5d-93d9-1fd31bbe73ce"/>
         </ownedSystemFunctions>
       </ownedFunctionPkg>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.ctx:CapabilityPkg"
@@ -365,6 +383,8 @@
           id="aa8f7fd0-72bf-4139-ba2d-8c38c52a017d" name="Logical Functions">
         <ownedCategories xsi:type="org.polarsys.capella.core.data.fa:ExchangeCategory"
             id="e8552647-7e45-4c69-9450-410dd807005c" name="ExchangeCategory 1" exchanges="#959846bb-3286-4503-b016-5f259d79787c"/>
+        <ownedCategories xsi:type="org.polarsys.capella.core.data.fa:ExchangeCategory"
+            id="6ca545eb-25eb-4256-a9f9-8ae94e7f74b6" name="EC_SubFunc" exchanges="#9c8bc201-7603-497c-ad36-e5e31835221b"/>
         <ownedLogicalFunctions xsi:type="org.polarsys.capella.core.data.la:LogicalFunction"
             id="13a147ab-7547-4fbb-82ef-793acc9f164a" name="Root Logical Function"
             appliedPropertyValues="#250a7a19-c352-46b8-869b-cd6882973516" appliedPropertyValueGroups="#23f41ac7-81d7-4b2b-aaf1-781c7ae44f01">
@@ -383,12 +403,28 @@
             <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
                 id="ed4b8aec-c1a3-4e2b-a306-73e173ba96a3" name="FIP 1"/>
           </ownedFunctions>
+          <ownedFunctions xsi:type="org.polarsys.capella.core.data.la:LogicalFunction"
+              id="f1090924-7595-4799-8d3a-774784ffe203" name="parent">
+            <ownedFunctions xsi:type="org.polarsys.capella.core.data.la:LogicalFunction"
+                id="3c5764b9-1d2b-4521-a74f-02c4ec858bdb" name="child">
+              <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
+                  id="67f87b42-e446-4389-81c9-f22b6d8eb7e0" name="FOP 1"/>
+            </ownedFunctions>
+          </ownedFunctions>
+          <ownedFunctions xsi:type="org.polarsys.capella.core.data.la:LogicalFunction"
+              id="d38f9252-4ba5-4cbb-89a6-e047a983297b" name="target">
+            <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
+                id="d68c654b-2efa-4495-a6a6-31817856a4d1" name="FIP 1"/>
+          </ownedFunctions>
           <ownedFunctionRealizations xsi:type="org.polarsys.capella.core.data.fa:FunctionRealization"
               id="b93849b7-f482-4e70-bcb4-cd9509688e5c" targetElement="#d560188d-bfa0-4a6b-a7ec-ef1a0a5a3415"
               sourceElement="#13a147ab-7547-4fbb-82ef-793acc9f164a"/>
           <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
               id="959846bb-3286-4503-b016-5f259d79787c" name="TestFunctionalExchange"
               target="#ed4b8aec-c1a3-4e2b-a306-73e173ba96a3" source="#55687c95-8dc7-4af9-9623-82f201d7ae9c"/>
+          <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
+              id="9c8bc201-7603-497c-ad36-e5e31835221b" name="FE_SubFunc" target="#d68c654b-2efa-4495-a6a6-31817856a4d1"
+              source="#67f87b42-e446-4389-81c9-f22b6d8eb7e0"/>
         </ownedLogicalFunctions>
       </ownedFunctionPkg>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.la:CapabilityRealizationPkg"
@@ -475,6 +511,8 @@
           id="51b22e78-8071-4ef5-a9f5-f8a82764763e" name="Physical Functions">
         <ownedCategories xsi:type="org.polarsys.capella.core.data.fa:ExchangeCategory"
             id="dbe5bfdb-9678-4b1c-b258-033045af8110" name="ExchangeCategory 1" exchanges="#1bf28bad-008b-4d99-88d8-a2cf88394063"/>
+        <ownedCategories xsi:type="org.polarsys.capella.core.data.fa:ExchangeCategory"
+            id="d6c19f5a-f5aa-4e45-b7bc-67269c2389bd" name="EC_SubFunc" exchanges="#07d81cbf-2b99-4f80-adaf-f019c97abe97"/>
         <ownedPhysicalFunctions xsi:type="org.polarsys.capella.core.data.pa:PhysicalFunction"
             id="4a3b3452-fe9f-4289-b25f-25f02d76428f" name="Root Physical Function"
             appliedPropertyValues="#e2650273-8de7-4bcd-bcf6-b065fb146984" appliedPropertyValueGroups="#936390bf-a271-41f5-bb95-b7851f5cf7c2">
@@ -495,12 +533,28 @@
             <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
                 id="40f14a4a-3794-4518-b24b-5b406c5c40aa" name="FIP 1"/>
           </ownedFunctions>
+          <ownedFunctions xsi:type="org.polarsys.capella.core.data.pa:PhysicalFunction"
+              id="2d87060d-309a-4499-9eb6-05d4afacb084" name="parent">
+            <ownedFunctions xsi:type="org.polarsys.capella.core.data.pa:PhysicalFunction"
+                id="a412ab00-667c-4a86-9836-2bba8a57ec10" name="child">
+              <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
+                  id="3c5bcfd2-1156-4e50-a89e-66a545b04943" name="FOP 1"/>
+            </ownedFunctions>
+          </ownedFunctions>
+          <ownedFunctions xsi:type="org.polarsys.capella.core.data.pa:PhysicalFunction"
+              id="b74d64ba-54e1-4ce9-ada2-21ee9972e830" name="target">
+            <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
+                id="2a517131-f8e2-45eb-9a27-a2d748d89668" name="FIP 1"/>
+          </ownedFunctions>
           <ownedFunctionRealizations xsi:type="org.polarsys.capella.core.data.fa:FunctionRealization"
               id="39b75f78-6caa-4c1a-b364-91b19db15bab" targetElement="#13a147ab-7547-4fbb-82ef-793acc9f164a"
               sourceElement="#4a3b3452-fe9f-4289-b25f-25f02d76428f"/>
           <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
               id="1bf28bad-008b-4d99-88d8-a2cf88394063" name="TestFunctionalExchange"
               target="#40f14a4a-3794-4518-b24b-5b406c5c40aa" source="#19cb049e-dfcf-4dda-a596-6c8f60accf4f"/>
+          <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
+              id="07d81cbf-2b99-4f80-adaf-f019c97abe97" name="FE_SubFunc" target="#2a517131-f8e2-45eb-9a27-a2d748d89668"
+              source="#3c5bcfd2-1156-4e50-a89e-66a545b04943"/>
         </ownedPhysicalFunctions>
       </ownedFunctionPkg>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.la:CapabilityRealizationPkg"

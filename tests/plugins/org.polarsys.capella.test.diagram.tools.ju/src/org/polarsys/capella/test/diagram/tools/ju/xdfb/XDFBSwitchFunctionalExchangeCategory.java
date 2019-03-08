@@ -33,6 +33,12 @@ public class XDFBSwitchFunctionalExchangeCategory extends XDFBToolsTestingModel 
   private void testOnXDFBDiagram(SessionContext context, String diagramName, Type diagramType) {
 
     XDFBDiagram xdfb = XDFBDiagram.openDiagram(context, diagramName, diagramType);
+
+    testSwitchFunctionalExchangesCategories(xdfb, diagramType);
+    testSwitchFunctionalExchangesCategoriesOnChild(xdfb, diagramType);
+  }
+
+  private void testSwitchFunctionalExchangesCategories(XDFBDiagram xdfb, Type diagramType) {
     String diagramId = xdfb.getDiagramId();
 
     String exchangeCategoryID = null;
@@ -64,5 +70,46 @@ public class XDFBSwitchFunctionalExchangeCategory extends XDFBToolsTestingModel 
 
     xdfb.switchInFunctionalExchangesCategories(exchangeCategoryID);
     xdfb.switchOutFunctionalExchangesCategories(exchangeCategoryID);
+  }
+
+  private void testSwitchFunctionalExchangesCategoriesOnChild(XDFBDiagram xdfb, Type diagramType) {
+    String diagramId = xdfb.getDiagramId();
+
+    String exchangeCategoryID = null;
+    String parentId = null;
+    String childId = null;
+    String targetId = null;
+
+    switch (diagramType) {
+    case SA:
+      exchangeCategoryID = SA__EXCHANGE_CATEGORY_SUB_FUNC;
+      parentId = SA__TEST_SCENARIO_FUNCTION_PARENT_ID;
+      childId = SA__TEST_SCENARIO_FUNCTION_CHILD_ID;
+      targetId = SA__TEST_SCENARIO_FUNCTION_TARGET_ID;
+      break;
+    case LA:
+      exchangeCategoryID = LA__EXCHANGE_CATEGORY_SUB_FUNC;
+      parentId = LA__TEST_SCENARIO_FUNCTION_PARENT_ID;
+      childId = LA__TEST_SCENARIO_FUNCTION_CHILD_ID;
+      targetId = LA__TEST_SCENARIO_FUNCTION_TARGET_ID;
+      break;
+    case PA:
+      exchangeCategoryID = PA__EXCHANGE_CATEGORY_SUB_FUNC;
+      parentId = PA__TEST_SCENARIO_FUNCTION_PARENT_ID;
+      childId = PA__TEST_SCENARIO_FUNCTION_CHILD_ID;
+      targetId = PA__TEST_SCENARIO_FUNCTION_TARGET_ID;
+      break;
+    default:
+      break;
+    }
+
+    // The functional exchange will be automatically displayed
+    xdfb.showElements(diagramId, XDFBInsertRemoveTools.INSERT_REMOVE_FUNCTIONS, parentId, childId, targetId);
+
+    xdfb.switchInFunctionalExchangesCategories(exchangeCategoryID);
+    xdfb.hideElements(diagramId, XDFBInsertRemoveTools.INSERT_REMOVE_FUNCTIONS, childId);
+    
+    xdfb.switchOutFunctionalExchangesCategories(exchangeCategoryID);
+    xdfb.switchInFunctionalExchangesCategories(exchangeCategoryID);
   }
 }
