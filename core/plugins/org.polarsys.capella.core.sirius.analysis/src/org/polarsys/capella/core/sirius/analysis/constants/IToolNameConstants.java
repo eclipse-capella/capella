@@ -384,11 +384,12 @@ public interface IToolNameConstants {
   String TOOL_ES_CREATE_STATE_MODE = "State / Mode"; //$NON-NLS-1$
 
   // FCD tools - Functional Chain Description
-  String TOOL_FCD_INSERT_REMOVE_INVOLVE_FUNCTION = "Involve Function"; //$NON-NLS-1$
-  String TOOL_FCD_INSERT_REMOVE_INVOLVE_FUNCTIONAL_EXCHANGE = "Involve Functional Exchange"; //$NON-NLS-1$
-  String TOOL_FCD_INSERT_REMOVE_INVOLVE_FUNCTIONAL_CHAIN = "Involve Functional Chain"; //$NON-NLS-1$
-  String TOOL_FCD_INSERT_REMOVE_INVOLVE_FUNCTIONAL_EXCHANGE_AND_TARGET_FUNCTION = "Involve Functional Exchange & Target Function"; //$NON-NLS-1$
-  String TOOL_FCD_INSERT_REMOVE_INVOLVE_FUNCTIONAL_EXCHANGE_AND_TARGET_FUNCTIONAL_CHAIN = "Involve Functional Exchange & Target Functional Chain"; //$NON-NLS-1$
+  String TOOL_FCD_INVOLVE_FUNCTION = "Function"; //$NON-NLS-1$
+  String TOOL_FCD_INVOLVE_EXCHANGE = "Exchange"; //$NON-NLS-1$
+  String TOOL_FCD_INVOLVE_EXCHANGE_AND_FUNCTION = "Exchange and Function"; //$NON-NLS-1$
+  String TOOL_FCD_INVOLVE_FUNCTIONAL_CHAIN = "Functional Chain"; //$NON-NLS-1$
+  String TOOL_FCD_CONNECT_FUNCTIONS = "Connect Functions"; //$NON-NLS-1$
+
   String TOOL_FCD_CREATE_CONSTRAINT = "Constraint"; //$NON-NLS-1$
   String TOOL_FCD_CREATE_CONSTRAINTELEMENT = "ConstraintElement"; //$NON-NLS-1$
   String TOOL_FCD_INSERT_REMOVE_CONSTRAINTS = "Constraints"; //$NON-NLS-1$

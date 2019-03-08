@@ -29,15 +29,15 @@ import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.DiagramHelper;
 
 public class InsertRemoveTool extends AbstractToolStep {
 
-  boolean initialized = false;
+  protected boolean initialized = false;
 
-  boolean insertAll = false;
+  protected boolean insertAll = false;
 
-  boolean removeAll = false;
+  protected boolean removeAll = false;
 
-  boolean autoRefresh = true;
+  protected boolean autoRefresh = true;
 
-  String containerId;
+  protected String containerId;
   protected String[] toInsert;
   protected String[] toRemove;
   protected String[] insertedElements;
