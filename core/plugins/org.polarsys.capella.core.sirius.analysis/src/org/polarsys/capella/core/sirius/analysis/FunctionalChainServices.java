@@ -1122,7 +1122,7 @@ public class FunctionalChainServices {
     return false;
   }
 
-  public boolean canCreateFCILEdge(FunctionalChainInvolvementLink link, DDiagramElement sourceView, EObject source,
+  public boolean canCreateFCILEdgeForCollapsedContainer(FunctionalChainInvolvementLink link, DDiagramElement sourceView, EObject source,
       DDiagramElement targetView, EObject target) {
 
     if (source == null || target == null)
@@ -1132,11 +1132,6 @@ public class FunctionalChainServices {
     if (source.equals(target))
       return false;
     if (sourceView.equals(targetView))
-      return false;
-
-    if (isInCollapsedHierarchy(sourceView))
-      return false;
-    if (isInCollapsedHierarchy(targetView))
       return false;
 
     if (sourceView instanceof DNodeContainer && source instanceof FunctionalChainReference) {
@@ -1150,7 +1145,46 @@ public class FunctionalChainServices {
       if (!isContainerCollapsed(fcContainer))
         return false;
     }
-
-    return true;
+    
+    return checkRefHierarchyOfLink(link, sourceView, targetView);
   }
+
+  /** 
+   * Return true if the given FunctionalChainInvolvementLink must appears in the diagram
+   * 
+   * @param link
+   *          the given FunctionalChainInvolvementLink
+   * @param sourceView
+   *          the source view of the link in the diagram
+   * @param targetView
+   *          the target view of the link in the diagram
+   * @return true if the given FunctionalChainInvolvementLink must appears in the diagram
+   */
+  public boolean checkRefHierarchyOfLink(FunctionalChainInvolvementLink link, DDiagramElement sourceView,
+      DDiagramElement targetView) {
+
+    // get the valid top container for the source reference Hierarchy
+    EObject topSourceHierarchyContainer = FunctionalChainReferenceHierarchyHelper
+        .getDiagramElementForTopHierarchy(link.getSourceReferenceHierarchy(), sourceView);
+
+    if (topSourceHierarchyContainer == null) {
+      return false;
+    }
+
+    // get the valid top container for the target reference Hierarchy
+    EObject topTargetHierarchyContainer = FunctionalChainReferenceHierarchyHelper
+        .getDiagramElementForTopHierarchy(link.getTargetReferenceHierarchy(), targetView);
+
+    if (topTargetHierarchyContainer == null) {
+      return false;
+    }
+
+    // both hierarchies are valid independently -> check if they valid together -> they are at the same level -> they
+    // have the same parent
+    EObject parentSourceHierarchyContainer = topSourceHierarchyContainer.eContainer();
+    EObject parentTargetHierarchyContainer = topTargetHierarchyContainer.eContainer();
+
+    return parentSourceHierarchyContainer == parentTargetHierarchyContainer;
+  }
+
 }
