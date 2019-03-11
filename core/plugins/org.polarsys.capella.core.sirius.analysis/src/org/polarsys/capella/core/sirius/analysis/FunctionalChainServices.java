@@ -405,14 +405,18 @@ public class FunctionalChainServices {
    * @return
    */
   public DEdge createInternalLink(EdgeTarget sourceNode, EdgeTarget targetNode, FunctionalChain fc) {
-    DDiagram diagram = CapellaServices.getService().getDiagramContainer(sourceNode);
-    EdgeMapping mapping = getInternLinkEdgeMapping(diagram);
-    DEdge newEdge = DiagramServices.getDiagramServices().findDEdgeElement(diagram, sourceNode, targetNode, fc, mapping);
-    if (newEdge == null) {
-      DiagramServices.getDiagramServices().createEdge(mapping, sourceNode, targetNode, fc);
-      newEdge = DiagramServices.getDiagramServices().findDEdgeElement(diagram, sourceNode, targetNode, fc, mapping);
+    // Before creating, check if the internal link is possible to display, depending on conditions of their 2 ports.
+    if (isValidInternalLinkEdge(fc, sourceNode, targetNode)) {
+      DDiagram diagram = CapellaServices.getService().getDiagramContainer(sourceNode);
+      EdgeMapping mapping = getInternLinkEdgeMapping(diagram);
+      DEdge newEdge = DiagramServices.getDiagramServices().findDEdgeElement(diagram, sourceNode, targetNode, fc, mapping);
+      if (newEdge == null) {
+        DiagramServices.getDiagramServices().createEdge(mapping, sourceNode, targetNode, fc);
+        newEdge = DiagramServices.getDiagramServices().findDEdgeElement(diagram, sourceNode, targetNode, fc, mapping);
+      }
+      return newEdge;
     }
-    return newEdge;
+    return null;
   }
 
   public EdgeMapping getInternLinkEdgeMapping(DDiagram diagram) {
