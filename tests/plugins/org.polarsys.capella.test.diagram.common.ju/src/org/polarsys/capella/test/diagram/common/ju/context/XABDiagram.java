@@ -20,7 +20,6 @@ import org.eclipse.sirius.diagram.DNode;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.Part;
-import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
@@ -341,7 +340,7 @@ public class XABDiagram extends CommonDiagram {
     }
     new InsertRemoveTool(this, name, containerId).insert(id);
   }
-  
+
   public void removeComponentExchange(String id, String containerId) {
     String name = null;
     if (type == Type.OA) {
@@ -359,7 +358,7 @@ public class XABDiagram extends CommonDiagram {
   public void insertPhysicalLink(String id, String containerId) {
     new InsertRemoveTool(this, IToolNameConstants.TOOL_XAB_SHOW_HIDE_PHYSICAL_LINK, containerId).insert(id);
   }
-  
+
   public void removePhysicalLink(String id, String containerId) {
     new InsertRemoveTool(this, IToolNameConstants.TOOL_XAB_SHOW_HIDE_PHYSICAL_LINK, containerId).remove(id);
   }
@@ -433,7 +432,7 @@ public class XABDiagram extends CommonDiagram {
   }
 
   @Override
-  public Collection<EObject> adaptTool(AbstractToolStep tool, Map<String, Object> parameters,
+  public Collection<EObject> adaptTool(AbstractToolStep<?> tool, Map<String, Object> parameters,
       Collection<EObject> semanticElements) {
     Collection<EObject> scope = AbstractExternalJavaAction.getScope(parameters);
     if (scope.isEmpty()) {
@@ -678,31 +677,30 @@ public class XABDiagram extends CommonDiagram {
     }
     new SelectFromListTool(this, name, containerId, ids).select(ids);
   }
-  
-  
+
   @Override
   public void hasntView(String identifier) {
     super.hasntView(identifier);
     checkContainedElements(identifier);
   }
-  
-  public void checkContainedElements(String id) {
-    EObject semantic = getSemanticElement(id);
 
-    if(semantic != null) {
-      if(semantic instanceof Part) {
+  public void checkContainedElements(String id) {
+    EObject semantic = getSessionContext().getSemanticElement(id);
+
+    if (semantic != null) {
+      if (semantic instanceof Part) {
         Part partSem = (Part) semantic;
-        if(partSem.getAbstractType() instanceof Component) {
+        if (partSem.getAbstractType() instanceof Component) {
           Component component = (Component) partSem.getAbstractType();
           Collection<ComponentExchange> ce = ComponentExt.getAllRelatedComponentExchange(component);
-          for(ComponentExchange c : ce) {
+          for (ComponentExchange c : ce) {
             super.hasntView(c.getId());
           }
         }
       }
     }
   }
-  
+
   public BlockArchitectureExt.Type getDiagramType() {
     return type;
   }

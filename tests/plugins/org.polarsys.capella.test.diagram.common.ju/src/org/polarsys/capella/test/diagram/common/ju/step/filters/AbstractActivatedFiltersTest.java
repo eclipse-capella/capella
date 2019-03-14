@@ -52,7 +52,7 @@ public abstract class AbstractActivatedFiltersTest extends AbstractDiagramStepWi
   protected void postRunTest() {
     List<String> expectedActivatedFilters = expectedActivatedFiltersList();
     expectedActivatedFilters.add("ModelExtensionFilter"); //$NON-NLS-1$ Filter activated for every diagram
-    EList<FilterDescription> activatedFilters = ((DiagramContext) getExecutionContext()).getDiagram().getActivatedFilters();
+    EList<FilterDescription> activatedFilters = getDiagramContext().getDiagram().getActivatedFilters();
 
     List<String> activatedFiltersNamesList = new ArrayList<String>();
 
@@ -68,9 +68,11 @@ public abstract class AbstractActivatedFiltersTest extends AbstractDiagramStepWi
         break;
       }
     }
-    Assert.assertEquals(MessageFormat.format(Messages.filtersNotActivated, activatedFiltersNamesList, expectedActivatedFilters),
+    Assert.assertEquals(
+        MessageFormat.format(Messages.filtersNotActivated, activatedFiltersNamesList, expectedActivatedFilters),
         expectedActivatedFilters.size(), activatedFilters.size());
-    Assert.assertTrue(MessageFormat.format(Messages.filtersNotActivated, activatedFiltersNamesList, expectedActivatedFilters), found);
+    Assert.assertTrue(
+        MessageFormat.format(Messages.filtersNotActivated, activatedFiltersNamesList, expectedActivatedFilters), found);
     super.postRunTest();
   }
 }

@@ -49,7 +49,7 @@ public class CombinedFragmentCreationTool extends CreateAbstractDNodeTool<DNodeC
         }
       });
     }
-    elements = DiagramHelper.getDiagramElements(getExecutionContext().getDiagram());
+    elements = DiagramHelper.getDiagramElements(getDiagramContext().getDiagram());
   }
   
   @Override
@@ -60,7 +60,7 @@ public class CombinedFragmentCreationTool extends CreateAbstractDNodeTool<DNodeC
   @Override
   protected void postRunTest() {
     newElements = new ArrayList<DDiagramElement>();
-    newElements.addAll(DiagramHelper.getDiagramElements(getExecutionContext().getDiagram()));
+    newElements.addAll(DiagramHelper.getDiagramElements(getDiagramContext().getDiagram()));
     newElements.removeAll(elements);
     
     if (newElements.size() != expectedNewElements()) {

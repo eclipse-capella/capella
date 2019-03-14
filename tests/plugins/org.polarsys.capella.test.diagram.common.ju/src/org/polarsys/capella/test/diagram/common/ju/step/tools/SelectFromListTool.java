@@ -25,8 +25,9 @@ import org.polarsys.capella.test.diagram.common.ju.headless.HeadlessResultOpProv
 import org.polarsys.capella.test.diagram.common.ju.headless.IHeadlessResult;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.ArgumentType;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.DiagramHelper;
+import org.polarsys.capella.test.framework.context.SessionContext;
 
-public class SelectFromListTool extends AbstractToolStep {
+public class SelectFromListTool extends AbstractToolStep<Object> {
 
   boolean initialized = false;
 
@@ -38,8 +39,8 @@ public class SelectFromListTool extends AbstractToolStep {
   protected String[] insertedElements;
 
   protected String[] selectedElements;
-  
-  public SelectFromListTool(DiagramContext context, String toolName, String containerId, String ... insertedElements) {
+
+  public SelectFromListTool(DiagramContext context, String toolName, String containerId, String... insertedElements) {
     super(context, toolName);
     this.containerId = containerId;
     this.insertedElements = insertedElements;
@@ -48,7 +49,8 @@ public class SelectFromListTool extends AbstractToolStep {
     }
   }
 
-  public SelectFromListTool(DiagramContext context, String toolName, String containerId, boolean autoRefresh, String ... insertedElements) {
+  public SelectFromListTool(DiagramContext context, String toolName, String containerId, boolean autoRefresh,
+      String... insertedElements) {
     this(context, toolName, containerId, insertedElements);
     this.autoRefresh = autoRefresh;
   }
@@ -58,7 +60,7 @@ public class SelectFromListTool extends AbstractToolStep {
     initialized = true;
   }
 
-  protected void initialize(String ...selectedElements) {
+  protected void initialize(String... selectedElements) {
     this.selectedElements = selectedElements;
     if (selectedElements == null) {
       this.selectedElements = new String[0];
@@ -73,8 +75,8 @@ public class SelectFromListTool extends AbstractToolStep {
     }
     return super.run();
   }
-  
-  public void select(String ...ids) {
+
+  public void select(String... ids) {
     initialize(ids);
     run();
   }
@@ -106,9 +108,10 @@ public class SelectFromListTool extends AbstractToolStep {
         }
 
         Collection<EObject> objects = new HashSet<EObject>();
-        DiagramContext context = getExecutionContext();
-        Collection<EObject> selected = context.adaptTool(SelectFromListTool.this, parameters,
-            context.getSemanticElements(selectedElements));
+        DiagramContext diagramContext = getDiagramContext();
+        SessionContext sessionContext = getExecutionContext();
+        Collection<EObject> selected = diagramContext.adaptTool(SelectFromListTool.this, parameters,
+            sessionContext.getSemanticElements(selectedElements));
         objects.addAll(AbstractExternalJavaAction.getInitialSelection(parameters));
         objects.addAll(selected);
         return new ArrayList<EObject>(objects);
@@ -122,7 +125,7 @@ public class SelectFromListTool extends AbstractToolStep {
    */
   @Override
   protected void initToolArguments() {
-    DSemanticDecorator containerView = getExecutionContext().getView(this.containerId);
+    DSemanticDecorator containerView = getDiagramContext().getView(this.containerId);
     _toolWrapper.setArgumentValue(ArgumentType.CONTAINER, containerView.getTarget());
     _toolWrapper.setArgumentValue(ArgumentType.CONTAINER_VIEW, containerView);
   }
@@ -134,10 +137,10 @@ public class SelectFromListTool extends AbstractToolStep {
   protected void postRunTest() {
     super.postRunTest();
     if (autoRefresh)
-      DiagramHelper.refreshDiagram(getExecutionContext().getDiagram());
+      DiagramHelper.refreshDiagram(getDiagramContext().getDiagram());
 
     for (String identifier : insertedElements) {
-      getExecutionContext().hasView(identifier);
+      getDiagramContext().hasView(identifier);
     }
   }
 

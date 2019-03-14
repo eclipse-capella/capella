@@ -18,13 +18,15 @@ import org.polarsys.capella.test.framework.api.step.AbstractTestStep;
  */
 public abstract class AbstractDiagramStep<A> extends AbstractTestStep<A> {
 
-  @Override
-  protected DiagramContext getExecutionContext() {
-    return (DiagramContext) super.getExecutionContext();
+  private DiagramContext diagramContext;
+
+  protected DiagramContext getDiagramContext() {
+    return this.diagramContext;
   }
 
-  public AbstractDiagramStep(DiagramContext context) {
-    super(context);
-  }
+  public AbstractDiagramStep(DiagramContext diagramContext) {
+    super(diagramContext.getSessionContext());
 
+    this.diagramContext = diagramContext;
+  }
 }

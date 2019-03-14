@@ -34,7 +34,7 @@ public class DragAndDropFromProjectExplorerTool extends DragAndDropTool {
 
   @Override
   protected void initToolArguments() {
-    DSemanticDecorator element = getExecutionContext().getView(containerView);
+    DSemanticDecorator element = getDiagramContext().getView(containerView);
 
     _toolWrapper.setArgumentValue(ArgumentType.CONTAINER_VIEW, element);
     _toolWrapper.setArgumentValue(ArgumentType.DROPPEDELEMENT, droppedElement);

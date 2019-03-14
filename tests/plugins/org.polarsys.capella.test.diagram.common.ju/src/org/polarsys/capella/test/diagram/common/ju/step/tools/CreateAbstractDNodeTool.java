@@ -26,11 +26,18 @@ import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.DiagramHelper;
  * Test step to call an AbstractDNode (DDiagramElementContainer, DNode...) creation tool.
  */
 public class CreateAbstractDNodeTool<T extends AbstractDNode> extends AbstractToolStep<T> {
+
+  /*
+   * The use of the newIdentifier variable is discouraged as it introduces problems with certain tools, mainly
+   * Insert/Remove tools
+   */
+  @Deprecated
   protected String newIdentifier;
-  protected String targetContainerView;
+
+  protected String containerViewTarget;
   protected String containerView;
   protected Class<T> expectedDiagramElementType;
-  protected Class<?extends CapellaElement> expectedTargetType;
+  protected Class<? extends CapellaElement> expectedTargetType;
 
   protected Collection<DDiagramElement> elements;
   protected Collection<DDiagramElement> newElements;
@@ -38,62 +45,67 @@ public class CreateAbstractDNodeTool<T extends AbstractDNode> extends AbstractTo
   public CreateAbstractDNodeTool(DiagramContext context, String toolName, String containerView) {
     this(context, toolName, containerView, (Class<T>) null);
   }
-  
+
   public CreateAbstractDNodeTool(DiagramContext context, String toolName, String containerView,
       Class<T> expectedNodeType) {
+
     super(context, toolName);
-    this.targetContainerView = containerView;
+
+    this.containerViewTarget = containerView;
     this.containerView = containerView;
     this.expectedDiagramElementType = expectedNodeType;
   }
-  
+
   public CreateAbstractDNodeTool(DiagramContext context, String toolName, String containerView,
-      Class<T> expectedNodeType, Class<?extends CapellaElement> targetType) {
+      String containerViewTarget, Class<T> expectedNodeType, Class<? extends CapellaElement> targetType) {
+
     this(context, toolName, containerView, expectedNodeType);
     this.expectedTargetType = targetType;
   }
 
+  @Deprecated
   public CreateAbstractDNodeTool(DiagramContext context, String toolName, String containerView, String newIdentifier,
       Class<T> expectedNodeType) {
     this(context, toolName, containerView, expectedNodeType);
     this.newIdentifier = newIdentifier;
   }
 
-  public CreateAbstractDNodeTool(DiagramContext context, String toolName, String targetContainerView, String containerView,
-      String newIdentifier, Class<T> expectedNodeType) {
+  @Deprecated
+  public CreateAbstractDNodeTool(DiagramContext context, String toolName, String targetContainerView,
+      String containerView, String newIdentifier, Class<T> expectedNodeType) {
     this(context, toolName, targetContainerView, expectedNodeType);
     this.newIdentifier = newIdentifier;
     this.containerView = containerView;
   }
-  
-  public CreateAbstractDNodeTool(DiagramContext context, String toolName, String targetContainerView, String containerView,
-      String newIdentifier, Class<T> expectedNodeType, Class<?extends CapellaElement> targetType) {
-    this(context, toolName, targetContainerView, newIdentifier, expectedNodeType);
-    this.expectedTargetType = targetType;
-  }
-  
+
+  @Deprecated
   public CreateAbstractDNodeTool(DiagramContext context, String toolName, String containerView, String newIdentifier) {
     this(context, toolName, containerView, newIdentifier, null);
   }
 
+  @Deprecated
   public CreateAbstractDNodeTool(DiagramContext context, String[] toolIdentifier, String containerView,
       Class<T> expectedNodeType) {
+
     super(context, toolIdentifier[0], toolIdentifier[1]);
-    this.targetContainerView = containerView;
+    this.containerViewTarget = containerView;
     this.containerView = containerView;
     this.expectedDiagramElementType = expectedNodeType;
   }
 
+  @Deprecated
   public CreateAbstractDNodeTool(DiagramContext context, String[] toolIdentifier, String containerView) {
     this(context, toolIdentifier, containerView, (Class<T>) null);
   }
 
+  @Deprecated
   public CreateAbstractDNodeTool(DiagramContext context, String[] toolIdentifier, String containerView,
       String newIdentifier, Class<T> expectedNodeType) {
     this(context, toolIdentifier, containerView, expectedNodeType);
     this.newIdentifier = newIdentifier;
   }
 
+  @Deprecated
   public CreateAbstractDNodeTool(DiagramContext context, String[] toolIdentifier, String containerView,
       String newIdentifier) {
     this(context, toolIdentifier, containerView, newIdentifier, null);
@@ -113,25 +125,18 @@ public class CreateAbstractDNodeTool<T extends AbstractDNode> extends AbstractTo
     newElements = null;
   }
 
-  protected DSemanticDecorator getContainerView() {
-    return getExecutionContext().getView(containerView);
-  }
-
-  protected int expectedNewElements() {
-    return 1;
-  }
-  
   @Override
   protected void postRunTest() {
     super.postRunTest();
     DSemanticDecorator element = getContainerView();
     newElements = DiagramHelper.getOwnedElements(element);
     newElements.removeAll(elements);
-    
+
     if (newElements.size() != expectedNewElements()) {
       assertFalse(true);
     }
-    if ((expectedDiagramElementType != null) && !(expectedDiagramElementType.isInstance(newElements.iterator().next()))) {
+    if ((expectedDiagramElementType != null)
+        && !(expectedDiagramElementType.isInstance(newElements.iterator().next()))) {
       assertFalse(true);
     }
     if ((expectedTargetType != null) && !(expectedTargetType.isInstance(newElements.iterator().next().getTarget()))) {
@@ -139,20 +144,42 @@ public class CreateAbstractDNodeTool<T extends AbstractDNode> extends AbstractTo
     }
   }
 
+  protected DSemanticDecorator getContainerView() {
+    return getDiagramContext().getView(containerView);
+  }
+
+  protected int expectedNewElements() {
+    return 1;
+  }
+
+  @SuppressWarnings("unchecked")
   @Override
   public T getResult() {
-    T view = (T) newElements.iterator().next();
-    if (newIdentifier != null) {
-      getExecutionContext().putSemanticElement(newIdentifier, view.getTarget());
-      getExecutionContext().putView(newIdentifier, view);
+
+    T createdElementView = (T) newElements.iterator().next();
+
+    if (null != newIdentifier) {
+      getExecutionContext().putSemanticElement(newIdentifier, createdElementView.getTarget());
+      getDiagramContext().putView(newIdentifier, createdElementView);
     }
-    return view;
+
+    else {
+
+      String createdElementId = ((CapellaElement) createdElementView.getTarget()).getId();
+
+      getExecutionContext().putSemanticElement(createdElementId, createdElementView.getTarget());
+      getDiagramContext().putView(createdElementId, createdElementView);
+    }
+
+    return createdElementView;
   }
 
   @Override
   protected void initToolArguments() {
-    DSemanticDecorator element = getExecutionContext().getView(targetContainerView);
-    _toolWrapper.setArgumentValue(ArgumentType.CONTAINER, element.getTarget());
-    _toolWrapper.setArgumentValue(ArgumentType.CONTAINER_VIEW, element);
+
+    DSemanticDecorator parentContainerView = getDiagramContext().getView(containerViewTarget);
+
+    _toolWrapper.setArgumentValue(ArgumentType.CONTAINER, parentContainerView.getTarget());
+    _toolWrapper.setArgumentValue(ArgumentType.CONTAINER_VIEW, parentContainerView);
   }
 }

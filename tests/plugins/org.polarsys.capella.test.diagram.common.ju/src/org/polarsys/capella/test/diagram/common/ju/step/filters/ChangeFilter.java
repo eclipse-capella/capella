@@ -34,7 +34,8 @@ public class ChangeFilter extends AbstractDiagramStep<DDiagramElement> {
   protected ChangeType changeType;
   protected int nbOfexpectedHiddenElements;
 
-  public ChangeFilter(DiagramContext context, String filterName, ChangeType changeType, int nbOfExpectedHiddenElements) {
+  public ChangeFilter(DiagramContext context, String filterName, ChangeType changeType,
+      int nbOfExpectedHiddenElements) {
     super(context);
     this.filterName = filterName;
     this.changeType = changeType;
@@ -48,21 +49,21 @@ public class ChangeFilter extends AbstractDiagramStep<DDiagramElement> {
 
   @Override
   protected void runTest() {
-    int nbElementsBeforeFilter = getExecutionContext().getDiagram().getDiagramElements().size();
+    int nbElementsBeforeFilter = getDiagramContext().getDiagram().getDiagramElements().size();
 
     // Apply/Remove filter
     FilterDescription filterDescription;
     if (ChangeType.ADD == changeType) {
-      filterDescription = FilterOnDiagramHelper.applyFilterOnDiagram(getExecutionContext().getDiagram(), filterName);
+      filterDescription = FilterOnDiagramHelper.applyFilterOnDiagram(getDiagramContext().getDiagram(), filterName);
     } else {
-      filterDescription = FilterOnDiagramHelper.removeFilterOnDiagram(getExecutionContext().getDiagram(), filterName);
+      filterDescription = FilterOnDiagramHelper.removeFilterOnDiagram(getDiagramContext().getDiagram(), filterName);
     }
     Assert.assertNotNull(MessageFormat.format("Filter \"{0}\" not found for diagram \"{1}\"", filterName,
-        getExecutionContext().getDiagram().getName()), filterDescription);
+        getDiagramContext().getDiagram().getName()), filterDescription);
 
     // Count hidden elements
     int numberOfHiddenElements = 0;
-    EList<DDiagramElement> diagramElements = getExecutionContext().getDiagram().getDiagramElements();
+    EList<DDiagramElement> diagramElements = getDiagramContext().getDiagram().getDiagramElements();
     for (DDiagramElement dDiagramElement : diagramElements) {
       if (!dDiagramElement.isVisible()) {
         numberOfHiddenElements++;
@@ -71,14 +72,14 @@ public class ChangeFilter extends AbstractDiagramStep<DDiagramElement> {
     // Check number of hidden elements
     Assert.assertEquals(numberOfHiddenElements, nbOfexpectedHiddenElements);
     if (ChangeType.ADD == changeType) {
-      FilterOnDiagramHelper.checkFilteredElementsInDiagram(getExecutionContext().getDiagram(),
+      FilterOnDiagramHelper.checkFilteredElementsInDiagram(getDiagramContext().getDiagram(),
           (CompositeFilterDescription) filterDescription);
     } else {
-      FilterOnDiagramHelper.checkShowElementsInDiagram(getExecutionContext().getDiagram(),
+      FilterOnDiagramHelper.checkShowElementsInDiagram(getDiagramContext().getDiagram(),
           (CompositeFilterDescription) filterDescription);
     }
     // Check diagram still contains the same number of elements
-    int nbElementsAfterFilter = getExecutionContext().getDiagram().getDiagramElements().size();
+    int nbElementsAfterFilter = getDiagramContext().getDiagram().getDiagramElements().size();
     Assert.assertEquals(nbElementsBeforeFilter, nbElementsAfterFilter);
   }
 }

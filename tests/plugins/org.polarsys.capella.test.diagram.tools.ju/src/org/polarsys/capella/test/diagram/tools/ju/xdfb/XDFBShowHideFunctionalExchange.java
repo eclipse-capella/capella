@@ -62,10 +62,10 @@ public class XDFBShowHideFunctionalExchange extends XDFBToolsTestingModel {
 
     if (diagramType != Type.OA) {
 
-      String outputPort = ((FunctionalExchange) xdfb.getSemanticElement(functionalExchangeToShowHideId)).getSource()
-          .getId();
-      String inputPort = ((FunctionalExchange) xdfb.getSemanticElement(functionalExchangeToShowHideId)).getTarget()
-          .getId();
+      String outputPort = ((FunctionalExchange) xdfb.getSessionContext()
+          .getSemanticElement(functionalExchangeToShowHideId)).getSource().getId();
+      String inputPort = ((FunctionalExchange) xdfb.getSessionContext()
+          .getSemanticElement(functionalExchangeToShowHideId)).getTarget().getId();
 
       xdfb.hasntView(inputPort);
       xdfb.hasntView(outputPort);

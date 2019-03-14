@@ -33,7 +33,7 @@ public class SetContextualElementsStep extends AbstractDiagramStep<DiagramContex
 
   @Override
   public DiagramContext getResult() {
-    return getExecutionContext();
+    return getDiagramContext();
   }
 
   @Override
@@ -44,7 +44,8 @@ public class SetContextualElementsStep extends AbstractDiagramStep<DiagramContex
         for (String id : ids) {
           objects.add(getExecutionContext().getSemanticElement(id));
         }
-        DRepresentationDescriptor descriptor = RepresentationHelper.getRepresentationDescriptor(getExecutionContext().getDiagram());
+        DRepresentationDescriptor descriptor = RepresentationHelper
+            .getRepresentationDescriptor(getDiagramContext().getDiagram());
         ContextualDiagramHelper.getService().setContextualElements(descriptor, objects);
       }
     });

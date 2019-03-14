@@ -37,7 +37,7 @@ public class ClearDiagramStep extends AbstractDiagramStep<DiagramContext> {
   @Override
   protected void preRunTest() {
     super.preRunTest();
-    Assert.assertNotNull(Messages.nullDiagram, getExecutionContext().getDiagram());
+    Assert.assertNotNull(Messages.nullDiagram, getDiagramContext().getDiagram());
   }
 
   /**
@@ -47,13 +47,13 @@ public class ClearDiagramStep extends AbstractDiagramStep<DiagramContext> {
   protected void runTest() {
     TestHelper.getExecutionManager(getExecutionContext().getSession()).execute(new AbstractReadWriteCommand() {
       public void run() {
-        for (DDiagramElement element : new ArrayList<DDiagramElement>(getExecutionContext().getDiagram()
-            .getOwnedDiagramElements())) {
+        for (DDiagramElement element : new ArrayList<DDiagramElement>(
+            getDiagramContext().getDiagram().getOwnedDiagramElements())) {
           DiagramHelper.removeView(element);
         }
-        boolean ret = getExecutionContext().getDiagram().getOwnedDiagramElements().isEmpty();
-        Assert.assertTrue(
-            NLS.bind(Messages.emptyDiagram, new Object[] { getExecutionContext().getDiagram().getName() }), ret);
+        boolean ret = getDiagramContext().getDiagram().getOwnedDiagramElements().isEmpty();
+        Assert.assertTrue(NLS.bind(Messages.emptyDiagram, new Object[] { getDiagramContext().getDiagram().getName() }),
+            ret);
       }
     });
 
@@ -61,6 +61,6 @@ public class ClearDiagramStep extends AbstractDiagramStep<DiagramContext> {
 
   @Override
   public DiagramContext getResult() {
-    return getExecutionContext();
+    return getDiagramContext();
   }
 }

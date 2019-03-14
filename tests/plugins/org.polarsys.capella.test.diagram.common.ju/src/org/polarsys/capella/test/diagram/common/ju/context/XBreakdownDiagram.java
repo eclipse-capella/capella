@@ -38,7 +38,8 @@ public class XBreakdownDiagram extends CommonDiagram {
   }
 
   public static XBreakdownDiagram createCBDiagram(SessionContext executionContext, String targetIdentifier) {
-    BlockArchitecture architecture = BlockArchitectureExt.getRootBlockArchitecture(executionContext.getSemanticElement(targetIdentifier));
+    BlockArchitecture architecture = BlockArchitectureExt
+        .getRootBlockArchitecture(executionContext.getSemanticElement(targetIdentifier));
     final BlockArchitectureExt.Type type = BlockArchitectureExt.getBlockArchitectureType(architecture);
 
     String name = null;
@@ -61,7 +62,8 @@ public class XBreakdownDiagram extends CommonDiagram {
   }
 
   public static XBreakdownDiagram createFBDiagram(SessionContext executionContext, String targetIdentifier) {
-    BlockArchitecture architecture = BlockArchitectureExt.getRootBlockArchitecture(executionContext.getSemanticElement(targetIdentifier));
+    BlockArchitecture architecture = BlockArchitectureExt
+        .getRootBlockArchitecture(executionContext.getSemanticElement(targetIdentifier));
     final BlockArchitectureExt.Type type = BlockArchitectureExt.getBlockArchitectureType(architecture);
 
     String name = null;
@@ -83,7 +85,8 @@ public class XBreakdownDiagram extends CommonDiagram {
     }.run().open();
   }
 
-  public static XBreakdownDiagram openDiagram(SessionContext executionContext, String name, final BlockArchitectureExt.Type type) {
+  public static XBreakdownDiagram openDiagram(SessionContext executionContext, String name,
+      final BlockArchitectureExt.Type type) {
     return (XBreakdownDiagram) new OpenDiagramStep(executionContext, name) {
       @Override
       public DiagramContext getResult() {
@@ -92,7 +95,8 @@ public class XBreakdownDiagram extends CommonDiagram {
     }.run().open();
   }
 
-  public void createFunction(String id, final int expectedNewElements, String kind, String containerId, final String realContainerId) {
+  public void createFunction(String id, final int expectedNewElements, String kind, String containerId,
+      final String realContainerId) {
     String name = null;
     if (type == Type.OA) {
       name = IToolNameConstants.TOOL_OEB_CREATE_OPERATIONAL_ACTIVITY;
@@ -142,7 +146,9 @@ public class XBreakdownDiagram extends CommonDiagram {
     new CreateNodeTool(this, name, containerId, id) {
       @Override
       protected DSemanticDecorator getContainerView() {
-        return getExecutionContext().getView((realContainerId != null && !ICommonConstants.EMPTY_STRING.equals(realContainerId)) ? realContainerId : containerView);
+        return getDiagramContext().getView(
+            (realContainerId != null && !ICommonConstants.EMPTY_STRING.equals(realContainerId)) ? realContainerId
+                : containerView);
       }
 
       @Override
@@ -156,7 +162,8 @@ public class XBreakdownDiagram extends CommonDiagram {
     createComponent(id, expectedNewElements, ICommonConstants.EMPTY_STRING, containerId, containerId);
   }
 
-  public void createComponent(String id, final int expectedNewElements, String kind, String containerId, final String realContainerId) {
+  public void createComponent(String id, final int expectedNewElements, String kind, String containerId,
+      final String realContainerId) {
     String name = null;
     if (type == Type.OA) {
       if (OaPackage.Literals.OPERATIONAL_ACTOR.getName().equals(kind)) {
@@ -192,7 +199,9 @@ public class XBreakdownDiagram extends CommonDiagram {
     new CreateNodeTool(this, name, containerId, id) {
       @Override
       protected DSemanticDecorator getContainerView() {
-        return getExecutionContext().getView((realContainerId != null && !ICommonConstants.EMPTY_STRING.equals(realContainerId)) ? realContainerId : containerView);
+        return getDiagramContext().getView(
+            (realContainerId != null && !ICommonConstants.EMPTY_STRING.equals(realContainerId)) ? realContainerId
+                : containerView);
       }
 
       @Override

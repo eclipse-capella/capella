@@ -96,7 +96,6 @@ public class SwitchTool extends AbstractToolStep {
     IHeadlessResult op = new IHeadlessResult() {
 
       @Override
-      @SuppressWarnings({ "unchecked", "synthetic-access", "rawtypes" })
       public Object getResult(java.util.Collection<? extends EObject> selections, Map<String, Object> parameters) {
         return getExecutionContext().getSemanticElements(insertedElements);
       }
@@ -111,7 +110,7 @@ public class SwitchTool extends AbstractToolStep {
    */
   @Override
   protected void initToolArguments() {
-    DDiagram container = getExecutionContext().getDiagram();
+    DDiagram container = getDiagramContext().getDiagram();
     _toolWrapper.setArgumentValue(ArgumentType.CONTAINER_VIEW, container);
   }
 
@@ -124,10 +123,10 @@ public class SwitchTool extends AbstractToolStep {
     super.postRunTest();
 
     for (String identifier : insertedElements) {
-      getExecutionContext().hasView(identifier);
+      getDiagramContext().hasView(identifier);
     }
     for (String identifier : removedElements) {
-      getExecutionContext().hasntView(identifier);
+      getDiagramContext().hasntView(identifier);
     }
   }
 

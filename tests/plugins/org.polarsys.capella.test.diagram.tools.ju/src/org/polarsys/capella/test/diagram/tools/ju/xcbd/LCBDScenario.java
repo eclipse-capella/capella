@@ -41,7 +41,7 @@ public class LCBDScenario extends EmptyProject {
         diagram.getDiagramId());
 
     // Set the Project multi-parts
-    TestHelper.setReusableComponents(diagram.getSemanticElement(GenericModel.LC_3), true);
+    TestHelper.setReusableComponents(diagram.getSessionContext().getSemanticElement(GenericModel.LC_3), true);
 
     diagram.createPart(GenericModel.LC_1, GenericModel.LC_3, diagram.getDiagramId());
   }

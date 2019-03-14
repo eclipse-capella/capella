@@ -208,7 +208,7 @@ public class XDFBDiagram extends DiagramContext {
   }
 
   public void initializationFromExistingDiagram(DiagramContext existingContext) {
-    new InitializationFromExistingDiagramTool(this, IToolNameConstants.TOOL_SDFB_INITIALIZATION_FROM_EXISTING_DIAGRAM,
+    new InitializationFromExistingDiagramTool(this, IToolNameConstants.TOOL_INITIALIZATION_FROM_EXISTING_DIAGRAM,
         existingContext).insert(existingContext.getDiagramId());
   }
 
@@ -288,13 +288,6 @@ public class XDFBDiagram extends DiagramContext {
       break;
     }
   }
-  
-  private String getSemanticIdFromView(DDiagramElement view) {
-
-    EObject semanticElement = view.getTarget();
-
-    return ((CapellaElement) semanticElement).getId();
-  }
 
   private void checkClassOfDiagramElement(DDiagramElement view, EClass expectedClass) {
 
@@ -310,7 +303,7 @@ public class XDFBDiagram extends DiagramContext {
   private void checkParentOfCreatedElement(DDiagramElement view, String containerId) {
 
     EObject semanticElement = view.getTarget();
-    EObject containerElement = getSemanticElement(containerId);
+    EObject containerElement = getSessionContext().getSemanticElement(containerId);
 
     // The only containers we have (besides the diagram) are functions in XDFB Diagrams
     if (containerElement instanceof AbstractFunction) {
@@ -372,8 +365,8 @@ public class XDFBDiagram extends DiagramContext {
 
   private void checkSourceAndTargetOfFunctionalExchange(DDiagramElement view, String sourceId, String targetId) {
 
-    EObject source = getSemanticElement(sourceId);
-    EObject target = getSemanticElement(targetId);
+    EObject source = getSessionContext().getSemanticElement(sourceId);
+    EObject target = getSessionContext().getSemanticElement(targetId);
     
     FunctionalExchange exchange = (FunctionalExchange) view.getTarget();
 
@@ -426,7 +419,7 @@ public class XDFBDiagram extends DiagramContext {
   private void checkConstraintOnElement(DDiagramElement view, String targetId) {
 
     Constraint semanticElement = (Constraint) view.getTarget();
-    EObject constraintTarget = getSemanticElement(targetId);
+    EObject constraintTarget = getSessionContext().getSemanticElement(targetId);
 
     boolean result = semanticElement.getConstrainedElements().contains(constraintTarget);
     Assert.assertTrue(NLS.bind("Target element does not have the Constraint attached",

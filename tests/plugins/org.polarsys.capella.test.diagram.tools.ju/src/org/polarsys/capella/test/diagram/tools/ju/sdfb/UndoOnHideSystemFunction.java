@@ -61,7 +61,7 @@ public class UndoOnHideSystemFunction extends EmptyProject {
     // Create a FE between the 2 bus SFs
     String feId = sdfbDiagram.createEdge(function1_1Id, function1_2Id, XDFBCreateEdgeTools.CREATE_FUNCTIONAL_EXCHANGE);
 
-    final FunctionalExchange fe1 = sdfbDiagram.getSemanticElement(feId);
+    final FunctionalExchange fe1 = sdfbDiagram.getSessionContext().getSemanticElement(feId);
 
     // Create an Exchange Category referencing the FE
     AbstractReadWriteCommand createExchangeCategory = new AbstractReadWriteCommand() {

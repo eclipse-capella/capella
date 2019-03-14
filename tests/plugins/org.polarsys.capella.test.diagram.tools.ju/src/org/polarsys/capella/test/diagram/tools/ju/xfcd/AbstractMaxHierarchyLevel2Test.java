@@ -40,28 +40,31 @@ public abstract class AbstractMaxHierarchyLevel2Test extends AbstractFunctionalC
 
   @Override
   public void test() throws Exception {
+    
     Session session = getSession(getRequiredTestModel());
     SessionContext context = new SessionContext(session);
 
     XFCDDiagram xfcd = XFCDDiagram.getDiagram(context, LEVEL3_CHAIN1_DIAG);
+    SessionContext sessionContext = xfcd.getSessionContext();
 
     // level 2 chains that will serve as containers
-    FunctionalChainReference functionalChainRefLevel2 = xfcd
+    FunctionalChainReference functionalChainRefLevel2 = sessionContext
         .getSemanticElement(FUNCTIONAL_CHAIN_REFERENCE_TO_LEVEL2CHAIN1);
     FunctionalChain functionalChainLevel2 = functionalChainRefLevel2.getReferencedFunctionalChain();
 
-    FunctionalChainReference functionalChainRefLevel2Bis = xfcd
+    FunctionalChainReference functionalChainRefLevel2Bis = sessionContext
         .getSemanticElement(FUNCTIONAL_CHAIN_REFERENCE_TO_LEVEL2CHAIN1_BIS);
     FunctionalChain functionalChainLevel2Bis = functionalChainRefLevel2Bis.getReferencedFunctionalChain();
 
     // involve functional chain in another functional chain (functionalChainLevel2)
     String functionalChainRefLevel1Id = xfcd.involveFunctionalChain(functionalChainLevel2.getId(), LEVEL1CHAIN1);
-    FunctionalChainReference functionalChainRefLevel1 = xfcd.getSemanticElement(functionalChainRefLevel1Id);
+    FunctionalChainReference functionalChainRefLevel1 = sessionContext.getSemanticElement(functionalChainRefLevel1Id);
     FunctionalChain functionalChainLevel1 = functionalChainRefLevel1.getReferencedFunctionalChain();
 
     // involve functional chain in another functional chain (functionalChainLevel2Bis)
     String functionalChainRefLevel1IdBis = xfcd.involveFunctionalChain(functionalChainLevel2Bis.getId(), LEVEL1CHAIN1);
-    FunctionalChainReference functionalChainRefLevel1Bis = xfcd.getSemanticElement(functionalChainRefLevel1IdBis);
+    FunctionalChainReference functionalChainRefLevel1Bis = sessionContext
+        .getSemanticElement(functionalChainRefLevel1IdBis);
     FunctionalChain functionalChainLevel1Bis = functionalChainRefLevel1Bis.getReferencedFunctionalChain();
 
     // exchange between functions in different functional chains
@@ -69,7 +72,7 @@ public abstract class AbstractMaxHierarchyLevel2Test extends AbstractFunctionalC
     String involvementFunction3Level1Id = xfcd.involveFunction(functionalChainLevel1.getId(), FUNCTION_3);
 
     String exchange2Id = xfcd.involveExchange(involvementFunction2Level2Id, involvementFunction3Level1Id, EXCHANGE_2);
-    FunctionalChainInvolvementLink exchangeLink2 = xfcd.getSemanticElement(exchange2Id);
+    FunctionalChainInvolvementLink exchangeLink2 = sessionContext.getSemanticElement(exchange2Id);
 
     // check the link hierarchy
     assertTrue(exchangeLink2.getSourceReferenceHierarchy().isEmpty());
@@ -78,8 +81,8 @@ public abstract class AbstractMaxHierarchyLevel2Test extends AbstractFunctionalC
     // exchange between functions in functional chain and function on diagram
     String involvementFunction3OnDiagram = xfcd.involveFunction(xfcd.getDiagramId(), FUNCTION_3);
     String link3Id = xfcd.connectFunctions(involvementFunction3Level1Id, involvementFunction3OnDiagram);
-    FunctionalChainInvolvementLink link3 = xfcd.getSemanticElement(link3Id);
-    
+    FunctionalChainInvolvementLink link3 = sessionContext.getSemanticElement(link3Id);
+
     // check the link hierarchy
     assertEquals(Arrays.asList(functionalChainRefLevel1, functionalChainRefLevel2),
         link3.getSourceReferenceHierarchy());
@@ -88,11 +91,10 @@ public abstract class AbstractMaxHierarchyLevel2Test extends AbstractFunctionalC
     // connect between functions in different functional chains
     String involvementFunction3Level2BisId = xfcd.involveFunction(functionalChainLevel2Bis.getId(), FUNCTION_3);
     String connectLink3Id = xfcd.connectFunctions(involvementFunction3Level1Id, involvementFunction3Level2BisId);
-    FunctionalChainInvolvementLink connectLink3 = xfcd.getSemanticElement(connectLink3Id);
-    
+    FunctionalChainInvolvementLink connectLink3 = sessionContext.getSemanticElement(connectLink3Id);
+
     // check the link hierarchy
-    assertEquals(Arrays.asList(functionalChainRefLevel1),
-        connectLink3.getSourceReferenceHierarchy());
+    assertEquals(Arrays.asList(functionalChainRefLevel1), connectLink3.getSourceReferenceHierarchy());
     assertTrue(connectLink3.getTargetReferenceHierarchy().isEmpty());
   }
 }

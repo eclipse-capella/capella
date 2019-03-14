@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.polarsys.capella.test.diagram.common.ju.step.tools;
 
-import static org.junit.Assert.assertFalse;
-
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.polarsys.capella.test.diagram.common.ju.context.DiagramContext;
 
@@ -21,25 +19,23 @@ public class CreateContainerTool extends CreateAbstractDNodeTool<DDiagramElement
     super(context, toolName, containerView, DDiagramElementContainer.class);
   }
 
+  /*
+   * Constructors deprecated due to the use of the "newIdentifier" variable 
+   * This should not be used as it introduces problems with the Insert/Remove actions
+   */
+  @Deprecated
   public CreateContainerTool(DiagramContext context, String toolName, String containerView, String newIdentifier) {
     super(context, toolName, containerView, newIdentifier, DDiagramElementContainer.class);
   }
 
+  @Deprecated
   public CreateContainerTool(DiagramContext context, String[] toolIdentifier, String containerView) {
     super(context, toolIdentifier, containerView, DDiagramElementContainer.class);
   }
 
-  public CreateContainerTool(DiagramContext context, String[] toolIdentifier, String containerView, String newIdentifier) {
+  @Deprecated
+  public CreateContainerTool(DiagramContext context, String[] toolIdentifier, String containerView,
+      String newIdentifier) {
     super(context, toolIdentifier, containerView, newIdentifier, DDiagramElementContainer.class);
-  }
-
-  @Override
-  protected void postRunTest() {
-    super.postRunTest();
-
-    if (!(newElements.iterator().next() instanceof DDiagramElementContainer)) {
-      assertFalse(true);
-    }
-
   }
 }

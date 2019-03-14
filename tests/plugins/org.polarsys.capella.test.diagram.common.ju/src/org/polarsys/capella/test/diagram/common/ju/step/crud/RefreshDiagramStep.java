@@ -34,7 +34,7 @@ public class RefreshDiagramStep extends AbstractDiagramStep<DiagramContext> {
   @Override
   protected void preRunTest() {
     super.preRunTest();
-    Assert.assertNotNull(Messages.nullDiagram, getExecutionContext().getDiagram());
+    Assert.assertNotNull(Messages.nullDiagram, getDiagramContext().getDiagram());
   }
 
   /**
@@ -44,16 +44,15 @@ public class RefreshDiagramStep extends AbstractDiagramStep<DiagramContext> {
   protected void runTest() {
     TestHelper.getExecutionManager(getExecutionContext().getSession()).execute(new AbstractReadWriteCommand() {
       public void run() {
-        boolean ret = DiagramHelper.refreshDiagram(getExecutionContext().getDiagram());
+        boolean ret = DiagramHelper.refreshDiagram(getDiagramContext().getDiagram());
         Assert.assertTrue(
-            NLS.bind(Messages.failToRefreshDiagram, new Object[] { getExecutionContext().getDiagram().getName() }), ret);
+            NLS.bind(Messages.failToRefreshDiagram, new Object[] { getDiagramContext().getDiagram().getName() }), ret);
       }
     });
-
   }
 
   @Override
   public DiagramContext getResult() {
-    return getExecutionContext();
+    return getDiagramContext();
   }
 }

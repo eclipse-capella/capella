@@ -15,8 +15,8 @@ import java.util.Map;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.junit.Assert;
+import org.polarsys.capella.test.diagram.common.ju.context.DiagramContext;
 import org.polarsys.capella.test.diagram.common.ju.step.AbstractDiagramStepWithDelta;
-import org.polarsys.capella.test.framework.context.SessionContext;
 
 /**
  * An abstract test class to call on an hide/show filter in a diagram with delta support on diagram.
@@ -31,7 +31,7 @@ public abstract class AbstractHideShowFiltersTest extends AbstractDiagramStepWit
    * @param filterName_p
    * @param checkDelta_p
    */
-  public AbstractHideShowFiltersTest(SessionContext context, String filterName_p, boolean checkDelta_p) {
+  public AbstractHideShowFiltersTest(DiagramContext context, String filterName_p, boolean checkDelta_p) {
     super(context, checkDelta_p);
     _filterName = filterName_p;
     _numberOfElementFilter = 0;
@@ -47,12 +47,14 @@ public abstract class AbstractHideShowFiltersTest extends AbstractDiagramStepWit
 
   /**
    * Get the diagram context
+   * 
    * @return
    */
   protected abstract DDiagram getDiagram();
 
   /**
    * Get the map of context objects
+   * 
    * @return
    */
   protected abstract Map<String, EObject> getObjects();
@@ -67,6 +69,7 @@ public abstract class AbstractHideShowFiltersTest extends AbstractDiagramStepWit
 
   /**
    * Show/Hide filter action shouldn't be deleted the element in Diagram
+   * 
    * @see org.polarsys.capella.test.common.diagram.AbstractDiagramTestWithDelta#getNumberofExpectedNewElement()
    */
   @Override

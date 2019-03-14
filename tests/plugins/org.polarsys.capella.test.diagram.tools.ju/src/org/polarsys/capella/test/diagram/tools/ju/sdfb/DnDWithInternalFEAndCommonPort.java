@@ -47,8 +47,10 @@ public class DnDWithInternalFEAndCommonPort extends EmptyProject {
     assertNotNull("FE expected between Function 1 and Function 2", sdfbDiagram.getView(fe1Id));
     assertNotNull("FE expected between Function 1 and Function 3", sdfbDiagram.getView(fe2Id));
 
-    String function1OutputPort1ID = ((FunctionalExchange) sdfbDiagram.getSemanticElement(fe1Id)).getSource().getId();
-    String function1OutputPort2ID = ((FunctionalExchange) sdfbDiagram.getSemanticElement(fe2Id)).getSource().getId();
+    String function1OutputPort1ID = ((FunctionalExchange) sdfbDiagram.getSessionContext().getSemanticElement(fe1Id))
+        .getSource().getId();
+    String function1OutputPort2ID = ((FunctionalExchange) sdfbDiagram.getSessionContext().getSemanticElement(fe2Id))
+        .getSource().getId();
 
     // Reconnect FE2 to have FE1 and FE2 starting from the same port
     new ReconnectTool(sdfbDiagram, IToolNameConstants.TOOL_SDFB_RECONNECT_EXCHANGES, fe2Id, function1OutputPort2ID,

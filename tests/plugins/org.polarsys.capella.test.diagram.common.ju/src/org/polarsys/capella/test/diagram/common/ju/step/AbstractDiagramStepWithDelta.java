@@ -25,14 +25,12 @@ import org.junit.Assert;
 import org.polarsys.capella.core.data.information.Port;
 import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
 import org.polarsys.capella.test.diagram.common.ju.context.DiagramContext;
-import org.polarsys.capella.test.framework.api.step.AbstractTestStep;
-import org.polarsys.capella.test.framework.context.SessionContext;
 
 /**
  * This class must not be used. It test only how many elements have been displayed/hidden, not which elements
  */
 @Deprecated
-public abstract class AbstractDiagramStepWithDelta extends AbstractTestStep {
+public abstract class AbstractDiagramStepWithDelta extends AbstractDiagramStep {
 
   /**
    * flag in order to enable computation of new {@link DDiagramElement} on the target {@link DDiagram}
@@ -46,9 +44,10 @@ public abstract class AbstractDiagramStepWithDelta extends AbstractTestStep {
 
   /**
    * Constructor
+   * 
    * @param checkDelta
    */
-  public AbstractDiagramStepWithDelta(SessionContext context, boolean checkDelta) {
+  public AbstractDiagramStepWithDelta(DiagramContext context, boolean checkDelta) {
     super(context);
     _isDeltaOnElementsMustBeReturned = checkDelta;
   }
@@ -60,7 +59,7 @@ public abstract class AbstractDiagramStepWithDelta extends AbstractTestStep {
   protected void preRunTest() {
     if (_isDeltaOnElementsMustBeReturned) {
       _preExecutionList = new ArrayList<DDiagramElement>();
-      _preExecutionList.addAll(((DiagramContext) getExecutionContext()).getDiagram().getDiagramElements());
+      _preExecutionList.addAll(getDiagramContext().getDiagram().getDiagramElements());
 
     }
     super.preRunTest();
@@ -76,8 +75,9 @@ public abstract class AbstractDiagramStepWithDelta extends AbstractTestStep {
     // Get delta on diagram, if needed
     if (_isDeltaOnElementsMustBeReturned) {
       List<DDiagramElement> postExecutionlist = new ArrayList<DDiagramElement>();
-      postExecutionlist.addAll(((DiagramContext) getExecutionContext()).getDiagram().getDiagramElements());
-      List<DDiagramElement> addedElements = new ArrayList<DDiagramElement>(((DiagramContext) getExecutionContext()).getDiagram().getDiagramElements());
+      postExecutionlist.addAll(getDiagramContext().getDiagram().getDiagramElements());
+      List<DDiagramElement> addedElements = new ArrayList<DDiagramElement>(
+          getDiagramContext().getDiagram().getDiagramElements());
       addedElements.removeAll(_preExecutionList);
 
       if (postExecutionlist.size() > _preExecutionList.size()) {
@@ -95,9 +95,8 @@ public abstract class AbstractDiagramStepWithDelta extends AbstractTestStep {
       // For port added elements, check whether the label is hidden
       if (addedElements != null) {
         for (DDiagramElement currentElement : addedElements) {
-          if ((currentElement.getTarget() instanceof Port)
-              && (currentElement instanceof DNode)
-              && !(((DiagramContext) getExecutionContext()).getDiagram().getDescription().getName()
+          if ((currentElement.getTarget() instanceof Port) && (currentElement instanceof DNode)
+              && !(getDiagramContext().getDiagram().getDescription().getName()
                   .equals(IDiagramNameConstants.EPBS_ARCHITECTURE_BLANK_DIAGRAM_NAME))) {
             // foe EAB diagram, the label of ports is visible
             boolean hasLabelFilter = false;
@@ -108,7 +107,8 @@ public abstract class AbstractDiagramStepWithDelta extends AbstractTestStep {
                 break;
               }
             }
-            Assert.assertTrue(MessageFormat.format(Messages.visiblePortLabelError, currentElement.getName()), hasLabelFilter);
+            Assert.assertTrue(MessageFormat.format(Messages.visiblePortLabelError, currentElement.getName()),
+                hasLabelFilter);
           }
         }
       }
@@ -116,8 +116,9 @@ public abstract class AbstractDiagramStepWithDelta extends AbstractTestStep {
   }
 
   /**
-   * get delta about contained {@link DDiagramElement}. Note that Delta hereby means added or deleted element on the target diagram. on current {@link DDiagram}
-   * .
+   * get delta about contained {@link DDiagramElement}. Note that Delta hereby means added or deleted element on the
+   * target diagram. on current {@link DDiagram} .
+   * 
    * @return
    */
   public List<DDiagramElement> getDeltaOnDiagramElement() {
@@ -137,7 +138,8 @@ public abstract class AbstractDiagramStepWithDelta extends AbstractTestStep {
     Assert.assertEquals(getNumberofExpectedNewElement(), getDeltaOnDiagramElement().size());
   }
 
-  protected boolean CompareActualAndExpectedLists(final List<Point> actualPointsList_p, final List<Point> expectedPointsList_p) {
+  protected boolean CompareActualAndExpectedLists(final List<Point> actualPointsList_p,
+      final List<Point> expectedPointsList_p) {
     if (expectedPointsList_p.containsAll(actualPointsList_p) && actualPointsList_p.containsAll(expectedPointsList_p)) {
       return true;
     }
@@ -153,11 +155,11 @@ public abstract class AbstractDiagramStepWithDelta extends AbstractTestStep {
       int x = actualPoint.x;
       int y = actualPoint.y;
 
-      same =
-          expectedPointsList.contains(actualPoint) || expectedPointsList.contains(new Point(x - 1, y - 1)) || expectedPointsList.contains(new Point(x - 1, y))
-              || expectedPointsList.contains(new Point(x - 1, y + 1)) || expectedPointsList.contains(new Point(x, y - 1))
-              || expectedPointsList.contains(new Point(x, y + 1)) || expectedPointsList.contains(new Point(x + 1, y - 1))
-              || expectedPointsList.contains(new Point(x + 1, y)) || expectedPointsList.contains(new Point(x + 1, y + 1));
+      same = expectedPointsList.contains(actualPoint) || expectedPointsList.contains(new Point(x - 1, y - 1))
+          || expectedPointsList.contains(new Point(x - 1, y)) || expectedPointsList.contains(new Point(x - 1, y + 1))
+          || expectedPointsList.contains(new Point(x, y - 1)) || expectedPointsList.contains(new Point(x, y + 1))
+          || expectedPointsList.contains(new Point(x + 1, y - 1)) || expectedPointsList.contains(new Point(x + 1, y))
+          || expectedPointsList.contains(new Point(x + 1, y + 1));
       if (same == false) {
         return false;
       }

@@ -41,7 +41,7 @@ public class DragAndDropTool extends AbstractToolStep<DDiagramElement> {
   @Override
   protected void preRunTest() {
     super.preRunTest();
-    DSemanticDecorator element = getExecutionContext().getView(containerView);
+    DSemanticDecorator element = getDiagramContext().getView(containerView);
     _elements = DiagramHelper.getOwnedElements(element);
   }
 
@@ -55,16 +55,18 @@ public class DragAndDropTool extends AbstractToolStep<DDiagramElement> {
   @Override
   protected void postRunTest() {
     super.postRunTest();
-    DSemanticDecorator element = getExecutionContext().getView(containerView);
+    DSemanticDecorator element = getDiagramContext().getView(containerView);
     _newElements = DiagramHelper.getOwnedElements(element);
     _newElements.removeAll(_elements);
 
     validateNewElements(_newElements);
-    }
+  }
 
   /**
    * This default implementation checks if there is exactly one new element, but subclasses may override.
-   * @param newElements the new elements after the drop
+   * 
+   * @param newElements
+   *          the new elements after the drop
    */
   protected void validateNewElements(Collection<DDiagramElement> newElements) {
     assertEquals(1, _newElements.size());
@@ -76,7 +78,7 @@ public class DragAndDropTool extends AbstractToolStep<DDiagramElement> {
 
     if (elementView != null) {
       getExecutionContext().putSemanticElement(elementView, view.getTarget());
-      getExecutionContext().putView(elementView, view);
+      getDiagramContext().putView(elementView, view);
     }
 
     return view;
@@ -84,8 +86,8 @@ public class DragAndDropTool extends AbstractToolStep<DDiagramElement> {
 
   @Override
   protected void initToolArguments() {
-    DSemanticDecorator droppedElement = getExecutionContext().getView(elementView);
-    DSemanticDecorator element = getExecutionContext().getView(containerView);
+    DSemanticDecorator droppedElement = getDiagramContext().getView(elementView);
+    DSemanticDecorator element = getDiagramContext().getView(containerView);
 
     _toolWrapper.setArgumentValue(ArgumentType.CONTAINER_VIEW, element);
     _toolWrapper.setArgumentValue(ArgumentType.DROPPEDELEMENT, droppedElement);

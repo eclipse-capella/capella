@@ -17,11 +17,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import org.apache.commons.lang.ArrayUtils;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
@@ -29,14 +27,13 @@ import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.data.cs.Part;
-import org.polarsys.capella.core.data.interaction.StateFragment;
 import org.polarsys.capella.core.sirius.analysis.actions.extensions.AbstractExternalJavaAction;
 import org.polarsys.capella.test.diagram.common.ju.context.DiagramContext;
 import org.polarsys.capella.test.diagram.common.ju.headless.HeadlessResultOpProvider;
 import org.polarsys.capella.test.diagram.common.ju.headless.IHeadlessResult;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.ArgumentType;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.DiagramHelper;
+import org.polarsys.capella.test.framework.context.SessionContext;
 
 public class InsertRemoveTool extends AbstractToolStep {
 
@@ -147,10 +144,10 @@ public class InsertRemoveTool extends AbstractToolStep {
 
   protected void checkPreconditions() {
     for (String identifier : insertedElements) {
-      getExecutionContext().hasntView(identifier);
+      getDiagramContext().hasntView(identifier);
     }
     for (String identifier : removedElements) {
-      getExecutionContext().hasView(identifier);
+      getDiagramContext().hasView(identifier);
     }
   }
 
@@ -180,11 +177,13 @@ public class InsertRemoveTool extends AbstractToolStep {
         }
 
         Collection<EObject> objects = new HashSet<EObject>();
-        DiagramContext context = getExecutionContext();
+        DiagramContext context = getDiagramContext();
+        SessionContext sessionContext = context.getSessionContext();
+
         Collection<EObject> inserted = context.adaptTool(InsertRemoveTool.this, parameters,
-            context.getSemanticElements(insertedElements));
+            sessionContext.getSemanticElements(insertedElements));
         Collection<EObject> removed = context.adaptTool(InsertRemoveTool.this, parameters,
-            context.getSemanticElements(removedElements));
+            sessionContext.getSemanticElements(removedElements));
         objects.addAll(AbstractExternalJavaAction.getInitialSelection(parameters));
         objects.addAll(inserted);
         objects.removeAll(removed);
@@ -199,7 +198,7 @@ public class InsertRemoveTool extends AbstractToolStep {
    */
   @Override
   protected void initToolArguments() {
-    DSemanticDecorator containerView = getExecutionContext().getView(this.containerId);
+    DSemanticDecorator containerView = getDiagramContext().getView(this.containerId);
     _toolWrapper.setArgumentValue(ArgumentType.CONTAINER, containerView.getTarget());
     _toolWrapper.setArgumentValue(ArgumentType.CONTAINER_VIEW, containerView);
   }
@@ -212,21 +211,21 @@ public class InsertRemoveTool extends AbstractToolStep {
   protected void postRunTest() {
     super.postRunTest();
     if (autoRefresh)
-      DiagramHelper.refreshDiagram(getExecutionContext().getDiagram());
+      DiagramHelper.refreshDiagram(getDiagramContext().getDiagram());
 
     checkPostconditions();
-    
+
     for (String identifier : insertedElements) {
-      getExecutionContext().hasView(identifier);
+      getDiagramContext().hasView(identifier);
     }
     for (String identifier : removedElements) {
-      getExecutionContext().hasntView(identifier);
+      getDiagramContext().hasntView(identifier);
     }
   }
 
   protected void checkPostconditions() {
     initializeFeatures();
-    
+
     if (insertedElements.length > 0) {
       if (insertedReferencedElementsFeatures != null) {
         insertedElements = applyReferencedFeatures(insertedReferencedElementsFeatures, insertedElements);
@@ -251,7 +250,7 @@ public class InsertRemoveTool extends AbstractToolStep {
     }
     return elements;
   }
-  
+
   protected String[] applyReferencingFeatures(EReference[] features, String... elements) {
     // apply feature in chain: (obj.eGet(feature1)).eGet(feature2)
     for (EReference feature : features) {
@@ -274,7 +273,7 @@ public class InsertRemoveTool extends AbstractToolStep {
     }
     return filterResults(objs);
   }
-  
+
   @SuppressWarnings("unchecked")
   protected String[] getReferencingElements(EReference feature, String... elements) {
     Collection<CapellaElement> objs = new HashSet<CapellaElement>();
@@ -285,19 +284,19 @@ public class InsertRemoveTool extends AbstractToolStep {
     }
     return filterResults(objs);
   }
-  
+
   protected String[] filterResults(Collection<CapellaElement> objs) {
-    DRepresentationDescriptor cRDescriptor = getExecutionContext().getDiagramDescriptor();
-    String[] results = objs.stream()
-        .filter(x -> x.eContainer() == cRDescriptor.getTarget())
-        .map(x -> x.getId()).toArray(size -> new String[size]);
-    
+    DRepresentationDescriptor cRDescriptor = getDiagramContext().getDiagramDescriptor();
+    String[] results = objs.stream().filter(x -> x.eContainer() == cRDescriptor.getTarget()).map(x -> x.getId())
+        .toArray(size -> new String[size]);
+
     assertTrue(results.length > 0);
     return results;
   }
 
-  protected void initializeFeatures() { }
-  
+  protected void initializeFeatures() {
+  }
+
   @Override
   public Object getResult() {
     return null;

@@ -40,13 +40,19 @@ public class CreateFunctionalExchange extends SequenceTest {
     super.setUpDiagram(diagram);
 
     BlockArchitectureExt.Type type = diagram.getDiagramBlockArchitecture();
-    SkeletonHelper.createFunctionalExchange(getRootFunctionId(type), GenericModel.FUNCTIONAL_EXCHANGE_1, diagram);
-    SkeletonHelper.createFunctionalExchange(getRootFunctionId(type), GenericModel.FUNCTIONAL_EXCHANGE_4, diagram);
+    SkeletonHelper.createFunctionalExchange(getRootFunctionId(type), GenericModel.FUNCTIONAL_EXCHANGE_1,
+        diagram.getSessionContext());
+    SkeletonHelper.createFunctionalExchange(getRootFunctionId(type), GenericModel.FUNCTIONAL_EXCHANGE_4,
+        diagram.getSessionContext());
     if (type != BlockArchitectureExt.Type.SA) {
-      SkeletonHelper.createFunctionalExchange(getRootFunctionId(type), GenericModel.FUNCTIONAL_EXCHANGE_2, diagram);
-      SkeletonHelper.createFunctionalExchange(getRootFunctionId(type), GenericModel.FUNCTIONAL_EXCHANGE_3, diagram);
-      SkeletonHelper.createFunctionalExchange(getRootFunctionId(type), GenericModel.FUNCTIONAL_EXCHANGE_5, diagram);
-      SkeletonHelper.createFunctionalExchange(getRootFunctionId(type), GenericModel.FUNCTIONAL_EXCHANGE_6, diagram);
+      SkeletonHelper.createFunctionalExchange(getRootFunctionId(type), GenericModel.FUNCTIONAL_EXCHANGE_2,
+          diagram.getSessionContext());
+      SkeletonHelper.createFunctionalExchange(getRootFunctionId(type), GenericModel.FUNCTIONAL_EXCHANGE_3,
+          diagram.getSessionContext());
+      SkeletonHelper.createFunctionalExchange(getRootFunctionId(type), GenericModel.FUNCTIONAL_EXCHANGE_5,
+          diagram.getSessionContext());
+      SkeletonHelper.createFunctionalExchange(getRootFunctionId(type), GenericModel.FUNCTIONAL_EXCHANGE_6,
+          diagram.getSessionContext());
     }
   }
 

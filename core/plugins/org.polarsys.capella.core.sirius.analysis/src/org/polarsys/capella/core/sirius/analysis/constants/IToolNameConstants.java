@@ -52,6 +52,9 @@ public interface IToolNameConstants {
   String TOOL_SWITCH_FUNCTIONAL_EXCHANGE_CATEGORY = "Switch Functional Exchanges / Categories";
   String TOOL_INSERT_REMOVE_PV = "Applied Property Values";
   String TOOL_INSERT_REMOVE_PVG = "Applied Property Value Groups";
+  
+  // Accelerators
+  String TOOL_INITIALIZATION_FROM_EXISTING_DIAGRAM = "Initialization from existing diagram";
     
   String TOOL_CREATE_ACTOR = "Actor";
   String TOOL_CREATE_COMPONENT = "Component";

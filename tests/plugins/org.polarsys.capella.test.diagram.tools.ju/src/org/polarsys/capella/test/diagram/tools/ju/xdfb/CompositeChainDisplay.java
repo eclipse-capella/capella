@@ -171,8 +171,8 @@ public class CompositeChainDisplay extends CompositeChains {
    */
   private void hasInternalLink(DiagramContext context, InternalLinksGraph internalLinks, String startExchange,
       String endExchange) {
-    FunctionalExchange start = context.getSemanticElement(startExchange);
-    FunctionalExchange end = context.getSemanticElement(endExchange);
+    FunctionalExchange start = context.getSessionContext().getSemanticElement(startExchange);
+    FunctionalExchange end = context.getSessionContext().getSemanticElement(endExchange);
 
     // Check graph contains internalLink
     assertTrue(internalLinks.hasInternalLink(start.getTarget(), end.getSource()));

@@ -14,6 +14,8 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.UnexecutableCommand;
 import org.eclipse.osgi.util.NLS;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.junit.Assert;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
@@ -43,11 +45,14 @@ public abstract class AbstractToolStep<A> extends AbstractDiagramStep<A> {
    * 
    * @param context
    */
-  public AbstractToolStep(DiagramContext context, String toolName_p) {
-    super(context);
-    toolName = toolName_p;
+  public AbstractToolStep(DiagramContext diagramContext, String toolName) {
+
+    super(diagramContext);
+    this.toolName = toolName;
   }
 
+  // Deprecated because the tool's label should not be used for queries
+  @Deprecated
   public AbstractToolStep(DiagramContext context, String toolName_p, String toolLabel_p) {
     super(context);
     toolName = toolName_p;
@@ -59,11 +64,14 @@ public abstract class AbstractToolStep<A> extends AbstractDiagramStep<A> {
    */
   protected abstract void initToolArguments();
 
-  public void shouldFail() {
-    ToolHelper toolHelper = new ToolHelper(getExecutionContext().getSession(), getExecutionContext().getDiagram());
+  private void initializeToolAndCheckArguments() {
+
+    Session currentSession = getExecutionContext().getSession();
+    DDiagram currentDiagram = getDiagramContext().getDiagram();
+
+    ToolHelper toolHelper = new ToolHelper(currentSession, currentDiagram);
 
     // Let's find the tool
-    // WARNING : CHECK TOOL ID NOT TOOL LABEL
     AbstractToolDescription tool = null;
     if (toolLabel != null) {
       tool = toolHelper.getToolByLabel(toolName, toolLabel);
@@ -78,9 +86,8 @@ public abstract class AbstractToolStep<A> extends AbstractDiagramStep<A> {
       tool = toolHelper.getToolByLabel(toolLabel);
     }
 
-    Assert.assertNotNull(
-        NLS.bind(Messages.toolDoesNotExist, toolName, getExecutionContext().getDiagram().getDescription().getName()),
-        tool);
+    String diagramIdentifier = currentDiagram.getDescription().getName();
+    Assert.assertNotNull(NLS.bind(Messages.toolDoesNotExist, toolName, diagramIdentifier), tool);
 
     // Let's find it's wrapper
     // this case is treated as a test but it fully depends of the test
@@ -88,62 +95,12 @@ public abstract class AbstractToolStep<A> extends AbstractDiagramStep<A> {
     _toolWrapper = ToolWrapperFactory.INSTANCE.createToolCommandWrapper(tool);
     Assert.assertNotNull(NLS.bind(Messages.toolWrapperNotAvailable, toolName), _toolWrapper);
 
-    // Let's initialize interesting data for the tool wrapper
+    // Let's initialize the arguments needed by the tool
     initToolArguments();
 
     // Let's check if all is arguments are well set.
     IStatus isArgumentOk = _toolWrapper.checkArguments();
     Assert.assertTrue(NLS.bind(Messages.toolWrapperArgumentErr, isArgumentOk.toString()), isArgumentOk.isOK());
-
-    // Let's check the context
-    boolean isContextOk = _toolWrapper.isContextOk();
-    Assert.assertFalse(NLS.bind(Messages.toolWrapperArgumentValueFailedErr, toolName), isContextOk);
-  }
-  
-  public void cannotRun() {
-
-    try {
-      preRunTest();
-
-      boolean isArgumentOk = _toolWrapper.isArgumentsAreSet();
-      Assert.assertTrue(Messages.toolWrapperArgumentErr, isArgumentOk);
-
-      boolean isContextOk = _toolWrapper.isContextOk();
-      Assert.assertTrue(NLS.bind(Messages.toolWrapperArgumentValueErr, toolName), isContextOk);
-
-      TestHelper.getExecutionManager(getExecutionContext().getSession()).execute(new AbstractReadWriteCommand() {
-        public void run() {
-          Command cmd = _toolWrapper.createCommand();
-          Assert.assertTrue(UnexecutableCommand.INSTANCE.equals(cmd));
-
-        }
-      });
-
-    } finally {
-      dispose();
-    }
-
-  }
-
-  /**
-   * Implement a create and execute tool operation.
-   */
-  @Override
-  protected void runTest() {
-
-    boolean isArgumentOk = _toolWrapper.isArgumentsAreSet();
-    Assert.assertTrue(Messages.toolWrapperArgumentErr, isArgumentOk);
-
-    boolean isContextOk = _toolWrapper.isContextOk();
-    Assert.assertTrue(NLS.bind(Messages.toolWrapperArgumentValueErr, toolName), isContextOk);
-
-    TestHelper.getExecutionManager(getExecutionContext().getSession()).execute(new AbstractReadWriteCommand() {
-      public void run() {
-        Command cmd = _toolWrapper.createCommand();
-        Assert.assertTrue(!UnexecutableCommand.INSTANCE.equals(cmd));
-        cmd.execute();
-      }
-    });
 
   }
 
@@ -152,46 +109,55 @@ public abstract class AbstractToolStep<A> extends AbstractDiagramStep<A> {
    */
   @Override
   protected void preRunTest() {
-    ToolHelper toolHelper = new ToolHelper(getExecutionContext().getSession(), getExecutionContext().getDiagram());
 
-    // Let's find the tool
-    // WARNING : CHECK TOOL ID NOT TOOL LABEL
-    AbstractToolDescription tool = null;
-    if (toolLabel != null) {
-      tool = toolHelper.getToolByLabel(toolName, toolLabel);
-    }
-    if (tool == null) {
-      tool = toolHelper.getTool(toolName);
-    }
-    if (tool == null) {
-      tool = toolHelper.getToolByLabel(toolName);
-    }
-    if (tool == null) {
-      tool = toolHelper.getToolByLabel(toolLabel);
-    }
-
-    Assert.assertNotNull(
-        NLS.bind(Messages.toolDoesNotExist, toolName, getExecutionContext().getDiagram().getDescription().getName()),
-        tool);
-
-    // Let's find it's wrapper
-    // this case is treated as a test but it fully depends of the test
-    // framework. It have to be interpreted as a log for test developer.
-    _toolWrapper = ToolWrapperFactory.INSTANCE.createToolCommandWrapper(tool);
-    Assert.assertNotNull(NLS.bind(Messages.toolWrapperNotAvailable, toolName), _toolWrapper);
-
-    // Let's initialize interesting data for the tool wrapper
-    initToolArguments();
-
-    // Let's check if all is arguments are well set.
-    IStatus isArgumentOk = _toolWrapper.checkArguments();
-    Assert.assertTrue(NLS.bind(Messages.toolWrapperArgumentErr, isArgumentOk.toString()), isArgumentOk.isOK());
+    initializeToolAndCheckArguments();
 
     // Let's check the context
     boolean isContextOk = _toolWrapper.isContextOk();
     Assert.assertTrue(NLS.bind(Messages.toolWrapperArgumentValueErr, toolName), isContextOk);
-
-    super.preRunTest();
   }
 
+  /**
+   * Implement a create and execute tool operation.
+   */
+  protected void runTest() {
+
+    TestHelper.getExecutionManager(getExecutionContext().getSession()).execute(new AbstractReadWriteCommand() {
+      public void run() {
+        Command cmd = _toolWrapper.createCommand();
+
+        Assert.assertTrue(!UnexecutableCommand.INSTANCE.equals(cmd));
+        cmd.execute();
+   
+      }
+    });
+  }
+
+  public void shouldFail() {
+
+    initializeToolAndCheckArguments();
+
+    // Context should not be OK
+    boolean isContextOk = _toolWrapper.isContextOk();
+    Assert.assertFalse(NLS.bind(Messages.toolWrapperArgumentValueFailedErr, toolName), isContextOk);
+  }
+
+  @Deprecated
+  public void cannotRun() {
+
+    try {
+
+      preRunTest();
+
+      TestHelper.getExecutionManager(getExecutionContext().getSession()).execute(new AbstractReadWriteCommand() {
+        public void run() {
+          Command cmd = _toolWrapper.createCommand();
+          Assert.assertTrue(UnexecutableCommand.INSTANCE.equals(cmd));
+        }
+      });
+
+    } finally {
+      dispose();
+    }
+  }
 }
