@@ -15,10 +15,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.helpers.query.IQuery;
-import org.polarsys.capella.core.data.fa.FaPackage;
 import org.polarsys.capella.core.data.fa.SequenceLinkEnd;
+import org.polarsys.capella.core.model.helpers.SequenceLinkEndExt;
 
 public class SequenceLinkEndSourceSequenceLinks implements IQuery {
 
@@ -32,7 +31,7 @@ public class SequenceLinkEndSourceSequenceLinks implements IQuery {
   public List<Object> compute(Object object) {
     if (object instanceof SequenceLinkEnd) {
       SequenceLinkEnd sequenceLinkEnd = (SequenceLinkEnd) object;
-      return new ArrayList<>(EObjectExt.getReferencers(sequenceLinkEnd, FaPackage.Literals.SEQUENCE_LINK__TARGET));
+      return new ArrayList<>(SequenceLinkEndExt.getIncomingSequenceLinks(sequenceLinkEnd));
     }
     return Collections.emptyList();
   }

@@ -56,11 +56,13 @@ import org.polarsys.capella.core.data.fa.ComponentExchangeRealization;
 import org.polarsys.capella.core.data.fa.ComponentPort;
 import org.polarsys.capella.core.data.fa.ExchangeCategory;
 import org.polarsys.capella.core.data.fa.FaPackage;
-import org.polarsys.capella.core.data.fa.FunctionalChain;
 import org.polarsys.capella.core.data.fa.FunctionalChainInvolvement;
+import org.polarsys.capella.core.data.fa.FunctionalChainInvolvementFunction;
 import org.polarsys.capella.core.data.fa.FunctionalChainInvolvementLink;
+import org.polarsys.capella.core.data.fa.FunctionalChainReference;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.data.fa.FunctionalExchangeRealization;
+import org.polarsys.capella.core.data.fa.SequenceLinkEnd;
 import org.polarsys.capella.core.data.information.AbstractEventOperation;
 import org.polarsys.capella.core.data.information.Association;
 import org.polarsys.capella.core.data.information.ExchangeItem;
@@ -80,6 +82,7 @@ import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.TriS
 import org.polarsys.capella.core.model.helpers.ComponentExchangeExt;
 import org.polarsys.capella.core.model.helpers.PhysicalLinkExt;
 import org.polarsys.capella.core.model.helpers.PhysicalPathExt;
+import org.polarsys.capella.core.model.helpers.SequenceLinkEndExt;
 import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
 import org.polarsys.capella.core.model.preferences.IDeletePreferences;
 
@@ -117,7 +120,8 @@ public class DeleteHelper implements IDeleteHelper {
         FunctionalChainInvolvement fcInvolvement = (FunctionalChainInvolvement) elementToDelete;
         InvolvedElement involved = fcInvolvement.getInvolved();
         if (null != involved) {
-          if ((involved instanceof AbstractFunction) || (involved instanceof FunctionalChain)) {
+          if ((elementToDelete instanceof FunctionalChainInvolvementFunction && involved instanceof AbstractFunction)
+              || elementToDelete instanceof FunctionalChainReference) {
             // Add next involvements.
             elementToAdd.addAll(fcInvolvement.getNextFunctionalChainInvolvements());
             // Add previous involvements.
@@ -152,9 +156,24 @@ public class DeleteHelper implements IDeleteHelper {
         }
       }
     }
-    if (!elementToAdd.isEmpty()) {
-      elementsToDelete.addAll(elementToAdd);
+    elementsToDelete.addAll(elementToAdd);
+  }
+  
+  /**
+   * Add elements to delete for {@link SequenceLinkEnd}.
+   * 
+   * @param elementsToDelete
+   */
+  protected void addElementsForSequenceLinkEnd(Set<? super EObject> elementsToDelete) {
+    List<EObject> elementToAdd = new ArrayList<>();
+    for (Object elementToDelete : elementsToDelete) {
+      if (elementToDelete instanceof SequenceLinkEnd) {
+        SequenceLinkEnd sequenceLinkEnd = (SequenceLinkEnd) elementToDelete;
+        elementToAdd.addAll(SequenceLinkEndExt.getIncomingSequenceLinks(sequenceLinkEnd));
+        elementToAdd.addAll(SequenceLinkEndExt.getOutgoingSequenceLinks(sequenceLinkEnd));
+      }
     }
+    elementsToDelete.addAll(elementToAdd);
   }
 
   protected void addElementsForAbstractFunction(Set<? super EObject> elementsToDelete) {
@@ -372,7 +391,9 @@ public class DeleteHelper implements IDeleteHelper {
     addPendingPropertyValues(expandedSelection);
     // Special case for property value groups.
     addPendingPropertyValueGroups(expandedSelection);
-
+    // Special case for Sequence Link Ends.
+    addElementsForSequenceLinkEnd(expandedSelection);
+    
     if (CapellaModelPreferencesPlugin.getDefault().isSynchronizationOfComponentPortToFunctionPortAllowed()) {
       addElementsForComponentExchangeFunctionalExchangeAllocation(expandedSelection);
     }

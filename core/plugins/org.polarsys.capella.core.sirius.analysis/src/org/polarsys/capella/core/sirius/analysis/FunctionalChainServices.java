@@ -55,6 +55,8 @@ import org.polarsys.capella.core.data.capellacore.InvolvedElement;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.AbstractFunctionalChainContainer;
+import org.polarsys.capella.core.data.fa.ControlNode;
+import org.polarsys.capella.core.data.fa.ControlNodeKind;
 import org.polarsys.capella.core.data.fa.FaPackage;
 import org.polarsys.capella.core.data.fa.FunctionPort;
 import org.polarsys.capella.core.data.fa.FunctionalChain;
@@ -63,6 +65,8 @@ import org.polarsys.capella.core.data.fa.FunctionalChainInvolvementFunction;
 import org.polarsys.capella.core.data.fa.FunctionalChainInvolvementLink;
 import org.polarsys.capella.core.data.fa.FunctionalChainReference;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
+import org.polarsys.capella.core.data.fa.SequenceLink;
+import org.polarsys.capella.core.data.fa.SequenceLinkEnd;
 import org.polarsys.capella.core.data.helpers.fa.services.FunctionExt;
 import org.polarsys.capella.core.data.information.ExchangeItem;
 import org.polarsys.capella.core.data.interaction.AbstractCapability;
@@ -71,6 +75,7 @@ import org.polarsys.capella.core.data.oa.OperationalProcess;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.ExchangeItemExt;
 import org.polarsys.capella.core.model.helpers.FunctionalChainExt;
+import org.polarsys.capella.core.model.helpers.SequenceLinkEndExt;
 import org.polarsys.capella.core.model.helpers.graph.InternalLinksGraph;
 import org.polarsys.capella.core.model.helpers.graph.InternalLinksGraph.InternalLinkEdge;
 import org.polarsys.capella.core.model.helpers.graph.InvolvementGraph;
@@ -92,7 +97,8 @@ public class FunctionalChainServices {
   public static final Integer THICK_EDGE_FUNCTIONAL_CHAIN = Integer.valueOf(4);
   public static final String INCOMPLETE_FUNCTIONAL_CHAIN_LABEL = "incomplete"; //$NON-NLS-1$
   public static final String INVALID_FUNCTIONAL_CHAIN_LABEL = "invalid"; //$NON-NLS-1$
-  public static final String FCR_CONTAINER_COLLAPSED_INDICATOR = " [+]";
+  public static final String FCR_CONTAINER_COLLAPSED_INDICATOR = " [+]"; //$NON-NLS-1$
+  public static final String IT = "IT"; //$NON-NLS-1$
 
   private static FunctionalChainServices singleton = null;
 
@@ -1186,4 +1192,110 @@ public class FunctionalChainServices {
     return parentSourceHierarchyContainer == parentTargetHierarchyContainer;
   }
 
+  /**
+   * Return the label of the given ControlNode
+   * 
+   * @param controlNode
+   *          the given controlNode
+   * @return its label
+   */
+  public String getControlNodeLabel(ControlNode controlNode) {
+    return controlNode.getKind() == ControlNodeKind.ITERATE ? IT : controlNode.getKind().getLiteral();
+  }
+  
+  /**
+   * Returns all the Sequence links for a given functional chain, including those on recursive levels. This
+   * function is tail recursive.
+   * 
+   * @param chain
+   *          the given functional chain.
+   * @return all the Sequence links for a function chain, including those on recursive levels.
+   */
+  public Collection<SequenceLink> getAllSequenceLinks(FunctionalChain chain) {
+
+    Set<SequenceLink> result = new HashSet<>();
+    getAllSequenceLinks(chain, result);
+
+    return result;
+  }
+
+  /**
+   * This is a tail recursive version that returns all the Sequence links for a functional chain,
+   * including those on recursive levels.
+   * 
+   * @param chain
+   *          the functional chain.
+   * @param linksAcumulator
+   *          Sequence links acumulator.
+   */
+  private void getAllSequenceLinks(FunctionalChain chain, Collection<SequenceLink> linksAcumulator) {
+    if (chain != null) {
+      linksAcumulator.addAll(chain.getOwnedSequenceLinks());
+
+      for (FunctionalChainInvolvement involvement : chain.getOwnedFunctionalChainInvolvements()) {
+        if (involvement instanceof FunctionalChainReference) {
+          FunctionalChain referencedChain = ((FunctionalChainReference) involvement).getReferencedFunctionalChain();
+
+          getAllSequenceLinks(referencedChain, linksAcumulator);
+        }
+      }
+    }
+  }
+  
+  /**
+   * Precondition for the creation of a Sequence Link.
+   * 
+   * @param source
+   *          the semantic source
+   * @param target
+   *          the semantic target
+   * 
+   * @return true if a link can be created, false otherwise.
+   */
+  public boolean isValidSequenceLink(SequenceLinkEnd source, SequenceLinkEnd target) {
+
+    return source != target && !doesConnectionExistBetweenSequenceLinkEnds(target, source, new HashSet<>());
+  }
+  
+  /**
+   * Tests if an direct/indirect connection exists between the current Sequence Link End and the goal Sequence Link End.
+   * 
+   * @param currentSequenceLinkEnd
+   *          the current Sequence Link End being analyzed.
+   * @param goalSequenceLinkEnd
+   *          the goal Sequence Link End that servers at target goal.
+   * @param visitedSequenceLinkEnds
+   *          the already visited Sequence Link Ends.
+   * @return true if a direct/indirect connection exists between the current Sequence Link End and the goal Sequence Link End,
+   *         false otherwise.
+   */
+  public boolean doesConnectionExistBetweenSequenceLinkEnds(SequenceLinkEnd currentSequenceLinkEnd,
+      SequenceLinkEnd goalSequenceLinkEnd, Set<SequenceLinkEnd> visitedSequenceLinkEnds) {
+
+    // avoid infinite loops
+    if (visitedSequenceLinkEnds.contains(currentSequenceLinkEnd)) {
+      return false;
+    }
+
+    if (currentSequenceLinkEnd.equals(goalSequenceLinkEnd)) {
+      return true;
+    }
+    
+    // cycles are possible with ITERATE ControlNode
+    if (currentSequenceLinkEnd instanceof ControlNode && ((ControlNode) currentSequenceLinkEnd).getKind() == ControlNodeKind.ITERATE) {
+      return false;
+    }
+
+    // create a copy to insure that each recursive call does not contain Sequence Link of other same level calls
+    Set<SequenceLinkEnd> visitedSequenceLinkEndsCopy = new HashSet<>(visitedSequenceLinkEnds);
+    visitedSequenceLinkEndsCopy.add(currentSequenceLinkEnd);
+
+    // depth first recursive call
+    for (SequenceLink nextSequenceLink : SequenceLinkEndExt.getOutgoingSequenceLinks(currentSequenceLinkEnd)) {
+      if (doesConnectionExistBetweenSequenceLinkEnds(nextSequenceLink.getTarget(), goalSequenceLinkEnd, visitedSequenceLinkEndsCopy)) {
+        return true;
+      }
+    }
+    return false;
+  }
 }
