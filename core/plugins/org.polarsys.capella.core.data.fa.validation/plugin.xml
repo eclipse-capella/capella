@@ -348,25 +348,6 @@
                </target>
             </constraint>
             <constraint
-                  class="org.polarsys.capella.core.data.fa.validation.functionalChainInvolvement.MDCHK_FunctionalChainInvolvement_NextAndPrevious_2"
-                  id="I_28"
-                  isEnabledByDefault="true"
-                  lang="Java"
-                  mode="Batch"
-                  name="I_28 - Functional chain involvement check 4"
-                  severity="WARNING"
-                  statusCode="1">
-               <message>
-                  {0} (Functional Chain Involvement) has an invalid next and/or previous involvement.
-               </message>
-               <description>
-                  This rule checks that a Functional Chain Involvement has a valid next and/or previous involvement (contained by the same functional chain)
-               </description>
-               <target
-                     class="FunctionalChainInvolvement">
-               </target>
-            </constraint>
-            <constraint
                   class="org.polarsys.capella.core.data.fa.validation.functionalExchange.MDCHK_FunctionalExchange_FunctionalExchangeRealization"
                   id="I_14"
                   isEnabledByDefault="true"

@@ -19,8 +19,10 @@ public class Messages extends NLS {
   private static final String BUNDLE_NAME = "org.polarsys.capella.core.data.fa.validation.functionalChainInvolvement.messages"; //$NON-NLS-1$
   public static String MDCHK_FunctionalChainInvolvement_aFunctionalChain;
   public static String MDCHK_FunctionalChainInvolvement_aFunctionOrFunctionalExchange;
-  public static String MDCHK_FunctionalChainInvolvement_FunctionalChainInvolvment;
+  public static String MDCHK_FunctionalChainInvolvement_FunctionalChainInvolvementFunction;
+  public static String MDCHK_FunctionalChainInvolvement_FunctionalChainInvolvementLink;
   public static String MDCHK_FunctionalChainInvolvement_FunctionalChainReference;
+  public static String MDCHK_FunctionalChainInvolvement_aFunction;
   static {
     // initialize resource bundle
     NLS.initializeMessages(BUNDLE_NAME, Messages.class);

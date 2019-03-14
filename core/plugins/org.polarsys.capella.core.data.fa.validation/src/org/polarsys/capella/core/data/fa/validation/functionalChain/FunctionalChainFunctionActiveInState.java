@@ -10,18 +10,15 @@
  *******************************************************************************/
 package org.polarsys.capella.core.data.fa.validation.functionalChain;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.eclipse.core.runtime.IStatus;
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
-
-import org.polarsys.capella.core.data.fa.AbstractFunction;
-import org.polarsys.capella.core.data.fa.FunctionalChain;
 import org.polarsys.capella.core.data.capellacommon.State;
+import org.polarsys.capella.core.data.fa.FunctionalChain;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 
 public class FunctionalChainFunctionActiveInState extends AbstractValidationRule {
@@ -30,29 +27,21 @@ public class FunctionalChainFunctionActiveInState extends AbstractValidationRule
    */
   @Override
   public IStatus validate(IValidationContext ctx) {
-    EObject eObj = ctx.getTarget();
-    EMFEventType eType = ctx.getEventType();
 
-    if ((eType == EMFEventType.NULL) && (eObj instanceof FunctionalChain)) {
-      // functiaonlChain
-      FunctionalChain chain = (FunctionalChain) eObj;
-      String chainType = chain.eClass().getName();
+    if ((ctx.getEventType() == EMFEventType.NULL) && (ctx.getTarget() instanceof FunctionalChain)) {
+      FunctionalChain chain = (FunctionalChain) ctx.getTarget();
 
-      // available states
-      List<State> availableInStates = new ArrayList<State>(chain.getAvailableInStates());
-
-      // involved functions
-      EList<AbstractFunction> involvedFunctions = chain.getInvolvedFunctions();
+      Set<State> chainStates = new HashSet<>(chain.getAvailableInStates());
 
       // reunion of available states in the functions involved in this chain
-      List<State> availableStatesInFunctions = new ArrayList<State>();
-      for (AbstractFunction function : involvedFunctions) {
-        availableStatesInFunctions.addAll(function.getAvailableInStates());
-      }
+      Set<State> chainFunctionsStates = chain.getInvolvedFunctions().stream()
+          .flatMap(function -> function.getAvailableInStates().stream()).collect(Collectors.toSet());
 
-      availableInStates.removeAll(availableStatesInFunctions);
-      if (!availableInStates.isEmpty()) {
-        return ctx.createFailureStatus(new Object[] { chain.getName(), chainType });
+      chainStates.removeAll(chainFunctionsStates);
+
+      if (!chainStates.isEmpty()) {
+        String chainType = chain.eClass().getName();
+        return ctx.createFailureStatus(chain.getName(), chainType);
       }
     }
     return ctx.createSuccessStatus();

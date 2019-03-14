@@ -11,16 +11,16 @@
 package org.polarsys.capella.core.data.fa.validation.functionalChainInvolvement;
 
 import org.eclipse.core.runtime.IStatus;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
-
+import org.polarsys.capella.core.data.capellacore.InvolvedElement;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.FunctionalChain;
 import org.polarsys.capella.core.data.fa.FunctionalChainInvolvement;
+import org.polarsys.capella.core.data.fa.FunctionalChainInvolvementFunction;
+import org.polarsys.capella.core.data.fa.FunctionalChainInvolvementLink;
 import org.polarsys.capella.core.data.fa.FunctionalChainReference;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
-import org.polarsys.capella.core.data.capellacore.InvolvedElement;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 
 public class MDCHK_FunctionalChainInvolvement_Involved_1 extends AbstractValidationRule {
@@ -29,20 +29,24 @@ public class MDCHK_FunctionalChainInvolvement_Involved_1 extends AbstractValidat
    */
   @Override
   public IStatus validate(IValidationContext ctx) {
-    if (EMFEventType.NULL.equals(ctx.getEventType())) {
-      EObject eObj = ctx.getTarget();
-      if (eObj instanceof FunctionalChainInvolvement) {
-        InvolvedElement involved = ((FunctionalChainInvolvement) eObj).getInvolved();
+    if (ctx.getEventType() == EMFEventType.NULL && ctx.getTarget() instanceof FunctionalChainInvolvement) {
 
-        if (eObj instanceof FunctionalChainReference) {
-          if (!(involved instanceof FunctionalChain)) {
-            return ctx.createFailureStatus(new Object[] { Messages.MDCHK_FunctionalChainInvolvement_FunctionalChainReference, Messages.MDCHK_FunctionalChainInvolvement_aFunctionalChain });
-          }
-        } else {
-          if (!(involved instanceof AbstractFunction) && !(involved instanceof FunctionalExchange)) {
-            return ctx.createFailureStatus(new Object[] { Messages.MDCHK_FunctionalChainInvolvement_FunctionalChainInvolvment, Messages.MDCHK_FunctionalChainInvolvement_aFunctionOrFunctionalExchange });
-          }
+      FunctionalChainInvolvement involvement = (FunctionalChainInvolvement) ctx.getTarget();
+      InvolvedElement involved = involvement.getInvolved();
+
+      if (involvement instanceof FunctionalChainReference) {
+        if (!(involved instanceof FunctionalChain)) {
+          return ctx.createFailureStatus(Messages.MDCHK_FunctionalChainInvolvement_FunctionalChainReference,
+              Messages.MDCHK_FunctionalChainInvolvement_aFunctionalChain);
         }
+      } else if (involvement instanceof FunctionalChainInvolvementLink) {
+        if (!(involved instanceof FunctionalExchange || involved instanceof AbstractFunction)) {
+          return ctx.createFailureStatus(Messages.MDCHK_FunctionalChainInvolvement_FunctionalChainInvolvementLink,
+              Messages.MDCHK_FunctionalChainInvolvement_aFunctionOrFunctionalExchange);
+        }
+      } else if (involvement instanceof FunctionalChainInvolvementFunction && !(involved instanceof AbstractFunction)) {
+        return ctx.createFailureStatus(Messages.MDCHK_FunctionalChainInvolvement_FunctionalChainInvolvementFunction,
+            Messages.MDCHK_FunctionalChainInvolvement_aFunction);
       }
     }
     return ctx.createSuccessStatus();

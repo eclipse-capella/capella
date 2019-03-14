@@ -409,7 +409,8 @@ public class FunctionalChainServices {
     if (isValidInternalLinkEdge(fc, sourceNode, targetNode)) {
       DDiagram diagram = CapellaServices.getService().getDiagramContainer(sourceNode);
       EdgeMapping mapping = getInternLinkEdgeMapping(diagram);
-      DEdge newEdge = DiagramServices.getDiagramServices().findDEdgeElement(diagram, sourceNode, targetNode, fc, mapping);
+      DEdge newEdge = DiagramServices.getDiagramServices().findDEdgeElement(diagram, sourceNode, targetNode, fc,
+          mapping);
       if (newEdge == null) {
         DiagramServices.getDiagramServices().createEdge(mapping, sourceNode, targetNode, fc);
         newEdge = DiagramServices.getDiagramServices().findDEdgeElement(diagram, sourceNode, targetNode, fc, mapping);
@@ -626,46 +627,40 @@ public class FunctionalChainServices {
     return label;
   }
 
-  public String getFunctionalChainLabel(FunctionalChain fc, DDiagram diagram) {
-    String label = EObjectExt.getText(fc);
+  public String getFunctionalChainLabel(FunctionalChain chain, DDiagram diagram) {
 
-    boolean isComplete = isCompleteFunctionalChain(fc, diagram);
-    boolean isValid = FunctionalChainExt.isFunctionalChainValid(fc);
+    boolean displayIncompleteLabel = false;
+    boolean displayInvalidLabel = false;
 
-    boolean displayIncompleteLabel = !isComplete;
-    boolean displayInvalidLabel = !isValid;
-
-    if (fc instanceof OperationalProcess) {
-      displayIncompleteLabel &= ScopedCapellaPreferencesStore.getBoolean(
+    if (chain instanceof OperationalProcess) {
+      displayIncompleteLabel = ScopedCapellaPreferencesStore.getBoolean(
           DiagramsPreferencePage.NAME_PREF_DISPLAY_INCOMPLETE_IN_OPERATIONAL_PROCESS_LABEL,
-          PreferencesHelper.getProject(fc));
-      displayInvalidLabel &= ScopedCapellaPreferencesStore.getBoolean(
+          PreferencesHelper.getProject(chain));
+      displayInvalidLabel = ScopedCapellaPreferencesStore.getBoolean(
           DiagramsPreferencePage.NAME_PREF_DISPLAY_INVALID_IN_OPERATIONAL_PROCESS_LABEL,
-          PreferencesHelper.getProject(fc));
+          PreferencesHelper.getProject(chain));
     } else {
-      displayIncompleteLabel &= ScopedCapellaPreferencesStore.getBoolean(
+      displayIncompleteLabel = ScopedCapellaPreferencesStore.getBoolean(
           DiagramsPreferencePage.NAME_PREF_DISPLAY_INCOMPLETE_IN_FUNCTIONAL_CHAIN_LABEL,
-          PreferencesHelper.getProject(fc));
-      displayInvalidLabel &= ScopedCapellaPreferencesStore.getBoolean(
-          DiagramsPreferencePage.NAME_PREF_DISPLAY_INVALID_IN_FUNCTIONAL_CHAIN_LABEL, PreferencesHelper.getProject(fc));
+          PreferencesHelper.getProject(chain));
+      displayInvalidLabel = ScopedCapellaPreferencesStore.getBoolean(
+          DiagramsPreferencePage.NAME_PREF_DISPLAY_INVALID_IN_FUNCTIONAL_CHAIN_LABEL,
+          PreferencesHelper.getProject(chain));
     }
 
-    if (displayIncompleteLabel || displayInvalidLabel) {
-      label = label + " ("; //$NON-NLS-1$
+    List<String> chainStatusLabels = new ArrayList<>();
+    if (displayIncompleteLabel && !isCompleteFunctionalChain(chain, diagram)) {
+      chainStatusLabels.add(INCOMPLETE_FUNCTIONAL_CHAIN_LABEL);
     }
-    if (displayIncompleteLabel) {
-      label = label + INCOMPLETE_FUNCTIONAL_CHAIN_LABEL;
+    if (displayInvalidLabel && !FunctionalChainExt.isFunctionalChainValid(chain)) {
+      chainStatusLabels.add(INVALID_FUNCTIONAL_CHAIN_LABEL);
     }
-    if (displayIncompleteLabel && displayInvalidLabel) {
-      label = label + ", "; //$NON-NLS-1$
-    }
-    if (displayInvalidLabel) {
-      label = label + INVALID_FUNCTIONAL_CHAIN_LABEL;
-    }
-    if (displayIncompleteLabel || displayInvalidLabel) {
-      label = label + ")"; //$NON-NLS-1$
-    }
-    return label;
+
+    String chainLabel = EObjectExt.getText(chain);
+    String chainStatusLabel = chainStatusLabels.isEmpty() ? ""
+        : chainStatusLabels.stream().collect(Collectors.joining(", ", " (", ")"));
+
+    return chainLabel + chainStatusLabel;
   }
 
   public void updateFunctionalChainNodeColor(DNode fcNode, Collection<DNode> visibleFunctionalChains) {
@@ -1126,8 +1121,8 @@ public class FunctionalChainServices {
     return false;
   }
 
-  public boolean canCreateFCILEdgeForCollapsedContainer(FunctionalChainInvolvementLink link, DDiagramElement sourceView, EObject source,
-      DDiagramElement targetView, EObject target) {
+  public boolean canCreateFCILEdgeForCollapsedContainer(FunctionalChainInvolvementLink link, DDiagramElement sourceView,
+      EObject source, DDiagramElement targetView, EObject target) {
 
     if (source == null || target == null)
       return false;
@@ -1149,11 +1144,11 @@ public class FunctionalChainServices {
       if (!isContainerCollapsed(fcContainer))
         return false;
     }
-    
+
     return checkRefHierarchyOfLink(link, sourceView, targetView);
   }
 
-  /** 
+  /**
    * Return true if the given FunctionalChainInvolvementLink must appears in the diagram
    * 
    * @param link
