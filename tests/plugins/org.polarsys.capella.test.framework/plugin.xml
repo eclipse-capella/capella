@@ -12,4 +12,11 @@
 -->
 <plugin>
    <extension-point id="modelprovider" name="Model Provider" schema="schema/modelprovider.exsd"/>
+   <extension
+         point="org.polarsys.kitalpha.massactions.core.columnprovider">
+      <columnProvider
+            class="org.polarsys.capella.test.framework.tools.MassColumnsConstantModel"
+            kind="visualization">
+      </columnProvider>
+   </extension>
 </plugin>

@@ -17,8 +17,10 @@ import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
 import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
 import org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionalChainInvolvement__involvedElementMatcher;
 import org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionalChainInvolvement__previousFunctionalChainInvolvementsMatcher;
+import org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionalChainInvolvement_nextFunctionalChainInvolvementsMatcher;
 import org.polarsys.capella.viatra.core.data.fa.surrogate.util.FunctionalChainInvolvement__involvedElementQuerySpecification;
 import org.polarsys.capella.viatra.core.data.fa.surrogate.util.FunctionalChainInvolvement__previousFunctionalChainInvolvementsQuerySpecification;
+import org.polarsys.capella.viatra.core.data.fa.surrogate.util.FunctionalChainInvolvement_nextFunctionalChainInvolvementsQuerySpecification;
 
 /**
  * A pattern group formed of all public patterns defined in FunctionalChainInvolvement.vql.
@@ -29,6 +31,7 @@ import org.polarsys.capella.viatra.core.data.fa.surrogate.util.FunctionalChainIn
  * 
  * <p> From package org.polarsys.capella.viatra.core.data.fa.surrogate, the group contains the definition of the following patterns: <ul>
  * <li>FunctionalChainInvolvement__previousFunctionalChainInvolvements</li>
+ * <li>FunctionalChainInvolvement_nextFunctionalChainInvolvements</li>
  * <li>FunctionalChainInvolvement__involvedElement</li>
  * </ul>
  * 
@@ -55,6 +58,7 @@ public final class FunctionalChainInvolvement extends BaseGeneratedPatternGroup 
   
   private FunctionalChainInvolvement() throws ViatraQueryException {
     querySpecifications.add(FunctionalChainInvolvement__previousFunctionalChainInvolvementsQuerySpecification.instance());
+    querySpecifications.add(FunctionalChainInvolvement_nextFunctionalChainInvolvementsQuerySpecification.instance());
     querySpecifications.add(FunctionalChainInvolvement__involvedElementQuerySpecification.instance());
   }
   
@@ -64,6 +68,14 @@ public final class FunctionalChainInvolvement extends BaseGeneratedPatternGroup 
   
   public FunctionalChainInvolvement__previousFunctionalChainInvolvementsMatcher getFunctionalChainInvolvement__previousFunctionalChainInvolvements(final ViatraQueryEngine engine) throws ViatraQueryException {
     return FunctionalChainInvolvement__previousFunctionalChainInvolvementsMatcher.on(engine);
+  }
+  
+  public FunctionalChainInvolvement_nextFunctionalChainInvolvementsQuerySpecification getFunctionalChainInvolvement_nextFunctionalChainInvolvements() throws ViatraQueryException {
+    return FunctionalChainInvolvement_nextFunctionalChainInvolvementsQuerySpecification.instance();
+  }
+  
+  public FunctionalChainInvolvement_nextFunctionalChainInvolvementsMatcher getFunctionalChainInvolvement_nextFunctionalChainInvolvements(final ViatraQueryEngine engine) throws ViatraQueryException {
+    return FunctionalChainInvolvement_nextFunctionalChainInvolvementsMatcher.on(engine);
   }
   
   public FunctionalChainInvolvement__involvedElementQuerySpecification getFunctionalChainInvolvement__involvedElement() throws ViatraQueryException {

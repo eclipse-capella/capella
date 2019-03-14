@@ -58,6 +58,7 @@ import org.polarsys.capella.core.data.fa.ExchangeCategory;
 import org.polarsys.capella.core.data.fa.FaPackage;
 import org.polarsys.capella.core.data.fa.FunctionalChain;
 import org.polarsys.capella.core.data.fa.FunctionalChainInvolvement;
+import org.polarsys.capella.core.data.fa.FunctionalChainInvolvementLink;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.data.fa.FunctionalExchangeRealization;
 import org.polarsys.capella.core.data.information.AbstractEventOperation;
@@ -608,8 +609,8 @@ public class DeleteHelper implements IDeleteHelper {
             || (linkedObject instanceof ComponentExchangeFunctionalExchangeAllocation)
             || (linkedObject instanceof ComponentExchangeAllocation);
       }
-    } else if (link instanceof FunctionalChainInvolvement) {
-      if (FaPackage.Literals.FUNCTIONAL_CHAIN_INVOLVEMENT__EXCHANGED_ITEMS.equals(feature)) {
+    } else if (link instanceof FunctionalChainInvolvementLink) {
+      if (FaPackage.Literals.FUNCTIONAL_CHAIN_INVOLVEMENT_LINK__EXCHANGED_ITEMS.equals(feature)) {
         return false;
       }
       InvolvedElement involved = ((Involvement) link).getInvolved();

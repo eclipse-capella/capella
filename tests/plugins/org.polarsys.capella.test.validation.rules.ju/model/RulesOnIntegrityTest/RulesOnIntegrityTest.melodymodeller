@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--Capella_Version_1.3.0-->
+<!--Capella_Version_1.3.1-->
 <org.polarsys.capella.core.data.capellamodeller:Project xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org.polarsys.capella.core.data.capellacommon="http://www.polarsys.org/capella/core/common/1.3.0"
     xmlns:org.polarsys.capella.core.data.capellacore="http://www.polarsys.org/capella/core/core/1.3.0"
@@ -1434,23 +1434,23 @@
             id="02eb92ec-60ae-4415-ab1a-9f975022875a" name="Root System Function">
           <ownedFunctionalChains xsi:type="org.polarsys.capella.core.data.fa:FunctionalChain"
               id="6ab06e16-9217-44cd-8481-6003a898ec9c" name="Right_FC">
-            <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvement"
+            <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementLink"
                 id="1b542d2e-772f-487c-ad4e-8e24059d2f2b" summary="Functional Chain Involvement with right Involver"
                 involved="#1257fe59-48bb-4338-8da2-4ada8bbb1c42"/>
-            <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvement"
-                id="ea442a84-7de7-42a2-9333-38c586561de4" summary="Functional Chain Involvement with wrong Involver"
-                involved="#763a8fd1-ceb8-4f0c-882b-b909d4fa488f"/>
-            <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvement"
+            <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementFunction"
                 id="ad922c89-2cc8-49db-9a21-22a7ed031786" summary="Functional Chain Involvement with right Involver"
                 involved="#cebbfc2a-f9bb-4cee-98bc-444dd7c00d0e"/>
+            <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementFunction"
+                id="ea442a84-7de7-42a2-9333-38c586561de4" summary="Functional Chain Involvement with wrong Involver"
+                involved="#763a8fd1-ceb8-4f0c-882b-b909d4fa488f"/>
           </ownedFunctionalChains>
           <ownedFunctionalChains xsi:type="org.polarsys.capella.core.data.fa:FunctionalChain"
               id="1e6cffdd-1f94-41a7-a181-c1b7e90eb8d3" name="Wrong_FC">
-            <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvement"
+            <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementLink"
                 id="ce06fae6-8c23-452a-aca5-6de3a66674fd" involved="#43402322-e284-442f-b037-c8bb3c15175f"/>
-            <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvement"
+            <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementFunction"
                 id="c8a98485-49e0-4357-8a3c-691178ad09a9" involved="#763a8fd1-ceb8-4f0c-882b-b909d4fa488f"/>
-            <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvement"
+            <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementFunction"
                 id="78d79d28-f1d0-485f-8182-bc182890f2bf" involved="#cebbfc2a-f9bb-4cee-98bc-444dd7c00d0e"/>
           </ownedFunctionalChains>
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
@@ -3657,25 +3657,24 @@
             id="7f9230d4-2840-49c9-bf76-0113d1ffbe1b" name="Root System Function">
           <ownedFunctionalChains xsi:type="org.polarsys.capella.core.data.fa:FunctionalChain"
               id="0bea2a79-11cb-4e19-b1d5-8662f52a3d77" name="FunctionalChain I27_OK">
-            <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvement"
+            <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementLink"
                 id="beac6225-7fc7-4b66-b4b8-d0fcf72b37bf" involved="#74da3703-8e15-4fd2-a161-dab2803af00c"
-                nextFunctionalChainInvolvements="#40e10bfe-fa27-4fd1-a133-cb285e537a06"/>
-            <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvement"
+                source="#76b00fdc-5ba1-42dd-b365-b037e8dd0f07" target="#40e10bfe-fa27-4fd1-a133-cb285e537a06"/>
+            <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementFunction"
                 id="40e10bfe-fa27-4fd1-a133-cb285e537a06" involved="#4995a5bf-e288-42f3-8442-2feec5be68f2"/>
-            <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvement"
-                id="8cb05cdd-3279-4e42-a7c7-047e8b7f010f" involved="#85aa6f38-dcdf-407a-abf4-b2d00fff436a"
-                nextFunctionalChainInvolvements="#beac6225-7fc7-4b66-b4b8-d0fcf72b37bf"/>
+            <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementFunction"
+                id="8cb05cdd-3279-4e42-a7c7-047e8b7f010f" involved="#85aa6f38-dcdf-407a-abf4-b2d00fff436a"/>
           </ownedFunctionalChains>
           <ownedFunctionalChains xsi:type="org.polarsys.capella.core.data.fa:FunctionalChain"
               id="9cc7b40c-0107-4bb9-b796-008c365556b2" name="FunctionalChain I27_KO">
-            <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvement"
+            <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementLink"
                 id="209ccca6-fe03-4fdf-978f-bbd7add5a421" summary="[FCI] to FE I27_2  has an empty next and/or previous involvement"
                 involved="#e50b638c-8849-4ab0-9387-a4355a7a3cd1"/>
-            <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvement"
-                id="8f8fb08a-ae18-4146-96d6-4930fc1dfa11" involved="#94bc4288-a5a0-4cdc-8664-faa920f7250d"/>
-            <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvement"
+            <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementFunction"
                 id="76b00fdc-5ba1-42dd-b365-b037e8dd0f07" summary="pointe to a bad Functional Chain Involvement"
-                involved="#595aa6f8-e5e5-430e-9c39-dd0054f19dd1" nextFunctionalChainInvolvements="#beac6225-7fc7-4b66-b4b8-d0fcf72b37bf"/>
+                involved="#595aa6f8-e5e5-430e-9c39-dd0054f19dd1"/>
+            <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementFunction"
+                id="8f8fb08a-ae18-4146-96d6-4930fc1dfa11" involved="#94bc4288-a5a0-4cdc-8664-faa920f7250d"/>
           </ownedFunctionalChains>
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
               id="4995a5bf-e288-42f3-8442-2feec5be68f2" name="SystemFunction I27_2">
@@ -3839,25 +3838,24 @@
             id="c8eedece-049c-4e99-9fd1-647263f46a44" name="Root System Function">
           <ownedFunctionalChains xsi:type="org.polarsys.capella.core.data.fa:FunctionalChain"
               id="22ad7f95-3616-42e6-8532-7c59337393df" name="FunctionalChain I28_OK">
-            <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvement"
+            <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementLink"
                 id="dbfca2b2-1ade-45f6-b7ce-82df05e63236" involved="#0803c31c-b5b6-4ec3-a9b5-f6ce1e72955f"
-                nextFunctionalChainInvolvements="#e002ce71-dfcb-45aa-94af-cca3ccbef93a"/>
-            <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvement"
+                source="#a538ce35-8383-4555-9dd5-69aa62d3fd62" target="#e002ce71-dfcb-45aa-94af-cca3ccbef93a"/>
+            <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementFunction"
                 id="e002ce71-dfcb-45aa-94af-cca3ccbef93a" involved="#ab18d9a6-2d7c-435a-8187-a41e90128549"/>
-            <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvement"
-                id="a538ce35-8383-4555-9dd5-69aa62d3fd62" involved="#e555a2af-7018-4c2f-8d52-ab947483e868"
-                nextFunctionalChainInvolvements="#dbfca2b2-1ade-45f6-b7ce-82df05e63236"/>
+            <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementFunction"
+                id="a538ce35-8383-4555-9dd5-69aa62d3fd62" involved="#e555a2af-7018-4c2f-8d52-ab947483e868"/>
           </ownedFunctionalChains>
           <ownedFunctionalChains xsi:type="org.polarsys.capella.core.data.fa:FunctionalChain"
               id="eed5f739-a994-4591-814c-706583544f3f" name="FunctionalChain I28_KO">
-            <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvement"
+            <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementLink"
                 id="c20bab4e-686a-4cae-83d2-7cc7ea5dded7" involved="#983672a1-8bd0-4b66-8332-0719fdc98012"
-                nextFunctionalChainInvolvements="#04b4cf70-3175-423f-bea6-8567d57c568f"/>
-            <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvement"
-                id="04b4cf70-3175-423f-bea6-8567d57c568f" involved="#314f88d5-da28-4286-a026-0c94aa961b4b"/>
-            <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvement"
+                source="#e002ce71-dfcb-45aa-94af-cca3ccbef93a" target="#04b4cf70-3175-423f-bea6-8567d57c568f"/>
+            <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementFunction"
                 id="f3718ef8-f7de-44d7-99f7-9d240fa6e71f" summary="pointe to a bad Functional Chain Involvement"
-                involved="#ff0a0607-fc9e-498b-9883-d1c34e0be6bf" nextFunctionalChainInvolvements="#dbfca2b2-1ade-45f6-b7ce-82df05e63236"/>
+                involved="#ff0a0607-fc9e-498b-9883-d1c34e0be6bf"/>
+            <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementFunction"
+                id="04b4cf70-3175-423f-bea6-8567d57c568f" involved="#314f88d5-da28-4286-a026-0c94aa961b4b"/>
           </ownedFunctionalChains>
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
               id="ab18d9a6-2d7c-435a-8187-a41e90128549" name="SystemFunction I28_2">

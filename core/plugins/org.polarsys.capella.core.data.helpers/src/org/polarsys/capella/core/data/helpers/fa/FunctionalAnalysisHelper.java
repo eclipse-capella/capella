@@ -37,12 +37,16 @@ import org.polarsys.capella.core.data.fa.FunctionRealization;
 import org.polarsys.capella.core.data.fa.FunctionSpecification;
 import org.polarsys.capella.core.data.fa.FunctionalChain;
 import org.polarsys.capella.core.data.fa.FunctionalChainInvolvement;
+import org.polarsys.capella.core.data.fa.FunctionalChainInvolvementFunction;
 import org.polarsys.capella.core.data.fa.FunctionalChainRealization;
 import org.polarsys.capella.core.data.fa.FunctionalChainReference;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.data.fa.FunctionalExchangeRealization;
 import org.polarsys.capella.core.data.fa.FunctionalExchangeSpecification;
+import org.polarsys.capella.core.data.fa.SequenceLink;
+import org.polarsys.capella.core.data.fa.SequenceLinkEnd;
 import org.polarsys.capella.core.data.helpers.capellacore.delegates.AllocationHelper;
+import org.polarsys.capella.core.data.helpers.capellacore.delegates.CapellaElementHelper;
 import org.polarsys.capella.core.data.helpers.capellacore.delegates.NamedElementHelper;
 import org.polarsys.capella.core.data.helpers.capellacore.delegates.RelationshipHelper;
 import org.polarsys.capella.core.data.helpers.fa.delegates.AbstractFunctionHelper;
@@ -62,6 +66,7 @@ import org.polarsys.capella.core.data.helpers.fa.delegates.FunctionOutputPortHel
 import org.polarsys.capella.core.data.helpers.fa.delegates.FunctionRealizationHelper;
 import org.polarsys.capella.core.data.helpers.fa.delegates.FunctionSpecificationHelper;
 import org.polarsys.capella.core.data.helpers.fa.delegates.FunctionalChainHelper;
+import org.polarsys.capella.core.data.helpers.fa.delegates.FunctionalChainInvolvementFunctionHelper;
 import org.polarsys.capella.core.data.helpers.fa.delegates.FunctionalChainInvolvementHelper;
 import org.polarsys.capella.core.data.helpers.fa.delegates.FunctionalChainReferenceHelper;
 import org.polarsys.capella.core.data.helpers.fa.delegates.FunctionalExchangeHelper;
@@ -91,6 +96,9 @@ public class FunctionalAnalysisHelper implements IHelper {
 		}
     else if (object instanceof FunctionalChainReference) {
       ret = FunctionalChainReferenceHelper.getInstance().doSwitch((FunctionalChainReference) object, feature);
+    }
+    else if (object instanceof FunctionalChainInvolvementFunction) {
+      ret = FunctionalChainInvolvementFunctionHelper.getInstance().doSwitch((FunctionalChainInvolvementFunction) object, feature);
     }
     else if (object instanceof FunctionalChainInvolvement) {
       ret = FunctionalChainInvolvementHelper.getInstance().doSwitch((FunctionalChainInvolvement) object, feature);
@@ -151,6 +159,12 @@ public class FunctionalAnalysisHelper implements IHelper {
     }
     else if (object instanceof ComponentExchangeAllocation) {
       ret = ComponentExchangeAllocationHelper.getInstance().doSwitch((ComponentExchangeAllocation) object, feature);
+    }
+    else if (object instanceof SequenceLink) {
+      ret = CapellaElementHelper.getInstance().doSwitch((SequenceLink) object, feature);
+    }
+    else if (object instanceof SequenceLinkEnd) {
+      ret = CapellaElementHelper.getInstance().doSwitch((SequenceLinkEnd) object, feature);
     }
 
 		if (null != ret || feature.getUpperBound() == 1)

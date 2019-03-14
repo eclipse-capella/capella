@@ -29,15 +29,15 @@ import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.DiagramHelper;
 
 public class InsertRemoveTool extends AbstractToolStep {
 
-  boolean initialized = false;
+  protected boolean initialized = false;
 
-  boolean insertAll = false;
+  protected boolean insertAll = false;
 
-  boolean removeAll = false;
+  protected boolean removeAll = false;
 
-  boolean autoRefresh = true;
+  protected boolean autoRefresh = true;
 
-  String containerId;
+  protected String containerId;
   protected String[] toInsert;
   protected String[] toRemove;
   protected String[] insertedElements;
@@ -130,20 +130,22 @@ public class InsertRemoveTool extends AbstractToolStep {
     run();
   }
 
-  /**
-   * @see org.polarsys.capella.test.diagram.common.ju.steps.AbstractExecuteToolCmdStep.tool.AbstractExecuteToolCmdTest#preTestRun()
-   */
-  @Override
-  protected void preRunTest() {
-    HeadlessResultOpProvider.INSTANCE.setCurrentOp(createOperation());
-
+  protected void checkPreconditions() {
     for (String identifier : insertedElements) {
       getExecutionContext().hasntView(identifier);
     }
     for (String identifier : removedElements) {
       getExecutionContext().hasView(identifier);
     }
+  }
 
+  /**
+   * @see org.polarsys.capella.test.diagram.common.ju.steps.AbstractExecuteToolCmdStep.tool.AbstractExecuteToolCmdTest#preTestRun()
+   */
+  @Override
+  protected void preRunTest() {
+    HeadlessResultOpProvider.INSTANCE.setCurrentOp(createOperation());
+    checkPreconditions();
     super.preRunTest();
   }
 
@@ -204,7 +206,7 @@ public class InsertRemoveTool extends AbstractToolStep {
       getExecutionContext().hasntView(identifier);
     }
   }
-  
+
   @Override
   public Object getResult() {
     return null;

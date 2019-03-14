@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--Capella_Version_1.3.0-->
+<!--Capella_Version_1.3.1-->
 <org.eclipse.emf.diffmerge.patterns.core:PatternRepository xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:common_0.8.0="http://www.polarsys.org/capella/core/common/0.8.0"
     xmlns:core_0.8.0="http://www.polarsys.org/capella/core/core/0.8.0" xmlns:cs_0.8.0="http://www.polarsys.org/capella/core/cs/0.8.0"
@@ -387,6 +387,11 @@
         name="MVC Component" abstractType="#f124d3f0-74cb-4795-b365-59e1cdaa5f6e"/>
     <templateElements xsi:type="cs_0.8.0:Part" id="f371bcdc-bd5c-4901-a1dc-8678fd3a4beb"
         name="MVC Component" abstractType="#f124d3f0-74cb-4795-b365-59e1cdaa5f6e"/>
+    <templateElements xsi:type="cs_0.8.0:Part" id="f371bcdc-bd5c-4901-a1dc-8678fd3a4beb"
+        name="MVC Component" abstractType="#f124d3f0-74cb-4795-b365-59e1cdaa5f6e"/>
+    <templateElements xsi:type="fa_0.8.0:FunctionalExchange" id="d6a94c2a-d2ec-42e8-bf93-dbe4571803b5"
+        name="Apply Users Actions" target="#fefbf5e5-95b2-4c04-a7ce-d61c94f983e6"
+        source="#ad1aad0c-1a6c-47cb-813a-20bab0adb557" exchangedItems="#3e473e5d-7072-4fdb-984c-14b9f499d6cb"/>
     <templateElements xsi:type="fa_0.8.0:FunctionalExchange" id="d6a94c2a-d2ec-42e8-bf93-dbe4571803b5"
         name="Apply Users Actions" target="#fefbf5e5-95b2-4c04-a7ce-d61c94f983e6"
         source="#ad1aad0c-1a6c-47cb-813a-20bab0adb557" exchangedItems="#3e473e5d-7072-4fdb-984c-14b9f499d6cb"/>
@@ -413,6 +418,8 @@
       <outputs xsi:type="fa_0.8.0:FunctionOutputPort" id="0479d7b1-27db-467f-a4b0-741af6ac6d69"
           name="FOP 2" outgoingExchangeItems="#c33f3d08-97f4-4ae8-b7ad-13137dd3f162"/>
     </templateElements>
+    <templateElements xsi:type="la_0.8.0:LogicalFunction" id="31a787d5-cf1a-4f5e-934c-5cdd3d4a1c9e"
+        name="Manage View"/>
     <templateElements xsi:type="la_0.8.0:LogicalFunction" id="31a787d5-cf1a-4f5e-934c-5cdd3d4a1c9e"
         name="Manage View"/>
     <templateElements xsi:type="la_0.8.0:LogicalFunction" id="31a787d5-cf1a-4f5e-934c-5cdd3d4a1c9e"
@@ -639,6 +646,8 @@
         </ownedFeatures>
       </ownedLogicalComponents>
     </templateElements>
+    <templateElements xsi:type="la_0.8.0:LogicalComponent" id="f124d3f0-74cb-4795-b365-59e1cdaa5f6e"
+        name="MVC Component"/>
     <templateElements xsi:type="la_0.8.0:LogicalComponent" id="f124d3f0-74cb-4795-b365-59e1cdaa5f6e"
         name="MVC Component"/>
     <templateElements xsi:type="la_0.8.0:LogicalComponent" id="f124d3f0-74cb-4795-b365-59e1cdaa5f6e"

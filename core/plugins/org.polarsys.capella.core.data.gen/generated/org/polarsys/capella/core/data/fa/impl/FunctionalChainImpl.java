@@ -31,6 +31,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.polarsys.capella.common.model.helpers.IHelper;
 import org.polarsys.capella.core.data.capellacommon.State;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
+import org.polarsys.capella.core.data.capellacore.Constraint;
 import org.polarsys.capella.core.data.capellacore.InvolvedElement;
 import org.polarsys.capella.core.data.capellacore.Involvement;
 import org.polarsys.capella.core.data.capellacore.InvolverElement;
@@ -38,12 +39,14 @@ import org.polarsys.capella.core.data.capellacore.impl.NamedElementImpl;
 import org.polarsys.capella.core.data.ctx.Capability;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.AbstractFunctionalBlock;
+import org.polarsys.capella.core.data.fa.ControlNode;
 import org.polarsys.capella.core.data.fa.FaPackage;
 import org.polarsys.capella.core.data.fa.FunctionalChain;
 import org.polarsys.capella.core.data.fa.FunctionalChainInvolvement;
 import org.polarsys.capella.core.data.fa.FunctionalChainKind;
 import org.polarsys.capella.core.data.fa.FunctionalChainRealization;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
+import org.polarsys.capella.core.data.fa.SequenceLink;
 import org.polarsys.capella.core.data.la.CapabilityRealization;
 
 /**
@@ -71,6 +74,10 @@ import org.polarsys.capella.core.data.la.CapabilityRealization;
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.FunctionalChainImpl#getInvolvingCapabilityRealizations <em>Involving Capability Realizations</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.FunctionalChainImpl#getRealizedFunctionalChains <em>Realized Functional Chains</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.FunctionalChainImpl#getRealizingFunctionalChains <em>Realizing Functional Chains</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.fa.impl.FunctionalChainImpl#getPreCondition <em>Pre Condition</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.fa.impl.FunctionalChainImpl#getPostCondition <em>Post Condition</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.fa.impl.FunctionalChainImpl#getOwnedSequenceNodes <em>Owned Sequence Nodes</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.fa.impl.FunctionalChainImpl#getOwnedSequenceLinks <em>Owned Sequence Links</em>}</li>
  * </ul>
  *
  * @generated
@@ -170,6 +177,69 @@ public class FunctionalChainImpl extends NamedElementImpl implements FunctionalC
 	 * @ordered
 	 */
 	protected EList<State> availableInStates;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	/**
+	 * The cached value of the '{@link #getPreCondition() <em>Pre Condition</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPreCondition()
+	 * @generated
+	 * @ordered
+	 */
+	protected Constraint preCondition;
+
+	/**
+	 * The cached value of the '{@link #getPostCondition() <em>Post Condition</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPostCondition()
+	 * @generated
+	 * @ordered
+	 */
+	protected Constraint postCondition;
+
+	/**
+	 * The cached value of the '{@link #getOwnedSequenceNodes() <em>Owned Sequence Nodes</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedSequenceNodes()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<ControlNode> ownedSequenceNodes;
+
+	/**
+	 * The cached value of the '{@link #getOwnedSequenceLinks() <em>Owned Sequence Links</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedSequenceLinks()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<SequenceLink> ownedSequenceLinks;
 
 
 
@@ -919,6 +989,124 @@ public class FunctionalChainImpl extends NamedElementImpl implements FunctionalC
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+
+	public Constraint getPreCondition() {
+
+		if (preCondition != null && preCondition.eIsProxy()) {
+			InternalEObject oldPreCondition = (InternalEObject)preCondition;
+			preCondition = (Constraint)eResolveProxy(oldPreCondition);
+			if (preCondition != oldPreCondition) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, FaPackage.FUNCTIONAL_CHAIN__PRE_CONDITION, oldPreCondition, preCondition));
+			}
+		}
+		return preCondition;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+
+	public Constraint basicGetPreCondition() {
+
+		return preCondition;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+
+	public void setPreCondition(Constraint newPreCondition) {
+
+		Constraint oldPreCondition = preCondition;
+		preCondition = newPreCondition;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FaPackage.FUNCTIONAL_CHAIN__PRE_CONDITION, oldPreCondition, preCondition));
+
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+
+	public Constraint getPostCondition() {
+
+		if (postCondition != null && postCondition.eIsProxy()) {
+			InternalEObject oldPostCondition = (InternalEObject)postCondition;
+			postCondition = (Constraint)eResolveProxy(oldPostCondition);
+			if (postCondition != oldPostCondition) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, FaPackage.FUNCTIONAL_CHAIN__POST_CONDITION, oldPostCondition, postCondition));
+			}
+		}
+		return postCondition;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+
+	public Constraint basicGetPostCondition() {
+
+		return postCondition;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+
+	public void setPostCondition(Constraint newPostCondition) {
+
+		Constraint oldPostCondition = postCondition;
+		postCondition = newPostCondition;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FaPackage.FUNCTIONAL_CHAIN__POST_CONDITION, oldPostCondition, postCondition));
+
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+
+	public EList<ControlNode> getOwnedSequenceNodes() {
+
+		if (ownedSequenceNodes == null) {
+			ownedSequenceNodes = new EObjectContainmentEList.Resolving<ControlNode>(ControlNode.class, this, FaPackage.FUNCTIONAL_CHAIN__OWNED_SEQUENCE_NODES);
+		}
+		return ownedSequenceNodes;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+
+	public EList<SequenceLink> getOwnedSequenceLinks() {
+
+		if (ownedSequenceLinks == null) {
+			ownedSequenceLinks = new EObjectContainmentEList.Resolving<SequenceLink>(SequenceLink.class, this, FaPackage.FUNCTIONAL_CHAIN__OWNED_SEQUENCE_LINKS);
+		}
+		return ownedSequenceLinks;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -926,6 +1114,10 @@ public class FunctionalChainImpl extends NamedElementImpl implements FunctionalC
 				return ((InternalEList<?>)getOwnedFunctionalChainInvolvements()).basicRemove(otherEnd, msgs);
 			case FaPackage.FUNCTIONAL_CHAIN__OWNED_FUNCTIONAL_CHAIN_REALIZATIONS:
 				return ((InternalEList<?>)getOwnedFunctionalChainRealizations()).basicRemove(otherEnd, msgs);
+			case FaPackage.FUNCTIONAL_CHAIN__OWNED_SEQUENCE_NODES:
+				return ((InternalEList<?>)getOwnedSequenceNodes()).basicRemove(otherEnd, msgs);
+			case FaPackage.FUNCTIONAL_CHAIN__OWNED_SEQUENCE_LINKS:
+				return ((InternalEList<?>)getOwnedSequenceLinks()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -972,6 +1164,16 @@ public class FunctionalChainImpl extends NamedElementImpl implements FunctionalC
 				return getRealizedFunctionalChains();
 			case FaPackage.FUNCTIONAL_CHAIN__REALIZING_FUNCTIONAL_CHAINS:
 				return getRealizingFunctionalChains();
+			case FaPackage.FUNCTIONAL_CHAIN__PRE_CONDITION:
+				if (resolve) return getPreCondition();
+				return basicGetPreCondition();
+			case FaPackage.FUNCTIONAL_CHAIN__POST_CONDITION:
+				if (resolve) return getPostCondition();
+				return basicGetPostCondition();
+			case FaPackage.FUNCTIONAL_CHAIN__OWNED_SEQUENCE_NODES:
+				return getOwnedSequenceNodes();
+			case FaPackage.FUNCTIONAL_CHAIN__OWNED_SEQUENCE_LINKS:
+				return getOwnedSequenceLinks();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -1000,6 +1202,20 @@ public class FunctionalChainImpl extends NamedElementImpl implements FunctionalC
 				getAvailableInStates().clear();
 				getAvailableInStates().addAll((Collection<? extends State>)newValue);
 				return;
+			case FaPackage.FUNCTIONAL_CHAIN__PRE_CONDITION:
+					setPreCondition((Constraint)newValue);
+				return;
+			case FaPackage.FUNCTIONAL_CHAIN__POST_CONDITION:
+					setPostCondition((Constraint)newValue);
+				return;
+			case FaPackage.FUNCTIONAL_CHAIN__OWNED_SEQUENCE_NODES:
+				getOwnedSequenceNodes().clear();
+				getOwnedSequenceNodes().addAll((Collection<? extends ControlNode>)newValue);
+				return;
+			case FaPackage.FUNCTIONAL_CHAIN__OWNED_SEQUENCE_LINKS:
+				getOwnedSequenceLinks().clear();
+				getOwnedSequenceLinks().addAll((Collection<? extends SequenceLink>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -1024,6 +1240,18 @@ public class FunctionalChainImpl extends NamedElementImpl implements FunctionalC
 				return;
 			case FaPackage.FUNCTIONAL_CHAIN__AVAILABLE_IN_STATES:
 				getAvailableInStates().clear();
+				return;
+			case FaPackage.FUNCTIONAL_CHAIN__PRE_CONDITION:
+				setPreCondition((Constraint)null);
+				return;
+			case FaPackage.FUNCTIONAL_CHAIN__POST_CONDITION:
+				setPostCondition((Constraint)null);
+				return;
+			case FaPackage.FUNCTIONAL_CHAIN__OWNED_SEQUENCE_NODES:
+				getOwnedSequenceNodes().clear();
+				return;
+			case FaPackage.FUNCTIONAL_CHAIN__OWNED_SEQUENCE_LINKS:
+				getOwnedSequenceLinks().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -1073,6 +1301,14 @@ public class FunctionalChainImpl extends NamedElementImpl implements FunctionalC
 				return !getRealizedFunctionalChains().isEmpty();
 			case FaPackage.FUNCTIONAL_CHAIN__REALIZING_FUNCTIONAL_CHAINS:
 				return !getRealizingFunctionalChains().isEmpty();
+			case FaPackage.FUNCTIONAL_CHAIN__PRE_CONDITION:
+				return preCondition != null;
+			case FaPackage.FUNCTIONAL_CHAIN__POST_CONDITION:
+				return postCondition != null;
+			case FaPackage.FUNCTIONAL_CHAIN__OWNED_SEQUENCE_NODES:
+				return ownedSequenceNodes != null && !ownedSequenceNodes.isEmpty();
+			case FaPackage.FUNCTIONAL_CHAIN__OWNED_SEQUENCE_LINKS:
+				return ownedSequenceLinks != null && !ownedSequenceLinks.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

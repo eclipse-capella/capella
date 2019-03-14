@@ -143,31 +143,36 @@ public final class FunctionalChainInvolvement__previousFunctionalChainInvolvemen
               PBody body = new PBody(this);
               PVariable var_self = body.getOrCreateVariableByName("self");
               PVariable var_target = body.getOrCreateVariableByName("target");
-              PVariable var_fc = body.getOrCreateVariableByName("fc");
               new TypeConstraint(body, new FlatTuple(var_self), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/fa/1.3.0", "FunctionalChainInvolvement")));
               new TypeConstraint(body, new FlatTuple(var_target), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/fa/1.3.0", "FunctionalChainInvolvement")));
               body.setSymbolicParameters(Arrays.<ExportedParameter>asList(
                  new ExportedParameter(body, var_self, parameter_pSelf),
                  new ExportedParameter(body, var_target, parameter_pTarget)
               ));
-              // 	FunctionalChainInvolvement.nextFunctionalChainInvolvements(target, self)
-              new TypeConstraint(body, new FlatTuple(var_target), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/fa/1.3.0", "FunctionalChainInvolvement")));
+              // 	FunctionalChainInvolvementLink.target(target, self)
+              new TypeConstraint(body, new FlatTuple(var_target), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/fa/1.3.0", "FunctionalChainInvolvementLink")));
               PVariable var__virtual_0_ = body.getOrCreateVariableByName(".virtual{0}");
-              new TypeConstraint(body, new FlatTuple(var_target, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/core/fa/1.3.0", "FunctionalChainInvolvement", "nextFunctionalChainInvolvements")));
-              new TypeConstraint(body, new FlatTuple(var__virtual_0_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/fa/1.3.0", "FunctionalChainInvolvement")));
+              new TypeConstraint(body, new FlatTuple(var_target, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/core/fa/1.3.0", "FunctionalChainInvolvementLink", "target")));
+              new TypeConstraint(body, new FlatTuple(var__virtual_0_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/fa/1.3.0", "FunctionalChainInvolvementFunction")));
               new Equality(body, var__virtual_0_, var_self);
-              // // TODO understand why we should verify that target is in the same chain than self ...FunctionalChain.ownedFunctionalChainInvolvements(fc, self)
-              new TypeConstraint(body, new FlatTuple(var_fc), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/fa/1.3.0", "FunctionalChain")));
-              PVariable var__virtual_1_ = body.getOrCreateVariableByName(".virtual{1}");
-              new TypeConstraint(body, new FlatTuple(var_fc, var__virtual_1_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/core/fa/1.3.0", "FunctionalChain", "ownedFunctionalChainInvolvements")));
-              new TypeConstraint(body, new FlatTuple(var__virtual_1_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/fa/1.3.0", "FunctionalChainInvolvement")));
-              new Equality(body, var__virtual_1_, var_self);
-              // FunctionalChain.ownedFunctionalChainInvolvements(fc, target)
-              new TypeConstraint(body, new FlatTuple(var_fc), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/fa/1.3.0", "FunctionalChain")));
-              PVariable var__virtual_2_ = body.getOrCreateVariableByName(".virtual{2}");
-              new TypeConstraint(body, new FlatTuple(var_fc, var__virtual_2_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/core/fa/1.3.0", "FunctionalChain", "ownedFunctionalChainInvolvements")));
-              new TypeConstraint(body, new FlatTuple(var__virtual_2_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/fa/1.3.0", "FunctionalChainInvolvement")));
-              new Equality(body, var__virtual_2_, var_target);
+              bodies.add(body);
+          }
+          {
+              PBody body = new PBody(this);
+              PVariable var_self = body.getOrCreateVariableByName("self");
+              PVariable var_target = body.getOrCreateVariableByName("target");
+              new TypeConstraint(body, new FlatTuple(var_self), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/fa/1.3.0", "FunctionalChainInvolvement")));
+              new TypeConstraint(body, new FlatTuple(var_target), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/fa/1.3.0", "FunctionalChainInvolvement")));
+              body.setSymbolicParameters(Arrays.<ExportedParameter>asList(
+                 new ExportedParameter(body, var_self, parameter_pSelf),
+                 new ExportedParameter(body, var_target, parameter_pTarget)
+              ));
+              // 	FunctionalChainInvolvementLink.source(self, target)
+              new TypeConstraint(body, new FlatTuple(var_self), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/fa/1.3.0", "FunctionalChainInvolvementLink")));
+              PVariable var__virtual_0_ = body.getOrCreateVariableByName(".virtual{0}");
+              new TypeConstraint(body, new FlatTuple(var_self, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/core/fa/1.3.0", "FunctionalChainInvolvementLink", "source")));
+              new TypeConstraint(body, new FlatTuple(var__virtual_0_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/fa/1.3.0", "FunctionalChainInvolvementFunction")));
+              new Equality(body, var__virtual_0_, var_target);
               bodies.add(body);
           }
           {

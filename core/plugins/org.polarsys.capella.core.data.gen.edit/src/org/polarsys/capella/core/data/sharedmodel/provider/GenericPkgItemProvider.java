@@ -2949,18 +2949,6 @@ public class GenericPkgItemProvider
                 {
                     CommandParameter commandParameter = createChildParameter
                         (SharedmodelPackage.Literals.GENERIC_PKG__CAPELLA_ELEMENTS,
-                         FaFactory.eINSTANCE.createFunctionalChainInvolvement());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (SharedmodelPackage.Literals.GENERIC_PKG__CAPELLA_ELEMENTS,
                          FaFactory.eINSTANCE.createFunctionalChainReference());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
@@ -3154,6 +3142,54 @@ public class GenericPkgItemProvider
                     CommandParameter commandParameter = createChildParameter
                         (SharedmodelPackage.Literals.GENERIC_PKG__CAPELLA_ELEMENTS,
                          FaFactory.eINSTANCE.createComponentPortAllocationEnd());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (SharedmodelPackage.Literals.GENERIC_PKG__CAPELLA_ELEMENTS,
+                         FaFactory.eINSTANCE.createFunctionalChainInvolvementLink());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (SharedmodelPackage.Literals.GENERIC_PKG__CAPELLA_ELEMENTS,
+                         FaFactory.eINSTANCE.createSequenceLink());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (SharedmodelPackage.Literals.GENERIC_PKG__CAPELLA_ELEMENTS,
+                         FaFactory.eINSTANCE.createFunctionalChainInvolvementFunction());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (SharedmodelPackage.Literals.GENERIC_PKG__CAPELLA_ELEMENTS,
+                         FaFactory.eINSTANCE.createControlNode());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
                     }
