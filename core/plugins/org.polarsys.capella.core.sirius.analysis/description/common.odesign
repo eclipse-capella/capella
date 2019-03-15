@@ -19815,6 +19815,22 @@
               </initialOperation>
             </tools>
           </ownedTools>
+          <ownedTools xsi:type="tool:ToolGroup">
+            <tools xsi:type="tool_1:ToolDescription" name="Exchange from Sequence Link" label="Exchange from Sequence Link" precondition="aql:container.oclIsKindOf(fa::SequenceLink)" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionalChainInvolvementLink_ToExchange.gif">
+              <element name="element"/>
+              <elementView name="elementView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView.accelerateOnSequenceLinkEdge()"/>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool_1:ToolDescription" name="Sequence Link from Exchange" label="Sequence Link from Exchange" precondition="aql:container.oclIsKindOf(fa::FunctionalChainInvolvementLink)" iconPath="/org.polarsys.capella.core.data.res.edit/icons/full/obj16/SequenceLink.gif">
+              <element name="element"/>
+              <elementView name="elementView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:element.accelerateOnFCILEdge()"/>
+              </initialOperation>
+            </tools>
+          </ownedTools>
         </toolSections>
         <toolSections name="Accelerators" reusedTools="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@additionalLayers[name='Communication%20Model']/@toolSections.1/@ownedTools[name='DiagramInitialization']"/>
         <toolSections name="Common" reusedTools="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='selectMenu']">

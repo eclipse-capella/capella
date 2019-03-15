@@ -316,6 +316,23 @@
           </visibleWhen>
        </command>
     </menuContribution>
+    <menuContribution
+          locationURI="popup:org.polarsys.capella.core.accelerators?after=groupAccelerator">
+       <command
+             commandId="org.polarsys.capella.core.platform.sirius.ui.actions.AcceleratorFromFCILToSequenceLink"
+             icon="icons/full/obj16/SequenceLink.gif">
+          <visibleWhen
+                checkEnabled="true">
+          </visibleWhen>
+       </command>
+       <command
+             commandId="org.polarsys.capella.core.platform.sirius.ui.actions.AcceleratorFromSequenceLinkToFCIL"
+             icon="icons/full/obj16/FunctionalChainInvolvementLink_ToExchange.gif">
+          <visibleWhen
+                checkEnabled="true">
+          </visibleWhen>
+       </command>
+    </menuContribution>
  </extension>
  <extension
        point="org.eclipse.ui.commands">
@@ -418,6 +435,16 @@
              class="org.polarsys.capella.core.sequencediag.datas.LabelToggleState:label9"
              id="org.eclipse.ui.commands.toggleState">
        </state>
+    </command>
+    <command
+          defaultHandler="org.polarsys.capella.core.sirius.analysis.accelerators.AcceleratorOnSequenceLinkHandler"
+          id="org.polarsys.capella.core.platform.sirius.ui.actions.AcceleratorFromSequenceLinkToFCIL"
+          name="Create new Exchange">
+    </command>
+    <command
+          defaultHandler="org.polarsys.capella.core.sirius.analysis.accelerators.AcceleratorOnFCILinkHandler"
+          id="org.polarsys.capella.core.platform.sirius.ui.actions.AcceleratorFromFCILToSequenceLink"
+          name="Create new Sequence Link">
     </command>
  </extension>
  <extension

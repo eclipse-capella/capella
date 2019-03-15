@@ -22,10 +22,15 @@ import java.util.Map.Entry;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gmf.runtime.notation.DrawerStyle;
 import org.eclipse.gmf.runtime.notation.Node;
+import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.BorderedStyle;
 import org.eclipse.sirius.diagram.DDiagram;
@@ -47,6 +52,8 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.RGBValues;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.swt.graphics.RGB;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.ui.PlatformUI;
 import org.polarsys.capella.common.data.modellingcore.ValueSpecification;
 import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.helpers.SimpleOrientedGraph;
@@ -75,16 +82,20 @@ import org.polarsys.capella.core.data.information.datavalue.OpaqueExpression;
 import org.polarsys.capella.core.data.interaction.AbstractCapability;
 import org.polarsys.capella.core.data.interaction.FunctionalChainAbstractCapabilityInvolvement;
 import org.polarsys.capella.core.data.oa.OperationalProcess;
+import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.ConstraintExt;
 import org.polarsys.capella.core.model.helpers.ExchangeItemExt;
 import org.polarsys.capella.core.model.helpers.FunctionalChainExt;
+import org.polarsys.capella.core.model.helpers.FunctionalExchangeExt;
 import org.polarsys.capella.core.model.helpers.SequenceLinkEndExt;
 import org.polarsys.capella.core.model.helpers.graph.InternalLinksGraph;
 import org.polarsys.capella.core.model.helpers.graph.InternalLinksGraph.InternalLinkEdge;
 import org.polarsys.capella.core.model.helpers.graph.InvolvementGraph;
 import org.polarsys.capella.core.model.helpers.graph.InvolvementGraph.InvolvementEdge;
 import org.polarsys.capella.core.model.helpers.graph.InvolvementGraph.InvolvementNode;
+import org.polarsys.capella.core.sirius.analysis.accelerators.SelectOrCreateFunctionalExchangeDialog;
+import org.polarsys.capella.core.sirius.analysis.accelerators.SelectOrCreateFunctionalExchangeDialog.NewFEData;
 import org.polarsys.capella.core.sirius.analysis.cache.FunctionalChainCache;
 import org.polarsys.capella.core.sirius.analysis.constants.MappingConstantsHelper;
 import org.polarsys.capella.core.sirius.analysis.helpers.FunctionalChainReferenceHierarchyHelper;
@@ -1418,5 +1429,204 @@ public class FunctionalChainServices {
       }
     }
     return false;
+  }
+  
+  /**
+   * For a given sequenceLink DEdge, find all first-meet DNodes representing FCIFunction by following the outgoing edges
+   * to the target of the given edge.
+   * 
+   * @param seqLinkEdge
+   * @param closestFCIFunctionViews
+   */
+  private void findFlatClosestFCIFunctionViewsAsTarget(DEdge seqLinkEdge, List<DNode> closestFCIFunctionViews) {
+    EdgeTarget targetNode = seqLinkEdge.getTargetNode();
+    if (targetNode instanceof DNode && ((DNode) targetNode).getTarget() instanceof FunctionalChainInvolvementFunction) {
+      closestFCIFunctionViews.add((DNode) targetNode);
+    } else {
+      targetNode.getOutgoingEdges() //
+          .stream() //
+          .filter(e -> e.getTarget() instanceof SequenceLink) //
+          .forEach(s -> findFlatClosestFCIFunctionViewsAsTarget(s, closestFCIFunctionViews)); //
+    }
+  }
+  
+  /**
+   * For a given sequenceLink DEdge, find all first-meet DNodes representing FCIFunction by following the outgoing edges
+   * to the target of the given edge.
+   * 
+   * @param seqLinkEdge
+   * @return
+   */
+  public List<DNode> findFlatClosestFCIFunctionViewsAsTarget(DEdge seqLinkEdge) {
+    List<DNode> closestFCIFunctionViews = new ArrayList<>();
+    findFlatClosestFCIFunctionViewsAsTarget(seqLinkEdge, closestFCIFunctionViews);
+    return closestFCIFunctionViews;
+  }
+
+  /**
+   * For a given sequenceLink DEdge, find all first-meet DNodes representing FCIFunction by following the incoming edges
+   * to the source of the given edge.
+   * 
+   * @param seqLinkEdge
+   * @param closestFCIFunctionViews
+   */
+  private void findFlatClosestFCIFunctionViewsAsSource(DEdge seqLinkEdge, List<DNode> closestFCIFunctionViews) {
+    EdgeTarget sourceNode = seqLinkEdge.getSourceNode();
+    if (sourceNode instanceof DNode && ((DNode) sourceNode).getTarget() instanceof FunctionalChainInvolvementFunction) {
+      closestFCIFunctionViews.add((DNode) sourceNode);
+    } else {
+      sourceNode.getIncomingEdges() //
+          .stream() //
+          .filter(e -> e.getTarget() instanceof SequenceLink) //
+          .forEach(s -> findFlatClosestFCIFunctionViewsAsSource(s, closestFCIFunctionViews)); //
+    }
+  }
+  
+  /**
+   * For a given sequenceLink DEdge, find all first-meet DNodes representing FCIFunction by following the incoming edges
+   * to the source of the given edge.
+   * 
+   * @param seqLinkEdge
+   * @return
+   */
+  public List<DNode> findFlatClosestFCIFunctionViewsAsSource(DEdge seqLinkEdge) {
+    List<DNode> closestFCIFunctionViews = new ArrayList<>();
+    findFlatClosestFCIFunctionViewsAsSource(seqLinkEdge, closestFCIFunctionViews);
+    return closestFCIFunctionViews;
+  }
+  
+  /**
+   * From a list of DNode whose target is type of FCIF, returns list of Abstract Function that are involved.
+   * @param fcifNodes
+   * @return
+   */
+  public Set<AbstractFunction> getFunctionsFromFCIFDNodes(List<DNode> fcifNodes) {
+    return fcifNodes.stream() //
+        .map(DNode::getTarget) //
+        .map(FunctionalChainInvolvementFunction.class::cast) //
+        .map(FunctionalChainInvolvementFunction::getInvolved) //
+        .map(AbstractFunction.class::cast) //
+        .collect(Collectors.toSet()); //
+  }
+
+  /**
+   * For a given AbstractFunction and list of DNode whose target is of type FCIF, 
+   * return list of DNode involving the given function
+   * @param fcifViews
+   * @param function
+   * @return
+   */
+  public List<DNode> getFCIFViewsInvolvingFunction(List<DNode> fcifViews, AbstractFunction function) {
+    return fcifViews.stream() //
+        .filter(s -> ((FunctionalChainInvolvementFunction) s.getTarget()).getInvolved().equals(function)) //
+        .collect(Collectors.toList()); //
+  }
+  
+  public EObject accelerateOnSequenceLinkEdge(DEdge seqLinkEdge) {
+    List<DNode> availableSourceFCIFViews = findFlatClosestFCIFunctionViewsAsSource(seqLinkEdge);
+    List<DNode> availableTargetFCIFViews = findFlatClosestFCIFunctionViewsAsTarget(seqLinkEdge);
+
+    Set<AbstractFunction> availableSourceFunctions = getFunctionsFromFCIFDNodes(availableSourceFCIFViews);
+    Set<AbstractFunction> availableTargetFunctions = getFunctionsFromFCIFDNodes(availableTargetFCIFViews);
+
+    Set<FunctionalExchange> availableFEs = new HashSet<>();
+
+    for (AbstractFunction sourceFunction : availableSourceFunctions) {
+      for (AbstractFunction targetFunction : availableTargetFunctions) {
+        List<FunctionalExchange> commonEdges = FunctionExt.getOutGoingExchange(sourceFunction);
+        commonEdges.retainAll(FunctionExt.getIncomingExchange(targetFunction));
+
+        availableFEs.addAll(commonEdges);
+      }
+    }
+
+    Session session = SessionManager.INSTANCE.getSession(seqLinkEdge.getTarget());
+    TransactionalEditingDomain ted = session.getTransactionalEditingDomain();
+    Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
+    AdapterFactory adapterFactory = CapellaAdapterFactoryProvider.getInstance().getAdapterFactory();
+
+    SelectOrCreateFunctionalExchangeDialog dialog = new SelectOrCreateFunctionalExchangeDialog(shell, ted, adapterFactory, availableFEs,
+        availableSourceFunctions, availableTargetFunctions);
+    int returnCode = dialog.open();
+
+    NewFEData newFEData = null;
+    AbstractFunction feSource = null;
+    AbstractFunction feTarget = null;
+    FunctionalExchange involvedFE = null;
+    
+    if (returnCode == SelectOrCreateFunctionalExchangeDialog.CREATION) {
+      newFEData = dialog.getCreation();
+      feSource = newFEData.getSource();
+      feTarget = newFEData.getTarget();
+    }
+    
+    if (returnCode == SelectOrCreateFunctionalExchangeDialog.SELECTION) {
+      involvedFE = dialog.getSelection().stream().findFirst().orElse(null);
+      feSource = FunctionalExchangeExt.getSourceFunction(involvedFE);
+      feTarget = FunctionalExchangeExt.getTargetFunction(involvedFE);
+    }
+    
+    List<DNode> possibleSourceFCIFNodes = getFCIFViewsInvolvingFunction(availableSourceFCIFViews, feSource);
+    List<DNode> possibleTargetFCIFNodes = getFCIFViewsInvolvingFunction(availableTargetFCIFViews, feTarget);
+
+    int sourceSize = possibleSourceFCIFNodes.size();
+    int targetSize = possibleTargetFCIFNodes.size();
+    if (sourceSize > 1 || targetSize > 1) {
+      String title = "Accelerator Information";
+      String message = "Impossible to create Functional Chain Involvement Link due to ambiguity of source and target";
+      MessageDialog.openInformation(shell, title, message);
+    }
+    
+    if (sourceSize == 1 && targetSize == 1) {
+      if (newFEData != null) {
+        involvedFE = FunctionalExchangeExt.createFunctionalExchange(feSource, feTarget);
+        involvedFE.setName(newFEData.getName());
+        ((AbstractFunction) feSource.eContainer()).getOwnedFunctionalExchanges().add(involvedFE);
+      }
+      DNode sourceFCIFNode = possibleSourceFCIFNodes.get(0);
+      DNode targetFCIFNode = possibleTargetFCIFNodes.get(0);
+      createFCILink(sourceFCIFNode, targetFCIFNode, involvedFE, seqLinkEdge);
+    }
+    
+    return seqLinkEdge;
+  }
+
+  public EObject accelerateOnFCILEdge(FunctionalChainInvolvementLink link) {
+    if (link != null) {
+      FunctionalChainExt.createSequenceLink(link);
+    }
+    return link;
+  }
+  
+  /**
+   * - Create a new FCILink between 2 FCIFunction nodes and involve the given functional exchange. 
+   * - Add the new created FCILink into list of links of the given sequence link edge. 
+   * - Add the new created FCILink to list of involvements of the given sequence link edge's functional chain
+   * 
+   * @param sourceFCIF
+   * @param targetFCIF
+   * @param functionalExchange
+   * @param sequenceLinkEdge
+   * @return the new FCILink
+   */
+  public FunctionalChainInvolvementLink createFCILink(DNode sourceFCIF, DNode targetFCIF,
+      FunctionalExchange functionalExchange, DEdge sequenceLinkEdge) {
+
+    SequenceLink sequenceLink = (SequenceLink) sequenceLinkEdge.getTarget();
+    FunctionalChain functionalChain = (FunctionalChain) sequenceLink.eContainer();
+
+    FunctionalChainInvolvementLink newFCIL = FunctionalChainExt.createInvolvementLink(functionalChain,
+        functionalExchange);
+    newFCIL.setSource((FunctionalChainInvolvementFunction) sourceFCIF.getTarget());
+    newFCIL.setTarget((FunctionalChainInvolvementFunction) targetFCIF.getTarget());
+
+    FunctionalChain commonFC = computeContainerFunctionalChain(sourceFCIF, targetFCIF);
+    newFCIL.getSourceReferenceHierarchy().addAll(computeFCReferenceHierarchy(sourceFCIF, commonFC));
+    newFCIL.getTargetReferenceHierarchy().addAll(computeFCReferenceHierarchy(targetFCIF, commonFC));
+
+    functionalChain.getOwnedFunctionalChainInvolvements().add(newFCIL);
+    sequenceLink.getLinks().add(newFCIL);
+
+    return newFCIL;
   }
 }
