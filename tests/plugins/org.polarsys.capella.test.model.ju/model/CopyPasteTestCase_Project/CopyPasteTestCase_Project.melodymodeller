@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--Capella_Version_1.3.0-->
+<!--Capella_Version_1.3.1-->
 <org.polarsys.capella.core.data.capellamodeller:Project xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:libraries="http://www.polarsys.org/capella/common/libraries/1.3.0"
     xmlns:org.polarsys.capella.core.data.capellacommon="http://www.polarsys.org/capella/core/common/1.3.0"
@@ -20,7 +20,7 @@
     name="CopyPasteTestCase_Project">
   <ownedExtensions xsi:type="libraries:ModelInformation" id="b7069cee-0349-4df3-b1d0-3b6c82f55282">
     <ownedReferences xsi:type="libraries:LibraryReference" id="3d059cd9-ef7d-40f6-9f1f-5be94b1505ec"
-        library="libraries:ModelInformation ../CopyPasteTestCase_Lib/CopyPasteTestCase_Lib.melodymodeller#daf434c2-9607-499d-ae61-c3b6718b1844"
+        library="libraries:ModelInformation platform:/resource/CopyPasteTestCase_Lib/CopyPasteTestCase_Lib.melodymodeller#daf434c2-9607-499d-ae61-c3b6718b1844"
         accessPolicy="readAndWrite"/>
   </ownedExtensions>
   <ownedEnumerationPropertyTypes xsi:type="org.polarsys.capella.core.data.capellacore:EnumerationPropertyType"
@@ -174,7 +174,7 @@
         <ownedClasses xsi:type="org.polarsys.capella.core.data.information:Class"
             id="f16eefef-dcec-44c0-a76f-adff706342d1" name="Class from project">
           <ownedGeneralizations xsi:type="org.polarsys.capella.core.data.capellacore:Generalization"
-              id="9b9f6e06-c67a-4e58-92fe-b4b418731ff2" super="org.polarsys.capella.core.data.information:Class ../CopyPasteTestCase_Lib/CopyPasteTestCase_Lib.melodymodeller#83e649c9-86d3-4537-a898-64a664b2e689"
+              id="9b9f6e06-c67a-4e58-92fe-b4b418731ff2" super="org.polarsys.capella.core.data.information:Class platform:/resource/CopyPasteTestCase_Lib/CopyPasteTestCase_Lib.melodymodeller#83e649c9-86d3-4537-a898-64a664b2e689"
               sub="#f16eefef-dcec-44c0-a76f-adff706342d1"/>
         </ownedClasses>
       </ownedDataPkg>

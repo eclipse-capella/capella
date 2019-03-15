@@ -21,6 +21,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map.Entry;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
@@ -37,6 +38,8 @@ import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.menu.dynamic.CreationHelper;
 import org.polarsys.capella.common.utils.graph.CycleDetectionUtils;
 import org.polarsys.capella.common.utils.graph.IDirectedGraph;
+import org.polarsys.capella.core.data.capellacommon.AbstractCapabilityPkg;
+import org.polarsys.capella.core.data.capellacore.InvolvedElement;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
@@ -45,6 +48,8 @@ import org.polarsys.capella.core.data.fa.FaFactory;
 import org.polarsys.capella.core.data.fa.FaPackage;
 import org.polarsys.capella.core.data.fa.FunctionalChain;
 import org.polarsys.capella.core.data.fa.FunctionalChainInvolvement;
+import org.polarsys.capella.core.data.fa.FunctionalChainInvolvementFunction;
+import org.polarsys.capella.core.data.fa.FunctionalChainInvolvementLink;
 import org.polarsys.capella.core.data.fa.FunctionalChainReference;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.data.helpers.fa.services.FunctionExt;
@@ -52,8 +57,6 @@ import org.polarsys.capella.core.data.information.ExchangeItem;
 import org.polarsys.capella.core.data.interaction.AbstractCapability;
 import org.polarsys.capella.core.data.interaction.FunctionalChainAbstractCapabilityInvolvement;
 import org.polarsys.capella.core.data.interaction.InteractionFactory;
-import org.polarsys.capella.core.data.capellacommon.AbstractCapabilityPkg;
-import org.polarsys.capella.core.data.capellacore.InvolvedElement;
 import org.polarsys.capella.core.data.oa.OaFactory;
 import org.polarsys.capella.core.data.oa.OperationalAnalysis;
 import org.polarsys.capella.core.model.utils.CapellaLayerCheckingExt;
@@ -83,7 +86,7 @@ public class FunctionalChainExt {
    * @param involvement
    * @return
    */
-  public static Collection<AbstractExchangeItem> getInvalidExchangeItems(FunctionalChainInvolvement involvement) {
+  public static Collection<AbstractExchangeItem> getInvalidExchangeItems(FunctionalChainInvolvementLink involvement) {
     // Get ExchangeItems from SequenceMessage.
     List<ExchangeItem> exchangedItemsFromInvolvement = involvement.getExchangedItems();
 
@@ -384,6 +387,64 @@ public class FunctionalChainExt {
   }
 
   /**
+   * 
+   * @param fcr
+   * @return a list of all first FCIFunctions and its hierarchical context included in a FunctionalChainReference
+   */
+  public static List<List<FunctionalChainInvolvement>> getFirstFlatHierachicalContexts(FunctionalChainReference fcr) {
+    List<FunctionalChainReference> hierarchicalContext = new ArrayList<>();
+    hierarchicalContext.add(fcr);
+    List<List<FunctionalChainInvolvement>> allHierarchicalContexts = getFlatHierachicalContexts(fcr,
+        hierarchicalContext);
+    return allHierarchicalContexts.stream()
+        .filter(fciCollection -> isFirstFunctionalChainInvolvement(fciCollection.get(0))).collect(Collectors.toList());
+  }
+
+  /**
+   * 
+   * @param fcr
+   * @return a list of all last FCIFunctions and its hierarchical context included in a FunctionalChainReference
+   */
+  public static List<List<FunctionalChainInvolvement>> getLastFlatHierachicalContexts(FunctionalChainReference fcr) {
+    List<FunctionalChainReference> hierarchicalContext = new ArrayList<>();
+    hierarchicalContext.add(fcr);
+    List<List<FunctionalChainInvolvement>> allHierarchicalContexts = getFlatHierachicalContexts(fcr,
+        hierarchicalContext);
+    return allHierarchicalContexts.stream()
+        .filter(fciCollection -> isLastFunctionalChainInvolvement(fciCollection.get(0))).collect(Collectors.toList());
+  }
+
+  /**
+   * 
+   * @param fcr
+   * @param currentContext
+   * @return a list of all FCIFunctions and its hierarchical context included in a FunctionalChainReference
+   */
+  public static List<List<FunctionalChainInvolvement>> getFlatHierachicalContexts(FunctionalChainReference fcr,
+      List<FunctionalChainReference> currentContext) {
+    List<List<FunctionalChainInvolvement>> allHierarchicalContexts = new ArrayList<>();
+    InvolvedElement involved = fcr.getInvolved();
+    if (involved instanceof FunctionalChain) {
+      FunctionalChain functionalChain = (FunctionalChain) involved;
+      for (FunctionalChainInvolvement involvement : functionalChain.getInvolvedFunctionalChainInvolvements()) {
+        if (involvement instanceof FunctionalChainInvolvementFunction) {
+          List<FunctionalChainInvolvement> fciAndHierarchicalContext = new ArrayList<>();
+          fciAndHierarchicalContext.add(involvement);
+          fciAndHierarchicalContext.addAll(currentContext);
+          allHierarchicalContexts.add(fciAndHierarchicalContext);
+        } else if (involvement instanceof FunctionalChainReference) {
+          List<FunctionalChainReference> childContext = new ArrayList<>();
+          childContext.add((FunctionalChainReference) involvement);
+          childContext.addAll(currentContext);
+          allHierarchicalContexts
+              .addAll(getFlatHierachicalContexts((FunctionalChainReference) involvement, childContext));
+        }
+      }
+    }
+    return allHierarchicalContexts;
+  }
+  
+  /**
    * Highly related with org.polarsys.capella.core.data.fa.validation.functionalChain.MDCHK_FunctionalChain_Involvements_1
    * @param fc
    * @return true if the functional chain is valid, false otherwise
@@ -656,42 +717,42 @@ public class FunctionalChainExt {
     if (command.canExecute()) {
       command.execute();
     }
-    HashMap<FunctionalExchange, FunctionalChainInvolvement> involvedExchanges = new HashMap<FunctionalExchange, FunctionalChainInvolvement>();
-    HashMap<AbstractFunction, FunctionalChainInvolvement> involvedFunctions = new HashMap<AbstractFunction, FunctionalChainInvolvement>();
+    HashMap<FunctionalExchange, FunctionalChainInvolvementLink> involvedExchanges = new HashMap<>();
+    HashMap<AbstractFunction, FunctionalChainInvolvementFunction> involvedFunctions = new HashMap<>();
 
     for (EObject elt : involvedElements) {
       if (((elt instanceof AbstractFunction) && !(involvedFunctions.containsKey(elt)))
           || ((elt instanceof FunctionalExchange) && !(involvedExchanges.containsKey(elt)))) {
-
-        FunctionalChainInvolvement newInv = createInvolvement(newFC, (InvolvedElement) elt);
         if (elt instanceof FunctionalExchange) {
-          involvedExchanges.put((FunctionalExchange) elt, newInv);
+          FunctionalChainInvolvementLink newInvLink = createInvolvementLink(newFC, (InvolvedElement) elt);
+          involvedExchanges.put((FunctionalExchange) elt, newInvLink);
           AbstractFunction targetFunction = FunctionExt.getOutGoingAbstractFunction((FunctionalExchange) elt);
           if (!involvedFunctions.containsKey(targetFunction)) {
-            FunctionalChainInvolvement newInvFunction = createInvolvement(newFC, targetFunction);
+            FunctionalChainInvolvementFunction newInvFunction = createInvolvementFunction(newFC, targetFunction);
             involvedFunctions.put(targetFunction, newInvFunction);
           }
           AbstractFunction sourceFunction = FunctionExt.getIncomingAbstractFunction((FunctionalExchange) elt);
           if (!involvedFunctions.containsKey(sourceFunction)) {
-            FunctionalChainInvolvement newInvFunction = createInvolvement(newFC, sourceFunction);
+            FunctionalChainInvolvementFunction newInvFunction = createInvolvementFunction(newFC, sourceFunction);
             involvedFunctions.put(sourceFunction, newInvFunction);
           }
         }
         if (elt instanceof AbstractFunction) {
+          FunctionalChainInvolvementFunction newInv = createInvolvementFunction(newFC, (InvolvedElement) elt);
           involvedFunctions.put((AbstractFunction) elt, newInv);
         }
       }
     }
 
-    for (Entry<FunctionalExchange, FunctionalChainInvolvement> me : involvedExchanges.entrySet()) {
+    for (Entry<FunctionalExchange, FunctionalChainInvolvementLink> me : involvedExchanges.entrySet()) {
       AbstractFunction targetFunction = FunctionExt.getOutGoingAbstractFunction(me.getKey());
       if (involvedFunctions.containsKey(targetFunction)) {
-        me.getValue().getNextFunctionalChainInvolvements().add(involvedFunctions.get(targetFunction));
+        me.getValue().setTarget(involvedFunctions.get(targetFunction));
       }
 
       AbstractFunction sourceFunction = FunctionExt.getIncomingAbstractFunction(me.getKey());
       if (involvedFunctions.containsKey(sourceFunction)) {
-        involvedFunctions.get(sourceFunction).getNextFunctionalChainInvolvements().add(me.getValue());
+        me.getValue().setSource(involvedFunctions.get(sourceFunction));
       }
     }
 
@@ -714,15 +775,27 @@ public class FunctionalChainExt {
   /**
    * @param fc the functional chain which contains the new involvement
    * @param involved the involved element
-   * @return a new FunctionalChainInvolvement initialized with the given arguments
+   * @return a new FunctionalChainInvolvementFunction initialized with the given arguments
    */
-  public static FunctionalChainInvolvement createInvolvement(FunctionalChain fc, InvolvedElement involved) {
-    FunctionalChainInvolvement newInv = FaFactory.eINSTANCE.createFunctionalChainInvolvement();
+  public static FunctionalChainInvolvementFunction createInvolvementFunction(FunctionalChain fc, InvolvedElement involved) {
+    FunctionalChainInvolvementFunction newInv = FaFactory.eINSTANCE.createFunctionalChainInvolvementFunction();
     fc.getOwnedFunctionalChainInvolvements().add(newInv);
     newInv.setInvolved(involved);
     return newInv;
   }
 
+  /**
+   * @param fc the functional chain which contains the new involvement
+   * @param involved the involved element
+   * @return a new FunctionalChainInvolvementLink initialized with the given arguments
+   */
+  public static FunctionalChainInvolvementLink createInvolvementLink(FunctionalChain fc, InvolvedElement involved) {
+    FunctionalChainInvolvementLink newInv = FaFactory.eINSTANCE.createFunctionalChainInvolvementLink();
+    fc.getOwnedFunctionalChainInvolvements().add(newInv);
+    newInv.setInvolved(involved);
+    return newInv;
+  }
+  
   /**
    * Returns all functional exchanges defined in the given architecture
    */

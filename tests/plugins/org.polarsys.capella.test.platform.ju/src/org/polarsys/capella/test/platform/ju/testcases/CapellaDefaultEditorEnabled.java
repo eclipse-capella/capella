@@ -61,6 +61,10 @@ public class CapellaDefaultEditorEnabled extends BasicTestCase {
       String currentEditor = currentEditors.get(extension);
 
       if (!expectedEditor.equals(currentEditor)) {
+        // If the test does not pass because of the default editor for "melodymodeller" is null, 
+        // please think of checking the generated "org.polarsys.capella.core.data.gen.editor/plugin.xml"
+        // All tag <editor> must have the property default="true"
+        // The property is not set after re-generation of meta-model.
         assertFalse(NLS.bind("Default editor for ''{0}'' is not the expected one ''{1}'' instead of ''{2}''",
             new String[] { extension, currentEditor, expectedEditor }), true);
       }

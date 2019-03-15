@@ -663,11 +663,20 @@
   <extension id="extension.surrogate.org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionSpecification__subFunctionSpecifications" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
     <surrogate-query-emf class-name="FunctionSpecification" feature-name="subFunctionSpecifications" package-nsUri="http://www.polarsys.org/capella/core/fa/1.3.0" query-fqn="org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionSpecification__subFunctionSpecifications" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.core.data.fa.surrogate.util.FunctionSpecification__subFunctionSpecificationsQuerySpecification"/>
   </extension>
+  <extension id="extension.surrogate.org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionalChainInvolvementFunction__incomingInvolvementLinks" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
+    <surrogate-query-emf class-name="FunctionalChainInvolvementFunction" feature-name="incomingInvolvementLinks" package-nsUri="http://www.polarsys.org/capella/core/fa/1.3.0" query-fqn="org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionalChainInvolvementFunction__incomingInvolvementLinks" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.core.data.fa.surrogate.util.FunctionalChainInvolvementFunction__incomingInvolvementLinksQuerySpecification"/>
+  </extension>
+  <extension id="extension.surrogate.org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionalChainInvolvementFunction__outgoingInvolvementLinks" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
+    <surrogate-query-emf class-name="FunctionalChainInvolvementFunction" feature-name="outgoingInvolvementLinks" package-nsUri="http://www.polarsys.org/capella/core/fa/1.3.0" query-fqn="org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionalChainInvolvementFunction__outgoingInvolvementLinks" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.core.data.fa.surrogate.util.FunctionalChainInvolvementFunction__outgoingInvolvementLinksQuerySpecification"/>
+  </extension>
   <extension id="extension.surrogate.org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionalChainInvolvement__involvedElement" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
     <surrogate-query-emf class-name="FunctionalChainInvolvement" feature-name="involvedElement" package-nsUri="http://www.polarsys.org/capella/core/fa/1.3.0" query-fqn="org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionalChainInvolvement__involvedElement" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.core.data.fa.surrogate.util.FunctionalChainInvolvement__involvedElementQuerySpecification"/>
   </extension>
   <extension id="extension.surrogate.org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionalChainInvolvement__previousFunctionalChainInvolvements" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
     <surrogate-query-emf class-name="FunctionalChainInvolvement" feature-name="previousFunctionalChainInvolvements" package-nsUri="http://www.polarsys.org/capella/core/fa/1.3.0" query-fqn="org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionalChainInvolvement__previousFunctionalChainInvolvements" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.core.data.fa.surrogate.util.FunctionalChainInvolvement__previousFunctionalChainInvolvementsQuerySpecification"/>
+  </extension>
+  <extension id="extension.surrogate.org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionalChainInvolvement_nextFunctionalChainInvolvements" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
+    <surrogate-query-emf class-name="FunctionalChainInvolvement" feature-name="nextFunctionalChainInvolvements" package-nsUri="http://www.polarsys.org/capella/core/fa/1.3.0" query-fqn="org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionalChainInvolvement_nextFunctionalChainInvolvements" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.core.data.fa.surrogate.util.FunctionalChainInvolvement_nextFunctionalChainInvolvementsQuerySpecification"/>
   </extension>
   <extension id="extension.surrogate.org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionalChainReference__referencedFunctionalChain" point="org.eclipse.viatra.query.runtime.surrogatequeryemf">
     <surrogate-query-emf class-name="FunctionalChainReference" feature-name="referencedFunctionalChain" package-nsUri="http://www.polarsys.org/capella/core/fa/1.3.0" query-fqn="org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionalChainReference__referencedFunctionalChain" surrogate-query="org.eclipse.viatra.query.runtime.extensibility.PQueryExtensionFactory:org.polarsys.capella.viatra.core.data.fa.surrogate.util.FunctionalChainReference__referencedFunctionalChainQuerySpecification"/>
@@ -1835,7 +1844,14 @@
   <extension id="org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionalChainInvolvement" point="org.eclipse.viatra.query.runtime.queryspecification">
     <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionalChainInvolvement" id="org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionalChainInvolvement">
       <query-specification fqn="org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionalChainInvolvement__previousFunctionalChainInvolvements"/>
+      <query-specification fqn="org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionalChainInvolvement_nextFunctionalChainInvolvements"/>
       <query-specification fqn="org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionalChainInvolvement__involvedElement"/>
+    </group>
+  </extension>
+  <extension id="org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionalChainInvolvementFunction" point="org.eclipse.viatra.query.runtime.queryspecification">
+    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionalChainInvolvementFunction" id="org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionalChainInvolvementFunction">
+      <query-specification fqn="org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionalChainInvolvementFunction__outgoingInvolvementLinks"/>
+      <query-specification fqn="org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionalChainInvolvementFunction__incomingInvolvementLinks"/>
     </group>
   </extension>
   <extension id="org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionalChainReference" point="org.eclipse.viatra.query.runtime.queryspecification">

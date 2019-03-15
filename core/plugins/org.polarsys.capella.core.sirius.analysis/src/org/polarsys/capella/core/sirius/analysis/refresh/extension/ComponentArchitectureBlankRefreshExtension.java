@@ -54,6 +54,7 @@ import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
 import org.polarsys.capella.core.sirius.analysis.IMappingNameConstants;
 import org.polarsys.capella.core.sirius.analysis.PhysicalServices;
 import org.polarsys.capella.core.sirius.analysis.constants.IFilterNameConstants;
+import org.polarsys.capella.core.sirius.analysis.cache.FunctionalChainCache;
 import org.polarsys.capella.core.sirius.analysis.constants.MappingConstantsHelper;
 import org.polarsys.capella.core.sirius.analysis.helpers.FilterHelper;
 import org.polarsys.capella.core.sirius.analysis.tool.HashMapSet;
@@ -69,6 +70,8 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractRefreshE
    */
   public void beforeRefresh(DDiagram diagram) {
 
+    FunctionalChainCache.getInstance().reset();
+    
     DRepresentationDescriptor descriptor = RepresentationHelper.getRepresentationDescriptor(diagram);
 
     // -------------------------------------
@@ -474,7 +477,6 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractRefreshE
   @Override
   public void postRefresh(DDiagram diagram) {
     try {
-      FunctionalChainServices.getFunctionalChainServices().updateInternalFunctionalChains(diagram);
       FunctionalChainServices.getFunctionalChainServices().updateFunctionalChainStyles(diagram);
     } catch (Exception e) {
       Logger.getLogger(IReportManagerDefaultComponents.DIAGRAM).error(Messages.RefreshExtension_ErrorOnUpdateFunctionalChainStyle, e);
@@ -490,6 +492,9 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractRefreshE
     } catch (Exception e) {
       Logger.getLogger(IReportManagerDefaultComponents.DIAGRAM).error(Messages.RefreshExtension_ErrorOnUpdatePhysicalPathStyle, e);
     }
+    
+
+    FunctionalChainCache.getInstance().reset();
   }
 
   @Deprecated

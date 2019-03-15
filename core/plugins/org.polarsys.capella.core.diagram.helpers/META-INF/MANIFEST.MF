@@ -9,7 +9,10 @@ Require-Bundle: org.polarsys.capella.core.model.helpers;visibility:=reexport,
  org.polarsys.capella.core.model.handler,
  org.eclipse.sirius,
  org.eclipse.sirius.table,
- org.eclipse.sirius.diagram
+ org.eclipse.sirius.diagram,
+ org.eclipse.gmf.runtime.diagram.ui,
+ org.eclipse.sirius.diagram.ui,
+ org.eclipse.gmf.runtime.diagram.core
 Export-Package: org.polarsys.capella.core.diagram.helpers,
  org.polarsys.capella.core.diagram.helpers.naming,
  org.polarsys.capella.core.diagram.helpers.traceability

@@ -61,7 +61,6 @@ import org.eclipse.sirius.diagram.business.internal.experimental.sync.DDiagramEl
 import org.eclipse.sirius.diagram.business.internal.experimental.sync.DDiagramSynchronizer;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.Layer;
-import org.eclipse.sirius.diagram.description.filter.FilterDescription;
 import org.eclipse.sirius.diagram.ui.business.api.helper.graphicalfilters.CompositeFilterApplicationBuilder;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.FeatureNotFoundException;
@@ -135,7 +134,6 @@ import org.polarsys.capella.core.data.fa.FunctionInputPort;
 import org.polarsys.capella.core.data.fa.FunctionOutputPort;
 import org.polarsys.capella.core.data.fa.FunctionPkg;
 import org.polarsys.capella.core.data.fa.FunctionalChain;
-import org.polarsys.capella.core.data.fa.FunctionalChainInvolvement;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.data.helpers.ctx.services.ActorPkgExt;
 import org.polarsys.capella.core.data.helpers.fa.services.FunctionExt;
@@ -187,7 +185,6 @@ import org.polarsys.capella.core.model.helpers.AbstractFunctionExt;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.CapellaElementExt;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
-import org.polarsys.capella.core.model.helpers.ExchangeItemExt;
 import org.polarsys.capella.core.model.helpers.FunctionalChainExt;
 import org.polarsys.capella.core.model.helpers.PartExt;
 import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
@@ -2846,60 +2843,6 @@ public class CapellaServices {
    */
   public String getConstraintLabel(Constraint constraint) {
     return CapellaEmbeddedLinkedTextEditorInput.getDefaultText(constraint, constraint.getName());
-  }
-
-  public String getFCInvolvmentLabel(FunctionalChainInvolvement fci, DDiagram diagram) {
-    boolean showExchangeItems = false;
-    boolean showExchangeItemsParameters = false;
-    boolean showFEEI = false;
-
-    FunctionalExchange fe = (FunctionalExchange) fci.getInvolved();
-    String result = fe.getName();
-    for (FilterDescription filter : diagram.getActivatedFilters()) {
-      if (filter.getName().equals(IMappingNameConstants.SHOW_EXCHANGE_ITEMS)) {
-        showExchangeItems = true;
-      }
-      if (filter.getName().equals(IMappingNameConstants.SHOW_EXCHANGE_ITEMS_PARAMETERS)) {
-        showExchangeItemsParameters = true;
-      }
-      if (filter.getName().equals(IMappingNameConstants.SHOW_FUNCTIONAL_EXCHANGES_ECHANGE_ITEMS)) {
-        showFEEI = true;
-      }
-    }
-
-    if (showExchangeItems || showFEEI) {
-      StringBuilder sb = new StringBuilder();
-      if (showFEEI) {
-        sb.append(result);
-        sb.append("["); //$NON-NLS-1$
-      }
-      int indice = 0;
-      EList<ExchangeItem> exchangedItems = fci.getExchangedItems();
-      if ((null == exchangedItems) || exchangedItems.isEmpty()) {
-        for (AbstractExchangeItem ei : fe.getExchangedItems()) {
-          sb.append(ExchangeItemExt.getEILabel(ei, showExchangeItemsParameters));
-          indice++;
-          if (indice < fe.getExchangedItems().size()) {
-            sb.append(", "); //$NON-NLS-1$
-          }
-        }
-      } else {
-        for (AbstractExchangeItem ei : exchangedItems) {
-          sb.append(ExchangeItemExt.getEILabel(ei, showExchangeItemsParameters));
-          indice++;
-          if (indice < exchangedItems.size()) {
-            sb.append(", "); //$NON-NLS-1$
-          }
-        }
-      }
-
-      if (showFEEI) {
-        sb.append("]"); //$NON-NLS-1$
-      }
-      return sb.toString();
-    }
-
-    return result;
   }
 
   /**

@@ -131,12 +131,48 @@
             </input>
          </propertySection>
          <propertySection
+               class="org.polarsys.capella.core.data.fa.properties.sections.SequenceLinkSection"
+               filter="org.polarsys.capella.core.data.fa.properties.sections.SequenceLinkSection"
+               id="org.polarsys.capella.core.data.fa.section.SequenceLink"
+               tab="BaseCapella">
+            <input
+                  type="org.polarsys.capella.core.data.fa.SequenceLink">
+            </input>
+         </propertySection>
+         <propertySection
+               class="org.polarsys.capella.core.data.fa.properties.sections.ControlNodeSection"
+               filter="org.polarsys.capella.core.data.fa.properties.sections.ControlNodeSection"
+               id="org.polarsys.capella.core.data.fa.section.ControlNode"
+               tab="BaseCapella">
+            <input
+                  type="org.polarsys.capella.core.data.fa.ControlNode">
+            </input>
+         </propertySection>
+         <propertySection
                class="org.polarsys.capella.core.data.fa.properties.sections.FunctionalChainInvolvementSection"
                filter="org.polarsys.capella.core.data.fa.properties.sections.FunctionalChainInvolvementSection"
                id="org.polarsys.capella.core.data.fa.section.FunctionalChainInvolvement"
                tab="BaseCapella">
             <input
                   type="org.polarsys.capella.core.data.fa.FunctionalChainInvolvement">
+            </input>
+         </propertySection>
+         <propertySection
+               class="org.polarsys.capella.core.data.fa.properties.sections.FunctionalChainInvolvementLinkSection"
+               filter="org.polarsys.capella.core.data.fa.properties.sections.FunctionalChainInvolvementLinkSection"
+               id="org.polarsys.capella.core.data.fa.section.FunctionalChainInvolvementLink"
+               tab="BaseCapella">
+            <input
+                  type="org.polarsys.capella.core.data.fa.FunctionalChainInvolvementLink">
+            </input>
+         </propertySection>
+         <propertySection
+               class="org.polarsys.capella.core.data.fa.properties.sections.FunctionalChainInvolvementFunctionSection"
+               filter="org.polarsys.capella.core.data.fa.properties.sections.FunctionalChainInvolvementFunctionSection"
+               id="org.polarsys.capella.core.data.fa.section.FunctionalChainInvolvementFunction"
+               tab="BaseCapella">
+            <input
+                  type="org.polarsys.capella.core.data.fa.FunctionalChainInvolvementFunction">
             </input>
          </propertySection>
          <propertySection
@@ -312,9 +348,33 @@
                tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
+               class="org.polarsys.capella.core.data.fa.properties.sections.SequenceLinkSection"
+               filter="org.polarsys.capella.core.data.fa.properties.sections.SequenceLinkSection"
+               id="org.polarsys.capella.core.data.fa.section.SequenceLinkBasePropertySection"
+               tab="BaseSiriusDiagram">
+         </propertySection>
+         <propertySection
+               class="org.polarsys.capella.core.data.fa.properties.sections.ControlNodeSection"
+               filter="org.polarsys.capella.core.data.fa.properties.sections.ControlNodeSection"
+               id="org.polarsys.capella.core.data.fa.section.ControlNodeBasePropertySection"
+               tab="BaseSiriusDiagram">
+         </propertySection>
+         <propertySection
                class="org.polarsys.capella.core.data.fa.properties.sections.FunctionalChainInvolvementSection"
                filter="org.polarsys.capella.core.data.fa.properties.sections.FunctionalChainInvolvementSection"
                id="org.polarsys.capella.core.data.fa.section.FunctionalChainInvolvementBasePropertySection"
+               tab="BaseSiriusDiagram">
+         </propertySection>
+         <propertySection
+               class="org.polarsys.capella.core.data.fa.properties.sections.FunctionalChainInvolvementLinkSection"
+               filter="org.polarsys.capella.core.data.fa.properties.sections.FunctionalChainInvolvementLinkSection"
+               id="org.polarsys.capella.core.data.fa.section.FunctionalChainInvolvementLinkBasePropertySection"
+               tab="BaseSiriusDiagram">
+         </propertySection>
+         <propertySection
+               class="org.polarsys.capella.core.data.fa.properties.sections.FunctionalChainInvolvementFunctionSection"
+               filter="org.polarsys.capella.core.data.fa.properties.sections.FunctionalChainInvolvementFunctionSection"
+               id="org.polarsys.capella.core.data.fa.section.FunctionalChainInvolvementFunctionBasePropertySection"
                tab="BaseSiriusDiagram">
          </propertySection>
          <propertySection
@@ -460,9 +520,33 @@
                tab="BaseSiriusTable">
          </propertySection>
          <propertySection
+               class="org.polarsys.capella.core.data.fa.properties.sections.SequenceLinkSection"
+               filter="org.polarsys.capella.core.data.fa.properties.sections.SequenceLinkSection"
+               id="org.polarsys.capella.core.data.fa.section.SequenceLinkBasePropertySection"
+               tab="BaseSiriusTable">
+         </propertySection>
+         <propertySection
+               class="org.polarsys.capella.core.data.fa.properties.sections.ControlNodeSection"
+               filter="org.polarsys.capella.core.data.fa.properties.sections.ControlNodeSection"
+               id="org.polarsys.capella.core.data.fa.section.ControlNodeBasePropertySection"
+               tab="BaseSiriusTable">
+         </propertySection>
+         <propertySection
                class="org.polarsys.capella.core.data.fa.properties.sections.FunctionalChainInvolvementSection"
                filter="org.polarsys.capella.core.data.fa.properties.sections.FunctionalChainInvolvementSection"
                id="org.polarsys.capella.core.data.fa.section.FunctionalChainInvolvementBasePropertySection"
+               tab="BaseSiriusTable">
+         </propertySection>
+         <propertySection
+               class="org.polarsys.capella.core.data.fa.properties.sections.FunctionalChainInvolvementLinkSection"
+               filter="org.polarsys.capella.core.data.fa.properties.sections.FunctionalChainInvolvementLinkSection"
+               id="org.polarsys.capella.core.data.fa.section.FunctionalChainInvolvementLinkBasePropertySection"
+               tab="BaseSiriusTable">
+         </propertySection>
+         <propertySection
+               class="org.polarsys.capella.core.data.fa.properties.sections.FunctionalChainInvolvementFunctionSection"
+               filter="org.polarsys.capella.core.data.fa.properties.sections.FunctionalChainInvolvementFunctionSection"
+               id="org.polarsys.capella.core.data.fa.section.FunctionalChainInvolvementFunctionBasePropertySection"
                tab="BaseSiriusTable">
          </propertySection>
          <propertySection

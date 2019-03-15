@@ -43,7 +43,7 @@ public class FC2FSInitializationTestCase extends BasicTestCase {
 
   private static final String[] EXPECTED_OAS_INSTANCE_ROLES_ORDER = new String[] { "OA1", "OA2", "OA3", "OA4", "OA5" };
 
-  private static final String[] EXPECTED_FS_INSTANCE_ROLES_ORDER = new String[] { "SF1", "SF2", "SF4", "SF3", "SF5" };
+  private static final String[] EXPECTED_FS_INSTANCE_ROLES_ORDER = new String[] { "SF1", "SF2", "SF4", "SF5", "SF3" };
 
   @Override
   public List<String> getRequiredTestModels() {

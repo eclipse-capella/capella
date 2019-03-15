@@ -28,6 +28,7 @@ import org.polarsys.capella.test.diagram.tools.ju.xdfb.XDFBSetContextualElements
 import org.polarsys.capella.test.diagram.tools.ju.xdfb.XDFBShowHideConstraint;
 import org.polarsys.capella.test.diagram.tools.ju.xdfb.XDFBShowHideFunctionPorts;
 import org.polarsys.capella.test.diagram.tools.ju.xdfb.XDFBShowHideFunctionalChain;
+import org.polarsys.capella.test.diagram.tools.ju.xdfb.CompositeChainDisplay;
 import org.polarsys.capella.test.diagram.tools.ju.xdfb.XDFBShowHideFunctionalExchange;
 import org.polarsys.capella.test.diagram.tools.ju.xdfb.XDFBShowHideFunctions;
 import org.polarsys.capella.test.diagram.tools.ju.xdfb.XDFBSwitchFunctionalExchangeCategory;
@@ -75,7 +76,7 @@ public class XDFBDiagramToolsTestSuite extends BasicTestSuite {
     tests.add(new XDFBTestCaseFunctions());
     tests.add(new XDFBInitializeFromDiagram());
     tests.add(new XDFBSetContextualElementsScenario());
-    
+    tests.add(new CompositeChainDisplay());
     return tests;
   }
 }

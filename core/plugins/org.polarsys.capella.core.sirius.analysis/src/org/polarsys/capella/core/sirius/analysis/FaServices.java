@@ -105,6 +105,8 @@ import org.polarsys.capella.core.data.fa.FunctionPkg;
 import org.polarsys.capella.core.data.fa.FunctionPort;
 import org.polarsys.capella.core.data.fa.FunctionalChain;
 import org.polarsys.capella.core.data.fa.FunctionalChainInvolvement;
+import org.polarsys.capella.core.data.fa.FunctionalChainInvolvementFunction;
+import org.polarsys.capella.core.data.fa.FunctionalChainInvolvementLink;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.data.fa.OrientationPortKind;
 import org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt;
@@ -2182,30 +2184,26 @@ public class FaServices {
   public EObject updateFunctionaChainInvolvementsOfFunctionalExchange(FunctionalExchange fe,
       AbstractFunction oldFunction, AbstractFunction newFunction) {
     for (Involvement anInvolvement : fe.getInvolvingInvolvements()) {
-      if (anInvolvement instanceof FunctionalChainInvolvement) {
+      if (anInvolvement instanceof FunctionalChainInvolvementLink) {
 
-        FunctionalChainInvolvement currentInvolvement = (FunctionalChainInvolvement) anInvolvement;
-        FunctionalChain currentFunctionalChain = (FunctionalChain) currentInvolvement.eContainer();
+        FunctionalChainInvolvementLink currentInvolvementLink = (FunctionalChainInvolvementLink) anInvolvement;
+        FunctionalChain currentFunctionalChain = (FunctionalChain) currentInvolvementLink.eContainer();
 
         Set<FunctionalChainInvolvement> newFunctionInvolvements = FunctionalChainExt
             .getInvolvementsOf(currentFunctionalChain, newFunction);
-        FunctionalChainInvolvement newFunctionInv;
+        FunctionalChainInvolvementFunction newFunctionInv;
         if (newFunctionInvolvements.isEmpty()) {
           // we add the new Function to the functional chain
-          newFunctionInv = FunctionalChainExt.createInvolvement(currentFunctionalChain, newFunction);
+          newFunctionInv = FunctionalChainExt.createInvolvementFunction(currentFunctionalChain, newFunction);
         } else {
-          newFunctionInv = newFunctionInvolvements.iterator().next();
+          newFunctionInv = (FunctionalChainInvolvementFunction) newFunctionInvolvements.iterator().next();
         }
         if (!FunctionExt.getIncomingAbstractFunction(fe).equals(oldFunction)) {
           // the target of the exchange has changed
-          currentInvolvement.getNextFunctionalChainInvolvements().clear();
-          currentInvolvement.getNextFunctionalChainInvolvements().add(newFunctionInv);
+          currentInvolvementLink.setTarget(newFunctionInv);
         } else {
           // the source of the exchange has changed
-          FunctionalChainInvolvement previousInv = currentInvolvement.getPreviousFunctionalChainInvolvements()
-              .iterator().next();
-          previousInv.getNextFunctionalChainInvolvements().remove(currentInvolvement);
-          newFunctionInv.getNextFunctionalChainInvolvements().add(currentInvolvement);
+          currentInvolvementLink.setSource(newFunctionInv);
         }
       }
     }
@@ -4265,6 +4263,18 @@ public class FaServices {
 
   public AbstractFunction getOutgoingAbstractFunction(FunctionalExchange fe) {
     return FunctionExt.getOutGoingAbstractFunction(fe);
+  }
+
+  public AbstractFunction getIncomingAbstractFunction(FunctionalExchange fe) {
+    return FunctionExt.getIncomingAbstractFunction(fe);
+  }
+
+  public boolean isFunctionTargetOfExchange(AbstractFunction targetFunction, FunctionalExchange functionalExchange) {
+    return getOutgoingAbstractFunction(functionalExchange) == targetFunction;
+  }
+
+  public boolean isFunctionSourceOfExchange(AbstractFunction sourceFunction, FunctionalExchange functionalExchange) {
+    return getIncomingAbstractFunction(functionalExchange) == sourceFunction;
   }
 
   public EObject insertRemoveAllocatedFunctions(DNodeContainer containerView,

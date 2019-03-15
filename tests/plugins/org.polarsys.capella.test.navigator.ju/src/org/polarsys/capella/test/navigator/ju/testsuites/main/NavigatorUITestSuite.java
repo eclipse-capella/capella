@@ -15,6 +15,7 @@ import java.util.List;
 
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
+import org.polarsys.capella.test.navigator.ju.DragDropTest;
 import org.polarsys.capella.test.navigator.ju.NavigatorFilterClasses;
 import org.polarsys.capella.test.navigator.ju.NavigatorFilterInvalidRepresentation;
 import org.polarsys.capella.test.navigator.ju.NavigatorLabelProviderColors;
@@ -38,6 +39,7 @@ public class NavigatorUITestSuite extends BasicTestSuite {
     tests.add(new NavigatorLabelProviderColors());
     tests.add(new NavigatorFilterInvalidRepresentation());
     tests.add(new NavigatorStatusLineRepresentation());
+    tests.add(new DragDropTest());
     return tests;
   }
 

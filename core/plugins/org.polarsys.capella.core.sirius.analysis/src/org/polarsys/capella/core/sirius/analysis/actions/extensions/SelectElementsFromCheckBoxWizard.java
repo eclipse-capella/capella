@@ -30,7 +30,6 @@ import org.polarsys.capella.core.sirius.analysis.ABServices;
 import org.polarsys.capella.core.sirius.analysis.CapellaServices;
 import org.polarsys.capella.core.sirius.analysis.DDiagramContents;
 import org.polarsys.capella.core.sirius.analysis.FaServices;
-import org.polarsys.capella.core.sirius.analysis.FunctionalChainServices;
 import org.polarsys.capella.core.sirius.analysis.PhysicalServices;
 import org.polarsys.capella.core.sirius.analysis.tool.HashMapSet;
 
@@ -50,8 +49,7 @@ public class SelectElementsFromCheckBoxWizard extends AbstractExternalJavaAction
     int exchange_category = 1;
     int component_category = 2;
     int physical_category = 3;
-    int exchanges_functionalchains = 4;
-    int physical_links__physical_paths = 5;
+    int physical_links__physical_paths = 4;
     
     final String type = "type";
 
@@ -65,9 +63,6 @@ public class SelectElementsFromCheckBoxWizard extends AbstractExternalJavaAction
 
     } else if ("PHYSICAL_CATEGORY".equals(parameters.get(type))) { //$NON-NLS-1$ //$NON-NLS-2$
       categoryType = physical_category;
-
-    } else if ("EXCHANGES_FUNCTIONALCHAINS".equals(parameters.get(type))) { //$NON-NLS-1$ //$NON-NLS-2$
-      categoryType = exchanges_functionalchains;
 
     } else if ("PHYSICAL_LINKS__PHYSICAL_PATHS".equals(parameters.get(type))) {
       categoryType = physical_links__physical_paths;
@@ -83,9 +78,6 @@ public class SelectElementsFromCheckBoxWizard extends AbstractExternalJavaAction
     } else if (categoryType == physical_category) {
       scope = (Map) ABServices.getService().getABShowHidePhysicalCategoriesScope(context);
 
-    } else if (categoryType == exchanges_functionalchains) {
-      scope = (Map) FunctionalChainServices.getFunctionalChainServices().getFCDInvolveFunctionalExchangeAndFunctionalChainScope((DNode) context);
-
     } else if (categoryType == physical_links__physical_paths) {
       scope = (Map) PhysicalServices.getService().getPPDInvolvePhysicalLinkAndPhysicalPathScope((DNode) context);
 
@@ -99,9 +91,6 @@ public class SelectElementsFromCheckBoxWizard extends AbstractExternalJavaAction
 
     } else if (categoryType == physical_category) {
       initialSelection = (Map) ABServices.getService().getABShowHidePhysicalCategoriesInitialSelection(context);
-
-    } else if (categoryType == exchanges_functionalchains) {
-      initialSelection = (Map) FunctionalChainServices.getFunctionalChainServices().getFCDInvolveFunctionalExchangeAndFunctionalChainInitialSelection(context);
 
     } else if (categoryType == physical_links__physical_paths) {
       initialSelection = (Map) PhysicalServices.getService().getInvolvePhysicalLinkAndPhysicalPathInitialSelection(context);
@@ -131,10 +120,6 @@ public class SelectElementsFromCheckBoxWizard extends AbstractExternalJavaAction
 
       } else if (categoryType == physical_category) {
         ABServices.getService().showABPhysicalCategories(context, new HashMapSet(scope), new HashMapSet(initialSelection), new HashMapSet(dialog.getResult()));
-
-      } else if (categoryType == exchanges_functionalchains) {
-        FunctionalChainServices.getFunctionalChainServices().involvedFCDFunctionalExchangeFunctionalChain(context, new HashMapSet(scope), new HashMapSet(initialSelection),
-            new HashMapSet(dialog.getResult()));
 
       } else if (categoryType == physical_links__physical_paths) {
         PhysicalServices.getService().involvedPPDPhysicalLinkPhysicalPath(context, new HashMapSet(scope), new HashMapSet(initialSelection), new HashMapSet(dialog.getResult()));

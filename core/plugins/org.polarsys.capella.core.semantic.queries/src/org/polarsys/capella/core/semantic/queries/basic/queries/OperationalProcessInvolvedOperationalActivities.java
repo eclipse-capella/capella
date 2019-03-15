@@ -11,9 +11,7 @@
 
 package org.polarsys.capella.core.semantic.queries.basic.queries;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import org.polarsys.capella.core.data.fa.FunctionalChain;
 import org.polarsys.capella.core.data.oa.OperationalProcess;
 
 /**
@@ -21,29 +19,17 @@ import org.polarsys.capella.core.data.oa.OperationalProcess;
  * 
  *
  */
-public class OperationalProcessInvolvedOperationalActivities extends FunctionalChain_enactedFunctions {
+public class OperationalProcessInvolvedOperationalActivities extends FunctionalChainInvolvementFunctions {
 
-	/**
-	 * 
-	 */
-	public OperationalProcessInvolvedOperationalActivities() {
+  /**
+   * 
+   */
+  public OperationalProcessInvolvedOperationalActivities() {
     // do nothing
-	}
+  }
 
-	/**
-	 * 
-	 * current.getEnactedFunctions
-	 * 
-	 * @see org.polarsys.capella.common.helpers.query.IQuery#compute(java.lang.Object)
-	 */
   @Override
-	public List<Object> compute(Object object) {
-		List<Object> result = new ArrayList<Object>();
-		if (object instanceof OperationalProcess) {
-			List<Object> compute = super.compute(object);
-			if(!compute.isEmpty())
-				result.addAll(compute);
-		}
-		return result;
-	}
+  protected boolean isValidInstanceOf(FunctionalChain functionalChain) {
+    return (functionalChain instanceof OperationalProcess);
+  }
 }

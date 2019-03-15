@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--Capella_Version_1.3.0-->
+<!--Capella_Version_1.3.1-->
 <org.polarsys.capella.core.data.capellamodeller:Library xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:libraries="http://www.polarsys.org/capella/common/libraries/1.3.0"
     xmlns:org.polarsys.capella.core.data.capellacommon="http://www.polarsys.org/capella/core/common/1.3.0"
@@ -20,7 +20,7 @@
     name="L1">
   <ownedExtensions xsi:type="libraries:ModelInformation" id="65f3a1eb-476c-4962-b405-7c4295af4133">
     <ownedReferences xsi:type="libraries:LibraryReference" id="250e9f86-e6c7-426b-a85e-71f463982dce"
-        library="libraries:ModelInformation ../L2/L2.melodymodeller#d3c1ed42-34b0-4f54-a0da-e84bec442318"
+        library="libraries:ModelInformation platform:/resource/L2/L2.melodymodeller#d3c1ed42-34b0-4f54-a0da-e84bec442318"
         accessPolicy="readAndWrite"/>
   </ownedExtensions>
   <ownedEnumerationPropertyTypes xsi:type="org.polarsys.capella.core.data.capellacore:EnumerationPropertyType"
