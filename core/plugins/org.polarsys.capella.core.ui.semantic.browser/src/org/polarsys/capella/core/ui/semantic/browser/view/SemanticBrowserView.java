@@ -235,7 +235,7 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
     if (!isLinkedToSelection) {
       getSite().getPage().addSelectionListener(getSelectionListener());
       isLinkedToSelection = true;
-      getModel().setListeningToPageSelectionEvents(isLinkedToSelection && isVisible);
+      getModel().setListeningToPageSelectionEvents(isVisible);
     }
   }
 

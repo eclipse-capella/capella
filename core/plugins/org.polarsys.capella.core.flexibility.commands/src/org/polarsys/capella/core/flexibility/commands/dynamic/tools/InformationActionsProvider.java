@@ -66,8 +66,9 @@ public class InformationActionsProvider implements IActionsProvider {
   /**
    * @see org.polarsys.capella.core.flexibility.commands.dynamic.IActionsProvider#getActions()
    */
+  @Override
   public Collection<DefaultAction> getActions(Shell shell, ISelectionProvider selectionProvider) {
-    List<DefaultAction> list = new ArrayList<DefaultAction>();
+    List<DefaultAction> list = new ArrayList<>();
 
     list.add(new RetrieveIDs(shell, selectionProvider));
     list.add(new MustBeTransitioned(shell, selectionProvider));
@@ -130,11 +131,11 @@ public class InformationActionsProvider implements IActionsProvider {
     String value;
 
     GetText(Shell shell) {
-      shell = shell;
+      this.shell = shell;
     }
 
     public void setValue(String value) {
-      value = value;
+      this.value = value;
     }
 
     public String getValue() {
@@ -201,7 +202,7 @@ public class InformationActionsProvider implements IActionsProvider {
     @Override
     public void execute() {
       Resource resource = null;
-      final List<EObject> objects = new ArrayList<EObject>();
+      final List<EObject> objects = new ArrayList<>();
 
       for (EObject object : getSelectedEObjects()) {
         resource = object.eResource();
@@ -225,20 +226,24 @@ public class InformationActionsProvider implements IActionsProvider {
 
       ISelectionProvider provider = new ISelectionProvider() {
 
+        @Override
         public void setSelection(ISelection selection) {
-
+          // 
         }
 
+        @Override
         public void removeSelectionChangedListener(ISelectionChangedListener listener) {
-
+          //
         }
 
+        @Override
         public ISelection getSelection() {
           return new StructuredSelection(objects);
         }
 
+        @Override
         public void addSelectionChangedListener(ISelectionChangedListener listener) {
-
+          //
         }
       };
 

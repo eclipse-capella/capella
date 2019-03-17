@@ -2705,7 +2705,9 @@ public class FaServices {
           targetPort = FaFactory.eINSTANCE.createComponentPort();
           targetComponent.getOwnedFeatures().add(targetPort);
 
-          targetPort.setKind(sourcePort.getKind());
+          if(sourcePort != null) {
+            targetPort.setKind(sourcePort.getKind());            
+          }
           if (targetPort.getKind() == ComponentPortKind.FLOW) {
             targetPort.setOrientation(OrientationPortKind.IN);
           }
@@ -3458,32 +3460,28 @@ public class FaServices {
    * @return
    */
   public boolean isNodeWithoutEdge(EObject context, DDiagram diagram, EClass node, EClass edge) {
-    if (diagram != null) {
+    if (diagram != null && context instanceof DSemanticDecorator) {
+      DSemanticDecorator decorator = (DSemanticDecorator) context;
+      if (!((decorator.getTarget() != null) && node.isInstance(decorator.getTarget()))) {
+        return true;
+      }
 
-      if (context instanceof DSemanticDecorator) {
-        DSemanticDecorator decorator = (DSemanticDecorator) context;
-        if (!((decorator.getTarget() != null) && node.isInstance(decorator.getTarget()))) {
-          return true;
-        }
-
-        if (context instanceof EdgeTarget) {
-          EdgeTarget target = (EdgeTarget) context;
-          for (DEdge incoming : target.getIncomingEdges()) {
-            if ((incoming.getTarget() != null) && edge.isInstance(incoming.getTarget())) {
-              return true;
-            }
+      if (context instanceof EdgeTarget) {
+        EdgeTarget target = (EdgeTarget) context;
+        for (DEdge incoming : target.getIncomingEdges()) {
+          if ((incoming.getTarget() != null) && edge.isInstance(incoming.getTarget())) {
+            return true;
           }
-          for (DEdge outgoing : target.getOutgoingEdges()) {
-            if ((outgoing.getTarget() != null) && edge.isInstance(outgoing.getTarget())) {
-              return true;
-            }
+        }
+        for (DEdge outgoing : target.getOutgoingEdges()) {
+          if ((outgoing.getTarget() != null) && edge.isInstance(outgoing.getTarget())) {
+            return true;
           }
         }
       }
     }
 
     return false;
-
   }
 
   /**
@@ -5259,7 +5257,7 @@ public class FaServices {
    * @return The best container for a function, taking into account hidden functions
    */
   public static EObject getBestFunctionContainer(EObject abstractFunction, DDiagramContents content) {
-    if ((abstractFunction != null) && (abstractFunction instanceof AbstractFunction)) {
+    if (abstractFunction instanceof AbstractFunction) {
       if (!content.getDiagramElements(abstractFunction).isEmpty()) {
         boolean bVisible = false;
         for (DDiagramElement element : content.getDiagramElements(abstractFunction)) {
