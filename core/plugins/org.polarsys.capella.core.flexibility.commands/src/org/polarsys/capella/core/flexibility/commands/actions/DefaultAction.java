@@ -79,8 +79,8 @@ public class DefaultAction extends Action {
    * @param selectionProvider
    */
   public DefaultAction(Shell shell, ISelectionProvider selectionProvider) {
-    selectionProvider = selectionProvider;
-    shell = shell;
+    this.selectionProvider = selectionProvider;
+    this.shell = shell;
     setId(getId(getClass()));
   }
 

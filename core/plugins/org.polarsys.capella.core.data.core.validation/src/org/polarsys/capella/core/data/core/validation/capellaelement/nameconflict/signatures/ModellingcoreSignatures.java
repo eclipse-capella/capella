@@ -27,7 +27,7 @@ public class ModellingcoreSignatures extends ModellingcoreSwitch<String>{
    * @param lowerCaseNames whether signatures should be all lowercase.
    */
   public ModellingcoreSignatures(boolean lowerCaseNames){
-    lowerCaseNames = lowerCaseNames;
+    this.lowerCaseNames = lowerCaseNames;
   }
   
   @Override

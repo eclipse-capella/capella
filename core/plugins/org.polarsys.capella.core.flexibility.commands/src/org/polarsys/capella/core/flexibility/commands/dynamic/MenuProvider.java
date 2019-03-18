@@ -69,24 +69,30 @@ public class MenuProvider {
   ISelectionProvider selectionProvider = new ISelectionProvider() {
     ISelection selection = StructuredSelection.EMPTY;
 
+    @Override
     public void setSelection(ISelection selection) {
-      selection = selection;
+      this.selection = selection;
     }
 
+    @Override
     public void removeSelectionChangedListener(ISelectionChangedListener listener) {
+      //
     }
 
+    @Override
     public ISelection getSelection() {
       return selection;
     }
 
+    @Override
     public void addSelectionChangedListener(ISelectionChangedListener listener) {
+      //
     }
   };
 
   protected IContributionItem[] getMenus(final IServiceLocator serviceLocator, final ITreeContentProvider contentProvider, Object menuInput) {
 
-    ArrayList<IContributionItem> items = new ArrayList<IContributionItem>();
+    ArrayList<IContributionItem> items = new ArrayList<>();
     boolean previousIsCategory = false;
 
     if (menuInput instanceof MenuInput) {
@@ -159,14 +165,11 @@ public class MenuProvider {
   }
 
   public void unregister() {
-    if (viewMenuAddition != null) {
-      if (PlatformUI.getWorkbench() != null) {
-        IMenuService menuService = (IMenuService) PlatformUI.getWorkbench().getService(IMenuService.class);
-        if (menuService != null) {
-          menuService.removeContributionFactory(viewMenuAddition);
-        }
+    if (viewMenuAddition != null && PlatformUI.getWorkbench() != null) {
+      IMenuService menuService = (IMenuService) PlatformUI.getWorkbench().getService(IMenuService.class);
+      if (menuService != null) {
+        menuService.removeContributionFactory(viewMenuAddition);
       }
     }
   }
-
 }
