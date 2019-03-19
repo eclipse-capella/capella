@@ -47,6 +47,7 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.RGBValues;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.swt.graphics.RGB;
+import org.polarsys.capella.common.data.modellingcore.ValueSpecification;
 import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.helpers.SimpleOrientedGraph;
 import org.polarsys.capella.core.commands.preferences.service.ScopedCapellaPreferencesStore;
@@ -70,10 +71,12 @@ import org.polarsys.capella.core.data.fa.SequenceLink;
 import org.polarsys.capella.core.data.fa.SequenceLinkEnd;
 import org.polarsys.capella.core.data.helpers.fa.services.FunctionExt;
 import org.polarsys.capella.core.data.information.ExchangeItem;
+import org.polarsys.capella.core.data.information.datavalue.OpaqueExpression;
 import org.polarsys.capella.core.data.interaction.AbstractCapability;
 import org.polarsys.capella.core.data.interaction.FunctionalChainAbstractCapabilityInvolvement;
 import org.polarsys.capella.core.data.oa.OperationalProcess;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
+import org.polarsys.capella.core.model.helpers.ConstraintExt;
 import org.polarsys.capella.core.model.helpers.ExchangeItemExt;
 import org.polarsys.capella.core.model.helpers.FunctionalChainExt;
 import org.polarsys.capella.core.model.helpers.SequenceLinkEndExt;
@@ -1205,8 +1208,47 @@ public class FunctionalChainServices {
   }
 
   /**
-   * Returns all the Sequence links for a given functional chain, including those on recursive levels. This function is
-   * tail recursive.
+   * Return the label of the given SequenceLink
+   * 
+   * @param sequenceLink
+   *          the given SequenceLink
+   * @return its label
+   */
+  public String getSequenceLinkLabel(SequenceLink sequenceLink) {
+    String label = "";
+
+    // Does the sequence link have a condition?
+    if (sequenceLink.getCondition() != null) {
+      ValueSpecification expression = sequenceLink.getCondition().getOwnedSpecification();
+      if (expression instanceof OpaqueExpression) {
+        label += "["+ConstraintExt.getPrimaryBody((OpaqueExpression) expression)+"]";
+      }
+    }
+
+    // Show the Functional Exchanges linked by this Sequence Link
+    boolean firstLink = true;
+    for (FunctionalChainInvolvementLink link : sequenceLink.getLinks()) {
+      InvolvedElement involved = link.getInvolved();
+      if (involved instanceof FunctionalExchange) {
+        FunctionalExchange exchange = (FunctionalExchange) involved;
+        if (firstLink) {
+          firstLink = false;
+          if (!label.isEmpty()) {
+            label += " ";
+          }
+        } else {
+          label += ", ";
+        }
+        label += exchange.getName();
+      }
+    }
+    
+    return label;
+  }
+
+  /**
+   * Returns all the Sequence links for a given functional chain, including those on recursive levels. This
+   * function is tail recursive.
    * 
    * @param chain
    *          the given functional chain.
@@ -1255,7 +1297,32 @@ public class FunctionalChainServices {
    */
   public boolean isValidSequenceLink(SequenceLinkEnd source, SequenceLinkEnd target) {
 
-    return source != target && !doesConnectionExistBetweenSequenceLinkEnds(target, source, new HashSet<>());
+    if (source == target) {
+      return false;
+    }
+
+    if (source instanceof FunctionalChainInvolvement && target instanceof FunctionalChainInvolvement) {
+      FunctionalChainInvolvement sourceInvolvement = (FunctionalChainInvolvement) source;
+      FunctionalChainInvolvement targetInvolvement = (FunctionalChainInvolvement) target;
+      if (isSameFunctionInvolved(sourceInvolvement, targetInvolvement)) {
+        return false;
+      }
+    }
+
+    return !doesConnectionExistBetweenSequenceLinkEnds(target, source, new HashSet<>());
+  }
+
+  /**
+   * Precondition for the creation of a link between a Sequence Link and a FCIL to a FE
+   * @param  the semantic target
+   * @return true if a link can be created, false otherwise.
+   */
+  public boolean isValidLinks(EObject target) {
+    if (target instanceof FunctionalChainInvolvementLink) {
+      FunctionalChainInvolvementLink link = (FunctionalChainInvolvementLink) target;
+      return link.getInvolved() instanceof FunctionalExchange;
+    }
+    return false;
   }
 
   /**

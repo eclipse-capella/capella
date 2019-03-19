@@ -19040,19 +19040,19 @@
         </nodeMappings>
         <nodeMappings name="FC_ControlNode" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20FE%20Involvement']" semanticCandidatesExpression="aql:self.ownedSequenceNodes" domainClass="ControlNode">
           <conditionnalStyles predicateExpression="aql:self.kind == fa::ControlNodeKind::AND">
-            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="" sizeComputationExpression="4" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/ControlNode_And.svg">
+            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/ControlNode_And.svg">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="aql:self.kind == fa::ControlNodeKind::OR">
-            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="" sizeComputationExpression="4" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/ControlNode_Or.svg">
+            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/ControlNode_Or.svg">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="aql:self.kind == fa::ControlNodeKind::ITERATE">
-            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="" sizeComputationExpression="4" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/ControlNode_Iterate.svg">
+            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/ControlNode_Iterate.svg">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
@@ -19063,7 +19063,7 @@
             <centerLabelStyleDescription labelExpression="aql:self.getFCInvolvmentLinkLabel(diagram)" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']"/>
           </style>
           <conditionnalStyles predicateExpression="aql:not (self.involved.isInOperationalAnalysis()) and self.source.isSameFunctionInvolved(self.target)">
-            <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']" lineStyle="dash" targetArrow="NoDecoration">
+            <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']" lineStyle="dot" targetArrow="NoDecoration" sizeComputationExpression="2">
               <centerLabelStyleDescription labelExpression="aql:self.getFCInvolvmentLinkLabel(diagram)">
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </centerLabelStyleDescription>
@@ -19085,7 +19085,7 @@
             <centerLabelStyleDescription labelExpression="aql:self.getFCInvolvmentLinkLabel(diagram)" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']"/>
           </style>
           <conditionnalStyles predicateExpression="aql:not (self.involved.isInOperationalAnalysis()) and self.source.isSameFunctionInvolved(self.target)">
-            <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']" lineStyle="dash" targetArrow="NoDecoration">
+            <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']" lineStyle="dot" targetArrow="NoDecoration" sizeComputationExpression="2">
               <centerLabelStyleDescription labelExpression="aql:self.getFCInvolvmentLinkLabel(diagram)">
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </centerLabelStyleDescription>
@@ -19107,7 +19107,7 @@
             <centerLabelStyleDescription labelExpression="aql:self.getFCInvolvmentLinkLabel(diagram)" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']"/>
           </style>
           <conditionnalStyles predicateExpression="aql:not (self.involved.isInOperationalAnalysis()) and self.source.isSameFunctionInvolved(self.target)">
-            <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']" lineStyle="dash" targetArrow="NoDecoration">
+            <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']" lineStyle="dot" targetArrow="NoDecoration" sizeComputationExpression="2">
               <centerLabelStyleDescription labelExpression="aql:self.getFCInvolvmentLinkLabel(diagram)">
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </centerLabelStyleDescription>
@@ -19129,7 +19129,7 @@
             <centerLabelStyleDescription labelExpression="aql:self.getFCInvolvmentLinkLabel(diagram)" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']"/>
           </style>
           <conditionnalStyles predicateExpression="aql:not (self.involved.isInOperationalAnalysis()) and self.source.isSameFunctionInvolved(self.target)">
-            <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']" lineStyle="dash" targetArrow="NoDecoration">
+            <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']" lineStyle="dot" targetArrow="NoDecoration" sizeComputationExpression="2">
               <centerLabelStyleDescription labelExpression="aql:self.getFCInvolvmentLinkLabel(diagram)">
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </centerLabelStyleDescription>
@@ -19147,11 +19147,14 @@
           </conditionnalStyles>
         </edgeMappings>
         <edgeMappings name="FC_SequenceLink" preconditionExpression="service:self.checkRefHierarchyOfLink(sourceView, targetView)" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20FE%20Involvement']" semanticCandidatesExpression="service:getAllSequenceLinks()" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@nodeMappings[name='FC_AbstractFunction'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@nodeMappings[name='FC_ControlNode']" targetMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@nodeMappings[name='FC_AbstractFunction'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@nodeMappings[name='FC_ControlNode']" targetFinderExpression="feature:target" sourceFinderExpression="feature:source" domainClass="SequenceLink" useDomainElement="true">
-          <style lineStyle="dash">
+          <style lineStyle="dash" routingStyle="manhattan">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <centerLabelStyleDescription showIcon="false" labelExpression="service:getSequenceLinkLabel">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="SequenceLink_InvolvementLink" sourceMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@edgeMappings[name='FC_SequenceLink']" targetMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@edgeMappings[name='FC_Edge_from_CollapsedFCR_to_CollapsedFCR'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@edgeMappings[name='FC_Edge_from_CollapsedFCR_to_FCIF'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@edgeMappings[name='FC_Edge_from_FCIF_to_CollapsedFCR'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@edgeMappings[name='FC_Exchange']" targetFinderExpression="feature:links">
+        <edgeMappings name="FC_SequenceLink_InvolvementLink" sourceMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@edgeMappings[name='FC_SequenceLink']" targetMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@edgeMappings[name='FC_Edge_from_CollapsedFCR_to_CollapsedFCR'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@edgeMappings[name='FC_Edge_from_CollapsedFCR_to_FCIF'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@edgeMappings[name='FC_Edge_from_FCIF_to_CollapsedFCR'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@edgeMappings[name='FC_Exchange']" targetFinderExpression="feature:links">
           <style lineStyle="dot" targetArrow="NoDecoration" sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           </style>
@@ -19359,7 +19362,7 @@
             </initialOperation>
           </ownedTools>
         </toolSections>
-        <toolSections name="Sequencing" label="Sequencing">
+        <toolSections name="Sequencing">
           <ownedTools xsi:type="tool:ToolGroup" documentation="Create a new Control Node." name="Create_ControlNode" label="Control Node">
             <tools xsi:type="tool_1:ToolDescription" documentation="Create a new AND Control Node." name="Create_ControlNode_And" label="AND" iconPath="/org.polarsys.capella.core.data.res.edit/icons/full/obj16/ControlNode_And.gif">
               <element name="element"/>
@@ -19806,6 +19809,17 @@
                     </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="AssociateSLwithE" label="Associate Sequence Link with Exchange" precondition="aql:preTarget.isValidLinks()" edgeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@edgeMappings[name='FC_SequenceLink_InvolvementLink']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionalChainInvolvementLink_ToExchange.gif">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="links" valueExpression="aql:target"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
