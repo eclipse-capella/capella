@@ -95,7 +95,7 @@ public class ComponentHelper {
   }
 
   protected List<ComponentAllocation> getProvisionedComponentAllocations(Component element) {
-    List<ComponentAllocation> ret = new ArrayList<ComponentAllocation>();
+    List<ComponentAllocation> ret = new ArrayList<>();
     for (AbstractTrace trace : element.getOutgoingTraces()) {
       if (trace instanceof ComponentAllocation) {
         ret.add((ComponentAllocation) trace);
@@ -105,7 +105,7 @@ public class ComponentHelper {
   }
 
   protected List<ComponentAllocation> getProvisioningComponentAllocations(Component element) {
-    List<ComponentAllocation> ret = new ArrayList<ComponentAllocation>();
+    List<ComponentAllocation> ret = new ArrayList<>();
     for (AbstractTrace trace : element.getIncomingTraces()) {
       if (trace instanceof ComponentAllocation) {
         ret.add((ComponentAllocation) trace);
@@ -115,7 +115,7 @@ public class ComponentHelper {
   }
 
   protected List<Component> getAllocatedComponents(Component element) {
-    List<Component> ret = new ArrayList<Component>();
+    List<Component> ret = new ArrayList<>();
     for (ComponentAllocation componentAllocation : element.getProvisionedComponentAllocations()) {
       Component cpnt = componentAllocation.getAllocatedComponent();
       if (null != cpnt) {
@@ -126,7 +126,7 @@ public class ComponentHelper {
   }
 
   protected List<Component> getAllocatingComponents(Component element) {
-    List<Component> ret = new ArrayList<Component>();
+    List<Component> ret = new ArrayList<>();
     for (ComponentAllocation componentAllocation : element.getProvisioningComponentAllocations()) {
       Component cpnt = componentAllocation.getAllocatingComponent();
       if (null != cpnt) {
@@ -137,7 +137,7 @@ public class ComponentHelper {
   }
 
   protected List<Interface> getProvidedInterfaces(Component element) {
-    List<Interface> ret = new ArrayList<Interface>();
+    List<Interface> ret = new ArrayList<>();
     for (Partition partition : element.getOwnedPartitions()) {
       if (partition instanceof ComponentPort) {
         ret.addAll(((ComponentPort) partition).getProvidedInterfaces());
@@ -147,7 +147,7 @@ public class ComponentHelper {
   }
 
   protected List<Interface> getRequiredInterfaces(Component element) {
-    List<Interface> ret = new ArrayList<Interface>();
+    List<Interface> ret = new ArrayList<>();
     for (Partition partition : element.getOwnedPartitions()) {
       if (partition instanceof ComponentPort) {
         ret.addAll(((ComponentPort) partition).getRequiredInterfaces());
@@ -165,7 +165,7 @@ public class ComponentHelper {
   }
 
   protected List<Interface> getImplementedInterfaces(Component element) {
-    List<Interface> ret = new ArrayList<Interface>();
+    List<Interface> ret = new ArrayList<>();
     for (InterfaceImplementation interfaceImplementation : element.getImplementedInterfaceLinks()) {
       Interface itf = interfaceImplementation.getImplementedInterface();
       if (null != itf) {
@@ -176,7 +176,7 @@ public class ComponentHelper {
   }
 
   protected List<Interface> getUsedInterfaces(Component element) {
-    List<Interface> ret = new ArrayList<Interface>();
+    List<Interface> ret = new ArrayList<>();
     for (InterfaceUse interfaceUse : element.getUsedInterfaceLinks()) {
       Interface itf = interfaceUse.getUsedInterface();
       if (null != itf) {
@@ -187,7 +187,7 @@ public class ComponentHelper {
   }
 
   protected List<ComponentPort> getContainedComponentPorts(Component element) {
-    List<ComponentPort> ret = new ArrayList<ComponentPort>();
+    List<ComponentPort> ret = new ArrayList<>();
     for (Feature feature : element.getOwnedFeatures()) {
       if (feature instanceof ComponentPort) {
         ret.add((ComponentPort) feature);
@@ -197,7 +197,7 @@ public class ComponentHelper {
   }
 
   protected List<Part> getContainedParts(Component element) {
-    List<Part> ret = new ArrayList<Part>();
+    List<Part> ret = new ArrayList<>();
     for (Feature feature : element.getOwnedFeatures()) {
       if (feature instanceof Part) {
         ret.add((Part) feature);
@@ -207,7 +207,7 @@ public class ComponentHelper {
   }
 
   protected List<PhysicalPort> getContainedPhysicalPorts(Component element) {
-    List<PhysicalPort> ret = new ArrayList<PhysicalPort>();
+    List<PhysicalPort> ret = new ArrayList<>();
     for (Feature feature : element.getOwnedFeatures()) {
       if (feature instanceof PhysicalPort) {
         ret.add((PhysicalPort) feature);

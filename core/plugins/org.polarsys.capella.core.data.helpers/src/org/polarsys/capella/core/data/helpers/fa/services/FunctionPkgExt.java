@@ -34,7 +34,7 @@ public class FunctionPkgExt {
    * @return list of ExchageCategories
    */
   public static List<ExchangeCategory> getAllExchangeCategories(FunctionPkg functionPkg) {
-    List<ExchangeCategory> list = new ArrayList<ExchangeCategory>(1);
+    List<ExchangeCategory> list = new ArrayList<>(1);
 
     for (FunctionPkg pkg : getAllFunctionPkgs(functionPkg)) {
       list.addAll(pkg.getOwnedCategories());
@@ -56,7 +56,7 @@ public class FunctionPkgExt {
    * @return all contained FunctionPkgs
    */
   public static List<FunctionPkg> getOwnedFunctionPkgs(FunctionPkg functionPkg) {
-    List<FunctionPkg> containedFunctionPkgs = new ArrayList<FunctionPkg>();
+    List<FunctionPkg> containedFunctionPkgs = new ArrayList<>();
     if (functionPkg instanceof OperationalActivityPkg) {
       containedFunctionPkgs.addAll(((OperationalActivityPkg) functionPkg).getOwnedOperationalActivityPkgs());
     }
@@ -77,7 +77,7 @@ public class FunctionPkgExt {
    * @return all functionPkgs contained recursively in functionPkg
    */
   public static List<FunctionPkg> getAllFunctionPkgs(FunctionPkg functionPkg) {
-    List<FunctionPkg> returnedList = new ArrayList<FunctionPkg>();
+    List<FunctionPkg> returnedList = new ArrayList<>();
     if (functionPkg == null) {
       return returnedList;
     }
@@ -98,7 +98,7 @@ public class FunctionPkgExt {
    * @return
    */
   public static Collection<AbstractFunction> getFirstLevelAbstractFunctions(FunctionPkg container) {
-    Collection<AbstractFunction> result = new ArrayList<AbstractFunction>();
+    Collection<AbstractFunction> result = new ArrayList<>();
 
     result.addAll(FunctionPkgExt.getOwnedFunctions(container));
     for (FunctionPkg pkg : FunctionPkgExt.getOwnedFunctionPkgs(container)) {
@@ -112,7 +112,7 @@ public class FunctionPkgExt {
    * @return functions contained in functionPkg
    */
   public static List<AbstractFunction> getOwnedFunctions(FunctionPkg functionPkg) {
-    List<AbstractFunction> returnedList = new ArrayList<AbstractFunction>();
+    List<AbstractFunction> returnedList = new ArrayList<>();
     if (functionPkg instanceof OperationalActivityPkg) {
       returnedList.addAll(((OperationalActivityPkg) functionPkg).getOwnedOperationalActivities());
     }
@@ -133,7 +133,7 @@ public class FunctionPkgExt {
    * @return all abstractFunctions in blockArchitecture
    */
   public static List<AbstractFunction> getAllAbstractFunctions(FunctionPkg functionPkg) {
-    List<AbstractFunction> returnedList = new ArrayList<AbstractFunction>();
+    List<AbstractFunction> returnedList = new ArrayList<>();
 
     if (functionPkg != null) {
       for (AbstractFunction aFunction : getOwnedFunctions(functionPkg)) {

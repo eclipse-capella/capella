@@ -15,7 +15,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
-import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.helpers.interaction.services.AbstractCapabilityExt;
 import org.polarsys.capella.core.data.interaction.AbstractCapability;
 import org.polarsys.capella.core.data.oa.Entity;
@@ -71,7 +70,7 @@ public class OperationalCapabilityExt {
    * @return the contributing entities
    */
   public static List<Entity> getInvolvedEntities(OperationalCapability capability, boolean recurse) {
-    List<Entity> involvedEntities = new ArrayList<Entity>();
+    List<Entity> involvedEntities = new ArrayList<>();
 
     EList<Entity> entities = capability.getInvolvedEntities();
     if (!entities.isEmpty())

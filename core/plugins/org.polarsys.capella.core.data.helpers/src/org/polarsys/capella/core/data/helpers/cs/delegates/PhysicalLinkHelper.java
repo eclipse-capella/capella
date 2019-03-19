@@ -93,7 +93,7 @@ public class PhysicalLinkHelper {
   }
 
   protected List<PhysicalLink> getRealizedPhysicalLinks(PhysicalLink element) {
-    List<PhysicalLink> links = new ArrayList<PhysicalLink>();
+    List<PhysicalLink> links = new ArrayList<>();
     for (AbstractTrace trace : element.getOutgoingTraces()) {
       if (trace instanceof PhysicalLinkRealization) {
         TraceableElement link = ((PhysicalLinkRealization) trace).getTargetElement();
@@ -106,7 +106,7 @@ public class PhysicalLinkHelper {
   }
 
   protected List<PhysicalLink> getRealizingPhysicalLinks(PhysicalLink element) {
-    List<PhysicalLink> links = new ArrayList<PhysicalLink>();
+    List<PhysicalLink> links = new ArrayList<>();
     for (AbstractTrace trace : element.getIncomingTraces()) {
       if (trace instanceof PhysicalLinkRealization) {
         TraceableElement link = ((PhysicalLinkRealization) trace).getSourceElement();

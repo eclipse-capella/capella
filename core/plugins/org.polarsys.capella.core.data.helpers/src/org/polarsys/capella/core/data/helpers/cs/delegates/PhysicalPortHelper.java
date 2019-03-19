@@ -73,7 +73,7 @@ public class PhysicalPortHelper {
 	}
 
   protected List<ComponentPort> getAllocatedComponentPorts(PhysicalPort element) {
-    List <ComponentPort> result = new ArrayList<ComponentPort>();
+    List <ComponentPort> result = new ArrayList<>();
     for (AbstractTrace trace : element.getOutgoingTraces()) {
       if (trace instanceof ComponentPortAllocation) {
         Port port = ((ComponentPortAllocation) trace).getAllocatedPort();
@@ -86,7 +86,7 @@ public class PhysicalPortHelper {
   }
 
   protected List<PhysicalPort> getRealizedPhysicalPorts(PhysicalPort element) {
-    List<PhysicalPort> ports = new ArrayList<PhysicalPort>();
+    List<PhysicalPort> ports = new ArrayList<>();
     for (AbstractTrace trace : element.getOutgoingTraces()) {
       if (trace instanceof PhysicalPortRealization) {
         TraceableElement port = ((PhysicalPortRealization) trace).getTargetElement();
@@ -99,7 +99,7 @@ public class PhysicalPortHelper {
   }
 
   protected List<PhysicalPort> getRealizingPhysicalPorts(PhysicalPort element) {
-    List<PhysicalPort> ports = new ArrayList<PhysicalPort>();
+    List<PhysicalPort> ports = new ArrayList<>();
     for (AbstractTrace trace : element.getIncomingTraces()) {
       if (trace instanceof PhysicalPortRealization) {
         TraceableElement port = ((PhysicalPortRealization) trace).getSourceElement();

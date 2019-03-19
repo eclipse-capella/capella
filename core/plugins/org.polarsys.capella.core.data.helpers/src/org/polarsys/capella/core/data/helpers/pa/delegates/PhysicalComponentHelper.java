@@ -86,7 +86,7 @@ public class PhysicalComponentHelper {
   }
 
   protected List<LogicalComponentRealization> getLogicalComponentRealizations(PhysicalComponent element) {
-    List<LogicalComponentRealization> ret = new ArrayList<LogicalComponentRealization>();
+    List<LogicalComponentRealization> ret = new ArrayList<>();
     for (ComponentAllocation componentAllocation : element.getProvisionedComponentAllocations()) {
       if (componentAllocation instanceof LogicalComponentRealization) {
         ret.add((LogicalComponentRealization) componentAllocation);
@@ -96,7 +96,7 @@ public class PhysicalComponentHelper {
   }
 
   protected List<LogicalInterfaceRealization> getLogicalInterfaceRealizations(PhysicalComponent element) {
-    List<LogicalInterfaceRealization> ret = new ArrayList<LogicalInterfaceRealization>();
+    List<LogicalInterfaceRealization> ret = new ArrayList<>();
     for (InterfaceAllocation componentAllocation : element.getProvisionedInterfaceAllocations()) {
       if (componentAllocation instanceof LogicalInterfaceRealization) {
         ret.add((LogicalInterfaceRealization) componentAllocation);
@@ -107,7 +107,7 @@ public class PhysicalComponentHelper {
   }
 
   protected List<PhysicalComponent> getSubPhysicalComponents(PhysicalComponent element) {
-    List<PhysicalComponent> ret = new ArrayList<PhysicalComponent>();
+    List<PhysicalComponent> ret = new ArrayList<>();
     for (Partition thePartition : element.getOwnedPartitions()) {
       Type representedElement = thePartition.getType();
       // we need to be invariant
@@ -119,7 +119,7 @@ public class PhysicalComponentHelper {
   }
 
   protected List<LogicalComponent> getRealizedLogicalComponents(PhysicalComponent element) {
-    List<LogicalComponent> ret = new ArrayList<LogicalComponent>();
+    List<LogicalComponent> ret = new ArrayList<>();
     for (AbstractTrace trace : element.getOutgoingTraces()) {
       if (trace instanceof LogicalComponentRealization) {
         TraceableElement elt = ((LogicalComponentRealization) trace).getTargetElement();
@@ -132,7 +132,7 @@ public class PhysicalComponentHelper {
   }
 
   protected List<PhysicalFunction> getAllocatedPhysicalFunctions(PhysicalComponent element) {
-    List<PhysicalFunction> ret = new ArrayList<PhysicalFunction>();
+    List<PhysicalFunction> ret = new ArrayList<>();
     for (AbstractFunction function : element.getAllocatedFunctions()) {
       if (function instanceof PhysicalFunction) {
         ret.add((PhysicalFunction) function);
@@ -142,7 +142,7 @@ public class PhysicalComponentHelper {
   }
 
   protected List<PhysicalComponent> getDeployedPhysicalComponents(PhysicalComponent element) {
-    List<PhysicalComponent> ret = new ArrayList<PhysicalComponent>();
+    List<PhysicalComponent> ret = new ArrayList<>();
     for (EObject obj : EObjectExt.getReferencers(element, ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE)) {
       if (obj instanceof Part) {
         for (AbstractDeploymentLink deploymentLink : ((Part) obj).getDeploymentLinks()) {
@@ -162,7 +162,7 @@ public class PhysicalComponentHelper {
   }
 
   protected List<PhysicalActor> getDeployingPhysicalActors(PhysicalComponent element) {
-    List<PhysicalActor> ret = new ArrayList<PhysicalActor>();
+    List<PhysicalActor> ret = new ArrayList<>();
     for (EObject obj : EObjectExt.getReferencers(element, ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE)) {
       if (obj instanceof Part) {
         for (AbstractDeploymentLink deployingLink : ((Part) obj).getDeployingLinks()) {
@@ -182,7 +182,7 @@ public class PhysicalComponentHelper {
   }
 
   protected List<PhysicalComponent> getDeployingPhysicalComponents(PhysicalComponent element) {
-    List<PhysicalComponent> ret = new ArrayList<PhysicalComponent>();
+    List<PhysicalComponent> ret = new ArrayList<>();
     for (EObject obj : EObjectExt.getReferencers(element, ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE)) {
       if (obj instanceof Part) {
         for (AbstractDeploymentLink deployingLink : ((Part) obj).getDeployingLinks()) {

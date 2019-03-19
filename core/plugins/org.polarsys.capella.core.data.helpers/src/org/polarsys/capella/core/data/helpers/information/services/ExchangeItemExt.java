@@ -29,6 +29,7 @@ import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.core.data.capellacore.AbstractDependenciesPkg;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.capellacore.GeneralizableElement;
+import org.polarsys.capella.core.data.capellacore.Type;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.ExchangeItemAllocation;
@@ -98,7 +99,7 @@ public class ExchangeItemExt {
    * @return the type of parameters associated to the exchange item
    */
   public static List<AbstractType> getData(AbstractExchangeItem item) {
-    List<AbstractType> types = new ArrayList<AbstractType>();
+    List<AbstractType> types = new ArrayList<>();
 
     if (item instanceof ExchangeItem) {
       for (ExchangeItemElement element : ((ExchangeItem) item).getOwnedElements()) {
@@ -116,7 +117,7 @@ public class ExchangeItemExt {
    * @return
    */
   public static List<ExchangeItem> getEvents(EList<ExchangeItem> exchangeItems) {
-    List<ExchangeItem> types = new ArrayList<ExchangeItem>();
+    List<ExchangeItem> types = new ArrayList<>();
     for (ExchangeItem item : exchangeItems) {
       if (ExchangeMechanism.EVENT.equals(item.getExchangeMechanism())) {
         types.add(item);
@@ -131,10 +132,13 @@ public class ExchangeItemExt {
    * @return the type of parameters associated to the exchange item
    */
   public static List<AbstractType> getExceptions(ExchangeItem item) {
-    List<AbstractType> types = new ArrayList<AbstractType>();
+    List<AbstractType> types = new ArrayList<>();
     for (ExchangeItemElement element : item.getOwnedElements()) {
       if (ElementKind.MEMBER.equals(element.getKind()) && ParameterDirection.EXCEPTION.equals(element.getDirection())) {
-        types.add(element.getType());
+        Type type = element.getType();
+        if (type != null) {
+          types.add(type);
+        }
       }
     }
     return types;
@@ -145,7 +149,7 @@ public class ExchangeItemExt {
    */
   public static Map<AbstractDependenciesPkg, Collection<EObject>> getExchangeItemDependencies2(AbstractExchangeItem exchangeItem) {
 
-    Map<AbstractDependenciesPkg, Collection<EObject>> result = new HashMap<AbstractDependenciesPkg, Collection<EObject>>();
+    Map<AbstractDependenciesPkg, Collection<EObject>> result = new HashMap<>();
 
     for (AbstractType aType : getData(exchangeItem)) {
       checkDependenciesAndAddToResult(result, aType);
@@ -161,7 +165,7 @@ public class ExchangeItemExt {
       AbstractDependenciesPkg adp = (AbstractDependenciesPkg) EcoreUtil2.getFirstContainer(eobject, CapellacorePackage.Literals.ABSTRACT_DEPENDENCIES_PKG);
       if (adp != null) {
         if (!map.containsKey(adp)) {
-          Set<EObject> set = new HashSet<EObject>();
+          Set<EObject> set = new HashSet<>();
           map.put(adp, set);
         }
         map.get(adp).add(eobject);
@@ -182,7 +186,7 @@ public class ExchangeItemExt {
    * @return
    */
   public static List<ExchangeItem> getExchangeItems(Interface element) {
-    List<ExchangeItem> types = new ArrayList<ExchangeItem>();
+    List<ExchangeItem> types = new ArrayList<>();
     for (AbstractExchangeItem item : element.getExchangeItems()) {
       if (item instanceof ExchangeItem) {
         types.add((ExchangeItem) item);
@@ -196,7 +200,7 @@ public class ExchangeItemExt {
    * @return
    */
   public static List<ExchangeItem> getOperations(List<? extends AbstractExchangeItem> exchangeItems) {
-    List<ExchangeItem> types = new ArrayList<ExchangeItem>();
+    List<ExchangeItem> types = new ArrayList<>();
     for (AbstractExchangeItem item : exchangeItems) {
       if ((item instanceof ExchangeItem) && (((ExchangeItem) item).getExchangeMechanism() == ExchangeMechanism.OPERATION)) {
         types.add((ExchangeItem) item);
@@ -211,12 +215,15 @@ public class ExchangeItemExt {
    * @return the type of parameters associated to the exchange item
    */
   public static List<AbstractType> getParameters(AbstractExchangeItem item) {
-    List<AbstractType> types = new ArrayList<AbstractType>();
+    List<AbstractType> types = new ArrayList<>();
 
     if (item instanceof ExchangeItem) {
       for (ExchangeItemElement element : ((ExchangeItem) item).getOwnedElements()) {
         if (ElementKind.MEMBER.equals(element.getKind())) {
-          types.add(element.getType());
+          Type type = element.getType();
+          if (type != null) {
+            types.add(type);
+          }
         }
       }
     }
@@ -225,9 +232,9 @@ public class ExchangeItemExt {
   }
 
   public static Collection<CommunicationLink> getRelatedCommunicationLinks(AbstractExchangeItem sndItem) {
-    HashSet<CommunicationLink> result = new HashSet<CommunicationLink>();
+    HashSet<CommunicationLink> result = new HashSet<>();
 
-    List<EReference> refs = new ArrayList<EReference>();
+    List<EReference> refs = new ArrayList<>();
     refs.add(CommunicationPackage.Literals.COMMUNICATION_LINK__EXCHANGE_ITEM);
 
     for (Object objectRef : EObjectExt.getReferencers(sndItem, refs)) {
@@ -242,8 +249,8 @@ public class ExchangeItemExt {
    * @return
    */
   public static Collection<ExchangeItemAllocation> getRelatedExchangeItemAllocations(ExchangeItem item) {
-    HashSet<ExchangeItemAllocation> result = new HashSet<ExchangeItemAllocation>();
-    List<EReference> refs = new ArrayList<EReference>();
+    HashSet<ExchangeItemAllocation> result = new HashSet<>();
+    List<EReference> refs = new ArrayList<>();
     refs.add(CsPackage.Literals.EXCHANGE_ITEM_ALLOCATION__ALLOCATED_ITEM);
 
     for (Object objectRef : EObjectExt.getReferencers(item, refs)) {
@@ -259,7 +266,7 @@ public class ExchangeItemExt {
    * @return
    */
   public static Collection<CommunicationLinkExchanger> getRelatedExchangers(AbstractExchangeItem item) {
-    Collection<CommunicationLinkExchanger> result = new ArrayList<CommunicationLinkExchanger>();
+    Collection<CommunicationLinkExchanger> result = new ArrayList<>();
     for (CommunicationLink link : getRelatedCommunicationLinks(item)) {
       if (link.eContainer() instanceof CommunicationLinkExchanger) {
         CommunicationLinkExchanger exchanger = (CommunicationLinkExchanger) link.eContainer();
@@ -283,12 +290,15 @@ public class ExchangeItemExt {
    * @return the types associated to the exchange item
    */
   public static List<AbstractType> getTypes(AbstractExchangeItem item) {
-    List<AbstractType> types = new ArrayList<AbstractType>();
+    List<AbstractType> types = new ArrayList<>();
 
     if (item instanceof ExchangeItem) {
       for (ExchangeItemElement element : ((ExchangeItem) item).getOwnedElements()) {
         if (ElementKind.TYPE.equals(element.getKind())) {
-          types.add(element.getType());
+          Type type = element.getType();
+          if(type != null) {
+            types.add(type);            
+          }
         }
       }
     }
@@ -335,13 +345,13 @@ public class ExchangeItemExt {
     rcvComponents.add(rcvCpnt);
 
     // Retrieve all hierarchy of CommunicationLinks
-    HashSet<AbstractExchangeItem> sndProduce = new HashSet<AbstractExchangeItem>();
-    HashSet<AbstractExchangeItem> sndCall = new HashSet<AbstractExchangeItem>();
-    HashSet<AbstractExchangeItem> sndSend = new HashSet<AbstractExchangeItem>();
-    HashSet<AbstractExchangeItem> sndWrite = new HashSet<AbstractExchangeItem>();
+    HashSet<AbstractExchangeItem> sndProduce = new HashSet<>();
+    HashSet<AbstractExchangeItem> sndCall = new HashSet<>();
+    HashSet<AbstractExchangeItem> sndSend = new HashSet<>();
+    HashSet<AbstractExchangeItem> sndWrite = new HashSet<>();
 
     for (GeneralizableElement snd : sndComponents) {
-      if ((snd != null) && (snd instanceof Component)) {
+      if (snd instanceof Component) {
         Component sndCompo = (Component) snd;
         sndProduce.addAll((Collection) sndCompo.getProduce());
         sndCall.addAll((Collection) sndCompo.getCall());
@@ -350,13 +360,13 @@ public class ExchangeItemExt {
       }
     }
 
-    HashSet<AbstractExchangeItem> rcvConsume = new HashSet<AbstractExchangeItem>();
-    HashSet<AbstractExchangeItem> rcvExecute = new HashSet<AbstractExchangeItem>();
-    HashSet<AbstractExchangeItem> rcvReceive = new HashSet<AbstractExchangeItem>();
-    HashSet<AbstractExchangeItem> rcvAccess = new HashSet<AbstractExchangeItem>();
+    HashSet<AbstractExchangeItem> rcvConsume = new HashSet<>();
+    HashSet<AbstractExchangeItem> rcvExecute = new HashSet<>();
+    HashSet<AbstractExchangeItem> rcvReceive = new HashSet<>();
+    HashSet<AbstractExchangeItem> rcvAccess = new HashSet<>();
 
     for (GeneralizableElement snd : rcvComponents) {
-      if ((snd != null) && (snd instanceof Component)) {
+      if (snd instanceof Component) {
         Component sndCompo = (Component) snd;
         rcvConsume.addAll((Collection) sndCompo.getConsume());
         rcvExecute.addAll((Collection) sndCompo.getExecute());

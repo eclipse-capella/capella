@@ -68,7 +68,7 @@ public class ExchangeItemHelper {
    *
    */
   protected List<ExchangeItem> getRealizedExchangeItems(ExchangeItem element) {
-    List <ExchangeItem> ret = new ArrayList <ExchangeItem>();
+    List <ExchangeItem> ret = new ArrayList <>();
     for (AbstractTrace trace : element.getOutgoingTraces()) {
       if (trace instanceof InformationRealization) {
         TraceableElement elt = trace.getTargetElement();
@@ -84,7 +84,7 @@ public class ExchangeItemHelper {
    *
    */
   protected List<ExchangeItem> getRealizingExchangeItems(ExchangeItem element) {
-    List <ExchangeItem> ret = new ArrayList <ExchangeItem>();
+    List <ExchangeItem> ret = new ArrayList <>();
     for (AbstractTrace trace : element.getIncomingTraces()) {
       if (trace instanceof InformationRealization) {
         TraceableElement elt = trace.getSourceElement();
@@ -100,7 +100,7 @@ public class ExchangeItemHelper {
    *
    */
   protected List<Operation> getRealizingOperations(ExchangeItem element) {
-    List <Operation> ret = new ArrayList <Operation>();
+    List <Operation> ret = new ArrayList <>();
     for (AbstractTrace trace : element.getIncomingTraces()) {
       if (trace instanceof ExchangeItemRealization) {
         Operation op = ((ExchangeItemRealization) trace).getRealizingOperation();
@@ -116,7 +116,7 @@ public class ExchangeItemHelper {
    *
    */
   protected List<Interface> getAllocatorInterfaces(ExchangeItem element) {
-    List<Interface> ret = new ArrayList<Interface>();
+    List<Interface> ret = new ArrayList<>();
     for (EObject obj : EObjectExt.getReferencers(element, CsPackage.Literals.EXCHANGE_ITEM_ALLOCATION__ALLOCATED_ITEM)) {
       if (obj instanceof ExchangeItemAllocation) {
         Interface itf = ((ExchangeItemAllocation) obj).getAllocatingInterface();

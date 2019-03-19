@@ -54,7 +54,7 @@ public class ActivityAllocationHelper {
 	protected OperationalActivity getActivity(ActivityAllocation element) {
 		TraceableElement ret = element.getTargetElement();
 
-		if(null != ret && ret instanceof OperationalActivity)
+		if(ret instanceof OperationalActivity)
 			return (OperationalActivity) ret;
 
 		return null;
@@ -63,7 +63,7 @@ public class ActivityAllocationHelper {
 	protected Role getRole(ActivityAllocation element) {
 		TraceableElement ret = element.getSourceElement();
 
-		if(null != ret && ret instanceof Role)
+		if(ret instanceof Role)
 			return (Role) ret;
 
 		return null;

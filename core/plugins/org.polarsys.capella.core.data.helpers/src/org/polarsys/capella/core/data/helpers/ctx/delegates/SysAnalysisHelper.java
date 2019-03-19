@@ -66,7 +66,7 @@ public class SysAnalysisHelper {
   }
 
   protected List<OperationalAnalysisRealization> getAllocatedOperationalAnalysisRealizations(SystemAnalysis element) {
-    List<OperationalAnalysisRealization> ret = new ArrayList<OperationalAnalysisRealization>();
+    List<OperationalAnalysisRealization> ret = new ArrayList<>();
     for (ArchitectureAllocation architectureAllocation : element.getProvisionedArchitectureAllocations()) {
       if (architectureAllocation instanceof OperationalAnalysisRealization) {
         ret.add((OperationalAnalysisRealization) architectureAllocation);
@@ -92,7 +92,7 @@ public class SysAnalysisHelper {
   }
 
   protected List<OperationalAnalysis> getAllocatedOperationalAnalyses(SystemAnalysis element){
-    List <OperationalAnalysis> ret = new ArrayList<OperationalAnalysis>();
+    List <OperationalAnalysis> ret = new ArrayList<>();
     for (BlockArchitecture architecture : element.getAllocatedArchitectures()) {
       if (architecture instanceof OperationalAnalysis) {
         ret.add((OperationalAnalysis) architecture);
@@ -102,7 +102,7 @@ public class SysAnalysisHelper {
   }
 
   protected List <LogicalArchitecture> getAllocatingLogicalArchitectures(SystemAnalysis element) {
-    List <LogicalArchitecture> ret = new ArrayList<LogicalArchitecture>();
+    List <LogicalArchitecture> ret = new ArrayList<>();
     for (BlockArchitecture architecture : element.getAllocatingArchitectures()) {
       if (architecture instanceof LogicalArchitecture) {
         ret.add((LogicalArchitecture) architecture);

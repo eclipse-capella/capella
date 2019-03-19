@@ -66,7 +66,7 @@ public class CommunicationLinkExchangerHelper {
   }
   
   private List<CommunicationLink> getLinks(CommunicationLinkExchanger element, CommunicationLinkKind kind) {
-    List<CommunicationLink> links = new ArrayList<CommunicationLink>();
+    List<CommunicationLink> links = new ArrayList<>();
     for (CommunicationLink link : element.getOwnedCommunicationLinks()) {
       if (kind.equals(link.getKind())) {
         links.add(link);

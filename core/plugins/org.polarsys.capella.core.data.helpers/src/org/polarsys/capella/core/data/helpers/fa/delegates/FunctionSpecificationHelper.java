@@ -57,7 +57,7 @@ private static FunctionSpecificationHelper instance;
 
 	protected List<FunctionSpecification> getSubFunctions(FunctionSpecification element) {
 		List<ActivityNode> nodes = element.getOwnedNodes();
-		List<FunctionSpecification> ret = new ArrayList<FunctionSpecification>();
+		List<FunctionSpecification> ret = new ArrayList<>();
 		
 		for (ActivityNode activityNode : nodes) {
 			if(activityNode instanceof AbstractFunction){

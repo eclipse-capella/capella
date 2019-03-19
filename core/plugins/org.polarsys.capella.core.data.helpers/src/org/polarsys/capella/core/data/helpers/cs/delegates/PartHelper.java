@@ -74,7 +74,7 @@ public class PartHelper {
   }
 
   protected List<Interface> getProvidedInterfaces(Part element) {
-    List<Interface> ret = new ArrayList<Interface>();
+    List<Interface> ret = new ArrayList<>();
 
     Type representedElement = element.getType();
     if (representedElement instanceof Component) {
@@ -85,7 +85,7 @@ public class PartHelper {
   }
 
   protected List<Interface> getRequiredInterfaces(Part element) {
-    List<Interface> ret = new ArrayList<Interface>();
+    List<Interface> ret = new ArrayList<>();
 
     Type representedElement = element.getType();
     if (representedElement instanceof Component) {
@@ -96,7 +96,7 @@ public class PartHelper {
   }
 
   protected List<Part> getDeployedParts(Part element) {
-    List<Part> ret = new ArrayList<Part>();
+    List<Part> ret = new ArrayList<>();
     for (AbstractDeploymentLink deploymentLink : element.getDeploymentLinks()) {
       DeployableElement deployableElement = deploymentLink.getDeployedElement();
       if (deployableElement instanceof Part) {
@@ -107,7 +107,7 @@ public class PartHelper {
   }
 
   protected List<Part> getDeployingParts(Part element) {
-    List<Part> ret = new ArrayList<Part>();
+    List<Part> ret = new ArrayList<>();
     for (AbstractDeploymentLink deploymentLink : element.getDeployingLinks()) {
       DeploymentTarget deploymentTarget = deploymentLink.getLocation();
       if (deploymentTarget instanceof Part) {

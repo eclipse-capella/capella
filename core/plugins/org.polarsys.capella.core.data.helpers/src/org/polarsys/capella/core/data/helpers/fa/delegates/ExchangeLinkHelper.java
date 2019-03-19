@@ -54,10 +54,13 @@ private static ExchangeLinkHelper instance;
 	protected List<ExchangeSpecification> getExchanges(ExchangeLink element) {
 		
 		List<ExchangeContainment> containements = element.getOwnedExchangeContainments();
-		List<ExchangeSpecification> ret = new ArrayList<ExchangeSpecification>();
+		List<ExchangeSpecification> ret = new ArrayList<>();
 		
 		for (ExchangeContainment cont : containements) {
-			ret.add(cont.getExchange());
+			ExchangeSpecification exchange = cont.getExchange();
+			if(exchange != null) {
+			  ret.add(exchange);			  
+			}
 		}
 		
 		return ret;

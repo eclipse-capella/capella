@@ -45,7 +45,7 @@ public class ActivityExchangeHelper {
   }
 
   protected List<ActivityEdge> getRealizingActivityFlows(ActivityExchange element) {
-    List<ActivityEdge> ret = new ArrayList<ActivityEdge>();
+    List<ActivityEdge> ret = new ArrayList<>();
 
     for (AbstractRelationship relationship : element.getRealizations()) {
       if (relationship instanceof ActivityEdge) {

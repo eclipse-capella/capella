@@ -53,7 +53,7 @@ public class CapellaElementHelper {
 	}
 
   protected List<Requirement> getAppliedRequirements(CapellaElement element) {
-    List<Requirement> ret = new ArrayList<Requirement>();
+    List<Requirement> ret = new ArrayList<>();
     for (AbstractTrace trace : element.getOutgoingTraces()) {
       if (trace instanceof RequirementsTrace) {
         TraceableElement elt = ((RequirementsTrace) trace).getTargetElement();

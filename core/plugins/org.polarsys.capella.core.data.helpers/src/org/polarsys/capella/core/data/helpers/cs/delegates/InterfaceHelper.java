@@ -101,7 +101,7 @@ public class InterfaceHelper {
    * @return the exchange items
    */
   protected List<ExchangeItem> getExchangeItems(Interface element) {
-    List<ExchangeItem> ret = new ArrayList<ExchangeItem>();
+    List<ExchangeItem> ret = new ArrayList<>();
     for (ExchangeItemAllocation exchangeItemAllocation : element.getOwnedExchangeItemAllocations()) {
       ExchangeItem item = exchangeItemAllocation.getAllocatedItem();
       if (null != item) {
@@ -120,7 +120,7 @@ public class InterfaceHelper {
   }
 
   protected List<Component> getImplementorComponents(Interface element) {
-    List<Component> ret = new ArrayList<Component>();
+    List<Component> ret = new ArrayList<>();
     for (InterfaceImplementation interfaceImplementation : element.getInterfaceImplementations()) {
       Component interfaceImplementor = interfaceImplementation.getInterfaceImplementor();
       if (null != interfaceImplementor) {
@@ -131,7 +131,7 @@ public class InterfaceHelper {
   }
 
   protected List<Component> getUserComponents(Interface element) {
-    List<Component> ret = new ArrayList<Component>();
+    List<Component> ret = new ArrayList<>();
     for (InterfaceUse interfaceUse : element.getInterfaceUses()) {
       Component interfaceUser = interfaceUse.getInterfaceUser();
       if (null != interfaceUser) {
@@ -142,7 +142,7 @@ public class InterfaceHelper {
   }
 
   protected List<Interface> getAllocatingInterfaces(Interface element) {
-    List<Interface> ret = new ArrayList<Interface>();
+    List<Interface> ret = new ArrayList<>();
     for (InterfaceAllocation interfaceAllocation : element.getProvisioningInterfaceAllocations()) {
       InterfaceAllocator allocator = interfaceAllocation.getAllocatingInterfaceAllocator();
       if (allocator instanceof Interface) {
@@ -153,7 +153,7 @@ public class InterfaceHelper {
   }
 
   protected List<Component> getAllocatingComponents(Interface element) {
-    List<Component> ret = new ArrayList<Component>();
+    List<Component> ret = new ArrayList<>();
     for (InterfaceAllocation interfaceAllocation : element.getProvisioningInterfaceAllocations()) {
       InterfaceAllocator allocator = interfaceAllocation.getAllocatingInterfaceAllocator();
       if (allocator instanceof Component) {
@@ -164,7 +164,7 @@ public class InterfaceHelper {
   }
 
   protected List<InterfaceAllocation> getProvisioningInterfaceAllocations(Interface element) {
-    List<InterfaceAllocation> ret = new ArrayList<InterfaceAllocation>();
+    List<InterfaceAllocation> ret = new ArrayList<>();
     for (AbstractTrace trace : element.getIncomingTraces()) {
       if (trace instanceof InterfaceAllocation) {
         ret.add((InterfaceAllocation) trace);
@@ -177,7 +177,7 @@ public class InterfaceHelper {
    *
    */
   protected List<Component> getRequiringComponents(Interface element) {
-    List<Component> ret = new ArrayList<Component>();
+    List<Component> ret = new ArrayList<>();
     for (ComponentPort port : element.getRequiringComponentPorts()) {
       EObject obj = port.eContainer();
       if (obj instanceof Component) {
@@ -191,7 +191,7 @@ public class InterfaceHelper {
    *
    */
   protected List<Component> getProvidingComponents(Interface element) {
-    List<Component> ret = new ArrayList<Component>();
+    List<Component> ret = new ArrayList<>();
     for (ComponentPort port : element.getProvidingComponentPorts()) {
       EObject obj = port.eContainer();
       if (obj instanceof Component) {
@@ -205,7 +205,7 @@ public class InterfaceHelper {
    *
    */
   protected List<ComponentPort> getRequiringComponentPorts(Interface element) {
-    List<ComponentPort> ret = new ArrayList<ComponentPort>();
+    List<ComponentPort> ret = new ArrayList<>();
     for (EObject obj : EObjectExt.getReferencers(element, InformationPackage.Literals.PORT__REQUIRED_INTERFACES)) {
       if (obj instanceof ComponentPort) {
         ret.add((ComponentPort) obj);
@@ -218,7 +218,7 @@ public class InterfaceHelper {
    *
    */
   protected List<ComponentPort> getProvidingComponentPorts(Interface element) {
-    List<ComponentPort> ret = new ArrayList<ComponentPort>();
+    List<ComponentPort> ret = new ArrayList<>();
     for (EObject obj : EObjectExt.getReferencers(element, InformationPackage.Literals.PORT__PROVIDED_INTERFACES)) {
       if (obj instanceof ComponentPort) {
         ret.add((ComponentPort) obj);
@@ -231,7 +231,7 @@ public class InterfaceHelper {
    *
    */
   protected List<Interface> getRealizingLogicalInterfaces(Interface element) {
-    List<Interface> result = new ArrayList<Interface>();
+    List<Interface> result = new ArrayList<>();
     for (AbstractTrace trace : element.getIncomingTraces()) {
       if (trace instanceof ContextInterfaceRealization) {
         TraceableElement src = ((ContextInterfaceRealization) trace).getSourceElement();
@@ -247,7 +247,7 @@ public class InterfaceHelper {
    *
    */
   protected List<Interface> getRealizedContextInterfaces(Interface element) {
-    List<Interface> result = new ArrayList<Interface>();
+    List<Interface> result = new ArrayList<>();
     for (AbstractTrace trace : element.getOutgoingTraces()) {
       if (trace instanceof ContextInterfaceRealization) {
         TraceableElement src = ((ContextInterfaceRealization) trace).getTargetElement();
@@ -263,7 +263,7 @@ public class InterfaceHelper {
    *
    */
   protected List<Interface> getRealizingPhysicalInterfaces(Interface element) {
-    List<Interface> result = new ArrayList<Interface>();
+    List<Interface> result = new ArrayList<>();
     for (AbstractTrace trace : element.getIncomingTraces()) {
       if (trace instanceof LogicalInterfaceRealization) {
         TraceableElement src = ((LogicalInterfaceRealization) trace).getSourceElement();
@@ -279,7 +279,7 @@ public class InterfaceHelper {
    *
    */
   protected List<Interface> getRealizedLogicalInterfaces(Interface element) {
-    List<Interface> result = new ArrayList<Interface>();
+    List<Interface> result = new ArrayList<>();
     for (AbstractTrace trace : element.getOutgoingTraces()) {
       if (trace instanceof LogicalInterfaceRealization) {
         TraceableElement src = ((LogicalInterfaceRealization) trace).getTargetElement();

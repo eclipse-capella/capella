@@ -106,7 +106,7 @@ public class SequenceMessageExt {
    * @return
    */
   public static List<SequenceMessage> reverse(List<SequenceMessage> list) {
-    List<SequenceMessage> reversedList = new ArrayList<SequenceMessage>();
+    List<SequenceMessage> reversedList = new ArrayList<>();
 
     ListIterator<SequenceMessage> iterator = list.listIterator(list.size());
     while (iterator.hasPrevious()) {
@@ -140,8 +140,8 @@ public class SequenceMessageExt {
   public static SequenceMessage getOppositeSequenceMessage(SequenceMessage sequenceMessage1) {
 
     boolean flag = false;
-    List<SequenceMessage> setPortionMessage = new ArrayList<SequenceMessage>();
-    Stack<SequenceMessage> stack = new Stack<SequenceMessage>();
+    List<SequenceMessage> setPortionMessage = new ArrayList<>();
+    Stack<SequenceMessage> stack = new Stack<>();
 
     if (sequenceMessage1 != null) {
       /** On messages of type 'destroy' there is no processing */

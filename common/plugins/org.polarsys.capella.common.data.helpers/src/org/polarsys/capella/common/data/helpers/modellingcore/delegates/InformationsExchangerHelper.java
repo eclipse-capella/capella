@@ -64,7 +64,7 @@ public class InformationsExchangerHelper {
    * @return
    */
   private List<AbstractInformationFlow> getInformationFlows(InformationsExchanger element) {
-    List<AbstractInformationFlow> ret = new ArrayList<AbstractInformationFlow>();
+    List<AbstractInformationFlow> ret = new ArrayList<>();
 
     List<AbstractInformationFlow> sources = EObjectExt.getReferencers(element, ModellingcorePackage.Literals.ABSTRACT_INFORMATION_FLOW__SOURCE);
     ret.addAll(sources);

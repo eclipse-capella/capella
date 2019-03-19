@@ -78,7 +78,7 @@ public class FunctionalExt {
   }
 
   public static List<Port> getRelatedPorts(ComponentExchange componentExchange) {
-    List<Port> ports = new ArrayList<Port>();
+    List<Port> ports = new ArrayList<>();
     //Source
     if (componentExchange.getSource() instanceof ComponentExchangeEnd) {
       ComponentExchangeEnd end = (ComponentExchangeEnd) componentExchange.getSource();
@@ -101,11 +101,11 @@ public class FunctionalExt {
   }
 
   public static List<Part> getRelatedParts(ComponentExchange componentExchange) {
-    List<Part> parts = new ArrayList<Part>();
+    List<Part> parts = new ArrayList<>();
     //Source
     if (componentExchange.getSource() instanceof ComponentExchangeEnd) {
       ComponentExchangeEnd end = (ComponentExchangeEnd) componentExchange.getSource();
-      if ((end.getPart() != null) && (end.getPart() instanceof Part)) {
+      if (end.getPart() instanceof Part) {
         parts.add((Part) end.getPart());
       }
     } else if (componentExchange.getSource() instanceof Part) {
@@ -114,7 +114,7 @@ public class FunctionalExt {
     //Target
     if (componentExchange.getTarget() instanceof ComponentExchangeEnd) {
       ComponentExchangeEnd end = (ComponentExchangeEnd) componentExchange.getTarget();
-      if ((end.getPart() != null) && (end.getPart() instanceof Part)) {
+      if (end.getPart() instanceof Part) {
         parts.add((Part) end.getPart());
       }
     } else if (componentExchange.getTarget() instanceof Part) {
@@ -179,7 +179,7 @@ public class FunctionalExt {
     if (isEmpty(functionalLink)) {
       return true;
     }
-    Set<EObject> temp = new HashSet<EObject>();
+    Set<EObject> temp = new HashSet<>();
     temp.add(functionalLink);
     temp.addAll(functionalLink.getExchanges());
     temp.addAll(functionalLink.getDestinations());
@@ -201,7 +201,7 @@ public class FunctionalExt {
    * Returns all functional exchanges defined in the given architecture
    */
   public static EList<FunctionalExchange> getAllFunctionalExchanges(BlockArchitecture architecture) {
-    EList<FunctionalExchange> functionExchanges = new BasicEList<FunctionalExchange>();
+    EList<FunctionalExchange> functionExchanges = new BasicEList<>();
     List<AbstractFunction> subFunctions = FunctionExt.getAllAbstractFunctions(architecture);
     for (AbstractFunction abstractFunction : subFunctions) {
       functionExchanges.addAll(abstractFunction.getOwnedFunctionalExchanges());
@@ -215,7 +215,7 @@ public class FunctionalExt {
    * @return
    */
   public static Collection<FunctionalExchange> getFunctionalExchanges(ComponentPort port) {
-    Collection<FunctionalExchange> exchanges = new HashSet<FunctionalExchange>();
+    Collection<FunctionalExchange> exchanges = new HashSet<>();
     for (ComponentExchange componentExchange : port.getComponentExchanges()) {
       exchanges.addAll(componentExchange.getAllocatedFunctionalExchanges());
     }
@@ -235,8 +235,8 @@ public class FunctionalExt {
   }
 
   public static Collection<ComponentExchangeEnd> getRelatedComponentExchangeEnds(Part element) {
-    Collection<ComponentExchangeEnd> result = new ArrayList<ComponentExchangeEnd>();
-    List<EReference> refs = new ArrayList<EReference>();
+    Collection<ComponentExchangeEnd> result = new ArrayList<>();
+    List<EReference> refs = new ArrayList<>();
     refs.add(FaPackage.Literals.COMPONENT_EXCHANGE_END__PART);
 
     for (Object objectRef : EObjectExt.getReferencers(element, refs)) {
@@ -248,8 +248,8 @@ public class FunctionalExt {
   }
 
   public static Collection<ComponentExchangeEnd> getRelatedComponentExchangeEnds(Port element) {
-    Collection<ComponentExchangeEnd> result = new ArrayList<ComponentExchangeEnd>();
-    List<EReference> refs = new ArrayList<EReference>();
+    Collection<ComponentExchangeEnd> result = new ArrayList<>();
+    List<EReference> refs = new ArrayList<>();
     refs.add(FaPackage.Literals.COMPONENT_EXCHANGE_END__PORT);
 
     for (Object objectRef : EObjectExt.getReferencers(element, refs)) {

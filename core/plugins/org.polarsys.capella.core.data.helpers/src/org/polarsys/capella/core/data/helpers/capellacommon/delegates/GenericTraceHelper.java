@@ -21,7 +21,8 @@ import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 public class GenericTraceHelper {
 	private static GenericTraceHelper instance;
 
-	private GenericTraceHelper() {//
+	private GenericTraceHelper() {
+	  //
 	}
 
 	public static GenericTraceHelper getInstance() {

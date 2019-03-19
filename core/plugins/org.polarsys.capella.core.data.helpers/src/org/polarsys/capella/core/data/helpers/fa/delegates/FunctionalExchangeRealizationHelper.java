@@ -51,14 +51,14 @@ public class FunctionalExchangeRealizationHelper {
 
   protected FunctionalExchange getRealizingFunctionalExchange(FunctionalExchangeRealization element) {
     TraceableElement ret = element.getSourceElement();
-    if (null != ret && ret instanceof FunctionalExchange)
+    if (ret instanceof FunctionalExchange)
       return (FunctionalExchange) ret;
     return null;
   }
 
   protected FunctionalExchange getRealizedFunctionalExchange(FunctionalExchangeRealization element) {
     TraceableElement ret = element.getTargetElement();
-    if (null != ret && ret instanceof FunctionalExchange)
+    if (ret instanceof FunctionalExchange)
       return (FunctionalExchange) ret;
     return null;
   }

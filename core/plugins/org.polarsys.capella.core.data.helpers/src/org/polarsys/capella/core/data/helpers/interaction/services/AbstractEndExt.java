@@ -48,15 +48,13 @@ public class AbstractEndExt {
    * @param abstractEnd the abstract end
    * @return the component or signal associated with the abstract end
    */
-  static public NamedElement getComponent(AbstractEnd abstractEnd) {
+  public static NamedElement getComponent(AbstractEnd abstractEnd) {
     if (null != abstractEnd) {
       InstanceRole instanceRole = abstractEnd.getCovered();
       if (null != instanceRole) {
         AbstractInstance componentInstance = instanceRole.getRepresentedInstance();
-        if (null != componentInstance) {
-          if (null != componentInstance.getAbstractType()) {
-            return (NamedElement) componentInstance.getAbstractType();
-          }
+        if (null != componentInstance && null != componentInstance.getAbstractType()) {
+          return (NamedElement) componentInstance.getAbstractType();
         }
       }
     }

@@ -55,7 +55,7 @@ public class TypeHelper {
 
 	protected List<TypedElement> getTypedElements(Type element){
 		List <AbstractTypedElement> absTypedElements = element.getAbstractTypedElements();
-		List <TypedElement> ret = new ArrayList<TypedElement>();
+		List <TypedElement> ret = new ArrayList<>();
 
 		for (AbstractTypedElement abstractTypedElement : absTypedElements) {
 			if(abstractTypedElement instanceof TypedElement){

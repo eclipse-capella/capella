@@ -52,14 +52,14 @@ public class ArchitectureAllocationHelper {
 
 	protected BlockArchitecture getAllocatedArchitecture(ArchitectureAllocation element) {
 		TraceableElement ret = element.getTargetElement();
-		if(null != ret && ret instanceof BlockArchitecture)
+		if(ret instanceof BlockArchitecture)
 			return (BlockArchitecture) ret;
 		return null;
 	}
 
 	protected BlockArchitecture getAllocatingArchitecture(ArchitectureAllocation element) {
 		TraceableElement ret = element.getSourceElement();
-		if(null != ret && ret instanceof BlockArchitecture)
+		if(ret instanceof BlockArchitecture)
 			return (BlockArchitecture) ret;
 		return null;
 	}

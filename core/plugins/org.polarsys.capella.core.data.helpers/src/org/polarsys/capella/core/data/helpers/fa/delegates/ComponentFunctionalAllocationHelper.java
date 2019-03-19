@@ -52,14 +52,14 @@ public class ComponentFunctionalAllocationHelper {
 
 	protected AbstractFunctionalBlock getBlock(ComponentFunctionalAllocation element) {
 		TraceableElement ret = element.getSourceElement();
-		if (null != ret && ret instanceof AbstractFunctionalBlock)
+		if (ret instanceof AbstractFunctionalBlock)
 			return (AbstractFunctionalBlock) ret;
 		return null;
 	}
 
 	protected AbstractFunction getFunction(ComponentFunctionalAllocation element) {
 		TraceableElement ret = element.getTargetElement();
-		if (null != ret && ret instanceof AbstractFunction)
+		if (ret instanceof AbstractFunction)
 			return (AbstractFunction) ret;
 		return null;
 	}

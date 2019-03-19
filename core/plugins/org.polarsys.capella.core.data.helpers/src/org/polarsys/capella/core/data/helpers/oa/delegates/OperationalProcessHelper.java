@@ -53,7 +53,7 @@ public class OperationalProcessHelper {
   }
 
   protected List<OperationalCapability> getInvolvingOperationalCapabilities(OperationalProcess element) {
-    List<OperationalCapability> ret = new ArrayList<OperationalCapability>();
+    List<OperationalCapability> ret = new ArrayList<>();
     for (Involvement inv : element.getInvolvingInvolvements()) {
       if (inv instanceof FunctionalChainAbstractCapabilityInvolvement) {
         AbstractCapability cap = ((FunctionalChainAbstractCapabilityInvolvement) inv).getCapability();

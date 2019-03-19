@@ -52,7 +52,7 @@ public class NamespaceHelper {
 	}
 
   protected List<GenericTrace> getContainedGenericTraces(Namespace element) {
-    List<GenericTrace> traces = new ArrayList<GenericTrace>();
+    List<GenericTrace> traces = new ArrayList<>();
     for (Trace trace : element.getOwnedTraces()) {
       if (trace instanceof GenericTrace) {
         traces.add((GenericTrace) trace);
@@ -62,7 +62,7 @@ public class NamespaceHelper {
   }
 
   protected List<RequirementsTrace> getContainedRequirementsTraces(Namespace element) {
-    List<RequirementsTrace> traces = new ArrayList<RequirementsTrace>();
+    List<RequirementsTrace> traces = new ArrayList<>();
     for (Trace trace : element.getOwnedTraces()) {
       if (trace instanceof RequirementsTrace) {
         traces.add((RequirementsTrace) trace);

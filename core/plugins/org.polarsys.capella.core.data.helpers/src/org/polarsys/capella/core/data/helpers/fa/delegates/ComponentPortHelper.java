@@ -90,7 +90,7 @@ public class ComponentPortHelper {
    */
   protected List<ComponentExchange> getComponentExchanges(ComponentPort element) {
     // linked hash set allows to keep ordering !
-    HashSet<ComponentExchange> ret = new LinkedHashSet<ComponentExchange>();
+    HashSet<ComponentExchange> ret = new LinkedHashSet<>();
     for (AbstractInformationFlow trace : element.getInformationFlows()) {
       if (trace instanceof ComponentExchange) {
         ret.add((ComponentExchange) trace);
@@ -102,11 +102,11 @@ public class ComponentPortHelper {
         ret.add((ComponentExchange) owner);
       }
     }
-    return new ArrayList<ComponentExchange>(ret);
+    return new ArrayList<>(ret);
   }
 
   protected List<FunctionPort> getAllocatedFunctionPorts(ComponentPort element) {
-    List <FunctionPort> ret = new ArrayList<FunctionPort>();
+    List <FunctionPort> ret = new ArrayList<>();
     for (PortAllocation portAllocation : element.getOutgoingPortAllocations()) {
       Port port = portAllocation.getAllocatedPort();
       if (port instanceof FunctionPort){
@@ -117,7 +117,7 @@ public class ComponentPortHelper {
   }
 
   protected List<ComponentPort> getDelegatedComponentPorts(ComponentPort element) {
-    List <ComponentPort> ret = new ArrayList<ComponentPort>();
+    List <ComponentPort> ret = new ArrayList<>();
     for (AbstractInformationFlow informationFlow : element.getOutgoingInformationFlows()) {
       if (informationFlow instanceof ComponentExchange) {
         if (ComponentExchangeKind.DELEGATION.equals(((ComponentExchange) informationFlow).getKind())) {
@@ -132,7 +132,7 @@ public class ComponentPortHelper {
   }
 
   protected List<ComponentPort> getDelegatingComponentPorts(ComponentPort element) {
-    List <ComponentPort> ret = new ArrayList<ComponentPort>();
+    List <ComponentPort> ret = new ArrayList<>();
     for (AbstractInformationFlow informationFlow : element.getIncomingInformationFlows()) {
       if (informationFlow instanceof ComponentExchange) {
         if (ComponentExchangeKind.DELEGATION.equals(((ComponentExchange) informationFlow).getKind())) {
@@ -147,7 +147,7 @@ public class ComponentPortHelper {
   }
 
   protected List<PhysicalPort> getAllocatingPhysicalPorts(ComponentPort element) {
-    List <PhysicalPort> result = new ArrayList<PhysicalPort>();
+    List <PhysicalPort> result = new ArrayList<>();
     for (AbstractTrace trace : element.getIncomingTraces()) {
       if (trace instanceof ComponentPortAllocation) {
         Port port = ((ComponentPortAllocation) trace).getAllocatingPort();
@@ -160,7 +160,7 @@ public class ComponentPortHelper {
   }
 
   protected List<ComponentPort> getRealizedComponentPorts(ComponentPort element) {
-    List <ComponentPort> result = new ArrayList<ComponentPort>();
+    List <ComponentPort> result = new ArrayList<>();
     for (PortRealization portAllocation : element.getOutgoingPortRealizations()) {
       Port port = portAllocation.getRealizedPort();
       if (port instanceof ComponentPort && !result.contains(port)){
@@ -171,7 +171,7 @@ public class ComponentPortHelper {
   }
 
   protected List<ComponentPort> getRealizingComponentPorts(ComponentPort element) {
-    List <ComponentPort> result = new ArrayList<ComponentPort>();
+    List <ComponentPort> result = new ArrayList<>();
     for (PortRealization portAllocation : element.getIncomingPortRealizations()) {
       Port port = portAllocation.getRealizingPort();
       if (port instanceof ComponentPort && !result.contains(port)){

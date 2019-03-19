@@ -69,7 +69,7 @@ public class PhysicalPathHelper {
   }
 
   protected List<PhysicalPathInvolvement> getFirstPhysicalPathInvolvements(PhysicalPath element) {
-    List<PhysicalPathInvolvement> ret = new ArrayList<PhysicalPathInvolvement>();
+    List<PhysicalPathInvolvement> ret = new ArrayList<>();
     for (PhysicalPathInvolvement inv : element.getOwnedPhysicalPathInvolvements()) {
       if ((inv.getInvolved() != null) && inv.getPreviousInvolvements().isEmpty()) {
         ret.add(inv);
@@ -79,7 +79,7 @@ public class PhysicalPathHelper {
   }
 
   protected List<PhysicalPath> getRealizedPhysicalPaths(PhysicalPath element) {
-    List<PhysicalPath> paths = new ArrayList<PhysicalPath>();
+    List<PhysicalPath> paths = new ArrayList<>();
     for (AbstractTrace trace : element.getOutgoingTraces()) {
       if (trace instanceof PhysicalPathRealization) {
         TraceableElement path = ((PhysicalPathRealization) trace).getTargetElement();
@@ -92,7 +92,7 @@ public class PhysicalPathHelper {
   }
 
   protected List<PhysicalPath> getRealizingPhysicalPaths(PhysicalPath element) {
-    List<PhysicalPath> paths = new ArrayList<PhysicalPath>();
+    List<PhysicalPath> paths = new ArrayList<>();
     for (AbstractTrace trace : element.getIncomingTraces()) {
       if (trace instanceof PhysicalPathRealization) {
         TraceableElement path = ((PhysicalPathRealization) trace).getSourceElement();

@@ -51,7 +51,7 @@ public class ServiceHelper {
 	
 	protected List<Message> getMessages(Service element){
 		List<MessageReference> refs = element.getMessageReferences();
-		List<Message> ret = new ArrayList<Message>();
+		List<Message> ret = new ArrayList<>();
 		
 		for (MessageReference messageReference : refs) {
 			Message mes = messageReference.getMessage();

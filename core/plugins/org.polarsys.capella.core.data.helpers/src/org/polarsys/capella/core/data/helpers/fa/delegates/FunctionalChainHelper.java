@@ -90,11 +90,11 @@ public class FunctionalChainHelper {
   }
 
   protected List<FunctionalChainInvolvement> getInvolvedFunctionalChainInvolvements(FunctionalChain element) {
-    return new ArrayList<FunctionalChainInvolvement>(element.getOwnedFunctionalChainInvolvements());
+    return new ArrayList<>(element.getOwnedFunctionalChainInvolvements());
   }
 
   protected List<InvolvedElement> getInvolvedElements(FunctionalChain element) {
-    List<InvolvedElement> ret = new ArrayList<InvolvedElement>();
+    List<InvolvedElement> ret = new ArrayList<>();
     for (FunctionalChainInvolvement involvement : getInvolvedFunctionalChainInvolvements(element)) {
       InvolvedElement elt = involvement.getInvolved();
       if (null != elt) {
@@ -105,7 +105,7 @@ public class FunctionalChainHelper {
   }
 
   protected List<FunctionalExchange> getInvolvedFunctionalExchanges(FunctionalChain element) {
-    List<FunctionalExchange> ret = new ArrayList<FunctionalExchange>();
+    List<FunctionalExchange> ret = new ArrayList<>();
     for (InvolvedElement involvedElement : getInvolvedElements(element)) {
       if (involvedElement instanceof FunctionalExchange) {
         ret.add((FunctionalExchange) involvedElement);
@@ -115,7 +115,7 @@ public class FunctionalChainHelper {
   }
 
   protected List<AbstractFunction> getInvolvedFunctions(FunctionalChain element) {
-    List<AbstractFunction> ret = new ArrayList<AbstractFunction>();
+    List<AbstractFunction> ret = new ArrayList<>();
     for (InvolvedElement involvedElement : getInvolvedElements(element)) {
       if (involvedElement instanceof AbstractFunction) {
         ret.add((AbstractFunction) involvedElement);
@@ -130,7 +130,7 @@ public class FunctionalChainHelper {
   }
 
   protected List<AbstractFunctionalBlock> getEnactedFunctionalBlocks(FunctionalChain element) {
-    List<AbstractFunctionalBlock> ret = new ArrayList<AbstractFunctionalBlock>();
+    List<AbstractFunctionalBlock> ret = new ArrayList<>();
     for (AbstractFunction func : getEnactedFunctions(element)) {
       ret.addAll(func.getAllocationBlocks());
     }
@@ -138,7 +138,7 @@ public class FunctionalChainHelper {
   }
 
   protected List<FunctionalChainInvolvement> getFirstFunctionalChainInvolvements(FunctionalChain element) {
-    List<FunctionalChainInvolvement> ret = new ArrayList<FunctionalChainInvolvement>();
+    List<FunctionalChainInvolvement> ret = new ArrayList<>();
     for (FunctionalChainInvolvement inv : element.getOwnedFunctionalChainInvolvements()) {
       if ((inv.getInvolved() != null) && inv.getPreviousFunctionalChainInvolvements().isEmpty()) {
         ret.add(inv);
@@ -148,7 +148,7 @@ public class FunctionalChainHelper {
   }
 
   protected List<Capability> getInvolvingCapabilities(FunctionalChain element) {
-    List<Capability> ret = new ArrayList<Capability>();
+    List<Capability> ret = new ArrayList<>();
     for (Involvement inv : element.getInvolvingInvolvements()) {
       if (inv instanceof FunctionalChainAbstractCapabilityInvolvement) {
         AbstractCapability cap = ((FunctionalChainAbstractCapabilityInvolvement) inv).getCapability();
@@ -161,7 +161,7 @@ public class FunctionalChainHelper {
   }
 
   protected List<CapabilityRealization> getInvolvingCapabilityRealizations(FunctionalChain element) {
-    List<CapabilityRealization> ret = new ArrayList<CapabilityRealization>();
+    List<CapabilityRealization> ret = new ArrayList<>();
     for (Involvement inv : element.getInvolvingInvolvements()) {
       if (inv instanceof FunctionalChainAbstractCapabilityInvolvement) {
         AbstractCapability cap = ((FunctionalChainAbstractCapabilityInvolvement) inv).getCapability();
@@ -174,20 +174,26 @@ public class FunctionalChainHelper {
   }
 
   protected List<FunctionalChain> getRealizedFunctionalChains(FunctionalChain element) {
-    List <FunctionalChain> ret = new ArrayList<FunctionalChain>();
+    List <FunctionalChain> ret = new ArrayList<>();
     for (AbstractTrace trace : element.getOutgoingTraces()) {
       if (trace instanceof FunctionalChainRealization){
-        ret.add((FunctionalChain) trace.getTargetElement());
+        FunctionalChain targetElement = (FunctionalChain) trace.getTargetElement();
+        if(targetElement != null) {
+          ret.add(targetElement);          
+        }
       }
     }
     return ret;
   }
 
   protected List<FunctionalChain> getRealizingFunctionalChains(FunctionalChain element) {
-    List <FunctionalChain> ret = new ArrayList<FunctionalChain>();
+    List <FunctionalChain> ret = new ArrayList<>();
     for (AbstractTrace trace : element.getIncomingTraces()) {
       if (trace instanceof FunctionalChainRealization){
-        ret.add((FunctionalChain) trace.getSourceElement());
+        FunctionalChain sourceElement = (FunctionalChain) trace.getSourceElement();
+        if(sourceElement != null) {          
+          ret.add(sourceElement);
+        }
       }
     }
     return ret;

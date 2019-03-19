@@ -81,7 +81,7 @@ public class CapabilityHelper {
 	}
   
   protected List<ActorCapabilityInvolvement> getInvolvedActors(Capability element) {
-		List <ActorCapabilityInvolvement> ret = new ArrayList<ActorCapabilityInvolvement>();
+		List <ActorCapabilityInvolvement> ret = new ArrayList<>();
 		for (Involvement involvement : element.getInvolvedInvolvements()) {
 			if (involvement instanceof ActorCapabilityInvolvement) {
 				ret.add((ActorCapabilityInvolvement) involvement);
@@ -95,7 +95,7 @@ public class CapabilityHelper {
 	}
 
 	protected List<Mission> getPurposeMissions(Capability element) {
-		List<Mission> ret = new ArrayList<Mission>();
+		List<Mission> ret = new ArrayList<>();
 		for (CapabilityExploitation exploitation : element.getPurposes()) {
 			Mission mission = exploitation.getMission();
 			if(null != mission){
@@ -114,7 +114,7 @@ public class CapabilityHelper {
 	}
 
 	protected List<Actor> getParticipatingActors(Capability element) {
-		List <Actor> ret = new ArrayList<Actor>();
+		List <Actor> ret = new ArrayList<>();
 		for (ActorCapabilityInvolvement involvement : element.getInvolvedActors()) {
 			Actor actor = involvement.getActor();
 			if(null != actor){
@@ -125,7 +125,7 @@ public class CapabilityHelper {
 	}
 
   protected List<OperationalCapability> getRealizedOperationalCapabilities(Capability element) {
-    List <OperationalCapability> ret = new ArrayList<OperationalCapability>();
+    List <OperationalCapability> ret = new ArrayList<>();
     for (AbstractTrace trace : element.getOutgoingTraces()) {
       if (trace instanceof AbstractCapabilityRealization){
         AbstractCapability capability = ((AbstractCapabilityRealization) trace).getRealizedCapability();
@@ -138,7 +138,7 @@ public class CapabilityHelper {
   }
 
   protected List<CapabilityRealization> getRealizingCapabilityRealizations(Capability element) {
-    List <CapabilityRealization> ret = new ArrayList<CapabilityRealization>();
+    List <CapabilityRealization> ret = new ArrayList<>();
     for (AbstractTrace trace : element.getIncomingTraces()) {
       if (trace instanceof AbstractCapabilityRealization){
         AbstractCapability capability = ((AbstractCapabilityRealization) trace).getRealizingCapability();
