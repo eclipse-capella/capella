@@ -65,6 +65,7 @@ import org.polarsys.capella.core.data.fa.FunctionalChainInvolvementFunction;
 import org.polarsys.capella.core.data.fa.FunctionalChainInvolvementLink;
 import org.polarsys.capella.core.data.fa.FunctionalChainReference;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
+import org.polarsys.capella.core.data.fa.ReferenceHierarchyContext;
 import org.polarsys.capella.core.data.fa.SequenceLink;
 import org.polarsys.capella.core.data.fa.SequenceLinkEnd;
 import org.polarsys.capella.core.data.helpers.fa.services.FunctionExt;
@@ -1127,7 +1128,7 @@ public class FunctionalChainServices {
     return false;
   }
 
-  public boolean canCreateFCILEdgeForCollapsedContainer(FunctionalChainInvolvementLink link, DDiagramElement sourceView,
+  public boolean canCreateFCILEdgeForCollapsedContainer(ReferenceHierarchyContext link, DDiagramElement sourceView,
       EObject source, DDiagramElement targetView, EObject target) {
 
     if (source == null || target == null)
@@ -1155,17 +1156,17 @@ public class FunctionalChainServices {
   }
 
   /**
-   * Return true if the given FunctionalChainInvolvementLink must appears in the diagram
+   * Return true if the given link must appears in the diagram
    * 
    * @param link
-   *          the given FunctionalChainInvolvementLink
+   *          the given link
    * @param sourceView
    *          the source view of the link in the diagram
    * @param targetView
    *          the target view of the link in the diagram
    * @return true if the given FunctionalChainInvolvementLink must appears in the diagram
    */
-  public boolean checkRefHierarchyOfLink(FunctionalChainInvolvementLink link, DDiagramElement sourceView,
+  public boolean checkRefHierarchyOfLink(ReferenceHierarchyContext link, DDiagramElement sourceView,
       DDiagramElement targetView) {
 
     // get the valid top container for the source reference Hierarchy
@@ -1202,10 +1203,10 @@ public class FunctionalChainServices {
   public String getControlNodeLabel(ControlNode controlNode) {
     return controlNode.getKind() == ControlNodeKind.ITERATE ? IT : controlNode.getKind().getLiteral();
   }
-  
+
   /**
-   * Returns all the Sequence links for a given functional chain, including those on recursive levels. This
-   * function is tail recursive.
+   * Returns all the Sequence links for a given functional chain, including those on recursive levels. This function is
+   * tail recursive.
    * 
    * @param chain
    *          the given functional chain.
@@ -1220,8 +1221,8 @@ public class FunctionalChainServices {
   }
 
   /**
-   * This is a tail recursive version that returns all the Sequence links for a functional chain,
-   * including those on recursive levels.
+   * This is a tail recursive version that returns all the Sequence links for a functional chain, including those on
+   * recursive levels.
    * 
    * @param chain
    *          the functional chain.
@@ -1241,7 +1242,7 @@ public class FunctionalChainServices {
       }
     }
   }
-  
+
   /**
    * Precondition for the creation of a Sequence Link.
    * 
@@ -1256,7 +1257,7 @@ public class FunctionalChainServices {
 
     return source != target && !doesConnectionExistBetweenSequenceLinkEnds(target, source, new HashSet<>());
   }
-  
+
   /**
    * Tests if an direct/indirect connection exists between the current Sequence Link End and the goal Sequence Link End.
    * 
@@ -1266,8 +1267,8 @@ public class FunctionalChainServices {
    *          the goal Sequence Link End that servers at target goal.
    * @param visitedSequenceLinkEnds
    *          the already visited Sequence Link Ends.
-   * @return true if a direct/indirect connection exists between the current Sequence Link End and the goal Sequence Link End,
-   *         false otherwise.
+   * @return true if a direct/indirect connection exists between the current Sequence Link End and the goal Sequence
+   *         Link End, false otherwise.
    */
   public boolean doesConnectionExistBetweenSequenceLinkEnds(SequenceLinkEnd currentSequenceLinkEnd,
       SequenceLinkEnd goalSequenceLinkEnd, Set<SequenceLinkEnd> visitedSequenceLinkEnds) {
@@ -1280,9 +1281,10 @@ public class FunctionalChainServices {
     if (currentSequenceLinkEnd.equals(goalSequenceLinkEnd)) {
       return true;
     }
-    
+
     // cycles are possible with ITERATE ControlNode
-    if (currentSequenceLinkEnd instanceof ControlNode && ((ControlNode) currentSequenceLinkEnd).getKind() == ControlNodeKind.ITERATE) {
+    if (currentSequenceLinkEnd instanceof ControlNode
+        && ((ControlNode) currentSequenceLinkEnd).getKind() == ControlNodeKind.ITERATE) {
       return false;
     }
 
@@ -1292,7 +1294,8 @@ public class FunctionalChainServices {
 
     // depth first recursive call
     for (SequenceLink nextSequenceLink : SequenceLinkEndExt.getOutgoingSequenceLinks(currentSequenceLinkEnd)) {
-      if (doesConnectionExistBetweenSequenceLinkEnds(nextSequenceLink.getTarget(), goalSequenceLinkEnd, visitedSequenceLinkEndsCopy)) {
+      if (doesConnectionExistBetweenSequenceLinkEnds(nextSequenceLink.getTarget(), goalSequenceLinkEnd,
+          visitedSequenceLinkEndsCopy)) {
         return true;
       }
     }

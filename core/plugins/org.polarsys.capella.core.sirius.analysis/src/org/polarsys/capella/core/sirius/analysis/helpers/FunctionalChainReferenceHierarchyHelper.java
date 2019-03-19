@@ -18,8 +18,8 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.EdgeTarget;
 import org.polarsys.capella.core.data.fa.FunctionalChain;
-import org.polarsys.capella.core.data.fa.FunctionalChainInvolvementFunction;
 import org.polarsys.capella.core.data.fa.FunctionalChainReference;
+import org.polarsys.capella.core.data.fa.SequenceLinkEnd;
 
 public class FunctionalChainReferenceHierarchyHelper {
 
@@ -78,8 +78,8 @@ public class FunctionalChainReferenceHierarchyHelper {
   }
 
   /**
-   * From a DNode (FCIF) or DNodeContainer (FCR) get its upper container whose target is at the top of the reference hierarchy.
-   * If the reference hierarchy is empty and diagram element is DNode, return it.
+   * From a DNode (FCIF) or DNodeContainer (FCR) get its upper container whose target is at the top of the reference
+   * hierarchy. If the reference hierarchy is empty and diagram element is DNode, return it.
    * 
    * If there is no container, return null.
    * 
@@ -89,37 +89,38 @@ public class FunctionalChainReferenceHierarchyHelper {
    *          Should be the DNode (FCIF) or DNodeContainer (FCR)
    * @return the parent of the reference hierarchy for a valid hierarchy, an empty optional otherwise.
    */
-  public static EObject getDiagramElementForTopHierarchy(List<FunctionalChainReference> referenceHierarchy, DDiagramElement startingDiagramElement) {
-    
+  public static EObject getDiagramElementForTopHierarchy(List<FunctionalChainReference> referenceHierarchy,
+      DDiagramElement startingDiagramElement) {
+
     List<EObject> semanticHierarchy = new ArrayList<>(referenceHierarchy);
-    
+
     EObject diagramElementTarget = startingDiagramElement.getTarget();
-    
-    if (startingDiagramElement instanceof DNode && diagramElementTarget instanceof FunctionalChainInvolvementFunction) {
+
+    if (startingDiagramElement instanceof DNode && diagramElementTarget instanceof SequenceLinkEnd) {
       semanticHierarchy.add(0, diagramElementTarget);
     }
-    
+
     int startIndex = semanticHierarchy.indexOf(diagramElementTarget);
     if (startIndex == -1) {
       return null;
     }
-    
+
     DDiagramElement topContainer = startingDiagramElement;
-    
+
     for (int i = startIndex; i < semanticHierarchy.size() - 1; i++) {
       DDiagramElement upperContainer = (DDiagramElement) topContainer.eContainer().eContainer();
       if (upperContainer == null) {
         return null;
       }
-      
+
       EObject nextSemanticInHierarchy = semanticHierarchy.get(i + 1);
       if (!nextSemanticInHierarchy.equals(upperContainer.getTarget())) {
         return null;
       }
-      
+
       topContainer = upperContainer;
     }
-    
+
     return topContainer;
   }
 
