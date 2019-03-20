@@ -27,14 +27,15 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.eclipse.emf.diffmerge.api.IDiffPolicy;
-import org.eclipse.emf.diffmerge.api.IMatchPolicy;
-import org.eclipse.emf.diffmerge.api.IMergePolicy;
-import org.eclipse.emf.diffmerge.api.config.IComparisonConfigurator;
+import org.eclipse.emf.diffmerge.generic.api.IDiffPolicy;
+import org.eclipse.emf.diffmerge.generic.api.IMatchPolicy;
+import org.eclipse.emf.diffmerge.generic.api.IMergePolicy;
+import org.eclipse.emf.diffmerge.generic.api.config.IComparisonConfigurator;
 import org.eclipse.emf.diffmerge.impl.policies.ComparisonConfigurator;
 import org.eclipse.emf.diffmerge.ui.sirius.SiriusComparisonMethod;
 import org.eclipse.emf.diffmerge.ui.specification.IComparisonMethodFactory;
 import org.eclipse.emf.diffmerge.ui.specification.IModelScopeDefinition;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory;
@@ -87,7 +88,7 @@ public class CapellaComparisonMethod extends SiriusComparisonMethod {
    */
   public CapellaComparisonMethod(IModelScopeDefinition leftScopeDef,
       IModelScopeDefinition rightScopeDef, IModelScopeDefinition ancestorScopeDef,
-      IComparisonMethodFactory factory) {
+      IComparisonMethodFactory<EObject> factory) {
     super(leftScopeDef, rightScopeDef, ancestorScopeDef, factory);
   }
   
@@ -119,7 +120,7 @@ public class CapellaComparisonMethod extends SiriusComparisonMethod {
    * @see org.eclipse.emf.diffmerge.ui.sirius.SiriusComparisonMethod#createDiffPolicy()
    */
   @Override
-  protected IDiffPolicy createDiffPolicy() {
+  protected IDiffPolicy<EObject> createDiffPolicy() {
     return new CapellaDiffPolicy();
   }
   
@@ -127,7 +128,7 @@ public class CapellaComparisonMethod extends SiriusComparisonMethod {
    * @see org.eclipse.emf.diffmerge.ui.sirius.SiriusComparisonMethod#createMatchPolicy()
    */
   @Override
-  protected IMatchPolicy createMatchPolicy() {
+  protected IMatchPolicy<EObject> createMatchPolicy() {
     return new CapellaMatchPolicy();
   }
   
@@ -135,7 +136,7 @@ public class CapellaComparisonMethod extends SiriusComparisonMethod {
    * @see org.eclipse.emf.diffmerge.ui.sirius.SiriusComparisonMethod#createMergePolicy()
    */
   @Override
-  protected IMergePolicy createMergePolicy() {
+  protected IMergePolicy<EObject> createMergePolicy() {
     return new CapellaMergePolicy();
   }
   

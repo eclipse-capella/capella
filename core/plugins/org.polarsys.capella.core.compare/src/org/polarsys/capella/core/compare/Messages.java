@@ -39,6 +39,7 @@ public class Messages extends NLS {
   public static String CapellaScope_DifferentVersion;
   public static String CapellaScope_DifferentVersionInterruption;
   public static String CapellaScope_PermissionCommandName;
+  public static String CapellaScope_WriteError;
   public static String PredefinedTypesCmd_boolean_name;
   public static String PredefinedTypesCmd_byte_name;
   public static String PredefinedTypesCmd_char_name;
