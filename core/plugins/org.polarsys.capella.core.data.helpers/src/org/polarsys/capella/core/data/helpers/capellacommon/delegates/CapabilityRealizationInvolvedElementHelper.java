@@ -52,7 +52,7 @@ public class CapabilityRealizationInvolvedElementHelper {
 	}
 
 	protected List <CapabilityRealizationInvolvement> getInvolvingCapabilityRealizationInvolvements(CapabilityRealizationInvolvedElement element){
-		List<CapabilityRealizationInvolvement> ret = new ArrayList<CapabilityRealizationInvolvement> ();
+		List<CapabilityRealizationInvolvement> ret = new ArrayList<> ();
 		for (Involvement involvement : element.getInvolvingInvolvements()) {
 			if(involvement instanceof CapabilityRealizationInvolvement){
 				ret.add((CapabilityRealizationInvolvement) involvement);

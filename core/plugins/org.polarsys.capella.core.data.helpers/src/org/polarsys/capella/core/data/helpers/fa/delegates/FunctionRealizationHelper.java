@@ -50,14 +50,14 @@ public class FunctionRealizationHelper {
 
   protected AbstractFunction getAllocatingFunction(FunctionRealization element) {
     TraceableElement ret = element.getSourceElement();
-    if (null != ret && ret instanceof AbstractFunction)
+    if (ret instanceof AbstractFunction)
       return (AbstractFunction) ret;
     return null;
   }
 
   protected AbstractFunction getAllocatedFunction(FunctionRealization element) {
     TraceableElement ret = element.getTargetElement();
-    if (null != ret && ret instanceof AbstractFunction)
+    if (ret instanceof AbstractFunction)
       return (AbstractFunction) ret;
     return null;
   }

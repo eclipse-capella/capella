@@ -55,7 +55,7 @@ public class AbstractInstanceHelper {
 	 * 
 	 */
 	protected List<InstanceRole> getRepresentingInstanceRoles(AbstractInstance element) {
-		List <InstanceRole> ret = new ArrayList <InstanceRole>();
+		List <InstanceRole> ret = new ArrayList <>();
     for (EObject obj : EObjectExt.getReferencers(element, InteractionPackage.Literals.INSTANCE_ROLE__REPRESENTED_INSTANCE)) {
       if (obj instanceof InstanceRole) {
 				ret.add((InstanceRole) obj);

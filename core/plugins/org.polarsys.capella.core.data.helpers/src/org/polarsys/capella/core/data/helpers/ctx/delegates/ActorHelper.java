@@ -81,7 +81,7 @@ public class ActorHelper {
 	}
 
 	protected List<ActorCapabilityInvolvement> getParticipationsInCapabilities(Actor element) {
-		List<ActorCapabilityInvolvement> ret = new ArrayList<ActorCapabilityInvolvement>();
+		List<ActorCapabilityInvolvement> ret = new ArrayList<>();
 		for (Involvement involvement : element.getInvolvingInvolvements()) {
 			if(involvement instanceof ActorCapabilityInvolvement){
 				ret.add((ActorCapabilityInvolvement)involvement);
@@ -91,7 +91,7 @@ public class ActorHelper {
 	}
 
 	protected List<ActorCapabilityRealizationInvolvement> getParticipationsInCapabilityRealizations(Actor element) {
-		List<ActorCapabilityRealizationInvolvement> ret = new ArrayList<ActorCapabilityRealizationInvolvement>();
+		List<ActorCapabilityRealizationInvolvement> ret = new ArrayList<>();
 		for (CapabilityRealizationInvolvement involvement : element.getInvolvingCapabilityRealizationInvolvements()) {
 			if(involvement instanceof ActorCapabilityRealizationInvolvement){
 				ret.add((ActorCapabilityRealizationInvolvement)involvement);
@@ -101,7 +101,7 @@ public class ActorHelper {
 	}
 
 	protected List<ActorMissionInvolvement> getParticipationsInMissions(Actor element) {
-		List<ActorMissionInvolvement> ret = new ArrayList<ActorMissionInvolvement>();
+		List<ActorMissionInvolvement> ret = new ArrayList<>();
 		for (Involvement involvement : element.getInvolvingInvolvements()) {
 			if(involvement instanceof ActorMissionInvolvement){
 				ret.add((ActorMissionInvolvement)involvement);
@@ -111,7 +111,7 @@ public class ActorHelper {
 	}
 
 	protected List<Capability> getContributedCapabilities(Actor element) {
-		List<Capability> ret = new ArrayList<Capability>();
+		List<Capability> ret = new ArrayList<>();
 		for (ActorCapabilityInvolvement involvement : element.getParticipationsInCapabilities()) {
 			Capability capa = involvement.getCapability();
 			if(null != capa){
@@ -122,7 +122,7 @@ public class ActorHelper {
 	}
 
 	protected List<Mission> getContributedMissions(Actor element) {
-		List<Mission> ret = new ArrayList<Mission>();
+		List<Mission> ret = new ArrayList<>();
 		for (ActorMissionInvolvement involvement : element.getParticipationsInMissions()) {
 			Mission mission = involvement.getMission();
 			if(null != mission){
@@ -133,7 +133,7 @@ public class ActorHelper {
 	}
 
   protected List<SystemFunction> getAllocatedSystemFunctions(Actor element) {
-    List<SystemFunction> ret = new ArrayList<SystemFunction>();
+    List<SystemFunction> ret = new ArrayList<>();
     for (AbstractFunction function : element.getAllocatedFunctions()) {
       if (function instanceof SystemFunction) {
         ret.add((SystemFunction) function);
@@ -143,7 +143,7 @@ public class ActorHelper {
   }
 
   protected List<LogicalActor> getRealizingLogicalActors(Actor element) {
-    List<LogicalActor> ret = new ArrayList<LogicalActor>();
+    List<LogicalActor> ret = new ArrayList<>();
     for (Component cpnt : element.getAllocatingComponents()) {
       if (cpnt instanceof LogicalActor) {
         ret.add((LogicalActor) cpnt);
@@ -153,7 +153,7 @@ public class ActorHelper {
   }
 
   protected List<OperationalActor> getRealizedOperationalActors(Actor element) {
-    List<OperationalActor> ret = new ArrayList<OperationalActor>();
+    List<OperationalActor> ret = new ArrayList<>();
     for (AbstractTrace trace : element.getOutgoingTraces()) {
       if (trace instanceof OperationalActorRealization) {
         Component cpnt = ((OperationalActorRealization)trace).getAllocatedComponent();
@@ -166,7 +166,7 @@ public class ActorHelper {
   }
 
   protected List<Entity> getRealizedEntities(Actor element) {
-    List<Entity> ret = new ArrayList<Entity>();
+    List<Entity> ret = new ArrayList<>();
     for (AbstractTrace trace : element.getOutgoingTraces()) {
       if (trace instanceof OperationalEntityRealization) {
         Component cpnt = ((OperationalEntityRealization)trace).getAllocatedComponent();

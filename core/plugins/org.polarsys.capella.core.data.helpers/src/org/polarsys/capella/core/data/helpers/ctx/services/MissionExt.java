@@ -34,10 +34,13 @@ public class MissionExt {
 	 * @return the exploited capabilities
 	 */
 	public static List<Capability> getExploitedCapabilities(Mission mission) {
-		List<Capability> exploitedCapabilities = new ArrayList<Capability>();
+		List<Capability> exploitedCapabilities = new ArrayList<>();
 		List<CapabilityExploitation> exploitationSet = mission.getOwnedCapabilityExploitations();
 		for (CapabilityExploitation exploit : exploitationSet) {
-			exploitedCapabilities.add(exploit.getCapability());
+			Capability capability = exploit.getCapability();
+			if(capability != null) {
+			  exploitedCapabilities.add(capability);			  
+			}
 		}
 		return exploitedCapabilities;
 	}
@@ -50,10 +53,13 @@ public class MissionExt {
 	 * @return the contributing actors
 	 */
 	public static List<Actor> getInvolvedActors(Mission mission) {
-		List<Actor> involvedActors = new ArrayList<Actor>();
+		List<Actor> involvedActors = new ArrayList<>();
 		List<ActorMissionInvolvement> contributionSet = mission.getInvolvedActors();
 		for (ActorMissionInvolvement involvement : contributionSet) {
-			involvedActors.add(involvement.getActor());
+			Actor actor = involvement.getActor();
+			if(actor != null) {
+			  involvedActors.add(actor);			  
+			}
 		}
 		return involvedActors;
 	}
@@ -65,7 +71,7 @@ public class MissionExt {
 	 *            The actors to remove.
 	 */
 	public static void removeInvolvedActors(Mission mission, List<Actor> actors) {
-		List<ActorMissionInvolvement> removedLinks = new ArrayList<ActorMissionInvolvement>();
+		List<ActorMissionInvolvement> removedLinks = new ArrayList<>();
 
 		for (Object involvement : mission.getInvolvedActors()) {
 			ActorMissionInvolvement actorInvolvement = (ActorMissionInvolvement) involvement;
@@ -84,7 +90,7 @@ public class MissionExt {
 	 * @param useCases
 	 */
 	public static void removeExploitedCapabilities(Mission mission, List<Capability> useCases) {
-		List<CapabilityExploitation> removedLinks = new ArrayList<CapabilityExploitation>();
+		List<CapabilityExploitation> removedLinks = new ArrayList<>();
 
 		for (Object capabilityExp : mission.getOwnedCapabilityExploitations()) {
 			CapabilityExploitation capabilitExploitation = (CapabilityExploitation) capabilityExp;

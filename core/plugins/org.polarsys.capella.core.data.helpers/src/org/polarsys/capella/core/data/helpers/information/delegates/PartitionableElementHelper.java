@@ -57,7 +57,7 @@ public class PartitionableElementHelper {
 	
 	protected List<Partition> getRepresentingPartitions(PartitionableElement element){
 		List<TypedElement> typedElements = element.getTypedElements();
-		List<Partition> ret = new ArrayList<Partition> ();
+		List<Partition> ret = new ArrayList<> ();
 		
 		for (TypedElement typedElement : typedElements) {
 			if(typedElement instanceof Partition) {
@@ -70,7 +70,7 @@ public class PartitionableElementHelper {
 
 	protected List<Partition> getOwnedPartitions(PartitionableElement element) {
 		List <Feature> features = element.getOwnedFeatures();
-		List <Partition> ret = new ArrayList <Partition>();
+		List <Partition> ret = new ArrayList <>();
 		
 		for (Feature feature : features) {
 			if(feature instanceof Partition) {
@@ -80,5 +80,4 @@ public class PartitionableElementHelper {
 		
 		return ret;
 	}
-
 }

@@ -80,7 +80,7 @@ public class SystemHelper {
 	}
 
 	protected List<SystemCapabilityInvolvement> getParticipationsInCapabilities(System element) {
-		List<SystemCapabilityInvolvement> ret = new ArrayList<SystemCapabilityInvolvement>();
+		List<SystemCapabilityInvolvement> ret = new ArrayList<>();
 		for (Involvement involvement : element.getInvolvingInvolvements()) {
 			if(involvement instanceof SystemCapabilityInvolvement){
 				ret.add((SystemCapabilityInvolvement)involvement);
@@ -90,7 +90,7 @@ public class SystemHelper {
 	}
 
 	protected List<SystemMissionInvolvement> getParticipationsInMissions(System element) {
-		List<SystemMissionInvolvement> ret = new ArrayList<SystemMissionInvolvement>();
+		List<SystemMissionInvolvement> ret = new ArrayList<>();
 		for (Involvement involvement : element.getInvolvingInvolvements()) {
 			if(involvement instanceof SystemMissionInvolvement){
 				ret.add((SystemMissionInvolvement)involvement);
@@ -100,7 +100,7 @@ public class SystemHelper {
 	}
 
 	protected List<Capability> getContributedCapabilities(System element) {
-		List<Capability> ret = new ArrayList<Capability>();
+		List<Capability> ret = new ArrayList<>();
 		for (SystemCapabilityInvolvement capabilitySupplierLink : element.getParticipationsInCapabilities()) {
 			Capability capa = capabilitySupplierLink.getCapability();
 			if(null != capa){
@@ -111,7 +111,7 @@ public class SystemHelper {
 	}
 
 	protected List<Mission> getContributedMissions(System element) {
-		List<Mission> ret = new ArrayList<Mission>();
+		List<Mission> ret = new ArrayList<>();
 		for (SystemMissionInvolvement missionSupplierLink : element.getParticipationsInMissions()) {
 			Mission mission = missionSupplierLink.getMission();
 			if(null != mission){
@@ -122,7 +122,7 @@ public class SystemHelper {
 	}
 
 	protected List<OperationalEntityRealization> getAllocatedEntityRealizations(System element) {
-		List<OperationalEntityRealization> ret = new ArrayList<OperationalEntityRealization>();
+		List<OperationalEntityRealization> ret = new ArrayList<>();
 		for (ComponentAllocation componentAllocation : element.getProvisionedComponentAllocations()) {
 			if(componentAllocation instanceof OperationalEntityRealization){
 				ret.add((OperationalEntityRealization) componentAllocation);	
@@ -132,7 +132,7 @@ public class SystemHelper {
 	}
 
   protected List<SystemFunction> getAllocatedSystemFunctions(System element) {
-    List<SystemFunction> ret = new ArrayList<SystemFunction>();
+    List<SystemFunction> ret = new ArrayList<>();
     for (AbstractFunction function : element.getAllocatedFunctions()) {
       if (function instanceof SystemFunction) {
         ret.add((SystemFunction) function);
@@ -142,7 +142,7 @@ public class SystemHelper {
   }
 
   protected List<Entity> getRealizedEntities(System element) {
-    List<Entity> ret = new ArrayList<Entity>();
+    List<Entity> ret = new ArrayList<>();
     for (AbstractTrace trace : element.getOutgoingTraces()) {
       if (trace instanceof OperationalEntityRealization) {
         Component cpnt = ((OperationalEntityRealization)trace).getAllocatedComponent();
@@ -155,7 +155,7 @@ public class SystemHelper {
   }
 
   protected List<LogicalComponent> getRealizingLogicalComponents(System element) {
-    List<LogicalComponent> ret = new ArrayList<LogicalComponent>();
+    List<LogicalComponent> ret = new ArrayList<>();
     for (Component cpnt : element.getAllocatingComponents()) {
       if (cpnt instanceof LogicalComponent) {
         ret.add((LogicalComponent) cpnt);

@@ -40,7 +40,7 @@ public class ScenarioExt {
    * @return
    */
   public static List<MessageEnd> getOwnedMessagesEnds(Scenario scenario) {
-    List<MessageEnd> ownedMsgEnd = new ArrayList<MessageEnd>();
+    List<MessageEnd> ownedMsgEnd = new ArrayList<>();
 
     for (InteractionFragment abs : scenario.getOwnedInteractionFragments()) {
       if (abs instanceof MessageEnd) {
@@ -58,7 +58,7 @@ public class ScenarioExt {
    * @return List<EventReceiptOperation>
    */
   public static List<EventReceiptOperation> getOwnedEventReceiptOperation(Scenario currentElement) {
-    List<EventReceiptOperation> result = new ArrayList<EventReceiptOperation>();
+    List<EventReceiptOperation> result = new ArrayList<>();
 
     for (Event evt : currentElement.getOwnedEvents()) {
       if (evt instanceof EventReceiptOperation) {
@@ -76,7 +76,7 @@ public class ScenarioExt {
    * @return List<EventSentOperation>
    */
   public static List<EventSentOperation> getOwnedEventSentOperation(Scenario currentElement) {
-    List<EventSentOperation> result = new ArrayList<EventSentOperation>();
+    List<EventSentOperation> result = new ArrayList<>();
 
     for (Event evt : currentElement.getOwnedEvents()) {
       if (evt instanceof EventSentOperation) {
@@ -93,7 +93,7 @@ public class ScenarioExt {
    * @return see below.
    */
   public static List<EStructuralFeature> getElementOfInterestOnScenario() {
-    List<EStructuralFeature> features = new ArrayList<EStructuralFeature>();
+    List<EStructuralFeature> features = new ArrayList<>();
     
     features.add(InteractionPackage.Literals.SCENARIO__OWNED_INSTANCE_ROLES);
     features.add(InteractionPackage.Literals.SCENARIO__OWNED_TIME_LAPSES);
@@ -128,16 +128,20 @@ public class ScenarioExt {
    * @return a {@link List} containing the matching {@link Trace}s found, an empty one otherwise
    */
   @SuppressWarnings("unchecked")
-  public static List<TraceableElement> hasLinkOftype(TraceableElement te, EClass traceType, EStructuralFeature feature1, EStructuralFeature feature2) {
-    
-    List<TraceableElement> result = new ArrayList<TraceableElement>();
-    
+  public static List<TraceableElement> hasLinkOftype(TraceableElement te, EClass traceType, EStructuralFeature feature1,
+      EStructuralFeature feature2) {
+
+    List<TraceableElement> result = new ArrayList<>();
+
     for (EObject at : (Collection<EObject>) te.eGet(feature1)) {
-      if (at.eClass() == traceType ) {
-        result.add((TraceableElement) ((AbstractTrace) at).eGet(feature2));
+      if (at.eClass() == traceType) {
+        TraceableElement traceableElement = (TraceableElement) ((AbstractTrace) at).eGet(feature2);
+        if (traceableElement != null) {
+          result.add(traceableElement);
+        }
       }
     }
-    
+
     return result;
   }
 }

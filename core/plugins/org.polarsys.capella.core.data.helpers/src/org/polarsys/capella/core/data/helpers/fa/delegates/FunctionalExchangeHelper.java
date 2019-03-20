@@ -102,11 +102,11 @@ public class FunctionalExchangeHelper {
   }
 
   protected List<FunctionalChain> getInvolvingFunctionalChains(FunctionalExchange element) {
-    List<FunctionalChain> ret = new ArrayList<FunctionalChain>();
+    List<FunctionalChain> ret = new ArrayList<>();
     for (Involvement involvement : element.getInvolvingInvolvements()) {
       if (involvement instanceof FunctionalChainInvolvement) {
         InvolverElement fc = involvement.getInvolver();
-        if ((null != fc) && (fc instanceof FunctionalChain)) {
+        if (fc instanceof FunctionalChain) {
           ret.add((FunctionalChain) fc);
         }
       }
@@ -115,17 +115,18 @@ public class FunctionalExchangeHelper {
   }
 
   protected List<ComponentExchange> getComponentExchanges(FunctionalExchange element) {
-    List<ComponentExchange> ret = new ArrayList<ComponentExchange>();
+    List<ComponentExchange> ret = new ArrayList<>();
     for (ComponentExchangeFunctionalExchangeAllocation item : element.getIncomingComponentExchangeFunctionalExchangeRealizations()) {
-      if (item.getAllocatingComponentExchange() != null) {
-        ret.add(item.getAllocatingComponentExchange());
+      ComponentExchange allocatingComponentExchange = item.getAllocatingComponentExchange();
+      if (allocatingComponentExchange != null) {
+        ret.add(allocatingComponentExchange);
       }
     }
     return ret;
   }
 
   protected List<ComponentExchangeFunctionalExchangeAllocation> getIncomingComponentExchangeFunctionalExchangeAllocations(FunctionalExchange element) {
-    List<ComponentExchangeFunctionalExchangeAllocation> ret = new ArrayList<ComponentExchangeFunctionalExchangeAllocation>();
+    List<ComponentExchangeFunctionalExchangeAllocation> ret = new ArrayList<>();
     for (AbstractTrace trace : element.getIncomingTraces()) {
       if (trace instanceof ComponentExchangeFunctionalExchangeAllocation) {
         ret.add((ComponentExchangeFunctionalExchangeAllocation) trace);
@@ -135,7 +136,7 @@ public class FunctionalExchangeHelper {
   }
 
   protected List<FunctionalExchangeRealization> getIncomingFunctionalExchangeRealizations(FunctionalExchange element) {
-    List<FunctionalExchangeRealization> ret = new ArrayList<FunctionalExchangeRealization>();
+    List<FunctionalExchangeRealization> ret = new ArrayList<>();
     for (AbstractTrace trace : element.getIncomingTraces()) {
       if (trace instanceof FunctionalExchangeRealization) {
         ret.add((FunctionalExchangeRealization) trace);
@@ -145,7 +146,7 @@ public class FunctionalExchangeHelper {
   }
 
   protected List<FunctionalExchangeRealization> getOutgoingFunctionalExchangeRealizations(FunctionalExchange element) {
-    List<FunctionalExchangeRealization> ret = new ArrayList<FunctionalExchangeRealization>();
+    List<FunctionalExchangeRealization> ret = new ArrayList<>();
     for (AbstractTrace trace : element.getOutgoingTraces()) {
       if (trace instanceof FunctionalExchangeRealization) {
         ret.add((FunctionalExchangeRealization) trace);
@@ -171,7 +172,7 @@ public class FunctionalExchangeHelper {
   }
 
   protected List<FunctionalExchange> getRealizedFunctionalExchanges(FunctionalExchange element) {
-    List<FunctionalExchange> ret = new ArrayList<FunctionalExchange>();
+    List<FunctionalExchange> ret = new ArrayList<>();
     for (AbstractTrace trace : element.getOutgoingTraces()) {
       if (trace instanceof FunctionalExchangeRealization) {
         TraceableElement tgt = trace.getTargetElement();
@@ -184,7 +185,7 @@ public class FunctionalExchangeHelper {
   }
 
   protected List<FunctionalExchange> getRealizingFunctionalExchanges(FunctionalExchange element) {
-    List<FunctionalExchange> ret = new ArrayList<FunctionalExchange>();
+    List<FunctionalExchange> ret = new ArrayList<>();
     for (AbstractTrace trace : element.getIncomingTraces()) {
       if (trace instanceof FunctionalExchangeRealization) {
         TraceableElement src = trace.getSourceElement();

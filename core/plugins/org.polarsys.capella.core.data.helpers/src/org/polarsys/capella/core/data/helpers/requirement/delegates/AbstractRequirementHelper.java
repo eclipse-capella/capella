@@ -53,7 +53,7 @@ public class AbstractRequirementHelper {
 	}
 
 	protected List<CapellaElement> getRelatedCapellaElements(Requirement element) {
-		List<CapellaElement> ret = new ArrayList<CapellaElement>();
+		List<CapellaElement> ret = new ArrayList<>();
 		for (AbstractTrace trace : element.getIncomingTraces()) {
 			if (trace instanceof RequirementsTrace) {
 			  TraceableElement elt = ((RequirementsTrace) trace).getSourceElement();

@@ -32,8 +32,8 @@ public class CapabilityRealizationPkgExt {
 	 *            the CapabilityRealizationPkg
 	 * @return list of CapabilityRealization
 	 */
-	static public List<CapabilityRealization> getAllCapabilityRealization(CapabilityRealizationPkg capabilityRealizationPkg) {
-		List<CapabilityRealization> list = new ArrayList<CapabilityRealization>(1);
+  public static List<CapabilityRealization> getAllCapabilityRealization(CapabilityRealizationPkg capabilityRealizationPkg) {
+		List<CapabilityRealization> list = new ArrayList<>(1);
 		if (null != capabilityRealizationPkg) {
 			list.addAll(capabilityRealizationPkg.getOwnedCapabilityRealizations());
 			for (CapabilityRealizationPkg subPkg : capabilityRealizationPkg.getOwnedCapabilityRealizationPkgs()) {

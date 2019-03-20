@@ -51,7 +51,7 @@ public class PhysicalNodeHelper {
   }
 
   protected List<PhysicalNode> getSubPhysicalNodes(PhysicalNode element) {
-    List<PhysicalNode> ret = new ArrayList<PhysicalNode>();
+    List<PhysicalNode> ret = new ArrayList<>();
 
     for (Partition thePartition : element.getOwnedPartitions()) {
       Type representedElement = thePartition.getType();

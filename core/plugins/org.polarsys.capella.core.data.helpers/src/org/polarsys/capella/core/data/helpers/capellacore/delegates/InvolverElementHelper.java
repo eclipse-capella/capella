@@ -49,7 +49,7 @@ public class InvolverElementHelper {
   }
 
   protected List<Involvement> getInvolvedInvolvements(InvolverElement element) {
-    List<Involvement> result = new ArrayList<Involvement>();
+    List<Involvement> result = new ArrayList<>();
     for (EObject child : element.eContents()) {
       if (child instanceof Involvement) {
         result.add((Involvement)child);

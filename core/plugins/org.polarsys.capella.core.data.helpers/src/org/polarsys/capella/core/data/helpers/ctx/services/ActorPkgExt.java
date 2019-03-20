@@ -34,15 +34,15 @@ public class ActorPkgExt {
    * @deprecated Use getAllActors(Structure) instead
    */
   @Deprecated
-  static public List<Actor> getAllActors(ActorPkg actorPkg) {
+  public static List<Actor> getAllActors(ActorPkg actorPkg) {
     return (List) getAllActors((Structure) actorPkg);
   }
 
   /**
    * Gets all the actors recursively from the ActorPkg
    */
-  static public List<AbstractActor> getAllActors(Structure actorPkg) {
-    List<AbstractActor> list = new ArrayList<AbstractActor>();
+  public static List<AbstractActor> getAllActors(Structure actorPkg) {
+    List<AbstractActor> list = new ArrayList<>();
     if (null != actorPkg) {
       if (actorPkg instanceof ActorPkg) {
         ActorPkg pkg = (ActorPkg) actorPkg;
@@ -72,7 +72,7 @@ public class ActorPkgExt {
    * @deprecated Use getAllActors(Structure) instead
    */
   @Deprecated
-  static public List<LogicalActor> getAllActors(LogicalActorPkg actorPkg) {
+  public static List<LogicalActor> getAllActors(LogicalActorPkg actorPkg) {
     return (List) getAllActors((Structure) actorPkg);
   }
 
@@ -80,7 +80,7 @@ public class ActorPkgExt {
    * @deprecated Use getAllActors(Structure) instead
    */
   @Deprecated
-  static public List<PhysicalActor> getAllActors(PhysicalActorPkg actorPkg) {
+  public static List<PhysicalActor> getAllActors(PhysicalActorPkg actorPkg) {
     return (List) getAllActors((Structure) actorPkg);
   }
 
@@ -92,11 +92,11 @@ public class ActorPkgExt {
    * @return The list of inherited actors.
    */
   public static List<AbstractActor> getSuperActors(AbstractActor actor) {
-    List<AbstractActor> superActors = new ArrayList<AbstractActor>();
+    List<AbstractActor> superActors = new ArrayList<>();
 
     for (Generalization actorGeneralization : actor.getSuperGeneralizations()) {
       GeneralizableElement superActor = actorGeneralization.getSuper();
-      if ((superActor != null) && (superActor instanceof AbstractActor)) {
+      if (superActor instanceof AbstractActor) {
         superActors.add((AbstractActor) superActor);
       }
     }

@@ -53,7 +53,7 @@ public class ConfigurationItemHelper {
   }
 
   protected List<AbstractPhysicalArtifact> getAllocatedPhysicalArtifacts(ConfigurationItem element) {
-    List<AbstractPhysicalArtifact> ret = new ArrayList<AbstractPhysicalArtifact>();
+    List<AbstractPhysicalArtifact> ret = new ArrayList<>();
 
     for (AbstractTrace trace : element.getOutgoingTraces()) {
       if (trace instanceof PhysicalArtifactRealization) {

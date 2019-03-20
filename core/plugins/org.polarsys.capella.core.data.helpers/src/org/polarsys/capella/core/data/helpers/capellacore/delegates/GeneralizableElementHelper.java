@@ -55,7 +55,7 @@ public class GeneralizableElementHelper {
   }
 
   protected List<GeneralizableElement> getSub(GeneralizableElement element) {
-    List<GeneralizableElement> ret = new ArrayList<GeneralizableElement>();
+    List<GeneralizableElement> ret = new ArrayList<>();
     for (Generalization generalization : element.getSubGeneralizations()) {
       GeneralizableElement sub = generalization.getSub();
       if (sub != null) {
@@ -66,11 +66,11 @@ public class GeneralizableElementHelper {
   }
 
   protected List<GeneralizableElement> getSuper(GeneralizableElement element) {
-    List<GeneralizableElement> ret = new ArrayList<GeneralizableElement>();
+    List<GeneralizableElement> ret = new ArrayList<>();
     for (Generalization generalization : element.getSuperGeneralizations()) {
-      GeneralizableElement _super = generalization.getSuper();
-      if (_super != null) {
-        ret.add(_super);
+      GeneralizableElement superr = generalization.getSuper();
+      if (superr != null) {
+        ret.add(superr);
       }
     }
     return ret;

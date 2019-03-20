@@ -66,7 +66,7 @@ public class SystemEngineeringHelper {
   }
 
   protected List<OperationalAnalysis> getContainedOperationalAnalysis(SystemEngineering element) {
-    List<OperationalAnalysis> res = new ArrayList<OperationalAnalysis>();
+    List<OperationalAnalysis> res = new ArrayList<>();
     for (ModellingArchitecture architecture : element.getOwnedArchitectures()) {
       if (architecture instanceof OperationalAnalysis) {
         res.add((OperationalAnalysis) architecture);
@@ -76,7 +76,7 @@ public class SystemEngineeringHelper {
   }
 
   protected List<SystemAnalysis> getContainedSystemAnalysis(SystemEngineering element) {
-    List<SystemAnalysis> res = new ArrayList<SystemAnalysis>();
+    List<SystemAnalysis> res = new ArrayList<>();
     for (ModellingArchitecture architecture : element.getOwnedArchitectures()) {
       if (architecture instanceof SystemAnalysis) {
         res.add((SystemAnalysis) architecture);
@@ -86,7 +86,7 @@ public class SystemEngineeringHelper {
   }
 
   protected List<LogicalArchitecture> getContainedLogicalArchitectures(SystemEngineering element) {
-    List<LogicalArchitecture> res = new ArrayList<LogicalArchitecture>();
+    List<LogicalArchitecture> res = new ArrayList<>();
     for (ModellingArchitecture architecture : element.getOwnedArchitectures()) {
       if (architecture instanceof LogicalArchitecture) {
         res.add((LogicalArchitecture) architecture);
@@ -96,7 +96,7 @@ public class SystemEngineeringHelper {
   }
 
   protected List<PhysicalArchitecture> getContainedPhysicalArchitectures(SystemEngineering element) {
-    List<PhysicalArchitecture> res = new ArrayList<PhysicalArchitecture>();
+    List<PhysicalArchitecture> res = new ArrayList<>();
     for (ModellingArchitecture architecture : element.getOwnedArchitectures()) {
       if (architecture instanceof PhysicalArchitecture) {
         res.add((PhysicalArchitecture) architecture);
@@ -106,7 +106,7 @@ public class SystemEngineeringHelper {
   }
 
   protected List<EPBSArchitecture> getContainedEPBSArchitectures(SystemEngineering element) {
-    List<EPBSArchitecture> res = new ArrayList<EPBSArchitecture>();
+    List<EPBSArchitecture> res = new ArrayList<>();
     for (ModellingArchitecture architecture : element.getOwnedArchitectures()) {
       if (architecture instanceof EPBSArchitecture) {
         res.add((EPBSArchitecture) architecture);
@@ -116,7 +116,7 @@ public class SystemEngineeringHelper {
   }
 
   protected List<SharedPkg> getContainedSharedPkgs(SystemEngineering element) {
-    List<SharedPkg> res = new ArrayList<SharedPkg>();
+    List<SharedPkg> res = new ArrayList<>();
     for (ModellingArchitecture architecture : element.getOwnedArchitectures()) {
       if (architecture instanceof SharedPkg) {
         res.add((SharedPkg) architecture);

@@ -56,7 +56,7 @@ public class AbstractFunctionalBlockHelper {
 
   protected List<ComponentFunctionalAllocation> getFunctionalAllocations(AbstractFunctionalBlock element) {
     List<AbstractTrace> traces = element.getOutgoingTraces();
-    List<ComponentFunctionalAllocation> ret = new ArrayList<ComponentFunctionalAllocation>();
+    List<ComponentFunctionalAllocation> ret = new ArrayList<>();
 
     for (AbstractTrace trace : traces) {
       if (trace instanceof ComponentFunctionalAllocation) {
@@ -69,7 +69,7 @@ public class AbstractFunctionalBlockHelper {
 
   protected List<AbstractFunction> getAllocatedFunctions(AbstractFunctionalBlock element) {
     List<ComponentFunctionalAllocation> allocs = element.getFunctionalAllocations();
-    List<AbstractFunction> ret = new ArrayList<AbstractFunction>();
+    List<AbstractFunction> ret = new ArrayList<>();
     for (ComponentFunctionalAllocation componentFunctionalAllocation : allocs) {
       // Avoid gmf cross referencing issue.
       AbstractFunction function = componentFunctionalAllocation.getFunction();

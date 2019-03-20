@@ -86,7 +86,7 @@ public class EntityHelper {
 	}
 
 	protected List<RoleAllocation> getRoleAllocations(Entity element) {
-		List<RoleAllocation> ret = new ArrayList<RoleAllocation>();
+		List<RoleAllocation> ret = new ArrayList<>();
 
 		for (AbstractTrace abstractTrace : element.getOutgoingTraces()) {
 			if (abstractTrace instanceof RoleAllocation) {
@@ -97,11 +97,11 @@ public class EntityHelper {
 	}
 
 	protected List<Entity> getSubEntities(Entity element) {
-		List<Entity> ret = new ArrayList<Entity>();
+		List<Entity> ret = new ArrayList<>();
 
 		for (Partition thePartition : element.getOwnedPartitions()) {
 			Type representedElement = thePartition.getType();
-			if (null != representedElement && representedElement instanceof Entity) {
+			if (representedElement instanceof Entity) {
 				ret.add((Entity) representedElement);
 			}
 		}
@@ -109,7 +109,7 @@ public class EntityHelper {
 	}
 
   protected List<OperationalActivity> getAllocatedOperationalActivities(Entity element) {
-    List<OperationalActivity> ret = new ArrayList<OperationalActivity>();
+    List<OperationalActivity> ret = new ArrayList<>();
     for (AbstractFunction function : element.getAllocatedFunctions()) {
       if (function instanceof OperationalActivity) {
         ret.add((OperationalActivity) function);
@@ -119,7 +119,7 @@ public class EntityHelper {
   }
 
   protected List<OperationalCapability> getInvolvingOperationalCapabilities(Entity element) {
-    List<OperationalCapability> ret = new ArrayList<OperationalCapability>();
+    List<OperationalCapability> ret = new ArrayList<>();
     for (Involvement inv : element.getInvolvingInvolvements()) {
       if (inv instanceof EntityOperationalCapabilityInvolvement) {
         OperationalCapability cap = ((EntityOperationalCapabilityInvolvement) inv).getCapability();
@@ -132,7 +132,7 @@ public class EntityHelper {
   }
 
   protected List<System> getRealizingSystems(Entity element) {
-    List<System> ret = new ArrayList<System>();
+    List<System> ret = new ArrayList<>();
     for (AbstractTrace trace : element.getIncomingTraces()) {
       if ((trace instanceof OperationalEntityRealization) || (trace instanceof OperationalActorRealization)) {
         Component cpnt = ((ComponentAllocation)trace).getAllocatingComponent();
@@ -145,7 +145,7 @@ public class EntityHelper {
   }
 
   protected List<Actor> getRealizingActors(Entity element) {
-    List<Actor> ret = new ArrayList<Actor>();
+    List<Actor> ret = new ArrayList<>();
     if (!(element instanceof OperationalActor)) {
       for (AbstractTrace trace : element.getIncomingTraces()) {
         if (trace instanceof OperationalEntityRealization) {
@@ -160,7 +160,7 @@ public class EntityHelper {
   }
 
   protected List<Role> getAllocatedRoles(Entity element) {
-    List<Role> ret = new ArrayList<Role>();
+    List<Role> ret = new ArrayList<>();
     for (RoleAllocation roleAllocation : element.getRoleAllocations()) {
       Role role = roleAllocation.getRole();
       if (null != role){

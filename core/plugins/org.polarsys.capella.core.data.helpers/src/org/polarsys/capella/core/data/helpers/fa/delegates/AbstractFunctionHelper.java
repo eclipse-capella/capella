@@ -109,7 +109,7 @@ public class AbstractFunctionHelper {
   }
 
   protected List<FunctionRealization> getInFunctionRealizations(AbstractFunction element) {
-    List<FunctionRealization> ret = new ArrayList<FunctionRealization>();
+    List<FunctionRealization> ret = new ArrayList<>();
     for (AbstractTrace trace : element.getIncomingTraces()) {
       if (trace instanceof FunctionRealization) {
         ret.add((FunctionRealization) trace);
@@ -119,7 +119,7 @@ public class AbstractFunctionHelper {
   }
 
   protected List<FunctionRealization> getOutFunctionRealizations(AbstractFunction element) {
-    List<FunctionRealization> ret = new ArrayList<FunctionRealization>();
+    List<FunctionRealization> ret = new ArrayList<>();
     for (AbstractTrace trace : element.getOutgoingTraces()) {
       if (trace instanceof FunctionRealization) {
         ret.add((FunctionRealization) trace);
@@ -129,7 +129,7 @@ public class AbstractFunctionHelper {
   }
 
   protected List<ComponentFunctionalAllocation> getComponentFunctionalAllocations(AbstractFunction element) {
-    List<ComponentFunctionalAllocation> ret = new ArrayList<ComponentFunctionalAllocation>();
+    List<ComponentFunctionalAllocation> ret = new ArrayList<>();
     for (AbstractTrace trace : element.getIncomingTraces()) {
       if (trace instanceof ComponentFunctionalAllocation) {
         ret.add((ComponentFunctionalAllocation) trace);
@@ -139,7 +139,7 @@ public class AbstractFunctionHelper {
   }
 
   protected List<AbstractFunctionalBlock> getAllocationBlocks(AbstractFunction element) {
-    List<AbstractFunctionalBlock> ret = new ArrayList<AbstractFunctionalBlock>();
+    List<AbstractFunctionalBlock> ret = new ArrayList<>();
     for (ComponentFunctionalAllocation alloc : element.getComponentFunctionalAllocations()) {
       AbstractFunctionalBlock block = alloc.getBlock();
       if (null != block)
@@ -149,7 +149,7 @@ public class AbstractFunctionHelper {
   }
 
   protected List<Capability> getInvolvingCapabilities(AbstractFunction element) {
-    List<Capability> ret = new ArrayList<Capability>();
+    List<Capability> ret = new ArrayList<>();
     for (Involvement inv : element.getInvolvingInvolvements()) {
       if (inv instanceof AbstractFunctionAbstractCapabilityInvolvement) {
         AbstractCapability cap = ((AbstractFunctionAbstractCapabilityInvolvement) inv).getCapability();
@@ -162,7 +162,7 @@ public class AbstractFunctionHelper {
   }
 
   protected List<CapabilityRealization> getInvolvingCapabilityRealizations(AbstractFunction element) {
-    List<CapabilityRealization> ret = new ArrayList<CapabilityRealization>();
+    List<CapabilityRealization> ret = new ArrayList<>();
     for (Involvement inv : element.getInvolvingInvolvements()) {
       if (inv instanceof AbstractFunctionAbstractCapabilityInvolvement) {
         AbstractCapability cap = ((AbstractFunctionAbstractCapabilityInvolvement) inv).getCapability();
@@ -179,7 +179,7 @@ public class AbstractFunctionHelper {
   }
 
   protected List<FunctionalChain> getInvolvingFunctionalChains(AbstractFunction element) {
-    List<FunctionalChain> result = new ArrayList<FunctionalChain>();
+    List<FunctionalChain> result = new ArrayList<>();
     for (Involvement involvement : element.getInvolvingInvolvements()) {
       if(involvement instanceof FunctionalChainInvolvement){
         InvolverElement fc = involvement.getInvolver();
@@ -193,7 +193,7 @@ public class AbstractFunctionHelper {
 
   protected FunctionSpecification getLinkedFunctionSpecification(AbstractFunction element){
     AbstractBehavior behavior = element.getBehavior();
-    if(null != behavior && behavior instanceof FunctionSpecification){
+    if(behavior instanceof FunctionSpecification){
       return (FunctionSpecification) behavior;
     }
     return null;
@@ -201,7 +201,7 @@ public class AbstractFunctionHelper {
 
   protected StateMachine getLinkedStateMachine(AbstractFunction element){
     AbstractBehavior behavior = element.getBehavior();
-    if(null != behavior && behavior instanceof StateMachine){
+    if(behavior instanceof StateMachine){
       return (StateMachine) behavior;
     }
     return null;
@@ -209,7 +209,7 @@ public class AbstractFunctionHelper {
 
   @SuppressWarnings("unchecked")
   protected List<ActivityEdge> getIncomingEdges(AbstractFunction element, EStructuralFeature feature) {
-    List<ActivityEdge> res = new ArrayList<ActivityEdge>();
+    List<ActivityEdge> res = new ArrayList<>();
 
     if (element.getInputs().isEmpty()) {
       res.addAll((Collection<? extends ActivityEdge>) ActivityNodeHelper.getInstance().doSwitch(element, feature));
@@ -224,7 +224,7 @@ public class AbstractFunctionHelper {
 
   @SuppressWarnings("unchecked")
   protected List<ActivityEdge> getOutgoingEdges(AbstractFunction element, EStructuralFeature feature) {
-    List<ActivityEdge> res = new ArrayList<ActivityEdge>();
+    List<ActivityEdge> res = new ArrayList<>();
 
     if (element.getOutputs().isEmpty()) {
       res.addAll((Collection<? extends ActivityEdge>) ActivityNodeHelper.getInstance().doSwitch(element, feature));

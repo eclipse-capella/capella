@@ -53,14 +53,14 @@ public class InterfaceAllocationHelper {
 
 	protected Interface getAllocatedInterface(InterfaceAllocation element) {
 		TraceableElement ret = element.getTargetElement();
-		if(null != ret && ret instanceof Interface)
+		if(ret instanceof Interface)
 			return (Interface) ret;
 		return null;
 	}
 
 	protected InterfaceAllocator getAllocatingInterfaceAllocator(InterfaceAllocation element) {
 		TraceableElement ret = element.getSourceElement();
-		if(null != ret && ret instanceof InterfaceAllocator)
+		if(ret instanceof InterfaceAllocator)
 			return (InterfaceAllocator) ret;
 		return null;
 	}

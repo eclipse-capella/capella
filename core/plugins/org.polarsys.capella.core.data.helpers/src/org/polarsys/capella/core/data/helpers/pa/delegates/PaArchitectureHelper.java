@@ -66,7 +66,7 @@ public class PaArchitectureHelper {
   }
 
   protected List<LogicalArchitectureRealization> getAllocatedLogicalArchitectureRealizations(PhysicalArchitecture element) {
-    List<LogicalArchitectureRealization> ret = new ArrayList<LogicalArchitectureRealization>();
+    List<LogicalArchitectureRealization> ret = new ArrayList<>();
 
     for (ArchitectureAllocation architectureAllocation : element.getProvisionedArchitectureAllocations()) {
       if (architectureAllocation instanceof LogicalArchitectureRealization) {
@@ -93,7 +93,7 @@ public class PaArchitectureHelper {
   }
 
   protected List<LogicalArchitecture> getAllocatedLogicalArchitectures(PhysicalArchitecture element){
-    List <LogicalArchitecture> ret = new ArrayList<LogicalArchitecture>();
+    List <LogicalArchitecture> ret = new ArrayList<>();
     for (BlockArchitecture architecture : element.getAllocatedArchitectures()) {
       if (architecture instanceof LogicalArchitecture) {
         ret.add((LogicalArchitecture) architecture);
@@ -103,7 +103,7 @@ public class PaArchitectureHelper {
   }
 
   protected List <EPBSArchitecture> getAllocatingEpbsArchitectures(PhysicalArchitecture element) {
-    List <EPBSArchitecture> ret = new ArrayList<EPBSArchitecture>();
+    List <EPBSArchitecture> ret = new ArrayList<>();
     for (BlockArchitecture architecture : element.getAllocatingArchitectures()) {
       if (architecture instanceof EPBSArchitecture) {
         ret.add((EPBSArchitecture) architecture);

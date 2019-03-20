@@ -71,7 +71,7 @@ public class CapabilityRealizationHelper {
 	}
 
 	protected List<SystemComponentCapabilityRealizationInvolvement> getInvolvedSystemComponents(CapabilityRealization element) {
-		List <SystemComponentCapabilityRealizationInvolvement> ret = new ArrayList<SystemComponentCapabilityRealizationInvolvement>();
+		List <SystemComponentCapabilityRealizationInvolvement> ret = new ArrayList<>();
 		for (Involvement involvement : element.getInvolvedInvolvements()) {
 			if (involvement instanceof SystemComponentCapabilityRealizationInvolvement) {
 				ret.add((SystemComponentCapabilityRealizationInvolvement) involvement);
@@ -81,7 +81,7 @@ public class CapabilityRealizationHelper {
 	}
 
 	protected List<ActorCapabilityRealizationInvolvement> getInvolvedActors(CapabilityRealization element) {
-		List <ActorCapabilityRealizationInvolvement> ret = new ArrayList<ActorCapabilityRealizationInvolvement>();
+		List <ActorCapabilityRealizationInvolvement> ret = new ArrayList<>();
 		for (Involvement involvement : element.getInvolvedInvolvements()) {
 			if (involvement instanceof ActorCapabilityRealizationInvolvement) {
 				ret.add((ActorCapabilityRealizationInvolvement) involvement);
@@ -91,10 +91,10 @@ public class CapabilityRealizationHelper {
 	}
 
 	protected List<SystemComponent> getParticitpatingSystemComponents(CapabilityRealization element) {
-		List<SystemComponent> ret = new ArrayList<SystemComponent>();
+		List<SystemComponent> ret = new ArrayList<>();
 		for (SystemComponentCapabilityRealizationInvolvement involvement : element.getInvolvedSystemComponents()) {
 			InvolvedElement comp = involvement.getInvolved();
-			if(null != comp && comp instanceof SystemComponent) {
+			if(comp instanceof SystemComponent) {
 				ret.add((SystemComponent) comp);
 			}
 		}
@@ -102,10 +102,10 @@ public class CapabilityRealizationHelper {
 	}
 
 	protected List<AbstractActor> getParticitpatingActors(CapabilityRealization element) {
-		List<AbstractActor> ret = new ArrayList<AbstractActor>();
+		List<AbstractActor> ret = new ArrayList<>();
 		for (ActorCapabilityRealizationInvolvement involvement : element.getInvolvedActors()) {
 			InvolvedElement comp = involvement.getInvolved();
-			if(null != comp && comp instanceof AbstractActor) {
+			if(comp instanceof AbstractActor) {
 				ret.add((AbstractActor) comp);
 			}
 		}
@@ -113,7 +113,7 @@ public class CapabilityRealizationHelper {
 	}
 
   protected List<Capability> getRealizedCapabilities(CapabilityRealization element) {
-    List <Capability> ret = new ArrayList<Capability>();
+    List <Capability> ret = new ArrayList<>();
     for (AbstractTrace trace : element.getOutgoingTraces()) {
       if (trace instanceof AbstractCapabilityRealization){
         AbstractCapability capability = ((AbstractCapabilityRealization) trace).getRealizedCapability();
@@ -126,7 +126,7 @@ public class CapabilityRealizationHelper {
   }
 
   protected List<CapabilityRealization> getRealizedCapabilityRealizations(CapabilityRealization element) {
-    List <CapabilityRealization> ret = new ArrayList<CapabilityRealization>();
+    List <CapabilityRealization> ret = new ArrayList<>();
     for (AbstractTrace trace : element.getOutgoingTraces()) {
       if (trace instanceof AbstractCapabilityRealization){
         AbstractCapability capability = ((AbstractCapabilityRealization) trace).getRealizedCapability();
@@ -139,7 +139,7 @@ public class CapabilityRealizationHelper {
   }
 
   protected List<CapabilityRealization> getRealizingCapabilityRealizations(CapabilityRealization element) {
-    List <CapabilityRealization> ret = new ArrayList<CapabilityRealization>();
+    List <CapabilityRealization> ret = new ArrayList<>();
     for (AbstractTrace trace : element.getIncomingTraces()) {
       if (trace instanceof AbstractCapabilityRealization){
         AbstractCapability capability = ((AbstractCapabilityRealization) trace).getRealizingCapability();

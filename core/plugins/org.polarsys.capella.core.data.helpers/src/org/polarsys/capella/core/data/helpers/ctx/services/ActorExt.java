@@ -61,7 +61,7 @@ public class ActorExt {
 	 * @return the involved capabilities
 	 */
 	public static List<Capability> getInvolvedCapabilities(Actor actor) {
-		List<Capability> involvedCapabilities = new ArrayList<Capability>();
+		List<Capability> involvedCapabilities = new ArrayList<>();
 
 		for (ActorCapabilityInvolvement actorCapabilityInvolvement : actor.getParticipationsInCapabilities()) {
 			Capability capabilitySpecificationUseCase = actorCapabilityInvolvement.getCapability();
@@ -101,7 +101,7 @@ public class ActorExt {
 	 *            the CapabilityUseCase
 	 * @return true if the actor interacts with the CapabilityUseCase
 	 */
-	static public boolean isInteracting(Actor actor, AbstractCapability capabilityUseCase) {
+	public static boolean isInteracting(Actor actor, AbstractCapability capabilityUseCase) {
 		boolean isInteracting = false;
 
 		for (ActorCapabilityInvolvement actorCapabilityInvolvement : actor.getParticipationsInCapabilities()) {
@@ -124,7 +124,7 @@ public class ActorExt {
 	 *            the Mission
 	 * @return true if the actor interacts with the Mission
 	 */
-	static public boolean isInteracting(Actor actor, Mission mission) {
+	public static boolean isInteracting(Actor actor, Mission mission) {
 		boolean isInteracting = false;
 
 		for (ActorMissionInvolvement actorMissionInvolvement : mission.getInvolvedActors()) {

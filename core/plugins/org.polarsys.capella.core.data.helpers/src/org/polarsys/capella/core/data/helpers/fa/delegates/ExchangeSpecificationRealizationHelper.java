@@ -51,14 +51,14 @@ public class ExchangeSpecificationRealizationHelper {
 
   protected ExchangeSpecification getRealizingExchangeSpecification(ExchangeSpecificationRealization element) {
     TraceableElement ret = element.getSourceElement();
-    if (null != ret && ret instanceof ExchangeSpecification)
+    if (ret instanceof ExchangeSpecification)
       return (ExchangeSpecification) ret;
     return null;
   }
 
   protected ExchangeSpecification getRealizedExchangeSpecification(ExchangeSpecificationRealization element) {
     TraceableElement ret = element.getTargetElement();
-    if (null != ret && ret instanceof ExchangeSpecification)
+    if (ret instanceof ExchangeSpecification)
       return (ExchangeSpecification) ret;
     return null;
   }

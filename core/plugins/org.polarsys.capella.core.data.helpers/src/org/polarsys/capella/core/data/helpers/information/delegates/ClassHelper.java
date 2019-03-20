@@ -67,7 +67,7 @@ public class ClassHelper {
    *
    */
   protected List<Class> getRealizedClasses(Class element) {
-    List <Class> ret = new ArrayList <Class>();
+    List <Class> ret = new ArrayList <>();
     for (AbstractTrace trace : element.getOutgoingTraces()) {
       if (trace instanceof InformationRealization) {
         TraceableElement elt = trace.getTargetElement();
@@ -83,7 +83,7 @@ public class ClassHelper {
    *
    */
   protected List<Class> getRealizingClasses(Class element) {
-    List <Class> ret = new ArrayList <Class>();
+    List <Class> ret = new ArrayList <>();
     for (AbstractTrace trace : element.getIncomingTraces()) {
       if (trace instanceof InformationRealization) {
         TraceableElement elt = trace.getSourceElement();

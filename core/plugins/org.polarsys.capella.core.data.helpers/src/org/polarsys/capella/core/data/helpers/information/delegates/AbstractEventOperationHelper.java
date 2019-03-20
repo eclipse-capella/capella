@@ -55,30 +55,29 @@ public class AbstractEventOperationHelper {
 	/**
 	 * 
 	 */
-	protected List<SequenceMessage> getInvokingSequenceMessages(AbstractEventOperation element) {
-		List <SequenceMessage> ret = new ArrayList <SequenceMessage>();
-		for (EObject evt : EObjectExt.getReferencers(element, InteractionPackage.Literals.EVENT_RECEIPT_OPERATION__OPERATION)) {
-	    for (EObject end : EObjectExt.getReferencers(evt, InteractionPackage.Literals.ABSTRACT_END__EVENT)) {
-  	    for (EObject msg : EObjectExt.getReferencers(end, InteractionPackage.Literals.SEQUENCE_MESSAGE__RECEIVING_END)) {
-    		  if (msg instanceof SequenceMessage) {
-    				if (!ret.contains(msg)) {
-    				  ret.add((SequenceMessage) msg);
-    				}
-    			}
-  	    }
-	    }
-		}
-    for (EObject evt : EObjectExt.getReferencers(element, InteractionPackage.Literals.EVENT_SENT_OPERATION__OPERATION)) {
+  protected List<SequenceMessage> getInvokingSequenceMessages(AbstractEventOperation element) {
+    List<SequenceMessage> ret = new ArrayList<>();
+    for (EObject evt : EObjectExt.getReferencers(element,
+        InteractionPackage.Literals.EVENT_RECEIPT_OPERATION__OPERATION)) {
       for (EObject end : EObjectExt.getReferencers(evt, InteractionPackage.Literals.ABSTRACT_END__EVENT)) {
-        for (EObject msg : EObjectExt.getReferencers(end, InteractionPackage.Literals.SEQUENCE_MESSAGE__SENDING_END)) {
-          if (msg instanceof SequenceMessage) {
-            if (!ret.contains(msg)) {
-              ret.add((SequenceMessage) msg);
-            }
+        for (EObject msg : EObjectExt.getReferencers(end,
+            InteractionPackage.Literals.SEQUENCE_MESSAGE__RECEIVING_END)) {
+          if (msg instanceof SequenceMessage && !ret.contains(msg)) {
+            ret.add((SequenceMessage) msg);
           }
         }
       }
     }
-		return ret;
-	}
+    for (EObject evt : EObjectExt.getReferencers(element,
+        InteractionPackage.Literals.EVENT_SENT_OPERATION__OPERATION)) {
+      for (EObject end : EObjectExt.getReferencers(evt, InteractionPackage.Literals.ABSTRACT_END__EVENT)) {
+        for (EObject msg : EObjectExt.getReferencers(end, InteractionPackage.Literals.SEQUENCE_MESSAGE__SENDING_END)) {
+          if (msg instanceof SequenceMessage && !ret.contains(msg)) {
+            ret.add((SequenceMessage) msg);
+          }
+        }
+      }
+    }
+    return ret;
+  }
 }

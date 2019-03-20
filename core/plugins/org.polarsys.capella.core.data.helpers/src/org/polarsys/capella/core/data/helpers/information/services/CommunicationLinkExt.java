@@ -62,7 +62,7 @@ public class CommunicationLinkExt {
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public static Collection<CommunicationLink> getAllCommunicationLinks(
 			CommunicationLinkExchanger sndCpnt) {
-		HashSet<CommunicationLink> result = new HashSet<CommunicationLink>();
+		HashSet<CommunicationLink> result = new HashSet<>();
 
 		Collection<NamedElement> components = null;
 		if (sndCpnt instanceof GeneralizableElement) {
@@ -74,7 +74,7 @@ public class CommunicationLinkExt {
 		}
 
 		for (NamedElement snd : components) {
-			if (snd != null && snd instanceof CommunicationLinkExchanger) {
+			if (snd instanceof CommunicationLinkExchanger) {
 				CommunicationLinkExchanger sndCompo = (CommunicationLinkExchanger) snd;
 				result.addAll(sndCompo.getOwnedCommunicationLinks());
 			}
@@ -89,7 +89,7 @@ public class CommunicationLinkExt {
 	 */
 	public static Collection<CommunicationLink> filterByKind(
 			Collection<CommunicationLink> links, CommunicationLinkKind kind) {
-		HashSet<CommunicationLink> result = new HashSet<CommunicationLink>();
+		HashSet<CommunicationLink> result = new HashSet<>();
 
 		for (CommunicationLink snd : links) {
 			if (snd != null && snd.getKind() == kind) {
@@ -104,7 +104,7 @@ public class CommunicationLinkExt {
 	 */
 	public static Collection<AbstractExchangeItem> getExchangeItems(
 			Collection<CommunicationLink> links) {
-		HashSet<AbstractExchangeItem> result = new HashSet<AbstractExchangeItem>();
+		HashSet<AbstractExchangeItem> result = new HashSet<>();
 
 		for (CommunicationLink snd : links) {
 			if (snd != null && snd.getExchangeItem() != null) {
@@ -120,14 +120,17 @@ public class CommunicationLinkExt {
 	 */
 	public static Collection<AbstractExchangeItem> getExchangeItemsByKinds(
 			Collection<CommunicationLink> links, CommunicationLinkKind[] kinds) {
-		HashSet<AbstractExchangeItem> result = new HashSet<AbstractExchangeItem>();
-		HashSet<CommunicationLinkKind> kinds_set = new HashSet<CommunicationLinkKind>();
+		HashSet<AbstractExchangeItem> result = new HashSet<>();
+		HashSet<CommunicationLinkKind> kinds_set = new HashSet<>();
 		for (CommunicationLinkKind kind : kinds) {
 			kinds_set.add(kind);
 		}
 		for (CommunicationLink snd : links) {
 			if (snd != null && kinds_set.contains(snd.getKind())) {
-				result.add(snd.getExchangeItem());
+				ExchangeItem exchangeItem = snd.getExchangeItem();
+				if(exchangeItem != null) {
+				  result.add(exchangeItem);				  
+				}
 			}
 		}
 		return result;
@@ -139,11 +142,14 @@ public class CommunicationLinkExt {
 	 */
 	public static Collection<AbstractExchangeItem> getExchangeItemsByKind(
 			Collection<CommunicationLink> links, CommunicationLinkKind kind) {
-		HashSet<AbstractExchangeItem> result = new HashSet<AbstractExchangeItem>();
+		HashSet<AbstractExchangeItem> result = new HashSet<>();
 
 		for (CommunicationLink snd : links) {
 			if (snd != null && kind.equals(snd.getKind())) {
-				result.add(snd.getExchangeItem());
+				ExchangeItem exchangeItem = snd.getExchangeItem();
+				if(exchangeItem != null) {
+				  result.add(exchangeItem);				  
+				}
 			}
 		}
 		return result;
@@ -194,7 +200,7 @@ public class CommunicationLinkExt {
 	 */
 	public static List<CommunicationLink> getSenderCommunicationLink(
 			Component component) {
-		List<CommunicationLink> senderLinks = new ArrayList<CommunicationLink>();
+		List<CommunicationLink> senderLinks = new ArrayList<>();
 		for (CommunicationLink link : component.getOwnedCommunicationLinks()) {
 			if (isSender(link)) {
 				senderLinks.add(link);
@@ -212,23 +218,21 @@ public class CommunicationLinkExt {
 	 * @return List<CommunicationLink>
 	 */
 	public static List<CommunicationLink> getAllSenderCommunicationLink(
-			Component component) {
-		List<CommunicationLink> senderLinks = new ArrayList<CommunicationLink>();
-		List<GeneralizableElement> components = (List<GeneralizableElement>) GeneralizableElementExt
-				.getAllSuperGeneralizableElements(component);
-		components.add(component);
+      Component component) {
+    List<CommunicationLink> senderLinks = new ArrayList<>();
+    List<GeneralizableElement> components = GeneralizableElementExt.getAllSuperGeneralizableElements(component);
+    components.add(component);
 
-		for (GeneralizableElement ge : components) {
-			if (ge instanceof Component)
-				for (CommunicationLink link : ((Component) ge)
-						.getOwnedCommunicationLinks()) {
-					if (isSender(link)) {
-						senderLinks.add(link);
-					}
-				}
-		}
-		return senderLinks;
-	}
+    for (GeneralizableElement ge : components) {
+      if (ge instanceof Component)
+        for (CommunicationLink link : ((Component) ge).getOwnedCommunicationLinks()) {
+          if (isSender(link)) {
+            senderLinks.add(link);
+          }
+        }
+    }
+    return senderLinks;
+  }
 
 	/**
 	 * return the list of all Communication Link contained by the given
@@ -240,7 +244,7 @@ public class CommunicationLinkExt {
 	 */
 	public static List<CommunicationLink> getReceiverCommunicationLink(
 			Component component) {
-		List<CommunicationLink> receiverLinks = new ArrayList<CommunicationLink>();
+		List<CommunicationLink> receiverLinks = new ArrayList<>();
 		for (CommunicationLink link : component.getOwnedCommunicationLinks()) {
 			if (isReceiver(link)) {
 				receiverLinks.add(link);
@@ -258,24 +262,22 @@ public class CommunicationLinkExt {
 	 * @return List<CommunicationLink>
 	 */
 	public static List<CommunicationLink> getAllReceiverCommunicationLink(
-			Component component) {
-		List<CommunicationLink> receiverLinks = new ArrayList<CommunicationLink>();
-		List<GeneralizableElement> components = (List<GeneralizableElement>) GeneralizableElementExt
-				.getAllSuperGeneralizableElements(component);
-		components.add(component);
+      Component component) {
+    List<CommunicationLink> receiverLinks = new ArrayList<>();
+    List<GeneralizableElement> components = GeneralizableElementExt.getAllSuperGeneralizableElements(component);
+    components.add(component);
 
-		for (GeneralizableElement ge : components) {
-			if (ge instanceof Component)
-				for (CommunicationLink link : ((Component) ge)
-						.getOwnedCommunicationLinks()) {
-					if (isReceiver(link)) {
-						receiverLinks.add(link);
-					}
-				}
-		}
+    for (GeneralizableElement ge : components) {
+      if (ge instanceof Component)
+        for (CommunicationLink link : ((Component) ge).getOwnedCommunicationLinks()) {
+          if (isReceiver(link)) {
+            receiverLinks.add(link);
+          }
+        }
+    }
 
-		return receiverLinks;
-	}
+    return receiverLinks;
+  }
 
 	/**
 	 * True if link1 and link2 target the same Exchange Item, have the same kind
@@ -287,5 +289,4 @@ public class CommunicationLinkExt {
 				&& link1.getProtocol() == link2.getProtocol()
 				&& link1.getKind() == link2.getKind();
 	}
-
 }

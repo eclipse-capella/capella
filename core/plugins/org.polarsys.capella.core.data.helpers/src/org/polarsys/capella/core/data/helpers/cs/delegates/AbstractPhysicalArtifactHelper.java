@@ -53,7 +53,7 @@ public class AbstractPhysicalArtifactHelper {
   }
 
   protected List<ConfigurationItem> getAllocatorConfigurationItems(AbstractPhysicalArtifact element) {
-    List<ConfigurationItem> ret = new ArrayList<ConfigurationItem>();
+    List<ConfigurationItem> ret = new ArrayList<>();
     for (AbstractTrace trace : element.getIncomingTraces()) {
       if (trace instanceof PhysicalArtifactRealization) {
         Component cpnt = ((PhysicalArtifactRealization) trace).getAllocatingComponent();

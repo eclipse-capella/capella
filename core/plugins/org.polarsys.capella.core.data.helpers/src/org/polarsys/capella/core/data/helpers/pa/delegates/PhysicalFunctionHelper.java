@@ -66,7 +66,7 @@ public class PhysicalFunctionHelper {
   }
 
   protected List<PhysicalActor> getAllocatorPhysicalActors(PhysicalFunction element) {
-    List<PhysicalActor> ret = new ArrayList<PhysicalActor>();
+    List<PhysicalActor> ret = new ArrayList<>();
     for (AbstractTrace trace : element.getIncomingTraces()) {
       if (trace instanceof ComponentFunctionalAllocation) {
         TraceableElement src = trace.getSourceElement();
@@ -79,7 +79,7 @@ public class PhysicalFunctionHelper {
   }
 
   protected List<PhysicalComponent> getAllocatorPhysicalComponents(PhysicalFunction element) {
-    List<PhysicalComponent> ret = new ArrayList<PhysicalComponent>();
+    List<PhysicalComponent> ret = new ArrayList<>();
     for (AbstractTrace trace : element.getIncomingTraces()) {
       if (trace instanceof ComponentFunctionalAllocation) {
         TraceableElement src = trace.getSourceElement();
@@ -92,7 +92,7 @@ public class PhysicalFunctionHelper {
   }
 
   protected List<LogicalFunction> getRealizedLogicalFunctions(PhysicalFunction element) {
-    List<LogicalFunction> ret = new ArrayList<LogicalFunction>();
+    List<LogicalFunction> ret = new ArrayList<>();
     for (FunctionRealization functionRealization : element.getOutFunctionRealizations()) {
       AbstractFunction abstractFunction = functionRealization.getAllocatedFunction();
       if (abstractFunction instanceof LogicalFunction) {
@@ -103,7 +103,7 @@ public class PhysicalFunctionHelper {
   }
 
   protected List<PhysicalFunction> getContainedPhysicalFunctions(PhysicalFunction element) {
-    List<PhysicalFunction> ret = new ArrayList<PhysicalFunction>();
+    List<PhysicalFunction> ret = new ArrayList<>();
     for (AbstractFunction function : element.getOwnedFunctions()) {
       if (function instanceof PhysicalFunction) {
         ret.add((PhysicalFunction) function);
@@ -113,7 +113,7 @@ public class PhysicalFunctionHelper {
   }
 
   protected List<PhysicalFunction> getChildrenPhysicalFunctions(PhysicalFunction element) {
-    List<PhysicalFunction> ret = new ArrayList<PhysicalFunction>();
+    List<PhysicalFunction> ret = new ArrayList<>();
     for (AbstractFunction function : element.getSubFunctions()) {
       if (function instanceof PhysicalFunction) {
         ret.add((PhysicalFunction) function);

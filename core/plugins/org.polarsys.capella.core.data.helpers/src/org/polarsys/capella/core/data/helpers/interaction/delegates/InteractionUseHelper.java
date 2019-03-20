@@ -50,7 +50,7 @@ public class InteractionUseHelper {
 	}
 
   protected List<Gate> getActualGates(InteractionUse element) {
-    List<Gate> ret = new ArrayList<Gate>();
+    List<Gate> ret = new ArrayList<>();
 
     ret.addAll(element.getOwnedGates());
 

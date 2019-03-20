@@ -53,7 +53,7 @@ public class FunctionInputPortHelper {
 	}
 
   protected List<FunctionalExchange> getIncomingFunctionalExchanges(FunctionInputPort element) {
-    List <FunctionalExchange> ret = new ArrayList<FunctionalExchange>();
+    List <FunctionalExchange> ret = new ArrayList<>();
     for (ActivityEdge activityEdge : element.getIncoming()) {
       if (activityEdge instanceof FunctionalExchange){
         ret.add((FunctionalExchange) activityEdge);

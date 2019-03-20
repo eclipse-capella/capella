@@ -52,7 +52,7 @@ public class ComponentExchangeAllocatorHelper {
 	}
 
 	protected List<ComponentExchange> getAllocatedComponentExchanges(ComponentExchangeAllocator element) {
-		List<ComponentExchange> ret = new ArrayList<ComponentExchange>();
+		List<ComponentExchange> ret = new ArrayList<>();
 		for (AbstractTrace trace : element.getOutgoingTraces()) {
 			if (trace instanceof ComponentExchangeAllocation) {
 			  ComponentExchange cpnt = ((ComponentExchangeAllocation) trace).getComponentExchangeAllocated();

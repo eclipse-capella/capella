@@ -54,7 +54,7 @@ public class RoleAllocationHelper {
 	protected Entity getEntity(RoleAllocation element) {
 		TraceableElement ret = element.getSourceElement();
 
-		if(null != ret && ret instanceof Entity)
+		if(ret instanceof Entity)
 			return (Entity) ret;
 
 		return null;
@@ -63,7 +63,7 @@ public class RoleAllocationHelper {
 	protected Role getRole(RoleAllocation element) {
 		TraceableElement ret = element.getTargetElement();
 
-		if(null != ret && ret instanceof Role)
+		if(ret instanceof Role)
 			return (Role) ret;
 
 		return null;

@@ -76,7 +76,7 @@ public class OperationalActivityHelper {
   }
 
   protected List<ActivityAllocation> getActivityAllocations(OperationalActivity element) {
-    List<ActivityAllocation> ret = new ArrayList<ActivityAllocation>();
+    List<ActivityAllocation> ret = new ArrayList<>();
 
     for (AbstractTrace abstractTrace : element.getIncomingTraces()) {
       if (abstractTrace instanceof ActivityAllocation) {
@@ -87,7 +87,7 @@ public class OperationalActivityHelper {
   }
 
   protected List<OperationalProcess> getOwnedProcess(OperationalActivity element) {
-    List<OperationalProcess> ret = new ArrayList<OperationalProcess>();
+    List<OperationalProcess> ret = new ArrayList<>();
     for (FunctionalChain functionalChain : element.getOwnedFunctionalChains()) {
       if (functionalChain instanceof OperationalProcess) {
         ret.add((OperationalProcess) functionalChain);
@@ -97,7 +97,7 @@ public class OperationalActivityHelper {
   }
 
   protected List<OperationalActivity> getContainedOperationalActivities(OperationalActivity element) {
-    List<OperationalActivity> ret = new ArrayList<OperationalActivity>();
+    List<OperationalActivity> ret = new ArrayList<>();
     for (AbstractFunction function : element.getOwnedFunctions()) {
       if (function instanceof OperationalActivity) {
         ret.add((OperationalActivity) function);
@@ -107,7 +107,7 @@ public class OperationalActivityHelper {
   }
 
   protected List<OperationalActivity> getChildrenOperationalActivities(OperationalActivity element) {
-    List<OperationalActivity> ret = new ArrayList<OperationalActivity>();
+    List<OperationalActivity> ret = new ArrayList<>();
     for (AbstractFunction function : element.getSubFunctions()) {
       if (function instanceof OperationalActivity) {
         ret.add((OperationalActivity) function);
@@ -125,7 +125,7 @@ public class OperationalActivityHelper {
   }
 
   protected List<Entity> getAllocatorEntities(OperationalActivity element) {
-    List<Entity> ret = new ArrayList<Entity>();
+    List<Entity> ret = new ArrayList<>();
     for (AbstractTrace trace : element.getIncomingTraces()) {
       if (trace instanceof ComponentFunctionalAllocation) {
         TraceableElement src = trace.getSourceElement();

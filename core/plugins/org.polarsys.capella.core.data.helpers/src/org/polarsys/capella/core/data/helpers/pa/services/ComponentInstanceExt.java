@@ -77,28 +77,34 @@ public class ComponentInstanceExt {
 		return false;
 	}
 
-	public static List<ComponentInstance> getDeployedElements(ComponentInstance location) {
-		List<ComponentInstance> deployedElements = new ArrayList<ComponentInstance>(1);
-		List<AbstractDeploymentLink> deployments = location.getDeploymentLinks();
+  public static List<ComponentInstance> getDeployedElements(ComponentInstance location) {
+    List<ComponentInstance> deployedElements = new ArrayList<>(1);
+    List<AbstractDeploymentLink> deployments = location.getDeploymentLinks();
 
-		for (AbstractDeploymentLink abstractDeployment : deployments) {
-			deployedElements.add((ComponentInstance) abstractDeployment.getDeployedElement());
-		}
-		return deployedElements;
-	}
+    for (AbstractDeploymentLink abstractDeployment : deployments) {
+      ComponentInstance deployedElement = (ComponentInstance) abstractDeployment.getDeployedElement();
+      if (deployedElement != null) {
+        deployedElements.add(deployedElement);
+      }
+    }
+    return deployedElements;
+  }
 
 	public static List<ComponentInstance> getDeploymentTargets(ComponentInstance element) {
-		List<ComponentInstance> deploymentTargets = new ArrayList<ComponentInstance>();
+		List<ComponentInstance> deploymentTargets = new ArrayList<>();
 		List<AbstractDeploymentLink> deployments = element.getDeployingLinks();
 
 		for (AbstractDeploymentLink abstractDeployment : deployments) {
-			deploymentTargets.add((ComponentInstance) abstractDeployment.getLocation());
+			ComponentInstance location = (ComponentInstance) abstractDeployment.getLocation();
+			if(location != null) {
+			  deploymentTargets.add(location);			  
+			}
 		}
 		return deploymentTargets;
 	}
 
 	public static void undeployElement(ComponentInstance location, ComponentInstance deployedElement) {
-		List<AbstractDeploymentLink> elementsToDelete = new ArrayList<AbstractDeploymentLink>();
+		List<AbstractDeploymentLink> elementsToDelete = new ArrayList<>();
 		List<AbstractDeploymentLink> deployements = location.getDeploymentLinks();
 
 		for (AbstractDeploymentLink abstractDeployment : deployements) {

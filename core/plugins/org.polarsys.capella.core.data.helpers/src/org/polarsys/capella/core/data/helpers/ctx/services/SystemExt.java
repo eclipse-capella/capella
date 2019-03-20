@@ -31,7 +31,7 @@ public class SystemExt {
 	 *            the CapabilityUseCase
 	 * @return true if the actor interacts with the CapabilityUseCase
 	 */
-	static public boolean hasInteraction(System system, Capability capabilityUseCase) {
+  public static boolean hasInteraction(System system, Capability capabilityUseCase) {
 		boolean isInteracting = false;
 
 		for (SystemCapabilityInvolvement capabilitySupplierLink : system.getParticipationsInCapabilities()) {
@@ -43,5 +43,4 @@ public class SystemExt {
 
 		return isInteracting;
 	}
-
 }

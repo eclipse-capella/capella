@@ -39,10 +39,13 @@ public class FunctionPortExt {
    * @return
    */
   public static List<Port> getRealizedPorts(FunctionPort fp) {
-    List<Port> result = new ArrayList<Port>();
+    List<Port> result = new ArrayList<>();
     for (AbstractTrace trace : fp.getOutgoingTraces()) {
       if (trace instanceof PortRealization) {
-        result.add(((PortRealization) trace).getRealizedPort());
+        Port realizedPort = ((PortRealization) trace).getRealizedPort();
+        if(realizedPort != null) {
+          result.add(realizedPort);          
+        }
       }
     }
     return result;
@@ -53,10 +56,13 @@ public class FunctionPortExt {
    * @return
    */
   public static List<Port> getRealizingPorts(FunctionPort fp) {
-    List<Port> result = new ArrayList<Port>();
+    List<Port> result = new ArrayList<>();
     for (AbstractTrace trace : fp.getIncomingTraces()) {
       if (trace instanceof PortRealization) {
-        result.add(((PortRealization) trace).getRealizingPort());
+        Port realizingPort = ((PortRealization) trace).getRealizingPort();
+        if(realizingPort != null) {          
+          result.add(realizingPort);
+        }
       }
     }
     return result;
@@ -69,7 +75,7 @@ public class FunctionPortExt {
    */
   public static Set<ExchangeItem> getAllIncomingExchangeItems(FunctionPort fp) {
 	  
-	  Set<ExchangeItem> exchangesItems = new HashSet<ExchangeItem>();
+	  Set<ExchangeItem> exchangesItems = new HashSet<>();
 	  
 	  if (fp instanceof FunctionInputPort) {
 		FunctionInputPort functionInputPort = (FunctionInputPort) fp;
@@ -89,19 +95,17 @@ public class FunctionPortExt {
    * @return
    */
   public static Set<Component> getAllProvidedRealizedRequiredInterfaces(FunctionPort fp) {
-	  Set<Component> exchangesItems = new HashSet<Component>();
+	  Set<Component> exchangesItems = new HashSet<>();
 	  AbstractFunction abstractFunction = (AbstractFunction) fp.eContainer();
 	  EList<ComponentFunctionalAllocation> componentFunctionalAllocation = abstractFunction.getComponentFunctionalAllocations() ;
 	  for (ComponentFunctionalAllocation componentFunctionalAllocation2 : componentFunctionalAllocation) {
 		  Component containerComponent = (Component) componentFunctionalAllocation2.getSourceElement();
-		  exchangesItems.add(containerComponent) ;
+		  if(containerComponent != null) {
+		    exchangesItems.add(containerComponent) ;		    
+		  }
 	  }
 	 
-	
-	  
 	  return exchangesItems ;
    
   }
-  
-  
 }

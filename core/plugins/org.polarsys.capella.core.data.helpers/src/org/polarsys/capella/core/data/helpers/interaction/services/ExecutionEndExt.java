@@ -37,7 +37,7 @@ public class ExecutionEndExt {
     Execution exec = executionEnd1.getExecution();
     if (exec != null) {
       InteractionFragment end = exec.getStart();
-      if ((end != null) && (end instanceof MessageEnd)) {
+      if (end instanceof MessageEnd) {
         msg = ((MessageEnd) end).getMessage();
       }
     }

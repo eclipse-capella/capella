@@ -50,7 +50,7 @@ public class FunctionalExchangeSpecificationHelper {
   }
 
   protected List<FunctionalExchange> getTransitions(FunctionalExchangeSpecification element) {
-    List<FunctionalExchange> ret = new ArrayList<FunctionalExchange>();
+    List<FunctionalExchange> ret = new ArrayList<>();
 
     for (AbstractRelationship item : element.getRealizations()) {
       if (item instanceof FunctionalExchange) {

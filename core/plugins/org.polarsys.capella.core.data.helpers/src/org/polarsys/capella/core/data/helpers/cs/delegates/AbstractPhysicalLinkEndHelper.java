@@ -52,7 +52,7 @@ public class AbstractPhysicalLinkEndHelper {
 	}
 
   protected List<PhysicalLink> getInvolvedLinks(AbstractPhysicalLinkEnd element) {
-    List<PhysicalLink> ret = new ArrayList<PhysicalLink>();
+    List<PhysicalLink> ret = new ArrayList<>();
 
     for (EObject ref: EObjectExt.getReferencers(element, CsPackage.Literals.PHYSICAL_LINK__LINK_ENDS)) {
       ret.add((PhysicalLink) ref);

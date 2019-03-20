@@ -58,7 +58,7 @@ public class OperationalCapabilityHelper {
   }
 
   protected List<Capability> getRealizingCapabilities(OperationalCapability element) {
-    List <Capability> ret = new ArrayList<Capability>();
+    List <Capability> ret = new ArrayList<>();
     for (AbstractTrace trace : element.getIncomingTraces()) {
       if (trace instanceof AbstractCapabilityRealization){
         AbstractCapability capability = ((AbstractCapabilityRealization) trace).getRealizingCapability();
@@ -71,7 +71,7 @@ public class OperationalCapabilityHelper {
   }
 
   protected List<Entity> getInvolvedEntities(OperationalCapability element) {
-    List<Entity> ret = new ArrayList<Entity>();
+    List<Entity> ret = new ArrayList<>();
     for (Involvement trace : element.getInvolvedInvolvements()) {
       if (trace instanceof EntityOperationalCapabilityInvolvement) {
         Entity entity = ((EntityOperationalCapabilityInvolvement) trace).getEntity();

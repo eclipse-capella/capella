@@ -101,7 +101,7 @@ public class AbstractCapabilityHelper {
   }
 
   protected List<AbstractCapability> getExtendedAbstractCapabilities(AbstractCapability element) {
-    List<AbstractCapability> ret = new ArrayList<AbstractCapability>();
+    List<AbstractCapability> ret = new ArrayList<>();
     for (AbstractCapabilityExtend extend : element.getExtends()) {
       AbstractCapability extended = extend.getExtended();
       if (null != extended) {
@@ -112,7 +112,7 @@ public class AbstractCapabilityHelper {
   }
 
   protected List<AbstractCapability> getExtendingAbstractCapabilities(AbstractCapability element) {
-    List<AbstractCapability> ret = new ArrayList<AbstractCapability>();
+    List<AbstractCapability> ret = new ArrayList<>();
     for (EObject ref : EObjectExt.getReferencers(element, InteractionPackage.Literals.ABSTRACT_CAPABILITY_EXTEND__EXTENDED)) {
       if (ref instanceof AbstractCapabilityExtend) {
         AbstractCapability extended = ((AbstractCapabilityExtend) ref).getExtension();
@@ -125,7 +125,7 @@ public class AbstractCapabilityHelper {
   }
 
   protected List<AbstractCapability> getIncludedAbstractCapabilities(AbstractCapability element) {
-    List<AbstractCapability> ret = new ArrayList<AbstractCapability>();
+    List<AbstractCapability> ret = new ArrayList<>();
     for (AbstractCapabilityInclude abstractCapabilityInclude : element.getIncludes()) {
       AbstractCapability included = abstractCapabilityInclude.getIncluded();
       if (null != included) {
@@ -136,7 +136,7 @@ public class AbstractCapabilityHelper {
   }
 
   protected List<AbstractCapability> getIncludingAbstractCapabilities(AbstractCapability element) {
-    List<AbstractCapability> ret = new ArrayList<AbstractCapability>();
+    List<AbstractCapability> ret = new ArrayList<>();
     for (EObject ref : EObjectExt.getReferencers(element, InteractionPackage.Literals.ABSTRACT_CAPABILITY_INCLUDE__INCLUDED)) {
       if (ref instanceof AbstractCapabilityInclude) {
         AbstractCapability included = ((AbstractCapabilityInclude) ref).getInclusion();
@@ -149,7 +149,7 @@ public class AbstractCapabilityHelper {
   }
 
   protected List<AbstractCapabilityRealization> getIncomingCapabilityAllocation(AbstractCapability element) {
-    List<AbstractCapabilityRealization> ret = new ArrayList<AbstractCapabilityRealization>();
+    List<AbstractCapabilityRealization> ret = new ArrayList<>();
     for (AbstractTrace trace : element.getIncomingTraces()) {
       if (trace instanceof AbstractCapabilityRealization) {
         ret.add((AbstractCapabilityRealization) trace);
@@ -159,7 +159,7 @@ public class AbstractCapabilityHelper {
   }
 
   protected List<AbstractCapabilityRealization> getOutgoingCapabilityAllocation(AbstractCapability element) {
-    List<AbstractCapabilityRealization> ret = new ArrayList<AbstractCapabilityRealization>();
+    List<AbstractCapabilityRealization> ret = new ArrayList<>();
     for (AbstractTrace trace : element.getOutgoingTraces()) {
       if (trace instanceof AbstractCapabilityRealization) {
         ret.add((AbstractCapabilityRealization) trace);
@@ -169,7 +169,7 @@ public class AbstractCapabilityHelper {
   }
 
   protected List<AbstractCapability> getSub(AbstractCapability element) {
-    List<AbstractCapability> ret = new ArrayList<AbstractCapability>();
+    List<AbstractCapability> ret = new ArrayList<>();
     for (AbstractCapabilityGeneralization abstractCapabilityGeneralization : element.getSubGeneralizations()) {
       AbstractCapability subC = abstractCapabilityGeneralization.getSub();
       if (null != subC) {
@@ -180,7 +180,7 @@ public class AbstractCapabilityHelper {
   }
 
   protected List<AbstractCapability> getSuper(AbstractCapability element) {
-    List<AbstractCapability> ret = new ArrayList<AbstractCapability>();
+    List<AbstractCapability> ret = new ArrayList<>();
     for (AbstractCapabilityGeneralization abstractCapabilityGeneralization : element.getSuperGeneralizations()) {
       AbstractCapability superC = abstractCapabilityGeneralization.getSuper();
       if (null != superC) {
@@ -191,20 +191,26 @@ public class AbstractCapabilityHelper {
   }
 
   protected List<AbstractFunction> getInvolvedAbstractFunctions(AbstractCapability element) {
-    List<AbstractFunction> ret = new ArrayList<AbstractFunction>();
+    List<AbstractFunction> ret = new ArrayList<>();
     for (Involvement inv : element.getInvolvedInvolvements()) {
       if (inv instanceof AbstractFunctionAbstractCapabilityInvolvement) {
-        ret.add(((AbstractFunctionAbstractCapabilityInvolvement) inv).getFunction());
+        AbstractFunction function = ((AbstractFunctionAbstractCapabilityInvolvement) inv).getFunction();
+        if (function != null) {
+          ret.add(function);
+        }
       }
     }
     return ret;
   }
 
   protected List<FunctionalChain> getInvolvedFunctionalChains(AbstractCapability element) {
-    List<FunctionalChain> ret = new ArrayList<FunctionalChain>();
+    List<FunctionalChain> ret = new ArrayList<>();
     for (Involvement inv : element.getInvolvedInvolvements()) {
       if (inv instanceof FunctionalChainAbstractCapabilityInvolvement) {
-        ret.add(((FunctionalChainAbstractCapabilityInvolvement) inv).getFunctionalChain());
+        FunctionalChain functionalChain = ((FunctionalChainAbstractCapabilityInvolvement) inv).getFunctionalChain();
+        if (functionalChain != null) {
+          ret.add(functionalChain);
+        }
       }
     }
     return ret;

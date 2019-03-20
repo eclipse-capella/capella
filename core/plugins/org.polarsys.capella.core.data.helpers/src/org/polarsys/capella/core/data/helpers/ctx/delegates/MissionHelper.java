@@ -73,7 +73,7 @@ public class MissionHelper {
 
 	protected List<ActorMissionInvolvement> getInvolvedActors(Mission element) {
 		List<Involvement> involvements = element.getInvolvedInvolvements();
-		List <ActorMissionInvolvement> ret = new ArrayList<ActorMissionInvolvement>();
+		List <ActorMissionInvolvement> ret = new ArrayList<>();
 		for (Involvement involvement : involvements) {
 			if (involvement instanceof ActorMissionInvolvement) {
 				ret.add((ActorMissionInvolvement) involvement);
@@ -88,7 +88,7 @@ public class MissionHelper {
 
 	protected List<Capability> getExploitedCapabilities(Mission element) {
 		List<CapabilityExploitation> exploitations = element.getOwnedCapabilityExploitations();
-		List<Capability> ret = new ArrayList<Capability>();
+		List<Capability> ret = new ArrayList<>();
 		for (CapabilityExploitation exploitation : exploitations) {
 			Capability capa = exploitation.getCapability();
 			if(null != capa){
@@ -108,7 +108,7 @@ public class MissionHelper {
 
 	protected List<Actor> getParticipatingActors(Mission element) {
 		List<ActorMissionInvolvement> involvements = element.getInvolvedActors();
-		List <Actor> ret = new ArrayList<Actor>();
+		List <Actor> ret = new ArrayList<>();
 		for (ActorMissionInvolvement involvement : involvements) {
 			Actor actor = involvement.getActor();
 			if(null != actor){

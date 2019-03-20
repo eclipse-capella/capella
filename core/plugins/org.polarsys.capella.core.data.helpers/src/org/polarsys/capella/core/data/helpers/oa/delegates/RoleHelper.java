@@ -60,7 +60,7 @@ public class RoleHelper {
 	}
 
 	protected List<RoleAllocation> getRoleAllocations(Role element) {
-		List<RoleAllocation> ret = new ArrayList<RoleAllocation>();
+		List<RoleAllocation> ret = new ArrayList<>();
 		for (AbstractTrace abstractTrace : element.getIncomingTraces()) {
 			if(abstractTrace instanceof RoleAllocation){
 				ret.add((RoleAllocation) abstractTrace);
@@ -70,7 +70,7 @@ public class RoleHelper {
 	}
 
 	protected List<ActivityAllocation> getActivityAllocations(Role element) {
-		List<ActivityAllocation> ret = new ArrayList<ActivityAllocation>();
+		List<ActivityAllocation> ret = new ArrayList<>();
 		for (AbstractTrace abstractTrace : element.getOutgoingTraces()) {
 			if(abstractTrace instanceof ActivityAllocation){
 				ret.add((ActivityAllocation) abstractTrace);
@@ -80,7 +80,7 @@ public class RoleHelper {
 	}
 
   protected List<Entity> getAllocatingEntities(Role element) {
-    List<Entity> ret = new ArrayList<Entity>();
+    List<Entity> ret = new ArrayList<>();
     for (RoleAllocation roleAllocation : element.getRoleAllocations()) {
       Entity entity = roleAllocation.getEntity();
       if (null != entity){
@@ -91,7 +91,7 @@ public class RoleHelper {
   }
 
   protected List<OperationalActivity> getAllocatedOperationalActivities(Role element) {
-    List<OperationalActivity> ret = new ArrayList<OperationalActivity>();
+    List<OperationalActivity> ret = new ArrayList<>();
     for (ActivityAllocation activityAllocation : element.getActivityAllocations()) {
       OperationalActivity activity = activityAllocation.getActivity();
       if (null != activity){

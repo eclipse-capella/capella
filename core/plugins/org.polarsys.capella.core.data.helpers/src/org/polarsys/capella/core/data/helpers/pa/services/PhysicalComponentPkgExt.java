@@ -29,7 +29,7 @@ public class PhysicalComponentPkgExt {
 
 	// the GetAll breaks when diagrams are presents.
 	public static List<PhysicalComponent> getAllPhysicalComponents(PhysicalComponentPkg currentElement) {
-		List<PhysicalComponent> components = new ArrayList<PhysicalComponent>(1);
+		List<PhysicalComponent> components = new ArrayList<>(1);
 		List<PhysicalComponentPkg> pkgs = currentElement.getOwnedPhysicalComponentPkgs();
 
 		components.addAll(currentElement.getOwnedComponents());

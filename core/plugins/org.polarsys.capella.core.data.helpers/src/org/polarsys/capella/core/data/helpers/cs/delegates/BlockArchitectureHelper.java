@@ -62,7 +62,7 @@ private static BlockArchitectureHelper instance;
 	
 	protected List<ArchitectureAllocation> getProvisionedArchitectureAllocations(BlockArchitecture element) {
 		List<AbstractTrace> traces = element.getOutgoingTraces();
-		List <ArchitectureAllocation> ret = new ArrayList<ArchitectureAllocation>();
+		List <ArchitectureAllocation> ret = new ArrayList<>();
 		
 		for (AbstractTrace trace : traces) {
 						
@@ -76,7 +76,7 @@ private static BlockArchitectureHelper instance;
 	
 	protected List<ArchitectureAllocation> getProvisioningArchitectureAllocations(BlockArchitecture element) {
 		List<AbstractTrace> traces = element.getIncomingTraces();
-		List <ArchitectureAllocation> ret = new ArrayList<ArchitectureAllocation>();
+		List <ArchitectureAllocation> ret = new ArrayList<>();
 		
 		for (AbstractTrace trace : traces) {
 						
@@ -90,23 +90,27 @@ private static BlockArchitectureHelper instance;
 	
 	protected List<BlockArchitecture> getAllocatedArchitectures(BlockArchitecture element){
 		List <ArchitectureAllocation> allocs = element.getProvisionedArchitectureAllocations();
-		List <BlockArchitecture> ret = new ArrayList<BlockArchitecture>();
+		List <BlockArchitecture> ret = new ArrayList<>();
 
 		for (ArchitectureAllocation architectureAllocation : allocs) {
-			ret.add(architectureAllocation.getAllocatedArchitecture());
+			BlockArchitecture allocatedArchitecture = architectureAllocation.getAllocatedArchitecture();
+			if(allocatedArchitecture != null) {
+			  ret.add(allocatedArchitecture);			  
+			}
 		}
-		
 		return ret;
 	}
 
 	protected List <BlockArchitecture> getAllocatingArchitectures(BlockArchitecture element) {
 		List <ArchitectureAllocation> allocs = element.getProvisioningArchitectureAllocations();
-		List <BlockArchitecture> ret = new ArrayList<BlockArchitecture>();
+		List <BlockArchitecture> ret = new ArrayList<>();
 
 		for (ArchitectureAllocation architectureAllocation : allocs) {
-			ret.add(architectureAllocation.getAllocatingArchitecture());
+			BlockArchitecture allocatingArchitecture = architectureAllocation.getAllocatingArchitecture();
+			if(allocatingArchitecture != null) {
+			  ret.add(allocatingArchitecture);			  
+			}
 		}
-		
 		return ret;
 	}
 }

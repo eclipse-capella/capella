@@ -61,7 +61,7 @@ public class ExchangeSpecificationHelper {
   }
 
   protected List<ExchangeSpecificationRealization> getIncomingExchangeSpecificationRealizations(ExchangeSpecification element) {
-    List<ExchangeSpecificationRealization> ret = new ArrayList<ExchangeSpecificationRealization>();
+    List<ExchangeSpecificationRealization> ret = new ArrayList<>();
 
     for (AbstractTrace trace : element.getIncomingTraces()) {
       if (trace instanceof ExchangeSpecificationRealization) {
@@ -73,7 +73,7 @@ public class ExchangeSpecificationHelper {
   }
 
   protected List<ExchangeSpecificationRealization> getOutgoingExchangeSpecificationRealizations(ExchangeSpecification element) {
-    List<ExchangeSpecificationRealization> ret = new ArrayList<ExchangeSpecificationRealization>();
+    List<ExchangeSpecificationRealization> ret = new ArrayList<>();
 
     for (AbstractTrace trace : element.getOutgoingTraces()) {
       if (trace instanceof ExchangeSpecificationRealization) {

@@ -19,8 +19,6 @@ import org.polarsys.capella.common.model.helpers.IHelper;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.helpers.capellacore.delegates.CapellaElementHelper;
 import org.polarsys.capella.core.data.helpers.capellacore.delegates.NamedElementHelper;
-import org.polarsys.capella.core.data.helpers.capellacore.delegates.NamedRelationshipHelper;
-import org.polarsys.capella.core.data.helpers.capellacore.delegates.RelationshipHelper;
 import org.polarsys.capella.core.data.helpers.capellacore.delegates.TraceHelper;
 import org.polarsys.capella.core.data.helpers.interaction.delegates.AbstractCapabilityExtendHelper;
 import org.polarsys.capella.core.data.helpers.interaction.delegates.AbstractCapabilityExtensionPointHelper;
