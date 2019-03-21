@@ -23,6 +23,7 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -1689,4 +1690,43 @@ public class DiagramServices {
     return allEdges;
   }
 
+  public EObject getDiagramElementDiagramIfNull(DDiagram diagram, EObject semanticElement) {
+    DDiagramElement viewElement = getDiagramElement(diagram, semanticElement);
+    return viewElement == null ? diagram : viewElement;
+  }
+  /**
+   * Set the position of the given newView relatively to the given node
+   * @param container
+   * @param node
+   * @param deltaX
+   * @param deltaY
+   * @return
+   */
+  public EObject setRelativePositionToNode(AbstractDNode newView, AbstractDNode node, int deltaX, int deltaY) {
+    Point location = DiagramHelper.getRelativePositionToNode(node, node.eContainer(), deltaX, deltaY);
+    DiagramHelper.setPosition(newView, location);
+    return newView;
+  }
+  
+  /**
+   * Set the position of the given newView relatively to the middle of the given edge
+   * @param container
+   * @param edge
+   * @return
+   */
+  public EObject setPositionAtMiddleOfEdge(AbstractDNode newView, DEdge edge, int deltaX, int deltaY) {
+    Point location = DiagramHelper.getPositionAtMiddleOfEdge(edge, edge.eContainer(), deltaX, deltaY);
+    DiagramHelper.setPosition(newView, location);
+    return newView;
+  }
+  
+  /**
+   * Set the position of the given newView at the middle of the given edge
+   * @param container
+   * @param edge
+   * @return
+   */
+  public EObject setPositionAtMiddleOfEdge(AbstractDNode newView, DEdge edge) {
+    return setPositionAtMiddleOfEdge(newView, edge, 0, 0);
+  }
 }

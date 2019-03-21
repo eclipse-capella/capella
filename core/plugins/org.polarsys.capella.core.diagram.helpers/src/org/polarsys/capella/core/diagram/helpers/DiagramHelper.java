@@ -12,9 +12,11 @@ package org.polarsys.capella.core.diagram.helpers;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.emf.common.command.AbstractCommand;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EObject;
@@ -22,22 +24,32 @@ import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gmf.runtime.diagram.ui.OffscreenEditPartFactory;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditor;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.DrawerStyle;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
+import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
+import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.DiagramPackage;
+import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.business.api.refresh.CanonicalSynchronizer;
 import org.eclipse.sirius.diagram.business.api.refresh.CanonicalSynchronizerFactory;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusGMFHelper;
+import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
+import org.eclipse.sirius.diagram.ui.business.internal.view.RootLayoutData;
 import org.eclipse.sirius.diagram.ui.tools.api.format.SiriusFormatDataManager;
 import org.eclipse.sirius.diagram.ui.tools.internal.format.data.extension.FormatDataManagerRegistry;
 import org.eclipse.sirius.viewpoint.DRepresentation;
@@ -48,6 +60,7 @@ import org.eclipse.sirius.viewpoint.description.DAnnotation;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.swt.widgets.Shell;
+import org.eclipse.ui.IEditorPart;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.core.diagram.helpers.naming.DAnnotationSourceConstants;
 import org.polarsys.capella.core.diagram.helpers.naming.DiagramDescriptionConstants;
@@ -392,5 +405,159 @@ public class DiagramHelper {
       // Clear layout of source diagram
       diagramFormatDataManagers.stream().forEach(SiriusFormatDataManager::clearFormatData);
     }
+  }
+  
+  /**
+   * Set the position of the given node at the given location
+   * @param container
+   * @param location
+   */
+  public static void setPosition(AbstractDNode node, Point location) {
+    SiriusLayoutDataManager.INSTANCE.addData(new RootLayoutData(node, location, null));
+  }
+  
+  /**
+   * Returns the position relatively to the given node (relative to the given container)
+   * @param node
+   * @param deltaX
+   * @param deltaY
+   * @return
+   */
+  public static Point getRelativePositionToNode(AbstractDNode node, EObject container, int deltaX, int deltaY) {
+    // the new position is the top-left of diagram
+    Point newLocation = new Point();
+    Point nodeLocation = getAbsolutePositionOfNode(node);
+    // get the width and height of the node
+    int nodeWidth = 0;
+    int nodeHeight = 0;
+    ShapeEditPart nodeEditPart = getShapeEditPart(node);
+    if (nodeEditPart != null) {
+      nodeWidth = nodeEditPart.getSize().width;
+      nodeHeight = nodeEditPart.getSize().height;
+    }
+    // translate to the top-left of the node
+    newLocation.translate(nodeLocation);
+    if (deltaX == 0) {
+      // translate to the center of the node
+      newLocation.translate(nodeWidth/2, 0);
+    } else if (deltaX > 0) {
+      // translate to the right border of the node + given delta
+      newLocation.translate(nodeWidth+deltaX, 0);
+    } else if (deltaX < 0) {
+      // translate to given delta
+      newLocation.translate(deltaX, 0);
+    }
+    if (deltaY == 0) {
+      // translate to the center of the node
+      newLocation.translate(0, nodeHeight/2);
+    } else if (deltaY < 0) {
+      // translate to given delta
+      newLocation.translate(0, deltaY);
+    } else if (deltaY > 0) {
+      // translate to the bottom border of the node + given delta
+      newLocation.translate(0, nodeHeight+deltaY);
+    }
+    // transform the absolute position to a relative position to its future container
+    tranformAbsolutePositionInRelativePositionToTheContainer(newLocation, container);
+    return newLocation;
+  }
+  
+  /**
+   * Returns the position of the middle of the given edge (relative to the given container)
+   * @param edge
+   * @return
+   */
+  public static Point getPositionAtMiddleOfEdge(DEdge edge, EObject container, int deltaX, int deltaY) {
+    Point newLocation = new Point();
+    EdgeTarget sourceEdge = edge.getSourceNode();
+    EdgeTarget targetEdge = edge.getTargetNode();
+    if (sourceEdge instanceof AbstractDNode && targetEdge instanceof AbstractDNode) {
+      AbstractDNode source = (AbstractDNode) sourceEdge;
+      AbstractDNode target = (AbstractDNode) targetEdge;
+      Point sourceLocation = getAbsolutePositionOfNode(source);
+      Point targetLocation = getAbsolutePositionOfNode(target);
+      // translate to the top-left of the source
+      newLocation.translate(sourceLocation);
+      // set source and target position to their center
+      ShapeEditPart sourceEditPart = getShapeEditPart(source);
+      ShapeEditPart targetEditPart = getShapeEditPart(target);
+      if (sourceEditPart != null && targetEditPart != null) {
+        sourceLocation.translate(sourceEditPart.getSize().width/2, sourceEditPart.getSize().height/2);
+        targetLocation.translate(targetEditPart.getSize().height/2, targetEditPart.getSize().height/2);
+      }
+      // translate to the middle of the edge (between centers of source and target)
+      newLocation.translate((targetLocation.x - sourceLocation.x)/2,( targetLocation.y - sourceLocation.y)/2);
+    }
+    // translate to the given delta
+    newLocation.getTranslated(deltaX, deltaY);
+
+    // transform the absolute position to a relative position to its future container
+    tranformAbsolutePositionInRelativePositionToTheContainer(newLocation, container);
+    return newLocation;
+  }
+
+  /**
+   * Transform an absolute position in a relative position
+   * @param position
+   * @param container
+   */
+  public static void tranformAbsolutePositionInRelativePositionToTheContainer(Point position, EObject container) {
+    // if the container is not the diagram, we have to substract its absolute position to be relative to it
+    Point containerlocation = new Point();
+    if (container instanceof AbstractDNode) {
+      containerlocation = DiagramHelper.getAbsolutePositionOfNode((AbstractDNode) container);
+    }
+    position.translate(-containerlocation.x, -containerlocation.y);
+  }
+
+  /**
+   * Returns the absolute position of the given node
+   * @param node
+   * @return
+   */
+  public static Point getAbsolutePositionOfNode(AbstractDNode node) {
+    Point position = new Point();
+    getAbsolutePositionOfNode(node, position);
+    return position;
+  }
+  
+  /**
+   * Set the given point to the absolute position of the given node
+   * @param node
+   * @param position
+   */
+  private static void getAbsolutePositionOfNode(AbstractDNode node, Point position) {
+    ShapeEditPart shapeEditPart = getShapeEditPart(node);
+    if (shapeEditPart != null) {
+      position.translate(shapeEditPart.getLocation());
+      // position is relative to the container
+      EObject container = node.eContainer();
+      // so we have to take into account the position of the container, until the container is the diagram
+      if (!(container instanceof DDiagram) && container instanceof AbstractDNode) {
+        getAbsolutePositionOfNode((AbstractDNode) container, position);
+      }
+    }
+  }
+
+  /**
+   * Returns the GraphicalEditPart of the given DDiagramElement
+   * @param diagramElement
+   * @return
+   */
+  public static ShapeEditPart getShapeEditPart(DDiagramElement diagramElement) {
+    IEditorPart editor = EclipseUIUtil.getActiveEditor();
+    if (editor instanceof DiagramEditor) {
+      Session session = new EObjectQuery(diagramElement).getSession();
+      View gmfView = SiriusGMFHelper.getGmfView(diagramElement, session);
+
+      if (gmfView != null && editor instanceof DiagramEditor) {
+        final Map<?, ?> editPartRegistry = ((DiagramEditor) editor).getDiagramGraphicalViewer().getEditPartRegistry();
+        final Object editPart = editPartRegistry.get(gmfView);
+        if (editPart instanceof ShapeEditPart) {
+          return (ShapeEditPart) editPart;
+        }
+      }
+    }
+    return null;
   }
 }
