@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,16 +12,25 @@ package org.polarsys.capella.core.sirius.analysis.activator;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.function.Predicate;
 
 import org.eclipse.core.runtime.preferences.DefaultScope;
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
+import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.query.legacy.AcceleoInterpreterPlugin;
 import org.eclipse.sirius.query.legacy.preferences.AcceleoPreferenceConstants;
+import org.eclipse.sirius.tools.api.ui.RefreshHelper;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
+import org.polarsys.capella.core.sirius.analysis.helpers.DDiagramHelper;
 import org.polarsys.capella.core.sirius.analysis.preferences.DiagramPreferenceInitializer;
 
 public class SiriusViewActivator extends AbstractUIPlugin {
@@ -31,6 +40,8 @@ public class SiriusViewActivator extends AbstractUIPlugin {
   private static SiriusViewActivator instance;
 
   private Set<Viewpoint> viewpoints;
+
+  private Predicate<Notification> considerCollapseStateForAutomaticRefreshPredicate;
 
   public SiriusViewActivator() {
     //
@@ -45,7 +56,7 @@ public class SiriusViewActivator extends AbstractUIPlugin {
   public void start(BundleContext context) throws Exception {
     super.start(context);
     instance = this;
-    viewpoints = new HashSet<Viewpoint>();
+    viewpoints = new HashSet<>();
     viewpoints.addAll(ViewpointRegistry.getInstance().registerFromPlugin("/" + ID + "/description/common.odesign")); //$NON-NLS-1$ //$NON-NLS-2$
     viewpoints.addAll(ViewpointRegistry.getInstance().registerFromPlugin("/" + ID + "/description/oa.odesign")); //$NON-NLS-1$ //$NON-NLS-2$
     viewpoints.addAll(ViewpointRegistry.getInstance().registerFromPlugin("/" + ID + "/description/context.odesign")); //$NON-NLS-1$ //$NON-NLS-2$
@@ -64,6 +75,21 @@ public class SiriusViewActivator extends AbstractUIPlugin {
 
     // Initialize preference values
     new DiagramPreferenceInitializer();
+
+    // Register a predicate to consider Collapse/Uncollapse changes as impacting in "Functional Chain Description"
+    // diagram.
+    considerCollapseStateForAutomaticRefreshPredicate = notification -> {
+      if (notification != null && NotationPackage.eINSTANCE.getDrawerStyle_Collapsed().equals(notification.getFeature())
+          && notification.getNotifier() instanceof EObject) {
+        Option<DDiagram> optionalDDiagram = new EObjectQuery((EObject) notification.getNotifier()).getParentDiagram();
+        if (optionalDDiagram.some()) {
+          DDiagram diagram = optionalDDiagram.get();
+          return DDiagramHelper.isFCD(diagram) || DDiagramHelper.isOPD(diagram);
+        }
+      }
+      return false;
+    };
+    RefreshHelper.registerImpactingNotification(considerCollapseStateForAutomaticRefreshPredicate);
   }
 
   /**
@@ -78,6 +104,10 @@ public class SiriusViewActivator extends AbstractUIPlugin {
         ViewpointRegistry.getInstance().disposeFromPlugin(viewpoint);
       }
       viewpoints.clear();
+    }
+    if (considerCollapseStateForAutomaticRefreshPredicate != null) {
+      RefreshHelper.unregisterImpactingNotification(considerCollapseStateForAutomaticRefreshPredicate);
+      considerCollapseStateForAutomaticRefreshPredicate = null;
     }
   }
 
