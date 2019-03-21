@@ -68,8 +68,6 @@ import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.FeatureNotFoundException;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.MetaClassNotFoundException;
 import org.eclipse.sirius.ext.base.Option;
-import org.eclipse.sirius.query.legacy.business.internal.interpreter.EObjectServices;
-import org.eclipse.sirius.query.legacy.ecore.factories.EFactory;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
@@ -204,12 +202,8 @@ public class CapellaServices {
    */
   public static final String RE_THROW_OCE_PREFIX = "-RT-"; //$NON-NLS-1$
 
-  @SuppressWarnings("restriction")
-  protected static EObjectServices EOBJECT_SERVICES = new EObjectServices();
-
-  @SuppressWarnings("restriction")
   public EObject getRootContainer(EObject eObject) {
-    return EOBJECT_SERVICES.getRootContainer(eObject);
+    return EcoreUtil.getRootContainer(eObject.eClass());
   }
 
   /** used by aql queries */
@@ -564,7 +558,7 @@ public class CapellaServices {
     // Contextual Capability: CapExploitation3
     EList<CapabilityExploitation> list = new BasicEList<>();
 
-    SystemAnalysis ca = (SystemAnalysis) getAncestor(context, CtxPackage.Literals.SYSTEM_ANALYSIS.getName());
+    SystemAnalysis ca = (SystemAnalysis) getAncestor(context, CtxPackage.Literals.SYSTEM_ANALYSIS);
     // get all recursive missionpkgs : private service
     EList<MissionPkg> allMissionPkg = getAllRecursiveMissionPkg(ca);
     EList<Mission> ownedMissions = new BasicEList<>();
@@ -795,7 +789,7 @@ public class CapellaServices {
      * capabilityExploitation : purposes) { Mission mission = capabilityExploitation.getMission(); list.add(mission); }
      */
 
-    SystemAnalysis ca = (SystemAnalysis) getAncestor(context, CtxPackage.Literals.SYSTEM_ANALYSIS.getName());
+    SystemAnalysis ca = (SystemAnalysis) getAncestor(context, CtxPackage.Literals.SYSTEM_ANALYSIS);
     // get all missionpkgs : private service
     EList<MissionPkg> allMissionPkg = getAllRecursiveMissionPkg(ca);
     EList<Mission> ownedMissions = new BasicEList<>();
@@ -886,23 +880,6 @@ public class CapellaServices {
   public EObject getAncestor(final EObject context, EClass eclass) {
     EObject current = context.eContainer();
     while ((current != null) && !eclass.isInstance(current)) {
-      current = current.eContainer();
-    }
-    return current;
-  }
-
-  /**
-   * Gets the first ancestor of the given type.
-   * 
-   * @param context
-   *          the context.
-   * @param type
-   *          the type.
-   * @return the first ancestor of the given type.
-   */
-  public EObject getAncestor(final EObject context, final String type) {
-    EObject current = context.eContainer();
-    while ((current != null) && !EFactory.eInstanceOf(current, type)) {
       current = current.eContainer();
     }
     return current;
@@ -1113,7 +1090,7 @@ public class CapellaServices {
   }
 
   List<AbstractFunction> getAvailableFunctionsInDataFlowBlank(AbstractFunction context) {
-    FunctionPkg pkgOwner = (FunctionPkg) getAncestor(context, FaPackage.Literals.FUNCTION_PKG.getName());
+    FunctionPkg pkgOwner = (FunctionPkg) getAncestor(context, FaPackage.Literals.FUNCTION_PKG);
     return FunctionPkgExt.getAllAbstractFunctions(pkgOwner);
   }
 
@@ -2129,20 +2106,6 @@ public class CapellaServices {
     return context;
   }
 
-  public boolean isA(EObject current, String type) {
-    if ((current == null)) {
-      return type == null;
-    }
-    if ((type == null)) {
-      return false;
-    }
-    if (type.equals(current.eClass().getName())) {
-      // Avoid weird computation if same name
-      return true;
-    }
-    return EFactory.eInstanceOf(current, type);
-  }
-
   /**
    * used everywhere
    * 
@@ -2523,7 +2486,7 @@ public class CapellaServices {
    */
   public boolean isNodeComponent(final InstanceRole instanceRole) {
     BlockArchitecture ownerBlockArchitecture = (BlockArchitecture) getAncestor(instanceRole,
-        CsPackage.Literals.BLOCK_ARCHITECTURE.getName());
+        CsPackage.Literals.BLOCK_ARCHITECTURE);
     boolean isNodeComponent = (ownerBlockArchitecture instanceof PhysicalArchitecture);
     Component instanceRoleComponent = instanceRole == null ? null
         : (Component) instanceRole.getRepresentedInstance().getAbstractType();

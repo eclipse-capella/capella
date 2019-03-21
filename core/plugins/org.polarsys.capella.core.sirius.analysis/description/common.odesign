@@ -6560,7 +6560,7 @@
             </initialOperation>
             <edgeView name="edgeView"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="CommunicationLink target" precondition="aql:target.isA('ExchangeItem') and not (element.eContainer().ownedCommunicationLinks->select(ownedCommunicationLink | ownedCommunicationLink.kind = element.kind and ownedCommunicationLink.exchangeItem = target)->size() > 0)">
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="CommunicationLink target" precondition="aql:target.oclIsKindOf(information::ExchangeItem) and not (element.eContainer().ownedCommunicationLinks->select(ownedCommunicationLink | ownedCommunicationLink.kind = element.kind and ownedCommunicationLink.exchangeItem = target)->size() > 0)">
             <source name="source"/>
             <target name="target"/>
             <sourceView name="sourceView"/>
@@ -8150,7 +8150,7 @@
             </initialOperation>
             <edgeView name="edgeView"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="CommunicationLink target" precondition="aql:target.isA('ExchangeItem') and not (element.eContainer().ownedCommunicationLinks->select(ownedCommunicationLink | ownedCommunicationLink.kind = element.kind and ownedCommunicationLink.exchangeItem = target)->size() > 0)">
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="CommunicationLink target" precondition="aql:target.oclIsKindOf(information::ExchangeItem) and not (element.eContainer().ownedCommunicationLinks->select(ownedCommunicationLink | ownedCommunicationLink.kind = element.kind and ownedCommunicationLink.exchangeItem = target)->size() > 0)">
             <source name="source"/>
             <target name="target"/>
             <sourceView name="sourceView"/>
@@ -9702,7 +9702,7 @@
             </initialOperation>
             <edgeView name="edgeView"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="CommunicationLink target" precondition="aql:target.isA('ExchangeItem') and not (element.eContainer().ownedCommunicationLinks->select(ownedCommunicationLink | ownedCommunicationLink.kind = element.kind and ownedCommunicationLink.exchangeItem = target)->size() > 0)">
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="CommunicationLink target" precondition="aql:target.oclIsKindOf(information::ExchangeItem) and not (element.eContainer().ownedCommunicationLinks->select(ownedCommunicationLink | ownedCommunicationLink.kind = element.kind and ownedCommunicationLink.exchangeItem = target)->size() > 0)">
             <source name="source"/>
             <target name="target"/>
             <sourceView name="sourceView"/>
@@ -14555,7 +14555,7 @@
               <predecessor name="predecessor"/>
             </tools>
             <tools xsi:type="tool_2:InstanceRoleCreationTool" documentation="Creates a new lifeline representing an existing actor. This tool allows having multiple lifelines representing the same actor." name="Add multiple lifelines for an existing Actor" precondition="aql:self.eContainerOrSelf(epbs::EPBSArchitecture)->size() = 0" nodeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/AddInstanceRole.gif">
-              <filters precondition="aql:(self.target.eContainerOrSelf(epbs::EPBSArchitecture)->size() != 0)" elementsToListen="&lt;% target.eContainer (&quot;Scenario&quot;) %>">
+              <filters precondition="aql:(self.target.eContainerOrSelf(epbs::EPBSArchitecture)->size() != 0)" elementsToListen="aql:self.target.eContainerOrSelf(interaction::Scenario)">
                 <listeners domainClass="interaction.Scenario" featureName="ownedAbstractEnds"/>
               </filters>
               <variable name="container"/>
@@ -14635,7 +14635,7 @@
                     <parameters name="resultVariable" value="result"/>
                     <parameters name="multiple" value="false"/>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool_1:For" expression="&lt;% $result %>"/>
+                  <subModelOperations xsi:type="tool_1:For" expression="aql:result"/>
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:result != 'WIZARD_CANCELED'">
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:container">
                       <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interaction.InstanceRole" referenceName="ownedInstanceRoles">

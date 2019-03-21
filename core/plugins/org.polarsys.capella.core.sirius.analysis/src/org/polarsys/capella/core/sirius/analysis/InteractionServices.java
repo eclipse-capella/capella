@@ -102,10 +102,6 @@ public class InteractionServices {
     return Collections.EMPTY_LIST;
   }
 
-  // reroutage dans common.odesign :
-  // remplacement dans scope de
-  // "&lt;%getAvailableParts($containerView.eContainer(&quot;DDiagram&quot;).eAllContents(&quot;DSemanticDecorator&quot;).target.filter(&quot;InstanceRole&quot;).representedInstance.filter(&quot;Part&quot;))[abstractType.filter(&quot;AbstractActor&quot;).nSize() == 0]%>"
-  // par = &lt;% $container.getISScopeInsertComponents() %>
   public List<Part> getISScopeInsertComponents(Scenario scenario) {
     // Collection<Part> partsFilter = new ArrayList<Part>();
     // for (InstanceRole role : scenario.getOwnedInstanceRoles()) {
@@ -120,9 +116,6 @@ public class InteractionServices {
         scenario);
   }
 
-  // reroutage dans common.odesign :
-  // remplacement dans scope de "getAllActors[~abstractType.filter(&quot;Part&quot;).nSize >= 1].typedElements"
-  // par = &lt;% $container.getISScopeInsertActors() %>
   public List<Part> getISScopeInsertActors(Scenario scenario) {
     BlockArchitecture architecture = BlockArchitectureExt.getRootBlockArchitecture(scenario);
     return QueryInterpretor.executeQuery(

@@ -10,12 +10,15 @@
  *******************************************************************************/
 package org.polarsys.capella.test.platform.ju.testsuites;
 
+import java.io.File;
+import java.io.FileFilter;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
 import org.polarsys.capella.test.platform.ju.testcases.CapellaCDOGenerationOfDerivedFeature;
+import org.polarsys.capella.test.platform.ju.testcases.CapellaCheckAcceleo2NotUsed;
 import org.polarsys.capella.test.platform.ju.testcases.CapellaDefaultEditorEnabled;
 import org.polarsys.capella.test.platform.ju.testcases.CapellaPlatformVersionNotNull;
 import org.polarsys.capella.test.platform.ju.testcases.CapellaSiriusCustomisationEnabled;
@@ -48,9 +51,10 @@ public class PlatformTestSuite extends BasicTestSuite {
     tests.add(new InvalidRepresentationDescriptorAdapterFactory());
     tests.add(new CapellaCDOGenerationOfDerivedFeature());
     tests.add(new ViatraSurrogateAllDerivedFeaturesImplemented());
+    tests.add(new CapellaCheckAcceleo2NotUsed());
     return tests;
   }
-
+  
   @Override
   public List<String> getRequiredTestModels() {
     return null;

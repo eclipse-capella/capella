@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,7 +18,6 @@ import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.query.legacy.ecore.factories.EFactory;
 import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.common.data.modellingcore.TraceableElement;
@@ -50,6 +49,7 @@ import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.ScenarioExt;
 import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
+import org.polarsys.capella.core.sirius.analysis.CapellaServices;
 
 /**
  * Services for interactions.
@@ -72,21 +72,7 @@ public class InteractionAspectService {
   public Collection<Part> getAllComponents(final EObject any, final Collection<Part> filter) {
     return ScenarioExt.getAllComponents(any, filter);
   }
-
-  /**
-   * Gets the first ancestor of the given type.
-   * @param context the context.
-   * @param type the type.
-   * @return the first ancestor of the given type.
-   */
-  public EObject getAncestor(final EObject context, final String type) {
-    EObject current = context.eContainer();
-    while ((current != null) && !EFactory.eInstanceOf(current, type)) {
-      current = current.eContainer();
-    }
-    return current;
-  }
-
+  
   /**
    * used in common.odesign, sequences.odesign
    * @param any current object
@@ -95,13 +81,13 @@ public class InteractionAspectService {
    */
   public Collection<Part> getAvailableParts(final EObject any, final Collection<Part> filter) {
     Collection<Part> result = new ArrayList<Part>();
-    EObject component = getAncestor(any, "Component"); //$NON-NLS-1$
+    EObject component = CapellaServices.getService().getAncestor(any, CsPackage.Literals.COMPONENT); //$NON-NLS-1$
 
     if (component != null) {
       Component comp = (Component) component;
       getOwnedPart(result, comp, filter);
     } else {
-      EObject arch = getAncestor(any, "BlockArchitecture"); //$NON-NLS-1$
+      EObject arch = CapellaServices.getService().getAncestor(any, CsPackage.Literals.BLOCK_ARCHITECTURE); //$NON-NLS-1$
       BlockArchitecture architecture = (BlockArchitecture) arch;
       Component rootComponent = null;
       if (arch != null) {
