@@ -16,42 +16,19 @@ import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.polarsys.capella.core.data.capellamodeller.provider.CapellaModellerEditPlugin;
-import org.polarsys.capella.core.data.fa.ControlNode;
 import org.polarsys.capella.core.data.gen.edit.decorators.ItemProviderAdapterDecorator;
 
-public class ControlNodeItemProviderDecorator extends ItemProviderAdapterDecorator
-    implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
-    IItemPropertySource {
+public class SequenceLinkProviderDecorator extends ItemProviderAdapterDecorator implements IEditingDomainItemProvider,
+    IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 
-  protected static final String CONTROL_NODE_TEXT = "[Control Node]";
+  protected static final String SEQUENCE_LINK_TEXT = "[Sequence Link]";
 
-  public ControlNodeItemProviderDecorator(AdapterFactory adapterFactory) {
+  public SequenceLinkProviderDecorator(AdapterFactory adapterFactory) {
     super(adapterFactory);
   }
 
   @Override
-  public Object getImage(Object object) {
-    ControlNode node = (ControlNode) object;
-    String imagePath = "full/obj16/ControlNode"; //$NON-NLS-1$
-
-    switch (node.getKind()) {
-    case AND:
-      imagePath = "full/obj16/ControlNode_And"; //$NON-NLS-1$
-      break;
-    case OR:
-      imagePath = "full/obj16/ControlNode_Or"; //$NON-NLS-1$
-      break;
-    case ITERATE:
-      imagePath = "full/obj16/ControlNode_Iterate"; //$NON-NLS-1$
-      break;
-    }
-
-    return overlayImage(object, CapellaModellerEditPlugin.INSTANCE.getImage(imagePath));
-  }
-
-  @Override
   public String getText(Object object) {
-    return CONTROL_NODE_TEXT;
+    return SEQUENCE_LINK_TEXT;
   }
 }

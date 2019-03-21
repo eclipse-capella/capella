@@ -17,6 +17,7 @@ import org.polarsys.capella.core.data.fa.FunctionalChainInvolvementFunction;
 import org.polarsys.capella.core.data.fa.FunctionalChainInvolvementLink;
 import org.polarsys.capella.core.data.fa.FunctionalChainReference;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
+import org.polarsys.capella.core.data.fa.SequenceLink;
 import org.polarsys.capella.core.data.gen.edit.decorators.CustomDecoratorAdapterFactory;
 import org.polarsys.capella.core.data.gen.edit.decorators.ForwardingItemProviderAdapterDecorator;
 
@@ -40,6 +41,8 @@ public class FaItemProviderDecoratorAdapterFactory extends CustomDecoratorAdapte
       return new FunctionalChainInvolvementLinkItemProviderDecorator(this);
     } else if (target instanceof ControlNode) {
       return new ControlNodeItemProviderDecorator(this);
+    } else if (target instanceof SequenceLink) {
+      return new SequenceLinkProviderDecorator(this);
     }
     return new ForwardingItemProviderAdapterDecorator(this);
   }
