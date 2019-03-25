@@ -489,7 +489,7 @@ public class DiagramHelper {
       newLocation.translate((targetLocation.x - sourceLocation.x)/2,( targetLocation.y - sourceLocation.y)/2);
     }
     // translate to the given delta
-    newLocation.getTranslated(deltaX, deltaY);
+    newLocation.translate(deltaX, deltaY);
 
     // transform the absolute position to a relative position to its future container
     tranformAbsolutePositionInRelativePositionToTheContainer(newLocation, container);
