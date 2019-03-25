@@ -28,6 +28,8 @@ import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 
+import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
+
 public class GetAvailable_AbstractFunctionalBlock_AllocatedFunctions extends AbstractQuery {
 
   @SuppressWarnings({ "rawtypes", "unchecked" })
@@ -53,11 +55,11 @@ public class GetAvailable_AbstractFunctionalBlock_AllocatedFunctions extends Abs
   }
 
   protected List<CapellaElement> getRule_MQRY_Component_FunctionalAllocation_11(AbstractFunctionalBlock lc) {
-    List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
+    List<CapellaElement> availableElements = new ArrayList<>(1);
     BlockArchitecture arch = BlockArchitectureExt.getRootBlockArchitecture(lc);
     if (arch != null) {
-      List<AbstractFunction> allLeafFunctions = FunctionExt.getAllLeafAbstractFunctions(arch);
-      List<AbstractFunction> listTORemove = new ArrayList<AbstractFunction>();
+      List<AbstractFunction> allLeafFunctions = new ArrayList<>(getCache(FunctionExt::getAllLeafAbstractFunctions, arch));
+      List<AbstractFunction> listTORemove = new ArrayList<>();
 
       // Remove already allocated functions, but not those that are already allocated to the target
       for (AbstractFunction function : allLeafFunctions) {

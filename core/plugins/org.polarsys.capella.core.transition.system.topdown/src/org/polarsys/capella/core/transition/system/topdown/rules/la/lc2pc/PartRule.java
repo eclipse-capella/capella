@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.polarsys.capella.core.transition.system.topdown.rules.la.lc2pc;
 
+import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
+
 import java.util.Collection;
 
 import org.eclipse.core.runtime.IStatus;
@@ -125,7 +127,7 @@ public class PartRule extends org.polarsys.capella.core.transition.system.rules.
       BlockArchitecture target =
           (BlockArchitecture) TransformationHandlerHelper.getInstance(context_p).getBestTracedElement(root, context_p, CsPackage.Literals.BLOCK_ARCHITECTURE);
       Component cps = BlockArchitectureExt.getFirstComponent(target);
-      Collection<Part> parts = ComponentExt.getRepresentingParts(cps);
+      Collection<Part> parts = getCache(ComponentExt::getRepresentingParts, cps);
       if (!parts.isEmpty()) {
         return parts.iterator().next();
       }

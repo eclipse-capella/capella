@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.polarsys.capella.core.transition.diagram.handlers;
 
+import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -137,7 +139,7 @@ public class ArchitectureHandler extends AbstractDiagramHandler {
 
       for (EObject traced : result) {
         if (traced instanceof Component) {
-          for (Part part : ComponentExt.getRepresentingParts((Component) traced)) {
+          for (Part part : getCache(ComponentExt::getRepresentingParts, (Component) traced)) {
             result2.add(part);
             break;
           }

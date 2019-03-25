@@ -11,6 +11,8 @@
 
 package org.polarsys.capella.core.semantic.queries.basic.queries;
 
+import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -43,9 +45,9 @@ public class PhysicalComponent_InternalPhysicalLinks implements IQuery {
       Component seletectedComponent = (Component) object;
       Collection<Part> usedParts = ComponentExt.getAllSubUsedParts(seletectedComponent, true);
       for (Part part : usedParts) {
-        allPLs.addAll(PhysicalLinkExt.getAllRelatedPhysicalLinks(part));
+        allPLs.addAll(getCache(PhysicalLinkExt::getAllRelatedPhysicalLinks, part));
       }
-      usedParts.addAll(ComponentExt.getRepresentingParts(seletectedComponent));
+      usedParts.addAll(getCache(ComponentExt::getRepresentingParts, seletectedComponent));
       
       // If source or target is one of the used parts or representing parts, filter
       for (PhysicalLink pl : allPLs) {

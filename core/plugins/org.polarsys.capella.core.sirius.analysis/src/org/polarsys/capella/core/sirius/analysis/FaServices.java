@@ -23,6 +23,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.UniqueEList;
@@ -157,6 +158,8 @@ import org.polarsys.capella.core.sirius.analysis.showhide.ShowHideFunctionalExch
 import org.polarsys.capella.core.sirius.analysis.showhide.ShowHideInvisibleExchangeCategory;
 import org.polarsys.capella.core.sirius.analysis.tool.HashMapSet;
 
+import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
+
 /**
  * Services for Functional Analysis Elements
  */
@@ -268,7 +271,7 @@ public class FaServices {
     }
     if (context.getTarget() instanceof AbstractFunction) {
       selectedFunction = (AbstractFunction) context.getTarget();
-      for (AbstractFunction currentFunction : FunctionExt.getAllAbstractFunctions(selectedFunction)) {
+      for (AbstractFunction currentFunction : getCache(FunctionExt::getAllAbstractFunctions, selectedFunction)) {
         allFunctionalExchanges.addAll(FunctionExt.getIncomingExchange(currentFunction));
         allFunctionalExchanges.addAll(FunctionExt.getOutGoingExchange(currentFunction));
       }
@@ -778,7 +781,7 @@ public class FaServices {
     }
     if ((null != target) && (current instanceof DNodeContainer) && (target instanceof AbstractFunction)) {
       currentFunction = (AbstractFunction) target;
-      returnedFunctions.addAll(FunctionExt.getAllAbstractFunctions(currentFunction));
+      returnedFunctions.addAll(getCache(FunctionExt::getAllAbstractFunctions, currentFunction));
     }
     DDiagram currentDiagram = CapellaServices.getService().getDiagramContainer(current);
     for (AbstractDNode aContainer : currentDiagram.getContainers()) {
@@ -1298,7 +1301,7 @@ public class FaServices {
    * @return
    */
   public Collection<AbstractFunction> getFirstLevelAbstractFunctions(AbstractFunction function) {
-    return FunctionExt.getFirstLevelAbstractFunctions(function);
+    return getCache(FunctionExt::getFirstLevelAbstractFunctions, function);
   }
 
   /**
@@ -2153,7 +2156,7 @@ public class FaServices {
 
   /** Returns all owned functions used in breakdown diagrams */
   public Collection<? extends EObject> getFBDSemanticAbstractFunctions(AbstractFunction root) {
-    Collection<? extends AbstractFunction> result = getAllAbstractFunctions(root);
+    Collection<? extends AbstractFunction> result = new ArrayList<>(getAllAbstractFunctions(root));
     EObject container = root.eContainer();
     if (container instanceof FunctionPkg) {
       container = container.eContainer();
@@ -2166,7 +2169,7 @@ public class FaServices {
   }
 
   public Collection<AbstractFunction> getAllAbstractFunctions(AbstractFunction root) {
-    return FunctionExt.getAllAbstractFunctions(root);
+    return getCache(FunctionExt::getAllAbstractFunctions, root);
   }
 
   public Collection<AbstractFunction> getAllAbstractFunctions(BlockArchitecture root) {
@@ -2320,7 +2323,7 @@ public class FaServices {
     if (oldContainer.equals(newContainer)) {
       return function;
     }
-    Collection<AbstractFunction> functions = FunctionExt.getAllAbstractFunctions(function);
+    Collection<AbstractFunction> functions = getCache(FunctionExt::getAllAbstractFunctions, function);
 
     Component oldComponent = null;
     Component newComponent = null;
@@ -2959,7 +2962,7 @@ public class FaServices {
 
     // Retrieve all related component exchanges
     if (componentOrPart instanceof Component) {
-      relatedExchanges.addAll(ComponentExt.getAllRelatedComponentExchange((Component) componentOrPart));
+      relatedExchanges.addAll(getCache(ComponentExt::getAllRelatedComponentExchange, (Component) componentOrPart));
 
     } else if (componentOrPart instanceof Part) {
       Part part = (Part) componentOrPart;
@@ -3277,7 +3280,7 @@ public class FaServices {
    *          the given flowPort
    */
   protected void updateExchanges(PhysicalPort port, Part oldPart, Part newPart) {
-    for (PhysicalLink exchange : PhysicalLinkExt.getAllRelatedPhysicalLinks(port)) {
+    for (PhysicalLink exchange : getCache(PhysicalLinkExt::getAllRelatedPhysicalLinks, port)) {
       if (!exchange.getOwnedPhysicalLinkEnds().isEmpty()) {
         for (PhysicalLinkEnd anEnd : exchange.getOwnedPhysicalLinkEnds()) {
           if (anEnd.getPort().equals(port) && anEnd.getPart().equals(oldPart)) {
@@ -4256,7 +4259,7 @@ public class FaServices {
    * @return : List of leaf Functions
    */
   public List<AbstractFunction> getAllLeafAbstractFunctions(BlockArchitecture arch) {
-    return FunctionExt.getAllLeafAbstractFunctions(arch);
+    return getCache(FunctionExt::getAllLeafAbstractFunctions, arch);
   }
 
   public AbstractFunction getOutgoingAbstractFunction(FunctionalExchange fe) {
@@ -4322,7 +4325,7 @@ public class FaServices {
    * Return all the leaf functions from given Block Architecture
    */
   public List<AbstractFunction> getAllLeafFunctions(BlockArchitecture blockArchitecture) {
-    List<AbstractFunction> allAbstractFunctions = FunctionExt.getAllLeafAbstractFunctions(blockArchitecture);
+    List<AbstractFunction> allAbstractFunctions = getCache(FunctionExt::getAllLeafAbstractFunctions, blockArchitecture);
     if (!allAbstractFunctions.isEmpty()) {
       return allAbstractFunctions;
     }
@@ -4850,7 +4853,7 @@ public class FaServices {
       if (contextualElement instanceof AbstractFunction) {
         contextualFunctions.add((AbstractFunction) contextualElement);
 
-        for (AbstractFunction function : FunctionExt.getAllAbstractFunctions((AbstractFunction) contextualElement)) {
+        for (AbstractFunction function : getCache(FunctionExt::getAllAbstractFunctions, (AbstractFunction) contextualElement)) {
           for (FunctionalExchange exchange : FunctionExt.getIncomingExchange(function)) {
             AbstractFunction source = FunctionalExchangeExt.getSourceFunction(exchange);
             AbstractFunction target = FunctionalExchangeExt.getTargetFunction(exchange);
@@ -4948,7 +4951,7 @@ public class FaServices {
       private boolean isVisible(EObject brother, EObject brother2) {
         EObject parent = brother.eContainer();
         if ((parent instanceof AbstractFunction) && (brother2 instanceof AbstractFunction)) {
-          if (FunctionExt.getFirstLevelAbstractFunctions((AbstractFunction) parent).contains(brother2)) {
+          if (getCache(FunctionExt::getFirstLevelAbstractFunctions, (AbstractFunction) parent).contains(brother2)) {
             return true;
           }
         }
@@ -4993,7 +4996,7 @@ public class FaServices {
     if ((element == null) || isLeaf(element)) {
       return false;
     }
-    List<AbstractFunction> leaves = FunctionExt.getAllLeafAbstractFunctions(element);
+    List<AbstractFunction> leaves = getCache(FunctionExt::getAllLeafAbstractFunctions, element);
     i = leaves.size();
     for (AbstractFunction af : leaves) {
       if (FunctionExt.isActorFunction(af)) {
@@ -5168,17 +5171,17 @@ public class FaServices {
 
     AbstractShowHide showHideExchangeCategoryService = new ShowHideExchangeCategory(content);
 
-    Map<AbstractFunction, List<FunctionalExchange>> mapFunction2AllExchanges = functionRelatedDiagramElements.stream()
+    List<AbstractFunction> abstractFunctions = functionRelatedDiagramElements.stream()
         .map(DDiagramElement::getTarget).distinct().filter(AbstractFunction.class::isInstance)
-        .map(AbstractFunction.class::cast).collect(Collectors.toMap(x -> x, FunctionExt::getAllExchanges));
+        .map(AbstractFunction.class::cast).collect(Collectors.toList());
 
     // 1. SHOW / HIDE EDGES OF EXCHANGE CATEGORIES
     // Display the categories between parts if they are part of selectedElements, or hide them
-    showHideExchangeCategoryEdges(content, mapFunction2AllExchanges, selectedExchangeCategories,
+    showHideExchangeCategoryEdges(content, abstractFunctions, selectedExchangeCategories,
         showHideExchangeCategoryService);
 
     // 2. SHOW / HIDE EDGES OF FUNCTIONAL EXCHANGES
-    showHideFunctionalExchanges(mapFunction2AllExchanges, selectedExchangeCategories, showHideExchangeCategoryService,
+    showHideFunctionalExchanges(abstractFunctions, selectedExchangeCategories, showHideExchangeCategoryService,
         showHiddenExchanges);
 
     // 3.
@@ -5187,14 +5190,13 @@ public class FaServices {
     return context;
   }
 
-  private void showHideExchangeCategoryEdges(DDiagramContents content,
-      Map<AbstractFunction, List<FunctionalExchange>> mapFunction2AllExchanges,
+  private void showHideExchangeCategoryEdges(DDiagramContents content, List<AbstractFunction> abstractFunctions,
       Collection<ExchangeCategory> selectedExchangeCategories, AbstractShowHide showHideExchangeCategoryService) {
 
     DiagramContext ctx = showHideExchangeCategoryService.new DiagramContext();
-    for (AbstractFunction targetFunction : mapFunction2AllExchanges.keySet()) {
+    for (AbstractFunction targetFunction : abstractFunctions) {
       Map<ExchangeCategory, Map.Entry<AbstractFunction, AbstractFunction>> categoryToSourceTargetMap = getExchangeCategoryToSourceTargetMap(
-          mapFunction2AllExchanges.get(targetFunction));
+          getCache(FunctionExt::getAllExchanges, targetFunction));
       for (Entry<ExchangeCategory, Entry<AbstractFunction, AbstractFunction>> entry : categoryToSourceTargetMap
           .entrySet()) {
         ExchangeCategory category = entry.getKey();
@@ -5215,7 +5217,7 @@ public class FaServices {
     }
   }
 
-  private void showHideFunctionalExchanges(Map<AbstractFunction, List<FunctionalExchange>> mapFunction2AllExchanges,
+  private void showHideFunctionalExchanges(List<AbstractFunction> abstractFunctions,
       Collection<ExchangeCategory> selectedExchangeCategories, AbstractShowHide showHideExchangeCategoryService,
       boolean showHiddenExchanges) {
     // In tool (showHiddenExchanges==true), user may have removed some categories, so he wants to display hidden
@@ -5224,15 +5226,16 @@ public class FaServices {
     // display hidden exchanges,
     // he just want to hide new exchanges associated to displayed categories.
     DiagramContext ctx = showHideExchangeCategoryService.new DiagramContext();
-    for (AbstractFunction targetFunction : mapFunction2AllExchanges.keySet()) {
+    for (AbstractFunction targetFunction : abstractFunctions) {
+      List<FunctionalExchange> allExchanges = getCache(FunctionExt::getAllExchanges, targetFunction);
       Map<ExchangeCategory, Map.Entry<AbstractFunction, AbstractFunction>> categoryToSourceTargetMap = getExchangeCategoryToSourceTargetMap(
-          mapFunction2AllExchanges.get(targetFunction));
+          allExchanges);
 
       for (Entry<ExchangeCategory, Entry<AbstractFunction, AbstractFunction>> entry : categoryToSourceTargetMap
           .entrySet()) {
         ExchangeCategory category = entry.getKey();
 
-        for (FunctionalExchange functionalExchange : mapFunction2AllExchanges.get(targetFunction)) {
+        for (FunctionalExchange functionalExchange : allExchanges) {
           if (functionalExchange.getCategories().contains(category)) {
             if (selectedExchangeCategories.contains(category)) {
               // Hide the functional exchange edge

@@ -16,9 +16,7 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.diagram.business.api.refresh.IRefreshExtension;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
@@ -30,14 +28,14 @@ import org.polarsys.capella.core.sirius.analysis.InformationServices;
 
 /**
  */
-public class ClassDiagramRefreshExtension extends AbstractRefreshExtension implements IRefreshExtension {
+public class ClassDiagramRefreshExtension extends AbstractCacheAwareRefreshExtension {
 
   /**
    * @see org.polarsys.capella.core.sirius.analysis.refresh.extension.AbstractRefreshExtension#getListOfMappingsToMove(org.eclipse.sirius.DDiagram)
    */
   @Override
   protected List<AbstractNodeMapping> getListOfMappingsToMove(DDiagram diagram) {
-    List<AbstractNodeMapping> returnedList = new ArrayList<AbstractNodeMapping>();
+    List<AbstractNodeMapping> returnedList = new ArrayList<>();
     returnedList.add(DiagramServices.getDiagramServices().getContainerMapping(diagram, IMappingNameConstants.CDB_DATA_PKG_MAPPING_NAME));
     returnedList.add(DiagramServices.getDiagramServices().getContainerMapping(diagram, IMappingNameConstants.CDB_INTERFACE_PKG_MAPPING_NAME));
     returnedList.add(DiagramServices.getDiagramServices().getContainerMapping(diagram, IMappingNameConstants.CDB_CLASS_MAPPING_NAME));
@@ -55,8 +53,10 @@ public class ClassDiagramRefreshExtension extends AbstractRefreshExtension imple
   /**
    * @see org.eclipse.sirius.business.api.refresh.IRefreshExtension#beforeRefresh(org.eclipse.sirius.DDiagram)
    */
+  @Override
   public void beforeRefresh(DDiagram diagram) {
-
+    super.beforeRefresh(diagram);
+    
     // -------------------------------------
     // Show in diagram related contextual elements
     // -------------------------------------
@@ -76,13 +76,4 @@ public class ClassDiagramRefreshExtension extends AbstractRefreshExtension imple
 
     reorderElements(diagram);
   }
-
-  /**
-   * @see org.eclipse.sirius.business.api.refresh.IRefreshExtension#postRefresh(org.eclipse.sirius.DDiagram)
-   */
-  public void postRefresh(DDiagram diagram) {
-    // Nothing
-
-  }
-
 }

@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.polarsys.capella.core.model.helpers;
 
+import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
+
 import java.util.Collection;
 import java.util.Collections;
 
@@ -98,7 +100,7 @@ public class ComponentPortAllocationExt {
     }
     Component sourceComponent = getSourceComponent(connection);
     if (sourceComponent != null) {
-      return ComponentExt.getRepresentingParts(sourceComponent);
+      return getCache(ComponentExt::getRepresentingParts, sourceComponent);
     }
     return Collections.emptyList();
   }
@@ -131,7 +133,7 @@ public class ComponentPortAllocationExt {
     }
     Component targetComponent = getTargetComponent(connection);
     if (targetComponent != null) {
-      return ComponentExt.getRepresentingParts(targetComponent);
+      return getCache(ComponentExt::getRepresentingParts, targetComponent);
     }
     return Collections.emptyList();
   }

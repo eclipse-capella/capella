@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.polarsys.capella.core.sirius.analysis.refresh.extension;
 
+import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -22,13 +24,10 @@ import org.apache.log4j.Logger;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
-import org.eclipse.sirius.diagram.business.api.refresh.IRefreshExtension;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
-import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.polarsys.capella.common.data.modellingcore.AbstractType;
@@ -36,8 +35,6 @@ import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.Part;
-import org.polarsys.capella.core.data.cs.PhysicalLinkCategory;
-import org.polarsys.capella.core.data.fa.ComponentExchangeCategory;
 import org.polarsys.capella.core.data.fa.ExchangeCategory;
 import org.polarsys.capella.core.data.information.Partition;
 import org.polarsys.capella.core.data.information.PartitionableElement;
@@ -53,13 +50,12 @@ import org.polarsys.capella.core.sirius.analysis.FunctionalChainServices;
 import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
 import org.polarsys.capella.core.sirius.analysis.IMappingNameConstants;
 import org.polarsys.capella.core.sirius.analysis.PhysicalServices;
-import org.polarsys.capella.core.sirius.analysis.constants.IFilterNameConstants;
 import org.polarsys.capella.core.sirius.analysis.cache.FunctionalChainCache;
-import org.polarsys.capella.core.sirius.analysis.constants.MappingConstantsHelper;
+import org.polarsys.capella.core.sirius.analysis.constants.IFilterNameConstants;
 import org.polarsys.capella.core.sirius.analysis.helpers.FilterHelper;
 import org.polarsys.capella.core.sirius.analysis.tool.HashMapSet;
 
-public class ComponentArchitectureBlankRefreshExtension extends AbstractRefreshExtension implements IRefreshExtension {
+public class ComponentArchitectureBlankRefreshExtension extends AbstractCacheAwareRefreshExtension {
 
   private final List<String> monitoredFilters = Arrays.asList(IMappingNameConstants.HIDE_CE_BY_DELEGATION,
       IMappingNameConstants.HIDE_CE_BY_GROUP, IMappingNameConstants.HIDE_CE_BY_GROUP_ORIENTED,
@@ -68,7 +64,9 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractRefreshE
   /**
    * @see org.eclipse.sirius.business.api.refresh.IRefreshExtension#beforeRefresh(org.eclipse.sirius.DDiagram)
    */
+  @Override
   public void beforeRefresh(DDiagram diagram) {
+    super.beforeRefresh(diagram);
 
     FunctionalChainCache.getInstance().reset();
     
@@ -98,7 +96,8 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractRefreshE
       CsServices.getService().showABContextualElements(context, contextualElements);
 
     } catch (Exception e) {
-      Logger.getLogger(IReportManagerDefaultComponents.DIAGRAM).error(Messages.RefreshExtension_ErrorOnContextualElements, e);
+      Logger.getLogger(IReportManagerDefaultComponents.DIAGRAM)
+          .error(Messages.RefreshExtension_ErrorOnContextualElements, e);
     }
 
     // -------------------------------------
@@ -111,7 +110,7 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractRefreshE
     } catch (Exception e) {
       Logger.getLogger(IReportManagerDefaultComponents.DIAGRAM).error(Messages.RefreshExtension_ErrorOnReordering, e);
     }
-    
+
     // -------------------------------------
     // Update categories
     // -------------------------------------
@@ -119,19 +118,22 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractRefreshE
     try {
       updateComponentCategories(context);
     } catch (Exception e) {
-      Logger.getLogger(IReportManagerDefaultComponents.DIAGRAM).error(Messages.RefreshExtension_ErrorOnUpdateComponentCategories, e);
+      Logger.getLogger(IReportManagerDefaultComponents.DIAGRAM)
+          .error(Messages.RefreshExtension_ErrorOnUpdateComponentCategories, e);
     }
 
     try {
       updatePhysicalCategories(context);
     } catch (Exception e) {
-      Logger.getLogger(IReportManagerDefaultComponents.DIAGRAM).error(Messages.RefreshExtension_ErrorOnUpdatePhysicalCategories, e);
+      Logger.getLogger(IReportManagerDefaultComponents.DIAGRAM)
+          .error(Messages.RefreshExtension_ErrorOnUpdatePhysicalCategories, e);
     }
 
     try {
       updateFunctionalExchangeCategories(context);
     } catch (Exception e) {
-      Logger.getLogger(IReportManagerDefaultComponents.DIAGRAM).error(Messages.RefreshExtension_ErrorOnUpdateFECategories, e);
+      Logger.getLogger(IReportManagerDefaultComponents.DIAGRAM)
+          .error(Messages.RefreshExtension_ErrorOnUpdateFECategories, e);
     }
     // -------------------------------------
     // Commit elements
@@ -140,7 +142,8 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractRefreshE
     try {
       context.commitDeferredActions();
     } catch (Exception e) {
-      Logger.getLogger(IReportManagerDefaultComponents.DIAGRAM).error(Messages.RefreshExtension_ErrorOnCommitDeferredActions, e);
+      Logger.getLogger(IReportManagerDefaultComponents.DIAGRAM)
+          .error(Messages.RefreshExtension_ErrorOnCommitDeferredActions, e);
     }
   }
 
@@ -169,7 +172,7 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractRefreshE
         // replace the diagram in the component if one-part-mode and diagram previously settled to the part
         if (!CsServices.getService().isMultipartMode((Part) root)) {
           EObject type = CsServices.getService().getComponentType((Part) root);
-          if ((type != null) && (type instanceof Component)) {
+          if (type instanceof Component) {
             ((DSemanticDiagram) diagram).setTarget(type);
           }
         }
@@ -203,42 +206,26 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractRefreshE
   protected void updateComponentCategories(DDiagramContents context) {
 
     DDiagram diagram = context.getDDiagram();
+    Collection<EObject> categories = getCache(ABServices::getComponentExchangeCategories, diagram);
+    if (!categories.isEmpty()) {
+      if (diagram.isSynchronized()) {
 
-    if (diagram.isSynchronized()) {
-      Collection<EObject> categories = new HashSet<EObject>();
-
-      // Switch to component categories
-      DiagramElementMapping edgeMapping = context.getMapping(MappingConstantsHelper.getMappingABComponentCategory(context.getDDiagram())); 
-      if (edgeMapping != null) {
-        for (DDiagramElement element : context.getDiagramElements(edgeMapping)) {
-          if ((element.getTarget() != null) && (element.getTarget() instanceof ComponentExchangeCategory)) {
-            categories.add(element.getTarget());
-          }
-        }
-
-        ABServices.getService().switchABComponentCategories(context, (DSemanticDecorator) context.getDDiagram(), categories, false);
+        ABServices.getService().switchABComponentCategories(context, (DSemanticDecorator) context.getDDiagram(),
+            categories, false);
+      } else {
+        ABServices.getService().updateABComponentCategories(context);
       }
-
-    } else {
-      ABServices.getService().updateABComponentCategories(context);
     }
   }
+  
+  
 
   protected void updateFunctionalExchangeCategories(DDiagramContents diagramContents) {
     DDiagram diagram = diagramContents.getDDiagram();
     if (diagram.isSynchronized()) {
-      // TODO Should I move this out of the if isSynchronized. Should it always switch FECategories?
-      // Switch to FE categories
-      DiagramElementMapping edgeMapping = diagramContents.getMapping(MappingConstantsHelper.getMappingFunctionalExchangeCategory(diagramContents.getDDiagram())); 
-      if (edgeMapping != null) {
-        Collection<ExchangeCategory> categories = new HashSet<>();
-        for (DDiagramElement element : diagramContents.getDiagramElements(edgeMapping)) {
-          EObject target = element.getTarget();
-          if (target instanceof ExchangeCategory) {
-            categories.add((ExchangeCategory) target);
-          }
-        }
-        FaServices.getFaServices().switchFECategories(diagramContents, (DSemanticDecorator) diagram, categories, false);
+      Collection<ExchangeCategory> categories = getCache(ABServices::getExchangeCategories, diagram);
+      if(!categories.isEmpty()) {
+        FaServices.getFaServices().switchFECategories(diagramContents, (DSemanticDecorator) diagram, categories, false);          
       }
     } 
   }
@@ -249,24 +236,14 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractRefreshE
   protected void updatePhysicalCategories(DDiagramContents context) {
 
     DDiagram diagram = context.getDDiagram();
-
-    if (diagram.isSynchronized()) {
-      Collection<EObject> categories = new HashSet<EObject>();
-
-      // Switch to physical categories
-      DiagramElementMapping edgeMapping = context.getMapping(MappingConstantsHelper.getMappingABPhysicalCategory(context.getDDiagram())); 
-      if (edgeMapping != null) {
-        for (DDiagramElement element : context.getDiagramElements(edgeMapping)) {
-          if ((element.getTarget() != null) && (element.getTarget() instanceof PhysicalLinkCategory)) {
-            categories.add(element.getTarget());
-          }
-        }
-
-        ABServices.getService().switchABPhysicalCategories(context, (DSemanticDecorator) context.getDDiagram(), categories, false);
-      }
-
-    } else {
-      ABServices.getService().updateABPhysicalCategories(context);
+    Collection<EObject> categories = getCache(ABServices::getPhysicalLinkCategory, diagram);
+    if(!categories.isEmpty()) {
+      if (diagram.isSynchronized()) {
+        ABServices.getService().switchABPhysicalCategories(context, (DSemanticDecorator) context.getDDiagram(),
+            categories, false);
+      } else {
+        ABServices.getService().updateABPhysicalCategories(context);
+      }      
     }
   }
 
@@ -277,30 +254,28 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractRefreshE
 
       @Override
       public Collection<EObject> getParents(EObject object, EObject context) {
-        LinkedList<EObject> parents = new LinkedList<EObject>();
-        if (object instanceof Part) {
-          if (context instanceof DNodeContainer) {
-            EObject contextPart = ((DNodeContainer)context).getTarget();
-            if (CsServices.getService().isDeployed((DNodeContainer) context)) {
-              parents.addAll(PartExt.getDeployingElements((Part)object));
-            } else {
-              parents.add(CsServices.getService().getParentContainer(object));
-            }
-            parents.remove(contextPart);
+        LinkedList<EObject> parents = new LinkedList<>();
+        if (object instanceof Part && context instanceof DNodeContainer) {
+          EObject contextPart = ((DNodeContainer) context).getTarget();
+          if (CsServices.getService().isDeployed((DNodeContainer) context)) {
+            parents.addAll(getCache(PartExt::getDeployingElements, (Part) object));
+          } else {
+            parents.add(CsServices.getService().getParentContainer(object));
           }
+          parents.remove(contextPart);
         }
         return parents;
       }
     };
     
     // All displayed elements in the diagram
-    HashMapSet<AbstractType, DNodeContainer> typeViews = new HashMapSet<AbstractType, DNodeContainer>(); 
+    HashMapSet<AbstractType, DNodeContainer> typeViews = new HashMapSet<>(); 
     
     // All displayed elements in the diagram
-    HashMapSet<Partition, DNodeContainer> partViews = new HashMapSet<Partition, DNodeContainer>();
+    HashMapSet<Partition, DNodeContainer> partViews = new HashMapSet<>();
     
     // Diagram elements to be moved
-    Set<DNodeContainer> toBeMoved = new HashSet<DNodeContainer>();
+    Set<DNodeContainer> toBeMoved = new HashSet<>();
 
     // Retrieve all mappings to be moved
     List<AbstractNodeMapping> mappingsToMove = getListOfMappingsToMove(diagram);
@@ -308,15 +283,12 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractRefreshE
     // get all displayed parts in the diagram
     for (AbstractDNode aContainer : diagram.getContainers()) {
 
-      if (mappingsToMove.contains(aContainer.getDiagramElementMapping())) {
-        if (isReorderable(diagram, aContainer) && (aContainer instanceof DNodeContainer)) {
-          if (aContainer.getTarget() instanceof Part) {
-            Part currentPart = (Part) aContainer.getTarget();
-            AbstractType currentType = CsServices.getService().getComponentType(currentPart);
-            typeViews.put(currentType, (DNodeContainer) aContainer);
-            partViews.put(currentPart, (DNodeContainer) aContainer);
-          }
-        }
+      if (mappingsToMove.contains(aContainer.getDiagramElementMapping()) && isReorderable(diagram, aContainer)
+          && (aContainer instanceof DNodeContainer) && aContainer.getTarget() instanceof Part) {
+        Part currentPart = (Part) aContainer.getTarget();
+        AbstractType currentType = CsServices.getService().getComponentType(currentPart);
+        typeViews.put(currentType, (DNodeContainer) aContainer);
+        partViews.put(currentPart, (DNodeContainer) aContainer);
       }
     }
 
@@ -329,7 +301,7 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractRefreshE
         Part currentPart = (Part) anElement.getTarget();
         boolean willBeMoved = false;
 
-        if ((anElement.eContainer() != null) && (anElement.eContainer() instanceof DSemanticDecorator)) {
+        if (anElement.eContainer() instanceof DSemanticDecorator) {
           DSemanticDecorator containerView = (DSemanticDecorator) anElement.eContainer();
           EObject actualContainer = containerView.getTarget();
           EObject actualComponentContainer = CsServices.getService().getComponentType(containerView);
@@ -340,7 +312,7 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractRefreshE
 
             // If element is owned by diagram and there is a view of the container in the diagram
           } else if ((containerView instanceof DDiagram) && (actualComponentContainer != null) && (actualComponentContainer instanceof Component)
-              && (typeViews.get(actualComponentContainer).size() > 0)) {
+              && (!typeViews.get(actualComponentContainer).isEmpty())) {
             willBeMoved = true;
 
           } else {
@@ -349,11 +321,10 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractRefreshE
             willBeMoved = true;
             for (EObject currentParent : content.getParents(currentPart, anElement)) {
               // case if the actual container is not the same that the actual container of the part
-              if (currentParent != null) {
-                if ((currentParent.equals(actualContainer) || currentParent.equals(actualComponentContainer))) {
-                  willBeMoved = false;
-                  break;
-                }
+              if (currentParent != null
+                  && (currentParent.equals(actualContainer) || currentParent.equals(actualComponentContainer))) {
+                willBeMoved = false;
+                break;
               }
             }
             
@@ -378,8 +349,8 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractRefreshE
     for (DNodeContainer aContainer : toBeMoved) {
       Part currentPart = (Part) aContainer.getTarget();
 
-      LinkedList<EObject> parents = new LinkedList<EObject>();
-      HashSet<EObject> visitedParents = new HashSet<EObject>();
+      LinkedList<EObject> parents = new LinkedList<>();
+      HashSet<EObject> visitedParents = new HashSet<>();
       boolean toBeDeleted = false;
       boolean isAdded = false;
 
@@ -495,6 +466,7 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractRefreshE
     
 
     FunctionalChainCache.getInstance().reset();
+    super.postRefresh(diagram);
   }
 
   @Deprecated

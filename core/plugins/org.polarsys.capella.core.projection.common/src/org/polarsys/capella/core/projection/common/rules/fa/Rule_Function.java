@@ -40,6 +40,8 @@ import org.polarsys.capella.core.tiger.ITransfo;
 import org.polarsys.capella.core.tiger.helpers.Query;
 import org.polarsys.capella.core.transfo.misc.CapellaEngine;
 
+import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
+
 /**
  */
 public class Rule_Function extends Rule_AbstractFunction {
@@ -74,7 +76,7 @@ public class Rule_Function extends Rule_AbstractFunction {
   protected int getNbUntransitionedSubFunctions(AbstractFunction function, ITransfo transfo_p) {
     if (!map.containsKey(function)) {
       int nb = 0;
-      for (AbstractFunction sub : FunctionExt.getFirstLevelAbstractFunctions(function)) {
+      for (AbstractFunction sub : getCache(FunctionExt::getFirstLevelAbstractFunctions, function)) {
         boolean isTransform = Query.isElementTransformed(sub, transfo_p);
         if (FunctionExt.isLeaf(sub) && !isTransform) {
           nb++;

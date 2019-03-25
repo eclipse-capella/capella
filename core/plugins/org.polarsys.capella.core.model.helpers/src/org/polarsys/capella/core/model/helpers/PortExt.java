@@ -11,6 +11,8 @@
 
 package org.polarsys.capella.core.model.helpers;
 
+import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -829,14 +831,14 @@ public class PortExt {
 
   /**
    * Returns whether the link can be considered as a delegation
-   * @param delegationTargetPort_p
+   * @param port
    * @return
    */
   public static Collection<PhysicalLink> getDelegatedPhysicalLinks(PhysicalPort port) {
-    Collection<PhysicalLink> links = new HashSet<PhysicalLink>();
+    Collection<PhysicalLink> links = new HashSet<>();
 
     Component component = PortExt.getRelatedComponent(port);
-    Collection<Part> parts = ComponentExt.getRepresentingParts(component);
+    Collection<Part> parts = getCache(ComponentExt::getRepresentingParts, component);
 
     for (PhysicalLink link : port.getInvolvedLinks()) {
       Collection<Part> sourceParts = org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt.getSourceParts(link);
@@ -881,14 +883,14 @@ public class PortExt {
 
   /**
    * Returns whether the link can be considered as a delegation
-   * @param delegationTargetPort_p
+   * @param port
    * @return
    */
   public static Collection<PhysicalLink> getDelegatingPhysicalLinks(PhysicalPort port) {
-    Collection<PhysicalLink> links = new HashSet<PhysicalLink>();
+    Collection<PhysicalLink> links = new HashSet<>();
 
     Component component = PortExt.getRelatedComponent(port);
-    Collection<Part> parts = ComponentExt.getRepresentingParts(component);
+    Collection<Part> parts = getCache(ComponentExt::getRepresentingParts, component);
 
     for (PhysicalLink link : port.getInvolvedLinks()) {
       Collection<Part> sourceParts = org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt.getSourceParts(link);

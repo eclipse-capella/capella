@@ -71,6 +71,7 @@ import org.polarsys.capella.core.data.fa.FaFactory;
 import org.polarsys.capella.core.data.fa.FaPackage;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.data.fa.OrientationPortKind;
+import org.polarsys.capella.core.data.helpers.cache.ModelCache;
 import org.polarsys.capella.core.data.helpers.capellacore.services.GeneralizableElementExt;
 import org.polarsys.capella.core.data.helpers.ctx.services.ActorPkgExt;
 import org.polarsys.capella.core.data.helpers.fa.services.FunctionExt;
@@ -101,6 +102,8 @@ import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
 import org.polarsys.capella.core.data.pa.PhysicalComponentPkg;
 import org.polarsys.capella.core.model.helpers.naming.NamingConstants;
+
+import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
 
 /**
  * Component helpers
@@ -530,9 +533,9 @@ public class ComponentExt {
    */
   public static Collection<ComponentExchange> getAllRelatedComponentExchange(Part part, boolean includePortOfType) {
 
-    List<ComponentExchange> result = new ArrayList<ComponentExchange>();
+    List<ComponentExchange> result = new ArrayList<>();
 
-    if ((part.getAbstractType() != null) && (part.getAbstractType() instanceof Component)) {
+    if (part.getAbstractType() instanceof Component) {
 
       EList<AbstractInformationFlow> informationFlows = part.getInformationFlows();
       for (AbstractInformationFlow abstractInformationFlow : informationFlows) {
@@ -540,7 +543,7 @@ public class ComponentExt {
           result.add((ComponentExchange) abstractInformationFlow);
         }
       }
-      for (ComponentExchangeEnd end : FunctionalExt.getRelatedComponentExchangeEnds(part)) {
+      for (ComponentExchangeEnd end : getCache(FunctionalExt::getRelatedComponentExchangeEnds, part)) {
         EObject owner = end.eContainer();
         if (owner instanceof ComponentExchange) {
           result.add((ComponentExchange) owner);
@@ -617,14 +620,15 @@ public class ComponentExt {
    */
   public static Collection<ComponentExchange> getAllRelatedConnectionByKind(Component component,
       ComponentExchangeKind kind) {
-    List<ComponentExchange> result = new ArrayList<ComponentExchange>();
+    List<ComponentExchange> result = new ArrayList<>();
 
     if (null == component) {
       return null;
     }
 
     // filter connection by kind
-    Collection<ComponentExchange> allRelatedConnection = getAllRelatedComponentExchange(component);
+    Collection<ComponentExchange> allRelatedConnection = getCache(ComponentExt::getAllRelatedComponentExchange,
+        component);
     result.addAll(allRelatedConnection);
     if (null != kind) {
       for (ComponentExchange connection : allRelatedConnection) {
@@ -1254,7 +1258,7 @@ public class ComponentExt {
    * @return the owned flow port
    */
   public static List<ComponentPort> getOwnedFlowPort(Component component) {
-    List<ComponentPort> returnedList = new ArrayList<ComponentPort>();
+    List<ComponentPort> returnedList = new ArrayList<>();
     for (Feature aFeature : component.getOwnedFeatures()) {
       if (PortExt.isFlowPort(aFeature)) {
         returnedList.add((ComponentPort) aFeature);
@@ -1271,7 +1275,7 @@ public class ComponentExt {
    * @return the owned in flow port
    */
   public static List<ComponentPort> getOwnedInFlowPort(Component component) {
-    List<ComponentPort> returnedList = new ArrayList<ComponentPort>();
+    List<ComponentPort> returnedList = new ArrayList<>();
     for (Feature aFeature : component.getOwnedFeatures()) {
       if (PortExt.isIn((ComponentPort) aFeature) && PortExt.isFlowPort(aFeature)) {
         returnedList.add((ComponentPort) aFeature);
@@ -1288,7 +1292,7 @@ public class ComponentExt {
    * @return the owned out flow port
    */
   public static List<ComponentPort> getOwnedOutFlowPort(Component component) {
-    List<ComponentPort> returnedList = new ArrayList<ComponentPort>();
+    List<ComponentPort> returnedList = new ArrayList<>();
     for (Feature aFeature : component.getOwnedFeatures()) {
       if ((aFeature instanceof ComponentPort) && PortExt.isOut((ComponentPort) aFeature)
           && PortExt.isFlowPort(aFeature)) {
@@ -1306,7 +1310,7 @@ public class ComponentExt {
    * @return the owned physical port
    */
   public static List<PhysicalPort> getOwnedPhysicalPort(Component component) {
-    List<PhysicalPort> returnedList = new ArrayList<PhysicalPort>();
+    List<PhysicalPort> returnedList = new ArrayList<>();
     for (Feature aFeature : component.getOwnedFeatures()) {
       if (aFeature instanceof PhysicalPort) {
         returnedList.add((PhysicalPort) aFeature);
@@ -1333,7 +1337,7 @@ public class ComponentExt {
    * @return the owned port
    */
   public static List<Port> getOwnedPort(Component component) {
-    List<Port> returnedList = new ArrayList<Port>();
+    List<Port> returnedList = new ArrayList<>();
     for (Feature aFeature : component.getOwnedFeatures()) {
       if (aFeature instanceof Port) {
         returnedList.add((Port) aFeature);
@@ -1347,7 +1351,7 @@ public class ComponentExt {
    * @return
    */
   public static Collection<ComponentExchange> getAllOwnedComponentExchanges(Component modelElement) {
-    List<ComponentExchange> instList = new ArrayList<ComponentExchange>();
+    List<ComponentExchange> instList = new ArrayList<>();
     for (EObject obj : EObjectExt.getAll(modelElement, FaPackage.Literals.COMPONENT_EXCHANGE)) {
       instList.add((ComponentExchange) obj);
     }
@@ -1362,7 +1366,7 @@ public class ComponentExt {
    * @return the owned standard port
    */
   public static List<ComponentPort> getOwnedStandardPort(Component component) {
-    List<ComponentPort> returnedList = new ArrayList<ComponentPort>();
+    List<ComponentPort> returnedList = new ArrayList<>();
     for (Feature aFeature : component.getOwnedFeatures()) {
       if (PortExt.isStandardPort(aFeature)) {
         returnedList.add((ComponentPort) aFeature);
@@ -1401,8 +1405,7 @@ public class ComponentExt {
     for (Partition partition : component.getRepresentingPartitions()) {
       if (partition instanceof Part) {
         for (Part componentAncestor : ComponentExt.getPartAncestors((Part) partition)) {
-          if ((componentAncestor.getAbstractType() != null)
-              && (componentAncestor.getAbstractType() instanceof Component)) {
+          if (componentAncestor.getAbstractType() instanceof Component) {
             result.add((Component) componentAncestor.getAbstractType());
           }
         }
@@ -1460,7 +1463,7 @@ public class ComponentExt {
               }
             }
 
-            for (DeploymentTarget target : PartExt.getDeployingElements(pvisit)) {
+            for (DeploymentTarget target : getCache(PartExt::getDeployingElements, pvisit)) {
               if (target instanceof Part) {
                 Part part = (Part) target;
                 if (!visited.contains(part)) {
@@ -1481,7 +1484,7 @@ public class ComponentExt {
 
   private static List<EObject> getRelatedElementsForCommonAncestor(EObject eobject, boolean useDeployementLinks) {
 
-    List<EObject> result = new LinkedList<EObject>();
+    List<EObject> result = new LinkedList<>();
 
     if (eobject instanceof Component) {
       for (Partition part : ((Component) eobject).getRepresentingPartitions()) {
@@ -1492,8 +1495,8 @@ public class ComponentExt {
       result.add(EcoreUtil2.getFirstContainer(eobject, CsPackage.Literals.COMPONENT));
 
     } else if (eobject instanceof Part) {
-      List<DeploymentTarget> elements = PartExt.getDeployingElements((Part) eobject);
-      if (useDeployementLinks && (elements.size() > 0)) {
+      List<DeploymentTarget> elements = getCache(PartExt::getDeployingElements, (Part) eobject);
+      if (useDeployementLinks && !elements.isEmpty()) {
         for (EObject e : elements) {
           result.add(e);
         }
@@ -1511,7 +1514,7 @@ public class ComponentExt {
    * Returns functional exchanges which are related to allocated functions of the given component
    */
   public static Collection<FunctionalExchange> getRelatedFunctionalExchanges(Component component) {
-    Collection<FunctionalExchange> functionalExchanges = new HashSet<FunctionalExchange>();
+    Collection<FunctionalExchange> functionalExchanges = new HashSet<>();
 
     for (Component cpnt : getAllSubUsedComponents(component)) {
       for (AbstractFunction af : cpnt.getAllocatedFunctions()) {
@@ -1529,7 +1532,7 @@ public class ComponentExt {
    * @param component
    */
   public static Collection<AbstractFunction> getAllocatedFunctions(Component component) {
-    Set<AbstractFunction> functionalExchanges = new HashSet<AbstractFunction>();
+    Set<AbstractFunction> functionalExchanges = new HashSet<>();
     EList<AbstractFunction> allocatedFunctions = component.getAllocatedFunctions();
     for (AbstractFunction abstractFunction2 : allocatedFunctions) {
       AbstractFunction abstractFunction = abstractFunction2;
@@ -1544,7 +1547,7 @@ public class ComponentExt {
    * Returns related interfaces of components (implements, uses, provides, requires).
    */
   public static Collection<Interface> getRelatedInterfaces(Component component) {
-    Collection<Interface> interfaces = new ArrayList<Interface>();
+    Collection<Interface> interfaces = new ArrayList<>();
 
     if (component != null) {
       interfaces.addAll(getImplementedAndProvidedInterfaces(component));
@@ -1641,7 +1644,7 @@ public class ComponentExt {
    * Gets the sub defined actors.
    */
   static public List<? extends Component> getSubDefinedActors(BlockArchitecture architecture) {
-    List<Component> elements = new ArrayList<Component>();
+    List<Component> elements = new ArrayList<>();
 
     Component component = BlockArchitectureExt.getContext(architecture, false);
     if (component != null) {
@@ -2063,12 +2066,12 @@ public class ComponentExt {
    */
   @SuppressWarnings({ "unchecked", "rawtypes" })
   public static Collection<Part> getBestPartAncestors(Part currentPart) {
-    LinkedList<Part> parents = new LinkedList<Part>();
-    Collection e = PartExt.getDeployingElements(currentPart);
+    LinkedList<Part> parents = new LinkedList<>();
+    Collection e = getCache(PartExt::getDeployingElements, currentPart);
     parents.addAll(e);
-    if (e.size() == 0) {
+    if (e.isEmpty()) {
       EObject parent = ComponentExt.getDirectParent(currentPart);
-      if ((parent != null) && (parent instanceof Component)) {
+      if (parent instanceof Component) {
         parents.addAll((Collection) ((Component) parent).getRepresentingPartitions());
       }
     }
@@ -2101,7 +2104,7 @@ public class ComponentExt {
   public static boolean isBrothers(Part source, Part target) {
 
     Collection<EObject> deployingSource = new HashSet<EObject>();
-    deployingSource.addAll(PartExt.getDeployingElements(source));
+    deployingSource.addAll(getCache(PartExt::getDeployingElements, source));
 
     if (deployingSource.size() == 0) {
       EObject sourceContainer = EcoreUtil2.getFirstContainer(source, CsPackage.Literals.COMPONENT);

@@ -11,6 +11,8 @@
 
 package org.polarsys.capella.core.model.helpers;
 
+import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -120,7 +122,7 @@ public final class ComponentExchangeExt {
     }
     Component sourceComponent = getSourceComponent(connection);
     if (sourceComponent != null) {
-      return ComponentExt.getRepresentingParts(sourceComponent);
+      return getCache(ComponentExt::getRepresentingParts, sourceComponent);
     }
     return Collections.emptyList();
   }
@@ -165,7 +167,7 @@ public final class ComponentExchangeExt {
     }
     Component targetComponent = getTargetComponent(connection);
     if (targetComponent != null) {
-      return ComponentExt.getRepresentingParts(targetComponent);
+      return getCache(ComponentExt::getRepresentingParts, targetComponent);
     }
     return Collections.emptyList();
   }
@@ -754,7 +756,7 @@ public final class ComponentExchangeExt {
     Port componentExcSource = ce.getSourcePort();
     if (componentExcSource instanceof ComponentPort) {
       Component sourceComponent = (Component) componentExcSource.eContainer();
-      if (ComponentExt.getRepresentingParts(sourceComponent).contains(sourcePart)) {
+      if (getCache(ComponentExt::getRepresentingParts, sourceComponent).contains(sourcePart)) {
         return (ComponentPort) componentExcSource;
       }
 
@@ -762,7 +764,7 @@ public final class ComponentExchangeExt {
     Port componentExcTarget = ce.getTargetPort();
     if (componentExcTarget instanceof ComponentPort) {
       Component targetComponent = (Component) componentExcTarget.eContainer();
-      if (ComponentExt.getRepresentingParts(targetComponent).contains(sourcePart)) {
+      if (getCache(ComponentExt::getRepresentingParts, targetComponent).contains(sourcePart)) {
         //
       }
       return (ComponentPort) componentExcTarget;

@@ -27,20 +27,22 @@ import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.FoldingFilter;
 import org.eclipse.sirius.diagram.FoldingPointFilter;
 import org.eclipse.sirius.diagram.GraphicalFilter;
-import org.eclipse.sirius.diagram.business.api.refresh.IRefreshExtension;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.sirius.analysis.CsServices;
 import org.polarsys.capella.core.sirius.analysis.DiagramServices;
 
 /**
  */
-public class BreakdownRefreshExtension implements IRefreshExtension {
+public class BreakdownRefreshExtension extends AbstractCacheAwareRefreshExtension {
 
   /**
    * @see org.eclipse.sirius.business.api.refresh.IRefreshExtension#beforeRefresh(org.eclipse.sirius.DDiagram)
    */
-  public void beforeRefresh(DDiagram dDiagram_p) {
-    repairCollapsedElements(dDiagram_p);
+  @Override
+  public void beforeRefresh(DDiagram dDiagram) {
+    super.beforeRefresh(dDiagram);
+    
+    repairCollapsedElements(dDiagram);
   }
 
   protected boolean isDirectlyCollapsed(DDiagramElement element) {
@@ -53,16 +55,16 @@ public class BreakdownRefreshExtension implements IRefreshExtension {
   }
 
   /**
-   * @param parent_p
+   * @param parent
    * @return
    */
-  private boolean isCollapsedParent(DDiagramElement parent_p) {
+  private boolean isCollapsedParent(DDiagramElement parent) {
 
-    if (!isDirectlyCollapsed(parent_p)) {
-      if (parent_p instanceof EdgeTarget) {
-        EdgeTarget edgeTarget = (EdgeTarget) parent_p;
+    if (!isDirectlyCollapsed(parent)) {
+      if (parent instanceof EdgeTarget) {
+        EdgeTarget edgeTarget = (EdgeTarget) parent;
         for (DEdge edge : edgeTarget.getIncomingEdges()) {
-          if (edge.getSourceNode() != null && edge.getSourceNode() instanceof DDiagramElement) {
+          if (edge.getSourceNode() instanceof DDiagramElement) {
             if (isDirectlyCollapsed((DDiagramElement) edge.getSourceNode())) {
               return true;
             }
@@ -76,12 +78,12 @@ public class BreakdownRefreshExtension implements IRefreshExtension {
 
 
   /**
-   * @param element_p
+   * @param element
    */
-  private void unfold(DDiagramElement element_p) {
-    Collection<GraphicalFilter> filters = new ArrayList<GraphicalFilter>();
+  private void unfold(DDiagramElement element) {
+    Collection<GraphicalFilter> filters = new ArrayList<>();
 
-    for (GraphicalFilter filter : element_p.getGraphicalFilters()) {
+    for (GraphicalFilter filter : element.getGraphicalFilters()) {
       if (filter instanceof FoldingFilter) {
         filters.add(filter);
       }
@@ -91,26 +93,26 @@ public class BreakdownRefreshExtension implements IRefreshExtension {
     }
 
     for (GraphicalFilter filter : filters) {
-      element_p.getGraphicalFilters().remove(filter);
+      element.getGraphicalFilters().remove(filter);
     }
 
   }
 
   /**
-   * @param dDiagram_p
+   * @param diagram
    */
-  protected void repairCollapsedElements(DDiagram diagram_p) {
-    Map<EObject, DragAndDropTarget> elements = DiagramServices.getDiagramServices().getMapOfDiagramNodes(diagram_p);
+  protected void repairCollapsedElements(DDiagram diagram) {
+    Map<EObject, DragAndDropTarget> elements = DiagramServices.getDiagramServices().getMapOfDiagramNodes(diagram);
 
-    Collection<DDiagramElement> toUnfold = new HashSet<DDiagramElement>();
-    Collection<DDiagramElement> toFold = new HashSet<DDiagramElement>();
+    Collection<DDiagramElement> toUnfold = new HashSet<>();
+    Collection<DDiagramElement> toFold = new HashSet<>();
 
-    for (DDiagramElement element : DiagramServices.getDiagramServices().getDiagramElements(diagram_p)) {
+    for (DDiagramElement element : DiagramServices.getDiagramServices().getDiagramElements(diagram)) {
       if (element instanceof AbstractDNode) {
 
         boolean elementIsCollapsed = isDirectlyCollapsed(element);
-        LinkedList<EObject> parents = new LinkedList<EObject>();
-        LinkedList<EObject> visitedObjects = new LinkedList<EObject>();
+        LinkedList<EObject> parents = new LinkedList<>();
+        LinkedList<EObject> visitedObjects = new LinkedList<>();
 
         EObject target = element.getTarget();
 
@@ -119,13 +121,13 @@ public class BreakdownRefreshExtension implements IRefreshExtension {
           parents.addAll(getContainers(target));
 
           //for all semantic parents which are not collapsed, find if element needs to be fold or unfold.
-          while (parents.size() > 0) {
+          while (!parents.isEmpty()) {
             EObject targetParent = parents.removeFirst();
             if (!visitedObjects.contains(targetParent)) {
               visitedObjects.add(targetParent);
               DragAndDropTarget viewParent = elements.get(targetParent);
 
-              if (viewParent != null && viewParent instanceof DDiagramElement) {
+              if (viewParent instanceof DDiagramElement) {
                 boolean parentIsDirectlyCollapsed = isDirectlyCollapsed((DDiagramElement) viewParent);
                 boolean parentIsUndirectlyCollapsed = isCollapsedParent((DDiagramElement) viewParent);
 
@@ -181,7 +183,7 @@ public class BreakdownRefreshExtension implements IRefreshExtension {
   }
 
   private Collection<EObject> getContainers(EObject e) {
-    Collection<EObject> parents = new ArrayList<EObject>();
+    Collection<EObject> parents = new ArrayList<>();
 
     if (e instanceof Component) {
       parents.addAll(CsServices.getService().getContainersOfParts((Component) e));
@@ -192,24 +194,24 @@ public class BreakdownRefreshExtension implements IRefreshExtension {
   }
 
   /**
-   * Retrieve graphical parents for the given element_p
-   * @param element_p
+   * Retrieve graphical parents for the given element
+   * @param element
    * @return
    */
-  private List<EObject> getBreakdownParents(DDiagramElement element_p) {
-    LinkedList<DDiagramElement> parents = new LinkedList<DDiagramElement>();
-    LinkedList<DDiagramElement> visitedElements = new LinkedList<DDiagramElement>();
-    LinkedList<EObject> visitedObjects = new LinkedList<EObject>();
-    parents.add(element_p);
+  private List<EObject> getBreakdownParents(DDiagramElement element) {
+    LinkedList<DDiagramElement> parents = new LinkedList<>();
+    LinkedList<DDiagramElement> visitedElements = new LinkedList<>();
+    LinkedList<EObject> visitedObjects = new LinkedList<>();
+    parents.add(element);
 
-    while (parents.size() > 0) {
+    while (!parents.isEmpty()) {
       DDiagramElement parent = parents.removeFirst();
       if (!visitedElements.contains(parent)) {
         visitedElements.add(parent);
         visitedObjects.add(parent.getTarget());
-        if (parent == element_p && parent instanceof EdgeTarget) {
+        if (parent == element && parent instanceof EdgeTarget) {
           for (DEdge edge : ((EdgeTarget)parent).getOutgoingEdges()) {
-            if (edge.getTargetNode() != null && edge.getTargetNode() instanceof DDiagramElement) {
+            if (edge.getTargetNode() instanceof DDiagramElement) {
               parents.addLast((DDiagramElement) edge.getTargetNode());
             }
           }
@@ -222,13 +224,4 @@ public class BreakdownRefreshExtension implements IRefreshExtension {
 
     return visitedObjects;
   }
-
-  /**
-   * @see org.eclipse.sirius.business.api.refresh.IRefreshExtension#postRefresh(org.eclipse.sirius.DDiagram)
-   */
-  public void postRefresh(DDiagram dDiagram_p) {
-    // Nothing
-
-  }
-
 }

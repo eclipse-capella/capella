@@ -59,6 +59,7 @@ import org.polarsys.capella.core.flexibility.commands.actions.DefaultAction;
 import org.polarsys.capella.core.flexibility.commands.dynamic.IActionsProvider;
 import org.polarsys.capella.core.flexibility.commands.helpers.EObjectHelper;
 
+import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
 /**
  */
 public class InformationActionsProvider implements IActionsProvider {
@@ -336,7 +337,7 @@ public class InformationActionsProvider implements IActionsProvider {
     public void execute() {
 
       for (EObject object : getSelectedEObjects()) {
-        Collection<AbstractFunction> a = (FunctionExt.getAllLeafAbstractFunctions((BlockArchitecture) object));
+        Collection<AbstractFunction> a = (getCache(FunctionExt::getAllLeafAbstractFunctions, (BlockArchitecture) object));
         for (AbstractFunction pkg : a) {
           getLogger().info(pkg.getName() + " " + pkg.hashCode());
         }

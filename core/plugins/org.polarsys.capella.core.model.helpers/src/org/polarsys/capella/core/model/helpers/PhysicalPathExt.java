@@ -51,6 +51,7 @@ import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.model.helpers.refmap.Pair;
 
+import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
 /**
  */
 public class PhysicalPathExt {
@@ -334,7 +335,7 @@ public class PhysicalPathExt {
     }
 
     for (Part function : targetFunctions) {
-      targetExchanges.addAll(org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt.getAllRelatedPhysicalLinks(function));
+      targetExchanges.addAll(getCache(PhysicalLinkExt::getAllRelatedPhysicalLinks, function));
     }
     return targetExchanges;
   }
@@ -358,7 +359,7 @@ public class PhysicalPathExt {
     }
 
     for (Part function : targetFunctions) {
-      targetExchanges.addAll(org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt.getAllRelatedPhysicalLinks(function));
+      targetExchanges.addAll(getCache(PhysicalLinkExt::getAllRelatedPhysicalLinks, function));
     }
     return targetExchanges;
   }
@@ -382,7 +383,7 @@ public class PhysicalPathExt {
     }
 
     for (Part function : sourceFunctions) {
-      sourceExchanges.addAll(org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt.getAllRelatedPhysicalLinks(function));
+      sourceExchanges.addAll(getCache(PhysicalLinkExt::getAllRelatedPhysicalLinks, function));
     }
 
     return sourceExchanges;
@@ -420,7 +421,7 @@ public class PhysicalPathExt {
     targetFunctions.addAll(getFlatPhysicalPathFirstParts(path));
 
     for (Part function : targetFunctions) {
-      targetExchanges.addAll(org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt.getAllRelatedPhysicalLinks(function));
+      targetExchanges.addAll(getCache(PhysicalLinkExt::getAllRelatedPhysicalLinks, function));
     }
     return targetExchanges;
   }
@@ -433,7 +434,7 @@ public class PhysicalPathExt {
     targetFunctions.addAll(getFlatPhysicalPathLastParts(path));
 
     for (Part function : targetFunctions) {
-      targetExchanges.addAll(org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt.getAllRelatedPhysicalLinks(function));
+      targetExchanges.addAll(getCache(PhysicalLinkExt::getAllRelatedPhysicalLinks, function));
     }
     return targetExchanges;
   }
@@ -462,12 +463,12 @@ public class PhysicalPathExt {
         Collection<Part> nextParts = new LinkedHashSet<>();
 
         for (PhysicalPathInvolvement involvment : previouses) {
-          if ((involvment.getInvolved() != null) && (involvment.getInvolved() instanceof Part)) {
+          if (involvment.getInvolved() instanceof Part) {
             previousParts.add((Part) involvment.getInvolved());
           }
         }
         for (PhysicalPathInvolvement involvment : nexts) {
-          if ((involvment.getInvolved() != null) && (involvment.getInvolved() instanceof Part)) {
+          if (involvment.getInvolved() instanceof Part) {
             nextParts.add((Part) involvment.getInvolved());
           }
         }

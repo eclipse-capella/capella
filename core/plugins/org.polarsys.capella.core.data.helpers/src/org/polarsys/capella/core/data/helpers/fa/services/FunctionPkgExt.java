@@ -11,6 +11,8 @@
 
 package org.polarsys.capella.core.data.helpers.fa.services;
 
+import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -27,6 +29,10 @@ import org.polarsys.capella.core.data.pa.PhysicalFunctionPkg;
 /**
  */
 public class FunctionPkgExt {
+  
+  private FunctionPkgExt() {
+    // To hide the implicit public one
+  }
 
   /**
    * Get All the ExchangeCategories from FunctionPkg
@@ -84,7 +90,7 @@ public class FunctionPkgExt {
     returnedList.add(functionPkg);
 
     for (AbstractFunction aFunction : getOwnedFunctions(functionPkg)) {
-      returnedList.addAll(FunctionExt.getAllFunctionPkgs(aFunction));
+      returnedList.addAll(getCache(FunctionExt::getAllFunctionPkgs, aFunction));
     }
 
     for (FunctionPkg aFunctionPkg : getOwnedFunctionPkgs(functionPkg)) {
@@ -137,11 +143,11 @@ public class FunctionPkgExt {
 
     if (functionPkg != null) {
       for (AbstractFunction aFunction : getOwnedFunctions(functionPkg)) {
-        returnedList.addAll(FunctionExt.getAllAbstractFunctions(aFunction));
+        returnedList.addAll(getCache(FunctionExt::getAllAbstractFunctions, aFunction));
       }
 
       for (FunctionPkg aFunctionPkg : getOwnedFunctionPkgs(functionPkg)) {
-        returnedList.addAll(getAllAbstractFunctions(aFunctionPkg));
+        returnedList.addAll(getCache(FunctionPkgExt::getAllAbstractFunctions, aFunctionPkg));
       }
     }
 

@@ -57,6 +57,8 @@ import org.polarsys.capella.core.sirius.analysis.showhide.AbstractShowHide;
 import org.polarsys.capella.core.sirius.analysis.showhide.AbstractShowHide.DiagramContext;
 import org.polarsys.capella.core.sirius.analysis.showhide.ShowHideIDRelationships;
 
+import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
+
 /**
  * Shared helpers for Architecture Blank diagrams
  */
@@ -613,7 +615,7 @@ public class IBServices {
       if (target instanceof Part) {
         result.addAll(ComponentExt.getAllRelatedComponentExchange((Part) target, true));
       } else if (target instanceof Component) {
-        result.addAll(ComponentExt.getAllRelatedComponentExchange((Component) target));
+        result.addAll(getCache(ComponentExt::getAllRelatedComponentExchange, (Component) target));
       }
     }
 

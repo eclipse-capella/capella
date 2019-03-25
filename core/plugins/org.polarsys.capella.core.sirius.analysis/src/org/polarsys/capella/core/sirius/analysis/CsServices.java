@@ -214,6 +214,8 @@ import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
+import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
+
 /**
  * Provides services for all interfaces diagram.
  */
@@ -708,7 +710,7 @@ public class CsServices {
         containers.add((Component) parent);
       }
 
-      for (DeploymentTarget deploment : PartExt.getDeployingElements((Part) partition)) {
+      for (DeploymentTarget deploment : getCache(PartExt::getDeployingElements, (Part) partition)) {
         if (deploment instanceof Part) {
           AbstractType type = (((Part) deploment)).getAbstractType();
           if (type instanceof Component) {
@@ -736,7 +738,7 @@ public class CsServices {
       containers.add((Component) parent);
     }
 
-    for (DeploymentTarget deploment : PartExt.getDeployingElements(part)) {
+    for (DeploymentTarget deploment : getCache(PartExt::getDeployingElements, part)) {
       if (deploment instanceof Part) {
         AbstractType type = (((Part) deploment)).getAbstractType();
         if (type instanceof Component) {
@@ -2908,7 +2910,7 @@ public class CsServices {
       Component sourceComponent = (Component) ((Part) related).getAbstractType();
 
       Collection<ComponentExchange> relatedExchanges = new HashSet<>();
-      relatedExchanges.addAll(ComponentExt.getAllRelatedComponentExchange(sourcePart));
+      relatedExchanges.addAll(getCache(ComponentExt::getAllRelatedComponentExchange, sourcePart));
       relatedExchanges.addAll(ComponentExt.getAllRelatedComponentExchange(sourceComponent, false));
 
       for (ComponentExchange relatedExchange : relatedExchanges) {
@@ -2916,7 +2918,7 @@ public class CsServices {
           EObject src = getSourcePart(relatedExchange);
           if (src == null) {
             semantics
-                .addAll(ComponentExt.getRepresentingParts(ComponentExchangeExt.getSourceComponent(relatedExchange)));
+                .addAll(getCache(ComponentExt::getRepresentingParts, ComponentExchangeExt.getSourceComponent(relatedExchange)));
           } else {
             semantics.add(src);
           }
@@ -2924,7 +2926,7 @@ public class CsServices {
           EObject target = getTargetPart(relatedExchange);
           if (target == null) {
             semantics
-                .addAll(ComponentExt.getRepresentingParts(ComponentExchangeExt.getTargetComponent(relatedExchange)));
+                .addAll(getCache(ComponentExt::getRepresentingParts, ComponentExchangeExt.getTargetComponent(relatedExchange)));
           } else {
             semantics.add(src);
           }
@@ -2962,7 +2964,7 @@ public class CsServices {
 
     // Retrieve all related component exchange from source
     Collection<CapellaElement> sources = new ArrayList<>();
-    for (CapellaElement element : ComponentExt.getAllRelatedComponentExchange(sourcePart)) {
+    for (CapellaElement element : getCache(ComponentExt::getAllRelatedComponentExchange, sourcePart)) {
       if (!sources.contains(element)) {
         sources.add(element);
       }
@@ -4679,79 +4681,80 @@ public class CsServices {
    */
   @SuppressWarnings({ "unchecked", "rawtypes" })
   public void showABContextualElements(DDiagramContents context, Collection<EObject> contextualElements) {
+    if (!contextualElements.isEmpty()) {
+      DDiagram diagram = context.getDDiagram();
+      Collection<EObject> contextualParts = new HashSet<>();
+      Collection<AbstractFunction> contextualFunctions = new HashSet<>();
+      Collection<FunctionalExchange> contextualFunctionExchanges = new HashSet<>();
+      Collection<EObject> contextualFunctionalChains = new HashSet<>();
+      Collection<EObject> contextualConnections = new HashSet<>();
+      Collection<EObject> contextualPhysicalLinks = new HashSet<>();
+      Collection<EObject> contextualModes = new HashSet<>();
+      Collection<EObject> contextualScenarios = new HashSet<>();
 
-    DDiagram diagram = context.getDDiagram();
-    Collection<EObject> contextualParts = new HashSet<>();
-    Collection<AbstractFunction> contextualFunctions = new HashSet<>();
-    Collection<FunctionalExchange> contextualFunctionExchanges = new HashSet<>();
-    Collection<EObject> contextualFunctionalChains = new HashSet<>();
-    Collection<EObject> contextualConnections = new HashSet<>();
-    Collection<EObject> contextualPhysicalLinks = new HashSet<>();
-    Collection<EObject> contextualModes = new HashSet<>();
-    Collection<EObject> contextualScenarios = new HashSet<>();
+      for (EObject contextualElement : contextualElements) {
 
-    for (EObject contextualElement : contextualElements) {
+        if (contextualElement instanceof Entity) {
+          contextualParts.add(contextualElement);
 
-      if (contextualElement instanceof Entity) {
-        contextualParts.add(contextualElement);
+        } else if (contextualElement instanceof Component) {
+          Collection<Part> parts = getCache(ComponentExt::getRepresentingParts, (Component) contextualElement);
+          contextualParts.addAll(parts);
 
-      } else if (contextualElement instanceof Component) {
-        Collection<Part> parts = ComponentExt.getRepresentingParts((Component) contextualElement);
-        contextualParts.addAll(parts);
+        } else if (contextualElement instanceof Part) {
+          contextualParts.add(contextualElement);
 
-      } else if (contextualElement instanceof Part) {
-        contextualParts.add(contextualElement);
+        } else if (contextualElement instanceof AbstractFunction) {
+          contextualFunctions.add((AbstractFunction) contextualElement);
 
-      } else if (contextualElement instanceof AbstractFunction) {
-        contextualFunctions.add((AbstractFunction) contextualElement);
+        } else if (contextualElement instanceof FunctionalChain) {
 
-      } else if (contextualElement instanceof FunctionalChain) {
+          for (FunctionalChainInvolvement involvement : FunctionalChainExt
+              .getFlatInvolvementsOf((FunctionalChain) contextualElement, FaPackage.Literals.ABSTRACT_FUNCTION)) {
+            contextualFunctions.add((AbstractFunction) involvement.getInvolved());
+          }
+          for (FunctionalChainInvolvement involvement : FunctionalChainExt
+              .getFlatInvolvementsOf((FunctionalChain) contextualElement, FaPackage.Literals.FUNCTIONAL_EXCHANGE)) {
+            contextualFunctionExchanges.add((FunctionalExchange) involvement.getInvolved());
+          }
+          contextualFunctionalChains.add(contextualElement);
 
-        for (FunctionalChainInvolvement involvement : FunctionalChainExt
-            .getFlatInvolvementsOf((FunctionalChain) contextualElement, FaPackage.Literals.ABSTRACT_FUNCTION)) {
-          contextualFunctions.add((AbstractFunction) involvement.getInvolved());
+        } else if (contextualElement instanceof Scenario) {
+          contextualScenarios.add(contextualElement);
+
+        } else if (contextualElement instanceof State) {
+          contextualModes.add(contextualElement);
+
         }
-        for (FunctionalChainInvolvement involvement : FunctionalChainExt
-            .getFlatInvolvementsOf((FunctionalChain) contextualElement, FaPackage.Literals.FUNCTIONAL_EXCHANGE)) {
-          contextualFunctionExchanges.add((FunctionalExchange) involvement.getInvolved());
-        }
-        contextualFunctionalChains.add(contextualElement);
-
-      } else if (contextualElement instanceof Scenario) {
-        contextualScenarios.add(contextualElement);
-
-      } else if (contextualElement instanceof State) {
-        contextualModes.add(contextualElement);
 
       }
 
+      // Retrieve all related parts connected by a component exchange
+      for (EObject contextualPart : contextualParts) {
+        for (ComponentExchange flow : getCache(ABServices::getRelatedComponentExchanges2, contextualPart)) {
+          if (flow.getKind() != ComponentExchangeKind.DELEGATION) {
+            contextualConnections.add(flow);
+          }
+        }
+
+        Collection<PhysicalLink> delagatesPhysicalLink = getAllDelegatesPhysicalLink(contextualPart);
+        for (PhysicalLink physicalLink : ABServices.getService().getRelatedPhysicalLink(contextualPart)) {
+          if (!delagatesPhysicalLink.contains(physicalLink)) {
+            contextualPhysicalLinks.add(physicalLink);
+          }
+        }
+      }
+
+      // Show a lot of things
+      ABServices.getService().showABComponent(contextualParts, context);
+      CsServices.getService().showABFunctionalExchange((Collection) contextualFunctionExchanges,
+          (DSemanticDecorator) diagram);
+      CsServices.getService().showABComponentExchange(contextualConnections, (DSemanticDecorator) diagram);
+      CsServices.getService().showABPhysicalLink(contextualPhysicalLinks, (DSemanticDecorator) diagram);
+      FaServices.getFaServices().showABFunctionalChains(diagram, contextualFunctionalChains, context);
+      ABServices.getService().showABScenarios((DSemanticDecorator) diagram, contextualScenarios);
+      ABServices.getService().showABStateModes((DSemanticDecorator) diagram, contextualModes);
     }
-
-    // Retrieve all related parts connected by a component exchange
-    for (EObject contextualPart : contextualParts) {
-      for (ComponentExchange flow : ABServices.getService().getRelatedComponentExchanges(contextualPart)) {
-        if (flow.getKind() != ComponentExchangeKind.DELEGATION) {
-          contextualConnections.add(flow);
-        }
-      }
-
-      Collection<PhysicalLink> delagatesPhysicalLink = getAllDelegatesPhysicalLink(contextualPart);
-      for (PhysicalLink physicalLink : ABServices.getService().getRelatedPhysicalLink(contextualPart)) {
-        if (!delagatesPhysicalLink.contains(physicalLink)) {
-          contextualPhysicalLinks.add(physicalLink);
-        }
-      }
-    }
-
-    // Show a lot of things
-    ABServices.getService().showABComponent(contextualParts, context);
-    CsServices.getService().showABFunctionalExchange((Collection) contextualFunctionExchanges,
-        (DSemanticDecorator) diagram);
-    CsServices.getService().showABComponentExchange(contextualConnections, (DSemanticDecorator) diagram);
-    CsServices.getService().showABPhysicalLink(contextualPhysicalLinks, (DSemanticDecorator) diagram);
-    FaServices.getFaServices().showABFunctionalChains(diagram, contextualFunctionalChains, context);
-    ABServices.getService().showABScenarios((DSemanticDecorator) diagram, contextualScenarios);
-    ABServices.getService().showABStateModes((DSemanticDecorator) diagram, contextualModes);
   }
 
   public Collection<PhysicalLink> getAllDelegatesPhysicalLink(EObject contextualPart) {
@@ -6331,10 +6334,10 @@ public class CsServices {
           result.addAll(ComponentExt.getAllRelatedComponentExchange(part, true));
         }
       } else if (target instanceof Component) {
-        result.addAll(ComponentExt.getAllRelatedComponentExchange((Component) target));
+        result.addAll(getCache(ComponentExt::getAllRelatedComponentExchange, (Component) target));
         Collection<Component> allSubUsedComponents = ComponentExt.getAllSubUsedComponents((Component) target);
         for (Component component : allSubUsedComponents) {
-          result.addAll(ComponentExt.getAllRelatedComponentExchange(component));
+          result.addAll(getCache(ComponentExt::getAllRelatedComponentExchange, component));
         }
       }
     }
@@ -6363,13 +6366,13 @@ public class CsServices {
     for (DDiagramElement dNode : context.getDiagramElements()) {
       EObject target = dNode.getTarget();
       if (target instanceof Part) {
-        result.addAll(PhysicalLinkExt.getAllRelatedPhysicalLinks((Part) target));
+        result.addAll(getCache(PhysicalLinkExt::getAllRelatedPhysicalLinks, (Part) target));
         Collection<Part> allSubUsedParts = ComponentExt.getAllSubUsedParts((Part) target, true);
         for (Part part : allSubUsedParts) {
-          result.addAll(PhysicalLinkExt.getAllRelatedPhysicalLinks(part));
+          result.addAll(getCache(PhysicalLinkExt::getAllRelatedPhysicalLinks, part));
         }
       } else if (target instanceof Component) {
-        result.addAll(PhysicalLinkExt.getAllRelatedPhysicalLinks((Component) target));
+        result.addAll(getCache(PhysicalLinkExt::getAllRelatedPhysicalLinks, (Component) target));
         Collection<Component> allSubUsedComponents = ComponentExt.getAllSubUsedComponents((Component) target);
         for (Component component : allSubUsedComponents) {
           result.addAll(PhysicalLinkExt.getAllRelatedPhysicalLinks(component));
@@ -6620,7 +6623,7 @@ public class CsServices {
           result.add(source);
         }
         if (source.eContainer() instanceof Component) {
-          Collection<Part> representingParts = ComponentExt.getRepresentingParts((Component) source.eContainer());
+          Collection<Part> representingParts = getCache(ComponentExt::getRepresentingParts, (Component) source.eContainer());
           if (!representingParts.isEmpty()) {
             Part portParent = representingParts.iterator().next();
             result.addAll(getVisibleEdgeEnds(diagram, portParent, false));
@@ -6649,7 +6652,7 @@ public class CsServices {
       toHandle.add(mainPart);
     }
     addRelevantParts(diagram, mainPart, toHandle);
-    for (DeploymentTarget element : PartExt.getDeployingElements(mainPart)) {
+    for (DeploymentTarget element : getCache(PartExt::getDeployingElements, mainPart)) {
       if (!isChildView(diagram, mainPart, element)) {
         toHandle.add(element);
       }
@@ -6681,7 +6684,7 @@ public class CsServices {
   }
 
   private void addRelevantParts(DDiagram diagram, Part mainPart, List<DeploymentTarget> toHandle) {
-    Iterator<Part> parts = ComponentExt.getRepresentingParts((Component) mainPart.eContainer()).iterator();
+    Iterator<Part> parts = getCache(ComponentExt::getRepresentingParts, (Component) mainPart.eContainer()).iterator();
     while (parts.hasNext()) {
       Part parentPart = parts.next();
       Collection<DSemanticDecorator> diagramElements = DiagramServices.getDiagramServices().getDiagramElements(diagram,

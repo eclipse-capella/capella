@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.polarsys.capella.core.sirius.analysis.showhide;
 
+import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
+
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
@@ -29,6 +31,7 @@ import org.polarsys.capella.core.data.oa.Role;
 import org.polarsys.capella.core.diagram.helpers.DiagramHelper;
 import org.polarsys.capella.core.model.helpers.AbstractFunctionExt;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
+import org.polarsys.capella.core.model.helpers.PortExt;
 import org.polarsys.capella.core.sirius.analysis.DDiagramContents;
 import org.polarsys.capella.core.sirius.analysis.constants.MappingConstantsHelper;
 import org.polarsys.capella.core.sirius.analysis.tool.HashMapSet;
@@ -68,9 +71,7 @@ public class ShowHideFunction extends ShowHideABRole {
           } else if (block instanceof Role) {
             result.add((Role) block);
           } else if (block instanceof Component) {
-            result.addAll(ComponentExt.getRepresentingParts((Component) block));
-          } else if (block instanceof Component) {
-            result.addAll(ComponentExt.getRepresentingParts((Component) block));
+            result.addAll(getCache(ComponentExt::getRepresentingParts, (Component) block));
           }
         }
 
