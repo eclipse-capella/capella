@@ -519,6 +519,42 @@
              </defaultMappingPossibility>
           </mappingElement>
           
+          <mappingElement
+                domainMetaClass="org.polarsys.capella.core.data.fa.FunctionalChainInvolvementLink"
+                reuseExtendedElementDefaultPossibility="true"
+                reuseExtendedElementPossibilities="true">
+             <defaultMappingPossibility
+                   completeRule="org.polarsys.capella.core.transition.system.rules.fa.FunctionalChainInvolvementLinkRule"
+                   incompleteRule="org.polarsys.capella.core.transition.system.rules.fa.FunctionalChainInvolvementLinkRule"
+                   enabled="true"
+                   name="FunctionalChainInvolvementLink">
+             </defaultMappingPossibility>
+          </mappingElement>
+          
+          <mappingElement
+                domainMetaClass="org.polarsys.capella.core.data.fa.ControlNode"
+                reuseExtendedElementDefaultPossibility="true"
+                reuseExtendedElementPossibilities="true">
+             <defaultMappingPossibility
+                   completeRule="org.polarsys.capella.core.transition.system.rules.fa.ControlNodeRule"
+                   incompleteRule="org.polarsys.capella.core.transition.system.rules.fa.ControlNodeRule"
+                   enabled="true"
+                   name="ControlNode">
+             </defaultMappingPossibility>
+          </mappingElement>
+          
+          <mappingElement
+                domainMetaClass="org.polarsys.capella.core.data.fa.SequenceLink"
+                reuseExtendedElementDefaultPossibility="true"
+                reuseExtendedElementPossibilities="true">
+             <defaultMappingPossibility
+                   completeRule="org.polarsys.capella.core.transition.system.rules.fa.SequenceLinkRule"
+                   incompleteRule="org.polarsys.capella.core.transition.system.rules.fa.SequenceLinkRule"
+                   enabled="true"
+                   name="SequenceLink">
+             </defaultMappingPossibility>
+          </mappingElement>
+          
             <mappingElement
                   domainMetaClass="org.polarsys.capella.core.data.fa.FunctionPkg"
                   reuseExtendedElementDefaultPossibility="true"
