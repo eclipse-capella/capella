@@ -34,7 +34,7 @@ public class MultipleValidElementsListData extends ListData implements IMoveable
    */
   @Override
   protected Collection<Object> initializeRootElementCollection() {
-    return new ArrayList<Object>(0);
+    return new ArrayList<>(0);
   }
 
   /**
@@ -42,7 +42,7 @@ public class MultipleValidElementsListData extends ListData implements IMoveable
    */
   @Override
   protected Collection<Object> initializeValidElementCollection(Collection<? extends Object> displayedElements) {
-    return new ArrayList<Object>(displayedElements);
+    return new ArrayList<>(displayedElements);
   }
 
   /**
@@ -50,7 +50,7 @@ public class MultipleValidElementsListData extends ListData implements IMoveable
    */
   public void swap(Object child, int index, int newIndex) {
     // Swap elements in list.
-    Collections.swap((List<?>) _rootElements, index, newIndex);
-    Collections.swap((List<?>) _validElements, index, newIndex);
+    Collections.swap((List<?>) rootElements, index, newIndex);
+    Collections.swap((List<?>) validElements, index, newIndex);
   }
 }
