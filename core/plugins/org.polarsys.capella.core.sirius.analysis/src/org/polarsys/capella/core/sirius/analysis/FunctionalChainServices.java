@@ -1131,8 +1131,23 @@ public class FunctionalChainServices {
     return false;
   }
 
-  public boolean canCreateFCILEdgeForCollapsedContainer(ReferenceHierarchyContext link, DDiagramElement sourceView,
-      EObject source, DDiagramElement targetView, EObject target) {
+  /**
+   * Precondition used for displaying an edge referencing ReferenceHierarchyContext.
+   * 
+   * @param link
+   *          the semantic ReferenceHierarchyContext element.
+   * @param sourceView
+   *          the source view
+   * @param source
+   *          the semantic source
+   * @param targetView
+   *          the target view
+   * @param target
+   *          the semantic target
+   * @return true if the edge should be displayed, false otherwise.
+   */
+  public boolean canCreateFCILEdge(ReferenceHierarchyContext link, DDiagramElement sourceView, EObject source,
+      DDiagramElement targetView, EObject target) {
 
     if (source == null || target == null)
       return false;
@@ -1159,7 +1174,41 @@ public class FunctionalChainServices {
   }
 
   /**
-   * Return true if the given link must appears in the diagram
+   * Precondition used for displaying an edge between a FCILink and a SequenceLink.
+   * 
+   * @param sourceEdge
+   *          the source FCILink edge
+   * @param targetEdge
+   *          the target SequenceLink edge
+   * @return true if the edge should be displayed, false otherwise.
+   */
+  public boolean canCreateLinksEdge(DEdge sourceEdge, DEdge targetEdge) {
+
+    EdgeTarget sourceNode1 = sourceEdge.getSourceNode();
+    EdgeTarget sourceNode2 = targetEdge.getSourceNode();
+
+    List<FunctionalChainReference> sourceNode1Hierarchy = FunctionalChainReferenceHierarchyHelper
+        .computeHierarchy(sourceNode1);
+    List<FunctionalChainReference> sourceNode2Hierarchy = FunctionalChainReferenceHierarchyHelper
+        .computeHierarchy(sourceNode2);
+
+    if (!sourceNode1Hierarchy.equals(sourceNode2Hierarchy)) {
+      return false;
+    }
+
+    EdgeTarget targetNode1 = sourceEdge.getTargetNode();
+    EdgeTarget targetNode2 = targetEdge.getTargetNode();
+
+    List<FunctionalChainReference> targetNode1Hierarchy = FunctionalChainReferenceHierarchyHelper
+        .computeHierarchy(targetNode1);
+    List<FunctionalChainReference> targetNode2Hierarchy = FunctionalChainReferenceHierarchyHelper
+        .computeHierarchy(targetNode2);
+
+    return targetNode1Hierarchy.equals(targetNode2Hierarchy);
+  }
+
+  /**
+   * targetNode2Hierarchygiven link must appears in the diagram
    * 
    * @param link
    *          the given link
@@ -1221,7 +1270,7 @@ public class FunctionalChainServices {
     if (sequenceLink.getCondition() != null) {
       ValueSpecification expression = sequenceLink.getCondition().getOwnedSpecification();
       if (expression instanceof OpaqueExpression) {
-        label += "["+ConstraintExt.getPrimaryBody((OpaqueExpression) expression)+"]";
+        label += "[" + ConstraintExt.getPrimaryBody((OpaqueExpression) expression) + "]";
       }
     }
 
@@ -1242,13 +1291,13 @@ public class FunctionalChainServices {
         label += exchange.getName();
       }
     }
-    
+
     return label;
   }
 
   /**
-   * Returns all the Sequence links for a given functional chain, including those on recursive levels. This
-   * function is tail recursive.
+   * Returns all the Sequence links for a given functional chain, including those on recursive levels. This function is
+   * tail recursive.
    * 
    * @param chain
    *          the given functional chain.
@@ -1314,7 +1363,9 @@ public class FunctionalChainServices {
 
   /**
    * Precondition for the creation of a link between a Sequence Link and a FCIL to a FE
-   * @param  the semantic target
+   * 
+   * @param the
+   *          semantic target
    * @return true if a link can be created, false otherwise.
    */
   public boolean isValidLinks(EObject target) {
