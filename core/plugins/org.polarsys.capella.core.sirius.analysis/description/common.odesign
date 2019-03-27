@@ -18962,6 +18962,9 @@
       <filters xsi:type="filter:CompositeFilterDescription" name="Hide Property Values">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_PVG']"/>
       </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="Merge associated Functional Exchange Involvements and Sequence Links without Control Node">
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@edgeMappings[name='FC_Exchange']" viewConditionExpression="aql:not(self.isFEWithAssociatedSL())"/>
+      </filters>
       <layout xsi:type="description_1:CompositeLayout" direction="LeftToRight"/>
       <defaultLayer name="Default" reusedMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_ContrainedElements'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_PV'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_PVconnector'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_PVG'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_PVGconnector']">
         <nodeMappings name="FC_AbstractFunction" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20FE%20Involvement']" semanticCandidatesExpression="aql:self.ownedFunctionalChainInvolvements->filter(fa::FunctionalChainInvolvementFunction)" semanticElements="aql:self.makeUnion(self, self.involved)" synchronizationLock="true" domainClass="FunctionalChainInvolvementFunction">
@@ -19053,23 +19056,23 @@
           </conditionnalStyles>
         </nodeMappings>
         <edgeMappings name="FC_Exchange" preconditionExpression="service:canCreateFCILEdge(sourceView, source, targetView, target)" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20FE%20Involvement']" semanticCandidatesExpression="service:getAllFunctionalChainInvolvementLinks()" semanticElements="aql:self.makeUnion(self, self.involved)" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@nodeMappings[name='FC_AbstractFunction'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@containerMappings[name='FC_FunctionalChainReference']" targetMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@nodeMappings[name='FC_AbstractFunction'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@containerMappings[name='FC_FunctionalChainReference']" targetFinderExpression="aql:self.makeUnion(self.target, self.targetReferenceHierarchy)" sourceFinderExpression="aql:self.makeUnion(self.source, self.sourceReferenceHierarchy)" domainClass="FunctionalChainInvolvementLink" useDomainElement="true">
-          <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']">
+          <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']" routingStyle="manhattan">
             <centerLabelStyleDescription labelExpression="aql:self.getFCInvolvmentLinkLabel(diagram)" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']"/>
           </style>
           <conditionnalStyles predicateExpression="aql:not (self.involved.isInOperationalAnalysis()) and self.source.isSameFunctionInvolved(self.target)">
-            <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']" lineStyle="dot" targetArrow="NoDecoration" sizeComputationExpression="2">
+            <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']" lineStyle="dot" targetArrow="NoDecoration" sizeComputationExpression="2" routingStyle="manhattan">
               <centerLabelStyleDescription labelExpression="aql:self.getFCInvolvmentLinkLabel(diagram)">
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </centerLabelStyleDescription>
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="aql:self.involved.isInOperationalAnalysis() and not self.source.isSameFunctionInvolved(self.target)">
-            <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Border_Orange']">
+            <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Border_Orange']" routingStyle="manhattan">
               <centerLabelStyleDescription labelExpression="aql:self.getFCInvolvmentLinkLabel(diagram)" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Border_Orange']"/>
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="aql:self.involved.isInOperationalAnalysis() and self.source.isSameFunctionInvolved(self.target)">
-            <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Border_Orange']" lineStyle="dash" targetArrow="NoDecoration">
+            <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Border_Orange']" lineStyle="dash" targetArrow="NoDecoration" routingStyle="manhattan">
               <centerLabelStyleDescription labelExpression="aql:self.getFCInvolvmentLinkLabel(diagram)" labelColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Border_Orange']"/>
             </style>
           </conditionnalStyles>
@@ -19082,7 +19085,7 @@
         <edgeMappings name="FC_SequenceLink" preconditionExpression="service:canCreateFCILEdge(sourceView, source, targetView, target)" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20FE%20Involvement']" semanticCandidatesExpression="service:getAllSequenceLinks()" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@nodeMappings[name='FC_AbstractFunction'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@nodeMappings[name='FC_ControlNode'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@containerMappings[name='FC_FunctionalChainReference']" targetMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@nodeMappings[name='FC_AbstractFunction'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@nodeMappings[name='FC_ControlNode'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@containerMappings[name='FC_FunctionalChainReference']" targetFinderExpression="aql:self.makeUnion(self.target, self.targetReferenceHierarchy)" sourceFinderExpression="aql:self.makeUnion(self.source, self.sourceReferenceHierarchy)" domainClass="SequenceLink" useDomainElement="true">
           <style lineStyle="dash" routingStyle="manhattan">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <centerLabelStyleDescription showIcon="false" labelExpression="service:getSequenceLinkLabel">
+            <centerLabelStyleDescription showIcon="false" labelExpression="service:getSequenceLinkLabel(diagram)">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>

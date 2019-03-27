@@ -602,7 +602,6 @@ public class FunctionalChainServices {
   }
 
   public String getFCInvolvmentLinkLabel(FunctionalChainInvolvementLink involvementLink, DDiagram diagram) {
-
     String label = "";
     InvolvedElement involved = involvementLink.getInvolved();
 
@@ -899,7 +898,7 @@ public class FunctionalChainServices {
    */
   public boolean isValidFCILinkFunction(FunctionalChainInvolvementFunction source, EdgeTarget sourceView,
       FunctionalChainInvolvementFunction target, EdgeTarget targetView) {
-    return sourceView != targetView && isSameFunctionInvolved(source, target);
+    return sourceView != targetView && isSameFunctionInvolved(source, target) && !isSameFunctionalChain(source, target);
   }
 
   /**
@@ -914,6 +913,20 @@ public class FunctionalChainServices {
   public boolean isSameFunctionInvolved(FunctionalChainInvolvement sourceInvolvement,
       FunctionalChainInvolvement targetInvolvement) {
     return sourceInvolvement.getInvolved() == targetInvolvement.getInvolved();
+  }
+  
+  /**
+   * Returns true if the source and target functions are owned by the same FunctionalChain, false otherwise.
+   * 
+   * @param sourceInvolvement
+   *          the source involvement parameter.
+   * @param targetInvolvement
+   *          the target involvement parameter.
+   * @return true if the source and target functions are owned by the same FunctionalChain, false otherwise
+   */
+  public boolean isSameFunctionalChain(FunctionalChainInvolvement sourceInvolvement,
+      FunctionalChainInvolvement targetInvolvement) {
+    return sourceInvolvement.eContainer() == targetInvolvement.eContainer();
   }
 
   /**
@@ -1275,33 +1288,22 @@ public class FunctionalChainServices {
    *          the given SequenceLink
    * @return its label
    */
-  public String getSequenceLinkLabel(SequenceLink sequenceLink) {
+  public String getSequenceLinkLabel(SequenceLink sequenceLink, DDiagram diagram) {
     String label = "";
-
     // Does the sequence link have a condition?
     if (sequenceLink.getCondition() != null) {
-      ValueSpecification expression = sequenceLink.getCondition().getOwnedSpecification();
-      if (expression instanceof OpaqueExpression) {
-        label += "[" + ConstraintExt.getPrimaryBody((OpaqueExpression) expression) + "]";
-      }
+      String constraint = CapellaServices.getService().getConstraintLabel(sequenceLink.getCondition());
+      label = constraint.isEmpty() ? "" : "[" + constraint + "]";
     }
 
     // Show the Functional Exchanges linked by this Sequence Link
-    boolean firstLink = true;
-    for (FunctionalChainInvolvementLink link : sequenceLink.getLinks()) {
-      InvolvedElement involved = link.getInvolved();
-      if (involved instanceof FunctionalExchange) {
-        FunctionalExchange exchange = (FunctionalExchange) involved;
-        if (firstLink) {
-          firstLink = false;
-          if (!label.isEmpty()) {
-            label += " ";
-          }
-        } else {
-          label += ", ";
-        }
-        label += exchange.getName();
-      }
+    Set<String> filterNames = diagram.getActivatedFilters().stream().map(FilterDescription::getName)
+        .collect(Collectors.toSet());
+    boolean mergeFESL = filterNames.contains(IMappingNameConstants.MERGE_ASSOCIATED_FE_AND_SL);
+    if (mergeFESL) {
+      String labelFe = sequenceLink.getLinks().stream().filter(x -> x.getInvolved() instanceof FunctionalExchange)
+          .map(x -> ((FunctionalExchange) x.getInvolved()).getName()).collect(Collectors.joining(", "));
+      label = labelFe.isEmpty() ? label : label + " " + labelFe;
     }
 
     return label;

@@ -59,16 +59,6 @@ public abstract class AbstractMaxHierarchyLevel0Test extends AbstractFunctionalC
     // involve exchange and function for source
     xfcd.involveExchangeAndFunction(involvementFunction3Id, EXCHANGE_3);
     xfcd.involveExchangeAndFunction(involvementFunction3Id, EXCHANGE_5);
-
-    // involve another function referencing function2
-    String involvementFunction2BisId = xfcd.involveFunction(xfcd.getDiagramId(), FUNCTION_2);
-
-    // connect two involvements referencing the same function
-    String connectionLink2Id = xfcd.connectFunctions(involvementFunction2Id, involvementFunction2BisId);
-    FunctionalChainInvolvementLink connectionLink2 = xfcd.getSemanticElement(connectionLink2Id);
-
-    // check the reference hierarchy
-    assertTrue(connectionLink2.getSourceReferenceHierarchy().isEmpty());
-    assertTrue(connectionLink2.getTargetReferenceHierarchy().isEmpty());
   }
+  
 }
