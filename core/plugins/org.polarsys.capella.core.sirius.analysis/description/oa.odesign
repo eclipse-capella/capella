@@ -5007,6 +5007,21 @@
           <mappings xsi:type="description_2:ContainerMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_PVG']"/>
         </filters>
       </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="Show ExchangeItems">
+        <filters xsi:type="filter:MappingFilter" filterKind="COLLAPSE">
+          <mappings xsi:type="description_3:InstanceRoleMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@nodeMappings[name='hideSequenceLabelDF']"/>
+        </filters>
+      </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="Show ExchangeItems parameters">
+        <filters xsi:type="filter:MappingFilter" filterKind="COLLAPSE">
+          <mappings xsi:type="description_3:InstanceRoleMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@nodeMappings[name='hideSequenceLabelDF']"/>
+        </filters>
+      </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="Show Functional Exchanges [ExchangeItems]" label="Show Interactions [ExchangeItems]">
+        <filters xsi:type="filter:MappingFilter" filterKind="COLLAPSE">
+          <mappings xsi:type="description_3:InstanceRoleMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@nodeMappings[name='hideSequenceLabelDF']"/>
+        </filters>
+      </filters>
       <layout xsi:type="description_2:CompositeLayout" direction="LeftToRight"/>
       <defaultLayer name="Default">
         <reusedMappings xsi:type="description_2:NodeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@nodeMappings[name='FC_AbstractFunction']"/>
