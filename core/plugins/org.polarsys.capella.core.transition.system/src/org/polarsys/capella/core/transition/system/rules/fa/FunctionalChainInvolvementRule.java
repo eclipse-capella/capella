@@ -14,6 +14,7 @@ package org.polarsys.capella.core.transition.system.rules.fa;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
@@ -24,6 +25,7 @@ import org.polarsys.capella.core.transition.common.constants.ITransitionConstant
 import org.polarsys.capella.core.transition.common.handlers.attachment.AttachmentHelper;
 import org.polarsys.capella.core.transition.common.handlers.contextscope.ContextScopeHandlerHelper;
 import org.polarsys.capella.core.transition.common.handlers.contextscope.IContextScopeHandler;
+import org.polarsys.capella.core.transition.common.handlers.transformation.TransformationHandlerHelper;
 import org.polarsys.capella.core.transition.system.rules.AbstractCapellaElementRule;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IPremise;
@@ -66,5 +68,16 @@ public class FunctionalChainInvolvementRule extends AbstractCapellaElementRule {
       AttachmentHelper.getInstance(context).attachTracedElements(element, result,
           FaPackage.Literals.FUNCTIONAL_CHAIN_REFERENCE__REFERENCED_FUNCTIONAL_CHAIN, context);
     }
+  }
+  
+  @Override
+  public IStatus transformRequired(EObject source, IContext context) {
+    IStatus result = super.transformRequired(source, context);
+    if (result.isOK()) {
+      FunctionalChainInvolvement fci = (FunctionalChainInvolvement) source;
+      EObject involvedElement = fci.getInvolved();
+      result = TransformationHandlerHelper.getInstance(context).checkTransformRequired(fci, context, involvedElement);
+    }
+    return result;
   }
 }
