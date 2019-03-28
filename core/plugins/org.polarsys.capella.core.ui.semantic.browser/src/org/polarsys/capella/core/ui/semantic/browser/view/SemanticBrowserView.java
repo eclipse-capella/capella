@@ -65,12 +65,10 @@ import org.eclipse.swt.widgets.Layout;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.ui.IMemento;
-import org.eclipse.ui.IPartListener2;
 import org.eclipse.ui.ISelectionListener;
 import org.eclipse.ui.IViewSite;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPart;
-import org.eclipse.ui.IWorkbenchPartReference;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.WorkbenchException;
 import org.eclipse.ui.XMLMemento;
@@ -108,7 +106,6 @@ import org.polarsys.capella.core.ui.properties.CapellaTabbedPropertySheetPage;
 import org.polarsys.capella.core.ui.properties.CapellaUIPropertiesPlugin;
 import org.polarsys.capella.core.ui.semantic.browser.CapellaBrowserActivator;
 import org.polarsys.capella.core.ui.semantic.browser.CapellaBrowserPreferences;
-import org.polarsys.capella.core.ui.semantic.browser.actions.RefreshAction;
 import org.polarsys.capella.core.ui.semantic.browser.actions.SemanticBrowserActionFactory;
 import org.polarsys.capella.core.ui.semantic.browser.model.SemanticBrowserModel;
 
@@ -188,6 +185,8 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
   private TreeViewer referencedViewer;
   private TreeViewer referencingViewer;
 
+  private Object input;
+
   private DelegateSelectionProviderWrapper delegateSelectionProvider;
 
   /**
@@ -205,9 +204,7 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
    */
   private boolean shouldSetFocus;
 
-  private boolean isVisible;
   private boolean isLinkedToSelection;
-  private IPartListener2 partListener;
   protected ISemanticBrowserModel model;
   private ISelectionListener selectionListener;
   private SessionManagerListener sessionListener;
@@ -233,9 +230,9 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
    */
   public void activateListeningToPageSelectionEvents() {
     if (!isLinkedToSelection) {
-      getSite().getPage().addSelectionListener(getSelectionListener());
       isLinkedToSelection = true;
-      getModel().setListeningToPageSelectionEvents(isVisible);
+      getSite().getPage().addSelectionListener(getSelectionListener());
+      getModel().setListeningToPageSelectionEvents(isLinkedToSelection);
     }
   }
 
@@ -244,8 +241,8 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
    */
   public void deactivateListeningToPageSelectionEvents() {
     if (isLinkedToSelection) {
-      getSite().getPage().removeSelectionListener(getSelectionListener());
       isLinkedToSelection = false;
+      getSite().getPage().removeSelectionListener(getSelectionListener());
       getModel().setListeningToPageSelectionEvents(false);
     }
   }
@@ -342,11 +339,6 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
         if (null != newSelectionProvider) {
           updateSelectionProvider(newSelectionProvider);
           refreshPropertyPage(newSelectionProvider);
-          try {
-            getViewSite().getPage().showView(SEMANTIC_BROWSER_ID, null, org.eclipse.ui.IWorkbenchPage.VIEW_CREATE);
-          } catch (PartInitException e) {
-            logger.error(e.getMessage());
-          }
         }
       }
     });
@@ -503,7 +495,7 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
     delegateSelectionProvider.setActiveDelegate(this.currentViewer);
     getViewSite().setSelectionProvider(delegateSelectionProvider);
     addSessionListener();
-    addPartListener();
+
     makeActions();
   }
 
@@ -551,8 +543,6 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
     disposeHistory();
 
     removeSessionListener();
-
-    removePartListener();
 
     model = null;
     super.dispose();
@@ -791,22 +781,22 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
   @Override
   public void init(IViewSite site, IMemento memento) throws PartInitException {
     // Specified memento could be null :
-    // 1) if the view was not shown when the previous workbench session
+    // 1) If the view was not shown when the previous workbench session
     // exited.
-    // 2) the view is open by the end-user whereas the workbench is already
+    // 2) The view is open by the end-user whereas the workbench is already
     // loaded.
     memento = restoreViewSettings(memento);
     super.init(site, memento);
-    Integer value = null;
-    if (null != memento) {
-      // Get state of listening to Page selection events.
-      value = memento.getInteger(LISTENING_TO_WORKBENCH_PAGE_SELECTION_EVENTS);
-    }
 
     boolean isListeningOnStartup = !CapellaBrowserActivator.getDefault().getPreferenceStore()
         .getBoolean(CapellaBrowserPreferences.PREFS_DISABLE_SEMANTIC_BROWSER_SYNC_ON_STARTUP);
-    isLinkedToSelection = null != value ? value.intValue() == 1 : isListeningOnStartup;
-    getModel().setListeningToPageSelectionEvents(isLinkedToSelection && isVisible);
+
+    if (isListeningOnStartup && null != memento) {
+      isListeningOnStartup = memento.getInteger(LISTENING_TO_WORKBENCH_PAGE_SELECTION_EVENTS) == 1;
+    }
+    if (isListeningOnStartup) {
+      activateListeningToPageSelectionEvents();
+    }
   }
 
   /**
@@ -929,9 +919,7 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
    */
   @Override
   public void refreshTitleBar() {
-    Object input = getCurrentViewer().getInput();
-    refreshTitleBar(input);
-    setInputOnViewers(input);
+    refreshTitleBar(getCurrentViewer().getInput());
   }
 
   /**
@@ -1074,6 +1062,11 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
    */
   @Override
   public void setFocus() {
+    setFocusOnViewer();
+    propagateInput();
+  }
+
+  private void setFocusOnViewer() {
     ISelectionProvider selectionProvider = delegateSelectionProvider.getActiveDelegate();
     // Make sure the selection provider is tree viewer.
     if (selectionProvider instanceof TreeViewer) {
@@ -1088,29 +1081,40 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
    */
   @Override
   public final void setInput(final Object input) {
-    // Precondition: do not set the same input twice.
-    TreeViewer currentTreeViewer = getCurrentViewer();
-    Object lastInput = currentTreeViewer.getInput();
-    if ((null != lastInput) && (lastInput.equals(input))) {
-      return;
-    }
-    refreshTitleBar(input);
-    // Set the selection provider with currentViewer as selection provider.
-    delegateSelectionProvider.setActiveDelegate(this.currentViewer);
+    this.input = input;
+    propagateInput();
+  }
 
-    // Broadcast "set input" signal to all viewers.
-    setInputOnViewers(input);
+  /**
+   * Propagates the current input to the sub viewers if the view is visible
+   */
+  private void propagateInput() {
+    if (getSite().getPage().isPartVisible(this)) {
+      // Precondition: do not set the same input twice.
+      TreeViewer currentTreeViewer = getCurrentViewer();
+      Object lastInput = currentTreeViewer.getInput();
+      if ((null != lastInput) && (lastInput.equals(input))) {
+        return;
+      }
 
-    CapellaReadOnlyHelper.unregister((EObject) lastInput, this);
-    CapellaReadOnlyHelper.register((EObject) input, this);
+      refreshTitleBar(input);
+      // Set the selection provider with currentViewer as selection provider.
+      delegateSelectionProvider.setActiveDelegate(this.currentViewer);
 
-    // Update history mechanism.
-    getHistory().update(input);
-    // Force to reset the focus and the underlying selection provider.
-    // From platform selection changed event, the setFocus is disabled.
-    if (shouldSetFocus) {
-      // Set focus in another thread UI processing.
-      setFocus();
+      // Broadcast "set input" signal to all viewers.
+      setInputOnViewers(input);
+
+      CapellaReadOnlyHelper.unregister((EObject) lastInput, this);
+      CapellaReadOnlyHelper.register((EObject) input, this);
+
+      // Update history mechanism.
+      getHistory().update(input);
+      // Force to reset the focus and the underlying selection provider.
+      // From platform selection changed event, the setFocus is disabled.
+      if (shouldSetFocus) {
+        // Set focus in another thread UI processing.
+        setFocusOnViewer();
+      }
     }
   }
 
@@ -1167,76 +1171,4 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
     viewerDoubleClickListener = null;
   }
 
-  private void addPartListener() {
-    getSite().getPage().addPartListener(getPartListener());
-  }
-
-  private void removePartListener() {
-    if (partListener != null) {
-      getSite().getPage().removePartListener(getPartListener());
-    }
-  }
-
-  private IPartListener2 getPartListener() {
-    if (partListener == null) {
-      partListener = createPartListener();
-    }
-    return partListener;
-  }
-
-  private IPartListener2 createPartListener() {
-    return new IPartListener2() {
-
-      @Override
-      public void partActivated(IWorkbenchPartReference partRef) {
-        // Do nothing by default
-      }
-
-      @Override
-      public void partBroughtToTop(IWorkbenchPartReference partRef) {
-        partVisible(partRef);
-      }
-
-      @Override
-      public void partClosed(IWorkbenchPartReference partRef) {
-        // Do nothing by default
-      }
-
-      @Override
-      public void partDeactivated(IWorkbenchPartReference partRef) {
-        // Do nothing by default
-      }
-
-      @Override
-      public void partOpened(IWorkbenchPartReference partRef) {
-        // Do nothing by default
-      }
-
-      @Override
-      public void partHidden(IWorkbenchPartReference partRef) {
-        if (partRef.getId().equals(getSite().getId())) {
-          isVisible = false;
-          getSite().getPage().removeSelectionListener(getSelectionListener());
-          getModel().setListeningToPageSelectionEvents(false);
-        }
-      }
-
-      @Override
-      public void partVisible(IWorkbenchPartReference partRef) {
-        if (partRef.getId().equals(getSite().getId())) {
-          isVisible = true;
-          getModel().setListeningToPageSelectionEvents(isLinkedToSelection && isVisible);
-          if (isLinkedToSelection) {
-            getSite().getPage().addSelectionListener(getSelectionListener());
-            new RefreshAction(SemanticBrowserView.this).run();
-          }
-        }
-      }
-
-      @Override
-      public void partInputChanged(IWorkbenchPartReference partRef) {
-        // Do nothing by default
-      }
-    };
-  }
 }
