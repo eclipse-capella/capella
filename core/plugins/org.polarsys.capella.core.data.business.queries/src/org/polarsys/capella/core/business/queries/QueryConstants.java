@@ -217,6 +217,7 @@ public class QueryConstants {
   public static final String GET_AVAILABLE__PROPERTY__TYPE___LIB = "GetAvailable_Property_Type__Lib"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__ROLE__ALLOCATED_ACTIVITIES = "GetAvailable_Role_AllocatedActivities"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__SCENARIO__REALIZED_SCENARIO = "GetAvailable_Scenario_RealizedScenario"; //$NON-NLS-1$
+  public static final String GET_AVAILABLE__SEQUENCE_LINK_LINKS = "GetAvailable_SequenceLink_Links";
   public static final String GET_AVAILABLE__SEQUENCE_MESSAGE__EXCHANGED_ITEMS = "GetAvailable_SequenceMessage_ExchangedItems"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__SEQUENCE_MESSAGE__INVOKED_OPERATION = "GetAvailable_SequenceMessage_InvokedOperation"; //$NON-NLS-1$
   public static final String GET_AVAILABLE__SEQUENCE_MESSAGE__SERVICE_INTERFACE___LIB = "GetAvailable_SequenceMessage_ServiceInterface__Lib"; //$NON-NLS-1$
@@ -491,6 +492,7 @@ public class QueryConstants {
   public static final String GET_CURRENT__PROPERTY__TYPE = "GetCurrent_Property_Type"; //$NON-NLS-1$
   public static final String GET_CURRENT__ROLE__ALLOCATED_ACTIVITIES = "GetCurrent_Role_AllocatedActivities"; //$NON-NLS-1$
   public static final String GET_CURRENT__SCENARIO__REALIZED_SCENARIO = "GetCurrent_Scenario_RealizedScenario"; //$NON-NLS-1$
+  public static final String GET_CURRENT__SEQUENCE_LINK_LINKS = "GetCurrent_SequenceLink_Links"; //$NON-NLS-1$
   public static final String GET_CURRENT__SEQUENCE_MESSAGE__EXCHANGED_ITEMS = "GetCurrent_SequenceMessage_ExchangedItems"; //$NON-NLS-1$
   public static final String GET_CURRENT__SEQUENCE_MESSAGE__INVOKED_OPERATION = "GetCurrent_SequenceMessage_InvokedOperation"; //$NON-NLS-1$
   public static final String GET_CURRENT__SEQUENCE_MESSAGE__SERVICE_INTERFACE = "GetCurrent_SequenceMessage_ServiceInterface"; //$NON-NLS-1$

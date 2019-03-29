@@ -51,6 +51,7 @@ public class Messages extends NLS {
   public static String FunctionalChainSection_Postcondition_Label;
   public static String SequenceLinkSection_Functional_Chain_Involvement_Links_Label;
   public static String SequenceLinkSection_Condition_Label;
+  public static String SequenceLinkSection_Links_Label;
   
   static {
     // initialize resource bundle
