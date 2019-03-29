@@ -99,6 +99,10 @@
     <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.fa.FunctionInputPort_ProvidedInterface" id="org.polarsys.capella.core.business.queries.fa.FunctionInputPort_ProvidedInterface" />
     <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.fa.FunctionInputPort_RequiredInterface" id="org.polarsys.capella.core.business.queries.fa.FunctionInputPort_RequiredInterface" />
     <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.fa.FunctionalExchange_ExchangeItems" id="org.polarsys.capella.core.business.queries.fa.FunctionalExchange_ExchangeItems" />
+    <MDEBusinessQueries
+          class="org.polarsys.capella.core.business.queries.fa.SequenceLink_Links"
+          id="org.polarsys.capella.core.business.queries.fa.SequenceLink_Links">
+    </MDEBusinessQueries>
   </extension>
   <extension name="information" point="org.polarsys.capella.core.data.business.queries.MDEBusinessQueries">
     <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.BinaryExpression_LeftOperand" id="org.polarsys.capella.core.business.queries.information.BinaryExpression_LeftOperand" />
@@ -1891,6 +1895,17 @@
     </querySpecification>
     <querySpecification queryIdentifier="GetCurrent_InterfaceImpl_ImplementedInterface">
       <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.cs.GetCurrent_InterfaceImpl_ImplementedInterface" />
+    </querySpecification>
+    <querySpecification
+          queryIdentifier="GetCurrent_SequenceLink_Links">
+       <queryAlgorithm
+             algorithm="org.polarsys.capella.core.business.queries.queries.fa.GetCurrent_SequenceLink_Links"></queryAlgorithm>
+    </querySpecification>
+    <querySpecification
+          queryIdentifier="GetAvailable_SequenceLink_Links">
+       <queryAlgorithm
+             algorithm="org.polarsys.capella.core.business.queries.queries.fa.GetAvailable_SequenceLink_Links">
+       </queryAlgorithm>
     </querySpecification>
   </extension>
 </plugin>

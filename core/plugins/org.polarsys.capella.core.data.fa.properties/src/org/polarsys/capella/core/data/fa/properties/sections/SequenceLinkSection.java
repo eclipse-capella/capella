@@ -19,10 +19,10 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 import org.polarsys.capella.core.data.core.properties.sections.CapellaElementSection;
 import org.polarsys.capella.core.data.fa.FaPackage;
-import org.polarsys.capella.core.ui.properties.controllers.SimpleSemanticFieldController;
+import org.polarsys.capella.core.data.fa.properties.controllers.SequenceLinkLinksController;
 import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticField;
 import org.polarsys.capella.core.ui.properties.fields.ConstraintReferenceGroup;
-import org.polarsys.capella.core.ui.properties.fields.SimpleSemanticField;
+import org.polarsys.capella.core.ui.properties.fields.MultipleSemanticField;
 
 /**
  * The SequenceLink section.
@@ -30,6 +30,7 @@ import org.polarsys.capella.core.ui.properties.fields.SimpleSemanticField;
 public class SequenceLinkSection extends CapellaElementSection {
 
   protected ConstraintReferenceGroup conditionField;
+  protected MultipleSemanticField linksField;
 
   /**
    * Default constructor.
@@ -44,10 +45,15 @@ public class SequenceLinkSection extends CapellaElementSection {
   public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
     super.createControls(parent, aTabbedPropertySheetPage);
 
+    boolean displayedInWizard = isDisplayedInWizard();
+
     conditionField = new ConstraintReferenceGroup(Collections.singletonMap(Messages.SequenceLinkSection_Condition_Label,
         FaPackage.Literals.SEQUENCE_LINK__CONDITION));
-    conditionField.createControls(rootParentComposite, getWidgetFactory(), isDisplayedInWizard());
+    conditionField.createControls(rootParentComposite, getWidgetFactory(), displayedInWizard);
 
+    linksField = new MultipleSemanticField(getReferencesGroup(), Messages.SequenceLinkSection_Links_Label,
+        getWidgetFactory(), new SequenceLinkLinksController());
+    linksField.setDisplayedInWizard(displayedInWizard);
   }
 
   /**
@@ -58,6 +64,7 @@ public class SequenceLinkSection extends CapellaElementSection {
     super.loadData(capellaElement);
 
     conditionField.loadData(capellaElement);
+    linksField.loadData(capellaElement, FaPackage.eINSTANCE.getSequenceLink_Links());
   }
 
   /**
@@ -78,6 +85,7 @@ public class SequenceLinkSection extends CapellaElementSection {
 
     fields.addAll(super.getSemanticFields());
     fields.addAll(conditionField.getFields());
+    fields.add(linksField);
 
     return fields;
   }
