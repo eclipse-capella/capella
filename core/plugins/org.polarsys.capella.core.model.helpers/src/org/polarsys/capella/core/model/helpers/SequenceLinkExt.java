@@ -43,7 +43,7 @@ public class SequenceLinkExt {
     }
   }
 
-  static HashSet<FunctionalChainInvolvementFunction> findClosestSemanticFCIFunctionsAsTargets(SequenceLink seqLink) {
+  public static HashSet<FunctionalChainInvolvementFunction> findClosestSemanticFCIFunctionsAsTargets(SequenceLink seqLink) {
 
     HashSet<FunctionalChainInvolvementFunction> closestSemanticFCIFunctionAsTarget = new HashSet<>();
     findClosestSemanticFCIFunctionsAsTargets(seqLink, closestSemanticFCIFunctionAsTarget);

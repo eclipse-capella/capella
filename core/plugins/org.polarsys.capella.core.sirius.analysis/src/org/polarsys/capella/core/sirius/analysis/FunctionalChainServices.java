@@ -89,6 +89,7 @@ import org.polarsys.capella.core.model.helpers.ExchangeItemExt;
 import org.polarsys.capella.core.model.helpers.FunctionalChainExt;
 import org.polarsys.capella.core.model.helpers.FunctionalExchangeExt;
 import org.polarsys.capella.core.model.helpers.SequenceLinkEndExt;
+import org.polarsys.capella.core.model.helpers.SequenceLinkExt;
 import org.polarsys.capella.core.model.helpers.graph.InternalLinksGraph;
 import org.polarsys.capella.core.model.helpers.graph.InternalLinksGraph.InternalLinkEdge;
 import org.polarsys.capella.core.model.helpers.graph.InvolvementGraph;
@@ -1374,15 +1375,41 @@ public class FunctionalChainServices {
 
   /**
    * Precondition for the creation of a link between a Sequence Link and a FCIL to a FE
-   * 
+   * @param the
+   *          semantic source
    * @param the
    *          semantic target
    * @return true if a link can be created, false otherwise.
    */
-  public boolean isValidLinks(EObject target) {
-    if (target instanceof FunctionalChainInvolvementLink) {
-      FunctionalChainInvolvementLink link = (FunctionalChainInvolvementLink) target;
-      return link.getInvolved() instanceof FunctionalExchange;
+  public boolean isValidLinks(ReferenceHierarchyContext source, ReferenceHierarchyContext target) {
+    return isValidAssociation(source, target) || isValidAssociation(target, source);
+  }
+  
+  /**
+   * Return true if first node is a SequenceLink and second node a FunctionalChainInvolvementLink Also checks that first
+   * and second node have the same source and targets
+   * 
+   * @param first:
+   *          semantic element
+   * @param second:
+   *          semantic element
+   * @return boolean.
+   */
+  private boolean isValidAssociation(ReferenceHierarchyContext first, ReferenceHierarchyContext second) {
+    if (first instanceof SequenceLink) {
+      if (second instanceof FunctionalChainInvolvementLink) {
+        FunctionalChainInvolvementLink link = (FunctionalChainInvolvementLink) second;
+        if (link.getInvolved() instanceof FunctionalExchange) {
+          SequenceLink seqLink = (SequenceLink) first;
+          // check that seqLinks has not already a link to link (fcil)
+          if (!seqLink.getLinks().contains(second)) {
+            // check that the source and target of first and second nodes are the same
+            HashSet<FunctionalChainInvolvementFunction> slClosestFCIFSources = SequenceLinkExt.findClosestSemanticFCIFunctionsAsSources(seqLink);
+            HashSet<FunctionalChainInvolvementFunction> slClosestFCIFTargets = SequenceLinkExt.findClosestSemanticFCIFunctionsAsTargets(seqLink);
+            return (slClosestFCIFSources.contains(link.getSource()) && slClosestFCIFTargets.contains(link.getTarget()));
+          }
+        }
+      }
     }
     return false;
   }
