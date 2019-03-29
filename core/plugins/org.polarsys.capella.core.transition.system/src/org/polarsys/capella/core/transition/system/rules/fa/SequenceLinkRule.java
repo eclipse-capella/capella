@@ -12,11 +12,16 @@
 package org.polarsys.capella.core.transition.system.rules.fa;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.core.data.fa.FaPackage;
+import org.polarsys.capella.core.data.fa.SequenceLink;
+import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.handlers.attachment.AttachmentHelper;
+import org.polarsys.capella.core.transition.common.handlers.contextscope.ContextScopeHandlerHelper;
+import org.polarsys.capella.core.transition.common.handlers.contextscope.IContextScopeHandler;
 import org.polarsys.capella.core.transition.system.rules.AbstractCapellaElementRule;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IPremise;
@@ -59,6 +64,16 @@ public class SequenceLinkRule extends AbstractCapellaElementRule {
     AttachmentHelper.getInstance(context).attachTracedElements(element, result, FaPackage.Literals.SEQUENCE_LINK__LINKS, context);
     AttachmentHelper.getInstance(context).attachTracedElements(element, result, FaPackage.Literals.REFERENCE_HIERARCHY_CONTEXT__SOURCE_REFERENCE_HIERARCHY, context);
     AttachmentHelper.getInstance(context).attachTracedElements(element, result, FaPackage.Literals.REFERENCE_HIERARCHY_CONTEXT__TARGET_REFERENCE_HIERARCHY, context);
-
+  }
+  
+  @Override
+  protected void retrieveGoDeep(EObject source, List<EObject> result, IContext context) {
+    super.retrieveGoDeep(source, result, context);
+    SequenceLink element = (SequenceLink) source;
+    result.add(element.getCondition());
+    IContextScopeHandler handler = ContextScopeHandlerHelper.getInstance(context);
+    if (handler.contains(ITransitionConstants.SOURCE_SCOPE, source, context)) {
+      handler.add(ITransitionConstants.SOURCE_SCOPE, element.getCondition(), context);
+    }
   }
 }
