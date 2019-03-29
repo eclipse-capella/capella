@@ -33,11 +33,11 @@ import com.google.common.base.Predicate;
 
 public abstract class CapellaEmbeddedLinkedTextEditorInput implements LinkedTextDocument.Input {
 
-  private final EObject _documentBase;
-  private ILabelProvider _labelProvider;
+  private final EObject documentBase;
+  private ILabelProvider labelProvider;
 
   public CapellaEmbeddedLinkedTextEditorInput(EObject documentBase) {
-    _documentBase = documentBase;
+    this.documentBase = documentBase;
   }
 
   private static final LinkedTextDocument.Resolver _resolver = new DefaultLinkedTextResolver(new Predicate<Resource>() {
@@ -52,7 +52,7 @@ public abstract class CapellaEmbeddedLinkedTextEditorInput implements LinkedText
    */
   @Override
   public Object getDocumentBase() {
-    return _documentBase;
+    return documentBase;
   }
 
   /**
@@ -60,24 +60,26 @@ public abstract class CapellaEmbeddedLinkedTextEditorInput implements LinkedText
    */
   @Override
   public ILabelProvider getLabelProvider() {
-    if (_labelProvider == null) {
-      AdapterFactoryEditingDomain domain = (AdapterFactoryEditingDomain) AdapterFactoryEditingDomain.getEditingDomainFor(_documentBase);
-      _labelProvider = new MDEAdapterFactoryLabelProvider((TransactionalEditingDomain) domain, domain.getAdapterFactory()) {
-        @Override
-        public String getText(Object object) {
-          if (object instanceof AbstractNamedElement) {
-            String name = ((AbstractNamedElement) object).getName();
-            if ((name != null) && (name.length() > 0)) {
-              return name;
+    if (labelProvider == null && documentBase != null) {
+      AdapterFactoryEditingDomain domain = (AdapterFactoryEditingDomain) AdapterFactoryEditingDomain.getEditingDomainFor(documentBase);
+      if(domain != null) {
+        labelProvider = new MDEAdapterFactoryLabelProvider((TransactionalEditingDomain) domain, domain.getAdapterFactory()) {
+          @Override
+          public String getText(Object object) {
+            if (object instanceof AbstractNamedElement) {
+              String name = ((AbstractNamedElement) object).getName();
+              if ((name != null) && (name.length() > 0)) {
+                return name;
+              }
+              return "[Unnamed " + ((EObject) object).eClass().getName() + "]"; //$NON-NLS-1$ //$NON-NLS-2$
             }
-            return "[Unnamed " + ((EObject) object).eClass().getName() + "]"; //$NON-NLS-1$ //$NON-NLS-2$
+            return super.getText(object);
           }
-          return super.getText(object);
-        }
-      };
-      ((AdapterFactoryLabelProvider) _labelProvider).setFireLabelUpdateNotifications(true);
+        };
+        ((AdapterFactoryLabelProvider) labelProvider).setFireLabelUpdateNotifications(true);        
+      }
     }
-    return _labelProvider;
+    return labelProvider;
   }
 
   /**
@@ -89,8 +91,8 @@ public abstract class CapellaEmbeddedLinkedTextEditorInput implements LinkedText
   }
 
   public void dispose() {
-    if (_labelProvider != null) {
-      _labelProvider.dispose();
+    if (labelProvider != null) {
+      labelProvider.dispose();
     }
   }
 
@@ -106,7 +108,7 @@ public abstract class CapellaEmbeddedLinkedTextEditorInput implements LinkedText
 
       if (vspec instanceof OpaqueExpression) {
         final OpaqueExpression exp = (OpaqueExpression) vspec;
-        if ((exp.getLanguages().size() > 0) && (exp.getBodies().size() > 0)) {
+        if ((!exp.getLanguages().isEmpty()) && (!exp.getBodies().isEmpty())) {
           if (ConstraintExt.OPAQUE_EXPRESSION_LINKED_TEXT.equals(exp.getLanguages().get(0))) {
             CapellaEmbeddedLinkedTextEditorInput input = new CapellaEmbeddedLinkedTextEditorInput.Readonly(exp, exp.getBodies().get(0));
             result = LinkedTextDocument.load(input).get();
@@ -126,16 +128,16 @@ public abstract class CapellaEmbeddedLinkedTextEditorInput implements LinkedText
    * A read-only input, useful for one-way conversion of linked text to something else.
    */
   public static class Readonly extends CapellaEmbeddedLinkedTextEditorInput {
-    final String _text;
+    final String text;
 
     public Readonly(EObject documentBase, String text) {
       super(documentBase);
-      _text = text;
+      this.text = text;
     }
 
     @Override
     public String getText() {
-      return _text;
+      return text;
     }
 
     @Override
@@ -143,5 +145,4 @@ public abstract class CapellaEmbeddedLinkedTextEditorInput implements LinkedText
       throw new UnsupportedOperationException();
     }
   }
-
 }
