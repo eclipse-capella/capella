@@ -66,7 +66,7 @@ public class SelectElementsDialog extends AbstractViewerDialog {
   /**
    * Label provider used to render tree elements.
    */
-  private DataLabelProvider _labelProvider;
+  private DataLabelProvider labelProvider;
 
   /**
    * Label provider used to render tree elements.
@@ -77,7 +77,7 @@ public class SelectElementsDialog extends AbstractViewerDialog {
   /**
    * Multi selection flag.
    */
-  private boolean _multiSelection;
+  private boolean multiSelection;
 
   /**
    * Selected objects as result.
@@ -177,8 +177,8 @@ public class SelectElementsDialog extends AbstractViewerDialog {
       Collection<? extends Object> displayedElements, boolean multiSelection, Object context, int treeViewerExpandLevel) {
     super(parentShell, dialogTitle, dialogMessage, Messages.SelectElementsDialog_Shell_Title);
     _contentProvider = contentProvider;
-    _labelProvider = labelProvider;
-    _multiSelection = multiSelection;
+    this.labelProvider = labelProvider;
+    this.multiSelection = multiSelection;
     _context = context;
     _treeViewerExpandLevel = treeViewerExpandLevel;
 
@@ -211,7 +211,7 @@ public class SelectElementsDialog extends AbstractViewerDialog {
    */
   protected void createTreeViewer(Composite parent) {
     // Create a TreeAndListViewer.
-    _viewer = new TreeAndListViewer(parent, _displayedElements, _context, _multiSelection, _contentProvider, _labelProvider, getTreeViewerStyle(), _treeViewerExpandLevel) {
+    _viewer = new TreeAndListViewer(parent, _displayedElements, _context, multiSelection, _contentProvider, labelProvider, getTreeViewerStyle(), _treeViewerExpandLevel) {
 
       @Override
       public String getContextMenuLocation() {
@@ -226,7 +226,7 @@ public class SelectElementsDialog extends AbstractViewerDialog {
       @Override
       protected TreeViewer doClientViewer(Composite prt) {
         TreeViewer clientViewer = super.doClientViewer(prt);
-        _labelProvider.setViewer(clientViewer);
+        labelProvider.setViewer(clientViewer);
         return clientViewer;
       }
     };
@@ -394,5 +394,17 @@ public class SelectElementsDialog extends AbstractViewerDialog {
     if ((null != okButton) && !okButton.isDisposed()) {
       okButton.setEnabled(isOkEnabled);
     }
+  }
+  
+  public DataLabelProvider getLabelProvider() {
+    return labelProvider;
+  }
+
+  public boolean isMultiSelection() {
+    return multiSelection;
+  }
+
+  public void setMultiSelection(boolean multiSelection) {
+    this.multiSelection = multiSelection;
   }
 }

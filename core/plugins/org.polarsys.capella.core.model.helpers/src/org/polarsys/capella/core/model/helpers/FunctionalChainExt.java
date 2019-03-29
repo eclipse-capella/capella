@@ -53,6 +53,7 @@ import org.polarsys.capella.core.data.fa.FunctionalChainInvolvementFunction;
 import org.polarsys.capella.core.data.fa.FunctionalChainInvolvementLink;
 import org.polarsys.capella.core.data.fa.FunctionalChainReference;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
+import org.polarsys.capella.core.data.fa.SequenceLink;
 import org.polarsys.capella.core.data.helpers.fa.services.FunctionExt;
 import org.polarsys.capella.core.data.information.ExchangeItem;
 import org.polarsys.capella.core.data.interaction.AbstractCapability;
@@ -1076,5 +1077,38 @@ public class FunctionalChainExt {
     }
 
   }
-
+  
+  
+  /**
+   * Create a new Sequence Link from a Functional Chain Involvement Link:
+   * 
+   * - New SL has the same source and target as FCIL
+   * - New SL has the same sourceReferenceHierarchy and targetReferenceHierarchy as FCIL
+   * - New SL has the same Functional Chain container as FCIL
+   * - New SL contains FCIL in its "links"
+   * 
+   * @param fciLink
+   * @return new sequence link
+   */
+  public static SequenceLink createSequenceLink(FunctionalChainInvolvementLink fciLink) {
+    
+    FunctionalChainInvolvementFunction fcifSource = fciLink.getSource();
+    FunctionalChainInvolvementFunction fcifTarget = fciLink.getTarget();
+    
+    FunctionalChain functionalChain = (FunctionalChain) fciLink.eContainer();
+    
+    SequenceLink newSeqLink = FaFactory.eINSTANCE.createSequenceLink();
+    newSeqLink.setSource(fcifSource);
+    newSeqLink.setTarget(fcifTarget);
+    
+    functionalChain.getOwnedSequenceLinks().add(newSeqLink);
+    
+    // Reuse the ref hierarchy of the selected FCILink
+    newSeqLink.getTargetReferenceHierarchy().addAll(fciLink.getTargetReferenceHierarchy());
+    newSeqLink.getSourceReferenceHierarchy().addAll(fciLink.getSourceReferenceHierarchy());
+    
+    newSeqLink.getLinks().add(fciLink);
+    
+    return newSeqLink;
+  }
 }
