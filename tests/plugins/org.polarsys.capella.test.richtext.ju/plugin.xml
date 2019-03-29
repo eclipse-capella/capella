@@ -3,7 +3,7 @@
 <plugin>
    <extension point="org.eclipse.ui.views.properties.tabbed.propertySections">
       <propertySections contributorId="org.polarsys.capella.core.data.capellamodeller.properties">
-         <propertySection tab="Description"
+         <propertySection tab="DescriptionCapella"
                class="org.polarsys.capella.test.richtext.ju.mocks.CapellaDescriptionPropertySectionMock"
                id="org.polarsys.capella.core.ui.properties.descriptions.sections.CapellaDescriptionPropertySection.navigator.test">
             <input
