@@ -357,7 +357,7 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerType">
                 <subModelOperations xsi:type="tool:ExternalJavaAction" name="selectPC" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
                   <parameters name="context" value="aql:container"/>
-                  <parameters name="scope" value="aql:containerType.getAllRealizablePhysicalArtefacts()->select(x | not (x.eContainer().isA('PhysicalArchitecture')))"/>
+                  <parameters name="scope" value="aql:containerType.getAllRealizablePhysicalArtefacts()->select(x | not (x.eContainer().oclIsKindOf(pa::PhysicalArchitecture)))"/>
                   <parameters name="resultVariable" value="selection"/>
                   <parameters name="wizardMessage" value="aql:'Select Physical Components, Physical Links and Physical Ports  to allocate to ' + container.type.name + '.'"/>
                   <parameters name="initialSelection" value="aql:self.void2Null(containerType.ownedPhysicalArtifactRealizations.targetElement)"/>

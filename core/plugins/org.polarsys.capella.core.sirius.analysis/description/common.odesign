@@ -11699,7 +11699,7 @@
             </initialOperation>
             <edgeView name="edgeView"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="CommunicationLink target" precondition="aql:target.isA('ExchangeItem') and not (element.eContainer().ownedCommunicationLinks->select(ownedCommunicationLink | ownedCommunicationLink.kind = element.kind and ownedCommunicationLink.exchangeItem = target)->size() > 0)">
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="CommunicationLink target" precondition="aql:target.oclIsKindOf(information::ExchangeItem) and not (element.eContainer().ownedCommunicationLinks->select(ownedCommunicationLink | ownedCommunicationLink.kind = element.kind and ownedCommunicationLink.exchangeItem = target)->size() > 0)">
             <source name="source"/>
             <target name="target"/>
             <sourceView name="sourceView"/>
