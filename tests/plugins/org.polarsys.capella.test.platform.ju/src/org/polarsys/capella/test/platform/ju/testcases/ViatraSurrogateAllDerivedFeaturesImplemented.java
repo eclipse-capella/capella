@@ -43,14 +43,14 @@ public class ViatraSurrogateAllDerivedFeaturesImplemented extends BasicTestCase 
   @Override
   public void test() throws Exception {
     File testPluginFolder = getPluginFolder();
-    File capella = findRootFolder(testPluginFolder);
-    File ext = getSubFolder(capella, "ext");
-    File viatra = getSubFolder(ext, "viatra");
-    File plugins = getSubFolder(viatra, "plugins");
-    List<File> pluginXmlFiles = getPluginXmlFiles(plugins);
+    File capella = PlatformFilesHelper.findRootFolder(testPluginFolder);
+    File ext = PlatformFilesHelper.getSubFolder(capella, "ext");
+    File viatra = PlatformFilesHelper.getSubFolder(ext, "viatra");
+    File plugins = PlatformFilesHelper.getSubFolder(viatra, "plugins");
+    List<File> pluginXmlFiles = PlatformFilesHelper.getPluginXmlFiles(plugins);
     List<SurrogateQuery> contributedSurrogateQueries = getContributedSurrogateQueries(pluginXmlFiles);
     for (EReference eReference : TestHelper.getAllCapellaDerivedReferences()) {
-      if (!isIgnored(eReference)) {
+      if (!PlatformFilesHelper.isIgnored(eReference)) {
         assertTrue(
             "The derived feature " + eReference.getEContainingClass().getEPackage().getNsURI() + "/"
                 + eReference.getEContainingClass().getName() + "/" + eReference.getName()
@@ -58,79 +58,6 @@ public class ViatraSurrogateAllDerivedFeaturesImplemented extends BasicTestCase 
             isReferenceCovered(eReference, contributedSurrogateQueries));
       }
     }
-  }
-
-  /**
-   * 
-   * @param testPluginFolder
-   * @return the root folder (which contains .git folder)
-   */
-  private File findRootFolder(File testPluginFolder) {
-    if (testPluginFolder.listFiles(new FileFilter() {
-      @Override
-      public boolean accept(File subFolder) {
-        return subFolder.isDirectory() && subFolder.getName().equals(".git");
-      }
-    }).length == 1) {
-      return testPluginFolder;
-    }
-    return findRootFolder(testPluginFolder.getParentFile());
-  }
-
-  /**
-   * 
-   * @param eReference
-   * @return whether the reference is ignored during the check of surrogate query
-   */
-  private boolean isIgnored(EReference eReference) {
-    // A reference is ignored if it has the viagra.variant=unimplemented annotation
-    Optional<EAnnotation> eAnnotation = eReference.getEAnnotations().stream().filter(new Predicate<EAnnotation>() {
-      @Override
-      public boolean test(EAnnotation eAnnotation) {
-        return eAnnotation.getSource().equals("http://www.polarsys.org/capella/derived");
-      }
-    }).findFirst();
-    return eAnnotation.get().getDetails().stream().anyMatch(new Predicate<Map.Entry<String, String>>() {
-      @Override
-      public boolean test(Map.Entry<String, String> entry) {
-        return entry.getKey().equals("viatra.variant") && entry.getValue().equals("unimplemented");
-      }
-    });
-  }
-
-  /**
-   * 
-   * @param folder
-   * @param folderName
-   * @return the subfolder with the given name
-   */
-  private File getSubFolder(File folder, String folderName) {
-    File[] listFiles = folder.listFiles(new FileFilter() {
-      @Override
-      public boolean accept(File subFolder) {
-        return subFolder.isDirectory() && subFolder.getName().equals(folderName);
-      }
-    });
-    if (listFiles.length > 0)
-      return listFiles[0];
-    return null;
-  }
-
-  /**
-   * 
-   * @param pluginsFolder
-   * @return the list of plugin.xml files from the plugins folder
-   */
-  private List<File> getPluginXmlFiles(File pluginsFolder) {
-    List<File> pluginXmlFiles = new ArrayList<>();
-    for (File file : pluginsFolder.listFiles()) {
-      if (file.isFile() && file.getName().equals("plugin.xml"))
-        pluginXmlFiles.add(file);
-      else if (file.isDirectory()) {
-        pluginXmlFiles.addAll(getPluginXmlFiles(file));
-      }
-    }
-    return pluginXmlFiles;
   }
 
   /**

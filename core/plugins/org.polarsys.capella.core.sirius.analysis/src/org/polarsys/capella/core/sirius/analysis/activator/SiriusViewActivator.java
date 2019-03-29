@@ -24,8 +24,6 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.ext.base.Option;
-import org.eclipse.sirius.query.legacy.AcceleoInterpreterPlugin;
-import org.eclipse.sirius.query.legacy.preferences.AcceleoPreferenceConstants;
 import org.eclipse.sirius.tools.api.ui.RefreshHelper;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
@@ -63,10 +61,6 @@ public class SiriusViewActivator extends AbstractUIPlugin {
     viewpoints.addAll(ViewpointRegistry.getInstance().registerFromPlugin("/" + ID + "/description/logical.odesign")); //$NON-NLS-1$ //$NON-NLS-2$
     viewpoints.addAll(ViewpointRegistry.getInstance().registerFromPlugin("/" + ID + "/description/physical.odesign")); //$NON-NLS-1$ //$NON-NLS-2$
     viewpoints.addAll(ViewpointRegistry.getInstance().registerFromPlugin("/" + ID + "/description/EPBS.odesign")); //$NON-NLS-1$ //$NON-NLS-2$
-
-    // use java services before specific acceleo files
-    IEclipsePreferences preferences = DefaultScope.INSTANCE.getNode(AcceleoInterpreterPlugin.PLUGIN_ID);
-    preferences.putBoolean(AcceleoPreferenceConstants.PREF_USE_SPECIFIC_SCRIPTS_FIRST, false);
 
     // Modify palette tool name with a custom end user label
     Messages.ArrangeBorderNodesAction_actionText = CapellaMessages.ArrangeBorderNodesAction_actionText;

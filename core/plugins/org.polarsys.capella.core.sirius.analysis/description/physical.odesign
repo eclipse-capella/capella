@@ -699,7 +699,7 @@
       </filters>
       <layout xsi:type="description_2:CompositeLayout" direction="LeftToRight"/>
       <defaultLayer name="default">
-        <nodeMappings name="PDFB_Node" preconditionExpression="false" labelDirectEdit="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Data%20Flow%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='node']" semanticCandidatesExpression="" createElements="false" documentation="pr&#xe9;condition : &lt;%(filter(&quot;ForkFunction&quot;)+filter(&quot;JoinFunction&quot;)+filter(&quot;DecisionFunction&quot;)).nSize > 0 &amp;&amp; eContainer(&quot;PhysicalFunctionPkg&quot;).eAllContents().filter(&quot;FunctionalExchange&quot;)[(source == current(1) &amp;&amp; $viewpoint.target.eAllContents().nContains(target)) || (target == current(1) &amp;&amp; $viewpoint.target.eAllContents().nContains(source))].nSize() > 0%>" domainClass="AbstractFunction">
+        <nodeMappings name="PDFB_Node" preconditionExpression="false" labelDirectEdit="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Data%20Flow%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='node']" semanticCandidatesExpression="" createElements="false" documentation="precondition : (filter(&quot;ForkFunction&quot;)+filter(&quot;JoinFunction&quot;)+filter(&quot;DecisionFunction&quot;)).nSize > 0 &amp;&amp; eContainer(&quot;PhysicalFunctionPkg&quot;).eAllContents().filter(&quot;FunctionalExchange&quot;)[(source == current(1) &amp;&amp; $viewpoint.target.eAllContents().nContains(target)) || (target == current(1) &amp;&amp; $viewpoint.target.eAllContents().nContains(source))].nSize() > 0" domainClass="AbstractFunction">
           <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="service:capellaLabelService(view, diagram)" sizeComputationExpression="" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -3005,20 +3005,20 @@
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:PopupMenu" name="Physical Path">
-            <menuItemDescription xsi:type="tool:OperationAction" name="Create a Physical Path" precondition="&lt;%isValidPhysicalPathSelection($views)%>" forceRefresh="true">
+            <menuItemDescription xsi:type="tool:OperationAction" name="Create a Physical Path" precondition="aql:self.isValidPhysicalPathSelection(views)" forceRefresh="true">
               <view name="views"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $views%>">
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:views">
                   <subModelOperations xsi:type="tool:ExternalJavaAction" name="selectSource" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementFromListWizard">
-                    <parameters name="context" value="&lt;% $views.nFirst()%>"/>
-                    <parameters name="scope" value="&lt;%getAvailableSourcesOfPhysicalPath($views)%>"/>
+                    <parameters name="context" value="aql:views->first()"/>
+                    <parameters name="scope" value="aql:self.getAvailableSourcesOfPhysicalPath(views)"/>
                     <parameters name="resultVariable" value="source"/>
                     <parameters name="wizardMessage" value="Select the Source of your Physical Path:"/>
                     <parameters name="displayDialogForOneElement" value="false"/>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%createPhysicalPath($views,$source)%>">
-                    <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%current.isA(&quot;PhysicalPath&quot;)%>">
-                      <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='PAB_PhysicalPathEnd']" containerViewExpression="&lt;%$views.nFirst().getDiagramContainer()%>"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.createPhysicalPath(views, source)">
+                    <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(cs::PhysicalPath)">
+                      <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='PAB_PhysicalPathEnd']" containerViewExpression="aql:views->first().getDiagramContainer()"/>
                     </subModelOperations>
                   </subModelOperations>
                 </firstModelOperations>

@@ -37,12 +37,12 @@ public class GetAvailableArchitectures extends AbstractQuery {
   public List<Object> execute(Object input, IQueryContext context) throws QueryException {
     List<Object> returnedArchitectures = new ArrayList<Object>();
     SystemEngineering rootSystemEngineering =
-        (SystemEngineering) CapellaServices.getService().getAncestor((EObject) input, CapellamodellerPackage.Literals.SYSTEM_ENGINEERING.getName());
+        (SystemEngineering) CapellaServices.getService().getAncestor((EObject) input, CapellamodellerPackage.Literals.SYSTEM_ENGINEERING);
     BlockArchitecture ownerBlockArchitecture = null;
     if (input instanceof BlockArchitecture) {
       ownerBlockArchitecture = (BlockArchitecture) input;
     } else {
-      ownerBlockArchitecture = (BlockArchitecture) CapellaServices.getService().getAncestor((EObject) input, CsPackage.Literals.BLOCK_ARCHITECTURE.getName());
+      ownerBlockArchitecture = (BlockArchitecture) CapellaServices.getService().getAncestor((EObject) input, CsPackage.Literals.BLOCK_ARCHITECTURE);
     }
     EList<ModellingArchitecture> ownedArchitectures = rootSystemEngineering.getOwnedArchitectures();
     for (ModellingArchitecture modellingArchitecture : ownedArchitectures) {

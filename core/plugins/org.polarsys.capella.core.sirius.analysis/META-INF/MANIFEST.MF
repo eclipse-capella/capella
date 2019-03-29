@@ -27,7 +27,6 @@ Export-Package: org.polarsys.capella.core.sequencediag,
  org.polarsys.capella.core.sirius.analysis.task,
  org.polarsys.capella.core.sirius.analysis.tool
 Require-Bundle: org.eclipse.core.expressions,
- org.eclipse.sirius.query.legacy,
  org.eclipse.sirius.ext.base,
  org.eclipse.sirius.diagram.sequence;visibility:=reexport,
  org.polarsys.capella.core.data.interaction.properties,
