@@ -203,7 +203,7 @@ public class CapellaServices {
   public static final String RE_THROW_OCE_PREFIX = "-RT-"; //$NON-NLS-1$
 
   public EObject getRootContainer(EObject eObject) {
-    return EcoreUtil.getRootContainer(eObject.eClass());
+    return EcoreUtil.getRootContainer(eObject);
   }
 
   /** used by aql queries */
