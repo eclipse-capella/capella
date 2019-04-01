@@ -30,6 +30,7 @@ public class CapellaClassFilters {
     handler.addCategory(new ComponentFilter(context), context);
 
     handler.addCategory(new FunctionFilter(context), context);
+    handler.addCategory(new FunctionalChainFilter(context), context);
 
     handler.addCategory(new EClassCategoryFilter(context, InteractionPackage.Literals.ABSTRACT_CAPABILITY,
         CtxPackage.Literals.CAPABILITY), context);
