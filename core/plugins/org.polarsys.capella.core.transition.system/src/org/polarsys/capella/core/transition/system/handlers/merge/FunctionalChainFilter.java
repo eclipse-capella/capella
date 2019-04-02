@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,20 +10,24 @@
  *******************************************************************************/
 package org.polarsys.capella.core.transition.system.handlers.merge;
 
-import org.polarsys.capella.core.data.ctx.CtxPackage;
-import org.polarsys.capella.core.data.fa.AbstractFunction;
+import org.polarsys.capella.core.data.fa.ControlNode;
+import org.polarsys.capella.core.data.fa.FaPackage;
+import org.polarsys.capella.core.data.fa.FunctionalChain;
+import org.polarsys.capella.core.data.fa.FunctionalChainInvolvement;
+import org.polarsys.capella.core.data.fa.SequenceLink;
 import org.polarsys.capella.core.transition.system.preferences.PreferenceConstants;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
-public class FunctionFilter extends EObjectCategoryFilter {
+public class FunctionalChainFilter extends EObjectCategoryFilter {
 
-  public FunctionFilter(IContext context) {
-    super(context, CtxPackage.Literals.SYSTEM_FUNCTION, PreferenceConstants.P_F_TEXT);
+  public FunctionalChainFilter(IContext context) {
+    super(context, FaPackage.Literals.FUNCTIONAL_CHAIN, PreferenceConstants.P_FC_TEXT);
   }
 
   @Override
   public boolean keepElement(Object element) {
-    return element instanceof AbstractFunction;
+    return element instanceof FunctionalChain || element instanceof FunctionalChainInvolvement
+        || element instanceof SequenceLink || element instanceof ControlNode;
   }
 
 }

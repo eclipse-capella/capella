@@ -19,7 +19,7 @@ import org.eclipse.emf.diffmerge.ui.viewers.categories.AbstractDifferenceCategor
 import org.eclipse.swt.graphics.Image;
 import org.polarsys.capella.core.transition.common.handlers.merge.ICategoryItem;
 
-public class DiffCategoryProxy extends AbstractDifferenceCategoryItem implements IDifferenceCategory{
+public class DiffCategoryProxy extends AbstractDifferenceCategoryItem implements IDifferenceCategory {
 
   ICategoryItem item;
 
@@ -40,10 +40,9 @@ public class DiffCategoryProxy extends AbstractDifferenceCategoryItem implements
   @Override
   public Image getImage(EMFDiffNode node) {
     Object image = item.getImage();
-    if (!(image instanceof Image)) {
-      return EMFDiffMergeUIPlugin.getDefault().getImage(EMFDiffMergeUIPlugin.ImageID.FILTER);
-    }
-    return null;
+    if (image instanceof Image)
+      return (Image) image;
+    return EMFDiffMergeUIPlugin.getDefault().getImage(EMFDiffMergeUIPlugin.ImageID.FILTER);
   }
 
   @Override
@@ -118,13 +117,13 @@ public class DiffCategoryProxy extends AbstractDifferenceCategoryItem implements
   public IDifferenceCategory clone() throws CloneNotSupportedException {
     return new CategoryState();
   }
-  
+
   private class CategoryState extends AbstractDifferenceCategory {
-    
+
     CategoryState() {
       copyState(DiffCategoryProxy.this);
     }
-    
+
     @Override
     public String getID() {
       return DiffCategoryProxy.this.getID();
@@ -134,12 +133,12 @@ public class DiffCategoryProxy extends AbstractDifferenceCategoryItem implements
     public String getText(EMFDiffNode node) {
       return DiffCategoryProxy.this.getText(node);
     }
-    
+
     @Override
     public boolean covers(IDifference difference, EMFDiffNode node) {
       return false;
     }
 
   }
-  
+
 }

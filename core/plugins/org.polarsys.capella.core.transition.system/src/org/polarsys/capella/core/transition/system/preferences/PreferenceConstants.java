@@ -107,6 +107,8 @@ public class PreferenceConstants {
   public static final String P_PropertyValues_TEXT = "Property Values";
 
   public static final String P_Generalization_TEXT = "Generalization";
+  
+  public static final String P_FC_TEXT = "Functional Chain";
 
   public static final String P_Other_TEXT = "Other";
 
