@@ -39,6 +39,7 @@ public abstract class MiscModel extends BasicTestCase {
   public static final String OA__OPERATIONAL_ENTITIES = "27bd9112-bc96-45f7-8790-122c82880b19";
   public static final String SA = "cfc9925e-c0f5-4b59-9abf-53e6a50cfc93";
   public static final String SA__SYSTEM_FUNCTIONS = "8bfeccd2-6f68-4c4b-9c94-3163f79b695b";
+  
   public static final String SA__ROOT_SF = "c5bc9e6f-5878-4ce3-85ef-61d44ac0175c";
   public static final String SA__ROOT_SF__FC1 = "ce5d3e25-87ec-4cc2-9856-d7f12589af79";
   public static final String SA__ROOT_SF__FC1__FCI_TO_FE1 = "ab1d4f35-35f9-4471-be38-71b21969ed1e";
@@ -48,6 +49,26 @@ public abstract class MiscModel extends BasicTestCase {
   public static final String SA__ROOT_SF__SF1__FOP11 = "56c5a094-fab8-4b9f-8478-15cf9e6c02d8";
   public static final String SA__ROOT_SF__SF2 = "326c0742-f560-422e-af2e-ab40186c7484";
   public static final String SA__ROOT_SF__SF2__FIP21 = "488250fb-7633-418c-8c4c-65a87babe303";
+  public static final String SA__ROOT_SF__FC3_1 = "d3f4f019-c3f3-4187-924b-afcb32fc472a"; //$NON-NLS-1$
+  public static final String SA__ROOT_SF__FC3_2 = "4549d81e-5fe4-4064-ada1-452211ede7aa"; //$NON-NLS-1$
+  public static final String SA__ROOT_SF__FC3_3 = "9edd143a-a66e-4363-96ca-3a317920f8b2"; //$NON-NLS-1$
+  public static final String SA__ROOT_SF__SF3_1 = "7d3447f6-3e7f-466e-a0ee-a3f8bcafb5c4"; //$NON-NLS-1$
+  public static final String SA__ROOT_SF__SF3_2 = "26d6924c-f796-4321-a2c7-29e6bee35e54"; //$NON-NLS-1$
+  public static final String SA__ROOT_SF__SF3_3 = "2621f74f-57df-4cdd-892e-3882d6f60a9c"; //$NON-NLS-1$
+  public static final String SA__ROOT_SF__SF3_4 = "38c19b0c-a96f-49ab-bc38-84c688fd53ba"; //$NON-NLS-1$
+  public static final String SA__ROOT_SF__FUNCTIONAL_CHAIN_REFERENCE_TO_FC3_2 = "62b1fb9b-a6d2-46fd-819c-b0477fc4eaa6"; //$NON-NLS-1$
+  public static final String SA__ROOT_SF__FUNCTIONAL_CHAIN_REFERENCE_TO_FC3_3 = "4cd61e42-fe35-41a9-a618-5d204eaee500"; //$NON-NLS-1$
+  public static final String SA__ROOT_SF__FUNCTIONAL_CHAIN_INVOLVEMENT_LINK_TO_FE3_1 = "eb92ac45-4aec-43f8-a148-35824485f0f7"; //$NON-NLS-1$
+  public static final String SA__ROOT_SF__SEQUENCE_LINK = "06bf8f77-58da-4283-849d-8eab3509015e"; //$NON-NLS-1$
+  public static final String SA__ROOT_SF__FUNCTIONAL_CHAIN_INVOLVEMENT_LINK_TO_FE3_3 = "316ed7d0-d68f-4d3b-ae7b-5cb2fe00569b"; //$NON-NLS-1$
+  public static final String SA__ROOT_SF__FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION_TO_SF3_2 = "b55b0f4d-2acc-4357-80ce-62d447e78fbf"; //$NON-NLS-1$
+  public static final String SA__ROOT_SF__FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION_TO_SF3_1 = "0dcd2c02-c165-4a13-93e4-0e176652b5b9"; //$NON-NLS-1$
+  public static final String SA__ROOT_SF__FUNCTIONAL_CHAIN_INVOLVEMENT_LINK_TO_FE3_2 = "a45ea9b5-36a3-4ed3-a3dd-da5502ba9686"; //$NON-NLS-1$
+  public static final String SA__ROOT_SF__FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION_TO_SF3_4 = "1b4d0ec1-962f-4457-82eb-8dc5446cf8ca"; //$NON-NLS-1$
+  public static final String SA__ROOT_SF__FUNCTIONAL_CHAIN_INVOLVEMENT_FUNCTION_TO_SF3_3 = "9b69c861-4cea-4fe3-9991-894ba848befa"; //$NON-NLS-1$
+  public static final String SA__ROOT_SF__FE3_1 = "1138760d-cafb-459f-b12b-73008ef6b544"; //$NON-NLS-1$
+  public static final String SA__ROOT_SF__FE3_2 = "0dcc92b5-1865-498e-a1bd-fe6623a3ad47"; //$NON-NLS-1$
+  public static final String SA__ROOT_SF__FE3_3 = "ced9cc67-9262-4a39-9879-2fdb3cf644da"; //$NON-NLS-1$
   public static final String SA__ROOT_SF__FUNCTION_REALIZATION_TO_ROOT_OPERATIONAL_ACTIVITY = "9937a791-bc8d-498e-b40d-7a6c972a97a2";
   public static final String SA__ROOT_SF__FE1 = "0b057675-ed0e-4a67-829d-2a7d92814fb8";
   public static final String SA__CAPABILITIES = "961d88d5-c338-4849-ae08-91294a130d42";

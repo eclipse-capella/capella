@@ -27,8 +27,14 @@ public class DeleteElementTestSuite extends BasicTestSuite {
   @Override
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
+    tests.add(new DeleteChainInvolvmentFunction());
+    tests.add(new DeleteChainInvolvmentLink());
+    tests.add(new DeleteChainReferenceSourceHierarchy());
+    tests.add(new DeleteChainReferenceTargetHierarchy());
+    
     tests.add(new DeleteExchangeItem());
     tests.add(new DeleteGuard());
+
     return tests;
   }
 
