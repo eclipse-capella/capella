@@ -911,7 +911,7 @@ public class FunctionalChainServices {
       FunctionalChainInvolvement targetInvolvement) {
     return sourceInvolvement.getInvolved() == targetInvolvement.getInvolved();
   }
-  
+
   /**
    * Returns true if the source and target functions are owned by the same FunctionalChain, false otherwise.
    * 
@@ -1206,21 +1206,27 @@ public class FunctionalChainServices {
    */
   public boolean canCreateLinksEdge(DEdge sourceEdge, DEdge targetEdge) {
 
-    Set<DSemanticDecorator> sourceViews1 = findFirstLevelFCIFOrFCRViewsAsSource(sourceEdge);
-    Set<DSemanticDecorator> sourceViews2 = findFirstLevelFCIFOrFCRViewsAsSource(targetEdge);
+    EdgeTarget sourceNode1 = sourceEdge.getSourceNode();
+    EdgeTarget sourceNode2 = targetEdge.getSourceNode();
 
-    sourceViews1.retainAll(sourceViews2);
+    List<FunctionalChainReference> sourceNode1Hierarchy = FunctionalChainReferenceHierarchyHelper
+        .computeHierarchy(sourceNode1);
+    List<FunctionalChainReference> sourceNode2Hierarchy = FunctionalChainReferenceHierarchyHelper
+        .computeHierarchy(sourceNode2);
 
-    if (sourceViews1.isEmpty()) {
+    if (!sourceNode1Hierarchy.equals(sourceNode2Hierarchy)) {
       return false;
     }
 
-    Set<DSemanticDecorator> targetViews1 = findFirstLevelFCIFOrFCRViewsAsTarget(sourceEdge);
-    Set<DSemanticDecorator> targetViews2 = findFirstLevelFCIFOrFCRViewsAsTarget(targetEdge);
+    EdgeTarget targetNode1 = sourceEdge.getTargetNode();
+    EdgeTarget targetNode2 = targetEdge.getTargetNode();
 
-    targetViews1.retainAll(targetViews2);
+    List<FunctionalChainReference> targetNode1Hierarchy = FunctionalChainReferenceHierarchyHelper
+        .computeHierarchy(targetNode1);
+    List<FunctionalChainReference> targetNode2Hierarchy = FunctionalChainReferenceHierarchyHelper
+        .computeHierarchy(targetNode2);
 
-    return !targetViews1.isEmpty();
+    return targetNode1Hierarchy.equals(targetNode2Hierarchy);
   }
 
   /**
@@ -1460,16 +1466,22 @@ public class FunctionalChainServices {
    * 
    * @param seqLinkEdge
    * @param closestFCIFunctionViews
+   * @param ignoreFunctionsInCollapseHierarchy
+   *          If this parameter is true, any view in collapsed hierarchy will be ignored.
    */
-  private void findFlatClosestFCIFunctionViewsAsTarget(DEdge seqLinkEdge, List<DNode> closestFCIFunctionViews) {
+  private void findFlatClosestFCIFunctionViewsAsTarget(DEdge seqLinkEdge, List<DNode> closestFCIFunctionViews,
+      boolean ignoreFunctionsInCollapseHierarchy) {
     EdgeTarget targetNode = seqLinkEdge.getTargetNode();
     if (targetNode instanceof DNode && ((DNode) targetNode).getTarget() instanceof FunctionalChainInvolvementFunction) {
-      closestFCIFunctionViews.add((DNode) targetNode);
+      if (!ignoreFunctionsInCollapseHierarchy || !isInCollapsedHierarchy((DDiagramElement) targetNode)) {
+        closestFCIFunctionViews.add((DNode) targetNode);
+      }
     } else {
       targetNode.getOutgoingEdges() //
           .stream() //
           .filter(e -> e.getTarget() instanceof SequenceLink) //
-          .forEach(s -> findFlatClosestFCIFunctionViewsAsTarget(s, closestFCIFunctionViews)); //
+          .forEach(s -> findFlatClosestFCIFunctionViewsAsTarget(s, closestFCIFunctionViews,
+              ignoreFunctionsInCollapseHierarchy)); //
     }
   }
 
@@ -1478,11 +1490,14 @@ public class FunctionalChainServices {
    * to the target of the given edge.
    * 
    * @param seqLinkEdge
+   * @param ignoreFunctionsInCollapseHierarchy
+   *          If this parameter is true, any view in collapsed hierarchy will be ignored.
    * @return
    */
-  public List<DNode> findFlatClosestFCIFunctionViewsAsTarget(DEdge seqLinkEdge) {
+  public List<DNode> findFlatClosestFCIFunctionViewsAsTarget(DEdge seqLinkEdge,
+      boolean ignoreFunctionsInCollapseHierarchy) {
     List<DNode> closestFCIFunctionViews = new ArrayList<>();
-    findFlatClosestFCIFunctionViewsAsTarget(seqLinkEdge, closestFCIFunctionViews);
+    findFlatClosestFCIFunctionViewsAsTarget(seqLinkEdge, closestFCIFunctionViews, ignoreFunctionsInCollapseHierarchy);
     return closestFCIFunctionViews;
   }
 
@@ -1492,16 +1507,22 @@ public class FunctionalChainServices {
    * 
    * @param seqLinkEdge
    * @param closestFCIFunctionViews
+   * @param ignoreFunctionsInCollapseHierarchy
+   *          If this parameter is true, any view in collapsed hierarchy will be ignored.
    */
-  private void findFlatClosestFCIFunctionViewsAsSource(DEdge seqLinkEdge, List<DNode> closestFCIFunctionViews) {
+  private void findFlatClosestFCIFunctionViewsAsSource(DEdge seqLinkEdge, List<DNode> closestFCIFunctionViews,
+      boolean ignoreFunctionsInCollapseHierarchy) {
     EdgeTarget sourceNode = seqLinkEdge.getSourceNode();
     if (sourceNode instanceof DNode && ((DNode) sourceNode).getTarget() instanceof FunctionalChainInvolvementFunction) {
-      closestFCIFunctionViews.add((DNode) sourceNode);
+      if (!ignoreFunctionsInCollapseHierarchy || !isInCollapsedHierarchy((DDiagramElement) sourceNode)) {
+        closestFCIFunctionViews.add((DNode) sourceNode);
+      }
     } else {
       sourceNode.getIncomingEdges() //
           .stream() //
           .filter(e -> e.getTarget() instanceof SequenceLink) //
-          .forEach(s -> findFlatClosestFCIFunctionViewsAsSource(s, closestFCIFunctionViews)); //
+          .forEach(s -> findFlatClosestFCIFunctionViewsAsSource(s, closestFCIFunctionViews,
+              ignoreFunctionsInCollapseHierarchy)); //
     }
   }
 
@@ -1510,11 +1531,14 @@ public class FunctionalChainServices {
    * to the source of the given edge.
    * 
    * @param seqLinkEdge
+   * @param ignoreFunctionsInCollapseHierarchy
+   *          If this parameter is true, any view in collapsed hierarchy will be ignored.
    * @return
    */
-  public List<DNode> findFlatClosestFCIFunctionViewsAsSource(DEdge seqLinkEdge) {
+  public List<DNode> findFlatClosestFCIFunctionViewsAsSource(DEdge seqLinkEdge,
+      boolean ignoreFunctionsInCollapseHierarchy) {
     List<DNode> firstLevelViews = new ArrayList<>();
-    findFlatClosestFCIFunctionViewsAsSource(seqLinkEdge, firstLevelViews);
+    findFlatClosestFCIFunctionViewsAsSource(seqLinkEdge, firstLevelViews, ignoreFunctionsInCollapseHierarchy);
     return firstLevelViews;
   }
 
@@ -1610,8 +1634,22 @@ public class FunctionalChainServices {
   }
 
   public EObject accelerateOnSequenceLinkEdge(DEdge seqLinkEdge) {
-    List<DNode> availableSourceFCIFViews = findFlatClosestFCIFunctionViewsAsSource(seqLinkEdge);
-    List<DNode> availableTargetFCIFViews = findFlatClosestFCIFunctionViewsAsTarget(seqLinkEdge);
+    Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
+    String messageDialogTitle = "Accelerator Information";
+
+    List<DNode> availableSourceFCIFViews = findFlatClosestFCIFunctionViewsAsSource(seqLinkEdge, true);
+    if (availableSourceFCIFViews.isEmpty()) {
+      MessageDialog.openInformation(shell, messageDialogTitle,
+          "There is not any Functional Chain Involvement Function as source for the selected sequence link or they are all in collapsed container.");
+      return null;
+    }
+
+    List<DNode> availableTargetFCIFViews = findFlatClosestFCIFunctionViewsAsTarget(seqLinkEdge, true);
+    if (availableTargetFCIFViews.isEmpty()) {
+      MessageDialog.openInformation(shell, messageDialogTitle,
+          "There is not any Functional Chain Involvement Function as target for the selected sequence link or they are all in collapsed container.");
+      return null;
+    }
 
     Set<AbstractFunction> availableSourceFunctions = getFunctionsFromFCIFDNodes(availableSourceFCIFViews);
     Set<AbstractFunction> availableTargetFunctions = getFunctionsFromFCIFDNodes(availableTargetFCIFViews);
@@ -1629,7 +1667,6 @@ public class FunctionalChainServices {
 
     Session session = SessionManager.INSTANCE.getSession(seqLinkEdge.getTarget());
     TransactionalEditingDomain ted = session.getTransactionalEditingDomain();
-    Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
     AdapterFactory adapterFactory = CapellaAdapterFactoryProvider.getInstance().getAdapterFactory();
 
     SelectOrCreateFunctionalExchangeDialog dialog = new SelectOrCreateFunctionalExchangeDialog(shell, ted,
@@ -1659,9 +1696,8 @@ public class FunctionalChainServices {
     int sourceSize = possibleSourceFCIFNodes.size();
     int targetSize = possibleTargetFCIFNodes.size();
     if (sourceSize > 1 || targetSize > 1) {
-      String title = "Accelerator Information";
-      String message = "Impossible to create Functional Chain Involvement Link due to ambiguity of source and target";
-      MessageDialog.openInformation(shell, title, message);
+      MessageDialog.openInformation(shell, messageDialogTitle,
+          "Impossible to create Functional Chain Involvement Link due to ambiguity of source and target");
     }
 
     if (sourceSize == 1 && targetSize == 1) {
@@ -1700,18 +1736,15 @@ public class FunctionalChainServices {
       FunctionalExchange functionalExchange, DEdge sequenceLinkEdge) {
 
     SequenceLink sequenceLink = (SequenceLink) sequenceLinkEdge.getTarget();
-    FunctionalChain functionalChain = (FunctionalChain) sequenceLink.eContainer();
+    FunctionalChain commonFC = computeContainerFunctionalChain(sourceFCIF, targetFCIF);
 
-    FunctionalChainInvolvementLink newFCIL = FunctionalChainExt.createInvolvementLink(functionalChain,
-        functionalExchange);
+    FunctionalChainInvolvementLink newFCIL = FunctionalChainExt.createInvolvementLink(commonFC, functionalExchange);
     newFCIL.setSource((FunctionalChainInvolvementFunction) sourceFCIF.getTarget());
     newFCIL.setTarget((FunctionalChainInvolvementFunction) targetFCIF.getTarget());
 
-    FunctionalChain commonFC = computeContainerFunctionalChain(sourceFCIF, targetFCIF);
     newFCIL.getSourceReferenceHierarchy().addAll(computeFCReferenceHierarchy(sourceFCIF, commonFC));
     newFCIL.getTargetReferenceHierarchy().addAll(computeFCReferenceHierarchy(targetFCIF, commonFC));
 
-    functionalChain.getOwnedFunctionalChainInvolvements().add(newFCIL);
     sequenceLink.getLinks().add(newFCIL);
 
     return newFCIL;

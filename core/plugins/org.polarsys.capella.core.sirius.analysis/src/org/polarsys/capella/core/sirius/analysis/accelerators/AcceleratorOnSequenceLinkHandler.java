@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.polarsys.capella.core.sirius.analysis.accelerators;
 
-import java.util.List;
-
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
@@ -19,7 +17,6 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
-import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
 import org.eclipse.ui.IWorkbench;
@@ -76,20 +73,7 @@ public class AcceleratorOnSequenceLinkHandler extends AbstractHandler {
 
     DDiagramElement diagramElement = getDiagramElementFromSelection(selection);
 
-    if (diagramElement instanceof DEdge && diagramElement.getTarget() instanceof SequenceLink) {
-      
-      DEdge seqLinkEdge = (DEdge) diagramElement;
-      List<DNode> closestSourceFCIFViews = functionalChainServices.findFlatClosestFCIFunctionViewsAsSource(seqLinkEdge);
-
-      if (closestSourceFCIFViews.isEmpty()) {
-        return false;
-      }
-      // if the sources are empty, then stop now instead of continuing for target
-      List<DNode> closestTargetFCIFViews = functionalChainServices.findFlatClosestFCIFunctionViewsAsTarget(seqLinkEdge);
-
-      return !closestTargetFCIFViews.isEmpty();
-    }
-    return false;
+    return (diagramElement instanceof DEdge && diagramElement.getTarget() instanceof SequenceLink);
   }
 
 }
