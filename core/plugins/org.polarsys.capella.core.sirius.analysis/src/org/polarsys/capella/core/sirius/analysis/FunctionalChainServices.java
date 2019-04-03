@@ -80,6 +80,7 @@ import org.polarsys.capella.core.data.information.ExchangeItem;
 import org.polarsys.capella.core.data.interaction.AbstractCapability;
 import org.polarsys.capella.core.data.interaction.FunctionalChainAbstractCapabilityInvolvement;
 import org.polarsys.capella.core.data.oa.OperationalProcess;
+import org.polarsys.capella.core.diagram.helpers.DiagramHelper;
 import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.ExchangeItemExt;
@@ -1749,11 +1750,12 @@ public class FunctionalChainServices {
 
     return newFCIL;
   }
-  
+
   /**
    * On a FCD diagram, the Delete From Model icon for a selected element is visible or not based on the condition.
    * 
-   * @param element the semantic element to be deleted
+   * @param element
+   *          the semantic element to be deleted
    * @return
    */
   public boolean checkDeleteConditionFCD(EObject element) {
@@ -1763,5 +1765,42 @@ public class FunctionalChainServices {
       return false;
     }
     return true;
+  }
+
+  /**
+   * This method checks if a ControlNode, represented by the graphical element passed as argument,
+   * has an edge from or towards a collapsed container (which in this diagram is a FunctionalChainReference)
+   * 
+   * @param controlNode
+   *          The graphical element representing a semantic ControlNode
+   * @return 
+   *          Returns true if the graphical element has edges from or towards a collapsed container
+   */
+  public boolean controlNodeLinkedToCollapsedFCR(DNode controlNode) {
+
+    EList<DEdge> incomingSequenceLinks = controlNode.getIncomingEdges();
+    EList<DEdge> outgoingSequenceLinks = controlNode.getOutgoingEdges();
+
+    for (DEdge outgoingSeqLink : outgoingSequenceLinks) {
+
+      EdgeTarget targetNode = outgoingSeqLink.getTargetNode();
+
+      if (targetNode instanceof DNodeContainer
+          && ((DNodeContainer) targetNode).getTarget() instanceof FunctionalChainReference) {
+        return true;
+      }
+    }
+
+    for (DEdge incomingSeqLink : incomingSequenceLinks) {
+
+      EdgeTarget sourceNode = incomingSeqLink.getSourceNode();
+
+      if (sourceNode instanceof DNodeContainer
+          && ((DNodeContainer) sourceNode).getTarget() instanceof FunctionalChainReference) {
+        return true;
+      }
+    }
+
+    return false;
   }
 }

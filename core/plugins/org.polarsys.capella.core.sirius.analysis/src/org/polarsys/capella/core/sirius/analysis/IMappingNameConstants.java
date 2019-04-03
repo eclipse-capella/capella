@@ -506,6 +506,7 @@ public interface IMappingNameConstants {
   String SHOW_COMPONENT_EXCHANGES_EXCHANGE_ITEMS_PARAMS = "CEEIParam"; //$NON-NLS-1$
 
   // FunctionalChainDescription
+  String FCD_DIAGRAM = "Functional Chain Description"; //$NON-NLS-1$
   String FCD_FUNCTION__MAPPING_NAME = "FC_AbstractFunction"; //$NON-NLS-1$
   String FCD_FUNCTIONAL_CHAIN__MAPPING_NAME = "FC_FunctionalChain"; //$NON-NLS-1$
   String FCD_FUNCTIONAL_EXCHANGE__MAPPING_NAME = "FC_Exchange"; //$NON-NLS-1$

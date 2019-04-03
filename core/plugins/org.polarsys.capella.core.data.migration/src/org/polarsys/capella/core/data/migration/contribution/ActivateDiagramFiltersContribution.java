@@ -27,21 +27,20 @@ import org.polarsys.capella.core.sirius.analysis.IMappingNameConstants;
 import org.polarsys.capella.core.sirius.analysis.constants.IFilterNameConstants;
 
 /**
- * This class activate filters for computed component exchanges and physical links on LAB and PAB diagrams.
+ * This class activate filters for computed elements FCD Diagrams.
  */
 public class ActivateDiagramFiltersContribution extends AbstractMigrationContribution {
-
 
   @Override
   public void unaryEndMigrationExecute(ExecutionManager executionManager, Resource resource, MigrationContext context) {
     super.unaryEndMigrationExecute(executionManager, resource, context);
-    if(isMigrationRequired(context)){
-      activateRelevantDiagramFilters(resource);      
+    if (isMigrationRequired(context)) {
+      activateRelevantDiagramFilters(resource);
     }
   }
 
   private void activateRelevantDiagramFilters(Resource resource) {
-    for (DDiagram diagram : getAllLabAndPabDiagrams(resource)) {
+    for (DDiagram diagram : getAllRelevantDiagrams(resource)) {
       for (FilterDescription filter : diagram.getDescription().getFilters()) {
         if (isRelevantFilter(filter.getName()) && !diagram.getActivatedFilters().contains(filter)) {
           diagram.getActivatedFilters().add(filter);
@@ -49,15 +48,12 @@ public class ActivateDiagramFiltersContribution extends AbstractMigrationContrib
       }
     }
   }
-  
+
   private boolean isRelevantFilter(String filterName) {
-    return IFilterNameConstants.FILTER_LAB_HIDE_COMPUTED_CE.equals(filterName)
-        || IFilterNameConstants.FILTER_PAB_HIDE_COMPUTED_CE.equals(filterName)
-        || IFilterNameConstants.FILTER_LAB_HIDE_COMPUTED_PL.equals(filterName)
-        || IFilterNameConstants.FILTER_PAB_HIDE_COMPUTED_PL.equals(filterName);
+    return IFilterNameConstants.FILTER_FCD_HIDE_ASSOCIATION_LINKS.equals(filterName);
   }
-  
-  private List<DDiagram> getAllLabAndPabDiagrams(Resource resource) {
+
+  private List<DDiagram> getAllRelevantDiagrams(Resource resource) {
     List<DDiagram> allDiagrams = new ArrayList<>();
     if (!CapellaResourceHelper.isAirdResource(resource.getURI())) {
       return Collections.emptyList();
@@ -65,19 +61,20 @@ public class ActivateDiagramFiltersContribution extends AbstractMigrationContrib
     for (EObject root : resource.getContents()) {
       if (root instanceof DDiagram) {
         DDiagram diagram = (DDiagram) root;
-        if (IMappingNameConstants.PAB_DIAGRAM.equals(diagram.getDescription().getName())
-            || IMappingNameConstants.LAB_DIAGRAM.equals(diagram.getDescription().getName())) {
+        if (IMappingNameConstants.FCD_DIAGRAM.equals(diagram.getDescription().getName())) {
           allDiagrams.add((DDiagram) root);
         }
       }
     }
     return allDiagrams;
   }
-  
-  private boolean isMigrationRequired(MigrationContext context){
+
+  // We migrate from 1.2.x/1.3.0 --> 1.3.x (x >= 1)
+  private boolean isMigrationRequired(MigrationContext context) {
     Version fileVersion = context.getCurrentVersion();
     Version platformVersion = CapellaMetadataProvider.getCurrentVersion();
-    return ((fileVersion.getMajor() == 1 && fileVersion.getMinor() == 1 && fileVersion.getMicro() >= 0)
-     && (platformVersion.getMajor() == 1 && platformVersion.getMinor() == 2 && platformVersion.getMicro() >= 0));
+    return (((fileVersion.getMajor() == 1 && fileVersion.getMinor() == 2 && fileVersion.getMicro() >= 0)
+        || (fileVersion.getMajor() == 1 && fileVersion.getMinor() == 3 && fileVersion.getMicro() == 0))
+        && (platformVersion.getMajor() == 1 && platformVersion.getMinor() == 3 && platformVersion.getMicro() >= 1));
   }
 }

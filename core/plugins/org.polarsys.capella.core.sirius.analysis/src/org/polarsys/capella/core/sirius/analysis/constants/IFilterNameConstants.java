@@ -58,7 +58,7 @@ public interface IFilterNameConstants {
   String FILTER_CDI_HIDE_PROVIDE_LINKS = "Hide Provide links"; //$NON-NLS-1$
   String FILTER_CDI_HIDE_REQUIRE_LINKS = "Hide Require links"; //$NON-NLS-1$
   String FILTER_CDI_HIDE_COMMUNICATION_LINKS = "Hide Communication Links"; //$NON-NLS-1$
-  String FILTER_CDI_HIDE_GENERALIZATION_LINKS = "Hide Generalization Links"; //$NON-NLS-1$LS-1$
+  String FILTER_CDI_HIDE_GENERALIZATION_LINKS = "Hide Generalization Links"; //$NON-NLS-1$ LS-1$
   String FILTER_CDI_HIDE_TECHNICALS_INTERFACES = "Hide Technical Interfaces"; //$NON-NLS-1$
   String FILTER_CDI_SHOW_MODIFIERS = "Show Modifiers"; //$NON-NLS-1$
 
@@ -152,6 +152,10 @@ public interface IFilterNameConstants {
   String FILTER_FCD_SHOW_EXCHANGEITEMS = "Show ExchangeItems"; //$NON-NLS-1$
   String FILTER_FCD_SHOW_EXCHANGEITEMS_PARAMETERS = "Show ExchangeItems parameters"; //$NON-NLS-1$
   String FILTER_FCD_SHOW_FUNCTIONAL_EXCHANGES_EXCHANGEITEMS = "Show Functional Exchanges [ExchangeItems]"; //$NON-NLS-1$
+  String FILTER_FCD_HIDE_FUNCTIONAL_CHAIN_INVOLVEMENT_LINKS = "Hide Functional Chain Involvement Links"; //$NON-NLS-1$
+  String FILTER_FCD_HIDE_SEQUENCING_INFORMATION = "Hide Sequencing Information"; //$NON-NLS-1$
+  String FILTER_FCD_HIDE_COMPUTED_SEQUENCING_INFORMATION = "Hide Computed Sequencing Information"; //$NON-NLS-1$
+  String FILTER_FCD_HIDE_ASSOCIATION_LINKS = "Hide Association Links"; //$NON-NLS-1$
 
   // FS filters - Function Scenario
   String FILTER_FS_HIDE_EXECUTIONS = "Hide executions"; //$NON-NLS-1$
@@ -208,7 +212,7 @@ public interface IFilterNameConstants {
   String FILTER_XAB_HIDE_SIMPLIFIED_DIAGRAM_BASED_COMPONENT_EXCHANGES = "Hide Simplified Diagram Based Component Exchanges"; //$NON-NLS-1$
   String FILTER_XAB_HIDE_SIMPLIFIED_GROUP_OF_COMPONENT_EXCHANGES_ID = "Hide Simplified Group of Component Exchanges"; //$NON-NLS-1$
   String FILTER_XAB_HIDE_SIMPLIFIED_ORIENTED_GROUPED_COMPONENT_EXCHANGES = "Hide Simplified Oriented Grouped Component Exchanges"; //$NON-NLS-1$
-  
+
   // LAB filters - Logical Architecture Blank
   String FILTER_LAB_COLLAPSE_COMPONENT_PORTS = "Collapse Component Ports"; //$NON-NLS-1$
   String FILTER_LAB_COLLAPSE_FUNCTION_PORTS = "Collapse Function Ports"; //$NON-NLS-1$
@@ -225,15 +229,13 @@ public interface IFilterNameConstants {
   String FILTER_LAB_HIDE_ALLOCATED_FUNCTION_PORTS = "Hide Allocated Function Ports"; //$NON-NLS-1$
   String FILTER_LAB_SHOW_EXCHANGE_ITEMS_ON_FUNCTIONAL_EXCHANGES = "Show Exchange Items on Functional Exchanges"; //$NON-NLS-1$
   String FILTER_LAB_SHOW_EXCHANGE_ITEMS_ON_COMPONENT_EXCHANGES = "Show Exchange Items on Component Exchanges"; //$NON-NLS-1$
-  String FILTER_LAB_SHOW_EXCHANGE_ITEMS_ON_COMPONENT_EXCHANGE_WITHOUT_FUNCTIONAL_EXCHANGES =
-      "Show Exchange Items on Component Exchange (without Functional Exchanges)"; //$NON-NLS-1$
-  String FILTER_LAB_SHOW_ALLOCATED_FUNCTIONAL_EXCHANGES_ON_COMPONENT_EXCHANGES =
-      "Show Allocated Functional Exchanges on Component Exchanges"; //$NON-NLS-1$
+  String FILTER_LAB_SHOW_EXCHANGE_ITEMS_ON_COMPONENT_EXCHANGE_WITHOUT_FUNCTIONAL_EXCHANGES = "Show Exchange Items on Component Exchange (without Functional Exchanges)"; //$NON-NLS-1$
+  String FILTER_LAB_SHOW_ALLOCATED_FUNCTIONAL_EXCHANGES_ON_COMPONENT_EXCHANGES = "Show Allocated Functional Exchanges on Component Exchanges"; //$NON-NLS-1$
   String FILTER_LAB_HIDE_CROSS_FUNCTIONAL_EXCHANGES_OF_REUSABLE_COMPONENTS = "Hide cross Functional Exchanges of reusable Components"; //$NON-NLS-1$
-  String FILTER_LAB_HIDE_SIMPLIFIED_DIAGRAM_BASED_COMPONENT_EXCHANGES = FILTER_XAB_HIDE_SIMPLIFIED_DIAGRAM_BASED_COMPONENT_EXCHANGES; //$NON-NLS-1$
+  String FILTER_LAB_HIDE_SIMPLIFIED_DIAGRAM_BASED_COMPONENT_EXCHANGES = FILTER_XAB_HIDE_SIMPLIFIED_DIAGRAM_BASED_COMPONENT_EXCHANGES; // $NON-NLS-1$
   String FILTER_LAB_HIDE_SIMPLIFIED_GROUPED_COMPONENT_EXCHANGES = "Hide Simplified Grouped Component Exchanges"; //$NON-NLS-1$
-  String FILTER_LAB_HIDE_SIMPLIFIED_GROUP_OF_COMPONENT_EXCHANGES_ID = FILTER_XAB_HIDE_SIMPLIFIED_GROUP_OF_COMPONENT_EXCHANGES_ID; //$NON-NLS-1$
-  String FILTER_LAB_HIDE_SIMPLIFIED_ORIENTED_GROUPED_COMPONENT_EXCHANGES = FILTER_XAB_HIDE_SIMPLIFIED_ORIENTED_GROUPED_COMPONENT_EXCHANGES; //$NON-NLS-1$
+  String FILTER_LAB_HIDE_SIMPLIFIED_GROUP_OF_COMPONENT_EXCHANGES_ID = FILTER_XAB_HIDE_SIMPLIFIED_GROUP_OF_COMPONENT_EXCHANGES_ID; // $NON-NLS-1$
+  String FILTER_LAB_HIDE_SIMPLIFIED_ORIENTED_GROUPED_COMPONENT_EXCHANGES = FILTER_XAB_HIDE_SIMPLIFIED_ORIENTED_GROUPED_COMPONENT_EXCHANGES; // $NON-NLS-1$
   String FILTER_LAB_HIDE_PHYSICAL_LINKS_NAME = "Hide Physical Links names"; //$NON-NLS-1$
 
   String FILTER_XAB_HIDE_COMPUTED_CE = "Hide Computed Component Exchanges"; //$NON-NLS-1$
@@ -247,8 +249,7 @@ public interface IFilterNameConstants {
   String FILTER_LAB_HIDE_PORT_ALLOCATIONS_ID = "Hide Port Realizations"; //$NON-NLS-1$
   String FILTER_LAB_HIDE_ALLOCATED_FUNCTION_PORTS_ID = "Hide Realized  Ports"; //$NON-NLS-1$
   String FILTER_LAB_SHOW_EXCHANGE_ITEMS_ON_FUNCTIONAL_EXCHANGES_ID = "Show ExchangeItems"; //$NON-NLS-1$
-  String FILTER_LAB_SHOW_EXCHANGE_ITEMS_ON_COMPONENT_EXCHANGE_WITHOUT_FUNCTIONAL_EXCHANGES_ID =
-      "Show Exchange Items on Component Exchange without Functional Exchanges"; //$NON-NLS-1$
+  String FILTER_LAB_SHOW_EXCHANGE_ITEMS_ON_COMPONENT_EXCHANGE_WITHOUT_FUNCTIONAL_EXCHANGES_ID = "Show Exchange Items on Component Exchange without Functional Exchanges"; //$NON-NLS-1$
 
   // LCBD Filters
   String FILTER_LCBD_HIDE_CONTAINMENT_LINKS = "Hide containment links";//$NON-NLS-1$
@@ -332,16 +333,14 @@ public interface IFilterNameConstants {
   String FILTER_OAB_HIDE_COMMUNICATION_MEANS_NAMES = "Hide Communication Means names"; //$NON-NLS-1$
   String FILTER_OAB_SHOW_EXCHANGE_ITEMS_ON_INTERACTIONS = "Show Exchange Items on Interactions"; //$NON-NLS-1$
   String FILTER_OAB_SHOW_EXCHANGE_ITEM_ON_COMMUNICATION_MEANS = "Show Exchange Items on Communication Means"; //$NON-NLS-1$
-  String FILTER_OAB_SHOW_EXCHANGE_ITEM_ON_COMMUNICATION_MEANS_WITHOUT_INTERACTIONS =
-      "Show Exchange Items on Communication Means (without Interactions)"; //$NON-NLS-1$
+  String FILTER_OAB_SHOW_EXCHANGE_ITEM_ON_COMMUNICATION_MEANS_WITHOUT_INTERACTIONS = "Show Exchange Items on Communication Means (without Interactions)"; //$NON-NLS-1$
   String FILTER_OAB_SHOW_ALLOCATED_INTERACTIONS_ON_COMMUNICATION_MEANS = "Show Allocated Interactions on Communication Means"; //$NON-NLS-1$
   String FILTER_OAB_HIDE_CROSS_INTEREACTIONS_OF_ROLES = "Hide cross Interactions of Roles"; //$NON-NLS-1$
 
   // filter id
   String FILTER_OAB_SHOW_EXCHANGE_ITEMS_ON_INTERACTIONS_ID = "Show ExchangeItems"; //$NON-NLS-1$
   String FILTER_OAB_SHOW_EXCHANGE_ITEM_ON_COMMUNICATION_MEANS_ID = "Show Exchange Items on Component Exchanges"; //$NON-NLS-1$
-  String FILTER_OAB_SHOW_EXCHANGE_ITEM_ON_COMMUNICATION_MEANS_WITHOUT_INTERACTIONS_ID =
-      "Show Exchange Items on Component Exchange without Functional Exchanges"; //$NON-NLS-1$
+  String FILTER_OAB_SHOW_EXCHANGE_ITEM_ON_COMMUNICATION_MEANS_WITHOUT_INTERACTIONS_ID = "Show Exchange Items on Component Exchange without Functional Exchanges"; //$NON-NLS-1$
   String FILTER_OAB_SHOW_ALLOCATED_INTERACTIONS_ON_COMMUNICATION_MEANS_ID = "Show Allocated Functional Exchanges on Component Exchanges"; //$NON-NLS-1$
   String FILTER_OAB_HIDE_CROSS_INTEREACTIONS_OF_ROLES_ID = "Hide cross Functional Exchanges of reusable Components"; //$NON-NLS-1$
   String FILTER_OAB_HIDE_INTERACTIONS_NAMES_ID = "Hide Interactions names"; //$NON-NLS-1$
@@ -381,7 +380,7 @@ public interface IFilterNameConstants {
   String FILTER_OAS_SHOW_CEEIPARAM = "Show CM [EI (param1:type1, param2:type2)]"; //$NON-NLS-1$
   String FILTER_OAS_SHOW_I_EXCHANGE_CONTEXT = "Show I {Exchange Context}"; //$NON-NLS-1$
   String FILTER_OAS_SHOW_EXCHANGE_CONTEXT = "Show {Exchange Context}"; //$NON-NLS-1$
-  
+
   String FILTER_OAS_SHOW_EXCHANGEITEMS_ID = "Show ExchangeItems"; //$NON-NLS-1$
   String FILTER_OAS_SHOW_EXCHANGEITEMS_PARAMETERS_ID = "Show ExchangeItems parameters"; //$NON-NLS-1$
   String FILTER_OAS_SHOW_FUNCTIONAL_EXCHANGES_EXCHANGEITEMS_ID = "Show Functional Exchanges [ExchangeItems]"; //$NON-NLS-1$
@@ -397,8 +396,7 @@ public interface IFilterNameConstants {
   String FILTER_OEB_HIDE_COMMUNICATION_MEANS = "Hide Communication Means"; //$NON-NLS-1$
   String FILTER_OEB_SHOW_EXCHANGE_ITEMS_ON_INTERACTIONS = "Show Exchange Items on Interactions"; //$NON-NLS-1$
   String FILTER_OEB_SHOW_EXCHANGE_ITEM_ON_COMMUNICATION_MEANS = "Show Exchange Items on Communication Means"; //$NON-NLS-1$
-  String FILTER_OEB_SHOW_EXCHANGE_ITEM_ON_COMMUNICATION_MEANS_WITHOUT_INTERACTIONS =
-      "Show Exchange Items on Communication Means (without Interactions)"; //$NON-NLS-1$
+  String FILTER_OEB_SHOW_EXCHANGE_ITEM_ON_COMMUNICATION_MEANS_WITHOUT_INTERACTIONS = "Show Exchange Items on Communication Means (without Interactions)"; //$NON-NLS-1$
   String FILTER_OEB_SHOW_ALLOCATED_INTERACTIONS_ON_COMMUNICATION_MEANS = "Show Allocated Interactions on Communication Means"; //$NON-NLS-1$
   String FILTER_OEB_HIDE_CROSS_INTEREACTIONS_OF_ROLES = "Hide cross Interactions of Roles"; //$NON-NLS-1$
 
@@ -418,8 +416,7 @@ public interface IFilterNameConstants {
   String FILTER_OES_SHOW_I_EXCHANGE_CONTEXT = "Show I {Exchange Context}"; //$NON-NLS-1$
   String FILTER_OES_SHOW_EXCHANGE_CONTEXT = "Show {Exchange Context}"; //$NON-NLS-1$
   String FILTER_OES_SHOW_CM_EXCHANGE_CONTEXT = "Show CM {Exchange Context}"; //$NON-NLS-1$
-	
-  
+
   // filter id
   String FILTER_OES_SHOW_EXCHANGEITEMS_ID = "Show ExchangeItems"; //$NON-NLS-1$
   String FILTER_OES_SHOW_EXCHANGEITEMS_PARAMETERS_ID = "Show ExchangeItems parameters"; //$NON-NLS-1$
@@ -461,16 +458,14 @@ public interface IFilterNameConstants {
   String FILTER_PAB_HIDE_DEPLOYED_PCS = "Hide Deployed PCs"; //$NON-NLS-1$
   String FILTER_PAB_SHOW_EXCHANGE_ITEMS_ON_FUNCTIONAL_EXCHANGES = "Show Exchange Items on Functional Exchanges"; //$NON-NLS-1$
   String FILTER_PAB_SHOW_EXCHANGE_ITEMS_ON_COMPONENT_EXCHANGES = "Show Exchange Items on Component Exchanges"; //$NON-NLS-1$
-  String FILTER_PAB_SHOW_EXCHANGE_ITEMS_ON_COMPONENT_EXCHANGE_WITHOUT_FUNCTIONAL_EXCHANGES =
-      "Show Exchange Items on Component Exchange (without Functional Exchanges)"; //$NON-NLS-1$
-  String FILTER_PAB_SHOW_ALLOCATED_FUNCTIONAL_EXCHANGES_ON_COMPONENT_EXCHANGES =
-      "Show Allocated Functional Exchanges on Component Exchanges"; //$NON-NLS-1$
+  String FILTER_PAB_SHOW_EXCHANGE_ITEMS_ON_COMPONENT_EXCHANGE_WITHOUT_FUNCTIONAL_EXCHANGES = "Show Exchange Items on Component Exchange (without Functional Exchanges)"; //$NON-NLS-1$
+  String FILTER_PAB_SHOW_ALLOCATED_FUNCTIONAL_EXCHANGES_ON_COMPONENT_EXCHANGES = "Show Allocated Functional Exchanges on Component Exchanges"; //$NON-NLS-1$
   String FILTER_PAB_HIDE_CROSS_FUNCTIONAL_EXCHANGES_OF_REUSABLE_COMPONENTS = "Hide cross Functional Exchanges of reusable Components"; //$NON-NLS-1$
-  String FILTER_PAB_HIDE_SIMPLIFIED_DIAGRAM_BASED_COMPONENT_EXCHANGES = FILTER_XAB_HIDE_SIMPLIFIED_DIAGRAM_BASED_COMPONENT_EXCHANGES; //$NON-NLS-1$
+  String FILTER_PAB_HIDE_SIMPLIFIED_DIAGRAM_BASED_COMPONENT_EXCHANGES = FILTER_XAB_HIDE_SIMPLIFIED_DIAGRAM_BASED_COMPONENT_EXCHANGES; // $NON-NLS-1$
   String FILTER_PAB_HIDE_SIMPLIFIED_GROUPED_COMPONENT_EXCHANGES = "Hide Simplified Grouped Component Exchanges"; //$NON-NLS-1$
-  String FILTER_PAB_HIDE_SIMPLIFIED_GROUP_OF_COMPONENT_EXCHANGES_ID = FILTER_XAB_HIDE_SIMPLIFIED_GROUP_OF_COMPONENT_EXCHANGES_ID; //$NON-NLS-1$
+  String FILTER_PAB_HIDE_SIMPLIFIED_GROUP_OF_COMPONENT_EXCHANGES_ID = FILTER_XAB_HIDE_SIMPLIFIED_GROUP_OF_COMPONENT_EXCHANGES_ID; // $NON-NLS-1$
   String FILTER_PAB_HIDE_PORT_REALIZATIONS_ID = "Hide Port Realizations"; //$NON-NLS-1$
-  String FILTER_PAB_HIDE_SIMPLIFIED_ORIENTED_GROUPED_COMPONENT_EXCHANGES = FILTER_XAB_HIDE_SIMPLIFIED_ORIENTED_GROUPED_COMPONENT_EXCHANGES; //$NON-NLS-1$
+  String FILTER_PAB_HIDE_SIMPLIFIED_ORIENTED_GROUPED_COMPONENT_EXCHANGES = FILTER_XAB_HIDE_SIMPLIFIED_ORIENTED_GROUPED_COMPONENT_EXCHANGES; // $NON-NLS-1$
   String FILTER_PAB_HIDE_COMPUTED_CE = FILTER_XAB_HIDE_COMPUTED_CE;
   String FILTER_PAB_HIDE_COMPUTED_PL = FILTER_XAB_HIDE_COMPUTED_PL;
 
@@ -479,8 +474,7 @@ public interface IFilterNameConstants {
   String FILTER_PAB_HIDE_PORT_ALLOCATIONS_ID = "Hide Port Realizations"; //$NON-NLS-1$
   String FILTER_PAB_HIDE_ALLOCATED_FUNCTION_PORTS_ID = "Hide Realized  Ports"; //$NON-NLS-1$
   String FILTER_PAB_SHOW_EXCHANGE_ITEMS_ON_FUNCTIONAL_EXCHANGES_ID = "Show ExchangeItems"; //$NON-NLS-1$
-  String FILTER_PAB_SHOW_EXCHANGE_ITEMS_ON_COMPONENT_EXCHANGE_WITHOUT_FUNCTIONAL_EXCHANGES_ID =
-      "Show Exchange Items on Component Exchange without Functional Exchanges"; //$NON-NLS-1$
+  String FILTER_PAB_SHOW_EXCHANGE_ITEMS_ON_COMPONENT_EXCHANGE_WITHOUT_FUNCTIONAL_EXCHANGES_ID = "Show Exchange Items on Component Exchange without Functional Exchanges"; //$NON-NLS-1$
 
   // PDFB filters - Physical Data Flow Blank
   String FILTER_PDFB_COLLAPSE_PORTS = "Collapse Ports"; //$NON-NLS-1$
@@ -519,22 +513,19 @@ public interface IFilterNameConstants {
   String FILTER_SAB_HIDE_ALLOCATED_FUNCTION_PORTS = "Hide Allocated Function Ports"; //$NON-NLS-1$
   String FILTER_SAB_SHOW_EXCHANGE_ITEMS_ON_FUNCTIONAL_EXCHANGES = "Show Exchange Items on Functional Exchanges"; //$NON-NLS-1$
   String FILTER_SAB_SHOW_EXCHANGE_ITEMS_ON_COMPONENT_EXCHANGES = "Show Exchange Items on Component Exchanges"; //$NON-NLS-1$
-  String FILTER_SAB_SHOW_EXCHANGE_ITEMS_ON_COMPONENT_EXCHANGE_WITHOUT_FUNCTIONAL_EXCHANGES =
-      "Show Exchange Items on Component Exchange (without Functional Exchanges)"; //$NON-NLS-1$
-  String FILTER_SAB_SHOW_ALLOCATED_FUNCTIONAL_EXCHANGES_ON_COMPONENT_EXCHANGES =
-      "Show Allocated Functional Exchanges on Component Exchanges"; //$NON-NLS-1$
+  String FILTER_SAB_SHOW_EXCHANGE_ITEMS_ON_COMPONENT_EXCHANGE_WITHOUT_FUNCTIONAL_EXCHANGES = "Show Exchange Items on Component Exchange (without Functional Exchanges)"; //$NON-NLS-1$
+  String FILTER_SAB_SHOW_ALLOCATED_FUNCTIONAL_EXCHANGES_ON_COMPONENT_EXCHANGES = "Show Allocated Functional Exchanges on Component Exchanges"; //$NON-NLS-1$
   String FILTER_SAB_HIDE_CROSS_FUNCTIONAL_EXCHANGES_OF_REUSABLE_COMPONENTS = "Hide cross Functional Exchanges of reusable Components"; //$NON-NLS-1$
   String FILTER_SAB_HIDE_SIMPLIFIED_GROUPED_COMPONENT_EXCHANGES = "Hide Simplified Grouped Component Exchanges"; //$NON-NLS-1$
-  String FILTER_SAB_HIDE_SIMPLIFIED_GROUPED_COMPONENT_EXCHANGES_ID = FILTER_XAB_HIDE_SIMPLIFIED_GROUP_OF_COMPONENT_EXCHANGES_ID; //$NON-NLS-1$
-  String FILTER_SAB_HIDE_SIMPLIFIED_ORIENTED_GROUPED_COMPONENT_EXCHANGES = FILTER_XAB_HIDE_SIMPLIFIED_ORIENTED_GROUPED_COMPONENT_EXCHANGES; //$NON-NLS-1$
+  String FILTER_SAB_HIDE_SIMPLIFIED_GROUPED_COMPONENT_EXCHANGES_ID = FILTER_XAB_HIDE_SIMPLIFIED_GROUP_OF_COMPONENT_EXCHANGES_ID; // $NON-NLS-1$
+  String FILTER_SAB_HIDE_SIMPLIFIED_ORIENTED_GROUPED_COMPONENT_EXCHANGES = FILTER_XAB_HIDE_SIMPLIFIED_ORIENTED_GROUPED_COMPONENT_EXCHANGES; // $NON-NLS-1$
 
   // filter id
   String FILTER_SAB_HIDE_COMPONENT_EXCHANGES_ID = "Hide Connections"; //$NON-NLS-1$
   String FILTER_SAB_HIDE_PORT_ALLOCATIONS_ID = "Hide Port Realizations"; //$NON-NLS-1$
   String FILTER_SAB_HIDE_ALLOCATED_FUNCTION_PORTS_ID = "Hide Realized  Ports"; //$NON-NLS-1$
   String FILTER_SAB_SHOW_EXCHANGE_ITEMS_ON_FUNCTIONAL_EXCHANGES_ID = "Show ExchangeItems"; //$NON-NLS-1$
-  String FILTER_SAB_SHOW_EXCHANGE_ITEMS_ON_COMPONENT_EXCHANGE_WITHOUT_FUNCTIONAL_EXCHANGES_ID =
-      "Show Exchange Items on Component Exchange without Functional Exchanges"; //$NON-NLS-1$
+  String FILTER_SAB_SHOW_EXCHANGE_ITEMS_ON_COMPONENT_EXCHANGE_WITHOUT_FUNCTIONAL_EXCHANGES_ID = "Show Exchange Items on Component Exchange without Functional Exchanges"; //$NON-NLS-1$
 
   // SDFB filters - System Data Flow Bank
   String FILTER_SDFB_COLLAPSE_PORTS = "Collapse Ports"; //$NON-NLS-1$

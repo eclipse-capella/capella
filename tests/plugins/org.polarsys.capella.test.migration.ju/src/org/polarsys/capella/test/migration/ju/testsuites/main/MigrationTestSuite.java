@@ -15,6 +15,7 @@ import java.util.List;
 
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
+import org.polarsys.capella.test.migration.ju.testcases.basic.ActivateDiagramFiltersContributionTest;
 import org.polarsys.capella.test.migration.ju.testcases.basic.FunctionalChainNonRegressionTest;
 import org.polarsys.capella.test.migration.ju.testcases.basic.MigrateAirdFrom_120_To_130_PreservingRepresentationUid_TestCase;
 import org.polarsys.capella.test.migration.ju.testcases.basic.MigrateAirdFrom_12X_To_130_PreservingRepresentationUid_TestCase;
@@ -34,6 +35,7 @@ public class MigrationTestSuite extends BasicTestSuite {
   @Override
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
+    tests.add(new ActivateDiagramFiltersContributionTest());
     tests.add(new MigrationBasicTestSuite());
     tests.add(new MigrateAirdFrom_12X_To_130_PreservingRepresentationUid_TestCase());
     tests.add(new MigrateAirdFrom_120_To_130_PreservingRepresentationUid_TestCase());
