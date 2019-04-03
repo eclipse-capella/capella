@@ -62,6 +62,7 @@ import org.polarsys.capella.core.data.fa.FunctionalChainInvolvementLink;
 import org.polarsys.capella.core.data.fa.FunctionalChainReference;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.data.fa.FunctionalExchangeRealization;
+import org.polarsys.capella.core.data.fa.SequenceLink;
 import org.polarsys.capella.core.data.fa.SequenceLinkEnd;
 import org.polarsys.capella.core.data.information.AbstractEventOperation;
 import org.polarsys.capella.core.data.information.Association;
@@ -158,7 +159,7 @@ public class DeleteHelper implements IDeleteHelper {
     }
     elementsToDelete.addAll(elementToAdd);
   }
-  
+
   /**
    * Add elements to delete for {@link SequenceLinkEnd}.
    * 
@@ -308,8 +309,7 @@ public class DeleteHelper implements IDeleteHelper {
         }
 
       } else if (object instanceof InstanceRole) {
-        result
-            .addAll(EObjectExt.getReferencers((EObject) object, InteractionPackage.Literals.EXECUTION__COVERED));
+        result.addAll(EObjectExt.getReferencers((EObject) object, InteractionPackage.Literals.EXECUTION__COVERED));
 
         for (EObject fragment : EObjectExt.getReferencers((EObject) object,
             InteractionPackage.Literals.INTERACTION_FRAGMENT__COVERED_INSTANCE_ROLES)) {
@@ -324,10 +324,8 @@ public class DeleteHelper implements IDeleteHelper {
       }
 
       if (object instanceof InteractionFragment) {
-        result
-            .addAll(EObjectExt.getReferencers((EObject) object, InteractionPackage.Literals.TIME_LAPSE__START));
-        result
-            .addAll(EObjectExt.getReferencers((EObject) object, InteractionPackage.Literals.TIME_LAPSE__FINISH));
+        result.addAll(EObjectExt.getReferencers((EObject) object, InteractionPackage.Literals.TIME_LAPSE__START));
+        result.addAll(EObjectExt.getReferencers((EObject) object, InteractionPackage.Literals.TIME_LAPSE__FINISH));
 
         if (object instanceof AbstractEnd) {
           result.add(((AbstractEnd) object).getEvent());
@@ -393,7 +391,7 @@ public class DeleteHelper implements IDeleteHelper {
     addPendingPropertyValueGroups(expandedSelection);
     // Special case for Sequence Link Ends.
     addElementsForSequenceLinkEnd(expandedSelection);
-    
+
     if (CapellaModelPreferencesPlugin.getDefault().isSynchronizationOfComponentPortToFunctionPortAllowed()) {
       addElementsForComponentExchangeFunctionalExchangeAllocation(expandedSelection);
     }
@@ -527,8 +525,7 @@ public class DeleteHelper implements IDeleteHelper {
           .addAll(ComponentExchangeExt.evaluateImpactsOfUnsynchronizeAllocations(exchange, fctExchange, true));
 
       for (PhysicalLink link : exchange.getAllocatorPhysicalLinks()) {
-        elementsToAddToDeletion
-            .addAll(PhysicalLinkExt.evaluateImpactsOfUnsynchronizeAllocations(link, exchange, true));
+        elementsToAddToDeletion.addAll(PhysicalLinkExt.evaluateImpactsOfUnsynchronizeAllocations(link, exchange, true));
       }
     }
     return elementsToAddToDeletion;
@@ -652,11 +649,11 @@ public class DeleteHelper implements IDeleteHelper {
       result = !(ModellingcorePackage.Literals.TRACEABLE_ELEMENT__INCOMING_TRACES.equals(feature)
           || ModellingcorePackage.Literals.TRACEABLE_ELEMENT__OUTGOING_TRACES.equals(feature));
     }
-    
-    if (CapellacommonPackage.Literals.STATE_TRANSITION__GUARD.equals(feature)){
+
+    if (CapellacommonPackage.Literals.STATE_TRANSITION__GUARD.equals(feature)) {
       result = false;
     }
-    
+
     return result;
   }
 
@@ -717,6 +714,11 @@ public class DeleteHelper implements IDeleteHelper {
       result = !(linkedObject instanceof PhysicalLinkCategory);
 
     } else if (sourceObject instanceof PhysicalLinkEnd) {
+      result = true;
+
+    } else if (linkedObject instanceof FunctionalChainReference
+        && (FaPackage.Literals.REFERENCE_HIERARCHY_CONTEXT__TARGET_REFERENCE_HIERARCHY.equals(feature)
+            || FaPackage.Literals.REFERENCE_HIERARCHY_CONTEXT__SOURCE_REFERENCE_HIERARCHY.equals(feature))) {
       result = true;
     }
 
