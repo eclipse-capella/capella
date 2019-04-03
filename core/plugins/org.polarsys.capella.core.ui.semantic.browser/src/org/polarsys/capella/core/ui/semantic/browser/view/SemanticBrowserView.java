@@ -231,7 +231,6 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
   public void activateListeningToPageSelectionEvents() {
     if (!isLinkedToSelection) {
       isLinkedToSelection = true;
-      getSite().getPage().addSelectionListener(getSelectionListener());
       getModel().setListeningToPageSelectionEvents(isLinkedToSelection);
     }
   }
@@ -242,7 +241,6 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
   public void deactivateListeningToPageSelectionEvents() {
     if (isLinkedToSelection) {
       isLinkedToSelection = false;
-      getSite().getPage().removeSelectionListener(getSelectionListener());
       getModel().setListeningToPageSelectionEvents(false);
     }
   }
@@ -496,6 +494,9 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
     getViewSite().setSelectionProvider(delegateSelectionProvider);
     addSessionListener();
 
+    // Add the selection listener
+    getSite().getPage().addSelectionListener(getSelectionListener());
+    
     makeActions();
   }
 
@@ -544,6 +545,8 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
 
     removeSessionListener();
 
+    getSite().getPage().removeSelectionListener(getSelectionListener());
+    
     model = null;
     super.dispose();
   }
@@ -870,9 +873,15 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
    */
   @Override
   public void refresh() {
-    ViewerHelper.refresh(referencingViewer);
-    ViewerHelper.refresh(referencedViewer);
-    ViewerHelper.refresh(this.currentViewer);
+    if (input != null) {
+      if (getModel().isListeningToPageSelectionEvents()) {
+        setInput(input);
+      } else {
+        activateListeningToPageSelectionEvents();
+        setInput(input);
+        deactivateListeningToPageSelectionEvents();
+      }
+    }
   }
 
   protected void refreshPropertyPage(ISelectionProvider selectionProvider) {
@@ -1086,10 +1095,10 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
   }
 
   /**
-   * Propagates the current input to the sub viewers if the view is visible
+   * Propagates the current input to the sub viewers if the view is visible and it's linked to workbench selection
    */
   private void propagateInput() {
-    if (getSite().getPage().isPartVisible(this)) {
+    if (isLinkedToSelection && getSite().getPage().isPartVisible(this)) {
       // Precondition: do not set the same input twice.
       TreeViewer currentTreeViewer = getCurrentViewer();
       Object lastInput = currentTreeViewer.getInput();

@@ -27,14 +27,14 @@ public class ListenToSelectionEventsAction extends RefreshAction {
         CapellaBrowserActivator.getDefault().getImageDescriptor(IImageKeys.IMG_LISTENING_TO_PAGE_SELECTION_EVENTS));
     setChecked(isChecked);
   }
-  
+
   @Override
   public void run() {
     if (isChecked()) {
-      ((SemanticBrowserView)semanticBrowserViewPart).activateListeningToPageSelectionEvents();
+      ((SemanticBrowserView) semanticBrowserViewPart).activateListeningToPageSelectionEvents();
       doRun();
     } else {
-      ((SemanticBrowserView)semanticBrowserViewPart).deactivateListeningToPageSelectionEvents();
+      ((SemanticBrowserView) semanticBrowserViewPart).deactivateListeningToPageSelectionEvents();
     }
   }
 }
