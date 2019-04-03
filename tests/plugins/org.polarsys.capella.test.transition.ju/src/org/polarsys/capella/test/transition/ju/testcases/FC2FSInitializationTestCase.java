@@ -40,9 +40,9 @@ public class FC2FSInitializationTestCase extends BasicTestCase {
   private static final String TEST_MODEL = "fc2fs";
   private static final String OP_ID = "9083a21d-3cf8-450d-bbaa-0091f19fce38";
   private static final String FC_ID = "dccc19a7-be7f-4aae-b29b-22ad966637dc";
+  public static final String FUNCTIONALCHAIN_2 = "ec81f42a-b463-4902-b5c4-6b4797a04252"; //$NON-NLS-1$
 
   private static final String[] EXPECTED_OAS_INSTANCE_ROLES_ORDER = new String[] { "OA1", "OA2", "OA3", "OA4", "OA5" };
-
   private static final String[] EXPECTED_FS_INSTANCE_ROLES_ORDER = new String[] { "SF1", "SF2", "SF4", "SF5", "SF3" };
 
   @Override
@@ -55,6 +55,7 @@ public class FC2FSInitializationTestCase extends BasicTestCase {
     CapellaModel testModel = getTestModel(TEST_MODEL);
     doTest(testModel, OP_ID, 5, 5, 15, 15, 5, EXPECTED_OAS_INSTANCE_ROLES_ORDER);
     doTest(testModel, FC_ID, 5, 4, 12, 12, 4, EXPECTED_FS_INSTANCE_ROLES_ORDER);
+    doTest(testModel, FUNCTIONALCHAIN_2, 6, 6, 18, 18, 6, null);
   }
 
   private void doTest(CapellaModel testModel, String funcChainID, int expectedNbOfInstRole, int expectedNbOfMsg,
@@ -91,7 +92,8 @@ public class FC2FSInitializationTestCase extends BasicTestCase {
     assertTrue(scenario.getOwnedInstanceRoles().size() == expectedNbOfInstRole);
 
     // Check the order of the InstanceRoles
-    assertTrue(Arrays.equals(expectedOrderOfInstRole, buildCurrentOrder(scenario.getOwnedInstanceRoles())));
+    if (expectedOrderOfInstRole != null)
+      assertTrue(Arrays.equals(expectedOrderOfInstRole, buildCurrentOrder(scenario.getOwnedInstanceRoles())));
 
     // Check the SequenceMessages
     assertFalse(scenario.getOwnedMessages().isEmpty());
@@ -145,8 +147,7 @@ public class FC2FSInitializationTestCase extends BasicTestCase {
     } else if (abstractCapability instanceof Capability) {
       Capability capability = (Capability) abstractCapability;
       assertFalse(capability.getOwnedScenarios().isEmpty());
-      assertTrue(capability.getOwnedScenarios().size() == 1);
-      return capability.getOwnedScenarios().get(0);
+      return capability.getOwnedScenarios().get(capability.getOwnedScenarios().size() - 1);
     }
     return null;
   }

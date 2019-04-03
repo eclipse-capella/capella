@@ -17,6 +17,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map.Entry;
@@ -111,7 +112,7 @@ public class FunctionalChainExt {
    * @return source functions of functionalChain
    */
   public static Set<AbstractFunction> getFunctionalChainFirstFunctions(FunctionalChain functionalChain) {
-    Set<AbstractFunction> result = new HashSet<AbstractFunction>();
+    Set<AbstractFunction> result = new HashSet<>();
     for (FunctionalChainInvolvement inv : functionalChain.getOwnedFunctionalChainInvolvements()) {
       if (isFirstFunctionalChainInvolvement(inv)) {
         if (inv.getInvolved() instanceof AbstractFunction) {
@@ -132,10 +133,10 @@ public class FunctionalChainExt {
    */
   public static Collection<FunctionalChainInvolvement> getFlatFirstFunctionalChainInvolvments(
       FunctionalChain functionalChain) {
-    Set<FunctionalChainInvolvement> result = new HashSet<FunctionalChainInvolvement>();
+    Set<FunctionalChainInvolvement> result = new HashSet<>();
 
-    LinkedList<FunctionalChain> toVisit = new LinkedList<FunctionalChain>();
-    HashSet<FunctionalChain> visited = new HashSet<FunctionalChain>();
+    LinkedList<FunctionalChain> toVisit = new LinkedList<>();
+    HashSet<FunctionalChain> visited = new HashSet<>();
     toVisit.add(functionalChain);
 
     while (!toVisit.isEmpty()) {
@@ -166,7 +167,7 @@ public class FunctionalChainExt {
    * @return source functions of functionalChain
    */
   public static Set<AbstractFunction> getFlatFunctionalChainFirstFunctions(FunctionalChain chain) {
-    Set<AbstractFunction> result = new HashSet<AbstractFunction>();
+    Set<AbstractFunction> result = new HashSet<>();
 
     for (FunctionalChainInvolvement inv : getFlatFirstFunctionalChainInvolvments(chain)) {
       if (inv.getInvolved() instanceof AbstractFunction) {
@@ -185,7 +186,7 @@ public class FunctionalChainExt {
    * @return target functions of functionalChain
    */
   public static Set<AbstractFunction> getFunctionalChainLastFunctions(FunctionalChain functionalChain) {
-    Set<AbstractFunction> result = new HashSet<AbstractFunction>();
+    Set<AbstractFunction> result = new HashSet<>();
     for (FunctionalChainInvolvement inv : functionalChain.getOwnedFunctionalChainInvolvements()) {
       if (isLastFunctionalChainInvolvement(inv)) {
         if (inv.getInvolved() instanceof AbstractFunction) {
@@ -206,10 +207,10 @@ public class FunctionalChainExt {
    */
   public static Collection<FunctionalChainInvolvement> getFlatLastFunctionalChainInvolvments(
       FunctionalChain functionalChain1) {
-    Set<FunctionalChainInvolvement> result = new HashSet<FunctionalChainInvolvement>();
+    Set<FunctionalChainInvolvement> result = new HashSet<>();
 
-    LinkedList<FunctionalChain> toVisit = new LinkedList<FunctionalChain>();
-    HashSet<FunctionalChain> visited = new HashSet<FunctionalChain>();
+    LinkedList<FunctionalChain> toVisit = new LinkedList<>();
+    HashSet<FunctionalChain> visited = new HashSet<>();
     toVisit.add(functionalChain1);
 
     while (!toVisit.isEmpty()) {
@@ -240,7 +241,7 @@ public class FunctionalChainExt {
    * @return target functions of functionalChain_p
    */
   public static Set<AbstractFunction> getFlatFunctionalChainLastFunctions(FunctionalChain chain) {
-    Set<AbstractFunction> result = new HashSet<AbstractFunction>();
+    Set<AbstractFunction> result = new HashSet<>();
 
     for (FunctionalChainInvolvement inv : getFlatLastFunctionalChainInvolvments(chain)) {
       if (inv.getInvolved() instanceof AbstractFunction) {
@@ -252,9 +253,9 @@ public class FunctionalChainExt {
 
   public static Set<FunctionalChainInvolvement> getPreviousExchangeInvolvements(
       FunctionalChainInvolvement involvement) {
-    Set<FunctionalChainInvolvement> result = new HashSet<FunctionalChainInvolvement>();
-    LinkedList<FunctionalChainInvolvement> toVisit = new LinkedList<FunctionalChainInvolvement>();
-    HashSet<FunctionalChainInvolvement> visited = new HashSet<FunctionalChainInvolvement>();
+    Set<FunctionalChainInvolvement> result = new HashSet<>();
+    LinkedList<FunctionalChainInvolvement> toVisit = new LinkedList<>();
+    HashSet<FunctionalChainInvolvement> visited = new HashSet<>();
     toVisit.add(involvement);
 
     while (!toVisit.isEmpty()) {
@@ -286,7 +287,7 @@ public class FunctionalChainExt {
    */
   public static Set<FunctionalChainInvolvement> getFlatPreviousExchangeInvolvements(
       FunctionalChainInvolvement involvement) {
-    Set<FunctionalChainInvolvement> result = new HashSet<FunctionalChainInvolvement>();
+    Set<FunctionalChainInvolvement> result = new HashSet<>();
 
     for (FunctionalChainInvolvement aPreviousInv : getFlatPreviousFunctionalChainInvolvements(involvement)) {
       if (aPreviousInv.getInvolved() != null) {
@@ -309,9 +310,9 @@ public class FunctionalChainExt {
    * @return the next involvements that involve a Functional Exchange
    */
   public static Set<FunctionalChainInvolvement> getNextExchangeInvolvements(FunctionalChainInvolvement involvement) {
-    Set<FunctionalChainInvolvement> result = new HashSet<FunctionalChainInvolvement>();
-    LinkedList<FunctionalChainInvolvement> toVisit = new LinkedList<FunctionalChainInvolvement>();
-    HashSet<FunctionalChainInvolvement> visited = new HashSet<FunctionalChainInvolvement>();
+    Set<FunctionalChainInvolvement> result = new HashSet<>();
+    LinkedList<FunctionalChainInvolvement> toVisit = new LinkedList<>();
+    HashSet<FunctionalChainInvolvement> visited = new HashSet<>();
     toVisit.add(involvement);
 
     while (!toVisit.isEmpty()) {
@@ -341,7 +342,7 @@ public class FunctionalChainExt {
    */
   public static Set<FunctionalChainInvolvement> getFlatNextExchangeInvolvements(
       FunctionalChainInvolvement involvement) {
-    Set<FunctionalChainInvolvement> result = new HashSet<FunctionalChainInvolvement>();
+    Set<FunctionalChainInvolvement> result = new HashSet<>();
 
     for (FunctionalChainInvolvement aPreviousInv : getFlatNextFunctionalChainInvolvements(involvement)) {
       if (aPreviousInv.getInvolved() != null) {
@@ -360,7 +361,7 @@ public class FunctionalChainExt {
   }
 
   public static List<FunctionalChainInvolvement> getFirstFunctionalChainInvolvements(FunctionalChain element) {
-    List<FunctionalChainInvolvement> ret = new ArrayList<FunctionalChainInvolvement>();
+    List<FunctionalChainInvolvement> ret = new ArrayList<>();
     for (FunctionalChainInvolvement inv : element.getOwnedFunctionalChainInvolvements()) {
       if (isFirstFunctionalChainInvolvement(inv)) {
         ret.add(inv);
@@ -370,7 +371,7 @@ public class FunctionalChainExt {
   }
 
   public static List<FunctionalChainInvolvement> getLastFunctionalChainInvolvements(FunctionalChain element) {
-    List<FunctionalChainInvolvement> ret = new ArrayList<FunctionalChainInvolvement>();
+    List<FunctionalChainInvolvement> ret = new ArrayList<>();
     for (FunctionalChainInvolvement inv : element.getOwnedFunctionalChainInvolvements()) {
       if (isLastFunctionalChainInvolvement(inv)) {
         ret.add(inv);
@@ -382,7 +383,7 @@ public class FunctionalChainExt {
   public static Set<FunctionalChainInvolvement> getFlatPreviousFunctionalChainInvolvements(
       FunctionalChainInvolvement involvement) {
 
-    Set<FunctionalChainInvolvement> result = new HashSet<FunctionalChainInvolvement>();
+    Set<FunctionalChainInvolvement> result = new HashSet<>();
 
     for (FunctionalChainInvolvement in : involvement.getPreviousFunctionalChainInvolvements()) {
       if (in.getInvolved() instanceof FunctionalChain) {
@@ -399,7 +400,7 @@ public class FunctionalChainExt {
   public static Set<FunctionalChainInvolvement> getFlatNextFunctionalChainInvolvements(
       FunctionalChainInvolvement involvement) {
 
-    Set<FunctionalChainInvolvement> result = new HashSet<FunctionalChainInvolvement>();
+    Set<FunctionalChainInvolvement> result = new HashSet<>();
 
     for (FunctionalChainInvolvement in : involvement.getNextFunctionalChainInvolvements()) {
       if (in.getInvolved() instanceof FunctionalChain) {
@@ -513,8 +514,8 @@ public class FunctionalChainExt {
 
   public static Collection<FunctionalExchange> getFlatIncomingExchanges(FunctionalChainInvolvement element) {
 
-    Collection<AbstractFunction> targetFunctions = new HashSet<AbstractFunction>();
-    Collection<FunctionalExchange> targetExchanges = new HashSet<FunctionalExchange>();
+    Collection<AbstractFunction> targetFunctions = new HashSet<>();
+    Collection<FunctionalExchange> targetExchanges = new HashSet<>();
 
     InvolvedElement involvedElement = element.getInvolved();
     if (involvedElement instanceof FunctionalExchange) {
@@ -536,8 +537,8 @@ public class FunctionalChainExt {
 
   public static Collection<FunctionalExchange> getFlatOutgoingExchanges(FunctionalChainInvolvement element) {
 
-    Collection<AbstractFunction> sourceFunctions = new HashSet<AbstractFunction>();
-    Collection<FunctionalExchange> sourceExchanges = new HashSet<FunctionalExchange>();
+    Collection<AbstractFunction> sourceFunctions = new HashSet<>();
+    Collection<FunctionalExchange> sourceExchanges = new HashSet<>();
 
     InvolvedElement involvedElement = element.getInvolved();
 
@@ -567,8 +568,8 @@ public class FunctionalChainExt {
   }
 
   public static Collection<FunctionalExchange> getFlatIncomingExchanges(FunctionalChain element) {
-    Collection<AbstractFunction> targetFunctions = new HashSet<AbstractFunction>();
-    Collection<FunctionalExchange> targetExchanges = new HashSet<FunctionalExchange>();
+    Collection<AbstractFunction> targetFunctions = new HashSet<>();
+    Collection<FunctionalExchange> targetExchanges = new HashSet<>();
 
     targetFunctions.addAll(FunctionalChainExt.getFlatFunctionalChainFirstFunctions(element));
 
@@ -885,7 +886,7 @@ public class FunctionalChainExt {
    * Returns all functional exchanges defined in the given architecture
    */
   public static List<FunctionalChain> getAllFunctionalChains(BlockArchitecture architecture) {
-    EList<FunctionalChain> functionalChains = new BasicEList<FunctionalChain>();
+    EList<FunctionalChain> functionalChains = new BasicEList<>();
 
     AbstractCapabilityPkg pkg = architecture.getOwnedAbstractCapabilityPkg();
     if (pkg != null) {
@@ -907,7 +908,7 @@ public class FunctionalChainExt {
    * @return all the involvements of the functional chain that involves the given element
    */
   public static Set<FunctionalChainInvolvement> getInvolvementsOf(FunctionalChain fc, InvolvedElement involved) {
-    Set<FunctionalChainInvolvement> result = new HashSet<FunctionalChainInvolvement>();
+    Set<FunctionalChainInvolvement> result = new HashSet<>();
     for (FunctionalChainInvolvement anInvolvement : fc.getOwnedFunctionalChainInvolvements()) {
       if (involved.equals(anInvolvement.getInvolved())) {
         result.add(anInvolvement);
@@ -924,9 +925,9 @@ public class FunctionalChainExt {
    * @return
    */
   public static Collection<FunctionalChainInvolvement> getFlatInvolvements(FunctionalChain functionalChain1) {
-    Collection<FunctionalChainInvolvement> involvments = new ArrayList<FunctionalChainInvolvement>();
-    LinkedList<FunctionalChain> toVisit = new LinkedList<FunctionalChain>();
-    HashSet<FunctionalChain> visited = new HashSet<FunctionalChain>();
+    Collection<FunctionalChainInvolvement> involvments = new ArrayList<>();
+    LinkedList<FunctionalChain> toVisit = new LinkedList<>();
+    HashSet<FunctionalChain> visited = new HashSet<>();
     toVisit.add(functionalChain1);
 
     while (!toVisit.isEmpty()) {
@@ -936,7 +937,7 @@ public class FunctionalChainExt {
       }
       visited.add(chain);
       for (FunctionalChainInvolvement involvement : chain.getInvolvedFunctionalChainInvolvements()) {
-        if ((involvement.getInvolved() != null) && (involvement.getInvolved() instanceof FunctionalChain)) {
+        if (involvement.getInvolved() instanceof FunctionalChain) {
           toVisit.add((FunctionalChain) involvement.getInvolved());
         }
         involvments.add(involvement);
@@ -951,7 +952,7 @@ public class FunctionalChainExt {
    * @return all the involvements of the functional chain that involves the given element
    */
   public static Set<FunctionalChainInvolvement> getInvolvementsOf(FunctionalChain fc, EClass involvedClass) {
-    Set<FunctionalChainInvolvement> result = new HashSet<FunctionalChainInvolvement>();
+    Set<FunctionalChainInvolvement> result = new HashSet<>();
     for (FunctionalChainInvolvement anInvolvement : fc.getOwnedFunctionalChainInvolvements()) {
       if ((anInvolvement.getInvolved() != null) && involvedClass.isInstance(anInvolvement.getInvolved())) {
         result.add(anInvolvement);
@@ -961,7 +962,7 @@ public class FunctionalChainExt {
   }
 
   public static Set<FunctionalExchange> getFunctionalExchanges(FunctionalChain fc) {
-    Set<FunctionalExchange> result = new HashSet<FunctionalExchange>();
+    Set<FunctionalExchange> result = new HashSet<>();
     for (FunctionalChainInvolvement involvement : getInvolvementsOf(fc, FaPackage.Literals.FUNCTIONAL_EXCHANGE)) {
       if (involvement.getInvolved() != null) {
         result.add((FunctionalExchange) involvement.getInvolved());
@@ -971,11 +972,22 @@ public class FunctionalChainExt {
   }
 
   public static Set<FunctionalExchange> getFlatFunctionalExchanges(FunctionalChain fc) {
-    Set<FunctionalExchange> result = new HashSet<FunctionalExchange>();
+    Set<FunctionalExchange> result = new HashSet<>();
 
     for (FunctionalChainInvolvement involvement : getFlatInvolvementsOf(fc, FaPackage.Literals.FUNCTIONAL_EXCHANGE)) {
       if (involvement.getInvolved() != null) {
         result.add((FunctionalExchange) involvement.getInvolved());
+      }
+    }
+    return result;
+  }
+  
+  public static Set<AbstractFunction> getFlatFunctions(FunctionalChain fc) {
+    Set<AbstractFunction> result = new LinkedHashSet<>();
+
+    for (FunctionalChainInvolvement involvement : getFlatInvolvementsOf(fc, FaPackage.Literals.ABSTRACT_FUNCTION)) {
+      if (involvement.getInvolved() != null) {
+        result.add((AbstractFunction) involvement.getInvolved());
       }
     }
     return result;
@@ -986,7 +998,7 @@ public class FunctionalChainExt {
    * @return
    */
   public static Set<FunctionalChainInvolvement> getFlatInvolvementsOf(FunctionalChain fc, EClass involvedClass) {
-    Set<FunctionalChainInvolvement> result = new HashSet<FunctionalChainInvolvement>();
+    Set<FunctionalChainInvolvement> result = new LinkedHashSet<>();
     for (FunctionalChainInvolvement involvement : FunctionalChainExt.getFlatInvolvements(fc)) {
       if ((involvement.getInvolved() != null) && involvedClass.isInstance(involvement.getInvolved())) {
         result.add(involvement);
@@ -1000,7 +1012,7 @@ public class FunctionalChainExt {
    * @return
    */
   public static Set<EObject> getFlatInvolvedElements(FunctionalChain fc, EClass involvedClass) {
-    Set<EObject> result = new HashSet<EObject>();
+    Set<EObject> result = new HashSet<>();
     for (FunctionalChainInvolvement involvement : FunctionalChainExt.getFlatInvolvements(fc)) {
       if ((involvement.getInvolved() != null) && involvedClass.isInstance(involvement.getInvolved())) {
         result.add(involvement.getInvolved());
@@ -1022,7 +1034,7 @@ public class FunctionalChainExt {
    * @return list of components which have allocated functions involved in the given functional chain
    */
   public static List<Component> getComponents(FunctionalChain functionalChain) {
-    List<Component> result = new ArrayList<Component>();
+    List<Component> result = new ArrayList<>();
 
     EList<InvolvedElement> involvedElements = functionalChain.getInvolvedElements();
     for (InvolvedElement involvedElement : involvedElements) {
