@@ -3755,22 +3755,6 @@
       <bendpoints x="470" y="18"/>
       <bendpoints x="470" y="273"/>
     </ownedLayouts>
-    <ownedLayouts xsi:type="layout:EdgeLayout" id="d992533d-3339-4046-9fd7-f6bbc618b70f" name="FunctionalExchange 6" actualMapping="LAB DataFlow between Function" source="//@ownedLayouts.13/@ownedLayouts.1/@ownedLayouts.11/@ownedLayouts.1" target="//@ownedLayouts.13/@ownedLayouts.2/@ownedLayouts.7/@ownedLayouts.2">
-      <appliedFilters>HideFilter</appliedFilters>
-      <appliedStyles>strokeColor: 9,92,46</appliedStyles>
-      <appliedStyles>centeredColor: 9,92,46</appliedStyles>
-      <appliedStyles>edgeRouting: straight</appliedStyles>
-      <bendpoints x="20" y="-2" relative="true"/>
-      <bendpoints x="15" y="-2" relative="true"/>
-    </ownedLayouts>
-    <ownedLayouts xsi:type="layout:EdgeLayout" id="5e0f5743-5cb5-4a45-9842-3e7837429ad7" name="FunctionalExchange 7" actualMapping="LAB DataFlow between Function" source="//@ownedLayouts.13/@ownedLayouts.2/@ownedLayouts.7/@ownedLayouts.3" target="//@ownedLayouts.13/@ownedLayouts.3/@ownedLayouts.3/@ownedLayouts.1">
-      <appliedFilters>HideFilter</appliedFilters>
-      <appliedStyles>strokeColor: 9,92,46</appliedStyles>
-      <appliedStyles>centeredColor: 9,92,46</appliedStyles>
-      <appliedStyles>edgeRouting: straight</appliedStyles>
-      <bendpoints x="20" y="42" relative="true"/>
-      <bendpoints x="7" y="-2" relative="true"/>
-    </ownedLayouts>
     <ownedLayouts xsi:type="layout:EdgeLayout" id="6e0ea7e5-3a28-40f8-a1b8-2b42f2b71dff" name="C 5" actualMapping="LAB DataFlow between Logical Components" source="//@ownedLayouts.13/@ownedLayouts.1/@ownedLayouts.6" target="//@ownedLayouts.13/@ownedLayouts.2/@ownedLayouts.1">
       <appliedStyles>strokeColor: 74,74,151</appliedStyles>
       <appliedStyles>centeredColor: 74,74,151</appliedStyles>
@@ -3848,30 +3832,6 @@
       <appliedStyles>edgeRouting: straight</appliedStyles>
       <bendpoints x="305" y="137"/>
       <bendpoints x="148" y="137"/>
-    </ownedLayouts>
-    <ownedLayouts xsi:type="layout:EdgeLayout" id="c9a5bdcd-73aa-40f7-8edc-d6c8d5ffd73d" name="PL 1_LS_A6" actualMapping="LAB_PhysicalLink" source="//@ownedLayouts.13/@ownedLayouts.1/@ownedLayouts.10" target="//@ownedLayouts.13/@ownedLayouts.2/@ownedLayouts.5">
-      <appliedFilters>HideFilter</appliedFilters>
-      <appliedStyles>strokeColor: 24,114,248</appliedStyles>
-      <appliedStyles>centeredColor: 239,41,41</appliedStyles>
-      <appliedStyles>edgeRouting: straight</appliedStyles>
-      <bendpoints x="140" y="15" relative="true"/>
-      <bendpoints x="175" y="-2" relative="true"/>
-      <bendpoints x="5" relative="true"/>
-      <bendpoints x="-335" y="6" relative="true"/>
-      <bendpoints x="335" y="-7" relative="true"/>
-      <bendpoints x="-5" y="0" relative="true"/>
-    </ownedLayouts>
-    <ownedLayouts xsi:type="layout:EdgeLayout" id="412bc070-86d0-4266-80ae-f1ad891c6c23" name="PL 2_A6_A7" actualMapping="LAB_PhysicalLink" source="//@ownedLayouts.13/@ownedLayouts.2/@ownedLayouts.6" target="//@ownedLayouts.13/@ownedLayouts.3/@ownedLayouts.2">
-      <appliedFilters>HideFilter</appliedFilters>
-      <appliedStyles>strokeColor: 24,114,248</appliedStyles>
-      <appliedStyles>centeredColor: 239,41,41</appliedStyles>
-      <appliedStyles>edgeRouting: straight</appliedStyles>
-      <bendpoints x="203" y="80" relative="true"/>
-      <bendpoints x="195" y="-2" relative="true"/>
-      <bendpoints y="5" relative="true"/>
-      <bendpoints x="12" y="-178" relative="true"/>
-      <bendpoints x="-13" y="178" relative="true"/>
-      <bendpoints x="0" y="-5" relative="true"/>
     </ownedLayouts>
     <appliedLayers>default</appliedLayers>
   </ownedLayouts>
@@ -4571,20 +4531,20 @@
   </ownedLayouts>
   <ownedLayouts id="3da7e649-d663-4666-94db-47cb4746e48b" name="[OPD] OP1 - Operational Process Description" synchronized="true" description="Operational Process Description">
     <appliedFilters>ModelExtensionFilter</appliedFilters>
-    <ownedLayouts xsi:type="layout:NodeLayout" id="2ae0dbce-925b-47c3-bab3-b560cef0db5f" name="OA2_1" actualMapping="FC_AbstractFunction">
-      <appliedStyles>foregroundColor: 247,218,116</appliedStyles>
-      <appliedStyles>borderColor: 91,64,64</appliedStyles>
-      <bounds x="0" y="180" width="100" height="50"/>
-    </ownedLayouts>
     <ownedLayouts xsi:type="layout:NodeLayout" id="2c429996-fcb1-40a2-a7ae-e5b7bd5a5e0f" name="OA1_1" actualMapping="FC_AbstractFunction">
       <appliedStyles>foregroundColor: 247,218,116</appliedStyles>
       <appliedStyles>borderColor: 91,64,64</appliedStyles>
       <bounds x="0" y="0" width="100" height="50"/>
     </ownedLayouts>
-    <ownedLayouts xsi:type="layout:EdgeLayout" id="da3b6aaf-3468-4d51-a5c2-b5d0e72a7d19" name="i1" actualMapping="FC_Exchange" source="//@ownedLayouts.22/@ownedLayouts.1" target="//@ownedLayouts.22/@ownedLayouts.0">
+    <ownedLayouts xsi:type="layout:NodeLayout" id="2ae0dbce-925b-47c3-bab3-b560cef0db5f" name="OA2_1" actualMapping="FC_AbstractFunction">
+      <appliedStyles>foregroundColor: 247,218,116</appliedStyles>
+      <appliedStyles>borderColor: 91,64,64</appliedStyles>
+      <bounds x="0" y="180" width="100" height="50"/>
+    </ownedLayouts>
+    <ownedLayouts xsi:type="layout:EdgeLayout" id="da3b6aaf-3468-4d51-a5c2-b5d0e72a7d19" name="i1" actualMapping="FC_Exchange" source="//@ownedLayouts.22/@ownedLayouts.0" target="//@ownedLayouts.22/@ownedLayouts.1">
       <appliedStyles>strokeColor: 91,64,64</appliedStyles>
       <appliedStyles>centeredColor: 91,64,64</appliedStyles>
-      <appliedStyles>edgeRouting: straight</appliedStyles>
+      <appliedStyles>edgeRouting: manhattan</appliedStyles>
       <bendpoints x="50" y="50"/>
       <bendpoints x="50" y="180"/>
     </ownedLayouts>
@@ -9285,176 +9245,6 @@
       <bendpoints x="343" y="197"/>
       <bendpoints x="331" y="137"/>
     </ownedLayouts>
-    <ownedLayouts xsi:type="layout:EdgeLayout" id="8f44caf2-b8e2-4c4a-9289-9bbba5d01d91" name="" actualMapping="PAB_Exchange" source="//@ownedLayouts.49/@ownedLayouts.0/@ownedLayouts.3/@ownedLayouts.3/@ownedLayouts.1" target="//@ownedLayouts.49/@ownedLayouts.0/@ownedLayouts.3/@ownedLayouts.3/@ownedLayouts.2/@ownedLayouts.1">
-      <appliedFilters>HideFilter</appliedFilters>
-      <appliedStyles>strokeColor: 74,74,151</appliedStyles>
-      <appliedStyles>centeredColor: 74,74,151</appliedStyles>
-      <appliedStyles>edgeRouting: straight</appliedStyles>
-      <bendpoints x="218" y="34" relative="true"/>
-      <bendpoints x="188" y="23" relative="true"/>
-      <bendpoints x="-5" y="0" relative="true"/>
-      <bendpoints x="15" y="-63" relative="true"/>
-      <bendpoints x="-20" y="0" relative="true"/>
-      <bendpoints x="0" y="-63" relative="true"/>
-      <bendpoints x="-20" y="58" relative="true"/>
-      <bendpoints x="0" y="-5" relative="true"/>
-    </ownedLayouts>
-    <ownedLayouts xsi:type="layout:EdgeLayout" id="47b87c8b-9d4f-4531-83a0-33605b32894a" name="" actualMapping="PAB_Exchange" source="//@ownedLayouts.49/@ownedLayouts.0/@ownedLayouts.3/@ownedLayouts.4/@ownedLayouts.2" target="//@ownedLayouts.49/@ownedLayouts.0/@ownedLayouts.3/@ownedLayouts.4/@ownedLayouts.3/@ownedLayouts.3">
-      <appliedFilters>HideFilter</appliedFilters>
-      <appliedStyles>strokeColor: 39,76,114</appliedStyles>
-      <appliedStyles>centeredColor: 0,0,0</appliedStyles>
-      <appliedStyles>edgeRouting: tree</appliedStyles>
-      <bendpoints x="-2" y="34" relative="true"/>
-      <bendpoints x="22" y="-2" relative="true"/>
-      <bendpoints x="5" y="4" relative="true"/>
-      <bendpoints x="-47" y="-29" relative="true"/>
-      <bendpoints x="349" y="289" relative="true"/>
-      <bendpoints x="297" y="256" relative="true"/>
-      <bendpoints x="410" y="312" relative="true"/>
-      <bendpoints x="358" y="279" relative="true"/>
-      <bendpoints x="57" y="36" relative="true"/>
-      <bendpoints x="5" y="3" relative="true"/>
-    </ownedLayouts>
-    <ownedLayouts xsi:type="layout:EdgeLayout" id="e5274eb2-84e4-4c2a-8818-9dad8ee095ca" name="C 11" actualMapping="PAB_Exchange" source="//@ownedLayouts.49/@ownedLayouts.0/@ownedLayouts.3/@ownedLayouts.3/@ownedLayouts.1" target="//@ownedLayouts.49/@ownedLayouts.0/@ownedLayouts.3/@ownedLayouts.4/@ownedLayouts.2">
-      <appliedFilters>HideFilter</appliedFilters>
-      <appliedStyles>strokeColor: 74,74,151</appliedStyles>
-      <appliedStyles>centeredColor: 74,74,151</appliedStyles>
-      <appliedStyles>edgeRouting: straight</appliedStyles>
-      <bendpoints x="218" y="34" relative="true"/>
-      <bendpoints x="-2" y="34" relative="true"/>
-      <bendpoints x="2" y="-5" relative="true"/>
-      <bendpoints x="-43" y="-9" relative="true"/>
-      <bendpoints x="22" y="-50" relative="true"/>
-      <bendpoints x="-23" y="-54" relative="true"/>
-      <bendpoints x="42" relative="true"/>
-      <bendpoints x="-3" y="-5" relative="true"/>
-    </ownedLayouts>
-    <ownedLayouts xsi:type="layout:EdgeLayout" id="2089fff5-b658-46fc-8388-382511f1b187" name="" actualMapping="PAB_Exchange" source="//@ownedLayouts.49/@ownedLayouts.0/@ownedLayouts.3/@ownedLayouts.4/@ownedLayouts.2" target="//@ownedLayouts.49/@ownedLayouts.0/@ownedLayouts.3/@ownedLayouts.4/@ownedLayouts.3/@ownedLayouts.2">
-      <appliedFilters>HideFilter</appliedFilters>
-      <appliedStyles>strokeColor: 39,76,114</appliedStyles>
-      <appliedStyles>centeredColor: 0,0,0</appliedStyles>
-      <appliedStyles>edgeRouting: tree</appliedStyles>
-      <bendpoints x="-2" y="34" relative="true"/>
-      <bendpoints x="132" y="-2" relative="true"/>
-      <bendpoints x="5" y="4" relative="true"/>
-      <bendpoints x="-157" y="-29" relative="true"/>
-      <bendpoints x="349" y="284" relative="true"/>
-      <bendpoints x="187" y="251" relative="true"/>
-      <bendpoints x="154" y="307" relative="true"/>
-      <bendpoints x="-8" y="274" relative="true"/>
-      <bendpoints x="161" y="38" relative="true"/>
-      <bendpoints y="5" relative="true"/>
-    </ownedLayouts>
-    <ownedLayouts xsi:type="layout:EdgeLayout" id="94b078f3-74dc-4b83-adba-c7e47969d6f9" name="PLA1" actualMapping="PAB_PhysicalLink" source="//@ownedLayouts.49/@ownedLayouts.0/@ownedLayouts.2" target="//@ownedLayouts.49/@ownedLayouts.1/@ownedLayouts.2">
-      <appliedFilters>HideFilter</appliedFilters>
-      <appliedStyles>strokeColor: 239,41,41</appliedStyles>
-      <appliedStyles>centeredColor: 239,41,41</appliedStyles>
-      <appliedStyles>edgeRouting: straight</appliedStyles>
-      <bendpoints x="573" y="105" relative="true"/>
-      <bendpoints x="-2" y="20" relative="true"/>
-      <bendpoints x="2" y="-5" relative="true"/>
-      <bendpoints x="-73" y="-15" relative="true"/>
-      <bendpoints x="60" y="-140" relative="true"/>
-      <bendpoints x="-15" y="-150" relative="true"/>
-      <bendpoints x="74" y="5" relative="true"/>
-      <bendpoints y="-5" relative="true"/>
-    </ownedLayouts>
-    <ownedLayouts xsi:type="layout:EdgeLayout" id="c75a2468-516a-4f4f-a217-e4b479da293c" name="PLC1" actualMapping="PAB_PhysicalLink" source="//@ownedLayouts.49/@ownedLayouts.1/@ownedLayouts.3/@ownedLayouts.3" target="//@ownedLayouts.49/@ownedLayouts.1/@ownedLayouts.3/@ownedLayouts.4/@ownedLayouts.1">
-      <appliedFilters>HideFilter</appliedFilters>
-      <appliedStyles>strokeColor: 239,41,41</appliedStyles>
-      <appliedStyles>centeredColor: 239,41,41</appliedStyles>
-      <appliedStyles>edgeRouting: straight</appliedStyles>
-      <bendpoints x="18" y="-2" relative="true"/>
-      <bendpoints x="24" y="-2" relative="true"/>
-      <bendpoints x="5" y="-2" relative="true"/>
-      <bendpoints x="-51" y="-52" relative="true"/>
-      <bendpoints x="105" y="-33" relative="true"/>
-      <bendpoints x="49" y="-83" relative="true"/>
-      <bendpoints x="58" y="45" relative="true"/>
-      <bendpoints x="2" y="-5" relative="true"/>
-    </ownedLayouts>
-    <ownedLayouts xsi:type="layout:EdgeLayout" id="2d0e7310-fc30-4b00-8272-07bc0f17e3b1" name="PLA2" actualMapping="PAB_PhysicalLink" source="//@ownedLayouts.49/@ownedLayouts.0/@ownedLayouts.2" target="//@ownedLayouts.49/@ownedLayouts.1/@ownedLayouts.2">
-      <appliedFilters>HideFilter</appliedFilters>
-      <appliedStyles>strokeColor: 239,41,41</appliedStyles>
-      <appliedStyles>centeredColor: 239,41,41</appliedStyles>
-      <appliedStyles>edgeRouting: straight</appliedStyles>
-      <bendpoints x="573" y="105" relative="true"/>
-      <bendpoints x="-2" y="20" relative="true"/>
-      <bendpoints x="5" y="0" relative="true"/>
-      <bendpoints x="-70" y="-10" relative="true"/>
-      <bendpoints x="70" y="9" relative="true"/>
-      <bendpoints x="-5" relative="true"/>
-    </ownedLayouts>
-    <ownedLayouts xsi:type="layout:EdgeLayout" id="a78b514c-91b4-4e2d-b640-2113b6490def" name="PLC2" actualMapping="PAB_PhysicalLink" source="//@ownedLayouts.49/@ownedLayouts.1/@ownedLayouts.3/@ownedLayouts.4/@ownedLayouts.1" target="//@ownedLayouts.49/@ownedLayouts.1/@ownedLayouts.3/@ownedLayouts.3">
-      <appliedFilters>HideFilter</appliedFilters>
-      <appliedStyles>strokeColor: 239,41,41</appliedStyles>
-      <appliedStyles>centeredColor: 239,41,41</appliedStyles>
-      <appliedStyles>edgeRouting: straight</appliedStyles>
-      <bendpoints x="24" y="-2" relative="true"/>
-      <bendpoints x="18" y="-2" relative="true"/>
-      <bendpoints x="-5" y="1" relative="true"/>
-      <bendpoints x="51" y="51" relative="true"/>
-      <bendpoints x="-109" y="42" relative="true"/>
-      <bendpoints x="-53" y="92" relative="true"/>
-      <bendpoints x="-59" y="-45" relative="true"/>
-      <bendpoints x="-3" y="5" relative="true"/>
-    </ownedLayouts>
-    <ownedLayouts xsi:type="layout:EdgeLayout" id="7d4f981f-04d6-4be2-8692-cbfdcd582908" name="PLD" actualMapping="PAB_PhysicalLink" source="//@ownedLayouts.49/@ownedLayouts.0/@ownedLayouts.2" target="//@ownedLayouts.49/@ownedLayouts.0/@ownedLayouts.3/@ownedLayouts.2">
-      <appliedFilters>HideFilter</appliedFilters>
-      <appliedStyles>strokeColor: 239,41,41</appliedStyles>
-      <appliedStyles>centeredColor: 239,41,41</appliedStyles>
-      <appliedStyles>edgeRouting: straight</appliedStyles>
-      <bendpoints x="573" y="105" relative="true"/>
-      <bendpoints x="508" y="72" relative="true"/>
-      <bendpoints x="-5" y="-5" relative="true"/>
-      <bendpoints x="50" y="-12" relative="true"/>
-      <bendpoints x="-78" y="-85" relative="true"/>
-      <bendpoints x="-23" y="-92" relative="true"/>
-      <bendpoints x="-57" y="2" relative="true"/>
-      <bendpoints x="-2" y="-5" relative="true"/>
-    </ownedLayouts>
-    <ownedLayouts xsi:type="layout:EdgeLayout" id="699f5bc4-10c1-4935-8d83-2d4244f1fe06" name="PLB" actualMapping="PAB_PhysicalLink" source="//@ownedLayouts.49/@ownedLayouts.1/@ownedLayouts.2" target="//@ownedLayouts.49/@ownedLayouts.1/@ownedLayouts.3/@ownedLayouts.3">
-      <appliedFilters>HideFilter</appliedFilters>
-      <appliedStyles>strokeColor: 239,41,41</appliedStyles>
-      <appliedStyles>centeredColor: 239,41,41</appliedStyles>
-      <appliedStyles>edgeRouting: straight</appliedStyles>
-      <bendpoints x="-2" y="20" relative="true"/>
-      <bendpoints x="18" y="-2" relative="true"/>
-      <bendpoints x="5" y="-4" relative="true"/>
-      <bendpoints x="-40" y="-57" relative="true"/>
-      <bendpoints x="107" y="-70" relative="true"/>
-      <bendpoints x="62" y="-123" relative="true"/>
-      <bendpoints x="47" y="48" relative="true"/>
-      <bendpoints x="2" y="-5" relative="true"/>
-    </ownedLayouts>
-    <ownedLayouts xsi:type="layout:EdgeLayout" id="c3e6da97-98a2-4a16-982d-7deb0d564918" name="PFE1" actualMapping="PAB_FunctionExchange" source="//@ownedLayouts.49/@ownedLayouts.0/@ownedLayouts.3/@ownedLayouts.3/@ownedLayouts.2/@ownedLayouts.2/@ownedLayouts.1" target="//@ownedLayouts.49/@ownedLayouts.0/@ownedLayouts.3/@ownedLayouts.4/@ownedLayouts.3/@ownedLayouts.4/@ownedLayouts.1">
-      <appliedFilters>HideFilter</appliedFilters>
-      <appliedStyles>strokeColor: 9,92,46</appliedStyles>
-      <appliedStyles>centeredColor: 9,92,46</appliedStyles>
-      <appliedStyles>edgeRouting: straight</appliedStyles>
-      <bendpoints x="125" y="9" relative="true"/>
-      <bendpoints x="-2" y="10" relative="true"/>
-      <bendpoints x="4" y="5" relative="true"/>
-      <bendpoints x="-142" y="4" relative="true"/>
-      <bendpoints x="68" y="81" relative="true"/>
-      <bendpoints x="-78" y="80" relative="true"/>
-      <bendpoints x="141" y="6" relative="true"/>
-      <bendpoints x="-5" y="5" relative="true"/>
-    </ownedLayouts>
-    <ownedLayouts xsi:type="layout:EdgeLayout" id="7ead29f6-2bd6-4598-a1cd-364ec3cea476" name="PFE2" actualMapping="PAB_FunctionExchange" source="//@ownedLayouts.49/@ownedLayouts.0/@ownedLayouts.3/@ownedLayouts.3/@ownedLayouts.2/@ownedLayouts.2/@ownedLayouts.2" target="//@ownedLayouts.49/@ownedLayouts.0/@ownedLayouts.3/@ownedLayouts.4/@ownedLayouts.3/@ownedLayouts.4/@ownedLayouts.2">
-      <appliedFilters>HideFilter</appliedFilters>
-      <appliedStyles>strokeColor: 9,92,46</appliedStyles>
-      <appliedStyles>centeredColor: 9,92,46</appliedStyles>
-      <appliedStyles>edgeRouting: straight</appliedStyles>
-      <bendpoints x="125" y="30" relative="true"/>
-      <bendpoints x="-2" y="30" relative="true"/>
-      <bendpoints x="4" y="5" relative="true"/>
-      <bendpoints x="-142" y="5" relative="true"/>
-      <bendpoints x="68" y="80" relative="true"/>
-      <bendpoints x="-78" y="80" relative="true"/>
-      <bendpoints x="141" y="5" relative="true"/>
-      <bendpoints x="-5" y="5" relative="true"/>
-    </ownedLayouts>
     <appliedLayers>default</appliedLayers>
   </ownedLayouts>
   <ownedLayouts id="828a3273-3252-4be7-9e07-e18c95241ff9" name="[PAB] Composite Node - Physical Architecture Blank" synchronized="true" description="Physical Architecture Blank">
@@ -9657,6 +9447,27 @@
       <appliedStyles>edgeRouting: straight</appliedStyles>
       <bendpoints x="336" y="172"/>
       <bendpoints x="427" y="248"/>
+    </ownedLayouts>
+    <ownedLayouts xsi:type="layout:EdgeLayout" id="cd4cb4c7-7554-4a28-807b-11c780333812" name="" actualMapping="PAB_InternPhysicalPathLink" source="//@ownedLayouts.50/@ownedLayouts.2/@ownedLayouts.0" target="//@ownedLayouts.50/@ownedLayouts.2/@ownedLayouts.1">
+      <appliedStyles>strokeColor: 255,165,0</appliedStyles>
+      <appliedStyles>centeredColor: 0,0,0</appliedStyles>
+      <appliedStyles>edgeRouting: straight</appliedStyles>
+      <bendpoints x="148" y="34"/>
+      <bendpoints x="223" y="34"/>
+    </ownedLayouts>
+    <ownedLayouts xsi:type="layout:EdgeLayout" id="cd4cb4c7-7554-4a28-807b-11c780333812" name="" actualMapping="PAB_InternPhysicalPathLink" source="//@ownedLayouts.50/@ownedLayouts.2/@ownedLayouts.0" target="//@ownedLayouts.50/@ownedLayouts.2/@ownedLayouts.2">
+      <appliedStyles>strokeColor: 255,165,0</appliedStyles>
+      <appliedStyles>centeredColor: 0,0,0</appliedStyles>
+      <appliedStyles>edgeRouting: straight</appliedStyles>
+      <bendpoints x="148" y="36"/>
+      <bendpoints x="209" y="61"/>
+    </ownedLayouts>
+    <ownedLayouts xsi:type="layout:EdgeLayout" id="cd4cb4c7-7554-4a28-807b-11c780333812" name="" actualMapping="PAB_InternPhysicalPathLink" source="//@ownedLayouts.50/@ownedLayouts.2/@ownedLayouts.1" target="//@ownedLayouts.50/@ownedLayouts.2/@ownedLayouts.2">
+      <appliedStyles>strokeColor: 255,165,0</appliedStyles>
+      <appliedStyles>centeredColor: 0,0,0</appliedStyles>
+      <appliedStyles>edgeRouting: straight</appliedStyles>
+      <bendpoints x="225" y="39"/>
+      <bendpoints x="216" y="58"/>
     </ownedLayouts>
     <ownedLayouts xsi:type="layout:EdgeLayout" id="cd4cb4c7-7554-4a28-807b-11c780333812" name="" actualMapping="PAB_InternPhysicalPathLink" source="//@ownedLayouts.50/@ownedLayouts.1/@ownedLayouts.0" target="//@ownedLayouts.50/@ownedLayouts.1/@ownedLayouts.1">
       <appliedStyles>strokeColor: 255,165,0</appliedStyles>
@@ -15537,34 +15348,36 @@
   </ownedLayouts>
   <ownedLayouts id="0f49d1ed-75b4-4d60-bc1f-11a29168bf1d" name="[SFCD] SysOP1 - System Functional Chain Description" synchronized="true" description="Functional Chain Description">
     <appliedFilters>ModelExtensionFilter</appliedFilters>
-    <ownedLayouts xsi:type="layout:NodeLayout" id="51b5ec1c-79ca-4a59-a88d-44a0f1c6cc86" name="SysOA1_1" actualMapping="FC_AbstractFunction">
-      <appliedStyles>foregroundColor: 198,230,255</appliedStyles>
-      <appliedStyles>borderColor: 74,74,151</appliedStyles>
-      <bounds x="0" y="0" width="100" height="50"/>
-    </ownedLayouts>
-    <ownedLayouts xsi:type="layout:NodeLayout" id="e69b0cd8-dd62-49a9-a840-9bf6ec970127" name="" actualMapping="FC_AbstractFunction">
-      <appliedStyles>borderColor: 77,137,20</appliedStyles>
-      <bounds x="252" y="204" width="50" height="49"/>
-    </ownedLayouts>
     <ownedLayouts xsi:type="layout:NodeLayout" id="b2a912f0-a685-4680-b741-16a689c56e12" name="SysOA2_1_1" actualMapping="FC_AbstractFunction">
       <appliedStyles>foregroundColor: 197,255,166</appliedStyles>
       <appliedStyles>borderColor: 9,92,46</appliedStyles>
       <bounds x="0" y="204" width="100" height="50"/>
     </ownedLayouts>
-    <ownedLayouts xsi:type="layout:EdgeLayout" id="1c771170-c853-4e1d-a2a4-b08dbb29257c" name="Sysi1" actualMapping="FC_Exchange" source="//@ownedLayouts.59/@ownedLayouts.0" target="//@ownedLayouts.59/@ownedLayouts.2">
+    <ownedLayouts xsi:type="layout:NodeLayout" id="e69b0cd8-dd62-49a9-a840-9bf6ec970127" name="" actualMapping="FC_AbstractFunction">
+      <appliedStyles>borderColor: 77,137,20</appliedStyles>
+      <bounds x="252" y="204" width="50" height="49"/>
+    </ownedLayouts>
+    <ownedLayouts xsi:type="layout:NodeLayout" id="51b5ec1c-79ca-4a59-a88d-44a0f1c6cc86" name="SysOA1_1" actualMapping="FC_AbstractFunction">
+      <appliedStyles>foregroundColor: 198,230,255</appliedStyles>
+      <appliedStyles>borderColor: 74,74,151</appliedStyles>
+      <bounds x="0" y="0" width="100" height="50"/>
+    </ownedLayouts>
+    <ownedLayouts xsi:type="layout:EdgeLayout" id="1c771170-c853-4e1d-a2a4-b08dbb29257c" name="Sysi1" actualMapping="FC_Exchange" source="//@ownedLayouts.59/@ownedLayouts.2" target="//@ownedLayouts.59/@ownedLayouts.0">
       <appliedFilters>HideLabelFilter</appliedFilters>
       <appliedStyles>strokeColor: 9,92,46</appliedStyles>
       <appliedStyles>centeredColor: 9,92,46</appliedStyles>
-      <appliedStyles>edgeRouting: straight</appliedStyles>
+      <appliedStyles>edgeRouting: manhattan</appliedStyles>
       <bendpoints x="50" y="50"/>
       <bendpoints x="50" y="204"/>
     </ownedLayouts>
-    <ownedLayouts xsi:type="layout:EdgeLayout" id="219fbaae-e6ad-432a-88aa-c42af2844d8d" name="Sysfe1" actualMapping="FC_Exchange" source="//@ownedLayouts.59/@ownedLayouts.2" target="//@ownedLayouts.59/@ownedLayouts.1">
+    <ownedLayouts xsi:type="layout:EdgeLayout" id="219fbaae-e6ad-432a-88aa-c42af2844d8d" name="Sysfe1" actualMapping="FC_Exchange" source="//@ownedLayouts.59/@ownedLayouts.0" target="//@ownedLayouts.59/@ownedLayouts.1">
       <appliedFilters>HideLabelFilter</appliedFilters>
       <appliedStyles>strokeColor: 9,92,46</appliedStyles>
       <appliedStyles>centeredColor: 9,92,46</appliedStyles>
-      <appliedStyles>edgeRouting: straight</appliedStyles>
+      <appliedStyles>edgeRouting: manhattan</appliedStyles>
       <bendpoints x="100" y="225"/>
+      <bendpoints x="176" y="225"/>
+      <bendpoints x="176" y="216"/>
       <bendpoints x="252" y="216"/>
     </ownedLayouts>
     <appliedLayers>Default</appliedLayers>
@@ -15964,7 +15777,7 @@
       <bendpoints x="1052" y="319" relative="true"/>
       <bendpoints x="1052" y="319" relative="true"/>
     </ownedLayouts>
-    <ownedLayouts xsi:type="layout:EdgeLayout" id="d8c47314-238b-4bc6-a945-bd76c26b5a9b" name="ei_Event_Interface, ei3, ei_Event" actualMapping="IDB_FilteredLabel" source="//@ownedLayouts.62/@ownedLayouts.2" target="//@ownedLayouts.62/@ownedLayouts.6">
+    <ownedLayouts xsi:type="layout:EdgeLayout" id="d8c47314-238b-4bc6-a945-bd76c26b5a9b" name="ei_Event_Interface, ei_Event, ei3" actualMapping="IDB_FilteredLabel" source="//@ownedLayouts.62/@ownedLayouts.2" target="//@ownedLayouts.62/@ownedLayouts.6">
       <appliedFilters>Hide Simplified Component Interactions</appliedFilters>
       <appliedStyles>strokeColor: 0,0,0</appliedStyles>
       <appliedStyles>centeredColor: 0,0,0</appliedStyles>
@@ -15996,7 +15809,7 @@
       <bendpoints x="0" y="0"/>
       <bendpoints x="0" y="84"/>
     </ownedLayouts>
-    <ownedLayouts xsi:type="layout:EdgeLayout" id="d8c47314-238b-4bc6-a945-bd76c26b5a9b" name="ei3, ei_Event" actualMapping="IDB_FilteredLabel_DiagramBased" source="//@ownedLayouts.62/@ownedLayouts.2" target="//@ownedLayouts.62/@ownedLayouts.6">
+    <ownedLayouts xsi:type="layout:EdgeLayout" id="d8c47314-238b-4bc6-a945-bd76c26b5a9b" name="ei_Event, ei3" actualMapping="IDB_FilteredLabel_DiagramBased" source="//@ownedLayouts.62/@ownedLayouts.2" target="//@ownedLayouts.62/@ownedLayouts.6">
       <appliedStyles>strokeColor: 0,0,0</appliedStyles>
       <appliedStyles>centeredColor: 0,0,0</appliedStyles>
       <appliedStyles>edgeRouting: straight</appliedStyles>
@@ -16548,7 +16361,7 @@
       <bendpoints relative="true"/>
       <bendpoints relative="true"/>
     </ownedLayouts>
-    <ownedLayouts xsi:type="layout:EdgeLayout" id="d8c47314-238b-4bc6-a945-bd76c26b5a9b" name="ei_Event_Interface, ei3, ei_Event" actualMapping="CCEI_FilteredLabel" source="//@ownedLayouts.64/@ownedLayouts.9" target="//@ownedLayouts.64/@ownedLayouts.10">
+    <ownedLayouts xsi:type="layout:EdgeLayout" id="d8c47314-238b-4bc6-a945-bd76c26b5a9b" name="ei_Event_Interface, ei_Event, ei3" actualMapping="CCEI_FilteredLabel" source="//@ownedLayouts.64/@ownedLayouts.9" target="//@ownedLayouts.64/@ownedLayouts.10">
       <appliedFilters>Hide Simplified Component Interactions</appliedFilters>
       <appliedStyles>strokeColor: 0,0,0</appliedStyles>
       <appliedStyles>centeredColor: 0,0,0</appliedStyles>
@@ -17527,6 +17340,10 @@
       <appliedStyles>borderColor: 0,0,0</appliedStyles>
       <bounds x="270" y="132" width="60" height="40"/>
     </ownedLayouts>
+    <ownedLayouts xsi:type="layout:NodeLayout" id="72f5a360-f681-45c3-a62c-a47e22be4c4b" name="Actor3" actualMapping="CCRI Actor">
+      <appliedStyles>borderColor: 0,0,0</appliedStyles>
+      <bounds x="0" y="0" width="75" height="66"/>
+    </ownedLayouts>
     <ownedLayouts xsi:type="layout:NodeLayout" id="74ed4abe-9090-4a66-be37-741e139487ba" name="LC1" actualMapping="CCRI Component">
       <appliedStyles>borderColor: 0,0,0</appliedStyles>
       <bounds x="260" y="0" width="70" height="61"/>
@@ -17543,39 +17360,35 @@
       <appliedStyles>borderColor: 0,0,0</appliedStyles>
       <bounds x="520" y="0" width="70" height="61"/>
     </ownedLayouts>
-    <ownedLayouts xsi:type="layout:NodeLayout" id="72f5a360-f681-45c3-a62c-a47e22be4c4b" name="Actor3" actualMapping="CCRI Actor">
-      <appliedStyles>borderColor: 0,0,0</appliedStyles>
-      <bounds x="0" y="0" width="75" height="66"/>
-    </ownedLayouts>
-    <ownedLayouts xsi:type="layout:EdgeLayout" id="f1e9a850-5b6b-4c55-9294-93c2865f026d" name="" actualMapping="CCRI ActorCapabilityRealizationInvolvement" source="//@ownedLayouts.71/@ownedLayouts.0" target="//@ownedLayouts.71/@ownedLayouts.5">
+    <ownedLayouts xsi:type="layout:EdgeLayout" id="f1e9a850-5b6b-4c55-9294-93c2865f026d" name="" actualMapping="CCRI involvement" source="//@ownedLayouts.71/@ownedLayouts.0" target="//@ownedLayouts.71/@ownedLayouts.1">
       <appliedStyles>strokeColor: 0,0,0</appliedStyles>
       <appliedStyles>centeredColor: 0,0,0</appliedStyles>
       <appliedStyles>edgeRouting: straight</appliedStyles>
-      <bendpoints x="300" y="132"/>
-      <bendpoints x="37" y="47"/>
+      <bendpoints x="278" y="138"/>
+      <bendpoints x="43" y="49"/>
     </ownedLayouts>
-    <ownedLayouts xsi:type="layout:EdgeLayout" id="6d65339f-c5b3-4868-9519-acffa71e33f5" name="" actualMapping="CCRI involvement" source="//@ownedLayouts.71/@ownedLayouts.0" target="//@ownedLayouts.71/@ownedLayouts.1">
+    <ownedLayouts xsi:type="layout:EdgeLayout" id="6d65339f-c5b3-4868-9519-acffa71e33f5" name="" actualMapping="CCRI involvement" source="//@ownedLayouts.71/@ownedLayouts.0" target="//@ownedLayouts.71/@ownedLayouts.2">
       <appliedStyles>strokeColor: 0,0,0</appliedStyles>
       <appliedStyles>centeredColor: 0,0,0</appliedStyles>
       <appliedStyles>edgeRouting: straight</appliedStyles>
       <bendpoints x="295" y="132"/>
       <bendpoints x="295" y="50"/>
     </ownedLayouts>
-    <ownedLayouts xsi:type="layout:EdgeLayout" id="89f35936-b5b2-4756-a4c4-a877602a0ca0" name="" actualMapping="CCRI involvement" source="//@ownedLayouts.71/@ownedLayouts.0" target="//@ownedLayouts.71/@ownedLayouts.2">
+    <ownedLayouts xsi:type="layout:EdgeLayout" id="89f35936-b5b2-4756-a4c4-a877602a0ca0" name="" actualMapping="CCRI involvement" source="//@ownedLayouts.71/@ownedLayouts.0" target="//@ownedLayouts.71/@ownedLayouts.3">
       <appliedStyles>strokeColor: 0,0,0</appliedStyles>
       <appliedStyles>centeredColor: 0,0,0</appliedStyles>
       <appliedStyles>edgeRouting: straight</appliedStyles>
       <bendpoints x="279" y="137"/>
       <bendpoints x="204" y="50"/>
     </ownedLayouts>
-    <ownedLayouts xsi:type="layout:EdgeLayout" id="b7f8bb83-6a85-4d81-85a4-5769c7e0e67a" name="" actualMapping="CCRI involvement" source="//@ownedLayouts.71/@ownedLayouts.0" target="//@ownedLayouts.71/@ownedLayouts.3">
+    <ownedLayouts xsi:type="layout:EdgeLayout" id="b7f8bb83-6a85-4d81-85a4-5769c7e0e67a" name="" actualMapping="CCRI involvement" source="//@ownedLayouts.71/@ownedLayouts.0" target="//@ownedLayouts.71/@ownedLayouts.4">
       <appliedStyles>strokeColor: 0,0,0</appliedStyles>
       <appliedStyles>centeredColor: 0,0,0</appliedStyles>
       <appliedStyles>edgeRouting: straight</appliedStyles>
       <bendpoints x="322" y="137"/>
       <bendpoints x="402" y="33"/>
     </ownedLayouts>
-    <ownedLayouts xsi:type="layout:EdgeLayout" id="706f5670-9d86-439b-b80d-932d6ea9f7bf" name="" actualMapping="CCRI involvement" source="//@ownedLayouts.71/@ownedLayouts.0" target="//@ownedLayouts.71/@ownedLayouts.4">
+    <ownedLayouts xsi:type="layout:EdgeLayout" id="706f5670-9d86-439b-b80d-932d6ea9f7bf" name="" actualMapping="CCRI involvement" source="//@ownedLayouts.71/@ownedLayouts.0" target="//@ownedLayouts.71/@ownedLayouts.5">
       <appliedStyles>strokeColor: 0,0,0</appliedStyles>
       <appliedStyles>centeredColor: 0,0,0</appliedStyles>
       <appliedStyles>edgeRouting: straight</appliedStyles>
@@ -18331,6 +18144,11 @@
     <appliedFilters>Show ExchangeItems</appliedFilters>
     <appliedFilters>Show ExchangeItems parameters</appliedFilters>
     <appliedFilters>ModelExtensionFilter</appliedFilters>
+    <ownedLayouts xsi:type="layout:NodeLayout" id="d3d10ef7-2332-4e3c-a62f-e1ece764d136" name="Manage Model_pattern1" actualMapping="FC_AbstractFunction">
+      <appliedStyles>foregroundColor: 197,255,166</appliedStyles>
+      <appliedStyles>borderColor: 9,92,46</appliedStyles>
+      <bounds x="475" y="-95" width="100" height="50"/>
+    </ownedLayouts>
     <ownedLayouts xsi:type="layout:NodeLayout" id="5999b593-7d4c-4914-abe0-c969acf5789f" name="Manage Controler_pattern1" actualMapping="FC_AbstractFunction">
       <appliedStyles>foregroundColor: 197,255,166</appliedStyles>
       <appliedStyles>borderColor: 9,92,46</appliedStyles>
@@ -18341,11 +18159,6 @@
       <appliedStyles>borderColor: 9,92,46</appliedStyles>
       <bounds x="0" y="0" width="100" height="50"/>
     </ownedLayouts>
-    <ownedLayouts xsi:type="layout:NodeLayout" id="d3d10ef7-2332-4e3c-a62f-e1ece764d136" name="Manage Model_pattern1" actualMapping="FC_AbstractFunction">
-      <appliedStyles>foregroundColor: 197,255,166</appliedStyles>
-      <appliedStyles>borderColor: 9,92,46</appliedStyles>
-      <bounds x="475" y="-95" width="100" height="50"/>
-    </ownedLayouts>
     <ownedLayouts xsi:type="layout:NodeLayout" id="1b691a52-3f33-4931-8368-936be615a127" name="Manage View_pattern1" actualMapping="FC_AbstractFunction">
       <appliedStyles>foregroundColor: 197,255,166</appliedStyles>
       <appliedStyles>borderColor: 9,92,46</appliedStyles>
@@ -18355,25 +18168,31 @@
       <appliedStyles>textAlignment: Center</appliedStyles>
       <bounds x="-87" y="-215" width="260" height="56"/>
     </ownedLayouts>
-    <ownedLayouts xsi:type="layout:EdgeLayout" id="a191efd4-f1fd-4082-a1d8-4f6d5c395707" name="user action_pattern1()" actualMapping="FC_Exchange" source="//@ownedLayouts.79/@ownedLayouts.1" target="//@ownedLayouts.79/@ownedLayouts.0">
+    <ownedLayouts xsi:type="layout:EdgeLayout" id="a191efd4-f1fd-4082-a1d8-4f6d5c395707" name="user action_pattern1()" actualMapping="FC_Exchange" source="//@ownedLayouts.79/@ownedLayouts.2" target="//@ownedLayouts.79/@ownedLayouts.1">
       <appliedStyles>strokeColor: 9,92,46</appliedStyles>
       <appliedStyles>centeredColor: 9,92,46</appliedStyles>
-      <appliedStyles>edgeRouting: straight</appliedStyles>
+      <appliedStyles>edgeRouting: manhattan</appliedStyles>
       <bendpoints x="100" y="25"/>
+      <bendpoints x="177" y="25"/>
+      <bendpoints x="177" y="150"/>
       <bendpoints x="255" y="150"/>
     </ownedLayouts>
-    <ownedLayouts xsi:type="layout:EdgeLayout" id="9f7caf30-8e44-4a73-b606-fd9009510e7f" name="update_pattern1(maj : Class1)" actualMapping="FC_Exchange" source="//@ownedLayouts.79/@ownedLayouts.0" target="//@ownedLayouts.79/@ownedLayouts.2">
+    <ownedLayouts xsi:type="layout:EdgeLayout" id="9f7caf30-8e44-4a73-b606-fd9009510e7f" name="update_pattern1(maj : Class1)" actualMapping="FC_Exchange" source="//@ownedLayouts.79/@ownedLayouts.1" target="//@ownedLayouts.79/@ownedLayouts.0">
       <appliedStyles>strokeColor: 9,92,46</appliedStyles>
       <appliedStyles>centeredColor: 9,92,46</appliedStyles>
-      <appliedStyles>edgeRouting: straight</appliedStyles>
+      <appliedStyles>edgeRouting: manhattan</appliedStyles>
       <bendpoints x="355" y="150"/>
+      <bendpoints x="415" y="150"/>
+      <bendpoints x="415" y="-70"/>
       <bendpoints x="475" y="-70"/>
     </ownedLayouts>
-    <ownedLayouts xsi:type="layout:EdgeLayout" id="ec10af06-7732-4fdc-a449-3764b8a4a1d4" name="notification_pattern1()" actualMapping="FC_Exchange" source="//@ownedLayouts.79/@ownedLayouts.2" target="//@ownedLayouts.79/@ownedLayouts.3">
+    <ownedLayouts xsi:type="layout:EdgeLayout" id="ec10af06-7732-4fdc-a449-3764b8a4a1d4" name="notification_pattern1()" actualMapping="FC_Exchange" source="//@ownedLayouts.79/@ownedLayouts.0" target="//@ownedLayouts.79/@ownedLayouts.3">
       <appliedStyles>strokeColor: 9,92,46</appliedStyles>
       <appliedStyles>centeredColor: 9,92,46</appliedStyles>
-      <appliedStyles>edgeRouting: straight</appliedStyles>
+      <appliedStyles>edgeRouting: manhattan</appliedStyles>
       <bendpoints x="549" y="-45"/>
+      <bendpoints x="549" y="25"/>
+      <bendpoints x="685" y="25"/>
       <bendpoints x="685" y="95"/>
     </ownedLayouts>
     <appliedLayers>Default</appliedLayers>
@@ -19573,16 +19392,6 @@
       <appliedStyles>borderColor: 9,92,46</appliedStyles>
       <bounds x="180" y="-80" width="100" height="50"/>
     </ownedLayouts>
-    <ownedLayouts xsi:type="layout:NodeLayout" id="ae90a21f-1e50-401e-ad9d-e1b90ff9c71f" name="LF2_3" actualMapping="FC_AbstractFunction">
-      <appliedStyles>foregroundColor: 197,255,166</appliedStyles>
-      <appliedStyles>borderColor: 9,92,46</appliedStyles>
-      <bounds x="0" y="0" width="100" height="50"/>
-    </ownedLayouts>
-    <ownedLayouts xsi:type="layout:NodeLayout" id="89217cab-8f4d-43dc-97a7-8caaedfa174c" name="Route Information" actualMapping="FC_AbstractFunction">
-      <appliedStyles>foregroundColor: 197,255,166</appliedStyles>
-      <appliedStyles>borderColor: 9,92,46</appliedStyles>
-      <bounds x="370" y="55" width="100" height="50"/>
-    </ownedLayouts>
     <ownedLayouts xsi:type="layout:NodeLayout" id="64dfc4dd-6c94-4eff-9ade-20cf421faa92" name="Monitor Information" actualMapping="FC_AbstractFunction">
       <appliedStyles>foregroundColor: 197,255,166</appliedStyles>
       <appliedStyles>borderColor: 9,92,46</appliedStyles>
@@ -19593,11 +19402,21 @@
       <appliedStyles>borderColor: 9,92,46</appliedStyles>
       <bounds x="0" y="110" width="100" height="50"/>
     </ownedLayouts>
+    <ownedLayouts xsi:type="layout:NodeLayout" id="ae90a21f-1e50-401e-ad9d-e1b90ff9c71f" name="LF2_3" actualMapping="FC_AbstractFunction">
+      <appliedStyles>foregroundColor: 197,255,166</appliedStyles>
+      <appliedStyles>borderColor: 9,92,46</appliedStyles>
+      <bounds x="0" y="0" width="100" height="50"/>
+    </ownedLayouts>
+    <ownedLayouts xsi:type="layout:NodeLayout" id="89217cab-8f4d-43dc-97a7-8caaedfa174c" name="Route Information" actualMapping="FC_AbstractFunction">
+      <appliedStyles>foregroundColor: 197,255,166</appliedStyles>
+      <appliedStyles>borderColor: 9,92,46</appliedStyles>
+      <bounds x="370" y="55" width="100" height="50"/>
+    </ownedLayouts>
     <ownedLayouts xsi:type="layout:NoteLayout" id="TOTEST: style &amp; Constraint">
       <appliedStyles>textAlignment: Center</appliedStyles>
       <bounds x="-255" y="-185" width="186" height="56"/>
     </ownedLayouts>
-    <ownedLayouts xsi:type="layout:EdgeLayout" id="571e4538-2255-4793-b082-7a7562555929" name="status" actualMapping="FC_Exchange" source="//@ownedLayouts.92/@ownedLayouts.2" target="//@ownedLayouts.92/@ownedLayouts.1">
+    <ownedLayouts xsi:type="layout:EdgeLayout" id="571e4538-2255-4793-b082-7a7562555929" name="status" actualMapping="FC_Exchange" source="//@ownedLayouts.92/@ownedLayouts.4" target="//@ownedLayouts.92/@ownedLayouts.1">
       <appliedStyles>strokeColor: 77,137,20</appliedStyles>
       <appliedStyles>centeredColor: 0,0,0</appliedStyles>
       <appliedStyles>edgeRouting: manhattan</appliedStyles>
@@ -19606,7 +19425,7 @@
       <bendpoints x="140" y="-55"/>
       <bendpoints x="180" y="-55"/>
     </ownedLayouts>
-    <ownedLayouts xsi:type="layout:EdgeLayout" id="96d9d2e1-9505-4b0b-886c-dd80a6cbb600" name="Statusdoc" actualMapping="FC_Exchange" source="//@ownedLayouts.92/@ownedLayouts.1" target="//@ownedLayouts.92/@ownedLayouts.3">
+    <ownedLayouts xsi:type="layout:EdgeLayout" id="96d9d2e1-9505-4b0b-886c-dd80a6cbb600" name="Statusdoc" actualMapping="FC_Exchange" source="//@ownedLayouts.92/@ownedLayouts.1" target="//@ownedLayouts.92/@ownedLayouts.5">
       <appliedStyles>strokeColor: 77,137,20</appliedStyles>
       <appliedStyles>centeredColor: 0,0,0</appliedStyles>
       <appliedStyles>edgeRouting: manhattan</appliedStyles>
@@ -19615,7 +19434,7 @@
       <bendpoints x="325" y="80"/>
       <bendpoints x="370" y="80"/>
     </ownedLayouts>
-    <ownedLayouts xsi:type="layout:EdgeLayout" id="b405620e-ccfc-4e73-951f-e96ed7690be3" name="StatusData" actualMapping="FC_Exchange" source="//@ownedLayouts.92/@ownedLayouts.3" target="//@ownedLayouts.92/@ownedLayouts.4">
+    <ownedLayouts xsi:type="layout:EdgeLayout" id="b405620e-ccfc-4e73-951f-e96ed7690be3" name="StatusData" actualMapping="FC_Exchange" source="//@ownedLayouts.92/@ownedLayouts.5" target="//@ownedLayouts.92/@ownedLayouts.2">
       <appliedStyles>strokeColor: 77,137,20</appliedStyles>
       <appliedStyles>centeredColor: 0,0,0</appliedStyles>
       <appliedStyles>edgeRouting: manhattan</appliedStyles>
@@ -19624,7 +19443,7 @@
       <bendpoints x="264" y="150"/>
       <bendpoints x="264" y="195"/>
     </ownedLayouts>
-    <ownedLayouts xsi:type="layout:EdgeLayout" id="c12b12ef-6010-439f-83ae-d77f73c7716f" name="PrinterData" actualMapping="FC_Exchange" source="//@ownedLayouts.92/@ownedLayouts.4" target="//@ownedLayouts.92/@ownedLayouts.5">
+    <ownedLayouts xsi:type="layout:EdgeLayout" id="c12b12ef-6010-439f-83ae-d77f73c7716f" name="PrinterData" actualMapping="FC_Exchange" source="//@ownedLayouts.92/@ownedLayouts.2" target="//@ownedLayouts.92/@ownedLayouts.3">
       <appliedStyles>strokeColor: 77,137,20</appliedStyles>
       <appliedStyles>centeredColor: 0,0,0</appliedStyles>
       <appliedStyles>edgeRouting: manhattan</appliedStyles>
@@ -19633,7 +19452,7 @@
       <bendpoints x="94" y="177"/>
       <bendpoints x="94" y="160"/>
     </ownedLayouts>
-    <ownedLayouts xsi:type="layout:EdgeLayout" id="f047c020-35a7-4ef7-a2ba-5118344a8b50" name="" actualMapping="DT_ContrainedElements" source="//@ownedLayouts.92/@ownedLayouts.0" target="//@ownedLayouts.92/@ownedLayouts.3">
+    <ownedLayouts xsi:type="layout:EdgeLayout" id="f047c020-35a7-4ef7-a2ba-5118344a8b50" name="" actualMapping="DT_ContrainedElements" source="//@ownedLayouts.92/@ownedLayouts.0" target="//@ownedLayouts.92/@ownedLayouts.5">
       <appliedStyles>strokeColor: 0,0,0</appliedStyles>
       <appliedStyles>centeredColor: 0,0,0</appliedStyles>
       <appliedStyles>edgeRouting: straight</appliedStyles>
@@ -19875,15 +19694,6 @@
       <appliedStyles>borderColor: 136,136,136</appliedStyles>
       <bounds x="150" y="100" width="100" height="50"/>
     </ownedLayouts>
-    <ownedLayouts xsi:type="layout:NodeLayout" id="228c8cd4-1097-4c08-ad8f-df1af707da5d" name="" actualMapping="FC_AbstractFunction">
-      <appliedStyles>borderColor: 77,137,20</appliedStyles>
-      <bounds x="160" y="0" width="50" height="50"/>
-    </ownedLayouts>
-    <ownedLayouts xsi:type="layout:NodeLayout" id="b091487f-2b54-43e6-bd3c-b823de77a673" name="LogicalFunction 6" actualMapping="FC_AbstractFunction">
-      <appliedStyles>foregroundColor: 197,255,166</appliedStyles>
-      <appliedStyles>borderColor: 9,92,46</appliedStyles>
-      <bounds x="0" y="0" width="121" height="46"/>
-    </ownedLayouts>
     <ownedLayouts xsi:type="layout:NodeLayout" id="2e8d739b-9e2a-49eb-a6c5-e5dacc9905b1" name="" actualMapping="FC_AbstractFunction">
       <appliedStyles>borderColor: 77,137,20</appliedStyles>
       <bounds x="270" y="-10" width="50" height="50"/>
@@ -19892,24 +19702,35 @@
       <appliedStyles>borderColor: 77,137,20</appliedStyles>
       <bounds x="340" y="-10" width="50" height="49"/>
     </ownedLayouts>
-    <ownedLayouts xsi:type="layout:EdgeLayout" id="3f8e0c00-ec9a-404e-85dc-35be0e818c6e" name="f4" actualMapping="FC_Exchange" source="//@ownedLayouts.94/@ownedLayouts.2" target="//@ownedLayouts.94/@ownedLayouts.1">
+    <ownedLayouts xsi:type="layout:NodeLayout" id="b091487f-2b54-43e6-bd3c-b823de77a673" name="LogicalFunction 6" actualMapping="FC_AbstractFunction">
+      <appliedStyles>foregroundColor: 197,255,166</appliedStyles>
+      <appliedStyles>borderColor: 9,92,46</appliedStyles>
+      <bounds x="0" y="0" width="121" height="46"/>
+    </ownedLayouts>
+    <ownedLayouts xsi:type="layout:NodeLayout" id="228c8cd4-1097-4c08-ad8f-df1af707da5d" name="" actualMapping="FC_AbstractFunction">
+      <appliedStyles>borderColor: 77,137,20</appliedStyles>
+      <bounds x="160" y="0" width="50" height="50"/>
+    </ownedLayouts>
+    <ownedLayouts xsi:type="layout:EdgeLayout" id="3f8e0c00-ec9a-404e-85dc-35be0e818c6e" name="f4" actualMapping="FC_Exchange" source="//@ownedLayouts.94/@ownedLayouts.3" target="//@ownedLayouts.94/@ownedLayouts.4">
       <appliedStyles>strokeColor: 9,92,46</appliedStyles>
       <appliedStyles>centeredColor: 9,92,46</appliedStyles>
-      <appliedStyles>edgeRouting: straight</appliedStyles>
+      <appliedStyles>edgeRouting: manhattan</appliedStyles>
       <bendpoints x="121" y="25"/>
       <bendpoints x="160" y="25"/>
     </ownedLayouts>
-    <ownedLayouts xsi:type="layout:EdgeLayout" id="b0329c2b-180b-4ddf-853b-2fc0c642a7f6" name="f5" actualMapping="FC_Exchange" source="//@ownedLayouts.94/@ownedLayouts.1" target="//@ownedLayouts.94/@ownedLayouts.3">
+    <ownedLayouts xsi:type="layout:EdgeLayout" id="b0329c2b-180b-4ddf-853b-2fc0c642a7f6" name="f5" actualMapping="FC_Exchange" source="//@ownedLayouts.94/@ownedLayouts.4" target="//@ownedLayouts.94/@ownedLayouts.1">
       <appliedStyles>strokeColor: 9,92,46</appliedStyles>
       <appliedStyles>centeredColor: 9,92,46</appliedStyles>
-      <appliedStyles>edgeRouting: straight</appliedStyles>
+      <appliedStyles>edgeRouting: manhattan</appliedStyles>
       <bendpoints x="210" y="25"/>
+      <bendpoints x="240" y="25"/>
+      <bendpoints x="240" y="15"/>
       <bendpoints x="270" y="15"/>
     </ownedLayouts>
-    <ownedLayouts xsi:type="layout:EdgeLayout" id="c47ecf55-6053-432b-98ba-f54e05bb54e6" name="f7" actualMapping="FC_Exchange" source="//@ownedLayouts.94/@ownedLayouts.3" target="//@ownedLayouts.94/@ownedLayouts.4">
+    <ownedLayouts xsi:type="layout:EdgeLayout" id="c47ecf55-6053-432b-98ba-f54e05bb54e6" name="f7" actualMapping="FC_Exchange" source="//@ownedLayouts.94/@ownedLayouts.1" target="//@ownedLayouts.94/@ownedLayouts.2">
       <appliedStyles>strokeColor: 9,92,46</appliedStyles>
       <appliedStyles>centeredColor: 9,92,46</appliedStyles>
-      <appliedStyles>edgeRouting: straight</appliedStyles>
+      <appliedStyles>edgeRouting: manhattan</appliedStyles>
       <bendpoints x="320" y="14"/>
       <bendpoints x="340" y="14"/>
     </ownedLayouts>
@@ -19922,29 +19743,147 @@
       <appliedStyles>borderColor: 9,92,46</appliedStyles>
       <bounds x="0" y="0" width="100" height="50"/>
     </ownedLayouts>
-    <ownedLayouts xsi:type="layout:NodeLayout" id="c2e9bd73-8ba6-4624-b87b-35f834c72e17" name="FC1" actualMapping="FC_FunctionalChain">
-      <appliedStyles>foregroundColor: 148,199,97</appliedStyles>
-      <appliedStyles>borderColor: 9,92,46</appliedStyles>
+    <ownedLayouts xsi:type="layout:NodeLayout" id="c2e9bd73-8ba6-4624-b87b-35f834c72e17" name="FC1 [+]" actualMapping="FC_FunctionalChainReference">
+      <appliedStyles>backgroundColor: 233,243,222</appliedStyles>
+      <appliedStyles>foregroundColor: 233,243,222</appliedStyles>
+      <appliedStyles>borderColor: 0,0,0</appliedStyles>
       <bounds x="355" y="-85" width="100" height="50"/>
+      <ownedLayouts xsi:type="layout:NodeLayout" id="2994d398-3894-4782-bccc-fa1b6f0287b6" name="" actualMapping="FC_FunctionalChainStacked">
+        <appliedStyles>backgroundColor: 233,243,222</appliedStyles>
+        <appliedStyles>foregroundColor: 233,243,222</appliedStyles>
+        <appliedStyles>borderColor: 0,0,0</appliedStyles>
+        <bounds x="355" y="-85" width="61" height="28"/>
+        <ownedLayouts xsi:type="layout:NodeLayout" id="063ef7df-cc2e-4506-ab42-769ba87fc0c0" name="A  2" actualMapping="FC_AbstractFunction">
+          <appliedStyles>foregroundColor: 198,230,255</appliedStyles>
+          <appliedStyles>borderColor: 74,74,151</appliedStyles>
+          <bounds x="355" y="-85" width="100" height="50"/>
+        </ownedLayouts>
+        <ownedLayouts xsi:type="layout:NodeLayout" id="ff7df605-77db-40ca-8918-8ce5c8fcfe92" name="LF26" actualMapping="FC_AbstractFunction">
+          <appliedStyles>foregroundColor: 197,255,166</appliedStyles>
+          <appliedStyles>borderColor: 9,92,46</appliedStyles>
+          <bounds x="355" y="-85" width="100" height="50"/>
+        </ownedLayouts>
+        <ownedLayouts xsi:type="layout:NodeLayout" id="9a65706e-b4ce-4ed8-8cb2-2ff3537ad339" name="LF22" actualMapping="FC_AbstractFunction">
+          <appliedStyles>foregroundColor: 197,255,166</appliedStyles>
+          <appliedStyles>borderColor: 9,92,46</appliedStyles>
+          <bounds x="355" y="-85" width="100" height="50"/>
+        </ownedLayouts>
+        <ownedLayouts xsi:type="layout:NodeLayout" id="2b283587-ab02-4757-bb80-90479070629a" name="LF23_1" actualMapping="FC_AbstractFunction">
+          <appliedStyles>foregroundColor: 197,255,166</appliedStyles>
+          <appliedStyles>borderColor: 9,92,46</appliedStyles>
+          <bounds x="355" y="-85" width="100" height="50"/>
+        </ownedLayouts>
+      </ownedLayouts>
     </ownedLayouts>
-    <ownedLayouts xsi:type="layout:NodeLayout" id="80123dd6-9f46-4f36-a6b6-c63ccd364cdc" name="FC2" actualMapping="FC_FunctionalChain">
-      <appliedStyles>foregroundColor: 148,199,97</appliedStyles>
-      <appliedStyles>borderColor: 9,92,46</appliedStyles>
+    <ownedLayouts xsi:type="layout:NodeLayout" id="80123dd6-9f46-4f36-a6b6-c63ccd364cdc" name="FC2 [+]" actualMapping="FC_FunctionalChainReference">
+      <appliedStyles>backgroundColor: 233,243,222</appliedStyles>
+      <appliedStyles>foregroundColor: 233,243,222</appliedStyles>
+      <appliedStyles>borderColor: 0,0,0</appliedStyles>
       <bounds x="360" y="85" width="100" height="50"/>
+      <ownedLayouts xsi:type="layout:NodeLayout" id="f60be132-9fdc-4161-9d25-009d31f07d0b" name="" actualMapping="FC_FunctionalChainStacked">
+        <appliedStyles>backgroundColor: 233,243,222</appliedStyles>
+        <appliedStyles>foregroundColor: 233,243,222</appliedStyles>
+        <appliedStyles>borderColor: 0,0,0</appliedStyles>
+        <bounds x="360" y="85" width="61" height="28"/>
+        <ownedLayouts xsi:type="layout:NodeLayout" id="989a7d03-ab39-402b-9859-56756df098cd" name="LF25" actualMapping="FC_AbstractFunction">
+          <appliedStyles>foregroundColor: 197,255,166</appliedStyles>
+          <appliedStyles>borderColor: 9,92,46</appliedStyles>
+          <bounds x="360" y="85" width="100" height="50"/>
+        </ownedLayouts>
+        <ownedLayouts xsi:type="layout:NodeLayout" id="97b91fe9-f068-4c10-9aac-79336d189c12" name="LF22" actualMapping="FC_AbstractFunction">
+          <appliedStyles>foregroundColor: 197,255,166</appliedStyles>
+          <appliedStyles>borderColor: 9,92,46</appliedStyles>
+          <bounds x="360" y="85" width="100" height="50"/>
+        </ownedLayouts>
+        <ownedLayouts xsi:type="layout:NodeLayout" id="dfc760dd-251e-4725-9d5f-af2a96c12b5b" name="LF24" actualMapping="FC_AbstractFunction">
+          <appliedStyles>foregroundColor: 197,255,166</appliedStyles>
+          <appliedStyles>borderColor: 9,92,46</appliedStyles>
+          <bounds x="360" y="85" width="100" height="50"/>
+        </ownedLayouts>
+      </ownedLayouts>
     </ownedLayouts>
-    <ownedLayouts xsi:type="layout:EdgeLayout" id="d4c2ce42-1b57-4556-9207-1f9b440e9222" name="FunctionalExchange 1" actualMapping="FC_Exchange" source="//@ownedLayouts.95/@ownedLayouts.0" target="//@ownedLayouts.95/@ownedLayouts.1">
+    <ownedLayouts xsi:type="layout:EdgeLayout" id="8d6de82b-779f-4789-bebc-24e1d5a267fc" name="FunctionalExchange 3" actualMapping="FC_Exchange" source="//@ownedLayouts.95/@ownedLayouts.2/@ownedLayouts.0/@ownedLayouts.1" target="//@ownedLayouts.95/@ownedLayouts.2/@ownedLayouts.0/@ownedLayouts.2">
+      <appliedStyles>strokeColor: 9,92,46</appliedStyles>
+      <appliedStyles>centeredColor: 9,92,46</appliedStyles>
+      <appliedStyles>edgeRouting: manhattan</appliedStyles>
+      <bendpoints x="377" y="118"/>
+      <bendpoints x="377" y="98"/>
+      <bendpoints x="346" y="98"/>
+      <bendpoints x="346" y="189"/>
+      <bendpoints x="377" y="189"/>
+      <bendpoints x="377" y="168"/>
+    </ownedLayouts>
+    <ownedLayouts xsi:type="layout:EdgeLayout" id="7a452141-9127-4b3e-a570-1c4fc23929a1" name="FunctionalExchange 4" actualMapping="FC_Exchange" source="//@ownedLayouts.95/@ownedLayouts.2/@ownedLayouts.0/@ownedLayouts.2" target="//@ownedLayouts.95/@ownedLayouts.2/@ownedLayouts.0/@ownedLayouts.0">
+      <appliedStyles>strokeColor: 9,92,46</appliedStyles>
+      <appliedStyles>centeredColor: 9,92,46</appliedStyles>
+      <appliedStyles>edgeRouting: manhattan</appliedStyles>
+      <bendpoints x="377" y="118"/>
+      <bendpoints x="377" y="98"/>
+      <bendpoints x="346" y="98"/>
+      <bendpoints x="346" y="189"/>
+      <bendpoints x="377" y="189"/>
+      <bendpoints x="377" y="168"/>
+    </ownedLayouts>
+    <ownedLayouts xsi:type="layout:EdgeLayout" id="4e0eda26-d5e7-4d03-8805-aa96cddf55f8" name="FunctionalExchange 1" actualMapping="FC_Exchange" source="//@ownedLayouts.95/@ownedLayouts.0" target="//@ownedLayouts.95/@ownedLayouts.2/@ownedLayouts.0/@ownedLayouts.1">
       <appliedStyles>strokeColor: 9,92,46</appliedStyles>
       <appliedStyles>centeredColor: 9,92,46</appliedStyles>
       <appliedStyles>edgeRouting: straight</appliedStyles>
-      <bendpoints x="100" y="13"/>
-      <bendpoints x="355" y="-49"/>
+      <bendpoints x="100" y="41"/>
+      <bendpoints x="366" y="126"/>
+    </ownedLayouts>
+    <ownedLayouts xsi:type="layout:EdgeLayout" id="d4c2ce42-1b57-4556-9207-1f9b440e9222" name="FunctionalExchange 1" actualMapping="FC_Exchange" source="//@ownedLayouts.95/@ownedLayouts.0" target="//@ownedLayouts.95/@ownedLayouts.1/@ownedLayouts.0/@ownedLayouts.2">
+      <appliedStyles>strokeColor: 9,92,46</appliedStyles>
+      <appliedStyles>centeredColor: 9,92,46</appliedStyles>
+      <appliedStyles>edgeRouting: straight</appliedStyles>
+      <bendpoints x="100" y="17"/>
+      <bendpoints x="361" y="-20"/>
+    </ownedLayouts>
+    <ownedLayouts xsi:type="layout:EdgeLayout" id="d3241e96-0150-4205-ab0a-969f2f709720" name="FunctionalExchange 2" actualMapping="FC_Exchange" source="//@ownedLayouts.95/@ownedLayouts.1/@ownedLayouts.0/@ownedLayouts.2" target="//@ownedLayouts.95/@ownedLayouts.1/@ownedLayouts.0/@ownedLayouts.3">
+      <appliedStyles>strokeColor: 9,92,46</appliedStyles>
+      <appliedStyles>centeredColor: 9,92,46</appliedStyles>
+      <appliedStyles>edgeRouting: manhattan</appliedStyles>
+      <bendpoints x="372" y="-52"/>
+      <bendpoints x="372" y="-72"/>
+      <bendpoints x="341" y="-72"/>
+      <bendpoints x="341" y="19"/>
+      <bendpoints x="372" y="19"/>
+      <bendpoints x="372" y="-2"/>
+    </ownedLayouts>
+    <ownedLayouts xsi:type="layout:EdgeLayout" id="883dd4ae-b1b0-4e43-bba8-2b834f2b7413" name="FunctionalExchange 14" actualMapping="FC_Exchange" source="//@ownedLayouts.95/@ownedLayouts.1/@ownedLayouts.0/@ownedLayouts.1" target="//@ownedLayouts.95/@ownedLayouts.1/@ownedLayouts.0/@ownedLayouts.0">
+      <appliedStyles>strokeColor: 9,92,46</appliedStyles>
+      <appliedStyles>centeredColor: 9,92,46</appliedStyles>
+      <appliedStyles>edgeRouting: manhattan</appliedStyles>
+      <bendpoints x="372" y="-52"/>
+      <bendpoints x="372" y="-72"/>
+      <bendpoints x="341" y="-72"/>
+      <bendpoints x="341" y="19"/>
+      <bendpoints x="372" y="19"/>
+      <bendpoints x="372" y="-2"/>
+    </ownedLayouts>
+    <ownedLayouts xsi:type="layout:EdgeLayout" id="af400b47-7c8b-4f74-b445-18b53852b13c" name="FunctionalExchange 5" actualMapping="FC_Exchange" source="//@ownedLayouts.95/@ownedLayouts.1/@ownedLayouts.0/@ownedLayouts.3" target="//@ownedLayouts.95/@ownedLayouts.1/@ownedLayouts.0/@ownedLayouts.1">
+      <appliedStyles>strokeColor: 9,92,46</appliedStyles>
+      <appliedStyles>centeredColor: 9,92,46</appliedStyles>
+      <appliedStyles>edgeRouting: manhattan</appliedStyles>
+      <bendpoints x="372" y="-52"/>
+      <bendpoints x="372" y="-72"/>
+      <bendpoints x="341" y="-72"/>
+      <bendpoints x="341" y="19"/>
+      <bendpoints x="372" y="19"/>
+      <bendpoints x="372" y="-2"/>
     </ownedLayouts>
     <ownedLayouts xsi:type="layout:EdgeLayout" id="4e0eda26-d5e7-4d03-8805-aa96cddf55f8" name="FunctionalExchange 1" actualMapping="FC_Exchange" source="//@ownedLayouts.95/@ownedLayouts.0" target="//@ownedLayouts.95/@ownedLayouts.2">
       <appliedStyles>strokeColor: 9,92,46</appliedStyles>
       <appliedStyles>centeredColor: 9,92,46</appliedStyles>
       <appliedStyles>edgeRouting: straight</appliedStyles>
       <bendpoints x="100" y="36"/>
-      <bendpoints x="360" y="98"/>
+      <bendpoints x="360" y="97"/>
+    </ownedLayouts>
+    <ownedLayouts xsi:type="layout:EdgeLayout" id="d4c2ce42-1b57-4556-9207-1f9b440e9222" name="FunctionalExchange 1" actualMapping="FC_Exchange" source="//@ownedLayouts.95/@ownedLayouts.0" target="//@ownedLayouts.95/@ownedLayouts.1">
+      <appliedStyles>strokeColor: 9,92,46</appliedStyles>
+      <appliedStyles>centeredColor: 9,92,46</appliedStyles>
+      <appliedStyles>edgeRouting: straight</appliedStyles>
+      <bendpoints x="100" y="12"/>
+      <bendpoints x="355" y="-50"/>
     </ownedLayouts>
     <appliedLayers>Default</appliedLayers>
   </ownedLayouts>
@@ -21773,30 +21712,6 @@
       <bendpoints x="480" y="8"/>
       <bendpoints x="480" y="273"/>
     </ownedLayouts>
-    <ownedLayouts xsi:type="layout:EdgeLayout" id="e8ba8d88-f527-4b2e-add2-eb717daa6839" name="PL 1" actualMapping="SAB_PhysicalLink" source="//@ownedLayouts.110/@ownedLayouts.3/@ownedLayouts.8" target="//@ownedLayouts.110/@ownedLayouts.1/@ownedLayouts.5">
-      <appliedFilters>HideFilter</appliedFilters>
-      <appliedStyles>strokeColor: 24,114,248</appliedStyles>
-      <appliedStyles>centeredColor: 239,41,41</appliedStyles>
-      <appliedStyles>edgeRouting: straight</appliedStyles>
-      <bendpoints x="143" y="3" relative="true"/>
-      <bendpoints x="130" y="-2" relative="true"/>
-      <bendpoints x="5" relative="true"/>
-      <bendpoints x="-337" y="4" relative="true"/>
-      <bendpoints x="337" y="-5" relative="true"/>
-      <bendpoints x="-5" y="0" relative="true"/>
-    </ownedLayouts>
-    <ownedLayouts xsi:type="layout:EdgeLayout" id="aec26949-f470-4b3c-8ab0-d0f17acab758" name="PL 2" actualMapping="SAB_PhysicalLink" source="//@ownedLayouts.110/@ownedLayouts.1/@ownedLayouts.6" target="//@ownedLayouts.110/@ownedLayouts.2/@ownedLayouts.2">
-      <appliedFilters>HideFilter</appliedFilters>
-      <appliedStyles>strokeColor: 24,114,248</appliedStyles>
-      <appliedStyles>centeredColor: 239,41,41</appliedStyles>
-      <appliedStyles>edgeRouting: straight</appliedStyles>
-      <bendpoints x="140" y="40" relative="true"/>
-      <bendpoints x="140" y="13" relative="true"/>
-      <bendpoints x="0" y="5" relative="true"/>
-      <bendpoints x="0" y="-243" relative="true"/>
-      <bendpoints x="0" y="243" relative="true"/>
-      <bendpoints x="0" y="-5" relative="true"/>
-    </ownedLayouts>
     <ownedLayouts xsi:type="layout:EdgeLayout" id="6e6061c1-4fad-45c6-8c52-f5b0336af126" name="C 5" actualMapping="CA Data Flow Between Actors and System" source="//@ownedLayouts.110/@ownedLayouts.3/@ownedLayouts.5" target="//@ownedLayouts.110/@ownedLayouts.1/@ownedLayouts.1">
       <appliedStyles>strokeColor: 74,74,151</appliedStyles>
       <appliedStyles>centeredColor: 74,74,151</appliedStyles>
@@ -21824,18 +21739,6 @@
       <appliedStyles>edgeRouting: straight</appliedStyles>
       <bendpoints x="152" y="120"/>
       <bendpoints x="353" y="120"/>
-    </ownedLayouts>
-    <ownedLayouts xsi:type="layout:EdgeLayout" id="18e7f744-7bca-417c-9e54-b79d9c98f54f" name="FunctionalExchange 7" actualMapping="CA DataFlow between Function" source="//@ownedLayouts.110/@ownedLayouts.1/@ownedLayouts.7/@ownedLayouts.3" target="//@ownedLayouts.110/@ownedLayouts.2/@ownedLayouts.3/@ownedLayouts.1">
-      <appliedFilters>HideFilter</appliedFilters>
-      <appliedStyles>strokeColor: 9,92,46</appliedStyles>
-      <appliedStyles>centeredColor: 9,92,46</appliedStyles>
-      <appliedStyles>edgeRouting: straight</appliedStyles>
-      <bendpoints x="20" y="42" relative="true"/>
-      <bendpoints x="7" y="-2" relative="true"/>
-      <bendpoints y="5" relative="true"/>
-      <bendpoints x="4" y="-214" relative="true"/>
-      <bendpoints x="-5" y="214" relative="true"/>
-      <bendpoints x="0" y="-5" relative="true"/>
     </ownedLayouts>
     <ownedLayouts xsi:type="layout:EdgeLayout" id="d945b76a-41e0-4e65-971d-93833784eb1d" name="" actualMapping="CA PortRealization FunctionPort to ComponentPort" source="//@ownedLayouts.110/@ownedLayouts.1/@ownedLayouts.1" target="//@ownedLayouts.110/@ownedLayouts.1/@ownedLayouts.7/@ownedLayouts.2">
       <appliedStyles>strokeColor: 224,133,3</appliedStyles>
@@ -21898,18 +21801,6 @@
       <appliedStyles>edgeRouting: straight</appliedStyles>
       <bendpoints x="470" y="5"/>
       <bendpoints x="153" y="5"/>
-    </ownedLayouts>
-    <ownedLayouts xsi:type="layout:EdgeLayout" id="cf8a9c60-66bf-4dc8-a1f5-7bd666c2ae84" name="FunctionalExchange 6" actualMapping="CA DataFlow between Function" source="//@ownedLayouts.110/@ownedLayouts.3/@ownedLayouts.10/@ownedLayouts.0" target="//@ownedLayouts.110/@ownedLayouts.1/@ownedLayouts.7/@ownedLayouts.2">
-      <appliedFilters>HideFilter</appliedFilters>
-      <appliedStyles>strokeColor: 9,92,46</appliedStyles>
-      <appliedStyles>centeredColor: 9,92,46</appliedStyles>
-      <appliedStyles>edgeRouting: straight</appliedStyles>
-      <bendpoints x="42" y="23" relative="true"/>
-      <bendpoints x="-2" y="17" relative="true"/>
-      <bendpoints x="5" y="0" relative="true"/>
-      <bendpoints x="-309" y="0" relative="true"/>
-      <bendpoints x="309" y="0" relative="true"/>
-      <bendpoints x="-5" y="0" relative="true"/>
     </ownedLayouts>
     <ownedLayouts xsi:type="layout:EdgeLayout" id="f01a11e2-0113-457d-af19-e1f261d991d1" name="" actualMapping="CA PortRealization FunctionPort to ComponentPort" source="//@ownedLayouts.110/@ownedLayouts.3/@ownedLayouts.5" target="//@ownedLayouts.110/@ownedLayouts.3/@ownedLayouts.10/@ownedLayouts.0">
       <appliedStyles>strokeColor: 9,92,46</appliedStyles>

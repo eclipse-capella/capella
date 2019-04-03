@@ -476,6 +476,8 @@ public interface IMappingNameConstants {
   String SHOW_FUNCTIONAL_EXCHANGES_ECHANGE_ITEMS_PARAMS = "Show Functional Exchanges [ExchangeItems(Parameters)]"; //$NON-NLS-1$
   String CDB_SHOW_FULL_PATH = "Show Full Path";//$NON-NLS-1$
   String SHOW_CONTEXTUAL_ELEMENTS = "Show Contextual Elements";//$NON-NLS-1$
+  
+  String MERGE_ASSOCIATED_FE_AND_SL = "Merge associated Functional Exchange Involvements and Sequence Links without Control Node"; //$NON-NLS-1$
 
   // EPBS Architecture
   String EAB_CI = "CI container mapping"; //$NON-NLS-1$
