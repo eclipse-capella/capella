@@ -212,6 +212,7 @@ public interface IFilterNameConstants {
   String FILTER_XAB_HIDE_SIMPLIFIED_DIAGRAM_BASED_COMPONENT_EXCHANGES = "Hide Simplified Diagram Based Component Exchanges"; //$NON-NLS-1$
   String FILTER_XAB_HIDE_SIMPLIFIED_GROUP_OF_COMPONENT_EXCHANGES_ID = "Hide Simplified Group of Component Exchanges"; //$NON-NLS-1$
   String FILTER_XAB_HIDE_SIMPLIFIED_ORIENTED_GROUPED_COMPONENT_EXCHANGES = "Hide Simplified Oriented Grouped Component Exchanges"; //$NON-NLS-1$
+  String FILTER_XAB_HIDE_SEQUENCING_INFORMATION = "Hide Sequencing Information"; //$NON-NLS-1$
 
   // LAB filters - Logical Architecture Blank
   String FILTER_LAB_COLLAPSE_COMPONENT_PORTS = "Collapse Component Ports"; //$NON-NLS-1$

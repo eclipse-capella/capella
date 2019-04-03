@@ -320,7 +320,7 @@ public class FunctionalChainServices {
   /**
    * Retrieve map of displayed functional chains and associated DNode
    */
-  private HashMap<FunctionalChain, DNode> getDisplayedFunctionalChains(DDiagram diagram) {
+  public HashMap<FunctionalChain, DNode> getDisplayedFunctionalChains(DDiagram diagram) {
     HashMap<FunctionalChain, DNode> functionalChainToNodeMap = new HashMap<>();
     for (DDiagramElement aNode : diagram.getOwnedDiagramElements()) {
       if ((aNode instanceof DNode) && (aNode.getTarget() instanceof FunctionalChain)) {
@@ -328,6 +328,19 @@ public class FunctionalChainServices {
       }
     }
     return functionalChainToNodeMap;
+  }
+  
+  /**
+   * Retrieve set of displayed functional chains
+   */
+  public Set<FunctionalChain> getDisplayedFunctionalChainsOnDiagram(DDiagram diagram) {
+    Set<FunctionalChain> functionalChains = new HashSet<>();
+    for (DDiagramElement aNode : diagram.getOwnedDiagramElements()) {
+      if ((aNode instanceof DNode) && (aNode.getTarget() instanceof FunctionalChain)) {
+        functionalChains.add((FunctionalChain) aNode.getTarget());
+      }
+    }
+    return functionalChains;
   }
 
   /**

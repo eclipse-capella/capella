@@ -23,8 +23,8 @@ import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.core.af.integration.CapellaMetadataProvider;
 import org.polarsys.capella.core.data.migration.context.MigrationContext;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
-import org.polarsys.capella.core.sirius.analysis.IMappingNameConstants;
 import org.polarsys.capella.core.sirius.analysis.constants.IFilterNameConstants;
+import org.polarsys.capella.core.sirius.analysis.helpers.DDiagramHelper;
 
 /**
  * This class activate filters for computed elements FCD Diagrams.
@@ -40,33 +40,43 @@ public class ActivateDiagramFiltersContribution extends AbstractMigrationContrib
   }
 
   private void activateRelevantDiagramFilters(Resource resource) {
-    for (DDiagram diagram : getAllRelevantDiagrams(resource)) {
-      for (FilterDescription filter : diagram.getDescription().getFilters()) {
-        if (isRelevantFilter(filter.getName()) && !diagram.getActivatedFilters().contains(filter)) {
-          diagram.getActivatedFilters().add(filter);
-        }
-      }
+    for (DDiagram diagram : getAllDiagrams(resource)) {
+      if (DDiagramHelper.isFCD(diagram))
+        updateFCDDiagramFilters(diagram);
+      else if (DDiagramHelper.isXAB(diagram))
+        updateXABDiagramFilters(diagram);
     }
   }
 
-  private boolean isRelevantFilter(String filterName) {
-    return IFilterNameConstants.FILTER_FCD_HIDE_ASSOCIATION_LINKS.equals(filterName);
-  }
-
-  private List<DDiagram> getAllRelevantDiagrams(Resource resource) {
+  private List<DDiagram> getAllDiagrams(Resource resource) {
     List<DDiagram> allDiagrams = new ArrayList<>();
     if (!CapellaResourceHelper.isAirdResource(resource.getURI())) {
       return Collections.emptyList();
     }
     for (EObject root : resource.getContents()) {
       if (root instanceof DDiagram) {
-        DDiagram diagram = (DDiagram) root;
-        if (IMappingNameConstants.FCD_DIAGRAM.equals(diagram.getDescription().getName())) {
-          allDiagrams.add((DDiagram) root);
-        }
+        allDiagrams.add((DDiagram) root);
       }
     }
     return allDiagrams;
+  }
+
+  private void updateFCDDiagramFilters(DDiagram diagram) {
+    for (FilterDescription filter : diagram.getDescription().getFilters()) {
+      if (IFilterNameConstants.FILTER_FCD_HIDE_ASSOCIATION_LINKS.equals(filter.getName())
+          && !diagram.getActivatedFilters().contains(filter)) {
+        diagram.getActivatedFilters().add(filter);
+      }
+    }
+  }
+
+  private void updateXABDiagramFilters(DDiagram diagram) {
+    for (FilterDescription filter : diagram.getDescription().getFilters()) {
+      if (IFilterNameConstants.FILTER_XAB_HIDE_SEQUENCING_INFORMATION.equals(filter.getName())
+          && !diagram.getActivatedFilters().contains(filter)) {
+        diagram.getActivatedFilters().add(filter);
+      }
+    }
   }
 
   // We migrate from 1.2.x/1.3.0 --> 1.3.x (x >= 1)

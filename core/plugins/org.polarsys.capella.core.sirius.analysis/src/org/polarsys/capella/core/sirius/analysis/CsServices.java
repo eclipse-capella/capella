@@ -21,6 +21,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.stream.Collectors;
 import java.util.Set;
 
 import org.apache.log4j.Logger;
@@ -134,10 +135,14 @@ import org.polarsys.capella.core.data.fa.ComponentPort;
 import org.polarsys.capella.core.data.fa.ComponentPortAllocation;
 import org.polarsys.capella.core.data.fa.ComponentPortAllocationEnd;
 import org.polarsys.capella.core.data.fa.ComponentPortKind;
+import org.polarsys.capella.core.data.fa.ControlNode;
 import org.polarsys.capella.core.data.fa.FaPackage;
 import org.polarsys.capella.core.data.fa.FunctionalChain;
 import org.polarsys.capella.core.data.fa.FunctionalChainInvolvement;
+import org.polarsys.capella.core.data.fa.FunctionalChainInvolvementFunction;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
+import org.polarsys.capella.core.data.fa.SequenceLink;
+import org.polarsys.capella.core.data.fa.SequenceLinkEnd;
 import org.polarsys.capella.core.data.helpers.capellacore.services.GeneralizableElementExt;
 import org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt;
 import org.polarsys.capella.core.data.helpers.information.services.CommunicationLinkExt;
@@ -2917,16 +2922,16 @@ public class CsServices {
         if (!ComponentExchangeKind.DELEGATION.equals(relatedExchange.getKind())) {
           EObject src = getSourcePart(relatedExchange);
           if (src == null) {
-            semantics
-                .addAll(getCache(ComponentExt::getRepresentingParts, ComponentExchangeExt.getSourceComponent(relatedExchange)));
+            semantics.addAll(
+                getCache(ComponentExt::getRepresentingParts, ComponentExchangeExt.getSourceComponent(relatedExchange)));
           } else {
             semantics.add(src);
           }
 
           EObject target = getTargetPart(relatedExchange);
           if (target == null) {
-            semantics
-                .addAll(getCache(ComponentExt::getRepresentingParts, ComponentExchangeExt.getTargetComponent(relatedExchange)));
+            semantics.addAll(
+                getCache(ComponentExt::getRepresentingParts, ComponentExchangeExt.getTargetComponent(relatedExchange)));
           } else {
             semantics.add(src);
           }
@@ -6623,7 +6628,8 @@ public class CsServices {
           result.add(source);
         }
         if (source.eContainer() instanceof Component) {
-          Collection<Part> representingParts = getCache(ComponentExt::getRepresentingParts, (Component) source.eContainer());
+          Collection<Part> representingParts = getCache(ComponentExt::getRepresentingParts,
+              (Component) source.eContainer());
           if (!representingParts.isEmpty()) {
             Part portParent = representingParts.iterator().next();
             result.addAll(getVisibleEdgeEnds(diagram, portParent, false));
@@ -6718,4 +6724,37 @@ public class CsServices {
     return null;
   }
 
+  public Collection<ControlNode> getAvailableControlNodes(DDiagram diagram) {
+    Set<FunctionalChain> displayedFunctionalChains = FunctionalChainServices.getFunctionalChainServices()
+        .getDisplayedFunctionalChainsOnDiagram(diagram);
+    return displayedFunctionalChains.stream()
+        .flatMap(fc -> FunctionalChainExt.getFlatControlNodes(fc).stream()).collect(Collectors.toList());
+  }
+
+  public Collection<SequenceLink> getAvailableSequenceLinks(DDiagram diagram) {
+    Set<FunctionalChain> displayedFunctionalChains = FunctionalChainServices.getFunctionalChainServices()
+        .getDisplayedFunctionalChainsOnDiagram(diagram);
+    return displayedFunctionalChains.stream()
+        .flatMap(fc -> FunctionalChainExt.getFlatSequenceLinks(fc).stream()).collect(Collectors.toList());
+  }
+
+  public EObject getSequenceLinkSource(SequenceLink sequenceLink) {
+    SequenceLinkEnd source = sequenceLink.getSource();
+    if (source instanceof ControlNode)
+      return source;
+    else if (source instanceof FunctionalChainInvolvementFunction) {
+      return ((FunctionalChainInvolvementFunction) source).getInvolved();
+    }
+    return null;
+  }
+
+  public EObject getSequenceLinkTarget(SequenceLink sequenceLink) {
+    SequenceLinkEnd target = sequenceLink.getTarget();
+    if (target instanceof ControlNode)
+      return target;
+    else if (target instanceof FunctionalChainInvolvementFunction) {
+      return ((FunctionalChainInvolvementFunction) target).getInvolved();
+    }
+    return null;
+  }
 }

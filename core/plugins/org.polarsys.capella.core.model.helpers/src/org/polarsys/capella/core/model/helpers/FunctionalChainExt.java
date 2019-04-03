@@ -46,6 +46,7 @@ import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.AbstractFunctionalChainContainer;
+import org.polarsys.capella.core.data.fa.ControlNode;
 import org.polarsys.capella.core.data.fa.FaFactory;
 import org.polarsys.capella.core.data.fa.FaPackage;
 import org.polarsys.capella.core.data.fa.FunctionalChain;
@@ -981,7 +982,7 @@ public class FunctionalChainExt {
     }
     return result;
   }
-  
+
   public static Set<AbstractFunction> getFlatFunctions(FunctionalChain fc) {
     Set<AbstractFunction> result = new LinkedHashSet<>();
 
@@ -1089,38 +1090,54 @@ public class FunctionalChainExt {
     }
 
   }
-  
-  
+
   /**
    * Create a new Sequence Link from a Functional Chain Involvement Link:
    * 
-   * - New SL has the same source and target as FCIL
-   * - New SL has the same sourceReferenceHierarchy and targetReferenceHierarchy as FCIL
-   * - New SL has the same Functional Chain container as FCIL
-   * - New SL contains FCIL in its "links"
+   * - New SL has the same source and target as FCIL - New SL has the same sourceReferenceHierarchy and
+   * targetReferenceHierarchy as FCIL - New SL has the same Functional Chain container as FCIL - New SL contains FCIL in
+   * its "links"
    * 
    * @param fciLink
    * @return new sequence link
    */
   public static SequenceLink createSequenceLink(FunctionalChainInvolvementLink fciLink) {
-    
+
     FunctionalChainInvolvementFunction fcifSource = fciLink.getSource();
     FunctionalChainInvolvementFunction fcifTarget = fciLink.getTarget();
-    
+
     FunctionalChain functionalChain = (FunctionalChain) fciLink.eContainer();
-    
+
     SequenceLink newSeqLink = FaFactory.eINSTANCE.createSequenceLink();
     newSeqLink.setSource(fcifSource);
     newSeqLink.setTarget(fcifTarget);
-    
+
     functionalChain.getOwnedSequenceLinks().add(newSeqLink);
-    
+
     // Reuse the ref hierarchy of the selected FCILink
     newSeqLink.getTargetReferenceHierarchy().addAll(fciLink.getTargetReferenceHierarchy());
     newSeqLink.getSourceReferenceHierarchy().addAll(fciLink.getSourceReferenceHierarchy());
-    
+
     newSeqLink.getLinks().add(fciLink);
-    
+
     return newSeqLink;
+  }
+
+  public static Collection<ControlNode> getFlatControlNodes(FunctionalChain functionalChain) {
+    List<ControlNode> ownedSequenceNodes = new ArrayList<>();
+    ownedSequenceNodes.addAll(functionalChain.getOwnedSequenceNodes());
+    functionalChain.getOwnedFunctionalChainInvolvements().stream().filter(FunctionalChainReference.class::isInstance)
+        .map(FunctionalChainReference.class::cast).map(FunctionalChainReference::getInvolved)
+        .map(FunctionalChain.class::cast).distinct().forEach(fc -> ownedSequenceNodes.addAll(getFlatControlNodes(fc)));
+    return ownedSequenceNodes;
+  }
+  
+  public static Collection<SequenceLink> getFlatSequenceLinks(FunctionalChain functionalChain) {
+    List<SequenceLink> ownedSequenceLinks = new ArrayList<>();
+    ownedSequenceLinks.addAll(functionalChain.getOwnedSequenceLinks());
+    functionalChain.getOwnedFunctionalChainInvolvements().stream().filter(FunctionalChainReference.class::isInstance)
+        .map(FunctionalChainReference.class::cast).map(FunctionalChainReference::getInvolved)
+        .map(FunctionalChain.class::cast).distinct().forEach(fc -> ownedSequenceLinks.addAll(getFlatSequenceLinks(fc)));
+    return ownedSequenceLinks;
   }
 }
