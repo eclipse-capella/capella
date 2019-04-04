@@ -294,6 +294,104 @@
                <target class="FunctionalExchange">
                </target>
             </constraint>
+            <constraint class="org.polarsys.capella.core.data.fa.validation.sequenceLink.SequenceLinksBetweenNodesWithNoConnectingFE"
+             id="DWF_DF_15"
+             isEnabledByDefault="true" lang="Java" mode="Batch"
+             name="DWF_DF_15 - Sequence Links between FCIFunctions/Control Nodes with no Functional Exchanges connecting them"
+             severity="WARNING" statusCode="1">
+               <message>
+                  (SequenceLink) between {0}({1}) and {2}({3}) has no Functional Exchanges connecting them.
+               </message>
+               <description>
+                  This check ensures Sequence Links between FCIFunctions/Control Nodes have a Functional Exchange connecting them.
+               </description>
+               <target class="SequenceLink">
+               </target>
+            </constraint>
+            <constraint class="org.polarsys.capella.core.data.fa.validation.sequenceLink.SequenceLinkHasEmptyCondition"
+             id="DWF_DF_16"
+             isEnabledByDefault="true" lang="Java" mode="Batch"
+             name="DWF_DF_16 - SequenceLink has empty condition"
+             severity="WARNING" statusCode="1">
+               <message>
+                  (SequenceLink) between {0}({1}) and {2}({3}) has empty condition.
+               </message>
+               <description>
+                  This rule checks if there is an empty condition on the SequenceLink.
+               </description>
+               <target class="SequenceLink">
+               </target>
+            </constraint>
+            <constraint class="org.polarsys.capella.core.data.fa.validation.sequenceLink.SequenceLinkBetweenAdjacentControlNodesWithoutFCIFunction"
+             id="DWF_DF_17"
+             isEnabledByDefault="true" lang="Java" mode="Batch"
+             name="DWF_DF_17 - SequenceLink between two adjacent Control Nodes without a FunctionalChainInvolvementFunction"
+             severity="WARNING" statusCode="1">
+               <message>
+                  (SequenceLink) between two adjacent ControlNodes without a FunctionalChainInvolvementFunction.
+               </message>
+               <description>
+                  This rule checks if there is a Sequence Link between two adjacent ControlNodes without a FunctionalChainInvolvementFunction.
+               </description>
+               <target class="SequenceLink">
+               </target>
+            </constraint>
+            <constraint class="org.polarsys.capella.core.data.fa.validation.sequenceLink.SequenceLinkWithNoAssociatedLinks"
+             id="DWF_DF_18"
+             isEnabledByDefault="true" lang="Java" mode="Batch"
+             name="DWF_DF_18 - SequenceLink with no associated FunctionalChainInvolvementLinks"
+             severity="WARNING" statusCode="1">
+               <message>
+                  (SequenceLink) between {0}({1}) and {2}({3}) has no associated FunctionalChainInvolvementLinks.
+               </message>
+               <description>
+                 This rule checks if a SequenceLink has associated FunctionalChainInvolvementLinks.
+               </description>
+               <target class="SequenceLink">
+               </target>
+            </constraint>
+            <constraint class="org.polarsys.capella.core.data.fa.validation.sequenceLink.SequenceLinkWithInconsistentAssociatedLinks"
+             id="DWF_DF_19"
+             isEnabledByDefault="true" lang="Java" mode="Batch"
+             name="DWF_DF_19 - SequenceLink with inconsistent associated FunctionalChainInvolvementLinks"
+             severity="ERROR" statusCode="1">
+               <message>
+                  {0}
+               </message>
+               <description>
+                 This rule checks if a SequenceLink has inconsistent associated FunctionalChainInvolvementLinks.
+               </description>
+               <target class="SequenceLink">
+               </target>
+            </constraint>
+            <constraint class="org.polarsys.capella.core.data.fa.validation.sequenceLink.SequenceLinkOppositeDirectionToFE"
+             id="DWF_DF_20"
+             isEnabledByDefault="true" lang="Java" mode="Batch"
+             name="DWF_DF_20 - SequenceLink is in opposite direction to involved FunctionalExchange"
+             severity="ERROR" statusCode="1">
+               <message>
+                  {0}
+               </message>
+               <description>
+                 This rule checks if a SequenceLink is in opposite direction to a involved FunctionalExchange
+               </description>
+               <target class="SequenceLink">
+               </target>
+            </constraint>
+            <constraint class="org.polarsys.capella.core.data.fa.validation.controlNode.ControlNodeInconsistentOperations"
+             id="DWF_DF_21"
+             isEnabledByDefault="true" lang="Java" mode="Batch"
+             name="DWF_DF_21 - Control Nodes inconsistent operations"
+             severity="WARNING" statusCode="1">
+               <message>
+                  ({0}) {1}.
+               </message>
+               <description>
+                  This rule checks the inconsistencies.
+               </description>
+               <target class="ControlNode">
+               </target>
+            </constraint>
          </constraints>
          <constraints categories="capella.category/design/coverage">
             <constraint class="org.polarsys.capella.core.data.fa.validation.componentPort.MDCHK_ComponentPort_Connections" id="DCOV_09" isEnabledByDefault="true" lang="java" mode="Batch" name="DCOV_09 - Component port Component Exchanges check" severity="WARNING" statusCode="1">
