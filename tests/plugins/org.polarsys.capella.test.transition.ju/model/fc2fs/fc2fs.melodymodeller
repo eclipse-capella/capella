@@ -145,6 +145,23 @@
             <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementFunction"
                 id="021ccf83-e4bc-4b19-a500-7d0cfb83abfd" involved="#c901be95-a6e2-47a3-a4a6-5278d98b15db"/>
           </ownedFunctionalChains>
+          <ownedFunctionalChains xsi:type="org.polarsys.capella.core.data.fa:FunctionalChain"
+              id="ec81f42a-b463-4902-b5c4-6b4797a04252" name="FunctionalChain 2">
+            <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainReference"
+                id="b9392898-93e2-479c-8207-fcb440ee8c31" involved="#dccc19a7-be7f-4aae-b29b-22ad966637dc"/>
+            <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainReference"
+                id="a5d70f22-aae7-4257-9e6b-abde2bc9132f" involved="#dccc19a7-be7f-4aae-b29b-22ad966637dc"/>
+            <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementFunction"
+                id="c680d535-441b-48dc-9e13-0bd10770fea7" involved="#f5e6438f-12f6-497d-8b82-df55ba0f7440"/>
+            <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementLink"
+                id="19127f31-56f5-4e88-a76e-631b8dcace32" involved="#4313613a-d23c-420c-b9f6-c057d996bf6a"
+                sourceReferenceHierarchy="#b9392898-93e2-479c-8207-fcb440ee8c31" source="#021ccf83-e4bc-4b19-a500-7d0cfb83abfd"
+                target="#c680d535-441b-48dc-9e13-0bd10770fea7"/>
+            <ownedFunctionalChainInvolvements xsi:type="org.polarsys.capella.core.data.fa:FunctionalChainInvolvementLink"
+                id="236640d2-59b7-47e8-8cab-1501d9955be0" involved="#4313613a-d23c-420c-b9f6-c057d996bf6a"
+                sourceReferenceHierarchy="#a5d70f22-aae7-4257-9e6b-abde2bc9132f" source="#021ccf83-e4bc-4b19-a500-7d0cfb83abfd"
+                target="#c680d535-441b-48dc-9e13-0bd10770fea7"/>
+          </ownedFunctionalChains>
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
               id="9681ed62-3519-4d4d-bdcb-c014d5a9f8f2" name="SF1">
             <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
@@ -163,6 +180,8 @@
               id="c901be95-a6e2-47a3-a4a6-5278d98b15db" name="SF3">
             <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
                 id="8d0f3259-3dd4-4bae-904c-acfdd9f2bf9f" name="FIP 1"/>
+            <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
+                id="63ba3396-4bf5-4d6f-89d3-cf2cd6b6edb8" name="FOP 1"/>
           </ownedFunctions>
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
               id="94dc4d78-4780-4c05-8127-992e7c7d10fe" name="SF4">
@@ -175,6 +194,11 @@
               id="19e29bbf-7fcd-468a-8966-49f21347cbbf" name="SF5">
             <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
                 id="e8194219-bee5-41e7-bb9b-23f6da17640d" name="FIP 1"/>
+          </ownedFunctions>
+          <ownedFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
+              id="f5e6438f-12f6-497d-8b82-df55ba0f7440" name="SystemFunction 6">
+            <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
+                id="3bf1524e-b796-4970-be59-3492e0d4e535" name="FIP 1"/>
           </ownedFunctions>
           <ownedFunctionRealizations xsi:type="org.polarsys.capella.core.data.fa:FunctionRealization"
               id="071b7c8d-6673-405e-8551-08483679b724" targetElement="#7105b2ce-56c5-4fc7-9e6b-cd312830c0ca"
@@ -191,6 +215,9 @@
           <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
               id="a86d03f6-5395-4635-92e9-19784c9084e7" name="FunctionalExchange 4"
               target="#e8194219-bee5-41e7-bb9b-23f6da17640d" source="#0a2b9ef6-bba7-4f90-8a65-11cdf2c903b8"/>
+          <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
+              id="4313613a-d23c-420c-b9f6-c057d996bf6a" name="FunctionalExchange 5"
+              target="#3bf1524e-b796-4970-be59-3492e0d4e535" source="#63ba3396-4bf5-4d6f-89d3-cf2cd6b6edb8"/>
         </ownedSystemFunctions>
       </ownedFunctionPkg>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.ctx:CapabilityPkg"

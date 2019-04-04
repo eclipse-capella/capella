@@ -25,7 +25,9 @@ import org.polarsys.capella.common.tools.report.config.registry.ReportManagerReg
 import org.polarsys.capella.core.data.capellacommon.CapellacommonFactory;
 import org.polarsys.capella.core.data.capellacommon.TransfoLink;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
+import org.polarsys.capella.core.data.fa.FaPackage;
 import org.polarsys.capella.core.data.fa.FunctionalChain;
+import org.polarsys.capella.core.data.fa.FunctionalChainInvolvement;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.data.interaction.EventReceiptOperation;
 import org.polarsys.capella.core.data.interaction.EventSentOperation;
@@ -41,6 +43,7 @@ import org.polarsys.capella.core.data.interaction.ScenarioKind;
 import org.polarsys.capella.core.data.interaction.SequenceMessage;
 import org.polarsys.capella.core.data.oa.OperationalProcess;
 import org.polarsys.capella.core.diagram.helpers.naming.DiagramNamingConstants;
+import org.polarsys.capella.core.model.helpers.FunctionalChainExt;
 import org.polarsys.capella.core.model.helpers.refmap.Pair;
 import org.polarsys.capella.core.model.utils.NamingHelper;
 
@@ -98,7 +101,7 @@ public class FC2FSInitialization {
     Scenario scenario = toScenario(fc);
 
     // Create InstanceRole for each function
-    for (AbstractFunction func : fc.getInvolvedFunctions()) {
+    for (AbstractFunction func : FunctionalChainExt.getFlatFunctions(fc)) {
       toInstanceRole(func, scenario);
     }
 
@@ -128,7 +131,9 @@ public class FC2FSInitialization {
 
   private void createSequenceMessagesWithReply(FunctionalChain fc, Scenario scenario) {
     logInfo("Functional Chain with return branch is enabled");
-    for (FunctionalExchange fe : fc.getInvolvedFunctionalExchanges()) {
+    for (FunctionalChainInvolvement fci : FunctionalChainExt.getFlatInvolvementsOf(fc,
+        FaPackage.Literals.FUNCTIONAL_EXCHANGE)) {
+      FunctionalExchange fe = (FunctionalExchange) fci.getInvolved();
       // Send Message
       SequenceMessage sequenceMessage = createSequenceMessage(scenario, fe, MessageKind.ASYNCHRONOUS_CALL);
       MessageEnd sendingEnd = createSendingEnd(scenario, fe, sequenceMessage);
@@ -150,7 +155,9 @@ public class FC2FSInitialization {
 
   private void createSequenceMessages(FunctionalChain fc, Scenario scenario) {
     logInfo("Functional Chain without return branch is enabled");
-    for (FunctionalExchange fe : fc.getInvolvedFunctionalExchanges()) {
+    for (FunctionalChainInvolvement fci : FunctionalChainExt.getFlatInvolvementsOf(fc,
+        FaPackage.Literals.FUNCTIONAL_EXCHANGE)) {
+      FunctionalExchange fe = (FunctionalExchange) fci.getInvolved();
       SequenceMessage sequenceMessage = createSequenceMessage(scenario, fe, MessageKind.ASYNCHRONOUS_CALL);
 
       // SendingEnd
