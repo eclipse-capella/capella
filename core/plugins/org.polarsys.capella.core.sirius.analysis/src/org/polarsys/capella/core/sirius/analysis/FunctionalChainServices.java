@@ -54,7 +54,6 @@ import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
-import org.polarsys.capella.common.data.modellingcore.ValueSpecification;
 import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.helpers.SimpleOrientedGraph;
 import org.polarsys.capella.core.commands.preferences.service.ScopedCapellaPreferencesStore;
@@ -78,13 +77,11 @@ import org.polarsys.capella.core.data.fa.SequenceLink;
 import org.polarsys.capella.core.data.fa.SequenceLinkEnd;
 import org.polarsys.capella.core.data.helpers.fa.services.FunctionExt;
 import org.polarsys.capella.core.data.information.ExchangeItem;
-import org.polarsys.capella.core.data.information.datavalue.OpaqueExpression;
 import org.polarsys.capella.core.data.interaction.AbstractCapability;
 import org.polarsys.capella.core.data.interaction.FunctionalChainAbstractCapabilityInvolvement;
 import org.polarsys.capella.core.data.oa.OperationalProcess;
 import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
-import org.polarsys.capella.core.model.helpers.ConstraintExt;
 import org.polarsys.capella.core.model.helpers.ExchangeItemExt;
 import org.polarsys.capella.core.model.helpers.FunctionalChainExt;
 import org.polarsys.capella.core.model.helpers.FunctionalExchangeExt;
@@ -1718,5 +1715,20 @@ public class FunctionalChainServices {
     sequenceLink.getLinks().add(newFCIL);
 
     return newFCIL;
+  }
+  
+  /**
+   * On a FCD diagram, the Delete From Model icon for a selected element is visible or not based on the condition.
+   * 
+   * @param element the semantic element to be deleted
+   * @return
+   */
+  public boolean checkDeleteConditionFCD(EObject element) {
+    // If it is a Functional Chain, it is a sub-region in the container of FCR, so it should not be deleted, because it
+    // might affect other diagrams.
+    if (element instanceof FunctionalChain) {
+      return false;
+    }
+    return true;
   }
 }
