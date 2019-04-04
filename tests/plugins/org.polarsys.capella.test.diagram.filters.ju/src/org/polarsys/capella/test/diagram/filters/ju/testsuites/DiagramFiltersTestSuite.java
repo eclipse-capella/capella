@@ -38,6 +38,9 @@ import org.polarsys.capella.test.diagram.filters.ju.testcases.HideTechnicalInter
 import org.polarsys.capella.test.diagram.filters.ju.testcases.HideTechnicalInterfaceForCEI;
 import org.polarsys.capella.test.diagram.filters.ju.testcases.HideTechnicalInterfaceForCII;
 import org.polarsys.capella.test.diagram.filters.ju.testcases.HideTechnicalInterfaceForIDB;
+import org.polarsys.capella.test.diagram.filters.ju.testcases.ShowExchangeItemsOnInteractions;
+import org.polarsys.capella.test.diagram.filters.ju.testcases.ShowExchangeItemsParametersOnInteractions;
+import org.polarsys.capella.test.diagram.filters.ju.testcases.ShowInteractionsWithExchangeItems;
 import org.polarsys.capella.test.diagram.filters.ju.testcases.ShowTriggerSourceFunctionForMSM;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
@@ -59,6 +62,9 @@ public class DiagramFiltersTestSuite extends BasicTestSuite {
   @Override
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
+    tests.add(new ShowExchangeItemsOnInteractions());
+    tests.add(new ShowInteractionsWithExchangeItems());
+    tests.add(new ShowExchangeItemsParametersOnInteractions());
     tests.add(new HideControlNodesForSFBD());
     tests.add(new HideControlNodesForLFBD());
     tests.add(new HideControlNodesForPFBD());
