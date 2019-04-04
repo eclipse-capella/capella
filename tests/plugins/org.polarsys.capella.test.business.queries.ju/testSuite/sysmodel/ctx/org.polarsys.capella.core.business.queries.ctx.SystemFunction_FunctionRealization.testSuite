@@ -270,3 +270,88 @@ inputId = 79833c87-00cc-4571-9b0b-6b69a6d2c67e
 resultIds = {
 }
 
+queryIdentifier = org.polarsys.capella.core.business.queries.ctx.SystemFunction_FunctionRealization-getAvailableElements
+inputId = 8b262afc-2a70-492b-8f83-144dc945d57c
+resultIds = {
+    1cda633f-074d-48ef-b671-41268be9ee05
+    28b7a614-2eb7-46a1-8f9f-3c096092b26d
+    391f335f-1511-4f1e-a53b-66eff1912de7
+    7004d3bd-a68d-47dc-9ca6-6dbf18c40c1e
+    d2e0ce90-abc6-4f36-aae7-5d6c1d3d49ce
+    e64aa4b7-8e0b-4002-8fbd-7f7965bdbb2a
+    e7a625c3-82ca-4559-ae28-8ac82cb1c509
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.ctx.SystemFunction_FunctionRealization-getCurrentElements
+inputId = 8b262afc-2a70-492b-8f83-144dc945d57c
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.ctx.SystemFunction_FunctionRealization-getAvailableElements
+inputId = a7dca089-92ea-4233-b77a-15b52f436a23
+resultIds = {
+    1cda633f-074d-48ef-b671-41268be9ee05
+    28b7a614-2eb7-46a1-8f9f-3c096092b26d
+    391f335f-1511-4f1e-a53b-66eff1912de7
+    7004d3bd-a68d-47dc-9ca6-6dbf18c40c1e
+    d2e0ce90-abc6-4f36-aae7-5d6c1d3d49ce
+    e64aa4b7-8e0b-4002-8fbd-7f7965bdbb2a
+    e7a625c3-82ca-4559-ae28-8ac82cb1c509
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.ctx.SystemFunction_FunctionRealization-getCurrentElements
+inputId = a7dca089-92ea-4233-b77a-15b52f436a23
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.ctx.SystemFunction_FunctionRealization-getAvailableElements
+inputId = 99b81e15-bbb4-4009-b4fd-18bc520b12ff
+resultIds = {
+    1cda633f-074d-48ef-b671-41268be9ee05
+    28b7a614-2eb7-46a1-8f9f-3c096092b26d
+    391f335f-1511-4f1e-a53b-66eff1912de7
+    7004d3bd-a68d-47dc-9ca6-6dbf18c40c1e
+    d2e0ce90-abc6-4f36-aae7-5d6c1d3d49ce
+    e64aa4b7-8e0b-4002-8fbd-7f7965bdbb2a
+    e7a625c3-82ca-4559-ae28-8ac82cb1c509
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.ctx.SystemFunction_FunctionRealization-getCurrentElements
+inputId = 99b81e15-bbb4-4009-b4fd-18bc520b12ff
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.ctx.SystemFunction_FunctionRealization-getAvailableElements
+inputId = 99a1cae7-2b2d-4721-8ab4-39c59d00417e
+resultIds = {
+    1cda633f-074d-48ef-b671-41268be9ee05
+    28b7a614-2eb7-46a1-8f9f-3c096092b26d
+    391f335f-1511-4f1e-a53b-66eff1912de7
+    7004d3bd-a68d-47dc-9ca6-6dbf18c40c1e
+    d2e0ce90-abc6-4f36-aae7-5d6c1d3d49ce
+    e64aa4b7-8e0b-4002-8fbd-7f7965bdbb2a
+    e7a625c3-82ca-4559-ae28-8ac82cb1c509
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.ctx.SystemFunction_FunctionRealization-getCurrentElements
+inputId = 99a1cae7-2b2d-4721-8ab4-39c59d00417e
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.ctx.SystemFunction_FunctionRealization-getAvailableElements
+inputId = 7424188e-66a7-4b4d-9dff-f4b04ecadf74
+resultIds = {
+    1cda633f-074d-48ef-b671-41268be9ee05
+    28b7a614-2eb7-46a1-8f9f-3c096092b26d
+    391f335f-1511-4f1e-a53b-66eff1912de7
+    7004d3bd-a68d-47dc-9ca6-6dbf18c40c1e
+    d2e0ce90-abc6-4f36-aae7-5d6c1d3d49ce
+    e64aa4b7-8e0b-4002-8fbd-7f7965bdbb2a
+    e7a625c3-82ca-4559-ae28-8ac82cb1c509
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.ctx.SystemFunction_FunctionRealization-getCurrentElements
+inputId = 7424188e-66a7-4b4d-9dff-f4b04ecadf74
+resultIds = {
+}
+

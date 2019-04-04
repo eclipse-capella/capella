@@ -162,6 +162,61 @@ resultIds = {
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.fa.FunctionalExchange_Categories-getAvailableElements
+inputId = a5586fa3-2f0f-4293-ba56-0c8e5ec5817b
+resultIds = {
+    32f7d8ad-372b-436c-9e28-981fd566624d
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.fa.FunctionalExchange_Categories-getCurrentElements
+inputId = a5586fa3-2f0f-4293-ba56-0c8e5ec5817b
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.fa.FunctionalExchange_Categories-getAvailableElements
+inputId = d90f9b93-d118-4649-a0a3-1b9b5b2c2143
+resultIds = {
+    32f7d8ad-372b-436c-9e28-981fd566624d
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.fa.FunctionalExchange_Categories-getCurrentElements
+inputId = d90f9b93-d118-4649-a0a3-1b9b5b2c2143
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.fa.FunctionalExchange_Categories-getAvailableElements
+inputId = b862094e-547f-48ae-ab86-a637cde7eb11
+resultIds = {
+    32f7d8ad-372b-436c-9e28-981fd566624d
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.fa.FunctionalExchange_Categories-getCurrentElements
+inputId = b862094e-547f-48ae-ab86-a637cde7eb11
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.fa.FunctionalExchange_Categories-getAvailableElements
+inputId = 309f2ef2-e16e-41ad-a69e-535ab8f0aaa5
+resultIds = {
+    32f7d8ad-372b-436c-9e28-981fd566624d
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.fa.FunctionalExchange_Categories-getCurrentElements
+inputId = 309f2ef2-e16e-41ad-a69e-535ab8f0aaa5
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.fa.FunctionalExchange_Categories-getAvailableElements
+inputId = 898d7467-9cdd-4734-899b-4bf01732a3ee
+resultIds = {
+    32f7d8ad-372b-436c-9e28-981fd566624d
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.fa.FunctionalExchange_Categories-getCurrentElements
+inputId = 898d7467-9cdd-4734-899b-4bf01732a3ee
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.fa.FunctionalExchange_Categories-getAvailableElements
 inputId = 268c2087-83a1-4ef2-a09b-859a212b66ad
 resultIds = {
     df2f9005-85ed-447b-9567-2ca934d24591

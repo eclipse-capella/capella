@@ -35,6 +35,7 @@ import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.fa.Funct
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.fa.FunctionOutputPort_ProvidedInterface;
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.fa.FunctionOutputPort_RealizedFunctionOutputPort;
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.fa.FunctionOutputPort_RequiredInterface;
+import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.fa.FunctionalChainInvolvementLink_ExchangeItems;
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.fa.FunctionalChain_AvailableInStates;
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.fa.FunctionalChain_RealizedFunctionalChains;
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.fa.FunctionalExchange_Categories;
@@ -42,6 +43,7 @@ import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.fa.Funct
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.fa.FunctionalExchange_FunctionalExchangeRealizations;
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.fa.FunctionalExchange_Source;
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.fa.FunctionalExchange_Target;
+import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.fa.SequenceLink_Links;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
 
@@ -77,6 +79,8 @@ public class FaBusinessQueryTestSuite extends BasicTestSuite {
     tests.add(new ExchangeCategory_Exchanges());
     tests.add(new FunctionalChain_AvailableInStates());
     tests.add(new FunctionalChain_RealizedFunctionalChains());
+    tests.add(new FunctionalChainInvolvementLink_ExchangeItems());
+    tests.add(new SequenceLink_Links());
     tests.add(new FunctionalExchange_Categories());
     tests.add(new FunctionalExchange_Source());
     tests.add(new FunctionalExchange_Target());

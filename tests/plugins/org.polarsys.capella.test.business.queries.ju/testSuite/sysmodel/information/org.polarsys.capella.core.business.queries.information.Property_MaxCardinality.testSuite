@@ -350,6 +350,56 @@ resultIds = {
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.information.Property_MaxCardinality-getAvailableElements
+inputId = 8b262afc-2a70-492b-8f83-144dc945d57c
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.information.Property_MaxCardinality-getCurrentElements
+inputId = 8b262afc-2a70-492b-8f83-144dc945d57c
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.information.Property_MaxCardinality-getAvailableElements
+inputId = a7dca089-92ea-4233-b77a-15b52f436a23
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.information.Property_MaxCardinality-getCurrentElements
+inputId = a7dca089-92ea-4233-b77a-15b52f436a23
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.information.Property_MaxCardinality-getAvailableElements
+inputId = 99b81e15-bbb4-4009-b4fd-18bc520b12ff
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.information.Property_MaxCardinality-getCurrentElements
+inputId = 99b81e15-bbb4-4009-b4fd-18bc520b12ff
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.information.Property_MaxCardinality-getAvailableElements
+inputId = 99a1cae7-2b2d-4721-8ab4-39c59d00417e
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.information.Property_MaxCardinality-getCurrentElements
+inputId = 99a1cae7-2b2d-4721-8ab4-39c59d00417e
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.information.Property_MaxCardinality-getAvailableElements
+inputId = 7424188e-66a7-4b4d-9dff-f4b04ecadf74
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.information.Property_MaxCardinality-getCurrentElements
+inputId = 7424188e-66a7-4b4d-9dff-f4b04ecadf74
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.information.Property_MaxCardinality-getAvailableElements
 inputId = edffb494-2a85-4fa9-b47f-948f73efe495
 resultIds = {
 }

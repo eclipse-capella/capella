@@ -14,6 +14,7 @@ inputId = 9b2735da-e950-4ca7-b7d4-8aa4c0cafbb1
 resultIds = {
     0f49d1ed-75b4-4d60-bc1f-11a29168bf1d
     74e65d52-1ca3-41f9-b8b1-cf2b076c220d
+    9909d385-1f88-4c04-b35d-29409554d44f
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.ctx.Capability_InvolvedFunctionalChains-getCurrentElements
@@ -26,6 +27,7 @@ inputId = a2730933-77d1-4a89-998b-9a9115a45ff0
 resultIds = {
     0f49d1ed-75b4-4d60-bc1f-11a29168bf1d
     74e65d52-1ca3-41f9-b8b1-cf2b076c220d
+    9909d385-1f88-4c04-b35d-29409554d44f
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.ctx.Capability_InvolvedFunctionalChains-getCurrentElements
@@ -39,6 +41,7 @@ inputId = b8179383-55df-498a-bd84-6e05be5b64c0
 resultIds = {
     0f49d1ed-75b4-4d60-bc1f-11a29168bf1d
     74e65d52-1ca3-41f9-b8b1-cf2b076c220d
+    9909d385-1f88-4c04-b35d-29409554d44f
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.ctx.Capability_InvolvedFunctionalChains-getCurrentElements
@@ -51,6 +54,7 @@ inputId = e81ce7ee-39c5-4a52-b22d-08419c76fab4
 resultIds = {
     0f49d1ed-75b4-4d60-bc1f-11a29168bf1d
     74e65d52-1ca3-41f9-b8b1-cf2b076c220d
+    9909d385-1f88-4c04-b35d-29409554d44f
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.ctx.Capability_InvolvedFunctionalChains-getCurrentElements

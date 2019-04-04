@@ -10,13 +10,11 @@
  *******************************************************************************/
 package org.polarsys.capella.core.model.helpers;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.helpers.EObjectExt;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.fa.FaPackage;
 import org.polarsys.capella.core.data.fa.FunctionalChainInvolvementFunction;
 import org.polarsys.capella.core.data.fa.FunctionalChainInvolvementLink;
@@ -29,7 +27,7 @@ public class SequenceLinkExt {
       HashSet<FunctionalChainInvolvementFunction> closestSemanticFCIFunctions) {
 
     SequenceLinkEnd targetEnd = seqLink.getTarget();
-    if (targetEnd instanceof CapellaElement && targetEnd instanceof FunctionalChainInvolvementFunction) {
+    if (targetEnd instanceof FunctionalChainInvolvementFunction) {
       closestSemanticFCIFunctions.add((FunctionalChainInvolvementFunction) targetEnd);
     } else {
 
@@ -43,7 +41,8 @@ public class SequenceLinkExt {
     }
   }
 
-  public static HashSet<FunctionalChainInvolvementFunction> findClosestSemanticFCIFunctionsAsTargets(SequenceLink seqLink) {
+  public static HashSet<FunctionalChainInvolvementFunction> findClosestSemanticFCIFunctionsAsTargets(
+      SequenceLink seqLink) {
 
     HashSet<FunctionalChainInvolvementFunction> closestSemanticFCIFunctionAsTarget = new HashSet<>();
     findClosestSemanticFCIFunctionsAsTargets(seqLink, closestSemanticFCIFunctionAsTarget);
@@ -55,7 +54,7 @@ public class SequenceLinkExt {
       HashSet<FunctionalChainInvolvementFunction> closestSemanticFCIFunctions) {
 
     SequenceLinkEnd sourceEnd = seqLink.getSource();
-    if (sourceEnd instanceof CapellaElement && sourceEnd instanceof FunctionalChainInvolvementFunction) {
+    if (sourceEnd instanceof FunctionalChainInvolvementFunction) {
       closestSemanticFCIFunctions.add((FunctionalChainInvolvementFunction) sourceEnd);
     } else {
 
@@ -86,13 +85,10 @@ public class SequenceLinkExt {
 
     for (FunctionalChainInvolvementFunction function : incomingFunctions) {
 
-      List<FunctionalChainInvolvementLink> allLinks = new ArrayList<>();
-      allLinks.addAll(function.getIncomingInvolvementLinks());
-      allLinks.addAll(function.getOutgoingInvolvementLinks());
+      List<FunctionalChainInvolvementLink> outgoingInvolvementLinks = function.getOutgoingInvolvementLinks();
 
-      for (FunctionalChainInvolvementLink link : allLinks) {
-        if ((outgoingFunctions.contains(link.getTarget()) && !link.getTarget().equals(function))
-            || (outgoingFunctions.contains(link.getSource()) && !link.getSource().equals(function))) {
+      for (FunctionalChainInvolvementLink link : outgoingInvolvementLinks) {
+        if ((outgoingFunctions.contains(link.getTarget()) && !link.getTarget().equals(function))) {
           involvementLinks.add(link);
         }
       }
