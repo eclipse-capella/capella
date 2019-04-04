@@ -1209,27 +1209,21 @@ public class FunctionalChainServices {
    */
   public boolean canCreateLinksEdge(DEdge sourceEdge, DEdge targetEdge) {
 
-    EdgeTarget sourceNode1 = sourceEdge.getSourceNode();
-    EdgeTarget sourceNode2 = targetEdge.getSourceNode();
+    Set<DSemanticDecorator> sourceViews1 = findFirstLevelFCIFOrFCRViewsAsSource(sourceEdge);
+    Set<DSemanticDecorator> sourceViews2 = findFirstLevelFCIFOrFCRViewsAsSource(targetEdge);
 
-    List<FunctionalChainReference> sourceNode1Hierarchy = FunctionalChainReferenceHierarchyHelper
-        .computeHierarchy(sourceNode1);
-    List<FunctionalChainReference> sourceNode2Hierarchy = FunctionalChainReferenceHierarchyHelper
-        .computeHierarchy(sourceNode2);
+    sourceViews1.retainAll(sourceViews2);
 
-    if (!sourceNode1Hierarchy.equals(sourceNode2Hierarchy)) {
+    if (sourceViews1.isEmpty()) {
       return false;
     }
 
-    EdgeTarget targetNode1 = sourceEdge.getTargetNode();
-    EdgeTarget targetNode2 = targetEdge.getTargetNode();
+    Set<DSemanticDecorator> targetViews1 = findFirstLevelFCIFOrFCRViewsAsTarget(sourceEdge);
+    Set<DSemanticDecorator> targetViews2 = findFirstLevelFCIFOrFCRViewsAsTarget(targetEdge);
 
-    List<FunctionalChainReference> targetNode1Hierarchy = FunctionalChainReferenceHierarchyHelper
-        .computeHierarchy(targetNode1);
-    List<FunctionalChainReference> targetNode2Hierarchy = FunctionalChainReferenceHierarchyHelper
-        .computeHierarchy(targetNode2);
+    targetViews1.retainAll(targetViews2);
 
-    return targetNode1Hierarchy.equals(targetNode2Hierarchy);
+    return !targetViews1.isEmpty();
   }
 
   /**
@@ -1377,6 +1371,7 @@ public class FunctionalChainServices {
 
   /**
    * Precondition for the creation of a link between a Sequence Link and a FCIL to a FE
+   * 
    * @param the
    *          semantic source
    * @param the
@@ -1386,7 +1381,7 @@ public class FunctionalChainServices {
   public boolean isValidLinks(ReferenceHierarchyContext source, ReferenceHierarchyContext target) {
     return isValidAssociation(source, target) || isValidAssociation(target, source);
   }
-  
+
   /**
    * Return true if first node is a SequenceLink and second node a FunctionalChainInvolvementLink Also checks that first
    * and second node have the same source and targets
@@ -1406,8 +1401,10 @@ public class FunctionalChainServices {
           // check that seqLinks has not already a link to link (fcil)
           if (!seqLink.getLinks().contains(second)) {
             // check that the source and target of first and second nodes are the same
-            HashSet<FunctionalChainInvolvementFunction> slClosestFCIFSources = SequenceLinkExt.findClosestSemanticFCIFunctionsAsSources(seqLink);
-            HashSet<FunctionalChainInvolvementFunction> slClosestFCIFTargets = SequenceLinkExt.findClosestSemanticFCIFunctionsAsTargets(seqLink);
+            HashSet<FunctionalChainInvolvementFunction> slClosestFCIFSources = SequenceLinkExt
+                .findClosestSemanticFCIFunctionsAsSources(seqLink);
+            HashSet<FunctionalChainInvolvementFunction> slClosestFCIFTargets = SequenceLinkExt
+                .findClosestSemanticFCIFunctionsAsTargets(seqLink);
             return (slClosestFCIFSources.contains(link.getSource()) && slClosestFCIFTargets.contains(link.getTarget()));
           }
         }
@@ -1459,7 +1456,7 @@ public class FunctionalChainServices {
     }
     return false;
   }
-  
+
   /**
    * For a given sequenceLink DEdge, find all first-meet DNodes representing FCIFunction by following the outgoing edges
    * to the target of the given edge.
@@ -1478,7 +1475,7 @@ public class FunctionalChainServices {
           .forEach(s -> findFlatClosestFCIFunctionViewsAsTarget(s, closestFCIFunctionViews)); //
     }
   }
-  
+
   /**
    * For a given sequenceLink DEdge, find all first-meet DNodes representing FCIFunction by following the outgoing edges
    * to the target of the given edge.
@@ -1510,7 +1507,7 @@ public class FunctionalChainServices {
           .forEach(s -> findFlatClosestFCIFunctionViewsAsSource(s, closestFCIFunctionViews)); //
     }
   }
-  
+
   /**
    * For a given sequenceLink DEdge, find all first-meet DNodes representing FCIFunction by following the incoming edges
    * to the source of the given edge.
@@ -1519,13 +1516,76 @@ public class FunctionalChainServices {
    * @return
    */
   public List<DNode> findFlatClosestFCIFunctionViewsAsSource(DEdge seqLinkEdge) {
-    List<DNode> closestFCIFunctionViews = new ArrayList<>();
-    findFlatClosestFCIFunctionViewsAsSource(seqLinkEdge, closestFCIFunctionViews);
+    List<DNode> firstLevelViews = new ArrayList<>();
+    findFlatClosestFCIFunctionViewsAsSource(seqLinkEdge, firstLevelViews);
+    return firstLevelViews;
+  }
+
+  private void findFirstLevelFCIFOrFCRViewsAsSource(DEdge edge, Set<DSemanticDecorator> firstLevelViews) {
+    EdgeTarget edgeTarget = edge.getSourceNode();
+    if (edgeTarget instanceof DSemanticDecorator) {
+      DSemanticDecorator decorator = (DSemanticDecorator) edgeTarget;
+      EObject target = decorator.getTarget();
+
+      if (target instanceof FunctionalChainInvolvementFunction || target instanceof FunctionalChainReference) {
+        firstLevelViews.add(decorator);
+      } else {
+        edgeTarget.getIncomingEdges() //
+            .stream() //
+            .forEach(incomingEdge -> findFirstLevelFCIFOrFCRViewsAsSource(incomingEdge, firstLevelViews)); //
+      }
+    }
+  }
+
+  /**
+   * For a given DEdge, find all first level DSemanticDecorators representing a FCIF or a FCR, by following the incoming
+   * edges to the source of the given edge.
+   * 
+   * @param edge
+   *          the given edge
+   * @return the first level DSemanticDecorators representing a FCIF or a FCR, by following the incoming edges to the
+   *         source of the given edge.
+   */
+  public Set<DSemanticDecorator> findFirstLevelFCIFOrFCRViewsAsSource(DEdge edge) {
+    Set<DSemanticDecorator> firstLevelViews = new HashSet<>();
+    findFirstLevelFCIFOrFCRViewsAsSource(edge, firstLevelViews);
+    return firstLevelViews;
+  }
+
+  private void findFirstLevelFCIFOrFCRViewsAsTarget(DEdge edge, Set<DSemanticDecorator> firstLevelViews) {
+    EdgeTarget edgeTarget = edge.getTargetNode();
+    if (edgeTarget instanceof DSemanticDecorator) {
+      DSemanticDecorator decorator = (DSemanticDecorator) edgeTarget;
+      EObject target = decorator.getTarget();
+
+      if (target instanceof FunctionalChainInvolvementFunction || target instanceof FunctionalChainReference) {
+        firstLevelViews.add(decorator);
+      } else {
+        edgeTarget.getOutgoingEdges()//
+            .stream() //
+            .forEach(outgoingEdge -> findFirstLevelFCIFOrFCRViewsAsTarget(outgoingEdge, firstLevelViews)); //
+      }
+    }
+  }
+
+  /**
+   * For a given DEdge, find all first level DSemanticDecorators representing a FCIF or a FCR, by following the outgoing
+   * edges to the target of the given edge.
+   * 
+   * @param edge
+   *          the given edge
+   * @return the first level DSemanticDecorators representing a FCIF or a FCR, by following the incoming edges to the
+   *         source of the given edge.
+   */
+  public Set<DSemanticDecorator> findFirstLevelFCIFOrFCRViewsAsTarget(DEdge edge) {
+    Set<DSemanticDecorator> closestFCIFunctionViews = new HashSet<>();
+    findFirstLevelFCIFOrFCRViewsAsTarget(edge, closestFCIFunctionViews);
     return closestFCIFunctionViews;
   }
-  
+
   /**
    * From a list of DNode whose target is type of FCIF, returns list of Abstract Function that are involved.
+   * 
    * @param fcifNodes
    * @return
    */
@@ -1539,8 +1599,9 @@ public class FunctionalChainServices {
   }
 
   /**
-   * For a given AbstractFunction and list of DNode whose target is of type FCIF, 
-   * return list of DNode involving the given function
+   * For a given AbstractFunction and list of DNode whose target is of type FCIF, return list of DNode involving the
+   * given function
+   * 
    * @param fcifViews
    * @param function
    * @return
@@ -1550,7 +1611,7 @@ public class FunctionalChainServices {
         .filter(s -> ((FunctionalChainInvolvementFunction) s.getTarget()).getInvolved().equals(function)) //
         .collect(Collectors.toList()); //
   }
-  
+
   public EObject accelerateOnSequenceLinkEdge(DEdge seqLinkEdge) {
     List<DNode> availableSourceFCIFViews = findFlatClosestFCIFunctionViewsAsSource(seqLinkEdge);
     List<DNode> availableTargetFCIFViews = findFlatClosestFCIFunctionViewsAsTarget(seqLinkEdge);
@@ -1574,27 +1635,27 @@ public class FunctionalChainServices {
     Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
     AdapterFactory adapterFactory = CapellaAdapterFactoryProvider.getInstance().getAdapterFactory();
 
-    SelectOrCreateFunctionalExchangeDialog dialog = new SelectOrCreateFunctionalExchangeDialog(shell, ted, adapterFactory, availableFEs,
-        availableSourceFunctions, availableTargetFunctions);
+    SelectOrCreateFunctionalExchangeDialog dialog = new SelectOrCreateFunctionalExchangeDialog(shell, ted,
+        adapterFactory, availableFEs, availableSourceFunctions, availableTargetFunctions);
     int returnCode = dialog.open();
 
     NewFEData newFEData = null;
     AbstractFunction feSource = null;
     AbstractFunction feTarget = null;
     FunctionalExchange involvedFE = null;
-    
+
     if (returnCode == SelectOrCreateFunctionalExchangeDialog.CREATION) {
       newFEData = dialog.getCreation();
       feSource = newFEData.getSource();
       feTarget = newFEData.getTarget();
     }
-    
+
     if (returnCode == SelectOrCreateFunctionalExchangeDialog.SELECTION) {
       involvedFE = dialog.getSelection().stream().findFirst().orElse(null);
       feSource = FunctionalExchangeExt.getSourceFunction(involvedFE);
       feTarget = FunctionalExchangeExt.getTargetFunction(involvedFE);
     }
-    
+
     List<DNode> possibleSourceFCIFNodes = getFCIFViewsInvolvingFunction(availableSourceFCIFViews, feSource);
     List<DNode> possibleTargetFCIFNodes = getFCIFViewsInvolvingFunction(availableTargetFCIFViews, feTarget);
 
@@ -1605,7 +1666,7 @@ public class FunctionalChainServices {
       String message = "Impossible to create Functional Chain Involvement Link due to ambiguity of source and target";
       MessageDialog.openInformation(shell, title, message);
     }
-    
+
     if (sourceSize == 1 && targetSize == 1) {
       if (newFEData != null) {
         involvedFE = FunctionalExchangeExt.createFunctionalExchange(feSource, feTarget);
@@ -1616,7 +1677,7 @@ public class FunctionalChainServices {
       DNode targetFCIFNode = possibleTargetFCIFNodes.get(0);
       createFCILink(sourceFCIFNode, targetFCIFNode, involvedFE, seqLinkEdge);
     }
-    
+
     return seqLinkEdge;
   }
 
@@ -1626,11 +1687,11 @@ public class FunctionalChainServices {
     }
     return link;
   }
-  
+
   /**
-   * - Create a new FCILink between 2 FCIFunction nodes and involve the given functional exchange. 
-   * - Add the new created FCILink into list of links of the given sequence link edge. 
-   * - Add the new created FCILink to list of involvements of the given sequence link edge's functional chain
+   * - Create a new FCILink between 2 FCIFunction nodes and involve the given functional exchange. - Add the new created
+   * FCILink into list of links of the given sequence link edge. - Add the new created FCILink to list of involvements
+   * of the given sequence link edge's functional chain
    * 
    * @param sourceFCIF
    * @param targetFCIF
