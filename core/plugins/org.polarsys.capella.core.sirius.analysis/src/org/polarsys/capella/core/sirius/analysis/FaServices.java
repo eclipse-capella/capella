@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.polarsys.capella.core.sirius.analysis;
 
+import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
+
 import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -23,7 +25,6 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.UniqueEList;
@@ -157,8 +158,6 @@ import org.polarsys.capella.core.sirius.analysis.showhide.ShowHideFunction;
 import org.polarsys.capella.core.sirius.analysis.showhide.ShowHideFunctionalExchange;
 import org.polarsys.capella.core.sirius.analysis.showhide.ShowHideInvisibleExchangeCategory;
 import org.polarsys.capella.core.sirius.analysis.tool.HashMapSet;
-
-import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
 
 /**
  * Services for Functional Analysis Elements
@@ -2708,8 +2707,8 @@ public class FaServices {
           targetPort = FaFactory.eINSTANCE.createComponentPort();
           targetComponent.getOwnedFeatures().add(targetPort);
 
-          if(sourcePort != null) {
-            targetPort.setKind(sourcePort.getKind());            
+          if (sourcePort != null) {
+            targetPort.setKind(sourcePort.getKind());
           }
           if (targetPort.getKind() == ComponentPortKind.FLOW) {
             targetPort.setOrientation(OrientationPortKind.IN);
@@ -4853,7 +4852,8 @@ public class FaServices {
       if (contextualElement instanceof AbstractFunction) {
         contextualFunctions.add((AbstractFunction) contextualElement);
 
-        for (AbstractFunction function : getCache(FunctionExt::getAllAbstractFunctions, (AbstractFunction) contextualElement)) {
+        for (AbstractFunction function : getCache(FunctionExt::getAllAbstractFunctions,
+            (AbstractFunction) contextualElement)) {
           for (FunctionalExchange exchange : FunctionExt.getIncomingExchange(function)) {
             AbstractFunction source = FunctionalExchangeExt.getSourceFunction(exchange);
             AbstractFunction target = FunctionalExchangeExt.getTargetFunction(exchange);
@@ -4878,15 +4878,20 @@ public class FaServices {
           }
         }
       } else if (contextualElement instanceof FunctionalChain) {
-        contextualFunctionalChains.add(contextualElement);
+        FunctionalChain functionalChain = (FunctionalChain) contextualElement;
+        contextualFunctionalChains.add(functionalChain);
 
-        for (FunctionalChainInvolvement involvement : FunctionalChainExt
-            .getInvolvementsOf((FunctionalChain) contextualElement, FaPackage.Literals.ABSTRACT_FUNCTION)) {
-          contextualFunctions.add((AbstractFunction) involvement.getInvolved());
-        }
-        for (FunctionalChainInvolvement involvement : FunctionalChainExt
-            .getInvolvementsOf((FunctionalChain) contextualElement, FaPackage.Literals.FUNCTIONAL_EXCHANGE)) {
-          contextualFunctionalExchanges.add((FunctionalExchange) involvement.getInvolved());
+        // get all the involvements, including those from involved functional chains
+        Collection<FunctionalChainInvolvement> flatInvolvements = FunctionalChainExt
+            .getFlatInvolvements(functionalChain);
+
+        for (FunctionalChainInvolvement involvement : flatInvolvements) {
+          InvolvedElement involved = involvement.getInvolved();
+          if (involved instanceof AbstractFunction) {
+            contextualFunctions.add((AbstractFunction) involved);
+          } else if (involved instanceof FunctionalExchange) {
+            contextualFunctionalExchanges.add((FunctionalExchange) involved);
+          }
         }
 
       } else if (contextualElement instanceof Scenario) {
@@ -5171,9 +5176,9 @@ public class FaServices {
 
     AbstractShowHide showHideExchangeCategoryService = new ShowHideExchangeCategory(content);
 
-    List<AbstractFunction> abstractFunctions = functionRelatedDiagramElements.stream()
-        .map(DDiagramElement::getTarget).distinct().filter(AbstractFunction.class::isInstance)
-        .map(AbstractFunction.class::cast).collect(Collectors.toList());
+    List<AbstractFunction> abstractFunctions = functionRelatedDiagramElements.stream().map(DDiagramElement::getTarget)
+        .distinct().filter(AbstractFunction.class::isInstance).map(AbstractFunction.class::cast)
+        .collect(Collectors.toList());
 
     // 1. SHOW / HIDE EDGES OF EXCHANGE CATEGORIES
     // Display the categories between parts if they are part of selectedElements, or hide them
