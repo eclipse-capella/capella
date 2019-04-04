@@ -243,17 +243,17 @@ public class FunctionalChainServices {
       DNode chainView = entry.getValue();
       updateFunctionalChainNodeColor(chainView, functionalChains.values());
 
-      InvolvementGraph g = FunctionalChainCache.getInstance().getInvolvementGraph(chain);
+      InvolvementGraph graph = FunctionalChainCache.getInstance().getInvolvementGraph(chain);
 
       RGBValues color = ShapeUtil.getNodeColorStyle(chainView);
       if (color == null) {
         continue;
       }
 
-      // Add color for starting and ending functions
-      for (InvolvementNode node : g.getNodes().values()) {
-        if (g.isInvolvingFunction(node) && (g.isStartingFunction(node) || g.isEndingFunction(node))) {
-          AbstractFunction function = g.getInvolvedFunction(node);
+      // Add color for starting and ending functions and control nodes
+      for (InvolvementNode node : graph.getNodes().values()) {
+        if (graph.isInvolvingFunction(node) && (graph.isStartingFunction(node) || graph.isEndingFunction(node))) {
+          AbstractFunction function = graph.getInvolvedFunction(node);
           Collection<DSemanticDecorator> views = getBestDisplayedFunctionNode(function, diagram);
           for (DSemanticDecorator view : views) {
             colors.put(view, color);
@@ -261,11 +261,18 @@ public class FunctionalChainServices {
         }
       }
 
-      // Add color for related functional exchanges
-      for (InvolvementEdge edge : g.getEdges().values()) {
-        if (g.isInvolvingFunctionalExchange(edge)) {
-          FunctionalExchange fe = g.getInvolvedFunctionalExchange(edge);
-          for (DSemanticDecorator view : DiagramServices.getDiagramServices().getDiagramElements(diagram, fe)) {
+      // Add color for related functional exchanges and sequence links
+      for (InvolvementEdge edge : graph.getEdges().values()) {
+        EObject semantic = null;
+
+        if (graph.isInvolvingFunctionalExchange(edge)) {
+          semantic = graph.getInvolvedFunctionalExchange(edge);
+        } else if (graph.isSequenceLink(edge)) {
+          semantic = graph.getSequenceLink(edge);
+        }
+
+        if (semantic != null) {
+          for (DSemanticDecorator view : DiagramServices.getDiagramServices().getDiagramElements(diagram, semantic)) {
             colors.put(view, color);
           }
         }
@@ -273,14 +280,12 @@ public class FunctionalChainServices {
 
       // Create and highlight internal links
       if (!(chain instanceof OperationalProcess)) {
-        InternalLinksGraph linksGraph = FunctionalChainCache.getInstance().getInternalLinksGraph(g);
+        InternalLinksGraph linksGraph = FunctionalChainCache.getInstance().getInternalLinksGraph(graph);
         for (InternalLinkEdge edge : linksGraph.getEdges().values()) {
           FunctionPort source = edge.getSource().getSemantic();
           FunctionPort target = edge.getTarget().getSemantic();
-          DDiagramElement sourceNode = (DDiagramElement) DiagramServices.getDiagramServices().getDiagramElement(diagram,
-              (EObject) source);
-          DDiagramElement targetNode = (DDiagramElement) DiagramServices.getDiagramServices().getDiagramElement(diagram,
-              (EObject) target);
+          DDiagramElement sourceNode = DiagramServices.getDiagramServices().getDiagramElement(diagram, source);
+          DDiagramElement targetNode = DiagramServices.getDiagramServices().getDiagramElement(diagram, target);
           if (sourceNode != null && targetNode != null) {
             DEdge link = createInternalLink((EdgeTarget) sourceNode, (EdgeTarget) targetNode, chain);
             if (link != null) {
@@ -296,17 +301,17 @@ public class FunctionalChainServices {
       EObject target = view.getTarget();
       if (target instanceof AbstractFunction) {
         if (colors.containsKey(view)) {
-          customizeSourceFunctionStyle((AbstractDNode) view, ShapeUtil.getColor(colors.get(view)));
+          customizeSourceFunctionStyle(view, ShapeUtil.getColor(colors.get(view)));
         } else {
           resetFunctionStyle(view);
         }
       }
     }
 
-    // Update all functional exchanges
+    // Update all functional exchanges and sequence links
     for (DEdge view : diagram.getEdges()) {
       EObject target = view.getTarget();
-      if (target instanceof FunctionalExchange) {
+      if (target instanceof FunctionalExchange || target instanceof SequenceLink) {
         if (colors.containsKey(view)) {
           customizeFunctionalChainEdgeStyle(view, ShapeUtil.getColor(colors.get(view)));
         } else {
@@ -329,7 +334,7 @@ public class FunctionalChainServices {
     }
     return functionalChainToNodeMap;
   }
-  
+
   /**
    * Retrieve set of displayed functional chains
    */
@@ -1831,7 +1836,7 @@ public class FunctionalChainServices {
 
     return false;
   }
-  
+
   /**
    * Hide FCIL that have associated Sequence Link
    * 

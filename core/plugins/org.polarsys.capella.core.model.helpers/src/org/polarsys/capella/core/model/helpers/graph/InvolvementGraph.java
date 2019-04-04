@@ -14,26 +14,30 @@ import java.util.Collection;
 import java.util.stream.Collectors;
 
 import org.polarsys.capella.core.data.fa.AbstractFunction;
+import org.polarsys.capella.core.data.fa.ControlNode;
 import org.polarsys.capella.core.data.fa.FunctionalChain;
 import org.polarsys.capella.core.data.fa.FunctionalChainInvolvement;
 import org.polarsys.capella.core.data.fa.FunctionalChainInvolvementFunction;
 import org.polarsys.capella.core.data.fa.FunctionalChainInvolvementLink;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
+import org.polarsys.capella.core.data.fa.ReferenceHierarchyContext;
+import org.polarsys.capella.core.data.fa.SequenceLink;
+import org.polarsys.capella.core.data.fa.SequenceLinkEnd;
 import org.polarsys.capella.core.model.helpers.FunctionalChainExt;
 import org.polarsys.capella.core.model.helpers.graph.InvolvementGraph.InvolvementEdge;
 import org.polarsys.capella.core.model.helpers.graph.InvolvementGraph.InvolvementNode;
 
-public class InvolvementGraph extends
-    Graph<FunctionalChain, FunctionalChainInvolvementFunction, FunctionalChainInvolvementLink, InvolvementNode, InvolvementEdge> {
+public class InvolvementGraph
+    extends Graph<FunctionalChain, SequenceLinkEnd, ReferenceHierarchyContext, InvolvementNode, InvolvementEdge> {
 
-  public class InvolvementEdge extends GraphEdge<FunctionalChainInvolvementLink, InvolvementNode> {
-    public InvolvementEdge(FunctionalChainInvolvementLink semantic) {
+  public class InvolvementEdge extends GraphEdge<ReferenceHierarchyContext, InvolvementNode> {
+    public InvolvementEdge(ReferenceHierarchyContext semantic) {
       super(semantic);
     }
   }
 
-  public class InvolvementNode extends GraphNode<FunctionalChainInvolvementFunction, InvolvementEdge> {
-    public InvolvementNode(FunctionalChainInvolvementFunction semantic) {
+  public class InvolvementNode extends GraphNode<SequenceLinkEnd, InvolvementEdge> {
+    public InvolvementNode(SequenceLinkEnd semantic) {
       super(semantic);
     }
   }
@@ -61,30 +65,47 @@ public class InvolvementGraph extends
       mergeNodes(edge.getSource(), edge.getTarget(), edge.getSource().getSemantic());
       removeEdge(edge);
     }
+
+    // add control nodes
+    for (ControlNode controlNode : FunctionalChainExt.getFlatControlNodes(chain)) {
+      getOrCreateNode(controlNode);
+    }
+
+    // add sequence links
+    for (SequenceLink sequenceLink : FunctionalChainExt.getFlatSequenceLinks(chain)) {
+      InvolvementEdge info = getOrCreateEdge(sequenceLink);
+      info.setSource(getOrCreateNode(sequenceLink.getSource()));
+      info.setTarget(getOrCreateNode(sequenceLink.getTarget()));
+    }
   }
 
   public boolean isInvolvingFunction(InvolvementNode node) {
-    FunctionalChainInvolvementFunction function = node.getSemantic();
-    if (function.getInvolved() instanceof AbstractFunction) {
-      return true;
-    }
-    return false;
+
+    SequenceLinkEnd semantic = node.getSemantic();
+    return semantic instanceof FunctionalChainInvolvementFunction
+        && ((FunctionalChainInvolvementFunction) semantic).getInvolved() instanceof AbstractFunction;
   }
 
   public boolean isInvolvingFunction(InvolvementEdge edge) {
-    FunctionalChainInvolvementLink link = edge.getSemantic();
-    if (link.getInvolved() instanceof AbstractFunction) {
-      return true;
-    }
-    return false;
+
+    ReferenceHierarchyContext semantic = edge.getSemantic();
+    return semantic instanceof FunctionalChainInvolvementLink
+        && ((FunctionalChainInvolvementLink) semantic).getInvolved() instanceof AbstractFunction;
+  }
+
+  public boolean isControlNode(InvolvementNode node) {
+    return node.getSemantic() instanceof ControlNode;
   }
 
   public boolean isInvolvingFunctionalExchange(InvolvementEdge edge) {
-    FunctionalChainInvolvementLink link = edge.getSemantic();
-    if (link.getInvolved() instanceof FunctionalExchange) {
-      return true;
-    }
-    return false;
+
+    ReferenceHierarchyContext semantic = edge.getSemantic();
+    return semantic instanceof FunctionalChainInvolvementLink
+        && ((FunctionalChainInvolvementLink) semantic).getInvolved() instanceof FunctionalExchange;
+  }
+
+  public boolean isSequenceLink(InvolvementEdge edge) {
+    return edge.getSemantic() instanceof SequenceLink;
   }
 
   public boolean isStartingFunction(InvolvementNode node) {
@@ -95,21 +116,44 @@ public class InvolvementGraph extends
     return node.getOutgoingEdges().isEmpty();
   }
 
+  public ControlNode getControlNode(InvolvementNode node) {
+    return (ControlNode) node.getSemantic();
+  }
+
   public AbstractFunction getInvolvedFunction(InvolvementNode node) {
-    return (AbstractFunction) node.getSemantic().getInvolved();
+
+    SequenceLinkEnd semantic = node.getSemantic();
+
+    if (semantic instanceof FunctionalChainInvolvementFunction) {
+      FunctionalChainInvolvementFunction function = (FunctionalChainInvolvementFunction) semantic;
+      return (AbstractFunction) function.getInvolved();
+    }
+
+    return null;
   }
 
   public FunctionalExchange getInvolvedFunctionalExchange(InvolvementEdge edge) {
-    return (FunctionalExchange) edge.getSemantic().getInvolved();
+
+    ReferenceHierarchyContext semantic = edge.getSemantic();
+    if (semantic instanceof FunctionalChainInvolvementLink) {
+      FunctionalChainInvolvementLink link = (FunctionalChainInvolvementLink) semantic;
+      return (FunctionalExchange) link.getInvolved();
+    }
+
+    return null;
+  }
+
+  public SequenceLink getSequenceLink(InvolvementEdge edge) {
+    return (SequenceLink) edge.getSemantic();
   }
 
   @Override
-  public InvolvementNode createNode(FunctionalChainInvolvementFunction semantic) {
+  public InvolvementNode createNode(SequenceLinkEnd semantic) {
     return new InvolvementNode(semantic);
   }
 
   @Override
-  public InvolvementEdge createEdge(FunctionalChainInvolvementLink semantic) {
+  public InvolvementEdge createEdge(ReferenceHierarchyContext semantic) {
     return new InvolvementEdge(semantic);
   }
 
