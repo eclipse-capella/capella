@@ -1,0 +1,78 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _E9dGgFfFEem9oKr70EVe_w
+Element-Name: CopyPasteNoDuplicatedElements
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _c5-GoFecEem9oKr70EVe_i
+Runtime-Version: 2.3.0.201806262310
+Save-Time: 4/5/19 7:47 PM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+ A test for bug Through a Diagram using shortcut copy /paste (Ctrl+C/Ctrl+V) paste diagram graphical element twice (reopening session) 
+ https://bugs.polarsys.org/show_bug.cgi?id=2462
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+// Open the session
+get-view "Capella Project Explorer" | get-tree | select "CopyPasteNoDuplicate/CopyPasteNoDuplicate.aird" | double-click
+
+// Select the SDFB diagram in the project and open it
+get-view "Capella Project Explorer" | get-tree 
+    | select "CopyPasteNoDuplicate/CopyPasteNoDuplicate.aird/CopyPasteNoDuplicate/System Analysis/System Functions/Root System Function/\\[SDFB\\] Root System Function" 
+    | double-click
+
+// Select the System Function 1 and hit ctrl+c
+with [get-editor "[SDFB] Root System Function" | get-diagram -index 1] {
+    with [get-edit-part -name "[SDFB] Root System Function"] {
+        
+        with [get-edit-part -name "SystemFunction 1" | get-edit-part 
+            -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+            mouse-hover 364 23 -height 40 -width 551
+            mouse-press 364 23 button3 -height 40 -width 551
+            mouse-release 364 23 button3 2097152 -height 40 -width 551
+        }
+        key-type "M1+c"
+    }
+}
+
+// Hit ctrl+v to paste the copied System Function 1
+with [get-editor "[SDFB] Root System Function"] {
+    with [get-diagram -index 1] {
+        commit-direct-edit
+        with [get-edit-part -name "[SDFB] Root System Function"] {
+            with [get-edit-part -name "SystemFunction 1" | get-edit-part 
+                -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+                
+            }
+            mouse-move 607 222 button1 -height 599 -width 1286
+            mouse-press 607 222 button1 -height 599 -width 1286
+            mouse-release 607 222 button1 524288 -height 599 -width 1286    
+        }
+        key-type "M1+v"
+    }
+    get-diagram -index 1 | get-edit-part -name "[SDFB] Root System Function" | mouse-move 128 589 -height 599 
+        -width 1286
+}
+// Save the model
+get-button "Save All (M1+M2+S)" | click
+
+// Close the session, then reopen it, then open the SDFB diagram
+with [get-view "Capella Project Explorer" | get-tree] {
+    select "CopyPasteNoDuplicate/CopyPasteNoDuplicate.aird" | get-menu -path Close | click
+    select "CopyPasteNoDuplicate/CopyPasteNoDuplicate.aird" | double-click
+    select "CopyPasteNoDuplicate/CopyPasteNoDuplicate.aird/CopyPasteNoDuplicate/System Analysis/System Functions/Root System Function/\\[SDFB\\] Root System Function" 
+        | double-click
+}
+
+// Verify that there is only two functions
+get-editor "[SDFB] Root System Function" | get-diagram -index 1 | get-edit-part -name "[SDFB] Root System Function" 
+    | get-property childrenCount | equals 2 | verify-true
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--
