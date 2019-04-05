@@ -80,7 +80,6 @@ import org.polarsys.capella.core.data.information.ExchangeItem;
 import org.polarsys.capella.core.data.interaction.AbstractCapability;
 import org.polarsys.capella.core.data.interaction.FunctionalChainAbstractCapabilityInvolvement;
 import org.polarsys.capella.core.data.oa.OperationalProcess;
-import org.polarsys.capella.core.diagram.helpers.DiagramHelper;
 import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.ExchangeItemExt;
@@ -1231,6 +1230,23 @@ public class FunctionalChainServices {
   }
 
   /**
+   * Provides the semantic targets for the computed edge (between SL/FCIL to FCIL/SL) coming from source.
+   * 
+   * @param source
+   *          the semantic source
+   * @return semantic targets for the computed edge coming from source.
+   */
+  public List<ReferenceHierarchyContext> getLinksEdgeTargets(ReferenceHierarchyContext source) {
+
+    if (source instanceof SequenceLink) {
+      SequenceLink sequenceLink = (SequenceLink) source;
+      return new ArrayList<>(sequenceLink.getLinks());
+    }
+
+    return Collections.emptyList();
+  }
+
+  /**
    * targetNode2Hierarchygiven link must appears in the diagram
    * 
    * @param link
@@ -1768,13 +1784,12 @@ public class FunctionalChainServices {
   }
 
   /**
-   * This method checks if a ControlNode, represented by the graphical element passed as argument,
-   * has an edge from or towards a collapsed container (which in this diagram is a FunctionalChainReference)
+   * This method checks if a ControlNode, represented by the graphical element passed as argument, has an edge from or
+   * towards a collapsed container (which in this diagram is a FunctionalChainReference)
    * 
    * @param controlNode
    *          The graphical element representing a semantic ControlNode
-   * @return 
-   *          Returns true if the graphical element has edges from or towards a collapsed container
+   * @return Returns true if the graphical element has edges from or towards a collapsed container
    */
   public boolean controlNodeLinkedToCollapsedFCR(DNode controlNode) {
 
