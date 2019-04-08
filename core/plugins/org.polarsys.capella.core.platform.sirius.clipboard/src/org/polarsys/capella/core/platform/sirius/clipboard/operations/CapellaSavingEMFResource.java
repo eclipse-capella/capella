@@ -33,6 +33,7 @@ import org.eclipse.gmf.runtime.emf.clipboard.core.IClipboardSupport;
 import org.eclipse.gmf.runtime.emf.clipboard.core.internal.SavingEMFResource;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.IdentifiedElement;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.polarsys.capella.common.utils.ReflectUtil;
 
@@ -130,10 +131,17 @@ public class CapellaSavingEMFResource extends SavingEMFResource {
   }
 
   protected boolean shouldNotSaveFeature(EObject o, EStructuralFeature f) {
-    return (o instanceof DSemanticDecorator) && (f instanceof EReference) && !(((EReference) f).isContainment())
-        && (((EReference) f).getEType() instanceof EClass)
+    return isSiriusElementAndUidFeature(o, f) || ((o instanceof DSemanticDecorator) && (f instanceof EReference)
+        && !(((EReference) f).isContainment()) && (((EReference) f).getEType() instanceof EClass)
         && (ViewpointPackage.eINSTANCE.getDSemanticDecorator().isSuperTypeOf((EClass) ((EReference) f).getEType())
-            || DiagramPackage.eINSTANCE.getEdgeTarget().isSuperTypeOf((EClass) ((EReference) f).getEType()));
+            || DiagramPackage.eINSTANCE.getEdgeTarget().isSuperTypeOf((EClass) ((EReference) f).getEType())));
+  }
+
+  // Skip saving uid for Sirius elements in order not to have duplicated diagram elements with same uids while
+  // copy/paste
+  // (see https://bugs.polarsys.org/show_bug.cgi?id=2462)
+  private boolean isSiriusElementAndUidFeature(EObject o, EStructuralFeature f) {
+    return o instanceof IdentifiedElement && ViewpointPackage.eINSTANCE.getIdentifiedElement_Uid().equals(f);
   }
 
   boolean reflectIsInSavingResource(EObject eObject) {
