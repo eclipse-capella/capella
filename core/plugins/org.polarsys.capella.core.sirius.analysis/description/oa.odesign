@@ -5034,15 +5034,9 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_2:DiagramDescription" name="Operational Process Description" titleExpression="aql:'[OPD] ' + self.name" domainClass="OperationalProcess">
+    <ownedRepresentations xsi:type="description_2:DiagramDescription" name="Operational Process Description" titleExpression="aql:'[OPD] ' + self.name" domainClass="OperationalProcess" defaultConcern="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Process%20Description']/@concerns/@ownedConcernDescriptions.0">
       <dropDescriptions href="#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Process%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer']"/>
       <dropDescriptions href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer']"/>
-      <filters xsi:type="filter:CompositeFilterDescription" name="Hide Property Values">
-        <filters xsi:type="filter:MappingFilter">
-          <mappings xsi:type="description_2:NodeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_PV']"/>
-          <mappings xsi:type="description_2:ContainerMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_PVG']"/>
-        </filters>
-      </filters>
       <filters xsi:type="filter:CompositeFilterDescription" name="Show ExchangeItems">
         <filters xsi:type="filter:MappingFilter" filterKind="COLLAPSE">
           <mappings xsi:type="description_3:InstanceRoleMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@nodeMappings[name='hideSequenceLabelDF']"/>
@@ -5058,6 +5052,42 @@
           <mappings xsi:type="description_3:InstanceRoleMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@nodeMappings[name='hideSequenceLabelDF']"/>
         </filters>
       </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="Hide Property Values">
+        <filters xsi:type="filter:MappingFilter">
+          <mappings xsi:type="description_2:NodeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_PV']"/>
+          <mappings xsi:type="description_2:ContainerMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@containerMappings[name='DT_PVG']"/>
+        </filters>
+      </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="Hide Functional Chain Involvement Links" label="Hide Operational Process Involvement Links">
+        <filters xsi:type="filter:MappingFilter">
+          <mappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@edgeMappings[name='FC_Exchange']"/>
+        </filters>
+      </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="Hide Sequencing Information">
+        <filters xsi:type="filter:MappingFilter">
+          <mappings xsi:type="description_2:NodeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@nodeMappings[name='FC_ControlNode']"/>
+          <mappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@edgeMappings[name='FC_SequenceLink']"/>
+          <mappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@edgeMappings[name='FC_SequenceLink_InvolvementLink']"/>
+        </filters>
+      </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="Hide Computed Sequencing Information">
+        <filters xsi:type="filter:MappingFilter" viewConditionExpression="aql:not ((self.target.oclIsKindOf(fa::ControlNode)) and (self.controlNodeLinkedToCollapsedFCR()))">
+          <mappings xsi:type="description_2:NodeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@nodeMappings[name='FC_ControlNode']"/>
+        </filters>
+      </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="Hide Association Links">
+        <filters xsi:type="filter:MappingFilter">
+          <mappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@edgeMappings[name='FC_SequenceLink_InvolvementLink']"/>
+        </filters>
+      </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="Merge associated Functional Exchange Involvements and Sequence Links without Control Node" label="Merge associated Operational Process Involvements and Sequence Links without Control Node">
+        <filters xsi:type="filter:MappingFilter" viewConditionExpression="aql:not(self.isFEWithAssociatedSL())">
+          <mappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@edgeMappings[name='FC_Exchange']"/>
+        </filters>
+      </filters>
+      <concerns>
+        <ownedConcernDescriptions name="hideLinksByDefaultOPD" filters="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Process%20Description']/@filters[name='Hide%20Association%20Links']"/>
+      </concerns>
       <layout xsi:type="description_2:CompositeLayout" direction="LeftToRight"/>
       <defaultLayer name="Default">
         <reusedMappings xsi:type="description_2:NodeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@nodeMappings[name='FC_AbstractFunction']"/>
@@ -5071,6 +5101,9 @@
         <reusedMappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_PVGconnector']"/>
         <reusedMappings xsi:type="description_2:ContainerMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@containerMappings[name='FC_FunctionalChainReference']"/>
         <reusedMappings xsi:type="description_2:ContainerMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@containerMappings[name='FC_FunctionalChainReference']/@subContainerMappings[name='FC_FunctionalChainStacked']"/>
+        <reusedMappings xsi:type="description_2:NodeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@nodeMappings[name='FC_ControlNode']"/>
+        <reusedMappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@edgeMappings[name='FC_SequenceLink']"/>
+        <reusedMappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@edgeMappings[name='FC_SequenceLink_InvolvementLink']"/>
         <toolSections name="Involvements" label="Involvements">
           <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Involvement referencing the selected Operational Activity." name="Function" label="Operational Activity" precondition="aql:containerView.isValidFCInvolveFunction()" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionalChainInvolvementFunction_OA.gif">
             <nodeMappings href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@nodeMappings[name='FC_AbstractFunction']"/>
@@ -5231,6 +5264,580 @@
             </initialOperation>
           </ownedTools>
           <reusedTools xsi:type="tool_1:DeleteElementDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20FE%20Involvement']"/>
+        </toolSections>
+        <toolSections name="Sequencing">
+          <ownedTools xsi:type="tool_1:ToolGroup" documentation="Create a new Control Node." name="Create_ControlNode" label="Control Node">
+            <tools xsi:type="tool:ToolDescription" documentation="Create a new AND Control Node." name="Create_ControlNode_And" label="AND" precondition="aql:container.oclIsKindOf(fa::FunctionalChain) or container.oclIsKindOf(fa::FunctionalChainReference) or container.oclIsKindOf(fa::SequenceLink) or container.oclIsKindOf(fa::SequenceLinkEnd)" forceRefresh="true" iconPath="/org.polarsys.capella.core.data.res.edit/icons/full/obj16/ControlNode_And.gif">
+              <element name="element"/>
+              <elementView name="elementView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                  <subModelOperations xsi:type="tool:Switch">
+                    <cases conditionExpression="aql:self.oclIsKindOf(fa::FunctionalChain)">
+                      <subModelOperations xsi:type="tool:CreateInstance" typeName="ControlNode" referenceName="ownedSequenceNodes">
+                        <subModelOperations xsi:type="tool:SetValue" featureName="kind" valueExpression="aql:fa::ControlNodeKind::AND"/>
+                      </subModelOperations>
+                    </cases>
+                    <cases conditionExpression="aql:self.oclIsKindOf(fa::SequenceLinkEnd)">
+                      <subModelOperations xsi:type="tool:Let" variableName="sequenceLinkEnd" valueExpression="var:self"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:sequenceLinkEnd.eContainer()">
+                        <subModelOperations xsi:type="tool:CreateInstance" typeName="ControlNode" referenceName="ownedSequenceNodes" variableName="controlNode">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="kind" valueExpression="aql:fa::ControlNodeKind::AND"/>
+                          <subModelOperations xsi:type="tool_1:CreateView" containerViewExpression="aql:diagram.getDiagramElementDiagramIfNull(sequenceLinkEnd.eContainer())">
+                            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:createdView.setRelativePositionToNode(elementView, 100, 0)"/>
+                            <mapping xsi:type="description_2:NodeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@nodeMappings[name='FC_ControlNode']"/>
+                          </subModelOperations>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool:CreateInstance" typeName="SequenceLink" referenceName="ownedSequenceLinks" variableName="sequenceLink">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="source" valueExpression="var:sequenceLinkEnd"/>
+                          <subModelOperations xsi:type="tool:SetValue" featureName="target" valueExpression="var:controlNode"/>
+                        </subModelOperations>
+                      </subModelOperations>
+                    </cases>
+                    <cases conditionExpression="aql:self.oclIsKindOf(fa::SequenceLink)">
+                      <subModelOperations xsi:type="tool:Let" variableName="sequenceLink" valueExpression="var:self"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:sequenceLink.eContainer()">
+                        <subModelOperations xsi:type="tool:CreateInstance" typeName="ControlNode" referenceName="ownedSequenceNodes" variableName="newControlNode">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="kind" valueExpression="aql:fa::ControlNodeKind::AND"/>
+                          <subModelOperations xsi:type="tool_1:CreateView" containerViewExpression="aql:diagram.getDiagramElementDiagramIfNull(sequenceLink.eContainer())">
+                            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:createdView.setPositionAtMiddleOfEdge(elementView)"/>
+                            <mapping xsi:type="description_2:NodeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@nodeMappings[name='FC_ControlNode']"/>
+                          </subModelOperations>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool:CreateInstance" typeName="SequenceLink" referenceName="ownedSequenceLinks" variableName="newSequenceLink">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="source" valueExpression="aql:sequenceLink.source"/>
+                          <subModelOperations xsi:type="tool:SetValue" featureName="target" valueExpression="var:newControlNode"/>
+                          <subModelOperations xsi:type="tool:SetValue" featureName="sourceReferenceHierarchy" valueExpression="aql:sequenceLink.sourceReferenceHierarchy"/>
+                        </subModelOperations>
+                      </subModelOperations>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:sequenceLink">
+                        <subModelOperations xsi:type="tool:SetValue" featureName="source" valueExpression="var:newControlNode"/>
+                        <subModelOperations xsi:type="tool:Unset" featureName="sourceReferenceHierarchy" elementExpression="aql:self.sourceReferenceHierarchy"/>
+                      </subModelOperations>
+                    </cases>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool:ToolDescription" documentation="Create a new OR Control Node." name="Create_ControlNode_Or" label="OR" precondition="aql:container.oclIsKindOf(fa::FunctionalChain) or container.oclIsKindOf(fa::FunctionalChainReference) or container.oclIsKindOf(fa::SequenceLink) or container.oclIsKindOf(fa::SequenceLinkEnd)" forceRefresh="true" iconPath="/org.polarsys.capella.core.data.res.edit/icons/full/obj16/ControlNode_Or.gif">
+              <element name="element"/>
+              <elementView name="elementView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                  <subModelOperations xsi:type="tool:Switch">
+                    <cases conditionExpression="aql:self.oclIsKindOf(fa::FunctionalChain)">
+                      <subModelOperations xsi:type="tool:CreateInstance" typeName="ControlNode" referenceName="ownedSequenceNodes">
+                        <subModelOperations xsi:type="tool:SetValue" featureName="kind" valueExpression="aql:fa::ControlNodeKind::OR"/>
+                      </subModelOperations>
+                    </cases>
+                    <cases conditionExpression="aql:self.oclIsKindOf(fa::SequenceLinkEnd)">
+                      <subModelOperations xsi:type="tool:Let" variableName="sequenceLinkEnd" valueExpression="var:self"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:sequenceLinkEnd.eContainer()">
+                        <subModelOperations xsi:type="tool:CreateInstance" typeName="ControlNode" referenceName="ownedSequenceNodes" variableName="controlNode">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="kind" valueExpression="aql:fa::ControlNodeKind::OR"/>
+                          <subModelOperations xsi:type="tool_1:CreateView" containerViewExpression="aql:diagram.getDiagramElementDiagramIfNull(sequenceLinkEnd.eContainer())">
+                            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:createdView.setRelativePositionToNode(elementView, 100, 0)"/>
+                            <mapping xsi:type="description_2:NodeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@nodeMappings[name='FC_ControlNode']"/>
+                          </subModelOperations>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool:CreateInstance" typeName="SequenceLink" referenceName="ownedSequenceLinks" variableName="sequenceLink">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="source" valueExpression="var:sequenceLinkEnd"/>
+                          <subModelOperations xsi:type="tool:SetValue" featureName="target" valueExpression="var:controlNode"/>
+                        </subModelOperations>
+                      </subModelOperations>
+                    </cases>
+                    <cases conditionExpression="aql:self.oclIsKindOf(fa::SequenceLink)">
+                      <subModelOperations xsi:type="tool:Let" variableName="sequenceLink" valueExpression="var:self"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:sequenceLink.eContainer()">
+                        <subModelOperations xsi:type="tool:CreateInstance" typeName="ControlNode" referenceName="ownedSequenceNodes" variableName="newControlNode">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="kind" valueExpression="aql:fa::ControlNodeKind::OR"/>
+                          <subModelOperations xsi:type="tool_1:CreateView" containerViewExpression="aql:diagram.getDiagramElementDiagramIfNull(sequenceLink.eContainer())">
+                            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:createdView.setPositionAtMiddleOfEdge(elementView)"/>
+                            <mapping xsi:type="description_2:NodeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@nodeMappings[name='FC_ControlNode']"/>
+                          </subModelOperations>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool:CreateInstance" typeName="SequenceLink" referenceName="ownedSequenceLinks" variableName="newSequenceLink">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="source" valueExpression="aql:sequenceLink.source"/>
+                          <subModelOperations xsi:type="tool:SetValue" featureName="target" valueExpression="var:newControlNode"/>
+                          <subModelOperations xsi:type="tool:SetValue" featureName="sourceReferenceHierarchy" valueExpression="aql:sequenceLink.sourceReferenceHierarchy"/>
+                        </subModelOperations>
+                      </subModelOperations>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:sequenceLink">
+                        <subModelOperations xsi:type="tool:SetValue" featureName="source" valueExpression="var:newControlNode"/>
+                        <subModelOperations xsi:type="tool:Unset" featureName="sourceReferenceHierarchy" elementExpression="aql:self.sourceReferenceHierarchy"/>
+                      </subModelOperations>
+                    </cases>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool:ToolDescription" documentation="Create a new ITERATE Control Node." name="Create_ControlNode_It" label="IT" precondition="aql:container.oclIsKindOf(fa::FunctionalChain) or container.oclIsKindOf(fa::FunctionalChainReference) or container.oclIsKindOf(fa::SequenceLink) or container.oclIsKindOf(fa::SequenceLinkEnd)" forceRefresh="true" iconPath="/org.polarsys.capella.core.data.res.edit/icons/full/obj16/ControlNode_Iterate.gif">
+              <element name="element"/>
+              <elementView name="elementView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                  <subModelOperations xsi:type="tool:Switch">
+                    <cases conditionExpression="aql:self.oclIsKindOf(fa::FunctionalChain)">
+                      <subModelOperations xsi:type="tool:CreateInstance" typeName="ControlNode" referenceName="ownedSequenceNodes">
+                        <subModelOperations xsi:type="tool:SetValue" featureName="kind" valueExpression="aql:fa::ControlNodeKind::ITERATE"/>
+                      </subModelOperations>
+                    </cases>
+                    <cases conditionExpression="aql:self.oclIsKindOf(fa::SequenceLinkEnd)">
+                      <subModelOperations xsi:type="tool:Let" variableName="sequenceLinkEnd" valueExpression="var:self"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:sequenceLinkEnd.eContainer()">
+                        <subModelOperations xsi:type="tool:CreateInstance" typeName="ControlNode" referenceName="ownedSequenceNodes" variableName="controlNode">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="kind" valueExpression="aql:fa::ControlNodeKind::ITERATE"/>
+                          <subModelOperations xsi:type="tool_1:CreateView" containerViewExpression="aql:diagram.getDiagramElementDiagramIfNull(sequenceLinkEnd.eContainer())">
+                            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:createdView.setRelativePositionToNode(elementView, 100, 0)"/>
+                            <mapping xsi:type="description_2:NodeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@nodeMappings[name='FC_ControlNode']"/>
+                          </subModelOperations>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool:CreateInstance" typeName="SequenceLink" referenceName="ownedSequenceLinks" variableName="sequenceLink">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="source" valueExpression="var:sequenceLinkEnd"/>
+                          <subModelOperations xsi:type="tool:SetValue" featureName="target" valueExpression="var:controlNode"/>
+                        </subModelOperations>
+                      </subModelOperations>
+                    </cases>
+                    <cases conditionExpression="aql:self.oclIsKindOf(fa::SequenceLink)">
+                      <subModelOperations xsi:type="tool:Let" variableName="sequenceLink" valueExpression="var:self"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:sequenceLink.eContainer()">
+                        <subModelOperations xsi:type="tool:CreateInstance" typeName="ControlNode" referenceName="ownedSequenceNodes" variableName="newControlNode">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="kind" valueExpression="aql:fa::ControlNodeKind::ITERATE"/>
+                          <subModelOperations xsi:type="tool_1:CreateView" containerViewExpression="aql:diagram.getDiagramElementDiagramIfNull(sequenceLink.eContainer())">
+                            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:createdView.setPositionAtMiddleOfEdge(elementView)"/>
+                            <mapping xsi:type="description_2:NodeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@nodeMappings[name='FC_ControlNode']"/>
+                          </subModelOperations>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool:CreateInstance" typeName="SequenceLink" referenceName="ownedSequenceLinks" variableName="newSequenceLink">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="source" valueExpression="aql:sequenceLink.source"/>
+                          <subModelOperations xsi:type="tool:SetValue" featureName="target" valueExpression="var:newControlNode"/>
+                          <subModelOperations xsi:type="tool:SetValue" featureName="sourceReferenceHierarchy" valueExpression="aql:sequenceLink.sourceReferenceHierarchy"/>
+                        </subModelOperations>
+                      </subModelOperations>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:sequenceLink">
+                        <subModelOperations xsi:type="tool:SetValue" featureName="source" valueExpression="var:newControlNode"/>
+                        <subModelOperations xsi:type="tool:Unset" featureName="sourceReferenceHierarchy" elementExpression="aql:self.sourceReferenceHierarchy"/>
+                      </subModelOperations>
+                    </cases>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ToolGroup" documentation="Create a new Control Node." name="Create_ControlNodeConstruct" label="Control Node Construct">
+            <tools xsi:type="tool:ToolDescription" documentation="Create a new AND Control Node." name="Create_ControlNodeConstruct_And" label="AND Construct" precondition="aql:container.oclIsKindOf(fa::FunctionalChain) or container.oclIsKindOf(fa::FunctionalChainReference) or container.oclIsKindOf(fa::SequenceLink) or container.oclIsKindOf(fa::SequenceLinkEnd)" forceRefresh="true" iconPath="/org.polarsys.capella.core.data.res.edit/icons/full/obj16/ControlNode_And.gif">
+              <element name="element"/>
+              <elementView name="elementView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                  <subModelOperations xsi:type="tool:Switch">
+                    <cases conditionExpression="aql:self.oclIsKindOf(fa::FunctionalChain)">
+                      <subModelOperations xsi:type="tool:CreateInstance" typeName="ControlNode" referenceName="ownedSequenceNodes" variableName="sourceNode">
+                        <subModelOperations xsi:type="tool:SetValue" featureName="kind" valueExpression="aql:fa::ControlNodeKind::AND"/>
+                      </subModelOperations>
+                      <subModelOperations xsi:type="tool:CreateInstance" typeName="ControlNode" referenceName="ownedSequenceNodes" variableName="targetNode">
+                        <subModelOperations xsi:type="tool:SetValue" featureName="kind" valueExpression="aql:fa::ControlNodeKind::AND"/>
+                      </subModelOperations>
+                      <subModelOperations xsi:type="tool:CreateInstance" typeName="SequenceLink" referenceName="ownedSequenceLinks" variableName="sequenceLink1">
+                        <subModelOperations xsi:type="tool:SetValue" featureName="source" valueExpression="var:sourceNode"/>
+                        <subModelOperations xsi:type="tool:SetValue" featureName="target" valueExpression="var:targetNode"/>
+                      </subModelOperations>
+                      <subModelOperations xsi:type="tool:CreateInstance" typeName="SequenceLink" referenceName="ownedSequenceLinks" variableName="sequenceLink2">
+                        <subModelOperations xsi:type="tool:SetValue" featureName="source" valueExpression="var:sourceNode"/>
+                        <subModelOperations xsi:type="tool:SetValue" featureName="target" valueExpression="var:targetNode"/>
+                      </subModelOperations>
+                    </cases>
+                    <cases conditionExpression="aql:self.oclIsKindOf(fa::SequenceLinkEnd)">
+                      <subModelOperations xsi:type="tool:Let" variableName="commonFC" valueExpression="aql:self.eContainer()"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:commonFC">
+                        <subModelOperations xsi:type="tool:CreateInstance" typeName="ControlNode" referenceName="ownedSequenceNodes" variableName="sourceNode">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="kind" valueExpression="aql:fa::ControlNodeKind::AND"/>
+                          <subModelOperations xsi:type="tool_1:CreateView" containerViewExpression="aql:diagram.getDiagramElementDiagramIfNull(commonFC)">
+                            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:createdView.setRelativePositionToNode(elementView, 100, 0)"/>
+                            <mapping xsi:type="description_2:NodeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@nodeMappings[name='FC_ControlNode']"/>
+                          </subModelOperations>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool:CreateInstance" typeName="ControlNode" referenceName="ownedSequenceNodes" variableName="targetNode">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="kind" valueExpression="aql:fa::ControlNodeKind::AND"/>
+                          <subModelOperations xsi:type="tool_1:CreateView" containerViewExpression="aql:diagram.getDiagramElementDiagramIfNull(commonFC)">
+                            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:createdView.setRelativePositionToNode(elementView, 200, 0)"/>
+                            <mapping xsi:type="description_2:NodeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@nodeMappings[name='FC_ControlNode']"/>
+                          </subModelOperations>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool:CreateInstance" typeName="SequenceLink" referenceName="ownedSequenceLinks" variableName="sequenceLink1">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="source" valueExpression="var:sourceNode"/>
+                          <subModelOperations xsi:type="tool:SetValue" featureName="target" valueExpression="var:targetNode"/>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool:CreateInstance" typeName="SequenceLink" referenceName="ownedSequenceLinks" variableName="sequenceLink2">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="source" valueExpression="var:sourceNode"/>
+                          <subModelOperations xsi:type="tool:SetValue" featureName="target" valueExpression="var:targetNode"/>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool:CreateInstance" typeName="SequenceLink" referenceName="ownedSequenceLinks" variableName="incomingSequenceLink">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="source" valueExpression="var:element"/>
+                          <subModelOperations xsi:type="tool:SetValue" featureName="target" valueExpression="var:sourceNode"/>
+                        </subModelOperations>
+                      </subModelOperations>
+                    </cases>
+                    <cases conditionExpression="aql:self.oclIsKindOf(fa::SequenceLink)">
+                      <subModelOperations xsi:type="tool:Let" variableName="commonFC" valueExpression="aql:self.eContainer()"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:commonFC">
+                        <subModelOperations xsi:type="tool:CreateInstance" typeName="ControlNode" referenceName="ownedSequenceNodes" variableName="sourceNode">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="kind" valueExpression="aql:fa::ControlNodeKind::AND"/>
+                          <subModelOperations xsi:type="tool_1:CreateView" containerViewExpression="aql:diagram.getDiagramElementDiagramIfNull(commonFC)">
+                            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:createdView.setPositionAtMiddleOfEdge(elementView, -50, 0)"/>
+                            <mapping xsi:type="description_2:NodeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@nodeMappings[name='FC_ControlNode']"/>
+                          </subModelOperations>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool:CreateInstance" typeName="ControlNode" referenceName="ownedSequenceNodes" variableName="targetNode">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="kind" valueExpression="aql:fa::ControlNodeKind::AND"/>
+                          <subModelOperations xsi:type="tool_1:CreateView" containerViewExpression="aql:diagram.getDiagramElementDiagramIfNull(commonFC)">
+                            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:createdView.setPositionAtMiddleOfEdge(elementView, 50, 0)"/>
+                            <mapping xsi:type="description_2:NodeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@nodeMappings[name='FC_ControlNode']"/>
+                          </subModelOperations>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool:CreateInstance" typeName="SequenceLink" referenceName="ownedSequenceLinks" variableName="sequenceLink1">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="source" valueExpression="var:sourceNode"/>
+                          <subModelOperations xsi:type="tool:SetValue" featureName="target" valueExpression="var:targetNode"/>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool:CreateInstance" typeName="SequenceLink" referenceName="ownedSequenceLinks" variableName="sequenceLink2">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="source" valueExpression="var:sourceNode"/>
+                          <subModelOperations xsi:type="tool:SetValue" featureName="target" valueExpression="var:targetNode"/>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool:CreateInstance" typeName="SequenceLink" referenceName="ownedSequenceLinks" variableName="outgoingSequenceLink">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="source" valueExpression="aql:targetNode"/>
+                          <subModelOperations xsi:type="tool:SetValue" featureName="target" valueExpression="aql:element.target"/>
+                          <subModelOperations xsi:type="tool:SetValue" featureName="targetReferenceHierarchy" valueExpression="aql:element.targetReferenceHierarchy"/>
+                        </subModelOperations>
+                      </subModelOperations>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                        <subModelOperations xsi:type="tool:SetValue" featureName="target" valueExpression="var:sourceNode"/>
+                        <subModelOperations xsi:type="tool:Unset" featureName="targetReferenceHierarchy" elementExpression="aql:self.targetReferenceHierarchy"/>
+                      </subModelOperations>
+                    </cases>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool:ToolDescription" documentation="Create a new AND Control Node." name="Create_ControlNodeConstruct_Or" label="OR Construct" precondition="aql:container.oclIsKindOf(fa::FunctionalChain) or container.oclIsKindOf(fa::FunctionalChainReference) or container.oclIsKindOf(fa::SequenceLink) or container.oclIsKindOf(fa::SequenceLinkEnd)" forceRefresh="true" iconPath="/org.polarsys.capella.core.data.res.edit/icons/full/obj16/ControlNode_Or.gif">
+              <element name="element"/>
+              <elementView name="elementView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                  <subModelOperations xsi:type="tool:Switch">
+                    <cases conditionExpression="aql:self.oclIsKindOf(fa::FunctionalChain)">
+                      <subModelOperations xsi:type="tool:CreateInstance" typeName="ControlNode" referenceName="ownedSequenceNodes" variableName="sourceNode">
+                        <subModelOperations xsi:type="tool:SetValue" featureName="kind" valueExpression="aql:fa::ControlNodeKind::OR"/>
+                      </subModelOperations>
+                      <subModelOperations xsi:type="tool:CreateInstance" typeName="ControlNode" referenceName="ownedSequenceNodes" variableName="targetNode">
+                        <subModelOperations xsi:type="tool:SetValue" featureName="kind" valueExpression="aql:fa::ControlNodeKind::OR"/>
+                      </subModelOperations>
+                      <subModelOperations xsi:type="tool:CreateInstance" typeName="SequenceLink" referenceName="ownedSequenceLinks" variableName="sequenceLink1">
+                        <subModelOperations xsi:type="tool:SetValue" featureName="source" valueExpression="var:sourceNode"/>
+                        <subModelOperations xsi:type="tool:SetValue" featureName="target" valueExpression="var:targetNode"/>
+                      </subModelOperations>
+                      <subModelOperations xsi:type="tool:CreateInstance" typeName="SequenceLink" referenceName="ownedSequenceLinks" variableName="sequenceLink2">
+                        <subModelOperations xsi:type="tool:SetValue" featureName="source" valueExpression="var:sourceNode"/>
+                        <subModelOperations xsi:type="tool:SetValue" featureName="target" valueExpression="var:targetNode"/>
+                      </subModelOperations>
+                    </cases>
+                    <cases conditionExpression="aql:self.oclIsKindOf(fa::SequenceLinkEnd)">
+                      <subModelOperations xsi:type="tool:Let" variableName="commonFC" valueExpression="aql:self.eContainer()"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:commonFC">
+                        <subModelOperations xsi:type="tool:CreateInstance" typeName="ControlNode" referenceName="ownedSequenceNodes" variableName="sourceNode">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="kind" valueExpression="aql:fa::ControlNodeKind::OR"/>
+                          <subModelOperations xsi:type="tool_1:CreateView" containerViewExpression="aql:diagram.getDiagramElementDiagramIfNull(commonFC)">
+                            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:createdView.setRelativePositionToNode(elementView, 100, 0)"/>
+                            <mapping xsi:type="description_2:NodeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@nodeMappings[name='FC_ControlNode']"/>
+                          </subModelOperations>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool:CreateInstance" typeName="ControlNode" referenceName="ownedSequenceNodes" variableName="targetNode">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="kind" valueExpression="aql:fa::ControlNodeKind::OR"/>
+                          <subModelOperations xsi:type="tool_1:CreateView" containerViewExpression="aql:diagram.getDiagramElementDiagramIfNull(commonFC)">
+                            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:createdView.setRelativePositionToNode(elementView, 200, 0)"/>
+                            <mapping xsi:type="description_2:NodeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@nodeMappings[name='FC_ControlNode']"/>
+                          </subModelOperations>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool:CreateInstance" typeName="SequenceLink" referenceName="ownedSequenceLinks" variableName="sequenceLink1">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="source" valueExpression="var:sourceNode"/>
+                          <subModelOperations xsi:type="tool:SetValue" featureName="target" valueExpression="var:targetNode"/>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool:CreateInstance" typeName="SequenceLink" referenceName="ownedSequenceLinks" variableName="sequenceLink2">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="source" valueExpression="var:sourceNode"/>
+                          <subModelOperations xsi:type="tool:SetValue" featureName="target" valueExpression="var:targetNode"/>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool:CreateInstance" typeName="SequenceLink" referenceName="ownedSequenceLinks" variableName="incomingSequenceLink">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="source" valueExpression="var:element"/>
+                          <subModelOperations xsi:type="tool:SetValue" featureName="target" valueExpression="var:sourceNode"/>
+                        </subModelOperations>
+                      </subModelOperations>
+                    </cases>
+                    <cases conditionExpression="aql:self.oclIsKindOf(fa::SequenceLink)">
+                      <subModelOperations xsi:type="tool:Let" variableName="commonFC" valueExpression="aql:self.eContainer()"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:commonFC">
+                        <subModelOperations xsi:type="tool:CreateInstance" typeName="ControlNode" referenceName="ownedSequenceNodes" variableName="sourceNode">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="kind" valueExpression="aql:fa::ControlNodeKind::OR"/>
+                          <subModelOperations xsi:type="tool_1:CreateView" containerViewExpression="aql:diagram.getDiagramElementDiagramIfNull(commonFC)">
+                            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:createdView.setPositionAtMiddleOfEdge(elementView, -50, 0)"/>
+                            <mapping xsi:type="description_2:NodeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@nodeMappings[name='FC_ControlNode']"/>
+                          </subModelOperations>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool:CreateInstance" typeName="ControlNode" referenceName="ownedSequenceNodes" variableName="targetNode">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="kind" valueExpression="aql:fa::ControlNodeKind::OR"/>
+                          <subModelOperations xsi:type="tool_1:CreateView" containerViewExpression="aql:diagram.getDiagramElementDiagramIfNull(commonFC)">
+                            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:createdView.setPositionAtMiddleOfEdge(elementView, 50, 0)"/>
+                            <mapping xsi:type="description_2:NodeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@nodeMappings[name='FC_ControlNode']"/>
+                          </subModelOperations>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool:CreateInstance" typeName="SequenceLink" referenceName="ownedSequenceLinks" variableName="sequenceLink1">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="source" valueExpression="var:sourceNode"/>
+                          <subModelOperations xsi:type="tool:SetValue" featureName="target" valueExpression="var:targetNode"/>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool:CreateInstance" typeName="SequenceLink" referenceName="ownedSequenceLinks" variableName="sequenceLink2">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="source" valueExpression="var:sourceNode"/>
+                          <subModelOperations xsi:type="tool:SetValue" featureName="target" valueExpression="var:targetNode"/>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool:CreateInstance" typeName="SequenceLink" referenceName="ownedSequenceLinks" variableName="outgoingSequenceLink">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="source" valueExpression="aql:targetNode"/>
+                          <subModelOperations xsi:type="tool:SetValue" featureName="target" valueExpression="aql:element.target"/>
+                          <subModelOperations xsi:type="tool:SetValue" featureName="targetReferenceHierarchy" valueExpression="aql:element.targetReferenceHierarchy"/>
+                        </subModelOperations>
+                      </subModelOperations>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                        <subModelOperations xsi:type="tool:SetValue" featureName="target" valueExpression="var:sourceNode"/>
+                        <subModelOperations xsi:type="tool:Unset" featureName="targetReferenceHierarchy" elementExpression="aql:self.targetReferenceHierarchy"/>
+                      </subModelOperations>
+                    </cases>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool:ToolDescription" documentation="Create a new AND Control Node." name="Create_ControlNodeConstruct_It" label="IT Construct" precondition="aql:container.oclIsKindOf(fa::FunctionalChain) or container.oclIsKindOf(fa::FunctionalChainReference) or container.oclIsKindOf(fa::SequenceLink) or container.oclIsKindOf(fa::SequenceLinkEnd)" forceRefresh="true" iconPath="/org.polarsys.capella.core.data.res.edit/icons/full/obj16/ControlNode_Iterate.gif">
+              <element name="element"/>
+              <elementView name="elementView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                  <subModelOperations xsi:type="tool:Switch">
+                    <cases conditionExpression="aql:self.oclIsKindOf(fa::FunctionalChain)">
+                      <subModelOperations xsi:type="tool:CreateInstance" typeName="ControlNode" referenceName="ownedSequenceNodes" variableName="sourceNode">
+                        <subModelOperations xsi:type="tool:SetValue" featureName="kind" valueExpression="aql:fa::ControlNodeKind::ITERATE"/>
+                      </subModelOperations>
+                      <subModelOperations xsi:type="tool:CreateInstance" typeName="ControlNode" referenceName="ownedSequenceNodes" variableName="targetNode">
+                        <subModelOperations xsi:type="tool:SetValue" featureName="kind" valueExpression="aql:fa::ControlNodeKind::ITERATE"/>
+                      </subModelOperations>
+                      <subModelOperations xsi:type="tool:CreateInstance" typeName="SequenceLink" referenceName="ownedSequenceLinks" variableName="sequenceLink1">
+                        <subModelOperations xsi:type="tool:SetValue" featureName="source" valueExpression="var:sourceNode"/>
+                        <subModelOperations xsi:type="tool:SetValue" featureName="target" valueExpression="var:targetNode"/>
+                      </subModelOperations>
+                      <subModelOperations xsi:type="tool:CreateInstance" typeName="SequenceLink" referenceName="ownedSequenceLinks" variableName="sequenceLink2">
+                        <subModelOperations xsi:type="tool:SetValue" featureName="source" valueExpression="var:targetNode"/>
+                        <subModelOperations xsi:type="tool:SetValue" featureName="target" valueExpression="var:sourceNode"/>
+                      </subModelOperations>
+                    </cases>
+                    <cases conditionExpression="aql:self.oclIsKindOf(fa::SequenceLinkEnd)">
+                      <subModelOperations xsi:type="tool:Let" variableName="commonFC" valueExpression="aql:self.eContainer()"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:commonFC">
+                        <subModelOperations xsi:type="tool:CreateInstance" typeName="ControlNode" referenceName="ownedSequenceNodes" variableName="sourceNode">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="kind" valueExpression="aql:fa::ControlNodeKind::ITERATE"/>
+                          <subModelOperations xsi:type="tool_1:CreateView" containerViewExpression="aql:elementView.eContainer()">
+                            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:createdView.setRelativePositionToNode(elementView, 100, 0)"/>
+                            <mapping xsi:type="description_2:NodeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@nodeMappings[name='FC_ControlNode']"/>
+                          </subModelOperations>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool:CreateInstance" typeName="ControlNode" referenceName="ownedSequenceNodes" variableName="targetNode">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="kind" valueExpression="aql:fa::ControlNodeKind::ITERATE"/>
+                          <subModelOperations xsi:type="tool_1:CreateView" containerViewExpression="aql:elementView.eContainer()">
+                            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:createdView.setRelativePositionToNode(elementView, 200, 0)"/>
+                            <mapping xsi:type="description_2:NodeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@nodeMappings[name='FC_ControlNode']"/>
+                          </subModelOperations>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool:CreateInstance" typeName="SequenceLink" referenceName="ownedSequenceLinks" variableName="sequenceLink1">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="source" valueExpression="var:sourceNode"/>
+                          <subModelOperations xsi:type="tool:SetValue" featureName="target" valueExpression="var:targetNode"/>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool:CreateInstance" typeName="SequenceLink" referenceName="ownedSequenceLinks" variableName="sequenceLink2">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="source" valueExpression="var:targetNode"/>
+                          <subModelOperations xsi:type="tool:SetValue" featureName="target" valueExpression="var:sourceNode"/>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool:CreateInstance" typeName="SequenceLink" referenceName="ownedSequenceLinks" variableName="incomingSequenceLink">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="source" valueExpression="var:element"/>
+                          <subModelOperations xsi:type="tool:SetValue" featureName="target" valueExpression="var:sourceNode"/>
+                        </subModelOperations>
+                      </subModelOperations>
+                    </cases>
+                    <cases conditionExpression="aql:self.oclIsKindOf(fa::SequenceLink)">
+                      <subModelOperations xsi:type="tool:Let" variableName="commonFC" valueExpression="aql:self.eContainer()"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:commonFC">
+                        <subModelOperations xsi:type="tool:CreateInstance" typeName="ControlNode" referenceName="ownedSequenceNodes" variableName="sourceNode">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="kind" valueExpression="aql:fa::ControlNodeKind::ITERATE"/>
+                          <subModelOperations xsi:type="tool_1:CreateView" containerViewExpression="aql:diagram.getDiagramElementDiagramIfNull(commonFC)">
+                            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:createdView.setPositionAtMiddleOfEdge(elementView, -50, 0)"/>
+                            <mapping xsi:type="description_2:NodeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@nodeMappings[name='FC_ControlNode']"/>
+                          </subModelOperations>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool:CreateInstance" typeName="ControlNode" referenceName="ownedSequenceNodes" variableName="targetNode">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="kind" valueExpression="aql:fa::ControlNodeKind::ITERATE"/>
+                          <subModelOperations xsi:type="tool_1:CreateView" containerViewExpression="aql:diagram.getDiagramElementDiagramIfNull(commonFC)">
+                            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:createdView.setPositionAtMiddleOfEdge(elementView, 50, 0)"/>
+                            <mapping xsi:type="description_2:NodeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@nodeMappings[name='FC_ControlNode']"/>
+                          </subModelOperations>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool:CreateInstance" typeName="SequenceLink" referenceName="ownedSequenceLinks" variableName="sequenceLink1">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="source" valueExpression="var:sourceNode"/>
+                          <subModelOperations xsi:type="tool:SetValue" featureName="target" valueExpression="var:targetNode"/>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool:CreateInstance" typeName="SequenceLink" referenceName="ownedSequenceLinks" variableName="sequenceLink2">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="source" valueExpression="var:targetNode"/>
+                          <subModelOperations xsi:type="tool:SetValue" featureName="target" valueExpression="var:sourceNode"/>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool:CreateInstance" typeName="SequenceLink" referenceName="ownedSequenceLinks" variableName="outgoingSequenceLink">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="source" valueExpression="aql:targetNode"/>
+                          <subModelOperations xsi:type="tool:SetValue" featureName="target" valueExpression="aql:element.target"/>
+                          <subModelOperations xsi:type="tool:SetValue" featureName="targetReferenceHierarchy" valueExpression="aql:element.targetReferenceHierarchy"/>
+                        </subModelOperations>
+                      </subModelOperations>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                        <subModelOperations xsi:type="tool:SetValue" featureName="target" valueExpression="var:sourceNode"/>
+                        <subModelOperations xsi:type="tool:Unset" featureName="targetReferenceHierarchy" elementExpression="aql:self.targetReferenceHierarchy"/>
+                      </subModelOperations>
+                    </cases>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new Sequence Link." name="Create_SequenceLink" label="Sequence Link" precondition="aql:preSource.isValidSequenceLink(preTarget)" forceRefresh="true">
+            <edgeMappings href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@edgeMappings[name='FC_SequenceLink']"/>
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:sourceView.computeContainerFunctionalChain(targetView)">
+                <subModelOperations xsi:type="tool:Let" variableName="commonFC" valueExpression="aql:self"/>
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="SequenceLink" referenceName="ownedSequenceLinks" variableName="sequenceLink">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="source" valueExpression="var:source"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="target" valueExpression="var:target"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="sourceReferenceHierarchy" valueExpression="aql:sourceView.computeFCReferenceHierarchy(commonFC)"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="targetReferenceHierarchy" valueExpression="aql:targetView.computeFCReferenceHierarchy(commonFC)"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ToolDescription" documentation="Insert a new Involvement Function referencing the selected Operational Activity between two Sequence Links." name="CreateFunctionInvolvementOnSequenceLink" label="Operational Activity on Sequence Link" precondition="aql:containerView.isValidFCInvolveFunction() and container.oclIsKindOf(fa::SequenceLink)" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionalChainInvolvementFunction_OA.gif">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool:Let" variableName="selectedSequenceLink" valueExpression="var:self"/>
+                <subModelOperations xsi:type="tool:Let" variableName="functionalChain" valueExpression="aql:self.eContainer()"/>
+                <subModelOperations xsi:type="tool:ExternalJavaAction" name="select Function" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementFromListWizard">
+                  <parameters name="context" value="aql:functionalChain"/>
+                  <parameters name="scope" value="aql:functionalChain.computeFCIFunctionScope()"/>
+                  <parameters name="multiple" value="true"/>
+                  <parameters name="resultVariable" value="selectedFunctions"/>
+                  <parameters name="wizardMessage" value="aql:'Select a Function to involve in ' + functionalChain.name + '.'"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:selectedFunctions != 'WIZARD_CANCELED'">
+                  <subModelOperations xsi:type="tool:For" expression="aql:selectedFunctions" iteratorName="selectedFunction">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:functionalChain">
+                      <subModelOperations xsi:type="tool:CreateInstance" typeName="FunctionalChainInvolvementFunction" referenceName="ownedFunctionalChainInvolvements" variableName="function">
+                        <subModelOperations xsi:type="tool:SetValue" featureName="involved" valueExpression="aql:selectedFunction"/>
+                        <subModelOperations xsi:type="tool_1:CreateView" containerViewExpression="aql:diagram.getDiagramElementDiagramIfNull(functionalChain)">
+                          <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:createdView.setPositionAtMiddleOfEdge(elementView)"/>
+                          <mapping xsi:type="description_2:NodeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@nodeMappings[name='FC_AbstractFunction']"/>
+                        </subModelOperations>
+                      </subModelOperations>
+                      <subModelOperations xsi:type="tool:CreateInstance" typeName="SequenceLink" referenceName="ownedSequenceLinks" variableName="newSequenceLink">
+                        <subModelOperations xsi:type="tool:SetValue" featureName="source" valueExpression="var:function"/>
+                        <subModelOperations xsi:type="tool:SetValue" featureName="target" valueExpression="aql:selectedSequenceLink.target"/>
+                        <subModelOperations xsi:type="tool:SetValue" featureName="targetReferenceHierarchy" valueExpression="aql:selectedSequenceLink.targetReferenceHierarchy"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:selectedSequenceLink">
+                      <subModelOperations xsi:type="tool:SetValue" featureName="target" valueExpression="var:function"/>
+                      <subModelOperations xsi:type="tool:Unset" featureName="targetReferenceHierarchy" elementExpression="aql:self.targetReferenceHierarchy"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ToolGroup" name="Advanced Tools">
+            <tools xsi:type="tool_1:EdgeCreationDescription" documentation="Creates a new Involvement Link referencing a Interaction with a linked Sequence Link." name="InteractionWithSequenceLink" label="Interaction with Sequence Link" precondition="aql:preSource.isValidFCILinkExchange(preTarget)" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionalChainInvolvementLinkOA_ToExchange.gif">
+              <edgeMappings href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@edgeMappings[name='FC_Exchange']"/>
+              <sourceVariable name="source"/>
+              <targetVariable name="target"/>
+              <sourceViewVariable name="sourceView"/>
+              <targetViewVariable name="targetView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:source">
+                  <subModelOperations xsi:type="tool:ExternalJavaAction" name="select Value" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementFromListWizard">
+                    <parameters name="context" value="aql:source"/>
+                    <parameters name="scope" value="aql:source.computeFCILinkScope(target)"/>
+                    <parameters name="multiple" value="false"/>
+                    <parameters name="resultVariable" value="selectedValue"/>
+                    <parameters name="wizardMessage" value="Select a value to involve."/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:selectedValue != 'WIZARD_CANCELED'">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:sourceView.computeContainerFunctionalChain(targetView)">
+                      <subModelOperations xsi:type="tool:Let" variableName="commonFC" valueExpression="aql:self"/>
+                      <subModelOperations xsi:type="tool:CreateInstance" typeName="FunctionalChainInvolvementLink" referenceName="ownedFunctionalChainInvolvements" variableName="involvementLink">
+                        <subModelOperations xsi:type="tool:SetValue" featureName="source" valueExpression="aql:source"/>
+                        <subModelOperations xsi:type="tool:SetValue" featureName="target" valueExpression="aql:target"/>
+                        <subModelOperations xsi:type="tool:SetValue" featureName="involved" valueExpression="aql:selectedValue"/>
+                        <subModelOperations xsi:type="tool:SetValue" featureName="sourceReferenceHierarchy" valueExpression="aql:sourceView.computeFCReferenceHierarchy(commonFC)"/>
+                        <subModelOperations xsi:type="tool:SetValue" featureName="targetReferenceHierarchy" valueExpression="aql:targetView.computeFCReferenceHierarchy(commonFC)"/>
+                      </subModelOperations>
+                      <subModelOperations xsi:type="tool:CreateInstance" typeName="SequenceLink" referenceName="ownedSequenceLinks" variableName="sequenceLink">
+                        <subModelOperations xsi:type="tool:SetValue" featureName="source" valueExpression="var:source"/>
+                        <subModelOperations xsi:type="tool:SetValue" featureName="target" valueExpression="var:target"/>
+                        <subModelOperations xsi:type="tool:SetValue" featureName="sourceReferenceHierarchy" valueExpression="aql:sourceView.computeFCReferenceHierarchy(commonFC)"/>
+                        <subModelOperations xsi:type="tool:SetValue" featureName="targetReferenceHierarchy" valueExpression="aql:targetView.computeFCReferenceHierarchy(commonFC)"/>
+                        <subModelOperations xsi:type="tool:SetValue" featureName="links" valueExpression="var:involvementLink"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool_1:EdgeCreationDescription" documentation="Associate a Sequence Link with a Involvement Link referencing a Interaction" name="AssociateSLwithInteraction" label="Associate Sequence Link with Interaction" precondition="aql:preSource.isValidLinks(preTarget)" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionalChainInvolvementLinkOA_ToExchange.gif">
+              <edgeMappings href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@edgeMappings[name='FC_SequenceLink_InvolvementLink']"/>
+              <sourceVariable name="source"/>
+              <targetVariable name="target"/>
+              <sourceViewVariable name="sourceView"/>
+              <targetViewVariable name="targetView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(fa::SequenceLink)">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="links" valueExpression="aql:target"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(fa::FunctionalChainInvolvementLink)">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:target">
+                      <subModelOperations xsi:type="tool:SetValue" featureName="links" valueExpression="aql:source"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+              <extraSourceMappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@edgeMappings[name='FC_Exchange']"/>
+              <extraTargetMappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@edgeMappings[name='FC_SequenceLink']"/>
+            </tools>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ToolGroup">
+            <tools xsi:type="tool:ToolDescription" documentation="Create a new Involvement Link referencing a Interaction and associate it with the selected Sequence Link" name="Interaction from Sequence Link" label="Interaction from Sequence Link" precondition="aql:container.oclIsKindOf(fa::SequenceLink)" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionalChainInvolvementLinkOA_ToExchange.gif">
+              <element name="element"/>
+              <elementView name="elementView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.accelerateOnSequenceLinkEdge()"/>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool:ToolDescription" documentation="Create a new Sequence Link and associate it with the selected Involvement Link" name="Sequence Link from Interaction" label="Sequence Link from Interaction" precondition="aql:container.oclIsKindOf(fa::FunctionalChainInvolvementLink) and not container.involved.oclIsKindOf(fa::AbstractFunction)" iconPath="/org.polarsys.capella.core.data.res.edit/icons/full/obj16/SequenceLink.gif">
+              <element name="element"/>
+              <elementView name="elementView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:element.accelerateOnFCILEdge()"/>
+              </initialOperation>
+            </tools>
+          </ownedTools>
         </toolSections>
         <toolSections name="Common">
           <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new Constraint." name="Constraint" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Constraint.gif">

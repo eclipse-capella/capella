@@ -18949,7 +18949,7 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraint%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer']" name="Functional Chain Description" titleExpression="aql:'[' + self.getFunctionalChainDiagramPrefix() + '] ' + self.name" domainClass="FunctionalChain" preconditionExpression="aql:not (self.oclIsKindOf(oa::OperationalProcess)) and self.isInLib()">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraint%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer']" name="Functional Chain Description" titleExpression="aql:'[' + self.getFunctionalChainDiagramPrefix() + '] ' + self.name" domainClass="FunctionalChain" preconditionExpression="aql:not (self.oclIsKindOf(oa::OperationalProcess)) and self.isInLib()" defaultConcern="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@concerns/@ownedConcernDescriptions.0">
       <filters xsi:type="filter:CompositeFilterDescription" name="Show ExchangeItems">
         <filters xsi:type="filter:MappingFilter" filterKind="COLLAPSE"/>
       </filters>
@@ -19808,7 +19808,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool:EdgeCreationDescription" name="AssociateSLwithE" label="Associate Sequence Link with Exchange" precondition="aql:preSource.isValidLinks(preTarget)" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@edgeMappings[name='FC_SequenceLink_InvolvementLink']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionalChainInvolvementLink_ToExchange.gif" extraSourceMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@edgeMappings[name='FC_Exchange']" extraTargetMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@edgeMappings[name='FC_SequenceLink']">
+            <tools xsi:type="tool:EdgeCreationDescription" documentation="Associate a Sequence Link with a Involvement Link referencing a Functional Exchange" name="AssociateSLwithE" label="Associate Sequence Link with Exchange" precondition="aql:preSource.isValidLinks(preTarget)" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@edgeMappings[name='FC_SequenceLink_InvolvementLink']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionalChainInvolvementLink_ToExchange.gif" extraSourceMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@edgeMappings[name='FC_Exchange']" extraTargetMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@edgeMappings[name='FC_SequenceLink']">
               <sourceVariable name="source"/>
               <targetVariable name="target"/>
               <sourceViewVariable name="sourceView"/>
@@ -19828,14 +19828,14 @@
             </tools>
           </ownedTools>
           <ownedTools xsi:type="tool:ToolGroup">
-            <tools xsi:type="tool_1:ToolDescription" name="Exchange from Sequence Link" label="Exchange from Sequence Link" precondition="aql:container.oclIsKindOf(fa::SequenceLink)" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionalChainInvolvementLink_ToExchange.gif">
+            <tools xsi:type="tool_1:ToolDescription" documentation="Create a new Involvement Link referencing a Functional Exchange and associate it with the selected Sequence Link" name="Exchange from Sequence Link" label="Exchange from Sequence Link" precondition="aql:container.oclIsKindOf(fa::SequenceLink)" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionalChainInvolvementLink_ToExchange.gif">
               <element name="element"/>
               <elementView name="elementView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView.accelerateOnSequenceLinkEdge()"/>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:ToolDescription" name="Sequence Link from Exchange" label="Sequence Link from Exchange" precondition="aql:container.oclIsKindOf(fa::FunctionalChainInvolvementLink)" iconPath="/org.polarsys.capella.core.data.res.edit/icons/full/obj16/SequenceLink.gif">
+            <tools xsi:type="tool_1:ToolDescription" documentation="Create a new Sequence Link and associate it with the selected Involvement Link" name="Sequence Link from Exchange" label="Sequence Link from Exchange" precondition="aql:container.oclIsKindOf(fa::FunctionalChainInvolvementLink) and not container.involved.oclIsKindOf(fa::AbstractFunction)" iconPath="/org.polarsys.capella.core.data.res.edit/icons/full/obj16/SequenceLink.gif">
               <element name="element"/>
               <elementView name="elementView"/>
               <initialOperation>

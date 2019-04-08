@@ -26,6 +26,7 @@ import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.ui.actions.ModelAdaptation;
+import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.FunctionalChainInvolvementLink;
 import org.polarsys.capella.core.model.helpers.FunctionalChainExt;
 
@@ -71,6 +72,7 @@ public class AcceleratorOnFCILinkHandler extends AbstractHandler {
     IWorkbenchPage activePage = activeWorkbenchWindow.getActivePage();
     ISelection selection = activePage.getSelection();
 
-    return getFCILFromSelection(selection) != null;
+    FunctionalChainInvolvementLink selectedFCIL = getFCILFromSelection(selection);
+    return selectedFCIL != null && !(selectedFCIL.getInvolved() instanceof AbstractFunction);
   }
 }

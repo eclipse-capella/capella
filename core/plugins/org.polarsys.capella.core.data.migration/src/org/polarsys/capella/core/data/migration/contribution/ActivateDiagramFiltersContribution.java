@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.sirius.diagram.DDiagram;
@@ -41,10 +42,12 @@ public class ActivateDiagramFiltersContribution extends AbstractMigrationContrib
 
   private void activateRelevantDiagramFilters(Resource resource) {
     for (DDiagram diagram : getAllDiagrams(resource)) {
-      if (DDiagramHelper.isFCD(diagram))
-        updateFCDDiagramFilters(diagram);
-      else if (DDiagramHelper.isXAB(diagram))
-        updateXABDiagramFilters(diagram);
+      if (DDiagramHelper.isFCD(diagram) || DDiagramHelper.isOPD(diagram)) {
+        activateDiagramFilter(diagram, IFilterNameConstants.FILTER_FCD_HIDE_ASSOCIATION_LINKS);
+      }
+      else if (DDiagramHelper.isXAB(diagram)) {
+        activateDiagramFilter(diagram, IFilterNameConstants.FILTER_XAB_HIDE_SEQUENCING_INFORMATION);
+      }
     }
   }
 
@@ -60,25 +63,16 @@ public class ActivateDiagramFiltersContribution extends AbstractMigrationContrib
     }
     return allDiagrams;
   }
-
-  private void updateFCDDiagramFilters(DDiagram diagram) {
+  
+  private void activateDiagramFilter(DDiagram diagram, String filterName) {
+    EList<FilterDescription> activatedFilters = diagram.getActivatedFilters();
     for (FilterDescription filter : diagram.getDescription().getFilters()) {
-      if (IFilterNameConstants.FILTER_FCD_HIDE_ASSOCIATION_LINKS.equals(filter.getName())
-          && !diagram.getActivatedFilters().contains(filter)) {
-        diagram.getActivatedFilters().add(filter);
+      if (filterName.equals(filter.getName()) && !activatedFilters.contains(filter)) {
+        activatedFilters.add(filter);
       }
     }
   }
-
-  private void updateXABDiagramFilters(DDiagram diagram) {
-    for (FilterDescription filter : diagram.getDescription().getFilters()) {
-      if (IFilterNameConstants.FILTER_XAB_HIDE_SEQUENCING_INFORMATION.equals(filter.getName())
-          && !diagram.getActivatedFilters().contains(filter)) {
-        diagram.getActivatedFilters().add(filter);
-      }
-    }
-  }
-
+  
   // We migrate from 1.2.x/1.3.0 --> 1.3.x (x >= 1)
   private boolean isMigrationRequired(MigrationContext context) {
     Version fileVersion = context.getCurrentVersion();
