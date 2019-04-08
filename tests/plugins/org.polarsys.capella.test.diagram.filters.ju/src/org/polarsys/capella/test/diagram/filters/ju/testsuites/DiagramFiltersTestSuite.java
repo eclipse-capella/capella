@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -38,6 +38,9 @@ import org.polarsys.capella.test.diagram.filters.ju.testcases.HideTechnicalInter
 import org.polarsys.capella.test.diagram.filters.ju.testcases.HideTechnicalInterfaceForCEI;
 import org.polarsys.capella.test.diagram.filters.ju.testcases.HideTechnicalInterfaceForCII;
 import org.polarsys.capella.test.diagram.filters.ju.testcases.HideTechnicalInterfaceForIDB;
+import org.polarsys.capella.test.diagram.filters.ju.testcases.MergeSequenceLinksAssociatedLinksTestCase1;
+import org.polarsys.capella.test.diagram.filters.ju.testcases.MergeSequenceLinksAssociatedLinksTestCase2;
+import org.polarsys.capella.test.diagram.filters.ju.testcases.MergeSequenceLinksAssociatedLinksTestCase3;
 import org.polarsys.capella.test.diagram.filters.ju.testcases.ShowExchangeItemsOnInteractions;
 import org.polarsys.capella.test.diagram.filters.ju.testcases.ShowExchangeItemsParametersOnInteractions;
 import org.polarsys.capella.test.diagram.filters.ju.testcases.ShowInteractionsWithExchangeItems;
@@ -62,35 +65,38 @@ public class DiagramFiltersTestSuite extends BasicTestSuite {
   @Override
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
-    tests.add(new ShowExchangeItemsOnInteractions());
-    tests.add(new ShowInteractionsWithExchangeItems());
-    tests.add(new ShowExchangeItemsParametersOnInteractions());
-    tests.add(new HideControlNodesForSFBD());
-    tests.add(new HideControlNodesForLFBD());
-    tests.add(new HideControlNodesForPFBD());
-    tests.add(new HideDelegatedCommunicationLinksForCII());
-    tests.add(new HideDelegatedCommunicationLinksForIDB());
-    tests.add(new HideDelegatedUseImplementationLinksForCII());
-    tests.add(new HideDelegatedUseImplementationLinksForIDB());
-    tests.add(new HideTechnicalInterfaceForCDB());
-    tests.add(new HideTechnicalInterfaceForCDI());
-    tests.add(new HideTechnicalInterfaceForCEI());
-    tests.add(new HideTechnicalInterfaceForCII());
-    tests.add(new HideTechnicalInterfaceForIDB());
-    tests.add(new ShowTriggerSourceFunctionForMSM());
-    tests.add(new HideComputedComponentExchangesForPAB());
-    tests.add(new HideComputedComponentExchangesForLAB());
-    tests.add(new HideComputedPhysicalLinksForPAB());
-    tests.add(new HideComputedCEForPABTestCase1());
-    tests.add(new HideComputedPLForPABTestCase1());
-    tests.add(new HideComputedLinksForPABTestCase1());
-    tests.add(new HideComputedLinksForPABTestCase2());
-    tests.add(new HideComputedLinksForPABTestCase3());
-    tests.add(new HideComputedLinksForPABTestCase4());
-    tests.add(new HideComputedLinksForPABTestCase5());
-    tests.add(new HideComputedLinksForPABTestCase6());
-    tests.add(new HideComputedLinksForPABTestCase7());
-    tests.add(new HideFunctionalExchangesTestCase());
+     tests.add(new ShowExchangeItemsOnInteractions());
+     tests.add(new ShowInteractionsWithExchangeItems());
+     tests.add(new ShowExchangeItemsParametersOnInteractions());
+     tests.add(new HideControlNodesForSFBD());
+     tests.add(new HideControlNodesForLFBD());
+     tests.add(new HideControlNodesForPFBD());
+     tests.add(new HideDelegatedCommunicationLinksForCII());
+     tests.add(new HideDelegatedCommunicationLinksForIDB());
+     tests.add(new HideDelegatedUseImplementationLinksForCII());
+     tests.add(new HideDelegatedUseImplementationLinksForIDB());
+     tests.add(new HideTechnicalInterfaceForCDB());
+     tests.add(new HideTechnicalInterfaceForCDI());
+     tests.add(new HideTechnicalInterfaceForCEI());
+     tests.add(new HideTechnicalInterfaceForCII());
+     tests.add(new HideTechnicalInterfaceForIDB());
+     tests.add(new ShowTriggerSourceFunctionForMSM());
+     tests.add(new HideComputedComponentExchangesForPAB());
+     tests.add(new HideComputedComponentExchangesForLAB());
+     tests.add(new HideComputedPhysicalLinksForPAB());
+     tests.add(new HideComputedCEForPABTestCase1());
+     tests.add(new HideComputedPLForPABTestCase1());
+     tests.add(new HideComputedLinksForPABTestCase1());
+     tests.add(new HideComputedLinksForPABTestCase2());
+     tests.add(new HideComputedLinksForPABTestCase3());
+     tests.add(new HideComputedLinksForPABTestCase4());
+     tests.add(new HideComputedLinksForPABTestCase5());
+     tests.add(new HideComputedLinksForPABTestCase6());
+     tests.add(new HideComputedLinksForPABTestCase7());
+     tests.add(new HideFunctionalExchangesTestCase());
+    tests.add(new MergeSequenceLinksAssociatedLinksTestCase1());
+    tests.add(new MergeSequenceLinksAssociatedLinksTestCase2());
+    tests.add(new MergeSequenceLinksAssociatedLinksTestCase3());
     return tests;
   }
 

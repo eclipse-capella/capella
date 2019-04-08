@@ -554,4 +554,7 @@ public interface IFilterNameConstants {
   String FILTER_SHOW_CE_EXCHANGE_CONTEXT_ID = "ShowCEExchangeContext"; //$NON-NLS-1$
   String FILTER_SHOW_FE_EXCHANGE_CONTEXT_ID = "ShowFEExchangeContext"; //$NON-NLS-1$
   String FILTER_SHOW_EI_EXCHANGE_CONTEXT_ID = "ShowEIExchangeContext"; //$NON-NLS-1$
+  
+  String FILTER_MERGE_ASSOCIATED_FE_AND_SL = "Merge associated Functional Exchange Involvements and Sequence Links without Control Node"; //$NON-NLS-1$
+
 }

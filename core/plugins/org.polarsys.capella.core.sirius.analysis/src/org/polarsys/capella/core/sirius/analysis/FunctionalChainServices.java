@@ -1818,4 +1818,24 @@ public class FunctionalChainServices {
 
     return false;
   }
+  
+  /**
+   * Hide FCIL that have associated Sequence Link
+   * 
+   * @param edge
+   *          to check if it has an associated SL
+   * @return true if FunctionalChainInvolvementLink has an associated Sequence Link.
+   */
+  public boolean isFEWithAssociatedSL(DEdge edge) {
+    if (edge.getTarget() instanceof FunctionalChainInvolvementLink) {
+      FunctionalChainInvolvementLink fcil = (FunctionalChainInvolvementLink) edge.getTarget();
+      List<SequenceLink> listSL = EObjectExt.getReferencers(fcil, FaPackage.Literals.SEQUENCE_LINK__LINKS);
+      for (SequenceLink sl : listSL) {
+        if (fcil.getSource() == sl.getSource() && fcil.getTarget() == sl.getTarget()) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
 }

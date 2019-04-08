@@ -53,7 +53,7 @@ public abstract class DiagramObjectFilterTestCase extends BasicTestCase {
   protected DDiagram diagram;
 
   protected Hashtable<String, DDiagramElement> diagramElement2ObjectID = new Hashtable<String, DDiagramElement>();
-  private List<DDiagramElement> notFiltered = new ArrayList<DDiagramElement>();
+  protected List<DDiagramElement> notFiltered = new ArrayList<DDiagramElement>();
 
   // these methods must be overridden by concrete test cases
   /** returns the name of the test project folder (by default in the folder "model") */
@@ -127,7 +127,7 @@ public abstract class DiagramObjectFilterTestCase extends BasicTestCase {
   public void test() {
 
     preRunTest();
-
+    
     // check that objects that will be filtered are not filtered yet
     for (DDiagramElement elt : diagram.getDiagramElements()) {
 
@@ -149,7 +149,6 @@ public abstract class DiagramObjectFilterTestCase extends BasicTestCase {
   }
 
   protected void postRunTest() {
-
     // check that expected filtered objects are actually filtered
     for (DDiagramElement elt : diagram.getDiagramElements()) {
 
