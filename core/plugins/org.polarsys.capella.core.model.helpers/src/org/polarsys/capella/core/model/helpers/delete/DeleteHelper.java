@@ -628,11 +628,7 @@ public class DeleteHelper implements IDeleteHelper {
             || (linkedObject instanceof ComponentExchangeAllocation);
       }
     } else if (link instanceof FunctionalChainInvolvementLink) {
-      if (FaPackage.Literals.FUNCTIONAL_CHAIN_INVOLVEMENT_LINK__EXCHANGED_ITEMS.equals(feature)) {
-        return false;
-      }
-      InvolvedElement involved = ((Involvement) link).getInvolved();
-      result = (involved == null) || (involved instanceof FunctionalExchange);
+      result = !FaPackage.Literals.FUNCTIONAL_CHAIN_INVOLVEMENT_LINK__EXCHANGED_ITEMS.equals(feature);
 
     } else if (link instanceof PhysicalPathInvolvement) {
       AbstractPathInvolvedElement involved = ((PhysicalPathInvolvement) link).getInvolvedElement();
