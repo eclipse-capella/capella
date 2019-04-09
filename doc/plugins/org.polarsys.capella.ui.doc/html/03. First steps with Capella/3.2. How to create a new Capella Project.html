@@ -1,7 +1,107 @@
-<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>3.2. How to create a new Capella Project</title><link type="text/css" rel="stylesheet" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css"/></head><body><h1 id="How_to_Create_a_New_Capella_Project.3F">How to Create a New Capella Project?</h1><p>When starting Capella for the first time, it is necessary to create a new project in which a model will be initialized. A dedicated wizard is provided. In the Capella Project Explorer View, right click on the background and select New Capella Project&hellip;</p><p><img height="388" width="627" border="0" src="Images/3.2.%20How%20to%20create%20a%20new%20Melody%20Advance%20Project_html_m2f6e72b2.png"/></p><p>This opens a wizard asking for the name of the project and its location.</p><p><img height="358" width="460" border="0" src="Images/3.2.%20How%20to%20create%20a%20new%20Melody%20Advance%20Project_html_a409509.png"/></p><p><br/>
-<br/></p><p>To enable &ldquo;allow the reuse of components through parts&rdquo; check the corresponding option in the preferences window:</p><p><br/>
-<br/></p><p><img height="500" width="764" border="0" src="Images/3.2.%20How%20to%20create%20a%20new%20Melody%20Advance%20Project_html_19372ef5.png"/></p><p><b>Fig</b>. Enabling the selection of component reuse option on projects.</p><p><br/>
-<br/></p><p><img height="286" width="399" border="0" src="Images/3.2.%20How%20to%20create%20a%20new%20Melody%20Advance%20Project_html_7de602d5.png"/></p><p><b>Fig</b>. Component reuse option enabled on new project wizard.</p><table border="1"><tr><td><p><img height="48" width="48" border="0" src="Images/3.2.%20How%20to%20create%20a%20new%20Melody%20Advance%20Project_html_3c78e109.png"/></p></td><td><p>On this page of the wizard, the strategy regarding the management 				of Components and Parts has to be defined.</p><p>When reuse of components is allowed, it means Components are seen 				as &ldquo;types&rdquo;. Several Parts can be typed by a same 				Component. While this alternative may be closer to UML / SysML 				way of managing of Components / Blocks, it also requires a deeper 				understanding of the relationships between Types, Parts and 				Instances.</p><p>When reuse of components though Parts is not allowed, Components 				are seen as &ldquo;instances&rdquo;. Concretely, the &ldquo;Part&rdquo; 				concept is almost hidden by the tool, letting the end user focus 				only on Components. Reuse is managed using Patterns (see 				dedicated documentation).</p><p><br/>
-<br/></p><p>The default setting is No. Unless having motivated reasons, this 				default choice is the one make when following the Arcadia 				methodology.</p><p><br/>
-<br/></p><p>Once a model has 				been started with one of these two alternatives, it requires an 				advanced level of expertise to switch back to the other 				alternative. Should this be needed, please contact Capella 				support.</p></td></tr></table><p>When a new project is created, the model structure is automatically initialized. This page of the wizard allows specifying whether the default model structure should include Operational Analysis and EPBS Architecture.</p><p><img height="370" width="450" border="0" src="Images/3.2.%20How%20to%20create%20a%20new%20Melody%20Advance%20Project_html_1c3d37be.png"/></p><table border="1"><tr><td><p><img height="48" width="48" border="0" src="Images/3.2.%20How%20to%20create%20a%20new%20Melody%20Advance%20Project_html_3c78e109.png"/></p></td><td><p>Whatever the choice made in this page of the 				wizard, it remains possible to modify this selection after 				the creation of the project:</p><ul><li>Either by adding manually Operational Analysis or EPBS</li><li>Either by 					removing Operational Analysis or EPBS. This case leads to 					deletion of the associated parts of the model. A confirmation 					request is raised to protect the user against accidental 					deletion.</li></ul></td></tr></table><p>The following page proposes the list of available Viewpoints. Capella diagrams are ordered in one Viewpoint per engineering phase, plus a common one. Depending on the planned activities for a given session, it may not be systematically useful to load all the viewpoints. A dedicated tool allows activating / deactivating Viewpoints at any moment later on.</p><p>Clicking on Finish will create the basic model structure.</p><p><img height="370" width="650" border="0" src="Images/3.2.%20How%20to%20create%20a%20new%20Melody%20Advance%20Project_html_m156d26b.png"/></p><p>The Capella Overview is automatically displayed.</p><p><img height="479" width="414" border="0" src="Images/3.2.%20How%20to%20create%20a%20new%20Melody%20Advance%20Project_html_m873f5a6.png"/></p><p><br/>
-<br/></p></body></html>
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>3.2. How to create a new Capella Project</title>
+		<link type="text/css" rel="stylesheet" href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css"/>
+	</head>
+	<body>
+		<h1 id="How_to_Create_a_New_Capella_Project.3F">How to Create a New Capella Project?</h1>
+		<p>When starting Capella for the first time, it is necessary to create a new project in which a model will be initialized. A dedicated wizard is provided. In the Capella Project Explorer View, right click on the background and select New Capella Project&hellip;</p>
+		<p>
+			<img height="388" width="627" border="0" src="Images/3.2.%20How%20to%20create%20a%20new%20Melody%20Advance%20Project_html_m2f6e72b2.png"/>
+		</p>
+		<p>This opens a wizard asking for the name of the project and its location.</p>
+		<p>
+			<img height="358" width="460" border="0" src="Images/3.2.%20How%20to%20create%20a%20new%20Melody%20Advance%20Project_html_a409509.png"/>
+		</p>
+		<p>
+			<br/>
+
+			<br/>
+		</p>
+		<p>To enable &ldquo;allow the reuse of components through parts&rdquo; check the corresponding option in the preferences window:</p>
+		<p>
+			<br/>
+
+			<br/>
+		</p>
+		<p>
+			<img height="500" width="764" border="0" src="Images/3.2.%20How%20to%20create%20a%20new%20Melody%20Advance%20Project_html_19372ef5.png"/>
+		</p>
+		<p>
+			<b>Fig</b>. Enabling the selection of component reuse option on projects.
+		</p>
+		<p>
+			<br/>
+
+			<br/>
+		</p>
+		<p>
+			<img height="286" width="399" border="0" src="Images/3.2.%20How%20to%20create%20a%20new%20Melody%20Advance%20Project_html_7de602d5.png"/>
+		</p>
+		<p>
+			<b>Fig</b>. Component reuse option enabled on new project wizard.
+		</p>
+		<table border="1">
+			<tr>
+				<td>
+					<p>
+						<img height="48" width="48" border="0" src="Images/3.2.%20How%20to%20create%20a%20new%20Melody%20Advance%20Project_html_3c78e109.png"/>
+					</p>
+				</td>
+				<td>
+					<p>On this page of the wizard, the strategy regarding the management 				of Components and Parts has to be defined.</p>
+					<p>When reuse of components is allowed, it means Components are seen 				as &ldquo;types&rdquo;. Several Parts can be typed by a same 				Component. While this alternative may be closer to UML / SysML 				way of managing of Components / Blocks, it also requires a deeper 				understanding of the relationships between Types, Parts and 				Instances.</p>
+					<p>When reuse of components though Parts is not allowed, Components 				are seen as &ldquo;instances&rdquo;. Concretely, the &ldquo;Part&rdquo; 				concept is almost hidden by the tool, letting the end user focus 				only on Components. Reuse is managed using Patterns (see 				dedicated documentation).</p>
+					<p>
+						<br/>
+
+						<br/>
+					</p>
+					<p>The default setting is No. Unless having motivated reasons, this 				default choice is the one make when following the Arcadia 				methodology.</p>
+					<p>
+						<br/>
+
+						<br/>
+					</p>
+					<p>Once a model has 				been started with one of these two alternatives, it requires an 				advanced level of expertise to switch back to the other 				alternative. Should this be needed, please contact Capella 				support.</p>
+				</td>
+			</tr>
+		</table>
+		<p>When a new project is created, the model structure is automatically initialized. This page of the wizard allows specifying whether the default model structure should include Operational Analysis and EPBS Architecture.</p>
+		<p>
+			<img height="370" width="450" border="0" src="Images/3.2.%20How%20to%20create%20a%20new%20Melody%20Advance%20Project_html_1c3d37be.png"/>
+		</p>
+		<table border="1">
+			<tr>
+				<td>
+					<p>
+						<img height="48" width="48" border="0" src="Images/3.2.%20How%20to%20create%20a%20new%20Melody%20Advance%20Project_html_3c78e109.png"/>
+					</p>
+				</td>
+				<td>
+					<p>Whatever the choice made in this page of the 				wizard, it remains possible to modify this selection after 				the creation of the project:</p>
+					<ul>
+						<li>Either by adding manually Operational Analysis or EPBS</li>
+						<li>Either by 					removing Operational Analysis or EPBS. This case leads to 					deletion of the associated parts of the model. A confirmation 					request is raised to protect the user against accidental 					deletion.</li>
+					</ul>
+				</td>
+			</tr>
+		</table>
+		<p>The following page proposes the list of available Viewpoints. Capella diagrams are ordered in one Viewpoint per engineering phase, plus a common one. Depending on the planned activities for a given session, it may not be systematically useful to load all the viewpoints. A dedicated tool allows activating / deactivating Viewpoints at any moment later on.</p>
+		<p>Clicking on Finish will create the basic model structure.</p>
+		<p>
+			<img height="370" width="650" border="0" src="Images/3.2.%20How%20to%20create%20a%20new%20Melody%20Advance%20Project_html_m156d26b.png"/>
+		</p>
+		<p>The Capella Overview is automatically displayed.</p>
+		<p>
+			<img height="479" width="414" border="0" src="Images/3.2.%20How%20to%20create%20a%20new%20Melody%20Advance%20Project_html_m873f5a6.png"/>
+		</p>
+		<p>
+			<br/>
+
+			<br/>
+		</p>
+	</body>
+</html>
