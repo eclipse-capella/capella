@@ -16,10 +16,10 @@ import org.polarsys.capella.core.data.fa.FunctionalChainInvolvementFunction;
 import org.polarsys.capella.core.data.fa.FunctionalChainInvolvementLink;
 
 /*
- * DWF_DF_20 - SequenceLink is in opposite direction to involved FunctionalExchange
+ * DWF_DF_20 - SequenceLink between the referenced Involvement Functions/OperationalActivities is in opposite direction to Involvement Links referencing them
  */
 public class SequenceLinkOppositeDirectionToFE extends SequenceLinkWithInconsistentAssociatedLinks {
-  public static final String SequenceLink_Opposite_Direction = "(SequenceLink) between {0}({1}) and {2}({3}) is in opposite direction to involved {4}(FunctionalExchange).";
+  public static final String SequenceLink_Opposite_Direction = "SequenceLink between {0}({1}) and {2}({3}) is in opposite direction to Involvement Links referencing them";
 
   @Override
   protected boolean isValid(FunctionalChainInvolvementLink link,

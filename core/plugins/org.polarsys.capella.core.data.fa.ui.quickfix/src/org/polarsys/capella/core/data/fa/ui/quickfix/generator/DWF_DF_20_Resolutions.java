@@ -11,9 +11,10 @@
 package org.polarsys.capella.core.data.fa.ui.quickfix.generator;
 
 /**
- * DWF_DF_20 - SequenceLink is in opposite direction to involved FunctionalExchange
+ * DWF_DF_20 - SequenceLink between the referenced Involvement Functions/OperationalActivities is in opposite direction to Involvement Links referencing them
+ * them
  */
-public class DWF_DF_20_Resolutions extends DWF_DF_19_Resolutions {
+public class DWF_DF_20_Resolutions extends SequenceLink_Resolutions {
   public static final String RULE_ID = "org.polarsys.capella.core.data.fa.validation.DWF_DF_20";
   public static final String labelQF = "Remove association in opposite direction of ({0}) to {1} ({2})";
   public static final String labelQF_ALL = "Remove all associations in opposite direction of ({0})";

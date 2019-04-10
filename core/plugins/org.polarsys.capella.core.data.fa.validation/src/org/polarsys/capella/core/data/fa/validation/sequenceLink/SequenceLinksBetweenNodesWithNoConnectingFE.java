@@ -22,7 +22,7 @@ import org.polarsys.capella.core.model.helpers.SequenceLinkExt;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 
 /*
- * DWF_DF_15 - Sequence Links between FCIFunctions/Control Nodes with no Functional Exchanges connecting them
+ * DWF_DF_15 - SequenceLinks between the referenced Involvement Functions/OperationalActivities have no Involvement Links referencing them
  */
 public class SequenceLinksBetweenNodesWithNoConnectingFE extends AbstractValidationRule {
   @Override
