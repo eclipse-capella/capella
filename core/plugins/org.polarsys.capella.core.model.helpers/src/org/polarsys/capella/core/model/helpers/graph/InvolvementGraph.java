@@ -108,12 +108,28 @@ public class InvolvementGraph
     return edge.getSemantic() instanceof SequenceLink;
   }
 
+  /**
+   * A node is considered a starting function if either he has no incoming edges or if all incoming edges reference
+   * Sequence Links.
+   * 
+   * @param node
+   *          the involvement node.
+   * @return true if a starting function, false otherwise.
+   */
   public boolean isStartingFunction(InvolvementNode node) {
-    return node.getIncomingEdges().isEmpty();
+    return node.getIncomingEdges().stream().allMatch(this::isSequenceLink);
   }
 
+  /**
+   * A node is considered a ending function if either he has no outgoing edges or if all outgoing edges reference
+   * Sequence Links.
+   * 
+   * @param node
+   *          the involvement node.
+   * @return true if a starting function, false otherwise.
+   */
   public boolean isEndingFunction(InvolvementNode node) {
-    return node.getOutgoingEdges().isEmpty();
+    return node.getOutgoingEdges().stream().allMatch(this::isSequenceLink);
   }
 
   public ControlNode getControlNode(InvolvementNode node) {
