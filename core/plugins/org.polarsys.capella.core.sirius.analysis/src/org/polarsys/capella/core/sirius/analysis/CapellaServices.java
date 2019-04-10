@@ -2133,7 +2133,7 @@ public class CapellaServices {
     if (container instanceof Component) {
       Component component = (Component) container;
       allocatedFunctions.addAll(component.getAllocatedFunctions());
-      for (Component subComponent : ComponentExt.getAllSubUsedAndDeployedComponents(component)) {
+      for (Component subComponent : getCache(ComponentExt::getAllSubUsedAndDeployedComponents, component)) {
         allocatedFunctions.addAll(subComponent.getAllocatedFunctions());
       }
     }
@@ -2264,7 +2264,7 @@ public class CapellaServices {
    */
   public boolean isAllocatedInThisComponent(AbstractFunction function, EObject container) {
     if (AbstractFunctionExt.isLeaf(function)) {
-      List<Component> allocatingComponent = AbstractFunctionExt.getAllocatingComponents(function);
+      List<Component> allocatingComponent = getCache(AbstractFunctionExt::getAllocatingComponents, function);
       if (allocatingComponent.size() != 1 || allocatingComponent.get(0) != container) {
         // Function is a leaf but is not allocated to given Component
         return false;
@@ -2272,7 +2272,7 @@ public class CapellaServices {
     } else {
       List<AbstractFunction> allLeaves = getCache(FunctionExt::getAllLeafAbstractFunctions, function);
       for (AbstractFunction leaf : allLeaves) {
-        List<Component> allocatingComponent = AbstractFunctionExt.getAllocatingComponents(leaf);
+        List<Component> allocatingComponent = getCache(AbstractFunctionExt::getAllocatingComponents, leaf);
         if (allocatingComponent.size() != 1 || allocatingComponent.get(0) != container) {
           // Function is not a leaf and at least one of its leaf is not allocated to given
           // Component
@@ -2286,25 +2286,24 @@ public class CapellaServices {
   /**
    * 
    * Function border should be dashed only in the specified use cases : - ALL its leaf sub-functions are allocated to
-   * component/sub-component - Function is not allocated directly to the displayed component
+   * sub-components of the input component - Function is not allocated directly to the displayed component
    * 
    * @param function
    * @param container
    * @return Return whether the border of a function should be dashed or not.
    */
-  public boolean isDashedFunction(AbstractFunction function, EObject container) {
+  public boolean isDashedFunction(AbstractFunction function, Component container) {
     if (AbstractFunctionExt.isLeaf(function)) {
-      List<Component> allocatingComponent = AbstractFunctionExt.getAllocatingComponents(function);
-      if (!allocatingComponent.isEmpty()) {
-        return allocatingComponent.get(0) != container;
+      List<Component> allocatingComponents = getCache(AbstractFunctionExt::getAllocatingComponents, function);
+      if (!allocatingComponents.isEmpty()) {
+        return allocatingComponents.stream().allMatch(comp -> comp != container);
       }
     } else {
       List<AbstractFunction> allLeaves = getCache(FunctionExt::getAllLeafAbstractFunctions, function);
+      List<Component> subComponents = getCache(ComponentExt::getAllSubUsedAndDeployedComponents, container);
       for (AbstractFunction leaf : allLeaves) {
-        List<Component> allocatingComponent = AbstractFunctionExt.getAllocatingComponents(leaf);
-        if (allocatingComponent.size() != 1 || allocatingComponent.get(0) != container) {
-          // Function is not a leaf and at least one of its leaf is not allocated to given
-          // Component
+        List<Component> allocatingComponents = getCache(AbstractFunctionExt::getAllocatingComponents, leaf);
+        if (allocatingComponents.stream().noneMatch(comp -> comp != container && subComponents.contains(comp))) {
           return false;
         }
       }
