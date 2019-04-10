@@ -198,7 +198,7 @@ public abstract class AbstractShowHideFunctions extends EmptyProject {
     XABDiagram xab = setUpDiagram(context, rootSF, rootCPS);
     xab.hasntView(GenericModel.FUNCTION_1_1);
     xab.insertAllocatedFunction(GenericModel.FUNCTION_1_1, GenericModel.COMPONENT_1_1_1);
-    checkFunction(xab, GenericModel.FUNCTION_1_1, true, true);
+    checkFunction(xab, GenericModel.FUNCTION_1_1, true, false);
   }
 
   /**
@@ -210,12 +210,12 @@ public abstract class AbstractShowHideFunctions extends EmptyProject {
     XABDiagram xab = setUpDiagram(context, rootSF, rootCPS);
     removeComponent(xab, GenericModel.COMPONENT_1_1_1, GenericModel.COMPONENT_1_1);
     xab.insertAllocatedFunction(GenericModel.FUNCTION_1_1, GenericModel.COMPONENT_1_1);
-    checkFunction(xab, GenericModel.FUNCTION_1_1, true, false);
+    checkFunction(xab, GenericModel.FUNCTION_1_1, true, true);
 
     removeComponent(xab, GenericModel.COMPONENT_1_1, GenericModel.COMPONENT_1);
     xab.hasntView(GenericModel.FUNCTION_1_1);
     xab.insertAllocatedFunction(GenericModel.FUNCTION_1_1, GenericModel.COMPONENT_1);
-    checkFunction(xab, GenericModel.FUNCTION_1_1, true, false);
+    checkFunction(xab, GenericModel.FUNCTION_1_1, true, true);
   }
 
   /**

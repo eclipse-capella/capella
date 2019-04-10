@@ -30,9 +30,12 @@ public class Bug2145TestCase extends BasicTestCase {
 	
 	  private String LAB__LC2__LF2 = "40d6033f-e751-4101-a195-bae2c91e0da2"; //$NON-NLS-1$
 	  private String PAB__PC2__LF1 = "23e61aa6-b59f-4eee-aa57-a194ec92f2e1"; //$NON-NLS-1$
+	  private String LAB3__LOGICALSYSTEM__LF3 = "f4235f74-9c07-408e-97cb-37d64da94713"; //$NON-NLS-1$
+	  private String LAB3__LOGICALSYSTEM__LF4 = "f8b8b6ef-cb6e-4253-b6ec-adef276421e8"; //$NON-NLS-1$
 
 	  private String pABDiagramName = "[PAB] 1";
 	  private String lABDiagramName = "[LAB] 2";
+	  private String lAB3DiagramName = "[LAB] 3";
 	  private String projectTestName = "DashFunctionBug";
 
 	  @Override
@@ -50,6 +53,12 @@ public class Bug2145TestCase extends BasicTestCase {
 	    DiagramContext lABdiagramContext = new OpenDiagramStep(context, lABDiagramName).run();
 	    DNode lF2View = (DNode)lABdiagramContext.getView(LAB__LC2__LF2);
 	    assertTrue("LF2 should not be dashed", getBorderLineStyle(lF2View) == LineStyle.SOLID);
+	    
+	    DiagramContext lAB3diagramContext = new OpenDiagramStep(context, lAB3DiagramName).run();
+      DNode lF3View = (DNode)lAB3diagramContext.getView(LAB3__LOGICALSYSTEM__LF3);
+      assertTrue("LF3 border should be dashed", getBorderLineStyle(lF3View) == LineStyle.DASH);
+      DNode lF4View = (DNode)lAB3diagramContext.getView(LAB3__LOGICALSYSTEM__LF4);
+      assertTrue("LF4 border should be solid", getBorderLineStyle(lF4View) == LineStyle.SOLID);
 	    
 	    // PAB
 	    DiagramContext pABdiagramContext = new OpenDiagramStep(context, pABDiagramName).run();

@@ -1617,8 +1617,8 @@ public class CsServices {
       if ((source instanceof AbstractActor) && (target instanceof AbstractActor)) {
         return source.getClass().equals(target.getClass());
       } else if (!(source instanceof AbstractActor) && !(target instanceof AbstractActor)) {
-        if (!ComponentExt.getAllSubUsedAndDeployedComponents((Component) source).contains(target)
-            && !ComponentExt.getAllSubUsedAndDeployedComponents((Component) target).contains(source)) {
+        if (!getCache(ComponentExt::getAllSubUsedAndDeployedComponents, (Component) source).contains(target)
+            && !getCache(ComponentExt::getAllSubUsedAndDeployedComponents, (Component) target).contains(source)) {
           /*
            * if (source instanceof PhysicalComponent && target instanceof PhysicalComponent) { return
            * ((PhysicalComponent) source).getNature().equals(((PhysicalComponent) target).getNature()); }
@@ -6727,15 +6727,15 @@ public class CsServices {
   public Collection<ControlNode> getAvailableControlNodes(DDiagram diagram) {
     Set<FunctionalChain> displayedFunctionalChains = FunctionalChainServices.getFunctionalChainServices()
         .getDisplayedFunctionalChainsOnDiagram(diagram);
-    return displayedFunctionalChains.stream()
-        .flatMap(fc -> FunctionalChainExt.getFlatControlNodes(fc).stream()).collect(Collectors.toList());
+    return displayedFunctionalChains.stream().flatMap(fc -> FunctionalChainExt.getFlatControlNodes(fc).stream())
+        .collect(Collectors.toList());
   }
 
   public Collection<SequenceLink> getAvailableSequenceLinks(DDiagram diagram) {
     Set<FunctionalChain> displayedFunctionalChains = FunctionalChainServices.getFunctionalChainServices()
         .getDisplayedFunctionalChainsOnDiagram(diagram);
-    return displayedFunctionalChains.stream()
-        .flatMap(fc -> FunctionalChainExt.getFlatSequenceLinks(fc).stream()).collect(Collectors.toList());
+    return displayedFunctionalChains.stream().flatMap(fc -> FunctionalChainExt.getFlatSequenceLinks(fc).stream())
+        .collect(Collectors.toList());
   }
 
   public EObject getSequenceLinkSource(SequenceLink sequenceLink) {
