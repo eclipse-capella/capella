@@ -11,7 +11,6 @@
 package org.polarsys.capella.core.data.fa.ui.quickfix.generator;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.core.resources.IMarker;
@@ -27,16 +26,12 @@ public class DWF_DF_18_Resolutions extends SequenceLink_Resolutions {
 
   @Override
   protected IMarkerResolution[] doGetResolutions(IMarker marker) {
-    IMarkerResolution[] resolutions = super.doGetResolutions(marker);
-
-    List<IMarkerResolution> resolutionsList = new ArrayList<IMarkerResolution>();
+    List<IMarkerResolution> resolutions = new ArrayList<IMarkerResolution>();
 
     DWF_DF_18_Resolver resolver = new DWF_DF_18_Resolver(getLabelQF());
-    resolutionsList.add(resolver);
+    resolutions.add(resolver);
 
-    Collections.addAll(resolutionsList, resolutions);
-
-    return resolutionsList.toArray(new IMarkerResolution[0]);
+    return resolutions.toArray(new IMarkerResolution[0]);
   }
 
   @Override

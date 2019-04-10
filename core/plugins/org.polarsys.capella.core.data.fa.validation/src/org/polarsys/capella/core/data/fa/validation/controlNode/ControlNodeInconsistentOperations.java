@@ -27,7 +27,7 @@ public class ControlNodeInconsistentOperations extends AbstractValidationRule {
   public static final String ControlNode_Inconsistency_No_InOut_Sequence_Links = "has no incoming and outgoing Sequence Links";
   public static final String ControlNode_Inconsistency_No_In_Sequence_Links = "has no incoming Sequence Links";
   public static final String ControlNode_Inconsistency_No_Out_Sequence_Links = "has no outgoing Sequence Links";
-  public static final String ControlNode_Inconsistency_Minimum_Out_Sequence_Links = "has only one outgoing Sequence Link";
+  public static final String ControlNode_Inconsistency_Minimum_InOut_Sequence_Links = "has only one incoming and one outgoing Sequence Link";
 
   @Override
   public IStatus validate(IValidationContext ctx) {
@@ -50,8 +50,8 @@ public class ControlNodeInconsistentOperations extends AbstractValidationRule {
       if (outCount == 0) {
         return ctx.createFailureStatus(className, ControlNode_Inconsistency_No_Out_Sequence_Links);
       }
-      if (inCount == 1 && outCount < 2) {
-        return ctx.createFailureStatus(className, ControlNode_Inconsistency_Minimum_Out_Sequence_Links);
+      if (inCount == 1 && outCount == 1) {
+        return ctx.createFailureStatus(className, ControlNode_Inconsistency_Minimum_InOut_Sequence_Links);
       }
       // check that node is closed - graph todo
     }

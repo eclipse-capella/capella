@@ -23,7 +23,6 @@ import org.polarsys.capella.core.data.fa.FunctionalChainInvolvementLink;
 import org.polarsys.capella.core.data.fa.SequenceLink;
 import org.polarsys.capella.core.data.fa.ui.quickfix.resolver.RemoveSequenceLinksAssociationsResolver;
 import org.polarsys.capella.core.validation.ui.ide.quickfix.AbstractMarkerResolutionGenerator;
-import org.polarsys.capella.core.validation.ui.ide.quickfix.CapellaElementGoToResolver;
 
 public abstract class SequenceLink_Resolutions extends AbstractMarkerResolutionGenerator {
   @Override
@@ -36,8 +35,6 @@ public abstract class SequenceLink_Resolutions extends AbstractMarkerResolutionG
     FunctionalChainInvolvementLink link = null;
     for (EObject element : modelElements) {
       if (element instanceof SequenceLink) {
-        // go to element in Capella Explorer
-        resolutions.add(new CapellaElementGoToResolver("", element));
         sequenceLink = (SequenceLink) element;
       }
       if (element instanceof FunctionalChainInvolvementLink) {
@@ -69,6 +66,7 @@ public abstract class SequenceLink_Resolutions extends AbstractMarkerResolutionG
     resolutions.add(commandAll);
   }
 
+  @Override
   protected abstract String getRuleId();
 
   protected abstract String getLabelQF();

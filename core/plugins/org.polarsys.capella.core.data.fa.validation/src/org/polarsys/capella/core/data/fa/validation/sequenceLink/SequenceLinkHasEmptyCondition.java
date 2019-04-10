@@ -27,16 +27,21 @@ public class SequenceLinkHasEmptyCondition extends AbstractValidationRule {
 
     if ((ctx.getEventType() == EMFEventType.NULL) && (ctx.getTarget() instanceof SequenceLink)) {
       SequenceLink seqLink = (SequenceLink) ctx.getTarget();
-      boolean hasCondition = false;
-      if (seqLink.getCondition() != null) {
-        String constraint = CapellaServices.getService().getConstraintLabel(seqLink.getCondition());
-        hasCondition = !(constraint.isEmpty());
-      }
-      if (!hasCondition) {
+
+      if (!hasCondition(seqLink)) {
         return ctx.createFailureStatus(ArrayUtils.addAll(SequenceLinkEndStatusHelper.getStatusInfo(seqLink.getSource()),
             SequenceLinkEndStatusHelper.getStatusInfo(seqLink.getTarget())));
       }
     }
     return ctx.createSuccessStatus();
+  }
+
+  private boolean hasCondition(SequenceLink seqLink) {
+    boolean hasCondition = false;
+    if (seqLink.getCondition() != null) {
+      String constraint = CapellaServices.getService().getConstraintLabel(seqLink.getCondition());
+      hasCondition = !(constraint.isEmpty());
+    }
+    return hasCondition;
   }
 }

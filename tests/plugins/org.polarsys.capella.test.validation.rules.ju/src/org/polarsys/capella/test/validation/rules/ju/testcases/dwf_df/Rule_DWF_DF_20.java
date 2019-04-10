@@ -18,7 +18,8 @@ import org.polarsys.capella.core.data.fa.FaPackage;
 import org.polarsys.capella.test.framework.api.OracleDefinition;
 
 /**
- * test on DWF_DF_20 - SequenceLink is in opposite direction to involved FunctionalExchange
+ * test on DWF_DF_20 - SequenceLink between the referenced Involvement Functions/OperationalActivities is in opposite
+ * direction to Involvement Links referencing them referencing them
  * 
  * @generated
  */

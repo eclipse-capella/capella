@@ -297,13 +297,13 @@
             <constraint class="org.polarsys.capella.core.data.fa.validation.sequenceLink.SequenceLinksBetweenNodesWithNoConnectingFE"
              id="DWF_DF_15"
              isEnabledByDefault="true" lang="Java" mode="Batch"
-             name="DWF_DF_15 - Sequence Links between FCIFunctions/Control Nodes with no Functional Exchanges connecting them"
+             name="DWF_DF_15 - SequenceLinks between the referenced Involvement Functions/OperationalActivities have no Involvement Links referencing them"
              severity="WARNING" statusCode="1">
                <message>
-                  (SequenceLink) between {0}({1}) and {2}({3}) has no Functional Exchanges connecting them.
+                  (SequenceLink) between the referenced {0}({1}) and {2}({3}) has no Involvement Links referencing them.
                </message>
                <description>
-                  This check ensures Sequence Links between FCIFunctions/Control Nodes have a Functional Exchange connecting them.
+                  This check ensures that SequenceLinks between the referenced Involvement Functions have Involvement Links referencing them.
                </description>
                <target class="SequenceLink">
                </target>
@@ -367,13 +367,13 @@
             <constraint class="org.polarsys.capella.core.data.fa.validation.sequenceLink.SequenceLinkOppositeDirectionToFE"
              id="DWF_DF_20"
              isEnabledByDefault="true" lang="Java" mode="Batch"
-             name="DWF_DF_20 - SequenceLink is in opposite direction to involved FunctionalExchange"
+             name="DWF_DF_20 - SequenceLink between the referenced Involvement Functions/OperationalActivities is in opposite direction to Involvement Links referencing them"
              severity="ERROR" statusCode="1">
                <message>
                   {0}
                </message>
                <description>
-                 This rule checks if a SequenceLink is in opposite direction to a involved FunctionalExchange
+                 This rule checks if a SequenceLink between the referenced Involvement Functions/OperationalActivities is in opposite direction to a Involvement Links referencing them.
                </description>
                <target class="SequenceLink">
                </target>
@@ -387,7 +387,7 @@
                   ({0}) {1}.
                </message>
                <description>
-                  This rule checks the inconsistencies.
+                  This rule checks the ControlNode construction inconsistencies. A ControlNode is valid if it has one IN and two OUT links or two IN and one OUT link.
                </description>
                <target class="ControlNode">
                </target>
