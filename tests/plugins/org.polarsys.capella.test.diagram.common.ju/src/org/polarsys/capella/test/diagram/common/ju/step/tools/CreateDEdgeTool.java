@@ -25,8 +25,8 @@ import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.DiagramHelper;
 
 public class CreateDEdgeTool extends AbstractToolStep<DEdge> {
 
-  String _sourceView;
-  String _targetView;
+  protected String _sourceView;
+  protected String _targetView;
 
   @Deprecated
   String _newSourceIdentifier;

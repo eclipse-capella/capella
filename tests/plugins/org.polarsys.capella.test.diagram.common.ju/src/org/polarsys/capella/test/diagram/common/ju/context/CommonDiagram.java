@@ -29,7 +29,7 @@ public class CommonDiagram extends DiagramContext {
   public CommonDiagram(SessionContext context, DDiagram diagram) {
     super(context, diagram);
   }
-  
+
   public void createConstraint(String id) {
     createConstraint(id, getDiagramId());
   }
@@ -99,10 +99,19 @@ public class CommonDiagram extends DiagramContext {
     return getSemanticIdFromView(graphicalElement);
   }
 
+  protected String createNodeElement(String targetId, String containerId, String toolName) {
+
+    DNode graphicalElement = new CreateAbstractDNodeTool<DNode>(this, toolName, targetId, containerId, null,
+        DNode.class).run();
+
+    customVerificationOnCreatedNodeElement(toolName, graphicalElement, containerId);
+
+    return getSemanticIdFromView(graphicalElement);
+  }
+
   protected String createContainerElement(String containerId, String toolName) {
 
-    DDiagramElementContainer graphicalElement = new CreateContainerTool(this, toolName, containerId)
-        .run();
+    DDiagramElementContainer graphicalElement = new CreateContainerTool(this, toolName, containerId).run();
 
     customVerificationOnCreatedContainerElement(toolName, graphicalElement, containerId);
 
@@ -111,14 +120,13 @@ public class CommonDiagram extends DiagramContext {
 
   protected String createEdgeElement(String sourceViewId, String targetViewId, String toolName) {
 
-    DEdge graphicalElement = new CreateDEdgeTool(this, toolName, sourceViewId, targetViewId, null, null,
-        null).run();
+    DEdge graphicalElement = new CreateDEdgeTool(this, toolName, sourceViewId, targetViewId, null, null, null).run();
 
     customVerificationOnCreatedEdgeElement(toolName, graphicalElement, sourceViewId, targetViewId);
 
     return getSemanticIdFromView(graphicalElement);
   }
-  
+
   protected void showElements(String containerId, String toolName, String... elementsToBeInsertedIds) {
     new InsertRemoveTool(this, toolName, containerId).insert(elementsToBeInsertedIds);
   }
@@ -130,16 +138,15 @@ public class CommonDiagram extends DiagramContext {
   /*
    * CHECK FUNCTIONS
    */
-  protected void customVerificationOnCreatedNodeElement(String toolName, DNode graphicalElement,
+  protected void customVerificationOnCreatedNodeElement(String toolName, DNode graphicalElement, String containerId) {
+  }
+
+  protected void customVerificationOnCreatedEdgeElement(String toolName, DDiagramElement view, String sourceId,
+      String targetId) {
+  }
+
+  protected void customVerificationOnCreatedContainerElement(String toolName, DDiagramElementContainer graphicalElement,
       String containerId) {
-  }
-  
-  protected void customVerificationOnCreatedEdgeElement(String toolName, DDiagramElement view,
-      String sourceId, String targetId) {
-  }
-  
-  protected void customVerificationOnCreatedContainerElement(String toolName,
-      DDiagramElementContainer graphicalElement, String containerId) {
   }
 
   protected String getSemanticIdFromView(DDiagramElement view) {

@@ -136,6 +136,30 @@ public class DiagramServices {
   }
 
   /**
+   * Return the EList of flat owned diagram elements of the given container
+   * 
+   * @param container
+   * @return
+   */
+  public List<DDiagramElement> getFlatOwnedDiagramElements(EObject container) {
+    List<DDiagramElement> result = new ArrayList<>();
+    getFlatOwnedDiagramElements(container, result);
+
+    return result;
+  }
+
+  private void getFlatOwnedDiagramElements(EObject container, List<DDiagramElement> acumulator) {
+    List<DDiagramElement> ownedDiagramElements = getOwnedDiagramElements(container);
+    acumulator.addAll(ownedDiagramElements);
+
+    for (DDiagramElement dDiagramElement : ownedDiagramElements) {
+      if (dDiagramElement instanceof DNodeContainer) {
+        getFlatOwnedDiagramElements(dDiagramElement, acumulator);
+      }
+    }
+  }
+
+  /**
    * Returns owned Nodes from the given element
    */
   public Collection<DDiagramElement> getOwnedNodes(DSemanticDecorator element) {
@@ -212,7 +236,7 @@ public class DiagramServices {
   }
 
   public Iterable<DDiagramElement> getAllBorderedNodes(DSemanticDecorator element) {
-    return getDiagramElements((DSemanticDecorator) element, false, false, false, true);
+    return getDiagramElements(element, false, false, false, true);
   }
 
   /**
@@ -698,6 +722,7 @@ public class DiagramServices {
 
     return new Iterable<DDiagramElement>() {
 
+      @Override
       public Iterator<DDiagramElement> iterator() {
         return iterator;
       }
@@ -714,6 +739,7 @@ public class DiagramServices {
 
     return new Iterable<DDiagramElement>() {
 
+      @Override
       public Iterator<DDiagramElement> iterator() {
         return iterator;
       }
@@ -749,6 +775,7 @@ public class DiagramServices {
 
     return new Iterable<DDiagramElement>() {
 
+      @Override
       public Iterator<DDiagramElement> iterator() {
         return iterator;
       }
@@ -763,6 +790,7 @@ public class DiagramServices {
 
     return new Iterable<DDiagramElement>() {
 
+      @Override
       public Iterator<DDiagramElement> iterator() {
         return iterator;
       }
@@ -1075,6 +1103,7 @@ public class DiagramServices {
     /**
      * @see java.util.Iterator#hasNext()
      */
+    @Override
     public boolean hasNext() {
       if (elements.size() == 0) {
         return false;
@@ -1102,10 +1131,10 @@ public class DiagramServices {
       List<DDiagramElement> element = new ArrayList<DDiagramElement>();
 
       if (this.borderedNodes && context instanceof AbstractDNode) {
-        element.addAll((Collection) ((AbstractDNode) context).getOwnedBorderedNodes());
+        element.addAll(((AbstractDNode) context).getOwnedBorderedNodes());
       }
       if (context instanceof DNodeContainer) {
-        addElements(element, (Collection) ((DNodeContainer) context).getOwnedDiagramElements());
+        addElements(element, ((DNodeContainer) context).getOwnedDiagramElements());
       }
       if (context instanceof DNodeList) {
         addElements(element, (Collection) ((DNodeList) context).getOwnedElements());
@@ -1117,6 +1146,7 @@ public class DiagramServices {
     /**
      * @see java.util.Iterator#next()
      */
+    @Override
     public DDiagramElement next() {
       if (hasNext()) {
         DDiagramElement element = elements.removeFirst();
@@ -1132,6 +1162,7 @@ public class DiagramServices {
     /**
      * @see java.util.Iterator#remove()
      */
+    @Override
     public void remove() {
       if (hasNext()) {
         next();
@@ -1694,8 +1725,10 @@ public class DiagramServices {
     DDiagramElement viewElement = getDiagramElement(diagram, semanticElement);
     return viewElement == null ? diagram : viewElement;
   }
+
   /**
    * Set the position of the given newView relatively to the given node
+   * 
    * @param container
    * @param node
    * @param deltaX
@@ -1707,9 +1740,10 @@ public class DiagramServices {
     DiagramHelper.setPosition(newView, location);
     return newView;
   }
-  
+
   /**
    * Set the position of the given newView relatively to the middle of the given edge
+   * 
    * @param container
    * @param edge
    * @return
@@ -1719,9 +1753,10 @@ public class DiagramServices {
     DiagramHelper.setPosition(newView, location);
     return newView;
   }
-  
+
   /**
    * Set the position of the given newView at the middle of the given edge
+   * 
    * @param container
    * @param edge
    * @return

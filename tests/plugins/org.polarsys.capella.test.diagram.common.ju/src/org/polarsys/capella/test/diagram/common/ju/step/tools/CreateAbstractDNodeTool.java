@@ -56,11 +56,12 @@ public class CreateAbstractDNodeTool<T extends AbstractDNode> extends AbstractTo
     this.expectedDiagramElementType = expectedNodeType;
   }
 
-  public CreateAbstractDNodeTool(DiagramContext context, String toolName, String containerView,
-      String containerViewTarget, Class<T> expectedNodeType, Class<? extends CapellaElement> targetType) {
+  public CreateAbstractDNodeTool(DiagramContext context, String toolName, String containerViewTarget,
+      String containerView, Class<T> expectedNodeType, Class<? extends CapellaElement> targetType) {
 
     this(context, toolName, containerView, expectedNodeType);
     this.expectedTargetType = targetType;
+    this.containerViewTarget = containerViewTarget;
   }
 
   @Deprecated
@@ -76,6 +77,7 @@ public class CreateAbstractDNodeTool<T extends AbstractDNode> extends AbstractTo
     this(context, toolName, targetContainerView, expectedNodeType);
     this.newIdentifier = newIdentifier;
     this.containerView = containerView;
+    this.containerViewTarget = targetContainerView;
   }
 
   @Deprecated

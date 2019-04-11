@@ -5763,7 +5763,7 @@
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool_1:ToolGroup" name="Advanced Tools">
-            <tools xsi:type="tool_1:EdgeCreationDescription" documentation="Creates a new Involvement Link referencing an Interaction with a linked Sequence Link." name="InteractionWithSequenceLink" label="Interaction with Sequence Link" precondition="aql:preSource.isValidFCILinkExchange(preTarget)" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionalChainInvolvementLinkOA_ToExchange.gif">
+            <tools xsi:type="tool_1:EdgeCreationDescription" documentation="Creates a new Involvement Link referencing an Interaction with a linked Sequence Link." name="ExchangeWithSequenceLink" label="Interaction with Sequence Link" precondition="aql:preSource.isValidFCILinkExchange(preTarget)" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionalChainInvolvementLinkOA_ToExchange.gif">
               <edgeMappings href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@edgeMappings[name='FC_Exchange']"/>
               <sourceVariable name="source"/>
               <targetVariable name="target"/>
@@ -5800,7 +5800,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:EdgeCreationDescription" documentation="Associate a Sequence Link with an Involvement Link referencing an Interaction." name="AssociateSLwithInteraction" label="Associate Sequence Link with Interaction" precondition="aql:preSource.isValidLinks(preTarget)" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionalChainInvolvementLinkOA_ToExchange.gif">
+            <tools xsi:type="tool_1:EdgeCreationDescription" documentation="Associate a Sequence Link with an Involvement Link referencing an Interaction." name="AssociateSLwithE" label="Associate Sequence Link with Interaction" precondition="aql:preSource.isValidLinks(preTarget)" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionalChainInvolvementLinkOA_ToExchange.gif">
               <edgeMappings href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@edgeMappings[name='FC_SequenceLink_InvolvementLink']"/>
               <sourceVariable name="source"/>
               <targetVariable name="target"/>
