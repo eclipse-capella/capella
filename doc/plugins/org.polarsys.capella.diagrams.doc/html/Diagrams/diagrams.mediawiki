@@ -1233,32 +1233,64 @@ This section lists tools that are available on all Capella diagrams. These tools
                                                                                                                                  
 {| border="1"
 |-
-| 	Involve Function 	
-| [[Image:Images/icons/full/obj16/FunctionalChainInvolvement.gif]] 
-| 		Creates a new step referencing the selected Function. 	
+| 	Function	
+| [[Image:Images/icons/full/obj16/FunctionalChainInvolvementFunction.gif]] 
+| 		Creates a new Involvement Function referencing the selected Function. 	
 |-
-| 	Involve Functional Exchange 	
-| [[Image:Images/icons/full/obj16/FunctionalChainInvolvement.gif]] 
-| 		Creates a new step referencing one existing Functional Exchange between the Function respectively referenced by the preceeding and following steps. 	
+| 	Exchange 	
+| [[Image:Images/icons/full/obj16/FunctionalChainInvolvementLink_ToExchange.gif]] 
+| 		Creates a new Involvement Link between the selected source and target involvements and references a Functional Exchange. 	
 |-
-| 	Involve Functional Chain 	
-| [[Image:Images/icons/full/obj16/FunctionalChainInvolvement.gif]] 
-| 		Creates a new step referencing the selected Functional Chain. 	
+| 	Exchange and Function 	
+| [[Image:Images/icons/full/obj16/FunctionalChainInvolvementLink_AndFunction.gif]] 
+| 		Creates a new Involvement Link referencing a Functional Exchange between the contextual selected Involvement Function and a new Involvement Function. 	
 |-
-| 	Involve Functional Exchange & Target Function 	
-| [[Image:Images/icons/full/obj16/FunctionalChainInvolvement.gif]] 
-| 		Creates two new steps respectively referencing one existing outgoing Functional Exchange and a target Functions. 	
-|-
-| 	Involve Functional Exchange & Target Functional Chain 	
+| 	Functional Chain
 | [[Image:Images/icons/full/obj16/FunctionalChainReference.gif]] 
-| 		Creates two new steps respectively referencing one existing outgoing Functional Exchange and a target Functional Chain. 	
+| 		Creates a new Involvement referencing a Functional Chain.
 |-
-| 	Initialization from existing diagram 	
-| [[Image:Images/icons/full/obj16/DAnalysis.png]] 
-| 		Initializes the current diagram according to an existing diagram defined in the previous architecture. It adds realizing elements for each element from the source diagram and preserves layout between diagrams. This tool does not modify the semantic model. 	
+| 	Connect Functions
+| [[Image:Images/icons/full/obj16/FunctionalChainInvolvementLink_ToFunction.gif]] 
+| 		Creates a new Involvement Link between two involvements (situated in different Functional Chains), that reference the same Function.
+|-
+| 	AND/OR/IT
+| [[Image:Images/icons/full/obj16/ControlNode.gif]] 
+| 		Creates a new Control Node in regards to the selection target:
+* Functional Chain target: creates a new Control Node.
+* Involvement function target: creates a new Control node and Sequence Link to the selected function.
+* Sequence link: creates a new Control node and a incoming and outgoing Sequence Link.
+|-
+| 	AND/OR/IT Construct
+| [[Image:Images/icons/full/obj16/ControlNode.gif]] 
+| 		 Creates a pair of Control Nodes and their associated Sequence Links in regards to the selection target. Its polyvalent behavior is identical to the "AND/OR/IT" tool.
+|-
+| 	Sequence Link
+| [[Image:Images/icons/full/obj16/SequenceLink.gif]] 
+| 		Creates a new Sequence Link between the selected source and target.
+|-
+| 	Function on Sequence Link
+| [[Image:Images/icons/full/obj16/FunctionalChainInvolvementFunction.gif]] 
+| 		Creates a new Involvement Function having as a incoming link the selected target Sequence Link.
+|-
+| 	Exchange with Sequence Link
+| [[Image:Images/icons/full/obj16/FunctionalChainInvolvementLink_ToExchange.gif]] 
+| 		Creates both a new Involvement Link (referencing a Functional Exchange) and a Sequence Link between the selected source and target.
+|-
+| 	Associate Sequence Link with Exchange
+| [[Image:Images/icons/full/obj16/FunctionalChainInvolvementLink_ToExchange.gif]] 
+| 		Associates the Involvement Link (referencing a Functional Exchange) with the selected Sequence Link.
+|-
+| 	Exchange from Sequence Link
+| [[Image:Images/icons/full/obj16/FunctionalChainInvolvementLink_ToExchange.gif]] 
+| 		Creates a new Involvement Link (referencing a Functional Exchange) and associates it with the selected Sequence Link.
+|-
+| 	Sequence Link from Exchange
+| [[Image:Images/icons/full/obj16/SequenceLink.gif]] 
+| 		Creates a  new Sequence Link and associates it with the selected Involvement Link.
 |}    
+
 === Sample ===
-[[Image:Images/diagrams/EOLE/FCD_Functional Chain Description.jpg|Sample will be available soon]]    
+[[Image:Images/diagrams/EOLE/FCD_Functional Chain Description.png|800px]]    
 == Functional Scenario ==
                                                                                                                                                                                                                                                                                                                                             
 {| border="1"
@@ -2399,31 +2431,66 @@ This section lists tools that are available on all Capella diagrams. These tools
 === Sample ===
 [[Image:Images/diagrams/EOLE/OES_Operational Entity Scenario.jpg|Sample will be available soon]]    
 == Operational Process Description ==
-                                                                                                                   
 {| border="1"
 |-
-| 	Involve Operational Activity 	
-| [[Image:Images/icons/full/obj16/FunctionalChainInvolvement.gif]] 
-| 		Creates a new step referencing the selected Operational Activity. 	
+| 	Operational Activity	
+| [[Image:Images/icons/full/obj16/FunctionalChainInvolvementFunction_OA.gif]] 
+| 		Creates a new Involvement referencing the selected Operational Activity. 	
 |-
-| 	Involve Interaction 	
-| [[Image:Images/icons/full/obj16/FunctionalChainInvolvement.gif]] 
-| 		Creates a new step referencing one existing Interaction between the Operational Activities respectively referenced by the preceeding and following steps. 	
+| 	Interaction	
+| [[Image:Images/icons/full/obj16/FunctionalChainInvolvementLinkOA_ToExchange.gif]] 
+| 		Creates a new Involvement Link between the selected source and target involvements and references a Interaction. 	
 |-
-| 	Involve Operational Process 	
-| [[Image:Images/icons/full/obj16/FunctionalChainInvolvement.gif]] 
-| 		Creates a new step referencing the selected Functional Chain. 	
+| 	Interaction and Operational Activity 	
+| [[Image:Images/icons/full/obj16/FunctionalChainInvolvementLinkOA_AndFunction.gif]] 
+| 		Creates a new Involvement Link referencing an Interaction between the contextual selected Involvement and a new Involvement. 	
 |-
-| 	Involve Interaction & Target Activity 	
-| [[Image:Images/icons/full/obj16/FunctionalChainInvolvement.gif]] 
-| 		Creates two new steps respectively referencing one existing outgoing Interaction and a target Operational Activity. 	
+| 	Operational Process
+| [[Image:Images/icons/full/obj16/FunctionalChainReference_OA.gif]] 
+| 		Creates a new Involvement referencing an Operational Process. 	
 |-
-| 	Involve Interaction & Target Operational Process 	
-| [[Image:Images/icons/full/obj16/FunctionalChainReference.gif]] 
-| 		Creates two new steps respectively referencing one existing outgoing Functional Exchange and a target Functional Chain. 	
+| 	Connect Operational Processes
+| [[Image:Images/icons/full/obj16/FunctionalChainInvolvementLinkOA_ToFunction.gif]] 
+| 		Creates a new Involvement Link between two involvements (situated in different Operational Processes), that reference the same Operational Activity.
+|-
+| 	AND/OR/IT
+| [[Image:Images/icons/full/obj16/ControlNode.gif]] 
+| 		Creates a new Control Node in regards to the selection target:
+* Operational Process target: creates a new Control Node.
+* Operational Activity target: creates a new Control node and Sequence Link from the Operational Activity.
+* Sequence link: creates a new Control node and a incoming and outgoing Sequence Link.
+|-
+| 	AND/OR/IT Construct
+| [[Image:Images/icons/full/obj16/ControlNode.gif]] 
+| 		 Creates a pair of Control Nodes and their associated Sequence Links in regards to the selection target. Its polyvalent behavior is identical to the "AND/OR/IT" tool.
+|-
+| 	Sequence Link
+| [[Image:Images/icons/full/obj16/SequenceLink.gif]] 
+| 		Creates a new Sequence Link between the selected source and target.
+|-
+| 	Operational Activity on Sequence Link
+| [[Image:Images/icons/full/obj16/FunctionalChainInvolvementFunction_OA.gif]] 
+| 		Creates a new Involvement having as a incoming link the selected target Sequence Link.
+|-
+| 	Interaction with Sequence Link
+| [[Image:Images/icons/full/obj16/FunctionalChainInvolvementLinkOA_ToExchange.gif]] 
+| 		Creates both a new Involvement Link (referencing a Interaction) and a Sequence Link between the selected source and target.
+|-
+| 	Associate Sequence Link with Interaction
+| [[Image:Images/icons/full/obj16/FunctionalChainInvolvementLinkOA_ToExchange.gif]] 
+| 		Associates the Involvement Link (referencing a Interaction) with the selected Sequence Link.
+|-
+| 	Interaction from Sequence Link
+| [[Image:Images/icons/full/obj16/FunctionalChainInvolvementLinkOA_ToExchange.gif]] 
+| 		Creates a new Involvement Link (referencing a Interaction) and associates it with the selected Sequence Link.
+|-
+| 	Sequence Link from Interaction
+| [[Image:Images/icons/full/obj16/SequenceLink.gif]] 
+| 		Creates a new Sequence Link and associates it with the selected Involvement Link.
 |}    
+
 === Sample ===
-[[Image:Images/diagrams/EOLE/OPD_Operational Process Description.jpg|Sample will be available soon]]    
+[[Image:Images/diagrams/EOLE/OPD_Operational Process Description.png|700px]]    
 == Operational Role Blank ==
                                                                                                                                                                       
 {| border="1"

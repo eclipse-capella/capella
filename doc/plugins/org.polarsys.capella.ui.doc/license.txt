@@ -172,6 +172,15 @@ logo_capella_big.png
 5.5. Creation of Functional Chains and Physical Paths_html_m447a782f.png
 5.5. Creation of Functional Chains and Physical Paths_html_m5845eb00.png
 5.5. Creation of Functional Chains and Physical Paths_html_mdab6cc9.png
+5.5. Creation of Functional Chains and Physical Paths_html_FC1.png
+5.5. Creation of Functional Chains and Physical Paths_html_FC2.png
+5.5. Creation of Functional Chains and Physical Paths_html_FC3.png
+5.5. Creation of Functional Chains and Physical Paths_html_FC4.png
+5.5. Creation of Functional Chains and Physical Paths_html_FC5.png
+5.5. Creation of Functional Chains and Physical Paths_html_FC6.png
+5.5. Creation of Functional Chains and Physical Paths_html_SL1.png
+5.5. Creation of Functional Chains and Physical Paths_html_SL2.png
+5.5. Creation of Functional Chains and Physical Paths_html_m447a283f.png
 AllocatingFunctions_AllocatedFunctionReference.png
 AllocatingFunctions_FunctionalBreakdown.png
 AllocatingFunctions_FunctionAllocatedOnComponents.png

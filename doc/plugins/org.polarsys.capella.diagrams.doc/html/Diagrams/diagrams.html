@@ -2090,51 +2090,106 @@
 		<h2 id="Functional_Chain_Description">Functional Chain Description</h2>
 		<table border="1">
 			<tr>
-				<td>Involve Function 	</td>
+				<td>Function	</td>
 				<td>
-					<img border="0" src="Images/icons/full/obj16/FunctionalChainInvolvement.gif"/> 
+					<img border="0" src="Images/icons/full/obj16/FunctionalChainInvolvementFunction.gif"/> 
 				</td>
-				<td>Creates a new step referencing the selected Function. 	</td>
+				<td>Creates a new Involvement Function referencing the selected Function. 	</td>
 			</tr>
 			<tr>
-				<td>Involve Functional Exchange 	</td>
+				<td>Exchange 	</td>
 				<td>
-					<img border="0" src="Images/icons/full/obj16/FunctionalChainInvolvement.gif"/> 
+					<img border="0" src="Images/icons/full/obj16/FunctionalChainInvolvementLink_ToExchange.gif"/> 
 				</td>
-				<td>Creates a new step referencing one existing Functional Exchange between the Function respectively referenced by the preceeding and following steps. 	</td>
+				<td>Creates a new Involvement Link between the selected source and target involvements and references a Functional Exchange. 	</td>
 			</tr>
 			<tr>
-				<td>Involve Functional Chain 	</td>
+				<td>Exchange and Function 	</td>
 				<td>
-					<img border="0" src="Images/icons/full/obj16/FunctionalChainInvolvement.gif"/> 
+					<img border="0" src="Images/icons/full/obj16/FunctionalChainInvolvementLink_AndFunction.gif"/> 
 				</td>
-				<td>Creates a new step referencing the selected Functional Chain. 	</td>
+				<td>Creates a new Involvement Link referencing a Functional Exchange between the contextual selected Involvement Function and a new Involvement Function. 	</td>
 			</tr>
 			<tr>
-				<td>Involve Functional Exchange &amp; Target Function 	</td>
-				<td>
-					<img border="0" src="Images/icons/full/obj16/FunctionalChainInvolvement.gif"/> 
-				</td>
-				<td>Creates two new steps respectively referencing one existing outgoing Functional Exchange and a target Functions. 	</td>
-			</tr>
-			<tr>
-				<td>Involve Functional Exchange &amp; Target Functional Chain 	</td>
+				<td>Functional Chain</td>
 				<td>
 					<img border="0" src="Images/icons/full/obj16/FunctionalChainReference.gif"/> 
 				</td>
-				<td>Creates two new steps respectively referencing one existing outgoing Functional Exchange and a target Functional Chain. 	</td>
+				<td>Creates a new Involvement referencing a Functional Chain.</td>
 			</tr>
 			<tr>
-				<td>Initialization from existing diagram 	</td>
+				<td>Connect Functions</td>
 				<td>
-					<img border="0" src="Images/icons/full/obj16/DAnalysis.png"/> 
+					<img border="0" src="Images/icons/full/obj16/FunctionalChainInvolvementLink_ToFunction.gif"/> 
 				</td>
-				<td>Initializes the current diagram according to an existing diagram defined in the previous architecture. It adds realizing elements for each element from the source diagram and preserves layout between diagrams. This tool does not modify the semantic model. 	</td>
+				<td>Creates a new Involvement Link between two involvements (situated in different Functional Chains), that reference the same Function.</td>
+			</tr>
+			<tr>
+				<td>AND/OR/IT</td>
+				<td>
+					<img border="0" src="Images/icons/full/obj16/ControlNode.gif"/> 
+				</td>
+				<td>Creates a new Control Node in regards to the selection target:
+					<ul>
+						<li>Functional Chain target: creates a new Control Node.</li>
+						<li>Involvement function target: creates a new Control node and Sequence Link to the selected function.</li>
+						<li>Sequence link: creates a new Control node and a incoming and outgoing Sequence Link.</li>
+					</ul>
+				</td>
+			</tr>
+			<tr>
+				<td>AND/OR/IT Construct</td>
+				<td>
+					<img border="0" src="Images/icons/full/obj16/ControlNode.gif"/> 
+				</td>
+				<td>Creates a pair of Control Nodes and their associated Sequence Links in regards to the selection target. Its polyvalent behavior is identical to the "AND/OR/IT" tool.</td>
+			</tr>
+			<tr>
+				<td>Sequence Link</td>
+				<td>
+					<img border="0" src="Images/icons/full/obj16/SequenceLink.gif"/> 
+				</td>
+				<td>Creates a new Sequence Link between the selected source and target.</td>
+			</tr>
+			<tr>
+				<td>Function on Sequence Link</td>
+				<td>
+					<img border="0" src="Images/icons/full/obj16/FunctionalChainInvolvementFunction.gif"/> 
+				</td>
+				<td>Creates a new Involvement Function having as a incoming link the selected target Sequence Link.</td>
+			</tr>
+			<tr>
+				<td>Exchange with Sequence Link</td>
+				<td>
+					<img border="0" src="Images/icons/full/obj16/FunctionalChainInvolvementLink_ToExchange.gif"/> 
+				</td>
+				<td>Creates both a new Involvement Link (referencing a Functional Exchange) and a Sequence Link between the selected source and target.</td>
+			</tr>
+			<tr>
+				<td>Associate Sequence Link with Exchange</td>
+				<td>
+					<img border="0" src="Images/icons/full/obj16/FunctionalChainInvolvementLink_ToExchange.gif"/> 
+				</td>
+				<td>Associates the Involvement Link (referencing a Functional Exchange) with the selected Sequence Link.</td>
+			</tr>
+			<tr>
+				<td>Exchange from Sequence Link</td>
+				<td>
+					<img border="0" src="Images/icons/full/obj16/FunctionalChainInvolvementLink_ToExchange.gif"/> 
+				</td>
+				<td>Creates a new Involvement Link (referencing a Functional Exchange) and associates it with the selected Sequence Link.</td>
+			</tr>
+			<tr>
+				<td>Sequence Link from Exchange</td>
+				<td>
+					<img border="0" src="Images/icons/full/obj16/SequenceLink.gif"/> 
+				</td>
+				<td>Creates a  new Sequence Link and associates it with the selected Involvement Link.</td>
 			</tr>
 		</table>
 		<h3 id="Sample_18">Sample</h3>
 		<p>
-			<img title="Sample will be available soon" alt="Sample will be available soon" border="0" src="Images/diagrams/EOLE/FCD_Functional Chain Description.jpg"/>    
+			<img width="800" border="0" src="Images/diagrams/EOLE/FCD_Functional Chain Description.png"/>    
 		</p>
 		<h2 id="Functional_Scenario">Functional Scenario</h2>
 		<table border="1">
@@ -4070,44 +4125,106 @@
 		<h2 id="Operational_Process_Description">Operational Process Description</h2>
 		<table border="1">
 			<tr>
-				<td>Involve Operational Activity 	</td>
+				<td>Operational Activity	</td>
 				<td>
-					<img border="0" src="Images/icons/full/obj16/FunctionalChainInvolvement.gif"/> 
+					<img border="0" src="Images/icons/full/obj16/FunctionalChainInvolvementFunction_OA.gif"/> 
 				</td>
-				<td>Creates a new step referencing the selected Operational Activity. 	</td>
+				<td>Creates a new Involvement referencing the selected Operational Activity. 	</td>
 			</tr>
 			<tr>
-				<td>Involve Interaction 	</td>
+				<td>Interaction	</td>
 				<td>
-					<img border="0" src="Images/icons/full/obj16/FunctionalChainInvolvement.gif"/> 
+					<img border="0" src="Images/icons/full/obj16/FunctionalChainInvolvementLinkOA_ToExchange.gif"/> 
 				</td>
-				<td>Creates a new step referencing one existing Interaction between the Operational Activities respectively referenced by the preceeding and following steps. 	</td>
+				<td>Creates a new Involvement Link between the selected source and target involvements and references a Interaction. 	</td>
 			</tr>
 			<tr>
-				<td>Involve Operational Process 	</td>
+				<td>Interaction and Operational Activity 	</td>
 				<td>
-					<img border="0" src="Images/icons/full/obj16/FunctionalChainInvolvement.gif"/> 
+					<img border="0" src="Images/icons/full/obj16/FunctionalChainInvolvementLinkOA_AndFunction.gif"/> 
 				</td>
-				<td>Creates a new step referencing the selected Functional Chain. 	</td>
+				<td>Creates a new Involvement Link referencing an Interaction between the contextual selected Involvement and a new Involvement. 	</td>
 			</tr>
 			<tr>
-				<td>Involve Interaction &amp; Target Activity 	</td>
+				<td>Operational Process</td>
 				<td>
-					<img border="0" src="Images/icons/full/obj16/FunctionalChainInvolvement.gif"/> 
+					<img border="0" src="Images/icons/full/obj16/FunctionalChainReference_OA.gif"/> 
 				</td>
-				<td>Creates two new steps respectively referencing one existing outgoing Interaction and a target Operational Activity. 	</td>
+				<td>Creates a new Involvement referencing an Operational Process. 	</td>
 			</tr>
 			<tr>
-				<td>Involve Interaction &amp; Target Operational Process 	</td>
+				<td>Connect Operational Processes</td>
 				<td>
-					<img border="0" src="Images/icons/full/obj16/FunctionalChainReference.gif"/> 
+					<img border="0" src="Images/icons/full/obj16/FunctionalChainInvolvementLinkOA_ToFunction.gif"/> 
 				</td>
-				<td>Creates two new steps respectively referencing one existing outgoing Functional Exchange and a target Functional Chain. 	</td>
+				<td>Creates a new Involvement Link between two involvements (situated in different Operational Processes), that reference the same Operational Activity.</td>
+			</tr>
+			<tr>
+				<td>AND/OR/IT</td>
+				<td>
+					<img border="0" src="Images/icons/full/obj16/ControlNode.gif"/> 
+				</td>
+				<td>Creates a new Control Node in regards to the selection target:
+					<ul>
+						<li>Operational Process target: creates a new Control Node.</li>
+						<li>Involvement Operational Activity target: creates a new Control node and Sequence Link to the Operational Activity.</li>
+						<li>Sequence link: creates a new Control node and a incoming and outgoing Sequence Link.</li>
+					</ul>
+				</td>
+			</tr>
+			<tr>
+				<td>AND/OR/IT Construct</td>
+				<td>
+					<img border="0" src="Images/icons/full/obj16/ControlNode.gif"/> 
+				</td>
+				<td>Creates a pair of Control Nodes and their associated Sequence Links in regards to the selection target. Its polyvalent behavior is identical to the "AND/OR/IT" tool.</td>
+			</tr>
+			<tr>
+				<td>Sequence Link</td>
+				<td>
+					<img border="0" src="Images/icons/full/obj16/SequenceLink.gif"/> 
+				</td>
+				<td>Creates a new Sequence Link between the selected source and target.</td>
+			</tr>
+			<tr>
+				<td>Operational Activity on Sequence Link</td>
+				<td>
+					<img border="0" src="Images/icons/full/obj16/FunctionalChainInvolvementFunction_OA.gif"/> 
+				</td>
+				<td>Creates a new Involvement having as a incoming link the selected target Sequence Link.</td>
+			</tr>
+			<tr>
+				<td>Interaction with Sequence Link</td>
+				<td>
+					<img border="0" src="Images/icons/full/obj16/FunctionalChainInvolvementLinkOA_ToExchange.gif"/> 
+				</td>
+				<td>Creates both a new Involvement Link (referencing a Interaction) and a Sequence Link between the selected source and target.</td>
+			</tr>
+			<tr>
+				<td>Associate Sequence Link with Interaction</td>
+				<td>
+					<img border="0" src="Images/icons/full/obj16/FunctionalChainInvolvementLinkOA_ToExchange.gif"/> 
+				</td>
+				<td>Associates the Involvement Link (referencing a Interaction) with the selected Sequence Link.</td>
+			</tr>
+			<tr>
+				<td>Interaction from Sequence Link</td>
+				<td>
+					<img border="0" src="Images/icons/full/obj16/FunctionalChainInvolvementLinkOA_ToExchange.gif"/> 
+				</td>
+				<td>Creates a new Involvement Link (referencing a Interaction) and associates it with the selected Sequence Link.</td>
+			</tr>
+			<tr>
+				<td>Sequence Link from Interaction</td>
+				<td>
+					<img border="0" src="Images/icons/full/obj16/SequenceLink.gif"/> 
+				</td>
+				<td>Creates a new Sequence Link and associates it with the selected Involvement Link.</td>
 			</tr>
 		</table>
 		<h3 id="Sample_36">Sample</h3>
 		<p>
-			<img title="Sample will be available soon" alt="Sample will be available soon" border="0" src="Images/diagrams/EOLE/OPD_Operational Process Description.jpg"/>    
+			<img width="700" border="0" src="Images/diagrams/EOLE/OPD_Operational Process Description.png"/>    
 		</p>
 		<h2 id="Operational_Role_Blank">Operational Role Blank</h2>
 		<table border="1">
