@@ -789,6 +789,8 @@
               id="34f825e6-abe5-4274-94a9-7a26cc59c3b2" involved="#dab8526e-cf3a-4c8a-8fa1-7df4aa281bcf"/>
           <ownedEntityOperationalCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.oa:EntityOperationalCapabilityInvolvement"
               id="aae26026-df51-47aa-b870-c8206739617c" involved="#2060479f-e59f-4b8f-975f-f05f5986e9b3"/>
+          <ownedEntityOperationalCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.oa:EntityOperationalCapabilityInvolvement"
+              id="6001b48b-45c1-4c4b-83bf-7fe36d5179ee" involved="#87bfb1b6-b85e-4497-950d-663dd78c4502"/>
         </ownedOperationalCapabilities>
         <ownedOperationalCapabilities xsi:type="org.polarsys.capella.core.data.oa:OperationalCapability"
             id="2ce82a6f-0467-41a5-9c06-28f14ef1dd1b" name="Perform Flight On-Board Announcements">
@@ -2629,6 +2631,8 @@
               id="5aea124c-c1ba-4825-8da4-1a94dc639b0c" involved="#0a2099f5-2831-4beb-89ae-996a6f54d032"/>
           <ownedActorCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.ctx:ActorCapabilityInvolvement"
               id="01f3cd77-b7cb-4b0d-a42e-93f3f226ba3c" involved="#d475ed7d-4644-4461-97d4-b52772c9b425"/>
+          <ownedActorCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.ctx:ActorCapabilityInvolvement"
+              id="377a8da4-97cb-4f13-a534-906a3940fc39" involved="#181a678c-dca9-46c1-9d18-b5a0c457c0de"/>
           <ownedSystemCapabilityInvolvement xsi:type="org.polarsys.capella.core.data.ctx:SystemCapabilityInvolvement"
               id="9af52cce-434b-4a26-a35f-1dc02d28fd8b" involved="#e0a46739-7e50-4ea6-b198-0e5efb9ce68f"/>
         </ownedCapabilities>
@@ -6509,6 +6513,10 @@
               id="a062bb75-d997-4029-a662-338827dfec67" involved="#5eb59259-7021-4c20-805c-9115a89867a0"/>
           <ownedFunctionalChainAbstractCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.interaction:FunctionalChainAbstractCapabilityInvolvement"
               id="788a4b83-f389-4be5-b5f3-f78b8d1d8630" involved="#3def4748-6a03-4e18-8004-0cacb9f3b457"/>
+          <ownedFunctionalChainAbstractCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.interaction:FunctionalChainAbstractCapabilityInvolvement"
+              id="1c084b7e-bbda-4e29-9fea-3a27d6d12e59" involved="#849047d6-233a-4f85-bf60-8df1f145cda9"/>
+          <ownedFunctionalChainAbstractCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.interaction:FunctionalChainAbstractCapabilityInvolvement"
+              id="c834a692-d7e2-44b5-a7d0-dd263ad0974c" involved="#8fe69f90-7472-4e05-ab57-1e0fa4e511a4"/>
           <ownedAbstractFunctionAbstractCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.interaction:AbstractFunctionAbstractCapabilityInvolvement"
               id="1129b4d6-f502-4405-9e77-0c53c4742ec3" involved="#3136218c-bf14-437d-99c9-6593352eead9"/>
           <ownedAbstractFunctionAbstractCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.interaction:AbstractFunctionAbstractCapabilityInvolvement"
@@ -6560,6 +6568,8 @@
               id="5a2475f5-a6fc-481e-90fa-d51ac4556802" involved="#df043998-7fd1-4d4d-899f-7257788d644f"/>
           <ownedSystemComponentCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:SystemComponentCapabilityRealizationInvolvement"
               id="a2fa3047-480d-476b-89c1-2ae366521513" involved="#e02be1c5-a1a2-4c11-be30-259e92ef5826"/>
+          <ownedSystemComponentCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:SystemComponentCapabilityRealizationInvolvement"
+              id="37c77510-307c-40ad-bded-1e46794e1921" involved="#11e922f1-192b-43a5-9060-f935c26998a5"/>
         </ownedCapabilityRealizations>
         <ownedCapabilityRealizations xsi:type="org.polarsys.capella.core.data.la:CapabilityRealization"
             id="58c038e4-77d4-4b0e-9a5d-7f4253285be2" name="Provide Video Entertainment Services"
@@ -7925,9 +7935,21 @@
                 id="635ebb73-302e-474b-bf7f-4e935a68e12a" targetElement="#3324a066-17a5-4b28-9dac-ad81cd4e7893"
                 sourceElement="#7aa9d9ea-a4f4-407a-9431-c4a5bdd75af5"/>
           </ownedScenarios>
+          <ownedAbstractFunctionAbstractCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.interaction:AbstractFunctionAbstractCapabilityInvolvement"
+              id="8deefe1b-0c5e-4518-8313-7d6f36ccb6a6" involved="#1e812d3d-6c35-42c9-80fa-eb64dfc1a3a8"/>
+          <ownedAbstractFunctionAbstractCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.interaction:AbstractFunctionAbstractCapabilityInvolvement"
+              id="0683c48e-b0ab-483c-9548-cb86dbe08b62" involved="#4b01ac5e-7920-491d-af35-1846163e5ad9"/>
+          <ownedAbstractFunctionAbstractCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.interaction:AbstractFunctionAbstractCapabilityInvolvement"
+              id="bb020180-0181-469a-a9b0-012c9747473b" involved="#5a58fd72-1b57-41dc-8b7b-b0b8cf577236"/>
           <ownedAbstractCapabilityRealizations xsi:type="org.polarsys.capella.core.data.interaction:AbstractCapabilityRealization"
               id="ee1d85cb-a3d4-41cd-b061-0508b4362179" targetElement="#5acd248a-3961-4e71-85a4-5bc3b775215f"
               sourceElement="#187c2207-0995-4241-b8a2-d45550185dff"/>
+          <ownedSystemComponentCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:SystemComponentCapabilityRealizationInvolvement"
+              id="eb5039b0-a34b-48e5-bf97-db2de9a68202" involved="#_SF1a8JY-Ed6rH5SGn-UjSg"/>
+          <ownedSystemComponentCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:SystemComponentCapabilityRealizationInvolvement"
+              id="018ee8f6-be1d-413e-9af0-8667a7ab4926" involved="#df043998-7fd1-4d4d-899f-7257788d644f"/>
+          <ownedSystemComponentCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:SystemComponentCapabilityRealizationInvolvement"
+              id="caebc6e4-2e35-4896-b4fb-12eb9c4a4a45" involved="#_Rml6MJY-Ed6rH5SGn-UjSg"/>
         </ownedCapabilityRealizations>
         <ownedCapabilityRealizations xsi:type="org.polarsys.capella.core.data.la:CapabilityRealization"
             id="4813aae0-442e-4b79-9d9f-cc2f236dbba4" name="Provide Access Management Control">
@@ -8178,9 +8200,31 @@
               id="a0294e41-dc48-49b9-a761-2a71d31cea48" involved="#2ea2703a-6dd1-4835-aaae-16179864ac1d"/>
           <ownedAbstractFunctionAbstractCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.interaction:AbstractFunctionAbstractCapabilityInvolvement"
               id="29fadd5d-d1eb-4dba-a81a-5d91ababe28a" involved="#910a61f1-3da0-404f-9db5-c226af9a3c47"/>
+          <ownedAbstractFunctionAbstractCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.interaction:AbstractFunctionAbstractCapabilityInvolvement"
+              id="293c98a3-a4da-4b02-8900-3f417ad699e3" involved="#5a58fd72-1b57-41dc-8b7b-b0b8cf577236"/>
+          <ownedAbstractFunctionAbstractCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.interaction:AbstractFunctionAbstractCapabilityInvolvement"
+              id="e73e75d9-173b-4fb7-a43d-5e905a1df04f" involved="#651179c3-78b6-4a6f-a174-74405b81b36a"/>
+          <ownedAbstractFunctionAbstractCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.interaction:AbstractFunctionAbstractCapabilityInvolvement"
+              id="71393cb6-e596-498e-9d00-a2c07a51a9a4" involved="#1e812d3d-6c35-42c9-80fa-eb64dfc1a3a8"/>
+          <ownedAbstractFunctionAbstractCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.interaction:AbstractFunctionAbstractCapabilityInvolvement"
+              id="e7e7914a-1b75-45af-8ff2-19f3040a87a1" involved="#63136eb0-622b-43cc-b4da-55b86ae281c1"/>
+          <ownedAbstractFunctionAbstractCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.interaction:AbstractFunctionAbstractCapabilityInvolvement"
+              id="638481bd-c6ab-44e6-baf2-38ac29054c57" involved="#c3b17f24-ae52-413f-ace7-6baab1287b02"/>
           <ownedAbstractCapabilityRealizations xsi:type="org.polarsys.capella.core.data.interaction:AbstractCapabilityRealization"
               id="f0af77f1-3193-46da-bb10-a475b7d658ce" targetElement="#74e6e35e-b1e7-45c1-bd9f-5d80c0714472"
               sourceElement="#4813aae0-442e-4b79-9d9f-cc2f236dbba4"/>
+          <ownedActorCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:ActorCapabilityRealizationInvolvement"
+              id="77726de4-7ac5-4141-aea8-4f9a26a1a0eb" involved="#395ee0ab-cb3d-48e8-a411-09a98053292f"/>
+          <ownedSystemComponentCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:SystemComponentCapabilityRealizationInvolvement"
+              id="9d82a693-2c58-43a8-9653-e2be7fe21a5e" involved="#df043998-7fd1-4d4d-899f-7257788d644f"/>
+          <ownedSystemComponentCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:SystemComponentCapabilityRealizationInvolvement"
+              id="ab1fbe93-b243-423e-96c6-bd389308304f" involved="#_2SUXEJZFEd6rH5SGn-UjSg"/>
+          <ownedSystemComponentCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:SystemComponentCapabilityRealizationInvolvement"
+              id="9874f620-a551-4f2a-add4-086cb51367fe" involved="#281c331f-1184-4c7d-afb2-7a55ff09a80f"/>
+          <ownedSystemComponentCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:SystemComponentCapabilityRealizationInvolvement"
+              id="df27b04a-e8c5-48de-98df-4c70f0624200" involved="#_Rml6MJY-Ed6rH5SGn-UjSg"/>
+          <ownedSystemComponentCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:SystemComponentCapabilityRealizationInvolvement"
+              id="97adb6e3-b9d1-457c-aa92-f9abf3f83625" involved="#e02be1c5-a1a2-4c11-be30-259e92ef5826"/>
         </ownedCapabilityRealizations>
         <ownedCapabilityRealizations xsi:type="org.polarsys.capella.core.data.la:CapabilityRealization"
             id="ae98c518-b305-41e6-b825-aa231d354325" name="Provide Video Gaming Services"
@@ -12874,9 +12918,49 @@
               id="2617880e-ef36-4f65-b05c-b5790360f6e7" involved="#50f542b7-d31f-44cc-8cf6-9a153d604ea7"/>
           <ownedFunctionalChainAbstractCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.interaction:FunctionalChainAbstractCapabilityInvolvement"
               id="5d71953e-6962-415d-90f5-37bf505448d2" involved="#a4edf6d8-4143-499c-9e56-57c95d970304"/>
+          <ownedFunctionalChainAbstractCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.interaction:FunctionalChainAbstractCapabilityInvolvement"
+              id="58a5579d-d15b-4c6a-9de1-f88e31b9a2bc" involved="#c4a51bed-c9eb-4784-8b30-f3fa4e19a51c"/>
+          <ownedFunctionalChainAbstractCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.interaction:FunctionalChainAbstractCapabilityInvolvement"
+              id="2b34f000-d637-4df7-a523-1079d96389e5" involved="#0a4c9c3f-cd72-4d96-b87b-e2be6e3a9b5f"/>
           <ownedAbstractCapabilityRealizations xsi:type="org.polarsys.capella.core.data.interaction:AbstractCapabilityRealization"
               id="2d5f6adc-906d-4214-8e70-30eb5723dec5" targetElement="#e373786f-d962-4a05-9360-902a524b7522"
               sourceElement="#7f111133-ec10-4aab-ab54-936a20776bd2"/>
+          <ownedActorCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:ActorCapabilityRealizationInvolvement"
+              id="8b934609-18df-4386-b987-7e73ff2b0d8a" involved="#8aba6e60-54e0-401a-bc8b-c86090e030d0"/>
+          <ownedActorCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:ActorCapabilityRealizationInvolvement"
+              id="9345e9db-902b-473f-a7a1-d1a43444eeee" involved="#ca1519c5-e748-43ee-a81b-474a31b7b5ab"/>
+          <ownedActorCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:ActorCapabilityRealizationInvolvement"
+              id="4ea36291-96a3-43dc-ad90-3d36f7bc3c4d" involved="#a5782ec2-f546-49e5-98aa-88146d997d1d"/>
+          <ownedSystemComponentCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:SystemComponentCapabilityRealizationInvolvement"
+              id="f3486db6-a066-4204-8493-9957d8827b79" involved="#0c7d06de-bc6a-44d2-8b01-459cbdbbf69a"/>
+          <ownedSystemComponentCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:SystemComponentCapabilityRealizationInvolvement"
+              id="7467e314-b0c9-4b26-ad02-8d7092bec171" involved="#ce7ff26b-6729-420e-b6a7-78fb80634d88"/>
+          <ownedSystemComponentCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:SystemComponentCapabilityRealizationInvolvement"
+              id="ccef195b-3f38-4196-8150-179971e010d4" involved="#abc69d28-d5c4-470e-afd1-89daa1cc81d2"/>
+          <ownedSystemComponentCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:SystemComponentCapabilityRealizationInvolvement"
+              id="e0e14574-1e87-46a6-9713-e41083b198ef" involved="#3f745bea-11ae-4b8c-8a06-930f2391565e"/>
+          <ownedSystemComponentCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:SystemComponentCapabilityRealizationInvolvement"
+              id="e3355adc-9490-4b9f-a2de-e4f64e3340c8" involved="#cdc16f53-6eaa-4d74-8d63-73afc483dece"/>
+          <ownedSystemComponentCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:SystemComponentCapabilityRealizationInvolvement"
+              id="04aaf7ff-a6b6-4328-8100-2f2ee8282dfa" involved="#a6815c30-8c2b-4273-bbf1-450bb1df58ed"/>
+          <ownedSystemComponentCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:SystemComponentCapabilityRealizationInvolvement"
+              id="1ff305d9-1d4a-4716-85a6-1c3d28bc27b9" involved="#eee15697-a375-4a9d-ba93-7ec5b34bc63c"/>
+          <ownedSystemComponentCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:SystemComponentCapabilityRealizationInvolvement"
+              id="b4f32172-f715-4ded-af55-a9219a9976e5" involved="#3cba132d-d6ec-4839-b597-2183f9f998b2"/>
+          <ownedSystemComponentCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:SystemComponentCapabilityRealizationInvolvement"
+              id="06ef7077-3c0f-403a-ac5a-eb736b15658b" involved="#3de7180a-c2f0-48ea-9a9e-6f6e6849c651"/>
+          <ownedSystemComponentCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:SystemComponentCapabilityRealizationInvolvement"
+              id="f9f97fd6-ef4b-4898-aabc-c45da630849d" involved="#a2bf21fb-902c-4b29-87c3-d3436dedb1db"/>
+          <ownedSystemComponentCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:SystemComponentCapabilityRealizationInvolvement"
+              id="70c5e8fe-305c-468d-9802-b377bd7d78b2" involved="#647781a2-de41-4fa1-a6e6-3a886a706c4e"/>
+          <ownedSystemComponentCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:SystemComponentCapabilityRealizationInvolvement"
+              id="212e03f3-05f7-4345-ab30-6ff1c18bcc41" involved="#d187e156-9b25-4adc-8b97-576853d16e40"/>
+          <ownedSystemComponentCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:SystemComponentCapabilityRealizationInvolvement"
+              id="bdbb12ca-dcf9-4e67-abd9-3989ecc14299" involved="#34420358-2236-4010-8504-5fab9af55c0d"/>
+          <ownedSystemComponentCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:SystemComponentCapabilityRealizationInvolvement"
+              id="75d02a72-f404-4900-baed-741d29053bc3" involved="#737331c9-23e8-4588-969a-fd15444cafa6"/>
+          <ownedSystemComponentCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:SystemComponentCapabilityRealizationInvolvement"
+              id="324edf38-63b4-4dc0-a6e8-8939ca3d571d" involved="#819adf3f-da1d-4d2b-8faf-3b1d7b99503d"/>
         </ownedCapabilityRealizations>
         <ownedCapabilityRealizations xsi:type="org.polarsys.capella.core.data.la:CapabilityRealization"
             id="6de68210-1c70-4531-9b35-4f4a8c959220" name="Provide Video Entertainment Services"
@@ -13033,9 +13117,31 @@
               id="2c9403ba-c8f7-4b96-9eab-59c223972c8e" involved="#f53e78f2-08f5-437f-964b-583a12ecf181"/>
           <ownedFunctionalChainAbstractCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.interaction:FunctionalChainAbstractCapabilityInvolvement"
               id="66f2d3fb-37aa-4243-ac5a-13b866d92234" involved="#6b2127cf-5024-4ab1-a1ce-cd743982ccde"/>
+          <ownedFunctionalChainAbstractCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.interaction:FunctionalChainAbstractCapabilityInvolvement"
+              id="25283755-5155-4551-9c9c-2736d4f8b087" involved="#080f330d-2364-4093-8f09-ffecfe2fffd0"/>
           <ownedAbstractCapabilityRealizations xsi:type="org.polarsys.capella.core.data.interaction:AbstractCapabilityRealization"
               id="7ad89e8e-5c21-44c3-93b3-38614317ba5d" targetElement="#58c038e4-77d4-4b0e-9a5d-7f4253285be2"
               sourceElement="#6de68210-1c70-4531-9b35-4f4a8c959220"/>
+          <ownedActorCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:ActorCapabilityRealizationInvolvement"
+              id="09d08f1d-59a3-4dde-952a-f4a4d6466a78" involved="#ca1519c5-e748-43ee-a81b-474a31b7b5ab"/>
+          <ownedSystemComponentCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:SystemComponentCapabilityRealizationInvolvement"
+              id="591811a3-265a-4302-9a78-9ab367deeaeb" involved="#eee15697-a375-4a9d-ba93-7ec5b34bc63c"/>
+          <ownedSystemComponentCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:SystemComponentCapabilityRealizationInvolvement"
+              id="980b49eb-eb7b-41a7-a36d-0c9678fd91e6" involved="#3f745bea-11ae-4b8c-8a06-930f2391565e"/>
+          <ownedSystemComponentCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:SystemComponentCapabilityRealizationInvolvement"
+              id="6c5e45a4-649a-491c-93d7-86e328a06c9a" involved="#647781a2-de41-4fa1-a6e6-3a886a706c4e"/>
+          <ownedSystemComponentCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:SystemComponentCapabilityRealizationInvolvement"
+              id="de8d6bef-73b3-419e-9712-1edb8eecae9f" involved="#819adf3f-da1d-4d2b-8faf-3b1d7b99503d"/>
+          <ownedSystemComponentCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:SystemComponentCapabilityRealizationInvolvement"
+              id="a41bb1f7-2398-4297-88fd-2dfec66f0303" involved="#ec105112-c640-4de6-bc28-461581a1bace"/>
+          <ownedSystemComponentCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:SystemComponentCapabilityRealizationInvolvement"
+              id="ec2f012a-0c6b-45ff-aec3-9a859b16a8b5" involved="#34420358-2236-4010-8504-5fab9af55c0d"/>
+          <ownedSystemComponentCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:SystemComponentCapabilityRealizationInvolvement"
+              id="ce55dbce-7c69-4ce8-8d64-280722fb5bce" involved="#d187e156-9b25-4adc-8b97-576853d16e40"/>
+          <ownedSystemComponentCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:SystemComponentCapabilityRealizationInvolvement"
+              id="89e02b30-b8d2-4c75-9cad-7eb3fa5bc333" involved="#3de7180a-c2f0-48ea-9a9e-6f6e6849c651"/>
+          <ownedSystemComponentCapabilityRealizations xsi:type="org.polarsys.capella.core.data.cs:SystemComponentCapabilityRealizationInvolvement"
+              id="837c697f-10c0-41f9-8b7b-e4a7df0ed81d" involved="#3cba132d-d6ec-4839-b597-2183f9f998b2"/>
         </ownedCapabilityRealizations>
         <ownedCapabilityRealizations xsi:type="org.polarsys.capella.core.data.la:CapabilityRealization"
             id="c8cff209-41fb-4d61-8cd3-f892a3702355" name="Provide Video Gaming Services"
