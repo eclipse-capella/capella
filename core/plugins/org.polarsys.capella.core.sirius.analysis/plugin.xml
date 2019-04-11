@@ -326,8 +326,7 @@
           </visibleWhen>
        </command>
        <command
-             commandId="org.polarsys.capella.core.platform.sirius.ui.actions.AcceleratorFromSequenceLinkToFCIL"
-             icon="icons/full/obj16/FunctionalChainInvolvementLink_ToExchange.gif">
+             commandId="org.polarsys.capella.core.platform.sirius.ui.actions.AcceleratorFromSequenceLinkToFCIL">
           <visibleWhen
                 checkEnabled="true">
           </visibleWhen>

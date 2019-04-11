@@ -156,6 +156,7 @@ public interface IFilterNameConstants {
   String FILTER_FCD_HIDE_SEQUENCING_INFORMATION = "Hide Sequencing Information"; //$NON-NLS-1$
   String FILTER_FCD_HIDE_COMPUTED_SEQUENCING_INFORMATION = "Hide Computed Sequencing Information"; //$NON-NLS-1$
   String FILTER_FCD_HIDE_ASSOCIATION_LINKS = "Hide Association Links"; //$NON-NLS-1$
+  String FILTER_FCD_MERGE_FE_SL = "Merge associated Functional Exchange Involvements and Sequence Links without Control Node"; //$NON-NLS-1$
 
   // FS filters - Function Scenario
   String FILTER_FS_HIDE_EXECUTIONS = "Hide executions"; //$NON-NLS-1$
