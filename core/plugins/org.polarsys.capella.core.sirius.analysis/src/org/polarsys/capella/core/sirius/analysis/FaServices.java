@@ -1446,7 +1446,6 @@ public class FaServices {
    * @return
    */
   public boolean isACategoryDisplayed(EObject o, DSemanticDecorator source, DSemanticDecorator target) {
-
     if (((source instanceof DNode) && !(DiagramServices.getDiagramServices().isABorderedNode((DNode) source)))) {
       return false;
     }
@@ -5200,23 +5199,24 @@ public class FaServices {
 
     DiagramContext ctx = showHideExchangeCategoryService.new DiagramContext();
     for (AbstractFunction targetFunction : abstractFunctions) {
-      Map<ExchangeCategory, Map.Entry<AbstractFunction, AbstractFunction>> categoryToSourceTargetMap = getExchangeCategoryToSourceTargetMap(
+      Map<ExchangeCategory, Set<Map.Entry<AbstractFunction, AbstractFunction>>> categoryToSourceTargetMap = getExchangeCategoryToSourceTargetMap(
           getCache(FunctionExt::getAllExchanges, targetFunction));
-      for (Entry<ExchangeCategory, Entry<AbstractFunction, AbstractFunction>> entry : categoryToSourceTargetMap
+      for (Entry<ExchangeCategory, Set<Map.Entry<AbstractFunction, AbstractFunction>>> entry : categoryToSourceTargetMap
           .entrySet()) {
         ExchangeCategory category = entry.getKey();
-        Map.Entry<AbstractFunction, AbstractFunction> sourceTargetMap = entry.getValue();
+        Set<Map.Entry<AbstractFunction, AbstractFunction>> sourceTargetSet = entry.getValue();
+        for (Map.Entry<AbstractFunction, AbstractFunction> sourceTarget : sourceTargetSet) {
+          AbstractFunction source = sourceTarget.getKey();
+          AbstractFunction target = sourceTarget.getValue();
 
-        AbstractFunction source = sourceTargetMap.getKey();
-        AbstractFunction target = sourceTargetMap.getValue();
-
-        if (selectedExchangeCategories.contains(category)) {
-          // Show the exchange category edge
-          showFECategory(showHideExchangeCategoryService, ctx, category, source, target, true);
-        } else {
-          // Hide the exchange category edge
-          showFECategory(showHideExchangeCategoryService, ctx, category, getBestFunctionContainer(source, content),
-              getBestFunctionContainer(target, content), false);
+          if (selectedExchangeCategories.contains(category)) {
+            // Show the exchange category edge
+            showFECategory(showHideExchangeCategoryService, ctx, category, source, target, true);
+          } else {
+            // Hide the exchange category edge
+            showFECategory(showHideExchangeCategoryService, ctx, category, getBestFunctionContainer(source, content),
+                getBestFunctionContainer(target, content), false);
+          }
         }
       }
     }
@@ -5233,10 +5233,10 @@ public class FaServices {
     DiagramContext ctx = showHideExchangeCategoryService.new DiagramContext();
     for (AbstractFunction targetFunction : abstractFunctions) {
       List<FunctionalExchange> allExchanges = getCache(FunctionExt::getAllExchanges, targetFunction);
-      Map<ExchangeCategory, Map.Entry<AbstractFunction, AbstractFunction>> categoryToSourceTargetMap = getExchangeCategoryToSourceTargetMap(
+      Map<ExchangeCategory, Set<Map.Entry<AbstractFunction, AbstractFunction>>> categoryToSourceTargetMap = getExchangeCategoryToSourceTargetMap(
           allExchanges);
 
-      for (Entry<ExchangeCategory, Entry<AbstractFunction, AbstractFunction>> entry : categoryToSourceTargetMap
+      for (Entry<ExchangeCategory, Set<Map.Entry<AbstractFunction, AbstractFunction>>> entry : categoryToSourceTargetMap
           .entrySet()) {
         ExchangeCategory category = entry.getKey();
 
@@ -5316,14 +5316,16 @@ public class FaServices {
     return result;
   }
 
-  private Map<ExchangeCategory, Map.Entry<AbstractFunction, AbstractFunction>> getExchangeCategoryToSourceTargetMap(
+  private Map<ExchangeCategory, Set<Map.Entry<AbstractFunction, AbstractFunction>>> getExchangeCategoryToSourceTargetMap(
       List<FunctionalExchange> functionalExchanges) {
-    HashMap<ExchangeCategory, Map.Entry<AbstractFunction, AbstractFunction>> result = new HashMap<>();
+    HashMap<ExchangeCategory, Set<Map.Entry<AbstractFunction, AbstractFunction>>> result = new HashMap<>();
     for (FunctionalExchange fe : functionalExchanges) {
       for (ExchangeCategory category : fe.getCategories()) {
-        Map.Entry<AbstractFunction, AbstractFunction> sourceToTargetMap = new AbstractMap.SimpleEntry<>(
+        Map.Entry<AbstractFunction, AbstractFunction> sourceTarget = new AbstractMap.SimpleEntry<>(
             FunctionExt.getIncomingAbstractFunction(fe), FunctionExt.getOutGoingAbstractFunction(fe));
-        result.put(category, sourceToTargetMap);
+        Set<Entry<AbstractFunction, AbstractFunction>> sourceTargetSet = result.computeIfAbsent(category,
+            k -> new HashSet<>());
+        sourceTargetSet.add(sourceTarget);
       }
     }
     return result;
