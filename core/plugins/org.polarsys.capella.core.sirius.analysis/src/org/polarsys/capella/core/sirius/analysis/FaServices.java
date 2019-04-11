@@ -1591,9 +1591,9 @@ public class FaServices {
       }
     }
 
-    // move visible functions if the container has to be removed
+    // move visible functions if the container has to be removed and it's not to be removed
     for (AbstractDNode aView : visibleFunctionViews) {
-      if (toBeRemoved.contains(aView.eContainer())) {
+      if (toBeRemoved.contains(aView.eContainer()) && !toBeRemoved.contains(aView)) {
         diagram.getOwnedDiagramElements().add(aView);
       }
     }
