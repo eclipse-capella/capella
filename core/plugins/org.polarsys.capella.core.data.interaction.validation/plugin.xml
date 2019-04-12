@@ -245,7 +245,8 @@ Whatever the level, UNSET Scenarios raise an error.
             </constraint>
          </constraints>
          <constraints categories="capella.category/design/completeness">
-            <constraint class="org.polarsys.capella.core.data.interaction.validation.scenario.MDCHK_Scenario_InvolvementComponents_1" id="DCOM_05" isEnabledByDefault="true" lang="Java" mode="Batch" name="DCOM_05 - Scenario Components Capability involvement check" severity="ERROR" statusCode="1">
+            <constraint class="org.polarsys.capella.core.data.interaction.validation.scenario.MDCHK_Scenario_InvolvementComponents_1" id="DCOM_05" isEnabledByDefault="true" lang="Java" mode="Batch" 
+            name="DCOM_05 - Scenario Components Capability involvement check" severity="WARNING" statusCode="1">
                <message>
                   Message generated dynamically
                </message>
@@ -323,7 +324,7 @@ If Capability resides in SystemAnalysis layer. It should be relalized by a Capab
 	               lang="java"
 	               mode="Batch"
 	               name="DWF_CA_07 - Capability check that all the involved Actors are present in at least one Operational Process or Functional Chain or Scenario related to the Capabilities it participates"
-	               severity="ERROR"
+	               severity="WARNING"
 	               statusCode="1">
 	            <message>
 	               Message generated dynamically
@@ -342,7 +343,7 @@ If Capability resides in SystemAnalysis layer. It should be relalized by a Capab
 	               lang="java"
 	               mode="Batch"
 	               name="DWF_CA_08 - Capability check if the current Capability has Actors that are not involved but are present in at least one Operational Process or Functional Chain or Scenario related to the Capability"
-	               severity="ERROR"
+	               severity="WARNING"
 	               statusCode="1">
 	            <message>
 	               Message generated dynamically
@@ -361,7 +362,7 @@ If Capability resides in SystemAnalysis layer. It should be relalized by a Capab
 	               lang="java"
 	               mode="Batch"
 	               name="DWF_CA_09 - Capability check if the current Capability has Functional Chains that are not involved but are related to the Capability"
-	               severity="ERROR"
+	               severity="WARNING"
 	               statusCode="1">
 	            <message>
 	               Message generated dynamically
