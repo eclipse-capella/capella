@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.polarsys.capella.core.data.fa.validation.sequenceLink;
 
-import java.util.HashSet;
+import java.util.Set;
 
 import org.apache.commons.lang.ArrayUtils;
 import org.eclipse.core.runtime.IStatus;
@@ -31,7 +31,7 @@ public class SequenceLinksBetweenNodesWithNoConnectingFE extends AbstractValidat
     if ((ctx.getEventType() == EMFEventType.NULL) && (ctx.getTarget() instanceof SequenceLink)) {
       SequenceLink seqLink = (SequenceLink) ctx.getTarget();
 
-      HashSet<FunctionalChainInvolvementLink> links = SequenceLinkExt.getAllFCILBetweenClosestFunctionGroups(seqLink);
+      Set<FunctionalChainInvolvementLink> links = SequenceLinkExt.getAllFCILBetweenClosestFunctionGroups(seqLink);
 
       if (links.isEmpty()) {
         return ctx.createFailureStatus(ArrayUtils.addAll(SequenceLinkEndStatusHelper.getStatusInfo(seqLink.getSource()),

@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.polarsys.capella.core.data.fa.validation.sequenceLink;
 
-import java.util.HashSet;
+import java.util.Set;
 
 import org.polarsys.capella.core.data.fa.FunctionalChainInvolvementFunction;
 import org.polarsys.capella.core.data.fa.FunctionalChainInvolvementLink;
@@ -23,8 +23,8 @@ public class SequenceLinkOppositeDirectionToFE extends SequenceLinkWithInconsist
 
   @Override
   protected boolean isValid(FunctionalChainInvolvementLink link,
-      HashSet<FunctionalChainInvolvementFunction> slClosestFCIFSources,
-      HashSet<FunctionalChainInvolvementFunction> slClosestFCIFTargets) {
+      Set<FunctionalChainInvolvementFunction> slClosestFCIFSources,
+      Set<FunctionalChainInvolvementFunction> slClosestFCIFTargets) {
     // link is opposite to FE (source of SL is in target of FE and same for target)
     return !checkConditionOppositeDirection(link, slClosestFCIFSources, slClosestFCIFTargets);
   }

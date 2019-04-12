@@ -13,7 +13,7 @@ package org.polarsys.capella.core.data.fa.validation.sequenceLink;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.HashSet;
+import java.util.Set;
 
 import org.apache.commons.lang.ArrayUtils;
 import org.eclipse.core.runtime.IStatus;
@@ -46,9 +46,9 @@ public class SequenceLinkWithInconsistentAssociatedLinks extends AbstractValidat
         /*
          * for the current seqLink, calculate the closest functions as source/targets
          */
-        HashSet<FunctionalChainInvolvementFunction> slClosestFCIFSources = SequenceLinkExt
+        Set<FunctionalChainInvolvementFunction> slClosestFCIFSources = SequenceLinkExt
             .findClosestSemanticFCIFunctionsAsSources(seqLink);
-        HashSet<FunctionalChainInvolvementFunction> slClosestFCIFTargets = SequenceLinkExt
+        Set<FunctionalChainInvolvementFunction> slClosestFCIFTargets = SequenceLinkExt
             .findClosestSemanticFCIFunctionsAsTargets(seqLink);
 
         /*
@@ -78,8 +78,8 @@ public class SequenceLinkWithInconsistentAssociatedLinks extends AbstractValidat
   }
 
   protected boolean isValid(FunctionalChainInvolvementLink link,
-      HashSet<FunctionalChainInvolvementFunction> slClosestFCIFSources,
-      HashSet<FunctionalChainInvolvementFunction> slClosestFCIFTargets) {
+      Set<FunctionalChainInvolvementFunction> slClosestFCIFSources,
+      Set<FunctionalChainInvolvementFunction> slClosestFCIFTargets) {
     // we don't show the Warning message if they source or target are not found in FCIFSource/Target or if
     // SL is in opposite direction as we don't cover this case in this rule, we cover it in DWF_DF_20
     return (slClosestFCIFSources.contains(link.getSource()) && slClosestFCIFTargets.contains(link.getTarget()))
@@ -87,8 +87,8 @@ public class SequenceLinkWithInconsistentAssociatedLinks extends AbstractValidat
   }
 
   protected boolean checkConditionOppositeDirection(FunctionalChainInvolvementLink link,
-      HashSet<FunctionalChainInvolvementFunction> slClosestFCIFSources,
-      HashSet<FunctionalChainInvolvementFunction> slClosestFCIFTargets) {
+      Set<FunctionalChainInvolvementFunction> slClosestFCIFSources,
+      Set<FunctionalChainInvolvementFunction> slClosestFCIFTargets) {
     return (slClosestFCIFSources.contains(link.getTarget()) && slClosestFCIFTargets.contains(link.getSource()));
   }
 

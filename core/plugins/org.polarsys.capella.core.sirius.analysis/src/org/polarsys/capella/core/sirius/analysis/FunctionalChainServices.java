@@ -1439,9 +1439,9 @@ public class FunctionalChainServices {
           // check that seqLinks has not already a link to link (fcil)
           if (!seqLink.getLinks().contains(second)) {
             // check that the source and target of first and second nodes are the same
-            HashSet<FunctionalChainInvolvementFunction> slClosestFCIFSources = SequenceLinkExt
+            Set<FunctionalChainInvolvementFunction> slClosestFCIFSources = SequenceLinkExt
                 .findClosestSemanticFCIFunctionsAsSources(seqLink);
-            HashSet<FunctionalChainInvolvementFunction> slClosestFCIFTargets = SequenceLinkExt
+            Set<FunctionalChainInvolvementFunction> slClosestFCIFTargets = SequenceLinkExt
                 .findClosestSemanticFCIFunctionsAsTargets(seqLink);
             return (slClosestFCIFSources.contains(link.getSource()) && slClosestFCIFTargets.contains(link.getTarget()));
           }

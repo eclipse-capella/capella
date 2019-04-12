@@ -11,8 +11,9 @@
 package org.polarsys.capella.core.business.queries.queries.fa;
 
 import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 
 import org.polarsys.capella.common.queries.AbstractQuery;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
@@ -34,7 +35,7 @@ public class GetAvailable_SequenceLink_Links extends AbstractQuery {
 
   private List<Object> getCurrentElements(CapellaElement element) {
 
-    HashSet<FunctionalChainInvolvementLink> currentElements = new HashSet<>();
+    Set<FunctionalChainInvolvementLink> currentElements = Collections.emptySet();
     if (element instanceof SequenceLink) {
       currentElements = SequenceLinkExt.getAllFCILBetweenClosestFunctionGroups((SequenceLink) element);
     }

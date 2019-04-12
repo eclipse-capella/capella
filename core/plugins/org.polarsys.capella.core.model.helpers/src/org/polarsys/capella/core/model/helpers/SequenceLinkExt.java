@@ -12,10 +12,8 @@ package org.polarsys.capella.core.model.helpers;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
-import org.eclipse.emf.ecore.EObject;
-import org.polarsys.capella.common.helpers.EObjectExt;
-import org.polarsys.capella.core.data.fa.FaPackage;
 import org.polarsys.capella.core.data.fa.FunctionalChainInvolvementFunction;
 import org.polarsys.capella.core.data.fa.FunctionalChainInvolvementLink;
 import org.polarsys.capella.core.data.fa.SequenceLink;
@@ -23,65 +21,71 @@ import org.polarsys.capella.core.data.fa.SequenceLinkEnd;
 
 public class SequenceLinkExt {
 
-  private static void findClosestSemanticFCIFunctionsAsTargets(SequenceLink seqLink,
-      HashSet<FunctionalChainInvolvementFunction> closestSemanticFCIFunctions) {
+  private SequenceLinkExt() {
+    // prevent instantiation
+  }
 
-    SequenceLinkEnd targetEnd = seqLink.getTarget();
-    if (targetEnd instanceof FunctionalChainInvolvementFunction) {
-      closestSemanticFCIFunctions.add((FunctionalChainInvolvementFunction) targetEnd);
-    } else {
+  private static void findClosestSemanticFCIFunctionsAsTargets(SequenceLink sequenceLink,
+      Set<FunctionalChainInvolvementFunction> closestSemanticFCIFunctions, Set<SequenceLinkEnd> visitedEnds) {
 
-      List<EObject> outgoingSequenceLinks = EObjectExt.getReferencers(targetEnd,
-          FaPackage.Literals.SEQUENCE_LINK__SOURCE);
+    SequenceLinkEnd targetEnd = sequenceLink.getTarget();
 
-      outgoingSequenceLinks //
-          .stream() //
-          .filter(e -> e instanceof SequenceLink) //
-          .forEach(s -> findClosestSemanticFCIFunctionsAsTargets((SequenceLink) s, closestSemanticFCIFunctions)); //
+    // prevention against infinite loop
+    if (!visitedEnds.contains(targetEnd)) {
+      visitedEnds.add(targetEnd);
+
+      if (targetEnd instanceof FunctionalChainInvolvementFunction) {
+        closestSemanticFCIFunctions.add((FunctionalChainInvolvementFunction) targetEnd);
+      } else {
+        SequenceLinkEndExt.getOutgoingSequenceLinks(targetEnd) //
+            .stream() //
+            .forEach(link -> findClosestSemanticFCIFunctionsAsTargets(link, closestSemanticFCIFunctions, visitedEnds)); //
+      }
     }
   }
 
-  public static HashSet<FunctionalChainInvolvementFunction> findClosestSemanticFCIFunctionsAsTargets(
-      SequenceLink seqLink) {
+  public static Set<FunctionalChainInvolvementFunction> findClosestSemanticFCIFunctionsAsTargets(SequenceLink seqLink) {
 
-    HashSet<FunctionalChainInvolvementFunction> closestSemanticFCIFunctionAsTarget = new HashSet<>();
-    findClosestSemanticFCIFunctionsAsTargets(seqLink, closestSemanticFCIFunctionAsTarget);
+    Set<FunctionalChainInvolvementFunction> closestSemanticFCIFunctionAsTarget = new HashSet<>();
+    Set<SequenceLinkEnd> visitedEnds = new HashSet<>();
+    findClosestSemanticFCIFunctionsAsTargets(seqLink, closestSemanticFCIFunctionAsTarget, visitedEnds);
 
     return closestSemanticFCIFunctionAsTarget;
   }
 
   private static void findClosestFCIFunctionsAsSources(SequenceLink seqLink,
-      HashSet<FunctionalChainInvolvementFunction> closestSemanticFCIFunctions) {
+      Set<FunctionalChainInvolvementFunction> closestSemanticFCIFunctions, Set<SequenceLinkEnd> visitedEnds) {
 
     SequenceLinkEnd sourceEnd = seqLink.getSource();
-    if (sourceEnd instanceof FunctionalChainInvolvementFunction) {
-      closestSemanticFCIFunctions.add((FunctionalChainInvolvementFunction) sourceEnd);
-    } else {
 
-      List<EObject> incomingSequenceLinks = EObjectExt.getReferencers(sourceEnd,
-          FaPackage.Literals.SEQUENCE_LINK__TARGET);
+    // prevention against infinite loop
+    if (!visitedEnds.contains(sourceEnd)) {
+      visitedEnds.add(sourceEnd);
 
-      incomingSequenceLinks //
-          .stream() //
-          .filter(e -> e instanceof SequenceLink) //
-          .forEach(s -> findClosestFCIFunctionsAsSources((SequenceLink) s, closestSemanticFCIFunctions)); //
+      if (sourceEnd instanceof FunctionalChainInvolvementFunction) {
+        closestSemanticFCIFunctions.add((FunctionalChainInvolvementFunction) sourceEnd);
+      } else {
+        SequenceLinkEndExt.getIncomingSequenceLinks(sourceEnd) //
+            .stream() //
+            .forEach(link -> findClosestFCIFunctionsAsSources(link, closestSemanticFCIFunctions, visitedEnds));
+      }
     }
   }
 
-  public static HashSet<FunctionalChainInvolvementFunction> findClosestSemanticFCIFunctionsAsSources(
-      SequenceLink seqLink) {
+  public static Set<FunctionalChainInvolvementFunction> findClosestSemanticFCIFunctionsAsSources(SequenceLink seqLink) {
 
     HashSet<FunctionalChainInvolvementFunction> closestFCIFunctionsAsSources = new HashSet<>();
-    findClosestFCIFunctionsAsSources(seqLink, closestFCIFunctionsAsSources);
+    Set<SequenceLinkEnd> visitedEnds = new HashSet<>();
+    findClosestFCIFunctionsAsSources(seqLink, closestFCIFunctionsAsSources, visitedEnds);
 
     return closestFCIFunctionsAsSources;
   }
 
-  public static HashSet<FunctionalChainInvolvementLink> getAllFCILBetweenClosestFunctionGroups(SequenceLink seqLink) {
+  public static Set<FunctionalChainInvolvementLink> getAllFCILBetweenClosestFunctionGroups(SequenceLink seqLink) {
 
-    HashSet<FunctionalChainInvolvementLink> involvementLinks = new HashSet<>();
-    HashSet<FunctionalChainInvolvementFunction> incomingFunctions = findClosestSemanticFCIFunctionsAsSources(seqLink);
-    HashSet<FunctionalChainInvolvementFunction> outgoingFunctions = findClosestSemanticFCIFunctionsAsTargets(seqLink);
+    Set<FunctionalChainInvolvementLink> involvementLinks = new HashSet<>();
+    Set<FunctionalChainInvolvementFunction> incomingFunctions = findClosestSemanticFCIFunctionsAsSources(seqLink);
+    Set<FunctionalChainInvolvementFunction> outgoingFunctions = findClosestSemanticFCIFunctionsAsTargets(seqLink);
 
     for (FunctionalChainInvolvementFunction function : incomingFunctions) {
 
