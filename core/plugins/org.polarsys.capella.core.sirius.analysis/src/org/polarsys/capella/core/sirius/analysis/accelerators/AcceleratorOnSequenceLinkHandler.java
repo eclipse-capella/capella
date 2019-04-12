@@ -16,14 +16,13 @@ import java.util.Map;
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
+import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
-import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramEdgeEditPart;
-import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWindow;
@@ -67,8 +66,8 @@ public class AcceleratorOnSequenceLinkHandler extends AbstractHandler implements
       StructuredSelection structuredSelection = (StructuredSelection) selection;
       if (structuredSelection.size() == 1) {
         Object selectedElement = structuredSelection.getFirstElement();
-        if (selectedElement instanceof IDiagramEdgeEditPart) {
-          return ((IDiagramElementEditPart) selectedElement).getAdapter(DEdge.class);
+        if (selectedElement instanceof IAdaptable) {
+          return ((IAdaptable) selectedElement).getAdapter(DEdge.class);
         }
       }
     }
