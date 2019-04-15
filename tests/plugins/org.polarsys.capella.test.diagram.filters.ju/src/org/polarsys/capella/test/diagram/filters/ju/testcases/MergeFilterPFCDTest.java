@@ -16,12 +16,12 @@ import java.util.List;
 import org.polarsys.capella.core.sirius.analysis.constants.IFilterNameConstants;
 import org.polarsys.capella.test.diagram.filters.ju.DiagramObjectFilterTestCase;
 
-public class MergeSequenceLinksAssociatedLinksTestCase3 extends DiagramObjectFilterTestCase {
-  
-  private final String LA_FUNCTIONAL_EXCHANGE_1 = "5d8d7993-e00c-4c51-82a1-09b30a7c8975";
-  private final String LA_FUNCTIONAL_EXCHANGE_1_2 = "5d62112f-58ab-4279-85a8-3bf1b26ef4f3";
-  private final String LA_FUNCTIONAL_EXCHANGE_3 = "2df4090d-ec59-40eb-990e-6d8a8f602630";
-  
+public class MergeFilterPFCDTest extends DiagramObjectFilterTestCase {
+
+  private final String PA_EXCHANGE_5 = "33e5cc5a-ba8d-4759-a2c6-e2763e78b48f";
+  private final String PA_EXCHANGE_7 = "a778ee5c-7b72-4a78-886f-fab1f60f008d";
+  private final String PA_EXCHANGE_8 = "87b97b1e-ab9f-4e51-8d2e-e350915bfdf5";
+
   @Override
   protected String getTestProjectName() {
     return "HideSimplifiedLinksFilter";
@@ -31,18 +31,14 @@ public class MergeSequenceLinksAssociatedLinksTestCase3 extends DiagramObjectFil
   protected String getFilterName() {
     return IFilterNameConstants.FILTER_MERGE_ASSOCIATED_FE_AND_SL;
   }
-  
+
   @Override
   protected String getDiagramName() {
-    return "[LFCD] FunctionalChain 3";
+    return "[PFCD] Merge Filter Test Diagram";
   }
 
   @Override
-  protected List<String> getFilteredObjetIDs() {  
-    return Arrays.asList(new String [] {
-        LA_FUNCTIONAL_EXCHANGE_1,
-        LA_FUNCTIONAL_EXCHANGE_1_2,
-        LA_FUNCTIONAL_EXCHANGE_3,
-    });
+  protected List<String> getFilteredObjetIDs() {
+    return Arrays.asList(new String[] { PA_EXCHANGE_5, PA_EXCHANGE_7, PA_EXCHANGE_8 });
   }
 }

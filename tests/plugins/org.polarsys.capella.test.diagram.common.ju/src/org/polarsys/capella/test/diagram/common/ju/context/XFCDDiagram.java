@@ -34,6 +34,7 @@ import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.junit.Assert;
 import org.polarsys.capella.core.data.capellacore.InvolvedElement;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.fa.ControlNode;
@@ -55,8 +56,10 @@ import org.polarsys.capella.test.diagram.common.ju.headless.IHeadlessResult;
 import org.polarsys.capella.test.diagram.common.ju.step.crud.CreateDiagramStep;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateAbstractDNodeTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateAbstractDNodeWithSelectionTool;
+import org.polarsys.capella.test.diagram.common.ju.step.tools.AbstractToolStep;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateDEdgeTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.InsertRemoveTool;
+import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.ArgumentType;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.DiagramHelper;
 import org.polarsys.capella.test.framework.context.SessionContext;
 
@@ -394,6 +397,223 @@ public class XFCDDiagram extends CommonDiagram {
 
   }
 
+  protected class AccelerateSequenceLinkFromInvolvementLink extends AbstractToolStep<DEdge> {
+
+    protected String selectedFunctionalChainInvolvementLink;
+    protected int initialNumberOfSequenceLinks;
+    protected SequenceLink createdSequenceLink;
+
+    public AccelerateSequenceLinkFromInvolvementLink(DiagramContext diagramContext, String toolName,
+        String selectedFunctionalChainInvolvementLink) {
+
+      super(diagramContext, toolName);
+
+      this.selectedFunctionalChainInvolvementLink = selectedFunctionalChainInvolvementLink;
+    }
+
+    @Override
+    protected void initToolArguments() {
+      _toolWrapper.setArgumentValue(ArgumentType.CONTAINER,
+          getSessionContext().getSemanticElement(this.selectedFunctionalChainInvolvementLink));
+      _toolWrapper.setArgumentValue(ArgumentType.CONTAINER_VIEW,
+          getDiagramContext().getView(selectedFunctionalChainInvolvementLink));
+    }
+
+    @Override
+    protected void preRunTest() {
+
+      if (getDiagramContext().getView(this.selectedFunctionalChainInvolvementLink) == null) {
+        Assert.fail("The selected FunctionalChainInvolvementLink is not present on the diagram");
+      }
+
+      this.initialNumberOfSequenceLinks = getDiagram().getEdges().stream().map(DEdge::getTarget)
+          .filter(SequenceLink.class::isInstance).collect(Collectors.toList()).size();
+      super.preRunTest();
+    }
+
+    @Override
+    protected void postRunTest() {
+
+      DiagramHelper.refreshDiagram(getDiagram());
+
+      FunctionalChainInvolvementLink semanticSelectedLink = (FunctionalChainInvolvementLink) getSessionContext()
+          .getSemanticElement(this.selectedFunctionalChainInvolvementLink);
+
+      /*
+       * Check that the newly created SequenceLink is associated with the selected link
+       */
+      List<EObject> sequenceLinksAfterTest = getDiagram().getEdges().stream().map(DEdge::getTarget)
+          .filter(SequenceLink.class::isInstance).collect(Collectors.toList());
+
+      // Accelerator will also link the new SequenceLink and the target FunctionChainInvolvementLink
+      // with another SequenceLink. So 2 new Edges will be created by this tool.
+      int numberOfSequenceLinksAfterTest = sequenceLinksAfterTest.size();
+      if (numberOfSequenceLinksAfterTest - this.initialNumberOfSequenceLinks != 2) {
+        Assert.fail("The number of new sequence links " + numberOfSequenceLinksAfterTest + " is not equal to 2!");
+      }
+
+      // Get the SequenceLink that we just created, it is the last link of the list
+      int lastIndexOfTheSequencLinkList = numberOfSequenceLinksAfterTest - 1;
+      createdSequenceLink = (SequenceLink) sequenceLinksAfterTest.get(lastIndexOfTheSequencLinkList);
+      if (!createdSequenceLink.getLinks().contains(semanticSelectedLink)) {
+        Assert.fail("The new SequenceLink is not associated with the selected FunctionalChainInvolvementLink!");
+      }
+    }
+
+    @Override
+    public DEdge getResult() {
+      return (DEdge) getDiagramContext().getView(createdSequenceLink);
+    }
+  }
+
+  protected class AccelerateInvolvementLinkFromSequenceLink extends AbstractToolStep<DEdge> {
+
+    protected String targetFunctionalExchange;
+    protected String selectedSequenceLink;
+    protected String createdFunctionalChainInvolvementLink;
+
+    protected int initialNumberOfSequenceLinks;
+    protected int initialNumberOfFunctionalChainInvolvementLinks;
+    protected int initialNumberOfAssociatedFCILForSelectedSeqLink;
+
+    protected boolean isTargetFEOnDiagram = false;
+    protected boolean isTargetFESelectedInDialog;
+
+    protected String feSource;
+    protected String feTarget;
+
+    public AccelerateInvolvementLinkFromSequenceLink(DiagramContext diagramContext, String toolName,
+        String targetFunctionalExchange, String selectedSequenceLink) {
+
+      super(diagramContext, toolName);
+
+      this.targetFunctionalExchange = targetFunctionalExchange;
+      this.selectedSequenceLink = selectedSequenceLink;
+      this.isTargetFESelectedInDialog = true;
+    }
+
+    public AccelerateInvolvementLinkFromSequenceLink(DiagramContext diagramContext, String toolName,
+        String selectedSequenceLink, String feSource, String feTarget) {
+
+      super(diagramContext, toolName);
+
+      this.selectedSequenceLink = selectedSequenceLink;
+      this.feSource = feSource;
+      this.feTarget = feTarget;
+      this.isTargetFESelectedInDialog = false;
+    }
+
+    private IHeadlessResult createOperation() {
+
+      return new IHeadlessResult() {
+
+        @Override
+        public Object getResult(Collection<? extends EObject> selections, Map<String, Object> parameters) {
+
+          Object result;
+
+          if (isTargetFESelectedInDialog) {
+            result = (FunctionalExchange) getSessionContext().getSemanticElement(targetFunctionalExchange);
+          } else {
+            result = Arrays.asList(getSessionContext().getSemanticElement(feSource),
+                getSessionContext().getSemanticElement(feTarget));
+          }
+
+          return result;
+        }
+      };
+    }
+
+    @Override
+    protected void preRunTest() {
+
+      if (getDiagramContext().getView(this.selectedSequenceLink) == null) {
+        Assert.fail("The selected SequenceLink is not present on the diagram");
+      }
+
+      if (this.isTargetFESelectedInDialog) {
+        FunctionalExchange targetExchange = getSessionContext().getSemanticElement(targetFunctionalExchange);
+        for (DEdge edge : getDiagram().getEdges()) {
+
+          if (edge.getTarget() instanceof FunctionalChainInvolvementLink
+              && ((FunctionalChainInvolvementLink) edge.getTarget()).getInvolved().equals(targetExchange)) {
+
+            isTargetFEOnDiagram = true;
+            break;
+          }
+        }
+      } else {
+        this.initialNumberOfAssociatedFCILForSelectedSeqLink = ((SequenceLink) getSessionContext()
+            .getSemanticElement(selectedSequenceLink)).getLinks().size();
+      }
+
+      this.initialNumberOfSequenceLinks = getDiagram().getEdges().stream().map(DEdge::getTarget)
+          .filter(SequenceLink.class::isInstance).collect(Collectors.toList()).size();
+
+      this.initialNumberOfFunctionalChainInvolvementLinks = getDiagram().getEdges().stream().map(DEdge::getTarget)
+          .filter(FunctionalChainInvolvementLink.class::isInstance).collect(Collectors.toList()).size();
+
+      HeadlessResultOpProvider.INSTANCE.setCurrentOp(createOperation());
+      super.preRunTest();
+    }
+
+    @Override
+    protected void postRunTest() {
+
+      DiagramHelper.refreshDiagram(getDiagram());
+
+      SequenceLink semanticSelectedLink = (SequenceLink) getSessionContext()
+          .getSemanticElement(this.selectedSequenceLink);
+
+      List<EObject> sequenceLinksAfterTest = getDiagram().getEdges().stream().map(DEdge::getTarget)
+          .filter(SequenceLink.class::isInstance).collect(Collectors.toList());
+
+      int numberOfSequenceLinksAfterTest = sequenceLinksAfterTest.size();
+      int numberOfNewSequenceLinks = numberOfSequenceLinksAfterTest - this.initialNumberOfSequenceLinks;
+      if (numberOfNewSequenceLinks != 1) {
+        Assert.fail("The number of new sequence links " + numberOfNewSequenceLinks + " is not equal to 1!");
+      }
+
+      if (!isTargetFEOnDiagram) {
+
+        List<EObject> FunctionalChainInvolvementLinksAfterTest = getDiagram().getEdges().stream().map(DEdge::getTarget)
+            .filter(FunctionalChainInvolvementLink.class::isInstance).collect(Collectors.toList());
+
+        int numberOfFCILinksAfterTest = FunctionalChainInvolvementLinksAfterTest.size();
+        if (numberOfFCILinksAfterTest - this.initialNumberOfFunctionalChainInvolvementLinks != 1) {
+          Assert.fail("The number of new FCI links " + numberOfFCILinksAfterTest + " is not equal to 1!");
+        }
+      }
+
+      EList<FunctionalChainInvolvementLink> associatedFCILinks = semanticSelectedLink.getLinks();
+
+      if (isTargetFESelectedInDialog && !associatedFCILinks.get(associatedFCILinks.size() - 1).getInvolved().getId()
+          .equals(targetFunctionalExchange)) {
+        Assert.fail("The selected SequenceLink is not associated with the selected FunctionalChainInvolvementLink!");
+      } else if (!isTargetFEOnDiagram) {
+        int currentNumberOfAssociatedLinks = associatedFCILinks.size();
+        if (currentNumberOfAssociatedLinks - this.initialNumberOfAssociatedFCILForSelectedSeqLink != 1) {
+          Assert.fail("No new FunctionalChainInvolvementLinks have been associated with the selected SequenceLink");
+        }
+      }
+
+      this.createdFunctionalChainInvolvementLink = associatedFCILinks.get(associatedFCILinks.size() - 1).getId();
+    }
+
+    @Override
+    protected void initToolArguments() {
+      _toolWrapper.setArgumentValue(ArgumentType.CONTAINER,
+          getSessionContext().getSemanticElement(this.selectedSequenceLink));
+      _toolWrapper.setArgumentValue(ArgumentType.CONTAINER_VIEW,
+          getDiagramContext().getView(this.selectedSequenceLink));
+    }
+
+    @Override
+    public DEdge getResult() {
+      return (DEdge) getDiagramContext().getView(createdFunctionalChainInvolvementLink);
+    }
+  }
+
   protected class CreateControlNodeTool extends CreateAbstractDNodeTool<DNode> {
     protected ControlNodeContainer containerType = ControlNodeContainer.DIAGRAM;
     protected ControlNodeKind kind = ControlNodeKind.OR;
@@ -656,5 +876,29 @@ public class XFCDDiagram extends CommonDiagram {
       EList<FunctionalChainInvolvementLink> associatedLinks = sequenceLink.getLinks();
       assertTrue("SequenceLink does not have associated links", !associatedLinks.isEmpty());
     }
+  }
+
+  public String accelerateOnFunctionalChainInvolvementLink(String fcilID) {
+
+    DEdge sequenceLink = new AccelerateSequenceLinkFromInvolvementLink(this,
+        IToolNameConstants.TOOL_SEQUENCE_LINK_FROM_EXCHANGE, fcilID).run();
+
+    return getSemanticIdFromView(sequenceLink);
+  }
+
+  public String accelerateOnSequenceLinkWithSelect(String selectedSeqLink, String targetFCILinkID) {
+
+    DEdge fciLink = new AccelerateInvolvementLinkFromSequenceLink(this,
+        IToolNameConstants.TOOL_EXCHANGE_FROM_SEQUENCE_LINK, targetFCILinkID, selectedSeqLink).run();
+
+    return getSemanticIdFromView(fciLink);
+  }
+
+  public String accelerateOnSequenceLinkWithCreate(String selectedSeqLink, String feSource, String feTarget) {
+
+    DEdge fciLink = new AccelerateInvolvementLinkFromSequenceLink(this,
+        IToolNameConstants.TOOL_EXCHANGE_FROM_SEQUENCE_LINK, selectedSeqLink, feSource, feTarget).run();
+
+    return getSemanticIdFromView(fciLink);
   }
 }

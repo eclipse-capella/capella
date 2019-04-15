@@ -19839,7 +19839,11 @@
               <element name="element"/>
               <elementView name="elementView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView.accelerateOnSequenceLinkEdge()"/>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView">
+                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="selectOrCreateFunctionalExchangeFromSequenceLink" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectOrCreateFunctionalExchangeWizard">
+                    <parameters name="context" value="aql:self"/>
+                  </subModelOperations>
+                </firstModelOperations>
               </initialOperation>
             </tools>
             <tools xsi:type="tool_1:ToolDescription" documentation="Create a new Sequence Link and associate it with the selected Involvement Link" name="Sequence Link from Exchange" label="Sequence Link from Exchange" precondition="aql:container.oclIsKindOf(fa::FunctionalChainInvolvementLink) and not container.involved.oclIsKindOf(fa::AbstractFunction)" forceRefresh="true" iconPath="/org.polarsys.capella.core.data.res.edit/icons/full/obj16/SequenceLink.gif">

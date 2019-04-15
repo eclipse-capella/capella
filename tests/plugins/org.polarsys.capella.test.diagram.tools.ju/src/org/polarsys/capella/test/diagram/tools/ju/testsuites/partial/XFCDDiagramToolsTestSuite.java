@@ -19,6 +19,8 @@ import org.polarsys.capella.test.diagram.tools.ju.xfcd.CreateControlNodeTest;
 import org.polarsys.capella.test.diagram.tools.ju.xfcd.CreateExchangeWithSequenceLinkTest;
 import org.polarsys.capella.test.diagram.tools.ju.xfcd.CreateFunctionOnSequenceLinkTest;
 import org.polarsys.capella.test.diagram.tools.ju.xfcd.CreateSequenceLinkTest;
+import org.polarsys.capella.test.diagram.tools.ju.xfcd.AccelerateOnFunctionalChainInvolvementLinkTest;
+import org.polarsys.capella.test.diagram.tools.ju.xfcd.AccelerateOnSequenceLink;
 import org.polarsys.capella.test.diagram.tools.ju.xfcd.MaxHierarchyLevel0TestOA;
 import org.polarsys.capella.test.diagram.tools.ju.xfcd.MaxHierarchyLevel0TestSA;
 import org.polarsys.capella.test.diagram.tools.ju.xfcd.MaxHierarchyLevel1TestOA;
@@ -48,6 +50,9 @@ public class XFCDDiagramToolsTestSuite extends BasicTestSuite {
   @Override
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<>();
+
+    tests.add(new AccelerateOnFunctionalChainInvolvementLinkTest());
+    tests.add(new AccelerateOnSequenceLink());
 
     tests.add(new MaxHierarchyLevel0TestOA());
     tests.add(new MaxHierarchyLevel1TestOA());

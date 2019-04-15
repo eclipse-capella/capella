@@ -51,6 +51,10 @@
             actionClass="org.polarsys.capella.test.diagram.common.ju.headless.actions.HeadlessSelectElementsFromTransferWizard"
             id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectLinksFromTransferWizardIDB">
       </javaActions>
+      <javaActions
+            actionClass="org.polarsys.capella.test.diagram.common.ju.headless.actions.HeadlessSelectOrCreateFunctionalExchangeWizard"
+            id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectOrCreateFunctionalExchangeWizard">
+      </javaActions>
       
    </extension>
    

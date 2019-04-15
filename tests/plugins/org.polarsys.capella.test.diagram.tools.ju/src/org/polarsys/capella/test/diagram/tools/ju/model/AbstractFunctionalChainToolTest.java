@@ -58,12 +58,16 @@ public abstract class AbstractFunctionalChainToolTest extends AbstractDiagramTes
   public static final String SYSTEM_FUNCTION_3_SA = "6c7946db-94f4-49ef-9fa5-a62a67ca8b22"; //$NON-NLS-1$
   public static final String SYSTEM_FUNCTION_4_SA = "70357a00-afbd-4637-90a9-4f4012832df2"; //$NON-NLS-1$
   public static final String SYSTEM_FUNCTION_5_SA = "913b312c-9966-44d1-b750-7ef0f142c5e8"; //$NON-NLS-1$
+  public static final String SYSTEM_FUNCTION_6_SA = "812cd062-f881-45ab-b43d-467baaad9f5f"; //$NON-NLS-1$
+  public static final String SYSTEM_FUNCTION_7_SA = "4637a3c7-9998-4bcf-9b60-3db842ff652b"; //$NON-NLS-1$
 
   public static final String FUNCTIONAL_EXCHANGE_1_SA = "6af9c5ca-b1ab-48ae-9717-8ecbdef59ad0"; //$NON-NLS-1$
   public static final String FUNCTIONAL_EXCHANGE_2_SA = "03d9617a-87a9-4da1-bb21-1599b0609d80"; //$NON-NLS-1$
   public static final String FUNCTIONAL_EXCHANGE_3_SA = "99d3b42e-26ec-43ae-9be7-e750b3f77cc9"; //$NON-NLS-1$
   public static final String FUNCTIONAL_EXCHANGE_4_SA = "a4bed56c-cb00-4d20-92bb-c988fe577711"; //$NON-NLS-1$
   public static final String FUNCTIONAL_EXCHANGE_5_SA = "d6d5a9cf-b2a7-4fc8-8463-b713e6a0eaba"; //$NON-NLS-1$
+  public static final String FUNCTIONAL_EXCHANGE_6_SA = "e2d977c8-c0c9-4cf5-a492-c99db722f591"; //$NON-NLS-1$
+  public static final String FUNCTIONAL_EXCHANGE_7_SA = "b4fd9f53-2d69-4840-817a-2911fc401594"; //$NON-NLS-1$
 
   public static final String FUNCTIONAL_CHAIN_REFERENCE_TO_LEVEL2CHAIN1_SA = "0cf9c843-97f5-4c78-9058-059a5ef8e549"; //$NON-NLS-1$
   public static final String FUNCTIONAL_CHAIN_REFERENCE_TO_LEVEL2CHAIN1_BIS_SA = "78ec9e15-611d-46cd-b1f6-ac1ca7f75f3d"; //$NON-NLS-1$
@@ -73,10 +77,14 @@ public abstract class AbstractFunctionalChainToolTest extends AbstractDiagramTes
   public static final String SFCD_LEVEL2_CHAIN1_SA_DIAG = "_9KXKAD8gEemAMorOl8q0FQ"; //$NON-NLS-1$
   public static final String SFCD_LEVEL3_CHAIN1_SA_DIAG = "_eLIcQz8hEemAMorOl8q0FQ"; //$NON-NLS-1$
   public static final String SFCD_EMPTYCHAIN1_SA_DIAG = "_tn1a1T8hEemAMorOl8q0FQ"; //$NON-NLS-1$
+  
+  public static final String FUNCTIONAL_CHAIN_INVOLVEMENT_LINK_TO_EXCHANGE_2_SA = "58987f1d-8306-493c-911b-55f86898dfc9"; //$NON-NLS-1$
+  
+  public static final String SEQUENCE_LINK_FUNCTION_4_FUNCTION_6_SA = "23c47aca-8f41-40b1-b236-b64fcdba0445"; //$NON-NLS-1$
+  public static final String SEQUENCE_LINK_FUNCTION_6_FUNCTION_7_SA = "ae19bf97-e088-463e-89a5-8048b82f6c7e"; //$NON-NLS-1$
 
   @Override
   protected String getRequiredTestModel() {
     return MODEL_NAME;
   }
-
 }

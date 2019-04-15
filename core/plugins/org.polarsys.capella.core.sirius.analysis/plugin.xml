@@ -183,6 +183,10 @@
             actionClass="org.polarsys.capella.core.sirius.analysis.actions.extensions.DoIRReorderExternalAction"
             id="org.polarsys.capella.core.sirius.analysis.actions.extensions.doIRReorder">
       </javaActions>
+      <javaActions
+            actionClass="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectOrCreateFunctionalExchangeWizard"
+            id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectOrCreateFunctionalExchangeWizard">
+      </javaActions>
       
    </extension>
    <extension
