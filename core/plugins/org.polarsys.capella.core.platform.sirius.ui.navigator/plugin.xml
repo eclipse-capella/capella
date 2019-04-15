@@ -1438,8 +1438,7 @@
                			</and>
 	               </with>
 	               <with
-	                     variable="selection">
-	                  <and>
+	                     variable="selection">	                  
 	                  	<iterate>
 	                  		<and>
 		                 		<or>
@@ -1454,11 +1453,7 @@
 	                          		definitionId="org.polarsys.capella.common.platform.sirius.ted.definition.checkElementOfOpenedSessionOnCompareEditorPartOnly">
 	                        	</reference>
 	                  		</and>
-	                     </iterate>
-	                     <count
-	                           value="1">
-	                     </count>
-	                  </and>
+	                     </iterate>	                  
 	               </with>
                </and>
             </visibleWhen>

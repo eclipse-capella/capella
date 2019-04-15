@@ -13,22 +13,29 @@ package org.polarsys.capella.core.platform.sirius.ui.navigator.actions;
 import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
 
 import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramGraphicalViewer;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.sirius.diagram.AbstractDNode;
-import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditor;
 import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IViewActionDelegate;
@@ -37,13 +44,11 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.BaseSelectionListenerAction;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.core.data.cs.Component;
-import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaAdapterHelper;
-import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
-import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.TriStateBoolean;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.platform.sirius.clipboard.util.LayerUtil;
+import org.polarsys.capella.core.platform.sirius.ui.navigator.CapellaNavigatorPlugin;
 import org.polarsys.capella.core.sirius.analysis.DiagramServices;
 
 /**
@@ -61,125 +66,131 @@ public class ShowInDiagramAction extends BaseSelectionListenerAction implements 
   /**
    * @see org.eclipse.jface.action.Action#run()
    */
+
   @Override
   public void run() {
+    IStatus status = runWithStatus();
 
-    Object selectedElement = getStructuredSelection().getFirstElement();
-    Object adaptedElement = CapellaAdapterHelper.resolveSemanticObject(selectedElement, true);
-    
-    selectedElement = (adaptedElement == null) ? selectedElement : adaptedElement;
-    
-    // Precondition : ignore null or non ModelElement.
-    if (!(CapellaResourceHelper.isSemanticElement(selectedElement))) {
-      return;
-    }
-
-    DSemanticDecorator view = null;
-
-    boolean allowMultiplePart = TriStateBoolean.True.equals(CapellaProjectHelper
-        .isReusableComponentsDriven((EObject) selectedElement));
-    if (!allowMultiplePart) {
-      if (selectedElement instanceof Component) {
-        for (Part part : getCache(ComponentExt::getRepresentingParts, (Component) selectedElement)) {
-          view = getPreferedView(part);
-          if (view != null) {
-            break;
-          }
-        }
-      }
-    }
-    if (view == null) {
-      view = getPreferedView((EObject) selectedElement);
-    }
-
-    if (view == null) {
+    if (!status.isOK()) {
       MessageDialog.openInformation(Display.getCurrent().getActiveShell(),
-          Messages.ShowInDiagramAction_UnknownElement_Title, Messages.ShowInDiagramAction_UnknownElement_Message);
-    } else {
-
-      if (view instanceof DDiagramElement) {
-        DDiagramElementQuery query = new DDiagramElementQuery((DDiagramElement) view);
-        if (query.isFolded()) {
-          MessageDialog.openInformation(Display.getCurrent().getActiveShell(),
-              Messages.ShowInDiagramAction_UnknownElement_Title, Messages.ShowInDiagramAction_FoldedElement_Message);
-
-        } else if (query.isHidden()) {
-          MessageDialog.openInformation(Display.getCurrent().getActiveShell(),
-              Messages.ShowInDiagramAction_UnknownElement_Title, Messages.ShowInDiagramAction_HiddenElement_Message);
-
-        } else if (query.isCollapsed()) {
-          MessageDialog.openInformation(Display.getCurrent().getActiveShell(),
-              Messages.ShowInDiagramAction_UnknownElement_Title, Messages.ShowInDiagramAction_CollapseElement_Message);
-
-        } else if (query.isFiltered()) {
-          MessageDialog.openInformation(Display.getCurrent().getActiveShell(),
-              Messages.ShowInDiagramAction_UnknownElement_Title, Messages.ShowInDiagramAction_FilteredElement_Message);
-
-        } else {
-
-          IGraphicalEditPart selectedPart = LayerUtil.getGraphicalPart(view);
-          if (selectedPart == null) {
-            MessageDialog.openInformation(Display.getCurrent().getActiveShell(),
-                Messages.ShowInDiagramAction_UnknownElement_Title, Messages.ShowInDiagramAction_UnknownElement_Message);
-          } else {
-            selectPart(selectedPart);
-          }
-        }
-
-      } else if (view instanceof DDiagram) {
-        MessageDialog.openInformation(Display.getCurrent().getActiveShell(),
-            Messages.ShowInDiagramAction_UnknownElement_Title, Messages.ShowInDiagramAction_UnknownElement_Message);
-      }
-
+          Messages.ShowInDiagramAction_UnknownElement_Title, status.getMessage());
     }
-
   }
 
-  /**
-   * @param part
-   * @return
-   */
-  protected DSemanticDecorator getPreferedView(EObject semantic) {
-    IEditorPart activeEditor = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
+  @SuppressWarnings("unchecked")
+  public IStatus runWithStatus() {
 
-    if ((null != activeEditor) && (activeEditor instanceof SiriusDiagramEditor)) {
+    List<Object> selectedElements = getStructuredSelection().toList();
+    Collection<EObject> semanticElements = CapellaAdapterHelper.resolveSemanticsObjects(selectedElements);
+    Set<DDiagramElement> viewsFromEditor = getViewsFromEditor(semanticElements);
+
+    if (viewsFromEditor.isEmpty()) {
+      return new Status(IStatus.INFO, CapellaNavigatorPlugin.PLUGIN_ID,
+          Messages.ShowInDiagramAction_UnknownElement_Message);
+    }
+
+    List<DDiagramElement> availableElements = viewsFromEditor.stream().filter(isElementAvailable())
+        .collect(Collectors.toList());
+
+    if (availableElements.isEmpty()) {
+      // there are now available elements to display
+      // return a status containing the reason
+      DDiagramElement diagramElement = viewsFromEditor.iterator().next();
+      String message = getUnavailableElementMessage(diagramElement);
+      return new Status(IStatus.INFO, CapellaNavigatorPlugin.PLUGIN_ID, message);
+    }
+
+    Set<EObject> availableSemanticElements = availableElements //
+        .stream() //
+        .map(DDiagramElement::getTarget) //
+        .collect(Collectors.toSet());
+
+    Set<IGraphicalEditPart> availableGraphicalParts = LayerUtil.getAllGraphicalParts(availableSemanticElements);
+    setSelection(availableGraphicalParts);
+
+    return Status.OK_STATUS;
+  }
+
+  protected Set<DDiagramElement> getViewsFromEditor(Collection<EObject> semanticElements) {
+
+    IEditorPart activeEditor = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
+    Set<DDiagramElement> allViewElements = new HashSet<>();
+
+    if (activeEditor instanceof SiriusDiagramEditor) {
       SiriusDiagramEditor diagramEditor = (SiriusDiagramEditor) activeEditor;
-
       DRepresentation diagram = (DRepresentation) diagramEditor.getDiagram().getElement();
-      Collection<DSemanticDecorator> views = DiagramServices.getDiagramServices().getDiagramElements(diagram, semantic);
 
-      if (views.size() == 1) {
-        return views.iterator().next();
-      }
+      for (EObject semanticElement : semanticElements) {
+        Collection<DDiagramElement> currentViewElements = Collections.emptyList();
 
-      // Multiple views are found.
-      // In some cases, 2 UI representations can point to the same target e.g an DEdge and a AbstractDNode.
-      // Priority is done to the AbstractDNode vs an DEdge.
-      for (DSemanticDecorator view : views) {
-        if (view instanceof AbstractDNode) {
-          return view;
+        if (semanticElement instanceof Component) {
+          currentViewElements = getCache(ComponentExt::getRepresentingParts, (Component) semanticElement) //
+              .stream() //
+              .flatMap(part -> getDDiagramElements(diagram, part))//
+              .collect(Collectors.toList());
         }
-      }
-      for (DSemanticDecorator view : views) {
-        if (view instanceof DEdge) {
-          return view;
+
+        if (currentViewElements.isEmpty()) {
+          currentViewElements = getDDiagramElements(diagram, semanticElement).collect(Collectors.toList());
         }
+
+        allViewElements.addAll(currentViewElements);
       }
     }
 
-    return null;
+    return allViewElements;
   }
 
-  protected void selectPart(IGraphicalEditPart part) {
-    IEditorPart activeEditor = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
-    SiriusDiagramEditor diagramEditor = (SiriusDiagramEditor) activeEditor;
+  private Stream<DDiagramElement> getDDiagramElements(DRepresentation diagram, EObject semantic) {
+    return DiagramServices.getDiagramServices() //
+        .getDiagramElements(diagram, semantic) //
+        .stream() //
+        .filter(DDiagramElement.class::isInstance) //
+        .map(DDiagramElement.class::cast);
+  }
 
-    // Get the graphical viewer.
-    IDiagramGraphicalViewer diagramGraphicalViewer = diagramEditor.getDiagramGraphicalViewer();
-    // Select the found graphical edit part.
-    if (null != part) {
-      diagramGraphicalViewer.select(part);
-      diagramGraphicalViewer.reveal(part);
+  protected Predicate<DDiagramElement> isElementAvailable() {
+    return element -> {
+      DDiagramElementQuery query = new DDiagramElementQuery(element);
+      return !(query.isFolded() || query.isHidden() || query.isCollapsed() || query.isFiltered());
+    };
+  }
+
+  protected String getUnavailableElementMessage(DDiagramElement element) {
+
+    String message = Messages.ShowInDiagramAction_UnknownElement_Message;
+    DDiagramElementQuery query = new DDiagramElementQuery(element);
+
+    if (query.isFolded()) {
+      message = Messages.ShowInDiagramAction_FoldedElement_Message;
+
+    } else if (query.isHidden()) {
+      message = Messages.ShowInDiagramAction_HiddenElement_Message;
+
+    } else if (query.isCollapsed()) {
+      message = Messages.ShowInDiagramAction_CollapseElement_Message;
+
+    } else if (query.isFiltered()) {
+      message = Messages.ShowInDiagramAction_FilteredElement_Message;
+
+    }
+
+    return message;
+  }
+
+  protected void setSelection(Collection<IGraphicalEditPart> elements) {
+    IEditorPart activeEditor = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
+
+    if (activeEditor instanceof SiriusDiagramEditor) {
+      SiriusDiagramEditor diagramEditor = (SiriusDiagramEditor) activeEditor;
+      IDiagramGraphicalViewer diagramGraphicalViewer = diagramEditor.getDiagramGraphicalViewer();
+
+      List<IGraphicalEditPart> selectableElements = elements //
+          .stream() //
+          .filter(EditPart::isSelectable) //
+          .collect(Collectors.toList());
+
+      diagramGraphicalViewer.setSelection(new StructuredSelection(selectableElements));
     }
   }
 
@@ -191,7 +202,7 @@ public class ShowInDiagramAction extends BaseSelectionListenerAction implements 
     boolean result = false;
 
     if (!selection.isEmpty()) {
-      result = (CapellaResourceHelper.isSemanticElements(selection.toList())) ? true : false;
+      result = CapellaResourceHelper.isSemanticElements(selection.toList());
     }
 
     IEditorPart activeEditor = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
