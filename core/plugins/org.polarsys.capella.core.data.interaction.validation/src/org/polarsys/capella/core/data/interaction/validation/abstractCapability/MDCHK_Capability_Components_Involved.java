@@ -11,6 +11,12 @@
 
 package org.polarsys.capella.core.data.interaction.validation.abstractCapability;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.EMFEventType;
@@ -18,16 +24,9 @@ import org.eclipse.emf.validation.IValidationContext;
 import org.eclipse.emf.validation.model.ConstraintStatus;
 import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.core.data.cs.Component;
+import org.polarsys.capella.core.data.ctx.System;
 import org.polarsys.capella.core.data.interaction.AbstractCapability;
 import org.polarsys.capella.core.data.oa.OperationalCapability;
-import org.polarsys.capella.core.data.ctx.System;
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
 import org.polarsys.capella.core.model.helpers.AbstractCapabilityExt;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 
@@ -84,7 +83,7 @@ public class MDCHK_Capability_Components_Involved extends AbstractValidationRule
     Collection<EObject> resultLocus = new ArrayList<EObject>();
     resultLocus.add(capability);
     resultLocus.add(element);
-    statuses.add(ConstraintStatus.createStatus(ctx, eObj, resultLocus, IStatus.ERROR, ERROR_CODE,
+    statuses.add(ConstraintStatus.createStatus(ctx, eObj, resultLocus, IStatus.WARNING, ERROR_CODE,
         Messages.DWF_CA_07_Validator_Message, msgArguments));
   }
 
