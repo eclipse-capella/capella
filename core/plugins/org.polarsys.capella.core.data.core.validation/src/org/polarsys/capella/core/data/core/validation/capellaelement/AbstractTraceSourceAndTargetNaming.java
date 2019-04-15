@@ -57,8 +57,10 @@ public class AbstractTraceSourceAndTargetNaming extends AbstractValidationRule {
                   AbstractNamedElement sourceNamedElement = (AbstractNamedElement) sourceElement;
                   AbstractNamedElement targetNamedElement = (AbstractNamedElement) targetElement;
                   // if names not equal raise warning message
-                  if (!sourceNamedElement.getName().equals(targetNamedElement.getName())) {
-                    return ctx.createFailureStatus(sourceNamedElement.getName(), cst.eClass().getName(), targetNamedElement.getName(), targetNamedElement
+                  String sourceName = sourceNamedElement.getName() == null ? "" : sourceNamedElement.getName();
+                  String targetName = targetNamedElement.getName() == null ? "" : targetNamedElement.getName();
+                  if (!sourceName.equals(targetName)) {
+                    return ctx.createFailureStatus(sourceName, cst.eClass().getName(), targetName, targetNamedElement
                         .eClass().getName());
                   }
                 }
