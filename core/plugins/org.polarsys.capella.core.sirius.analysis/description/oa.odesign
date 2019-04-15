@@ -728,7 +728,7 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_2:DiagramDescription" name="Operational Entity Blank" label="Operational Architecture Blank" titleExpression="aql:'[OAB] ' + self.name" domainClass="Component" preconditionExpression="aql:self.oclIsKindOf(oa::Entity) or self.oclIsKindOf(oa::OperationalContext) or self.oclIsKindOf(oa::EntityPkg)">
+    <ownedRepresentations xsi:type="description_2:DiagramDescription" name="Operational Entity Blank" label="Operational Architecture Blank" titleExpression="aql:'[OAB] ' + self.name" domainClass="Component" preconditionExpression="aql:self.oclIsKindOf(oa::Entity) or self.oclIsKindOf(oa::OperationalContext) or self.oclIsKindOf(oa::EntityPkg)" defaultConcern="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@concerns/@ownedConcernDescriptions.0">
       <dropDescriptions href="#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Entities%20From%20Project%20Explorer']"/>
       <dropDescriptions href="#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer']"/>
       <dropDescriptions href="#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='DnD%20Entitiy']"/>
@@ -5130,7 +5130,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Creates a new Involvement Link referencing a Interaction." name="Exchange" label="Interaction" precondition="aql:preSource.isValidFCILinkExchange(preTarget)" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionalChainInvolvementLinkOA_ToExchange.gif">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Creates a new Involvement Link referencing an Interaction." name="Exchange" label="Interaction" precondition="aql:preSource.isValidFCILinkExchange(preTarget)" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionalChainInvolvementLinkOA_ToExchange.gif">
             <edgeMappings href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@edgeMappings[name='FC_Exchange']"/>
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
@@ -5160,7 +5160,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ToolDescription" documentation="Creates a new Involvement Link referencing a Interaction, between the existing Operational Activity and a new Operational Activity." name="Exchange and Function" label="Interaction and Operational Activity" precondition="aql:container.isValidFCIFunctionalExchangeAndFunction()" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionalChainInvolvementLinkOA_AndFunction.gif">
+          <ownedTools xsi:type="tool:ToolDescription" documentation="Creates a new Involvement Link referencing an Interaction, between the existing Operational Activity and a new Operational Activity." name="Exchange and Function" label="Interaction and Operational Activity" precondition="aql:container.isValidFCIFunctionalExchangeAndFunction()" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionalChainInvolvementLinkOA_AndFunction.gif">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
@@ -5229,7 +5229,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Creates a new Involvement Link referencing an Operational Activity." name="Connect Functions" label="Connect Operational Activities" precondition="aql:preSource.isValidFCILinkFunction(preSourceView, preTarget, preTargetView)" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionalChainInvolvementLinkOA_ToFunction.gif">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Creates a new Involvement Link between two Involvements referencing the same Operational Activity." name="Connect Functions" label="Connect Operational Activities" precondition="aql:preSource.isValidFCILinkFunction(preSourceView, preTarget, preTargetView)" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionalChainInvolvementLinkOA_ToFunction.gif">
             <edgeMappings href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@edgeMappings[name='FC_Exchange']"/>
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
@@ -5763,7 +5763,7 @@
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool_1:ToolGroup" name="Advanced Tools">
-            <tools xsi:type="tool_1:EdgeCreationDescription" documentation="Creates a new Involvement Link referencing a Interaction with a linked Sequence Link." name="InteractionWithSequenceLink" label="Interaction with Sequence Link" precondition="aql:preSource.isValidFCILinkExchange(preTarget)" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionalChainInvolvementLinkOA_ToExchange.gif">
+            <tools xsi:type="tool_1:EdgeCreationDescription" documentation="Creates a new Involvement Link referencing an Interaction with a linked Sequence Link." name="InteractionWithSequenceLink" label="Interaction with Sequence Link" precondition="aql:preSource.isValidFCILinkExchange(preTarget)" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionalChainInvolvementLinkOA_ToExchange.gif">
               <edgeMappings href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@edgeMappings[name='FC_Exchange']"/>
               <sourceVariable name="source"/>
               <targetVariable name="target"/>
@@ -5800,7 +5800,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:EdgeCreationDescription" documentation="Associate a Sequence Link with a Involvement Link referencing a Interaction" name="AssociateSLwithInteraction" label="Associate Sequence Link with Interaction" precondition="aql:preSource.isValidLinks(preTarget)" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionalChainInvolvementLinkOA_ToExchange.gif">
+            <tools xsi:type="tool_1:EdgeCreationDescription" documentation="Associate a Sequence Link with an Involvement Link referencing an Interaction." name="AssociateSLwithInteraction" label="Associate Sequence Link with Interaction" precondition="aql:preSource.isValidLinks(preTarget)" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionalChainInvolvementLinkOA_ToExchange.gif">
               <edgeMappings href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@edgeMappings[name='FC_SequenceLink_InvolvementLink']"/>
               <sourceVariable name="source"/>
               <targetVariable name="target"/>
@@ -5823,14 +5823,14 @@
             </tools>
           </ownedTools>
           <ownedTools xsi:type="tool_1:ToolGroup">
-            <tools xsi:type="tool:ToolDescription" documentation="Create a new Involvement Link referencing a Interaction and associate it with the selected Sequence Link" name="Interaction from Sequence Link" label="Interaction from Sequence Link" precondition="aql:container.oclIsKindOf(fa::SequenceLink)" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionalChainInvolvementLinkOA_ToExchange.gif">
+            <tools xsi:type="tool:ToolDescription" documentation="Create a new Involvement Link referencing an Interaction and associate it with the selected Sequence Link." name="Interaction from Sequence Link" label="Interaction from Sequence Link" precondition="aql:container.oclIsKindOf(fa::SequenceLink)" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionalChainInvolvementLinkOA_ToExchange.gif">
               <element name="element"/>
               <elementView name="elementView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.accelerateOnSequenceLinkEdge()"/>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool:ToolDescription" documentation="Create a new Sequence Link and associate it with the selected Involvement Link" name="Sequence Link from Interaction" label="Sequence Link from Interaction" precondition="aql:container.oclIsKindOf(fa::FunctionalChainInvolvementLink) and not container.involved.oclIsKindOf(fa::AbstractFunction)" iconPath="/org.polarsys.capella.core.data.res.edit/icons/full/obj16/SequenceLink.gif">
+            <tools xsi:type="tool:ToolDescription" documentation="Create a new Sequence Link and associate it with the selected Involvement Link." name="Sequence Link from Interaction" label="Sequence Link from Interaction" precondition="aql:container.oclIsKindOf(fa::FunctionalChainInvolvementLink) and not container.involved.oclIsKindOf(fa::AbstractFunction)" forceRefresh="true" iconPath="/org.polarsys.capella.core.data.res.edit/icons/full/obj16/SequenceLink.gif">
               <element name="element"/>
               <elementView name="elementView"/>
               <initialOperation>
