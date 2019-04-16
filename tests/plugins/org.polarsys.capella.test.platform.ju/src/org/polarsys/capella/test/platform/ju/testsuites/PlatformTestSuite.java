@@ -23,6 +23,7 @@ import org.polarsys.capella.test.platform.ju.testcases.CapellaDefaultEditorEnabl
 import org.polarsys.capella.test.platform.ju.testcases.CapellaPlatformVersionNotNull;
 import org.polarsys.capella.test.platform.ju.testcases.CapellaSiriusCustomisationEnabled;
 import org.polarsys.capella.test.platform.ju.testcases.InvalidRepresentationDescriptorAdapterFactory;
+import org.polarsys.capella.test.platform.ju.testcases.PropertiesWizardIconTest;
 import org.polarsys.capella.test.platform.ju.testcases.ViatraSurrogateAllDerivedFeaturesImplemented;
 
 import junit.framework.Test;
@@ -52,6 +53,7 @@ public class PlatformTestSuite extends BasicTestSuite {
     tests.add(new CapellaCDOGenerationOfDerivedFeature());
     tests.add(new ViatraSurrogateAllDerivedFeaturesImplemented());
     tests.add(new CapellaCheckAcceleo2NotUsed());
+    tests.add(new PropertiesWizardIconTest());
     return tests;
   }
   
