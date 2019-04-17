@@ -11,6 +11,7 @@
 package org.polarsys.capella.core.model.handler.helpers;
 
 import java.util.Collection;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 import org.eclipse.core.runtime.Adapters;
@@ -64,7 +65,7 @@ public class CapellaAdapterHelper {
    */
   public static EObject resolveSemanticObject(Object object, boolean onlySemantic) {
     if (object instanceof EObject) {
-      return resolveEObject((EObject) object, onlySemantic);
+      return resolveEObject(object, onlySemantic);
 
     } else if (object instanceof IAdaptable) {
       EObject adapter = ((IAdaptable) object).getAdapter(EObject.class);
@@ -95,7 +96,10 @@ public class CapellaAdapterHelper {
    * This method returns the list of EObject from the given objects.
    */
   public static Collection<EObject> resolveSemanticObjects(Collection<?> objects, boolean onlySemantic) {
-    return objects.stream().map(x -> resolveSemanticObject(x, onlySemantic)).collect(Collectors.toList());
+    return objects.stream() //
+        .map(x -> resolveSemanticObject(x, onlySemantic)) //
+        .filter(Objects::nonNull) //
+        .collect(Collectors.toList());
   }
 
   /**
