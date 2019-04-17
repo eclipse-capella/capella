@@ -2480,6 +2480,13 @@
           <targetMapping xsi:type="description_1:EdgeMapping" href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@edgeMappings[name='CCRI%20involvement']"/>
           <targetMapping xsi:type="description_1:ContainerMapping" href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@containerMappings[name='FC_FunctionalChainReference']"/>
           <targetMapping xsi:type="description_1:ContainerMapping" href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@containerMappings[name='FC_FunctionalChainReference']/@subContainerMappings[name='FC_FunctionalChainStacked']"/>
+          <targetMapping xsi:type="description_1:EdgeMapping" href="oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@edgeMappings[name='OAB_FC_SequenceLink']"/>
+          <targetMapping xsi:type="description_1:EdgeMapping" href="context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='SAB_FC_SequenceLink']"/>
+          <targetMapping xsi:type="description_1:EdgeMapping" href="logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='LAB_FC_SequenceLink']"/>
+          <targetMapping xsi:type="description_1:EdgeMapping" href="physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@edgeMappings[name='PAB_FC_SequenceLink']"/>
+          <targetMapping xsi:type="description_1:NodeMapping" href="oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@nodeMappings[name='FC_ControlNode']"/>
+          <targetMapping xsi:type="description_1:NodeMapping" href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@nodeMappings[name='FC_ControlNode']"/>
+          <targetMapping xsi:type="description_1:EdgeMapping" href="#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@edgeMappings[name='FC_SequenceLink']"/>
           <style lineStyle="dot">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription showIcon="false">
@@ -19250,7 +19257,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" documentation="Creates a new Involvement Link referencing a Function." name="Connect Functions" precondition="aql:preSource.isValidFCILinkFunction(preSourceView, preTarget, preTargetView)" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@edgeMappings[name='FC_Exchange']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionalChainInvolvementLink_ToFunction.gif">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" documentation="Creates a new Involvement Link between two Involvements referencing the same Function." name="Connect Functions" precondition="aql:preSource.isValidFCILinkFunction(preSourceView, preTarget, preTargetView)" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@edgeMappings[name='FC_Exchange']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionalChainInvolvementLink_ToFunction.gif">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -19828,14 +19835,14 @@
             </tools>
           </ownedTools>
           <ownedTools xsi:type="tool:ToolGroup">
-            <tools xsi:type="tool_1:ToolDescription" documentation="Create a new Involvement Link referencing a Functional Exchange and associate it with the selected Sequence Link" name="Exchange from Sequence Link" label="Exchange from Sequence Link" precondition="aql:container.oclIsKindOf(fa::SequenceLink)" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionalChainInvolvementLink_ToExchange.gif">
+            <tools xsi:type="tool_1:ToolDescription" documentation="Create a new Involvement Link referencing a Functional Exchange and associate it with the selected Sequence Link" name="Exchange from Sequence Link" label="Exchange from Sequence Link" precondition="aql:container.oclIsKindOf(fa::SequenceLink)" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionalChainInvolvementLink_ToExchange.gif">
               <element name="element"/>
               <elementView name="elementView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView.accelerateOnSequenceLinkEdge()"/>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:ToolDescription" documentation="Create a new Sequence Link and associate it with the selected Involvement Link" name="Sequence Link from Exchange" label="Sequence Link from Exchange" precondition="aql:container.oclIsKindOf(fa::FunctionalChainInvolvementLink) and not container.involved.oclIsKindOf(fa::AbstractFunction)" iconPath="/org.polarsys.capella.core.data.res.edit/icons/full/obj16/SequenceLink.gif">
+            <tools xsi:type="tool_1:ToolDescription" documentation="Create a new Sequence Link and associate it with the selected Involvement Link" name="Sequence Link from Exchange" label="Sequence Link from Exchange" precondition="aql:container.oclIsKindOf(fa::FunctionalChainInvolvementLink) and not container.involved.oclIsKindOf(fa::AbstractFunction)" forceRefresh="true" iconPath="/org.polarsys.capella.core.data.res.edit/icons/full/obj16/SequenceLink.gif">
               <element name="element"/>
               <elementView name="elementView"/>
               <initialOperation>
