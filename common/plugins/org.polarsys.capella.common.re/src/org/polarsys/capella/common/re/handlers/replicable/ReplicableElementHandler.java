@@ -261,7 +261,7 @@ public class ReplicableElementHandler implements IReplicableElementHandler {
   }
 
   public Collection<CatalogElement> getSelectedReplicableElements(IContext context) {
-    ArrayList<CatalogElement> elements = new ArrayList<CatalogElement>();
+    ArrayList<CatalogElement> elements = new ArrayList<>();
     Collection<?> selection = (Collection<?>) context.get(ITransitionConstants.TRANSITION_SOURCES);
     for (Object item : selection) {
       if (item instanceof CatalogElement) {
@@ -278,7 +278,7 @@ public class ReplicableElementHandler implements IReplicableElementHandler {
   }
 
   public Collection<CatalogElement> getUppestReplicableElement(IContext context, Collection<?> sources) {
-    Collection<CatalogElement> result = new ArrayList<CatalogElement>();
+    Collection<CatalogElement> result = new ArrayList<>();
     for (Object item : sources) {
       if (item instanceof CatalogElement) {
         result.add((CatalogElement) item);
@@ -289,7 +289,7 @@ public class ReplicableElementHandler implements IReplicableElementHandler {
   }
 
   public Collection<CatalogElement> getIndirectlyReplicableElementsForCommand(IContext context, Collection<?> sources) {
-    ArrayList<CatalogElement> elements = new ArrayList<CatalogElement>();
+    ArrayList<CatalogElement> elements = new ArrayList<>();
     for (Object item : sources) {
       if (item instanceof CatalogElement) {
         elements.add((CatalogElement) item);
@@ -297,13 +297,12 @@ public class ReplicableElementHandler implements IReplicableElementHandler {
     }
 
     for (Object item : sources) {
-      if (!(item instanceof CatalogElement)) {
-        Collection<EObject> links = EObjectExt.getReferencers((EObject) item, RePackage.Literals.CATALOG_ELEMENT_LINK__TARGET);
+      if (item != null && !(item instanceof CatalogElement)) {
+        Collection<EObject> links = EObjectExt.getReferencers((EObject) item,
+            RePackage.Literals.CATALOG_ELEMENT_LINK__TARGET);
         for (EObject link : links) {
-          if (link instanceof CatalogElementLink) {
-            if (((CatalogElementLink) link).getSource() != null) {
-              elements.add(((CatalogElementLink) link).getSource());
-            }
+          if (link instanceof CatalogElementLink && ((CatalogElementLink) link).getSource() != null) {
+            elements.add(((CatalogElementLink) link).getSource());
           }
         }
       }
@@ -312,7 +311,7 @@ public class ReplicableElementHandler implements IReplicableElementHandler {
   }
 
   public Collection<CatalogElement> getIndirectlyReplicableElements(IContext context, Collection<?> sources) {
-    ArrayList<CatalogElement> elements = new ArrayList<CatalogElement>();
+    ArrayList<CatalogElement> elements = new ArrayList<>();
     if (sources == null) {
       return elements;
     }
@@ -348,7 +347,7 @@ public class ReplicableElementHandler implements IReplicableElementHandler {
    * @return
    */
   public Collection<CatalogElement> getLinkingReplicableElements(IContext context, Collection<?> sources) {
-    ArrayList<CatalogElement> elements = new ArrayList<CatalogElement>();
+    ArrayList<CatalogElement> elements = new ArrayList<>();
     for (Object item : sources) {
       if (item instanceof EObject) {
         Collection<EObject> links = EObjectExt.getReferencers((EObject) item, RePackage.Literals.CATALOG_ELEMENT_LINK__TARGET);
@@ -373,7 +372,7 @@ public class ReplicableElementHandler implements IReplicableElementHandler {
    * @return
    */
   public Collection<CatalogElement> getAllDefinedReplicableElements(IContext context) {
-    ArrayList<CatalogElement> elements = new ArrayList<CatalogElement>();
+    ArrayList<CatalogElement> elements = new ArrayList<>();
     Collection<?> selection = (Collection<?>) context.get(ITransitionConstants.TRANSITION_SOURCES);
 
     if (!selection.isEmpty()) {
@@ -384,7 +383,7 @@ public class ReplicableElementHandler implements IReplicableElementHandler {
   }
 
   public Collection<CatalogElement> getAllDefinedRecReplicableElements(IContext context) {
-    ArrayList<CatalogElement> elements = new ArrayList<CatalogElement>();
+    ArrayList<CatalogElement> elements = new ArrayList<>();
     Collection<?> selection = (Collection<?>) context.get(ITransitionConstants.TRANSITION_SOURCES);
 
     if (!selection.isEmpty()) {
@@ -399,7 +398,7 @@ public class ReplicableElementHandler implements IReplicableElementHandler {
   }
 
   public Collection<CatalogElement> getAllOwnedCatalogElements(CatalogElement element) {
-    Collection<CatalogElement> elements = new ArrayList<CatalogElement>();
+    Collection<CatalogElement> elements = new ArrayList<>();
     if (element != null) {
       for (CatalogElement ownedElement : element.getOwnedElements()) {
         elements.add(ownedElement);
@@ -410,7 +409,7 @@ public class ReplicableElementHandler implements IReplicableElementHandler {
   }
 
   public Collection<CatalogElement> getAllOwnedCatalogElements(CatalogElementPkg element) {
-    Collection<CatalogElement> elements = new ArrayList<CatalogElement>();
+    Collection<CatalogElement> elements = new ArrayList<>();
     for (CatalogElement ownedElement : element.getOwnedElements()) {
       elements.add(ownedElement);
       elements.addAll(getAllOwnedCatalogElements(ownedElement));
@@ -453,7 +452,7 @@ public class ReplicableElementHandler implements IReplicableElementHandler {
    * @return
    */
   public Collection<CatalogElement> getUsedReplicableElements(CatalogElement esource) {
-    LinkedList<CatalogElement> toVisit = new LinkedList<CatalogElement>();
+    LinkedList<CatalogElement> toVisit = new LinkedList<>();
     if (esource != null) {
 
       for (CatalogElementLink link : esource.getOwnedLinks()) {
@@ -470,8 +469,8 @@ public class ReplicableElementHandler implements IReplicableElementHandler {
    * @param source
    */
   public Collection<CatalogElement> getAllUsedReplicableElements(CatalogElement source) {
-    LinkedList<CatalogElement> toVisit = new LinkedList<CatalogElement>();
-    LinkedList<CatalogElement> visited = new LinkedList<CatalogElement>();
+    LinkedList<CatalogElement> toVisit = new LinkedList<>();
+    LinkedList<CatalogElement> visited = new LinkedList<>();
     toVisit.add(source);
 
     while (!toVisit.isEmpty()) {
@@ -544,7 +543,7 @@ public class ReplicableElementHandler implements IReplicableElementHandler {
    * @return
    */
   public Collection<Object> getAllDefinedCatalogElementPkgs(IContext context) {
-    ArrayList<Object> elements = new ArrayList<Object>();
+    ArrayList<Object> elements = new ArrayList<>();
     Collection<Object> selection = (Collection<Object>) context.get(ITransitionConstants.TRANSITION_SOURCES);
     return Collections.emptyList();
   }
@@ -565,7 +564,7 @@ public class ReplicableElementHandler implements IReplicableElementHandler {
    */
   public void cleanVirtualLinks(IContext context) {
     Collection<EObject> links = ContextScopeHandlerHelper.getInstance(context).getCollection(IReConstants.CREATED_LINKS, context);
-    Collection<EObject> toRemove = new LinkedList<EObject>();
+    Collection<EObject> toRemove = new LinkedList<>();
     for (EObject object : links) {
       if (!ContextScopeHandlerHelper.getInstance(context).contains(IReConstants.CREATED_LINKS_TO_KEEP, object, context)) {
         toRemove.add(object);
@@ -643,7 +642,7 @@ public class ReplicableElementHandler implements IReplicableElementHandler {
    */
   @Override
   public Collection<CatalogElementLink> createTargetLinks(CatalogElement replicable, Collection<CatalogElementLink> setLinks, IContext context) {
-    HashSet<CatalogElementLink> newLinks = new LinkedHashSet<CatalogElementLink>();
+    HashSet<CatalogElementLink> newLinks = new LinkedHashSet<>();
 
     for (CatalogElementLink link : setLinks) {
       CatalogElementLink link2 = ReFactory.eINSTANCE.createCatalogElementLink();
