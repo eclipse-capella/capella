@@ -49,8 +49,12 @@ public class Rule_DWF_DF_15 extends Project_DWF_DF_for_SL_CN {
    */
   @Override
   protected List<String> getScopeDefinition() {
-    return Arrays.asList(new String[] { LA_SEQUENCE_LINK_1, LA_SEQUENCE_LINK_2, LA_SEQUENCE_LINK_3, LA_SEQUENCE_LINK_4,
-        LA_SEQUENCE_LINK_5, LA_SEQUENCE_LINK_6, LA_SEQUENCE_LINK_7, LA_SEQUENCE_LINK_8, LA_SEQUENCE_LINK_9 });
+    return Arrays.asList(new String[] { OA_SEQUENCE_LINK_1, OA_SEQUENCE_LINK_2, OA_SEQUENCE_LINK_3, OA_SEQUENCE_LINK_4,
+        OA_SEQUENCE_LINK_5, OA_SEQUENCE_LINK_6, OA_SEQUENCE_LINK_7, OA_SEQUENCE_LINK_8, OA_SEQUENCE_LINK_9,
+        SA_SEQUENCE_LINK_1, SA_SEQUENCE_LINK_2, SA_SEQUENCE_LINK_3, SA_SEQUENCE_LINK_4, SA_SEQUENCE_LINK_5,
+        SA_SEQUENCE_LINK_6, SA_SEQUENCE_LINK_7, SA_SEQUENCE_LINK_8, SA_SEQUENCE_LINK_9, LA_SEQUENCE_LINK_1,
+        LA_SEQUENCE_LINK_2, LA_SEQUENCE_LINK_3, LA_SEQUENCE_LINK_4, LA_SEQUENCE_LINK_5, LA_SEQUENCE_LINK_6,
+        LA_SEQUENCE_LINK_7, LA_SEQUENCE_LINK_8, LA_SEQUENCE_LINK_9 });
   }
 
   /**
@@ -59,7 +63,13 @@ public class Rule_DWF_DF_15 extends Project_DWF_DF_for_SL_CN {
    */
   @Override
   protected List<OracleDefinition> getOracleDefinitions() {
-    return Arrays.asList(new OracleDefinition[] { new OracleDefinition(LA_SEQUENCE_LINK_2, 1),
+    return Arrays.asList(new OracleDefinition[] { new OracleDefinition(OA_SEQUENCE_LINK_2, 1),
+        new OracleDefinition(OA_SEQUENCE_LINK_3, 1), new OracleDefinition(OA_SEQUENCE_LINK_6, 1),
+        new OracleDefinition(OA_SEQUENCE_LINK_7, 1), new OracleDefinition(OA_SEQUENCE_LINK_8, 1),
+        new OracleDefinition(OA_SEQUENCE_LINK_9, 1), new OracleDefinition(SA_SEQUENCE_LINK_2, 1),
+        new OracleDefinition(SA_SEQUENCE_LINK_3, 1), new OracleDefinition(SA_SEQUENCE_LINK_6, 1),
+        new OracleDefinition(SA_SEQUENCE_LINK_7, 1), new OracleDefinition(SA_SEQUENCE_LINK_8, 1),
+        new OracleDefinition(SA_SEQUENCE_LINK_9, 1), new OracleDefinition(LA_SEQUENCE_LINK_2, 1),
         new OracleDefinition(LA_SEQUENCE_LINK_3, 1), new OracleDefinition(LA_SEQUENCE_LINK_6, 1),
         new OracleDefinition(LA_SEQUENCE_LINK_7, 1), new OracleDefinition(LA_SEQUENCE_LINK_8, 1),
         new OracleDefinition(LA_SEQUENCE_LINK_9, 1) // is in invalid: in opposite direction
