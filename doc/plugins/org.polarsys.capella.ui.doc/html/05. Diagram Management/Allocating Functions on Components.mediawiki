@@ -67,4 +67,18 @@ And finally if we hide both ''"LC A"'' and ''"LC B"'' it is possible to represen
 
 [[Image:Images/AllocatingFunctions_on_LogicalSystem.png|363x145px]]
 
+
+{| border="1"
+|-
+| 
+[[Image:Images/5.5.%20Creation%20of%20Functional%20Chains%20and%20Physical%20Paths_html_m262394d3.png|45x45px]]
+
+ 
+| 
+Dotted Style rules :
+* A leaf function (graphically contained in a container component) has dash border style if it is allocated to at least one of the container's sub-components.
+* A function (graphically contained in a container component) has dash border style if ALL of its leaves are allocated to at least one of the container's sub-components.
+|}
+
+
  
