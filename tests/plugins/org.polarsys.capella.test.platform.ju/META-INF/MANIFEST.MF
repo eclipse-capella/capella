@@ -7,7 +7,9 @@ Bundle-Activator: org.polarsys.capella.test.platform.ju.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.polarsys.capella.test.framework;bundle-version="0.8.0",
- org.eclipse.sirius.common.ui
+ org.eclipse.sirius.common.ui,
+ org.polarsys.capella.core.ui.resources,
+ org.polarsys.capella.common.re.gen
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: org.polarsys.capella.test.platform.ju,
