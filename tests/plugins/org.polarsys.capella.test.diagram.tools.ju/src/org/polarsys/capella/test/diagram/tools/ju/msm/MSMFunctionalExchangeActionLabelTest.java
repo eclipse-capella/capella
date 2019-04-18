@@ -49,13 +49,13 @@ public class MSMFunctionalExchangeActionLabelTest extends EmptyProject {
     sabDiagram.manageAllocatedFunction(function1Id, EmptyProject.SA__SYSTEM_CONTEXT__PART_SYSTEM__SYSTEM);
     sabDiagram.manageAllocatedFunction(function2Id, EmptyProject.SA__SYSTEM_CONTEXT__PART_SYSTEM__SYSTEM);
     sabDiagram.createFunctionalExchange(function1Id, function2Id, GenericModel.FUNCTIONAL_EXCHANGE_1);
-    final FunctionalExchange fe1 = (FunctionalExchange) sabDiagram
+    final FunctionalExchange fe1 = (FunctionalExchange) sabDiagram.getSessionContext()
         .getSemanticElement(GenericModel.FUNCTIONAL_EXCHANGE_1);
 
     MSMDiagram msmDiagram = MSMDiagram.createDiagram(context,
         EmptyProject.SA__SYSTEM__SYSTEM_STATE_MACHINE__DEFAULT_REGION);
     msmDiagram.createState(msmDiagram.getDiagramId(), GenericModel.STATE_1);
-    final State state1 = (State) msmDiagram.getSemanticElement(GenericModel.STATE_1);
+    final State state1 = (State) msmDiagram.getSessionContext().getSemanticElement(GenericModel.STATE_1);
 
     ChangeCommand command = new ChangeCommand(state1.eResource()) {
       @Override

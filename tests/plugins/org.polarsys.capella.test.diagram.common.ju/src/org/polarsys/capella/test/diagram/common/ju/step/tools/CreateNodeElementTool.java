@@ -27,25 +27,33 @@ public class CreateNodeElementTool extends CreateAbstractDNodeTool<DNodeListElem
     super(context, toolName, containerView, DNodeListElement.class);
   }
 
+  /*
+   * Constructors deprecated due to the use of the "newIdentifier" variable
+   * This should not be used as it introduces problems with the Insert/Remove actions
+   */
+  @Deprecated
   public CreateNodeElementTool(DiagramContext context, String toolName, String containerView, String newIdentifier) {
     super(context, toolName, containerView, newIdentifier, DNodeListElement.class);
   }
-  
-  public CreateNodeElementTool(DiagramContext context, String toolName, String targetContainerView, String containerView, String newIdentifier) {
+
+  @Deprecated
+  public CreateNodeElementTool(DiagramContext context, String toolName, String targetContainerView,
+      String containerView, String newIdentifier) {
     super(context, toolName, targetContainerView, containerView, newIdentifier, DNodeListElement.class);
   }
 
   @Override
   protected void preRunTest() {
     super.preRunTest();
-    
+
     DSemanticDecorator element = getContainerView();
     elements.addAll(getNodeElements(element));
   }
 
-  public List<DNodeListElement> getNodeElements(DSemanticDecorator element) {
-    if (element instanceof DNodeList) {
-      DNodeList nodeList = (DNodeList) element;
+  public List<DNodeListElement> getNodeElements(DSemanticDecorator parentContainer) {
+
+    if (parentContainer instanceof DNodeList) {
+      DNodeList nodeList = (DNodeList) parentContainer;
       return nodeList.getOwnedElements();
     }
     return Collections.emptyList();
@@ -53,20 +61,19 @@ public class CreateNodeElementTool extends CreateAbstractDNodeTool<DNodeListElem
 
   @Override
   protected void postRunTest() {
-    DSemanticDecorator element = getContainerView();
-    newElements = DiagramHelper.getOwnedElements(element);
-    newElements.addAll(getNodeElements(element));
+
+    DSemanticDecorator parentContainerView = getContainerView();
+
+    newElements = DiagramHelper.getOwnedElements(parentContainerView);
+    newElements.addAll(getNodeElements(parentContainerView));
     newElements.removeAll(elements);
 
     if (newElements.size() != expectedNewElements()) {
       fail();
     }
-    
-    if ((expectedDiagramElementType != null) && !(expectedDiagramElementType.isInstance(newElements.iterator().next()))) {
-      fail();
-    }
 
-    if (!(newElements.iterator().next() instanceof DNodeListElement)) {
+    if ((expectedDiagramElementType != null)
+        && !(expectedDiagramElementType.isInstance(newElements.iterator().next()))) {
       fail();
     }
   }

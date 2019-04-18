@@ -72,16 +72,16 @@ public class FilterStep extends AbstractDiagramStep<DiagramContext> {
     super.postRunTest();
 
     for (String identifier : insertedElements) {
-      getExecutionContext().hasView(identifier);
+      getDiagramContext().hasView(identifier);
     }
     for (String identifier : removedElements) {
-      getExecutionContext().hasFilteredView(identifier);
+      getDiagramContext().hasFilteredView(identifier);
     }
   }
 
   @Override
   public DiagramContext getResult() {
-    return getExecutionContext();
+    return getDiagramContext();
   }
 
   /*
@@ -92,9 +92,9 @@ public class FilterStep extends AbstractDiagramStep<DiagramContext> {
   @Override
   protected void runTest() {
     if (activate) {
-      FilterOnDiagramHelper.applyFilterOnDiagram(getExecutionContext().getDiagram(), filterName);
+      FilterOnDiagramHelper.applyFilterOnDiagram(getDiagramContext().getDiagram(), filterName);
     } else {
-      FilterOnDiagramHelper.removeFilterOnDiagram(getExecutionContext().getDiagram(), filterName);
+      FilterOnDiagramHelper.removeFilterOnDiagram(getDiagramContext().getDiagram(), filterName);
     }
   }
 

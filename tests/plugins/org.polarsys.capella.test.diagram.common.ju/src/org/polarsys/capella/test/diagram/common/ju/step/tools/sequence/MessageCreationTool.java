@@ -37,40 +37,45 @@ public class MessageCreationTool extends CreateDEdgeTool {
   private MessageKind messageKind = null;
   private boolean hasReturnBranch = false;
   private int numCountChecks;
-  
+
   public MessageCreationTool(DiagramContext context, String toolName, String sourceId, String targetId) {
     super(context, toolName, sourceId, targetId);
     this.numCountChecks = 1;
   }
-  
+
   public MessageCreationTool(DiagramContext context, String toolName, String id, String sourceId, String targetId) {
     super(context, toolName, sourceId, targetId, id);
     this.numCountChecks = 2;
   }
-  
-  public MessageCreationTool(DiagramContext context, String toolName, String id, String sourceId, String targetId, boolean returnBranch) {
+
+  public MessageCreationTool(DiagramContext context, String toolName, String id, String sourceId, String targetId,
+      boolean returnBranch) {
     super(context, toolName, sourceId, targetId, id);
     this.hasReturnBranch = returnBranch;
     this.numCountChecks = 2;
   }
+
   ///////////////// MSG_KIND ///////////
-  public MessageCreationTool(DiagramContext context, String toolName, String sourceId, String targetId, MessageKind messageKind) {
+  public MessageCreationTool(DiagramContext context, String toolName, String sourceId, String targetId,
+      MessageKind messageKind) {
     super(context, toolName, sourceId, targetId);
     this.messageKind = messageKind;
     this.numCountChecks = 2;
   }
-  
-  public MessageCreationTool(DiagramContext context, String toolName, String id, String sourceId, String targetId, MessageKind messageKind) {
+
+  public MessageCreationTool(DiagramContext context, String toolName, String id, String sourceId, String targetId,
+      MessageKind messageKind) {
     super(context, toolName, sourceId, targetId, id);
     this.messageKind = messageKind;
     this.numCountChecks = 3;
   }
-  
-  public MessageCreationTool(DiagramContext context, String toolName, String id, String sourceId, String targetId, MessageKind messageKind, boolean returnBranch) {
+
+  public MessageCreationTool(DiagramContext context, String toolName, String id, String sourceId, String targetId,
+      MessageKind messageKind, boolean returnBranch) {
     this(context, toolName, sourceId, targetId, id);
     this.hasReturnBranch = returnBranch;
   }
-  
+
   /**
    * @see org.polarsys.capella.test.diagram.common.ju.steps.AbstractExecuteToolCmdStep.tool.AbstractExecuteToolCmdTest#preTestRun()
    */
@@ -79,7 +84,7 @@ public class MessageCreationTool extends CreateDEdgeTool {
     HeadlessResultOpProvider.INSTANCE.setCurrentOp(createOperation());
     super.preRunTest();
   }
-  
+
   /**
    * @return
    */
@@ -92,7 +97,7 @@ public class MessageCreationTool extends CreateDEdgeTool {
       }
     };
   }
-  
+
   /**
    * @see org.polarsys.capella.test.common.AbstractExtendedTest#postTestRun()
    */
@@ -100,29 +105,28 @@ public class MessageCreationTool extends CreateDEdgeTool {
   @Override
   protected void postRunTest() {
     super.postRunTest();
-    
-    DDiagram diagram = getExecutionContext().getDiagram();
+
+    DDiagram diagram = getDiagramContext().getDiagram();
     DiagramHelper.refreshDiagram(diagram);
 
     EObject exchangeToAdd = null;
     String failMessage = "";
-    if(_newIdentifier != null) {
+    if (_newIdentifier != null) {
       exchangeToAdd = getExecutionContext().getSemanticElement(_newIdentifier);
       NLS.bind(CommonTestMessages.objectRepresentationNotAvailableOnDiagram,
           EObjectLabelProviderHelper.getText(exchangeToAdd), diagram.getName());
-    }
-    else {
+    } else {
       failMessage = "Message Creation postconditions failed";
     }
-    
+
     // one edge should be created or two edges should be created if it has return branch
     if (_newEdgesElements.size() == getNoEdgesCreated()) {
       DDiagramElement view = _newEdgesElements.iterator().next();
       EList<EObject> semanticElements = view.getSemanticElements();
       int countChecks = 0;
       for (EObject semanticElement : semanticElements) {
-        if (exchangeToAdd != null && (semanticElement instanceof FunctionalExchange || semanticElement instanceof ComponentExchange ||
-            semanticElement instanceof ExchangeItemAllocation)) {
+        if (exchangeToAdd != null && (semanticElement instanceof FunctionalExchange
+            || semanticElement instanceof ComponentExchange || semanticElement instanceof ExchangeItemAllocation)) {
           // and one of its semantic elements must be the added functional Exchange
           assertEquals(failMessage, exchangeToAdd, semanticElement);
           countChecks++;
@@ -131,20 +135,20 @@ public class MessageCreationTool extends CreateDEdgeTool {
           countChecks++;
         }
         if (messageKind != null && semanticElement instanceof SequenceMessage) {
-          assertEquals("Message Kind unexpected", messageKind, ((SequenceMessage)semanticElement).getKind());
+          assertEquals("Message Kind unexpected", messageKind, ((SequenceMessage) semanticElement).getKind());
           countChecks++;
         }
-        if(countChecks == numCountChecks) {
+        if (countChecks == numCountChecks) {
           return;
         }
       }
     }
-    
+
     fail(failMessage);
   }
-  
+
   private int getNoEdgesCreated() {
-    if(hasReturnBranch)
+    if (hasReturnBranch)
       return 2;
     return 1;
   }

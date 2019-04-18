@@ -25,12 +25,12 @@ import org.polarsys.capella.test.framework.model.GenericModel;
 public class ConstraintRename extends XABDiagramsProject {
   public static String RENAME_CONSTRAINT_TOOL = "Constraint Content";
   public static String NEW_NAME = "New Constraint";
-  
+
   @Override
   public void test() throws Exception {
     Session session = getSession(getRequiredTestModel());
     SessionContext context = new SessionContext(session);
-    
+
     testOnXAB(session, context, EPBS__EAB_DIAGRAM, BlockArchitectureExt.Type.EPBS);
     testOnXAB(session, context, OA__OAB_DIAGRAM, BlockArchitectureExt.Type.OA);
     testOnXAB(session, context, SA__SAB_DIAGRAM, BlockArchitectureExt.Type.SA);
@@ -40,7 +40,7 @@ public class ConstraintRename extends XABDiagramsProject {
 
   public void testOnXAB(Session session, SessionContext context, String diagramName, BlockArchitectureExt.Type type) {
     XABDiagram xabDiagram = XABDiagram.openDiagram(context, diagramName, type);
-    
+
     final CDBDiagram cdbDiagram = CDBDiagram.createDiagram(context, LA__DATA);
     ToolHelper toolhelper = new ToolHelper(session, cdbDiagram.getDiagram());
     AbstractToolDescription tool = toolhelper.getTool(RENAME_CONSTRAINT_TOOL);
@@ -51,7 +51,7 @@ public class ConstraintRename extends XABDiagramsProject {
         renameTool.getInputLabelExpression() != null && renameTool.getInputLabelExpression().equals("feature:name"));
 
     xabDiagram.createConstraint(GenericModel.CONSTRAINT_1);
-    Constraint constraint = (Constraint) xabDiagram.getSemanticElement(GenericModel.CONSTRAINT_1);
+    Constraint constraint = (Constraint) xabDiagram.getSessionContext().getSemanticElement(GenericModel.CONSTRAINT_1);
     new RenameTool(xabDiagram, RENAME_CONSTRAINT_TOOL, constraint, NEW_NAME) {
       @Override
       protected AbstractToolDescription getRenameTool() {

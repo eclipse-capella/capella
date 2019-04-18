@@ -35,38 +35,28 @@ public class XDFBInsertElementsFromModeState extends XDFBToolsTestingModel {
     XDFBDiagram xdfb = XDFBDiagram.openDiagram(context, diagramName, diagramType);
 
     String[] modeIds = new String[1];
-    String function1ToBeInsertedId = null;
-    String function2ToBeInsertedId = null;
 
     switch (diagramType) {
 
     case OA:
       modeIds[0] = XDFBToolsTestingModel.OA__STATE_MACHINE_MODE_ID;
-      function1ToBeInsertedId = OA__TEST_SCENARIO_OPERATIONAL_ACTIVITY_4;
-      function2ToBeInsertedId = OA__TEST_SCENARIO_OPERATIONAL_ACTIVITY_5;
       break;
 
     case SA:
       modeIds[0] = XDFBToolsTestingModel.SA__STATE_MACHINE_MODE_ID;
-      function1ToBeInsertedId = SA__TEST_SCENARIO_FUNCTION_5_ID;
-      function2ToBeInsertedId = SA__TEST_SCENARIO_FUNCTION_6_ID;
       break;
 
     case LA:
       modeIds[0] = XDFBToolsTestingModel.LA__STATE_MACHINE_MODE_ID;
-      function1ToBeInsertedId = LA__TEST_SCENARIO_FUNCTION_5_ID;
-      function2ToBeInsertedId = LA__TEST_SCENARIO_FUNCTION_6_ID;
       break;
 
     case PA:
       modeIds[0] = XDFBToolsTestingModel.PA__STATE_MACHINE_MODE_ID;
-      function1ToBeInsertedId = PA__TEST_SCENARIO_FUNCTION_5_ID;
-      function2ToBeInsertedId = PA__TEST_SCENARIO_FUNCTION_6_ID;
       break;
     default:
       break;
     }
 
-    xdfb.insertElementsFromModeStateMachine(modeIds, function1ToBeInsertedId, function2ToBeInsertedId);
+    xdfb.insertElementsFromModeStateMachine(modeIds);
   }
 }

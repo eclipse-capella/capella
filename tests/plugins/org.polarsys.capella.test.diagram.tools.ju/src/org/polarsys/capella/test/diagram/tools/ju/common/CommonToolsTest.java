@@ -39,10 +39,9 @@ import org.polarsys.capella.test.framework.helpers.TestHelper;
 /**
  * Tests the common diagram tools on the IFE sample model.
  *
- * For each diagram, for each displayed capella element, apply a generated
- * pv/pvg on it, and then show/hide the pv/pvg with the appropriate tool.
- * Also, for each diagram, drag/drop a generated pv/pvg onto the diagram,
- * and check if the pv/pvg filter is present.
+ * For each diagram, for each displayed capella element, apply a generated pv/pvg on it, and then show/hide the pv/pvg
+ * with the appropriate tool. Also, for each diagram, drag/drop a generated pv/pvg onto the diagram, and check if the
+ * pv/pvg filter is present.
  *
  * Avoid testing the tools more than once on identical diagrams/mappings.
  *
@@ -99,19 +98,21 @@ public class CommonToolsTest extends AbstractDiagramTestCase {
 
     CommonDiagram cd = new CommonDiagram(sc, rep);
     DiagramContext dc = cd.open();
+    Session session = dc.getSessionContext().getSession();
 
     for (DDiagramElement de : new ArrayList<DDiagramElement>(dc.getDiagram().getOwnedDiagramElements())) {
 
       if (testedMappings.add(de.getDiagramElementMapping())) {
         if (de.getTarget() instanceof CapellaElement) {
           final CapellaElement ce = (CapellaElement) de.getTarget();
-          dc.getSession().getTransactionalEditingDomain().getCommandStack().execute(new RecordingCommand(dc.getSession().getTransactionalEditingDomain()) {
-            @Override
-            protected void doExecute() {
-              ce.getAppliedPropertyValueGroups().add(pvg);
-              ce.getAppliedPropertyValues().add(pv);
-            }
-          });
+          session.getTransactionalEditingDomain().getCommandStack()
+              .execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
+                @Override
+                protected void doExecute() {
+                  ce.getAppliedPropertyValueGroups().add(pvg);
+                  ce.getAppliedPropertyValues().add(pv);
+                }
+              });
           String containerId = ce.getId();
           cd.insertPV(pv.getId(), containerId);
           cd.insertPVG(pvg.getId(), containerId);
@@ -141,4 +142,3 @@ public class CommonToolsTest extends AbstractDiagramTestCase {
   }
 
 }
-

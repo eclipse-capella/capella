@@ -47,10 +47,10 @@ public class XDFBToolReconnect extends XDFBToolsTestingModel {
 
     if (diagramType != Type.OA) {
 
-      String outputPortOnFunction1Id = ((FunctionalExchange) xdfb.getSemanticElement(edgeToReconnectId)).getSource()
-          .getId();
-      String inputPortOnFunction2Id = ((FunctionalExchange) xdfb.getSemanticElement(edgeToReconnectId)).getTarget()
-          .getId();
+      String outputPortOnFunction1Id = ((FunctionalExchange) xdfb.getSessionContext()
+          .getSemanticElement(edgeToReconnectId)).getSource().getId();
+      String inputPortOnFunction2Id = ((FunctionalExchange) xdfb.getSessionContext()
+          .getSemanticElement(edgeToReconnectId)).getTarget().getId();
 
       String inputPort1OnFunction1Id = xdfb.createNode(function1Id, XDFBCreateNodeTools.CREATE_INPUT_PORT);
       String outputPort2OnFunction1Id = xdfb.createNode(function1Id, XDFBCreateNodeTools.CREATE_OUTPUT_PORT);

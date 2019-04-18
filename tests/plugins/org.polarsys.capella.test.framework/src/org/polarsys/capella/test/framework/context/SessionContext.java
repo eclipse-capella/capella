@@ -37,59 +37,28 @@ public class SessionContext {
   /**
    * Current session for semantic resource and diagram resource.
    */
-  protected Session _session;
+  protected Session session;
 
   /** Map with needed semantic Object, useful */
-  private Map<String, EObject> _semanticObjectMap;
-
-  public Map<String, EObject> getSemanticObjectMap() {
-    if (null == _semanticObjectMap) {
-      _semanticObjectMap = new HashMap<String, EObject>();
-    }
-    return _semanticObjectMap;
-  }
-
-  public <T extends EObject> Collection<T> getSemanticElements(String... objectIdentifiers) {
-    Collection<T> result = new ArrayList<T>();
-    for (String value : objectIdentifiers) {
-      result.add((T) getSemanticElement(value));
-    }
-    return result;
-  }
-
-  public void removeSemanticElement(String objectIdentifier) {
-    getSemanticObjectMap().remove(objectIdentifier);
-  }
-  
-  public void putSemanticElement(String objectIdentifier, EObject object) {
-    getSemanticObjectMap().put(objectIdentifier, object);
-  }
-
-  public <T extends EObject> T getSemanticElement(String objectIdentifier) {
-    Map<String, EObject> map = getSemanticObjectMap();
-    if (!map.containsKey(objectIdentifier)) {
-      EObject object = IdManager.getInstance().getEObject(objectIdentifier, new IScope() {
-
-        @Override
-        public List<Resource> getResources() {
-          Resource semanticResource = TestHelper.getSemanticResource(_session);
-          return Collections.singletonList(semanticResource);
-        }
-      });
-      putSemanticElement(objectIdentifier, object);
-    }
-    return (T) map.get(objectIdentifier);
-  }
+  private Map<String, EObject> semanticObjectMap;
 
   /**
-   * @param _session
+   * @param session
    */
   public SessionContext(Session session) {
-    _session = session;
+    this.session = session;
   }
 
   public Session getSession() {
-    return _session;
+    return session;
+  }
+
+  public Map<String, EObject> getSemanticObjectMap() {
+
+    if (null == semanticObjectMap) {
+      semanticObjectMap = new HashMap<String, EObject>();
+    }
+    return semanticObjectMap;
   }
 
   /**
@@ -98,18 +67,55 @@ public class SessionContext {
    * @return a not <code>null</code> execution manager.
    */
   public ExecutionManager getExecutionManager() {
-    return TransactionHelper.getExecutionManager(_session);
+    return TransactionHelper.getExecutionManager(session);
+  }
+
+  @SuppressWarnings("unchecked")
+  public <T extends EObject> Collection<T> getSemanticElements(String... objectIdentifiers) {
+
+    Collection<T> result = new ArrayList<T>();
+    for (String value : objectIdentifiers) {
+      result.add((T) getSemanticElement(value));
+    }
+    return result;
+  }
+
+  @SuppressWarnings("unchecked")
+  public <T extends EObject> T getSemanticElement(String objectIdentifier) {
+
+    Map<String, EObject> map = getSemanticObjectMap();
+    if (!map.containsKey(objectIdentifier)) {
+
+      EObject object = IdManager.getInstance().getEObject(objectIdentifier, new IScope() {
+
+        @Override
+        public List<Resource> getResources() {
+          Resource semanticResource = TestHelper.getSemanticResource(session);
+          return Collections.singletonList(semanticResource);
+        }
+      });
+      putSemanticElement(objectIdentifier, object);
+    }
+    return (T) map.get(objectIdentifier);
+  }
+
+  public void removeSemanticElement(String objectIdentifier) {
+    getSemanticObjectMap().remove(objectIdentifier);
+  }
+
+  public void putSemanticElement(String objectIdentifier, EObject object) {
+    getSemanticObjectMap().put(objectIdentifier, object);
   }
 
   public void setPreference(String key, boolean value) {
     AbstractPreferencesInitializer.preferencesManager.setValue(key, value);
   }
-  
+
   public void setReusableComponents(String id) {
     final AbstractCommand cmd = new AbstractReadWriteCommand() {
       public void run() {
         EObject obj = getSemanticElement(id);
-        if(obj instanceof KeyValue) {
+        if (obj instanceof KeyValue) {
           KeyValue kv = (KeyValue) obj;
           kv.setValue("ReusableComponents");
         }
@@ -119,12 +125,12 @@ public class SessionContext {
     // Let's perform the job
     getExecutionManager().execute(cmd);
   }
-  
+
   public void setSingletonComponents(String id) {
     final AbstractCommand cmd = new AbstractReadWriteCommand() {
       public void run() {
         EObject obj = getSemanticElement(id);
-        if(obj instanceof KeyValue) {
+        if (obj instanceof KeyValue) {
           KeyValue kv = (KeyValue) obj;
           kv.setValue("SingletonComponents");
         }

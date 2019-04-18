@@ -27,8 +27,9 @@ import com.google.common.collect.Collections2;
 import com.google.common.collect.Iterables;
 
 /**
- * Test step to call a DEdge creation tool.
+ * Use org.polarsys.capella.test.diagram.common.ju.step.tools.CreateDEdgeTool instead.
  */
+@Deprecated
 public class CreateEdgeTool extends AbstractToolStep<DEdge> {
   protected String sourceView;
   protected String targetView;
@@ -38,8 +39,8 @@ public class CreateEdgeTool extends AbstractToolStep<DEdge> {
   protected Collection<DDiagramElement> diagramElementsBefore;
   protected Collection<DDiagramElement> newDiagramElements;
 
-
-  public CreateEdgeTool(DiagramContext context, String toolName, String newIdentifier, String sourceView, String targetView, int expectedNewElts) {
+  public CreateEdgeTool(DiagramContext context, String toolName, String newIdentifier, String sourceView,
+      String targetView, int expectedNewElts) {
     super(context, toolName);
     this.sourceView = sourceView;
     this.targetView = targetView;
@@ -50,7 +51,7 @@ public class CreateEdgeTool extends AbstractToolStep<DEdge> {
   @Override
   protected void preRunTest() {
     super.preRunTest();
-    diagramElementsBefore = getExecutionContext().getDiagram().getDiagramElements();
+    diagramElementsBefore = getDiagramContext().getDiagram().getDiagramElements();
   }
 
   @Override
@@ -63,11 +64,11 @@ public class CreateEdgeTool extends AbstractToolStep<DEdge> {
   @Override
   protected void postRunTest() {
     super.postRunTest();
-    newDiagramElements = new ArrayList<DDiagramElement>(getExecutionContext().getDiagram().getDiagramElements());
+    newDiagramElements = new ArrayList<DDiagramElement>(getDiagramContext().getDiagram().getDiagramElements());
     newDiagramElements.removeAll(diagramElementsBefore);
 
     assertEquals(expectedNewElts, newDiagramElements.size());
-    
+
     // Only 1 DEdge is expected
     if (Collections2.filter(newDiagramElements, Predicates.instanceOf(DEdge.class)).size() != 1) {
       assertFalse(true);
@@ -79,15 +80,15 @@ public class CreateEdgeTool extends AbstractToolStep<DEdge> {
     DEdge view = (DEdge) Iterables.find(newDiagramElements, Predicates.instanceOf(DEdge.class));
     if (newIdentifier != null) {
       getExecutionContext().putSemanticElement(newIdentifier, view.getTarget());
-      getExecutionContext().putView(newIdentifier, view);
+      getDiagramContext().putView(newIdentifier, view);
     }
     return view;
   }
 
   @Override
   protected void initToolArguments() {
-    DSemanticDecorator source = getExecutionContext().getView(sourceView);
-    DSemanticDecorator target = getExecutionContext().getView(targetView);
+    DSemanticDecorator source = getDiagramContext().getView(sourceView);
+    DSemanticDecorator target = getDiagramContext().getView(targetView);
     _toolWrapper.setArgumentValue(ArgumentType.SOURCE, source);
     _toolWrapper.setArgumentValue(ArgumentType.TARGET, target);
   }

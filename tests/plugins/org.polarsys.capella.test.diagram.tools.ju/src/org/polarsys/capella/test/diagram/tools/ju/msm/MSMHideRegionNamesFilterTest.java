@@ -11,15 +11,12 @@
 package org.polarsys.capella.test.diagram.tools.ju.msm;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.polarsys.capella.core.data.capellacommon.Region;
 import org.polarsys.capella.core.data.capellacommon.State;
 import org.polarsys.capella.core.sirius.analysis.IMappingNameConstants;
 import org.polarsys.capella.test.diagram.common.ju.context.MSMDiagram;
-import org.polarsys.capella.test.diagram.common.ju.step.filters.ChangeFilter;
-import org.polarsys.capella.test.diagram.common.ju.step.filters.ChangeFilter.ChangeType;
 import org.polarsys.capella.test.diagram.common.ju.step.filters.FilterStep;
 import org.polarsys.capella.test.diagram.tools.ju.model.EmptyProject;
 import org.polarsys.capella.test.framework.context.SessionContext;
@@ -42,14 +39,14 @@ public class MSMHideRegionNamesFilterTest extends EmptyProject {
     diagram.createRegion(GenericModel.STATE_2, GenericModel.REGION_3);
     diagram.createRegion(GenericModel.STATE_2, GenericModel.REGION_4);
     
-    State state1 = (State) diagram.getSemanticElement(GenericModel.STATE_1);
+    State state1 = (State) diagram.getSessionContext().getSemanticElement(GenericModel.STATE_1);
     EList<Region> regions1 = state1.getOwnedRegions();
     assertEquals("State 1 must have 3 regions", 3, regions1.size());
     DDiagramElement region1_1 = diagram.getView(regions1.get(0));
     DDiagramElement region1_2 = diagram.getView(regions1.get(1));
     DDiagramElement region1_3 = diagram.getView(regions1.get(2));
     
-    State state2 = (State) diagram.getSemanticElement(GenericModel.STATE_1);
+    State state2 = (State) diagram.getSessionContext().getSemanticElement(GenericModel.STATE_1);
     EList<Region> regions2 = state2.getOwnedRegions();
     assertEquals("State 2 must have 3 regions", 3, regions2.size());
     DDiagramElement region2_1 = diagram.getView(regions2.get(0));

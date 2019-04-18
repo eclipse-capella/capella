@@ -51,7 +51,7 @@ public class XDFBTestCaseFunctions extends XDFBToolsTestingModel {
     /*
      * Get semantic objects of interest
      */
-    FunctionalExchange semanticExchange = xdfb.getSemanticElement(fe1Id);
+    FunctionalExchange semanticExchange = xdfb.getSessionContext().getSemanticElement(fe1Id);
     String fop11Id = semanticExchange.getSource().getId();
 
     // Remove function11 from diagram

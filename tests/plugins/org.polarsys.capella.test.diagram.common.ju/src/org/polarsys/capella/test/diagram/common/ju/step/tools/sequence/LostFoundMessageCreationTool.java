@@ -79,9 +79,9 @@ public class LostFoundMessageCreationTool extends AbstractToolStep {
   
   private Collection<SequenceMessage> getSequenceMessages() {
     Collection<SequenceMessage> messages = new ArrayList<SequenceMessage> ();
-    if(getExecutionContext().getDiagram() instanceof SequenceDDiagram) {
-      if(((SequenceDDiagram)getExecutionContext().getDiagram()).getTarget() instanceof Scenario) {
-        Scenario scen = (Scenario) ((SequenceDDiagram)getExecutionContext().getDiagram()).getTarget();
+    if(getDiagramContext().getDiagram() instanceof SequenceDDiagram) {
+      if(((SequenceDDiagram)getDiagramContext().getDiagram()).getTarget() instanceof Scenario) {
+        Scenario scen = (Scenario) ((SequenceDDiagram)getDiagramContext().getDiagram()).getTarget();
         messages.addAll(scen.getOwnedMessages());
       }
     }
@@ -90,7 +90,7 @@ public class LostFoundMessageCreationTool extends AbstractToolStep {
   
   @Override
   protected void initToolArguments() {
-    DSemanticDecorator containerView = getExecutionContext().getView(containerId);
+    DSemanticDecorator containerView = getDiagramContext().getView(containerId);
     _toolWrapper.setArgumentValue(ArgumentType.CONTAINER, containerView.getTarget());
     _toolWrapper.setArgumentValue(ArgumentType.CONTAINER_VIEW, containerView);
   }

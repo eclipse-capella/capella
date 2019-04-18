@@ -49,7 +49,7 @@ import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateDEdgeTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.InsertRemoveTool;
 import org.polarsys.capella.test.framework.context.SessionContext;
 
-public class XFCDDiagram extends DiagramContext {
+public class XFCDDiagram extends CommonDiagram {
 
   protected class InsertInvolvementTool extends InsertRemoveTool {
 
@@ -160,7 +160,7 @@ public class XFCDDiagram extends DiagramContext {
 
     @Override
     protected void preRunTest() {
-      functionalExchange = getSemanticElement(functionalExchangeId);
+      functionalExchange = getSessionContext().getSemanticElement(functionalExchangeId);
       assertTrue(functionalExchange instanceof FunctionalExchange);
 
       HeadlessResultOpProvider.INSTANCE.setCurrentOp(createOperation());

@@ -35,6 +35,7 @@ public abstract class AbstractMaxHierarchyLevel0Test extends AbstractFunctionalC
 
   @Override
   public void test() throws Exception {
+
     Session session = getSession(getRequiredTestModel());
     SessionContext context = new SessionContext(session);
 
@@ -46,7 +47,7 @@ public abstract class AbstractMaxHierarchyLevel0Test extends AbstractFunctionalC
 
     // involve an exchange between them
     String involvementLink2Id = xfcd.involveExchange(involvementFunction2Id, involvementFunction3Id, EXCHANGE_2);
-    FunctionalChainInvolvementLink involvementLink2 = (FunctionalChainInvolvementLink) xfcd
+    FunctionalChainInvolvementLink involvementLink2 = (FunctionalChainInvolvementLink) xfcd.getSessionContext()
         .getSemanticElement(involvementLink2Id);
 
     // check the reference hierarchy
@@ -60,5 +61,5 @@ public abstract class AbstractMaxHierarchyLevel0Test extends AbstractFunctionalC
     xfcd.involveExchangeAndFunction(involvementFunction3Id, EXCHANGE_3);
     xfcd.involveExchangeAndFunction(involvementFunction3Id, EXCHANGE_5);
   }
-  
+
 }

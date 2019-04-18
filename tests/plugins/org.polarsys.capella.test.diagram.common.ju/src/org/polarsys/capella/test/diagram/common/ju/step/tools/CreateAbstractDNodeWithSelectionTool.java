@@ -27,7 +27,8 @@ public class CreateAbstractDNodeWithSelectionTool<T extends AbstractDNode> exten
 
   public CreateAbstractDNodeWithSelectionTool(DiagramContext context, String toolName, String targetContainerId,
       String containerId, String selectedId, Class<T> expectedNodeType, Class<? extends CapellaElement> targetType) {
-    super(context, toolName, targetContainerId, containerId, "", expectedNodeType, targetType);
+
+    super(context, toolName, targetContainerId, containerId, expectedNodeType, targetType);
     this.selectedId = selectedId;
   }
 

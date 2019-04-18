@@ -30,9 +30,9 @@ public class SelectTool extends AbstractToolStep<Collection<DSemanticDecorator>>
   boolean initialized = false;
 
   String containerId = null;
-  
+
   boolean ensurePrecondition = false;
-  
+
   /**
    * Set value to true if the test shall not be run if the precondition of tool is not valid.
    */
@@ -40,14 +40,14 @@ public class SelectTool extends AbstractToolStep<Collection<DSemanticDecorator>>
     ensurePrecondition = v;
     return this;
   }
-  
+
   @Override
   protected void runTest() {
-    if (!ensurePrecondition || ((OperationActionToolDescriptionWrapper)_toolWrapper).isPreconditionOk()) {
+    if (!ensurePrecondition || ((OperationActionToolDescriptionWrapper) _toolWrapper).isPreconditionOk()) {
       super.runTest();
     }
   }
-  
+
   public SelectTool(DiagramContext context, String toolName) {
     super(context, toolName);
   }
@@ -59,21 +59,21 @@ public class SelectTool extends AbstractToolStep<Collection<DSemanticDecorator>>
     }
     return super.run();
   }
-  
+
   public void cannotRun(String id) {
     containerId = id;
     super.cannotRun();
   }
-  
+
   public void select(String id) {
     initialized = true;
     containerId = id;
     run();
   }
-  
+
   @Override
   protected void initToolArguments() {
-    DSemanticDecorator containerView = getExecutionContext().getView(this.containerId);
+    DSemanticDecorator containerView = getDiagramContext().getView(this.containerId);
     ArrayList<DSemanticDecorator> a = new ArrayList<DSemanticDecorator>();
     a.add(containerView);
     _toolWrapper.setArgumentValue(ArgumentType.COLLECTION, a);
@@ -87,9 +87,9 @@ public class SelectTool extends AbstractToolStep<Collection<DSemanticDecorator>>
 
   @Override
   public Collection<DSemanticDecorator> getResult() {
-    IEditorPart part = DiagramHelper.getDiagramEditor(getExecutionContext().getSession(), getExecutionContext().getDiagram());
-    Collection<DSemanticDecorator> selectedViews = DialectUIManager.INSTANCE.getSelection((DialectEditor)part);
+    IEditorPart part = DiagramHelper.getDiagramEditor(getExecutionContext().getSession(),
+        getDiagramContext().getDiagram());
+    Collection<DSemanticDecorator> selectedViews = DialectUIManager.INSTANCE.getSelection((DialectEditor) part);
     return selectedViews;
   }
-
 }

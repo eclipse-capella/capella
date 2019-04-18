@@ -64,7 +64,7 @@ public class SequenceDiagram extends CommonDiagram {
   public void insertActor(String id) {
     new InsertRemoveInstanceRoleTool(this, IToolNameConstants.TOOL_INSERT_REMOVE_ACTORS).insert(id);
   }
-  
+
   public void insertActors(String[] ids) {
     new InsertRemoveInstanceRoleTool(this, IToolNameConstants.TOOL_INSERT_REMOVE_ACTORS).insert(ids);
   }
@@ -72,7 +72,7 @@ public class SequenceDiagram extends CommonDiagram {
   public void removeActor(String id) {
     new InsertRemoveInstanceRoleTool(this, IToolNameConstants.TOOL_INSERT_REMOVE_ACTORS).remove(id);
   }
-  
+
   public void removeActors(String[] ids) {
     new InsertRemoveInstanceRoleTool(this, IToolNameConstants.TOOL_INSERT_REMOVE_ACTORS).remove(ids);
   }
@@ -157,7 +157,7 @@ public class SequenceDiagram extends CommonDiagram {
 
   public List<Part> getContainedParts(String scenarioId) {
     List<Part> result = new ArrayList<>();
-    EObject obj = getSemanticElement(scenarioId);
+    EObject obj = getSessionContext().getSemanticElement(scenarioId);
     if (obj instanceof Scenario) {
       result.addAll(((Scenario) obj).getContainedParts());
     }
@@ -167,7 +167,7 @@ public class SequenceDiagram extends CommonDiagram {
   @Override
   // Override this method to switch between InstanceRole (appear in the diagram)
   // and Part (appear in the Transfer wizard)
-  public Collection<EObject> adaptTool(AbstractToolStep tool, Map<String, Object> parameters,
+  public Collection<EObject> adaptTool(AbstractToolStep<?> tool, Map<String, Object> parameters,
       Collection<EObject> semanticElements) {
     Collection<EObject> result = new ArrayList<EObject>();
     for (EObject element : semanticElements) {
@@ -191,13 +191,13 @@ public class SequenceDiagram extends CommonDiagram {
 
     @Override
     protected DSemanticDecorator getContainerView() {
-      return getExecutionContext().getView(targetContainerView);
+      return getDiagramContext().getView(containerViewTarget);
     }
   }
 
   protected class OperandCreationTool extends CreateAbstractDNodeTool<DNodeContainer> {
     public OperandCreationTool(DiagramContext context, String toolName, String containerId) {
-      super(context, toolName, containerId, DNodeContainer.class, InteractionOperand.class);
+      super(context, toolName, containerId, containerId, DNodeContainer.class, InteractionOperand.class);
     }
   }
 
@@ -210,12 +210,12 @@ public class SequenceDiagram extends CommonDiagram {
       super(context, toolName);
       this.insertedReferencedElementsFeatures = features;
     }
-    
+
     @Override
     protected String[] filterResults(Collection<CapellaElement> objs) {
-      DRepresentationDescriptor cRDescriptor = getExecutionContext().getDiagramDescriptor();
+      DRepresentationDescriptor cRDescriptor = getDiagramContext().getDiagramDescriptor();
       String[] results = objs.stream()
-          .filter(x -> !(x instanceof InstanceRole)? true : x.eContainer() == cRDescriptor.getTarget())
+          .filter(x -> !(x instanceof InstanceRole) ? true : x.eContainer() == cRDescriptor.getTarget())
           .map(x -> x.getId()).toArray(size -> new String[size]);
       assertTrue(results.length > 0);
       return results;
