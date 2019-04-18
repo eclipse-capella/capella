@@ -731,7 +731,7 @@
             </style>
           </conditionnalStyles>
         </edgeMappings>
-        <edgeMappings name="PDFB_Exchange by Categorie" deletionDescription="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Data%20Flow%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20category']" labelDirectEdit="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Data%20Flow%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='rename%20exchanges']" semanticCandidatesExpression="" createElements="false" semanticElements="service:getEdgeExchangeCategorySemanticElements(view)" sourceMapping="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='PDFB_Function']/@borderedNodeMappings[name='PDFB_OutputPin%20by%20Categorie']" targetMapping="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='PDFB_Function']/@borderedNodeMappings[name='PDFB_InputPin%20by%20Categorie']" targetFinderExpression="aql:self" sourceFinderExpression="aql:self" targetExpression="var:self" domainClass="ExchangeCategory" useDomainElement="true">
+        <edgeMappings name="PDFB_Exchange by Categorie" preconditionExpression="service:isValidFunctionalExchangeCategoryEdge(sourceView, targetView)" deletionDescription="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Data%20Flow%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20category']" labelDirectEdit="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Data%20Flow%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='rename%20exchanges']" semanticCandidatesExpression="" createElements="false" semanticElements="service:getEdgeExchangeCategorySemanticElements(view)" sourceMapping="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='PDFB_Function']/@borderedNodeMappings[name='PDFB_OutputPin%20by%20Categorie']" targetMapping="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='PDFB_Function']/@borderedNodeMappings[name='PDFB_InputPin%20by%20Categorie']" targetFinderExpression="aql:self" sourceFinderExpression="aql:self" targetExpression="var:self" domainClass="ExchangeCategory" useDomainElement="true">
           <style targetArrow="InputFillClosedArrow" sizeComputationExpression="2" endsCentering="Both">
             <strokeColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Border_Green']"/>
             <centerLabelStyleDescription labelExpression="service:capellaLabelService(view, diagram)">
@@ -3868,8 +3868,7 @@
               </initialOperation>
             </tools>
             <tools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Function Output Port on the target Function." name="Output Port" precondition="aql:containerView.isValidCreationFunctionOutputPort()" nodeMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='PAB_PhysicalFunction']/@borderedNodeMappings[name='PAB_Pin']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/OutFlowPort.gif">
-              <variable name="container"/>
-              <viewVariable name="containerView"/>
+              <variable name="container"/>              <viewVariable name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="FunctionOutputPort" referenceName="outputs">
@@ -4797,3 +4796,4 @@
     <ownedJavaExtensions qualifiedClassName="org.polarsys.capella.core.sirius.analysis.ABServices"/>
   </ownedViewpoints>
 </description:Group>
+

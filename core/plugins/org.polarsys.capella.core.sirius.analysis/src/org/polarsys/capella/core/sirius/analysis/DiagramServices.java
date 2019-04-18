@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.polarsys.capella.core.sirius.analysis;
 
+import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -1763,5 +1765,21 @@ public class DiagramServices {
    */
   public EObject setPositionAtMiddleOfEdge(AbstractDNode newView, DEdge edge) {
     return setPositionAtMiddleOfEdge(newView, edge, 0, 0);
+  }
+
+  /**
+   * Remove all nodes of the given mapping without any incoming/outgoing edge
+   * 
+   * @param context
+   * @param nodeMapping
+   */
+  public void removeNodeWithoutEdges(DDiagramContents context, AbstractNodeMapping nodeMapping) {
+    Collection<DNode> toRemoveNodes = new HashSet<>();
+    for (DDiagramElement element : getCache(context::getDiagramElements, nodeMapping)) {
+      if (element instanceof DNode && getAllEdges((DNode) element).isEmpty()) {
+        toRemoveNodes.add((DNode) element);
+      }
+    }
+    toRemoveNodes.stream().forEach(this::removeAbstractDNodeView);
   }
 }

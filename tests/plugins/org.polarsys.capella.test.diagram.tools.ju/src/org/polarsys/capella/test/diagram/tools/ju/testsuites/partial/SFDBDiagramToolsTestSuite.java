@@ -16,6 +16,7 @@ import java.util.List;
 import org.polarsys.capella.test.diagram.tools.ju.sdfb.DnDWithInternalFE;
 import org.polarsys.capella.test.diagram.tools.ju.sdfb.DnDWithInternalFEAndCommonPort;
 import org.polarsys.capella.test.diagram.tools.ju.sdfb.InitializeFromExistingDiagramTestCase;
+import org.polarsys.capella.test.diagram.tools.ju.sdfb.RemoveCategoryWithoutExchange;
 import org.polarsys.capella.test.diagram.tools.ju.sdfb.ShowHideFunctionalExchangeWithCategoryTestCase;
 import org.polarsys.capella.test.diagram.tools.ju.sdfb.SwitchCategoryTestCase;
 import org.polarsys.capella.test.diagram.tools.ju.sdfb.SwitchCategoryWithHiddenExchanges;
@@ -47,6 +48,7 @@ public class SFDBDiagramToolsTestSuite extends BasicTestSuite {
     tests.add(new InitializeFromExistingDiagramTestCase());
     tests.add(new ShowHideFunctionalExchangeWithCategoryTestCase());
     tests.add(new SwitchCategoryWithHiddenExchanges());
+    tests.add(new RemoveCategoryWithoutExchange());
     return tests;
 	}
 

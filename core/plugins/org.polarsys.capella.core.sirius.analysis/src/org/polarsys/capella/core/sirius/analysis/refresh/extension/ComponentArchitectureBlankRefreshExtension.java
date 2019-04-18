@@ -69,7 +69,7 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractCacheAwa
     super.beforeRefresh(diagram);
 
     FunctionalChainCache.getInstance().reset();
-    
+
     DRepresentationDescriptor descriptor = RepresentationHelper.getRepresentationDescriptor(diagram);
 
     // -------------------------------------
@@ -217,17 +217,16 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractCacheAwa
       }
     }
   }
-  
-  
 
   protected void updateFunctionalExchangeCategories(DDiagramContents diagramContents) {
     DDiagram diagram = diagramContents.getDDiagram();
-    if (diagram.isSynchronized()) {
-      Collection<ExchangeCategory> categories = getCache(ABServices::getExchangeCategories, diagram);
-      if(!categories.isEmpty()) {
-        FaServices.getFaServices().switchFECategories(diagramContents, (DSemanticDecorator) diagram, categories, false);          
+    Collection<ExchangeCategory> categories = getCache(ABServices::getExchangeCategories, diagram);
+    if (!categories.isEmpty()) {
+      if (diagram.isSynchronized()) {
+        FaServices.getFaServices().switchFECategories(diagramContents, (DSemanticDecorator) diagram, categories, false);
       }
-    } 
+    }
+    ABServices.getService().updateABFunctionalCategories(diagramContents);
   }
 
   /**
@@ -237,13 +236,13 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractCacheAwa
 
     DDiagram diagram = context.getDDiagram();
     Collection<EObject> categories = getCache(ABServices::getPhysicalLinkCategory, diagram);
-    if(!categories.isEmpty()) {
+    if (!categories.isEmpty()) {
       if (diagram.isSynchronized()) {
         ABServices.getService().switchABPhysicalCategories(context, (DSemanticDecorator) context.getDDiagram(),
             categories, false);
       } else {
         ABServices.getService().updateABPhysicalCategories(context);
-      }      
+      }
     }
   }
 
@@ -267,13 +266,13 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractCacheAwa
         return parents;
       }
     };
-    
+
     // All displayed elements in the diagram
-    HashMapSet<AbstractType, DNodeContainer> typeViews = new HashMapSet<>(); 
-    
+    HashMapSet<AbstractType, DNodeContainer> typeViews = new HashMapSet<>();
+
     // All displayed elements in the diagram
     HashMapSet<Partition, DNodeContainer> partViews = new HashMapSet<>();
-    
+
     // Diagram elements to be moved
     Set<DNodeContainer> toBeMoved = new HashSet<>();
 
@@ -327,7 +326,7 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractCacheAwa
                 break;
               }
             }
-            
+
           }
 
           if (willBeMoved) {
@@ -463,7 +462,6 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractCacheAwa
     } catch (Exception e) {
       Logger.getLogger(IReportManagerDefaultComponents.DIAGRAM).error(Messages.RefreshExtension_ErrorOnUpdatePhysicalPathStyle, e);
     }
-    
 
     FunctionalChainCache.getInstance().reset();
     super.postRefresh(diagram);

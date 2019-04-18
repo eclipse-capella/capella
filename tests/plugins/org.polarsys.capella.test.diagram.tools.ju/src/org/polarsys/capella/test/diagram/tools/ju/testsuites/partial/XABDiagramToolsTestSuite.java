@@ -68,6 +68,7 @@ import org.polarsys.capella.test.diagram.tools.ju.xab.ShowHidePhysicalLinks;
 import org.polarsys.capella.test.diagram.tools.ju.xab.ShowHidePhysicalPath;
 import org.polarsys.capella.test.diagram.tools.ju.xab.ShowHidePortAllocations;
 import org.polarsys.capella.test.diagram.tools.ju.xab.ShowHidePorts;
+import org.polarsys.capella.test.diagram.tools.ju.xab.SwitchCategoryWithDelegation;
 import org.polarsys.capella.test.diagram.tools.ju.xab.SwitchComponentExchangesCategories;
 import org.polarsys.capella.test.diagram.tools.ju.xab.SwitchFunctionalExchangesCategories;
 import org.polarsys.capella.test.diagram.tools.ju.xab.SwitchPhysicalLinksCategories;
@@ -158,8 +159,9 @@ public class XABDiagramToolsTestSuite extends BasicTestSuite {
     tests.add(new ShowHideEABRealizedPhysicalArtifacts());
     tests.add(new DragAndDropFunction());
     tests.add(new DragAndDropPhysicalComponent());
-
+    
     tests.add(new ShowHideFETestCase());
+    tests.add(new SwitchCategoryWithDelegation());
 
     return tests;
   }

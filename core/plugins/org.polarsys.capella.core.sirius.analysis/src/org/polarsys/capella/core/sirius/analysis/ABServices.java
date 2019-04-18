@@ -32,6 +32,7 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.EdgeTarget;
+import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.NodeMapping;
@@ -890,14 +891,14 @@ public class ABServices {
             Logger logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.MODEL);
             logger.info(new EmbeddedMessage(
                 NLS.bind(Messages.ABServices_UnallocatedFunctions, EObjectExt.getText(scenario)),
-                IReportManagerDefaultComponents.MODEL, unallocatedFunctions));
+                    IReportManagerDefaultComponents.MODEL, unallocatedFunctions));
           }
           if (unallocatedRoles.size() > 0) {
             unallocatedRoles.addFirst(scenario);
             Logger logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.MODEL);
             logger.info(new EmbeddedMessage(
                 NLS.bind(Messages.ABServices_UnallocatedRoles, EObjectExt.getText(scenario)),
-                IReportManagerDefaultComponents.MODEL, unallocatedRoles));
+                    IReportManagerDefaultComponents.MODEL, unallocatedRoles));
           }
         }
       }
@@ -1046,9 +1047,106 @@ public class ABServices {
     return true;
   }
 
+  public boolean doesCategoryExistBetweenParts(EObject category, AbstractDNode sourcePartView,
+      AbstractDNode targetPartView) {
+    AbstractDNode sourceCategoryPort = null;
+    AbstractDNode targetCategoryPort = null;
+    // Retrieve both category ports on parts
+    for (AbstractDNode node : sourcePartView.getOwnedBorderedNodes()) {
+      if (category.equals(node.getTarget())) {
+        sourceCategoryPort = node;
+        break;
+      }
+    }
+    for (AbstractDNode node : targetPartView.getOwnedBorderedNodes()) {
+      if (category.equals(node.getTarget())) {
+        targetCategoryPort = node;
+        break;
+      }
+    }
+    // Check if there's a category between category ports
+    if ((sourceCategoryPort != null) && (targetCategoryPort != null)) {
+      for (DEdge edge : DiagramServices.getDiagramServices().getAllEdges((EdgeTarget) sourceCategoryPort)) {
+        if (category.equals(edge.getTarget())) {
+          if (((edge.getSourceNode() == sourceCategoryPort) && (edge.getTargetNode() == targetCategoryPort))
+              || ((edge.getSourceNode() == targetCategoryPort) && (edge.getTargetNode() == sourceCategoryPort))) {
+            return true;
+          }
+        }
+      }
+    }
+    return false;
+  }
+  
+  /**
+   * 
+   * @param delegationTargetPort
+   * @param delegationSourcePart
+   * @return whether a port delegation exists between a port and a part
+   */
+  public boolean doesDelegationExist(Port delegationTargetPort, Part delegationSourcePart) {
+    if ((delegationTargetPort != null) && (delegationSourcePart != null)) {
+      if (delegationTargetPort instanceof PhysicalPort) {
+        return doesDelegationExistForPhysicalPort((PhysicalPort) delegationTargetPort, delegationSourcePart);
+      } else if (delegationTargetPort instanceof ComponentPort) {
+        return doesPortAllocationExist((ComponentPort) delegationTargetPort, delegationSourcePart)
+            || doesDelegationExistForComponentPort(delegationTargetPort, delegationSourcePart);
+      }
+    }
+    return false;
+  }
+
+  private boolean doesDelegationExistForComponentPort(Port delegationTargetPort, Part delegationSourcePart) {
+    Collection<ComponentExchange> delegationCEs = PortExt.getDelegationComponentExchanges((ComponentPort) delegationTargetPort);
+    for (ComponentExchange delegation : delegationCEs) {
+      if (delegationTargetPort.equals(ComponentExchangeExt.getTargetPort(delegation))) {
+        if (ComponentExchangeExt.getSourcePartsAndEntities(delegation).contains(delegationSourcePart)) {
+          return true;
+        }
+      } else if (delegationTargetPort.equals(ComponentExchangeExt.getSourcePort(delegation))) {
+        if (ComponentExchangeExt.getTargetPartsAndEntities(delegation).contains(delegationSourcePart)) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+
+  private boolean doesPortAllocationExist(ComponentPort delegationTargetPort, Part delegationSourcePart) {
+    Collection<ComponentPortAllocation> portAllocations = PortExt
+        .getIncomingComponentPortAllocations((ComponentPort) delegationTargetPort);
+    for (ComponentPortAllocation delegation : portAllocations) {
+      if (delegationTargetPort.equals(ComponentPortAllocationExt.getTargetPort(delegation))) {
+        if (ComponentPortAllocationExt.getSourceParts(delegation).contains(delegationSourcePart)) {
+          return true;
+        }
+      } else if (delegationTargetPort.equals(ComponentPortAllocationExt.getSourcePort(delegation))) {
+        if (ComponentPortAllocationExt.getTargetParts(delegation).contains(delegationSourcePart)) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+
+  private boolean doesDelegationExistForPhysicalPort(PhysicalPort delegationTargetPort, Part delegationSourcePart) {
+    Collection<PhysicalLink> delegations = PortExt.getDelegationPhysicalLinks((PhysicalPort) delegationTargetPort);
+    for (PhysicalLink delegation : delegations) {
+      if (delegationTargetPort.equals(PhysicalLinkExt.getTargetPort(delegation))) {
+        if (PhysicalLinkExt.getSourceParts(delegation).contains(delegationSourcePart)) {
+          return true;
+        }
+      } else if (delegationTargetPort.equals(PhysicalLinkExt.getSourcePort(delegation))) {
+        if (PhysicalLinkExt.getTargetParts(delegation).contains(delegationSourcePart)) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+  
   public boolean isValidABPhysicalCategoryEdge(PhysicalLinkCategory category, DSemanticDecorator source,
       DSemanticDecorator target) {
-
     if ((category == null) || (source == null) || (target == null)) {
       return false;
     }
@@ -1059,57 +1157,18 @@ public class ABServices {
 
     AbstractDNode sourceView = (AbstractDNode) sourcePartView;
     AbstractDNode targetView = (AbstractDNode) targetPartView;
-    AbstractDNode sourceCategoryPort = null;
-    AbstractDNode targetCategoryPort = null;
 
     EObject sourceTarget = source.getTarget();
     EObject targetTarget = target.getTarget();
 
+    // Category with delegation
     if (((sourceTarget instanceof Port) && (targetTarget instanceof PhysicalLinkCategory))
         || ((targetTarget instanceof Port) && (sourceTarget instanceof PhysicalLinkCategory))) {
-
-      // Retrieve both category ports on parts
-      for (AbstractDNode node : sourceView.getOwnedBorderedNodes()) {
-        if (category.equals(node.getTarget())) {
-          sourceCategoryPort = node;
-          break;
-        }
-      }
-
-      for (AbstractDNode node : targetView.getOwnedBorderedNodes()) {
-        if (category.equals(node.getTarget())) {
-          targetCategoryPort = node;
-          break;
-        }
-      }
-
-      // If there is already a category edge between both category ports, we remove the edge
-      boolean hasEdge = false;
-      if ((sourceCategoryPort != null) && (targetCategoryPort != null)) {
-        for (DEdge edge : ((EdgeTarget) sourceCategoryPort).getIncomingEdges()) {
-          if (category.equals(edge.getTarget())) {
-            if (((edge.getSourceNode() == sourceCategoryPort) && (edge.getTargetNode() == targetCategoryPort))
-                || ((edge.getSourceNode() == targetCategoryPort) && (edge.getTargetNode() == sourceCategoryPort))) {
-              hasEdge = true;
-              break;
-            }
-          }
-        }
-        for (DEdge edge : ((EdgeTarget) sourceCategoryPort).getOutgoingEdges()) {
-          if (category.equals(edge.getTarget())) {
-            if (((edge.getSourceNode() == sourceCategoryPort) && (edge.getTargetNode() == targetCategoryPort))
-                || ((edge.getSourceNode() == targetCategoryPort) && (edge.getTargetNode() == sourceCategoryPort))) {
-              hasEdge = true;
-              break;
-            }
-          }
-        }
-      }
-
-      if (hasEdge) {
+      // Case 1: If there's a real category, category with delegation should not be displayed
+      if (doesCategoryExistBetweenParts(category, sourceView, targetView)) {
         return false;
       }
-
+      // Case 2: If there's no delegation, no category edge
       Port delegationTargetPort = null;
       EObject delegationSourcePart = null;
       if (sourceTarget instanceof Port) {
@@ -1120,76 +1179,30 @@ public class ABServices {
         delegationTargetPort = (Port) targetTarget;
         delegationSourcePart = sourcePart;
       }
-
-      boolean isValid = false;
-
-      if ((delegationTargetPort != null) && (delegationSourcePart != null)) {
-        // A delegation must exist between both port/parts
-        if (delegationTargetPort instanceof PhysicalPort) {
-          Collection<PhysicalLink> delegations = PortExt
-              .getDelegationPhysicalLinks((PhysicalPort) delegationTargetPort);
-          for (PhysicalLink delegation : delegations) {
-            if (delegationTargetPort.equals(PhysicalLinkExt.getTargetPort(delegation))) {
-              if (PhysicalLinkExt.getSourceParts(delegation).contains(delegationSourcePart)) {
-                isValid = true;
-                break;
-              }
-            } else if (delegationTargetPort.equals(PhysicalLinkExt.getSourcePort(delegation))) {
-              if (PhysicalLinkExt.getTargetParts(delegation).contains(delegationSourcePart)) {
-                isValid = true;
-                break;
-              }
-            }
-          }
-        } else if (delegationTargetPort instanceof ComponentPort) {
-          // A delegation (without category) must exist between both port/parts
-          Collection<ComponentPortAllocation> delegations = PortExt
-              .getIncomingComponentPortAllocations((ComponentPort) delegationTargetPort);
-          for (ComponentPortAllocation delegation : delegations) {
-            if (delegationTargetPort.equals(ComponentPortAllocationExt.getTargetPort(delegation))) {
-              if (ComponentPortAllocationExt.getSourceParts(delegation).contains(delegationSourcePart)) {
-                isValid = true;
-                break;
-              }
-            } else if (delegationTargetPort.equals(ComponentPortAllocationExt.getSourcePort(delegation))) {
-              if (ComponentPortAllocationExt.getTargetParts(delegation).contains(delegationSourcePart)) {
-                isValid = true;
-                break;
-              }
-            }
-          }
-        }
-
-        if (!isValid) {
-          return false;
-        }
-        isValid = false;
-
-        // A related component exchange must be with the same category
-        for (PhysicalLink exchange : getRelatedPhysicalLinks(delegationSourcePart)) {
-          if (!org.polarsys.capella.core.model.helpers.PhysicalLinkExt.isDelegation(exchange)) {
-            if (exchange.getCategories().contains(category)) {
-              isValid = true;
-              break;
-            }
-          }
-        }
-
-        if (!isValid) {
-          return false;
-        }
+      if (delegationTargetPort instanceof Port && delegationSourcePart instanceof Part
+          && !doesDelegationExist((Port) delegationTargetPort, (Part) delegationSourcePart)) {
+        return false;
       }
 
-      // Categories of delegations must be a containment
+      // Verify further that a non-delegation physical link must exist for the same category
+      boolean hasNonDelegationPL = false;
+      for (PhysicalLink physicalLink : getCache(this::getRelatedPhysicalLinks, delegationSourcePart)) {
+        if (!CsServices.getService().getAllDelegatesPhysicalLink(delegationSourcePart).contains(physicalLink) && physicalLink.getCategories().contains(category)) {
+          hasNonDelegationPL = true;
+        }
+      }
+      if (!hasNonDelegationPL)
+        return false;
+      
+      // Case3: Part containing category port must be the container of part containing delegation port
       if (!((sourcePartView.eContainer() == targetPartView) || (targetPartView.eContainer() == sourcePartView))) {
-        isValid = false;
+        return false;
       }
-      return isValid;
+      return true;
     }
 
     // retrieve all CE for the related category
     for (PhysicalLink exchange : getRelatedPhysicalLinks(sourcePart)) {
-
       if (exchange.getCategories().contains(category)) {
         Collection<? extends EObject> sourceParts = PhysicalLinkExt.getSourceParts(exchange);
         Collection<? extends EObject> targetParts = PhysicalLinkExt.getTargetParts(exchange);
@@ -1209,20 +1222,19 @@ public class ABServices {
       }
     }
 
-    return (getRelatedPhysicalLinks(sourcePart).size() == 0);
-
+    return false;
   }
-  
+
   public boolean isValidABFunctionalExchangeEdge(EObject context, DSemanticDecorator sourceView,
       DSemanticDecorator targetView) {
-    
+
     boolean isValid = true;
-    
+
     isValid &= (context instanceof FunctionalExchange);
     isValid &= (sourceView != targetView);
     isValid &= !CapellaServices.getService().areInternalEdgePorts(sourceView, targetView);
     isValid &= !FaServices.getFaServices().isACategoryDisplayed(context, sourceView, targetView);
-    
+
     return isValid;
   }
 
@@ -1418,14 +1430,23 @@ public class ABServices {
     return !cSource.isEmpty();
 
   }
+  
+  public boolean isComponentCategoryWithoutExchange(ComponentExchangeCategory category, Part source, Part target) {
+    Collection<ComponentExchange> exchanges = new ArrayList<>(category.getExchanges());
+    Collection<ComponentExchange> sourceRelatedComponentExchanges = getCache(
+        ComponentExt::getAllRelatedComponentExchange, source);
+    Collection<ComponentExchange> targetRelatedComponentExchanges = getCache(
+        ComponentExt::getAllRelatedComponentExchange, target);
+    sourceRelatedComponentExchanges.retainAll(targetRelatedComponentExchanges);
+    exchanges.retainAll(sourceRelatedComponentExchanges);
+    return !exchanges.isEmpty();
+  }
 
   public boolean isValidABComponentCategoryEdge(ComponentExchangeCategory category, DSemanticDecorator source,
       DSemanticDecorator target) {
-
     if ((category == null) || (source == null) || (target == null)) {
       return false;
     }
-
     EObject sourcePart = CsServices.getService().getRelatedPart(source);
     EObject targetPart = CsServices.getService().getRelatedPart(target);
     DSemanticDecorator sourcePartView = CsServices.getService().getRelatedPartView(source);
@@ -1433,57 +1454,20 @@ public class ABServices {
 
     AbstractDNode sourceView = (AbstractDNode) sourcePartView;
     AbstractDNode targetView = (AbstractDNode) targetPartView;
-    AbstractDNode sourceCategoryPort = null;
-    AbstractDNode targetCategoryPort = null;
 
     EObject sourceTarget = source.getTarget();
     EObject targetTarget = target.getTarget();
 
+    // Category with delegation
     if (((sourceTarget instanceof ComponentPort) && (targetTarget instanceof ComponentExchangeCategory))
         || ((targetTarget instanceof ComponentPort) && (sourceTarget instanceof ComponentExchangeCategory))) {
-
-      // Retrieve both category ports on parts
-      for (AbstractDNode node : sourceView.getOwnedBorderedNodes()) {
-        if (category.equals(node.getTarget())) {
-          sourceCategoryPort = node;
-          break;
-        }
-      }
-
-      for (AbstractDNode node : targetView.getOwnedBorderedNodes()) {
-        if (category.equals(node.getTarget())) {
-          targetCategoryPort = node;
-          break;
-        }
-      }
-
-      // If there is already a category edge between both category ports, we remove the edge
-      boolean hasEdge = false;
-      if ((sourceCategoryPort != null) && (targetCategoryPort != null)) {
-        for (DEdge edge : ((EdgeTarget) sourceCategoryPort).getIncomingEdges()) {
-          if (category.equals(edge.getTarget())) {
-            if (((edge.getSourceNode() == sourceCategoryPort) && (edge.getTargetNode() == targetCategoryPort))
-                || ((edge.getSourceNode() == targetCategoryPort) && (edge.getTargetNode() == sourceCategoryPort))) {
-              hasEdge = true;
-              break;
-            }
-          }
-        }
-        for (DEdge edge : ((EdgeTarget) sourceCategoryPort).getOutgoingEdges()) {
-          if (category.equals(edge.getTarget())) {
-            if (((edge.getSourceNode() == sourceCategoryPort) && (edge.getTargetNode() == targetCategoryPort))
-                || ((edge.getSourceNode() == targetCategoryPort) && (edge.getTargetNode() == sourceCategoryPort))) {
-              hasEdge = true;
-              break;
-            }
-          }
-        }
-      }
-
-      if (hasEdge) {
+      
+      // Case 1: If there's a real category, category with delegation should not be displayed
+      if (doesCategoryExistBetweenParts(category, sourceView, targetView)) {
         return false;
       }
-
+      
+      // Case 2: If there's no delegation, no category edge
       ComponentPort delegationTargetPort = null;
       EObject delegationSourcePart = null;
 
@@ -1495,57 +1479,29 @@ public class ABServices {
         delegationTargetPort = (ComponentPort) targetTarget;
         delegationSourcePart = sourcePart;
       }
-
-      boolean isValid = false;
-
-      if ((delegationTargetPort != null) && (delegationSourcePart != null)) {
-
-        // A delegation (without category) must exist between both port/parts
-        Collection<ComponentExchange> delegations = PortExt.getDelegationComponentExchanges(delegationTargetPort);
-        for (ComponentExchange delegation : delegations) {
-          if (delegationTargetPort.equals(ComponentExchangeExt.getTargetPort(delegation))) {
-            if (ComponentExchangeExt.getSourcePartsAndEntities(delegation).contains(delegationSourcePart)) {
-              isValid = true;
-              break;
-            }
-          } else if (delegationTargetPort.equals(ComponentExchangeExt.getSourcePort(delegation))) {
-            if (ComponentExchangeExt.getTargetPartsAndEntities(delegation).contains(delegationSourcePart)) {
-              isValid = true;
-              break;
-            }
-          }
-        }
-
-        if (!isValid) {
-          return false;
-        }
-        isValid = false;
-
-        // A related component exchange must be with the same category
-        for (ComponentExchange exchange : getCache(ABServices::getRelatedComponentExchanges2, delegationSourcePart)) {
-          if (!ComponentExchangeExt.isDelegation(exchange)) {
-            if (exchange.getCategories().contains(category)) {
-              isValid = true;
-              break;
-            }
-          }
-        }
-
-        if (!isValid) {
-          return false;
+      if (delegationTargetPort instanceof Port && delegationSourcePart instanceof Part
+          && !doesDelegationExist((Port) delegationTargetPort, (Part) delegationSourcePart)) {
+        return false;
+      }
+      // Verify further that a non-delegation component exchange must exist for the same category
+      boolean hasNonDelegationCE = false;
+      for (ComponentExchange exchange : getCache(ABServices::getRelatedComponentExchanges2, delegationSourcePart)) {
+        if (!ComponentExchangeExt.isDelegation(exchange) && exchange.getCategories().contains(category)) {
+          hasNonDelegationCE = true;
         }
       }
+      if (!hasNonDelegationCE)
+        return false;
 
-      // Categories of delegations must be a containment
+      // Case3: Part containing category port must be the container of part containing delegation port
       if (!((sourcePartView.eContainer() == targetPartView) || (targetPartView.eContainer() == sourcePartView))) {
-        isValid = false;
+        return false;
       }
-      return isValid;
+      return true;
     }
 
     // retrieve all CE for the related category
     for (ComponentExchange exchange : getRelatedComponentExchanges(sourcePart)) {
-
       if (exchange.getCategories().contains(category)) {
         Collection<? extends EObject> sourceParts = ComponentExchangeExt.getSourcePartsAndEntities(exchange);
         Collection<? extends EObject> targetParts = ComponentExchangeExt.getTargetPartsAndEntities(exchange);
@@ -1564,8 +1520,7 @@ public class ABServices {
         }
       }
     }
-
-    return (getRelatedComponentExchanges(sourcePart).size() == 0);
+    return false;
   }
 
   public boolean isValidShowHideABPhysicalCategory(EObject context, EObject containerView) {
@@ -1747,7 +1702,7 @@ public class ABServices {
       EObject sourceViewTarget = sourceView.getTarget();
       if (sourceViewTarget != null) {
         Collection<PhysicalLink> relatedPhysicalLinks = getRelatedPhysicalLinks(sourceViewTarget);
-        
+
         sourceViewToRelatedPhysicalLinksMap.put(sourceView, relatedPhysicalLinks);
         abShowHidePhysicalCategoriesScopeMap.put(sourceView,
             getABShowHidePhysicalCategoriesScope(sourceView, relatedPhysicalLinks));
@@ -1803,7 +1758,7 @@ public class ABServices {
                     sourcePort, false, physicalCategoryShowHideService);
                 displayABPhysicalCategoryPortDelegation(ctx, category, physicalLink,
                     targetPort, false, physicalCategoryShowHideService);
-                
+
                 // Show the physical link
                 physicalCategoryShowHideService.show(physicalLink, ctx);
               }
@@ -1812,7 +1767,7 @@ public class ABServices {
         }
       }
     }
-    
+
     // 3.
     ABServices.getService().updateABPhysicalCategories(content);
     content.commitDeferredActions();
@@ -2576,8 +2531,27 @@ public class ABServices {
    * @param context
    * @return
    */
+  public Collection<EObject> getComponentCategorySourcesWithoutCache(EObject context) {
+    Collection<EObject> result = new HashSet<>();
+    result.add(context);
+    for (ComponentExchange e : ((ComponentExchangeCategory) context).getExchanges()) {
+      result.add(e.getSource());
+      for (ComponentExchange d : getComponentExchangeDelegationsForCategory(
+          (ComponentPort) ComponentExchangeExt.getSourcePort(e), ((ComponentExchangeCategory) context))) {
+        result.add(d.getSource());
+        result.add(d.getTarget());
+      }
+      for (ComponentExchange d : getComponentExchangeDelegationsForCategory(
+          (ComponentPort) ComponentExchangeExt.getTargetPort(e), ((ComponentExchangeCategory) context))) {
+        result.add(d.getSource());
+        result.add(d.getTarget());
+      }
+    }
+    return result;
+  }
+  
   public Collection<EObject> getComponentCategorySources(EObject context) {
-    return Collections.singletonList(context);
+    return getCache(this::getComponentCategorySourcesWithoutCache, context);
   }
 
   /**
@@ -2586,8 +2560,12 @@ public class ABServices {
    * @param context
    * @return
    */
+  public Collection<EObject> getComponentCategoryTargetsWithoutCache(EObject context) {
+    return getComponentCategorySourcesWithoutCache(context);
+  }
+  
   public Collection<EObject> getComponentCategoryTargets(EObject context) {
-    return Collections.singletonList(context);
+    return getCache(this::getComponentCategoryTargetsWithoutCache, context);
   }
 
   /**
@@ -2596,8 +2574,34 @@ public class ABServices {
    * @param context
    * @return
    */
+  public Collection<EObject> getPhysicalCategorySourcesWithoutCache(EObject context) {
+    Collection<EObject> result = new HashSet<>();
+    result.add(context);
+    for (PhysicalLink e : ((PhysicalLinkCategory) context).getLinks()) {
+      result.add(e.getSourcePhysicalPort());
+      result.add(e.getTargetPhysicalPort());
+      for (EObject d : getPhysicalLinkDelegationsForCategory(e.getSourcePhysicalPort(),
+          ((PhysicalLinkCategory) context))) {
+        if (d instanceof PhysicalLink) {
+          result.addAll(((PhysicalLink) d).getLinkEnds());
+        } else if (d instanceof ComponentPortAllocation) {
+          result.add(((ComponentPortAllocation) d).getAllocatedPort());
+        }
+      }
+      for (EObject d : getPhysicalLinkDelegationsForCategory(e.getTargetPhysicalPort(),
+          ((PhysicalLinkCategory) context))) {
+        if (d instanceof PhysicalLink) {
+          result.addAll(((PhysicalLink) d).getLinkEnds());
+        } else if (d instanceof ComponentPortAllocation) {
+          result.add(((ComponentPortAllocation) d).getAllocatedPort());
+        }
+      }
+    }
+    return result;
+  }
+  
   public Collection<EObject> getPhysicalCategorySources(EObject context) {
-    return Collections.singletonList(context);
+    return getCache(this::getPhysicalCategorySourcesWithoutCache, context);
   }
 
   /**
@@ -2606,8 +2610,12 @@ public class ABServices {
    * @param context
    * @return
    */
+  public Collection<EObject> getPhysicalCategoryTargetsWithoutCache(EObject context) {
+    return getPhysicalCategorySourcesWithoutCache(context);
+  }
+  
   public Collection<EObject> getPhysicalCategoryTargets(EObject context) {
-    return Collections.singletonList(context);
+    return getCache(this::getPhysicalCategoryTargetsWithoutCache, context);
   }
 
   public boolean isABComponentCategoryPortIsA(EObject context, DSemanticDecorator containerView, ComponentPortKind kind,
@@ -2765,7 +2773,7 @@ public class ABServices {
 
     // Retrieve all invalid edges to be removed
     if (edgeMapping != null) {
-      for (DDiagramElement element : context.getDiagramElements(edgeMapping)) {
+      for (DDiagramElement element : getCache(context::getDiagramElements, edgeMapping)) {
         if (!(element instanceof DEdge)) {
           continue;
         }
@@ -2860,6 +2868,22 @@ public class ABServices {
     }
 
   }
+  
+  /**
+   * @param context
+   */
+  public void updateABFunctionalCategories(DDiagramContents context) {
+    DiagramElementMapping inputPinNodeMapping = context
+        .getMapping(MappingConstantsHelper.getMappingFunctionalExchangeCategoryInputPin(context.getDDiagram()));
+    DiagramElementMapping outputPinNodeMapping = context
+        .getMapping(MappingConstantsHelper.getMappingFunctionalExchangeCategoryOutputPin(context.getDDiagram()));
+    // Retrieve all nodes without incoming/outgoing edges to be removed
+    if (inputPinNodeMapping instanceof AbstractNodeMapping)
+      DiagramServices.getDiagramServices().removeNodeWithoutEdges(context, (AbstractNodeMapping) inputPinNodeMapping);
+    if (outputPinNodeMapping instanceof AbstractNodeMapping)
+      DiagramServices.getDiagramServices().removeNodeWithoutEdges(context, (AbstractNodeMapping) outputPinNodeMapping);
+  }
+
 
   /**
    * Remove invalid links and physical categories
@@ -2890,9 +2914,9 @@ public class ABServices {
         }
       }
     }
-
-    if (!nodeMappings.isEmpty()) {
-      for (DDiagramElement element : context.getDiagramElements(nodeMappings)) {
+    
+    for (DiagramElementMapping nodeMapping : nodeMappings) {
+      for (DDiagramElement element : getCache(context::getDiagramElements, nodeMapping)) {
         if (!(element instanceof EdgeTarget)) {
           continue;
         }
@@ -2917,8 +2941,8 @@ public class ABServices {
     }
 
     nodeMappings = context.getMappings(MappingConstantsHelper.getMappingABPorts(context.getDDiagram()));
-    if (!nodeMappings.isEmpty()) {
-      for (DDiagramElement element : context.getDiagramElements(nodeMappings)) {
+    for (DiagramElementMapping nodeMapping : nodeMappings) {
+      for (DDiagramElement element : getCache(context::getDiagramElements, nodeMapping)) {
         if (!(element instanceof EdgeTarget)) {
           continue;
         }
@@ -3068,7 +3092,7 @@ public class ABServices {
         FaServices.getFaServices().getMappingABComponentPortAllocation(diagram), nodeSource, nodeTarget, exchange);
     return context;
   }
-  
+
   /**
    * Create a port allocation in an architecture blank diagram. Create port if selected views are not targeting port
    * 
@@ -3104,10 +3128,10 @@ public class ABServices {
     }
 
     exchange = InformationFactory.eINSTANCE.createPortAllocation();
-    
+
     exchange.setSourceElement(sourcePort);
     exchange.setTargetElement(targetPort);
-    
+
     // Attach to parent
     Port container = sourcePort;
     if ((container != null) && !container.equals(exchange.eContainer())) {
@@ -3248,7 +3272,7 @@ public class ABServices {
 
     return result;
   }
-  
+
   /**
    * Display given component port allocations
    */
@@ -3307,11 +3331,11 @@ public class ABServices {
 
     return content.getDDiagram();
   }
-  
+
   public static Collection<ComponentExchange> getRelatedComponentExchanges2(EObject element) {
     return getService().getRelatedComponentExchanges(element);
   }
-  
+
   public static Collection<EObject> getComponentExchangeCategories(DDiagram diagram) {
     Collection<EObject> categories = new HashSet<>();
     DDiagramContents context = new DDiagramContents(diagram);
@@ -3326,8 +3350,8 @@ public class ABServices {
     }
     return categories;
   }
-  
-  public static Collection<ExchangeCategory> getExchangeCategories(DDiagram diagram){
+
+  public static Collection<ExchangeCategory> getExchangeCategories(DDiagram diagram) {
     Collection<ExchangeCategory> categories = new HashSet<>();
     DDiagramContents context = new DDiagramContents(diagram);
     DiagramElementMapping edgeMapping = context.getMapping(MappingConstantsHelper.getMappingFunctionalExchangeCategory(diagram)); 
@@ -3341,7 +3365,7 @@ public class ABServices {
     }
     return categories;
   }
-  
+
   public static Collection<EObject> getPhysicalLinkCategory(DDiagram diagram) {
     Collection<EObject> categories = new HashSet<>();
     DDiagramContents context = new DDiagramContents(diagram);
