@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.polarsys.capella.core.sirius.analysis;
 
+import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -22,6 +24,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
+import org.eclipse.core.resources.IProject;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.AbstractDNode;
@@ -39,10 +42,7 @@ import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.NodeMapping;
-import org.eclipse.sirius.diagram.description.impl.DiagramDescriptionImpl;
 import org.eclipse.sirius.diagram.description.style.EdgeStyleDescription;
-import org.eclipse.sirius.diagram.tools.api.command.view.RefreshSiriusElement;
-import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.RGBValues;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
@@ -51,7 +51,6 @@ import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.helpers.SimpleOrientedGraph;
-import org.polarsys.capella.common.utils.RunnableWithBooleanResult;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
 import org.polarsys.capella.core.business.queries.capellacore.BusinessQueriesProvider;
 import org.polarsys.capella.core.commands.preferences.service.ScopedCapellaPreferencesStore;
@@ -69,7 +68,6 @@ import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.DeployableElement;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.cs.PhysicalLink;
-import org.polarsys.capella.core.data.cs.PhysicalLinkCategory;
 import org.polarsys.capella.core.data.cs.PhysicalLinkEnd;
 import org.polarsys.capella.core.data.cs.PhysicalPath;
 import org.polarsys.capella.core.data.cs.PhysicalPathInvolvement;
@@ -90,7 +88,6 @@ import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
 import org.polarsys.capella.core.data.pa.deployment.DeploymentFactory;
 import org.polarsys.capella.core.data.pa.deployment.PartDeploymentLink;
-import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.PartExt;
@@ -100,8 +97,6 @@ import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin
 import org.polarsys.capella.core.sirius.analysis.constants.MappingConstantsHelper;
 import org.polarsys.capella.core.sirius.analysis.preferences.DiagramsPreferencePage;
 import org.polarsys.capella.core.sirius.analysis.tool.HashMapSet;
-
-import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
 
 /**
  */
@@ -290,11 +285,8 @@ public class PhysicalServices {
     Collection<Component> parts = new HashSet<>();
     for (Part part : PartExt.getAllPartsFromBlockArch(architecture)) {
       Component component = (Component) part.getAbstractType();
-      if ((component != null)) {
-        if (!PhysicalComponentExt.isPhysicalComponentRoot(component)) {
-          parts.add(component);
-        }
-
+      if ((component != null) && !PhysicalComponentExt.isPhysicalComponentRoot(component)) {
+        parts.add(component);
       }
     }
     return parts;
@@ -527,7 +519,13 @@ public class PhysicalServices {
   private boolean isLogicalSystemComponent(EObject source) {
     return source.eContainer() instanceof LogicalArchitecture;
   }
-
+  
+  /**
+   * 
+   * @param context
+   * @param views
+   * @return The available source for the creation of PhysicalPath by applying one time invoked Part algorithm.
+   */
   public List<EObject> getAvailableSourcesOfPhysicalPath(EObject context, List<EObject> views) {
     HashMap<Part, Integer> parts = new HashMap<>();
     List<EObject> result = new ArrayList<>();
@@ -560,6 +558,10 @@ public class PhysicalServices {
     }
     return result;
   }
+  
+  public EObject getPhysicalPathSource(EObject context, List<EObject> views) {
+    return getAvailableSourcesOfPhysicalPath(context, views).get(0);
+  }
 
   public boolean isValidPhysicalPort(EObject context, EObject container) {
     if (container instanceof Part) {
@@ -573,10 +575,7 @@ public class PhysicalServices {
       return canHavePhysicalPort(((Part) context).getAbstractType());
 
     }
-    if (context instanceof PhysicalPort) {
-      return true;
-    }
-    return false;
+    return context instanceof PhysicalPort;
   }
 
   public boolean isValidPhysicalPathSelection(EObject context, List<EObject> views) {
@@ -753,10 +752,7 @@ public class PhysicalServices {
 
   public boolean isPhysicalActor(Part part) {
     EObject componentType = CsServices.getService().getComponentType(part);
-    if (componentType instanceof PhysicalActor) {
-      return true;
-    }
-    return false;
+    return componentType instanceof PhysicalActor;
   }
 
   public void updateInternalPhysicalPaths(DDiagram diagram) {
@@ -1226,9 +1222,10 @@ public class PhysicalServices {
     String label = EObjectExt.getText(path);
 
     boolean isComplete = isCompletePhysicalPath(path, diagram);
-    boolean displayIncompleteLabel = !isComplete && ScopedCapellaPreferencesStore.getBoolean(DiagramsPreferencePage.NAME_PREF_DISPLAY_INCOMPLETE_IN_PHYSICAL_PATH_LABEL, PreferencesHelper.getProject(path));
+    IProject project = PreferencesHelper.getProject(path);
+    boolean displayIncompleteLabel = !isComplete && ScopedCapellaPreferencesStore.getBoolean(DiagramsPreferencePage.NAME_PREF_DISPLAY_INCOMPLETE_IN_PHYSICAL_PATH_LABEL, project);
     boolean isValid = PhysicalPathExt.isPhysicalPathValid(path);
-    boolean displayInvalidLabel = !isValid && ScopedCapellaPreferencesStore.getBoolean(DiagramsPreferencePage.NAME_PREF_DISPLAY_INVALID_IN_PHYSICAL_PATH_LABEL, PreferencesHelper.getProject(path));
+    boolean displayInvalidLabel = !isValid && ScopedCapellaPreferencesStore.getBoolean(DiagramsPreferencePage.NAME_PREF_DISPLAY_INVALID_IN_PHYSICAL_PATH_LABEL, project);
     if (displayIncompleteLabel || displayInvalidLabel) {
       label = label + " ("; //$NON-NLS-1$
     }

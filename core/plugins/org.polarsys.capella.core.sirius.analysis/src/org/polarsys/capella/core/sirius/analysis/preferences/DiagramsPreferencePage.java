@@ -38,7 +38,7 @@ public class DiagramsPreferencePage extends AbstractDefaultPreferencePage {
   public static final String NAME_PREF_DISPLAY_INVALID_IN_PHYSICAL_PATH_LABEL = "org.polarsys.capella.core.sirius.analysis.preferences.diagrams.physicalpath.label.invalid";
   public static final String LABEL_PREF_DISPLAY_INVALID_IN_PHYSICAL_PATH_LABEL = "Show 'Invalid' in the path's label";
   public static final String TOOLTIP_PREF_DISPLAY_INVALID_IN_PHYSICAL_PATH_LABEL = "If the path is not valid";
-
+  
   public static final String LABEL_GROUP_OPERATIONAL_PROCESS = "Operational Process";
   public static final String NAME_PREF_DISPLAY_INCOMPLETE_IN_OPERATIONAL_PROCESS_LABEL = "org.polarsys.capella.core.sirius.analysis.preferences.diagrams.operationalprocess.label.incomplete";
   public static final String LABEL_PREF_DISPLAY_INCOMPLETE_IN_OPERATIONAL_PROCESS_LABEL = "Show 'Incomplete' in the process's label";
@@ -112,12 +112,10 @@ public class DiagramsPreferencePage extends AbstractDefaultPreferencePage {
     addField(fieldEditorPP2, UserProfileModeEnum.Expert, groupPhysicalPath, ProjectScope.class);
     fieldEditorPP2.getChangeControl(groupPhysicalPath)
         .setToolTipText(TOOLTIP_PREF_DISPLAY_INVALID_IN_PHYSICAL_PATH_LABEL);
- 
   }
 
   @Override
   protected IPreferenceStore doGetPreferenceStore() {
     return Activator.getDefault().getPreferenceStore();
   }
-
 }
