@@ -1438,22 +1438,27 @@
                			</and>
 	               </with>
 	               <with
-	                     variable="selection">	                  
-	                  	<iterate>
-	                  		<and>
-		                 		<or>
-		                       		<instanceof
-		                             	value="org.polarsys.kitalpha.emde.model.Element">
-		                       		</instanceof>
-		                       		<adapt
-		                             	type="org.polarsys.kitalpha.emde.model.Element">
-		                       		</adapt>
-		                    	</or>
-		                    	<reference
-	                          		definitionId="org.polarsys.capella.common.platform.sirius.ted.definition.checkElementOfOpenedSessionOnCompareEditorPartOnly">
-	                        	</reference>
-	                  		</and>
-	                     </iterate>	                  
+	                     variable="selection">	 
+	               		<and>                 
+		                  	<iterate>
+		                  		<and>
+			                 		<or>
+			                       		<instanceof
+			                             	value="org.polarsys.kitalpha.emde.model.Element">
+			                       		</instanceof>
+			                       		<adapt
+			                             	type="org.polarsys.kitalpha.emde.model.Element">
+			                       		</adapt>
+			                    	</or>
+			                    	<reference
+		                          		definitionId="org.polarsys.capella.common.platform.sirius.ted.definition.checkElementOfOpenedSessionOnCompareEditorPartOnly">
+		                        	</reference>
+		                  		</and>
+		                     </iterate>	
+	                    	 <count
+	                           	value="+">
+	                     	 </count>
+	                  	</and>                  
 	               </with>
                </and>
             </visibleWhen>
