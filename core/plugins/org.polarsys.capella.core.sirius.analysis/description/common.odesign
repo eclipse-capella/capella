@@ -19119,7 +19119,7 @@
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
             <conditionnalStyles predicateExpression="aql:self.oclIsKindOf(oa::OperationalProcess)">
-              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" showIcon="false" labelExpression="" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Orange_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Orange_min']">
+              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" showIcon="false" labelExpression="" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Operational_Process_Reference_Orange']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Operational_Process_Reference_Orange']">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
@@ -19130,7 +19130,7 @@
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
           <conditionnalStyles predicateExpression="aql:self.involved.oclIsKindOf(oa::OperationalProcess)">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="service:view.getFunctionalChainReferenceLabel()" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Orange_min']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Orange_min']">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="service:view.getFunctionalChainReferenceLabel()" backgroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Operational_Process_Reference_Orange']" foregroundColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Operational_Process_Reference_Orange']">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
@@ -20263,6 +20263,7 @@
     <entries xsi:type="description:UserFixedColor" red="91" green="64" blue="64" name="_CAP_Activity_Border_Orange"/>
     <entries xsi:type="description:UserFixedColor" red="91" green="64" blue="64" name="_CAP_xAB_Activity_Label_Orange"/>
     <entries xsi:type="description:UserFixedColor" red="0" green="0" blue="0" name="_CAP_xDF_Activity_Label_Orange"/>
+    <entries xsi:type="description:UserFixedColor" red="250" green="239" blue="203" name="_CAP_Operational_Process_Reference_Orange"/>
     <entries xsi:type="description:UserFixedColor" red="221" green="221" blue="200" name="_CAP_Entity_Gray"/>
     <entries xsi:type="description:UserFixedColor" red="249" green="248" blue="245" name="_CAP_Entity_Gray_min"/>
     <entries xsi:type="description:UserFixedColor" red="69" green="69" blue="69" name="_CAP_Entity_Gray_border"/>
