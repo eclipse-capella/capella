@@ -77,6 +77,10 @@ Functional Chain Description diagrams can be combined with Sequence Links and Co
  
 [[Image:Images/5.5.%20Creation%20of%20Functional%20Chains%20and%20Physical%20Paths_html_SL2.png|800px]]
 
+The sequencing information can also be displayed in '''xAB diagrams'''. By default the associated elements are hidden, but they can be displayed by unchecking the '''Hide Sequencing Information''' filter.
+
+[[Image:Images/5.5.%20Creation%20of%20Functional%20Chains%20and%20Physical%20Paths_html_XAB.png|900px]]
+
 For a complete overview of the available diagram tools you can consult these sections: 
 
 *[[../help/topic/org.polarsys.capella.diagrams.doc/html/Diagrams/diagrams.html?cp=6_3_18#Functional_Chain_Description | Functional Chain Description Tools]].

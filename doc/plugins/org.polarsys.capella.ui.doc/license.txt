@@ -181,6 +181,7 @@ logo_capella_big.png
 5.5. Creation of Functional Chains and Physical Paths_html_SL1.png
 5.5. Creation of Functional Chains and Physical Paths_html_SL2.png
 5.5. Creation of Functional Chains and Physical Paths_html_m447a283f.png
+5.5. Creation of Functional Chains and Physical Paths_html_XAB
 AllocatingFunctions_AllocatedFunctionReference.png
 AllocatingFunctions_FunctionalBreakdown.png
 AllocatingFunctions_FunctionAllocatedOnComponents.png
