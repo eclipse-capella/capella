@@ -933,3 +933,13 @@ inputId = 61867dc2-c6ed-4282-abf6-5688fca83da5
 resultIds = {
 }
 
+queryIdentifier = org.polarsys.capella.core.business.queries.la.LogicalComponent_ImplementedInterfaces-getAvailableElements
+inputId = 249c6976-cf45-4acb-ac77-57d48e39468e
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.la.LogicalComponent_ImplementedInterfaces-getCurrentElements
+inputId = 249c6976-cf45-4acb-ac77-57d48e39468e
+resultIds = {
+}
+

@@ -42,6 +42,7 @@ public class BQTestConstants {
   public static final String JUNIT_TEST_CASE_FILE_PACKAGE = "\\$JUNIT_TEST_CASE_FILE_PACKAGE\\$"; //$NON-NLS-1$
   public static final String JUNIT_TEST_CASE_FILE_NAME__VARIABLE = "\\$JUNIT_TEST_CASE_FILE_NAME\\$"; //$NON-NLS-1$
   public static final String PROJECT_NAME_FOR_TEST__VARIABLE = "\\$PROJECT_NAME_FOR_TEST\\$"; //$NON-NLS-1$
+  public static final String LIB_PROJECT_NAME_FOR_TEST__VARIABLE = "\\$LIB_PROJECT_NAME_FOR_TEST\\$"; //$NON-NLS-1$
   public static final String BUSINESS_QUERY_FQN__VARIABLE = "\\$BUSINESS_QUERY_FQN\\$"; //$NON-NLS-1$
   public static final String TEST_CASES_DATA = "\\$TEST_CASES_DATA\\$"; //$NON-NLS-1$
 

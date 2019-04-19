@@ -73,3 +73,25 @@ resultIds = {
     afde6871-dd8c-4621-beca-082f9ea30c12
 }
 
+queryIdentifier = org.polarsys.capella.core.business.queries.information.StringType_InheritedStringType-getAvailableElements
+inputId = 6dd9d735-1d6c-42a5-b595-9207c0411f26
+resultIds = {
+    e5a96e4e-1332-4a0b-8c5e-8bc656e98d6c
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.information.StringType_InheritedStringType-getCurrentElements
+inputId = 6dd9d735-1d6c-42a5-b595-9207c0411f26
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.information.StringType_InheritedStringType-getAvailableElements
+inputId = e5a96e4e-1332-4a0b-8c5e-8bc656e98d6c
+resultIds = {
+    6dd9d735-1d6c-42a5-b595-9207c0411f26
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.information.StringType_InheritedStringType-getCurrentElements
+inputId = e5a96e4e-1332-4a0b-8c5e-8bc656e98d6c
+resultIds = {
+}
+

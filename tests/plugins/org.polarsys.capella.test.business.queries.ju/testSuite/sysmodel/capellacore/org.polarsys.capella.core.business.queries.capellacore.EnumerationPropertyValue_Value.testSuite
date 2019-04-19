@@ -25,3 +25,8 @@ resultIds = {
     157780be-2eee-4ab0-bd42-bbef1579baa7
 }
 
+queryIdentifier = org.polarsys.capella.core.business.queries.capellacore.EnumerationPropertyValue_Value-getAvailableElements
+inputId = 03ff4ea0-fcae-4855-a2f6-a3e297f43abe
+resultIds = {
+}
+

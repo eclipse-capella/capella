@@ -23,6 +23,13 @@ public class FunctionalChainInvolvementLink_ExchangeItems extends BQTestCase {
   public String getProjectForTest() {
     return "sysmodel"; //$NON-NLS-1$
   }
+  
+  /**
+   * @generated
+   */
+  public String getLibProjectForTest() {
+    return "sysModelLib"; //$NON-NLS-1$
+  }
 
   /**
    * @generated

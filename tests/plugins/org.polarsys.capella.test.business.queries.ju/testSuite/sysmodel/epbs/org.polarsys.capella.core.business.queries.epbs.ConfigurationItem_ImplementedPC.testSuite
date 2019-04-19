@@ -1829,3 +1829,15 @@ inputId = 16ac994b-ca41-4e89-8c3d-7cfadc6f79d4
 resultIds = {
 }
 
+queryIdentifier = org.polarsys.capella.core.business.queries.epbs.ConfigurationItem_ImplementedPC-getAvailableElements
+inputId = e9e4d9bd-0474-47a0-9cd5-e26358bceca7
+resultIds = {
+    3a77c842-fd0c-4f70-a340-f94c3d245a7d
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.epbs.ConfigurationItem_ImplementedPC-getCurrentElements
+inputId = e9e4d9bd-0474-47a0-9cd5-e26358bceca7
+resultIds = {
+    3a77c842-fd0c-4f70-a340-f94c3d245a7d
+}
+

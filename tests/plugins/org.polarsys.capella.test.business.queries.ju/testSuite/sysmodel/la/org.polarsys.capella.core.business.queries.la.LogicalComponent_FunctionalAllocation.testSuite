@@ -931,3 +931,14 @@ resultIds = {
     831238db-dea6-4948-bcc4-742581d404b3
 }
 
+queryIdentifier = org.polarsys.capella.core.business.queries.la.LogicalComponent_FunctionalAllocation-getAvailableElements
+inputId = 249c6976-cf45-4acb-ac77-57d48e39468e
+resultIds = {
+    146a0375-2864-4dad-b1c5-e59e845b7d9e
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.la.LogicalComponent_FunctionalAllocation-getCurrentElements
+inputId = 249c6976-cf45-4acb-ac77-57d48e39468e
+resultIds = {
+}
+

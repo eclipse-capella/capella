@@ -11,7 +11,6 @@
 package org.polarsys.capella.test.business.queries.ju.testSuites.partial;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.cs.Component_ImplementedInterfaces;
@@ -76,10 +75,4 @@ public class CsBusinessQueryTestSuite extends BasicTestSuite {
     tests.add(new PhysicalPort_RealizedPhysicalPorts());
     return tests;
   }
-
-  @Override
-  public List<String> getRequiredTestModels() {
-    return Arrays.asList("sysmodel");
-  }
-
 }

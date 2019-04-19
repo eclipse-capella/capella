@@ -15,8 +15,10 @@ resultIds = {
     01a45677-1e98-4584-8d2e-6a5cde44dba0
     1183e03c-ecc0-4d6d-adad-78499853da97
     1b445311-4460-4a11-8c5b-f51b999771dd
+    50c43670-1bbb-43a7-9f8c-8902e74252e0
     5f3a48bb-0b80-4dc1-86cb-532c239b710c
     67e0f99b-9fb7-4f56-9b18-940ff78af248
+    747df399-1038-44de-845b-36f43cb91d70
     8229787c-0a36-4f47-8161-9b54bae038b9
     9a30d725-b78a-440a-a5d8-272e5cb27fb8
     b35dbae3-5367-45bc-b6d7-739b63a1a36d
@@ -58,10 +60,12 @@ resultIds = {
     393f49a3-7c35-46a9-91aa-032661a0ae4b
     4b768d61-3f66-48ca-8ab9-f0a4bab5f721
     4bcc0a33-96c6-47f7-b24f-060459c28f60
+    50c43670-1bbb-43a7-9f8c-8902e74252e0
     546512c3-34cf-4d43-98a0-01ec52f8cd41
     5f3a48bb-0b80-4dc1-86cb-532c239b710c
     67e0f99b-9fb7-4f56-9b18-940ff78af248
     69908101-c367-4bd9-ae92-0c7c94fa1738
+    747df399-1038-44de-845b-36f43cb91d70
     75e00ef1-a464-4fa2-b79b-acd34899ed9d
     79e95043-3b94-4e62-a062-dfeb344c8e62
     8229787c-0a36-4f47-8161-9b54bae038b9
@@ -77,5 +81,29 @@ queryIdentifier = org.polarsys.capella.core.business.queries.information.BinaryE
 inputId = 6f16f487-2906-428c-82ff-52728e0df000
 resultIds = {
     e2afddfb-cdb0-4d13-976d-8861fa8ec8a6
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.information.BinaryExpression_RightOperand-getAvailableElements
+inputId = 6c531d89-fb9c-4eb0-93b6-c285c3148671
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.information.BinaryExpression_RightOperand-getCurrentElements
+inputId = 6c531d89-fb9c-4eb0-93b6-c285c3148671
+resultIds = {
+    e3acd3b7-1ade-428b-bd8d-f64418bfd10c
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.information.BinaryExpression_RightOperand-getAvailableElements
+inputId = d2c77fbb-a119-4f97-aff8-67c4cf4affd2
+resultIds = {
+    50c43670-1bbb-43a7-9f8c-8902e74252e0
+    747df399-1038-44de-845b-36f43cb91d70
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.information.BinaryExpression_RightOperand-getCurrentElements
+inputId = d2c77fbb-a119-4f97-aff8-67c4cf4affd2
+resultIds = {
+    bd8dfbb3-ca13-4ff8-9589-e8d42bc6457f
 }
 

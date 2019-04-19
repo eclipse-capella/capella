@@ -34,10 +34,12 @@ public abstract class BQTestCase extends BasicTestCase {
 
 	@Override
 	public List<String> getRequiredTestModels() {
-		return Arrays.asList(new String[] { getProjectForTest() });
+		return Arrays.asList(new String[] { getProjectForTest(), getLibProjectForTest() });
 	}
 
 	public abstract String getProjectForTest();
+	
+	public abstract String getLibProjectForTest();
 	
 	public abstract String getBQFullQualifiedName();
 	

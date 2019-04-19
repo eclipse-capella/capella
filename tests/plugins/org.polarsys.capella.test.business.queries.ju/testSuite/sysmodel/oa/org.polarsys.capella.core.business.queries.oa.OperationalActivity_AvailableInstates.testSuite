@@ -109,3 +109,13 @@ inputId = 391f335f-1511-4f1e-a53b-66eff1912de7
 resultIds = {
 }
 
+queryIdentifier = org.polarsys.capella.core.business.queries.oa.OperationalActivity_AvailableInstates-getAvailableElements
+inputId = a15fbe0f-1301-4db3-bb81-e19214c1f5eb
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.oa.OperationalActivity_AvailableInstates-getCurrentElements
+inputId = a15fbe0f-1301-4db3-bb81-e19214c1f5eb
+resultIds = {
+}
+

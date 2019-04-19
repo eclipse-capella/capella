@@ -355,3 +355,15 @@ inputId = 7424188e-66a7-4b4d-9dff-f4b04ecadf74
 resultIds = {
 }
 
+queryIdentifier = org.polarsys.capella.core.business.queries.ctx.SystemFunction_FunctionRealization-getAvailableElements
+inputId = 48eb65c9-c1db-4e6e-9cbb-d6ab34f4fee1
+resultIds = {
+    a15fbe0f-1301-4db3-bb81-e19214c1f5eb
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.ctx.SystemFunction_FunctionRealization-getCurrentElements
+inputId = 48eb65c9-c1db-4e6e-9cbb-d6ab34f4fee1
+resultIds = {
+    a15fbe0f-1301-4db3-bb81-e19214c1f5eb
+}
+

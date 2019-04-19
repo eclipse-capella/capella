@@ -2702,3 +2702,13 @@ inputId = 3f20cbae-a92e-4ed8-a26b-98d230b2cd68
 resultIds = {
 }
 
+queryIdentifier = org.polarsys.capella.core.business.queries.pa.PhysicalComp_Deployments-getAvailableElements
+inputId = 3a77c842-fd0c-4f70-a340-f94c3d245a7d
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.pa.PhysicalComp_Deployments-getCurrentElements
+inputId = 3a77c842-fd0c-4f70-a340-f94c3d245a7d
+resultIds = {
+}
+

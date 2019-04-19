@@ -35,3 +35,14 @@ resultIds = {
     e9c3deee-02f5-4620-9066-f6de2c4e7c16
 }
 
+queryIdentifier = org.polarsys.capella.core.business.queries.ctx.System_FunctionalAllocation-getAvailableElements
+inputId = 55214fe5-d525-45c2-840e-0bbdf98f9e51
+resultIds = {
+    48eb65c9-c1db-4e6e-9cbb-d6ab34f4fee1
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.ctx.System_FunctionalAllocation-getCurrentElements
+inputId = 55214fe5-d525-45c2-840e-0bbdf98f9e51
+resultIds = {
+}
+
