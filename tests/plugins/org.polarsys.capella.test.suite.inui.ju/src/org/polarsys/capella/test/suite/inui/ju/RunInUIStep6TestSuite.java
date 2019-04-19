@@ -13,36 +13,35 @@ package org.polarsys.capella.test.suite.inui.ju;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.polarsys.capella.test.diagram.layout.ju.testsuites.LayoutTestSuite;
-import org.polarsys.capella.test.diagram.tools.ju.testsuites.main.DiagramToolsStep1TestSuite;
+import org.polarsys.capella.test.diagram.filters.ju.testsuites.DiagramFiltersTestSuite;
+import org.polarsys.capella.test.diagram.misc.ju.testsuites.DiagramMiscTestSuite;
+import org.polarsys.capella.test.diagram.tools.ju.testsuites.main.DiagramToolsStep2TestSuite;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
-import org.polarsys.capella.test.platform.ju.testsuites.PlatformTestSuite;
-import org.polarsys.capella.test.richtext.ju.testsuites.RichtextTestSuite;
+import org.polarsys.capella.test.massactions.ju.testsuites.MassActionsTestSuite;
 
 import junit.framework.Test;
 
 /**
  *
  */
-public class RunInUIStep5TestSuite extends BasicTestSuite {
+public class RunInUIStep6TestSuite extends BasicTestSuite {
 
   /**
    * Returns the suite. This is required to unary launch this test.
    */
   public static Test suite() {
-    return new RunInUIStep5TestSuite();
+    return new RunInUIStep6TestSuite();
   }
 
   @Override
   protected List<BasicTestArtefact> getTests() {
-    List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
-    tests.add(new DiagramToolsStep1TestSuite());
-    tests.add(new LayoutTestSuite());
-    tests.add(new RichtextTestSuite());
-    tests.add(new PlatformTestSuite());
+    List<BasicTestArtefact> tests = new ArrayList<>();
+    tests.add(new DiagramToolsStep2TestSuite());
+    tests.add(new DiagramFiltersTestSuite());
+    tests.add(new DiagramMiscTestSuite());
+    tests.add(new MassActionsTestSuite());
 
-    // tests.add(new DocTestSuite());
     return tests;
   }
 
