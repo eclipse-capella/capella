@@ -25,7 +25,7 @@
     xmlns:org.polarsys.capella.core.data.requirement="http://www.polarsys.org/capella/core/requirement/1.3.0"
     xmlns:org.polarsys.kitalpha.patterns.emde="http://www.polarsys.org/kitalpha/patterns/emde/1.0.0"
     xmlns:re="http://www.polarsys.org/capella/common/re/1.3.0" id="ebd6a4dd-f1d3-4b5f-bb8b-c5ff6c5cfed2"
-    name="sysmodel">
+    name="sysmodel" appliedPropertyValues="#0f85368b-c99a-4a3c-b47f-9de703e99d6a">
   <ownedExtensions xsi:type="org.polarsys.kitalpha.patterns.emde:EmdePatternInstanceSet"
       id="be8fe691-00a7-4067-ae2a-10e3ef320e03">
     <ownedInstances xsi:type="org.eclipse.emf.diffmerge.patterns.support:CommonPatternInstance"
@@ -3979,6 +3979,8 @@
     </ownedInstances>
   </ownedExtensions>
   <ownedExtensions xsi:type="libraries:ModelInformation" id="4c8e4d9e-92bc-4dca-a6b4-6af23b11da71"/>
+  <ownedPropertyValues xsi:type="org.polarsys.capella.core.data.capellacore:BooleanPropertyValue"
+      id="0f85368b-c99a-4a3c-b47f-9de703e99d6a" name="Project PV"/>
   <ownedEnumerationPropertyTypes xsi:type="org.polarsys.capella.core.data.capellacore:EnumerationPropertyType"
       id="09ce4824-51ec-42f3-8fe5-7682c59eb4bf" name="ProgressStatus">
     <ownedLiterals xsi:type="org.polarsys.capella.core.data.capellacore:EnumerationPropertyLiteral"
@@ -3994,6 +3996,13 @@
     <ownedLiterals xsi:type="org.polarsys.capella.core.data.capellacore:EnumerationPropertyLiteral"
         id="12f9c21c-a72e-4051-b611-619c940552eb" name="REVIEWED_OK"/>
   </ownedEnumerationPropertyTypes>
+  <ownedPropertyValuePkgs xsi:type="org.polarsys.capella.core.data.capellacore:PropertyValuePkg"
+      id="3c863595-3ce9-4828-b266-5ec6ec9bc6e7" name="PropertyValuePkg 1">
+    <ownedPropertyValues xsi:type="org.polarsys.capella.core.data.capellacore:BooleanPropertyValue"
+        id="e79634f2-d368-441c-a8d8-d5185f74578f" name="Nested Project PV"/>
+    <ownedEnumerationPropertyTypes xsi:type="org.polarsys.capella.core.data.capellacore:EnumerationPropertyType"
+        id="2292bbe0-f02b-4da1-8ea4-499d40bd1446" name="Nested EnumerationPropertyType"/>
+  </ownedPropertyValuePkgs>
   <keyValuePairs xsi:type="org.polarsys.capella.core.data.capellacore:KeyValue" id="f4603233-1012-42e9-9057-9687c8d54477"
       key="projectApproach" value="SingletonComponents"/>
   <ownedModelRoots xsi:type="org.polarsys.capella.core.data.capellamodeller:SystemEngineering"
@@ -7430,7 +7439,10 @@ Stop the event</bodies>
                 sourceElement="#e85d9b0f-b799-4ae3-a944-9f75e4e23857"/>
           </ownedFunctions>
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.la:LogicalFunction"
-              id="b5281a1f-4ae4-404f-8353-e7dee54f70b8" name="SF2">
+              id="b5281a1f-4ae4-404f-8353-e7dee54f70b8" name="SF2" appliedPropertyValues="#239be81c-9164-4e0f-ae12-23023e0f749a">
+            <ownedPropertyValues xsi:type="org.polarsys.capella.core.data.capellacore:EnumerationPropertyValue"
+                id="239be81c-9164-4e0f-ae12-23023e0f749a" name="EnumerationPropertyValue 1"
+                type="#09ce4824-51ec-42f3-8fe5-7682c59eb4bf" value="#157780be-2eee-4ab0-bd42-bbef1579baa7"/>
             <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
                 id="0dde5d57-f146-4600-8a5d-8fcb7f930543" name="FIP 1">
               <ownedPortRealizations xsi:type="org.polarsys.capella.core.data.information:PortRealization"
