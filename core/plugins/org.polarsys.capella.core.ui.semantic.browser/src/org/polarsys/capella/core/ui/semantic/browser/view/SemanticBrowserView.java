@@ -205,6 +205,7 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
   private boolean shouldSetFocus;
 
   private boolean isLinkedToSelection;
+  private boolean isRefreshing;
   protected ISemanticBrowserModel model;
   private ISelectionListener selectionListener;
   private SessionManagerListener sessionListener;
@@ -874,6 +875,7 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
   @Override
   public void refresh() {
     if (input != null) {
+      isRefreshing = true;
       if (getModel().isListeningToPageSelectionEvents()) {
         setInput(input);
       } else {
@@ -881,6 +883,7 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
         setInput(input);
         deactivateListeningToPageSelectionEvents();
       }
+      isRefreshing = false;
     }
   }
 
@@ -1099,10 +1102,10 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
    */
   private void propagateInput() {
     if (isLinkedToSelection && getSite().getPage().isPartVisible(this)) {
-      // Precondition: do not set the same input twice.
+      // Precondition: do not set the same input twice, except during refreshing.
       TreeViewer currentTreeViewer = getCurrentViewer();
       Object lastInput = currentTreeViewer.getInput();
-      if ((null != lastInput) && (lastInput.equals(input))) {
+      if (!isRefreshing && (null != lastInput) && (lastInput.equals(input))) {
         return;
       }
 
