@@ -17,49 +17,33 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
-import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.BaseLabelProvider;
 import org.eclipse.jface.viewers.LabelProviderChangedEvent;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.progress.UIJob;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
-import org.polarsys.capella.core.model.helpers.listeners.CapellaModelDataListener;
 
 /**
  */
-public class CapellaDataListenerForPropertySections extends CapellaModelDataListener {
+public class CapellaDataListenerForPropertySections {
 
   /**
    * Constant identifying the job family identifier for the background refresh Properties view job.
    */
-  private static final String REFRESH_VIEW_JOB_FAMILY = "RefreshPropertiesViewJob";
+  private static final String REFRESH_VIEW_JOB_FAMILY = "RefreshPropertiesViewJob"; //$NON-NLS-1$
 
-  /**
-   * 
-   */
   private Set<TabbedPropertySheetPage> pages;
 
-  /**
-   * @see org.eclipse.emf.common.notify.impl.AdapterImpl#notifyChanged(org.eclipse.emf.common.notify.Notification)
-   */
-  @Override
-  public void notifyChanged(Notification notification) {
-    // pre-condition: call contributed filters
-    if (filterNotification(notification)) {
-      return;
-    }
-
-    // pre-condition: only SET and UNSET notifications are wanted
-    if ((notification.getEventType() != Notification.SET) && (notification.getEventType() != Notification.UNSET)) {
-      return;
-    }
-
-    Object notifier = notification.getNotifier();
-    if (notifier instanceof EObject && !getPages().isEmpty()) {
+  public void refresh() {
+    if (!getPages().isEmpty()) {
       scheduleRefreshPropertiesViewJob();
     }
   }
+
+  /**
+   * @return {@code TRUE} if at least one contributor to the extension point {@code delegatedCapellaListener} wants the
+   *         given notification {@code notification} to be filtered, and {@code FALSE} otherwise.
+   */
 
   /**
    * 
@@ -101,7 +85,7 @@ public class CapellaDataListenerForPropertySections extends CapellaModelDataList
   private class RefreshPropertiesViewJob extends UIJob {
 
     public RefreshPropertiesViewJob() {
-      super(Display.getDefault(), REFRESH_VIEW_JOB_FAMILY);
+      super(Display.getDefault(), Messages.PropertyView_JobName);
     }
 
     @Override
