@@ -74,14 +74,15 @@ public class CompareLayoutHandler extends AbstractUiHandler {
   }
   
   public void compare(DRepresentationDescriptor diagram1, DRepresentationDescriptor diagram2, boolean ui) {
-    Session session = SessionManager.INSTANCE.getSession(diagram1.getTarget());
+    Session session1 = SessionManager.INSTANCE.getSession(diagram1.getTarget());
+    Session session2 = SessionManager.INSTANCE.getSession(diagram2.getTarget());
     
     SessionLayout sessionLayout = LayoutFactory.eINSTANCE.createSessionLayout();
-    DiagramLayout layout = manager.getCurrentLayout(session, (DDiagram) diagram1.getRepresentation());
+    DiagramLayout layout = manager.getCurrentLayout(session1, (DDiagram) diagram1.getRepresentation());
     sessionLayout.getOwnedLayouts().add(layout);
 
     SessionLayout sessionLayout2 = LayoutFactory.eINSTANCE.createSessionLayout();
-    DiagramLayout layout2 = manager.getCurrentLayout(session, (DDiagram) diagram2.getRepresentation());
+    DiagramLayout layout2 = manager.getCurrentLayout(session2, (DDiagram) diagram2.getRepresentation());
     sessionLayout2.getOwnedLayouts().add(layout2);
     layout2.setId(layout.getId());
     layout2.setName(layout.getName());
