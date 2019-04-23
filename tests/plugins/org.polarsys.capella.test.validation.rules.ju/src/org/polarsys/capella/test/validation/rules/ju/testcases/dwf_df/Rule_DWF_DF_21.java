@@ -48,10 +48,10 @@ public class Rule_DWF_DF_21 extends Project_DWF_DF_for_SL_CN {
    */
   @Override
   protected List<String> getScopeDefinition() {
-    return Arrays.asList(new String[] { LA_CONTROL_NODE_1, LA_CONTROL_NODE_2, LA_CONTROL_NODE_3, LA_CONTROL_NODE_4,
-        LA_CONTROL_NODE_5, LA_CONTROL_NODE_6,
-
-    });
+    return Arrays.asList(new String[] { OA_CONTROL_NODE_1, OA_CONTROL_NODE_2, OA_CONTROL_NODE_3, OA_CONTROL_NODE_4,
+        OA_CONTROL_NODE_5, OA_CONTROL_NODE_6, SA_CONTROL_NODE_1, SA_CONTROL_NODE_2, SA_CONTROL_NODE_3,
+        SA_CONTROL_NODE_4, SA_CONTROL_NODE_5, SA_CONTROL_NODE_6, LA_CONTROL_NODE_1, LA_CONTROL_NODE_2,
+        LA_CONTROL_NODE_3, LA_CONTROL_NODE_4, LA_CONTROL_NODE_5, LA_CONTROL_NODE_6 });
   }
 
   /**
@@ -61,9 +61,11 @@ public class Rule_DWF_DF_21 extends Project_DWF_DF_for_SL_CN {
   @Override
   protected List<OracleDefinition> getOracleDefinitions() {
     return Arrays.asList(
-        new OracleDefinition[] { new OracleDefinition(LA_CONTROL_NODE_3, 1), new OracleDefinition(LA_CONTROL_NODE_4, 1),
-            new OracleDefinition(LA_CONTROL_NODE_5, 1), new OracleDefinition(LA_CONTROL_NODE_6, 1)
-
-        });
+        new OracleDefinition[] { new OracleDefinition(OA_CONTROL_NODE_3, 1), new OracleDefinition(OA_CONTROL_NODE_4, 1),
+            new OracleDefinition(OA_CONTROL_NODE_5, 1), new OracleDefinition(OA_CONTROL_NODE_6, 1),
+            new OracleDefinition(SA_CONTROL_NODE_3, 1), new OracleDefinition(SA_CONTROL_NODE_4, 1),
+            new OracleDefinition(SA_CONTROL_NODE_5, 1), new OracleDefinition(SA_CONTROL_NODE_6, 1),
+            new OracleDefinition(LA_CONTROL_NODE_3, 1), new OracleDefinition(LA_CONTROL_NODE_4, 1),
+            new OracleDefinition(LA_CONTROL_NODE_5, 1), new OracleDefinition(LA_CONTROL_NODE_6, 1) });
   }
 }
