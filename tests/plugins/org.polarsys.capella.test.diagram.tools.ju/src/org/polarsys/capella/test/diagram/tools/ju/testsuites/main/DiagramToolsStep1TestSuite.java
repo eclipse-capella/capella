@@ -14,33 +14,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.polarsys.capella.test.diagram.tools.ju.es.MultiInstanceRoleTest;
-import org.polarsys.capella.test.diagram.tools.ju.fcd.FCDDiagramToolsTestSuite;
 import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.CCRIDiagramToolsTestSuite;
 import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.CDBDiagramToolsTestSuite;
 import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.CommonToolsTestSuite;
 import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.DiagramActionsTestSuite;
-import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.SequenceDiagramToolsTestSuite;
 import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.IDBDiagramToolsTestSuite;
 import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.MCBDiagramToolsTestSuite;
 import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.MSDiagramToolsTestSuite;
 import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.MSMDiagramToolsTestSuite;
 import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.SFDBDiagramToolsTestSuite;
-import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.XABDiagramToolsTestSuite;
-import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.XBDiagramToolsTestSuite;
-import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.XDFBDiagramToolsTestSuite;
-import org.polarsys.capella.test.diagram.tools.ju.testsuites.partial.XFCDDiagramToolsTestSuite;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
 
 import junit.framework.Test;
 
-public class DiagramToolsTestSuite extends BasicTestSuite {
+public class DiagramToolsStep1TestSuite extends BasicTestSuite {
 
   /**
    * Returns the suite. This is required to unary launch this test.
    */
   public static Test suite() {
-    return new DiagramToolsTestSuite();
+    return new DiagramToolsStep1TestSuite();
   }
 
   @Override
@@ -55,16 +49,10 @@ public class DiagramToolsTestSuite extends BasicTestSuite {
     tests.add(new CDBDiagramToolsTestSuite());
     tests.add(new IDBDiagramToolsTestSuite());
     tests.add(new MCBDiagramToolsTestSuite());
-    tests.add(new XABDiagramToolsTestSuite());
-    tests.add(new SequenceDiagramToolsTestSuite());
-    tests.add(new XBDiagramToolsTestSuite());
-    tests.add(new XDFBDiagramToolsTestSuite());
     tests.add(new DiagramActionsTestSuite());
     tests.add(new CommonToolsTestSuite());
     tests.add(new MultiInstanceRoleTest());
     tests.add(new CCRIDiagramToolsTestSuite());
-    tests.add(new FCDDiagramToolsTestSuite());
-    tests.add(new XFCDDiagramToolsTestSuite());
     return tests;
   }
 
