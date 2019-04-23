@@ -3894,13 +3894,7 @@
               <view name="views"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:views">
-                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="selectSource" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementFromListWizard">
-                    <parameters name="context" value="aql:views->first()"/>
-                    <parameters name="scope" value="aql:self.getAvailableSourcesOfPhysicalPath(views)"/>
-                    <parameters name="resultVariable" value="source"/>
-                    <parameters name="wizardMessage" value="Select the Source of your Physical Path:"/>
-                    <parameters name="displayDialogForOneElement" value="false"/>
-                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:Let" variableName="source" valueExpression="service:getPhysicalPathSource(views)"/>
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.createPhysicalPath(views,source)">
                     <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.oclIsKindOf(cs::PhysicalPath)">
                       <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@nodeMappings[name='SAB_PhysicalPathEnd']" containerViewExpression="aql:views->first().getDiagramContainer()"/>

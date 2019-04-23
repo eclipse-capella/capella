@@ -32,5 +32,4 @@ public class DiagramPreferenceInitializer extends AbstractPreferencesInitializer
     store.setDefault(DiagramsPreferencePage.NAME_PREF_DISPLAY_INVALID_IN_OPERATIONAL_PROCESS_LABEL, true);
     store.setDefault(DiagramsPreferencePage.NAME_PREF_DISPLAY_INVALID_IN_PHYSICAL_PATH_LABEL, true);
   }
-
 }

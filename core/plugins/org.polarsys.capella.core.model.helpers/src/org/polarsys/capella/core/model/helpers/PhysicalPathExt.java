@@ -650,14 +650,15 @@ public class PhysicalPathExt {
     }
     return false;
   }
-
+  
   /**
    * @param container
    * @param involvedPhysicalLinks
    * @param source the source of the path
    * @return a new PhysicalPath initialized with the given involved physical links
    */
-  public static PhysicalPath createPhysicalPath(final Component container, final Collection<PhysicalLink> involvedPhysicalLinks, final Part source) {
+  public static PhysicalPath createPhysicalPath(final Component container,
+      final Collection<PhysicalLink> involvedPhysicalLinks, final Part source) {
     PhysicalPath newPath = CsFactory.eINSTANCE.createPhysicalPath();
 
     container.getOwnedPhysicalPath().add(newPath);
@@ -666,28 +667,29 @@ public class PhysicalPathExt {
     if (command.canExecute()) {
       command.execute();
     }
-    
+
     // Create a first involvement for the given source part
     PhysicalPathInvolvement previousPartInvolvement = createInvolvement(newPath, source);
-    
+
     // On each iteration, get a pair of (link, part), create the involvements and link them
     int size = involvedPhysicalLinks.size();
-    for(int i=0; i < size; i++){
-      Pair<PhysicalLink, Part> nextLinkPartPair = getNextLinkPartPair(involvedPhysicalLinks, previousPartInvolvement.getInvolved());
-      if(nextLinkPartPair != null){
+    for (int i = 0; i < size; i++) {
+      Pair<PhysicalLink, Part> nextLinkPartPair = getNextLinkPartPair(involvedPhysicalLinks,
+          previousPartInvolvement.getInvolved());
+      if (nextLinkPartPair != null) {
         // Remove the physical link from the involved links
         involvedPhysicalLinks.remove(nextLinkPartPair.getFirstValue());
-        
+
         // Create an involvement for the link and wire it to the previous part involvement
         PhysicalPathInvolvement linkInvolvement = createInvolvement(newPath, nextLinkPartPair.getFirstValue());
         previousPartInvolvement.getNextInvolvements().add(linkInvolvement);
-        
+
         // Create an involvement for the part and wire it to the link involvement
         PhysicalPathInvolvement nextPartInvolvement = createInvolvement(newPath, nextLinkPartPair.getSecondValue());
         linkInvolvement.getNextInvolvements().add(nextPartInvolvement);
-        
+
         // Next become previous
-        previousPartInvolvement = nextPartInvolvement;        
+        previousPartInvolvement = nextPartInvolvement;
       }
     }
     return newPath;
@@ -736,7 +738,7 @@ public class PhysicalPathExt {
       }
       visited.add(chain);
       for (PhysicalPathInvolvement involvement : chain.getOwnedPhysicalPathInvolvements()) {
-        if ((involvement.getInvolvedElement() != null) && (involvement.getInvolvedElement() instanceof PhysicalPath)) {
+        if (involvement.getInvolvedElement() instanceof PhysicalPath) {
           toVisit.add((PhysicalPath) involvement.getInvolvedElement());
         }
         involvments.add(involvement);
