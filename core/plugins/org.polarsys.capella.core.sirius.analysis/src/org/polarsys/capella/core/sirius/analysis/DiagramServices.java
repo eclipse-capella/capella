@@ -77,6 +77,7 @@ import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramNameEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.part.IDiagramDialectGraphicalViewer;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
+import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
@@ -1781,5 +1782,18 @@ public class DiagramServices {
       }
     }
     toRemoveNodes.stream().forEach(this::removeAbstractDNodeView);
+  }
+  /**
+   * Force refresh the representation embedded in an editor.
+   * This method must be called in a transaction.
+   * 
+   * @param editor
+   */
+  public void refreshRepresentationOfEditor(IEditorPart editor) {
+    if (editor instanceof DialectEditor) {
+      DialectEditor siriusEditor = (DialectEditor) editor;
+      DRepresentation representation = siriusEditor.getRepresentation();
+      CapellaServices.getService().forceRefresh((DDiagram) representation);
+    }
   }
 }

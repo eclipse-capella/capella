@@ -23,6 +23,7 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWindow;
@@ -38,6 +39,7 @@ import org.polarsys.capella.core.data.fa.FunctionalChain;
 import org.polarsys.capella.core.data.fa.SequenceLink;
 import org.polarsys.capella.core.data.fa.provider.FunctionalChainInvolvementLinkItemProviderDecorator;
 import org.polarsys.capella.core.data.oa.OperationalProcess;
+import org.polarsys.capella.core.sirius.analysis.DiagramServices;
 import org.polarsys.capella.core.sirius.analysis.FunctionalChainServices;
 
 public class AcceleratorOnSequenceLinkHandler extends AbstractHandler implements IElementUpdater {
@@ -55,6 +57,9 @@ public class AcceleratorOnSequenceLinkHandler extends AbstractHandler implements
         @Override
         public void run() {
           functionalChainServices.accelerateOnSequenceLinkEdge(selectedSeqLinkEdge);
+          
+          IEditorPart activeEditor = HandlerUtil.getActiveEditor(event);
+          DiagramServices.getDiagramServices().refreshRepresentationOfEditor(activeEditor);
         }
       });
     }

@@ -20,6 +20,7 @@ import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWindow;
@@ -32,6 +33,7 @@ import org.polarsys.capella.common.ui.actions.ModelAdaptation;
 import org.polarsys.capella.core.data.fa.FunctionalChainInvolvementLink;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.model.helpers.FunctionalChainExt;
+import org.polarsys.capella.core.sirius.analysis.DiagramServices;
 
 public class AcceleratorOnFCILinkHandler extends AbstractHandler {
 
@@ -39,17 +41,23 @@ public class AcceleratorOnFCILinkHandler extends AbstractHandler {
   public Object execute(ExecutionEvent event) throws ExecutionException {
     ISelection selection = HandlerUtil.getActiveMenuSelection(event);
     List<FunctionalChainInvolvementLink> fciLinks = getFCILinksFromSelection(selection);
-    ExecutionManager manager = TransactionHelper.getExecutionManager(fciLinks);
-
-    if (manager != null) {
-      manager.execute(new AbstractReadWriteCommand() {
-        @Override
-        public void run() {
-          fciLinks.stream().forEach(FunctionalChainExt::createSequenceLink);
-        }
-      });
+    
+    if (!fciLinks.isEmpty()) {
+      ExecutionManager manager = TransactionHelper.getExecutionManager(fciLinks);
+      
+      if (manager != null) {
+        manager.execute(new AbstractReadWriteCommand() {
+          @Override
+          public void run() {
+            fciLinks.stream().forEach(FunctionalChainExt::createSequenceLink);
+            
+            IEditorPart activeEditor = HandlerUtil.getActiveEditor(event);
+            DiagramServices.getDiagramServices().refreshRepresentationOfEditor(activeEditor);
+          }
+        });
+      }
     }
-
+    
     return null;
   }
 
