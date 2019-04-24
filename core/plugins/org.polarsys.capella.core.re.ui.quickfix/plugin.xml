@@ -23,6 +23,35 @@
                ruleId="DCON_02">
          </rules>
       </resolver>
+      
+      <resolver
+            class="org.polarsys.capella.core.re.ui.quickfix.resolver.DCON_04_Resolver"
+            desc="%quickFix.DCON_04.desc"
+            icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+            label="%quickFix.DCON_04.label">
+         <rules
+               ruleId="DCON_04">
+         </rules>
+      </resolver>
+      
+      <resolver
+            class="org.polarsys.capella.core.re.ui.quickfix.resolver.DCON_05_Resolver"
+            desc="%quickFix.DCON_05.desc"
+            icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_delete.gif"
+            label="%quickFix.DCON_05.label">
+         <rules
+               ruleId="DCON_05">
+         </rules>
+      </resolver>
+      
+      <resolver
+            class="org.polarsys.capella.core.re.ui.quickfix.resolver.DCON_06_Resolver"
+            desc="%quickFix.DCON_06.desc"
+            icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+            label="%quickFix.DCON_06.label">
+         <rules
+               ruleId="DCON_06">
+         </rules>
+      </resolver>
    </extension>
-   
 </plugin>
