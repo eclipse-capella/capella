@@ -19,6 +19,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.polarsys.capella.core.transition.common.ExtensionHelper;
 import org.polarsys.capella.core.transition.common.constants.ISchemaConstants;
@@ -283,11 +284,12 @@ public abstract class InitializeTransitionActivity extends AbstractActivity impl
     Collection<Object> selection = (Collection<Object>) context.get(ITransitionConstants.TRANSITION_SOURCES);
     if (!selection.isEmpty()) {
       Object source = selection.toArray()[0];
-      context.put(ITransitionConstants.TRANSITION_SOURCE_ROOT, source);
       if (source instanceof EObject) {
-        Resource res = ((EObject) source).eResource();
-        context.put(ITransitionConstants.TRANSITION_SOURCE_RESOURCE, res);
-        context.put(ITransitionConstants.TRANSITION_SOURCE_EDITING_DOMAIN, TransactionUtil.getEditingDomain(res));
+        EObject element = (EObject) source;
+        Resource resource = element.eResource();
+        context.put(ITransitionConstants.TRANSITION_SOURCE_ROOT, EcoreUtil.getRootContainer(element));
+        context.put(ITransitionConstants.TRANSITION_SOURCE_RESOURCE, resource);
+        context.put(ITransitionConstants.TRANSITION_SOURCE_EDITING_DOMAIN, TransactionUtil.getEditingDomain(resource));
       }
 
     } else {

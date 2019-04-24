@@ -22,6 +22,7 @@ import org.polarsys.capella.test.transition.ju.testcases.FC2FSInitializationTest
 import org.polarsys.capella.test.transition.ju.testcases.LcWithPropertyValueTestCase;
 import org.polarsys.capella.test.transition.ju.testcases.ReconciliationCommunicationLinks;
 import org.polarsys.capella.test.transition.ju.testcases.ReconciliationInterfaceUsesImplements;
+import org.polarsys.capella.test.transition.ju.testcases.RootPropertyValueTestCase;
 import org.polarsys.capella.test.transition.ju.testcases.SkeletonElementsNames;
 
 import junit.framework.Test;
@@ -46,6 +47,7 @@ public class TransitionTestSuite extends BasicTestSuite {
     tests.add(new LcWithPropertyValueTestCase());
     tests.add(new FC2FSInitializationTestCase());
     tests.add(new FunctionalChainTestCase());
+    tests.add(new RootPropertyValueTestCase());
     return tests;
   }
 

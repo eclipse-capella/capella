@@ -249,10 +249,9 @@ public class InitializeTransitionActivity extends org.polarsys.capella.core.tran
     Resource sourceResource = (Resource) context.get(ITransitionConstants.TRANSITION_SOURCE_RESOURCE);
     Resource outputResource = sourceResource;
 
-    if ((outputResource != null) && (outputResource.getContents().size() != 0)) {
+    if ((outputResource != null) && (!outputResource.getContents().isEmpty())) {
       context.put(ITransitionConstants.TRANSITION_TARGET_RESOURCE, outputResource);
       context.put(ITransitionConstants.TRANSITION_TARGET_EDITING_DOMAIN, TransactionUtil.getEditingDomain(outputResource));
-
       EObject root = EcoreUtil.getRootContainer(outputResource.getContents().get(0));
       if (root != null) {
         context.put(ITransitionConstants.TRANSITION_TARGET_ROOT, root);
