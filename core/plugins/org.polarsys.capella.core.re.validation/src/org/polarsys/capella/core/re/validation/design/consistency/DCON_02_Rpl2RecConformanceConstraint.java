@@ -35,7 +35,7 @@ public class DCON_02_Rpl2RecConformanceConstraint extends AbstractModelConstrain
   @Override
   public IStatus validate(IValidationContext ctx) {
     CatalogElement catalogElement = (CatalogElement) ctx.getTarget();
-    if (catalogElement.getKind() == CatalogElementKind.RPL) {
+    if (catalogElement.getKind() == CatalogElementKind.RPL && catalogElement.getOrigin() != null) {
       return validateRPL(ctx, catalogElement);
     } else if (catalogElement.getKind() == CatalogElementKind.REC) {
       Collection<IStatus> statuses = new ArrayList<IStatus>();
