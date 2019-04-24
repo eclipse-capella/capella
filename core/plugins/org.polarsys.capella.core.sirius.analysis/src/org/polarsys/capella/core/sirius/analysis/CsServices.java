@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.polarsys.capella.core.sirius.analysis;
 
+import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -21,8 +23,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.stream.Collectors;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.apache.log4j.Logger;
 import org.eclipse.core.commands.Command;
@@ -200,12 +202,14 @@ import org.polarsys.capella.core.model.helpers.AssociationExt;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.CapabilityRealizationExt;
 import org.polarsys.capella.core.model.helpers.CapellaElementExt;
+import org.polarsys.capella.core.model.helpers.ComponentExchangeCategoryExt;
 import org.polarsys.capella.core.model.helpers.ComponentExchangeExt;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.FunctionalChainExt;
 import org.polarsys.capella.core.model.helpers.InterfaceExt;
 import org.polarsys.capella.core.model.helpers.InterfacePkgExt;
 import org.polarsys.capella.core.model.helpers.PartExt;
+import org.polarsys.capella.core.model.helpers.PhysicalLinkCategoryExt;
 import org.polarsys.capella.core.model.helpers.PortExt;
 import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
 import org.polarsys.capella.core.model.helpers.queries.filters.RemoveActorsFilter;
@@ -218,8 +222,6 @@ import org.polarsys.capella.core.sirius.analysis.helpers.FilterHelper;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-
-import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
 
 /**
  * Provides services for all interfaces diagram.
@@ -3275,7 +3277,7 @@ public class CsServices {
       EObject edgeTarget = edge.getTarget();
       if (edgeTarget instanceof ComponentExchangeCategory) {
         ComponentExchangeCategory category = (ComponentExchangeCategory) edgeTarget;
-        if (category.getExchanges().contains(exchange)) {
+        if (ComponentExchangeCategoryExt.getCoveredComponentExchanges(category).contains(exchange)) {
           return true;
         }
       }
@@ -3297,7 +3299,8 @@ public class CsServices {
    */
   public boolean isValidComponentPortAllocationEdge(ComponentPortAllocation communication, DSemanticDecorator source,
       DSemanticDecorator target) {
-    return isValidLinkEdge(getComponentPortAllocationWrapper(communication), source, target, true);
+    return isValidLinkEdge(getComponentPortAllocationWrapper(communication), source, target, true)
+        && !isPhysicalCategoryEdgeDisplayed(communication, source, target);
   }
 
   /**
@@ -3340,7 +3343,7 @@ public class CsServices {
       EObject edgeTarget = edge.getTarget();
       if (edgeTarget instanceof PhysicalLinkCategory) {
         PhysicalLinkCategory category = (PhysicalLinkCategory) edgeTarget;
-        if (category.getLinks().contains(link)) {
+        if (PhysicalLinkCategoryExt.getCoveredPhysicalLinks(category).contains(link)) {
           return true;
         }
       }
@@ -3349,6 +3352,31 @@ public class CsServices {
     return false;
   }
 
+  public boolean isPhysicalCategoryEdgeDisplayed(ComponentPortAllocation cpa, DSemanticDecorator source,
+      DSemanticDecorator target) {
+    Set<DEdge> edgesOfSource = getEdgesOnOwnedBoderedNodesOfContainer(source);
+    Set<DEdge> edgesOfTarget = getEdgesOnOwnedBoderedNodesOfContainer(target);
+
+    if (edgesOfTarget.isEmpty() || edgesOfSource.isEmpty()) {
+      return false;
+    }
+
+    edgesOfTarget.retainAll(edgesOfSource);
+    Set<DEdge> commonEdges = edgesOfTarget;
+
+    for (DEdge edge : commonEdges) {
+      EObject edgeTarget = edge.getTarget();
+      if (edgeTarget instanceof PhysicalLinkCategory) {
+        PhysicalLinkCategory category = (PhysicalLinkCategory) edgeTarget;
+        if (PhysicalLinkCategoryExt.getCoveredComponentPortAllocations(category).contains(cpa)) {
+          return true;
+        }
+      }
+    }
+
+    return false;
+  }
+  
   private Set<DEdge> getEdgesOnOwnedBoderedNodesOfContainer(DSemanticDecorator source) {
     Set<DEdge> edges = new HashSet<>();
     if (source instanceof DNode) {

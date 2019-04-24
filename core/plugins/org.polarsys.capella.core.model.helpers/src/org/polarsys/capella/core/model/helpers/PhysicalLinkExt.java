@@ -13,7 +13,9 @@ package org.polarsys.capella.core.model.helpers;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
@@ -330,5 +332,26 @@ public class PhysicalLinkExt extends org.polarsys.capella.core.data.helpers.cs.s
     allocation.setTargetElement(cPort);
     pPort.getOwnedComponentPortAllocations().add(allocation);
     CapellaElementExt.creationService(allocation);
+  }
+  
+  /**
+   * 
+   * @param pl
+   * @return the physical links that are delegated from the given physical link (on both ports)
+   */
+  public static Collection<PhysicalLink> getDelegatedPhysicalLinks(PhysicalLink pl) {
+    Set<PhysicalLink> delegatedPhysicalLinks = new HashSet<>();
+    PhysicalPort sourcePhysicalPort = pl.getSourcePhysicalPort();
+    PhysicalPort targetPhysicalPort = pl.getTargetPhysicalPort();
+    if (isDelegation(pl)) {
+      if (PortExt.getDelegatingPhysicalLinks(sourcePhysicalPort).contains(pl))
+        delegatedPhysicalLinks.addAll(PortExt.getDelegatedPhysicalLinks(sourcePhysicalPort));
+      if (PortExt.getDelegatingPhysicalLinks(targetPhysicalPort).contains(pl))
+        delegatedPhysicalLinks.addAll(PortExt.getDelegatedPhysicalLinks(targetPhysicalPort));
+    } else {
+      delegatedPhysicalLinks.addAll(PortExt.getDelegatedPhysicalLinks(sourcePhysicalPort));
+      delegatedPhysicalLinks.addAll(PortExt.getDelegatedPhysicalLinks(targetPhysicalPort));
+    }
+    return delegatedPhysicalLinks;
   }
 }

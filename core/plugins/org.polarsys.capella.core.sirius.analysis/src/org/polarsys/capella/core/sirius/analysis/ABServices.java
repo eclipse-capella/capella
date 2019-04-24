@@ -2051,62 +2051,63 @@ public class ABServices {
     if (sourcePort == null) {
       return;
     }
+    // Display a mix-category/delegation ONLY at the first level of delegation
+    if (!org.polarsys.capella.core.model.helpers.PhysicalLinkExt.isDelegation(exchange)) {
+      for (EObject element : getPhysicalLinkDelegationsForCategory(sourcePort, category)) {
+        if (element instanceof PhysicalLink) {
+          PhysicalLink delegation = (PhysicalLink) element;
 
-    // Display a mix-category/delegation
-    for (EObject element : getPhysicalLinkDelegationsForCategory(sourcePort, category)) {
-      if (element instanceof PhysicalLink) {
-        PhysicalLink delegation = (PhysicalLink) element;
+          if (PhysicalLinkExt.getSourcePort(delegation).equals(sourcePort)) {
+            context.setVariable(ShowHideABComponentCategory.TARGET_PORTS,
+                Collections.singletonList(PhysicalLinkExt.getTargetPort(delegation)));
+          }
+          if (PhysicalLinkExt.getTargetPort(delegation).equals(sourcePort)) {
+            context.setVariable(ShowHideABComponentCategory.SOURCE_PORTS,
+                Collections.singletonList(PhysicalLinkExt.getSourcePort(delegation)));
+          }
 
-        if (PhysicalLinkExt.getSourcePort(delegation).equals(sourcePort)) {
-          context.setVariable(ShowHideABComponentCategory.TARGET_PORTS,
-              Collections.singletonList(PhysicalLinkExt.getTargetPort(delegation)));
-        }
-        if (PhysicalLinkExt.getTargetPort(delegation).equals(sourcePort)) {
-          context.setVariable(ShowHideABComponentCategory.SOURCE_PORTS,
-              Collections.singletonList(PhysicalLinkExt.getSourcePort(delegation)));
-        }
+          context.setVariable(ShowHideABComponent.SOURCE_PARTS, PhysicalLinkExt.getSourceParts(delegation));
+          context.setVariable(ShowHideABComponent.TARGET_PARTS, PhysicalLinkExt.getTargetParts(delegation));
 
-        context.setVariable(ShowHideABComponent.SOURCE_PARTS, PhysicalLinkExt.getSourceParts(delegation));
-        context.setVariable(ShowHideABComponent.TARGET_PARTS, PhysicalLinkExt.getTargetParts(delegation));
+          if (b) {
+            service.show(category, context);
+            context.unsetVariable(ShowHideABPhysicalCategory.SOURCE_PORTS);
+            context.unsetVariable(ShowHideABPhysicalCategory.TARGET_PORTS);
+            service.hide(delegation, context);
 
-        if (b) {
-          service.show(category, context);
-          context.unsetVariable(ShowHideABPhysicalCategory.SOURCE_PORTS);
-          context.unsetVariable(ShowHideABPhysicalCategory.TARGET_PORTS);
-          service.hide(delegation, context);
+          } else {
+            service.hide(category, context);
+            context.unsetVariable(ShowHideABPhysicalCategory.SOURCE_PORTS);
+            context.unsetVariable(ShowHideABPhysicalCategory.TARGET_PORTS);
+            service.show(delegation, context);
+          }
+        } else if (element instanceof ComponentPortAllocation) {
+          ComponentPortAllocation delegation = (ComponentPortAllocation) element;
 
-        } else {
-          service.hide(category, context);
-          context.unsetVariable(ShowHideABPhysicalCategory.SOURCE_PORTS);
-          context.unsetVariable(ShowHideABPhysicalCategory.TARGET_PORTS);
-          service.show(delegation, context);
-        }
-      } else if (element instanceof ComponentPortAllocation) {
-        ComponentPortAllocation delegation = (ComponentPortAllocation) element;
+          if (ComponentPortAllocationExt.getSourcePort(delegation).equals(sourcePort)) {
+            context.setVariable(ShowHideABComponentCategory.TARGET_PORTS,
+                Collections.singletonList(ComponentPortAllocationExt.getTargetPort(delegation)));
+          }
+          if (ComponentPortAllocationExt.getTargetPort(delegation).equals(sourcePort)) {
+            context.setVariable(ShowHideABComponentCategory.SOURCE_PORTS,
+                Collections.singletonList(ComponentPortAllocationExt.getSourcePort(delegation)));
+          }
 
-        if (ComponentPortAllocationExt.getSourcePort(delegation).equals(sourcePort)) {
-          context.setVariable(ShowHideABComponentCategory.TARGET_PORTS,
-              Collections.singletonList(ComponentPortAllocationExt.getTargetPort(delegation)));
-        }
-        if (ComponentPortAllocationExt.getTargetPort(delegation).equals(sourcePort)) {
-          context.setVariable(ShowHideABComponentCategory.SOURCE_PORTS,
-              Collections.singletonList(ComponentPortAllocationExt.getSourcePort(delegation)));
-        }
+          context.setVariable(ShowHideABComponent.SOURCE_PARTS, ComponentPortAllocationExt.getSourceParts(delegation));
+          context.setVariable(ShowHideABComponent.TARGET_PARTS, ComponentPortAllocationExt.getTargetParts(delegation));
 
-        context.setVariable(ShowHideABComponent.SOURCE_PARTS, ComponentPortAllocationExt.getSourceParts(delegation));
-        context.setVariable(ShowHideABComponent.TARGET_PARTS, ComponentPortAllocationExt.getTargetParts(delegation));
+          if (b) {
+            service.show(category, context);
+            context.unsetVariable(ShowHideABPhysicalCategory.SOURCE_PORTS);
+            context.unsetVariable(ShowHideABPhysicalCategory.TARGET_PORTS);
+            service.hide(delegation, context);
 
-        if (b) {
-          service.show(category, context);
-          context.unsetVariable(ShowHideABPhysicalCategory.SOURCE_PORTS);
-          context.unsetVariable(ShowHideABPhysicalCategory.TARGET_PORTS);
-          service.hide(delegation, context);
-
-        } else {
-          service.hide(category, context);
-          context.unsetVariable(ShowHideABPhysicalCategory.SOURCE_PORTS);
-          context.unsetVariable(ShowHideABPhysicalCategory.TARGET_PORTS);
-          service.show(delegation, context);
+          } else {
+            service.hide(category, context);
+            context.unsetVariable(ShowHideABPhysicalCategory.SOURCE_PORTS);
+            context.unsetVariable(ShowHideABPhysicalCategory.TARGET_PORTS);
+            service.show(delegation, context);
+          }
         }
       }
     }
@@ -2125,32 +2126,36 @@ public class ABServices {
       return;
     }
 
-    // Display a mix-category/delegation
-    for (ComponentExchange delegation : getComponentExchangeDelegationsForCategory(sourcePort, category)) {
+    // Display a mix-category/delegation ONLY at the first level of delegation
+    if (!ComponentExchangeExt.isDelegation(exchange)) {
+      for (ComponentExchange delegation : getComponentExchangeDelegationsForCategory(sourcePort, category)) {
 
-      if (ComponentExchangeExt.getSourcePort(delegation).equals(sourcePort)) {
-        context.setVariable(ShowHideABComponentCategory.TARGET_PORTS,
-            Collections.singletonList(ComponentExchangeExt.getTargetPort(delegation)));
-      }
-      if (ComponentExchangeExt.getTargetPort(delegation).equals(sourcePort)) {
-        context.setVariable(ShowHideABComponentCategory.SOURCE_PORTS,
-            Collections.singletonList(ComponentExchangeExt.getSourcePort(delegation)));
-      }
+        if (ComponentExchangeExt.getSourcePort(delegation).equals(sourcePort)) {
+          context.setVariable(ShowHideABComponentCategory.TARGET_PORTS,
+              Collections.singletonList(ComponentExchangeExt.getTargetPort(delegation)));
+        }
+        if (ComponentExchangeExt.getTargetPort(delegation).equals(sourcePort)) {
+          context.setVariable(ShowHideABComponentCategory.SOURCE_PORTS,
+              Collections.singletonList(ComponentExchangeExt.getSourcePort(delegation)));
+        }
 
-      context.setVariable(ShowHideABComponent.SOURCE_PARTS, ComponentExchangeExt.getSourcePartsAndEntities(delegation));
-      context.setVariable(ShowHideABComponent.TARGET_PARTS, ComponentExchangeExt.getTargetPartsAndEntities(delegation));
+        context.setVariable(ShowHideABComponent.SOURCE_PARTS,
+            ComponentExchangeExt.getSourcePartsAndEntities(delegation));
+        context.setVariable(ShowHideABComponent.TARGET_PARTS,
+            ComponentExchangeExt.getTargetPartsAndEntities(delegation));
 
-      if (b) {
-        service.show(category, context);
-        context.unsetVariable(ShowHideABComponentCategory.SOURCE_PORTS);
-        context.unsetVariable(ShowHideABComponentCategory.TARGET_PORTS);
-        service.hide(delegation, context);
+        if (b) {
+          service.show(category, context);
+          context.unsetVariable(ShowHideABComponentCategory.SOURCE_PORTS);
+          context.unsetVariable(ShowHideABComponentCategory.TARGET_PORTS);
+          service.hide(delegation, context);
 
-      } else {
-        service.hide(category, context);
-        context.unsetVariable(ShowHideABComponentCategory.SOURCE_PORTS);
-        context.unsetVariable(ShowHideABComponentCategory.TARGET_PORTS);
-        service.show(delegation, context);
+        } else {
+          service.hide(category, context);
+          context.unsetVariable(ShowHideABComponentCategory.SOURCE_PORTS);
+          context.unsetVariable(ShowHideABComponentCategory.TARGET_PORTS);
+          service.show(delegation, context);
+        }
       }
     }
   }

@@ -32,41 +32,48 @@ import org.polarsys.capella.test.framework.context.SessionContext;
 import junit.framework.Test;
 
 /**
- * Category without any exchange behind should not be displayed
+ * Delegation links should be replaced by delegation categories when a Switch is applied
  *
  */
 public class SwitchCategoryWithDelegation extends SwitchCategory {
 
   @Override
   public void test() throws Exception {
+    // Prepare test model
     Session session = getSessionForTestModel(getRequiredTestModel());
     SessionContext context = new SessionContext(session);
-    DiagramContext diagramContext = new OpenDiagramStep(context, PAB_PHYSICAL_SYSTEM).run();
+    DiagramContext diagramContext = new OpenDiagramStep(context, PAB_Category_Delegation_Test).run();
     DDiagramContents diagramContents = new DDiagramContents(diagramContext.getDiagram());
     ICapellaModel model = getTestModel(getRequiredTestModel());
     IScope scope = new ScopeModelWrapper(model);
+
+    // Get test model elements
     EObject physicalCategory = IdManager.getInstance().getEObject(PHYSICALLINKCATEGORY_1, scope);
     EObject pp1OfPC11 = IdManager.getInstance().getEObject(PC_11_PP_1, scope);
     EObject pp1OfPC21 = IdManager.getInstance().getEObject(PC_21_PP_1, scope);
-    
     EObject componentCategory = IdManager.getInstance().getEObject(COMPONENTEXCHANGECATEGORY_1, scope);
     EObject cp1OfPC5 = IdManager.getInstance().getEObject(PC_5_CP_1, scope);
     EObject cp1OfPC6 = IdManager.getInstance().getEObject(PC_6_CP_1, scope);
-    
+    EObject cp1OfPC7 = IdManager.getInstance().getEObject(PC_7_CP_1, scope);
+    EObject cp1OfPC8 = IdManager.getInstance().getEObject(PC_8_CP_1, scope);
+
+    // Do the Switch
     new SwitchTool(diagramContext, IToolNameConstants.TOOL_PAB_INSERT_REMOVE_PHYSICAL_LINKS_CATEGORIES)
         .insert(PHYSICALLINKCATEGORY_1);
     new SwitchTool(diagramContext, IToolNameConstants.TOOL_PAB_INSERT_REMOVE_COMPONENT_EXCHANGES_CATEGORIES)
-    .insert(COMPONENTEXCHANGECATEGORY_1);
+        .insert(COMPONENTEXCHANGECATEGORY_1);
 
     diagramContext.refreshDiagram();
-    
+
     DiagramElementMapping physicalCategoryMapping = diagramContents
         .getMapping(MappingConstantsHelper.getMappingABPhysicalCategory(diagramContext.getDiagram()));
-    
+
     boolean pl1Switched = false;
     boolean pl1DelegationToPC1Switched = false;
     boolean pl1DelegationToPC2Switched = false;
-    
+    boolean pl1DelegationToPC7Switched = false;
+    boolean pl1DelegationToPC8Switched = false;
+
     for (DDiagramElement diagramElement : diagramContents.getDiagramElements(physicalCategoryMapping)) {
       if (diagramElement.getTarget() == physicalCategory) {
         DEdge physicalCategoryEdge = (DEdge) diagramElement;
@@ -78,20 +85,27 @@ public class SwitchCategoryWithDelegation extends SwitchCategory {
           pl1DelegationToPC1Switched = true;
         else if (sourceNode.getTarget() == physicalCategory && targetNode.getTarget() == pp1OfPC21)
           pl1DelegationToPC2Switched = true;
+        else if (sourceNode.getTarget() == physicalCategory && targetNode.getTarget() == cp1OfPC7)
+          pl1DelegationToPC7Switched = true;
+        else if (sourceNode.getTarget() == physicalCategory && targetNode.getTarget() == cp1OfPC8)
+          pl1DelegationToPC8Switched = true;
       }
     }
-    
+
+    // Verify that physical categories for delegation links have been created
     assertTrue("There isn't a Physical Category between PC 1 and PC 2", pl1Switched);
     assertTrue("There isn't a Physical Category between PC 1 and PC 11", pl1DelegationToPC1Switched);
     assertTrue("There isn't a Physical Category between PC 2 and PC 21", pl1DelegationToPC2Switched);
-    
+    assertTrue("There isn't a Physical Category between PC 1 and PC 7", pl1DelegationToPC7Switched);
+    assertTrue("There isn't a Physical Category between PC 2 and PC 8", pl1DelegationToPC8Switched);
+
     DiagramElementMapping componentCategoryMapping = diagramContents
         .getMapping(MappingConstantsHelper.getMappingABComponentCategory(diagramContext.getDiagram()));
-    
+
     boolean ce1Switched = false;
     boolean ce1DelegationToPC5Switched = false;
     boolean ce1DelegationToPC6Switched = false;
-    
+
     for (DDiagramElement diagramElement : diagramContents.getDiagramElements(componentCategoryMapping)) {
       if (diagramElement.getTarget() == componentCategory) {
         DEdge physicalCategoryEdge = (DEdge) diagramElement;
@@ -105,10 +119,15 @@ public class SwitchCategoryWithDelegation extends SwitchCategory {
           ce1DelegationToPC6Switched = true;
       }
     }
-    
+
+    // Verify that component categories for delegation component exchanges have been created
     assertTrue("There isn't a Component Category between PC 3 and PC 4", ce1Switched);
     assertTrue("There isn't a Component Category between PC 3 and PC 5", ce1DelegationToPC5Switched);
     assertTrue("There isn't a Component Category between PC 4 and PC 6", ce1DelegationToPC6Switched);
+
+    // Verify that delegation links have been removed from the diagram
+    diagramContext.hasntViews(PL_11, PL_21, COMPONENT_PORT_ALLOCATION_TO_PC_7_CP_1,
+        COMPONENT_PORT_ALLOCATION_TO_PC_8_CP_1, D_2, D_3);
   }
 
   public static Test suite() {

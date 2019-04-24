@@ -17,7 +17,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.data.activity.ActivityNode;
@@ -29,6 +31,7 @@ import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.cs.AbstractActor;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.Part;
+import org.polarsys.capella.core.data.cs.PhysicalLink;
 import org.polarsys.capella.core.data.cs.PhysicalPort;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.AbstractFunctionalBlock;
@@ -771,5 +774,22 @@ public final class ComponentExchangeExt {
     }
     return null;
 
+  }
+  
+  /**
+   * 
+   * @param ce
+   * @return the component exchanges that are delegated from the given component exchange
+   */
+  public static Collection<ComponentExchange> getDelegatedComponentExchanges(ComponentExchange ce) {
+    Set<ComponentExchange> delegatedComponentExchanges = new HashSet<>();
+    Port sourcePort = ce.getSourcePort();
+    Port targetPort = ce.getTargetPort();
+    if (sourcePort instanceof ComponentPort && targetPort instanceof ComponentPort) {
+      if (!isDelegation(ce))
+        delegatedComponentExchanges.addAll(PortExt.getDelegatedComponentExchanges((ComponentPort) sourcePort));
+      delegatedComponentExchanges.addAll(PortExt.getDelegatedComponentExchanges((ComponentPort) targetPort));
+    }
+    return delegatedComponentExchanges;
   }
 }
