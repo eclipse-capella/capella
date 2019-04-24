@@ -12,7 +12,10 @@ package org.polarsys.capella.common.re.re2rpl.update.properties;
 
 import java.util.Collection;
 
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.polarsys.capella.common.flexibility.properties.schema.IPropertyContext;
+import org.polarsys.capella.common.re.Activator;
 import org.polarsys.capella.common.re.CatalogElement;
 import org.polarsys.capella.common.re.constants.IReConstants;
 import org.polarsys.capella.common.re.handlers.replicable.ReplicableElementHandlerHelper;
@@ -42,4 +45,14 @@ public class ReplicableElementProperty extends org.polarsys.capella.common.re.re
     return element;
   }
 
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public IStatus validate(Object newValue, IPropertyContext context) {
+    if ((newValue == null) || !(newValue instanceof CatalogElement)) {
+      return new Status(IStatus.ERROR, Activator.PLUGIN_ID, "Your RPL is invalid (no REC), please validate your model");
+    }
+    return Status.OK_STATUS;
+  }
 }
