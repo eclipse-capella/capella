@@ -29,15 +29,21 @@ public abstract class SwitchCategory extends AbstractDiagramTestCase {
   public static final String PL_21 = "236b95d8-0b6a-4134-8067-db2bb476138f"; //$NON-NLS-1$
   public static final String PC_11_PP_1 = "d99cb30c-a986-4a57-8863-609c30d2625a"; //$NON-NLS-1$
   public static final String PC_21_PP_1 = "25387032-30fc-476a-81ab-64f0776c7953"; //$NON-NLS-1$
+  public static final String COMPONENT_PORT_ALLOCATION_TO_PC_7_CP_1 = "1c0d63ff-9d4b-4659-93fc-4dd6502a8c05"; //$NON-NLS-1$
+  public static final String COMPONENT_PORT_ALLOCATION_TO_PC_8_CP_1 = "c03e7c1a-27e7-40f7-ab2b-a8ccb8c253b7"; //$NON-NLS-1$
   public static final String COMPONENTEXCHANGECATEGORY_1 = "ca3ab8f3-e4fe-4917-832a-92f35eb01142"; //$NON-NLS-1$
   public static final String PC_5_CP_1 = "91be7757-fb01-4fbc-9c15-7abe6f739176"; //$NON-NLS-1$
   public static final String PC_6_CP_1 = "2fe87f6a-3ab1-4cd0-8054-5c8aa6603489"; //$NON-NLS-1$
+  public static final String PC_7_CP_1 = "f89d1adf-8ef2-4028-b288-f895862ded85"; //$NON-NLS-1$
+  public static final String PC_8_CP_1 = "3701c0bb-00a2-4d9f-8ebe-c10614aa84b9"; //$NON-NLS-1$
   public static final String C_1 = "ca1e7c88-0646-497d-87a3-0b810fa4305f"; //$NON-NLS-1$
+  public static final String D_2 = "17289a07-9b9f-4da9-bca3-bb75e32e6326"; //$NON-NLS-1$
+  public static final String D_3 = "2fd38174-5936-46be-b996-713d913f71fa"; //$NON-NLS-1$
 
   public static final String SDFB_ROOT_SYSTEM_FUNCTION = "[SDFB] Root System Function - System Data Flow Blank"; //$NON-NLS-1$
   public static final String LAB_LOGICAL_SYSTEM = "[LAB] Logical System"; //$NON-NLS-1$
   public static final String LDFB_ROOT_LOGICAL_FUNCTION = "[LDFB] Root Logical Function"; //$NON-NLS-1$
-  public static final String PAB_PHYSICAL_SYSTEM = "[PAB] Physical System"; //$NON-NLS-1$
+  public static final String PAB_Category_Delegation_Test = "[PAB] Category Delegation Test"; //$NON-NLS-1$
   
 
   @Override

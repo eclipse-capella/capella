@@ -51,7 +51,7 @@ public class RemoveCategoryWithoutExchange extends SwitchCategory {
     // A category without any exchange behind it should not be displayed
     diagramContext.hasntView(EXCHANGECATEGORY_1);
     
-    DiagramContext pabDiagramContext = new OpenDiagramStep(context, PAB_PHYSICAL_SYSTEM).run();
+    DiagramContext pabDiagramContext = new OpenDiagramStep(context, PAB_Category_Delegation_Test).run();
     EObject pl1 = IdManager.getInstance().getEObject(PL_1, scope);
     EObject ce1 = IdManager.getInstance().getEObject(C_1, scope);
     TestHelper.getExecutionManager(session).execute(new AbstractReadWriteCommand() {
