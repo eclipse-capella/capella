@@ -14,35 +14,32 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.polarsys.capella.core.sirius.analysis.constants.IFilterNameConstants;
-import org.polarsys.capella.test.diagram.filters.ju.DiagramObjectFilterTestCase;
+import org.polarsys.capella.test.diagram.filters.ju.DefaultActivatedFilterTestCase;
 
-public class MergeSequenceLinksAssociatedLinksTestCase3 extends DiagramObjectFilterTestCase {
-  
-  private final String LA_FUNCTIONAL_EXCHANGE_1 = "5d8d7993-e00c-4c51-82a1-09b30a7c8975";
-  private final String LA_FUNCTIONAL_EXCHANGE_1_2 = "5d62112f-58ab-4279-85a8-3bf1b26ef4f3";
-  private final String LA_FUNCTIONAL_EXCHANGE_3 = "2df4090d-ec59-40eb-990e-6d8a8f602630";
-  
+public class HideByDefaultAssociationLinksSFCD extends DefaultActivatedFilterTestCase {
+
+  private final String ASSOCIATION_LINK_TO_FUNCTIONAL_EXCHANGE_1_ID = "c24d372e-c3c9-41cf-a569-e774ceff12fe";
+  private final String ASSOCIATION_LINK_TO_FUNCTIONAL_EXCHANGE_2_ID = "648ae687-9b65-42c2-90f4-3e7bb072899c";
+
   @Override
   protected String getTestProjectName() {
     return "HideSimplifiedLinksFilter";
   }
 
   @Override
-  protected String getFilterName() {
-    return IFilterNameConstants.FILTER_MERGE_ASSOCIATED_FE_AND_SL;
-  }
-  
-  @Override
   protected String getDiagramName() {
-    return "[LFCD] FunctionalChain 3";
+    return "Functional Chain Description Filters Test";
   }
 
   @Override
-  protected List<String> getFilteredObjetIDs() {  
-    return Arrays.asList(new String [] {
-        LA_FUNCTIONAL_EXCHANGE_1,
-        LA_FUNCTIONAL_EXCHANGE_1_2,
-        LA_FUNCTIONAL_EXCHANGE_3,
-    });
+  protected String getFilterName() {
+    return IFilterNameConstants.FILTER_FCD_HIDE_ASSOCIATION_LINKS;
   }
+
+  @Override
+  protected List<String> getFilteredObjetIDs() {
+    return Arrays.asList(
+        new String[] { ASSOCIATION_LINK_TO_FUNCTIONAL_EXCHANGE_1_ID, ASSOCIATION_LINK_TO_FUNCTIONAL_EXCHANGE_2_ID });
+  }
+
 }

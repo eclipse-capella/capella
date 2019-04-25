@@ -5039,17 +5039,17 @@
       <dropDescriptions href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20PV%20From%20Project%20Explorer']"/>
       <filters xsi:type="filter:CompositeFilterDescription" name="Show ExchangeItems">
         <filters xsi:type="filter:MappingFilter" filterKind="COLLAPSE">
-          <mappings xsi:type="description_3:InstanceRoleMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@nodeMappings[name='hideSequenceLabelDF']"/>
+          <mappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@edgeMappings[name='FC_Exchange']"/>
         </filters>
       </filters>
       <filters xsi:type="filter:CompositeFilterDescription" name="Show ExchangeItems parameters">
         <filters xsi:type="filter:MappingFilter" filterKind="COLLAPSE">
-          <mappings xsi:type="description_3:InstanceRoleMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@nodeMappings[name='hideSequenceLabelDF']"/>
+          <mappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@edgeMappings[name='FC_Exchange']"/>
         </filters>
       </filters>
       <filters xsi:type="filter:CompositeFilterDescription" name="Show Functional Exchanges [ExchangeItems]" label="Show Interactions [ExchangeItems]">
         <filters xsi:type="filter:MappingFilter" filterKind="COLLAPSE">
-          <mappings xsi:type="description_3:InstanceRoleMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@nodeMappings[name='hideSequenceLabelDF']"/>
+          <mappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Chain%20Description']/@defaultLayer/@edgeMappings[name='FC_Exchange']"/>
         </filters>
       </filters>
       <filters xsi:type="filter:CompositeFilterDescription" name="Hide Property Values">

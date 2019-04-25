@@ -510,6 +510,9 @@ public interface IMappingNameConstants {
   String FCD_FUNCTION__MAPPING_NAME = "FC_AbstractFunction"; //$NON-NLS-1$
   String FCD_FUNCTIONAL_CHAIN__MAPPING_NAME = "FC_FunctionalChain"; //$NON-NLS-1$
   String FCD_FUNCTIONAL_EXCHANGE__MAPPING_NAME = "FC_Exchange"; //$NON-NLS-1$
+  String FCD_CONTROL_NODE__MAPPING_NAME = "FC_ControlNode"; //$NON-NLS-1$
+  String FCD_SEQUENCE_LINK__MAPPING_NAME = "FC_SequenceLink"; //$NON-NLS-1$
+  String FCD_ASSOCIATION_LINK__MAPPING_NAME = "FC_SequenceLink_InvolvementLink"; //$NON-NLS-1$
 
   // PhysicalPathDescription
   String PPD_PHYSICAL_LINK__MAPPING_NAME = "PPD_PhysicalLink"; //$NON-NLS-1$

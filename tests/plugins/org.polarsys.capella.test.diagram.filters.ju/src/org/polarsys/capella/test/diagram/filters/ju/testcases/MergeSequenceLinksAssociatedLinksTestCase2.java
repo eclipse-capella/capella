@@ -13,7 +13,24 @@ package org.polarsys.capella.test.diagram.filters.ju.testcases;
 import java.util.Arrays;
 import java.util.List;
 
-public class MergeSequenceLinksAssociatedLinksTestCase2 extends MergeSequenceLinksFilterTests {
+import org.polarsys.capella.core.sirius.analysis.constants.IFilterNameConstants;
+import org.polarsys.capella.test.diagram.filters.ju.DiagramObjectFilterTestCase;
+
+public class MergeSequenceLinksAssociatedLinksTestCase2 extends DiagramObjectFilterTestCase {
+  
+  private final String LA_FUNCTIONAL_EXCHANGE_1 = "5d8d7993-e00c-4c51-82a1-09b30a7c8975";
+  private final String LA_FUNCTIONAL_EXCHANGE_1_2 = "5d62112f-58ab-4279-85a8-3bf1b26ef4f3";
+  
+  @Override
+  protected String getTestProjectName() {
+    return "HideSimplifiedLinksFilter";
+  }
+
+  @Override
+  protected String getFilterName() {
+    return IFilterNameConstants.FILTER_MERGE_ASSOCIATED_FE_AND_SL;
+  }
+  
   @Override
   protected String getDiagramName() {
     return "[LFCD] FunctionalChain 2";
@@ -23,9 +40,7 @@ public class MergeSequenceLinksAssociatedLinksTestCase2 extends MergeSequenceLin
   protected List<String> getFilteredObjetIDs() {  
     return Arrays.asList(new String [] {
         LA_FUNCTIONAL_EXCHANGE_1,
-        LA_FUNCTIONAL_EXCHANGE_1_2,
-        LA_SEQUENCE_LINK_1,
-        LA_SEQUENCE_LINK_2
+        LA_FUNCTIONAL_EXCHANGE_1_2
     });
   }
 }

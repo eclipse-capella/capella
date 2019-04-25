@@ -12,9 +12,11 @@ package org.polarsys.capella.test.diagram.filters.ju;
 
 import java.util.List;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.junit.Assert;
 import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
 
 public abstract class LabelFilterTestCase extends DiagramObjectFilterTestCase {
 
@@ -37,7 +39,18 @@ public abstract class LabelFilterTestCase extends DiagramObjectFilterTestCase {
     Assert.assertTrue("The number of elements differs from the number of labels",
         numberOfGivenElements == numberOfGivenLabels);
 
-    super.preRunTest();
+    getCurrentDiagram();
+
+    for (DDiagramElement elt : diagram.getOwnedDiagramElements()) {
+
+      EObject target = elt.getTarget();
+      if (target != null && target instanceof CapellaElement) {
+        String targetId = ((CapellaElement) target).getId();
+        if (filteredObjetIDs.contains(targetId)) {
+          toBeFiltered.put(elt, targetId);
+        }
+      }
+    }
   }
 
   @Override
@@ -55,10 +68,10 @@ public abstract class LabelFilterTestCase extends DiagramObjectFilterTestCase {
     int numberOfGivenLabels = expectedElementLabels.size();
     for (int i = 0; i < numberOfGivenLabels; i++) {
 
-      DDiagramElement currentObject = diagramElement2ObjectID.get(filteredObjetIDs.get(i));
+      DDiagramElement currentObject = toBeFiltered.keySet().iterator().next();
       String currentLabel = EObjectLabelProviderHelper.getText(currentObject);
 
-      boolean labelIsAsExpected = currentLabel.equals(expectedElementLabels.get(i));
+      boolean labelIsAsExpected = expectedElementLabels.contains(currentLabel);
 
       Assert.assertTrue(
           "The expected label " + expectedElementLabels.get(i) + " is not equal to the current label " + currentLabel,
