@@ -19,12 +19,11 @@ import org.polarsys.capella.core.ui.semantic.browser.IImageKeys;
 public class RefreshAction extends Action {
 
   protected ISemanticBrowserViewPart semanticBrowserViewPart;
-  
 
   public RefreshAction(ISemanticBrowserViewPart semanticBrowserViewPart) {
     this(semanticBrowserViewPart, IAction.AS_PUSH_BUTTON);
   }
-  
+
   public RefreshAction(ISemanticBrowserViewPart semanticBrowserViewPart, int type) {
     super(null, type);
     this.semanticBrowserViewPart = semanticBrowserViewPart;
@@ -33,10 +32,7 @@ public class RefreshAction extends Action {
 
   @Override
   public void run() {
-    doRun();
-  }
-
-  protected void doRun() {
     semanticBrowserViewPart.refresh();
   }
+
 }

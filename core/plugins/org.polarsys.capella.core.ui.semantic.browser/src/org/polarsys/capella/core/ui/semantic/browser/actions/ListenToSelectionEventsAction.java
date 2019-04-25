@@ -32,7 +32,7 @@ public class ListenToSelectionEventsAction extends RefreshAction {
   public void run() {
     if (isChecked()) {
       ((SemanticBrowserView) semanticBrowserViewPart).activateListeningToPageSelectionEvents();
-      doRun();
+      super.run();
     } else {
       ((SemanticBrowserView) semanticBrowserViewPart).deactivateListeningToPageSelectionEvents();
     }

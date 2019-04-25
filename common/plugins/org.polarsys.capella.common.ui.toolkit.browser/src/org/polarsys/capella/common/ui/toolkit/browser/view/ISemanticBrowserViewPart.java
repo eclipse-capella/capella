@@ -18,35 +18,46 @@ import org.polarsys.capella.common.ui.toolkit.browser.action.BrowserHistory;
 import org.polarsys.capella.common.ui.toolkit.browser.model.ISemanticBrowserModel;
 
 /**
- * A semantic browser view part contains multiple viewers.
- * The viewers have the same current element which is root element.
- * This interface gives an access to the root element.
+ * A semantic browser view part contains multiple viewers. The viewers have the same current element which is root
+ * element. This interface gives an access to the root element.
  */
 public interface ISemanticBrowserViewPart extends IViewPart {
-  
+
   /**
-   * Launch an action contextual to the given element.
-   * Like : setting the input of every viewers referenced by the viewpart.
+   * Sets the input of the Semantic Browser and <b>ALWAYS</b> triggers a refresh of the associated queries.
+   * 
+   * 
    * @param input
+   *          the input
    */
   void setInput(Object input);
-  
+
+  /**
+   * Sets the input of the Semantic Browser and <b>CONDITIONALLY</b> triggers a refresh of the associated queries. The
+   * refresh is triggered only if the view is listening to selection events. See
+   * {@link ISemanticBrowserModel#isListeningToPageSelectionEvents()}
+   * 
+   * @param input
+   */
+  void saveInput(Object input);
+
   /**
    * Retrieve element root (current element to whole viewers contained by the viewpart)
+   * 
    * @return
    */
-  EObject getRootElement ();
-  
+  EObject getRootElement();
+
   /**
    * Refresh content of the viewpart.
    */
   void refresh();
-  
+
   /**
    * Clean the content of the viewpart.
    */
   void clean();
-  
+
   /**
    * @return the referencingViewer
    */
@@ -66,8 +77,8 @@ public interface ISemanticBrowserViewPart extends IViewPart {
    * @return
    */
   public BrowserHistory getHistory();
-  
+
   public ISemanticBrowserModel getModel();
-  
+
   public void setInputOnViewers(Object input);
 }

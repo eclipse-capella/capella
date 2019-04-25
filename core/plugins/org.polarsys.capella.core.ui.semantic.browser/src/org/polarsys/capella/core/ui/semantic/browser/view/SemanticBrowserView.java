@@ -205,7 +205,7 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
   private boolean shouldSetFocus;
 
   private boolean isLinkedToSelection;
-  private boolean isRefreshing;
+
   protected ISemanticBrowserModel model;
   private ISelectionListener selectionListener;
   private SessionManagerListener sessionListener;
@@ -497,7 +497,7 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
 
     // Add the selection listener
     getSite().getPage().addSelectionListener(getSelectionListener());
-    
+
     makeActions();
   }
 
@@ -547,7 +547,7 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
     removeSessionListener();
 
     getSite().getPage().removeSelectionListener(getSelectionListener());
-    
+
     model = null;
     super.dispose();
   }
@@ -704,35 +704,27 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
    * @return
    */
   protected ISelectionListener createSelectionListener() {
-    return new ISelectionListener() {
-      /**
-       * @see org.eclipse.ui.ISelectionListener#selectionChanged(org.eclipse.ui.IWorkbenchPart,
-       *      org.eclipse.jface.viewers.ISelection)
-       */
-      @SuppressWarnings("synthetic-access")
-      @Override
-      public void selectionChanged(IWorkbenchPart part, ISelection selection) {
-        Object newInput = handleWorkbenchPageSelectionEvent(part, selection);
-        // Set the selected object as new input only if it is an EObject
-        if (newInput instanceof EObject) {
-          // Avoid the property view to be selection provider.
-          if (CapellaUIPropertiesPlugin.PROPERTIES_SHEET_VIEW_ID.equals(part.getSite().getId())) {
-            return;
-          }
-          // Check the input is different from current one.
-          try {
-            shouldSetFocus = false;
-            setInput(newInput);
-          } finally {
-            shouldSetFocus = true;
-          }
-        } else if ((part != SemanticBrowserView.this)
-            && !CapellaUIPropertiesPlugin.PROPERTIES_SHEET_VIEW_ID.equals(part.getSite().getId())) { // //
-          // Avoid the property view to be selection provider.
-          // Event sent by another part apart from the Property Sheet view
-          // Prevent from displaying elements not related to the workbench current selection.
-          clean();
+    return (part, selection) -> {
+      Object newInput = handleWorkbenchPageSelectionEvent(part, selection);
+      // Set the selected object as new input only if it is an EObject
+      if (newInput instanceof EObject) {
+        // Avoid the property view to be selection provider.
+        if (CapellaUIPropertiesPlugin.PROPERTIES_SHEET_VIEW_ID.equals(part.getSite().getId())) {
+          return;
         }
+        // Check the input is different from current one.
+        try {
+          shouldSetFocus = false;
+          saveInput(newInput);
+        } finally {
+          shouldSetFocus = true;
+        }
+      } else if ((part != SemanticBrowserView.this)
+          && !CapellaUIPropertiesPlugin.PROPERTIES_SHEET_VIEW_ID.equals(part.getSite().getId())) { // //
+        // Avoid the property view to be selection provider.
+        // Event sent by another part apart from the Property Sheet view
+        // Prevent from displaying elements not related to the workbench current selection.
+        clean();
       }
     };
   }
@@ -869,24 +861,6 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
     factory.createListenToSelectionEventsAction(this, isLinkedToSelection);
   }
 
-  /**
-   * @see org.polarsys.capella.common.ui.toolkit.browser.view.ISemanticBrowserViewPart#refresh()
-   */
-  @Override
-  public void refresh() {
-    if (input != null) {
-      isRefreshing = true;
-      if (getModel().isListeningToPageSelectionEvents()) {
-        setInput(input);
-      } else {
-        activateListeningToPageSelectionEvents();
-        setInput(input);
-        deactivateListeningToPageSelectionEvents();
-      }
-      isRefreshing = false;
-    }
-  }
-
   protected void refreshPropertyPage(ISelectionProvider selectionProvider) {
     // Notify the property page to refresh with the new selection.
     // Be careful, the properties view can be closed, don't send it
@@ -946,37 +920,27 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
         && ((currentTreeViewer.getControl() != null) && !(currentTreeViewer.getControl().isDisposed()))) {
       Display display = currentTreeViewer.getControl().getDisplay();
 
-      BusyIndicator.showWhile(display, new Runnable() {
-        @Override
-        public void run() {
+      BusyIndicator.showWhile(display, () -> {
 
-          // Broadcast "set input" signal to all viewers.
-          ViewerHelper.run(referencingViewer, new Runnable() {
-            @Override
-            public void run() {
-              if ((referencingViewer.getControl() != null) && !referencingViewer.getControl().isDisposed()) {
-                referencingViewer.setInput(input);
-              }
-            }
-          });
-          ViewerHelper.run(referencedViewer, new Runnable() {
-            @Override
-            public void run() {
-              if ((referencedViewer.getControl() != null) && !referencedViewer.getControl().isDisposed()) {
-                referencedViewer.setInput(input);
-              }
-            }
-          });
-          ViewerHelper.run(SemanticBrowserView.this.currentViewer, new Runnable() {
-            @Override
-            public void run() {
-              if ((SemanticBrowserView.this.currentViewer.getControl() != null)
-                  && !SemanticBrowserView.this.currentViewer.getControl().isDisposed()) {
-                SemanticBrowserView.this.currentViewer.setInput(input);
-              }
-            }
-          });
-        }
+        // Broadcast "set input" signal to all viewers.
+        ViewerHelper.run(referencingViewer, () -> {
+          if ((referencingViewer.getControl() != null) && !referencingViewer.getControl().isDisposed()) {
+            referencingViewer.setInput(input);
+          }
+        });
+
+        ViewerHelper.run(referencedViewer, () -> {
+          if ((referencedViewer.getControl() != null) && !referencedViewer.getControl().isDisposed()) {
+            referencedViewer.setInput(input);
+          }
+        });
+
+        ViewerHelper.run(SemanticBrowserView.this.currentViewer, () -> {
+          if ((SemanticBrowserView.this.currentViewer.getControl() != null)
+              && !SemanticBrowserView.this.currentViewer.getControl().isDisposed()) {
+            SemanticBrowserView.this.currentViewer.setInput(input);
+          }
+        });
       });
     }
   }
@@ -1075,7 +1039,7 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
   @Override
   public void setFocus() {
     setFocusOnViewer();
-    propagateInput();
+    refresh();
   }
 
   private void setFocusOnViewer() {
@@ -1088,24 +1052,32 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
     }
   }
 
-  /**
-   * @see org.polarsys.capella.common.ui.toolkit.browser.view.ISemanticBrowserViewPart#setInput(java.lang.Object)
-   */
   @Override
   public final void setInput(final Object input) {
     this.input = input;
-    propagateInput();
+    refresh();
+  }
+
+  @Override
+  public final void saveInput(final Object input) {
+    this.input = input;
+
+    if (isLinkedToSelection) {
+      refresh();
+    }
+
   }
 
   /**
-   * Propagates the current input to the sub viewers if the view is visible and it's linked to workbench selection
+   * Propagates the current input to the sub viewers if the view is visible
    */
-  private void propagateInput() {
-    if (isLinkedToSelection && getSite().getPage().isPartVisible(this)) {
+  @Override
+  public void refresh() {
+    if (getSite().getPage().isPartVisible(this)) {
       // Precondition: do not set the same input twice, except during refreshing.
       TreeViewer currentTreeViewer = getCurrentViewer();
       Object lastInput = currentTreeViewer.getInput();
-      if (!isRefreshing && (null != lastInput) && (lastInput.equals(input))) {
+      if (null != lastInput && lastInput.equals(input)) {
         return;
       }
 

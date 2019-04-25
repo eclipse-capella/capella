@@ -35,7 +35,8 @@ import org.polarsys.capella.core.ui.semantic.browser.view.SemanticBrowserView;
  * Handler to set the semantic browser with a new selection.
  */
 public class SemanticBrowserSetSelectionHandler extends AbstractLocateInViewPartHandler {
-  private static final Logger __logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.UI);
+  private static final Logger __logger = ReportManagerRegistry.getInstance()
+      .subscribe(IReportManagerDefaultComponents.UI);
 
   /**
    * @see org.polarsys.capella.common.ui.services.commands.AbstractLocateInViewPartHandler#getTargetedPartId()
@@ -50,19 +51,21 @@ public class SemanticBrowserSetSelectionHandler extends AbstractLocateInViewPart
    *      org.eclipse.ui.IWorkbenchPart, org.eclipse.core.commands.ExecutionEvent)
    */
   @Override
-  protected IViewPart handleSelection(ISelection selection_p, IWorkbenchPart activePart_p, ExecutionEvent event_p) {
-    IViewPart targetedPart = super.handleSelection(selection_p, activePart_p, event_p);
-    Object objectToSelect = SiriusSelectionHelper.handleSelection(activePart_p, selection_p, true);
+  protected IViewPart handleSelection(ISelection selection, IWorkbenchPart activePart, ExecutionEvent event) {
+    IViewPart targetedPart = super.handleSelection(selection, activePart, event);
+    Object objectToSelect = SiriusSelectionHelper.handleSelection(activePart, selection, true);
     if (null == objectToSelect) {
       if (__logger.isDebugEnabled()) {
-        StringBuilder loggerMessage = new StringBuilder("SemanticBrowserSetSelectionHandler.handleSelection(..) _ No Object to select !"); //$NON-NLS-1$
+        StringBuilder loggerMessage = new StringBuilder(
+            "SemanticBrowserSetSelectionHandler.handleSelection(..) _ No Object to select !"); //$NON-NLS-1$
         __logger.debug(loggerMessage.toString());
         __logger.debug(new EmbeddedMessage(loggerMessage.toString(), IReportManagerDefaultComponents.UI));
       }
       return null;
     }
     if (targetedPart instanceof SiriusSemanticBrowserView) {
-      ((SiriusSemanticBrowserView) targetedPart).setInput(objectToSelect);
+      SiriusSemanticBrowserView semanticBrowserView = (SiriusSemanticBrowserView) targetedPart;
+      semanticBrowserView.setInput(objectToSelect);
     }
     return targetedPart;
   }
@@ -75,19 +78,24 @@ public class SemanticBrowserSetSelectionHandler extends AbstractLocateInViewPart
   public void updateElement(UIElement element_p, Map parameters_p) {
     IWorkbenchWindow workbenchWindow = (IWorkbenchWindow) parameters_p.get("org.eclipse.ui.IWorkbenchWindow"); //$NON-NLS-1$
     if (null != workbenchWindow) {
-      if(null == workbenchWindow.getActivePage()) return;
+      if (null == workbenchWindow.getActivePage())
+        return;
       IWorkbenchPart activePart = workbenchWindow.getActivePage().getActivePart();
-      if(null == activePart || null==activePart.getSite()) return;
+      if (null == activePart || null == activePart.getSite())
+        return;
       IWorkbenchPartSite site = activePart.getSite();
-      if(null==site.getSelectionProvider()) return;
-      Object object = SiriusSelectionHelper.handleSelection(activePart, site.getSelectionProvider().getSelection(), true);
+      if (null == site.getSelectionProvider())
+        return;
+      Object object = SiriusSelectionHelper.handleSelection(activePart, site.getSelectionProvider().getSelection(),
+          true);
       if (object instanceof EObject) {
         String title = Messages.SelectInSemanticBrowserAction_LongTitle;
         // Adapt the title when action is displayed in Semantic Browser contextual menu.
         if (activePart instanceof SemanticBrowserView) {
           title = Messages.SelectInSemanticBrowserAction_ShortTitle;
         }
-        title = StringHelper.formatMessage(title, new String[] { EObjectLabelProviderHelper.getText((EObject) object) });
+        title = StringHelper.formatMessage(title,
+            new String[] { EObjectLabelProviderHelper.getText((EObject) object) });
         element_p.setText(title);
       }
     }
