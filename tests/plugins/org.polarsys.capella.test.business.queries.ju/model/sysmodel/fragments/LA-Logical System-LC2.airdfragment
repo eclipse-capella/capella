@@ -4,6 +4,7 @@
     <referencedAnalysis xmi:type="viewpoint:DAnalysis" href="LA-Logical%20Functions-RLF-OA2-SysOA2_1.airdfragment#_0VgkACZxEeGJJIltX6tx3w"/>
     <semanticResources>LA-Logical%20System-LC2.melodyfragment</semanticResources>
     <semanticResources>../sysmodel.melodymodeller</semanticResources>
+    <semanticResources>platform:/resource/sysModelLib/sysModelLib.melodymodeller</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_i0yfQiZxEeGJJIltX6tx3w">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/common.odesign#//@ownedViewpoints[name='Common']"/>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_I_MHcHTTEea2zdoadWNr2A" name="[IS] IS1 [From 'Logical System'] - Interface Scenario" repPath="#_tTEPQMS5EeCI_NCOxdDk1w">

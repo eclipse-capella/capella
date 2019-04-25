@@ -11,7 +11,6 @@
 package org.polarsys.capella.test.business.queries.ju.testSuites.partial;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.capellamodeller.SystemEngineering_ReusedSharedPkg;
@@ -37,10 +36,5 @@ public class CapellaModellerBusinessQueryTestSuite extends BasicTestSuite {
     List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
     tests.add(new SystemEngineering_ReusedSharedPkg());
     return tests;
-  }
-
-  @Override
-  public List<String> getRequiredTestModels() {
-    return Arrays.asList("sysmodel");
   }
 }

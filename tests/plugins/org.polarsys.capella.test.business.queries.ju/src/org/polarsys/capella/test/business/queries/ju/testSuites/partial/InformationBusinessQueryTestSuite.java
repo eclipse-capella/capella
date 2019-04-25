@@ -11,7 +11,6 @@
 package org.polarsys.capella.test.business.queries.ju.testSuites.partial;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.information.*;
@@ -154,10 +153,4 @@ public class InformationBusinessQueryTestSuite extends BasicTestSuite {
     tests.add(new UnionProperty_Type());    
     return tests;
   }
-
-  @Override
-  public List<String> getRequiredTestModels() {
-    return Arrays.asList("sysmodel");
-  }
-
 }

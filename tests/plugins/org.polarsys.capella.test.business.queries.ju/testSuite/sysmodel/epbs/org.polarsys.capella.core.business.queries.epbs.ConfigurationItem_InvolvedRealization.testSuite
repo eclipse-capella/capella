@@ -110,3 +110,13 @@ inputId = 16ac994b-ca41-4e89-8c3d-7cfadc6f79d4
 resultIds = {
 }
 
+queryIdentifier = org.polarsys.capella.core.business.queries.epbs.ConfigurationItem_InvolvedRealization-getAvailableElements
+inputId = e9e4d9bd-0474-47a0-9cd5-e26358bceca7
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.epbs.ConfigurationItem_InvolvedRealization-getCurrentElements
+inputId = e9e4d9bd-0474-47a0-9cd5-e26358bceca7
+resultIds = {
+}
+

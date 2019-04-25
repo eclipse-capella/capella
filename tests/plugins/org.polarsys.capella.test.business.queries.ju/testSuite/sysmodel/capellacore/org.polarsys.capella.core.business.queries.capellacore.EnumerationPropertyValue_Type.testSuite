@@ -14,11 +14,20 @@ inputId = 239be81c-9164-4e0f-ae12-23023e0f749a
 resultIds = {
     09ce4824-51ec-42f3-8fe5-7682c59eb4bf
     2292bbe0-f02b-4da1-8ea4-499d40bd1446
+    765d44fa-77e2-4198-9083-36d96e85d627
+    7d4f88a3-52dd-4de4-b452-38f4dca86fc1
 }
 
 queryIdentifier = org.polarsys.capella.core.business.queries.capellacore.EnumerationPropertyValue_Type-getCurrentElements
 inputId = 239be81c-9164-4e0f-ae12-23023e0f749a
 resultIds = {
     09ce4824-51ec-42f3-8fe5-7682c59eb4bf
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.capellacore.EnumerationPropertyValue_Type-getAvailableElements
+inputId = 03ff4ea0-fcae-4855-a2f6-a3e297f43abe
+resultIds = {
+    765d44fa-77e2-4198-9083-36d96e85d627
+    7d4f88a3-52dd-4de4-b452-38f4dca86fc1
 }
 

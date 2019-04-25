@@ -45,3 +45,13 @@ inputId = 465ff781-97b1-4258-9ecf-4f8ecd4f5249
 resultIds = {
 }
 
+queryIdentifier = org.polarsys.capella.core.business.queries.information.BooleanType_RealizedBooleanType-getAvailableElements
+inputId = d704a709-c528-4486-a333-ee39f65e6708
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.information.BooleanType_RealizedBooleanType-getCurrentElements
+inputId = d704a709-c528-4486-a333-ee39f65e6708
+resultIds = {
+}
+

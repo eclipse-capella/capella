@@ -13,18 +13,30 @@ queryIdentifier = org.polarsys.capella.core.business.queries.information.Physica
 inputId = cd18be6a-15ca-4aac-803c-54c917b286cc
 resultIds = {
     0b8909a7-2b25-47c4-bef6-a62793566ec3
+    1cc40327-a5e0-49fa-b0a6-8a16b29ec94c
     2344816f-ce21-471f-b1c5-d10ba32f4131
     2769625c-6427-4400-81db-f5222f24a548
+    31a3255a-70b7-45fa-b33d-6f4b17f6d521
+    32de5b13-2052-4398-8ae9-9d4f63f584a1
     373048a5-c757-4544-b906-67ef481dd6eb
     598eca28-27b1-49f3-973d-a787afcda9f6
     5c31af60-442b-4c28-befa-c9d59e9798f7
     654b67d1-cc33-467a-a0ca-9a41cf0e62af
+    75ee521d-8ab4-4d7f-9314-5554b86cdbfd
     7d1da46f-95c9-41c5-8c39-020b3bd9cb5b
     93bbaf3e-ba75-4872-9b7e-2239f898b901
+    ac3c16e5-f608-43e4-94a8-83d6b8810664
+    ae16910f-1486-4614-8e12-172df74bbb2d
+    b32e48ba-1c1c-45a7-96da-d2be4a2f27eb
     ccf8011e-69ec-4387-ba6a-af2829b088cf
     cde66be7-2e3b-41e6-84e8-f8f90bd19ba5
+    ce159c10-b0fa-4e1d-b85a-5ac8eb9067e7
     d3634616-d93d-4f50-8eb7-43894acba1ab
+    db24e675-bdce-4e6a-9ec1-107b5dc19f76
+    dfa13426-2519-4e11-8ebe-db42ea00653f
     e6c1b0e1-1f90-4ce2-ad69-a2ca2bdd2f5d
+    f01511a7-c450-4dae-81b1-b37add5ae6c3
+    f1ab6562-1dc2-42c4-a744-f4af5eba4c55
     f4641b94-145a-43f7-84cd-c112cd51d3e4
 }
 

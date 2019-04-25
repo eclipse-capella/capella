@@ -2321,3 +2321,14 @@ inputId = 16b37377-609c-4dd6-a92b-964f817ab599
 resultIds = {
 }
 
+queryIdentifier = org.polarsys.capella.core.business.queries.pa.PhysicalFunction_FunctionalRealization-getAvailableElements
+inputId = f21eff6d-fdac-45de-b71e-55a6eb19c288
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.pa.PhysicalFunction_FunctionalRealization-getCurrentElements
+inputId = f21eff6d-fdac-45de-b71e-55a6eb19c288
+resultIds = {
+    146a0375-2864-4dad-b1c5-e59e845b7d9e
+}
+

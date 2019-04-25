@@ -19,3 +19,13 @@ inputId = d91f1d50-2c3f-4edc-877f-a39ea81bcedc
 resultIds = {
 }
 
+queryIdentifier = org.polarsys.capella.core.business.queries.capellamodeller.SystemEngineering_ReusedSharedPkg-getAvailableElements
+inputId = 0a049df6-a48e-429a-8c4e-94d73f232a97
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.capellamodeller.SystemEngineering_ReusedSharedPkg-getCurrentElements
+inputId = 0a049df6-a48e-429a-8c4e-94d73f232a97
+resultIds = {
+}
+

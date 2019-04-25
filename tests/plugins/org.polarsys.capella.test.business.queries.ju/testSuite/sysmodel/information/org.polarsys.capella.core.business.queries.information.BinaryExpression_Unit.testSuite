@@ -42,3 +42,23 @@ inputId = 6f16f487-2906-428c-82ff-52728e0df000
 resultIds = {
 }
 
+queryIdentifier = org.polarsys.capella.core.business.queries.information.BinaryExpression_Unit-getAvailableElements
+inputId = 6c531d89-fb9c-4eb0-93b6-c285c3148671
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.information.BinaryExpression_Unit-getCurrentElements
+inputId = 6c531d89-fb9c-4eb0-93b6-c285c3148671
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.information.BinaryExpression_Unit-getAvailableElements
+inputId = d2c77fbb-a119-4f97-aff8-67c4cf4affd2
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.information.BinaryExpression_Unit-getCurrentElements
+inputId = d2c77fbb-a119-4f97-aff8-67c4cf4affd2
+resultIds = {
+}
+

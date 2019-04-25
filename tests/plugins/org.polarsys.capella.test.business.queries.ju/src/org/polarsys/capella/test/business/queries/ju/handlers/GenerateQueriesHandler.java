@@ -29,8 +29,13 @@ import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.handlers.HandlerUtil;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
+import org.polarsys.capella.common.libraries.ILibraryManager;
+import org.polarsys.capella.common.libraries.IModel;
+import org.polarsys.capella.common.libraries.manager.LibraryManagerExt;
 import org.polarsys.capella.common.ui.services.commands.AbstractUiHandler;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
+import org.polarsys.capella.core.data.capellamodeller.Project;
+import org.polarsys.capella.core.libraries.model.CapellaModel;
 import org.polarsys.capella.test.business.queries.ju.BQTestConstants;
 import org.polarsys.capella.test.business.queries.ju.BQTestHelpers;
 import org.polarsys.capella.test.business.queries.ju.QueryResult;
@@ -38,9 +43,8 @@ import org.polarsys.capella.test.business.queries.ju.TestBusinessQueriesPlugin;
 import org.polarsys.capella.test.framework.helpers.IResourceHelpers;
 
 /**
- * This class adds a command on Project Explorer on an EObject. 
- * It will run each registered business query on all elements of the current session and save them 
- * to the org.polarsys.capella.test.business.queries.ju/testSuite folder
+ * This class adds a command on Project Explorer on an EObject. It will run each registered business query on all
+ * elements of the current session and save them to the org.polarsys.capella.test.business.queries.ju/testSuite folder
  */
 public class GenerateQueriesHandler extends AbstractUiHandler {
 
@@ -55,10 +59,16 @@ public class GenerateQueriesHandler extends AbstractUiHandler {
         HashMap<String, ArrayList<IBusinessQuery>> pkgs = BQTestHelpers.getQueryPerPackages();
 
         monitor.beginTask("Generate", pkgs.keySet().size());
-        
+
         EObject obj = (EObject) ((IStructuredSelection) HandlerUtil.getCurrentSelection(event)).toArray()[0];
         IProject project = EcoreUtil2.getFile(obj.eResource()).getProject();
         Session session = SessionManager.INSTANCE.getSession(obj);
+
+        // Find the reference library for the test model
+        IModel currentModel = ILibraryManager.INSTANCE.getModel(obj);
+        CapellaModel libProject = (CapellaModel) LibraryManagerExt.getAllActivesReferences(currentModel).iterator()
+            .next();
+        Project library = libProject.getProject(libProject.getEditingDomain());
 
         for (String pkg : pkgs.keySet()) {
 
@@ -67,18 +77,20 @@ public class GenerateQueriesHandler extends AbstractUiHandler {
             String queryIdentifier = query.getClass().getCanonicalName();
             monitor.setTaskName(queryIdentifier);
 
-            if (BQTestConstants.isDiscardedBQ(queryIdentifier) || query.getClass().getAnnotation(Deprecated.class) != null) {
+            if (BQTestConstants.isDiscardedBQ(queryIdentifier)
+                || query.getClass().getAnnotation(Deprecated.class) != null) {
               continue;
             }
-            
+
             List<QueryResult> results = getResults(queryIdentifier, session, query);
             if (!results.isEmpty()) {
               File testSuiteFile = BQTestHelpers.getTestSuiteFile(BQTestHelpers.getBqTestProject(), queryIdentifier,
                   project.getName());
-              
-              File junitFile = BQTestHelpers.getJUnitFile(BQTestHelpers.getBqTestProject(), queryIdentifier, project.getName(), query.getClass().getSimpleName()+".java");
+
+              File junitFile = BQTestHelpers.getJUnitFile(BQTestHelpers.getBqTestProject(), queryIdentifier,
+                  project.getName(), query.getClass().getSimpleName() + ".java");
               createTestSuiteFile(results, testSuiteFile);
-              createJUnitFile(junitFile, project.getName(), queryIdentifier);
+              createJUnitFile(junitFile, project.getName(), library.getName(), queryIdentifier);
             }
             if (monitor.isCanceled()) {
               return Status.CANCEL_STATUS;
@@ -86,7 +98,8 @@ public class GenerateQueriesHandler extends AbstractUiHandler {
           }
           monitor.worked(1);
         }
-        return new Status(IStatus.WARNING, TestBusinessQueriesPlugin.PLUGIN_ID, "Generated in "+BQTestHelpers.getBqTestProject().getAbsolutePath());
+        return new Status(IStatus.WARNING, TestBusinessQueriesPlugin.PLUGIN_ID,
+            "Generated in " + BQTestHelpers.getBqTestProject().getAbsolutePath());
       }
     };
 
@@ -140,7 +153,6 @@ public class GenerateQueriesHandler extends AbstractUiHandler {
     }
     return result;
   }
-  
 
   /**
    * Create a .testSuite file with the given QueryResults
@@ -157,7 +169,8 @@ public class GenerateQueriesHandler extends AbstractUiHandler {
   /**
    * Create a .java file for the given query
    */
-  public static void createJUnitFile(File junitFile, String testProjectName, String queryIdentifier) {
+  public static void createJUnitFile(File junitFile, String testProjectName, String libProjectName,
+      String queryIdentifier) {
     if (!junitFile.exists()) {
       File templateFile = new File(BQTestHelpers.getBqTestProject(), BQTestConstants.JUNIT_TEMPLATE_FILE_RELATIVE_PATH); // $NON-NLS-1$
       String junitCode = IResourceHelpers.readFileAsString(templateFile);
@@ -169,6 +182,7 @@ public class GenerateQueriesHandler extends AbstractUiHandler {
       junitCode = junitCode.replaceAll(BQTestConstants.JUNIT_TEST_CASE_FILE_NAME__VARIABLE,
           junitFile.getName().split("\\.")[0]); //$NON-NLS-1$
       junitCode = junitCode.replaceAll(BQTestConstants.PROJECT_NAME_FOR_TEST__VARIABLE, testProjectName);
+      junitCode = junitCode.replaceAll(BQTestConstants.LIB_PROJECT_NAME_FOR_TEST__VARIABLE, libProjectName);
       junitCode = junitCode.replaceAll(BQTestConstants.BUSINESS_QUERY_FQN__VARIABLE, queryIdentifier);
       IResourceHelpers.writeStringInFile(junitFile, junitCode);
     }
