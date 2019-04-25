@@ -1153,6 +1153,10 @@
                class="org.polarsys.capella.common.re.handlers.scope.ContainmentScopeRetriever"
                id="org.polarsys.capella.common.re.handlers.scope.ContainmentScopeRetriever">
          </scopeRetriever>
+         <scopeFilter
+               class="org.polarsys.capella.common.re.handlers.scope.ContainmentScopeFilter"
+               id="org.polarsys.capella.common.re.handlers.scope.ContainmentScopeFilter">
+         </scopeFilter>
       </handlers>
       <handlers
             id="org.polarsys.capella.common.re.relatedElements"

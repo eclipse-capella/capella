@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,6 +15,7 @@ import java.util.Collection;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.polarsys.capella.common.ef.command.ICommand;
+import org.polarsys.capella.common.re.ReAbstractElement;
 import org.polarsys.capella.common.re.commands.CreateRecCommand;
 import org.polarsys.capella.core.transition.common.commands.CommandHandler;
 
@@ -37,12 +38,12 @@ public class CreateRecHandler extends CommandHandler {
   public void setEnabled(Object evaluationContext) {
     super.setEnabled(evaluationContext);
 
-    Collection<?> seleciton =  getInitialSelection(evaluationContext);
-    if (seleciton.isEmpty()) {
+    Collection<?> selection = getInitialSelection(evaluationContext);
+    if (selection.isEmpty() || selection.stream().anyMatch(ReAbstractElement.class::isInstance)) {
       setBaseEnabled(false);
       return;
     }
     setBaseEnabled(true);
   }
-  
+
 }
