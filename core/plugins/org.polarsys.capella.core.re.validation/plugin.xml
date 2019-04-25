@@ -42,6 +42,63 @@
                   This rule check if a RPL is up to date compared to its origin REC.
                </description>
             </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.re.validation.design.consistency.DCON_04_RplWithoutRec"
+                  id="DCON_04"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DCON_04 - RPL/REC_RPL without REC"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0} ({1}) without REC
+               </message>
+               <target
+                     class="CatalogElement">
+               </target>
+               <description>
+                  This rule check if a RPL or REC_RPL has no REC.
+               </description>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.re.validation.design.consistency.DCON_05_RecWithoutRpl"
+                  id="DCON_05"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DCON_05 - REC without RPL"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0} ({1}) without RPL
+               </message>
+               <target
+                     class="CatalogElement">
+               </target>
+               <description>
+                  This rule check if a REC is not utilised in a RPL.
+               </description>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.re.validation.design.consistency.DCON_06_RecRplWithoutRpl"
+                  id="DCON_06"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DCON_06 - REC_RPL without RPL"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0} ({1}) without RPL
+               </message>
+               <target
+                     class="CatalogElement">
+               </target>
+               <description>
+                  This rule check if a REC_RPL is not utilised in a RPL.
+               </description>
+            </constraint>
          </constraints>
       </constraintProvider>
       <constraintProvider>
