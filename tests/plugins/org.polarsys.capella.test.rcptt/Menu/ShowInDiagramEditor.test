@@ -7,7 +7,7 @@ Element-Version: 3.0
 External-Reference: 
 Id: _Idm30MsNEei-lPwnfaLAUA
 Runtime-Version: 2.3.0.201806262310
-Save-Time: 10/9/18 9:42 AM
+Save-Time: 4/26/19 2:46 PM
 Testcase-Type: ecl
 
 ------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
@@ -42,4 +42,61 @@ get-view "Capella Project Explorer" | get-tree
 with [get-editor "System Functions - Operational Activities"] {
     verify-error {get-menu -path "Show in Diagram Editor"}
 }
+
+// Functionality test
+get-view "Capella Project Explorer" | get-tree 
+    | select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/Operational Analysis/Operational Activities/Root Operational Activity/Broadcast Safety Instructions Movie/\\[OPD\\] Broadcast Safety Instructions Movie" 
+    | double-click
+    
+// Initial elements count
+get-editor "[OPD] Broadcast Safety Instructions Movie" | get-diagram -index 1 | get-edit-part 
+    -name "[OPD] Broadcast Safety Instructions Movie" | get-property childrenCount | equals 3 | verify-true
+
+with [get-editor "[OPD] Broadcast Safety Instructions Movie"] {
+    with [get-palette | get-palette-entry "Operational Activity"] {
+        mouse-move 56 27 button1 -height 47 -width 125
+        mouse-press 56 27 button1 -height 47 -width 125
+        mouse-release 56 27 button1 524288 -height 47 -width 125
+        mouse-move 12 43 -height 47 -width 125
+    }
+    with [get-diagram -index 1 | get-edit-part -name "[OPD] Broadcast Safety Instructions Movie"] {
+        mouse-move 518 166 button1 -height 579 -width 1281
+        mouse-press 518 166 button1 -height 579 -width 1281
+        mouse-release 518 166 button1 524288 -height 579 -width 1281
+    }
+}
+
+// Add duplicate values to the diagram to correctly test the show in Diagram Editor
+with [get-window "Selection Dialog"] {
+    get-group "Select a name to find" | get-editbox -after [get-label "? = any character, * = any string"] | set-focus
+    get-tree 
+        | select "In-Flight Entertainment System/In-Flight Entertainment System/Operational Analysis/Operational Activities/Root Operational Activity/Play Imposed Movie" "In-Flight Entertainment System/In-Flight Entertainment System/Operational Analysis/Operational Activities/Root Operational Activity/Broadcast Movies"
+    get-button OK | click
+}
+
+
+// Check that the elements were added
+get-editor "[OPD] Broadcast Safety Instructions Movie" | get-diagram -index 1 | get-edit-part 
+    -name "[OPD] Broadcast Safety Instructions Movie" | get-property childrenCount | equals 5 | verify-true
+
+// Select the Project Explorer elements and show in diagram editor
+with [get-view "Capella Project Explorer" | get-tree] {
+    select "In-Flight Entertainment System/*In-Flight Entertainment System.aird/In-Flight Entertainment System/Operational Analysis/Operational Activities/Root Operational Activity/Play Imposed Movie" "In-Flight Entertainment System/*In-Flight Entertainment System.aird/In-Flight Entertainment System/Operational Analysis/Operational Activities/Root Operational Activity/Broadcast Movies"
+    get-menu -path "Show in Diagram Editor" | click
+}
+
+// Check how many elements were selected
+with [get-editor "[OPD] Broadcast Safety Instructions Movie"] {
+
+    get-diagram -index 1 | get-edit-part -name "[OPD] Broadcast Safety Instructions Movie" | mouse-move 310 2 
+        -height 579 -width 1285
+    get-button "Hide element" | click
+}
+
+get-editor "[OPD] Broadcast Safety Instructions Movie" | get-diagram -index 1 | get-edit-part 
+    -name "[OPD] Broadcast Safety Instructions Movie" | get-property childrenCount | equals 1 | verify-true
+
+get-editor "[OPD] Broadcast Safety Instructions Movie" | get-diagram -index 1 | get-edit-part 
+    -name "[OPD] Broadcast Safety Instructions Movie" | get-edit-part -name "Watch Movie" | get-edit-part 
+    -className SquareEditPart | get-figure -path "0/0" | get-property "getText()" | equals "Watch Movie" | verify-true
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--
