@@ -11,6 +11,7 @@
 package org.polarsys.capella.test.business.queries.ju.testSuites.main;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.polarsys.capella.test.business.queries.ju.testSuites.partial.CapellaCommonBusinessQueryTestSuite;
@@ -42,6 +43,19 @@ public class BusinessQueryTestSuite extends BasicTestSuite {
 		return new BusinessQueryTestSuite();
 	}
 
+  @Override
+  public List<String> getRequiredTestModels() {
+    return Arrays.asList(new String[] { getProjectForTest(), getLibProjectForTest() });
+  }
+
+  public String getProjectForTest() {
+    return "sysmodel"; //$NON-NLS-1$
+  }
+
+  public String getLibProjectForTest() {
+    return "sysModelLib"; //$NON-NLS-1$
+  }
+  
 	@Override
 	protected List<BasicTestArtefact> getTests() {
 		List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
