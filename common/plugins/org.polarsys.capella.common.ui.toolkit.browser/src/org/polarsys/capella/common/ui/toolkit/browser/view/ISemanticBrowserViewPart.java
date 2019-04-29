@@ -49,9 +49,19 @@ public interface ISemanticBrowserViewPart extends IViewPart {
   EObject getRootElement();
 
   /**
-   * Refresh content of the viewpart.
+   * Refreshes the content of the semantic browser. The refresh is only performed if the semantic browser input changed
+   * in regards to the last triggered refresh. See {@link ISemanticBrowserViewPart#refresh(boolean)} in order to
+   * <b>ALWAYS</b> force a refresh.
    */
   void refresh();
+
+  /**
+   * Refreshes the content of the semantic browser. If true then the refresh is always performed, if false the refresh
+   * is only performed if the semantic browser input changed in regards to the last triggered refresh. This method
+   * should only be used if a force refresh is required, for all the other cases use the {#link
+   * {@link ISemanticBrowserViewPart#refresh()} which does not force the refresh.
+   */
+  void refresh(boolean forceRefresh);
 
   /**
    * Clean the content of the viewpart.

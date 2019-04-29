@@ -32,7 +32,7 @@ public class RefreshAction extends Action {
 
   @Override
   public void run() {
-    semanticBrowserViewPart.refresh();
+    semanticBrowserViewPart.refresh(true);
   }
 
 }

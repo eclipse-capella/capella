@@ -1068,16 +1068,13 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
 
   }
 
-  /**
-   * Propagates the current input to the sub viewers if the view is visible
-   */
   @Override
-  public void refresh() {
+  public void refresh(boolean forceRefresh) {
     if (getSite().getPage().isPartVisible(this)) {
       // Precondition: do not set the same input twice, except during refreshing.
       TreeViewer currentTreeViewer = getCurrentViewer();
       Object lastInput = currentTreeViewer.getInput();
-      if (null != lastInput && lastInput.equals(input)) {
+      if (!forceRefresh && null != lastInput && lastInput.equals(input)) {
         return;
       }
 
@@ -1100,6 +1097,14 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
         setFocusOnViewer();
       }
     }
+  }
+
+  /**
+   * Propagates the current input to the sub viewers if the view is visible
+   */
+  @Override
+  public void refresh() {
+    refresh(false);
   }
 
   /**
