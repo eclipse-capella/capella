@@ -107,10 +107,9 @@ public class InitializeDiffMergeFromTransformationActivity extends AbstractActiv
     List<EObject> rootTarget = new ArrayList<>();
     rootTarget.add((EObject) context.get(ITransitionConstants.MERGE_TARGET_CONTAINER));
 
-    IEditableModelScope targetScope = new TargetModelScope(rootTarget, context);
+    TargetModelScope targetScope = new TargetModelScope(rootTarget, context);
     context.put(ITransitionConstants.MERGE_TARGET_SCOPE, targetScope);
-
-    ((PartialRootedModelScope) targetScope).build(getTargetFilter(context));
+    targetScope.build(getTargetFilter(context));
 
     return Status.OK_STATUS;
   }

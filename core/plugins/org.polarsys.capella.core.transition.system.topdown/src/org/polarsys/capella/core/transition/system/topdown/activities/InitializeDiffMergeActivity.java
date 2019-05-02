@@ -94,13 +94,12 @@ public class InitializeDiffMergeActivity
     EObject targetTop = (EObject) context.get(ITransitionConstants.TRANSITION_TARGET_ROOT);
     context.put(ITransitionConstants.MERGE_TARGET_CONTAINER, targetTop);
 
-    List<EObject> rootTarget = new ArrayList<EObject>();
+    List<EObject> rootTarget = new ArrayList<>();
     rootTarget.add((EObject) context.get(ITransitionConstants.MERGE_TARGET_CONTAINER));
 
     TargetModelScope targetScope = new TargetModelScope(rootTarget, context);
     context.put(ITransitionConstants.MERGE_TARGET_SCOPE, targetScope);
-
-    ((PartialRootedModelScope) targetScope).build(getTargetFilter(context));
+    targetScope.build(getTargetFilter(context));
 
     return Status.OK_STATUS;
   }
