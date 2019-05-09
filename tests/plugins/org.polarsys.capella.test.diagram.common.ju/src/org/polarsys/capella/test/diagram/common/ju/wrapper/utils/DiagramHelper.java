@@ -46,6 +46,7 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.DNodeListElement;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramComponentizationManager;
@@ -103,6 +104,7 @@ public class DiagramHelper {
    */
   public static void setSynchronized(final DDiagram diagram, final boolean isSynchronized) {
     final AbstractCommand cmd = new AbstractReadWriteCommand() {
+      @Override
       public void run() {
         diagram.setSynchronized(isSynchronized);
         refreshDiagram(diagram);
@@ -264,8 +266,6 @@ public class DiagramHelper {
     return null;
   }
 
-  
-  
   /**
    * Return the first {@link DDiagramElement} corresponding to the first occurrence found for a given ID, null otherwise
    * 
@@ -466,6 +466,7 @@ public class DiagramHelper {
     try {
 
       final AbstractCommand cmd = new AbstractReadWriteCommand() {
+        @Override
         public void run() {
           DialectManager.INSTANCE.refresh(diagram, new NullProgressMonitor());
         }
@@ -498,6 +499,7 @@ public class DiagramHelper {
        * 
        * @see org.eclipse.sirius.diagram.tools.internal.handler.AbstractChangeLayerActivation#run()
        */
+      @Override
       public void run() {
 
         NotificationUtil.sendNotification(diagram, Notification.Kind.STOP, Notification.VISIBILITY);
@@ -543,7 +545,8 @@ public class DiagramHelper {
    * @param viewpoints
    * @return contributed layers
    */
-  public static List<Layer> getContributedLayers(DiagramDescription diagramDescription, Collection<Viewpoint> viewpoints) {
+  public static List<Layer> getContributedLayers(DiagramDescription diagramDescription,
+      Collection<Viewpoint> viewpoints) {
     return new DiagramComponentizationManager().getAllLayers(viewpoints, diagramDescription);
   }
 
@@ -565,37 +568,39 @@ public class DiagramHelper {
   }
 
   public static void copyLayout(DDiagram diagram) {
-    Session session = SessionManager.INSTANCE.getSession(((DSemanticDecorator)diagram).getTarget());
+    Session session = SessionManager.INSTANCE.getSession(((DSemanticDecorator) diagram).getTarget());
     IWorkbenchPart part = DiagramHelper.getDiagramEditor(session, diagram);
     if (part == null) {
       assertFalse("Diagram is not open, can't copy layout", true);
     }
-    CopyFormatAction action = new CopyFormatAction(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage(), part);
-    action.init(); //if we don't do init, action.getWorkbenchPart will be empty, even if we give the part in the constructor. Due to AbstractCopyPasteFormatAction constructor calling the wrong super(). 
+    CopyFormatAction action = new CopyFormatAction(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage(),
+        part);
+    action.init(); // if we don't do init, action.getWorkbenchPart will be empty, even if we give the part in the
+                   // constructor. Due to AbstractCopyPasteFormatAction constructor calling the wrong super().
     action.run();
     GuiActions.flushASyncGuiThread();
   }
-  
 
   public static void pasteLayout(DDiagram diagram) {
-    Session session = SessionManager.INSTANCE.getSession(((DSemanticDecorator)diagram).getTarget());
+    Session session = SessionManager.INSTANCE.getSession(((DSemanticDecorator) diagram).getTarget());
     IWorkbenchPart part = DiagramHelper.getDiagramEditor(session, diagram);
     if (part == null) {
       assertFalse("Diagram is not open, can't paste layout", true);
     }
-    PasteFormatAction action = new PasteFormatAction(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage(), part);
+    PasteFormatAction action = new PasteFormatAction(
+        PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage(), part);
     action.init();
     action.run();
     GuiActions.flushASyncGuiThread();
-    
-    //Bug sirius: Copy Paste Layout doesn't take border size into account
-    //It requires a second paste
+
+    // Bug sirius: Copy Paste Layout doesn't take border size into account
+    // It requires a second paste
     action.init();
     action.run();
     GuiActions.flushASyncGuiThread();
-    
+
   }
-  
+
   /**
    * Close a 'diagram'
    * 
@@ -607,7 +612,7 @@ public class DiagramHelper {
     IEditorPart editor = getDiagramEditor(session, diagram);
     DialectUIManager.INSTANCE.closeEditor(editor, true);
   }
-  
+
   /**
    * Open a 'diagram' e.g. a {@link DRepresentation}.
    * 
@@ -853,7 +858,8 @@ public class DiagramHelper {
 
   public static boolean isDiagramElementSelectable(DDiagramElement element) {
     DDiagramElementQuery query = new DDiagramElementQuery(element);
-    return !(query.isIndirectlyCollapsed() || query.isFiltered() || query.isIndirectlyHidden() || query.isIndirectlyFolded());
+    return !(query.isIndirectlyCollapsed() || query.isFiltered() || query.isIndirectlyHidden()
+        || query.isIndirectlyFolded());
   }
 
   public static boolean isDiagramElementFiltered(DDiagramElement element) {
@@ -873,6 +879,7 @@ public class DiagramHelper {
 
   public static void addFilterInDiagram(final DDiagram diagram, final FilterDescription filter) {
     AbstractCommand cmd = new AbstractReadWriteCommand() {
+      @Override
       public void run() {
         EList<FilterDescription> activatedFilters = diagram.getActivatedFilters();
         activatedFilters.add(filter);
@@ -907,9 +914,9 @@ public class DiagramHelper {
       eObject = DiagramHelper.getOnDiagram(diagram, current);
       Assert.assertTrue(
           NLS.bind(errMsg,
-              new Object[] {
-                  current instanceof AbstractNamedElement ? ((AbstractNamedElement) current).getName() : current
-                      .eClass().getName(), diagram.getName() }), shouldBeAvailable ? eObject != null : eObject == null);
+              new Object[] { current instanceof AbstractNamedElement ? ((AbstractNamedElement) current).getName()
+                  : current.eClass().getName(), diagram.getName() }),
+          shouldBeAvailable ? eObject != null : eObject == null);
     }
   }
 
@@ -925,9 +932,9 @@ public class DiagramHelper {
       eObject = DiagramHelper.getOnDiagram(diagram, current);
       Assert.assertTrue(
           NLS.bind(errMsg,
-              new Object[] {
-                  current instanceof AbstractNamedElement ? ((AbstractNamedElement) current).getName() : current
-                      .eClass().getName(), diagram.getName() }), shouldBeAvailable ? eObject != null : eObject == null);
+              new Object[] { current instanceof AbstractNamedElement ? ((AbstractNamedElement) current).getName()
+                  : current.eClass().getName(), diagram.getName() }),
+          shouldBeAvailable ? eObject != null : eObject == null);
     }
   }
 
@@ -939,6 +946,15 @@ public class DiagramHelper {
 
     if (element instanceof DDiagram) {
       return new ArrayList<DDiagramElement>(((DDiagram) element).getOwnedDiagramElements());
+    }
+    if (element instanceof DNodeList) {
+      ArrayList<DDiagramElement> views = new ArrayList<DDiagramElement>();
+      for (DDiagramElement view : ((DNodeList) element).getOwnedElements()) {
+        if (view instanceof AbstractDNode) {
+          views.add(view);
+        }
+      }
+      return views;
     }
     if (element instanceof AbstractDNode) {
       return DiagramServices.getDiagramServices().getOwnedAbstractNodes(element);

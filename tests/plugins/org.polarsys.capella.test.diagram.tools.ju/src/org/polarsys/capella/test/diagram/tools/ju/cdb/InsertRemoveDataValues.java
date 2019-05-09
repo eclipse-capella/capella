@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,68 +12,81 @@ package org.polarsys.capella.test.diagram.tools.ju.cdb;
 
 import java.util.List;
 
-import org.eclipse.sirius.business.api.session.Session;
 import org.polarsys.capella.core.data.information.datavalue.DataValue;
 import org.polarsys.capella.core.data.information.datavalue.EnumerationLiteral;
 import org.polarsys.capella.core.data.information.datavalue.LiteralBooleanValue;
 import org.polarsys.capella.core.sirius.analysis.InformationServices;
 import org.polarsys.capella.test.diagram.common.ju.context.CDBDiagram;
-import org.polarsys.capella.test.diagram.tools.ju.model.EmptyProject;
-import org.polarsys.capella.test.framework.context.SessionContext;
-
-import junit.framework.Test;
+import org.polarsys.capella.test.diagram.common.ju.context.CDBDiagram.DataLiteral;
+import org.polarsys.capella.test.diagram.common.ju.context.CDBDiagram.DataType;
+import org.polarsys.capella.test.diagram.common.ju.context.CDBDiagram.ReferenceType;
+import org.polarsys.capella.test.diagram.tools.ju.model.CDBCommunication;
+import org.polarsys.capella.test.diagram.tools.ju.model.settings.CDBProjectSettings;
 
 /**
- * Test for each architecture phases some basic insert remove on ES diagrams
+ *
  */
-public class InsertRemoveDataValues extends EmptyProject {
+public class InsertRemoveDataValues extends CDBCommunication {
 
-  @Override
-  public void test() throws Exception {
-    Session session = getSession(getRequiredTestModel());
-    SessionContext context = new SessionContext(session);
-
-    // OperationalAnalysis
-    testOn(context, OA__DATA);
-
-    // SystemAnalysis
-    testOn(context, SA__DATA);
-
-    // LogicalArchitecture
-    testOn(context, LA__DATA);
-
-    // PhysicalArchitecture
-    testOn(context, PA__DATA);
+  public InsertRemoveDataValues(CDBProjectSettings settings) {
+    super(settings);
   }
 
-  protected void testOn(SessionContext context, String sourceId) {
-    CDBDiagram diagramContext = CDBDiagram.createDiagram(context, sourceId);
+  @Override
+  protected void testCDB() {
+    cdb = CDBDiagram.createDiagram(context, settings.DATAPKG);
+    test1(ReferenceType.NUMERIC_REFERENCE);
+    test1(ReferenceType.LITERAL_NUMERIC_VALUE);
+    test1(ReferenceType.UNARY_EXPRESSION);
+    test1(ReferenceType.BINARY_EXPRESSION);
+    test1(ReferenceType.LITERAL_STRING_VALUE);
+    test1(ReferenceType.STRING_REFERENCE);
+    test1(ReferenceType.BOOLEAN_REFERENCE);
+    test1(ReferenceType.COMPLEX_VALUE);
+    test1(ReferenceType.COMPLEX_VALUE_REFERENCE);
+    test1(ReferenceType.ENUMERATION_REFERENCE);
+    test1(ReferenceType.COLLECTION_VALUE);
+    test1(ReferenceType.COLLECTION_VALUE_REFERENCE);
+    test2();
+    test3();
+  }
 
+  protected void test1(ReferenceType reference) {
+    String ref1 = cdb.createReference(reference);
+    String ref2 = cdb.createReference(reference);
+
+    cdb.removeDataValues(ref1, cdb.getDiagramId());
+    cdb.insertDataValues(ref1, cdb.getDiagramId());
+    cdb.removeDataValues(ref2, cdb.getDiagramId());
+    cdb.insertDataValues(ref2, cdb.getDiagramId());
+  }
+
+  protected void test2() {
+
+  }
+
+  protected void test3() {
     // create an Enumeration with 3 literals
-    diagramContext.createEnumeration("Enumeration 1");
-    diagramContext.createEnumerationLiteral("EnumerationLiteral 1", "Enumeration 1");
-    diagramContext.createEnumerationLiteral("EnumerationLiteral 2", "Enumeration 1");
-    diagramContext.createEnumerationLiteral("EnumerationLiteral 3", "Enumeration 1");
+    String enumeration1 = cdb.createDataType(DataType.ENUMERATION);
+    cdb.createDataLiteral(enumeration1, DataLiteral.ENUMERATION_LITERAL);
+    cdb.createDataLiteral(enumeration1, DataLiteral.ENUMERATION_LITERAL);
+    cdb.createDataLiteral(enumeration1, DataLiteral.ENUMERATION_LITERAL);
 
     // create a BooleanType with a LiteralBooleanValue
-    diagramContext.createBooleanType("BooleanType 1");
-    diagramContext.createLiteralBooleanValue("LiteralBooleanValue 1", "BooleanType 1");
+    String boolean1 = cdb.createDataType(DataType.BOOLEAN_TYPE);
+    cdb.createDataLiteral(boolean1, DataLiteral.BOOLEAN_LITERAL);
 
     // call the Insert/Remove DataValues tool function used for available DataValues
-    List<DataValue> dataValuesToInsert = InformationServices.getService().getAvailableDataValuesToInsert(diagramContext.getDiagram());
+    List<DataValue> dataValuesToInsert = InformationServices.getService()
+        .getAvailableDataValuesToInsert(cdb.getDiagram());
 
     // check if it does not show EnumerationLiteral or LiteralBooleanValue
     for (DataValue dataValue : dataValuesToInsert) {
       if (dataValue instanceof EnumerationLiteral) {
         fail("An EnumerationLiteral is found in 'Insert/Remove DataValues' tool.");
-      }
-      else if (dataValue instanceof LiteralBooleanValue) {
+      } else if (dataValue instanceof LiteralBooleanValue) {
         fail("A LiteralBooleanValue is found in 'Insert/Remove DataValues' tool.");
       }
     }
-  }
-
-  public static Test suite() {
-    return new InsertRemoveDataValues();
   }
 }
