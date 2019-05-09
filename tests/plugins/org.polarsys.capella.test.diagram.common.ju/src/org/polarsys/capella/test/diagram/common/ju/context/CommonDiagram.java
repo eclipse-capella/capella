@@ -30,14 +30,16 @@ public class CommonDiagram extends DiagramContext {
     super(context, diagram);
   }
 
-  public void createConstraint(String id) {
-    createConstraint(id, getDiagramId());
+  public String createConstraint(String id) {
+    return createConstraint(id, getDiagramId());
   }
 
-  public void createConstraint(String id, String containerId) {
+  public String createConstraint(String id, String containerId) {
     // All diagrams shared the same tool
     String name = IToolNameConstants.TOOL_CC_CREATE_CONSTRAINT;
-    new CreateAbstractDNodeTool<DNode>(this, name, containerId, id).run();
+    DNode createdConstraint = new CreateAbstractDNodeTool<DNode>(this, name, containerId, id).run();
+
+    return getSemanticIdFromView(createdConstraint);
   }
 
   public void createConstrainedElement(String sourceId, String targetId) {
@@ -99,16 +101,6 @@ public class CommonDiagram extends DiagramContext {
     return getSemanticIdFromView(graphicalElement);
   }
 
-  protected String createNodeElement(String targetId, String containerId, String toolName) {
-
-    DNode graphicalElement = new CreateAbstractDNodeTool<DNode>(this, toolName, targetId, containerId, null,
-        DNode.class).run();
-
-    customVerificationOnCreatedNodeElement(toolName, graphicalElement, containerId);
-
-    return getSemanticIdFromView(graphicalElement);
-  }
-
   protected String createContainerElement(String containerId, String toolName) {
 
     DDiagramElementContainer graphicalElement = new CreateContainerTool(this, toolName, containerId).run();
@@ -118,20 +110,21 @@ public class CommonDiagram extends DiagramContext {
     return getSemanticIdFromView(graphicalElement);
   }
 
-  protected String createEdgeElement(String sourceViewId, String targetViewId, String toolName) {
+  protected String createEdgeElement(String sourceViewId, String targetViewId, String toolName, int newEdgesNumber) {
 
-    DEdge graphicalElement = new CreateDEdgeTool(this, toolName, sourceViewId, targetViewId, null, null, null).run();
+    DEdge graphicalElement = new CreateDEdgeTool(this, toolName, sourceViewId, targetViewId, newEdgesNumber, 0, 0)
+        .run();
 
     customVerificationOnCreatedEdgeElement(toolName, graphicalElement, sourceViewId, targetViewId);
 
     return getSemanticIdFromView(graphicalElement);
   }
 
-  protected void showElements(String containerId, String toolName, String... elementsToBeInsertedIds) {
+  protected void insertElements(String containerId, String toolName, String... elementsToBeInsertedIds) {
     new InsertRemoveTool(this, toolName, containerId).insert(elementsToBeInsertedIds);
   }
 
-  protected void hideElements(String containerId, String toolName, String... elementsToBeRemovedIds) {
+  protected void removeElements(String containerId, String toolName, String... elementsToBeRemovedIds) {
     new InsertRemoveTool(this, toolName, containerId).remove(elementsToBeRemovedIds);
   }
 
