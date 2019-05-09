@@ -20,6 +20,9 @@ import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.jface.viewers.BaseLabelProvider;
 import org.eclipse.jface.viewers.LabelProviderChangedEvent;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.IViewPart;
+import org.eclipse.ui.IWorkbenchPage;
+import org.eclipse.ui.part.IPageSite;
 import org.eclipse.ui.progress.UIJob;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 
@@ -32,10 +35,12 @@ public class CapellaDataListenerForPropertySections {
    */
   private static final String REFRESH_VIEW_JOB_FAMILY = "RefreshPropertiesViewJob"; //$NON-NLS-1$
 
+  private static final String PROPERTY_SHEET_ID = "org.eclipse.ui.views.PropertySheet"; //$NON-NLS-1$
+
   private Set<TabbedPropertySheetPage> pages;
 
   public void refresh() {
-    if (!getPages().isEmpty()) {
+    if (!getPages().isEmpty() && isPropertiesViewVisible(getPages().iterator().next().getSite())) {
       scheduleRefreshPropertiesViewJob();
     }
   }
@@ -69,6 +74,12 @@ public class CapellaDataListenerForPropertySections {
       pages = new HashSet<>();
     }
     return pages;
+  }
+
+  private boolean isPropertiesViewVisible(IPageSite pageSite) {
+    IWorkbenchPage workbenchPage = pageSite.getPage();
+    IViewPart propertySheet = workbenchPage.findView(PROPERTY_SHEET_ID);
+    return propertySheet != null && workbenchPage.isPartVisible(propertySheet);
   }
 
   private void scheduleRefreshPropertiesViewJob() {
