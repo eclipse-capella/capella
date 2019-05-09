@@ -44,4 +44,5 @@ Export-Package: org.polarsys.capella.test.benchmarks.ju,
  org.polarsys.capella.test.benchmarks.ju.refreshBigPAB,
  org.polarsys.capella.test.benchmarks.ju.saveSessionAfterModifications,
  org.polarsys.capella.test.benchmarks.ju.suites,
- org.polarsys.capella.test.benchmarks.ju.testcases
+ org.polarsys.capella.test.benchmarks.ju.testcases,
+ org.polarsys.capella.test.benchmarks.ju.utils

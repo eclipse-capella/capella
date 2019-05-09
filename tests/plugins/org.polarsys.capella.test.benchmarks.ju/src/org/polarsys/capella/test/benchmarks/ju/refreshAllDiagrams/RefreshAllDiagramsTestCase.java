@@ -22,12 +22,13 @@ import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.IWorkbenchPage;
 import org.polarsys.capella.common.lib.Memory;
 import org.polarsys.capella.test.benchmarks.ju.testcases.AbstractBenchmarkTestCase;
+import org.polarsys.capella.test.benchmarks.ju.utils.MemoryLogger;
 
 public class RefreshAllDiagramsTestCase extends AbstractBenchmarkTestCase {
 
   @Override
   public void test() {
-    long usedMemoryBefore = Memory.getUsedMemory();
+    long usedMemoryBefore = Memory.getUsedMemory() / (1024 * 1024);
 
     Session session = getSession(getRequiredTestModels().get(0));
 
@@ -39,9 +40,11 @@ public class RefreshAllDiagramsTestCase extends AbstractBenchmarkTestCase {
       closeEditor(editor);
     }
 
-    long usedMemoryAfter = Memory.getUsedMemory();
-    System.out.println(
-        "Used memory: " + usedMemoryBefore / (1024 * 1024) + "MB / " + usedMemoryAfter / (1024 * 1024) + "MB.");
+    long usedMemoryAfter = Memory.getUsedMemory() / (1024 * 1024);
+
+    System.out.println("Used memory: " + usedMemoryBefore + "MB / " + usedMemoryAfter + "MB.");
+
+    MemoryLogger.getInstance().log(this.getClass().getCanonicalName(), usedMemoryAfter - usedMemoryBefore);
   }
 
   public void closeEditor(IEditorPart editor) {

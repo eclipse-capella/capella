@@ -14,6 +14,7 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.polarsys.capella.common.lib.Memory;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt.Type;
 import org.polarsys.capella.test.benchmarks.ju.testcases.AbstractBenchmarkTestCase;
+import org.polarsys.capella.test.benchmarks.ju.utils.MemoryLogger;
 import org.polarsys.capella.test.diagram.common.ju.context.XABDiagram;
 import org.polarsys.capella.test.framework.context.SessionContext;
 
@@ -36,14 +37,17 @@ public class OpenBigPABTestCase extends AbstractBenchmarkTestCase {
    */
   @Override
   public void test() {
-    long usedMemoryBefore = Memory.getUsedMemory();
+    long usedMemoryBefore = Memory.getUsedMemory() / (1024 * 1024);
 
     Session session = getSession(getRequiredTestModels().get(0));
     SessionContext context = new SessionContext(session);
     XABDiagram.openDiagram(context, getBigPABName(), Type.PA);
-    long usedMemoryAfter = Memory.getUsedMemory();
-    System.out.println(
-        "Used memory: " + usedMemoryBefore / (1024 * 1024) + "MB / " + usedMemoryAfter / (1024 * 1024) + "MB.");
+
+    long usedMemoryAfter = Memory.getUsedMemory() / (1024 * 1024);
+
+    System.out.println("Used memory: " + usedMemoryBefore + "MB / " + usedMemoryAfter + "MB.");
+
+    MemoryLogger.getInstance().log(this.getClass().getCanonicalName(), usedMemoryAfter - usedMemoryBefore);
   }
 
 }
