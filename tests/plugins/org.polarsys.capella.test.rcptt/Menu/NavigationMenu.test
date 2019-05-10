@@ -6,8 +6,8 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _x3yKIJrrEeiYyJV_j_AxhQ
-Runtime-Version: 2.2.0.201705230341
-Save-Time: 9/25/18 10:18 AM
+Runtime-Version: 2.3.0.201806281136
+Save-Time: 5/10/19 9:39 AM
 Testcase-Type: ecl
 
 ------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
@@ -57,7 +57,7 @@ get-view "Capella Project Explorer" | get-tree
     | select "In-Flight Entertainment System/In-Flight Entertainment System.aird/In-Flight Entertainment System/System Analysis/System Functions/Root System Function/Perform Cabin Management Activities" 
     | get-menu -path "Transitions/Functional Transition" | click
 get-window "Progress Information" | get-window "Functional Transition" | get-tree 
-    | select "In-Flight Entertainment System (12)/Logical Architecture (12)" | get-menu 
+    | select "In-Flight Entertainment System (12)/In-Flight Entertainment System (12)/Logical Architecture (12)" | get-menu 
     -path "Show in Capella Explorer" | click
     
 get-window "Progress Information" | get-window "Functional Transition" | get-button Cancel | click
