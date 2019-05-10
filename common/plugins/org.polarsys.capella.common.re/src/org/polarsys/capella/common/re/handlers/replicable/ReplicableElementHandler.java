@@ -697,7 +697,7 @@ public class ReplicableElementHandler implements IReplicableElementHandler {
       element = ReplicableElementHandlerHelper.getInstance(context).createReplica();
     }
 
-    if (source != null) {
+    if (source != null && !source.eIsProxy()) {
       String namea = source.getName();
       if (namea.startsWith("REC")) {
         namea = "RPL" + namea.substring(3);

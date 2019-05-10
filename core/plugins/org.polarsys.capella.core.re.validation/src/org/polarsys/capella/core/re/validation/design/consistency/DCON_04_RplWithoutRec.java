@@ -26,7 +26,7 @@ public class DCON_04_RplWithoutRec extends AbstractModelConstraint {
   public IStatus validate(IValidationContext ctx) {
     CatalogElement catalogElement = (CatalogElement) ctx.getTarget();
     if (catalogElement.getKind() == CatalogElementKind.RPL || catalogElement.getKind() == CatalogElementKind.REC_RPL) {
-      if (catalogElement.getOrigin() == null) {
+      if (catalogElement.getOrigin() == null || catalogElement.getOrigin().eIsProxy()) {
         return createFailureStatus(ctx, catalogElement,
             new Object[] { catalogElement, catalogElement.getKind().toString() });
       }

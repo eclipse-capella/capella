@@ -37,6 +37,7 @@ public class DCON_04_Resolver extends AbstractCapellaMarkerResolution {
         @Override
         public void run() {
           rpl.setKind(CatalogElementKind.REC);
+          rpl.setOrigin(null);
           deleteMarker(marker);
         }
       });
