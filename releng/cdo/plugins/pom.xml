@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Copyright (c) 2016, 2018 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.polarsys</groupId>
+    <artifactId>org.polarsys.capella</artifactId>
+    <version>1.2.2-SNAPSHOT</version>
+    <relativePath>../../../</relativePath>
+  </parent>
+  <groupId>org.polarsys</groupId>
+  <artifactId>org.polarsys.capella.cdo.plugins</artifactId>
+  <packaging>pom</packaging>
+  <profiles>
+     <profile>
+      <id>full</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <modules>
+        <module>org.eclipse.emf.diffmerge.patterns.core.gen.cdo</module>
+        <module>org.eclipse.emf.diffmerge.patterns.support.gen.cdo</module>
+        <module>org.eclipse.emf.diffmerge.patterns.templates.gen.cdo</module>
+        <module>org.polarsys.capella.common.data.activity.gen.cdo</module>
+        <module>org.polarsys.capella.common.data.behavior.gen.cdo</module>
+        <module>org.polarsys.capella.common.data.core.gen.cdo</module>
+        <module>org.polarsys.capella.common.libraries.gen.cdo</module>
+        <module>org.polarsys.capella.common.re.gen.cdo</module>
+        <module>org.polarsys.capella.core.data.gen.cdo</module>
+        <module>org.polarsys.kitalpha.ad.metadata.model.cdo</module>
+        <module>org.polarsys.kitalpha.emde.model.cdo</module>
+        <module>org.polarsys.kitalpha.patterns.emde.gen.cdo</module>
+      </modules>
+    </profile>
+  </profiles>
+</project>
