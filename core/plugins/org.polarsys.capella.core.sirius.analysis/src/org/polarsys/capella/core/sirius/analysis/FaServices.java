@@ -593,21 +593,19 @@ public class FaServices {
    * @param chains
    * @param view
    */
-  public void showInvolvedElementsInDataFlowBlank(List<FunctionalChain> chains, DSemanticDecorator view) {
+  public void showInvolvedElementsInDataFlowBlank(List<FunctionalChain> functionalChains, DSemanticDecorator view) {
 
     // A chain have some involved elements. Try to find them or there
     // containers in the shortest delay
 
-    Map<EObject, DDiagramElement> elements = new HashMap<>();
-    DDiagram diagram = CapellaServices.getService().getDiagramContainer(view);
-
-    // Find all involved elements of a functional chain
-    Set<EObject> involveds = new HashSet<>();
+    Set<EObject> involvedElements = new HashSet<>();
     Set<AbstractFunction> involvedFunctions = new HashSet<>();
     Set<FunctionalExchange> involvedExchanges = new HashSet<>();
 
-    for (FunctionalChain chain : chains) {
-      involveds.add(chain);
+    // Find all involved elements of a functional chain, and separate them into involved functions and involved
+    // exchanges.
+    for (FunctionalChain chain : functionalChains) {
+      involvedElements.add(chain);
 
       for (FunctionalChainInvolvement involvment : FunctionalChainExt.getFlatInvolvements(chain)) {
         if (involvment == null) {
@@ -615,7 +613,7 @@ public class FaServices {
         }
         InvolvedElement involved = involvment.getInvolved();
 
-        involveds.add(involved);
+        involvedElements.add(involved);
 
         if (involved instanceof AbstractFunction) {
           involvedFunctions.add((AbstractFunction) involved);
@@ -625,45 +623,38 @@ public class FaServices {
           involvedExchanges.add(exchange);
 
           ActivityNode nodeSource = exchange.getSource();
-          involveds.add(nodeSource);
+          involvedElements.add(nodeSource);
           if ((nodeSource instanceof Port) && (nodeSource.eContainer() instanceof AbstractFunction)) {
             // in case where functional chain is not valid, add
             // function related to the port
-            involveds.add(nodeSource.eContainer());
+            involvedElements.add(nodeSource.eContainer());
             involvedFunctions.add((AbstractFunction) nodeSource.eContainer());
           }
 
           ActivityNode nodeTarget = exchange.getTarget();
-          involveds.add(nodeTarget);
+          involvedElements.add(nodeTarget);
           if ((nodeTarget instanceof Port) && (nodeTarget.eContainer() instanceof AbstractFunction)) {
             // in case where functional chain is not valid, add
             // function related to the port
-            involveds.add(nodeTarget.eContainer());
+            involvedElements.add(nodeTarget.eContainer());
             involvedFunctions.add((AbstractFunction) nodeTarget.eContainer());
           }
         }
       }
     }
 
-    // Find in diagram elements any involved elements and them containers
-    for (DDiagramElement element : DiagramServices.getDiagramServices().getDiagramElements(diagram)) {
-      if (element instanceof AbstractDNode) {
-        EObject target = element.getTarget();
-        if (target == null) {
-          continue;
-        }
-        if (involveds.contains(target)) {
-          elements.put(target, element);
-        } else if (involveds.contains(target.eContainer())) {
-          elements.put(target.eContainer(), element);
-        }
-      } else if (element instanceof DEdge) {
-        EObject target = element.getTarget();
-        elements.put(target, element);
+    Map<EObject, DDiagramElement> elements = new HashMap<>();
+    DDiagram diagram = CapellaServices.getService().getDiagramContainer(view);
+
+    // Get the existing views of all involved elements
+    for (EObject involvedElement : involvedElements) {
+      DDiagramElement involvedView = DiagramServices.getDiagramServices().getDiagramElement(diagram, involvedElement);
+      if (involvedView != null) {
+        elements.put(involvedElement, involvedView);
       }
     }
 
-    // Create functions and nodes (on the diagram root, since refresh
+    // Create views for involved elements that do not have a view (on the diagram root, since refresh
     // replace correctly theses elements
     for (AbstractFunction function : involvedFunctions) {
       if (!elements.containsKey(function)) {
@@ -702,9 +693,9 @@ public class FaServices {
       }
     }
 
-    // Display all chains (create a end-node and its edge
+    // Display all chains (create a end-node and its edge)
     NodeMapping endMapping = getMappingFunctionalChainEnd(diagram);
-    for (FunctionalChain chain : chains) {
+    for (FunctionalChain chain : functionalChains) {
       if (!elements.containsKey(chain)) {
         elements.put(chain, DiagramServices.getDiagramServices().createNode(endMapping, chain, diagram, diagram));
       }
