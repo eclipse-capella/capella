@@ -84,10 +84,6 @@ public class DiagramContext {
     sessionContext = context;
   }
 
-  /*
-   * Use OpenDiagramStep's run() method instead
-   */
-  @Deprecated
   public static DiagramContext getDiagram(SessionContext sessionContext, String diagramIdentifier) {
 
     Session session = sessionContext.getSession();

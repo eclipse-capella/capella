@@ -21,6 +21,10 @@
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Role%20Blank']"/>
         <target xmi:type="org.polarsys.capella.core.data.oa:OperationalContext" href="DiagramToolsModel.melodymodeller#309742cd-18be-41c4-a5eb-f7e9bf07a93f"/>
       </ownedRepresentationDescriptors>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_oAg9Q3AGEemyvvkY1ktW3Q" name="Test Operational Role Breakdown Diagram" repPath="#_oAXzUHAGEemyvvkY1ktW3Q">
+        <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Role%20Blank']"/>
+        <target xmi:type="org.polarsys.capella.core.data.oa:OperationalContext" href="DiagramToolsModel.melodymodeller#309742cd-18be-41c4-a5eb-f7e9bf07a93f"/>
+      </ownedRepresentationDescriptors>
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_VNzhsD5tEemFMbQILueuVQ">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']"/>
@@ -41,6 +45,21 @@
     <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Role%20Blank']"/>
     <activatedFilters xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.kitalpha.ad.integration.sirius/description/ad.odesign#//@ownedViewpoints[name='ad']/@ownedRepresentations[name='AD%20diagram']/@filters[name='ModelExtensionFilter']"/>
     <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_axjeIT5tEemFMbQILueuVQ"/>
+    <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Role%20Blank']/@defaultLayer"/>
+    <target xmi:type="org.polarsys.capella.core.data.oa:OperationalContext" href="DiagramToolsModel.melodymodeller#309742cd-18be-41c4-a5eb-f7e9bf07a93f"/>
+  </diagram:DSemanticDiagram>
+  <diagram:DSemanticDiagram uid="_oAXzUHAGEemyvvkY1ktW3Q" name="Test Operational Role Breakdown Diagram">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_oAg9QHAGEemyvvkY1ktW3Q" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_oAg9QXAGEemyvvkY1ktW3Q"/>
+    </ownedAnnotationEntries>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_oAg9RHAGEemyvvkY1ktW3Q" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_oAg9RXAGEemyvvkY1ktW3Q" type="Sirius" element="_oAXzUHAGEemyvvkY1ktW3Q" measurementUnit="Pixel">
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_oAg9RnAGEemyvvkY1ktW3Q"/>
+      </data>
+    </ownedAnnotationEntries>
+    <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Role%20Blank']"/>
+    <activatedFilters xmi:type="filter:CompositeFilterDescription" href="platform:/plugin/org.polarsys.kitalpha.ad.integration.sirius/description/ad.odesign#//@ownedViewpoints[name='ad']/@ownedRepresentations[name='AD%20diagram']/@filters[name='ModelExtensionFilter']"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_oAXzUXAGEemyvvkY1ktW3Q"/>
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Role%20Blank']/@defaultLayer"/>
     <target xmi:type="org.polarsys.capella.core.data.oa:OperationalContext" href="DiagramToolsModel.melodymodeller#309742cd-18be-41c4-a5eb-f7e9bf07a93f"/>
   </diagram:DSemanticDiagram>
