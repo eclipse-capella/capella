@@ -41,23 +41,23 @@ public class AcceleratorOnFCILinkHandler extends AbstractHandler {
   public Object execute(ExecutionEvent event) throws ExecutionException {
     ISelection selection = HandlerUtil.getActiveMenuSelection(event);
     List<FunctionalChainInvolvementLink> fciLinks = getFCILinksFromSelection(selection);
-    
+
     if (!fciLinks.isEmpty()) {
       ExecutionManager manager = TransactionHelper.getExecutionManager(fciLinks);
-      
+
       if (manager != null) {
         manager.execute(new AbstractReadWriteCommand() {
           @Override
           public void run() {
             fciLinks.stream().forEach(FunctionalChainExt::createSequenceLink);
-            
+
             IEditorPart activeEditor = HandlerUtil.getActiveEditor(event);
             DiagramServices.getDiagramServices().refreshRepresentationOfEditor(activeEditor);
           }
         });
       }
     }
-    
+
     return null;
   }
 
@@ -65,12 +65,14 @@ public class AcceleratorOnFCILinkHandler extends AbstractHandler {
     if (selection instanceof StructuredSelection) {
       StructuredSelection structuredSelection = (StructuredSelection) selection;
 
-      return Stream.of(structuredSelection.toArray()) //
-          .map(ModelAdaptation::adaptToCapella) //
-          .filter(FunctionalChainInvolvementLink.class::isInstance) //
-          .map(FunctionalChainInvolvementLink.class::cast) //
-          .filter(link -> link.getInvolved() instanceof FunctionalExchange) //
-          .collect(Collectors.toList());
+      try (Stream<Object> stream = Stream.of(structuredSelection.toArray())) {
+        return stream.map(ModelAdaptation::adaptToCapella) //
+            .filter(FunctionalChainInvolvementLink.class::isInstance) //
+            .map(FunctionalChainInvolvementLink.class::cast) //
+            .filter(link -> link.getInvolved() instanceof FunctionalExchange) //
+            .collect(Collectors.toList());
+      }
+
     }
     return Collections.emptyList();
   }

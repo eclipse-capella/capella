@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.polarsys.capella.core.sirius.ui;
 
+import java.util.stream.Stream;
+
 import org.eclipse.gmf.runtime.common.ui.services.action.global.IGlobalActionContext;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.NoteEditPart;
@@ -18,50 +20,57 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.diagram.ui.tools.internal.clipboard.SiriusClipboardGlobalActionHandler;
 
-public class CapellaGlobalActionHandler extends
-		SiriusClipboardGlobalActionHandler {
+@SuppressWarnings("restriction")
+public class CapellaGlobalActionHandler extends SiriusClipboardGlobalActionHandler {
 
-	@Override
-	public boolean canPaste(IGlobalActionContext cntxt) {
-		return super.canPaste(cntxt) && isDiagram (cntxt);
-	}
+  @Override
+  public boolean canPaste(IGlobalActionContext context) {
+    return super.canPaste(context) && isDiagram(context);
+  }
 
+  @Override
+  protected boolean canCopy(IGlobalActionContext context) {
+    return isNote(context);
+  }
 
-	@Override
-	protected boolean canCopy(IGlobalActionContext cntxt) {
-		return isNote (cntxt);
-	}
+  @Override
+  protected boolean canCut(IGlobalActionContext context) {
+    return super.canCut(context) && isNote(context);
+  }
 
-	@Override
-	protected boolean canCut(IGlobalActionContext cntxt) {
-		return super.canCut(cntxt) && isNote (cntxt);
-	}
+  private boolean isNote(IGlobalActionContext context) {
+    ISelection selection = context.getSelection();
 
-	private boolean isNote(IGlobalActionContext cntxt) {
-		ISelection selection = cntxt.getSelection();
-		boolean allNotes = true;
-		if (selection instanceof IStructuredSelection) {
-			IStructuredSelection iss = (IStructuredSelection) selection;
-			if (iss.isEmpty()) return false;
-			for (Object select : iss.toArray()) {
-				allNotes = allNotes && (select instanceof NoteEditPart || select instanceof TextEditPart);
-			}
-		}
-		return allNotes;
-	}
+    if (selection instanceof IStructuredSelection) {
+      IStructuredSelection structuredSelection = (IStructuredSelection) selection;
 
+      if (structuredSelection.isEmpty()) {
+        return false;
+      }
 
-	private boolean isDiagram(IGlobalActionContext cntxt) {
-		ISelection selection = cntxt.getSelection();
-		boolean diagram = true;
-		if (selection instanceof IStructuredSelection) {
-			IStructuredSelection iss = (IStructuredSelection) selection;
-			if (iss.isEmpty()) return false;
-			for (Object select : iss.toArray()) {
-				diagram = diagram && (select instanceof DiagramEditPart);
-			}
-		}
-		return diagram;
+      try (Stream<Object> stream = Stream.of(structuredSelection.toArray())) {
+        return stream.allMatch(entry -> entry instanceof NoteEditPart || entry instanceof TextEditPart);
+      }
+    }
 
-	}
+    return true;
+  }
+
+  private boolean isDiagram(IGlobalActionContext context) {
+    ISelection selection = context.getSelection();
+
+    if (selection instanceof IStructuredSelection) {
+      IStructuredSelection structuredSelection = (IStructuredSelection) selection;
+
+      if (structuredSelection.isEmpty()) {
+        return false;
+      }
+
+      try (Stream<Object> stream = Stream.of(structuredSelection.toArray())) {
+        return stream.allMatch(DiagramEditPart.class::isInstance);
+      }
+    }
+
+    return true;
+  }
 }
