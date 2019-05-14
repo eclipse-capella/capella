@@ -50,7 +50,7 @@
                name="Highest">
          </Priority>
          <ViewId
-               id="org.eclipse.sirius.diagram.part.SiriusDiagramEditorID">
+               id="org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditorID">
             <ElementType
                   class="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
                <GlobalActionId
