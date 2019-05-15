@@ -312,7 +312,7 @@
         <repositoryList
             name="Oxygen">
           <repository
-              url="http://download.eclipse.org/modeling/amalgam/updates/stable/1.10.1-S20190419/capella"/>
+              url="http://download.eclipse.org/modeling/amalgam/updates/stable/1.10.1-S20190510/capella"/>
         </repositoryList>
         <repositoryList
             name="Neon">
@@ -451,9 +451,9 @@
         <repositoryList
             name="Oxygen">
           <repository
-              url="https://ci.polarsys.org/kitalpha/job/Kitalpha-v1.3.x/215/artifact/releng/plugins/org.polarsys.kitalpha.releng.runtime.core.updatesite/target/repository"/>
+              url="https://ci.polarsys.org/kitalpha/job/Kitalpha-v1.3.x/239/artifact/releng/plugins/org.polarsys.kitalpha.releng.runtime.core.updatesite/target/repository"/>
           <repository
-              url="https://ci.polarsys.org/kitalpha/job/Kitalpha-v1.3.x/215/artifact/releng/plugins/org.polarsys.kitalpha.releng.sdk.updatesite/target/repository"/>
+              url="https://ci.polarsys.org/kitalpha/job/Kitalpha-v1.3.x/239/artifact/releng/plugins/org.polarsys.kitalpha.releng.sdk.updatesite/target/repository"/>
           <repository
               url="http://download.eclipse.org/egf/updates/1.6.0/oxygen"/>
         </repositoryList>
