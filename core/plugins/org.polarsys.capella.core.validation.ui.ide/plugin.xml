@@ -30,7 +30,7 @@
          </rules>
       </resolver>
       <resolver
-            class="org.polarsys.capella.core.validation.ui.ide.quickfix.ClassDanglingReferenceResolver"
+            class="org.polarsys.capella.core.validation.ui.ide.quickfix.DanglingReferenceResolver"
             label="Delete invalid references"
             icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_delete.gif">
          <rules
@@ -38,7 +38,7 @@
          </rules>
       </resolver>
       <resolver
-            class="org.polarsys.capella.core.validation.ui.ide.quickfix.ClassDanglingReferenceResolver"
+            class="org.polarsys.capella.core.validation.ui.ide.quickfix.DanglingReferenceResolver"
             label="Delete invalid references"
             icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_delete.gif">
          <rules

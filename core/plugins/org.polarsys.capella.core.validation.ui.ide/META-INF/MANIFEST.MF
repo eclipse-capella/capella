@@ -14,7 +14,8 @@ Require-Bundle: org.eclipse.ui;visibility:=reexport,
  org.polarsys.capella.core.ui.properties,
  org.polarsys.capella.common.tools.report.appenders.reportlogview;visibility:=reexport,
  org.polarsys.capella.core.platform.sirius.ui.navigator,
- org.eclipse.emf.validation.ui
+ org.eclipse.emf.validation.ui,
+ org.polarsys.capella.common.re.gen
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
