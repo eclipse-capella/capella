@@ -627,9 +627,8 @@ public class CapellaDiagramPasteCommand extends AbstractResultCommand {
         }
       }
     }
-    for (EObject deletionTarget : toDelete) {
-      MiscUtil.deleteRec(deletionTarget);
-    }
+
+    EcoreUtil.deleteAll(toDelete, true);
   }
 
   /**
