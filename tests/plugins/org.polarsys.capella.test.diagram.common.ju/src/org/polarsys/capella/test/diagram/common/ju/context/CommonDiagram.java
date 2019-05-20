@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,7 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.diagram.DNodeListElement;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.sirius.analysis.constants.IToolNameConstants;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateAbstractDNodeTool;
@@ -101,11 +102,38 @@ public class CommonDiagram extends DiagramContext {
     return getSemanticIdFromView(graphicalElement);
   }
 
+  protected String createNodeListElement(String containerId, String toolName) {
+
+    DNodeListElement graphicalElement = new CreateAbstractDNodeTool<DNodeListElement>(this, toolName, containerId)
+        .run();
+
+    return getSemanticIdFromView(graphicalElement);
+  }
+
+  protected String createNodeElement(String targetId, String containerId, String toolName) {
+
+    DNode graphicalElement = new CreateAbstractDNodeTool<DNode>(this, toolName, targetId, containerId, null,
+        DNode.class).run();
+
+    customVerificationOnCreatedNodeElement(toolName, graphicalElement, containerId);
+
+    return getSemanticIdFromView(graphicalElement);
+  }
+
   protected String createContainerElement(String containerId, String toolName) {
 
     DDiagramElementContainer graphicalElement = new CreateContainerTool(this, toolName, containerId).run();
 
     customVerificationOnCreatedContainerElement(toolName, graphicalElement, containerId);
+
+    return getSemanticIdFromView(graphicalElement);
+  }
+
+  protected String createEdgeElement(String sourceViewId, String targetViewId, String toolName) {
+
+    DEdge graphicalElement = new CreateDEdgeTool(this, toolName, sourceViewId, targetViewId).run();
+
+    customVerificationOnCreatedEdgeElement(toolName, graphicalElement, sourceViewId, targetViewId);
 
     return getSemanticIdFromView(graphicalElement);
   }
@@ -142,6 +170,7 @@ public class CommonDiagram extends DiagramContext {
       String containerId) {
   }
 
+  @Override
   protected String getSemanticIdFromView(DDiagramElement view) {
 
     EObject semanticElement = view.getTarget();

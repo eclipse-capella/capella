@@ -262,7 +262,9 @@ public class DiagramServices {
       }
     }
 
-    if (element instanceof AbstractDNode) {
+    if (element instanceof AbstractDNode)
+
+    {
       views.addAll(((AbstractDNode) element).getOwnedBorderedNodes());
     }
     return views;
@@ -1783,9 +1785,9 @@ public class DiagramServices {
     }
     toRemoveNodes.stream().forEach(this::removeAbstractDNodeView);
   }
+
   /**
-   * Force refresh the representation embedded in an editor.
-   * This method must be called in a transaction.
+   * Force refresh the representation embedded in an editor. This method must be called in a transaction.
    * 
    * @param editor
    */
