@@ -67,17 +67,17 @@
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="DCON_05 - REC without RPL"
+                  name="DCON_05 - REC might not have any RPL instance"
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  {0} ({1}) without RPL
+                  {0} ({1}) might not have any RPL instance
                </message>
                <target
                      class="CatalogElement">
                </target>
                <description>
-                  This rule check if a REC is not utilised in a RPL.
+                  This rule check if a REC might not be utilised in a RPL.
                </description>
             </constraint>
             <constraint
@@ -86,17 +86,17 @@
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="DCON_06 - REC_RPL without RPL"
+                  name="DCON_06 - REC_RPL might not have any RPL instance"
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  {0} ({1}) without RPL
+                  {0} ({1}) might not have any RPL instance
                </message>
                <target
                      class="CatalogElement">
                </target>
                <description>
-                  This rule check if a REC_RPL is not utilised in a RPL.
+                  This rule check if a REC_RPL might not be utilised in a RPL.
                </description>
             </constraint>
          </constraints>
