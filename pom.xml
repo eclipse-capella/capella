@@ -300,6 +300,9 @@
 				<module>patterns/plugins/org.polarsys.capella.patterns.ui</module>
 				<module>patterns/plugins/org.polarsys.capella.patterns.migration</module>
 				
+				<module>releng/cdo/features</module>
+				<module>releng/cdo/plugins</module>
+				
 				<module>releng/features/org.polarsys.capella.rcp.feature</module>
 				<module>releng/plugins/org.polarsys.capella.rcp</module>
 				<module>releng/plugins/org.polarsys.capella.rcp.product</module>
