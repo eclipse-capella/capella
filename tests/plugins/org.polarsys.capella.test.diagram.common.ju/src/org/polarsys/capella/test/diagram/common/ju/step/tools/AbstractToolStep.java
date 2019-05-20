@@ -142,7 +142,6 @@ public abstract class AbstractToolStep<A> extends AbstractDiagramStep<A> {
     Assert.assertFalse(NLS.bind(Messages.toolWrapperArgumentValueFailedErr, toolName), isContextOk);
   }
 
-  @Deprecated
   public void cannotRun() {
 
     try {

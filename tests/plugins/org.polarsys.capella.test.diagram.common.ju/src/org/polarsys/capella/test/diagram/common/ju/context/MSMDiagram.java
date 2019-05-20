@@ -24,7 +24,7 @@ import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateNodeTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.InsertRemoveTool;
 import org.polarsys.capella.test.framework.context.SessionContext;
 
-public class MSMDiagram extends DiagramContext {
+public class MSMDiagram extends CommonDiagram {
 
   BlockArchitectureExt.Type type = null;
 
@@ -86,36 +86,36 @@ public class MSMDiagram extends DiagramContext {
     new CreateContainerTool(this, IToolNameConstants.TOOL_MSM_CREATE_REGION, idContainer, id).run();
   }
 
-  public void createChoice(String idContainer, String id) {
-    new CreateNodeTool(this, IToolNameConstants.TOOL_MSM_CREATE_CHOICE, idContainer, id).run();
+  public void createChoice(String containerId) {
+    createNodeElement(containerId, IToolNameConstants.TOOL_MSM_CREATE_CHOICE);
   }
 
-  public void createFinal(String idContainer, String id) {
-    new CreateNodeTool(this, IToolNameConstants.TOOL_MSM_CREATE_FINAL, idContainer, id).run();
+  public void createFinal(String containerId) {
+    createNodeElement(containerId, IToolNameConstants.TOOL_MSM_CREATE_FINAL);
   }
 
-  public void createFork(String idContainer, String id) {
-    new CreateNodeTool(this, IToolNameConstants.TOOL_MSM_CREATE_FORK, idContainer, id).run();
+  public void createFork(String containerId) {
+    createNodeElement(containerId, IToolNameConstants.TOOL_MSM_CREATE_FORK);
   }
 
   public void createInitial(String idContainer, String id) {
     new CreateNodeTool(this, IToolNameConstants.TOOL_MSM_CREATE_INITIAL, idContainer, id).run();
   }
 
-  public void createJoin(String idContainer, String id) {
-    new CreateNodeTool(this, IToolNameConstants.TOOL_MSM_CREATE_JOIN, idContainer, id).run();
+  public void createJoin(String containerId) {
+    createNodeElement(containerId, IToolNameConstants.TOOL_MSM_CREATE_JOIN);
   }
 
-  public void createTerminate(String idContainer, String id) {
-    new CreateNodeTool(this, IToolNameConstants.TOOL_MSM_CREATE_TERMINATE, idContainer, id).run();
+  public void createTerminate(String containerId) {
+    createNodeElement(containerId, IToolNameConstants.TOOL_MSM_CREATE_TERMINATE);
   }
 
-  public void createDeepHistory(String idContainer, String id) {
-    new CreateNodeTool(this, IToolNameConstants.TOOL_MSM_CREATE_DEEP_HISTORY, idContainer, id).run();
+  public void createDeepHistory(String containerId) {
+    createNodeElement(containerId, IToolNameConstants.TOOL_MSM_CREATE_DEEP_HISTORY);
   }
 
-  public void createShallowHistory(String idContainer, String id) {
-    new CreateNodeTool(this, IToolNameConstants.TOOL_MSM_CREATE_SHALLOW_HISTORY, idContainer, id).run();
+  public void createShallowHistory(String containerId) {
+    createNodeElement(containerId, IToolNameConstants.TOOL_MSM_CREATE_SHALLOW_HISTORY);
   }
 
   public void createEntryPoint(String idTargetContainer, String idContainer, String id) {
@@ -153,5 +153,4 @@ public class MSMDiagram extends DiagramContext {
   public void hideTransition(String containerId, String id) {
     new InsertRemoveTool(this, IToolNameConstants.TOOL_MSM_INSERT_REMOVE_TRANSITION, containerId).remove(id);
   }
-
 }
