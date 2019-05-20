@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,20 +10,26 @@
  *******************************************************************************/
 package org.polarsys.capella.test.diagram.tools.ju.mcb;
 
-import junit.framework.Test;
-
 import org.eclipse.sirius.business.api.session.Session;
 import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
 import org.polarsys.capella.test.diagram.common.ju.context.CapabilityDiagram;
 import org.polarsys.capella.test.diagram.common.ju.context.MissionDiagram;
 import org.polarsys.capella.test.diagram.tools.ju.model.EmptyProject;
 import org.polarsys.capella.test.framework.context.SessionContext;
-import org.polarsys.capella.test.framework.model.GenericModel;
+
+import junit.framework.Test;
 
 /**
  * Test for each architecture phases some basic insert remove on capabilities diagrams
  */
 public class InsertRemoveScenario extends EmptyProject {
+
+  String actor1;
+  String actor2;
+  String capability1;
+  String capability2;
+  String mission1;
+  String mission2;
 
   @Override
   public void test() throws Exception {
@@ -32,15 +38,15 @@ public class InsertRemoveScenario extends EmptyProject {
 
     // OperationalAnalysis
     createOperationalAnalysis(context);
-    testOn(context, GenericModel.CAPABILITY_1, IDiagramNameConstants.CONTEXTUAL_OPERATIONAL_CAPABILITIES__DIAGRAM_NAME);
+    testOn(context, capability1, IDiagramNameConstants.CONTEXTUAL_OPERATIONAL_CAPABILITIES__DIAGRAM_NAME);
     testOn(context, OA__OPERATIONAL_CAPABILITIES,
         IDiagramNameConstants.OPERATIONAL_CAPABILITIES_ENTITYIES_BLANK_DIAGRAM_NAME);
 
     // SystemAnalysis
     createSystemAnalysis(context);
     testOn(context, SA__CAPABILITIES, IDiagramNameConstants.MISSIONS_CAPABILITIES_BLANK_DIAGRAM_NAME);
-    testOn(context, GenericModel.CAPABILITY_1, IDiagramNameConstants.CONTEXTUAL_CAPABILITY_DIAGRAM_NAME);
-    testOn(context, GenericModel.MISSION_1, IDiagramNameConstants.CONTEXTUAL_MISSION_DIAGRAM_NAME);
+    testOn(context, capability1, IDiagramNameConstants.CONTEXTUAL_CAPABILITY_DIAGRAM_NAME);
+    testOn(context, mission1, IDiagramNameConstants.CONTEXTUAL_MISSION_DIAGRAM_NAME);
     testOn(context, SA__MISSIONS, IDiagramNameConstants.MISSIONS_BLANK_DIAGRAM_NAME);
 
     // LogicalArchitecture
@@ -56,15 +62,15 @@ public class InsertRemoveScenario extends EmptyProject {
   protected void testOn(SessionContext context, String sourceId, String diagramName) {
     CapabilityDiagram diagramContext = CapabilityDiagram.createDiagram(context, sourceId, diagramName);
 
-    diagramContext.insertActor(GenericModel.ACTOR_1);
-    diagramContext.removeActor(GenericModel.ACTOR_1);
+    diagramContext.insertActor(actor1);
+    diagramContext.removeActor(actor1);
 
-    diagramContext.insertCapability(GenericModel.CAPABILITY_2);
-    diagramContext.removeCapability(GenericModel.CAPABILITY_2);
+    diagramContext.insertCapability(capability2);
+    diagramContext.removeCapability(capability2);
 
     if (diagramContext instanceof MissionDiagram && ((MissionDiagram) diagramContext).canInsertMission()) {
-      ((MissionDiagram) diagramContext).insertMission(GenericModel.MISSION_2);
-      ((MissionDiagram) diagramContext).removeMission(GenericModel.MISSION_2);
+      ((MissionDiagram) diagramContext).insertMission(mission2);
+      ((MissionDiagram) diagramContext).removeMission(mission2);
     }
 
   }
@@ -72,35 +78,35 @@ public class InsertRemoveScenario extends EmptyProject {
   protected void createOperationalAnalysis(SessionContext context) {
     CapabilityDiagram diagram = CapabilityDiagram.createDiagram(context, OA__OPERATIONAL_CAPABILITIES,
         IDiagramNameConstants.OPERATIONAL_CAPABILITIES_ENTITYIES_BLANK_DIAGRAM_NAME);
-    diagram.createCapability(GenericModel.CAPABILITY_1);
-    diagram.createCapability(GenericModel.CAPABILITY_2);
-    diagram.createActor(GenericModel.ACTOR_1);
+    capability1 = diagram.createCapability();
+    capability2 = diagram.createCapability();
+    actor1 = diagram.createActor();
   }
 
   protected void createSystemAnalysis(SessionContext context) {
     MissionDiagram diagram = MissionDiagram.createDiagram(context, SA__CAPABILITIES,
         IDiagramNameConstants.MISSIONS_CAPABILITIES_BLANK_DIAGRAM_NAME);
-    diagram.createCapability(GenericModel.CAPABILITY_1);
-    diagram.createCapability(GenericModel.CAPABILITY_2);
-    diagram.createActor(GenericModel.ACTOR_1);
-    diagram.createMission(GenericModel.MISSION_1);
-    diagram.createMission(GenericModel.MISSION_2);
+    capability1 = diagram.createCapability();
+    capability2 = diagram.createCapability();
+    actor1 = diagram.createActor();
+    mission1 = diagram.createMission();
+    mission2 = diagram.createMission();
   }
 
   protected void createLogicalArchitecture(SessionContext context) {
     CapabilityDiagram diagram = CapabilityDiagram.createDiagram(context, LA__CAPABILITIES,
         IDiagramNameConstants.CAPABILITY_REALIZATION_BLANK);
-    diagram.createCapability(GenericModel.CAPABILITY_1);
-    diagram.createCapability(GenericModel.CAPABILITY_2);
-    diagram.createActor(GenericModel.ACTOR_1);
+    capability1 = diagram.createCapability();
+    capability2 = diagram.createCapability();
+    actor1 = diagram.createActor();
   }
 
   protected void createPhysicalArchitecture(SessionContext context) {
     CapabilityDiagram diagram = CapabilityDiagram.createDiagram(context, PA__CAPABILITIES,
         IDiagramNameConstants.CAPABILITY_REALIZATION_BLANK);
-    diagram.createCapability(GenericModel.CAPABILITY_1);
-    diagram.createCapability(GenericModel.CAPABILITY_2);
-    diagram.createActor(GenericModel.ACTOR_1);
+    capability1 = diagram.createCapability();
+    capability2 = diagram.createCapability();
+    actor1 = diagram.createActor();
   }
 
   public static Test suite() {

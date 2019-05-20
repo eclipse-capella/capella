@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,19 +13,20 @@ package org.polarsys.capella.test.diagram.tools.ju.testsuites.partial;
 import java.util.ArrayList;
 import java.util.List;
 
-import junit.framework.Test;
-
 import org.polarsys.capella.test.diagram.tools.ju.mcb.CCScenario;
 import org.polarsys.capella.test.diagram.tools.ju.mcb.CMScenario;
+import org.polarsys.capella.test.diagram.tools.ju.mcb.COCScenario;
+import org.polarsys.capella.test.diagram.tools.ju.mcb.CRBScenario;
 import org.polarsys.capella.test.diagram.tools.ju.mcb.EPBSCRBScenario;
 import org.polarsys.capella.test.diagram.tools.ju.mcb.InsertRemoveScenario;
-import org.polarsys.capella.test.diagram.tools.ju.mcb.LACRBScenario;
 import org.polarsys.capella.test.diagram.tools.ju.mcb.MBScenario;
 import org.polarsys.capella.test.diagram.tools.ju.mcb.MCBScenario;
 import org.polarsys.capella.test.diagram.tools.ju.mcb.OCBHideEntityTestCase;
 import org.polarsys.capella.test.diagram.tools.ju.mcb.OCBScenario;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
+
+import junit.framework.Test;
 
 public class MCBDiagramToolsTestSuite extends BasicTestSuite {
 
@@ -47,11 +48,12 @@ public class MCBDiagramToolsTestSuite extends BasicTestSuite {
     tests.add(new MCBScenario());
     tests.add(new CCScenario());
     tests.add(new EPBSCRBScenario());
-    tests.add(new LACRBScenario());
+    tests.add(new CRBScenario());
     tests.add(new CMScenario());
     tests.add(new MBScenario());
     tests.add(new OCBScenario());
     tests.add(new OCBHideEntityTestCase());
+    tests.add(new COCScenario());
 
     return tests;
   }

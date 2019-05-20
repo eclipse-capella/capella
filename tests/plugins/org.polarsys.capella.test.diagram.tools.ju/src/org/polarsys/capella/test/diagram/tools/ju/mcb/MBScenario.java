@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,7 @@ package org.polarsys.capella.test.diagram.tools.ju.mcb;
 import org.eclipse.sirius.business.api.session.Session;
 import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
 import org.polarsys.capella.test.diagram.common.ju.context.MissionDiagram;
+import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.DiagramHelper;
 import org.polarsys.capella.test.diagram.tools.ju.model.EmptyProject;
 import org.polarsys.capella.test.framework.context.SessionContext;
 import org.polarsys.capella.test.framework.model.GenericModel;
@@ -27,31 +28,44 @@ public class MBScenario extends EmptyProject {
     MissionDiagram initDiagram = MissionDiagram.createDiagram(context, SA__CAPABILITIES,
         IDiagramNameConstants.MISSIONS_CAPABILITIES_BLANK_DIAGRAM_NAME);
 
-    initDiagram.createCapability(GenericModel.CAPABILITY_1);
-    initDiagram.createMission(GenericModel.MISSION_1);
-    initDiagram.createActor(GenericModel.ACTOR_1);
+    String capability1 = initDiagram.createCapability();
+    String mission1 = initDiagram.createMission();
+    String actor1 = initDiagram.createActor();
 
     MissionDiagram diagram = MissionDiagram.createDiagram(context, SA__MISSIONS,
         IDiagramNameConstants.MISSIONS_BLANK_DIAGRAM_NAME);
 
-    diagram.insertCapability(GenericModel.CAPABILITY_1);
-    diagram.createCapability(GenericModel.CAPABILITY_2);
+    diagram.insertCapability(capability1);
+    String capability2 = diagram.createCapability();
 
-    diagram.insertMission(GenericModel.MISSION_1);
-    diagram.createMission(GenericModel.MISSION_2);
+    diagram.insertMission(mission1);
+    String mission2 = diagram.createMission();
 
-    diagram.insertActor(GenericModel.ACTOR_1);
-    diagram.createActor(GenericModel.ACTOR_2);
+    diagram.insertActor(actor1);
+    String actor2 = diagram.createActor();
 
-    diagram.createCapabilityExploitation(GenericModel.MISSION_2, GenericModel.CAPABILITY_2, GenericModel.CL_1);
-    diagram.createMissionInvolvement(GenericModel.MISSION_2, GenericModel.ACTOR_2);
+    String cl1 = diagram.createCapabilityExploitation(mission2, capability2);
+    String cl2 = diagram.createMissionInvolvement(mission2, actor2);
+    String cl3 = diagram.createActorGeneralization(actor1, actor2);
 
-    diagram.createActorGeneralization(GenericModel.ACTOR_1, GenericModel.ACTOR_2);
+    DiagramHelper.setSynchronized(diagram.getDiagram(), false);
+    diagram.removeRelationship(mission2, cl1);
+    diagram.insertRelationship(capability2, cl1);
+    diagram.removeRelationship(mission2, cl2);
+    diagram.insertRelationship(mission2, cl2);
+    diagram.removeRelationship(actor1, cl3);
+    diagram.insertRelationship(actor1, cl3);
+    DiagramHelper.setSynchronized(diagram.getDiagram(), true);
 
     diagram.createConstraint(GenericModel.CONSTRAINT_1, diagram.getDiagramId());
-    diagram.createConstrainedElement(GenericModel.CONSTRAINT_1, GenericModel.MISSION_2);
-    diagram.createConstrainedElement(GenericModel.CONSTRAINT_1, GenericModel.CL_1);
+    diagram.createConstrainedElement(GenericModel.CONSTRAINT_1, mission2);
+    diagram.createConstrainedElement(GenericModel.CONSTRAINT_1, cl1);
 
+    diagram.removeConstraint(GenericModel.CONSTRAINT_1, mission2);
+    diagram.insertConstraint(GenericModel.CONSTRAINT_1, mission2);
+
+    diagram.removeConstraint(GenericModel.CONSTRAINT_1, cl1);
+    diagram.insertConstraint(GenericModel.CONSTRAINT_1, cl1);
   }
 
 }
