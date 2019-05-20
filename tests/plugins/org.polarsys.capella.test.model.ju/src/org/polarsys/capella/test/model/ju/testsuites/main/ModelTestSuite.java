@@ -13,8 +13,6 @@ package org.polarsys.capella.test.model.ju.testsuites.main;
 import java.util.ArrayList;
 import java.util.List;
 
-import junit.framework.Test;
-
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
 import org.polarsys.capella.test.model.ju.helpers.CapellaAdapterHelperTestCase;
@@ -24,6 +22,8 @@ import org.polarsys.capella.test.model.ju.sortContent.SortContentTestSuite;
 import org.polarsys.capella.test.model.ju.sortSelection.SortSelectionTestSuite;
 import org.polarsys.capella.test.model.ju.testcase.LCDecomposition.LCDecompositionWithCommunicationLink;
 import org.polarsys.capella.test.model.ju.testcase.LCDecomposition.LCDecompositionWithInternalInterface;
+import org.polarsys.capella.test.model.ju.testcase.copyPasteLayout.CopyPasteLayout;
+import org.polarsys.capella.test.model.ju.testcase.copyPasteLayout.InvalidCapellaCopyPaste;
 import org.polarsys.capella.test.model.ju.testcase.copyPasteModel.CopyPasteModelElementReferencingLibrary;
 import org.polarsys.capella.test.model.ju.testcase.copyPasteModel.CopyPasteModelWithAppliedPVGandPV;
 import org.polarsys.capella.test.model.ju.testcase.copyPasteModel.CopyPasteModelWithFunctionalAllocation;
@@ -31,6 +31,8 @@ import org.polarsys.capella.test.model.ju.testcase.dialoglabel.NewDiagramDialogL
 import org.polarsys.capella.test.model.ju.testcases.datalisteners.DataListenerTestSuite;
 import org.polarsys.capella.test.model.ju.testcases.delete.DeleteElementTestSuite;
 import org.polarsys.capella.test.model.ju.testcases.interfacescenario.message.ISMessage;
+
+import junit.framework.Test;
 
 /**
  * @author Hakim Sellou
@@ -61,6 +63,8 @@ public class ModelTestSuite extends BasicTestSuite {
     tests.add(new DeleteElementTestSuite());
     tests.add(new DataListenerTestSuite());
     tests.add(new CapellaAdapterHelperTestCase());
+    tests.add(new CopyPasteLayout());
+    tests.add(new InvalidCapellaCopyPaste());
     return tests;
   }
 

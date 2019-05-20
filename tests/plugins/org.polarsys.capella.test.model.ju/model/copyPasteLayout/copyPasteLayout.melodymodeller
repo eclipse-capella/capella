@@ -64,6 +64,8 @@
           id="759ec6a9-19e2-41e2-93f9-839b630711ee" name="System Functions">
         <ownedSystemFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
             id="6229eb9c-ad7b-4b1a-8b93-c0a608516a4e" name="Root System Function">
+          <ownedFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
+              id="cb326564-f8da-4d67-98e5-c30878030cc8" name="SystemFunction 1"/>
           <ownedFunctionRealizations xsi:type="org.polarsys.capella.core.data.fa:FunctionRealization"
               id="aedadf67-e0a2-4164-8845-4df1f0daad40" targetElement="#9913fd0f-1c51-41d8-9681-72adad2de533"
               sourceElement="#6229eb9c-ad7b-4b1a-8b93-c0a608516a4e"/>
@@ -175,6 +177,9 @@
       </ownedSystemContext>
       <ownedSystem xsi:type="org.polarsys.capella.core.data.ctx:System" id="91e77aaf-8a53-46e9-af53-dbb16c7471b3"
           name="System">
+        <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
+            id="fd525472-02a1-44f9-84d5-37f191cd68af" targetElement="#cb326564-f8da-4d67-98e5-c30878030cc8"
+            sourceElement="#91e77aaf-8a53-46e9-af53-dbb16c7471b3"/>
         <ownedStateMachines xsi:type="org.polarsys.capella.core.data.capellacommon:StateMachine"
             id="6fe225b9-1737-44f7-9a6b-a3c567b527de" name="System State Machine">
           <ownedRegions xsi:type="org.polarsys.capella.core.data.capellacommon:Region"
