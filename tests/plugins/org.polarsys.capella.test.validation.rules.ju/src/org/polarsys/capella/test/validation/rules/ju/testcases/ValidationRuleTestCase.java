@@ -244,8 +244,6 @@ public abstract class ValidationRuleTestCase extends BasicTestCase {
 
   @Override
   protected void tearDown() throws Exception {
-    super.tearDown();
-
     if (_ruleWasDisabled && ruleDescriptor != null) {
       ruleDescriptor.setEnabled(false);
     }
@@ -254,12 +252,8 @@ public abstract class ValidationRuleTestCase extends BasicTestCase {
       // remove the filter from the validator
       validator.removeConstraintFilter(filter);
     }
-    ruleID = null;
-    targetedEClass = null;
-    ruleDescriptor = null;
-    filter = null;
-    validator = null;
-    objectID2OracleDefinition = null;
+    
+    super.tearDown();
   }
 
 }

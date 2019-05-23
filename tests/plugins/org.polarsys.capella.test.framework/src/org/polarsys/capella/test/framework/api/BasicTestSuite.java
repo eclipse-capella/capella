@@ -114,6 +114,7 @@ public abstract class BasicTestSuite extends TestSuite implements BasicTestArtef
         ModelProviderHelper.getInstance().getModelProvider().releaseTestModel(modelName, this);
       }
     }
+    getTests().clear();
   }
 
   /**

@@ -13,6 +13,8 @@ package org.polarsys.capella.test.framework.helpers;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
@@ -49,6 +51,8 @@ import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.Proj
 import org.polarsys.capella.test.framework.api.ModelProviderHelper;
 
 import com.google.common.io.Files;
+
+import junit.framework.TestCase;
 
 /**
  * Helper for writing JUnit tests for RCP application.
@@ -114,17 +118,18 @@ public class TestHelper {
    *          true to set as Multipart, otherwise false
    */
   public static void setReusableComponents(final EObject anyModelElement, final boolean value) {
-    ExecutionManagerRegistry.getInstance().getExecutionManager(TransactionHelper.getEditingDomain(anyModelElement)).execute(new AbstractReadWriteCommand() {
-      @Override
-      public void run() {
-        Project project = CapellaProjectHelper.getProject(anyModelElement);
-        if (value) {
-          CapellaProjectHelper.setProjectWithApproach(project, ProjectApproach.ReusableComponents);
-        } else {
-          CapellaProjectHelper.setProjectWithApproach(project, ProjectApproach.SingletonComponents);
-        }
-      }
-    });
+    ExecutionManagerRegistry.getInstance().getExecutionManager(TransactionHelper.getEditingDomain(anyModelElement))
+        .execute(new AbstractReadWriteCommand() {
+          @Override
+          public void run() {
+            Project project = CapellaProjectHelper.getProject(anyModelElement);
+            if (value) {
+              CapellaProjectHelper.setProjectWithApproach(project, ProjectApproach.ReusableComponents);
+            } else {
+              CapellaProjectHelper.setProjectWithApproach(project, ProjectApproach.SingletonComponents);
+            }
+          }
+        });
   }
 
   /**
@@ -240,7 +245,7 @@ public class TestHelper {
     }
     return result;
   }
-  
+
   /**
    * 
    * @return all derived references from Capella packages
@@ -262,5 +267,22 @@ public class TestHelper {
       }
     }
     return allDerivedReferences;
+  }
+
+  public static void disposeObject(Object e) {
+    Class currentClass = e.getClass();
+    while (currentClass != null && TestCase.class != currentClass) {
+      for (Field field : currentClass.getDeclaredFields()) {
+        try {
+          if (!Modifier.isFinal(field.getModifiers()) && !field.getType().isPrimitive() && !String.class.isAssignableFrom(field.getType())) {
+            field.setAccessible(true);
+            field.set(e, null);
+          }
+        } catch (IllegalArgumentException | IllegalAccessException e1) {
+          e1.printStackTrace();
+        }
+      }
+      currentClass = currentClass.getSuperclass();
+    }
   }
 }

@@ -168,13 +168,17 @@ public abstract class BasicTestCase extends TestCase implements BasicTestArtefac
 
   @Override
   protected void tearDown() throws Exception {
-    super.tearDown();
-    // release test models
-    List<String> projectNamesToLoad = getRequiredTestModels();
-    if (projectNamesToLoad != null) {
-      for (String modelName : projectNamesToLoad) {
-        ModelProviderHelper.getInstance().getModelProvider().releaseTestModel(modelName, this);
+    try {
+      super.tearDown();
+      // release test models
+      List<String> projectNamesToLoad = getRequiredTestModels();
+      if (projectNamesToLoad != null) {
+        for (String modelName : projectNamesToLoad) {
+          ModelProviderHelper.getInstance().getModelProvider().releaseTestModel(modelName, this);
+        }
       }
+    } finally {
+      TestHelper.disposeObject(this);
     }
   }
 

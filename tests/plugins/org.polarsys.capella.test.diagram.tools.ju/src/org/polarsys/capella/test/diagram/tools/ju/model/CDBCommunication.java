@@ -40,8 +40,9 @@ public abstract class CDBCommunication extends AbstractDiagramTestCase {
   public void test() throws Exception {
     initTest();
     testCDB();
-    if (cdb != null)
+    if (cdb != null) {
       cdb.close();
+    }
     session.close(new NullProgressMonitor());
   }
 
