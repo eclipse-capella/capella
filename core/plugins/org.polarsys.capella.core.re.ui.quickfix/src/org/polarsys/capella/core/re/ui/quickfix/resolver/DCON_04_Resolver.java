@@ -23,6 +23,7 @@ import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.re.CatalogElement;
 import org.polarsys.capella.common.re.CatalogElementKind;
+import org.polarsys.capella.common.re.CatalogElementLink;
 import org.polarsys.capella.core.validation.ui.ide.PluginActivator;
 import org.polarsys.capella.core.validation.ui.ide.quickfix.AbstractCapellaMarkerResolution;
 
@@ -38,6 +39,9 @@ public class DCON_04_Resolver extends AbstractCapellaMarkerResolution {
         public void run() {
           rpl.setKind(CatalogElementKind.REC);
           rpl.setOrigin(null);
+          for (CatalogElementLink element : rpl.getOwnedLinks()) {
+            element.setOrigin(null);
+          }
           deleteMarker(marker);
         }
       });
@@ -48,7 +52,7 @@ public class DCON_04_Resolver extends AbstractCapellaMarkerResolution {
     final List<EObject> modelElements = getModelElements(marker);
     // The target shall be always the first element
     // (see org.polarsys.capella.common.helpers.validation.ConstraintStatusDiagnostic#getData())
-    return modelElements.size() > 0 ? (CatalogElement) modelElements.get(0) : null;
+    return !modelElements.isEmpty() ? (CatalogElement) modelElements.get(0) : null;
   }
 
   private void deleteMarker(IMarker marker) {

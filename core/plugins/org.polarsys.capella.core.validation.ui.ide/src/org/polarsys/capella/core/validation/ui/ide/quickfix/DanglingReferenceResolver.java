@@ -15,6 +15,9 @@ import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.polarsys.capella.common.ef.ExecutionManager;
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.re.CatalogElement;
 import org.polarsys.capella.common.re.CatalogElementLink;
 import org.polarsys.capella.core.data.capellacore.GeneralizableElement;
@@ -32,7 +35,6 @@ public class DanglingReferenceResolver extends AbstractDeleteCommandResolver {
 
   @Override
   public Object getElementToDelete(Object obj) {
-
     List<EObject> generalizationsToDelete = new ArrayList<>();
 
     if (obj instanceof Generalization) {
@@ -54,13 +56,25 @@ public class DanglingReferenceResolver extends AbstractDeleteCommandResolver {
       }
     } else if (obj instanceof CatalogElement) {
       CatalogElement catalogElement = (CatalogElement) obj;
-      if (null != catalogElement && catalogElement.getOrigin().eIsProxy()) {
-        generalizationsToDelete.add(catalogElement);
+      if (catalogElement.getOrigin() != null && catalogElement.getOrigin().eIsProxy()) {
+        ExecutionManager executionManager = TransactionHelper.getExecutionManager(catalogElement);
+        executionManager.execute(new AbstractReadWriteCommand() {
+          @Override
+          public void run() {
+            catalogElement.setOrigin(null);
+          }
+        });
       }
     } else if (obj instanceof CatalogElementLink) {
       CatalogElementLink catalogElementLink = (CatalogElementLink) obj;
-      if (null != catalogElementLink && catalogElementLink.getOrigin().eIsProxy()) {
-        generalizationsToDelete.add(catalogElementLink);
+      if (catalogElementLink.getOrigin() != null && catalogElementLink.getOrigin().eIsProxy()) {
+        ExecutionManager executionManager = TransactionHelper.getExecutionManager(catalogElementLink);
+        executionManager.execute(new AbstractReadWriteCommand() {
+          @Override
+          public void run() {
+            catalogElementLink.setOrigin(null);
+          }
+        });
       }
     }
 
