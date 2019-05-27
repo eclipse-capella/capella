@@ -113,9 +113,9 @@ public final class AbstractCapability__subGeneralizationsQuerySpecification exte
   private static class GeneratedPQuery extends BaseGeneratedEMFPQuery {
     private final static AbstractCapability__subGeneralizationsQuerySpecification.GeneratedPQuery INSTANCE = new GeneratedPQuery();
     
-    private final PParameter parameter_pSelf = new PParameter("self", "org.polarsys.capella.core.data.interaction.AbstractCapability", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("http://www.polarsys.org/capella/core/interaction/1.3.0", "AbstractCapability")), PParameterDirection.INOUT);
+    private final PParameter parameter_pSelf = new PParameter("self", "org.polarsys.capella.core.data.interaction.AbstractCapability", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("http://www.polarsys.org/capella/core/interaction/1.4.0", "AbstractCapability")), PParameterDirection.INOUT);
     
-    private final PParameter parameter_pTarget = new PParameter("target", "org.polarsys.capella.core.data.interaction.AbstractCapabilityGeneralization", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("http://www.polarsys.org/capella/core/interaction/1.3.0", "AbstractCapabilityGeneralization")), PParameterDirection.INOUT);
+    private final PParameter parameter_pTarget = new PParameter("target", "org.polarsys.capella.core.data.interaction.AbstractCapabilityGeneralization", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("http://www.polarsys.org/capella/core/interaction/1.4.0", "AbstractCapabilityGeneralization")), PParameterDirection.INOUT);
     
     private final List<PParameter> parameters = Arrays.asList(parameter_pSelf, parameter_pTarget);
     
@@ -143,17 +143,17 @@ public final class AbstractCapability__subGeneralizationsQuerySpecification exte
               PBody body = new PBody(this);
               PVariable var_self = body.getOrCreateVariableByName("self");
               PVariable var_target = body.getOrCreateVariableByName("target");
-              new TypeConstraint(body, new FlatTuple(var_self), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/interaction/1.3.0", "AbstractCapability")));
-              new TypeConstraint(body, new FlatTuple(var_target), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/interaction/1.3.0", "AbstractCapabilityGeneralization")));
+              new TypeConstraint(body, new FlatTuple(var_self), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/interaction/1.4.0", "AbstractCapability")));
+              new TypeConstraint(body, new FlatTuple(var_target), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/interaction/1.4.0", "AbstractCapabilityGeneralization")));
               body.setSymbolicParameters(Arrays.<ExportedParameter>asList(
                  new ExportedParameter(body, var_self, parameter_pSelf),
                  new ExportedParameter(body, var_target, parameter_pTarget)
               ));
               // 	AbstractCapabilityGeneralization.super(target, self)
-              new TypeConstraint(body, new FlatTuple(var_target), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/interaction/1.3.0", "AbstractCapabilityGeneralization")));
+              new TypeConstraint(body, new FlatTuple(var_target), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/interaction/1.4.0", "AbstractCapabilityGeneralization")));
               PVariable var__virtual_0_ = body.getOrCreateVariableByName(".virtual{0}");
-              new TypeConstraint(body, new FlatTuple(var_target, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/core/interaction/1.3.0", "AbstractCapabilityGeneralization", "super")));
-              new TypeConstraint(body, new FlatTuple(var__virtual_0_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/interaction/1.3.0", "AbstractCapability")));
+              new TypeConstraint(body, new FlatTuple(var_target, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/core/interaction/1.4.0", "AbstractCapabilityGeneralization", "super")));
+              new TypeConstraint(body, new FlatTuple(var__virtual_0_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/interaction/1.4.0", "AbstractCapability")));
               new Equality(body, var__virtual_0_, var_self);
               bodies.add(body);
           }

@@ -113,9 +113,9 @@ public final class PhysicalComponent__logicalInterfaceRealizationsQuerySpecifica
   private static class GeneratedPQuery extends BaseGeneratedEMFPQuery {
     private final static PhysicalComponent__logicalInterfaceRealizationsQuerySpecification.GeneratedPQuery INSTANCE = new GeneratedPQuery();
     
-    private final PParameter parameter_pSelf = new PParameter("self", "org.polarsys.capella.core.data.pa.PhysicalComponent", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("http://www.polarsys.org/capella/core/pa/1.3.0", "PhysicalComponent")), PParameterDirection.INOUT);
+    private final PParameter parameter_pSelf = new PParameter("self", "org.polarsys.capella.core.data.pa.PhysicalComponent", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("http://www.polarsys.org/capella/core/pa/1.4.0", "PhysicalComponent")), PParameterDirection.INOUT);
     
-    private final PParameter parameter_pTarget = new PParameter("target", "org.polarsys.capella.core.data.pa.LogicalInterfaceRealization", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("http://www.polarsys.org/capella/core/pa/1.3.0", "LogicalInterfaceRealization")), PParameterDirection.INOUT);
+    private final PParameter parameter_pTarget = new PParameter("target", "org.polarsys.capella.core.data.pa.LogicalInterfaceRealization", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("http://www.polarsys.org/capella/core/pa/1.4.0", "LogicalInterfaceRealization")), PParameterDirection.INOUT);
     
     private final List<PParameter> parameters = Arrays.asList(parameter_pSelf, parameter_pTarget);
     
@@ -143,17 +143,17 @@ public final class PhysicalComponent__logicalInterfaceRealizationsQuerySpecifica
               PBody body = new PBody(this);
               PVariable var_self = body.getOrCreateVariableByName("self");
               PVariable var_target = body.getOrCreateVariableByName("target");
-              new TypeConstraint(body, new FlatTuple(var_self), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/pa/1.3.0", "PhysicalComponent")));
-              new TypeConstraint(body, new FlatTuple(var_target), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/pa/1.3.0", "LogicalInterfaceRealization")));
+              new TypeConstraint(body, new FlatTuple(var_self), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/pa/1.4.0", "PhysicalComponent")));
+              new TypeConstraint(body, new FlatTuple(var_target), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/pa/1.4.0", "LogicalInterfaceRealization")));
               body.setSymbolicParameters(Arrays.<ExportedParameter>asList(
                  new ExportedParameter(body, var_self, parameter_pSelf),
                  new ExportedParameter(body, var_target, parameter_pTarget)
               ));
               // 	PhysicalComponent.provisionedInterfaceAllocations(self, target)
-              new TypeConstraint(body, new FlatTuple(var_self), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/pa/1.3.0", "PhysicalComponent")));
+              new TypeConstraint(body, new FlatTuple(var_self), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/pa/1.4.0", "PhysicalComponent")));
               PVariable var__virtual_0_ = body.getOrCreateVariableByName(".virtual{0}");
-              new TypeConstraint(body, new FlatTuple(var_self, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/core/cs/1.3.0", "InterfaceAllocator", "provisionedInterfaceAllocations")));
-              new TypeConstraint(body, new FlatTuple(var__virtual_0_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/cs/1.3.0", "InterfaceAllocation")));
+              new TypeConstraint(body, new FlatTuple(var_self, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/core/cs/1.4.0", "InterfaceAllocator", "provisionedInterfaceAllocations")));
+              new TypeConstraint(body, new FlatTuple(var__virtual_0_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/cs/1.4.0", "InterfaceAllocation")));
               new Equality(body, var__virtual_0_, var_target);
               bodies.add(body);
           }

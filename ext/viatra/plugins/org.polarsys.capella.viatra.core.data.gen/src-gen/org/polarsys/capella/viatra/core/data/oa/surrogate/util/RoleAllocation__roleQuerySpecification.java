@@ -113,9 +113,9 @@ public final class RoleAllocation__roleQuerySpecification extends BaseGeneratedE
   private static class GeneratedPQuery extends BaseGeneratedEMFPQuery {
     private final static RoleAllocation__roleQuerySpecification.GeneratedPQuery INSTANCE = new GeneratedPQuery();
     
-    private final PParameter parameter_pSelf = new PParameter("self", "org.polarsys.capella.core.data.oa.RoleAllocation", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("http://www.polarsys.org/capella/core/oa/1.3.0", "RoleAllocation")), PParameterDirection.INOUT);
+    private final PParameter parameter_pSelf = new PParameter("self", "org.polarsys.capella.core.data.oa.RoleAllocation", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("http://www.polarsys.org/capella/core/oa/1.4.0", "RoleAllocation")), PParameterDirection.INOUT);
     
-    private final PParameter parameter_pTarget = new PParameter("target", "org.polarsys.capella.core.data.oa.Role", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("http://www.polarsys.org/capella/core/oa/1.3.0", "Role")), PParameterDirection.INOUT);
+    private final PParameter parameter_pTarget = new PParameter("target", "org.polarsys.capella.core.data.oa.Role", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("http://www.polarsys.org/capella/core/oa/1.4.0", "Role")), PParameterDirection.INOUT);
     
     private final List<PParameter> parameters = Arrays.asList(parameter_pSelf, parameter_pTarget);
     
@@ -143,17 +143,17 @@ public final class RoleAllocation__roleQuerySpecification extends BaseGeneratedE
               PBody body = new PBody(this);
               PVariable var_self = body.getOrCreateVariableByName("self");
               PVariable var_target = body.getOrCreateVariableByName("target");
-              new TypeConstraint(body, new FlatTuple(var_self), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/oa/1.3.0", "RoleAllocation")));
-              new TypeConstraint(body, new FlatTuple(var_target), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/oa/1.3.0", "Role")));
+              new TypeConstraint(body, new FlatTuple(var_self), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/oa/1.4.0", "RoleAllocation")));
+              new TypeConstraint(body, new FlatTuple(var_target), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/oa/1.4.0", "Role")));
               body.setSymbolicParameters(Arrays.<ExportedParameter>asList(
                  new ExportedParameter(body, var_self, parameter_pSelf),
                  new ExportedParameter(body, var_target, parameter_pTarget)
               ));
               // 	RoleAllocation.targetElement(self, target)
-              new TypeConstraint(body, new FlatTuple(var_self), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/oa/1.3.0", "RoleAllocation")));
+              new TypeConstraint(body, new FlatTuple(var_self), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/oa/1.4.0", "RoleAllocation")));
               PVariable var__virtual_0_ = body.getOrCreateVariableByName(".virtual{0}");
-              new TypeConstraint(body, new FlatTuple(var_self, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/common/core/1.3.0", "AbstractTrace", "targetElement")));
-              new TypeConstraint(body, new FlatTuple(var__virtual_0_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/common/core/1.3.0", "TraceableElement")));
+              new TypeConstraint(body, new FlatTuple(var_self, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/common/core/1.4.0", "AbstractTrace", "targetElement")));
+              new TypeConstraint(body, new FlatTuple(var__virtual_0_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/common/core/1.4.0", "TraceableElement")));
               new Equality(body, var__virtual_0_, var_target);
               bodies.add(body);
           }

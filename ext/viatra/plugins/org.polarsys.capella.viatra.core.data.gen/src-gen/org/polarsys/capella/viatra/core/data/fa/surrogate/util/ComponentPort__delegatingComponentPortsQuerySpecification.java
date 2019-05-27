@@ -116,9 +116,9 @@ public final class ComponentPort__delegatingComponentPortsQuerySpecification ext
   private static class GeneratedPQuery extends BaseGeneratedEMFPQuery {
     private final static ComponentPort__delegatingComponentPortsQuerySpecification.GeneratedPQuery INSTANCE = new GeneratedPQuery();
     
-    private final PParameter parameter_pSelf = new PParameter("self", "org.polarsys.capella.core.data.fa.ComponentPort", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("http://www.polarsys.org/capella/core/fa/1.3.0", "ComponentPort")), PParameterDirection.INOUT);
+    private final PParameter parameter_pSelf = new PParameter("self", "org.polarsys.capella.core.data.fa.ComponentPort", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("http://www.polarsys.org/capella/core/fa/1.4.0", "ComponentPort")), PParameterDirection.INOUT);
     
-    private final PParameter parameter_pTarget = new PParameter("target", "org.polarsys.capella.core.data.fa.ComponentPort", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("http://www.polarsys.org/capella/core/fa/1.3.0", "ComponentPort")), PParameterDirection.INOUT);
+    private final PParameter parameter_pTarget = new PParameter("target", "org.polarsys.capella.core.data.fa.ComponentPort", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("http://www.polarsys.org/capella/core/fa/1.4.0", "ComponentPort")), PParameterDirection.INOUT);
     
     private final List<PParameter> parameters = Arrays.asList(parameter_pSelf, parameter_pTarget);
     
@@ -147,31 +147,31 @@ public final class ComponentPort__delegatingComponentPortsQuerySpecification ext
               PVariable var_self = body.getOrCreateVariableByName("self");
               PVariable var_target = body.getOrCreateVariableByName("target");
               PVariable var_ce = body.getOrCreateVariableByName("ce");
-              new TypeConstraint(body, new FlatTuple(var_self), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/fa/1.3.0", "ComponentPort")));
-              new TypeConstraint(body, new FlatTuple(var_target), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/fa/1.3.0", "ComponentPort")));
+              new TypeConstraint(body, new FlatTuple(var_self), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/fa/1.4.0", "ComponentPort")));
+              new TypeConstraint(body, new FlatTuple(var_target), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/fa/1.4.0", "ComponentPort")));
               body.setSymbolicParameters(Arrays.<ExportedParameter>asList(
                  new ExportedParameter(body, var_self, parameter_pSelf),
                  new ExportedParameter(body, var_target, parameter_pTarget)
               ));
               // 	ComponentPort.incomingInformationFlows(self, ce)
-              new TypeConstraint(body, new FlatTuple(var_self), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/fa/1.3.0", "ComponentPort")));
+              new TypeConstraint(body, new FlatTuple(var_self), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/fa/1.4.0", "ComponentPort")));
               PVariable var__virtual_0_ = body.getOrCreateVariableByName(".virtual{0}");
-              new TypeConstraint(body, new FlatTuple(var_self, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/common/core/1.3.0", "InformationsExchanger", "incomingInformationFlows")));
-              new TypeConstraint(body, new FlatTuple(var__virtual_0_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/common/core/1.3.0", "AbstractInformationFlow")));
+              new TypeConstraint(body, new FlatTuple(var_self, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/common/core/1.4.0", "InformationsExchanger", "incomingInformationFlows")));
+              new TypeConstraint(body, new FlatTuple(var__virtual_0_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/common/core/1.4.0", "AbstractInformationFlow")));
               new Equality(body, var__virtual_0_, var_ce);
               // ComponentExchange.kind(ce, ::DELEGATION)
               PVariable var__virtual_1_ = body.getOrCreateVariableByName(".virtual{1}");
-              new ConstantValue(body, var__virtual_1_, getEnumLiteral("http://www.polarsys.org/capella/core/fa/1.3.0", "ComponentExchangeKind", "DELEGATION").getInstance());
-              new TypeConstraint(body, new FlatTuple(var_ce), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/fa/1.3.0", "ComponentExchange")));
+              new ConstantValue(body, var__virtual_1_, getEnumLiteral("http://www.polarsys.org/capella/core/fa/1.4.0", "ComponentExchangeKind", "DELEGATION").getInstance());
+              new TypeConstraint(body, new FlatTuple(var_ce), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/fa/1.4.0", "ComponentExchange")));
               PVariable var__virtual_2_ = body.getOrCreateVariableByName(".virtual{2}");
-              new TypeConstraint(body, new FlatTuple(var_ce, var__virtual_2_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/core/fa/1.3.0", "ComponentExchange", "kind")));
-              new TypeConstraint(body, new FlatTuple(var__virtual_2_), new EDataTypeInSlotsKey((EDataType)getClassifierLiteral("http://www.polarsys.org/capella/core/fa/1.3.0", "ComponentExchangeKind")));
+              new TypeConstraint(body, new FlatTuple(var_ce, var__virtual_2_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/core/fa/1.4.0", "ComponentExchange", "kind")));
+              new TypeConstraint(body, new FlatTuple(var__virtual_2_), new EDataTypeInSlotsKey((EDataType)getClassifierLiteral("http://www.polarsys.org/capella/core/fa/1.4.0", "ComponentExchangeKind")));
               new Equality(body, var__virtual_2_, var__virtual_1_);
               // ComponentExchange.sourcePort(ce, target)
-              new TypeConstraint(body, new FlatTuple(var_ce), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/fa/1.3.0", "ComponentExchange")));
+              new TypeConstraint(body, new FlatTuple(var_ce), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/fa/1.4.0", "ComponentExchange")));
               PVariable var__virtual_3_ = body.getOrCreateVariableByName(".virtual{3}");
-              new TypeConstraint(body, new FlatTuple(var_ce, var__virtual_3_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/core/fa/1.3.0", "ComponentExchange", "sourcePort")));
-              new TypeConstraint(body, new FlatTuple(var__virtual_3_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/information/1.3.0", "Port")));
+              new TypeConstraint(body, new FlatTuple(var_ce, var__virtual_3_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/core/fa/1.4.0", "ComponentExchange", "sourcePort")));
+              new TypeConstraint(body, new FlatTuple(var__virtual_3_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/information/1.4.0", "Port")));
               new Equality(body, var__virtual_3_, var_target);
               bodies.add(body);
           }

@@ -113,9 +113,9 @@ public final class ModelElement__constraintsQuerySpecification extends BaseGener
   private static class GeneratedPQuery extends BaseGeneratedEMFPQuery {
     private final static ModelElement__constraintsQuerySpecification.GeneratedPQuery INSTANCE = new GeneratedPQuery();
     
-    private final PParameter parameter_pSelf = new PParameter("self", "org.polarsys.capella.common.data.modellingcore.ModelElement", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("http://www.polarsys.org/capella/common/core/1.3.0", "ModelElement")), PParameterDirection.INOUT);
+    private final PParameter parameter_pSelf = new PParameter("self", "org.polarsys.capella.common.data.modellingcore.ModelElement", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("http://www.polarsys.org/capella/common/core/1.4.0", "ModelElement")), PParameterDirection.INOUT);
     
-    private final PParameter parameter_pTarget = new PParameter("target", "org.polarsys.capella.common.data.modellingcore.AbstractConstraint", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("http://www.polarsys.org/capella/common/core/1.3.0", "AbstractConstraint")), PParameterDirection.INOUT);
+    private final PParameter parameter_pTarget = new PParameter("target", "org.polarsys.capella.common.data.modellingcore.AbstractConstraint", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("http://www.polarsys.org/capella/common/core/1.4.0", "AbstractConstraint")), PParameterDirection.INOUT);
     
     private final List<PParameter> parameters = Arrays.asList(parameter_pSelf, parameter_pTarget);
     
@@ -143,17 +143,17 @@ public final class ModelElement__constraintsQuerySpecification extends BaseGener
               PBody body = new PBody(this);
               PVariable var_self = body.getOrCreateVariableByName("self");
               PVariable var_target = body.getOrCreateVariableByName("target");
-              new TypeConstraint(body, new FlatTuple(var_self), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/common/core/1.3.0", "ModelElement")));
-              new TypeConstraint(body, new FlatTuple(var_target), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/common/core/1.3.0", "AbstractConstraint")));
+              new TypeConstraint(body, new FlatTuple(var_self), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/common/core/1.4.0", "ModelElement")));
+              new TypeConstraint(body, new FlatTuple(var_target), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/common/core/1.4.0", "AbstractConstraint")));
               body.setSymbolicParameters(Arrays.<ExportedParameter>asList(
                  new ExportedParameter(body, var_self, parameter_pSelf),
                  new ExportedParameter(body, var_target, parameter_pTarget)
               ));
               // 	AbstractConstraint.constrainedElements(target, self)
-              new TypeConstraint(body, new FlatTuple(var_target), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/common/core/1.3.0", "AbstractConstraint")));
+              new TypeConstraint(body, new FlatTuple(var_target), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/common/core/1.4.0", "AbstractConstraint")));
               PVariable var__virtual_0_ = body.getOrCreateVariableByName(".virtual{0}");
-              new TypeConstraint(body, new FlatTuple(var_target, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/common/core/1.3.0", "AbstractConstraint", "constrainedElements")));
-              new TypeConstraint(body, new FlatTuple(var__virtual_0_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/common/core/1.3.0", "ModelElement")));
+              new TypeConstraint(body, new FlatTuple(var_target, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/common/core/1.4.0", "AbstractConstraint", "constrainedElements")));
+              new TypeConstraint(body, new FlatTuple(var__virtual_0_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/common/core/1.4.0", "ModelElement")));
               new Equality(body, var__virtual_0_, var_self);
               bodies.add(body);
           }

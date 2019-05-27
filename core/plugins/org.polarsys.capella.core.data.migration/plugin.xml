@@ -204,18 +204,6 @@
    <extension
          point="org.polarsys.capella.core.data.migration.migrationContributions">
          
-	  <migrationContribution
-         class="org.polarsys.capella.core.data.migration.contribution.DAnnotationDescriptorContribution">
-	  </migrationContribution>
-	  
-	  <migrationContribution
-         class="org.polarsys.capella.core.data.migration.contribution.ActivateDiagramFiltersContribution">
-	  </migrationContribution>
-	  
-	  <migrationContribution
-         class="org.polarsys.capella.core.data.migration.contribution.UidFromXmiIdContribution">
-	  </migrationContribution>
-          
    </extension>
    
    

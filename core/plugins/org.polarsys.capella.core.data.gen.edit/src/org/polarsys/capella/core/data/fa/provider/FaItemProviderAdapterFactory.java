@@ -931,7 +931,7 @@ public class FaItemProviderAdapterFactory extends FaAdapterFactory implements Co
 			@Override
 			public Object caseAbstractActivity(AbstractActivity object) {
 				// begin-extension-code
-				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/fa/1.3.0")) { //$NON-NLS-1$
+				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/fa/1.4.0")) { //$NON-NLS-1$
 					return null;				
 				}
 				// end-extension-code
@@ -985,7 +985,7 @@ public class FaItemProviderAdapterFactory extends FaAdapterFactory implements Co
 			@Override
 			public Object caseActivityGroup(ActivityGroup object) {
 				// begin-extension-code
-				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/fa/1.3.0")) { //$NON-NLS-1$
+				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/fa/1.4.0")) { //$NON-NLS-1$
 					return null;				
 				}
 				// end-extension-code
@@ -1039,7 +1039,7 @@ public class FaItemProviderAdapterFactory extends FaAdapterFactory implements Co
 			@Override
 			public Object caseAbstractAction(AbstractAction object) {
 				// begin-extension-code
-				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/fa/1.3.0")) { //$NON-NLS-1$
+				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/fa/1.4.0")) { //$NON-NLS-1$
 					return null;				
 				}
 				// end-extension-code
@@ -1080,7 +1080,7 @@ public class FaItemProviderAdapterFactory extends FaAdapterFactory implements Co
 			@Override
 			public Object caseAcceptEventAction(AcceptEventAction object) {
 				// begin-extension-code
-				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/fa/1.3.0")) { //$NON-NLS-1$
+				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/fa/1.4.0")) { //$NON-NLS-1$
 					return null;				
 				}
 				// end-extension-code
@@ -1108,7 +1108,7 @@ public class FaItemProviderAdapterFactory extends FaAdapterFactory implements Co
 			@Override
 			public Object caseInvocationAction(InvocationAction object) {
 				// begin-extension-code
-				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/fa/1.3.0")) { //$NON-NLS-1$
+				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/fa/1.4.0")) { //$NON-NLS-1$
 					return null;				
 				}
 				// end-extension-code
@@ -1136,7 +1136,7 @@ public class FaItemProviderAdapterFactory extends FaAdapterFactory implements Co
 			@Override
 			public Object caseSendSignalAction(SendSignalAction object) {
 				// begin-extension-code
-				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/fa/1.3.0")) { //$NON-NLS-1$
+				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/fa/1.4.0")) { //$NON-NLS-1$
 					return null;				
 				}
 				// end-extension-code
@@ -1164,7 +1164,7 @@ public class FaItemProviderAdapterFactory extends FaAdapterFactory implements Co
 			@Override
 			public Object caseCallAction(CallAction object) {
 				// begin-extension-code
-				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/fa/1.3.0")) { //$NON-NLS-1$
+				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/fa/1.4.0")) { //$NON-NLS-1$
 					return null;				
 				}
 				// end-extension-code

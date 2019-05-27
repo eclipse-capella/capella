@@ -13,10 +13,10 @@
 
 package org.polarsys.capella.viatra.core.data.cs.surrogate
 
-import "http://www.polarsys.org/capella/core/cs/1.3.0"
+import "http://www.polarsys.org/capella/core/cs/1.4.0"
 
 // Start of user code for imports 
-import "http://www.polarsys.org/capella/common/core/1.3.0"
+import "http://www.polarsys.org/capella/common/core/1.4.0"
 
 // End of user code
 

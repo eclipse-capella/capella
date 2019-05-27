@@ -47,7 +47,7 @@ public interface SharedmodelPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://www.polarsys.org/capella/core/sharedmodel/1.3.0"; //$NON-NLS-1$
+	String eNS_URI = "http://www.polarsys.org/capella/core/sharedmodel/1.4.0"; //$NON-NLS-1$
 
 	/**
 	 * The package namespace name.

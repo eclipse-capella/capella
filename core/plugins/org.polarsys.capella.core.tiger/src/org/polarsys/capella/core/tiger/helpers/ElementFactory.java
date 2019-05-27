@@ -212,7 +212,7 @@ public class ElementFactory {
      // 1.3- Second instance role
      
      InstanceRole instanceRole2 = null;
-     // 1.3.1- Checks whether the instance roles are not already in use in the scenario    
+     // 1.4.0- Checks whether the instance roles are not already in use in the scenario    
      for (InstanceRole instanceRole : scenario.getOwnedInstanceRoles()) {
        if(instanceRole.getRepresentedInstance() == componentInstance2) {
          instanceRole2 = instanceRole;

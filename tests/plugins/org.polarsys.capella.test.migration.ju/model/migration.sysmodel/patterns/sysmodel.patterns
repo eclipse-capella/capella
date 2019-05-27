@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--Capella_Version_1.3.0-->
+<!--Capella_Version_1.3.1-->
 <org.eclipse.emf.diffmerge.patterns.core:PatternRepository xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:common_1.0.0="http://www.polarsys.org/capella/core/common/1.0.0"
-    xmlns:core_1.0.0="http://www.polarsys.org/capella/core/core/1.0.0" xmlns:cs_1.0.0="http://www.polarsys.org/capella/core/cs/1.0.0"
-    xmlns:fa_1.0.0="http://www.polarsys.org/capella/core/fa/1.0.0" xmlns:information_1.0.0="http://www.polarsys.org/capella/core/information/1.0.0"
-    xmlns:la_1.0.0="http://www.polarsys.org/capella/core/la/1.0.0" xmlns:org.eclipse.emf.diffmerge.patterns.core="http://org.eclipse.com/emf/diffmerge/patterns/core/1.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:common="http://www.polarsys.org/capella/core/common/1.3.0"
+    xmlns:core="http://www.polarsys.org/capella/core/core/1.3.0" xmlns:cs="http://www.polarsys.org/capella/core/cs/1.3.0"
+    xmlns:fa="http://www.polarsys.org/capella/core/fa/1.3.0" xmlns:information="http://www.polarsys.org/capella/core/information/1.3.0"
+    xmlns:la="http://www.polarsys.org/capella/core/la/1.3.0" xmlns:org.eclipse.emf.diffmerge.patterns.core="http://org.eclipse.com/emf/diffmerge/patterns/core/1.0.0"
     xmlns:org.eclipse.emf.diffmerge.patterns.templates="http://org.eclipse.com/emf/diffmerge/patterns/templates/1.0.0"
     id="efaeae74-a64a-47e4-a9ed-fae17cc249f4"
     name="sysmodel">
@@ -377,266 +377,275 @@
             targetX="710" targetY="339"/>
       </value>
     </layoutData>
-    <templateElements xsi:type="cs_1.0.0:Part" id="f371bcdc-bd5c-4901-a1dc-8678fd3a4beb"
+    <templateElements xsi:type="cs:Part" id="f371bcdc-bd5c-4901-a1dc-8678fd3a4beb"
         name="MVC Component" abstractType="#f124d3f0-74cb-4795-b365-59e1cdaa5f6e"/>
-    <templateElements xsi:type="cs_1.0.0:Part" id="f371bcdc-bd5c-4901-a1dc-8678fd3a4beb"
+    <templateElements xsi:type="cs:Part" id="f371bcdc-bd5c-4901-a1dc-8678fd3a4beb"
         name="MVC Component" abstractType="#f124d3f0-74cb-4795-b365-59e1cdaa5f6e"/>
-    <templateElements xsi:type="cs_1.0.0:Part" id="f371bcdc-bd5c-4901-a1dc-8678fd3a4beb"
+    <templateElements xsi:type="cs:Part" id="f371bcdc-bd5c-4901-a1dc-8678fd3a4beb"
         name="MVC Component" abstractType="#f124d3f0-74cb-4795-b365-59e1cdaa5f6e"/>
-    <templateElements xsi:type="cs_1.0.0:Part" id="f371bcdc-bd5c-4901-a1dc-8678fd3a4beb"
+    <templateElements xsi:type="cs:Part" id="f371bcdc-bd5c-4901-a1dc-8678fd3a4beb"
         name="MVC Component" abstractType="#f124d3f0-74cb-4795-b365-59e1cdaa5f6e"/>
-    <templateElements xsi:type="fa_1.0.0:FunctionalExchange" id="d6a94c2a-d2ec-42e8-bf93-dbe4571803b5"
+    <templateElements xsi:type="cs:Part" id="f371bcdc-bd5c-4901-a1dc-8678fd3a4beb"
+        name="MVC Component" abstractType="#f124d3f0-74cb-4795-b365-59e1cdaa5f6e"/>
+    <templateElements xsi:type="fa:FunctionalExchange" id="d6a94c2a-d2ec-42e8-bf93-dbe4571803b5"
         name="Apply Users Actions" target="#fefbf5e5-95b2-4c04-a7ce-d61c94f983e6"
         source="#ad1aad0c-1a6c-47cb-813a-20bab0adb557" exchangedItems="#3e473e5d-7072-4fdb-984c-14b9f499d6cb"/>
-    <templateElements xsi:type="fa_1.0.0:FunctionalExchange" id="d6a94c2a-d2ec-42e8-bf93-dbe4571803b5"
+    <templateElements xsi:type="fa:FunctionalExchange" id="d6a94c2a-d2ec-42e8-bf93-dbe4571803b5"
         name="Apply Users Actions" target="#fefbf5e5-95b2-4c04-a7ce-d61c94f983e6"
         source="#ad1aad0c-1a6c-47cb-813a-20bab0adb557" exchangedItems="#3e473e5d-7072-4fdb-984c-14b9f499d6cb"/>
-    <templateElements xsi:type="fa_1.0.0:FunctionalExchange" id="d6a94c2a-d2ec-42e8-bf93-dbe4571803b5"
+    <templateElements xsi:type="fa:FunctionalExchange" id="d6a94c2a-d2ec-42e8-bf93-dbe4571803b5"
         name="Apply Users Actions" target="#fefbf5e5-95b2-4c04-a7ce-d61c94f983e6"
         source="#ad1aad0c-1a6c-47cb-813a-20bab0adb557" exchangedItems="#3e473e5d-7072-4fdb-984c-14b9f499d6cb"/>
-    <templateElements xsi:type="fa_1.0.0:FunctionalExchange" id="d6a94c2a-d2ec-42e8-bf93-dbe4571803b5"
+    <templateElements xsi:type="fa:FunctionalExchange" id="d6a94c2a-d2ec-42e8-bf93-dbe4571803b5"
         name="Apply Users Actions" target="#fefbf5e5-95b2-4c04-a7ce-d61c94f983e6"
         source="#ad1aad0c-1a6c-47cb-813a-20bab0adb557" exchangedItems="#3e473e5d-7072-4fdb-984c-14b9f499d6cb"/>
-    <templateElements xsi:type="la_1.0.0:LogicalFunction" id="31a787d5-cf1a-4f5e-934c-5cdd3d4a1c9e"
+    <templateElements xsi:type="fa:FunctionalExchange" id="d6a94c2a-d2ec-42e8-bf93-dbe4571803b5"
+        name="Apply Users Actions" target="#fefbf5e5-95b2-4c04-a7ce-d61c94f983e6"
+        source="#ad1aad0c-1a6c-47cb-813a-20bab0adb557" exchangedItems="#3e473e5d-7072-4fdb-984c-14b9f499d6cb"/>
+    <templateElements xsi:type="la:LogicalFunction" id="31a787d5-cf1a-4f5e-934c-5cdd3d4a1c9e"
         name="Manage View">
-      <inputs xsi:type="fa_1.0.0:FunctionInputPort" id="7d245397-5393-46ca-9a9f-b69e5d5b78bd"
+      <inputs xsi:type="fa:FunctionInputPort" id="7d245397-5393-46ca-9a9f-b69e5d5b78bd"
           name="FIP 1" incomingExchangeItems="#ef4fb904-8e91-4b82-a787-151b7448fac4"/>
-      <inputs xsi:type="fa_1.0.0:FunctionInputPort" id="712c4684-3cd5-48ea-a178-451d7a1cf411"
+      <inputs xsi:type="fa:FunctionInputPort" id="712c4684-3cd5-48ea-a178-451d7a1cf411"
           name="FIP 2" incomingExchangeItems="#bf29cfd1-ff76-4a09-8ec4-f6338b1929a8"/>
-      <outputs xsi:type="fa_1.0.0:FunctionOutputPort" id="ad1aad0c-1a6c-47cb-813a-20bab0adb557"
+      <outputs xsi:type="fa:FunctionOutputPort" id="ad1aad0c-1a6c-47cb-813a-20bab0adb557"
           name="FOP 1" outgoingExchangeItems="#3e473e5d-7072-4fdb-984c-14b9f499d6cb"/>
-      <outputs xsi:type="fa_1.0.0:FunctionOutputPort" id="0479d7b1-27db-467f-a4b0-741af6ac6d69"
+      <outputs xsi:type="fa:FunctionOutputPort" id="0479d7b1-27db-467f-a4b0-741af6ac6d69"
           name="FOP 2" outgoingExchangeItems="#c33f3d08-97f4-4ae8-b7ad-13137dd3f162"/>
     </templateElements>
-    <templateElements xsi:type="la_1.0.0:LogicalFunction" id="31a787d5-cf1a-4f5e-934c-5cdd3d4a1c9e"
+    <templateElements xsi:type="la:LogicalFunction" id="31a787d5-cf1a-4f5e-934c-5cdd3d4a1c9e"
         name="Manage View"/>
-    <templateElements xsi:type="la_1.0.0:LogicalFunction" id="31a787d5-cf1a-4f5e-934c-5cdd3d4a1c9e"
+    <templateElements xsi:type="la:LogicalFunction" id="31a787d5-cf1a-4f5e-934c-5cdd3d4a1c9e"
         name="Manage View"/>
-    <templateElements xsi:type="la_1.0.0:LogicalFunction" id="31a787d5-cf1a-4f5e-934c-5cdd3d4a1c9e"
+    <templateElements xsi:type="la:LogicalFunction" id="31a787d5-cf1a-4f5e-934c-5cdd3d4a1c9e"
         name="Manage View"/>
-    <templateElements xsi:type="la_1.0.0:LogicalFunction" id="40b06b94-0955-42e9-b3be-03a185d502e0"
+    <templateElements xsi:type="la:LogicalFunction" id="31a787d5-cf1a-4f5e-934c-5cdd3d4a1c9e"
+        name="Manage View"/>
+    <templateElements xsi:type="la:LogicalFunction" id="40b06b94-0955-42e9-b3be-03a185d502e0"
         name="Manage Controler">
-      <inputs xsi:type="fa_1.0.0:FunctionInputPort" id="fefbf5e5-95b2-4c04-a7ce-d61c94f983e6"
+      <inputs xsi:type="fa:FunctionInputPort" id="fefbf5e5-95b2-4c04-a7ce-d61c94f983e6"
           name="FIP 1" incomingExchangeItems="#3e473e5d-7072-4fdb-984c-14b9f499d6cb"/>
-      <outputs xsi:type="fa_1.0.0:FunctionOutputPort" id="f93784c5-8153-44b7-a4c5-1f16604c55d9"
+      <outputs xsi:type="fa:FunctionOutputPort" id="f93784c5-8153-44b7-a4c5-1f16604c55d9"
           name="FOP 1" outgoingExchangeItems="#ef4fb904-8e91-4b82-a787-151b7448fac4"/>
-      <outputs xsi:type="fa_1.0.0:FunctionOutputPort" id="dcbec71c-93cc-4a1f-a109-f780d9375b11"
+      <outputs xsi:type="fa:FunctionOutputPort" id="dcbec71c-93cc-4a1f-a109-f780d9375b11"
           name="FOP 2" outgoingExchangeItems="#7000ef42-2ffa-4226-a04a-27d38ea16a6a"/>
     </templateElements>
-    <templateElements xsi:type="fa_1.0.0:FunctionalExchange" id="813799bd-61ce-405b-9bc3-e62723bc9e2c"
+    <templateElements xsi:type="fa:FunctionalExchange" id="813799bd-61ce-405b-9bc3-e62723bc9e2c"
         name="Send Request" target="#7468942f-694c-4b8b-b11f-0e09bea5e173" source="#0479d7b1-27db-467f-a4b0-741af6ac6d69"
         exchangedItems="#c33f3d08-97f4-4ae8-b7ad-13137dd3f162"/>
-    <templateElements xsi:type="la_1.0.0:LogicalFunction" id="f28d66c5-9c83-4629-871e-d27fa477f68a"
+    <templateElements xsi:type="la:LogicalFunction" id="f28d66c5-9c83-4629-871e-d27fa477f68a"
         name="Manage Model">
-      <inputs xsi:type="fa_1.0.0:FunctionInputPort" id="aa64142b-5dac-42b4-9ebb-6dc8306e735b"
+      <inputs xsi:type="fa:FunctionInputPort" id="aa64142b-5dac-42b4-9ebb-6dc8306e735b"
           name="FIP 1" incomingExchangeItems="#7000ef42-2ffa-4226-a04a-27d38ea16a6a"/>
-      <inputs xsi:type="fa_1.0.0:FunctionInputPort" id="7468942f-694c-4b8b-b11f-0e09bea5e173"
+      <inputs xsi:type="fa:FunctionInputPort" id="7468942f-694c-4b8b-b11f-0e09bea5e173"
           name="FIP 2" incomingExchangeItems="#c33f3d08-97f4-4ae8-b7ad-13137dd3f162"/>
-      <outputs xsi:type="fa_1.0.0:FunctionOutputPort" id="e609320a-4a7f-4357-95bb-fa74f1a102df"
+      <outputs xsi:type="fa:FunctionOutputPort" id="e609320a-4a7f-4357-95bb-fa74f1a102df"
           name="FOP 1" outgoingExchangeItems="#bf29cfd1-ff76-4a09-8ec4-f6338b1929a8"/>
     </templateElements>
-    <templateElements xsi:type="fa_1.0.0:FunctionalExchange" id="5e444753-d506-4d8a-84f0-935d47a977c9"
+    <templateElements xsi:type="fa:FunctionalExchange" id="5e444753-d506-4d8a-84f0-935d47a977c9"
         name="Provide Suitable View" target="#7d245397-5393-46ca-9a9f-b69e5d5b78bd"
         source="#f93784c5-8153-44b7-a4c5-1f16604c55d9" exchangedItems="#ef4fb904-8e91-4b82-a787-151b7448fac4"/>
-    <templateElements xsi:type="fa_1.0.0:FunctionalExchange" id="1c448d98-0aa6-4576-9578-c1ca62e706c3"
+    <templateElements xsi:type="fa:FunctionalExchange" id="1c448d98-0aa6-4576-9578-c1ca62e706c3"
         name="Notify Modification" target="#712c4684-3cd5-48ea-a178-451d7a1cf411"
         source="#e609320a-4a7f-4357-95bb-fa74f1a102df" exchangedItems="#bf29cfd1-ff76-4a09-8ec4-f6338b1929a8"/>
-    <templateElements xsi:type="fa_1.0.0:FunctionalExchange" id="bb8ecba0-5a31-46e2-927d-53b6eff83849"
+    <templateElements xsi:type="fa:FunctionalExchange" id="bb8ecba0-5a31-46e2-927d-53b6eff83849"
         name="Update" target="#aa64142b-5dac-42b4-9ebb-6dc8306e735b" source="#dcbec71c-93cc-4a1f-a109-f780d9375b11"
         exchangedItems="#7000ef42-2ffa-4226-a04a-27d38ea16a6a"/>
-    <templateElements xsi:type="la_1.0.0:LogicalComponent" id="f124d3f0-74cb-4795-b365-59e1cdaa5f6e"
+    <templateElements xsi:type="la:LogicalComponent" id="f124d3f0-74cb-4795-b365-59e1cdaa5f6e"
         name="MVC Component">
-      <ownedComponentExchanges xsi:type="fa_1.0.0:ComponentExchange" id="02c425ee-5b36-42c4-8c58-3dae8694b768"
+      <ownedComponentExchanges xsi:type="fa:ComponentExchange" id="02c425ee-5b36-42c4-8c58-3dae8694b768"
           name="Apply Users Actions" source="#bc3765e0-6b78-49bf-ae38-78492a02f6ca"
           target="#b429bebc-0f79-42ca-b594-14295589d13c" kind="FLOW">
-        <ownedComponentExchangeFunctionalExchangeAllocations xsi:type="fa_1.0.0:ComponentExchangeFunctionalExchangeAllocation"
+        <ownedComponentExchangeFunctionalExchangeAllocations xsi:type="fa:ComponentExchangeFunctionalExchangeAllocation"
             id="ed104798-4af9-4f8d-a2b3-1ef0f8e687fb" targetElement="#d6a94c2a-d2ec-42e8-bf93-dbe4571803b5"
             sourceElement="#02c425ee-5b36-42c4-8c58-3dae8694b768"/>
       </ownedComponentExchanges>
-      <ownedComponentExchanges xsi:type="fa_1.0.0:ComponentExchange" id="15854cc9-260b-4c35-959a-208305333497"
+      <ownedComponentExchanges xsi:type="fa:ComponentExchange" id="15854cc9-260b-4c35-959a-208305333497"
           name="Send Request" source="#29979cf5-64f9-47d8-b6fc-2a827cdaae59" target="#d3205195-aba1-4238-b87f-6f93c60016cd"
           kind="FLOW">
-        <ownedComponentExchangeFunctionalExchangeAllocations xsi:type="fa_1.0.0:ComponentExchangeFunctionalExchangeAllocation"
+        <ownedComponentExchangeFunctionalExchangeAllocations xsi:type="fa:ComponentExchangeFunctionalExchangeAllocation"
             id="10638d8f-875d-4392-a87f-17c15b2ad974" targetElement="#813799bd-61ce-405b-9bc3-e62723bc9e2c"
             sourceElement="#15854cc9-260b-4c35-959a-208305333497"/>
       </ownedComponentExchanges>
-      <ownedComponentExchanges xsi:type="fa_1.0.0:ComponentExchange" id="058dd3bf-b96c-4f5f-96c9-ce84790d17fa"
+      <ownedComponentExchanges xsi:type="fa:ComponentExchange" id="058dd3bf-b96c-4f5f-96c9-ce84790d17fa"
           name="Provide Suitable View" source="#a1eaca84-d3f3-4d43-9eac-077d74b5d143"
           target="#43808aa3-d37e-4736-8396-6e4c8bb9370e" kind="FLOW">
-        <ownedComponentExchangeFunctionalExchangeAllocations xsi:type="fa_1.0.0:ComponentExchangeFunctionalExchangeAllocation"
+        <ownedComponentExchangeFunctionalExchangeAllocations xsi:type="fa:ComponentExchangeFunctionalExchangeAllocation"
             id="25fa93ce-6618-4339-a818-5948da6e657e" targetElement="#5e444753-d506-4d8a-84f0-935d47a977c9"
             sourceElement="#058dd3bf-b96c-4f5f-96c9-ce84790d17fa"/>
       </ownedComponentExchanges>
-      <ownedComponentExchanges xsi:type="fa_1.0.0:ComponentExchange" id="5adafad8-67b6-4abb-869e-bad86cab7bda"
+      <ownedComponentExchanges xsi:type="fa:ComponentExchange" id="5adafad8-67b6-4abb-869e-bad86cab7bda"
           name="Notify Modification" source="#8fe8d3fe-adcf-49e4-b6ec-c2a4e825cd88"
           target="#18b8a82f-c6cb-4ac0-b24f-330fe6068f92" kind="FLOW">
-        <ownedComponentExchangeFunctionalExchangeAllocations xsi:type="fa_1.0.0:ComponentExchangeFunctionalExchangeAllocation"
+        <ownedComponentExchangeFunctionalExchangeAllocations xsi:type="fa:ComponentExchangeFunctionalExchangeAllocation"
             id="8cb8ae8e-d380-46b6-85c7-9137aa76ede8" targetElement="#1c448d98-0aa6-4576-9578-c1ca62e706c3"
             sourceElement="#5adafad8-67b6-4abb-869e-bad86cab7bda"/>
       </ownedComponentExchanges>
-      <ownedComponentExchanges xsi:type="fa_1.0.0:ComponentExchange" id="fc7c70de-103e-4fea-b83b-0ab15cb7af9c"
+      <ownedComponentExchanges xsi:type="fa:ComponentExchange" id="fc7c70de-103e-4fea-b83b-0ab15cb7af9c"
           name="Update" source="#13a3f1e4-c5dc-4367-b7c7-a1f8e1ac86a8" target="#2074c667-c57b-4a23-892d-e6a528f87780"
           kind="FLOW">
-        <ownedComponentExchangeFunctionalExchangeAllocations xsi:type="fa_1.0.0:ComponentExchangeFunctionalExchangeAllocation"
+        <ownedComponentExchangeFunctionalExchangeAllocations xsi:type="fa:ComponentExchangeFunctionalExchangeAllocation"
             id="0979d9f7-90fc-4a98-b0ea-2b6219674104" targetElement="#bb8ecba0-5a31-46e2-927d-53b6eff83849"
             sourceElement="#fc7c70de-103e-4fea-b83b-0ab15cb7af9c"/>
       </ownedComponentExchanges>
-      <ownedInterfacePkg xsi:type="cs_1.0.0:InterfacePkg" id="2d9c756b-2132-40a2-847f-0d712fdbfd7f"
+      <ownedInterfacePkg xsi:type="cs:InterfacePkg" id="2d9c756b-2132-40a2-847f-0d712fdbfd7f"
           name="Interfaces">
-        <ownedInterfaces xsi:type="cs_1.0.0:Interface" id="3ab75f92-49a9-4654-820c-304fa6657b86"
+        <ownedInterfaces xsi:type="cs:Interface" id="3ab75f92-49a9-4654-820c-304fa6657b86"
             name="Apply Users Actions">
-          <ownedTraces xsi:type="common_1.0.0:TransfoLink" id="2db99d7f-96d4-4b81-b781-d4778a94ec3e"
+          <ownedTraces xsi:type="common:TransfoLink" id="2db99d7f-96d4-4b81-b781-d4778a94ec3e"
               targetElement="#02c425ee-5b36-42c4-8c58-3dae8694b768" sourceElement="#3ab75f92-49a9-4654-820c-304fa6657b86">
-            <keyValuePairs xsi:type="core_1.0.0:KeyValue" id="69cc9c85-9559-4948-bbc3-bab80ef680e3"
+            <keyValuePairs xsi:type="core:KeyValue" id="69cc9c85-9559-4948-bbc3-bab80ef680e3"
                 key="TransfoUID" value="Type='Transition' TargetId='0492f15a-1b43-4aa5-97bb-bd75a4eec935'"/>
           </ownedTraces>
-          <ownedExchangeItemAllocations xsi:type="cs_1.0.0:ExchangeItemAllocation"
+          <ownedExchangeItemAllocations xsi:type="cs:ExchangeItemAllocation"
               id="40443cad-c8d3-44b9-8618-6b1dfe00ebb3" name="user action" allocatedItem="#3e473e5d-7072-4fdb-984c-14b9f499d6cb"/>
         </ownedInterfaces>
-        <ownedInterfaces xsi:type="cs_1.0.0:Interface" id="93139174-c442-4f49-99c3-3f203e894661"
+        <ownedInterfaces xsi:type="cs:Interface" id="93139174-c442-4f49-99c3-3f203e894661"
             name="Send Request">
-          <ownedTraces xsi:type="common_1.0.0:TransfoLink" id="41d2fb52-f424-43d4-835c-56053205b107"
+          <ownedTraces xsi:type="common:TransfoLink" id="41d2fb52-f424-43d4-835c-56053205b107"
               targetElement="#15854cc9-260b-4c35-959a-208305333497" sourceElement="#93139174-c442-4f49-99c3-3f203e894661">
-            <keyValuePairs xsi:type="core_1.0.0:KeyValue" id="ce7dda49-4fe7-4fd0-8777-c32e4f266ab0"
+            <keyValuePairs xsi:type="core:KeyValue" id="ce7dda49-4fe7-4fd0-8777-c32e4f266ab0"
                 key="TransfoUID" value="Type='Transition' TargetId='0492f15a-1b43-4aa5-97bb-bd75a4eec935'"/>
           </ownedTraces>
-          <ownedExchangeItemAllocations xsi:type="cs_1.0.0:ExchangeItemAllocation"
+          <ownedExchangeItemAllocations xsi:type="cs:ExchangeItemAllocation"
               id="eb2c0d4d-2467-4bc4-96f8-bea02cf50d05" name="request" allocatedItem="#c33f3d08-97f4-4ae8-b7ad-13137dd3f162"/>
         </ownedInterfaces>
-        <ownedInterfaces xsi:type="cs_1.0.0:Interface" id="3e7675ae-9144-44dd-82b4-9efe2dedc4fd"
+        <ownedInterfaces xsi:type="cs:Interface" id="3e7675ae-9144-44dd-82b4-9efe2dedc4fd"
             name="Provide Suitable View">
-          <ownedTraces xsi:type="common_1.0.0:TransfoLink" id="fe427f74-4068-4818-a20a-0e98e07b474f"
+          <ownedTraces xsi:type="common:TransfoLink" id="fe427f74-4068-4818-a20a-0e98e07b474f"
               targetElement="#058dd3bf-b96c-4f5f-96c9-ce84790d17fa" sourceElement="#3e7675ae-9144-44dd-82b4-9efe2dedc4fd">
-            <keyValuePairs xsi:type="core_1.0.0:KeyValue" id="c1977598-0817-4355-ae24-eb6a94986f0a"
+            <keyValuePairs xsi:type="core:KeyValue" id="c1977598-0817-4355-ae24-eb6a94986f0a"
                 key="TransfoUID" value="Type='Transition' TargetId='0492f15a-1b43-4aa5-97bb-bd75a4eec935'"/>
           </ownedTraces>
-          <ownedExchangeItemAllocations xsi:type="cs_1.0.0:ExchangeItemAllocation"
+          <ownedExchangeItemAllocations xsi:type="cs:ExchangeItemAllocation"
               id="337e319f-820d-4552-9544-e6a45ff45f9c" name="selected view" allocatedItem="#ef4fb904-8e91-4b82-a787-151b7448fac4"/>
         </ownedInterfaces>
-        <ownedInterfaces xsi:type="cs_1.0.0:Interface" id="0147849c-b915-4ff9-b561-3013aed4e143"
+        <ownedInterfaces xsi:type="cs:Interface" id="0147849c-b915-4ff9-b561-3013aed4e143"
             name="Notify Modification">
-          <ownedTraces xsi:type="common_1.0.0:TransfoLink" id="3950e88b-05a9-4203-a7ac-89c760f20b95"
+          <ownedTraces xsi:type="common:TransfoLink" id="3950e88b-05a9-4203-a7ac-89c760f20b95"
               targetElement="#5adafad8-67b6-4abb-869e-bad86cab7bda" sourceElement="#0147849c-b915-4ff9-b561-3013aed4e143">
-            <keyValuePairs xsi:type="core_1.0.0:KeyValue" id="37ef3498-4600-41da-8422-dea8c8a8b1ad"
+            <keyValuePairs xsi:type="core:KeyValue" id="37ef3498-4600-41da-8422-dea8c8a8b1ad"
                 key="TransfoUID" value="Type='Transition' TargetId='0492f15a-1b43-4aa5-97bb-bd75a4eec935'"/>
           </ownedTraces>
-          <ownedExchangeItemAllocations xsi:type="cs_1.0.0:ExchangeItemAllocation"
+          <ownedExchangeItemAllocations xsi:type="cs:ExchangeItemAllocation"
               id="d8d98f74-f253-4822-bdf9-673c1ea1af1e" name="notification" allocatedItem="#bf29cfd1-ff76-4a09-8ec4-f6338b1929a8"/>
         </ownedInterfaces>
-        <ownedInterfaces xsi:type="cs_1.0.0:Interface" id="533bd830-d435-4e29-972a-b5d40911a967"
+        <ownedInterfaces xsi:type="cs:Interface" id="533bd830-d435-4e29-972a-b5d40911a967"
             name="Update">
-          <ownedTraces xsi:type="common_1.0.0:TransfoLink" id="d5cb3186-7056-4b2d-9652-204066e23f12"
+          <ownedTraces xsi:type="common:TransfoLink" id="d5cb3186-7056-4b2d-9652-204066e23f12"
               targetElement="#fc7c70de-103e-4fea-b83b-0ab15cb7af9c" sourceElement="#533bd830-d435-4e29-972a-b5d40911a967">
-            <keyValuePairs xsi:type="core_1.0.0:KeyValue" id="67ea7d30-3e48-44f4-82ef-db864e61bf08"
+            <keyValuePairs xsi:type="core:KeyValue" id="67ea7d30-3e48-44f4-82ef-db864e61bf08"
                 key="TransfoUID" value="Type='Transition' TargetId='0492f15a-1b43-4aa5-97bb-bd75a4eec935'"/>
           </ownedTraces>
-          <ownedExchangeItemAllocations xsi:type="cs_1.0.0:ExchangeItemAllocation"
+          <ownedExchangeItemAllocations xsi:type="cs:ExchangeItemAllocation"
               id="775c3e7a-bd34-40ac-b926-84f8daf25a2e" name="update" allocatedItem="#7000ef42-2ffa-4226-a04a-27d38ea16a6a"/>
         </ownedInterfaces>
       </ownedInterfacePkg>
-      <ownedDataPkg xsi:type="information_1.0.0:DataPkg" id="82b36758-90df-41d9-a2fe-3d6b062ad341"
+      <ownedDataPkg xsi:type="information:DataPkg" id="82b36758-90df-41d9-a2fe-3d6b062ad341"
           name="MVC Data">
-        <ownedExchangeItems xsi:type="information_1.0.0:ExchangeItem" id="c33f3d08-97f4-4ae8-b7ad-13137dd3f162"
+        <ownedExchangeItems xsi:type="information:ExchangeItem" id="c33f3d08-97f4-4ae8-b7ad-13137dd3f162"
             name="request" exchangeMechanism="FLOW"/>
-        <ownedExchangeItems xsi:type="information_1.0.0:ExchangeItem" id="bf29cfd1-ff76-4a09-8ec4-f6338b1929a8"
+        <ownedExchangeItems xsi:type="information:ExchangeItem" id="bf29cfd1-ff76-4a09-8ec4-f6338b1929a8"
             name="notification" exchangeMechanism="EVENT"/>
-        <ownedExchangeItems xsi:type="information_1.0.0:ExchangeItem" id="7000ef42-2ffa-4226-a04a-27d38ea16a6a"
+        <ownedExchangeItems xsi:type="information:ExchangeItem" id="7000ef42-2ffa-4226-a04a-27d38ea16a6a"
             name="update" exchangeMechanism="OPERATION"/>
-        <ownedExchangeItems xsi:type="information_1.0.0:ExchangeItem" id="3e473e5d-7072-4fdb-984c-14b9f499d6cb"
+        <ownedExchangeItems xsi:type="information:ExchangeItem" id="3e473e5d-7072-4fdb-984c-14b9f499d6cb"
             name="user action" exchangeMechanism="EVENT"/>
-        <ownedExchangeItems xsi:type="information_1.0.0:ExchangeItem" id="ef4fb904-8e91-4b82-a787-151b7448fac4"
+        <ownedExchangeItems xsi:type="information:ExchangeItem" id="ef4fb904-8e91-4b82-a787-151b7448fac4"
             name="selected view" exchangeMechanism="OPERATION"/>
       </ownedDataPkg>
-      <ownedFeatures xsi:type="cs_1.0.0:Part" id="b4eb49be-383b-45a9-8005-790a3ebd113d"
+      <ownedFeatures xsi:type="cs:Part" id="b4eb49be-383b-45a9-8005-790a3ebd113d"
           name="View" abstractType="#4144406b-ca20-474e-9855-37a3ff8e64b5"/>
-      <ownedFeatures xsi:type="cs_1.0.0:Part" id="245f8b08-361c-4e7a-8cc0-1dac46705167"
+      <ownedFeatures xsi:type="cs:Part" id="245f8b08-361c-4e7a-8cc0-1dac46705167"
           name="Model" abstractType="#09691dde-dbee-4a49-b7fe-85e1f76b8891"/>
-      <ownedFeatures xsi:type="cs_1.0.0:Part" id="2967f1f6-db23-4a3d-bf6a-b6262afbdbaa"
+      <ownedFeatures xsi:type="cs:Part" id="2967f1f6-db23-4a3d-bf6a-b6262afbdbaa"
           name="Controller" abstractType="#c4318f11-6d41-4557-97e0-8ec0a502150e"/>
-      <ownedLogicalComponents xsi:type="la_1.0.0:LogicalComponent" id="4144406b-ca20-474e-9855-37a3ff8e64b5"
+      <ownedLogicalComponents xsi:type="la:LogicalComponent" id="4144406b-ca20-474e-9855-37a3ff8e64b5"
           name="View">
-        <ownedFunctionalAllocation xsi:type="fa_1.0.0:ComponentFunctionalAllocation"
+        <ownedFunctionalAllocation xsi:type="fa:ComponentFunctionalAllocation"
             id="5d1bbcf2-ef36-4a17-a664-e2a05d268757" targetElement="#31a787d5-cf1a-4f5e-934c-5cdd3d4a1c9e"
             sourceElement="#4144406b-ca20-474e-9855-37a3ff8e64b5"/>
-        <ownedFeatures xsi:type="fa_1.0.0:ComponentPort" id="bc3765e0-6b78-49bf-ae38-78492a02f6ca"
+        <ownedFeatures xsi:type="fa:ComponentPort" id="bc3765e0-6b78-49bf-ae38-78492a02f6ca"
             name="FOP 1" requiredInterfaces="#3ab75f92-49a9-4654-820c-304fa6657b86"
             orientation="OUT" kind="FLOW">
-          <ownedPortAllocations xsi:type="information_1.0.0:PortAllocation" id="e100c38e-c185-4154-8f2b-a41d2e5b6d7c"
+          <ownedPortAllocations xsi:type="information:PortAllocation" id="e100c38e-c185-4154-8f2b-a41d2e5b6d7c"
               targetElement="#ad1aad0c-1a6c-47cb-813a-20bab0adb557" sourceElement="#bc3765e0-6b78-49bf-ae38-78492a02f6ca"/>
         </ownedFeatures>
-        <ownedFeatures xsi:type="fa_1.0.0:ComponentPort" id="29979cf5-64f9-47d8-b6fc-2a827cdaae59"
+        <ownedFeatures xsi:type="fa:ComponentPort" id="29979cf5-64f9-47d8-b6fc-2a827cdaae59"
             name="FOP 2" requiredInterfaces="#93139174-c442-4f49-99c3-3f203e894661"
             orientation="OUT" kind="FLOW">
-          <ownedPortAllocations xsi:type="information_1.0.0:PortAllocation" id="c42a1eb2-8e43-4889-9982-6504140ee736"
+          <ownedPortAllocations xsi:type="information:PortAllocation" id="c42a1eb2-8e43-4889-9982-6504140ee736"
               targetElement="#0479d7b1-27db-467f-a4b0-741af6ac6d69" sourceElement="#29979cf5-64f9-47d8-b6fc-2a827cdaae59"/>
         </ownedFeatures>
-        <ownedFeatures xsi:type="fa_1.0.0:ComponentPort" id="43808aa3-d37e-4736-8396-6e4c8bb9370e"
+        <ownedFeatures xsi:type="fa:ComponentPort" id="43808aa3-d37e-4736-8396-6e4c8bb9370e"
             name="FIP 1" providedInterfaces="#3e7675ae-9144-44dd-82b4-9efe2dedc4fd"
             orientation="IN" kind="FLOW">
-          <ownedPortAllocations xsi:type="information_1.0.0:PortAllocation" id="2d568730-1c51-4984-bdb5-99515c8a609b"
+          <ownedPortAllocations xsi:type="information:PortAllocation" id="2d568730-1c51-4984-bdb5-99515c8a609b"
               targetElement="#7d245397-5393-46ca-9a9f-b69e5d5b78bd" sourceElement="#43808aa3-d37e-4736-8396-6e4c8bb9370e"/>
         </ownedFeatures>
-        <ownedFeatures xsi:type="fa_1.0.0:ComponentPort" id="18b8a82f-c6cb-4ac0-b24f-330fe6068f92"
+        <ownedFeatures xsi:type="fa:ComponentPort" id="18b8a82f-c6cb-4ac0-b24f-330fe6068f92"
             name="FIP 2" providedInterfaces="#0147849c-b915-4ff9-b561-3013aed4e143"
             orientation="IN" kind="FLOW">
-          <ownedPortAllocations xsi:type="information_1.0.0:PortAllocation" id="31c405ac-ca2c-46f9-b194-0d97118df1cf"
+          <ownedPortAllocations xsi:type="information:PortAllocation" id="31c405ac-ca2c-46f9-b194-0d97118df1cf"
               targetElement="#712c4684-3cd5-48ea-a178-451d7a1cf411" sourceElement="#18b8a82f-c6cb-4ac0-b24f-330fe6068f92"/>
         </ownedFeatures>
       </ownedLogicalComponents>
-      <ownedLogicalComponents xsi:type="la_1.0.0:LogicalComponent" id="09691dde-dbee-4a49-b7fe-85e1f76b8891"
+      <ownedLogicalComponents xsi:type="la:LogicalComponent" id="09691dde-dbee-4a49-b7fe-85e1f76b8891"
           name="Model">
-        <ownedFunctionalAllocation xsi:type="fa_1.0.0:ComponentFunctionalAllocation"
+        <ownedFunctionalAllocation xsi:type="fa:ComponentFunctionalAllocation"
             id="2191c109-88b9-4d1c-9cfc-c6ebcea5b59c" targetElement="#f28d66c5-9c83-4629-871e-d27fa477f68a"
             sourceElement="#09691dde-dbee-4a49-b7fe-85e1f76b8891"/>
-        <ownedFeatures xsi:type="fa_1.0.0:ComponentPort" id="d3205195-aba1-4238-b87f-6f93c60016cd"
+        <ownedFeatures xsi:type="fa:ComponentPort" id="d3205195-aba1-4238-b87f-6f93c60016cd"
             name="FIP 2" providedInterfaces="#93139174-c442-4f49-99c3-3f203e894661"
             orientation="IN" kind="FLOW">
-          <ownedPortAllocations xsi:type="information_1.0.0:PortAllocation" id="982aa8f2-84cc-47ce-a422-3f6bbc185684"
+          <ownedPortAllocations xsi:type="information:PortAllocation" id="982aa8f2-84cc-47ce-a422-3f6bbc185684"
               targetElement="#7468942f-694c-4b8b-b11f-0e09bea5e173" sourceElement="#d3205195-aba1-4238-b87f-6f93c60016cd"/>
         </ownedFeatures>
-        <ownedFeatures xsi:type="fa_1.0.0:ComponentPort" id="8fe8d3fe-adcf-49e4-b6ec-c2a4e825cd88"
+        <ownedFeatures xsi:type="fa:ComponentPort" id="8fe8d3fe-adcf-49e4-b6ec-c2a4e825cd88"
             name="FOP 1" requiredInterfaces="#0147849c-b915-4ff9-b561-3013aed4e143"
             orientation="OUT" kind="FLOW">
-          <ownedPortAllocations xsi:type="information_1.0.0:PortAllocation" id="f221f54d-2749-445b-ba05-52e042ec4b97"
+          <ownedPortAllocations xsi:type="information:PortAllocation" id="f221f54d-2749-445b-ba05-52e042ec4b97"
               targetElement="#e609320a-4a7f-4357-95bb-fa74f1a102df" sourceElement="#8fe8d3fe-adcf-49e4-b6ec-c2a4e825cd88"/>
         </ownedFeatures>
-        <ownedFeatures xsi:type="fa_1.0.0:ComponentPort" id="2074c667-c57b-4a23-892d-e6a528f87780"
+        <ownedFeatures xsi:type="fa:ComponentPort" id="2074c667-c57b-4a23-892d-e6a528f87780"
             name="FIP 1" providedInterfaces="#533bd830-d435-4e29-972a-b5d40911a967"
             orientation="IN" kind="FLOW">
-          <ownedPortAllocations xsi:type="information_1.0.0:PortAllocation" id="aba9fab5-12ba-4cfa-beeb-8b355303ae22"
+          <ownedPortAllocations xsi:type="information:PortAllocation" id="aba9fab5-12ba-4cfa-beeb-8b355303ae22"
               targetElement="#aa64142b-5dac-42b4-9ebb-6dc8306e735b" sourceElement="#2074c667-c57b-4a23-892d-e6a528f87780"/>
         </ownedFeatures>
       </ownedLogicalComponents>
-      <ownedLogicalComponents xsi:type="la_1.0.0:LogicalComponent" id="c4318f11-6d41-4557-97e0-8ec0a502150e"
+      <ownedLogicalComponents xsi:type="la:LogicalComponent" id="c4318f11-6d41-4557-97e0-8ec0a502150e"
           name="Controller">
-        <ownedFunctionalAllocation xsi:type="fa_1.0.0:ComponentFunctionalAllocation"
+        <ownedFunctionalAllocation xsi:type="fa:ComponentFunctionalAllocation"
             id="91e8b26f-2df0-4e74-b5c5-a4015c61db0a" targetElement="#40b06b94-0955-42e9-b3be-03a185d502e0"
             sourceElement="#c4318f11-6d41-4557-97e0-8ec0a502150e"/>
-        <ownedFeatures xsi:type="fa_1.0.0:ComponentPort" id="b429bebc-0f79-42ca-b594-14295589d13c"
+        <ownedFeatures xsi:type="fa:ComponentPort" id="b429bebc-0f79-42ca-b594-14295589d13c"
             name="FIP 1" providedInterfaces="#3ab75f92-49a9-4654-820c-304fa6657b86"
             orientation="IN" kind="FLOW">
-          <ownedPortAllocations xsi:type="information_1.0.0:PortAllocation" id="a2804d76-1291-4843-a9c6-afd7ada9a393"
+          <ownedPortAllocations xsi:type="information:PortAllocation" id="a2804d76-1291-4843-a9c6-afd7ada9a393"
               targetElement="#fefbf5e5-95b2-4c04-a7ce-d61c94f983e6" sourceElement="#b429bebc-0f79-42ca-b594-14295589d13c"/>
         </ownedFeatures>
-        <ownedFeatures xsi:type="fa_1.0.0:ComponentPort" id="a1eaca84-d3f3-4d43-9eac-077d74b5d143"
+        <ownedFeatures xsi:type="fa:ComponentPort" id="a1eaca84-d3f3-4d43-9eac-077d74b5d143"
             name="FOP 1" requiredInterfaces="#3e7675ae-9144-44dd-82b4-9efe2dedc4fd"
             orientation="OUT" kind="FLOW">
-          <ownedPortAllocations xsi:type="information_1.0.0:PortAllocation" id="af666a4a-7684-4966-892f-7c7efadc00d2"
+          <ownedPortAllocations xsi:type="information:PortAllocation" id="af666a4a-7684-4966-892f-7c7efadc00d2"
               targetElement="#f93784c5-8153-44b7-a4c5-1f16604c55d9" sourceElement="#a1eaca84-d3f3-4d43-9eac-077d74b5d143"/>
         </ownedFeatures>
-        <ownedFeatures xsi:type="fa_1.0.0:ComponentPort" id="13a3f1e4-c5dc-4367-b7c7-a1f8e1ac86a8"
+        <ownedFeatures xsi:type="fa:ComponentPort" id="13a3f1e4-c5dc-4367-b7c7-a1f8e1ac86a8"
             name="FOP 2" requiredInterfaces="#533bd830-d435-4e29-972a-b5d40911a967"
             orientation="OUT" kind="FLOW">
-          <ownedPortAllocations xsi:type="information_1.0.0:PortAllocation" id="31470c9c-d4d4-423c-af5c-a3417d2313c6"
+          <ownedPortAllocations xsi:type="information:PortAllocation" id="31470c9c-d4d4-423c-af5c-a3417d2313c6"
               targetElement="#dcbec71c-93cc-4a1f-a109-f780d9375b11" sourceElement="#13a3f1e4-c5dc-4367-b7c7-a1f8e1ac86a8"/>
         </ownedFeatures>
       </ownedLogicalComponents>
     </templateElements>
-    <templateElements xsi:type="la_1.0.0:LogicalComponent" id="f124d3f0-74cb-4795-b365-59e1cdaa5f6e"
+    <templateElements xsi:type="la:LogicalComponent" id="f124d3f0-74cb-4795-b365-59e1cdaa5f6e"
         name="MVC Component"/>
-    <templateElements xsi:type="la_1.0.0:LogicalComponent" id="f124d3f0-74cb-4795-b365-59e1cdaa5f6e"
+    <templateElements xsi:type="la:LogicalComponent" id="f124d3f0-74cb-4795-b365-59e1cdaa5f6e"
         name="MVC Component"/>
-    <templateElements xsi:type="la_1.0.0:LogicalComponent" id="f124d3f0-74cb-4795-b365-59e1cdaa5f6e"
+    <templateElements xsi:type="la:LogicalComponent" id="f124d3f0-74cb-4795-b365-59e1cdaa5f6e"
+        name="MVC Component"/>
+    <templateElements xsi:type="la:LogicalComponent" id="f124d3f0-74cb-4795-b365-59e1cdaa5f6e"
         name="MVC Component"/>
   </patterns>
   <patterns xsi:type="org.eclipse.emf.diffmerge.patterns.templates:TemplatePattern"
@@ -744,33 +753,33 @@
             color="-1" name="default" height="8"/>
       </value>
     </layoutData>
-    <templateElements xsi:type="cs_1.0.0:Part" id="79cadd46-f9ee-4966-a2d3-6215e7cabf7c"
+    <templateElements xsi:type="cs:Part" id="79cadd46-f9ee-4966-a2d3-6215e7cabf7c"
         name="LC 1" abstractType="#4541066e-ac99-44f5-bfd1-9d0bc8f6d1ee"/>
-    <templateElements xsi:type="la_1.0.0:LogicalComponent" id="4541066e-ac99-44f5-bfd1-9d0bc8f6d1ee"
+    <templateElements xsi:type="la:LogicalComponent" id="4541066e-ac99-44f5-bfd1-9d0bc8f6d1ee"
         name="LC 1">
-      <ownedFunctionalAllocation xsi:type="fa_1.0.0:ComponentFunctionalAllocation"
+      <ownedFunctionalAllocation xsi:type="fa:ComponentFunctionalAllocation"
           id="923ff8f4-54d3-4a99-ad21-4db0e109a4a8" targetElement="#956445c9-3e16-41ef-b89a-a01f8cd22cd0"
           sourceElement="#4541066e-ac99-44f5-bfd1-9d0bc8f6d1ee"/>
     </templateElements>
-    <templateElements xsi:type="la_1.0.0:LogicalFunction" id="956445c9-3e16-41ef-b89a-a01f8cd22cd0"
+    <templateElements xsi:type="la:LogicalFunction" id="956445c9-3e16-41ef-b89a-a01f8cd22cd0"
         name="LogicalFunction 23">
-      <outputs xsi:type="fa_1.0.0:FunctionOutputPort" id="cba0f36e-4c6b-4de1-af77-0105f54eef5b"
+      <outputs xsi:type="fa:FunctionOutputPort" id="cba0f36e-4c6b-4de1-af77-0105f54eef5b"
           name="FOP 1"/>
     </templateElements>
-    <templateElements xsi:type="cs_1.0.0:Part" id="7e096db8-0f9f-4ef4-91e8-5216dc48f9df"
+    <templateElements xsi:type="cs:Part" id="7e096db8-0f9f-4ef4-91e8-5216dc48f9df"
         name="LC 2" abstractType="#1350506e-7bdd-462f-9c7f-086e37b0dc58"/>
-    <templateElements xsi:type="la_1.0.0:LogicalComponent" id="1350506e-7bdd-462f-9c7f-086e37b0dc58"
+    <templateElements xsi:type="la:LogicalComponent" id="1350506e-7bdd-462f-9c7f-086e37b0dc58"
         name="LC 2">
-      <ownedFunctionalAllocation xsi:type="fa_1.0.0:ComponentFunctionalAllocation"
+      <ownedFunctionalAllocation xsi:type="fa:ComponentFunctionalAllocation"
           id="1a1702d0-d5f4-4786-ba60-6b8972a740f8" targetElement="#4eb484e7-63d3-4cd9-b675-62112b5ddcef"
           sourceElement="#1350506e-7bdd-462f-9c7f-086e37b0dc58"/>
     </templateElements>
-    <templateElements xsi:type="la_1.0.0:LogicalFunction" id="4eb484e7-63d3-4cd9-b675-62112b5ddcef"
+    <templateElements xsi:type="la:LogicalFunction" id="4eb484e7-63d3-4cd9-b675-62112b5ddcef"
         name="LogicalFunction 24">
-      <inputs xsi:type="fa_1.0.0:FunctionInputPort" id="16888785-4ed6-41b5-9dfc-0b7b8c14d4a6"
+      <inputs xsi:type="fa:FunctionInputPort" id="16888785-4ed6-41b5-9dfc-0b7b8c14d4a6"
           name="FIP 1"/>
     </templateElements>
-    <templateElements xsi:type="fa_1.0.0:FunctionalExchange" id="6765e00d-8d91-4114-ae24-48cb787c9183"
+    <templateElements xsi:type="fa:FunctionalExchange" id="6765e00d-8d91-4114-ae24-48cb787c9183"
         name="FunctionalExchange 24" target="#16888785-4ed6-41b5-9dfc-0b7b8c14d4a6"
         source="#cba0f36e-4c6b-4de1-af77-0105f54eef5b"/>
   </patterns>

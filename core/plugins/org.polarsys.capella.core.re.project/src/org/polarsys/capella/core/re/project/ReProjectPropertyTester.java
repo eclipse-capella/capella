@@ -23,7 +23,7 @@ import org.polarsys.capella.core.data.capellamodeller.Library;
 public class ReProjectPropertyTester extends PropertyTester {
 
   /**
-   * Is the currently selected EObject in a library. TODO move somewhere else for 1.3.0
+   * Is the currently selected EObject in a library. TODO move somewhere else for 1.4.0
    */
   public final static String P_IN_LIBRARY = "inLibrary"; //$NON-NLS-1$
 

@@ -192,7 +192,7 @@ public class CapellaMetadataProvider implements IMetadataProvider {
           Messages.WrongCapellaVersionException_Message);
     }
 
-    // if model from 1.3.0 towards 1.3.x, we requires a migration
+    // if model from 1.4.0 towards 1.3.x, we requires a migration
     if (fileVersion.getMajor() == 1 && fileVersion.getMinor() == 3 && fileVersion.getMicro() == 0) {
       if (currentVersion.getMajor() == 1 && currentVersion.getMinor() == 3 && currentVersion.getMicro() > 0) {
         return new Status(IStatus.ERROR, AFIntegrationPlugin.getSymbolicName(),

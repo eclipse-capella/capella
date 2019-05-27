@@ -20,7 +20,7 @@ import org.polarsys.kitalpha.emde.model.ElementExtension;
  *
  *
  * @see org.polarsys.capella.common.re.RePackage#getGroupingElementPkg()
- * @model annotation="http://www.polarsys.org/kitalpha/emde/1.0.0/constraint ExtendedElement='http://www.polarsys.org/capella/core/modeller/1.3.0#//SystemEngineering http://www.polarsys.org/capella/core/cs/1.3.0#//BlockArchitecture'"
+ * @model annotation="http://www.polarsys.org/kitalpha/emde/1.0.0/constraint ExtendedElement='http://www.polarsys.org/capella/core/modeller/1.4.0#//SystemEngineering http://www.polarsys.org/capella/core/cs/1.4.0#//BlockArchitecture'"
  * @generated
  */
 

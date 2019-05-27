@@ -13,7 +13,7 @@
 <plugin>
    <extension point="org.eclipse.emf.validation.constraintProviders">
       <constraintProvider>
-         <package namespaceUri="http://www.polarsys.org/capella/core/interaction/1.3.0">
+         <package namespaceUri="http://www.polarsys.org/capella/core/interaction/1.4.0">
          </package>
          <constraints categories="capella.category/design/well-formedness/scenarios">
             <constraint class="org.polarsys.capella.core.data.interaction.validation.interaction_use.MDCHK_InteractionUse_ReferencedScenario_1" id="DWF_DS_01" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_DS_01 - InteractionUse referenced scenario check" severity="WARNING" statusCode="1">

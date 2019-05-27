@@ -89,9 +89,9 @@ public final class _PreviousInvolvementQuerySpecification extends BaseGeneratedP
   private static class GeneratedPQuery extends BaseGeneratedEMFPQuery {
     private final static _PreviousInvolvementQuerySpecification.GeneratedPQuery INSTANCE = new GeneratedPQuery();
     
-    private final PParameter parameter_pPpi = new PParameter("ppi", "org.polarsys.capella.core.data.cs.PhysicalPathInvolvement", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("http://www.polarsys.org/capella/core/cs/1.3.0", "PhysicalPathInvolvement")), PParameterDirection.INOUT);
+    private final PParameter parameter_pPpi = new PParameter("ppi", "org.polarsys.capella.core.data.cs.PhysicalPathInvolvement", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("http://www.polarsys.org/capella/core/cs/1.4.0", "PhysicalPathInvolvement")), PParameterDirection.INOUT);
     
-    private final PParameter parameter_pPrevious = new PParameter("previous", "org.polarsys.capella.core.data.cs.PhysicalPathInvolvement", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("http://www.polarsys.org/capella/core/cs/1.3.0", "PhysicalPathInvolvement")), PParameterDirection.INOUT);
+    private final PParameter parameter_pPrevious = new PParameter("previous", "org.polarsys.capella.core.data.cs.PhysicalPathInvolvement", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("http://www.polarsys.org/capella/core/cs/1.4.0", "PhysicalPathInvolvement")), PParameterDirection.INOUT);
     
     private final List<PParameter> parameters = Arrays.asList(parameter_pPpi, parameter_pPrevious);
     
@@ -119,17 +119,17 @@ public final class _PreviousInvolvementQuerySpecification extends BaseGeneratedP
               PBody body = new PBody(this);
               PVariable var_ppi = body.getOrCreateVariableByName("ppi");
               PVariable var_previous = body.getOrCreateVariableByName("previous");
-              new TypeConstraint(body, new FlatTuple(var_ppi), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/cs/1.3.0", "PhysicalPathInvolvement")));
-              new TypeConstraint(body, new FlatTuple(var_previous), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/cs/1.3.0", "PhysicalPathInvolvement")));
+              new TypeConstraint(body, new FlatTuple(var_ppi), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/cs/1.4.0", "PhysicalPathInvolvement")));
+              new TypeConstraint(body, new FlatTuple(var_previous), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/cs/1.4.0", "PhysicalPathInvolvement")));
               body.setSymbolicParameters(Arrays.<ExportedParameter>asList(
                  new ExportedParameter(body, var_ppi, parameter_pPpi),
                  new ExportedParameter(body, var_previous, parameter_pPrevious)
               ));
               // 	PhysicalPathInvolvement.previousInvolvements(ppi, previous)
-              new TypeConstraint(body, new FlatTuple(var_ppi), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/cs/1.3.0", "PhysicalPathInvolvement")));
+              new TypeConstraint(body, new FlatTuple(var_ppi), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/cs/1.4.0", "PhysicalPathInvolvement")));
               PVariable var__virtual_0_ = body.getOrCreateVariableByName(".virtual{0}");
-              new TypeConstraint(body, new FlatTuple(var_ppi, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/core/cs/1.3.0", "PhysicalPathInvolvement", "previousInvolvements")));
-              new TypeConstraint(body, new FlatTuple(var__virtual_0_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/cs/1.3.0", "PhysicalPathInvolvement")));
+              new TypeConstraint(body, new FlatTuple(var_ppi, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/core/cs/1.4.0", "PhysicalPathInvolvement", "previousInvolvements")));
+              new TypeConstraint(body, new FlatTuple(var__virtual_0_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/cs/1.4.0", "PhysicalPathInvolvement")));
               new Equality(body, var__virtual_0_, var_previous);
               bodies.add(body);
           }

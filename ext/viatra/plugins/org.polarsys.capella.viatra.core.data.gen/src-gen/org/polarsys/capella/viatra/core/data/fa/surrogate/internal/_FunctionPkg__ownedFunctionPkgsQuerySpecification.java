@@ -89,9 +89,9 @@ public final class _FunctionPkg__ownedFunctionPkgsQuerySpecification extends Bas
   private static class GeneratedPQuery extends BaseGeneratedEMFPQuery {
     private final static _FunctionPkg__ownedFunctionPkgsQuerySpecification.GeneratedPQuery INSTANCE = new GeneratedPQuery();
     
-    private final PParameter parameter_pPkg = new PParameter("pkg", "org.polarsys.capella.core.data.fa.FunctionPkg", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("http://www.polarsys.org/capella/core/fa/1.3.0", "FunctionPkg")), PParameterDirection.INOUT);
+    private final PParameter parameter_pPkg = new PParameter("pkg", "org.polarsys.capella.core.data.fa.FunctionPkg", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("http://www.polarsys.org/capella/core/fa/1.4.0", "FunctionPkg")), PParameterDirection.INOUT);
     
-    private final PParameter parameter_pOwnedpkg = new PParameter("ownedpkg", "org.polarsys.capella.core.data.fa.FunctionPkg", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("http://www.polarsys.org/capella/core/fa/1.3.0", "FunctionPkg")), PParameterDirection.INOUT);
+    private final PParameter parameter_pOwnedpkg = new PParameter("ownedpkg", "org.polarsys.capella.core.data.fa.FunctionPkg", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("http://www.polarsys.org/capella/core/fa/1.4.0", "FunctionPkg")), PParameterDirection.INOUT);
     
     private final List<PParameter> parameters = Arrays.asList(parameter_pPkg, parameter_pOwnedpkg);
     
@@ -119,17 +119,17 @@ public final class _FunctionPkg__ownedFunctionPkgsQuerySpecification extends Bas
               PBody body = new PBody(this);
               PVariable var_pkg = body.getOrCreateVariableByName("pkg");
               PVariable var_ownedpkg = body.getOrCreateVariableByName("ownedpkg");
-              new TypeConstraint(body, new FlatTuple(var_pkg), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/fa/1.3.0", "FunctionPkg")));
-              new TypeConstraint(body, new FlatTuple(var_ownedpkg), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/fa/1.3.0", "FunctionPkg")));
+              new TypeConstraint(body, new FlatTuple(var_pkg), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/fa/1.4.0", "FunctionPkg")));
+              new TypeConstraint(body, new FlatTuple(var_ownedpkg), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/fa/1.4.0", "FunctionPkg")));
               body.setSymbolicParameters(Arrays.<ExportedParameter>asList(
                  new ExportedParameter(body, var_pkg, parameter_pPkg),
                  new ExportedParameter(body, var_ownedpkg, parameter_pOwnedpkg)
               ));
               // 	OperationalActivityPkg.ownedOperationalActivityPkgs(pkg, ownedpkg)
-              new TypeConstraint(body, new FlatTuple(var_pkg), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/oa/1.3.0", "OperationalActivityPkg")));
+              new TypeConstraint(body, new FlatTuple(var_pkg), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/oa/1.4.0", "OperationalActivityPkg")));
               PVariable var__virtual_0_ = body.getOrCreateVariableByName(".virtual{0}");
-              new TypeConstraint(body, new FlatTuple(var_pkg, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/core/oa/1.3.0", "OperationalActivityPkg", "ownedOperationalActivityPkgs")));
-              new TypeConstraint(body, new FlatTuple(var__virtual_0_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/oa/1.3.0", "OperationalActivityPkg")));
+              new TypeConstraint(body, new FlatTuple(var_pkg, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/core/oa/1.4.0", "OperationalActivityPkg", "ownedOperationalActivityPkgs")));
+              new TypeConstraint(body, new FlatTuple(var__virtual_0_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/oa/1.4.0", "OperationalActivityPkg")));
               new Equality(body, var__virtual_0_, var_ownedpkg);
               bodies.add(body);
           }
@@ -137,17 +137,17 @@ public final class _FunctionPkg__ownedFunctionPkgsQuerySpecification extends Bas
               PBody body = new PBody(this);
               PVariable var_pkg = body.getOrCreateVariableByName("pkg");
               PVariable var_ownedpkg = body.getOrCreateVariableByName("ownedpkg");
-              new TypeConstraint(body, new FlatTuple(var_pkg), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/fa/1.3.0", "FunctionPkg")));
-              new TypeConstraint(body, new FlatTuple(var_ownedpkg), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/fa/1.3.0", "FunctionPkg")));
+              new TypeConstraint(body, new FlatTuple(var_pkg), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/fa/1.4.0", "FunctionPkg")));
+              new TypeConstraint(body, new FlatTuple(var_ownedpkg), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/fa/1.4.0", "FunctionPkg")));
               body.setSymbolicParameters(Arrays.<ExportedParameter>asList(
                  new ExportedParameter(body, var_pkg, parameter_pPkg),
                  new ExportedParameter(body, var_ownedpkg, parameter_pOwnedpkg)
               ));
               // 	SystemFunctionPkg.ownedSystemFunctionPkgs(pkg, ownedpkg)
-              new TypeConstraint(body, new FlatTuple(var_pkg), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/ctx/1.3.0", "SystemFunctionPkg")));
+              new TypeConstraint(body, new FlatTuple(var_pkg), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/ctx/1.4.0", "SystemFunctionPkg")));
               PVariable var__virtual_0_ = body.getOrCreateVariableByName(".virtual{0}");
-              new TypeConstraint(body, new FlatTuple(var_pkg, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/core/ctx/1.3.0", "SystemFunctionPkg", "ownedSystemFunctionPkgs")));
-              new TypeConstraint(body, new FlatTuple(var__virtual_0_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/ctx/1.3.0", "SystemFunctionPkg")));
+              new TypeConstraint(body, new FlatTuple(var_pkg, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/core/ctx/1.4.0", "SystemFunctionPkg", "ownedSystemFunctionPkgs")));
+              new TypeConstraint(body, new FlatTuple(var__virtual_0_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/ctx/1.4.0", "SystemFunctionPkg")));
               new Equality(body, var__virtual_0_, var_ownedpkg);
               bodies.add(body);
           }
@@ -155,17 +155,17 @@ public final class _FunctionPkg__ownedFunctionPkgsQuerySpecification extends Bas
               PBody body = new PBody(this);
               PVariable var_pkg = body.getOrCreateVariableByName("pkg");
               PVariable var_ownedpkg = body.getOrCreateVariableByName("ownedpkg");
-              new TypeConstraint(body, new FlatTuple(var_pkg), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/fa/1.3.0", "FunctionPkg")));
-              new TypeConstraint(body, new FlatTuple(var_ownedpkg), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/fa/1.3.0", "FunctionPkg")));
+              new TypeConstraint(body, new FlatTuple(var_pkg), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/fa/1.4.0", "FunctionPkg")));
+              new TypeConstraint(body, new FlatTuple(var_ownedpkg), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/fa/1.4.0", "FunctionPkg")));
               body.setSymbolicParameters(Arrays.<ExportedParameter>asList(
                  new ExportedParameter(body, var_pkg, parameter_pPkg),
                  new ExportedParameter(body, var_ownedpkg, parameter_pOwnedpkg)
               ));
               // 	LogicalFunctionPkg.ownedLogicalFunctionPkgs(pkg, ownedpkg)
-              new TypeConstraint(body, new FlatTuple(var_pkg), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/la/1.3.0", "LogicalFunctionPkg")));
+              new TypeConstraint(body, new FlatTuple(var_pkg), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/la/1.4.0", "LogicalFunctionPkg")));
               PVariable var__virtual_0_ = body.getOrCreateVariableByName(".virtual{0}");
-              new TypeConstraint(body, new FlatTuple(var_pkg, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/core/la/1.3.0", "LogicalFunctionPkg", "ownedLogicalFunctionPkgs")));
-              new TypeConstraint(body, new FlatTuple(var__virtual_0_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/la/1.3.0", "LogicalFunctionPkg")));
+              new TypeConstraint(body, new FlatTuple(var_pkg, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/core/la/1.4.0", "LogicalFunctionPkg", "ownedLogicalFunctionPkgs")));
+              new TypeConstraint(body, new FlatTuple(var__virtual_0_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/la/1.4.0", "LogicalFunctionPkg")));
               new Equality(body, var__virtual_0_, var_ownedpkg);
               bodies.add(body);
           }
@@ -173,17 +173,17 @@ public final class _FunctionPkg__ownedFunctionPkgsQuerySpecification extends Bas
               PBody body = new PBody(this);
               PVariable var_pkg = body.getOrCreateVariableByName("pkg");
               PVariable var_ownedpkg = body.getOrCreateVariableByName("ownedpkg");
-              new TypeConstraint(body, new FlatTuple(var_pkg), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/fa/1.3.0", "FunctionPkg")));
-              new TypeConstraint(body, new FlatTuple(var_ownedpkg), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/fa/1.3.0", "FunctionPkg")));
+              new TypeConstraint(body, new FlatTuple(var_pkg), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/fa/1.4.0", "FunctionPkg")));
+              new TypeConstraint(body, new FlatTuple(var_ownedpkg), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/fa/1.4.0", "FunctionPkg")));
               body.setSymbolicParameters(Arrays.<ExportedParameter>asList(
                  new ExportedParameter(body, var_pkg, parameter_pPkg),
                  new ExportedParameter(body, var_ownedpkg, parameter_pOwnedpkg)
               ));
               // 	PhysicalFunctionPkg.ownedPhysicalFunctionPkgs(pkg, ownedpkg)
-              new TypeConstraint(body, new FlatTuple(var_pkg), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/pa/1.3.0", "PhysicalFunctionPkg")));
+              new TypeConstraint(body, new FlatTuple(var_pkg), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/pa/1.4.0", "PhysicalFunctionPkg")));
               PVariable var__virtual_0_ = body.getOrCreateVariableByName(".virtual{0}");
-              new TypeConstraint(body, new FlatTuple(var_pkg, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/core/pa/1.3.0", "PhysicalFunctionPkg", "ownedPhysicalFunctionPkgs")));
-              new TypeConstraint(body, new FlatTuple(var__virtual_0_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/pa/1.3.0", "PhysicalFunctionPkg")));
+              new TypeConstraint(body, new FlatTuple(var_pkg, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/core/pa/1.4.0", "PhysicalFunctionPkg", "ownedPhysicalFunctionPkgs")));
+              new TypeConstraint(body, new FlatTuple(var__virtual_0_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/pa/1.4.0", "PhysicalFunctionPkg")));
               new Equality(body, var__virtual_0_, var_ownedpkg);
               bodies.add(body);
           }

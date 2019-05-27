@@ -15,7 +15,7 @@
          point="org.eclipse.emf.validation.constraintProviders">
       <constraintProvider>
          <package
-               namespaceUri="http://www.polarsys.org/capella/core/la/1.3.0">
+               namespaceUri="http://www.polarsys.org/capella/core/la/1.4.0">
          </package>
          <constraints
                categories="capella.category/transition/justification/physical_architecture">

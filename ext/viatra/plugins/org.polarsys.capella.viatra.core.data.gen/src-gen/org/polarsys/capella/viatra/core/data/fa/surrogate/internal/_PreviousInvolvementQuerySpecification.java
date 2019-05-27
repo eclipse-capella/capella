@@ -89,9 +89,9 @@ public final class _PreviousInvolvementQuerySpecification extends BaseGeneratedP
   private static class GeneratedPQuery extends BaseGeneratedEMFPQuery {
     private final static _PreviousInvolvementQuerySpecification.GeneratedPQuery INSTANCE = new GeneratedPQuery();
     
-    private final PParameter parameter_pFci = new PParameter("fci", "org.polarsys.capella.core.data.fa.FunctionalChainInvolvement", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("http://www.polarsys.org/capella/core/fa/1.3.0", "FunctionalChainInvolvement")), PParameterDirection.INOUT);
+    private final PParameter parameter_pFci = new PParameter("fci", "org.polarsys.capella.core.data.fa.FunctionalChainInvolvement", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("http://www.polarsys.org/capella/core/fa/1.4.0", "FunctionalChainInvolvement")), PParameterDirection.INOUT);
     
-    private final PParameter parameter_pPrevious = new PParameter("previous", "org.polarsys.capella.core.data.fa.FunctionalChainInvolvement", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("http://www.polarsys.org/capella/core/fa/1.3.0", "FunctionalChainInvolvement")), PParameterDirection.INOUT);
+    private final PParameter parameter_pPrevious = new PParameter("previous", "org.polarsys.capella.core.data.fa.FunctionalChainInvolvement", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("http://www.polarsys.org/capella/core/fa/1.4.0", "FunctionalChainInvolvement")), PParameterDirection.INOUT);
     
     private final List<PParameter> parameters = Arrays.asList(parameter_pFci, parameter_pPrevious);
     
@@ -119,17 +119,17 @@ public final class _PreviousInvolvementQuerySpecification extends BaseGeneratedP
               PBody body = new PBody(this);
               PVariable var_fci = body.getOrCreateVariableByName("fci");
               PVariable var_previous = body.getOrCreateVariableByName("previous");
-              new TypeConstraint(body, new FlatTuple(var_fci), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/fa/1.3.0", "FunctionalChainInvolvement")));
-              new TypeConstraint(body, new FlatTuple(var_previous), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/fa/1.3.0", "FunctionalChainInvolvement")));
+              new TypeConstraint(body, new FlatTuple(var_fci), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/fa/1.4.0", "FunctionalChainInvolvement")));
+              new TypeConstraint(body, new FlatTuple(var_previous), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/fa/1.4.0", "FunctionalChainInvolvement")));
               body.setSymbolicParameters(Arrays.<ExportedParameter>asList(
                  new ExportedParameter(body, var_fci, parameter_pFci),
                  new ExportedParameter(body, var_previous, parameter_pPrevious)
               ));
               // 	FunctionalChainInvolvement.previousFunctionalChainInvolvements(fci, previous)
-              new TypeConstraint(body, new FlatTuple(var_fci), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/fa/1.3.0", "FunctionalChainInvolvement")));
+              new TypeConstraint(body, new FlatTuple(var_fci), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/fa/1.4.0", "FunctionalChainInvolvement")));
               PVariable var__virtual_0_ = body.getOrCreateVariableByName(".virtual{0}");
-              new TypeConstraint(body, new FlatTuple(var_fci, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/core/fa/1.3.0", "FunctionalChainInvolvement", "previousFunctionalChainInvolvements")));
-              new TypeConstraint(body, new FlatTuple(var__virtual_0_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/fa/1.3.0", "FunctionalChainInvolvement")));
+              new TypeConstraint(body, new FlatTuple(var_fci, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/core/fa/1.4.0", "FunctionalChainInvolvement", "previousFunctionalChainInvolvements")));
+              new TypeConstraint(body, new FlatTuple(var__virtual_0_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/fa/1.4.0", "FunctionalChainInvolvement")));
               new Equality(body, var__virtual_0_, var_previous);
               bodies.add(body);
           }
