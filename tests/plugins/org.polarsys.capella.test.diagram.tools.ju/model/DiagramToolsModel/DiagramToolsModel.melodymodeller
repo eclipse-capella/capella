@@ -118,11 +118,17 @@
         </ownedDataPkgs>
       </ownedDataPkg>
       <ownedOperationalContext xsi:type="org.polarsys.capella.core.data.oa:OperationalContext"
-          id="309742cd-18be-41c4-a5eb-f7e9bf07a93f" name="Operational Context"/>
+          id="309742cd-18be-41c4-a5eb-f7e9bf07a93f" name="Operational Context">
+        <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="b643c4c0-eaaf-49c6-b15f-df66a7cf2527"
+            name="TestEntity" abstractType="#e702501c-dc02-4c2a-865a-271febd1185c"/>
+      </ownedOperationalContext>
       <ownedRolePkg xsi:type="org.polarsys.capella.core.data.oa:RolePkg" id="3d07bc14-32a4-4a9f-a33c-f05072511311"
           name="Roles"/>
       <ownedEntityPkg xsi:type="org.polarsys.capella.core.data.oa:EntityPkg" id="a6e7bf68-c323-433f-883f-66b1657982ae"
-          name="Operational Entities"/>
+          name="Operational Entities">
+        <ownedEntities xsi:type="org.polarsys.capella.core.data.oa:Entity" id="e702501c-dc02-4c2a-865a-271febd1185c"
+            name="TestEntity"/>
+      </ownedEntityPkg>
     </ownedArchitectures>
     <ownedArchitectures xsi:type="org.polarsys.capella.core.data.ctx:SystemAnalysis"
         id="7647e993-cf87-4edb-9e9f-6e0af45797c0" name="System Analysis">
