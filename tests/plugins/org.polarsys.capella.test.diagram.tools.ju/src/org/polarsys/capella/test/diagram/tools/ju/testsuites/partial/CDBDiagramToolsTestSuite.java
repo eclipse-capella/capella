@@ -27,6 +27,7 @@ import org.polarsys.capella.test.diagram.tools.ju.cdb.CreateParameter;
 import org.polarsys.capella.test.diagram.tools.ju.cdb.CreateProperty;
 import org.polarsys.capella.test.diagram.tools.ju.cdb.CreateReferenceGroup;
 import org.polarsys.capella.test.diagram.tools.ju.cdb.CreateRelationshipGroup;
+import org.polarsys.capella.test.diagram.tools.ju.cdb.DragAndDropTest;
 import org.polarsys.capella.test.diagram.tools.ju.cdb.InsertRemoveDataPackages;
 import org.polarsys.capella.test.diagram.tools.ju.cdb.InsertRemoveDataTypes;
 import org.polarsys.capella.test.diagram.tools.ju.cdb.InsertRemoveDataValues;
@@ -204,7 +205,11 @@ public class CDBDiagramToolsTestSuite extends BasicTestSuite {
     tests.add(new CDBScenarios(new SA_CDBProjectSettings()));
     tests.add(new CDBScenarios(new LA_CDBProjectSettings()));
     tests.add(new CDBScenarios(new PA_CDBProjectSettings()));
+
+    tests.add(new DragAndDropTest(new OA_CDBProjectSettings()));
+    tests.add(new DragAndDropTest(new SA_CDBProjectSettings()));
+    tests.add(new DragAndDropTest(new LA_CDBProjectSettings()));
+    tests.add(new DragAndDropTest(new PA_CDBProjectSettings()));
     return tests;
   }
-
 }

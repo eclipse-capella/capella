@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,7 +13,11 @@ package org.polarsys.capella.test.diagram.common.ju.context;
 import java.util.Arrays;
 
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DNode;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.data.information.ExchangeMechanism;
 import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
+import org.polarsys.capella.core.sirius.analysis.constants.IDNDToolNameConstants;
 import org.polarsys.capella.core.sirius.analysis.constants.IToolNameConstants;
 import org.polarsys.capella.test.diagram.common.ju.step.crud.CreateDiagramStep;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateContainerTool;
@@ -25,10 +29,10 @@ import org.polarsys.capella.test.framework.context.SessionContext;
 /**
  * 
  */
-public class IDBDiagram extends DiagramContext {
+public class IDBDiagram extends CommonDiagram {
 
   String type = null;
-  
+
   public IDBDiagram(SessionContext context, DDiagram diagram) {
     super(context, diagram);
   }
@@ -40,7 +44,7 @@ public class IDBDiagram extends DiagramContext {
         IDiagramNameConstants.CONTEXTUAL_COMPONENT_INTERNAL_INTERFACES_DIAGRAM_NAME).contains(diagramKind)) {
       throw new RuntimeException("this diagram is not compatible with IDBDiagram API");
     }
-    
+
     return (IDBDiagram) new CreateDiagramStep(executionContext, targetIdentifier, diagramKind) {
       @Override
       public DiagramContext getResult() {
@@ -53,56 +57,48 @@ public class IDBDiagram extends DiagramContext {
     return createDiagram(executionContext, IDiagramNameConstants.INTERFACES_BLANK_DIAGRAM_NAME, targetIdentifier);
   }
 
+  public String createActor() {
+    return createContainerElement(getDiagramId(), getCreateActorToolName());
+  }
+
+  @Deprecated
   public void createActor(String id) {
-    String toolName = null;
-    if (IDiagramNameConstants.INTERFACES_BLANK_DIAGRAM_NAME.equals(getType())) {
-      toolName = IToolNameConstants.TOOL_IDB_CREATE_ACTOR;
-    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_DETAILED_INTERFACES_DIAGRAM_NAME.equals(getType())) {
-      throw new UnsupportedOperationException();
-    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_EXTERNAL_INTERFACES_DIAGRAM_NAME.equals(getType())) {
-      toolName = IToolNameConstants.TOOL_CEI_CREATE_ACTOR;
-    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_INTERNAL_INTERFACES_DIAGRAM_NAME.equals(getType())) {
-      throw new UnsupportedOperationException();
-    }
-    new CreateContainerTool(this, toolName, getDiagramId(), id).run();
+    new CreateContainerTool(this, getCreateActorToolName(), getDiagramId(), id).run();
   }
 
+  public String createComponent() {
+    return createContainerElement(getDiagramId(), getCreateComponentToolName());
+  }
+
+  public String createSubComponent(String containerId) {
+    return createContainerElement(containerId, getCreateComponentToolName());
+  }
+
+  @Deprecated
   public void createComponent(String idContainer, String id) {
-    String toolName = null;
-    if (IDiagramNameConstants.INTERFACES_BLANK_DIAGRAM_NAME.equals(getType())) {
-      toolName = IToolNameConstants.TOOL_IDB_CREATE_COMPONENT;
-    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_DETAILED_INTERFACES_DIAGRAM_NAME.equals(getType())) {
-      throw new UnsupportedOperationException();
-    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_EXTERNAL_INTERFACES_DIAGRAM_NAME.equals(getType())) {
-      toolName = IToolNameConstants.TOOL_CEI_CREATE_COMPONENT;
-    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_INTERNAL_INTERFACES_DIAGRAM_NAME.equals(getType())) {
-      toolName = IToolNameConstants.TOOL_LCCII_CREATE_LOGICAL_COMPONENT;
-    }
-    new CreateContainerTool(this, toolName, idContainer, id).run();
+    new CreateContainerTool(this, getCreateComponentToolName(), idContainer, id).run();
   }
 
+  @Deprecated
   public void createComponent(String id) {
     createComponent(getDiagramId(), id);
   }
 
   public void createEvent(String idContainer, String id) {
-    String toolName = null;
-    if (IDiagramNameConstants.INTERFACES_BLANK_DIAGRAM_NAME.equals(getType())) {
-      toolName = IToolNameConstants.TOOL_IDB_CREATE_EVENT;
-    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_DETAILED_INTERFACES_DIAGRAM_NAME.equals(getType())) {
-      toolName = IToolNameConstants.TOOL_CDI_CREATE_EVENT;
-    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_EXTERNAL_INTERFACES_DIAGRAM_NAME.equals(getType())) {
-      toolName = IToolNameConstants.TOOL_CEI_CREATE_EVENT;
-    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_INTERNAL_INTERFACES_DIAGRAM_NAME.equals(getType())) {
-      toolName = IToolNameConstants.TOOL_LCCII_CREATE_ECHANGE_ITEM_EVENT;
-    }
-    new CreateContainerTool(this, toolName, idContainer, id).run();
+    new CreateContainerTool(this, getCreateEventToolName(), idContainer, id).run();
   }
 
   public void createEvent(String id) {
     createEvent(getDiagramId(), id);
   }
 
+  public String createExchangeItem(ExchangeMechanism type) {
+    return createContainerElement(getDiagramId(), getCreateExchangeItemName(type));
+  }
+
+  public String createExchangeItemAllocation(String containerId, ExchangeMechanism type) {
+    return createNodeListElement(containerId, getCreateExchangeItemName(type));
+  }
 
   public String getToolInsertComponents() {
     String toolName = null;
@@ -117,7 +113,7 @@ public class IDBDiagram extends DiagramContext {
     }
     return toolName;
   }
-  
+
   public String getToolInsertRelationship() {
     String toolName = null;
     if (IDiagramNameConstants.INTERFACES_BLANK_DIAGRAM_NAME.equals(getType())) {
@@ -127,7 +123,7 @@ public class IDBDiagram extends DiagramContext {
     }
     return toolName;
   }
-  
+
   public void insertComponents(String... id) {
     new InsertRemoveTool(this, getToolInsertComponents()).insert(id);
   }
@@ -155,8 +151,7 @@ public class IDBDiagram extends DiagramContext {
     } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_INTERNAL_INTERFACES_DIAGRAM_NAME.equals(getType())) {
       toolName = IToolNameConstants.TOOL_LCCII_CREATE_ACQUIRE;
     }
-    new CreateDEdgeTool(this, toolName, idSource, idTarget, id)
-        .run();
+    new CreateDEdgeTool(this, toolName, idSource, idTarget, id).run();
   }
 
   public void createCommunicationLinkTransmit(String idSource, String idTarget, String id) {
@@ -170,11 +165,10 @@ public class IDBDiagram extends DiagramContext {
     } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_INTERNAL_INTERFACES_DIAGRAM_NAME.equals(getType())) {
       toolName = IToolNameConstants.TOOL_LCCII_CREATE_TRANSMIT;
     }
-    new CreateDEdgeTool(this, toolName, idSource, idTarget, id)
-        .run();
+    new CreateDEdgeTool(this, toolName, idSource, idTarget, id).run();
   }
 
-  public void createStandardPort(String idContainer, String id) {
+  public String createStandardPort(String idContainer, String id) {
     String toolName = null;
     if (IDiagramNameConstants.INTERFACES_BLANK_DIAGRAM_NAME.equals(getType())) {
       toolName = IToolNameConstants.TOOL_IDB_CREATE_STANDARD_PORT;
@@ -185,25 +179,26 @@ public class IDBDiagram extends DiagramContext {
     } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_INTERNAL_INTERFACES_DIAGRAM_NAME.equals(getType())) {
       toolName = IToolNameConstants.TOOL_LCCII_CREATE_STANDARD_PORT;
     }
-    new CreateNodeTool(this, toolName, idContainer, id).run();
+    DNode element = new CreateNodeTool(this, toolName, idContainer, id).run();
+    return ((CapellaElement) element.getTarget()).getId();
   }
 
+  public String createInterface() {
+    return createContainerElement(getDiagramId(), getCreateInterfaceToolName());
+  }
+
+  public String createInterfaceInContainer(String containerId) {
+    return createContainerElement(containerId, getCreateInterfaceToolName());
+  }
+
+  @Deprecated
   public void createInterface(String id) {
     createInterface(getDiagramId(), id);
   }
 
+  @Deprecated
   public void createInterface(String idContainer, String id) {
-    String toolName = null;
-    if (IDiagramNameConstants.INTERFACES_BLANK_DIAGRAM_NAME.equals(getType())) {
-      toolName = IToolNameConstants.TOOL_IDB_CREATE_INTERFACE;
-    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_DETAILED_INTERFACES_DIAGRAM_NAME.equals(getType())) {
-      toolName = IToolNameConstants.TOOL_CDI_CREATE_INTERFACE;
-    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_EXTERNAL_INTERFACES_DIAGRAM_NAME.equals(getType())) {
-      toolName = IToolNameConstants.TOOL_CEI_CREATE_INTERFACE;
-    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_INTERNAL_INTERFACES_DIAGRAM_NAME.equals(getType())) {
-      toolName = IToolNameConstants.TOOL_LCCII_CREATE_INTERFACE;
-    }
-    new CreateContainerTool(this, toolName, idContainer, id).run();
+    new CreateContainerTool(this, getCreateInterfaceToolName(), idContainer, id).run();
   }
 
   public void createGeneralization(String idTarget, String idSource) {
@@ -287,8 +282,7 @@ public class IDBDiagram extends DiagramContext {
     } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_INTERNAL_INTERFACES_DIAGRAM_NAME.equals(getType())) {
       toolName = IToolNameConstants.TOOL_LCCII_CREATE_PROVIDES;
     }
-    new CreateDEdgeTool(this, toolName, idSource, idTarget, id, idNewSource, null)
-        .run();
+    new CreateDEdgeTool(this, toolName, idSource, idTarget, id, idNewSource, null).run();
   }
 
   public void createProvidesNotEnabled(String idSource, String idTarget) {
@@ -330,8 +324,7 @@ public class IDBDiagram extends DiagramContext {
     } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_INTERNAL_INTERFACES_DIAGRAM_NAME.equals(getType())) {
       toolName = IToolNameConstants.TOOL_LCCII_CREATE_REQUIRES;
     }
-    new CreateDEdgeTool(this, toolName, idSource, idTarget, id, idNewSource, null)
-        .run();
+    new CreateDEdgeTool(this, toolName, idSource, idTarget, id, idNewSource, null).run();
   }
 
   public void createUses(String idSource, String idTarget, String id) {
@@ -360,6 +353,113 @@ public class IDBDiagram extends DiagramContext {
       toolName = IToolNameConstants.TOOL_LCCII_CREATE_USES;
     }
     new CreateDEdgeTool(this, toolName, idSource, idTarget, id).cannotRun();
+  }
+
+  public void dragAndDropComponentFromExplorer(String idDraggedElement, String containerId) {
+    dragAndDrop(idDraggedElement, containerId, IDNDToolNameConstants.TOOL_IDB_DND_COMPONENT_FROM_EXPLORER);
+  }
+
+  public void dragAndDropComponentFromDiagram(String idDraggedElement, String containerId) {
+    dragAndDrop(idDraggedElement, containerId, IDNDToolNameConstants.TOOL_IDB_DND_COMPONENT);
+  }
+
+  public void dragAndDropComponentPortFromExplorer(String idDraggedElement, String containerId) {
+    dragAndDrop(idDraggedElement, containerId, IDNDToolNameConstants.TOOL_IDB_DND_COMPONENTPORT_FROM_EXPLORER);
+  }
+
+  public void dragAndDropComponentPortFromDiagram(String idDraggedElement, String containerId) {
+    dragAndDrop(idDraggedElement, containerId, IDNDToolNameConstants.TOOL_IDB_DND_COMPONENTPORT);
+  }
+
+  public void dragAndDropInterfaceFromExplorer(String idDraggedElement, String containerId) {
+    dragAndDrop(idDraggedElement, containerId, IDNDToolNameConstants.TOOL_IDB_DND_INTERFACEDROP_FROM_EXPLORER);
+  }
+
+  public void dragAndDropInterfaceFromDiagram(String idDraggedElement, String containerId) {
+    dragAndDrop(idDraggedElement, containerId, IDNDToolNameConstants.TOOL_IDB_DND_INTERFACEDROP);
+  }
+
+  public void dragAndDropExchangeItemAllocationFromExplorer(String idDraggedElement, String containerId) {
+    dragAndDrop(idDraggedElement, containerId,
+        IDNDToolNameConstants.TOOL_IDB_DND_EXCHANGEITEM_ALLOCATION_FROM_EXPLORER);
+  }
+
+  public void dragAndDropExchangeItemAllocationFromDiagram(String idDraggedElement, String containerId) {
+    dragAndDrop(idDraggedElement, containerId, IDNDToolNameConstants.TOOL_IDB_DND_EXCHANGEITEM_ALLOCATION);
+  }
+
+  protected String getCreateActorToolName() {
+    String toolName = null;
+    if (IDiagramNameConstants.INTERFACES_BLANK_DIAGRAM_NAME.equals(getType())) {
+      toolName = IToolNameConstants.TOOL_IDB_CREATE_ACTOR;
+    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_DETAILED_INTERFACES_DIAGRAM_NAME.equals(getType())) {
+      throw new UnsupportedOperationException();
+    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_EXTERNAL_INTERFACES_DIAGRAM_NAME.equals(getType())) {
+      toolName = IToolNameConstants.TOOL_CEI_CREATE_ACTOR;
+    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_INTERNAL_INTERFACES_DIAGRAM_NAME.equals(getType())) {
+      throw new UnsupportedOperationException();
+    }
+    return toolName;
+  }
+
+  protected String getCreateComponentToolName() {
+    String toolName = null;
+    if (IDiagramNameConstants.INTERFACES_BLANK_DIAGRAM_NAME.equals(getType())) {
+      toolName = IToolNameConstants.TOOL_IDB_CREATE_COMPONENT;
+    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_DETAILED_INTERFACES_DIAGRAM_NAME.equals(getType())) {
+      throw new UnsupportedOperationException();
+    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_EXTERNAL_INTERFACES_DIAGRAM_NAME.equals(getType())) {
+      toolName = IToolNameConstants.TOOL_CEI_CREATE_COMPONENT;
+    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_INTERNAL_INTERFACES_DIAGRAM_NAME.equals(getType())) {
+      toolName = IToolNameConstants.TOOL_LCCII_CREATE_LOGICAL_COMPONENT;
+    }
+    return toolName;
+  }
+
+  protected String getCreateInterfaceToolName() {
+    String toolName = null;
+    if (IDiagramNameConstants.INTERFACES_BLANK_DIAGRAM_NAME.equals(getType())) {
+      toolName = IToolNameConstants.TOOL_IDB_CREATE_INTERFACE;
+    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_DETAILED_INTERFACES_DIAGRAM_NAME.equals(getType())) {
+      toolName = IToolNameConstants.TOOL_CDI_CREATE_INTERFACE;
+    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_EXTERNAL_INTERFACES_DIAGRAM_NAME.equals(getType())) {
+      toolName = IToolNameConstants.TOOL_CEI_CREATE_INTERFACE;
+    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_INTERNAL_INTERFACES_DIAGRAM_NAME.equals(getType())) {
+      toolName = IToolNameConstants.TOOL_LCCII_CREATE_INTERFACE;
+    }
+    return toolName;
+  }
+
+  protected String getCreateEventToolName() {
+    String toolName = null;
+    if (IDiagramNameConstants.INTERFACES_BLANK_DIAGRAM_NAME.equals(getType())) {
+      toolName = IToolNameConstants.TOOL_IDB_CREATE_EVENT;
+    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_DETAILED_INTERFACES_DIAGRAM_NAME.equals(getType())) {
+      toolName = IToolNameConstants.TOOL_CDI_CREATE_EVENT;
+    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_EXTERNAL_INTERFACES_DIAGRAM_NAME.equals(getType())) {
+      toolName = IToolNameConstants.TOOL_CEI_CREATE_EVENT;
+    } else if (IDiagramNameConstants.CONTEXTUAL_COMPONENT_INTERNAL_INTERFACES_DIAGRAM_NAME.equals(getType())) {
+      toolName = IToolNameConstants.TOOL_LCCII_CREATE_ECHANGE_ITEM_EVENT;
+    }
+    return toolName;
+  }
+
+  protected String getCreateExchangeItemName(ExchangeMechanism eiType) {
+    switch (eiType) {
+    case EVENT:
+      return IToolNameConstants.TOOL_IDB_CREATE_EVENT;
+    case OPERATION:
+      return IToolNameConstants.TOOL_IDB_CREATE_OPERATION;
+    case FLOW:
+      return IToolNameConstants.TOOL_IDB_CREATE_FLOW;
+    case SHARED_DATA:
+      return IToolNameConstants.TOOL_IDB_CREATE_DATA;
+    case UNSET:
+      return IToolNameConstants.TOOL_IDB_CREATE_UNDEFINED_EXCHANGE_ITEM;
+    default:
+      break;
+    }
+    return null;
   }
 
 }

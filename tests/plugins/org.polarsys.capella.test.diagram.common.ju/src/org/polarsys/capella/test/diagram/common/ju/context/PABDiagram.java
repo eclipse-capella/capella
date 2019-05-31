@@ -13,6 +13,7 @@ package org.polarsys.capella.test.diagram.common.ju.context;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt.Type;
 import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
+import org.polarsys.capella.core.sirius.analysis.constants.IDNDToolNameConstants;
 import org.polarsys.capella.core.sirius.analysis.constants.IToolNameConstants;
 import org.polarsys.capella.test.diagram.common.ju.step.crud.CreateDiagramStep;
 import org.polarsys.capella.test.diagram.common.ju.step.crud.OpenDiagramStep;
@@ -35,7 +36,7 @@ public class PABDiagram extends XABDiagram {
       }
     }.run().open();
   }
-  
+
   public static PABDiagram createDiagram(SessionContext executionContext, String targetIdentifier) {
 
     return (PABDiagram) new CreateDiagramStep(executionContext, targetIdentifier,
@@ -72,7 +73,7 @@ public class PABDiagram extends XABDiagram {
   public void removeDeployedBehaviorComponent(String id, String containerId) {
     new InsertRemoveTool(this, IToolNameConstants.TOOL_PAB_INSERT_REMOVE_DEPLOYED_PCS, containerId).remove(id);
   }
-  
+
   public void insertDeployedBehaviorComponent(String id, String containerId) {
     new InsertRemoveTool(this, IToolNameConstants.TOOL_PAB_INSERT_REMOVE_DEPLOYED_PCS, containerId).insert(id);
   }
@@ -80,7 +81,7 @@ public class PABDiagram extends XABDiagram {
   public void removeDeployedNodeComponent(String id, String containerId) {
     new InsertRemoveTool(this, IToolNameConstants.TOOL_PAB_INSERT_REMOVE_DEPLOYED_PCS, containerId).remove(id);
   }
-  
+
   public void insertDeployedNodeComponent(String id, String containerId) {
     new InsertRemoveTool(this, IToolNameConstants.TOOL_PAB_INSERT_REMOVE_DEPLOYED_PCS, containerId).insert(id);
   }
@@ -104,25 +105,32 @@ public class PABDiagram extends XABDiagram {
         IToolNameConstants.TOOL_PAB_INSERT_REMOVE_BEHAVIOR_PCS }, containerId).insert(id);
 
   }
-  
+
   public void createComponentPortAllocation(String sourceId, String targetId) {
     new CreateDEdgeTool(this, IToolNameConstants.TOOL_PAB_CREATE_COMPONENT_PORT_ALLOCATION, sourceId, targetId).run();
   }
-  
+
   public void removeComponentPortAllocation(String containerId) {
-    new InsertRemoveTool(this, IToolNameConstants.TOOL_PAB_INSERT_REMOVE_COMPONENT_PORT_ALLOCATION, containerId).remove();
+    new InsertRemoveTool(this, IToolNameConstants.TOOL_PAB_INSERT_REMOVE_COMPONENT_PORT_ALLOCATION, containerId)
+        .remove();
   }
-  
+
   public void insertComponentPortAllocation(String containerId) {
-    new InsertRemoveTool(this, IToolNameConstants.TOOL_PAB_INSERT_REMOVE_COMPONENT_PORT_ALLOCATION, containerId).insert();
+    new InsertRemoveTool(this, IToolNameConstants.TOOL_PAB_INSERT_REMOVE_COMPONENT_PORT_ALLOCATION, containerId)
+        .insert();
   }
-  
+
   public void manageManageNodePCsDeployment(String id, String containerId) {
     new InsertRemoveTool(this, new String[] { IToolNameConstants.TOOL_PAB_INSERT_REMOVE_COMPONENTS_MONOPART,
         IToolNameConstants.TOOL_PAB_MANAGE_NODE_COMP_DEPLOYMENT }, containerId).insert(id);
   }
-  
+
   public void manageBehaviorPCsDeployment(String id, String containerId) {
     new InsertRemoveTool(this, IToolNameConstants.TOOL_PAB_MANAGE_BEHAVIOR_COMP_DEPLOYMENT, containerId).insert(id);
   }
+
+  public void dragAndDropDeployment(String idDraggedElement, String containerId) {
+    dragAndDrop(idDraggedElement, containerId, IDNDToolNameConstants.TOOL_PAB_DND_DEPLOYMENT);
+  }
+
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2019, THALES GLOBAL SERVICES.
+ * Copyright (c) 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -54,9 +54,9 @@ import org.polarsys.capella.core.sirius.analysis.constants.IToolNameConstants;
 import org.polarsys.capella.test.diagram.common.ju.headless.HeadlessResultOpProvider;
 import org.polarsys.capella.test.diagram.common.ju.headless.IHeadlessResult;
 import org.polarsys.capella.test.diagram.common.ju.step.crud.CreateDiagramStep;
+import org.polarsys.capella.test.diagram.common.ju.step.tools.AbstractToolStep;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateAbstractDNodeTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateAbstractDNodeWithSelectionTool;
-import org.polarsys.capella.test.diagram.common.ju.step.tools.AbstractToolStep;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateDEdgeTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.InsertRemoveTool;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.ArgumentType;
@@ -513,7 +513,7 @@ public class XFCDDiagram extends CommonDiagram {
           Object result;
 
           if (isTargetFESelectedInDialog) {
-            result = (FunctionalExchange) getSessionContext().getSemanticElement(targetFunctionalExchange);
+            result = getSessionContext().getSemanticElement(targetFunctionalExchange);
           } else {
             result = Arrays.asList(getSessionContext().getSemanticElement(feSource),
                 getSessionContext().getSemanticElement(feTarget));
@@ -901,4 +901,5 @@ public class XFCDDiagram extends CommonDiagram {
 
     return getSemanticIdFromView(fciLink);
   }
+
 }

@@ -34,6 +34,8 @@ public class CMScenario extends EmptyProject {
 
     MissionDiagram diagram = MissionDiagram.createDiagram(context, mission1,
         IDiagramNameConstants.CONTEXTUAL_MISSION_DIAGRAM_NAME);
+
+    String diagramId = diagram.getDiagramId();
     diagram.hasView(mission1);
     diagram.hasCountViews(1);
 
@@ -66,14 +68,14 @@ public class CMScenario extends EmptyProject {
     diagram.insertRelationship(actor1, cl5);
     DiagramHelper.setSynchronized(diagram.getDiagram(), true);
 
-    diagram.createConstraint(GenericModel.CONSTRAINT_1, diagram.getDiagramId());
+    diagram.createConstraint(GenericModel.CONSTRAINT_1, diagramId);
     diagram.createConstrainedElement(GenericModel.CONSTRAINT_1, capability1);
     diagram.createConstrainedElement(GenericModel.CONSTRAINT_1, cl1);
 
-    diagram.createConstraint(GenericModel.CONSTRAINT_1, diagram.getDiagramId());
+    diagram.createConstraint(GenericModel.CONSTRAINT_1, diagramId);
     diagram.createConstrainedElement(GenericModel.CONSTRAINT_1, capability1);
     diagram.createConstrainedElement(GenericModel.CONSTRAINT_1, cl1);
-    diagram.createConstraint(GenericModel.CONSTRAINT_2, diagram.getDiagramId());
+    diagram.createConstraint(GenericModel.CONSTRAINT_2, diagramId);
     diagram.createConstrainedElement(GenericModel.CONSTRAINT_2, cl4);
 
     diagram.removeConstraint(GenericModel.CONSTRAINT_1, capability1);
@@ -82,5 +84,17 @@ public class CMScenario extends EmptyProject {
     diagram.removeConstraint(GenericModel.CONSTRAINT_2, cl4);
     diagram.insertConstraint(GenericModel.CONSTRAINT_2, cl4);
 
+    // drag and drop tests
+    String constraint = initDiagram.createConstraint(GenericModel.CONSTRAINT_3);
+    diagram.dragAndDropConstraintFromExplorer(constraint, diagramId);
+
+    String mission = initDiagram.createMission();
+    diagram.dragAndDropMissionFromExplorer(mission, diagramId);
+
+    String actor = initDiagram.createActor();
+    diagram.dragAndDropActorFromExplorer(actor, diagramId);
+
+    String capability = initDiagram.createCapability();
+    diagram.dragAndDropCapabilityFromExplorer(capability, diagramId);
   }
 }

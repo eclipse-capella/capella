@@ -28,6 +28,7 @@ import org.polarsys.capella.core.data.information.Parameter;
 import org.polarsys.capella.core.data.information.Property;
 import org.polarsys.capella.core.data.information.Service;
 import org.polarsys.capella.core.diagram.helpers.naming.DiagramDescriptionConstants;
+import org.polarsys.capella.core.sirius.analysis.constants.IDNDToolNameConstants;
 import org.polarsys.capella.core.sirius.analysis.constants.IToolNameConstants;
 import org.polarsys.capella.test.diagram.common.ju.step.crud.CreateDiagramStep;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateAbstractDNodeWithSelectionTool;
@@ -309,6 +310,99 @@ public class CDBDiagram extends CommonDiagram {
     new InsertRemoveTool(this, IToolNameConstants.TOOL_CDB_SHOW_HIDE_EXCHANGEITEMELEMENT_LINK, containerId).remove(id);
   }
 
+  public void dragAndDropDataTypeFromExplorer(String idDraggedElement, String containerId) {
+    dragAndDrop(idDraggedElement, containerId, IDNDToolNameConstants.TOOL_CDB_DND_DATATYPE_FROM_EXPLORER);
+  }
+
+  public void dragAndDropBooleanTypeFromExplorer(String idDraggedElement, String containerId) {
+    dragAndDrop(idDraggedElement, containerId, IDNDToolNameConstants.TOOL_CDB_DND_BOOLEANTYPE_FROM_EXPLORER);
+  }
+
+  public void dragAndDropClassFromExplorer(String idDraggedElement, String containerId) {
+    dragAndDrop(idDraggedElement, containerId, IDNDToolNameConstants.TOOL_CDB_DND_CLASS_FROM_EXPLORER);
+  }
+
+  public void dragAndDropCollectionFromExplorer(String idDraggedElement, String containerId) {
+    dragAndDrop(idDraggedElement, containerId, IDNDToolNameConstants.TOOL_CDB_DND_COLLECTION_FROM_EXPLORER);
+  }
+
+  public void dragAndDropEnumerationFromExplorer(String idDraggedElement, String containerId) {
+    dragAndDrop(idDraggedElement, containerId, IDNDToolNameConstants.TOOL_CDB_DND_ENUMERATION_FROM_EXPLORER);
+  }
+
+  @Override
+  public void dragAndDropConstraintFromExplorer(String idDraggedElement, String containerId) {
+    dragAndDrop(idDraggedElement, containerId, IDNDToolNameConstants.TOOL_CDB_DND_CONSTRAINT_FROM_EXPLORER);
+  }
+
+  public void dragAndDropDataPkgFromExplorer(String idDraggedElement, String containerId) {
+    dragAndDrop(idDraggedElement, containerId, IDNDToolNameConstants.TOOL_CDB_DND_DATAPKG_FROM_EXPLORER);
+  }
+
+  public void dragAndDropUnitFromExplorer(String idDraggedElement, String containerId) {
+    dragAndDrop(idDraggedElement, containerId, IDNDToolNameConstants.TOOL_CDB_DND_UNIT_FROM_EXPLORER);
+  }
+
+  public void dragAndDropClassIntoDataPkg(String idDraggedElement, String containerId) {
+    dragAndDrop(idDraggedElement, containerId, IDNDToolNameConstants.TOOL_CDB_DND_CLASS_INTO_DATAPKG);
+  }
+
+  public void dragAndDropCollectionIntoDataPkg(String idDraggedElement, String containerId) {
+    dragAndDrop(idDraggedElement, containerId, IDNDToolNameConstants.TOOL_CDB_DND_COLLECTION_INTO_DATAPKG);
+  }
+
+  public void dragAndDropDataTypeIntoDataPkg(String idDraggedElement, String containerId) {
+    dragAndDrop(idDraggedElement, containerId, IDNDToolNameConstants.TOOL_CDB_DND_DATATYPE_INTO_DATAPKG);
+  }
+
+  public void dragAndDropDataPkgIntoDataPkg(String idDraggedElement, String containerId) {
+    dragAndDrop(idDraggedElement, containerId, IDNDToolNameConstants.TOOL_CDB_DND_DATAPKG_INTO_DATAPKG);
+  }
+
+  public void dragAndDropDataValueFromExplorer(String idDraggedElement, String containerId) {
+    dragAndDrop(idDraggedElement, containerId, IDNDToolNameConstants.TOOL_CDB_DND_DATAVALUE_FROM_EXPLORER);
+  }
+
+  public void dragAndDropDataValueIntoDataPkg(String idDraggedElement, String containerId) {
+    dragAndDrop(idDraggedElement, containerId, IDNDToolNameConstants.TOOL_CDB_DND_DATAVALUE_INTO_DATAPKG);
+  }
+
+  public void dragAndDropDataValueIntoClass(String idDraggedElement, String containerId) {
+    dragAndDrop(idDraggedElement, containerId, IDNDToolNameConstants.TOOL_CDB_DND_DATAVALUE_INTO_CLASS);
+  }
+
+  public void dragAndDropUnitIntoDataPkg(String idDraggedElement, String containerId) {
+    dragAndDrop(idDraggedElement, containerId, IDNDToolNameConstants.TOOL_CDB_DND_UNIT_INTO_DATAPKG);
+  }
+
+  public void dragAndDropInterfaceFromExplorer(String idDraggedElement, String containerId) {
+    dragAndDrop(idDraggedElement, containerId, IDNDToolNameConstants.TOOL_CDB_DND_INTERFACE_FROM_EXPLORER);
+  }
+
+  public void dragAndDropExchangeItemFromExplorer(String idDraggedElement, String containerId) {
+    dragAndDrop(idDraggedElement, containerId, IDNDToolNameConstants.TOOL_CDB_DND_EXCHANGEITEM_FROM_EXPLORER);
+  }
+
+  public void dragAndDropInterfacePkgFromExplorer(String idDraggedElement, String containerId) {
+    dragAndDrop(idDraggedElement, containerId, IDNDToolNameConstants.TOOL_CDB_DND_INTERFACEPKG_FROM_EXPLORER);
+  }
+
+  public void dragAndDropInterfaceIntoInterfacePkg(String idDraggedElement, String containerId) {
+    dragAndDrop(idDraggedElement, containerId, IDNDToolNameConstants.TOOL_CDB_DND_INTERFACE_INTO_INTERFACEPKG);
+  }
+
+  public void dragAndDropExchangeItemIntoInterfacePkg(String idDraggedElement, String containerId) {
+    dragAndDrop(idDraggedElement, containerId, IDNDToolNameConstants.TOOL_CDB_DND_EXCHANGEITEM_INTO_EXCHANGEITEMPKG);
+  }
+
+  public void dragAndDropInterfacePkgIntoInterfacePkg(String idDraggedElement, String containerId) {
+    dragAndDrop(idDraggedElement, containerId, IDNDToolNameConstants.TOOL_CDB_DND_INTERFACEPKG_INTO_INTERFACEPKG);
+  }
+
+  public void dragAndDropComponentFromExplorer(String idDraggedElement, String containerId) {
+    dragAndDrop(idDraggedElement, containerId, IDNDToolNameConstants.TOOL_CDB_DND_DATATYPE_FROM_EXPLORER);
+  }
+
   private String getDataTypeName(DataType dataType) {
     switch (dataType) {
     case BOOLEAN_TYPE:
@@ -567,4 +661,5 @@ public class CDBDiagram extends CommonDiagram {
       }
     }
   }
+
 }

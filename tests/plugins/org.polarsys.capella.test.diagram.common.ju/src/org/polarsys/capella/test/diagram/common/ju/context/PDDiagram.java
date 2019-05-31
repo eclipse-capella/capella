@@ -30,6 +30,7 @@ import org.polarsys.capella.core.model.helpers.AbstractDependenciesPkgExt;
 import org.polarsys.capella.core.sirius.analysis.DiagramServices;
 import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
 import org.polarsys.capella.core.sirius.analysis.InformationServices;
+import org.polarsys.capella.core.sirius.analysis.constants.IDNDToolNameConstants;
 import org.polarsys.capella.core.sirius.analysis.constants.IToolNameConstants;
 import org.polarsys.capella.test.diagram.common.ju.step.crud.CreateDiagramStep;
 import org.polarsys.capella.test.diagram.common.ju.step.crud.OpenDiagramStep;
@@ -79,6 +80,10 @@ public class PDDiagram extends CommonDiagram {
   public void removeInterfacePackages(String parentContainerId, String... elementsToBeRemovedIds) {
     removeElements(parentContainerId, IToolNameConstants.TOOL_PD_INSERT_REMOVE_INTERFACE_PACKAGES,
         elementsToBeRemovedIds);
+  }
+
+  public void dragAndDropInterfacePackage(String containerId, String elementId) {
+    dragAndDrop(elementId, containerId, IDNDToolNameConstants.TOOL_PD_DND_INTERFACEPKG_FROM_EXPLORER);
   }
 
   /**
@@ -230,4 +235,5 @@ public class PDDiagram extends CommonDiagram {
     assertTrue("Target Dependency for subPackage " + subPkg.getName() + " is not " + superPkg.getName(),
         superPkgView == ((DEdge) dependencyEdge).getTargetNode());
   }
+
 }

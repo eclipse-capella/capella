@@ -36,6 +36,7 @@ import org.polarsys.capella.test.diagram.tools.ju.xab.CreateRole;
 import org.polarsys.capella.test.diagram.tools.ju.xab.DeleteConstraintLink;
 import org.polarsys.capella.test.diagram.tools.ju.xab.DragAndDropFunction;
 import org.polarsys.capella.test.diagram.tools.ju.xab.DragAndDropPhysicalComponent;
+import org.polarsys.capella.test.diagram.tools.ju.xab.DragAndDropTest;
 import org.polarsys.capella.test.diagram.tools.ju.xab.ElementsFromModeAndStates;
 import org.polarsys.capella.test.diagram.tools.ju.xab.ElementsFromScenario;
 import org.polarsys.capella.test.diagram.tools.ju.xab.ManageBehaviorPCsDeployment;
@@ -92,6 +93,7 @@ public class XABDiagramToolsTestSuite extends BasicTestSuite {
   @Override
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
+
     tests.add(new CreateNodePCGroup());
     tests.add(new CreatePhysicalPath());
     tests.add(new CreatePhysicalLink());
@@ -159,10 +161,12 @@ public class XABDiagramToolsTestSuite extends BasicTestSuite {
     tests.add(new ShowHideEABRealizedPhysicalArtifacts());
     tests.add(new DragAndDropFunction());
     tests.add(new DragAndDropPhysicalComponent());
-    
+    tests.add(new DragAndDropTest());
+
     tests.add(new ShowHideFETestCase());
     tests.add(new SwitchCategoryWithDelegation());
 
     return tests;
   }
+
 }

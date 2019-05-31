@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,7 +21,6 @@ import org.eclipse.sirius.diagram.DNode;
 import org.junit.Assert;
 import org.polarsys.capella.common.data.activity.AbstractAction;
 import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.capellacore.Constraint;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
@@ -38,6 +37,7 @@ import org.polarsys.capella.core.data.pa.PaPackage;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt.Type;
 import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
+import org.polarsys.capella.core.sirius.analysis.constants.IDNDToolNameConstants;
 import org.polarsys.capella.core.sirius.analysis.constants.IToolNameConstants;
 import org.polarsys.capella.core.sirius.analysis.helpers.ToolProviderHelper;
 import org.polarsys.capella.test.diagram.common.ju.availableXDFBDiagramTools.XDFBCreateContainerTools;
@@ -57,7 +57,7 @@ import org.polarsys.capella.test.diagram.common.ju.step.tools.SelectFromListTool
 import org.polarsys.capella.test.diagram.common.ju.step.tools.SwitchTool;
 import org.polarsys.capella.test.framework.context.SessionContext;
 
-public class XDFBDiagram extends DiagramContext {
+public class XDFBDiagram extends CommonDiagram {
 
   BlockArchitectureExt.Type type = null;
 
@@ -99,10 +99,10 @@ public class XDFBDiagram extends DiagramContext {
       }
     }.run().open();
   }
-  
+
   @Deprecated
   public void createFunction(String elementId, String containerId) {
-    
+
     String name = null;
     if (type == Type.OA) {
       name = IToolNameConstants.TOOL_OAIB_CREATE_OPERATIONAL_ACTIVITY;
@@ -115,7 +115,7 @@ public class XDFBDiagram extends DiagramContext {
     }
     new CreateContainerTool(this, name, containerId, elementId).run();
   }
-  
+
   @Deprecated
   public void createFunction(String elementId) {
     createFunction(elementId, getDiagramId());
@@ -149,7 +149,7 @@ public class XDFBDiagram extends DiagramContext {
 
     return getSemanticIdFromView(graphicalElement);
   }
-  
+
   @Deprecated
   public void createFunctionalExchange(String id, String sourceViewId, String targetViewId, String newSourceIdentifier,
       String newTargetIdentifier) {
@@ -198,13 +198,13 @@ public class XDFBDiagram extends DiagramContext {
   }
 
   public void reconnectFunctionalExchange(String edgeId, String oldSourceId, String newSourceId) {
-    new ReconnectTool(this, ToolProviderHelper.getToolReconnectComponentExchangeSource(getDiagram()), edgeId, oldSourceId,
-        newSourceId).run();
+    new ReconnectTool(this, ToolProviderHelper.getToolReconnectComponentExchangeSource(getDiagram()), edgeId,
+        oldSourceId, newSourceId).run();
   }
 
   public void cannotReconnectFunctionalExchange(String edgeId, String oldSourceId, String newSourceId) {
-    new ReconnectTool(this, ToolProviderHelper.getToolReconnectComponentExchangeSource(getDiagram()), edgeId, oldSourceId,
-        newSourceId).shouldFail();
+    new ReconnectTool(this, ToolProviderHelper.getToolReconnectComponentExchangeSource(getDiagram()), edgeId,
+        oldSourceId, newSourceId).shouldFail();
   }
 
   public void initializationFromExistingDiagram(DiagramContext existingContext) {
@@ -233,8 +233,35 @@ public class XDFBDiagram extends DiagramContext {
     new SelectFromListTool(this, name, this.getDiagramId(), inserted).select(selectedModesIds);
   }
 
-  private void customVerificationOnCreatedNode(XDFBCreateNodeTools toolName, DDiagramElement view,
-      String containerId) {
+  public void dragAndDropFunctionPort(String idDraggedElement, String containerId) {
+    dragAndDrop(idDraggedElement, containerId, IDNDToolNameConstants.TOOL_XDFB_DND_FUNCTIONPORT);
+  }
+
+  public void dragAndDropAbstractFunction(String idDraggedElement, String containerId) {
+    dragAndDrop(idDraggedElement, containerId, getDragAndDropAbstractFunctionToolName());
+  }
+
+  public void dragAndDropFunctionFromExplorer(String idDraggedElement, String containerId) {
+    dragAndDrop(idDraggedElement, containerId, getDragAndDropFunctionFromExplorerToolName());
+  }
+
+  private String getDragAndDropAbstractFunctionToolName() {
+    if (type == Type.OA) {
+      return IDNDToolNameConstants.TOOL_OAIB_DND_ABSTRACTFUNCTION;
+    }
+
+    return IDNDToolNameConstants.TOOL_XDFB_DND_ABSTRACTFUNCTION;
+  }
+
+  private String getDragAndDropFunctionFromExplorerToolName() {
+    if (type == Type.OA) {
+      return IDNDToolNameConstants.TOOL_OAIB_DND_OPERATIONALACTIVITY_FROM_EXPLORER;
+    }
+
+    return IDNDToolNameConstants.TOOL_XDFB_DND_FUNCTION_FROM_EXPLORER;
+  }
+
+  private void customVerificationOnCreatedNode(XDFBCreateNodeTools toolName, DDiagramElement view, String containerId) {
 
     switch (toolName) {
 
@@ -261,7 +288,7 @@ public class XDFBDiagram extends DiagramContext {
       String containerId) {
 
     switch (toolName) {
-    
+
     default:
       checkClassOfFunctionType(view);
       checkParentOfCreatedElement(view, containerId);
@@ -269,8 +296,8 @@ public class XDFBDiagram extends DiagramContext {
     }
   }
 
-  private void customVerificationOnCreatedEdge(XDFBCreateEdgeTools toolName, DDiagramElement view,
-      String sourceId, String targetId) {
+  private void customVerificationOnCreatedEdge(XDFBCreateEdgeTools toolName, DDiagramElement view, String sourceId,
+      String targetId) {
 
     switch (toolName) {
 
@@ -367,7 +394,7 @@ public class XDFBDiagram extends DiagramContext {
 
     EObject source = getSessionContext().getSemanticElement(sourceId);
     EObject target = getSessionContext().getSemanticElement(targetId);
-    
+
     FunctionalExchange exchange = (FunctionalExchange) view.getTarget();
 
     if (type != Type.OA) {
@@ -377,23 +404,23 @@ public class XDFBDiagram extends DiagramContext {
 
       // Cast to AbstractAction to gain access to getInputs/getOutputs without casting to level specific function class
       boolean inputResult = false;
-      if (target instanceof AbstractAction) {        
+      if (target instanceof AbstractAction) {
         inputResult = ((AbstractAction) target).getInputs().contains(inputPort);
-      } else if (target instanceof FunctionInputPort) {       
+      } else if (target instanceof FunctionInputPort) {
         inputResult = ((FunctionInputPort) target) == inputPort;
       }
-      
+
       Assert.assertTrue(
           NLS.bind("Target Element is not equal to the expected one", EObjectLabelProviderHelper.getText(target)),
           inputResult);
-    
+
       boolean outputResult = false;
       if (source instanceof AbstractAction) {
         outputResult = ((AbstractAction) source).getOutputs().contains(outputPort);
-      } else if (source instanceof FunctionOutputPort) {        
+      } else if (source instanceof FunctionOutputPort) {
         outputResult = ((FunctionOutputPort) source) == outputPort;
       }
-      
+
       Assert.assertTrue(
           NLS.bind("Source Element is not equal to the expected one", EObjectLabelProviderHelper.getText(source)),
           outputResult);
@@ -429,4 +456,5 @@ public class XDFBDiagram extends DiagramContext {
   public Type getDiagramType() {
     return this.type;
   }
+
 }

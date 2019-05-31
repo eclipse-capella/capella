@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -70,8 +70,8 @@ public class ContainerDropDescriptionWrapper extends AbstractSingleSelectionWrap
 
     if (null == _argumentTypes) {
       List<ArgumentData> list = new ArrayList<ArgumentData>();
-      Collections.addAll(list, new AbstractToolWrapper.ArgumentData(ArgumentType.CONTAINER_VIEW, null), new AbstractToolWrapper.ArgumentData(
-          ArgumentType.DROPPEDELEMENT, null));
+      Collections.addAll(list, new AbstractToolWrapper.ArgumentData(ArgumentType.CONTAINER_VIEW, null),
+          new AbstractToolWrapper.ArgumentData(ArgumentType.DROPPEDELEMENT, null));
       ret = Collections.unmodifiableList(list);
     } else {
       ret = _argumentTypes;
@@ -87,4 +87,5 @@ public class ContainerDropDescriptionWrapper extends AbstractSingleSelectionWrap
   public boolean isContextOk() {
     return true;
   }
+
 }

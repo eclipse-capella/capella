@@ -13,14 +13,15 @@ package org.polarsys.capella.test.diagram.tools.ju.testsuites.partial;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.polarsys.capella.test.diagram.tools.ju.xfcd.AccelerateOnFunctionalChainInvolvementLinkTest;
+import org.polarsys.capella.test.diagram.tools.ju.xfcd.AccelerateOnSequenceLink;
 import org.polarsys.capella.test.diagram.tools.ju.xfcd.AssociateSequenceLinkWithExchangeTest;
 import org.polarsys.capella.test.diagram.tools.ju.xfcd.CreateConstructControlNodeTest;
 import org.polarsys.capella.test.diagram.tools.ju.xfcd.CreateControlNodeTest;
 import org.polarsys.capella.test.diagram.tools.ju.xfcd.CreateExchangeWithSequenceLinkTest;
 import org.polarsys.capella.test.diagram.tools.ju.xfcd.CreateFunctionOnSequenceLinkTest;
 import org.polarsys.capella.test.diagram.tools.ju.xfcd.CreateSequenceLinkTest;
-import org.polarsys.capella.test.diagram.tools.ju.xfcd.AccelerateOnFunctionalChainInvolvementLinkTest;
-import org.polarsys.capella.test.diagram.tools.ju.xfcd.AccelerateOnSequenceLink;
+import org.polarsys.capella.test.diagram.tools.ju.xfcd.DragAndDropTest;
 import org.polarsys.capella.test.diagram.tools.ju.xfcd.MaxHierarchyLevel0TestOA;
 import org.polarsys.capella.test.diagram.tools.ju.xfcd.MaxHierarchyLevel0TestSA;
 import org.polarsys.capella.test.diagram.tools.ju.xfcd.MaxHierarchyLevel1TestOA;
@@ -80,6 +81,9 @@ public class XFCDDiagramToolsTestSuite extends BasicTestSuite {
     tests.add(new AssociateSequenceLinkWithExchangeTest(new OA_Settings()));
     tests.add(new AssociateSequenceLinkWithExchangeTest(new SA_Settings()));
     tests.add(new AssociateSequenceLinkWithExchangeTest(new LA_Settings()));
+
+    tests.add(new DragAndDropTest(new OA_Settings()));
+    tests.add(new DragAndDropTest(new SA_Settings()));
 
     return tests;
   }

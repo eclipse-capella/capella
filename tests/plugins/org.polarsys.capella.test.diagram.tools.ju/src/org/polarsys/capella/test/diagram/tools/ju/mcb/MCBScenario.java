@@ -28,6 +28,8 @@ public class MCBScenario extends EmptyProject {
     MissionDiagram diagram = MissionDiagram.createDiagram(context, SA__CAPABILITIES,
         IDiagramNameConstants.MISSIONS_CAPABILITIES_BLANK_DIAGRAM_NAME);
 
+    String diagramId = diagram.getDiagramId();
+
     String capability1 = diagram.createCapability();
     String capability2 = diagram.createCapability();
     String capability3 = diagram.createCapability();
@@ -94,13 +96,27 @@ public class MCBScenario extends EmptyProject {
     diagram.insertAllRelationships(capability1);
     diagram.hasViews(capability2, capability3, mission1, cl1, cl2, cl3, cl4);
 
-    diagram.createConstraint(GenericModel.CONSTRAINT_1, diagram.getDiagramId());
+    diagram.createConstraint(GenericModel.CONSTRAINT_1, diagramId);
     diagram.createConstrainedElement(GenericModel.CONSTRAINT_1, mission1);
-    diagram.createConstraint(GenericModel.CONSTRAINT_2, diagram.getDiagramId());
+    diagram.createConstraint(GenericModel.CONSTRAINT_2, diagramId);
     diagram.createConstrainedElement(GenericModel.CONSTRAINT_2, cl1);
 
     diagram.removeConstraint(GenericModel.CONSTRAINT_1, mission1);
     diagram.insertConstraint(GenericModel.CONSTRAINT_1, mission1);
-  }
 
+    // drag and drop tests
+    MissionDiagram initDiagram = MissionDiagram.createDiagram(context, SA__CAPABILITIES,
+        IDiagramNameConstants.MISSIONS_CAPABILITIES_BLANK_DIAGRAM_NAME);
+    String constraint = initDiagram.createConstraint(GenericModel.CONSTRAINT_3);
+    diagram.dragAndDropConstraintFromExplorer(constraint, diagramId);
+
+    String mission = initDiagram.createMission();
+    diagram.dragAndDropMissionFromExplorer(mission, diagramId);
+
+    String actor = initDiagram.createActor();
+    diagram.dragAndDropActorFromExplorer(actor, diagramId);
+
+    String capability = initDiagram.createCapability();
+    diagram.dragAndDropCapabilityFromExplorer(capability, diagramId);
+  }
 }

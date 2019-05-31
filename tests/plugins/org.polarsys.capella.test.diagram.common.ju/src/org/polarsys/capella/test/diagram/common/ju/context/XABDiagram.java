@@ -16,20 +16,23 @@ import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNode;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt.ComponentPortType;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt.FunctionPortType;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt.FunctionType;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt.LinkDirection;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt.Type;
+import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
 import org.polarsys.capella.core.sirius.analysis.actions.extensions.AbstractExternalJavaAction;
+import org.polarsys.capella.core.sirius.analysis.constants.IDNDToolNameConstants;
 import org.polarsys.capella.core.sirius.analysis.constants.IToolNameConstants;
 import org.polarsys.capella.test.diagram.common.ju.step.crud.CreateDiagramStep;
 import org.polarsys.capella.test.diagram.common.ju.step.crud.OpenDiagramStep;
@@ -97,7 +100,7 @@ public class XABDiagram extends CommonDiagram {
     }.run().open();
   }
 
-  public void createActor(String id) {
+  public String createActor(String id) {
     String name = null;
     if (type == Type.OA) {
       name = IToolNameConstants.TOOL_OAB_CREATE_OA;
@@ -108,7 +111,8 @@ public class XABDiagram extends CommonDiagram {
     } else if (type == Type.PA) {
       name = IToolNameConstants.TOOL_PAB_CREATE_PHYSICAL_ACTOR;
     }
-    new CreateContainerTool(this, name, getDiagramId(), id).run();
+    DDiagramElementContainer element = new CreateContainerTool(this, name, getDiagramId(), id).run();
+    return ((CapellaElement) element.getTarget()).getId();
   }
 
   public String getToolNameFunction() {
@@ -125,8 +129,9 @@ public class XABDiagram extends CommonDiagram {
     return name;
   }
 
-  public void createFunction(String id, String containerId) {
-    new CreateNodeTool(this, getToolNameFunction(), containerId, id).run();
+  public String createFunction(String id, String containerId) {
+    DNode element = new CreateNodeTool(this, getToolNameFunction(), containerId, id).run();
+    return ((CapellaElement) element.getTarget()).getId();
   }
 
   public void createFunction(String id, String containerId, FunctionType functionType) {
@@ -207,7 +212,7 @@ public class XABDiagram extends CommonDiagram {
     }
   }
 
-  public void createComponent(String id, String containerId) {
+  public String createComponent(String id, String containerId) {
     String name = null;
     if (type == Type.OA) {
       name = IToolNameConstants.TOOL_OAB_CREATE_OE;
@@ -215,7 +220,8 @@ public class XABDiagram extends CommonDiagram {
     } else if (type == Type.LA) {
       name = IToolNameConstants.TOOL_LAB_CREATE_COMPONENT;
     }
-    new CreateContainerTool(this, name, containerId, id).run();
+    DDiagramElementContainer element = new CreateContainerTool(this, name, containerId, id).run();
+    return ((CapellaElement) element.getTarget()).getId();
   }
 
   public void createComponentExchange(String idSource, String idTarget, String id) {
@@ -379,6 +385,41 @@ public class XABDiagram extends CommonDiagram {
 
   public void manageAllocatedFunctionRemove(String id, String containerId) {
     new InsertRemoveTool(this, getToolNameManageAllocatedFunction(), containerId).remove(id);
+  }
+
+  public void dragAndDropAbstractFunctionallocation(String idDraggedElement, String containerId) {
+    dragAndDrop(idDraggedElement, containerId, IDNDToolNameConstants.TOOL_XAB_DND_ABSTRACTFUNCTION_ALLOCATION);
+  }
+
+  public void dragAndDropComponentPort(String idDraggedElement, String containerId) {
+    dragAndDrop(idDraggedElement, containerId, IDNDToolNameConstants.TOOL_XAB_DND_COMPONENTPORT);
+  }
+
+  public void dragAndDropFunctionPort(String idDraggedElement, String containerId) {
+    dragAndDrop(idDraggedElement, containerId, IDNDToolNameConstants.TOOL_XAB_DND_FUNCTIONPORT);
+  }
+
+  public void dragAndDropFunctionAllocationFromExplorer(String idDraggedElement, String containerId) {
+    dragAndDrop(idDraggedElement, containerId, IDNDToolNameConstants.TOOL_XAB_DND_FUNCTION_ALLOCATION_FROM_EXPLORER);
+  }
+
+  public void dragAndDropPhysicalPort(String idDraggedElement, String containerId) {
+    dragAndDrop(idDraggedElement, containerId, IDNDToolNameConstants.TOOL_XAB_DND_PHYSICALPORT);
+  }
+
+  public void dragAndDropComponentsFromExplorer(String idDraggedElement, String containerId) {
+    dragAndDrop(idDraggedElement, containerId, IDNDToolNameConstants.TOOL_XAB_DND_COMPONENTS_FROM_EXPLORER);
+  }
+
+  public void dragAndDropComponent(String idDraggedElement, String containerId) {
+    dragAndDrop(idDraggedElement, containerId, getDragAndDropComponentToolName());
+  }
+
+  private String getDragAndDropComponentToolName() {
+    if (type == Type.OA) {
+      return IDNDToolNameConstants.TOOL_OAB_DND_ENTITY;
+    }
+    return IDNDToolNameConstants.TOOL_XAB_DND_COMPONENT;
   }
 
   private String getToolNameShowHideAllocatedFunction() {
@@ -704,4 +745,5 @@ public class XABDiagram extends CommonDiagram {
   public BlockArchitectureExt.Type getDiagramType() {
     return type;
   }
+
 }

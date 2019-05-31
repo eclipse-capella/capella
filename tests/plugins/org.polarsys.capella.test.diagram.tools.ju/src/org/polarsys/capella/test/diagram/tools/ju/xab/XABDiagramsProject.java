@@ -27,6 +27,7 @@ public abstract class XABDiagramsProject extends AbstractDiagramTestCase {
   public static final String EPBS__EAB_PROPERTY_VALUE_GROUP1 = "7fe89aef-e34c-4859-bb68-6b0689792888";
 
   // oa
+  public static final String OA__OAB_OPERATIONAL_CONTEXT = "64605af7-0cfd-47f4-99ef-0c0afa52304e";
   public static final String OA__OAB_DIAGRAM = "[OAB] Operational Context";
   public static final String OA__OAB_OA1 = "6ce78848-33e3-4cde-96cf-0248225456e4";
   public static final String OA__OAB_OA2 = "00583700-90af-48dc-be0a-dffca68ac815";
@@ -59,6 +60,7 @@ public abstract class XABDiagramsProject extends AbstractDiagramTestCase {
   public static final String OA__STATE1 = "42365d22-d950-4c2c-a00c-d6a2c4f14ca1";
 
   // sa
+  public static final String SA__SAB_SYSTEM = "b4fd3a2f-a53d-4da7-bec4-8fd7169d2caa";
   public static final String SA__SAB_DIAGRAM = "[SAB] System";
   public static final String SA__SAB_A1 = "ff952c1b-4605-414e-892b-7fc1e0886826";
   public static final String SA__SAB_A2 = "325e94ec-99cd-47ef-b1f0-8fa15fb50ca2";
@@ -115,6 +117,7 @@ public abstract class XABDiagramsProject extends AbstractDiagramTestCase {
   public static final String SA__SAB_COMPONENT_EXCHANGE_CATEGORY1 = "5117e0d8-8319-46c4-862f-6c8c9cdd2197";
 
   // la
+  public static final String LA__LAB_LOGICAL_SYSTEM = "8dae69b8-87f7-45c0-9f95-f72009aa4c1c";
   public static final String LA__LAB_LOGICAL_SYSTEM_PART = "6b64bc6d-7666-4202-8727-bb039a76d172";
   public static final String LA__LAB_DIAGRAM = "[LAB] Logical System";
   public static final String LA__LAB_LC1 = "c30f774e-9dd2-406e-a611-14f59ebcb96c";
@@ -167,6 +170,7 @@ public abstract class XABDiagramsProject extends AbstractDiagramTestCase {
   public static final String LA__LAB_COMPONENT_EXCHANGE_CATEGORY1 = "60cf855b-4356-41a2-9ffc-5974f481df9f";
 
   // pa
+  public static final String PA__PAB_PHYSICAL_SYSTEM = "6117356a-8b31-480f-a1ed-07e8da164fbd";
   public static final String PA__PAB_DIAGRAM = "[PAB] Physical System";
   public static final String PA__PAB_DIAGRAM_PC2 = "[PAB] PC 2";
   public static final String PA__PAB_PHYSICAL_PORT_PP1 = "aacd2b79-5511-4de6-b4aa-428d779c28d3";
@@ -252,5 +256,4 @@ public abstract class XABDiagramsProject extends AbstractDiagramTestCase {
   protected String getRequiredTestModel() {
     return "XABDiagrams";
   }
-
 }

@@ -27,6 +27,7 @@ public class OCBScenario extends EmptyProject {
 
     CapabilityDiagram diagram = CapabilityDiagram.createDiagram(context, OA__OPERATIONAL_CAPABILITIES,
         IDiagramNameConstants.OPERATIONAL_CAPABILITIES_ENTITYIES_BLANK_DIAGRAM_NAME);
+    String diagramId = diagram.getDiagramId();
 
     String component1 = diagram.createComponent();
     String component2 = diagram.createComponent();
@@ -77,6 +78,17 @@ public class OCBScenario extends EmptyProject {
 
     diagram.removeConstraint(GenericModel.CONSTRAINT_2, cl1);
     diagram.insertConstraint(GenericModel.CONSTRAINT_2, cl1);
-  }
 
+    // drag and drop tests
+    CapabilityDiagram initDiagram = CapabilityDiagram.createDiagram(context, OA__OPERATIONAL_CAPABILITIES,
+        IDiagramNameConstants.OPERATIONAL_CAPABILITIES_ENTITYIES_BLANK_DIAGRAM_NAME);
+    String constraint = initDiagram.createConstraint(GenericModel.CONSTRAINT_3);
+    diagram.dragAndDropConstraintFromExplorer(constraint, diagramId);
+
+    String component = initDiagram.createComponent();
+    diagram.dragAndDropComponentFromExplorer(component, diagramId);
+
+    String capability = initDiagram.createCapability();
+    diagram.dragAndDropCapabilityFromExplorer(capability, diagramId);
+  }
 }

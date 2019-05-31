@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,6 +14,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.Collection;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.polarsys.capella.test.diagram.common.ju.context.DiagramContext;
@@ -22,11 +23,11 @@ import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.DiagramHelper;
 
 public class DragAndDropTool extends AbstractToolStep<DDiagramElement> {
 
-  String containerView;
-  String elementView;
+  protected String containerView;
+  protected String elementView;
 
-  Collection<DDiagramElement> _elements;
-  Collection<DDiagramElement> _newElements;
+  protected Collection<DDiagramElement> _elements;
+  protected Collection<DDiagramElement> _newElements;
 
   public DragAndDropTool(DiagramContext context, String toolName, String containerView) {
     super(context, toolName);
@@ -88,9 +89,13 @@ public class DragAndDropTool extends AbstractToolStep<DDiagramElement> {
   protected void initToolArguments() {
     DSemanticDecorator droppedElement = getDiagramContext().getView(elementView);
     DSemanticDecorator element = getDiagramContext().getView(containerView);
+    EObject droppedElementSemantic = getExecutionContext().getSemanticElement(elementView);
 
     _toolWrapper.setArgumentValue(ArgumentType.CONTAINER_VIEW, element);
-    _toolWrapper.setArgumentValue(ArgumentType.DROPPEDELEMENT, droppedElement);
-
+    if (droppedElement != null)
+      _toolWrapper.setArgumentValue(ArgumentType.DROPPEDELEMENT, droppedElement);
+    else if (droppedElementSemantic != null)
+      _toolWrapper.setArgumentValue(ArgumentType.DROPPEDELEMENT, droppedElementSemantic);
   }
+
 }

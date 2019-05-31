@@ -34,6 +34,7 @@ public class MBScenario extends EmptyProject {
 
     MissionDiagram diagram = MissionDiagram.createDiagram(context, SA__MISSIONS,
         IDiagramNameConstants.MISSIONS_BLANK_DIAGRAM_NAME);
+    String diagramId = diagram.getDiagramId();
 
     diagram.insertCapability(capability1);
     String capability2 = diagram.createCapability();
@@ -57,7 +58,7 @@ public class MBScenario extends EmptyProject {
     diagram.insertRelationship(actor1, cl3);
     DiagramHelper.setSynchronized(diagram.getDiagram(), true);
 
-    diagram.createConstraint(GenericModel.CONSTRAINT_1, diagram.getDiagramId());
+    diagram.createConstraint(GenericModel.CONSTRAINT_1, diagramId);
     diagram.createConstrainedElement(GenericModel.CONSTRAINT_1, mission2);
     diagram.createConstrainedElement(GenericModel.CONSTRAINT_1, cl1);
 
@@ -66,6 +67,18 @@ public class MBScenario extends EmptyProject {
 
     diagram.removeConstraint(GenericModel.CONSTRAINT_1, cl1);
     diagram.insertConstraint(GenericModel.CONSTRAINT_1, cl1);
-  }
 
+    // drag and drop tests
+    String constraint = initDiagram.createConstraint(GenericModel.CONSTRAINT_3);
+    diagram.dragAndDropConstraintFromExplorer(constraint, diagramId);
+
+    String mission = initDiagram.createMission();
+    diagram.dragAndDropMissionFromExplorer(mission, diagramId);
+
+    String actor = initDiagram.createActor();
+    diagram.dragAndDropActorFromExplorer(actor, diagramId);
+
+    String capability = initDiagram.createCapability();
+    diagram.dragAndDropCapabilityFromExplorer(capability, diagramId);
+  }
 }

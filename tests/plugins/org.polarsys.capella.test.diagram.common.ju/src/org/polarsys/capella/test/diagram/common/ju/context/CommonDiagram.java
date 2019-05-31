@@ -18,10 +18,12 @@ import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeListElement;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.sirius.analysis.constants.IDNDToolNameConstants;
 import org.polarsys.capella.core.sirius.analysis.constants.IToolNameConstants;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateAbstractDNodeTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateContainerTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateDEdgeTool;
+import org.polarsys.capella.test.diagram.common.ju.step.tools.DragAndDropTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.InsertRemoveTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.SelectTool;
 import org.polarsys.capella.test.framework.context.SessionContext;
@@ -93,6 +95,14 @@ public class CommonDiagram extends DiagramContext {
     new SelectTool(this, IToolNameConstants.TOOL_COMMON_SELECT_RELATED_EDGES).ensurePrecondition(true).select(id);
   }
 
+  public void dragAndDropConstraintFromExplorer(String idDraggedElement, String containerId) {
+    dragAndDrop(idDraggedElement, containerId, IDNDToolNameConstants.TOOL_DND_CONSTRAINT_FROM_EXPLORER);
+  }
+
+  public void dragAndDropConstraintsFromExplorer(String idDraggedElement, String containerId) {
+    dragAndDrop(idDraggedElement, containerId, IDNDToolNameConstants.TOOL_DND_CONSTRAINTS_FROM_EXPLORER);
+  }
+
   protected String createNodeElement(String containerId, String toolName) {
 
     DNode graphicalElement = new CreateAbstractDNodeTool<DNode>(this, toolName, containerId).run();
@@ -156,6 +166,10 @@ public class CommonDiagram extends DiagramContext {
     new InsertRemoveTool(this, toolName, containerId).remove(elementsToBeRemovedIds);
   }
 
+  protected void dragAndDrop(String idDraggedElement, String containerId, String toolName) {
+    new DragAndDropTool(this, toolName, idDraggedElement, containerId).run();
+  }
+
   /*
    * CHECK FUNCTIONS
    */
@@ -177,4 +191,5 @@ public class CommonDiagram extends DiagramContext {
 
     return ((CapellaElement) semanticElement).getId();
   }
+
 }

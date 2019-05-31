@@ -11,18 +11,16 @@
 package org.polarsys.capella.test.diagram.common.ju.context;
 
 import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.diagram.DNode;
-import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
+import org.eclipse.sirius.diagram.DDiagramElementContainer;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt.Type;
 import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
+import org.polarsys.capella.core.sirius.analysis.constants.IDNDToolNameConstants;
 import org.polarsys.capella.core.sirius.analysis.constants.IToolNameConstants;
 import org.polarsys.capella.test.diagram.common.ju.step.crud.CreateDiagramStep;
 import org.polarsys.capella.test.diagram.common.ju.step.crud.OpenDiagramStep;
-import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateAbstractDNodeTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateContainerTool;
-import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateDEdgeTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.InsertRemoveTool;
-import org.polarsys.capella.test.diagram.common.ju.step.tools.SelectFromListTool;
 import org.polarsys.capella.test.framework.context.SessionContext;
 
 public class OABDiagram extends XABDiagram {
@@ -39,7 +37,7 @@ public class OABDiagram extends XABDiagram {
       }
     }.run().open();
   }
-  
+
   public static OABDiagram createDiagram(SessionContext executionContext, String targetIdentifier) {
 
     return (OABDiagram) new CreateDiagramStep(executionContext, targetIdentifier,
@@ -51,8 +49,11 @@ public class OABDiagram extends XABDiagram {
     }.run().open();
   }
 
-  public void createRole(String id, String containerId) {
-    new CreateContainerTool(this, IToolNameConstants.TOOL_OAB_CREATE_ROLE, containerId, id).run();
+  public String createRole(String id, String containerId) {
+    DDiagramElementContainer element = new CreateContainerTool(this, IToolNameConstants.TOOL_OAB_CREATE_ROLE,
+        containerId, id).run();
+
+    return ((CapellaElement) element.getTarget()).getId();
   }
 
   public void insertRole(String id, String containerId) {
@@ -69,5 +70,18 @@ public class OABDiagram extends XABDiagram {
 
   public void manageAllocatedRolesRemove(String id, String containerId) {
     new InsertRemoveTool(this, IToolNameConstants.TOOL_OAB_MANAGE_ROLE_ALLOCATION, containerId).remove(id);
+  }
+
+  public void dragAndDropRolesFromExplorer(String idDraggedElement, String containerId) {
+    dragAndDrop(idDraggedElement, containerId, IDNDToolNameConstants.TOOL_OAB_DND_ROLES_FROM_EXPLORER);
+  }
+
+  public void dragAndDropOperationalActivitiesFromExplorer(String idDraggedElement, String containerId) {
+    dragAndDrop(idDraggedElement, containerId, IDNDToolNameConstants.TOOL_OAB_DND_OPERATIONALACTIVITIES_FROM_EXPLORER);
+  }
+
+  public void dragAndDropOperationalActivitiesFromExplorerToRole(String idDraggedElement, String containerId) {
+    dragAndDrop(idDraggedElement, containerId,
+        IDNDToolNameConstants.TOOL_OAB_DND_OPERATIONALACTIVITIES_FROM_EXPLORER_TO_ROLE);
   }
 }

@@ -15,6 +15,7 @@ import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt.Type;
 import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
+import org.polarsys.capella.core.sirius.analysis.constants.IDNDToolNameConstants;
 import org.polarsys.capella.core.sirius.analysis.constants.IToolNameConstants;
 import org.polarsys.capella.core.sirius.analysis.helpers.ToolProviderHelper;
 import org.polarsys.capella.test.diagram.common.ju.step.crud.CreateDiagramStep;
@@ -235,6 +236,31 @@ public class CapabilityDiagram extends CommonDiagram {
 
   public void reconnectActorGeneralizationTarget(String edgeId, String oldTargetId, String newTargetId) {
     new ReconnectTool(this, getReconnectGeneralizationTargetToolName(), edgeId, oldTargetId, newTargetId).run();
+  }
+
+  public void dragAndDropComponentFromExplorer(String idDraggedElement, String containerId) {
+    dragAndDrop(idDraggedElement, containerId, getDNDComponentFromExplorerToolName());
+  }
+
+  public void dragAndDropComponentFromDiagram(String idDraggedElement, String containerId) {
+    dragAndDrop(idDraggedElement, containerId, IDNDToolNameConstants.TOOL_DND_COMPONENT);
+  }
+
+  public void dragAndDropCapabilityFromExplorer(String idDraggedElement, String containerId) {
+    dragAndDrop(idDraggedElement, containerId, getDNDCapabilityFromExplorerToolName());
+  }
+
+  @Override
+  public void dragAndDropConstraintFromExplorer(String idDraggedElement, String containerId) {
+    dragAndDrop(idDraggedElement, containerId, getDNDConstraintToolName());
+  }
+
+  public void dragAndDropMissionFromExplorer(String idDraggedElement, String containerId) {
+    dragAndDrop(idDraggedElement, containerId, IDNDToolNameConstants.TOOL_DND_MISSIONS_FROM_EXPLORER);
+  }
+
+  public void dragAndDropActorFromExplorer(String idDraggedElement, String containerId) {
+    dragAndDrop(idDraggedElement, containerId, IDNDToolNameConstants.TOOL_DND_ACTORS_FROM_EXPLORER);
   }
 
   private String getCapabilityToolName() {
@@ -562,4 +588,28 @@ public class CapabilityDiagram extends CommonDiagram {
   private String getReconnectGeneralizationTargetToolName() {
     return IToolNameConstants.TOOL_CC_RECONNECT_GENERALIZATION_TARGET;
   }
+
+  private String getDNDConstraintToolName() {
+    if (isA(IDiagramNameConstants.CAPABILITY_REALIZATION_BLANK)) {
+      return IDNDToolNameConstants.TOOL_DND_CONSTRAINT_FROM_EXPLORER;
+    }
+    return IDNDToolNameConstants.TOOL_DND_CONSTRAINTS_FROM_EXPLORER;
+  }
+
+  private String getDNDComponentFromExplorerToolName() {
+    if (isA(IDiagramNameConstants.OPERATIONAL_CAPABILITIES_ENTITYIES_BLANK_DIAGRAM_NAME)
+        || isA(IDiagramNameConstants.CONTEXTUAL_OPERATIONAL_CAPABILITIES__DIAGRAM_NAME)) {
+      return IDNDToolNameConstants.TOOL_DND_ENTITIES_FROM_EXPLORER;
+    }
+    return IDNDToolNameConstants.TOOL_CRB_DND_COMPONENT_FROM_EXPLORER;
+  }
+
+  private String getDNDCapabilityFromExplorerToolName() {
+    if (isA(IDiagramNameConstants.OPERATIONAL_CAPABILITIES_ENTITYIES_BLANK_DIAGRAM_NAME)
+        || isA(IDiagramNameConstants.CONTEXTUAL_OPERATIONAL_CAPABILITIES__DIAGRAM_NAME)) {
+      return IDNDToolNameConstants.TOOL_DND_OPERATIONAL_CAPABILITIES_FROM_EXPLORER;
+    }
+    return IDNDToolNameConstants.TOOL_DND_CAPABILITIES_FROM_EXPLORER;
+  }
+
 }

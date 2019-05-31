@@ -34,6 +34,7 @@ import org.polarsys.capella.core.data.interaction.InteractionPackage;
 import org.polarsys.capella.core.data.interaction.InteractionUse;
 import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
+import org.polarsys.capella.core.sirius.analysis.constants.IDNDToolNameConstants;
 import org.polarsys.capella.core.sirius.analysis.constants.IToolNameConstants;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.AbstractToolStep;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateAbstractDNodeTool;
@@ -112,6 +113,10 @@ public class SequenceDiagram extends CommonDiagram {
   public void addMultipleLifeLinesForExistingComponent(String id) {
     String name = IToolNameConstants.TOOL_SCENARIO_MULTI_INSTANCEROLE_COMPONENT;
     new InsertRemovePartTool(this, name).insert(id);
+  }
+
+  public void dragAndDropComponentFromExplorer(String idDraggedElement, String containerId) {
+    dragAndDrop(idDraggedElement, containerId, IDNDToolNameConstants.TOOL_SEQ_DND_COMPONENT);
   }
 
   public String createCombinedFragment(InteractionOperatorKind operatorKind, String containerId) {
@@ -255,4 +260,5 @@ public class SequenceDiagram extends CommonDiagram {
   public BlockArchitectureExt.Type getDiagramBlockArchitecture() {
     return type;
   }
+
 }

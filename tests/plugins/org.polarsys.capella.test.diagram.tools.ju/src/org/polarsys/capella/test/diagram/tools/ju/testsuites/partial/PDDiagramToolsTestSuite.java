@@ -15,6 +15,7 @@ import java.util.List;
 
 import org.polarsys.capella.test.diagram.tools.ju.pd.LAPDCreateConstrainedElement;
 import org.polarsys.capella.test.diagram.tools.ju.pd.LAPDCreateConstraint;
+import org.polarsys.capella.test.diagram.tools.ju.pd.LAPDDNDInterfacePackages;
 import org.polarsys.capella.test.diagram.tools.ju.pd.LAPDDependencyScenario;
 import org.polarsys.capella.test.diagram.tools.ju.pd.LAPDInsertRemoveConstraints;
 import org.polarsys.capella.test.diagram.tools.ju.pd.LAPDInsertRemoveDataPackages;
@@ -22,6 +23,7 @@ import org.polarsys.capella.test.diagram.tools.ju.pd.LAPDInsertRemoveInterfacePa
 import org.polarsys.capella.test.diagram.tools.ju.pd.LAPDInsertRemovePackageDependencies;
 import org.polarsys.capella.test.diagram.tools.ju.pd.OAPDCreateConstrainedElement;
 import org.polarsys.capella.test.diagram.tools.ju.pd.OAPDCreateConstraint;
+import org.polarsys.capella.test.diagram.tools.ju.pd.OAPDDNDInterfacePackages;
 import org.polarsys.capella.test.diagram.tools.ju.pd.OAPDDependencyScenario;
 import org.polarsys.capella.test.diagram.tools.ju.pd.OAPDInsertRemoveConstraints;
 import org.polarsys.capella.test.diagram.tools.ju.pd.OAPDInsertRemoveDataPackages;
@@ -29,6 +31,7 @@ import org.polarsys.capella.test.diagram.tools.ju.pd.OAPDInsertRemoveDependencie
 import org.polarsys.capella.test.diagram.tools.ju.pd.OAPDInsertRemoveInterfacePackages;
 import org.polarsys.capella.test.diagram.tools.ju.pd.PAPDCreateConstrainedElement;
 import org.polarsys.capella.test.diagram.tools.ju.pd.PAPDCreateConstraint;
+import org.polarsys.capella.test.diagram.tools.ju.pd.PAPDDNDInterfacePackages;
 import org.polarsys.capella.test.diagram.tools.ju.pd.PAPDDependencyScenario;
 import org.polarsys.capella.test.diagram.tools.ju.pd.PAPDInsertRemoveConstraints;
 import org.polarsys.capella.test.diagram.tools.ju.pd.PAPDInsertRemoveDataPackages;
@@ -36,6 +39,7 @@ import org.polarsys.capella.test.diagram.tools.ju.pd.PAPDInsertRemoveInterfacePa
 import org.polarsys.capella.test.diagram.tools.ju.pd.PAPDInsertRemovePackageDependencies;
 import org.polarsys.capella.test.diagram.tools.ju.pd.SAPDCreateConstrainedElement;
 import org.polarsys.capella.test.diagram.tools.ju.pd.SAPDCreateConstraint;
+import org.polarsys.capella.test.diagram.tools.ju.pd.SAPDDNDInterfacePackages;
 import org.polarsys.capella.test.diagram.tools.ju.pd.SAPDDependencyScenario;
 import org.polarsys.capella.test.diagram.tools.ju.pd.SAPDInsertRemoveConstraints;
 import org.polarsys.capella.test.diagram.tools.ju.pd.SAPDInsertRemoveDataPackages;
@@ -79,7 +83,12 @@ public class PDDiagramToolsTestSuite extends BasicTestSuite {
     tests.add(new PAPDCreateConstraint());
     tests.add(new PAPDCreateConstrainedElement());
     tests.add(new PAPDInsertRemoveConstraints());
+    tests.add(new OAPDDNDInterfacePackages());
+    tests.add(new LAPDDNDInterfacePackages());
+    tests.add(new SAPDDNDInterfacePackages());
+    tests.add(new PAPDDNDInterfacePackages());
 
     return tests;
   }
+
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -26,6 +26,7 @@ import org.polarsys.capella.test.diagram.tools.ju.idb.CreateInterface;
 import org.polarsys.capella.test.diagram.tools.ju.idb.CreateProvides;
 import org.polarsys.capella.test.diagram.tools.ju.idb.CreateRequires;
 import org.polarsys.capella.test.diagram.tools.ju.idb.CreateUses;
+import org.polarsys.capella.test.diagram.tools.ju.idb.DragAndDropTest;
 import org.polarsys.capella.test.diagram.tools.ju.idb.InsertRelationship;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
@@ -61,7 +62,9 @@ public class IDBDiagramToolsTestSuite extends BasicTestSuite {
     tests.add(new CreateRequires());
     tests.add(new CreateUses());
     tests.add(new InsertRelationship());
+
+    tests.add(new DragAndDropTest());
+
     return tests;
   }
-
 }
