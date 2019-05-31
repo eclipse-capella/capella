@@ -10,12 +10,14 @@
  *******************************************************************************/
 package org.polarsys.capella.test.diagram.filters.ju;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DEdge;
 import org.junit.Assert;
-import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
+import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 
 public abstract class LabelFilterTestCase extends DiagramObjectFilterTestCase {
@@ -41,7 +43,7 @@ public abstract class LabelFilterTestCase extends DiagramObjectFilterTestCase {
 
     getCurrentDiagram();
 
-    for (DDiagramElement elt : diagram.getOwnedDiagramElements()) {
+    for (DDiagramElement elt : diagram.getDiagramElements()) {
 
       EObject target = elt.getTarget();
       if (target != null && target instanceof CapellaElement) {
@@ -64,17 +66,39 @@ public abstract class LabelFilterTestCase extends DiagramObjectFilterTestCase {
   @Override
   protected void postRunTest() {
 
+    HashMap<String, String> elementIdToNewLabel = new HashMap<>();
+    for (int i = 0; i < filteredObjetIDs.size(); i++) {
+      elementIdToNewLabel.put(filteredObjetIDs.get(i), expectedElementLabels.get(i));
+    }
+    
     // check that each graphical element has its new corresponding expected label
-    int numberOfGivenLabels = expectedElementLabels.size();
-    for (int i = 0; i < numberOfGivenLabels; i++) {
+    for (DDiagramElement currentObject : toBeFiltered.keySet()) {
 
-      DDiagramElement currentObject = toBeFiltered.keySet().iterator().next();
-      String currentLabel = EObjectLabelProviderHelper.getText(currentObject);
+      String currentLabel = null;
+      
+      /* Edges have 3 labels: beginLabel, centerLabel, endLabel
+       * Those 3 labels will be merged with ";" as separator to create the final label
+      */
+      if (currentObject instanceof DEdge) {
+        
+        DEdge currentEdgeObject = (DEdge) currentObject;
+        
+        String beginLabelName = currentEdgeObject.getBeginLabel();
+        String endLabelName = currentEdgeObject.getEndLabel();
+        String centerLabelName = EObjectExt.getText(currentEdgeObject);
+        
+        currentLabel = beginLabelName + ";" + centerLabelName + ";" + endLabelName;
+      }
+      
+      else {
+        currentLabel = EObjectExt.getText(currentObject);
+      }
 
-      boolean labelIsAsExpected = expectedElementLabels.contains(currentLabel);
+      CapellaElement currentTarget = (CapellaElement) currentObject.getTarget();
+      boolean labelIsAsExpected = elementIdToNewLabel.get(currentTarget.getId()).equals(currentLabel);
 
       Assert.assertTrue(
-          "The expected label " + expectedElementLabels.get(i) + " is not equal to the current label " + currentLabel,
+          "The current label " + currentLabel + " is not among the provided labels",
           labelIsAsExpected);
     }
   }

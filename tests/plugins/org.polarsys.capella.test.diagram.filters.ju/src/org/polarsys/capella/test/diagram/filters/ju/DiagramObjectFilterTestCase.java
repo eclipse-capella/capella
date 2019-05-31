@@ -97,7 +97,7 @@ public abstract class DiagramObjectFilterTestCase extends BasicTestCase {
         diagram);// test case check
   }
 
-  protected void getCurrentFilterMappings() {
+  private void getCurrentFilterMappings() {
 
     FilterDescription currentFilter = DiagramHelper.getFilterForDiagram(diagram, filterName);
     CompositeFilterDescriptionQuery filterQuery = new CompositeFilterDescriptionQuery(
@@ -133,7 +133,7 @@ public abstract class DiagramObjectFilterTestCase extends BasicTestCase {
     getCurrentDiagram();
     getCurrentFilterMappings();
 
-    for (DDiagramElement elt : diagram.getOwnedDiagramElements()) {
+    for (DDiagramElement elt : diagram.getDiagramElements()) {
 
       EObject target = elt.getTarget();
       if (target != null && target instanceof CapellaElement) {
@@ -201,7 +201,7 @@ public abstract class DiagramObjectFilterTestCase extends BasicTestCase {
     return false;
   }
 
-  // This has been deprecated because it is not important that the element is filtered by anything
+  // This has been deprecated because it is not important that the element is filtered by something
   // It is important the the element is filtered by the tested filter
   @Deprecated
   protected boolean isFiltered(DDiagramElement elt) {
