@@ -14,14 +14,12 @@ package org.polarsys.capella.viatra.core.data.cs.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.SystemComponent__participationsInCapabilityRealizationsMatcher;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.util.SystemComponent__participationsInCapabilityRealizationsQuerySpecification;
+import org.polarsys.capella.viatra.core.data.cs.surrogate.SystemComponent__participationsInCapabilityRealizations;
 
 /**
  * A pattern group formed of all public patterns defined in SystemComponent.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file SystemComponent.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -29,7 +27,7 @@ import org.polarsys.capella.viatra.core.data.cs.surrogate.util.SystemComponent__
  * <li>SystemComponent__participationsInCapabilityRealizations</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -38,10 +36,10 @@ public final class SystemComponent extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static SystemComponent instance() throws ViatraQueryException {
+  public static SystemComponent instance() {
     if (INSTANCE == null) {
         INSTANCE = new SystemComponent();
     }
@@ -50,15 +48,15 @@ public final class SystemComponent extends BaseGeneratedPatternGroup {
   
   private static SystemComponent INSTANCE;
   
-  private SystemComponent() throws ViatraQueryException {
-    querySpecifications.add(SystemComponent__participationsInCapabilityRealizationsQuerySpecification.instance());
+  private SystemComponent() {
+    querySpecifications.add(SystemComponent__participationsInCapabilityRealizations.instance());
   }
   
-  public SystemComponent__participationsInCapabilityRealizationsQuerySpecification getSystemComponent__participationsInCapabilityRealizations() throws ViatraQueryException {
-    return SystemComponent__participationsInCapabilityRealizationsQuerySpecification.instance();
+  public SystemComponent__participationsInCapabilityRealizations getSystemComponent__participationsInCapabilityRealizations() {
+    return SystemComponent__participationsInCapabilityRealizations.instance();
   }
   
-  public SystemComponent__participationsInCapabilityRealizationsMatcher getSystemComponent__participationsInCapabilityRealizations(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return SystemComponent__participationsInCapabilityRealizationsMatcher.on(engine);
+  public SystemComponent__participationsInCapabilityRealizations.Matcher getSystemComponent__participationsInCapabilityRealizations(final ViatraQueryEngine engine) {
+    return SystemComponent__participationsInCapabilityRealizations.Matcher.on(engine);
   }
 }

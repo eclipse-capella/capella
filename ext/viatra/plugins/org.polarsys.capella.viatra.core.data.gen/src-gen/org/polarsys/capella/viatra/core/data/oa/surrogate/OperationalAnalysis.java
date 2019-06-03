@@ -14,18 +14,14 @@ package org.polarsys.capella.viatra.core.data.oa.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.core.data.oa.surrogate.OperationalAnalysis__allocatingSystemAnalysesMatcher;
-import org.polarsys.capella.viatra.core.data.oa.surrogate.OperationalAnalysis__containedOperationalActivityPkgMatcher;
-import org.polarsys.capella.viatra.core.data.oa.surrogate.OperationalAnalysis__containedOperationalCapabilityPkgMatcher;
-import org.polarsys.capella.viatra.core.data.oa.surrogate.util.OperationalAnalysis__allocatingSystemAnalysesQuerySpecification;
-import org.polarsys.capella.viatra.core.data.oa.surrogate.util.OperationalAnalysis__containedOperationalActivityPkgQuerySpecification;
-import org.polarsys.capella.viatra.core.data.oa.surrogate.util.OperationalAnalysis__containedOperationalCapabilityPkgQuerySpecification;
+import org.polarsys.capella.viatra.core.data.oa.surrogate.OperationalAnalysis__allocatingSystemAnalyses;
+import org.polarsys.capella.viatra.core.data.oa.surrogate.OperationalAnalysis__containedOperationalActivityPkg;
+import org.polarsys.capella.viatra.core.data.oa.surrogate.OperationalAnalysis__containedOperationalCapabilityPkg;
 
 /**
  * A pattern group formed of all public patterns defined in OperationalAnalysis.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file OperationalAnalysis.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -35,7 +31,7 @@ import org.polarsys.capella.viatra.core.data.oa.surrogate.util.OperationalAnalys
  * <li>OperationalAnalysis__allocatingSystemAnalyses</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -44,10 +40,10 @@ public final class OperationalAnalysis extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static OperationalAnalysis instance() throws ViatraQueryException {
+  public static OperationalAnalysis instance() {
     if (INSTANCE == null) {
         INSTANCE = new OperationalAnalysis();
     }
@@ -56,33 +52,33 @@ public final class OperationalAnalysis extends BaseGeneratedPatternGroup {
   
   private static OperationalAnalysis INSTANCE;
   
-  private OperationalAnalysis() throws ViatraQueryException {
-    querySpecifications.add(OperationalAnalysis__containedOperationalCapabilityPkgQuerySpecification.instance());
-    querySpecifications.add(OperationalAnalysis__containedOperationalActivityPkgQuerySpecification.instance());
-    querySpecifications.add(OperationalAnalysis__allocatingSystemAnalysesQuerySpecification.instance());
+  private OperationalAnalysis() {
+    querySpecifications.add(OperationalAnalysis__containedOperationalCapabilityPkg.instance());
+    querySpecifications.add(OperationalAnalysis__containedOperationalActivityPkg.instance());
+    querySpecifications.add(OperationalAnalysis__allocatingSystemAnalyses.instance());
   }
   
-  public OperationalAnalysis__containedOperationalCapabilityPkgQuerySpecification getOperationalAnalysis__containedOperationalCapabilityPkg() throws ViatraQueryException {
-    return OperationalAnalysis__containedOperationalCapabilityPkgQuerySpecification.instance();
+  public OperationalAnalysis__containedOperationalCapabilityPkg getOperationalAnalysis__containedOperationalCapabilityPkg() {
+    return OperationalAnalysis__containedOperationalCapabilityPkg.instance();
   }
   
-  public OperationalAnalysis__containedOperationalCapabilityPkgMatcher getOperationalAnalysis__containedOperationalCapabilityPkg(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return OperationalAnalysis__containedOperationalCapabilityPkgMatcher.on(engine);
+  public OperationalAnalysis__containedOperationalCapabilityPkg.Matcher getOperationalAnalysis__containedOperationalCapabilityPkg(final ViatraQueryEngine engine) {
+    return OperationalAnalysis__containedOperationalCapabilityPkg.Matcher.on(engine);
   }
   
-  public OperationalAnalysis__containedOperationalActivityPkgQuerySpecification getOperationalAnalysis__containedOperationalActivityPkg() throws ViatraQueryException {
-    return OperationalAnalysis__containedOperationalActivityPkgQuerySpecification.instance();
+  public OperationalAnalysis__containedOperationalActivityPkg getOperationalAnalysis__containedOperationalActivityPkg() {
+    return OperationalAnalysis__containedOperationalActivityPkg.instance();
   }
   
-  public OperationalAnalysis__containedOperationalActivityPkgMatcher getOperationalAnalysis__containedOperationalActivityPkg(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return OperationalAnalysis__containedOperationalActivityPkgMatcher.on(engine);
+  public OperationalAnalysis__containedOperationalActivityPkg.Matcher getOperationalAnalysis__containedOperationalActivityPkg(final ViatraQueryEngine engine) {
+    return OperationalAnalysis__containedOperationalActivityPkg.Matcher.on(engine);
   }
   
-  public OperationalAnalysis__allocatingSystemAnalysesQuerySpecification getOperationalAnalysis__allocatingSystemAnalyses() throws ViatraQueryException {
-    return OperationalAnalysis__allocatingSystemAnalysesQuerySpecification.instance();
+  public OperationalAnalysis__allocatingSystemAnalyses getOperationalAnalysis__allocatingSystemAnalyses() {
+    return OperationalAnalysis__allocatingSystemAnalyses.instance();
   }
   
-  public OperationalAnalysis__allocatingSystemAnalysesMatcher getOperationalAnalysis__allocatingSystemAnalyses(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return OperationalAnalysis__allocatingSystemAnalysesMatcher.on(engine);
+  public OperationalAnalysis__allocatingSystemAnalyses.Matcher getOperationalAnalysis__allocatingSystemAnalyses(final ViatraQueryEngine engine) {
+    return OperationalAnalysis__allocatingSystemAnalyses.Matcher.on(engine);
   }
 }

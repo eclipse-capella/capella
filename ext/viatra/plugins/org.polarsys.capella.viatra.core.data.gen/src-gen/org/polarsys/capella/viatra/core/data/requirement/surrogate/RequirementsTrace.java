@@ -14,16 +14,13 @@ package org.polarsys.capella.viatra.core.data.requirement.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.core.data.requirement.surrogate.RequirementsTrace__sourceMatcher;
-import org.polarsys.capella.viatra.core.data.requirement.surrogate.RequirementsTrace__targetMatcher;
-import org.polarsys.capella.viatra.core.data.requirement.surrogate.util.RequirementsTrace__sourceQuerySpecification;
-import org.polarsys.capella.viatra.core.data.requirement.surrogate.util.RequirementsTrace__targetQuerySpecification;
+import org.polarsys.capella.viatra.core.data.requirement.surrogate.RequirementsTrace__source;
+import org.polarsys.capella.viatra.core.data.requirement.surrogate.RequirementsTrace__target;
 
 /**
  * A pattern group formed of all public patterns defined in RequirementsTrace.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file RequirementsTrace.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -32,7 +29,7 @@ import org.polarsys.capella.viatra.core.data.requirement.surrogate.util.Requirem
  * <li>RequirementsTrace__target</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -41,10 +38,10 @@ public final class RequirementsTrace extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static RequirementsTrace instance() throws ViatraQueryException {
+  public static RequirementsTrace instance() {
     if (INSTANCE == null) {
         INSTANCE = new RequirementsTrace();
     }
@@ -53,24 +50,24 @@ public final class RequirementsTrace extends BaseGeneratedPatternGroup {
   
   private static RequirementsTrace INSTANCE;
   
-  private RequirementsTrace() throws ViatraQueryException {
-    querySpecifications.add(RequirementsTrace__sourceQuerySpecification.instance());
-    querySpecifications.add(RequirementsTrace__targetQuerySpecification.instance());
+  private RequirementsTrace() {
+    querySpecifications.add(RequirementsTrace__source.instance());
+    querySpecifications.add(RequirementsTrace__target.instance());
   }
   
-  public RequirementsTrace__sourceQuerySpecification getRequirementsTrace__source() throws ViatraQueryException {
-    return RequirementsTrace__sourceQuerySpecification.instance();
+  public RequirementsTrace__source getRequirementsTrace__source() {
+    return RequirementsTrace__source.instance();
   }
   
-  public RequirementsTrace__sourceMatcher getRequirementsTrace__source(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return RequirementsTrace__sourceMatcher.on(engine);
+  public RequirementsTrace__source.Matcher getRequirementsTrace__source(final ViatraQueryEngine engine) {
+    return RequirementsTrace__source.Matcher.on(engine);
   }
   
-  public RequirementsTrace__targetQuerySpecification getRequirementsTrace__target() throws ViatraQueryException {
-    return RequirementsTrace__targetQuerySpecification.instance();
+  public RequirementsTrace__target getRequirementsTrace__target() {
+    return RequirementsTrace__target.instance();
   }
   
-  public RequirementsTrace__targetMatcher getRequirementsTrace__target(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return RequirementsTrace__targetMatcher.on(engine);
+  public RequirementsTrace__target.Matcher getRequirementsTrace__target(final ViatraQueryEngine engine) {
+    return RequirementsTrace__target.Matcher.on(engine);
   }
 }

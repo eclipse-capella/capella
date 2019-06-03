@@ -14,14 +14,12 @@ package org.polarsys.capella.viatra.core.data.oa.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.core.data.oa.surrogate.OperationalActor__realizingSystemActorsMatcher;
-import org.polarsys.capella.viatra.core.data.oa.surrogate.util.OperationalActor__realizingSystemActorsQuerySpecification;
+import org.polarsys.capella.viatra.core.data.oa.surrogate.OperationalActor__realizingSystemActors;
 
 /**
  * A pattern group formed of all public patterns defined in OperationalActor.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file OperationalActor.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -29,7 +27,7 @@ import org.polarsys.capella.viatra.core.data.oa.surrogate.util.OperationalActor_
  * <li>OperationalActor__realizingSystemActors</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -38,10 +36,10 @@ public final class OperationalActor extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static OperationalActor instance() throws ViatraQueryException {
+  public static OperationalActor instance() {
     if (INSTANCE == null) {
         INSTANCE = new OperationalActor();
     }
@@ -50,15 +48,15 @@ public final class OperationalActor extends BaseGeneratedPatternGroup {
   
   private static OperationalActor INSTANCE;
   
-  private OperationalActor() throws ViatraQueryException {
-    querySpecifications.add(OperationalActor__realizingSystemActorsQuerySpecification.instance());
+  private OperationalActor() {
+    querySpecifications.add(OperationalActor__realizingSystemActors.instance());
   }
   
-  public OperationalActor__realizingSystemActorsQuerySpecification getOperationalActor__realizingSystemActors() throws ViatraQueryException {
-    return OperationalActor__realizingSystemActorsQuerySpecification.instance();
+  public OperationalActor__realizingSystemActors getOperationalActor__realizingSystemActors() {
+    return OperationalActor__realizingSystemActors.instance();
   }
   
-  public OperationalActor__realizingSystemActorsMatcher getOperationalActor__realizingSystemActors(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return OperationalActor__realizingSystemActorsMatcher.on(engine);
+  public OperationalActor__realizingSystemActors.Matcher getOperationalActor__realizingSystemActors(final ViatraQueryEngine engine) {
+    return OperationalActor__realizingSystemActors.Matcher.on(engine);
   }
 }

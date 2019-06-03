@@ -14,36 +14,23 @@ package org.polarsys.capella.viatra.core.data.fa.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.ComponentExchange__allocatedFunctionalExchangesMatcher;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.ComponentExchange__allocatorPhysicalLinksMatcher;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.ComponentExchange__categoriesMatcher;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.ComponentExchange__incomingComponentExchangeRealizationsMatcher;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.ComponentExchange__outgoingComponentExchangeFunctionalExchangeAllocationsMatcher;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.ComponentExchange__outgoingComponentExchangeRealizationsMatcher;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.ComponentExchange__realizedComponentExchangesMatcher;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.ComponentExchange__realizingComponentExchangesMatcher;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.ComponentExchange__sourcePartMatcher;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.ComponentExchange__sourcePortMatcher;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.ComponentExchange__targetPartMatcher;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.ComponentExchange__targetPortMatcher;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.util.ComponentExchange__allocatedFunctionalExchangesQuerySpecification;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.util.ComponentExchange__allocatorPhysicalLinksQuerySpecification;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.util.ComponentExchange__categoriesQuerySpecification;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.util.ComponentExchange__incomingComponentExchangeRealizationsQuerySpecification;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.util.ComponentExchange__outgoingComponentExchangeFunctionalExchangeAllocationsQuerySpecification;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.util.ComponentExchange__outgoingComponentExchangeRealizationsQuerySpecification;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.util.ComponentExchange__realizedComponentExchangesQuerySpecification;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.util.ComponentExchange__realizingComponentExchangesQuerySpecification;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.util.ComponentExchange__sourcePartQuerySpecification;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.util.ComponentExchange__sourcePortQuerySpecification;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.util.ComponentExchange__targetPartQuerySpecification;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.util.ComponentExchange__targetPortQuerySpecification;
+import org.polarsys.capella.viatra.core.data.fa.surrogate.ComponentExchange__allocatedFunctionalExchanges;
+import org.polarsys.capella.viatra.core.data.fa.surrogate.ComponentExchange__allocatorPhysicalLinks;
+import org.polarsys.capella.viatra.core.data.fa.surrogate.ComponentExchange__categories;
+import org.polarsys.capella.viatra.core.data.fa.surrogate.ComponentExchange__incomingComponentExchangeRealizations;
+import org.polarsys.capella.viatra.core.data.fa.surrogate.ComponentExchange__outgoingComponentExchangeFunctionalExchangeAllocations;
+import org.polarsys.capella.viatra.core.data.fa.surrogate.ComponentExchange__outgoingComponentExchangeRealizations;
+import org.polarsys.capella.viatra.core.data.fa.surrogate.ComponentExchange__realizedComponentExchanges;
+import org.polarsys.capella.viatra.core.data.fa.surrogate.ComponentExchange__realizingComponentExchanges;
+import org.polarsys.capella.viatra.core.data.fa.surrogate.ComponentExchange__sourcePart;
+import org.polarsys.capella.viatra.core.data.fa.surrogate.ComponentExchange__sourcePort;
+import org.polarsys.capella.viatra.core.data.fa.surrogate.ComponentExchange__targetPart;
+import org.polarsys.capella.viatra.core.data.fa.surrogate.ComponentExchange__targetPort;
 
 /**
  * A pattern group formed of all public patterns defined in ComponentExchange.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file ComponentExchange.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -62,7 +49,7 @@ import org.polarsys.capella.viatra.core.data.fa.surrogate.util.ComponentExchange
  * <li>ComponentExchange__realizingComponentExchanges</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -71,10 +58,10 @@ public final class ComponentExchange extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static ComponentExchange instance() throws ViatraQueryException {
+  public static ComponentExchange instance() {
     if (INSTANCE == null) {
         INSTANCE = new ComponentExchange();
     }
@@ -83,114 +70,114 @@ public final class ComponentExchange extends BaseGeneratedPatternGroup {
   
   private static ComponentExchange INSTANCE;
   
-  private ComponentExchange() throws ViatraQueryException {
-    querySpecifications.add(ComponentExchange__allocatedFunctionalExchangesQuerySpecification.instance());
-    querySpecifications.add(ComponentExchange__incomingComponentExchangeRealizationsQuerySpecification.instance());
-    querySpecifications.add(ComponentExchange__outgoingComponentExchangeRealizationsQuerySpecification.instance());
-    querySpecifications.add(ComponentExchange__outgoingComponentExchangeFunctionalExchangeAllocationsQuerySpecification.instance());
-    querySpecifications.add(ComponentExchange__sourcePortQuerySpecification.instance());
-    querySpecifications.add(ComponentExchange__sourcePartQuerySpecification.instance());
-    querySpecifications.add(ComponentExchange__targetPortQuerySpecification.instance());
-    querySpecifications.add(ComponentExchange__targetPartQuerySpecification.instance());
-    querySpecifications.add(ComponentExchange__categoriesQuerySpecification.instance());
-    querySpecifications.add(ComponentExchange__allocatorPhysicalLinksQuerySpecification.instance());
-    querySpecifications.add(ComponentExchange__realizedComponentExchangesQuerySpecification.instance());
-    querySpecifications.add(ComponentExchange__realizingComponentExchangesQuerySpecification.instance());
+  private ComponentExchange() {
+    querySpecifications.add(ComponentExchange__allocatedFunctionalExchanges.instance());
+    querySpecifications.add(ComponentExchange__incomingComponentExchangeRealizations.instance());
+    querySpecifications.add(ComponentExchange__outgoingComponentExchangeRealizations.instance());
+    querySpecifications.add(ComponentExchange__outgoingComponentExchangeFunctionalExchangeAllocations.instance());
+    querySpecifications.add(ComponentExchange__sourcePort.instance());
+    querySpecifications.add(ComponentExchange__sourcePart.instance());
+    querySpecifications.add(ComponentExchange__targetPort.instance());
+    querySpecifications.add(ComponentExchange__targetPart.instance());
+    querySpecifications.add(ComponentExchange__categories.instance());
+    querySpecifications.add(ComponentExchange__allocatorPhysicalLinks.instance());
+    querySpecifications.add(ComponentExchange__realizedComponentExchanges.instance());
+    querySpecifications.add(ComponentExchange__realizingComponentExchanges.instance());
   }
   
-  public ComponentExchange__allocatedFunctionalExchangesQuerySpecification getComponentExchange__allocatedFunctionalExchanges() throws ViatraQueryException {
-    return ComponentExchange__allocatedFunctionalExchangesQuerySpecification.instance();
+  public ComponentExchange__allocatedFunctionalExchanges getComponentExchange__allocatedFunctionalExchanges() {
+    return ComponentExchange__allocatedFunctionalExchanges.instance();
   }
   
-  public ComponentExchange__allocatedFunctionalExchangesMatcher getComponentExchange__allocatedFunctionalExchanges(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return ComponentExchange__allocatedFunctionalExchangesMatcher.on(engine);
+  public ComponentExchange__allocatedFunctionalExchanges.Matcher getComponentExchange__allocatedFunctionalExchanges(final ViatraQueryEngine engine) {
+    return ComponentExchange__allocatedFunctionalExchanges.Matcher.on(engine);
   }
   
-  public ComponentExchange__incomingComponentExchangeRealizationsQuerySpecification getComponentExchange__incomingComponentExchangeRealizations() throws ViatraQueryException {
-    return ComponentExchange__incomingComponentExchangeRealizationsQuerySpecification.instance();
+  public ComponentExchange__incomingComponentExchangeRealizations getComponentExchange__incomingComponentExchangeRealizations() {
+    return ComponentExchange__incomingComponentExchangeRealizations.instance();
   }
   
-  public ComponentExchange__incomingComponentExchangeRealizationsMatcher getComponentExchange__incomingComponentExchangeRealizations(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return ComponentExchange__incomingComponentExchangeRealizationsMatcher.on(engine);
+  public ComponentExchange__incomingComponentExchangeRealizations.Matcher getComponentExchange__incomingComponentExchangeRealizations(final ViatraQueryEngine engine) {
+    return ComponentExchange__incomingComponentExchangeRealizations.Matcher.on(engine);
   }
   
-  public ComponentExchange__outgoingComponentExchangeRealizationsQuerySpecification getComponentExchange__outgoingComponentExchangeRealizations() throws ViatraQueryException {
-    return ComponentExchange__outgoingComponentExchangeRealizationsQuerySpecification.instance();
+  public ComponentExchange__outgoingComponentExchangeRealizations getComponentExchange__outgoingComponentExchangeRealizations() {
+    return ComponentExchange__outgoingComponentExchangeRealizations.instance();
   }
   
-  public ComponentExchange__outgoingComponentExchangeRealizationsMatcher getComponentExchange__outgoingComponentExchangeRealizations(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return ComponentExchange__outgoingComponentExchangeRealizationsMatcher.on(engine);
+  public ComponentExchange__outgoingComponentExchangeRealizations.Matcher getComponentExchange__outgoingComponentExchangeRealizations(final ViatraQueryEngine engine) {
+    return ComponentExchange__outgoingComponentExchangeRealizations.Matcher.on(engine);
   }
   
-  public ComponentExchange__outgoingComponentExchangeFunctionalExchangeAllocationsQuerySpecification getComponentExchange__outgoingComponentExchangeFunctionalExchangeAllocations() throws ViatraQueryException {
-    return ComponentExchange__outgoingComponentExchangeFunctionalExchangeAllocationsQuerySpecification.instance();
+  public ComponentExchange__outgoingComponentExchangeFunctionalExchangeAllocations getComponentExchange__outgoingComponentExchangeFunctionalExchangeAllocations() {
+    return ComponentExchange__outgoingComponentExchangeFunctionalExchangeAllocations.instance();
   }
   
-  public ComponentExchange__outgoingComponentExchangeFunctionalExchangeAllocationsMatcher getComponentExchange__outgoingComponentExchangeFunctionalExchangeAllocations(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return ComponentExchange__outgoingComponentExchangeFunctionalExchangeAllocationsMatcher.on(engine);
+  public ComponentExchange__outgoingComponentExchangeFunctionalExchangeAllocations.Matcher getComponentExchange__outgoingComponentExchangeFunctionalExchangeAllocations(final ViatraQueryEngine engine) {
+    return ComponentExchange__outgoingComponentExchangeFunctionalExchangeAllocations.Matcher.on(engine);
   }
   
-  public ComponentExchange__sourcePortQuerySpecification getComponentExchange__sourcePort() throws ViatraQueryException {
-    return ComponentExchange__sourcePortQuerySpecification.instance();
+  public ComponentExchange__sourcePort getComponentExchange__sourcePort() {
+    return ComponentExchange__sourcePort.instance();
   }
   
-  public ComponentExchange__sourcePortMatcher getComponentExchange__sourcePort(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return ComponentExchange__sourcePortMatcher.on(engine);
+  public ComponentExchange__sourcePort.Matcher getComponentExchange__sourcePort(final ViatraQueryEngine engine) {
+    return ComponentExchange__sourcePort.Matcher.on(engine);
   }
   
-  public ComponentExchange__sourcePartQuerySpecification getComponentExchange__sourcePart() throws ViatraQueryException {
-    return ComponentExchange__sourcePartQuerySpecification.instance();
+  public ComponentExchange__sourcePart getComponentExchange__sourcePart() {
+    return ComponentExchange__sourcePart.instance();
   }
   
-  public ComponentExchange__sourcePartMatcher getComponentExchange__sourcePart(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return ComponentExchange__sourcePartMatcher.on(engine);
+  public ComponentExchange__sourcePart.Matcher getComponentExchange__sourcePart(final ViatraQueryEngine engine) {
+    return ComponentExchange__sourcePart.Matcher.on(engine);
   }
   
-  public ComponentExchange__targetPortQuerySpecification getComponentExchange__targetPort() throws ViatraQueryException {
-    return ComponentExchange__targetPortQuerySpecification.instance();
+  public ComponentExchange__targetPort getComponentExchange__targetPort() {
+    return ComponentExchange__targetPort.instance();
   }
   
-  public ComponentExchange__targetPortMatcher getComponentExchange__targetPort(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return ComponentExchange__targetPortMatcher.on(engine);
+  public ComponentExchange__targetPort.Matcher getComponentExchange__targetPort(final ViatraQueryEngine engine) {
+    return ComponentExchange__targetPort.Matcher.on(engine);
   }
   
-  public ComponentExchange__targetPartQuerySpecification getComponentExchange__targetPart() throws ViatraQueryException {
-    return ComponentExchange__targetPartQuerySpecification.instance();
+  public ComponentExchange__targetPart getComponentExchange__targetPart() {
+    return ComponentExchange__targetPart.instance();
   }
   
-  public ComponentExchange__targetPartMatcher getComponentExchange__targetPart(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return ComponentExchange__targetPartMatcher.on(engine);
+  public ComponentExchange__targetPart.Matcher getComponentExchange__targetPart(final ViatraQueryEngine engine) {
+    return ComponentExchange__targetPart.Matcher.on(engine);
   }
   
-  public ComponentExchange__categoriesQuerySpecification getComponentExchange__categories() throws ViatraQueryException {
-    return ComponentExchange__categoriesQuerySpecification.instance();
+  public ComponentExchange__categories getComponentExchange__categories() {
+    return ComponentExchange__categories.instance();
   }
   
-  public ComponentExchange__categoriesMatcher getComponentExchange__categories(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return ComponentExchange__categoriesMatcher.on(engine);
+  public ComponentExchange__categories.Matcher getComponentExchange__categories(final ViatraQueryEngine engine) {
+    return ComponentExchange__categories.Matcher.on(engine);
   }
   
-  public ComponentExchange__allocatorPhysicalLinksQuerySpecification getComponentExchange__allocatorPhysicalLinks() throws ViatraQueryException {
-    return ComponentExchange__allocatorPhysicalLinksQuerySpecification.instance();
+  public ComponentExchange__allocatorPhysicalLinks getComponentExchange__allocatorPhysicalLinks() {
+    return ComponentExchange__allocatorPhysicalLinks.instance();
   }
   
-  public ComponentExchange__allocatorPhysicalLinksMatcher getComponentExchange__allocatorPhysicalLinks(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return ComponentExchange__allocatorPhysicalLinksMatcher.on(engine);
+  public ComponentExchange__allocatorPhysicalLinks.Matcher getComponentExchange__allocatorPhysicalLinks(final ViatraQueryEngine engine) {
+    return ComponentExchange__allocatorPhysicalLinks.Matcher.on(engine);
   }
   
-  public ComponentExchange__realizedComponentExchangesQuerySpecification getComponentExchange__realizedComponentExchanges() throws ViatraQueryException {
-    return ComponentExchange__realizedComponentExchangesQuerySpecification.instance();
+  public ComponentExchange__realizedComponentExchanges getComponentExchange__realizedComponentExchanges() {
+    return ComponentExchange__realizedComponentExchanges.instance();
   }
   
-  public ComponentExchange__realizedComponentExchangesMatcher getComponentExchange__realizedComponentExchanges(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return ComponentExchange__realizedComponentExchangesMatcher.on(engine);
+  public ComponentExchange__realizedComponentExchanges.Matcher getComponentExchange__realizedComponentExchanges(final ViatraQueryEngine engine) {
+    return ComponentExchange__realizedComponentExchanges.Matcher.on(engine);
   }
   
-  public ComponentExchange__realizingComponentExchangesQuerySpecification getComponentExchange__realizingComponentExchanges() throws ViatraQueryException {
-    return ComponentExchange__realizingComponentExchangesQuerySpecification.instance();
+  public ComponentExchange__realizingComponentExchanges getComponentExchange__realizingComponentExchanges() {
+    return ComponentExchange__realizingComponentExchanges.instance();
   }
   
-  public ComponentExchange__realizingComponentExchangesMatcher getComponentExchange__realizingComponentExchanges(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return ComponentExchange__realizingComponentExchangesMatcher.on(engine);
+  public ComponentExchange__realizingComponentExchanges.Matcher getComponentExchange__realizingComponentExchanges(final ViatraQueryEngine engine) {
+    return ComponentExchange__realizingComponentExchanges.Matcher.on(engine);
   }
 }

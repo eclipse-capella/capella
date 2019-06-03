@@ -14,18 +14,14 @@ package org.polarsys.capella.viatra.core.data.information.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.core.data.information.surrogate.Operation__allocatedOperationsMatcher;
-import org.polarsys.capella.viatra.core.data.information.surrogate.Operation__allocatingOperationsMatcher;
-import org.polarsys.capella.viatra.core.data.information.surrogate.Operation__realizedExchangeItemsMatcher;
-import org.polarsys.capella.viatra.core.data.information.surrogate.util.Operation__allocatedOperationsQuerySpecification;
-import org.polarsys.capella.viatra.core.data.information.surrogate.util.Operation__allocatingOperationsQuerySpecification;
-import org.polarsys.capella.viatra.core.data.information.surrogate.util.Operation__realizedExchangeItemsQuerySpecification;
+import org.polarsys.capella.viatra.core.data.information.surrogate.Operation__allocatedOperations;
+import org.polarsys.capella.viatra.core.data.information.surrogate.Operation__allocatingOperations;
+import org.polarsys.capella.viatra.core.data.information.surrogate.Operation__realizedExchangeItems;
 
 /**
  * A pattern group formed of all public patterns defined in Operation.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file Operation.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -35,7 +31,7 @@ import org.polarsys.capella.viatra.core.data.information.surrogate.util.Operatio
  * <li>Operation__realizedExchangeItems</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -44,10 +40,10 @@ public final class Operation extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static Operation instance() throws ViatraQueryException {
+  public static Operation instance() {
     if (INSTANCE == null) {
         INSTANCE = new Operation();
     }
@@ -56,33 +52,33 @@ public final class Operation extends BaseGeneratedPatternGroup {
   
   private static Operation INSTANCE;
   
-  private Operation() throws ViatraQueryException {
-    querySpecifications.add(Operation__allocatingOperationsQuerySpecification.instance());
-    querySpecifications.add(Operation__allocatedOperationsQuerySpecification.instance());
-    querySpecifications.add(Operation__realizedExchangeItemsQuerySpecification.instance());
+  private Operation() {
+    querySpecifications.add(Operation__allocatingOperations.instance());
+    querySpecifications.add(Operation__allocatedOperations.instance());
+    querySpecifications.add(Operation__realizedExchangeItems.instance());
   }
   
-  public Operation__allocatingOperationsQuerySpecification getOperation__allocatingOperations() throws ViatraQueryException {
-    return Operation__allocatingOperationsQuerySpecification.instance();
+  public Operation__allocatingOperations getOperation__allocatingOperations() {
+    return Operation__allocatingOperations.instance();
   }
   
-  public Operation__allocatingOperationsMatcher getOperation__allocatingOperations(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return Operation__allocatingOperationsMatcher.on(engine);
+  public Operation__allocatingOperations.Matcher getOperation__allocatingOperations(final ViatraQueryEngine engine) {
+    return Operation__allocatingOperations.Matcher.on(engine);
   }
   
-  public Operation__allocatedOperationsQuerySpecification getOperation__allocatedOperations() throws ViatraQueryException {
-    return Operation__allocatedOperationsQuerySpecification.instance();
+  public Operation__allocatedOperations getOperation__allocatedOperations() {
+    return Operation__allocatedOperations.instance();
   }
   
-  public Operation__allocatedOperationsMatcher getOperation__allocatedOperations(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return Operation__allocatedOperationsMatcher.on(engine);
+  public Operation__allocatedOperations.Matcher getOperation__allocatedOperations(final ViatraQueryEngine engine) {
+    return Operation__allocatedOperations.Matcher.on(engine);
   }
   
-  public Operation__realizedExchangeItemsQuerySpecification getOperation__realizedExchangeItems() throws ViatraQueryException {
-    return Operation__realizedExchangeItemsQuerySpecification.instance();
+  public Operation__realizedExchangeItems getOperation__realizedExchangeItems() {
+    return Operation__realizedExchangeItems.instance();
   }
   
-  public Operation__realizedExchangeItemsMatcher getOperation__realizedExchangeItems(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return Operation__realizedExchangeItemsMatcher.on(engine);
+  public Operation__realizedExchangeItems.Matcher getOperation__realizedExchangeItems(final ViatraQueryEngine engine) {
+    return Operation__realizedExchangeItems.Matcher.on(engine);
   }
 }

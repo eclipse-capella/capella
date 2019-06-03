@@ -14,20 +14,15 @@ package org.polarsys.capella.viatra.core.data.cs.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.Part__deployedPartsMatcher;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.Part__deployingPartsMatcher;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.Part__providedInterfacesMatcher;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.Part__requiredInterfacesMatcher;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.util.Part__deployedPartsQuerySpecification;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.util.Part__deployingPartsQuerySpecification;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.util.Part__providedInterfacesQuerySpecification;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.util.Part__requiredInterfacesQuerySpecification;
+import org.polarsys.capella.viatra.core.data.cs.surrogate.Part__deployedParts;
+import org.polarsys.capella.viatra.core.data.cs.surrogate.Part__deployingParts;
+import org.polarsys.capella.viatra.core.data.cs.surrogate.Part__providedInterfaces;
+import org.polarsys.capella.viatra.core.data.cs.surrogate.Part__requiredInterfaces;
 
 /**
  * A pattern group formed of all public patterns defined in Part.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file Part.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -38,7 +33,7 @@ import org.polarsys.capella.viatra.core.data.cs.surrogate.util.Part__requiredInt
  * <li>Part__deployingParts</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -47,10 +42,10 @@ public final class Part extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static Part instance() throws ViatraQueryException {
+  public static Part instance() {
     if (INSTANCE == null) {
         INSTANCE = new Part();
     }
@@ -59,42 +54,42 @@ public final class Part extends BaseGeneratedPatternGroup {
   
   private static Part INSTANCE;
   
-  private Part() throws ViatraQueryException {
-    querySpecifications.add(Part__providedInterfacesQuerySpecification.instance());
-    querySpecifications.add(Part__requiredInterfacesQuerySpecification.instance());
-    querySpecifications.add(Part__deployedPartsQuerySpecification.instance());
-    querySpecifications.add(Part__deployingPartsQuerySpecification.instance());
+  private Part() {
+    querySpecifications.add(Part__providedInterfaces.instance());
+    querySpecifications.add(Part__requiredInterfaces.instance());
+    querySpecifications.add(Part__deployedParts.instance());
+    querySpecifications.add(Part__deployingParts.instance());
   }
   
-  public Part__providedInterfacesQuerySpecification getPart__providedInterfaces() throws ViatraQueryException {
-    return Part__providedInterfacesQuerySpecification.instance();
+  public Part__providedInterfaces getPart__providedInterfaces() {
+    return Part__providedInterfaces.instance();
   }
   
-  public Part__providedInterfacesMatcher getPart__providedInterfaces(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return Part__providedInterfacesMatcher.on(engine);
+  public Part__providedInterfaces.Matcher getPart__providedInterfaces(final ViatraQueryEngine engine) {
+    return Part__providedInterfaces.Matcher.on(engine);
   }
   
-  public Part__requiredInterfacesQuerySpecification getPart__requiredInterfaces() throws ViatraQueryException {
-    return Part__requiredInterfacesQuerySpecification.instance();
+  public Part__requiredInterfaces getPart__requiredInterfaces() {
+    return Part__requiredInterfaces.instance();
   }
   
-  public Part__requiredInterfacesMatcher getPart__requiredInterfaces(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return Part__requiredInterfacesMatcher.on(engine);
+  public Part__requiredInterfaces.Matcher getPart__requiredInterfaces(final ViatraQueryEngine engine) {
+    return Part__requiredInterfaces.Matcher.on(engine);
   }
   
-  public Part__deployedPartsQuerySpecification getPart__deployedParts() throws ViatraQueryException {
-    return Part__deployedPartsQuerySpecification.instance();
+  public Part__deployedParts getPart__deployedParts() {
+    return Part__deployedParts.instance();
   }
   
-  public Part__deployedPartsMatcher getPart__deployedParts(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return Part__deployedPartsMatcher.on(engine);
+  public Part__deployedParts.Matcher getPart__deployedParts(final ViatraQueryEngine engine) {
+    return Part__deployedParts.Matcher.on(engine);
   }
   
-  public Part__deployingPartsQuerySpecification getPart__deployingParts() throws ViatraQueryException {
-    return Part__deployingPartsQuerySpecification.instance();
+  public Part__deployingParts getPart__deployingParts() {
+    return Part__deployingParts.instance();
   }
   
-  public Part__deployingPartsMatcher getPart__deployingParts(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return Part__deployingPartsMatcher.on(engine);
+  public Part__deployingParts.Matcher getPart__deployingParts(final ViatraQueryEngine engine) {
+    return Part__deployingParts.Matcher.on(engine);
   }
 }

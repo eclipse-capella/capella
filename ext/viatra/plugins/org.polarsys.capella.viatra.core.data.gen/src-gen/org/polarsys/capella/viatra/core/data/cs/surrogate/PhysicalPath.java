@@ -14,18 +14,14 @@ package org.polarsys.capella.viatra.core.data.cs.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.PhysicalPath__firstPhysicalPathInvolvementsMatcher;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.PhysicalPath__realizedPhysicalPathsMatcher;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.PhysicalPath__realizingPhysicalPathsMatcher;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.util.PhysicalPath__firstPhysicalPathInvolvementsQuerySpecification;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.util.PhysicalPath__realizedPhysicalPathsQuerySpecification;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.util.PhysicalPath__realizingPhysicalPathsQuerySpecification;
+import org.polarsys.capella.viatra.core.data.cs.surrogate.PhysicalPath__firstPhysicalPathInvolvements;
+import org.polarsys.capella.viatra.core.data.cs.surrogate.PhysicalPath__realizedPhysicalPaths;
+import org.polarsys.capella.viatra.core.data.cs.surrogate.PhysicalPath__realizingPhysicalPaths;
 
 /**
  * A pattern group formed of all public patterns defined in PhysicalPath.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file PhysicalPath.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -35,7 +31,7 @@ import org.polarsys.capella.viatra.core.data.cs.surrogate.util.PhysicalPath__rea
  * <li>PhysicalPath__realizingPhysicalPaths</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -44,10 +40,10 @@ public final class PhysicalPath extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static PhysicalPath instance() throws ViatraQueryException {
+  public static PhysicalPath instance() {
     if (INSTANCE == null) {
         INSTANCE = new PhysicalPath();
     }
@@ -56,33 +52,33 @@ public final class PhysicalPath extends BaseGeneratedPatternGroup {
   
   private static PhysicalPath INSTANCE;
   
-  private PhysicalPath() throws ViatraQueryException {
-    querySpecifications.add(PhysicalPath__firstPhysicalPathInvolvementsQuerySpecification.instance());
-    querySpecifications.add(PhysicalPath__realizedPhysicalPathsQuerySpecification.instance());
-    querySpecifications.add(PhysicalPath__realizingPhysicalPathsQuerySpecification.instance());
+  private PhysicalPath() {
+    querySpecifications.add(PhysicalPath__firstPhysicalPathInvolvements.instance());
+    querySpecifications.add(PhysicalPath__realizedPhysicalPaths.instance());
+    querySpecifications.add(PhysicalPath__realizingPhysicalPaths.instance());
   }
   
-  public PhysicalPath__firstPhysicalPathInvolvementsQuerySpecification getPhysicalPath__firstPhysicalPathInvolvements() throws ViatraQueryException {
-    return PhysicalPath__firstPhysicalPathInvolvementsQuerySpecification.instance();
+  public PhysicalPath__firstPhysicalPathInvolvements getPhysicalPath__firstPhysicalPathInvolvements() {
+    return PhysicalPath__firstPhysicalPathInvolvements.instance();
   }
   
-  public PhysicalPath__firstPhysicalPathInvolvementsMatcher getPhysicalPath__firstPhysicalPathInvolvements(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return PhysicalPath__firstPhysicalPathInvolvementsMatcher.on(engine);
+  public PhysicalPath__firstPhysicalPathInvolvements.Matcher getPhysicalPath__firstPhysicalPathInvolvements(final ViatraQueryEngine engine) {
+    return PhysicalPath__firstPhysicalPathInvolvements.Matcher.on(engine);
   }
   
-  public PhysicalPath__realizedPhysicalPathsQuerySpecification getPhysicalPath__realizedPhysicalPaths() throws ViatraQueryException {
-    return PhysicalPath__realizedPhysicalPathsQuerySpecification.instance();
+  public PhysicalPath__realizedPhysicalPaths getPhysicalPath__realizedPhysicalPaths() {
+    return PhysicalPath__realizedPhysicalPaths.instance();
   }
   
-  public PhysicalPath__realizedPhysicalPathsMatcher getPhysicalPath__realizedPhysicalPaths(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return PhysicalPath__realizedPhysicalPathsMatcher.on(engine);
+  public PhysicalPath__realizedPhysicalPaths.Matcher getPhysicalPath__realizedPhysicalPaths(final ViatraQueryEngine engine) {
+    return PhysicalPath__realizedPhysicalPaths.Matcher.on(engine);
   }
   
-  public PhysicalPath__realizingPhysicalPathsQuerySpecification getPhysicalPath__realizingPhysicalPaths() throws ViatraQueryException {
-    return PhysicalPath__realizingPhysicalPathsQuerySpecification.instance();
+  public PhysicalPath__realizingPhysicalPaths getPhysicalPath__realizingPhysicalPaths() {
+    return PhysicalPath__realizingPhysicalPaths.instance();
   }
   
-  public PhysicalPath__realizingPhysicalPathsMatcher getPhysicalPath__realizingPhysicalPaths(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return PhysicalPath__realizingPhysicalPathsMatcher.on(engine);
+  public PhysicalPath__realizingPhysicalPaths.Matcher getPhysicalPath__realizingPhysicalPaths(final ViatraQueryEngine engine) {
+    return PhysicalPath__realizingPhysicalPaths.Matcher.on(engine);
   }
 }

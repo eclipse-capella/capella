@@ -14,38 +14,24 @@ package org.polarsys.capella.viatra.core.data.cs.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.Component__allocatedComponentsMatcher;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.Component__allocatingComponentsMatcher;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.Component__containedComponentPortsMatcher;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.Component__containedPartsMatcher;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.Component__containedPhysicalPortsMatcher;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.Component__implementedInterfaceLinksMatcher;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.Component__implementedInterfacesMatcher;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.Component__providedInterfacesMatcher;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.Component__provisionedComponentAllocationsMatcher;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.Component__provisioningComponentAllocationsMatcher;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.Component__requiredInterfacesMatcher;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.Component__usedInterfaceLinksMatcher;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.Component__usedInterfacesMatcher;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.util.Component__allocatedComponentsQuerySpecification;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.util.Component__allocatingComponentsQuerySpecification;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.util.Component__containedComponentPortsQuerySpecification;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.util.Component__containedPartsQuerySpecification;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.util.Component__containedPhysicalPortsQuerySpecification;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.util.Component__implementedInterfaceLinksQuerySpecification;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.util.Component__implementedInterfacesQuerySpecification;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.util.Component__providedInterfacesQuerySpecification;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.util.Component__provisionedComponentAllocationsQuerySpecification;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.util.Component__provisioningComponentAllocationsQuerySpecification;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.util.Component__requiredInterfacesQuerySpecification;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.util.Component__usedInterfaceLinksQuerySpecification;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.util.Component__usedInterfacesQuerySpecification;
+import org.polarsys.capella.viatra.core.data.cs.surrogate.Component__allocatedComponents;
+import org.polarsys.capella.viatra.core.data.cs.surrogate.Component__allocatingComponents;
+import org.polarsys.capella.viatra.core.data.cs.surrogate.Component__containedComponentPorts;
+import org.polarsys.capella.viatra.core.data.cs.surrogate.Component__containedParts;
+import org.polarsys.capella.viatra.core.data.cs.surrogate.Component__containedPhysicalPorts;
+import org.polarsys.capella.viatra.core.data.cs.surrogate.Component__implementedInterfaceLinks;
+import org.polarsys.capella.viatra.core.data.cs.surrogate.Component__implementedInterfaces;
+import org.polarsys.capella.viatra.core.data.cs.surrogate.Component__providedInterfaces;
+import org.polarsys.capella.viatra.core.data.cs.surrogate.Component__provisionedComponentAllocations;
+import org.polarsys.capella.viatra.core.data.cs.surrogate.Component__provisioningComponentAllocations;
+import org.polarsys.capella.viatra.core.data.cs.surrogate.Component__requiredInterfaces;
+import org.polarsys.capella.viatra.core.data.cs.surrogate.Component__usedInterfaceLinks;
+import org.polarsys.capella.viatra.core.data.cs.surrogate.Component__usedInterfaces;
 
 /**
  * A pattern group formed of all public patterns defined in Component.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file Component.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -65,7 +51,7 @@ import org.polarsys.capella.viatra.core.data.cs.surrogate.util.Component__usedIn
  * <li>Component__containedPhysicalPorts</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -74,10 +60,10 @@ public final class Component extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static Component instance() throws ViatraQueryException {
+  public static Component instance() {
     if (INSTANCE == null) {
         INSTANCE = new Component();
     }
@@ -86,123 +72,123 @@ public final class Component extends BaseGeneratedPatternGroup {
   
   private static Component INSTANCE;
   
-  private Component() throws ViatraQueryException {
-    querySpecifications.add(Component__usedInterfaceLinksQuerySpecification.instance());
-    querySpecifications.add(Component__usedInterfacesQuerySpecification.instance());
-    querySpecifications.add(Component__implementedInterfaceLinksQuerySpecification.instance());
-    querySpecifications.add(Component__implementedInterfacesQuerySpecification.instance());
-    querySpecifications.add(Component__provisionedComponentAllocationsQuerySpecification.instance());
-    querySpecifications.add(Component__provisioningComponentAllocationsQuerySpecification.instance());
-    querySpecifications.add(Component__allocatedComponentsQuerySpecification.instance());
-    querySpecifications.add(Component__allocatingComponentsQuerySpecification.instance());
-    querySpecifications.add(Component__providedInterfacesQuerySpecification.instance());
-    querySpecifications.add(Component__requiredInterfacesQuerySpecification.instance());
-    querySpecifications.add(Component__containedComponentPortsQuerySpecification.instance());
-    querySpecifications.add(Component__containedPartsQuerySpecification.instance());
-    querySpecifications.add(Component__containedPhysicalPortsQuerySpecification.instance());
+  private Component() {
+    querySpecifications.add(Component__usedInterfaceLinks.instance());
+    querySpecifications.add(Component__usedInterfaces.instance());
+    querySpecifications.add(Component__implementedInterfaceLinks.instance());
+    querySpecifications.add(Component__implementedInterfaces.instance());
+    querySpecifications.add(Component__provisionedComponentAllocations.instance());
+    querySpecifications.add(Component__provisioningComponentAllocations.instance());
+    querySpecifications.add(Component__allocatedComponents.instance());
+    querySpecifications.add(Component__allocatingComponents.instance());
+    querySpecifications.add(Component__providedInterfaces.instance());
+    querySpecifications.add(Component__requiredInterfaces.instance());
+    querySpecifications.add(Component__containedComponentPorts.instance());
+    querySpecifications.add(Component__containedParts.instance());
+    querySpecifications.add(Component__containedPhysicalPorts.instance());
   }
   
-  public Component__usedInterfaceLinksQuerySpecification getComponent__usedInterfaceLinks() throws ViatraQueryException {
-    return Component__usedInterfaceLinksQuerySpecification.instance();
+  public Component__usedInterfaceLinks getComponent__usedInterfaceLinks() {
+    return Component__usedInterfaceLinks.instance();
   }
   
-  public Component__usedInterfaceLinksMatcher getComponent__usedInterfaceLinks(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return Component__usedInterfaceLinksMatcher.on(engine);
+  public Component__usedInterfaceLinks.Matcher getComponent__usedInterfaceLinks(final ViatraQueryEngine engine) {
+    return Component__usedInterfaceLinks.Matcher.on(engine);
   }
   
-  public Component__usedInterfacesQuerySpecification getComponent__usedInterfaces() throws ViatraQueryException {
-    return Component__usedInterfacesQuerySpecification.instance();
+  public Component__usedInterfaces getComponent__usedInterfaces() {
+    return Component__usedInterfaces.instance();
   }
   
-  public Component__usedInterfacesMatcher getComponent__usedInterfaces(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return Component__usedInterfacesMatcher.on(engine);
+  public Component__usedInterfaces.Matcher getComponent__usedInterfaces(final ViatraQueryEngine engine) {
+    return Component__usedInterfaces.Matcher.on(engine);
   }
   
-  public Component__implementedInterfaceLinksQuerySpecification getComponent__implementedInterfaceLinks() throws ViatraQueryException {
-    return Component__implementedInterfaceLinksQuerySpecification.instance();
+  public Component__implementedInterfaceLinks getComponent__implementedInterfaceLinks() {
+    return Component__implementedInterfaceLinks.instance();
   }
   
-  public Component__implementedInterfaceLinksMatcher getComponent__implementedInterfaceLinks(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return Component__implementedInterfaceLinksMatcher.on(engine);
+  public Component__implementedInterfaceLinks.Matcher getComponent__implementedInterfaceLinks(final ViatraQueryEngine engine) {
+    return Component__implementedInterfaceLinks.Matcher.on(engine);
   }
   
-  public Component__implementedInterfacesQuerySpecification getComponent__implementedInterfaces() throws ViatraQueryException {
-    return Component__implementedInterfacesQuerySpecification.instance();
+  public Component__implementedInterfaces getComponent__implementedInterfaces() {
+    return Component__implementedInterfaces.instance();
   }
   
-  public Component__implementedInterfacesMatcher getComponent__implementedInterfaces(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return Component__implementedInterfacesMatcher.on(engine);
+  public Component__implementedInterfaces.Matcher getComponent__implementedInterfaces(final ViatraQueryEngine engine) {
+    return Component__implementedInterfaces.Matcher.on(engine);
   }
   
-  public Component__provisionedComponentAllocationsQuerySpecification getComponent__provisionedComponentAllocations() throws ViatraQueryException {
-    return Component__provisionedComponentAllocationsQuerySpecification.instance();
+  public Component__provisionedComponentAllocations getComponent__provisionedComponentAllocations() {
+    return Component__provisionedComponentAllocations.instance();
   }
   
-  public Component__provisionedComponentAllocationsMatcher getComponent__provisionedComponentAllocations(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return Component__provisionedComponentAllocationsMatcher.on(engine);
+  public Component__provisionedComponentAllocations.Matcher getComponent__provisionedComponentAllocations(final ViatraQueryEngine engine) {
+    return Component__provisionedComponentAllocations.Matcher.on(engine);
   }
   
-  public Component__provisioningComponentAllocationsQuerySpecification getComponent__provisioningComponentAllocations() throws ViatraQueryException {
-    return Component__provisioningComponentAllocationsQuerySpecification.instance();
+  public Component__provisioningComponentAllocations getComponent__provisioningComponentAllocations() {
+    return Component__provisioningComponentAllocations.instance();
   }
   
-  public Component__provisioningComponentAllocationsMatcher getComponent__provisioningComponentAllocations(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return Component__provisioningComponentAllocationsMatcher.on(engine);
+  public Component__provisioningComponentAllocations.Matcher getComponent__provisioningComponentAllocations(final ViatraQueryEngine engine) {
+    return Component__provisioningComponentAllocations.Matcher.on(engine);
   }
   
-  public Component__allocatedComponentsQuerySpecification getComponent__allocatedComponents() throws ViatraQueryException {
-    return Component__allocatedComponentsQuerySpecification.instance();
+  public Component__allocatedComponents getComponent__allocatedComponents() {
+    return Component__allocatedComponents.instance();
   }
   
-  public Component__allocatedComponentsMatcher getComponent__allocatedComponents(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return Component__allocatedComponentsMatcher.on(engine);
+  public Component__allocatedComponents.Matcher getComponent__allocatedComponents(final ViatraQueryEngine engine) {
+    return Component__allocatedComponents.Matcher.on(engine);
   }
   
-  public Component__allocatingComponentsQuerySpecification getComponent__allocatingComponents() throws ViatraQueryException {
-    return Component__allocatingComponentsQuerySpecification.instance();
+  public Component__allocatingComponents getComponent__allocatingComponents() {
+    return Component__allocatingComponents.instance();
   }
   
-  public Component__allocatingComponentsMatcher getComponent__allocatingComponents(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return Component__allocatingComponentsMatcher.on(engine);
+  public Component__allocatingComponents.Matcher getComponent__allocatingComponents(final ViatraQueryEngine engine) {
+    return Component__allocatingComponents.Matcher.on(engine);
   }
   
-  public Component__providedInterfacesQuerySpecification getComponent__providedInterfaces() throws ViatraQueryException {
-    return Component__providedInterfacesQuerySpecification.instance();
+  public Component__providedInterfaces getComponent__providedInterfaces() {
+    return Component__providedInterfaces.instance();
   }
   
-  public Component__providedInterfacesMatcher getComponent__providedInterfaces(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return Component__providedInterfacesMatcher.on(engine);
+  public Component__providedInterfaces.Matcher getComponent__providedInterfaces(final ViatraQueryEngine engine) {
+    return Component__providedInterfaces.Matcher.on(engine);
   }
   
-  public Component__requiredInterfacesQuerySpecification getComponent__requiredInterfaces() throws ViatraQueryException {
-    return Component__requiredInterfacesQuerySpecification.instance();
+  public Component__requiredInterfaces getComponent__requiredInterfaces() {
+    return Component__requiredInterfaces.instance();
   }
   
-  public Component__requiredInterfacesMatcher getComponent__requiredInterfaces(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return Component__requiredInterfacesMatcher.on(engine);
+  public Component__requiredInterfaces.Matcher getComponent__requiredInterfaces(final ViatraQueryEngine engine) {
+    return Component__requiredInterfaces.Matcher.on(engine);
   }
   
-  public Component__containedComponentPortsQuerySpecification getComponent__containedComponentPorts() throws ViatraQueryException {
-    return Component__containedComponentPortsQuerySpecification.instance();
+  public Component__containedComponentPorts getComponent__containedComponentPorts() {
+    return Component__containedComponentPorts.instance();
   }
   
-  public Component__containedComponentPortsMatcher getComponent__containedComponentPorts(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return Component__containedComponentPortsMatcher.on(engine);
+  public Component__containedComponentPorts.Matcher getComponent__containedComponentPorts(final ViatraQueryEngine engine) {
+    return Component__containedComponentPorts.Matcher.on(engine);
   }
   
-  public Component__containedPartsQuerySpecification getComponent__containedParts() throws ViatraQueryException {
-    return Component__containedPartsQuerySpecification.instance();
+  public Component__containedParts getComponent__containedParts() {
+    return Component__containedParts.instance();
   }
   
-  public Component__containedPartsMatcher getComponent__containedParts(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return Component__containedPartsMatcher.on(engine);
+  public Component__containedParts.Matcher getComponent__containedParts(final ViatraQueryEngine engine) {
+    return Component__containedParts.Matcher.on(engine);
   }
   
-  public Component__containedPhysicalPortsQuerySpecification getComponent__containedPhysicalPorts() throws ViatraQueryException {
-    return Component__containedPhysicalPortsQuerySpecification.instance();
+  public Component__containedPhysicalPorts getComponent__containedPhysicalPorts() {
+    return Component__containedPhysicalPorts.instance();
   }
   
-  public Component__containedPhysicalPortsMatcher getComponent__containedPhysicalPorts(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return Component__containedPhysicalPortsMatcher.on(engine);
+  public Component__containedPhysicalPorts.Matcher getComponent__containedPhysicalPorts(final ViatraQueryEngine engine) {
+    return Component__containedPhysicalPorts.Matcher.on(engine);
   }
 }

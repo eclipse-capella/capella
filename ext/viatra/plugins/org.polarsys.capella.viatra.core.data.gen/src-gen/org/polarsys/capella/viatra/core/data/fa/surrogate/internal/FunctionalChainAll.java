@@ -13,19 +13,18 @@
 package org.polarsys.capella.viatra.core.data.fa.surrogate.internal;
 
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.internal._PreviousInvolvementQuerySpecification;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.util.FunctionalChain__enactedFunctionalBlocksQuerySpecification;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.util.FunctionalChain__enactedFunctionsQuerySpecification;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.util.FunctionalChain__firstFunctionalChainInvolvementsQuerySpecification;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.util.FunctionalChain__involvedElementsQuerySpecification;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.util.FunctionalChain__involvedFunctionalChainInvolvementsQuerySpecification;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.util.FunctionalChain__involvedFunctionalExchangesQuerySpecification;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.util.FunctionalChain__involvedFunctionsQuerySpecification;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.util.FunctionalChain__involvingCapabilitiesQuerySpecification;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.util.FunctionalChain__involvingCapabilityRealizationsQuerySpecification;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.util.FunctionalChain__realizedFunctionalChainsQuerySpecification;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.util.FunctionalChain__realizingFunctionalChainsQuerySpecification;
+import org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionalChain__enactedFunctionalBlocks;
+import org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionalChain__enactedFunctions;
+import org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionalChain__firstFunctionalChainInvolvements;
+import org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionalChain__involvedElements;
+import org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionalChain__involvedFunctionalChainInvolvements;
+import org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionalChain__involvedFunctionalExchanges;
+import org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionalChain__involvedFunctions;
+import org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionalChain__involvingCapabilities;
+import org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionalChain__involvingCapabilityRealizations;
+import org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionalChain__realizedFunctionalChains;
+import org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionalChain__realizingFunctionalChains;
+import org.polarsys.capella.viatra.core.data.fa.surrogate.internal._PreviousInvolvement;
 
 /**
  * A pattern group formed of all patterns defined in FunctionalChain.vql.
@@ -47,7 +46,7 @@ import org.polarsys.capella.viatra.core.data.fa.surrogate.util.FunctionalChain__
  * <li>FunctionalChain__realizingFunctionalChains</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -56,10 +55,10 @@ public final class FunctionalChainAll extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static FunctionalChainAll instance() throws ViatraQueryException {
+  public static FunctionalChainAll instance() {
     if (INSTANCE == null) {
         INSTANCE = new FunctionalChainAll();
     }
@@ -68,18 +67,18 @@ public final class FunctionalChainAll extends BaseGeneratedPatternGroup {
   
   private static FunctionalChainAll INSTANCE;
   
-  private FunctionalChainAll() throws ViatraQueryException {
-    querySpecifications.add(FunctionalChain__involvedFunctionalChainInvolvementsQuerySpecification.instance());
-    querySpecifications.add(FunctionalChain__involvedFunctionsQuerySpecification.instance());
-    querySpecifications.add(FunctionalChain__involvedFunctionalExchangesQuerySpecification.instance());
-    querySpecifications.add(FunctionalChain__involvedElementsQuerySpecification.instance());
-    querySpecifications.add(FunctionalChain__enactedFunctionsQuerySpecification.instance());
-    querySpecifications.add(FunctionalChain__enactedFunctionalBlocksQuerySpecification.instance());
-    querySpecifications.add(FunctionalChain__firstFunctionalChainInvolvementsQuerySpecification.instance());
-    querySpecifications.add(_PreviousInvolvementQuerySpecification.instance());
-    querySpecifications.add(FunctionalChain__involvingCapabilitiesQuerySpecification.instance());
-    querySpecifications.add(FunctionalChain__involvingCapabilityRealizationsQuerySpecification.instance());
-    querySpecifications.add(FunctionalChain__realizedFunctionalChainsQuerySpecification.instance());
-    querySpecifications.add(FunctionalChain__realizingFunctionalChainsQuerySpecification.instance());
+  private FunctionalChainAll() {
+    querySpecifications.add(FunctionalChain__involvedFunctionalChainInvolvements.instance());
+    querySpecifications.add(FunctionalChain__involvedFunctions.instance());
+    querySpecifications.add(FunctionalChain__involvedFunctionalExchanges.instance());
+    querySpecifications.add(FunctionalChain__involvedElements.instance());
+    querySpecifications.add(FunctionalChain__enactedFunctions.instance());
+    querySpecifications.add(FunctionalChain__enactedFunctionalBlocks.instance());
+    querySpecifications.add(FunctionalChain__firstFunctionalChainInvolvements.instance());
+    querySpecifications.add(_PreviousInvolvement.instance());
+    querySpecifications.add(FunctionalChain__involvingCapabilities.instance());
+    querySpecifications.add(FunctionalChain__involvingCapabilityRealizations.instance());
+    querySpecifications.add(FunctionalChain__realizedFunctionalChains.instance());
+    querySpecifications.add(FunctionalChain__realizingFunctionalChains.instance());
   }
 }

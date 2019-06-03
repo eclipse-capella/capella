@@ -14,22 +14,16 @@ package org.polarsys.capella.viatra.common.data.activity.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.common.data.activity.surrogate.ActivityNode__inActivityPartitionMatcher;
-import org.polarsys.capella.viatra.common.data.activity.surrogate.ActivityNode__inInterruptibleRegionMatcher;
-import org.polarsys.capella.viatra.common.data.activity.surrogate.ActivityNode__inStructuredNodeMatcher;
-import org.polarsys.capella.viatra.common.data.activity.surrogate.ActivityNode__incomingMatcher;
-import org.polarsys.capella.viatra.common.data.activity.surrogate.ActivityNode__outgoingMatcher;
-import org.polarsys.capella.viatra.common.data.activity.surrogate.util.ActivityNode__inActivityPartitionQuerySpecification;
-import org.polarsys.capella.viatra.common.data.activity.surrogate.util.ActivityNode__inInterruptibleRegionQuerySpecification;
-import org.polarsys.capella.viatra.common.data.activity.surrogate.util.ActivityNode__inStructuredNodeQuerySpecification;
-import org.polarsys.capella.viatra.common.data.activity.surrogate.util.ActivityNode__incomingQuerySpecification;
-import org.polarsys.capella.viatra.common.data.activity.surrogate.util.ActivityNode__outgoingQuerySpecification;
+import org.polarsys.capella.viatra.common.data.activity.surrogate.ActivityNode__inActivityPartition;
+import org.polarsys.capella.viatra.common.data.activity.surrogate.ActivityNode__inInterruptibleRegion;
+import org.polarsys.capella.viatra.common.data.activity.surrogate.ActivityNode__inStructuredNode;
+import org.polarsys.capella.viatra.common.data.activity.surrogate.ActivityNode__incoming;
+import org.polarsys.capella.viatra.common.data.activity.surrogate.ActivityNode__outgoing;
 
 /**
  * A pattern group formed of all public patterns defined in ActivityNode.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file ActivityNode.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -41,7 +35,7 @@ import org.polarsys.capella.viatra.common.data.activity.surrogate.util.ActivityN
  * <li>ActivityNode__incoming</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -50,10 +44,10 @@ public final class ActivityNode extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static ActivityNode instance() throws ViatraQueryException {
+  public static ActivityNode instance() {
     if (INSTANCE == null) {
         INSTANCE = new ActivityNode();
     }
@@ -62,51 +56,51 @@ public final class ActivityNode extends BaseGeneratedPatternGroup {
   
   private static ActivityNode INSTANCE;
   
-  private ActivityNode() throws ViatraQueryException {
-    querySpecifications.add(ActivityNode__inActivityPartitionQuerySpecification.instance());
-    querySpecifications.add(ActivityNode__inInterruptibleRegionQuerySpecification.instance());
-    querySpecifications.add(ActivityNode__inStructuredNodeQuerySpecification.instance());
-    querySpecifications.add(ActivityNode__outgoingQuerySpecification.instance());
-    querySpecifications.add(ActivityNode__incomingQuerySpecification.instance());
+  private ActivityNode() {
+    querySpecifications.add(ActivityNode__inActivityPartition.instance());
+    querySpecifications.add(ActivityNode__inInterruptibleRegion.instance());
+    querySpecifications.add(ActivityNode__inStructuredNode.instance());
+    querySpecifications.add(ActivityNode__outgoing.instance());
+    querySpecifications.add(ActivityNode__incoming.instance());
   }
   
-  public ActivityNode__inActivityPartitionQuerySpecification getActivityNode__inActivityPartition() throws ViatraQueryException {
-    return ActivityNode__inActivityPartitionQuerySpecification.instance();
+  public ActivityNode__inActivityPartition getActivityNode__inActivityPartition() {
+    return ActivityNode__inActivityPartition.instance();
   }
   
-  public ActivityNode__inActivityPartitionMatcher getActivityNode__inActivityPartition(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return ActivityNode__inActivityPartitionMatcher.on(engine);
+  public ActivityNode__inActivityPartition.Matcher getActivityNode__inActivityPartition(final ViatraQueryEngine engine) {
+    return ActivityNode__inActivityPartition.Matcher.on(engine);
   }
   
-  public ActivityNode__inInterruptibleRegionQuerySpecification getActivityNode__inInterruptibleRegion() throws ViatraQueryException {
-    return ActivityNode__inInterruptibleRegionQuerySpecification.instance();
+  public ActivityNode__inInterruptibleRegion getActivityNode__inInterruptibleRegion() {
+    return ActivityNode__inInterruptibleRegion.instance();
   }
   
-  public ActivityNode__inInterruptibleRegionMatcher getActivityNode__inInterruptibleRegion(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return ActivityNode__inInterruptibleRegionMatcher.on(engine);
+  public ActivityNode__inInterruptibleRegion.Matcher getActivityNode__inInterruptibleRegion(final ViatraQueryEngine engine) {
+    return ActivityNode__inInterruptibleRegion.Matcher.on(engine);
   }
   
-  public ActivityNode__inStructuredNodeQuerySpecification getActivityNode__inStructuredNode() throws ViatraQueryException {
-    return ActivityNode__inStructuredNodeQuerySpecification.instance();
+  public ActivityNode__inStructuredNode getActivityNode__inStructuredNode() {
+    return ActivityNode__inStructuredNode.instance();
   }
   
-  public ActivityNode__inStructuredNodeMatcher getActivityNode__inStructuredNode(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return ActivityNode__inStructuredNodeMatcher.on(engine);
+  public ActivityNode__inStructuredNode.Matcher getActivityNode__inStructuredNode(final ViatraQueryEngine engine) {
+    return ActivityNode__inStructuredNode.Matcher.on(engine);
   }
   
-  public ActivityNode__outgoingQuerySpecification getActivityNode__outgoing() throws ViatraQueryException {
-    return ActivityNode__outgoingQuerySpecification.instance();
+  public ActivityNode__outgoing getActivityNode__outgoing() {
+    return ActivityNode__outgoing.instance();
   }
   
-  public ActivityNode__outgoingMatcher getActivityNode__outgoing(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return ActivityNode__outgoingMatcher.on(engine);
+  public ActivityNode__outgoing.Matcher getActivityNode__outgoing(final ViatraQueryEngine engine) {
+    return ActivityNode__outgoing.Matcher.on(engine);
   }
   
-  public ActivityNode__incomingQuerySpecification getActivityNode__incoming() throws ViatraQueryException {
-    return ActivityNode__incomingQuerySpecification.instance();
+  public ActivityNode__incoming getActivityNode__incoming() {
+    return ActivityNode__incoming.instance();
   }
   
-  public ActivityNode__incomingMatcher getActivityNode__incoming(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return ActivityNode__incomingMatcher.on(engine);
+  public ActivityNode__incoming.Matcher getActivityNode__incoming(final ViatraQueryEngine engine) {
+    return ActivityNode__incoming.Matcher.on(engine);
   }
 }

@@ -14,16 +14,13 @@ package org.polarsys.capella.viatra.core.data.ctx.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.core.data.ctx.surrogate.ActorMissionInvolvement__actorMatcher;
-import org.polarsys.capella.viatra.core.data.ctx.surrogate.ActorMissionInvolvement__missionMatcher;
-import org.polarsys.capella.viatra.core.data.ctx.surrogate.util.ActorMissionInvolvement__actorQuerySpecification;
-import org.polarsys.capella.viatra.core.data.ctx.surrogate.util.ActorMissionInvolvement__missionQuerySpecification;
+import org.polarsys.capella.viatra.core.data.ctx.surrogate.ActorMissionInvolvement__actor;
+import org.polarsys.capella.viatra.core.data.ctx.surrogate.ActorMissionInvolvement__mission;
 
 /**
  * A pattern group formed of all public patterns defined in ActorMissionInvolvement.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file ActorMissionInvolvement.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -32,7 +29,7 @@ import org.polarsys.capella.viatra.core.data.ctx.surrogate.util.ActorMissionInvo
  * <li>ActorMissionInvolvement__mission</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -41,10 +38,10 @@ public final class ActorMissionInvolvement extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static ActorMissionInvolvement instance() throws ViatraQueryException {
+  public static ActorMissionInvolvement instance() {
     if (INSTANCE == null) {
         INSTANCE = new ActorMissionInvolvement();
     }
@@ -53,24 +50,24 @@ public final class ActorMissionInvolvement extends BaseGeneratedPatternGroup {
   
   private static ActorMissionInvolvement INSTANCE;
   
-  private ActorMissionInvolvement() throws ViatraQueryException {
-    querySpecifications.add(ActorMissionInvolvement__actorQuerySpecification.instance());
-    querySpecifications.add(ActorMissionInvolvement__missionQuerySpecification.instance());
+  private ActorMissionInvolvement() {
+    querySpecifications.add(ActorMissionInvolvement__actor.instance());
+    querySpecifications.add(ActorMissionInvolvement__mission.instance());
   }
   
-  public ActorMissionInvolvement__actorQuerySpecification getActorMissionInvolvement__actor() throws ViatraQueryException {
-    return ActorMissionInvolvement__actorQuerySpecification.instance();
+  public ActorMissionInvolvement__actor getActorMissionInvolvement__actor() {
+    return ActorMissionInvolvement__actor.instance();
   }
   
-  public ActorMissionInvolvement__actorMatcher getActorMissionInvolvement__actor(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return ActorMissionInvolvement__actorMatcher.on(engine);
+  public ActorMissionInvolvement__actor.Matcher getActorMissionInvolvement__actor(final ViatraQueryEngine engine) {
+    return ActorMissionInvolvement__actor.Matcher.on(engine);
   }
   
-  public ActorMissionInvolvement__missionQuerySpecification getActorMissionInvolvement__mission() throws ViatraQueryException {
-    return ActorMissionInvolvement__missionQuerySpecification.instance();
+  public ActorMissionInvolvement__mission getActorMissionInvolvement__mission() {
+    return ActorMissionInvolvement__mission.instance();
   }
   
-  public ActorMissionInvolvement__missionMatcher getActorMissionInvolvement__mission(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return ActorMissionInvolvement__missionMatcher.on(engine);
+  public ActorMissionInvolvement__mission.Matcher getActorMissionInvolvement__mission(final ViatraQueryEngine engine) {
+    return ActorMissionInvolvement__mission.Matcher.on(engine);
   }
 }

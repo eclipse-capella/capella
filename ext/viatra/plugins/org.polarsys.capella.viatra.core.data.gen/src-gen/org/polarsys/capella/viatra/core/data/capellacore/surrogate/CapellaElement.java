@@ -14,14 +14,12 @@ package org.polarsys.capella.viatra.core.data.capellacore.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.core.data.capellacore.surrogate.CapellaElement__appliedRequirementsMatcher;
-import org.polarsys.capella.viatra.core.data.capellacore.surrogate.util.CapellaElement__appliedRequirementsQuerySpecification;
+import org.polarsys.capella.viatra.core.data.capellacore.surrogate.CapellaElement__appliedRequirements;
 
 /**
  * A pattern group formed of all public patterns defined in CapellaElement.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file CapellaElement.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -29,7 +27,7 @@ import org.polarsys.capella.viatra.core.data.capellacore.surrogate.util.CapellaE
  * <li>CapellaElement__appliedRequirements</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -38,10 +36,10 @@ public final class CapellaElement extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static CapellaElement instance() throws ViatraQueryException {
+  public static CapellaElement instance() {
     if (INSTANCE == null) {
         INSTANCE = new CapellaElement();
     }
@@ -50,15 +48,15 @@ public final class CapellaElement extends BaseGeneratedPatternGroup {
   
   private static CapellaElement INSTANCE;
   
-  private CapellaElement() throws ViatraQueryException {
-    querySpecifications.add(CapellaElement__appliedRequirementsQuerySpecification.instance());
+  private CapellaElement() {
+    querySpecifications.add(CapellaElement__appliedRequirements.instance());
   }
   
-  public CapellaElement__appliedRequirementsQuerySpecification getCapellaElement__appliedRequirements() throws ViatraQueryException {
-    return CapellaElement__appliedRequirementsQuerySpecification.instance();
+  public CapellaElement__appliedRequirements getCapellaElement__appliedRequirements() {
+    return CapellaElement__appliedRequirements.instance();
   }
   
-  public CapellaElement__appliedRequirementsMatcher getCapellaElement__appliedRequirements(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return CapellaElement__appliedRequirementsMatcher.on(engine);
+  public CapellaElement__appliedRequirements.Matcher getCapellaElement__appliedRequirements(final ViatraQueryEngine engine) {
+    return CapellaElement__appliedRequirements.Matcher.on(engine);
   }
 }

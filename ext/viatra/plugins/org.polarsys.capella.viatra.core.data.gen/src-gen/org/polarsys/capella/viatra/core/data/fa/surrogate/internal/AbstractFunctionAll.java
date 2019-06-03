@@ -13,20 +13,19 @@
 package org.polarsys.capella.viatra.core.data.fa.surrogate.internal;
 
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.internal._AbstractFunction__ownedFunctionPkgsQuerySpecification;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.internal._FunctionPkg__ownedFunctionPkgsQuerySpecification;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.internal._FunctionPkg__ownedFunctionsQuerySpecification;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.util.AbstractFunction__allocationBlocksQuerySpecification;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.util.AbstractFunction__componentFunctionalAllocationsQuerySpecification;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.util.AbstractFunction__inFunctionRealizationsQuerySpecification;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.util.AbstractFunction__involvingCapabilitiesQuerySpecification;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.util.AbstractFunction__involvingCapabilityRealizationsQuerySpecification;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.util.AbstractFunction__involvingFunctionalChainsQuerySpecification;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.util.AbstractFunction__linkedFunctionSpecificationQuerySpecification;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.util.AbstractFunction__linkedStateMachineQuerySpecification;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.util.AbstractFunction__outFunctionRealizationsQuerySpecification;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.util.AbstractFunction__subFunctionsQuerySpecification;
+import org.polarsys.capella.viatra.core.data.fa.surrogate.AbstractFunction__allocationBlocks;
+import org.polarsys.capella.viatra.core.data.fa.surrogate.AbstractFunction__componentFunctionalAllocations;
+import org.polarsys.capella.viatra.core.data.fa.surrogate.AbstractFunction__inFunctionRealizations;
+import org.polarsys.capella.viatra.core.data.fa.surrogate.AbstractFunction__involvingCapabilities;
+import org.polarsys.capella.viatra.core.data.fa.surrogate.AbstractFunction__involvingCapabilityRealizations;
+import org.polarsys.capella.viatra.core.data.fa.surrogate.AbstractFunction__involvingFunctionalChains;
+import org.polarsys.capella.viatra.core.data.fa.surrogate.AbstractFunction__linkedFunctionSpecification;
+import org.polarsys.capella.viatra.core.data.fa.surrogate.AbstractFunction__linkedStateMachine;
+import org.polarsys.capella.viatra.core.data.fa.surrogate.AbstractFunction__outFunctionRealizations;
+import org.polarsys.capella.viatra.core.data.fa.surrogate.AbstractFunction__subFunctions;
+import org.polarsys.capella.viatra.core.data.fa.surrogate.internal._AbstractFunction__ownedFunctionPkgs;
+import org.polarsys.capella.viatra.core.data.fa.surrogate.internal._FunctionPkg__ownedFunctionPkgs;
+import org.polarsys.capella.viatra.core.data.fa.surrogate.internal._FunctionPkg__ownedFunctions;
 
 /**
  * A pattern group formed of all patterns defined in AbstractFunction.vql.
@@ -49,7 +48,7 @@ import org.polarsys.capella.viatra.core.data.fa.surrogate.util.AbstractFunction_
  * <li>AbstractFunction__linkedFunctionSpecification</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -58,10 +57,10 @@ public final class AbstractFunctionAll extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static AbstractFunctionAll instance() throws ViatraQueryException {
+  public static AbstractFunctionAll instance() {
     if (INSTANCE == null) {
         INSTANCE = new AbstractFunctionAll();
     }
@@ -70,19 +69,19 @@ public final class AbstractFunctionAll extends BaseGeneratedPatternGroup {
   
   private static AbstractFunctionAll INSTANCE;
   
-  private AbstractFunctionAll() throws ViatraQueryException {
-    querySpecifications.add(AbstractFunction__subFunctionsQuerySpecification.instance());
-    querySpecifications.add(_AbstractFunction__ownedFunctionPkgsQuerySpecification.instance());
-    querySpecifications.add(_FunctionPkg__ownedFunctionPkgsQuerySpecification.instance());
-    querySpecifications.add(_FunctionPkg__ownedFunctionsQuerySpecification.instance());
-    querySpecifications.add(AbstractFunction__outFunctionRealizationsQuerySpecification.instance());
-    querySpecifications.add(AbstractFunction__inFunctionRealizationsQuerySpecification.instance());
-    querySpecifications.add(AbstractFunction__componentFunctionalAllocationsQuerySpecification.instance());
-    querySpecifications.add(AbstractFunction__allocationBlocksQuerySpecification.instance());
-    querySpecifications.add(AbstractFunction__involvingCapabilitiesQuerySpecification.instance());
-    querySpecifications.add(AbstractFunction__involvingCapabilityRealizationsQuerySpecification.instance());
-    querySpecifications.add(AbstractFunction__involvingFunctionalChainsQuerySpecification.instance());
-    querySpecifications.add(AbstractFunction__linkedStateMachineQuerySpecification.instance());
-    querySpecifications.add(AbstractFunction__linkedFunctionSpecificationQuerySpecification.instance());
+  private AbstractFunctionAll() {
+    querySpecifications.add(AbstractFunction__subFunctions.instance());
+    querySpecifications.add(_AbstractFunction__ownedFunctionPkgs.instance());
+    querySpecifications.add(_FunctionPkg__ownedFunctionPkgs.instance());
+    querySpecifications.add(_FunctionPkg__ownedFunctions.instance());
+    querySpecifications.add(AbstractFunction__outFunctionRealizations.instance());
+    querySpecifications.add(AbstractFunction__inFunctionRealizations.instance());
+    querySpecifications.add(AbstractFunction__componentFunctionalAllocations.instance());
+    querySpecifications.add(AbstractFunction__allocationBlocks.instance());
+    querySpecifications.add(AbstractFunction__involvingCapabilities.instance());
+    querySpecifications.add(AbstractFunction__involvingCapabilityRealizations.instance());
+    querySpecifications.add(AbstractFunction__involvingFunctionalChains.instance());
+    querySpecifications.add(AbstractFunction__linkedStateMachine.instance());
+    querySpecifications.add(AbstractFunction__linkedFunctionSpecification.instance());
   }
 }

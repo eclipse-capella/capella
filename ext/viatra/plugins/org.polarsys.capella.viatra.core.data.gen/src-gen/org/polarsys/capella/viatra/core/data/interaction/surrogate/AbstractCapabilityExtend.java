@@ -14,14 +14,12 @@ package org.polarsys.capella.viatra.core.data.interaction.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.core.data.interaction.surrogate.AbstractCapabilityExtend__extensionMatcher;
-import org.polarsys.capella.viatra.core.data.interaction.surrogate.util.AbstractCapabilityExtend__extensionQuerySpecification;
+import org.polarsys.capella.viatra.core.data.interaction.surrogate.AbstractCapabilityExtend__extension;
 
 /**
  * A pattern group formed of all public patterns defined in AbstractCapabilityExtend.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file AbstractCapabilityExtend.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -29,7 +27,7 @@ import org.polarsys.capella.viatra.core.data.interaction.surrogate.util.Abstract
  * <li>AbstractCapabilityExtend__extension</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -38,10 +36,10 @@ public final class AbstractCapabilityExtend extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static AbstractCapabilityExtend instance() throws ViatraQueryException {
+  public static AbstractCapabilityExtend instance() {
     if (INSTANCE == null) {
         INSTANCE = new AbstractCapabilityExtend();
     }
@@ -50,15 +48,15 @@ public final class AbstractCapabilityExtend extends BaseGeneratedPatternGroup {
   
   private static AbstractCapabilityExtend INSTANCE;
   
-  private AbstractCapabilityExtend() throws ViatraQueryException {
-    querySpecifications.add(AbstractCapabilityExtend__extensionQuerySpecification.instance());
+  private AbstractCapabilityExtend() {
+    querySpecifications.add(AbstractCapabilityExtend__extension.instance());
   }
   
-  public AbstractCapabilityExtend__extensionQuerySpecification getAbstractCapabilityExtend__extension() throws ViatraQueryException {
-    return AbstractCapabilityExtend__extensionQuerySpecification.instance();
+  public AbstractCapabilityExtend__extension getAbstractCapabilityExtend__extension() {
+    return AbstractCapabilityExtend__extension.instance();
   }
   
-  public AbstractCapabilityExtend__extensionMatcher getAbstractCapabilityExtend__extension(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return AbstractCapabilityExtend__extensionMatcher.on(engine);
+  public AbstractCapabilityExtend__extension.Matcher getAbstractCapabilityExtend__extension(final ViatraQueryEngine engine) {
+    return AbstractCapabilityExtend__extension.Matcher.on(engine);
   }
 }

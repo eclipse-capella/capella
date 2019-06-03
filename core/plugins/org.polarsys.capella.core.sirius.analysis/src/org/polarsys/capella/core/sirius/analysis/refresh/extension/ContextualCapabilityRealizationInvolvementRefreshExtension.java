@@ -11,12 +11,16 @@
 package org.polarsys.capella.core.sirius.analysis.refresh.extension;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.EdgeTarget;
+import org.eclipse.sirius.diagram.business.internal.metamodel.description.extensions.INodeMappingExt;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.NodeMappingHelper;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.polarsys.capella.core.data.cs.AbstractActor;
 import org.polarsys.capella.core.data.cs.ActorCapabilityRealizationInvolvement;
 import org.polarsys.capella.core.data.cs.SystemComponent;
@@ -30,7 +34,7 @@ public class ContextualCapabilityRealizationInvolvementRefreshExtension extends 
   @Override
   public void beforeRefresh(DDiagram diagram) {
     super.beforeRefresh(diagram);
-    
+
     if (((DSemanticDecorator) diagram).getTarget() == null) {
       // avoid refresh on dirty diagram
       return;
@@ -48,8 +52,8 @@ public class ContextualCapabilityRealizationInvolvementRefreshExtension extends 
     // If the graphical node is not already on the diagram, we create it
     if (null == mainCapabilityGraphicalNode) {
 
-      mainCapabilityGraphicalNode = capabilityRealizationMapping.createNode(mainCapability, mainCapability, diagram);
-
+      mainCapabilityGraphicalNode = getNodeMappingHelper(mainCapability)
+          .createNode((INodeMappingExt) capabilityRealizationMapping, mainCapability, mainCapability, diagram);
       diagram.getOwnedDiagramElements().add(mainCapabilityGraphicalNode);
     }
 
@@ -93,8 +97,8 @@ public class ContextualCapabilityRealizationInvolvementRefreshExtension extends 
 
           final AbstractActor currentActor = (AbstractActor) inv.getInvolved();
           if (!DiagramServices.getDiagramServices().isOnDiagram(diagram, currentActor)) {
-            graphicalNode = actorNodeMapping.createNode(currentActor, mainCapability, diagram);
-
+            graphicalNode = getNodeMappingHelper(currentActor).createNode((INodeMappingExt) actorNodeMapping,
+                currentActor, mainCapability, diagram);
             diagram.getOwnedDiagramElements().add(graphicalNode);
           }
 
@@ -126,7 +130,8 @@ public class ContextualCapabilityRealizationInvolvementRefreshExtension extends 
 
           final SystemComponent currentComponent = (SystemComponent) inv.getInvolved();
           if (!DiagramServices.getDiagramServices().isOnDiagram(diagram, currentComponent)) {
-            graphicalNode = componentNodeMapping.createNode(currentComponent, mainCapability, diagram);
+            graphicalNode = getNodeMappingHelper(currentComponent).createNode((INodeMappingExt) componentNodeMapping,
+                currentComponent, mainCapability, diagram);
 
             diagram.getOwnedDiagramElements().add(graphicalNode);
           }
@@ -150,4 +155,9 @@ public class ContextualCapabilityRealizationInvolvementRefreshExtension extends 
       }
     }
   }
+
+  private NodeMappingHelper getNodeMappingHelper(EObject element) {
+    return new NodeMappingHelper(SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(element));
+  }
+
 }

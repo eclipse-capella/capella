@@ -14,14 +14,12 @@ package org.polarsys.capella.viatra.core.data.interaction.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.core.data.interaction.surrogate.Execution__coveredMatcher;
-import org.polarsys.capella.viatra.core.data.interaction.surrogate.util.Execution__coveredQuerySpecification;
+import org.polarsys.capella.viatra.core.data.interaction.surrogate.Execution__covered;
 
 /**
  * A pattern group formed of all public patterns defined in Execution.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file Execution.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -29,7 +27,7 @@ import org.polarsys.capella.viatra.core.data.interaction.surrogate.util.Executio
  * <li>Execution__covered</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -38,10 +36,10 @@ public final class Execution extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static Execution instance() throws ViatraQueryException {
+  public static Execution instance() {
     if (INSTANCE == null) {
         INSTANCE = new Execution();
     }
@@ -50,15 +48,15 @@ public final class Execution extends BaseGeneratedPatternGroup {
   
   private static Execution INSTANCE;
   
-  private Execution() throws ViatraQueryException {
-    querySpecifications.add(Execution__coveredQuerySpecification.instance());
+  private Execution() {
+    querySpecifications.add(Execution__covered.instance());
   }
   
-  public Execution__coveredQuerySpecification getExecution__covered() throws ViatraQueryException {
-    return Execution__coveredQuerySpecification.instance();
+  public Execution__covered getExecution__covered() {
+    return Execution__covered.instance();
   }
   
-  public Execution__coveredMatcher getExecution__covered(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return Execution__coveredMatcher.on(engine);
+  public Execution__covered.Matcher getExecution__covered(final ViatraQueryEngine engine) {
+    return Execution__covered.Matcher.on(engine);
   }
 }

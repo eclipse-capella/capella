@@ -14,16 +14,13 @@ package org.polarsys.capella.viatra.core.data.cs.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.InterfaceAllocation__allocatedInterfaceMatcher;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.InterfaceAllocation__allocatingInterfaceAllocatorMatcher;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.util.InterfaceAllocation__allocatedInterfaceQuerySpecification;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.util.InterfaceAllocation__allocatingInterfaceAllocatorQuerySpecification;
+import org.polarsys.capella.viatra.core.data.cs.surrogate.InterfaceAllocation__allocatedInterface;
+import org.polarsys.capella.viatra.core.data.cs.surrogate.InterfaceAllocation__allocatingInterfaceAllocator;
 
 /**
  * A pattern group formed of all public patterns defined in InterfaceAllocation.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file InterfaceAllocation.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -32,7 +29,7 @@ import org.polarsys.capella.viatra.core.data.cs.surrogate.util.InterfaceAllocati
  * <li>InterfaceAllocation__allocatingInterfaceAllocator</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -41,10 +38,10 @@ public final class InterfaceAllocation extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static InterfaceAllocation instance() throws ViatraQueryException {
+  public static InterfaceAllocation instance() {
     if (INSTANCE == null) {
         INSTANCE = new InterfaceAllocation();
     }
@@ -53,24 +50,24 @@ public final class InterfaceAllocation extends BaseGeneratedPatternGroup {
   
   private static InterfaceAllocation INSTANCE;
   
-  private InterfaceAllocation() throws ViatraQueryException {
-    querySpecifications.add(InterfaceAllocation__allocatedInterfaceQuerySpecification.instance());
-    querySpecifications.add(InterfaceAllocation__allocatingInterfaceAllocatorQuerySpecification.instance());
+  private InterfaceAllocation() {
+    querySpecifications.add(InterfaceAllocation__allocatedInterface.instance());
+    querySpecifications.add(InterfaceAllocation__allocatingInterfaceAllocator.instance());
   }
   
-  public InterfaceAllocation__allocatedInterfaceQuerySpecification getInterfaceAllocation__allocatedInterface() throws ViatraQueryException {
-    return InterfaceAllocation__allocatedInterfaceQuerySpecification.instance();
+  public InterfaceAllocation__allocatedInterface getInterfaceAllocation__allocatedInterface() {
+    return InterfaceAllocation__allocatedInterface.instance();
   }
   
-  public InterfaceAllocation__allocatedInterfaceMatcher getInterfaceAllocation__allocatedInterface(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return InterfaceAllocation__allocatedInterfaceMatcher.on(engine);
+  public InterfaceAllocation__allocatedInterface.Matcher getInterfaceAllocation__allocatedInterface(final ViatraQueryEngine engine) {
+    return InterfaceAllocation__allocatedInterface.Matcher.on(engine);
   }
   
-  public InterfaceAllocation__allocatingInterfaceAllocatorQuerySpecification getInterfaceAllocation__allocatingInterfaceAllocator() throws ViatraQueryException {
-    return InterfaceAllocation__allocatingInterfaceAllocatorQuerySpecification.instance();
+  public InterfaceAllocation__allocatingInterfaceAllocator getInterfaceAllocation__allocatingInterfaceAllocator() {
+    return InterfaceAllocation__allocatingInterfaceAllocator.instance();
   }
   
-  public InterfaceAllocation__allocatingInterfaceAllocatorMatcher getInterfaceAllocation__allocatingInterfaceAllocator(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return InterfaceAllocation__allocatingInterfaceAllocatorMatcher.on(engine);
+  public InterfaceAllocation__allocatingInterfaceAllocator.Matcher getInterfaceAllocation__allocatingInterfaceAllocator(final ViatraQueryEngine engine) {
+    return InterfaceAllocation__allocatingInterfaceAllocator.Matcher.on(engine);
   }
 }

@@ -14,18 +14,14 @@ package org.polarsys.capella.viatra.core.data.cs.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.PhysicalPort__allocatedComponentPortsMatcher;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.PhysicalPort__realizedPhysicalPortsMatcher;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.PhysicalPort__realizingPhysicalPortsMatcher;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.util.PhysicalPort__allocatedComponentPortsQuerySpecification;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.util.PhysicalPort__realizedPhysicalPortsQuerySpecification;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.util.PhysicalPort__realizingPhysicalPortsQuerySpecification;
+import org.polarsys.capella.viatra.core.data.cs.surrogate.PhysicalPort__allocatedComponentPorts;
+import org.polarsys.capella.viatra.core.data.cs.surrogate.PhysicalPort__realizedPhysicalPorts;
+import org.polarsys.capella.viatra.core.data.cs.surrogate.PhysicalPort__realizingPhysicalPorts;
 
 /**
  * A pattern group formed of all public patterns defined in PhysicalPort.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file PhysicalPort.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -35,7 +31,7 @@ import org.polarsys.capella.viatra.core.data.cs.surrogate.util.PhysicalPort__rea
  * <li>PhysicalPort__realizingPhysicalPorts</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -44,10 +40,10 @@ public final class PhysicalPort extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static PhysicalPort instance() throws ViatraQueryException {
+  public static PhysicalPort instance() {
     if (INSTANCE == null) {
         INSTANCE = new PhysicalPort();
     }
@@ -56,33 +52,33 @@ public final class PhysicalPort extends BaseGeneratedPatternGroup {
   
   private static PhysicalPort INSTANCE;
   
-  private PhysicalPort() throws ViatraQueryException {
-    querySpecifications.add(PhysicalPort__allocatedComponentPortsQuerySpecification.instance());
-    querySpecifications.add(PhysicalPort__realizedPhysicalPortsQuerySpecification.instance());
-    querySpecifications.add(PhysicalPort__realizingPhysicalPortsQuerySpecification.instance());
+  private PhysicalPort() {
+    querySpecifications.add(PhysicalPort__allocatedComponentPorts.instance());
+    querySpecifications.add(PhysicalPort__realizedPhysicalPorts.instance());
+    querySpecifications.add(PhysicalPort__realizingPhysicalPorts.instance());
   }
   
-  public PhysicalPort__allocatedComponentPortsQuerySpecification getPhysicalPort__allocatedComponentPorts() throws ViatraQueryException {
-    return PhysicalPort__allocatedComponentPortsQuerySpecification.instance();
+  public PhysicalPort__allocatedComponentPorts getPhysicalPort__allocatedComponentPorts() {
+    return PhysicalPort__allocatedComponentPorts.instance();
   }
   
-  public PhysicalPort__allocatedComponentPortsMatcher getPhysicalPort__allocatedComponentPorts(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return PhysicalPort__allocatedComponentPortsMatcher.on(engine);
+  public PhysicalPort__allocatedComponentPorts.Matcher getPhysicalPort__allocatedComponentPorts(final ViatraQueryEngine engine) {
+    return PhysicalPort__allocatedComponentPorts.Matcher.on(engine);
   }
   
-  public PhysicalPort__realizedPhysicalPortsQuerySpecification getPhysicalPort__realizedPhysicalPorts() throws ViatraQueryException {
-    return PhysicalPort__realizedPhysicalPortsQuerySpecification.instance();
+  public PhysicalPort__realizedPhysicalPorts getPhysicalPort__realizedPhysicalPorts() {
+    return PhysicalPort__realizedPhysicalPorts.instance();
   }
   
-  public PhysicalPort__realizedPhysicalPortsMatcher getPhysicalPort__realizedPhysicalPorts(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return PhysicalPort__realizedPhysicalPortsMatcher.on(engine);
+  public PhysicalPort__realizedPhysicalPorts.Matcher getPhysicalPort__realizedPhysicalPorts(final ViatraQueryEngine engine) {
+    return PhysicalPort__realizedPhysicalPorts.Matcher.on(engine);
   }
   
-  public PhysicalPort__realizingPhysicalPortsQuerySpecification getPhysicalPort__realizingPhysicalPorts() throws ViatraQueryException {
-    return PhysicalPort__realizingPhysicalPortsQuerySpecification.instance();
+  public PhysicalPort__realizingPhysicalPorts getPhysicalPort__realizingPhysicalPorts() {
+    return PhysicalPort__realizingPhysicalPorts.instance();
   }
   
-  public PhysicalPort__realizingPhysicalPortsMatcher getPhysicalPort__realizingPhysicalPorts(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return PhysicalPort__realizingPhysicalPortsMatcher.on(engine);
+  public PhysicalPort__realizingPhysicalPorts.Matcher getPhysicalPort__realizingPhysicalPorts(final ViatraQueryEngine engine) {
+    return PhysicalPort__realizingPhysicalPorts.Matcher.on(engine);
   }
 }

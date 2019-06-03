@@ -14,14 +14,12 @@ package org.polarsys.capella.viatra.core.data.interaction.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.core.data.interaction.surrogate.InstanceRole__abstractEndsMatcher;
-import org.polarsys.capella.viatra.core.data.interaction.surrogate.util.InstanceRole__abstractEndsQuerySpecification;
+import org.polarsys.capella.viatra.core.data.interaction.surrogate.InstanceRole__abstractEnds;
 
 /**
  * A pattern group formed of all public patterns defined in InstanceRole.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file InstanceRole.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -29,7 +27,7 @@ import org.polarsys.capella.viatra.core.data.interaction.surrogate.util.Instance
  * <li>InstanceRole__abstractEnds</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -38,10 +36,10 @@ public final class InstanceRole extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static InstanceRole instance() throws ViatraQueryException {
+  public static InstanceRole instance() {
     if (INSTANCE == null) {
         INSTANCE = new InstanceRole();
     }
@@ -50,15 +48,15 @@ public final class InstanceRole extends BaseGeneratedPatternGroup {
   
   private static InstanceRole INSTANCE;
   
-  private InstanceRole() throws ViatraQueryException {
-    querySpecifications.add(InstanceRole__abstractEndsQuerySpecification.instance());
+  private InstanceRole() {
+    querySpecifications.add(InstanceRole__abstractEnds.instance());
   }
   
-  public InstanceRole__abstractEndsQuerySpecification getInstanceRole__abstractEnds() throws ViatraQueryException {
-    return InstanceRole__abstractEndsQuerySpecification.instance();
+  public InstanceRole__abstractEnds getInstanceRole__abstractEnds() {
+    return InstanceRole__abstractEnds.instance();
   }
   
-  public InstanceRole__abstractEndsMatcher getInstanceRole__abstractEnds(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return InstanceRole__abstractEndsMatcher.on(engine);
+  public InstanceRole__abstractEnds.Matcher getInstanceRole__abstractEnds(final ViatraQueryEngine engine) {
+    return InstanceRole__abstractEnds.Matcher.on(engine);
   }
 }

@@ -14,16 +14,13 @@ package org.polarsys.capella.viatra.core.data.fa.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.ComponentExchangeFunctionalExchangeAllocation__allocatedFunctionalExchangeMatcher;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.ComponentExchangeFunctionalExchangeAllocation__allocatingComponentExchangeMatcher;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.util.ComponentExchangeFunctionalExchangeAllocation__allocatedFunctionalExchangeQuerySpecification;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.util.ComponentExchangeFunctionalExchangeAllocation__allocatingComponentExchangeQuerySpecification;
+import org.polarsys.capella.viatra.core.data.fa.surrogate.ComponentExchangeFunctionalExchangeAllocation__allocatedFunctionalExchange;
+import org.polarsys.capella.viatra.core.data.fa.surrogate.ComponentExchangeFunctionalExchangeAllocation__allocatingComponentExchange;
 
 /**
  * A pattern group formed of all public patterns defined in ComponentExchangeFunctionalExchangeAllocation.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file ComponentExchangeFunctionalExchangeAllocation.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -32,7 +29,7 @@ import org.polarsys.capella.viatra.core.data.fa.surrogate.util.ComponentExchange
  * <li>ComponentExchangeFunctionalExchangeAllocation__allocatingComponentExchange</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -41,10 +38,10 @@ public final class ComponentExchangeFunctionalExchangeAllocation extends BaseGen
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static ComponentExchangeFunctionalExchangeAllocation instance() throws ViatraQueryException {
+  public static ComponentExchangeFunctionalExchangeAllocation instance() {
     if (INSTANCE == null) {
         INSTANCE = new ComponentExchangeFunctionalExchangeAllocation();
     }
@@ -53,24 +50,24 @@ public final class ComponentExchangeFunctionalExchangeAllocation extends BaseGen
   
   private static ComponentExchangeFunctionalExchangeAllocation INSTANCE;
   
-  private ComponentExchangeFunctionalExchangeAllocation() throws ViatraQueryException {
-    querySpecifications.add(ComponentExchangeFunctionalExchangeAllocation__allocatedFunctionalExchangeQuerySpecification.instance());
-    querySpecifications.add(ComponentExchangeFunctionalExchangeAllocation__allocatingComponentExchangeQuerySpecification.instance());
+  private ComponentExchangeFunctionalExchangeAllocation() {
+    querySpecifications.add(ComponentExchangeFunctionalExchangeAllocation__allocatedFunctionalExchange.instance());
+    querySpecifications.add(ComponentExchangeFunctionalExchangeAllocation__allocatingComponentExchange.instance());
   }
   
-  public ComponentExchangeFunctionalExchangeAllocation__allocatedFunctionalExchangeQuerySpecification getComponentExchangeFunctionalExchangeAllocation__allocatedFunctionalExchange() throws ViatraQueryException {
-    return ComponentExchangeFunctionalExchangeAllocation__allocatedFunctionalExchangeQuerySpecification.instance();
+  public ComponentExchangeFunctionalExchangeAllocation__allocatedFunctionalExchange getComponentExchangeFunctionalExchangeAllocation__allocatedFunctionalExchange() {
+    return ComponentExchangeFunctionalExchangeAllocation__allocatedFunctionalExchange.instance();
   }
   
-  public ComponentExchangeFunctionalExchangeAllocation__allocatedFunctionalExchangeMatcher getComponentExchangeFunctionalExchangeAllocation__allocatedFunctionalExchange(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return ComponentExchangeFunctionalExchangeAllocation__allocatedFunctionalExchangeMatcher.on(engine);
+  public ComponentExchangeFunctionalExchangeAllocation__allocatedFunctionalExchange.Matcher getComponentExchangeFunctionalExchangeAllocation__allocatedFunctionalExchange(final ViatraQueryEngine engine) {
+    return ComponentExchangeFunctionalExchangeAllocation__allocatedFunctionalExchange.Matcher.on(engine);
   }
   
-  public ComponentExchangeFunctionalExchangeAllocation__allocatingComponentExchangeQuerySpecification getComponentExchangeFunctionalExchangeAllocation__allocatingComponentExchange() throws ViatraQueryException {
-    return ComponentExchangeFunctionalExchangeAllocation__allocatingComponentExchangeQuerySpecification.instance();
+  public ComponentExchangeFunctionalExchangeAllocation__allocatingComponentExchange getComponentExchangeFunctionalExchangeAllocation__allocatingComponentExchange() {
+    return ComponentExchangeFunctionalExchangeAllocation__allocatingComponentExchange.instance();
   }
   
-  public ComponentExchangeFunctionalExchangeAllocation__allocatingComponentExchangeMatcher getComponentExchangeFunctionalExchangeAllocation__allocatingComponentExchange(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return ComponentExchangeFunctionalExchangeAllocation__allocatingComponentExchangeMatcher.on(engine);
+  public ComponentExchangeFunctionalExchangeAllocation__allocatingComponentExchange.Matcher getComponentExchangeFunctionalExchangeAllocation__allocatingComponentExchange(final ViatraQueryEngine engine) {
+    return ComponentExchangeFunctionalExchangeAllocation__allocatingComponentExchange.Matcher.on(engine);
   }
 }

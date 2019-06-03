@@ -14,14 +14,12 @@ package org.polarsys.capella.viatra.common.data.core.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.common.data.core.surrogate.AbstractType__abstractTypedElementsMatcher;
-import org.polarsys.capella.viatra.common.data.core.surrogate.util.AbstractType__abstractTypedElementsQuerySpecification;
+import org.polarsys.capella.viatra.common.data.core.surrogate.AbstractType__abstractTypedElements;
 
 /**
  * A pattern group formed of all public patterns defined in AbstractType.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file AbstractType.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -29,7 +27,7 @@ import org.polarsys.capella.viatra.common.data.core.surrogate.util.AbstractType_
  * <li>AbstractType__abstractTypedElements</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -38,10 +36,10 @@ public final class AbstractType extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static AbstractType instance() throws ViatraQueryException {
+  public static AbstractType instance() {
     if (INSTANCE == null) {
         INSTANCE = new AbstractType();
     }
@@ -50,15 +48,15 @@ public final class AbstractType extends BaseGeneratedPatternGroup {
   
   private static AbstractType INSTANCE;
   
-  private AbstractType() throws ViatraQueryException {
-    querySpecifications.add(AbstractType__abstractTypedElementsQuerySpecification.instance());
+  private AbstractType() {
+    querySpecifications.add(AbstractType__abstractTypedElements.instance());
   }
   
-  public AbstractType__abstractTypedElementsQuerySpecification getAbstractType__abstractTypedElements() throws ViatraQueryException {
-    return AbstractType__abstractTypedElementsQuerySpecification.instance();
+  public AbstractType__abstractTypedElements getAbstractType__abstractTypedElements() {
+    return AbstractType__abstractTypedElements.instance();
   }
   
-  public AbstractType__abstractTypedElementsMatcher getAbstractType__abstractTypedElements(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return AbstractType__abstractTypedElementsMatcher.on(engine);
+  public AbstractType__abstractTypedElements.Matcher getAbstractType__abstractTypedElements(final ViatraQueryEngine engine) {
+    return AbstractType__abstractTypedElements.Matcher.on(engine);
   }
 }

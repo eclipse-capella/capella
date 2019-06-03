@@ -14,20 +14,15 @@ package org.polarsys.capella.viatra.core.data.pa.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.core.data.pa.surrogate.PhysicalActor__allocatedPhysicalFunctionsMatcher;
-import org.polarsys.capella.viatra.core.data.pa.surrogate.PhysicalActor__deployedPhysicalComponentsMatcher;
-import org.polarsys.capella.viatra.core.data.pa.surrogate.PhysicalActor__logicalActorRealizationsMatcher;
-import org.polarsys.capella.viatra.core.data.pa.surrogate.PhysicalActor__realizedLogicalActorsMatcher;
-import org.polarsys.capella.viatra.core.data.pa.surrogate.util.PhysicalActor__allocatedPhysicalFunctionsQuerySpecification;
-import org.polarsys.capella.viatra.core.data.pa.surrogate.util.PhysicalActor__deployedPhysicalComponentsQuerySpecification;
-import org.polarsys.capella.viatra.core.data.pa.surrogate.util.PhysicalActor__logicalActorRealizationsQuerySpecification;
-import org.polarsys.capella.viatra.core.data.pa.surrogate.util.PhysicalActor__realizedLogicalActorsQuerySpecification;
+import org.polarsys.capella.viatra.core.data.pa.surrogate.PhysicalActor__allocatedPhysicalFunctions;
+import org.polarsys.capella.viatra.core.data.pa.surrogate.PhysicalActor__deployedPhysicalComponents;
+import org.polarsys.capella.viatra.core.data.pa.surrogate.PhysicalActor__logicalActorRealizations;
+import org.polarsys.capella.viatra.core.data.pa.surrogate.PhysicalActor__realizedLogicalActors;
 
 /**
  * A pattern group formed of all public patterns defined in PhysicalActor.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file PhysicalActor.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -38,7 +33,7 @@ import org.polarsys.capella.viatra.core.data.pa.surrogate.util.PhysicalActor__re
  * <li>PhysicalActor__deployedPhysicalComponents</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -47,10 +42,10 @@ public final class PhysicalActor extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static PhysicalActor instance() throws ViatraQueryException {
+  public static PhysicalActor instance() {
     if (INSTANCE == null) {
         INSTANCE = new PhysicalActor();
     }
@@ -59,42 +54,42 @@ public final class PhysicalActor extends BaseGeneratedPatternGroup {
   
   private static PhysicalActor INSTANCE;
   
-  private PhysicalActor() throws ViatraQueryException {
-    querySpecifications.add(PhysicalActor__logicalActorRealizationsQuerySpecification.instance());
-    querySpecifications.add(PhysicalActor__allocatedPhysicalFunctionsQuerySpecification.instance());
-    querySpecifications.add(PhysicalActor__realizedLogicalActorsQuerySpecification.instance());
-    querySpecifications.add(PhysicalActor__deployedPhysicalComponentsQuerySpecification.instance());
+  private PhysicalActor() {
+    querySpecifications.add(PhysicalActor__logicalActorRealizations.instance());
+    querySpecifications.add(PhysicalActor__allocatedPhysicalFunctions.instance());
+    querySpecifications.add(PhysicalActor__realizedLogicalActors.instance());
+    querySpecifications.add(PhysicalActor__deployedPhysicalComponents.instance());
   }
   
-  public PhysicalActor__logicalActorRealizationsQuerySpecification getPhysicalActor__logicalActorRealizations() throws ViatraQueryException {
-    return PhysicalActor__logicalActorRealizationsQuerySpecification.instance();
+  public PhysicalActor__logicalActorRealizations getPhysicalActor__logicalActorRealizations() {
+    return PhysicalActor__logicalActorRealizations.instance();
   }
   
-  public PhysicalActor__logicalActorRealizationsMatcher getPhysicalActor__logicalActorRealizations(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return PhysicalActor__logicalActorRealizationsMatcher.on(engine);
+  public PhysicalActor__logicalActorRealizations.Matcher getPhysicalActor__logicalActorRealizations(final ViatraQueryEngine engine) {
+    return PhysicalActor__logicalActorRealizations.Matcher.on(engine);
   }
   
-  public PhysicalActor__allocatedPhysicalFunctionsQuerySpecification getPhysicalActor__allocatedPhysicalFunctions() throws ViatraQueryException {
-    return PhysicalActor__allocatedPhysicalFunctionsQuerySpecification.instance();
+  public PhysicalActor__allocatedPhysicalFunctions getPhysicalActor__allocatedPhysicalFunctions() {
+    return PhysicalActor__allocatedPhysicalFunctions.instance();
   }
   
-  public PhysicalActor__allocatedPhysicalFunctionsMatcher getPhysicalActor__allocatedPhysicalFunctions(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return PhysicalActor__allocatedPhysicalFunctionsMatcher.on(engine);
+  public PhysicalActor__allocatedPhysicalFunctions.Matcher getPhysicalActor__allocatedPhysicalFunctions(final ViatraQueryEngine engine) {
+    return PhysicalActor__allocatedPhysicalFunctions.Matcher.on(engine);
   }
   
-  public PhysicalActor__realizedLogicalActorsQuerySpecification getPhysicalActor__realizedLogicalActors() throws ViatraQueryException {
-    return PhysicalActor__realizedLogicalActorsQuerySpecification.instance();
+  public PhysicalActor__realizedLogicalActors getPhysicalActor__realizedLogicalActors() {
+    return PhysicalActor__realizedLogicalActors.instance();
   }
   
-  public PhysicalActor__realizedLogicalActorsMatcher getPhysicalActor__realizedLogicalActors(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return PhysicalActor__realizedLogicalActorsMatcher.on(engine);
+  public PhysicalActor__realizedLogicalActors.Matcher getPhysicalActor__realizedLogicalActors(final ViatraQueryEngine engine) {
+    return PhysicalActor__realizedLogicalActors.Matcher.on(engine);
   }
   
-  public PhysicalActor__deployedPhysicalComponentsQuerySpecification getPhysicalActor__deployedPhysicalComponents() throws ViatraQueryException {
-    return PhysicalActor__deployedPhysicalComponentsQuerySpecification.instance();
+  public PhysicalActor__deployedPhysicalComponents getPhysicalActor__deployedPhysicalComponents() {
+    return PhysicalActor__deployedPhysicalComponents.instance();
   }
   
-  public PhysicalActor__deployedPhysicalComponentsMatcher getPhysicalActor__deployedPhysicalComponents(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return PhysicalActor__deployedPhysicalComponentsMatcher.on(engine);
+  public PhysicalActor__deployedPhysicalComponents.Matcher getPhysicalActor__deployedPhysicalComponents(final ViatraQueryEngine engine) {
+    return PhysicalActor__deployedPhysicalComponents.Matcher.on(engine);
   }
 }

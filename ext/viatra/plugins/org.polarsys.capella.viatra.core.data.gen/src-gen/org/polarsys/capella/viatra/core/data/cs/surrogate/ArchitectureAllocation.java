@@ -14,16 +14,13 @@ package org.polarsys.capella.viatra.core.data.cs.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.ArchitectureAllocation__allocatedArchitectureMatcher;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.ArchitectureAllocation__allocatingArchitectureMatcher;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.util.ArchitectureAllocation__allocatedArchitectureQuerySpecification;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.util.ArchitectureAllocation__allocatingArchitectureQuerySpecification;
+import org.polarsys.capella.viatra.core.data.cs.surrogate.ArchitectureAllocation__allocatedArchitecture;
+import org.polarsys.capella.viatra.core.data.cs.surrogate.ArchitectureAllocation__allocatingArchitecture;
 
 /**
  * A pattern group formed of all public patterns defined in ArchitectureAllocation.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file ArchitectureAllocation.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -32,7 +29,7 @@ import org.polarsys.capella.viatra.core.data.cs.surrogate.util.ArchitectureAlloc
  * <li>ArchitectureAllocation__allocatingArchitecture</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -41,10 +38,10 @@ public final class ArchitectureAllocation extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static ArchitectureAllocation instance() throws ViatraQueryException {
+  public static ArchitectureAllocation instance() {
     if (INSTANCE == null) {
         INSTANCE = new ArchitectureAllocation();
     }
@@ -53,24 +50,24 @@ public final class ArchitectureAllocation extends BaseGeneratedPatternGroup {
   
   private static ArchitectureAllocation INSTANCE;
   
-  private ArchitectureAllocation() throws ViatraQueryException {
-    querySpecifications.add(ArchitectureAllocation__allocatedArchitectureQuerySpecification.instance());
-    querySpecifications.add(ArchitectureAllocation__allocatingArchitectureQuerySpecification.instance());
+  private ArchitectureAllocation() {
+    querySpecifications.add(ArchitectureAllocation__allocatedArchitecture.instance());
+    querySpecifications.add(ArchitectureAllocation__allocatingArchitecture.instance());
   }
   
-  public ArchitectureAllocation__allocatedArchitectureQuerySpecification getArchitectureAllocation__allocatedArchitecture() throws ViatraQueryException {
-    return ArchitectureAllocation__allocatedArchitectureQuerySpecification.instance();
+  public ArchitectureAllocation__allocatedArchitecture getArchitectureAllocation__allocatedArchitecture() {
+    return ArchitectureAllocation__allocatedArchitecture.instance();
   }
   
-  public ArchitectureAllocation__allocatedArchitectureMatcher getArchitectureAllocation__allocatedArchitecture(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return ArchitectureAllocation__allocatedArchitectureMatcher.on(engine);
+  public ArchitectureAllocation__allocatedArchitecture.Matcher getArchitectureAllocation__allocatedArchitecture(final ViatraQueryEngine engine) {
+    return ArchitectureAllocation__allocatedArchitecture.Matcher.on(engine);
   }
   
-  public ArchitectureAllocation__allocatingArchitectureQuerySpecification getArchitectureAllocation__allocatingArchitecture() throws ViatraQueryException {
-    return ArchitectureAllocation__allocatingArchitectureQuerySpecification.instance();
+  public ArchitectureAllocation__allocatingArchitecture getArchitectureAllocation__allocatingArchitecture() {
+    return ArchitectureAllocation__allocatingArchitecture.instance();
   }
   
-  public ArchitectureAllocation__allocatingArchitectureMatcher getArchitectureAllocation__allocatingArchitecture(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return ArchitectureAllocation__allocatingArchitectureMatcher.on(engine);
+  public ArchitectureAllocation__allocatingArchitecture.Matcher getArchitectureAllocation__allocatingArchitecture(final ViatraQueryEngine engine) {
+    return ArchitectureAllocation__allocatingArchitecture.Matcher.on(engine);
   }
 }

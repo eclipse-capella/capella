@@ -14,16 +14,13 @@ package org.polarsys.capella.viatra.core.data.oa.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.core.data.oa.surrogate.OperationalCapability__involvedEntitiesMatcher;
-import org.polarsys.capella.viatra.core.data.oa.surrogate.OperationalCapability__realizingCapabilitiesMatcher;
-import org.polarsys.capella.viatra.core.data.oa.surrogate.util.OperationalCapability__involvedEntitiesQuerySpecification;
-import org.polarsys.capella.viatra.core.data.oa.surrogate.util.OperationalCapability__realizingCapabilitiesQuerySpecification;
+import org.polarsys.capella.viatra.core.data.oa.surrogate.OperationalCapability__involvedEntities;
+import org.polarsys.capella.viatra.core.data.oa.surrogate.OperationalCapability__realizingCapabilities;
 
 /**
  * A pattern group formed of all public patterns defined in OperationalCapability.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file OperationalCapability.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -32,7 +29,7 @@ import org.polarsys.capella.viatra.core.data.oa.surrogate.util.OperationalCapabi
  * <li>OperationalCapability__involvedEntities</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -41,10 +38,10 @@ public final class OperationalCapability extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static OperationalCapability instance() throws ViatraQueryException {
+  public static OperationalCapability instance() {
     if (INSTANCE == null) {
         INSTANCE = new OperationalCapability();
     }
@@ -53,24 +50,24 @@ public final class OperationalCapability extends BaseGeneratedPatternGroup {
   
   private static OperationalCapability INSTANCE;
   
-  private OperationalCapability() throws ViatraQueryException {
-    querySpecifications.add(OperationalCapability__realizingCapabilitiesQuerySpecification.instance());
-    querySpecifications.add(OperationalCapability__involvedEntitiesQuerySpecification.instance());
+  private OperationalCapability() {
+    querySpecifications.add(OperationalCapability__realizingCapabilities.instance());
+    querySpecifications.add(OperationalCapability__involvedEntities.instance());
   }
   
-  public OperationalCapability__realizingCapabilitiesQuerySpecification getOperationalCapability__realizingCapabilities() throws ViatraQueryException {
-    return OperationalCapability__realizingCapabilitiesQuerySpecification.instance();
+  public OperationalCapability__realizingCapabilities getOperationalCapability__realizingCapabilities() {
+    return OperationalCapability__realizingCapabilities.instance();
   }
   
-  public OperationalCapability__realizingCapabilitiesMatcher getOperationalCapability__realizingCapabilities(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return OperationalCapability__realizingCapabilitiesMatcher.on(engine);
+  public OperationalCapability__realizingCapabilities.Matcher getOperationalCapability__realizingCapabilities(final ViatraQueryEngine engine) {
+    return OperationalCapability__realizingCapabilities.Matcher.on(engine);
   }
   
-  public OperationalCapability__involvedEntitiesQuerySpecification getOperationalCapability__involvedEntities() throws ViatraQueryException {
-    return OperationalCapability__involvedEntitiesQuerySpecification.instance();
+  public OperationalCapability__involvedEntities getOperationalCapability__involvedEntities() {
+    return OperationalCapability__involvedEntities.instance();
   }
   
-  public OperationalCapability__involvedEntitiesMatcher getOperationalCapability__involvedEntities(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return OperationalCapability__involvedEntitiesMatcher.on(engine);
+  public OperationalCapability__involvedEntities.Matcher getOperationalCapability__involvedEntities(final ViatraQueryEngine engine) {
+    return OperationalCapability__involvedEntities.Matcher.on(engine);
   }
 }

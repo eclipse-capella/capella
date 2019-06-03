@@ -14,16 +14,13 @@ package org.polarsys.capella.viatra.core.data.information.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.core.data.information.surrogate.OperationAllocation__allocatedOperationMatcher;
-import org.polarsys.capella.viatra.core.data.information.surrogate.OperationAllocation__allocatingOperationMatcher;
-import org.polarsys.capella.viatra.core.data.information.surrogate.util.OperationAllocation__allocatedOperationQuerySpecification;
-import org.polarsys.capella.viatra.core.data.information.surrogate.util.OperationAllocation__allocatingOperationQuerySpecification;
+import org.polarsys.capella.viatra.core.data.information.surrogate.OperationAllocation__allocatedOperation;
+import org.polarsys.capella.viatra.core.data.information.surrogate.OperationAllocation__allocatingOperation;
 
 /**
  * A pattern group formed of all public patterns defined in OperationAllocation.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file OperationAllocation.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -32,7 +29,7 @@ import org.polarsys.capella.viatra.core.data.information.surrogate.util.Operatio
  * <li>OperationAllocation__allocatingOperation</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -41,10 +38,10 @@ public final class OperationAllocation extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static OperationAllocation instance() throws ViatraQueryException {
+  public static OperationAllocation instance() {
     if (INSTANCE == null) {
         INSTANCE = new OperationAllocation();
     }
@@ -53,24 +50,24 @@ public final class OperationAllocation extends BaseGeneratedPatternGroup {
   
   private static OperationAllocation INSTANCE;
   
-  private OperationAllocation() throws ViatraQueryException {
-    querySpecifications.add(OperationAllocation__allocatedOperationQuerySpecification.instance());
-    querySpecifications.add(OperationAllocation__allocatingOperationQuerySpecification.instance());
+  private OperationAllocation() {
+    querySpecifications.add(OperationAllocation__allocatedOperation.instance());
+    querySpecifications.add(OperationAllocation__allocatingOperation.instance());
   }
   
-  public OperationAllocation__allocatedOperationQuerySpecification getOperationAllocation__allocatedOperation() throws ViatraQueryException {
-    return OperationAllocation__allocatedOperationQuerySpecification.instance();
+  public OperationAllocation__allocatedOperation getOperationAllocation__allocatedOperation() {
+    return OperationAllocation__allocatedOperation.instance();
   }
   
-  public OperationAllocation__allocatedOperationMatcher getOperationAllocation__allocatedOperation(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return OperationAllocation__allocatedOperationMatcher.on(engine);
+  public OperationAllocation__allocatedOperation.Matcher getOperationAllocation__allocatedOperation(final ViatraQueryEngine engine) {
+    return OperationAllocation__allocatedOperation.Matcher.on(engine);
   }
   
-  public OperationAllocation__allocatingOperationQuerySpecification getOperationAllocation__allocatingOperation() throws ViatraQueryException {
-    return OperationAllocation__allocatingOperationQuerySpecification.instance();
+  public OperationAllocation__allocatingOperation getOperationAllocation__allocatingOperation() {
+    return OperationAllocation__allocatingOperation.instance();
   }
   
-  public OperationAllocation__allocatingOperationMatcher getOperationAllocation__allocatingOperation(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return OperationAllocation__allocatingOperationMatcher.on(engine);
+  public OperationAllocation__allocatingOperation.Matcher getOperationAllocation__allocatingOperation(final ViatraQueryEngine engine) {
+    return OperationAllocation__allocatingOperation.Matcher.on(engine);
   }
 }

@@ -14,22 +14,16 @@ package org.polarsys.capella.viatra.core.data.pa.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.core.data.pa.surrogate.PhysicalArchitecture__allocatedLogicalArchitectureRealizationsMatcher;
-import org.polarsys.capella.viatra.core.data.pa.surrogate.PhysicalArchitecture__allocatedLogicalArchitecturesMatcher;
-import org.polarsys.capella.viatra.core.data.pa.surrogate.PhysicalArchitecture__allocatingEpbsArchitecturesMatcher;
-import org.polarsys.capella.viatra.core.data.pa.surrogate.PhysicalArchitecture__containedCapabilityRealizationPkgMatcher;
-import org.polarsys.capella.viatra.core.data.pa.surrogate.PhysicalArchitecture__containedPhysicalFunctionPkgMatcher;
-import org.polarsys.capella.viatra.core.data.pa.surrogate.util.PhysicalArchitecture__allocatedLogicalArchitectureRealizationsQuerySpecification;
-import org.polarsys.capella.viatra.core.data.pa.surrogate.util.PhysicalArchitecture__allocatedLogicalArchitecturesQuerySpecification;
-import org.polarsys.capella.viatra.core.data.pa.surrogate.util.PhysicalArchitecture__allocatingEpbsArchitecturesQuerySpecification;
-import org.polarsys.capella.viatra.core.data.pa.surrogate.util.PhysicalArchitecture__containedCapabilityRealizationPkgQuerySpecification;
-import org.polarsys.capella.viatra.core.data.pa.surrogate.util.PhysicalArchitecture__containedPhysicalFunctionPkgQuerySpecification;
+import org.polarsys.capella.viatra.core.data.pa.surrogate.PhysicalArchitecture__allocatedLogicalArchitectureRealizations;
+import org.polarsys.capella.viatra.core.data.pa.surrogate.PhysicalArchitecture__allocatedLogicalArchitectures;
+import org.polarsys.capella.viatra.core.data.pa.surrogate.PhysicalArchitecture__allocatingEpbsArchitectures;
+import org.polarsys.capella.viatra.core.data.pa.surrogate.PhysicalArchitecture__containedCapabilityRealizationPkg;
+import org.polarsys.capella.viatra.core.data.pa.surrogate.PhysicalArchitecture__containedPhysicalFunctionPkg;
 
 /**
  * A pattern group formed of all public patterns defined in PhysicalArchitecture.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file PhysicalArchitecture.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -41,7 +35,7 @@ import org.polarsys.capella.viatra.core.data.pa.surrogate.util.PhysicalArchitect
  * <li>PhysicalArchitecture__allocatingEpbsArchitectures</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -50,10 +44,10 @@ public final class PhysicalArchitecture extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static PhysicalArchitecture instance() throws ViatraQueryException {
+  public static PhysicalArchitecture instance() {
     if (INSTANCE == null) {
         INSTANCE = new PhysicalArchitecture();
     }
@@ -62,51 +56,51 @@ public final class PhysicalArchitecture extends BaseGeneratedPatternGroup {
   
   private static PhysicalArchitecture INSTANCE;
   
-  private PhysicalArchitecture() throws ViatraQueryException {
-    querySpecifications.add(PhysicalArchitecture__containedCapabilityRealizationPkgQuerySpecification.instance());
-    querySpecifications.add(PhysicalArchitecture__containedPhysicalFunctionPkgQuerySpecification.instance());
-    querySpecifications.add(PhysicalArchitecture__allocatedLogicalArchitectureRealizationsQuerySpecification.instance());
-    querySpecifications.add(PhysicalArchitecture__allocatedLogicalArchitecturesQuerySpecification.instance());
-    querySpecifications.add(PhysicalArchitecture__allocatingEpbsArchitecturesQuerySpecification.instance());
+  private PhysicalArchitecture() {
+    querySpecifications.add(PhysicalArchitecture__containedCapabilityRealizationPkg.instance());
+    querySpecifications.add(PhysicalArchitecture__containedPhysicalFunctionPkg.instance());
+    querySpecifications.add(PhysicalArchitecture__allocatedLogicalArchitectureRealizations.instance());
+    querySpecifications.add(PhysicalArchitecture__allocatedLogicalArchitectures.instance());
+    querySpecifications.add(PhysicalArchitecture__allocatingEpbsArchitectures.instance());
   }
   
-  public PhysicalArchitecture__containedCapabilityRealizationPkgQuerySpecification getPhysicalArchitecture__containedCapabilityRealizationPkg() throws ViatraQueryException {
-    return PhysicalArchitecture__containedCapabilityRealizationPkgQuerySpecification.instance();
+  public PhysicalArchitecture__containedCapabilityRealizationPkg getPhysicalArchitecture__containedCapabilityRealizationPkg() {
+    return PhysicalArchitecture__containedCapabilityRealizationPkg.instance();
   }
   
-  public PhysicalArchitecture__containedCapabilityRealizationPkgMatcher getPhysicalArchitecture__containedCapabilityRealizationPkg(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return PhysicalArchitecture__containedCapabilityRealizationPkgMatcher.on(engine);
+  public PhysicalArchitecture__containedCapabilityRealizationPkg.Matcher getPhysicalArchitecture__containedCapabilityRealizationPkg(final ViatraQueryEngine engine) {
+    return PhysicalArchitecture__containedCapabilityRealizationPkg.Matcher.on(engine);
   }
   
-  public PhysicalArchitecture__containedPhysicalFunctionPkgQuerySpecification getPhysicalArchitecture__containedPhysicalFunctionPkg() throws ViatraQueryException {
-    return PhysicalArchitecture__containedPhysicalFunctionPkgQuerySpecification.instance();
+  public PhysicalArchitecture__containedPhysicalFunctionPkg getPhysicalArchitecture__containedPhysicalFunctionPkg() {
+    return PhysicalArchitecture__containedPhysicalFunctionPkg.instance();
   }
   
-  public PhysicalArchitecture__containedPhysicalFunctionPkgMatcher getPhysicalArchitecture__containedPhysicalFunctionPkg(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return PhysicalArchitecture__containedPhysicalFunctionPkgMatcher.on(engine);
+  public PhysicalArchitecture__containedPhysicalFunctionPkg.Matcher getPhysicalArchitecture__containedPhysicalFunctionPkg(final ViatraQueryEngine engine) {
+    return PhysicalArchitecture__containedPhysicalFunctionPkg.Matcher.on(engine);
   }
   
-  public PhysicalArchitecture__allocatedLogicalArchitectureRealizationsQuerySpecification getPhysicalArchitecture__allocatedLogicalArchitectureRealizations() throws ViatraQueryException {
-    return PhysicalArchitecture__allocatedLogicalArchitectureRealizationsQuerySpecification.instance();
+  public PhysicalArchitecture__allocatedLogicalArchitectureRealizations getPhysicalArchitecture__allocatedLogicalArchitectureRealizations() {
+    return PhysicalArchitecture__allocatedLogicalArchitectureRealizations.instance();
   }
   
-  public PhysicalArchitecture__allocatedLogicalArchitectureRealizationsMatcher getPhysicalArchitecture__allocatedLogicalArchitectureRealizations(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return PhysicalArchitecture__allocatedLogicalArchitectureRealizationsMatcher.on(engine);
+  public PhysicalArchitecture__allocatedLogicalArchitectureRealizations.Matcher getPhysicalArchitecture__allocatedLogicalArchitectureRealizations(final ViatraQueryEngine engine) {
+    return PhysicalArchitecture__allocatedLogicalArchitectureRealizations.Matcher.on(engine);
   }
   
-  public PhysicalArchitecture__allocatedLogicalArchitecturesQuerySpecification getPhysicalArchitecture__allocatedLogicalArchitectures() throws ViatraQueryException {
-    return PhysicalArchitecture__allocatedLogicalArchitecturesQuerySpecification.instance();
+  public PhysicalArchitecture__allocatedLogicalArchitectures getPhysicalArchitecture__allocatedLogicalArchitectures() {
+    return PhysicalArchitecture__allocatedLogicalArchitectures.instance();
   }
   
-  public PhysicalArchitecture__allocatedLogicalArchitecturesMatcher getPhysicalArchitecture__allocatedLogicalArchitectures(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return PhysicalArchitecture__allocatedLogicalArchitecturesMatcher.on(engine);
+  public PhysicalArchitecture__allocatedLogicalArchitectures.Matcher getPhysicalArchitecture__allocatedLogicalArchitectures(final ViatraQueryEngine engine) {
+    return PhysicalArchitecture__allocatedLogicalArchitectures.Matcher.on(engine);
   }
   
-  public PhysicalArchitecture__allocatingEpbsArchitecturesQuerySpecification getPhysicalArchitecture__allocatingEpbsArchitectures() throws ViatraQueryException {
-    return PhysicalArchitecture__allocatingEpbsArchitecturesQuerySpecification.instance();
+  public PhysicalArchitecture__allocatingEpbsArchitectures getPhysicalArchitecture__allocatingEpbsArchitectures() {
+    return PhysicalArchitecture__allocatingEpbsArchitectures.instance();
   }
   
-  public PhysicalArchitecture__allocatingEpbsArchitecturesMatcher getPhysicalArchitecture__allocatingEpbsArchitectures(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return PhysicalArchitecture__allocatingEpbsArchitecturesMatcher.on(engine);
+  public PhysicalArchitecture__allocatingEpbsArchitectures.Matcher getPhysicalArchitecture__allocatingEpbsArchitectures(final ViatraQueryEngine engine) {
+    return PhysicalArchitecture__allocatingEpbsArchitectures.Matcher.on(engine);
   }
 }

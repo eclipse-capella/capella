@@ -24,6 +24,7 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.business.api.helper.display.DisplayService;
 import org.eclipse.sirius.diagram.business.api.helper.display.DisplayServiceManager;
+import org.eclipse.sirius.diagram.business.api.helper.filter.FilterService;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.filter.CompositeFilterDescription;
@@ -46,10 +47,12 @@ public class FilterOnDiagramHelper {
 
   /**
    * Check if the elements are correctly showed (visible in diagram)
+   * 
    * @param diagram
    * @param compositeFilterDescription
    */
-  public static void checkShowElementsInDiagram(DDiagram diagram, CompositeFilterDescription compositeFilterDescription) {
+  public static void checkShowElementsInDiagram(DDiagram diagram,
+      CompositeFilterDescription compositeFilterDescription) {
     Map<DiagramElementMapping, String> mappings = getMappingsFromCompositeFilter(compositeFilterDescription);
     EList<DDiagramElement> diagramElements = diagram.getDiagramElements();
     DisplayService displayService = DisplayServiceManager.INSTANCE.getDisplayService();
@@ -62,8 +65,8 @@ public class FilterOnDiagramHelper {
           // specific test for UnCollapseFilter
           checkUnCollapseFilter(compositeFilterDescription, dDiagramElement);
         } else {
-          Assert.assertTrue(MessageFormat.format(Messages.elementShouldBeVisible, dDiagramElement.getName(), compositeFilterDescription.getName()),
-              visible);
+          Assert.assertTrue(MessageFormat.format(Messages.elementShouldBeVisible, dDiagramElement.getName(),
+              compositeFilterDescription.getName()), visible);
         }
       }
     }
@@ -71,11 +74,13 @@ public class FilterOnDiagramHelper {
 
   /**
    * Get CollapseFilter from a list of compositeFilterDescription and check if the dDiagramElement is visible
+   * 
    * @param compositeFilterDescription
    * @param dDiagramElement
    * @return
    */
-  private static boolean checkUnCollapseFilter(CompositeFilterDescription compositeFilterDescription, DDiagramElement dDiagramElement) {
+  private static boolean checkUnCollapseFilter(CompositeFilterDescription compositeFilterDescription,
+      DDiagramElement dDiagramElement) {
     EList<Filter> filters = compositeFilterDescription.getFilters();
     boolean found = false;
 
@@ -84,8 +89,9 @@ public class FilterOnDiagramHelper {
       if (filter.getFilterKind().equals(FilterKind.COLLAPSE_LITERAL)) {
         found = true;
         // FIXME: specific check for collapse filter
-        boolean visible = filter.isVisible(dDiagramElement);
-        Assert.assertTrue(MessageFormat.format(Messages.elementNotCollapsedPropertly, dDiagramElement.getName()), visible);
+        boolean visible = FilterService.isVisible(filter, dDiagramElement);
+        Assert.assertTrue(MessageFormat.format(Messages.elementNotCollapsedPropertly, dDiagramElement.getName()),
+            visible);
       }
     }
     return found;
@@ -120,6 +126,7 @@ public class FilterOnDiagramHelper {
 
   /**
    * Get filter with specified name in specified diagram.
+   * 
    * @param diagram
    * @param filterName
    * @return
@@ -135,13 +142,15 @@ public class FilterOnDiagramHelper {
     }
     return null;
   }
-  
+
   /**
    * Check if the elements are correctly filtered (not visible in diagram)
+   * 
    * @param diagram
    * @param compositeFilterDescription
    */
-  public static void checkFilteredElementsInDiagram(DDiagram diagram, CompositeFilterDescription compositeFilterDescription) {
+  public static void checkFilteredElementsInDiagram(DDiagram diagram,
+      CompositeFilterDescription compositeFilterDescription) {
     Map<DiagramElementMapping, String> mappings = getMappingsFromCompositeFilter(compositeFilterDescription);
     EList<DDiagramElement> diagramElements = diagram.getDiagramElements();
     DisplayService displayService = DisplayServiceManager.INSTANCE.getDisplayService();
@@ -156,10 +165,12 @@ public class FilterOnDiagramHelper {
 
         if (isValidExpressiontoEvaluate(expression)) {
           // an element mapping match the list of mapping filtered and an additional condition via an expression
-          handleCheckWithSemanticConditionOnDDiagramElement(diagram, compositeFilterDescription, displayService, expression, dDiagramElement);
+          handleCheckWithSemanticConditionOnDDiagramElement(diagram, compositeFilterDescription, displayService,
+              expression, dDiagramElement);
         } else {
           // no expression found, handle without additional condition
-          handleCheckWithoutSemanticConditionExpression(diagram, compositeFilterDescription, displayService, dDiagramElement);
+          handleCheckWithoutSemanticConditionExpression(diagram, compositeFilterDescription, displayService,
+              dDiagramElement);
         }
       }
     }
@@ -169,7 +180,8 @@ public class FilterOnDiagramHelper {
    * @param compositeFilterDescription
    * @return the map of DiagramElementMapping and an semantic condition expression attached if it exists
    */
-  private static Map<DiagramElementMapping, String> getMappingsFromCompositeFilter(CompositeFilterDescription compositeFilterDescription) {
+  private static Map<DiagramElementMapping, String> getMappingsFromCompositeFilter(
+      CompositeFilterDescription compositeFilterDescription) {
     EList<Filter> filters = compositeFilterDescription.getFilters();
     Map<DiagramElementMapping, String> mappings = new HashMap<DiagramElementMapping, String>();
     for (Filter filter : filters) {
@@ -178,7 +190,8 @@ public class FilterOnDiagramHelper {
         mappings.put(aMapping, mp.getSemanticConditionExpression());
       }
     }
-    Assert.assertFalse(MessageFormat.format(Messages.mappingEmpty, compositeFilterDescription.getName()), mappings.isEmpty());
+    Assert.assertFalse(MessageFormat.format(Messages.mappingEmpty, compositeFilterDescription.getName()),
+        mappings.isEmpty());
     return mappings;
   }
 
@@ -189,15 +202,17 @@ public class FilterOnDiagramHelper {
    * @param expression
    * @param dDiagramElement
    */
-  private static void handleCheckWithSemanticConditionOnDDiagramElement(DDiagram diagram, CompositeFilterDescription compositeFilterDescription,
-      DisplayService displayService, String expression, DDiagramElement dDiagramElement) {
+  private static void handleCheckWithSemanticConditionOnDDiagramElement(DDiagram diagram,
+      CompositeFilterDescription compositeFilterDescription, DisplayService displayService, String expression,
+      DDiagramElement dDiagramElement) {
     InterpreterRegistry interpreterRegistry = SiriusPlugin.getDefault().getInterpreterRegistry();
     IInterpreter acceleoInterpreter = interpreterRegistry.getInterpreter(dDiagramElement.getTarget());
 
     try {
       if (!acceleoInterpreter.evaluateBoolean(dDiagramElement.getTarget(), expression)) {
         // if the precondition is verified, check that the dDiagramElement is not visible
-        additionalCheckOnDDiagramElementWithSemanticCondition(diagram, compositeFilterDescription, displayService, dDiagramElement);
+        additionalCheckOnDDiagramElementWithSemanticCondition(diagram, compositeFilterDescription, displayService,
+            dDiagramElement);
       }
     } catch (EvaluationException exception_p) {
       // Error in the evaluation of expression
@@ -212,8 +227,9 @@ public class FilterOnDiagramHelper {
    * @param displayService
    * @param dDiagramElement
    */
-  private static void additionalCheckOnDDiagramElementWithSemanticCondition(DDiagram diagram, CompositeFilterDescription compositeFilterDescription,
-      DisplayService displayService, DDiagramElement dDiagramElement) {
+  private static void additionalCheckOnDDiagramElementWithSemanticCondition(DDiagram diagram,
+      CompositeFilterDescription compositeFilterDescription, DisplayService displayService,
+      DDiagramElement dDiagramElement) {
     boolean displayed = displayService.isDisplayed(diagram, dDiagramElement);
 
     if (displayed) {
@@ -221,7 +237,8 @@ public class FilterOnDiagramHelper {
       checkCollapseFilter(compositeFilterDescription, dDiagramElement);
     } else {
       // default behavior for displayed
-      Assert.assertFalse(MessageFormat.format(Messages.elementNotHiddenPropertly, dDiagramElement.getName()), displayed);
+      Assert.assertFalse(MessageFormat.format(Messages.elementNotHiddenPropertly, dDiagramElement.getName()),
+          displayed);
     }
   }
 
@@ -231,20 +248,23 @@ public class FilterOnDiagramHelper {
    * @param displayService
    * @param dDiagramElement
    */
-  private static void handleCheckWithoutSemanticConditionExpression(DDiagram diagram, CompositeFilterDescription compositeFilterDescription,
-      DisplayService displayService, DDiagramElement dDiagramElement) {
+  private static void handleCheckWithoutSemanticConditionExpression(DDiagram diagram,
+      CompositeFilterDescription compositeFilterDescription, DisplayService displayService,
+      DDiagramElement dDiagramElement) {
     // FIXME: check if the isDisplayed is not broken
     boolean displayed = displayService.isDisplayed(diagram, dDiagramElement);
     if (displayed) {
       // specific test for collapse filter if isDisplayed is broken
       checkCollapseFilter(compositeFilterDescription, dDiagramElement);
     } else {
-      Assert.assertFalse(MessageFormat.format(Messages.elementNotHiddenPropertly, dDiagramElement.getName()), displayed);
+      Assert.assertFalse(MessageFormat.format(Messages.elementNotHiddenPropertly, dDiagramElement.getName()),
+          displayed);
     }
   }
 
   /**
    * Checks if the expression is a valid to be evaluate
+   * 
    * @param expression
    * @return true if the expression is not null and not empty
    */
@@ -254,10 +274,12 @@ public class FilterOnDiagramHelper {
 
   /**
    * Specific test for Collapse filter due to display.isDisplayed method not working for collapse filter
+   * 
    * @param compositeFilterDescription
    * @param dDiagramElement
    */
-  private static void checkCollapseFilter(CompositeFilterDescription compositeFilterDescription, DDiagramElement dDiagramElement) {
+  private static void checkCollapseFilter(CompositeFilterDescription compositeFilterDescription,
+      DDiagramElement dDiagramElement) {
     EList<Filter> filters = compositeFilterDescription.getFilters();
     boolean found = false;
 
@@ -266,8 +288,9 @@ public class FilterOnDiagramHelper {
       if (filter.getFilterKind().equals(FilterKind.COLLAPSE_LITERAL)) {
         found = true;
         // FIXME: Specific check for collapse filter
-        boolean visible = filter.isVisible(dDiagramElement);
-        Assert.assertFalse(MessageFormat.format(Messages.elementNotCollapsedPropertly, dDiagramElement.getName()), visible);
+        boolean visible = FilterService.isVisible(filter, dDiagramElement);
+        Assert.assertFalse(MessageFormat.format(Messages.elementNotCollapsedPropertly, dDiagramElement.getName()),
+            visible);
       }
     }
   }

@@ -14,24 +14,17 @@ package org.polarsys.capella.viatra.core.data.la.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.core.data.la.surrogate.LogicalFunction__allocatorLogicalActorsMatcher;
-import org.polarsys.capella.viatra.core.data.la.surrogate.LogicalFunction__allocatorLogicalComponentsMatcher;
-import org.polarsys.capella.viatra.core.data.la.surrogate.LogicalFunction__childrenLogicalFunctionsMatcher;
-import org.polarsys.capella.viatra.core.data.la.surrogate.LogicalFunction__containedLogicalFunctionsMatcher;
-import org.polarsys.capella.viatra.core.data.la.surrogate.LogicalFunction__realizedSystemFunctionsMatcher;
-import org.polarsys.capella.viatra.core.data.la.surrogate.LogicalFunction__realizingPhysicalFunctionsMatcher;
-import org.polarsys.capella.viatra.core.data.la.surrogate.util.LogicalFunction__allocatorLogicalActorsQuerySpecification;
-import org.polarsys.capella.viatra.core.data.la.surrogate.util.LogicalFunction__allocatorLogicalComponentsQuerySpecification;
-import org.polarsys.capella.viatra.core.data.la.surrogate.util.LogicalFunction__childrenLogicalFunctionsQuerySpecification;
-import org.polarsys.capella.viatra.core.data.la.surrogate.util.LogicalFunction__containedLogicalFunctionsQuerySpecification;
-import org.polarsys.capella.viatra.core.data.la.surrogate.util.LogicalFunction__realizedSystemFunctionsQuerySpecification;
-import org.polarsys.capella.viatra.core.data.la.surrogate.util.LogicalFunction__realizingPhysicalFunctionsQuerySpecification;
+import org.polarsys.capella.viatra.core.data.la.surrogate.LogicalFunction__allocatorLogicalActors;
+import org.polarsys.capella.viatra.core.data.la.surrogate.LogicalFunction__allocatorLogicalComponents;
+import org.polarsys.capella.viatra.core.data.la.surrogate.LogicalFunction__childrenLogicalFunctions;
+import org.polarsys.capella.viatra.core.data.la.surrogate.LogicalFunction__containedLogicalFunctions;
+import org.polarsys.capella.viatra.core.data.la.surrogate.LogicalFunction__realizedSystemFunctions;
+import org.polarsys.capella.viatra.core.data.la.surrogate.LogicalFunction__realizingPhysicalFunctions;
 
 /**
  * A pattern group formed of all public patterns defined in LogicalFunction.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file LogicalFunction.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -44,7 +37,7 @@ import org.polarsys.capella.viatra.core.data.la.surrogate.util.LogicalFunction__
  * <li>LogicalFunction__childrenLogicalFunctions</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -53,10 +46,10 @@ public final class LogicalFunction extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static LogicalFunction instance() throws ViatraQueryException {
+  public static LogicalFunction instance() {
     if (INSTANCE == null) {
         INSTANCE = new LogicalFunction();
     }
@@ -65,60 +58,60 @@ public final class LogicalFunction extends BaseGeneratedPatternGroup {
   
   private static LogicalFunction INSTANCE;
   
-  private LogicalFunction() throws ViatraQueryException {
-    querySpecifications.add(LogicalFunction__allocatorLogicalActorsQuerySpecification.instance());
-    querySpecifications.add(LogicalFunction__allocatorLogicalComponentsQuerySpecification.instance());
-    querySpecifications.add(LogicalFunction__realizedSystemFunctionsQuerySpecification.instance());
-    querySpecifications.add(LogicalFunction__realizingPhysicalFunctionsQuerySpecification.instance());
-    querySpecifications.add(LogicalFunction__containedLogicalFunctionsQuerySpecification.instance());
-    querySpecifications.add(LogicalFunction__childrenLogicalFunctionsQuerySpecification.instance());
+  private LogicalFunction() {
+    querySpecifications.add(LogicalFunction__allocatorLogicalActors.instance());
+    querySpecifications.add(LogicalFunction__allocatorLogicalComponents.instance());
+    querySpecifications.add(LogicalFunction__realizedSystemFunctions.instance());
+    querySpecifications.add(LogicalFunction__realizingPhysicalFunctions.instance());
+    querySpecifications.add(LogicalFunction__containedLogicalFunctions.instance());
+    querySpecifications.add(LogicalFunction__childrenLogicalFunctions.instance());
   }
   
-  public LogicalFunction__allocatorLogicalActorsQuerySpecification getLogicalFunction__allocatorLogicalActors() throws ViatraQueryException {
-    return LogicalFunction__allocatorLogicalActorsQuerySpecification.instance();
+  public LogicalFunction__allocatorLogicalActors getLogicalFunction__allocatorLogicalActors() {
+    return LogicalFunction__allocatorLogicalActors.instance();
   }
   
-  public LogicalFunction__allocatorLogicalActorsMatcher getLogicalFunction__allocatorLogicalActors(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return LogicalFunction__allocatorLogicalActorsMatcher.on(engine);
+  public LogicalFunction__allocatorLogicalActors.Matcher getLogicalFunction__allocatorLogicalActors(final ViatraQueryEngine engine) {
+    return LogicalFunction__allocatorLogicalActors.Matcher.on(engine);
   }
   
-  public LogicalFunction__allocatorLogicalComponentsQuerySpecification getLogicalFunction__allocatorLogicalComponents() throws ViatraQueryException {
-    return LogicalFunction__allocatorLogicalComponentsQuerySpecification.instance();
+  public LogicalFunction__allocatorLogicalComponents getLogicalFunction__allocatorLogicalComponents() {
+    return LogicalFunction__allocatorLogicalComponents.instance();
   }
   
-  public LogicalFunction__allocatorLogicalComponentsMatcher getLogicalFunction__allocatorLogicalComponents(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return LogicalFunction__allocatorLogicalComponentsMatcher.on(engine);
+  public LogicalFunction__allocatorLogicalComponents.Matcher getLogicalFunction__allocatorLogicalComponents(final ViatraQueryEngine engine) {
+    return LogicalFunction__allocatorLogicalComponents.Matcher.on(engine);
   }
   
-  public LogicalFunction__realizedSystemFunctionsQuerySpecification getLogicalFunction__realizedSystemFunctions() throws ViatraQueryException {
-    return LogicalFunction__realizedSystemFunctionsQuerySpecification.instance();
+  public LogicalFunction__realizedSystemFunctions getLogicalFunction__realizedSystemFunctions() {
+    return LogicalFunction__realizedSystemFunctions.instance();
   }
   
-  public LogicalFunction__realizedSystemFunctionsMatcher getLogicalFunction__realizedSystemFunctions(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return LogicalFunction__realizedSystemFunctionsMatcher.on(engine);
+  public LogicalFunction__realizedSystemFunctions.Matcher getLogicalFunction__realizedSystemFunctions(final ViatraQueryEngine engine) {
+    return LogicalFunction__realizedSystemFunctions.Matcher.on(engine);
   }
   
-  public LogicalFunction__realizingPhysicalFunctionsQuerySpecification getLogicalFunction__realizingPhysicalFunctions() throws ViatraQueryException {
-    return LogicalFunction__realizingPhysicalFunctionsQuerySpecification.instance();
+  public LogicalFunction__realizingPhysicalFunctions getLogicalFunction__realizingPhysicalFunctions() {
+    return LogicalFunction__realizingPhysicalFunctions.instance();
   }
   
-  public LogicalFunction__realizingPhysicalFunctionsMatcher getLogicalFunction__realizingPhysicalFunctions(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return LogicalFunction__realizingPhysicalFunctionsMatcher.on(engine);
+  public LogicalFunction__realizingPhysicalFunctions.Matcher getLogicalFunction__realizingPhysicalFunctions(final ViatraQueryEngine engine) {
+    return LogicalFunction__realizingPhysicalFunctions.Matcher.on(engine);
   }
   
-  public LogicalFunction__containedLogicalFunctionsQuerySpecification getLogicalFunction__containedLogicalFunctions() throws ViatraQueryException {
-    return LogicalFunction__containedLogicalFunctionsQuerySpecification.instance();
+  public LogicalFunction__containedLogicalFunctions getLogicalFunction__containedLogicalFunctions() {
+    return LogicalFunction__containedLogicalFunctions.instance();
   }
   
-  public LogicalFunction__containedLogicalFunctionsMatcher getLogicalFunction__containedLogicalFunctions(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return LogicalFunction__containedLogicalFunctionsMatcher.on(engine);
+  public LogicalFunction__containedLogicalFunctions.Matcher getLogicalFunction__containedLogicalFunctions(final ViatraQueryEngine engine) {
+    return LogicalFunction__containedLogicalFunctions.Matcher.on(engine);
   }
   
-  public LogicalFunction__childrenLogicalFunctionsQuerySpecification getLogicalFunction__childrenLogicalFunctions() throws ViatraQueryException {
-    return LogicalFunction__childrenLogicalFunctionsQuerySpecification.instance();
+  public LogicalFunction__childrenLogicalFunctions getLogicalFunction__childrenLogicalFunctions() {
+    return LogicalFunction__childrenLogicalFunctions.instance();
   }
   
-  public LogicalFunction__childrenLogicalFunctionsMatcher getLogicalFunction__childrenLogicalFunctions(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return LogicalFunction__childrenLogicalFunctionsMatcher.on(engine);
+  public LogicalFunction__childrenLogicalFunctions.Matcher getLogicalFunction__childrenLogicalFunctions(final ViatraQueryEngine engine) {
+    return LogicalFunction__childrenLogicalFunctions.Matcher.on(engine);
   }
 }

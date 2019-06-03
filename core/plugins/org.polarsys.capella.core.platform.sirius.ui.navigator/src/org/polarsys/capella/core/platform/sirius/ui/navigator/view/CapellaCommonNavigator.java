@@ -53,8 +53,7 @@ import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
-import org.eclipse.swt.layout.GridData;
-import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.ui.IActionBars;
@@ -330,22 +329,8 @@ public class CapellaCommonNavigator extends CommonNavigator implements IEditingD
      * {@inheritDoc}
      */
     @Override
-    protected Composite createFilterControls(Composite parent) {
-      // Change the layout of the parent to host 3 widgets.
-      GridLayout layout = (GridLayout) parent.getLayout();
-      layout.numColumns = 3;
-      Composite filterControls = super.createFilterControls(parent);
-      return filterControls;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
     protected Label createMessageArea(Composite parent) {
       Label messageArea = super.createMessageArea(parent);
-      GridData layoutData = (GridData) messageArea.getLayoutData();
-      layoutData.horizontalSpan = 3;
       return messageArea;
     }
 
@@ -665,13 +650,9 @@ public class CapellaCommonNavigator extends CommonNavigator implements IEditingD
 
     // Create a composite that hosts the view content.
     Composite composite = new Composite(parent, SWT.NONE);
-    GridLayout layout = new GridLayout();
+    FillLayout layout = new FillLayout(SWT.VERTICAL);
     composite.setLayout(layout);
-    composite.setLayoutData(new GridData(GridData.FILL_BOTH));
     super.createPartControl(composite);
-    // Set a layout data for the common tree viewer.
-    CommonViewer commonViewer = getCommonViewer();
-    commonViewer.getControl().setLayoutData(new GridData(GridData.FILL_BOTH));
 
     // Install a session manager listener.
     if (null == _sessionManagerListener) {

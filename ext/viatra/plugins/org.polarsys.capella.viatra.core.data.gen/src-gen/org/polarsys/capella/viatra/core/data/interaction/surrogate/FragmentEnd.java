@@ -14,14 +14,12 @@ package org.polarsys.capella.viatra.core.data.interaction.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.core.data.interaction.surrogate.FragmentEnd__abstractFragmentMatcher;
-import org.polarsys.capella.viatra.core.data.interaction.surrogate.util.FragmentEnd__abstractFragmentQuerySpecification;
+import org.polarsys.capella.viatra.core.data.interaction.surrogate.FragmentEnd__abstractFragment;
 
 /**
  * A pattern group formed of all public patterns defined in FragmentEnd.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file FragmentEnd.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -29,7 +27,7 @@ import org.polarsys.capella.viatra.core.data.interaction.surrogate.util.Fragment
  * <li>FragmentEnd__abstractFragment</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -38,10 +36,10 @@ public final class FragmentEnd extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static FragmentEnd instance() throws ViatraQueryException {
+  public static FragmentEnd instance() {
     if (INSTANCE == null) {
         INSTANCE = new FragmentEnd();
     }
@@ -50,15 +48,15 @@ public final class FragmentEnd extends BaseGeneratedPatternGroup {
   
   private static FragmentEnd INSTANCE;
   
-  private FragmentEnd() throws ViatraQueryException {
-    querySpecifications.add(FragmentEnd__abstractFragmentQuerySpecification.instance());
+  private FragmentEnd() {
+    querySpecifications.add(FragmentEnd__abstractFragment.instance());
   }
   
-  public FragmentEnd__abstractFragmentQuerySpecification getFragmentEnd__abstractFragment() throws ViatraQueryException {
-    return FragmentEnd__abstractFragmentQuerySpecification.instance();
+  public FragmentEnd__abstractFragment getFragmentEnd__abstractFragment() {
+    return FragmentEnd__abstractFragment.instance();
   }
   
-  public FragmentEnd__abstractFragmentMatcher getFragmentEnd__abstractFragment(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return FragmentEnd__abstractFragmentMatcher.on(engine);
+  public FragmentEnd__abstractFragment.Matcher getFragmentEnd__abstractFragment(final ViatraQueryEngine engine) {
+    return FragmentEnd__abstractFragment.Matcher.on(engine);
   }
 }

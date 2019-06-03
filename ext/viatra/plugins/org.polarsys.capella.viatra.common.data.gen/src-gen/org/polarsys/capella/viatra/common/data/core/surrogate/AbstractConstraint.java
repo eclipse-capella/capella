@@ -14,14 +14,12 @@ package org.polarsys.capella.viatra.common.data.core.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.common.data.core.surrogate.AbstractConstraint__contextMatcher;
-import org.polarsys.capella.viatra.common.data.core.surrogate.util.AbstractConstraint__contextQuerySpecification;
+import org.polarsys.capella.viatra.common.data.core.surrogate.AbstractConstraint__context;
 
 /**
  * A pattern group formed of all public patterns defined in AbstractConstraint.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file AbstractConstraint.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -29,7 +27,7 @@ import org.polarsys.capella.viatra.common.data.core.surrogate.util.AbstractConst
  * <li>AbstractConstraint__context</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -38,10 +36,10 @@ public final class AbstractConstraint extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static AbstractConstraint instance() throws ViatraQueryException {
+  public static AbstractConstraint instance() {
     if (INSTANCE == null) {
         INSTANCE = new AbstractConstraint();
     }
@@ -50,15 +48,15 @@ public final class AbstractConstraint extends BaseGeneratedPatternGroup {
   
   private static AbstractConstraint INSTANCE;
   
-  private AbstractConstraint() throws ViatraQueryException {
-    querySpecifications.add(AbstractConstraint__contextQuerySpecification.instance());
+  private AbstractConstraint() {
+    querySpecifications.add(AbstractConstraint__context.instance());
   }
   
-  public AbstractConstraint__contextQuerySpecification getAbstractConstraint__context() throws ViatraQueryException {
-    return AbstractConstraint__contextQuerySpecification.instance();
+  public AbstractConstraint__context getAbstractConstraint__context() {
+    return AbstractConstraint__context.instance();
   }
   
-  public AbstractConstraint__contextMatcher getAbstractConstraint__context(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return AbstractConstraint__contextMatcher.on(engine);
+  public AbstractConstraint__context.Matcher getAbstractConstraint__context(final ViatraQueryEngine engine) {
+    return AbstractConstraint__context.Matcher.on(engine);
   }
 }

@@ -14,16 +14,13 @@ package org.polarsys.capella.viatra.core.data.interaction.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.core.data.interaction.surrogate.AbstractFunctionAbstractCapabilityInvolvement__capabilityMatcher;
-import org.polarsys.capella.viatra.core.data.interaction.surrogate.AbstractFunctionAbstractCapabilityInvolvement__functionMatcher;
-import org.polarsys.capella.viatra.core.data.interaction.surrogate.util.AbstractFunctionAbstractCapabilityInvolvement__capabilityQuerySpecification;
-import org.polarsys.capella.viatra.core.data.interaction.surrogate.util.AbstractFunctionAbstractCapabilityInvolvement__functionQuerySpecification;
+import org.polarsys.capella.viatra.core.data.interaction.surrogate.AbstractFunctionAbstractCapabilityInvolvement__capability;
+import org.polarsys.capella.viatra.core.data.interaction.surrogate.AbstractFunctionAbstractCapabilityInvolvement__function;
 
 /**
  * A pattern group formed of all public patterns defined in AbstractFunctionAbstractCapabilityInvolvement.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file AbstractFunctionAbstractCapabilityInvolvement.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -32,7 +29,7 @@ import org.polarsys.capella.viatra.core.data.interaction.surrogate.util.Abstract
  * <li>AbstractFunctionAbstractCapabilityInvolvement__function</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -41,10 +38,10 @@ public final class AbstractFunctionAbstractCapabilityInvolvement extends BaseGen
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static AbstractFunctionAbstractCapabilityInvolvement instance() throws ViatraQueryException {
+  public static AbstractFunctionAbstractCapabilityInvolvement instance() {
     if (INSTANCE == null) {
         INSTANCE = new AbstractFunctionAbstractCapabilityInvolvement();
     }
@@ -53,24 +50,24 @@ public final class AbstractFunctionAbstractCapabilityInvolvement extends BaseGen
   
   private static AbstractFunctionAbstractCapabilityInvolvement INSTANCE;
   
-  private AbstractFunctionAbstractCapabilityInvolvement() throws ViatraQueryException {
-    querySpecifications.add(AbstractFunctionAbstractCapabilityInvolvement__capabilityQuerySpecification.instance());
-    querySpecifications.add(AbstractFunctionAbstractCapabilityInvolvement__functionQuerySpecification.instance());
+  private AbstractFunctionAbstractCapabilityInvolvement() {
+    querySpecifications.add(AbstractFunctionAbstractCapabilityInvolvement__capability.instance());
+    querySpecifications.add(AbstractFunctionAbstractCapabilityInvolvement__function.instance());
   }
   
-  public AbstractFunctionAbstractCapabilityInvolvement__capabilityQuerySpecification getAbstractFunctionAbstractCapabilityInvolvement__capability() throws ViatraQueryException {
-    return AbstractFunctionAbstractCapabilityInvolvement__capabilityQuerySpecification.instance();
+  public AbstractFunctionAbstractCapabilityInvolvement__capability getAbstractFunctionAbstractCapabilityInvolvement__capability() {
+    return AbstractFunctionAbstractCapabilityInvolvement__capability.instance();
   }
   
-  public AbstractFunctionAbstractCapabilityInvolvement__capabilityMatcher getAbstractFunctionAbstractCapabilityInvolvement__capability(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return AbstractFunctionAbstractCapabilityInvolvement__capabilityMatcher.on(engine);
+  public AbstractFunctionAbstractCapabilityInvolvement__capability.Matcher getAbstractFunctionAbstractCapabilityInvolvement__capability(final ViatraQueryEngine engine) {
+    return AbstractFunctionAbstractCapabilityInvolvement__capability.Matcher.on(engine);
   }
   
-  public AbstractFunctionAbstractCapabilityInvolvement__functionQuerySpecification getAbstractFunctionAbstractCapabilityInvolvement__function() throws ViatraQueryException {
-    return AbstractFunctionAbstractCapabilityInvolvement__functionQuerySpecification.instance();
+  public AbstractFunctionAbstractCapabilityInvolvement__function getAbstractFunctionAbstractCapabilityInvolvement__function() {
+    return AbstractFunctionAbstractCapabilityInvolvement__function.instance();
   }
   
-  public AbstractFunctionAbstractCapabilityInvolvement__functionMatcher getAbstractFunctionAbstractCapabilityInvolvement__function(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return AbstractFunctionAbstractCapabilityInvolvement__functionMatcher.on(engine);
+  public AbstractFunctionAbstractCapabilityInvolvement__function.Matcher getAbstractFunctionAbstractCapabilityInvolvement__function(final ViatraQueryEngine engine) {
+    return AbstractFunctionAbstractCapabilityInvolvement__function.Matcher.on(engine);
   }
 }

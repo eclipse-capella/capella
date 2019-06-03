@@ -14,22 +14,16 @@ package org.polarsys.capella.viatra.core.data.ctx.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.core.data.ctx.surrogate.Mission__exploitedCapabilitiesMatcher;
-import org.polarsys.capella.viatra.core.data.ctx.surrogate.Mission__involvedActorsMatcher;
-import org.polarsys.capella.viatra.core.data.ctx.surrogate.Mission__involvedSystemMatcher;
-import org.polarsys.capella.viatra.core.data.ctx.surrogate.Mission__participatingActorsMatcher;
-import org.polarsys.capella.viatra.core.data.ctx.surrogate.Mission__participatingSystemMatcher;
-import org.polarsys.capella.viatra.core.data.ctx.surrogate.util.Mission__exploitedCapabilitiesQuerySpecification;
-import org.polarsys.capella.viatra.core.data.ctx.surrogate.util.Mission__involvedActorsQuerySpecification;
-import org.polarsys.capella.viatra.core.data.ctx.surrogate.util.Mission__involvedSystemQuerySpecification;
-import org.polarsys.capella.viatra.core.data.ctx.surrogate.util.Mission__participatingActorsQuerySpecification;
-import org.polarsys.capella.viatra.core.data.ctx.surrogate.util.Mission__participatingSystemQuerySpecification;
+import org.polarsys.capella.viatra.core.data.ctx.surrogate.Mission__exploitedCapabilities;
+import org.polarsys.capella.viatra.core.data.ctx.surrogate.Mission__involvedActors;
+import org.polarsys.capella.viatra.core.data.ctx.surrogate.Mission__involvedSystem;
+import org.polarsys.capella.viatra.core.data.ctx.surrogate.Mission__participatingActors;
+import org.polarsys.capella.viatra.core.data.ctx.surrogate.Mission__participatingSystem;
 
 /**
  * A pattern group formed of all public patterns defined in Mission.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file Mission.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -41,7 +35,7 @@ import org.polarsys.capella.viatra.core.data.ctx.surrogate.util.Mission__partici
  * <li>Mission__exploitedCapabilities</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -50,10 +44,10 @@ public final class Mission extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static Mission instance() throws ViatraQueryException {
+  public static Mission instance() {
     if (INSTANCE == null) {
         INSTANCE = new Mission();
     }
@@ -62,51 +56,51 @@ public final class Mission extends BaseGeneratedPatternGroup {
   
   private static Mission INSTANCE;
   
-  private Mission() throws ViatraQueryException {
-    querySpecifications.add(Mission__participatingActorsQuerySpecification.instance());
-    querySpecifications.add(Mission__participatingSystemQuerySpecification.instance());
-    querySpecifications.add(Mission__involvedActorsQuerySpecification.instance());
-    querySpecifications.add(Mission__involvedSystemQuerySpecification.instance());
-    querySpecifications.add(Mission__exploitedCapabilitiesQuerySpecification.instance());
+  private Mission() {
+    querySpecifications.add(Mission__participatingActors.instance());
+    querySpecifications.add(Mission__participatingSystem.instance());
+    querySpecifications.add(Mission__involvedActors.instance());
+    querySpecifications.add(Mission__involvedSystem.instance());
+    querySpecifications.add(Mission__exploitedCapabilities.instance());
   }
   
-  public Mission__participatingActorsQuerySpecification getMission__participatingActors() throws ViatraQueryException {
-    return Mission__participatingActorsQuerySpecification.instance();
+  public Mission__participatingActors getMission__participatingActors() {
+    return Mission__participatingActors.instance();
   }
   
-  public Mission__participatingActorsMatcher getMission__participatingActors(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return Mission__participatingActorsMatcher.on(engine);
+  public Mission__participatingActors.Matcher getMission__participatingActors(final ViatraQueryEngine engine) {
+    return Mission__participatingActors.Matcher.on(engine);
   }
   
-  public Mission__participatingSystemQuerySpecification getMission__participatingSystem() throws ViatraQueryException {
-    return Mission__participatingSystemQuerySpecification.instance();
+  public Mission__participatingSystem getMission__participatingSystem() {
+    return Mission__participatingSystem.instance();
   }
   
-  public Mission__participatingSystemMatcher getMission__participatingSystem(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return Mission__participatingSystemMatcher.on(engine);
+  public Mission__participatingSystem.Matcher getMission__participatingSystem(final ViatraQueryEngine engine) {
+    return Mission__participatingSystem.Matcher.on(engine);
   }
   
-  public Mission__involvedActorsQuerySpecification getMission__involvedActors() throws ViatraQueryException {
-    return Mission__involvedActorsQuerySpecification.instance();
+  public Mission__involvedActors getMission__involvedActors() {
+    return Mission__involvedActors.instance();
   }
   
-  public Mission__involvedActorsMatcher getMission__involvedActors(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return Mission__involvedActorsMatcher.on(engine);
+  public Mission__involvedActors.Matcher getMission__involvedActors(final ViatraQueryEngine engine) {
+    return Mission__involvedActors.Matcher.on(engine);
   }
   
-  public Mission__involvedSystemQuerySpecification getMission__involvedSystem() throws ViatraQueryException {
-    return Mission__involvedSystemQuerySpecification.instance();
+  public Mission__involvedSystem getMission__involvedSystem() {
+    return Mission__involvedSystem.instance();
   }
   
-  public Mission__involvedSystemMatcher getMission__involvedSystem(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return Mission__involvedSystemMatcher.on(engine);
+  public Mission__involvedSystem.Matcher getMission__involvedSystem(final ViatraQueryEngine engine) {
+    return Mission__involvedSystem.Matcher.on(engine);
   }
   
-  public Mission__exploitedCapabilitiesQuerySpecification getMission__exploitedCapabilities() throws ViatraQueryException {
-    return Mission__exploitedCapabilitiesQuerySpecification.instance();
+  public Mission__exploitedCapabilities getMission__exploitedCapabilities() {
+    return Mission__exploitedCapabilities.instance();
   }
   
-  public Mission__exploitedCapabilitiesMatcher getMission__exploitedCapabilities(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return Mission__exploitedCapabilitiesMatcher.on(engine);
+  public Mission__exploitedCapabilities.Matcher getMission__exploitedCapabilities(final ViatraQueryEngine engine) {
+    return Mission__exploitedCapabilities.Matcher.on(engine);
   }
 }

@@ -14,20 +14,15 @@ package org.polarsys.capella.viatra.core.data.capellacore.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.core.data.capellacore.surrogate.GeneralizableElement__subGeneralizationsMatcher;
-import org.polarsys.capella.viatra.core.data.capellacore.surrogate.GeneralizableElement__subMatcher;
-import org.polarsys.capella.viatra.core.data.capellacore.surrogate.GeneralizableElement__superGeneralizationsMatcher;
-import org.polarsys.capella.viatra.core.data.capellacore.surrogate.GeneralizableElement__superMatcher;
-import org.polarsys.capella.viatra.core.data.capellacore.surrogate.util.GeneralizableElement__subGeneralizationsQuerySpecification;
-import org.polarsys.capella.viatra.core.data.capellacore.surrogate.util.GeneralizableElement__subQuerySpecification;
-import org.polarsys.capella.viatra.core.data.capellacore.surrogate.util.GeneralizableElement__superGeneralizationsQuerySpecification;
-import org.polarsys.capella.viatra.core.data.capellacore.surrogate.util.GeneralizableElement__superQuerySpecification;
+import org.polarsys.capella.viatra.core.data.capellacore.surrogate.GeneralizableElement__sub;
+import org.polarsys.capella.viatra.core.data.capellacore.surrogate.GeneralizableElement__subGeneralizations;
+import org.polarsys.capella.viatra.core.data.capellacore.surrogate.GeneralizableElement__super;
+import org.polarsys.capella.viatra.core.data.capellacore.surrogate.GeneralizableElement__superGeneralizations;
 
 /**
  * A pattern group formed of all public patterns defined in GeneralizableElement.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file GeneralizableElement.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -38,7 +33,7 @@ import org.polarsys.capella.viatra.core.data.capellacore.surrogate.util.Generali
  * <li>GeneralizableElement__sub</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -47,10 +42,10 @@ public final class GeneralizableElement extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static GeneralizableElement instance() throws ViatraQueryException {
+  public static GeneralizableElement instance() {
     if (INSTANCE == null) {
         INSTANCE = new GeneralizableElement();
     }
@@ -59,42 +54,42 @@ public final class GeneralizableElement extends BaseGeneratedPatternGroup {
   
   private static GeneralizableElement INSTANCE;
   
-  private GeneralizableElement() throws ViatraQueryException {
-    querySpecifications.add(GeneralizableElement__superGeneralizationsQuerySpecification.instance());
-    querySpecifications.add(GeneralizableElement__subGeneralizationsQuerySpecification.instance());
-    querySpecifications.add(GeneralizableElement__superQuerySpecification.instance());
-    querySpecifications.add(GeneralizableElement__subQuerySpecification.instance());
+  private GeneralizableElement() {
+    querySpecifications.add(GeneralizableElement__superGeneralizations.instance());
+    querySpecifications.add(GeneralizableElement__subGeneralizations.instance());
+    querySpecifications.add(GeneralizableElement__super.instance());
+    querySpecifications.add(GeneralizableElement__sub.instance());
   }
   
-  public GeneralizableElement__superGeneralizationsQuerySpecification getGeneralizableElement__superGeneralizations() throws ViatraQueryException {
-    return GeneralizableElement__superGeneralizationsQuerySpecification.instance();
+  public GeneralizableElement__superGeneralizations getGeneralizableElement__superGeneralizations() {
+    return GeneralizableElement__superGeneralizations.instance();
   }
   
-  public GeneralizableElement__superGeneralizationsMatcher getGeneralizableElement__superGeneralizations(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return GeneralizableElement__superGeneralizationsMatcher.on(engine);
+  public GeneralizableElement__superGeneralizations.Matcher getGeneralizableElement__superGeneralizations(final ViatraQueryEngine engine) {
+    return GeneralizableElement__superGeneralizations.Matcher.on(engine);
   }
   
-  public GeneralizableElement__subGeneralizationsQuerySpecification getGeneralizableElement__subGeneralizations() throws ViatraQueryException {
-    return GeneralizableElement__subGeneralizationsQuerySpecification.instance();
+  public GeneralizableElement__subGeneralizations getGeneralizableElement__subGeneralizations() {
+    return GeneralizableElement__subGeneralizations.instance();
   }
   
-  public GeneralizableElement__subGeneralizationsMatcher getGeneralizableElement__subGeneralizations(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return GeneralizableElement__subGeneralizationsMatcher.on(engine);
+  public GeneralizableElement__subGeneralizations.Matcher getGeneralizableElement__subGeneralizations(final ViatraQueryEngine engine) {
+    return GeneralizableElement__subGeneralizations.Matcher.on(engine);
   }
   
-  public GeneralizableElement__superQuerySpecification getGeneralizableElement__super() throws ViatraQueryException {
-    return GeneralizableElement__superQuerySpecification.instance();
+  public GeneralizableElement__super getGeneralizableElement__super() {
+    return GeneralizableElement__super.instance();
   }
   
-  public GeneralizableElement__superMatcher getGeneralizableElement__super(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return GeneralizableElement__superMatcher.on(engine);
+  public GeneralizableElement__super.Matcher getGeneralizableElement__super(final ViatraQueryEngine engine) {
+    return GeneralizableElement__super.Matcher.on(engine);
   }
   
-  public GeneralizableElement__subQuerySpecification getGeneralizableElement__sub() throws ViatraQueryException {
-    return GeneralizableElement__subQuerySpecification.instance();
+  public GeneralizableElement__sub getGeneralizableElement__sub() {
+    return GeneralizableElement__sub.instance();
   }
   
-  public GeneralizableElement__subMatcher getGeneralizableElement__sub(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return GeneralizableElement__subMatcher.on(engine);
+  public GeneralizableElement__sub.Matcher getGeneralizableElement__sub(final ViatraQueryEngine engine) {
+    return GeneralizableElement__sub.Matcher.on(engine);
   }
 }

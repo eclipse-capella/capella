@@ -14,14 +14,12 @@ package org.polarsys.capella.viatra.core.data.interaction.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.core.data.interaction.surrogate.CombinedFragment__expressionGatesMatcher;
-import org.polarsys.capella.viatra.core.data.interaction.surrogate.util.CombinedFragment__expressionGatesQuerySpecification;
+import org.polarsys.capella.viatra.core.data.interaction.surrogate.CombinedFragment__expressionGates;
 
 /**
  * A pattern group formed of all public patterns defined in CombinedFragment.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file CombinedFragment.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -29,7 +27,7 @@ import org.polarsys.capella.viatra.core.data.interaction.surrogate.util.Combined
  * <li>CombinedFragment__expressionGates</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -38,10 +36,10 @@ public final class CombinedFragment extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static CombinedFragment instance() throws ViatraQueryException {
+  public static CombinedFragment instance() {
     if (INSTANCE == null) {
         INSTANCE = new CombinedFragment();
     }
@@ -50,15 +48,15 @@ public final class CombinedFragment extends BaseGeneratedPatternGroup {
   
   private static CombinedFragment INSTANCE;
   
-  private CombinedFragment() throws ViatraQueryException {
-    querySpecifications.add(CombinedFragment__expressionGatesQuerySpecification.instance());
+  private CombinedFragment() {
+    querySpecifications.add(CombinedFragment__expressionGates.instance());
   }
   
-  public CombinedFragment__expressionGatesQuerySpecification getCombinedFragment__expressionGates() throws ViatraQueryException {
-    return CombinedFragment__expressionGatesQuerySpecification.instance();
+  public CombinedFragment__expressionGates getCombinedFragment__expressionGates() {
+    return CombinedFragment__expressionGates.instance();
   }
   
-  public CombinedFragment__expressionGatesMatcher getCombinedFragment__expressionGates(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return CombinedFragment__expressionGatesMatcher.on(engine);
+  public CombinedFragment__expressionGates.Matcher getCombinedFragment__expressionGates(final ViatraQueryEngine engine) {
+    return CombinedFragment__expressionGates.Matcher.on(engine);
   }
 }

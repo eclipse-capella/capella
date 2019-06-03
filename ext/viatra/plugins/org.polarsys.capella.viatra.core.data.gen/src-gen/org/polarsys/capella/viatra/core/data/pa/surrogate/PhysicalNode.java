@@ -14,14 +14,12 @@ package org.polarsys.capella.viatra.core.data.pa.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.core.data.pa.surrogate.PhysicalNode__subPhysicalNodesMatcher;
-import org.polarsys.capella.viatra.core.data.pa.surrogate.util.PhysicalNode__subPhysicalNodesQuerySpecification;
+import org.polarsys.capella.viatra.core.data.pa.surrogate.PhysicalNode__subPhysicalNodes;
 
 /**
  * A pattern group formed of all public patterns defined in PhysicalNode.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file PhysicalNode.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -29,7 +27,7 @@ import org.polarsys.capella.viatra.core.data.pa.surrogate.util.PhysicalNode__sub
  * <li>PhysicalNode__subPhysicalNodes</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -38,10 +36,10 @@ public final class PhysicalNode extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static PhysicalNode instance() throws ViatraQueryException {
+  public static PhysicalNode instance() {
     if (INSTANCE == null) {
         INSTANCE = new PhysicalNode();
     }
@@ -50,15 +48,15 @@ public final class PhysicalNode extends BaseGeneratedPatternGroup {
   
   private static PhysicalNode INSTANCE;
   
-  private PhysicalNode() throws ViatraQueryException {
-    querySpecifications.add(PhysicalNode__subPhysicalNodesQuerySpecification.instance());
+  private PhysicalNode() {
+    querySpecifications.add(PhysicalNode__subPhysicalNodes.instance());
   }
   
-  public PhysicalNode__subPhysicalNodesQuerySpecification getPhysicalNode__subPhysicalNodes() throws ViatraQueryException {
-    return PhysicalNode__subPhysicalNodesQuerySpecification.instance();
+  public PhysicalNode__subPhysicalNodes getPhysicalNode__subPhysicalNodes() {
+    return PhysicalNode__subPhysicalNodes.instance();
   }
   
-  public PhysicalNode__subPhysicalNodesMatcher getPhysicalNode__subPhysicalNodes(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return PhysicalNode__subPhysicalNodesMatcher.on(engine);
+  public PhysicalNode__subPhysicalNodes.Matcher getPhysicalNode__subPhysicalNodes(final ViatraQueryEngine engine) {
+    return PhysicalNode__subPhysicalNodes.Matcher.on(engine);
   }
 }

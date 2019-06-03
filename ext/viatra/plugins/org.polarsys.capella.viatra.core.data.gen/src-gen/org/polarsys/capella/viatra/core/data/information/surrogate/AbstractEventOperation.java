@@ -14,14 +14,12 @@ package org.polarsys.capella.viatra.core.data.information.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.core.data.information.surrogate.AbstractEventOperation__invokingSequenceMessagesMatcher;
-import org.polarsys.capella.viatra.core.data.information.surrogate.util.AbstractEventOperation__invokingSequenceMessagesQuerySpecification;
+import org.polarsys.capella.viatra.core.data.information.surrogate.AbstractEventOperation__invokingSequenceMessages;
 
 /**
  * A pattern group formed of all public patterns defined in AbstractEventOperation.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file AbstractEventOperation.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -29,7 +27,7 @@ import org.polarsys.capella.viatra.core.data.information.surrogate.util.Abstract
  * <li>AbstractEventOperation__invokingSequenceMessages</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -38,10 +36,10 @@ public final class AbstractEventOperation extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static AbstractEventOperation instance() throws ViatraQueryException {
+  public static AbstractEventOperation instance() {
     if (INSTANCE == null) {
         INSTANCE = new AbstractEventOperation();
     }
@@ -50,15 +48,15 @@ public final class AbstractEventOperation extends BaseGeneratedPatternGroup {
   
   private static AbstractEventOperation INSTANCE;
   
-  private AbstractEventOperation() throws ViatraQueryException {
-    querySpecifications.add(AbstractEventOperation__invokingSequenceMessagesQuerySpecification.instance());
+  private AbstractEventOperation() {
+    querySpecifications.add(AbstractEventOperation__invokingSequenceMessages.instance());
   }
   
-  public AbstractEventOperation__invokingSequenceMessagesQuerySpecification getAbstractEventOperation__invokingSequenceMessages() throws ViatraQueryException {
-    return AbstractEventOperation__invokingSequenceMessagesQuerySpecification.instance();
+  public AbstractEventOperation__invokingSequenceMessages getAbstractEventOperation__invokingSequenceMessages() {
+    return AbstractEventOperation__invokingSequenceMessages.instance();
   }
   
-  public AbstractEventOperation__invokingSequenceMessagesMatcher getAbstractEventOperation__invokingSequenceMessages(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return AbstractEventOperation__invokingSequenceMessagesMatcher.on(engine);
+  public AbstractEventOperation__invokingSequenceMessages.Matcher getAbstractEventOperation__invokingSequenceMessages(final ViatraQueryEngine engine) {
+    return AbstractEventOperation__invokingSequenceMessages.Matcher.on(engine);
   }
 }

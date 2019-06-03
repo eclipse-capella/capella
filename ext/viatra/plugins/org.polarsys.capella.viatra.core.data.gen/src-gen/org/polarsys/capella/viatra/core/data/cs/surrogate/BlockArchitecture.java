@@ -14,20 +14,15 @@ package org.polarsys.capella.viatra.core.data.cs.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.BlockArchitecture__allocatedArchitecturesMatcher;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.BlockArchitecture__allocatingArchitecturesMatcher;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.BlockArchitecture__provisionedArchitectureAllocationsMatcher;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.BlockArchitecture__provisioningArchitectureAllocationsMatcher;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.util.BlockArchitecture__allocatedArchitecturesQuerySpecification;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.util.BlockArchitecture__allocatingArchitecturesQuerySpecification;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.util.BlockArchitecture__provisionedArchitectureAllocationsQuerySpecification;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.util.BlockArchitecture__provisioningArchitectureAllocationsQuerySpecification;
+import org.polarsys.capella.viatra.core.data.cs.surrogate.BlockArchitecture__allocatedArchitectures;
+import org.polarsys.capella.viatra.core.data.cs.surrogate.BlockArchitecture__allocatingArchitectures;
+import org.polarsys.capella.viatra.core.data.cs.surrogate.BlockArchitecture__provisionedArchitectureAllocations;
+import org.polarsys.capella.viatra.core.data.cs.surrogate.BlockArchitecture__provisioningArchitectureAllocations;
 
 /**
  * A pattern group formed of all public patterns defined in BlockArchitecture.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file BlockArchitecture.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -38,7 +33,7 @@ import org.polarsys.capella.viatra.core.data.cs.surrogate.util.BlockArchitecture
  * <li>BlockArchitecture__allocatingArchitectures</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -47,10 +42,10 @@ public final class BlockArchitecture extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static BlockArchitecture instance() throws ViatraQueryException {
+  public static BlockArchitecture instance() {
     if (INSTANCE == null) {
         INSTANCE = new BlockArchitecture();
     }
@@ -59,42 +54,42 @@ public final class BlockArchitecture extends BaseGeneratedPatternGroup {
   
   private static BlockArchitecture INSTANCE;
   
-  private BlockArchitecture() throws ViatraQueryException {
-    querySpecifications.add(BlockArchitecture__provisionedArchitectureAllocationsQuerySpecification.instance());
-    querySpecifications.add(BlockArchitecture__provisioningArchitectureAllocationsQuerySpecification.instance());
-    querySpecifications.add(BlockArchitecture__allocatedArchitecturesQuerySpecification.instance());
-    querySpecifications.add(BlockArchitecture__allocatingArchitecturesQuerySpecification.instance());
+  private BlockArchitecture() {
+    querySpecifications.add(BlockArchitecture__provisionedArchitectureAllocations.instance());
+    querySpecifications.add(BlockArchitecture__provisioningArchitectureAllocations.instance());
+    querySpecifications.add(BlockArchitecture__allocatedArchitectures.instance());
+    querySpecifications.add(BlockArchitecture__allocatingArchitectures.instance());
   }
   
-  public BlockArchitecture__provisionedArchitectureAllocationsQuerySpecification getBlockArchitecture__provisionedArchitectureAllocations() throws ViatraQueryException {
-    return BlockArchitecture__provisionedArchitectureAllocationsQuerySpecification.instance();
+  public BlockArchitecture__provisionedArchitectureAllocations getBlockArchitecture__provisionedArchitectureAllocations() {
+    return BlockArchitecture__provisionedArchitectureAllocations.instance();
   }
   
-  public BlockArchitecture__provisionedArchitectureAllocationsMatcher getBlockArchitecture__provisionedArchitectureAllocations(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return BlockArchitecture__provisionedArchitectureAllocationsMatcher.on(engine);
+  public BlockArchitecture__provisionedArchitectureAllocations.Matcher getBlockArchitecture__provisionedArchitectureAllocations(final ViatraQueryEngine engine) {
+    return BlockArchitecture__provisionedArchitectureAllocations.Matcher.on(engine);
   }
   
-  public BlockArchitecture__provisioningArchitectureAllocationsQuerySpecification getBlockArchitecture__provisioningArchitectureAllocations() throws ViatraQueryException {
-    return BlockArchitecture__provisioningArchitectureAllocationsQuerySpecification.instance();
+  public BlockArchitecture__provisioningArchitectureAllocations getBlockArchitecture__provisioningArchitectureAllocations() {
+    return BlockArchitecture__provisioningArchitectureAllocations.instance();
   }
   
-  public BlockArchitecture__provisioningArchitectureAllocationsMatcher getBlockArchitecture__provisioningArchitectureAllocations(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return BlockArchitecture__provisioningArchitectureAllocationsMatcher.on(engine);
+  public BlockArchitecture__provisioningArchitectureAllocations.Matcher getBlockArchitecture__provisioningArchitectureAllocations(final ViatraQueryEngine engine) {
+    return BlockArchitecture__provisioningArchitectureAllocations.Matcher.on(engine);
   }
   
-  public BlockArchitecture__allocatedArchitecturesQuerySpecification getBlockArchitecture__allocatedArchitectures() throws ViatraQueryException {
-    return BlockArchitecture__allocatedArchitecturesQuerySpecification.instance();
+  public BlockArchitecture__allocatedArchitectures getBlockArchitecture__allocatedArchitectures() {
+    return BlockArchitecture__allocatedArchitectures.instance();
   }
   
-  public BlockArchitecture__allocatedArchitecturesMatcher getBlockArchitecture__allocatedArchitectures(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return BlockArchitecture__allocatedArchitecturesMatcher.on(engine);
+  public BlockArchitecture__allocatedArchitectures.Matcher getBlockArchitecture__allocatedArchitectures(final ViatraQueryEngine engine) {
+    return BlockArchitecture__allocatedArchitectures.Matcher.on(engine);
   }
   
-  public BlockArchitecture__allocatingArchitecturesQuerySpecification getBlockArchitecture__allocatingArchitectures() throws ViatraQueryException {
-    return BlockArchitecture__allocatingArchitecturesQuerySpecification.instance();
+  public BlockArchitecture__allocatingArchitectures getBlockArchitecture__allocatingArchitectures() {
+    return BlockArchitecture__allocatingArchitectures.instance();
   }
   
-  public BlockArchitecture__allocatingArchitecturesMatcher getBlockArchitecture__allocatingArchitectures(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return BlockArchitecture__allocatingArchitecturesMatcher.on(engine);
+  public BlockArchitecture__allocatingArchitectures.Matcher getBlockArchitecture__allocatingArchitectures(final ViatraQueryEngine engine) {
+    return BlockArchitecture__allocatingArchitectures.Matcher.on(engine);
   }
 }

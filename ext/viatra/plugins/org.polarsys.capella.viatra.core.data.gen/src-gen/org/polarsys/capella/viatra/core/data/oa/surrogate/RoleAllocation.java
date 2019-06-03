@@ -14,16 +14,13 @@ package org.polarsys.capella.viatra.core.data.oa.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.core.data.oa.surrogate.RoleAllocation__entityMatcher;
-import org.polarsys.capella.viatra.core.data.oa.surrogate.RoleAllocation__roleMatcher;
-import org.polarsys.capella.viatra.core.data.oa.surrogate.util.RoleAllocation__entityQuerySpecification;
-import org.polarsys.capella.viatra.core.data.oa.surrogate.util.RoleAllocation__roleQuerySpecification;
+import org.polarsys.capella.viatra.core.data.oa.surrogate.RoleAllocation__entity;
+import org.polarsys.capella.viatra.core.data.oa.surrogate.RoleAllocation__role;
 
 /**
  * A pattern group formed of all public patterns defined in RoleAllocation.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file RoleAllocation.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -32,7 +29,7 @@ import org.polarsys.capella.viatra.core.data.oa.surrogate.util.RoleAllocation__r
  * <li>RoleAllocation__entity</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -41,10 +38,10 @@ public final class RoleAllocation extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static RoleAllocation instance() throws ViatraQueryException {
+  public static RoleAllocation instance() {
     if (INSTANCE == null) {
         INSTANCE = new RoleAllocation();
     }
@@ -53,24 +50,24 @@ public final class RoleAllocation extends BaseGeneratedPatternGroup {
   
   private static RoleAllocation INSTANCE;
   
-  private RoleAllocation() throws ViatraQueryException {
-    querySpecifications.add(RoleAllocation__roleQuerySpecification.instance());
-    querySpecifications.add(RoleAllocation__entityQuerySpecification.instance());
+  private RoleAllocation() {
+    querySpecifications.add(RoleAllocation__role.instance());
+    querySpecifications.add(RoleAllocation__entity.instance());
   }
   
-  public RoleAllocation__roleQuerySpecification getRoleAllocation__role() throws ViatraQueryException {
-    return RoleAllocation__roleQuerySpecification.instance();
+  public RoleAllocation__role getRoleAllocation__role() {
+    return RoleAllocation__role.instance();
   }
   
-  public RoleAllocation__roleMatcher getRoleAllocation__role(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return RoleAllocation__roleMatcher.on(engine);
+  public RoleAllocation__role.Matcher getRoleAllocation__role(final ViatraQueryEngine engine) {
+    return RoleAllocation__role.Matcher.on(engine);
   }
   
-  public RoleAllocation__entityQuerySpecification getRoleAllocation__entity() throws ViatraQueryException {
-    return RoleAllocation__entityQuerySpecification.instance();
+  public RoleAllocation__entity getRoleAllocation__entity() {
+    return RoleAllocation__entity.instance();
   }
   
-  public RoleAllocation__entityMatcher getRoleAllocation__entity(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return RoleAllocation__entityMatcher.on(engine);
+  public RoleAllocation__entity.Matcher getRoleAllocation__entity(final ViatraQueryEngine engine) {
+    return RoleAllocation__entity.Matcher.on(engine);
   }
 }

@@ -14,16 +14,13 @@ package org.polarsys.capella.viatra.core.data.ctx.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.core.data.ctx.surrogate.ActorCapabilityInvolvement__actorMatcher;
-import org.polarsys.capella.viatra.core.data.ctx.surrogate.ActorCapabilityInvolvement__capabilityMatcher;
-import org.polarsys.capella.viatra.core.data.ctx.surrogate.util.ActorCapabilityInvolvement__actorQuerySpecification;
-import org.polarsys.capella.viatra.core.data.ctx.surrogate.util.ActorCapabilityInvolvement__capabilityQuerySpecification;
+import org.polarsys.capella.viatra.core.data.ctx.surrogate.ActorCapabilityInvolvement__actor;
+import org.polarsys.capella.viatra.core.data.ctx.surrogate.ActorCapabilityInvolvement__capability;
 
 /**
  * A pattern group formed of all public patterns defined in ActorCapabilityInvolvement.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file ActorCapabilityInvolvement.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -32,7 +29,7 @@ import org.polarsys.capella.viatra.core.data.ctx.surrogate.util.ActorCapabilityI
  * <li>ActorCapabilityInvolvement__capability</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -41,10 +38,10 @@ public final class ActorCapabilityInvolvement extends BaseGeneratedPatternGroup 
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static ActorCapabilityInvolvement instance() throws ViatraQueryException {
+  public static ActorCapabilityInvolvement instance() {
     if (INSTANCE == null) {
         INSTANCE = new ActorCapabilityInvolvement();
     }
@@ -53,24 +50,24 @@ public final class ActorCapabilityInvolvement extends BaseGeneratedPatternGroup 
   
   private static ActorCapabilityInvolvement INSTANCE;
   
-  private ActorCapabilityInvolvement() throws ViatraQueryException {
-    querySpecifications.add(ActorCapabilityInvolvement__actorQuerySpecification.instance());
-    querySpecifications.add(ActorCapabilityInvolvement__capabilityQuerySpecification.instance());
+  private ActorCapabilityInvolvement() {
+    querySpecifications.add(ActorCapabilityInvolvement__actor.instance());
+    querySpecifications.add(ActorCapabilityInvolvement__capability.instance());
   }
   
-  public ActorCapabilityInvolvement__actorQuerySpecification getActorCapabilityInvolvement__actor() throws ViatraQueryException {
-    return ActorCapabilityInvolvement__actorQuerySpecification.instance();
+  public ActorCapabilityInvolvement__actor getActorCapabilityInvolvement__actor() {
+    return ActorCapabilityInvolvement__actor.instance();
   }
   
-  public ActorCapabilityInvolvement__actorMatcher getActorCapabilityInvolvement__actor(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return ActorCapabilityInvolvement__actorMatcher.on(engine);
+  public ActorCapabilityInvolvement__actor.Matcher getActorCapabilityInvolvement__actor(final ViatraQueryEngine engine) {
+    return ActorCapabilityInvolvement__actor.Matcher.on(engine);
   }
   
-  public ActorCapabilityInvolvement__capabilityQuerySpecification getActorCapabilityInvolvement__capability() throws ViatraQueryException {
-    return ActorCapabilityInvolvement__capabilityQuerySpecification.instance();
+  public ActorCapabilityInvolvement__capability getActorCapabilityInvolvement__capability() {
+    return ActorCapabilityInvolvement__capability.instance();
   }
   
-  public ActorCapabilityInvolvement__capabilityMatcher getActorCapabilityInvolvement__capability(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return ActorCapabilityInvolvement__capabilityMatcher.on(engine);
+  public ActorCapabilityInvolvement__capability.Matcher getActorCapabilityInvolvement__capability(final ViatraQueryEngine engine) {
+    return ActorCapabilityInvolvement__capability.Matcher.on(engine);
   }
 }

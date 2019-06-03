@@ -14,14 +14,12 @@ package org.polarsys.capella.viatra.core.data.requirement.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.core.data.requirement.surrogate.Requirement__relatedCapellaElementsMatcher;
-import org.polarsys.capella.viatra.core.data.requirement.surrogate.util.Requirement__relatedCapellaElementsQuerySpecification;
+import org.polarsys.capella.viatra.core.data.requirement.surrogate.Requirement__relatedCapellaElements;
 
 /**
  * A pattern group formed of all public patterns defined in Requirement.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file Requirement.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -29,7 +27,7 @@ import org.polarsys.capella.viatra.core.data.requirement.surrogate.util.Requirem
  * <li>Requirement__relatedCapellaElements</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -38,10 +36,10 @@ public final class Requirement extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static Requirement instance() throws ViatraQueryException {
+  public static Requirement instance() {
     if (INSTANCE == null) {
         INSTANCE = new Requirement();
     }
@@ -50,15 +48,15 @@ public final class Requirement extends BaseGeneratedPatternGroup {
   
   private static Requirement INSTANCE;
   
-  private Requirement() throws ViatraQueryException {
-    querySpecifications.add(Requirement__relatedCapellaElementsQuerySpecification.instance());
+  private Requirement() {
+    querySpecifications.add(Requirement__relatedCapellaElements.instance());
   }
   
-  public Requirement__relatedCapellaElementsQuerySpecification getRequirement__relatedCapellaElements() throws ViatraQueryException {
-    return Requirement__relatedCapellaElementsQuerySpecification.instance();
+  public Requirement__relatedCapellaElements getRequirement__relatedCapellaElements() {
+    return Requirement__relatedCapellaElements.instance();
   }
   
-  public Requirement__relatedCapellaElementsMatcher getRequirement__relatedCapellaElements(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return Requirement__relatedCapellaElementsMatcher.on(engine);
+  public Requirement__relatedCapellaElements.Matcher getRequirement__relatedCapellaElements(final ViatraQueryEngine engine) {
+    return Requirement__relatedCapellaElements.Matcher.on(engine);
   }
 }

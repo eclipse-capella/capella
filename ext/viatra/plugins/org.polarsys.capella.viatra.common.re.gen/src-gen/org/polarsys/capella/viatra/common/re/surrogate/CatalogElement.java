@@ -14,16 +14,13 @@ package org.polarsys.capella.viatra.common.re.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.common.re.surrogate.CatalogElement__referencedElementsMatcher;
-import org.polarsys.capella.viatra.common.re.surrogate.CatalogElement__replicatedElementsMatcher;
-import org.polarsys.capella.viatra.common.re.surrogate.util.CatalogElement__referencedElementsQuerySpecification;
-import org.polarsys.capella.viatra.common.re.surrogate.util.CatalogElement__replicatedElementsQuerySpecification;
+import org.polarsys.capella.viatra.common.re.surrogate.CatalogElement__referencedElements;
+import org.polarsys.capella.viatra.common.re.surrogate.CatalogElement__replicatedElements;
 
 /**
  * A pattern group formed of all public patterns defined in CatalogElement.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file CatalogElement.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -32,7 +29,7 @@ import org.polarsys.capella.viatra.common.re.surrogate.util.CatalogElement__repl
  * <li>CatalogElement__replicatedElements</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -41,10 +38,10 @@ public final class CatalogElement extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static CatalogElement instance() throws ViatraQueryException {
+  public static CatalogElement instance() {
     if (INSTANCE == null) {
         INSTANCE = new CatalogElement();
     }
@@ -53,24 +50,24 @@ public final class CatalogElement extends BaseGeneratedPatternGroup {
   
   private static CatalogElement INSTANCE;
   
-  private CatalogElement() throws ViatraQueryException {
-    querySpecifications.add(CatalogElement__referencedElementsQuerySpecification.instance());
-    querySpecifications.add(CatalogElement__replicatedElementsQuerySpecification.instance());
+  private CatalogElement() {
+    querySpecifications.add(CatalogElement__referencedElements.instance());
+    querySpecifications.add(CatalogElement__replicatedElements.instance());
   }
   
-  public CatalogElement__referencedElementsQuerySpecification getCatalogElement__referencedElements() throws ViatraQueryException {
-    return CatalogElement__referencedElementsQuerySpecification.instance();
+  public CatalogElement__referencedElements getCatalogElement__referencedElements() {
+    return CatalogElement__referencedElements.instance();
   }
   
-  public CatalogElement__referencedElementsMatcher getCatalogElement__referencedElements(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return CatalogElement__referencedElementsMatcher.on(engine);
+  public CatalogElement__referencedElements.Matcher getCatalogElement__referencedElements(final ViatraQueryEngine engine) {
+    return CatalogElement__referencedElements.Matcher.on(engine);
   }
   
-  public CatalogElement__replicatedElementsQuerySpecification getCatalogElement__replicatedElements() throws ViatraQueryException {
-    return CatalogElement__replicatedElementsQuerySpecification.instance();
+  public CatalogElement__replicatedElements getCatalogElement__replicatedElements() {
+    return CatalogElement__replicatedElements.instance();
   }
   
-  public CatalogElement__replicatedElementsMatcher getCatalogElement__replicatedElements(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return CatalogElement__replicatedElementsMatcher.on(engine);
+  public CatalogElement__replicatedElements.Matcher getCatalogElement__replicatedElements(final ViatraQueryEngine engine) {
+    return CatalogElement__replicatedElements.Matcher.on(engine);
   }
 }

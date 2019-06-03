@@ -14,14 +14,12 @@ package org.polarsys.capella.viatra.core.data.cs.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.PhysicalPathReference__referencedPhysicalPathMatcher;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.util.PhysicalPathReference__referencedPhysicalPathQuerySpecification;
+import org.polarsys.capella.viatra.core.data.cs.surrogate.PhysicalPathReference__referencedPhysicalPath;
 
 /**
  * A pattern group formed of all public patterns defined in PhysicalPathReference.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file PhysicalPathReference.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -29,7 +27,7 @@ import org.polarsys.capella.viatra.core.data.cs.surrogate.util.PhysicalPathRefer
  * <li>PhysicalPathReference__referencedPhysicalPath</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -38,10 +36,10 @@ public final class PhysicalPathReference extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static PhysicalPathReference instance() throws ViatraQueryException {
+  public static PhysicalPathReference instance() {
     if (INSTANCE == null) {
         INSTANCE = new PhysicalPathReference();
     }
@@ -50,15 +48,15 @@ public final class PhysicalPathReference extends BaseGeneratedPatternGroup {
   
   private static PhysicalPathReference INSTANCE;
   
-  private PhysicalPathReference() throws ViatraQueryException {
-    querySpecifications.add(PhysicalPathReference__referencedPhysicalPathQuerySpecification.instance());
+  private PhysicalPathReference() {
+    querySpecifications.add(PhysicalPathReference__referencedPhysicalPath.instance());
   }
   
-  public PhysicalPathReference__referencedPhysicalPathQuerySpecification getPhysicalPathReference__referencedPhysicalPath() throws ViatraQueryException {
-    return PhysicalPathReference__referencedPhysicalPathQuerySpecification.instance();
+  public PhysicalPathReference__referencedPhysicalPath getPhysicalPathReference__referencedPhysicalPath() {
+    return PhysicalPathReference__referencedPhysicalPath.instance();
   }
   
-  public PhysicalPathReference__referencedPhysicalPathMatcher getPhysicalPathReference__referencedPhysicalPath(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return PhysicalPathReference__referencedPhysicalPathMatcher.on(engine);
+  public PhysicalPathReference__referencedPhysicalPath.Matcher getPhysicalPathReference__referencedPhysicalPath(final ViatraQueryEngine engine) {
+    return PhysicalPathReference__referencedPhysicalPath.Matcher.on(engine);
   }
 }

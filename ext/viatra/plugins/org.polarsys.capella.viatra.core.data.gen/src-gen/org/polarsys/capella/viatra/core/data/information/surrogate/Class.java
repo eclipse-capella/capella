@@ -14,16 +14,13 @@ package org.polarsys.capella.viatra.core.data.information.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.core.data.information.surrogate.Class__realizedClassesMatcher;
-import org.polarsys.capella.viatra.core.data.information.surrogate.Class__realizingClassesMatcher;
-import org.polarsys.capella.viatra.core.data.information.surrogate.util.Class__realizedClassesQuerySpecification;
-import org.polarsys.capella.viatra.core.data.information.surrogate.util.Class__realizingClassesQuerySpecification;
+import org.polarsys.capella.viatra.core.data.information.surrogate.Class__realizedClasses;
+import org.polarsys.capella.viatra.core.data.information.surrogate.Class__realizingClasses;
 
 /**
  * A pattern group formed of all public patterns defined in Class.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file Class.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -32,7 +29,7 @@ import org.polarsys.capella.viatra.core.data.information.surrogate.util.Class__r
  * <li>Class__realizingClasses</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -41,10 +38,10 @@ public final class Class extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static Class instance() throws ViatraQueryException {
+  public static Class instance() {
     if (INSTANCE == null) {
         INSTANCE = new Class();
     }
@@ -53,24 +50,24 @@ public final class Class extends BaseGeneratedPatternGroup {
   
   private static Class INSTANCE;
   
-  private Class() throws ViatraQueryException {
-    querySpecifications.add(Class__realizedClassesQuerySpecification.instance());
-    querySpecifications.add(Class__realizingClassesQuerySpecification.instance());
+  private Class() {
+    querySpecifications.add(Class__realizedClasses.instance());
+    querySpecifications.add(Class__realizingClasses.instance());
   }
   
-  public Class__realizedClassesQuerySpecification getClass__realizedClasses() throws ViatraQueryException {
-    return Class__realizedClassesQuerySpecification.instance();
+  public Class__realizedClasses getClass__realizedClasses() {
+    return Class__realizedClasses.instance();
   }
   
-  public Class__realizedClassesMatcher getClass__realizedClasses(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return Class__realizedClassesMatcher.on(engine);
+  public Class__realizedClasses.Matcher getClass__realizedClasses(final ViatraQueryEngine engine) {
+    return Class__realizedClasses.Matcher.on(engine);
   }
   
-  public Class__realizingClassesQuerySpecification getClass__realizingClasses() throws ViatraQueryException {
-    return Class__realizingClassesQuerySpecification.instance();
+  public Class__realizingClasses getClass__realizingClasses() {
+    return Class__realizingClasses.instance();
   }
   
-  public Class__realizingClassesMatcher getClass__realizingClasses(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return Class__realizingClassesMatcher.on(engine);
+  public Class__realizingClasses.Matcher getClass__realizingClasses(final ViatraQueryEngine engine) {
+    return Class__realizingClasses.Matcher.on(engine);
   }
 }

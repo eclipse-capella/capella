@@ -14,18 +14,14 @@ package org.polarsys.capella.viatra.common.data.activity.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.common.data.activity.surrogate.ActivityEdge__inActivityPartitionMatcher;
-import org.polarsys.capella.viatra.common.data.activity.surrogate.ActivityEdge__inInterruptibleRegionMatcher;
-import org.polarsys.capella.viatra.common.data.activity.surrogate.ActivityEdge__inStructuredNodeMatcher;
-import org.polarsys.capella.viatra.common.data.activity.surrogate.util.ActivityEdge__inActivityPartitionQuerySpecification;
-import org.polarsys.capella.viatra.common.data.activity.surrogate.util.ActivityEdge__inInterruptibleRegionQuerySpecification;
-import org.polarsys.capella.viatra.common.data.activity.surrogate.util.ActivityEdge__inStructuredNodeQuerySpecification;
+import org.polarsys.capella.viatra.common.data.activity.surrogate.ActivityEdge__inActivityPartition;
+import org.polarsys.capella.viatra.common.data.activity.surrogate.ActivityEdge__inInterruptibleRegion;
+import org.polarsys.capella.viatra.common.data.activity.surrogate.ActivityEdge__inStructuredNode;
 
 /**
  * A pattern group formed of all public patterns defined in ActivityEdge.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file ActivityEdge.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -35,7 +31,7 @@ import org.polarsys.capella.viatra.common.data.activity.surrogate.util.ActivityE
  * <li>ActivityEdge__inStructuredNode</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -44,10 +40,10 @@ public final class ActivityEdge extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static ActivityEdge instance() throws ViatraQueryException {
+  public static ActivityEdge instance() {
     if (INSTANCE == null) {
         INSTANCE = new ActivityEdge();
     }
@@ -56,33 +52,33 @@ public final class ActivityEdge extends BaseGeneratedPatternGroup {
   
   private static ActivityEdge INSTANCE;
   
-  private ActivityEdge() throws ViatraQueryException {
-    querySpecifications.add(ActivityEdge__inActivityPartitionQuerySpecification.instance());
-    querySpecifications.add(ActivityEdge__inInterruptibleRegionQuerySpecification.instance());
-    querySpecifications.add(ActivityEdge__inStructuredNodeQuerySpecification.instance());
+  private ActivityEdge() {
+    querySpecifications.add(ActivityEdge__inActivityPartition.instance());
+    querySpecifications.add(ActivityEdge__inInterruptibleRegion.instance());
+    querySpecifications.add(ActivityEdge__inStructuredNode.instance());
   }
   
-  public ActivityEdge__inActivityPartitionQuerySpecification getActivityEdge__inActivityPartition() throws ViatraQueryException {
-    return ActivityEdge__inActivityPartitionQuerySpecification.instance();
+  public ActivityEdge__inActivityPartition getActivityEdge__inActivityPartition() {
+    return ActivityEdge__inActivityPartition.instance();
   }
   
-  public ActivityEdge__inActivityPartitionMatcher getActivityEdge__inActivityPartition(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return ActivityEdge__inActivityPartitionMatcher.on(engine);
+  public ActivityEdge__inActivityPartition.Matcher getActivityEdge__inActivityPartition(final ViatraQueryEngine engine) {
+    return ActivityEdge__inActivityPartition.Matcher.on(engine);
   }
   
-  public ActivityEdge__inInterruptibleRegionQuerySpecification getActivityEdge__inInterruptibleRegion() throws ViatraQueryException {
-    return ActivityEdge__inInterruptibleRegionQuerySpecification.instance();
+  public ActivityEdge__inInterruptibleRegion getActivityEdge__inInterruptibleRegion() {
+    return ActivityEdge__inInterruptibleRegion.instance();
   }
   
-  public ActivityEdge__inInterruptibleRegionMatcher getActivityEdge__inInterruptibleRegion(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return ActivityEdge__inInterruptibleRegionMatcher.on(engine);
+  public ActivityEdge__inInterruptibleRegion.Matcher getActivityEdge__inInterruptibleRegion(final ViatraQueryEngine engine) {
+    return ActivityEdge__inInterruptibleRegion.Matcher.on(engine);
   }
   
-  public ActivityEdge__inStructuredNodeQuerySpecification getActivityEdge__inStructuredNode() throws ViatraQueryException {
-    return ActivityEdge__inStructuredNodeQuerySpecification.instance();
+  public ActivityEdge__inStructuredNode getActivityEdge__inStructuredNode() {
+    return ActivityEdge__inStructuredNode.instance();
   }
   
-  public ActivityEdge__inStructuredNodeMatcher getActivityEdge__inStructuredNode(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return ActivityEdge__inStructuredNodeMatcher.on(engine);
+  public ActivityEdge__inStructuredNode.Matcher getActivityEdge__inStructuredNode(final ViatraQueryEngine engine) {
+    return ActivityEdge__inStructuredNode.Matcher.on(engine);
   }
 }

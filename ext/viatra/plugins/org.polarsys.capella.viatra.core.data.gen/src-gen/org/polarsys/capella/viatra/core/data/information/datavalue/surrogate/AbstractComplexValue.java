@@ -14,14 +14,12 @@ package org.polarsys.capella.viatra.core.data.information.datavalue.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.core.data.information.datavalue.surrogate.AbstractComplexValue__complexTypeMatcher;
-import org.polarsys.capella.viatra.core.data.information.datavalue.surrogate.util.AbstractComplexValue__complexTypeQuerySpecification;
+import org.polarsys.capella.viatra.core.data.information.datavalue.surrogate.AbstractComplexValue__complexType;
 
 /**
  * A pattern group formed of all public patterns defined in AbstractComplexValue.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file AbstractComplexValue.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -29,7 +27,7 @@ import org.polarsys.capella.viatra.core.data.information.datavalue.surrogate.uti
  * <li>AbstractComplexValue__complexType</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -38,10 +36,10 @@ public final class AbstractComplexValue extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static AbstractComplexValue instance() throws ViatraQueryException {
+  public static AbstractComplexValue instance() {
     if (INSTANCE == null) {
         INSTANCE = new AbstractComplexValue();
     }
@@ -50,15 +48,15 @@ public final class AbstractComplexValue extends BaseGeneratedPatternGroup {
   
   private static AbstractComplexValue INSTANCE;
   
-  private AbstractComplexValue() throws ViatraQueryException {
-    querySpecifications.add(AbstractComplexValue__complexTypeQuerySpecification.instance());
+  private AbstractComplexValue() {
+    querySpecifications.add(AbstractComplexValue__complexType.instance());
   }
   
-  public AbstractComplexValue__complexTypeQuerySpecification getAbstractComplexValue__complexType() throws ViatraQueryException {
-    return AbstractComplexValue__complexTypeQuerySpecification.instance();
+  public AbstractComplexValue__complexType getAbstractComplexValue__complexType() {
+    return AbstractComplexValue__complexType.instance();
   }
   
-  public AbstractComplexValue__complexTypeMatcher getAbstractComplexValue__complexType(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return AbstractComplexValue__complexTypeMatcher.on(engine);
+  public AbstractComplexValue__complexType.Matcher getAbstractComplexValue__complexType(final ViatraQueryEngine engine) {
+    return AbstractComplexValue__complexType.Matcher.on(engine);
   }
 }

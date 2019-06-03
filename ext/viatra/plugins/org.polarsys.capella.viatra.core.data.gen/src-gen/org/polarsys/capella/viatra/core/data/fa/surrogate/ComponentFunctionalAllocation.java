@@ -14,16 +14,13 @@ package org.polarsys.capella.viatra.core.data.fa.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.ComponentFunctionalAllocation__blockMatcher;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.ComponentFunctionalAllocation__functionMatcher;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.util.ComponentFunctionalAllocation__blockQuerySpecification;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.util.ComponentFunctionalAllocation__functionQuerySpecification;
+import org.polarsys.capella.viatra.core.data.fa.surrogate.ComponentFunctionalAllocation__block;
+import org.polarsys.capella.viatra.core.data.fa.surrogate.ComponentFunctionalAllocation__function;
 
 /**
  * A pattern group formed of all public patterns defined in ComponentFunctionalAllocation.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file ComponentFunctionalAllocation.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -32,7 +29,7 @@ import org.polarsys.capella.viatra.core.data.fa.surrogate.util.ComponentFunction
  * <li>ComponentFunctionalAllocation__block</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -41,10 +38,10 @@ public final class ComponentFunctionalAllocation extends BaseGeneratedPatternGro
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static ComponentFunctionalAllocation instance() throws ViatraQueryException {
+  public static ComponentFunctionalAllocation instance() {
     if (INSTANCE == null) {
         INSTANCE = new ComponentFunctionalAllocation();
     }
@@ -53,24 +50,24 @@ public final class ComponentFunctionalAllocation extends BaseGeneratedPatternGro
   
   private static ComponentFunctionalAllocation INSTANCE;
   
-  private ComponentFunctionalAllocation() throws ViatraQueryException {
-    querySpecifications.add(ComponentFunctionalAllocation__functionQuerySpecification.instance());
-    querySpecifications.add(ComponentFunctionalAllocation__blockQuerySpecification.instance());
+  private ComponentFunctionalAllocation() {
+    querySpecifications.add(ComponentFunctionalAllocation__function.instance());
+    querySpecifications.add(ComponentFunctionalAllocation__block.instance());
   }
   
-  public ComponentFunctionalAllocation__functionQuerySpecification getComponentFunctionalAllocation__function() throws ViatraQueryException {
-    return ComponentFunctionalAllocation__functionQuerySpecification.instance();
+  public ComponentFunctionalAllocation__function getComponentFunctionalAllocation__function() {
+    return ComponentFunctionalAllocation__function.instance();
   }
   
-  public ComponentFunctionalAllocation__functionMatcher getComponentFunctionalAllocation__function(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return ComponentFunctionalAllocation__functionMatcher.on(engine);
+  public ComponentFunctionalAllocation__function.Matcher getComponentFunctionalAllocation__function(final ViatraQueryEngine engine) {
+    return ComponentFunctionalAllocation__function.Matcher.on(engine);
   }
   
-  public ComponentFunctionalAllocation__blockQuerySpecification getComponentFunctionalAllocation__block() throws ViatraQueryException {
-    return ComponentFunctionalAllocation__blockQuerySpecification.instance();
+  public ComponentFunctionalAllocation__block getComponentFunctionalAllocation__block() {
+    return ComponentFunctionalAllocation__block.instance();
   }
   
-  public ComponentFunctionalAllocation__blockMatcher getComponentFunctionalAllocation__block(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return ComponentFunctionalAllocation__blockMatcher.on(engine);
+  public ComponentFunctionalAllocation__block.Matcher getComponentFunctionalAllocation__block(final ViatraQueryEngine engine) {
+    return ComponentFunctionalAllocation__block.Matcher.on(engine);
   }
 }

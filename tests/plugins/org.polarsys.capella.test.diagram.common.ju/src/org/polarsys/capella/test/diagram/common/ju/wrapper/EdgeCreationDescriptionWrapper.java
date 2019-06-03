@@ -20,6 +20,7 @@ import org.eclipse.emf.common.command.UnexecutableCommand;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.business.api.query.DMappingBasedQuery;
+import org.eclipse.sirius.diagram.business.internal.metamodel.description.operations.SiriusElementMappingSpecOperations;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription;
@@ -133,7 +134,7 @@ public class EdgeCreationDescriptionWrapper extends AbstractCommonToolWrapper {
           Iterator<DiagramElementMapping> iterExtraMappings = tool.getExtraSourceMappings().iterator();
           while (iterExtraMappings.hasNext()) {
             DiagramElementMapping next = iterExtraMappings.next();
-            if (next.isFrom(toCompare)) {
+            if (SiriusElementMappingSpecOperations.isFrom(next, toCompare)) {
               sourceOk = true;
             }
           }
@@ -146,7 +147,7 @@ public class EdgeCreationDescriptionWrapper extends AbstractCommonToolWrapper {
             Iterator<DiagramElementMapping> iterExtraMappings = tool.getExtraTargetMappings().iterator();
             while (iterExtraMappings.hasNext()) {
               DiagramElementMapping next = iterExtraMappings.next();
-              if (next.isFrom(toCompare)) {
+              if (SiriusElementMappingSpecOperations.isFrom(next, toCompare)) {
                 targetOk = true;
               }
             }

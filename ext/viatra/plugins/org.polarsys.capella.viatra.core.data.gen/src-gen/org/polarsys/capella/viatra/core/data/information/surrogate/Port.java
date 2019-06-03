@@ -14,20 +14,15 @@ package org.polarsys.capella.viatra.core.data.information.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.core.data.information.surrogate.Port__incomingPortAllocationsMatcher;
-import org.polarsys.capella.viatra.core.data.information.surrogate.Port__incomingPortRealizationsMatcher;
-import org.polarsys.capella.viatra.core.data.information.surrogate.Port__outgoingPortAllocationsMatcher;
-import org.polarsys.capella.viatra.core.data.information.surrogate.Port__outgoingPortRealizationsMatcher;
-import org.polarsys.capella.viatra.core.data.information.surrogate.util.Port__incomingPortAllocationsQuerySpecification;
-import org.polarsys.capella.viatra.core.data.information.surrogate.util.Port__incomingPortRealizationsQuerySpecification;
-import org.polarsys.capella.viatra.core.data.information.surrogate.util.Port__outgoingPortAllocationsQuerySpecification;
-import org.polarsys.capella.viatra.core.data.information.surrogate.util.Port__outgoingPortRealizationsQuerySpecification;
+import org.polarsys.capella.viatra.core.data.information.surrogate.Port__incomingPortAllocations;
+import org.polarsys.capella.viatra.core.data.information.surrogate.Port__incomingPortRealizations;
+import org.polarsys.capella.viatra.core.data.information.surrogate.Port__outgoingPortAllocations;
+import org.polarsys.capella.viatra.core.data.information.surrogate.Port__outgoingPortRealizations;
 
 /**
  * A pattern group formed of all public patterns defined in Port.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file Port.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -38,7 +33,7 @@ import org.polarsys.capella.viatra.core.data.information.surrogate.util.Port__ou
  * <li>Port__outgoingPortAllocations</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -47,10 +42,10 @@ public final class Port extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static Port instance() throws ViatraQueryException {
+  public static Port instance() {
     if (INSTANCE == null) {
         INSTANCE = new Port();
     }
@@ -59,42 +54,42 @@ public final class Port extends BaseGeneratedPatternGroup {
   
   private static Port INSTANCE;
   
-  private Port() throws ViatraQueryException {
-    querySpecifications.add(Port__incomingPortRealizationsQuerySpecification.instance());
-    querySpecifications.add(Port__outgoingPortRealizationsQuerySpecification.instance());
-    querySpecifications.add(Port__incomingPortAllocationsQuerySpecification.instance());
-    querySpecifications.add(Port__outgoingPortAllocationsQuerySpecification.instance());
+  private Port() {
+    querySpecifications.add(Port__incomingPortRealizations.instance());
+    querySpecifications.add(Port__outgoingPortRealizations.instance());
+    querySpecifications.add(Port__incomingPortAllocations.instance());
+    querySpecifications.add(Port__outgoingPortAllocations.instance());
   }
   
-  public Port__incomingPortRealizationsQuerySpecification getPort__incomingPortRealizations() throws ViatraQueryException {
-    return Port__incomingPortRealizationsQuerySpecification.instance();
+  public Port__incomingPortRealizations getPort__incomingPortRealizations() {
+    return Port__incomingPortRealizations.instance();
   }
   
-  public Port__incomingPortRealizationsMatcher getPort__incomingPortRealizations(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return Port__incomingPortRealizationsMatcher.on(engine);
+  public Port__incomingPortRealizations.Matcher getPort__incomingPortRealizations(final ViatraQueryEngine engine) {
+    return Port__incomingPortRealizations.Matcher.on(engine);
   }
   
-  public Port__outgoingPortRealizationsQuerySpecification getPort__outgoingPortRealizations() throws ViatraQueryException {
-    return Port__outgoingPortRealizationsQuerySpecification.instance();
+  public Port__outgoingPortRealizations getPort__outgoingPortRealizations() {
+    return Port__outgoingPortRealizations.instance();
   }
   
-  public Port__outgoingPortRealizationsMatcher getPort__outgoingPortRealizations(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return Port__outgoingPortRealizationsMatcher.on(engine);
+  public Port__outgoingPortRealizations.Matcher getPort__outgoingPortRealizations(final ViatraQueryEngine engine) {
+    return Port__outgoingPortRealizations.Matcher.on(engine);
   }
   
-  public Port__incomingPortAllocationsQuerySpecification getPort__incomingPortAllocations() throws ViatraQueryException {
-    return Port__incomingPortAllocationsQuerySpecification.instance();
+  public Port__incomingPortAllocations getPort__incomingPortAllocations() {
+    return Port__incomingPortAllocations.instance();
   }
   
-  public Port__incomingPortAllocationsMatcher getPort__incomingPortAllocations(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return Port__incomingPortAllocationsMatcher.on(engine);
+  public Port__incomingPortAllocations.Matcher getPort__incomingPortAllocations(final ViatraQueryEngine engine) {
+    return Port__incomingPortAllocations.Matcher.on(engine);
   }
   
-  public Port__outgoingPortAllocationsQuerySpecification getPort__outgoingPortAllocations() throws ViatraQueryException {
-    return Port__outgoingPortAllocationsQuerySpecification.instance();
+  public Port__outgoingPortAllocations getPort__outgoingPortAllocations() {
+    return Port__outgoingPortAllocations.instance();
   }
   
-  public Port__outgoingPortAllocationsMatcher getPort__outgoingPortAllocations(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return Port__outgoingPortAllocationsMatcher.on(engine);
+  public Port__outgoingPortAllocations.Matcher getPort__outgoingPortAllocations(final ViatraQueryEngine engine) {
+    return Port__outgoingPortAllocations.Matcher.on(engine);
   }
 }

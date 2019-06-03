@@ -36,7 +36,7 @@ import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.EdgeStyle;
 import org.eclipse.sirius.diagram.EdgeTarget;
-import org.eclipse.sirius.diagram.business.internal.metamodel.helper.MappingHelper;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.MappingWithInterpreterHelper;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
@@ -424,7 +424,7 @@ public class PhysicalServices {
       sourcePort = (PhysicalPort) sourceTarget;
       nodeSource = (EdgeTarget) sourceView;
 
-    } else if(sourcePart != null) {
+    } else if (sourcePart != null) {
       sourcePort = CsFactory.eINSTANCE.createPhysicalPort();
       ((Component) sourcePart.getType()).getOwnedFeatures().add(sourcePort);
       CapellaServices.getService().creationService(sourcePort);
@@ -438,7 +438,7 @@ public class PhysicalServices {
       targetPort = (PhysicalPort) targetTarget;
       nodeTarget = (EdgeTarget) targetView;
 
-    } else if(targetPart != null) {
+    } else if (targetPart != null) {
       targetPort = CsFactory.eINSTANCE.createPhysicalPort();
       ((Component) targetPart.getType()).getOwnedFeatures().add(targetPort);
       CapellaServices.getService().creationService(targetPort);
@@ -519,7 +519,7 @@ public class PhysicalServices {
   private boolean isLogicalSystemComponent(EObject source) {
     return source.eContainer() instanceof LogicalArchitecture;
   }
-  
+
   /**
    * 
    * @param context
@@ -558,7 +558,7 @@ public class PhysicalServices {
     }
     return result;
   }
-  
+
   public EObject getPhysicalPathSource(EObject context, List<EObject> views) {
     return getAvailableSourcesOfPhysicalPath(context, views).get(0);
   }
@@ -756,12 +756,12 @@ public class PhysicalServices {
   }
 
   public void updateInternalPhysicalPaths(DDiagram diagram) {
- // Find displayed physical paths
+    // Find displayed physical paths
     HashMap<PhysicalPath, DNode> displayedPaths = computePhysicalPathToNodeMap(diagram);
 
     // Find displayed Physical Links
     HashMap<PhysicalLink, DEdge> displayedPhysicalLinks = computePhysicalLinkToEdgeMap(diagram);
-    
+
     // Find displayed Internal Links
     HashMap<PhysicalPath, Set<DEdge>> physicalPathToVisibleInternalEdges = computePhysicalPathToEdgesMap(diagram);
 
@@ -790,19 +790,19 @@ public class PhysicalServices {
         }
       }
     }
-    
+
   }
-  
+
   public void updatePhysicalPathStyles(DDiagram diagram) {
     // Internal edges representing the physical path
     HashMap<PhysicalPath, Set<DEdge>> physicalPathToEdgesMap = computePhysicalPathToEdgesMap(diagram);
-    
+
     // Find displayed physical paths
     HashMap<PhysicalPath, DNode> displayedPaths = computePhysicalPathToNodeMap(diagram);
 
     // Find displayed Physical Links
     HashMap<PhysicalLink, DEdge> displayedPhysicalLinks = computePhysicalLinkToEdgeMap(diagram);
-    
+
     // Find physical links that must be colored
     HashMap<DEdge, Set<PhysicalPath>> coloredLinks = computeEdgeToPhysicalPathsMap(displayedPaths,
         displayedPhysicalLinks);
@@ -816,7 +816,7 @@ public class PhysicalServices {
 
       // Customize internal links
       // TODO: should we use updatePhysicalPathInternalLinks?
-//      Set<DEdge> internalLinks = updatePhysicalPathInternalLinks(physicalPath, displayedPhysicalLinks);
+      // Set<DEdge> internalLinks = updatePhysicalPathInternalLinks(physicalPath, displayedPhysicalLinks);
       Set<DEdge> internalLinks = physicalPathToEdgesMap.get(physicalPath);
       internalLinks = (internalLinks == null) ? new HashSet<>() : internalLinks;
       internalLinks.remove(null);
@@ -926,7 +926,8 @@ public class PhysicalServices {
   protected Collection<PhysicalLink> getFlatPreviousPhysicalLinks(PhysicalPathInvolvement physicalPathInvolvement) {
     Collection<PhysicalLink> result = new HashSet<>();
 
-    for (PhysicalPathInvolvement involvment : PhysicalPathExt.getFlatPreviousLinkInvolvements(physicalPathInvolvement)) {
+    for (PhysicalPathInvolvement involvment : PhysicalPathExt
+        .getFlatPreviousLinkInvolvements(physicalPathInvolvement)) {
       if (involvment.getInvolved() instanceof PhysicalLink) {
         result.add((PhysicalLink) involvment.getInvolved());
       }
@@ -942,7 +943,8 @@ public class PhysicalServices {
   protected Collection<PhysicalLink> getFlatNextPhysicalLinks(PhysicalPathInvolvement physicalPathInvolvement) {
     Collection<PhysicalLink> result = new HashSet<>();
 
-    for (PhysicalPathInvolvement involvment : PhysicalPathExt.getFlatNextExchangeInvolvements(physicalPathInvolvement)) {
+    for (PhysicalPathInvolvement involvment : PhysicalPathExt
+        .getFlatNextExchangeInvolvements(physicalPathInvolvement)) {
       if (involvment.getInvolved() instanceof PhysicalLink) {
         result.add((PhysicalLink) involvment.getInvolved());
       }
@@ -950,7 +952,7 @@ public class PhysicalServices {
 
     return result;
   }
-  
+
   protected Set<DEdge> updatePhysicalPathInternalLinks(PhysicalPath path,
       HashMap<PhysicalLink, DEdge> displayedPhysicalLinks) {
     Set<DEdge> internalLinks = new HashSet<>();
@@ -960,18 +962,20 @@ public class PhysicalServices {
     for (PhysicalPathInvolvement partInvolvement : flatPartInvolvements) {
       // The current part
       Part currentPart = (Part) partInvolvement.getInvolvedElement();
-     
-      // The previous link involvements  if any
+
+      // The previous link involvements if any
       EList<PhysicalPathInvolvement> previousLinkInvolvements = partInvolvement.getPreviousInvolvements();
-      
+
       // The next link involvements if any
       EList<PhysicalPathInvolvement> nextLinkInvolvements = partInvolvement.getNextInvolvements();
-      
-      // Case 1: only next involvements are available, in this case all ports for the link on the current part should be connected together
+
+      // Case 1: only next involvements are available, in this case all ports for the link on the current part should be
+      // connected together
       if (previousLinkInvolvements.isEmpty() && !nextLinkInvolvements.isEmpty()) {
         internalLinks.addAll(updateInternalLinks(path, displayedPhysicalLinks, currentPart, nextLinkInvolvements));
       }
-      // Case 2: only previous involvements are available, in this case all ports for the link on the current part should be connected together
+      // Case 2: only previous involvements are available, in this case all ports for the link on the current part
+      // should be connected together
       else if (!previousLinkInvolvements.isEmpty() && nextLinkInvolvements.isEmpty()) {
         internalLinks.addAll(updateInternalLinks(path, displayedPhysicalLinks, currentPart, previousLinkInvolvements));
       }
@@ -1006,8 +1010,8 @@ public class PhysicalServices {
     return internalLinks;
   }
 
-  private Set<DEdge> updateInternalLinks(PhysicalPath path, HashMap<PhysicalLink, DEdge> displayedPhysicalLinks, Part currentPart,
-      EList<PhysicalPathInvolvement> linkInvolvements) {
+  private Set<DEdge> updateInternalLinks(PhysicalPath path, HashMap<PhysicalLink, DEdge> displayedPhysicalLinks,
+      Part currentPart, EList<PhysicalPathInvolvement> linkInvolvements) {
     Set<DEdge> internalLinks = new HashSet<>();
     int size = linkInvolvements.size();
     PhysicalPathInvolvement[] linkInvolvementsArray = linkInvolvements.toArray(new PhysicalPathInvolvement[size]);
@@ -1029,8 +1033,7 @@ public class PhysicalServices {
               DEdge nextEdge = displayedPhysicalLinks.get(nextLink);
               if (nextEdge != null) {
                 EdgeTarget secondNode = getPortOnInvolved(nextEdge, currentPart);
-                if (isValidNodeForInternalLink(secondNode)
-                    && isValidInternalLinkEdge(firstNode, secondNode)) {
+                if (isValidNodeForInternalLink(secondNode) && isValidInternalLinkEdge(firstNode, secondNode)) {
                   internalLinks.add(retrieveInternalLink((DNode) firstNode, (DNode) secondNode, path));
                 }
               }
@@ -1044,12 +1047,14 @@ public class PhysicalServices {
 
   private EdgeTarget getPortOnInvolved(DEdge edge, InvolvedElement involved) {
     EdgeTarget sourceNode = edge.getSourceNode();
-    if(sourceNode.eContainer() instanceof DNodeContainer && (((DNodeContainer)sourceNode.eContainer()).getTarget()).equals(involved)){
-        return sourceNode;
+    if (sourceNode.eContainer() instanceof DNodeContainer
+        && (((DNodeContainer) sourceNode.eContainer()).getTarget()).equals(involved)) {
+      return sourceNode;
     }
     EdgeTarget targetNode = edge.getTargetNode();
-    if(targetNode.eContainer() instanceof DNodeContainer && (((DNodeContainer)targetNode.eContainer()).getTarget()).equals(involved)){
-        return targetNode;
+    if (targetNode.eContainer() instanceof DNodeContainer
+        && (((DNodeContainer) targetNode.eContainer()).getTarget()).equals(involved)) {
+      return targetNode;
     }
     return null;
   }
@@ -1061,22 +1066,22 @@ public class PhysicalServices {
     if (currentTargetNode == null) {
       return false;
     }
-    
+
     List<DEdge> edgesRelatedToSource = getRelatedEdges(currentSourceNode);
     if (!hasAtLeastOneVisibleEdgeNotPhysicalPath(edgesRelatedToSource)) {
       return false;
     }
-    
+
     List<DEdge> edgesRelatedToTarget = getRelatedEdges(currentTargetNode);
     if (!hasAtLeastOneVisibleEdgeNotPhysicalPath(edgesRelatedToTarget)) {
       return false;
     }
-    
+
     EObject sourceParent = currentSourceNode.eContainer();
     EObject targetParent = currentTargetNode.eContainer();
     // Internal links are valid on same parent
     if ((sourceParent != null) && (targetParent != null)) {
-        return sourceParent.equals(targetParent);
+      return sourceParent.equals(targetParent);
     }
     return true;
   }
@@ -1116,24 +1121,24 @@ public class PhysicalServices {
 
     DEdge internalLink = null;
     for (DEdge anEdge : DiagramServices.getDiagramServices().getOutgoingEdges(sourceNode)) {
-      if (anEdge.getTarget() instanceof PhysicalPath
-          && anEdge.getTarget().equals(physicalPath) && anEdge.getSourceNode() != null && anEdge.getTargetNode() != null) {
-          if (anEdge.getSourceNode().equals(sourceNode) && anEdge.getTargetNode().equals(targetNode) 
-        		  || anEdge.getSourceNode().equals(targetNode) && anEdge.getTargetNode().equals(sourceNode)) {
-            internalLink = anEdge;
-            break;
-          } 
+      if (anEdge.getTarget() instanceof PhysicalPath && anEdge.getTarget().equals(physicalPath)
+          && anEdge.getSourceNode() != null && anEdge.getTargetNode() != null) {
+        if (anEdge.getSourceNode().equals(sourceNode) && anEdge.getTargetNode().equals(targetNode)
+            || anEdge.getSourceNode().equals(targetNode) && anEdge.getTargetNode().equals(sourceNode)) {
+          internalLink = anEdge;
+          break;
+        }
       }
     }
 
     for (DEdge anEdge : DiagramServices.getDiagramServices().getIncomingEdges(sourceNode)) {
-      if (anEdge.getTarget() instanceof PhysicalPath
-          && anEdge.getTarget().equals(physicalPath) && anEdge.getSourceNode() != null && anEdge.getTargetNode() != null) {
-          if (anEdge.getSourceNode().equals(sourceNode) && anEdge.getTargetNode().equals(targetNode) 
-        		  || anEdge.getSourceNode().equals(targetNode) && anEdge.getTargetNode().equals(sourceNode)) {
-            internalLink = anEdge;
-            break;
-          }
+      if (anEdge.getTarget() instanceof PhysicalPath && anEdge.getTarget().equals(physicalPath)
+          && anEdge.getSourceNode() != null && anEdge.getTargetNode() != null) {
+        if (anEdge.getSourceNode().equals(sourceNode) && anEdge.getTargetNode().equals(targetNode)
+            || anEdge.getSourceNode().equals(targetNode) && anEdge.getTargetNode().equals(sourceNode)) {
+          internalLink = anEdge;
+          break;
+        }
       }
     }
 
@@ -1153,7 +1158,8 @@ public class PhysicalServices {
   public DEdge createInternalLink(DNode sourceNode, DNode targetNode, PhysicalPath physicalPath) {
     DDiagram diagram = CapellaServices.getService().getDiagramContainer(sourceNode);
     EdgeMapping mapping = getPhysicalPathInternLinkEdgeMapping(diagram);
-    DEdge newEdge = DiagramServices.getDiagramServices().findDEdgeElement(diagram, sourceNode, targetNode, physicalPath, mapping);
+    DEdge newEdge = DiagramServices.getDiagramServices().findDEdgeElement(diagram, sourceNode, targetNode, physicalPath,
+        mapping);
     if (newEdge == null) {
       newEdge = DiagramServices.getDiagramServices().createEdge(mapping, sourceNode, targetNode, physicalPath);
     }
@@ -1214,7 +1220,7 @@ public class PhysicalServices {
         }
       }
     }
-    
+
     return numberOfVisibleRelatedPLEdges == physicalLinksOnThePath.size();
   }
 
@@ -1223,9 +1229,11 @@ public class PhysicalServices {
 
     boolean isComplete = isCompletePhysicalPath(path, diagram);
     IProject project = PreferencesHelper.getProject(path);
-    boolean displayIncompleteLabel = !isComplete && ScopedCapellaPreferencesStore.getBoolean(DiagramsPreferencePage.NAME_PREF_DISPLAY_INCOMPLETE_IN_PHYSICAL_PATH_LABEL, project);
+    boolean displayIncompleteLabel = !isComplete && ScopedCapellaPreferencesStore
+        .getBoolean(DiagramsPreferencePage.NAME_PREF_DISPLAY_INCOMPLETE_IN_PHYSICAL_PATH_LABEL, project);
     boolean isValid = PhysicalPathExt.isPhysicalPathValid(path);
-    boolean displayInvalidLabel = !isValid && ScopedCapellaPreferencesStore.getBoolean(DiagramsPreferencePage.NAME_PREF_DISPLAY_INVALID_IN_PHYSICAL_PATH_LABEL, project);
+    boolean displayInvalidLabel = !isValid && ScopedCapellaPreferencesStore
+        .getBoolean(DiagramsPreferencePage.NAME_PREF_DISPLAY_INVALID_IN_PHYSICAL_PATH_LABEL, project);
     if (displayIncompleteLabel || displayInvalidLabel) {
       label = label + " ("; //$NON-NLS-1$
     }
@@ -1453,8 +1461,8 @@ public class PhysicalServices {
     return false;
   }
 
-  private MappingHelper getMappingHelper(DSemanticDecorator semanticDecorator) {
-    return new MappingHelper(
+  private MappingWithInterpreterHelper getMappingHelper(DSemanticDecorator semanticDecorator) {
+    return new MappingWithInterpreterHelper(
         SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(semanticDecorator.getTarget()));
   }
 
@@ -1669,14 +1677,14 @@ public class PhysicalServices {
 
     return component;
   }
-  
+
   public List<ComponentPortAllocation> getDisplayedComponentPortAllocations(DNodeContainer selectedElement) {
     List<ComponentPortAllocation> result = new ArrayList<>();
     List<ComponentPortAllocation> allAllocations = getAllComponentPortAllocationAvailable(selectedElement);
 
     DDiagram diagram = CapellaServices.getService().getDiagramContainer(selectedElement);
     for (ComponentPortAllocation portAllocation : allAllocations) {
-      if(DiagramServices.getDiagramServices().getDiagramElement(diagram, portAllocation) != null)
+      if (DiagramServices.getDiagramServices().getDiagramElement(diagram, portAllocation) != null)
         result.add(portAllocation);
     }
     return result;
@@ -1689,9 +1697,9 @@ public class PhysicalServices {
   public List<ComponentPortAllocation> getAllComponentPortAllocationAvailable(DNodeContainer selectedElement) {
 
     List<ComponentPortAllocation> result = new ArrayList<>();
-    
+
     for (DNode dNode : selectedElement.getNodes()) {
-      
+
       if (dNode.getTarget() instanceof PhysicalPort) {
         EObject target = dNode.getTarget();
         for (AbstractTrace trace : ((PhysicalPort) target).getOutgoingTraces()) {

@@ -35,8 +35,7 @@ import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
-import org.eclipse.swt.layout.GridData;
-import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
@@ -311,31 +310,28 @@ public class FilteredTree extends Composite {
    * @param treeStyle
    */
   protected void createControl(Composite parent, int treeStyle) {
-    GridLayout layout = new GridLayout();
+    FillLayout layout = new FillLayout();
     layout.marginHeight = 0;
     layout.marginWidth = 0;
     setLayout(layout);
-    setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
 
     if (showFilterControls) {
       filterComposite = createFilterGroup(this);
-      GridLayout filterLayout = new GridLayout(2, false);
+      //GridLayout filterLayout = new GridLayout(2, false);
+      FillLayout filterLayout = new FillLayout();
       filterLayout.marginHeight = 0;
       filterLayout.marginWidth = 0;
       filterComposite.setLayout(filterLayout);
-      filterComposite.setLayoutData(new GridData(SWT.FILL, SWT.BEGINNING, true, false));
       filterComposite.setFont(parent.getFont());
 
       createFilterControls(filterComposite);
     }
 
     treeComposite = new Composite(this, SWT.NONE);
-    GridLayout treeCompositeLayout = new GridLayout();
+    FillLayout treeCompositeLayout = new FillLayout();
     treeCompositeLayout.marginHeight = 0;
     treeCompositeLayout.marginWidth = 0;
     treeComposite.setLayout(treeCompositeLayout);
-    GridData data = new GridData(SWT.FILL, SWT.FILL, true, true);
-    treeComposite.setLayoutData(data);
 
     createTreeControl(treeComposite, treeStyle);
   }
@@ -450,14 +446,6 @@ public class FilteredTree extends Composite {
     } else {
       filterText.setToolTipText(Messages.FilteredTree_Tooltip);
     }
-    GridData gridData = new GridData(SWT.FILL, SWT.BEGINNING, true, false);
-
-    // if the text widget supported cancel then it will have it's own
-    // integrated button. We can take all of the space.
-    if ((filterText.getStyle() & SWT.CANCEL) != 0) {
-      gridData.horizontalSpan = 2;
-    }
-    filterText.setLayoutData(gridData);
   }
 
   /**
@@ -468,13 +456,6 @@ public class FilteredTree extends Composite {
     Label label = new Label(parent, SWT.NONE);
     label.setText(Messages.FilteredTree_Title);
     label.setFont(parent.getFont());
-    GridData data = new GridData();
-    data.grabExcessVerticalSpace = false;
-    data.grabExcessHorizontalSpace = true;
-    data.horizontalAlignment = GridData.FILL;
-    data.verticalAlignment = GridData.BEGINNING;
-    data.horizontalSpan = 2;
-    label.setLayoutData(data);
     return label;
   }
 
@@ -611,8 +592,6 @@ public class FilteredTree extends Composite {
    */
   protected Control createTreeControl(Composite parent, int style) {
     treeViewer = doCreateTreeViewer(parent, style);
-    GridData data = new GridData(SWT.FILL, SWT.FILL, true, true);
-    treeViewer.getControl().setLayoutData(data);
     treeViewer.getControl().addDisposeListener(new DisposeListener() {
       /**
        * @see org.eclipse.swt.events.DisposeListener#widgetDisposed(org.eclipse.swt.events.DisposeEvent)

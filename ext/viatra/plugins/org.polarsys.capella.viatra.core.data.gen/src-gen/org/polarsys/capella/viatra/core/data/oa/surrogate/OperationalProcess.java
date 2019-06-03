@@ -14,14 +14,12 @@ package org.polarsys.capella.viatra.core.data.oa.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.core.data.oa.surrogate.OperationalProcess__involvingOperationalCapabilitiesMatcher;
-import org.polarsys.capella.viatra.core.data.oa.surrogate.util.OperationalProcess__involvingOperationalCapabilitiesQuerySpecification;
+import org.polarsys.capella.viatra.core.data.oa.surrogate.OperationalProcess__involvingOperationalCapabilities;
 
 /**
  * A pattern group formed of all public patterns defined in OperationalProcess.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file OperationalProcess.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -29,7 +27,7 @@ import org.polarsys.capella.viatra.core.data.oa.surrogate.util.OperationalProces
  * <li>OperationalProcess__involvingOperationalCapabilities</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -38,10 +36,10 @@ public final class OperationalProcess extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static OperationalProcess instance() throws ViatraQueryException {
+  public static OperationalProcess instance() {
     if (INSTANCE == null) {
         INSTANCE = new OperationalProcess();
     }
@@ -50,15 +48,15 @@ public final class OperationalProcess extends BaseGeneratedPatternGroup {
   
   private static OperationalProcess INSTANCE;
   
-  private OperationalProcess() throws ViatraQueryException {
-    querySpecifications.add(OperationalProcess__involvingOperationalCapabilitiesQuerySpecification.instance());
+  private OperationalProcess() {
+    querySpecifications.add(OperationalProcess__involvingOperationalCapabilities.instance());
   }
   
-  public OperationalProcess__involvingOperationalCapabilitiesQuerySpecification getOperationalProcess__involvingOperationalCapabilities() throws ViatraQueryException {
-    return OperationalProcess__involvingOperationalCapabilitiesQuerySpecification.instance();
+  public OperationalProcess__involvingOperationalCapabilities getOperationalProcess__involvingOperationalCapabilities() {
+    return OperationalProcess__involvingOperationalCapabilities.instance();
   }
   
-  public OperationalProcess__involvingOperationalCapabilitiesMatcher getOperationalProcess__involvingOperationalCapabilities(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return OperationalProcess__involvingOperationalCapabilitiesMatcher.on(engine);
+  public OperationalProcess__involvingOperationalCapabilities.Matcher getOperationalProcess__involvingOperationalCapabilities(final ViatraQueryEngine engine) {
+    return OperationalProcess__involvingOperationalCapabilities.Matcher.on(engine);
   }
 }

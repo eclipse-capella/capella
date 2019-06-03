@@ -14,18 +14,14 @@ package org.polarsys.capella.viatra.common.data.core.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.common.data.core.surrogate.InformationsExchanger__incomingInformationFlowsMatcher;
-import org.polarsys.capella.viatra.common.data.core.surrogate.InformationsExchanger__informationFlowsMatcher;
-import org.polarsys.capella.viatra.common.data.core.surrogate.InformationsExchanger__outgoingInformationFlowsMatcher;
-import org.polarsys.capella.viatra.common.data.core.surrogate.util.InformationsExchanger__incomingInformationFlowsQuerySpecification;
-import org.polarsys.capella.viatra.common.data.core.surrogate.util.InformationsExchanger__informationFlowsQuerySpecification;
-import org.polarsys.capella.viatra.common.data.core.surrogate.util.InformationsExchanger__outgoingInformationFlowsQuerySpecification;
+import org.polarsys.capella.viatra.common.data.core.surrogate.InformationsExchanger__incomingInformationFlows;
+import org.polarsys.capella.viatra.common.data.core.surrogate.InformationsExchanger__informationFlows;
+import org.polarsys.capella.viatra.common.data.core.surrogate.InformationsExchanger__outgoingInformationFlows;
 
 /**
  * A pattern group formed of all public patterns defined in InformationsExchanger.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file InformationsExchanger.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -35,7 +31,7 @@ import org.polarsys.capella.viatra.common.data.core.surrogate.util.InformationsE
  * <li>InformationsExchanger__informationFlows</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -44,10 +40,10 @@ public final class InformationsExchanger extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static InformationsExchanger instance() throws ViatraQueryException {
+  public static InformationsExchanger instance() {
     if (INSTANCE == null) {
         INSTANCE = new InformationsExchanger();
     }
@@ -56,33 +52,33 @@ public final class InformationsExchanger extends BaseGeneratedPatternGroup {
   
   private static InformationsExchanger INSTANCE;
   
-  private InformationsExchanger() throws ViatraQueryException {
-    querySpecifications.add(InformationsExchanger__incomingInformationFlowsQuerySpecification.instance());
-    querySpecifications.add(InformationsExchanger__outgoingInformationFlowsQuerySpecification.instance());
-    querySpecifications.add(InformationsExchanger__informationFlowsQuerySpecification.instance());
+  private InformationsExchanger() {
+    querySpecifications.add(InformationsExchanger__incomingInformationFlows.instance());
+    querySpecifications.add(InformationsExchanger__outgoingInformationFlows.instance());
+    querySpecifications.add(InformationsExchanger__informationFlows.instance());
   }
   
-  public InformationsExchanger__incomingInformationFlowsQuerySpecification getInformationsExchanger__incomingInformationFlows() throws ViatraQueryException {
-    return InformationsExchanger__incomingInformationFlowsQuerySpecification.instance();
+  public InformationsExchanger__incomingInformationFlows getInformationsExchanger__incomingInformationFlows() {
+    return InformationsExchanger__incomingInformationFlows.instance();
   }
   
-  public InformationsExchanger__incomingInformationFlowsMatcher getInformationsExchanger__incomingInformationFlows(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return InformationsExchanger__incomingInformationFlowsMatcher.on(engine);
+  public InformationsExchanger__incomingInformationFlows.Matcher getInformationsExchanger__incomingInformationFlows(final ViatraQueryEngine engine) {
+    return InformationsExchanger__incomingInformationFlows.Matcher.on(engine);
   }
   
-  public InformationsExchanger__outgoingInformationFlowsQuerySpecification getInformationsExchanger__outgoingInformationFlows() throws ViatraQueryException {
-    return InformationsExchanger__outgoingInformationFlowsQuerySpecification.instance();
+  public InformationsExchanger__outgoingInformationFlows getInformationsExchanger__outgoingInformationFlows() {
+    return InformationsExchanger__outgoingInformationFlows.instance();
   }
   
-  public InformationsExchanger__outgoingInformationFlowsMatcher getInformationsExchanger__outgoingInformationFlows(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return InformationsExchanger__outgoingInformationFlowsMatcher.on(engine);
+  public InformationsExchanger__outgoingInformationFlows.Matcher getInformationsExchanger__outgoingInformationFlows(final ViatraQueryEngine engine) {
+    return InformationsExchanger__outgoingInformationFlows.Matcher.on(engine);
   }
   
-  public InformationsExchanger__informationFlowsQuerySpecification getInformationsExchanger__informationFlows() throws ViatraQueryException {
-    return InformationsExchanger__informationFlowsQuerySpecification.instance();
+  public InformationsExchanger__informationFlows getInformationsExchanger__informationFlows() {
+    return InformationsExchanger__informationFlows.instance();
   }
   
-  public InformationsExchanger__informationFlowsMatcher getInformationsExchanger__informationFlows(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return InformationsExchanger__informationFlowsMatcher.on(engine);
+  public InformationsExchanger__informationFlows.Matcher getInformationsExchanger__informationFlows(final ViatraQueryEngine engine) {
+    return InformationsExchanger__informationFlows.Matcher.on(engine);
   }
 }

@@ -41,7 +41,7 @@ import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.EdgeStyle;
 import org.eclipse.sirius.diagram.EdgeTarget;
-import org.eclipse.sirius.diagram.business.internal.metamodel.helper.MappingHelper;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.MappingWithInterpreterHelper;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.filter.FilterDescription;
@@ -1091,8 +1091,8 @@ public class FunctionalChainServices {
     return false;
   }
 
-  public MappingHelper getMappingHelper(DSemanticDecorator semanticDecorator) {
-    return new MappingHelper(
+  public MappingWithInterpreterHelper getMappingHelper(DSemanticDecorator semanticDecorator) {
+    return new MappingWithInterpreterHelper(
         SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(semanticDecorator.getTarget()));
   }
 

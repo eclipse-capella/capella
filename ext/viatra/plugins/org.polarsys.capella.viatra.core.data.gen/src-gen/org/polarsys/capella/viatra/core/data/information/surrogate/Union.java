@@ -14,14 +14,12 @@ package org.polarsys.capella.viatra.core.data.information.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.core.data.information.surrogate.Union__containedUnionPropertiesMatcher;
-import org.polarsys.capella.viatra.core.data.information.surrogate.util.Union__containedUnionPropertiesQuerySpecification;
+import org.polarsys.capella.viatra.core.data.information.surrogate.Union__containedUnionProperties;
 
 /**
  * A pattern group formed of all public patterns defined in Union.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file Union.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -29,7 +27,7 @@ import org.polarsys.capella.viatra.core.data.information.surrogate.util.Union__c
  * <li>Union__containedUnionProperties</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -38,10 +36,10 @@ public final class Union extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static Union instance() throws ViatraQueryException {
+  public static Union instance() {
     if (INSTANCE == null) {
         INSTANCE = new Union();
     }
@@ -50,15 +48,15 @@ public final class Union extends BaseGeneratedPatternGroup {
   
   private static Union INSTANCE;
   
-  private Union() throws ViatraQueryException {
-    querySpecifications.add(Union__containedUnionPropertiesQuerySpecification.instance());
+  private Union() {
+    querySpecifications.add(Union__containedUnionProperties.instance());
   }
   
-  public Union__containedUnionPropertiesQuerySpecification getUnion__containedUnionProperties() throws ViatraQueryException {
-    return Union__containedUnionPropertiesQuerySpecification.instance();
+  public Union__containedUnionProperties getUnion__containedUnionProperties() {
+    return Union__containedUnionProperties.instance();
   }
   
-  public Union__containedUnionPropertiesMatcher getUnion__containedUnionProperties(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return Union__containedUnionPropertiesMatcher.on(engine);
+  public Union__containedUnionProperties.Matcher getUnion__containedUnionProperties(final ViatraQueryEngine engine) {
+    return Union__containedUnionProperties.Matcher.on(engine);
   }
 }

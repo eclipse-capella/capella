@@ -46,7 +46,7 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeContainer;
-import org.eclipse.sirius.diagram.business.internal.metamodel.helper.MappingHelper;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.MappingWithInterpreterHelper;
 import org.eclipse.sirius.diagram.business.internal.query.AbstractNodeMappingApplicabilityTester;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
@@ -467,9 +467,10 @@ public class CapellaDiagramPasteCommand extends AbstractResultCommand {
       if (pasted instanceof DDiagramElement) {
         DDiagramElement element = (DDiagramElement) pasted;
         Session session = SessionManager.INSTANCE.getSession(element.getTarget());
-        MappingHelper mappingHelper = new MappingHelper(session.getInterpreter());
-        Style bestStyle = mappingHelper.getBestStyle((element).getDiagramElementMapping(), element.getTarget(), pasted,
+        MappingWithInterpreterHelper mappingHelper = new MappingWithInterpreterHelper(session.getInterpreter());
+        Style bestStyle = mappingHelper.getBestStyle(element.getDiagramElementMapping(), element.getTarget(), pasted,
             pasted.eContainer(), element.getParentDiagram());
+
         new SetStyleSwitch(bestStyle).doSwitch(pasted);
       }
     }

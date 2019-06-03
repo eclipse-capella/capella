@@ -14,18 +14,14 @@ package org.polarsys.capella.viatra.core.data.fa.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.ExchangeSpecification__containingLinkMatcher;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.ExchangeSpecification__incomingExchangeSpecificationRealizationsMatcher;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.ExchangeSpecification__outgoingExchangeSpecificationRealizationsMatcher;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.util.ExchangeSpecification__containingLinkQuerySpecification;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.util.ExchangeSpecification__incomingExchangeSpecificationRealizationsQuerySpecification;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.util.ExchangeSpecification__outgoingExchangeSpecificationRealizationsQuerySpecification;
+import org.polarsys.capella.viatra.core.data.fa.surrogate.ExchangeSpecification__containingLink;
+import org.polarsys.capella.viatra.core.data.fa.surrogate.ExchangeSpecification__incomingExchangeSpecificationRealizations;
+import org.polarsys.capella.viatra.core.data.fa.surrogate.ExchangeSpecification__outgoingExchangeSpecificationRealizations;
 
 /**
  * A pattern group formed of all public patterns defined in ExchangeSpecification.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file ExchangeSpecification.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -35,7 +31,7 @@ import org.polarsys.capella.viatra.core.data.fa.surrogate.util.ExchangeSpecifica
  * <li>ExchangeSpecification__incomingExchangeSpecificationRealizations</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -44,10 +40,10 @@ public final class ExchangeSpecification extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static ExchangeSpecification instance() throws ViatraQueryException {
+  public static ExchangeSpecification instance() {
     if (INSTANCE == null) {
         INSTANCE = new ExchangeSpecification();
     }
@@ -56,33 +52,33 @@ public final class ExchangeSpecification extends BaseGeneratedPatternGroup {
   
   private static ExchangeSpecification INSTANCE;
   
-  private ExchangeSpecification() throws ViatraQueryException {
-    querySpecifications.add(ExchangeSpecification__containingLinkQuerySpecification.instance());
-    querySpecifications.add(ExchangeSpecification__outgoingExchangeSpecificationRealizationsQuerySpecification.instance());
-    querySpecifications.add(ExchangeSpecification__incomingExchangeSpecificationRealizationsQuerySpecification.instance());
+  private ExchangeSpecification() {
+    querySpecifications.add(ExchangeSpecification__containingLink.instance());
+    querySpecifications.add(ExchangeSpecification__outgoingExchangeSpecificationRealizations.instance());
+    querySpecifications.add(ExchangeSpecification__incomingExchangeSpecificationRealizations.instance());
   }
   
-  public ExchangeSpecification__containingLinkQuerySpecification getExchangeSpecification__containingLink() throws ViatraQueryException {
-    return ExchangeSpecification__containingLinkQuerySpecification.instance();
+  public ExchangeSpecification__containingLink getExchangeSpecification__containingLink() {
+    return ExchangeSpecification__containingLink.instance();
   }
   
-  public ExchangeSpecification__containingLinkMatcher getExchangeSpecification__containingLink(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return ExchangeSpecification__containingLinkMatcher.on(engine);
+  public ExchangeSpecification__containingLink.Matcher getExchangeSpecification__containingLink(final ViatraQueryEngine engine) {
+    return ExchangeSpecification__containingLink.Matcher.on(engine);
   }
   
-  public ExchangeSpecification__outgoingExchangeSpecificationRealizationsQuerySpecification getExchangeSpecification__outgoingExchangeSpecificationRealizations() throws ViatraQueryException {
-    return ExchangeSpecification__outgoingExchangeSpecificationRealizationsQuerySpecification.instance();
+  public ExchangeSpecification__outgoingExchangeSpecificationRealizations getExchangeSpecification__outgoingExchangeSpecificationRealizations() {
+    return ExchangeSpecification__outgoingExchangeSpecificationRealizations.instance();
   }
   
-  public ExchangeSpecification__outgoingExchangeSpecificationRealizationsMatcher getExchangeSpecification__outgoingExchangeSpecificationRealizations(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return ExchangeSpecification__outgoingExchangeSpecificationRealizationsMatcher.on(engine);
+  public ExchangeSpecification__outgoingExchangeSpecificationRealizations.Matcher getExchangeSpecification__outgoingExchangeSpecificationRealizations(final ViatraQueryEngine engine) {
+    return ExchangeSpecification__outgoingExchangeSpecificationRealizations.Matcher.on(engine);
   }
   
-  public ExchangeSpecification__incomingExchangeSpecificationRealizationsQuerySpecification getExchangeSpecification__incomingExchangeSpecificationRealizations() throws ViatraQueryException {
-    return ExchangeSpecification__incomingExchangeSpecificationRealizationsQuerySpecification.instance();
+  public ExchangeSpecification__incomingExchangeSpecificationRealizations getExchangeSpecification__incomingExchangeSpecificationRealizations() {
+    return ExchangeSpecification__incomingExchangeSpecificationRealizations.instance();
   }
   
-  public ExchangeSpecification__incomingExchangeSpecificationRealizationsMatcher getExchangeSpecification__incomingExchangeSpecificationRealizations(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return ExchangeSpecification__incomingExchangeSpecificationRealizationsMatcher.on(engine);
+  public ExchangeSpecification__incomingExchangeSpecificationRealizations.Matcher getExchangeSpecification__incomingExchangeSpecificationRealizations(final ViatraQueryEngine engine) {
+    return ExchangeSpecification__incomingExchangeSpecificationRealizations.Matcher.on(engine);
   }
 }

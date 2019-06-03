@@ -14,16 +14,13 @@ package org.polarsys.capella.viatra.core.data.fa.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.ComponentExchangeRealization__allocatedComponentExchangeMatcher;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.ComponentExchangeRealization__allocatingComponentExchangeMatcher;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.util.ComponentExchangeRealization__allocatedComponentExchangeQuerySpecification;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.util.ComponentExchangeRealization__allocatingComponentExchangeQuerySpecification;
+import org.polarsys.capella.viatra.core.data.fa.surrogate.ComponentExchangeRealization__allocatedComponentExchange;
+import org.polarsys.capella.viatra.core.data.fa.surrogate.ComponentExchangeRealization__allocatingComponentExchange;
 
 /**
  * A pattern group formed of all public patterns defined in ComponentExchangeRealization.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file ComponentExchangeRealization.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -32,7 +29,7 @@ import org.polarsys.capella.viatra.core.data.fa.surrogate.util.ComponentExchange
  * <li>ComponentExchangeRealization__allocatingComponentExchange</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -41,10 +38,10 @@ public final class ComponentExchangeRealization extends BaseGeneratedPatternGrou
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static ComponentExchangeRealization instance() throws ViatraQueryException {
+  public static ComponentExchangeRealization instance() {
     if (INSTANCE == null) {
         INSTANCE = new ComponentExchangeRealization();
     }
@@ -53,24 +50,24 @@ public final class ComponentExchangeRealization extends BaseGeneratedPatternGrou
   
   private static ComponentExchangeRealization INSTANCE;
   
-  private ComponentExchangeRealization() throws ViatraQueryException {
-    querySpecifications.add(ComponentExchangeRealization__allocatedComponentExchangeQuerySpecification.instance());
-    querySpecifications.add(ComponentExchangeRealization__allocatingComponentExchangeQuerySpecification.instance());
+  private ComponentExchangeRealization() {
+    querySpecifications.add(ComponentExchangeRealization__allocatedComponentExchange.instance());
+    querySpecifications.add(ComponentExchangeRealization__allocatingComponentExchange.instance());
   }
   
-  public ComponentExchangeRealization__allocatedComponentExchangeQuerySpecification getComponentExchangeRealization__allocatedComponentExchange() throws ViatraQueryException {
-    return ComponentExchangeRealization__allocatedComponentExchangeQuerySpecification.instance();
+  public ComponentExchangeRealization__allocatedComponentExchange getComponentExchangeRealization__allocatedComponentExchange() {
+    return ComponentExchangeRealization__allocatedComponentExchange.instance();
   }
   
-  public ComponentExchangeRealization__allocatedComponentExchangeMatcher getComponentExchangeRealization__allocatedComponentExchange(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return ComponentExchangeRealization__allocatedComponentExchangeMatcher.on(engine);
+  public ComponentExchangeRealization__allocatedComponentExchange.Matcher getComponentExchangeRealization__allocatedComponentExchange(final ViatraQueryEngine engine) {
+    return ComponentExchangeRealization__allocatedComponentExchange.Matcher.on(engine);
   }
   
-  public ComponentExchangeRealization__allocatingComponentExchangeQuerySpecification getComponentExchangeRealization__allocatingComponentExchange() throws ViatraQueryException {
-    return ComponentExchangeRealization__allocatingComponentExchangeQuerySpecification.instance();
+  public ComponentExchangeRealization__allocatingComponentExchange getComponentExchangeRealization__allocatingComponentExchange() {
+    return ComponentExchangeRealization__allocatingComponentExchange.instance();
   }
   
-  public ComponentExchangeRealization__allocatingComponentExchangeMatcher getComponentExchangeRealization__allocatingComponentExchange(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return ComponentExchangeRealization__allocatingComponentExchangeMatcher.on(engine);
+  public ComponentExchangeRealization__allocatingComponentExchange.Matcher getComponentExchangeRealization__allocatingComponentExchange(final ViatraQueryEngine engine) {
+    return ComponentExchangeRealization__allocatingComponentExchange.Matcher.on(engine);
   }
 }

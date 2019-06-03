@@ -14,14 +14,12 @@ package org.polarsys.capella.viatra.core.data.cs.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.InterfaceImplementation__interfaceImplementorMatcher;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.util.InterfaceImplementation__interfaceImplementorQuerySpecification;
+import org.polarsys.capella.viatra.core.data.cs.surrogate.InterfaceImplementation__interfaceImplementor;
 
 /**
  * A pattern group formed of all public patterns defined in InterfaceImplementation.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file InterfaceImplementation.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -29,7 +27,7 @@ import org.polarsys.capella.viatra.core.data.cs.surrogate.util.InterfaceImplemen
  * <li>InterfaceImplementation__interfaceImplementor</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -38,10 +36,10 @@ public final class InterfaceImplementation extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static InterfaceImplementation instance() throws ViatraQueryException {
+  public static InterfaceImplementation instance() {
     if (INSTANCE == null) {
         INSTANCE = new InterfaceImplementation();
     }
@@ -50,15 +48,15 @@ public final class InterfaceImplementation extends BaseGeneratedPatternGroup {
   
   private static InterfaceImplementation INSTANCE;
   
-  private InterfaceImplementation() throws ViatraQueryException {
-    querySpecifications.add(InterfaceImplementation__interfaceImplementorQuerySpecification.instance());
+  private InterfaceImplementation() {
+    querySpecifications.add(InterfaceImplementation__interfaceImplementor.instance());
   }
   
-  public InterfaceImplementation__interfaceImplementorQuerySpecification getInterfaceImplementation__interfaceImplementor() throws ViatraQueryException {
-    return InterfaceImplementation__interfaceImplementorQuerySpecification.instance();
+  public InterfaceImplementation__interfaceImplementor getInterfaceImplementation__interfaceImplementor() {
+    return InterfaceImplementation__interfaceImplementor.instance();
   }
   
-  public InterfaceImplementation__interfaceImplementorMatcher getInterfaceImplementation__interfaceImplementor(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return InterfaceImplementation__interfaceImplementorMatcher.on(engine);
+  public InterfaceImplementation__interfaceImplementor.Matcher getInterfaceImplementation__interfaceImplementor(final ViatraQueryEngine engine) {
+    return InterfaceImplementation__interfaceImplementor.Matcher.on(engine);
   }
 }

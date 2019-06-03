@@ -14,16 +14,13 @@ package org.polarsys.capella.viatra.core.data.interaction.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.core.data.interaction.surrogate.AbstractCapabilityRealization__realizedCapabilityMatcher;
-import org.polarsys.capella.viatra.core.data.interaction.surrogate.AbstractCapabilityRealization__realizingCapabilityMatcher;
-import org.polarsys.capella.viatra.core.data.interaction.surrogate.util.AbstractCapabilityRealization__realizedCapabilityQuerySpecification;
-import org.polarsys.capella.viatra.core.data.interaction.surrogate.util.AbstractCapabilityRealization__realizingCapabilityQuerySpecification;
+import org.polarsys.capella.viatra.core.data.interaction.surrogate.AbstractCapabilityRealization__realizedCapability;
+import org.polarsys.capella.viatra.core.data.interaction.surrogate.AbstractCapabilityRealization__realizingCapability;
 
 /**
  * A pattern group formed of all public patterns defined in AbstractCapabilityRealization.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file AbstractCapabilityRealization.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -32,7 +29,7 @@ import org.polarsys.capella.viatra.core.data.interaction.surrogate.util.Abstract
  * <li>AbstractCapabilityRealization__realizingCapability</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -41,10 +38,10 @@ public final class AbstractCapabilityRealization extends BaseGeneratedPatternGro
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static AbstractCapabilityRealization instance() throws ViatraQueryException {
+  public static AbstractCapabilityRealization instance() {
     if (INSTANCE == null) {
         INSTANCE = new AbstractCapabilityRealization();
     }
@@ -53,24 +50,24 @@ public final class AbstractCapabilityRealization extends BaseGeneratedPatternGro
   
   private static AbstractCapabilityRealization INSTANCE;
   
-  private AbstractCapabilityRealization() throws ViatraQueryException {
-    querySpecifications.add(AbstractCapabilityRealization__realizedCapabilityQuerySpecification.instance());
-    querySpecifications.add(AbstractCapabilityRealization__realizingCapabilityQuerySpecification.instance());
+  private AbstractCapabilityRealization() {
+    querySpecifications.add(AbstractCapabilityRealization__realizedCapability.instance());
+    querySpecifications.add(AbstractCapabilityRealization__realizingCapability.instance());
   }
   
-  public AbstractCapabilityRealization__realizedCapabilityQuerySpecification getAbstractCapabilityRealization__realizedCapability() throws ViatraQueryException {
-    return AbstractCapabilityRealization__realizedCapabilityQuerySpecification.instance();
+  public AbstractCapabilityRealization__realizedCapability getAbstractCapabilityRealization__realizedCapability() {
+    return AbstractCapabilityRealization__realizedCapability.instance();
   }
   
-  public AbstractCapabilityRealization__realizedCapabilityMatcher getAbstractCapabilityRealization__realizedCapability(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return AbstractCapabilityRealization__realizedCapabilityMatcher.on(engine);
+  public AbstractCapabilityRealization__realizedCapability.Matcher getAbstractCapabilityRealization__realizedCapability(final ViatraQueryEngine engine) {
+    return AbstractCapabilityRealization__realizedCapability.Matcher.on(engine);
   }
   
-  public AbstractCapabilityRealization__realizingCapabilityQuerySpecification getAbstractCapabilityRealization__realizingCapability() throws ViatraQueryException {
-    return AbstractCapabilityRealization__realizingCapabilityQuerySpecification.instance();
+  public AbstractCapabilityRealization__realizingCapability getAbstractCapabilityRealization__realizingCapability() {
+    return AbstractCapabilityRealization__realizingCapability.instance();
   }
   
-  public AbstractCapabilityRealization__realizingCapabilityMatcher getAbstractCapabilityRealization__realizingCapability(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return AbstractCapabilityRealization__realizingCapabilityMatcher.on(engine);
+  public AbstractCapabilityRealization__realizingCapability.Matcher getAbstractCapabilityRealization__realizingCapability(final ViatraQueryEngine engine) {
+    return AbstractCapabilityRealization__realizingCapability.Matcher.on(engine);
   }
 }

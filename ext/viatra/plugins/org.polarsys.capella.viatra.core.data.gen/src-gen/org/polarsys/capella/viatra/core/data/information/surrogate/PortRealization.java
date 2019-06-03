@@ -14,16 +14,13 @@ package org.polarsys.capella.viatra.core.data.information.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.core.data.information.surrogate.PortRealization__realizedPortMatcher;
-import org.polarsys.capella.viatra.core.data.information.surrogate.PortRealization__realizingPortMatcher;
-import org.polarsys.capella.viatra.core.data.information.surrogate.util.PortRealization__realizedPortQuerySpecification;
-import org.polarsys.capella.viatra.core.data.information.surrogate.util.PortRealization__realizingPortQuerySpecification;
+import org.polarsys.capella.viatra.core.data.information.surrogate.PortRealization__realizedPort;
+import org.polarsys.capella.viatra.core.data.information.surrogate.PortRealization__realizingPort;
 
 /**
  * A pattern group formed of all public patterns defined in PortRealization.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file PortRealization.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -32,7 +29,7 @@ import org.polarsys.capella.viatra.core.data.information.surrogate.util.PortReal
  * <li>PortRealization__realizingPort</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -41,10 +38,10 @@ public final class PortRealization extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static PortRealization instance() throws ViatraQueryException {
+  public static PortRealization instance() {
     if (INSTANCE == null) {
         INSTANCE = new PortRealization();
     }
@@ -53,24 +50,24 @@ public final class PortRealization extends BaseGeneratedPatternGroup {
   
   private static PortRealization INSTANCE;
   
-  private PortRealization() throws ViatraQueryException {
-    querySpecifications.add(PortRealization__realizedPortQuerySpecification.instance());
-    querySpecifications.add(PortRealization__realizingPortQuerySpecification.instance());
+  private PortRealization() {
+    querySpecifications.add(PortRealization__realizedPort.instance());
+    querySpecifications.add(PortRealization__realizingPort.instance());
   }
   
-  public PortRealization__realizedPortQuerySpecification getPortRealization__realizedPort() throws ViatraQueryException {
-    return PortRealization__realizedPortQuerySpecification.instance();
+  public PortRealization__realizedPort getPortRealization__realizedPort() {
+    return PortRealization__realizedPort.instance();
   }
   
-  public PortRealization__realizedPortMatcher getPortRealization__realizedPort(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return PortRealization__realizedPortMatcher.on(engine);
+  public PortRealization__realizedPort.Matcher getPortRealization__realizedPort(final ViatraQueryEngine engine) {
+    return PortRealization__realizedPort.Matcher.on(engine);
   }
   
-  public PortRealization__realizingPortQuerySpecification getPortRealization__realizingPort() throws ViatraQueryException {
-    return PortRealization__realizingPortQuerySpecification.instance();
+  public PortRealization__realizingPort getPortRealization__realizingPort() {
+    return PortRealization__realizingPort.instance();
   }
   
-  public PortRealization__realizingPortMatcher getPortRealization__realizingPort(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return PortRealization__realizingPortMatcher.on(engine);
+  public PortRealization__realizingPort.Matcher getPortRealization__realizingPort(final ViatraQueryEngine engine) {
+    return PortRealization__realizingPort.Matcher.on(engine);
   }
 }

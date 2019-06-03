@@ -14,16 +14,13 @@ package org.polarsys.capella.viatra.core.data.oa.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.core.data.oa.surrogate.ActivityAllocation__activityMatcher;
-import org.polarsys.capella.viatra.core.data.oa.surrogate.ActivityAllocation__roleMatcher;
-import org.polarsys.capella.viatra.core.data.oa.surrogate.util.ActivityAllocation__activityQuerySpecification;
-import org.polarsys.capella.viatra.core.data.oa.surrogate.util.ActivityAllocation__roleQuerySpecification;
+import org.polarsys.capella.viatra.core.data.oa.surrogate.ActivityAllocation__activity;
+import org.polarsys.capella.viatra.core.data.oa.surrogate.ActivityAllocation__role;
 
 /**
  * A pattern group formed of all public patterns defined in ActivityAllocation.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file ActivityAllocation.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -32,7 +29,7 @@ import org.polarsys.capella.viatra.core.data.oa.surrogate.util.ActivityAllocatio
  * <li>ActivityAllocation__activity</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -41,10 +38,10 @@ public final class ActivityAllocation extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static ActivityAllocation instance() throws ViatraQueryException {
+  public static ActivityAllocation instance() {
     if (INSTANCE == null) {
         INSTANCE = new ActivityAllocation();
     }
@@ -53,24 +50,24 @@ public final class ActivityAllocation extends BaseGeneratedPatternGroup {
   
   private static ActivityAllocation INSTANCE;
   
-  private ActivityAllocation() throws ViatraQueryException {
-    querySpecifications.add(ActivityAllocation__roleQuerySpecification.instance());
-    querySpecifications.add(ActivityAllocation__activityQuerySpecification.instance());
+  private ActivityAllocation() {
+    querySpecifications.add(ActivityAllocation__role.instance());
+    querySpecifications.add(ActivityAllocation__activity.instance());
   }
   
-  public ActivityAllocation__roleQuerySpecification getActivityAllocation__role() throws ViatraQueryException {
-    return ActivityAllocation__roleQuerySpecification.instance();
+  public ActivityAllocation__role getActivityAllocation__role() {
+    return ActivityAllocation__role.instance();
   }
   
-  public ActivityAllocation__roleMatcher getActivityAllocation__role(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return ActivityAllocation__roleMatcher.on(engine);
+  public ActivityAllocation__role.Matcher getActivityAllocation__role(final ViatraQueryEngine engine) {
+    return ActivityAllocation__role.Matcher.on(engine);
   }
   
-  public ActivityAllocation__activityQuerySpecification getActivityAllocation__activity() throws ViatraQueryException {
-    return ActivityAllocation__activityQuerySpecification.instance();
+  public ActivityAllocation__activity getActivityAllocation__activity() {
+    return ActivityAllocation__activity.instance();
   }
   
-  public ActivityAllocation__activityMatcher getActivityAllocation__activity(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return ActivityAllocation__activityMatcher.on(engine);
+  public ActivityAllocation__activity.Matcher getActivityAllocation__activity(final ViatraQueryEngine engine) {
+    return ActivityAllocation__activity.Matcher.on(engine);
   }
 }

@@ -14,14 +14,12 @@ package org.polarsys.capella.viatra.core.data.information.datavalue.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.core.data.information.datavalue.surrogate.NumericValue__numericTypeMatcher;
-import org.polarsys.capella.viatra.core.data.information.datavalue.surrogate.util.NumericValue__numericTypeQuerySpecification;
+import org.polarsys.capella.viatra.core.data.information.datavalue.surrogate.NumericValue__numericType;
 
 /**
  * A pattern group formed of all public patterns defined in NumericValue.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file NumericValue.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -29,7 +27,7 @@ import org.polarsys.capella.viatra.core.data.information.datavalue.surrogate.uti
  * <li>NumericValue__numericType</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -38,10 +36,10 @@ public final class NumericValue extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static NumericValue instance() throws ViatraQueryException {
+  public static NumericValue instance() {
     if (INSTANCE == null) {
         INSTANCE = new NumericValue();
     }
@@ -50,15 +48,15 @@ public final class NumericValue extends BaseGeneratedPatternGroup {
   
   private static NumericValue INSTANCE;
   
-  private NumericValue() throws ViatraQueryException {
-    querySpecifications.add(NumericValue__numericTypeQuerySpecification.instance());
+  private NumericValue() {
+    querySpecifications.add(NumericValue__numericType.instance());
   }
   
-  public NumericValue__numericTypeQuerySpecification getNumericValue__numericType() throws ViatraQueryException {
-    return NumericValue__numericTypeQuerySpecification.instance();
+  public NumericValue__numericType getNumericValue__numericType() {
+    return NumericValue__numericType.instance();
   }
   
-  public NumericValue__numericTypeMatcher getNumericValue__numericType(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return NumericValue__numericTypeMatcher.on(engine);
+  public NumericValue__numericType.Matcher getNumericValue__numericType(final ViatraQueryEngine engine) {
+    return NumericValue__numericType.Matcher.on(engine);
   }
 }

@@ -14,16 +14,13 @@ package org.polarsys.capella.viatra.core.data.capellacommon.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.core.data.capellacommon.surrogate.GenericTrace__sourceMatcher;
-import org.polarsys.capella.viatra.core.data.capellacommon.surrogate.GenericTrace__targetMatcher;
-import org.polarsys.capella.viatra.core.data.capellacommon.surrogate.util.GenericTrace__sourceQuerySpecification;
-import org.polarsys.capella.viatra.core.data.capellacommon.surrogate.util.GenericTrace__targetQuerySpecification;
+import org.polarsys.capella.viatra.core.data.capellacommon.surrogate.GenericTrace__source;
+import org.polarsys.capella.viatra.core.data.capellacommon.surrogate.GenericTrace__target;
 
 /**
  * A pattern group formed of all public patterns defined in GenericTrace.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file GenericTrace.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -32,7 +29,7 @@ import org.polarsys.capella.viatra.core.data.capellacommon.surrogate.util.Generi
  * <li>GenericTrace__target</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -41,10 +38,10 @@ public final class GenericTrace extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static GenericTrace instance() throws ViatraQueryException {
+  public static GenericTrace instance() {
     if (INSTANCE == null) {
         INSTANCE = new GenericTrace();
     }
@@ -53,24 +50,24 @@ public final class GenericTrace extends BaseGeneratedPatternGroup {
   
   private static GenericTrace INSTANCE;
   
-  private GenericTrace() throws ViatraQueryException {
-    querySpecifications.add(GenericTrace__sourceQuerySpecification.instance());
-    querySpecifications.add(GenericTrace__targetQuerySpecification.instance());
+  private GenericTrace() {
+    querySpecifications.add(GenericTrace__source.instance());
+    querySpecifications.add(GenericTrace__target.instance());
   }
   
-  public GenericTrace__sourceQuerySpecification getGenericTrace__source() throws ViatraQueryException {
-    return GenericTrace__sourceQuerySpecification.instance();
+  public GenericTrace__source getGenericTrace__source() {
+    return GenericTrace__source.instance();
   }
   
-  public GenericTrace__sourceMatcher getGenericTrace__source(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return GenericTrace__sourceMatcher.on(engine);
+  public GenericTrace__source.Matcher getGenericTrace__source(final ViatraQueryEngine engine) {
+    return GenericTrace__source.Matcher.on(engine);
   }
   
-  public GenericTrace__targetQuerySpecification getGenericTrace__target() throws ViatraQueryException {
-    return GenericTrace__targetQuerySpecification.instance();
+  public GenericTrace__target getGenericTrace__target() {
+    return GenericTrace__target.instance();
   }
   
-  public GenericTrace__targetMatcher getGenericTrace__target(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return GenericTrace__targetMatcher.on(engine);
+  public GenericTrace__target.Matcher getGenericTrace__target(final ViatraQueryEngine engine) {
+    return GenericTrace__target.Matcher.on(engine);
   }
 }

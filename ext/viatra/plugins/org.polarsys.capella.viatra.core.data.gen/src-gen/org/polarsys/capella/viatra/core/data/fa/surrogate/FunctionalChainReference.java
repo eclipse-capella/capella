@@ -14,14 +14,12 @@ package org.polarsys.capella.viatra.core.data.fa.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionalChainReference__referencedFunctionalChainMatcher;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.util.FunctionalChainReference__referencedFunctionalChainQuerySpecification;
+import org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionalChainReference__referencedFunctionalChain;
 
 /**
  * A pattern group formed of all public patterns defined in FunctionalChainReference.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file FunctionalChainReference.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -29,7 +27,7 @@ import org.polarsys.capella.viatra.core.data.fa.surrogate.util.FunctionalChainRe
  * <li>FunctionalChainReference__referencedFunctionalChain</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -38,10 +36,10 @@ public final class FunctionalChainReference extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static FunctionalChainReference instance() throws ViatraQueryException {
+  public static FunctionalChainReference instance() {
     if (INSTANCE == null) {
         INSTANCE = new FunctionalChainReference();
     }
@@ -50,15 +48,15 @@ public final class FunctionalChainReference extends BaseGeneratedPatternGroup {
   
   private static FunctionalChainReference INSTANCE;
   
-  private FunctionalChainReference() throws ViatraQueryException {
-    querySpecifications.add(FunctionalChainReference__referencedFunctionalChainQuerySpecification.instance());
+  private FunctionalChainReference() {
+    querySpecifications.add(FunctionalChainReference__referencedFunctionalChain.instance());
   }
   
-  public FunctionalChainReference__referencedFunctionalChainQuerySpecification getFunctionalChainReference__referencedFunctionalChain() throws ViatraQueryException {
-    return FunctionalChainReference__referencedFunctionalChainQuerySpecification.instance();
+  public FunctionalChainReference__referencedFunctionalChain getFunctionalChainReference__referencedFunctionalChain() {
+    return FunctionalChainReference__referencedFunctionalChain.instance();
   }
   
-  public FunctionalChainReference__referencedFunctionalChainMatcher getFunctionalChainReference__referencedFunctionalChain(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return FunctionalChainReference__referencedFunctionalChainMatcher.on(engine);
+  public FunctionalChainReference__referencedFunctionalChain.Matcher getFunctionalChainReference__referencedFunctionalChain(final ViatraQueryEngine engine) {
+    return FunctionalChainReference__referencedFunctionalChain.Matcher.on(engine);
   }
 }

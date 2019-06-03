@@ -14,16 +14,13 @@ package org.polarsys.capella.viatra.core.data.ctx.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemCapabilityInvolvement__capabilityMatcher;
-import org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemCapabilityInvolvement__systemMatcher;
-import org.polarsys.capella.viatra.core.data.ctx.surrogate.util.SystemCapabilityInvolvement__capabilityQuerySpecification;
-import org.polarsys.capella.viatra.core.data.ctx.surrogate.util.SystemCapabilityInvolvement__systemQuerySpecification;
+import org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemCapabilityInvolvement__capability;
+import org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemCapabilityInvolvement__system;
 
 /**
  * A pattern group formed of all public patterns defined in SystemCapabilityInvolvement.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file SystemCapabilityInvolvement.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -32,7 +29,7 @@ import org.polarsys.capella.viatra.core.data.ctx.surrogate.util.SystemCapability
  * <li>SystemCapabilityInvolvement__system</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -41,10 +38,10 @@ public final class SystemCapabilityInvolvement extends BaseGeneratedPatternGroup
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static SystemCapabilityInvolvement instance() throws ViatraQueryException {
+  public static SystemCapabilityInvolvement instance() {
     if (INSTANCE == null) {
         INSTANCE = new SystemCapabilityInvolvement();
     }
@@ -53,24 +50,24 @@ public final class SystemCapabilityInvolvement extends BaseGeneratedPatternGroup
   
   private static SystemCapabilityInvolvement INSTANCE;
   
-  private SystemCapabilityInvolvement() throws ViatraQueryException {
-    querySpecifications.add(SystemCapabilityInvolvement__capabilityQuerySpecification.instance());
-    querySpecifications.add(SystemCapabilityInvolvement__systemQuerySpecification.instance());
+  private SystemCapabilityInvolvement() {
+    querySpecifications.add(SystemCapabilityInvolvement__capability.instance());
+    querySpecifications.add(SystemCapabilityInvolvement__system.instance());
   }
   
-  public SystemCapabilityInvolvement__capabilityQuerySpecification getSystemCapabilityInvolvement__capability() throws ViatraQueryException {
-    return SystemCapabilityInvolvement__capabilityQuerySpecification.instance();
+  public SystemCapabilityInvolvement__capability getSystemCapabilityInvolvement__capability() {
+    return SystemCapabilityInvolvement__capability.instance();
   }
   
-  public SystemCapabilityInvolvement__capabilityMatcher getSystemCapabilityInvolvement__capability(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return SystemCapabilityInvolvement__capabilityMatcher.on(engine);
+  public SystemCapabilityInvolvement__capability.Matcher getSystemCapabilityInvolvement__capability(final ViatraQueryEngine engine) {
+    return SystemCapabilityInvolvement__capability.Matcher.on(engine);
   }
   
-  public SystemCapabilityInvolvement__systemQuerySpecification getSystemCapabilityInvolvement__system() throws ViatraQueryException {
-    return SystemCapabilityInvolvement__systemQuerySpecification.instance();
+  public SystemCapabilityInvolvement__system getSystemCapabilityInvolvement__system() {
+    return SystemCapabilityInvolvement__system.instance();
   }
   
-  public SystemCapabilityInvolvement__systemMatcher getSystemCapabilityInvolvement__system(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return SystemCapabilityInvolvement__systemMatcher.on(engine);
+  public SystemCapabilityInvolvement__system.Matcher getSystemCapabilityInvolvement__system(final ViatraQueryEngine engine) {
+    return SystemCapabilityInvolvement__system.Matcher.on(engine);
   }
 }

@@ -14,18 +14,14 @@ package org.polarsys.capella.viatra.core.data.epbs.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.core.data.epbs.surrogate.EPBSArchitecture__allocatedPhysicalArchitectureRealizationsMatcher;
-import org.polarsys.capella.viatra.core.data.epbs.surrogate.EPBSArchitecture__allocatedPhysicalArchitecturesMatcher;
-import org.polarsys.capella.viatra.core.data.epbs.surrogate.EPBSArchitecture__containedCapabilityRealizationPkgMatcher;
-import org.polarsys.capella.viatra.core.data.epbs.surrogate.util.EPBSArchitecture__allocatedPhysicalArchitectureRealizationsQuerySpecification;
-import org.polarsys.capella.viatra.core.data.epbs.surrogate.util.EPBSArchitecture__allocatedPhysicalArchitecturesQuerySpecification;
-import org.polarsys.capella.viatra.core.data.epbs.surrogate.util.EPBSArchitecture__containedCapabilityRealizationPkgQuerySpecification;
+import org.polarsys.capella.viatra.core.data.epbs.surrogate.EPBSArchitecture__allocatedPhysicalArchitectureRealizations;
+import org.polarsys.capella.viatra.core.data.epbs.surrogate.EPBSArchitecture__allocatedPhysicalArchitectures;
+import org.polarsys.capella.viatra.core.data.epbs.surrogate.EPBSArchitecture__containedCapabilityRealizationPkg;
 
 /**
  * A pattern group formed of all public patterns defined in EPBSArchitecture.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file EPBSArchitecture.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -35,7 +31,7 @@ import org.polarsys.capella.viatra.core.data.epbs.surrogate.util.EPBSArchitectur
  * <li>EPBSArchitecture__allocatedPhysicalArchitectures</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -44,10 +40,10 @@ public final class EPBSArchitecture extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static EPBSArchitecture instance() throws ViatraQueryException {
+  public static EPBSArchitecture instance() {
     if (INSTANCE == null) {
         INSTANCE = new EPBSArchitecture();
     }
@@ -56,33 +52,33 @@ public final class EPBSArchitecture extends BaseGeneratedPatternGroup {
   
   private static EPBSArchitecture INSTANCE;
   
-  private EPBSArchitecture() throws ViatraQueryException {
-    querySpecifications.add(EPBSArchitecture__containedCapabilityRealizationPkgQuerySpecification.instance());
-    querySpecifications.add(EPBSArchitecture__allocatedPhysicalArchitectureRealizationsQuerySpecification.instance());
-    querySpecifications.add(EPBSArchitecture__allocatedPhysicalArchitecturesQuerySpecification.instance());
+  private EPBSArchitecture() {
+    querySpecifications.add(EPBSArchitecture__containedCapabilityRealizationPkg.instance());
+    querySpecifications.add(EPBSArchitecture__allocatedPhysicalArchitectureRealizations.instance());
+    querySpecifications.add(EPBSArchitecture__allocatedPhysicalArchitectures.instance());
   }
   
-  public EPBSArchitecture__containedCapabilityRealizationPkgQuerySpecification getEPBSArchitecture__containedCapabilityRealizationPkg() throws ViatraQueryException {
-    return EPBSArchitecture__containedCapabilityRealizationPkgQuerySpecification.instance();
+  public EPBSArchitecture__containedCapabilityRealizationPkg getEPBSArchitecture__containedCapabilityRealizationPkg() {
+    return EPBSArchitecture__containedCapabilityRealizationPkg.instance();
   }
   
-  public EPBSArchitecture__containedCapabilityRealizationPkgMatcher getEPBSArchitecture__containedCapabilityRealizationPkg(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return EPBSArchitecture__containedCapabilityRealizationPkgMatcher.on(engine);
+  public EPBSArchitecture__containedCapabilityRealizationPkg.Matcher getEPBSArchitecture__containedCapabilityRealizationPkg(final ViatraQueryEngine engine) {
+    return EPBSArchitecture__containedCapabilityRealizationPkg.Matcher.on(engine);
   }
   
-  public EPBSArchitecture__allocatedPhysicalArchitectureRealizationsQuerySpecification getEPBSArchitecture__allocatedPhysicalArchitectureRealizations() throws ViatraQueryException {
-    return EPBSArchitecture__allocatedPhysicalArchitectureRealizationsQuerySpecification.instance();
+  public EPBSArchitecture__allocatedPhysicalArchitectureRealizations getEPBSArchitecture__allocatedPhysicalArchitectureRealizations() {
+    return EPBSArchitecture__allocatedPhysicalArchitectureRealizations.instance();
   }
   
-  public EPBSArchitecture__allocatedPhysicalArchitectureRealizationsMatcher getEPBSArchitecture__allocatedPhysicalArchitectureRealizations(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return EPBSArchitecture__allocatedPhysicalArchitectureRealizationsMatcher.on(engine);
+  public EPBSArchitecture__allocatedPhysicalArchitectureRealizations.Matcher getEPBSArchitecture__allocatedPhysicalArchitectureRealizations(final ViatraQueryEngine engine) {
+    return EPBSArchitecture__allocatedPhysicalArchitectureRealizations.Matcher.on(engine);
   }
   
-  public EPBSArchitecture__allocatedPhysicalArchitecturesQuerySpecification getEPBSArchitecture__allocatedPhysicalArchitectures() throws ViatraQueryException {
-    return EPBSArchitecture__allocatedPhysicalArchitecturesQuerySpecification.instance();
+  public EPBSArchitecture__allocatedPhysicalArchitectures getEPBSArchitecture__allocatedPhysicalArchitectures() {
+    return EPBSArchitecture__allocatedPhysicalArchitectures.instance();
   }
   
-  public EPBSArchitecture__allocatedPhysicalArchitecturesMatcher getEPBSArchitecture__allocatedPhysicalArchitectures(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return EPBSArchitecture__allocatedPhysicalArchitecturesMatcher.on(engine);
+  public EPBSArchitecture__allocatedPhysicalArchitectures.Matcher getEPBSArchitecture__allocatedPhysicalArchitectures(final ViatraQueryEngine engine) {
+    return EPBSArchitecture__allocatedPhysicalArchitectures.Matcher.on(engine);
   }
 }

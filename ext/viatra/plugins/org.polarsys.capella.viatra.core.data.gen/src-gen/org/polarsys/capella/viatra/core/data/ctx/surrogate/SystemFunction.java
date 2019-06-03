@@ -14,24 +14,17 @@ package org.polarsys.capella.viatra.core.data.ctx.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemFunction__allocatorActorsMatcher;
-import org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemFunction__allocatorSystemsMatcher;
-import org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemFunction__childrenSystemFunctionsMatcher;
-import org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemFunction__containedSystemFunctionsMatcher;
-import org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemFunction__realizedOperationalActivitiesMatcher;
-import org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemFunction__realizingLogicalFunctionsMatcher;
-import org.polarsys.capella.viatra.core.data.ctx.surrogate.util.SystemFunction__allocatorActorsQuerySpecification;
-import org.polarsys.capella.viatra.core.data.ctx.surrogate.util.SystemFunction__allocatorSystemsQuerySpecification;
-import org.polarsys.capella.viatra.core.data.ctx.surrogate.util.SystemFunction__childrenSystemFunctionsQuerySpecification;
-import org.polarsys.capella.viatra.core.data.ctx.surrogate.util.SystemFunction__containedSystemFunctionsQuerySpecification;
-import org.polarsys.capella.viatra.core.data.ctx.surrogate.util.SystemFunction__realizedOperationalActivitiesQuerySpecification;
-import org.polarsys.capella.viatra.core.data.ctx.surrogate.util.SystemFunction__realizingLogicalFunctionsQuerySpecification;
+import org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemFunction__allocatorActors;
+import org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemFunction__allocatorSystems;
+import org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemFunction__childrenSystemFunctions;
+import org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemFunction__containedSystemFunctions;
+import org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemFunction__realizedOperationalActivities;
+import org.polarsys.capella.viatra.core.data.ctx.surrogate.SystemFunction__realizingLogicalFunctions;
 
 /**
  * A pattern group formed of all public patterns defined in SystemFunction.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file SystemFunction.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -44,7 +37,7 @@ import org.polarsys.capella.viatra.core.data.ctx.surrogate.util.SystemFunction__
  * <li>SystemFunction__childrenSystemFunctions</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -53,10 +46,10 @@ public final class SystemFunction extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static SystemFunction instance() throws ViatraQueryException {
+  public static SystemFunction instance() {
     if (INSTANCE == null) {
         INSTANCE = new SystemFunction();
     }
@@ -65,60 +58,60 @@ public final class SystemFunction extends BaseGeneratedPatternGroup {
   
   private static SystemFunction INSTANCE;
   
-  private SystemFunction() throws ViatraQueryException {
-    querySpecifications.add(SystemFunction__allocatorActorsQuerySpecification.instance());
-    querySpecifications.add(SystemFunction__allocatorSystemsQuerySpecification.instance());
-    querySpecifications.add(SystemFunction__realizedOperationalActivitiesQuerySpecification.instance());
-    querySpecifications.add(SystemFunction__realizingLogicalFunctionsQuerySpecification.instance());
-    querySpecifications.add(SystemFunction__containedSystemFunctionsQuerySpecification.instance());
-    querySpecifications.add(SystemFunction__childrenSystemFunctionsQuerySpecification.instance());
+  private SystemFunction() {
+    querySpecifications.add(SystemFunction__allocatorActors.instance());
+    querySpecifications.add(SystemFunction__allocatorSystems.instance());
+    querySpecifications.add(SystemFunction__realizedOperationalActivities.instance());
+    querySpecifications.add(SystemFunction__realizingLogicalFunctions.instance());
+    querySpecifications.add(SystemFunction__containedSystemFunctions.instance());
+    querySpecifications.add(SystemFunction__childrenSystemFunctions.instance());
   }
   
-  public SystemFunction__allocatorActorsQuerySpecification getSystemFunction__allocatorActors() throws ViatraQueryException {
-    return SystemFunction__allocatorActorsQuerySpecification.instance();
+  public SystemFunction__allocatorActors getSystemFunction__allocatorActors() {
+    return SystemFunction__allocatorActors.instance();
   }
   
-  public SystemFunction__allocatorActorsMatcher getSystemFunction__allocatorActors(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return SystemFunction__allocatorActorsMatcher.on(engine);
+  public SystemFunction__allocatorActors.Matcher getSystemFunction__allocatorActors(final ViatraQueryEngine engine) {
+    return SystemFunction__allocatorActors.Matcher.on(engine);
   }
   
-  public SystemFunction__allocatorSystemsQuerySpecification getSystemFunction__allocatorSystems() throws ViatraQueryException {
-    return SystemFunction__allocatorSystemsQuerySpecification.instance();
+  public SystemFunction__allocatorSystems getSystemFunction__allocatorSystems() {
+    return SystemFunction__allocatorSystems.instance();
   }
   
-  public SystemFunction__allocatorSystemsMatcher getSystemFunction__allocatorSystems(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return SystemFunction__allocatorSystemsMatcher.on(engine);
+  public SystemFunction__allocatorSystems.Matcher getSystemFunction__allocatorSystems(final ViatraQueryEngine engine) {
+    return SystemFunction__allocatorSystems.Matcher.on(engine);
   }
   
-  public SystemFunction__realizedOperationalActivitiesQuerySpecification getSystemFunction__realizedOperationalActivities() throws ViatraQueryException {
-    return SystemFunction__realizedOperationalActivitiesQuerySpecification.instance();
+  public SystemFunction__realizedOperationalActivities getSystemFunction__realizedOperationalActivities() {
+    return SystemFunction__realizedOperationalActivities.instance();
   }
   
-  public SystemFunction__realizedOperationalActivitiesMatcher getSystemFunction__realizedOperationalActivities(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return SystemFunction__realizedOperationalActivitiesMatcher.on(engine);
+  public SystemFunction__realizedOperationalActivities.Matcher getSystemFunction__realizedOperationalActivities(final ViatraQueryEngine engine) {
+    return SystemFunction__realizedOperationalActivities.Matcher.on(engine);
   }
   
-  public SystemFunction__realizingLogicalFunctionsQuerySpecification getSystemFunction__realizingLogicalFunctions() throws ViatraQueryException {
-    return SystemFunction__realizingLogicalFunctionsQuerySpecification.instance();
+  public SystemFunction__realizingLogicalFunctions getSystemFunction__realizingLogicalFunctions() {
+    return SystemFunction__realizingLogicalFunctions.instance();
   }
   
-  public SystemFunction__realizingLogicalFunctionsMatcher getSystemFunction__realizingLogicalFunctions(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return SystemFunction__realizingLogicalFunctionsMatcher.on(engine);
+  public SystemFunction__realizingLogicalFunctions.Matcher getSystemFunction__realizingLogicalFunctions(final ViatraQueryEngine engine) {
+    return SystemFunction__realizingLogicalFunctions.Matcher.on(engine);
   }
   
-  public SystemFunction__containedSystemFunctionsQuerySpecification getSystemFunction__containedSystemFunctions() throws ViatraQueryException {
-    return SystemFunction__containedSystemFunctionsQuerySpecification.instance();
+  public SystemFunction__containedSystemFunctions getSystemFunction__containedSystemFunctions() {
+    return SystemFunction__containedSystemFunctions.instance();
   }
   
-  public SystemFunction__containedSystemFunctionsMatcher getSystemFunction__containedSystemFunctions(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return SystemFunction__containedSystemFunctionsMatcher.on(engine);
+  public SystemFunction__containedSystemFunctions.Matcher getSystemFunction__containedSystemFunctions(final ViatraQueryEngine engine) {
+    return SystemFunction__containedSystemFunctions.Matcher.on(engine);
   }
   
-  public SystemFunction__childrenSystemFunctionsQuerySpecification getSystemFunction__childrenSystemFunctions() throws ViatraQueryException {
-    return SystemFunction__childrenSystemFunctionsQuerySpecification.instance();
+  public SystemFunction__childrenSystemFunctions getSystemFunction__childrenSystemFunctions() {
+    return SystemFunction__childrenSystemFunctions.instance();
   }
   
-  public SystemFunction__childrenSystemFunctionsMatcher getSystemFunction__childrenSystemFunctions(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return SystemFunction__childrenSystemFunctionsMatcher.on(engine);
+  public SystemFunction__childrenSystemFunctions.Matcher getSystemFunction__childrenSystemFunctions(final ViatraQueryEngine engine) {
+    return SystemFunction__childrenSystemFunctions.Matcher.on(engine);
   }
 }

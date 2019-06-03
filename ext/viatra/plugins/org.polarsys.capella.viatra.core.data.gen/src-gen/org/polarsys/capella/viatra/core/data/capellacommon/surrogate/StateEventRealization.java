@@ -14,16 +14,13 @@ package org.polarsys.capella.viatra.core.data.capellacommon.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.core.data.capellacommon.surrogate.StateEventRealization__realizedEventMatcher;
-import org.polarsys.capella.viatra.core.data.capellacommon.surrogate.StateEventRealization__realizingEventMatcher;
-import org.polarsys.capella.viatra.core.data.capellacommon.surrogate.util.StateEventRealization__realizedEventQuerySpecification;
-import org.polarsys.capella.viatra.core.data.capellacommon.surrogate.util.StateEventRealization__realizingEventQuerySpecification;
+import org.polarsys.capella.viatra.core.data.capellacommon.surrogate.StateEventRealization__realizedEvent;
+import org.polarsys.capella.viatra.core.data.capellacommon.surrogate.StateEventRealization__realizingEvent;
 
 /**
  * A pattern group formed of all public patterns defined in StateEventRealization.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file StateEventRealization.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -32,7 +29,7 @@ import org.polarsys.capella.viatra.core.data.capellacommon.surrogate.util.StateE
  * <li>StateEventRealization__realizingEvent</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -41,10 +38,10 @@ public final class StateEventRealization extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static StateEventRealization instance() throws ViatraQueryException {
+  public static StateEventRealization instance() {
     if (INSTANCE == null) {
         INSTANCE = new StateEventRealization();
     }
@@ -53,24 +50,24 @@ public final class StateEventRealization extends BaseGeneratedPatternGroup {
   
   private static StateEventRealization INSTANCE;
   
-  private StateEventRealization() throws ViatraQueryException {
-    querySpecifications.add(StateEventRealization__realizedEventQuerySpecification.instance());
-    querySpecifications.add(StateEventRealization__realizingEventQuerySpecification.instance());
+  private StateEventRealization() {
+    querySpecifications.add(StateEventRealization__realizedEvent.instance());
+    querySpecifications.add(StateEventRealization__realizingEvent.instance());
   }
   
-  public StateEventRealization__realizedEventQuerySpecification getStateEventRealization__realizedEvent() throws ViatraQueryException {
-    return StateEventRealization__realizedEventQuerySpecification.instance();
+  public StateEventRealization__realizedEvent getStateEventRealization__realizedEvent() {
+    return StateEventRealization__realizedEvent.instance();
   }
   
-  public StateEventRealization__realizedEventMatcher getStateEventRealization__realizedEvent(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return StateEventRealization__realizedEventMatcher.on(engine);
+  public StateEventRealization__realizedEvent.Matcher getStateEventRealization__realizedEvent(final ViatraQueryEngine engine) {
+    return StateEventRealization__realizedEvent.Matcher.on(engine);
   }
   
-  public StateEventRealization__realizingEventQuerySpecification getStateEventRealization__realizingEvent() throws ViatraQueryException {
-    return StateEventRealization__realizingEventQuerySpecification.instance();
+  public StateEventRealization__realizingEvent getStateEventRealization__realizingEvent() {
+    return StateEventRealization__realizingEvent.instance();
   }
   
-  public StateEventRealization__realizingEventMatcher getStateEventRealization__realizingEvent(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return StateEventRealization__realizingEventMatcher.on(engine);
+  public StateEventRealization__realizingEvent.Matcher getStateEventRealization__realizingEvent(final ViatraQueryEngine engine) {
+    return StateEventRealization__realizingEvent.Matcher.on(engine);
   }
 }

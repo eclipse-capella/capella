@@ -14,16 +14,13 @@ package org.polarsys.capella.viatra.core.data.oa.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.core.data.oa.surrogate.CommunicationMean__sourceEntityMatcher;
-import org.polarsys.capella.viatra.core.data.oa.surrogate.CommunicationMean__targetEntityMatcher;
-import org.polarsys.capella.viatra.core.data.oa.surrogate.util.CommunicationMean__sourceEntityQuerySpecification;
-import org.polarsys.capella.viatra.core.data.oa.surrogate.util.CommunicationMean__targetEntityQuerySpecification;
+import org.polarsys.capella.viatra.core.data.oa.surrogate.CommunicationMean__sourceEntity;
+import org.polarsys.capella.viatra.core.data.oa.surrogate.CommunicationMean__targetEntity;
 
 /**
  * A pattern group formed of all public patterns defined in CommunicationMean.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file CommunicationMean.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -32,7 +29,7 @@ import org.polarsys.capella.viatra.core.data.oa.surrogate.util.CommunicationMean
  * <li>CommunicationMean__targetEntity</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -41,10 +38,10 @@ public final class CommunicationMean extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static CommunicationMean instance() throws ViatraQueryException {
+  public static CommunicationMean instance() {
     if (INSTANCE == null) {
         INSTANCE = new CommunicationMean();
     }
@@ -53,24 +50,24 @@ public final class CommunicationMean extends BaseGeneratedPatternGroup {
   
   private static CommunicationMean INSTANCE;
   
-  private CommunicationMean() throws ViatraQueryException {
-    querySpecifications.add(CommunicationMean__sourceEntityQuerySpecification.instance());
-    querySpecifications.add(CommunicationMean__targetEntityQuerySpecification.instance());
+  private CommunicationMean() {
+    querySpecifications.add(CommunicationMean__sourceEntity.instance());
+    querySpecifications.add(CommunicationMean__targetEntity.instance());
   }
   
-  public CommunicationMean__sourceEntityQuerySpecification getCommunicationMean__sourceEntity() throws ViatraQueryException {
-    return CommunicationMean__sourceEntityQuerySpecification.instance();
+  public CommunicationMean__sourceEntity getCommunicationMean__sourceEntity() {
+    return CommunicationMean__sourceEntity.instance();
   }
   
-  public CommunicationMean__sourceEntityMatcher getCommunicationMean__sourceEntity(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return CommunicationMean__sourceEntityMatcher.on(engine);
+  public CommunicationMean__sourceEntity.Matcher getCommunicationMean__sourceEntity(final ViatraQueryEngine engine) {
+    return CommunicationMean__sourceEntity.Matcher.on(engine);
   }
   
-  public CommunicationMean__targetEntityQuerySpecification getCommunicationMean__targetEntity() throws ViatraQueryException {
-    return CommunicationMean__targetEntityQuerySpecification.instance();
+  public CommunicationMean__targetEntity getCommunicationMean__targetEntity() {
+    return CommunicationMean__targetEntity.instance();
   }
   
-  public CommunicationMean__targetEntityMatcher getCommunicationMean__targetEntity(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return CommunicationMean__targetEntityMatcher.on(engine);
+  public CommunicationMean__targetEntity.Matcher getCommunicationMean__targetEntity(final ViatraQueryEngine engine) {
+    return CommunicationMean__targetEntity.Matcher.on(engine);
   }
 }

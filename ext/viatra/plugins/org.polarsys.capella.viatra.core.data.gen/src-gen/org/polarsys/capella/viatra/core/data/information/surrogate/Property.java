@@ -14,14 +14,12 @@ package org.polarsys.capella.viatra.core.data.information.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.core.data.information.surrogate.Property__associationMatcher;
-import org.polarsys.capella.viatra.core.data.information.surrogate.util.Property__associationQuerySpecification;
+import org.polarsys.capella.viatra.core.data.information.surrogate.Property__association;
 
 /**
  * A pattern group formed of all public patterns defined in Property.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file Property.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -29,7 +27,7 @@ import org.polarsys.capella.viatra.core.data.information.surrogate.util.Property
  * <li>Property__association</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -38,10 +36,10 @@ public final class Property extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static Property instance() throws ViatraQueryException {
+  public static Property instance() {
     if (INSTANCE == null) {
         INSTANCE = new Property();
     }
@@ -50,15 +48,15 @@ public final class Property extends BaseGeneratedPatternGroup {
   
   private static Property INSTANCE;
   
-  private Property() throws ViatraQueryException {
-    querySpecifications.add(Property__associationQuerySpecification.instance());
+  private Property() {
+    querySpecifications.add(Property__association.instance());
   }
   
-  public Property__associationQuerySpecification getProperty__association() throws ViatraQueryException {
-    return Property__associationQuerySpecification.instance();
+  public Property__association getProperty__association() {
+    return Property__association.instance();
   }
   
-  public Property__associationMatcher getProperty__association(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return Property__associationMatcher.on(engine);
+  public Property__association.Matcher getProperty__association(final ViatraQueryEngine engine) {
+    return Property__association.Matcher.on(engine);
   }
 }

@@ -14,20 +14,15 @@ package org.polarsys.capella.viatra.core.data.information.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.core.data.information.surrogate.ExchangeItem__allocatorInterfacesMatcher;
-import org.polarsys.capella.viatra.core.data.information.surrogate.ExchangeItem__realizedExchangeItemsMatcher;
-import org.polarsys.capella.viatra.core.data.information.surrogate.ExchangeItem__realizingExchangeItemsMatcher;
-import org.polarsys.capella.viatra.core.data.information.surrogate.ExchangeItem__realizingOperationsMatcher;
-import org.polarsys.capella.viatra.core.data.information.surrogate.util.ExchangeItem__allocatorInterfacesQuerySpecification;
-import org.polarsys.capella.viatra.core.data.information.surrogate.util.ExchangeItem__realizedExchangeItemsQuerySpecification;
-import org.polarsys.capella.viatra.core.data.information.surrogate.util.ExchangeItem__realizingExchangeItemsQuerySpecification;
-import org.polarsys.capella.viatra.core.data.information.surrogate.util.ExchangeItem__realizingOperationsQuerySpecification;
+import org.polarsys.capella.viatra.core.data.information.surrogate.ExchangeItem__allocatorInterfaces;
+import org.polarsys.capella.viatra.core.data.information.surrogate.ExchangeItem__realizedExchangeItems;
+import org.polarsys.capella.viatra.core.data.information.surrogate.ExchangeItem__realizingExchangeItems;
+import org.polarsys.capella.viatra.core.data.information.surrogate.ExchangeItem__realizingOperations;
 
 /**
  * A pattern group formed of all public patterns defined in ExchangeItem.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file ExchangeItem.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -38,7 +33,7 @@ import org.polarsys.capella.viatra.core.data.information.surrogate.util.Exchange
  * <li>ExchangeItem__realizingOperations</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -47,10 +42,10 @@ public final class ExchangeItem extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static ExchangeItem instance() throws ViatraQueryException {
+  public static ExchangeItem instance() {
     if (INSTANCE == null) {
         INSTANCE = new ExchangeItem();
     }
@@ -59,42 +54,42 @@ public final class ExchangeItem extends BaseGeneratedPatternGroup {
   
   private static ExchangeItem INSTANCE;
   
-  private ExchangeItem() throws ViatraQueryException {
-    querySpecifications.add(ExchangeItem__allocatorInterfacesQuerySpecification.instance());
-    querySpecifications.add(ExchangeItem__realizedExchangeItemsQuerySpecification.instance());
-    querySpecifications.add(ExchangeItem__realizingExchangeItemsQuerySpecification.instance());
-    querySpecifications.add(ExchangeItem__realizingOperationsQuerySpecification.instance());
+  private ExchangeItem() {
+    querySpecifications.add(ExchangeItem__allocatorInterfaces.instance());
+    querySpecifications.add(ExchangeItem__realizedExchangeItems.instance());
+    querySpecifications.add(ExchangeItem__realizingExchangeItems.instance());
+    querySpecifications.add(ExchangeItem__realizingOperations.instance());
   }
   
-  public ExchangeItem__allocatorInterfacesQuerySpecification getExchangeItem__allocatorInterfaces() throws ViatraQueryException {
-    return ExchangeItem__allocatorInterfacesQuerySpecification.instance();
+  public ExchangeItem__allocatorInterfaces getExchangeItem__allocatorInterfaces() {
+    return ExchangeItem__allocatorInterfaces.instance();
   }
   
-  public ExchangeItem__allocatorInterfacesMatcher getExchangeItem__allocatorInterfaces(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return ExchangeItem__allocatorInterfacesMatcher.on(engine);
+  public ExchangeItem__allocatorInterfaces.Matcher getExchangeItem__allocatorInterfaces(final ViatraQueryEngine engine) {
+    return ExchangeItem__allocatorInterfaces.Matcher.on(engine);
   }
   
-  public ExchangeItem__realizedExchangeItemsQuerySpecification getExchangeItem__realizedExchangeItems() throws ViatraQueryException {
-    return ExchangeItem__realizedExchangeItemsQuerySpecification.instance();
+  public ExchangeItem__realizedExchangeItems getExchangeItem__realizedExchangeItems() {
+    return ExchangeItem__realizedExchangeItems.instance();
   }
   
-  public ExchangeItem__realizedExchangeItemsMatcher getExchangeItem__realizedExchangeItems(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return ExchangeItem__realizedExchangeItemsMatcher.on(engine);
+  public ExchangeItem__realizedExchangeItems.Matcher getExchangeItem__realizedExchangeItems(final ViatraQueryEngine engine) {
+    return ExchangeItem__realizedExchangeItems.Matcher.on(engine);
   }
   
-  public ExchangeItem__realizingExchangeItemsQuerySpecification getExchangeItem__realizingExchangeItems() throws ViatraQueryException {
-    return ExchangeItem__realizingExchangeItemsQuerySpecification.instance();
+  public ExchangeItem__realizingExchangeItems getExchangeItem__realizingExchangeItems() {
+    return ExchangeItem__realizingExchangeItems.instance();
   }
   
-  public ExchangeItem__realizingExchangeItemsMatcher getExchangeItem__realizingExchangeItems(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return ExchangeItem__realizingExchangeItemsMatcher.on(engine);
+  public ExchangeItem__realizingExchangeItems.Matcher getExchangeItem__realizingExchangeItems(final ViatraQueryEngine engine) {
+    return ExchangeItem__realizingExchangeItems.Matcher.on(engine);
   }
   
-  public ExchangeItem__realizingOperationsQuerySpecification getExchangeItem__realizingOperations() throws ViatraQueryException {
-    return ExchangeItem__realizingOperationsQuerySpecification.instance();
+  public ExchangeItem__realizingOperations getExchangeItem__realizingOperations() {
+    return ExchangeItem__realizingOperations.instance();
   }
   
-  public ExchangeItem__realizingOperationsMatcher getExchangeItem__realizingOperations(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return ExchangeItem__realizingOperationsMatcher.on(engine);
+  public ExchangeItem__realizingOperations.Matcher getExchangeItem__realizingOperations(final ViatraQueryEngine engine) {
+    return ExchangeItem__realizingOperations.Matcher.on(engine);
   }
 }

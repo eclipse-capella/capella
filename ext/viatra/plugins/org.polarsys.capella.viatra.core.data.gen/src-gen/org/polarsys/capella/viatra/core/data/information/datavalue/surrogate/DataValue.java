@@ -14,14 +14,12 @@ package org.polarsys.capella.viatra.core.data.information.datavalue.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.core.data.information.datavalue.surrogate.DataValue__typeMatcher;
-import org.polarsys.capella.viatra.core.data.information.datavalue.surrogate.util.DataValue__typeQuerySpecification;
+import org.polarsys.capella.viatra.core.data.information.datavalue.surrogate.DataValue__type;
 
 /**
  * A pattern group formed of all public patterns defined in DataValue.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file DataValue.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -29,7 +27,7 @@ import org.polarsys.capella.viatra.core.data.information.datavalue.surrogate.uti
  * <li>DataValue__type</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -38,10 +36,10 @@ public final class DataValue extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static DataValue instance() throws ViatraQueryException {
+  public static DataValue instance() {
     if (INSTANCE == null) {
         INSTANCE = new DataValue();
     }
@@ -50,15 +48,15 @@ public final class DataValue extends BaseGeneratedPatternGroup {
   
   private static DataValue INSTANCE;
   
-  private DataValue() throws ViatraQueryException {
-    querySpecifications.add(DataValue__typeQuerySpecification.instance());
+  private DataValue() {
+    querySpecifications.add(DataValue__type.instance());
   }
   
-  public DataValue__typeQuerySpecification getDataValue__type() throws ViatraQueryException {
-    return DataValue__typeQuerySpecification.instance();
+  public DataValue__type getDataValue__type() {
+    return DataValue__type.instance();
   }
   
-  public DataValue__typeMatcher getDataValue__type(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return DataValue__typeMatcher.on(engine);
+  public DataValue__type.Matcher getDataValue__type(final ViatraQueryEngine engine) {
+    return DataValue__type.Matcher.on(engine);
   }
 }

@@ -14,16 +14,13 @@ package org.polarsys.capella.viatra.core.data.fa.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.AbstractFunctionalBlock__allocatedFunctionsMatcher;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.AbstractFunctionalBlock__functionalAllocationsMatcher;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.util.AbstractFunctionalBlock__allocatedFunctionsQuerySpecification;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.util.AbstractFunctionalBlock__functionalAllocationsQuerySpecification;
+import org.polarsys.capella.viatra.core.data.fa.surrogate.AbstractFunctionalBlock__allocatedFunctions;
+import org.polarsys.capella.viatra.core.data.fa.surrogate.AbstractFunctionalBlock__functionalAllocations;
 
 /**
  * A pattern group formed of all public patterns defined in AbstractFunctionalBlock.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file AbstractFunctionalBlock.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -32,7 +29,7 @@ import org.polarsys.capella.viatra.core.data.fa.surrogate.util.AbstractFunctiona
  * <li>AbstractFunctionalBlock__allocatedFunctions</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -41,10 +38,10 @@ public final class AbstractFunctionalBlock extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static AbstractFunctionalBlock instance() throws ViatraQueryException {
+  public static AbstractFunctionalBlock instance() {
     if (INSTANCE == null) {
         INSTANCE = new AbstractFunctionalBlock();
     }
@@ -53,24 +50,24 @@ public final class AbstractFunctionalBlock extends BaseGeneratedPatternGroup {
   
   private static AbstractFunctionalBlock INSTANCE;
   
-  private AbstractFunctionalBlock() throws ViatraQueryException {
-    querySpecifications.add(AbstractFunctionalBlock__functionalAllocationsQuerySpecification.instance());
-    querySpecifications.add(AbstractFunctionalBlock__allocatedFunctionsQuerySpecification.instance());
+  private AbstractFunctionalBlock() {
+    querySpecifications.add(AbstractFunctionalBlock__functionalAllocations.instance());
+    querySpecifications.add(AbstractFunctionalBlock__allocatedFunctions.instance());
   }
   
-  public AbstractFunctionalBlock__functionalAllocationsQuerySpecification getAbstractFunctionalBlock__functionalAllocations() throws ViatraQueryException {
-    return AbstractFunctionalBlock__functionalAllocationsQuerySpecification.instance();
+  public AbstractFunctionalBlock__functionalAllocations getAbstractFunctionalBlock__functionalAllocations() {
+    return AbstractFunctionalBlock__functionalAllocations.instance();
   }
   
-  public AbstractFunctionalBlock__functionalAllocationsMatcher getAbstractFunctionalBlock__functionalAllocations(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return AbstractFunctionalBlock__functionalAllocationsMatcher.on(engine);
+  public AbstractFunctionalBlock__functionalAllocations.Matcher getAbstractFunctionalBlock__functionalAllocations(final ViatraQueryEngine engine) {
+    return AbstractFunctionalBlock__functionalAllocations.Matcher.on(engine);
   }
   
-  public AbstractFunctionalBlock__allocatedFunctionsQuerySpecification getAbstractFunctionalBlock__allocatedFunctions() throws ViatraQueryException {
-    return AbstractFunctionalBlock__allocatedFunctionsQuerySpecification.instance();
+  public AbstractFunctionalBlock__allocatedFunctions getAbstractFunctionalBlock__allocatedFunctions() {
+    return AbstractFunctionalBlock__allocatedFunctions.instance();
   }
   
-  public AbstractFunctionalBlock__allocatedFunctionsMatcher getAbstractFunctionalBlock__allocatedFunctions(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return AbstractFunctionalBlock__allocatedFunctionsMatcher.on(engine);
+  public AbstractFunctionalBlock__allocatedFunctions.Matcher getAbstractFunctionalBlock__allocatedFunctions(final ViatraQueryEngine engine) {
+    return AbstractFunctionalBlock__allocatedFunctions.Matcher.on(engine);
   }
 }

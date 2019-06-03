@@ -13,11 +13,10 @@
 package org.polarsys.capella.viatra.core.data.cs.surrogate.internal;
 
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.internal._PreviousInvolvementQuerySpecification;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.util.PhysicalPath__firstPhysicalPathInvolvementsQuerySpecification;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.util.PhysicalPath__realizedPhysicalPathsQuerySpecification;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.util.PhysicalPath__realizingPhysicalPathsQuerySpecification;
+import org.polarsys.capella.viatra.core.data.cs.surrogate.PhysicalPath__firstPhysicalPathInvolvements;
+import org.polarsys.capella.viatra.core.data.cs.surrogate.PhysicalPath__realizedPhysicalPaths;
+import org.polarsys.capella.viatra.core.data.cs.surrogate.PhysicalPath__realizingPhysicalPaths;
+import org.polarsys.capella.viatra.core.data.cs.surrogate.internal._PreviousInvolvement;
 
 /**
  * A pattern group formed of all patterns defined in PhysicalPath.vql.
@@ -31,7 +30,7 @@ import org.polarsys.capella.viatra.core.data.cs.surrogate.util.PhysicalPath__rea
  * <li>PhysicalPath__realizingPhysicalPaths</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -40,10 +39,10 @@ public final class PhysicalPathAll extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static PhysicalPathAll instance() throws ViatraQueryException {
+  public static PhysicalPathAll instance() {
     if (INSTANCE == null) {
         INSTANCE = new PhysicalPathAll();
     }
@@ -52,10 +51,10 @@ public final class PhysicalPathAll extends BaseGeneratedPatternGroup {
   
   private static PhysicalPathAll INSTANCE;
   
-  private PhysicalPathAll() throws ViatraQueryException {
-    querySpecifications.add(PhysicalPath__firstPhysicalPathInvolvementsQuerySpecification.instance());
-    querySpecifications.add(_PreviousInvolvementQuerySpecification.instance());
-    querySpecifications.add(PhysicalPath__realizedPhysicalPathsQuerySpecification.instance());
-    querySpecifications.add(PhysicalPath__realizingPhysicalPathsQuerySpecification.instance());
+  private PhysicalPathAll() {
+    querySpecifications.add(PhysicalPath__firstPhysicalPathInvolvements.instance());
+    querySpecifications.add(_PreviousInvolvement.instance());
+    querySpecifications.add(PhysicalPath__realizedPhysicalPaths.instance());
+    querySpecifications.add(PhysicalPath__realizingPhysicalPaths.instance());
   }
 }

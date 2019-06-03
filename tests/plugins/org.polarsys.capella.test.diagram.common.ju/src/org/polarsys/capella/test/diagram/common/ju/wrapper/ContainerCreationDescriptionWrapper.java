@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNodeContainer;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.ContainerMappingHelper;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
@@ -85,10 +86,10 @@ public class ContainerCreationDescriptionWrapper extends AbstractSingleSelection
           shouldCreate = false;
           while (it.hasNext()) {
             final ContainerMapping curMapping = it.next();
-            if (containerMapping.getAllNodeMappings().contains(curMapping)) {
+            if (ContainerMappingHelper.getAllNodeMappings(containerMapping).contains(curMapping)) {
               shouldCreate = true;
               break;
-            } else if (containerMapping.getAllContainerMappings().contains(curMapping)) {
+            } else if (ContainerMappingHelper.getAllContainerMappings(containerMapping).contains(curMapping)) {
               shouldCreate = true;
               break;
             }

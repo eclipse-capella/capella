@@ -14,16 +14,13 @@ package org.polarsys.capella.viatra.core.data.cs.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.ComponentAllocation__allocatedComponentMatcher;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.ComponentAllocation__allocatingComponentMatcher;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.util.ComponentAllocation__allocatedComponentQuerySpecification;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.util.ComponentAllocation__allocatingComponentQuerySpecification;
+import org.polarsys.capella.viatra.core.data.cs.surrogate.ComponentAllocation__allocatedComponent;
+import org.polarsys.capella.viatra.core.data.cs.surrogate.ComponentAllocation__allocatingComponent;
 
 /**
  * A pattern group formed of all public patterns defined in ComponentAllocation.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file ComponentAllocation.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -32,7 +29,7 @@ import org.polarsys.capella.viatra.core.data.cs.surrogate.util.ComponentAllocati
  * <li>ComponentAllocation__allocatingComponent</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -41,10 +38,10 @@ public final class ComponentAllocation extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static ComponentAllocation instance() throws ViatraQueryException {
+  public static ComponentAllocation instance() {
     if (INSTANCE == null) {
         INSTANCE = new ComponentAllocation();
     }
@@ -53,24 +50,24 @@ public final class ComponentAllocation extends BaseGeneratedPatternGroup {
   
   private static ComponentAllocation INSTANCE;
   
-  private ComponentAllocation() throws ViatraQueryException {
-    querySpecifications.add(ComponentAllocation__allocatedComponentQuerySpecification.instance());
-    querySpecifications.add(ComponentAllocation__allocatingComponentQuerySpecification.instance());
+  private ComponentAllocation() {
+    querySpecifications.add(ComponentAllocation__allocatedComponent.instance());
+    querySpecifications.add(ComponentAllocation__allocatingComponent.instance());
   }
   
-  public ComponentAllocation__allocatedComponentQuerySpecification getComponentAllocation__allocatedComponent() throws ViatraQueryException {
-    return ComponentAllocation__allocatedComponentQuerySpecification.instance();
+  public ComponentAllocation__allocatedComponent getComponentAllocation__allocatedComponent() {
+    return ComponentAllocation__allocatedComponent.instance();
   }
   
-  public ComponentAllocation__allocatedComponentMatcher getComponentAllocation__allocatedComponent(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return ComponentAllocation__allocatedComponentMatcher.on(engine);
+  public ComponentAllocation__allocatedComponent.Matcher getComponentAllocation__allocatedComponent(final ViatraQueryEngine engine) {
+    return ComponentAllocation__allocatedComponent.Matcher.on(engine);
   }
   
-  public ComponentAllocation__allocatingComponentQuerySpecification getComponentAllocation__allocatingComponent() throws ViatraQueryException {
-    return ComponentAllocation__allocatingComponentQuerySpecification.instance();
+  public ComponentAllocation__allocatingComponent getComponentAllocation__allocatingComponent() {
+    return ComponentAllocation__allocatingComponent.instance();
   }
   
-  public ComponentAllocation__allocatingComponentMatcher getComponentAllocation__allocatingComponent(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return ComponentAllocation__allocatingComponentMatcher.on(engine);
+  public ComponentAllocation__allocatingComponent.Matcher getComponentAllocation__allocatingComponent(final ViatraQueryEngine engine) {
+    return ComponentAllocation__allocatingComponent.Matcher.on(engine);
   }
 }

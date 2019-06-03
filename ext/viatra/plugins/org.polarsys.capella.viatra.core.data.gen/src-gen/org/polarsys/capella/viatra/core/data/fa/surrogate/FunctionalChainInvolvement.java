@@ -14,18 +14,14 @@ package org.polarsys.capella.viatra.core.data.fa.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionalChainInvolvement__involvedElementMatcher;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionalChainInvolvement__previousFunctionalChainInvolvementsMatcher;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionalChainInvolvement_nextFunctionalChainInvolvementsMatcher;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.util.FunctionalChainInvolvement__involvedElementQuerySpecification;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.util.FunctionalChainInvolvement__previousFunctionalChainInvolvementsQuerySpecification;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.util.FunctionalChainInvolvement_nextFunctionalChainInvolvementsQuerySpecification;
+import org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionalChainInvolvement__involvedElement;
+import org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionalChainInvolvement__previousFunctionalChainInvolvements;
+import org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionalChainInvolvement_nextFunctionalChainInvolvements;
 
 /**
  * A pattern group formed of all public patterns defined in FunctionalChainInvolvement.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file FunctionalChainInvolvement.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -35,7 +31,7 @@ import org.polarsys.capella.viatra.core.data.fa.surrogate.util.FunctionalChainIn
  * <li>FunctionalChainInvolvement__involvedElement</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -44,10 +40,10 @@ public final class FunctionalChainInvolvement extends BaseGeneratedPatternGroup 
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static FunctionalChainInvolvement instance() throws ViatraQueryException {
+  public static FunctionalChainInvolvement instance() {
     if (INSTANCE == null) {
         INSTANCE = new FunctionalChainInvolvement();
     }
@@ -56,33 +52,33 @@ public final class FunctionalChainInvolvement extends BaseGeneratedPatternGroup 
   
   private static FunctionalChainInvolvement INSTANCE;
   
-  private FunctionalChainInvolvement() throws ViatraQueryException {
-    querySpecifications.add(FunctionalChainInvolvement__previousFunctionalChainInvolvementsQuerySpecification.instance());
-    querySpecifications.add(FunctionalChainInvolvement_nextFunctionalChainInvolvementsQuerySpecification.instance());
-    querySpecifications.add(FunctionalChainInvolvement__involvedElementQuerySpecification.instance());
+  private FunctionalChainInvolvement() {
+    querySpecifications.add(FunctionalChainInvolvement__previousFunctionalChainInvolvements.instance());
+    querySpecifications.add(FunctionalChainInvolvement_nextFunctionalChainInvolvements.instance());
+    querySpecifications.add(FunctionalChainInvolvement__involvedElement.instance());
   }
   
-  public FunctionalChainInvolvement__previousFunctionalChainInvolvementsQuerySpecification getFunctionalChainInvolvement__previousFunctionalChainInvolvements() throws ViatraQueryException {
-    return FunctionalChainInvolvement__previousFunctionalChainInvolvementsQuerySpecification.instance();
+  public FunctionalChainInvolvement__previousFunctionalChainInvolvements getFunctionalChainInvolvement__previousFunctionalChainInvolvements() {
+    return FunctionalChainInvolvement__previousFunctionalChainInvolvements.instance();
   }
   
-  public FunctionalChainInvolvement__previousFunctionalChainInvolvementsMatcher getFunctionalChainInvolvement__previousFunctionalChainInvolvements(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return FunctionalChainInvolvement__previousFunctionalChainInvolvementsMatcher.on(engine);
+  public FunctionalChainInvolvement__previousFunctionalChainInvolvements.Matcher getFunctionalChainInvolvement__previousFunctionalChainInvolvements(final ViatraQueryEngine engine) {
+    return FunctionalChainInvolvement__previousFunctionalChainInvolvements.Matcher.on(engine);
   }
   
-  public FunctionalChainInvolvement_nextFunctionalChainInvolvementsQuerySpecification getFunctionalChainInvolvement_nextFunctionalChainInvolvements() throws ViatraQueryException {
-    return FunctionalChainInvolvement_nextFunctionalChainInvolvementsQuerySpecification.instance();
+  public FunctionalChainInvolvement_nextFunctionalChainInvolvements getFunctionalChainInvolvement_nextFunctionalChainInvolvements() {
+    return FunctionalChainInvolvement_nextFunctionalChainInvolvements.instance();
   }
   
-  public FunctionalChainInvolvement_nextFunctionalChainInvolvementsMatcher getFunctionalChainInvolvement_nextFunctionalChainInvolvements(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return FunctionalChainInvolvement_nextFunctionalChainInvolvementsMatcher.on(engine);
+  public FunctionalChainInvolvement_nextFunctionalChainInvolvements.Matcher getFunctionalChainInvolvement_nextFunctionalChainInvolvements(final ViatraQueryEngine engine) {
+    return FunctionalChainInvolvement_nextFunctionalChainInvolvements.Matcher.on(engine);
   }
   
-  public FunctionalChainInvolvement__involvedElementQuerySpecification getFunctionalChainInvolvement__involvedElement() throws ViatraQueryException {
-    return FunctionalChainInvolvement__involvedElementQuerySpecification.instance();
+  public FunctionalChainInvolvement__involvedElement getFunctionalChainInvolvement__involvedElement() {
+    return FunctionalChainInvolvement__involvedElement.instance();
   }
   
-  public FunctionalChainInvolvement__involvedElementMatcher getFunctionalChainInvolvement__involvedElement(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return FunctionalChainInvolvement__involvedElementMatcher.on(engine);
+  public FunctionalChainInvolvement__involvedElement.Matcher getFunctionalChainInvolvement__involvedElement(final ViatraQueryEngine engine) {
+    return FunctionalChainInvolvement__involvedElement.Matcher.on(engine);
   }
 }

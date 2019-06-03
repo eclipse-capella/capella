@@ -14,16 +14,13 @@ package org.polarsys.capella.viatra.core.data.information.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.core.data.information.surrogate.PartitionableElement__ownedPartitionsMatcher;
-import org.polarsys.capella.viatra.core.data.information.surrogate.PartitionableElement__representingPartitionsMatcher;
-import org.polarsys.capella.viatra.core.data.information.surrogate.util.PartitionableElement__ownedPartitionsQuerySpecification;
-import org.polarsys.capella.viatra.core.data.information.surrogate.util.PartitionableElement__representingPartitionsQuerySpecification;
+import org.polarsys.capella.viatra.core.data.information.surrogate.PartitionableElement__ownedPartitions;
+import org.polarsys.capella.viatra.core.data.information.surrogate.PartitionableElement__representingPartitions;
 
 /**
  * A pattern group formed of all public patterns defined in PartitionableElement.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file PartitionableElement.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -32,7 +29,7 @@ import org.polarsys.capella.viatra.core.data.information.surrogate.util.Partitio
  * <li>PartitionableElement__representingPartitions</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -41,10 +38,10 @@ public final class PartitionableElement extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static PartitionableElement instance() throws ViatraQueryException {
+  public static PartitionableElement instance() {
     if (INSTANCE == null) {
         INSTANCE = new PartitionableElement();
     }
@@ -53,24 +50,24 @@ public final class PartitionableElement extends BaseGeneratedPatternGroup {
   
   private static PartitionableElement INSTANCE;
   
-  private PartitionableElement() throws ViatraQueryException {
-    querySpecifications.add(PartitionableElement__ownedPartitionsQuerySpecification.instance());
-    querySpecifications.add(PartitionableElement__representingPartitionsQuerySpecification.instance());
+  private PartitionableElement() {
+    querySpecifications.add(PartitionableElement__ownedPartitions.instance());
+    querySpecifications.add(PartitionableElement__representingPartitions.instance());
   }
   
-  public PartitionableElement__ownedPartitionsQuerySpecification getPartitionableElement__ownedPartitions() throws ViatraQueryException {
-    return PartitionableElement__ownedPartitionsQuerySpecification.instance();
+  public PartitionableElement__ownedPartitions getPartitionableElement__ownedPartitions() {
+    return PartitionableElement__ownedPartitions.instance();
   }
   
-  public PartitionableElement__ownedPartitionsMatcher getPartitionableElement__ownedPartitions(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return PartitionableElement__ownedPartitionsMatcher.on(engine);
+  public PartitionableElement__ownedPartitions.Matcher getPartitionableElement__ownedPartitions(final ViatraQueryEngine engine) {
+    return PartitionableElement__ownedPartitions.Matcher.on(engine);
   }
   
-  public PartitionableElement__representingPartitionsQuerySpecification getPartitionableElement__representingPartitions() throws ViatraQueryException {
-    return PartitionableElement__representingPartitionsQuerySpecification.instance();
+  public PartitionableElement__representingPartitions getPartitionableElement__representingPartitions() {
+    return PartitionableElement__representingPartitions.instance();
   }
   
-  public PartitionableElement__representingPartitionsMatcher getPartitionableElement__representingPartitions(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return PartitionableElement__representingPartitionsMatcher.on(engine);
+  public PartitionableElement__representingPartitions.Matcher getPartitionableElement__representingPartitions(final ViatraQueryEngine engine) {
+    return PartitionableElement__representingPartitions.Matcher.on(engine);
   }
 }

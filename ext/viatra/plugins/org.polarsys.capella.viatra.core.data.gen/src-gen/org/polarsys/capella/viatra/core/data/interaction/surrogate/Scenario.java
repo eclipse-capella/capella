@@ -14,22 +14,16 @@ package org.polarsys.capella.viatra.core.data.interaction.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.core.data.interaction.surrogate.Scenario__containedFunctionsMatcher;
-import org.polarsys.capella.viatra.core.data.interaction.surrogate.Scenario__containedPartsMatcher;
-import org.polarsys.capella.viatra.core.data.interaction.surrogate.Scenario__realizedScenariosMatcher;
-import org.polarsys.capella.viatra.core.data.interaction.surrogate.Scenario__realizingScenariosMatcher;
-import org.polarsys.capella.viatra.core.data.interaction.surrogate.Scenario__referencedScenariosMatcher;
-import org.polarsys.capella.viatra.core.data.interaction.surrogate.util.Scenario__containedFunctionsQuerySpecification;
-import org.polarsys.capella.viatra.core.data.interaction.surrogate.util.Scenario__containedPartsQuerySpecification;
-import org.polarsys.capella.viatra.core.data.interaction.surrogate.util.Scenario__realizedScenariosQuerySpecification;
-import org.polarsys.capella.viatra.core.data.interaction.surrogate.util.Scenario__realizingScenariosQuerySpecification;
-import org.polarsys.capella.viatra.core.data.interaction.surrogate.util.Scenario__referencedScenariosQuerySpecification;
+import org.polarsys.capella.viatra.core.data.interaction.surrogate.Scenario__containedFunctions;
+import org.polarsys.capella.viatra.core.data.interaction.surrogate.Scenario__containedParts;
+import org.polarsys.capella.viatra.core.data.interaction.surrogate.Scenario__realizedScenarios;
+import org.polarsys.capella.viatra.core.data.interaction.surrogate.Scenario__realizingScenarios;
+import org.polarsys.capella.viatra.core.data.interaction.surrogate.Scenario__referencedScenarios;
 
 /**
  * A pattern group formed of all public patterns defined in Scenario.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file Scenario.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -41,7 +35,7 @@ import org.polarsys.capella.viatra.core.data.interaction.surrogate.util.Scenario
  * <li>Scenario__realizingScenarios</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -50,10 +44,10 @@ public final class Scenario extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static Scenario instance() throws ViatraQueryException {
+  public static Scenario instance() {
     if (INSTANCE == null) {
         INSTANCE = new Scenario();
     }
@@ -62,51 +56,51 @@ public final class Scenario extends BaseGeneratedPatternGroup {
   
   private static Scenario INSTANCE;
   
-  private Scenario() throws ViatraQueryException {
-    querySpecifications.add(Scenario__containedFunctionsQuerySpecification.instance());
-    querySpecifications.add(Scenario__containedPartsQuerySpecification.instance());
-    querySpecifications.add(Scenario__referencedScenariosQuerySpecification.instance());
-    querySpecifications.add(Scenario__realizedScenariosQuerySpecification.instance());
-    querySpecifications.add(Scenario__realizingScenariosQuerySpecification.instance());
+  private Scenario() {
+    querySpecifications.add(Scenario__containedFunctions.instance());
+    querySpecifications.add(Scenario__containedParts.instance());
+    querySpecifications.add(Scenario__referencedScenarios.instance());
+    querySpecifications.add(Scenario__realizedScenarios.instance());
+    querySpecifications.add(Scenario__realizingScenarios.instance());
   }
   
-  public Scenario__containedFunctionsQuerySpecification getScenario__containedFunctions() throws ViatraQueryException {
-    return Scenario__containedFunctionsQuerySpecification.instance();
+  public Scenario__containedFunctions getScenario__containedFunctions() {
+    return Scenario__containedFunctions.instance();
   }
   
-  public Scenario__containedFunctionsMatcher getScenario__containedFunctions(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return Scenario__containedFunctionsMatcher.on(engine);
+  public Scenario__containedFunctions.Matcher getScenario__containedFunctions(final ViatraQueryEngine engine) {
+    return Scenario__containedFunctions.Matcher.on(engine);
   }
   
-  public Scenario__containedPartsQuerySpecification getScenario__containedParts() throws ViatraQueryException {
-    return Scenario__containedPartsQuerySpecification.instance();
+  public Scenario__containedParts getScenario__containedParts() {
+    return Scenario__containedParts.instance();
   }
   
-  public Scenario__containedPartsMatcher getScenario__containedParts(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return Scenario__containedPartsMatcher.on(engine);
+  public Scenario__containedParts.Matcher getScenario__containedParts(final ViatraQueryEngine engine) {
+    return Scenario__containedParts.Matcher.on(engine);
   }
   
-  public Scenario__referencedScenariosQuerySpecification getScenario__referencedScenarios() throws ViatraQueryException {
-    return Scenario__referencedScenariosQuerySpecification.instance();
+  public Scenario__referencedScenarios getScenario__referencedScenarios() {
+    return Scenario__referencedScenarios.instance();
   }
   
-  public Scenario__referencedScenariosMatcher getScenario__referencedScenarios(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return Scenario__referencedScenariosMatcher.on(engine);
+  public Scenario__referencedScenarios.Matcher getScenario__referencedScenarios(final ViatraQueryEngine engine) {
+    return Scenario__referencedScenarios.Matcher.on(engine);
   }
   
-  public Scenario__realizedScenariosQuerySpecification getScenario__realizedScenarios() throws ViatraQueryException {
-    return Scenario__realizedScenariosQuerySpecification.instance();
+  public Scenario__realizedScenarios getScenario__realizedScenarios() {
+    return Scenario__realizedScenarios.instance();
   }
   
-  public Scenario__realizedScenariosMatcher getScenario__realizedScenarios(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return Scenario__realizedScenariosMatcher.on(engine);
+  public Scenario__realizedScenarios.Matcher getScenario__realizedScenarios(final ViatraQueryEngine engine) {
+    return Scenario__realizedScenarios.Matcher.on(engine);
   }
   
-  public Scenario__realizingScenariosQuerySpecification getScenario__realizingScenarios() throws ViatraQueryException {
-    return Scenario__realizingScenariosQuerySpecification.instance();
+  public Scenario__realizingScenarios getScenario__realizingScenarios() {
+    return Scenario__realizingScenarios.instance();
   }
   
-  public Scenario__realizingScenariosMatcher getScenario__realizingScenarios(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return Scenario__realizingScenariosMatcher.on(engine);
+  public Scenario__realizingScenarios.Matcher getScenario__realizingScenarios(final ViatraQueryEngine engine) {
+    return Scenario__realizingScenarios.Matcher.on(engine);
   }
 }

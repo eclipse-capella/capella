@@ -14,14 +14,12 @@ package org.polarsys.capella.viatra.core.data.fa.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.ComponentPortAllocationEnd__owningComponentPortAllocationMatcher;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.util.ComponentPortAllocationEnd__owningComponentPortAllocationQuerySpecification;
+import org.polarsys.capella.viatra.core.data.fa.surrogate.ComponentPortAllocationEnd__owningComponentPortAllocation;
 
 /**
  * A pattern group formed of all public patterns defined in ComponentPortAllocationEnd.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file ComponentPortAllocationEnd.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -29,7 +27,7 @@ import org.polarsys.capella.viatra.core.data.fa.surrogate.util.ComponentPortAllo
  * <li>ComponentPortAllocationEnd__owningComponentPortAllocation</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -38,10 +36,10 @@ public final class ComponentPortAllocationEnd extends BaseGeneratedPatternGroup 
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static ComponentPortAllocationEnd instance() throws ViatraQueryException {
+  public static ComponentPortAllocationEnd instance() {
     if (INSTANCE == null) {
         INSTANCE = new ComponentPortAllocationEnd();
     }
@@ -50,15 +48,15 @@ public final class ComponentPortAllocationEnd extends BaseGeneratedPatternGroup 
   
   private static ComponentPortAllocationEnd INSTANCE;
   
-  private ComponentPortAllocationEnd() throws ViatraQueryException {
-    querySpecifications.add(ComponentPortAllocationEnd__owningComponentPortAllocationQuerySpecification.instance());
+  private ComponentPortAllocationEnd() {
+    querySpecifications.add(ComponentPortAllocationEnd__owningComponentPortAllocation.instance());
   }
   
-  public ComponentPortAllocationEnd__owningComponentPortAllocationQuerySpecification getComponentPortAllocationEnd__owningComponentPortAllocation() throws ViatraQueryException {
-    return ComponentPortAllocationEnd__owningComponentPortAllocationQuerySpecification.instance();
+  public ComponentPortAllocationEnd__owningComponentPortAllocation getComponentPortAllocationEnd__owningComponentPortAllocation() {
+    return ComponentPortAllocationEnd__owningComponentPortAllocation.instance();
   }
   
-  public ComponentPortAllocationEnd__owningComponentPortAllocationMatcher getComponentPortAllocationEnd__owningComponentPortAllocation(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return ComponentPortAllocationEnd__owningComponentPortAllocationMatcher.on(engine);
+  public ComponentPortAllocationEnd__owningComponentPortAllocation.Matcher getComponentPortAllocationEnd__owningComponentPortAllocation(final ViatraQueryEngine engine) {
+    return ComponentPortAllocationEnd__owningComponentPortAllocation.Matcher.on(engine);
   }
 }

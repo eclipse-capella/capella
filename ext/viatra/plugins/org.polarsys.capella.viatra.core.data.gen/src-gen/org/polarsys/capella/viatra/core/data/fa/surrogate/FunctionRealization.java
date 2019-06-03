@@ -14,16 +14,13 @@ package org.polarsys.capella.viatra.core.data.fa.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionRealization__allocatedFunctionMatcher;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionRealization__allocatingFunctionMatcher;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.util.FunctionRealization__allocatedFunctionQuerySpecification;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.util.FunctionRealization__allocatingFunctionQuerySpecification;
+import org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionRealization__allocatedFunction;
+import org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionRealization__allocatingFunction;
 
 /**
  * A pattern group formed of all public patterns defined in FunctionRealization.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file FunctionRealization.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -32,7 +29,7 @@ import org.polarsys.capella.viatra.core.data.fa.surrogate.util.FunctionRealizati
  * <li>FunctionRealization__allocatingFunction</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -41,10 +38,10 @@ public final class FunctionRealization extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static FunctionRealization instance() throws ViatraQueryException {
+  public static FunctionRealization instance() {
     if (INSTANCE == null) {
         INSTANCE = new FunctionRealization();
     }
@@ -53,24 +50,24 @@ public final class FunctionRealization extends BaseGeneratedPatternGroup {
   
   private static FunctionRealization INSTANCE;
   
-  private FunctionRealization() throws ViatraQueryException {
-    querySpecifications.add(FunctionRealization__allocatedFunctionQuerySpecification.instance());
-    querySpecifications.add(FunctionRealization__allocatingFunctionQuerySpecification.instance());
+  private FunctionRealization() {
+    querySpecifications.add(FunctionRealization__allocatedFunction.instance());
+    querySpecifications.add(FunctionRealization__allocatingFunction.instance());
   }
   
-  public FunctionRealization__allocatedFunctionQuerySpecification getFunctionRealization__allocatedFunction() throws ViatraQueryException {
-    return FunctionRealization__allocatedFunctionQuerySpecification.instance();
+  public FunctionRealization__allocatedFunction getFunctionRealization__allocatedFunction() {
+    return FunctionRealization__allocatedFunction.instance();
   }
   
-  public FunctionRealization__allocatedFunctionMatcher getFunctionRealization__allocatedFunction(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return FunctionRealization__allocatedFunctionMatcher.on(engine);
+  public FunctionRealization__allocatedFunction.Matcher getFunctionRealization__allocatedFunction(final ViatraQueryEngine engine) {
+    return FunctionRealization__allocatedFunction.Matcher.on(engine);
   }
   
-  public FunctionRealization__allocatingFunctionQuerySpecification getFunctionRealization__allocatingFunction() throws ViatraQueryException {
-    return FunctionRealization__allocatingFunctionQuerySpecification.instance();
+  public FunctionRealization__allocatingFunction getFunctionRealization__allocatingFunction() {
+    return FunctionRealization__allocatingFunction.instance();
   }
   
-  public FunctionRealization__allocatingFunctionMatcher getFunctionRealization__allocatingFunction(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return FunctionRealization__allocatingFunctionMatcher.on(engine);
+  public FunctionRealization__allocatingFunction.Matcher getFunctionRealization__allocatingFunction(final ViatraQueryEngine engine) {
+    return FunctionRealization__allocatingFunction.Matcher.on(engine);
   }
 }

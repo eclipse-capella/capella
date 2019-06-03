@@ -14,32 +14,21 @@ package org.polarsys.capella.viatra.core.data.fa.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.AbstractFunction__allocationBlocksMatcher;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.AbstractFunction__componentFunctionalAllocationsMatcher;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.AbstractFunction__inFunctionRealizationsMatcher;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.AbstractFunction__involvingCapabilitiesMatcher;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.AbstractFunction__involvingCapabilityRealizationsMatcher;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.AbstractFunction__involvingFunctionalChainsMatcher;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.AbstractFunction__linkedFunctionSpecificationMatcher;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.AbstractFunction__linkedStateMachineMatcher;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.AbstractFunction__outFunctionRealizationsMatcher;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.AbstractFunction__subFunctionsMatcher;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.util.AbstractFunction__allocationBlocksQuerySpecification;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.util.AbstractFunction__componentFunctionalAllocationsQuerySpecification;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.util.AbstractFunction__inFunctionRealizationsQuerySpecification;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.util.AbstractFunction__involvingCapabilitiesQuerySpecification;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.util.AbstractFunction__involvingCapabilityRealizationsQuerySpecification;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.util.AbstractFunction__involvingFunctionalChainsQuerySpecification;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.util.AbstractFunction__linkedFunctionSpecificationQuerySpecification;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.util.AbstractFunction__linkedStateMachineQuerySpecification;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.util.AbstractFunction__outFunctionRealizationsQuerySpecification;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.util.AbstractFunction__subFunctionsQuerySpecification;
+import org.polarsys.capella.viatra.core.data.fa.surrogate.AbstractFunction__allocationBlocks;
+import org.polarsys.capella.viatra.core.data.fa.surrogate.AbstractFunction__componentFunctionalAllocations;
+import org.polarsys.capella.viatra.core.data.fa.surrogate.AbstractFunction__inFunctionRealizations;
+import org.polarsys.capella.viatra.core.data.fa.surrogate.AbstractFunction__involvingCapabilities;
+import org.polarsys.capella.viatra.core.data.fa.surrogate.AbstractFunction__involvingCapabilityRealizations;
+import org.polarsys.capella.viatra.core.data.fa.surrogate.AbstractFunction__involvingFunctionalChains;
+import org.polarsys.capella.viatra.core.data.fa.surrogate.AbstractFunction__linkedFunctionSpecification;
+import org.polarsys.capella.viatra.core.data.fa.surrogate.AbstractFunction__linkedStateMachine;
+import org.polarsys.capella.viatra.core.data.fa.surrogate.AbstractFunction__outFunctionRealizations;
+import org.polarsys.capella.viatra.core.data.fa.surrogate.AbstractFunction__subFunctions;
 
 /**
  * A pattern group formed of all public patterns defined in AbstractFunction.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file AbstractFunction.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -56,7 +45,7 @@ import org.polarsys.capella.viatra.core.data.fa.surrogate.util.AbstractFunction_
  * <li>AbstractFunction__linkedFunctionSpecification</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -65,10 +54,10 @@ public final class AbstractFunction extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static AbstractFunction instance() throws ViatraQueryException {
+  public static AbstractFunction instance() {
     if (INSTANCE == null) {
         INSTANCE = new AbstractFunction();
     }
@@ -77,96 +66,96 @@ public final class AbstractFunction extends BaseGeneratedPatternGroup {
   
   private static AbstractFunction INSTANCE;
   
-  private AbstractFunction() throws ViatraQueryException {
-    querySpecifications.add(AbstractFunction__subFunctionsQuerySpecification.instance());
-    querySpecifications.add(AbstractFunction__outFunctionRealizationsQuerySpecification.instance());
-    querySpecifications.add(AbstractFunction__inFunctionRealizationsQuerySpecification.instance());
-    querySpecifications.add(AbstractFunction__componentFunctionalAllocationsQuerySpecification.instance());
-    querySpecifications.add(AbstractFunction__allocationBlocksQuerySpecification.instance());
-    querySpecifications.add(AbstractFunction__involvingCapabilitiesQuerySpecification.instance());
-    querySpecifications.add(AbstractFunction__involvingCapabilityRealizationsQuerySpecification.instance());
-    querySpecifications.add(AbstractFunction__involvingFunctionalChainsQuerySpecification.instance());
-    querySpecifications.add(AbstractFunction__linkedStateMachineQuerySpecification.instance());
-    querySpecifications.add(AbstractFunction__linkedFunctionSpecificationQuerySpecification.instance());
+  private AbstractFunction() {
+    querySpecifications.add(AbstractFunction__subFunctions.instance());
+    querySpecifications.add(AbstractFunction__outFunctionRealizations.instance());
+    querySpecifications.add(AbstractFunction__inFunctionRealizations.instance());
+    querySpecifications.add(AbstractFunction__componentFunctionalAllocations.instance());
+    querySpecifications.add(AbstractFunction__allocationBlocks.instance());
+    querySpecifications.add(AbstractFunction__involvingCapabilities.instance());
+    querySpecifications.add(AbstractFunction__involvingCapabilityRealizations.instance());
+    querySpecifications.add(AbstractFunction__involvingFunctionalChains.instance());
+    querySpecifications.add(AbstractFunction__linkedStateMachine.instance());
+    querySpecifications.add(AbstractFunction__linkedFunctionSpecification.instance());
   }
   
-  public AbstractFunction__subFunctionsQuerySpecification getAbstractFunction__subFunctions() throws ViatraQueryException {
-    return AbstractFunction__subFunctionsQuerySpecification.instance();
+  public AbstractFunction__subFunctions getAbstractFunction__subFunctions() {
+    return AbstractFunction__subFunctions.instance();
   }
   
-  public AbstractFunction__subFunctionsMatcher getAbstractFunction__subFunctions(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return AbstractFunction__subFunctionsMatcher.on(engine);
+  public AbstractFunction__subFunctions.Matcher getAbstractFunction__subFunctions(final ViatraQueryEngine engine) {
+    return AbstractFunction__subFunctions.Matcher.on(engine);
   }
   
-  public AbstractFunction__outFunctionRealizationsQuerySpecification getAbstractFunction__outFunctionRealizations() throws ViatraQueryException {
-    return AbstractFunction__outFunctionRealizationsQuerySpecification.instance();
+  public AbstractFunction__outFunctionRealizations getAbstractFunction__outFunctionRealizations() {
+    return AbstractFunction__outFunctionRealizations.instance();
   }
   
-  public AbstractFunction__outFunctionRealizationsMatcher getAbstractFunction__outFunctionRealizations(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return AbstractFunction__outFunctionRealizationsMatcher.on(engine);
+  public AbstractFunction__outFunctionRealizations.Matcher getAbstractFunction__outFunctionRealizations(final ViatraQueryEngine engine) {
+    return AbstractFunction__outFunctionRealizations.Matcher.on(engine);
   }
   
-  public AbstractFunction__inFunctionRealizationsQuerySpecification getAbstractFunction__inFunctionRealizations() throws ViatraQueryException {
-    return AbstractFunction__inFunctionRealizationsQuerySpecification.instance();
+  public AbstractFunction__inFunctionRealizations getAbstractFunction__inFunctionRealizations() {
+    return AbstractFunction__inFunctionRealizations.instance();
   }
   
-  public AbstractFunction__inFunctionRealizationsMatcher getAbstractFunction__inFunctionRealizations(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return AbstractFunction__inFunctionRealizationsMatcher.on(engine);
+  public AbstractFunction__inFunctionRealizations.Matcher getAbstractFunction__inFunctionRealizations(final ViatraQueryEngine engine) {
+    return AbstractFunction__inFunctionRealizations.Matcher.on(engine);
   }
   
-  public AbstractFunction__componentFunctionalAllocationsQuerySpecification getAbstractFunction__componentFunctionalAllocations() throws ViatraQueryException {
-    return AbstractFunction__componentFunctionalAllocationsQuerySpecification.instance();
+  public AbstractFunction__componentFunctionalAllocations getAbstractFunction__componentFunctionalAllocations() {
+    return AbstractFunction__componentFunctionalAllocations.instance();
   }
   
-  public AbstractFunction__componentFunctionalAllocationsMatcher getAbstractFunction__componentFunctionalAllocations(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return AbstractFunction__componentFunctionalAllocationsMatcher.on(engine);
+  public AbstractFunction__componentFunctionalAllocations.Matcher getAbstractFunction__componentFunctionalAllocations(final ViatraQueryEngine engine) {
+    return AbstractFunction__componentFunctionalAllocations.Matcher.on(engine);
   }
   
-  public AbstractFunction__allocationBlocksQuerySpecification getAbstractFunction__allocationBlocks() throws ViatraQueryException {
-    return AbstractFunction__allocationBlocksQuerySpecification.instance();
+  public AbstractFunction__allocationBlocks getAbstractFunction__allocationBlocks() {
+    return AbstractFunction__allocationBlocks.instance();
   }
   
-  public AbstractFunction__allocationBlocksMatcher getAbstractFunction__allocationBlocks(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return AbstractFunction__allocationBlocksMatcher.on(engine);
+  public AbstractFunction__allocationBlocks.Matcher getAbstractFunction__allocationBlocks(final ViatraQueryEngine engine) {
+    return AbstractFunction__allocationBlocks.Matcher.on(engine);
   }
   
-  public AbstractFunction__involvingCapabilitiesQuerySpecification getAbstractFunction__involvingCapabilities() throws ViatraQueryException {
-    return AbstractFunction__involvingCapabilitiesQuerySpecification.instance();
+  public AbstractFunction__involvingCapabilities getAbstractFunction__involvingCapabilities() {
+    return AbstractFunction__involvingCapabilities.instance();
   }
   
-  public AbstractFunction__involvingCapabilitiesMatcher getAbstractFunction__involvingCapabilities(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return AbstractFunction__involvingCapabilitiesMatcher.on(engine);
+  public AbstractFunction__involvingCapabilities.Matcher getAbstractFunction__involvingCapabilities(final ViatraQueryEngine engine) {
+    return AbstractFunction__involvingCapabilities.Matcher.on(engine);
   }
   
-  public AbstractFunction__involvingCapabilityRealizationsQuerySpecification getAbstractFunction__involvingCapabilityRealizations() throws ViatraQueryException {
-    return AbstractFunction__involvingCapabilityRealizationsQuerySpecification.instance();
+  public AbstractFunction__involvingCapabilityRealizations getAbstractFunction__involvingCapabilityRealizations() {
+    return AbstractFunction__involvingCapabilityRealizations.instance();
   }
   
-  public AbstractFunction__involvingCapabilityRealizationsMatcher getAbstractFunction__involvingCapabilityRealizations(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return AbstractFunction__involvingCapabilityRealizationsMatcher.on(engine);
+  public AbstractFunction__involvingCapabilityRealizations.Matcher getAbstractFunction__involvingCapabilityRealizations(final ViatraQueryEngine engine) {
+    return AbstractFunction__involvingCapabilityRealizations.Matcher.on(engine);
   }
   
-  public AbstractFunction__involvingFunctionalChainsQuerySpecification getAbstractFunction__involvingFunctionalChains() throws ViatraQueryException {
-    return AbstractFunction__involvingFunctionalChainsQuerySpecification.instance();
+  public AbstractFunction__involvingFunctionalChains getAbstractFunction__involvingFunctionalChains() {
+    return AbstractFunction__involvingFunctionalChains.instance();
   }
   
-  public AbstractFunction__involvingFunctionalChainsMatcher getAbstractFunction__involvingFunctionalChains(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return AbstractFunction__involvingFunctionalChainsMatcher.on(engine);
+  public AbstractFunction__involvingFunctionalChains.Matcher getAbstractFunction__involvingFunctionalChains(final ViatraQueryEngine engine) {
+    return AbstractFunction__involvingFunctionalChains.Matcher.on(engine);
   }
   
-  public AbstractFunction__linkedStateMachineQuerySpecification getAbstractFunction__linkedStateMachine() throws ViatraQueryException {
-    return AbstractFunction__linkedStateMachineQuerySpecification.instance();
+  public AbstractFunction__linkedStateMachine getAbstractFunction__linkedStateMachine() {
+    return AbstractFunction__linkedStateMachine.instance();
   }
   
-  public AbstractFunction__linkedStateMachineMatcher getAbstractFunction__linkedStateMachine(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return AbstractFunction__linkedStateMachineMatcher.on(engine);
+  public AbstractFunction__linkedStateMachine.Matcher getAbstractFunction__linkedStateMachine(final ViatraQueryEngine engine) {
+    return AbstractFunction__linkedStateMachine.Matcher.on(engine);
   }
   
-  public AbstractFunction__linkedFunctionSpecificationQuerySpecification getAbstractFunction__linkedFunctionSpecification() throws ViatraQueryException {
-    return AbstractFunction__linkedFunctionSpecificationQuerySpecification.instance();
+  public AbstractFunction__linkedFunctionSpecification getAbstractFunction__linkedFunctionSpecification() {
+    return AbstractFunction__linkedFunctionSpecification.instance();
   }
   
-  public AbstractFunction__linkedFunctionSpecificationMatcher getAbstractFunction__linkedFunctionSpecification(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return AbstractFunction__linkedFunctionSpecificationMatcher.on(engine);
+  public AbstractFunction__linkedFunctionSpecification.Matcher getAbstractFunction__linkedFunctionSpecification(final ViatraQueryEngine engine) {
+    return AbstractFunction__linkedFunctionSpecification.Matcher.on(engine);
   }
 }

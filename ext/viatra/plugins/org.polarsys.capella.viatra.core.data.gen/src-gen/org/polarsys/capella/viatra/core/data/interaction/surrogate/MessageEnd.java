@@ -14,14 +14,12 @@ package org.polarsys.capella.viatra.core.data.interaction.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.core.data.interaction.surrogate.MessageEnd__messageMatcher;
-import org.polarsys.capella.viatra.core.data.interaction.surrogate.util.MessageEnd__messageQuerySpecification;
+import org.polarsys.capella.viatra.core.data.interaction.surrogate.MessageEnd__message;
 
 /**
  * A pattern group formed of all public patterns defined in MessageEnd.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file MessageEnd.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -29,7 +27,7 @@ import org.polarsys.capella.viatra.core.data.interaction.surrogate.util.MessageE
  * <li>MessageEnd__message</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -38,10 +36,10 @@ public final class MessageEnd extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static MessageEnd instance() throws ViatraQueryException {
+  public static MessageEnd instance() {
     if (INSTANCE == null) {
         INSTANCE = new MessageEnd();
     }
@@ -50,15 +48,15 @@ public final class MessageEnd extends BaseGeneratedPatternGroup {
   
   private static MessageEnd INSTANCE;
   
-  private MessageEnd() throws ViatraQueryException {
-    querySpecifications.add(MessageEnd__messageQuerySpecification.instance());
+  private MessageEnd() {
+    querySpecifications.add(MessageEnd__message.instance());
   }
   
-  public MessageEnd__messageQuerySpecification getMessageEnd__message() throws ViatraQueryException {
-    return MessageEnd__messageQuerySpecification.instance();
+  public MessageEnd__message getMessageEnd__message() {
+    return MessageEnd__message.instance();
   }
   
-  public MessageEnd__messageMatcher getMessageEnd__message(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return MessageEnd__messageMatcher.on(engine);
+  public MessageEnd__message.Matcher getMessageEnd__message(final ViatraQueryEngine engine) {
+    return MessageEnd__message.Matcher.on(engine);
   }
 }

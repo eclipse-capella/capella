@@ -14,14 +14,12 @@ package org.polarsys.capella.viatra.core.data.pa.deployment.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.core.data.pa.deployment.surrogate.ComponentInstance__portInstancesMatcher;
-import org.polarsys.capella.viatra.core.data.pa.deployment.surrogate.util.ComponentInstance__portInstancesQuerySpecification;
+import org.polarsys.capella.viatra.core.data.pa.deployment.surrogate.ComponentInstance__portInstances;
 
 /**
  * A pattern group formed of all public patterns defined in ComponentInstance.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file ComponentInstance.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -29,7 +27,7 @@ import org.polarsys.capella.viatra.core.data.pa.deployment.surrogate.util.Compon
  * <li>ComponentInstance__portInstances</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -38,10 +36,10 @@ public final class ComponentInstance extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static ComponentInstance instance() throws ViatraQueryException {
+  public static ComponentInstance instance() {
     if (INSTANCE == null) {
         INSTANCE = new ComponentInstance();
     }
@@ -50,15 +48,15 @@ public final class ComponentInstance extends BaseGeneratedPatternGroup {
   
   private static ComponentInstance INSTANCE;
   
-  private ComponentInstance() throws ViatraQueryException {
-    querySpecifications.add(ComponentInstance__portInstancesQuerySpecification.instance());
+  private ComponentInstance() {
+    querySpecifications.add(ComponentInstance__portInstances.instance());
   }
   
-  public ComponentInstance__portInstancesQuerySpecification getComponentInstance__portInstances() throws ViatraQueryException {
-    return ComponentInstance__portInstancesQuerySpecification.instance();
+  public ComponentInstance__portInstances getComponentInstance__portInstances() {
+    return ComponentInstance__portInstances.instance();
   }
   
-  public ComponentInstance__portInstancesMatcher getComponentInstance__portInstances(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return ComponentInstance__portInstancesMatcher.on(engine);
+  public ComponentInstance__portInstances.Matcher getComponentInstance__portInstances(final ViatraQueryEngine engine) {
+    return ComponentInstance__portInstances.Matcher.on(engine);
   }
 }

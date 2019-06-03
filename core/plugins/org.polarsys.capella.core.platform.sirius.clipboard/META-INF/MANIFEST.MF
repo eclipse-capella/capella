@@ -7,7 +7,6 @@ Bundle-Activator: org.polarsys.capella.core.platform.sirius.clipboard.Activator
 Bundle-Vendor: %providerName
 Require-Bundle: org.eclipse.sirius.diagram.sequence,
  org.eclipse.sirius.diagram.formatdata,
- org.eclipse.sirius.diagram.layoutdata,
  org.eclipse.ui.ide,
  org.eclipse.gmf.runtime.notation,
  org.eclipse.gmf.runtime.emf.clipboard.core,

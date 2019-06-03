@@ -14,16 +14,13 @@ package org.polarsys.capella.viatra.core.data.information.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.core.data.information.surrogate.ExchangeItemRealization__realizedItemMatcher;
-import org.polarsys.capella.viatra.core.data.information.surrogate.ExchangeItemRealization__realizingOperationMatcher;
-import org.polarsys.capella.viatra.core.data.information.surrogate.util.ExchangeItemRealization__realizedItemQuerySpecification;
-import org.polarsys.capella.viatra.core.data.information.surrogate.util.ExchangeItemRealization__realizingOperationQuerySpecification;
+import org.polarsys.capella.viatra.core.data.information.surrogate.ExchangeItemRealization__realizedItem;
+import org.polarsys.capella.viatra.core.data.information.surrogate.ExchangeItemRealization__realizingOperation;
 
 /**
  * A pattern group formed of all public patterns defined in ExchangeItemRealization.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file ExchangeItemRealization.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -32,7 +29,7 @@ import org.polarsys.capella.viatra.core.data.information.surrogate.util.Exchange
  * <li>ExchangeItemRealization__realizingOperation</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -41,10 +38,10 @@ public final class ExchangeItemRealization extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static ExchangeItemRealization instance() throws ViatraQueryException {
+  public static ExchangeItemRealization instance() {
     if (INSTANCE == null) {
         INSTANCE = new ExchangeItemRealization();
     }
@@ -53,24 +50,24 @@ public final class ExchangeItemRealization extends BaseGeneratedPatternGroup {
   
   private static ExchangeItemRealization INSTANCE;
   
-  private ExchangeItemRealization() throws ViatraQueryException {
-    querySpecifications.add(ExchangeItemRealization__realizedItemQuerySpecification.instance());
-    querySpecifications.add(ExchangeItemRealization__realizingOperationQuerySpecification.instance());
+  private ExchangeItemRealization() {
+    querySpecifications.add(ExchangeItemRealization__realizedItem.instance());
+    querySpecifications.add(ExchangeItemRealization__realizingOperation.instance());
   }
   
-  public ExchangeItemRealization__realizedItemQuerySpecification getExchangeItemRealization__realizedItem() throws ViatraQueryException {
-    return ExchangeItemRealization__realizedItemQuerySpecification.instance();
+  public ExchangeItemRealization__realizedItem getExchangeItemRealization__realizedItem() {
+    return ExchangeItemRealization__realizedItem.instance();
   }
   
-  public ExchangeItemRealization__realizedItemMatcher getExchangeItemRealization__realizedItem(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return ExchangeItemRealization__realizedItemMatcher.on(engine);
+  public ExchangeItemRealization__realizedItem.Matcher getExchangeItemRealization__realizedItem(final ViatraQueryEngine engine) {
+    return ExchangeItemRealization__realizedItem.Matcher.on(engine);
   }
   
-  public ExchangeItemRealization__realizingOperationQuerySpecification getExchangeItemRealization__realizingOperation() throws ViatraQueryException {
-    return ExchangeItemRealization__realizingOperationQuerySpecification.instance();
+  public ExchangeItemRealization__realizingOperation getExchangeItemRealization__realizingOperation() {
+    return ExchangeItemRealization__realizingOperation.instance();
   }
   
-  public ExchangeItemRealization__realizingOperationMatcher getExchangeItemRealization__realizingOperation(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return ExchangeItemRealization__realizingOperationMatcher.on(engine);
+  public ExchangeItemRealization__realizingOperation.Matcher getExchangeItemRealization__realizingOperation(final ViatraQueryEngine engine) {
+    return ExchangeItemRealization__realizingOperation.Matcher.on(engine);
   }
 }

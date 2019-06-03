@@ -14,16 +14,13 @@ package org.polarsys.capella.viatra.core.data.fa.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.ComponentPortAllocation__allocatedPortMatcher;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.ComponentPortAllocation__allocatingPortMatcher;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.util.ComponentPortAllocation__allocatedPortQuerySpecification;
-import org.polarsys.capella.viatra.core.data.fa.surrogate.util.ComponentPortAllocation__allocatingPortQuerySpecification;
+import org.polarsys.capella.viatra.core.data.fa.surrogate.ComponentPortAllocation__allocatedPort;
+import org.polarsys.capella.viatra.core.data.fa.surrogate.ComponentPortAllocation__allocatingPort;
 
 /**
  * A pattern group formed of all public patterns defined in ComponentPortAllocation.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file ComponentPortAllocation.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -32,7 +29,7 @@ import org.polarsys.capella.viatra.core.data.fa.surrogate.util.ComponentPortAllo
  * <li>ComponentPortAllocation__allocatingPort</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -41,10 +38,10 @@ public final class ComponentPortAllocation extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static ComponentPortAllocation instance() throws ViatraQueryException {
+  public static ComponentPortAllocation instance() {
     if (INSTANCE == null) {
         INSTANCE = new ComponentPortAllocation();
     }
@@ -53,24 +50,24 @@ public final class ComponentPortAllocation extends BaseGeneratedPatternGroup {
   
   private static ComponentPortAllocation INSTANCE;
   
-  private ComponentPortAllocation() throws ViatraQueryException {
-    querySpecifications.add(ComponentPortAllocation__allocatedPortQuerySpecification.instance());
-    querySpecifications.add(ComponentPortAllocation__allocatingPortQuerySpecification.instance());
+  private ComponentPortAllocation() {
+    querySpecifications.add(ComponentPortAllocation__allocatedPort.instance());
+    querySpecifications.add(ComponentPortAllocation__allocatingPort.instance());
   }
   
-  public ComponentPortAllocation__allocatedPortQuerySpecification getComponentPortAllocation__allocatedPort() throws ViatraQueryException {
-    return ComponentPortAllocation__allocatedPortQuerySpecification.instance();
+  public ComponentPortAllocation__allocatedPort getComponentPortAllocation__allocatedPort() {
+    return ComponentPortAllocation__allocatedPort.instance();
   }
   
-  public ComponentPortAllocation__allocatedPortMatcher getComponentPortAllocation__allocatedPort(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return ComponentPortAllocation__allocatedPortMatcher.on(engine);
+  public ComponentPortAllocation__allocatedPort.Matcher getComponentPortAllocation__allocatedPort(final ViatraQueryEngine engine) {
+    return ComponentPortAllocation__allocatedPort.Matcher.on(engine);
   }
   
-  public ComponentPortAllocation__allocatingPortQuerySpecification getComponentPortAllocation__allocatingPort() throws ViatraQueryException {
-    return ComponentPortAllocation__allocatingPortQuerySpecification.instance();
+  public ComponentPortAllocation__allocatingPort getComponentPortAllocation__allocatingPort() {
+    return ComponentPortAllocation__allocatingPort.instance();
   }
   
-  public ComponentPortAllocation__allocatingPortMatcher getComponentPortAllocation__allocatingPort(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return ComponentPortAllocation__allocatingPortMatcher.on(engine);
+  public ComponentPortAllocation__allocatingPort.Matcher getComponentPortAllocation__allocatingPort(final ViatraQueryEngine engine) {
+    return ComponentPortAllocation__allocatingPort.Matcher.on(engine);
   }
 }

@@ -20,6 +20,8 @@ import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DNodeList;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.ContainerMappingHelper;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.MappingHelper;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.diagram.description.tool.NodeCreationDescription;
@@ -92,10 +94,10 @@ public class NodeCreationDescriptionWrapper extends AbstractSingleSelectionWrapp
           final Iterator<NodeMapping> it = tool.getNodeMappings().iterator();
           while (it.hasNext()) {
             final NodeMapping curMapping = it.next();
-            if (containerMapping.getAllNodeMappings().contains(curMapping)) {
+            if (ContainerMappingHelper.getAllNodeMappings(containerMapping).contains(curMapping)) {
               shouldCreate = true;
               break;
-            } else if (containerMapping.getAllBorderedNodeMappings().contains(curMapping)) {
+            } else if (MappingHelper.getAllBorderedNodeMappings(containerMapping).contains(curMapping)) {
               shouldCreate = true;
               break;
             }
@@ -108,7 +110,7 @@ public class NodeCreationDescriptionWrapper extends AbstractSingleSelectionWrapp
           final Iterator<NodeMapping> it = tool.getNodeMappings().iterator();
           while (it.hasNext()) {
             final NodeMapping curMapping = it.next();
-            if (nodeMapping.getAllBorderedNodeMappings().contains(curMapping)) {
+            if (MappingHelper.getAllBorderedNodeMappings(nodeMapping).contains(curMapping)) {
               shouldCreate = true;
               break;
             }

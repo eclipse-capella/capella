@@ -14,14 +14,12 @@ package org.polarsys.capella.viatra.common.data.activity.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.common.data.activity.surrogate.ActivityExchange__realizingActivityFlowsMatcher;
-import org.polarsys.capella.viatra.common.data.activity.surrogate.util.ActivityExchange__realizingActivityFlowsQuerySpecification;
+import org.polarsys.capella.viatra.common.data.activity.surrogate.ActivityExchange__realizingActivityFlows;
 
 /**
  * A pattern group formed of all public patterns defined in ActivityExchange.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file ActivityExchange.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -29,7 +27,7 @@ import org.polarsys.capella.viatra.common.data.activity.surrogate.util.ActivityE
  * <li>ActivityExchange__realizingActivityFlows</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -38,10 +36,10 @@ public final class ActivityExchange extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static ActivityExchange instance() throws ViatraQueryException {
+  public static ActivityExchange instance() {
     if (INSTANCE == null) {
         INSTANCE = new ActivityExchange();
     }
@@ -50,15 +48,15 @@ public final class ActivityExchange extends BaseGeneratedPatternGroup {
   
   private static ActivityExchange INSTANCE;
   
-  private ActivityExchange() throws ViatraQueryException {
-    querySpecifications.add(ActivityExchange__realizingActivityFlowsQuerySpecification.instance());
+  private ActivityExchange() {
+    querySpecifications.add(ActivityExchange__realizingActivityFlows.instance());
   }
   
-  public ActivityExchange__realizingActivityFlowsQuerySpecification getActivityExchange__realizingActivityFlows() throws ViatraQueryException {
-    return ActivityExchange__realizingActivityFlowsQuerySpecification.instance();
+  public ActivityExchange__realizingActivityFlows getActivityExchange__realizingActivityFlows() {
+    return ActivityExchange__realizingActivityFlows.instance();
   }
   
-  public ActivityExchange__realizingActivityFlowsMatcher getActivityExchange__realizingActivityFlows(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return ActivityExchange__realizingActivityFlowsMatcher.on(engine);
+  public ActivityExchange__realizingActivityFlows.Matcher getActivityExchange__realizingActivityFlows(final ViatraQueryEngine engine) {
+    return ActivityExchange__realizingActivityFlows.Matcher.on(engine);
   }
 }

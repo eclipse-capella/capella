@@ -35,8 +35,10 @@ import org.eclipse.sirius.diagram.DragAndDropTarget;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramComponentizationManager;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManager;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManagerRegistry;
-import org.eclipse.sirius.diagram.business.internal.experimental.sync.AbstractDNodeCandidate;
-import org.eclipse.sirius.diagram.business.internal.experimental.sync.DDiagramElementSynchronizer;
+import org.eclipse.sirius.diagram.business.internal.metamodel.description.operations.SiriusElementMappingSpecOperations;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.MappingHelper;
+import org.eclipse.sirius.diagram.business.internal.sync.DDiagramElementSynchronizer;
+import org.eclipse.sirius.diagram.business.internal.sync.DNodeCandidate;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
@@ -204,7 +206,7 @@ public class CreateViewTask extends AbstractCommandTask {
     final Session session = SessionManager.INSTANCE.getSession(diagram.getTarget());
 
     if (containerMapping != null) {
-      for (DiagramElementMapping mapping : containerMapping.getAllMappings()) {
+      for (DiagramElementMapping mapping : MappingHelper.getAllMappings(containerMapping)) {
         if (isValidMapping(element, mapping)) {
           validMappings.add(mapping);
         }
@@ -241,8 +243,8 @@ public class CreateViewTask extends AbstractCommandTask {
    */
   protected boolean isValidMapping(EObject element, DiagramElementMapping mapping) {
 
-    if (isDomainValid(element, mapping)
-        && mapping.checkPrecondition(element, getDestinationContainer().getTarget(), getDestinationContainer())) {
+    if (isDomainValid(element, mapping) && SiriusElementMappingSpecOperations.checkPrecondition(mapping, element,
+        getDestinationContainer().getTarget(), getDestinationContainer())) {
       // Remove mappings from an inactive layer
       Layer layer = (Layer) EcoreUtil2.getFirstContainer(mapping,
           org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.LAYER);
@@ -332,8 +334,7 @@ public class CreateViewTask extends AbstractCommandTask {
     DDiagramElement newView = null;
     RefreshIdsHolder refreshId = RefreshIdsHolder.getOrCreateHolder(diagram);
     ModelAccessor accessor = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(diagram);
-    AbstractDNodeCandidate candidate = new AbstractDNodeCandidate((AbstractNodeMapping) mapping, element, containerView,
-        refreshId);
+    DNodeCandidate candidate = new DNodeCandidate((AbstractNodeMapping) mapping, element, containerView, refreshId);
     final DDiagramElementSynchronizer sync = new DDiagramElementSynchronizer(diagram,
         InterpreterUtil.getInterpreter(element), accessor) {
       @Override

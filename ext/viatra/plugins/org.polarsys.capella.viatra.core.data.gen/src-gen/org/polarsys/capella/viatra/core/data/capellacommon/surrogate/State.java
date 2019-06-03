@@ -14,18 +14,14 @@ package org.polarsys.capella.viatra.core.data.capellacommon.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.core.data.capellacommon.surrogate.State__availableAbstractCapabilitiesMatcher;
-import org.polarsys.capella.viatra.core.data.capellacommon.surrogate.State__availableAbstractFunctionsMatcher;
-import org.polarsys.capella.viatra.core.data.capellacommon.surrogate.State__availableFunctionalChainsMatcher;
-import org.polarsys.capella.viatra.core.data.capellacommon.surrogate.util.State__availableAbstractCapabilitiesQuerySpecification;
-import org.polarsys.capella.viatra.core.data.capellacommon.surrogate.util.State__availableAbstractFunctionsQuerySpecification;
-import org.polarsys.capella.viatra.core.data.capellacommon.surrogate.util.State__availableFunctionalChainsQuerySpecification;
+import org.polarsys.capella.viatra.core.data.capellacommon.surrogate.State__availableAbstractCapabilities;
+import org.polarsys.capella.viatra.core.data.capellacommon.surrogate.State__availableAbstractFunctions;
+import org.polarsys.capella.viatra.core.data.capellacommon.surrogate.State__availableFunctionalChains;
 
 /**
  * A pattern group formed of all public patterns defined in State.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file State.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -35,7 +31,7 @@ import org.polarsys.capella.viatra.core.data.capellacommon.surrogate.util.State_
  * <li>State__availableAbstractCapabilities</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -44,10 +40,10 @@ public final class State extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static State instance() throws ViatraQueryException {
+  public static State instance() {
     if (INSTANCE == null) {
         INSTANCE = new State();
     }
@@ -56,33 +52,33 @@ public final class State extends BaseGeneratedPatternGroup {
   
   private static State INSTANCE;
   
-  private State() throws ViatraQueryException {
-    querySpecifications.add(State__availableAbstractFunctionsQuerySpecification.instance());
-    querySpecifications.add(State__availableFunctionalChainsQuerySpecification.instance());
-    querySpecifications.add(State__availableAbstractCapabilitiesQuerySpecification.instance());
+  private State() {
+    querySpecifications.add(State__availableAbstractFunctions.instance());
+    querySpecifications.add(State__availableFunctionalChains.instance());
+    querySpecifications.add(State__availableAbstractCapabilities.instance());
   }
   
-  public State__availableAbstractFunctionsQuerySpecification getState__availableAbstractFunctions() throws ViatraQueryException {
-    return State__availableAbstractFunctionsQuerySpecification.instance();
+  public State__availableAbstractFunctions getState__availableAbstractFunctions() {
+    return State__availableAbstractFunctions.instance();
   }
   
-  public State__availableAbstractFunctionsMatcher getState__availableAbstractFunctions(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return State__availableAbstractFunctionsMatcher.on(engine);
+  public State__availableAbstractFunctions.Matcher getState__availableAbstractFunctions(final ViatraQueryEngine engine) {
+    return State__availableAbstractFunctions.Matcher.on(engine);
   }
   
-  public State__availableFunctionalChainsQuerySpecification getState__availableFunctionalChains() throws ViatraQueryException {
-    return State__availableFunctionalChainsQuerySpecification.instance();
+  public State__availableFunctionalChains getState__availableFunctionalChains() {
+    return State__availableFunctionalChains.instance();
   }
   
-  public State__availableFunctionalChainsMatcher getState__availableFunctionalChains(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return State__availableFunctionalChainsMatcher.on(engine);
+  public State__availableFunctionalChains.Matcher getState__availableFunctionalChains(final ViatraQueryEngine engine) {
+    return State__availableFunctionalChains.Matcher.on(engine);
   }
   
-  public State__availableAbstractCapabilitiesQuerySpecification getState__availableAbstractCapabilities() throws ViatraQueryException {
-    return State__availableAbstractCapabilitiesQuerySpecification.instance();
+  public State__availableAbstractCapabilities getState__availableAbstractCapabilities() {
+    return State__availableAbstractCapabilities.instance();
   }
   
-  public State__availableAbstractCapabilitiesMatcher getState__availableAbstractCapabilities(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return State__availableAbstractCapabilitiesMatcher.on(engine);
+  public State__availableAbstractCapabilities.Matcher getState__availableAbstractCapabilities(final ViatraQueryEngine engine) {
+    return State__availableAbstractCapabilities.Matcher.on(engine);
   }
 }

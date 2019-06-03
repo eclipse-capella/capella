@@ -13,10 +13,14 @@ package org.polarsys.capella.core.sirius.analysis.refresh.extension;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.business.internal.metamodel.description.extensions.INodeMappingExt;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.NodeMappingHelper;
 import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.polarsys.capella.core.data.capellacore.GeneralizableElement;
 import org.polarsys.capella.core.data.ctx.Actor;
 import org.polarsys.capella.core.data.ctx.ActorMissionInvolvement;
@@ -30,7 +34,7 @@ public class ContextualMissionRefreshExtension extends AbstractCacheAwareRefresh
   @Override
   public void beforeRefresh(DDiagram diagram) {
     super.beforeRefresh(diagram);
-    
+
     if (((DSemanticDecorator) diagram).getTarget() == null) {
       // avoid refresh on dirty diagram
       return;
@@ -39,9 +43,12 @@ public class ContextualMissionRefreshExtension extends AbstractCacheAwareRefresh
     List<Capability> capabilities = new LinkedList<>();
     List<Mission> missions = new LinkedList<>();
 
-    final NodeMapping actorNodeMapping = DiagramServices.getDiagramServices().getNodeMapping(diagram, IMappingNameConstants.CM_COMPONENT_MAPPING_NAME);
-    final NodeMapping capaNodeMapping = DiagramServices.getDiagramServices().getNodeMapping(diagram, IMappingNameConstants.CM_CAPABILITY_MAPPING_NAME);
-    final NodeMapping missionNodeMapping = DiagramServices.getDiagramServices().getNodeMapping(diagram, IMappingNameConstants.CM_MISSION_MAPPING_NAME);
+    final NodeMapping actorNodeMapping = DiagramServices.getDiagramServices().getNodeMapping(diagram,
+        IMappingNameConstants.CM_COMPONENT_MAPPING_NAME);
+    final NodeMapping capaNodeMapping = DiagramServices.getDiagramServices().getNodeMapping(diagram,
+        IMappingNameConstants.CM_CAPABILITY_MAPPING_NAME);
+    final NodeMapping missionNodeMapping = DiagramServices.getDiagramServices().getNodeMapping(diagram,
+        IMappingNameConstants.CM_MISSION_MAPPING_NAME);
 
     final Mission currentMission = (Mission) ((DSemanticDecorator) diagram).getTarget();
 
@@ -56,25 +63,31 @@ public class ContextualMissionRefreshExtension extends AbstractCacheAwareRefresh
     missions.add(currentMission);
     capabilities.addAll(currentMission.getExploitedCapabilities());
 
+    IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(currentMission);
+    NodeMappingHelper nodeMappingHelper = new NodeMappingHelper(interpreter);
+
     // node creation
 
     for (final Actor actor : actors) {
       if (!DiagramServices.getDiagramServices().isOnDiagram(diagram, actor)) {
-        final DDiagramElement container = actorNodeMapping.createNode(actor, currentMission, diagram);
+        final DDiagramElement container = nodeMappingHelper.createNode((INodeMappingExt) actorNodeMapping, actor,
+            currentMission, diagram);
         diagram.getOwnedDiagramElements().add(container);
       }
     }
 
     for (final Capability cap : capabilities) {
       if (!DiagramServices.getDiagramServices().isOnDiagram(diagram, cap)) {
-        final DDiagramElement container = capaNodeMapping.createNode(cap, currentMission, diagram);
+        final DDiagramElement container = nodeMappingHelper.createNode((INodeMappingExt) capaNodeMapping, cap,
+            currentMission, diagram);
         diagram.getOwnedDiagramElements().add(container);
       }
     }
 
     for (final Mission mission : missions) {
       if (!DiagramServices.getDiagramServices().isOnDiagram(diagram, mission)) {
-        final DDiagramElement container = missionNodeMapping.createNode(mission, currentMission, diagram);
+        final DDiagramElement container = nodeMappingHelper.createNode((INodeMappingExt) missionNodeMapping, mission,
+            currentMission, diagram);
         diagram.getOwnedDiagramElements().add(container);
       }
     }

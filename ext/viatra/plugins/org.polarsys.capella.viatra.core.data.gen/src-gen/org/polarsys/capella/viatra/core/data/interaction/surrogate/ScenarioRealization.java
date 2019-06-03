@@ -14,16 +14,13 @@ package org.polarsys.capella.viatra.core.data.interaction.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.core.data.interaction.surrogate.ScenarioRealization__realizedScenarioMatcher;
-import org.polarsys.capella.viatra.core.data.interaction.surrogate.ScenarioRealization__realizingScenarioMatcher;
-import org.polarsys.capella.viatra.core.data.interaction.surrogate.util.ScenarioRealization__realizedScenarioQuerySpecification;
-import org.polarsys.capella.viatra.core.data.interaction.surrogate.util.ScenarioRealization__realizingScenarioQuerySpecification;
+import org.polarsys.capella.viatra.core.data.interaction.surrogate.ScenarioRealization__realizedScenario;
+import org.polarsys.capella.viatra.core.data.interaction.surrogate.ScenarioRealization__realizingScenario;
 
 /**
  * A pattern group formed of all public patterns defined in ScenarioRealization.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file ScenarioRealization.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -32,7 +29,7 @@ import org.polarsys.capella.viatra.core.data.interaction.surrogate.util.Scenario
  * <li>ScenarioRealization__realizingScenario</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -41,10 +38,10 @@ public final class ScenarioRealization extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static ScenarioRealization instance() throws ViatraQueryException {
+  public static ScenarioRealization instance() {
     if (INSTANCE == null) {
         INSTANCE = new ScenarioRealization();
     }
@@ -53,24 +50,24 @@ public final class ScenarioRealization extends BaseGeneratedPatternGroup {
   
   private static ScenarioRealization INSTANCE;
   
-  private ScenarioRealization() throws ViatraQueryException {
-    querySpecifications.add(ScenarioRealization__realizedScenarioQuerySpecification.instance());
-    querySpecifications.add(ScenarioRealization__realizingScenarioQuerySpecification.instance());
+  private ScenarioRealization() {
+    querySpecifications.add(ScenarioRealization__realizedScenario.instance());
+    querySpecifications.add(ScenarioRealization__realizingScenario.instance());
   }
   
-  public ScenarioRealization__realizedScenarioQuerySpecification getScenarioRealization__realizedScenario() throws ViatraQueryException {
-    return ScenarioRealization__realizedScenarioQuerySpecification.instance();
+  public ScenarioRealization__realizedScenario getScenarioRealization__realizedScenario() {
+    return ScenarioRealization__realizedScenario.instance();
   }
   
-  public ScenarioRealization__realizedScenarioMatcher getScenarioRealization__realizedScenario(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return ScenarioRealization__realizedScenarioMatcher.on(engine);
+  public ScenarioRealization__realizedScenario.Matcher getScenarioRealization__realizedScenario(final ViatraQueryEngine engine) {
+    return ScenarioRealization__realizedScenario.Matcher.on(engine);
   }
   
-  public ScenarioRealization__realizingScenarioQuerySpecification getScenarioRealization__realizingScenario() throws ViatraQueryException {
-    return ScenarioRealization__realizingScenarioQuerySpecification.instance();
+  public ScenarioRealization__realizingScenario getScenarioRealization__realizingScenario() {
+    return ScenarioRealization__realizingScenario.instance();
   }
   
-  public ScenarioRealization__realizingScenarioMatcher getScenarioRealization__realizingScenario(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return ScenarioRealization__realizingScenarioMatcher.on(engine);
+  public ScenarioRealization__realizingScenario.Matcher getScenarioRealization__realizingScenario(final ViatraQueryEngine engine) {
+    return ScenarioRealization__realizingScenario.Matcher.on(engine);
   }
 }

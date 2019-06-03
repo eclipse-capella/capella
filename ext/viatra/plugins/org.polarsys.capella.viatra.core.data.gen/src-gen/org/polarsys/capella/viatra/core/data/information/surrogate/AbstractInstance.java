@@ -14,14 +14,12 @@ package org.polarsys.capella.viatra.core.data.information.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.core.data.information.surrogate.AbstractInstance__representingInstanceRolesMatcher;
-import org.polarsys.capella.viatra.core.data.information.surrogate.util.AbstractInstance__representingInstanceRolesQuerySpecification;
+import org.polarsys.capella.viatra.core.data.information.surrogate.AbstractInstance__representingInstanceRoles;
 
 /**
  * A pattern group formed of all public patterns defined in AbstractInstance.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file AbstractInstance.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -29,7 +27,7 @@ import org.polarsys.capella.viatra.core.data.information.surrogate.util.Abstract
  * <li>AbstractInstance__representingInstanceRoles</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -38,10 +36,10 @@ public final class AbstractInstance extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static AbstractInstance instance() throws ViatraQueryException {
+  public static AbstractInstance instance() {
     if (INSTANCE == null) {
         INSTANCE = new AbstractInstance();
     }
@@ -50,15 +48,15 @@ public final class AbstractInstance extends BaseGeneratedPatternGroup {
   
   private static AbstractInstance INSTANCE;
   
-  private AbstractInstance() throws ViatraQueryException {
-    querySpecifications.add(AbstractInstance__representingInstanceRolesQuerySpecification.instance());
+  private AbstractInstance() {
+    querySpecifications.add(AbstractInstance__representingInstanceRoles.instance());
   }
   
-  public AbstractInstance__representingInstanceRolesQuerySpecification getAbstractInstance__representingInstanceRoles() throws ViatraQueryException {
-    return AbstractInstance__representingInstanceRolesQuerySpecification.instance();
+  public AbstractInstance__representingInstanceRoles getAbstractInstance__representingInstanceRoles() {
+    return AbstractInstance__representingInstanceRoles.instance();
   }
   
-  public AbstractInstance__representingInstanceRolesMatcher getAbstractInstance__representingInstanceRoles(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return AbstractInstance__representingInstanceRolesMatcher.on(engine);
+  public AbstractInstance__representingInstanceRoles.Matcher getAbstractInstance__representingInstanceRoles(final ViatraQueryEngine engine) {
+    return AbstractInstance__representingInstanceRoles.Matcher.on(engine);
   }
 }

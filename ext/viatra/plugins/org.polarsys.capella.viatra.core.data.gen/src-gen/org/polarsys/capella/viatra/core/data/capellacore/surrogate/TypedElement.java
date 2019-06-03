@@ -14,14 +14,12 @@ package org.polarsys.capella.viatra.core.data.capellacore.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.core.data.capellacore.surrogate.TypedElement__typeMatcher;
-import org.polarsys.capella.viatra.core.data.capellacore.surrogate.util.TypedElement__typeQuerySpecification;
+import org.polarsys.capella.viatra.core.data.capellacore.surrogate.TypedElement__type;
 
 /**
  * A pattern group formed of all public patterns defined in TypedElement.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file TypedElement.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -29,7 +27,7 @@ import org.polarsys.capella.viatra.core.data.capellacore.surrogate.util.TypedEle
  * <li>TypedElement__type</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -38,10 +36,10 @@ public final class TypedElement extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static TypedElement instance() throws ViatraQueryException {
+  public static TypedElement instance() {
     if (INSTANCE == null) {
         INSTANCE = new TypedElement();
     }
@@ -50,15 +48,15 @@ public final class TypedElement extends BaseGeneratedPatternGroup {
   
   private static TypedElement INSTANCE;
   
-  private TypedElement() throws ViatraQueryException {
-    querySpecifications.add(TypedElement__typeQuerySpecification.instance());
+  private TypedElement() {
+    querySpecifications.add(TypedElement__type.instance());
   }
   
-  public TypedElement__typeQuerySpecification getTypedElement__type() throws ViatraQueryException {
-    return TypedElement__typeQuerySpecification.instance();
+  public TypedElement__type getTypedElement__type() {
+    return TypedElement__type.instance();
   }
   
-  public TypedElement__typeMatcher getTypedElement__type(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return TypedElement__typeMatcher.on(engine);
+  public TypedElement__type.Matcher getTypedElement__type(final ViatraQueryEngine engine) {
+    return TypedElement__type.Matcher.on(engine);
   }
 }

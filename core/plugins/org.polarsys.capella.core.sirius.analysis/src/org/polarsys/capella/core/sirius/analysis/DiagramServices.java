@@ -58,13 +58,15 @@ import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramQuery;
 import org.eclipse.sirius.diagram.business.api.query.DiagramElementMappingQuery;
 import org.eclipse.sirius.diagram.business.api.query.EdgeMappingQuery;
-import org.eclipse.sirius.diagram.business.internal.experimental.sync.AbstractDNodeCandidate;
-import org.eclipse.sirius.diagram.business.internal.experimental.sync.DDiagramElementSynchronizer;
-import org.eclipse.sirius.diagram.business.internal.experimental.sync.DDiagramSynchronizer;
-import org.eclipse.sirius.diagram.business.internal.experimental.sync.DEdgeCandidate;
 import org.eclipse.sirius.diagram.business.internal.helper.decoration.DecorationHelperInternal;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.ContentHelper;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.EdgeMappingHelper;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.MappingHelper;
+import org.eclipse.sirius.diagram.business.internal.metamodel.operations.DDiagramSpecOperations;
+import org.eclipse.sirius.diagram.business.internal.sync.DDiagramElementSynchronizer;
+import org.eclipse.sirius.diagram.business.internal.sync.DDiagramSynchronizer;
+import org.eclipse.sirius.diagram.business.internal.sync.DEdgeCandidate;
+import org.eclipse.sirius.diagram.business.internal.sync.DNodeCandidate;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
@@ -313,29 +315,29 @@ public class DiagramServices {
 
   public AbstractNodeMapping getAbstractNodeMapping(final DiagramDescription description, String mappingName) {
 
-    for (NodeMapping nodeMapping : description.getAllNodeMappings()) {
+    for (NodeMapping nodeMapping : ContentHelper.getAllNodeMappings(description, false)) {
       if (nodeMapping.getName().equals(mappingName)) {
         return nodeMapping;
       }
-      for (NodeMapping borderedMapping : nodeMapping.getAllBorderedNodeMappings()) {
+      for (NodeMapping borderedMapping : MappingHelper.getAllBorderedNodeMappings(nodeMapping)) {
         if (borderedMapping.getName().equals(mappingName)) {
           return borderedMapping;
         }
       }
     }
 
-    for (ContainerMapping nodeMapping : description.getAllContainerMappings()) {
+    for (ContainerMapping nodeMapping : ContentHelper.getAllContainerMappings(description, false)) {
       if (nodeMapping.getName().equals(mappingName)) {
         return nodeMapping;
       }
-      for (DiagramElementMapping mapping : nodeMapping.getAllMappings()) {
+      for (DiagramElementMapping mapping : MappingHelper.getAllMappings(nodeMapping)) {
         if ((mapping instanceof AbstractNodeMapping)) {
 
           if (mapping.getName().equals(mappingName)) {
             return (AbstractNodeMapping) mapping;
 
           }
-          for (NodeMapping borderedMapping : ((AbstractNodeMapping) mapping).getAllBorderedNodeMappings()) {
+          for (NodeMapping borderedMapping : MappingHelper.getAllBorderedNodeMappings((AbstractNodeMapping) mapping)) {
             if (borderedMapping.getName().equals(mappingName)) {
               return borderedMapping;
             }
@@ -354,12 +356,12 @@ public class DiagramServices {
 
   public NodeMapping getNodeMapping(final DDiagram diagram, String mappingName) {
     final DiagramDescription description = diagram.getDescription();
-    for (final NodeMapping nodeMapping : description.getAllNodeMappings()) {
+    for (final NodeMapping nodeMapping : ContentHelper.getAllNodeMappings(description, false)) {
       if (nodeMapping.getName().equals(mappingName)) {
         return nodeMapping;
       }
     }
-    for (ContainerMapping aMapping : description.getAllContainerMappings()) {
+    for (ContainerMapping aMapping : ContentHelper.getAllContainerMappings(description, false)) {
       for (NodeMapping aNodeMapping : getAllNodeMappings(aMapping)) {
         if (aNodeMapping.getName().equals(mappingName)) {
           return aNodeMapping;
@@ -380,14 +382,14 @@ public class DiagramServices {
 
   public NodeMapping getBorderedNodeMapping(final DDiagram diagram, String mappingName) {
     final DiagramDescription description = diagram.getDescription();
-    for (final NodeMapping nodeMapping : description.getAllNodeMappings()) {
+    for (final NodeMapping nodeMapping : ContentHelper.getAllNodeMappings(description, false)) {
       for (NodeMapping aBorderedNodeMapping : getAllBorderedNodeMapping(nodeMapping)) {
         if (aBorderedNodeMapping.getName().equals(mappingName)) {
           return aBorderedNodeMapping;
         }
       }
     }
-    for (ContainerMapping aMapping : description.getAllContainerMappings()) {
+    for (ContainerMapping aMapping : ContentHelper.getAllContainerMappings(description, false)) {
       for (NodeMapping aBorderedNodeMapping : getAllBorderedNodeMapping(aMapping)) {
         if (aBorderedNodeMapping.getName().equals(mappingName)) {
           return aBorderedNodeMapping;
@@ -399,7 +401,7 @@ public class DiagramServices {
 
   public ContainerMapping getContainerMapping(final DDiagram diagram, String mappingName) {
     final DiagramDescription description = diagram.getDescription();
-    for (ContainerMapping aContainerMapping : description.getAllContainerMappings()) {
+    for (ContainerMapping aContainerMapping : ContentHelper.getAllContainerMappings(description, false)) {
       for (ContainerMapping aSubContainerMapping : getAllContainerMappings(aContainerMapping)) {
         if (aSubContainerMapping.getName().equals(mappingName)) {
           return aSubContainerMapping;
@@ -438,7 +440,7 @@ public class DiagramServices {
     final DDiagramElementSynchronizer elementSync = diagramSync.getElementSynchronizer();
     RefreshIdsHolder rId = RefreshIdsHolder.getOrCreateHolder(diagram);
 
-    AbstractDNodeCandidate nodeCandidate = new AbstractDNodeCandidate(mapping, modelElement, container, rId);
+    DNodeCandidate nodeCandidate = new DNodeCandidate(mapping, modelElement, container, rId);
     return (DNode) elementSync.createNewNode(getMappingManager((DSemanticDiagram) diag), nodeCandidate, true);
   }
 
@@ -453,7 +455,7 @@ public class DiagramServices {
     final DDiagramElementSynchronizer elementSync = diagramSync.getElementSynchronizer();
     RefreshIdsHolder rId = RefreshIdsHolder.getOrCreateHolder(diagram);
 
-    AbstractDNodeCandidate nodeCandidate = new AbstractDNodeCandidate(mapping, modelElement, container, rId);
+    DNodeCandidate nodeCandidate = new DNodeCandidate(mapping, modelElement, container, rId);
     return elementSync.createNewNode(getMappingManager((DSemanticDiagram) diag), nodeCandidate, false, -1);
   }
 
@@ -468,7 +470,7 @@ public class DiagramServices {
     final DDiagramElementSynchronizer elementSync = diagramSync.getElementSynchronizer();
     RefreshIdsHolder rId = RefreshIdsHolder.getOrCreateHolder(diagram);
 
-    AbstractDNodeCandidate nodeCandidate = new AbstractDNodeCandidate(mapping, modelElement, container, rId);
+    DNodeCandidate nodeCandidate = new DNodeCandidate(mapping, modelElement, container, rId);
     return (DNodeContainer) elementSync.createNewNode(getMappingManager((DSemanticDiagram) diag), nodeCandidate, false);
   }
 
@@ -518,7 +520,7 @@ public class DiagramServices {
     final DDiagramElementSynchronizer elementSync = diagramSync.getElementSynchronizer();
     RefreshIdsHolder rId = RefreshIdsHolder.getOrCreateHolder(diagram);
 
-    AbstractDNodeCandidate nodeCandidate = new AbstractDNodeCandidate(mapping, modelElement, container, rId);
+    DNodeCandidate nodeCandidate = new DNodeCandidate(mapping, modelElement, container, rId);
     return elementSync.createNewNode(getMappingManager((DSemanticDiagram) diag), nodeCandidate,
         isBorderedNodeMapping(mapping));
   }
@@ -1449,7 +1451,7 @@ public class DiagramServices {
    */
   public DEdge findDEdgeElement(DDiagram pDiagram, EdgeTarget sourceNode, EdgeTarget targetNode, EObject semanticObject,
       EdgeMapping mapping) {
-    for (DEdge anEdge : pDiagram.getEdgesFromMapping(mapping)) {
+    for (DEdge anEdge : DDiagramSpecOperations.getEdgesFromMapping(pDiagram, mapping)) {
       if ((anEdge.getTarget() != null) && anEdge.getTarget().equals(semanticObject)
           && anEdge.getSourceNode().equals(sourceNode) && anEdge.getTargetNode().equals(targetNode)) {
         return anEdge;
@@ -1579,25 +1581,25 @@ public class DiagramServices {
     return mapping;
   }
 
-  public HashMap<String, DiagramElementMapping> getAllMappingsByName(DiagramDescription description_p) {
+  public HashMap<String, DiagramElementMapping> getAllMappingsByName(DiagramDescription description) {
     HashMap<String, DiagramElementMapping> result = new HashMap<String, DiagramElementMapping>();
 
-    for (NodeMapping nodeMapping : description_p.getAllNodeMappings()) {
+    for (NodeMapping nodeMapping : ContentHelper.getAllNodeMappings(description, false)) {
       result.put(nodeMapping.getName(), nodeMapping);
-      for (DiagramElementMapping mapping : nodeMapping.getAllMappings()) {
+      for (DiagramElementMapping mapping : MappingHelper.getAllMappings(nodeMapping)) {
         result.put(mapping.getName(), mapping);
       }
     }
-    for (ContainerMapping nodeMapping : description_p.getAllContainerMappings()) {
+    for (ContainerMapping nodeMapping : ContentHelper.getAllContainerMappings(description, false)) {
       result.put(nodeMapping.getName(), nodeMapping);
-      for (DiagramElementMapping mapping : nodeMapping.getAllMappings()) {
+      for (DiagramElementMapping mapping : MappingHelper.getAllMappings(nodeMapping)) {
         result.put(mapping.getName(), mapping);
-        for (DiagramElementMapping borderedMapping : mapping.getAllMappings()) {
+        for (DiagramElementMapping borderedMapping : MappingHelper.getAllMappings(mapping)) {
           result.put(borderedMapping.getName(), borderedMapping);
         }
       }
     }
-    for (final EdgeMapping edgeMapping : description_p.getAllEdgeMappings()) {
+    for (final EdgeMapping edgeMapping : description.getAllEdgeMappings()) {
       result.put(edgeMapping.getName(), edgeMapping);
     }
     return result;

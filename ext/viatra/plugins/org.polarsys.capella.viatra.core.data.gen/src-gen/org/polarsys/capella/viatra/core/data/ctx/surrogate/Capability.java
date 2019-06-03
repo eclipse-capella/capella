@@ -14,28 +14,19 @@ package org.polarsys.capella.viatra.core.data.ctx.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.core.data.ctx.surrogate.Capability__involvedActorsMatcher;
-import org.polarsys.capella.viatra.core.data.ctx.surrogate.Capability__involvedSystemMatcher;
-import org.polarsys.capella.viatra.core.data.ctx.surrogate.Capability__participatingActorsMatcher;
-import org.polarsys.capella.viatra.core.data.ctx.surrogate.Capability__participatingSystemMatcher;
-import org.polarsys.capella.viatra.core.data.ctx.surrogate.Capability__purposeMissionsMatcher;
-import org.polarsys.capella.viatra.core.data.ctx.surrogate.Capability__purposesMatcher;
-import org.polarsys.capella.viatra.core.data.ctx.surrogate.Capability__realizedOperationalCapabilitiesMatcher;
-import org.polarsys.capella.viatra.core.data.ctx.surrogate.Capability__realizingCapabilityRealizationsMatcher;
-import org.polarsys.capella.viatra.core.data.ctx.surrogate.util.Capability__involvedActorsQuerySpecification;
-import org.polarsys.capella.viatra.core.data.ctx.surrogate.util.Capability__involvedSystemQuerySpecification;
-import org.polarsys.capella.viatra.core.data.ctx.surrogate.util.Capability__participatingActorsQuerySpecification;
-import org.polarsys.capella.viatra.core.data.ctx.surrogate.util.Capability__participatingSystemQuerySpecification;
-import org.polarsys.capella.viatra.core.data.ctx.surrogate.util.Capability__purposeMissionsQuerySpecification;
-import org.polarsys.capella.viatra.core.data.ctx.surrogate.util.Capability__purposesQuerySpecification;
-import org.polarsys.capella.viatra.core.data.ctx.surrogate.util.Capability__realizedOperationalCapabilitiesQuerySpecification;
-import org.polarsys.capella.viatra.core.data.ctx.surrogate.util.Capability__realizingCapabilityRealizationsQuerySpecification;
+import org.polarsys.capella.viatra.core.data.ctx.surrogate.Capability__involvedActors;
+import org.polarsys.capella.viatra.core.data.ctx.surrogate.Capability__involvedSystem;
+import org.polarsys.capella.viatra.core.data.ctx.surrogate.Capability__participatingActors;
+import org.polarsys.capella.viatra.core.data.ctx.surrogate.Capability__participatingSystem;
+import org.polarsys.capella.viatra.core.data.ctx.surrogate.Capability__purposeMissions;
+import org.polarsys.capella.viatra.core.data.ctx.surrogate.Capability__purposes;
+import org.polarsys.capella.viatra.core.data.ctx.surrogate.Capability__realizedOperationalCapabilities;
+import org.polarsys.capella.viatra.core.data.ctx.surrogate.Capability__realizingCapabilityRealizations;
 
 /**
  * A pattern group formed of all public patterns defined in Capability.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file Capability.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -50,7 +41,7 @@ import org.polarsys.capella.viatra.core.data.ctx.surrogate.util.Capability__real
  * <li>Capability__realizingCapabilityRealizations</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -59,10 +50,10 @@ public final class Capability extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static Capability instance() throws ViatraQueryException {
+  public static Capability instance() {
     if (INSTANCE == null) {
         INSTANCE = new Capability();
     }
@@ -71,78 +62,78 @@ public final class Capability extends BaseGeneratedPatternGroup {
   
   private static Capability INSTANCE;
   
-  private Capability() throws ViatraQueryException {
-    querySpecifications.add(Capability__involvedActorsQuerySpecification.instance());
-    querySpecifications.add(Capability__involvedSystemQuerySpecification.instance());
-    querySpecifications.add(Capability__participatingActorsQuerySpecification.instance());
-    querySpecifications.add(Capability__participatingSystemQuerySpecification.instance());
-    querySpecifications.add(Capability__purposesQuerySpecification.instance());
-    querySpecifications.add(Capability__purposeMissionsQuerySpecification.instance());
-    querySpecifications.add(Capability__realizedOperationalCapabilitiesQuerySpecification.instance());
-    querySpecifications.add(Capability__realizingCapabilityRealizationsQuerySpecification.instance());
+  private Capability() {
+    querySpecifications.add(Capability__involvedActors.instance());
+    querySpecifications.add(Capability__involvedSystem.instance());
+    querySpecifications.add(Capability__participatingActors.instance());
+    querySpecifications.add(Capability__participatingSystem.instance());
+    querySpecifications.add(Capability__purposes.instance());
+    querySpecifications.add(Capability__purposeMissions.instance());
+    querySpecifications.add(Capability__realizedOperationalCapabilities.instance());
+    querySpecifications.add(Capability__realizingCapabilityRealizations.instance());
   }
   
-  public Capability__involvedActorsQuerySpecification getCapability__involvedActors() throws ViatraQueryException {
-    return Capability__involvedActorsQuerySpecification.instance();
+  public Capability__involvedActors getCapability__involvedActors() {
+    return Capability__involvedActors.instance();
   }
   
-  public Capability__involvedActorsMatcher getCapability__involvedActors(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return Capability__involvedActorsMatcher.on(engine);
+  public Capability__involvedActors.Matcher getCapability__involvedActors(final ViatraQueryEngine engine) {
+    return Capability__involvedActors.Matcher.on(engine);
   }
   
-  public Capability__involvedSystemQuerySpecification getCapability__involvedSystem() throws ViatraQueryException {
-    return Capability__involvedSystemQuerySpecification.instance();
+  public Capability__involvedSystem getCapability__involvedSystem() {
+    return Capability__involvedSystem.instance();
   }
   
-  public Capability__involvedSystemMatcher getCapability__involvedSystem(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return Capability__involvedSystemMatcher.on(engine);
+  public Capability__involvedSystem.Matcher getCapability__involvedSystem(final ViatraQueryEngine engine) {
+    return Capability__involvedSystem.Matcher.on(engine);
   }
   
-  public Capability__participatingActorsQuerySpecification getCapability__participatingActors() throws ViatraQueryException {
-    return Capability__participatingActorsQuerySpecification.instance();
+  public Capability__participatingActors getCapability__participatingActors() {
+    return Capability__participatingActors.instance();
   }
   
-  public Capability__participatingActorsMatcher getCapability__participatingActors(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return Capability__participatingActorsMatcher.on(engine);
+  public Capability__participatingActors.Matcher getCapability__participatingActors(final ViatraQueryEngine engine) {
+    return Capability__participatingActors.Matcher.on(engine);
   }
   
-  public Capability__participatingSystemQuerySpecification getCapability__participatingSystem() throws ViatraQueryException {
-    return Capability__participatingSystemQuerySpecification.instance();
+  public Capability__participatingSystem getCapability__participatingSystem() {
+    return Capability__participatingSystem.instance();
   }
   
-  public Capability__participatingSystemMatcher getCapability__participatingSystem(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return Capability__participatingSystemMatcher.on(engine);
+  public Capability__participatingSystem.Matcher getCapability__participatingSystem(final ViatraQueryEngine engine) {
+    return Capability__participatingSystem.Matcher.on(engine);
   }
   
-  public Capability__purposesQuerySpecification getCapability__purposes() throws ViatraQueryException {
-    return Capability__purposesQuerySpecification.instance();
+  public Capability__purposes getCapability__purposes() {
+    return Capability__purposes.instance();
   }
   
-  public Capability__purposesMatcher getCapability__purposes(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return Capability__purposesMatcher.on(engine);
+  public Capability__purposes.Matcher getCapability__purposes(final ViatraQueryEngine engine) {
+    return Capability__purposes.Matcher.on(engine);
   }
   
-  public Capability__purposeMissionsQuerySpecification getCapability__purposeMissions() throws ViatraQueryException {
-    return Capability__purposeMissionsQuerySpecification.instance();
+  public Capability__purposeMissions getCapability__purposeMissions() {
+    return Capability__purposeMissions.instance();
   }
   
-  public Capability__purposeMissionsMatcher getCapability__purposeMissions(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return Capability__purposeMissionsMatcher.on(engine);
+  public Capability__purposeMissions.Matcher getCapability__purposeMissions(final ViatraQueryEngine engine) {
+    return Capability__purposeMissions.Matcher.on(engine);
   }
   
-  public Capability__realizedOperationalCapabilitiesQuerySpecification getCapability__realizedOperationalCapabilities() throws ViatraQueryException {
-    return Capability__realizedOperationalCapabilitiesQuerySpecification.instance();
+  public Capability__realizedOperationalCapabilities getCapability__realizedOperationalCapabilities() {
+    return Capability__realizedOperationalCapabilities.instance();
   }
   
-  public Capability__realizedOperationalCapabilitiesMatcher getCapability__realizedOperationalCapabilities(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return Capability__realizedOperationalCapabilitiesMatcher.on(engine);
+  public Capability__realizedOperationalCapabilities.Matcher getCapability__realizedOperationalCapabilities(final ViatraQueryEngine engine) {
+    return Capability__realizedOperationalCapabilities.Matcher.on(engine);
   }
   
-  public Capability__realizingCapabilityRealizationsQuerySpecification getCapability__realizingCapabilityRealizations() throws ViatraQueryException {
-    return Capability__realizingCapabilityRealizationsQuerySpecification.instance();
+  public Capability__realizingCapabilityRealizations getCapability__realizingCapabilityRealizations() {
+    return Capability__realizingCapabilityRealizations.instance();
   }
   
-  public Capability__realizingCapabilityRealizationsMatcher getCapability__realizingCapabilityRealizations(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return Capability__realizingCapabilityRealizationsMatcher.on(engine);
+  public Capability__realizingCapabilityRealizations.Matcher getCapability__realizingCapabilityRealizations(final ViatraQueryEngine engine) {
+    return Capability__realizingCapabilityRealizations.Matcher.on(engine);
   }
 }

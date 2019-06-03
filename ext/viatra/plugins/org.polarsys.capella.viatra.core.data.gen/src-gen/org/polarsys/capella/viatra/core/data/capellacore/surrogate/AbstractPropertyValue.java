@@ -14,14 +14,12 @@ package org.polarsys.capella.viatra.core.data.capellacore.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.core.data.capellacore.surrogate.AbstractPropertyValue__valuedElementsMatcher;
-import org.polarsys.capella.viatra.core.data.capellacore.surrogate.util.AbstractPropertyValue__valuedElementsQuerySpecification;
+import org.polarsys.capella.viatra.core.data.capellacore.surrogate.AbstractPropertyValue__valuedElements;
 
 /**
  * A pattern group formed of all public patterns defined in AbstractPropertyValue.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file AbstractPropertyValue.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -29,7 +27,7 @@ import org.polarsys.capella.viatra.core.data.capellacore.surrogate.util.Abstract
  * <li>AbstractPropertyValue__valuedElements</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -38,10 +36,10 @@ public final class AbstractPropertyValue extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static AbstractPropertyValue instance() throws ViatraQueryException {
+  public static AbstractPropertyValue instance() {
     if (INSTANCE == null) {
         INSTANCE = new AbstractPropertyValue();
     }
@@ -50,15 +48,15 @@ public final class AbstractPropertyValue extends BaseGeneratedPatternGroup {
   
   private static AbstractPropertyValue INSTANCE;
   
-  private AbstractPropertyValue() throws ViatraQueryException {
-    querySpecifications.add(AbstractPropertyValue__valuedElementsQuerySpecification.instance());
+  private AbstractPropertyValue() {
+    querySpecifications.add(AbstractPropertyValue__valuedElements.instance());
   }
   
-  public AbstractPropertyValue__valuedElementsQuerySpecification getAbstractPropertyValue__valuedElements() throws ViatraQueryException {
-    return AbstractPropertyValue__valuedElementsQuerySpecification.instance();
+  public AbstractPropertyValue__valuedElements getAbstractPropertyValue__valuedElements() {
+    return AbstractPropertyValue__valuedElements.instance();
   }
   
-  public AbstractPropertyValue__valuedElementsMatcher getAbstractPropertyValue__valuedElements(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return AbstractPropertyValue__valuedElementsMatcher.on(engine);
+  public AbstractPropertyValue__valuedElements.Matcher getAbstractPropertyValue__valuedElements(final ViatraQueryEngine engine) {
+    return AbstractPropertyValue__valuedElements.Matcher.on(engine);
   }
 }

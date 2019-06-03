@@ -14,16 +14,13 @@ package org.polarsys.capella.viatra.common.data.activity.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.common.data.activity.surrogate.ActivityPartition__subPartitionsMatcher;
-import org.polarsys.capella.viatra.common.data.activity.surrogate.ActivityPartition__superPartitionMatcher;
-import org.polarsys.capella.viatra.common.data.activity.surrogate.util.ActivityPartition__subPartitionsQuerySpecification;
-import org.polarsys.capella.viatra.common.data.activity.surrogate.util.ActivityPartition__superPartitionQuerySpecification;
+import org.polarsys.capella.viatra.common.data.activity.surrogate.ActivityPartition__subPartitions;
+import org.polarsys.capella.viatra.common.data.activity.surrogate.ActivityPartition__superPartition;
 
 /**
  * A pattern group formed of all public patterns defined in ActivityPartition.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file ActivityPartition.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -32,7 +29,7 @@ import org.polarsys.capella.viatra.common.data.activity.surrogate.util.ActivityP
  * <li>ActivityPartition__subPartitions</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -41,10 +38,10 @@ public final class ActivityPartition extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static ActivityPartition instance() throws ViatraQueryException {
+  public static ActivityPartition instance() {
     if (INSTANCE == null) {
         INSTANCE = new ActivityPartition();
     }
@@ -53,24 +50,24 @@ public final class ActivityPartition extends BaseGeneratedPatternGroup {
   
   private static ActivityPartition INSTANCE;
   
-  private ActivityPartition() throws ViatraQueryException {
-    querySpecifications.add(ActivityPartition__superPartitionQuerySpecification.instance());
-    querySpecifications.add(ActivityPartition__subPartitionsQuerySpecification.instance());
+  private ActivityPartition() {
+    querySpecifications.add(ActivityPartition__superPartition.instance());
+    querySpecifications.add(ActivityPartition__subPartitions.instance());
   }
   
-  public ActivityPartition__superPartitionQuerySpecification getActivityPartition__superPartition() throws ViatraQueryException {
-    return ActivityPartition__superPartitionQuerySpecification.instance();
+  public ActivityPartition__superPartition getActivityPartition__superPartition() {
+    return ActivityPartition__superPartition.instance();
   }
   
-  public ActivityPartition__superPartitionMatcher getActivityPartition__superPartition(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return ActivityPartition__superPartitionMatcher.on(engine);
+  public ActivityPartition__superPartition.Matcher getActivityPartition__superPartition(final ViatraQueryEngine engine) {
+    return ActivityPartition__superPartition.Matcher.on(engine);
   }
   
-  public ActivityPartition__subPartitionsQuerySpecification getActivityPartition__subPartitions() throws ViatraQueryException {
-    return ActivityPartition__subPartitionsQuerySpecification.instance();
+  public ActivityPartition__subPartitions getActivityPartition__subPartitions() {
+    return ActivityPartition__subPartitions.instance();
   }
   
-  public ActivityPartition__subPartitionsMatcher getActivityPartition__subPartitions(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return ActivityPartition__subPartitionsMatcher.on(engine);
+  public ActivityPartition__subPartitions.Matcher getActivityPartition__subPartitions(final ViatraQueryEngine engine) {
+    return ActivityPartition__subPartitions.Matcher.on(engine);
   }
 }

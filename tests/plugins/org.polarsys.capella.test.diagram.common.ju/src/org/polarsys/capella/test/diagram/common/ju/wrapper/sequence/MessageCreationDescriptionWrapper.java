@@ -21,6 +21,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.EdgeTarget;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.MappingHelper;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
@@ -58,7 +59,8 @@ public class MessageCreationDescriptionWrapper extends EdgeCreationDescriptionWr
 
     MessageCreationTool tool = (MessageCreationTool) _tool;
 
-    cmd = ToolCommandBuilder.buildCreateMessageCommand(source, target, tool, startingEndPredecessor, finishingEndPredecessor);
+    cmd = ToolCommandBuilder.buildCreateMessageCommand(source, target, tool, startingEndPredecessor,
+        finishingEndPredecessor);
 
     return cmd;
 
@@ -101,9 +103,13 @@ public class MessageCreationDescriptionWrapper extends EdgeCreationDescriptionWr
   }
 
   /**
-   * Checks whether the mappingBased_p diagram element (Actual Mapping or BorderedNodeMapping) contains source/target mappings of the edge mapping of the tool
-   * @param mappings_p source/target mappings of the edge mapping of the tool
-   * @param mappingBased_p source or target of the edge
+   * Checks whether the mappingBased_p diagram element (Actual Mapping or BorderedNodeMapping) contains source/target
+   * mappings of the edge mapping of the tool
+   * 
+   * @param mappings_p
+   *          source/target mappings of the edge mapping of the tool
+   * @param mappingBased_p
+   *          source or target of the edge
    * @return true if mapping exists
    */
   private boolean isMappingOk(EList<DiagramElementMapping> mappings_p, DMappingBased mappingBased_p) {
@@ -115,7 +121,7 @@ public class MessageCreationDescriptionWrapper extends EdgeCreationDescriptionWr
           if (nodeMapping.equals(mapping)) {
             return true;
           }
-          if (nodeMapping.getAllBorderedNodeMappings().contains(mapping)) {
+          if (MappingHelper.getAllBorderedNodeMappings(nodeMapping).contains(mapping)) {
             return true;
           }
         }
@@ -135,9 +141,11 @@ public class MessageCreationDescriptionWrapper extends EdgeCreationDescriptionWr
 
     if (null == _argumentTypes) {
       List<ArgumentData> list = new ArrayList<ArgumentData>();
-      Collections.addAll(list, new AbstractToolWrapper.ArgumentData(ArgumentType.SOURCE, DiagramPackage.Literals.EDGE_TARGET),
-          new AbstractToolWrapper.ArgumentData(ArgumentType.TARGET, DiagramPackage.Literals.EDGE_TARGET), new AbstractToolWrapper.ArgumentData(
-              ArgumentType.STARTINGENDPREDECESSOR, null), new AbstractToolWrapper.ArgumentData(ArgumentType.FINISHINGENDPREDECESSOR, null));
+      Collections.addAll(list,
+          new AbstractToolWrapper.ArgumentData(ArgumentType.SOURCE, DiagramPackage.Literals.EDGE_TARGET),
+          new AbstractToolWrapper.ArgumentData(ArgumentType.TARGET, DiagramPackage.Literals.EDGE_TARGET),
+          new AbstractToolWrapper.ArgumentData(ArgumentType.STARTINGENDPREDECESSOR, null),
+          new AbstractToolWrapper.ArgumentData(ArgumentType.FINISHINGENDPREDECESSOR, null));
       ret = Collections.unmodifiableList(list);
     } else {
       ret = _argumentTypes;

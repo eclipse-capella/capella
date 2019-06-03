@@ -14,14 +14,12 @@ package org.polarsys.capella.viatra.core.data.cs.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.DeployableElement__deployingLinksMatcher;
-import org.polarsys.capella.viatra.core.data.cs.surrogate.util.DeployableElement__deployingLinksQuerySpecification;
+import org.polarsys.capella.viatra.core.data.cs.surrogate.DeployableElement__deployingLinks;
 
 /**
  * A pattern group formed of all public patterns defined in DeployableElement.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file DeployableElement.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -29,7 +27,7 @@ import org.polarsys.capella.viatra.core.data.cs.surrogate.util.DeployableElement
  * <li>DeployableElement__deployingLinks</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -38,10 +36,10 @@ public final class DeployableElement extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static DeployableElement instance() throws ViatraQueryException {
+  public static DeployableElement instance() {
     if (INSTANCE == null) {
         INSTANCE = new DeployableElement();
     }
@@ -50,15 +48,15 @@ public final class DeployableElement extends BaseGeneratedPatternGroup {
   
   private static DeployableElement INSTANCE;
   
-  private DeployableElement() throws ViatraQueryException {
-    querySpecifications.add(DeployableElement__deployingLinksQuerySpecification.instance());
+  private DeployableElement() {
+    querySpecifications.add(DeployableElement__deployingLinks.instance());
   }
   
-  public DeployableElement__deployingLinksQuerySpecification getDeployableElement__deployingLinks() throws ViatraQueryException {
-    return DeployableElement__deployingLinksQuerySpecification.instance();
+  public DeployableElement__deployingLinks getDeployableElement__deployingLinks() {
+    return DeployableElement__deployingLinks.instance();
   }
   
-  public DeployableElement__deployingLinksMatcher getDeployableElement__deployingLinks(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return DeployableElement__deployingLinksMatcher.on(engine);
+  public DeployableElement__deployingLinks.Matcher getDeployableElement__deployingLinks(final ViatraQueryEngine engine) {
+    return DeployableElement__deployingLinks.Matcher.on(engine);
   }
 }

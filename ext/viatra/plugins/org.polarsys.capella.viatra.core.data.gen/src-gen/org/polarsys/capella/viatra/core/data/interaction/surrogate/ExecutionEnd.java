@@ -14,14 +14,12 @@ package org.polarsys.capella.viatra.core.data.interaction.surrogate;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.polarsys.capella.viatra.core.data.interaction.surrogate.ExecutionEnd__executionMatcher;
-import org.polarsys.capella.viatra.core.data.interaction.surrogate.util.ExecutionEnd__executionQuerySpecification;
+import org.polarsys.capella.viatra.core.data.interaction.surrogate.ExecutionEnd__execution;
 
 /**
  * A pattern group formed of all public patterns defined in ExecutionEnd.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file ExecutionEnd.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -29,7 +27,7 @@ import org.polarsys.capella.viatra.core.data.interaction.surrogate.util.Executio
  * <li>ExecutionEnd__execution</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -38,10 +36,10 @@ public final class ExecutionEnd extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static ExecutionEnd instance() throws ViatraQueryException {
+  public static ExecutionEnd instance() {
     if (INSTANCE == null) {
         INSTANCE = new ExecutionEnd();
     }
@@ -50,15 +48,15 @@ public final class ExecutionEnd extends BaseGeneratedPatternGroup {
   
   private static ExecutionEnd INSTANCE;
   
-  private ExecutionEnd() throws ViatraQueryException {
-    querySpecifications.add(ExecutionEnd__executionQuerySpecification.instance());
+  private ExecutionEnd() {
+    querySpecifications.add(ExecutionEnd__execution.instance());
   }
   
-  public ExecutionEnd__executionQuerySpecification getExecutionEnd__execution() throws ViatraQueryException {
-    return ExecutionEnd__executionQuerySpecification.instance();
+  public ExecutionEnd__execution getExecutionEnd__execution() {
+    return ExecutionEnd__execution.instance();
   }
   
-  public ExecutionEnd__executionMatcher getExecutionEnd__execution(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return ExecutionEnd__executionMatcher.on(engine);
+  public ExecutionEnd__execution.Matcher getExecutionEnd__execution(final ViatraQueryEngine engine) {
+    return ExecutionEnd__execution.Matcher.on(engine);
   }
 }
