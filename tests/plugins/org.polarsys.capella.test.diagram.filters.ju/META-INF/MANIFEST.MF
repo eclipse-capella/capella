@@ -12,5 +12,4 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Export-Package: org.polarsys.capella.test.diagram.filters.ju,
- org.polarsys.capella.test.diagram.filters.ju.testcases,
  org.polarsys.capella.test.diagram.filters.ju.testsuites
