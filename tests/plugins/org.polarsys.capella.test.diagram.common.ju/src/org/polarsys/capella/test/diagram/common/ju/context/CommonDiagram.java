@@ -23,6 +23,7 @@ import org.polarsys.capella.core.sirius.analysis.constants.IToolNameConstants;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateAbstractDNodeTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateContainerTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateDEdgeTool;
+import org.polarsys.capella.test.diagram.common.ju.step.tools.DragAndDropFromProjectExplorerTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.DragAndDropTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.InsertRemoveTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.SelectTool;
@@ -96,11 +97,11 @@ public class CommonDiagram extends DiagramContext {
   }
 
   public void dragAndDropConstraintFromExplorer(String idDraggedElement, String containerId) {
-    dragAndDrop(idDraggedElement, containerId, IDNDToolNameConstants.TOOL_DND_CONSTRAINT_FROM_EXPLORER);
+    dragAndDropFromExplorer(idDraggedElement, containerId, IDNDToolNameConstants.TOOL_DND_CONSTRAINT_FROM_EXPLORER);
   }
 
   public void dragAndDropConstraintsFromExplorer(String idDraggedElement, String containerId) {
-    dragAndDrop(idDraggedElement, containerId, IDNDToolNameConstants.TOOL_DND_CONSTRAINTS_FROM_EXPLORER);
+    dragAndDropFromExplorer(idDraggedElement, containerId, IDNDToolNameConstants.TOOL_DND_CONSTRAINTS_FROM_EXPLORER);
   }
 
   protected String createNodeElement(String containerId, String toolName) {
@@ -168,6 +169,11 @@ public class CommonDiagram extends DiagramContext {
 
   protected void dragAndDrop(String idDraggedElement, String containerId, String toolName) {
     new DragAndDropTool(this, toolName, idDraggedElement, containerId).run();
+  }
+
+  protected void dragAndDropFromExplorer(String idDraggedElement, String containerId, String toolName) {
+    EObject droppedElementSemantic = getSessionContext().getSemanticElement(idDraggedElement);
+    new DragAndDropFromProjectExplorerTool(this, toolName, droppedElementSemantic, containerId).run();
   }
 
   /*

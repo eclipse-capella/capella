@@ -16,6 +16,7 @@ import java.util.List;
 import org.polarsys.capella.core.sirius.analysis.constants.IToolNameConstants;
 import org.polarsys.capella.test.diagram.tools.ju.ccri.CreateDiagramElement;
 import org.polarsys.capella.test.diagram.tools.ju.ccri.CreateEdges;
+import org.polarsys.capella.test.diagram.tools.ju.ccri.DragAndDropTest;
 import org.polarsys.capella.test.diagram.tools.ju.ccri.TestInsertTool;
 import org.polarsys.capella.test.diagram.tools.ju.ccri.TestRelationshipsTool;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
@@ -48,6 +49,7 @@ public class CCRIDiagramToolsTestSuite extends BasicTestSuite {
     tests.add(new CreateEdges());
     tests.add(new TestInsertTool());
     tests.add(new TestRelationshipsTool());
+    tests.add(new DragAndDropTest());
 
     return tests;
   }

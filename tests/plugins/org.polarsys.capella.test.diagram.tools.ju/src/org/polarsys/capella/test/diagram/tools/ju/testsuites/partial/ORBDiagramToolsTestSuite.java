@@ -18,6 +18,7 @@ import org.polarsys.capella.test.diagram.tools.ju.orb.ORBCreateConstraintElement
 import org.polarsys.capella.test.diagram.tools.ju.orb.ORBCreateInteraction;
 import org.polarsys.capella.test.diagram.tools.ju.orb.ORBCreateOperationalActivity;
 import org.polarsys.capella.test.diagram.tools.ju.orb.ORBCreateOperationalRole;
+import org.polarsys.capella.test.diagram.tools.ju.orb.ORBDragAndDropTest;
 import org.polarsys.capella.test.diagram.tools.ju.orb.ORBInsertAllAllocatedActivities;
 import org.polarsys.capella.test.diagram.tools.ju.orb.ORBInsertRemoveAllocatedActivities;
 import org.polarsys.capella.test.diagram.tools.ju.orb.ORBInsertRemoveConstraints;
@@ -27,7 +28,13 @@ import org.polarsys.capella.test.diagram.tools.ju.orb.ORBManageAllocatedActiviti
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
 
+import junit.framework.Test;
+
 public class ORBDiagramToolsTestSuite extends BasicTestSuite {
+
+  public static Test suite() {
+    return new ORBDiagramToolsTestSuite();
+  }
 
   @Override
   protected List<BasicTestArtefact> getTests() {
@@ -45,6 +52,7 @@ public class ORBDiagramToolsTestSuite extends BasicTestSuite {
     tests.add(new ORBInsertAllAllocatedActivities());
     tests.add(new ORBManageAllocatedActivities());
     tests.add(new ORBInsertRemoveConstraints());
+    tests.add(new ORBDragAndDropTest());
 
     return tests;
   }

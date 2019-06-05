@@ -242,7 +242,7 @@ public class XDFBDiagram extends CommonDiagram {
   }
 
   public void dragAndDropFunctionFromExplorer(String idDraggedElement, String containerId) {
-    dragAndDrop(idDraggedElement, containerId, getDragAndDropFunctionFromExplorerToolName());
+    dragAndDropFromExplorer(idDraggedElement, containerId, getDragAndDropFunctionFromExplorerToolName());
   }
 
   private String getDragAndDropAbstractFunctionToolName() {

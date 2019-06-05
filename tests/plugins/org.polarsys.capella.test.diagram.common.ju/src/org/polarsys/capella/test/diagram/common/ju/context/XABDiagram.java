@@ -400,7 +400,8 @@ public class XABDiagram extends CommonDiagram {
   }
 
   public void dragAndDropFunctionAllocationFromExplorer(String idDraggedElement, String containerId) {
-    dragAndDrop(idDraggedElement, containerId, IDNDToolNameConstants.TOOL_XAB_DND_FUNCTION_ALLOCATION_FROM_EXPLORER);
+    dragAndDropFromExplorer(idDraggedElement, containerId,
+        IDNDToolNameConstants.TOOL_XAB_DND_FUNCTION_ALLOCATION_FROM_EXPLORER);
   }
 
   public void dragAndDropPhysicalPort(String idDraggedElement, String containerId) {
@@ -408,7 +409,7 @@ public class XABDiagram extends CommonDiagram {
   }
 
   public void dragAndDropComponentsFromExplorer(String idDraggedElement, String containerId) {
-    dragAndDrop(idDraggedElement, containerId, IDNDToolNameConstants.TOOL_XAB_DND_COMPONENTS_FROM_EXPLORER);
+    dragAndDropFromExplorer(idDraggedElement, containerId, IDNDToolNameConstants.TOOL_XAB_DND_COMPONENTS_FROM_EXPLORER);
   }
 
   public void dragAndDropComponent(String idDraggedElement, String containerId) {

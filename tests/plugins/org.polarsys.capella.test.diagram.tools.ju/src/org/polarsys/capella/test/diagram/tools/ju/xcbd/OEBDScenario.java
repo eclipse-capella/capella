@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,14 +29,21 @@ public class OEBDScenario extends EmptyProject {
 
     XBreakdownDiagram diagram = XBreakdownDiagram.createCBDiagram(context, GenericModel.ENTITY_1);
 
-    diagram.createComponent(GenericModel.ENTITY_1_1, 2, ICommonConstants.EMPTY_STRING, GenericModel.ENTITY_1, diagram.getDiagramId());
-    diagram.createComponent(GenericModel.ENTITY_2, 2, ICommonConstants.EMPTY_STRING, diagram.getDiagramId(), diagram.getDiagramId());
+    diagram.createComponent(GenericModel.ENTITY_1_1, 2, ICommonConstants.EMPTY_STRING, GenericModel.ENTITY_1,
+        diagram.getDiagramId());
+    diagram.createComponent(GenericModel.ENTITY_2, 2, ICommonConstants.EMPTY_STRING, diagram.getDiagramId(),
+        diagram.getDiagramId());
 
-    diagram.createComponent(GenericModel.ACTOR_1, 2, OaPackage.Literals.OPERATIONAL_ACTOR.getName(), diagram.getDiagramId(), diagram.getDiagramId());
+    diagram.createComponent(GenericModel.ACTOR_1, 2, OaPackage.Literals.OPERATIONAL_ACTOR.getName(),
+        diagram.getDiagramId(), diagram.getDiagramId());
 
     diagram.createCContainedIn(GenericModel.ENTITY_2, GenericModel.ENTITY_1_1);
 
     diagram.createConstraint(GenericModel.CONSTRAINT_1);
     diagram.createConstrainedElement(GenericModel.CONSTRAINT_1, GenericModel.ENTITY_2);
+
+    String constraint = diagram.createConstraint(GenericModel.CONSTRAINT_2);
+    diagram.removeConstraint(constraint, diagram.getDiagramId());
+    diagram.dragAndDropConstraintsFromExplorer(constraint, diagram.getDiagramId());
   }
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -46,5 +46,9 @@ public class PCBDScenario extends EmptyProject {
     TestHelper.setReusableComponents(diagram.getSessionContext().getSemanticElement(GenericModel.PC_1), true);
 
     diagram.createPart(GenericModel.PC_1, GenericModel.PC_3, diagram.getDiagramId());
+
+    String constraint = diagram.createConstraint(GenericModel.CONSTRAINT_2);
+    diagram.removeConstraint(constraint, diagram.getDiagramId());
+    diagram.dragAndDropConstraintsFromExplorer(constraint, diagram.getDiagramId());
   }
 }

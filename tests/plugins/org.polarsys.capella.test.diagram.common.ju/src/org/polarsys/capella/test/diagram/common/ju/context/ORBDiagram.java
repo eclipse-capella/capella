@@ -19,6 +19,7 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.polarsys.capella.core.data.oa.OperationalActivity;
 import org.polarsys.capella.core.data.oa.Role;
 import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
+import org.polarsys.capella.core.sirius.analysis.constants.IDNDToolNameConstants;
 import org.polarsys.capella.core.sirius.analysis.constants.IToolNameConstants;
 import org.polarsys.capella.test.diagram.common.ju.step.crud.CreateDiagramStep;
 import org.polarsys.capella.test.diagram.common.ju.step.crud.OpenDiagramStep;
@@ -145,5 +146,18 @@ public class ORBDiagram extends CommonDiagram {
         }
       }
     }
+  }
+
+  public void dragAndDropChangeAllocation(String idDraggedElement, String containerId) {
+    dragAndDrop(idDraggedElement, containerId, IDNDToolNameConstants.TOOL_ORB_CHANGE_ALLOCATION);
+  }
+
+  public void dragAndDropOperationalActivitiesFromExplorer(String idDraggedElement, String containerId) {
+    dragAndDropFromExplorer(idDraggedElement, containerId,
+        IDNDToolNameConstants.TOOL_ORB_DND_OPERATIONALACTIVITIES_FROM_EXPLORER);
+  }
+
+  public void dragAndDropRoleFromExplorer(String idDraggedElement, String containerId) {
+    dragAndDropFromExplorer(idDraggedElement, containerId, IDNDToolNameConstants.TOOL_ORB_DND_ROLE_FOM_EXPLORER);
   }
 }

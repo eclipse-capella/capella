@@ -73,15 +73,16 @@ public class OABDiagram extends XABDiagram {
   }
 
   public void dragAndDropRolesFromExplorer(String idDraggedElement, String containerId) {
-    dragAndDrop(idDraggedElement, containerId, IDNDToolNameConstants.TOOL_OAB_DND_ROLES_FROM_EXPLORER);
+    dragAndDropFromExplorer(idDraggedElement, containerId, IDNDToolNameConstants.TOOL_OAB_DND_ROLES_FROM_EXPLORER);
   }
 
   public void dragAndDropOperationalActivitiesFromExplorer(String idDraggedElement, String containerId) {
-    dragAndDrop(idDraggedElement, containerId, IDNDToolNameConstants.TOOL_OAB_DND_OPERATIONALACTIVITIES_FROM_EXPLORER);
+    dragAndDropFromExplorer(idDraggedElement, containerId,
+        IDNDToolNameConstants.TOOL_OAB_DND_OPERATIONALACTIVITIES_FROM_EXPLORER);
   }
 
   public void dragAndDropOperationalActivitiesFromExplorerToRole(String idDraggedElement, String containerId) {
-    dragAndDrop(idDraggedElement, containerId,
+    dragAndDropFromExplorer(idDraggedElement, containerId,
         IDNDToolNameConstants.TOOL_OAB_DND_OPERATIONALACTIVITIES_FROM_EXPLORER_TO_ROLE);
   }
 }

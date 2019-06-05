@@ -62,7 +62,6 @@ public class IDBDiagramToolsTestSuite extends BasicTestSuite {
     tests.add(new CreateRequires());
     tests.add(new CreateUses());
     tests.add(new InsertRelationship());
-
     tests.add(new DragAndDropTest());
 
     return tests;
