@@ -116,7 +116,7 @@ public class SequenceDiagram extends CommonDiagram {
   }
 
   public void dragAndDropComponentFromExplorer(String idDraggedElement, String containerId) {
-    dragAndDrop(idDraggedElement, containerId, IDNDToolNameConstants.TOOL_SEQ_DND_COMPONENT);
+    dragAndDropFromExplorer(idDraggedElement, containerId, IDNDToolNameConstants.TOOL_SEQ_DND_COMPONENT);
   }
 
   public String createCombinedFragment(InteractionOperatorKind operatorKind, String containerId) {

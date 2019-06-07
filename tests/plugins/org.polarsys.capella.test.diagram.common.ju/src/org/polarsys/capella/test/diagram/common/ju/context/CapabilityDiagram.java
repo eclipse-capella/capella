@@ -239,7 +239,7 @@ public class CapabilityDiagram extends CommonDiagram {
   }
 
   public void dragAndDropComponentFromExplorer(String idDraggedElement, String containerId) {
-    dragAndDrop(idDraggedElement, containerId, getDNDComponentFromExplorerToolName());
+    dragAndDropFromExplorer(idDraggedElement, containerId, getDNDComponentFromExplorerToolName());
   }
 
   public void dragAndDropComponentFromDiagram(String idDraggedElement, String containerId) {
@@ -247,20 +247,20 @@ public class CapabilityDiagram extends CommonDiagram {
   }
 
   public void dragAndDropCapabilityFromExplorer(String idDraggedElement, String containerId) {
-    dragAndDrop(idDraggedElement, containerId, getDNDCapabilityFromExplorerToolName());
+    dragAndDropFromExplorer(idDraggedElement, containerId, getDNDCapabilityFromExplorerToolName());
   }
 
   @Override
   public void dragAndDropConstraintFromExplorer(String idDraggedElement, String containerId) {
-    dragAndDrop(idDraggedElement, containerId, getDNDConstraintToolName());
+    dragAndDropFromExplorer(idDraggedElement, containerId, getDNDConstraintToolName());
   }
 
   public void dragAndDropMissionFromExplorer(String idDraggedElement, String containerId) {
-    dragAndDrop(idDraggedElement, containerId, IDNDToolNameConstants.TOOL_DND_MISSIONS_FROM_EXPLORER);
+    dragAndDropFromExplorer(idDraggedElement, containerId, IDNDToolNameConstants.TOOL_DND_MISSIONS_FROM_EXPLORER);
   }
 
   public void dragAndDropActorFromExplorer(String idDraggedElement, String containerId) {
-    dragAndDrop(idDraggedElement, containerId, IDNDToolNameConstants.TOOL_DND_ACTORS_FROM_EXPLORER);
+    dragAndDropFromExplorer(idDraggedElement, containerId, IDNDToolNameConstants.TOOL_DND_ACTORS_FROM_EXPLORER);
   }
 
   private String getCapabilityToolName() {

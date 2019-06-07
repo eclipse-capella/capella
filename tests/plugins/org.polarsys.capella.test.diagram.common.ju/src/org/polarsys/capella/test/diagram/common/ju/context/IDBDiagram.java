@@ -13,6 +13,7 @@ package org.polarsys.capella.test.diagram.common.ju.context;
 import java.util.Arrays;
 
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNode;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.information.ExchangeMechanism;
@@ -75,8 +76,11 @@ public class IDBDiagram extends CommonDiagram {
   }
 
   @Deprecated
-  public void createComponent(String idContainer, String id) {
-    new CreateContainerTool(this, getCreateComponentToolName(), idContainer, id).run();
+  public String createComponent(String idContainer, String id) {
+    DDiagramElementContainer element = new CreateContainerTool(this, getCreateComponentToolName(), idContainer, id)
+        .run();
+
+    return ((CapellaElement) element.getTarget()).getId();
   }
 
   @Deprecated
@@ -94,6 +98,10 @@ public class IDBDiagram extends CommonDiagram {
 
   public String createExchangeItem(ExchangeMechanism type) {
     return createContainerElement(getDiagramId(), getCreateExchangeItemName(type));
+  }
+
+  public String createExchangeItemNode(ExchangeMechanism type) {
+    return createNodeElement(getDiagramId(), getCreateExchangeItemName(type));
   }
 
   public String createExchangeItemAllocation(String containerId, ExchangeMechanism type) {
@@ -356,7 +364,7 @@ public class IDBDiagram extends CommonDiagram {
   }
 
   public void dragAndDropComponentFromExplorer(String idDraggedElement, String containerId) {
-    dragAndDrop(idDraggedElement, containerId, IDNDToolNameConstants.TOOL_IDB_DND_COMPONENT_FROM_EXPLORER);
+    dragAndDropFromExplorer(idDraggedElement, containerId, IDNDToolNameConstants.TOOL_IDB_DND_COMPONENT_FROM_EXPLORER);
   }
 
   public void dragAndDropComponentFromDiagram(String idDraggedElement, String containerId) {
@@ -364,7 +372,8 @@ public class IDBDiagram extends CommonDiagram {
   }
 
   public void dragAndDropComponentPortFromExplorer(String idDraggedElement, String containerId) {
-    dragAndDrop(idDraggedElement, containerId, IDNDToolNameConstants.TOOL_IDB_DND_COMPONENTPORT_FROM_EXPLORER);
+    dragAndDropFromExplorer(idDraggedElement, containerId,
+        IDNDToolNameConstants.TOOL_IDB_DND_COMPONENTPORT_FROM_EXPLORER);
   }
 
   public void dragAndDropComponentPortFromDiagram(String idDraggedElement, String containerId) {
@@ -372,7 +381,8 @@ public class IDBDiagram extends CommonDiagram {
   }
 
   public void dragAndDropInterfaceFromExplorer(String idDraggedElement, String containerId) {
-    dragAndDrop(idDraggedElement, containerId, IDNDToolNameConstants.TOOL_IDB_DND_INTERFACEDROP_FROM_EXPLORER);
+    dragAndDropFromExplorer(idDraggedElement, containerId,
+        IDNDToolNameConstants.TOOL_IDB_DND_INTERFACEDROP_FROM_EXPLORER);
   }
 
   public void dragAndDropInterfaceFromDiagram(String idDraggedElement, String containerId) {
@@ -380,7 +390,7 @@ public class IDBDiagram extends CommonDiagram {
   }
 
   public void dragAndDropExchangeItemAllocationFromExplorer(String idDraggedElement, String containerId) {
-    dragAndDrop(idDraggedElement, containerId,
+    dragAndDropFromExplorer(idDraggedElement, containerId,
         IDNDToolNameConstants.TOOL_IDB_DND_EXCHANGEITEM_ALLOCATION_FROM_EXPLORER);
   }
 

@@ -83,7 +83,7 @@ public class PDDiagram extends CommonDiagram {
   }
 
   public void dragAndDropInterfacePackage(String containerId, String elementId) {
-    dragAndDrop(elementId, containerId, IDNDToolNameConstants.TOOL_PD_DND_INTERFACEPKG_FROM_EXPLORER);
+    dragAndDropFromExplorer(elementId, containerId, IDNDToolNameConstants.TOOL_PD_DND_INTERFACEPKG_FROM_EXPLORER);
   }
 
   /**

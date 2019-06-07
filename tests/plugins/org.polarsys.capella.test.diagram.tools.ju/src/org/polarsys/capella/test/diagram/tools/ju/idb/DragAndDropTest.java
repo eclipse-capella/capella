@@ -45,6 +45,9 @@ public class DragAndDropTest extends EmptyProject {
     SessionContext context = new SessionContext(session);
 
     testOnDiagramIDB(context, IDiagramNameConstants.INTERFACES_BLANK_DIAGRAM_NAME);
+    testOnDiagramCII(context, IDiagramNameConstants.CONTEXTUAL_COMPONENT_INTERNAL_INTERFACES_DIAGRAM_NAME);
+    testOnDiagramCDI(context, IDiagramNameConstants.CONTEXTUAL_COMPONENT_DETAILED_INTERFACES_DIAGRAM_NAME);
+    testOnDiagramCEI(context, IDiagramNameConstants.CONTEXTUAL_COMPONENT_EXTERNAL_INTERFACES_DIAGRAM_NAME);
   }
 
   private void testOnDiagramIDB(SessionContext context, String diagramKind) {
@@ -88,6 +91,88 @@ public class DragAndDropTest extends EmptyProject {
     String actor2 = idb.createActor();
     String port2 = idb.createStandardPort(actor1, GenericModel.COMPONENT_PORT_2);
     idb.dragAndDropComponentPortFromDiagram(port2, actor2);
+
+    idb.dragAndDropConstraintFromExplorer(constraint, diagramId);
+  }
+
+  private void testOnDiagramCII(SessionContext context, String diagramKind) {
+    init(context);
+
+    IDBDiagram idb = IDBDiagram.createDiagram(context, diagramKind, LA__LOGICAL_SYSTEM);
+    String diagramId = idb.getDiagramId();
+    String containerId = LA__LOGICAL_SYSTEM;
+    String component1 = idb.createComponent(containerId, GenericModel.COMPONENT_1);
+    String component2 = idb.createComponent(containerId, GenericModel.COMPONENT_2);
+    String component2_1 = idb.createComponent(containerId, GenericModel.COMPONENT_2_1);
+
+    // drag and drop component from explorer
+    idb.dragAndDropComponentFromExplorer(actor1, diagramId);
+
+    // drag and drop interface from explorer
+    idb.dragAndDropInterfaceFromExplorer(interface1, diagramId);
+    idb.dragAndDropInterfaceFromExplorer(interface2, diagramId);
+    idb.dragAndDropInterfaceFromExplorer(interface3, diagramId);
+
+    // drag and drop interface from diagram
+    idb.dragAndDropInterfaceFromDiagram(interface2, component2_1);
+    idb.dragAndDropInterfaceFromDiagram(interface1, component1);
+    idb.dragAndDropInterfaceFromDiagram(interface1, diagramId);
+    idb.dragAndDropInterfaceFromDiagram(interface2, component2);
+
+    // drag and drop component from diagram
+    idb.dragAndDropComponentFromDiagram(component2_1, component1);
+    idb.dragAndDropComponentFromDiagram(component2_1, component2);
+
+    // drag and drop exchange item allocation from explorer
+    idb.dragAndDropExchangeItemAllocationFromExplorer(ei1, diagramId);
+
+    String ei = idb.createExchangeItemNode(ExchangeMechanism.EVENT);
+    idb.dragAndDropExchangeItemAllocationFromDiagram(ei, containerId);
+
+    String port2 = idb.createStandardPort(component1, GenericModel.COMPONENT_PORT_2);
+    idb.dragAndDropComponentPortFromDiagram(port2, component2);
+
+    idb.dragAndDropConstraintFromExplorer(constraint, diagramId);
+  }
+
+  private void testOnDiagramCDI(SessionContext context, String diagramKind) {
+    init(context);
+
+    IDBDiagram idb = IDBDiagram.createDiagram(context, diagramKind, LA__LOGICAL_SYSTEM);
+    String diagramId = idb.getDiagramId();
+
+    // drag and drop interface from explorer
+    idb.dragAndDropInterfaceFromExplorer(interface1, diagramId);
+    idb.dragAndDropInterfaceFromExplorer(interface2, diagramId);
+    idb.dragAndDropInterfaceFromExplorer(interface3, diagramId);
+
+    // drag and drop exchange item allocation from explorer
+    idb.dragAndDropExchangeItemAllocationFromExplorer(ei1, diagramId);
+
+    // drag and drop exchange item allocation from diagram
+    String ei = idb.createExchangeItem(ExchangeMechanism.EVENT);
+    String interf = idb.createInterface();
+    idb.dragAndDropExchangeItemAllocationFromDiagram(ei, interf);
+
+    idb.dragAndDropConstraintFromExplorer(constraint, diagramId);
+  }
+
+  private void testOnDiagramCEI(SessionContext context, String diagramKind) {
+    init(context);
+
+    IDBDiagram idb = IDBDiagram.createDiagram(context, diagramKind, LA__LOGICAL_SYSTEM);
+    String diagramId = idb.getDiagramId();
+
+    // drag and drop component from explorer
+    idb.dragAndDropComponentFromExplorer(component1, diagramId);
+
+    // drag and drop interface from explorer
+    idb.dragAndDropInterfaceFromExplorer(interface1, diagramId);
+    idb.dragAndDropInterfaceFromExplorer(interface2, diagramId);
+    idb.dragAndDropInterfaceFromExplorer(interface3, diagramId);
+
+    // drag and drop exchange item allocation from explorer
+    idb.dragAndDropExchangeItemAllocationFromExplorer(ei1, diagramId);
 
     idb.dragAndDropConstraintFromExplorer(constraint, diagramId);
   }

@@ -11,14 +11,16 @@
 package org.polarsys.capella.test.diagram.common.ju.context;
 
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElementContainer;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt.Type;
 import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
+import org.polarsys.capella.core.sirius.analysis.constants.IDNDToolNameConstants;
 import org.polarsys.capella.core.sirius.analysis.constants.IToolNameConstants;
 import org.polarsys.capella.test.diagram.common.ju.step.crud.CreateDiagramStep;
 import org.polarsys.capella.test.diagram.common.ju.step.crud.OpenDiagramStep;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateContainerTool;
-import org.polarsys.capella.test.diagram.common.ju.step.tools.CreateDEdgeTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.InsertRemoveTool;
 import org.polarsys.capella.test.diagram.common.ju.step.tools.SelectFromListTool;
 import org.polarsys.capella.test.framework.context.SessionContext;
@@ -37,7 +39,7 @@ public class EABDiagram extends XABDiagram {
       }
     }.run().open();
   }
-  
+
   public static EABDiagram createDiagram(SessionContext executionContext, String targetIdentifier) {
 
     return (EABDiagram) new CreateDiagramStep(executionContext, targetIdentifier,
@@ -49,7 +51,7 @@ public class EABDiagram extends XABDiagram {
     }.run().open();
   }
 
-  public void createConfigurationItem(String id, String containerId,
+  public String createConfigurationItem(String id, String containerId,
       BlockArchitectureExt.ConfigurationItemType ciType) {
     String name = null;
     if (type == Type.EPBS) {
@@ -79,7 +81,8 @@ public class EABDiagram extends XABDiagram {
         break;
       }
     }
-    new CreateContainerTool(this, name, containerId, id).run();
+    DDiagramElementContainer element = new CreateContainerTool(this, name, containerId, id).run();
+    return ((CapellaElement) element.getTarget()).getId();
   }
 
   public void reuseConfigurationItem(String containerId, String... ids) {
@@ -107,5 +110,14 @@ public class EABDiagram extends XABDiagram {
   public void removeRealizedPhysicalArtifacts(String containerId, String... ids) {
     new InsertRemoveTool(this, IToolNameConstants.TOOL_EAB_INSERT_REMOVE_REALIZED_PHYSICAL_ARTIFACTS, containerId)
         .remove(ids);
+  }
+
+  public void dragAndDropConfigurationItemFromExplorer(String idDraggedElement, String containerId) {
+    dragAndDropFromExplorer(idDraggedElement, containerId,
+        IDNDToolNameConstants.TOOL_EAB_DND_CONFIGURATIONITEM_FROM_EXPLORER);
+  }
+
+  public void dragAndDropPhysicalAtifacts(String idDraggedElement, String containerId) {
+    dragAndDrop(idDraggedElement, containerId, IDNDToolNameConstants.TOOL_EAB_DND_PHYSICAL_ARTIFACTS);
   }
 }
