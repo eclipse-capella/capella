@@ -11,35 +11,43 @@
 package org.polarsys.capella.core.data.helpers.cache;
 
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Function;
 
 public class Cache {
 
-  private Map<Object, Object> cachedResult = new HashMap<>();
+  private Map<Object, Object> cachedResult = new ConcurrentHashMap<>();
 
-  @SuppressWarnings({ "unchecked", "rawtypes" })
+  @SuppressWarnings("unchecked")
   public <P, R> R get(Function<P, R> function, P parameter) {
 
-    Couple<P, R> key = new Couple(parameter, function);
-
-    if (!cachedResult.containsKey(key)) {
-
+    Couple<Function<P, R>, P> key = new Couple<>(function, parameter);
+    Object resultObject = cachedResult.get(key);
+    if (resultObject == null) {
       R result = function.apply(parameter);
+      Optional<R> encapsulatedResult;
 
       if (result instanceof List<?>) {
-        cachedResult.put(key, Collections.unmodifiableList((List<?>) result));
+        encapsulatedResult = (Optional<R>) Optional.of(Collections.unmodifiableList((List<?>) result));
       } else if (result instanceof Set<?>) {
-        cachedResult.put(key, Collections.unmodifiableSet((Set<?>) result));
+        encapsulatedResult = (Optional<R>) Optional.of(Collections.unmodifiableSet((Set<?>) result));
+      } else if (result instanceof Map<?, ?>) {
+        encapsulatedResult = (Optional<R>) Optional.of(Collections.unmodifiableMap((Map<?, ?>) result));
       } else {
-        cachedResult.put(key, result);
+        encapsulatedResult = Optional.ofNullable(result);
       }
+      cachedResult.put(key, encapsulatedResult);
+
       return result;
     }
-    return (R) cachedResult.get(key);
+    Optional<R> result = (Optional<R>) resultObject;
+
+    return result.orElse(null);
+
   }
 
   public void clearCache() {

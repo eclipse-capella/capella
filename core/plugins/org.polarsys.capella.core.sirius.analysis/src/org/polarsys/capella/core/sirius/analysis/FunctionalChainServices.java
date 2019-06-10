@@ -16,7 +16,6 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -701,26 +700,12 @@ public class FunctionalChainServices {
 
   public void updateFunctionalChainNodeColor(DNode fcNode, Collection<DNode> visibleFunctionalChains) {
     RGBValues color = ShapeUtil.getNodeColorStyle(fcNode);
-    LinkedList<RGB> colorList = new LinkedList<>();
-    RGB blue = new RGB(24, 114, 248);
-    RGB yellow = new RGB(249, 252, 103);
-    RGB purple = new RGB(160, 32, 240);
-    RGB gray = new RGB(136, 136, 136);
-    RGB orange = new RGB(255, 165, 0);
-    RGB green = new RGB(34, 139, 34);
-    RGB brown = new RGB(165, 42, 42);
+    ColorManager colorManager = ColorManager.getInstance();
 
-    colorList.addLast(blue);
-    colorList.addLast(brown);
-    colorList.addLast(orange);
-    colorList.addLast(green);
-    colorList.addLast(purple);
-    colorList.addLast(yellow);
-    colorList.addLast(gray);
-
+    List<RGB> colorList = colorManager.getColorList();
     boolean changeColor = false;
 
-    if (ShapeUtil.isSameColor(color, gray)) {
+    if (ShapeUtil.isSameColor(color, colorManager.getGrayColor())) {
       changeColor = true;
     }
     for (DNode aFc : visibleFunctionalChains) {

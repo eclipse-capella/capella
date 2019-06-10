@@ -18,6 +18,7 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import org.apache.log4j.Logger;
@@ -169,7 +170,8 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractCacheAwa
         }
 
       } else if (root instanceof Part) {
-        // replace the diagram in the component if one-part-mode and diagram previously settled to the part
+        // replace the diagram in the component if one-part-mode and diagram previously
+        // settled to the part
         if (!CsServices.getService().isMultipartMode((Part) root)) {
           EObject type = CsServices.getService().getComponentType((Part) root);
           if (type instanceof Component) {
@@ -182,7 +184,8 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractCacheAwa
       // Show the root element in SAB-LAB
       // -------------------------------------
 
-      if ((root instanceof ModelElement) && !(root instanceof Component) && (diagram.getOwnedDiagramElements().size() == 0)) {
+      if ((root instanceof ModelElement) && !(root instanceof Component)
+          && (diagram.getOwnedDiagramElements().isEmpty())) {
         if (!CsServices.getService().isMultipartMode((ModelElement) root)
             && diagram.getDescription().getName().equals(IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)
             && !DiagramServices.getDiagramServices().isOnDiagram(diagram, root) && (!hasContextualElements)) {
@@ -190,7 +193,8 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractCacheAwa
           ContainerMapping componentMapping = FaServices.getFaServices().getMappingABComponent(root, diagram);
           DiagramServices.getDiagramServices().createContainer(componentMapping, root, diagram, diagram);
 
-        } else if (diagram.getDescription().getName().equals(IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)
+        } else if (diagram.getDescription().getName()
+            .equals(IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)
             && !DiagramServices.getDiagramServices().isOnDiagram(diagram, root)) {
           // Instantiate the container in the diagram for the component
           ContainerMapping componentMapping = FaServices.getFaServices().getMappingABComponent(root, diagram);
@@ -253,7 +257,9 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractCacheAwa
 
       @Override
       public Collection<EObject> getParents(EObject object, EObject context) {
+
         LinkedList<EObject> parents = new LinkedList<>();
+
         if (object instanceof Part && context instanceof DNodeContainer) {
           EObject contextPart = ((DNodeContainer) context).getTarget();
           if (CsServices.getService().isDeployed((DNodeContainer) context)) {
@@ -282,8 +288,8 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractCacheAwa
     // get all displayed parts in the diagram
     for (AbstractDNode aContainer : diagram.getContainers()) {
 
-      if (mappingsToMove.contains(aContainer.getDiagramElementMapping()) && isReorderable(diagram, aContainer)
-          && (aContainer instanceof DNodeContainer) && aContainer.getTarget() instanceof Part) {
+      if (aContainer instanceof DNodeContainer && aContainer.getTarget() instanceof Part && isReorderable(aContainer)
+          && mappingsToMove.contains(aContainer.getDiagramElementMapping())) {
         Part currentPart = (Part) aContainer.getTarget();
         AbstractType currentType = CsServices.getService().getComponentType(currentPart);
         typeViews.put(currentType, (DNodeContainer) aContainer);
@@ -293,9 +299,14 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractCacheAwa
 
     // first iteration (to avoid null container)
     // the elements to be moved are temporarily placed in the diagram
-    // retrieve the displayed part to be moved since container is no more the same than model
-    for (AbstractType currentType : typeViews.keySet()) {
-      for (DNodeContainer anElement : typeViews.get(currentType)) {
+    // retrieve the displayed part to be moved since container is no more the same
+    // than model
+
+    for (Entry<AbstractType, Collection<DNodeContainer>> typeView : typeViews.entrySet()) {
+
+      Collection<DNodeContainer> views = typeView.getValue();
+
+      for (DNodeContainer anElement : views) {
 
         Part currentPart = (Part) anElement.getTarget();
         boolean willBeMoved = false;
@@ -309,8 +320,10 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractCacheAwa
           if (actualContainer == null) {
             willBeMoved = true;
 
-            // If element is owned by diagram and there is a view of the container in the diagram
-          } else if ((containerView instanceof DDiagram) && (actualComponentContainer != null) && (actualComponentContainer instanceof Component)
+            // If element is owned by diagram and there is a view of the container in the
+            // diagram
+          } else if ((containerView instanceof DDiagram) && (actualComponentContainer != null)
+              && (actualComponentContainer instanceof Component)
               && (!typeViews.get(actualComponentContainer).isEmpty())) {
             willBeMoved = true;
 
@@ -319,7 +332,8 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractCacheAwa
             // It will be moved only if it is not already owned by a parent.
             willBeMoved = true;
             for (EObject currentParent : content.getParents(currentPart, anElement)) {
-              // case if the actual container is not the same that the actual container of the part
+              // case if the actual container is not the same that the actual container of the
+              // part
               if (currentParent != null
                   && (currentParent.equals(actualContainer) || currentParent.equals(actualComponentContainer))) {
                 willBeMoved = false;
@@ -342,8 +356,10 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractCacheAwa
     }
 
     // Move all toBeMoved parts to a better container
-    // (which is here the first part of a parents where the part has not yet been added)
-    // If a same part has been added in all firstLevel parent parts, add to the first firstLevel parent part.
+    // (which is here the first part of a parents where the part has not yet been
+    // added)
+    // If a same part has been added in all firstLevel parent parts, add to thefirst
+    // firstLevel parent part.
     // If no first level parent part, browse upper.
     for (DNodeContainer aContainer : toBeMoved) {
       Part currentPart = (Part) aContainer.getTarget();
@@ -368,7 +384,7 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractCacheAwa
           if (typeViews.get(parentElement).size() == 1) {
             // Add the part in the first partView which haven't the part
             for (DNodeContainer container : typeViews.get(parentElement)) {
-              if (!container.getOwnedDiagramElements().contains(aContainer) && !(aContainer == container.eContainer())) {
+              if (!container.getOwnedDiagramElements().contains(aContainer) && (aContainer != container.eContainer())) {
                 container.getOwnedDiagramElements().add(aContainer);
               }
               isAdded = true;
@@ -409,14 +425,16 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractCacheAwa
 
       }
 
-      // If not yet added and there is a partView, add to it. Otherwise, go to parents.
+      // If not yet added and there is a partView, add to it. Otherwise, go to
+      // parents.
       if (!isAdded && !toBeDeleted) {
         if (!diagram.getOwnedDiagramElements().contains(aContainer)) {
           diagram.getOwnedDiagramElements().add(aContainer);
         }
       }
 
-      // If not yet added and there is a partView, add to it. Otherwise, go to parents.
+      // If not yet added and there is a partView, add to it. Otherwise, go to
+      // parents.
       if (toBeDeleted) {
         // If there is no free parent, add to the first parent
         DiagramServices.getDiagramServices().removeContainerView(aContainer);
@@ -429,14 +447,21 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractCacheAwa
    */
   @Override
   protected List<AbstractNodeMapping> getListOfMappingsToMove(DDiagram diagram) {
-    List<AbstractNodeMapping> returnedList = new ArrayList<AbstractNodeMapping>();
-    returnedList.add(DiagramServices.getDiagramServices().getContainerMapping(diagram, IMappingNameConstants.SAB_ACTOR_MAPPING_NAME));
-    returnedList.add(DiagramServices.getDiagramServices().getContainerMapping(diagram, IMappingNameConstants.SAB_SYSTEM_MAPPING_NAME));
-    returnedList.add(DiagramServices.getDiagramServices().getContainerMapping(diagram, IMappingNameConstants.LAB_LOGICAL_ACTOR_MAPPING_NAME));
-    returnedList.add(DiagramServices.getDiagramServices().getContainerMapping(diagram, IMappingNameConstants.LAB_LOGICAL_COMPONENT_MAPPING_NAME));
-    returnedList.add(DiagramServices.getDiagramServices().getContainerMapping(diagram, IMappingNameConstants.PAB_PHYSICAL_ACTOR_MAPPING_NAME));
-    returnedList.add(DiagramServices.getDiagramServices().getContainerMapping(diagram, IMappingNameConstants.PAB_PHYSICAL_COMPONENT_DEPLOYMENT_MAPPING_NAME));
-    returnedList.add(DiagramServices.getDiagramServices().getContainerMapping(diagram, IMappingNameConstants.PAB_PHYSICAL_COMPONENT_MAPPING_NAME));
+    List<AbstractNodeMapping> returnedList = new ArrayList<>();
+    returnedList.add(DiagramServices.getDiagramServices().getContainerMapping(diagram,
+        IMappingNameConstants.SAB_ACTOR_MAPPING_NAME));
+    returnedList.add(DiagramServices.getDiagramServices().getContainerMapping(diagram,
+        IMappingNameConstants.SAB_SYSTEM_MAPPING_NAME));
+    returnedList.add(DiagramServices.getDiagramServices().getContainerMapping(diagram,
+        IMappingNameConstants.LAB_LOGICAL_ACTOR_MAPPING_NAME));
+    returnedList.add(DiagramServices.getDiagramServices().getContainerMapping(diagram,
+        IMappingNameConstants.LAB_LOGICAL_COMPONENT_MAPPING_NAME));
+    returnedList.add(DiagramServices.getDiagramServices().getContainerMapping(diagram,
+        IMappingNameConstants.PAB_PHYSICAL_ACTOR_MAPPING_NAME));
+    returnedList.add(DiagramServices.getDiagramServices().getContainerMapping(diagram,
+        IMappingNameConstants.PAB_PHYSICAL_COMPONENT_DEPLOYMENT_MAPPING_NAME));
+    returnedList.add(DiagramServices.getDiagramServices().getContainerMapping(diagram,
+        IMappingNameConstants.PAB_PHYSICAL_COMPONENT_MAPPING_NAME));
     returnedList.add(DiagramServices.getDiagramServices().getContainerMapping(diagram, IMappingNameConstants.EAB_CI));
     return returnedList;
   }
@@ -446,21 +471,26 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractCacheAwa
    */
   @Override
   public void postRefresh(DDiagram diagram) {
+
     try {
       FunctionalChainServices.getFunctionalChainServices().updateFunctionalChainStyles(diagram);
     } catch (Exception e) {
-      Logger.getLogger(IReportManagerDefaultComponents.DIAGRAM).error(Messages.RefreshExtension_ErrorOnUpdateFunctionalChainStyle, e);
+      Logger.getLogger(IReportManagerDefaultComponents.DIAGRAM)
+          .error(Messages.RefreshExtension_ErrorOnUpdateFunctionalChainStyle, e);
     }
 
     try {
-      List<String> physicalPathSupportingDiagrams = Arrays.asList(IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME,
-          IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME, IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME);
+      List<String> physicalPathSupportingDiagrams = Arrays.asList(
+          IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME,
+          IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME,
+          IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME);
       if (physicalPathSupportingDiagrams.contains(diagram.getDescription().getName())) {
         PhysicalServices.getService().updateInternalPhysicalPaths(diagram);
         PhysicalServices.getService().updatePhysicalPathStyles(diagram);
       }
     } catch (Exception e) {
-      Logger.getLogger(IReportManagerDefaultComponents.DIAGRAM).error(Messages.RefreshExtension_ErrorOnUpdatePhysicalPathStyle, e);
+      Logger.getLogger(IReportManagerDefaultComponents.DIAGRAM)
+          .error(Messages.RefreshExtension_ErrorOnUpdatePhysicalPathStyle, e);
     }
 
     FunctionalChainCache.getInstance().reset();
@@ -473,14 +503,18 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractCacheAwa
    */
   public ContainerMapping getComponentMapping(DDiagram diagram) {
     if (diagram.getDescription().getName().equals(IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
-      return DiagramServices.getDiagramServices().getContainerMapping(diagram, IMappingNameConstants.SAB_ACTOR_MAPPING_NAME);
+      return DiagramServices.getDiagramServices().getContainerMapping(diagram,
+          IMappingNameConstants.SAB_ACTOR_MAPPING_NAME);
     }
     if (diagram.getDescription().getName().equals(IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
-      return DiagramServices.getDiagramServices().getContainerMapping(diagram, IMappingNameConstants.LAB_LOGICAL_COMPONENT_MAPPING_NAME);
+      return DiagramServices.getDiagramServices().getContainerMapping(diagram,
+          IMappingNameConstants.LAB_LOGICAL_COMPONENT_MAPPING_NAME);
     }
     if (diagram.getDescription().getName().equals(IDiagramNameConstants.EPBS_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
-      return DiagramServices.getDiagramServices().getContainerMapping(diagram, IMappingNameConstants.LAB_LOGICAL_COMPONENT_MAPPING_NAME);
+      return DiagramServices.getDiagramServices().getContainerMapping(diagram,
+          IMappingNameConstants.LAB_LOGICAL_COMPONENT_MAPPING_NAME);
     }
-    return DiagramServices.getDiagramServices().getContainerMapping(diagram, IMappingNameConstants.PAB_PHYSICAL_COMPONENT_MAPPING_NAME);
+    return DiagramServices.getDiagramServices().getContainerMapping(diagram,
+        IMappingNameConstants.PAB_PHYSICAL_COMPONENT_MAPPING_NAME);
   }
 }

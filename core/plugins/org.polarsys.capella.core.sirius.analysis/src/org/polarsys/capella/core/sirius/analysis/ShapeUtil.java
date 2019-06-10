@@ -60,7 +60,6 @@ import org.eclipse.sirius.viewpoint.description.FixedColor;
 import org.eclipse.sirius.viewpoint.description.InterpolatedColor;
 import org.eclipse.swt.graphics.RGB;
 import org.eclipse.ui.IEditorPart;
-import org.w3c.dom.css.RGBColor;
 
 /**
  * Utility class to handle style, size and location
@@ -289,6 +288,7 @@ public class ShapeUtil {
     for (RGB aColor : colorList) {
       if (isSameColor(colorToRemove, aColor)) {
         toRemove = aColor;
+        break;
       }
     }
     if (toRemove != null) {

@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.polarsys.capella.core.model.helpers;
 
+import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -71,7 +73,6 @@ import org.polarsys.capella.core.data.fa.FaFactory;
 import org.polarsys.capella.core.data.fa.FaPackage;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.data.fa.OrientationPortKind;
-import org.polarsys.capella.core.data.helpers.cache.ModelCache;
 import org.polarsys.capella.core.data.helpers.capellacore.services.GeneralizableElementExt;
 import org.polarsys.capella.core.data.helpers.ctx.services.ActorPkgExt;
 import org.polarsys.capella.core.data.helpers.fa.services.FunctionExt;
@@ -102,8 +103,6 @@ import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
 import org.polarsys.capella.core.data.pa.PhysicalComponentPkg;
 import org.polarsys.capella.core.model.helpers.naming.NamingConstants;
-
-import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
 
 /**
  * Component helpers
@@ -866,11 +865,11 @@ public class ComponentExt {
   /**
    * Returns parents and brothers of parents components of parts of the given object
    */
-  static public Collection<EObject> getAvailableComponentsByNamespaceOfParts(Deque<EObject> ownerParts) {
-    Collection<EObject> components = new java.util.HashSet<EObject>();
+  public static Collection<EObject> getAvailableComponentsByNamespaceOfParts(Deque<EObject> ownerParts) {
+    Collection<EObject> components = new HashSet<>();
 
     // Access from all hierarchy of components and blockarchitectures, all sub components and actors
-    while (ownerParts.size() > 0) {
+    while (!ownerParts.isEmpty()) {
       EObject owner = ownerParts.removeFirst();
       EObject parent = owner;
       if ((parent != null) && !components.contains(parent)) {

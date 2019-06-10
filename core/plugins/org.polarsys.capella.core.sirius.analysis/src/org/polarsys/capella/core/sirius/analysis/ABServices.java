@@ -75,7 +75,6 @@ import org.polarsys.capella.core.data.fa.FunctionPort;
 import org.polarsys.capella.core.data.fa.FunctionalChain;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.data.fa.OrientationPortKind;
-import org.polarsys.capella.core.data.helpers.cache.ModelCache;
 import org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt;
 import org.polarsys.capella.core.data.helpers.fa.services.FunctionExt;
 import org.polarsys.capella.core.data.helpers.fa.services.FunctionPkgExt;
@@ -889,15 +888,15 @@ public class ABServices {
           if (unallocatedFunctions.size() > 0) {
             unallocatedFunctions.addFirst(scenario);
             Logger logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.MODEL);
-            logger.info(new EmbeddedMessage(
-                NLS.bind(Messages.ABServices_UnallocatedFunctions, EObjectExt.getText(scenario)),
+            logger.info(
+                new EmbeddedMessage(NLS.bind(Messages.ABServices_UnallocatedFunctions, EObjectExt.getText(scenario)),
                     IReportManagerDefaultComponents.MODEL, unallocatedFunctions));
           }
           if (unallocatedRoles.size() > 0) {
             unallocatedRoles.addFirst(scenario);
             Logger logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.MODEL);
-            logger.info(new EmbeddedMessage(
-                NLS.bind(Messages.ABServices_UnallocatedRoles, EObjectExt.getText(scenario)),
+            logger
+                .info(new EmbeddedMessage(NLS.bind(Messages.ABServices_UnallocatedRoles, EObjectExt.getText(scenario)),
                     IReportManagerDefaultComponents.MODEL, unallocatedRoles));
           }
         }
@@ -1077,7 +1076,7 @@ public class ABServices {
     }
     return false;
   }
-  
+
   /**
    * 
    * @param delegationTargetPort
@@ -1097,7 +1096,8 @@ public class ABServices {
   }
 
   private boolean doesDelegationExistForComponentPort(Port delegationTargetPort, Part delegationSourcePart) {
-    Collection<ComponentExchange> delegationCEs = PortExt.getDelegationComponentExchanges((ComponentPort) delegationTargetPort);
+    Collection<ComponentExchange> delegationCEs = PortExt
+        .getDelegationComponentExchanges((ComponentPort) delegationTargetPort);
     for (ComponentExchange delegation : delegationCEs) {
       if (delegationTargetPort.equals(ComponentExchangeExt.getTargetPort(delegation))) {
         if (ComponentExchangeExt.getSourcePartsAndEntities(delegation).contains(delegationSourcePart)) {
@@ -1114,7 +1114,7 @@ public class ABServices {
 
   private boolean doesPortAllocationExist(ComponentPort delegationTargetPort, Part delegationSourcePart) {
     Collection<ComponentPortAllocation> portAllocations = PortExt
-        .getIncomingComponentPortAllocations((ComponentPort) delegationTargetPort);
+        .getIncomingComponentPortAllocations(delegationTargetPort);
     for (ComponentPortAllocation delegation : portAllocations) {
       if (delegationTargetPort.equals(ComponentPortAllocationExt.getTargetPort(delegation))) {
         if (ComponentPortAllocationExt.getSourceParts(delegation).contains(delegationSourcePart)) {
@@ -1130,7 +1130,7 @@ public class ABServices {
   }
 
   private boolean doesDelegationExistForPhysicalPort(PhysicalPort delegationTargetPort, Part delegationSourcePart) {
-    Collection<PhysicalLink> delegations = PortExt.getDelegationPhysicalLinks((PhysicalPort) delegationTargetPort);
+    Collection<PhysicalLink> delegations = PortExt.getDelegationPhysicalLinks(delegationTargetPort);
     for (PhysicalLink delegation : delegations) {
       if (delegationTargetPort.equals(PhysicalLinkExt.getTargetPort(delegation))) {
         if (PhysicalLinkExt.getSourceParts(delegation).contains(delegationSourcePart)) {
@@ -1144,7 +1144,7 @@ public class ABServices {
     }
     return false;
   }
-  
+
   public boolean isValidABPhysicalCategoryEdge(PhysicalLinkCategory category, DSemanticDecorator source,
       DSemanticDecorator target) {
     if ((category == null) || (source == null) || (target == null)) {
@@ -1180,20 +1180,21 @@ public class ABServices {
         delegationSourcePart = sourcePart;
       }
       if (delegationTargetPort instanceof Port && delegationSourcePart instanceof Part
-          && !doesDelegationExist((Port) delegationTargetPort, (Part) delegationSourcePart)) {
+          && !doesDelegationExist(delegationTargetPort, (Part) delegationSourcePart)) {
         return false;
       }
 
       // Verify further that a non-delegation physical link must exist for the same category
       boolean hasNonDelegationPL = false;
       for (PhysicalLink physicalLink : getCache(this::getRelatedPhysicalLinks, delegationSourcePart)) {
-        if (!CsServices.getService().getAllDelegatesPhysicalLink(delegationSourcePart).contains(physicalLink) && physicalLink.getCategories().contains(category)) {
+        if (!CsServices.getService().getAllDelegatesPhysicalLink(delegationSourcePart).contains(physicalLink)
+            && physicalLink.getCategories().contains(category)) {
           hasNonDelegationPL = true;
         }
       }
       if (!hasNonDelegationPL)
         return false;
-      
+
       // Case3: Part containing category port must be the container of part containing delegation port
       if (!((sourcePartView.eContainer() == targetPartView) || (targetPartView.eContainer() == sourcePartView))) {
         return false;
@@ -1430,7 +1431,7 @@ public class ABServices {
     return !cSource.isEmpty();
 
   }
-  
+
   public boolean isComponentCategoryWithoutExchange(ComponentExchangeCategory category, Part source, Part target) {
     Collection<ComponentExchange> exchanges = new ArrayList<>(category.getExchanges());
     Collection<ComponentExchange> sourceRelatedComponentExchanges = getCache(
@@ -1461,12 +1462,12 @@ public class ABServices {
     // Category with delegation
     if (((sourceTarget instanceof ComponentPort) && (targetTarget instanceof ComponentExchangeCategory))
         || ((targetTarget instanceof ComponentPort) && (sourceTarget instanceof ComponentExchangeCategory))) {
-      
+
       // Case 1: If there's a real category, category with delegation should not be displayed
       if (doesCategoryExistBetweenParts(category, sourceView, targetView)) {
         return false;
       }
-      
+
       // Case 2: If there's no delegation, no category edge
       ComponentPort delegationTargetPort = null;
       EObject delegationSourcePart = null;
@@ -1678,7 +1679,8 @@ public class ABServices {
    * 
    * @param content
    * @param context
-   * @param selectedElements in tool, the categories chosen by the user, in refresh, the displayed categories
+   * @param selectedElements
+   *          in tool, the categories chosen by the user, in refresh, the displayed categories
    * @param showHiddenPhysicalLinks
    * @return
    */
@@ -1747,17 +1749,17 @@ public class ABServices {
               PhysicalPort sourcePort = (PhysicalPort) PhysicalLinkExt.getSourcePort(physicalLink);
               PhysicalPort targetPort = (PhysicalPort) PhysicalLinkExt.getTargetPort(physicalLink);
               if (selectedElements.contains(key)) {
-                displayABPhysicalCategoryPortDelegation(ctx, category, physicalLink,
-                    sourcePort, true, physicalCategoryShowHideService);
-                displayABPhysicalCategoryPortDelegation(ctx, category, physicalLink,
-                    targetPort, true, physicalCategoryShowHideService);
+                displayABPhysicalCategoryPortDelegation(ctx, category, physicalLink, sourcePort, true,
+                    physicalCategoryShowHideService);
+                displayABPhysicalCategoryPortDelegation(ctx, category, physicalLink, targetPort, true,
+                    physicalCategoryShowHideService);
                 // Hide the physical link
                 physicalCategoryShowHideService.hide(physicalLink, ctx);
               } else if (showHiddenPhysicalLinks) {
-                displayABPhysicalCategoryPortDelegation(ctx, category, physicalLink,
-                    sourcePort, false, physicalCategoryShowHideService);
-                displayABPhysicalCategoryPortDelegation(ctx, category, physicalLink,
-                    targetPort, false, physicalCategoryShowHideService);
+                displayABPhysicalCategoryPortDelegation(ctx, category, physicalLink, sourcePort, false,
+                    physicalCategoryShowHideService);
+                displayABPhysicalCategoryPortDelegation(ctx, category, physicalLink, targetPort, false,
+                    physicalCategoryShowHideService);
 
                 // Show the physical link
                 physicalCategoryShowHideService.show(physicalLink, ctx);
@@ -1823,7 +1825,8 @@ public class ABServices {
    * @param context
    * @param scope
    * @param initialSelection
-   * @param selectedElements in tool, the categories chosen by the user, in refresh, the displayed categories
+   * @param selectedElements
+   *          in tool, the categories chosen by the user, in refresh, the displayed categories
    * @return
    */
   public EObject switchABComponentCategories(DDiagramContents content, DSemanticDecorator context,
@@ -1870,7 +1873,8 @@ public class ABServices {
       EObject sourceViewTarget = sourceView.getTarget();
       if (sourceViewTarget != null) {
         EObject source = sourceViewTarget;
-        Collection<ComponentExchange> relatedComponentExchanges = getCache(ABServices::getRelatedComponentExchanges2, source);
+        Collection<ComponentExchange> relatedComponentExchanges = getCache(ABServices::getRelatedComponentExchanges2,
+            source);
 
         relatedComponentExchangesMap.put(source, relatedComponentExchanges);
         abShowHideComponentCategoriesScopeMap.put(sourceView,
@@ -2353,7 +2357,8 @@ public class ABServices {
   public HashMapSet<EObject, EObject> getABShowHideComponentCategoriesScope(DSemanticDecorator context) {
     EObject relatedPart = CsServices.getService().getRelatedPart(context);
     if (relatedPart != null) {
-      Collection<ComponentExchange> relatedComponentExchanges = getCache(ABServices::getRelatedComponentExchanges2, relatedPart);
+      Collection<ComponentExchange> relatedComponentExchanges = getCache(ABServices::getRelatedComponentExchanges2,
+          relatedPart);
       return getABShowHideComponentCategoriesScope(context, relatedComponentExchanges);
     }
     return new HashMapSet<>();
@@ -2554,7 +2559,7 @@ public class ABServices {
     }
     return result;
   }
-  
+
   public Collection<EObject> getComponentCategorySources(EObject context) {
     return getCache(this::getComponentCategorySourcesWithoutCache, context);
   }
@@ -2568,7 +2573,7 @@ public class ABServices {
   public Collection<EObject> getComponentCategoryTargetsWithoutCache(EObject context) {
     return getComponentCategorySourcesWithoutCache(context);
   }
-  
+
   public Collection<EObject> getComponentCategoryTargets(EObject context) {
     return getCache(this::getComponentCategoryTargetsWithoutCache, context);
   }
@@ -2604,7 +2609,7 @@ public class ABServices {
     }
     return result;
   }
-  
+
   public Collection<EObject> getPhysicalCategorySources(EObject context) {
     return getCache(this::getPhysicalCategorySourcesWithoutCache, context);
   }
@@ -2618,7 +2623,7 @@ public class ABServices {
   public Collection<EObject> getPhysicalCategoryTargetsWithoutCache(EObject context) {
     return getPhysicalCategorySourcesWithoutCache(context);
   }
-  
+
   public Collection<EObject> getPhysicalCategoryTargets(EObject context) {
     return getCache(this::getPhysicalCategoryTargetsWithoutCache, context);
   }
@@ -2873,7 +2878,7 @@ public class ABServices {
     }
 
   }
-  
+
   /**
    * @param context
    */
@@ -2888,7 +2893,6 @@ public class ABServices {
     if (outputPinNodeMapping instanceof AbstractNodeMapping)
       DiagramServices.getDiagramServices().removeNodeWithoutEdges(context, (AbstractNodeMapping) outputPinNodeMapping);
   }
-
 
   /**
    * Remove invalid links and physical categories
@@ -2919,7 +2923,7 @@ public class ABServices {
         }
       }
     }
-    
+
     for (DiagramElementMapping nodeMapping : nodeMappings) {
       for (DDiagramElement element : getCache(context::getDiagramElements, nodeMapping)) {
         if (!(element instanceof EdgeTarget)) {
@@ -3106,8 +3110,7 @@ public class ABServices {
    * @param targetView
    * @return
    */
-  public EObject createABPortAllocation(EObject context, DSemanticDecorator sourceView,
-      DSemanticDecorator targetView) {
+  public EObject createABPortAllocation(EObject context, DSemanticDecorator sourceView, DSemanticDecorator targetView) {
     EObject sourceTarget = sourceView.getTarget();
     EObject targetTarget = targetView.getTarget();
 
@@ -3144,8 +3147,8 @@ public class ABServices {
     }
 
     CapellaServices.getService().creationService(exchange);
-    DiagramServices.getDiagramServices().createEdge(
-        FaServices.getFaServices().getMappingABPortAllocation(diagram), nodeSource, nodeTarget, exchange);
+    DiagramServices.getDiagramServices().createEdge(FaServices.getFaServices().getMappingABPortAllocation(diagram),
+        nodeSource, nodeTarget, exchange);
     return context;
   }
 
@@ -3216,7 +3219,7 @@ public class ABServices {
   public Object getABPhysicalLinkSemanticCandidates(DDiagram diagram) {
     Collection<PhysicalLink> result = new ArrayList<>();
 
-    for (DDiagramElement dNode : DiagramServices.getDiagramServices().getAllNodeContainers((DSemanticDecorator) diagram)) {
+    for (DDiagramElement dNode : DiagramServices.getDiagramServices().getAllNodeContainers(diagram)) {
       if (dNode instanceof AbstractDNode) {
         EObject target = dNode.getTarget();
         if (target instanceof Part) {
@@ -3233,8 +3236,7 @@ public class ABServices {
   public Object getABComponentExchangeSemanticCandidates(DDiagram diagram) {
     Collection<ComponentExchange> result = new ArrayList<>();
 
-    for (DDiagramElement dNode : DiagramServices.getDiagramServices()
-        .getAllNodeContainers((DSemanticDecorator) diagram)) {
+    for (DDiagramElement dNode : DiagramServices.getDiagramServices().getAllNodeContainers(diagram)) {
       EObject target = dNode.getTarget();
       if (target instanceof Part) {
         result.addAll(ComponentExt.getAllRelatedComponentExchange((Part) target, true));
@@ -3249,8 +3251,7 @@ public class ABServices {
   public Object getABPortAllocationSemanticCandidates(DDiagram diagram) {
     Collection<EObject> result = new ArrayList<>();
 
-    for (DDiagramElement dNode : DiagramServices.getDiagramServices()
-        .getAllAbstractNodes((DSemanticDecorator) diagram, true)) {
+    for (DDiagramElement dNode : DiagramServices.getDiagramServices().getAllAbstractNodes(diagram, true)) {
       EObject target = dNode.getTarget();
       if (target instanceof Port) {
         result.addAll(((Port) target).getOutgoingPortAllocations());
@@ -3263,8 +3264,7 @@ public class ABServices {
   public Object getABComponentPortAllocationSemanticCandidates(DDiagram diagram) {
     Collection<ComponentPortAllocation> result = new ArrayList<>();
 
-    for (DDiagramElement dNode : DiagramServices.getDiagramServices()
-        .getAllAbstractNodes((DSemanticDecorator) diagram, true)) {
+    for (DDiagramElement dNode : DiagramServices.getDiagramServices().getAllAbstractNodes(diagram, true)) {
       EObject target = dNode.getTarget();
       if (target instanceof PhysicalPort) {
         for (AbstractTrace trace : ((PhysicalPort) target).getOutgoingTraces()) {
@@ -3359,7 +3359,8 @@ public class ABServices {
   public static Collection<ExchangeCategory> getExchangeCategories(DDiagram diagram) {
     Collection<ExchangeCategory> categories = new HashSet<>();
     DDiagramContents context = new DDiagramContents(diagram);
-    DiagramElementMapping edgeMapping = context.getMapping(MappingConstantsHelper.getMappingFunctionalExchangeCategory(diagram)); 
+    DiagramElementMapping edgeMapping = context
+        .getMapping(MappingConstantsHelper.getMappingFunctionalExchangeCategory(diagram));
     if (edgeMapping != null) {
       for (DDiagramElement element : context.getDiagramElements(edgeMapping)) {
         EObject target = element.getTarget();

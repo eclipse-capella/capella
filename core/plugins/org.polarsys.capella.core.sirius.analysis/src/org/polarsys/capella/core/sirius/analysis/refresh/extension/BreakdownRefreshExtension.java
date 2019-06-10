@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.polarsys.capella.core.sirius.analysis.refresh.extension;
 
+import static org.polarsys.capella.core.data.helpers.cache.ModelCache.getCache;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
@@ -40,12 +42,13 @@ public class BreakdownRefreshExtension extends AbstractCacheAwareRefreshExtensio
    */
   @Override
   public void beforeRefresh(DDiagram dDiagram) {
+
     super.beforeRefresh(dDiagram);
-    
     repairCollapsedElements(dDiagram);
   }
 
   protected boolean isDirectlyCollapsed(DDiagramElement element) {
+
     for (GraphicalFilter filter : element.getGraphicalFilters()) {
       if (filter instanceof FoldingFilter) {
         return true;
@@ -60,12 +63,12 @@ public class BreakdownRefreshExtension extends AbstractCacheAwareRefreshExtensio
    */
   private boolean isCollapsedParent(DDiagramElement parent) {
 
-    if (!isDirectlyCollapsed(parent)) {
+    if (!getCache(this::isDirectlyCollapsed, parent)) {
       if (parent instanceof EdgeTarget) {
         EdgeTarget edgeTarget = (EdgeTarget) parent;
         for (DEdge edge : edgeTarget.getIncomingEdges()) {
           if (edge.getSourceNode() instanceof DDiagramElement) {
-            if (isDirectlyCollapsed((DDiagramElement) edge.getSourceNode())) {
+            if (getCache(this::isDirectlyCollapsed, (DDiagramElement) edge.getSourceNode())) {
               return true;
             }
           }
@@ -75,7 +78,6 @@ public class BreakdownRefreshExtension extends AbstractCacheAwareRefreshExtensio
     }
     return true;
   }
-
 
   /**
    * @param element
@@ -110,7 +112,8 @@ public class BreakdownRefreshExtension extends AbstractCacheAwareRefreshExtensio
     for (DDiagramElement element : DiagramServices.getDiagramServices().getDiagramElements(diagram)) {
       if (element instanceof AbstractDNode) {
 
-        boolean elementIsCollapsed = isDirectlyCollapsed(element);
+        boolean elementIsCollapsed = getCache(this::isDirectlyCollapsed, element);
+
         LinkedList<EObject> parents = new LinkedList<>();
         LinkedList<EObject> visitedObjects = new LinkedList<>();
 
@@ -118,9 +121,10 @@ public class BreakdownRefreshExtension extends AbstractCacheAwareRefreshExtensio
 
         if (target != null) {
 
-          parents.addAll(getContainers(target));
+          parents.addAll(getCache(this::getContainers, target));
 
-          //for all semantic parents which are not collapsed, find if element needs to be fold or unfold.
+          // for all semantic parents which are not collapsed, find if element needs to be
+          // fold or unfold.
           while (!parents.isEmpty()) {
             EObject targetParent = parents.removeFirst();
             if (!visitedObjects.contains(targetParent)) {
@@ -128,10 +132,12 @@ public class BreakdownRefreshExtension extends AbstractCacheAwareRefreshExtensio
               DragAndDropTarget viewParent = elements.get(targetParent);
 
               if (viewParent instanceof DDiagramElement) {
-                boolean parentIsDirectlyCollapsed = isDirectlyCollapsed((DDiagramElement) viewParent);
-                boolean parentIsUndirectlyCollapsed = isCollapsedParent((DDiagramElement) viewParent);
 
-                //specific rules
+                boolean parentIsDirectlyCollapsed = getCache(this::isDirectlyCollapsed, (DDiagramElement) viewParent);
+
+                boolean parentIsUndirectlyCollapsed = getCache(this::isCollapsedParent, (DDiagramElement) viewParent);
+
+                // specific rules
                 if (elementIsCollapsed && !parentIsDirectlyCollapsed) {
                   toUnfold.add(element);
                   break;
@@ -147,13 +153,15 @@ public class BreakdownRefreshExtension extends AbstractCacheAwareRefreshExtensio
                   break;
                 }
 
-                //if no parent found in diagram, reveal it
+                // if no parent found in diagram, reveal it
               } else if (viewParent == null) {
                 toUnfold.add(element);
               }
 
               if (targetParent != null) {
-                parents.addAll(getContainers(targetParent));
+
+                parents.addAll(getCache(this::getContainers, targetParent));
+
               }
 
             }
@@ -163,13 +171,14 @@ public class BreakdownRefreshExtension extends AbstractCacheAwareRefreshExtensio
       }
 
     }
-    //unflod elements which are not correctly graphical-linked according to semantic breakdown
+    // unflod elements which are not correctly graphical-linked according to
+    // semantic breakdown
     for (DDiagramElement element : toUnfold) {
       List<EObject> parents = getBreakdownParents(element);
 
       if (parents.size() > 1) {
         boolean contains = false;
-        for (EObject semanticParent : getContainers(element.getTarget())) {
+        for (EObject semanticParent : getCache(this::getContainers, element.getTarget())) {
           if (parents.contains(semanticParent)) {
             contains = true;
           }
@@ -183,6 +192,7 @@ public class BreakdownRefreshExtension extends AbstractCacheAwareRefreshExtensio
   }
 
   private Collection<EObject> getContainers(EObject e) {
+
     Collection<EObject> parents = new ArrayList<>();
 
     if (e instanceof Component) {
@@ -195,6 +205,7 @@ public class BreakdownRefreshExtension extends AbstractCacheAwareRefreshExtensio
 
   /**
    * Retrieve graphical parents for the given element
+   * 
    * @param element
    * @return
    */
@@ -210,15 +221,13 @@ public class BreakdownRefreshExtension extends AbstractCacheAwareRefreshExtensio
         visitedElements.add(parent);
         visitedObjects.add(parent.getTarget());
         if (parent == element && parent instanceof EdgeTarget) {
-          for (DEdge edge : ((EdgeTarget)parent).getOutgoingEdges()) {
+
+          for (DEdge edge : ((EdgeTarget) parent).getOutgoingEdges()) {
             if (edge.getTargetNode() instanceof DDiagramElement) {
               parents.addLast((DDiagramElement) edge.getTargetNode());
             }
           }
         }
-      } else if (!visitedElements.contains(parent)) {
-        visitedElements.add(parent);
-        visitedObjects.add(parent.getTarget());
       }
     }
 

@@ -1253,28 +1253,14 @@ public class PhysicalServices {
   }
 
   public void updatePhysicalPathNodeColor(DNode pathNode, Collection<DNode> visiblePhysicalPaths) {
+
     RGBValues color = ShapeUtil.getNodeColorStyle(pathNode);
-    LinkedList<RGB> colorList = new LinkedList<>();
-
-    RGB blue = new RGB(24, 114, 248);
-    RGB yellow = new RGB(249, 252, 103);
-    RGB purple = new RGB(160, 32, 240);
-    RGB gray = new RGB(136, 136, 136);
-    RGB orange = new RGB(255, 165, 0);
-    RGB green = new RGB(34, 139, 34);
-    RGB brown = new RGB(165, 42, 42);
-
-    colorList.addLast(blue);
-    colorList.addLast(brown);
-    colorList.addLast(orange);
-    colorList.addLast(green);
-    colorList.addLast(purple);
-    colorList.addLast(yellow);
-    colorList.addLast(gray);
+    ColorManager colorManager = ColorManager.getInstance();
 
     boolean changeColor = false;
+    List<RGB> colorList = colorManager.getColorList();
 
-    if (ShapeUtil.isSameColor(color, gray)) {
+    if (ShapeUtil.isSameColor(color, colorManager.getGrayColor())) {
       changeColor = true;
     }
     for (DNode aPhysicalPath : visiblePhysicalPaths) {

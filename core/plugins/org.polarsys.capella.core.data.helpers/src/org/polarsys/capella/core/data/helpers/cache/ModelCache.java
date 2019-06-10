@@ -11,7 +11,6 @@
 
 package org.polarsys.capella.core.data.helpers.cache;
 
-import java.util.concurrent.locks.ReentrantLock;
 import java.util.function.Function;
 
 public class ModelCache {
@@ -19,9 +18,7 @@ public class ModelCache {
   private static final Cache cache = new Cache();
 
   private static boolean enabled = false;
-  
-  private static ReentrantLock lock = new ReentrantLock();
-  
+
   private ModelCache() {
     // To hide the implicit public on
   }
@@ -34,37 +31,29 @@ public class ModelCache {
    *         result before returning it.
    */
   public static <P, R> R getCache(Function<P, R> function, P parameter) {
-    lock.lock();
-    try {
-      if (enabled) {
-        return cache.get(function, parameter);
-      }
-      return function.apply(parameter);
-      
-    } finally {
-      lock.unlock();
+
+    if (enabled) {
+      return cache.get(function, parameter);
     }
+    return function.apply(parameter);
   }
 
   /**
    * Enable the cache.
    */
   public static void enable() {
-    lock.lock();
     enabled = true;
-    lock.unlock();
   }
 
   /**
    * Disable the cache and remove all the entries from it.
    */
   public static void disable() {
-    lock.lock();
     enabled = false;
     cache.clearCache();
-    lock.unlock();
+
   }
-  
+
   /**
    * 
    * @return true if the cache is enabled.
@@ -72,13 +61,11 @@ public class ModelCache {
   public static boolean isEnabled() {
     return enabled;
   }
-  
+
   /**
    * Removes all entries from this cache. The cache will be empty after this call returns.
    */
   public static void clearCache() {
-    lock.lock();
     cache.clearCache();
-    lock.unlock();
   }
 }

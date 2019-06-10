@@ -46,71 +46,76 @@ public class ContextualComponentExternalInterfacesRefreshExtension extends Abstr
   @Override
   public void beforeRefresh(DDiagram diagram) {
     super.beforeRefresh(diagram);
-    
-    if (((DSemanticDecorator) diagram).getTarget()==null) {
-      //avoid refresh on dirty diagram
+
+    if (((DSemanticDecorator) diagram).getTarget() == null) {
+      // avoid refresh on dirty diagram
       return;
     }
 
     final Component component = (Component) ((DSemanticDecorator) diagram).getTarget();
     HashSet<Component> components = new HashSet<>();
     Map<EObject, DragAndDropTarget> elements = DiagramServices.getDiagramServices().getMapOfDiagramNodes(diagram);
-    
-    //Add related interfaces on the diagram
-    NodeMapping interfaceMapping = DiagramServices.getDiagramServices().getNodeMapping(diagram, IMappingNameConstants.CCEI_INTERFACE); 
+
+    // Add related interfaces on the diagram
+    NodeMapping interfaceMapping = DiagramServices.getDiagramServices().getNodeMapping(diagram,
+        IMappingNameConstants.CCEI_INTERFACE);
     for (final Interface itf : CsServices.getService().getRelatedInterfaces(component)) {
       if (!elements.containsKey(itf)) {
         DiagramServices.getDiagramServices().createAbstractDNode(interfaceMapping, itf, diagram, diagram);
       }
-      // add only user/require components 
-      // if there is no impl/provide interface for 'component' 
+      // add only user/require components
+      // if there is no impl/provide interface for 'component'
       List<Interface> implementedAndProvidedInterfaces = ComponentExt.getImplementedAndProvidedInterfaces(component);
       if (!implementedAndProvidedInterfaces.isEmpty()) {
-    	for (Interface implProInterface : implementedAndProvidedInterfaces) {
-    		if(implProInterface.equals(itf)){
-        		// add require components  
-        		Collection<Component> relatedComponents = InterfaceExt.getRequireComponent(itf);
-        		// add userComponents
-        		relatedComponents.addAll(itf.getUserComponents());
-        		for (Component component2 : relatedComponents) {
-        	        components.add(component2);
-        		}		
-    		}
-		}  
+        for (Interface implProInterface : implementedAndProvidedInterfaces) {
+          if (implProInterface.equals(itf)) {
+            // add require components
+            Collection<Component> relatedComponents = InterfaceExt.getRequireComponent(itf);
+            // add userComponents
+            relatedComponents.addAll(itf.getUserComponents());
+            for (Component component2 : relatedComponents) {
+              components.add(component2);
+            }
+          }
+        }
       }
-      // add only impl/provide components 
+      // add only impl/provide components
       // if there is no use/require interface for 'component'
       List<Interface> usedAndRequiredInterfaces = ComponentExt.getUsedAndRequiredInterfaces(component);
       if (!usedAndRequiredInterfaces.isEmpty()) {
-    	  for (Interface useReqInterface : usedAndRequiredInterfaces) {
-			if (useReqInterface.equals(itf)) {
-		    	// add provide components  
-				Collection<Component> relatedComponents = InterfaceExt.getProviderComponent(itf);
-				// add implementor components
-				relatedComponents.addAll(itf.getImplementorComponents());
-				for (Component component2 : relatedComponents) {
-			        components.add(component2);
-				}
-			}
-    	  }
-      }
-    } 
-    
-    //Add related exchange items on the diagram
-    NodeMapping exchangeItemMapping = DiagramServices.getDiagramServices().getNodeMapping(diagram, IMappingNameConstants.CCEI_EXCHANGE_ITEM_MAPPING_NAME); 
-    for (final CommunicationLink link : CsServices.getService().getRelatedCommunicationLinks(component)) {
-      AbstractExchangeItem item = link.getExchangeItem();
-      if (item!=null && !elements.containsKey(item)) {
-        DiagramServices.getDiagramServices().createNode(exchangeItemMapping, item, diagram, diagram);
-        
-        for (CommunicationLinkExchanger related : CsServices.getService().getRelatedExchangers(item)) {
-          if (related instanceof Component) components.add((Component)related);
+        for (Interface useReqInterface : usedAndRequiredInterfaces) {
+          if (useReqInterface.equals(itf)) {
+            // add provide components
+            Collection<Component> relatedComponents = InterfaceExt.getProviderComponent(itf);
+            // add implementor components
+            relatedComponents.addAll(itf.getImplementorComponents());
+            for (Component component2 : relatedComponents) {
+              components.add(component2);
+            }
+          }
         }
       }
     }
-    
-    //Add related components of interfaces which are in the namespace of the element
-    ContainerMapping componentMapping = DiagramServices.getDiagramServices().getContainerMapping(diagram, IMappingNameConstants.CCEI_COMPONENT); 
+
+    // Add related exchange items on the diagram
+    NodeMapping exchangeItemMapping = DiagramServices.getDiagramServices().getNodeMapping(diagram,
+        IMappingNameConstants.CCEI_EXCHANGE_ITEM_MAPPING_NAME);
+    for (final CommunicationLink link : CsServices.getService().getRelatedCommunicationLinks(component)) {
+      AbstractExchangeItem item = link.getExchangeItem();
+      if (item != null && !elements.containsKey(item)) {
+        DiagramServices.getDiagramServices().createNode(exchangeItemMapping, item, diagram, diagram);
+
+        for (CommunicationLinkExchanger related : CsServices.getService().getRelatedExchangers(item)) {
+          if (related instanceof Component)
+            components.add((Component) related);
+        }
+      }
+    }
+
+    // Add related components of interfaces which are in the namespace of the
+    // element
+    ContainerMapping componentMapping = DiagramServices.getDiagramServices().getContainerMapping(diagram,
+        IMappingNameConstants.CCEI_COMPONENT);
     components.removeAll(CsServices.getService().getParentContainersByParts(component));
     Collection<EObject> namespace = CsServices.getService().getAvailableComponentsByNamespaceOfParts(component);
     components.add(component);

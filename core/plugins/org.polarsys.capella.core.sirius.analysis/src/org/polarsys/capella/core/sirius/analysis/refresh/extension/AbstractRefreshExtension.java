@@ -11,15 +11,16 @@
 package org.polarsys.capella.core.sirius.analysis.refresh.extension;
 
 import java.util.Collections;
-import java.util.Hashtable;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map.Entry;
 
 import org.apache.log4j.Logger;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
@@ -39,11 +40,13 @@ public abstract class AbstractRefreshExtension {
   protected boolean isLinkedToUselessTarget(DSemanticDecorator element) {
     // ghost elements on diagram are moved when their target are deleted
     EObject target = element.getTarget();
-    return (target == null) || (target.eResource() == null) || HoldingResourceFilter.getInstance().isHoldByHoldingResource(target);
+    return (target == null) || (target.eResource() == null)
+        || HoldingResourceFilter.getInstance().isHoldByHoldingResource(target);
   }
 
   /**
    * this method must be override
+   * 
    * @return the list of mappings that can be moved in the diagram
    */
   protected List<AbstractNodeMapping> getListOfMappingsToMove(DDiagram diagram) {
@@ -51,18 +54,20 @@ public abstract class AbstractRefreshExtension {
   }
 
   /**
-   * In contextual diagrams, there is a layer. We have to use display manager service to know if an element is displayed in a diagram
-   * In DataFlowBlank diagrams, there is no layer. We use the property "isVisible".
-   * @param diagram
+   * In contextual diagrams, there is a layer. We have to use display manager service to know if an element is displayed
+   * in a diagram In DataFlowBlank diagrams, there is no layer. We use the property "isVisible".
+   * 
+   * 
    * @param anElement
    * @return true if the element is visible in the diagram
    */
-  protected boolean isVisibleInDiagram(DDiagram diagram, DDiagramElement anElement) {
+  protected boolean isVisibleInDiagram(DDiagramElement anElement) {
     return anElement.isVisible();
   }
 
   /**
    * Reorders all elements with mappings from the {@link getListOfMappingsToMove method} in the given diagram
+   * 
    * @param diagram
    */
   protected void reorderElements(DDiagram diagram) {
@@ -71,6 +76,7 @@ public abstract class AbstractRefreshExtension {
 
   /**
    * Reorders all elements with mappings from the {@link getListOfMappingsToMove method}
+   * 
    * @param diagramContent
    */
   protected void reorderElements(DDiagramContents diagramContent) {
@@ -78,38 +84,34 @@ public abstract class AbstractRefreshExtension {
 
       DDiagram diagram = diagramContent.getDDiagram();
 
-      Hashtable<DDiagramElement, DragAndDropTarget> toBeMoved = new Hashtable<>(); // diagram elements to be moved
+      HashMap<DDiagramElement, DragAndDropTarget> toBeMoved = new HashMap<>(); // diagram elements to be moved
 
-      //Retrieve all mappings to be moved
+      // Retrieve all mappings to be moved
       List<AbstractNodeMapping> mappingsToMove = getListOfMappingsToMove(diagram);
 
-      //find best container for elements which isn't in a container where element.target.eContainer != element.eContainer.target
+      // find best container for elements which isn't in a container where
+      // element.target.eContainer != element.eContainer.target
       for (DDiagramElement anElement : diagramContent.getDiagramElements()) {
-        if (mappingsToMove.contains(anElement.getDiagramElementMapping())) {
 
-          if (isReorderable(diagram, anElement)) {
-            //Retrieve best container and compare if correct containment
-            DragAndDropTarget bestContainer = diagramContent.getBestContainer(anElement);
-            if (!isWellContained(diagram, anElement, bestContainer)) {
-              toBeMoved.put(anElement, bestContainer);
-            }
+        if (mappingsToMove.contains(anElement.getDiagramElementMapping()) && isReorderable(anElement)) {
+
+          // Retrieve best container and compare if correct containment
+          DragAndDropTarget bestContainer = diagramContent.getBestContainer(anElement);
+          if (!isWellContained(anElement, bestContainer)) {
+            toBeMoved.put(anElement, bestContainer);
           }
+
         }
       }
 
-      //move elements into their best container
-      for (DDiagramElement key : toBeMoved.keySet()) {
-        DragAndDropTarget target = toBeMoved.get(key);
-        if (target != null) {
-          if (target instanceof DDiagram) {
-            if (!((DDiagram) target).getOwnedDiagramElements().contains(key)) {
-              ((DDiagram) target).getOwnedDiagramElements().add(key);
-            }
-          } else if (target instanceof DNodeContainer) {
-            if (!((DNodeContainer) target).getOwnedDiagramElements().contains(key)) {
-              ((DNodeContainer) target).getOwnedDiagramElements().add(key);
-            }
-          }
+      // move elements into their best container
+      for (Entry<DDiagramElement, DragAndDropTarget> element : toBeMoved.entrySet()) {
+        DDiagramElement key = element.getKey();
+        DragAndDropTarget target = element.getValue();
+
+        EList<DDiagramElement> ownedElements = DiagramServices.getDiagramServices().getOwnedDiagramElements(target);
+        if (ownedElements != null && !ownedElements.contains(key)) {
+          ownedElements.add(key);
         }
       }
 
@@ -120,25 +122,30 @@ public abstract class AbstractRefreshExtension {
 
   /**
    * Returns whether the given anElement is contained in the given bestContainer
+   * 
    * @param diagram
    * @param anElement
    * @param bestContainer
    * @return
    */
-  protected boolean isWellContained(DDiagram diagram, DDiagramElement anElement, EObject bestContainer) {
+  protected boolean isWellContained(DDiagramElement anElement, EObject bestContainer) {
     return (bestContainer.equals(anElement.eContainer()));
   }
 
   /**
    * Returns whether the given element is an element which can be reordered
+   * 
    * @param diagram
    * @param element
    * @return
    */
-  protected boolean isReorderable(DDiagram diagram, DDiagramElement element) {
+  protected boolean isReorderable(DDiagramElement element) {
     if ((element != null)) {
-      if (!((element instanceof AbstractDNode) && (DiagramServices.getDiagramServices().isABorderedNode((AbstractDNode) element)))) {
-        if ((!isLinkedToUselessTarget(element)) && isVisibleInDiagram(diagram, element)) {
+      if (!((element instanceof AbstractDNode)
+          && (DiagramServices.getDiagramServices().isABorderedNode((AbstractDNode) element)))) {
+
+        if ((!isLinkedToUselessTarget(element)) && isVisibleInDiagram(element)) {
+
           return true;
         }
       }

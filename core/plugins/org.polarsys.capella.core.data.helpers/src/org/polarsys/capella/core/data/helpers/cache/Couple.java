@@ -22,7 +22,7 @@ public class Couple<O1, O2> {
 
   @Override
   public int hashCode() {
-    return Objects.hash(o1,o2);
+    return Objects.hash(o1, o2);
   }
 
   @SuppressWarnings("rawtypes")

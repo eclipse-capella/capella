@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.polarsys.capella.core.sirius.analysis.refresh.extension;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
@@ -32,9 +32,9 @@ public class CapabilityRealizationBlankRefreshExtension extends AbstractCacheAwa
    */
   @Override
   protected List<AbstractNodeMapping> getListOfMappingsToMove(DDiagram diagram) {
-    List<AbstractNodeMapping> returnedList = new ArrayList<>();
-    returnedList.add(DiagramServices.getDiagramServices().getContainerMapping(diagram, IMappingNameConstants.CRB_COMPONENT_MAPPING));
-    return returnedList;
+    return Arrays.asList(
+        DiagramServices.getDiagramServices().getContainerMapping(diagram, IMappingNameConstants.CRB_COMPONENT_MAPPING));
+
   }
 
   /**
@@ -45,7 +45,7 @@ public class CapabilityRealizationBlankRefreshExtension extends AbstractCacheAwa
   @Override
   public void beforeRefresh(DDiagram diagram) {
     super.beforeRefresh(diagram);
-    
+
     if (((DSemanticDecorator) diagram).getTarget() == null) {
       // avoid refresh on dirty diagram
       return;

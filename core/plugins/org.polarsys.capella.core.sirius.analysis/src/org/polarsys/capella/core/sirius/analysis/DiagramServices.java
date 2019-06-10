@@ -1781,11 +1781,43 @@ public class DiagramServices {
   public void removeNodeWithoutEdges(DDiagramContents context, AbstractNodeMapping nodeMapping) {
     Collection<DNode> toRemoveNodes = new HashSet<>();
     for (DDiagramElement element : getCache(context::getDiagramElements, nodeMapping)) {
-      if (element instanceof DNode && getAllEdges((DNode) element).isEmpty()) {
+      if (element instanceof DNode && !isNodeEdged((DNode) element)) {
         toRemoveNodes.add((DNode) element);
       }
     }
-    toRemoveNodes.stream().forEach(this::removeAbstractDNodeView);
+
+    for (DNode dNode : toRemoveNodes) {
+      removeAbstractDNodeView(dNode);
+    }
+
+  }
+
+  /**
+   * this function check if a node is targeted by an edge or not
+   * 
+   * @param node
+   *          represent an eventual edge target
+   * @return this function return true if the node is targeted by an edge otherwise it return false
+   */
+  public boolean isNodeEdged(EdgeTarget node) {
+    DDiagram diagram = CapellaServices.getService().getDiagramContainer(node);
+    Set<DEdge> incomingEdges = new HashSet<>(node.getIncomingEdges());
+
+    Set<DEdge> diagramEdges = new HashSet<>(diagram.getEdges());
+
+    incomingEdges.retainAll(diagramEdges);
+    if (!incomingEdges.isEmpty()) {
+      return true;
+    }
+
+    Set<DEdge> outgoingEdges = new HashSet<>(node.getOutgoingEdges());
+
+    outgoingEdges.retainAll(diagramEdges);
+    if (!outgoingEdges.isEmpty()) {
+      return true;
+    }
+
+    return false;
   }
 
   /**

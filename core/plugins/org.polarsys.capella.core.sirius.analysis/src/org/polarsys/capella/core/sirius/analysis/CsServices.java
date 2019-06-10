@@ -3376,7 +3376,7 @@ public class CsServices {
 
     return false;
   }
-  
+
   private Set<DEdge> getEdgesOnOwnedBoderedNodesOfContainer(DSemanticDecorator source) {
     Set<DEdge> edges = new HashSet<>();
     if (source instanceof DNode) {
@@ -4010,8 +4010,7 @@ public class CsServices {
     }
     if (current != null) {
       if (current instanceof DDiagramElement) {
-        for (DSemanticDecorator child : DiagramServices.getDiagramServices()
-            .getDiagramElements((DDiagramElement) current)) {
+        for (DSemanticDecorator child : DiagramServices.getDiagramServices().getDiagramElements(current)) {
           if ((child.getTarget() != null) && child.getTarget().equals(targetElement.getTarget())) {
             valid = false;
           }
