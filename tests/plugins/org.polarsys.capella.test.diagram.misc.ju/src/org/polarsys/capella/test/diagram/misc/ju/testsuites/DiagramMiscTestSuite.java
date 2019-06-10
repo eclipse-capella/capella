@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,6 +20,7 @@ import org.polarsys.capella.test.diagram.misc.ju.testcases.Bug1917TestCase;
 import org.polarsys.capella.test.diagram.misc.ju.testcases.Bug2145TestCase;
 import org.polarsys.capella.test.diagram.misc.ju.testcases.CheckDiagramDirtyStateOnOpeningTestCase;
 import org.polarsys.capella.test.diagram.misc.ju.testcases.CloneDiagramTestCase;
+import org.polarsys.capella.test.diagram.misc.ju.testcases.DDiagramEditorUndoRedoHandlerTest;
 import org.polarsys.capella.test.diagram.misc.ju.testcases.GraphTest;
 import org.polarsys.capella.test.diagram.misc.ju.testcases.InterfacePortSizeTestCase;
 import org.polarsys.capella.test.diagram.misc.ju.testcases.OpenAllAvailableDDiagramsTestCase;
@@ -41,6 +42,7 @@ public class DiagramMiscTestSuite extends BasicTestSuite {
   @Override
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
+    tests.add(new DDiagramEditorUndoRedoHandlerTest());
     tests.add(new GraphTest());
     tests.add(new Bug1006TestCase());
     tests.add(new Bug1024TestCase());
