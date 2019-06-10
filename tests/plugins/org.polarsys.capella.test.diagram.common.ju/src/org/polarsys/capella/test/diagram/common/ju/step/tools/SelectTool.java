@@ -82,7 +82,7 @@ public class SelectTool extends AbstractToolStep<Collection<DSemanticDecorator>>
   @Override
   protected void postRunTest() {
     super.postRunTest();
-    ToolHelper.checkSelectionOk(_toolWrapper);
+    ToolHelper.checkSelectionOk((OperationActionToolDescriptionWrapper) _toolWrapper);
   }
 
   @Override

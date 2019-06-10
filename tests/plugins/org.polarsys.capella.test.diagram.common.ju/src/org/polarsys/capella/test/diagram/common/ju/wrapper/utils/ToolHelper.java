@@ -50,6 +50,7 @@ import org.junit.Assert;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.core.sirius.analysis.tool.StringUtil;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.AbstractToolWrapper;
+import org.polarsys.capella.test.diagram.common.ju.wrapper.OperationActionToolDescriptionWrapper;
 import org.polarsys.capella.test.framework.helpers.GuiActions;
 
 /**
@@ -86,8 +87,8 @@ public class ToolHelper {
     Assert.assertNotNull(_session);
     Assert.assertNotNull(_diagram);
 
-    final List<AbstractToolDescription> tools = new DiagramComponentizationManager().getAllTools(
-        _session.getSelectedViewpoints(true), _diagram.getDescription());
+    final List<AbstractToolDescription> tools = new DiagramComponentizationManager()
+        .getAllTools(_session.getSelectedViewpoints(true), _diagram.getDescription());
     AbstractToolDescription theAbstractToolDescription = null;
 
     for (AbstractToolDescription current : tools) {
@@ -95,7 +96,7 @@ public class ToolHelper {
         theAbstractToolDescription = current;
         break;
       }
-      
+
       if (current instanceof PopupMenu) {
         for (MenuItemDescription item : ((PopupMenu) current).getMenuItemDescription()) {
           if (item.getName().equals(toolName)) {
@@ -121,8 +122,8 @@ public class ToolHelper {
     Assert.assertNotNull(_session);
     Assert.assertNotNull(_diagram);
 
-    final List<AbstractToolDescription> tools = new DiagramComponentizationManager().getAllTools(
-        _session.getSelectedViewpoints(true), _diagram.getDescription());
+    final List<AbstractToolDescription> tools = new DiagramComponentizationManager()
+        .getAllTools(_session.getSelectedViewpoints(true), _diagram.getDescription());
     AbstractToolDescription theAbstractToolDescription = null;
 
     for (AbstractToolDescription current : tools) {
@@ -147,8 +148,8 @@ public class ToolHelper {
     Assert.assertNotNull(_session);
     Assert.assertNotNull(_diagram);
 
-    final List<AbstractToolDescription> tools = new DiagramComponentizationManager().getAllTools(
-        _session.getSelectedViewpoints(true), _diagram.getDescription());
+    final List<AbstractToolDescription> tools = new DiagramComponentizationManager()
+        .getAllTools(_session.getSelectedViewpoints(true), _diagram.getDescription());
     AbstractToolDescription theAbstractToolDescription = null;
 
     for (AbstractToolDescription current : tools) {
@@ -212,7 +213,8 @@ public class ToolHelper {
     List<String> listOfDuplicated = new ArrayList<String>();
 
     for (AbstractToolDescription toolDescription : tools) {
-      if (!(getGroupTools(tools, "Constraints").contains(toolDescription)) && !(getGroupTools(tools, "Accelerators").contains(toolDescription))) { //$NON-NLS-1$ //$NON-NLS-2$
+      if (!(getGroupTools(tools, "Constraints").contains(toolDescription)) //$NON-NLS-1$
+          && !(getGroupTools(tools, "Accelerators").contains(toolDescription))) { //$NON-NLS-1$
         if ((toolDescription instanceof ContainerCreationDescription)
             || (toolDescription instanceof NodeCreationDescription)
             || (toolDescription instanceof EdgeCreationDescription) || (toolDescription instanceof ToolDescription)
@@ -255,44 +257,50 @@ public class ToolHelper {
   }
 
   /**
-   * For a tool that have an expression specifying which ElementsToSelect, check if the selected views after the tool are the expected ones.
-   * It must be called after tool being executed. before, it will do wrong checks.
+   * For a tool that have an expression specifying which ElementsToSelect, check if the selected views after the tool
+   * are the expected ones. It must be called after tool being executed. before, it will do wrong checks.
    */
-  public static void checkSelectionOk(AbstractToolWrapper toolWrapper) { 
-    String elementsToSelect = toolWrapper.getTool().getElementsToSelect();
-    if ((elementsToSelect != null) && !StringUtil.isEmpty(elementsToSelect)) {
-      
-      Collection<DSemanticDecorator> initialViews = (Collection<DSemanticDecorator>) toolWrapper.getArgumentValue(ArgumentType.COLLECTION);
-      EObject semantic = ((DDiagramElement)initialViews.iterator().next()).getTarget();
-      InterpreterRegistry interpreterRegistry = SiriusPlugin.getDefault().getInterpreterRegistry();
-      IInterpreter interpreter = interpreterRegistry.getInterpreter(semantic);
+  public static void checkSelectionOk(OperationActionToolDescriptionWrapper toolWrapper) {
 
-      DDiagram diagram = ((DDiagramElement)initialViews.iterator().next()).getParentDiagram();
-      interpreter.setVariable("views", initialViews); //There is no constants for it in Sirius
-      interpreter.setVariable(IInterpreterSiriusVariables.DIAGRAM, diagram);
+    if (toolWrapper.isPreconditionOk()) {
 
-      RuntimeLoggerInterpreter decorate = RuntimeLoggerManager.INSTANCE.decorate(interpreter);
-      EAttribute attribute = ToolPackage.Literals.ABSTRACT_TOOL_DESCRIPTION__ELEMENTS_TO_SELECT;
-      
-      Collection<EObject> result = decorate.evaluateCollection(semantic, toolWrapper.getTool(), attribute);
-      //remove hidden elements since they will not be selected
-      result = result.stream().filter(x -> DiagramHelper.isDiagramElementSelectable((DDiagramElement)x)).collect(Collectors.toList());
-      
-      if (!result.isEmpty()) {
+      String elementsToSelect = toolWrapper.getTool().getElementsToSelect();
+      if ((elementsToSelect != null) && !StringUtil.isEmpty(elementsToSelect)) {
 
-        //Selection is made on async in UI thread. we need to wait the async execution for this tool.
-        GuiActions.flushASyncGuiThread();
-        IEditorPart part = DiagramHelper.getDiagramEditor(SessionManager.INSTANCE.getSession(semantic), diagram);
-        Collection<DSemanticDecorator> selectedViews = DialectUIManager.INSTANCE.getSelection((DialectEditor)part);
-        
-        boolean isValid = result.containsAll(selectedViews) && selectedViews.containsAll(result);
-        Assert.assertTrue(MessageFormat.format(Messages.failedSelectedElements, diagram.getName(), toolWrapper.getTool().getName(), selectedViews.size()), isValid);
+        Collection<DSemanticDecorator> initialViews = (Collection<DSemanticDecorator>) toolWrapper
+            .getArgumentValue(ArgumentType.COLLECTION);
+        EObject semantic = ((DDiagramElement) initialViews.iterator().next()).getTarget();
+        InterpreterRegistry interpreterRegistry = SiriusPlugin.getDefault().getInterpreterRegistry();
+        IInterpreter interpreter = interpreterRegistry.getInterpreter(semantic);
+
+        DDiagram diagram = ((DDiagramElement) initialViews.iterator().next()).getParentDiagram();
+        interpreter.setVariable("views", initialViews); // There is no constants for it in Sirius
+        interpreter.setVariable(IInterpreterSiriusVariables.DIAGRAM, diagram);
+
+        RuntimeLoggerInterpreter decorate = RuntimeLoggerManager.INSTANCE.decorate(interpreter);
+        EAttribute attribute = ToolPackage.Literals.ABSTRACT_TOOL_DESCRIPTION__ELEMENTS_TO_SELECT;
+
+        Collection<EObject> result = decorate.evaluateCollection(semantic, toolWrapper.getTool(), attribute);
+        // remove hidden elements since they will not be selected
+        result = result.stream().filter(x -> DiagramHelper.isDiagramElementSelectable((DDiagramElement) x))
+            .collect(Collectors.toList());
+
+        if (!result.isEmpty()) {
+
+          // Selection is made on async in UI thread. we need to wait the async execution for this tool.
+          GuiActions.flushASyncGuiThread();
+          IEditorPart part = DiagramHelper.getDiagramEditor(SessionManager.INSTANCE.getSession(semantic), diagram);
+          Collection<DSemanticDecorator> selectedViews = DialectUIManager.INSTANCE.getSelection((DialectEditor) part);
+
+          boolean isValid = result.containsAll(selectedViews) && selectedViews.containsAll(result);
+          Assert.assertTrue(MessageFormat.format(Messages.failedSelectedElements, diagram.getName(),
+              toolWrapper.getTool().getName(), selectedViews.size()), isValid);
+        }
+
+        interpreter.unSetVariable(IInterpreterSiriusVariables.DIAGRAM);
+        interpreter.unSetVariable("views");
       }
-
-      interpreter.unSetVariable(IInterpreterSiriusVariables.DIAGRAM);
-      interpreter.unSetVariable("views");
     }
   }
-
 
 }
