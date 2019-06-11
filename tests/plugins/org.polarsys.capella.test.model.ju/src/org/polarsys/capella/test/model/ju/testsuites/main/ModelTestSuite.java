@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,6 +17,7 @@ import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
 import org.polarsys.capella.test.model.ju.helpers.CapellaAdapterHelperTestCase;
 import org.polarsys.capella.test.model.ju.obfuscate.ObfuscateModelTestCase;
+import org.polarsys.capella.test.model.ju.propertyviews.PropertyViewsTest;
 import org.polarsys.capella.test.model.ju.rename.RenameModelTestSuite;
 import org.polarsys.capella.test.model.ju.sortContent.SortContentTestSuite;
 import org.polarsys.capella.test.model.ju.sortSelection.SortSelectionTestSuite;
@@ -65,6 +66,7 @@ public class ModelTestSuite extends BasicTestSuite {
     tests.add(new CapellaAdapterHelperTestCase());
     tests.add(new CopyPasteLayout());
     tests.add(new InvalidCapellaCopyPaste());
+    tests.add(new PropertyViewsTest());
     return tests;
   }
 
