@@ -88,7 +88,6 @@
         <module>org.polarsys.capella.core.data.selection.queries</module>
         <module>org.polarsys.capella.core.data.sharedmodel.properties</module>
         <module>org.polarsys.capella.core.diagram.helpers</module>
-        <module>org.polarsys.capella.core.flexibility.commands</module>
         <module>org.polarsys.capella.core.flexibility.wizards</module>
         <module>org.polarsys.capella.core.libraries</module>
         <module>org.polarsys.capella.core.libraries.extendedQueries</module>
