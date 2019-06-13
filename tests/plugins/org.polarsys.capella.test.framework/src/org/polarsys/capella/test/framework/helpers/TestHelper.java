@@ -27,6 +27,7 @@ import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
@@ -274,7 +275,8 @@ public class TestHelper {
     while (currentClass != null && TestCase.class != currentClass) {
       for (Field field : currentClass.getDeclaredFields()) {
         try {
-          if (!Modifier.isFinal(field.getModifiers()) && !field.getType().isPrimitive() && !String.class.isAssignableFrom(field.getType())) {
+          if (!Modifier.isFinal(field.getModifiers()) && !field.getType().isPrimitive()
+              && !String.class.isAssignableFrom(field.getType())) {
             field.setAccessible(true);
             field.set(e, null);
           }
@@ -285,4 +287,26 @@ public class TestHelper {
       currentClass = currentClass.getSuperclass();
     }
   }
+
+  /**
+   * Get the first matching element contained in given resource for given type.
+   *
+   * @param resource_p
+   * @param elementType_p
+   */
+  public static EObject getFirstMatchingObject(Resource resource_p, EClass elementType_p) {
+    TreeIterator<EObject> allContents = resource_p.getAllContents();
+    EObject element = null;
+    // Iterate over contained elements to search for an EObject that the
+    // eClass matches given one.
+    while (allContents.hasNext()) {
+      EObject eObject = allContents.next();
+      if (eObject.eClass() == elementType_p) {
+        element = eObject;
+        break;
+      }
+    }
+    return element;
+  }
+
 }
