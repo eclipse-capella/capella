@@ -14,18 +14,29 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.polarsys.capella.core.sirius.analysis.constants.IFilterNameConstants;
+import org.polarsys.capella.test.diagram.filters.ju.DefaultActivatedFilterTestCase;
 
-public class HideDelegatedCommunicationLinksForCII extends FiltersForCII {
+public class HideTechnicalInterfacesForCII extends DefaultActivatedFilterTestCase {
+
+  protected final String TECHNICAL_INTERFACE_ID = "3784ab33-1066-4a10-ae86-8eac0af66fef";
+
+  @Override
+  protected String getTestProjectName() {
+    return "StandardDiagramFiltersModel";
+  }
+
+  @Override
+  protected String getDiagramName() {
+    return "[CII] Contextual Component Internal Interfaces";
+  }
 
   @Override
   protected String getFilterName() {
-    return IFilterNameConstants.FILTER_LCCII_HIDE_DELEGATED_COMMUNICATION_LINKS;
+    return IFilterNameConstants.FILTER_LCCII_HIDE_TECHNICALS_INTERFACES;
   }
 
   @Override
   protected List<String> getFilteredObjetIDs() {
-    return Arrays.asList(new String[] { "1a525de2-248e-4f4c-ab1b-8df83c88ce80", //$NON-NLS-1$
-        "fa136adc-c5a1-42e0-a804-40da387d6ccb", //$NON-NLS-1$
-    });
+    return Arrays.asList(new String[] { TECHNICAL_INTERFACE_ID });
   }
 }

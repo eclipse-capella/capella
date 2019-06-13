@@ -13,17 +13,19 @@ package org.polarsys.capella.test.diagram.filters.ju.idb;
 import java.util.Arrays;
 import java.util.List;
 
-public class HideDelegatedCommunicationLinksForIDB extends FiltersForIDB {
+import org.polarsys.capella.core.sirius.analysis.constants.IFilterNameConstants;
+
+public class HideRequireLinksForIDB extends FiltersForIDB {
 
   @Override
   protected String getFilterName() {
-    return "Hide Delegated Communication Links"; //$NON-NLS-1$
+    return IFilterNameConstants.FILTER_IDB_HIDE_REQUIRE_LINKS;
   }
 
   @Override
   protected List<String> getFilteredObjetIDs() {
-    return Arrays.asList(new String[] { "1a525de2-248e-4f4c-ab1b-8df83c88ce80", //$NON-NLS-1$
-        "fa136adc-c5a1-42e0-a804-40da387d6ccb", //$NON-NLS-1$
-    });
+    return Arrays.asList(new String[] { REQUIRE_LINK_ID, DELEGATED_REQUIRE_LINK_TO_INTERFACE_1_ID,
+        DELEGATED_REQUIRE_LINK_TO_INTERFACE_3_ID, LOGICAL_COMPONENT_1_DELEGATED_REQUIRE_LINK_ID });
   }
+
 }

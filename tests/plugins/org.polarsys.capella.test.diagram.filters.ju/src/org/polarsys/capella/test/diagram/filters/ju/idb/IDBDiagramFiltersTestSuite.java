@@ -21,9 +21,27 @@ public class IDBDiagramFiltersTestSuite extends BasicTestSuite {
   @Override
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<>();
-    tests.add(new HideDelegatedCommunicationLinksForIDB());
-    tests.add(new HideDelegatedUseImplementationLinksForIDB());
-    tests.add(new HideTechnicalInterfaceForIDB());
+    tests.add(new HideInterfaceContentsForIDB());
+    tests.add(new HideInterfacesForIDB());
+    tests.add(new HideExchangeItemsDetailsInInterfacesForIDB());
+    tests.add(new HideExchangeItemElementsForIDB());
+    tests.add(new HideExchangeItemsForIDB());
+    tests.add(new HideComponentPortsForIDB());
+    tests.add(new HideUseLinksForIDB());
+    tests.add(new HideImplementationLinksForIDB());
+    tests.add(new HideProvideLinksForIDB());
+    tests.add(new HideRequireLinksForIDB());
+    tests.add(new HideCommunicationLinksForIDB());
+    tests.add(new HideGeneralizationLinksForIDB());
+    tests.add(new HidePortDelegationsForIDB());
+    tests.add(new HideSimplifiedModelBasedInteractionsForIDB());
+    tests.add(new HideSimplifiedDiagramBasedInteractionsForIDB());
+    tests.add(new HideTechnicalInterfacesForIDB());
+    // tests.add(new HideDelegatedCommunicationLinksForIDB());
+    tests.add(new HideDelegatedUseImplementationRequireProvideLinksForIDB());
+    tests.add(new ShowModifiersForIDB());
+    tests.add(new HidePropertyValuesForIDB());
+
     return tests;
   }
 }

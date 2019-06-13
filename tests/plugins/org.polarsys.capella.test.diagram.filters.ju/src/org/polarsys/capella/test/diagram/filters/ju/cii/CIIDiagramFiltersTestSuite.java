@@ -21,9 +21,25 @@ public class CIIDiagramFiltersTestSuite extends BasicTestSuite {
   @Override
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<>();
-    tests.add(new HideDelegatedCommunicationLinksForCII());
-    tests.add(new HideDelegatedUseImplementationLinksForCII());
-    tests.add(new HideTechnicalInterfaceForCII());
+    tests.add(new HideInterfacesForCII());
+    // tests.add(new HideSubLinksWithInterfacesForCII());
+    // tests.add(new HideSuperLinksWithInterfacesForCII());
+    tests.add(new HideExchangeItemsForCII());
+    tests.add(new HideExchangeItemAllocationForCII());
+    tests.add(new HideComponentPortsForCII());
+    tests.add(new HideUseLinksForCII());
+    tests.add(new HideImplementationLinksForCII());
+    tests.add(new HideProvideLinksForCII());
+    tests.add(new HideRequireLinksForCII());
+    tests.add(new HideCommunicationLinksForCII());
+    tests.add(new HideGeneralizationLinksForCII());
+    tests.add(new HidePortDelegationsForCII());
+    tests.add(new HideSimplifiedComponentInteractionsForCII());
+    tests.add(new HideTechnicalInterfacesForCII());
+    // tests.add(new HideDelegatedCommunicationLinksForCII());
+    tests.add(new HideDelegatedUseImplementationRequireProvideLinksForCII());
+    tests.add(new HidePropertyValuesForCII());
+
     return tests;
   }
 }

@@ -61,6 +61,7 @@ public interface IFilterNameConstants {
   String FILTER_CDI_HIDE_GENERALIZATION_LINKS = "Hide Generalization Links"; //$NON-NLS-1$ LS-1$
   String FILTER_CDI_HIDE_TECHNICALS_INTERFACES = "Hide Technical Interfaces"; //$NON-NLS-1$
   String FILTER_CDI_SHOW_MODIFIERS = "Show Modifiers"; //$NON-NLS-1$
+  String FILTER_CDI_HIDE_PROPERTY_VALUES = "Hide Property Values";
 
   // filter id
   String FILTER_CDI_HIDE_IMPLEMENTATION_LINKS_ID = "Hide Implmentation links"; //$NON-NLS-1$
@@ -196,6 +197,7 @@ public interface IFilterNameConstants {
   String FILTER_IDB_HIDE_DELEGATED_COMMUNICATION_LINKS = "Hide Delegated Communication Links"; //$NON-NLS-1$
   String FILTER_IDB_HIDE_DELEGATED_USE_IMPLEMENTATION_LINKS = "Hide Delegated Use/Implementation/Require/Provide Links"; //$NON-NLS-1$
   String FILTER_IDB_SHOW_MODIFIERS = "Show Modifiers"; //$NON-NLS-1$
+  String FILTER_IDB_HIDE_PROPERTY_VALUES = "Hide Property Values";
 
   // filter id
   String FILTER_IDB_HIDE_IMPLEMENTATION_LINKS_ID = "Hide Implmentation links"; //$NON-NLS-1$
@@ -268,6 +270,7 @@ public interface IFilterNameConstants {
   String FILTER_LCCII_HIDE_COMPONENT_PORTS = "Hide Component Ports"; //$NON-NLS-1$
   String FILTER_LCCII_HIDE_USE_LINKS = "Hide Use links"; //$NON-NLS-1$
   String FILTER_LCCII_HIDE_IMPLEMENTATION_LINKS = "Hide Implementation links"; //$NON-NLS-1$
+  String FILTER_LCCII_HIDE_IMPLEMENTATION_LINKS_ID = "Hide Implmentation links"; //$NON-NLS-1$
   String FILTER_LCCII_HIDE_PROVIDE_LINKS = "Hide Provide links"; //$NON-NLS-1$
   String FILTER_LCCII_HIDE_REQUIRE_LINKS = "Hide Require links"; //$NON-NLS-1$
   String FILTER_LCCII_HIDE_COMMUNICATION_LINKS = "Hide Communication Links"; //$NON-NLS-1$
@@ -276,6 +279,7 @@ public interface IFilterNameConstants {
   String FILTER_LCCII_HIDE_TECHNICALS_INTERFACES = "Hide Technical Interfaces"; //$NON-NLS-1$
   String FILTER_LCCII_HIDE_DELEGATED_COMMUNICATION_LINKS = "Hide Delegated Communication Links"; //$NON-NLS-1$
   String FILTER_LCCII_HIDE_DELEGATED_USE_IMPLEMENTATION_LINKS = "Hide Delegated Use/Implementation/Require/Provide Links"; //$NON-NLS-1$
+  String FILTER_LCCII_HIDE_PROPERTY_VALUES = "Hide Property Values";
 
   // LDFB filters - Logical Data Flow Blank
   String FILTER_LDFB_COLLAPSE_PORTS = "Collapse Ports"; //$NON-NLS-1$
@@ -556,7 +560,7 @@ public interface IFilterNameConstants {
   String FILTER_SHOW_CE_EXCHANGE_CONTEXT_ID = "ShowCEExchangeContext"; //$NON-NLS-1$
   String FILTER_SHOW_FE_EXCHANGE_CONTEXT_ID = "ShowFEExchangeContext"; //$NON-NLS-1$
   String FILTER_SHOW_EI_EXCHANGE_CONTEXT_ID = "ShowEIExchangeContext"; //$NON-NLS-1$
-  
+
   String FILTER_MERGE_ASSOCIATED_FE_AND_SL = "Merge associated Functional Exchange Involvements and Sequence Links without Control Node"; //$NON-NLS-1$
 
 }

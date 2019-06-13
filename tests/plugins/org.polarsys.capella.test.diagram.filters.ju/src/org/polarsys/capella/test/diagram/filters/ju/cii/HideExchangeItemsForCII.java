@@ -8,22 +8,24 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.test.diagram.filters.ju.idb;
+package org.polarsys.capella.test.diagram.filters.ju.cii;
 
 import java.util.Arrays;
 import java.util.List;
 
-public class HideDelegatedCommunicationLinksForIDB extends FiltersForIDB {
+import org.polarsys.capella.core.sirius.analysis.constants.IFilterNameConstants;
+
+public class HideExchangeItemsForCII extends FiltersForCII {
 
   @Override
   protected String getFilterName() {
-    return "Hide Delegated Communication Links"; //$NON-NLS-1$
+    return IFilterNameConstants.FILTER_LCCII_HIDE_EXCHANGE_ITEMS;
   }
 
   @Override
   protected List<String> getFilteredObjetIDs() {
-    return Arrays.asList(new String[] { "1a525de2-248e-4f4c-ab1b-8df83c88ce80", //$NON-NLS-1$
-        "fa136adc-c5a1-42e0-a804-40da387d6ccb", //$NON-NLS-1$
-    });
+    return Arrays.asList(new String[] { TEST_EXCHANGE_ITEM_3_ID, EXCHANGE_ITEM_2_ID, SEND_ID, CONSUME_ID, PRODUCE_ID,
+        EXCHANGE_ITEM_1_ID, LOGICAL_SYSTEM_TO_EXCHANGE_ITEM_SEND_ID });
   }
+
 }
