@@ -21,7 +21,21 @@ public class CDIDiagramFiltersTestSuite extends BasicTestSuite {
   @Override
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<>();
-    tests.add(new HideTechnicalInterfaceForCDI());
+    tests.add(new HideInterfaceContentsForCDI());
+    tests.add(new HideInterfacesForCDI());
+    tests.add(new HideExchangeItemsDetailsInInterfacesForCDI());
+    tests.add(new HideExchangeItemElementsForCDI());
+    tests.add(new HideExchangeItemsForCDI());
+    tests.add(new HideComponentPortsForCDI());
+    tests.add(new HideUseLinksForCDI());
+    tests.add(new HideImplementationLinksForCDI());
+    tests.add(new HideProvideLinksForCDI());
+    tests.add(new HideRequireLinksForCDI());
+    tests.add(new HideCommunicationLinksForCDI());
+    tests.add(new HideGeneralizationLinksForCDI());
+    tests.add(new HideTechnicalInterfacesForCDI());
+    tests.add(new ShowModifiersForCDI());
+    tests.add(new HidePropertyValuesForCDI());
     return tests;
   }
 }
