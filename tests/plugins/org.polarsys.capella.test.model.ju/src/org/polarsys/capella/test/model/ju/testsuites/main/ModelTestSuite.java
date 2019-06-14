@@ -15,6 +15,11 @@ import java.util.List;
 
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
+import org.polarsys.capella.test.model.ju.crossreferencer.InvolverInvolvedDerivedFeaturesTest;
+import org.polarsys.capella.test.model.ju.crossreferencer.MoveElementToNewResourceTest;
+import org.polarsys.capella.test.model.ju.crossreferencer.TraceableElementDerivedFeaturesTest;
+import org.polarsys.capella.test.model.ju.crossreferencer.TypeDerivedFeaturesTest;
+import org.polarsys.capella.test.model.ju.derivedfeature.DerivedFeatureTestCase;
 import org.polarsys.capella.test.model.ju.helpers.CapellaAdapterHelperTestCase;
 import org.polarsys.capella.test.model.ju.obfuscate.ObfuscateModelTestCase;
 import org.polarsys.capella.test.model.ju.propertyviews.PropertyViewsTest;
@@ -67,6 +72,11 @@ public class ModelTestSuite extends BasicTestSuite {
     tests.add(new CopyPasteLayout());
     tests.add(new InvalidCapellaCopyPaste());
     tests.add(new PropertyViewsTest());
+    tests.add(new MoveElementToNewResourceTest());
+    tests.add(new InvolverInvolvedDerivedFeaturesTest());
+    tests.add(new TypeDerivedFeaturesTest());
+    tests.add(new TraceableElementDerivedFeaturesTest());
+    tests.add(new DerivedFeatureTestCase());
     return tests;
   }
 
