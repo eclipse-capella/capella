@@ -8,7 +8,7 @@
           <variables name="root" documentation="The semantic element corresponding to the current table."/>
         </delete>
       </ownedLineMappings>
-      <ownedColumnMappings name="Requirements 7" headerLabelExpression="aql:self.getRequirementElementLabel()" domainClass="Requirement">
+      <ownedColumnMappings name="Requirements 7" headerLabelExpression="aql:self.getRequirementElementLabel()" domainClass="Requirement" semanticCandidatesExpression="cacheService:diagram.getRequirementSemanticCandidates">
         <delete name="No delete" precondition="false">
           <variables name="element" documentation="The currently edited element."/>
           <variables name="root" documentation="The semantic element corresponding to the current table."/>
@@ -174,7 +174,7 @@
         </filters>
       </filters>
       <defaultLayer name="DefaultEpbsLayer">
-        <containerMappings name="CI container mapping" deletionDescription="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20a%20CI']" labelDirectEdit="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='rename%20CI']" semanticCandidatesExpression="" createElements="false" semanticElements="service:getPartSemanticElements()" domainClass="cs.Part" dropDescriptions="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='DnD%20AB%20Physical%20Artifacts']" reusedContainerMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='CI%20container%20mapping']">
+        <containerMappings name="CI container mapping" deletionDescription="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20a%20CI']" labelDirectEdit="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='rename%20CI']" semanticCandidatesExpression="cacheService:diagram.getPartSemanticCandidates" createElements="false" semanticElements="service:getPartSemanticElements()" domainClass="cs.Part" dropDescriptions="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='DnD%20AB%20Physical%20Artifacts']" reusedContainerMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='CI%20container%20mapping']">
           <detailDescriptions xsi:type="tool_1:DiagramCreationDescription" href="#//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='Configuration%20Items%20BreakDown']"/>
           <detailDescriptions xsi:type="tool_1:DiagramCreationDescription" href="#//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='EPBS%20Architecture%20Blank']"/>
           <detailDescriptions xsi:type="tool_1:DiagramCreationDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='Contextual%20Component%20Detailed%20Interfaces']"/>
@@ -940,5 +940,6 @@
     <ownedJavaExtensions qualifiedClassName="org.polarsys.capella.core.sirius.analysis.CsServices"/>
     <ownedJavaExtensions qualifiedClassName="org.polarsys.capella.core.sirius.analysis.RequirementServices"/>
     <ownedJavaExtensions qualifiedClassName="org.polarsys.capella.core.sirius.analysis.DiagramServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.polarsys.capella.core.sirius.analysis.SemanticCandidateServices"/>
   </ownedViewpoints>
 </description:Group>

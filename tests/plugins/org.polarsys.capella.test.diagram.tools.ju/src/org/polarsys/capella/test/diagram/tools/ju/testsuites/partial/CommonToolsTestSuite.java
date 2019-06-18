@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.polarsys.capella.test.diagram.tools.ju.common.CommonToolsTest;
+import org.polarsys.capella.test.diagram.tools.ju.common.EmptySemanticCandidateTest;
 import org.polarsys.capella.test.diagram.tools.ju.common.SelectToolsTest;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
@@ -37,6 +38,7 @@ public class CommonToolsTestSuite extends BasicTestSuite {
     List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
     tests.add(new CommonToolsTest());
     tests.add(new SelectToolsTest());
+    tests.add(new EmptySemanticCandidateTest());
     return tests;
   }
 

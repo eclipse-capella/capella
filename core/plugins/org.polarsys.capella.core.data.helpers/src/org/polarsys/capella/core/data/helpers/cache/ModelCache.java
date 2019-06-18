@@ -11,6 +11,7 @@
 
 package org.polarsys.capella.core.data.helpers.cache;
 
+import java.util.function.BiFunction;
 import java.util.function.Function;
 
 public class ModelCache {
@@ -39,6 +40,39 @@ public class ModelCache {
   }
 
   /**
+   * 
+   * @param function
+   * @param parameter1
+   * @param parameter2
+   * @return If enabled, return the cached result if any or apply the function to the given parameters and cache the
+   *         result before returning it.
+   */
+  public static <P1, P2, R> R getCache(BiFunction<P1, P2, R> function, P1 parameter1, P2 parameter2) {
+
+    if (enabled) {
+      return cache.get(function, parameter1, parameter2);
+    }
+    return function.apply(parameter1, parameter2);
+  }
+
+  /**
+   * 
+   * @param function
+   * @param parameter1
+   * @param parameter2
+   * @return If enabled, return the cached result if any or apply the function to the given parameters and cache the
+   *         result before returning it.
+   */
+  public static <P1, P2, R> R getServiceInterpreterCache(BiFunction<P1, P2, R> function, P1 parameter1, P2 parameter2) {
+
+    if (enabled) {
+      return cache.getServiceInterpreter(function, parameter1, parameter2);
+    }
+    return function.apply(parameter1, parameter2);
+  }
+
+  /**
+   * 
    * Enable the cache.
    */
   public static void enable() {

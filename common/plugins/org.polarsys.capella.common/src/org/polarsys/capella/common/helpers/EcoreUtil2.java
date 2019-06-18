@@ -46,6 +46,7 @@ public class EcoreUtil2 {
 
   /**
    * Attach 'tgtElt' to the same container as 'srcElt', with the same containment feature.
+   * 
    * @param srcElt
    * @param tgtElt
    */
@@ -63,7 +64,9 @@ public class EcoreUtil2 {
   }
 
   /**
-   * Attach 'tgtElt' to its container 'tgtContainer' with the same containment feature as the one between 'srcElt' and its own container.
+   * Attach 'tgtElt' to its container 'tgtContainer' with the same containment feature as the one between 'srcElt' and
+   * its own container.
+   * 
    * @param srcElt
    * @param tgtElt
    * @param tgtContainer
@@ -86,7 +89,8 @@ public class EcoreUtil2 {
    * @param feature
    * @param attribute
    */
-  private static boolean checkElementName(EObject current, String nameString, EStructuralFeature feature, EAttribute attribute) {
+  private static boolean checkElementName(EObject current, String nameString, EStructuralFeature feature,
+      EAttribute attribute) {
     Object name = current.eGet(attribute);
     if ((name != null) && name.equals(nameString)) {
       return false;
@@ -100,7 +104,8 @@ public class EcoreUtil2 {
    * @param feature
    * @param attribute
    */
-  private static boolean checkListName(Collection<? extends EObject> list, String nameString, EStructuralFeature feature, EAttribute attribute) {
+  private static boolean checkListName(Collection<? extends EObject> list, String nameString,
+      EStructuralFeature feature, EAttribute attribute) {
     Iterator<? extends EObject> elements = list.iterator();
     boolean isUnique = true;
     while (elements.hasNext() && isUnique) {
@@ -113,6 +118,7 @@ public class EcoreUtil2 {
   /**
    * Get all contents for given elements.<br>
    * Returned collection contains given elements and their subtree elements.
+   * 
    * @param elements
    * @return a not <code>null</code> collection.
    */
@@ -122,6 +128,39 @@ public class EcoreUtil2 {
     while (eAllContents.hasNext()) {
       allElements.add(eAllContents.next());
     }
+    return allElements;
+  }
+
+  /**
+   * Get all contents for given elements with a given Class .<br>
+   * Returned collection contains the given elements and their subtree elements which have the given Class as type.
+   * 
+   * @param EObject:
+   *          the source element
+   * 
+   * @return a not <code>null</code> collection.
+   */
+  /**
+   * Get all contents for given elements with a given Class .<br>
+   * Returned collection contains the given elements and their subtree elements which have the given Class as type
+   * 
+   * @param source
+   *          the source element from which you would search for elements
+   * @param targetType:
+   *          the EClass of the wanted elements
+   * @return
+   */
+  public static Collection<EObject> getAllContentsFromEObject(EObject source, EClass targetType) {
+    List<EObject> allElements = new ArrayList<>();
+    if (targetType.isSuperTypeOf(source.eClass())) {
+      allElements.add(source);
+    }
+    TreeIterator<EObject> eAllContents = org.eclipse.emf.ecore.util.EcoreUtil.getAllContents(source, true);
+
+    eAllContents.forEachRemaining(element -> {
+      if (targetType.isSuperTypeOf(element.eClass()))
+        allElements.add(element);
+    });
     return allElements;
   }
 
@@ -159,6 +198,7 @@ public class EcoreUtil2 {
 
   /**
    * This method returns the number of container to be parsed before to reach the specified class type
+   * 
    * @param elt
    * @return
    */
@@ -181,6 +221,7 @@ public class EcoreUtil2 {
 
   /**
    * Return the file where is persisted given EMF object.
+   * 
    * @param resource
    * @return <code>null</code> if given object is not persisted.
    */
@@ -203,6 +244,7 @@ public class EcoreUtil2 {
 
   /**
    * Return the project where is persisted given EMF object.
+   * 
    * @param eObject
    * @return <code>null</code> if given object is not persisted.
    */
@@ -222,8 +264,11 @@ public class EcoreUtil2 {
 
   /**
    * Gets the first container with the specified class type of the specified element.
-   * @param elt The element to check container.
-   * @param cls The expected container class.
+   * 
+   * @param elt
+   *          The element to check container.
+   * @param cls
+   *          The expected container class.
    * @return The corresponding container elsewhere <code>null</code>.
    */
   public static EObject getFirstContainer(EObject elt, EClass cls) {
@@ -246,8 +291,11 @@ public class EcoreUtil2 {
 
   /**
    * Gets the first container with the specified class type of the specified elements.
-   * @param elt The element to check container.
-   * @param cls The expected container classes list.
+   * 
+   * @param elt
+   *          The element to check container.
+   * @param cls
+   *          The expected container classes list.
    * @return The corresponding container elsewhere <code>null</code>.
    */
   public static EObject getFirstContainer(EObject elt, List<EClass> cls) {
@@ -274,11 +322,14 @@ public class EcoreUtil2 {
    * Collect all elements that reference (containment relationships are not taken into account) given one.<br>
    * In fact that collects Non Navigable Inverse References for given element.<br>
    * Derived features are ignored too.
+   * 
    * @param referencedElement
-   * @param crossReferencer cross referencer used to retrieve referencing elements.
+   * @param crossReferencer
+   *          cross referencer used to retrieve referencing elements.
    * @return a not <code>null</code> collection.
    */
-  public static Collection<EObject> getReferencingElements(final EObject referencedElement, ECrossReferenceAdapter crossReferencer) {
+  public static Collection<EObject> getReferencingElements(final EObject referencedElement,
+      ECrossReferenceAdapter crossReferencer) {
     HashSet<EObject> referencingElements = new HashSet<>(0);
     // Search inverses relations for selected model element.
     Collection<Setting> inverseReferences = crossReferencer.getNonNavigableInverseReferences(referencedElement, true);
@@ -303,6 +354,7 @@ public class EcoreUtil2 {
 
   /**
    * Get the resource container i.e the first parent container serialized in its own resource.
+   * 
    * @param eObject
    * @return should be not <code>null</code>.
    */
@@ -325,6 +377,7 @@ public class EcoreUtil2 {
 
   /**
    * Get resource URI.
+   * 
    * @param resource
    * @return
    */
@@ -345,7 +398,8 @@ public class EcoreUtil2 {
    * @param recursive
    */
   @SuppressWarnings("unchecked")
-  public static String getUniqueName(EObject namedElement, EAttribute attribute, String prefix, boolean space, boolean recursive) {
+  public static String getUniqueName(EObject namedElement, EAttribute attribute, String prefix, boolean space,
+      boolean recursive) {
     EObject parent = namedElement.eContainer();
     StringBuilder name = new StringBuilder(prefix);
     if (space) {
@@ -391,14 +445,21 @@ public class EcoreUtil2 {
 
   /**
    * Gets a unique name for the specified object.
-   * @param object the object to set name.
-   * @param container the object container.
-   * @param feature the feature.
-   * @param attribute The name attribute.
-   * @param defaultString The default string.
+   * 
+   * @param object
+   *          the object to set name.
+   * @param container
+   *          the object container.
+   * @param feature
+   *          the feature.
+   * @param attribute
+   *          The name attribute.
+   * @param defaultString
+   *          The default string.
    */
   @SuppressWarnings("unchecked")
-  public static String getUniqueName(EObject object, EObject container, EStructuralFeature feature, EAttribute attribute, String defaultString) {
+  public static String getUniqueName(EObject object, EObject container, EStructuralFeature feature,
+      EAttribute attribute, String defaultString) {
     String resultName = ICommonConstants.EMPTY_STRING;
 
     if ((feature == null) || feature.isMany()) {
@@ -420,10 +481,10 @@ public class EcoreUtil2 {
           for (Object sibling : siblings) {
             EObject eSibling = (EObject) sibling;
 
-            //eGet doesn't raise an exception if 'java assert' option is not enabled
-            //See https://polarsys.org/bugs/show_bug.cgi?id=389
-            if(!eSibling.eClass().getEAllStructuralFeatures().contains(attribute)){
-            	continue;
+            // eGet doesn't raise an exception if 'java assert' option is not enabled
+            // See https://polarsys.org/bugs/show_bug.cgi?id=389
+            if (!eSibling.eClass().getEAllStructuralFeatures().contains(attribute)) {
+              continue;
             }
 
             Object attributeValue = eSibling.eGet(attribute);
@@ -436,7 +497,8 @@ public class EcoreUtil2 {
           }
           counter = siblings.size();
           do {
-            resultName = MessageFormat.format(defaultPattern, new Object[] { Integer.valueOf(++counter), defaultString });
+            resultName = MessageFormat.format(defaultPattern,
+                new Object[] { Integer.valueOf(++counter), defaultString });
           } while (existingNames.contains(resultName));
         }
       } else {
@@ -450,8 +512,11 @@ public class EcoreUtil2 {
 
   /**
    * Is given object contained by an object which is an instance of specified container class.
-   * @param eObject the element to check the container.
-   * @param containerClass The expected container class.
+   * 
+   * @param eObject
+   *          the element to check the container.
+   * @param containerClass
+   *          The expected container class.
    * @return <code>true</code> if the container class matches, <code>false</code> otherwise.
    */
   public static boolean isContainedBy(EObject eObject, final Class<?> containerClass) {
@@ -473,8 +538,11 @@ public class EcoreUtil2 {
 
   /**
    * Checks if the specified element container class is same as specified class.
-   * @param elt the element to check the container.
-   * @param cls The expected container class.
+   * 
+   * @param elt
+   *          the element to check the container.
+   * @param cls
+   *          The expected container class.
    * @return <code>True</code> if the container class is good else <code>false</code>.
    */
   public static boolean isContainedBy(EObject elt, final EClass cls) {
@@ -496,8 +564,11 @@ public class EcoreUtil2 {
 
   /**
    * Checks if the specified element is contained by the specified container.
-   * @param elt the element to check.
-   * @param container The container to check.
+   * 
+   * @param elt
+   *          the element to check.
+   * @param container
+   *          The container to check.
    * @return <code>True</code> if the container class is good else <code>false</code>.
    */
   public static boolean isContainedBy(EObject elt, final EObject container) {
@@ -519,6 +590,7 @@ public class EcoreUtil2 {
 
   /**
    * Is specified object contained by a container matching specified condition.
+   * 
    * @param eObject
    * @param containmentCondition
    * @return
@@ -548,12 +620,17 @@ public class EcoreUtil2 {
 
   /**
    * Allows to know if an <code>EClass</code> is equal or a super class of another <code>EClass</code>
-   * @param class1 an EClass
-   * @param class2 an EClass
-   * @return <code>true</code> if class1 is equal to class_2 or is a super class of class_2, <code>false</code> otherwise.
+   * 
+   * @param class1
+   *          an EClass
+   * @param class2
+   *          an EClass
+   * @return <code>true</code> if class1 is equal to class_2 or is a super class of class_2, <code>false</code>
+   *         otherwise.
    */
   public static boolean isEqualOrSuperClass(EClass class1, EClass class2) {
-    return (null != class1) && (null != class2) && (class1.equals(class2) || class2.getEAllSuperTypes().contains(class1));
+    return (null != class1) && (null != class2)
+        && (class1.equals(class2) || class2.getEAllSuperTypes().contains(class1));
   }
 
   /**
@@ -590,6 +667,7 @@ public class EcoreUtil2 {
 
   /**
    * Is given file resource in read only ?
+   * 
    * @param resource
    * @return <code>false</code> if given resource is not file-based; otherwise it depends on the underlying file.
    */
@@ -604,6 +682,7 @@ public class EcoreUtil2 {
 
   /**
    * Removes the element's container.
+   * 
    * @param elt
    */
   public static void removeContainer(EObject elt) {
@@ -620,6 +699,7 @@ public class EcoreUtil2 {
 
   /**
    * If all objects in elements have the same editing domain return that domain, otherwise return null.
+   * 
    * @param elements
    * @return the common EditingDomain for elements, or null if elements have different editing domains
    */
