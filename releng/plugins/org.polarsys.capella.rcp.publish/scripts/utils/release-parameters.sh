@@ -35,7 +35,7 @@ elif [ "$BUILD_TYPE" = "stable" ]; then
 fi
 
 # The root folder for all product
-export CAPELLA_FOLDER_ROOT="/home/data/httpd/download.polarsys.org/$PRODUCT_NAME"
+export CAPELLA_FOLDER_ROOT="/home/data/httpd/download.eclipse.org/$PRODUCT_NAME"
 
 # The root folder for all Capella udpate sites
 export CAPELLA_UPDATES_ROOT="$CAPELLA_FOLDER_ROOT/updates"

@@ -45,6 +45,6 @@ if [ "$LOG" = "true" ]; then
 	check_folder After $PUBLISH_FOLDER_ROOT/products/milestone
 	check_folder After $PUBLISH_FOLDER_ROOT/updates/stable
 	check_folder After $PUBLISH_FOLDER_ROOT/products/stable
-	echo "After release : df -h /home/data/httpd/download.polarsys.org/capella"
+	echo "After release : df -h /home/data/httpd/download.eclipse.org/capella"
 	df -h $PUBLISH_FOLDER_ROOT
 fi
