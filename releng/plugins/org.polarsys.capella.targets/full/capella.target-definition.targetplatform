@@ -48,7 +48,7 @@ location sirius "https://download.eclipse.org/sirius/updates/releases/6.2.1/2019
 }
 
 
-location kitalpha-runtime-core-master "http://download.polarsys.org/kitalpha/updates/nightly/runtimecore/1.4.0" {	
+location kitalpha-runtime-core-master "http://download.eclipse.org/kitalpha/updates/nightly/runtimecore/1.4.0" {	
 	org.polarsys.kitalpha.ad.runtime.feature.feature.group
 	org.polarsys.kitalpha.cadence.feature.feature.group
 	org.polarsys.kitalpha.common.feature.feature.group
@@ -76,7 +76,7 @@ location kitalpha-runtime-core-master "http://download.polarsys.org/kitalpha/upd
 	org.polarsys.kitalpha.transposer.feature.feature.group
 }
 
-location kitalpha-sdk-master "https://download.polarsys.org/kitalpha/updates/nightly/sdk/1.4.x/" {
+location kitalpha-sdk-master "https://download.eclipse.org/kitalpha/updates/nightly/sdk/1.4.x/" {
 	org.polarsys.kitalpha.doc.feature.feature.group
 	org.polarsys.kitalpha.emde.sdk.feature.feature.group
 }
