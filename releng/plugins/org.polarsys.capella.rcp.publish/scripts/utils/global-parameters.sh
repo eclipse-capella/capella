@@ -42,7 +42,7 @@ export TARGET_PATH="releng/plugins/org.polarsys.capella.targets/full"
 # export JOB_NAME=capella-master
 
 # The root folder for all Capella artifacts
-export PUBLISH_FOLDER_ROOT="/home/data/httpd/download.polarsys.org/$PRODUCT_NAME/core"
+export PUBLISH_FOLDER_ROOT="/home/data/httpd/download.eclipse.org/$PRODUCT_NAME/core"
 
 # The root folder for all Capella udpate sites
 export PUBLISH_UPDATES_ROOT="$PUBLISH_FOLDER_ROOT/updates"
