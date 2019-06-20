@@ -114,14 +114,6 @@
               
        </menuContribution>
        
-       <menuContribution
-                locationURI="popup:org.eclipse.emf.diffmerge.ui.defer.view?after=additions">
-               
-              <separator name="group.showIn" visible="true" />
-              <separator name="group.sendTo" visible="true" />
-              
-       </menuContribution>
-       
        <!-- REC-RPL -->
        <menuContribution
                 locationURI="popup:org.polarsys.capella.common.re.createRec?after=additions">
