@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText=" Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.&#xA; All rights reserved. This program and the accompanying materials&#xA; are made available under the terms of the Eclipse Public License v1.0&#xA; which accompanies this distribution, and is available at&#xA; http://www.eclipse.org/legal/epl-v10.html&#xA;&#xA; Contributors:&#xA;    Thales - initial API and implementation"
+    modelDirectory="/org.polarsys.capella.common.data.core.gen.cdo/generated/" modelPluginID="org.polarsys.capella.common.data.core.gen.cdo"
+    modelName="ModellingCore" nonNLSMarkers="true" rootExtendsInterface="org.eclipse.emf.cdo.CDOObject"
+    rootExtendsClass="org.eclipse.emf.internal.cdo.CDOObjectImpl" importerID="org.eclipse.emf.importer.ecore"
+    featureDelegation="Dynamic" containmentProxies="true" complianceLevel="6.0" copyrightFields="false"
+    usedGenPackages="../../org.polarsys.kitalpha.emde.model.cdo/model/eMDE.genmodel#//emde"
+    importOrganizing="true">
+  <foreignModel>../../org.polarsys.capella.common.data.def/model/ModellingCore.ecore</foreignModel>
+  <modelPluginVariables>CDO=org.eclipse.emf.cdo</modelPluginVariables>
+  <genPackages prefix="Modellingcore" basePackage="org.polarsys.capella.common.data"
+      resource="XMI" disposableProviderFactory="true" extensibleProviderFactory="true"
+      childCreationExtenders="true" ecorePackage="../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//ParameterEffectKind">
+      <genEnumLiterals ecoreEnumLiteral="../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//ParameterEffectKind/create"/>
+      <genEnumLiterals ecoreEnumLiteral="../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//ParameterEffectKind/read"/>
+      <genEnumLiterals ecoreEnumLiteral="../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//ParameterEffectKind/update"/>
+      <genEnumLiterals ecoreEnumLiteral="../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//ParameterEffectKind/delete"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//RateKind">
+      <genEnumLiterals ecoreEnumLiteral="../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//RateKind/Unspecified"/>
+      <genEnumLiterals ecoreEnumLiteral="../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//RateKind/Continuous"/>
+      <genEnumLiterals ecoreEnumLiteral="../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//RateKind/Discrete"/>
+    </genEnums>
+    <genClasses image="false" ecoreClass="../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//ModelElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//ModelElement/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//ModelElement/sid"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//ModelElement/constraints"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//ModelElement/ownedConstraints"/>
+      <genOperations ecoreOperation="../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//ModelElement/destroy"/>
+      <genOperations ecoreOperation="../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//ModelElement/getFullLabel"/>
+      <genOperations ecoreOperation="../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//ModelElement/getLabel"/>
+      <genOperations ecoreOperation="../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//ModelElement/hasUnnamedLabel"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//AbstractRelationship">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//AbstractRelationship/realizedFlow"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//AbstractNamedElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//AbstractNamedElement/name"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//InformationsExchanger">
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//InformationsExchanger/incomingInformationFlows"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//InformationsExchanger/outgoingInformationFlows"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//InformationsExchanger/informationFlows"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//TraceableElement">
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//TraceableElement/incomingTraces"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//TraceableElement/outgoingTraces"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//FinalizableElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//FinalizableElement/final"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//PublishableElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//PublishableElement/visibleInDoc"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//PublishableElement/visibleInLM"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//AbstractType">
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//AbstractType/abstractTypedElements"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//AbstractTypedElement">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//AbstractTypedElement/abstractType"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//AbstractTrace">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//AbstractTrace/targetElement"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//AbstractTrace/sourceElement"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//AbstractConstraint">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//AbstractConstraint/constrainedElements"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//AbstractConstraint/ownedSpecification"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//AbstractConstraint/context"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//ValueSpecification"/>
+    <genClasses image="false" ecoreClass="../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//AbstractParameter">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//AbstractParameter/isException"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//AbstractParameter/isStream"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//AbstractParameter/isOptional"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//AbstractParameter/kindOfRate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//AbstractParameter/effect"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//AbstractParameter/rate"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//AbstractParameter/probability"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//AbstractParameter/parameterSet"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//AbstractParameterSet">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//AbstractParameterSet/ownedConditions"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//AbstractParameterSet/probability"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//AbstractParameterSet/parameters"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//AbstractInformationFlow">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//AbstractInformationFlow/realizations"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//AbstractInformationFlow/convoyedInformations"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//AbstractInformationFlow/source"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//AbstractInformationFlow/target"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//AbstractExchangeItem"/>
+    <genClasses image="false" ecoreClass="../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//IState">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//IState/referencedStates"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//IState/exploitedStates"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
