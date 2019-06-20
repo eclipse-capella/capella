@@ -13,7 +13,7 @@
 # ====================================================================
 #
 # This script Publish update site from runtime core build to
-# http://download.polarsys.org/capella/core/updates
+# http://download.eclipse.org/capella/core/updates
 #
 # ====================================================================
 

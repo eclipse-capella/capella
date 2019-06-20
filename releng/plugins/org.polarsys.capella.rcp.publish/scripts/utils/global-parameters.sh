@@ -13,7 +13,7 @@
 # ====================================================================
 #
 # This script Publish update site from runtime core build to
-# http://download.polarsys.org/capella/core/updates
+# http://download.eclipse.org/capella/core/updates
 #
 # ====================================================================
 
@@ -51,8 +51,8 @@ export PUBLISH_UPDATES_ROOT="$PUBLISH_FOLDER_ROOT/updates"
 export PUBLISH_PRODUCTS_ROOT="$PUBLISH_FOLDER_ROOT/products"
 
 # Publish url
-export URL_PUBLISH_PREFIX="http://download.polarsys.org/$PRODUCT_NAME/core/updates"
-export URL_PRODUCT_PREFIX="http://download.polarsys.org/$PRODUCT_NAME/core/products"
+export URL_PUBLISH_PREFIX="http://download.eclipse.org/$PRODUCT_NAME/core/updates"
+export URL_PRODUCT_PREFIX="http://download.eclipse.org/$PRODUCT_NAME/core/products"
 
 # Master Build Url
 export MASTER_BUILD_URL="https://hudson.polarsys.org/$PRODUCT_NAME/job/$JOB_NAME"
