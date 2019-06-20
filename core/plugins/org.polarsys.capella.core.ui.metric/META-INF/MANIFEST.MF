@@ -19,6 +19,5 @@ Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.ui.metric,
  org.polarsys.capella.core.ui.metric.actions,
  org.polarsys.capella.core.ui.metric.core,
- org.polarsys.capella.core.ui.metric.core.filter,
  org.polarsys.capella.core.ui.metric.dialog,
  org.polarsys.capella.core.ui.metric.utils

@@ -11,62 +11,88 @@
 package org.polarsys.capella.core.ui.metric.core;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
+import java.util.Stack;
 
-/**
- *
- */
 public class MetricTree<T> {
 
   private MetricTree<T> parent = null;
-  private List<MetricTree<T>> children = null;
+  private List<MetricTree<T>> children = new ArrayList<>();
+  private T element;
+  private int count = 0;
 
-  private T nodeId;
-  private Integer data;
-  
-  public T getId() { return nodeId;}
-  public Integer getData() { return data;}
-  public void setData(Integer value_p) { data = value_p; return;}
-  public boolean hasData() { return null != data;}
-  
-  public MetricTree<T> getParent() {return parent;}
-  public boolean isRoot() {return null == parent; }
-
-  public List<MetricTree<T>> getChildren() { return children;}
-  public boolean hasChildren() { return null != children && !children.isEmpty();}
-  
-  public void addChild(MetricTree<T> child_p) {
-    addChildren(Collections.singletonList(child_p));
-    return;
-  }
-
-  public void addChildren(List<MetricTree<T>> children_p) {
-    if (!hasChildren()) {
-      children = new ArrayList<MetricTree<T>>();
-    }
-    children.addAll(children_p);
-    return;
-  }
-
-  public MetricTree(T id, Integer data, MetricTree<T> parent) {
+  public MetricTree(T element, MetricTree<T> parent) {
+    this.element = element;
     this.parent = parent;
-    this.nodeId = id;
-    this.data = data;
+    if (parent != null) {
+      parent.addChild(this);
+    }
+  }
+
+  public T getElement() {
+    return element;
+  }
+
+  public int getCount() {
+    return count;
+  }
+
+  public void increaseCount(int count) {
+    this.count += count;
+  }
+
+  public MetricTree<T> getParent() {
+    return parent;
+  }
+
+  public boolean isRoot() {
+    return null == parent;
   }
   
+  public boolean isLeaf() {
+    return children.isEmpty();
+  }
+
+  public List<MetricTree<T>> getChildren() {
+    return children;
+  }
+
+  public boolean hasChildren() {
+    return !children.isEmpty();
+  }
+
+  public void addChild(MetricTree<T> child) {
+    children.add(child);
+  }
+
   public void clear() {
     this.parent = null;
-    this.nodeId = null;
-    this.data = null;
+    this.element = null;
     if (null != getChildren()) {
-      for (MetricTree<T> current: getChildren()) {
+      for (MetricTree<T> current : getChildren()) {
         current.clear();
       }
       this.children.clear();
     }
-    
-    return;
   }
-  
+
+  public List<MetricTree<T>> getLeafs() {
+    List<MetricTree<T>> leafs = new ArrayList<>();
+    Stack<MetricTree<T>> stack = new Stack<>();
+    stack.push(this);
+
+    while (!stack.isEmpty()) {
+      MetricTree<T> tree = stack.pop();
+
+      if (tree.getChildren().isEmpty()) {
+        leafs.add(tree);
+      } else {
+        stack.addAll(tree.getChildren());
+      }
+
+    }
+
+    return leafs;
+  }
+
 }

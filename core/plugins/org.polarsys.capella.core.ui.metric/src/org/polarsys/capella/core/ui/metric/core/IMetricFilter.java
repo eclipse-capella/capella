@@ -18,6 +18,6 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface IMetricFilter {
 
-  public boolean accept(EObject eobject_p);
+  public boolean accept(EObject eobject);
   
 }

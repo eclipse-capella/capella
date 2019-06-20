@@ -22,7 +22,7 @@ public class DefaultMetricFilter implements IMetricFilter {
   /**
    * @see org.polarsys.capella.core.ui.metric.core.IMetricFilter#accept(org.eclipse.emf.ecore.EObject)
    */
-  public boolean accept(EObject eobject_p) {
+  public boolean accept(EObject eobject) {
     
     return true;
   }

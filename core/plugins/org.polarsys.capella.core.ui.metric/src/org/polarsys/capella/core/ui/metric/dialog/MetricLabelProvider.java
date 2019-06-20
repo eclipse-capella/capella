@@ -10,110 +10,95 @@
  *******************************************************************************/
 package org.polarsys.capella.core.ui.metric.dialog;
 
+import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.jface.viewers.ILabelProvider;
-import org.eclipse.jface.viewers.ILabelProviderListener;
+import org.eclipse.emf.edit.provider.IItemLabelProvider;
+import org.eclipse.gmf.runtime.diagram.ui.commands.CreateOrSelectElementCommand.LabelProvider;
 import org.eclipse.jface.viewers.ITableLabelProvider;
 import org.eclipse.swt.graphics.Image;
-import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
+import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
+import org.polarsys.capella.common.ui.services.helper.EObjectImageProviderHelper;
+import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
 import org.polarsys.capella.core.ui.metric.core.MetricTree;
-import org.polarsys.capella.core.ui.metric.utils.Utils;
 
-/**
- */
-public class MetricLabelProvider implements ITableLabelProvider, ILabelProvider {
+public class MetricLabelProvider extends LabelProvider implements ITableLabelProvider {
 
-  protected final static String _regex = "\\[|(\\].*)"; //$NON-NLS-1$
+  protected static final String REGEX = "\\[|(\\].*)"; //$NON-NLS-1$
 
-  private final int OBJ_COLUMN_INDEX = 0;
-  private final int QTY_COLUMN_INDEX = 1;
+  public static final int OBJ_COLUMN_INDEX = 0;
+  public static final int QTY_COLUMN_INDEX = 1;
 
-  /**
-   * @see org.eclipse.jface.viewers.ITableLabelProvider#getColumnImage(java.lang.Object, int)
-   */
-  @SuppressWarnings("unchecked")
-  public Image getColumnImage(Object element_p, int columnIndex_p) {
+  private static AdapterFactory capellaAdapterFactory = CapellaAdapterFactoryProvider.getInstance().getAdapterFactory();
+
+  public Image getColumnImage(Object element, int columnIndex) {
 
     Image image = null;
 
-    if (OBJ_COLUMN_INDEX == columnIndex_p) {
-      MetricTree<EObject> element = (MetricTree<EObject>) element_p;
-      MetricTree<EObject> tree = element;
-      EObject eobject = tree.getId();
-      image = Utils.getImage(eobject);
+    if (OBJ_COLUMN_INDEX == columnIndex) {
+      image = getImage(element);
     }
 
     return image;
   }
 
-  /**
-   * @see org.eclipse.jface.viewers.ITableLabelProvider#getColumnText(java.lang.Object, int)
-   */
   @SuppressWarnings("unchecked")
-  public String getColumnText(Object element_p, int columnIndex_p) {
+  public String getColumnText(Object element, int columnIndex) {
 
     String text = null;
 
-    MetricTree<EObject> element = (MetricTree<EObject>) element_p;
+    switch (columnIndex) {
+    case OBJ_COLUMN_INDEX:
+      text = getText(element);
+      break;
 
-    if (OBJ_COLUMN_INDEX == columnIndex_p) {
-      text = getLabelText(element.getId(), null);
-    } else if (QTY_COLUMN_INDEX == columnIndex_p) {
-      Integer value = element.getData();
-      if (null != value) {
-        text = value.toString();
+    case QTY_COLUMN_INDEX:
+      MetricTree<EObject> metricTreeNode = (MetricTree<EObject>) element;
+      int count = metricTreeNode.getCount();
+      if (count > 0) {
+        text = Integer.toString(count);
       }
+      break;
 
+    default:
+      break;
     }
 
     return text;
   }
 
-  /**
-   * @see org.eclipse.jface.viewers.IBaseLabelProvider#addListener(org.eclipse.jface.viewers.ILabelProviderListener)
-   */
-  public void addListener(ILabelProviderListener listener_p) {
-    return;
+  @SuppressWarnings("unchecked")
+  @Override
+  public Image getImage(Object element) {
+    MetricTree<EObject> metricTreeNode = (MetricTree<EObject>) element;
+    EObject eobject = metricTreeNode.getElement();
+
+    IItemLabelProvider itemProvider = (IItemLabelProvider) capellaAdapterFactory.adapt(eobject,
+        IItemLabelProvider.class);
+
+    if (null != itemProvider) {
+      return EObjectImageProviderHelper.getImageFromObject(itemProvider.getImage(eobject));
+    }
+    return null;
   }
 
-  /**
-   * @see org.eclipse.jface.viewers.IBaseLabelProvider#dispose()
-   */
-  public void dispose() {
-    return;
-  }
+  @SuppressWarnings("unchecked")
+  @Override
+  public String getText(Object element) {
+    MetricTree<EObject> metricTreeNode = (MetricTree<EObject>) element;
+    EObject eObject = metricTreeNode.getElement();
 
-  /**
-   * @see org.eclipse.jface.viewers.IBaseLabelProvider#isLabelProperty(java.lang.Object, java.lang.String)
-   */
-  public boolean isLabelProperty(Object element_p, String property_p) {
-    return false;
-  }
+    String text = "";
 
-  /**
-   * @see org.eclipse.jface.viewers.IBaseLabelProvider#removeListener(org.eclipse.jface.viewers.ILabelProviderListener)
-   */
-  public void removeListener(ILabelProviderListener listener_p) {
-    return;
-  }
+    IItemLabelProvider itemProvider = (IItemLabelProvider) capellaAdapterFactory.adapt(eObject,
+        IItemLabelProvider.class);
+    if (null != itemProvider) {
+      text = itemProvider.getText(eObject);
+    }
 
-  static public String getLabelText(EObject eobject_p, String regex_p) {
-    String tmp = Utils.getText(eobject_p);
-    return tmp.replaceAll(null == regex_p ? _regex : regex_p, ICommonConstants.EMPTY_STRING);
-  }
+    if (text == null || text.isEmpty() || "[]".equals(text.trim()) || "[null]".equals(text.trim()) || "null".equals(text.trim())) {
+      text = EObjectLabelProviderHelper.getMetaclassLabel(eObject, true);
+    }
 
-  /**
-   * @see org.eclipse.jface.viewers.ILabelProvider#getImage(java.lang.Object)
-   */
-  public Image getImage(Object element_p) {
-    return getColumnImage(element_p, OBJ_COLUMN_INDEX);
+    return text.replaceAll(REGEX, "");
   }
-
-  /**
-   * @see org.eclipse.jface.viewers.ILabelProvider#getText(java.lang.Object)
-   */
-  public String getText(Object element_p) {
-    return getColumnText(element_p, OBJ_COLUMN_INDEX);
-  }
-
 }
