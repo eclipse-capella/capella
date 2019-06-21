@@ -132,7 +132,18 @@ public abstract class DiagramObjectFilterTestCase extends BasicTestCase {
 
     getCurrentDiagram();
     getCurrentFilterMappings();
+    
+    setFilteredObjectMaps();
 
+    for (String id : filteredObjetIDs) {
+      if (!toBeFiltered.values().contains(id)) {
+        fail("Element with id: " + id + " is not available for diagram: " + diagramName + " from project "
+            + projectTestName);
+      }
+    }
+  }
+  
+  protected void setFilteredObjectMaps() {
     for (DDiagramElement elt : diagram.getDiagramElements()) {
 
       EObject target = elt.getTarget();
@@ -145,13 +156,6 @@ public abstract class DiagramObjectFilterTestCase extends BasicTestCase {
         } else {
           notToFilter.put(elt, targetId);
         }
-      }
-    }
-
-    for (String id : filteredObjetIDs) {
-      if (!toBeFiltered.values().contains(id)) {
-        fail("Element with id: " + id + " is not available for diagram: " + diagramName + " from project "
-            + projectTestName);
       }
     }
   }

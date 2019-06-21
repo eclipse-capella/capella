@@ -98,6 +98,7 @@ public interface IFilterNameConstants {
   String FILTER_COC_HIDE_OPERATIONAL_CAPABILITY_EXTENDS = "Hide Operational Capability Extends"; //$NON-NLS-1$
   String FILTER_COC_HIDE_OPERATIONAL_CAPABILITY_INCLUDES = "Hide Operational Capability Includes"; //$NON-NLS-1$
   String FILTER_COC_HIDE_OPERATIONAL_CAPABILITY_GENERALIZATIONS = "Hide Operational Capability Generalizations"; //$NON-NLS-1$
+  String FILTER_COC_HIDE_PROPERTY_VALUES = "Hide Property Values";
 
   // CM filters - Contextual Mission
   String FILTER_CM_HIDE_CAPABILITIES = "Hide Capabilities"; //$NON-NLS-1$
@@ -342,6 +343,9 @@ public interface IFilterNameConstants {
   String FILTER_OAB_SHOW_EXCHANGE_ITEM_ON_COMMUNICATION_MEANS_WITHOUT_INTERACTIONS = "Show Exchange Items on Communication Means (without Interactions)"; //$NON-NLS-1$
   String FILTER_OAB_SHOW_ALLOCATED_INTERACTIONS_ON_COMMUNICATION_MEANS = "Show Allocated Interactions on Communication Means"; //$NON-NLS-1$
   String FILTER_OAB_HIDE_CROSS_INTEREACTIONS_OF_ROLES = "Hide cross Interactions of Roles"; //$NON-NLS-1$
+  String FILTER_OAB_HIDE_PROPERTY_VALUES = "Hide Property Values";
+  String FILTER_OAB_HIDE_SEQUENCING_INFORMATION = "Hide Sequencing Information";
+  
 
   // filter id
   String FILTER_OAB_SHOW_EXCHANGE_ITEMS_ON_INTERACTIONS_ID = "Show ExchangeItems"; //$NON-NLS-1$
@@ -373,6 +377,7 @@ public interface IFilterNameConstants {
   String FILTER_OCB_HIDE_OPERATIONAL_CAPABILITY_EXTENDS = "Hide Operational Capability Extends"; //$NON-NLS-1$
   String FILTER_OCB_HIDE_OPERATIONAL_CAPABILITY_INCLUDES = "Hide Operational Capability Includes"; //$NON-NLS-1$
   String FILTER_OCB_HIDE_OPERATIONAL_CAPABILITY_GENERALIZATIONS = "Hide Operational Capability Generalizations"; //$NON-NLS-1$
+  String FILTER_OCB_HIDE_PROPERTY_VALUES = "Hide Property Values";
 
   // OAS filters - Operational Activity Scenario
   String FILTER_OAS_HIDE_EXECUTIONS = "Hide executions"; //$NON-NLS-1$
@@ -437,6 +442,7 @@ public interface IFilterNameConstants {
   // ORB filters - Operational Role Blank
   String FILTER_ORB_HIDE_ALLOCATED_INTERACTIONS = "Hide Allocated Interactions"; //$NON-NLS-1$
   String FILTER_ORB_HIDE_INTERACTIONS = "Hide Interactions"; //$NON-NLS-1$
+  String FILTER_ORB_HIDE_PROPERTY_VALUES = "Hide Property Values";
 
   // PAB filters - Physical Architecture Blank
   String FILTER_PAB_COLLAPSE_COMPONENT_PHYSICAL_PORTS = "Collapse Component Physical Ports"; //$NON-NLS-1$
