@@ -10,7 +10,6 @@ Require-Bundle: org.eclipse.core.runtime;visibility:=reexport,
  org.eclipse.emf.common;visibility:=reexport,
  org.eclipse.emf.ecore;visibility:=reexport,
  org.eclipse.emf.workspace,
- org.eclipse.emf.query,
  com.google.guava;bundle-version="15.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy

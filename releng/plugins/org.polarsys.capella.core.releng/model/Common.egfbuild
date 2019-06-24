@@ -143,16 +143,12 @@
         <featureNames>org.eclipse.gef.sdk</featureNames>
         <featureNames>org.eclipse.emf.transaction</featureNames>
         <featureNames>org.eclipse.emf.validation</featureNames>
-        <featureNames>org.eclipse.emf.query</featureNames>
         <featureNames>org.eclipse.emf.workspace</featureNames>
         <featureNames>org.eclipse.emf.transaction.source</featureNames>
         <featureNames>org.eclipse.emf.workspace.source</featureNames>
         <featureNames>org.eclipse.emf.validation.ocl</featureNames>
         <featureNames>org.eclipse.emf.validation.source</featureNames>
         <featureNames>org.eclipse.emf.validation.ocl.source</featureNames>
-        <featureNames>org.eclipse.emf.query.ocl</featureNames>
-        <featureNames>org.eclipse.emf.query.source</featureNames>
-        <featureNames>org.eclipse.emf.query.ocl.source</featureNames>
         <featureNames>org.eclipse.gmf</featureNames>
         <featureNames>org.eclipse.sirius.query.legacy.feature.source</featureNames>
         <featureNames>org.eclipse.sirius.runtime.source</featureNames>

@@ -215,8 +215,6 @@
         <requirement
             name="org.eclipse.emf.sdk.feature.group"/>
         <requirement
-            name="org.eclipse.emf.query.feature.group"/>
-        <requirement
             name="org.eclipse.emf.transaction.feature.group"/>
         <requirement
             name="org.eclipse.equinox.executable.feature.group"/>
@@ -670,13 +668,9 @@
           <requirement
               name="org.eclipse.emf.validation.feature.group"/>
           <requirement
-              name="org.eclipse.emf.query.feature.group"/>
-          <requirement
               name="org.eclipse.emf.workspace.feature.group"/>
           <requirement
               name="org.eclipse.emf.validation.ocl.feature.group"/>
-          <requirement
-              name="org.eclipse.emf.query.ocl.feature.group"/>
           <requirement
               name="org.eclipse.gmf.feature.group"/>
           <requirement

@@ -12,7 +12,6 @@
 package org.polarsys.capella.common.helpers.query;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
@@ -22,11 +21,6 @@ import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.query.conditions.eobjects.EObjectCondition;
-import org.eclipse.emf.query.statements.FROM;
-import org.eclipse.emf.query.statements.IteratorKind;
-import org.eclipse.emf.query.statements.SELECT;
-import org.eclipse.emf.query.statements.WHERE;
 
 /**
  * This class contains convenient static methods for querying a EMF model
@@ -34,26 +28,41 @@ import org.eclipse.emf.query.statements.WHERE;
 public class GetAllQueries implements IGetAllQueries {
   /**
    * Retrieve EObject instances corresponding to a type and accessible from a source object by successive compositions
-   * @param source element from which the search starts
-   * @param targetType discriminating type
+   * 
+   * @param source
+   *          element from which the search starts
+   * @param targetType
+   *          discriminating type
    */
   public Set<EObject> getAll(EObject source, Class<?> targetType) {
-    Set<EObject> result = null;
-    if (null != source) {
-      EObjectCondition condition = new EObjectTypeCondition(targetType);
-      SELECT statement = new SELECT(new FROM(source, IteratorKind.HIERARCHICAL_LITERAL), new WHERE(condition));
-      result = new HashSet<EObject>(statement.execute().getEObjects());
-      // getAll should not retrieve source element
-      result.remove(source);
+
+    Set<EObject> result = new LinkedHashSet<EObject>();
+
+    if (source == null || targetType == null)
+      return result;
+
+    if (targetType.isAssignableFrom(source.getClass())) {
+      result.add(source);
     }
+
+    EList<EObject> containedElements = source.eContents();
+    for (EObject object : containedElements) {
+      result.addAll(getAll(object, targetType));
+    }
+
     return result;
   }
 
   /**
-   * Retrieve recursively EObject instances corresponding to a type and accessible from a source object by successive compositions
-   * @param source element from which the search starts
-   * @param targetType discriminating type
-   * @param filter list of the classes excluded from the getAll query
+   * Retrieve recursively EObject instances corresponding to a type and accessible from a source object by successive
+   * compositions
+   * 
+   * @param source
+   *          element from which the search starts
+   * @param targetType
+   *          discriminating type
+   * @param filter
+   *          list of the classes excluded from the getAll query
    */
 
   public Set<EObject> getAllFiltered(EObject source, EClass targetType, List<EClass> filter) {
@@ -102,8 +111,9 @@ public class GetAllQueries implements IGetAllQueries {
   }
 
   /**
-   * Return the root package of the given package. Will return the root package from the same namespace. Will not look up into extensions of the current
-   * resource.
+   * Return the root package of the given package. Will return the root package from the same namespace. Will not look
+   * up into extensions of the current resource.
+   * 
    * @param ePackage
    * @return null if given ePackage is null a EPackage otherwise.
    */
