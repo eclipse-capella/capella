@@ -29,6 +29,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.edit.domain.EditingDomain;
+import org.eclipse.emf.edit.domain.IEditingDomainProvider;
 
 /**
  * Provides EMF model notification with an unique adapter.<br>
@@ -56,7 +57,7 @@ import org.eclipse.emf.edit.domain.EditingDomain;
  * That does not apply to adapters registered for a class (until DataNotifier is garbage collected).
  * </p>
  */
-public class DataNotifier extends EContentAdapter {
+public class DataNotifier extends EContentAdapter implements IEditingDomainProvider {
   /**
    * Model element class to adapters.
    */

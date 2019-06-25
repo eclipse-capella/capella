@@ -18,12 +18,12 @@ import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.edit.domain.IEditingDomainProvider;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.sirius.business.api.session.Session;
 import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.ef.ExecutionManagerRegistry;
-import org.polarsys.capella.common.platform.sirius.ted.DataNotifier;
 
 /**
  * This class contains convenient static methods for working with Editing Domains and Execution Managers.
@@ -37,8 +37,8 @@ public class TransactionHelper {
    */
   public static TransactionalEditingDomain getEditingDomain(EObject eobject) {
 	  for(Adapter adapter : eobject.eAdapters()){
-		  if(adapter instanceof DataNotifier){
-			  return (TransactionalEditingDomain)((DataNotifier)adapter).getEditingDomain();
+		  if(adapter instanceof IEditingDomainProvider){
+			  return (TransactionalEditingDomain)((IEditingDomainProvider)adapter).getEditingDomain();
 		  }
 	  }
     return TransactionUtil.getEditingDomain(eobject);
@@ -94,7 +94,7 @@ public class TransactionHelper {
    * @return the execution manager
    */
   public static ExecutionManager getExecutionManager(EObject eobject) {
-    return ExecutionManagerRegistry.getInstance().getExecutionManager(TransactionUtil.getEditingDomain(eobject));
+    return ExecutionManagerRegistry.getInstance().getExecutionManager(getEditingDomain(eobject));
   }
 
   /**
