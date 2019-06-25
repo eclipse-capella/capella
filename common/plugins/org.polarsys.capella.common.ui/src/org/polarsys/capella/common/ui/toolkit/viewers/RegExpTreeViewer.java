@@ -17,9 +17,8 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
 
-import org.polarsys.capella.common.ui.toolkit.widgets.filter.FilteredTree;
-import org.polarsys.capella.common.ui.toolkit.widgets.filter.PatternFilter;
-import org.polarsys.capella.common.ui.toolkit.widgets.filter.TreePatternFilter;
+import org.polarsys.capella.common.ui.toolkit.widgets.filter.CapellaFilteredTree;
+import org.polarsys.capella.common.ui.toolkit.widgets.filter.CapellaPatternFilter;
 
 public class RegExpTreeViewer extends AbstractRegExpViewer {
 
@@ -62,8 +61,8 @@ public class RegExpTreeViewer extends AbstractRegExpViewer {
    * @see org.polarsys.capella.common.ui.toolkit.viewers.AbstractRegExpViewer#createPatternFilter()
    */
   @Override
-  protected PatternFilter createPatternFilter() {
-    return new TreePatternFilter();
+  protected CapellaPatternFilter createPatternFilter() {
+    return new CapellaPatternFilter();
   }
 
   /**
@@ -74,15 +73,7 @@ public class RegExpTreeViewer extends AbstractRegExpViewer {
   protected TreeViewer doClientViewer(Composite parent) {
     parent.setLayoutData(new GridData(GridData.FILL_BOTH));
     // Create a filtered tree viewer that expands all systematically.
-    FilteredTree filteredTree = new FilteredTree(parent, getTreeStyle(), getFilter()) {
-      /**
-       * @see org.polarsys.capella.common.ui.toolkit.widgets.filter.FilteredTree#handleTreeViewerExpansionWhenNoFilter(java.lang.Object[])
-       */
-      @Override
-      protected void handleTreeViewerExpansionWhenNoFilter(Object[] expandedElements) {
-        treeViewer.expandAll();
-      }
-    };
+    CapellaFilteredTree filteredTree = new CapellaFilteredTree(parent, getTreeStyle(), getFilter());
     TreeViewer viewer = filteredTree.getViewer();
     viewer.setAutoExpandLevel(AbstractTreeViewer.ALL_LEVELS);
     return viewer;
@@ -101,8 +92,8 @@ public class RegExpTreeViewer extends AbstractRegExpViewer {
    * @see org.polarsys.capella.common.ui.toolkit.viewers.AbstractRegExpViewer#getFilter()
    */
   @Override
-  public TreePatternFilter getFilter() {
-    return (TreePatternFilter) super.getFilter();
+  public CapellaPatternFilter getFilter() {
+    return (CapellaPatternFilter) super.getFilter();
   }
 
   /**

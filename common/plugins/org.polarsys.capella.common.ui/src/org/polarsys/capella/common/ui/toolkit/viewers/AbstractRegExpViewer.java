@@ -30,7 +30,7 @@ import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.Text;
 import org.polarsys.capella.common.ui.services.helper.ViewerHelper;
 import org.polarsys.capella.common.ui.toolkit.viewers.menu.ModalContextMenuExtender;
-import org.polarsys.capella.common.ui.toolkit.widgets.filter.PatternFilter;
+import org.polarsys.capella.common.ui.toolkit.widgets.filter.CapellaPatternFilter;
 
 /**
  * The regular expression viewer. Decorates another viewer with a regular expression search field. If the client area contains one (or more) structured viewer,
@@ -45,7 +45,7 @@ public abstract class AbstractRegExpViewer extends FieldsViewer {
   private AbstractContextMenuFiller _contextMenuManagerFiller;
   
   // The regular expression viewer filter.
-  private PatternFilter _filter;
+  private CapellaPatternFilter _filter;
   // The regular expression text field.
   private Text _regExpText;
 
@@ -161,16 +161,13 @@ public abstract class AbstractRegExpViewer extends FieldsViewer {
    * Create pattern filter used to filter related viewer.<br>
    * Default implementation uses a {@link PatternFilter}.
    */
-  protected PatternFilter createPatternFilter() {
-    return new PatternFilter() {
-      /**
-       * @see org.polarsys.capella.common.ui.toolkit.widgets.filter.PatternFilter#isParentMatch(org.eclipse.jface.viewers.Viewer, java.lang.Object,
-       *      java.lang.Object)
-       */
+  protected CapellaPatternFilter createPatternFilter() {
+    return new CapellaPatternFilter() {
       @Override
-      protected boolean isParentMatch(Viewer viewer, Object parentElement, Object element) {
+      protected boolean isParentMatch(Viewer viewer, Object element) {
+        
         if (viewer instanceof AbstractTreeViewer) {
-          return super.isParentMatch(viewer, parentElement, element);
+          return super.isParentMatch(viewer, element);
         }
         // Returning false for non Tree-based viewers.
         return false;

@@ -19,7 +19,7 @@ closeCatalog
 get-button "View Menu" | click
 get-view "Capella Project Explorer" | get-menu "Filters and Customization..." | click
 with [get-window "Filters and Customization"] {
-    get-tab-folder | get-tab-item Filters | click
+    get-tab-folder | get-tab-item "Pre-set filters" | click
     get-table | get-item "Functional Exchanges" | uncheck
     get-table | get-item "Parts" | uncheck
     get-button OK | click

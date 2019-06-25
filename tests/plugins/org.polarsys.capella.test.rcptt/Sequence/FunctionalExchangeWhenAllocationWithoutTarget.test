@@ -23,7 +23,7 @@ Entry-Name: .content
 
 get-view "Capella Project Explorer" | get-menu "Filters and Customization..." | click
 with [get-window "Filters and Customization"] {
-    get-tab-folder | get-tab-item Filters | click
+    get-tab-folder | get-tab-item "Pre-set filters" | click
     get-table | get-item Trace | uncheck
     get-button OK | click
 }

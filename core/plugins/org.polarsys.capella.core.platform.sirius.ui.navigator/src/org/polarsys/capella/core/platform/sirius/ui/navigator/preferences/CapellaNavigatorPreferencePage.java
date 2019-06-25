@@ -75,12 +75,5 @@ public class CapellaNavigatorPreferencePage extends AbstractDefaultPreferencePag
 
 	addField(new BooleanFieldEditor(ICapellaNavigatorPreferences.PREFERENCE_PART_EXPLICIT_VIEW,
         Messages.CapellaNavigatorPreferencePage_ProjectExplorer_PartExplicitView, treeContentGroup));
-
-    Group otherGroup =
-        createGroup(Messages.CapellaNavigatorPreferencePage_Other_Group_Title, Messages.CapellaNavigatorPreferencePage_Other_Group_Message,
-            getFieldEditorParent());
-    addField(new BooleanFieldEditor(ICapellaNavigatorPreferences.PREFERENCE_IGNORE_CASE, Messages.CapellaNavigatorPreferencePage_IgnoreCase, otherGroup),
-        UserProfileModeEnum.User, otherGroup);
-
   }
 }

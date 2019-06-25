@@ -17,7 +17,7 @@ Entry-Name: .content
 get-button "View Menu" | click
 get-view "Capella Project Explorer" | get-menu "Filters and Customization..." | click
 with [get-window "Filters and Customization"] {
-    get-tab-folder | get-tab-item Filters | click
+    get-tab-folder | get-tab-item "Pre-set filters" | click
     get-editbox -after [get-label "Select the filters to apply (matching items will be hidden):"] | set-text comp
     get-table | select "Component Exchanges"
 }
@@ -79,7 +79,7 @@ get-view "Capella Project Explorer" | click
 get-button "View Menu" | click
 get-view "Capella Project Explorer" | get-menu "Filters and Customization..." | click
 with [get-window "Filters and Customization"] {
-    get-tab-folder | get-tab-item Filters | click
+    get-tab-folder | get-tab-item "Pre-set filters" | click
     get-editbox -after [get-label "Select the filters to apply (matching items will be hidden):"] | set-text co
 }
 get-window "Filters and Customization" | get-table | get-item -path "Component Exchanges" | get-property checked 
