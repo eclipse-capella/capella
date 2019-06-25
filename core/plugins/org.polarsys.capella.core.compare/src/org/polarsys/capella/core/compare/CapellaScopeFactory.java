@@ -21,7 +21,8 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
-import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory;
+import org.polarsys.capella.common.ef.ExecutionManager;
+import org.polarsys.capella.common.ef.ExecutionManagerRegistry;
 
 
 /**
@@ -56,7 +57,11 @@ public class CapellaScopeFactory extends SiriusScopeDefinitionFactory {
     protected IEditableModelScope createScopeOnResourceSet(ResourceSet resourceSet) {
       return new CapellaScope(getEntrypoint(), resourceSet, !isEditable());
     }
+    
     /**
+     * Please note that it's up to the caller of this method to dispose the EditingDomain created when the session is
+     * null.
+     * 
      * @see org.eclipse.emf.diffmerge.ui.specification.ext.URIScopeDefinition#getDefaultContext()
      */
     @Override
@@ -67,8 +72,8 @@ public class CapellaScopeFactory extends SiriusScopeDefinitionFactory {
       if (session != null) {
         result = super.getDefaultContext();
       } else {
-        SemanticEditingDomainFactory factory = new SemanticEditingDomainFactory();
-        result = factory.createEditingDomain();
+        ExecutionManager manager = ExecutionManagerRegistry.getInstance().addNewManager();
+        result = manager.getEditingDomain();
       }
       return result;
     }
