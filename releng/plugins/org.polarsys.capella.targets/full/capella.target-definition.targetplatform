@@ -107,7 +107,7 @@ location sirius-query-legacy "http://download.eclipse.org/sirius/updates/legacy/
 	org.eclipse.sirius.query.legacy.feature.source.feature.group
 }
 
-location egf "http://download.eclipse.org/egf/updates/1.6.0/oxygen/" {
+location egf "http://download.eclipse.org/egf/updates/1.6.1/2019-06/" {
 	org.eclipse.egf.sdk.feature.feature.group	
 }
 
