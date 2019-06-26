@@ -11,7 +11,7 @@
        Thales - initial API and implementation
 -->
 <toc label="Tips and Tricks" link_to="PLUGINS_ROOT/org.polarsys.capella.ui.doc/toc.xml#TipsAndTricks" sort="true">
-      <topic label="Tips and Tricks">
+      <topic href="html/Tips and tricks/capella_tips.html" label="Tips and Tricks">
       	<topic href="html/Tips and tricks/1_Tab-Bar Actions Glossary/1_Tab-Bar Actions Glossary.html" label="1. Tab-Bar Actions Glossary">
       </topic>
       <topic href="html/Tips and tricks/2_Element selection/2_Element selection.html" label="2. Element Selection">
