@@ -44,6 +44,7 @@ public class DiagramToolsStep2TestSuite extends BasicTestSuite {
     tests.add(new SequenceDiagramToolsTestSuite());
     tests.add(new XBDiagramToolsTestSuite());
     tests.add(new XDFBDiagramToolsTestSuite());
+    tests.add(new XDFBDiagramToolsTestSuite.WithReloadedTestModel());
     tests.add(new FCDDiagramToolsTestSuite());
     tests.add(new XFCDDiagramToolsTestSuite());
     return tests;

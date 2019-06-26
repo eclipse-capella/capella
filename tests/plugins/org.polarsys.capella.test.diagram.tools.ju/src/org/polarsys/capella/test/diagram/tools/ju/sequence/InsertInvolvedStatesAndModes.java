@@ -37,9 +37,9 @@ public class InsertInvolvedStatesAndModes extends SequenceTest {
     BlockArchitectureExt.Type[] typesIS = { BlockArchitectureExt.Type.SA, BlockArchitectureExt.Type.LA,
         BlockArchitectureExt.Type.PA };
 
-    initializeTests(types, SequenceType.ES);
-    initializeTests(typesIS, SequenceType.IS);
-    initializeTests(types, SequenceType.FS);
+    testOnAllLevels(types, SequenceType.ES);
+    testOnAllLevels(typesIS, SequenceType.IS);
+    testOnAllLevels(types, SequenceType.FS);
   }
 
   @Override
@@ -62,13 +62,10 @@ public class InsertInvolvedStatesAndModes extends SequenceTest {
   public void setUpDiagram(SequenceDiagram diagram) {
     if (diagram instanceof FSDiagram) {
       function1 = ((FSDiagram) diagram).createFunction();
-      ESDiagram esDiagram = (ESDiagram) initializeDiagram(context, diagram.getDiagramBlockArchitecture(),
-          SequenceType.ES, getCapabilitiesId(diagram.getDiagramBlockArchitecture()), capability, scenario);
-      actor1 = esDiagram.createActor();
     } else {
       actor1 = diagram.createActor();
     }
-
+    
     // create a state machine + region under actors
     addStateMachineRegion(actor1, "StateMachine1");
     AbstractType type = ScenarioExt.getAbstractType(context.getSemanticElement(actor1));

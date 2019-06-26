@@ -28,9 +28,9 @@ public class DragAndDropTest extends SequenceTest {
         BlockArchitectureExt.Type.LA, BlockArchitectureExt.Type.PA };
     BlockArchitectureExt.Type[] typesIS = { BlockArchitectureExt.Type.SA, BlockArchitectureExt.Type.LA,
         BlockArchitectureExt.Type.PA };
-    initializeTests(typesES, SequenceType.ES);
-    initializeTests(typesFS, SequenceType.FS);
-    initializeTests(typesIS, SequenceType.IS);
+    testOnAllLevels(typesES, SequenceType.ES);
+    testOnAllLevels(typesFS, SequenceType.FS);
+    testOnAllLevels(typesIS, SequenceType.IS);
   }
 
   @Override

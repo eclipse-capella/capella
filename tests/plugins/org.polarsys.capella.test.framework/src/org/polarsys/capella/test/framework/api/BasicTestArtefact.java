@@ -29,6 +29,8 @@ public interface BasicTestArtefact extends Test {
   public long getExecutionDuration();
   
   public BasicTestSuite getParentTestSuite();
+  
+  public List<BasicTestSuite> getAllParentTestSuites();
 
 	public void setParentTestSuite(BasicTestSuite basicTestSuite);
 

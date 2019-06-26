@@ -23,7 +23,7 @@ public class CreateSequenceMessage extends SequenceTest {
     BlockArchitectureExt.Type[] types = { BlockArchitectureExt.Type.SA, BlockArchitectureExt.Type.LA,
         BlockArchitectureExt.Type.PA };
 
-    initializeTests(types, SequenceType.IS);
+    testOnAllLevels(types, SequenceType.IS);
   }
 
   @Override

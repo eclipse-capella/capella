@@ -34,7 +34,7 @@ import org.polarsys.capella.core.data.interaction.RefinementLink;
 import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.capella.core.refinement.RefinementMultiple;
 import org.polarsys.capella.core.refinement.scenarios.core.exceptions.ProcessorException;
-import org.polarsys.capella.test.framework.api.BasicTestCase;
+import org.polarsys.capella.test.framework.api.NonDirtyTestCase;
 import org.polarsys.capella.test.framework.helpers.EObjectHelper;
 import org.polarsys.capella.test.framework.helpers.TestHelper;
 import org.polarsys.capella.test.refinement.ju.Messages;
@@ -45,7 +45,7 @@ import org.polarsys.capella.test.refinement.ju.helpers.ScenarioTestHelper;
 /**
  * Basic Test class to test the Refinement.
  */
-public abstract class RefinementTest extends BasicTestCase {
+public abstract class RefinementTest extends NonDirtyTestCase {
   /** The IDs of the Objects that will be used by additional tests */
   protected List<String> _additionalElementsId;
   /** The IDs of the Objects that shall be selected when an UI request occurs */

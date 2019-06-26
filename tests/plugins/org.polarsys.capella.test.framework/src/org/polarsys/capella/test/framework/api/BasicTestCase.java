@@ -15,8 +15,11 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import junit.framework.TestCase;
 
@@ -57,6 +60,16 @@ public abstract class BasicTestCase extends TestCase implements BasicTestArtefac
   @Override
   public BasicTestSuite getParentTestSuite() {
     return this.parentTestSuite;
+  }
+  
+  @Override
+  public List<BasicTestSuite> getAllParentTestSuites() {
+    if (this.parentTestSuite == null) {
+      return Collections.emptyList();
+    }
+    return Stream
+        .concat(Arrays.asList(this.parentTestSuite).stream(), this.parentTestSuite.getAllParentTestSuites().stream())
+        .collect(Collectors.toList());
   }
 
   /*

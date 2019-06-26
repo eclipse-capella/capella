@@ -35,7 +35,7 @@
 				<executions>
 					<execution>
 						<id>eclipse-javadoc</id>
-						<phase>generate-resources</phase>
+						<phase>${javaDocPhase}</phase>
 						<goals>
 							<goal>javadoc</goal>
 						</goals>

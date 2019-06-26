@@ -19,7 +19,7 @@ public class CreateRole extends SequenceTest {
   @Override
   public void test() throws Exception {
     BlockArchitectureExt.Type[] typesES = { BlockArchitectureExt.Type.OA };
-    initializeTests(typesES, SequenceType.ES);
+    testOnAllLevels(typesES, SequenceType.ES);
   }
 
   @Override

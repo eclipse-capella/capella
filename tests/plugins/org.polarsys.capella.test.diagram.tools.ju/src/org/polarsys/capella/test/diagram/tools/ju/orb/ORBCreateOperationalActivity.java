@@ -11,16 +11,11 @@
 package org.polarsys.capella.test.diagram.tools.ju.orb;
 
 import org.eclipse.sirius.business.api.session.Session;
-import org.polarsys.capella.test.diagram.common.ju.api.AbstractDiagramTestCase;
 import org.polarsys.capella.test.diagram.common.ju.context.ORBDiagram;
+import org.polarsys.capella.test.diagram.tools.ju.model.DiagramToolsModel;
 import org.polarsys.capella.test.framework.context.SessionContext;
 
-public class ORBCreateOperationalActivity extends AbstractDiagramTestCase {
-
-  @Override
-  protected String getRequiredTestModel() {
-    return "DiagramToolsModel";
-  }
+public class ORBCreateOperationalActivity extends DiagramToolsModel {
 
   @Override
   public void test() throws Exception {

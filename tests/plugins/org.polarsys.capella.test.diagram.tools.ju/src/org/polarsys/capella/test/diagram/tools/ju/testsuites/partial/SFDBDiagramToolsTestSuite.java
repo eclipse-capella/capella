@@ -11,6 +11,7 @@
 package org.polarsys.capella.test.diagram.tools.ju.testsuites.partial;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.polarsys.capella.test.diagram.tools.ju.sdfb.DnDWithInternalFE;
@@ -35,6 +36,10 @@ public class SFDBDiagramToolsTestSuite extends BasicTestSuite {
     return new SFDBDiagramToolsTestSuite();
   }
 
+  public List<String> getRequiredTestModels() {
+    return Arrays.asList("EmptyProject", "SwitchCategory");
+  }
+  
   /**
    * @see org.polarsys.capella.test.framework.api.BasicTestSuite#getTests()
    */

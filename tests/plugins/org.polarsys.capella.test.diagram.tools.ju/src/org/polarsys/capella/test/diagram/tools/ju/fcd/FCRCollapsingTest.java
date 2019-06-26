@@ -343,4 +343,9 @@ public class FCRCollapsingTest extends AbstractDiagramTestCase {
           fcr3ContainerNameBeforeCollapsing, fcr3Container.getName());
     }
   }
+  
+  @Override
+  protected void undoAllChanges() {
+    // TODO Undo all changes does not work with this test
+  }
 }

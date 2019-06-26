@@ -44,7 +44,6 @@
         <module>org.polarsys.capella.test.framework</module>
         <module>org.polarsys.capella.test.library.ju</module>
         <module>org.polarsys.capella.test.merge.ju</module>
-        <module>org.polarsys.capella.test.meta.ju</module>
         <module>org.polarsys.capella.test.model.ju</module>
         <module>org.polarsys.capella.test.navigator.ju</module>
         <module>org.polarsys.capella.test.migration.ju</module>

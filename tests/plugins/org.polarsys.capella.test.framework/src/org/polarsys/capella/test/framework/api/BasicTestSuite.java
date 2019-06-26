@@ -11,8 +11,11 @@
 package org.polarsys.capella.test.framework.api;
 
 import java.io.File;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.polarsys.capella.test.framework.helpers.IResourceHelpers;
 import org.polarsys.capella.test.framework.helpers.PerformanceHelper;
@@ -39,6 +42,16 @@ public abstract class BasicTestSuite extends TestSuite implements BasicTestArtef
   @Override
   public BasicTestSuite getParentTestSuite() {
     return this.parentTestSuite;
+  }
+  
+  @Override
+  public List<BasicTestSuite> getAllParentTestSuites() {
+    if (this.parentTestSuite == null) {
+      return Collections.emptyList();
+    }
+    return Stream
+        .concat(Arrays.asList(this.parentTestSuite).stream(), this.parentTestSuite.getAllParentTestSuites().stream())
+        .collect(Collectors.toList());
   }
 
   protected BasicTestSuite() {

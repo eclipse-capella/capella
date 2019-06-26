@@ -889,7 +889,20 @@ public class DiagramHelper {
     };
     TestHelper.getExecutionManager(diagram).execute(cmd);
   }
-
+  
+  public static void removeFilterInDiagram(final DDiagram diagram, final FilterDescription filter) {
+    AbstractCommand cmd = new AbstractReadWriteCommand() {
+      @Override
+      public void run() {
+        EList<FilterDescription> activatedFilters = diagram.getActivatedFilters();
+        activatedFilters.remove(filter);
+        CompositeFilterApplicationBuilder builder = new CompositeFilterApplicationBuilder(diagram);
+        builder.computeCompositeFilterApplications();
+      }
+    };
+    TestHelper.getExecutionManager(diagram).execute(cmd);
+  }
+  
   /**
    * Utility method that checks whether some semantics objects should have a representation (or not) onto a diagram.
    * 

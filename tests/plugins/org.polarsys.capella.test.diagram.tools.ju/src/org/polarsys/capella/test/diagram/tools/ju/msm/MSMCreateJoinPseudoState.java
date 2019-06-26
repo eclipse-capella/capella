@@ -12,18 +12,13 @@ package org.polarsys.capella.test.diagram.tools.ju.msm;
 
 import org.eclipse.sirius.business.api.session.Session;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt.Type;
-import org.polarsys.capella.test.diagram.common.ju.api.AbstractDiagramTestCase;
 import org.polarsys.capella.test.diagram.common.ju.context.MSMDiagram;
+import org.polarsys.capella.test.diagram.tools.ju.model.DiagramToolsModel;
 import org.polarsys.capella.test.framework.context.SessionContext;
 
-public class MSMCreateJoinPseudoState extends AbstractDiagramTestCase {
+public class MSMCreateJoinPseudoState extends DiagramToolsModel {
 
   private final String diagramName = "SA Mode State Machine Test Diagram";
-
-  @Override
-  protected String getRequiredTestModel() {
-    return "DiagramToolsModel";
-  }
 
   @Override
   public void test() throws Exception {

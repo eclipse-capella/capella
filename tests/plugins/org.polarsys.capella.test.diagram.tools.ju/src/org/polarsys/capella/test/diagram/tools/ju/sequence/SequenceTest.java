@@ -18,14 +18,16 @@ import org.polarsys.capella.test.diagram.common.ju.context.CapabilityDiagram;
 import org.polarsys.capella.test.diagram.common.ju.context.ESDiagram;
 import org.polarsys.capella.test.diagram.common.ju.context.FSDiagram;
 import org.polarsys.capella.test.diagram.common.ju.context.ISDiagram;
+import org.polarsys.capella.test.diagram.common.ju.context.OA_ESDiagram;
 import org.polarsys.capella.test.diagram.common.ju.context.PA_ESDiagram;
+import org.polarsys.capella.test.diagram.common.ju.context.SA_ESDiagram;
 import org.polarsys.capella.test.diagram.common.ju.context.SequenceDiagram;
-import org.polarsys.capella.test.diagram.tools.ju.model.EmptyProject;
+import org.polarsys.capella.test.diagram.tools.ju.model.SequenceDiagramProject;
 import org.polarsys.capella.test.framework.context.SessionContext;
 import org.polarsys.capella.test.framework.helpers.SkeletonHelper;
 import org.polarsys.capella.test.framework.model.GenericModel;
 
-public abstract class SequenceTest extends EmptyProject {
+public abstract class SequenceTest extends SequenceDiagramProject {
   protected SessionContext context = null;
 
   protected String scenario = GenericModel.SCENARIO_1;
@@ -39,22 +41,15 @@ public abstract class SequenceTest extends EmptyProject {
   
   public enum SequenceType {ES, FS, IS}
   
-  public void initializeTests(BlockArchitectureExt.Type[] types, SequenceType seqType) {
+  public void testOnAllLevels(BlockArchitectureExt.Type[] types, SequenceType seqType) {
     for (BlockArchitectureExt.Type type : types) {
-      initTest(type, seqType, getCapabilitiesId(type),
+      doTest(type, seqType, getCapabilitiesId(type),
           capability, scenario);
     }
   }
 
   public abstract void test(SequenceDiagram diagram);
   
-  protected SequenceDiagram initializeDiagram(SessionContext context, BlockArchitectureExt.Type type, SequenceType seqType, String containerId,
-      String capabilityId, String scenarioId) {
-    capabilityId = createCapability(context, type, containerId, capabilityId);
-    scenarioId = createScenario(context, scenarioId, capabilityId);
-    return createDiagram(context, type, seqType, containerId, capabilityId, scenarioId);
-  }
-
   protected void setUpDiagram(SequenceDiagram diagram) {
     if(diagram instanceof FSDiagram) {
       function1 = ((FSDiagram) diagram).createFunction();
@@ -100,15 +95,78 @@ public abstract class SequenceTest extends EmptyProject {
     return diagram;
   }
   
-  protected void initTest(BlockArchitectureExt.Type type, SequenceType seqType, String containerId, String capabilityId,
+  protected void doTest(BlockArchitectureExt.Type type, SequenceType seqType, String containerId, String capabilityId,
       String scenarioId) {
     Session session = getSession(getRequiredTestModel());
     context = new SessionContext(session);
-    SequenceDiagram diagram = initializeDiagram(context, type, seqType, containerId, capabilityId, scenarioId);
-    if(diagram != null) {
+    SequenceDiagram diagram = openDiagram(type, seqType);
+    if (diagram != null) {
       test(diagram);
       diagram.close();
     }
+  }
+
+  protected SequenceDiagram openDiagram(BlockArchitectureExt.Type type, SequenceType seqType) {
+    SequenceDiagram diagram = null;
+    switch (type) {
+    case OA:
+      switch (seqType) {
+      case ES:
+        diagram = OA_ESDiagram.openDiagram(context, OA_ES, type);
+        break;
+      default:
+        break;
+      }
+      break;
+    case SA:
+      switch (seqType) {
+      case ES:
+        diagram = SA_ESDiagram.openDiagram(context, SA_ES, type);
+        break;
+      case IS:
+        diagram = ISDiagram.openDiagram(context, SA_IS, type);
+        break;
+      case FS:
+        diagram = FSDiagram.openDiagram(context, SA_FS, type);
+        break;
+      default:
+        break;
+      }
+      break;
+    case LA:
+      switch (seqType) {
+      case ES:
+        diagram = ESDiagram.openDiagram(context, LA_ES, type);
+        break;
+      case IS:
+        diagram = ISDiagram.openDiagram(context, LA_IS, type);
+        break;
+      case FS:
+        diagram = FSDiagram.openDiagram(context, LA_FS, type);
+        break;
+      default:
+        break;
+      }
+      break;
+    case PA:
+      switch (seqType) {
+      case ES:
+        diagram = PA_ESDiagram.openDiagram(context, PA_ES, type);
+        break;
+      case IS:
+        diagram = ISDiagram.openDiagram(context, PA_IS, type);
+        break;
+      case FS:
+        diagram = FSDiagram.openDiagram(context, PA_FS, type);
+        break;
+      default:
+        break;
+      }
+      break;
+    default:
+      break;
+    }
+    return diagram;
   }
 
   // helper

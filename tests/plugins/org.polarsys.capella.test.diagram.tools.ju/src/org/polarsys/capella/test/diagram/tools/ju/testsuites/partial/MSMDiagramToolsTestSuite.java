@@ -11,6 +11,7 @@
 package org.polarsys.capella.test.diagram.tools.ju.testsuites.partial;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.polarsys.capella.test.diagram.tools.ju.msm.MSMCreateChoicePseudoState;
@@ -45,6 +46,10 @@ public class MSMDiagramToolsTestSuite extends BasicTestSuite {
    */
   public static Test suite() {
     return new MSMDiagramToolsTestSuite();
+  }
+  
+  public List<String> getRequiredTestModels() {
+    return Arrays.asList("DiagramToolsModel");
   }
 
   /**

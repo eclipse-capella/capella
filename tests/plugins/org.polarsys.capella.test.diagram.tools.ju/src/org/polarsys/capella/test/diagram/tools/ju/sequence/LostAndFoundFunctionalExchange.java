@@ -21,7 +21,7 @@ public class LostAndFoundFunctionalExchange extends CreateFunctionalExchange {
   public void test() throws Exception {
     BlockArchitectureExt.Type[] types = { BlockArchitectureExt.Type.LA };
 
-    initializeTests(types, SequenceType.ES);
+    testOnAllLevels(types, SequenceType.ES);
   }
 
   @Override

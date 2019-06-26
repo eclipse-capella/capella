@@ -24,8 +24,8 @@ public class AddMultipleLifeLinesForExistingComponent extends SequenceTest {
     BlockArchitectureExt.Type[] typesES = { BlockArchitectureExt.Type.OA, BlockArchitectureExt.Type.SA };
     BlockArchitectureExt.Type[] typesIS = { BlockArchitectureExt.Type.SA };
 
-    initializeTests(typesES, SequenceType.ES);
-    initializeTests(typesIS, SequenceType.IS);
+    testOnAllLevels(typesES, SequenceType.ES);
+    testOnAllLevels(typesIS, SequenceType.IS);
   }
 
   @Override

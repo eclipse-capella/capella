@@ -23,7 +23,6 @@ import org.polarsys.capella.test.diagram.misc.ju.testcases.CloneDiagramTestCase;
 import org.polarsys.capella.test.diagram.misc.ju.testcases.DDiagramEditorUndoRedoHandlerTest;
 import org.polarsys.capella.test.diagram.misc.ju.testcases.GraphTest;
 import org.polarsys.capella.test.diagram.misc.ju.testcases.InterfacePortSizeTestCase;
-import org.polarsys.capella.test.diagram.misc.ju.testcases.OpenAllAvailableDDiagramsTestCase;
 import org.polarsys.capella.test.diagram.misc.ju.testcases.StatusLineTestCase;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
@@ -48,7 +47,6 @@ public class DiagramMiscTestSuite extends BasicTestSuite {
     tests.add(new Bug1024TestCase());
     tests.add(new Bug1512TestCase());
     tests.add(new InterfacePortSizeTestCase());
-    tests.add(new OpenAllAvailableDDiagramsTestCase());
     tests.add(new CheckDiagramDirtyStateOnOpeningTestCase());
     tests.add(new StatusLineTestCase());
     tests.add(new Bug1917TestCase());

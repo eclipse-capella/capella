@@ -11,6 +11,7 @@
 package org.polarsys.capella.test.diagram.filters.ju.testsuites;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.polarsys.capella.test.diagram.filters.ju.cdb.CDBDiagramFiltersTestSuite;
@@ -40,6 +41,14 @@ public class DiagramFiltersTestSuite extends BasicTestSuite {
     return new DiagramFiltersTestSuite();
   }
 
+  @Override
+  public List<String> getRequiredTestModels() {
+    return Arrays.asList("ElementLabelFilterModel", "HideFunctionalExchange", "HideSimplifiedLinksFilter", "model2", //$NON-NLS-1$
+        "model3_multpart", "PB8", "PB9", "Project_validation_hideControlNodesFilter",
+        "Project_validation_hideTechnicalInterfaceFilter", "ShowTriggerSourceFunctionFilter",
+        "StandardDiagramFiltersModel", "Test_delegationWizard");
+  }
+  
   /**
    * @see org.polarsys.capella.test.framework.api.BasicTestSuite#getTests()
    */

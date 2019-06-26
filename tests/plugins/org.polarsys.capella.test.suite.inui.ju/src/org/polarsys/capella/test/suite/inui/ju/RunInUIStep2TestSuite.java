@@ -17,7 +17,6 @@ import org.polarsys.capella.test.explorer.activity.ju.testsuites.ActivityExplore
 import org.polarsys.capella.test.fastlinker.ju.testsuites.FastLinkerTestsSuite;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
-import org.polarsys.capella.test.meta.ju.testSuites.MetaTestSuite;
 import org.polarsys.capella.test.model.ju.testsuites.main.ModelTestSuite;
 import org.polarsys.capella.test.progressmonitoring.ju.testsuites.SetProgressTestSuite;
 
@@ -41,7 +40,6 @@ public class RunInUIStep2TestSuite extends BasicTestSuite {
     tests.add(new ModelTestSuite());
     tests.add(new FastLinkerTestsSuite());
     tests.add(new ActivityExplorerTestsSuite());
-    tests.add(new MetaTestSuite());
     tests.add(new SetProgressTestSuite());
     return tests;
   }

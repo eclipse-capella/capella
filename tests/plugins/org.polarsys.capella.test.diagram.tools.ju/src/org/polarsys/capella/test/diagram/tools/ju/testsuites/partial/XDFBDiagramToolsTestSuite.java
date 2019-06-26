@@ -11,6 +11,7 @@
 package org.polarsys.capella.test.diagram.tools.ju.testsuites.partial;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.polarsys.capella.test.diagram.tools.ju.xdfb.CompositeChainDisplay;
@@ -48,6 +49,10 @@ public class XDFBDiagramToolsTestSuite extends BasicTestSuite {
   public static Test suite() {
     return new XDFBDiagramToolsTestSuite();
   }
+  
+  public List<String> getRequiredTestModels() {
+    return Arrays.asList("XDFBToolsTestingModel");
+  }
 
   /**
    * @see org.polarsys.capella.test.framework.api.BasicTestSuite#getTests()
@@ -75,11 +80,35 @@ public class XDFBDiagramToolsTestSuite extends BasicTestSuite {
     tests.add(new XDFBInsertElementsFromModeState());
     tests.add(new XDFBToolReconnect());
     tests.add(new XDFBTestCaseFunctions());
-    tests.add(new XDFBInitializeFromDiagram());
     tests.add(new XDFBSetContextualElementsScenario());
     tests.add(new CompositeChainDisplay());
 
     tests.add(new XDFBDragAndDropTest());
     return tests;
+  }
+  
+  /**
+   * 
+   * Each test cases of this test suite reloads its test model
+   */
+  public static class WithReloadedTestModel extends BasicTestSuite {
+
+    /**
+     * Returns the suite. This is required to unary launch this test.
+     */
+    public static Test suite() {
+      return new XDFBDiagramToolsTestSuite();
+    }
+
+    /**
+     * @see org.polarsys.capella.test.framework.api.BasicTestSuite#getTests()
+     */
+    @Override
+    protected List<BasicTestArtefact> getTests() {
+
+      List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
+      tests.add(new XDFBInitializeFromDiagram());
+      return tests;
+    }
   }
 }

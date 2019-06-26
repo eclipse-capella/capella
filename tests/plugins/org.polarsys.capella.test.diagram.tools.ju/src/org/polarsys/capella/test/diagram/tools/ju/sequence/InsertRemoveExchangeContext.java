@@ -4,6 +4,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.ef.command.AbstractCommand;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.core.data.capellacore.Constraint;
+import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.capella.core.data.interaction.SequenceMessage;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.test.diagram.common.ju.context.FSDiagram;
@@ -22,9 +23,9 @@ public class InsertRemoveExchangeContext extends SequenceTest {
     BlockArchitectureExt.Type[] typesIS = { BlockArchitectureExt.Type.SA, BlockArchitectureExt.Type.LA,
         BlockArchitectureExt.Type.PA };
 
-    initializeTests(types, SequenceType.ES);
-    initializeTests(typesIS, SequenceType.IS);
-    initializeTests(types, SequenceType.FS);
+    testOnAllLevels(types, SequenceType.ES);
+    testOnAllLevels(typesIS, SequenceType.IS);
+    testOnAllLevels(types, SequenceType.FS);
   }
 
   @Override
@@ -38,26 +39,26 @@ public class InsertRemoveExchangeContext extends SequenceTest {
     String source = "";
     String target = "";
     if (diagram instanceof FSDiagram) {
-      source = ((FSDiagram)diagram).createFunction();
-      target = ((FSDiagram)diagram).createFunction();
+      source = ((FSDiagram) diagram).createFunction();
+      target = ((FSDiagram) diagram).createFunction();
     } else {
       source = diagram.createActor();
       target = diagram.createActor();
     }
-    SkeletonHelper.createSequenceMessage(scenario, seqMsg, source, target, context);
+    SkeletonHelper.createSequenceMessage(((Scenario) diagram.getDiagramDescriptor().getTarget()).getId(), seqMsg,
+        source, target, context);
     diagram.createConstraint(constraint);
     addConstraint(seqMsg, constraint);
     diagram.removeConstraint(constraint, diagram.getDiagramId());
   }
-  
-  
+
   private void addConstraint(String elementId, String constraintId) {
     EObject obj = context.getSemanticElement(elementId);
-    if(obj instanceof SequenceMessage) {
-      SequenceMessage msg = (SequenceMessage)obj;
+    if (obj instanceof SequenceMessage) {
+      SequenceMessage msg = (SequenceMessage) obj;
       final AbstractCommand cmd = new AbstractReadWriteCommand() {
         public void run() {
-          Constraint c = (Constraint)context.getSemanticElement(constraintId);
+          Constraint c = (Constraint) context.getSemanticElement(constraintId);
           msg.setExchangeContext(c);
         }
       };

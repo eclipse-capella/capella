@@ -11,6 +11,7 @@
 package org.polarsys.capella.test.diagram.tools.ju.testsuites.partial;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.polarsys.capella.test.diagram.tools.ju.xcbd.CIBDScenario;
@@ -35,6 +36,10 @@ public class XBDiagramToolsTestSuite extends BasicTestSuite {
     return new XBDiagramToolsTestSuite();
   }
 
+  public List<String> getRequiredTestModels() {
+    return Arrays.asList("EmptyProject");
+  }
+  
   /**
    * @see org.polarsys.capella.test.framework.api.BasicTestSuite#getTests()
    */

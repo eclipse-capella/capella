@@ -50,6 +50,9 @@
 		<sonar.jacoco.itReportPath>${project.basedir}/../../../target/jacoco-it.exec</sonar.jacoco.itReportPath>
 		<sonar.java.source>8</sonar.java.source>
 
+		<!-- for JavaDoc -->
+		<javaDocPhase>generate-resources</javaDocPhase>
+		
 		<!-- Default target-platform-path (other values: canary, headless) -->
 		<target-platform-path>full</target-platform-path>
 	</properties>

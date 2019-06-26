@@ -22,7 +22,6 @@ Require-Bundle: org.polarsys.capella.test.business.queries.ju;visibility:=reexpo
  org.polarsys.capella.test.validation.rules.ju;visibility:=reexport,
  org.polarsys.capella.test.explorer.activity.ju;visibility:=reexport,
  org.polarsys.capella.test.navigator.ju;visibility:=reexport,
- org.polarsys.capella.test.meta.ju;visibility:=reexport,
  org.polarsys.capella.test.progressmonitoring.ju;visibility:=reexport,
  org.polarsys.capella.test.diagram.misc.ju;visibility:=reexport,
  org.polarsys.capella.test.re.updateconnections.ju;visibility:=reexport,

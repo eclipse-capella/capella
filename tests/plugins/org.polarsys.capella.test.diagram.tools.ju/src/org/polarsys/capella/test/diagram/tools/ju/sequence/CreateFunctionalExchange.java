@@ -23,8 +23,8 @@ public class CreateFunctionalExchange extends SequenceTest {
     BlockArchitectureExt.Type[] types = { BlockArchitectureExt.Type.OA, BlockArchitectureExt.Type.SA,
         BlockArchitectureExt.Type.LA, BlockArchitectureExt.Type.PA };
 
-    initializeTests(types, SequenceType.ES);
-    initializeTests(types, SequenceType.FS);
+    testOnAllLevels(types, SequenceType.ES);
+    testOnAllLevels(types, SequenceType.FS);
   }
 
   @Override

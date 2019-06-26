@@ -12,6 +12,7 @@ package org.polarsys.capella.test.diagram.common.ju.context;
 
 import org.eclipse.sirius.diagram.DDiagram;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
+import org.polarsys.capella.test.diagram.common.ju.step.crud.OpenDiagramStep;
 import org.polarsys.capella.test.framework.context.SessionContext;
 
 public class SA_ESDiagram extends ESDiagram {
@@ -32,5 +33,15 @@ public class SA_ESDiagram extends ESDiagram {
   @Override
   public String removeComponent(String id) {
     throw new UnsupportedOperationException();
+  }
+  
+  public static SA_ESDiagram openDiagram(SessionContext executionContext, String name,
+      final BlockArchitectureExt.Type type) {
+    return (SA_ESDiagram) new OpenDiagramStep(executionContext, name) {
+      @Override
+      public DiagramContext getResult() {
+        return new SA_ESDiagram(type, getExecutionContext(), diagram);
+      }
+    }.run().open();
   }
 }

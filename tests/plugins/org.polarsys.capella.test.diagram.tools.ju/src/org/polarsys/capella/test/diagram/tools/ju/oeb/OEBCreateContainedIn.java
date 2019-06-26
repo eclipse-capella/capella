@@ -11,20 +11,13 @@
 package org.polarsys.capella.test.diagram.tools.ju.oeb;
 
 import org.eclipse.sirius.business.api.session.Session;
-import org.polarsys.capella.core.sirius.analysis.constants.IToolNameConstants;
-import org.polarsys.capella.test.diagram.common.ju.api.AbstractDiagramTestCase;
-import org.polarsys.capella.test.diagram.common.ju.context.CommonDiagram;
 import org.polarsys.capella.test.diagram.common.ju.context.OEBDiagram;
+import org.polarsys.capella.test.diagram.tools.ju.model.DiagramToolsModel;
 import org.polarsys.capella.test.framework.context.SessionContext;
 
-public class OEBCreateContainedIn extends AbstractDiagramTestCase {
+public class OEBCreateContainedIn extends DiagramToolsModel {
 
   private final String diagramName = "Test Operational Entity Breakdown Diagram";
-
-  @Override
-  protected String getRequiredTestModel() {
-    return "DiagramToolsModel";
-  }
 
   @Override
   public void test() throws Exception {

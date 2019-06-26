@@ -53,4 +53,10 @@ public class InitializeFromExistingDiagramTestCase extends AbstractDiagramTestCa
   protected String getRequiredTestModel() {
     return "In-Flight Entertainment System";
   }
+  
+  @Override
+  protected void undoAllChanges() {
+    // TODO Undo all changes does not work with this test
+  }
+  
 }

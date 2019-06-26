@@ -12,8 +12,8 @@ public class InsertRemoveActors extends SequenceTest {
     BlockArchitectureExt.Type [] typesIS = { BlockArchitectureExt.Type.SA,
         BlockArchitectureExt.Type.LA, BlockArchitectureExt.Type.PA };
     
-    initializeTests(types, SequenceType.ES);
-    initializeTests(typesIS, SequenceType.IS);
+    testOnAllLevels(types, SequenceType.ES);
+    testOnAllLevels(typesIS, SequenceType.IS);
   }
 
   @Override

@@ -11,6 +11,7 @@
 package org.polarsys.capella.test.refinement.ju.testsuites.main;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import junit.framework.Test;
@@ -27,6 +28,12 @@ import org.polarsys.capella.test.refinement.ju.testsuites.partial.SimpleRefineme
  */
 public class AllRefinementTestSuites extends BasicTestSuite {
 
+  @Override
+  public List<String> getRequiredTestModels() {
+    return Arrays.asList("BugFixes", "InterfaceDecompositionRefinement_TCs", "PhysicalRefinement_TCs",
+        "RefinementWithFragments_TCs", "SimpleRefinement_TCs");
+  }
+  
   /**
    * @see org.polarsys.capella.test.common.AbstractExtendedTestSuite#getTests()
    */

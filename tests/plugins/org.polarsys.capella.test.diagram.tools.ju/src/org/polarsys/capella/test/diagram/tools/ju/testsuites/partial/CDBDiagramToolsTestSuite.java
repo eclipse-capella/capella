@@ -11,6 +11,7 @@
 package org.polarsys.capella.test.diagram.tools.ju.testsuites.partial;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.polarsys.capella.test.diagram.tools.ju.cdb.CDBScenarios;
@@ -59,6 +60,9 @@ public class CDBDiagramToolsTestSuite extends BasicTestSuite {
     return new CDBDiagramToolsTestSuite();
   }
 
+  public List<String> getRequiredTestModels() {
+    return Arrays.asList("CDBCommunication");
+  }
   /**
    * @see org.polarsys.capella.test.framework.api.BasicTestSuite#getTests()
    */

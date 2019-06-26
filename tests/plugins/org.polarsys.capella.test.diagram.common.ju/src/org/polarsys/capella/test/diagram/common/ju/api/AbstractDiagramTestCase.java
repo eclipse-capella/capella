@@ -22,14 +22,14 @@ import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.core.sirius.analysis.DiagramServices;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.DiagramHelper;
-import org.polarsys.capella.test.framework.api.BasicTestCase;
+import org.polarsys.capella.test.framework.api.NonDirtyTestCase;
 
 import junit.framework.TestResult;
 
 /**
  *
  */
-public abstract class AbstractDiagramTestCase extends BasicTestCase {
+public abstract class AbstractDiagramTestCase extends NonDirtyTestCase {
 
   /*
    * (non-Javadoc)

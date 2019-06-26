@@ -13,11 +13,11 @@ package org.polarsys.capella.test.diagram.tools.ju.pd;
 import java.util.function.BiConsumer;
 
 import org.eclipse.sirius.business.api.session.Session;
-import org.polarsys.capella.test.diagram.common.ju.api.AbstractDiagramTestCase;
 import org.polarsys.capella.test.diagram.common.ju.context.PDDiagram;
+import org.polarsys.capella.test.diagram.tools.ju.model.DiagramToolsModel;
 import org.polarsys.capella.test.framework.context.SessionContext;
 
-abstract class AbstractPDInsertRemovePackages extends AbstractDiagramTestCase {
+abstract class AbstractPDInsertRemovePackages extends DiagramToolsModel {
 
   // Child classes will give values to these variables
   protected String diagramName;
@@ -30,11 +30,6 @@ abstract class AbstractPDInsertRemovePackages extends AbstractDiagramTestCase {
   protected String childPkg2_1_1ID;
 
   protected String packageType;
-
-  @Override
-  protected String getRequiredTestModel() {
-    return "DiagramToolsModel";
-  }
 
   @Override
   public void test() throws Exception {

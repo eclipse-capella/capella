@@ -22,7 +22,7 @@ public class CreateComponentExchange extends SequenceTest {
     BlockArchitectureExt.Type[] types = { BlockArchitectureExt.Type.OA, BlockArchitectureExt.Type.LA,
         BlockArchitectureExt.Type.PA };
 
-    initializeTests(types, SequenceType.ES);
+    testOnAllLevels(types, SequenceType.ES);
   }
 
   @Override

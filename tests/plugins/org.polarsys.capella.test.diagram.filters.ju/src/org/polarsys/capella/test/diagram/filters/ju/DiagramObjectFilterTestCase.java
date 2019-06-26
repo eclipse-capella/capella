@@ -32,7 +32,7 @@ import org.eclipse.sirius.diagram.description.filter.FilterDescription;
 import org.junit.Assert;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.DiagramHelper;
-import org.polarsys.capella.test.framework.api.BasicTestCase;
+import org.polarsys.capella.test.framework.api.NonDirtyTestCase;
 import org.polarsys.capella.test.framework.helpers.GuiActions;
 import org.polarsys.capella.test.framework.helpers.HelperMessages;
 
@@ -46,7 +46,7 @@ import org.polarsys.capella.test.framework.helpers.HelperMessages;
  * first check of this generic test case is to verify that elements that must be filtered by the tested filter are not
  * filtered firstly.
  */
-public abstract class DiagramObjectFilterTestCase extends BasicTestCase {
+public abstract class DiagramObjectFilterTestCase extends NonDirtyTestCase {
 
   // these values are obtained by using methods defined in concrete test cases
   protected String diagramName = getDiagramName();
@@ -114,9 +114,10 @@ public abstract class DiagramObjectFilterTestCase extends BasicTestCase {
 
     // Check that the filter is not already in the diagram
     EList<FilterDescription> activeFilters = diagram.getActivatedFilters();
-    boolean filterIsActive = activeFilters.contains(filter);
-    Assert.assertFalse("Filter " + filterName + " is already active. Please remove this filter before running the test",
-        filterIsActive);
+    if (activeFilters.contains(filter)) {
+      DiagramHelper.removeFilterInDiagram(diagram, filter);
+      DiagramHelper.refreshDiagram(diagram);
+    }
 
     // activate the filter
     DiagramHelper.addFilterInDiagram(diagram, filter);

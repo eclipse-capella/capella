@@ -14,9 +14,9 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.polarsys.capella.test.benchmarks.ju.TestParameters;
-import org.polarsys.capella.test.framework.api.BasicTestCase;
+import org.polarsys.capella.test.framework.api.NonDirtyTestCase;
 
-public abstract class AbstractBenchmarkTestCase extends BasicTestCase {
+public abstract class AbstractBenchmarkTestCase extends NonDirtyTestCase {
 
   @Override
   public List<String> getRequiredTestModels() {

@@ -21,7 +21,7 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.description.filter.FilterDescription;
 import org.junit.Assert;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.DiagramHelper;
-import org.polarsys.capella.test.framework.api.BasicTestCase;
+import org.polarsys.capella.test.framework.api.NonDirtyTestCase;
 import org.polarsys.capella.test.framework.helpers.GuiActions;
 import org.polarsys.capella.test.framework.helpers.HelperMessages;
 
@@ -34,7 +34,7 @@ import org.polarsys.capella.test.framework.helpers.HelperMessages;
  * 
  * Notice that the tested diagram in the model of test must not have the tested filter activated by default.
  **/
-public abstract class CountBasedDiagramFilterTestCase extends BasicTestCase {
+public abstract class CountBasedDiagramFilterTestCase extends NonDirtyTestCase {
 
   // Following values are obtained by using methods defined in concrete test cases
   protected String diagramName = getDiagramName();

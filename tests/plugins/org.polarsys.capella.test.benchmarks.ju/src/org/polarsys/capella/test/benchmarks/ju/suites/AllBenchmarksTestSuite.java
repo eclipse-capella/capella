@@ -11,6 +11,7 @@
 package org.polarsys.capella.test.benchmarks.ju.suites;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.polarsys.capella.test.benchmarks.ju.closeSession.CloseSessionTestSuite;
@@ -35,6 +36,11 @@ public class AllBenchmarksTestSuite extends BasicTestSuite {
    */
   public static Test suite() {
     return new AllBenchmarksTestSuite();
+  }
+  
+  @Override
+  public List<String> getRequiredTestModels() {
+    return Arrays.asList("In-Flight Entertainment System");
   }
 
   @Override

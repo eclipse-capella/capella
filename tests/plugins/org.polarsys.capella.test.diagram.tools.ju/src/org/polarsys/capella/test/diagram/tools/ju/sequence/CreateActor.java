@@ -21,8 +21,8 @@ public class CreateActor extends SequenceTest {
         BlockArchitectureExt.Type.LA, BlockArchitectureExt.Type.PA };
     BlockArchitectureExt.Type[] typesIS = { BlockArchitectureExt.Type.SA, BlockArchitectureExt.Type.LA,
         BlockArchitectureExt.Type.PA };
-    initializeTests(typesES, SequenceType.ES);
-    initializeTests(typesIS, SequenceType.IS);
+    testOnAllLevels(typesES, SequenceType.ES);
+    testOnAllLevels(typesIS, SequenceType.IS);
   }
 
   @Override

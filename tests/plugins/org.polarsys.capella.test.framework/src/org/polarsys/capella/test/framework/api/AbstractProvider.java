@@ -100,7 +100,8 @@ public abstract class AbstractProvider implements IModelProvider {
       String modelIdentifier = getModelIdentifier(artefact, relativeModelPath);
       // Add a change lock on the test model if the artefact is not the owner
       // of the test model
-      if (modelIdentifier2Owner.get(modelIdentifier) != artefact) {
+      if (modelIdentifier2Owner.get(modelIdentifier) != artefact
+          && !artefact.getAllParentTestSuites().contains(modelIdentifier2Owner.get(modelIdentifier))) {
         Session session = getSessionForTestModel(relativeModelPath, artefact);
         TransactionalEditingDomain ted = TransactionHelper.getEditingDomain(session);
         ChangeLocker changeLocker = new ChangeLocker();

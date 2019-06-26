@@ -11,6 +11,7 @@
 package org.polarsys.capella.test.diagram.tools.ju.testsuites.partial;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.polarsys.capella.test.diagram.tools.ju.sequence.AddMultipleLifeLinesForExistingComponent;
@@ -54,13 +55,16 @@ public class SequenceDiagramToolsTestSuite extends BasicTestSuite {
     return new SequenceDiagramToolsTestSuite();
   }
 
+  public List<String> getRequiredTestModels() {
+    return Arrays.asList("SequenceDiagramProject");
+  }
+  
   /**
    * @see org.polarsys.capella.test.framework.api.BasicTestSuite#getTests()
    */
   @Override
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
-
     tests.add(new CreateActor());
     tests.add(new CreateRole());
     tests.add(new CreateComponent());
@@ -93,5 +97,4 @@ public class SequenceDiagramToolsTestSuite extends BasicTestSuite {
 
     return tests;
   }
-
 }

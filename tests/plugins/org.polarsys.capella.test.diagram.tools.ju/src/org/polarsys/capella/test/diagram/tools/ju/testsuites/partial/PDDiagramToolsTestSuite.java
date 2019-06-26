@@ -11,6 +11,7 @@
 package org.polarsys.capella.test.diagram.tools.ju.testsuites.partial;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.polarsys.capella.test.diagram.tools.ju.pd.LAPDCreateConstrainedElement;
@@ -48,8 +49,21 @@ import org.polarsys.capella.test.diagram.tools.ju.pd.SAPDInsertRemovePackageDepe
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
 
+import junit.framework.Test;
+
 public class PDDiagramToolsTestSuite extends BasicTestSuite {
 
+  /**
+   * Returns the suite. This is required to unary launch this test.
+   */
+  public static Test suite() {
+    return new PDDiagramToolsTestSuite();
+  }
+  
+  public List<String> getRequiredTestModels() {
+    return Arrays.asList("DiagramToolsModel");
+  }
+  
   @Override
   protected List<BasicTestArtefact> getTests() {
 

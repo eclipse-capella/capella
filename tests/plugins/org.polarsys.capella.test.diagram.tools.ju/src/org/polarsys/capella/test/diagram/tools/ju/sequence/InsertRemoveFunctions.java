@@ -21,7 +21,7 @@ public class InsertRemoveFunctions extends SequenceTest {
     BlockArchitectureExt.Type[] types = { BlockArchitectureExt.Type.OA, BlockArchitectureExt.Type.SA,
         BlockArchitectureExt.Type.LA, BlockArchitectureExt.Type.PA };
 
-    initializeTests(types, SequenceType.FS);
+    testOnAllLevels(types, SequenceType.FS);
   }
 
   @Override

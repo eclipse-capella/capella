@@ -23,9 +23,9 @@ public class InsertRemoveConstraints extends SequenceTest {
     BlockArchitectureExt.Type[] typesIS = { BlockArchitectureExt.Type.SA, BlockArchitectureExt.Type.LA,
         BlockArchitectureExt.Type.PA };
     
-    initializeTests(types, SequenceType.ES);
-    initializeTests(typesIS, SequenceType.IS);
-    initializeTests(typesIS, SequenceType.FS);
+    testOnAllLevels(types, SequenceType.ES);
+    testOnAllLevels(typesIS, SequenceType.IS);
+    testOnAllLevels(typesIS, SequenceType.FS);
   }
 
   @Override

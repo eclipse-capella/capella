@@ -11,19 +11,14 @@
 package org.polarsys.capella.test.diagram.tools.ju.pd;
 
 import org.eclipse.sirius.business.api.session.Session;
-import org.polarsys.capella.test.diagram.common.ju.api.AbstractDiagramTestCase;
 import org.polarsys.capella.test.diagram.common.ju.context.PDDiagram;
+import org.polarsys.capella.test.diagram.tools.ju.model.DiagramToolsModel;
 import org.polarsys.capella.test.framework.context.SessionContext;
 import org.polarsys.capella.test.framework.model.GenericModel;
 
-public class AbstractPDCreateConstraint extends AbstractDiagramTestCase {
+public class AbstractPDCreateConstraint extends DiagramToolsModel {
 
   protected String diagramName;
-
-  @Override
-  protected String getRequiredTestModel() {
-    return "DiagramToolsModel";
-  }
 
   @Override
   public void test() throws Exception {

@@ -26,9 +26,9 @@ public class CreateCombinedFragmentGroupOperand extends SequenceTest {
     BlockArchitectureExt.Type[] typesIS = { BlockArchitectureExt.Type.SA,
         BlockArchitectureExt.Type.LA, BlockArchitectureExt.Type.PA };
 
-    initializeTests(types, SequenceType.ES);
-    initializeTests(typesIS, SequenceType.IS);
-    initializeTests(types, SequenceType.FS);
+    testOnAllLevels(types, SequenceType.ES);
+    testOnAllLevels(typesIS, SequenceType.IS);
+    testOnAllLevels(types, SequenceType.FS);
   }
 
   @Override
