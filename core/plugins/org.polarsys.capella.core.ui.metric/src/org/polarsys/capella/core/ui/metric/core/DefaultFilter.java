@@ -8,7 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.core.ui.metric.core.filter;
+package org.polarsys.capella.core.ui.metric.core;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -16,31 +16,38 @@ import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.core.data.interaction.InteractionPackage;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.pa.deployment.DeploymentPackage;
-import org.polarsys.capella.core.ui.metric.core.IMetricFilter;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 
-/**
- * Default Filter,
- *
- */
 public class DefaultFilter implements IMetricFilter {
 
   /**
    * @see org.polarsys.capella.core.ui.metric.core.IMetricFilter#accept(org.eclipse.emf.ecore.EObject)
    */
-  public boolean accept(EObject eobject_p) {
+  public boolean accept(EObject eObject) {
 
-    EClass ec = eobject_p.eClass();
-    
-    boolean result = 
-      !ModellingcorePackage.Literals.ABSTRACT_TRACE.isSuperTypeOf(ec) && // No Traces
-      !InteractionPackage.Literals.EVENT.isSuperTypeOf(ec) && // No Event
-      !InteractionPackage.Literals.ABSTRACT_END.isSuperTypeOf(ec) && // No AE
-      !DeploymentPackage.Literals.PART_DEPLOYMENT_LINK.isSuperTypeOf(ec) && //...
-      !CapellacorePackage.Literals.INVOLVEMENT.isSuperTypeOf(ec)
-    ;
-      
-    return result;
+    EClass ec = eObject.eClass();
+
+    if (ModellingcorePackage.Literals.ABSTRACT_TRACE.isSuperTypeOf(ec)) {
+      return false;
+    }
+
+    if (InteractionPackage.Literals.EVENT.isSuperTypeOf(ec)) {
+      return false;
+    }
+
+    if (InteractionPackage.Literals.ABSTRACT_END.isSuperTypeOf(ec)) {
+      return false;
+    }
+
+    if (DeploymentPackage.Literals.PART_DEPLOYMENT_LINK.isSuperTypeOf(ec)) {
+      return false;
+    }
+
+    if (CapellacorePackage.Literals.INVOLVEMENT.isSuperTypeOf(ec)) {
+      return false;
+    }
+
+    return true;
   }
 
 }

@@ -24,13 +24,12 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.TreeColumn;
-
+import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.ui.toolkit.dialogs.AbstractExportDialog;
 import org.polarsys.capella.common.ui.toolkit.dialogs.AbstractViewerDialog;
 import org.polarsys.capella.common.ui.toolkit.dialogs.IExportConstants;
 import org.polarsys.capella.common.ui.toolkit.viewers.AbstractRegExpViewer;
 import org.polarsys.capella.common.ui.toolkit.viewers.RegExpTreeViewer;
-import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.capellamodeller.CapellamodellerPackage;
 import org.polarsys.capella.core.ui.metric.MetricMessages;
@@ -41,10 +40,12 @@ import org.polarsys.capella.core.ui.metric.core.MetricTree;
  */
 public class MetricDialog extends AbstractExportDialog {
 
-  protected String _resourceName;
+  protected String resourceName;
+  private MetricLabelProvider labelProvider = new MetricLabelProvider();
 
   /**
    * Constructor
+   * 
    * @param parentShell
    * @param title
    * @param message
@@ -60,15 +61,15 @@ public class MetricDialog extends AbstractExportDialog {
    */
   @Override
   protected List<String[]> getExportableData() {
-    List<String[]> result = super.getExportableData(_resourceName);
-    List<MetricTree<EObject>> ses = new ArrayList<MetricTree<EObject>>(); 
+    List<String[]> result = super.getExportableData(resourceName);
+    List<MetricTree<EObject>> ses = new ArrayList<>();
 
     @SuppressWarnings("unchecked")
     MetricTree<EObject> data = (MetricTree<EObject>) getData();
 
-    EClass eRoot = data.getId().eClass();
+    EClass eRoot = data.getElement().eClass();
     if (CapellacorePackage.Literals.MODELLING_ARCHITECTURE.isSuperTypeOf(eRoot)) {
-      result.addAll(serializeLayerNodes(Collections.singletonList(data))); 
+      result.addAll(serializeLayerNodes(Collections.singletonList(data)));
     } else {
       if (eRoot == CapellamodellerPackage.Literals.PROJECT) {
         ses.addAll(data.getChildren());
@@ -77,104 +78,95 @@ public class MetricDialog extends AbstractExportDialog {
       }
       result.addAll(serializeSysEngNodes(ses));
     }
-    
+
     return result;
   }
-  
-  private List<String[]> serializeSysEngNodes(List<MetricTree<EObject>> nodes_p) {
-    List<String[]> result = new ArrayList<String[]>();
-    
-    for (MetricTree<EObject> node: nodes_p) {
+
+  private List<String[]> serializeSysEngNodes(List<MetricTree<EObject>> nodes) {
+    List<String[]> result = new ArrayList<>();
+
+    for (MetricTree<EObject> node : nodes) {
       result.add(IExportConstants.EXPORT_EMPTY_LINE);
-      result.add(
-          new String[] {
-              node.getId().eClass().getName() + ICommonConstants.COLON_CHARACTER +           
-              MetricLabelProvider.getLabelText(node.getId(), null)
-          }
-      );
+      result.add(new String[] { node.getElement().eClass().getName() + ICommonConstants.COLON_CHARACTER
+          + labelProvider.getColumnText(node, MetricLabelProvider.OBJ_COLUMN_INDEX) });
       result.add(IExportConstants.EXPORT_EMPTY_LINE);
       result.addAll(serializeLayerNodes(node.getChildren()));
     }
-    
+
     return result;
   }
-  
-  private List<String[]> serializeLayerNodes(List<MetricTree<EObject>> nodes_p) {
-    List<String[]> result = new ArrayList<String[]>();
-    
-    for (MetricTree<EObject> node: nodes_p) {
+
+  private List<String[]> serializeLayerNodes(List<MetricTree<EObject>> nodes) {
+    List<String[]> result = new ArrayList<>();
+
+    for (MetricTree<EObject> node : nodes) {
       result.add(IExportConstants.EXPORT_EMPTY_LINE);
-      result.add(
-          new String[] {
-              MetricMessages.layer + ICommonConstants.COLON_CHARACTER +   
-              MetricLabelProvider.getLabelText(node.getId(), null)
-          }
-      );
+      result.add(new String[] { MetricMessages.layer + ICommonConstants.COLON_CHARACTER
+          + labelProvider.getColumnText(node, MetricLabelProvider.OBJ_COLUMN_INDEX) });
       result.add(IExportConstants.EXPORT_EMPTY_LINE);
-      for (MetricTree<EObject> node2: node.getChildren()) {
-        result.add(
-            new String[] {
-                MetricLabelProvider.getLabelText(node2.getId(), null),
-                node2.getData().toString()
-            }
-        );  
+      for (MetricTree<EObject> node2 : node.getChildren()) {
+        result.add(new String[] { labelProvider.getColumnText(node2, MetricLabelProvider.OBJ_COLUMN_INDEX),
+            Integer.toString(node2.getCount()) });
       }
     }
-    
+
     return result;
   }
 
   /**
    * Create a 2 level tree.
-   * @param parent_p the parent composite
+   * 
+   * @param parent
+   *          the parent composite
    */
   @Override
-  protected AbstractRegExpViewer createViewer(Composite parent_p) {
-    RegExpTreeViewer treeViewer = new RegExpTreeViewer(parent_p);    
+  protected AbstractRegExpViewer createViewer(Composite parent) {
+    RegExpTreeViewer treeViewer = new RegExpTreeViewer(parent);
     TreeViewer viewer = treeViewer.getClientViewer();
 
     TreeViewerColumn columnViewer = new TreeViewerColumn(viewer, SWT.LEFT);
     TreeColumn column = columnViewer.getColumn();
     column.setText(MetricMessages.treeObjectColumnLabel);
     column.setWidth(300);
-    
+
     ViewerComparator vc = new ViewerComparator() {
       /**
-       * @see org.eclipse.jface.viewers.ViewerComparator#compare(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+       * @see org.eclipse.jface.viewers.ViewerComparator#compare(org.eclipse.jface.viewers.Viewer, java.lang.Object,
+       *      java.lang.Object)
        */
       @SuppressWarnings("unchecked")
       @Override
-      public int compare(Viewer viewer_p, Object e1_p, Object e2_p) {
+      public int compare(Viewer viewer, Object e1, Object e2) {
         int result = 0;
-        MetricTree<EObject> node1 = (MetricTree<EObject>) e1_p;
-        MetricTree<EObject> node2 = (MetricTree<EObject>) e2_p;
-        
+        MetricTree<EObject> node1 = (MetricTree<EObject>) e1;
+        MetricTree<EObject> node2 = (MetricTree<EObject>) e2;
+
         if (!node1.hasChildren()) {
-          String lbl1 = MetricLabelProvider.getLabelText(node1.getId(), null);
-          String lbl2 = MetricLabelProvider.getLabelText(node2.getId(), null);
+          String lbl1 = labelProvider.getColumnText(node1, MetricLabelProvider.OBJ_COLUMN_INDEX);
+          String lbl2 = labelProvider.getColumnText(node2, MetricLabelProvider.OBJ_COLUMN_INDEX);
           result = lbl1.compareTo(lbl2);
-        }        
+        }
 
         return result;
       }
     };
-    
-    viewer.setComparator(vc);   
-    
+
+    viewer.setComparator(vc);
+
     columnViewer = new TreeViewerColumn(viewer, SWT.LEFT | SWT.FILL);
     column = columnViewer.getColumn();
     column.setText(MetricMessages.treeResultColumnLabel);
     column.setWidth(70);
-    
+
     viewer.getTree().setLinesVisible(true);
     viewer.getTree().setHeaderVisible(true);
     viewer.setContentProvider(new MetricContentProvider());
-    viewer.setLabelProvider(new MetricLabelProvider());
-    
+    viewer.setLabelProvider(labelProvider);
+
     return treeViewer;
   }
 
-  public void setResourceName(String name_p) {
-    _resourceName = name_p;
+  public void setResourceName(String name) {
+    resourceName = name;
   }
 }

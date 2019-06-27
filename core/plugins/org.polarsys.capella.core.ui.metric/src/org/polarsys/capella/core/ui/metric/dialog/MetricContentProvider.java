@@ -16,58 +16,39 @@ import org.eclipse.jface.viewers.Viewer;
 
 import org.polarsys.capella.core.ui.metric.core.MetricTree;
 
-/**
- *
- */
 public class MetricContentProvider implements ITreeContentProvider {
 
-  /**
-   * @see org.eclipse.jface.viewers.ITreeContentProvider#getChildren(java.lang.Object)
-   */
+  @Override
   @SuppressWarnings("unchecked")
-  public Object[] getChildren(Object parentElement_p) {
-    
-    return 
-      hasChildren(parentElement_p) ?
-         ((MetricTree<EObject>) parentElement_p).getChildren().toArray():
-         null
-    ;
+  public Object[] getChildren(Object parentElement) {
+    return ((MetricTree<EObject>) parentElement).getChildren().toArray();
   }
 
-  /**
-   * @see org.eclipse.jface.viewers.ITreeContentProvider#getParent(java.lang.Object)
-   */
+  @Override
   @SuppressWarnings("unchecked")
-  public Object getParent(Object element_p) {
-    return ((MetricTree<EObject>) element_p).getParent();
+  public Object getParent(Object element) {
+    return ((MetricTree<EObject>) element).getParent();
   }
 
-  /**
-   * @see org.eclipse.jface.viewers.ITreeContentProvider#hasChildren(java.lang.Object)
-   */
+  @Override
   @SuppressWarnings("unchecked")
-  public boolean hasChildren(Object element_p) {   
-    return ((MetricTree<EObject>) element_p).hasChildren();
+  public boolean hasChildren(Object element) {
+    return ((MetricTree<EObject>) element).hasChildren();
   }
 
-  /**
-   * @see org.eclipse.jface.viewers.IStructuredContentProvider#getElements(java.lang.Object)
-   */
+  @Override
   @SuppressWarnings("unchecked")
-  public Object[] getElements(Object inputElement_p) {
-    return ((MetricTree<EObject>) inputElement_p).getChildren().toArray();
+  public Object[] getElements(Object inputElement) {
+    return ((MetricTree<EObject>) inputElement).getChildren().toArray();
   }
 
-  /**
-   * @see org.eclipse.jface.viewers.IContentProvider#dispose()
-   */
-  public void dispose() {return;}
-
-  /**
-   * @see org.eclipse.jface.viewers.IContentProvider#inputChanged(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-   */
-  public void inputChanged(Viewer viewer_p, Object oldInput_p, Object newInput_p) {
+  @Override
+  public void dispose() {
     return;
   }
 
+  @Override
+  public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
+    return;
+  }
 }

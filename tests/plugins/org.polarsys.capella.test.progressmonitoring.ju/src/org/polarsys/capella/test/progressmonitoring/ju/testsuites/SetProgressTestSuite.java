@@ -17,6 +17,7 @@ import junit.framework.Test;
 
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
+import org.polarsys.capella.test.progressmonitoring.ju.testcases.MetricTest;
 import org.polarsys.capella.test.progressmonitoring.ju.testcases.SetProgressClearStatusTest;
 import org.polarsys.capella.test.progressmonitoring.ju.testcases.SetProgressManySelectionTest;
 import org.polarsys.capella.test.progressmonitoring.ju.testcases.SetProgressPropagateToAllElementsTest;
@@ -40,6 +41,7 @@ public class SetProgressTestSuite extends BasicTestSuite {
     tests.add(new SetProgressClearStatusTest());
     tests.add(new SetProgressPropagateToAllElementsTest());
     tests.add(new SetProgressPropagateToRepresentationsTest());
+    tests.add(new MetricTest());
     return tests;
   }
 
