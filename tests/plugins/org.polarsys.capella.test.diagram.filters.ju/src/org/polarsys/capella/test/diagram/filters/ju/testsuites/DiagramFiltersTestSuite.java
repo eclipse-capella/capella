@@ -17,8 +17,12 @@ import org.polarsys.capella.test.diagram.filters.ju.cdb.CDBDiagramFiltersTestSui
 import org.polarsys.capella.test.diagram.filters.ju.cdi.CDIDiagramFiltersTestSuite;
 import org.polarsys.capella.test.diagram.filters.ju.cei.CEIDiagramFiltersTestSuite;
 import org.polarsys.capella.test.diagram.filters.ju.cii.CIIDiagramFiltersTestSuite;
+import org.polarsys.capella.test.diagram.filters.ju.coc.COCDiagramFiltersTestSuite;
 import org.polarsys.capella.test.diagram.filters.ju.crb.CRBDiagramFiltersTestSuite;
 import org.polarsys.capella.test.diagram.filters.ju.idb.IDBDiagramFiltersTestSuite;
+import org.polarsys.capella.test.diagram.filters.ju.oab.OABDiagramFiltersTestSuite;
+import org.polarsys.capella.test.diagram.filters.ju.ocb.OCBDiagramFiltersTestSuite;
+import org.polarsys.capella.test.diagram.filters.ju.orb.ORBDiagramFiltersTestSuite;
 import org.polarsys.capella.test.diagram.filters.ju.xab.XABDiagramFiltersTestSuite;
 import org.polarsys.capella.test.diagram.filters.ju.xdfb.XDFBDiagramFiltersTestSuite;
 import org.polarsys.capella.test.diagram.filters.ju.xfcd.XFCDDiagramFiltersTestSuite;
@@ -52,6 +56,11 @@ public class DiagramFiltersTestSuite extends BasicTestSuite {
     tests.add(new CIIDiagramFiltersTestSuite());
     tests.add(new IDBDiagramFiltersTestSuite());
     tests.add(new XDFBDiagramFiltersTestSuite());
+
+    tests.add(new OABDiagramFiltersTestSuite());
+    tests.add(new COCDiagramFiltersTestSuite());
+    tests.add(new ORBDiagramFiltersTestSuite());
+    tests.add(new OCBDiagramFiltersTestSuite());
     return tests;
   }
 }
