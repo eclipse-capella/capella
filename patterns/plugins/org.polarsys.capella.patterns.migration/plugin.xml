@@ -72,6 +72,9 @@
                <iterate
                      ifEmpty="false">
                   <and>
+                  <instanceof
+                        value="org.eclipse.core.resources.IResource">
+                  </instanceof>
                      <test
                            forcePluginActivation="true"
                            property="org.polarsys.capella.patterns.migration.PatternMigrationEnablementTester"

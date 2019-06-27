@@ -10,7 +10,11 @@
  *******************************************************************************/
 package org.polarsys.capella.core.data.cs.provider;
 
+import java.util.Arrays;
+
 import org.eclipse.emf.common.notify.AdapterFactory;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.edit.provider.ComposedImage;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
@@ -18,33 +22,29 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.core.data.capellamodeller.provider.CapellaModellerEditPlugin;
-import org.polarsys.capella.core.data.cs.AbstractActor;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.gen.edit.decorators.ItemProviderAdapterDecorator;
-import org.polarsys.capella.core.data.pa.PhysicalComponent;
-import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
+import org.polarsys.capella.core.ui.toolkit.helpers.UserKnowledgeHelper;
 
-public class PartItemProviderDecorator extends
-		ItemProviderAdapterDecorator implements IEditingDomainItemProvider,
-		IStructuredItemContentProvider, ITreeItemContentProvider,
-		IItemLabelProvider, IItemPropertySource {
+public class PartItemProviderDecorator extends ItemProviderAdapterDecorator implements IEditingDomainItemProvider,
+    IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 
-	public PartItemProviderDecorator(AdapterFactory adapterFactory) {
-		super(adapterFactory);
-	}
+  public PartItemProviderDecorator(AdapterFactory adapterFactory) {
+    super(adapterFactory);
+  }
 
-	@Override
-	public Object getImage(Object object) {
+  @Override
+  public Object getImage(Object object) {
     AbstractType type = ((Part) object).getAbstractType();
-    if (type instanceof PhysicalComponent && ((PhysicalComponent) type).getNature().equals(PhysicalComponentNature.NODE)) {
-      return overlayImage(object, CapellaModellerEditPlugin.INSTANCE.getImage("full/obj16/Part_PCNode")); //$NON-NLS-1$
+    if (type != null) {
+      IItemLabelProvider labelProvider = (IItemLabelProvider) getRootAdapterFactory().adapt(type,
+          IItemLabelProvider.class);
+      if (UserKnowledgeHelper.isHandlingParts((EObject)object)) {
+        return new ComposedImage(Arrays.asList(labelProvider.getImage(type),
+            CapellaModellerEditPlugin.INSTANCE.getImage("full/ovr16/PartOverlay")));
+      }
+      return labelProvider.getImage(type);
     }
-    else if (type instanceof PhysicalComponent && ((PhysicalComponent) type).getNature().equals(PhysicalComponentNature.BEHAVIOR)) {
-      return overlayImage(object, CapellaModellerEditPlugin.INSTANCE.getImage("full/obj16/Part_PCBehaviour")); //$NON-NLS-1$
-    }
-    else if (type instanceof AbstractActor) {
-      return overlayImage(object, CapellaModellerEditPlugin.INSTANCE.getImage("full/obj16/Part_AbstractActor")); //$NON-NLS-1$
-    }
-    return overlayImage(object, CapellaModellerEditPlugin.INSTANCE.getImage("full/obj16/Part")); //$NON-NLS-1$
-	}
+    return overlayImage(object, CapellaModellerEditPlugin.INSTANCE.getImage("full/obj16/Part"));
+  }
 }

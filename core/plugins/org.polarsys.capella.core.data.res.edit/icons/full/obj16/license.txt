@@ -83,7 +83,6 @@ These followings icons are made available under the terms of the Eclipse Public 
 /icons/full/obj16/Gate.gif - org.eclipse.emf.edit - org.eclipse.emf.edit/icons/full/obj16/Item.gif
 /icons/full/obj16/FunctionKind_Select.gif - org.polarsys.capella.core.data.res.edit - org.polarsys.capella.core.data.res.edit/icons/full/obj16/FunctionKind_Select.gif
 /icons/full/obj16/ForkPseudoState.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/Pseudostate_fork.gif
-/icons/full/obj16/Part_PCNode.gif - org.polarsys.capella.core.data.res.edit - org.polarsys.capella.core.data.res.edit/icons/full/obj16/Part_PCNode.gif
 /icons/full/obj16/CommunicationLinkAllocation.gif - org.polarsys.capella.core.data.res.edit - org.polarsys.capella.core.data.res.edit/icons/full/obj16/CommunicationLinkAllocation.gif
 /icons/full/obj16/FloatPropertyValue.gif - org.polarsys.capella.core.data.res.edit - org.polarsys.capella.core.data.res.edit/icons/full/obj16/FloatPropertyValue.gif
 /icons/full/obj16/InteractionUse.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/InteractionUse.gif
@@ -212,7 +211,6 @@ These followings icons are made available under the terms of the Eclipse Public 
 /icons/full/obj16/Generalization.gif - org.polarsys.capella.core.data.res.edit - org.polarsys.capella.core.data.res.edit/icons/full/obj16/Generalization.gif
 /icons/full/obj16/PhysicalFunctionPkg.gif - org.eclipse.ui - org.eclipse.ui/icons/full/obj16/fldr_obj.gif
 /icons/full/obj16/Concept.gif - org.eclipse.emf.edit - org.eclipse.emf.edit/icons/full/obj16/Item.gif
-/icons/full/obj16/Part_AbstractActor.gif - org.polarsys.capella.core.data.res.edit - org.polarsys.capella.core.data.res.edit/icons/full/obj16/Part_AbstractActor.gif
 /icons/full/obj16/LogicalArchitecturePkg.gif - org.eclipse.emf.edit - org.eclipse.emf.edit/icons/full/obj16/Item.gif
 /icons/full/obj16/EventReceiptOperation.gif - org.eclipse.emf.edit - org.eclipse.emf.edit/icons/full/obj16/Item.gif
 /icons/full/obj16/ComponentExchange.gif - org.polarsys.capella.core.data.res.edit - org.polarsys.capella.core.data.res.edit/icons/full/obj16/ComponentExchange.gif
@@ -260,7 +258,6 @@ These followings icons are made available under the terms of the Eclipse Public 
 /icons/full/obj16/OperationalCapabilityPkg.gif - org.eclipse.emf.edit - org.eclipse.emf.edit/icons/full/obj16/Item.gif
 /icons/full/obj16/ConceptPkg.gif - org.eclipse.ui - org.eclipse.ui/icons/full/obj16/fldr_obj.gif
 /icons/full/obj16/SystemEngineering.gif - org.polarsys.capella.core.data.res.edit - org.polarsys.capella.core.data.res.edit/icons/full/obj16/SystemEngineering.gif
-/icons/full/obj16/Part_PCBehaviour.gif - org.polarsys.capella.core.data.res.edit - org.polarsys.capella.core.data.res.edit/icons/full/obj16/Part_PCBehaviour.gif
 /icons/full/obj16/SystemNonFunctionalInterfaceRequirement.gif - org.polarsys.capella.core.data.res.edit - org.polarsys.capella.core.data.res.edit/icons/full/obj16/SystemNonFunctionalInterfaceRequirement.gif
 /icons/full/obj16/PortAllocation.gif - org.polarsys.capella.core.data.res.edit - org.polarsys.capella.core.data.res.edit/icons/full/obj16/PortAllocation.gif
 /icons/full/obj16/FunctionSpecification.gif - org.eclipse.emf.edit - org.eclipse.emf.edit/icons/full/obj16/Item.gif
