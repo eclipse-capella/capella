@@ -3703,7 +3703,7 @@
         <reusedMappings xsi:type="description_1:NodeMapping" href="oa.odesign#//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@nodeMappings[name='FC_ControlNode']"/>
         <toolSections name="Components">
           <ownedTools xsi:type="tool:ToolGroup" name="Actor">
-            <tools xsi:type="tool:ContainerCreationDescription" documentation="Create an Actor and its Part" name="Actor" precondition="aql:containerView.oclIsKindOf(diagram::DDiagram)" containerMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']">
+            <tools xsi:type="tool:ContainerCreationDescription" documentation="Create an Actor and its Part" name="Actor" precondition="aql:containerView.oclIsKindOf(diagram::DDiagram)" containerMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Actor.gif">
               <variable name="container">
                 <subVariables xsi:type="tool_1:AcceleoVariable" name="containerType" computationExpression="aql:container.getComponentType()"/>
               </variable>
