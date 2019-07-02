@@ -21,9 +21,6 @@ public class Messages extends NLS {
   public static String CapellaNavigatorPreferencePage_ProjectExplorer_Group_Message;
   public static String CapellaNavigatorPreferencePage_ProjectExplorer_Group_Title;
   public static String CapellaNavigatorPreferencePage_Title;
-  public static String CapellaNavigatorPreferencePage_Other_Group_Title;
-  public static String CapellaNavigatorPreferencePage_Other_Group_Message;
-  public static String CapellaNavigatorPreferencePage_IgnoreCase;
 
   public static String CapellaNavigatorPreferencePage_ProjectExplorer_PartExplicitView;
 

@@ -20,6 +20,11 @@ public class Messages extends NLS {
   public static String CloneAction_Title;
   public static String ImpactAnalysisAction_ShowInCapellaExplorer_Title;
   public static String ImpactAnalysisAction_Title;
+  public static String SearchOptions_Menu_Title;
+  public static String SearchOptions_Case_Titlte;
+  public static String SearchOptions_Case_Tooltip;
+  public static String SearchOptions_InDesc_Title;
+  public static String SearchOptions_InDesc_Tooltip;
   public static String ShowInDiagramAction_Title;
   public static String ImpactAnalysisDialog_Title;
   public static String ImpactAnalysisDialog_Message;
@@ -47,6 +52,10 @@ public class Messages extends NLS {
   public static String LocateInCommonNavigator_SelectedElementNotVisible_1;
   
   public static String LocateInCommonNavigator_SelectedElementNotVisible_Title;
+  public static String QuickFiltersMenu_DeselectAll_Title;
+  public static String QuickFiltersMenu_SelectAll_Title;
+  public static String QuickFiltersMenu_SelectDefault_Title;
+  public static String QuickFiltersMenu_Title;
   static {
     // initialize resource bundle
     NLS.initializeMessages(BUNDLE_NAME, Messages.class);

@@ -35,6 +35,5 @@ public class CapellaNavigatorPreferencesInitializer extends AbstractPreferencesI
     // Set default delete confirmation value.
     preferenceStore.setDefault(ICapellaNavigatorPreferences.PREFERENCE_SHOW_CAPELLA_PROJECT_CONCEPT, false);
     preferenceStore.setDefault(ICapellaNavigatorPreferences.PREFERENCE_PART_EXPLICIT_VIEW, true);
-    preferenceStore.setDefault(ICapellaNavigatorPreferences.PREFERENCE_IGNORE_CASE, true);
   }
 }

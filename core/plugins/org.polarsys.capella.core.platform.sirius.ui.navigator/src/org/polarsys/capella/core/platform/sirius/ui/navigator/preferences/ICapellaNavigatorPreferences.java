@@ -23,10 +23,4 @@ public interface ICapellaNavigatorPreferences {
    * Delete restriction preference.
    */
   public static final String PREFERENCE_PART_EXPLICIT_VIEW = "preference.show.part.explicit"; //$NON-NLS-1$
-
-  /**
-   * Case sensitivity in filtered trees
-   */
-  public static final String PREFERENCE_IGNORE_CASE = "preference.ignoreCase"; //$NON-NLS-1$
-
 }

@@ -258,7 +258,7 @@ get-view "Capella Project Explorer" | get-tree
 get-button "View Menu" | click
 get-view "Capella Project Explorer" | get-menu "Filters and Customization..." | click
 with [get-window "Filters and Customization"] {
-    get-tab-folder | get-tab-item Filters | click
+    get-tab-folder | get-tab-item "Pre-set filters" | click
     with [get-table] {
         get-item "Functional Exchanges" | uncheck
         get-item "Function Port" | uncheck

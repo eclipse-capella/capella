@@ -17,9 +17,6 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.e4.core.contexts.ContextInjectionFactory;
 import org.eclipse.e4.core.contexts.IEclipseContext;
-import org.eclipse.jface.action.Action;
-import org.eclipse.jface.action.IAction;
-import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.action.ToolBarManager;
 import org.eclipse.jface.resource.ColorRegistry;
@@ -38,15 +35,11 @@ import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Control;
-import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Layout;
 import org.eclipse.swt.widgets.ToolBar;
 import org.eclipse.ui.PlatformUI;
 import org.polarsys.capella.common.flexibility.properties.schema.IProperty;
 import org.polarsys.capella.common.flexibility.properties.schema.IRestraintProperty;
-import org.polarsys.capella.common.flexibility.wizards.Activator;
-import org.polarsys.capella.common.flexibility.wizards.constants.ICommonConstants;
 import org.polarsys.capella.common.flexibility.wizards.schema.IRendererContext;
 import org.polarsys.capella.common.flexibility.wizards.ui.DefaultLabelProvider;
 import org.polarsys.capella.common.flexibility.wizards.ui.FlexibilityColors;
@@ -57,8 +50,7 @@ import org.polarsys.capella.common.ui.toolkit.viewers.data.DataContentProvider;
 import org.polarsys.capella.common.ui.toolkit.viewers.data.DataViewerLabelProvider;
 import org.polarsys.capella.common.ui.toolkit.viewers.data.ListData;
 import org.polarsys.capella.common.ui.toolkit.viewers.data.TreeData;
-import org.polarsys.capella.common.ui.toolkit.widgets.filter.FilteredTree;
-import org.polarsys.capella.common.ui.toolkit.widgets.filter.PatternFilter;
+import org.polarsys.capella.common.ui.toolkit.widgets.filter.CapellaFilteredTree;
 
 /**
  * A renderer for an elements list which content according to filter
@@ -200,141 +192,7 @@ public class SelectListRenderer extends AbstractRenderer {
   protected boolean isMultipleSelection() {
     return true;
   }
-
-  protected class CapellaFilteredTree extends FilteredTree {
-
-    IRendererContext _context;
-
-    /**
-     * Constructor.
-     * @param parent
-     */
-    protected CapellaFilteredTree(Composite parent) {
-      super(parent);
-    }
-
-    /**
-     * Constructor.
-     * @param parent
-     * @param treeStyle
-     * @param filter
-     */
-    public CapellaFilteredTree(Composite parent, int treeStyle, PatternFilter filter, IRendererContext context) {
-      super(parent);
-      _context = context;
-      init(treeStyle, filter);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void clearText() {
-      setFilterText(getInitialText());
-      textChanged();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void createClearText(Composite parent) {
-      filterToolBar = new ToolBarManager(SWT.FLAT | SWT.HORIZONTAL);
-      filterToolBar.createControl(parent);
-      createSearchDescriptionButton(parent);
-      super.createClearText(parent);
-    }
-
-    @Override
-    protected Composite createFilterGroup(Composite parent) {
-      filterComposite = new Composite(parent, SWT.NONE);
-      return filterComposite;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected Composite createFilterControls(Composite parent) {
-      return super.createFilterControls(parent);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected Label createMessageArea(Composite parent) {
-      return null;
-    }
-
-    /**
-     * Create the button that triggers search in description.
-     * @param parent parent <code>Composite</code> of toolbar button
-     */
-    protected void createSearchDescriptionButton(Composite parent) {
-      IAction searchInDescriptionAction = new Action(ICommonConstants.EMPTY_STRING, IAction.AS_PUSH_BUTTON) {
-        /**
-         * {@inheritDoc}
-         */
-        @SuppressWarnings("synthetic-access")
-        @Override
-        public void run() {
-          String initText = getInitialText();
-          String filterString = getFilterString();
-          if ((initText == null) || !initText.equals(filterString)) {
-            searchClicked(filterString, _context);
-          }
-          textChanged();
-        }
-      };
-      searchInDescriptionAction.setToolTipText("Search");
-      searchInDescriptionAction.setImageDescriptor(Activator.getDefault().getImageDescriptor("full/etool16/search.gif"));
-      filterToolBar.add(searchInDescriptionAction);
-    }
-
-    @Override
-    protected void createControl(Composite parent, int treeStyle) {
-      showFilterControls = isFilterBar();
-      super.createControl(parent, treeStyle);
-    }
-
-    @Override
-    protected Control createTreeControl(Composite parent, int style) {
-      Composite prt = new Composite(parent, SWT.NONE);
-      GridLayout layout = (GridLayout) createLayout();
-      layout.numColumns = 2;
-      prt.setLayout(layout);
-      prt.setLayoutData(createLayoutData());
-
-      Control tree = super.createTreeControl(prt, style);
-      initializeControls(prt, _context);
-      return tree;
-    }
-
-    /**
-     * @see org.polarsys.capella.common.ui.toolkit.widgets.filter.FilteredTree#init(int, org.polarsys.capella.common.ui.toolkit.widgets.filter.PatternFilter)
-     */
-    @Override
-    protected void init(int treeStyle, PatternFilter filter) {
-      // Disable auto filtering for usability.
-      setAutoFiltering(false);
-
-      super.init(treeStyle, filter);
-      showFilterControls = isFilterBar();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void updateToolbar(boolean visible) {
-      // Do nothing as we want to always see the toolbar to access search in description.
-      IContributionItem[] items = filterToolBar.getItems();
-      items[1].setVisible(visible);
-      filterToolBar.update(true);
-    }
-  }
-
+  
   protected void createTreeViewer(Composite parent, final IRendererContext context) {
     int style = SWT.NONE;
 
@@ -350,29 +208,12 @@ public class SelectListRenderer extends AbstractRenderer {
        * Overridden to set the viewer in the label provider at creation time.
        * @see org.polarsys.capella.common.ui.toolkit.viewers.TreeAndListViewer#doClientViewer(org.eclipse.swt.widgets.Composite)
        */
-      @SuppressWarnings("synthetic-access")
       @Override
       protected TreeViewer doClientViewer(Composite parent) {
 
         // Create a filtered tree viewer that expands all systematically.
-        FilteredTree filteredTree = new CapellaFilteredTree(parent, getTreeStyle(), getFilter(), context) {
-
-          /**
-           * {@inheritDoc}
-           */
-          @Override
-          protected TreeViewer doCreateTreeViewer(Composite parent, int style) {
-            return super.doCreateTreeViewer(parent, style);
-          }
-
-          /**
-           * @see org.polarsys.capella.common.ui.toolkit.widgets.filter.FilteredTree#handleTreeViewerExpansionWhenNoFilter(java.lang.Object[])
-           */
-          @Override
-          protected void handleTreeViewerExpansionWhenNoFilter(Object[] expandedElements) {
-            treeViewer.expandAll();
-          }
-        };
+        
+        CapellaFilteredTree filteredTree = new CapellaFilteredTree(parent, getTreeStyle(), getFilter()) ;
         TreeViewer viewer = filteredTree.getViewer();
         setExpandLevel(viewer);
         return viewer;

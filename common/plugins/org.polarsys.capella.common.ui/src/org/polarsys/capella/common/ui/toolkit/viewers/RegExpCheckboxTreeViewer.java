@@ -19,7 +19,7 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.dialogs.ContainerCheckedTreeViewer;
 
-import org.polarsys.capella.common.ui.toolkit.widgets.filter.FilteredTree;
+import org.polarsys.capella.common.ui.toolkit.widgets.filter.CapellaFilteredTree;
 
 /**
  * {@link CheckboxTreeViewer} with a regular expression text field.
@@ -40,14 +40,7 @@ public class RegExpCheckboxTreeViewer extends RegExpTreeViewer {
   protected CheckboxTreeViewer doClientViewer(Composite parent) {
     parent.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
     // Create a filtered tree viewer that expands all systematically.
-    FilteredTree filteredTree = new FilteredTree(parent, SWT.SINGLE | SWT.H_SCROLL | SWT.V_SCROLL | SWT.BORDER, getFilter()) {
-      /**
-       * @see org.polarsys.capella.common.ui.toolkit.widgets.filter.FilteredTree#handleTreeViewerExpansionWhenNoFilter(java.lang.Object[])
-       */
-      @Override
-      protected void handleTreeViewerExpansionWhenNoFilter(Object[] expandedElements) {
-        treeViewer.expandAll();
-      }
+    CapellaFilteredTree filteredTree = new CapellaFilteredTree(parent, SWT.SINGLE | SWT.H_SCROLL | SWT.V_SCROLL | SWT.BORDER, getFilter()) {
 
       /**
        * @see org.polarsys.capella.common.ui.toolkit.widgets.filter.FilteredTree#doCreateTreeViewer(org.eclipse.swt.widgets.Composite, int)
@@ -56,6 +49,7 @@ public class RegExpCheckboxTreeViewer extends RegExpTreeViewer {
       protected TreeViewer doCreateTreeViewer(Composite prt, int style) {
         return new ContainerCheckedTreeViewer(prt, style);
       }
+     
     };
     CheckboxTreeViewer checkboxTreeViewer = (CheckboxTreeViewer) filteredTree.getViewer();
     checkboxTreeViewer.setAutoExpandLevel(AbstractTreeViewer.ALL_LEVELS);

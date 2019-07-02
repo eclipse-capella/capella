@@ -17,7 +17,6 @@ import org.eclipse.osgi.util.NLS;
  */
 public class Messages extends NLS {
   private static final String BUNDLE_NAME = "org.polarsys.capella.core.platform.sirius.ui.navigator.view.messages"; //$NON-NLS-1$
-  public static String CapellaCommonNavigator_searchInDescriptionAction_Tooltip;
   public static String LocateInCommonNavigator_SelectedElementNotVisible_2;
   public static String LocateInCommonNavigator_SelectedElementNotVisible_Title;
   

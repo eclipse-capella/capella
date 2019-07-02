@@ -17,9 +17,6 @@ import org.eclipse.osgi.util.NLS;
  */
 public class Messages extends NLS {
   private static final String BUNDLE_NAME = "org.polarsys.capella.common.ui.toolkit.widgets.filter.messages"; //$NON-NLS-1$
-  public static String FilteredTree_Title;
-  public static String FilteredTree_Group_Title;
-  public static String FilteredTree_Tooltip;
   static {
     // initialize resource bundle
     NLS.initializeMessages(BUNDLE_NAME, Messages.class);
@@ -28,4 +25,6 @@ public class Messages extends NLS {
   private Messages() {
     // Private constructor.
   }
+
+  public static String CapellaFilteredTree_FILTER_TEXT_PLACEHOLDER;
 }
