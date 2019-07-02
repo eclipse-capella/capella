@@ -11,17 +11,14 @@
 package org.polarsys.capella.test.navigator.ju;
 
 import java.net.URL;
-import java.util.Arrays;
-import java.util.stream.Collectors;
 
-import org.eclipse.core.runtime.IConfigurationElement;
-import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.provider.ComposedImage;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
-import org.eclipse.osgi.util.NLS;
+import org.eclipse.swt.SWT;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.internal.navigator.NavigatorDecoratingLabelProvider;
 import org.eclipse.ui.navigator.CommonNavigator;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
@@ -31,9 +28,7 @@ import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.Proj
 import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.ProjectExt;
-import org.polarsys.capella.core.platform.sirius.ui.navigator.filters.FilterManager;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaCommonNavigator;
-import org.polarsys.capella.core.ui.toolkit.helpers.UserKnowledgeHelper;
 import org.polarsys.capella.test.navigator.ju.model.NavigatorEmptyProject;
 
 /**
@@ -42,44 +37,22 @@ import org.polarsys.capella.test.navigator.ju.model.NavigatorEmptyProject;
  */
 public class PartIcon extends NavigatorEmptyProject {
 
-  String [] initialFilters = null;
-  
   @Override
   public void test() throws Exception {
     // Try to instantiate filters using a class
-    boolean exist = false;
-    for (IConfigurationElement element : Platform.getExtensionRegistry()
-        .getConfigurationElementsFor("org.eclipse.ui.navigator.navigatorContent")) {
-      if ("commonFilter".equals(element.getName())) {
-        if (FilterManager.PART_FILTER.equals(element.getAttribute("id"))) {
-          exist = true;
-          break;
-        }
-      }
-    }
-    CommonNavigator navigator = getNavigator();
-    assertTrue(NLS.bind("Filter {0} has been deleted.", FilterManager.PART_FILTER), exist);
 
     Part part = ComponentExt.getRepresentingParts(LA_LOGICAL_SYSTEM).iterator().next();
-
-    initialFilters = Arrays.asList(navigator.getNavigatorContentService().getFilterService().getVisibleFilterDescriptors()).stream().map(x -> x.getId()).collect(Collectors.toList()).toArray(new String[0]);
     
-    assertTrue("'Part' is filtered by default",
-        navigator.getNavigatorContentService().getFilterService().isActive(FilterManager.PART_FILTER));
-
     updateApproach(ProjectApproach.SingletonComponents, part);
-    showParts(navigator);
-    assertTrue("'Part' is displayed, so on understood", UserKnowledgeHelper.isHandlingParts(part));
     assertTrue("Part icon is decorated Component icon", hasDecoratedComponentIcon(part));
-
-    hideParts(navigator);
-    assertTrue("'Part' is hidden, so on not understood", !UserKnowledgeHelper.isHandlingParts(part));
-    assertTrue("Part icon is Component icon", hasComponentIcon(part));
     
     updateApproach(ProjectApproach.ReusableComponents, part);
-    assertTrue("Multipart enabled, so on understood", UserKnowledgeHelper.isHandlingParts(part));
-    assertTrue("Part icon is decorated Component icon, whether hidden or not", hasDecoratedComponentIcon(part));
+    assertTrue("Part icon is decorated Component icon", hasDecoratedComponentIcon(part));
     
+    NavigatorDecoratingLabelProvider b = ((NavigatorDecoratingLabelProvider)getNavigator().getCommonViewer().getLabelProvider());
+    
+    int style = b.getFont(part).getFontData()[0].getStyle();
+    assertTrue("Part label is italic", style == SWT.ITALIC);
   }
   
   private CommonNavigator getNavigator() {
@@ -87,16 +60,7 @@ public class PartIcon extends NavigatorEmptyProject {
         .findView(CapellaCommonNavigator.ID);
     
   }
-  @Override
-  protected void tearDown() throws Exception {
-    super.tearDown();
-    
-    if (initialFilters != null) {
-      CommonNavigator navigator = getNavigator();
-      navigator.getNavigatorContentService().getFilterService().activateFilterIdsAndUpdateViewer(initialFilters);
-      navigator.getNavigatorContentService().getFilterService().persistFilterActivationState();
-    }
-  }
+
   private boolean hasDecoratedComponentIcon(Part part) {
     AdapterFactory adapterFactory = CapellaAdapterFactoryProvider.getInstance().getAdapterFactory();
     IItemLabelProvider partProvider = (IItemLabelProvider)adapterFactory.adapt(part, IItemLabelProvider.class);
@@ -113,16 +77,6 @@ public class PartIcon extends NavigatorEmptyProject {
     URL ipart = (URL) partProvider.getImage(part);
     URL icpt = (URL)cptProvider.getImage(part.getAbstractType());
     return ipart.equals(icpt);
-  }
-  
-  private void showParts(CommonNavigator navigator) {
-    navigator.getNavigatorContentService().getFilterService().activateFilterIdsAndUpdateViewer(new String[] {});
-    navigator.getNavigatorContentService().getFilterService().persistFilterActivationState();
-  }
-  
-  private void hideParts(CommonNavigator navigator) {
-    navigator.getNavigatorContentService().getFilterService().activateFilterIdsAndUpdateViewer(new String[] {FilterManager.PART_FILTER});
-    navigator.getNavigatorContentService().getFilterService().persistFilterActivationState();
   }
   
   private void updateApproach(ProjectApproach approach, EObject source) {

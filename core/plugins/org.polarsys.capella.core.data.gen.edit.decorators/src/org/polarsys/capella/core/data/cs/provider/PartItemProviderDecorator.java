@@ -13,7 +13,6 @@ package org.polarsys.capella.core.data.cs.provider;
 import java.util.Arrays;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.provider.ComposedImage;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -24,7 +23,6 @@ import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.core.data.capellamodeller.provider.CapellaModellerEditPlugin;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.gen.edit.decorators.ItemProviderAdapterDecorator;
-import org.polarsys.capella.core.ui.toolkit.helpers.UserKnowledgeHelper;
 
 public class PartItemProviderDecorator extends ItemProviderAdapterDecorator implements IEditingDomainItemProvider,
     IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
@@ -39,11 +37,8 @@ public class PartItemProviderDecorator extends ItemProviderAdapterDecorator impl
     if (type != null) {
       IItemLabelProvider labelProvider = (IItemLabelProvider) getRootAdapterFactory().adapt(type,
           IItemLabelProvider.class);
-      if (UserKnowledgeHelper.isHandlingParts((EObject)object)) {
-        return new ComposedImage(Arrays.asList(labelProvider.getImage(type),
-            CapellaModellerEditPlugin.INSTANCE.getImage("full/ovr16/PartOverlay")));
-      }
-      return labelProvider.getImage(type);
+      return new ComposedImage(Arrays.asList(labelProvider.getImage(type),
+          CapellaModellerEditPlugin.INSTANCE.getImage("full/ovr16/PartOverlay")));
     }
     return overlayImage(object, CapellaModellerEditPlugin.INSTANCE.getImage("full/obj16/Part"));
   }
