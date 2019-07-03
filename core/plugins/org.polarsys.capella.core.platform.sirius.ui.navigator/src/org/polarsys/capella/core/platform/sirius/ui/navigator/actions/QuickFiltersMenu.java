@@ -14,17 +14,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.jface.action.Action;
-import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.MenuManager;
-import org.eclipse.ui.internal.navigator.NavigatorFilterService;
 import org.eclipse.ui.navigator.ICommonFilterDescriptor;
 import org.eclipse.ui.navigator.INavigatorContentService;
+import org.eclipse.ui.navigator.INavigatorFilterService;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.CapellaNavigatorPlugin;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaCommonNavigator;
 
 public class QuickFiltersMenu extends MenuManager {
   CapellaCommonNavigator navigator;
-  NavigatorFilterService capellaNavigatorFilterService;
+  INavigatorFilterService capellaNavigatorFilterService;
 
   Action selectAllAction;
   Action deselectAllAction;
@@ -36,14 +35,14 @@ public class QuickFiltersMenu extends MenuManager {
 
     this.navigator = navigator;
     INavigatorContentService capellaNavigatorContentService = navigator.getNavigatorContentService();
-    capellaNavigatorFilterService = (NavigatorFilterService) capellaNavigatorContentService.getFilterService();
+    capellaNavigatorFilterService = capellaNavigatorContentService.getFilterService();
 
     addActions();
   }
 
   private void addActions() {
-    // TODO: consider to create a dedicated class
-    selectAllAction = new Action(Messages.QuickFiltersMenu_SelectAll_Title, IAction.AS_RADIO_BUTTON) {
+
+    selectAllAction = new Action(Messages.QuickFiltersMenu_SelectAll_Title) {
       @Override
       public void run() {
         ICommonFilterDescriptor[] visibleFilterDescriptors = capellaNavigatorFilterService
@@ -60,8 +59,7 @@ public class QuickFiltersMenu extends MenuManager {
 
     this.add(selectAllAction);
 
-    // TODO: consider to create a dedicated class
-    deselectAllAction = new Action(Messages.QuickFiltersMenu_DeselectAll_Title, IAction.AS_RADIO_BUTTON) {
+    deselectAllAction = new Action(Messages.QuickFiltersMenu_DeselectAll_Title) {
       @Override
       public void run() {
         capellaNavigatorFilterService.activateFilterIdsAndUpdateViewer(new String[0]);
@@ -70,8 +68,7 @@ public class QuickFiltersMenu extends MenuManager {
 
     this.add(deselectAllAction);
 
-    // TODO: consider to create a dedicated class
-    selectDefaultAction = new Action(Messages.QuickFiltersMenu_SelectDefault_Title, IAction.AS_RADIO_BUTTON) {
+    selectDefaultAction = new Action(Messages.QuickFiltersMenu_SelectDefault_Title) {
       @Override
       public void run() {
         ICommonFilterDescriptor[] visibleFilterDescriptors = capellaNavigatorFilterService
