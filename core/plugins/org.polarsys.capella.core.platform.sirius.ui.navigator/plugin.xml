@@ -26,16 +26,6 @@
    </extension>
    
    <extension
-         point="org.eclipse.core.runtime.adapters">
-      <factory
-            adaptableType="org.eclipse.ui.IWorkbenchWindow"
-            class="org.polarsys.capella.core.platform.sirius.ui.navigator.filters.FilterManager">
-         <adapter
-               type="org.polarsys.capella.core.ui.toolkit.helpers.IUserPartManagement">
-         </adapter>
-      </factory>
-   </extension>
-   <extension
       point="org.eclipse.ui.navigator.viewer">
    <viewer
          viewerId="capella.project.explorer">

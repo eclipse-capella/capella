@@ -22,7 +22,7 @@
    <extension
          point="org.eclipse.sirius.diagram.ui.styleConfigurationProvider">
       <styleConfigurationProvider
-            providerClass="org.polarsys.capella.core.sirius.analysis.extension.style.LogicalDataFlowStyleConfiguration">
+            providerClass="org.polarsys.capella.core.sirius.analysis.extension.style.PartComponentStyleConfiguration">
       </styleConfigurationProvider>
    </extension>
    <extension

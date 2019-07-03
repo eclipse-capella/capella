@@ -35,6 +35,7 @@ import org.polarsys.capella.test.diagram.tools.ju.xab.CreatePhysicalPort;
 import org.polarsys.capella.test.diagram.tools.ju.xab.CreatePortAllocation;
 import org.polarsys.capella.test.diagram.tools.ju.xab.CreateRole;
 import org.polarsys.capella.test.diagram.tools.ju.xab.DeleteConstraintLink;
+import org.polarsys.capella.test.diagram.tools.ju.xab.DiagramPartIcon;
 import org.polarsys.capella.test.diagram.tools.ju.xab.DragAndDropEABTest;
 import org.polarsys.capella.test.diagram.tools.ju.xab.DragAndDropFunction;
 import org.polarsys.capella.test.diagram.tools.ju.xab.DragAndDropPhysicalComponent;
@@ -117,6 +118,8 @@ public class XABDiagramToolsTestSuite extends BasicTestSuite {
     tests.add(new SwitchPhysicalLinksCategories());
     tests.add(new ShowHidePhysicalPath());
 
+    tests.add(new DiagramPartIcon());
+    
     tests.add(new CreateBehaviorPCGroup());
     tests.add(new CreateComponent());
     tests.add(new CreateComponentExchangeGroup());

@@ -36,6 +36,7 @@ import org.eclipse.sirius.ui.tools.api.views.common.item.ViewpointItem;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.description.SystemColors;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
@@ -51,6 +52,7 @@ import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.model.copypaste.SharedCutPasteClipboard;
 import org.polarsys.capella.common.ui.providers.MDEAdapterFactoryLabelProvider;
+import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
@@ -67,7 +69,7 @@ public class CapellaNavigatorLabelProvider extends MDEAdapterFactoryLabelProvide
   private static final String STATUS_LINE_PATH_SEPARATOR = "::"; //$NON-NLS-1$
 
   private Font _italicFont;
-
+  
   private static final String DISABLED_REPRESENTATION_SUFFIX = "_disabled"; //$NON-NLS-1$
 
   /**
@@ -201,13 +203,16 @@ public class CapellaNavigatorLabelProvider extends MDEAdapterFactoryLabelProvide
     if (repDesc.isPresent()) {
       try {
         if (!RepresentationHelper.isValid(repDesc.get())) {
-          return VisualBindingManager.getDefault().getColorFromName("light_gray"); //$NON-NLS-1$
+          return VisualBindingManager.getDefault().getColorFromName(SystemColors.LIGHT_GRAY_LITERAL.getName());
         }
       } catch (IllegalStateException | NullPointerException e) {
         // This can happen when trying to get the label of a CDOObject
         // which transaction has just been closed
         // Nothing to do, null will returned
       }
+    }
+    if (SharedCutPasteClipboard.getCutClipboard().isObjectCut(element)) {
+      return VisualBindingManager.getDefault().getColorFromName(SystemColors.GRAY_LITERAL.getName());
     }
     return super.getForeground(element);
   }
@@ -332,14 +337,16 @@ public class CapellaNavigatorLabelProvider extends MDEAdapterFactoryLabelProvide
   @Override
   public Font getFont(Object element) {
     Font currentFont = Display.getCurrent().getSystemFont();
-    if (_italicFont == null) {
-      FontData[] datas = currentFont.getFontData();
-      datas[0].setStyle(SWT.ITALIC);
-      _italicFont = new Font(currentFont.getDevice(), datas);
-    }
-    if (SharedCutPasteClipboard.getCutClipboard().isObjectCut(element)) {
+    
+    if (element instanceof Part || SharedCutPasteClipboard.getCutClipboard().isObjectCut(element)) {
+      if (_italicFont == null) {
+        FontData[] datas = currentFont.getFontData();
+        datas[0].setStyle(SWT.ITALIC);
+        _italicFont = new Font(currentFont.getDevice(), datas);
+      }
       return _italicFont;
     }
     return currentFont;
   }
+  
 }
