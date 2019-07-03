@@ -13,7 +13,7 @@ package org.polarsys.capella.core.data.cs;
 import org.eclipse.emf.common.util.EList;
 import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.common.data.modellingcore.InformationsExchanger;
-import org.polarsys.capella.core.data.information.Partition;
+import org.polarsys.capella.core.data.information.AbstractInstance;
 
 /**
  * <!-- begin-user-doc -->
@@ -39,7 +39,7 @@ import org.polarsys.capella.core.data.information.Partition;
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='' explanation='should be mapped to uml::Property, but one of its concrete ancestors already is (Property), so avoid redefining it\r\nat this level to avoid profile generation issue' constraints='information::Property must have as base metaclass uml::Property'"
  * @generated
  */
-public interface Part extends Partition, InformationsExchanger, DeployableElement, DeploymentTarget, AbstractPathInvolvedElement {
+public interface Part extends AbstractInstance, InformationsExchanger, DeployableElement, DeploymentTarget, AbstractPathInvolvedElement {
 
 
 

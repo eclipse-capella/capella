@@ -12,20 +12,38 @@ package org.polarsys.capella.common.data.activity.util;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.util.Switch;
-
-import org.polarsys.capella.common.data.activity.*;
-
+import org.polarsys.capella.common.data.activity.AbstractAction;
+import org.polarsys.capella.common.data.activity.AbstractActivity;
+import org.polarsys.capella.common.data.activity.AcceptEventAction;
+import org.polarsys.capella.common.data.activity.ActivityEdge;
+import org.polarsys.capella.common.data.activity.ActivityExchange;
+import org.polarsys.capella.common.data.activity.ActivityGroup;
+import org.polarsys.capella.common.data.activity.ActivityNode;
+import org.polarsys.capella.common.data.activity.ActivityPackage;
+import org.polarsys.capella.common.data.activity.ActivityPartition;
+import org.polarsys.capella.common.data.activity.CallAction;
+import org.polarsys.capella.common.data.activity.CallBehaviorAction;
+import org.polarsys.capella.common.data.activity.ControlFlow;
+import org.polarsys.capella.common.data.activity.ExceptionHandler;
+import org.polarsys.capella.common.data.activity.ExecutableNode;
+import org.polarsys.capella.common.data.activity.InputPin;
+import org.polarsys.capella.common.data.activity.InterruptibleActivityRegion;
+import org.polarsys.capella.common.data.activity.InvocationAction;
+import org.polarsys.capella.common.data.activity.ObjectFlow;
+import org.polarsys.capella.common.data.activity.ObjectNode;
+import org.polarsys.capella.common.data.activity.OutputPin;
+import org.polarsys.capella.common.data.activity.Pin;
+import org.polarsys.capella.common.data.activity.SendSignalAction;
+import org.polarsys.capella.common.data.activity.StructuredActivityNode;
+import org.polarsys.capella.common.data.activity.ValuePin;
 import org.polarsys.capella.common.data.behavior.AbstractBehavior;
-
 import org.polarsys.capella.common.data.modellingcore.AbstractInformationFlow;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.data.modellingcore.AbstractRelationship;
 import org.polarsys.capella.common.data.modellingcore.AbstractTypedElement;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.data.modellingcore.TraceableElement;
-
 import org.polarsys.kitalpha.emde.model.Element;
 import org.polarsys.kitalpha.emde.model.ExtensibleElement;
 

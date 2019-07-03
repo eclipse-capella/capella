@@ -22,7 +22,6 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.polarsys.capella.common.model.helpers.IHelper;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.polarsys.capella.core.data.capellacore.impl.RelationshipImpl;
 import org.polarsys.capella.core.data.interaction.AbstractCapability;
 import org.polarsys.capella.core.data.interaction.AbstractCapabilityExtend;

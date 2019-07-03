@@ -13,8 +13,8 @@ package org.polarsys.capella.core.data.fa;
 import org.eclipse.emf.common.util.EList;
 import org.polarsys.capella.common.data.modellingcore.InformationsExchanger;
 import org.polarsys.capella.core.data.cs.PhysicalPort;
-import org.polarsys.capella.core.data.information.Partition;
 import org.polarsys.capella.core.data.information.Port;
+import org.polarsys.capella.core.data.information.Property;
 
 /**
  * <!-- begin-user-doc -->
@@ -41,7 +41,7 @@ import org.polarsys.capella.core.data.information.Port;
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='' explanation='none' constraints='none'"
  * @generated
  */
-public interface ComponentPort extends Port, Partition, InformationsExchanger {
+public interface ComponentPort extends Port, InformationsExchanger, Property {
 
 
 

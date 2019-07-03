@@ -46,21 +46,16 @@ import org.polarsys.capella.core.data.capellacore.Relationship;
 import org.polarsys.capella.core.data.capellacore.Structure;
 import org.polarsys.capella.core.data.capellacore.Type;
 import org.polarsys.capella.core.data.capellacore.TypedElement;
-import org.polarsys.capella.core.data.cs.AbstractActor;
 import org.polarsys.capella.core.data.cs.AbstractPhysicalArtifact;
 import org.polarsys.capella.core.data.cs.ArchitectureAllocation;
 import org.polarsys.capella.core.data.cs.Block;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.BlockArchitecturePkg;
 import org.polarsys.capella.core.data.cs.Component;
-import org.polarsys.capella.core.data.cs.ComponentAllocation;
 import org.polarsys.capella.core.data.cs.ComponentArchitecture;
-import org.polarsys.capella.core.data.cs.ComponentContext;
-import org.polarsys.capella.core.data.cs.DeployableElement;
-import org.polarsys.capella.core.data.cs.DeploymentTarget;
+import org.polarsys.capella.core.data.cs.ComponentPkg;
 import org.polarsys.capella.core.data.cs.InterfaceAllocation;
 import org.polarsys.capella.core.data.cs.InterfaceAllocator;
-import org.polarsys.capella.core.data.cs.SystemComponent;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.AbstractFunctionalArchitecture;
 import org.polarsys.capella.core.data.fa.AbstractFunctionalBlock;
@@ -70,23 +65,15 @@ import org.polarsys.capella.core.data.fa.FunctionPkg;
 import org.polarsys.capella.core.data.information.AbstractInstance;
 import org.polarsys.capella.core.data.information.AssociationPkg;
 import org.polarsys.capella.core.data.information.MultiplicityElement;
-import org.polarsys.capella.core.data.information.PartitionableElement;
 import org.polarsys.capella.core.data.information.Property;
 import org.polarsys.capella.core.data.information.communication.CommunicationLinkExchanger;
-import org.polarsys.capella.core.data.pa.*;
-import org.polarsys.capella.core.data.pa.AbstractPhysicalComponent;
-import org.polarsys.capella.core.data.pa.LogicalActorRealization;
 import org.polarsys.capella.core.data.pa.LogicalArchitectureRealization;
-import org.polarsys.capella.core.data.pa.LogicalComponentRealization;
 import org.polarsys.capella.core.data.pa.LogicalInterfaceRealization;
 import org.polarsys.capella.core.data.pa.PaPackage;
-import org.polarsys.capella.core.data.pa.PhysicalActor;
-import org.polarsys.capella.core.data.pa.PhysicalActorPkg;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecturePkg;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentPkg;
-import org.polarsys.capella.core.data.pa.PhysicalContext;
 import org.polarsys.capella.core.data.pa.PhysicalFunction;
 import org.polarsys.capella.core.data.pa.PhysicalFunctionPkg;
 import org.polarsys.capella.core.data.pa.PhysicalNode;
@@ -166,28 +153,12 @@ public class PaAdapterFactory extends AdapterFactoryImpl {
 				return createPhysicalFunctionPkgAdapter();
 			}
 			@Override
-			public Adapter caseAbstractPhysicalComponent(AbstractPhysicalComponent object) {
-				return createAbstractPhysicalComponentAdapter();
-			}
-			@Override
 			public Adapter casePhysicalComponent(PhysicalComponent object) {
 				return createPhysicalComponentAdapter();
 			}
 			@Override
-			public Adapter casePhysicalActorPkg(PhysicalActorPkg object) {
-				return createPhysicalActorPkgAdapter();
-			}
-			@Override
 			public Adapter casePhysicalComponentPkg(PhysicalComponentPkg object) {
 				return createPhysicalComponentPkgAdapter();
-			}
-			@Override
-			public Adapter casePhysicalActor(PhysicalActor object) {
-				return createPhysicalActorAdapter();
-			}
-			@Override
-			public Adapter caseLogicalActorRealization(LogicalActorRealization object) {
-				return createLogicalActorRealizationAdapter();
 			}
 			@Override
 			public Adapter casePhysicalNode(PhysicalNode object) {
@@ -198,16 +169,8 @@ public class PaAdapterFactory extends AdapterFactoryImpl {
 				return createLogicalArchitectureRealizationAdapter();
 			}
 			@Override
-			public Adapter caseLogicalComponentRealization(LogicalComponentRealization object) {
-				return createLogicalComponentRealizationAdapter();
-			}
-			@Override
 			public Adapter caseLogicalInterfaceRealization(LogicalInterfaceRealization object) {
 				return createLogicalInterfaceRealizationAdapter();
-			}
-			@Override
-			public Adapter casePhysicalContext(PhysicalContext object) {
-				return createPhysicalContextAdapter();
 			}
 			@Override
 			public Adapter caseElement(Element object) {
@@ -350,6 +313,10 @@ public class PaAdapterFactory extends AdapterFactoryImpl {
 				return createFunctionPkgAdapter();
 			}
 			@Override
+			public Adapter caseAbstractPhysicalArtifact(AbstractPhysicalArtifact object) {
+				return createAbstractPhysicalArtifactAdapter();
+			}
+			@Override
 			public Adapter caseType(Type object) {
 				return createTypeAdapter();
 			}
@@ -374,10 +341,6 @@ public class PaAdapterFactory extends AdapterFactoryImpl {
 				return createClassifierAdapter();
 			}
 			@Override
-			public Adapter casePartitionableElement(PartitionableElement object) {
-				return createPartitionableElementAdapter();
-			}
-			@Override
 			public Adapter caseInterfaceAllocator(InterfaceAllocator object) {
 				return createInterfaceAllocatorAdapter();
 			}
@@ -394,32 +357,16 @@ public class PaAdapterFactory extends AdapterFactoryImpl {
 				return createCapabilityRealizationInvolvedElementAdapter();
 			}
 			@Override
-			public Adapter caseSystemComponent(SystemComponent object) {
-				return createSystemComponentAdapter();
-			}
-			@Override
-			public Adapter caseDeployableElement(DeployableElement object) {
-				return createDeployableElementAdapter();
-			}
-			@Override
-			public Adapter caseDeploymentTarget(DeploymentTarget object) {
-				return createDeploymentTargetAdapter();
-			}
-			@Override
-			public Adapter caseAbstractPhysicalArtifact(AbstractPhysicalArtifact object) {
-				return createAbstractPhysicalArtifactAdapter();
-			}
-			@Override
 			public Adapter caseAbstractFunctionalStructure(AbstractFunctionalStructure object) {
 				return createAbstractFunctionalStructureAdapter();
 			}
 			@Override
-			public Adapter caseAssociationPkg(AssociationPkg object) {
-				return createAssociationPkgAdapter();
+			public Adapter caseComponentPkg(ComponentPkg object) {
+				return createComponentPkgAdapter();
 			}
 			@Override
-			public Adapter caseAbstractActor(AbstractActor object) {
-				return createAbstractActorAdapter();
+			public Adapter caseAssociationPkg(AssociationPkg object) {
+				return createAssociationPkgAdapter();
 			}
 			@Override
 			public Adapter caseAbstractRelationship(AbstractRelationship object) {
@@ -438,20 +385,12 @@ public class PaAdapterFactory extends AdapterFactoryImpl {
 				return createAllocationAdapter();
 			}
 			@Override
-			public Adapter caseComponentAllocation(ComponentAllocation object) {
-				return createComponentAllocationAdapter();
-			}
-			@Override
 			public Adapter caseArchitectureAllocation(ArchitectureAllocation object) {
 				return createArchitectureAllocationAdapter();
 			}
 			@Override
 			public Adapter caseInterfaceAllocation(InterfaceAllocation object) {
 				return createInterfaceAllocationAdapter();
-			}
-			@Override
-			public Adapter caseComponentContext(ComponentContext object) {
-				return createComponentContextAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -530,20 +469,6 @@ public class PaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.pa.AbstractPhysicalComponent <em>Abstract Physical Component</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.polarsys.capella.core.data.pa.AbstractPhysicalComponent
-	 * @generated
-	 */
-	public Adapter createAbstractPhysicalComponentAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.pa.PhysicalComponent <em>Physical Component</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -558,20 +483,6 @@ public class PaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.pa.PhysicalActorPkg <em>Physical Actor Pkg</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.polarsys.capella.core.data.pa.PhysicalActorPkg
-	 * @generated
-	 */
-	public Adapter createPhysicalActorPkgAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.pa.PhysicalComponentPkg <em>Physical Component Pkg</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -582,34 +493,6 @@ public class PaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createPhysicalComponentPkgAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.pa.PhysicalActor <em>Physical Actor</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.polarsys.capella.core.data.pa.PhysicalActor
-	 * @generated
-	 */
-	public Adapter createPhysicalActorAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.pa.LogicalActorRealization <em>Logical Actor Realization</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.polarsys.capella.core.data.pa.LogicalActorRealization
-	 * @generated
-	 */
-	public Adapter createLogicalActorRealizationAdapter() {
 		return null;
 	}
 
@@ -642,20 +525,6 @@ public class PaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.pa.LogicalComponentRealization <em>Logical Component Realization</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.polarsys.capella.core.data.pa.LogicalComponentRealization
-	 * @generated
-	 */
-	public Adapter createLogicalComponentRealizationAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.pa.LogicalInterfaceRealization <em>Logical Interface Realization</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -666,20 +535,6 @@ public class PaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createLogicalInterfaceRealizationAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.pa.PhysicalContext <em>Physical Context</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.polarsys.capella.core.data.pa.PhysicalContext
-	 * @generated
-	 */
-	public Adapter createPhysicalContextAdapter() {
 		return null;
 	}
 
@@ -1258,20 +1113,6 @@ public class PaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.information.PartitionableElement <em>Partitionable Element</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.polarsys.capella.core.data.information.PartitionableElement
-	 * @generated
-	 */
-	public Adapter createPartitionableElementAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.cs.InterfaceAllocator <em>Interface Allocator</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -1328,48 +1169,6 @@ public class PaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.cs.SystemComponent <em>System Component</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.polarsys.capella.core.data.cs.SystemComponent
-	 * @generated
-	 */
-	public Adapter createSystemComponentAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.cs.DeployableElement <em>Deployable Element</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.polarsys.capella.core.data.cs.DeployableElement
-	 * @generated
-	 */
-	public Adapter createDeployableElementAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.cs.DeploymentTarget <em>Deployment Target</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.polarsys.capella.core.data.cs.DeploymentTarget
-	 * @generated
-	 */
-	public Adapter createDeploymentTargetAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.cs.AbstractPhysicalArtifact <em>Abstract Physical Artifact</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -1398,6 +1197,20 @@ public class PaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.cs.ComponentPkg <em>Component Pkg</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.polarsys.capella.core.data.cs.ComponentPkg
+	 * @generated
+	 */
+	public Adapter createComponentPkgAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.information.AssociationPkg <em>Association Pkg</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -1408,20 +1221,6 @@ public class PaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createAssociationPkgAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.cs.AbstractActor <em>Abstract Actor</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.polarsys.capella.core.data.cs.AbstractActor
-	 * @generated
-	 */
-	public Adapter createAbstractActorAdapter() {
 		return null;
 	}
 
@@ -1482,20 +1281,6 @@ public class PaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.cs.ComponentAllocation <em>Component Allocation</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.polarsys.capella.core.data.cs.ComponentAllocation
-	 * @generated
-	 */
-	public Adapter createComponentAllocationAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.cs.ArchitectureAllocation <em>Architecture Allocation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -1520,20 +1305,6 @@ public class PaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createInterfaceAllocationAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.cs.ComponentContext <em>Component Context</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.polarsys.capella.core.data.cs.ComponentContext
-	 * @generated
-	 */
-	public Adapter createComponentContextAdapter() {
 		return null;
 	}
 

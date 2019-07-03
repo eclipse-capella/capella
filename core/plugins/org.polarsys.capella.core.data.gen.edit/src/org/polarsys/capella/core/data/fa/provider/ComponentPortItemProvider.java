@@ -147,6 +147,9 @@ public class ComponentPortItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addIncomingInformationFlowsPropertyDescriptor(object);
+			addOutgoingInformationFlowsPropertyDescriptor(object);
+			addInformationFlowsPropertyDescriptor(object);
 			addIsAbstractPropertyDescriptor(object);
 			addIsStaticPropertyDescriptor(object);
 			addVisibilityPropertyDescriptor(object);
@@ -162,10 +165,6 @@ public class ComponentPortItemProvider
 			addIsReadOnlyPropertyDescriptor(object);
 			addIsPartOfKeyPropertyDescriptor(object);
 			addAssociationPropertyDescriptor(object);
-			addRepresentingInstanceRolesPropertyDescriptor(object);
-			addIncomingInformationFlowsPropertyDescriptor(object);
-			addOutgoingInformationFlowsPropertyDescriptor(object);
-			addInformationFlowsPropertyDescriptor(object);
 			addOrientationPropertyDescriptor(object);
 			addKindPropertyDescriptor(object);
 			addComponentExchangesPropertyDescriptor(object);
@@ -581,33 +580,6 @@ public class ComponentPortItemProvider
 		// begin-extension-code
 				 null);
 		itemPropertyDescriptors.add(associationPropertyDescriptor);
-		// end-extension-code
-	}
-
-	/**
-	 * This adds a property descriptor for the Representing Instance Roles feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addRepresentingInstanceRolesPropertyDescriptor(Object object) {
-
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_AbstractInstance_representingInstanceRoles_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_AbstractInstance_representingInstanceRoles_feature", "_UI_AbstractInstance_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 InformationPackage.Literals.ABSTRACT_INSTANCE__REPRESENTING_INSTANCE_ROLES,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
 		// end-extension-code
 	}
 

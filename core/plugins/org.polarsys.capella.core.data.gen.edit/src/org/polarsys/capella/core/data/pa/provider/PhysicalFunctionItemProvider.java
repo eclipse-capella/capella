@@ -77,8 +77,7 @@ public class PhysicalFunctionItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addAllocatorPhysicalActorsPropertyDescriptor(object);
-			addAllocatorPhysicalComponentsPropertyDescriptor(object);
+			addAllocatingPhysicalComponentsPropertyDescriptor(object);
 			addRealizedLogicalFunctionsPropertyDescriptor(object);
 			addContainedPhysicalFunctionsPropertyDescriptor(object);
 			addChildrenPhysicalFunctionsPropertyDescriptor(object);
@@ -90,12 +89,12 @@ public class PhysicalFunctionItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Allocator Physical Actors feature.
+	 * This adds a property descriptor for the Allocating Physical Components feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addAllocatorPhysicalActorsPropertyDescriptor(Object object) {
+	protected void addAllocatingPhysicalComponentsPropertyDescriptor(Object object) {
 
 		// begin-extension-code
 		itemPropertyDescriptors.add
@@ -103,36 +102,9 @@ public class PhysicalFunctionItemProvider
 		// end-extension-code
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_PhysicalFunction_allocatorPhysicalActors_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_PhysicalFunction_allocatorPhysicalActors_feature", "_UI_PhysicalFunction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 PaPackage.Literals.PHYSICAL_FUNCTION__ALLOCATOR_PHYSICAL_ACTORS,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
-
-	/**
-	 * This adds a property descriptor for the Allocator Physical Components feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addAllocatorPhysicalComponentsPropertyDescriptor(Object object) {
-
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_PhysicalFunction_allocatorPhysicalComponents_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_PhysicalFunction_allocatorPhysicalComponents_feature", "_UI_PhysicalFunction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 PaPackage.Literals.PHYSICAL_FUNCTION__ALLOCATOR_PHYSICAL_COMPONENTS,
+				 getString("_UI_PhysicalFunction_allocatingPhysicalComponents_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_PhysicalFunction_allocatingPhysicalComponents_feature", "_UI_PhysicalFunction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 PaPackage.Literals.PHYSICAL_FUNCTION__ALLOCATING_PHYSICAL_COMPONENTS,
 				 false,
 				 false,
 				 false,

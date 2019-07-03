@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.polarsys.capella.core.data.la.util;
 
-import java.util.List;
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
@@ -49,18 +47,15 @@ import org.polarsys.capella.core.data.capellacore.Relationship;
 import org.polarsys.capella.core.data.capellacore.Structure;
 import org.polarsys.capella.core.data.capellacore.Type;
 import org.polarsys.capella.core.data.capellacore.TypedElement;
-import org.polarsys.capella.core.data.cs.AbstractActor;
 import org.polarsys.capella.core.data.cs.ArchitectureAllocation;
 import org.polarsys.capella.core.data.cs.Block;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.BlockArchitecturePkg;
 import org.polarsys.capella.core.data.cs.Component;
-import org.polarsys.capella.core.data.cs.ComponentAllocation;
 import org.polarsys.capella.core.data.cs.ComponentArchitecture;
-import org.polarsys.capella.core.data.cs.ComponentContext;
+import org.polarsys.capella.core.data.cs.ComponentPkg;
 import org.polarsys.capella.core.data.cs.InterfaceAllocation;
 import org.polarsys.capella.core.data.cs.InterfaceAllocator;
-import org.polarsys.capella.core.data.cs.SystemComponent;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.AbstractFunctionalArchitecture;
 import org.polarsys.capella.core.data.fa.AbstractFunctionalBlock;
@@ -69,27 +64,20 @@ import org.polarsys.capella.core.data.fa.AbstractFunctionalStructure;
 import org.polarsys.capella.core.data.fa.FunctionPkg;
 import org.polarsys.capella.core.data.information.AbstractInstance;
 import org.polarsys.capella.core.data.information.MultiplicityElement;
-import org.polarsys.capella.core.data.information.PartitionableElement;
 import org.polarsys.capella.core.data.information.Property;
 import org.polarsys.capella.core.data.information.communication.CommunicationLinkExchanger;
 import org.polarsys.capella.core.data.interaction.AbstractCapability;
-import org.polarsys.capella.core.data.la.*;
 import org.polarsys.capella.core.data.la.CapabilityRealization;
 import org.polarsys.capella.core.data.la.CapabilityRealizationPkg;
 import org.polarsys.capella.core.data.la.ContextInterfaceRealization;
 import org.polarsys.capella.core.data.la.LaPackage;
-import org.polarsys.capella.core.data.la.LogicalActor;
-import org.polarsys.capella.core.data.la.LogicalActorPkg;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.la.LogicalArchitecturePkg;
 import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.data.la.LogicalComponentPkg;
-import org.polarsys.capella.core.data.la.LogicalContext;
 import org.polarsys.capella.core.data.la.LogicalFunction;
 import org.polarsys.capella.core.data.la.LogicalFunctionPkg;
-import org.polarsys.capella.core.data.la.SystemActorRealization;
 import org.polarsys.capella.core.data.la.SystemAnalysisRealization;
-import org.polarsys.capella.core.data.la.SystemRealization;
 import org.polarsys.kitalpha.emde.model.Element;
 import org.polarsys.kitalpha.emde.model.ExtensibleElement;
 
@@ -241,18 +229,16 @@ public class LaSwitch<T> extends Switch<T> {
 			case LaPackage.LOGICAL_COMPONENT: {
 				LogicalComponent logicalComponent = (LogicalComponent)theEObject;
 				T result = caseLogicalComponent(logicalComponent);
-				if (result == null) result = caseSystemComponent(logicalComponent);
 				if (result == null) result = caseComponent(logicalComponent);
 				if (result == null) result = caseCapabilityRealizationInvolvedElement(logicalComponent);
 				if (result == null) result = caseBlock(logicalComponent);
-				if (result == null) result = casePartitionableElement(logicalComponent);
+				if (result == null) result = caseClassifier(logicalComponent);
 				if (result == null) result = caseInterfaceAllocator(logicalComponent);
 				if (result == null) result = caseCommunicationLinkExchanger(logicalComponent);
 				if (result == null) result = caseInvolvedElement(logicalComponent);
 				if (result == null) result = caseAbstractFunctionalBlock(logicalComponent);
-				if (result == null) result = caseClassifier(logicalComponent);
-				if (result == null) result = caseModellingBlock(logicalComponent);
 				if (result == null) result = caseGeneralizableElement(logicalComponent);
+				if (result == null) result = caseModellingBlock(logicalComponent);
 				if (result == null) result = caseType(logicalComponent);
 				if (result == null) result = caseAbstractType(logicalComponent);
 				if (result == null) result = caseNamespace(logicalComponent);
@@ -270,6 +256,7 @@ public class LaSwitch<T> extends Switch<T> {
 			case LaPackage.LOGICAL_COMPONENT_PKG: {
 				LogicalComponentPkg logicalComponentPkg = (LogicalComponentPkg)theEObject;
 				T result = caseLogicalComponentPkg(logicalComponentPkg);
+				if (result == null) result = caseComponentPkg(logicalComponentPkg);
 				if (result == null) result = caseAbstractFunctionalStructure(logicalComponentPkg);
 				if (result == null) result = caseStructure(logicalComponentPkg);
 				if (result == null) result = caseNamespace(logicalComponentPkg);
@@ -337,23 +324,6 @@ public class LaSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case LaPackage.SYSTEM_REALIZATION: {
-				SystemRealization systemRealization = (SystemRealization)theEObject;
-				T result = caseSystemRealization(systemRealization);
-				if (result == null) result = caseComponentAllocation(systemRealization);
-				if (result == null) result = caseAllocation(systemRealization);
-				if (result == null) result = caseRelationship(systemRealization);
-				if (result == null) result = caseAbstractTrace(systemRealization);
-				if (result == null) result = caseAbstractRelationship(systemRealization);
-				if (result == null) result = caseCapellaElement(systemRealization);
-				if (result == null) result = caseTraceableElement(systemRealization);
-				if (result == null) result = casePublishableElement(systemRealization);
-				if (result == null) result = caseModelElement(systemRealization);
-				if (result == null) result = caseExtensibleElement(systemRealization);
-				if (result == null) result = caseElement(systemRealization);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case LaPackage.CONTEXT_INTERFACE_REALIZATION: {
 				ContextInterfaceRealization contextInterfaceRealization = (ContextInterfaceRealization)theEObject;
 				T result = caseContextInterfaceRealization(contextInterfaceRealization);
@@ -368,96 +338,6 @@ public class LaSwitch<T> extends Switch<T> {
 				if (result == null) result = caseModelElement(contextInterfaceRealization);
 				if (result == null) result = caseExtensibleElement(contextInterfaceRealization);
 				if (result == null) result = caseElement(contextInterfaceRealization);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case LaPackage.LOGICAL_ACTOR_PKG: {
-				LogicalActorPkg logicalActorPkg = (LogicalActorPkg)theEObject;
-				T result = caseLogicalActorPkg(logicalActorPkg);
-				if (result == null) result = caseAbstractFunctionalStructure(logicalActorPkg);
-				if (result == null) result = caseStructure(logicalActorPkg);
-				if (result == null) result = caseNamespace(logicalActorPkg);
-				if (result == null) result = caseNamedElement(logicalActorPkg);
-				if (result == null) result = caseAbstractNamedElement(logicalActorPkg);
-				if (result == null) result = caseCapellaElement(logicalActorPkg);
-				if (result == null) result = caseTraceableElement(logicalActorPkg);
-				if (result == null) result = casePublishableElement(logicalActorPkg);
-				if (result == null) result = caseModelElement(logicalActorPkg);
-				if (result == null) result = caseExtensibleElement(logicalActorPkg);
-				if (result == null) result = caseElement(logicalActorPkg);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case LaPackage.LOGICAL_ACTOR: {
-				LogicalActor logicalActor = (LogicalActor)theEObject;
-				T result = caseLogicalActor(logicalActor);
-				if (result == null) result = caseAbstractActor(logicalActor);
-				if (result == null) result = caseComponent(logicalActor);
-				if (result == null) result = caseCapabilityRealizationInvolvedElement(logicalActor);
-				if (result == null) result = caseBlock(logicalActor);
-				if (result == null) result = casePartitionableElement(logicalActor);
-				if (result == null) result = caseInterfaceAllocator(logicalActor);
-				if (result == null) result = caseCommunicationLinkExchanger(logicalActor);
-				if (result == null) result = caseInvolvedElement(logicalActor);
-				if (result == null) result = caseAbstractFunctionalBlock(logicalActor);
-				if (result == null) result = caseClassifier(logicalActor);
-				if (result == null) result = caseModellingBlock(logicalActor);
-				if (result == null) result = caseGeneralizableElement(logicalActor);
-				if (result == null) result = caseType(logicalActor);
-				if (result == null) result = caseAbstractType(logicalActor);
-				if (result == null) result = caseNamespace(logicalActor);
-				if (result == null) result = caseNamedElement(logicalActor);
-				if (result == null) result = caseAbstractNamedElement(logicalActor);
-				if (result == null) result = caseCapellaElement(logicalActor);
-				if (result == null) result = caseExtensibleElement(logicalActor);
-				if (result == null) result = caseTraceableElement(logicalActor);
-				if (result == null) result = casePublishableElement(logicalActor);
-				if (result == null) result = caseModelElement(logicalActor);
-				if (result == null) result = caseElement(logicalActor);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case LaPackage.SYSTEM_ACTOR_REALIZATION: {
-				SystemActorRealization systemActorRealization = (SystemActorRealization)theEObject;
-				T result = caseSystemActorRealization(systemActorRealization);
-				if (result == null) result = caseComponentAllocation(systemActorRealization);
-				if (result == null) result = caseAllocation(systemActorRealization);
-				if (result == null) result = caseRelationship(systemActorRealization);
-				if (result == null) result = caseAbstractTrace(systemActorRealization);
-				if (result == null) result = caseAbstractRelationship(systemActorRealization);
-				if (result == null) result = caseCapellaElement(systemActorRealization);
-				if (result == null) result = caseTraceableElement(systemActorRealization);
-				if (result == null) result = casePublishableElement(systemActorRealization);
-				if (result == null) result = caseModelElement(systemActorRealization);
-				if (result == null) result = caseExtensibleElement(systemActorRealization);
-				if (result == null) result = caseElement(systemActorRealization);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case LaPackage.LOGICAL_CONTEXT: {
-				LogicalContext logicalContext = (LogicalContext)theEObject;
-				T result = caseLogicalContext(logicalContext);
-				if (result == null) result = caseComponentContext(logicalContext);
-				if (result == null) result = caseComponent(logicalContext);
-				if (result == null) result = caseBlock(logicalContext);
-				if (result == null) result = casePartitionableElement(logicalContext);
-				if (result == null) result = caseInterfaceAllocator(logicalContext);
-				if (result == null) result = caseCommunicationLinkExchanger(logicalContext);
-				if (result == null) result = caseAbstractFunctionalBlock(logicalContext);
-				if (result == null) result = caseClassifier(logicalContext);
-				if (result == null) result = caseModellingBlock(logicalContext);
-				if (result == null) result = caseGeneralizableElement(logicalContext);
-				if (result == null) result = caseType(logicalContext);
-				if (result == null) result = caseAbstractType(logicalContext);
-				if (result == null) result = caseNamespace(logicalContext);
-				if (result == null) result = caseNamedElement(logicalContext);
-				if (result == null) result = caseAbstractNamedElement(logicalContext);
-				if (result == null) result = caseCapellaElement(logicalContext);
-				if (result == null) result = caseExtensibleElement(logicalContext);
-				if (result == null) result = caseTraceableElement(logicalContext);
-				if (result == null) result = casePublishableElement(logicalContext);
-				if (result == null) result = caseModelElement(logicalContext);
-				if (result == null) result = caseElement(logicalContext);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -601,21 +481,6 @@ public class LaSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>System Realization</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>System Realization</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseSystemRealization(SystemRealization object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Context Interface Realization</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -627,66 +492,6 @@ public class LaSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseContextInterfaceRealization(ContextInterfaceRealization object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Logical Actor Pkg</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Logical Actor Pkg</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseLogicalActorPkg(LogicalActorPkg object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Logical Actor</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Logical Actor</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseLogicalActor(LogicalActor object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>System Actor Realization</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>System Actor Realization</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseSystemActorRealization(SystemActorRealization object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Logical Context</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Logical Context</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseLogicalContext(LogicalContext object) {
 		return null;
 	}
 
@@ -1306,21 +1111,6 @@ public class LaSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Partitionable Element</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Partitionable Element</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T casePartitionableElement(PartitionableElement object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Interface Allocator</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -1381,21 +1171,6 @@ public class LaSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>System Component</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>System Component</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseSystemComponent(SystemComponent object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Abstract Functional Structure</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -1407,6 +1182,21 @@ public class LaSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseAbstractFunctionalStructure(AbstractFunctionalStructure object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Component Pkg</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Component Pkg</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseComponentPkg(ComponentPkg object) {
 		return null;
 	}
 
@@ -1531,21 +1321,6 @@ public class LaSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Component Allocation</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Component Allocation</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseComponentAllocation(ComponentAllocation object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Interface Allocation</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -1557,36 +1332,6 @@ public class LaSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseInterfaceAllocation(InterfaceAllocation object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Abstract Actor</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Abstract Actor</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseAbstractActor(AbstractActor object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Component Context</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Component Context</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseComponentContext(ComponentContext object) {
 		return null;
 	}
 

@@ -34,7 +34,6 @@ import org.polarsys.capella.core.data.oa.OaPackage;
 import org.polarsys.capella.core.data.oa.OperationalActivityPkg;
 import org.polarsys.capella.core.data.oa.OperationalAnalysis;
 import org.polarsys.capella.core.data.oa.OperationalCapabilityPkg;
-import org.polarsys.capella.core.data.oa.OperationalContext;
 import org.polarsys.capella.core.data.oa.RolePkg;
 
 /**
@@ -45,7 +44,6 @@ import org.polarsys.capella.core.data.oa.RolePkg;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.polarsys.capella.core.data.oa.impl.OperationalAnalysisImpl#getOwnedOperationalContext <em>Owned Operational Context</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.oa.impl.OperationalAnalysisImpl#getOwnedRolePkg <em>Owned Role Pkg</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.oa.impl.OperationalAnalysisImpl#getOwnedEntityPkg <em>Owned Entity Pkg</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.oa.impl.OperationalAnalysisImpl#getOwnedConceptPkg <em>Owned Concept Pkg</em>}</li>
@@ -57,20 +55,6 @@ import org.polarsys.capella.core.data.oa.RolePkg;
  * @generated
  */
 public class OperationalAnalysisImpl extends BlockArchitectureImpl implements OperationalAnalysis {
-
-	/**
-	 * The cached value of the '{@link #getOwnedOperationalContext() <em>Owned Operational Context</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOwnedOperationalContext()
-	 * @generated
-	 * @ordered
-	 */
-	protected OperationalContext ownedOperationalContext;
-
-
-
-
 
 	/**
 	 * The cached value of the '{@link #getOwnedRolePkg() <em>Owned Role Pkg</em>}' containment reference.
@@ -145,92 +129,6 @@ public class OperationalAnalysisImpl extends BlockArchitectureImpl implements Op
 	protected EClass eStaticClass() {
 		return OaPackage.Literals.OPERATIONAL_ANALYSIS;
 	}
-
-
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public OperationalContext getOwnedOperationalContext() {
-
-		if (ownedOperationalContext != null && ownedOperationalContext.eIsProxy()) {
-			InternalEObject oldOwnedOperationalContext = (InternalEObject)ownedOperationalContext;
-			ownedOperationalContext = (OperationalContext)eResolveProxy(oldOwnedOperationalContext);
-			if (ownedOperationalContext != oldOwnedOperationalContext) {
-				InternalEObject newOwnedOperationalContext = (InternalEObject)ownedOperationalContext;
-				NotificationChain msgs = oldOwnedOperationalContext.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - OaPackage.OPERATIONAL_ANALYSIS__OWNED_OPERATIONAL_CONTEXT, null, null);
-				if (newOwnedOperationalContext.eInternalContainer() == null) {
-					msgs = newOwnedOperationalContext.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - OaPackage.OPERATIONAL_ANALYSIS__OWNED_OPERATIONAL_CONTEXT, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, OaPackage.OPERATIONAL_ANALYSIS__OWNED_OPERATIONAL_CONTEXT, oldOwnedOperationalContext, ownedOperationalContext));
-			}
-		}
-		return ownedOperationalContext;
-	}
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public OperationalContext basicGetOwnedOperationalContext() {
-
-		return ownedOperationalContext;
-	}
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public NotificationChain basicSetOwnedOperationalContext(OperationalContext newOwnedOperationalContext, NotificationChain msgs) {
-
-		OperationalContext oldOwnedOperationalContext = ownedOperationalContext;
-		ownedOperationalContext = newOwnedOperationalContext;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, OaPackage.OPERATIONAL_ANALYSIS__OWNED_OPERATIONAL_CONTEXT, oldOwnedOperationalContext, newOwnedOperationalContext);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-
-		return msgs;
-	}
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public void setOwnedOperationalContext(OperationalContext newOwnedOperationalContext) {
-
-		if (newOwnedOperationalContext != ownedOperationalContext) {
-			NotificationChain msgs = null;
-			if (ownedOperationalContext != null)
-				msgs = ((InternalEObject)ownedOperationalContext).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - OaPackage.OPERATIONAL_ANALYSIS__OWNED_OPERATIONAL_CONTEXT, null, msgs);
-			if (newOwnedOperationalContext != null)
-				msgs = ((InternalEObject)newOwnedOperationalContext).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - OaPackage.OPERATIONAL_ANALYSIS__OWNED_OPERATIONAL_CONTEXT, null, msgs);
-			msgs = basicSetOwnedOperationalContext(newOwnedOperationalContext, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, OaPackage.OPERATIONAL_ANALYSIS__OWNED_OPERATIONAL_CONTEXT, newOwnedOperationalContext, newOwnedOperationalContext));
-
-	}
-
 
 
 
@@ -665,8 +563,6 @@ public class OperationalAnalysisImpl extends BlockArchitectureImpl implements Op
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case OaPackage.OPERATIONAL_ANALYSIS__OWNED_OPERATIONAL_CONTEXT:
-				return basicSetOwnedOperationalContext(null, msgs);
 			case OaPackage.OPERATIONAL_ANALYSIS__OWNED_ROLE_PKG:
 				return basicSetOwnedRolePkg(null, msgs);
 			case OaPackage.OPERATIONAL_ANALYSIS__OWNED_ENTITY_PKG:
@@ -685,9 +581,6 @@ public class OperationalAnalysisImpl extends BlockArchitectureImpl implements Op
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case OaPackage.OPERATIONAL_ANALYSIS__OWNED_OPERATIONAL_CONTEXT:
-				if (resolve) return getOwnedOperationalContext();
-				return basicGetOwnedOperationalContext();
 			case OaPackage.OPERATIONAL_ANALYSIS__OWNED_ROLE_PKG:
 				if (resolve) return getOwnedRolePkg();
 				return basicGetOwnedRolePkg();
@@ -717,9 +610,6 @@ public class OperationalAnalysisImpl extends BlockArchitectureImpl implements Op
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case OaPackage.OPERATIONAL_ANALYSIS__OWNED_OPERATIONAL_CONTEXT:
-					setOwnedOperationalContext((OperationalContext)newValue);
-				return;
 			case OaPackage.OPERATIONAL_ANALYSIS__OWNED_ROLE_PKG:
 					setOwnedRolePkg((RolePkg)newValue);
 				return;
@@ -742,9 +632,6 @@ public class OperationalAnalysisImpl extends BlockArchitectureImpl implements Op
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case OaPackage.OPERATIONAL_ANALYSIS__OWNED_OPERATIONAL_CONTEXT:
-				setOwnedOperationalContext((OperationalContext)null);
-				return;
 			case OaPackage.OPERATIONAL_ANALYSIS__OWNED_ROLE_PKG:
 				setOwnedRolePkg((RolePkg)null);
 				return;
@@ -768,8 +655,6 @@ public class OperationalAnalysisImpl extends BlockArchitectureImpl implements Op
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case OaPackage.OPERATIONAL_ANALYSIS__OWNED_OPERATIONAL_CONTEXT:
-				return ownedOperationalContext != null;
 			case OaPackage.OPERATIONAL_ANALYSIS__OWNED_ROLE_PKG:
 				return ownedRolePkg != null;
 			case OaPackage.OPERATIONAL_ANALYSIS__OWNED_ENTITY_PKG:

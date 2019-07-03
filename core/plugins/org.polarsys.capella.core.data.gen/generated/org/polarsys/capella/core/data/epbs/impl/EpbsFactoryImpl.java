@@ -17,13 +17,11 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.polarsys.capella.common.lib.IdGenerator;
-import org.polarsys.capella.core.data.epbs.*;
 import org.polarsys.capella.core.data.epbs.ConfigurationItem;
 import org.polarsys.capella.core.data.epbs.ConfigurationItemKind;
 import org.polarsys.capella.core.data.epbs.ConfigurationItemPkg;
 import org.polarsys.capella.core.data.epbs.EPBSArchitecture;
 import org.polarsys.capella.core.data.epbs.EPBSArchitecturePkg;
-import org.polarsys.capella.core.data.epbs.EPBSContext;
 import org.polarsys.capella.core.data.epbs.EpbsFactory;
 import org.polarsys.capella.core.data.epbs.EpbsPackage;
 import org.polarsys.capella.core.data.epbs.PhysicalArchitectureRealization;
@@ -75,7 +73,6 @@ public class EpbsFactoryImpl extends EFactoryImpl implements EpbsFactory {
 		switch (eClass.getClassifierID()) {
 			case EpbsPackage.EPBS_ARCHITECTURE_PKG: return createEPBSArchitecturePkg();
 			case EpbsPackage.EPBS_ARCHITECTURE: return createEPBSArchitecture();
-			case EpbsPackage.EPBS_CONTEXT: return createEPBSContext();
 			case EpbsPackage.CONFIGURATION_ITEM_PKG: return createConfigurationItemPkg();
 			case EpbsPackage.CONFIGURATION_ITEM: return createConfigurationItem();
 			case EpbsPackage.PHYSICAL_ARCHITECTURE_REALIZATION: return createPhysicalArchitectureRealization();
@@ -145,22 +142,6 @@ public class EpbsFactoryImpl extends EFactoryImpl implements EpbsFactory {
 
     //end-capella-code
 		return epbsArchitecture;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EPBSContext createEPBSContext() {
-		EPBSContextImpl epbsContext = new EPBSContextImpl();
-    //begin-capella-code
-
-    epbsContext.setId(IdGenerator.createId());
-
-
-    //end-capella-code
-		return epbsContext;
 	}
 
 	/**
@@ -291,19 +272,6 @@ public class EpbsFactoryImpl extends EFactoryImpl implements EpbsFactory {
 	  EPBSArchitecture epbsArchitecture = createEPBSArchitecture();
 		epbsArchitecture.setName(name_p);	  
 		return epbsArchitecture;
-	}
-
-	/**
-	 * Creates class and sets its name
-	 * (This method comes from a customization of the standard EMF generator)
-	 *
-	 * @param name_p : default name of created element
-	 * @generated
-	 */
-	public EPBSContext createEPBSContext(String name_p) {
-	  EPBSContext epbsContext = createEPBSContext();
-		epbsContext.setName(name_p);	  
-		return epbsContext;
 	}
 
 	/**

@@ -25,7 +25,6 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.polarsys.capella.common.data.modellingcore.AbstractInformationFlow;
@@ -190,10 +189,6 @@ public class PartImpl extends AbstractInstanceImpl implements Part {
 		
 	}
 
-
-
-
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -237,10 +232,6 @@ public class PartImpl extends AbstractInstanceImpl implements Part {
 		
 	}
 
-
-
-
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -283,10 +274,6 @@ public class PartImpl extends AbstractInstanceImpl implements Part {
 	  }
 		
 	}
-
-
-
-
 
 	/**
 	 * <!-- begin-user-doc -->

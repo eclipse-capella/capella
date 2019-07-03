@@ -24,9 +24,7 @@ import org.polarsys.capella.core.data.oa.OperationalAnalysis;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.polarsys.capella.core.data.ctx.SystemAnalysis#getOwnedSystemContext <em>Owned System Context</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.ctx.SystemAnalysis#getOwnedSystem <em>Owned System</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.ctx.SystemAnalysis#getOwnedActorPkg <em>Owned Actor Pkg</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.ctx.SystemAnalysis#getOwnedSystemComponentPkg <em>Owned System Component Pkg</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.ctx.SystemAnalysis#getOwnedMissionPkg <em>Owned Mission Pkg</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.ctx.SystemAnalysis#getContainedCapabilityPkg <em>Contained Capability Pkg</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.ctx.SystemAnalysis#getContainedSystemFunctionPkg <em>Contained System Function Pkg</em>}</li>
@@ -50,128 +48,38 @@ public interface SystemAnalysis extends ComponentArchitecture {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned System Context</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Owned System Component Pkg</b></em>' containment reference.
 
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Owned System Context</em>' containment reference isn't clear,
+	 * If the meaning of the '<em>Owned System Component Pkg</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned System Context</em>' containment reference.
-	 * @see #setOwnedSystemContext(SystemContext)
-	 * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystemAnalysis_OwnedSystemContext()
+	 * @return the value of the '<em>Owned System Component Pkg</em>' containment reference.
+	 * @see #setOwnedSystemComponentPkg(SystemComponentPkg)
+	 * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystemAnalysis_OwnedSystemComponentPkg()
 	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the \"context\" for this architecture, e.g. the parts that make the environnement of the system (actors, ...) , plus the system itself\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::packagedElement' explanation='none' constraints='uml::Package::PackagedElement elements on which SystemContext stereotype or any stereotype that inherits from it is applied\r\nMultiplicity must be [0..1]'"
+	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Link to a package that contains System Components' constraints='none' comment/notes='none'"
 	 * @generated
 	 */
 
-	SystemContext getOwnedSystemContext();
+	SystemComponentPkg getOwnedSystemComponentPkg();
 
 
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.ctx.SystemAnalysis#getOwnedSystemContext <em>Owned System Context</em>}' containment reference.
+	 * Sets the value of the '{@link org.polarsys.capella.core.data.ctx.SystemAnalysis#getOwnedSystemComponentPkg <em>Owned System Component Pkg</em>}' containment reference.
 
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Owned System Context</em>' containment reference.
-	 * @see #getOwnedSystemContext()
+	 * @param value the new value of the '<em>Owned System Component Pkg</em>' containment reference.
+	 * @see #getOwnedSystemComponentPkg()
 	 * @generated
 	 */
 
-	void setOwnedSystemContext(SystemContext value);
-
-
-
-
-
-
-
-	/**
-	 * Returns the value of the '<em><b>Owned System</b></em>' containment reference.
-
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Owned System</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned System</em>' containment reference.
-	 * @see #setOwnedSystem(org.polarsys.capella.core.data.ctx.System)
-	 * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystemAnalysis_OwnedSystem()
-	 * @model containment="true" resolveProxies="true" required="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='packagedElement' featureOwner='Package'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ownedSystem'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Reference to the system component\r\n[source:Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::packagedElement' explanation='none' constraints='uml::Package::packagedElements elements on which System stereotype or any stereotype that inherits from it is applied\r\nMultiplicity must be [0..1]'"
-	 * @generated
-	 */
-
-	org.polarsys.capella.core.data.ctx.System getOwnedSystem();
-
-
-
-
-	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.ctx.SystemAnalysis#getOwnedSystem <em>Owned System</em>}' containment reference.
-
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Owned System</em>' containment reference.
-	 * @see #getOwnedSystem()
-	 * @generated
-	 */
-
-	void setOwnedSystem(org.polarsys.capella.core.data.ctx.System value);
-
-
-
-
-
-
-
-	/**
-	 * Returns the value of the '<em><b>Owned Actor Pkg</b></em>' containment reference.
-
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Owned Actor Pkg</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Actor Pkg</em>' containment reference.
-	 * @see #setOwnedActorPkg(ActorPkg)
-	 * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystemAnalysis_OwnedActorPkg()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='packagedElement' featureOwner='Package'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ownedActorPkg'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Link to a package that contains system analysis actors\r\n[source:Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::nestedPackage#uml::Package::packagedElement' explanation='none' constraints='uml::Package::nestedPackage elements on which ActorPkg stereotype or any stereotype that inherits from it is applied\r\nMultiplicity must be [0..1]'"
-	 * @generated
-	 */
-
-	ActorPkg getOwnedActorPkg();
-
-
-
-
-	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.ctx.SystemAnalysis#getOwnedActorPkg <em>Owned Actor Pkg</em>}' containment reference.
-
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Owned Actor Pkg</em>' containment reference.
-	 * @see #getOwnedActorPkg()
-	 * @generated
-	 */
-
-	void setOwnedActorPkg(ActorPkg value);
-
-
-
+	void setOwnedSystemComponentPkg(SystemComponentPkg value);
 
 
 

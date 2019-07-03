@@ -10283,229 +10283,13 @@ public interface FaPackage extends EPackage {
 	int COMPONENT_PORT__OWNED_PORT_ALLOCATIONS = InformationPackage.PORT__OWNED_PORT_ALLOCATIONS;
 
 	/**
-	 * The feature id for the '<em><b>Is Abstract</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_PORT__IS_ABSTRACT = InformationPackage.PORT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Is Static</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_PORT__IS_STATIC = InformationPackage.PORT_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_PORT__VISIBILITY = InformationPackage.PORT_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Abstract Type</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_PORT__ABSTRACT_TYPE = InformationPackage.PORT_FEATURE_COUNT + 3;
-
-	/**
-	 * The feature id for the '<em><b>Type</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_PORT__TYPE = InformationPackage.PORT_FEATURE_COUNT + 4;
-
-	/**
-	 * The feature id for the '<em><b>Ordered</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_PORT__ORDERED = InformationPackage.PORT_FEATURE_COUNT + 5;
-
-	/**
-	 * The feature id for the '<em><b>Unique</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_PORT__UNIQUE = InformationPackage.PORT_FEATURE_COUNT + 6;
-
-	/**
-	 * The feature id for the '<em><b>Min Inclusive</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_PORT__MIN_INCLUSIVE = InformationPackage.PORT_FEATURE_COUNT + 7;
-
-	/**
-	 * The feature id for the '<em><b>Max Inclusive</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_PORT__MAX_INCLUSIVE = InformationPackage.PORT_FEATURE_COUNT + 8;
-
-	/**
-	 * The feature id for the '<em><b>Owned Default Value</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_PORT__OWNED_DEFAULT_VALUE = InformationPackage.PORT_FEATURE_COUNT + 9;
-
-	/**
-	 * The feature id for the '<em><b>Owned Min Value</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_PORT__OWNED_MIN_VALUE = InformationPackage.PORT_FEATURE_COUNT + 10;
-
-	/**
-	 * The feature id for the '<em><b>Owned Max Value</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_PORT__OWNED_MAX_VALUE = InformationPackage.PORT_FEATURE_COUNT + 11;
-
-	/**
-	 * The feature id for the '<em><b>Owned Null Value</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_PORT__OWNED_NULL_VALUE = InformationPackage.PORT_FEATURE_COUNT + 12;
-
-	/**
-	 * The feature id for the '<em><b>Owned Min Card</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_PORT__OWNED_MIN_CARD = InformationPackage.PORT_FEATURE_COUNT + 13;
-
-	/**
-	 * The feature id for the '<em><b>Owned Min Length</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_PORT__OWNED_MIN_LENGTH = InformationPackage.PORT_FEATURE_COUNT + 14;
-
-	/**
-	 * The feature id for the '<em><b>Owned Max Card</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_PORT__OWNED_MAX_CARD = InformationPackage.PORT_FEATURE_COUNT + 15;
-
-	/**
-	 * The feature id for the '<em><b>Owned Max Length</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_PORT__OWNED_MAX_LENGTH = InformationPackage.PORT_FEATURE_COUNT + 16;
-
-	/**
-	 * The feature id for the '<em><b>Final</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_PORT__FINAL = InformationPackage.PORT_FEATURE_COUNT + 17;
-
-	/**
-	 * The feature id for the '<em><b>Aggregation Kind</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_PORT__AGGREGATION_KIND = InformationPackage.PORT_FEATURE_COUNT + 18;
-
-	/**
-	 * The feature id for the '<em><b>Is Derived</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_PORT__IS_DERIVED = InformationPackage.PORT_FEATURE_COUNT + 19;
-
-	/**
-	 * The feature id for the '<em><b>Is Read Only</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_PORT__IS_READ_ONLY = InformationPackage.PORT_FEATURE_COUNT + 20;
-
-	/**
-	 * The feature id for the '<em><b>Is Part Of Key</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_PORT__IS_PART_OF_KEY = InformationPackage.PORT_FEATURE_COUNT + 21;
-
-	/**
-	 * The feature id for the '<em><b>Association</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_PORT__ASSOCIATION = InformationPackage.PORT_FEATURE_COUNT + 22;
-
-	/**
-	 * The feature id for the '<em><b>Representing Instance Roles</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_PORT__REPRESENTING_INSTANCE_ROLES = InformationPackage.PORT_FEATURE_COUNT + 23;
-
-	/**
 	 * The feature id for the '<em><b>Incoming Information Flows</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_PORT__INCOMING_INFORMATION_FLOWS = InformationPackage.PORT_FEATURE_COUNT + 24;
+	int COMPONENT_PORT__INCOMING_INFORMATION_FLOWS = InformationPackage.PORT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Outgoing Information Flows</b></em>' reference list.
@@ -10514,7 +10298,7 @@ public interface FaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_PORT__OUTGOING_INFORMATION_FLOWS = InformationPackage.PORT_FEATURE_COUNT + 25;
+	int COMPONENT_PORT__OUTGOING_INFORMATION_FLOWS = InformationPackage.PORT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Information Flows</b></em>' reference list.
@@ -10523,7 +10307,214 @@ public interface FaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_PORT__INFORMATION_FLOWS = InformationPackage.PORT_FEATURE_COUNT + 26;
+	int COMPONENT_PORT__INFORMATION_FLOWS = InformationPackage.PORT_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Is Abstract</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_PORT__IS_ABSTRACT = InformationPackage.PORT_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Is Static</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_PORT__IS_STATIC = InformationPackage.PORT_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_PORT__VISIBILITY = InformationPackage.PORT_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>Abstract Type</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_PORT__ABSTRACT_TYPE = InformationPackage.PORT_FEATURE_COUNT + 6;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_PORT__TYPE = InformationPackage.PORT_FEATURE_COUNT + 7;
+
+	/**
+	 * The feature id for the '<em><b>Ordered</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_PORT__ORDERED = InformationPackage.PORT_FEATURE_COUNT + 8;
+
+	/**
+	 * The feature id for the '<em><b>Unique</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_PORT__UNIQUE = InformationPackage.PORT_FEATURE_COUNT + 9;
+
+	/**
+	 * The feature id for the '<em><b>Min Inclusive</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_PORT__MIN_INCLUSIVE = InformationPackage.PORT_FEATURE_COUNT + 10;
+
+	/**
+	 * The feature id for the '<em><b>Max Inclusive</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_PORT__MAX_INCLUSIVE = InformationPackage.PORT_FEATURE_COUNT + 11;
+
+	/**
+	 * The feature id for the '<em><b>Owned Default Value</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_PORT__OWNED_DEFAULT_VALUE = InformationPackage.PORT_FEATURE_COUNT + 12;
+
+	/**
+	 * The feature id for the '<em><b>Owned Min Value</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_PORT__OWNED_MIN_VALUE = InformationPackage.PORT_FEATURE_COUNT + 13;
+
+	/**
+	 * The feature id for the '<em><b>Owned Max Value</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_PORT__OWNED_MAX_VALUE = InformationPackage.PORT_FEATURE_COUNT + 14;
+
+	/**
+	 * The feature id for the '<em><b>Owned Null Value</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_PORT__OWNED_NULL_VALUE = InformationPackage.PORT_FEATURE_COUNT + 15;
+
+	/**
+	 * The feature id for the '<em><b>Owned Min Card</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_PORT__OWNED_MIN_CARD = InformationPackage.PORT_FEATURE_COUNT + 16;
+
+	/**
+	 * The feature id for the '<em><b>Owned Min Length</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_PORT__OWNED_MIN_LENGTH = InformationPackage.PORT_FEATURE_COUNT + 17;
+
+	/**
+	 * The feature id for the '<em><b>Owned Max Card</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_PORT__OWNED_MAX_CARD = InformationPackage.PORT_FEATURE_COUNT + 18;
+
+	/**
+	 * The feature id for the '<em><b>Owned Max Length</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_PORT__OWNED_MAX_LENGTH = InformationPackage.PORT_FEATURE_COUNT + 19;
+
+	/**
+	 * The feature id for the '<em><b>Final</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_PORT__FINAL = InformationPackage.PORT_FEATURE_COUNT + 20;
+
+	/**
+	 * The feature id for the '<em><b>Aggregation Kind</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_PORT__AGGREGATION_KIND = InformationPackage.PORT_FEATURE_COUNT + 21;
+
+	/**
+	 * The feature id for the '<em><b>Is Derived</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_PORT__IS_DERIVED = InformationPackage.PORT_FEATURE_COUNT + 22;
+
+	/**
+	 * The feature id for the '<em><b>Is Read Only</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_PORT__IS_READ_ONLY = InformationPackage.PORT_FEATURE_COUNT + 23;
+
+	/**
+	 * The feature id for the '<em><b>Is Part Of Key</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_PORT__IS_PART_OF_KEY = InformationPackage.PORT_FEATURE_COUNT + 24;
+
+	/**
+	 * The feature id for the '<em><b>Association</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_PORT__ASSOCIATION = InformationPackage.PORT_FEATURE_COUNT + 25;
 
 	/**
 	 * The feature id for the '<em><b>Orientation</b></em>' attribute.
@@ -10532,7 +10523,7 @@ public interface FaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_PORT__ORIENTATION = InformationPackage.PORT_FEATURE_COUNT + 27;
+	int COMPONENT_PORT__ORIENTATION = InformationPackage.PORT_FEATURE_COUNT + 26;
 
 	/**
 	 * The feature id for the '<em><b>Kind</b></em>' attribute.
@@ -10541,7 +10532,7 @@ public interface FaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_PORT__KIND = InformationPackage.PORT_FEATURE_COUNT + 28;
+	int COMPONENT_PORT__KIND = InformationPackage.PORT_FEATURE_COUNT + 27;
 
 	/**
 	 * The feature id for the '<em><b>Component Exchanges</b></em>' reference list.
@@ -10550,7 +10541,7 @@ public interface FaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_PORT__COMPONENT_EXCHANGES = InformationPackage.PORT_FEATURE_COUNT + 29;
+	int COMPONENT_PORT__COMPONENT_EXCHANGES = InformationPackage.PORT_FEATURE_COUNT + 28;
 
 	/**
 	 * The feature id for the '<em><b>Allocated Function Ports</b></em>' reference list.
@@ -10559,7 +10550,7 @@ public interface FaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_PORT__ALLOCATED_FUNCTION_PORTS = InformationPackage.PORT_FEATURE_COUNT + 30;
+	int COMPONENT_PORT__ALLOCATED_FUNCTION_PORTS = InformationPackage.PORT_FEATURE_COUNT + 29;
 
 	/**
 	 * The feature id for the '<em><b>Delegated Component Ports</b></em>' reference list.
@@ -10568,7 +10559,7 @@ public interface FaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_PORT__DELEGATED_COMPONENT_PORTS = InformationPackage.PORT_FEATURE_COUNT + 31;
+	int COMPONENT_PORT__DELEGATED_COMPONENT_PORTS = InformationPackage.PORT_FEATURE_COUNT + 30;
 
 	/**
 	 * The feature id for the '<em><b>Delegating Component Ports</b></em>' reference list.
@@ -10577,7 +10568,7 @@ public interface FaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_PORT__DELEGATING_COMPONENT_PORTS = InformationPackage.PORT_FEATURE_COUNT + 32;
+	int COMPONENT_PORT__DELEGATING_COMPONENT_PORTS = InformationPackage.PORT_FEATURE_COUNT + 31;
 
 	/**
 	 * The feature id for the '<em><b>Allocating Physical Ports</b></em>' reference list.
@@ -10586,7 +10577,7 @@ public interface FaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_PORT__ALLOCATING_PHYSICAL_PORTS = InformationPackage.PORT_FEATURE_COUNT + 33;
+	int COMPONENT_PORT__ALLOCATING_PHYSICAL_PORTS = InformationPackage.PORT_FEATURE_COUNT + 32;
 
 	/**
 	 * The feature id for the '<em><b>Realized Component Ports</b></em>' reference list.
@@ -10595,7 +10586,7 @@ public interface FaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_PORT__REALIZED_COMPONENT_PORTS = InformationPackage.PORT_FEATURE_COUNT + 34;
+	int COMPONENT_PORT__REALIZED_COMPONENT_PORTS = InformationPackage.PORT_FEATURE_COUNT + 33;
 
 	/**
 	 * The feature id for the '<em><b>Realizing Component Ports</b></em>' reference list.
@@ -10604,7 +10595,7 @@ public interface FaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_PORT__REALIZING_COMPONENT_PORTS = InformationPackage.PORT_FEATURE_COUNT + 35;
+	int COMPONENT_PORT__REALIZING_COMPONENT_PORTS = InformationPackage.PORT_FEATURE_COUNT + 34;
 
 	/**
 	 * The number of structural features of the '<em>Component Port</em>' class.
@@ -10613,7 +10604,7 @@ public interface FaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_PORT_FEATURE_COUNT = InformationPackage.PORT_FEATURE_COUNT + 36;
+	int COMPONENT_PORT_FEATURE_COUNT = InformationPackage.PORT_FEATURE_COUNT + 35;
 
 	/**
 	 * The meta object id for the '{@link org.polarsys.capella.core.data.fa.impl.ComponentPortAllocationImpl <em>Component Port Allocation</em>}' class.

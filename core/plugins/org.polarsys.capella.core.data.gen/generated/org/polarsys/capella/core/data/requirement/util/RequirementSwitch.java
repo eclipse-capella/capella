@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.polarsys.capella.core.data.requirement.util;
 
-import java.util.List;
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
@@ -27,7 +25,6 @@ import org.polarsys.capella.core.data.capellacore.Namespace;
 import org.polarsys.capella.core.data.capellacore.Relationship;
 import org.polarsys.capella.core.data.capellacore.Structure;
 import org.polarsys.capella.core.data.capellacore.Trace;
-import org.polarsys.capella.core.data.requirement.*;
 import org.polarsys.capella.core.data.requirement.Requirement;
 import org.polarsys.capella.core.data.requirement.RequirementPackage;
 import org.polarsys.capella.core.data.requirement.RequirementsPkg;

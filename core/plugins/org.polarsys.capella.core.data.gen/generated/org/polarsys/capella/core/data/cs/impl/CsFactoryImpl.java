@@ -16,8 +16,6 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.polarsys.capella.common.lib.IdGenerator;
-import org.polarsys.capella.core.data.cs.*;
-import org.polarsys.capella.core.data.cs.ActorCapabilityRealizationInvolvement;
 import org.polarsys.capella.core.data.cs.CsFactory;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.ExchangeItemAllocation;
@@ -36,7 +34,6 @@ import org.polarsys.capella.core.data.cs.PhysicalPathRealization;
 import org.polarsys.capella.core.data.cs.PhysicalPathReference;
 import org.polarsys.capella.core.data.cs.PhysicalPort;
 import org.polarsys.capella.core.data.cs.PhysicalPortRealization;
-import org.polarsys.capella.core.data.cs.SystemComponentCapabilityRealizationInvolvement;
 
 /**
  * <!-- begin-user-doc -->
@@ -87,8 +84,6 @@ public class CsFactoryImpl extends EFactoryImpl implements CsFactory {
 			case CsPackage.INTERFACE: return createInterface();
 			case CsPackage.INTERFACE_IMPLEMENTATION: return createInterfaceImplementation();
 			case CsPackage.INTERFACE_USE: return createInterfaceUse();
-			case CsPackage.ACTOR_CAPABILITY_REALIZATION_INVOLVEMENT: return createActorCapabilityRealizationInvolvement();
-			case CsPackage.SYSTEM_COMPONENT_CAPABILITY_REALIZATION_INVOLVEMENT: return createSystemComponentCapabilityRealizationInvolvement();
 			case CsPackage.EXCHANGE_ITEM_ALLOCATION: return createExchangeItemAllocation();
 			case CsPackage.PHYSICAL_LINK: return createPhysicalLink();
 			case CsPackage.PHYSICAL_LINK_CATEGORY: return createPhysicalLinkCategory();
@@ -183,38 +178,6 @@ public class CsFactoryImpl extends EFactoryImpl implements CsFactory {
 
     //end-capella-code
 		return interfaceUse;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ActorCapabilityRealizationInvolvement createActorCapabilityRealizationInvolvement() {
-		ActorCapabilityRealizationInvolvementImpl actorCapabilityRealizationInvolvement = new ActorCapabilityRealizationInvolvementImpl();
-    //begin-capella-code
-
-    actorCapabilityRealizationInvolvement.setId(IdGenerator.createId());
-
-
-    //end-capella-code
-		return actorCapabilityRealizationInvolvement;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public SystemComponentCapabilityRealizationInvolvement createSystemComponentCapabilityRealizationInvolvement() {
-		SystemComponentCapabilityRealizationInvolvementImpl systemComponentCapabilityRealizationInvolvement = new SystemComponentCapabilityRealizationInvolvementImpl();
-    //begin-capella-code
-
-    systemComponentCapabilityRealizationInvolvement.setId(IdGenerator.createId());
-
-
-    //end-capella-code
-		return systemComponentCapabilityRealizationInvolvement;
 	}
 
 	/**

@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.polarsys.capella.common.data.modellingcore;
 
-import org.eclipse.emf.common.util.EList;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Abstract Named Element</b></em>'.

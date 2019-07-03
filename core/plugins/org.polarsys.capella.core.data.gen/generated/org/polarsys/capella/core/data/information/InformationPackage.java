@@ -6894,782 +6894,6 @@ public interface InformationPackage extends EPackage {
 	int UNIT_FEATURE_COUNT = CapellacorePackage.NAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.polarsys.capella.core.data.information.impl.PartitionableElementImpl <em>Partitionable Element</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.polarsys.capella.core.data.information.impl.PartitionableElementImpl
-	 * @see org.polarsys.capella.core.data.information.impl.InformationPackageImpl#getPartitionableElement()
-	 * @generated
-	 */
-	int PARTITIONABLE_ELEMENT = 20;
-
-	/**
-	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITIONABLE_ELEMENT__OWNED_EXTENSIONS = CapellacorePackage.CLASSIFIER__OWNED_EXTENSIONS;
-
-	/**
-	 * The feature id for the '<em><b>Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITIONABLE_ELEMENT__ID = CapellacorePackage.CLASSIFIER__ID;
-
-	/**
-	 * The feature id for the '<em><b>Sid</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITIONABLE_ELEMENT__SID = CapellacorePackage.CLASSIFIER__SID;
-
-	/**
-	 * The feature id for the '<em><b>Constraints</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITIONABLE_ELEMENT__CONSTRAINTS = CapellacorePackage.CLASSIFIER__CONSTRAINTS;
-
-	/**
-	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITIONABLE_ELEMENT__OWNED_CONSTRAINTS = CapellacorePackage.CLASSIFIER__OWNED_CONSTRAINTS;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITIONABLE_ELEMENT__NAME = CapellacorePackage.CLASSIFIER__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Abstract Typed Elements</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITIONABLE_ELEMENT__ABSTRACT_TYPED_ELEMENTS = CapellacorePackage.CLASSIFIER__ABSTRACT_TYPED_ELEMENTS;
-
-	/**
-	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITIONABLE_ELEMENT__INCOMING_TRACES = CapellacorePackage.CLASSIFIER__INCOMING_TRACES;
-
-	/**
-	 * The feature id for the '<em><b>Outgoing Traces</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITIONABLE_ELEMENT__OUTGOING_TRACES = CapellacorePackage.CLASSIFIER__OUTGOING_TRACES;
-
-	/**
-	 * The feature id for the '<em><b>Visible In Doc</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITIONABLE_ELEMENT__VISIBLE_IN_DOC = CapellacorePackage.CLASSIFIER__VISIBLE_IN_DOC;
-
-	/**
-	 * The feature id for the '<em><b>Visible In LM</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITIONABLE_ELEMENT__VISIBLE_IN_LM = CapellacorePackage.CLASSIFIER__VISIBLE_IN_LM;
-
-	/**
-	 * The feature id for the '<em><b>Summary</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITIONABLE_ELEMENT__SUMMARY = CapellacorePackage.CLASSIFIER__SUMMARY;
-
-	/**
-	 * The feature id for the '<em><b>Description</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITIONABLE_ELEMENT__DESCRIPTION = CapellacorePackage.CLASSIFIER__DESCRIPTION;
-
-	/**
-	 * The feature id for the '<em><b>Review</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITIONABLE_ELEMENT__REVIEW = CapellacorePackage.CLASSIFIER__REVIEW;
-
-	/**
-	 * The feature id for the '<em><b>Owned Property Values</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITIONABLE_ELEMENT__OWNED_PROPERTY_VALUES = CapellacorePackage.CLASSIFIER__OWNED_PROPERTY_VALUES;
-
-	/**
-	 * The feature id for the '<em><b>Owned Enumeration Property Types</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITIONABLE_ELEMENT__OWNED_ENUMERATION_PROPERTY_TYPES = CapellacorePackage.CLASSIFIER__OWNED_ENUMERATION_PROPERTY_TYPES;
-
-	/**
-	 * The feature id for the '<em><b>Applied Property Values</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITIONABLE_ELEMENT__APPLIED_PROPERTY_VALUES = CapellacorePackage.CLASSIFIER__APPLIED_PROPERTY_VALUES;
-
-	/**
-	 * The feature id for the '<em><b>Owned Property Value Groups</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITIONABLE_ELEMENT__OWNED_PROPERTY_VALUE_GROUPS = CapellacorePackage.CLASSIFIER__OWNED_PROPERTY_VALUE_GROUPS;
-
-	/**
-	 * The feature id for the '<em><b>Applied Property Value Groups</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITIONABLE_ELEMENT__APPLIED_PROPERTY_VALUE_GROUPS = CapellacorePackage.CLASSIFIER__APPLIED_PROPERTY_VALUE_GROUPS;
-
-	/**
-	 * The feature id for the '<em><b>Status</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITIONABLE_ELEMENT__STATUS = CapellacorePackage.CLASSIFIER__STATUS;
-
-	/**
-	 * The feature id for the '<em><b>Features</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITIONABLE_ELEMENT__FEATURES = CapellacorePackage.CLASSIFIER__FEATURES;
-
-	/**
-	 * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITIONABLE_ELEMENT__APPLIED_REQUIREMENTS = CapellacorePackage.CLASSIFIER__APPLIED_REQUIREMENTS;
-
-	/**
-	 * The feature id for the '<em><b>Owned Traces</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITIONABLE_ELEMENT__OWNED_TRACES = CapellacorePackage.CLASSIFIER__OWNED_TRACES;
-
-	/**
-	 * The feature id for the '<em><b>Contained Generic Traces</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITIONABLE_ELEMENT__CONTAINED_GENERIC_TRACES = CapellacorePackage.CLASSIFIER__CONTAINED_GENERIC_TRACES;
-
-	/**
-	 * The feature id for the '<em><b>Contained Requirements Traces</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITIONABLE_ELEMENT__CONTAINED_REQUIREMENTS_TRACES = CapellacorePackage.CLASSIFIER__CONTAINED_REQUIREMENTS_TRACES;
-
-	/**
-	 * The feature id for the '<em><b>Naming Rules</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITIONABLE_ELEMENT__NAMING_RULES = CapellacorePackage.CLASSIFIER__NAMING_RULES;
-
-	/**
-	 * The feature id for the '<em><b>Typed Elements</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITIONABLE_ELEMENT__TYPED_ELEMENTS = CapellacorePackage.CLASSIFIER__TYPED_ELEMENTS;
-
-	/**
-	 * The feature id for the '<em><b>Abstract</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITIONABLE_ELEMENT__ABSTRACT = CapellacorePackage.CLASSIFIER__ABSTRACT;
-
-	/**
-	 * The feature id for the '<em><b>Owned Generalizations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITIONABLE_ELEMENT__OWNED_GENERALIZATIONS = CapellacorePackage.CLASSIFIER__OWNED_GENERALIZATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Super Generalizations</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITIONABLE_ELEMENT__SUPER_GENERALIZATIONS = CapellacorePackage.CLASSIFIER__SUPER_GENERALIZATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Sub Generalizations</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITIONABLE_ELEMENT__SUB_GENERALIZATIONS = CapellacorePackage.CLASSIFIER__SUB_GENERALIZATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Super</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITIONABLE_ELEMENT__SUPER = CapellacorePackage.CLASSIFIER__SUPER;
-
-	/**
-	 * The feature id for the '<em><b>Sub</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITIONABLE_ELEMENT__SUB = CapellacorePackage.CLASSIFIER__SUB;
-
-	/**
-	 * The feature id for the '<em><b>Owned Features</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITIONABLE_ELEMENT__OWNED_FEATURES = CapellacorePackage.CLASSIFIER__OWNED_FEATURES;
-
-	/**
-	 * The feature id for the '<em><b>Contained Properties</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITIONABLE_ELEMENT__CONTAINED_PROPERTIES = CapellacorePackage.CLASSIFIER__CONTAINED_PROPERTIES;
-
-	/**
-	 * The feature id for the '<em><b>Owned Partitions</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITIONABLE_ELEMENT__OWNED_PARTITIONS = CapellacorePackage.CLASSIFIER_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Representing Partitions</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITIONABLE_ELEMENT__REPRESENTING_PARTITIONS = CapellacorePackage.CLASSIFIER_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of structural features of the '<em>Partitionable Element</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITIONABLE_ELEMENT_FEATURE_COUNT = CapellacorePackage.CLASSIFIER_FEATURE_COUNT + 2;
-
-	/**
-	 * The meta object id for the '{@link org.polarsys.capella.core.data.information.Partition <em>Partition</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.polarsys.capella.core.data.information.Partition
-	 * @see org.polarsys.capella.core.data.information.impl.InformationPackageImpl#getPartition()
-	 * @generated
-	 */
-	int PARTITION = 21;
-
-	/**
-	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITION__OWNED_EXTENSIONS = ABSTRACT_INSTANCE__OWNED_EXTENSIONS;
-
-	/**
-	 * The feature id for the '<em><b>Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITION__ID = ABSTRACT_INSTANCE__ID;
-
-	/**
-	 * The feature id for the '<em><b>Sid</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITION__SID = ABSTRACT_INSTANCE__SID;
-
-	/**
-	 * The feature id for the '<em><b>Constraints</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITION__CONSTRAINTS = ABSTRACT_INSTANCE__CONSTRAINTS;
-
-	/**
-	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITION__OWNED_CONSTRAINTS = ABSTRACT_INSTANCE__OWNED_CONSTRAINTS;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITION__NAME = ABSTRACT_INSTANCE__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITION__INCOMING_TRACES = ABSTRACT_INSTANCE__INCOMING_TRACES;
-
-	/**
-	 * The feature id for the '<em><b>Outgoing Traces</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITION__OUTGOING_TRACES = ABSTRACT_INSTANCE__OUTGOING_TRACES;
-
-	/**
-	 * The feature id for the '<em><b>Visible In Doc</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITION__VISIBLE_IN_DOC = ABSTRACT_INSTANCE__VISIBLE_IN_DOC;
-
-	/**
-	 * The feature id for the '<em><b>Visible In LM</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITION__VISIBLE_IN_LM = ABSTRACT_INSTANCE__VISIBLE_IN_LM;
-
-	/**
-	 * The feature id for the '<em><b>Summary</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITION__SUMMARY = ABSTRACT_INSTANCE__SUMMARY;
-
-	/**
-	 * The feature id for the '<em><b>Description</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITION__DESCRIPTION = ABSTRACT_INSTANCE__DESCRIPTION;
-
-	/**
-	 * The feature id for the '<em><b>Review</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITION__REVIEW = ABSTRACT_INSTANCE__REVIEW;
-
-	/**
-	 * The feature id for the '<em><b>Owned Property Values</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITION__OWNED_PROPERTY_VALUES = ABSTRACT_INSTANCE__OWNED_PROPERTY_VALUES;
-
-	/**
-	 * The feature id for the '<em><b>Owned Enumeration Property Types</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITION__OWNED_ENUMERATION_PROPERTY_TYPES = ABSTRACT_INSTANCE__OWNED_ENUMERATION_PROPERTY_TYPES;
-
-	/**
-	 * The feature id for the '<em><b>Applied Property Values</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITION__APPLIED_PROPERTY_VALUES = ABSTRACT_INSTANCE__APPLIED_PROPERTY_VALUES;
-
-	/**
-	 * The feature id for the '<em><b>Owned Property Value Groups</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITION__OWNED_PROPERTY_VALUE_GROUPS = ABSTRACT_INSTANCE__OWNED_PROPERTY_VALUE_GROUPS;
-
-	/**
-	 * The feature id for the '<em><b>Applied Property Value Groups</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITION__APPLIED_PROPERTY_VALUE_GROUPS = ABSTRACT_INSTANCE__APPLIED_PROPERTY_VALUE_GROUPS;
-
-	/**
-	 * The feature id for the '<em><b>Status</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITION__STATUS = ABSTRACT_INSTANCE__STATUS;
-
-	/**
-	 * The feature id for the '<em><b>Features</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITION__FEATURES = ABSTRACT_INSTANCE__FEATURES;
-
-	/**
-	 * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITION__APPLIED_REQUIREMENTS = ABSTRACT_INSTANCE__APPLIED_REQUIREMENTS;
-
-	/**
-	 * The feature id for the '<em><b>Is Abstract</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITION__IS_ABSTRACT = ABSTRACT_INSTANCE__IS_ABSTRACT;
-
-	/**
-	 * The feature id for the '<em><b>Is Static</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITION__IS_STATIC = ABSTRACT_INSTANCE__IS_STATIC;
-
-	/**
-	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITION__VISIBILITY = ABSTRACT_INSTANCE__VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Abstract Type</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITION__ABSTRACT_TYPE = ABSTRACT_INSTANCE__ABSTRACT_TYPE;
-
-	/**
-	 * The feature id for the '<em><b>Type</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITION__TYPE = ABSTRACT_INSTANCE__TYPE;
-
-	/**
-	 * The feature id for the '<em><b>Ordered</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITION__ORDERED = ABSTRACT_INSTANCE__ORDERED;
-
-	/**
-	 * The feature id for the '<em><b>Unique</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITION__UNIQUE = ABSTRACT_INSTANCE__UNIQUE;
-
-	/**
-	 * The feature id for the '<em><b>Min Inclusive</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITION__MIN_INCLUSIVE = ABSTRACT_INSTANCE__MIN_INCLUSIVE;
-
-	/**
-	 * The feature id for the '<em><b>Max Inclusive</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITION__MAX_INCLUSIVE = ABSTRACT_INSTANCE__MAX_INCLUSIVE;
-
-	/**
-	 * The feature id for the '<em><b>Owned Default Value</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITION__OWNED_DEFAULT_VALUE = ABSTRACT_INSTANCE__OWNED_DEFAULT_VALUE;
-
-	/**
-	 * The feature id for the '<em><b>Owned Min Value</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITION__OWNED_MIN_VALUE = ABSTRACT_INSTANCE__OWNED_MIN_VALUE;
-
-	/**
-	 * The feature id for the '<em><b>Owned Max Value</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITION__OWNED_MAX_VALUE = ABSTRACT_INSTANCE__OWNED_MAX_VALUE;
-
-	/**
-	 * The feature id for the '<em><b>Owned Null Value</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITION__OWNED_NULL_VALUE = ABSTRACT_INSTANCE__OWNED_NULL_VALUE;
-
-	/**
-	 * The feature id for the '<em><b>Owned Min Card</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITION__OWNED_MIN_CARD = ABSTRACT_INSTANCE__OWNED_MIN_CARD;
-
-	/**
-	 * The feature id for the '<em><b>Owned Min Length</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITION__OWNED_MIN_LENGTH = ABSTRACT_INSTANCE__OWNED_MIN_LENGTH;
-
-	/**
-	 * The feature id for the '<em><b>Owned Max Card</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITION__OWNED_MAX_CARD = ABSTRACT_INSTANCE__OWNED_MAX_CARD;
-
-	/**
-	 * The feature id for the '<em><b>Owned Max Length</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITION__OWNED_MAX_LENGTH = ABSTRACT_INSTANCE__OWNED_MAX_LENGTH;
-
-	/**
-	 * The feature id for the '<em><b>Final</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITION__FINAL = ABSTRACT_INSTANCE__FINAL;
-
-	/**
-	 * The feature id for the '<em><b>Aggregation Kind</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITION__AGGREGATION_KIND = ABSTRACT_INSTANCE__AGGREGATION_KIND;
-
-	/**
-	 * The feature id for the '<em><b>Is Derived</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITION__IS_DERIVED = ABSTRACT_INSTANCE__IS_DERIVED;
-
-	/**
-	 * The feature id for the '<em><b>Is Read Only</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITION__IS_READ_ONLY = ABSTRACT_INSTANCE__IS_READ_ONLY;
-
-	/**
-	 * The feature id for the '<em><b>Is Part Of Key</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITION__IS_PART_OF_KEY = ABSTRACT_INSTANCE__IS_PART_OF_KEY;
-
-	/**
-	 * The feature id for the '<em><b>Association</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITION__ASSOCIATION = ABSTRACT_INSTANCE__ASSOCIATION;
-
-	/**
-	 * The feature id for the '<em><b>Representing Instance Roles</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITION__REPRESENTING_INSTANCE_ROLES = ABSTRACT_INSTANCE__REPRESENTING_INSTANCE_ROLES;
-
-	/**
-	 * The number of structural features of the '<em>Partition</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARTITION_FEATURE_COUNT = ABSTRACT_INSTANCE_FEATURE_COUNT + 0;
-
-	/**
 	 * The meta object id for the '{@link org.polarsys.capella.core.data.information.impl.PortImpl <em>Port</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7677,7 +6901,7 @@ public interface InformationPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.information.impl.InformationPackageImpl#getPort()
 	 * @generated
 	 */
-	int PORT = 22;
+	int PORT = 20;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -7966,7 +7190,7 @@ public interface InformationPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.information.impl.InformationPackageImpl#getPortRealization()
 	 * @generated
 	 */
-	int PORT_REALIZATION = 23;
+	int PORT_REALIZATION = 21;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -8210,7 +7434,7 @@ public interface InformationPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.information.impl.InformationPackageImpl#getPortAllocation()
 	 * @generated
 	 */
-	int PORT_ALLOCATION = 24;
+	int PORT_ALLOCATION = 22;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -8454,7 +7678,7 @@ public interface InformationPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.information.impl.InformationPackageImpl#getExchangeItem()
 	 * @generated
 	 */
-	int EXCHANGE_ITEM = 25;
+	int EXCHANGE_ITEM = 23;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -8851,7 +8075,7 @@ public interface InformationPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.information.impl.InformationPackageImpl#getExchangeItemElement()
 	 * @generated
 	 */
-	int EXCHANGE_ITEM_ELEMENT = 26;
+	int EXCHANGE_ITEM_ELEMENT = 24;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -9221,7 +8445,7 @@ public interface InformationPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.information.impl.InformationPackageImpl#getExchangeItemInstance()
 	 * @generated
 	 */
-	int EXCHANGE_ITEM_INSTANCE = 27;
+	int EXCHANGE_ITEM_INSTANCE = 25;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -9645,7 +8869,7 @@ public interface InformationPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.information.impl.InformationPackageImpl#getInformationRealization()
 	 * @generated
 	 */
-	int INFORMATION_REALIZATION = 28;
+	int INFORMATION_REALIZATION = 26;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -9871,7 +9095,7 @@ public interface InformationPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.information.impl.InformationPackageImpl#getExchangeItemRealization()
 	 * @generated
 	 */
-	int EXCHANGE_ITEM_REALIZATION = 29;
+	int EXCHANGE_ITEM_REALIZATION = 27;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -10115,7 +9339,7 @@ public interface InformationPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.information.impl.InformationPackageImpl#getAbstractEventOperation()
 	 * @generated
 	 */
-	int ABSTRACT_EVENT_OPERATION = 30;
+	int ABSTRACT_EVENT_OPERATION = 28;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -10332,7 +9556,7 @@ public interface InformationPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.information.impl.InformationPackageImpl#getAggregationKind()
 	 * @generated
 	 */
-	int AGGREGATION_KIND = 31;
+	int AGGREGATION_KIND = 29;
 
 	/**
 	 * The meta object id for the '{@link org.polarsys.capella.core.data.information.ParameterDirection <em>Parameter Direction</em>}' enum.
@@ -10342,7 +9566,7 @@ public interface InformationPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.information.impl.InformationPackageImpl#getParameterDirection()
 	 * @generated
 	 */
-	int PARAMETER_DIRECTION = 32;
+	int PARAMETER_DIRECTION = 30;
 
 	/**
 	 * The meta object id for the '{@link org.polarsys.capella.core.data.information.PassingMode <em>Passing Mode</em>}' enum.
@@ -10352,7 +9576,7 @@ public interface InformationPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.information.impl.InformationPackageImpl#getPassingMode()
 	 * @generated
 	 */
-	int PASSING_MODE = 33;
+	int PASSING_MODE = 31;
 
 	/**
 	 * The meta object id for the '{@link org.polarsys.capella.core.data.information.SynchronismKind <em>Synchronism Kind</em>}' enum.
@@ -10362,7 +9586,7 @@ public interface InformationPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.information.impl.InformationPackageImpl#getSynchronismKind()
 	 * @generated
 	 */
-	int SYNCHRONISM_KIND = 34;
+	int SYNCHRONISM_KIND = 32;
 
 	/**
 	 * The meta object id for the '{@link org.polarsys.capella.core.data.information.UnionKind <em>Union Kind</em>}' enum.
@@ -10372,7 +9596,7 @@ public interface InformationPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.information.impl.InformationPackageImpl#getUnionKind()
 	 * @generated
 	 */
-	int UNION_KIND = 35;
+	int UNION_KIND = 33;
 
 	/**
 	 * The meta object id for the '{@link org.polarsys.capella.core.data.information.ExchangeMechanism <em>Exchange Mechanism</em>}' enum.
@@ -10382,7 +9606,7 @@ public interface InformationPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.information.impl.InformationPackageImpl#getExchangeMechanism()
 	 * @generated
 	 */
-	int EXCHANGE_MECHANISM = 36;
+	int EXCHANGE_MECHANISM = 34;
 
 	/**
 	 * The meta object id for the '{@link org.polarsys.capella.core.data.information.ElementKind <em>Element Kind</em>}' enum.
@@ -10392,7 +9616,7 @@ public interface InformationPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.information.impl.InformationPackageImpl#getElementKind()
 	 * @generated
 	 */
-	int ELEMENT_KIND = 37;
+	int ELEMENT_KIND = 35;
 
 	/**
 	 * The meta object id for the '{@link org.polarsys.capella.core.data.information.CollectionKind <em>Collection Kind</em>}' enum.
@@ -10402,7 +9626,7 @@ public interface InformationPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.information.impl.InformationPackageImpl#getCollectionKind()
 	 * @generated
 	 */
-	int COLLECTION_KIND = 38;
+	int COLLECTION_KIND = 36;
 
 
 	/**
@@ -11374,48 +10598,6 @@ public interface InformationPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getUnit();
-
-	/**
-	 * Returns the meta object for class '{@link org.polarsys.capella.core.data.information.PartitionableElement <em>Partitionable Element</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Partitionable Element</em>'.
-	 * @see org.polarsys.capella.core.data.information.PartitionableElement
-	 * @generated
-	 */
-	EClass getPartitionableElement();
-
-	/**
-	 * Returns the meta object for the reference list '{@link org.polarsys.capella.core.data.information.PartitionableElement#getOwnedPartitions <em>Owned Partitions</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Owned Partitions</em>'.
-	 * @see org.polarsys.capella.core.data.information.PartitionableElement#getOwnedPartitions()
-	 * @see #getPartitionableElement()
-	 * @generated
-	 */
-	EReference getPartitionableElement_OwnedPartitions();
-
-	/**
-	 * Returns the meta object for the reference list '{@link org.polarsys.capella.core.data.information.PartitionableElement#getRepresentingPartitions <em>Representing Partitions</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Representing Partitions</em>'.
-	 * @see org.polarsys.capella.core.data.information.PartitionableElement#getRepresentingPartitions()
-	 * @see #getPartitionableElement()
-	 * @generated
-	 */
-	EReference getPartitionableElement_RepresentingPartitions();
-
-	/**
-	 * Returns the meta object for class '{@link org.polarsys.capella.core.data.information.Partition <em>Partition</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Partition</em>'.
-	 * @see org.polarsys.capella.core.data.information.Partition
-	 * @generated
-	 */
-	EClass getPartition();
 
 	/**
 	 * Returns the meta object for class '{@link org.polarsys.capella.core.data.information.Port <em>Port</em>}'.
@@ -12676,42 +11858,6 @@ public interface InformationPackage extends EPackage {
 		 * @generated
 		 */
 		EClass UNIT = eINSTANCE.getUnit();
-
-		/**
-		 * The meta object literal for the '{@link org.polarsys.capella.core.data.information.impl.PartitionableElementImpl <em>Partitionable Element</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.polarsys.capella.core.data.information.impl.PartitionableElementImpl
-		 * @see org.polarsys.capella.core.data.information.impl.InformationPackageImpl#getPartitionableElement()
-		 * @generated
-		 */
-		EClass PARTITIONABLE_ELEMENT = eINSTANCE.getPartitionableElement();
-
-		/**
-		 * The meta object literal for the '<em><b>Owned Partitions</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference PARTITIONABLE_ELEMENT__OWNED_PARTITIONS = eINSTANCE.getPartitionableElement_OwnedPartitions();
-
-		/**
-		 * The meta object literal for the '<em><b>Representing Partitions</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference PARTITIONABLE_ELEMENT__REPRESENTING_PARTITIONS = eINSTANCE.getPartitionableElement_RepresentingPartitions();
-
-		/**
-		 * The meta object literal for the '{@link org.polarsys.capella.core.data.information.Partition <em>Partition</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.polarsys.capella.core.data.information.Partition
-		 * @see org.polarsys.capella.core.data.information.impl.InformationPackageImpl#getPartition()
-		 * @generated
-		 */
-		EClass PARTITION = eINSTANCE.getPartition();
 
 		/**
 		 * The meta object literal for the '{@link org.polarsys.capella.core.data.information.impl.PortImpl <em>Port</em>}' class.

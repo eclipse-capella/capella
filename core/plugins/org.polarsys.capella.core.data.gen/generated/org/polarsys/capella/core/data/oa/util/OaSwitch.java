@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.polarsys.capella.core.data.oa.util;
 
-import java.util.List;
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
@@ -57,7 +55,7 @@ import org.polarsys.capella.core.data.capellacore.TypedElement;
 import org.polarsys.capella.core.data.cs.Block;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
-import org.polarsys.capella.core.data.cs.ComponentContext;
+import org.polarsys.capella.core.data.cs.ComponentPkg;
 import org.polarsys.capella.core.data.cs.InterfaceAllocator;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.AbstractFunctionalArchitecture;
@@ -71,11 +69,9 @@ import org.polarsys.capella.core.data.fa.FunctionalChain;
 import org.polarsys.capella.core.data.information.AbstractEventOperation;
 import org.polarsys.capella.core.data.information.AbstractInstance;
 import org.polarsys.capella.core.data.information.MultiplicityElement;
-import org.polarsys.capella.core.data.information.PartitionableElement;
 import org.polarsys.capella.core.data.information.Property;
 import org.polarsys.capella.core.data.information.communication.CommunicationLinkExchanger;
 import org.polarsys.capella.core.data.interaction.AbstractCapability;
-import org.polarsys.capella.core.data.oa.*;
 import org.polarsys.capella.core.data.oa.AbstractConceptItem;
 import org.polarsys.capella.core.data.oa.ActivityAllocation;
 import org.polarsys.capella.core.data.oa.CapabilityConfiguration;
@@ -93,11 +89,9 @@ import org.polarsys.capella.core.data.oa.Location;
 import org.polarsys.capella.core.data.oa.OaPackage;
 import org.polarsys.capella.core.data.oa.OperationalActivity;
 import org.polarsys.capella.core.data.oa.OperationalActivityPkg;
-import org.polarsys.capella.core.data.oa.OperationalActor;
 import org.polarsys.capella.core.data.oa.OperationalAnalysis;
 import org.polarsys.capella.core.data.oa.OperationalCapability;
 import org.polarsys.capella.core.data.oa.OperationalCapabilityPkg;
-import org.polarsys.capella.core.data.oa.OperationalContext;
 import org.polarsys.capella.core.data.oa.OperationalProcess;
 import org.polarsys.capella.core.data.oa.OperationalScenario;
 import org.polarsys.capella.core.data.oa.OrganisationalUnit;
@@ -405,6 +399,7 @@ public class OaSwitch<T> extends Switch<T> {
 			case OaPackage.ENTITY_PKG: {
 				EntityPkg entityPkg = (EntityPkg)theEObject;
 				T result = caseEntityPkg(entityPkg);
+				if (result == null) result = caseComponentPkg(entityPkg);
 				if (result == null) result = caseAbstractFunctionalStructure(entityPkg);
 				if (result == null) result = caseStructure(entityPkg);
 				if (result == null) result = caseNamespace(entityPkg);
@@ -427,13 +422,12 @@ public class OaSwitch<T> extends Switch<T> {
 				if (result == null) result = caseInvolvedElement(entity);
 				if (result == null) result = caseComponent(entity);
 				if (result == null) result = caseBlock(entity);
-				if (result == null) result = casePartitionableElement(entity);
+				if (result == null) result = caseClassifier(entity);
 				if (result == null) result = caseInterfaceAllocator(entity);
 				if (result == null) result = caseCommunicationLinkExchanger(entity);
 				if (result == null) result = caseAbstractFunctionalBlock(entity);
-				if (result == null) result = caseClassifier(entity);
-				if (result == null) result = caseModellingBlock(entity);
 				if (result == null) result = caseGeneralizableElement(entity);
+				if (result == null) result = caseModellingBlock(entity);
 				if (result == null) result = caseType(entity);
 				if (result == null) result = caseAbstractType(entity);
 				if (result == null) result = caseNamespace(entity);
@@ -511,13 +505,12 @@ public class OaSwitch<T> extends Switch<T> {
 				T result = caseAbstractConceptItem(abstractConceptItem);
 				if (result == null) result = caseComponent(abstractConceptItem);
 				if (result == null) result = caseBlock(abstractConceptItem);
-				if (result == null) result = casePartitionableElement(abstractConceptItem);
+				if (result == null) result = caseClassifier(abstractConceptItem);
 				if (result == null) result = caseInterfaceAllocator(abstractConceptItem);
 				if (result == null) result = caseCommunicationLinkExchanger(abstractConceptItem);
 				if (result == null) result = caseAbstractFunctionalBlock(abstractConceptItem);
-				if (result == null) result = caseClassifier(abstractConceptItem);
-				if (result == null) result = caseModellingBlock(abstractConceptItem);
 				if (result == null) result = caseGeneralizableElement(abstractConceptItem);
+				if (result == null) result = caseModellingBlock(abstractConceptItem);
 				if (result == null) result = caseType(abstractConceptItem);
 				if (result == null) result = caseAbstractType(abstractConceptItem);
 				if (result == null) result = caseNamespace(abstractConceptItem);
@@ -529,36 +522,6 @@ public class OaSwitch<T> extends Switch<T> {
 				if (result == null) result = casePublishableElement(abstractConceptItem);
 				if (result == null) result = caseModelElement(abstractConceptItem);
 				if (result == null) result = caseElement(abstractConceptItem);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case OaPackage.OPERATIONAL_ACTOR: {
-				OperationalActor operationalActor = (OperationalActor)theEObject;
-				T result = caseOperationalActor(operationalActor);
-				if (result == null) result = caseEntity(operationalActor);
-				if (result == null) result = caseAbstractConceptItem(operationalActor);
-				if (result == null) result = caseInformationsExchanger(operationalActor);
-				if (result == null) result = caseInvolvedElement(operationalActor);
-				if (result == null) result = caseComponent(operationalActor);
-				if (result == null) result = caseBlock(operationalActor);
-				if (result == null) result = casePartitionableElement(operationalActor);
-				if (result == null) result = caseInterfaceAllocator(operationalActor);
-				if (result == null) result = caseCommunicationLinkExchanger(operationalActor);
-				if (result == null) result = caseAbstractFunctionalBlock(operationalActor);
-				if (result == null) result = caseClassifier(operationalActor);
-				if (result == null) result = caseModellingBlock(operationalActor);
-				if (result == null) result = caseGeneralizableElement(operationalActor);
-				if (result == null) result = caseType(operationalActor);
-				if (result == null) result = caseAbstractType(operationalActor);
-				if (result == null) result = caseNamespace(operationalActor);
-				if (result == null) result = caseNamedElement(operationalActor);
-				if (result == null) result = caseAbstractNamedElement(operationalActor);
-				if (result == null) result = caseCapellaElement(operationalActor);
-				if (result == null) result = caseExtensibleElement(operationalActor);
-				if (result == null) result = caseTraceableElement(operationalActor);
-				if (result == null) result = casePublishableElement(operationalActor);
-				if (result == null) result = caseModelElement(operationalActor);
-				if (result == null) result = caseElement(operationalActor);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -624,13 +587,12 @@ public class OaSwitch<T> extends Switch<T> {
 				if (result == null) result = caseAbstractConceptItem(location);
 				if (result == null) result = caseComponent(location);
 				if (result == null) result = caseBlock(location);
-				if (result == null) result = casePartitionableElement(location);
+				if (result == null) result = caseClassifier(location);
 				if (result == null) result = caseInterfaceAllocator(location);
 				if (result == null) result = caseCommunicationLinkExchanger(location);
 				if (result == null) result = caseAbstractFunctionalBlock(location);
-				if (result == null) result = caseClassifier(location);
-				if (result == null) result = caseModellingBlock(location);
 				if (result == null) result = caseGeneralizableElement(location);
+				if (result == null) result = caseModellingBlock(location);
 				if (result == null) result = caseType(location);
 				if (result == null) result = caseAbstractType(location);
 				if (result == null) result = caseNamespace(location);
@@ -651,13 +613,12 @@ public class OaSwitch<T> extends Switch<T> {
 				if (result == null) result = caseAbstractConceptItem(capabilityConfiguration);
 				if (result == null) result = caseComponent(capabilityConfiguration);
 				if (result == null) result = caseBlock(capabilityConfiguration);
-				if (result == null) result = casePartitionableElement(capabilityConfiguration);
+				if (result == null) result = caseClassifier(capabilityConfiguration);
 				if (result == null) result = caseInterfaceAllocator(capabilityConfiguration);
 				if (result == null) result = caseCommunicationLinkExchanger(capabilityConfiguration);
 				if (result == null) result = caseAbstractFunctionalBlock(capabilityConfiguration);
-				if (result == null) result = caseClassifier(capabilityConfiguration);
-				if (result == null) result = caseModellingBlock(capabilityConfiguration);
 				if (result == null) result = caseGeneralizableElement(capabilityConfiguration);
+				if (result == null) result = caseModellingBlock(capabilityConfiguration);
 				if (result == null) result = caseType(capabilityConfiguration);
 				if (result == null) result = caseAbstractType(capabilityConfiguration);
 				if (result == null) result = caseNamespace(capabilityConfiguration);
@@ -708,33 +669,6 @@ public class OaSwitch<T> extends Switch<T> {
 				if (result == null) result = caseModelElement(entityOperationalCapabilityInvolvement);
 				if (result == null) result = caseExtensibleElement(entityOperationalCapabilityInvolvement);
 				if (result == null) result = caseElement(entityOperationalCapabilityInvolvement);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case OaPackage.OPERATIONAL_CONTEXT: {
-				OperationalContext operationalContext = (OperationalContext)theEObject;
-				T result = caseOperationalContext(operationalContext);
-				if (result == null) result = caseComponentContext(operationalContext);
-				if (result == null) result = caseComponent(operationalContext);
-				if (result == null) result = caseBlock(operationalContext);
-				if (result == null) result = casePartitionableElement(operationalContext);
-				if (result == null) result = caseInterfaceAllocator(operationalContext);
-				if (result == null) result = caseCommunicationLinkExchanger(operationalContext);
-				if (result == null) result = caseAbstractFunctionalBlock(operationalContext);
-				if (result == null) result = caseClassifier(operationalContext);
-				if (result == null) result = caseModellingBlock(operationalContext);
-				if (result == null) result = caseGeneralizableElement(operationalContext);
-				if (result == null) result = caseType(operationalContext);
-				if (result == null) result = caseAbstractType(operationalContext);
-				if (result == null) result = caseNamespace(operationalContext);
-				if (result == null) result = caseNamedElement(operationalContext);
-				if (result == null) result = caseAbstractNamedElement(operationalContext);
-				if (result == null) result = caseCapellaElement(operationalContext);
-				if (result == null) result = caseExtensibleElement(operationalContext);
-				if (result == null) result = caseTraceableElement(operationalContext);
-				if (result == null) result = casePublishableElement(operationalContext);
-				if (result == null) result = caseModelElement(operationalContext);
-				if (result == null) result = caseElement(operationalContext);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1043,21 +977,6 @@ public class OaSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Operational Actor</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Operational Actor</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseOperationalActor(OperationalActor object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Community Of Interest</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -1174,21 +1093,6 @@ public class OaSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseEntityOperationalCapabilityInvolvement(EntityOperationalCapabilityInvolvement object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Operational Context</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Operational Context</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseOperationalContext(OperationalContext object) {
 		return null;
 	}
 
@@ -1838,6 +1742,21 @@ public class OaSwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Component Pkg</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Component Pkg</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseComponentPkg(ComponentPkg object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Type</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -1924,21 +1843,6 @@ public class OaSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseClassifier(Classifier object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Partitionable Element</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Partitionable Element</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T casePartitionableElement(PartitionableElement object) {
 		return null;
 	}
 
@@ -2104,21 +2008,6 @@ public class OaSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseInvolvement(Involvement object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Component Context</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Component Context</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseComponentContext(ComponentContext object) {
 		return null;
 	}
 

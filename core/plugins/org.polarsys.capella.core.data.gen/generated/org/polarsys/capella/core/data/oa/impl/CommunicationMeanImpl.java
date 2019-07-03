@@ -33,7 +33,6 @@ import org.polarsys.capella.common.data.activity.ActivityEdge;
 import org.polarsys.capella.common.data.activity.ActivityExchange;
 import org.polarsys.capella.common.data.activity.ActivityPackage;
 import org.polarsys.capella.common.data.behavior.AbstractEvent;
-import org.polarsys.capella.common.data.modellingcore.AbstractConstraint;
 import org.polarsys.capella.common.data.modellingcore.AbstractExchangeItem;
 import org.polarsys.capella.common.data.modellingcore.AbstractInformationFlow;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;

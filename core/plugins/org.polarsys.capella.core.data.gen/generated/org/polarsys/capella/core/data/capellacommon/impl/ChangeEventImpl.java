@@ -13,11 +13,8 @@
 package org.polarsys.capella.core.data.capellacommon.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
 import org.polarsys.capella.core.data.capellacommon.ChangeEvent;
 import org.polarsys.capella.core.data.capellacommon.ChangeEventKind;

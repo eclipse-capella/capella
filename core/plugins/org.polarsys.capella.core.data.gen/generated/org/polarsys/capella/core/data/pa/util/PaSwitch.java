@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.polarsys.capella.core.data.pa.util;
 
-import java.util.List;
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
@@ -47,21 +45,16 @@ import org.polarsys.capella.core.data.capellacore.Relationship;
 import org.polarsys.capella.core.data.capellacore.Structure;
 import org.polarsys.capella.core.data.capellacore.Type;
 import org.polarsys.capella.core.data.capellacore.TypedElement;
-import org.polarsys.capella.core.data.cs.AbstractActor;
 import org.polarsys.capella.core.data.cs.AbstractPhysicalArtifact;
 import org.polarsys.capella.core.data.cs.ArchitectureAllocation;
 import org.polarsys.capella.core.data.cs.Block;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.BlockArchitecturePkg;
 import org.polarsys.capella.core.data.cs.Component;
-import org.polarsys.capella.core.data.cs.ComponentAllocation;
 import org.polarsys.capella.core.data.cs.ComponentArchitecture;
-import org.polarsys.capella.core.data.cs.ComponentContext;
-import org.polarsys.capella.core.data.cs.DeployableElement;
-import org.polarsys.capella.core.data.cs.DeploymentTarget;
+import org.polarsys.capella.core.data.cs.ComponentPkg;
 import org.polarsys.capella.core.data.cs.InterfaceAllocation;
 import org.polarsys.capella.core.data.cs.InterfaceAllocator;
-import org.polarsys.capella.core.data.cs.SystemComponent;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.AbstractFunctionalArchitecture;
 import org.polarsys.capella.core.data.fa.AbstractFunctionalBlock;
@@ -71,23 +64,15 @@ import org.polarsys.capella.core.data.fa.FunctionPkg;
 import org.polarsys.capella.core.data.information.AbstractInstance;
 import org.polarsys.capella.core.data.information.AssociationPkg;
 import org.polarsys.capella.core.data.information.MultiplicityElement;
-import org.polarsys.capella.core.data.information.PartitionableElement;
 import org.polarsys.capella.core.data.information.Property;
 import org.polarsys.capella.core.data.information.communication.CommunicationLinkExchanger;
-import org.polarsys.capella.core.data.pa.*;
-import org.polarsys.capella.core.data.pa.AbstractPhysicalComponent;
-import org.polarsys.capella.core.data.pa.LogicalActorRealization;
 import org.polarsys.capella.core.data.pa.LogicalArchitectureRealization;
-import org.polarsys.capella.core.data.pa.LogicalComponentRealization;
 import org.polarsys.capella.core.data.pa.LogicalInterfaceRealization;
 import org.polarsys.capella.core.data.pa.PaPackage;
-import org.polarsys.capella.core.data.pa.PhysicalActor;
-import org.polarsys.capella.core.data.pa.PhysicalActorPkg;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecturePkg;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentPkg;
-import org.polarsys.capella.core.data.pa.PhysicalContext;
 import org.polarsys.capella.core.data.pa.PhysicalFunction;
 import org.polarsys.capella.core.data.pa.PhysicalFunctionPkg;
 import org.polarsys.capella.core.data.pa.PhysicalNode;
@@ -239,92 +224,40 @@ public class PaSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case PaPackage.ABSTRACT_PHYSICAL_COMPONENT: {
-				AbstractPhysicalComponent abstractPhysicalComponent = (AbstractPhysicalComponent)theEObject;
-				T result = caseAbstractPhysicalComponent(abstractPhysicalComponent);
-				if (result == null) result = caseSystemComponent(abstractPhysicalComponent);
-				if (result == null) result = caseDeployableElement(abstractPhysicalComponent);
-				if (result == null) result = caseDeploymentTarget(abstractPhysicalComponent);
-				if (result == null) result = caseComponent(abstractPhysicalComponent);
-				if (result == null) result = caseCapabilityRealizationInvolvedElement(abstractPhysicalComponent);
-				if (result == null) result = caseBlock(abstractPhysicalComponent);
-				if (result == null) result = casePartitionableElement(abstractPhysicalComponent);
-				if (result == null) result = caseInterfaceAllocator(abstractPhysicalComponent);
-				if (result == null) result = caseCommunicationLinkExchanger(abstractPhysicalComponent);
-				if (result == null) result = caseInvolvedElement(abstractPhysicalComponent);
-				if (result == null) result = caseAbstractFunctionalBlock(abstractPhysicalComponent);
-				if (result == null) result = caseClassifier(abstractPhysicalComponent);
-				if (result == null) result = caseModellingBlock(abstractPhysicalComponent);
-				if (result == null) result = caseGeneralizableElement(abstractPhysicalComponent);
-				if (result == null) result = caseType(abstractPhysicalComponent);
-				if (result == null) result = caseAbstractType(abstractPhysicalComponent);
-				if (result == null) result = caseNamespace(abstractPhysicalComponent);
-				if (result == null) result = caseNamedElement(abstractPhysicalComponent);
-				if (result == null) result = caseAbstractNamedElement(abstractPhysicalComponent);
-				if (result == null) result = caseCapellaElement(abstractPhysicalComponent);
-				if (result == null) result = caseExtensibleElement(abstractPhysicalComponent);
-				if (result == null) result = caseTraceableElement(abstractPhysicalComponent);
-				if (result == null) result = casePublishableElement(abstractPhysicalComponent);
-				if (result == null) result = caseModelElement(abstractPhysicalComponent);
-				if (result == null) result = caseElement(abstractPhysicalComponent);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case PaPackage.PHYSICAL_COMPONENT: {
 				PhysicalComponent physicalComponent = (PhysicalComponent)theEObject;
 				T result = casePhysicalComponent(physicalComponent);
-				if (result == null) result = caseAbstractPhysicalComponent(physicalComponent);
 				if (result == null) result = caseAbstractPhysicalArtifact(physicalComponent);
-				if (result == null) result = caseSystemComponent(physicalComponent);
-				if (result == null) result = caseDeployableElement(physicalComponent);
-				if (result == null) result = caseDeploymentTarget(physicalComponent);
 				if (result == null) result = caseComponent(physicalComponent);
 				if (result == null) result = caseCapabilityRealizationInvolvedElement(physicalComponent);
 				if (result == null) result = caseBlock(physicalComponent);
-				if (result == null) result = casePartitionableElement(physicalComponent);
+				if (result == null) result = caseClassifier(physicalComponent);
 				if (result == null) result = caseInterfaceAllocator(physicalComponent);
 				if (result == null) result = caseCommunicationLinkExchanger(physicalComponent);
 				if (result == null) result = caseInvolvedElement(physicalComponent);
-				if (result == null) result = caseAbstractFunctionalBlock(physicalComponent);
-				if (result == null) result = caseClassifier(physicalComponent);
-				if (result == null) result = caseModellingBlock(physicalComponent);
-				if (result == null) result = caseGeneralizableElement(physicalComponent);
-				if (result == null) result = caseType(physicalComponent);
-				if (result == null) result = caseAbstractType(physicalComponent);
-				if (result == null) result = caseNamespace(physicalComponent);
-				if (result == null) result = caseNamedElement(physicalComponent);
-				if (result == null) result = caseAbstractNamedElement(physicalComponent);
-				if (result == null) result = caseCapellaElement(physicalComponent);
-				if (result == null) result = caseExtensibleElement(physicalComponent);
 				if (result == null) result = caseTraceableElement(physicalComponent);
 				if (result == null) result = casePublishableElement(physicalComponent);
-				if (result == null) result = caseModelElement(physicalComponent);
+				if (result == null) result = caseAbstractFunctionalBlock(physicalComponent);
+				if (result == null) result = caseGeneralizableElement(physicalComponent);
+				if (result == null) result = caseModellingBlock(physicalComponent);
+				if (result == null) result = caseType(physicalComponent);
+				if (result == null) result = caseExtensibleElement(physicalComponent);
+				if (result == null) result = caseAbstractType(physicalComponent);
+				if (result == null) result = caseNamespace(physicalComponent);
 				if (result == null) result = caseElement(physicalComponent);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case PaPackage.PHYSICAL_ACTOR_PKG: {
-				PhysicalActorPkg physicalActorPkg = (PhysicalActorPkg)theEObject;
-				T result = casePhysicalActorPkg(physicalActorPkg);
-				if (result == null) result = caseAbstractFunctionalStructure(physicalActorPkg);
-				if (result == null) result = caseStructure(physicalActorPkg);
-				if (result == null) result = caseNamespace(physicalActorPkg);
-				if (result == null) result = caseNamedElement(physicalActorPkg);
-				if (result == null) result = caseAbstractNamedElement(physicalActorPkg);
-				if (result == null) result = caseCapellaElement(physicalActorPkg);
-				if (result == null) result = caseTraceableElement(physicalActorPkg);
-				if (result == null) result = casePublishableElement(physicalActorPkg);
-				if (result == null) result = caseModelElement(physicalActorPkg);
-				if (result == null) result = caseExtensibleElement(physicalActorPkg);
-				if (result == null) result = caseElement(physicalActorPkg);
+				if (result == null) result = caseNamedElement(physicalComponent);
+				if (result == null) result = caseCapellaElement(physicalComponent);
+				if (result == null) result = caseModelElement(physicalComponent);
+				if (result == null) result = caseAbstractNamedElement(physicalComponent);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case PaPackage.PHYSICAL_COMPONENT_PKG: {
 				PhysicalComponentPkg physicalComponentPkg = (PhysicalComponentPkg)theEObject;
 				T result = casePhysicalComponentPkg(physicalComponentPkg);
-				if (result == null) result = caseAbstractFunctionalStructure(physicalComponentPkg);
+				if (result == null) result = caseComponentPkg(physicalComponentPkg);
 				if (result == null) result = caseAssociationPkg(physicalComponentPkg);
+				if (result == null) result = caseAbstractFunctionalStructure(physicalComponentPkg);
 				if (result == null) result = caseStructure(physicalComponentPkg);
 				if (result == null) result = caseNamespace(physicalComponentPkg);
 				if (result == null) result = caseNamedElement(physicalComponentPkg);
@@ -338,87 +271,32 @@ public class PaSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case PaPackage.PHYSICAL_ACTOR: {
-				PhysicalActor physicalActor = (PhysicalActor)theEObject;
-				T result = casePhysicalActor(physicalActor);
-				if (result == null) result = caseAbstractPhysicalComponent(physicalActor);
-				if (result == null) result = caseAbstractActor(physicalActor);
-				if (result == null) result = caseSystemComponent(physicalActor);
-				if (result == null) result = caseDeployableElement(physicalActor);
-				if (result == null) result = caseDeploymentTarget(physicalActor);
-				if (result == null) result = caseComponent(physicalActor);
-				if (result == null) result = caseCapabilityRealizationInvolvedElement(physicalActor);
-				if (result == null) result = caseBlock(physicalActor);
-				if (result == null) result = casePartitionableElement(physicalActor);
-				if (result == null) result = caseInterfaceAllocator(physicalActor);
-				if (result == null) result = caseCommunicationLinkExchanger(physicalActor);
-				if (result == null) result = caseInvolvedElement(physicalActor);
-				if (result == null) result = caseAbstractFunctionalBlock(physicalActor);
-				if (result == null) result = caseClassifier(physicalActor);
-				if (result == null) result = caseModellingBlock(physicalActor);
-				if (result == null) result = caseGeneralizableElement(physicalActor);
-				if (result == null) result = caseType(physicalActor);
-				if (result == null) result = caseAbstractType(physicalActor);
-				if (result == null) result = caseNamespace(physicalActor);
-				if (result == null) result = caseNamedElement(physicalActor);
-				if (result == null) result = caseAbstractNamedElement(physicalActor);
-				if (result == null) result = caseCapellaElement(physicalActor);
-				if (result == null) result = caseExtensibleElement(physicalActor);
-				if (result == null) result = caseTraceableElement(physicalActor);
-				if (result == null) result = casePublishableElement(physicalActor);
-				if (result == null) result = caseModelElement(physicalActor);
-				if (result == null) result = caseElement(physicalActor);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case PaPackage.LOGICAL_ACTOR_REALIZATION: {
-				LogicalActorRealization logicalActorRealization = (LogicalActorRealization)theEObject;
-				T result = caseLogicalActorRealization(logicalActorRealization);
-				if (result == null) result = caseComponentAllocation(logicalActorRealization);
-				if (result == null) result = caseAllocation(logicalActorRealization);
-				if (result == null) result = caseRelationship(logicalActorRealization);
-				if (result == null) result = caseAbstractTrace(logicalActorRealization);
-				if (result == null) result = caseAbstractRelationship(logicalActorRealization);
-				if (result == null) result = caseCapellaElement(logicalActorRealization);
-				if (result == null) result = caseTraceableElement(logicalActorRealization);
-				if (result == null) result = casePublishableElement(logicalActorRealization);
-				if (result == null) result = caseModelElement(logicalActorRealization);
-				if (result == null) result = caseExtensibleElement(logicalActorRealization);
-				if (result == null) result = caseElement(logicalActorRealization);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case PaPackage.PHYSICAL_NODE: {
 				PhysicalNode physicalNode = (PhysicalNode)theEObject;
 				T result = casePhysicalNode(physicalNode);
 				if (result == null) result = casePhysicalComponent(physicalNode);
-				if (result == null) result = caseAbstractPhysicalComponent(physicalNode);
 				if (result == null) result = caseAbstractPhysicalArtifact(physicalNode);
-				if (result == null) result = caseSystemComponent(physicalNode);
-				if (result == null) result = caseDeployableElement(physicalNode);
-				if (result == null) result = caseDeploymentTarget(physicalNode);
 				if (result == null) result = caseComponent(physicalNode);
 				if (result == null) result = caseCapabilityRealizationInvolvedElement(physicalNode);
 				if (result == null) result = caseBlock(physicalNode);
-				if (result == null) result = casePartitionableElement(physicalNode);
+				if (result == null) result = caseClassifier(physicalNode);
 				if (result == null) result = caseInterfaceAllocator(physicalNode);
 				if (result == null) result = caseCommunicationLinkExchanger(physicalNode);
 				if (result == null) result = caseInvolvedElement(physicalNode);
-				if (result == null) result = caseAbstractFunctionalBlock(physicalNode);
-				if (result == null) result = caseClassifier(physicalNode);
-				if (result == null) result = caseModellingBlock(physicalNode);
-				if (result == null) result = caseGeneralizableElement(physicalNode);
-				if (result == null) result = caseType(physicalNode);
-				if (result == null) result = caseAbstractType(physicalNode);
-				if (result == null) result = caseNamespace(physicalNode);
-				if (result == null) result = caseNamedElement(physicalNode);
-				if (result == null) result = caseAbstractNamedElement(physicalNode);
-				if (result == null) result = caseCapellaElement(physicalNode);
-				if (result == null) result = caseExtensibleElement(physicalNode);
 				if (result == null) result = caseTraceableElement(physicalNode);
 				if (result == null) result = casePublishableElement(physicalNode);
-				if (result == null) result = caseModelElement(physicalNode);
+				if (result == null) result = caseAbstractFunctionalBlock(physicalNode);
+				if (result == null) result = caseGeneralizableElement(physicalNode);
+				if (result == null) result = caseModellingBlock(physicalNode);
+				if (result == null) result = caseType(physicalNode);
+				if (result == null) result = caseExtensibleElement(physicalNode);
+				if (result == null) result = caseAbstractType(physicalNode);
+				if (result == null) result = caseNamespace(physicalNode);
 				if (result == null) result = caseElement(physicalNode);
+				if (result == null) result = caseNamedElement(physicalNode);
+				if (result == null) result = caseCapellaElement(physicalNode);
+				if (result == null) result = caseModelElement(physicalNode);
+				if (result == null) result = caseAbstractNamedElement(physicalNode);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -439,23 +317,6 @@ public class PaSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case PaPackage.LOGICAL_COMPONENT_REALIZATION: {
-				LogicalComponentRealization logicalComponentRealization = (LogicalComponentRealization)theEObject;
-				T result = caseLogicalComponentRealization(logicalComponentRealization);
-				if (result == null) result = caseComponentAllocation(logicalComponentRealization);
-				if (result == null) result = caseAllocation(logicalComponentRealization);
-				if (result == null) result = caseRelationship(logicalComponentRealization);
-				if (result == null) result = caseAbstractTrace(logicalComponentRealization);
-				if (result == null) result = caseAbstractRelationship(logicalComponentRealization);
-				if (result == null) result = caseCapellaElement(logicalComponentRealization);
-				if (result == null) result = caseTraceableElement(logicalComponentRealization);
-				if (result == null) result = casePublishableElement(logicalComponentRealization);
-				if (result == null) result = caseModelElement(logicalComponentRealization);
-				if (result == null) result = caseExtensibleElement(logicalComponentRealization);
-				if (result == null) result = caseElement(logicalComponentRealization);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case PaPackage.LOGICAL_INTERFACE_REALIZATION: {
 				LogicalInterfaceRealization logicalInterfaceRealization = (LogicalInterfaceRealization)theEObject;
 				T result = caseLogicalInterfaceRealization(logicalInterfaceRealization);
@@ -470,33 +331,6 @@ public class PaSwitch<T> extends Switch<T> {
 				if (result == null) result = caseModelElement(logicalInterfaceRealization);
 				if (result == null) result = caseExtensibleElement(logicalInterfaceRealization);
 				if (result == null) result = caseElement(logicalInterfaceRealization);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case PaPackage.PHYSICAL_CONTEXT: {
-				PhysicalContext physicalContext = (PhysicalContext)theEObject;
-				T result = casePhysicalContext(physicalContext);
-				if (result == null) result = caseComponentContext(physicalContext);
-				if (result == null) result = caseComponent(physicalContext);
-				if (result == null) result = caseBlock(physicalContext);
-				if (result == null) result = casePartitionableElement(physicalContext);
-				if (result == null) result = caseInterfaceAllocator(physicalContext);
-				if (result == null) result = caseCommunicationLinkExchanger(physicalContext);
-				if (result == null) result = caseAbstractFunctionalBlock(physicalContext);
-				if (result == null) result = caseClassifier(physicalContext);
-				if (result == null) result = caseModellingBlock(physicalContext);
-				if (result == null) result = caseGeneralizableElement(physicalContext);
-				if (result == null) result = caseType(physicalContext);
-				if (result == null) result = caseAbstractType(physicalContext);
-				if (result == null) result = caseNamespace(physicalContext);
-				if (result == null) result = caseNamedElement(physicalContext);
-				if (result == null) result = caseAbstractNamedElement(physicalContext);
-				if (result == null) result = caseCapellaElement(physicalContext);
-				if (result == null) result = caseExtensibleElement(physicalContext);
-				if (result == null) result = caseTraceableElement(physicalContext);
-				if (result == null) result = casePublishableElement(physicalContext);
-				if (result == null) result = caseModelElement(physicalContext);
-				if (result == null) result = caseElement(physicalContext);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -565,21 +399,6 @@ public class PaSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Abstract Physical Component</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Abstract Physical Component</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseAbstractPhysicalComponent(AbstractPhysicalComponent object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Physical Component</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -595,21 +414,6 @@ public class PaSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Physical Actor Pkg</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Physical Actor Pkg</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T casePhysicalActorPkg(PhysicalActorPkg object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Physical Component Pkg</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -621,36 +425,6 @@ public class PaSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T casePhysicalComponentPkg(PhysicalComponentPkg object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Physical Actor</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Physical Actor</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T casePhysicalActor(PhysicalActor object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Logical Actor Realization</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Logical Actor Realization</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseLogicalActorRealization(LogicalActorRealization object) {
 		return null;
 	}
 
@@ -685,21 +459,6 @@ public class PaSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Logical Component Realization</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Logical Component Realization</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseLogicalComponentRealization(LogicalComponentRealization object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Logical Interface Realization</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -711,21 +470,6 @@ public class PaSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseLogicalInterfaceRealization(LogicalInterfaceRealization object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Physical Context</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Physical Context</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T casePhysicalContext(PhysicalContext object) {
 		return null;
 	}
 
@@ -1345,21 +1089,6 @@ public class PaSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Partitionable Element</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Partitionable Element</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T casePartitionableElement(PartitionableElement object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Interface Allocator</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -1420,51 +1149,6 @@ public class PaSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>System Component</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>System Component</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseSystemComponent(SystemComponent object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Deployable Element</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Deployable Element</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseDeployableElement(DeployableElement object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Deployment Target</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Deployment Target</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseDeploymentTarget(DeploymentTarget object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Abstract Physical Artifact</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -1495,6 +1179,21 @@ public class PaSwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Component Pkg</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Component Pkg</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseComponentPkg(ComponentPkg object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Association Pkg</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -1506,21 +1205,6 @@ public class PaSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseAssociationPkg(AssociationPkg object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Abstract Actor</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Abstract Actor</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseAbstractActor(AbstractActor object) {
 		return null;
 	}
 
@@ -1585,21 +1269,6 @@ public class PaSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Component Allocation</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Component Allocation</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseComponentAllocation(ComponentAllocation object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Architecture Allocation</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -1626,21 +1295,6 @@ public class PaSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseInterfaceAllocation(InterfaceAllocation object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Component Context</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Component Context</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseComponentContext(ComponentContext object) {
 		return null;
 	}
 

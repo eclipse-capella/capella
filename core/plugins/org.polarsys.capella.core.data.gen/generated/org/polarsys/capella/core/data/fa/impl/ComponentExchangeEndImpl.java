@@ -40,9 +40,9 @@ import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.capellacore.EnumerationPropertyLiteral;
 import org.polarsys.capella.core.data.capellacore.EnumerationPropertyType;
 import org.polarsys.capella.core.data.capellacore.PropertyValueGroup;
+import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.fa.ComponentExchangeEnd;
 import org.polarsys.capella.core.data.fa.FaPackage;
-import org.polarsys.capella.core.data.information.Partition;
 import org.polarsys.capella.core.data.information.Port;
 import org.polarsys.capella.core.data.requirement.Requirement;
 
@@ -329,7 +329,7 @@ public class ComponentExchangeEndImpl extends InformationsExchangerImpl implemen
 	 * @generated
 	 * @ordered
 	 */
-	protected Partition part;
+	protected Part part;
 
 
 
@@ -880,11 +880,11 @@ public class ComponentExchangeEndImpl extends InformationsExchangerImpl implemen
 	 * @generated
 	 */
 
-	public Partition getPart() {
+	public Part getPart() {
 
 		if (part != null && part.eIsProxy()) {
 			InternalEObject oldPart = (InternalEObject)part;
-			part = (Partition)eResolveProxy(oldPart);
+			part = (Part)eResolveProxy(oldPart);
 			if (part != oldPart) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, FaPackage.COMPONENT_EXCHANGE_END__PART, oldPart, part));
@@ -900,7 +900,7 @@ public class ComponentExchangeEndImpl extends InformationsExchangerImpl implemen
 	 * @generated
 	 */
 
-	public Partition basicGetPart() {
+	public Part basicGetPart() {
 
 		return part;
 	}
@@ -913,17 +913,14 @@ public class ComponentExchangeEndImpl extends InformationsExchangerImpl implemen
 	 * @generated
 	 */
 
-	public void setPart(Partition newPart) {
+	public void setPart(Part newPart) {
 
-		Partition oldPart = part;
+		Part oldPart = part;
 		part = newPart;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, FaPackage.COMPONENT_EXCHANGE_END__PART, oldPart, part));
 
 	}
-
-
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1047,7 +1044,7 @@ public class ComponentExchangeEndImpl extends InformationsExchangerImpl implemen
 					setPort((Port)newValue);
 				return;
 			case FaPackage.COMPONENT_EXCHANGE_END__PART:
-					setPart((Partition)newValue);
+					setPart((Part)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -1102,7 +1099,7 @@ public class ComponentExchangeEndImpl extends InformationsExchangerImpl implemen
 				setPort((Port)null);
 				return;
 			case FaPackage.COMPONENT_EXCHANGE_END__PART:
-				setPart((Partition)null);
+				setPart((Part)null);
 				return;
 		}
 		super.eUnset(featureID);

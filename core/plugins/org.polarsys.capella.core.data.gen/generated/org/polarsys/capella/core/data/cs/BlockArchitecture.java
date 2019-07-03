@@ -33,6 +33,7 @@ import org.polarsys.capella.core.data.requirement.RequirementsPkg;
  *   <li>{@link org.polarsys.capella.core.data.cs.BlockArchitecture#getProvisioningArchitectureAllocations <em>Provisioning Architecture Allocations</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.BlockArchitecture#getAllocatedArchitectures <em>Allocated Architectures</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.BlockArchitecture#getAllocatingArchitectures <em>Allocating Architectures</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.cs.BlockArchitecture#getSystem <em>System</em>}</li>
  * </ul>
  *
  * @see org.polarsys.capella.core.data.cs.CsPackage#getBlockArchitecture()
@@ -311,6 +312,30 @@ public interface BlockArchitecture extends AbstractFunctionalArchitecture {
 	 */
 
 	EList<BlockArchitecture> getAllocatingArchitectures();
+
+
+
+
+
+
+
+	/**
+	 * Returns the value of the '<em><b>System</b></em>' reference.
+
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>System</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>System</em>' reference.
+	 * @see org.polarsys.capella.core.data.cs.CsPackage#getBlockArchitecture_System()
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='The system component of the architecture block.' constraints='none' comment/notes='none'"
+	 * @generated
+	 */
+
+	Component getSystem();
 
 
 

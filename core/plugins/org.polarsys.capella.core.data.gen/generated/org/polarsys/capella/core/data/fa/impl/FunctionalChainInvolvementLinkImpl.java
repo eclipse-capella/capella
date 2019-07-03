@@ -15,22 +15,15 @@ package org.polarsys.capella.core.data.fa.impl;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-
 import org.polarsys.capella.core.data.capellacore.Constraint;
-
 import org.polarsys.capella.core.data.fa.FaPackage;
 import org.polarsys.capella.core.data.fa.FunctionalChainInvolvementFunction;
 import org.polarsys.capella.core.data.fa.FunctionalChainInvolvementLink;
-
 import org.polarsys.capella.core.data.fa.FunctionalChainReference;
 import org.polarsys.capella.core.data.fa.ReferenceHierarchyContext;
 import org.polarsys.capella.core.data.information.ExchangeItem;

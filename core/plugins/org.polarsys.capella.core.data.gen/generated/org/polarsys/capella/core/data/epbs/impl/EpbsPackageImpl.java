@@ -34,7 +34,6 @@ import org.polarsys.capella.core.data.epbs.ConfigurationItemKind;
 import org.polarsys.capella.core.data.epbs.ConfigurationItemPkg;
 import org.polarsys.capella.core.data.epbs.EPBSArchitecture;
 import org.polarsys.capella.core.data.epbs.EPBSArchitecturePkg;
-import org.polarsys.capella.core.data.epbs.EPBSContext;
 import org.polarsys.capella.core.data.epbs.EpbsFactory;
 import org.polarsys.capella.core.data.epbs.EpbsPackage;
 import org.polarsys.capella.core.data.epbs.PhysicalArchitectureRealization;
@@ -85,13 +84,6 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 	 * @generated
 	 */
 	private EClass epbsArchitectureEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass epbsContextEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -280,7 +272,7 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getEPBSArchitecture_OwnedEPBSContext() {
+	public EReference getEPBSArchitecture_OwnedConfigurationItemPkg() {
 		return (EReference)epbsArchitectureEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -289,7 +281,7 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getEPBSArchitecture_OwnedConfigurationItem() {
+	public EReference getEPBSArchitecture_ContainedCapabilityRealizationPkg() {
 		return (EReference)epbsArchitectureEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -298,7 +290,7 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getEPBSArchitecture_OwnedConfigurationItemPkg() {
+	public EReference getEPBSArchitecture_OwnedPhysicalArchitectureRealizations() {
 		return (EReference)epbsArchitectureEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -307,7 +299,7 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getEPBSArchitecture_ContainedCapabilityRealizationPkg() {
+	public EReference getEPBSArchitecture_AllocatedPhysicalArchitectureRealizations() {
 		return (EReference)epbsArchitectureEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -316,35 +308,8 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getEPBSArchitecture_OwnedPhysicalArchitectureRealizations() {
-		return (EReference)epbsArchitectureEClass.getEStructuralFeatures().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getEPBSArchitecture_AllocatedPhysicalArchitectureRealizations() {
-		return (EReference)epbsArchitectureEClass.getEStructuralFeatures().get(5);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getEPBSArchitecture_AllocatedPhysicalArchitectures() {
-		return (EReference)epbsArchitectureEClass.getEStructuralFeatures().get(6);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getEPBSContext() {
-		return epbsContextEClass;
+		return (EReference)epbsArchitectureEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -424,17 +389,8 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getConfigurationItem_OwnedPhysicalArtifactRealizations() {
-		return (EReference)configurationItemEClass.getEStructuralFeatures().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getConfigurationItem_AllocatedPhysicalArtifacts() {
-		return (EReference)configurationItemEClass.getEStructuralFeatures().get(5);
+		return (EReference)configurationItemEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -453,6 +409,24 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 	 */
 	public EClass getPhysicalArtifactRealization() {
 		return physicalArtifactRealizationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getPhysicalArtifactRealization_RealizedPhysicalArtifact() {
+		return (EReference)physicalArtifactRealizationEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getPhysicalArtifactRealization_RealizingConfigurationItem() {
+		return (EReference)physicalArtifactRealizationEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -496,15 +470,11 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 		createEReference(epbsArchitecturePkgEClass, EPBS_ARCHITECTURE_PKG__OWNED_EPBS_ARCHITECTURES);
 
 		epbsArchitectureEClass = createEClass(EPBS_ARCHITECTURE);
-		createEReference(epbsArchitectureEClass, EPBS_ARCHITECTURE__OWNED_EPBS_CONTEXT);
-		createEReference(epbsArchitectureEClass, EPBS_ARCHITECTURE__OWNED_CONFIGURATION_ITEM);
 		createEReference(epbsArchitectureEClass, EPBS_ARCHITECTURE__OWNED_CONFIGURATION_ITEM_PKG);
 		createEReference(epbsArchitectureEClass, EPBS_ARCHITECTURE__CONTAINED_CAPABILITY_REALIZATION_PKG);
 		createEReference(epbsArchitectureEClass, EPBS_ARCHITECTURE__OWNED_PHYSICAL_ARCHITECTURE_REALIZATIONS);
 		createEReference(epbsArchitectureEClass, EPBS_ARCHITECTURE__ALLOCATED_PHYSICAL_ARCHITECTURE_REALIZATIONS);
 		createEReference(epbsArchitectureEClass, EPBS_ARCHITECTURE__ALLOCATED_PHYSICAL_ARCHITECTURES);
-
-		epbsContextEClass = createEClass(EPBS_CONTEXT);
 
 		configurationItemPkgEClass = createEClass(CONFIGURATION_ITEM_PKG);
 		createEReference(configurationItemPkgEClass, CONFIGURATION_ITEM_PKG__OWNED_CONFIGURATION_ITEMS);
@@ -515,12 +485,13 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 		createEAttribute(configurationItemEClass, CONFIGURATION_ITEM__KIND);
 		createEReference(configurationItemEClass, CONFIGURATION_ITEM__OWNED_CONFIGURATION_ITEMS);
 		createEReference(configurationItemEClass, CONFIGURATION_ITEM__OWNED_CONFIGURATION_ITEM_PKGS);
-		createEReference(configurationItemEClass, CONFIGURATION_ITEM__OWNED_PHYSICAL_ARTIFACT_REALIZATIONS);
 		createEReference(configurationItemEClass, CONFIGURATION_ITEM__ALLOCATED_PHYSICAL_ARTIFACTS);
 
 		physicalArchitectureRealizationEClass = createEClass(PHYSICAL_ARCHITECTURE_REALIZATION);
 
 		physicalArtifactRealizationEClass = createEClass(PHYSICAL_ARTIFACT_REALIZATION);
+		createEReference(physicalArtifactRealizationEClass, PHYSICAL_ARTIFACT_REALIZATION__REALIZED_PHYSICAL_ARTIFACT);
+		createEReference(physicalArtifactRealizationEClass, PHYSICAL_ARTIFACT_REALIZATION__REALIZING_CONFIGURATION_ITEM);
 
 		// Create enums
 		configurationItemKindEEnum = createEEnum(CONFIGURATION_ITEM_KIND);
@@ -553,6 +524,7 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 		CsPackage theCsPackage = (CsPackage)EPackage.Registry.INSTANCE.getEPackage(CsPackage.eNS_URI);
 		LaPackage theLaPackage = (LaPackage)EPackage.Registry.INSTANCE.getEPackage(LaPackage.eNS_URI);
 		PaPackage thePaPackage = (PaPackage)EPackage.Registry.INSTANCE.getEPackage(PaPackage.eNS_URI);
+		CapellacommonPackage theCapellacommonPackage = (CapellacommonPackage)EPackage.Registry.INSTANCE.getEPackage(CapellacommonPackage.eNS_URI);
 		CapellacorePackage theCapellacorePackage = (CapellacorePackage)EPackage.Registry.INSTANCE.getEPackage(CapellacorePackage.eNS_URI);
 
 		// Create type parameters
@@ -562,26 +534,22 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 		// Add supertypes to classes
 		epbsArchitecturePkgEClass.getESuperTypes().add(theCsPackage.getBlockArchitecturePkg());
 		epbsArchitectureEClass.getESuperTypes().add(theCsPackage.getComponentArchitecture());
-		epbsContextEClass.getESuperTypes().add(theCsPackage.getComponentContext());
-		configurationItemPkgEClass.getESuperTypes().add(theCapellacorePackage.getStructure());
-		configurationItemEClass.getESuperTypes().add(theCsPackage.getSystemComponent());
+		configurationItemPkgEClass.getESuperTypes().add(theCsPackage.getComponentPkg());
+		configurationItemEClass.getESuperTypes().add(theCapellacommonPackage.getCapabilityRealizationInvolvedElement());
+		configurationItemEClass.getESuperTypes().add(theCsPackage.getComponent());
 		physicalArchitectureRealizationEClass.getESuperTypes().add(theCsPackage.getArchitectureAllocation());
-		physicalArtifactRealizationEClass.getESuperTypes().add(theCsPackage.getComponentAllocation());
+		physicalArtifactRealizationEClass.getESuperTypes().add(theCapellacorePackage.getAllocation());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(epbsArchitecturePkgEClass, EPBSArchitecturePkg.class, "EPBSArchitecturePkg", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEReference(getEPBSArchitecturePkg_OwnedEPBSArchitectures(), this.getEPBSArchitecture(), null, "ownedEPBSArchitectures", null, 0, -1, EPBSArchitecturePkg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(epbsArchitectureEClass, EPBSArchitecture.class, "EPBSArchitecture", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(getEPBSArchitecture_OwnedEPBSContext(), this.getEPBSContext(), null, "ownedEPBSContext", null, 0, 1, EPBSArchitecture.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getEPBSArchitecture_OwnedConfigurationItem(), this.getConfigurationItem(), null, "ownedConfigurationItem", null, 0, 1, EPBSArchitecture.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getEPBSArchitecture_OwnedConfigurationItemPkg(), this.getConfigurationItemPkg(), null, "ownedConfigurationItemPkg", null, 0, 1, EPBSArchitecture.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getEPBSArchitecture_ContainedCapabilityRealizationPkg(), theLaPackage.getCapabilityRealizationPkg(), null, "containedCapabilityRealizationPkg", null, 0, 1, EPBSArchitecture.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getEPBSArchitecture_OwnedPhysicalArchitectureRealizations(), this.getPhysicalArchitectureRealization(), null, "ownedPhysicalArchitectureRealizations", null, 0, -1, EPBSArchitecture.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getEPBSArchitecture_AllocatedPhysicalArchitectureRealizations(), this.getPhysicalArchitectureRealization(), null, "allocatedPhysicalArchitectureRealizations", null, 0, -1, EPBSArchitecture.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getEPBSArchitecture_AllocatedPhysicalArchitectures(), thePaPackage.getPhysicalArchitecture(), thePaPackage.getPhysicalArchitecture_AllocatingEpbsArchitectures(), "allocatedPhysicalArchitectures", null, 0, -1, EPBSArchitecture.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-
-		initEClass(epbsContextEClass, EPBSContext.class, "EPBSContext", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
 		initEClass(configurationItemPkgEClass, ConfigurationItemPkg.class, "ConfigurationItemPkg", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEReference(getConfigurationItemPkg_OwnedConfigurationItems(), this.getConfigurationItem(), null, "ownedConfigurationItems", null, 0, -1, ConfigurationItemPkg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
@@ -592,12 +560,13 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 		initEAttribute(getConfigurationItem_Kind(), this.getConfigurationItemKind(), "kind", "Unset", 0, 1, ConfigurationItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
 		initEReference(getConfigurationItem_OwnedConfigurationItems(), this.getConfigurationItem(), null, "ownedConfigurationItems", null, 0, -1, ConfigurationItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getConfigurationItem_OwnedConfigurationItemPkgs(), this.getConfigurationItemPkg(), null, "ownedConfigurationItemPkgs", null, 0, -1, ConfigurationItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getConfigurationItem_OwnedPhysicalArtifactRealizations(), this.getPhysicalArtifactRealization(), null, "ownedPhysicalArtifactRealizations", null, 0, -1, ConfigurationItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
 		initEReference(getConfigurationItem_AllocatedPhysicalArtifacts(), theCsPackage.getAbstractPhysicalArtifact(), theCsPackage.getAbstractPhysicalArtifact_AllocatorConfigurationItems(), "allocatedPhysicalArtifacts", null, 0, -1, ConfigurationItem.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(physicalArchitectureRealizationEClass, PhysicalArchitectureRealization.class, "PhysicalArchitectureRealization", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
 		initEClass(physicalArtifactRealizationEClass, PhysicalArtifactRealization.class, "PhysicalArtifactRealization", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEReference(getPhysicalArtifactRealization_RealizedPhysicalArtifact(), theCsPackage.getAbstractPhysicalArtifact(), null, "realizedPhysicalArtifact", null, 1, 1, PhysicalArtifactRealization.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getPhysicalArtifactRealization_RealizingConfigurationItem(), this.getConfigurationItem(), null, "realizingConfigurationItem", null, 1, 1, PhysicalArtifactRealization.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		// Initialize enums and add enum literals
 		initEEnum(configurationItemKindEEnum, ConfigurationItemKind.class, "ConfigurationItemKind"); //$NON-NLS-1$
@@ -685,22 +654,6 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
-		  (getEPBSArchitecture_OwnedEPBSContext(), 
-		   source, 
-		   new String[] {
-			 "description", "the context is the set of (epbs) parts that make the \"world\" at this abstraction level (the system part(s) and the external actor part(s))", //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getEPBSArchitecture_OwnedConfigurationItem(), 
-		   source, 
-		   new String[] {
-			 "description", "the Configuration items contained in this EPBS architecture\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "Even though configuration items are normally stored in a configurationItemPkg, there is this possibility to store them directly under the EPBS architecture element, the purpose being to avoid too many levels of nesting/hierarchy, to ease the navigation of the user in the model" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
 		  (getEPBSArchitecture_OwnedConfigurationItemPkg(), 
 		   source, 
 		   new String[] {
@@ -723,18 +676,6 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 			 "description", "(automatically computed) the physical architecture realization links involving this EPBS architecture\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (epbsContextEClass, 
-		   source, 
-		   new String[] {
-			 "description", "specialization of a component context for the epbs level. Refer to component context description.", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "physical", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (configurationItemPkgEClass, 
@@ -790,14 +731,6 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 		   source, 
 		   new String[] {
 			 "description", "the sub-(configuration item) packages owned by this component", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getConfigurationItem_OwnedPhysicalArtifactRealizations(), 
-		   source, 
-		   new String[] {
-			 "description", "Set of physical component realization links owned by this configuration item\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
@@ -909,13 +842,25 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 		  (physicalArtifactRealizationEClass, 
 		   source, 
 		   new String[] {
-			 "description", "Realization link between a configuration item and a physical artifact (physical component, physical link or physical port)\r\n[source:Capella study]\r\n\r\nRealization is a specialized abstraction relationship between two sets of model elements, one representing a specification\r\n(the supplier) and the other represents an implementation of the latter (the client). Realization can be used to model\r\nstepwise refinement, optimizations, transformations, templates, model synthesis, framework composition, etc.\r\n[source:UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "epbs", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			 "description", "Realization link betwen a Configuration Item and a physical artifact", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
+		  (getPhysicalArtifactRealization_RealizedPhysicalArtifact(), 
+		   source, 
+		   new String[] {
+			 "description", "Specifies the allocated architecture\r\n[source: Capella study]\r\n\r\nSpecifies the targets of the DirectedRelationship.\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
+		  (getPhysicalArtifactRealization_RealizingConfigurationItem(), 
+		   source, 
+		   new String[] {
+			 "description", "Specifies the allocating architecture\r\n[source: Capella study]\r\n\r\nSpecifies the sources of the DirectedRelationship.\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });
 	}
 
@@ -938,16 +883,6 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 		   new String[] {
 		   });	
 		addAnnotation
-		  (getEPBSArchitecture_OwnedEPBSContext(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getEPBSArchitecture_OwnedConfigurationItem(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
 		  (getEPBSArchitecture_OwnedConfigurationItemPkg(), 
 		   source, 
 		   new String[] {
@@ -960,11 +895,6 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 		   });	
 		addAnnotation
 		  (getEPBSArchitecture_AllocatedPhysicalArchitectures(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (epbsContextEClass, 
 		   source, 
 		   new String[] {
 		   });	
@@ -1062,12 +992,6 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 			 "Label", "EPBSArchitecture" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
-		  (getEPBSArchitecture_OwnedConfigurationItem(), 
-		   source, 
-		   new String[] {
-			 "Label", "ownedConfigurationItems" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
 		  (getEPBSArchitecture_OwnedConfigurationItemPkg(), 
 		   source, 
 		   new String[] {
@@ -1139,13 +1063,6 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 		   new String[] {
 			 "metaclass", "Package", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.sys.EPBSArchitecture" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getEPBSArchitecture_OwnedConfigurationItem(), 
-		   source, 
-		   new String[] {
-			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getEPBSArchitecture_OwnedConfigurationItemPkg(), 
@@ -1232,22 +1149,6 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
-		  (getEPBSArchitecture_OwnedEPBSContext(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "uml::Package::packagedElement elements on which EPBSContext stereotype or any stereotype that inherits from it is applied" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getEPBSArchitecture_OwnedConfigurationItem(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "uml::Package::packagedElement elements on which ConfigurationItem stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
 		  (getEPBSArchitecture_OwnedConfigurationItemPkg(), 
 		   source, 
 		   new String[] {
@@ -1285,15 +1186,6 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 		   new String[] {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (epbsContextEClass, 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "uml::Class", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
@@ -1347,14 +1239,6 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 			 "constraints", "store them in the nearest possible package, since a Block cannot contain packages" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
-		  (getConfigurationItem_OwnedPhysicalArtifactRealizations(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "keyword::nearestpackage", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "store them in the nearest possible package, since a Block cannot contain packages" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
 		  (getConfigurationItem_AllocatedPhysicalArtifacts(), 
 		   source, 
 		   new String[] {
@@ -1372,12 +1256,11 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
-		  (physicalArtifactRealizationEClass, 
+		  (getPhysicalArtifactRealization_RealizingConfigurationItem(), 
 		   source, 
 		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "uml::Realization", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });
 	}
@@ -1392,11 +1275,6 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 		String source = "http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"; //$NON-NLS-1$	
 		addAnnotation
 		  (getEPBSArchitecturePkg_OwnedEPBSArchitectures(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getEPBSArchitecture_OwnedConfigurationItem(), 
 		   source, 
 		   new String[] {
 		   });	
@@ -1462,6 +1340,18 @@ public class EpbsPackageImpl extends EPackageImpl implements EpbsPackage {
 		   new String[] {
 			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
 			 "viatra.expression", "PhysicalArtifactRealization.sourceElement(par, self);\r\nPhysicalArtifactRealization.targetElement(par, target);" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
+		  (getPhysicalArtifactRealization_RealizedPhysicalArtifact(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getPhysicalArtifactRealization_RealizingConfigurationItem(), 
+		   source, 
+		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "sourceElement" //$NON-NLS-1$ //$NON-NLS-2$
 		   });
 	}
 

@@ -29,10 +29,8 @@ import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.polarsys.capella.common.model.helpers.IHelper;
 import org.polarsys.capella.core.data.cs.impl.ComponentArchitectureImpl;
-import org.polarsys.capella.core.data.epbs.ConfigurationItem;
 import org.polarsys.capella.core.data.epbs.ConfigurationItemPkg;
 import org.polarsys.capella.core.data.epbs.EPBSArchitecture;
-import org.polarsys.capella.core.data.epbs.EPBSContext;
 import org.polarsys.capella.core.data.epbs.EpbsPackage;
 import org.polarsys.capella.core.data.epbs.PhysicalArchitectureRealization;
 import org.polarsys.capella.core.data.la.CapabilityRealizationPkg;
@@ -46,8 +44,6 @@ import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.polarsys.capella.core.data.epbs.impl.EPBSArchitectureImpl#getOwnedEPBSContext <em>Owned EPBS Context</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.epbs.impl.EPBSArchitectureImpl#getOwnedConfigurationItem <em>Owned Configuration Item</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.epbs.impl.EPBSArchitectureImpl#getOwnedConfigurationItemPkg <em>Owned Configuration Item Pkg</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.epbs.impl.EPBSArchitectureImpl#getContainedCapabilityRealizationPkg <em>Contained Capability Realization Pkg</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.epbs.impl.EPBSArchitectureImpl#getOwnedPhysicalArchitectureRealizations <em>Owned Physical Architecture Realizations</em>}</li>
@@ -58,34 +54,6 @@ import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
  * @generated
  */
 public class EPBSArchitectureImpl extends ComponentArchitectureImpl implements EPBSArchitecture {
-
-	/**
-	 * The cached value of the '{@link #getOwnedEPBSContext() <em>Owned EPBS Context</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOwnedEPBSContext()
-	 * @generated
-	 * @ordered
-	 */
-	protected EPBSContext ownedEPBSContext;
-
-
-
-
-
-	/**
-	 * The cached value of the '{@link #getOwnedConfigurationItem() <em>Owned Configuration Item</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOwnedConfigurationItem()
-	 * @generated
-	 * @ordered
-	 */
-	protected ConfigurationItem ownedConfigurationItem;
-
-
-
-
 
 	/**
 	 * The cached value of the '{@link #getOwnedConfigurationItemPkg() <em>Owned Configuration Item Pkg</em>}' containment reference.
@@ -146,178 +114,6 @@ public class EPBSArchitectureImpl extends ComponentArchitectureImpl implements E
 	protected EClass eStaticClass() {
 		return EpbsPackage.Literals.EPBS_ARCHITECTURE;
 	}
-
-
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public EPBSContext getOwnedEPBSContext() {
-
-		if (ownedEPBSContext != null && ownedEPBSContext.eIsProxy()) {
-			InternalEObject oldOwnedEPBSContext = (InternalEObject)ownedEPBSContext;
-			ownedEPBSContext = (EPBSContext)eResolveProxy(oldOwnedEPBSContext);
-			if (ownedEPBSContext != oldOwnedEPBSContext) {
-				InternalEObject newOwnedEPBSContext = (InternalEObject)ownedEPBSContext;
-				NotificationChain msgs = oldOwnedEPBSContext.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EpbsPackage.EPBS_ARCHITECTURE__OWNED_EPBS_CONTEXT, null, null);
-				if (newOwnedEPBSContext.eInternalContainer() == null) {
-					msgs = newOwnedEPBSContext.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EpbsPackage.EPBS_ARCHITECTURE__OWNED_EPBS_CONTEXT, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, EpbsPackage.EPBS_ARCHITECTURE__OWNED_EPBS_CONTEXT, oldOwnedEPBSContext, ownedEPBSContext));
-			}
-		}
-		return ownedEPBSContext;
-	}
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public EPBSContext basicGetOwnedEPBSContext() {
-
-		return ownedEPBSContext;
-	}
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public NotificationChain basicSetOwnedEPBSContext(EPBSContext newOwnedEPBSContext, NotificationChain msgs) {
-
-		EPBSContext oldOwnedEPBSContext = ownedEPBSContext;
-		ownedEPBSContext = newOwnedEPBSContext;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EpbsPackage.EPBS_ARCHITECTURE__OWNED_EPBS_CONTEXT, oldOwnedEPBSContext, newOwnedEPBSContext);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-
-		return msgs;
-	}
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public void setOwnedEPBSContext(EPBSContext newOwnedEPBSContext) {
-
-		if (newOwnedEPBSContext != ownedEPBSContext) {
-			NotificationChain msgs = null;
-			if (ownedEPBSContext != null)
-				msgs = ((InternalEObject)ownedEPBSContext).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EpbsPackage.EPBS_ARCHITECTURE__OWNED_EPBS_CONTEXT, null, msgs);
-			if (newOwnedEPBSContext != null)
-				msgs = ((InternalEObject)newOwnedEPBSContext).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EpbsPackage.EPBS_ARCHITECTURE__OWNED_EPBS_CONTEXT, null, msgs);
-			msgs = basicSetOwnedEPBSContext(newOwnedEPBSContext, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EpbsPackage.EPBS_ARCHITECTURE__OWNED_EPBS_CONTEXT, newOwnedEPBSContext, newOwnedEPBSContext));
-
-	}
-
-
-
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public ConfigurationItem getOwnedConfigurationItem() {
-
-		if (ownedConfigurationItem != null && ownedConfigurationItem.eIsProxy()) {
-			InternalEObject oldOwnedConfigurationItem = (InternalEObject)ownedConfigurationItem;
-			ownedConfigurationItem = (ConfigurationItem)eResolveProxy(oldOwnedConfigurationItem);
-			if (ownedConfigurationItem != oldOwnedConfigurationItem) {
-				InternalEObject newOwnedConfigurationItem = (InternalEObject)ownedConfigurationItem;
-				NotificationChain msgs = oldOwnedConfigurationItem.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EpbsPackage.EPBS_ARCHITECTURE__OWNED_CONFIGURATION_ITEM, null, null);
-				if (newOwnedConfigurationItem.eInternalContainer() == null) {
-					msgs = newOwnedConfigurationItem.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EpbsPackage.EPBS_ARCHITECTURE__OWNED_CONFIGURATION_ITEM, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, EpbsPackage.EPBS_ARCHITECTURE__OWNED_CONFIGURATION_ITEM, oldOwnedConfigurationItem, ownedConfigurationItem));
-			}
-		}
-		return ownedConfigurationItem;
-	}
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public ConfigurationItem basicGetOwnedConfigurationItem() {
-
-		return ownedConfigurationItem;
-	}
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public NotificationChain basicSetOwnedConfigurationItem(ConfigurationItem newOwnedConfigurationItem, NotificationChain msgs) {
-
-		ConfigurationItem oldOwnedConfigurationItem = ownedConfigurationItem;
-		ownedConfigurationItem = newOwnedConfigurationItem;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EpbsPackage.EPBS_ARCHITECTURE__OWNED_CONFIGURATION_ITEM, oldOwnedConfigurationItem, newOwnedConfigurationItem);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-
-		return msgs;
-	}
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public void setOwnedConfigurationItem(ConfigurationItem newOwnedConfigurationItem) {
-
-		if (newOwnedConfigurationItem != ownedConfigurationItem) {
-			NotificationChain msgs = null;
-			if (ownedConfigurationItem != null)
-				msgs = ((InternalEObject)ownedConfigurationItem).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EpbsPackage.EPBS_ARCHITECTURE__OWNED_CONFIGURATION_ITEM, null, msgs);
-			if (newOwnedConfigurationItem != null)
-				msgs = ((InternalEObject)newOwnedConfigurationItem).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EpbsPackage.EPBS_ARCHITECTURE__OWNED_CONFIGURATION_ITEM, null, msgs);
-			msgs = basicSetOwnedConfigurationItem(newOwnedConfigurationItem, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EpbsPackage.EPBS_ARCHITECTURE__OWNED_CONFIGURATION_ITEM, newOwnedConfigurationItem, newOwnedConfigurationItem));
-
-	}
-
 
 
 
@@ -586,10 +382,6 @@ public class EPBSArchitectureImpl extends ComponentArchitectureImpl implements E
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case EpbsPackage.EPBS_ARCHITECTURE__OWNED_EPBS_CONTEXT:
-				return basicSetOwnedEPBSContext(null, msgs);
-			case EpbsPackage.EPBS_ARCHITECTURE__OWNED_CONFIGURATION_ITEM:
-				return basicSetOwnedConfigurationItem(null, msgs);
 			case EpbsPackage.EPBS_ARCHITECTURE__OWNED_CONFIGURATION_ITEM_PKG:
 				return basicSetOwnedConfigurationItemPkg(null, msgs);
 			case EpbsPackage.EPBS_ARCHITECTURE__OWNED_PHYSICAL_ARCHITECTURE_REALIZATIONS:
@@ -606,12 +398,6 @@ public class EPBSArchitectureImpl extends ComponentArchitectureImpl implements E
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EpbsPackage.EPBS_ARCHITECTURE__OWNED_EPBS_CONTEXT:
-				if (resolve) return getOwnedEPBSContext();
-				return basicGetOwnedEPBSContext();
-			case EpbsPackage.EPBS_ARCHITECTURE__OWNED_CONFIGURATION_ITEM:
-				if (resolve) return getOwnedConfigurationItem();
-				return basicGetOwnedConfigurationItem();
 			case EpbsPackage.EPBS_ARCHITECTURE__OWNED_CONFIGURATION_ITEM_PKG:
 				if (resolve) return getOwnedConfigurationItemPkg();
 				return basicGetOwnedConfigurationItemPkg();
@@ -637,12 +423,6 @@ public class EPBSArchitectureImpl extends ComponentArchitectureImpl implements E
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EpbsPackage.EPBS_ARCHITECTURE__OWNED_EPBS_CONTEXT:
-					setOwnedEPBSContext((EPBSContext)newValue);
-				return;
-			case EpbsPackage.EPBS_ARCHITECTURE__OWNED_CONFIGURATION_ITEM:
-					setOwnedConfigurationItem((ConfigurationItem)newValue);
-				return;
 			case EpbsPackage.EPBS_ARCHITECTURE__OWNED_CONFIGURATION_ITEM_PKG:
 					setOwnedConfigurationItemPkg((ConfigurationItemPkg)newValue);
 				return;
@@ -663,12 +443,6 @@ public class EPBSArchitectureImpl extends ComponentArchitectureImpl implements E
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EpbsPackage.EPBS_ARCHITECTURE__OWNED_EPBS_CONTEXT:
-				setOwnedEPBSContext((EPBSContext)null);
-				return;
-			case EpbsPackage.EPBS_ARCHITECTURE__OWNED_CONFIGURATION_ITEM:
-				setOwnedConfigurationItem((ConfigurationItem)null);
-				return;
 			case EpbsPackage.EPBS_ARCHITECTURE__OWNED_CONFIGURATION_ITEM_PKG:
 				setOwnedConfigurationItemPkg((ConfigurationItemPkg)null);
 				return;
@@ -689,10 +463,6 @@ public class EPBSArchitectureImpl extends ComponentArchitectureImpl implements E
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EpbsPackage.EPBS_ARCHITECTURE__OWNED_EPBS_CONTEXT:
-				return ownedEPBSContext != null;
-			case EpbsPackage.EPBS_ARCHITECTURE__OWNED_CONFIGURATION_ITEM:
-				return ownedConfigurationItem != null;
 			case EpbsPackage.EPBS_ARCHITECTURE__OWNED_CONFIGURATION_ITEM_PKG:
 				return ownedConfigurationItemPkg != null;
 			case EpbsPackage.EPBS_ARCHITECTURE__CONTAINED_CAPABILITY_REALIZATION_PKG:

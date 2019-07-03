@@ -15,7 +15,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 
 /**

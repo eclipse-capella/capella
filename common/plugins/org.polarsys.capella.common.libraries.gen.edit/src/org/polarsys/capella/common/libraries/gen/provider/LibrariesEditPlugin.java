@@ -12,9 +12,7 @@ package org.polarsys.capella.common.libraries.gen.provider;
 
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.Path;
-
 import org.eclipse.emf.common.EMFPlugin;
-
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.polarsys.kitalpha.emde.model.edit.provider.EmdeEditPlugin;
 

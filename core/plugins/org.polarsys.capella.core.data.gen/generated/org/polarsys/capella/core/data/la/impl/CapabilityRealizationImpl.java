@@ -26,10 +26,8 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.polarsys.capella.common.model.helpers.IHelper;
-import org.polarsys.capella.core.data.cs.AbstractActor;
-import org.polarsys.capella.core.data.cs.ActorCapabilityRealizationInvolvement;
-import org.polarsys.capella.core.data.cs.SystemComponent;
-import org.polarsys.capella.core.data.cs.SystemComponentCapabilityRealizationInvolvement;
+import org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvedElement;
+import org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvement;
 import org.polarsys.capella.core.data.ctx.Capability;
 import org.polarsys.capella.core.data.interaction.impl.AbstractCapabilityImpl;
 import org.polarsys.capella.core.data.la.CapabilityRealization;
@@ -43,12 +41,8 @@ import org.polarsys.capella.core.data.la.LaPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.polarsys.capella.core.data.la.impl.CapabilityRealizationImpl#getOwnedActorCapabilityRealizations <em>Owned Actor Capability Realizations</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.la.impl.CapabilityRealizationImpl#getOwnedSystemComponentCapabilityRealizations <em>Owned System Component Capability Realizations</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.la.impl.CapabilityRealizationImpl#getParticipatingActors <em>Participating Actors</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.la.impl.CapabilityRealizationImpl#getParticipatingSystemComponents <em>Participating System Components</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.la.impl.CapabilityRealizationImpl#getInvolvedActors <em>Involved Actors</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.la.impl.CapabilityRealizationImpl#getInvolvedSystemComponents <em>Involved System Components</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.la.impl.CapabilityRealizationImpl#getOwnedCapabilityRealizationInvolvements <em>Owned Capability Realization Involvements</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.la.impl.CapabilityRealizationImpl#getInvolvedComponents <em>Involved Components</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.la.impl.CapabilityRealizationImpl#getRealizedCapabilities <em>Realized Capabilities</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.la.impl.CapabilityRealizationImpl#getRealizedCapabilityRealizations <em>Realized Capability Realizations</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.la.impl.CapabilityRealizationImpl#getRealizingCapabilityRealizations <em>Realizing Capability Realizations</em>}</li>
@@ -59,55 +53,14 @@ import org.polarsys.capella.core.data.la.LaPackage;
 public class CapabilityRealizationImpl extends AbstractCapabilityImpl implements CapabilityRealization {
 
 	/**
-	 * The cached value of the '{@link #getOwnedActorCapabilityRealizations() <em>Owned Actor Capability Realizations</em>}' containment reference list.
+	 * The cached value of the '{@link #getOwnedCapabilityRealizationInvolvements() <em>Owned Capability Realization Involvements</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedActorCapabilityRealizations()
+	 * @see #getOwnedCapabilityRealizationInvolvements()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ActorCapabilityRealizationInvolvement> ownedActorCapabilityRealizations;
-
-
-
-
-
-	/**
-	 * The cached value of the '{@link #getOwnedSystemComponentCapabilityRealizations() <em>Owned System Component Capability Realizations</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOwnedSystemComponentCapabilityRealizations()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<SystemComponentCapabilityRealizationInvolvement> ownedSystemComponentCapabilityRealizations;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	protected EList<CapabilityRealizationInvolvement> ownedCapabilityRealizationInvolvements;
 
 
 
@@ -144,17 +97,13 @@ public class CapabilityRealizationImpl extends AbstractCapabilityImpl implements
 	 * @generated
 	 */
 
-	public EList<ActorCapabilityRealizationInvolvement> getOwnedActorCapabilityRealizations() {
+	public EList<CapabilityRealizationInvolvement> getOwnedCapabilityRealizationInvolvements() {
 
-		if (ownedActorCapabilityRealizations == null) {
-			ownedActorCapabilityRealizations = new EObjectContainmentEList<ActorCapabilityRealizationInvolvement>(ActorCapabilityRealizationInvolvement.class, this, LaPackage.CAPABILITY_REALIZATION__OWNED_ACTOR_CAPABILITY_REALIZATIONS);
+		if (ownedCapabilityRealizationInvolvements == null) {
+			ownedCapabilityRealizationInvolvements = new EObjectContainmentEList<CapabilityRealizationInvolvement>(CapabilityRealizationInvolvement.class, this, LaPackage.CAPABILITY_REALIZATION__OWNED_CAPABILITY_REALIZATION_INVOLVEMENTS);
 		}
-		return ownedActorCapabilityRealizations;
+		return ownedCapabilityRealizationInvolvements;
 	}
-
-
-
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -162,25 +111,7 @@ public class CapabilityRealizationImpl extends AbstractCapabilityImpl implements
 	 * @generated
 	 */
 
-	public EList<SystemComponentCapabilityRealizationInvolvement> getOwnedSystemComponentCapabilityRealizations() {
-
-		if (ownedSystemComponentCapabilityRealizations == null) {
-			ownedSystemComponentCapabilityRealizations = new EObjectContainmentEList<SystemComponentCapabilityRealizationInvolvement>(SystemComponentCapabilityRealizationInvolvement.class, this, LaPackage.CAPABILITY_REALIZATION__OWNED_SYSTEM_COMPONENT_CAPABILITY_REALIZATIONS);
-		}
-		return ownedSystemComponentCapabilityRealizations;
-	}
-
-
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public EList<AbstractActor> getParticipatingActors() {
+	public EList<CapabilityRealizationInvolvedElement> getInvolvedComponents() {
 
 
     Object result = null;
@@ -203,164 +134,19 @@ public class CapabilityRealizationImpl extends AbstractCapabilityImpl implements
       throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = LaPackage.Literals.CAPABILITY_REALIZATION__PARTICIPATING_ACTORS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
-    result = helper.getValue(this, LaPackage.Literals.CAPABILITY_REALIZATION__PARTICIPATING_ACTORS, annotation);
+    EAnnotation annotation = LaPackage.Literals.CAPABILITY_REALIZATION__INVOLVED_COMPONENTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    result = helper.getValue(this, LaPackage.Literals.CAPABILITY_REALIZATION__INVOLVED_COMPONENTS, annotation);
 		
 		try {
 		@SuppressWarnings("unchecked")
-		Collection<AbstractActor> resultAsList = (Collection<AbstractActor>) result;
-		return new EcoreEList.UnmodifiableEList<AbstractActor>(this, LaPackage.Literals.CAPABILITY_REALIZATION__PARTICIPATING_ACTORS, resultAsList.size(), resultAsList.toArray());
+		Collection<CapabilityRealizationInvolvedElement> resultAsList = (Collection<CapabilityRealizationInvolvedElement>) result;
+		return new EcoreEList.UnmodifiableEList<CapabilityRealizationInvolvedElement>(this, LaPackage.Literals.CAPABILITY_REALIZATION__INVOLVED_COMPONENTS, resultAsList.size(), resultAsList.toArray());
 		} catch (ClassCastException exception) {
 	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
 	}
-
-
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public EList<SystemComponent> getParticipatingSystemComponents() {
-
-
-    Object result = null;
-    // Helper that can get value for current feature.
-    IHelper helper = null;
-    // If current object is adaptable, ask it to get its IHelper.
-    if (this instanceof IAdaptable) {
-    	helper = (IHelper) ((IAdaptable) this).getAdapter(IHelper.class);
-    }
-    if (null == helper) {
-      // No helper found yet.
-      // Ask the platform to get the adapter 'IHelper.class' for current object.
-      IAdapterManager adapterManager = Platform.getAdapterManager();
-      helper = (IHelper) adapterManager.getAdapter(this, IHelper.class);
-    }
-    if (null == helper) {
-      EPackage package_l = eClass().getEPackage();
-      // Get the root package of the owner package.
-      EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
-    } 
-    // A helper is found, let's use it. 
-    EAnnotation annotation = LaPackage.Literals.CAPABILITY_REALIZATION__PARTICIPATING_SYSTEM_COMPONENTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
-    result = helper.getValue(this, LaPackage.Literals.CAPABILITY_REALIZATION__PARTICIPATING_SYSTEM_COMPONENTS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<SystemComponent> resultAsList = (Collection<SystemComponent>) result;
-		return new EcoreEList.UnmodifiableEList<SystemComponent>(this, LaPackage.Literals.CAPABILITY_REALIZATION__PARTICIPATING_SYSTEM_COMPONENTS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
-
-
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public EList<ActorCapabilityRealizationInvolvement> getInvolvedActors() {
-
-
-    Object result = null;
-    // Helper that can get value for current feature.
-    IHelper helper = null;
-    // If current object is adaptable, ask it to get its IHelper.
-    if (this instanceof IAdaptable) {
-    	helper = (IHelper) ((IAdaptable) this).getAdapter(IHelper.class);
-    }
-    if (null == helper) {
-      // No helper found yet.
-      // Ask the platform to get the adapter 'IHelper.class' for current object.
-      IAdapterManager adapterManager = Platform.getAdapterManager();
-      helper = (IHelper) adapterManager.getAdapter(this, IHelper.class);
-    }
-    if (null == helper) {
-      EPackage package_l = eClass().getEPackage();
-      // Get the root package of the owner package.
-      EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
-    } 
-    // A helper is found, let's use it. 
-    EAnnotation annotation = LaPackage.Literals.CAPABILITY_REALIZATION__INVOLVED_ACTORS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
-    result = helper.getValue(this, LaPackage.Literals.CAPABILITY_REALIZATION__INVOLVED_ACTORS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<ActorCapabilityRealizationInvolvement> resultAsList = (Collection<ActorCapabilityRealizationInvolvement>) result;
-		return new EcoreEList.UnmodifiableEList<ActorCapabilityRealizationInvolvement>(this, LaPackage.Literals.CAPABILITY_REALIZATION__INVOLVED_ACTORS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
-
-
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public EList<SystemComponentCapabilityRealizationInvolvement> getInvolvedSystemComponents() {
-
-
-    Object result = null;
-    // Helper that can get value for current feature.
-    IHelper helper = null;
-    // If current object is adaptable, ask it to get its IHelper.
-    if (this instanceof IAdaptable) {
-    	helper = (IHelper) ((IAdaptable) this).getAdapter(IHelper.class);
-    }
-    if (null == helper) {
-      // No helper found yet.
-      // Ask the platform to get the adapter 'IHelper.class' for current object.
-      IAdapterManager adapterManager = Platform.getAdapterManager();
-      helper = (IHelper) adapterManager.getAdapter(this, IHelper.class);
-    }
-    if (null == helper) {
-      EPackage package_l = eClass().getEPackage();
-      // Get the root package of the owner package.
-      EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
-    } 
-    // A helper is found, let's use it. 
-    EAnnotation annotation = LaPackage.Literals.CAPABILITY_REALIZATION__INVOLVED_SYSTEM_COMPONENTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
-    result = helper.getValue(this, LaPackage.Literals.CAPABILITY_REALIZATION__INVOLVED_SYSTEM_COMPONENTS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<SystemComponentCapabilityRealizationInvolvement> resultAsList = (Collection<SystemComponentCapabilityRealizationInvolvement>) result;
-		return new EcoreEList.UnmodifiableEList<SystemComponentCapabilityRealizationInvolvement>(this, LaPackage.Literals.CAPABILITY_REALIZATION__INVOLVED_SYSTEM_COMPONENTS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
-
-
-
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -509,10 +295,8 @@ public class CapabilityRealizationImpl extends AbstractCapabilityImpl implements
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case LaPackage.CAPABILITY_REALIZATION__OWNED_ACTOR_CAPABILITY_REALIZATIONS:
-				return ((InternalEList<?>)getOwnedActorCapabilityRealizations()).basicRemove(otherEnd, msgs);
-			case LaPackage.CAPABILITY_REALIZATION__OWNED_SYSTEM_COMPONENT_CAPABILITY_REALIZATIONS:
-				return ((InternalEList<?>)getOwnedSystemComponentCapabilityRealizations()).basicRemove(otherEnd, msgs);
+			case LaPackage.CAPABILITY_REALIZATION__OWNED_CAPABILITY_REALIZATION_INVOLVEMENTS:
+				return ((InternalEList<?>)getOwnedCapabilityRealizationInvolvements()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -525,18 +309,10 @@ public class CapabilityRealizationImpl extends AbstractCapabilityImpl implements
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case LaPackage.CAPABILITY_REALIZATION__OWNED_ACTOR_CAPABILITY_REALIZATIONS:
-				return getOwnedActorCapabilityRealizations();
-			case LaPackage.CAPABILITY_REALIZATION__OWNED_SYSTEM_COMPONENT_CAPABILITY_REALIZATIONS:
-				return getOwnedSystemComponentCapabilityRealizations();
-			case LaPackage.CAPABILITY_REALIZATION__PARTICIPATING_ACTORS:
-				return getParticipatingActors();
-			case LaPackage.CAPABILITY_REALIZATION__PARTICIPATING_SYSTEM_COMPONENTS:
-				return getParticipatingSystemComponents();
-			case LaPackage.CAPABILITY_REALIZATION__INVOLVED_ACTORS:
-				return getInvolvedActors();
-			case LaPackage.CAPABILITY_REALIZATION__INVOLVED_SYSTEM_COMPONENTS:
-				return getInvolvedSystemComponents();
+			case LaPackage.CAPABILITY_REALIZATION__OWNED_CAPABILITY_REALIZATION_INVOLVEMENTS:
+				return getOwnedCapabilityRealizationInvolvements();
+			case LaPackage.CAPABILITY_REALIZATION__INVOLVED_COMPONENTS:
+				return getInvolvedComponents();
 			case LaPackage.CAPABILITY_REALIZATION__REALIZED_CAPABILITIES:
 				return getRealizedCapabilities();
 			case LaPackage.CAPABILITY_REALIZATION__REALIZED_CAPABILITY_REALIZATIONS:
@@ -556,13 +332,9 @@ public class CapabilityRealizationImpl extends AbstractCapabilityImpl implements
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case LaPackage.CAPABILITY_REALIZATION__OWNED_ACTOR_CAPABILITY_REALIZATIONS:
-				getOwnedActorCapabilityRealizations().clear();
-				getOwnedActorCapabilityRealizations().addAll((Collection<? extends ActorCapabilityRealizationInvolvement>)newValue);
-				return;
-			case LaPackage.CAPABILITY_REALIZATION__OWNED_SYSTEM_COMPONENT_CAPABILITY_REALIZATIONS:
-				getOwnedSystemComponentCapabilityRealizations().clear();
-				getOwnedSystemComponentCapabilityRealizations().addAll((Collection<? extends SystemComponentCapabilityRealizationInvolvement>)newValue);
+			case LaPackage.CAPABILITY_REALIZATION__OWNED_CAPABILITY_REALIZATION_INVOLVEMENTS:
+				getOwnedCapabilityRealizationInvolvements().clear();
+				getOwnedCapabilityRealizationInvolvements().addAll((Collection<? extends CapabilityRealizationInvolvement>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -577,11 +349,8 @@ public class CapabilityRealizationImpl extends AbstractCapabilityImpl implements
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case LaPackage.CAPABILITY_REALIZATION__OWNED_ACTOR_CAPABILITY_REALIZATIONS:
-				getOwnedActorCapabilityRealizations().clear();
-				return;
-			case LaPackage.CAPABILITY_REALIZATION__OWNED_SYSTEM_COMPONENT_CAPABILITY_REALIZATIONS:
-				getOwnedSystemComponentCapabilityRealizations().clear();
+			case LaPackage.CAPABILITY_REALIZATION__OWNED_CAPABILITY_REALIZATION_INVOLVEMENTS:
+				getOwnedCapabilityRealizationInvolvements().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -597,18 +366,10 @@ public class CapabilityRealizationImpl extends AbstractCapabilityImpl implements
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case LaPackage.CAPABILITY_REALIZATION__OWNED_ACTOR_CAPABILITY_REALIZATIONS:
-				return ownedActorCapabilityRealizations != null && !ownedActorCapabilityRealizations.isEmpty();
-			case LaPackage.CAPABILITY_REALIZATION__OWNED_SYSTEM_COMPONENT_CAPABILITY_REALIZATIONS:
-				return ownedSystemComponentCapabilityRealizations != null && !ownedSystemComponentCapabilityRealizations.isEmpty();
-			case LaPackage.CAPABILITY_REALIZATION__PARTICIPATING_ACTORS:
-				return !getParticipatingActors().isEmpty();
-			case LaPackage.CAPABILITY_REALIZATION__PARTICIPATING_SYSTEM_COMPONENTS:
-				return !getParticipatingSystemComponents().isEmpty();
-			case LaPackage.CAPABILITY_REALIZATION__INVOLVED_ACTORS:
-				return !getInvolvedActors().isEmpty();
-			case LaPackage.CAPABILITY_REALIZATION__INVOLVED_SYSTEM_COMPONENTS:
-				return !getInvolvedSystemComponents().isEmpty();
+			case LaPackage.CAPABILITY_REALIZATION__OWNED_CAPABILITY_REALIZATION_INVOLVEMENTS:
+				return ownedCapabilityRealizationInvolvements != null && !ownedCapabilityRealizationInvolvements.isEmpty();
+			case LaPackage.CAPABILITY_REALIZATION__INVOLVED_COMPONENTS:
+				return !getInvolvedComponents().isEmpty();
 			case LaPackage.CAPABILITY_REALIZATION__REALIZED_CAPABILITIES:
 				return !getRealizedCapabilities().isEmpty();
 			case LaPackage.CAPABILITY_REALIZATION__REALIZED_CAPABILITY_REALIZATIONS:

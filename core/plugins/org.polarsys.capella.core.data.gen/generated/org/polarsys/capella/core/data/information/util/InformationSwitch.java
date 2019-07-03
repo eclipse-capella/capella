@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.polarsys.capella.core.data.information.util;
 
-import java.util.List;
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
@@ -65,8 +63,6 @@ import org.polarsys.capella.core.data.information.MultiplicityElement;
 import org.polarsys.capella.core.data.information.Operation;
 import org.polarsys.capella.core.data.information.OperationAllocation;
 import org.polarsys.capella.core.data.information.Parameter;
-import org.polarsys.capella.core.data.information.Partition;
-import org.polarsys.capella.core.data.information.PartitionableElement;
 import org.polarsys.capella.core.data.information.Port;
 import org.polarsys.capella.core.data.information.PortAllocation;
 import org.polarsys.capella.core.data.information.PortRealization;
@@ -500,46 +496,6 @@ public class InformationSwitch<T> extends Switch<T> {
 				if (result == null) result = caseModelElement(unit);
 				if (result == null) result = caseExtensibleElement(unit);
 				if (result == null) result = caseElement(unit);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case InformationPackage.PARTITIONABLE_ELEMENT: {
-				PartitionableElement partitionableElement = (PartitionableElement)theEObject;
-				T result = casePartitionableElement(partitionableElement);
-				if (result == null) result = caseClassifier(partitionableElement);
-				if (result == null) result = caseGeneralizableElement(partitionableElement);
-				if (result == null) result = caseType(partitionableElement);
-				if (result == null) result = caseAbstractType(partitionableElement);
-				if (result == null) result = caseNamespace(partitionableElement);
-				if (result == null) result = caseNamedElement(partitionableElement);
-				if (result == null) result = caseAbstractNamedElement(partitionableElement);
-				if (result == null) result = caseCapellaElement(partitionableElement);
-				if (result == null) result = caseExtensibleElement(partitionableElement);
-				if (result == null) result = caseTraceableElement(partitionableElement);
-				if (result == null) result = casePublishableElement(partitionableElement);
-				if (result == null) result = caseModelElement(partitionableElement);
-				if (result == null) result = caseElement(partitionableElement);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case InformationPackage.PARTITION: {
-				Partition partition = (Partition)theEObject;
-				T result = casePartition(partition);
-				if (result == null) result = caseAbstractInstance(partition);
-				if (result == null) result = caseProperty(partition);
-				if (result == null) result = caseFeature(partition);
-				if (result == null) result = caseTypedElement(partition);
-				if (result == null) result = caseMultiplicityElement(partition);
-				if (result == null) result = caseFinalizableElement(partition);
-				if (result == null) result = caseNamedElement(partition);
-				if (result == null) result = caseAbstractTypedElement(partition);
-				if (result == null) result = caseAbstractNamedElement(partition);
-				if (result == null) result = caseCapellaElement(partition);
-				if (result == null) result = caseTraceableElement(partition);
-				if (result == null) result = casePublishableElement(partition);
-				if (result == null) result = caseModelElement(partition);
-				if (result == null) result = caseExtensibleElement(partition);
-				if (result == null) result = caseElement(partition);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -996,36 +952,6 @@ public class InformationSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseUnit(Unit object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Partitionable Element</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Partitionable Element</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T casePartitionableElement(PartitionableElement object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Partition</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Partition</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T casePartition(Partition object) {
 		return null;
 	}
 

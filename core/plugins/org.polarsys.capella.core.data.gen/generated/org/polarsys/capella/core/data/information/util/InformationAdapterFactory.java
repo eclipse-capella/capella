@@ -64,8 +64,6 @@ import org.polarsys.capella.core.data.information.MultiplicityElement;
 import org.polarsys.capella.core.data.information.Operation;
 import org.polarsys.capella.core.data.information.OperationAllocation;
 import org.polarsys.capella.core.data.information.Parameter;
-import org.polarsys.capella.core.data.information.Partition;
-import org.polarsys.capella.core.data.information.PartitionableElement;
 import org.polarsys.capella.core.data.information.Port;
 import org.polarsys.capella.core.data.information.PortAllocation;
 import org.polarsys.capella.core.data.information.PortRealization;
@@ -215,14 +213,6 @@ public class InformationAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseUnit(Unit object) {
 				return createUnitAdapter();
-			}
-			@Override
-			public Adapter casePartitionableElement(PartitionableElement object) {
-				return createPartitionableElementAdapter();
-			}
-			@Override
-			public Adapter casePartition(Partition object) {
-				return createPartitionAdapter();
 			}
 			@Override
 			public Adapter casePort(Port object) {
@@ -693,34 +683,6 @@ public class InformationAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createUnitAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.information.PartitionableElement <em>Partitionable Element</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.polarsys.capella.core.data.information.PartitionableElement
-	 * @generated
-	 */
-	public Adapter createPartitionableElementAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.information.Partition <em>Partition</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.polarsys.capella.core.data.information.Partition
-	 * @generated
-	 */
-	public Adapter createPartitionAdapter() {
 		return null;
 	}
 

@@ -11,8 +11,9 @@
 package org.polarsys.capella.core.data.epbs;
 
 import org.eclipse.emf.common.util.EList;
+import org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvedElement;
 import org.polarsys.capella.core.data.cs.AbstractPhysicalArtifact;
-import org.polarsys.capella.core.data.cs.SystemComponent;
+import org.polarsys.capella.core.data.cs.Component;
 
 /**
  * <!-- begin-user-doc -->
@@ -27,7 +28,6 @@ import org.polarsys.capella.core.data.cs.SystemComponent;
  *   <li>{@link org.polarsys.capella.core.data.epbs.ConfigurationItem#getKind <em>Kind</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.epbs.ConfigurationItem#getOwnedConfigurationItems <em>Owned Configuration Items</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.epbs.ConfigurationItem#getOwnedConfigurationItemPkgs <em>Owned Configuration Item Pkgs</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.epbs.ConfigurationItem#getOwnedPhysicalArtifactRealizations <em>Owned Physical Artifact Realizations</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.epbs.ConfigurationItem#getAllocatedPhysicalArtifacts <em>Allocated Physical Artifacts</em>}</li>
  * </ul>
  *
@@ -38,7 +38,7 @@ import org.polarsys.capella.core.data.cs.SystemComponent;
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='SysML::Blocks::Block' explanation='Could have been mapped to Package (to be closer to the semantic of a \"group of\" physical components, \r\nbut it is not possible since there are Parts associated to CI\'s, and packages do not inherit from Type, hence cannot be used to type a Part.' constraints='none'"
  * @generated
  */
-public interface ConfigurationItem extends SystemComponent {
+public interface ConfigurationItem extends CapabilityRealizationInvolvedElement, Component {
 
 
 
@@ -175,32 +175,6 @@ public interface ConfigurationItem extends SystemComponent {
 	 */
 
 	EList<ConfigurationItemPkg> getOwnedConfigurationItemPkgs();
-
-
-
-
-
-
-
-	/**
-	 * Returns the value of the '<em><b>Owned Physical Artifact Realizations</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.epbs.PhysicalArtifactRealization}.
-
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Owned Physical Artifact Realizations</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Physical Artifact Realizations</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.epbs.EpbsPackage#getConfigurationItem_OwnedPhysicalArtifactRealizations()
-	 * @model containment="true" resolveProxies="true" ordered="false"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Set of physical component realization links owned by this configuration item\r\n[source:Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::nearestpackage' explanation='none' constraints='store them in the nearest possible package, since a Block cannot contain packages'"
-	 * @generated
-	 */
-
-	EList<PhysicalArtifactRealization> getOwnedPhysicalArtifactRealizations();
 
 
 

@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.polarsys.capella.core.data.ctx.util;
 
-import java.util.List;
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
@@ -32,7 +30,6 @@ import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.data.modellingcore.PublishableElement;
 import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 import org.polarsys.capella.core.data.capellacommon.AbstractCapabilityPkg;
-import org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvedElement;
 import org.polarsys.capella.core.data.capellacore.Allocation;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellacore.Classifier;
@@ -49,44 +46,37 @@ import org.polarsys.capella.core.data.capellacore.Relationship;
 import org.polarsys.capella.core.data.capellacore.Structure;
 import org.polarsys.capella.core.data.capellacore.Type;
 import org.polarsys.capella.core.data.capellacore.TypedElement;
-import org.polarsys.capella.core.data.cs.AbstractActor;
 import org.polarsys.capella.core.data.cs.ArchitectureAllocation;
 import org.polarsys.capella.core.data.cs.Block;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
-import org.polarsys.capella.core.data.cs.ComponentAllocation;
 import org.polarsys.capella.core.data.cs.ComponentArchitecture;
-import org.polarsys.capella.core.data.cs.ComponentContext;
+import org.polarsys.capella.core.data.cs.ComponentPkg;
 import org.polarsys.capella.core.data.cs.InterfaceAllocator;
-import org.polarsys.capella.core.data.ctx.Actor;
-import org.polarsys.capella.core.data.ctx.ActorCapabilityInvolvement;
-import org.polarsys.capella.core.data.ctx.ActorMissionInvolvement;
-import org.polarsys.capella.core.data.ctx.ActorPkg;
 import org.polarsys.capella.core.data.ctx.Capability;
 import org.polarsys.capella.core.data.ctx.CapabilityExploitation;
+import org.polarsys.capella.core.data.ctx.CapabilityInvolvement;
 import org.polarsys.capella.core.data.ctx.CapabilityPkg;
 import org.polarsys.capella.core.data.ctx.CtxPackage;
 import org.polarsys.capella.core.data.ctx.Mission;
+import org.polarsys.capella.core.data.ctx.MissionInvolvement;
 import org.polarsys.capella.core.data.ctx.MissionPkg;
-import org.polarsys.capella.core.data.ctx.OperationalActorRealization;
 import org.polarsys.capella.core.data.ctx.OperationalAnalysisRealization;
-import org.polarsys.capella.core.data.ctx.OperationalEntityRealization;
 import org.polarsys.capella.core.data.ctx.SystemAnalysis;
-import org.polarsys.capella.core.data.ctx.SystemCapabilityInvolvement;
 import org.polarsys.capella.core.data.ctx.SystemCommunication;
 import org.polarsys.capella.core.data.ctx.SystemCommunicationHook;
-import org.polarsys.capella.core.data.ctx.SystemContext;
+import org.polarsys.capella.core.data.ctx.SystemComponent;
+import org.polarsys.capella.core.data.ctx.SystemComponentPkg;
 import org.polarsys.capella.core.data.ctx.SystemFunction;
 import org.polarsys.capella.core.data.ctx.SystemFunctionPkg;
-import org.polarsys.capella.core.data.ctx.SystemMissionInvolvement;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.AbstractFunctionalArchitecture;
 import org.polarsys.capella.core.data.fa.AbstractFunctionalBlock;
 import org.polarsys.capella.core.data.fa.AbstractFunctionalChainContainer;
+import org.polarsys.capella.core.data.fa.AbstractFunctionalStructure;
 import org.polarsys.capella.core.data.fa.FunctionPkg;
 import org.polarsys.capella.core.data.information.AbstractInstance;
 import org.polarsys.capella.core.data.information.MultiplicityElement;
-import org.polarsys.capella.core.data.information.PartitionableElement;
 import org.polarsys.capella.core.data.information.Property;
 import org.polarsys.capella.core.data.information.communication.CommunicationLinkExchanger;
 import org.polarsys.capella.core.data.interaction.AbstractCapability;
@@ -170,34 +160,6 @@ public class CtxSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case CtxPackage.SYSTEM: {
-				org.polarsys.capella.core.data.ctx.System system = (org.polarsys.capella.core.data.ctx.System)theEObject;
-				T result = caseSystem(system);
-				if (result == null) result = caseComponent(system);
-				if (result == null) result = caseCapabilityRealizationInvolvedElement(system);
-				if (result == null) result = caseBlock(system);
-				if (result == null) result = casePartitionableElement(system);
-				if (result == null) result = caseInterfaceAllocator(system);
-				if (result == null) result = caseCommunicationLinkExchanger(system);
-				if (result == null) result = caseInvolvedElement(system);
-				if (result == null) result = caseAbstractFunctionalBlock(system);
-				if (result == null) result = caseClassifier(system);
-				if (result == null) result = caseModellingBlock(system);
-				if (result == null) result = caseGeneralizableElement(system);
-				if (result == null) result = caseType(system);
-				if (result == null) result = caseAbstractType(system);
-				if (result == null) result = caseNamespace(system);
-				if (result == null) result = caseNamedElement(system);
-				if (result == null) result = caseAbstractNamedElement(system);
-				if (result == null) result = caseCapellaElement(system);
-				if (result == null) result = caseExtensibleElement(system);
-				if (result == null) result = caseTraceableElement(system);
-				if (result == null) result = casePublishableElement(system);
-				if (result == null) result = caseModelElement(system);
-				if (result == null) result = caseElement(system);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case CtxPackage.SYSTEM_FUNCTION: {
 				SystemFunction systemFunction = (SystemFunction)theEObject;
 				T result = caseSystemFunction(systemFunction);
@@ -276,78 +238,33 @@ public class CtxSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case CtxPackage.ACTOR: {
-				Actor actor = (Actor)theEObject;
-				T result = caseActor(actor);
-				if (result == null) result = caseAbstractActor(actor);
-				if (result == null) result = caseComponent(actor);
-				if (result == null) result = caseCapabilityRealizationInvolvedElement(actor);
-				if (result == null) result = caseBlock(actor);
-				if (result == null) result = casePartitionableElement(actor);
-				if (result == null) result = caseInterfaceAllocator(actor);
-				if (result == null) result = caseCommunicationLinkExchanger(actor);
-				if (result == null) result = caseInvolvedElement(actor);
-				if (result == null) result = caseAbstractFunctionalBlock(actor);
-				if (result == null) result = caseClassifier(actor);
-				if (result == null) result = caseModellingBlock(actor);
-				if (result == null) result = caseGeneralizableElement(actor);
-				if (result == null) result = caseType(actor);
-				if (result == null) result = caseAbstractType(actor);
-				if (result == null) result = caseNamespace(actor);
-				if (result == null) result = caseNamedElement(actor);
-				if (result == null) result = caseAbstractNamedElement(actor);
-				if (result == null) result = caseCapellaElement(actor);
-				if (result == null) result = caseExtensibleElement(actor);
-				if (result == null) result = caseTraceableElement(actor);
-				if (result == null) result = casePublishableElement(actor);
-				if (result == null) result = caseModelElement(actor);
-				if (result == null) result = caseElement(actor);
+			case CtxPackage.CAPABILITY_INVOLVEMENT: {
+				CapabilityInvolvement capabilityInvolvement = (CapabilityInvolvement)theEObject;
+				T result = caseCapabilityInvolvement(capabilityInvolvement);
+				if (result == null) result = caseInvolvement(capabilityInvolvement);
+				if (result == null) result = caseRelationship(capabilityInvolvement);
+				if (result == null) result = caseAbstractRelationship(capabilityInvolvement);
+				if (result == null) result = caseCapellaElement(capabilityInvolvement);
+				if (result == null) result = caseTraceableElement(capabilityInvolvement);
+				if (result == null) result = casePublishableElement(capabilityInvolvement);
+				if (result == null) result = caseModelElement(capabilityInvolvement);
+				if (result == null) result = caseExtensibleElement(capabilityInvolvement);
+				if (result == null) result = caseElement(capabilityInvolvement);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case CtxPackage.ACTOR_CAPABILITY_INVOLVEMENT: {
-				ActorCapabilityInvolvement actorCapabilityInvolvement = (ActorCapabilityInvolvement)theEObject;
-				T result = caseActorCapabilityInvolvement(actorCapabilityInvolvement);
-				if (result == null) result = caseInvolvement(actorCapabilityInvolvement);
-				if (result == null) result = caseRelationship(actorCapabilityInvolvement);
-				if (result == null) result = caseAbstractRelationship(actorCapabilityInvolvement);
-				if (result == null) result = caseCapellaElement(actorCapabilityInvolvement);
-				if (result == null) result = caseTraceableElement(actorCapabilityInvolvement);
-				if (result == null) result = casePublishableElement(actorCapabilityInvolvement);
-				if (result == null) result = caseModelElement(actorCapabilityInvolvement);
-				if (result == null) result = caseExtensibleElement(actorCapabilityInvolvement);
-				if (result == null) result = caseElement(actorCapabilityInvolvement);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case CtxPackage.ACTOR_MISSION_INVOLVEMENT: {
-				ActorMissionInvolvement actorMissionInvolvement = (ActorMissionInvolvement)theEObject;
-				T result = caseActorMissionInvolvement(actorMissionInvolvement);
-				if (result == null) result = caseInvolvement(actorMissionInvolvement);
-				if (result == null) result = caseRelationship(actorMissionInvolvement);
-				if (result == null) result = caseAbstractRelationship(actorMissionInvolvement);
-				if (result == null) result = caseCapellaElement(actorMissionInvolvement);
-				if (result == null) result = caseTraceableElement(actorMissionInvolvement);
-				if (result == null) result = casePublishableElement(actorMissionInvolvement);
-				if (result == null) result = caseModelElement(actorMissionInvolvement);
-				if (result == null) result = caseExtensibleElement(actorMissionInvolvement);
-				if (result == null) result = caseElement(actorMissionInvolvement);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case CtxPackage.ACTOR_PKG: {
-				ActorPkg actorPkg = (ActorPkg)theEObject;
-				T result = caseActorPkg(actorPkg);
-				if (result == null) result = caseStructure(actorPkg);
-				if (result == null) result = caseNamespace(actorPkg);
-				if (result == null) result = caseNamedElement(actorPkg);
-				if (result == null) result = caseAbstractNamedElement(actorPkg);
-				if (result == null) result = caseCapellaElement(actorPkg);
-				if (result == null) result = caseTraceableElement(actorPkg);
-				if (result == null) result = casePublishableElement(actorPkg);
-				if (result == null) result = caseModelElement(actorPkg);
-				if (result == null) result = caseExtensibleElement(actorPkg);
-				if (result == null) result = caseElement(actorPkg);
+			case CtxPackage.MISSION_INVOLVEMENT: {
+				MissionInvolvement missionInvolvement = (MissionInvolvement)theEObject;
+				T result = caseMissionInvolvement(missionInvolvement);
+				if (result == null) result = caseInvolvement(missionInvolvement);
+				if (result == null) result = caseRelationship(missionInvolvement);
+				if (result == null) result = caseAbstractRelationship(missionInvolvement);
+				if (result == null) result = caseCapellaElement(missionInvolvement);
+				if (result == null) result = caseTraceableElement(missionInvolvement);
+				if (result == null) result = casePublishableElement(missionInvolvement);
+				if (result == null) result = caseModelElement(missionInvolvement);
+				if (result == null) result = caseExtensibleElement(missionInvolvement);
+				if (result == null) result = caseElement(missionInvolvement);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -379,21 +296,6 @@ public class CtxSwitch<T> extends Switch<T> {
 				if (result == null) result = caseModelElement(missionPkg);
 				if (result == null) result = caseExtensibleElement(missionPkg);
 				if (result == null) result = caseElement(missionPkg);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case CtxPackage.SYSTEM_MISSION_INVOLVEMENT: {
-				SystemMissionInvolvement systemMissionInvolvement = (SystemMissionInvolvement)theEObject;
-				T result = caseSystemMissionInvolvement(systemMissionInvolvement);
-				if (result == null) result = caseInvolvement(systemMissionInvolvement);
-				if (result == null) result = caseRelationship(systemMissionInvolvement);
-				if (result == null) result = caseAbstractRelationship(systemMissionInvolvement);
-				if (result == null) result = caseCapellaElement(systemMissionInvolvement);
-				if (result == null) result = caseTraceableElement(systemMissionInvolvement);
-				if (result == null) result = casePublishableElement(systemMissionInvolvement);
-				if (result == null) result = caseModelElement(systemMissionInvolvement);
-				if (result == null) result = caseExtensibleElement(systemMissionInvolvement);
-				if (result == null) result = caseElement(systemMissionInvolvement);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -447,38 +349,6 @@ public class CtxSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case CtxPackage.SYSTEM_CAPABILITY_INVOLVEMENT: {
-				SystemCapabilityInvolvement systemCapabilityInvolvement = (SystemCapabilityInvolvement)theEObject;
-				T result = caseSystemCapabilityInvolvement(systemCapabilityInvolvement);
-				if (result == null) result = caseInvolvement(systemCapabilityInvolvement);
-				if (result == null) result = caseRelationship(systemCapabilityInvolvement);
-				if (result == null) result = caseAbstractRelationship(systemCapabilityInvolvement);
-				if (result == null) result = caseCapellaElement(systemCapabilityInvolvement);
-				if (result == null) result = caseTraceableElement(systemCapabilityInvolvement);
-				if (result == null) result = casePublishableElement(systemCapabilityInvolvement);
-				if (result == null) result = caseModelElement(systemCapabilityInvolvement);
-				if (result == null) result = caseExtensibleElement(systemCapabilityInvolvement);
-				if (result == null) result = caseElement(systemCapabilityInvolvement);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case CtxPackage.OPERATIONAL_ACTOR_REALIZATION: {
-				OperationalActorRealization operationalActorRealization = (OperationalActorRealization)theEObject;
-				T result = caseOperationalActorRealization(operationalActorRealization);
-				if (result == null) result = caseComponentAllocation(operationalActorRealization);
-				if (result == null) result = caseAllocation(operationalActorRealization);
-				if (result == null) result = caseRelationship(operationalActorRealization);
-				if (result == null) result = caseAbstractTrace(operationalActorRealization);
-				if (result == null) result = caseAbstractRelationship(operationalActorRealization);
-				if (result == null) result = caseCapellaElement(operationalActorRealization);
-				if (result == null) result = caseTraceableElement(operationalActorRealization);
-				if (result == null) result = casePublishableElement(operationalActorRealization);
-				if (result == null) result = caseModelElement(operationalActorRealization);
-				if (result == null) result = caseExtensibleElement(operationalActorRealization);
-				if (result == null) result = caseElement(operationalActorRealization);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case CtxPackage.OPERATIONAL_ANALYSIS_REALIZATION: {
 				OperationalAnalysisRealization operationalAnalysisRealization = (OperationalAnalysisRealization)theEObject;
 				T result = caseOperationalAnalysisRealization(operationalAnalysisRealization);
@@ -496,47 +366,46 @@ public class CtxSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case CtxPackage.OPERATIONAL_ENTITY_REALIZATION: {
-				OperationalEntityRealization operationalEntityRealization = (OperationalEntityRealization)theEObject;
-				T result = caseOperationalEntityRealization(operationalEntityRealization);
-				if (result == null) result = caseComponentAllocation(operationalEntityRealization);
-				if (result == null) result = caseAllocation(operationalEntityRealization);
-				if (result == null) result = caseRelationship(operationalEntityRealization);
-				if (result == null) result = caseAbstractTrace(operationalEntityRealization);
-				if (result == null) result = caseAbstractRelationship(operationalEntityRealization);
-				if (result == null) result = caseCapellaElement(operationalEntityRealization);
-				if (result == null) result = caseTraceableElement(operationalEntityRealization);
-				if (result == null) result = casePublishableElement(operationalEntityRealization);
-				if (result == null) result = caseModelElement(operationalEntityRealization);
-				if (result == null) result = caseExtensibleElement(operationalEntityRealization);
-				if (result == null) result = caseElement(operationalEntityRealization);
+			case CtxPackage.SYSTEM_COMPONENT_PKG: {
+				SystemComponentPkg systemComponentPkg = (SystemComponentPkg)theEObject;
+				T result = caseSystemComponentPkg(systemComponentPkg);
+				if (result == null) result = caseComponentPkg(systemComponentPkg);
+				if (result == null) result = caseAbstractFunctionalStructure(systemComponentPkg);
+				if (result == null) result = caseStructure(systemComponentPkg);
+				if (result == null) result = caseNamespace(systemComponentPkg);
+				if (result == null) result = caseNamedElement(systemComponentPkg);
+				if (result == null) result = caseAbstractNamedElement(systemComponentPkg);
+				if (result == null) result = caseCapellaElement(systemComponentPkg);
+				if (result == null) result = caseTraceableElement(systemComponentPkg);
+				if (result == null) result = casePublishableElement(systemComponentPkg);
+				if (result == null) result = caseModelElement(systemComponentPkg);
+				if (result == null) result = caseExtensibleElement(systemComponentPkg);
+				if (result == null) result = caseElement(systemComponentPkg);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case CtxPackage.SYSTEM_CONTEXT: {
-				SystemContext systemContext = (SystemContext)theEObject;
-				T result = caseSystemContext(systemContext);
-				if (result == null) result = caseComponentContext(systemContext);
-				if (result == null) result = caseComponent(systemContext);
-				if (result == null) result = caseBlock(systemContext);
-				if (result == null) result = casePartitionableElement(systemContext);
-				if (result == null) result = caseInterfaceAllocator(systemContext);
-				if (result == null) result = caseCommunicationLinkExchanger(systemContext);
-				if (result == null) result = caseAbstractFunctionalBlock(systemContext);
-				if (result == null) result = caseClassifier(systemContext);
-				if (result == null) result = caseModellingBlock(systemContext);
-				if (result == null) result = caseGeneralizableElement(systemContext);
-				if (result == null) result = caseType(systemContext);
-				if (result == null) result = caseAbstractType(systemContext);
-				if (result == null) result = caseNamespace(systemContext);
-				if (result == null) result = caseNamedElement(systemContext);
-				if (result == null) result = caseAbstractNamedElement(systemContext);
-				if (result == null) result = caseCapellaElement(systemContext);
-				if (result == null) result = caseExtensibleElement(systemContext);
-				if (result == null) result = caseTraceableElement(systemContext);
-				if (result == null) result = casePublishableElement(systemContext);
-				if (result == null) result = caseModelElement(systemContext);
-				if (result == null) result = caseElement(systemContext);
+			case CtxPackage.SYSTEM_COMPONENT: {
+				SystemComponent systemComponent = (SystemComponent)theEObject;
+				T result = caseSystemComponent(systemComponent);
+				if (result == null) result = caseComponent(systemComponent);
+				if (result == null) result = caseBlock(systemComponent);
+				if (result == null) result = caseClassifier(systemComponent);
+				if (result == null) result = caseInterfaceAllocator(systemComponent);
+				if (result == null) result = caseCommunicationLinkExchanger(systemComponent);
+				if (result == null) result = caseAbstractFunctionalBlock(systemComponent);
+				if (result == null) result = caseGeneralizableElement(systemComponent);
+				if (result == null) result = caseModellingBlock(systemComponent);
+				if (result == null) result = caseType(systemComponent);
+				if (result == null) result = caseAbstractType(systemComponent);
+				if (result == null) result = caseNamespace(systemComponent);
+				if (result == null) result = caseNamedElement(systemComponent);
+				if (result == null) result = caseAbstractNamedElement(systemComponent);
+				if (result == null) result = caseCapellaElement(systemComponent);
+				if (result == null) result = caseExtensibleElement(systemComponent);
+				if (result == null) result = caseTraceableElement(systemComponent);
+				if (result == null) result = casePublishableElement(systemComponent);
+				if (result == null) result = caseModelElement(systemComponent);
+				if (result == null) result = caseElement(systemComponent);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -556,21 +425,6 @@ public class CtxSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseSystemAnalysis(SystemAnalysis object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>System</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>System</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseSystem(org.polarsys.capella.core.data.ctx.System object) {
 		return null;
 	}
 
@@ -635,62 +489,32 @@ public class CtxSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Actor</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Capability Involvement</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Actor</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Capability Involvement</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseActor(Actor object) {
+	public T caseCapabilityInvolvement(CapabilityInvolvement object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Actor Capability Involvement</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Mission Involvement</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Actor Capability Involvement</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Mission Involvement</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseActorCapabilityInvolvement(ActorCapabilityInvolvement object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Actor Mission Involvement</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Actor Mission Involvement</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseActorMissionInvolvement(ActorMissionInvolvement object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Actor Pkg</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Actor Pkg</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseActorPkg(ActorPkg object) {
+	public T caseMissionInvolvement(MissionInvolvement object) {
 		return null;
 	}
 
@@ -721,21 +545,6 @@ public class CtxSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseMissionPkg(MissionPkg object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>System Mission Involvement</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>System Mission Involvement</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseSystemMissionInvolvement(SystemMissionInvolvement object) {
 		return null;
 	}
 
@@ -785,36 +594,6 @@ public class CtxSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>System Capability Involvement</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>System Capability Involvement</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseSystemCapabilityInvolvement(SystemCapabilityInvolvement object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Operational Actor Realization</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Operational Actor Realization</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseOperationalActorRealization(OperationalActorRealization object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Operational Analysis Realization</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -830,32 +609,32 @@ public class CtxSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Operational Entity Realization</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>System Component Pkg</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Operational Entity Realization</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>System Component Pkg</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseOperationalEntityRealization(OperationalEntityRealization object) {
+	public T caseSystemComponentPkg(SystemComponentPkg object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>System Context</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>System Component</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>System Context</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>System Component</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseSystemContext(SystemContext object) {
+	public T caseSystemComponent(SystemComponent object) {
 		return null;
 	}
 
@@ -1085,156 +864,6 @@ public class CtxSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Type</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Type</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseType(Type object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Modelling Block</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Modelling Block</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseModellingBlock(ModellingBlock object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Abstract Functional Block</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Abstract Functional Block</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseAbstractFunctionalBlock(AbstractFunctionalBlock object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Block</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Block</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseBlock(Block object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Generalizable Element</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Generalizable Element</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseGeneralizableElement(GeneralizableElement object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Classifier</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Classifier</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseClassifier(Classifier object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Partitionable Element</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Partitionable Element</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T casePartitionableElement(PartitionableElement object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Interface Allocator</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Interface Allocator</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseInterfaceAllocator(InterfaceAllocator object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Link Exchanger</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Link Exchanger</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseCommunicationLinkExchanger(CommunicationLinkExchanger object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Component</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Component</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseComponent(Component object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Involved Element</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -1246,21 +875,6 @@ public class CtxSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseInvolvedElement(InvolvedElement object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Capability Realization Involved Element</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Capability Realization Involved Element</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseCapabilityRealizationInvolvedElement(CapabilityRealizationInvolvedElement object) {
 		return null;
 	}
 
@@ -1550,21 +1164,6 @@ public class CtxSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Abstract Actor</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Abstract Actor</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseAbstractActor(AbstractActor object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Involvement</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -1655,21 +1254,6 @@ public class CtxSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Component Allocation</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Component Allocation</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseComponentAllocation(ComponentAllocation object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Architecture Allocation</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -1685,17 +1269,167 @@ public class CtxSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Component Context</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Abstract Functional Structure</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Component Context</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Abstract Functional Structure</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseComponentContext(ComponentContext object) {
+	public T caseAbstractFunctionalStructure(AbstractFunctionalStructure object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Component Pkg</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Component Pkg</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseComponentPkg(ComponentPkg object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Type</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseType(Type object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Modelling Block</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Modelling Block</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseModellingBlock(ModellingBlock object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Abstract Functional Block</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Abstract Functional Block</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAbstractFunctionalBlock(AbstractFunctionalBlock object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Block</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Block</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseBlock(Block object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Generalizable Element</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Generalizable Element</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseGeneralizableElement(GeneralizableElement object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Classifier</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Classifier</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseClassifier(Classifier object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Interface Allocator</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Interface Allocator</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseInterfaceAllocator(InterfaceAllocator object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Link Exchanger</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Link Exchanger</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseCommunicationLinkExchanger(CommunicationLinkExchanger object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Component</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Component</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseComponent(Component object) {
 		return null;
 	}
 

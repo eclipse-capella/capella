@@ -517,29 +517,6 @@ public class OaItemProviderAdapterFactory extends OaAdapterFactory implements Co
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.oa.OperationalActor} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected OperationalActorItemProvider operationalActorItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.oa.OperationalActor}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createOperationalActorAdapter() {
-		if (operationalActorItemProvider == null) {
-			operationalActorItemProvider = new OperationalActorItemProvider(this);
-		}
-
-		return operationalActorItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.oa.CommunityOfInterest} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -724,29 +701,6 @@ public class OaItemProviderAdapterFactory extends OaAdapterFactory implements Co
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.oa.OperationalContext} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected OperationalContextItemProvider operationalContextItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.oa.OperationalContext}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createOperationalContextAdapter() {
-		if (operationalContextItemProvider == null) {
-			operationalContextItemProvider = new OperationalContextItemProvider(this);
-		}
-
-		return operationalContextItemProvider;
-	}
-
-	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -890,7 +844,6 @@ public class OaItemProviderAdapterFactory extends OaAdapterFactory implements Co
 		if (conceptItemProvider != null) conceptItemProvider.dispose();
 		if (conceptComplianceItemProvider != null) conceptComplianceItemProvider.dispose();
 		if (itemInConceptItemProvider != null) itemInConceptItemProvider.dispose();
-		if (operationalActorItemProvider != null) operationalActorItemProvider.dispose();
 		if (communityOfInterestItemProvider != null) communityOfInterestItemProvider.dispose();
 		if (communityOfInterestCompositionItemProvider != null) communityOfInterestCompositionItemProvider.dispose();
 		if (organisationalUnitItemProvider != null) organisationalUnitItemProvider.dispose();
@@ -899,7 +852,6 @@ public class OaItemProviderAdapterFactory extends OaAdapterFactory implements Co
 		if (capabilityConfigurationItemProvider != null) capabilityConfigurationItemProvider.dispose();
 		if (communicationMeanItemProvider != null) communicationMeanItemProvider.dispose();
 		if (entityOperationalCapabilityInvolvementItemProvider != null) entityOperationalCapabilityInvolvementItemProvider.dispose();
-		if (operationalContextItemProvider != null) operationalContextItemProvider.dispose();
 	}
 
 	/**

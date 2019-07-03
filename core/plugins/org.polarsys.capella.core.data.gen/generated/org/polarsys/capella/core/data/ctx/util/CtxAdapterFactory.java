@@ -31,7 +31,6 @@ import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.data.modellingcore.PublishableElement;
 import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 import org.polarsys.capella.core.data.capellacommon.AbstractCapabilityPkg;
-import org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvedElement;
 import org.polarsys.capella.core.data.capellacore.Allocation;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellacore.Classifier;
@@ -48,44 +47,37 @@ import org.polarsys.capella.core.data.capellacore.Relationship;
 import org.polarsys.capella.core.data.capellacore.Structure;
 import org.polarsys.capella.core.data.capellacore.Type;
 import org.polarsys.capella.core.data.capellacore.TypedElement;
-import org.polarsys.capella.core.data.cs.AbstractActor;
 import org.polarsys.capella.core.data.cs.ArchitectureAllocation;
 import org.polarsys.capella.core.data.cs.Block;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
-import org.polarsys.capella.core.data.cs.ComponentAllocation;
 import org.polarsys.capella.core.data.cs.ComponentArchitecture;
-import org.polarsys.capella.core.data.cs.ComponentContext;
+import org.polarsys.capella.core.data.cs.ComponentPkg;
 import org.polarsys.capella.core.data.cs.InterfaceAllocator;
-import org.polarsys.capella.core.data.ctx.Actor;
-import org.polarsys.capella.core.data.ctx.ActorCapabilityInvolvement;
-import org.polarsys.capella.core.data.ctx.ActorMissionInvolvement;
-import org.polarsys.capella.core.data.ctx.ActorPkg;
 import org.polarsys.capella.core.data.ctx.Capability;
 import org.polarsys.capella.core.data.ctx.CapabilityExploitation;
+import org.polarsys.capella.core.data.ctx.CapabilityInvolvement;
 import org.polarsys.capella.core.data.ctx.CapabilityPkg;
 import org.polarsys.capella.core.data.ctx.CtxPackage;
 import org.polarsys.capella.core.data.ctx.Mission;
+import org.polarsys.capella.core.data.ctx.MissionInvolvement;
 import org.polarsys.capella.core.data.ctx.MissionPkg;
-import org.polarsys.capella.core.data.ctx.OperationalActorRealization;
 import org.polarsys.capella.core.data.ctx.OperationalAnalysisRealization;
-import org.polarsys.capella.core.data.ctx.OperationalEntityRealization;
 import org.polarsys.capella.core.data.ctx.SystemAnalysis;
-import org.polarsys.capella.core.data.ctx.SystemCapabilityInvolvement;
 import org.polarsys.capella.core.data.ctx.SystemCommunication;
 import org.polarsys.capella.core.data.ctx.SystemCommunicationHook;
-import org.polarsys.capella.core.data.ctx.SystemContext;
+import org.polarsys.capella.core.data.ctx.SystemComponent;
+import org.polarsys.capella.core.data.ctx.SystemComponentPkg;
 import org.polarsys.capella.core.data.ctx.SystemFunction;
 import org.polarsys.capella.core.data.ctx.SystemFunctionPkg;
-import org.polarsys.capella.core.data.ctx.SystemMissionInvolvement;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.AbstractFunctionalArchitecture;
 import org.polarsys.capella.core.data.fa.AbstractFunctionalBlock;
 import org.polarsys.capella.core.data.fa.AbstractFunctionalChainContainer;
+import org.polarsys.capella.core.data.fa.AbstractFunctionalStructure;
 import org.polarsys.capella.core.data.fa.FunctionPkg;
 import org.polarsys.capella.core.data.information.AbstractInstance;
 import org.polarsys.capella.core.data.information.MultiplicityElement;
-import org.polarsys.capella.core.data.information.PartitionableElement;
 import org.polarsys.capella.core.data.information.Property;
 import org.polarsys.capella.core.data.information.communication.CommunicationLinkExchanger;
 import org.polarsys.capella.core.data.interaction.AbstractCapability;
@@ -153,10 +145,6 @@ public class CtxAdapterFactory extends AdapterFactoryImpl {
 				return createSystemAnalysisAdapter();
 			}
 			@Override
-			public Adapter caseSystem(org.polarsys.capella.core.data.ctx.System object) {
-				return createSystemAdapter();
-			}
-			@Override
 			public Adapter caseSystemFunction(SystemFunction object) {
 				return createSystemFunctionAdapter();
 			}
@@ -173,20 +161,12 @@ public class CtxAdapterFactory extends AdapterFactoryImpl {
 				return createSystemCommunicationAdapter();
 			}
 			@Override
-			public Adapter caseActor(Actor object) {
-				return createActorAdapter();
+			public Adapter caseCapabilityInvolvement(CapabilityInvolvement object) {
+				return createCapabilityInvolvementAdapter();
 			}
 			@Override
-			public Adapter caseActorCapabilityInvolvement(ActorCapabilityInvolvement object) {
-				return createActorCapabilityInvolvementAdapter();
-			}
-			@Override
-			public Adapter caseActorMissionInvolvement(ActorMissionInvolvement object) {
-				return createActorMissionInvolvementAdapter();
-			}
-			@Override
-			public Adapter caseActorPkg(ActorPkg object) {
-				return createActorPkgAdapter();
+			public Adapter caseMissionInvolvement(MissionInvolvement object) {
+				return createMissionInvolvementAdapter();
 			}
 			@Override
 			public Adapter caseMission(Mission object) {
@@ -195,10 +175,6 @@ public class CtxAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseMissionPkg(MissionPkg object) {
 				return createMissionPkgAdapter();
-			}
-			@Override
-			public Adapter caseSystemMissionInvolvement(SystemMissionInvolvement object) {
-				return createSystemMissionInvolvementAdapter();
 			}
 			@Override
 			public Adapter caseCapability(Capability object) {
@@ -213,24 +189,16 @@ public class CtxAdapterFactory extends AdapterFactoryImpl {
 				return createCapabilityPkgAdapter();
 			}
 			@Override
-			public Adapter caseSystemCapabilityInvolvement(SystemCapabilityInvolvement object) {
-				return createSystemCapabilityInvolvementAdapter();
-			}
-			@Override
-			public Adapter caseOperationalActorRealization(OperationalActorRealization object) {
-				return createOperationalActorRealizationAdapter();
-			}
-			@Override
 			public Adapter caseOperationalAnalysisRealization(OperationalAnalysisRealization object) {
 				return createOperationalAnalysisRealizationAdapter();
 			}
 			@Override
-			public Adapter caseOperationalEntityRealization(OperationalEntityRealization object) {
-				return createOperationalEntityRealizationAdapter();
+			public Adapter caseSystemComponentPkg(SystemComponentPkg object) {
+				return createSystemComponentPkgAdapter();
 			}
 			@Override
-			public Adapter caseSystemContext(SystemContext object) {
-				return createSystemContextAdapter();
+			public Adapter caseSystemComponent(SystemComponent object) {
+				return createSystemComponentAdapter();
 			}
 			@Override
 			public Adapter caseElement(Element object) {
@@ -289,56 +257,8 @@ public class CtxAdapterFactory extends AdapterFactoryImpl {
 				return createComponentArchitectureAdapter();
 			}
 			@Override
-			public Adapter caseAbstractType(AbstractType object) {
-				return createAbstractTypeAdapter();
-			}
-			@Override
-			public Adapter caseType(Type object) {
-				return createTypeAdapter();
-			}
-			@Override
-			public Adapter caseModellingBlock(ModellingBlock object) {
-				return createModellingBlockAdapter();
-			}
-			@Override
-			public Adapter caseAbstractFunctionalBlock(AbstractFunctionalBlock object) {
-				return createAbstractFunctionalBlockAdapter();
-			}
-			@Override
-			public Adapter caseBlock(Block object) {
-				return createBlockAdapter();
-			}
-			@Override
-			public Adapter caseGeneralizableElement(GeneralizableElement object) {
-				return createGeneralizableElementAdapter();
-			}
-			@Override
-			public Adapter caseClassifier(Classifier object) {
-				return createClassifierAdapter();
-			}
-			@Override
-			public Adapter casePartitionableElement(PartitionableElement object) {
-				return createPartitionableElementAdapter();
-			}
-			@Override
-			public Adapter caseInterfaceAllocator(InterfaceAllocator object) {
-				return createInterfaceAllocatorAdapter();
-			}
-			@Override
-			public Adapter caseCommunicationLinkExchanger(CommunicationLinkExchanger object) {
-				return createCommunicationLinkExchangerAdapter();
-			}
-			@Override
-			public Adapter caseComponent(Component object) {
-				return createComponentAdapter();
-			}
-			@Override
 			public Adapter caseInvolvedElement(InvolvedElement object) {
 				return createInvolvedElementAdapter();
-			}
-			@Override
-			public Adapter caseCapabilityRealizationInvolvedElement(CapabilityRealizationInvolvedElement object) {
-				return createCapabilityRealizationInvolvedElementAdapter();
 			}
 			@Override
 			public Adapter caseFeature(Feature object) {
@@ -397,6 +317,10 @@ public class CtxAdapterFactory extends AdapterFactoryImpl {
 				return createCallBehaviorActionAdapter();
 			}
 			@Override
+			public Adapter caseAbstractType(AbstractType object) {
+				return createAbstractTypeAdapter();
+			}
+			@Override
 			public Adapter caseAbstractEvent(AbstractEvent object) {
 				return createAbstractEventAdapter();
 			}
@@ -415,10 +339,6 @@ public class CtxAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseRelationship(Relationship object) {
 				return createRelationshipAdapter();
-			}
-			@Override
-			public Adapter caseAbstractActor(AbstractActor object) {
-				return createAbstractActorAdapter();
 			}
 			@Override
 			public Adapter caseInvolvement(Involvement object) {
@@ -445,16 +365,52 @@ public class CtxAdapterFactory extends AdapterFactoryImpl {
 				return createAllocationAdapter();
 			}
 			@Override
-			public Adapter caseComponentAllocation(ComponentAllocation object) {
-				return createComponentAllocationAdapter();
-			}
-			@Override
 			public Adapter caseArchitectureAllocation(ArchitectureAllocation object) {
 				return createArchitectureAllocationAdapter();
 			}
 			@Override
-			public Adapter caseComponentContext(ComponentContext object) {
-				return createComponentContextAdapter();
+			public Adapter caseAbstractFunctionalStructure(AbstractFunctionalStructure object) {
+				return createAbstractFunctionalStructureAdapter();
+			}
+			@Override
+			public Adapter caseComponentPkg(ComponentPkg object) {
+				return createComponentPkgAdapter();
+			}
+			@Override
+			public Adapter caseType(Type object) {
+				return createTypeAdapter();
+			}
+			@Override
+			public Adapter caseModellingBlock(ModellingBlock object) {
+				return createModellingBlockAdapter();
+			}
+			@Override
+			public Adapter caseAbstractFunctionalBlock(AbstractFunctionalBlock object) {
+				return createAbstractFunctionalBlockAdapter();
+			}
+			@Override
+			public Adapter caseBlock(Block object) {
+				return createBlockAdapter();
+			}
+			@Override
+			public Adapter caseGeneralizableElement(GeneralizableElement object) {
+				return createGeneralizableElementAdapter();
+			}
+			@Override
+			public Adapter caseClassifier(Classifier object) {
+				return createClassifierAdapter();
+			}
+			@Override
+			public Adapter caseInterfaceAllocator(InterfaceAllocator object) {
+				return createInterfaceAllocatorAdapter();
+			}
+			@Override
+			public Adapter caseCommunicationLinkExchanger(CommunicationLinkExchanger object) {
+				return createCommunicationLinkExchangerAdapter();
+			}
+			@Override
+			public Adapter caseComponent(Component object) {
+				return createComponentAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -487,20 +443,6 @@ public class CtxAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createSystemAnalysisAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.ctx.System <em>System</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.polarsys.capella.core.data.ctx.System
-	 * @generated
-	 */
-	public Adapter createSystemAdapter() {
 		return null;
 	}
 
@@ -561,58 +503,30 @@ public class CtxAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.ctx.Actor <em>Actor</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.ctx.CapabilityInvolvement <em>Capability Involvement</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.polarsys.capella.core.data.ctx.Actor
+	 * @see org.polarsys.capella.core.data.ctx.CapabilityInvolvement
 	 * @generated
 	 */
-	public Adapter createActorAdapter() {
+	public Adapter createCapabilityInvolvementAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.ctx.ActorCapabilityInvolvement <em>Actor Capability Involvement</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.ctx.MissionInvolvement <em>Mission Involvement</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.polarsys.capella.core.data.ctx.ActorCapabilityInvolvement
+	 * @see org.polarsys.capella.core.data.ctx.MissionInvolvement
 	 * @generated
 	 */
-	public Adapter createActorCapabilityInvolvementAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.ctx.ActorMissionInvolvement <em>Actor Mission Involvement</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.polarsys.capella.core.data.ctx.ActorMissionInvolvement
-	 * @generated
-	 */
-	public Adapter createActorMissionInvolvementAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.ctx.ActorPkg <em>Actor Pkg</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.polarsys.capella.core.data.ctx.ActorPkg
-	 * @generated
-	 */
-	public Adapter createActorPkgAdapter() {
+	public Adapter createMissionInvolvementAdapter() {
 		return null;
 	}
 
@@ -641,20 +555,6 @@ public class CtxAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createMissionPkgAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.ctx.SystemMissionInvolvement <em>System Mission Involvement</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.polarsys.capella.core.data.ctx.SystemMissionInvolvement
-	 * @generated
-	 */
-	public Adapter createSystemMissionInvolvementAdapter() {
 		return null;
 	}
 
@@ -701,34 +601,6 @@ public class CtxAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.ctx.SystemCapabilityInvolvement <em>System Capability Involvement</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.polarsys.capella.core.data.ctx.SystemCapabilityInvolvement
-	 * @generated
-	 */
-	public Adapter createSystemCapabilityInvolvementAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.ctx.OperationalActorRealization <em>Operational Actor Realization</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.polarsys.capella.core.data.ctx.OperationalActorRealization
-	 * @generated
-	 */
-	public Adapter createOperationalActorRealizationAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.ctx.OperationalAnalysisRealization <em>Operational Analysis Realization</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -743,30 +615,30 @@ public class CtxAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.ctx.OperationalEntityRealization <em>Operational Entity Realization</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.ctx.SystemComponentPkg <em>System Component Pkg</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.polarsys.capella.core.data.ctx.OperationalEntityRealization
+	 * @see org.polarsys.capella.core.data.ctx.SystemComponentPkg
 	 * @generated
 	 */
-	public Adapter createOperationalEntityRealizationAdapter() {
+	public Adapter createSystemComponentPkgAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.ctx.SystemContext <em>System Context</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.ctx.SystemComponent <em>System Component</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.polarsys.capella.core.data.ctx.SystemContext
+	 * @see org.polarsys.capella.core.data.ctx.SystemComponent
 	 * @generated
 	 */
-	public Adapter createSystemContextAdapter() {
+	public Adapter createSystemComponentAdapter() {
 		return null;
 	}
 
@@ -981,146 +853,6 @@ public class CtxAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.capellacore.Type <em>Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.polarsys.capella.core.data.capellacore.Type
-	 * @generated
-	 */
-	public Adapter createTypeAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.capellacore.ModellingBlock <em>Modelling Block</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.polarsys.capella.core.data.capellacore.ModellingBlock
-	 * @generated
-	 */
-	public Adapter createModellingBlockAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.fa.AbstractFunctionalBlock <em>Abstract Functional Block</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.polarsys.capella.core.data.fa.AbstractFunctionalBlock
-	 * @generated
-	 */
-	public Adapter createAbstractFunctionalBlockAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.cs.Block <em>Block</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.polarsys.capella.core.data.cs.Block
-	 * @generated
-	 */
-	public Adapter createBlockAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.capellacore.GeneralizableElement <em>Generalizable Element</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.polarsys.capella.core.data.capellacore.GeneralizableElement
-	 * @generated
-	 */
-	public Adapter createGeneralizableElementAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.capellacore.Classifier <em>Classifier</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.polarsys.capella.core.data.capellacore.Classifier
-	 * @generated
-	 */
-	public Adapter createClassifierAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.information.PartitionableElement <em>Partitionable Element</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.polarsys.capella.core.data.information.PartitionableElement
-	 * @generated
-	 */
-	public Adapter createPartitionableElementAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.cs.InterfaceAllocator <em>Interface Allocator</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.polarsys.capella.core.data.cs.InterfaceAllocator
-	 * @generated
-	 */
-	public Adapter createInterfaceAllocatorAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.information.communication.CommunicationLinkExchanger <em>Link Exchanger</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.polarsys.capella.core.data.information.communication.CommunicationLinkExchanger
-	 * @generated
-	 */
-	public Adapter createCommunicationLinkExchangerAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.cs.Component <em>Component</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.polarsys.capella.core.data.cs.Component
-	 * @generated
-	 */
-	public Adapter createComponentAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.capellacore.InvolvedElement <em>Involved Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -1131,20 +863,6 @@ public class CtxAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createInvolvedElementAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvedElement <em>Capability Realization Involved Element</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvedElement
-	 * @generated
-	 */
-	public Adapter createCapabilityRealizationInvolvedElementAdapter() {
 		return null;
 	}
 
@@ -1415,20 +1133,6 @@ public class CtxAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.cs.AbstractActor <em>Abstract Actor</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.polarsys.capella.core.data.cs.AbstractActor
-	 * @generated
-	 */
-	public Adapter createAbstractActorAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.capellacore.Involvement <em>Involvement</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -1513,20 +1217,6 @@ public class CtxAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.cs.ComponentAllocation <em>Component Allocation</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.polarsys.capella.core.data.cs.ComponentAllocation
-	 * @generated
-	 */
-	public Adapter createComponentAllocationAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.cs.ArchitectureAllocation <em>Architecture Allocation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -1541,16 +1231,156 @@ public class CtxAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.cs.ComponentContext <em>Component Context</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.fa.AbstractFunctionalStructure <em>Abstract Functional Structure</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.polarsys.capella.core.data.cs.ComponentContext
+	 * @see org.polarsys.capella.core.data.fa.AbstractFunctionalStructure
 	 * @generated
 	 */
-	public Adapter createComponentContextAdapter() {
+	public Adapter createAbstractFunctionalStructureAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.cs.ComponentPkg <em>Component Pkg</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.polarsys.capella.core.data.cs.ComponentPkg
+	 * @generated
+	 */
+	public Adapter createComponentPkgAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.capellacore.Type <em>Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.polarsys.capella.core.data.capellacore.Type
+	 * @generated
+	 */
+	public Adapter createTypeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.capellacore.ModellingBlock <em>Modelling Block</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.polarsys.capella.core.data.capellacore.ModellingBlock
+	 * @generated
+	 */
+	public Adapter createModellingBlockAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.fa.AbstractFunctionalBlock <em>Abstract Functional Block</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.polarsys.capella.core.data.fa.AbstractFunctionalBlock
+	 * @generated
+	 */
+	public Adapter createAbstractFunctionalBlockAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.cs.Block <em>Block</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.polarsys.capella.core.data.cs.Block
+	 * @generated
+	 */
+	public Adapter createBlockAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.capellacore.GeneralizableElement <em>Generalizable Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.polarsys.capella.core.data.capellacore.GeneralizableElement
+	 * @generated
+	 */
+	public Adapter createGeneralizableElementAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.capellacore.Classifier <em>Classifier</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.polarsys.capella.core.data.capellacore.Classifier
+	 * @generated
+	 */
+	public Adapter createClassifierAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.cs.InterfaceAllocator <em>Interface Allocator</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.polarsys.capella.core.data.cs.InterfaceAllocator
+	 * @generated
+	 */
+	public Adapter createInterfaceAllocatorAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.information.communication.CommunicationLinkExchanger <em>Link Exchanger</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.polarsys.capella.core.data.information.communication.CommunicationLinkExchanger
+	 * @generated
+	 */
+	public Adapter createCommunicationLinkExchangerAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.cs.Component <em>Component</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.polarsys.capella.core.data.cs.Component
+	 * @generated
+	 */
+	public Adapter createComponentAdapter() {
 		return null;
 	}
 

@@ -23,7 +23,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreEList;
 import org.polarsys.capella.common.model.helpers.IHelper;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
@@ -32,7 +31,6 @@ import org.polarsys.capella.core.data.capellacore.InvolverElement;
 import org.polarsys.capella.core.data.capellacore.impl.RelationshipImpl;
 import org.polarsys.capella.core.data.fa.FaPackage;
 import org.polarsys.capella.core.data.fa.FunctionalChainInvolvement;
-import org.polarsys.capella.core.data.information.ExchangeItem;
 
 /**
  * <!-- begin-user-doc -->

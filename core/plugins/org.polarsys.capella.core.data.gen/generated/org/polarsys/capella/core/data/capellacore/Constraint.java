@@ -11,8 +11,6 @@
 package org.polarsys.capella.core.data.capellacore;
 
 import org.polarsys.capella.common.data.modellingcore.AbstractConstraint;
-import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
-import org.polarsys.capella.core.data.information.datavalue.AbstractExpressionValue;
 
 /**
  * <!-- begin-user-doc -->

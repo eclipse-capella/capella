@@ -31,7 +31,7 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.polarsys.capella.common.model.copypaste.SharedInitializeCopyCommand;
-import org.polarsys.capella.core.data.cs.CsFactory;
+import org.polarsys.capella.core.data.capellacommon.CapellacommonFactory;
 import org.polarsys.capella.core.data.interaction.provider.AbstractCapabilityItemProvider;
 import org.polarsys.capella.core.data.la.CapabilityRealization;
 import org.polarsys.capella.core.data.la.LaPackage;
@@ -72,10 +72,7 @@ public class CapabilityRealizationItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addParticipatingActorsPropertyDescriptor(object);
-			addParticipatingSystemComponentsPropertyDescriptor(object);
-			addInvolvedActorsPropertyDescriptor(object);
-			addInvolvedSystemComponentsPropertyDescriptor(object);
+			addInvolvedComponentsPropertyDescriptor(object);
 			addRealizedCapabilitiesPropertyDescriptor(object);
 			addRealizedCapabilityRealizationsPropertyDescriptor(object);
 			addRealizingCapabilityRealizationsPropertyDescriptor(object);
@@ -87,12 +84,12 @@ public class CapabilityRealizationItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Participating Actors feature.
+	 * This adds a property descriptor for the Involved Components feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addParticipatingActorsPropertyDescriptor(Object object) {
+	protected void addInvolvedComponentsPropertyDescriptor(Object object) {
 
 		// begin-extension-code
 		itemPropertyDescriptors.add
@@ -100,90 +97,9 @@ public class CapabilityRealizationItemProvider
 		// end-extension-code
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_CapabilityRealization_participatingActors_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_CapabilityRealization_participatingActors_feature", "_UI_CapabilityRealization_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 LaPackage.Literals.CAPABILITY_REALIZATION__PARTICIPATING_ACTORS,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
-
-	/**
-	 * This adds a property descriptor for the Participating System Components feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addParticipatingSystemComponentsPropertyDescriptor(Object object) {
-
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_CapabilityRealization_participatingSystemComponents_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_CapabilityRealization_participatingSystemComponents_feature", "_UI_CapabilityRealization_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 LaPackage.Literals.CAPABILITY_REALIZATION__PARTICIPATING_SYSTEM_COMPONENTS,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
-
-	/**
-	 * This adds a property descriptor for the Involved Actors feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addInvolvedActorsPropertyDescriptor(Object object) {
-
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_CapabilityRealization_involvedActors_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_CapabilityRealization_involvedActors_feature", "_UI_CapabilityRealization_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 LaPackage.Literals.CAPABILITY_REALIZATION__INVOLVED_ACTORS,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
-
-	/**
-	 * This adds a property descriptor for the Involved System Components feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addInvolvedSystemComponentsPropertyDescriptor(Object object) {
-
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_CapabilityRealization_involvedSystemComponents_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_CapabilityRealization_involvedSystemComponents_feature", "_UI_CapabilityRealization_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 LaPackage.Literals.CAPABILITY_REALIZATION__INVOLVED_SYSTEM_COMPONENTS,
+				 getString("_UI_CapabilityRealization_involvedComponents_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_CapabilityRealization_involvedComponents_feature", "_UI_CapabilityRealization_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 LaPackage.Literals.CAPABILITY_REALIZATION__INVOLVED_COMPONENTS,
 				 false,
 				 false,
 				 false,
@@ -287,8 +203,7 @@ public class CapabilityRealizationItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(LaPackage.Literals.CAPABILITY_REALIZATION__OWNED_ACTOR_CAPABILITY_REALIZATIONS);
-			childrenFeatures.add(LaPackage.Literals.CAPABILITY_REALIZATION__OWNED_SYSTEM_COMPONENT_CAPABILITY_REALIZATIONS);
+			childrenFeatures.add(LaPackage.Literals.CAPABILITY_REALIZATION__OWNED_CAPABILITY_REALIZATION_INVOLVEMENTS);
 		}
 		return childrenFeatures;
 	}
@@ -353,8 +268,7 @@ public class CapabilityRealizationItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(CapabilityRealization.class)) {
-			case LaPackage.CAPABILITY_REALIZATION__OWNED_ACTOR_CAPABILITY_REALIZATIONS:
-			case LaPackage.CAPABILITY_REALIZATION__OWNED_SYSTEM_COMPONENT_CAPABILITY_REALIZATIONS:
+			case LaPackage.CAPABILITY_REALIZATION__OWNED_CAPABILITY_REALIZATION_INVOLVEMENTS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -374,20 +288,8 @@ public class CapabilityRealizationItemProvider
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
-                        (LaPackage.Literals.CAPABILITY_REALIZATION__OWNED_ACTOR_CAPABILITY_REALIZATIONS,
-                         CsFactory.eINSTANCE.createActorCapabilityRealizationInvolvement());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (LaPackage.Literals.CAPABILITY_REALIZATION__OWNED_SYSTEM_COMPONENT_CAPABILITY_REALIZATIONS,
-                         CsFactory.eINSTANCE.createSystemComponentCapabilityRealizationInvolvement());
+                        (LaPackage.Literals.CAPABILITY_REALIZATION__OWNED_CAPABILITY_REALIZATION_INVOLVEMENTS,
+                         CapellacommonFactory.eINSTANCE.createCapabilityRealizationInvolvement());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
                     }

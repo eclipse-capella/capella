@@ -192,15 +192,6 @@ public interface OaFactory extends EFactory {
 	ItemInConcept createItemInConcept();
 
 	/**
-	 * Returns a new object of class '<em>Operational Actor</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Operational Actor</em>'.
-	 * @generated
-	 */
-	OperationalActor createOperationalActor();
-
-	/**
 	 * Returns a new object of class '<em>Community Of Interest</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -271,15 +262,6 @@ public interface OaFactory extends EFactory {
 	 * @generated
 	 */
 	EntityOperationalCapabilityInvolvement createEntityOperationalCapabilityInvolvement();
-
-	/**
-	 * Returns a new object of class '<em>Operational Context</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Operational Context</em>'.
-	 * @generated
-	 */
-	OperationalContext createOperationalContext();
 
 	/**
 	 * Returns the package supported by this factory.
@@ -432,15 +414,6 @@ public interface OaFactory extends EFactory {
 	 * @param name_p : default name of created element
 	 * @generated
 	 */
-	OperationalActor createOperationalActor(String name_p);
-
-	/**
-	 * Creates class and sets its name
-	 * (This method comes from a customization of the standard EMF generator)
-	 *
-	 * @param name_p : default name of created element
-	 * @generated
-	 */
 	CommunityOfInterest createCommunityOfInterest(String name_p);
 
 	/**
@@ -496,15 +469,6 @@ public interface OaFactory extends EFactory {
 	 * @generated
 	 */
 	CommunicationMean createCommunicationMean(String name_p);
-
-	/**
-	 * Creates class and sets its name
-	 * (This method comes from a customization of the standard EMF generator)
-	 *
-	 * @param name_p : default name of created element
-	 * @generated
-	 */
-	OperationalContext createOperationalContext(String name_p);
 
 	//begin-capella-code
 	//end-capella-code

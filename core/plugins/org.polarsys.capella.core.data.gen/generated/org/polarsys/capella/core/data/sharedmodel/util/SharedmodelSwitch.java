@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.polarsys.capella.core.data.sharedmodel.util;
 
-import java.util.List;
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
@@ -25,7 +23,6 @@ import org.polarsys.capella.core.data.capellacore.Namespace;
 import org.polarsys.capella.core.data.capellacore.ReuseableStructure;
 import org.polarsys.capella.core.data.capellacore.Structure;
 import org.polarsys.capella.core.data.capellamodeller.ModelRoot;
-import org.polarsys.capella.core.data.sharedmodel.*;
 import org.polarsys.capella.core.data.sharedmodel.GenericPkg;
 import org.polarsys.capella.core.data.sharedmodel.SharedPkg;
 import org.polarsys.capella.core.data.sharedmodel.SharedmodelPackage;

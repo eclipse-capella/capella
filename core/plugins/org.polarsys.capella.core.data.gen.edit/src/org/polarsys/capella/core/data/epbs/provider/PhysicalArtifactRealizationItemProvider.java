@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *  
- * Contributors:
- *    Thales - initial API and implementation
- *******************************************************************************/
+/**
+ *
+ *  Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
+ *  All rights reserved. This program and the accompanying materials
+ *  are made available under the terms of the Eclipse Public License v1.0
+ *  which accompanies this distribution, and is available at
+ *  http://www.eclipse.org/legal/epl-v10.html
+ * 
+ *  Contributors:
+ *     Thales - initial API and implementation
+ */
 
 package org.polarsys.capella.core.data.epbs.provider;
 
@@ -20,6 +21,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.command.CopyCommand.Helper;
 import org.eclipse.emf.edit.domain.EditingDomain;
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
@@ -29,7 +31,10 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 import org.polarsys.capella.common.model.copypaste.SharedInitializeCopyCommand;
-import org.polarsys.capella.core.data.cs.provider.ComponentAllocationItemProvider;
+import org.polarsys.capella.core.data.capellacore.provider.AllocationItemProvider;
+import org.polarsys.capella.core.data.epbs.EpbsPackage;
+import org.polarsys.kitalpha.emde.extension.ExtensionModelManager;
+import org.polarsys.kitalpha.emde.extension.ModelExtensionHelper;
 
 /**
  * This is the item provider adapter for a {@link org.polarsys.capella.core.data.epbs.PhysicalArtifactRealization} object.
@@ -38,13 +43,27 @@ import org.polarsys.capella.core.data.cs.provider.ComponentAllocationItemProvide
  * @generated
  */
 public class PhysicalArtifactRealizationItemProvider
-	extends ComponentAllocationItemProvider
+	extends AllocationItemProvider
 	implements
 		IEditingDomainItemProvider,
 		IStructuredItemContentProvider,
 		ITreeItemContentProvider,
 		IItemLabelProvider,
 		IItemPropertySource {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected IItemPropertyDescriptor realizedPhysicalArtifactPropertyDescriptor;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected IItemPropertyDescriptor realizingConfigurationItemPropertyDescriptor;
+
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -53,6 +72,41 @@ public class PhysicalArtifactRealizationItemProvider
 	 */
 	public PhysicalArtifactRealizationItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void checkChildCreationExtender(Object object) {
+		super.checkChildCreationExtender(object);
+		if (object instanceof EObject) {
+			EObject eObject = (EObject) object;
+			// Process EpbsPackage.Literals.PHYSICAL_ARTIFACT_REALIZATION__REALIZED_PHYSICAL_ARTIFACT
+			if (realizedPhysicalArtifactPropertyDescriptor != null) {
+				Object realizedPhysicalArtifactValue = eObject.eGet(EpbsPackage.Literals.PHYSICAL_ARTIFACT_REALIZATION__REALIZED_PHYSICAL_ARTIFACT, true);
+				if (realizedPhysicalArtifactValue != null && realizedPhysicalArtifactValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) realizedPhysicalArtifactValue)) {
+					itemPropertyDescriptors.remove(realizedPhysicalArtifactPropertyDescriptor);
+				} else if (realizedPhysicalArtifactValue == null && ExtensionModelManager.getAnyType(eObject, EpbsPackage.Literals.PHYSICAL_ARTIFACT_REALIZATION__REALIZED_PHYSICAL_ARTIFACT) != null) {
+					itemPropertyDescriptors.remove(realizedPhysicalArtifactPropertyDescriptor);				  					
+				} else if (itemPropertyDescriptors.contains(realizedPhysicalArtifactPropertyDescriptor) == false) {
+					itemPropertyDescriptors.add(realizedPhysicalArtifactPropertyDescriptor);
+				}
+			}
+			// Process EpbsPackage.Literals.PHYSICAL_ARTIFACT_REALIZATION__REALIZING_CONFIGURATION_ITEM
+			if (realizingConfigurationItemPropertyDescriptor != null) {
+				Object realizingConfigurationItemValue = eObject.eGet(EpbsPackage.Literals.PHYSICAL_ARTIFACT_REALIZATION__REALIZING_CONFIGURATION_ITEM, true);
+				if (realizingConfigurationItemValue != null && realizingConfigurationItemValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) realizingConfigurationItemValue)) {
+					itemPropertyDescriptors.remove(realizingConfigurationItemPropertyDescriptor);
+				} else if (realizingConfigurationItemValue == null && ExtensionModelManager.getAnyType(eObject, EpbsPackage.Literals.PHYSICAL_ARTIFACT_REALIZATION__REALIZING_CONFIGURATION_ITEM) != null) {
+					itemPropertyDescriptors.remove(realizingConfigurationItemPropertyDescriptor);				  					
+				} else if (itemPropertyDescriptors.contains(realizingConfigurationItemPropertyDescriptor) == false) {
+					itemPropertyDescriptors.add(realizingConfigurationItemPropertyDescriptor);
+				}
+			}
+		}		
 	}
 
 	/**
@@ -66,11 +120,65 @@ public class PhysicalArtifactRealizationItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addRealizedPhysicalArtifactPropertyDescriptor(object);
+			addRealizingConfigurationItemPropertyDescriptor(object);
 		}
 		// begin-extension-code
 		checkChildCreationExtender(object);
 		// end-extension-code
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Realized Physical Artifact feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addRealizedPhysicalArtifactPropertyDescriptor(Object object) {
+		// begin-extension-code
+		realizedPhysicalArtifactPropertyDescriptor = createItemPropertyDescriptor
+		// end-extension-code		
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_PhysicalArtifactRealization_realizedPhysicalArtifact_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_PhysicalArtifactRealization_realizedPhysicalArtifact_feature", "_UI_PhysicalArtifactRealization_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 EpbsPackage.Literals.PHYSICAL_ARTIFACT_REALIZATION__REALIZED_PHYSICAL_ARTIFACT,
+				 false,
+				 false,
+				 false,
+				 null,
+				 null,
+		// begin-extension-code
+				 null);
+		itemPropertyDescriptors.add(realizedPhysicalArtifactPropertyDescriptor);
+		// end-extension-code
+	}
+
+	/**
+	 * This adds a property descriptor for the Realizing Configuration Item feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addRealizingConfigurationItemPropertyDescriptor(Object object) {
+		// begin-extension-code
+		realizingConfigurationItemPropertyDescriptor = createItemPropertyDescriptor
+		// end-extension-code		
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_PhysicalArtifactRealization_realizingConfigurationItem_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_PhysicalArtifactRealization_realizingConfigurationItem_feature", "_UI_PhysicalArtifactRealization_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 EpbsPackage.Literals.PHYSICAL_ARTIFACT_REALIZATION__REALIZING_CONFIGURATION_ITEM,
+				 false,
+				 false,
+				 false,
+				 null,
+				 null,
+		// begin-extension-code
+				 null);
+		itemPropertyDescriptors.add(realizingConfigurationItemPropertyDescriptor);
+		// end-extension-code
 	}
 
 	/**
@@ -123,6 +231,7 @@ public class PhysicalArtifactRealizationItemProvider
 		return result[0];
 
 	}
+
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached

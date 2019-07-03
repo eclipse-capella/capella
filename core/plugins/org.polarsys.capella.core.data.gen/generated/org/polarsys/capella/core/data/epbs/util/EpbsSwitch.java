@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.polarsys.capella.core.data.epbs.util;
 
-import java.util.List;
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
@@ -41,23 +39,19 @@ import org.polarsys.capella.core.data.cs.Block;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.BlockArchitecturePkg;
 import org.polarsys.capella.core.data.cs.Component;
-import org.polarsys.capella.core.data.cs.ComponentAllocation;
 import org.polarsys.capella.core.data.cs.ComponentArchitecture;
-import org.polarsys.capella.core.data.cs.ComponentContext;
+import org.polarsys.capella.core.data.cs.ComponentPkg;
 import org.polarsys.capella.core.data.cs.InterfaceAllocator;
-import org.polarsys.capella.core.data.cs.SystemComponent;
-import org.polarsys.capella.core.data.epbs.*;
 import org.polarsys.capella.core.data.epbs.ConfigurationItem;
 import org.polarsys.capella.core.data.epbs.ConfigurationItemPkg;
 import org.polarsys.capella.core.data.epbs.EPBSArchitecture;
 import org.polarsys.capella.core.data.epbs.EPBSArchitecturePkg;
-import org.polarsys.capella.core.data.epbs.EPBSContext;
 import org.polarsys.capella.core.data.epbs.EpbsPackage;
 import org.polarsys.capella.core.data.epbs.PhysicalArchitectureRealization;
 import org.polarsys.capella.core.data.epbs.PhysicalArtifactRealization;
 import org.polarsys.capella.core.data.fa.AbstractFunctionalArchitecture;
 import org.polarsys.capella.core.data.fa.AbstractFunctionalBlock;
-import org.polarsys.capella.core.data.information.PartitionableElement;
+import org.polarsys.capella.core.data.fa.AbstractFunctionalStructure;
 import org.polarsys.capella.core.data.information.communication.CommunicationLinkExchanger;
 import org.polarsys.kitalpha.emde.model.Element;
 import org.polarsys.kitalpha.emde.model.ExtensibleElement;
@@ -157,36 +151,11 @@ public class EpbsSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case EpbsPackage.EPBS_CONTEXT: {
-				EPBSContext epbsContext = (EPBSContext)theEObject;
-				T result = caseEPBSContext(epbsContext);
-				if (result == null) result = caseComponentContext(epbsContext);
-				if (result == null) result = caseComponent(epbsContext);
-				if (result == null) result = caseBlock(epbsContext);
-				if (result == null) result = casePartitionableElement(epbsContext);
-				if (result == null) result = caseInterfaceAllocator(epbsContext);
-				if (result == null) result = caseCommunicationLinkExchanger(epbsContext);
-				if (result == null) result = caseAbstractFunctionalBlock(epbsContext);
-				if (result == null) result = caseClassifier(epbsContext);
-				if (result == null) result = caseModellingBlock(epbsContext);
-				if (result == null) result = caseGeneralizableElement(epbsContext);
-				if (result == null) result = caseType(epbsContext);
-				if (result == null) result = caseAbstractType(epbsContext);
-				if (result == null) result = caseNamespace(epbsContext);
-				if (result == null) result = caseNamedElement(epbsContext);
-				if (result == null) result = caseAbstractNamedElement(epbsContext);
-				if (result == null) result = caseCapellaElement(epbsContext);
-				if (result == null) result = caseExtensibleElement(epbsContext);
-				if (result == null) result = caseTraceableElement(epbsContext);
-				if (result == null) result = casePublishableElement(epbsContext);
-				if (result == null) result = caseModelElement(epbsContext);
-				if (result == null) result = caseElement(epbsContext);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case EpbsPackage.CONFIGURATION_ITEM_PKG: {
 				ConfigurationItemPkg configurationItemPkg = (ConfigurationItemPkg)theEObject;
 				T result = caseConfigurationItemPkg(configurationItemPkg);
+				if (result == null) result = caseComponentPkg(configurationItemPkg);
+				if (result == null) result = caseAbstractFunctionalStructure(configurationItemPkg);
 				if (result == null) result = caseStructure(configurationItemPkg);
 				if (result == null) result = caseNamespace(configurationItemPkg);
 				if (result == null) result = caseNamedElement(configurationItemPkg);
@@ -203,29 +172,27 @@ public class EpbsSwitch<T> extends Switch<T> {
 			case EpbsPackage.CONFIGURATION_ITEM: {
 				ConfigurationItem configurationItem = (ConfigurationItem)theEObject;
 				T result = caseConfigurationItem(configurationItem);
-				if (result == null) result = caseSystemComponent(configurationItem);
-				if (result == null) result = caseComponent(configurationItem);
 				if (result == null) result = caseCapabilityRealizationInvolvedElement(configurationItem);
+				if (result == null) result = caseComponent(configurationItem);
+				if (result == null) result = caseInvolvedElement(configurationItem);
 				if (result == null) result = caseBlock(configurationItem);
-				if (result == null) result = casePartitionableElement(configurationItem);
+				if (result == null) result = caseClassifier(configurationItem);
 				if (result == null) result = caseInterfaceAllocator(configurationItem);
 				if (result == null) result = caseCommunicationLinkExchanger(configurationItem);
-				if (result == null) result = caseInvolvedElement(configurationItem);
 				if (result == null) result = caseAbstractFunctionalBlock(configurationItem);
-				if (result == null) result = caseClassifier(configurationItem);
-				if (result == null) result = caseModellingBlock(configurationItem);
 				if (result == null) result = caseGeneralizableElement(configurationItem);
+				if (result == null) result = caseTraceableElement(configurationItem);
+				if (result == null) result = casePublishableElement(configurationItem);
+				if (result == null) result = caseModellingBlock(configurationItem);
 				if (result == null) result = caseType(configurationItem);
 				if (result == null) result = caseAbstractType(configurationItem);
 				if (result == null) result = caseNamespace(configurationItem);
-				if (result == null) result = caseNamedElement(configurationItem);
-				if (result == null) result = caseAbstractNamedElement(configurationItem);
-				if (result == null) result = caseCapellaElement(configurationItem);
 				if (result == null) result = caseExtensibleElement(configurationItem);
-				if (result == null) result = caseTraceableElement(configurationItem);
-				if (result == null) result = casePublishableElement(configurationItem);
+				if (result == null) result = caseNamedElement(configurationItem);
+				if (result == null) result = caseCapellaElement(configurationItem);
 				if (result == null) result = caseModelElement(configurationItem);
 				if (result == null) result = caseElement(configurationItem);
+				if (result == null) result = caseAbstractNamedElement(configurationItem);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -249,7 +216,6 @@ public class EpbsSwitch<T> extends Switch<T> {
 			case EpbsPackage.PHYSICAL_ARTIFACT_REALIZATION: {
 				PhysicalArtifactRealization physicalArtifactRealization = (PhysicalArtifactRealization)theEObject;
 				T result = casePhysicalArtifactRealization(physicalArtifactRealization);
-				if (result == null) result = caseComponentAllocation(physicalArtifactRealization);
 				if (result == null) result = caseAllocation(physicalArtifactRealization);
 				if (result == null) result = caseRelationship(physicalArtifactRealization);
 				if (result == null) result = caseAbstractTrace(physicalArtifactRealization);
@@ -294,21 +260,6 @@ public class EpbsSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseEPBSArchitecture(EPBSArchitecture object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>EPBS Context</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>EPBS Context</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseEPBSContext(EPBSContext object) {
 		return null;
 	}
 
@@ -613,6 +564,36 @@ public class EpbsSwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Abstract Functional Structure</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Abstract Functional Structure</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAbstractFunctionalStructure(AbstractFunctionalStructure object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Component Pkg</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Component Pkg</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseComponentPkg(ComponentPkg object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Abstract Type</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -718,21 +699,6 @@ public class EpbsSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Partitionable Element</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Partitionable Element</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T casePartitionableElement(PartitionableElement object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Interface Allocator</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -778,21 +744,6 @@ public class EpbsSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Component Context</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Component Context</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseComponentContext(ComponentContext object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Involved Element</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -819,21 +770,6 @@ public class EpbsSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseCapabilityRealizationInvolvedElement(CapabilityRealizationInvolvedElement object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>System Component</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>System Component</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseSystemComponent(SystemComponent object) {
 		return null;
 	}
 
@@ -909,21 +845,6 @@ public class EpbsSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseArchitectureAllocation(ArchitectureAllocation object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Component Allocation</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Component Allocation</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseComponentAllocation(ComponentAllocation object) {
 		return null;
 	}
 

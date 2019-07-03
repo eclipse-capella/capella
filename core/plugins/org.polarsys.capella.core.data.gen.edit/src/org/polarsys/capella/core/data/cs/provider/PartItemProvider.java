@@ -586,18 +586,6 @@ public class PartItemProvider
                 {
                     CommandParameter commandParameter = createChildParameter
                         (CsPackage.Literals.PART__OWNED_ABSTRACT_TYPE,
-                         OaFactory.eINSTANCE.createOperationalActor());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (CsPackage.Literals.PART__OWNED_ABSTRACT_TYPE,
                          OaFactory.eINSTANCE.createLocation());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
@@ -634,30 +622,6 @@ public class PartItemProvider
                 {
                     CommandParameter commandParameter = createChildParameter
                         (CsPackage.Literals.PART__OWNED_ABSTRACT_TYPE,
-                         OaFactory.eINSTANCE.createOperationalContext());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (CsPackage.Literals.PART__OWNED_ABSTRACT_TYPE,
-                         CtxFactory.eINSTANCE.createSystem());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (CsPackage.Literals.PART__OWNED_ABSTRACT_TYPE,
                          CtxFactory.eINSTANCE.createSystemFunction());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
@@ -670,19 +634,7 @@ public class PartItemProvider
                 {
                     CommandParameter commandParameter = createChildParameter
                         (CsPackage.Literals.PART__OWNED_ABSTRACT_TYPE,
-                         CtxFactory.eINSTANCE.createActor());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (CsPackage.Literals.PART__OWNED_ABSTRACT_TYPE,
-                         CtxFactory.eINSTANCE.createSystemContext());
+                         CtxFactory.eINSTANCE.createSystemComponent());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
                     }
@@ -718,30 +670,6 @@ public class PartItemProvider
                 {
                     CommandParameter commandParameter = createChildParameter
                         (CsPackage.Literals.PART__OWNED_ABSTRACT_TYPE,
-                         LaFactory.eINSTANCE.createLogicalActor());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (CsPackage.Literals.PART__OWNED_ABSTRACT_TYPE,
-                         LaFactory.eINSTANCE.createLogicalContext());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (CsPackage.Literals.PART__OWNED_ABSTRACT_TYPE,
                          PaFactory.eINSTANCE.createPhysicalFunction());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
@@ -766,43 +694,7 @@ public class PartItemProvider
                 {
                     CommandParameter commandParameter = createChildParameter
                         (CsPackage.Literals.PART__OWNED_ABSTRACT_TYPE,
-                         PaFactory.eINSTANCE.createPhysicalActor());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (CsPackage.Literals.PART__OWNED_ABSTRACT_TYPE,
                          PaFactory.eINSTANCE.createPhysicalNode());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (CsPackage.Literals.PART__OWNED_ABSTRACT_TYPE,
-                         PaFactory.eINSTANCE.createPhysicalContext());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (CsPackage.Literals.PART__OWNED_ABSTRACT_TYPE,
-                         EpbsFactory.eINSTANCE.createEPBSContext());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
                     }

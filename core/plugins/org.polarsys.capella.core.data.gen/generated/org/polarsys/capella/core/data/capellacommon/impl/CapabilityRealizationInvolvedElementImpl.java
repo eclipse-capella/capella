@@ -42,6 +42,7 @@ import org.polarsys.capella.core.data.capellacore.EnumerationPropertyLiteral;
 import org.polarsys.capella.core.data.capellacore.EnumerationPropertyType;
 import org.polarsys.capella.core.data.capellacore.Involvement;
 import org.polarsys.capella.core.data.capellacore.PropertyValueGroup;
+import org.polarsys.capella.core.data.la.CapabilityRealization;
 import org.polarsys.capella.core.data.requirement.Requirement;
 
 /**
@@ -68,7 +69,8 @@ import org.polarsys.capella.core.data.requirement.Requirement;
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.CapabilityRealizationInvolvedElementImpl#getFeatures <em>Features</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.CapabilityRealizationInvolvedElementImpl#getAppliedRequirements <em>Applied Requirements</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.CapabilityRealizationInvolvedElementImpl#getInvolvingInvolvements <em>Involving Involvements</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.CapabilityRealizationInvolvedElementImpl#getInvolvingCapabilityRealizationInvolvements <em>Involving Capability Realization Involvements</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.CapabilityRealizationInvolvedElementImpl#getCapabilityRealizationInvolvements <em>Capability Realization Involvements</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.CapabilityRealizationInvolvedElementImpl#getInvolvingCapabilityRealizations <em>Involving Capability Realizations</em>}</li>
  * </ul>
  *
  * @generated
@@ -852,7 +854,7 @@ public abstract class CapabilityRealizationInvolvedElementImpl extends ModelElem
 	 * @generated
 	 */
 
-	public EList<CapabilityRealizationInvolvement> getInvolvingCapabilityRealizationInvolvements() {
+	public EList<CapabilityRealizationInvolvement> getCapabilityRealizationInvolvements() {
 
 
     Object result = null;
@@ -875,13 +877,13 @@ public abstract class CapabilityRealizationInvolvedElementImpl extends ModelElem
       throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = CapellacommonPackage.Literals.CAPABILITY_REALIZATION_INVOLVED_ELEMENT__INVOLVING_CAPABILITY_REALIZATION_INVOLVEMENTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
-    result = helper.getValue(this, CapellacommonPackage.Literals.CAPABILITY_REALIZATION_INVOLVED_ELEMENT__INVOLVING_CAPABILITY_REALIZATION_INVOLVEMENTS, annotation);
+    EAnnotation annotation = CapellacommonPackage.Literals.CAPABILITY_REALIZATION_INVOLVED_ELEMENT__CAPABILITY_REALIZATION_INVOLVEMENTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    result = helper.getValue(this, CapellacommonPackage.Literals.CAPABILITY_REALIZATION_INVOLVED_ELEMENT__CAPABILITY_REALIZATION_INVOLVEMENTS, annotation);
 		
 		try {
 		@SuppressWarnings("unchecked")
 		Collection<CapabilityRealizationInvolvement> resultAsList = (Collection<CapabilityRealizationInvolvement>) result;
-		return new EcoreEList.UnmodifiableEList<CapabilityRealizationInvolvement>(this, CapellacommonPackage.Literals.CAPABILITY_REALIZATION_INVOLVED_ELEMENT__INVOLVING_CAPABILITY_REALIZATION_INVOLVEMENTS, resultAsList.size(), resultAsList.toArray());
+		return new EcoreEList.UnmodifiableEList<CapabilityRealizationInvolvement>(this, CapellacommonPackage.Literals.CAPABILITY_REALIZATION_INVOLVED_ELEMENT__CAPABILITY_REALIZATION_INVOLVEMENTS, resultAsList.size(), resultAsList.toArray());
 		} catch (ClassCastException exception) {
 	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
@@ -889,7 +891,48 @@ public abstract class CapabilityRealizationInvolvedElementImpl extends ModelElem
 		
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 
+	public EList<CapabilityRealization> getInvolvingCapabilityRealizations() {
+
+
+    Object result = null;
+    // Helper that can get value for current feature.
+    IHelper helper = null;
+    // If current object is adaptable, ask it to get its IHelper.
+    if (this instanceof IAdaptable) {
+    	helper = (IHelper) ((IAdaptable) this).getAdapter(IHelper.class);
+    }
+    if (null == helper) {
+      // No helper found yet.
+      // Ask the platform to get the adapter 'IHelper.class' for current object.
+      IAdapterManager adapterManager = Platform.getAdapterManager();
+      helper = (IHelper) adapterManager.getAdapter(this, IHelper.class);
+    }
+    if (null == helper) {
+      EPackage package_l = eClass().getEPackage();
+      // Get the root package of the owner package.
+      EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+    } 
+    // A helper is found, let's use it. 
+    EAnnotation annotation = CapellacommonPackage.Literals.CAPABILITY_REALIZATION_INVOLVED_ELEMENT__INVOLVING_CAPABILITY_REALIZATIONS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    result = helper.getValue(this, CapellacommonPackage.Literals.CAPABILITY_REALIZATION_INVOLVED_ELEMENT__INVOLVING_CAPABILITY_REALIZATIONS, annotation);
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<CapabilityRealization> resultAsList = (Collection<CapabilityRealization>) result;
+		return new EcoreEList.UnmodifiableEList<CapabilityRealization>(this, CapellacommonPackage.Literals.CAPABILITY_REALIZATION_INVOLVED_ELEMENT__INVOLVING_CAPABILITY_REALIZATIONS, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException exception) {
+	  	exception.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -950,8 +993,10 @@ public abstract class CapabilityRealizationInvolvedElementImpl extends ModelElem
 				return getAppliedRequirements();
 			case CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT__INVOLVING_INVOLVEMENTS:
 				return getInvolvingInvolvements();
-			case CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT__INVOLVING_CAPABILITY_REALIZATION_INVOLVEMENTS:
-				return getInvolvingCapabilityRealizationInvolvements();
+			case CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT__CAPABILITY_REALIZATION_INVOLVEMENTS:
+				return getCapabilityRealizationInvolvements();
+			case CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT__INVOLVING_CAPABILITY_REALIZATIONS:
+				return getInvolvingCapabilityRealizations();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -1102,8 +1147,10 @@ public abstract class CapabilityRealizationInvolvedElementImpl extends ModelElem
 				return !getAppliedRequirements().isEmpty();
 			case CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT__INVOLVING_INVOLVEMENTS:
 				return !getInvolvingInvolvements().isEmpty();
-			case CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT__INVOLVING_CAPABILITY_REALIZATION_INVOLVEMENTS:
-				return !getInvolvingCapabilityRealizationInvolvements().isEmpty();
+			case CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT__CAPABILITY_REALIZATION_INVOLVEMENTS:
+				return !getCapabilityRealizationInvolvements().isEmpty();
+			case CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT__INVOLVING_CAPABILITY_REALIZATIONS:
+				return !getInvolvingCapabilityRealizations().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

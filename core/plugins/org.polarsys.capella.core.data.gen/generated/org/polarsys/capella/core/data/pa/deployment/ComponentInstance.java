@@ -13,7 +13,7 @@ package org.polarsys.capella.core.data.pa.deployment;
 import org.eclipse.emf.common.util.EList;
 import org.polarsys.capella.core.data.cs.DeployableElement;
 import org.polarsys.capella.core.data.cs.DeploymentTarget;
-import org.polarsys.capella.core.data.pa.AbstractPhysicalComponent;
+import org.polarsys.capella.core.data.pa.PhysicalComponent;
 
 /**
  * <!-- begin-user-doc -->
@@ -127,13 +127,13 @@ public interface ComponentInstance extends AbstractPhysicalInstance, DeployableE
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Type</em>' reference.
-	 * @see #setType(AbstractPhysicalComponent)
+	 * @see #setType(PhysicalComponent)
 	 * @see org.polarsys.capella.core.data.pa.deployment.DeploymentPackage#getComponentInstance_Type()
 	 * @model annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
 	 * @generated
 	 */
 
-	AbstractPhysicalComponent getType();
+	PhysicalComponent getType();
 
 
 
@@ -148,7 +148,7 @@ public interface ComponentInstance extends AbstractPhysicalInstance, DeployableE
 	 * @generated
 	 */
 
-	void setType(AbstractPhysicalComponent value);
+	void setType(PhysicalComponent value);
 
 
 

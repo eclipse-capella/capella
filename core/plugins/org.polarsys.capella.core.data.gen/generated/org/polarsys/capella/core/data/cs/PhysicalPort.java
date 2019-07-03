@@ -14,8 +14,8 @@ import org.eclipse.emf.common.util.EList;
 import org.polarsys.capella.common.data.modellingcore.InformationsExchanger;
 import org.polarsys.capella.core.data.fa.ComponentPort;
 import org.polarsys.capella.core.data.fa.ComponentPortAllocation;
-import org.polarsys.capella.core.data.information.Partition;
 import org.polarsys.capella.core.data.information.Port;
+import org.polarsys.capella.core.data.information.Property;
 
 /**
  * <!-- begin-user-doc -->
@@ -38,7 +38,7 @@ import org.polarsys.capella.core.data.information.Port;
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='SysML::PortAndFlows::FlowPort' explanation='none' constraints='none'"
  * @generated
  */
-public interface PhysicalPort extends Partition, Port, AbstractPhysicalArtifact, InformationsExchanger, AbstractPhysicalLinkEnd {
+public interface PhysicalPort extends Port, AbstractPhysicalArtifact, InformationsExchanger, AbstractPhysicalLinkEnd, Property {
 
 
 

@@ -75,24 +75,6 @@ public interface CsFactory extends EFactory {
 	InterfaceUse createInterfaceUse();
 
 	/**
-	 * Returns a new object of class '<em>Actor Capability Realization Involvement</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Actor Capability Realization Involvement</em>'.
-	 * @generated
-	 */
-	ActorCapabilityRealizationInvolvement createActorCapabilityRealizationInvolvement();
-
-	/**
-	 * Returns a new object of class '<em>System Component Capability Realization Involvement</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>System Component Capability Realization Involvement</em>'.
-	 * @generated
-	 */
-	SystemComponentCapabilityRealizationInvolvement createSystemComponentCapabilityRealizationInvolvement();
-
-	/**
 	 * Returns a new object of class '<em>Exchange Item Allocation</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

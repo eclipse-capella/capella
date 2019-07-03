@@ -35,7 +35,6 @@ import org.polarsys.capella.common.model.helpers.IHelper;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.capellacore.InvolvedElement;
 import org.polarsys.capella.core.data.capellacore.Involvement;
-import org.polarsys.capella.core.data.ctx.Actor;
 import org.polarsys.capella.core.data.oa.CommunicationMean;
 import org.polarsys.capella.core.data.oa.Entity;
 import org.polarsys.capella.core.data.oa.Location;
@@ -67,8 +66,6 @@ import org.polarsys.capella.core.data.oa.RoleAllocation;
  *   <li>{@link org.polarsys.capella.core.data.oa.impl.EntityImpl#getOwnedRoleAllocations <em>Owned Role Allocations</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.oa.impl.EntityImpl#getAllocatedOperationalActivities <em>Allocated Operational Activities</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.oa.impl.EntityImpl#getAllocatedRoles <em>Allocated Roles</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.oa.impl.EntityImpl#getRealizingSystems <em>Realizing Systems</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.oa.impl.EntityImpl#getRealizingActors <em>Realizing Actors</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.oa.impl.EntityImpl#getInvolvingOperationalCapabilities <em>Involving Operational Capabilities</em>}</li>
  * </ul>
  *
@@ -721,100 +718,6 @@ public class EntityImpl extends AbstractConceptItemImpl implements Entity {
 	 * @generated
 	 */
 
-	public EList<org.polarsys.capella.core.data.ctx.System> getRealizingSystems() {
-
-
-    Object result = null;
-    // Helper that can get value for current feature.
-    IHelper helper = null;
-    // If current object is adaptable, ask it to get its IHelper.
-    if (this instanceof IAdaptable) {
-    	helper = (IHelper) ((IAdaptable) this).getAdapter(IHelper.class);
-    }
-    if (null == helper) {
-      // No helper found yet.
-      // Ask the platform to get the adapter 'IHelper.class' for current object.
-      IAdapterManager adapterManager = Platform.getAdapterManager();
-      helper = (IHelper) adapterManager.getAdapter(this, IHelper.class);
-    }
-    if (null == helper) {
-      EPackage package_l = eClass().getEPackage();
-      // Get the root package of the owner package.
-      EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
-    } 
-    // A helper is found, let's use it. 
-    EAnnotation annotation = OaPackage.Literals.ENTITY__REALIZING_SYSTEMS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
-    result = helper.getValue(this, OaPackage.Literals.ENTITY__REALIZING_SYSTEMS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<org.polarsys.capella.core.data.ctx.System> resultAsList = (Collection<org.polarsys.capella.core.data.ctx.System>) result;
-		return new EcoreEList.UnmodifiableEList<org.polarsys.capella.core.data.ctx.System>(this, OaPackage.Literals.ENTITY__REALIZING_SYSTEMS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
-
-
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public EList<Actor> getRealizingActors() {
-
-
-    Object result = null;
-    // Helper that can get value for current feature.
-    IHelper helper = null;
-    // If current object is adaptable, ask it to get its IHelper.
-    if (this instanceof IAdaptable) {
-    	helper = (IHelper) ((IAdaptable) this).getAdapter(IHelper.class);
-    }
-    if (null == helper) {
-      // No helper found yet.
-      // Ask the platform to get the adapter 'IHelper.class' for current object.
-      IAdapterManager adapterManager = Platform.getAdapterManager();
-      helper = (IHelper) adapterManager.getAdapter(this, IHelper.class);
-    }
-    if (null == helper) {
-      EPackage package_l = eClass().getEPackage();
-      // Get the root package of the owner package.
-      EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
-    } 
-    // A helper is found, let's use it. 
-    EAnnotation annotation = OaPackage.Literals.ENTITY__REALIZING_ACTORS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
-    result = helper.getValue(this, OaPackage.Literals.ENTITY__REALIZING_ACTORS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<Actor> resultAsList = (Collection<Actor>) result;
-		return new EcoreEList.UnmodifiableEList<Actor>(this, OaPackage.Literals.ENTITY__REALIZING_ACTORS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
-
-
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
 	public EList<OperationalCapability> getInvolvingOperationalCapabilities() {
 
 
@@ -907,10 +810,6 @@ public class EntityImpl extends AbstractConceptItemImpl implements Entity {
 				return getAllocatedOperationalActivities();
 			case OaPackage.ENTITY__ALLOCATED_ROLES:
 				return getAllocatedRoles();
-			case OaPackage.ENTITY__REALIZING_SYSTEMS:
-				return getRealizingSystems();
-			case OaPackage.ENTITY__REALIZING_ACTORS:
-				return getRealizingActors();
 			case OaPackage.ENTITY__INVOLVING_OPERATIONAL_CAPABILITIES:
 				return getInvolvingOperationalCapabilities();
 		}
@@ -1013,10 +912,6 @@ public class EntityImpl extends AbstractConceptItemImpl implements Entity {
 				return !getAllocatedOperationalActivities().isEmpty();
 			case OaPackage.ENTITY__ALLOCATED_ROLES:
 				return !getAllocatedRoles().isEmpty();
-			case OaPackage.ENTITY__REALIZING_SYSTEMS:
-				return !getRealizingSystems().isEmpty();
-			case OaPackage.ENTITY__REALIZING_ACTORS:
-				return !getRealizingActors().isEmpty();
 			case OaPackage.ENTITY__INVOLVING_OPERATIONAL_CAPABILITIES:
 				return !getInvolvingOperationalCapabilities().isEmpty();
 		}

@@ -16,7 +16,6 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.polarsys.capella.common.lib.IdGenerator;
-import org.polarsys.capella.core.data.requirement.*;
 import org.polarsys.capella.core.data.requirement.RequirementFactory;
 import org.polarsys.capella.core.data.requirement.RequirementPackage;
 import org.polarsys.capella.core.data.requirement.RequirementsPkg;

@@ -56,7 +56,7 @@ import org.polarsys.capella.core.data.capellacore.TypedElement;
 import org.polarsys.capella.core.data.cs.Block;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
-import org.polarsys.capella.core.data.cs.ComponentContext;
+import org.polarsys.capella.core.data.cs.ComponentPkg;
 import org.polarsys.capella.core.data.cs.InterfaceAllocator;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.AbstractFunctionalArchitecture;
@@ -70,11 +70,9 @@ import org.polarsys.capella.core.data.fa.FunctionalChain;
 import org.polarsys.capella.core.data.information.AbstractEventOperation;
 import org.polarsys.capella.core.data.information.AbstractInstance;
 import org.polarsys.capella.core.data.information.MultiplicityElement;
-import org.polarsys.capella.core.data.information.PartitionableElement;
 import org.polarsys.capella.core.data.information.Property;
 import org.polarsys.capella.core.data.information.communication.CommunicationLinkExchanger;
 import org.polarsys.capella.core.data.interaction.AbstractCapability;
-import org.polarsys.capella.core.data.oa.*;
 import org.polarsys.capella.core.data.oa.AbstractConceptItem;
 import org.polarsys.capella.core.data.oa.ActivityAllocation;
 import org.polarsys.capella.core.data.oa.CapabilityConfiguration;
@@ -92,11 +90,9 @@ import org.polarsys.capella.core.data.oa.Location;
 import org.polarsys.capella.core.data.oa.OaPackage;
 import org.polarsys.capella.core.data.oa.OperationalActivity;
 import org.polarsys.capella.core.data.oa.OperationalActivityPkg;
-import org.polarsys.capella.core.data.oa.OperationalActor;
 import org.polarsys.capella.core.data.oa.OperationalAnalysis;
 import org.polarsys.capella.core.data.oa.OperationalCapability;
 import org.polarsys.capella.core.data.oa.OperationalCapabilityPkg;
-import org.polarsys.capella.core.data.oa.OperationalContext;
 import org.polarsys.capella.core.data.oa.OperationalProcess;
 import org.polarsys.capella.core.data.oa.OperationalScenario;
 import org.polarsys.capella.core.data.oa.OrganisationalUnit;
@@ -246,10 +242,6 @@ public class OaAdapterFactory extends AdapterFactoryImpl {
 				return createAbstractConceptItemAdapter();
 			}
 			@Override
-			public Adapter caseOperationalActor(OperationalActor object) {
-				return createOperationalActorAdapter();
-			}
-			@Override
 			public Adapter caseCommunityOfInterest(CommunityOfInterest object) {
 				return createCommunityOfInterestAdapter();
 			}
@@ -280,10 +272,6 @@ public class OaAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseEntityOperationalCapabilityInvolvement(EntityOperationalCapabilityInvolvement object) {
 				return createEntityOperationalCapabilityInvolvementAdapter();
-			}
-			@Override
-			public Adapter caseOperationalContext(OperationalContext object) {
-				return createOperationalContextAdapter();
 			}
 			@Override
 			public Adapter caseElement(Element object) {
@@ -458,6 +446,10 @@ public class OaAdapterFactory extends AdapterFactoryImpl {
 				return createAbstractFunctionalStructureAdapter();
 			}
 			@Override
+			public Adapter caseComponentPkg(ComponentPkg object) {
+				return createComponentPkgAdapter();
+			}
+			@Override
 			public Adapter caseType(Type object) {
 				return createTypeAdapter();
 			}
@@ -480,10 +472,6 @@ public class OaAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseClassifier(Classifier object) {
 				return createClassifierAdapter();
-			}
-			@Override
-			public Adapter casePartitionableElement(PartitionableElement object) {
-				return createPartitionableElementAdapter();
 			}
 			@Override
 			public Adapter caseInterfaceAllocator(InterfaceAllocator object) {
@@ -528,10 +516,6 @@ public class OaAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseInvolvement(Involvement object) {
 				return createInvolvementAdapter();
-			}
-			@Override
-			public Adapter caseComponentContext(ComponentContext object) {
-				return createComponentContextAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -834,20 +818,6 @@ public class OaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.oa.OperationalActor <em>Operational Actor</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.polarsys.capella.core.data.oa.OperationalActor
-	 * @generated
-	 */
-	public Adapter createOperationalActorAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.oa.CommunityOfInterest <em>Community Of Interest</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -956,20 +926,6 @@ public class OaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createEntityOperationalCapabilityInvolvementAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.oa.OperationalContext <em>Operational Context</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.polarsys.capella.core.data.oa.OperationalContext
-	 * @generated
-	 */
-	public Adapter createOperationalContextAdapter() {
 		return null;
 	}
 
@@ -1576,6 +1532,20 @@ public class OaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.cs.ComponentPkg <em>Component Pkg</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.polarsys.capella.core.data.cs.ComponentPkg
+	 * @generated
+	 */
+	public Adapter createComponentPkgAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.capellacore.Type <em>Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -1656,20 +1626,6 @@ public class OaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createClassifierAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.information.PartitionableElement <em>Partitionable Element</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.polarsys.capella.core.data.information.PartitionableElement
-	 * @generated
-	 */
-	public Adapter createPartitionableElementAdapter() {
 		return null;
 	}
 
@@ -1824,20 +1780,6 @@ public class OaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createInvolvementAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.cs.ComponentContext <em>Component Context</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.polarsys.capella.core.data.cs.ComponentContext
-	 * @generated
-	 */
-	public Adapter createComponentContextAdapter() {
 		return null;
 	}
 

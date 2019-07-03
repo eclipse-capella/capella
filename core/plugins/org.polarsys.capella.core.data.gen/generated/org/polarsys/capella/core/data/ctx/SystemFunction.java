@@ -25,8 +25,7 @@ import org.polarsys.capella.core.data.oa.OperationalActivity;
  * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.ctx.SystemFunction#getOwnedSystemFunctionPkgs <em>Owned System Function Pkgs</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.ctx.SystemFunction#getAllocatorActors <em>Allocator Actors</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.ctx.SystemFunction#getAllocatorSystems <em>Allocator Systems</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.ctx.SystemFunction#getAllocatingSystemComponents <em>Allocating System Components</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.ctx.SystemFunction#getRealizedOperationalActivities <em>Realized Operational Activities</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.ctx.SystemFunction#getRealizingLogicalFunctions <em>Realizing Logical Functions</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.ctx.SystemFunction#getContainedSystemFunctions <em>Contained System Functions</em>}</li>
@@ -71,56 +70,25 @@ public interface SystemFunction extends AbstractFunction {
 
 
 	/**
-	 * Returns the value of the '<em><b>Allocator Actors</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.ctx.Actor}.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.ctx.Actor#getAllocatedSystemFunctions <em>Allocated System Functions</em>}'.
+	 * Returns the value of the '<em><b>Allocating System Components</b></em>' reference list.
+	 * The list contents are of type {@link org.polarsys.capella.core.data.ctx.SystemComponent}.
 
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Allocator Actors</em>' reference list isn't clear,
+	 * If the meaning of the '<em>Allocating System Components</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Allocator Actors</em>' reference list.
-	 * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystemFunction_AllocatorActors()
-	 * @see org.polarsys.capella.core.data.ctx.Actor#getAllocatedSystemFunctions
-	 * @model opposite="allocatedSystemFunctions" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='ComponentFunctionalAllocation.targetElement(cfa, self);\r\nComponentFunctionalAllocation.sourceElement(cfa, target);'"
+	 * @return the value of the '<em>Allocating System Components</em>' reference list.
+	 * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystemFunction_AllocatingSystemComponents()
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Components that allocate this System Function.' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='ComponentFunctionalAllocation.targetElement(cfa, self);\r\nComponentFunctionalAllocation.sourceElement(cfa, target);'"
 	 * @generated
 	 */
 
-	EList<Actor> getAllocatorActors();
-
-
-
-
-
-
-
-	/**
-	 * Returns the value of the '<em><b>Allocator Systems</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.ctx.System}.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.ctx.System#getAllocatedSystemFunctions <em>Allocated System Functions</em>}'.
-
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Allocator Systems</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Allocator Systems</em>' reference list.
-	 * @see org.polarsys.capella.core.data.ctx.CtxPackage#getSystemFunction_AllocatorSystems()
-	 * @see org.polarsys.capella.core.data.ctx.System#getAllocatedSystemFunctions
-	 * @model opposite="allocatedSystemFunctions" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='ComponentFunctionalAllocation.targetElement(cfa, self);\r\nComponentFunctionalAllocation.sourceElement(cfa, target);'"
-	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
-
-	EList<org.polarsys.capella.core.data.ctx.System> getAllocatorSystems();
+	EList<SystemComponent> getAllocatingSystemComponents();
 
 
 

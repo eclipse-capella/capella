@@ -32,7 +32,7 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.polarsys.capella.common.model.copypaste.SharedInitializeCopyCommand;
-import org.polarsys.capella.core.data.fa.provider.AbstractFunctionalStructureItemProvider;
+import org.polarsys.capella.core.data.cs.provider.ComponentPkgItemProvider;
 import org.polarsys.capella.core.data.information.InformationFactory;
 import org.polarsys.capella.core.data.information.InformationPackage;
 import org.polarsys.capella.core.data.pa.PaFactory;
@@ -48,7 +48,7 @@ import org.polarsys.kitalpha.emde.model.edit.provider.NewChildDescriptorHelper;
  * @generated
  */
 public class PhysicalComponentPkgItemProvider
-	extends AbstractFunctionalStructureItemProvider
+	extends ComponentPkgItemProvider
 	implements
 		IEditingDomainItemProvider,
 		IStructuredItemContentProvider,

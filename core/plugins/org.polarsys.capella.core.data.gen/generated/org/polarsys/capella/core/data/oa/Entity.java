@@ -13,7 +13,6 @@ package org.polarsys.capella.core.data.oa;
 import org.eclipse.emf.common.util.EList;
 import org.polarsys.capella.common.data.modellingcore.InformationsExchanger;
 import org.polarsys.capella.core.data.capellacore.InvolvedElement;
-import org.polarsys.capella.core.data.ctx.Actor;
 
 /**
  * <!-- begin-user-doc -->
@@ -33,8 +32,6 @@ import org.polarsys.capella.core.data.ctx.Actor;
  *   <li>{@link org.polarsys.capella.core.data.oa.Entity#getOwnedRoleAllocations <em>Owned Role Allocations</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.oa.Entity#getAllocatedOperationalActivities <em>Allocated Operational Activities</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.oa.Entity#getAllocatedRoles <em>Allocated Roles</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.oa.Entity#getRealizingSystems <em>Realizing Systems</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.oa.Entity#getRealizingActors <em>Realizing Actors</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.oa.Entity#getInvolvingOperationalCapabilities <em>Involving Operational Capabilities</em>}</li>
  * </ul>
  *
@@ -296,62 +293,6 @@ public interface Entity extends AbstractConceptItem, InformationsExchanger, Invo
 	 */
 
 	EList<Role> getAllocatedRoles();
-
-
-
-
-
-
-
-	/**
-	 * Returns the value of the '<em><b>Realizing Systems</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.ctx.System}.
-
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Realizing Systems</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Realizing Systems</em>' reference list.
-	 * @see org.polarsys.capella.core.data.oa.OaPackage#getEntity_RealizingSystems()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='Entity.incomingTraces(self, oer);\r\n\tOperationalEntityRealization.allocatingComponent(oer, target);\r\n} or {\r\n\tEntity.incomingTraces(self, oar);\r\n\tOperationalActorRealization.allocatingComponent(oar, target);'"
-	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
-
-	EList<org.polarsys.capella.core.data.ctx.System> getRealizingSystems();
-
-
-
-
-
-
-
-	/**
-	 * Returns the value of the '<em><b>Realizing Actors</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.ctx.Actor}.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.ctx.Actor#getRealizedEntities <em>Realized Entities</em>}'.
-
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Realizing Actors</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Realizing Actors</em>' reference list.
-	 * @see org.polarsys.capella.core.data.oa.OaPackage#getEntity_RealizingActors()
-	 * @see org.polarsys.capella.core.data.ctx.Actor#getRealizedEntities
-	 * @model opposite="realizedEntities" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='Entity.incomingTraces(self, oer);\r\n\tOperationalEntityRealization.allocatingComponent(oer, target);'"
-	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
-
-	EList<Actor> getRealizingActors();
 
 
 

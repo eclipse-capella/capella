@@ -30,7 +30,7 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.polarsys.capella.common.model.copypaste.SharedInitializeCopyCommand;
-import org.polarsys.capella.core.data.fa.provider.AbstractFunctionalStructureItemProvider;
+import org.polarsys.capella.core.data.cs.provider.ComponentPkgItemProvider;
 import org.polarsys.capella.core.data.la.LaFactory;
 import org.polarsys.capella.core.data.la.LaPackage;
 import org.polarsys.capella.core.data.la.LogicalComponentPkg;
@@ -43,7 +43,7 @@ import org.polarsys.kitalpha.emde.model.edit.provider.NewChildDescriptorHelper;
  * @generated
  */
 public class LogicalComponentPkgItemProvider
-	extends AbstractFunctionalStructureItemProvider
+	extends ComponentPkgItemProvider
 	implements
 		IEditingDomainItemProvider,
 		IStructuredItemContentProvider,

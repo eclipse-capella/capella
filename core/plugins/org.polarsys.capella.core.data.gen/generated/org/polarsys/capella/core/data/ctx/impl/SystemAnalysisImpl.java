@@ -29,13 +29,12 @@ import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.polarsys.capella.common.model.helpers.IHelper;
 import org.polarsys.capella.core.data.cs.impl.ComponentArchitectureImpl;
-import org.polarsys.capella.core.data.ctx.ActorPkg;
 import org.polarsys.capella.core.data.ctx.CapabilityPkg;
 import org.polarsys.capella.core.data.ctx.CtxPackage;
 import org.polarsys.capella.core.data.ctx.MissionPkg;
 import org.polarsys.capella.core.data.ctx.OperationalAnalysisRealization;
 import org.polarsys.capella.core.data.ctx.SystemAnalysis;
-import org.polarsys.capella.core.data.ctx.SystemContext;
+import org.polarsys.capella.core.data.ctx.SystemComponentPkg;
 import org.polarsys.capella.core.data.ctx.SystemFunctionPkg;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.oa.OperationalAnalysis;
@@ -48,9 +47,7 @@ import org.polarsys.capella.core.data.oa.OperationalAnalysis;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.polarsys.capella.core.data.ctx.impl.SystemAnalysisImpl#getOwnedSystemContext <em>Owned System Context</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.ctx.impl.SystemAnalysisImpl#getOwnedSystem <em>Owned System</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.ctx.impl.SystemAnalysisImpl#getOwnedActorPkg <em>Owned Actor Pkg</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.ctx.impl.SystemAnalysisImpl#getOwnedSystemComponentPkg <em>Owned System Component Pkg</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.ctx.impl.SystemAnalysisImpl#getOwnedMissionPkg <em>Owned Mission Pkg</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.ctx.impl.SystemAnalysisImpl#getContainedCapabilityPkg <em>Contained Capability Pkg</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.ctx.impl.SystemAnalysisImpl#getContainedSystemFunctionPkg <em>Contained System Function Pkg</em>}</li>
@@ -65,42 +62,14 @@ import org.polarsys.capella.core.data.oa.OperationalAnalysis;
 public class SystemAnalysisImpl extends ComponentArchitectureImpl implements SystemAnalysis {
 
 	/**
-	 * The cached value of the '{@link #getOwnedSystemContext() <em>Owned System Context</em>}' containment reference.
+	 * The cached value of the '{@link #getOwnedSystemComponentPkg() <em>Owned System Component Pkg</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedSystemContext()
+	 * @see #getOwnedSystemComponentPkg()
 	 * @generated
 	 * @ordered
 	 */
-	protected SystemContext ownedSystemContext;
-
-
-
-
-
-	/**
-	 * The cached value of the '{@link #getOwnedSystem() <em>Owned System</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOwnedSystem()
-	 * @generated
-	 * @ordered
-	 */
-	protected org.polarsys.capella.core.data.ctx.System ownedSystem;
-
-
-
-
-
-	/**
-	 * The cached value of the '{@link #getOwnedActorPkg() <em>Owned Actor Pkg</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOwnedActorPkg()
-	 * @generated
-	 * @ordered
-	 */
-	protected ActorPkg ownedActorPkg;
+	protected SystemComponentPkg ownedSystemComponentPkg;
 
 
 
@@ -184,25 +153,24 @@ public class SystemAnalysisImpl extends ComponentArchitectureImpl implements Sys
 	 * @generated
 	 */
 
-	public SystemContext getOwnedSystemContext() {
+	public SystemComponentPkg getOwnedSystemComponentPkg() {
 
-		if (ownedSystemContext != null && ownedSystemContext.eIsProxy()) {
-			InternalEObject oldOwnedSystemContext = (InternalEObject)ownedSystemContext;
-			ownedSystemContext = (SystemContext)eResolveProxy(oldOwnedSystemContext);
-			if (ownedSystemContext != oldOwnedSystemContext) {
-				InternalEObject newOwnedSystemContext = (InternalEObject)ownedSystemContext;
-				NotificationChain msgs = oldOwnedSystemContext.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CtxPackage.SYSTEM_ANALYSIS__OWNED_SYSTEM_CONTEXT, null, null);
-				if (newOwnedSystemContext.eInternalContainer() == null) {
-					msgs = newOwnedSystemContext.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CtxPackage.SYSTEM_ANALYSIS__OWNED_SYSTEM_CONTEXT, null, msgs);
+		if (ownedSystemComponentPkg != null && ownedSystemComponentPkg.eIsProxy()) {
+			InternalEObject oldOwnedSystemComponentPkg = (InternalEObject)ownedSystemComponentPkg;
+			ownedSystemComponentPkg = (SystemComponentPkg)eResolveProxy(oldOwnedSystemComponentPkg);
+			if (ownedSystemComponentPkg != oldOwnedSystemComponentPkg) {
+				InternalEObject newOwnedSystemComponentPkg = (InternalEObject)ownedSystemComponentPkg;
+				NotificationChain msgs = oldOwnedSystemComponentPkg.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CtxPackage.SYSTEM_ANALYSIS__OWNED_SYSTEM_COMPONENT_PKG, null, null);
+				if (newOwnedSystemComponentPkg.eInternalContainer() == null) {
+					msgs = newOwnedSystemComponentPkg.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CtxPackage.SYSTEM_ANALYSIS__OWNED_SYSTEM_COMPONENT_PKG, null, msgs);
 				}
 				if (msgs != null) msgs.dispatch();
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CtxPackage.SYSTEM_ANALYSIS__OWNED_SYSTEM_CONTEXT, oldOwnedSystemContext, ownedSystemContext));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CtxPackage.SYSTEM_ANALYSIS__OWNED_SYSTEM_COMPONENT_PKG, oldOwnedSystemComponentPkg, ownedSystemComponentPkg));
 			}
 		}
-		return ownedSystemContext;
+		return ownedSystemComponentPkg;
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -210,12 +178,10 @@ public class SystemAnalysisImpl extends ComponentArchitectureImpl implements Sys
 	 * @generated
 	 */
 
-	public SystemContext basicGetOwnedSystemContext() {
+	public SystemComponentPkg basicGetOwnedSystemComponentPkg() {
 
-		return ownedSystemContext;
+		return ownedSystemComponentPkg;
 	}
-
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -223,218 +189,39 @@ public class SystemAnalysisImpl extends ComponentArchitectureImpl implements Sys
 	 * @generated
 	 */
 
-	public NotificationChain basicSetOwnedSystemContext(SystemContext newOwnedSystemContext, NotificationChain msgs) {
+	public NotificationChain basicSetOwnedSystemComponentPkg(SystemComponentPkg newOwnedSystemComponentPkg, NotificationChain msgs) {
 
-		SystemContext oldOwnedSystemContext = ownedSystemContext;
-		ownedSystemContext = newOwnedSystemContext;
+		SystemComponentPkg oldOwnedSystemComponentPkg = ownedSystemComponentPkg;
+		ownedSystemComponentPkg = newOwnedSystemComponentPkg;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CtxPackage.SYSTEM_ANALYSIS__OWNED_SYSTEM_CONTEXT, oldOwnedSystemContext, newOwnedSystemContext);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CtxPackage.SYSTEM_ANALYSIS__OWNED_SYSTEM_COMPONENT_PKG, oldOwnedSystemComponentPkg, newOwnedSystemComponentPkg);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 
 		return msgs;
 	}
 
-
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 
-	public void setOwnedSystemContext(SystemContext newOwnedSystemContext) {
+	public void setOwnedSystemComponentPkg(SystemComponentPkg newOwnedSystemComponentPkg) {
 
-		if (newOwnedSystemContext != ownedSystemContext) {
+		if (newOwnedSystemComponentPkg != ownedSystemComponentPkg) {
 			NotificationChain msgs = null;
-			if (ownedSystemContext != null)
-				msgs = ((InternalEObject)ownedSystemContext).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CtxPackage.SYSTEM_ANALYSIS__OWNED_SYSTEM_CONTEXT, null, msgs);
-			if (newOwnedSystemContext != null)
-				msgs = ((InternalEObject)newOwnedSystemContext).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CtxPackage.SYSTEM_ANALYSIS__OWNED_SYSTEM_CONTEXT, null, msgs);
-			msgs = basicSetOwnedSystemContext(newOwnedSystemContext, msgs);
+			if (ownedSystemComponentPkg != null)
+				msgs = ((InternalEObject)ownedSystemComponentPkg).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CtxPackage.SYSTEM_ANALYSIS__OWNED_SYSTEM_COMPONENT_PKG, null, msgs);
+			if (newOwnedSystemComponentPkg != null)
+				msgs = ((InternalEObject)newOwnedSystemComponentPkg).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CtxPackage.SYSTEM_ANALYSIS__OWNED_SYSTEM_COMPONENT_PKG, null, msgs);
+			msgs = basicSetOwnedSystemComponentPkg(newOwnedSystemComponentPkg, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CtxPackage.SYSTEM_ANALYSIS__OWNED_SYSTEM_CONTEXT, newOwnedSystemContext, newOwnedSystemContext));
+			eNotify(new ENotificationImpl(this, Notification.SET, CtxPackage.SYSTEM_ANALYSIS__OWNED_SYSTEM_COMPONENT_PKG, newOwnedSystemComponentPkg, newOwnedSystemComponentPkg));
 
 	}
-
-
-
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public org.polarsys.capella.core.data.ctx.System getOwnedSystem() {
-
-		if (ownedSystem != null && ownedSystem.eIsProxy()) {
-			InternalEObject oldOwnedSystem = (InternalEObject)ownedSystem;
-			ownedSystem = (org.polarsys.capella.core.data.ctx.System)eResolveProxy(oldOwnedSystem);
-			if (ownedSystem != oldOwnedSystem) {
-				InternalEObject newOwnedSystem = (InternalEObject)ownedSystem;
-				NotificationChain msgs = oldOwnedSystem.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CtxPackage.SYSTEM_ANALYSIS__OWNED_SYSTEM, null, null);
-				if (newOwnedSystem.eInternalContainer() == null) {
-					msgs = newOwnedSystem.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CtxPackage.SYSTEM_ANALYSIS__OWNED_SYSTEM, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CtxPackage.SYSTEM_ANALYSIS__OWNED_SYSTEM, oldOwnedSystem, ownedSystem));
-			}
-		}
-		return ownedSystem;
-	}
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public org.polarsys.capella.core.data.ctx.System basicGetOwnedSystem() {
-
-		return ownedSystem;
-	}
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public NotificationChain basicSetOwnedSystem(org.polarsys.capella.core.data.ctx.System newOwnedSystem, NotificationChain msgs) {
-
-		org.polarsys.capella.core.data.ctx.System oldOwnedSystem = ownedSystem;
-		ownedSystem = newOwnedSystem;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CtxPackage.SYSTEM_ANALYSIS__OWNED_SYSTEM, oldOwnedSystem, newOwnedSystem);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-
-		return msgs;
-	}
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public void setOwnedSystem(org.polarsys.capella.core.data.ctx.System newOwnedSystem) {
-
-		if (newOwnedSystem != ownedSystem) {
-			NotificationChain msgs = null;
-			if (ownedSystem != null)
-				msgs = ((InternalEObject)ownedSystem).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CtxPackage.SYSTEM_ANALYSIS__OWNED_SYSTEM, null, msgs);
-			if (newOwnedSystem != null)
-				msgs = ((InternalEObject)newOwnedSystem).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CtxPackage.SYSTEM_ANALYSIS__OWNED_SYSTEM, null, msgs);
-			msgs = basicSetOwnedSystem(newOwnedSystem, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CtxPackage.SYSTEM_ANALYSIS__OWNED_SYSTEM, newOwnedSystem, newOwnedSystem));
-
-	}
-
-
-
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public ActorPkg getOwnedActorPkg() {
-
-		if (ownedActorPkg != null && ownedActorPkg.eIsProxy()) {
-			InternalEObject oldOwnedActorPkg = (InternalEObject)ownedActorPkg;
-			ownedActorPkg = (ActorPkg)eResolveProxy(oldOwnedActorPkg);
-			if (ownedActorPkg != oldOwnedActorPkg) {
-				InternalEObject newOwnedActorPkg = (InternalEObject)ownedActorPkg;
-				NotificationChain msgs = oldOwnedActorPkg.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CtxPackage.SYSTEM_ANALYSIS__OWNED_ACTOR_PKG, null, null);
-				if (newOwnedActorPkg.eInternalContainer() == null) {
-					msgs = newOwnedActorPkg.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CtxPackage.SYSTEM_ANALYSIS__OWNED_ACTOR_PKG, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CtxPackage.SYSTEM_ANALYSIS__OWNED_ACTOR_PKG, oldOwnedActorPkg, ownedActorPkg));
-			}
-		}
-		return ownedActorPkg;
-	}
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public ActorPkg basicGetOwnedActorPkg() {
-
-		return ownedActorPkg;
-	}
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public NotificationChain basicSetOwnedActorPkg(ActorPkg newOwnedActorPkg, NotificationChain msgs) {
-
-		ActorPkg oldOwnedActorPkg = ownedActorPkg;
-		ownedActorPkg = newOwnedActorPkg;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CtxPackage.SYSTEM_ANALYSIS__OWNED_ACTOR_PKG, oldOwnedActorPkg, newOwnedActorPkg);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-
-		return msgs;
-	}
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public void setOwnedActorPkg(ActorPkg newOwnedActorPkg) {
-
-		if (newOwnedActorPkg != ownedActorPkg) {
-			NotificationChain msgs = null;
-			if (ownedActorPkg != null)
-				msgs = ((InternalEObject)ownedActorPkg).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CtxPackage.SYSTEM_ANALYSIS__OWNED_ACTOR_PKG, null, msgs);
-			if (newOwnedActorPkg != null)
-				msgs = ((InternalEObject)newOwnedActorPkg).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CtxPackage.SYSTEM_ANALYSIS__OWNED_ACTOR_PKG, null, msgs);
-			msgs = basicSetOwnedActorPkg(newOwnedActorPkg, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CtxPackage.SYSTEM_ANALYSIS__OWNED_ACTOR_PKG, newOwnedActorPkg, newOwnedActorPkg));
-
-	}
-
-
-
-
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -805,12 +592,8 @@ public class SystemAnalysisImpl extends ComponentArchitectureImpl implements Sys
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case CtxPackage.SYSTEM_ANALYSIS__OWNED_SYSTEM_CONTEXT:
-				return basicSetOwnedSystemContext(null, msgs);
-			case CtxPackage.SYSTEM_ANALYSIS__OWNED_SYSTEM:
-				return basicSetOwnedSystem(null, msgs);
-			case CtxPackage.SYSTEM_ANALYSIS__OWNED_ACTOR_PKG:
-				return basicSetOwnedActorPkg(null, msgs);
+			case CtxPackage.SYSTEM_ANALYSIS__OWNED_SYSTEM_COMPONENT_PKG:
+				return basicSetOwnedSystemComponentPkg(null, msgs);
 			case CtxPackage.SYSTEM_ANALYSIS__OWNED_MISSION_PKG:
 				return basicSetOwnedMissionPkg(null, msgs);
 			case CtxPackage.SYSTEM_ANALYSIS__OWNED_OPERATIONAL_ANALYSIS_REALIZATIONS:
@@ -827,15 +610,9 @@ public class SystemAnalysisImpl extends ComponentArchitectureImpl implements Sys
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case CtxPackage.SYSTEM_ANALYSIS__OWNED_SYSTEM_CONTEXT:
-				if (resolve) return getOwnedSystemContext();
-				return basicGetOwnedSystemContext();
-			case CtxPackage.SYSTEM_ANALYSIS__OWNED_SYSTEM:
-				if (resolve) return getOwnedSystem();
-				return basicGetOwnedSystem();
-			case CtxPackage.SYSTEM_ANALYSIS__OWNED_ACTOR_PKG:
-				if (resolve) return getOwnedActorPkg();
-				return basicGetOwnedActorPkg();
+			case CtxPackage.SYSTEM_ANALYSIS__OWNED_SYSTEM_COMPONENT_PKG:
+				if (resolve) return getOwnedSystemComponentPkg();
+				return basicGetOwnedSystemComponentPkg();
 			case CtxPackage.SYSTEM_ANALYSIS__OWNED_MISSION_PKG:
 				if (resolve) return getOwnedMissionPkg();
 				return basicGetOwnedMissionPkg();
@@ -866,14 +643,8 @@ public class SystemAnalysisImpl extends ComponentArchitectureImpl implements Sys
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case CtxPackage.SYSTEM_ANALYSIS__OWNED_SYSTEM_CONTEXT:
-					setOwnedSystemContext((SystemContext)newValue);
-				return;
-			case CtxPackage.SYSTEM_ANALYSIS__OWNED_SYSTEM:
-					setOwnedSystem((org.polarsys.capella.core.data.ctx.System)newValue);
-				return;
-			case CtxPackage.SYSTEM_ANALYSIS__OWNED_ACTOR_PKG:
-					setOwnedActorPkg((ActorPkg)newValue);
+			case CtxPackage.SYSTEM_ANALYSIS__OWNED_SYSTEM_COMPONENT_PKG:
+					setOwnedSystemComponentPkg((SystemComponentPkg)newValue);
 				return;
 			case CtxPackage.SYSTEM_ANALYSIS__OWNED_MISSION_PKG:
 					setOwnedMissionPkg((MissionPkg)newValue);
@@ -895,14 +666,8 @@ public class SystemAnalysisImpl extends ComponentArchitectureImpl implements Sys
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case CtxPackage.SYSTEM_ANALYSIS__OWNED_SYSTEM_CONTEXT:
-				setOwnedSystemContext((SystemContext)null);
-				return;
-			case CtxPackage.SYSTEM_ANALYSIS__OWNED_SYSTEM:
-				setOwnedSystem((org.polarsys.capella.core.data.ctx.System)null);
-				return;
-			case CtxPackage.SYSTEM_ANALYSIS__OWNED_ACTOR_PKG:
-				setOwnedActorPkg((ActorPkg)null);
+			case CtxPackage.SYSTEM_ANALYSIS__OWNED_SYSTEM_COMPONENT_PKG:
+				setOwnedSystemComponentPkg((SystemComponentPkg)null);
 				return;
 			case CtxPackage.SYSTEM_ANALYSIS__OWNED_MISSION_PKG:
 				setOwnedMissionPkg((MissionPkg)null);
@@ -924,12 +689,8 @@ public class SystemAnalysisImpl extends ComponentArchitectureImpl implements Sys
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case CtxPackage.SYSTEM_ANALYSIS__OWNED_SYSTEM_CONTEXT:
-				return ownedSystemContext != null;
-			case CtxPackage.SYSTEM_ANALYSIS__OWNED_SYSTEM:
-				return ownedSystem != null;
-			case CtxPackage.SYSTEM_ANALYSIS__OWNED_ACTOR_PKG:
-				return ownedActorPkg != null;
+			case CtxPackage.SYSTEM_ANALYSIS__OWNED_SYSTEM_COMPONENT_PKG:
+				return ownedSystemComponentPkg != null;
 			case CtxPackage.SYSTEM_ANALYSIS__OWNED_MISSION_PKG:
 				return ownedMissionPkg != null;
 			case CtxPackage.SYSTEM_ANALYSIS__CONTAINED_CAPABILITY_PKG:

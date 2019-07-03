@@ -12,17 +12,20 @@ package org.polarsys.capella.common.data.behavior.util;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.util.Switch;
-
-import org.polarsys.capella.common.data.behavior.*;
-
+import org.polarsys.capella.common.data.behavior.AbstractBehavior;
+import org.polarsys.capella.common.data.behavior.AbstractEvent;
+import org.polarsys.capella.common.data.behavior.AbstractMessageEvent;
+import org.polarsys.capella.common.data.behavior.AbstractSignal;
+import org.polarsys.capella.common.data.behavior.AbstractSignalEvent;
+import org.polarsys.capella.common.data.behavior.AbstractTimeEvent;
+import org.polarsys.capella.common.data.behavior.BehaviorPackage;
+import org.polarsys.capella.common.data.behavior.TimeExpression;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.common.data.modellingcore.AbstractTypedElement;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.data.modellingcore.ValueSpecification;
-
 import org.polarsys.kitalpha.emde.model.Element;
 import org.polarsys.kitalpha.emde.model.ExtensibleElement;
 

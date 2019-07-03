@@ -12,7 +12,7 @@ package org.polarsys.capella.core.data.fa;
 
 import org.polarsys.capella.common.data.modellingcore.InformationsExchanger;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.data.information.Partition;
+import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.information.Port;
 
 /**
@@ -92,7 +92,7 @@ public interface ComponentExchangeEnd extends InformationsExchanger, CapellaElem
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Part</em>' reference.
-	 * @see #setPart(Partition)
+	 * @see #setPart(Part)
 	 * @see org.polarsys.capella.core.data.fa.FaPackage#getComponentExchangeEnd_Part()
 	 * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='partWithPort' featureOwner='ConnectorEnd'"
 	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='part'"
@@ -101,7 +101,7 @@ public interface ComponentExchangeEnd extends InformationsExchanger, CapellaElem
 	 * @generated
 	 */
 
-	Partition getPart();
+	Part getPart();
 
 
 
@@ -116,7 +116,7 @@ public interface ComponentExchangeEnd extends InformationsExchanger, CapellaElem
 	 * @generated
 	 */
 
-	void setPart(Partition value);
+	void setPart(Part value);
 
 
 

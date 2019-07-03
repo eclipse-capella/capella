@@ -35,11 +35,8 @@ import org.polarsys.capella.core.data.la.CapabilityRealizationPkg;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.pa.LogicalArchitectureRealization;
 import org.polarsys.capella.core.data.pa.PaPackage;
-import org.polarsys.capella.core.data.pa.PhysicalActorPkg;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
-import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentPkg;
-import org.polarsys.capella.core.data.pa.PhysicalContext;
 import org.polarsys.capella.core.data.pa.PhysicalFunctionPkg;
 
 /**
@@ -50,10 +47,7 @@ import org.polarsys.capella.core.data.pa.PhysicalFunctionPkg;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.polarsys.capella.core.data.pa.impl.PhysicalArchitectureImpl#getOwnedPhysicalContext <em>Owned Physical Context</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.pa.impl.PhysicalArchitectureImpl#getOwnedPhysicalComponent <em>Owned Physical Component</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.pa.impl.PhysicalArchitectureImpl#getOwnedPhysicalComponentPkg <em>Owned Physical Component Pkg</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.pa.impl.PhysicalArchitectureImpl#getOwnedPhysicalActorPkg <em>Owned Physical Actor Pkg</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.pa.impl.PhysicalArchitectureImpl#getContainedCapabilityRealizationPkg <em>Contained Capability Realization Pkg</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.pa.impl.PhysicalArchitectureImpl#getContainedPhysicalFunctionPkg <em>Contained Physical Function Pkg</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.pa.impl.PhysicalArchitectureImpl#getOwnedDeployments <em>Owned Deployments</em>}</li>
@@ -68,34 +62,6 @@ import org.polarsys.capella.core.data.pa.PhysicalFunctionPkg;
 public class PhysicalArchitectureImpl extends ComponentArchitectureImpl implements PhysicalArchitecture {
 
 	/**
-	 * The cached value of the '{@link #getOwnedPhysicalContext() <em>Owned Physical Context</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOwnedPhysicalContext()
-	 * @generated
-	 * @ordered
-	 */
-	protected PhysicalContext ownedPhysicalContext;
-
-
-
-
-
-	/**
-	 * The cached value of the '{@link #getOwnedPhysicalComponent() <em>Owned Physical Component</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOwnedPhysicalComponent()
-	 * @generated
-	 * @ordered
-	 */
-	protected PhysicalComponent ownedPhysicalComponent;
-
-
-
-
-
-	/**
 	 * The cached value of the '{@link #getOwnedPhysicalComponentPkg() <em>Owned Physical Component Pkg</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -104,28 +70,6 @@ public class PhysicalArchitectureImpl extends ComponentArchitectureImpl implemen
 	 * @ordered
 	 */
 	protected PhysicalComponentPkg ownedPhysicalComponentPkg;
-
-
-
-
-
-	/**
-	 * The cached value of the '{@link #getOwnedPhysicalActorPkg() <em>Owned Physical Actor Pkg</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOwnedPhysicalActorPkg()
-	 * @generated
-	 * @ordered
-	 */
-	protected PhysicalActorPkg ownedPhysicalActorPkg;
-
-
-
-
-
-
-
-
 
 
 
@@ -190,178 +134,6 @@ public class PhysicalArchitectureImpl extends ComponentArchitectureImpl implemen
 	protected EClass eStaticClass() {
 		return PaPackage.Literals.PHYSICAL_ARCHITECTURE;
 	}
-
-
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public PhysicalContext getOwnedPhysicalContext() {
-
-		if (ownedPhysicalContext != null && ownedPhysicalContext.eIsProxy()) {
-			InternalEObject oldOwnedPhysicalContext = (InternalEObject)ownedPhysicalContext;
-			ownedPhysicalContext = (PhysicalContext)eResolveProxy(oldOwnedPhysicalContext);
-			if (ownedPhysicalContext != oldOwnedPhysicalContext) {
-				InternalEObject newOwnedPhysicalContext = (InternalEObject)ownedPhysicalContext;
-				NotificationChain msgs = oldOwnedPhysicalContext.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PaPackage.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_CONTEXT, null, null);
-				if (newOwnedPhysicalContext.eInternalContainer() == null) {
-					msgs = newOwnedPhysicalContext.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PaPackage.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_CONTEXT, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, PaPackage.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_CONTEXT, oldOwnedPhysicalContext, ownedPhysicalContext));
-			}
-		}
-		return ownedPhysicalContext;
-	}
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public PhysicalContext basicGetOwnedPhysicalContext() {
-
-		return ownedPhysicalContext;
-	}
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public NotificationChain basicSetOwnedPhysicalContext(PhysicalContext newOwnedPhysicalContext, NotificationChain msgs) {
-
-		PhysicalContext oldOwnedPhysicalContext = ownedPhysicalContext;
-		ownedPhysicalContext = newOwnedPhysicalContext;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PaPackage.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_CONTEXT, oldOwnedPhysicalContext, newOwnedPhysicalContext);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-
-		return msgs;
-	}
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public void setOwnedPhysicalContext(PhysicalContext newOwnedPhysicalContext) {
-
-		if (newOwnedPhysicalContext != ownedPhysicalContext) {
-			NotificationChain msgs = null;
-			if (ownedPhysicalContext != null)
-				msgs = ((InternalEObject)ownedPhysicalContext).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PaPackage.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_CONTEXT, null, msgs);
-			if (newOwnedPhysicalContext != null)
-				msgs = ((InternalEObject)newOwnedPhysicalContext).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PaPackage.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_CONTEXT, null, msgs);
-			msgs = basicSetOwnedPhysicalContext(newOwnedPhysicalContext, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PaPackage.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_CONTEXT, newOwnedPhysicalContext, newOwnedPhysicalContext));
-
-	}
-
-
-
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public PhysicalComponent getOwnedPhysicalComponent() {
-
-		if (ownedPhysicalComponent != null && ownedPhysicalComponent.eIsProxy()) {
-			InternalEObject oldOwnedPhysicalComponent = (InternalEObject)ownedPhysicalComponent;
-			ownedPhysicalComponent = (PhysicalComponent)eResolveProxy(oldOwnedPhysicalComponent);
-			if (ownedPhysicalComponent != oldOwnedPhysicalComponent) {
-				InternalEObject newOwnedPhysicalComponent = (InternalEObject)ownedPhysicalComponent;
-				NotificationChain msgs = oldOwnedPhysicalComponent.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PaPackage.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_COMPONENT, null, null);
-				if (newOwnedPhysicalComponent.eInternalContainer() == null) {
-					msgs = newOwnedPhysicalComponent.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PaPackage.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_COMPONENT, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, PaPackage.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_COMPONENT, oldOwnedPhysicalComponent, ownedPhysicalComponent));
-			}
-		}
-		return ownedPhysicalComponent;
-	}
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public PhysicalComponent basicGetOwnedPhysicalComponent() {
-
-		return ownedPhysicalComponent;
-	}
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public NotificationChain basicSetOwnedPhysicalComponent(PhysicalComponent newOwnedPhysicalComponent, NotificationChain msgs) {
-
-		PhysicalComponent oldOwnedPhysicalComponent = ownedPhysicalComponent;
-		ownedPhysicalComponent = newOwnedPhysicalComponent;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PaPackage.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_COMPONENT, oldOwnedPhysicalComponent, newOwnedPhysicalComponent);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-
-		return msgs;
-	}
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public void setOwnedPhysicalComponent(PhysicalComponent newOwnedPhysicalComponent) {
-
-		if (newOwnedPhysicalComponent != ownedPhysicalComponent) {
-			NotificationChain msgs = null;
-			if (ownedPhysicalComponent != null)
-				msgs = ((InternalEObject)ownedPhysicalComponent).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PaPackage.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_COMPONENT, null, msgs);
-			if (newOwnedPhysicalComponent != null)
-				msgs = ((InternalEObject)newOwnedPhysicalComponent).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PaPackage.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_COMPONENT, null, msgs);
-			msgs = basicSetOwnedPhysicalComponent(newOwnedPhysicalComponent, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PaPackage.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_COMPONENT, newOwnedPhysicalComponent, newOwnedPhysicalComponent));
-
-	}
-
 
 
 
@@ -445,92 +217,6 @@ public class PhysicalArchitectureImpl extends ComponentArchitectureImpl implemen
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, PaPackage.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_COMPONENT_PKG, newOwnedPhysicalComponentPkg, newOwnedPhysicalComponentPkg));
-
-	}
-
-
-
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public PhysicalActorPkg getOwnedPhysicalActorPkg() {
-
-		if (ownedPhysicalActorPkg != null && ownedPhysicalActorPkg.eIsProxy()) {
-			InternalEObject oldOwnedPhysicalActorPkg = (InternalEObject)ownedPhysicalActorPkg;
-			ownedPhysicalActorPkg = (PhysicalActorPkg)eResolveProxy(oldOwnedPhysicalActorPkg);
-			if (ownedPhysicalActorPkg != oldOwnedPhysicalActorPkg) {
-				InternalEObject newOwnedPhysicalActorPkg = (InternalEObject)ownedPhysicalActorPkg;
-				NotificationChain msgs = oldOwnedPhysicalActorPkg.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PaPackage.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_ACTOR_PKG, null, null);
-				if (newOwnedPhysicalActorPkg.eInternalContainer() == null) {
-					msgs = newOwnedPhysicalActorPkg.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PaPackage.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_ACTOR_PKG, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, PaPackage.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_ACTOR_PKG, oldOwnedPhysicalActorPkg, ownedPhysicalActorPkg));
-			}
-		}
-		return ownedPhysicalActorPkg;
-	}
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public PhysicalActorPkg basicGetOwnedPhysicalActorPkg() {
-
-		return ownedPhysicalActorPkg;
-	}
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public NotificationChain basicSetOwnedPhysicalActorPkg(PhysicalActorPkg newOwnedPhysicalActorPkg, NotificationChain msgs) {
-
-		PhysicalActorPkg oldOwnedPhysicalActorPkg = ownedPhysicalActorPkg;
-		ownedPhysicalActorPkg = newOwnedPhysicalActorPkg;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PaPackage.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_ACTOR_PKG, oldOwnedPhysicalActorPkg, newOwnedPhysicalActorPkg);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-
-		return msgs;
-	}
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public void setOwnedPhysicalActorPkg(PhysicalActorPkg newOwnedPhysicalActorPkg) {
-
-		if (newOwnedPhysicalActorPkg != ownedPhysicalActorPkg) {
-			NotificationChain msgs = null;
-			if (ownedPhysicalActorPkg != null)
-				msgs = ((InternalEObject)ownedPhysicalActorPkg).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PaPackage.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_ACTOR_PKG, null, msgs);
-			if (newOwnedPhysicalActorPkg != null)
-				msgs = ((InternalEObject)newOwnedPhysicalActorPkg).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PaPackage.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_ACTOR_PKG, null, msgs);
-			msgs = basicSetOwnedPhysicalActorPkg(newOwnedPhysicalActorPkg, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PaPackage.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_ACTOR_PKG, newOwnedPhysicalActorPkg, newOwnedPhysicalActorPkg));
 
 	}
 
@@ -840,14 +526,8 @@ public class PhysicalArchitectureImpl extends ComponentArchitectureImpl implemen
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case PaPackage.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_CONTEXT:
-				return basicSetOwnedPhysicalContext(null, msgs);
-			case PaPackage.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_COMPONENT:
-				return basicSetOwnedPhysicalComponent(null, msgs);
 			case PaPackage.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_COMPONENT_PKG:
 				return basicSetOwnedPhysicalComponentPkg(null, msgs);
-			case PaPackage.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_ACTOR_PKG:
-				return basicSetOwnedPhysicalActorPkg(null, msgs);
 			case PaPackage.PHYSICAL_ARCHITECTURE__OWNED_DEPLOYMENTS:
 				return ((InternalEList<?>)getOwnedDeployments()).basicRemove(otherEnd, msgs);
 			case PaPackage.PHYSICAL_ARCHITECTURE__OWNED_LOGICAL_ARCHITECTURE_REALIZATIONS:
@@ -864,18 +544,9 @@ public class PhysicalArchitectureImpl extends ComponentArchitectureImpl implemen
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case PaPackage.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_CONTEXT:
-				if (resolve) return getOwnedPhysicalContext();
-				return basicGetOwnedPhysicalContext();
-			case PaPackage.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_COMPONENT:
-				if (resolve) return getOwnedPhysicalComponent();
-				return basicGetOwnedPhysicalComponent();
 			case PaPackage.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_COMPONENT_PKG:
 				if (resolve) return getOwnedPhysicalComponentPkg();
 				return basicGetOwnedPhysicalComponentPkg();
-			case PaPackage.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_ACTOR_PKG:
-				if (resolve) return getOwnedPhysicalActorPkg();
-				return basicGetOwnedPhysicalActorPkg();
 			case PaPackage.PHYSICAL_ARCHITECTURE__CONTAINED_CAPABILITY_REALIZATION_PKG:
 				if (resolve) return getContainedCapabilityRealizationPkg();
 				return basicGetContainedCapabilityRealizationPkg();
@@ -905,17 +576,8 @@ public class PhysicalArchitectureImpl extends ComponentArchitectureImpl implemen
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case PaPackage.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_CONTEXT:
-					setOwnedPhysicalContext((PhysicalContext)newValue);
-				return;
-			case PaPackage.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_COMPONENT:
-					setOwnedPhysicalComponent((PhysicalComponent)newValue);
-				return;
 			case PaPackage.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_COMPONENT_PKG:
 					setOwnedPhysicalComponentPkg((PhysicalComponentPkg)newValue);
-				return;
-			case PaPackage.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_ACTOR_PKG:
-					setOwnedPhysicalActorPkg((PhysicalActorPkg)newValue);
 				return;
 			case PaPackage.PHYSICAL_ARCHITECTURE__OWNED_DEPLOYMENTS:
 				getOwnedDeployments().clear();
@@ -938,17 +600,8 @@ public class PhysicalArchitectureImpl extends ComponentArchitectureImpl implemen
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case PaPackage.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_CONTEXT:
-				setOwnedPhysicalContext((PhysicalContext)null);
-				return;
-			case PaPackage.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_COMPONENT:
-				setOwnedPhysicalComponent((PhysicalComponent)null);
-				return;
 			case PaPackage.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_COMPONENT_PKG:
 				setOwnedPhysicalComponentPkg((PhysicalComponentPkg)null);
-				return;
-			case PaPackage.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_ACTOR_PKG:
-				setOwnedPhysicalActorPkg((PhysicalActorPkg)null);
 				return;
 			case PaPackage.PHYSICAL_ARCHITECTURE__OWNED_DEPLOYMENTS:
 				getOwnedDeployments().clear();
@@ -970,14 +623,8 @@ public class PhysicalArchitectureImpl extends ComponentArchitectureImpl implemen
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case PaPackage.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_CONTEXT:
-				return ownedPhysicalContext != null;
-			case PaPackage.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_COMPONENT:
-				return ownedPhysicalComponent != null;
 			case PaPackage.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_COMPONENT_PKG:
 				return ownedPhysicalComponentPkg != null;
-			case PaPackage.PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_ACTOR_PKG:
-				return ownedPhysicalActorPkg != null;
 			case PaPackage.PHYSICAL_ARCHITECTURE__CONTAINED_CAPABILITY_REALIZATION_PKG:
 				return basicGetContainedCapabilityRealizationPkg() != null;
 			case PaPackage.PHYSICAL_ARCHITECTURE__CONTAINED_PHYSICAL_FUNCTION_PKG:

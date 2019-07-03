@@ -179,7 +179,6 @@
       disposableProviderFactory="true" extensibleProviderFactory="true" childCreationExtenders="true"
       ecorePackage="OperationalAnalysis.ecore#/">
     <genClasses ecoreClass="OperationalAnalysis.ecore#//OperationalAnalysis">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference OperationalAnalysis.ecore#//OperationalAnalysis/ownedOperationalContext"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference OperationalAnalysis.ecore#//OperationalAnalysis/ownedRolePkg"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference OperationalAnalysis.ecore#//OperationalAnalysis/ownedEntityPkg"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference OperationalAnalysis.ecore#//OperationalAnalysis/ownedConceptPkg"/>
@@ -249,8 +248,8 @@
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference OperationalAnalysis.ecore#//RoleAllocation/entity"/>
     </genClasses>
     <genClasses ecoreClass="OperationalAnalysis.ecore#//EntityPkg">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference OperationalAnalysis.ecore#//EntityPkg/ownedEntityPkgs"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference OperationalAnalysis.ecore#//EntityPkg/ownedEntities"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference OperationalAnalysis.ecore#//EntityPkg/ownedEntityPkgs"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference OperationalAnalysis.ecore#//EntityPkg/ownedLocations"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference OperationalAnalysis.ecore#//EntityPkg/ownedCommunicationMeans"/>
     </genClasses>
@@ -264,8 +263,6 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference OperationalAnalysis.ecore#//Entity/ownedRoleAllocations"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference OperationalAnalysis.ecore#//Entity/allocatedOperationalActivities"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference OperationalAnalysis.ecore#//Entity/allocatedRoles"/>
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference OperationalAnalysis.ecore#//Entity/realizingSystems"/>
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference OperationalAnalysis.ecore#//Entity/realizingActors"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference OperationalAnalysis.ecore#//Entity/involvingOperationalCapabilities"/>
     </genClasses>
     <genClasses ecoreClass="OperationalAnalysis.ecore#//ConceptPkg">
@@ -286,9 +283,6 @@
     </genClasses>
     <genClasses image="false" ecoreClass="OperationalAnalysis.ecore#//AbstractConceptItem">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference OperationalAnalysis.ecore#//AbstractConceptItem/composingLinks"/>
-    </genClasses>
-    <genClasses ecoreClass="OperationalAnalysis.ecore#//OperationalActor">
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference OperationalAnalysis.ecore#//OperationalActor/realizingSystemActors"/>
     </genClasses>
     <genClasses ecoreClass="OperationalAnalysis.ecore#//CommunityOfInterest">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference OperationalAnalysis.ecore#//CommunityOfInterest/communityOfInterestCompositions"/>
@@ -320,15 +314,12 @@
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference OperationalAnalysis.ecore#//EntityOperationalCapabilityInvolvement/entity"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference OperationalAnalysis.ecore#//EntityOperationalCapabilityInvolvement/capability"/>
     </genClasses>
-    <genClasses ecoreClass="OperationalAnalysis.ecore#//OperationalContext"/>
   </genPackages>
   <genPackages prefix="Ctx" basePackage="org.polarsys.capella.core.data" resource="XMI"
       disposableProviderFactory="true" extensibleProviderFactory="true" childCreationExtenders="true"
       ecorePackage="ContextArchitecture.ecore#/">
     <genClasses ecoreClass="ContextArchitecture.ecore#//SystemAnalysis">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//SystemAnalysis/ownedSystemContext"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//SystemAnalysis/ownedSystem"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//SystemAnalysis/ownedActorPkg"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//SystemAnalysis/ownedSystemComponentPkg"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//SystemAnalysis/ownedMissionPkg"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//SystemAnalysis/containedCapabilityPkg"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//SystemAnalysis/containedSystemFunctionPkg"/>
@@ -337,22 +328,9 @@
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//SystemAnalysis/allocatedOperationalAnalyses"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//SystemAnalysis/allocatingLogicalArchitectures"/>
     </genClasses>
-    <genClasses ecoreClass="ContextArchitecture.ecore#//System">
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//System/contributedCapabilities"/>
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//System/participationsInCapabilities"/>
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//System/contributedMissions"/>
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//System/participationsInMissions"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//System/externalCommunication"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//System/ownedEntityRealizations"/>
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//System/allocatedEntityRealizations"/>
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//System/allocatedSystemFunctions"/>
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//System/realizedEntities"/>
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//System/realizingLogicalComponents"/>
-    </genClasses>
     <genClasses ecoreClass="ContextArchitecture.ecore#//SystemFunction">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//SystemFunction/ownedSystemFunctionPkgs"/>
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//SystemFunction/allocatorActors"/>
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//SystemFunction/allocatorSystems"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//SystemFunction/allocatingSystemComponents"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//SystemFunction/realizedOperationalActivities"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//SystemFunction/realizingLogicalFunctions"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//SystemFunction/containedSystemFunctions"/>
@@ -369,58 +347,27 @@
     <genClasses ecoreClass="ContextArchitecture.ecore#//SystemCommunication">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//SystemCommunication/ends"/>
     </genClasses>
-    <genClasses ecoreClass="ContextArchitecture.ecore#//Actor">
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//Actor/participationsInMissions"/>
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//Actor/participationsInCapabilities"/>
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//Actor/participationsInCapabilityRealizations"/>
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//Actor/contributedMissions"/>
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//Actor/contributedCapabilities"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//Actor/systemCommunication"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//Actor/ownedOperationalActorRealizations"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//Actor/ownedOperationalEntityRealizations"/>
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//Actor/allocatedSystemFunctions"/>
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//Actor/realizedEntities"/>
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//Actor/realizedOperationalActors"/>
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//Actor/realizingLogicalActors"/>
+    <genClasses ecoreClass="ContextArchitecture.ecore#//CapabilityInvolvement">
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//CapabilityInvolvement/systemComponent"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//CapabilityInvolvement/capability"/>
     </genClasses>
-    <genClasses ecoreClass="ContextArchitecture.ecore#//ActorCapabilityInvolvement">
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//ActorCapabilityInvolvement/actor"/>
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//ActorCapabilityInvolvement/capability"/>
-    </genClasses>
-    <genClasses ecoreClass="ContextArchitecture.ecore#//ActorMissionInvolvement">
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//ActorMissionInvolvement/actor"/>
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//ActorMissionInvolvement/mission"/>
-    </genClasses>
-    <genClasses ecoreClass="ContextArchitecture.ecore#//ActorPkg">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//ActorPkg/ownedActors"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//ActorPkg/ownedActorPkgs"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//ActorPkg/ownedSystemCommunication"/>
+    <genClasses ecoreClass="ContextArchitecture.ecore#//MissionInvolvement">
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//MissionInvolvement/systemComponent"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//MissionInvolvement/mission"/>
     </genClasses>
     <genClasses ecoreClass="ContextArchitecture.ecore#//Mission">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//Mission/ownedActorMissionInvolvements"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//Mission/ownedSystemMissionInvolvement"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//Mission/ownedMissionInvolvements"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//Mission/involvedSystemComponents"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//Mission/ownedCapabilityExploitations"/>
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//Mission/participatingActors"/>
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//Mission/participatingSystem"/>
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//Mission/involvedActors"/>
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//Mission/involvedSystem"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//Mission/exploitedCapabilities"/>
     </genClasses>
     <genClasses ecoreClass="ContextArchitecture.ecore#//MissionPkg">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//MissionPkg/ownedMissionPkgs"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//MissionPkg/ownedMissions"/>
     </genClasses>
-    <genClasses ecoreClass="ContextArchitecture.ecore#//SystemMissionInvolvement">
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//SystemMissionInvolvement/mission"/>
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//SystemMissionInvolvement/system"/>
-    </genClasses>
     <genClasses ecoreClass="ContextArchitecture.ecore#//Capability">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//Capability/ownedActorCapabilityInvolvements"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//Capability/ownedSystemCapabilityInvolvement"/>
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//Capability/involvedActors"/>
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//Capability/involvedSystem"/>
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//Capability/participatingActors"/>
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//Capability/participatingSystem"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//Capability/ownedCapabilityInvolvements"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//Capability/involvedSystemComponents"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//Capability/purposes"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//Capability/purposeMissions"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//Capability/realizedOperationalCapabilities"/>
@@ -434,14 +381,21 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//CapabilityPkg/ownedCapabilities"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//CapabilityPkg/ownedCapabilityPkgs"/>
     </genClasses>
-    <genClasses ecoreClass="ContextArchitecture.ecore#//SystemCapabilityInvolvement">
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//SystemCapabilityInvolvement/capability"/>
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//SystemCapabilityInvolvement/system"/>
-    </genClasses>
-    <genClasses ecoreClass="ContextArchitecture.ecore#//OperationalActorRealization"/>
     <genClasses ecoreClass="ContextArchitecture.ecore#//OperationalAnalysisRealization"/>
-    <genClasses ecoreClass="ContextArchitecture.ecore#//OperationalEntityRealization"/>
-    <genClasses ecoreClass="ContextArchitecture.ecore#//SystemContext"/>
+    <genClasses ecoreClass="ContextArchitecture.ecore#//SystemComponentPkg">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//SystemComponentPkg/ownedSystemComponents"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//SystemComponentPkg/ownedSystemComponentPkgs"/>
+    </genClasses>
+    <genClasses ecoreClass="ContextArchitecture.ecore#//SystemComponent">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ContextArchitecture.ecore#//SystemComponent/dataComponent"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//SystemComponent/dataType"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//SystemComponent/involvingCapabilities"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//SystemComponent/capabilityInvolvements"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//SystemComponent/involvingMissions"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//SystemComponent/missionInvolvements"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//SystemComponent/realizedEntities"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ContextArchitecture.ecore#//SystemComponent/realizingLogicalComponents"/>
+    </genClasses>
   </genPackages>
   <genPackages prefix="La" basePackage="org.polarsys.capella.core.data" resource="XMI"
       disposableProviderFactory="true" extensibleProviderFactory="true" childCreationExtenders="true"
@@ -450,10 +404,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LogicalArchitecture.ecore#//LogicalArchitecturePkg/ownedLogicalArchitectures"/>
     </genClasses>
     <genClasses ecoreClass="LogicalArchitecture.ecore#//LogicalArchitecture">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LogicalArchitecture.ecore#//LogicalArchitecture/ownedLogicalContext"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LogicalArchitecture.ecore#//LogicalArchitecture/ownedLogicalComponent"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LogicalArchitecture.ecore#//LogicalArchitecture/ownedLogicalComponentPkg"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LogicalArchitecture.ecore#//LogicalArchitecture/ownedLogicalActorPkg"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference LogicalArchitecture.ecore#//LogicalArchitecture/containedCapabilityRealizationPkg"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference LogicalArchitecture.ecore#//LogicalArchitecture/containedLogicalFunctionPkg"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LogicalArchitecture.ecore#//LogicalArchitecture/ownedSystemAnalysisRealizations"/>
@@ -463,8 +414,7 @@
     </genClasses>
     <genClasses ecoreClass="LogicalArchitecture.ecore#//LogicalFunction">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LogicalArchitecture.ecore#//LogicalFunction/ownedLogicalFunctionPkgs"/>
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference LogicalArchitecture.ecore#//LogicalFunction/allocatorLogicalActors"/>
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference LogicalArchitecture.ecore#//LogicalFunction/allocatorLogicalComponents"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference LogicalArchitecture.ecore#//LogicalFunction/allocatingLogicalComponents"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference LogicalArchitecture.ecore#//LogicalFunction/realizedSystemFunctions"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference LogicalArchitecture.ecore#//LogicalFunction/realizingPhysicalFunctions"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference LogicalArchitecture.ecore#//LogicalFunction/containedLogicalFunctions"/>
@@ -478,24 +428,18 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LogicalArchitecture.ecore#//LogicalComponent/ownedLogicalComponents"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LogicalArchitecture.ecore#//LogicalComponent/ownedLogicalArchitectures"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LogicalArchitecture.ecore#//LogicalComponent/ownedLogicalComponentPkgs"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LogicalArchitecture.ecore#//LogicalComponent/ownedSystemRealizations"/>
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference LogicalArchitecture.ecore#//LogicalComponent/systemRealizations"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference LogicalArchitecture.ecore#//LogicalComponent/subLogicalComponents"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference LogicalArchitecture.ecore#//LogicalComponent/allocatedLogicalFunctions"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference LogicalArchitecture.ecore#//LogicalComponent/realizedSystemComponents"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference LogicalArchitecture.ecore#//LogicalComponent/realizingPhysicalComponents"/>
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference LogicalArchitecture.ecore#//LogicalComponent/realizedSystems"/>
     </genClasses>
     <genClasses ecoreClass="LogicalArchitecture.ecore#//LogicalComponentPkg">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LogicalArchitecture.ecore#//LogicalComponentPkg/ownedLogicalComponents"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LogicalArchitecture.ecore#//LogicalComponentPkg/ownedLogicalComponentPkgs"/>
     </genClasses>
     <genClasses ecoreClass="LogicalArchitecture.ecore#//CapabilityRealization">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LogicalArchitecture.ecore#//CapabilityRealization/ownedActorCapabilityRealizations"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LogicalArchitecture.ecore#//CapabilityRealization/ownedSystemComponentCapabilityRealizations"/>
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference LogicalArchitecture.ecore#//CapabilityRealization/participatingActors"/>
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference LogicalArchitecture.ecore#//CapabilityRealization/participatingSystemComponents"/>
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference LogicalArchitecture.ecore#//CapabilityRealization/involvedActors"/>
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference LogicalArchitecture.ecore#//CapabilityRealization/involvedSystemComponents"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LogicalArchitecture.ecore#//CapabilityRealization/ownedCapabilityRealizationInvolvements"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference LogicalArchitecture.ecore#//CapabilityRealization/involvedComponents"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference LogicalArchitecture.ecore#//CapabilityRealization/realizedCapabilities"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference LogicalArchitecture.ecore#//CapabilityRealization/realizedCapabilityRealizations"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference LogicalArchitecture.ecore#//CapabilityRealization/realizingCapabilityRealizations"/>
@@ -505,22 +449,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LogicalArchitecture.ecore#//CapabilityRealizationPkg/ownedCapabilityRealizationPkgs"/>
     </genClasses>
     <genClasses ecoreClass="LogicalArchitecture.ecore#//SystemAnalysisRealization"/>
-    <genClasses ecoreClass="LogicalArchitecture.ecore#//SystemRealization"/>
     <genClasses ecoreClass="LogicalArchitecture.ecore#//ContextInterfaceRealization"/>
-    <genClasses ecoreClass="LogicalArchitecture.ecore#//LogicalActorPkg">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LogicalArchitecture.ecore#//LogicalActorPkg/ownedLogicalActorPkgs"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LogicalArchitecture.ecore#//LogicalActorPkg/ownedLogicalActors"/>
-    </genClasses>
-    <genClasses ecoreClass="LogicalArchitecture.ecore#//LogicalActor">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LogicalArchitecture.ecore#//LogicalActor/ownedSystemActorRealizations"/>
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference LogicalArchitecture.ecore#//LogicalActor/systemActorRealizations"/>
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference LogicalArchitecture.ecore#//LogicalActor/participationsInCapabilityRealizations"/>
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference LogicalArchitecture.ecore#//LogicalActor/allocatedLogicalFunctions"/>
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference LogicalArchitecture.ecore#//LogicalActor/realizedSystemActors"/>
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference LogicalArchitecture.ecore#//LogicalActor/realizingPhysicalActors"/>
-    </genClasses>
-    <genClasses ecoreClass="LogicalArchitecture.ecore#//SystemActorRealization"/>
-    <genClasses ecoreClass="LogicalArchitecture.ecore#//LogicalContext"/>
   </genPackages>
   <genPackages prefix="Pa" basePackage="org.polarsys.capella.core.data" resource="XMI"
       disposableProviderFactory="true" extensibleProviderFactory="true" childCreationExtenders="true"
@@ -551,10 +480,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PhysicalArchitecture.ecore#//PhysicalArchitecturePkg/ownedPhysicalArchitectures"/>
     </genClasses>
     <genClasses ecoreClass="PhysicalArchitecture.ecore#//PhysicalArchitecture">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PhysicalArchitecture.ecore#//PhysicalArchitecture/ownedPhysicalContext"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PhysicalArchitecture.ecore#//PhysicalArchitecture/ownedPhysicalComponent"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PhysicalArchitecture.ecore#//PhysicalArchitecture/ownedPhysicalComponentPkg"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PhysicalArchitecture.ecore#//PhysicalArchitecture/ownedPhysicalActorPkg"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference PhysicalArchitecture.ecore#//PhysicalArchitecture/containedCapabilityRealizationPkg"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference PhysicalArchitecture.ecore#//PhysicalArchitecture/containedPhysicalFunctionPkg"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PhysicalArchitecture.ecore#//PhysicalArchitecture/ownedDeployments"/>
@@ -565,8 +491,7 @@
     </genClasses>
     <genClasses ecoreClass="PhysicalArchitecture.ecore#//PhysicalFunction">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PhysicalArchitecture.ecore#//PhysicalFunction/ownedPhysicalFunctionPkgs"/>
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference PhysicalArchitecture.ecore#//PhysicalFunction/allocatorPhysicalActors"/>
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference PhysicalArchitecture.ecore#//PhysicalFunction/allocatorPhysicalComponents"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference PhysicalArchitecture.ecore#//PhysicalFunction/allocatingPhysicalComponents"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference PhysicalArchitecture.ecore#//PhysicalFunction/realizedLogicalFunctions"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference PhysicalArchitecture.ecore#//PhysicalFunction/containedPhysicalFunctions"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference PhysicalArchitecture.ecore#//PhysicalFunction/childrenPhysicalFunctions"/>
@@ -575,28 +500,18 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PhysicalArchitecture.ecore#//PhysicalFunctionPkg/ownedPhysicalFunctions"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PhysicalArchitecture.ecore#//PhysicalFunctionPkg/ownedPhysicalFunctionPkgs"/>
     </genClasses>
-    <genClasses image="false" ecoreClass="PhysicalArchitecture.ecore#//AbstractPhysicalComponent">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PhysicalArchitecture.ecore#//AbstractPhysicalComponent/kind"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PhysicalArchitecture.ecore#//AbstractPhysicalComponent/nature"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PhysicalArchitecture.ecore#//AbstractPhysicalComponent/ownedDeploymentLinks"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PhysicalArchitecture.ecore#//AbstractPhysicalComponent/ownedDeploymentAspect"/>
-    </genClasses>
     <genClasses ecoreClass="PhysicalArchitecture.ecore#//PhysicalComponent">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PhysicalArchitecture.ecore#//PhysicalComponent/kind"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PhysicalArchitecture.ecore#//PhysicalComponent/nature"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PhysicalArchitecture.ecore#//PhysicalComponent/ownedDeploymentLinks"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PhysicalArchitecture.ecore#//PhysicalComponent/ownedPhysicalComponents"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PhysicalArchitecture.ecore#//PhysicalComponent/ownedPhysicalComponentPkgs"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PhysicalArchitecture.ecore#//PhysicalComponent/ownedLogicalComponentRealizations"/>
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference PhysicalArchitecture.ecore#//PhysicalComponent/logicalComponentRealizations"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference PhysicalArchitecture.ecore#//PhysicalComponent/logicalInterfaceRealizations"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference PhysicalArchitecture.ecore#//PhysicalComponent/subPhysicalComponents"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference PhysicalArchitecture.ecore#//PhysicalComponent/realizedLogicalComponents"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference PhysicalArchitecture.ecore#//PhysicalComponent/allocatedPhysicalFunctions"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference PhysicalArchitecture.ecore#//PhysicalComponent/deployedPhysicalComponents"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference PhysicalArchitecture.ecore#//PhysicalComponent/deployingPhysicalComponents"/>
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference PhysicalArchitecture.ecore#//PhysicalComponent/deployingPhysicalActors"/>
-    </genClasses>
-    <genClasses ecoreClass="PhysicalArchitecture.ecore#//PhysicalActorPkg">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PhysicalArchitecture.ecore#//PhysicalActorPkg/ownedPhysicalActorPkgs"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PhysicalArchitecture.ecore#//PhysicalActorPkg/ownedPhysicalActors"/>
     </genClasses>
     <genClasses ecoreClass="PhysicalArchitecture.ecore#//PhysicalComponentPkg">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PhysicalArchitecture.ecore#//PhysicalComponentPkg/ownedComponents"/>
@@ -604,21 +519,11 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PhysicalArchitecture.ecore#//PhysicalComponentPkg/ownedKeyParts"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PhysicalArchitecture.ecore#//PhysicalComponentPkg/ownedDeployments"/>
     </genClasses>
-    <genClasses ecoreClass="PhysicalArchitecture.ecore#//PhysicalActor">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PhysicalArchitecture.ecore#//PhysicalActor/ownedLogicalActorRealizations"/>
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference PhysicalArchitecture.ecore#//PhysicalActor/logicalActorRealizations"/>
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference PhysicalArchitecture.ecore#//PhysicalActor/allocatedPhysicalFunctions"/>
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference PhysicalArchitecture.ecore#//PhysicalActor/realizedLogicalActors"/>
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference PhysicalArchitecture.ecore#//PhysicalActor/deployedPhysicalComponents"/>
-    </genClasses>
-    <genClasses ecoreClass="PhysicalArchitecture.ecore#//LogicalActorRealization"/>
     <genClasses ecoreClass="PhysicalArchitecture.ecore#//PhysicalNode">
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference PhysicalArchitecture.ecore#//PhysicalNode/subPhysicalNodes"/>
     </genClasses>
     <genClasses ecoreClass="PhysicalArchitecture.ecore#//LogicalArchitectureRealization"/>
-    <genClasses ecoreClass="PhysicalArchitecture.ecore#//LogicalComponentRealization"/>
     <genClasses ecoreClass="PhysicalArchitecture.ecore#//LogicalInterfaceRealization"/>
-    <genClasses ecoreClass="PhysicalArchitecture.ecore#//PhysicalContext"/>
     <nestedGenPackages prefix="Deployment" basePackage="org.polarsys.capella.core.data.pa"
         resource="XMI" disposableProviderFactory="true" extensibleProviderFactory="true"
         childCreationExtenders="true" ecorePackage="PhysicalArchitecture.ecore#//deployment">
@@ -673,15 +578,12 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EPBSArchitecture.ecore#//EPBSArchitecturePkg/ownedEPBSArchitectures"/>
     </genClasses>
     <genClasses ecoreClass="EPBSArchitecture.ecore#//EPBSArchitecture">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EPBSArchitecture.ecore#//EPBSArchitecture/ownedEPBSContext"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EPBSArchitecture.ecore#//EPBSArchitecture/ownedConfigurationItem"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EPBSArchitecture.ecore#//EPBSArchitecture/ownedConfigurationItemPkg"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference EPBSArchitecture.ecore#//EPBSArchitecture/containedCapabilityRealizationPkg"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EPBSArchitecture.ecore#//EPBSArchitecture/ownedPhysicalArchitectureRealizations"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference EPBSArchitecture.ecore#//EPBSArchitecture/allocatedPhysicalArchitectureRealizations"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference EPBSArchitecture.ecore#//EPBSArchitecture/allocatedPhysicalArchitectures"/>
     </genClasses>
-    <genClasses ecoreClass="EPBSArchitecture.ecore#//EPBSContext"/>
     <genClasses ecoreClass="EPBSArchitecture.ecore#//ConfigurationItemPkg">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EPBSArchitecture.ecore#//ConfigurationItemPkg/ownedConfigurationItems"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EPBSArchitecture.ecore#//ConfigurationItemPkg/ownedConfigurationItemPkgs"/>
@@ -691,11 +593,13 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EPBSArchitecture.ecore#//ConfigurationItem/kind"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EPBSArchitecture.ecore#//ConfigurationItem/ownedConfigurationItems"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EPBSArchitecture.ecore#//ConfigurationItem/ownedConfigurationItemPkgs"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EPBSArchitecture.ecore#//ConfigurationItem/ownedPhysicalArtifactRealizations"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference EPBSArchitecture.ecore#//ConfigurationItem/allocatedPhysicalArtifacts"/>
     </genClasses>
     <genClasses ecoreClass="EPBSArchitecture.ecore#//PhysicalArchitectureRealization"/>
-    <genClasses ecoreClass="EPBSArchitecture.ecore#//PhysicalArtifactRealization"/>
+    <genClasses ecoreClass="EPBSArchitecture.ecore#//PhysicalArtifactRealization">
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference EPBSArchitecture.ecore#//PhysicalArtifactRealization/realizedPhysicalArtifact"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference EPBSArchitecture.ecore#//PhysicalArtifactRealization/realizingConfigurationItem"/>
+    </genClasses>
   </genPackages>
   <genPackages prefix="Sharedmodel" basePackage="org.polarsys.capella.core.data" resource="XMI"
       disposableProviderFactory="true" extensibleProviderFactory="true" childCreationExtenders="true"
@@ -761,11 +665,12 @@
     </genClasses>
     <genClasses ecoreClass="CapellaCommon.ecore#//TransfoLink"/>
     <genClasses ecoreClass="CapellaCommon.ecore#//JustificationLink"/>
-    <genClasses image="false" ecoreClass="CapellaCommon.ecore#//CapabilityRealizationInvolvement">
+    <genClasses ecoreClass="CapellaCommon.ecore#//CapabilityRealizationInvolvement">
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference CapellaCommon.ecore#//CapabilityRealizationInvolvement/involvedCapabilityRealizationInvolvedElement"/>
     </genClasses>
     <genClasses image="false" ecoreClass="CapellaCommon.ecore#//CapabilityRealizationInvolvedElement">
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference CapellaCommon.ecore#//CapabilityRealizationInvolvedElement/involvingCapabilityRealizationInvolvements"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference CapellaCommon.ecore#//CapabilityRealizationInvolvedElement/capabilityRealizationInvolvements"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference CapellaCommon.ecore#//CapabilityRealizationInvolvedElement/involvingCapabilityRealizations"/>
     </genClasses>
     <genClasses ecoreClass="CapellaCommon.ecore#//StateMachine">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CapellaCommon.ecore#//StateMachine/ownedRegions"/>
@@ -995,12 +900,6 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Information.ecore#//UnionProperty/qualifier"/>
     </genClasses>
     <genClasses ecoreClass="Information.ecore#//Unit"/>
-    <genClasses image="false" ecoreClass="Information.ecore#//PartitionableElement">
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference Information.ecore#//PartitionableElement/ownedPartitions"/>
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference Information.ecore#//PartitionableElement/representingPartitions"/>
-      <genOperations ecoreOperation="Information.ecore#//PartitionableElement/isDecomposed"/>
-    </genClasses>
-    <genClasses image="false" ecoreClass="Information.ecore#//Partition"/>
     <genClasses image="false" ecoreClass="Information.ecore#//Port">
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference Information.ecore#//Port/incomingPortRealizations"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference Information.ecore#//Port/outgoingPortRealizations"/>
@@ -1291,6 +1190,7 @@
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference CompositeStructure.ecore#//BlockArchitecture/provisioningArchitectureAllocations"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference CompositeStructure.ecore#//BlockArchitecture/allocatedArchitectures"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference CompositeStructure.ecore#//BlockArchitecture/allocatingArchitectures"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference CompositeStructure.ecore#//BlockArchitecture/system"/>
     </genClasses>
     <genClasses image="false" ecoreClass="CompositeStructure.ecore#//Block">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CompositeStructure.ecore#//Block/ownedAbstractCapabilityPkg"/>
@@ -1300,6 +1200,8 @@
     </genClasses>
     <genClasses image="false" ecoreClass="CompositeStructure.ecore#//ComponentArchitecture"/>
     <genClasses image="false" ecoreClass="CompositeStructure.ecore#//Component">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CompositeStructure.ecore#//Component/isActor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CompositeStructure.ecore#//Component/isHuman"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CompositeStructure.ecore#//Component/ownedInterfaceUses"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference CompositeStructure.ecore#//Component/usedInterfaceLinks"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference CompositeStructure.ecore#//Component/usedInterfaces"/>
@@ -1308,8 +1210,9 @@
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference CompositeStructure.ecore#//Component/implementedInterfaces"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference CompositeStructure.ecore#//Component/provisionedComponentAllocations"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference CompositeStructure.ecore#//Component/provisioningComponentAllocations"/>
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference CompositeStructure.ecore#//Component/allocatedComponents"/>
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference CompositeStructure.ecore#//Component/allocatingComponents"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CompositeStructure.ecore#//Component/ownedComponentRealizations"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference CompositeStructure.ecore#//Component/realizedComponents"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference CompositeStructure.ecore#//Component/realizingComponents"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference CompositeStructure.ecore#//Component/providedInterfaces"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference CompositeStructure.ecore#//Component/requiredInterfaces"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference CompositeStructure.ecore#//Component/containedComponentPorts"/>
@@ -1318,8 +1221,8 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CompositeStructure.ecore#//Component/ownedPhysicalPath"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CompositeStructure.ecore#//Component/ownedPhysicalLinks"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CompositeStructure.ecore#//Component/ownedPhysicalLinkCategories"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CompositeStructure.ecore#//Component/representingParts"/>
     </genClasses>
-    <genClasses image="false" ecoreClass="CompositeStructure.ecore#//AbstractActor"/>
     <genClasses ecoreClass="CompositeStructure.ecore#//Part">
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference CompositeStructure.ecore#//Part/providedInterfaces"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference CompositeStructure.ecore#//Part/requiredInterfaces"/>
@@ -1332,14 +1235,9 @@
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference CompositeStructure.ecore#//ArchitectureAllocation/allocatedArchitecture"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference CompositeStructure.ecore#//ArchitectureAllocation/allocatingArchitecture"/>
     </genClasses>
-    <genClasses image="false" ecoreClass="CompositeStructure.ecore#//ComponentAllocation">
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference CompositeStructure.ecore#//ComponentAllocation/allocatedComponent"/>
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference CompositeStructure.ecore#//ComponentAllocation/allocatingComponent"/>
-    </genClasses>
-    <genClasses image="false" ecoreClass="CompositeStructure.ecore#//SystemComponent">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CompositeStructure.ecore#//SystemComponent/dataComponent"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CompositeStructure.ecore#//SystemComponent/dataType"/>
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference CompositeStructure.ecore#//SystemComponent/participationsInCapabilityRealizations"/>
+    <genClasses image="false" ecoreClass="CompositeStructure.ecore#//ComponentRealization">
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference CompositeStructure.ecore#//ComponentRealization/realizedComponent"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference CompositeStructure.ecore#//ComponentRealization/realizingComponent"/>
     </genClasses>
     <genClasses ecoreClass="CompositeStructure.ecore#//InterfacePkg">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CompositeStructure.ecore#//InterfacePkg/ownedInterfaces"/>
@@ -1389,8 +1287,6 @@
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference CompositeStructure.ecore#//InterfaceAllocator/provisionedInterfaceAllocations"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference CompositeStructure.ecore#//InterfaceAllocator/allocatedInterfaces"/>
     </genClasses>
-    <genClasses ecoreClass="CompositeStructure.ecore#//ActorCapabilityRealizationInvolvement"/>
-    <genClasses ecoreClass="CompositeStructure.ecore#//SystemComponentCapabilityRealizationInvolvement"/>
     <genClasses image="false" ecoreClass="CompositeStructure.ecore#//ComponentContext"/>
     <genClasses ecoreClass="CompositeStructure.ecore#//ExchangeItemAllocation">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CompositeStructure.ecore#//ExchangeItemAllocation/sendProtocol"/>
@@ -1461,6 +1357,9 @@
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference CompositeStructure.ecore#//PhysicalPort/realizingPhysicalPorts"/>
     </genClasses>
     <genClasses ecoreClass="CompositeStructure.ecore#//PhysicalPortRealization"/>
+    <genClasses image="false" ecoreClass="CompositeStructure.ecore#//ComponentPkg">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CompositeStructure.ecore#//ComponentPkg/ownedParts"/>
+    </genClasses>
   </genPackages>
   <genPackages prefix="Fa" basePackage="org.polarsys.capella.core.data" resource="XMI"
       disposableProviderFactory="true" extensibleProviderFactory="true" childCreationExtenders="true"

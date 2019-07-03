@@ -56,7 +56,6 @@ import org.polarsys.capella.core.data.capellacore.Relationship;
 import org.polarsys.capella.core.data.capellacore.Structure;
 import org.polarsys.capella.core.data.capellacore.Type;
 import org.polarsys.capella.core.data.capellacore.TypedElement;
-import org.polarsys.capella.core.data.fa.*;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.AbstractFunctionAllocation;
 import org.polarsys.capella.core.data.fa.AbstractFunctionalArchitecture;
@@ -74,6 +73,7 @@ import org.polarsys.capella.core.data.fa.ComponentFunctionalAllocation;
 import org.polarsys.capella.core.data.fa.ComponentPort;
 import org.polarsys.capella.core.data.fa.ComponentPortAllocation;
 import org.polarsys.capella.core.data.fa.ComponentPortAllocationEnd;
+import org.polarsys.capella.core.data.fa.ControlNode;
 import org.polarsys.capella.core.data.fa.ExchangeCategory;
 import org.polarsys.capella.core.data.fa.ExchangeContainment;
 import org.polarsys.capella.core.data.fa.ExchangeLink;
@@ -88,15 +88,19 @@ import org.polarsys.capella.core.data.fa.FunctionRealization;
 import org.polarsys.capella.core.data.fa.FunctionSpecification;
 import org.polarsys.capella.core.data.fa.FunctionalChain;
 import org.polarsys.capella.core.data.fa.FunctionalChainInvolvement;
+import org.polarsys.capella.core.data.fa.FunctionalChainInvolvementFunction;
+import org.polarsys.capella.core.data.fa.FunctionalChainInvolvementLink;
 import org.polarsys.capella.core.data.fa.FunctionalChainRealization;
 import org.polarsys.capella.core.data.fa.FunctionalChainReference;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.data.fa.FunctionalExchangeRealization;
 import org.polarsys.capella.core.data.fa.FunctionalExchangeSpecification;
+import org.polarsys.capella.core.data.fa.ReferenceHierarchyContext;
+import org.polarsys.capella.core.data.fa.SequenceLink;
+import org.polarsys.capella.core.data.fa.SequenceLinkEnd;
 import org.polarsys.capella.core.data.information.AbstractEventOperation;
 import org.polarsys.capella.core.data.information.AbstractInstance;
 import org.polarsys.capella.core.data.information.MultiplicityElement;
-import org.polarsys.capella.core.data.information.Partition;
 import org.polarsys.capella.core.data.information.Port;
 import org.polarsys.capella.core.data.information.Property;
 import org.polarsys.kitalpha.emde.model.Element;
@@ -517,10 +521,6 @@ public class FaAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseInformationsExchanger(InformationsExchanger object) {
 				return createInformationsExchangerAdapter();
-			}
-			@Override
-			public Adapter casePartition(Partition object) {
-				return createPartitionAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -1799,20 +1799,6 @@ public class FaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createInformationsExchangerAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.information.Partition <em>Partition</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.polarsys.capella.core.data.information.Partition
-	 * @generated
-	 */
-	public Adapter createPartitionAdapter() {
 		return null;
 	}
 

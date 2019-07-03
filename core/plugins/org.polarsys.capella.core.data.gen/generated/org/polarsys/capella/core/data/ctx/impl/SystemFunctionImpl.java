@@ -26,8 +26,8 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.polarsys.capella.common.model.helpers.IHelper;
-import org.polarsys.capella.core.data.ctx.Actor;
 import org.polarsys.capella.core.data.ctx.CtxPackage;
+import org.polarsys.capella.core.data.ctx.SystemComponent;
 import org.polarsys.capella.core.data.ctx.SystemFunction;
 import org.polarsys.capella.core.data.ctx.SystemFunctionPkg;
 import org.polarsys.capella.core.data.fa.impl.AbstractFunctionImpl;
@@ -43,8 +43,7 @@ import org.polarsys.capella.core.data.oa.OperationalActivity;
  * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.ctx.impl.SystemFunctionImpl#getOwnedSystemFunctionPkgs <em>Owned System Function Pkgs</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.ctx.impl.SystemFunctionImpl#getAllocatorActors <em>Allocator Actors</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.ctx.impl.SystemFunctionImpl#getAllocatorSystems <em>Allocator Systems</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.ctx.impl.SystemFunctionImpl#getAllocatingSystemComponents <em>Allocating System Components</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.ctx.impl.SystemFunctionImpl#getRealizedOperationalActivities <em>Realized Operational Activities</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.ctx.impl.SystemFunctionImpl#getRealizingLogicalFunctions <em>Realizing Logical Functions</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.ctx.impl.SystemFunctionImpl#getContainedSystemFunctions <em>Contained System Functions</em>}</li>
@@ -141,7 +140,7 @@ public class SystemFunctionImpl extends AbstractFunctionImpl implements SystemFu
 	 * @generated
 	 */
 
-	public EList<Actor> getAllocatorActors() {
+	public EList<SystemComponent> getAllocatingSystemComponents() {
 
 
     Object result = null;
@@ -164,70 +163,19 @@ public class SystemFunctionImpl extends AbstractFunctionImpl implements SystemFu
       throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = CtxPackage.Literals.SYSTEM_FUNCTION__ALLOCATOR_ACTORS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
-    result = helper.getValue(this, CtxPackage.Literals.SYSTEM_FUNCTION__ALLOCATOR_ACTORS, annotation);
+    EAnnotation annotation = CtxPackage.Literals.SYSTEM_FUNCTION__ALLOCATING_SYSTEM_COMPONENTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    result = helper.getValue(this, CtxPackage.Literals.SYSTEM_FUNCTION__ALLOCATING_SYSTEM_COMPONENTS, annotation);
 		
 		try {
 		@SuppressWarnings("unchecked")
-		Collection<Actor> resultAsList = (Collection<Actor>) result;
-		return new EcoreEList.UnmodifiableEList<Actor>(this, CtxPackage.Literals.SYSTEM_FUNCTION__ALLOCATOR_ACTORS, resultAsList.size(), resultAsList.toArray());
+		Collection<SystemComponent> resultAsList = (Collection<SystemComponent>) result;
+		return new EcoreEList.UnmodifiableEList<SystemComponent>(this, CtxPackage.Literals.SYSTEM_FUNCTION__ALLOCATING_SYSTEM_COMPONENTS, resultAsList.size(), resultAsList.toArray());
 		} catch (ClassCastException exception) {
 	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
 	}
-
-
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public EList<org.polarsys.capella.core.data.ctx.System> getAllocatorSystems() {
-
-
-    Object result = null;
-    // Helper that can get value for current feature.
-    IHelper helper = null;
-    // If current object is adaptable, ask it to get its IHelper.
-    if (this instanceof IAdaptable) {
-    	helper = (IHelper) ((IAdaptable) this).getAdapter(IHelper.class);
-    }
-    if (null == helper) {
-      // No helper found yet.
-      // Ask the platform to get the adapter 'IHelper.class' for current object.
-      IAdapterManager adapterManager = Platform.getAdapterManager();
-      helper = (IHelper) adapterManager.getAdapter(this, IHelper.class);
-    }
-    if (null == helper) {
-      EPackage package_l = eClass().getEPackage();
-      // Get the root package of the owner package.
-      EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
-    } 
-    // A helper is found, let's use it. 
-    EAnnotation annotation = CtxPackage.Literals.SYSTEM_FUNCTION__ALLOCATOR_SYSTEMS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
-    result = helper.getValue(this, CtxPackage.Literals.SYSTEM_FUNCTION__ALLOCATOR_SYSTEMS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<org.polarsys.capella.core.data.ctx.System> resultAsList = (Collection<org.polarsys.capella.core.data.ctx.System>) result;
-		return new EcoreEList.UnmodifiableEList<org.polarsys.capella.core.data.ctx.System>(this, CtxPackage.Literals.SYSTEM_FUNCTION__ALLOCATOR_SYSTEMS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
-
-
-
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -439,10 +387,8 @@ public class SystemFunctionImpl extends AbstractFunctionImpl implements SystemFu
 		switch (featureID) {
 			case CtxPackage.SYSTEM_FUNCTION__OWNED_SYSTEM_FUNCTION_PKGS:
 				return getOwnedSystemFunctionPkgs();
-			case CtxPackage.SYSTEM_FUNCTION__ALLOCATOR_ACTORS:
-				return getAllocatorActors();
-			case CtxPackage.SYSTEM_FUNCTION__ALLOCATOR_SYSTEMS:
-				return getAllocatorSystems();
+			case CtxPackage.SYSTEM_FUNCTION__ALLOCATING_SYSTEM_COMPONENTS:
+				return getAllocatingSystemComponents();
 			case CtxPackage.SYSTEM_FUNCTION__REALIZED_OPERATIONAL_ACTIVITIES:
 				return getRealizedOperationalActivities();
 			case CtxPackage.SYSTEM_FUNCTION__REALIZING_LOGICAL_FUNCTIONS:
@@ -500,10 +446,8 @@ public class SystemFunctionImpl extends AbstractFunctionImpl implements SystemFu
 		switch (featureID) {
 			case CtxPackage.SYSTEM_FUNCTION__OWNED_SYSTEM_FUNCTION_PKGS:
 				return ownedSystemFunctionPkgs != null && !ownedSystemFunctionPkgs.isEmpty();
-			case CtxPackage.SYSTEM_FUNCTION__ALLOCATOR_ACTORS:
-				return !getAllocatorActors().isEmpty();
-			case CtxPackage.SYSTEM_FUNCTION__ALLOCATOR_SYSTEMS:
-				return !getAllocatorSystems().isEmpty();
+			case CtxPackage.SYSTEM_FUNCTION__ALLOCATING_SYSTEM_COMPONENTS:
+				return !getAllocatingSystemComponents().isEmpty();
 			case CtxPackage.SYSTEM_FUNCTION__REALIZED_OPERATIONAL_ACTIVITIES:
 				return !getRealizedOperationalActivities().isEmpty();
 			case CtxPackage.SYSTEM_FUNCTION__REALIZING_LOGICAL_FUNCTIONS:

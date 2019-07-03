@@ -16,7 +16,6 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.polarsys.capella.common.lib.IdGenerator;
-import org.polarsys.capella.core.data.oa.*;
 import org.polarsys.capella.core.data.oa.ActivityAllocation;
 import org.polarsys.capella.core.data.oa.CapabilityConfiguration;
 import org.polarsys.capella.core.data.oa.CommunicationMean;
@@ -34,11 +33,9 @@ import org.polarsys.capella.core.data.oa.OaFactory;
 import org.polarsys.capella.core.data.oa.OaPackage;
 import org.polarsys.capella.core.data.oa.OperationalActivity;
 import org.polarsys.capella.core.data.oa.OperationalActivityPkg;
-import org.polarsys.capella.core.data.oa.OperationalActor;
 import org.polarsys.capella.core.data.oa.OperationalAnalysis;
 import org.polarsys.capella.core.data.oa.OperationalCapability;
 import org.polarsys.capella.core.data.oa.OperationalCapabilityPkg;
-import org.polarsys.capella.core.data.oa.OperationalContext;
 import org.polarsys.capella.core.data.oa.OperationalProcess;
 import org.polarsys.capella.core.data.oa.OrganisationalUnit;
 import org.polarsys.capella.core.data.oa.OrganisationalUnitComposition;
@@ -110,7 +107,6 @@ public class OaFactoryImpl extends EFactoryImpl implements OaFactory {
 			case OaPackage.CONCEPT: return createConcept();
 			case OaPackage.CONCEPT_COMPLIANCE: return createConceptCompliance();
 			case OaPackage.ITEM_IN_CONCEPT: return createItemInConcept();
-			case OaPackage.OPERATIONAL_ACTOR: return createOperationalActor();
 			case OaPackage.COMMUNITY_OF_INTEREST: return createCommunityOfInterest();
 			case OaPackage.COMMUNITY_OF_INTEREST_COMPOSITION: return createCommunityOfInterestComposition();
 			case OaPackage.ORGANISATIONAL_UNIT: return createOrganisationalUnit();
@@ -119,7 +115,6 @@ public class OaFactoryImpl extends EFactoryImpl implements OaFactory {
 			case OaPackage.CAPABILITY_CONFIGURATION: return createCapabilityConfiguration();
 			case OaPackage.COMMUNICATION_MEAN: return createCommunicationMean();
 			case OaPackage.ENTITY_OPERATIONAL_CAPABILITY_INVOLVEMENT: return createEntityOperationalCapabilityInvolvement();
-			case OaPackage.OPERATIONAL_CONTEXT: return createOperationalContext();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
 		}
@@ -418,22 +413,6 @@ public class OaFactoryImpl extends EFactoryImpl implements OaFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OperationalActor createOperationalActor() {
-		OperationalActorImpl operationalActor = new OperationalActorImpl();
-    //begin-capella-code
-
-    operationalActor.setId(IdGenerator.createId());
-
-
-    //end-capella-code
-		return operationalActor;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public CommunityOfInterest createCommunityOfInterest() {
 		CommunityOfInterestImpl communityOfInterest = new CommunityOfInterestImpl();
     //begin-capella-code
@@ -555,22 +534,6 @@ public class OaFactoryImpl extends EFactoryImpl implements OaFactory {
 
     //end-capella-code
 		return entityOperationalCapabilityInvolvement;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public OperationalContext createOperationalContext() {
-		OperationalContextImpl operationalContext = new OperationalContextImpl();
-    //begin-capella-code
-
-    operationalContext.setId(IdGenerator.createId());
-
-
-    //end-capella-code
-		return operationalContext;
 	}
 
 	/**
@@ -795,19 +758,6 @@ public class OaFactoryImpl extends EFactoryImpl implements OaFactory {
 	 * @param name_p : default name of created element
 	 * @generated
 	 */
-	public OperationalActor createOperationalActor(String name_p) {
-	  OperationalActor operationalActor = createOperationalActor();
-		operationalActor.setName(name_p);	  
-		return operationalActor;
-	}
-
-	/**
-	 * Creates class and sets its name
-	 * (This method comes from a customization of the standard EMF generator)
-	 *
-	 * @param name_p : default name of created element
-	 * @generated
-	 */
 	public CommunityOfInterest createCommunityOfInterest(String name_p) {
 	  CommunityOfInterest communityOfInterest = createCommunityOfInterest();
 		communityOfInterest.setName(name_p);	  
@@ -890,19 +840,6 @@ public class OaFactoryImpl extends EFactoryImpl implements OaFactory {
 	  CommunicationMean communicationMean = createCommunicationMean();
 		communicationMean.setName(name_p);	  
 		return communicationMean;
-	}
-
-	/**
-	 * Creates class and sets its name
-	 * (This method comes from a customization of the standard EMF generator)
-	 *
-	 * @param name_p : default name of created element
-	 * @generated
-	 */
-	public OperationalContext createOperationalContext(String name_p) {
-	  OperationalContext operationalContext = createOperationalContext();
-		operationalContext.setName(name_p);	  
-		return operationalContext;
 	}
 
 	//begin-capella-code

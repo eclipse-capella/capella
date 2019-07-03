@@ -12,11 +12,25 @@ package org.polarsys.capella.common.data.modellingcore.util;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.util.Switch;
-
-import org.polarsys.capella.common.data.modellingcore.*;
-
+import org.polarsys.capella.common.data.modellingcore.AbstractConstraint;
+import org.polarsys.capella.common.data.modellingcore.AbstractExchangeItem;
+import org.polarsys.capella.common.data.modellingcore.AbstractInformationFlow;
+import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
+import org.polarsys.capella.common.data.modellingcore.AbstractParameter;
+import org.polarsys.capella.common.data.modellingcore.AbstractParameterSet;
+import org.polarsys.capella.common.data.modellingcore.AbstractRelationship;
+import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
+import org.polarsys.capella.common.data.modellingcore.AbstractType;
+import org.polarsys.capella.common.data.modellingcore.AbstractTypedElement;
+import org.polarsys.capella.common.data.modellingcore.FinalizableElement;
+import org.polarsys.capella.common.data.modellingcore.IState;
+import org.polarsys.capella.common.data.modellingcore.InformationsExchanger;
+import org.polarsys.capella.common.data.modellingcore.ModelElement;
+import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
+import org.polarsys.capella.common.data.modellingcore.PublishableElement;
+import org.polarsys.capella.common.data.modellingcore.TraceableElement;
+import org.polarsys.capella.common.data.modellingcore.ValueSpecification;
 import org.polarsys.kitalpha.emde.model.Element;
 import org.polarsys.kitalpha.emde.model.ExtensibleElement;
 

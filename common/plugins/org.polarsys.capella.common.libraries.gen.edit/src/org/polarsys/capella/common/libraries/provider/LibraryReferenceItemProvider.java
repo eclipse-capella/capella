@@ -18,10 +18,10 @@ import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.edit.command.CopyCommand.Helper;
-import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.edit.command.CopyCommand.Helper;
+import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -31,16 +31,14 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.eclipse.osgi.util.NLS;
 import org.polarsys.capella.common.libraries.AccessPolicy;
 import org.polarsys.capella.common.libraries.LibrariesPackage;
 import org.polarsys.capella.common.libraries.LibraryReference;
+import org.polarsys.capella.common.libraries.ModelInformation;
 import org.polarsys.capella.common.model.copypaste.SharedInitializeCopyCommand;
 import org.polarsys.kitalpha.emde.extension.ExtensionModelManager;
 import org.polarsys.kitalpha.emde.extension.ModelExtensionHelper;
-import org.polarsys.capella.common.libraries.ModelInformation;
-import org.polarsys.kitalpha.emde.model.edit.provider.ExtensibleElementItemProvider;
 
 /**
  * This is the item provider adapter for a {@link org.polarsys.capella.common.libraries.LibraryReference} object.

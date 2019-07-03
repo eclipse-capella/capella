@@ -40,7 +40,6 @@ import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.ctx.CtxFactory;
 import org.polarsys.capella.core.data.fa.FaFactory;
 import org.polarsys.capella.core.data.information.InformationFactory;
-import org.polarsys.capella.core.data.information.InformationPackage;
 import org.polarsys.capella.core.data.information.communication.CommunicationFactory;
 import org.polarsys.capella.core.data.information.communication.CommunicationPackage;
 import org.polarsys.capella.core.data.la.LaFactory;
@@ -89,8 +88,6 @@ public class ComponentItemProvider
 			addSuperPropertyDescriptor(object);
 			addSubPropertyDescriptor(object);
 			addContainedPropertiesPropertyDescriptor(object);
-			addOwnedPartitionsPropertyDescriptor(object);
-			addRepresentingPartitionsPropertyDescriptor(object);
 			addProvisionedInterfaceAllocationsPropertyDescriptor(object);
 			addAllocatedInterfacesPropertyDescriptor(object);
 			addProducePropertyDescriptor(object);
@@ -103,19 +100,22 @@ public class ComponentItemProvider
 			addAccessPropertyDescriptor(object);
 			addAcquirePropertyDescriptor(object);
 			addTransmitPropertyDescriptor(object);
+			addIsActorPropertyDescriptor(object);
+			addIsHumanPropertyDescriptor(object);
 			addUsedInterfaceLinksPropertyDescriptor(object);
 			addUsedInterfacesPropertyDescriptor(object);
 			addImplementedInterfaceLinksPropertyDescriptor(object);
 			addImplementedInterfacesPropertyDescriptor(object);
 			addProvisionedComponentAllocationsPropertyDescriptor(object);
 			addProvisioningComponentAllocationsPropertyDescriptor(object);
-			addAllocatedComponentsPropertyDescriptor(object);
-			addAllocatingComponentsPropertyDescriptor(object);
+			addRealizedComponentsPropertyDescriptor(object);
+			addRealizingComponentsPropertyDescriptor(object);
 			addProvidedInterfacesPropertyDescriptor(object);
 			addRequiredInterfacesPropertyDescriptor(object);
 			addContainedComponentPortsPropertyDescriptor(object);
 			addContainedPartsPropertyDescriptor(object);
 			addContainedPhysicalPortsPropertyDescriptor(object);
+			addRepresentingPartsPropertyDescriptor(object);
 		}
 		// begin-extension-code
 		checkChildCreationExtender(object);
@@ -275,60 +275,6 @@ public class ComponentItemProvider
 				 getString("_UI_Classifier_containedProperties_feature"), //$NON-NLS-1$
 				 getString("_UI_PropertyDescriptor_description", "_UI_Classifier_containedProperties_feature", "_UI_Classifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				 CapellacorePackage.Literals.CLASSIFIER__CONTAINED_PROPERTIES,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
-
-	/**
-	 * This adds a property descriptor for the Owned Partitions feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addOwnedPartitionsPropertyDescriptor(Object object) {
-
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_PartitionableElement_ownedPartitions_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_PartitionableElement_ownedPartitions_feature", "_UI_PartitionableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 InformationPackage.Literals.PARTITIONABLE_ELEMENT__OWNED_PARTITIONS,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
-
-	/**
-	 * This adds a property descriptor for the Representing Partitions feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addRepresentingPartitionsPropertyDescriptor(Object object) {
-
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_PartitionableElement_representingPartitions_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_PartitionableElement_representingPartitions_feature", "_UI_PartitionableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 InformationPackage.Literals.PARTITIONABLE_ELEMENT__REPRESENTING_PARTITIONS,
 				 false,
 				 false,
 				 false,
@@ -664,6 +610,60 @@ public class ComponentItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Is Actor feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addIsActorPropertyDescriptor(Object object) {
+
+		// begin-extension-code
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+		// end-extension-code
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Component_isActor_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_Component_isActor_feature", "_UI_Component_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 CsPackage.Literals.COMPONENT__IS_ACTOR,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+		// begin-extension-code
+				 null));
+		// end-extension-code
+	}
+
+	/**
+	 * This adds a property descriptor for the Is Human feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addIsHumanPropertyDescriptor(Object object) {
+
+		// begin-extension-code
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+		// end-extension-code
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Component_isHuman_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_Component_isHuman_feature", "_UI_Component_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 CsPackage.Literals.COMPONENT__IS_HUMAN,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+		// begin-extension-code
+				 null));
+		// end-extension-code
+	}
+
+	/**
 	 * This adds a property descriptor for the Used Interface Links feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -826,12 +826,12 @@ public class ComponentItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Allocated Components feature.
+	 * This adds a property descriptor for the Realized Components feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addAllocatedComponentsPropertyDescriptor(Object object) {
+	protected void addRealizedComponentsPropertyDescriptor(Object object) {
 
 		// begin-extension-code
 		itemPropertyDescriptors.add
@@ -839,9 +839,9 @@ public class ComponentItemProvider
 		// end-extension-code
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Component_allocatedComponents_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_Component_allocatedComponents_feature", "_UI_Component_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 CsPackage.Literals.COMPONENT__ALLOCATED_COMPONENTS,
+				 getString("_UI_Component_realizedComponents_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_Component_realizedComponents_feature", "_UI_Component_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 CsPackage.Literals.COMPONENT__REALIZED_COMPONENTS,
 				 false,
 				 false,
 				 false,
@@ -853,12 +853,12 @@ public class ComponentItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Allocating Components feature.
+	 * This adds a property descriptor for the Realizing Components feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addAllocatingComponentsPropertyDescriptor(Object object) {
+	protected void addRealizingComponentsPropertyDescriptor(Object object) {
 
 		// begin-extension-code
 		itemPropertyDescriptors.add
@@ -866,9 +866,9 @@ public class ComponentItemProvider
 		// end-extension-code
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Component_allocatingComponents_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_Component_allocatingComponents_feature", "_UI_Component_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 CsPackage.Literals.COMPONENT__ALLOCATING_COMPONENTS,
+				 getString("_UI_Component_realizingComponents_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_Component_realizingComponents_feature", "_UI_Component_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 CsPackage.Literals.COMPONENT__REALIZING_COMPONENTS,
 				 false,
 				 false,
 				 false,
@@ -1015,6 +1015,33 @@ public class ComponentItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Representing Parts feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addRepresentingPartsPropertyDescriptor(Object object) {
+
+		// begin-extension-code
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+		// end-extension-code
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Component_representingParts_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_Component_representingParts_feature", "_UI_Component_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 CsPackage.Literals.COMPONENT__REPRESENTING_PARTS,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+		// begin-extension-code
+				 null));
+		// end-extension-code
+	}
+
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -1032,6 +1059,7 @@ public class ComponentItemProvider
 			childrenFeatures.add(CommunicationPackage.Literals.COMMUNICATION_LINK_EXCHANGER__OWNED_COMMUNICATION_LINKS);
 			childrenFeatures.add(CsPackage.Literals.COMPONENT__OWNED_INTERFACE_USES);
 			childrenFeatures.add(CsPackage.Literals.COMPONENT__OWNED_INTERFACE_IMPLEMENTATIONS);
+			childrenFeatures.add(CsPackage.Literals.COMPONENT__OWNED_COMPONENT_REALIZATIONS);
 			childrenFeatures.add(CsPackage.Literals.COMPONENT__OWNED_PHYSICAL_PATH);
 			childrenFeatures.add(CsPackage.Literals.COMPONENT__OWNED_PHYSICAL_LINKS);
 			childrenFeatures.add(CsPackage.Literals.COMPONENT__OWNED_PHYSICAL_LINK_CATEGORIES);
@@ -1089,6 +1117,8 @@ public class ComponentItemProvider
 
 		switch (notification.getFeatureID(Component.class)) {
 			case CsPackage.COMPONENT__ABSTRACT:
+			case CsPackage.COMPONENT__IS_ACTOR:
+			case CsPackage.COMPONENT__IS_HUMAN:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case CsPackage.COMPONENT__OWNED_GENERALIZATIONS:
@@ -1097,6 +1127,7 @@ public class ComponentItemProvider
 			case CsPackage.COMPONENT__OWNED_COMMUNICATION_LINKS:
 			case CsPackage.COMPONENT__OWNED_INTERFACE_USES:
 			case CsPackage.COMPONENT__OWNED_INTERFACE_IMPLEMENTATIONS:
+			case CsPackage.COMPONENT__OWNED_COMPONENT_REALIZATIONS:
 			case CsPackage.COMPONENT__OWNED_PHYSICAL_PATH:
 			case CsPackage.COMPONENT__OWNED_PHYSICAL_LINKS:
 			case CsPackage.COMPONENT__OWNED_PHYSICAL_LINK_CATEGORIES:

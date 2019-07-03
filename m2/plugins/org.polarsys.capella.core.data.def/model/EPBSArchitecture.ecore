@@ -88,42 +88,6 @@
       <details key="constraints" value="none"/>
     </eAnnotations>
     <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedEPBSContext" eType="#//EPBSContext"
-        containment="true">
-      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
-        <details key="description" value="the context is the set of (epbs) parts that make the &quot;world&quot; at this abstraction level (the system part(s) and the external actor part(s))"/>
-        <details key="constraints" value="none"/>
-        <details key="comment/notes" value="none"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-        <details key="UML/SysML semantic equivalences" value="uml::Package::packagedElement"/>
-        <details key="explanation" value="none"/>
-        <details key="constraints" value="uml::Package::packagedElement elements on which EPBSContext stereotype or any stereotype that inherits from it is applied"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedConfigurationItem"
-        eType="#//ConfigurationItem" containment="true">
-      <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
-        <details key="featureName" value="packagedElement"/>
-        <details key="featureOwner" value="Package"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
-        <details key="Label" value="ownedConfigurationItems"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
-      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
-        <details key="description" value="the Configuration items contained in this EPBS architecture&#xD;&#xA;[source: Capella study]"/>
-        <details key="constraints" value="none"/>
-        <details key="comment/notes" value="Even though configuration items are normally stored in a configurationItemPkg, there is this possibility to store them directly under the EPBS architecture element, the purpose being to avoid too many levels of nesting/hierarchy, to ease the navigation of the user in the model"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-        <details key="UML/SysML semantic equivalences" value="uml::Package::packagedElement"/>
-        <details key="explanation" value="none"/>
-        <details key="constraints" value="uml::Package::packagedElement elements on which ConfigurationItem stereotype or any stereotype that inherits from it is applied&#xD;&#xA;Order must be computed"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
-    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedConfigurationItemPkg"
         eType="#//ConfigurationItemPkg" containment="true">
       <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
@@ -208,25 +172,7 @@
       <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="EPBSContext" eSuperTypes="CompositeStructure.ecore#//ComponentContext">
-    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
-      <details key="description" value="specialization of a component context for the epbs level. Refer to component context description."/>
-      <details key="usage guideline" value="n/a"/>
-      <details key="used in levels" value="physical"/>
-      <details key="usage examples" value="n/a"/>
-      <details key="constraints" value="none"/>
-      <details key="comment/notes" value="none"/>
-      <details key="reference documentation" value="none"/>
-    </eAnnotations>
-    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-      <details key="UML/SysML semantic equivalences" value=""/>
-      <details key="base metaclass in UML/SysML profile " value="uml::Class"/>
-      <details key="explanation" value="none"/>
-      <details key="constraints" value="none"/>
-    </eAnnotations>
-    <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ConfigurationItemPkg" eSuperTypes="CapellaCore.ecore#//Structure">
+  <eClassifiers xsi:type="ecore:EClass" name="ConfigurationItemPkg" eSuperTypes="CompositeStructure.ecore#//ComponentPkg">
     <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
       <details key="Label" value="ConfigurationItemPkg"/>
     </eAnnotations>
@@ -295,7 +241,7 @@
       <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ConfigurationItem" eSuperTypes="CompositeStructure.ecore#//SystemComponent">
+  <eClassifiers xsi:type="ecore:EClass" name="ConfigurationItem" eSuperTypes="CapellaCommon.ecore#//CapabilityRealizationInvolvedElement CompositeStructure.ecore#//Component">
     <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
       <details key="Label" value="ConfigurationItem"/>
     </eAnnotations>
@@ -369,19 +315,6 @@
         <details key="constraints" value="store them in the nearest possible package, since a Block cannot contain packages"/>
       </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedPhysicalArtifactRealizations"
-        ordered="false" upperBound="-1" eType="#//PhysicalArtifactRealization" containment="true">
-      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
-        <details key="description" value="Set of physical component realization links owned by this configuration item&#xD;&#xA;[source:Capella study]"/>
-        <details key="constraints" value="none"/>
-        <details key="comment/notes" value="none"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-        <details key="UML/SysML semantic equivalences" value="keyword::nearestpackage"/>
-        <details key="explanation" value="none"/>
-        <details key="constraints" value="store them in the nearest possible package, since a Block cannot contain packages"/>
-      </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="allocatedPhysicalArtifacts"
         ordered="false" upperBound="-1" eType="ecore:EClass CompositeStructure.ecore#//AbstractPhysicalArtifact"
@@ -500,21 +433,39 @@
       <details key="constraints" value="none"/>
     </eAnnotations>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="PhysicalArtifactRealization" eSuperTypes="CompositeStructure.ecore#//ComponentAllocation">
+  <eClassifiers xsi:type="ecore:EClass" name="PhysicalArtifactRealization" eSuperTypes="CapellaCore.ecore#//Allocation">
     <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
-      <details key="description" value="Realization link between a configuration item and a physical artifact (physical component, physical link or physical port)&#xD;&#xA;[source:Capella study]&#xD;&#xA;&#xD;&#xA;Realization is a specialized abstraction relationship between two sets of model elements, one representing a specification&#xD;&#xA;(the supplier) and the other represents an implementation of the latter (the client). Realization can be used to model&#xD;&#xA;stepwise refinement, optimizations, transformations, templates, model synthesis, framework composition, etc.&#xD;&#xA;[source:UML superstructure v2.2]"/>
-      <details key="usage guideline" value="n/a"/>
-      <details key="used in levels" value="epbs"/>
-      <details key="usage examples" value="n/a"/>
+      <details key="description" value="Realization link betwen a Configuration Item and a physical artifact"/>
       <details key="constraints" value="none"/>
       <details key="comment/notes" value="none"/>
-      <details key="reference documentation" value="none"/>
     </eAnnotations>
-    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-      <details key="UML/SysML semantic equivalences" value=""/>
-      <details key="base metaclass in UML/SysML profile " value="uml::Realization"/>
-      <details key="explanation" value="none"/>
-      <details key="constraints" value="none"/>
-    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="realizedPhysicalArtifact"
+        lowerBound="1" eType="ecore:EClass CompositeStructure.ecore#//AbstractPhysicalArtifact"
+        changeable="false" volatile="true" transient="true" derived="true">
+      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="Specifies the allocated architecture&#xD;&#xA;[source: Capella study]&#xD;&#xA;&#xD;&#xA;Specifies the targets of the DirectedRelationship.&#xD;&#xA;[source: UML superstructure v2.2]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="realizingConfigurationItem"
+        lowerBound="1" eType="#//ConfigurationItem" changeable="false" volatile="true"
+        transient="true" derived="true">
+      <eAnnotations source="http://www.polarsys.org/capella/derived">
+        <details key="viatra.variant" value="alias"/>
+        <details key="viatra.expression" value="sourceElement"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="Specifies the allocating architecture&#xD;&#xA;[source: Capella study]&#xD;&#xA;&#xD;&#xA;Specifies the sources of the DirectedRelationship.&#xD;&#xA;[source: UML superstructure v2.2]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="keyword::none"/>
+        <details key="explanation" value="Derived and transient"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
 </ecore:EPackage>

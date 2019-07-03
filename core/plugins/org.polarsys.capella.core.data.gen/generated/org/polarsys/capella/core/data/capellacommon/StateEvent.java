@@ -13,7 +13,6 @@
 package org.polarsys.capella.core.data.capellacommon;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.polarsys.capella.common.data.behavior.AbstractEvent;
 import org.polarsys.capella.core.data.capellacore.Constraint;
 import org.polarsys.capella.core.data.capellacore.NamedElement;

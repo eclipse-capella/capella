@@ -77,8 +77,7 @@ public class SystemFunctionItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addAllocatorActorsPropertyDescriptor(object);
-			addAllocatorSystemsPropertyDescriptor(object);
+			addAllocatingSystemComponentsPropertyDescriptor(object);
 			addRealizedOperationalActivitiesPropertyDescriptor(object);
 			addRealizingLogicalFunctionsPropertyDescriptor(object);
 			addContainedSystemFunctionsPropertyDescriptor(object);
@@ -91,12 +90,12 @@ public class SystemFunctionItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Allocator Actors feature.
+	 * This adds a property descriptor for the Allocating System Components feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addAllocatorActorsPropertyDescriptor(Object object) {
+	protected void addAllocatingSystemComponentsPropertyDescriptor(Object object) {
 
 		// begin-extension-code
 		itemPropertyDescriptors.add
@@ -104,36 +103,9 @@ public class SystemFunctionItemProvider
 		// end-extension-code
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_SystemFunction_allocatorActors_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_SystemFunction_allocatorActors_feature", "_UI_SystemFunction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 CtxPackage.Literals.SYSTEM_FUNCTION__ALLOCATOR_ACTORS,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
-
-	/**
-	 * This adds a property descriptor for the Allocator Systems feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addAllocatorSystemsPropertyDescriptor(Object object) {
-
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SystemFunction_allocatorSystems_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_SystemFunction_allocatorSystems_feature", "_UI_SystemFunction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 CtxPackage.Literals.SYSTEM_FUNCTION__ALLOCATOR_SYSTEMS,
+				 getString("_UI_SystemFunction_allocatingSystemComponents_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_SystemFunction_allocatingSystemComponents_feature", "_UI_SystemFunction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 CtxPackage.Literals.SYSTEM_FUNCTION__ALLOCATING_SYSTEM_COMPONENTS,
 				 false,
 				 false,
 				 false,

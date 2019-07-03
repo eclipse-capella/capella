@@ -535,8 +535,17 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getCapabilityRealizationInvolvedElement_InvolvingCapabilityRealizationInvolvements() {
+	public EReference getCapabilityRealizationInvolvedElement_CapabilityRealizationInvolvements() {
 		return (EReference)capabilityRealizationInvolvedElementEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getCapabilityRealizationInvolvedElement_InvolvingCapabilityRealizations() {
+		return (EReference)capabilityRealizationInvolvedElementEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -1176,7 +1185,8 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 		createEReference(capabilityRealizationInvolvementEClass, CAPABILITY_REALIZATION_INVOLVEMENT__INVOLVED_CAPABILITY_REALIZATION_INVOLVED_ELEMENT);
 
 		capabilityRealizationInvolvedElementEClass = createEClass(CAPABILITY_REALIZATION_INVOLVED_ELEMENT);
-		createEReference(capabilityRealizationInvolvedElementEClass, CAPABILITY_REALIZATION_INVOLVED_ELEMENT__INVOLVING_CAPABILITY_REALIZATION_INVOLVEMENTS);
+		createEReference(capabilityRealizationInvolvedElementEClass, CAPABILITY_REALIZATION_INVOLVED_ELEMENT__CAPABILITY_REALIZATION_INVOLVEMENTS);
+		createEReference(capabilityRealizationInvolvedElementEClass, CAPABILITY_REALIZATION_INVOLVED_ELEMENT__INVOLVING_CAPABILITY_REALIZATIONS);
 
 		stateMachineEClass = createEClass(STATE_MACHINE);
 		createEReference(stateMachineEClass, STATE_MACHINE__OWNED_REGIONS);
@@ -1296,6 +1306,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 		// Obtain other dependent packages
 		CapellacorePackage theCapellacorePackage = (CapellacorePackage)EPackage.Registry.INSTANCE.getEPackage(CapellacorePackage.eNS_URI);
 		ModellingcorePackage theModellingcorePackage = (ModellingcorePackage)EPackage.Registry.INSTANCE.getEPackage(ModellingcorePackage.eNS_URI);
+		LaPackage theLaPackage = (LaPackage)EPackage.Registry.INSTANCE.getEPackage(LaPackage.eNS_URI);
 		BehaviorPackage theBehaviorPackage = (BehaviorPackage)EPackage.Registry.INSTANCE.getEPackage(BehaviorPackage.eNS_URI);
 		FaPackage theFaPackage = (FaPackage)EPackage.Registry.INSTANCE.getEPackage(FaPackage.eNS_URI);
 		InteractionPackage theInteractionPackage = (InteractionPackage)EPackage.Registry.INSTANCE.getEPackage(InteractionPackage.eNS_URI);
@@ -1351,11 +1362,12 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 
 		initEClass(justificationLinkEClass, JustificationLink.class, "JustificationLink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
-		initEClass(capabilityRealizationInvolvementEClass, CapabilityRealizationInvolvement.class, "CapabilityRealizationInvolvement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(capabilityRealizationInvolvementEClass, CapabilityRealizationInvolvement.class, "CapabilityRealizationInvolvement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEReference(getCapabilityRealizationInvolvement_InvolvedCapabilityRealizationInvolvedElement(), this.getCapabilityRealizationInvolvedElement(), null, "involvedCapabilityRealizationInvolvedElement", null, 1, 1, CapabilityRealizationInvolvement.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(capabilityRealizationInvolvedElementEClass, CapabilityRealizationInvolvedElement.class, "CapabilityRealizationInvolvedElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(getCapabilityRealizationInvolvedElement_InvolvingCapabilityRealizationInvolvements(), this.getCapabilityRealizationInvolvement(), null, "involvingCapabilityRealizationInvolvements", null, 0, -1, CapabilityRealizationInvolvedElement.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getCapabilityRealizationInvolvedElement_CapabilityRealizationInvolvements(), this.getCapabilityRealizationInvolvement(), null, "capabilityRealizationInvolvements", null, 0, -1, CapabilityRealizationInvolvedElement.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getCapabilityRealizationInvolvedElement_InvolvingCapabilityRealizations(), theLaPackage.getCapabilityRealization(), null, "involvingCapabilityRealizations", null, 0, -1, CapabilityRealizationInvolvedElement.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(stateMachineEClass, StateMachine.class, "StateMachine", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEReference(getStateMachine_OwnedRegions(), this.getRegion(), null, "ownedRegions", null, 0, -1, StateMachine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
@@ -1632,10 +1644,18 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
-		  (getCapabilityRealizationInvolvedElement_InvolvingCapabilityRealizationInvolvements(), 
+		  (getCapabilityRealizationInvolvedElement_CapabilityRealizationInvolvements(), 
 		   source, 
 		   new String[] {
 			 "description", "the capability realization involvement relationships in which this element is referenced\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
+		  (getCapabilityRealizationInvolvedElement_InvolvingCapabilityRealizations(), 
+		   source, 
+		   new String[] {
+			 "description", "Capability realizations that involve this element", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
@@ -2663,14 +2683,6 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
-		  (getCapabilityRealizationInvolvedElement_InvolvingCapabilityRealizationInvolvements(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
 		  (stateMachineEClass, 
 		   source, 
 		   new String[] {
@@ -3286,11 +3298,14 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "viatra.expression", "involved" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
-		  (getCapabilityRealizationInvolvedElement_InvolvingCapabilityRealizationInvolvements(), 
+		  (getCapabilityRealizationInvolvedElement_CapabilityRealizationInvolvements(), 
 		   source, 
 		   new String[] {
-			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
-			 "viatra.expression", "involvingInvolvements" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
+		  (getCapabilityRealizationInvolvedElement_InvolvingCapabilityRealizations(), 
+		   source, 
+		   new String[] {
 		   });	
 		addAnnotation
 		  (getState_AvailableAbstractFunctions(), 

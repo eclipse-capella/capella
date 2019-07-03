@@ -208,52 +208,6 @@ public class CsItemProviderAdapterFactory extends CsAdapterFactory implements Co
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.cs.ActorCapabilityRealizationInvolvement} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ActorCapabilityRealizationInvolvementItemProvider actorCapabilityRealizationInvolvementItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.cs.ActorCapabilityRealizationInvolvement}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createActorCapabilityRealizationInvolvementAdapter() {
-		if (actorCapabilityRealizationInvolvementItemProvider == null) {
-			actorCapabilityRealizationInvolvementItemProvider = new ActorCapabilityRealizationInvolvementItemProvider(this);
-		}
-
-		return actorCapabilityRealizationInvolvementItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.cs.SystemComponentCapabilityRealizationInvolvement} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected SystemComponentCapabilityRealizationInvolvementItemProvider systemComponentCapabilityRealizationInvolvementItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.cs.SystemComponentCapabilityRealizationInvolvement}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createSystemComponentCapabilityRealizationInvolvementAdapter() {
-		if (systemComponentCapabilityRealizationInvolvementItemProvider == null) {
-			systemComponentCapabilityRealizationInvolvementItemProvider = new SystemComponentCapabilityRealizationInvolvementItemProvider(this);
-		}
-
-		return systemComponentCapabilityRealizationInvolvementItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.cs.ExchangeItemAllocation} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -637,8 +591,6 @@ public class CsItemProviderAdapterFactory extends CsAdapterFactory implements Co
 		if (interfaceItemProvider != null) interfaceItemProvider.dispose();
 		if (interfaceImplementationItemProvider != null) interfaceImplementationItemProvider.dispose();
 		if (interfaceUseItemProvider != null) interfaceUseItemProvider.dispose();
-		if (actorCapabilityRealizationInvolvementItemProvider != null) actorCapabilityRealizationInvolvementItemProvider.dispose();
-		if (systemComponentCapabilityRealizationInvolvementItemProvider != null) systemComponentCapabilityRealizationInvolvementItemProvider.dispose();
 		if (exchangeItemAllocationItemProvider != null) exchangeItemAllocationItemProvider.dispose();
 		if (physicalLinkItemProvider != null) physicalLinkItemProvider.dispose();
 		if (physicalLinkCategoryItemProvider != null) physicalLinkCategoryItemProvider.dispose();

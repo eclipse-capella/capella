@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.polarsys.capella.core.data.information.datavalue.util;
 
-import java.util.List;
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
@@ -25,7 +23,6 @@ import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellacore.NamedElement;
 import org.polarsys.capella.core.data.capellacore.Namespace;
 import org.polarsys.capella.core.data.capellacore.Structure;
-import org.polarsys.capella.core.data.information.datavalue.*;
 import org.polarsys.capella.core.data.information.datavalue.AbstractBooleanValue;
 import org.polarsys.capella.core.data.information.datavalue.AbstractComplexValue;
 import org.polarsys.capella.core.data.information.datavalue.AbstractEnumerationValue;
@@ -45,6 +42,7 @@ import org.polarsys.capella.core.data.information.datavalue.LiteralNumericValue;
 import org.polarsys.capella.core.data.information.datavalue.LiteralStringValue;
 import org.polarsys.capella.core.data.information.datavalue.NumericReference;
 import org.polarsys.capella.core.data.information.datavalue.NumericValue;
+import org.polarsys.capella.core.data.information.datavalue.OpaqueExpression;
 import org.polarsys.capella.core.data.information.datavalue.StringReference;
 import org.polarsys.capella.core.data.information.datavalue.UnaryExpression;
 import org.polarsys.capella.core.data.information.datavalue.ValuePart;

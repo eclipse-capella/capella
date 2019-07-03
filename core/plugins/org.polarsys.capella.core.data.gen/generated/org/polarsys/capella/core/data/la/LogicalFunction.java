@@ -25,8 +25,7 @@ import org.polarsys.capella.core.data.pa.PhysicalFunction;
  * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.la.LogicalFunction#getOwnedLogicalFunctionPkgs <em>Owned Logical Function Pkgs</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.la.LogicalFunction#getAllocatorLogicalActors <em>Allocator Logical Actors</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.la.LogicalFunction#getAllocatorLogicalComponents <em>Allocator Logical Components</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.la.LogicalFunction#getAllocatingLogicalComponents <em>Allocating Logical Components</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.la.LogicalFunction#getRealizedSystemFunctions <em>Realized System Functions</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.la.LogicalFunction#getRealizingPhysicalFunctions <em>Realizing Physical Functions</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.la.LogicalFunction#getContainedLogicalFunctions <em>Contained Logical Functions</em>}</li>
@@ -71,56 +70,28 @@ public interface LogicalFunction extends AbstractFunction {
 
 
 	/**
-	 * Returns the value of the '<em><b>Allocator Logical Actors</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.la.LogicalActor}.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.la.LogicalActor#getAllocatedLogicalFunctions <em>Allocated Logical Functions</em>}'.
-
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Allocator Logical Actors</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Allocator Logical Actors</em>' reference list.
-	 * @see org.polarsys.capella.core.data.la.LaPackage#getLogicalFunction_AllocatorLogicalActors()
-	 * @see org.polarsys.capella.core.data.la.LogicalActor#getAllocatedLogicalFunctions
-	 * @model opposite="allocatedLogicalFunctions" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='LogicalFunction.incomingTraces(self, cfa);\r\nComponentFunctionalAllocation.sourceElement(cfa, target);'"
-	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
-
-	EList<LogicalActor> getAllocatorLogicalActors();
-
-
-
-
-
-
-
-	/**
-	 * Returns the value of the '<em><b>Allocator Logical Components</b></em>' reference list.
+	 * Returns the value of the '<em><b>Allocating Logical Components</b></em>' reference list.
 	 * The list contents are of type {@link org.polarsys.capella.core.data.la.LogicalComponent}.
 	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.la.LogicalComponent#getAllocatedLogicalFunctions <em>Allocated Logical Functions</em>}'.
 
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Allocator Logical Components</em>' reference list isn't clear,
+	 * If the meaning of the '<em>Allocating Logical Components</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Allocator Logical Components</em>' reference list.
-	 * @see org.polarsys.capella.core.data.la.LaPackage#getLogicalFunction_AllocatorLogicalComponents()
+	 * @return the value of the '<em>Allocating Logical Components</em>' reference list.
+	 * @see org.polarsys.capella.core.data.la.LaPackage#getLogicalFunction_AllocatingLogicalComponents()
 	 * @see org.polarsys.capella.core.data.la.LogicalComponent#getAllocatedLogicalFunctions
 	 * @model opposite="allocatedLogicalFunctions" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='LogicalFunction.incomingTraces(self, cfa);\r\nComponentFunctionalAllocation.sourceElement(cfa, target);'"
+	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Logical components that allocate this Logical Function' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='LogicalFunction.incomingTraces(self, cfa);\r\nComponentFunctionalAllocation.sourceElement(cfa, target);'"
 	 * @generated
 	 */
 
-	EList<LogicalComponent> getAllocatorLogicalComponents();
+	EList<LogicalComponent> getAllocatingLogicalComponents();
 
 
 

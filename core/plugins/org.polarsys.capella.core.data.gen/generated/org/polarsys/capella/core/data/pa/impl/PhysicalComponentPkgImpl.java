@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.polarsys.capella.core.data.capellacore.VisibilityKind;
 import org.polarsys.capella.core.data.cs.AbstractDeploymentLink;
-import org.polarsys.capella.core.data.fa.impl.AbstractFunctionalStructureImpl;
+import org.polarsys.capella.core.data.cs.impl.ComponentPkgImpl;
 import org.polarsys.capella.core.data.information.Association;
 import org.polarsys.capella.core.data.information.AssociationPkg;
 import org.polarsys.capella.core.data.information.InformationPackage;
@@ -49,7 +49,7 @@ import org.polarsys.capella.core.data.pa.PhysicalComponentPkg;
  *
  * @generated
  */
-public class PhysicalComponentPkgImpl extends AbstractFunctionalStructureImpl implements PhysicalComponentPkg {
+public class PhysicalComponentPkgImpl extends ComponentPkgImpl implements PhysicalComponentPkg {
 
 	/**
 	 * The default value of the '{@link #getVisibility() <em>Visibility</em>}' attribute.
@@ -71,10 +71,6 @@ public class PhysicalComponentPkgImpl extends AbstractFunctionalStructureImpl im
 	 */
 	protected VisibilityKind visibility = VISIBILITY_EDEFAULT;
 
-
-
-
-
 	/**
 	 * The cached value of the '{@link #getOwnedAssociations() <em>Owned Associations</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -84,10 +80,6 @@ public class PhysicalComponentPkgImpl extends AbstractFunctionalStructureImpl im
 	 * @ordered
 	 */
 	protected EList<Association> ownedAssociations;
-
-
-
-
 
 	/**
 	 * The cached value of the '{@link #getOwnedComponents() <em>Owned Components</em>}' containment reference list.
@@ -180,7 +172,6 @@ public class PhysicalComponentPkgImpl extends AbstractFunctionalStructureImpl im
 		return visibility;
 	}
 
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -196,11 +187,6 @@ public class PhysicalComponentPkgImpl extends AbstractFunctionalStructureImpl im
 
 	}
 
-
-
-
-
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -214,10 +200,6 @@ public class PhysicalComponentPkgImpl extends AbstractFunctionalStructureImpl im
 		}
 		return ownedAssociations;
 	}
-
-
-
-
 
 	/**
 	 * <!-- begin-user-doc -->

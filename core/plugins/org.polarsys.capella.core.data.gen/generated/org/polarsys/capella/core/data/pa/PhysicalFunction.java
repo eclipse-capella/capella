@@ -24,8 +24,7 @@ import org.polarsys.capella.core.data.la.LogicalFunction;
  * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.pa.PhysicalFunction#getOwnedPhysicalFunctionPkgs <em>Owned Physical Function Pkgs</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.pa.PhysicalFunction#getAllocatorPhysicalActors <em>Allocator Physical Actors</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.pa.PhysicalFunction#getAllocatorPhysicalComponents <em>Allocator Physical Components</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.pa.PhysicalFunction#getAllocatingPhysicalComponents <em>Allocating Physical Components</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.pa.PhysicalFunction#getRealizedLogicalFunctions <em>Realized Logical Functions</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.pa.PhysicalFunction#getContainedPhysicalFunctions <em>Contained Physical Functions</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.pa.PhysicalFunction#getChildrenPhysicalFunctions <em>Children Physical Functions</em>}</li>
@@ -69,47 +68,18 @@ public interface PhysicalFunction extends AbstractFunction {
 
 
 	/**
-	 * Returns the value of the '<em><b>Allocator Physical Actors</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.pa.PhysicalActor}.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.pa.PhysicalActor#getAllocatedPhysicalFunctions <em>Allocated Physical Functions</em>}'.
-
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Allocator Physical Actors</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Allocator Physical Actors</em>' reference list.
-	 * @see org.polarsys.capella.core.data.pa.PaPackage#getPhysicalFunction_AllocatorPhysicalActors()
-	 * @see org.polarsys.capella.core.data.pa.PhysicalActor#getAllocatedPhysicalFunctions
-	 * @model opposite="allocatedPhysicalFunctions" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='PhysicalFunction.incomingTraces(self, cfa);\r\nComponentFunctionalAllocation.sourceElement(cfa, target);'"
-	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
-
-	EList<PhysicalActor> getAllocatorPhysicalActors();
-
-
-
-
-
-
-
-	/**
-	 * Returns the value of the '<em><b>Allocator Physical Components</b></em>' reference list.
+	 * Returns the value of the '<em><b>Allocating Physical Components</b></em>' reference list.
 	 * The list contents are of type {@link org.polarsys.capella.core.data.pa.PhysicalComponent}.
 	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.pa.PhysicalComponent#getAllocatedPhysicalFunctions <em>Allocated Physical Functions</em>}'.
 
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Allocator Physical Components</em>' reference list isn't clear,
+	 * If the meaning of the '<em>Allocating Physical Components</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Allocator Physical Components</em>' reference list.
-	 * @see org.polarsys.capella.core.data.pa.PaPackage#getPhysicalFunction_AllocatorPhysicalComponents()
+	 * @return the value of the '<em>Allocating Physical Components</em>' reference list.
+	 * @see org.polarsys.capella.core.data.pa.PaPackage#getPhysicalFunction_AllocatingPhysicalComponents()
 	 * @see org.polarsys.capella.core.data.pa.PhysicalComponent#getAllocatedPhysicalFunctions
 	 * @model opposite="allocatedPhysicalFunctions" transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='patternbody' viatra.expression='PhysicalFunction.incomingTraces(self, cfa);\r\nComponentFunctionalAllocation.sourceElement(cfa, target);'"
@@ -118,7 +88,7 @@ public interface PhysicalFunction extends AbstractFunction {
 	 * @generated
 	 */
 
-	EList<PhysicalComponent> getAllocatorPhysicalComponents();
+	EList<PhysicalComponent> getAllocatingPhysicalComponents();
 
 
 

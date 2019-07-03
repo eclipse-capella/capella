@@ -77,8 +77,7 @@ public class LogicalFunctionItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addAllocatorLogicalActorsPropertyDescriptor(object);
-			addAllocatorLogicalComponentsPropertyDescriptor(object);
+			addAllocatingLogicalComponentsPropertyDescriptor(object);
 			addRealizedSystemFunctionsPropertyDescriptor(object);
 			addRealizingPhysicalFunctionsPropertyDescriptor(object);
 			addContainedLogicalFunctionsPropertyDescriptor(object);
@@ -91,12 +90,12 @@ public class LogicalFunctionItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Allocator Logical Actors feature.
+	 * This adds a property descriptor for the Allocating Logical Components feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addAllocatorLogicalActorsPropertyDescriptor(Object object) {
+	protected void addAllocatingLogicalComponentsPropertyDescriptor(Object object) {
 
 		// begin-extension-code
 		itemPropertyDescriptors.add
@@ -104,36 +103,9 @@ public class LogicalFunctionItemProvider
 		// end-extension-code
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_LogicalFunction_allocatorLogicalActors_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_LogicalFunction_allocatorLogicalActors_feature", "_UI_LogicalFunction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 LaPackage.Literals.LOGICAL_FUNCTION__ALLOCATOR_LOGICAL_ACTORS,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
-
-	/**
-	 * This adds a property descriptor for the Allocator Logical Components feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addAllocatorLogicalComponentsPropertyDescriptor(Object object) {
-
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_LogicalFunction_allocatorLogicalComponents_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_LogicalFunction_allocatorLogicalComponents_feature", "_UI_LogicalFunction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 LaPackage.Literals.LOGICAL_FUNCTION__ALLOCATOR_LOGICAL_COMPONENTS,
+				 getString("_UI_LogicalFunction_allocatingLogicalComponents_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_LogicalFunction_allocatingLogicalComponents_feature", "_UI_LogicalFunction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 LaPackage.Literals.LOGICAL_FUNCTION__ALLOCATING_LOGICAL_COMPONENTS,
 				 false,
 				 false,
 				 false,

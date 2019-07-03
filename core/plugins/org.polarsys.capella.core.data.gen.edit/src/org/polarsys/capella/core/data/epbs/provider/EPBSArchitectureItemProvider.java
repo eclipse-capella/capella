@@ -207,8 +207,6 @@ public class EPBSArchitectureItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(EpbsPackage.Literals.EPBS_ARCHITECTURE__OWNED_EPBS_CONTEXT);
-			childrenFeatures.add(EpbsPackage.Literals.EPBS_ARCHITECTURE__OWNED_CONFIGURATION_ITEM);
 			childrenFeatures.add(EpbsPackage.Literals.EPBS_ARCHITECTURE__OWNED_CONFIGURATION_ITEM_PKG);
 			childrenFeatures.add(EpbsPackage.Literals.EPBS_ARCHITECTURE__OWNED_PHYSICAL_ARCHITECTURE_REALIZATIONS);
 		}
@@ -275,8 +273,6 @@ public class EPBSArchitectureItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(EPBSArchitecture.class)) {
-			case EpbsPackage.EPBS_ARCHITECTURE__OWNED_EPBS_CONTEXT:
-			case EpbsPackage.EPBS_ARCHITECTURE__OWNED_CONFIGURATION_ITEM:
 			case EpbsPackage.EPBS_ARCHITECTURE__OWNED_CONFIGURATION_ITEM_PKG:
 			case EpbsPackage.EPBS_ARCHITECTURE__OWNED_PHYSICAL_ARCHITECTURE_REALIZATIONS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
@@ -295,30 +291,6 @@ public class EPBSArchitectureItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (EpbsPackage.Literals.EPBS_ARCHITECTURE__OWNED_EPBS_CONTEXT,
-                         EpbsFactory.eINSTANCE.createEPBSContext());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (EpbsPackage.Literals.EPBS_ARCHITECTURE__OWNED_CONFIGURATION_ITEM,
-                         EpbsFactory.eINSTANCE.createConfigurationItem());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter

@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.polarsys.capella.core.data.interaction.util;
 
-import java.util.List;
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
@@ -35,7 +33,6 @@ import org.polarsys.capella.core.data.capellacore.Relationship;
 import org.polarsys.capella.core.data.capellacore.Structure;
 import org.polarsys.capella.core.data.capellacore.Trace;
 import org.polarsys.capella.core.data.fa.AbstractFunctionalChainContainer;
-import org.polarsys.capella.core.data.interaction.*;
 import org.polarsys.capella.core.data.interaction.AbstractCapability;
 import org.polarsys.capella.core.data.interaction.AbstractCapabilityExtend;
 import org.polarsys.capella.core.data.interaction.AbstractCapabilityExtensionPoint;
@@ -72,6 +69,7 @@ import org.polarsys.capella.core.data.interaction.RefinementLink;
 import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.capella.core.data.interaction.ScenarioRealization;
 import org.polarsys.capella.core.data.interaction.SequenceMessage;
+import org.polarsys.capella.core.data.interaction.SequenceMessageValuation;
 import org.polarsys.capella.core.data.interaction.StateFragment;
 import org.polarsys.capella.core.data.interaction.TimeLapse;
 import org.polarsys.kitalpha.emde.model.Element;

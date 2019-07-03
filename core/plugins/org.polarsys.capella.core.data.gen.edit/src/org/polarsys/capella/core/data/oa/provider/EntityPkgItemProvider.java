@@ -22,7 +22,6 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.emf.edit.command.CopyCommand.Helper;
 import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
@@ -31,17 +30,11 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.polarsys.capella.common.model.copypaste.SharedInitializeCopyCommand;
-import org.polarsys.capella.core.data.capellacommon.CapellacommonFactory;
-import org.polarsys.capella.core.data.capellacore.CapellacoreFactory;
-import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
-import org.polarsys.capella.core.data.capellacore.provider.NamedElementItemProvider;
-import org.polarsys.capella.core.data.fa.FaFactory;
+import org.polarsys.capella.core.data.cs.provider.ComponentPkgItemProvider;
 import org.polarsys.capella.core.data.fa.FaPackage;
-import org.polarsys.capella.core.data.interaction.InteractionFactory;
 import org.polarsys.capella.core.data.oa.EntityPkg;
 import org.polarsys.capella.core.data.oa.OaFactory;
 import org.polarsys.capella.core.data.oa.OaPackage;
-import org.polarsys.capella.core.data.requirement.RequirementFactory;
 import org.polarsys.kitalpha.emde.model.edit.provider.NewChildDescriptorHelper;
 
 /**
@@ -51,7 +44,7 @@ import org.polarsys.kitalpha.emde.model.edit.provider.NewChildDescriptorHelper;
  * @generated
  */
 public class EntityPkgItemProvider
-	extends NamedElementItemProvider
+	extends ComponentPkgItemProvider
 	implements
 		IEditingDomainItemProvider,
 		IStructuredItemContentProvider,
@@ -79,67 +72,11 @@ public class EntityPkgItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addContainedGenericTracesPropertyDescriptor(object);
-			addContainedRequirementsTracesPropertyDescriptor(object);
 		}
 		// begin-extension-code
 		checkChildCreationExtender(object);
 		// end-extension-code
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the Contained Generic Traces feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addContainedGenericTracesPropertyDescriptor(Object object) {
-
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Namespace_containedGenericTraces_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_Namespace_containedGenericTraces_feature", "_UI_Namespace_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 CapellacorePackage.Literals.NAMESPACE__CONTAINED_GENERIC_TRACES,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
-
-	/**
-	 * This adds a property descriptor for the Contained Requirements Traces feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addContainedRequirementsTracesPropertyDescriptor(Object object) {
-
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Namespace_containedRequirementsTraces_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_Namespace_containedRequirementsTraces_feature", "_UI_Namespace_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 CapellacorePackage.Literals.NAMESPACE__CONTAINED_REQUIREMENTS_TRACES,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
 	}
 
 	/**
@@ -154,16 +91,8 @@ public class EntityPkgItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(CapellacorePackage.Literals.NAMESPACE__OWNED_TRACES);
-			childrenFeatures.add(CapellacorePackage.Literals.NAMESPACE__NAMING_RULES);
-			childrenFeatures.add(CapellacorePackage.Literals.STRUCTURE__OWNED_PROPERTY_VALUE_PKGS);
-			childrenFeatures.add(FaPackage.Literals.ABSTRACT_FUNCTIONAL_STRUCTURE__OWNED_COMPONENT_EXCHANGES);
-			childrenFeatures.add(FaPackage.Literals.ABSTRACT_FUNCTIONAL_STRUCTURE__OWNED_COMPONENT_EXCHANGE_CATEGORIES);
-			childrenFeatures.add(FaPackage.Literals.ABSTRACT_FUNCTIONAL_STRUCTURE__OWNED_FUNCTIONAL_LINKS);
-			childrenFeatures.add(FaPackage.Literals.ABSTRACT_FUNCTIONAL_STRUCTURE__OWNED_FUNCTIONAL_ALLOCATIONS);
-			childrenFeatures.add(FaPackage.Literals.ABSTRACT_FUNCTIONAL_STRUCTURE__OWNED_COMPONENT_EXCHANGE_REALIZATIONS);
-			childrenFeatures.add(OaPackage.Literals.ENTITY_PKG__OWNED_ENTITY_PKGS);
 			childrenFeatures.add(OaPackage.Literals.ENTITY_PKG__OWNED_ENTITIES);
+			childrenFeatures.add(OaPackage.Literals.ENTITY_PKG__OWNED_ENTITY_PKGS);
 			childrenFeatures.add(OaPackage.Literals.ENTITY_PKG__OWNED_LOCATIONS);
 			childrenFeatures.add(OaPackage.Literals.ENTITY_PKG__OWNED_COMMUNICATION_MEANS);
 		}
@@ -230,16 +159,8 @@ public class EntityPkgItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(EntityPkg.class)) {
-			case OaPackage.ENTITY_PKG__OWNED_TRACES:
-			case OaPackage.ENTITY_PKG__NAMING_RULES:
-			case OaPackage.ENTITY_PKG__OWNED_PROPERTY_VALUE_PKGS:
-			case OaPackage.ENTITY_PKG__OWNED_COMPONENT_EXCHANGES:
-			case OaPackage.ENTITY_PKG__OWNED_COMPONENT_EXCHANGE_CATEGORIES:
-			case OaPackage.ENTITY_PKG__OWNED_FUNCTIONAL_LINKS:
-			case OaPackage.ENTITY_PKG__OWNED_FUNCTIONAL_ALLOCATIONS:
-			case OaPackage.ENTITY_PKG__OWNED_COMPONENT_EXCHANGE_REALIZATIONS:
-			case OaPackage.ENTITY_PKG__OWNED_ENTITY_PKGS:
 			case OaPackage.ENTITY_PKG__OWNED_ENTITIES:
+			case OaPackage.ENTITY_PKG__OWNED_ENTITY_PKGS:
 			case OaPackage.ENTITY_PKG__OWNED_LOCATIONS:
 			case OaPackage.ENTITY_PKG__OWNED_COMMUNICATION_MEANS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
@@ -261,186 +182,6 @@ public class EntityPkgItemProvider
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
-                        (CapellacorePackage.Literals.NAMESPACE__OWNED_TRACES,
-                         RequirementFactory.eINSTANCE.createRequirementsTrace());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (CapellacorePackage.Literals.NAMESPACE__OWNED_TRACES,
-                         CapellacommonFactory.eINSTANCE.createGenericTrace());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (CapellacorePackage.Literals.NAMESPACE__OWNED_TRACES,
-                         CapellacommonFactory.eINSTANCE.createTransfoLink());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (CapellacorePackage.Literals.NAMESPACE__OWNED_TRACES,
-                         CapellacommonFactory.eINSTANCE.createJustificationLink());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (CapellacorePackage.Literals.NAMESPACE__OWNED_TRACES,
-                         InteractionFactory.eINSTANCE.createMergeLink());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (CapellacorePackage.Literals.NAMESPACE__OWNED_TRACES,
-                         InteractionFactory.eINSTANCE.createRefinementLink());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (CapellacorePackage.Literals.NAMESPACE__NAMING_RULES,
-                         CapellacoreFactory.eINSTANCE.createNamingRule());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (CapellacorePackage.Literals.STRUCTURE__OWNED_PROPERTY_VALUE_PKGS,
-                         CapellacoreFactory.eINSTANCE.createPropertyValuePkg());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (FaPackage.Literals.ABSTRACT_FUNCTIONAL_STRUCTURE__OWNED_COMPONENT_EXCHANGES,
-                         OaFactory.eINSTANCE.createCommunicationMean());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (FaPackage.Literals.ABSTRACT_FUNCTIONAL_STRUCTURE__OWNED_COMPONENT_EXCHANGES,
-                         FaFactory.eINSTANCE.createComponentExchange());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (FaPackage.Literals.ABSTRACT_FUNCTIONAL_STRUCTURE__OWNED_COMPONENT_EXCHANGE_CATEGORIES,
-                         FaFactory.eINSTANCE.createComponentExchangeCategory());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (FaPackage.Literals.ABSTRACT_FUNCTIONAL_STRUCTURE__OWNED_FUNCTIONAL_LINKS,
-                         FaFactory.eINSTANCE.createExchangeLink());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (FaPackage.Literals.ABSTRACT_FUNCTIONAL_STRUCTURE__OWNED_FUNCTIONAL_ALLOCATIONS,
-                         FaFactory.eINSTANCE.createComponentFunctionalAllocation());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (FaPackage.Literals.ABSTRACT_FUNCTIONAL_STRUCTURE__OWNED_COMPONENT_EXCHANGE_REALIZATIONS,
-                         FaFactory.eINSTANCE.createComponentExchangeRealization());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (OaPackage.Literals.ENTITY_PKG__OWNED_ENTITY_PKGS,
-                         OaFactory.eINSTANCE.createEntityPkg());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
                         (OaPackage.Literals.ENTITY_PKG__OWNED_ENTITIES,
                          OaFactory.eINSTANCE.createEntity());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
@@ -453,8 +194,8 @@ public class EntityPkgItemProvider
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
-                        (OaPackage.Literals.ENTITY_PKG__OWNED_ENTITIES,
-                         OaFactory.eINSTANCE.createOperationalActor());
+                        (OaPackage.Literals.ENTITY_PKG__OWNED_ENTITY_PKGS,
+                         OaFactory.eINSTANCE.createEntityPkg());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
                     }

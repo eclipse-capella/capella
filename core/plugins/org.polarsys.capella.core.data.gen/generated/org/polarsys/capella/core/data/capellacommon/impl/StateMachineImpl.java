@@ -30,7 +30,6 @@ import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.polarsys.capella.common.data.behavior.AbstractBehavior;
 import org.polarsys.capella.common.data.behavior.BehaviorPackage;
-import org.polarsys.capella.common.data.modellingcore.AbstractConstraint;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.data.modellingcore.AbstractParameter;
 import org.polarsys.capella.common.data.modellingcore.AbstractParameterSet;

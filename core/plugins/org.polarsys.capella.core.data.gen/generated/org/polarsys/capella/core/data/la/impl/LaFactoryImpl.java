@@ -16,24 +16,18 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.polarsys.capella.common.lib.IdGenerator;
-import org.polarsys.capella.core.data.la.*;
 import org.polarsys.capella.core.data.la.CapabilityRealization;
 import org.polarsys.capella.core.data.la.CapabilityRealizationPkg;
 import org.polarsys.capella.core.data.la.ContextInterfaceRealization;
 import org.polarsys.capella.core.data.la.LaFactory;
 import org.polarsys.capella.core.data.la.LaPackage;
-import org.polarsys.capella.core.data.la.LogicalActor;
-import org.polarsys.capella.core.data.la.LogicalActorPkg;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.la.LogicalArchitecturePkg;
 import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.data.la.LogicalComponentPkg;
-import org.polarsys.capella.core.data.la.LogicalContext;
 import org.polarsys.capella.core.data.la.LogicalFunction;
 import org.polarsys.capella.core.data.la.LogicalFunctionPkg;
-import org.polarsys.capella.core.data.la.SystemActorRealization;
 import org.polarsys.capella.core.data.la.SystemAnalysisRealization;
-import org.polarsys.capella.core.data.la.SystemRealization;
 
 /**
  * <!-- begin-user-doc -->
@@ -88,12 +82,7 @@ public class LaFactoryImpl extends EFactoryImpl implements LaFactory {
 			case LaPackage.CAPABILITY_REALIZATION: return createCapabilityRealization();
 			case LaPackage.CAPABILITY_REALIZATION_PKG: return createCapabilityRealizationPkg();
 			case LaPackage.SYSTEM_ANALYSIS_REALIZATION: return createSystemAnalysisRealization();
-			case LaPackage.SYSTEM_REALIZATION: return createSystemRealization();
 			case LaPackage.CONTEXT_INTERFACE_REALIZATION: return createContextInterfaceRealization();
-			case LaPackage.LOGICAL_ACTOR_PKG: return createLogicalActorPkg();
-			case LaPackage.LOGICAL_ACTOR: return createLogicalActor();
-			case LaPackage.SYSTEM_ACTOR_REALIZATION: return createSystemActorRealization();
-			case LaPackage.LOGICAL_CONTEXT: return createLogicalContext();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
 		}
@@ -248,22 +237,6 @@ public class LaFactoryImpl extends EFactoryImpl implements LaFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SystemRealization createSystemRealization() {
-		SystemRealizationImpl systemRealization = new SystemRealizationImpl();
-    //begin-capella-code
-
-    systemRealization.setId(IdGenerator.createId());
-
-
-    //end-capella-code
-		return systemRealization;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public ContextInterfaceRealization createContextInterfaceRealization() {
 		ContextInterfaceRealizationImpl contextInterfaceRealization = new ContextInterfaceRealizationImpl();
     //begin-capella-code
@@ -273,70 +246,6 @@ public class LaFactoryImpl extends EFactoryImpl implements LaFactory {
 
     //end-capella-code
 		return contextInterfaceRealization;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public LogicalActorPkg createLogicalActorPkg() {
-		LogicalActorPkgImpl logicalActorPkg = new LogicalActorPkgImpl();
-    //begin-capella-code
-
-    logicalActorPkg.setId(IdGenerator.createId());
-
-
-    //end-capella-code
-		return logicalActorPkg;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public LogicalActor createLogicalActor() {
-		LogicalActorImpl logicalActor = new LogicalActorImpl();
-    //begin-capella-code
-
-    logicalActor.setId(IdGenerator.createId());
-
-
-    //end-capella-code
-		return logicalActor;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public SystemActorRealization createSystemActorRealization() {
-		SystemActorRealizationImpl systemActorRealization = new SystemActorRealizationImpl();
-    //begin-capella-code
-
-    systemActorRealization.setId(IdGenerator.createId());
-
-
-    //end-capella-code
-		return systemActorRealization;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public LogicalContext createLogicalContext() {
-		LogicalContextImpl logicalContext = new LogicalContextImpl();
-    //begin-capella-code
-
-    logicalContext.setId(IdGenerator.createId());
-
-
-    //end-capella-code
-		return logicalContext;
 	}
 
 	/**
@@ -461,45 +370,6 @@ public class LaFactoryImpl extends EFactoryImpl implements LaFactory {
 	  CapabilityRealizationPkg capabilityRealizationPkg = createCapabilityRealizationPkg();
 		capabilityRealizationPkg.setName(name_p);	  
 		return capabilityRealizationPkg;
-	}
-
-	/**
-	 * Creates class and sets its name
-	 * (This method comes from a customization of the standard EMF generator)
-	 *
-	 * @param name_p : default name of created element
-	 * @generated
-	 */
-	public LogicalActorPkg createLogicalActorPkg(String name_p) {
-	  LogicalActorPkg logicalActorPkg = createLogicalActorPkg();
-		logicalActorPkg.setName(name_p);	  
-		return logicalActorPkg;
-	}
-
-	/**
-	 * Creates class and sets its name
-	 * (This method comes from a customization of the standard EMF generator)
-	 *
-	 * @param name_p : default name of created element
-	 * @generated
-	 */
-	public LogicalActor createLogicalActor(String name_p) {
-	  LogicalActor logicalActor = createLogicalActor();
-		logicalActor.setName(name_p);	  
-		return logicalActor;
-	}
-
-	/**
-	 * Creates class and sets its name
-	 * (This method comes from a customization of the standard EMF generator)
-	 *
-	 * @param name_p : default name of created element
-	 * @generated
-	 */
-	public LogicalContext createLogicalContext(String name_p) {
-	  LogicalContext logicalContext = createLogicalContext();
-		logicalContext.setName(name_p);	  
-		return logicalContext;
 	}
 
 	//begin-capella-code

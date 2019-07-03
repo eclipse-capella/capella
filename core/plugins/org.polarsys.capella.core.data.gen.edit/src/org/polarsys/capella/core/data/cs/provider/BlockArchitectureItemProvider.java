@@ -40,6 +40,8 @@ import org.polarsys.capella.core.data.information.InformationFactory;
 import org.polarsys.capella.core.data.la.LaFactory;
 import org.polarsys.capella.core.data.oa.OaFactory;
 import org.polarsys.capella.core.data.requirement.RequirementFactory;
+import org.polarsys.kitalpha.emde.extension.ExtensionModelManager;
+import org.polarsys.kitalpha.emde.extension.ModelExtensionHelper;
 import org.polarsys.kitalpha.emde.model.edit.provider.NewChildDescriptorHelper;
 
 /**
@@ -57,6 +59,13 @@ public class BlockArchitectureItemProvider
 		IItemLabelProvider,
 		IItemPropertySource {
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected IItemPropertyDescriptor systemPropertyDescriptor;
+
+	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -64,6 +73,30 @@ public class BlockArchitectureItemProvider
 	 */
 	public BlockArchitectureItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void checkChildCreationExtender(Object object) {
+		super.checkChildCreationExtender(object);
+		if (object instanceof EObject) {
+			EObject eObject = (EObject) object;
+			// Process CsPackage.Literals.BLOCK_ARCHITECTURE__SYSTEM
+			if (systemPropertyDescriptor != null) {
+				Object systemValue = eObject.eGet(CsPackage.Literals.BLOCK_ARCHITECTURE__SYSTEM, true);
+				if (systemValue != null && systemValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) systemValue)) {
+					itemPropertyDescriptors.remove(systemPropertyDescriptor);
+				} else if (systemValue == null && ExtensionModelManager.getAnyType(eObject, CsPackage.Literals.BLOCK_ARCHITECTURE__SYSTEM) != null) {
+					itemPropertyDescriptors.remove(systemPropertyDescriptor);				  					
+				} else if (itemPropertyDescriptors.contains(systemPropertyDescriptor) == false) {
+					itemPropertyDescriptors.add(systemPropertyDescriptor);
+				}
+			}
+		}		
 	}
 
 	/**
@@ -81,6 +114,7 @@ public class BlockArchitectureItemProvider
 			addProvisioningArchitectureAllocationsPropertyDescriptor(object);
 			addAllocatedArchitecturesPropertyDescriptor(object);
 			addAllocatingArchitecturesPropertyDescriptor(object);
+			addSystemPropertyDescriptor(object);
 		}
 		// begin-extension-code
 		checkChildCreationExtender(object);
@@ -193,6 +227,32 @@ public class BlockArchitectureItemProvider
 				 null,
 		// begin-extension-code
 				 null));
+		// end-extension-code
+	}
+
+	/**
+	 * This adds a property descriptor for the System feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSystemPropertyDescriptor(Object object) {
+		// begin-extension-code
+		systemPropertyDescriptor = createItemPropertyDescriptor
+		// end-extension-code		
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_BlockArchitecture_system_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_BlockArchitecture_system_feature", "_UI_BlockArchitecture_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 CsPackage.Literals.BLOCK_ARCHITECTURE__SYSTEM,
+				 false,
+				 false,
+				 false,
+				 null,
+				 null,
+		// begin-extension-code
+				 null);
+		itemPropertyDescriptors.add(systemPropertyDescriptor);
 		// end-extension-code
 	}
 

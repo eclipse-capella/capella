@@ -29,7 +29,6 @@ import org.polarsys.capella.common.model.helpers.IHelper;
 import org.polarsys.capella.core.data.fa.impl.AbstractFunctionImpl;
 import org.polarsys.capella.core.data.la.LogicalFunction;
 import org.polarsys.capella.core.data.pa.PaPackage;
-import org.polarsys.capella.core.data.pa.PhysicalActor;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalFunction;
 import org.polarsys.capella.core.data.pa.PhysicalFunctionPkg;
@@ -43,8 +42,7 @@ import org.polarsys.capella.core.data.pa.PhysicalFunctionPkg;
  * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.pa.impl.PhysicalFunctionImpl#getOwnedPhysicalFunctionPkgs <em>Owned Physical Function Pkgs</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.pa.impl.PhysicalFunctionImpl#getAllocatorPhysicalActors <em>Allocator Physical Actors</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.pa.impl.PhysicalFunctionImpl#getAllocatorPhysicalComponents <em>Allocator Physical Components</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.pa.impl.PhysicalFunctionImpl#getAllocatingPhysicalComponents <em>Allocating Physical Components</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.pa.impl.PhysicalFunctionImpl#getRealizedLogicalFunctions <em>Realized Logical Functions</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.pa.impl.PhysicalFunctionImpl#getContainedPhysicalFunctions <em>Contained Physical Functions</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.pa.impl.PhysicalFunctionImpl#getChildrenPhysicalFunctions <em>Children Physical Functions</em>}</li>
@@ -136,7 +134,7 @@ public class PhysicalFunctionImpl extends AbstractFunctionImpl implements Physic
 	 * @generated
 	 */
 
-	public EList<PhysicalActor> getAllocatorPhysicalActors() {
+	public EList<PhysicalComponent> getAllocatingPhysicalComponents() {
 
 
     Object result = null;
@@ -159,70 +157,19 @@ public class PhysicalFunctionImpl extends AbstractFunctionImpl implements Physic
       throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = PaPackage.Literals.PHYSICAL_FUNCTION__ALLOCATOR_PHYSICAL_ACTORS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
-    result = helper.getValue(this, PaPackage.Literals.PHYSICAL_FUNCTION__ALLOCATOR_PHYSICAL_ACTORS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<PhysicalActor> resultAsList = (Collection<PhysicalActor>) result;
-		return new EcoreEList.UnmodifiableEList<PhysicalActor>(this, PaPackage.Literals.PHYSICAL_FUNCTION__ALLOCATOR_PHYSICAL_ACTORS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
-
-
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public EList<PhysicalComponent> getAllocatorPhysicalComponents() {
-
-
-    Object result = null;
-    // Helper that can get value for current feature.
-    IHelper helper = null;
-    // If current object is adaptable, ask it to get its IHelper.
-    if (this instanceof IAdaptable) {
-    	helper = (IHelper) ((IAdaptable) this).getAdapter(IHelper.class);
-    }
-    if (null == helper) {
-      // No helper found yet.
-      // Ask the platform to get the adapter 'IHelper.class' for current object.
-      IAdapterManager adapterManager = Platform.getAdapterManager();
-      helper = (IHelper) adapterManager.getAdapter(this, IHelper.class);
-    }
-    if (null == helper) {
-      EPackage package_l = eClass().getEPackage();
-      // Get the root package of the owner package.
-      EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
-    } 
-    // A helper is found, let's use it. 
-    EAnnotation annotation = PaPackage.Literals.PHYSICAL_FUNCTION__ALLOCATOR_PHYSICAL_COMPONENTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
-    result = helper.getValue(this, PaPackage.Literals.PHYSICAL_FUNCTION__ALLOCATOR_PHYSICAL_COMPONENTS, annotation);
+    EAnnotation annotation = PaPackage.Literals.PHYSICAL_FUNCTION__ALLOCATING_PHYSICAL_COMPONENTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    result = helper.getValue(this, PaPackage.Literals.PHYSICAL_FUNCTION__ALLOCATING_PHYSICAL_COMPONENTS, annotation);
 		
 		try {
 		@SuppressWarnings("unchecked")
 		Collection<PhysicalComponent> resultAsList = (Collection<PhysicalComponent>) result;
-		return new EcoreEList.UnmodifiableEList<PhysicalComponent>(this, PaPackage.Literals.PHYSICAL_FUNCTION__ALLOCATOR_PHYSICAL_COMPONENTS, resultAsList.size(), resultAsList.toArray());
+		return new EcoreEList.UnmodifiableEList<PhysicalComponent>(this, PaPackage.Literals.PHYSICAL_FUNCTION__ALLOCATING_PHYSICAL_COMPONENTS, resultAsList.size(), resultAsList.toArray());
 		} catch (ClassCastException exception) {
 	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
 	}
-
-
-
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -387,10 +334,8 @@ public class PhysicalFunctionImpl extends AbstractFunctionImpl implements Physic
 		switch (featureID) {
 			case PaPackage.PHYSICAL_FUNCTION__OWNED_PHYSICAL_FUNCTION_PKGS:
 				return getOwnedPhysicalFunctionPkgs();
-			case PaPackage.PHYSICAL_FUNCTION__ALLOCATOR_PHYSICAL_ACTORS:
-				return getAllocatorPhysicalActors();
-			case PaPackage.PHYSICAL_FUNCTION__ALLOCATOR_PHYSICAL_COMPONENTS:
-				return getAllocatorPhysicalComponents();
+			case PaPackage.PHYSICAL_FUNCTION__ALLOCATING_PHYSICAL_COMPONENTS:
+				return getAllocatingPhysicalComponents();
 			case PaPackage.PHYSICAL_FUNCTION__REALIZED_LOGICAL_FUNCTIONS:
 				return getRealizedLogicalFunctions();
 			case PaPackage.PHYSICAL_FUNCTION__CONTAINED_PHYSICAL_FUNCTIONS:
@@ -446,10 +391,8 @@ public class PhysicalFunctionImpl extends AbstractFunctionImpl implements Physic
 		switch (featureID) {
 			case PaPackage.PHYSICAL_FUNCTION__OWNED_PHYSICAL_FUNCTION_PKGS:
 				return ownedPhysicalFunctionPkgs != null && !ownedPhysicalFunctionPkgs.isEmpty();
-			case PaPackage.PHYSICAL_FUNCTION__ALLOCATOR_PHYSICAL_ACTORS:
-				return !getAllocatorPhysicalActors().isEmpty();
-			case PaPackage.PHYSICAL_FUNCTION__ALLOCATOR_PHYSICAL_COMPONENTS:
-				return !getAllocatorPhysicalComponents().isEmpty();
+			case PaPackage.PHYSICAL_FUNCTION__ALLOCATING_PHYSICAL_COMPONENTS:
+				return !getAllocatingPhysicalComponents().isEmpty();
 			case PaPackage.PHYSICAL_FUNCTION__REALIZED_LOGICAL_FUNCTIONS:
 				return !getRealizedLogicalFunctions().isEmpty();
 			case PaPackage.PHYSICAL_FUNCTION__CONTAINED_PHYSICAL_FUNCTIONS:

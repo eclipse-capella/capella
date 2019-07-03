@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.polarsys.capella.core.data.pa.deployment.util;
 
-import java.util.List;
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
@@ -28,7 +26,6 @@ import org.polarsys.capella.core.data.capellacore.Structure;
 import org.polarsys.capella.core.data.cs.AbstractDeploymentLink;
 import org.polarsys.capella.core.data.cs.DeployableElement;
 import org.polarsys.capella.core.data.cs.DeploymentTarget;
-import org.polarsys.capella.core.data.pa.deployment.*;
 import org.polarsys.capella.core.data.pa.deployment.AbstractPhysicalInstance;
 import org.polarsys.capella.core.data.pa.deployment.ComponentInstance;
 import org.polarsys.capella.core.data.pa.deployment.ConnectionInstance;

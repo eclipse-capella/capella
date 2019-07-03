@@ -1515,13 +1515,22 @@ public interface CapellacommonPackage extends EPackage {
 	int CAPABILITY_REALIZATION_INVOLVED_ELEMENT__INVOLVING_INVOLVEMENTS = CapellacorePackage.INVOLVED_ELEMENT__INVOLVING_INVOLVEMENTS;
 
 	/**
-	 * The feature id for the '<em><b>Involving Capability Realization Involvements</b></em>' reference list.
+	 * The feature id for the '<em><b>Capability Realization Involvements</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY_REALIZATION_INVOLVED_ELEMENT__INVOLVING_CAPABILITY_REALIZATION_INVOLVEMENTS = CapellacorePackage.INVOLVED_ELEMENT_FEATURE_COUNT + 0;
+	int CAPABILITY_REALIZATION_INVOLVED_ELEMENT__CAPABILITY_REALIZATION_INVOLVEMENTS = CapellacorePackage.INVOLVED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Involving Capability Realizations</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_REALIZATION_INVOLVED_ELEMENT__INVOLVING_CAPABILITY_REALIZATIONS = CapellacorePackage.INVOLVED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Capability Realization Involved Element</em>' class.
@@ -1530,7 +1539,7 @@ public interface CapellacommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT = CapellacorePackage.INVOLVED_ELEMENT_FEATURE_COUNT + 1;
+	int CAPABILITY_REALIZATION_INVOLVED_ELEMENT_FEATURE_COUNT = CapellacorePackage.INVOLVED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.polarsys.capella.core.data.capellacommon.impl.StateMachineImpl <em>State Machine</em>}' class.
@@ -8082,15 +8091,26 @@ public interface CapellacommonPackage extends EPackage {
 	EClass getCapabilityRealizationInvolvedElement();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvedElement#getInvolvingCapabilityRealizationInvolvements <em>Involving Capability Realization Involvements</em>}'.
+	 * Returns the meta object for the reference list '{@link org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvedElement#getCapabilityRealizationInvolvements <em>Capability Realization Involvements</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Involving Capability Realization Involvements</em>'.
-	 * @see org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvedElement#getInvolvingCapabilityRealizationInvolvements()
+	 * @return the meta object for the reference list '<em>Capability Realization Involvements</em>'.
+	 * @see org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvedElement#getCapabilityRealizationInvolvements()
 	 * @see #getCapabilityRealizationInvolvedElement()
 	 * @generated
 	 */
-	EReference getCapabilityRealizationInvolvedElement_InvolvingCapabilityRealizationInvolvements();
+	EReference getCapabilityRealizationInvolvedElement_CapabilityRealizationInvolvements();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvedElement#getInvolvingCapabilityRealizations <em>Involving Capability Realizations</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Involving Capability Realizations</em>'.
+	 * @see org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvedElement#getInvolvingCapabilityRealizations()
+	 * @see #getCapabilityRealizationInvolvedElement()
+	 * @generated
+	 */
+	EReference getCapabilityRealizationInvolvedElement_InvolvingCapabilityRealizations();
 
 	/**
 	 * Returns the meta object for class '{@link org.polarsys.capella.core.data.capellacommon.StateMachine <em>State Machine</em>}'.
@@ -8907,12 +8927,20 @@ public interface CapellacommonPackage extends EPackage {
 		EClass CAPABILITY_REALIZATION_INVOLVED_ELEMENT = eINSTANCE.getCapabilityRealizationInvolvedElement();
 
 		/**
-		 * The meta object literal for the '<em><b>Involving Capability Realization Involvements</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Capability Realization Involvements</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CAPABILITY_REALIZATION_INVOLVED_ELEMENT__INVOLVING_CAPABILITY_REALIZATION_INVOLVEMENTS = eINSTANCE.getCapabilityRealizationInvolvedElement_InvolvingCapabilityRealizationInvolvements();
+		EReference CAPABILITY_REALIZATION_INVOLVED_ELEMENT__CAPABILITY_REALIZATION_INVOLVEMENTS = eINSTANCE.getCapabilityRealizationInvolvedElement_CapabilityRealizationInvolvements();
+
+		/**
+		 * The meta object literal for the '<em><b>Involving Capability Realizations</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CAPABILITY_REALIZATION_INVOLVED_ELEMENT__INVOLVING_CAPABILITY_REALIZATIONS = eINSTANCE.getCapabilityRealizationInvolvedElement_InvolvingCapabilityRealizations();
 
 		/**
 		 * The meta object literal for the '{@link org.polarsys.capella.core.data.capellacommon.impl.StateMachineImpl <em>State Machine</em>}' class.

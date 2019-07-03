@@ -17,7 +17,6 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.polarsys.capella.common.lib.IdGenerator;
-import org.polarsys.capella.core.data.interaction.*;
 import org.polarsys.capella.core.data.interaction.AbstractCapabilityExtend;
 import org.polarsys.capella.core.data.interaction.AbstractCapabilityExtensionPoint;
 import org.polarsys.capella.core.data.interaction.AbstractCapabilityGeneralization;
@@ -53,6 +52,7 @@ import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.capella.core.data.interaction.ScenarioKind;
 import org.polarsys.capella.core.data.interaction.ScenarioRealization;
 import org.polarsys.capella.core.data.interaction.SequenceMessage;
+import org.polarsys.capella.core.data.interaction.SequenceMessageValuation;
 import org.polarsys.capella.core.data.interaction.StateFragment;
 
 /**

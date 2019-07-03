@@ -15,20 +15,12 @@ import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.command.Command;
-
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.emf.edit.command.CommandParameter;
-
 import org.eclipse.emf.edit.command.CopyCommand.Helper;
-
 import org.eclipse.emf.edit.domain.EditingDomain;
-
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -38,17 +30,12 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
-
 import org.polarsys.capella.common.libraries.LibrariesFactory;
 import org.polarsys.capella.common.libraries.LibrariesPackage;
 import org.polarsys.capella.common.libraries.LibraryAbstractElement;
-
 import org.polarsys.capella.common.model.copypaste.SharedInitializeCopyCommand;
-
 import org.polarsys.kitalpha.emde.model.EmdePackage;
-
 import org.polarsys.kitalpha.emde.model.edit.provider.ExtensibleElementItemProvider;
 import org.polarsys.kitalpha.emde.model.edit.provider.NewChildDescriptorHelper;
 

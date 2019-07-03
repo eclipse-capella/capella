@@ -13,9 +13,7 @@
 package org.polarsys.capella.core.data.fa;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.polarsys.capella.core.data.capellacore.Constraint;
-
 import org.polarsys.capella.core.data.information.ExchangeItem;
 
 

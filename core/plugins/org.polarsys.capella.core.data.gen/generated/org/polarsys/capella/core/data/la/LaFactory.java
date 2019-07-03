@@ -111,15 +111,6 @@ public interface LaFactory extends EFactory {
 	SystemAnalysisRealization createSystemAnalysisRealization();
 
 	/**
-	 * Returns a new object of class '<em>System Realization</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>System Realization</em>'.
-	 * @generated
-	 */
-	SystemRealization createSystemRealization();
-
-	/**
 	 * Returns a new object of class '<em>Context Interface Realization</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -127,42 +118,6 @@ public interface LaFactory extends EFactory {
 	 * @generated
 	 */
 	ContextInterfaceRealization createContextInterfaceRealization();
-
-	/**
-	 * Returns a new object of class '<em>Logical Actor Pkg</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Logical Actor Pkg</em>'.
-	 * @generated
-	 */
-	LogicalActorPkg createLogicalActorPkg();
-
-	/**
-	 * Returns a new object of class '<em>Logical Actor</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Logical Actor</em>'.
-	 * @generated
-	 */
-	LogicalActor createLogicalActor();
-
-	/**
-	 * Returns a new object of class '<em>System Actor Realization</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>System Actor Realization</em>'.
-	 * @generated
-	 */
-	SystemActorRealization createSystemActorRealization();
-
-	/**
-	 * Returns a new object of class '<em>Logical Context</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Logical Context</em>'.
-	 * @generated
-	 */
-	LogicalContext createLogicalContext();
 
 	/**
 	 * Returns the package supported by this factory.
@@ -244,33 +199,6 @@ public interface LaFactory extends EFactory {
 	 * @generated
 	 */
 	CapabilityRealizationPkg createCapabilityRealizationPkg(String name_p);
-
-	/**
-	 * Creates class and sets its name
-	 * (This method comes from a customization of the standard EMF generator)
-	 *
-	 * @param name_p : default name of created element
-	 * @generated
-	 */
-	LogicalActorPkg createLogicalActorPkg(String name_p);
-
-	/**
-	 * Creates class and sets its name
-	 * (This method comes from a customization of the standard EMF generator)
-	 *
-	 * @param name_p : default name of created element
-	 * @generated
-	 */
-	LogicalActor createLogicalActor(String name_p);
-
-	/**
-	 * Creates class and sets its name
-	 * (This method comes from a customization of the standard EMF generator)
-	 *
-	 * @param name_p : default name of created element
-	 * @generated
-	 */
-	LogicalContext createLogicalContext(String name_p);
 
 	//begin-capella-code
 	//end-capella-code

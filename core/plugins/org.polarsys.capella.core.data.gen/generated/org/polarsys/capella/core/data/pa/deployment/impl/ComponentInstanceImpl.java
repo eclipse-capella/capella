@@ -25,10 +25,8 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-import org.polarsys.capella.common.data.modellingcore.AbstractConstraint;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.common.model.helpers.IHelper;
@@ -37,7 +35,7 @@ import org.polarsys.capella.core.data.cs.AbstractDeploymentLink;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.DeployableElement;
 import org.polarsys.capella.core.data.cs.DeploymentTarget;
-import org.polarsys.capella.core.data.pa.AbstractPhysicalComponent;
+import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.deployment.AbstractPhysicalInstance;
 import org.polarsys.capella.core.data.pa.deployment.ComponentInstance;
 import org.polarsys.capella.core.data.pa.deployment.DeploymentPackage;
@@ -125,7 +123,7 @@ public class ComponentInstanceImpl extends AbstractPhysicalInstanceImpl implemen
 	 * @generated
 	 * @ordered
 	 */
-	protected AbstractPhysicalComponent type;
+	protected PhysicalComponent type;
 
 
 
@@ -370,11 +368,11 @@ public class ComponentInstanceImpl extends AbstractPhysicalInstanceImpl implemen
 	 * @generated
 	 */
 
-	public AbstractPhysicalComponent getType() {
+	public PhysicalComponent getType() {
 
 		if (type != null && type.eIsProxy()) {
 			InternalEObject oldType = (InternalEObject)type;
-			type = (AbstractPhysicalComponent)eResolveProxy(oldType);
+			type = (PhysicalComponent)eResolveProxy(oldType);
 			if (type != oldType) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, DeploymentPackage.COMPONENT_INSTANCE__TYPE, oldType, type));
@@ -390,7 +388,7 @@ public class ComponentInstanceImpl extends AbstractPhysicalInstanceImpl implemen
 	 * @generated
 	 */
 
-	public AbstractPhysicalComponent basicGetType() {
+	public PhysicalComponent basicGetType() {
 
 		return type;
 	}
@@ -403,17 +401,14 @@ public class ComponentInstanceImpl extends AbstractPhysicalInstanceImpl implemen
 	 * @generated
 	 */
 
-	public void setType(AbstractPhysicalComponent newType) {
+	public void setType(PhysicalComponent newType) {
 
-		AbstractPhysicalComponent oldType = type;
+		PhysicalComponent oldType = type;
 		type = newType;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, DeploymentPackage.COMPONENT_INSTANCE__TYPE, oldType, type));
 
 	}
-
-
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -479,7 +474,7 @@ public class ComponentInstanceImpl extends AbstractPhysicalInstanceImpl implemen
 				getOwnedInstanceDeploymentLinks().addAll((Collection<? extends InstanceDeploymentLink>)newValue);
 				return;
 			case DeploymentPackage.COMPONENT_INSTANCE__TYPE:
-					setType((AbstractPhysicalComponent)newValue);
+					setType((PhysicalComponent)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -504,7 +499,7 @@ public class ComponentInstanceImpl extends AbstractPhysicalInstanceImpl implemen
 				getOwnedInstanceDeploymentLinks().clear();
 				return;
 			case DeploymentPackage.COMPONENT_INSTANCE__TYPE:
-				setType((AbstractPhysicalComponent)null);
+				setType((PhysicalComponent)null);
 				return;
 		}
 		super.eUnset(featureID);

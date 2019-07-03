@@ -17,22 +17,16 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.polarsys.capella.common.lib.IdGenerator;
-import org.polarsys.capella.core.data.pa.*;
-import org.polarsys.capella.core.data.pa.LogicalActorRealization;
 import org.polarsys.capella.core.data.pa.LogicalArchitectureRealization;
-import org.polarsys.capella.core.data.pa.LogicalComponentRealization;
 import org.polarsys.capella.core.data.pa.LogicalInterfaceRealization;
 import org.polarsys.capella.core.data.pa.PaFactory;
 import org.polarsys.capella.core.data.pa.PaPackage;
-import org.polarsys.capella.core.data.pa.PhysicalActor;
-import org.polarsys.capella.core.data.pa.PhysicalActorPkg;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecturePkg;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentKind;
 import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
 import org.polarsys.capella.core.data.pa.PhysicalComponentPkg;
-import org.polarsys.capella.core.data.pa.PhysicalContext;
 import org.polarsys.capella.core.data.pa.PhysicalFunction;
 import org.polarsys.capella.core.data.pa.PhysicalFunctionPkg;
 import org.polarsys.capella.core.data.pa.PhysicalNode;
@@ -86,15 +80,10 @@ public class PaFactoryImpl extends EFactoryImpl implements PaFactory {
 			case PaPackage.PHYSICAL_FUNCTION: return createPhysicalFunction();
 			case PaPackage.PHYSICAL_FUNCTION_PKG: return createPhysicalFunctionPkg();
 			case PaPackage.PHYSICAL_COMPONENT: return createPhysicalComponent();
-			case PaPackage.PHYSICAL_ACTOR_PKG: return createPhysicalActorPkg();
 			case PaPackage.PHYSICAL_COMPONENT_PKG: return createPhysicalComponentPkg();
-			case PaPackage.PHYSICAL_ACTOR: return createPhysicalActor();
-			case PaPackage.LOGICAL_ACTOR_REALIZATION: return createLogicalActorRealization();
 			case PaPackage.PHYSICAL_NODE: return createPhysicalNode();
 			case PaPackage.LOGICAL_ARCHITECTURE_REALIZATION: return createLogicalArchitectureRealization();
-			case PaPackage.LOGICAL_COMPONENT_REALIZATION: return createLogicalComponentRealization();
 			case PaPackage.LOGICAL_INTERFACE_REALIZATION: return createLogicalInterfaceRealization();
-			case PaPackage.PHYSICAL_CONTEXT: return createPhysicalContext();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
 		}
@@ -219,22 +208,6 @@ public class PaFactoryImpl extends EFactoryImpl implements PaFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public PhysicalActorPkg createPhysicalActorPkg() {
-		PhysicalActorPkgImpl physicalActorPkg = new PhysicalActorPkgImpl();
-    //begin-capella-code
-
-    physicalActorPkg.setId(IdGenerator.createId());
-
-
-    //end-capella-code
-		return physicalActorPkg;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public PhysicalComponentPkg createPhysicalComponentPkg() {
 		PhysicalComponentPkgImpl physicalComponentPkg = new PhysicalComponentPkgImpl();
     //begin-capella-code
@@ -244,38 +217,6 @@ public class PaFactoryImpl extends EFactoryImpl implements PaFactory {
 
     //end-capella-code
 		return physicalComponentPkg;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public PhysicalActor createPhysicalActor() {
-		PhysicalActorImpl physicalActor = new PhysicalActorImpl();
-    //begin-capella-code
-
-    physicalActor.setId(IdGenerator.createId());
-
-
-    //end-capella-code
-		return physicalActor;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public LogicalActorRealization createLogicalActorRealization() {
-		LogicalActorRealizationImpl logicalActorRealization = new LogicalActorRealizationImpl();
-    //begin-capella-code
-
-    logicalActorRealization.setId(IdGenerator.createId());
-
-
-    //end-capella-code
-		return logicalActorRealization;
 	}
 
 	/**
@@ -315,22 +256,6 @@ public class PaFactoryImpl extends EFactoryImpl implements PaFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public LogicalComponentRealization createLogicalComponentRealization() {
-		LogicalComponentRealizationImpl logicalComponentRealization = new LogicalComponentRealizationImpl();
-    //begin-capella-code
-
-    logicalComponentRealization.setId(IdGenerator.createId());
-
-
-    //end-capella-code
-		return logicalComponentRealization;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public LogicalInterfaceRealization createLogicalInterfaceRealization() {
 		LogicalInterfaceRealizationImpl logicalInterfaceRealization = new LogicalInterfaceRealizationImpl();
     //begin-capella-code
@@ -340,22 +265,6 @@ public class PaFactoryImpl extends EFactoryImpl implements PaFactory {
 
     //end-capella-code
 		return logicalInterfaceRealization;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public PhysicalContext createPhysicalContext() {
-		PhysicalContextImpl physicalContext = new PhysicalContextImpl();
-    //begin-capella-code
-
-    physicalContext.setId(IdGenerator.createId());
-
-
-    //end-capella-code
-		return physicalContext;
 	}
 
 	/**
@@ -490,19 +399,6 @@ public class PaFactoryImpl extends EFactoryImpl implements PaFactory {
 	 * @param name_p : default name of created element
 	 * @generated
 	 */
-	public PhysicalActorPkg createPhysicalActorPkg(String name_p) {
-	  PhysicalActorPkg physicalActorPkg = createPhysicalActorPkg();
-		physicalActorPkg.setName(name_p);	  
-		return physicalActorPkg;
-	}
-
-	/**
-	 * Creates class and sets its name
-	 * (This method comes from a customization of the standard EMF generator)
-	 *
-	 * @param name_p : default name of created element
-	 * @generated
-	 */
 	public PhysicalComponentPkg createPhysicalComponentPkg(String name_p) {
 	  PhysicalComponentPkg physicalComponentPkg = createPhysicalComponentPkg();
 		physicalComponentPkg.setName(name_p);	  
@@ -516,36 +412,10 @@ public class PaFactoryImpl extends EFactoryImpl implements PaFactory {
 	 * @param name_p : default name of created element
 	 * @generated
 	 */
-	public PhysicalActor createPhysicalActor(String name_p) {
-	  PhysicalActor physicalActor = createPhysicalActor();
-		physicalActor.setName(name_p);	  
-		return physicalActor;
-	}
-
-	/**
-	 * Creates class and sets its name
-	 * (This method comes from a customization of the standard EMF generator)
-	 *
-	 * @param name_p : default name of created element
-	 * @generated
-	 */
 	public PhysicalNode createPhysicalNode(String name_p) {
 	  PhysicalNode physicalNode = createPhysicalNode();
 		physicalNode.setName(name_p);	  
 		return physicalNode;
-	}
-
-	/**
-	 * Creates class and sets its name
-	 * (This method comes from a customization of the standard EMF generator)
-	 *
-	 * @param name_p : default name of created element
-	 * @generated
-	 */
-	public PhysicalContext createPhysicalContext(String name_p) {
-	  PhysicalContext physicalContext = createPhysicalContext();
-		physicalContext.setName(name_p);	  
-		return physicalContext;
 	}
 
 	//begin-capella-code

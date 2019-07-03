@@ -280,10 +280,7 @@ public class LogicalArchitectureItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(LaPackage.Literals.LOGICAL_ARCHITECTURE__OWNED_LOGICAL_CONTEXT);
-			childrenFeatures.add(LaPackage.Literals.LOGICAL_ARCHITECTURE__OWNED_LOGICAL_COMPONENT);
 			childrenFeatures.add(LaPackage.Literals.LOGICAL_ARCHITECTURE__OWNED_LOGICAL_COMPONENT_PKG);
-			childrenFeatures.add(LaPackage.Literals.LOGICAL_ARCHITECTURE__OWNED_LOGICAL_ACTOR_PKG);
 			childrenFeatures.add(LaPackage.Literals.LOGICAL_ARCHITECTURE__OWNED_SYSTEM_ANALYSIS_REALIZATIONS);
 		}
 		return childrenFeatures;
@@ -349,10 +346,7 @@ public class LogicalArchitectureItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(LogicalArchitecture.class)) {
-			case LaPackage.LOGICAL_ARCHITECTURE__OWNED_LOGICAL_CONTEXT:
-			case LaPackage.LOGICAL_ARCHITECTURE__OWNED_LOGICAL_COMPONENT:
 			case LaPackage.LOGICAL_ARCHITECTURE__OWNED_LOGICAL_COMPONENT_PKG:
-			case LaPackage.LOGICAL_ARCHITECTURE__OWNED_LOGICAL_ACTOR_PKG:
 			case LaPackage.LOGICAL_ARCHITECTURE__OWNED_SYSTEM_ANALYSIS_REALIZATIONS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
@@ -373,44 +367,8 @@ public class LogicalArchitectureItemProvider
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
-                        (LaPackage.Literals.LOGICAL_ARCHITECTURE__OWNED_LOGICAL_CONTEXT,
-                         LaFactory.eINSTANCE.createLogicalContext());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (LaPackage.Literals.LOGICAL_ARCHITECTURE__OWNED_LOGICAL_COMPONENT,
-                         LaFactory.eINSTANCE.createLogicalComponent());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
                         (LaPackage.Literals.LOGICAL_ARCHITECTURE__OWNED_LOGICAL_COMPONENT_PKG,
                          LaFactory.eINSTANCE.createLogicalComponentPkg());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (LaPackage.Literals.LOGICAL_ARCHITECTURE__OWNED_LOGICAL_ACTOR_PKG,
-                         LaFactory.eINSTANCE.createLogicalActorPkg());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
                     }

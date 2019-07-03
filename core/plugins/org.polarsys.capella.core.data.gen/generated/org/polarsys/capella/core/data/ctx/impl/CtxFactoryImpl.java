@@ -16,28 +16,23 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.polarsys.capella.common.lib.IdGenerator;
-import org.polarsys.capella.core.data.ctx.Actor;
-import org.polarsys.capella.core.data.ctx.ActorCapabilityInvolvement;
-import org.polarsys.capella.core.data.ctx.ActorMissionInvolvement;
-import org.polarsys.capella.core.data.ctx.ActorPkg;
 import org.polarsys.capella.core.data.ctx.Capability;
 import org.polarsys.capella.core.data.ctx.CapabilityExploitation;
+import org.polarsys.capella.core.data.ctx.CapabilityInvolvement;
 import org.polarsys.capella.core.data.ctx.CapabilityPkg;
 import org.polarsys.capella.core.data.ctx.CtxFactory;
 import org.polarsys.capella.core.data.ctx.CtxPackage;
 import org.polarsys.capella.core.data.ctx.Mission;
+import org.polarsys.capella.core.data.ctx.MissionInvolvement;
 import org.polarsys.capella.core.data.ctx.MissionPkg;
-import org.polarsys.capella.core.data.ctx.OperationalActorRealization;
 import org.polarsys.capella.core.data.ctx.OperationalAnalysisRealization;
-import org.polarsys.capella.core.data.ctx.OperationalEntityRealization;
 import org.polarsys.capella.core.data.ctx.SystemAnalysis;
-import org.polarsys.capella.core.data.ctx.SystemCapabilityInvolvement;
 import org.polarsys.capella.core.data.ctx.SystemCommunication;
 import org.polarsys.capella.core.data.ctx.SystemCommunicationHook;
-import org.polarsys.capella.core.data.ctx.SystemContext;
+import org.polarsys.capella.core.data.ctx.SystemComponent;
+import org.polarsys.capella.core.data.ctx.SystemComponentPkg;
 import org.polarsys.capella.core.data.ctx.SystemFunction;
 import org.polarsys.capella.core.data.ctx.SystemFunctionPkg;
-import org.polarsys.capella.core.data.ctx.SystemMissionInvolvement;
 
 /**
  * <!-- begin-user-doc -->
@@ -84,26 +79,20 @@ public class CtxFactoryImpl extends EFactoryImpl implements CtxFactory {
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case CtxPackage.SYSTEM_ANALYSIS: return createSystemAnalysis();
-			case CtxPackage.SYSTEM: return createSystem();
 			case CtxPackage.SYSTEM_FUNCTION: return createSystemFunction();
 			case CtxPackage.SYSTEM_FUNCTION_PKG: return createSystemFunctionPkg();
 			case CtxPackage.SYSTEM_COMMUNICATION_HOOK: return createSystemCommunicationHook();
 			case CtxPackage.SYSTEM_COMMUNICATION: return createSystemCommunication();
-			case CtxPackage.ACTOR: return createActor();
-			case CtxPackage.ACTOR_CAPABILITY_INVOLVEMENT: return createActorCapabilityInvolvement();
-			case CtxPackage.ACTOR_MISSION_INVOLVEMENT: return createActorMissionInvolvement();
-			case CtxPackage.ACTOR_PKG: return createActorPkg();
+			case CtxPackage.CAPABILITY_INVOLVEMENT: return createCapabilityInvolvement();
+			case CtxPackage.MISSION_INVOLVEMENT: return createMissionInvolvement();
 			case CtxPackage.MISSION: return createMission();
 			case CtxPackage.MISSION_PKG: return createMissionPkg();
-			case CtxPackage.SYSTEM_MISSION_INVOLVEMENT: return createSystemMissionInvolvement();
 			case CtxPackage.CAPABILITY: return createCapability();
 			case CtxPackage.CAPABILITY_EXPLOITATION: return createCapabilityExploitation();
 			case CtxPackage.CAPABILITY_PKG: return createCapabilityPkg();
-			case CtxPackage.SYSTEM_CAPABILITY_INVOLVEMENT: return createSystemCapabilityInvolvement();
-			case CtxPackage.OPERATIONAL_ACTOR_REALIZATION: return createOperationalActorRealization();
 			case CtxPackage.OPERATIONAL_ANALYSIS_REALIZATION: return createOperationalAnalysisRealization();
-			case CtxPackage.OPERATIONAL_ENTITY_REALIZATION: return createOperationalEntityRealization();
-			case CtxPackage.SYSTEM_CONTEXT: return createSystemContext();
+			case CtxPackage.SYSTEM_COMPONENT_PKG: return createSystemComponentPkg();
+			case CtxPackage.SYSTEM_COMPONENT: return createSystemComponent();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
 		}
@@ -123,22 +112,6 @@ public class CtxFactoryImpl extends EFactoryImpl implements CtxFactory {
 
     //end-capella-code
 		return systemAnalysis;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public org.polarsys.capella.core.data.ctx.System createSystem() {
-		SystemImpl system = new SystemImpl();
-    //begin-capella-code
-
-    system.setId(IdGenerator.createId());
-
-
-    //end-capella-code
-		return system;
 	}
 
 	/**
@@ -210,15 +183,15 @@ public class CtxFactoryImpl extends EFactoryImpl implements CtxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Actor createActor() {
-		ActorImpl actor = new ActorImpl();
+	public CapabilityInvolvement createCapabilityInvolvement() {
+		CapabilityInvolvementImpl capabilityInvolvement = new CapabilityInvolvementImpl();
     //begin-capella-code
 
-    actor.setId(IdGenerator.createId());
+    capabilityInvolvement.setId(IdGenerator.createId());
 
 
     //end-capella-code
-		return actor;
+		return capabilityInvolvement;
 	}
 
 	/**
@@ -226,47 +199,15 @@ public class CtxFactoryImpl extends EFactoryImpl implements CtxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ActorCapabilityInvolvement createActorCapabilityInvolvement() {
-		ActorCapabilityInvolvementImpl actorCapabilityInvolvement = new ActorCapabilityInvolvementImpl();
+	public MissionInvolvement createMissionInvolvement() {
+		MissionInvolvementImpl missionInvolvement = new MissionInvolvementImpl();
     //begin-capella-code
 
-    actorCapabilityInvolvement.setId(IdGenerator.createId());
+    missionInvolvement.setId(IdGenerator.createId());
 
 
     //end-capella-code
-		return actorCapabilityInvolvement;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ActorMissionInvolvement createActorMissionInvolvement() {
-		ActorMissionInvolvementImpl actorMissionInvolvement = new ActorMissionInvolvementImpl();
-    //begin-capella-code
-
-    actorMissionInvolvement.setId(IdGenerator.createId());
-
-
-    //end-capella-code
-		return actorMissionInvolvement;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ActorPkg createActorPkg() {
-		ActorPkgImpl actorPkg = new ActorPkgImpl();
-    //begin-capella-code
-
-    actorPkg.setId(IdGenerator.createId());
-
-
-    //end-capella-code
-		return actorPkg;
+		return missionInvolvement;
 	}
 
 	/**
@@ -299,22 +240,6 @@ public class CtxFactoryImpl extends EFactoryImpl implements CtxFactory {
 
     //end-capella-code
 		return missionPkg;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public SystemMissionInvolvement createSystemMissionInvolvement() {
-		SystemMissionInvolvementImpl systemMissionInvolvement = new SystemMissionInvolvementImpl();
-    //begin-capella-code
-
-    systemMissionInvolvement.setId(IdGenerator.createId());
-
-
-    //end-capella-code
-		return systemMissionInvolvement;
 	}
 
 	/**
@@ -370,38 +295,6 @@ public class CtxFactoryImpl extends EFactoryImpl implements CtxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SystemCapabilityInvolvement createSystemCapabilityInvolvement() {
-		SystemCapabilityInvolvementImpl systemCapabilityInvolvement = new SystemCapabilityInvolvementImpl();
-    //begin-capella-code
-
-    systemCapabilityInvolvement.setId(IdGenerator.createId());
-
-
-    //end-capella-code
-		return systemCapabilityInvolvement;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public OperationalActorRealization createOperationalActorRealization() {
-		OperationalActorRealizationImpl operationalActorRealization = new OperationalActorRealizationImpl();
-    //begin-capella-code
-
-    operationalActorRealization.setId(IdGenerator.createId());
-
-
-    //end-capella-code
-		return operationalActorRealization;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public OperationalAnalysisRealization createOperationalAnalysisRealization() {
 		OperationalAnalysisRealizationImpl operationalAnalysisRealization = new OperationalAnalysisRealizationImpl();
     //begin-capella-code
@@ -418,15 +311,15 @@ public class CtxFactoryImpl extends EFactoryImpl implements CtxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OperationalEntityRealization createOperationalEntityRealization() {
-		OperationalEntityRealizationImpl operationalEntityRealization = new OperationalEntityRealizationImpl();
+	public SystemComponentPkg createSystemComponentPkg() {
+		SystemComponentPkgImpl systemComponentPkg = new SystemComponentPkgImpl();
     //begin-capella-code
 
-    operationalEntityRealization.setId(IdGenerator.createId());
+    systemComponentPkg.setId(IdGenerator.createId());
 
 
     //end-capella-code
-		return operationalEntityRealization;
+		return systemComponentPkg;
 	}
 
 	/**
@@ -434,15 +327,15 @@ public class CtxFactoryImpl extends EFactoryImpl implements CtxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SystemContext createSystemContext() {
-		SystemContextImpl systemContext = new SystemContextImpl();
+	public SystemComponent createSystemComponent() {
+		SystemComponentImpl systemComponent = new SystemComponentImpl();
     //begin-capella-code
 
-    systemContext.setId(IdGenerator.createId());
+    systemComponent.setId(IdGenerator.createId());
 
 
     //end-capella-code
-		return systemContext;
+		return systemComponent;
 	}
 
 	/**
@@ -485,19 +378,6 @@ public class CtxFactoryImpl extends EFactoryImpl implements CtxFactory {
 	 * @param name_p : default name of created element
 	 * @generated
 	 */
-	public org.polarsys.capella.core.data.ctx.System createSystem(String name_p) {
-	  org.polarsys.capella.core.data.ctx.System system = createSystem();
-		system.setName(name_p);	  
-		return system;
-	}
-
-	/**
-	 * Creates class and sets its name
-	 * (This method comes from a customization of the standard EMF generator)
-	 *
-	 * @param name_p : default name of created element
-	 * @generated
-	 */
 	public SystemFunction createSystemFunction(String name_p) {
 	  SystemFunction systemFunction = createSystemFunction();
 		systemFunction.setName(name_p);	  
@@ -528,32 +408,6 @@ public class CtxFactoryImpl extends EFactoryImpl implements CtxFactory {
 	  SystemCommunicationHook systemCommunicationHook = createSystemCommunicationHook();
 		systemCommunicationHook.setName(name_p);	  
 		return systemCommunicationHook;
-	}
-
-	/**
-	 * Creates class and sets its name
-	 * (This method comes from a customization of the standard EMF generator)
-	 *
-	 * @param name_p : default name of created element
-	 * @generated
-	 */
-	public Actor createActor(String name_p) {
-	  Actor actor = createActor();
-		actor.setName(name_p);	  
-		return actor;
-	}
-
-	/**
-	 * Creates class and sets its name
-	 * (This method comes from a customization of the standard EMF generator)
-	 *
-	 * @param name_p : default name of created element
-	 * @generated
-	 */
-	public ActorPkg createActorPkg(String name_p) {
-	  ActorPkg actorPkg = createActorPkg();
-		actorPkg.setName(name_p);	  
-		return actorPkg;
 	}
 
 	/**
@@ -615,10 +469,23 @@ public class CtxFactoryImpl extends EFactoryImpl implements CtxFactory {
 	 * @param name_p : default name of created element
 	 * @generated
 	 */
-	public SystemContext createSystemContext(String name_p) {
-	  SystemContext systemContext = createSystemContext();
-		systemContext.setName(name_p);	  
-		return systemContext;
+	public SystemComponentPkg createSystemComponentPkg(String name_p) {
+	  SystemComponentPkg systemComponentPkg = createSystemComponentPkg();
+		systemComponentPkg.setName(name_p);	  
+		return systemComponentPkg;
+	}
+
+	/**
+	 * Creates class and sets its name
+	 * (This method comes from a customization of the standard EMF generator)
+	 *
+	 * @param name_p : default name of created element
+	 * @generated
+	 */
+	public SystemComponent createSystemComponent(String name_p) {
+	  SystemComponent systemComponent = createSystemComponent();
+		systemComponent.setName(name_p);	  
+		return systemComponent;
 	}
 
 	//begin-capella-code

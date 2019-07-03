@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.polarsys.capella.core.data.fa.util;
 
-import java.util.List;
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
@@ -57,7 +55,6 @@ import org.polarsys.capella.core.data.capellacore.Relationship;
 import org.polarsys.capella.core.data.capellacore.Structure;
 import org.polarsys.capella.core.data.capellacore.Type;
 import org.polarsys.capella.core.data.capellacore.TypedElement;
-import org.polarsys.capella.core.data.fa.*;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.AbstractFunctionAllocation;
 import org.polarsys.capella.core.data.fa.AbstractFunctionalArchitecture;
@@ -75,6 +72,7 @@ import org.polarsys.capella.core.data.fa.ComponentFunctionalAllocation;
 import org.polarsys.capella.core.data.fa.ComponentPort;
 import org.polarsys.capella.core.data.fa.ComponentPortAllocation;
 import org.polarsys.capella.core.data.fa.ComponentPortAllocationEnd;
+import org.polarsys.capella.core.data.fa.ControlNode;
 import org.polarsys.capella.core.data.fa.ExchangeCategory;
 import org.polarsys.capella.core.data.fa.ExchangeContainment;
 import org.polarsys.capella.core.data.fa.ExchangeLink;
@@ -89,15 +87,19 @@ import org.polarsys.capella.core.data.fa.FunctionRealization;
 import org.polarsys.capella.core.data.fa.FunctionSpecification;
 import org.polarsys.capella.core.data.fa.FunctionalChain;
 import org.polarsys.capella.core.data.fa.FunctionalChainInvolvement;
+import org.polarsys.capella.core.data.fa.FunctionalChainInvolvementFunction;
+import org.polarsys.capella.core.data.fa.FunctionalChainInvolvementLink;
 import org.polarsys.capella.core.data.fa.FunctionalChainRealization;
 import org.polarsys.capella.core.data.fa.FunctionalChainReference;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.data.fa.FunctionalExchangeRealization;
 import org.polarsys.capella.core.data.fa.FunctionalExchangeSpecification;
+import org.polarsys.capella.core.data.fa.ReferenceHierarchyContext;
+import org.polarsys.capella.core.data.fa.SequenceLink;
+import org.polarsys.capella.core.data.fa.SequenceLinkEnd;
 import org.polarsys.capella.core.data.information.AbstractEventOperation;
 import org.polarsys.capella.core.data.information.AbstractInstance;
 import org.polarsys.capella.core.data.information.MultiplicityElement;
-import org.polarsys.capella.core.data.information.Partition;
 import org.polarsys.capella.core.data.information.Port;
 import org.polarsys.capella.core.data.information.Property;
 import org.polarsys.kitalpha.emde.model.Element;
@@ -718,22 +720,20 @@ public class FaSwitch<T> extends Switch<T> {
 				ComponentPort componentPort = (ComponentPort)theEObject;
 				T result = caseComponentPort(componentPort);
 				if (result == null) result = casePort(componentPort);
-				if (result == null) result = casePartition(componentPort);
 				if (result == null) result = caseInformationsExchanger(componentPort);
-				if (result == null) result = caseAbstractInstance(componentPort);
 				if (result == null) result = caseProperty(componentPort);
-				if (result == null) result = caseTraceableElement(componentPort);
-				if (result == null) result = casePublishableElement(componentPort);
 				if (result == null) result = caseFeature(componentPort);
 				if (result == null) result = caseTypedElement(componentPort);
 				if (result == null) result = caseMultiplicityElement(componentPort);
 				if (result == null) result = caseFinalizableElement(componentPort);
 				if (result == null) result = caseNamedElement(componentPort);
-				if (result == null) result = caseModelElement(componentPort);
-				if (result == null) result = caseExtensibleElement(componentPort);
 				if (result == null) result = caseCapellaElement(componentPort);
 				if (result == null) result = caseAbstractTypedElement(componentPort);
 				if (result == null) result = caseAbstractNamedElement(componentPort);
+				if (result == null) result = caseTraceableElement(componentPort);
+				if (result == null) result = casePublishableElement(componentPort);
+				if (result == null) result = caseModelElement(componentPort);
+				if (result == null) result = caseExtensibleElement(componentPort);
 				if (result == null) result = caseElement(componentPort);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -2195,21 +2195,6 @@ public class FaSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseInformationsExchanger(InformationsExchanger object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Partition</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Partition</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T casePartition(Partition object) {
 		return null;
 	}
 

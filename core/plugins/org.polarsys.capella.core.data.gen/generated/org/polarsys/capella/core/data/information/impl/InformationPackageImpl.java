@@ -62,8 +62,6 @@ import org.polarsys.capella.core.data.information.Operation;
 import org.polarsys.capella.core.data.information.OperationAllocation;
 import org.polarsys.capella.core.data.information.Parameter;
 import org.polarsys.capella.core.data.information.ParameterDirection;
-import org.polarsys.capella.core.data.information.Partition;
-import org.polarsys.capella.core.data.information.PartitionableElement;
 import org.polarsys.capella.core.data.information.PassingMode;
 import org.polarsys.capella.core.data.information.Port;
 import org.polarsys.capella.core.data.information.PortAllocation;
@@ -243,20 +241,6 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 	 * @generated
 	 */
 	private EClass unitEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass partitionableElementEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass partitionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1312,42 +1296,6 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getPartitionableElement() {
-		return partitionableElementEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getPartitionableElement_OwnedPartitions() {
-		return (EReference)partitionableElementEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getPartitionableElement_RepresentingPartitions() {
-		return (EReference)partitionableElementEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getPartition() {
-		return partitionEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getPort() {
 		return portEClass;
 	}
@@ -1886,12 +1834,6 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 
 		unitEClass = createEClass(UNIT);
 
-		partitionableElementEClass = createEClass(PARTITIONABLE_ELEMENT);
-		createEReference(partitionableElementEClass, PARTITIONABLE_ELEMENT__OWNED_PARTITIONS);
-		createEReference(partitionableElementEClass, PARTITIONABLE_ELEMENT__REPRESENTING_PARTITIONS);
-
-		partitionEClass = createEClass(PARTITION);
-
 		portEClass = createEClass(PORT);
 		createEReference(portEClass, PORT__INCOMING_PORT_REALIZATIONS);
 		createEReference(portEClass, PORT__OUTGOING_PORT_REALIZATIONS);
@@ -2027,8 +1969,6 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 		unionEClass.getESuperTypes().add(this.getClass_());
 		unionPropertyEClass.getESuperTypes().add(this.getProperty());
 		unitEClass.getESuperTypes().add(theCapellacorePackage.getNamedElement());
-		partitionableElementEClass.getESuperTypes().add(theCapellacorePackage.getClassifier());
-		partitionEClass.getESuperTypes().add(this.getAbstractInstance());
 		portEClass.getESuperTypes().add(theCapellacorePackage.getNamedElement());
 		portRealizationEClass.getESuperTypes().add(theCapellacorePackage.getAllocation());
 		portAllocationEClass.getESuperTypes().add(theCapellacorePackage.getAllocation());
@@ -2155,14 +2095,6 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 		initEReference(getUnionProperty_Qualifier(), theDatavaluePackage.getDataValue(), null, "qualifier", null, 0, -1, UnionProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(unitEClass, Unit.class, "Unit", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-
-		initEClass(partitionableElementEClass, PartitionableElement.class, "PartitionableElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(getPartitionableElement_OwnedPartitions(), this.getPartition(), null, "ownedPartitions", null, 0, -1, PartitionableElement.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getPartitionableElement_RepresentingPartitions(), this.getPartition(), null, "representingPartitions", null, 0, -1, PartitionableElement.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-
-		addEOperation(partitionableElementEClass, ecorePackage.getEBoolean(), "isDecomposed", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-
-		initEClass(partitionEClass, Partition.class, "Partition", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
 		initEClass(portEClass, Port.class, "Port", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEReference(getPort_IncomingPortRealizations(), this.getPortRealization(), this.getPortRealization_RealizedPort(), "incomingPortRealizations", null, 0, -1, Port.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
@@ -3285,46 +3217,6 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
-		  (partitionableElementEClass, 
-		   source, 
-		   new String[] {
-			 "description", "An element that can be structured into several partitions\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "system,logical,physical,epbs", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getPartitionableElement_OwnedPartitions(), 
-		   source, 
-		   new String[] {
-			 "description", "(automatically computed) list of partitions contained in this element\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getPartitionableElement_RepresentingPartitions(), 
-		   source, 
-		   new String[] {
-			 "description", "(automatically computed) the list of Partitions that are associated to this element\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (partitionEClass, 
-		   source, 
-		   new String[] {
-			 "description", "A grouping of any set of model elements based on a set of criteria.\r\n1. activity diagram: A grouping of activity nodes and edges. Partitions divide the nodes and edges to constrain and show a view of the contained nodes. Partitions can share contents. They often correspond to organizational units in a business model. They may be used to allocate characteristics or resources among the nodes of an activity.\r\n2. architecture: A set of related classifiers or packages at the same level of abstraction or across layers in a layered architecture. A partition represents a vertical slice through an architecture, whereas a layer represents a horizontal slice.\r\n[source: SysML glossary for SysML v1.0]\r\n", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
 		  (portEClass, 
 		   source, 
 		   new String[] {
@@ -4130,12 +4022,6 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 		   new String[] {
 		   });	
 		addAnnotation
-		  (getPartitionableElement_RepresentingPartitions(), 
-		   source, 
-		   new String[] {
-			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
 		  (getPort_OwnedProtocols(), 
 		   source, 
 		   new String[] {
@@ -4591,30 +4477,6 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 		   source, 
 		   new String[] {
 			 "Label", "Unit" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (partitionableElementEClass, 
-		   source, 
-		   new String[] {
-			 "Label", "PartitionableElement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getPartitionableElement_OwnedPartitions(), 
-		   source, 
-		   new String[] {
-			 "Label", "ownedParts" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getPartitionableElement_RepresentingPartitions(), 
-		   source, 
-		   new String[] {
-			 "Label", "parts" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (partitionEClass, 
-		   source, 
-		   new String[] {
-			 "Label", "PhysicalPartition" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (portEClass, 
@@ -5079,32 +4941,6 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 		   new String[] {
 			 "metaclass", "Class", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.Unit" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (partitionableElementEClass, 
-		   source, 
-		   new String[] {
-			 "metaclass", "StructuredClassifier" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getPartitionableElement_OwnedPartitions(), 
-		   source, 
-		   new String[] {
-			 "featureName", "ownedAttribute", //$NON-NLS-1$ //$NON-NLS-2$
-			 "featureOwner", "StructuredClassifier" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getPartitionableElement_RepresentingPartitions(), 
-		   source, 
-		   new String[] {
-			 "featureName", "part", //$NON-NLS-1$ //$NON-NLS-2$
-			 "featureOwner", "StructuredClassifier" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (partitionEClass, 
-		   source, 
-		   new String[] {
-			 "metaclass", "Property" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (portEClass, 
@@ -6032,40 +5868,6 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
-		  (partitionableElementEClass, 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "uml::StructuredClassifier", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getPartitionableElement_OwnedPartitions(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "uml::StructuredClassifier::ownedAttribute", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "Even though this reference is derived and transient, it is mapped, to a non-derived reference to simplify the transformation since the containment and derived references are inversed between MA and UML", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "uml::StructuredClassifier::owneddAttribute elements on which Partition stereotype or any stereotype that inherits from it is applied" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getPartitionableElement_RepresentingPartitions(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (partitionEClass, 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "uml::Property", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
 		  (portEClass, 
 		   source, 
 		   new String[] {
@@ -6537,20 +6339,6 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "viatra.expression", "ownedFeatures" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
-		  (getPartitionableElement_OwnedPartitions(), 
-		   source, 
-		   new String[] {
-			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
-			 "viatra.expression", "ownedFeatures" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getPartitionableElement_RepresentingPartitions(), 
-		   source, 
-		   new String[] {
-			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
-			 "viatra.expression", "typedElements" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
 		  (getPort_IncomingPortRealizations(), 
 		   source, 
 		   new String[] {
@@ -6827,16 +6615,6 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 		   });	
 		addAnnotation
 		  (getUnionProperty_Qualifier(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getPartitionableElement_OwnedPartitions(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getPartitionableElement_RepresentingPartitions(), 
 		   source, 
 		   new String[] {
 		   });

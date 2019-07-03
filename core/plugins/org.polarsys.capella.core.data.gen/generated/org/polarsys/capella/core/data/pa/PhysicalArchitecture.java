@@ -26,10 +26,7 @@ import org.polarsys.capella.core.data.la.LogicalArchitecture;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.polarsys.capella.core.data.pa.PhysicalArchitecture#getOwnedPhysicalContext <em>Owned Physical Context</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.pa.PhysicalArchitecture#getOwnedPhysicalComponent <em>Owned Physical Component</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.pa.PhysicalArchitecture#getOwnedPhysicalComponentPkg <em>Owned Physical Component Pkg</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.pa.PhysicalArchitecture#getOwnedPhysicalActorPkg <em>Owned Physical Actor Pkg</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.pa.PhysicalArchitecture#getContainedCapabilityRealizationPkg <em>Contained Capability Realization Pkg</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.pa.PhysicalArchitecture#getContainedPhysicalFunctionPkg <em>Contained Physical Function Pkg</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.pa.PhysicalArchitecture#getOwnedDeployments <em>Owned Deployments</em>}</li>
@@ -47,90 +44,6 @@ import org.polarsys.capella.core.data.la.LogicalArchitecture;
  * @generated
  */
 public interface PhysicalArchitecture extends ComponentArchitecture {
-
-
-
-
-
-	/**
-	 * Returns the value of the '<em><b>Owned Physical Context</b></em>' containment reference.
-
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Owned Physical Context</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Physical Context</em>' containment reference.
-	 * @see #setOwnedPhysicalContext(PhysicalContext)
-	 * @see org.polarsys.capella.core.data.pa.PaPackage#getPhysicalArchitecture_OwnedPhysicalContext()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the context is the set of (physical) parts that make the \"world\" at this abstraction level (the system part(s) and the external actor part(s))\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::packagedElement' explanation='none' constraints='uml::Package::packagedElement elements on which PhysicalContext stereotype or any stereotype that inherits from it is applied\r\nMultiplicity must be [0..1]'"
-	 * @generated
-	 */
-
-	PhysicalContext getOwnedPhysicalContext();
-
-
-
-
-	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.pa.PhysicalArchitecture#getOwnedPhysicalContext <em>Owned Physical Context</em>}' containment reference.
-
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Owned Physical Context</em>' containment reference.
-	 * @see #getOwnedPhysicalContext()
-	 * @generated
-	 */
-
-	void setOwnedPhysicalContext(PhysicalContext value);
-
-
-
-
-
-
-
-	/**
-	 * Returns the value of the '<em><b>Owned Physical Component</b></em>' containment reference.
-
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Owned Physical Component</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Physical Component</em>' containment reference.
-	 * @see #setOwnedPhysicalComponent(PhysicalComponent)
-	 * @see org.polarsys.capella.core.data.pa.PaPackage#getPhysicalArchitecture_OwnedPhysicalComponent()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='packagedElement' featureOwner='Package'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ownedComponents'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the physical component that represents the System\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::packagedElement' explanation='none' constraints='uml::Package::packagedElement elements on which PhysicalComponent stereotype or any stereotype that inherits from it is applied\r\nMultiplicity must be [0..1]'"
-	 * @generated
-	 */
-
-	PhysicalComponent getOwnedPhysicalComponent();
-
-
-
-
-	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.pa.PhysicalArchitecture#getOwnedPhysicalComponent <em>Owned Physical Component</em>}' containment reference.
-
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Owned Physical Component</em>' containment reference.
-	 * @see #getOwnedPhysicalComponent()
-	 * @generated
-	 */
-
-	void setOwnedPhysicalComponent(PhysicalComponent value);
-
-
 
 
 
@@ -172,49 +85,6 @@ public interface PhysicalArchitecture extends ComponentArchitecture {
 	 */
 
 	void setOwnedPhysicalComponentPkg(PhysicalComponentPkg value);
-
-
-
-
-
-
-
-	/**
-	 * Returns the value of the '<em><b>Owned Physical Actor Pkg</b></em>' containment reference.
-
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Owned Physical Actor Pkg</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Physical Actor Pkg</em>' containment reference.
-	 * @see #setOwnedPhysicalActorPkg(PhysicalActorPkg)
-	 * @see org.polarsys.capella.core.data.pa.PaPackage#getPhysicalArchitecture_OwnedPhysicalActorPkg()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='packagedElement' featureOwner='Package'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ownedActorPkg'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='a package containing the physical actors involved in this physical architecture\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::nestedPackage#uml::Package::packagedElement' explanation='none' constraints='uml::Package::nestedPackage elements on which PhysicalActorPkg stereotype or any stereotype that inherits from it is applied\r\nMultiplicity must be [0..1]'"
-	 * @generated
-	 */
-
-	PhysicalActorPkg getOwnedPhysicalActorPkg();
-
-
-
-
-	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.pa.PhysicalArchitecture#getOwnedPhysicalActorPkg <em>Owned Physical Actor Pkg</em>}' containment reference.
-
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Owned Physical Actor Pkg</em>' containment reference.
-	 * @see #getOwnedPhysicalActorPkg()
-	 * @generated
-	 */
-
-	void setOwnedPhysicalActorPkg(PhysicalActorPkg value);
 
 
 

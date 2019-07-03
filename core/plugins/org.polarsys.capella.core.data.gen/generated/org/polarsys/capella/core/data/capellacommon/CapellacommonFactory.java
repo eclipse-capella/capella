@@ -57,6 +57,15 @@ public interface CapellacommonFactory extends EFactory {
 	JustificationLink createJustificationLink();
 
 	/**
+	 * Returns a new object of class '<em>Capability Realization Involvement</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Capability Realization Involvement</em>'.
+	 * @generated
+	 */
+	CapabilityRealizationInvolvement createCapabilityRealizationInvolvement();
+
+	/**
 	 * Returns a new object of class '<em>State Machine</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

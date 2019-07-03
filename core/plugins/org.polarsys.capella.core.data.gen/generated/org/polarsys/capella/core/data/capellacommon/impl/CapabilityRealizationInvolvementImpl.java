@@ -44,7 +44,7 @@ import org.polarsys.capella.core.data.capellacore.impl.RelationshipImpl;
  *
  * @generated
  */
-public abstract class CapabilityRealizationInvolvementImpl extends RelationshipImpl implements CapabilityRealizationInvolvement {
+public class CapabilityRealizationInvolvementImpl extends RelationshipImpl implements CapabilityRealizationInvolvement {
 
 	/**
 	 * The cached value of the '{@link #getInvolved() <em>Involved</em>}' reference.

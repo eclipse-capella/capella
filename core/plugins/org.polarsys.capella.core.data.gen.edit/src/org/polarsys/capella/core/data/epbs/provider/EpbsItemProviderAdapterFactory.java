@@ -139,29 +139,6 @@ public class EpbsItemProviderAdapterFactory extends EpbsAdapterFactory implement
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.epbs.EPBSContext} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected EPBSContextItemProvider epbsContextItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.epbs.EPBSContext}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createEPBSContextAdapter() {
-		if (epbsContextItemProvider == null) {
-			epbsContextItemProvider = new EPBSContextItemProvider(this);
-		}
-
-		return epbsContextItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.epbs.ConfigurationItemPkg} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -381,7 +358,6 @@ public class EpbsItemProviderAdapterFactory extends EpbsAdapterFactory implement
 	public void dispose() {
 		if (epbsArchitecturePkgItemProvider != null) epbsArchitecturePkgItemProvider.dispose();
 		if (epbsArchitectureItemProvider != null) epbsArchitectureItemProvider.dispose();
-		if (epbsContextItemProvider != null) epbsContextItemProvider.dispose();
 		if (configurationItemPkgItemProvider != null) configurationItemPkgItemProvider.dispose();
 		if (configurationItemItemProvider != null) configurationItemItemProvider.dispose();
 		if (physicalArchitectureRealizationItemProvider != null) physicalArchitectureRealizationItemProvider.dispose();

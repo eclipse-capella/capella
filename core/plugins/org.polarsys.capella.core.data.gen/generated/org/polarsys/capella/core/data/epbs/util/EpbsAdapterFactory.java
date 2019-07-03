@@ -40,23 +40,19 @@ import org.polarsys.capella.core.data.cs.Block;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.BlockArchitecturePkg;
 import org.polarsys.capella.core.data.cs.Component;
-import org.polarsys.capella.core.data.cs.ComponentAllocation;
 import org.polarsys.capella.core.data.cs.ComponentArchitecture;
-import org.polarsys.capella.core.data.cs.ComponentContext;
+import org.polarsys.capella.core.data.cs.ComponentPkg;
 import org.polarsys.capella.core.data.cs.InterfaceAllocator;
-import org.polarsys.capella.core.data.cs.SystemComponent;
-import org.polarsys.capella.core.data.epbs.*;
 import org.polarsys.capella.core.data.epbs.ConfigurationItem;
 import org.polarsys.capella.core.data.epbs.ConfigurationItemPkg;
 import org.polarsys.capella.core.data.epbs.EPBSArchitecture;
 import org.polarsys.capella.core.data.epbs.EPBSArchitecturePkg;
-import org.polarsys.capella.core.data.epbs.EPBSContext;
 import org.polarsys.capella.core.data.epbs.EpbsPackage;
 import org.polarsys.capella.core.data.epbs.PhysicalArchitectureRealization;
 import org.polarsys.capella.core.data.epbs.PhysicalArtifactRealization;
 import org.polarsys.capella.core.data.fa.AbstractFunctionalArchitecture;
 import org.polarsys.capella.core.data.fa.AbstractFunctionalBlock;
-import org.polarsys.capella.core.data.information.PartitionableElement;
+import org.polarsys.capella.core.data.fa.AbstractFunctionalStructure;
 import org.polarsys.capella.core.data.information.communication.CommunicationLinkExchanger;
 import org.polarsys.kitalpha.emde.model.Element;
 import org.polarsys.kitalpha.emde.model.ExtensibleElement;
@@ -124,10 +120,6 @@ public class EpbsAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseEPBSArchitecture(EPBSArchitecture object) {
 				return createEPBSArchitectureAdapter();
-			}
-			@Override
-			public Adapter caseEPBSContext(EPBSContext object) {
-				return createEPBSContextAdapter();
 			}
 			@Override
 			public Adapter caseConfigurationItemPkg(ConfigurationItemPkg object) {
@@ -210,6 +202,22 @@ public class EpbsAdapterFactory extends AdapterFactoryImpl {
 				return createComponentArchitectureAdapter();
 			}
 			@Override
+			public Adapter caseAbstractFunctionalStructure(AbstractFunctionalStructure object) {
+				return createAbstractFunctionalStructureAdapter();
+			}
+			@Override
+			public Adapter caseComponentPkg(ComponentPkg object) {
+				return createComponentPkgAdapter();
+			}
+			@Override
+			public Adapter caseInvolvedElement(InvolvedElement object) {
+				return createInvolvedElementAdapter();
+			}
+			@Override
+			public Adapter caseCapabilityRealizationInvolvedElement(CapabilityRealizationInvolvedElement object) {
+				return createCapabilityRealizationInvolvedElementAdapter();
+			}
+			@Override
 			public Adapter caseAbstractType(AbstractType object) {
 				return createAbstractTypeAdapter();
 			}
@@ -238,10 +246,6 @@ public class EpbsAdapterFactory extends AdapterFactoryImpl {
 				return createClassifierAdapter();
 			}
 			@Override
-			public Adapter casePartitionableElement(PartitionableElement object) {
-				return createPartitionableElementAdapter();
-			}
-			@Override
 			public Adapter caseInterfaceAllocator(InterfaceAllocator object) {
 				return createInterfaceAllocatorAdapter();
 			}
@@ -252,22 +256,6 @@ public class EpbsAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseComponent(Component object) {
 				return createComponentAdapter();
-			}
-			@Override
-			public Adapter caseComponentContext(ComponentContext object) {
-				return createComponentContextAdapter();
-			}
-			@Override
-			public Adapter caseInvolvedElement(InvolvedElement object) {
-				return createInvolvedElementAdapter();
-			}
-			@Override
-			public Adapter caseCapabilityRealizationInvolvedElement(CapabilityRealizationInvolvedElement object) {
-				return createCapabilityRealizationInvolvedElementAdapter();
-			}
-			@Override
-			public Adapter caseSystemComponent(SystemComponent object) {
-				return createSystemComponentAdapter();
 			}
 			@Override
 			public Adapter caseAbstractRelationship(AbstractRelationship object) {
@@ -288,10 +276,6 @@ public class EpbsAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseArchitectureAllocation(ArchitectureAllocation object) {
 				return createArchitectureAllocationAdapter();
-			}
-			@Override
-			public Adapter caseComponentAllocation(ComponentAllocation object) {
-				return createComponentAllocationAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -338,20 +322,6 @@ public class EpbsAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createEPBSArchitectureAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.epbs.EPBSContext <em>EPBS Context</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.polarsys.capella.core.data.epbs.EPBSContext
-	 * @generated
-	 */
-	public Adapter createEPBSContextAdapter() {
 		return null;
 	}
 
@@ -636,6 +606,34 @@ public class EpbsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.fa.AbstractFunctionalStructure <em>Abstract Functional Structure</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.polarsys.capella.core.data.fa.AbstractFunctionalStructure
+	 * @generated
+	 */
+	public Adapter createAbstractFunctionalStructureAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.cs.ComponentPkg <em>Component Pkg</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.polarsys.capella.core.data.cs.ComponentPkg
+	 * @generated
+	 */
+	public Adapter createComponentPkgAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.common.data.modellingcore.AbstractType <em>Abstract Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -734,20 +732,6 @@ public class EpbsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.information.PartitionableElement <em>Partitionable Element</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.polarsys.capella.core.data.information.PartitionableElement
-	 * @generated
-	 */
-	public Adapter createPartitionableElementAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.cs.InterfaceAllocator <em>Interface Allocator</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -790,20 +774,6 @@ public class EpbsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.cs.ComponentContext <em>Component Context</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.polarsys.capella.core.data.cs.ComponentContext
-	 * @generated
-	 */
-	public Adapter createComponentContextAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.capellacore.InvolvedElement <em>Involved Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -828,20 +798,6 @@ public class EpbsAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createCapabilityRealizationInvolvedElementAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.cs.SystemComponent <em>System Component</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.polarsys.capella.core.data.cs.SystemComponent
-	 * @generated
-	 */
-	public Adapter createSystemComponentAdapter() {
 		return null;
 	}
 
@@ -912,20 +868,6 @@ public class EpbsAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createArchitectureAllocationAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.cs.ComponentAllocation <em>Component Allocation</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.polarsys.capella.core.data.cs.ComponentAllocation
-	 * @generated
-	 */
-	public Adapter createComponentAllocationAdapter() {
 		return null;
 	}
 

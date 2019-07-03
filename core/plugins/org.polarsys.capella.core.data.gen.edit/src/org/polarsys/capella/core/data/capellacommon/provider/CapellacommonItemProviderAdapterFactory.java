@@ -162,6 +162,29 @@ public class CapellacommonItemProviderAdapterFactory extends CapellacommonAdapte
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvement} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected CapabilityRealizationInvolvementItemProvider capabilityRealizationInvolvementItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvement}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createCapabilityRealizationInvolvementAdapter() {
+		if (capabilityRealizationInvolvementItemProvider == null) {
+			capabilityRealizationInvolvementItemProvider = new CapabilityRealizationInvolvementItemProvider(this);
+		}
+
+		return capabilityRealizationInvolvementItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.capellacommon.StateMachine} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -750,6 +773,7 @@ public class CapellacommonItemProviderAdapterFactory extends CapellacommonAdapte
 		if (genericTraceItemProvider != null) genericTraceItemProvider.dispose();
 		if (transfoLinkItemProvider != null) transfoLinkItemProvider.dispose();
 		if (justificationLinkItemProvider != null) justificationLinkItemProvider.dispose();
+		if (capabilityRealizationInvolvementItemProvider != null) capabilityRealizationInvolvementItemProvider.dispose();
 		if (stateMachineItemProvider != null) stateMachineItemProvider.dispose();
 		if (regionItemProvider != null) regionItemProvider.dispose();
 		if (stateItemProvider != null) stateItemProvider.dispose();

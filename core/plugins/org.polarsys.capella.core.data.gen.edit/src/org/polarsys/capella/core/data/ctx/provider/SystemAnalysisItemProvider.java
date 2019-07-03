@@ -280,9 +280,7 @@ public class SystemAnalysisItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(CtxPackage.Literals.SYSTEM_ANALYSIS__OWNED_SYSTEM_CONTEXT);
-			childrenFeatures.add(CtxPackage.Literals.SYSTEM_ANALYSIS__OWNED_SYSTEM);
-			childrenFeatures.add(CtxPackage.Literals.SYSTEM_ANALYSIS__OWNED_ACTOR_PKG);
+			childrenFeatures.add(CtxPackage.Literals.SYSTEM_ANALYSIS__OWNED_SYSTEM_COMPONENT_PKG);
 			childrenFeatures.add(CtxPackage.Literals.SYSTEM_ANALYSIS__OWNED_MISSION_PKG);
 			childrenFeatures.add(CtxPackage.Literals.SYSTEM_ANALYSIS__OWNED_OPERATIONAL_ANALYSIS_REALIZATIONS);
 		}
@@ -349,9 +347,7 @@ public class SystemAnalysisItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(SystemAnalysis.class)) {
-			case CtxPackage.SYSTEM_ANALYSIS__OWNED_SYSTEM_CONTEXT:
-			case CtxPackage.SYSTEM_ANALYSIS__OWNED_SYSTEM:
-			case CtxPackage.SYSTEM_ANALYSIS__OWNED_ACTOR_PKG:
+			case CtxPackage.SYSTEM_ANALYSIS__OWNED_SYSTEM_COMPONENT_PKG:
 			case CtxPackage.SYSTEM_ANALYSIS__OWNED_MISSION_PKG:
 			case CtxPackage.SYSTEM_ANALYSIS__OWNED_OPERATIONAL_ANALYSIS_REALIZATIONS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
@@ -373,32 +369,8 @@ public class SystemAnalysisItemProvider
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
-                        (CtxPackage.Literals.SYSTEM_ANALYSIS__OWNED_SYSTEM_CONTEXT,
-                         CtxFactory.eINSTANCE.createSystemContext());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (CtxPackage.Literals.SYSTEM_ANALYSIS__OWNED_SYSTEM,
-                         CtxFactory.eINSTANCE.createSystem());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (CtxPackage.Literals.SYSTEM_ANALYSIS__OWNED_ACTOR_PKG,
-                         CtxFactory.eINSTANCE.createActorPkg());
+                        (CtxPackage.Literals.SYSTEM_ANALYSIS__OWNED_SYSTEM_COMPONENT_PKG,
+                         CtxFactory.eINSTANCE.createSystemComponentPkg());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
                     }

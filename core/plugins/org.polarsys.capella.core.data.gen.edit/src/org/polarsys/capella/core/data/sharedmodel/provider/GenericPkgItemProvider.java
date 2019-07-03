@@ -837,18 +837,6 @@ public class GenericPkgItemProvider
                 {
                     CommandParameter commandParameter = createChildParameter
                         (SharedmodelPackage.Literals.GENERIC_PKG__CAPELLA_ELEMENTS,
-                         OaFactory.eINSTANCE.createOperationalActor());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (SharedmodelPackage.Literals.GENERIC_PKG__CAPELLA_ELEMENTS,
                          OaFactory.eINSTANCE.createCommunityOfInterest());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
@@ -945,31 +933,7 @@ public class GenericPkgItemProvider
                 {
                     CommandParameter commandParameter = createChildParameter
                         (SharedmodelPackage.Literals.GENERIC_PKG__CAPELLA_ELEMENTS,
-                         OaFactory.eINSTANCE.createOperationalContext());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (SharedmodelPackage.Literals.GENERIC_PKG__CAPELLA_ELEMENTS,
                          CtxFactory.eINSTANCE.createSystemAnalysis());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (SharedmodelPackage.Literals.GENERIC_PKG__CAPELLA_ELEMENTS,
-                         CtxFactory.eINSTANCE.createSystem());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
                     }
@@ -1029,7 +993,7 @@ public class GenericPkgItemProvider
                 {
                     CommandParameter commandParameter = createChildParameter
                         (SharedmodelPackage.Literals.GENERIC_PKG__CAPELLA_ELEMENTS,
-                         CtxFactory.eINSTANCE.createActor());
+                         CtxFactory.eINSTANCE.createCapabilityInvolvement());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
                     }
@@ -1041,31 +1005,7 @@ public class GenericPkgItemProvider
                 {
                     CommandParameter commandParameter = createChildParameter
                         (SharedmodelPackage.Literals.GENERIC_PKG__CAPELLA_ELEMENTS,
-                         CtxFactory.eINSTANCE.createActorCapabilityInvolvement());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (SharedmodelPackage.Literals.GENERIC_PKG__CAPELLA_ELEMENTS,
-                         CtxFactory.eINSTANCE.createActorMissionInvolvement());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (SharedmodelPackage.Literals.GENERIC_PKG__CAPELLA_ELEMENTS,
-                         CtxFactory.eINSTANCE.createActorPkg());
+                         CtxFactory.eINSTANCE.createMissionInvolvement());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
                     }
@@ -1090,18 +1030,6 @@ public class GenericPkgItemProvider
                     CommandParameter commandParameter = createChildParameter
                         (SharedmodelPackage.Literals.GENERIC_PKG__CAPELLA_ELEMENTS,
                          CtxFactory.eINSTANCE.createMissionPkg());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (SharedmodelPackage.Literals.GENERIC_PKG__CAPELLA_ELEMENTS,
-                         CtxFactory.eINSTANCE.createSystemMissionInvolvement());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
                     }
@@ -1149,30 +1077,6 @@ public class GenericPkgItemProvider
                 {
                     CommandParameter commandParameter = createChildParameter
                         (SharedmodelPackage.Literals.GENERIC_PKG__CAPELLA_ELEMENTS,
-                         CtxFactory.eINSTANCE.createSystemCapabilityInvolvement());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (SharedmodelPackage.Literals.GENERIC_PKG__CAPELLA_ELEMENTS,
-                         CtxFactory.eINSTANCE.createOperationalActorRealization());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (SharedmodelPackage.Literals.GENERIC_PKG__CAPELLA_ELEMENTS,
                          CtxFactory.eINSTANCE.createOperationalAnalysisRealization());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
@@ -1185,7 +1089,7 @@ public class GenericPkgItemProvider
                 {
                     CommandParameter commandParameter = createChildParameter
                         (SharedmodelPackage.Literals.GENERIC_PKG__CAPELLA_ELEMENTS,
-                         CtxFactory.eINSTANCE.createOperationalEntityRealization());
+                         CtxFactory.eINSTANCE.createSystemComponentPkg());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
                     }
@@ -1197,7 +1101,7 @@ public class GenericPkgItemProvider
                 {
                     CommandParameter commandParameter = createChildParameter
                         (SharedmodelPackage.Literals.GENERIC_PKG__CAPELLA_ELEMENTS,
-                         CtxFactory.eINSTANCE.createSystemContext());
+                         CtxFactory.eINSTANCE.createSystemComponent());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
                     }
@@ -1317,67 +1221,7 @@ public class GenericPkgItemProvider
                 {
                     CommandParameter commandParameter = createChildParameter
                         (SharedmodelPackage.Literals.GENERIC_PKG__CAPELLA_ELEMENTS,
-                         LaFactory.eINSTANCE.createSystemRealization());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (SharedmodelPackage.Literals.GENERIC_PKG__CAPELLA_ELEMENTS,
                          LaFactory.eINSTANCE.createContextInterfaceRealization());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (SharedmodelPackage.Literals.GENERIC_PKG__CAPELLA_ELEMENTS,
-                         LaFactory.eINSTANCE.createLogicalActorPkg());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (SharedmodelPackage.Literals.GENERIC_PKG__CAPELLA_ELEMENTS,
-                         LaFactory.eINSTANCE.createLogicalActor());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (SharedmodelPackage.Literals.GENERIC_PKG__CAPELLA_ELEMENTS,
-                         LaFactory.eINSTANCE.createSystemActorRealization());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (SharedmodelPackage.Literals.GENERIC_PKG__CAPELLA_ELEMENTS,
-                         LaFactory.eINSTANCE.createLogicalContext());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
                     }
@@ -1449,43 +1293,7 @@ public class GenericPkgItemProvider
                 {
                     CommandParameter commandParameter = createChildParameter
                         (SharedmodelPackage.Literals.GENERIC_PKG__CAPELLA_ELEMENTS,
-                         PaFactory.eINSTANCE.createPhysicalActorPkg());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (SharedmodelPackage.Literals.GENERIC_PKG__CAPELLA_ELEMENTS,
                          PaFactory.eINSTANCE.createPhysicalComponentPkg());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (SharedmodelPackage.Literals.GENERIC_PKG__CAPELLA_ELEMENTS,
-                         PaFactory.eINSTANCE.createPhysicalActor());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (SharedmodelPackage.Literals.GENERIC_PKG__CAPELLA_ELEMENTS,
-                         PaFactory.eINSTANCE.createLogicalActorRealization());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
                     }
@@ -1521,31 +1329,7 @@ public class GenericPkgItemProvider
                 {
                     CommandParameter commandParameter = createChildParameter
                         (SharedmodelPackage.Literals.GENERIC_PKG__CAPELLA_ELEMENTS,
-                         PaFactory.eINSTANCE.createLogicalComponentRealization());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (SharedmodelPackage.Literals.GENERIC_PKG__CAPELLA_ELEMENTS,
                          PaFactory.eINSTANCE.createLogicalInterfaceRealization());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (SharedmodelPackage.Literals.GENERIC_PKG__CAPELLA_ELEMENTS,
-                         PaFactory.eINSTANCE.createPhysicalContext());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
                     }
@@ -1666,18 +1450,6 @@ public class GenericPkgItemProvider
                     CommandParameter commandParameter = createChildParameter
                         (SharedmodelPackage.Literals.GENERIC_PKG__CAPELLA_ELEMENTS,
                          EpbsFactory.eINSTANCE.createEPBSArchitecture());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (SharedmodelPackage.Literals.GENERIC_PKG__CAPELLA_ELEMENTS,
-                         EpbsFactory.eINSTANCE.createEPBSContext());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
                     }
@@ -1846,6 +1618,18 @@ public class GenericPkgItemProvider
                     CommandParameter commandParameter = createChildParameter
                         (SharedmodelPackage.Literals.GENERIC_PKG__CAPELLA_ELEMENTS,
                          CapellacommonFactory.eINSTANCE.createJustificationLink());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (SharedmodelPackage.Literals.GENERIC_PKG__CAPELLA_ELEMENTS,
+                         CapellacommonFactory.eINSTANCE.createCapabilityRealizationInvolvement());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
                     }
@@ -2710,30 +2494,6 @@ public class GenericPkgItemProvider
                     CommandParameter commandParameter = createChildParameter
                         (SharedmodelPackage.Literals.GENERIC_PKG__CAPELLA_ELEMENTS,
                          CsFactory.eINSTANCE.createInterfaceUse());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (SharedmodelPackage.Literals.GENERIC_PKG__CAPELLA_ELEMENTS,
-                         CsFactory.eINSTANCE.createActorCapabilityRealizationInvolvement());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (SharedmodelPackage.Literals.GENERIC_PKG__CAPELLA_ELEMENTS,
-                         CsFactory.eINSTANCE.createSystemComponentCapabilityRealizationInvolvement());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
                     }

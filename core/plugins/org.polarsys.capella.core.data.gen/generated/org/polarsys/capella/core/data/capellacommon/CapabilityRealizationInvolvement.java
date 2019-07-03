@@ -25,8 +25,7 @@ import org.polarsys.capella.core.data.capellacore.Involvement;
  * </ul>
  *
  * @see org.polarsys.capella.core.data.capellacommon.CapellacommonPackage#getCapabilityRealizationInvolvement()
- * @model abstract="true"
- *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='an involvement relationship of an entity in the capability that it realizes\r\n[source: Capella study]' usage\040guideline='n/a (Abstract)' used\040in\040levels='n/a' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
+ * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='an involvement relationship of an entity in the capability that it realizes\r\n[source: Capella study]' usage\040guideline='n/a (Abstract)' used\040in\040levels='n/a' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='' explanation='none' constraints='none'"
  * @generated
  */

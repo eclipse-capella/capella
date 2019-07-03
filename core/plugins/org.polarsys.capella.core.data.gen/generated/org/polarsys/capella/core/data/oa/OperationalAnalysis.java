@@ -23,7 +23,6 @@ import org.polarsys.capella.core.data.ctx.SystemAnalysis;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.polarsys.capella.core.data.oa.OperationalAnalysis#getOwnedOperationalContext <em>Owned Operational Context</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.oa.OperationalAnalysis#getOwnedRolePkg <em>Owned Role Pkg</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.oa.OperationalAnalysis#getOwnedEntityPkg <em>Owned Entity Pkg</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.oa.OperationalAnalysis#getOwnedConceptPkg <em>Owned Concept Pkg</em>}</li>
@@ -38,47 +37,6 @@ import org.polarsys.capella.core.data.ctx.SystemAnalysis;
  * @generated
  */
 public interface OperationalAnalysis extends BlockArchitecture {
-
-
-
-
-
-	/**
-	 * Returns the value of the '<em><b>Owned Operational Context</b></em>' containment reference.
-
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Owned Operational Context</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Operational Context</em>' containment reference.
-	 * @see #setOwnedOperationalContext(OperationalContext)
-	 * @see org.polarsys.capella.core.data.oa.OaPackage#getOperationalAnalysis_OwnedOperationalContext()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the \"context\" for this architecture, e.g. the parts that make the environnement of the entities (actors, ...) , plus the entities itself' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::packagedElement' explanation='none' constraints='uml::Package::PackagedElement elements on which OperationalContext stereotype or any stereotype that inherits from it is applied'"
-	 * @generated
-	 */
-
-	OperationalContext getOwnedOperationalContext();
-
-
-
-
-	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.oa.OperationalAnalysis#getOwnedOperationalContext <em>Owned Operational Context</em>}' containment reference.
-
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Owned Operational Context</em>' containment reference.
-	 * @see #getOwnedOperationalContext()
-	 * @generated
-	 */
-
-	void setOwnedOperationalContext(OperationalContext value);
-
-
 
 
 

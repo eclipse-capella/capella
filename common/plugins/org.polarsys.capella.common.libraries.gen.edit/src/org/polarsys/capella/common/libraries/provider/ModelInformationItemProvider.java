@@ -30,7 +30,6 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.libraries.LibrariesFactory;
 import org.polarsys.capella.common.libraries.LibrariesPackage;
 import org.polarsys.capella.common.libraries.ModelInformation;
@@ -38,7 +37,6 @@ import org.polarsys.capella.common.model.copypaste.SharedInitializeCopyCommand;
 import org.polarsys.kitalpha.emde.extension.ExtensionModelManager;
 import org.polarsys.kitalpha.emde.extension.ModelExtensionHelper;
 import org.polarsys.kitalpha.emde.model.edit.provider.NewChildDescriptorHelper;
-import org.polarsys.kitalpha.emde.model.edit.provider.ElementExtensionItemProvider;
 
 /**
  * This is the item provider adapter for a {@link org.polarsys.capella.common.libraries.ModelInformation} object.

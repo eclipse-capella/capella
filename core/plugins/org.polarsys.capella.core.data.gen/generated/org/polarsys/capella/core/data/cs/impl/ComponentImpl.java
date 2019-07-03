@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.polarsys.capella.common.model.helpers.IHelper;
@@ -34,7 +35,7 @@ import org.polarsys.capella.core.data.capellacore.Feature;
 import org.polarsys.capella.core.data.capellacore.GeneralizableElement;
 import org.polarsys.capella.core.data.capellacore.Generalization;
 import org.polarsys.capella.core.data.cs.Component;
-import org.polarsys.capella.core.data.cs.ComponentAllocation;
+import org.polarsys.capella.core.data.cs.ComponentRealization;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.Interface;
 import org.polarsys.capella.core.data.cs.InterfaceAllocation;
@@ -47,9 +48,6 @@ import org.polarsys.capella.core.data.cs.PhysicalLinkCategory;
 import org.polarsys.capella.core.data.cs.PhysicalPath;
 import org.polarsys.capella.core.data.cs.PhysicalPort;
 import org.polarsys.capella.core.data.fa.ComponentPort;
-import org.polarsys.capella.core.data.information.InformationPackage;
-import org.polarsys.capella.core.data.information.Partition;
-import org.polarsys.capella.core.data.information.PartitionableElement;
 import org.polarsys.capella.core.data.information.Property;
 import org.polarsys.capella.core.data.information.communication.CommunicationLink;
 import org.polarsys.capella.core.data.information.communication.CommunicationLinkExchanger;
@@ -71,8 +69,6 @@ import org.polarsys.capella.core.data.information.communication.CommunicationPac
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.ComponentImpl#getSub <em>Sub</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.ComponentImpl#getOwnedFeatures <em>Owned Features</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.ComponentImpl#getContainedProperties <em>Contained Properties</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.cs.impl.ComponentImpl#getOwnedPartitions <em>Owned Partitions</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.cs.impl.ComponentImpl#getRepresentingPartitions <em>Representing Partitions</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.ComponentImpl#getOwnedInterfaceAllocations <em>Owned Interface Allocations</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.ComponentImpl#getProvisionedInterfaceAllocations <em>Provisioned Interface Allocations</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.ComponentImpl#getAllocatedInterfaces <em>Allocated Interfaces</em>}</li>
@@ -87,6 +83,8 @@ import org.polarsys.capella.core.data.information.communication.CommunicationPac
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.ComponentImpl#getAccess <em>Access</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.ComponentImpl#getAcquire <em>Acquire</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.ComponentImpl#getTransmit <em>Transmit</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.cs.impl.ComponentImpl#isIsActor <em>Is Actor</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.cs.impl.ComponentImpl#isIsHuman <em>Is Human</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.ComponentImpl#getOwnedInterfaceUses <em>Owned Interface Uses</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.ComponentImpl#getUsedInterfaceLinks <em>Used Interface Links</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.ComponentImpl#getUsedInterfaces <em>Used Interfaces</em>}</li>
@@ -95,8 +93,9 @@ import org.polarsys.capella.core.data.information.communication.CommunicationPac
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.ComponentImpl#getImplementedInterfaces <em>Implemented Interfaces</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.ComponentImpl#getProvisionedComponentAllocations <em>Provisioned Component Allocations</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.ComponentImpl#getProvisioningComponentAllocations <em>Provisioning Component Allocations</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.cs.impl.ComponentImpl#getAllocatedComponents <em>Allocated Components</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.cs.impl.ComponentImpl#getAllocatingComponents <em>Allocating Components</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.cs.impl.ComponentImpl#getOwnedComponentRealizations <em>Owned Component Realizations</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.cs.impl.ComponentImpl#getRealizedComponents <em>Realized Components</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.cs.impl.ComponentImpl#getRealizingComponents <em>Realizing Components</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.ComponentImpl#getProvidedInterfaces <em>Provided Interfaces</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.ComponentImpl#getRequiredInterfaces <em>Required Interfaces</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.ComponentImpl#getContainedComponentPorts <em>Contained Component Ports</em>}</li>
@@ -105,6 +104,7 @@ import org.polarsys.capella.core.data.information.communication.CommunicationPac
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.ComponentImpl#getOwnedPhysicalPath <em>Owned Physical Path</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.ComponentImpl#getOwnedPhysicalLinks <em>Owned Physical Links</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.ComponentImpl#getOwnedPhysicalLinkCategories <em>Owned Physical Link Categories</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.cs.impl.ComponentImpl#getRepresentingParts <em>Representing Parts</em>}</li>
  * </ul>
  *
  * @generated
@@ -121,6 +121,18 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 	 */
 	protected static final boolean ABSTRACT_EDEFAULT = false;
 
+
+
+
+
+
+
+
+
+
+
+
+
 	/**
 	 * The cached value of the '{@link #isAbstract() <em>Abstract</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -130,6 +142,14 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 	 * @ordered
 	 */
 	protected boolean abstract_ = ABSTRACT_EDEFAULT;
+
+
+
+
+
+
+
+
 
 
 
@@ -157,14 +177,6 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 
 
 
-
-
-
-
-
-
-
-
 	/**
 	 * The cached value of the '{@link #getOwnedFeatures() <em>Owned Features</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -174,10 +186,6 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 	 * @ordered
 	 */
 	protected EList<Feature> ownedFeatures;
-
-
-
-
 
 
 
@@ -268,6 +276,46 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 
 
 	/**
+	 * The default value of the '{@link #isIsActor() <em>Is Actor</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isIsActor()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean IS_ACTOR_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isIsActor() <em>Is Actor</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isIsActor()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean isActor = IS_ACTOR_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isIsHuman() <em>Is Human</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isIsHuman()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean IS_HUMAN_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isIsHuman() <em>Is Human</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isIsHuman()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean isHuman = IS_HUMAN_EDEFAULT;
+
+	/**
 	 * The cached value of the '{@link #getOwnedInterfaceUses() <em>Owned Interface Uses</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -348,6 +396,16 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 
 
 	/**
+	 * The cached value of the '{@link #getOwnedComponentRealizations() <em>Owned Component Realizations</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedComponentRealizations()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<ComponentRealization> ownedComponentRealizations;
+
+	/**
 	 * The cached value of the '{@link #getOwnedPhysicalPath() <em>Owned Physical Path</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -389,6 +447,19 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 
 
 	/**
+	 * The cached value of the '{@link #getRepresentingParts() <em>Representing Parts</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRepresentingParts()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Part> representingParts;
+
+
+
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -424,7 +495,6 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 		return abstract_;
 	}
 
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -440,11 +510,6 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 
 	}
 
-
-
-
-
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -458,10 +523,6 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 		}
 		return ownedGeneralizations;
 	}
-
-
-
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -506,10 +567,6 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 		
 	}
 
-
-
-
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -552,10 +609,6 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 	  }
 		
 	}
-
-
-
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -600,10 +653,6 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 		
 	}
 
-
-
-
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -647,10 +696,6 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 		
 	}
 
-
-
-
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -664,10 +709,6 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 		}
 		return ownedFeatures;
 	}
-
-
-
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -711,104 +752,6 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 	  }
 		
 	}
-
-
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public EList<Partition> getOwnedPartitions() {
-
-
-    Object result = null;
-    // Helper that can get value for current feature.
-    IHelper helper = null;
-    // If current object is adaptable, ask it to get its IHelper.
-    if (this instanceof IAdaptable) {
-    	helper = (IHelper) ((IAdaptable) this).getAdapter(IHelper.class);
-    }
-    if (null == helper) {
-      // No helper found yet.
-      // Ask the platform to get the adapter 'IHelper.class' for current object.
-      IAdapterManager adapterManager = Platform.getAdapterManager();
-      helper = (IHelper) adapterManager.getAdapter(this, IHelper.class);
-    }
-    if (null == helper) {
-      EPackage package_l = eClass().getEPackage();
-      // Get the root package of the owner package.
-      EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
-    } 
-    // A helper is found, let's use it. 
-    EAnnotation annotation = InformationPackage.Literals.PARTITIONABLE_ELEMENT__OWNED_PARTITIONS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
-    result = helper.getValue(this, InformationPackage.Literals.PARTITIONABLE_ELEMENT__OWNED_PARTITIONS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<Partition> resultAsList = (Collection<Partition>) result;
-		return new EcoreEList.UnmodifiableEList<Partition>(this, InformationPackage.Literals.PARTITIONABLE_ELEMENT__OWNED_PARTITIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
-
-
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public EList<Partition> getRepresentingPartitions() {
-
-
-    Object result = null;
-    // Helper that can get value for current feature.
-    IHelper helper = null;
-    // If current object is adaptable, ask it to get its IHelper.
-    if (this instanceof IAdaptable) {
-    	helper = (IHelper) ((IAdaptable) this).getAdapter(IHelper.class);
-    }
-    if (null == helper) {
-      // No helper found yet.
-      // Ask the platform to get the adapter 'IHelper.class' for current object.
-      IAdapterManager adapterManager = Platform.getAdapterManager();
-      helper = (IHelper) adapterManager.getAdapter(this, IHelper.class);
-    }
-    if (null == helper) {
-      EPackage package_l = eClass().getEPackage();
-      // Get the root package of the owner package.
-      EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
-    } 
-    // A helper is found, let's use it. 
-    EAnnotation annotation = InformationPackage.Literals.PARTITIONABLE_ELEMENT__REPRESENTING_PARTITIONS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
-    result = helper.getValue(this, InformationPackage.Literals.PARTITIONABLE_ELEMENT__REPRESENTING_PARTITIONS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<Partition> resultAsList = (Collection<Partition>) result;
-		return new EcoreEList.UnmodifiableEList<Partition>(this, InformationPackage.Literals.PARTITIONABLE_ELEMENT__REPRESENTING_PARTITIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
-
-
-
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1416,6 +1359,58 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 	 * @generated
 	 */
 
+	public boolean isIsActor() {
+
+		return isActor;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+
+	public void setIsActor(boolean newIsActor) {
+
+		boolean oldIsActor = isActor;
+		isActor = newIsActor;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CsPackage.COMPONENT__IS_ACTOR, oldIsActor, isActor));
+
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+
+	public boolean isIsHuman() {
+
+		return isHuman;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+
+	public void setIsHuman(boolean newIsHuman) {
+
+		boolean oldIsHuman = isHuman;
+		isHuman = newIsHuman;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CsPackage.COMPONENT__IS_HUMAN, oldIsHuman, isHuman));
+
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+
 	public EList<InterfaceUse> getOwnedInterfaceUses() {
 
 		if (ownedInterfaceUses == null) {
@@ -1640,7 +1635,7 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 	 * @generated
 	 */
 
-	public EList<ComponentAllocation> getProvisionedComponentAllocations() {
+	public EList<ComponentRealization> getProvisionedComponentAllocations() {
 
 
     Object result = null;
@@ -1668,8 +1663,8 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 		
 		try {
 		@SuppressWarnings("unchecked")
-		Collection<ComponentAllocation> resultAsList = (Collection<ComponentAllocation>) result;
-		return new EcoreEList.UnmodifiableEList<ComponentAllocation>(this, CsPackage.Literals.COMPONENT__PROVISIONED_COMPONENT_ALLOCATIONS, resultAsList.size(), resultAsList.toArray());
+		Collection<ComponentRealization> resultAsList = (Collection<ComponentRealization>) result;
+		return new EcoreEList.UnmodifiableEList<ComponentRealization>(this, CsPackage.Literals.COMPONENT__PROVISIONED_COMPONENT_ALLOCATIONS, resultAsList.size(), resultAsList.toArray());
 		} catch (ClassCastException exception) {
 	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
@@ -1687,7 +1682,7 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 	 * @generated
 	 */
 
-	public EList<ComponentAllocation> getProvisioningComponentAllocations() {
+	public EList<ComponentRealization> getProvisioningComponentAllocations() {
 
 
     Object result = null;
@@ -1715,8 +1710,8 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 		
 		try {
 		@SuppressWarnings("unchecked")
-		Collection<ComponentAllocation> resultAsList = (Collection<ComponentAllocation>) result;
-		return new EcoreEList.UnmodifiableEList<ComponentAllocation>(this, CsPackage.Literals.COMPONENT__PROVISIONING_COMPONENT_ALLOCATIONS, resultAsList.size(), resultAsList.toArray());
+		Collection<ComponentRealization> resultAsList = (Collection<ComponentRealization>) result;
+		return new EcoreEList.UnmodifiableEList<ComponentRealization>(this, CsPackage.Literals.COMPONENT__PROVISIONING_COMPONENT_ALLOCATIONS, resultAsList.size(), resultAsList.toArray());
 		} catch (ClassCastException exception) {
 	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
@@ -1734,7 +1729,21 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 	 * @generated
 	 */
 
-	public EList<Component> getAllocatedComponents() {
+	public EList<ComponentRealization> getOwnedComponentRealizations() {
+
+		if (ownedComponentRealizations == null) {
+			ownedComponentRealizations = new EObjectContainmentEList.Resolving<ComponentRealization>(ComponentRealization.class, this, CsPackage.COMPONENT__OWNED_COMPONENT_REALIZATIONS);
+		}
+		return ownedComponentRealizations;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+
+	public EList<Component> getRealizedComponents() {
 
 
     Object result = null;
@@ -1757,13 +1766,13 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
       throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = CsPackage.Literals.COMPONENT__ALLOCATED_COMPONENTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
-    result = helper.getValue(this, CsPackage.Literals.COMPONENT__ALLOCATED_COMPONENTS, annotation);
+    EAnnotation annotation = CsPackage.Literals.COMPONENT__REALIZED_COMPONENTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    result = helper.getValue(this, CsPackage.Literals.COMPONENT__REALIZED_COMPONENTS, annotation);
 		
 		try {
 		@SuppressWarnings("unchecked")
 		Collection<Component> resultAsList = (Collection<Component>) result;
-		return new EcoreEList.UnmodifiableEList<Component>(this, CsPackage.Literals.COMPONENT__ALLOCATED_COMPONENTS, resultAsList.size(), resultAsList.toArray());
+		return new EcoreEList.UnmodifiableEList<Component>(this, CsPackage.Literals.COMPONENT__REALIZED_COMPONENTS, resultAsList.size(), resultAsList.toArray());
 		} catch (ClassCastException exception) {
 	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
@@ -1771,17 +1780,13 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 		
 	}
 
-
-
-
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 
-	public EList<Component> getAllocatingComponents() {
+	public EList<Component> getRealizingComponents() {
 
 
     Object result = null;
@@ -1804,23 +1809,19 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
       throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = CsPackage.Literals.COMPONENT__ALLOCATING_COMPONENTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
-    result = helper.getValue(this, CsPackage.Literals.COMPONENT__ALLOCATING_COMPONENTS, annotation);
+    EAnnotation annotation = CsPackage.Literals.COMPONENT__REALIZING_COMPONENTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    result = helper.getValue(this, CsPackage.Literals.COMPONENT__REALIZING_COMPONENTS, annotation);
 		
 		try {
 		@SuppressWarnings("unchecked")
 		Collection<Component> resultAsList = (Collection<Component>) result;
-		return new EcoreEList.UnmodifiableEList<Component>(this, CsPackage.Literals.COMPONENT__ALLOCATING_COMPONENTS, resultAsList.size(), resultAsList.toArray());
+		return new EcoreEList.UnmodifiableEList<Component>(this, CsPackage.Literals.COMPONENT__REALIZING_COMPONENTS, resultAsList.size(), resultAsList.toArray());
 		} catch (ClassCastException exception) {
 	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
 	}
-
-
-
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -2116,11 +2117,13 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 	 * @generated
 	 */
 
-	public boolean isDecomposed() {
-		return this.getOwnedPartitions().size() > 0;
+	public EList<Part> getRepresentingParts() {
+
+		if (representingParts == null) {
+			representingParts = new EObjectResolvingEList<Part>(Part.class, this, CsPackage.COMPONENT__REPRESENTING_PARTS);
+		}
+		return representingParts;
 	}
-
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -2142,6 +2145,8 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 				return ((InternalEList<?>)getOwnedInterfaceUses()).basicRemove(otherEnd, msgs);
 			case CsPackage.COMPONENT__OWNED_INTERFACE_IMPLEMENTATIONS:
 				return ((InternalEList<?>)getOwnedInterfaceImplementations()).basicRemove(otherEnd, msgs);
+			case CsPackage.COMPONENT__OWNED_COMPONENT_REALIZATIONS:
+				return ((InternalEList<?>)getOwnedComponentRealizations()).basicRemove(otherEnd, msgs);
 			case CsPackage.COMPONENT__OWNED_PHYSICAL_PATH:
 				return ((InternalEList<?>)getOwnedPhysicalPath()).basicRemove(otherEnd, msgs);
 			case CsPackage.COMPONENT__OWNED_PHYSICAL_LINKS:
@@ -2176,10 +2181,6 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 				return getOwnedFeatures();
 			case CsPackage.COMPONENT__CONTAINED_PROPERTIES:
 				return getContainedProperties();
-			case CsPackage.COMPONENT__OWNED_PARTITIONS:
-				return getOwnedPartitions();
-			case CsPackage.COMPONENT__REPRESENTING_PARTITIONS:
-				return getRepresentingPartitions();
 			case CsPackage.COMPONENT__OWNED_INTERFACE_ALLOCATIONS:
 				return getOwnedInterfaceAllocations();
 			case CsPackage.COMPONENT__PROVISIONED_INTERFACE_ALLOCATIONS:
@@ -2208,6 +2209,10 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 				return getAcquire();
 			case CsPackage.COMPONENT__TRANSMIT:
 				return getTransmit();
+			case CsPackage.COMPONENT__IS_ACTOR:
+				return isIsActor();
+			case CsPackage.COMPONENT__IS_HUMAN:
+				return isIsHuman();
 			case CsPackage.COMPONENT__OWNED_INTERFACE_USES:
 				return getOwnedInterfaceUses();
 			case CsPackage.COMPONENT__USED_INTERFACE_LINKS:
@@ -2224,10 +2229,12 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 				return getProvisionedComponentAllocations();
 			case CsPackage.COMPONENT__PROVISIONING_COMPONENT_ALLOCATIONS:
 				return getProvisioningComponentAllocations();
-			case CsPackage.COMPONENT__ALLOCATED_COMPONENTS:
-				return getAllocatedComponents();
-			case CsPackage.COMPONENT__ALLOCATING_COMPONENTS:
-				return getAllocatingComponents();
+			case CsPackage.COMPONENT__OWNED_COMPONENT_REALIZATIONS:
+				return getOwnedComponentRealizations();
+			case CsPackage.COMPONENT__REALIZED_COMPONENTS:
+				return getRealizedComponents();
+			case CsPackage.COMPONENT__REALIZING_COMPONENTS:
+				return getRealizingComponents();
 			case CsPackage.COMPONENT__PROVIDED_INTERFACES:
 				return getProvidedInterfaces();
 			case CsPackage.COMPONENT__REQUIRED_INTERFACES:
@@ -2244,6 +2251,8 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 				return getOwnedPhysicalLinks();
 			case CsPackage.COMPONENT__OWNED_PHYSICAL_LINK_CATEGORIES:
 				return getOwnedPhysicalLinkCategories();
+			case CsPackage.COMPONENT__REPRESENTING_PARTS:
+				return getRepresentingParts();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -2276,6 +2285,12 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 				getOwnedCommunicationLinks().clear();
 				getOwnedCommunicationLinks().addAll((Collection<? extends CommunicationLink>)newValue);
 				return;
+			case CsPackage.COMPONENT__IS_ACTOR:
+					setIsActor((Boolean)newValue);
+				return;
+			case CsPackage.COMPONENT__IS_HUMAN:
+					setIsHuman((Boolean)newValue);
+				return;
 			case CsPackage.COMPONENT__OWNED_INTERFACE_USES:
 				getOwnedInterfaceUses().clear();
 				getOwnedInterfaceUses().addAll((Collection<? extends InterfaceUse>)newValue);
@@ -2283,6 +2298,10 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 			case CsPackage.COMPONENT__OWNED_INTERFACE_IMPLEMENTATIONS:
 				getOwnedInterfaceImplementations().clear();
 				getOwnedInterfaceImplementations().addAll((Collection<? extends InterfaceImplementation>)newValue);
+				return;
+			case CsPackage.COMPONENT__OWNED_COMPONENT_REALIZATIONS:
+				getOwnedComponentRealizations().clear();
+				getOwnedComponentRealizations().addAll((Collection<? extends ComponentRealization>)newValue);
 				return;
 			case CsPackage.COMPONENT__OWNED_PHYSICAL_PATH:
 				getOwnedPhysicalPath().clear();
@@ -2295,6 +2314,10 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 			case CsPackage.COMPONENT__OWNED_PHYSICAL_LINK_CATEGORIES:
 				getOwnedPhysicalLinkCategories().clear();
 				getOwnedPhysicalLinkCategories().addAll((Collection<? extends PhysicalLinkCategory>)newValue);
+				return;
+			case CsPackage.COMPONENT__REPRESENTING_PARTS:
+				getRepresentingParts().clear();
+				getRepresentingParts().addAll((Collection<? extends Part>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -2324,11 +2347,20 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 			case CsPackage.COMPONENT__OWNED_COMMUNICATION_LINKS:
 				getOwnedCommunicationLinks().clear();
 				return;
+			case CsPackage.COMPONENT__IS_ACTOR:
+				setIsActor(IS_ACTOR_EDEFAULT);
+				return;
+			case CsPackage.COMPONENT__IS_HUMAN:
+				setIsHuman(IS_HUMAN_EDEFAULT);
+				return;
 			case CsPackage.COMPONENT__OWNED_INTERFACE_USES:
 				getOwnedInterfaceUses().clear();
 				return;
 			case CsPackage.COMPONENT__OWNED_INTERFACE_IMPLEMENTATIONS:
 				getOwnedInterfaceImplementations().clear();
+				return;
+			case CsPackage.COMPONENT__OWNED_COMPONENT_REALIZATIONS:
+				getOwnedComponentRealizations().clear();
 				return;
 			case CsPackage.COMPONENT__OWNED_PHYSICAL_PATH:
 				getOwnedPhysicalPath().clear();
@@ -2338,6 +2370,9 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 				return;
 			case CsPackage.COMPONENT__OWNED_PHYSICAL_LINK_CATEGORIES:
 				getOwnedPhysicalLinkCategories().clear();
+				return;
+			case CsPackage.COMPONENT__REPRESENTING_PARTS:
+				getRepresentingParts().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -2369,10 +2404,6 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 				return ownedFeatures != null && !ownedFeatures.isEmpty();
 			case CsPackage.COMPONENT__CONTAINED_PROPERTIES:
 				return !getContainedProperties().isEmpty();
-			case CsPackage.COMPONENT__OWNED_PARTITIONS:
-				return !getOwnedPartitions().isEmpty();
-			case CsPackage.COMPONENT__REPRESENTING_PARTITIONS:
-				return !getRepresentingPartitions().isEmpty();
 			case CsPackage.COMPONENT__OWNED_INTERFACE_ALLOCATIONS:
 				return ownedInterfaceAllocations != null && !ownedInterfaceAllocations.isEmpty();
 			case CsPackage.COMPONENT__PROVISIONED_INTERFACE_ALLOCATIONS:
@@ -2401,6 +2432,10 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 				return !getAcquire().isEmpty();
 			case CsPackage.COMPONENT__TRANSMIT:
 				return !getTransmit().isEmpty();
+			case CsPackage.COMPONENT__IS_ACTOR:
+				return isActor != IS_ACTOR_EDEFAULT;
+			case CsPackage.COMPONENT__IS_HUMAN:
+				return isHuman != IS_HUMAN_EDEFAULT;
 			case CsPackage.COMPONENT__OWNED_INTERFACE_USES:
 				return ownedInterfaceUses != null && !ownedInterfaceUses.isEmpty();
 			case CsPackage.COMPONENT__USED_INTERFACE_LINKS:
@@ -2417,10 +2452,12 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 				return !getProvisionedComponentAllocations().isEmpty();
 			case CsPackage.COMPONENT__PROVISIONING_COMPONENT_ALLOCATIONS:
 				return !getProvisioningComponentAllocations().isEmpty();
-			case CsPackage.COMPONENT__ALLOCATED_COMPONENTS:
-				return !getAllocatedComponents().isEmpty();
-			case CsPackage.COMPONENT__ALLOCATING_COMPONENTS:
-				return !getAllocatingComponents().isEmpty();
+			case CsPackage.COMPONENT__OWNED_COMPONENT_REALIZATIONS:
+				return ownedComponentRealizations != null && !ownedComponentRealizations.isEmpty();
+			case CsPackage.COMPONENT__REALIZED_COMPONENTS:
+				return !getRealizedComponents().isEmpty();
+			case CsPackage.COMPONENT__REALIZING_COMPONENTS:
+				return !getRealizingComponents().isEmpty();
 			case CsPackage.COMPONENT__PROVIDED_INTERFACES:
 				return !getProvidedInterfaces().isEmpty();
 			case CsPackage.COMPONENT__REQUIRED_INTERFACES:
@@ -2437,6 +2474,8 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 				return ownedPhysicalLinks != null && !ownedPhysicalLinks.isEmpty();
 			case CsPackage.COMPONENT__OWNED_PHYSICAL_LINK_CATEGORIES:
 				return ownedPhysicalLinkCategories != null && !ownedPhysicalLinkCategories.isEmpty();
+			case CsPackage.COMPONENT__REPRESENTING_PARTS:
+				return representingParts != null && !representingParts.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -2464,13 +2503,6 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 			switch (derivedFeatureID) {
 				case CsPackage.COMPONENT__OWNED_FEATURES: return CapellacorePackage.CLASSIFIER__OWNED_FEATURES;
 				case CsPackage.COMPONENT__CONTAINED_PROPERTIES: return CapellacorePackage.CLASSIFIER__CONTAINED_PROPERTIES;
-				default: return -1;
-			}
-		}
-		if (baseClass == PartitionableElement.class) {
-			switch (derivedFeatureID) {
-				case CsPackage.COMPONENT__OWNED_PARTITIONS: return InformationPackage.PARTITIONABLE_ELEMENT__OWNED_PARTITIONS;
-				case CsPackage.COMPONENT__REPRESENTING_PARTITIONS: return InformationPackage.PARTITIONABLE_ELEMENT__REPRESENTING_PARTITIONS;
 				default: return -1;
 			}
 		}
@@ -2526,13 +2558,6 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 				default: return -1;
 			}
 		}
-		if (baseClass == PartitionableElement.class) {
-			switch (baseFeatureID) {
-				case InformationPackage.PARTITIONABLE_ELEMENT__OWNED_PARTITIONS: return CsPackage.COMPONENT__OWNED_PARTITIONS;
-				case InformationPackage.PARTITIONABLE_ELEMENT__REPRESENTING_PARTITIONS: return CsPackage.COMPONENT__REPRESENTING_PARTITIONS;
-				default: return -1;
-			}
-		}
 		if (baseClass == InterfaceAllocator.class) {
 			switch (baseFeatureID) {
 				case CsPackage.INTERFACE_ALLOCATOR__OWNED_INTERFACE_ALLOCATIONS: return CsPackage.COMPONENT__OWNED_INTERFACE_ALLOCATIONS;
@@ -2572,6 +2597,10 @@ public abstract class ComponentImpl extends BlockImpl implements Component {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (abstract: "); //$NON-NLS-1$
 		result.append(abstract_);
+		result.append(", isActor: "); //$NON-NLS-1$
+		result.append(isActor);
+		result.append(", isHuman: "); //$NON-NLS-1$
+		result.append(isHuman);
 		result.append(')');
 		return result.toString();
 	}

@@ -12,6 +12,7 @@ package org.polarsys.capella.core.data.capellacommon;
 
 import org.eclipse.emf.common.util.EList;
 import org.polarsys.capella.core.data.capellacore.InvolvedElement;
+import org.polarsys.capella.core.data.la.CapabilityRealization;
 
 /**
  * <!-- begin-user-doc -->
@@ -22,7 +23,8 @@ import org.polarsys.capella.core.data.capellacore.InvolvedElement;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvedElement#getInvolvingCapabilityRealizationInvolvements <em>Involving Capability Realization Involvements</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvedElement#getCapabilityRealizationInvolvements <em>Capability Realization Involvements</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvedElement#getInvolvingCapabilityRealizations <em>Involving Capability Realizations</em>}</li>
  * </ul>
  *
  * @see org.polarsys.capella.core.data.capellacommon.CapellacommonPackage#getCapabilityRealizationInvolvedElement()
@@ -38,25 +40,42 @@ public interface CapabilityRealizationInvolvedElement extends InvolvedElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Involving Capability Realization Involvements</b></em>' reference list.
+	 * Returns the value of the '<em><b>Capability Realization Involvements</b></em>' reference list.
 	 * The list contents are of type {@link org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvement}.
 
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Involving Capability Realization Involvements</em>' reference list isn't clear,
+	 * If the meaning of the '<em>Capability Realization Involvements</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Involving Capability Realization Involvements</em>' reference list.
-	 * @see org.polarsys.capella.core.data.capellacommon.CapellacommonPackage#getCapabilityRealizationInvolvedElement_InvolvingCapabilityRealizationInvolvements()
+	 * @return the value of the '<em>Capability Realization Involvements</em>' reference list.
+	 * @see org.polarsys.capella.core.data.capellacommon.CapellacommonPackage#getCapabilityRealizationInvolvedElement_CapabilityRealizationInvolvements()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='involvingInvolvements'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the capability realization involvement relationships in which this element is referenced\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
 	 */
 
-	EList<CapabilityRealizationInvolvement> getInvolvingCapabilityRealizationInvolvements();
+	EList<CapabilityRealizationInvolvement> getCapabilityRealizationInvolvements();
+
+	/**
+	 * Returns the value of the '<em><b>Involving Capability Realizations</b></em>' reference list.
+	 * The list contents are of type {@link org.polarsys.capella.core.data.la.CapabilityRealization}.
+
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Involving Capability Realizations</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Involving Capability Realizations</em>' reference list.
+	 * @see org.polarsys.capella.core.data.capellacommon.CapellacommonPackage#getCapabilityRealizationInvolvedElement_InvolvingCapabilityRealizations()
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Capability realizations that involve this element' constraints='none' comment/notes='none'"
+	 * @generated
+	 */
+
+	EList<CapabilityRealization> getInvolvingCapabilityRealizations();
 
 
 

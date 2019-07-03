@@ -11,7 +11,6 @@
 package org.polarsys.capella.common.data.activity;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.polarsys.capella.common.data.modellingcore.AbstractConstraint;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.data.modellingcore.AbstractType;

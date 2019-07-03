@@ -124,7 +124,8 @@ public class CapabilityRealizationInvolvedElementItemProvider
 			addFeaturesPropertyDescriptor(object);
 			addAppliedRequirementsPropertyDescriptor(object);
 			addInvolvingInvolvementsPropertyDescriptor(object);
-			addInvolvingCapabilityRealizationInvolvementsPropertyDescriptor(object);
+			addCapabilityRealizationInvolvementsPropertyDescriptor(object);
+			addInvolvingCapabilityRealizationsPropertyDescriptor(object);
 		}
 		// begin-extension-code
 		checkChildCreationExtender(object);
@@ -483,12 +484,12 @@ public class CapabilityRealizationInvolvedElementItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Involving Capability Realization Involvements feature.
+	 * This adds a property descriptor for the Capability Realization Involvements feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addInvolvingCapabilityRealizationInvolvementsPropertyDescriptor(Object object) {
+	protected void addCapabilityRealizationInvolvementsPropertyDescriptor(Object object) {
 
 		// begin-extension-code
 		itemPropertyDescriptors.add
@@ -496,9 +497,9 @@ public class CapabilityRealizationInvolvedElementItemProvider
 		// end-extension-code
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_CapabilityRealizationInvolvedElement_involvingCapabilityRealizationInvolvements_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_CapabilityRealizationInvolvedElement_involvingCapabilityRealizationInvolvements_feature", "_UI_CapabilityRealizationInvolvedElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 CapellacommonPackage.Literals.CAPABILITY_REALIZATION_INVOLVED_ELEMENT__INVOLVING_CAPABILITY_REALIZATION_INVOLVEMENTS,
+				 getString("_UI_CapabilityRealizationInvolvedElement_capabilityRealizationInvolvements_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_CapabilityRealizationInvolvedElement_capabilityRealizationInvolvements_feature", "_UI_CapabilityRealizationInvolvedElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 CapellacommonPackage.Literals.CAPABILITY_REALIZATION_INVOLVED_ELEMENT__CAPABILITY_REALIZATION_INVOLVEMENTS,
 				 false,
 				 false,
 				 false,
@@ -508,6 +509,35 @@ public class CapabilityRealizationInvolvedElementItemProvider
 				 null));
 		// end-extension-code
 	}
+
+
+	/**
+	 * This adds a property descriptor for the Involving Capability Realizations feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addInvolvingCapabilityRealizationsPropertyDescriptor(Object object) {
+
+		// begin-extension-code
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+		// end-extension-code
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_CapabilityRealizationInvolvedElement_involvingCapabilityRealizations_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_CapabilityRealizationInvolvedElement_involvingCapabilityRealizations_feature", "_UI_CapabilityRealizationInvolvedElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 CapellacommonPackage.Literals.CAPABILITY_REALIZATION_INVOLVED_ELEMENT__INVOLVING_CAPABILITY_REALIZATIONS,
+				 false,
+				 false,
+				 false,
+				 null,
+				 null,
+		// begin-extension-code
+				 null));
+		// end-extension-code
+	}
+
 
 	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an

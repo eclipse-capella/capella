@@ -13,9 +13,7 @@
 package org.polarsys.capella.core.data.interaction;
 
 import org.polarsys.capella.common.data.modellingcore.ValueSpecification;
-
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
-
 import org.polarsys.capella.core.data.information.ExchangeItemElement;
 
 

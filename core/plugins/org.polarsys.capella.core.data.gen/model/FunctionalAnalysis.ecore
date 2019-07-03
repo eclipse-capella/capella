@@ -3049,7 +3049,7 @@
       </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="part" eType="ecore:EClass Information.ecore#//Partition">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="part" eType="ecore:EClass CompositeStructure.ecore#//Part">
       <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
         <details key="featureName" value="partWithPort"/>
         <details key="featureOwner" value="ConnectorEnd"/>
@@ -3184,7 +3184,7 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ComponentPort" eSuperTypes="Information.ecore#//Port Information.ecore#//Partition ../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//InformationsExchanger">
+  <eClassifiers xsi:type="ecore:EClass" name="ComponentPort" eSuperTypes="Information.ecore#//Port ../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//InformationsExchanger Information.ecore#//Property">
     <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
       <details key="description" value="A component port is the unification of the standard port and the flow port."/>
       <details key="constraints" value="none"/>

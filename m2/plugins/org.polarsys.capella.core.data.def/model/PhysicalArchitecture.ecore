@@ -108,42 +108,6 @@
       <details key="constraints" value="none"/>
     </eAnnotations>
     <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedPhysicalContext" eType="#//PhysicalContext"
-        containment="true">
-      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
-        <details key="description" value="the context is the set of (physical) parts that make the &quot;world&quot; at this abstraction level (the system part(s) and the external actor part(s))&#xD;&#xA;[source: Capella study]"/>
-        <details key="constraints" value="none"/>
-        <details key="comment/notes" value="none"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-        <details key="UML/SysML semantic equivalences" value="uml::Package::packagedElement"/>
-        <details key="explanation" value="none"/>
-        <details key="constraints" value="uml::Package::packagedElement elements on which PhysicalContext stereotype or any stereotype that inherits from it is applied&#xD;&#xA;Multiplicity must be [0..1]"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedPhysicalComponent"
-        eType="#//PhysicalComponent" containment="true">
-      <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
-        <details key="featureName" value="packagedElement"/>
-        <details key="featureOwner" value="Package"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
-        <details key="Label" value="ownedComponents"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
-      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
-        <details key="description" value="the physical component that represents the System&#xD;&#xA;[source: Capella study]"/>
-        <details key="constraints" value="none"/>
-        <details key="comment/notes" value="none"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-        <details key="UML/SysML semantic equivalences" value="uml::Package::packagedElement"/>
-        <details key="explanation" value="none"/>
-        <details key="constraints" value="uml::Package::packagedElement elements on which PhysicalComponent stereotype or any stereotype that inherits from it is applied&#xD;&#xA;Multiplicity must be [0..1]"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
-    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedPhysicalComponentPkg"
         eType="#//PhysicalComponentPkg" containment="true">
       <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
@@ -163,28 +127,6 @@
         <details key="UML/SysML semantic equivalences" value="uml::Package::nestedPackage#uml::Package::packagedElement"/>
         <details key="explanation" value="none"/>
         <details key="constraints" value="uml::Package::nestedPackage elements on which PhysicalComponentPkg stereotype or any stereotype that inherits from it is applied&#xD;&#xA;Multiplicity must be [0..1]"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedPhysicalActorPkg"
-        eType="#//PhysicalActorPkg" containment="true">
-      <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
-        <details key="featureName" value="packagedElement"/>
-        <details key="featureOwner" value="Package"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
-        <details key="Label" value="ownedActorPkg"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
-      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
-        <details key="description" value="a package containing the physical actors involved in this physical architecture&#xD;&#xA;[source: Capella study]"/>
-        <details key="constraints" value="none"/>
-        <details key="comment/notes" value="none"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-        <details key="UML/SysML semantic equivalences" value="uml::Package::nestedPackage#uml::Package::packagedElement"/>
-        <details key="explanation" value="none"/>
-        <details key="constraints" value="uml::Package::nestedPackage elements on which PhysicalActorPkg stereotype or any stereotype that inherits from it is applied&#xD;&#xA;Multiplicity must be [0..1]"/>
       </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
     </eStructuralFeatures>
@@ -344,23 +286,7 @@
       </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="allocatorPhysicalActors"
-        upperBound="-1" eType="#//PhysicalActor" changeable="false" volatile="true"
-        transient="true" derived="true" eOpposite="#//PhysicalActor/allocatedPhysicalFunctions">
-      <eAnnotations source="http://www.polarsys.org/capella/derived">
-        <details key="viatra.variant" value="patternbody"/>
-        <details key="viatra.expression" value="PhysicalFunction.incomingTraces(self, cfa);&#xD;&#xA;ComponentFunctionalAllocation.sourceElement(cfa, target);"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/semantic">
-        <details key="excludefrom" value="xmlpivot"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-        <details key="UML/SysML semantic equivalences" value="keyword::none"/>
-        <details key="explanation" value="Derived and transient"/>
-        <details key="constraints" value="none"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="allocatorPhysicalComponents"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="allocatingPhysicalComponents"
         upperBound="-1" eType="#//PhysicalComponent" changeable="false" volatile="true"
         transient="true" derived="true" eOpposite="#//PhysicalComponent/allocatedPhysicalFunctions">
       <eAnnotations source="http://www.polarsys.org/capella/derived">
@@ -474,30 +400,31 @@
       <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="AbstractPhysicalComponent" abstract="true"
-      eSuperTypes="CompositeStructure.ecore#//SystemComponent CompositeStructure.ecore#//DeployableElement CompositeStructure.ecore#//DeploymentTarget">
+  <eClassifiers xsi:type="ecore:EClass" name="PhysicalComponent" eSuperTypes="CompositeStructure.ecore#//AbstractPhysicalArtifact CompositeStructure.ecore#//Component CapellaCommon.ecore#//CapabilityRealizationInvolvedElement">
     <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
-      <details key="Label" value="AbstractPhysicalComponent"/>
+      <details key="Label" value="PhysicalComponent"/>
     </eAnnotations>
     <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
       <details key="metaclass" value="Component"/>
-      <details key="Stereotype" value="eng.AbstractPhysicalComponent"/>
+      <details key="stereotype" value="eng.PhysicalComponent"/>
     </eAnnotations>
     <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
-      <details key="description" value="Base abstract class for the implementation of actual physical components&#xD;&#xA;[source: Capella study]"/>
-      <details key="usage guideline" value="n/a"/>
+      <details key="description" value="Physical Components are the artifacts enabling to describe architectural solutions to satisfy the logical architecture identified at the upper abstraction level. Physical components are identified according to physical rationals (i.e. components reuse, available COTS, non functional constraints...)&#xD;&#xA;Examples: Software component, executable, hardware component (mechanical devices, electronical boards, equipments)"/>
+      <details key="usage guideline" value="refer to description"/>
+      <details key="arcadia_description" value="Physical Components are the artefacts enabling to describe the final physical decomposition of the system. Physical components are identified according to physical and development constraints.&#xD;&#xA;Two kinds of physical components exist: behavioural and implementation components.&#xD;&#xA;Two kinds of physical components are identified:&#xD;&#xA;- A behavioural component is a physical component in charge of implementing / realising part of the functions allocated to the system&#xD;&#xA;Example: software component, VHDL program (for a programmable device), hardware selector...&#xD;&#xA;- An implementation component  is a material physical component, resource embedding some behavioural components, and necessary to their expected behaviour.&#xD;&#xA;Example: Hardware computing board, computer, FPGA (programmable device), ...&#xD;&#xA;"/>
+      <details key="usage examples" value="../img/usage_examples/example_physical_components.png"/>
       <details key="used in levels" value="physical"/>
-      <details key="usage examples" value="n/a"/>
       <details key="constraints" value="none"/>
       <details key="comment/notes" value="none"/>
       <details key="reference documentation" value="none"/>
     </eAnnotations>
     <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
       <details key="UML/SysML semantic equivalences" value=""/>
-      <details key="base metaclass in UML/SysML profile " value=""/>
-      <details key="explanation" value="none"/>
+      <details key="base metaclass in UML/SysML profile " value="SysML::Blocks::Block"/>
+      <details key="explanation" value="cannot map to uml::Component, which is not part of UML4SysML"/>
       <details key="constraints" value="none"/>
     </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="kind" eType="#//PhysicalComponentKind">
       <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
         <details key="featureName" value="type"/>
@@ -545,41 +472,6 @@
       </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedDeploymentAspect"
-        eType="#//deployment/DeploymentAspect" containment="true">
-      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-        <details key="UML/SysML semantic equivalences" value=""/>
-        <details key="explanation" value="none"/>
-        <details key="constraints" value="none"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
-    </eStructuralFeatures>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="PhysicalComponent" eSuperTypes="#//AbstractPhysicalComponent CompositeStructure.ecore#//AbstractPhysicalArtifact">
-    <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
-      <details key="Label" value="PhysicalComponent"/>
-    </eAnnotations>
-    <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
-      <details key="metaclass" value="Component"/>
-      <details key="stereotype" value="eng.PhysicalComponent"/>
-    </eAnnotations>
-    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
-      <details key="description" value="Physical Components are the artifacts enabling to describe architectural solutions to satisfy the logical architecture identified at the upper abstraction level. Physical components are identified according to physical rationals (i.e. components reuse, available COTS, non functional constraints...)&#xD;&#xA;Examples: Software component, executable, hardware component (mechanical devices, electronical boards, equipments)"/>
-      <details key="usage guideline" value="refer to description"/>
-      <details key="arcadia_description" value="Physical Components are the artefacts enabling to describe the final physical decomposition of the system. Physical components are identified according to physical and development constraints.&#xD;&#xA;Two kinds of physical components exist: behavioural and implementation components.&#xD;&#xA;Two kinds of physical components are identified:&#xD;&#xA;- A behavioural component is a physical component in charge of implementing / realising part of the functions allocated to the system&#xD;&#xA;Example: software component, VHDL program (for a programmable device), hardware selector...&#xD;&#xA;- An implementation component  is a material physical component, resource embedding some behavioural components, and necessary to their expected behaviour.&#xD;&#xA;Example: Hardware computing board, computer, FPGA (programmable device), ...&#xD;&#xA;"/>
-      <details key="usage examples" value="../img/usage_examples/example_physical_components.png"/>
-      <details key="used in levels" value="physical"/>
-      <details key="constraints" value="none"/>
-      <details key="comment/notes" value="none"/>
-      <details key="reference documentation" value="none"/>
-    </eAnnotations>
-    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-      <details key="UML/SysML semantic equivalences" value=""/>
-      <details key="base metaclass in UML/SysML profile " value="SysML::Blocks::Block"/>
-      <details key="explanation" value="cannot map to uml::Component, which is not part of UML4SysML"/>
-      <details key="constraints" value="none"/>
-    </eAnnotations>
-    <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedPhysicalComponents"
         upperBound="-1" eType="#//PhysicalComponent" containment="true">
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
@@ -607,37 +499,6 @@
         <details key="constraints" value="none"/>
       </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedLogicalComponentRealizations"
-        upperBound="-1" eType="#//LogicalComponentRealization" containment="true">
-      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
-        <details key="description" value="the logical component realization relationships that are stored/owned by this physical component&#xD;&#xA;[source: Capella study]"/>
-        <details key="constraints" value="none"/>
-        <details key="comment/notes" value="none"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-        <details key="UML/SysML semantic equivalences" value="keyword::nearestpackage"/>
-        <details key="explanation" value="SysML::Blocks::Block cannot contain packages, hence we find the nearest available package to store them."/>
-        <details key="constraints" value="none"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="logicalComponentRealizations"
-        upperBound="-1" eType="#//LogicalComponentRealization" changeable="false"
-        volatile="true" transient="true" derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived">
-        <details key="viatra.variant" value="alias"/>
-        <details key="viatra.expression" value="provisionedComponentAllocations"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
-        <details key="description" value="(automatically computed) the logical component realization links that involve this physical component&#xD;&#xA;[source: Capella study]"/>
-        <details key="constraints" value="none"/>
-        <details key="comment/notes" value="none"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-        <details key="UML/SysML semantic equivalences" value="keyword::none"/>
-        <details key="explanation" value="Derived and transient"/>
-        <details key="constraints" value="none"/>
-      </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="logicalInterfaceRealizations"
         upperBound="-1" eType="#//LogicalInterfaceRealization" changeable="false"
@@ -703,7 +564,7 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="allocatedPhysicalFunctions"
         upperBound="-1" eType="#//PhysicalFunction" changeable="false" volatile="true"
-        transient="true" derived="true" eOpposite="#//PhysicalFunction/allocatorPhysicalComponents">
+        transient="true" derived="true" eOpposite="#//PhysicalFunction/allocatingPhysicalComponents">
       <eAnnotations source="http://www.polarsys.org/capella/derived">
         <details key="viatra.variant" value="alias"/>
         <details key="viatra.expression" value="allocatedFunctions"/>
@@ -745,93 +606,8 @@
         <details key="constraints" value="none"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="deployingPhysicalActors"
-        upperBound="-1" eType="#//PhysicalActor" changeable="false" volatile="true"
-        transient="true" derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived">
-        <details key="viatra.variant" value="patternbody"/>
-        <details key="viatra.expression" value="Part.abstractType(part, self);&#xD;&#xA;&#x9;Part.deployingLinks.location(part, deployedPart);&#xD;&#xA;&#x9;Part.abstractType(deployedPart, target);&#xD;&#xA;} or {&#xD;&#xA;&#x9;Part.abstractType(part, self);&#xD;&#xA;&#x9;Part.deploymentLinks.deployedElement(part, target);"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/semantic">
-        <details key="excludefrom" value="xmlpivot"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-        <details key="UML/SysML semantic equivalences" value="keyword::none"/>
-        <details key="explanation" value="Derived and transient"/>
-        <details key="constraints" value="none"/>
-      </eAnnotations>
-    </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="PhysicalActorPkg" eSuperTypes="FunctionalAnalysis.ecore#//AbstractFunctionalStructure">
-    <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
-      <details key="Label" value="PhysicalActorPkg"/>
-    </eAnnotations>
-    <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
-      <details key="metaclass" value="Package"/>
-      <details key="stereotype" value="eng.PhysicalActorPkg"/>
-    </eAnnotations>
-    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
-      <details key="description" value="a container for physical actors entities&#xD;&#xA;[source: Capella study]"/>
-      <details key="usage guideline" value="n/a"/>
-      <details key="used in levels" value="physical"/>
-      <details key="usage examples" value="n/a"/>
-      <details key="constraints" value="none"/>
-      <details key="comment/notes" value="none"/>
-      <details key="reference documentation" value="none"/>
-    </eAnnotations>
-    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-      <details key="UML/SysML semantic equivalences" value=""/>
-      <details key="base metaclass in UML/SysML profile " value="uml::Package"/>
-      <details key="explanation" value="none"/>
-      <details key="constraints" value="none"/>
-    </eAnnotations>
-    <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedPhysicalActorPkgs"
-        upperBound="-1" eType="#//PhysicalActorPkg" containment="true">
-      <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
-        <details key="featureName" value="packagedElement"/>
-        <details key="featureOwner" value="Package"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
-        <details key="Label" value="ownedActorPkgs"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
-      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
-        <details key="description" value="the sub-(physical actor) packages contained in this package&#xD;&#xA;[source: Capella study]"/>
-        <details key="constraints" value="none"/>
-        <details key="comment/notes" value="none"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-        <details key="UML/SysML semantic equivalences" value="uml::Package::nestedPackage#uml::Package::packagedElement"/>
-        <details key="explanation" value="none"/>
-        <details key="constraints" value="uml::Package::nestedPackage elements on which PhysicalActorPkg stereotype or any stereotype that inherits from it is applied&#xD;&#xA;Order must be computed"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedPhysicalActors" upperBound="-1"
-        eType="#//PhysicalActor" containment="true">
-      <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
-        <details key="featureName" value="packagedElement"/>
-        <details key="featureOwner" value="Package"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
-        <details key="Label" value="ownedActors"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
-      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
-        <details key="description" value="the physical actor entities contained in this package&#xD;&#xA;[source: Capella study]"/>
-        <details key="constraints" value="none"/>
-        <details key="comment/notes" value="none"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-        <details key="UML/SysML semantic equivalences" value="uml::Package::packagedElement"/>
-        <details key="explanation" value="none"/>
-        <details key="constraints" value="uml::Package::packagedElement elements on which PhysicalActor stereotype or any stereotype that inherits from it is applied&#xD;&#xA;Order must be computed"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
-    </eStructuralFeatures>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="PhysicalComponentPkg" eSuperTypes="FunctionalAnalysis.ecore#//AbstractFunctionalStructure Information.ecore#//AssociationPkg">
+  <eClassifiers xsi:type="ecore:EClass" name="PhysicalComponentPkg" eSuperTypes="CompositeStructure.ecore#//ComponentPkg Information.ecore#//AssociationPkg">
     <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
       <details key="Label" value="PhysicalComponentPkg"/>
     </eAnnotations>
@@ -942,121 +718,6 @@
         <details key="constraints" value="uml::Package::packagedElement elements on which AbstractDeployment stereotype or any stereotype that inherits from it is applied&#xD;&#xA;Order must be computed"/>
       </eAnnotations>
     </eStructuralFeatures>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="PhysicalActor" eSuperTypes="#//AbstractPhysicalComponent CompositeStructure.ecore#//AbstractActor">
-    <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
-      <details key="Label" value="PhysicalActor"/>
-    </eAnnotations>
-    <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
-      <details key="metaclass" value="Component"/>
-      <details key="stereotype" value="eng.PhysicalActor"/>
-    </eAnnotations>
-    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
-      <details key="description" value="External actor interacting with the system via physical interfaces"/>
-      <details key="usage guideline" value="Used whenever there is a need to model an interaction between the outside of the physical system perimeter, and the inside, using one of the physical interfaces.&#xD;&#xA;Physical actors are typically derived/refined from logical actors definition."/>
-      <details key="used in levels" value="physical"/>
-      <details key="usage examples" value="n/a"/>
-      <details key="constraints" value="none"/>
-      <details key="comment/notes" value="none"/>
-      <details key="reference documentation" value="none"/>
-    </eAnnotations>
-    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-      <details key="UML/SysML semantic equivalences" value=""/>
-      <details key="base metaclass in UML/SysML profile " value="SysML::Blocks::Block"/>
-      <details key="explanation" value="none"/>
-      <details key="constraints" value="none"/>
-    </eAnnotations>
-    <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedLogicalActorRealizations"
-        upperBound="-1" eType="#//LogicalActorRealization" containment="true">
-      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
-        <details key="description" value="the allocation links between physical actors and the logical actor(s) that they realize, stored/owned under this physical actor&#xD;&#xA;[source: Capella study]"/>
-        <details key="constraints" value="none"/>
-        <details key="comment/notes" value="none"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-        <details key="UML/SysML semantic equivalences" value="uml::BehavioredClassifier::interfaceRealization"/>
-        <details key="explanation" value="Elements are contained in the nearest possible parent container."/>
-        <details key="constraints" value="uml::BehavioredClassifier::interfaceRealization elements on which LogicalActorRealization stereotype or any stereotype that inherits from it is applied"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="logicalActorRealizations"
-        upperBound="-1" eType="#//LogicalActorRealization" changeable="false" volatile="true"
-        transient="true" derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived">
-        <details key="viatra.variant" value="alias"/>
-        <details key="viatra.expression" value="provisionedComponentAllocations"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
-        <details key="description" value="(automatically computed) the relationship links between this physical actor and the logical actor(s) that it realizes&#xD;&#xA;[source: Capella study]"/>
-        <details key="constraints" value="none"/>
-        <details key="comment/notes" value="none"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-        <details key="UML/SysML semantic equivalences" value="keyword::none"/>
-        <details key="explanation" value="Derived and transient"/>
-        <details key="constraints" value="none"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="allocatedPhysicalFunctions"
-        upperBound="-1" eType="#//PhysicalFunction" changeable="false" volatile="true"
-        transient="true" derived="true" eOpposite="#//PhysicalFunction/allocatorPhysicalActors">
-      <eAnnotations source="http://www.polarsys.org/capella/derived">
-        <details key="viatra.variant" value="alias"/>
-        <details key="viatra.expression" value="allocatedFunctions"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
-      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-        <details key="UML/SysML semantic equivalences" value="keyword::none"/>
-        <details key="explanation" value="Derived and transient"/>
-        <details key="constraints" value="none"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="realizedLogicalActors"
-        upperBound="-1" eType="ecore:EClass LogicalArchitecture.ecore#//LogicalActor"
-        changeable="false" volatile="true" transient="true" derived="true" eOpposite="LogicalArchitecture.ecore#//LogicalActor/realizingPhysicalActors">
-      <eAnnotations source="http://www.polarsys.org/capella/derived">
-        <details key="viatra.variant" value="alias"/>
-        <details key="viatra.expression" value="allocatedComponents"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
-      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-        <details key="UML/SysML semantic equivalences" value="keyword::none"/>
-        <details key="explanation" value="Derived and transient"/>
-        <details key="constraints" value="none"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="deployedPhysicalComponents"
-        upperBound="-1" eType="#//PhysicalComponent" changeable="false" volatile="true"
-        transient="true" derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived">
-        <details key="viatra.variant" value="patternbody"/>
-        <details key="viatra.expression" value="Part.abstractType(part, self);&#xD;&#xA;&#x9;Part.deploymentLinks.deployedElement(part, deployedPart);&#xD;&#xA;&#x9;Part.abstractType(deployedPart, target);&#xD;&#xA;} or {&#xD;&#xA;&#x9;Part.abstractType(part, self);&#xD;&#xA;&#x9;Part.deploymentLinks.deployedElement(part, target);"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
-      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-        <details key="UML/SysML semantic equivalences" value="keyword::none"/>
-        <details key="explanation" value="Derived and transient"/>
-        <details key="constraints" value="none"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="LogicalActorRealization" eSuperTypes="CompositeStructure.ecore#//ComponentAllocation">
-    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
-      <details key="description" value="mediator class to support the implementation of the relationship between a physical actor and the logical actor(s) that it realizes&#xD;&#xA;[source: Capella study]"/>
-      <details key="usage guideline" value="n/a"/>
-      <details key="used in levels" value="physical"/>
-      <details key="usage examples" value="none"/>
-      <details key="constraints" value="none"/>
-      <details key="comment/notes" value="none"/>
-      <details key="reference documentation" value="none"/>
-    </eAnnotations>
-    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-      <details key="UML/SysML semantic equivalences" value=""/>
-      <details key="base metaclass in UML/SysML profile " value="uml::InterfaceRealization"/>
-      <details key="explanation" value="none"/>
-      <details key="constraints" value="none"/>
-    </eAnnotations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PhysicalNode" eSuperTypes="#//PhysicalComponent">
     <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
@@ -1350,23 +1011,6 @@
       <details key="constraints" value="none"/>
     </eAnnotations>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="LogicalComponentRealization" eSuperTypes="CompositeStructure.ecore#//ComponentAllocation">
-    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
-      <details key="description" value="mediator class supporting the implementation of the allocation link between a physical component, and the logical component(s) that it realizes&#xD;&#xA;[source: Capella study]"/>
-      <details key="usage guideline" value="n/a"/>
-      <details key="used in levels" value="physical"/>
-      <details key="usage examples" value="n/a"/>
-      <details key="constraints" value="none"/>
-      <details key="comment/notes" value="none"/>
-      <details key="reference documentation" value="none"/>
-    </eAnnotations>
-    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-      <details key="UML/SysML semantic equivalences" value=""/>
-      <details key="base metaclass in UML/SysML profile " value="uml::Realization"/>
-      <details key="explanation" value="none"/>
-      <details key="constraints" value="none"/>
-    </eAnnotations>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LogicalInterfaceRealization" eSuperTypes="CompositeStructure.ecore#//InterfaceAllocation">
     <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
       <details key="description" value="mediator class supporting the implementation of the allocation link between a physical interface, and the logical interface(s) that it realizes&#xD;&#xA;[source: Capella study]"/>
@@ -1431,24 +1075,6 @@
         <details key="constraints" value="none"/>
       </eAnnotations>
     </eLiterals>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="PhysicalContext" eSuperTypes="CompositeStructure.ecore#//ComponentContext">
-    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
-      <details key="description" value="specialization of a component context for the physical level. Refer to component context description.&#xD;&#xA;[source: Capella study]"/>
-      <details key="usage guideline" value="n/a"/>
-      <details key="used in levels" value="physical"/>
-      <details key="usage examples" value="n/a"/>
-      <details key="constraints" value="none"/>
-      <details key="comment/notes" value="none"/>
-      <details key="reference documentation" value="none"/>
-    </eAnnotations>
-    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-      <details key="UML/SysML semantic equivalences" value=""/>
-      <details key="base metaclass in UML/SysML profile " value="uml::Class"/>
-      <details key="explanation" value="none"/>
-      <details key="constraints" value="none"/>
-    </eAnnotations>
-    <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
   </eClassifiers>
   <eSubpackages name="deployment" nsURI="http://www.polarsys.org/capella/core/pa/deployment/1.4.0"
       nsPrefix="org.polarsys.capella.core.data.pa.deployment">
@@ -1518,7 +1144,7 @@
         </eAnnotations>
         <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
       </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//AbstractPhysicalComponent">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//PhysicalComponent">
         <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
           <details key="UML/SysML semantic equivalences" value=""/>
           <details key="explanation" value="none"/>

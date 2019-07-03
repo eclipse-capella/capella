@@ -17,23 +17,33 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.polarsys.capella.common.lib.IdGenerator;
-import org.polarsys.capella.core.data.capellacommon.*;
 import org.polarsys.capella.core.data.capellacommon.AbstractStateRealization;
+import org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvement;
 import org.polarsys.capella.core.data.capellacommon.CapellacommonFactory;
 import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
+import org.polarsys.capella.core.data.capellacommon.ChangeEvent;
+import org.polarsys.capella.core.data.capellacommon.ChangeEventKind;
 import org.polarsys.capella.core.data.capellacommon.ChoicePseudoState;
+import org.polarsys.capella.core.data.capellacommon.DeepHistoryPseudoState;
+import org.polarsys.capella.core.data.capellacommon.EntryPointPseudoState;
+import org.polarsys.capella.core.data.capellacommon.ExitPointPseudoState;
 import org.polarsys.capella.core.data.capellacommon.FinalState;
 import org.polarsys.capella.core.data.capellacommon.ForkPseudoState;
 import org.polarsys.capella.core.data.capellacommon.GenericTrace;
 import org.polarsys.capella.core.data.capellacommon.InitialPseudoState;
 import org.polarsys.capella.core.data.capellacommon.JoinPseudoState;
+import org.polarsys.capella.core.data.capellacommon.JustificationLink;
 import org.polarsys.capella.core.data.capellacommon.Mode;
 import org.polarsys.capella.core.data.capellacommon.Region;
+import org.polarsys.capella.core.data.capellacommon.ShallowHistoryPseudoState;
 import org.polarsys.capella.core.data.capellacommon.State;
+import org.polarsys.capella.core.data.capellacommon.StateEventRealization;
 import org.polarsys.capella.core.data.capellacommon.StateMachine;
 import org.polarsys.capella.core.data.capellacommon.StateTransition;
 import org.polarsys.capella.core.data.capellacommon.StateTransitionRealization;
 import org.polarsys.capella.core.data.capellacommon.TerminatePseudoState;
+import org.polarsys.capella.core.data.capellacommon.TimeEvent;
+import org.polarsys.capella.core.data.capellacommon.TimeEventKind;
 import org.polarsys.capella.core.data.capellacommon.TransfoLink;
 import org.polarsys.capella.core.data.capellacommon.TransitionKind;
 
@@ -84,6 +94,7 @@ public class CapellacommonFactoryImpl extends EFactoryImpl implements Capellacom
 			case CapellacommonPackage.GENERIC_TRACE: return createGenericTrace();
 			case CapellacommonPackage.TRANSFO_LINK: return createTransfoLink();
 			case CapellacommonPackage.JUSTIFICATION_LINK: return createJustificationLink();
+			case CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVEMENT: return createCapabilityRealizationInvolvement();
 			case CapellacommonPackage.STATE_MACHINE: return createStateMachine();
 			case CapellacommonPackage.REGION: return createRegion();
 			case CapellacommonPackage.STATE: return createState();
@@ -193,6 +204,22 @@ public class CapellacommonFactoryImpl extends EFactoryImpl implements Capellacom
 
     //end-capella-code
 		return justificationLink;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public CapabilityRealizationInvolvement createCapabilityRealizationInvolvement() {
+		CapabilityRealizationInvolvementImpl capabilityRealizationInvolvement = new CapabilityRealizationInvolvementImpl();
+    //begin-capella-code
+
+    capabilityRealizationInvolvement.setId(IdGenerator.createId());
+
+
+    //end-capella-code
+		return capabilityRealizationInvolvement;
 	}
 
 	/**

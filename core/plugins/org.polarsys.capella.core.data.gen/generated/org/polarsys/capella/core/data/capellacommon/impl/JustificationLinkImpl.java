@@ -13,7 +13,6 @@
 package org.polarsys.capella.core.data.capellacommon.impl;
 
 import org.eclipse.emf.ecore.EClass;
-
 import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
 import org.polarsys.capella.core.data.capellacommon.JustificationLink;
 

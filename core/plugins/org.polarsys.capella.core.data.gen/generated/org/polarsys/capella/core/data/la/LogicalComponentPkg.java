@@ -11,7 +11,7 @@
 package org.polarsys.capella.core.data.la;
 
 import org.eclipse.emf.common.util.EList;
-import org.polarsys.capella.core.data.fa.AbstractFunctionalStructure;
+import org.polarsys.capella.core.data.cs.ComponentPkg;
 
 /**
  * <!-- begin-user-doc -->
@@ -33,7 +33,7 @@ import org.polarsys.capella.core.data.fa.AbstractFunctionalStructure;
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='uml::Package' explanation='none' constraints='none'"
  * @generated
  */
-public interface LogicalComponentPkg extends AbstractFunctionalStructure {
+public interface LogicalComponentPkg extends ComponentPkg {
 
 
 

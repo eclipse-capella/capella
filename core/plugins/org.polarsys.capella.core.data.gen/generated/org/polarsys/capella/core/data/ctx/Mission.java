@@ -23,13 +23,9 @@ import org.polarsys.capella.core.data.capellacore.NamedElement;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.polarsys.capella.core.data.ctx.Mission#getOwnedActorMissionInvolvements <em>Owned Actor Mission Involvements</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.ctx.Mission#getOwnedSystemMissionInvolvement <em>Owned System Mission Involvement</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.ctx.Mission#getOwnedMissionInvolvements <em>Owned Mission Involvements</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.ctx.Mission#getInvolvedSystemComponents <em>Involved System Components</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.ctx.Mission#getOwnedCapabilityExploitations <em>Owned Capability Exploitations</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.ctx.Mission#getParticipatingActors <em>Participating Actors</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.ctx.Mission#getParticipatingSystem <em>Participating System</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.ctx.Mission#getInvolvedActors <em>Involved Actors</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.ctx.Mission#getInvolvedSystem <em>Involved System</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.ctx.Mission#getExploitedCapabilities <em>Exploited Capabilities</em>}</li>
  * </ul>
  *
@@ -47,26 +43,23 @@ public interface Mission extends NamedElement, InvolverElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Actor Mission Involvements</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.ctx.ActorMissionInvolvement}.
+	 * Returns the value of the '<em><b>Owned Mission Involvements</b></em>' containment reference list.
+	 * The list contents are of type {@link org.polarsys.capella.core.data.ctx.MissionInvolvement}.
 
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Owned Actor Mission Involvements</em>' containment reference list isn't clear,
+	 * If the meaning of the '<em>Owned Mission Involvements</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Actor Mission Involvements</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.ctx.CtxPackage#getMission_OwnedActorMissionInvolvements()
+	 * @return the value of the '<em>Owned Mission Involvements</em>' containment reference list.
+	 * @see org.polarsys.capella.core.data.ctx.CtxPackage#getMission_OwnedMissionInvolvements()
 	 * @model containment="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='packagedElement' featureOwner='Package'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ownedActorMissionInvolvements'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the links between Actors and Missions that are owned by this Mission\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::nearestpackage' explanation='none' constraints='Some elements on which ActorMissionInvolvement stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
+	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the links between Mission Involvement links that are owned by this Mission' constraints='none' comment/notes='none'"
 	 * @generated
 	 */
 
-	EList<ActorMissionInvolvement> getOwnedActorMissionInvolvements();
+	EList<MissionInvolvement> getOwnedMissionInvolvements();
 
 
 
@@ -75,41 +68,23 @@ public interface Mission extends NamedElement, InvolverElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned System Mission Involvement</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Involved System Components</b></em>' reference list.
+	 * The list contents are of type {@link org.polarsys.capella.core.data.ctx.SystemComponent}.
 
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Owned System Mission Involvement</em>' containment reference isn't clear,
+	 * If the meaning of the '<em>Involved System Components</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned System Mission Involvement</em>' containment reference.
-	 * @see #setOwnedSystemMissionInvolvement(SystemMissionInvolvement)
-	 * @see org.polarsys.capella.core.data.ctx.CtxPackage#getMission_OwnedSystemMissionInvolvement()
-	 * @model containment="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='packagedElement' featureOwner='Package'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ownedMissionSupplierLinks'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the links between Missions and the System that are owned by this Mission\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::nearestpackage' explanation='none' constraints='Some elements on which SystemMissionInvolvement stereotype or any stereotype that inherits from it is applied\r\nMultiplicity must be [0..1]'"
+	 * @return the value of the '<em>Involved System Components</em>' reference list.
+	 * @see org.polarsys.capella.core.data.ctx.CtxPackage#getMission_InvolvedSystemComponents()
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='System Components that are involved in this Mission' constraints='none' comment/notes='none'"
 	 * @generated
 	 */
 
-	SystemMissionInvolvement getOwnedSystemMissionInvolvement();
-
-
-
-
-	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.ctx.Mission#getOwnedSystemMissionInvolvement <em>Owned System Mission Involvement</em>}' containment reference.
-
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Owned System Mission Involvement</em>' containment reference.
-	 * @see #getOwnedSystemMissionInvolvement()
-	 * @generated
-	 */
-
-	void setOwnedSystemMissionInvolvement(SystemMissionInvolvement value);
+	EList<SystemComponent> getInvolvedSystemComponents();
 
 
 
@@ -138,126 +113,6 @@ public interface Mission extends NamedElement, InvolverElement {
 	 */
 
 	EList<CapabilityExploitation> getOwnedCapabilityExploitations();
-
-
-
-
-
-
-
-	/**
-	 * Returns the value of the '<em><b>Participating Actors</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.ctx.Actor}.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.ctx.Actor#getContributedMissions <em>Contributed Missions</em>}'.
-
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Participating Actors</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Participating Actors</em>' reference list.
-	 * @see org.polarsys.capella.core.data.ctx.CtxPackage#getMission_ParticipatingActors()
-	 * @see org.polarsys.capella.core.data.ctx.Actor#getContributedMissions
-	 * @model opposite="contributedMissions" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='participatingActors'"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='involvedActors.actor'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(computed automatically) the Actors involved in this Mission\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
-
-	EList<Actor> getParticipatingActors();
-
-
-
-
-
-
-
-	/**
-	 * Returns the value of the '<em><b>Participating System</b></em>' reference.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.ctx.System#getContributedMissions <em>Contributed Missions</em>}'.
-
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Participating System</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Participating System</em>' reference.
-	 * @see org.polarsys.capella.core.data.ctx.CtxPackage#getMission_ParticipatingSystem()
-	 * @see org.polarsys.capella.core.data.ctx.System#getContributedMissions
-	 * @model opposite="contributedMissions" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='participatingSystems'"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='ownedSystemMissionInvolvement.system'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the System involved in this Mission\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
-
-	org.polarsys.capella.core.data.ctx.System getParticipatingSystem();
-
-
-
-
-
-
-
-	/**
-	 * Returns the value of the '<em><b>Involved Actors</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.ctx.ActorMissionInvolvement}.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.ctx.ActorMissionInvolvement#getMission <em>Mission</em>}'.
-
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Involved Actors</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Involved Actors</em>' reference list.
-	 * @see org.polarsys.capella.core.data.ctx.CtxPackage#getMission_InvolvedActors()
-	 * @see org.polarsys.capella.core.data.ctx.ActorMissionInvolvement#getMission
-	 * @model opposite="mission" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='clientDependency' featureOwner='NamedElement'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='invovledActors'"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='involvedInvolvements'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) the links to Actors that are involved in this Mission\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
-
-	EList<ActorMissionInvolvement> getInvolvedActors();
-
-
-
-
-
-
-
-	/**
-	 * Returns the value of the '<em><b>Involved System</b></em>' reference.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.ctx.SystemMissionInvolvement#getMission <em>Mission</em>}'.
-
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Involved System</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Involved System</em>' reference.
-	 * @see org.polarsys.capella.core.data.ctx.CtxPackage#getMission_InvolvedSystem()
-	 * @see org.polarsys.capella.core.data.ctx.SystemMissionInvolvement#getMission
-	 * @model opposite="mission" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='clientDependency' featureOwner='NamedElement'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='missionSupplierLinks'"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='ownedSystemMissionInvolvement'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) the link to the System involved in this mission\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
-
-	SystemMissionInvolvement getInvolvedSystem();
 
 
 

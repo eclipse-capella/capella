@@ -47,22 +47,16 @@ import org.polarsys.capella.core.data.la.LaPackage;
 import org.polarsys.capella.core.data.la.impl.LaPackageImpl;
 import org.polarsys.capella.core.data.oa.OaPackage;
 import org.polarsys.capella.core.data.oa.impl.OaPackageImpl;
-import org.polarsys.capella.core.data.pa.AbstractPhysicalComponent;
-import org.polarsys.capella.core.data.pa.LogicalActorRealization;
 import org.polarsys.capella.core.data.pa.LogicalArchitectureRealization;
-import org.polarsys.capella.core.data.pa.LogicalComponentRealization;
 import org.polarsys.capella.core.data.pa.LogicalInterfaceRealization;
 import org.polarsys.capella.core.data.pa.PaFactory;
 import org.polarsys.capella.core.data.pa.PaPackage;
-import org.polarsys.capella.core.data.pa.PhysicalActor;
-import org.polarsys.capella.core.data.pa.PhysicalActorPkg;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecturePkg;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentKind;
 import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
 import org.polarsys.capella.core.data.pa.PhysicalComponentPkg;
-import org.polarsys.capella.core.data.pa.PhysicalContext;
 import org.polarsys.capella.core.data.pa.PhysicalFunction;
 import org.polarsys.capella.core.data.pa.PhysicalFunctionPkg;
 import org.polarsys.capella.core.data.pa.PhysicalNode;
@@ -114,13 +108,6 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass abstractPhysicalComponentEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EClass physicalComponentEClass = null;
 
 	/**
@@ -128,28 +115,7 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass physicalActorPkgEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EClass physicalComponentPkgEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass physicalActorEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass logicalActorRealizationEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -170,21 +136,7 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass logicalComponentRealizationEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EClass logicalInterfaceRealizationEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass physicalContextEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -361,7 +313,7 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getPhysicalArchitecture_OwnedPhysicalContext() {
+	public EReference getPhysicalArchitecture_OwnedPhysicalComponentPkg() {
 		return (EReference)physicalArchitectureEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -370,7 +322,7 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getPhysicalArchitecture_OwnedPhysicalComponent() {
+	public EReference getPhysicalArchitecture_ContainedCapabilityRealizationPkg() {
 		return (EReference)physicalArchitectureEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -379,7 +331,7 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getPhysicalArchitecture_OwnedPhysicalComponentPkg() {
+	public EReference getPhysicalArchitecture_ContainedPhysicalFunctionPkg() {
 		return (EReference)physicalArchitectureEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -388,7 +340,7 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getPhysicalArchitecture_OwnedPhysicalActorPkg() {
+	public EReference getPhysicalArchitecture_OwnedDeployments() {
 		return (EReference)physicalArchitectureEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -397,7 +349,7 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getPhysicalArchitecture_ContainedCapabilityRealizationPkg() {
+	public EReference getPhysicalArchitecture_OwnedLogicalArchitectureRealizations() {
 		return (EReference)physicalArchitectureEClass.getEStructuralFeatures().get(4);
 	}
 
@@ -406,7 +358,7 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getPhysicalArchitecture_ContainedPhysicalFunctionPkg() {
+	public EReference getPhysicalArchitecture_AllocatedLogicalArchitectureRealizations() {
 		return (EReference)physicalArchitectureEClass.getEStructuralFeatures().get(5);
 	}
 
@@ -415,7 +367,7 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getPhysicalArchitecture_OwnedDeployments() {
+	public EReference getPhysicalArchitecture_AllocatedLogicalArchitectures() {
 		return (EReference)physicalArchitectureEClass.getEStructuralFeatures().get(6);
 	}
 
@@ -424,35 +376,8 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getPhysicalArchitecture_OwnedLogicalArchitectureRealizations() {
-		return (EReference)physicalArchitectureEClass.getEStructuralFeatures().get(7);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getPhysicalArchitecture_AllocatedLogicalArchitectureRealizations() {
-		return (EReference)physicalArchitectureEClass.getEStructuralFeatures().get(8);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getPhysicalArchitecture_AllocatedLogicalArchitectures() {
-		return (EReference)physicalArchitectureEClass.getEStructuralFeatures().get(9);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getPhysicalArchitecture_AllocatingEpbsArchitectures() {
-		return (EReference)physicalArchitectureEClass.getEStructuralFeatures().get(10);
+		return (EReference)physicalArchitectureEClass.getEStructuralFeatures().get(7);
 	}
 
 	/**
@@ -478,7 +403,7 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getPhysicalFunction_AllocatorPhysicalActors() {
+	public EReference getPhysicalFunction_AllocatingPhysicalComponents() {
 		return (EReference)physicalFunctionEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -487,7 +412,7 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getPhysicalFunction_AllocatorPhysicalComponents() {
+	public EReference getPhysicalFunction_RealizedLogicalFunctions() {
 		return (EReference)physicalFunctionEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -496,7 +421,7 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getPhysicalFunction_RealizedLogicalFunctions() {
+	public EReference getPhysicalFunction_ContainedPhysicalFunctions() {
 		return (EReference)physicalFunctionEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -505,17 +430,8 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getPhysicalFunction_ContainedPhysicalFunctions() {
-		return (EReference)physicalFunctionEClass.getEStructuralFeatures().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getPhysicalFunction_ChildrenPhysicalFunctions() {
-		return (EReference)physicalFunctionEClass.getEStructuralFeatures().get(5);
+		return (EReference)physicalFunctionEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -550,51 +466,6 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getAbstractPhysicalComponent() {
-		return abstractPhysicalComponentEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getAbstractPhysicalComponent_Kind() {
-		return (EAttribute)abstractPhysicalComponentEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getAbstractPhysicalComponent_Nature() {
-		return (EAttribute)abstractPhysicalComponentEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getAbstractPhysicalComponent_OwnedDeploymentLinks() {
-		return (EReference)abstractPhysicalComponentEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getAbstractPhysicalComponent_OwnedDeploymentAspect() {
-		return (EReference)abstractPhysicalComponentEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getPhysicalComponent() {
 		return physicalComponentEClass;
 	}
@@ -604,8 +475,8 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getPhysicalComponent_OwnedPhysicalComponents() {
-		return (EReference)physicalComponentEClass.getEStructuralFeatures().get(0);
+	public EAttribute getPhysicalComponent_Kind() {
+		return (EAttribute)physicalComponentEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -613,8 +484,8 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getPhysicalComponent_OwnedPhysicalComponentPkgs() {
-		return (EReference)physicalComponentEClass.getEStructuralFeatures().get(1);
+	public EAttribute getPhysicalComponent_Nature() {
+		return (EAttribute)physicalComponentEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -622,7 +493,7 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getPhysicalComponent_OwnedLogicalComponentRealizations() {
+	public EReference getPhysicalComponent_OwnedDeploymentLinks() {
 		return (EReference)physicalComponentEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -631,7 +502,7 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getPhysicalComponent_LogicalComponentRealizations() {
+	public EReference getPhysicalComponent_OwnedPhysicalComponents() {
 		return (EReference)physicalComponentEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -640,7 +511,7 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getPhysicalComponent_LogicalInterfaceRealizations() {
+	public EReference getPhysicalComponent_OwnedPhysicalComponentPkgs() {
 		return (EReference)physicalComponentEClass.getEStructuralFeatures().get(4);
 	}
 
@@ -649,7 +520,7 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getPhysicalComponent_SubPhysicalComponents() {
+	public EReference getPhysicalComponent_LogicalInterfaceRealizations() {
 		return (EReference)physicalComponentEClass.getEStructuralFeatures().get(5);
 	}
 
@@ -658,7 +529,7 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getPhysicalComponent_RealizedLogicalComponents() {
+	public EReference getPhysicalComponent_SubPhysicalComponents() {
 		return (EReference)physicalComponentEClass.getEStructuralFeatures().get(6);
 	}
 
@@ -667,7 +538,7 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getPhysicalComponent_AllocatedPhysicalFunctions() {
+	public EReference getPhysicalComponent_RealizedLogicalComponents() {
 		return (EReference)physicalComponentEClass.getEStructuralFeatures().get(7);
 	}
 
@@ -676,7 +547,7 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getPhysicalComponent_DeployedPhysicalComponents() {
+	public EReference getPhysicalComponent_AllocatedPhysicalFunctions() {
 		return (EReference)physicalComponentEClass.getEStructuralFeatures().get(8);
 	}
 
@@ -685,7 +556,7 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getPhysicalComponent_DeployingPhysicalComponents() {
+	public EReference getPhysicalComponent_DeployedPhysicalComponents() {
 		return (EReference)physicalComponentEClass.getEStructuralFeatures().get(9);
 	}
 
@@ -694,35 +565,8 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getPhysicalComponent_DeployingPhysicalActors() {
+	public EReference getPhysicalComponent_DeployingPhysicalComponents() {
 		return (EReference)physicalComponentEClass.getEStructuralFeatures().get(10);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getPhysicalActorPkg() {
-		return physicalActorPkgEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getPhysicalActorPkg_OwnedPhysicalActorPkgs() {
-		return (EReference)physicalActorPkgEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getPhysicalActorPkg_OwnedPhysicalActors() {
-		return (EReference)physicalActorPkgEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -775,69 +619,6 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getPhysicalActor() {
-		return physicalActorEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getPhysicalActor_OwnedLogicalActorRealizations() {
-		return (EReference)physicalActorEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getPhysicalActor_LogicalActorRealizations() {
-		return (EReference)physicalActorEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getPhysicalActor_AllocatedPhysicalFunctions() {
-		return (EReference)physicalActorEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getPhysicalActor_RealizedLogicalActors() {
-		return (EReference)physicalActorEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getPhysicalActor_DeployedPhysicalComponents() {
-		return (EReference)physicalActorEClass.getEStructuralFeatures().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getLogicalActorRealization() {
-		return logicalActorRealizationEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getPhysicalNode() {
 		return physicalNodeEClass;
 	}
@@ -865,26 +646,8 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getLogicalComponentRealization() {
-		return logicalComponentRealizationEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getLogicalInterfaceRealization() {
 		return logicalInterfaceRealizationEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getPhysicalContext() {
-		return physicalContextEClass;
 	}
 
 	/**
@@ -938,10 +701,7 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 		createEReference(physicalArchitecturePkgEClass, PHYSICAL_ARCHITECTURE_PKG__OWNED_PHYSICAL_ARCHITECTURES);
 
 		physicalArchitectureEClass = createEClass(PHYSICAL_ARCHITECTURE);
-		createEReference(physicalArchitectureEClass, PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_CONTEXT);
-		createEReference(physicalArchitectureEClass, PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_COMPONENT);
 		createEReference(physicalArchitectureEClass, PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_COMPONENT_PKG);
-		createEReference(physicalArchitectureEClass, PHYSICAL_ARCHITECTURE__OWNED_PHYSICAL_ACTOR_PKG);
 		createEReference(physicalArchitectureEClass, PHYSICAL_ARCHITECTURE__CONTAINED_CAPABILITY_REALIZATION_PKG);
 		createEReference(physicalArchitectureEClass, PHYSICAL_ARCHITECTURE__CONTAINED_PHYSICAL_FUNCTION_PKG);
 		createEReference(physicalArchitectureEClass, PHYSICAL_ARCHITECTURE__OWNED_DEPLOYMENTS);
@@ -952,8 +712,7 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 
 		physicalFunctionEClass = createEClass(PHYSICAL_FUNCTION);
 		createEReference(physicalFunctionEClass, PHYSICAL_FUNCTION__OWNED_PHYSICAL_FUNCTION_PKGS);
-		createEReference(physicalFunctionEClass, PHYSICAL_FUNCTION__ALLOCATOR_PHYSICAL_ACTORS);
-		createEReference(physicalFunctionEClass, PHYSICAL_FUNCTION__ALLOCATOR_PHYSICAL_COMPONENTS);
+		createEReference(physicalFunctionEClass, PHYSICAL_FUNCTION__ALLOCATING_PHYSICAL_COMPONENTS);
 		createEReference(physicalFunctionEClass, PHYSICAL_FUNCTION__REALIZED_LOGICAL_FUNCTIONS);
 		createEReference(physicalFunctionEClass, PHYSICAL_FUNCTION__CONTAINED_PHYSICAL_FUNCTIONS);
 		createEReference(physicalFunctionEClass, PHYSICAL_FUNCTION__CHILDREN_PHYSICAL_FUNCTIONS);
@@ -962,28 +721,18 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 		createEReference(physicalFunctionPkgEClass, PHYSICAL_FUNCTION_PKG__OWNED_PHYSICAL_FUNCTIONS);
 		createEReference(physicalFunctionPkgEClass, PHYSICAL_FUNCTION_PKG__OWNED_PHYSICAL_FUNCTION_PKGS);
 
-		abstractPhysicalComponentEClass = createEClass(ABSTRACT_PHYSICAL_COMPONENT);
-		createEAttribute(abstractPhysicalComponentEClass, ABSTRACT_PHYSICAL_COMPONENT__KIND);
-		createEAttribute(abstractPhysicalComponentEClass, ABSTRACT_PHYSICAL_COMPONENT__NATURE);
-		createEReference(abstractPhysicalComponentEClass, ABSTRACT_PHYSICAL_COMPONENT__OWNED_DEPLOYMENT_LINKS);
-		createEReference(abstractPhysicalComponentEClass, ABSTRACT_PHYSICAL_COMPONENT__OWNED_DEPLOYMENT_ASPECT);
-
 		physicalComponentEClass = createEClass(PHYSICAL_COMPONENT);
+		createEAttribute(physicalComponentEClass, PHYSICAL_COMPONENT__KIND);
+		createEAttribute(physicalComponentEClass, PHYSICAL_COMPONENT__NATURE);
+		createEReference(physicalComponentEClass, PHYSICAL_COMPONENT__OWNED_DEPLOYMENT_LINKS);
 		createEReference(physicalComponentEClass, PHYSICAL_COMPONENT__OWNED_PHYSICAL_COMPONENTS);
 		createEReference(physicalComponentEClass, PHYSICAL_COMPONENT__OWNED_PHYSICAL_COMPONENT_PKGS);
-		createEReference(physicalComponentEClass, PHYSICAL_COMPONENT__OWNED_LOGICAL_COMPONENT_REALIZATIONS);
-		createEReference(physicalComponentEClass, PHYSICAL_COMPONENT__LOGICAL_COMPONENT_REALIZATIONS);
 		createEReference(physicalComponentEClass, PHYSICAL_COMPONENT__LOGICAL_INTERFACE_REALIZATIONS);
 		createEReference(physicalComponentEClass, PHYSICAL_COMPONENT__SUB_PHYSICAL_COMPONENTS);
 		createEReference(physicalComponentEClass, PHYSICAL_COMPONENT__REALIZED_LOGICAL_COMPONENTS);
 		createEReference(physicalComponentEClass, PHYSICAL_COMPONENT__ALLOCATED_PHYSICAL_FUNCTIONS);
 		createEReference(physicalComponentEClass, PHYSICAL_COMPONENT__DEPLOYED_PHYSICAL_COMPONENTS);
 		createEReference(physicalComponentEClass, PHYSICAL_COMPONENT__DEPLOYING_PHYSICAL_COMPONENTS);
-		createEReference(physicalComponentEClass, PHYSICAL_COMPONENT__DEPLOYING_PHYSICAL_ACTORS);
-
-		physicalActorPkgEClass = createEClass(PHYSICAL_ACTOR_PKG);
-		createEReference(physicalActorPkgEClass, PHYSICAL_ACTOR_PKG__OWNED_PHYSICAL_ACTOR_PKGS);
-		createEReference(physicalActorPkgEClass, PHYSICAL_ACTOR_PKG__OWNED_PHYSICAL_ACTORS);
 
 		physicalComponentPkgEClass = createEClass(PHYSICAL_COMPONENT_PKG);
 		createEReference(physicalComponentPkgEClass, PHYSICAL_COMPONENT_PKG__OWNED_COMPONENTS);
@@ -991,25 +740,12 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 		createEReference(physicalComponentPkgEClass, PHYSICAL_COMPONENT_PKG__OWNED_KEY_PARTS);
 		createEReference(physicalComponentPkgEClass, PHYSICAL_COMPONENT_PKG__OWNED_DEPLOYMENTS);
 
-		physicalActorEClass = createEClass(PHYSICAL_ACTOR);
-		createEReference(physicalActorEClass, PHYSICAL_ACTOR__OWNED_LOGICAL_ACTOR_REALIZATIONS);
-		createEReference(physicalActorEClass, PHYSICAL_ACTOR__LOGICAL_ACTOR_REALIZATIONS);
-		createEReference(physicalActorEClass, PHYSICAL_ACTOR__ALLOCATED_PHYSICAL_FUNCTIONS);
-		createEReference(physicalActorEClass, PHYSICAL_ACTOR__REALIZED_LOGICAL_ACTORS);
-		createEReference(physicalActorEClass, PHYSICAL_ACTOR__DEPLOYED_PHYSICAL_COMPONENTS);
-
-		logicalActorRealizationEClass = createEClass(LOGICAL_ACTOR_REALIZATION);
-
 		physicalNodeEClass = createEClass(PHYSICAL_NODE);
 		createEReference(physicalNodeEClass, PHYSICAL_NODE__SUB_PHYSICAL_NODES);
 
 		logicalArchitectureRealizationEClass = createEClass(LOGICAL_ARCHITECTURE_REALIZATION);
 
-		logicalComponentRealizationEClass = createEClass(LOGICAL_COMPONENT_REALIZATION);
-
 		logicalInterfaceRealizationEClass = createEClass(LOGICAL_INTERFACE_REALIZATION);
-
-		physicalContextEClass = createEClass(PHYSICAL_CONTEXT);
 
 		// Create enums
 		physicalComponentKindEEnum = createEEnum(PHYSICAL_COMPONENT_KIND);
@@ -1045,6 +781,7 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 		LaPackage theLaPackage = (LaPackage)EPackage.Registry.INSTANCE.getEPackage(LaPackage.eNS_URI);
 		EpbsPackage theEpbsPackage = (EpbsPackage)EPackage.Registry.INSTANCE.getEPackage(EpbsPackage.eNS_URI);
 		FaPackage theFaPackage = (FaPackage)EPackage.Registry.INSTANCE.getEPackage(FaPackage.eNS_URI);
+		CapellacommonPackage theCapellacommonPackage = (CapellacommonPackage)EPackage.Registry.INSTANCE.getEPackage(CapellacommonPackage.eNS_URI);
 		InformationPackage theInformationPackage = (InformationPackage)EPackage.Registry.INSTANCE.getEPackage(InformationPackage.eNS_URI);
 
 		// Add subpackages
@@ -1059,22 +796,14 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 		physicalArchitectureEClass.getESuperTypes().add(theCsPackage.getComponentArchitecture());
 		physicalFunctionEClass.getESuperTypes().add(theFaPackage.getAbstractFunction());
 		physicalFunctionPkgEClass.getESuperTypes().add(theFaPackage.getFunctionPkg());
-		abstractPhysicalComponentEClass.getESuperTypes().add(theCsPackage.getSystemComponent());
-		abstractPhysicalComponentEClass.getESuperTypes().add(theCsPackage.getDeployableElement());
-		abstractPhysicalComponentEClass.getESuperTypes().add(theCsPackage.getDeploymentTarget());
-		physicalComponentEClass.getESuperTypes().add(this.getAbstractPhysicalComponent());
 		physicalComponentEClass.getESuperTypes().add(theCsPackage.getAbstractPhysicalArtifact());
-		physicalActorPkgEClass.getESuperTypes().add(theFaPackage.getAbstractFunctionalStructure());
-		physicalComponentPkgEClass.getESuperTypes().add(theFaPackage.getAbstractFunctionalStructure());
+		physicalComponentEClass.getESuperTypes().add(theCsPackage.getComponent());
+		physicalComponentEClass.getESuperTypes().add(theCapellacommonPackage.getCapabilityRealizationInvolvedElement());
+		physicalComponentPkgEClass.getESuperTypes().add(theCsPackage.getComponentPkg());
 		physicalComponentPkgEClass.getESuperTypes().add(theInformationPackage.getAssociationPkg());
-		physicalActorEClass.getESuperTypes().add(this.getAbstractPhysicalComponent());
-		physicalActorEClass.getESuperTypes().add(theCsPackage.getAbstractActor());
-		logicalActorRealizationEClass.getESuperTypes().add(theCsPackage.getComponentAllocation());
 		physicalNodeEClass.getESuperTypes().add(this.getPhysicalComponent());
 		logicalArchitectureRealizationEClass.getESuperTypes().add(theCsPackage.getArchitectureAllocation());
-		logicalComponentRealizationEClass.getESuperTypes().add(theCsPackage.getComponentAllocation());
 		logicalInterfaceRealizationEClass.getESuperTypes().add(theCsPackage.getInterfaceAllocation());
-		physicalContextEClass.getESuperTypes().add(theCsPackage.getComponentContext());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(physicalArchitecturePkgEClass, PhysicalArchitecturePkg.class, "PhysicalArchitecturePkg", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
@@ -1082,10 +811,7 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 		initEReference(getPhysicalArchitecturePkg_OwnedPhysicalArchitectures(), this.getPhysicalArchitecture(), null, "ownedPhysicalArchitectures", null, 0, -1, PhysicalArchitecturePkg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(physicalArchitectureEClass, PhysicalArchitecture.class, "PhysicalArchitecture", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(getPhysicalArchitecture_OwnedPhysicalContext(), this.getPhysicalContext(), null, "ownedPhysicalContext", null, 0, 1, PhysicalArchitecture.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getPhysicalArchitecture_OwnedPhysicalComponent(), this.getPhysicalComponent(), null, "ownedPhysicalComponent", null, 0, 1, PhysicalArchitecture.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getPhysicalArchitecture_OwnedPhysicalComponentPkg(), this.getPhysicalComponentPkg(), null, "ownedPhysicalComponentPkg", null, 0, 1, PhysicalArchitecture.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getPhysicalArchitecture_OwnedPhysicalActorPkg(), this.getPhysicalActorPkg(), null, "ownedPhysicalActorPkg", null, 0, 1, PhysicalArchitecture.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getPhysicalArchitecture_ContainedCapabilityRealizationPkg(), theLaPackage.getCapabilityRealizationPkg(), null, "containedCapabilityRealizationPkg", null, 0, 1, PhysicalArchitecture.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getPhysicalArchitecture_ContainedPhysicalFunctionPkg(), this.getPhysicalFunctionPkg(), null, "containedPhysicalFunctionPkg", null, 0, 1, PhysicalArchitecture.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getPhysicalArchitecture_OwnedDeployments(), theCsPackage.getAbstractDeploymentLink(), null, "ownedDeployments", null, 0, -1, PhysicalArchitecture.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
@@ -1096,8 +822,7 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 
 		initEClass(physicalFunctionEClass, PhysicalFunction.class, "PhysicalFunction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEReference(getPhysicalFunction_OwnedPhysicalFunctionPkgs(), this.getPhysicalFunctionPkg(), null, "ownedPhysicalFunctionPkgs", null, 0, -1, PhysicalFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getPhysicalFunction_AllocatorPhysicalActors(), this.getPhysicalActor(), this.getPhysicalActor_AllocatedPhysicalFunctions(), "allocatorPhysicalActors", null, 0, -1, PhysicalFunction.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getPhysicalFunction_AllocatorPhysicalComponents(), this.getPhysicalComponent(), this.getPhysicalComponent_AllocatedPhysicalFunctions(), "allocatorPhysicalComponents", null, 0, -1, PhysicalFunction.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getPhysicalFunction_AllocatingPhysicalComponents(), this.getPhysicalComponent(), this.getPhysicalComponent_AllocatedPhysicalFunctions(), "allocatingPhysicalComponents", null, 0, -1, PhysicalFunction.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getPhysicalFunction_RealizedLogicalFunctions(), theLaPackage.getLogicalFunction(), theLaPackage.getLogicalFunction_RealizingPhysicalFunctions(), "realizedLogicalFunctions", null, 0, -1, PhysicalFunction.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getPhysicalFunction_ContainedPhysicalFunctions(), this.getPhysicalFunction(), null, "containedPhysicalFunctions", null, 0, -1, PhysicalFunction.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getPhysicalFunction_ChildrenPhysicalFunctions(), this.getPhysicalFunction(), null, "childrenPhysicalFunctions", null, 0, -1, PhysicalFunction.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
@@ -1106,28 +831,18 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 		initEReference(getPhysicalFunctionPkg_OwnedPhysicalFunctions(), this.getPhysicalFunction(), null, "ownedPhysicalFunctions", null, 0, -1, PhysicalFunctionPkg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getPhysicalFunctionPkg_OwnedPhysicalFunctionPkgs(), this.getPhysicalFunctionPkg(), null, "ownedPhysicalFunctionPkgs", null, 0, -1, PhysicalFunctionPkg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-		initEClass(abstractPhysicalComponentEClass, AbstractPhysicalComponent.class, "AbstractPhysicalComponent", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEAttribute(getAbstractPhysicalComponent_Kind(), this.getPhysicalComponentKind(), "kind", null, 0, 1, AbstractPhysicalComponent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(getAbstractPhysicalComponent_Nature(), this.getPhysicalComponentNature(), "nature", null, 0, 1, AbstractPhysicalComponent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getAbstractPhysicalComponent_OwnedDeploymentLinks(), theCsPackage.getAbstractDeploymentLink(), null, "ownedDeploymentLinks", null, 0, -1, AbstractPhysicalComponent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getAbstractPhysicalComponent_OwnedDeploymentAspect(), theDeploymentPackage.getDeploymentAspect(), null, "ownedDeploymentAspect", null, 0, 1, AbstractPhysicalComponent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-
 		initEClass(physicalComponentEClass, PhysicalComponent.class, "PhysicalComponent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEAttribute(getPhysicalComponent_Kind(), this.getPhysicalComponentKind(), "kind", null, 0, 1, PhysicalComponent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEAttribute(getPhysicalComponent_Nature(), this.getPhysicalComponentNature(), "nature", null, 0, 1, PhysicalComponent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getPhysicalComponent_OwnedDeploymentLinks(), theCsPackage.getAbstractDeploymentLink(), null, "ownedDeploymentLinks", null, 0, -1, PhysicalComponent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getPhysicalComponent_OwnedPhysicalComponents(), this.getPhysicalComponent(), null, "ownedPhysicalComponents", null, 0, -1, PhysicalComponent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getPhysicalComponent_OwnedPhysicalComponentPkgs(), this.getPhysicalComponentPkg(), null, "ownedPhysicalComponentPkgs", null, 0, -1, PhysicalComponent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getPhysicalComponent_OwnedLogicalComponentRealizations(), this.getLogicalComponentRealization(), null, "ownedLogicalComponentRealizations", null, 0, -1, PhysicalComponent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getPhysicalComponent_LogicalComponentRealizations(), this.getLogicalComponentRealization(), null, "logicalComponentRealizations", null, 0, -1, PhysicalComponent.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getPhysicalComponent_LogicalInterfaceRealizations(), this.getLogicalInterfaceRealization(), null, "logicalInterfaceRealizations", null, 0, -1, PhysicalComponent.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getPhysicalComponent_SubPhysicalComponents(), this.getPhysicalComponent(), null, "subPhysicalComponents", null, 0, -1, PhysicalComponent.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getPhysicalComponent_RealizedLogicalComponents(), theLaPackage.getLogicalComponent(), theLaPackage.getLogicalComponent_RealizingPhysicalComponents(), "realizedLogicalComponents", null, 0, -1, PhysicalComponent.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
-		initEReference(getPhysicalComponent_AllocatedPhysicalFunctions(), this.getPhysicalFunction(), this.getPhysicalFunction_AllocatorPhysicalComponents(), "allocatedPhysicalFunctions", null, 0, -1, PhysicalComponent.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getPhysicalComponent_AllocatedPhysicalFunctions(), this.getPhysicalFunction(), this.getPhysicalFunction_AllocatingPhysicalComponents(), "allocatedPhysicalFunctions", null, 0, -1, PhysicalComponent.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getPhysicalComponent_DeployedPhysicalComponents(), this.getPhysicalComponent(), null, "deployedPhysicalComponents", null, 0, -1, PhysicalComponent.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getPhysicalComponent_DeployingPhysicalComponents(), this.getPhysicalComponent(), null, "deployingPhysicalComponents", null, 0, -1, PhysicalComponent.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getPhysicalComponent_DeployingPhysicalActors(), this.getPhysicalActor(), null, "deployingPhysicalActors", null, 0, -1, PhysicalComponent.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-
-		initEClass(physicalActorPkgEClass, PhysicalActorPkg.class, "PhysicalActorPkg", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(getPhysicalActorPkg_OwnedPhysicalActorPkgs(), this.getPhysicalActorPkg(), null, "ownedPhysicalActorPkgs", null, 0, -1, PhysicalActorPkg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getPhysicalActorPkg_OwnedPhysicalActors(), this.getPhysicalActor(), null, "ownedPhysicalActors", null, 0, -1, PhysicalActorPkg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(physicalComponentPkgEClass, PhysicalComponentPkg.class, "PhysicalComponentPkg", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEReference(getPhysicalComponentPkg_OwnedComponents(), this.getPhysicalComponent(), null, "ownedComponents", null, 0, -1, PhysicalComponentPkg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
@@ -1135,25 +850,12 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 		initEReference(getPhysicalComponentPkg_OwnedKeyParts(), theInformationPackage.getKeyPart(), null, "ownedKeyParts", null, 0, -1, PhysicalComponentPkg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getPhysicalComponentPkg_OwnedDeployments(), theCsPackage.getAbstractDeploymentLink(), null, "ownedDeployments", null, 0, -1, PhysicalComponentPkg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-		initEClass(physicalActorEClass, PhysicalActor.class, "PhysicalActor", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(getPhysicalActor_OwnedLogicalActorRealizations(), this.getLogicalActorRealization(), null, "ownedLogicalActorRealizations", null, 0, -1, PhysicalActor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getPhysicalActor_LogicalActorRealizations(), this.getLogicalActorRealization(), null, "logicalActorRealizations", null, 0, -1, PhysicalActor.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getPhysicalActor_AllocatedPhysicalFunctions(), this.getPhysicalFunction(), this.getPhysicalFunction_AllocatorPhysicalActors(), "allocatedPhysicalFunctions", null, 0, -1, PhysicalActor.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getPhysicalActor_RealizedLogicalActors(), theLaPackage.getLogicalActor(), theLaPackage.getLogicalActor_RealizingPhysicalActors(), "realizedLogicalActors", null, 0, -1, PhysicalActor.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getPhysicalActor_DeployedPhysicalComponents(), this.getPhysicalComponent(), null, "deployedPhysicalComponents", null, 0, -1, PhysicalActor.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-
-		initEClass(logicalActorRealizationEClass, LogicalActorRealization.class, "LogicalActorRealization", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-
 		initEClass(physicalNodeEClass, PhysicalNode.class, "PhysicalNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEReference(getPhysicalNode_SubPhysicalNodes(), this.getPhysicalNode(), null, "subPhysicalNodes", null, 0, -1, PhysicalNode.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(logicalArchitectureRealizationEClass, LogicalArchitectureRealization.class, "LogicalArchitectureRealization", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
-		initEClass(logicalComponentRealizationEClass, LogicalComponentRealization.class, "LogicalComponentRealization", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-
 		initEClass(logicalInterfaceRealizationEClass, LogicalInterfaceRealization.class, "LogicalInterfaceRealization", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-
-		initEClass(physicalContextEClass, PhysicalContext.class, "PhysicalContext", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
 		// Initialize enums and add enum literals
 		initEEnum(physicalComponentKindEEnum, PhysicalComponentKind.class, "PhysicalComponentKind"); //$NON-NLS-1$
@@ -1260,34 +962,10 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
-		  (getPhysicalArchitecture_OwnedPhysicalContext(), 
-		   source, 
-		   new String[] {
-			 "description", "the context is the set of (physical) parts that make the \"world\" at this abstraction level (the system part(s) and the external actor part(s))\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getPhysicalArchitecture_OwnedPhysicalComponent(), 
-		   source, 
-		   new String[] {
-			 "description", "the physical component that represents the System\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
 		  (getPhysicalArchitecture_OwnedPhysicalComponentPkg(), 
 		   source, 
 		   new String[] {
 			 "description", "a package containing the physical components involved in this physical architecture\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getPhysicalArchitecture_OwnedPhysicalActorPkg(), 
-		   source, 
-		   new String[] {
-			 "description", "a package containing the physical actors involved in this physical architecture\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
@@ -1372,44 +1050,6 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
-		  (abstractPhysicalComponentEClass, 
-		   source, 
-		   new String[] {
-			 "description", "Base abstract class for the implementation of actual physical components\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "physical", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getAbstractPhysicalComponent_Kind(), 
-		   source, 
-		   new String[] {
-			 "description", "specifies the type of physical component (refer to PhysicalComponentKind for detailed description)\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "type", "refer to PhysicalComponentKind definition", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getAbstractPhysicalComponent_Nature(), 
-		   source, 
-		   new String[] {
-			 "description", "specifies the nature of this physical component, typically whether it is an actual execution node, or a behavioral component like a SW part\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "type", "refer to PhysicalComponentNature definition", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getAbstractPhysicalComponent_OwnedDeploymentLinks(), 
-		   source, 
-		   new String[] {
-			 "description", "the various deployments of this physical component\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
 		  (physicalComponentEClass, 
 		   source, 
 		   new String[] {
@@ -1421,6 +1061,32 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
+		  (getPhysicalComponent_Kind(), 
+		   source, 
+		   new String[] {
+			 "description", "specifies the type of physical component (refer to PhysicalComponentKind for detailed description)\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "type", "refer to PhysicalComponentKind definition", //$NON-NLS-1$ //$NON-NLS-2$
+			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
+		  (getPhysicalComponent_Nature(), 
+		   source, 
+		   new String[] {
+			 "description", "specifies the nature of this physical component, typically whether it is an actual execution node, or a behavioral component like a SW part\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "type", "refer to PhysicalComponentNature definition", //$NON-NLS-1$ //$NON-NLS-2$
+			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
+		  (getPhysicalComponent_OwnedDeploymentLinks(), 
+		   source, 
+		   new String[] {
+			 "description", "the various deployments of this physical component\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getPhysicalComponent_OwnedPhysicalComponents(), 
@@ -1435,22 +1101,6 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 		   source, 
 		   new String[] {
 			 "description", "the sub-(physical component) packages owned by this component\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getPhysicalComponent_OwnedLogicalComponentRealizations(), 
-		   source, 
-		   new String[] {
-			 "description", "the logical component realization relationships that are stored/owned by this physical component\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getPhysicalComponent_LogicalComponentRealizations(), 
-		   source, 
-		   new String[] {
-			 "description", "(automatically computed) the logical component realization links that involve this physical component\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
@@ -1475,34 +1125,6 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 		   source, 
 		   new String[] {
 			 "description", "(automatically computed) the list of realizations links coming from logical components, and in which this physical component is involved\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (physicalActorPkgEClass, 
-		   source, 
-		   new String[] {
-			 "description", "a container for physical actors entities\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "physical", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getPhysicalActorPkg_OwnedPhysicalActorPkgs(), 
-		   source, 
-		   new String[] {
-			 "description", "the sub-(physical actor) packages contained in this package\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getPhysicalActorPkg_OwnedPhysicalActors(), 
-		   source, 
-		   new String[] {
-			 "description", "the physical actor entities contained in this package\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
@@ -1549,46 +1171,6 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 			 "description", "the physical deployment definitions stored in this package\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (physicalActorEClass, 
-		   source, 
-		   new String[] {
-			 "description", "External actor interacting with the system via physical interfaces", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "Used whenever there is a need to model an interaction between the outside of the physical system perimeter, and the inside, using one of the physical interfaces.\r\nPhysical actors are typically derived/refined from logical actors definition.", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "physical", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getPhysicalActor_OwnedLogicalActorRealizations(), 
-		   source, 
-		   new String[] {
-			 "description", "the allocation links between physical actors and the logical actor(s) that they realize, stored/owned under this physical actor\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getPhysicalActor_LogicalActorRealizations(), 
-		   source, 
-		   new String[] {
-			 "description", "(automatically computed) the relationship links between this physical actor and the logical actor(s) that it realizes\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (logicalActorRealizationEClass, 
-		   source, 
-		   new String[] {
-			 "description", "mediator class to support the implementation of the relationship between a physical actor and the logical actor(s) that it realizes\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "physical", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (physicalNodeEClass, 
@@ -1743,18 +1325,6 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
-		  (logicalComponentRealizationEClass, 
-		   source, 
-		   new String[] {
-			 "description", "mediator class supporting the implementation of the allocation link between a physical component, and the logical component(s) that it realizes\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "physical", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
 		  (logicalInterfaceRealizationEClass, 
 		   source, 
 		   new String[] {
@@ -1797,18 +1367,6 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 			 "description", "used when the physical component is a host for behavioral components (typically, a computing resource)\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (physicalContextEClass, 
-		   source, 
-		   new String[] {
-			 "description", "specialization of a component context for the physical level. Refer to component context description.\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "physical", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });
 	}
 
@@ -1831,22 +1389,7 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 		   new String[] {
 		   });	
 		addAnnotation
-		  (getPhysicalArchitecture_OwnedPhysicalContext(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getPhysicalArchitecture_OwnedPhysicalComponent(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
 		  (getPhysicalArchitecture_OwnedPhysicalComponentPkg(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getPhysicalArchitecture_OwnedPhysicalActorPkg(), 
 		   source, 
 		   new String[] {
 		   });	
@@ -1889,13 +1432,7 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 		   new String[] {
 		   });	
 		addAnnotation
-		  (getPhysicalFunction_AllocatorPhysicalActors(), 
-		   source, 
-		   new String[] {
-			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getPhysicalFunction_AllocatorPhysicalComponents(), 
+		  (getPhysicalFunction_AllocatingPhysicalComponents(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
@@ -1933,27 +1470,22 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 		   new String[] {
 		   });	
 		addAnnotation
-		  (getAbstractPhysicalComponent_Kind(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getAbstractPhysicalComponent_Nature(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getAbstractPhysicalComponent_OwnedDeploymentLinks(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getAbstractPhysicalComponent_OwnedDeploymentAspect(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
 		  (physicalComponentEClass, 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getPhysicalComponent_Kind(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getPhysicalComponent_Nature(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getPhysicalComponent_OwnedDeploymentLinks(), 
 		   source, 
 		   new String[] {
 		   });	
@@ -1995,27 +1527,6 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
-		  (getPhysicalComponent_DeployingPhysicalActors(), 
-		   source, 
-		   new String[] {
-			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (physicalActorPkgEClass, 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getPhysicalActorPkg_OwnedPhysicalActorPkgs(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getPhysicalActorPkg_OwnedPhysicalActors(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
 		  (physicalComponentPkgEClass, 
 		   source, 
 		   new String[] {
@@ -2036,26 +1547,6 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 		   new String[] {
 		   });	
 		addAnnotation
-		  (physicalActorEClass, 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getPhysicalActor_AllocatedPhysicalFunctions(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getPhysicalActor_RealizedLogicalActors(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getPhysicalActor_DeployedPhysicalComponents(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
 		  (physicalNodeEClass, 
 		   source, 
 		   new String[] {
@@ -2065,11 +1556,6 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (physicalContextEClass, 
-		   source, 
-		   new String[] {
 		   });
 	}
 
@@ -2126,22 +1612,10 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 			 "Label", "Physical Architecture" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
-		  (getPhysicalArchitecture_OwnedPhysicalComponent(), 
-		   source, 
-		   new String[] {
-			 "Label", "ownedComponents" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
 		  (getPhysicalArchitecture_OwnedPhysicalComponentPkg(), 
 		   source, 
 		   new String[] {
 			 "Label", "ownedComponentPkgs" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getPhysicalArchitecture_OwnedPhysicalActorPkg(), 
-		   source, 
-		   new String[] {
-			 "Label", "ownedActorPkg" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getPhysicalArchitecture_OwnedDeployments(), 
@@ -2156,12 +1630,6 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 			 "Label", "allocatedLogicalArchitectureImplementations" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
-		  (abstractPhysicalComponentEClass, 
-		   source, 
-		   new String[] {
-			 "Label", "AbstractPhysicalComponent" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
 		  (physicalComponentEClass, 
 		   source, 
 		   new String[] {
@@ -2172,24 +1640,6 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 		   source, 
 		   new String[] {
 			 "Label", "subActors" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (physicalActorPkgEClass, 
-		   source, 
-		   new String[] {
-			 "Label", "PhysicalActorPkg" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getPhysicalActorPkg_OwnedPhysicalActorPkgs(), 
-		   source, 
-		   new String[] {
-			 "Label", "ownedActorPkgs" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getPhysicalActorPkg_OwnedPhysicalActors(), 
-		   source, 
-		   new String[] {
-			 "Label", "ownedActors" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (physicalComponentPkgEClass, 
@@ -2220,12 +1670,6 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 		   source, 
 		   new String[] {
 			 "Label", "ownedDeployments" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (physicalActorEClass, 
-		   source, 
-		   new String[] {
-			 "Label", "PhysicalActor" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (physicalNodeEClass, 
@@ -2284,21 +1728,7 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 			 "stereotype", "eng.PhysicalArchitecture" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
-		  (getPhysicalArchitecture_OwnedPhysicalComponent(), 
-		   source, 
-		   new String[] {
-			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
 		  (getPhysicalArchitecture_OwnedPhysicalComponentPkg(), 
-		   source, 
-		   new String[] {
-			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getPhysicalArchitecture_OwnedPhysicalActorPkg(), 
 		   source, 
 		   new String[] {
 			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
@@ -2319,21 +1749,6 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 			 "featureOwner", "NamedElement" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
-		  (abstractPhysicalComponentEClass, 
-		   source, 
-		   new String[] {
-			 "metaclass", "Component", //$NON-NLS-1$ //$NON-NLS-2$
-			 "Stereotype", "eng.AbstractPhysicalComponent" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getAbstractPhysicalComponent_Kind(), 
-		   source, 
-		   new String[] {
-			 "featureName", "type", //$NON-NLS-1$ //$NON-NLS-2$
-			 "fromStereotype", "true", //$NON-NLS-1$ //$NON-NLS-2$
-			 "featureOwner", "eng.AbstractPhysicalComponent" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
 		  (physicalComponentEClass, 
 		   source, 
 		   new String[] {
@@ -2341,25 +1756,12 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 			 "stereotype", "eng.PhysicalComponent" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
-		  (physicalActorPkgEClass, 
+		  (getPhysicalComponent_Kind(), 
 		   source, 
 		   new String[] {
-			 "metaclass", "Package", //$NON-NLS-1$ //$NON-NLS-2$
-			 "stereotype", "eng.PhysicalActorPkg" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getPhysicalActorPkg_OwnedPhysicalActorPkgs(), 
-		   source, 
-		   new String[] {
-			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getPhysicalActorPkg_OwnedPhysicalActors(), 
-		   source, 
-		   new String[] {
-			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
+			 "featureName", "type", //$NON-NLS-1$ //$NON-NLS-2$
+			 "fromStereotype", "true", //$NON-NLS-1$ //$NON-NLS-2$
+			 "featureOwner", "eng.AbstractPhysicalComponent" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (physicalComponentPkgEClass, 
@@ -2395,13 +1797,6 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 		   new String[] {
 			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (physicalActorEClass, 
-		   source, 
-		   new String[] {
-			 "metaclass", "Component", //$NON-NLS-1$ //$NON-NLS-2$
-			 "stereotype", "eng.PhysicalActor" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (physicalNodeEClass, 
@@ -2539,36 +1934,12 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
-		  (getPhysicalArchitecture_OwnedPhysicalContext(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "uml::Package::packagedElement elements on which PhysicalContext stereotype or any stereotype that inherits from it is applied\r\nMultiplicity must be [0..1]" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getPhysicalArchitecture_OwnedPhysicalComponent(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "uml::Package::packagedElement elements on which PhysicalComponent stereotype or any stereotype that inherits from it is applied\r\nMultiplicity must be [0..1]" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
 		  (getPhysicalArchitecture_OwnedPhysicalComponentPkg(), 
 		   source, 
 		   new String[] {
 			 "UML/SysML semantic equivalences", "uml::Package::nestedPackage#uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::nestedPackage elements on which PhysicalComponentPkg stereotype or any stereotype that inherits from it is applied\r\nMultiplicity must be [0..1]" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getPhysicalArchitecture_OwnedPhysicalActorPkg(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "uml::Package::nestedPackage#uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "uml::Package::nestedPackage elements on which PhysicalActorPkg stereotype or any stereotype that inherits from it is applied\r\nMultiplicity must be [0..1]" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getPhysicalArchitecture_ContainedCapabilityRealizationPkg(), 
@@ -2644,15 +2015,7 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 			 "constraints", "uml::Package::nestedPackage elements on which PhysicalFunctionPkg stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
-		  (getPhysicalFunction_AllocatorPhysicalActors(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getPhysicalFunction_AllocatorPhysicalComponents(), 
+		  (getPhysicalFunction_AllocatingPhysicalComponents(), 
 		   source, 
 		   new String[] {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
@@ -2709,53 +2072,36 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 			 "constraints", "uml::Package::nestedPackage elements on which PhysicalFunctionPkg stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
-		  (abstractPhysicalComponentEClass, 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getAbstractPhysicalComponent_Kind(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getAbstractPhysicalComponent_Nature(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getAbstractPhysicalComponent_OwnedDeploymentLinks(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "keyword::nearestpackage", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "SysML::Blocks::Block cannot contain AbstractDeployment\'s equivalent, hence we find the nearest available package to store them.", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getAbstractPhysicalComponent_OwnedDeploymentAspect(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
 		  (physicalComponentEClass, 
 		   source, 
 		   new String[] {
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "base metaclass in UML/SysML profile ", "SysML::Blocks::Block", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "cannot map to uml::Component, which is not part of UML4SysML", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
+		  (getPhysicalComponent_Kind(), 
+		   source, 
+		   new String[] {
+			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
+		  (getPhysicalComponent_Nature(), 
+		   source, 
+		   new String[] {
+			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
+		  (getPhysicalComponent_OwnedDeploymentLinks(), 
+		   source, 
+		   new String[] {
+			 "UML/SysML semantic equivalences", "keyword::nearestpackage", //$NON-NLS-1$ //$NON-NLS-2$
+			 "explanation", "SysML::Blocks::Block cannot contain AbstractDeployment\'s equivalent, hence we find the nearest available package to store them.", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
@@ -2772,22 +2118,6 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 		   new String[] {
 			 "UML/SysML semantic equivalences", "keyword::nearestpackage", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "SysML::Blocks::Block cannot contain packages, hence we find the nearest available package to store them.", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getPhysicalComponent_OwnedLogicalComponentRealizations(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "keyword::nearestpackage", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "SysML::Blocks::Block cannot contain packages, hence we find the nearest available package to store them.", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getPhysicalComponent_LogicalComponentRealizations(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
@@ -2839,39 +2169,6 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
-		  (getPhysicalComponent_DeployingPhysicalActors(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (physicalActorPkgEClass, 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "uml::Package", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getPhysicalActorPkg_OwnedPhysicalActorPkgs(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "uml::Package::nestedPackage#uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "uml::Package::nestedPackage elements on which PhysicalActorPkg stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getPhysicalActorPkg_OwnedPhysicalActors(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "uml::Package::packagedElement elements on which PhysicalActor stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
 		  (physicalComponentPkgEClass, 
 		   source, 
 		   new String[] {
@@ -2911,64 +2208,6 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 			 "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::packagedElement elements on which AbstractDeployment stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (physicalActorEClass, 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "SysML::Blocks::Block", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getPhysicalActor_OwnedLogicalActorRealizations(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "uml::BehavioredClassifier::interfaceRealization", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "Elements are contained in the nearest possible parent container.", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "uml::BehavioredClassifier::interfaceRealization elements on which LogicalActorRealization stereotype or any stereotype that inherits from it is applied" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getPhysicalActor_LogicalActorRealizations(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getPhysicalActor_AllocatedPhysicalFunctions(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getPhysicalActor_RealizedLogicalActors(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getPhysicalActor_DeployedPhysicalComponents(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (logicalActorRealizationEClass, 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "uml::InterfaceRealization", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (physicalNodeEClass, 
@@ -3117,15 +2356,6 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
-		  (logicalComponentRealizationEClass, 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "uml::Realization", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
 		  (logicalInterfaceRealizationEClass, 
 		   source, 
 		   new String[] {
@@ -3165,15 +2395,6 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (physicalContextEClass, 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "uml::Class", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });
 	}
 
@@ -3196,17 +2417,7 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 		   new String[] {
 		   });	
 		addAnnotation
-		  (getPhysicalArchitecture_OwnedPhysicalComponent(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
 		  (getPhysicalArchitecture_OwnedPhysicalComponentPkg(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getPhysicalArchitecture_OwnedPhysicalActorPkg(), 
 		   source, 
 		   new String[] {
 		   });	
@@ -3222,16 +2433,6 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 		   });	
 		addAnnotation
 		  (getPhysicalComponent_SubPhysicalComponents(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getPhysicalActorPkg_OwnedPhysicalActorPkgs(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getPhysicalActorPkg_OwnedPhysicalActors(), 
 		   source, 
 		   new String[] {
 		   });	
@@ -3307,14 +2508,7 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 			 "viatra.expression", "allocatingArchitectures" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
-		  (getPhysicalFunction_AllocatorPhysicalActors(), 
-		   source, 
-		   new String[] {
-			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
-			 "viatra.expression", "PhysicalFunction.incomingTraces(self, cfa);\r\nComponentFunctionalAllocation.sourceElement(cfa, target);" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getPhysicalFunction_AllocatorPhysicalComponents(), 
+		  (getPhysicalFunction_AllocatingPhysicalComponents(), 
 		   source, 
 		   new String[] {
 			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
@@ -3340,13 +2534,6 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 		   new String[] {
 			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
 			 "viatra.expression", "subFunctions" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getPhysicalComponent_LogicalComponentRealizations(), 
-		   source, 
-		   new String[] {
-			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
-			 "viatra.expression", "provisionedComponentAllocations" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getPhysicalComponent_LogicalInterfaceRealizations(), 
@@ -3389,41 +2576,6 @@ public class PaPackageImpl extends EPackageImpl implements PaPackage {
 		   new String[] {
 			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
 			 "viatra.expression", "Part.abstractType(part, self);\r\n\tPart.deployingLinks.location(part, deployedPart);\r\n\tPart.abstractType(deployedPart, target);\r\n} or {\r\n\tPart.abstractType(part, self);\r\n\tPart.deploymentLinks.deployedElement(part, target);" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getPhysicalComponent_DeployingPhysicalActors(), 
-		   source, 
-		   new String[] {
-			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
-			 "viatra.expression", "Part.abstractType(part, self);\r\n\tPart.deployingLinks.location(part, deployedPart);\r\n\tPart.abstractType(deployedPart, target);\r\n} or {\r\n\tPart.abstractType(part, self);\r\n\tPart.deploymentLinks.deployedElement(part, target);" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getPhysicalActor_LogicalActorRealizations(), 
-		   source, 
-		   new String[] {
-			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
-			 "viatra.expression", "provisionedComponentAllocations" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getPhysicalActor_AllocatedPhysicalFunctions(), 
-		   source, 
-		   new String[] {
-			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
-			 "viatra.expression", "allocatedFunctions" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getPhysicalActor_RealizedLogicalActors(), 
-		   source, 
-		   new String[] {
-			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
-			 "viatra.expression", "allocatedComponents" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getPhysicalActor_DeployedPhysicalComponents(), 
-		   source, 
-		   new String[] {
-			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
-			 "viatra.expression", "Part.abstractType(part, self);\r\n\tPart.deploymentLinks.deployedElement(part, deployedPart);\r\n\tPart.abstractType(deployedPart, target);\r\n} or {\r\n\tPart.abstractType(part, self);\r\n\tPart.deploymentLinks.deployedElement(part, target);" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getPhysicalNode_SubPhysicalNodes(), 

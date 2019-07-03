@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.polarsys.capella.core.data.capellamodeller.util;
 
-import java.util.List;
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
@@ -25,7 +23,6 @@ import org.polarsys.capella.core.data.capellacore.NamedElement;
 import org.polarsys.capella.core.data.capellacore.Namespace;
 import org.polarsys.capella.core.data.capellacore.ReuserStructure;
 import org.polarsys.capella.core.data.capellacore.Structure;
-import org.polarsys.capella.core.data.capellamodeller.*;
 import org.polarsys.capella.core.data.capellamodeller.CapellamodellerPackage;
 import org.polarsys.capella.core.data.capellamodeller.Folder;
 import org.polarsys.capella.core.data.capellamodeller.Library;

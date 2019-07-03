@@ -13,7 +13,6 @@
 package org.polarsys.capella.core.data.information.datavalue;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.polarsys.capella.common.data.modellingcore.ValueSpecification;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 

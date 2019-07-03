@@ -18,7 +18,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-import org.polarsys.capella.core.data.fa.impl.AbstractFunctionalStructureImpl;
+import org.polarsys.capella.core.data.cs.impl.ComponentPkgImpl;
 import org.polarsys.capella.core.data.la.LaPackage;
 import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.data.la.LogicalComponentPkg;
@@ -37,7 +37,7 @@ import org.polarsys.capella.core.data.la.LogicalComponentPkg;
  *
  * @generated
  */
-public class LogicalComponentPkgImpl extends AbstractFunctionalStructureImpl implements LogicalComponentPkg {
+public class LogicalComponentPkgImpl extends ComponentPkgImpl implements LogicalComponentPkg {
 
 	/**
 	 * The cached value of the '{@link #getOwnedLogicalComponents() <em>Owned Logical Components</em>}' containment reference list.

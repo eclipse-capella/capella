@@ -62,11 +62,9 @@ import org.polarsys.capella.core.data.oa.OaFactory;
 import org.polarsys.capella.core.data.oa.OaPackage;
 import org.polarsys.capella.core.data.oa.OperationalActivity;
 import org.polarsys.capella.core.data.oa.OperationalActivityPkg;
-import org.polarsys.capella.core.data.oa.OperationalActor;
 import org.polarsys.capella.core.data.oa.OperationalAnalysis;
 import org.polarsys.capella.core.data.oa.OperationalCapability;
 import org.polarsys.capella.core.data.oa.OperationalCapabilityPkg;
-import org.polarsys.capella.core.data.oa.OperationalContext;
 import org.polarsys.capella.core.data.oa.OperationalProcess;
 import org.polarsys.capella.core.data.oa.OperationalScenario;
 import org.polarsys.capella.core.data.oa.OrganisationalUnit;
@@ -238,13 +236,6 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass operationalActorEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EClass communityOfInterestEClass = null;
 
 	/**
@@ -295,13 +286,6 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 	 * @generated
 	 */
 	private EClass entityOperationalCapabilityInvolvementEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass operationalContextEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -437,7 +421,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getOperationalAnalysis_OwnedOperationalContext() {
+	public EReference getOperationalAnalysis_OwnedRolePkg() {
 		return (EReference)operationalAnalysisEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -446,7 +430,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getOperationalAnalysis_OwnedRolePkg() {
+	public EReference getOperationalAnalysis_OwnedEntityPkg() {
 		return (EReference)operationalAnalysisEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -455,7 +439,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getOperationalAnalysis_OwnedEntityPkg() {
+	public EReference getOperationalAnalysis_OwnedConceptPkg() {
 		return (EReference)operationalAnalysisEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -464,7 +448,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getOperationalAnalysis_OwnedConceptPkg() {
+	public EReference getOperationalAnalysis_ContainedOperationalCapabilityPkg() {
 		return (EReference)operationalAnalysisEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -473,7 +457,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getOperationalAnalysis_ContainedOperationalCapabilityPkg() {
+	public EReference getOperationalAnalysis_ContainedOperationalActivityPkg() {
 		return (EReference)operationalAnalysisEClass.getEStructuralFeatures().get(4);
 	}
 
@@ -482,17 +466,8 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getOperationalAnalysis_ContainedOperationalActivityPkg() {
-		return (EReference)operationalAnalysisEClass.getEStructuralFeatures().get(5);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getOperationalAnalysis_AllocatingSystemAnalyses() {
-		return (EReference)operationalAnalysisEClass.getEStructuralFeatures().get(6);
+		return (EReference)operationalAnalysisEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -951,7 +926,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 	 * @generated
 	 */
 	public EReference getEntityPkg_OwnedEntityPkgs() {
-		return (EReference)entityPkgEClass.getEStructuralFeatures().get(0);
+		return (EReference)entityPkgEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -960,7 +935,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 	 * @generated
 	 */
 	public EReference getEntityPkg_OwnedEntities() {
-		return (EReference)entityPkgEClass.getEStructuralFeatures().get(1);
+		return (EReference)entityPkgEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1076,26 +1051,8 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getEntity_RealizingSystems() {
-		return (EReference)entityEClass.getEStructuralFeatures().get(9);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getEntity_RealizingActors() {
-		return (EReference)entityEClass.getEStructuralFeatures().get(10);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getEntity_InvolvingOperationalCapabilities() {
-		return (EReference)entityEClass.getEStructuralFeatures().get(11);
+		return (EReference)entityEClass.getEStructuralFeatures().get(9);
 	}
 
 	/**
@@ -1222,24 +1179,6 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 	 */
 	public EReference getAbstractConceptItem_ComposingLinks() {
 		return (EReference)abstractConceptItemEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getOperationalActor() {
-		return operationalActorEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getOperationalActor_RealizingSystemActors() {
-		return (EReference)operationalActorEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1445,15 +1384,6 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getOperationalContext() {
-		return operationalContextEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public OaFactory getOaFactory() {
 		return (OaFactory)getEFactoryInstance();
 	}
@@ -1478,7 +1408,6 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 
 		// Create classes and their features
 		operationalAnalysisEClass = createEClass(OPERATIONAL_ANALYSIS);
-		createEReference(operationalAnalysisEClass, OPERATIONAL_ANALYSIS__OWNED_OPERATIONAL_CONTEXT);
 		createEReference(operationalAnalysisEClass, OPERATIONAL_ANALYSIS__OWNED_ROLE_PKG);
 		createEReference(operationalAnalysisEClass, OPERATIONAL_ANALYSIS__OWNED_ENTITY_PKG);
 		createEReference(operationalAnalysisEClass, OPERATIONAL_ANALYSIS__OWNED_CONCEPT_PKG);
@@ -1548,8 +1477,8 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 		createEReference(roleAllocationEClass, ROLE_ALLOCATION__ENTITY);
 
 		entityPkgEClass = createEClass(ENTITY_PKG);
-		createEReference(entityPkgEClass, ENTITY_PKG__OWNED_ENTITY_PKGS);
 		createEReference(entityPkgEClass, ENTITY_PKG__OWNED_ENTITIES);
+		createEReference(entityPkgEClass, ENTITY_PKG__OWNED_ENTITY_PKGS);
 		createEReference(entityPkgEClass, ENTITY_PKG__OWNED_LOCATIONS);
 		createEReference(entityPkgEClass, ENTITY_PKG__OWNED_COMMUNICATION_MEANS);
 
@@ -1563,8 +1492,6 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 		createEReference(entityEClass, ENTITY__OWNED_ROLE_ALLOCATIONS);
 		createEReference(entityEClass, ENTITY__ALLOCATED_OPERATIONAL_ACTIVITIES);
 		createEReference(entityEClass, ENTITY__ALLOCATED_ROLES);
-		createEReference(entityEClass, ENTITY__REALIZING_SYSTEMS);
-		createEReference(entityEClass, ENTITY__REALIZING_ACTORS);
 		createEReference(entityEClass, ENTITY__INVOLVING_OPERATIONAL_CAPABILITIES);
 
 		conceptPkgEClass = createEClass(CONCEPT_PKG);
@@ -1585,9 +1512,6 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 
 		abstractConceptItemEClass = createEClass(ABSTRACT_CONCEPT_ITEM);
 		createEReference(abstractConceptItemEClass, ABSTRACT_CONCEPT_ITEM__COMPOSING_LINKS);
-
-		operationalActorEClass = createEClass(OPERATIONAL_ACTOR);
-		createEReference(operationalActorEClass, OPERATIONAL_ACTOR__REALIZING_SYSTEM_ACTORS);
 
 		communityOfInterestEClass = createEClass(COMMUNITY_OF_INTEREST);
 		createEReference(communityOfInterestEClass, COMMUNITY_OF_INTEREST__COMMUNITY_OF_INTEREST_COMPOSITIONS);
@@ -1618,8 +1542,6 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 		entityOperationalCapabilityInvolvementEClass = createEClass(ENTITY_OPERATIONAL_CAPABILITY_INVOLVEMENT);
 		createEReference(entityOperationalCapabilityInvolvementEClass, ENTITY_OPERATIONAL_CAPABILITY_INVOLVEMENT__ENTITY);
 		createEReference(entityOperationalCapabilityInvolvementEClass, ENTITY_OPERATIONAL_CAPABILITY_INVOLVEMENT__CAPABILITY);
-
-		operationalContextEClass = createEClass(OPERATIONAL_CONTEXT);
 	}
 
 	/**
@@ -1676,8 +1598,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 		roleEClass.getESuperTypes().add(theInformationPackage.getAbstractInstance());
 		roleAssemblyUsageEClass.getESuperTypes().add(theCapellacorePackage.getNamedElement());
 		roleAllocationEClass.getESuperTypes().add(theCapellacorePackage.getAllocation());
-		entityPkgEClass.getESuperTypes().add(theCapellacorePackage.getStructure());
-		entityPkgEClass.getESuperTypes().add(theFaPackage.getAbstractFunctionalStructure());
+		entityPkgEClass.getESuperTypes().add(theCsPackage.getComponentPkg());
 		entityEClass.getESuperTypes().add(this.getAbstractConceptItem());
 		entityEClass.getESuperTypes().add(theModellingcorePackage.getInformationsExchanger());
 		entityEClass.getESuperTypes().add(theCapellacorePackage.getInvolvedElement());
@@ -1686,7 +1607,6 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 		conceptComplianceEClass.getESuperTypes().add(theCapellacorePackage.getRelationship());
 		itemInConceptEClass.getESuperTypes().add(theCapellacorePackage.getNamedElement());
 		abstractConceptItemEClass.getESuperTypes().add(theCsPackage.getComponent());
-		operationalActorEClass.getESuperTypes().add(this.getEntity());
 		communityOfInterestEClass.getESuperTypes().add(theCapellacorePackage.getNamedElement());
 		communityOfInterestCompositionEClass.getESuperTypes().add(theCapellacorePackage.getNamedElement());
 		organisationalUnitEClass.getESuperTypes().add(theCapellacorePackage.getNamedElement());
@@ -1696,11 +1616,9 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 		communicationMeanEClass.getESuperTypes().add(theCapellacorePackage.getNamedRelationship());
 		communicationMeanEClass.getESuperTypes().add(theFaPackage.getComponentExchange());
 		entityOperationalCapabilityInvolvementEClass.getESuperTypes().add(theCapellacorePackage.getInvolvement());
-		operationalContextEClass.getESuperTypes().add(theCsPackage.getComponentContext());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(operationalAnalysisEClass, OperationalAnalysis.class, "OperationalAnalysis", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(getOperationalAnalysis_OwnedOperationalContext(), this.getOperationalContext(), null, "ownedOperationalContext", null, 0, 1, OperationalAnalysis.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getOperationalAnalysis_OwnedRolePkg(), this.getRolePkg(), null, "ownedRolePkg", null, 0, 1, OperationalAnalysis.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getOperationalAnalysis_OwnedEntityPkg(), this.getEntityPkg(), null, "ownedEntityPkg", null, 0, 1, OperationalAnalysis.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getOperationalAnalysis_OwnedConceptPkg(), this.getConceptPkg(), null, "ownedConceptPkg", null, 0, 1, OperationalAnalysis.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
@@ -1770,8 +1688,8 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 		initEReference(getRoleAllocation_Entity(), this.getEntity(), this.getEntity_RoleAllocations(), "entity", null, 1, 1, RoleAllocation.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(entityPkgEClass, EntityPkg.class, "EntityPkg", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(getEntityPkg_OwnedEntityPkgs(), this.getEntityPkg(), null, "ownedEntityPkgs", null, 0, -1, EntityPkg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getEntityPkg_OwnedEntities(), this.getEntity(), null, "ownedEntities", null, 0, -1, EntityPkg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getEntityPkg_OwnedEntityPkgs(), this.getEntityPkg(), null, "ownedEntityPkgs", null, 0, -1, EntityPkg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getEntityPkg_OwnedLocations(), this.getLocation(), null, "ownedLocations", null, 0, -1, EntityPkg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getEntityPkg_OwnedCommunicationMeans(), this.getCommunicationMean(), null, "ownedCommunicationMeans", null, 0, -1, EntityPkg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
@@ -1785,8 +1703,6 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 		initEReference(getEntity_OwnedRoleAllocations(), this.getRoleAllocation(), null, "ownedRoleAllocations", null, 0, -1, Entity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getEntity_AllocatedOperationalActivities(), this.getOperationalActivity(), this.getOperationalActivity_AllocatorEntities(), "allocatedOperationalActivities", null, 0, -1, Entity.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getEntity_AllocatedRoles(), this.getRole(), null, "allocatedRoles", null, 0, -1, Entity.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getEntity_RealizingSystems(), theCtxPackage.getSystem(), null, "realizingSystems", null, 0, -1, Entity.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getEntity_RealizingActors(), theCtxPackage.getActor(), theCtxPackage.getActor_RealizedEntities(), "realizingActors", null, 0, -1, Entity.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getEntity_InvolvingOperationalCapabilities(), this.getOperationalCapability(), null, "involvingOperationalCapabilities", null, 0, -1, Entity.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(conceptPkgEClass, ConceptPkg.class, "ConceptPkg", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
@@ -1807,9 +1723,6 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 
 		initEClass(abstractConceptItemEClass, AbstractConceptItem.class, "AbstractConceptItem", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEReference(getAbstractConceptItem_ComposingLinks(), this.getItemInConcept(), null, "composingLinks", null, 0, -1, AbstractConceptItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-
-		initEClass(operationalActorEClass, OperationalActor.class, "OperationalActor", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(getOperationalActor_RealizingSystemActors(), theCtxPackage.getActor(), theCtxPackage.getActor_RealizedOperationalActors(), "realizingSystemActors", null, 0, -1, OperationalActor.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(communityOfInterestEClass, CommunityOfInterest.class, "CommunityOfInterest", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEReference(getCommunityOfInterest_CommunityOfInterestCompositions(), this.getCommunityOfInterestComposition(), null, "communityOfInterestCompositions", null, 0, -1, CommunityOfInterest.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
@@ -1840,8 +1753,6 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 		initEClass(entityOperationalCapabilityInvolvementEClass, EntityOperationalCapabilityInvolvement.class, "EntityOperationalCapabilityInvolvement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEReference(getEntityOperationalCapabilityInvolvement_Entity(), this.getEntity(), null, "entity", null, 1, 1, EntityOperationalCapabilityInvolvement.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getEntityOperationalCapabilityInvolvement_Capability(), this.getOperationalCapability(), null, "capability", null, 1, 1, EntityOperationalCapabilityInvolvement.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-
-		initEClass(operationalContextEClass, OperationalContext.class, "OperationalContext", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
 		// Create resource
 		createResource(eNS_URI);
@@ -1908,14 +1819,6 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getOperationalAnalysis_OwnedOperationalContext(), 
-		   source, 
-		   new String[] {
-			 "description", "the \"context\" for this architecture, e.g. the parts that make the environnement of the entities (actors, ...) , plus the entities itself", //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getOperationalAnalysis_OwnedRolePkg(), 
@@ -2325,18 +2228,18 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
-		  (getEntityPkg_OwnedEntityPkgs(), 
-		   source, 
-		   new String[] {
-			 "description", "sub-(Entity)packages contained in this package\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
 		  (getEntityPkg_OwnedEntities(), 
 		   source, 
 		   new String[] {
 			 "description", "the Entity elements contained in this package\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
+		  (getEntityPkg_OwnedEntityPkgs(), 
+		   source, 
+		   new String[] {
+			 "description", "sub-(Entity)packages contained in this package\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
@@ -2558,19 +2461,6 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
-		  (operationalActorEClass, 
-		   source, 
-		   new String[] {
-			 "description", "A person or organization playing a role within an operational process.", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "arcadia_description", "An actor is a [usually human] non-decomposable operational Entity. Example: User of a radio set; radio station...", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "operational", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
 		  (communityOfInterestEClass, 
 		   source, 
 		   new String[] {
@@ -2734,18 +2624,6 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (operationalContextEClass, 
-		   source, 
-		   new String[] {
-			 "description", "the list of Parts that define the Entities and its environment, at this abstraction level.", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "operational", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });
 	}
 
@@ -2764,11 +2642,6 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 		   });	
 		addAnnotation
 		  (operationalAnalysisEClass, 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getOperationalAnalysis_OwnedOperationalContext(), 
 		   source, 
 		   new String[] {
 		   });	
@@ -2944,12 +2817,12 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 		   new String[] {
 		   });	
 		addAnnotation
-		  (getEntityPkg_OwnedEntityPkgs(), 
+		  (getEntityPkg_OwnedEntities(), 
 		   source, 
 		   new String[] {
 		   });	
 		addAnnotation
-		  (getEntityPkg_OwnedEntities(), 
+		  (getEntityPkg_OwnedEntityPkgs(), 
 		   source, 
 		   new String[] {
 		   });	
@@ -2985,30 +2858,7 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 		   new String[] {
 		   });	
 		addAnnotation
-		  (getEntity_RealizingSystems(), 
-		   source, 
-		   new String[] {
-			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getEntity_RealizingActors(), 
-		   source, 
-		   new String[] {
-			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
 		  (getEntity_InvolvingOperationalCapabilities(), 
-		   source, 
-		   new String[] {
-			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (operationalActorEClass, 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getOperationalActor_RealizingSystemActors(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
@@ -3030,11 +2880,6 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 		   });	
 		addAnnotation
 		  (getCommunicationMean_TargetEntity(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (operationalContextEClass, 
 		   source, 
 		   new String[] {
 		   });
@@ -3076,14 +2921,6 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "base metaclass in UML/SysML profile ", "uml::Package", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getOperationalAnalysis_OwnedOperationalContext(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "uml::Package::PackagedElement elements on which OperationalContext stereotype or any stereotype that inherits from it is applied" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getOperationalAnalysis_OwnedRolePkg(), 
@@ -3548,20 +3385,20 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
-		  (getEntityPkg_OwnedEntityPkgs(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "uml::Package::nestedPackage#uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "uml::Package::nestedPackage elements on which EntityPkg stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
 		  (getEntityPkg_OwnedEntities(), 
 		   source, 
 		   new String[] {
 			 "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::packagedElement elements on which Entity stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
+		  (getEntityPkg_OwnedEntityPkgs(), 
+		   source, 
+		   new String[] {
+			 "UML/SysML semantic equivalences", "uml::Package::nestedPackage#uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
+			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "uml::Package::nestedPackage elements on which EntityPkg stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getEntityPkg_OwnedLocations(), 
@@ -3654,22 +3491,6 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 		   });	
 		addAnnotation
 		  (getEntity_AllocatedRoles(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getEntity_RealizingSystems(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getEntity_RealizingActors(), 
 		   source, 
 		   new String[] {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
@@ -3800,23 +3621,6 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Opposite reference of uml::Dependency::supplier", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Order must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (operationalActorEClass, 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "SysML ::Blocks ::Block", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getOperationalActor_RealizingSystemActors(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (communityOfInterestEClass, 
@@ -4000,15 +3804,6 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 		   new String[] {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (operationalContextEClass, 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "uml::Class", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });
 	}
@@ -4211,32 +4006,11 @@ public class OaPackageImpl extends EPackageImpl implements OaPackage {
 			 "viatra.expression", "roleAllocations.role" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
-		  (getEntity_RealizingSystems(), 
-		   source, 
-		   new String[] {
-			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
-			 "viatra.expression", "Entity.incomingTraces(self, oer);\r\n\tOperationalEntityRealization.allocatingComponent(oer, target);\r\n} or {\r\n\tEntity.incomingTraces(self, oar);\r\n\tOperationalActorRealization.allocatingComponent(oar, target);" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getEntity_RealizingActors(), 
-		   source, 
-		   new String[] {
-			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
-			 "viatra.expression", "Entity.incomingTraces(self, oer);\r\n\tOperationalEntityRealization.allocatingComponent(oer, target);" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
 		  (getEntity_InvolvingOperationalCapabilities(), 
 		   source, 
 		   new String[] {
 			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
 			 "viatra.expression", "Entity.involvingInvolvements(self, eoci);\r\nEntityOperationalCapabilityInvolvement.capability(eoci, target);" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getOperationalActor_RealizingSystemActors(), 
-		   source, 
-		   new String[] {
-			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
-			 "viatra.expression", "OperationalActor.incomingTraces(self, oar);\r\n\tOperationalActorRealization.allocatingComponent(oar, target);" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getCommunicationMean_SourceEntity(), 

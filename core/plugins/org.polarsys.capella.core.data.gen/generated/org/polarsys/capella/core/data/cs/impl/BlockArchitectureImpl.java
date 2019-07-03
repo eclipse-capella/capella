@@ -31,6 +31,7 @@ import org.polarsys.capella.common.model.helpers.IHelper;
 import org.polarsys.capella.core.data.capellacommon.AbstractCapabilityPkg;
 import org.polarsys.capella.core.data.cs.ArchitectureAllocation;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
+import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.InterfacePkg;
 import org.polarsys.capella.core.data.fa.impl.AbstractFunctionalArchitectureImpl;
@@ -53,6 +54,7 @@ import org.polarsys.capella.core.data.requirement.RequirementsPkg;
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.BlockArchitectureImpl#getProvisioningArchitectureAllocations <em>Provisioning Architecture Allocations</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.BlockArchitectureImpl#getAllocatedArchitectures <em>Allocated Architectures</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.BlockArchitectureImpl#getAllocatingArchitectures <em>Allocating Architectures</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.cs.impl.BlockArchitectureImpl#getSystem <em>System</em>}</li>
  * </ul>
  *
  * @generated
@@ -622,6 +624,59 @@ public abstract class BlockArchitectureImpl extends AbstractFunctionalArchitectu
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+
+	public Component getSystem() {
+
+		Component system = basicGetSystem();
+		return system != null && system.eIsProxy() ? (Component)eResolveProxy((InternalEObject)system) : system;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+
+	public Component basicGetSystem() {
+
+
+    Object result = null;
+    // Helper that can get value for current feature.
+    IHelper helper = null;
+    // If current object is adaptable, ask it to get its IHelper.
+    if (this instanceof IAdaptable) {
+    	helper = (IHelper) ((IAdaptable) this).getAdapter(IHelper.class);
+    }
+    if (null == helper) {
+      // No helper found yet.
+      // Ask the platform to get the adapter 'IHelper.class' for current object.
+      IAdapterManager adapterManager = Platform.getAdapterManager();
+      helper = (IHelper) adapterManager.getAdapter(this, IHelper.class);
+    }
+    if (null == helper) {
+      EPackage package_l = eClass().getEPackage();
+      // Get the root package of the owner package.
+      EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+    } 
+    // A helper is found, let's use it. 
+    EAnnotation annotation = CsPackage.Literals.BLOCK_ARCHITECTURE__SYSTEM.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    result = helper.getValue(this, CsPackage.Literals.BLOCK_ARCHITECTURE__SYSTEM, annotation);
+		
+		try {
+			return (Component) result;
+	  } catch (ClassCastException exception) {
+	     exception.printStackTrace();
+	    return null;
+	  }
+		
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -664,6 +719,9 @@ public abstract class BlockArchitectureImpl extends AbstractFunctionalArchitectu
 				return getAllocatedArchitectures();
 			case CsPackage.BLOCK_ARCHITECTURE__ALLOCATING_ARCHITECTURES:
 				return getAllocatingArchitectures();
+			case CsPackage.BLOCK_ARCHITECTURE__SYSTEM:
+				if (resolve) return getSystem();
+				return basicGetSystem();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -745,6 +803,8 @@ public abstract class BlockArchitectureImpl extends AbstractFunctionalArchitectu
 				return !getAllocatedArchitectures().isEmpty();
 			case CsPackage.BLOCK_ARCHITECTURE__ALLOCATING_ARCHITECTURES:
 				return !getAllocatingArchitectures().isEmpty();
+			case CsPackage.BLOCK_ARCHITECTURE__SYSTEM:
+				return basicGetSystem() != null;
 		}
 		return super.eIsSet(featureID);
 	}

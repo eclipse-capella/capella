@@ -2846,8 +2846,8 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 		componentExchangeFunctionalExchangeAllocationEClass.getESuperTypes().add(this.getAbstractFunctionAllocation());
 		componentExchangeRealizationEClass.getESuperTypes().add(this.getExchangeSpecificationRealization());
 		componentPortEClass.getESuperTypes().add(theInformationPackage.getPort());
-		componentPortEClass.getESuperTypes().add(theInformationPackage.getPartition());
 		componentPortEClass.getESuperTypes().add(theModellingcorePackage.getInformationsExchanger());
+		componentPortEClass.getESuperTypes().add(theInformationPackage.getProperty());
 		componentPortAllocationEClass.getESuperTypes().add(theCapellacorePackage.getAllocation());
 		componentPortAllocationEndEClass.getESuperTypes().add(theCapellacorePackage.getCapellaElement());
 		functionalChainInvolvementLinkEClass.getESuperTypes().add(this.getFunctionalChainInvolvement());
@@ -3051,7 +3051,7 @@ public class FaPackageImpl extends EPackageImpl implements FaPackage {
 
 		initEClass(componentExchangeEndEClass, ComponentExchangeEnd.class, "ComponentExchangeEnd", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEReference(getComponentExchangeEnd_Port(), theInformationPackage.getPort(), null, "port", null, 0, 1, ComponentExchangeEnd.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getComponentExchangeEnd_Part(), theInformationPackage.getPartition(), null, "part", null, 0, 1, ComponentExchangeEnd.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getComponentExchangeEnd_Part(), theCsPackage.getPart(), null, "part", null, 0, 1, ComponentExchangeEnd.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(componentExchangeFunctionalExchangeAllocationEClass, ComponentExchangeFunctionalExchangeAllocation.class, "ComponentExchangeFunctionalExchangeAllocation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEReference(getComponentExchangeFunctionalExchangeAllocation_AllocatedFunctionalExchange(), this.getFunctionalExchange(), this.getFunctionalExchange_IncomingComponentExchangeFunctionalExchangeRealizations(), "allocatedFunctionalExchange", null, 1, 1, ComponentExchangeFunctionalExchangeAllocation.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$

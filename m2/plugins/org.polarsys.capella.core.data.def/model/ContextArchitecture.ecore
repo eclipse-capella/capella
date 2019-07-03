@@ -43,61 +43,12 @@
       <details key="constraints" value="none"/>
     </eAnnotations>
     <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedSystemContext" eType="#//SystemContext"
-        containment="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedSystemComponentPkg"
+        eType="#//SystemComponentPkg" containment="true">
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
-        <details key="description" value="the &quot;context&quot; for this architecture, e.g. the parts that make the environnement of the system (actors, ...) , plus the system itself&#xD;&#xA;[source: Capella study]"/>
+        <details key="description" value="Link to a package that contains System Components"/>
         <details key="constraints" value="none"/>
         <details key="comment/notes" value="none"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-        <details key="UML/SysML semantic equivalences" value="uml::Package::packagedElement"/>
-        <details key="explanation" value="none"/>
-        <details key="constraints" value="uml::Package::PackagedElement elements on which SystemContext stereotype or any stereotype that inherits from it is applied&#xD;&#xA;Multiplicity must be [0..1]"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedSystem" lowerBound="1"
-        eType="#//System" containment="true">
-      <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
-        <details key="featureName" value="packagedElement"/>
-        <details key="featureOwner" value="Package"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
-        <details key="Label" value="ownedSystem"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
-      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
-        <details key="description" value="Reference to the system component&#xD;&#xA;[source:Capella study]"/>
-        <details key="constraints" value="none"/>
-        <details key="comment/notes" value="none"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-        <details key="UML/SysML semantic equivalences" value="uml::Package::packagedElement"/>
-        <details key="explanation" value="none"/>
-        <details key="constraints" value="uml::Package::packagedElements elements on which System stereotype or any stereotype that inherits from it is applied&#xD;&#xA;Multiplicity must be [0..1]"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedActorPkg" eType="#//ActorPkg"
-        containment="true">
-      <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
-        <details key="featureName" value="packagedElement"/>
-        <details key="featureOwner" value="Package"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
-        <details key="Label" value="ownedActorPkg"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
-      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
-        <details key="description" value="Link to a package that contains system analysis actors&#xD;&#xA;[source:Capella study]"/>
-        <details key="constraints" value="none"/>
-        <details key="comment/notes" value="none"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-        <details key="UML/SysML semantic equivalences" value="uml::Package::nestedPackage#uml::Package::packagedElement"/>
-        <details key="explanation" value="none"/>
-        <details key="constraints" value="uml::Package::nestedPackage elements on which ActorPkg stereotype or any stereotype that inherits from it is applied&#xD;&#xA;Multiplicity must be [0..1]"/>
       </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
     </eStructuralFeatures>
@@ -217,229 +168,6 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="System" eSuperTypes="CompositeStructure.ecore#//Component CapellaCommon.ecore#//CapabilityRealizationInvolvedElement">
-    <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
-      <details key="Label" value="System"/>
-    </eAnnotations>
-    <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
-      <details key="metaclass" value="Component"/>
-      <details key="stereotype" value="eng.System"/>
-    </eAnnotations>
-    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
-      <details key="description" value="An organized set of elements functioning as a unit.&#xD;&#xA;[source:SysML Glossary for SysML v1.0]&#xD;&#xA;&#xD;&#xA;An element, with structure, that exhibits observable properties and behaviors.&#xD;&#xA;[source:UML for System Engineering RFP]&#xD;&#xA;&#xD;&#xA;See UML-SysML block, part, component, item&#xD;&#xA;[source:Capella study]&#xD;&#xA;"/>
-      <details key="usage guideline" value="none"/>
-      <details key="used in levels" value="system"/>
-      <details key="usage examples" value="none"/>
-      <details key="constraints" value="none"/>
-      <details key="comment/notes" value="none"/>
-      <details key="reference documentation" value="none"/>
-    </eAnnotations>
-    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-      <details key="UML/SysML semantic equivalences" value=""/>
-      <details key="base metaclass in UML/SysML profile " value="SysML::Blocks::Block"/>
-      <details key="explanation" value="uml::Component is not part of UML4SysML, and should therefore not be used &#xD;&#xA;for implementing a SysML profile"/>
-      <details key="constraints" value="none"/>
-    </eAnnotations>
-    <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="contributedCapabilities"
-        upperBound="-1" eType="#//Capability" changeable="false" volatile="true" transient="true"
-        derived="true" eOpposite="#//Capability/participatingSystem">
-      <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
-        <details key="Label" value="contributedCapabilitySpecificationUseCases"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
-      <eAnnotations source="http://www.polarsys.org/capella/derived">
-        <details key="viatra.variant" value="alias"/>
-        <details key="viatra.expression" value="participationsInCapabilities.capability"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
-        <details key="description" value="the Capabilities to which this System contributes&#xD;&#xA;[source: Capella study]"/>
-        <details key="constraints" value="none"/>
-        <details key="comment/notes" value="none"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-        <details key="UML/SysML semantic equivalences" value="keyword::none"/>
-        <details key="explanation" value="Derived and transient"/>
-        <details key="constraints" value="none"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/semantic">
-        <details key="excludefrom" value="xmlpivot"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="participationsInCapabilities"
-        upperBound="-1" eType="#//SystemCapabilityInvolvement" changeable="false"
-        volatile="true" transient="true" derived="true" eOpposite="#//SystemCapabilityInvolvement/system">
-      <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
-        <details key="umlOppositeReference" value="supplier"/>
-        <details key="umlOppositeReferenceOwner" value="Dependency"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
-        <details key="Label" value="participationsInCapabilities"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
-      <eAnnotations source="http://www.polarsys.org/capella/derived">
-        <details key="viatra.variant" value="alias"/>
-        <details key="viatra.expression" value="involvingInvolvements"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
-        <details key="description" value="(automatically computed) the links to Capabilities to which this System contributes&#xD;&#xA;[source: Capella study]"/>
-        <details key="constraints" value="none"/>
-        <details key="comment/notes" value="none"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-        <details key="UML/SysML semantic equivalences" value="keyword::none"/>
-        <details key="explanation" value="Derived and transient"/>
-        <details key="constraints" value="none"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="contributedMissions" upperBound="-1"
-        eType="#//Mission" changeable="false" volatile="true" transient="true" derived="true"
-        eOpposite="#//Mission/participatingSystem">
-      <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
-        <details key="Label" value="contributedMissions"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
-      <eAnnotations source="http://www.polarsys.org/capella/derived">
-        <details key="viatra.variant" value="alias"/>
-        <details key="viatra.expression" value="participationsInMissions.mission"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
-        <details key="description" value="(automatically computed) the Missions to which this System contributes&#xD;&#xA;[source: Capella study]"/>
-        <details key="constraints" value="none"/>
-        <details key="comment/notes" value="none"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-        <details key="UML/SysML semantic equivalences" value="keyword::none"/>
-        <details key="explanation" value="Derived and transient"/>
-        <details key="constraints" value="none"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/semantic">
-        <details key="excludefrom" value="xmlpivot"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="participationsInMissions"
-        upperBound="-1" eType="#//SystemMissionInvolvement" changeable="false" volatile="true"
-        transient="true" derived="true" eOpposite="#//SystemMissionInvolvement/system">
-      <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
-        <details key="umlOppositeReference" value="supplier"/>
-        <details key="umlOppositeReferenceOwner" value="Dependency"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
-        <details key="Label" value="participationsInMissions"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
-      <eAnnotations source="http://www.polarsys.org/capella/derived">
-        <details key="viatra.variant" value="alias"/>
-        <details key="viatra.expression" value="involvingInvolvements"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
-        <details key="description" value="(automatically computed) the links to the Missions to which this System contributes&#xD;&#xA;[source: Capella study]"/>
-        <details key="constraints" value="none"/>
-        <details key="comment/notes" value="none"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-        <details key="UML/SysML semantic equivalences" value="keyword::none"/>
-        <details key="explanation" value="Derived and transient"/>
-        <details key="constraints" value="none"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="externalCommunication"
-        upperBound="-1" eType="#//SystemCommunicationHook">
-      <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
-        <details key="featureName" value="ownedAttribute"/>
-        <details key="featureOwner" value="StructuredClassifier"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
-        <details key="Label" value="externalCommunications"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
-      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
-        <details key="description" value="the list of communication links endpoints that are attached to this System&#xD;&#xA;[source: Capella study]"/>
-        <details key="constraints" value="none"/>
-        <details key="comment/notes" value="none"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-        <details key="UML/SysML semantic equivalences" value=""/>
-        <details key="explanation" value="none"/>
-        <details key="constraints" value="none"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedEntityRealizations"
-        upperBound="-1" eType="#//OperationalEntityRealization" containment="true">
-      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
-        <details key="description" value="the realization links from Operational entities to System entities, being owned by this System&#xD;&#xA;[source: Capella study]"/>
-        <details key="constraints" value="none"/>
-        <details key="comment/notes" value="none"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-        <details key="UML/SysML semantic equivalences" value="keyword::nearestpackage"/>
-        <details key="explanation" value="Blocks cannot contain Realizations : store them in the nearest available package"/>
-        <details key="constraints" value="Order is not preserved in the UML model."/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="allocatedEntityRealizations"
-        upperBound="-1" eType="#//OperationalEntityRealization" changeable="false"
-        volatile="true" transient="true" derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived">
-        <details key="viatra.variant" value="alias"/>
-        <details key="viatra.expression" value="provisionedComponentAllocations"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
-        <details key="description" value="(automatically computed) the links from operational entities being realized by this System&#xD;&#xA;[source: Capella study]"/>
-        <details key="constraints" value="none"/>
-        <details key="comment/notes" value="none"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-        <details key="UML/SysML semantic equivalences" value="keyword::none"/>
-        <details key="explanation" value="Derived and transient"/>
-        <details key="constraints" value="none"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="allocatedSystemFunctions"
-        upperBound="-1" eType="#//SystemFunction" changeable="false" volatile="true"
-        transient="true" derived="true" eOpposite="#//SystemFunction/allocatorSystems">
-      <eAnnotations source="http://www.polarsys.org/capella/derived">
-        <details key="viatra.variant" value="alias"/>
-        <details key="viatra.expression" value="allocatedFunctions"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
-      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-        <details key="UML/SysML semantic equivalences" value="keyword::none"/>
-        <details key="explanation" value="Derived and transient"/>
-        <details key="constraints" value="none"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="realizedEntities" upperBound="-1"
-        eType="ecore:EClass OperationalAnalysis.ecore#//Entity" changeable="false"
-        volatile="true" transient="true" derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/derived">
-        <details key="viatra.variant" value="patternbody"/>
-        <details key="viatra.expression" value="OperationalEntityRealization.sourceElement(oer, self);&#xD;&#xA;OperationalEntityRealization.allocatedComponent(oer, target);"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
-      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-        <details key="UML/SysML semantic equivalences" value="keyword::none"/>
-        <details key="explanation" value="Derived and transient"/>
-        <details key="constraints" value="none"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="realizingLogicalComponents"
-        upperBound="-1" eType="ecore:EClass LogicalArchitecture.ecore#//LogicalComponent"
-        changeable="false" volatile="true" transient="true" derived="true" eOpposite="LogicalArchitecture.ecore#//LogicalComponent/realizedSystems">
-      <eAnnotations source="http://www.polarsys.org/capella/derived">
-        <details key="viatra.variant" value="alias"/>
-        <details key="viatra.expression" value="allocatingComponents"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/semantic">
-        <details key="excludefrom" value="xmlpivot"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-        <details key="UML/SysML semantic equivalences" value="keyword::none"/>
-        <details key="explanation" value="Derived and transient"/>
-        <details key="constraints" value="none"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SystemFunction" eSuperTypes="FunctionalAnalysis.ecore#//AbstractFunction">
     <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
       <details key="description" value="Function at System level&#xD;&#xA;[source: Capella study]"/>
@@ -471,36 +199,20 @@
       </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="allocatorActors" upperBound="-1"
-        eType="#//Actor" changeable="false" volatile="true" transient="true" derived="true"
-        eOpposite="#//Actor/allocatedSystemFunctions">
-      <eAnnotations source="http://www.polarsys.org/capella/derived">
-        <details key="viatra.variant" value="patternbody"/>
-        <details key="viatra.expression" value="ComponentFunctionalAllocation.targetElement(cfa, self);&#xD;&#xA;ComponentFunctionalAllocation.sourceElement(cfa, target);"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="allocatingSystemComponents"
+        upperBound="-1" eType="#//SystemComponent" changeable="false" volatile="true"
+        transient="true" derived="true">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="Components that allocate this System Function."/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
       </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic">
         <details key="excludefrom" value="xmlpivot"/>
       </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-        <details key="UML/SysML semantic equivalences" value="keyword::none"/>
-        <details key="explanation" value="Derived and transient"/>
-        <details key="constraints" value="none"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="allocatorSystems" upperBound="-1"
-        eType="#//System" changeable="false" volatile="true" transient="true" derived="true"
-        eOpposite="#//System/allocatedSystemFunctions">
       <eAnnotations source="http://www.polarsys.org/capella/derived">
         <details key="viatra.variant" value="patternbody"/>
         <details key="viatra.expression" value="ComponentFunctionalAllocation.targetElement(cfa, self);&#xD;&#xA;ComponentFunctionalAllocation.sourceElement(cfa, target);"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/semantic">
-        <details key="excludefrom" value="xmlpivot"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-        <details key="UML/SysML semantic equivalences" value="keyword::none"/>
-        <details key="explanation" value="Derived and transient"/>
-        <details key="constraints" value="none"/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="realizedOperationalActivities"
@@ -726,274 +438,17 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Actor" eSuperTypes="CompositeStructure.ecore#//AbstractActor">
+  <eClassifiers xsi:type="ecore:EClass" name="CapabilityInvolvement" eSuperTypes="CapellaCore.ecore#//Involvement">
     <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
-      <details key="Label" value="Actor"/>
-    </eAnnotations>
-    <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
-      <details key="metaclass" value="Component"/>
-      <details key="stereotype" value="eng.Actor"/>
-    </eAnnotations>
-    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
-      <details key="description" value="Specifies the role played by a user or any other system that interacts with the subject&#xD;&#xA;[source: SysML glossary for SysML v1.0]"/>
-      <details key="usage guideline" value="n/a"/>
-      <details key="used in levels" value="system"/>
-      <details key="usage examples" value="../img/usage_examples/example_actors_interfaces.png"/>
-      <details key="constraints" value="none"/>
-      <details key="comment/notes" value="none"/>
-      <details key="reference documentation" value="none"/>
-    </eAnnotations>
-    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-      <details key="UML/SysML semantic equivalences" value=""/>
-      <details key="base metaclass in UML/SysML profile " value="SysML::Blocks::Block"/>
-      <details key="explanation" value="none"/>
-      <details key="constraints" value="none"/>
-    </eAnnotations>
-    <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="participationsInMissions"
-        upperBound="-1" eType="#//ActorMissionInvolvement" changeable="false" volatile="true"
-        transient="true" derived="true" eOpposite="#//ActorMissionInvolvement/actor">
-      <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
-        <details key="umlOppositeReference" value="supplier"/>
-        <details key="umlOppositeReferenceOwner" value="Dependency"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
-        <details key="Label" value="participationsInMissions"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
-      <eAnnotations source="http://www.polarsys.org/capella/derived">
-        <details key="viatra.variant" value="alias"/>
-        <details key="viatra.expression" value="involvingInvolvements"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
-        <details key="description" value="(automatically computed) the list of links between this actor and the Missions in which it is involved&#xD;&#xA;[source: Capella study]"/>
-        <details key="constraints" value="none"/>
-        <details key="comment/notes" value="none"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-        <details key="UML/SysML semantic equivalences" value="keyword::none"/>
-        <details key="explanation" value="Derived and transient"/>
-        <details key="constraints" value="none"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="participationsInCapabilities"
-        upperBound="-1" eType="#//ActorCapabilityInvolvement" changeable="false" volatile="true"
-        transient="true" derived="true" eOpposite="#//ActorCapabilityInvolvement/actor">
-      <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
-        <details key="umlOppositeReference" value="supplier"/>
-        <details key="umlOppositeReferenceOwner" value="Dependency"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
-        <details key="Label" value="participationsInCapabilities"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
-      <eAnnotations source="http://www.polarsys.org/capella/derived">
-        <details key="viatra.variant" value="alias"/>
-        <details key="viatra.expression" value="involvingInvolvements"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
-        <details key="description" value="(automatically computed) the list of links between this actor and the Capabilities in which it is involved&#xD;&#xA;[source: Capella study]"/>
-        <details key="constraints" value="none"/>
-        <details key="comment/notes" value="none"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-        <details key="UML/SysML semantic equivalences" value="keyword::none"/>
-        <details key="explanation" value="Derived and transient"/>
-        <details key="constraints" value="none"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="participationsInCapabilityRealizations"
-        upperBound="-1" eType="ecore:EClass CompositeStructure.ecore#//ActorCapabilityRealizationInvolvement"
-        changeable="false" volatile="true" transient="true" derived="true">
-      <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
-        <details key="umlOppositeReference" value="supplier"/>
-        <details key="umlOppositeReferenceOwner" value="Dependency"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
-        <details key="Label" value="participationsInCapabilityRealizations"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
-      <eAnnotations source="http://www.polarsys.org/capella/derived">
-        <details key="viatra.variant" value="alias"/>
-        <details key="viatra.expression" value="involvingCapabilityRealizationInvolvements"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
-        <details key="description" value="(automatically computed) the list of links between this actor and the CapabilityRealization in which it is involved&#xD;&#xA;[source: Capella study]"/>
-        <details key="constraints" value="none"/>
-        <details key="comment/notes" value="none"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-        <details key="UML/SysML semantic equivalences" value="keyword::none"/>
-        <details key="explanation" value="Derived and transient"/>
-        <details key="constraints" value="none"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="contributedMissions" upperBound="-1"
-        eType="#//Mission" changeable="false" volatile="true" transient="true" derived="true"
-        eOpposite="#//Mission/participatingActors">
-      <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
-        <details key="Label" value="contributedMissions"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
-      <eAnnotations source="http://www.polarsys.org/capella/derived">
-        <details key="viatra.variant" value="alias"/>
-        <details key="viatra.expression" value="participationsInMissions.mission"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
-        <details key="description" value="(automatically computed) the list of Missions in which this actor is involved&#xD;&#xA;[source: Capella study]"/>
-        <details key="constraints" value="none"/>
-        <details key="comment/notes" value="none"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-        <details key="UML/SysML semantic equivalences" value="keyword::none"/>
-        <details key="explanation" value="Derived and transient"/>
-        <details key="constraints" value="none"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/semantic">
-        <details key="excludefrom" value="xmlpivot"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="contributedCapabilities"
-        upperBound="-1" eType="#//Capability" changeable="false" volatile="true" transient="true"
-        derived="true" eOpposite="#//Capability/participatingActors">
-      <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
-        <details key="Label" value="contributedCapabilitySpecificationUseCases"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
-      <eAnnotations source="http://www.polarsys.org/capella/derived">
-        <details key="viatra.variant" value="alias"/>
-        <details key="viatra.expression" value="participationsInCapabilities.capability"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
-        <details key="description" value="(automatically computed) the list of Capabilities in which this actor is involved&#xD;&#xA;[source: Capella study]"/>
-        <details key="constraints" value="none"/>
-        <details key="comment/notes" value="none"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-        <details key="UML/SysML semantic equivalences" value="keyword::none"/>
-        <details key="explanation" value="Derived and transient"/>
-        <details key="constraints" value="none"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/semantic">
-        <details key="excludefrom" value="xmlpivot"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="systemCommunication" eType="#//SystemCommunicationHook">
-      <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
-        <details key="featureName" value="ownedAttribute"/>
-        <details key="featureOwner" value="StructuredClassifier"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
-        <details key="Label" value="systemCommunication"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
-      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
-        <details key="description" value="the communication link endpoint that is attached to this Actor&#xD;&#xA;[source: Capella study]"/>
-        <details key="constraints" value="none"/>
-        <details key="comment/notes" value="none"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-        <details key="UML/SysML semantic equivalences" value=""/>
-        <details key="explanation" value="none"/>
-        <details key="constraints" value="none"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedOperationalActorRealizations"
-        upperBound="-1" eType="#//OperationalActorRealization" containment="true">
-      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
-        <details key="description" value="the list of realisation links to/from operational-level actor(s) that this system actor hosts/contains"/>
-        <details key="constraints" value="none"/>
-        <details key="comment/notes" value="none"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-        <details key="UML/SysML semantic equivalences" value="uml::Package::packagedElement"/>
-        <details key="explanation" value="none"/>
-        <details key="constraints" value="uml::Package::packagedElement elements on which OperationalActorRealizations stereotype or any stereotype that inherits from it is applied&#xD;&#xA;Order must be computed"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedOperationalEntityRealizations"
-        upperBound="-1" eType="#//OperationalEntityRealization" containment="true">
-      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
-        <details key="description" value="the list of realisation links to/from operational-level entity(ies) that this system actor hosts/contains"/>
-        <details key="constraints" value="none"/>
-        <details key="comment/notes" value="none"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-        <details key="UML/SysML semantic equivalences" value="uml::Package::packagedElement"/>
-        <details key="explanation" value="none"/>
-        <details key="constraints" value="uml::Package::packagedElement elements on which OperationalActorRealizations stereotype or any stereotype that inherits from it is applied&#xD;&#xA;Order must be computed"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="allocatedSystemFunctions"
-        upperBound="-1" eType="#//SystemFunction" changeable="false" volatile="true"
-        transient="true" derived="true" eOpposite="#//SystemFunction/allocatorActors">
-      <eAnnotations source="http://www.polarsys.org/capella/derived">
-        <details key="viatra.variant" value="alias"/>
-        <details key="viatra.expression" value="allocatedFunctions"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
-      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-        <details key="UML/SysML semantic equivalences" value="keyword::none"/>
-        <details key="explanation" value="Derived and transient"/>
-        <details key="constraints" value="none"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="realizedEntities" upperBound="-1"
-        eType="ecore:EClass OperationalAnalysis.ecore#//Entity" changeable="false"
-        volatile="true" transient="true" derived="true" eOpposite="OperationalAnalysis.ecore#//Entity/realizingActors">
-      <eAnnotations source="http://www.polarsys.org/capella/derived">
-        <details key="viatra.variant" value="patternbody"/>
-        <details key="viatra.expression" value="OperationalEntityRealization.sourceElement(oer, self);&#xD;&#xA;OperationalEntityRealization.allocatedComponent(oer, target);"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
-      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-        <details key="UML/SysML semantic equivalences" value="keyword::none"/>
-        <details key="explanation" value="Derived and transient"/>
-        <details key="constraints" value="none"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="realizedOperationalActors"
-        upperBound="-1" eType="ecore:EClass OperationalAnalysis.ecore#//OperationalActor"
-        changeable="false" volatile="true" transient="true" derived="true" eOpposite="OperationalAnalysis.ecore#//OperationalActor/realizingSystemActors">
-      <eAnnotations source="http://www.polarsys.org/capella/derived">
-        <details key="viatra.variant" value="patternbody"/>
-        <details key="viatra.expression" value="OperationalActorRealization.sourceElement(oer, self);&#xD;&#xA;OperationalActorRealization.allocatedComponent(oer, target);"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
-      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-        <details key="UML/SysML semantic equivalences" value="keyword::none"/>
-        <details key="explanation" value="Derived and transient"/>
-        <details key="constraints" value="none"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="realizingLogicalActors"
-        upperBound="-1" eType="ecore:EClass LogicalArchitecture.ecore#//LogicalActor"
-        changeable="false" volatile="true" transient="true" derived="true" eOpposite="LogicalArchitecture.ecore#//LogicalActor/realizedSystemActors">
-      <eAnnotations source="http://www.polarsys.org/capella/derived">
-        <details key="viatra.variant" value="alias"/>
-        <details key="viatra.expression" value="allocatingComponents"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/semantic">
-        <details key="excludefrom" value="xmlpivot"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-        <details key="UML/SysML semantic equivalences" value="keyword::none"/>
-        <details key="explanation" value="Derived and transient"/>
-        <details key="constraints" value="none"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ActorCapabilityInvolvement" eSuperTypes="CapellaCore.ecore#//Involvement">
-    <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
-      <details key="Label" value="ActorCapabilityInvolvement"/>
+      <details key="Label" value="CapabilityInvolvement"/>
     </eAnnotations>
     <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
       <details key="metaclass" value="Dependency"/>
-      <details key="stereotype" value="eng.ActorCapabilityInvolvement"/>
+      <details key="stereotype" value="eng.CapabilityInvolvement"/>
     </eAnnotations>
     <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Ignore"/>
     <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
-      <details key="description" value="Link between a system actor and a system capability that means the actor is involved in the capability&#xD;&#xA;[source:Capella study]"/>
+      <details key="description" value="Link between a system component and a system capability that means the system component is involved in the capability&#xD;&#xA;[source:Capella study]"/>
       <details key="usage guideline" value="n/a"/>
       <details key="used in levels" value="system"/>
       <details key="usage examples" value="../img/usage_examples/example_actor_capability.png"/>
@@ -1007,34 +462,18 @@
       <details key="explanation" value="none"/>
       <details key="constraints" value="none"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="actor" lowerBound="1" eType="#//Actor"
-        changeable="false" volatile="true" transient="true" derived="true" eOpposite="#//Actor/participationsInCapabilities">
-      <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
-        <details key="featureName" value="supplier"/>
-        <details key="featureOwner" value="Dependency"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
-        <details key="Label" value="actor"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
-      <eAnnotations source="http://www.polarsys.org/capella/derived">
-        <details key="viatra.variant" value="alias"/>
-        <details key="viatra.expression" value="involved"/>
-      </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="systemComponent" lowerBound="1"
+        eType="#//SystemComponent" changeable="false" volatile="true" transient="true"
+        derived="true">
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
-        <details key="description" value="Link to a system actor that is involved in the system capability.&#xD;&#xA;[source: Capella study]"/>
+        <details key="description" value="Link to a system component that is involved in the system capability."/>
         <details key="constraints" value="none"/>
         <details key="comment/notes" value="none"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-        <details key="UML/SysML semantic equivalences" value="keyword::none"/>
-        <details key="explanation" value="Derived and transient"/>
-        <details key="constraints" value="none"/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="capability" lowerBound="1"
         eType="#//Capability" changeable="false" volatile="true" transient="true"
-        derived="true" eOpposite="#//Capability/involvedActors">
+        derived="true">
       <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
         <details key="featureName" value="client"/>
         <details key="featureOwner" value="Dependency"/>
@@ -1059,17 +498,17 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ActorMissionInvolvement" eSuperTypes="CapellaCore.ecore#//Involvement">
+  <eClassifiers xsi:type="ecore:EClass" name="MissionInvolvement" eSuperTypes="CapellaCore.ecore#//Involvement">
     <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
-      <details key="Label" value="ActorMissionInvolvement"/>
+      <details key="Label" value="MissionInvolvement"/>
     </eAnnotations>
     <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
       <details key="metaclass" value="Dependency"/>
-      <details key="stereotype" value="eng.ActorMissionInvolvement"/>
+      <details key="stereotype" value="eng.MissionInvolvement"/>
     </eAnnotations>
     <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Ignore"/>
     <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
-      <details key="description" value="Link between a system actor and a system mission that means the actor is involved in the mission&#xD;&#xA;[source:Capella study]"/>
+      <details key="description" value="Link between a system component and a system mission that means the system component is involved in the mission&#xD;&#xA;[source:Capella study]"/>
       <details key="usage guideline" value="n/a"/>
       <details key="used in levels" value="system"/>
       <details key="usage examples" value="n/a"/>
@@ -1083,8 +522,9 @@
       <details key="explanation" value="none"/>
       <details key="constraints" value="none"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="actor" lowerBound="1" eType="#//Actor"
-        changeable="false" volatile="true" transient="true" derived="true" eOpposite="#//Actor/participationsInMissions">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="systemComponent" lowerBound="1"
+        eType="#//SystemComponent" changeable="false" volatile="true" transient="true"
+        derived="true">
       <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
         <details key="featureName" value="supplier"/>
         <details key="featureOwner" value="Dependency"/>
@@ -1109,8 +549,7 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="mission" lowerBound="1"
-        eType="#//Mission" changeable="false" volatile="true" transient="true" derived="true"
-        eOpposite="#//Mission/involvedActors">
+        eType="#//Mission" changeable="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
         <details key="featureName" value="client"/>
         <details key="featureOwner" value="Dependency"/>
@@ -1132,96 +571,6 @@
         <details key="UML/SysML semantic equivalences" value="keyword::none"/>
         <details key="explanation" value="Derived and transient"/>
         <details key="constraints" value="none"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ActorPkg" eSuperTypes="CapellaCore.ecore#//Structure">
-    <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
-      <details key="Label" value="ActorPkg"/>
-    </eAnnotations>
-    <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
-      <details key="metaclass" value="Package"/>
-      <details key="stereotype" value="eng.ActorPkg"/>
-    </eAnnotations>
-    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
-      <details key="description" value="Package that contains system actors&#xD;&#xA;[source:Capella study]"/>
-      <details key="usage guideline" value="n/a"/>
-      <details key="used in levels" value="system"/>
-      <details key="usage examples" value="n/a"/>
-      <details key="constraints" value="none"/>
-      <details key="comment/notes" value="none"/>
-      <details key="reference documentation" value="none"/>
-    </eAnnotations>
-    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-      <details key="UML/SysML semantic equivalences" value=""/>
-      <details key="base metaclass in UML/SysML profile " value="uml::Package"/>
-      <details key="explanation" value="none"/>
-      <details key="constraints" value="none"/>
-    </eAnnotations>
-    <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedActors" upperBound="-1"
-        eType="#//Actor" containment="true">
-      <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
-        <details key="featureName" value="packagedElement"/>
-        <details key="featureOwner" value="Package"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
-        <details key="Label" value="ownedActors"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
-      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
-        <details key="description" value="Set of system actors that are defined at that level of package&#xD;&#xA;[Capella study]"/>
-        <details key="constraints" value="none"/>
-        <details key="comment/notes" value="none"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-        <details key="UML/SysML semantic equivalences" value="uml::Package::packagedElement"/>
-        <details key="explanation" value="none"/>
-        <details key="constraints" value="uml::Package::packagedElement elements on which Actor stereotype or any stereotype that inherits from it is applied&#xD;&#xA;Order must be computed"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedActorPkgs" upperBound="-1"
-        eType="#//ActorPkg" containment="true">
-      <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
-        <details key="featureName" value="packagedElement"/>
-        <details key="featureOwner" value="Package"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
-        <details key="Label" value="subActorPkgs"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
-      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
-        <details key="description" value="Sub pakages that contain system actors&#xD;&#xA;[Capella study]"/>
-        <details key="constraints" value="none"/>
-        <details key="comment/notes" value="none"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-        <details key="UML/SysML semantic equivalences" value="uml::Package::nestedPackage#uml::Package::packagedElement"/>
-        <details key="explanation" value="none"/>
-        <details key="constraints" value="uml::Package::nestedPackage elements on which ActorPkg stereotype or any stereotype that inherits from it is applied&#xD;&#xA;Order must be computed"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedSystemCommunication"
-        upperBound="-1" eType="#//SystemCommunication" containment="true">
-      <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
-        <details key="featureName" value="packagedElement"/>
-        <details key="featureOwner" value="Package"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
-        <details key="Label" value="ownedSystemCommunication"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
-      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
-        <details key="description" value="the SystemCommunication links contained in this Actor package&#xD;&#xA;[source: Capella study]"/>
-        <details key="constraints" value="none"/>
-        <details key="comment/notes" value="none"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-        <details key="UML/SysML semantic equivalences" value="uml::Package::packagedElement"/>
-        <details key="explanation" value="none"/>
-        <details key="constraints" value="Order must be computed"/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
@@ -1249,47 +598,23 @@
       <details key="constraints" value="none"/>
     </eAnnotations>
     <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedActorMissionInvolvements"
-        upperBound="-1" eType="#//ActorMissionInvolvement" containment="true" resolveProxies="false">
-      <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
-        <details key="featureName" value="packagedElement"/>
-        <details key="featureOwner" value="Package"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
-        <details key="Label" value="ownedActorMissionInvolvements"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedMissionInvolvements"
+        upperBound="-1" eType="#//MissionInvolvement" containment="true" resolveProxies="false">
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
-        <details key="description" value="the links between Actors and Missions that are owned by this Mission&#xD;&#xA;[source: Capella study]"/>
+        <details key="description" value="the links between Mission Involvement links that are owned by this Mission"/>
         <details key="constraints" value="none"/>
         <details key="comment/notes" value="none"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-        <details key="UML/SysML semantic equivalences" value="keyword::nearestpackage"/>
-        <details key="explanation" value="none"/>
-        <details key="constraints" value="Some elements on which ActorMissionInvolvement stereotype or any stereotype that inherits from it is applied&#xD;&#xA;Order must be computed"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedSystemMissionInvolvement"
-        eType="#//SystemMissionInvolvement" containment="true" resolveProxies="false">
-      <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
-        <details key="featureName" value="packagedElement"/>
-        <details key="featureOwner" value="Package"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
-        <details key="Label" value="ownedMissionSupplierLinks"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="involvedSystemComponents"
+        upperBound="-1" eType="#//SystemComponent" changeable="false" volatile="true"
+        transient="true" derived="true">
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
-        <details key="description" value="the links between Missions and the System that are owned by this Mission&#xD;&#xA;[source: Capella study]"/>
+        <details key="description" value="System Components that are involved in this Mission"/>
         <details key="constraints" value="none"/>
         <details key="comment/notes" value="none"/>
       </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-        <details key="UML/SysML semantic equivalences" value="keyword::nearestpackage"/>
-        <details key="explanation" value="none"/>
-        <details key="constraints" value="Some elements on which SystemMissionInvolvement stereotype or any stereotype that inherits from it is applied&#xD;&#xA;Multiplicity must be [0..1]"/>
-      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedCapabilityExploitations"
         upperBound="-1" eType="#//CapabilityExploitation" containment="true" resolveProxies="false">
@@ -1310,102 +635,6 @@
         <details key="UML/SysML semantic equivalences" value="uml::UseCase::include"/>
         <details key="explanation" value="none"/>
         <details key="constraints" value="Order must be computed"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="participatingActors" upperBound="-1"
-        eType="#//Actor" changeable="false" volatile="true" transient="true" derived="true"
-        eOpposite="#//Actor/contributedMissions">
-      <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
-        <details key="Label" value="participatingActors"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
-      <eAnnotations source="http://www.polarsys.org/capella/derived">
-        <details key="viatra.variant" value="alias"/>
-        <details key="viatra.expression" value="involvedActors.actor"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
-        <details key="description" value="(computed automatically) the Actors involved in this Mission&#xD;&#xA;[source: Capella study]"/>
-        <details key="constraints" value="none"/>
-        <details key="comment/notes" value="none"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-        <details key="UML/SysML semantic equivalences" value="keyword::none"/>
-        <details key="explanation" value="Derived and transient"/>
-        <details key="constraints" value="none"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="participatingSystem" eType="#//System"
-        changeable="false" volatile="true" transient="true" derived="true" eOpposite="#//System/contributedMissions">
-      <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
-        <details key="Label" value="participatingSystems"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
-      <eAnnotations source="http://www.polarsys.org/capella/derived">
-        <details key="viatra.variant" value="alias"/>
-        <details key="viatra.expression" value="ownedSystemMissionInvolvement.system"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
-        <details key="description" value="the System involved in this Mission&#xD;&#xA;[source: Capella study]"/>
-        <details key="constraints" value="none"/>
-        <details key="comment/notes" value="none"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-        <details key="UML/SysML semantic equivalences" value="keyword::none"/>
-        <details key="explanation" value="Derived and transient"/>
-        <details key="constraints" value="none"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="involvedActors" upperBound="-1"
-        eType="#//ActorMissionInvolvement" changeable="false" volatile="true" transient="true"
-        derived="true" eOpposite="#//ActorMissionInvolvement/mission">
-      <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
-        <details key="featureName" value="clientDependency"/>
-        <details key="featureOwner" value="NamedElement"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
-        <details key="Label" value="invovledActors"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
-      <eAnnotations source="http://www.polarsys.org/capella/derived">
-        <details key="viatra.variant" value="alias"/>
-        <details key="viatra.expression" value="involvedInvolvements"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
-        <details key="description" value="(automatically computed) the links to Actors that are involved in this Mission&#xD;&#xA;[source: Capella study]"/>
-        <details key="constraints" value="none"/>
-        <details key="comment/notes" value="none"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-        <details key="UML/SysML semantic equivalences" value="keyword::none"/>
-        <details key="explanation" value="Derived and transient"/>
-        <details key="constraints" value="none"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="involvedSystem" eType="#//SystemMissionInvolvement"
-        changeable="false" volatile="true" transient="true" derived="true" eOpposite="#//SystemMissionInvolvement/mission">
-      <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
-        <details key="featureName" value="clientDependency"/>
-        <details key="featureOwner" value="NamedElement"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
-        <details key="Label" value="missionSupplierLinks"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
-      <eAnnotations source="http://www.polarsys.org/capella/derived">
-        <details key="viatra.variant" value="alias"/>
-        <details key="viatra.expression" value="ownedSystemMissionInvolvement"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
-        <details key="description" value="(automatically computed) the link to the System involved in this mission&#xD;&#xA;[source: Capella study]"/>
-        <details key="constraints" value="none"/>
-        <details key="comment/notes" value="none"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-        <details key="UML/SysML semantic equivalences" value="keyword::none"/>
-        <details key="explanation" value="Derived and transient"/>
-        <details key="constraints" value="none"/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="exploitedCapabilities"
@@ -1501,83 +730,6 @@
       <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="SystemMissionInvolvement" eSuperTypes="CapellaCore.ecore#//Involvement">
-    <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
-      <details key="Label" value="MissionSupplierLink"/>
-    </eAnnotations>
-    <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
-      <details key="metaclass" value="Dependency"/>
-      <details key="stereotype" value="eng.MissionSupplierLink"/>
-    </eAnnotations>
-    <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Ignore"/>
-    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
-      <details key="description" value="Link between a system and a mission meaning that the system is involved in the mission&#xD;&#xA;[source:Capella study]"/>
-      <details key="usage guideline" value="n/a"/>
-      <details key="used in levels" value="system"/>
-      <details key="usage examples" value="n/a"/>
-      <details key="constraints" value="none"/>
-      <details key="comment/notes" value="none"/>
-      <details key="reference documentation" value="none"/>
-    </eAnnotations>
-    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-      <details key="UML/SysML semantic equivalences" value=""/>
-      <details key="base metaclass in UML/SysML profile " value="uml::Dependency"/>
-      <details key="explanation" value="none"/>
-      <details key="constraints" value="none"/>
-    </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="mission" lowerBound="1"
-        eType="#//Mission" changeable="false" volatile="true" transient="true" derived="true"
-        eOpposite="#//Mission/involvedSystem">
-      <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
-        <details key="featureName" value="client"/>
-        <details key="featureOwner" value="Dependency"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
-        <details key="Label" value="mission"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
-      <eAnnotations source="http://www.polarsys.org/capella/derived">
-        <details key="viatra.variant" value="alias"/>
-        <details key="viatra.expression" value="involver"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
-        <details key="description" value="Link to a Mission that the System is involved in&#xD;&#xA;[source:Capella study]"/>
-        <details key="constraints" value="none"/>
-        <details key="comment/notes" value="none"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-        <details key="UML/SysML semantic equivalences" value="keyword::none"/>
-        <details key="explanation" value="Derived and transient"/>
-        <details key="constraints" value="none"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="system" lowerBound="1"
-        eType="#//System" changeable="false" volatile="true" transient="true" derived="true"
-        eOpposite="#//System/participationsInMissions">
-      <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
-        <details key="featureName" value="supplier"/>
-        <details key="featureOwner" value="Dependency"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
-        <details key="Label" value="system"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
-      <eAnnotations source="http://www.polarsys.org/capella/derived">
-        <details key="viatra.variant" value="alias"/>
-        <details key="viatra.expression" value="involved"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
-        <details key="description" value="Link to a system that is involved in the system mission&#xD;&#xA;[source:Capella study]"/>
-        <details key="constraints" value="none"/>
-        <details key="comment/notes" value="none"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-        <details key="UML/SysML semantic equivalences" value="keyword::none"/>
-        <details key="explanation" value="Derived and transient"/>
-        <details key="constraints" value="none"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Capability" eSuperTypes="Interaction.ecore#//AbstractCapability">
     <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
       <details key="Label" value="Capability"/>
@@ -1602,143 +754,24 @@
       <details key="constraints" value="none"/>
     </eAnnotations>
     <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedActorCapabilityInvolvements"
-        upperBound="-1" eType="#//ActorCapabilityInvolvement" containment="true" resolveProxies="false">
-      <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
-        <details key="featureName" value="packagedElement"/>
-        <details key="featureOwner" value="Package"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
-        <details key="Label" value="ownedActorCapabilityInvolvements"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedCapabilityInvolvements"
+        upperBound="-1" eType="#//CapabilityInvolvement" containment="true" resolveProxies="false">
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
-        <details key="description" value="the links between Actors and Capabilities that are owned by this Capability&#xD;&#xA;[source: Capella study]"/>
+        <details key="description" value="Capability Involvements owned by this Capability"/>
         <details key="constraints" value="none"/>
         <details key="comment/notes" value="none"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-        <details key="UML/SysML semantic equivalences" value="keyword::nearestpackage"/>
-        <details key="explanation" value="none"/>
-        <details key="constraints" value="uml::Package::packagedElement elements on which ActorCapabilityInvolvement stereotype or any stereotype that inherits from it is applied&#xD;&#xA;Order must be computed"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedSystemCapabilityInvolvement"
-        eType="#//SystemCapabilityInvolvement" containment="true" resolveProxies="false">
-      <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
-        <details key="featureName" value="packagedElement"/>
-        <details key="featureOwner" value="Package"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
-        <details key="Label" value="ownedCapabilitySupplierLinks"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="involvedSystemComponents"
+        upperBound="-1" eType="#//SystemComponent" changeable="false" volatile="true"
+        transient="true" derived="true">
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
-        <details key="description" value="the links between the System and Capabilities, that are owned by this Capability&#xD;&#xA;[source: Capella study]"/>
+        <details key="description" value="System Components that are involved in this Capability"/>
         <details key="constraints" value="none"/>
         <details key="comment/notes" value="none"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-        <details key="UML/SysML semantic equivalences" value="keyword::nearestpackage"/>
-        <details key="explanation" value="none"/>
-        <details key="constraints" value="uml::Package::packagedElement elements on which SystemCapabilityInvolvement stereotype or any stereotype that inherits from it is applied&#xD;&#xA;Multiplicity must be [0..1]"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="involvedActors" upperBound="-1"
-        eType="#//ActorCapabilityInvolvement" changeable="false" volatile="true" transient="true"
-        derived="true" eOpposite="#//ActorCapabilityInvolvement/capability">
-      <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
-        <details key="featureName" value="clientDependency"/>
-        <details key="featureOwner" value="NamedElement"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
-        <details key="Label" value="involvedActors"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
-      <eAnnotations source="http://www.polarsys.org/capella/derived">
-        <details key="viatra.variant" value="alias"/>
-        <details key="viatra.expression" value="involvedInvolvements"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
-        <details key="description" value="(automatically computed) the links between Actors and this Capability&#xD;&#xA;[source: Capella study]"/>
-        <details key="constraints" value="none"/>
-        <details key="comment/notes" value="none"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-        <details key="UML/SysML semantic equivalences" value="keyword::none"/>
-        <details key="explanation" value="Derived and transient"/>
-        <details key="constraints" value="none"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="involvedSystem" eType="#//SystemCapabilityInvolvement"
-        changeable="false" volatile="true" transient="true" derived="true" eOpposite="#//SystemCapabilityInvolvement/capability">
-      <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
-        <details key="featureName" value="clientDependency"/>
-        <details key="featureOwner" value="NamedElement"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
-        <details key="Label" value="capabilitySupplierLinks"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
-      <eAnnotations source="http://www.polarsys.org/capella/derived">
-        <details key="viatra.variant" value="alias"/>
-        <details key="viatra.expression" value="ownedSystemCapabilityInvolvement"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
-        <details key="description" value="(automatically computed) the link to the System being involved in this Capability&#xD;&#xA;[source: Capella study]"/>
-        <details key="constraints" value="none"/>
-        <details key="comment/notes" value="none"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-        <details key="UML/SysML semantic equivalences" value="keyword::none"/>
-        <details key="explanation" value="Derived and transient"/>
-        <details key="constraints" value="none"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="participatingActors" upperBound="-1"
-        eType="#//Actor" changeable="false" volatile="true" transient="true" derived="true"
-        eOpposite="#//Actor/contributedCapabilities">
-      <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
-        <details key="Label" value="participatingActors"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
-      <eAnnotations source="http://www.polarsys.org/capella/derived">
-        <details key="viatra.variant" value="alias"/>
-        <details key="viatra.expression" value="involvedActors.actor"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
-        <details key="description" value="(automatically computed) the Actors involved with this Capability&#xD;&#xA;[source: Capella study]"/>
-        <details key="constraints" value="none"/>
-        <details key="comment/notes" value="none"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-        <details key="UML/SysML semantic equivalences" value="keyword::none"/>
-        <details key="explanation" value="Derived and transient"/>
-        <details key="constraints" value="none"/>
       </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="participatingSystem" eType="#//System"
-        changeable="false" volatile="true" transient="true" derived="true" eOpposite="#//System/contributedCapabilities">
-      <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
-        <details key="Label" value="participatingSystems"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
-      <eAnnotations source="http://www.polarsys.org/capella/derived">
-        <details key="viatra.variant" value="alias"/>
-        <details key="viatra.expression" value="ownedSystemCapabilityInvolvement.system"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
-        <details key="description" value="(automatically computed) the System involved in this Capability&#xD;&#xA;[source: Capella study]"/>
-        <details key="constraints" value="none"/>
-        <details key="comment/notes" value="none"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-        <details key="UML/SysML semantic equivalences" value="keyword::none"/>
-        <details key="explanation" value="Derived and transient"/>
-        <details key="constraints" value="none"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="purposes" upperBound="-1"
         eType="#//CapabilityExploitation" changeable="false" volatile="true" transient="true"
@@ -1962,100 +995,6 @@
       <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="SystemCapabilityInvolvement" eSuperTypes="CapellaCore.ecore#//Involvement">
-    <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
-      <details key="Label" value="CapabilitySupplierLink"/>
-    </eAnnotations>
-    <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
-      <details key="metaclass" value="Dependency"/>
-      <details key="stereotype" value="eng.CapabilitySupplierLink"/>
-    </eAnnotations>
-    <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Ignore"/>
-    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
-      <details key="description" value="Link between a system and a system capability that means the system is involved in the capability&#xD;&#xA;[source:Capella study]"/>
-      <details key="usage guideline" value="n/a"/>
-      <details key="used in levels" value="system"/>
-      <details key="usage examples" value="n/a"/>
-      <details key="constraints" value="none"/>
-      <details key="comment/notes" value="none"/>
-      <details key="reference documentation" value="none"/>
-    </eAnnotations>
-    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-      <details key="UML/SysML semantic equivalences" value=""/>
-      <details key="base metaclass in UML/SysML profile " value="uml::Dependency"/>
-      <details key="explanation" value="none"/>
-      <details key="constraints" value="none"/>
-    </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="capability" lowerBound="1"
-        eType="#//Capability" changeable="false" volatile="true" transient="true"
-        derived="true" eOpposite="#//Capability/involvedSystem">
-      <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
-        <details key="featureName" value="client"/>
-        <details key="featureOwner" value="Dependency"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
-        <details key="Label" value="capability"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
-      <eAnnotations source="http://www.polarsys.org/capella/derived">
-        <details key="viatra.variant" value="alias"/>
-        <details key="viatra.expression" value="involver"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
-        <details key="description" value="the Capability involved in this relationship&#xD;&#xA;[source:Capella study]"/>
-        <details key="constraints" value="none"/>
-        <details key="comment/notes" value="none"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-        <details key="UML/SysML semantic equivalences" value="keyword::none"/>
-        <details key="explanation" value="Derived and transient"/>
-        <details key="constraints" value="none"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="system" lowerBound="1"
-        eType="#//System" changeable="false" volatile="true" transient="true" derived="true"
-        eOpposite="#//System/participationsInCapabilities">
-      <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
-        <details key="featureName" value="supplier"/>
-        <details key="featureOwner" value="Dependency"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
-        <details key="Label" value="system"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
-      <eAnnotations source="http://www.polarsys.org/capella/derived">
-        <details key="viatra.variant" value="alias"/>
-        <details key="viatra.expression" value="involved"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
-        <details key="description" value="The System involved in this relationship&#xD;&#xA;[source:Capella study]"/>
-        <details key="constraints" value="none"/>
-        <details key="comment/notes" value="none"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-        <details key="UML/SysML semantic equivalences" value="keyword::none"/>
-        <details key="explanation" value="Derived and transient"/>
-        <details key="constraints" value="none"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="OperationalActorRealization" eSuperTypes="CompositeStructure.ecore#//ComponentAllocation">
-    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
-      <details key="description" value="Realization link between a system actor and an operational actor&#xD;&#xA;&#xD;&#xA;Realization is a specialized abstraction relationship between two sets of model elements, one representing a specification&#xD;&#xA;(the supplier) and the other represents an implementation of the latter (the client). Realization can be used to model&#xD;&#xA;stepwise refinement, optimizations, transformations, templates, model synthesis, framework composition, etc.&#xD;&#xA;[source:UML superstructure v2.2]"/>
-      <details key="usage guideline" value="n/a"/>
-      <details key="used in levels" value="system"/>
-      <details key="usage examples" value="n/a"/>
-      <details key="constraints" value="none"/>
-      <details key="comment/notes" value="none"/>
-      <details key="reference documentation" value="none"/>
-    </eAnnotations>
-    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-      <details key="UML/SysML semantic equivalences" value=""/>
-      <details key="base metaclass in UML/SysML profile " value="uml::Realization"/>
-      <details key="explanation" value="none"/>
-      <details key="constraints" value="none"/>
-    </eAnnotations>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="OperationalAnalysisRealization" eSuperTypes="CompositeStructure.ecore#//ArchitectureAllocation">
     <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
       <details key="description" value="Realization link betwen a system analysis and an operational analysis&#xD;&#xA;[source:Capella study]&#xD;&#xA;&#xD;&#xA;Realization is a specialized abstraction relationship between two sets of model elements, one representing a specification&#xD;&#xA;(the supplier) and the other represents an implementation of the latter (the client). Realization can be used to model&#xD;&#xA;stepwise refinement, optimizations, transformations, templates, model synthesis, framework composition, etc.&#xD;&#xA;[source:UML superstructure v2.2]"/>
@@ -2073,39 +1012,154 @@
       <details key="constraints" value="none"/>
     </eAnnotations>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="OperationalEntityRealization" eSuperTypes="CompositeStructure.ecore#//ComponentAllocation">
+  <eClassifiers xsi:type="ecore:EClass" name="SystemComponentPkg" eSuperTypes="CompositeStructure.ecore#//ComponentPkg">
     <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
-      <details key="description" value="Realization link between a system and an operational entity&#xD;&#xA;[source:Capella study]&#xD;&#xA;&#xD;&#xA;Realization is a specialized abstraction relationship between two sets of model elements, one representing a specification&#xD;&#xA;(the supplier) and the other represents an implementation of the latter (the client). Realization can be used to model&#xD;&#xA;stepwise refinement, optimizations, transformations, templates, model synthesis, framework composition, etc.&#xD;&#xA;[source:UML superstructure v2.2]"/>
-      <details key="usage guideline" value="n/a"/>
-      <details key="used in levels" value="system"/>
-      <details key="usage examples" value="n/a"/>
+      <details key="description" value="a package containing System Components&#xD;&#xA;[source: Capella study]"/>
       <details key="constraints" value="none"/>
       <details key="comment/notes" value="none"/>
-      <details key="reference documentation" value="none"/>
-    </eAnnotations>
-    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-      <details key="UML/SysML semantic equivalences" value=""/>
-      <details key="base metaclass in UML/SysML profile " value="uml::Realization"/>
-      <details key="explanation" value="none"/>
-      <details key="constraints" value="none"/>
-    </eAnnotations>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="SystemContext" eSuperTypes="CompositeStructure.ecore#//ComponentContext">
-    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
-      <details key="description" value="the list of Parts that define the System and its environment, at this abstraction level.&#xD;&#xA;[source: Capella study]"/>
-      <details key="usage guideline" value="n/a"/>
-      <details key="used in levels" value="system"/>
-      <details key="usage examples" value="n/a"/>
-      <details key="constraints" value="none"/>
-      <details key="comment/notes" value="none"/>
-      <details key="reference documentation" value="none"/>
-    </eAnnotations>
-    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-      <details key="UML/SysML semantic equivalences" value=""/>
-      <details key="base metaclass in UML/SysML profile " value="uml::Class"/>
-      <details key="explanation" value="none"/>
-      <details key="constraints" value="none"/>
     </eAnnotations>
     <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedSystemComponents"
+        upperBound="-1" eType="#//SystemComponent" containment="true">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="the System Components included in this package&#xD;&#xA;[source: Capella study]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value=""/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value=""/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedSystemComponentPkgs"
+        upperBound="-1" eType="#//SystemComponentPkg" containment="true">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="sub-packages of this System Component Package"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value=""/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value=""/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SystemComponent" eSuperTypes="CompositeStructure.ecore#//Component">
+    <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
+      <details key="Label" value="SystemComponent"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
+      <details key="metaclass" value="Component"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="An entity, with discrete structure within the system, that interacts with other Components of the system, thereby contributing at its lowest level to the system properties and characteristics.&#xD;&#xA;[source: Sys EM , ISO/IEC CD 15288]"/>
+      <details key="usage guideline" value="n/a"/>
+      <details key="used in levels" value="n/a (abstract)"/>
+      <details key="usage examples" value="n/a"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="none"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value=""/>
+      <details key="explanation" value="none"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dataComponent" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="specifies whether or not this is a data component&#xD;&#xA;[source: Capella light-light study]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value=""/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dataType" upperBound="-1"
+        eType="ecore:EClass CapellaCore.ecore#//Classifier">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="data type(s) associated to this component&#xD;&#xA;[source: Capella light-light study]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value=""/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="involvingCapabilities"
+        upperBound="-1" eType="#//Capability" changeable="false" volatile="true" transient="true"
+        derived="true">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="Capabilities that involve this System Component"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="capabilityInvolvements"
+        upperBound="-1" eType="#//CapabilityInvolvement" changeable="false" volatile="true"
+        transient="true" derived="true">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="The Capability Involvement relationships in which this element is referenced"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="involvingMissions" upperBound="-1"
+        eType="#//Mission" changeable="false" volatile="true" transient="true" derived="true">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="Missions that involve this System Component"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="missionInvolvements" upperBound="-1"
+        eType="#//MissionInvolvement" changeable="false" volatile="true" transient="true"
+        derived="true">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="The Mission Involvement relationships in which this element is referenced"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="realizedEntities" upperBound="-1"
+        eType="ecore:EClass OperationalAnalysis.ecore#//Entity" changeable="false"
+        volatile="true" transient="true" derived="true">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="Entities that are realized by this System Component"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="realizingLogicalComponents"
+        upperBound="-1" eType="ecore:EClass LogicalArchitecture.ecore#//LogicalComponent"
+        changeable="false" volatile="true" transient="true" derived="true">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="Logical Components that realize this System Components"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+    </eStructuralFeatures>
   </eClassifiers>
 </ecore:EPackage>

@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.polarsys.capella.core.data.information.datatype.util;
 
-import java.util.List;
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
@@ -27,7 +25,6 @@ import org.polarsys.capella.core.data.capellacore.NamedElement;
 import org.polarsys.capella.core.data.capellacore.Namespace;
 import org.polarsys.capella.core.data.capellacore.Structure;
 import org.polarsys.capella.core.data.capellacore.Type;
-import org.polarsys.capella.core.data.information.datatype.*;
 import org.polarsys.capella.core.data.information.datatype.BooleanType;
 import org.polarsys.capella.core.data.information.datatype.DataType;
 import org.polarsys.capella.core.data.information.datatype.DatatypePackage;

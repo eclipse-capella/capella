@@ -11,7 +11,9 @@
 package org.polarsys.capella.core.data.la;
 
 import org.eclipse.emf.common.util.EList;
-import org.polarsys.capella.core.data.cs.SystemComponent;
+import org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvedElement;
+import org.polarsys.capella.core.data.cs.Component;
+import org.polarsys.capella.core.data.ctx.SystemComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 
 /**
@@ -26,12 +28,10 @@ import org.polarsys.capella.core.data.pa.PhysicalComponent;
  *   <li>{@link org.polarsys.capella.core.data.la.LogicalComponent#getOwnedLogicalComponents <em>Owned Logical Components</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.la.LogicalComponent#getOwnedLogicalArchitectures <em>Owned Logical Architectures</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.la.LogicalComponent#getOwnedLogicalComponentPkgs <em>Owned Logical Component Pkgs</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.la.LogicalComponent#getOwnedSystemRealizations <em>Owned System Realizations</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.la.LogicalComponent#getSystemRealizations <em>System Realizations</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.la.LogicalComponent#getSubLogicalComponents <em>Sub Logical Components</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.la.LogicalComponent#getAllocatedLogicalFunctions <em>Allocated Logical Functions</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.la.LogicalComponent#getRealizedSystemComponents <em>Realized System Components</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.la.LogicalComponent#getRealizingPhysicalComponents <em>Realizing Physical Components</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.la.LogicalComponent#getRealizedSystems <em>Realized Systems</em>}</li>
  * </ul>
  *
  * @see org.polarsys.capella.core.data.la.LaPackage#getLogicalComponent()
@@ -41,7 +41,7 @@ import org.polarsys.capella.core.data.pa.PhysicalComponent;
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='SysML::Blocks::Block' explanation='cannot map to uml::Component since this mapping is for a SysML profile, and uml::Component is not part of UML4SysML' constraints='none'"
  * @generated
  */
-public interface LogicalComponent extends SystemComponent {
+public interface LogicalComponent extends Component, CapabilityRealizationInvolvedElement {
 
 
 
@@ -132,59 +132,6 @@ public interface LogicalComponent extends SystemComponent {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned System Realizations</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.la.SystemRealization}.
-
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Owned System Realizations</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned System Realizations</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.la.LaPackage#getLogicalComponent_OwnedSystemRealizations()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the system realization links that are contained in this component\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::nearestpackage' explanation='SysML::Blocks::Block cannot contain realizations, hence we find the nearest available package to store them.' constraints='none'"
-	 * @generated
-	 */
-
-	EList<SystemRealization> getOwnedSystemRealizations();
-
-
-
-
-
-
-
-	/**
-	 * Returns the value of the '<em><b>System Realizations</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.la.SystemRealization}.
-
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>System Realizations</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>System Realizations</em>' reference list.
-	 * @see org.polarsys.capella.core.data.la.LaPackage#getLogicalComponent_SystemRealizations()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='provisionedComponentAllocations'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the system realization links that point to/from this component\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
-
-	EList<SystemRealization> getSystemRealizations();
-
-
-
-
-
-
-
-	/**
 	 * Returns the value of the '<em><b>Sub Logical Components</b></em>' reference list.
 	 * The list contents are of type {@link org.polarsys.capella.core.data.la.LogicalComponent}.
 
@@ -216,7 +163,7 @@ public interface LogicalComponent extends SystemComponent {
 	/**
 	 * Returns the value of the '<em><b>Allocated Logical Functions</b></em>' reference list.
 	 * The list contents are of type {@link org.polarsys.capella.core.data.la.LogicalFunction}.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.la.LogicalFunction#getAllocatorLogicalComponents <em>Allocator Logical Components</em>}'.
+	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.la.LogicalFunction#getAllocatingLogicalComponents <em>Allocating Logical Components</em>}'.
 
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -226,14 +173,41 @@ public interface LogicalComponent extends SystemComponent {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Allocated Logical Functions</em>' reference list.
 	 * @see org.polarsys.capella.core.data.la.LaPackage#getLogicalComponent_AllocatedLogicalFunctions()
-	 * @see org.polarsys.capella.core.data.la.LogicalFunction#getAllocatorLogicalComponents
-	 * @model opposite="allocatorLogicalComponents" transient="true" changeable="false" volatile="true" derived="true"
+	 * @see org.polarsys.capella.core.data.la.LogicalFunction#getAllocatingLogicalComponents
+	 * @model opposite="allocatingLogicalComponents" transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='allocatedFunctions'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
 	 * @generated
 	 */
 
 	EList<LogicalFunction> getAllocatedLogicalFunctions();
+
+
+
+
+
+
+
+	/**
+	 * Returns the value of the '<em><b>Realized System Components</b></em>' reference list.
+	 * The list contents are of type {@link org.polarsys.capella.core.data.ctx.SystemComponent}.
+
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Realized System Components</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Realized System Components</em>' reference list.
+	 * @see org.polarsys.capella.core.data.la.LaPackage#getLogicalComponent_RealizedSystemComponents()
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='System Components that are realized by this Logical Component' constraints='none' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='allocatingComponents'"
+	 * @generated
+	 */
+
+	EList<SystemComponent> getRealizedSystemComponents();
 
 
 
@@ -256,41 +230,13 @@ public interface LogicalComponent extends SystemComponent {
 	 * @see org.polarsys.capella.core.data.la.LaPackage#getLogicalComponent_RealizingPhysicalComponents()
 	 * @see org.polarsys.capella.core.data.pa.PhysicalComponent#getRealizedLogicalComponents
 	 * @model opposite="realizedLogicalComponents" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='allocatingComponents'"
+	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Physical Components that realize this Logical Component' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='allocatingComponents'"
 	 * @generated
 	 */
 
 	EList<PhysicalComponent> getRealizingPhysicalComponents();
-
-
-
-
-
-
-
-	/**
-	 * Returns the value of the '<em><b>Realized Systems</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.ctx.System}.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.ctx.System#getRealizingLogicalComponents <em>Realizing Logical Components</em>}'.
-
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Realized Systems</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Realized Systems</em>' reference list.
-	 * @see org.polarsys.capella.core.data.la.LaPackage#getLogicalComponent_RealizedSystems()
-	 * @see org.polarsys.capella.core.data.ctx.System#getRealizingLogicalComponents
-	 * @model opposite="realizingLogicalComponents" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='allocatedComponents'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
-
-	EList<org.polarsys.capella.core.data.ctx.System> getRealizedSystems();
 
 
 

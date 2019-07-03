@@ -29,7 +29,6 @@ import org.polarsys.capella.common.model.helpers.IHelper;
 import org.polarsys.capella.core.data.ctx.SystemFunction;
 import org.polarsys.capella.core.data.fa.impl.AbstractFunctionImpl;
 import org.polarsys.capella.core.data.la.LaPackage;
-import org.polarsys.capella.core.data.la.LogicalActor;
 import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.data.la.LogicalFunction;
 import org.polarsys.capella.core.data.la.LogicalFunctionPkg;
@@ -44,8 +43,7 @@ import org.polarsys.capella.core.data.pa.PhysicalFunction;
  * </p>
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.la.impl.LogicalFunctionImpl#getOwnedLogicalFunctionPkgs <em>Owned Logical Function Pkgs</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.la.impl.LogicalFunctionImpl#getAllocatorLogicalActors <em>Allocator Logical Actors</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.la.impl.LogicalFunctionImpl#getAllocatorLogicalComponents <em>Allocator Logical Components</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.la.impl.LogicalFunctionImpl#getAllocatingLogicalComponents <em>Allocating Logical Components</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.la.impl.LogicalFunctionImpl#getRealizedSystemFunctions <em>Realized System Functions</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.la.impl.LogicalFunctionImpl#getRealizingPhysicalFunctions <em>Realizing Physical Functions</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.la.impl.LogicalFunctionImpl#getContainedLogicalFunctions <em>Contained Logical Functions</em>}</li>
@@ -142,7 +140,7 @@ public class LogicalFunctionImpl extends AbstractFunctionImpl implements Logical
 	 * @generated
 	 */
 
-	public EList<LogicalActor> getAllocatorLogicalActors() {
+	public EList<LogicalComponent> getAllocatingLogicalComponents() {
 
 
     Object result = null;
@@ -165,70 +163,19 @@ public class LogicalFunctionImpl extends AbstractFunctionImpl implements Logical
       throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = LaPackage.Literals.LOGICAL_FUNCTION__ALLOCATOR_LOGICAL_ACTORS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
-    result = helper.getValue(this, LaPackage.Literals.LOGICAL_FUNCTION__ALLOCATOR_LOGICAL_ACTORS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<LogicalActor> resultAsList = (Collection<LogicalActor>) result;
-		return new EcoreEList.UnmodifiableEList<LogicalActor>(this, LaPackage.Literals.LOGICAL_FUNCTION__ALLOCATOR_LOGICAL_ACTORS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
-
-
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public EList<LogicalComponent> getAllocatorLogicalComponents() {
-
-
-    Object result = null;
-    // Helper that can get value for current feature.
-    IHelper helper = null;
-    // If current object is adaptable, ask it to get its IHelper.
-    if (this instanceof IAdaptable) {
-    	helper = (IHelper) ((IAdaptable) this).getAdapter(IHelper.class);
-    }
-    if (null == helper) {
-      // No helper found yet.
-      // Ask the platform to get the adapter 'IHelper.class' for current object.
-      IAdapterManager adapterManager = Platform.getAdapterManager();
-      helper = (IHelper) adapterManager.getAdapter(this, IHelper.class);
-    }
-    if (null == helper) {
-      EPackage package_l = eClass().getEPackage();
-      // Get the root package of the owner package.
-      EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
-    } 
-    // A helper is found, let's use it. 
-    EAnnotation annotation = LaPackage.Literals.LOGICAL_FUNCTION__ALLOCATOR_LOGICAL_COMPONENTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
-    result = helper.getValue(this, LaPackage.Literals.LOGICAL_FUNCTION__ALLOCATOR_LOGICAL_COMPONENTS, annotation);
+    EAnnotation annotation = LaPackage.Literals.LOGICAL_FUNCTION__ALLOCATING_LOGICAL_COMPONENTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    result = helper.getValue(this, LaPackage.Literals.LOGICAL_FUNCTION__ALLOCATING_LOGICAL_COMPONENTS, annotation);
 		
 		try {
 		@SuppressWarnings("unchecked")
 		Collection<LogicalComponent> resultAsList = (Collection<LogicalComponent>) result;
-		return new EcoreEList.UnmodifiableEList<LogicalComponent>(this, LaPackage.Literals.LOGICAL_FUNCTION__ALLOCATOR_LOGICAL_COMPONENTS, resultAsList.size(), resultAsList.toArray());
+		return new EcoreEList.UnmodifiableEList<LogicalComponent>(this, LaPackage.Literals.LOGICAL_FUNCTION__ALLOCATING_LOGICAL_COMPONENTS, resultAsList.size(), resultAsList.toArray());
 		} catch (ClassCastException exception) {
 	  	exception.printStackTrace();
 	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
 	  }
 		
 	}
-
-
-
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -440,10 +387,8 @@ public class LogicalFunctionImpl extends AbstractFunctionImpl implements Logical
 		switch (featureID) {
 			case LaPackage.LOGICAL_FUNCTION__OWNED_LOGICAL_FUNCTION_PKGS:
 				return getOwnedLogicalFunctionPkgs();
-			case LaPackage.LOGICAL_FUNCTION__ALLOCATOR_LOGICAL_ACTORS:
-				return getAllocatorLogicalActors();
-			case LaPackage.LOGICAL_FUNCTION__ALLOCATOR_LOGICAL_COMPONENTS:
-				return getAllocatorLogicalComponents();
+			case LaPackage.LOGICAL_FUNCTION__ALLOCATING_LOGICAL_COMPONENTS:
+				return getAllocatingLogicalComponents();
 			case LaPackage.LOGICAL_FUNCTION__REALIZED_SYSTEM_FUNCTIONS:
 				return getRealizedSystemFunctions();
 			case LaPackage.LOGICAL_FUNCTION__REALIZING_PHYSICAL_FUNCTIONS:
@@ -501,10 +446,8 @@ public class LogicalFunctionImpl extends AbstractFunctionImpl implements Logical
 		switch (featureID) {
 			case LaPackage.LOGICAL_FUNCTION__OWNED_LOGICAL_FUNCTION_PKGS:
 				return ownedLogicalFunctionPkgs != null && !ownedLogicalFunctionPkgs.isEmpty();
-			case LaPackage.LOGICAL_FUNCTION__ALLOCATOR_LOGICAL_ACTORS:
-				return !getAllocatorLogicalActors().isEmpty();
-			case LaPackage.LOGICAL_FUNCTION__ALLOCATOR_LOGICAL_COMPONENTS:
-				return !getAllocatorLogicalComponents().isEmpty();
+			case LaPackage.LOGICAL_FUNCTION__ALLOCATING_LOGICAL_COMPONENTS:
+				return !getAllocatingLogicalComponents().isEmpty();
 			case LaPackage.LOGICAL_FUNCTION__REALIZED_SYSTEM_FUNCTIONS:
 				return !getRealizedSystemFunctions().isEmpty();
 			case LaPackage.LOGICAL_FUNCTION__REALIZING_PHYSICAL_FUNCTIONS:

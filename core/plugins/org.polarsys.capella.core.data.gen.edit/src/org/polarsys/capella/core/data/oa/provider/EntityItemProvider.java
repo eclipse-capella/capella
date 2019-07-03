@@ -117,8 +117,6 @@ public class EntityItemProvider
 			addSubEntitiesPropertyDescriptor(object);
 			addAllocatedOperationalActivitiesPropertyDescriptor(object);
 			addAllocatedRolesPropertyDescriptor(object);
-			addRealizingSystemsPropertyDescriptor(object);
-			addRealizingActorsPropertyDescriptor(object);
 			addInvolvingOperationalCapabilitiesPropertyDescriptor(object);
 		}
 		// begin-extension-code
@@ -397,60 +395,6 @@ public class EntityItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Realizing Systems feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addRealizingSystemsPropertyDescriptor(Object object) {
-
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Entity_realizingSystems_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_Entity_realizingSystems_feature", "_UI_Entity_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 OaPackage.Literals.ENTITY__REALIZING_SYSTEMS,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
-
-	/**
-	 * This adds a property descriptor for the Realizing Actors feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addRealizingActorsPropertyDescriptor(Object object) {
-
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Entity_realizingActors_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_Entity_realizingActors_feature", "_UI_Entity_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 OaPackage.Literals.ENTITY__REALIZING_ACTORS,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
-
-	/**
 	 * This adds a property descriptor for the Involving Operational Capabilities feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -580,18 +524,6 @@ public class EntityItemProvider
                     CommandParameter commandParameter = createChildParameter
                         (OaPackage.Literals.ENTITY__OWNED_ENTITIES,
                          OaFactory.eINSTANCE.createEntity());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (OaPackage.Literals.ENTITY__OWNED_ENTITIES,
-                         OaFactory.eINSTANCE.createOperationalActor());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
                     }

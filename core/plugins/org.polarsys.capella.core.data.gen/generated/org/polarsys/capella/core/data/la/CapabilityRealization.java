@@ -11,10 +11,8 @@
 package org.polarsys.capella.core.data.la;
 
 import org.eclipse.emf.common.util.EList;
-import org.polarsys.capella.core.data.cs.AbstractActor;
-import org.polarsys.capella.core.data.cs.ActorCapabilityRealizationInvolvement;
-import org.polarsys.capella.core.data.cs.SystemComponent;
-import org.polarsys.capella.core.data.cs.SystemComponentCapabilityRealizationInvolvement;
+import org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvedElement;
+import org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvement;
 import org.polarsys.capella.core.data.ctx.Capability;
 import org.polarsys.capella.core.data.interaction.AbstractCapability;
 
@@ -27,12 +25,8 @@ import org.polarsys.capella.core.data.interaction.AbstractCapability;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.polarsys.capella.core.data.la.CapabilityRealization#getOwnedActorCapabilityRealizations <em>Owned Actor Capability Realizations</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.la.CapabilityRealization#getOwnedSystemComponentCapabilityRealizations <em>Owned System Component Capability Realizations</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.la.CapabilityRealization#getParticipatingActors <em>Participating Actors</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.la.CapabilityRealization#getParticipatingSystemComponents <em>Participating System Components</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.la.CapabilityRealization#getInvolvedActors <em>Involved Actors</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.la.CapabilityRealization#getInvolvedSystemComponents <em>Involved System Components</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.la.CapabilityRealization#getOwnedCapabilityRealizationInvolvements <em>Owned Capability Realization Involvements</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.la.CapabilityRealization#getInvolvedComponents <em>Involved Components</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.la.CapabilityRealization#getRealizedCapabilities <em>Realized Capabilities</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.la.CapabilityRealization#getRealizedCapabilityRealizations <em>Realized Capability Realizations</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.la.CapabilityRealization#getRealizingCapabilityRealizations <em>Realizing Capability Realizations</em>}</li>
@@ -52,26 +46,23 @@ public interface CapabilityRealization extends AbstractCapability {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Actor Capability Realizations</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.cs.ActorCapabilityRealizationInvolvement}.
+	 * Returns the value of the '<em><b>Owned Capability Realization Involvements</b></em>' containment reference list.
+	 * The list contents are of type {@link org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvement}.
 
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Owned Actor Capability Realizations</em>' containment reference list isn't clear,
+	 * If the meaning of the '<em>Owned Capability Realization Involvements</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Actor Capability Realizations</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.la.LaPackage#getCapabilityRealization_OwnedActorCapabilityRealizations()
+	 * @return the value of the '<em>Owned Capability Realization Involvements</em>' containment reference list.
+	 * @see org.polarsys.capella.core.data.la.LaPackage#getCapabilityRealization_OwnedCapabilityRealizationInvolvements()
 	 * @model containment="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='packagedElement' featureOwner='Package'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ownedActorCapabilityRealizations'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the actor capability realization links that are contained in this CapabilityRealization\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::nearestpackage' explanation='Elements are contained in the nearest possible parent container.' constraints='uml::Package::packagedElement elements on which ActorCapabilityRealizationInvolvement stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
+	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the capability realization links that are contained in this CapabilityRealization\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 * @generated
 	 */
 
-	EList<ActorCapabilityRealizationInvolvement> getOwnedActorCapabilityRealizations();
+	EList<CapabilityRealizationInvolvement> getOwnedCapabilityRealizationInvolvements();
 
 
 
@@ -80,140 +71,23 @@ public interface CapabilityRealization extends AbstractCapability {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned System Component Capability Realizations</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.cs.SystemComponentCapabilityRealizationInvolvement}.
+	 * Returns the value of the '<em><b>Involved Components</b></em>' reference list.
+	 * The list contents are of type {@link org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvedElement}.
 
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Owned System Component Capability Realizations</em>' containment reference list isn't clear,
+	 * If the meaning of the '<em>Involved Components</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned System Component Capability Realizations</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.la.LaPackage#getCapabilityRealization_OwnedSystemComponentCapabilityRealizations()
-	 * @model containment="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='packagedElement' featureOwner='Package'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ownedSystemComponentCapabilityRealizations'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the system component realization links that are contained/owned by this capability realization\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::nearestpackage' explanation='Elements are contained in the nearest possible parent container.' constraints='uml::Package::packagedElement elements on which SystemComponentCapabilityRealizationInvolvement stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
-	 * @generated
-	 */
-
-	EList<SystemComponentCapabilityRealizationInvolvement> getOwnedSystemComponentCapabilityRealizations();
-
-
-
-
-
-
-
-	/**
-	 * Returns the value of the '<em><b>Participating Actors</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.cs.AbstractActor}.
-
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Participating Actors</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Participating Actors</em>' reference list.
-	 * @see org.polarsys.capella.core.data.la.LaPackage#getCapabilityRealization_ParticipatingActors()
+	 * @return the value of the '<em>Involved Components</em>' reference list.
+	 * @see org.polarsys.capella.core.data.la.LaPackage#getCapabilityRealization_InvolvedComponents()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='participatingActors'"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='involvedActors.involved'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) direct references to the actors which capabilities are being realized by this CapabilityRealization\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Components that are involved in this Capability Realization' constraints='none' comment/notes='none'"
 	 * @generated
 	 */
 
-	EList<AbstractActor> getParticipatingActors();
-
-
-
-
-
-
-
-	/**
-	 * Returns the value of the '<em><b>Participating System Components</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.cs.SystemComponent}.
-
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Participating System Components</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Participating System Components</em>' reference list.
-	 * @see org.polarsys.capella.core.data.la.LaPackage#getCapabilityRealization_ParticipatingSystemComponents()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='participatingSystemComponents'"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='involvedSystemComponents.involved'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) direct references to the system components being realized by this CapabilityRealization\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
-
-	EList<SystemComponent> getParticipatingSystemComponents();
-
-
-
-
-
-
-
-	/**
-	 * Returns the value of the '<em><b>Involved Actors</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.cs.ActorCapabilityRealizationInvolvement}.
-
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Involved Actors</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Involved Actors</em>' reference list.
-	 * @see org.polarsys.capella.core.data.la.LaPackage#getCapabilityRealization_InvolvedActors()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='clientDependency' featureOwner='NamedElement'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='involvedActors'"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='involvedInvolvements'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) references to the involvement links in ActorCapabilityRealizations\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
-
-	EList<ActorCapabilityRealizationInvolvement> getInvolvedActors();
-
-
-
-
-
-
-
-	/**
-	 * Returns the value of the '<em><b>Involved System Components</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.cs.SystemComponentCapabilityRealizationInvolvement}.
-
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Involved System Components</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Involved System Components</em>' reference list.
-	 * @see org.polarsys.capella.core.data.la.LaPackage#getCapabilityRealization_InvolvedSystemComponents()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='clientDependency' featureOwner='NamedElement'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='involvedSystemComponents'"
-	 *        annotation="http://www.polarsys.org/capella/derived viatra.variant='alias' viatra.expression='involvedInvolvements'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) references to the involvement links in SystemComponentRealizations for this CapabilityRealization\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
-
-	EList<SystemComponentCapabilityRealizationInvolvement> getInvolvedSystemComponents();
+	EList<CapabilityRealizationInvolvedElement> getInvolvedComponents();
 
 
 

@@ -226,7 +226,6 @@ public class OperationalAnalysisItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(OaPackage.Literals.OPERATIONAL_ANALYSIS__OWNED_OPERATIONAL_CONTEXT);
 			childrenFeatures.add(OaPackage.Literals.OPERATIONAL_ANALYSIS__OWNED_ROLE_PKG);
 			childrenFeatures.add(OaPackage.Literals.OPERATIONAL_ANALYSIS__OWNED_ENTITY_PKG);
 			childrenFeatures.add(OaPackage.Literals.OPERATIONAL_ANALYSIS__OWNED_CONCEPT_PKG);
@@ -294,7 +293,6 @@ public class OperationalAnalysisItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(OperationalAnalysis.class)) {
-			case OaPackage.OPERATIONAL_ANALYSIS__OWNED_OPERATIONAL_CONTEXT:
 			case OaPackage.OPERATIONAL_ANALYSIS__OWNED_ROLE_PKG:
 			case OaPackage.OPERATIONAL_ANALYSIS__OWNED_ENTITY_PKG:
 			case OaPackage.OPERATIONAL_ANALYSIS__OWNED_CONCEPT_PKG:
@@ -314,18 +312,6 @@ public class OperationalAnalysisItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (OaPackage.Literals.OPERATIONAL_ANALYSIS__OWNED_OPERATIONAL_CONTEXT,
-                         OaFactory.eINSTANCE.createOperationalContext());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter

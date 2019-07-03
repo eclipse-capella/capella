@@ -310,29 +310,6 @@ public class LaItemProviderAdapterFactory extends LaAdapterFactory implements Co
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.la.SystemRealization} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected SystemRealizationItemProvider systemRealizationItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.la.SystemRealization}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createSystemRealizationAdapter() {
-		if (systemRealizationItemProvider == null) {
-			systemRealizationItemProvider = new SystemRealizationItemProvider(this);
-		}
-
-		return systemRealizationItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.la.ContextInterfaceRealization} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -353,98 +330,6 @@ public class LaItemProviderAdapterFactory extends LaAdapterFactory implements Co
 		}
 
 		return contextInterfaceRealizationItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.la.LogicalActorPkg} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected LogicalActorPkgItemProvider logicalActorPkgItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.la.LogicalActorPkg}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createLogicalActorPkgAdapter() {
-		if (logicalActorPkgItemProvider == null) {
-			logicalActorPkgItemProvider = new LogicalActorPkgItemProvider(this);
-		}
-
-		return logicalActorPkgItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.la.LogicalActor} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected LogicalActorItemProvider logicalActorItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.la.LogicalActor}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createLogicalActorAdapter() {
-		if (logicalActorItemProvider == null) {
-			logicalActorItemProvider = new LogicalActorItemProvider(this);
-		}
-
-		return logicalActorItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.la.SystemActorRealization} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected SystemActorRealizationItemProvider systemActorRealizationItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.la.SystemActorRealization}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createSystemActorRealizationAdapter() {
-		if (systemActorRealizationItemProvider == null) {
-			systemActorRealizationItemProvider = new SystemActorRealizationItemProvider(this);
-		}
-
-		return systemActorRealizationItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.la.LogicalContext} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected LogicalContextItemProvider logicalContextItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.la.LogicalContext}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createLogicalContextAdapter() {
-		if (logicalContextItemProvider == null) {
-			logicalContextItemProvider = new LogicalContextItemProvider(this);
-		}
-
-		return logicalContextItemProvider;
 	}
 
 	/**
@@ -582,12 +467,7 @@ public class LaItemProviderAdapterFactory extends LaAdapterFactory implements Co
 		if (capabilityRealizationItemProvider != null) capabilityRealizationItemProvider.dispose();
 		if (capabilityRealizationPkgItemProvider != null) capabilityRealizationPkgItemProvider.dispose();
 		if (systemAnalysisRealizationItemProvider != null) systemAnalysisRealizationItemProvider.dispose();
-		if (systemRealizationItemProvider != null) systemRealizationItemProvider.dispose();
 		if (contextInterfaceRealizationItemProvider != null) contextInterfaceRealizationItemProvider.dispose();
-		if (logicalActorPkgItemProvider != null) logicalActorPkgItemProvider.dispose();
-		if (logicalActorItemProvider != null) logicalActorItemProvider.dispose();
-		if (systemActorRealizationItemProvider != null) systemActorRealizationItemProvider.dispose();
-		if (logicalContextItemProvider != null) logicalContextItemProvider.dispose();
 	}
 
 	/**

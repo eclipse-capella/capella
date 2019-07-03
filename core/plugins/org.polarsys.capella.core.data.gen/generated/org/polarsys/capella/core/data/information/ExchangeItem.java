@@ -16,7 +16,6 @@ import org.polarsys.capella.common.data.behavior.AbstractSignal;
 import org.polarsys.capella.common.data.modellingcore.AbstractExchangeItem;
 import org.polarsys.capella.common.data.modellingcore.FinalizableElement;
 import org.polarsys.capella.core.data.capellacore.GeneralizableElement;
-import org.polarsys.capella.core.data.capellacore.Type;
 import org.polarsys.capella.core.data.cs.Interface;
 
 /**

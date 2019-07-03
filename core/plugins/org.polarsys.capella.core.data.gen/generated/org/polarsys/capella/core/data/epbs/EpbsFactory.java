@@ -48,15 +48,6 @@ public interface EpbsFactory extends EFactory {
 	EPBSArchitecture createEPBSArchitecture();
 
 	/**
-	 * Returns a new object of class '<em>EPBS Context</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>EPBS Context</em>'.
-	 * @generated
-	 */
-	EPBSContext createEPBSContext();
-
-	/**
 	 * Returns a new object of class '<em>Configuration Item Pkg</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -118,15 +109,6 @@ public interface EpbsFactory extends EFactory {
 	 * @generated
 	 */
 	EPBSArchitecture createEPBSArchitecture(String name_p);
-
-	/**
-	 * Creates class and sets its name
-	 * (This method comes from a customization of the standard EMF generator)
-	 *
-	 * @param name_p : default name of created element
-	 * @generated
-	 */
-	EPBSContext createEPBSContext(String name_p);
 
 	/**
 	 * Creates class and sets its name

@@ -32,11 +32,8 @@ import org.polarsys.capella.core.data.cs.impl.ComponentArchitectureImpl;
 import org.polarsys.capella.core.data.ctx.SystemAnalysis;
 import org.polarsys.capella.core.data.la.CapabilityRealizationPkg;
 import org.polarsys.capella.core.data.la.LaPackage;
-import org.polarsys.capella.core.data.la.LogicalActorPkg;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
-import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.data.la.LogicalComponentPkg;
-import org.polarsys.capella.core.data.la.LogicalContext;
 import org.polarsys.capella.core.data.la.LogicalFunctionPkg;
 import org.polarsys.capella.core.data.la.SystemAnalysisRealization;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
@@ -49,10 +46,7 @@ import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.polarsys.capella.core.data.la.impl.LogicalArchitectureImpl#getOwnedLogicalContext <em>Owned Logical Context</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.la.impl.LogicalArchitectureImpl#getOwnedLogicalComponent <em>Owned Logical Component</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.la.impl.LogicalArchitectureImpl#getOwnedLogicalComponentPkg <em>Owned Logical Component Pkg</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.la.impl.LogicalArchitectureImpl#getOwnedLogicalActorPkg <em>Owned Logical Actor Pkg</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.la.impl.LogicalArchitectureImpl#getContainedCapabilityRealizationPkg <em>Contained Capability Realization Pkg</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.la.impl.LogicalArchitectureImpl#getContainedLogicalFunctionPkg <em>Contained Logical Function Pkg</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.la.impl.LogicalArchitectureImpl#getOwnedSystemAnalysisRealizations <em>Owned System Analysis Realizations</em>}</li>
@@ -66,34 +60,6 @@ import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 public class LogicalArchitectureImpl extends ComponentArchitectureImpl implements LogicalArchitecture {
 
 	/**
-	 * The cached value of the '{@link #getOwnedLogicalContext() <em>Owned Logical Context</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOwnedLogicalContext()
-	 * @generated
-	 * @ordered
-	 */
-	protected LogicalContext ownedLogicalContext;
-
-
-
-
-
-	/**
-	 * The cached value of the '{@link #getOwnedLogicalComponent() <em>Owned Logical Component</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOwnedLogicalComponent()
-	 * @generated
-	 * @ordered
-	 */
-	protected LogicalComponent ownedLogicalComponent;
-
-
-
-
-
-	/**
 	 * The cached value of the '{@link #getOwnedLogicalComponentPkg() <em>Owned Logical Component Pkg</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -102,28 +68,6 @@ public class LogicalArchitectureImpl extends ComponentArchitectureImpl implement
 	 * @ordered
 	 */
 	protected LogicalComponentPkg ownedLogicalComponentPkg;
-
-
-
-
-
-	/**
-	 * The cached value of the '{@link #getOwnedLogicalActorPkg() <em>Owned Logical Actor Pkg</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOwnedLogicalActorPkg()
-	 * @generated
-	 * @ordered
-	 */
-	protected LogicalActorPkg ownedLogicalActorPkg;
-
-
-
-
-
-
-
-
 
 
 
@@ -174,178 +118,6 @@ public class LogicalArchitectureImpl extends ComponentArchitectureImpl implement
 	protected EClass eStaticClass() {
 		return LaPackage.Literals.LOGICAL_ARCHITECTURE;
 	}
-
-
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public LogicalContext getOwnedLogicalContext() {
-
-		if (ownedLogicalContext != null && ownedLogicalContext.eIsProxy()) {
-			InternalEObject oldOwnedLogicalContext = (InternalEObject)ownedLogicalContext;
-			ownedLogicalContext = (LogicalContext)eResolveProxy(oldOwnedLogicalContext);
-			if (ownedLogicalContext != oldOwnedLogicalContext) {
-				InternalEObject newOwnedLogicalContext = (InternalEObject)ownedLogicalContext;
-				NotificationChain msgs = oldOwnedLogicalContext.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LaPackage.LOGICAL_ARCHITECTURE__OWNED_LOGICAL_CONTEXT, null, null);
-				if (newOwnedLogicalContext.eInternalContainer() == null) {
-					msgs = newOwnedLogicalContext.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LaPackage.LOGICAL_ARCHITECTURE__OWNED_LOGICAL_CONTEXT, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, LaPackage.LOGICAL_ARCHITECTURE__OWNED_LOGICAL_CONTEXT, oldOwnedLogicalContext, ownedLogicalContext));
-			}
-		}
-		return ownedLogicalContext;
-	}
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public LogicalContext basicGetOwnedLogicalContext() {
-
-		return ownedLogicalContext;
-	}
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public NotificationChain basicSetOwnedLogicalContext(LogicalContext newOwnedLogicalContext, NotificationChain msgs) {
-
-		LogicalContext oldOwnedLogicalContext = ownedLogicalContext;
-		ownedLogicalContext = newOwnedLogicalContext;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LaPackage.LOGICAL_ARCHITECTURE__OWNED_LOGICAL_CONTEXT, oldOwnedLogicalContext, newOwnedLogicalContext);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-
-		return msgs;
-	}
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public void setOwnedLogicalContext(LogicalContext newOwnedLogicalContext) {
-
-		if (newOwnedLogicalContext != ownedLogicalContext) {
-			NotificationChain msgs = null;
-			if (ownedLogicalContext != null)
-				msgs = ((InternalEObject)ownedLogicalContext).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LaPackage.LOGICAL_ARCHITECTURE__OWNED_LOGICAL_CONTEXT, null, msgs);
-			if (newOwnedLogicalContext != null)
-				msgs = ((InternalEObject)newOwnedLogicalContext).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LaPackage.LOGICAL_ARCHITECTURE__OWNED_LOGICAL_CONTEXT, null, msgs);
-			msgs = basicSetOwnedLogicalContext(newOwnedLogicalContext, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, LaPackage.LOGICAL_ARCHITECTURE__OWNED_LOGICAL_CONTEXT, newOwnedLogicalContext, newOwnedLogicalContext));
-
-	}
-
-
-
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public LogicalComponent getOwnedLogicalComponent() {
-
-		if (ownedLogicalComponent != null && ownedLogicalComponent.eIsProxy()) {
-			InternalEObject oldOwnedLogicalComponent = (InternalEObject)ownedLogicalComponent;
-			ownedLogicalComponent = (LogicalComponent)eResolveProxy(oldOwnedLogicalComponent);
-			if (ownedLogicalComponent != oldOwnedLogicalComponent) {
-				InternalEObject newOwnedLogicalComponent = (InternalEObject)ownedLogicalComponent;
-				NotificationChain msgs = oldOwnedLogicalComponent.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LaPackage.LOGICAL_ARCHITECTURE__OWNED_LOGICAL_COMPONENT, null, null);
-				if (newOwnedLogicalComponent.eInternalContainer() == null) {
-					msgs = newOwnedLogicalComponent.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LaPackage.LOGICAL_ARCHITECTURE__OWNED_LOGICAL_COMPONENT, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, LaPackage.LOGICAL_ARCHITECTURE__OWNED_LOGICAL_COMPONENT, oldOwnedLogicalComponent, ownedLogicalComponent));
-			}
-		}
-		return ownedLogicalComponent;
-	}
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public LogicalComponent basicGetOwnedLogicalComponent() {
-
-		return ownedLogicalComponent;
-	}
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public NotificationChain basicSetOwnedLogicalComponent(LogicalComponent newOwnedLogicalComponent, NotificationChain msgs) {
-
-		LogicalComponent oldOwnedLogicalComponent = ownedLogicalComponent;
-		ownedLogicalComponent = newOwnedLogicalComponent;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LaPackage.LOGICAL_ARCHITECTURE__OWNED_LOGICAL_COMPONENT, oldOwnedLogicalComponent, newOwnedLogicalComponent);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-
-		return msgs;
-	}
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public void setOwnedLogicalComponent(LogicalComponent newOwnedLogicalComponent) {
-
-		if (newOwnedLogicalComponent != ownedLogicalComponent) {
-			NotificationChain msgs = null;
-			if (ownedLogicalComponent != null)
-				msgs = ((InternalEObject)ownedLogicalComponent).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LaPackage.LOGICAL_ARCHITECTURE__OWNED_LOGICAL_COMPONENT, null, msgs);
-			if (newOwnedLogicalComponent != null)
-				msgs = ((InternalEObject)newOwnedLogicalComponent).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LaPackage.LOGICAL_ARCHITECTURE__OWNED_LOGICAL_COMPONENT, null, msgs);
-			msgs = basicSetOwnedLogicalComponent(newOwnedLogicalComponent, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, LaPackage.LOGICAL_ARCHITECTURE__OWNED_LOGICAL_COMPONENT, newOwnedLogicalComponent, newOwnedLogicalComponent));
-
-	}
-
 
 
 
@@ -429,92 +201,6 @@ public class LogicalArchitectureImpl extends ComponentArchitectureImpl implement
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, LaPackage.LOGICAL_ARCHITECTURE__OWNED_LOGICAL_COMPONENT_PKG, newOwnedLogicalComponentPkg, newOwnedLogicalComponentPkg));
-
-	}
-
-
-
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public LogicalActorPkg getOwnedLogicalActorPkg() {
-
-		if (ownedLogicalActorPkg != null && ownedLogicalActorPkg.eIsProxy()) {
-			InternalEObject oldOwnedLogicalActorPkg = (InternalEObject)ownedLogicalActorPkg;
-			ownedLogicalActorPkg = (LogicalActorPkg)eResolveProxy(oldOwnedLogicalActorPkg);
-			if (ownedLogicalActorPkg != oldOwnedLogicalActorPkg) {
-				InternalEObject newOwnedLogicalActorPkg = (InternalEObject)ownedLogicalActorPkg;
-				NotificationChain msgs = oldOwnedLogicalActorPkg.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LaPackage.LOGICAL_ARCHITECTURE__OWNED_LOGICAL_ACTOR_PKG, null, null);
-				if (newOwnedLogicalActorPkg.eInternalContainer() == null) {
-					msgs = newOwnedLogicalActorPkg.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LaPackage.LOGICAL_ARCHITECTURE__OWNED_LOGICAL_ACTOR_PKG, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, LaPackage.LOGICAL_ARCHITECTURE__OWNED_LOGICAL_ACTOR_PKG, oldOwnedLogicalActorPkg, ownedLogicalActorPkg));
-			}
-		}
-		return ownedLogicalActorPkg;
-	}
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public LogicalActorPkg basicGetOwnedLogicalActorPkg() {
-
-		return ownedLogicalActorPkg;
-	}
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public NotificationChain basicSetOwnedLogicalActorPkg(LogicalActorPkg newOwnedLogicalActorPkg, NotificationChain msgs) {
-
-		LogicalActorPkg oldOwnedLogicalActorPkg = ownedLogicalActorPkg;
-		ownedLogicalActorPkg = newOwnedLogicalActorPkg;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LaPackage.LOGICAL_ARCHITECTURE__OWNED_LOGICAL_ACTOR_PKG, oldOwnedLogicalActorPkg, newOwnedLogicalActorPkg);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-
-		return msgs;
-	}
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public void setOwnedLogicalActorPkg(LogicalActorPkg newOwnedLogicalActorPkg) {
-
-		if (newOwnedLogicalActorPkg != ownedLogicalActorPkg) {
-			NotificationChain msgs = null;
-			if (ownedLogicalActorPkg != null)
-				msgs = ((InternalEObject)ownedLogicalActorPkg).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LaPackage.LOGICAL_ARCHITECTURE__OWNED_LOGICAL_ACTOR_PKG, null, msgs);
-			if (newOwnedLogicalActorPkg != null)
-				msgs = ((InternalEObject)newOwnedLogicalActorPkg).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LaPackage.LOGICAL_ARCHITECTURE__OWNED_LOGICAL_ACTOR_PKG, null, msgs);
-			msgs = basicSetOwnedLogicalActorPkg(newOwnedLogicalActorPkg, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, LaPackage.LOGICAL_ARCHITECTURE__OWNED_LOGICAL_ACTOR_PKG, newOwnedLogicalActorPkg, newOwnedLogicalActorPkg));
 
 	}
 
@@ -806,14 +492,8 @@ public class LogicalArchitectureImpl extends ComponentArchitectureImpl implement
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case LaPackage.LOGICAL_ARCHITECTURE__OWNED_LOGICAL_CONTEXT:
-				return basicSetOwnedLogicalContext(null, msgs);
-			case LaPackage.LOGICAL_ARCHITECTURE__OWNED_LOGICAL_COMPONENT:
-				return basicSetOwnedLogicalComponent(null, msgs);
 			case LaPackage.LOGICAL_ARCHITECTURE__OWNED_LOGICAL_COMPONENT_PKG:
 				return basicSetOwnedLogicalComponentPkg(null, msgs);
-			case LaPackage.LOGICAL_ARCHITECTURE__OWNED_LOGICAL_ACTOR_PKG:
-				return basicSetOwnedLogicalActorPkg(null, msgs);
 			case LaPackage.LOGICAL_ARCHITECTURE__OWNED_SYSTEM_ANALYSIS_REALIZATIONS:
 				return ((InternalEList<?>)getOwnedSystemAnalysisRealizations()).basicRemove(otherEnd, msgs);
 		}
@@ -828,18 +508,9 @@ public class LogicalArchitectureImpl extends ComponentArchitectureImpl implement
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case LaPackage.LOGICAL_ARCHITECTURE__OWNED_LOGICAL_CONTEXT:
-				if (resolve) return getOwnedLogicalContext();
-				return basicGetOwnedLogicalContext();
-			case LaPackage.LOGICAL_ARCHITECTURE__OWNED_LOGICAL_COMPONENT:
-				if (resolve) return getOwnedLogicalComponent();
-				return basicGetOwnedLogicalComponent();
 			case LaPackage.LOGICAL_ARCHITECTURE__OWNED_LOGICAL_COMPONENT_PKG:
 				if (resolve) return getOwnedLogicalComponentPkg();
 				return basicGetOwnedLogicalComponentPkg();
-			case LaPackage.LOGICAL_ARCHITECTURE__OWNED_LOGICAL_ACTOR_PKG:
-				if (resolve) return getOwnedLogicalActorPkg();
-				return basicGetOwnedLogicalActorPkg();
 			case LaPackage.LOGICAL_ARCHITECTURE__CONTAINED_CAPABILITY_REALIZATION_PKG:
 				if (resolve) return getContainedCapabilityRealizationPkg();
 				return basicGetContainedCapabilityRealizationPkg();
@@ -867,17 +538,8 @@ public class LogicalArchitectureImpl extends ComponentArchitectureImpl implement
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case LaPackage.LOGICAL_ARCHITECTURE__OWNED_LOGICAL_CONTEXT:
-					setOwnedLogicalContext((LogicalContext)newValue);
-				return;
-			case LaPackage.LOGICAL_ARCHITECTURE__OWNED_LOGICAL_COMPONENT:
-					setOwnedLogicalComponent((LogicalComponent)newValue);
-				return;
 			case LaPackage.LOGICAL_ARCHITECTURE__OWNED_LOGICAL_COMPONENT_PKG:
 					setOwnedLogicalComponentPkg((LogicalComponentPkg)newValue);
-				return;
-			case LaPackage.LOGICAL_ARCHITECTURE__OWNED_LOGICAL_ACTOR_PKG:
-					setOwnedLogicalActorPkg((LogicalActorPkg)newValue);
 				return;
 			case LaPackage.LOGICAL_ARCHITECTURE__OWNED_SYSTEM_ANALYSIS_REALIZATIONS:
 				getOwnedSystemAnalysisRealizations().clear();
@@ -896,17 +558,8 @@ public class LogicalArchitectureImpl extends ComponentArchitectureImpl implement
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case LaPackage.LOGICAL_ARCHITECTURE__OWNED_LOGICAL_CONTEXT:
-				setOwnedLogicalContext((LogicalContext)null);
-				return;
-			case LaPackage.LOGICAL_ARCHITECTURE__OWNED_LOGICAL_COMPONENT:
-				setOwnedLogicalComponent((LogicalComponent)null);
-				return;
 			case LaPackage.LOGICAL_ARCHITECTURE__OWNED_LOGICAL_COMPONENT_PKG:
 				setOwnedLogicalComponentPkg((LogicalComponentPkg)null);
-				return;
-			case LaPackage.LOGICAL_ARCHITECTURE__OWNED_LOGICAL_ACTOR_PKG:
-				setOwnedLogicalActorPkg((LogicalActorPkg)null);
 				return;
 			case LaPackage.LOGICAL_ARCHITECTURE__OWNED_SYSTEM_ANALYSIS_REALIZATIONS:
 				getOwnedSystemAnalysisRealizations().clear();
@@ -925,14 +578,8 @@ public class LogicalArchitectureImpl extends ComponentArchitectureImpl implement
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case LaPackage.LOGICAL_ARCHITECTURE__OWNED_LOGICAL_CONTEXT:
-				return ownedLogicalContext != null;
-			case LaPackage.LOGICAL_ARCHITECTURE__OWNED_LOGICAL_COMPONENT:
-				return ownedLogicalComponent != null;
 			case LaPackage.LOGICAL_ARCHITECTURE__OWNED_LOGICAL_COMPONENT_PKG:
 				return ownedLogicalComponentPkg != null;
-			case LaPackage.LOGICAL_ARCHITECTURE__OWNED_LOGICAL_ACTOR_PKG:
-				return ownedLogicalActorPkg != null;
 			case LaPackage.LOGICAL_ARCHITECTURE__CONTAINED_CAPABILITY_REALIZATION_PKG:
 				return basicGetContainedCapabilityRealizationPkg() != null;
 			case LaPackage.LOGICAL_ARCHITECTURE__CONTAINED_LOGICAL_FUNCTION_PKG:

@@ -17,7 +17,6 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.polarsys.capella.common.lib.IdGenerator;
-import org.polarsys.capella.core.data.fa.*;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.data.fa.ComponentExchangeAllocation;
 import org.polarsys.capella.core.data.fa.ComponentExchangeCategory;
@@ -30,6 +29,8 @@ import org.polarsys.capella.core.data.fa.ComponentPort;
 import org.polarsys.capella.core.data.fa.ComponentPortAllocation;
 import org.polarsys.capella.core.data.fa.ComponentPortAllocationEnd;
 import org.polarsys.capella.core.data.fa.ComponentPortKind;
+import org.polarsys.capella.core.data.fa.ControlNode;
+import org.polarsys.capella.core.data.fa.ControlNodeKind;
 import org.polarsys.capella.core.data.fa.ExchangeCategory;
 import org.polarsys.capella.core.data.fa.ExchangeContainment;
 import org.polarsys.capella.core.data.fa.ExchangeLink;
@@ -41,7 +42,8 @@ import org.polarsys.capella.core.data.fa.FunctionOutputPort;
 import org.polarsys.capella.core.data.fa.FunctionRealization;
 import org.polarsys.capella.core.data.fa.FunctionSpecification;
 import org.polarsys.capella.core.data.fa.FunctionalChain;
-import org.polarsys.capella.core.data.fa.FunctionalChainInvolvement;
+import org.polarsys.capella.core.data.fa.FunctionalChainInvolvementFunction;
+import org.polarsys.capella.core.data.fa.FunctionalChainInvolvementLink;
 import org.polarsys.capella.core.data.fa.FunctionalChainKind;
 import org.polarsys.capella.core.data.fa.FunctionalChainRealization;
 import org.polarsys.capella.core.data.fa.FunctionalChainReference;
@@ -49,6 +51,7 @@ import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.data.fa.FunctionalExchangeRealization;
 import org.polarsys.capella.core.data.fa.FunctionalExchangeSpecification;
 import org.polarsys.capella.core.data.fa.OrientationPortKind;
+import org.polarsys.capella.core.data.fa.SequenceLink;
 
 /**
  * <!-- begin-user-doc -->

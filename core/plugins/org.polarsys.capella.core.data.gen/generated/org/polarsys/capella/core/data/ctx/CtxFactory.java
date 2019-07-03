@@ -39,15 +39,6 @@ public interface CtxFactory extends EFactory {
 	SystemAnalysis createSystemAnalysis();
 
 	/**
-	 * Returns a new object of class '<em>System</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>System</em>'.
-	 * @generated
-	 */
-	System createSystem();
-
-	/**
 	 * Returns a new object of class '<em>System Function</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -84,40 +75,22 @@ public interface CtxFactory extends EFactory {
 	SystemCommunication createSystemCommunication();
 
 	/**
-	 * Returns a new object of class '<em>Actor</em>'.
+	 * Returns a new object of class '<em>Capability Involvement</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Actor</em>'.
+	 * @return a new object of class '<em>Capability Involvement</em>'.
 	 * @generated
 	 */
-	Actor createActor();
+	CapabilityInvolvement createCapabilityInvolvement();
 
 	/**
-	 * Returns a new object of class '<em>Actor Capability Involvement</em>'.
+	 * Returns a new object of class '<em>Mission Involvement</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Actor Capability Involvement</em>'.
+	 * @return a new object of class '<em>Mission Involvement</em>'.
 	 * @generated
 	 */
-	ActorCapabilityInvolvement createActorCapabilityInvolvement();
-
-	/**
-	 * Returns a new object of class '<em>Actor Mission Involvement</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Actor Mission Involvement</em>'.
-	 * @generated
-	 */
-	ActorMissionInvolvement createActorMissionInvolvement();
-
-	/**
-	 * Returns a new object of class '<em>Actor Pkg</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Actor Pkg</em>'.
-	 * @generated
-	 */
-	ActorPkg createActorPkg();
+	MissionInvolvement createMissionInvolvement();
 
 	/**
 	 * Returns a new object of class '<em>Mission</em>'.
@@ -136,15 +109,6 @@ public interface CtxFactory extends EFactory {
 	 * @generated
 	 */
 	MissionPkg createMissionPkg();
-
-	/**
-	 * Returns a new object of class '<em>System Mission Involvement</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>System Mission Involvement</em>'.
-	 * @generated
-	 */
-	SystemMissionInvolvement createSystemMissionInvolvement();
 
 	/**
 	 * Returns a new object of class '<em>Capability</em>'.
@@ -174,24 +138,6 @@ public interface CtxFactory extends EFactory {
 	CapabilityPkg createCapabilityPkg();
 
 	/**
-	 * Returns a new object of class '<em>System Capability Involvement</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>System Capability Involvement</em>'.
-	 * @generated
-	 */
-	SystemCapabilityInvolvement createSystemCapabilityInvolvement();
-
-	/**
-	 * Returns a new object of class '<em>Operational Actor Realization</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Operational Actor Realization</em>'.
-	 * @generated
-	 */
-	OperationalActorRealization createOperationalActorRealization();
-
-	/**
 	 * Returns a new object of class '<em>Operational Analysis Realization</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -201,22 +147,22 @@ public interface CtxFactory extends EFactory {
 	OperationalAnalysisRealization createOperationalAnalysisRealization();
 
 	/**
-	 * Returns a new object of class '<em>Operational Entity Realization</em>'.
+	 * Returns a new object of class '<em>System Component Pkg</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Operational Entity Realization</em>'.
+	 * @return a new object of class '<em>System Component Pkg</em>'.
 	 * @generated
 	 */
-	OperationalEntityRealization createOperationalEntityRealization();
+	SystemComponentPkg createSystemComponentPkg();
 
 	/**
-	 * Returns a new object of class '<em>System Context</em>'.
+	 * Returns a new object of class '<em>System Component</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>System Context</em>'.
+	 * @return a new object of class '<em>System Component</em>'.
 	 * @generated
 	 */
-	SystemContext createSystemContext();
+	SystemComponent createSystemComponent();
 
 	/**
 	 * Returns the package supported by this factory.
@@ -235,15 +181,6 @@ public interface CtxFactory extends EFactory {
 	 * @generated
 	 */
 	SystemAnalysis createSystemAnalysis(String name_p);
-
-	/**
-	 * Creates class and sets its name
-	 * (This method comes from a customization of the standard EMF generator)
-	 *
-	 * @param name_p : default name of created element
-	 * @generated
-	 */
-	System createSystem(String name_p);
 
 	/**
 	 * Creates class and sets its name
@@ -271,24 +208,6 @@ public interface CtxFactory extends EFactory {
 	 * @generated
 	 */
 	SystemCommunicationHook createSystemCommunicationHook(String name_p);
-
-	/**
-	 * Creates class and sets its name
-	 * (This method comes from a customization of the standard EMF generator)
-	 *
-	 * @param name_p : default name of created element
-	 * @generated
-	 */
-	Actor createActor(String name_p);
-
-	/**
-	 * Creates class and sets its name
-	 * (This method comes from a customization of the standard EMF generator)
-	 *
-	 * @param name_p : default name of created element
-	 * @generated
-	 */
-	ActorPkg createActorPkg(String name_p);
 
 	/**
 	 * Creates class and sets its name
@@ -333,7 +252,16 @@ public interface CtxFactory extends EFactory {
 	 * @param name_p : default name of created element
 	 * @generated
 	 */
-	SystemContext createSystemContext(String name_p);
+	SystemComponentPkg createSystemComponentPkg(String name_p);
+
+	/**
+	 * Creates class and sets its name
+	 * (This method comes from a customization of the standard EMF generator)
+	 *
+	 * @param name_p : default name of created element
+	 * @generated
+	 */
+	SystemComponent createSystemComponent(String name_p);
 
 	//begin-capella-code
 	//end-capella-code

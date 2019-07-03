@@ -218,29 +218,6 @@ public class PaItemProviderAdapterFactory extends PaAdapterFactory implements Co
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.pa.PhysicalActorPkg} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected PhysicalActorPkgItemProvider physicalActorPkgItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.pa.PhysicalActorPkg}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createPhysicalActorPkgAdapter() {
-		if (physicalActorPkgItemProvider == null) {
-			physicalActorPkgItemProvider = new PhysicalActorPkgItemProvider(this);
-		}
-
-		return physicalActorPkgItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.pa.PhysicalComponentPkg} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -261,52 +238,6 @@ public class PaItemProviderAdapterFactory extends PaAdapterFactory implements Co
 		}
 
 		return physicalComponentPkgItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.pa.PhysicalActor} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected PhysicalActorItemProvider physicalActorItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.pa.PhysicalActor}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createPhysicalActorAdapter() {
-		if (physicalActorItemProvider == null) {
-			physicalActorItemProvider = new PhysicalActorItemProvider(this);
-		}
-
-		return physicalActorItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.pa.LogicalActorRealization} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected LogicalActorRealizationItemProvider logicalActorRealizationItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.pa.LogicalActorRealization}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createLogicalActorRealizationAdapter() {
-		if (logicalActorRealizationItemProvider == null) {
-			logicalActorRealizationItemProvider = new LogicalActorRealizationItemProvider(this);
-		}
-
-		return logicalActorRealizationItemProvider;
 	}
 
 	/**
@@ -356,29 +287,6 @@ public class PaItemProviderAdapterFactory extends PaAdapterFactory implements Co
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.pa.LogicalComponentRealization} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected LogicalComponentRealizationItemProvider logicalComponentRealizationItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.pa.LogicalComponentRealization}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createLogicalComponentRealizationAdapter() {
-		if (logicalComponentRealizationItemProvider == null) {
-			logicalComponentRealizationItemProvider = new LogicalComponentRealizationItemProvider(this);
-		}
-
-		return logicalComponentRealizationItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.pa.LogicalInterfaceRealization} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -399,29 +307,6 @@ public class PaItemProviderAdapterFactory extends PaAdapterFactory implements Co
 		}
 
 		return logicalInterfaceRealizationItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.pa.PhysicalContext} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected PhysicalContextItemProvider physicalContextItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.polarsys.capella.core.data.pa.PhysicalContext}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createPhysicalContextAdapter() {
-		if (physicalContextItemProvider == null) {
-			physicalContextItemProvider = new PhysicalContextItemProvider(this);
-		}
-
-		return physicalContextItemProvider;
 	}
 
 	/**
@@ -555,15 +440,10 @@ public class PaItemProviderAdapterFactory extends PaAdapterFactory implements Co
 		if (physicalFunctionItemProvider != null) physicalFunctionItemProvider.dispose();
 		if (physicalFunctionPkgItemProvider != null) physicalFunctionPkgItemProvider.dispose();
 		if (physicalComponentItemProvider != null) physicalComponentItemProvider.dispose();
-		if (physicalActorPkgItemProvider != null) physicalActorPkgItemProvider.dispose();
 		if (physicalComponentPkgItemProvider != null) physicalComponentPkgItemProvider.dispose();
-		if (physicalActorItemProvider != null) physicalActorItemProvider.dispose();
-		if (logicalActorRealizationItemProvider != null) logicalActorRealizationItemProvider.dispose();
 		if (physicalNodeItemProvider != null) physicalNodeItemProvider.dispose();
 		if (logicalArchitectureRealizationItemProvider != null) logicalArchitectureRealizationItemProvider.dispose();
-		if (logicalComponentRealizationItemProvider != null) logicalComponentRealizationItemProvider.dispose();
 		if (logicalInterfaceRealizationItemProvider != null) logicalInterfaceRealizationItemProvider.dispose();
-		if (physicalContextItemProvider != null) physicalContextItemProvider.dispose();
 	}
 
 	/**

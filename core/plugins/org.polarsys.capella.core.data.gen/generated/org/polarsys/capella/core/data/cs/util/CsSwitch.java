@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.polarsys.capella.core.data.cs.util;
 
-import java.util.List;
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
@@ -25,8 +23,6 @@ import org.polarsys.capella.common.data.modellingcore.InformationsExchanger;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.data.modellingcore.PublishableElement;
 import org.polarsys.capella.common.data.modellingcore.TraceableElement;
-import org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvedElement;
-import org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvement;
 import org.polarsys.capella.core.data.capellacore.AbstractDependenciesPkg;
 import org.polarsys.capella.core.data.capellacore.AbstractExchangeItemPkg;
 import org.polarsys.capella.core.data.capellacore.Allocation;
@@ -47,22 +43,20 @@ import org.polarsys.capella.core.data.capellacore.Relationship;
 import org.polarsys.capella.core.data.capellacore.Structure;
 import org.polarsys.capella.core.data.capellacore.Type;
 import org.polarsys.capella.core.data.capellacore.TypedElement;
-import org.polarsys.capella.core.data.cs.*;
-import org.polarsys.capella.core.data.cs.AbstractActor;
 import org.polarsys.capella.core.data.cs.AbstractDeploymentLink;
 import org.polarsys.capella.core.data.cs.AbstractPathInvolvedElement;
 import org.polarsys.capella.core.data.cs.AbstractPhysicalArtifact;
 import org.polarsys.capella.core.data.cs.AbstractPhysicalLinkEnd;
 import org.polarsys.capella.core.data.cs.AbstractPhysicalPathLink;
-import org.polarsys.capella.core.data.cs.ActorCapabilityRealizationInvolvement;
 import org.polarsys.capella.core.data.cs.ArchitectureAllocation;
 import org.polarsys.capella.core.data.cs.Block;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.BlockArchitecturePkg;
 import org.polarsys.capella.core.data.cs.Component;
-import org.polarsys.capella.core.data.cs.ComponentAllocation;
 import org.polarsys.capella.core.data.cs.ComponentArchitecture;
 import org.polarsys.capella.core.data.cs.ComponentContext;
+import org.polarsys.capella.core.data.cs.ComponentPkg;
+import org.polarsys.capella.core.data.cs.ComponentRealization;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.DeployableElement;
 import org.polarsys.capella.core.data.cs.DeploymentTarget;
@@ -86,16 +80,13 @@ import org.polarsys.capella.core.data.cs.PhysicalPort;
 import org.polarsys.capella.core.data.cs.PhysicalPortRealization;
 import org.polarsys.capella.core.data.cs.ProvidedInterfaceLink;
 import org.polarsys.capella.core.data.cs.RequiredInterfaceLink;
-import org.polarsys.capella.core.data.cs.SystemComponent;
-import org.polarsys.capella.core.data.cs.SystemComponentCapabilityRealizationInvolvement;
 import org.polarsys.capella.core.data.fa.AbstractFunctionalArchitecture;
 import org.polarsys.capella.core.data.fa.AbstractFunctionalBlock;
+import org.polarsys.capella.core.data.fa.AbstractFunctionalStructure;
 import org.polarsys.capella.core.data.fa.ComponentExchangeAllocator;
 import org.polarsys.capella.core.data.information.AbstractEventOperation;
 import org.polarsys.capella.core.data.information.AbstractInstance;
 import org.polarsys.capella.core.data.information.MultiplicityElement;
-import org.polarsys.capella.core.data.information.Partition;
-import org.polarsys.capella.core.data.information.PartitionableElement;
 import org.polarsys.capella.core.data.information.Port;
 import org.polarsys.capella.core.data.information.Property;
 import org.polarsys.capella.core.data.information.communication.CommunicationLinkExchanger;
@@ -237,13 +228,12 @@ public class CsSwitch<T> extends Switch<T> {
 				Component component = (Component)theEObject;
 				T result = caseComponent(component);
 				if (result == null) result = caseBlock(component);
-				if (result == null) result = casePartitionableElement(component);
+				if (result == null) result = caseClassifier(component);
 				if (result == null) result = caseInterfaceAllocator(component);
 				if (result == null) result = caseCommunicationLinkExchanger(component);
 				if (result == null) result = caseAbstractFunctionalBlock(component);
-				if (result == null) result = caseClassifier(component);
-				if (result == null) result = caseModellingBlock(component);
 				if (result == null) result = caseGeneralizableElement(component);
+				if (result == null) result = caseModellingBlock(component);
 				if (result == null) result = caseType(component);
 				if (result == null) result = caseAbstractType(component);
 				if (result == null) result = caseNamespace(component);
@@ -258,45 +248,16 @@ public class CsSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case CsPackage.ABSTRACT_ACTOR: {
-				AbstractActor abstractActor = (AbstractActor)theEObject;
-				T result = caseAbstractActor(abstractActor);
-				if (result == null) result = caseComponent(abstractActor);
-				if (result == null) result = caseCapabilityRealizationInvolvedElement(abstractActor);
-				if (result == null) result = caseBlock(abstractActor);
-				if (result == null) result = casePartitionableElement(abstractActor);
-				if (result == null) result = caseInterfaceAllocator(abstractActor);
-				if (result == null) result = caseCommunicationLinkExchanger(abstractActor);
-				if (result == null) result = caseInvolvedElement(abstractActor);
-				if (result == null) result = caseAbstractFunctionalBlock(abstractActor);
-				if (result == null) result = caseClassifier(abstractActor);
-				if (result == null) result = caseModellingBlock(abstractActor);
-				if (result == null) result = caseGeneralizableElement(abstractActor);
-				if (result == null) result = caseType(abstractActor);
-				if (result == null) result = caseAbstractType(abstractActor);
-				if (result == null) result = caseNamespace(abstractActor);
-				if (result == null) result = caseNamedElement(abstractActor);
-				if (result == null) result = caseAbstractNamedElement(abstractActor);
-				if (result == null) result = caseCapellaElement(abstractActor);
-				if (result == null) result = caseExtensibleElement(abstractActor);
-				if (result == null) result = caseTraceableElement(abstractActor);
-				if (result == null) result = casePublishableElement(abstractActor);
-				if (result == null) result = caseModelElement(abstractActor);
-				if (result == null) result = caseElement(abstractActor);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case CsPackage.PART: {
 				Part part = (Part)theEObject;
 				T result = casePart(part);
-				if (result == null) result = casePartition(part);
+				if (result == null) result = caseAbstractInstance(part);
 				if (result == null) result = caseInformationsExchanger(part);
 				if (result == null) result = caseDeployableElement(part);
 				if (result == null) result = caseDeploymentTarget(part);
 				if (result == null) result = caseAbstractPathInvolvedElement(part);
-				if (result == null) result = caseAbstractInstance(part);
-				if (result == null) result = caseInvolvedElement(part);
 				if (result == null) result = caseProperty(part);
+				if (result == null) result = caseInvolvedElement(part);
 				if (result == null) result = caseFeature(part);
 				if (result == null) result = caseTypedElement(part);
 				if (result == null) result = caseMultiplicityElement(part);
@@ -329,47 +290,19 @@ public class CsSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case CsPackage.COMPONENT_ALLOCATION: {
-				ComponentAllocation componentAllocation = (ComponentAllocation)theEObject;
-				T result = caseComponentAllocation(componentAllocation);
-				if (result == null) result = caseAllocation(componentAllocation);
-				if (result == null) result = caseRelationship(componentAllocation);
-				if (result == null) result = caseAbstractTrace(componentAllocation);
-				if (result == null) result = caseAbstractRelationship(componentAllocation);
-				if (result == null) result = caseCapellaElement(componentAllocation);
-				if (result == null) result = caseTraceableElement(componentAllocation);
-				if (result == null) result = casePublishableElement(componentAllocation);
-				if (result == null) result = caseModelElement(componentAllocation);
-				if (result == null) result = caseExtensibleElement(componentAllocation);
-				if (result == null) result = caseElement(componentAllocation);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case CsPackage.SYSTEM_COMPONENT: {
-				SystemComponent systemComponent = (SystemComponent)theEObject;
-				T result = caseSystemComponent(systemComponent);
-				if (result == null) result = caseComponent(systemComponent);
-				if (result == null) result = caseCapabilityRealizationInvolvedElement(systemComponent);
-				if (result == null) result = caseBlock(systemComponent);
-				if (result == null) result = casePartitionableElement(systemComponent);
-				if (result == null) result = caseInterfaceAllocator(systemComponent);
-				if (result == null) result = caseCommunicationLinkExchanger(systemComponent);
-				if (result == null) result = caseInvolvedElement(systemComponent);
-				if (result == null) result = caseAbstractFunctionalBlock(systemComponent);
-				if (result == null) result = caseClassifier(systemComponent);
-				if (result == null) result = caseModellingBlock(systemComponent);
-				if (result == null) result = caseGeneralizableElement(systemComponent);
-				if (result == null) result = caseType(systemComponent);
-				if (result == null) result = caseAbstractType(systemComponent);
-				if (result == null) result = caseNamespace(systemComponent);
-				if (result == null) result = caseNamedElement(systemComponent);
-				if (result == null) result = caseAbstractNamedElement(systemComponent);
-				if (result == null) result = caseCapellaElement(systemComponent);
-				if (result == null) result = caseExtensibleElement(systemComponent);
-				if (result == null) result = caseTraceableElement(systemComponent);
-				if (result == null) result = casePublishableElement(systemComponent);
-				if (result == null) result = caseModelElement(systemComponent);
-				if (result == null) result = caseElement(systemComponent);
+			case CsPackage.COMPONENT_REALIZATION: {
+				ComponentRealization componentRealization = (ComponentRealization)theEObject;
+				T result = caseComponentRealization(componentRealization);
+				if (result == null) result = caseAllocation(componentRealization);
+				if (result == null) result = caseRelationship(componentRealization);
+				if (result == null) result = caseAbstractTrace(componentRealization);
+				if (result == null) result = caseAbstractRelationship(componentRealization);
+				if (result == null) result = caseCapellaElement(componentRealization);
+				if (result == null) result = caseTraceableElement(componentRealization);
+				if (result == null) result = casePublishableElement(componentRealization);
+				if (result == null) result = caseModelElement(componentRealization);
+				if (result == null) result = caseExtensibleElement(componentRealization);
+				if (result == null) result = caseElement(componentRealization);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -498,50 +431,17 @@ public class CsSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case CsPackage.ACTOR_CAPABILITY_REALIZATION_INVOLVEMENT: {
-				ActorCapabilityRealizationInvolvement actorCapabilityRealizationInvolvement = (ActorCapabilityRealizationInvolvement)theEObject;
-				T result = caseActorCapabilityRealizationInvolvement(actorCapabilityRealizationInvolvement);
-				if (result == null) result = caseCapabilityRealizationInvolvement(actorCapabilityRealizationInvolvement);
-				if (result == null) result = caseInvolvement(actorCapabilityRealizationInvolvement);
-				if (result == null) result = caseRelationship(actorCapabilityRealizationInvolvement);
-				if (result == null) result = caseAbstractRelationship(actorCapabilityRealizationInvolvement);
-				if (result == null) result = caseCapellaElement(actorCapabilityRealizationInvolvement);
-				if (result == null) result = caseTraceableElement(actorCapabilityRealizationInvolvement);
-				if (result == null) result = casePublishableElement(actorCapabilityRealizationInvolvement);
-				if (result == null) result = caseModelElement(actorCapabilityRealizationInvolvement);
-				if (result == null) result = caseExtensibleElement(actorCapabilityRealizationInvolvement);
-				if (result == null) result = caseElement(actorCapabilityRealizationInvolvement);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case CsPackage.SYSTEM_COMPONENT_CAPABILITY_REALIZATION_INVOLVEMENT: {
-				SystemComponentCapabilityRealizationInvolvement systemComponentCapabilityRealizationInvolvement = (SystemComponentCapabilityRealizationInvolvement)theEObject;
-				T result = caseSystemComponentCapabilityRealizationInvolvement(systemComponentCapabilityRealizationInvolvement);
-				if (result == null) result = caseCapabilityRealizationInvolvement(systemComponentCapabilityRealizationInvolvement);
-				if (result == null) result = caseInvolvement(systemComponentCapabilityRealizationInvolvement);
-				if (result == null) result = caseRelationship(systemComponentCapabilityRealizationInvolvement);
-				if (result == null) result = caseAbstractRelationship(systemComponentCapabilityRealizationInvolvement);
-				if (result == null) result = caseCapellaElement(systemComponentCapabilityRealizationInvolvement);
-				if (result == null) result = caseTraceableElement(systemComponentCapabilityRealizationInvolvement);
-				if (result == null) result = casePublishableElement(systemComponentCapabilityRealizationInvolvement);
-				if (result == null) result = caseModelElement(systemComponentCapabilityRealizationInvolvement);
-				if (result == null) result = caseExtensibleElement(systemComponentCapabilityRealizationInvolvement);
-				if (result == null) result = caseElement(systemComponentCapabilityRealizationInvolvement);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case CsPackage.COMPONENT_CONTEXT: {
 				ComponentContext componentContext = (ComponentContext)theEObject;
 				T result = caseComponentContext(componentContext);
 				if (result == null) result = caseComponent(componentContext);
 				if (result == null) result = caseBlock(componentContext);
-				if (result == null) result = casePartitionableElement(componentContext);
+				if (result == null) result = caseClassifier(componentContext);
 				if (result == null) result = caseInterfaceAllocator(componentContext);
 				if (result == null) result = caseCommunicationLinkExchanger(componentContext);
 				if (result == null) result = caseAbstractFunctionalBlock(componentContext);
-				if (result == null) result = caseClassifier(componentContext);
-				if (result == null) result = caseModellingBlock(componentContext);
 				if (result == null) result = caseGeneralizableElement(componentContext);
+				if (result == null) result = caseModellingBlock(componentContext);
 				if (result == null) result = caseType(componentContext);
 				if (result == null) result = caseAbstractType(componentContext);
 				if (result == null) result = caseNamespace(componentContext);
@@ -798,21 +698,19 @@ public class CsSwitch<T> extends Switch<T> {
 			case CsPackage.PHYSICAL_PORT: {
 				PhysicalPort physicalPort = (PhysicalPort)theEObject;
 				T result = casePhysicalPort(physicalPort);
-				if (result == null) result = casePartition(physicalPort);
 				if (result == null) result = casePort(physicalPort);
 				if (result == null) result = caseAbstractPhysicalArtifact(physicalPort);
 				if (result == null) result = caseInformationsExchanger(physicalPort);
 				if (result == null) result = caseAbstractPhysicalLinkEnd(physicalPort);
-				if (result == null) result = caseAbstractInstance(physicalPort);
 				if (result == null) result = caseProperty(physicalPort);
 				if (result == null) result = caseFeature(physicalPort);
 				if (result == null) result = caseTypedElement(physicalPort);
 				if (result == null) result = caseMultiplicityElement(physicalPort);
 				if (result == null) result = caseFinalizableElement(physicalPort);
 				if (result == null) result = caseNamedElement(physicalPort);
+				if (result == null) result = caseCapellaElement(physicalPort);
 				if (result == null) result = caseAbstractTypedElement(physicalPort);
 				if (result == null) result = caseAbstractNamedElement(physicalPort);
-				if (result == null) result = caseCapellaElement(physicalPort);
 				if (result == null) result = caseTraceableElement(physicalPort);
 				if (result == null) result = casePublishableElement(physicalPort);
 				if (result == null) result = caseModelElement(physicalPort);
@@ -834,6 +732,23 @@ public class CsSwitch<T> extends Switch<T> {
 				if (result == null) result = caseModelElement(physicalPortRealization);
 				if (result == null) result = caseExtensibleElement(physicalPortRealization);
 				if (result == null) result = caseElement(physicalPortRealization);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CsPackage.COMPONENT_PKG: {
+				ComponentPkg componentPkg = (ComponentPkg)theEObject;
+				T result = caseComponentPkg(componentPkg);
+				if (result == null) result = caseAbstractFunctionalStructure(componentPkg);
+				if (result == null) result = caseStructure(componentPkg);
+				if (result == null) result = caseNamespace(componentPkg);
+				if (result == null) result = caseNamedElement(componentPkg);
+				if (result == null) result = caseAbstractNamedElement(componentPkg);
+				if (result == null) result = caseCapellaElement(componentPkg);
+				if (result == null) result = caseTraceableElement(componentPkg);
+				if (result == null) result = casePublishableElement(componentPkg);
+				if (result == null) result = caseModelElement(componentPkg);
+				if (result == null) result = caseExtensibleElement(componentPkg);
+				if (result == null) result = caseElement(componentPkg);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -917,21 +832,6 @@ public class CsSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Abstract Actor</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Abstract Actor</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseAbstractActor(AbstractActor object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Part</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -962,32 +862,17 @@ public class CsSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Component Allocation</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Component Realization</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Component Allocation</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Component Realization</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseComponentAllocation(ComponentAllocation object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>System Component</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>System Component</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseSystemComponent(SystemComponent object) {
+	public T caseComponentRealization(ComponentRealization object) {
 		return null;
 	}
 
@@ -1108,36 +993,6 @@ public class CsSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseInterfaceAllocator(InterfaceAllocator object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Actor Capability Realization Involvement</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Actor Capability Realization Involvement</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseActorCapabilityRealizationInvolvement(ActorCapabilityRealizationInvolvement object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>System Component Capability Realization Involvement</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>System Component Capability Realization Involvement</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseSystemComponentCapabilityRealizationInvolvement(SystemComponentCapabilityRealizationInvolvement object) {
 		return null;
 	}
 
@@ -1427,6 +1282,21 @@ public class CsSwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Component Pkg</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Component Pkg</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseComponentPkg(ComponentPkg object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Element</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -1712,21 +1582,6 @@ public class CsSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Partitionable Element</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Partitionable Element</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T casePartitionableElement(PartitionableElement object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Link Exchanger</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -1753,21 +1608,6 @@ public class CsSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseInvolvedElement(InvolvedElement object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Capability Realization Involved Element</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Capability Realization Involved Element</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseCapabilityRealizationInvolvedElement(CapabilityRealizationInvolvedElement object) {
 		return null;
 	}
 
@@ -1873,21 +1713,6 @@ public class CsSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseAbstractInstance(AbstractInstance object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Partition</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Partition</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T casePartition(Partition object) {
 		return null;
 	}
 
@@ -2042,21 +1867,6 @@ public class CsSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Capability Realization Involvement</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Capability Realization Involvement</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseCapabilityRealizationInvolvement(CapabilityRealizationInvolvement object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Abstract Event Operation</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -2113,6 +1923,21 @@ public class CsSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T casePort(Port object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Abstract Functional Structure</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Abstract Functional Structure</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAbstractFunctionalStructure(AbstractFunctionalStructure object) {
 		return null;
 	}
 

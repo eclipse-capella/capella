@@ -11,8 +11,7 @@
 package org.polarsys.capella.core.data.oa;
 
 import org.eclipse.emf.common.util.EList;
-import org.polarsys.capella.core.data.capellacore.Structure;
-import org.polarsys.capella.core.data.fa.AbstractFunctionalStructure;
+import org.polarsys.capella.core.data.cs.ComponentPkg;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,8 +22,8 @@ import org.polarsys.capella.core.data.fa.AbstractFunctionalStructure;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.polarsys.capella.core.data.oa.EntityPkg#getOwnedEntityPkgs <em>Owned Entity Pkgs</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.oa.EntityPkg#getOwnedEntities <em>Owned Entities</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.oa.EntityPkg#getOwnedEntityPkgs <em>Owned Entity Pkgs</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.oa.EntityPkg#getOwnedLocations <em>Owned Locations</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.oa.EntityPkg#getOwnedCommunicationMeans <em>Owned Communication Means</em>}</li>
  * </ul>
@@ -34,7 +33,7 @@ import org.polarsys.capella.core.data.fa.AbstractFunctionalStructure;
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='uml::Package' explanation='none' constraints='none'"
  * @generated
  */
-public interface EntityPkg extends Structure, AbstractFunctionalStructure {
+public interface EntityPkg extends ComponentPkg {
 
 
 

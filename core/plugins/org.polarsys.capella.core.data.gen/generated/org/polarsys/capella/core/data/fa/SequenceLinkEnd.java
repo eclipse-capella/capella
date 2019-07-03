@@ -13,7 +13,6 @@
 package org.polarsys.capella.core.data.fa;
 
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.eclipse.emf.ecore.EObject;
 
 
 /**

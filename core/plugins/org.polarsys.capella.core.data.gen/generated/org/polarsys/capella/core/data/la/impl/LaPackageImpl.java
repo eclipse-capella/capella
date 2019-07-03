@@ -46,18 +46,13 @@ import org.polarsys.capella.core.data.la.CapabilityRealizationPkg;
 import org.polarsys.capella.core.data.la.ContextInterfaceRealization;
 import org.polarsys.capella.core.data.la.LaFactory;
 import org.polarsys.capella.core.data.la.LaPackage;
-import org.polarsys.capella.core.data.la.LogicalActor;
-import org.polarsys.capella.core.data.la.LogicalActorPkg;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.la.LogicalArchitecturePkg;
 import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.data.la.LogicalComponentPkg;
-import org.polarsys.capella.core.data.la.LogicalContext;
 import org.polarsys.capella.core.data.la.LogicalFunction;
 import org.polarsys.capella.core.data.la.LogicalFunctionPkg;
-import org.polarsys.capella.core.data.la.SystemActorRealization;
 import org.polarsys.capella.core.data.la.SystemAnalysisRealization;
-import org.polarsys.capella.core.data.la.SystemRealization;
 import org.polarsys.capella.core.data.oa.OaPackage;
 import org.polarsys.capella.core.data.oa.impl.OaPackageImpl;
 import org.polarsys.capella.core.data.pa.PaPackage;
@@ -145,42 +140,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass systemRealizationEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EClass contextInterfaceRealizationEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass logicalActorPkgEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass logicalActorEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass systemActorRealizationEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass logicalContextEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -334,7 +294,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getLogicalArchitecture_OwnedLogicalContext() {
+	public EReference getLogicalArchitecture_OwnedLogicalComponentPkg() {
 		return (EReference)logicalArchitectureEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -343,7 +303,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getLogicalArchitecture_OwnedLogicalComponent() {
+	public EReference getLogicalArchitecture_ContainedCapabilityRealizationPkg() {
 		return (EReference)logicalArchitectureEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -352,7 +312,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getLogicalArchitecture_OwnedLogicalComponentPkg() {
+	public EReference getLogicalArchitecture_ContainedLogicalFunctionPkg() {
 		return (EReference)logicalArchitectureEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -361,7 +321,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getLogicalArchitecture_OwnedLogicalActorPkg() {
+	public EReference getLogicalArchitecture_OwnedSystemAnalysisRealizations() {
 		return (EReference)logicalArchitectureEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -370,7 +330,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getLogicalArchitecture_ContainedCapabilityRealizationPkg() {
+	public EReference getLogicalArchitecture_AllocatedSystemAnalysisRealizations() {
 		return (EReference)logicalArchitectureEClass.getEStructuralFeatures().get(4);
 	}
 
@@ -379,7 +339,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getLogicalArchitecture_ContainedLogicalFunctionPkg() {
+	public EReference getLogicalArchitecture_AllocatedSystemAnalyses() {
 		return (EReference)logicalArchitectureEClass.getEStructuralFeatures().get(5);
 	}
 
@@ -388,35 +348,8 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getLogicalArchitecture_OwnedSystemAnalysisRealizations() {
-		return (EReference)logicalArchitectureEClass.getEStructuralFeatures().get(6);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getLogicalArchitecture_AllocatedSystemAnalysisRealizations() {
-		return (EReference)logicalArchitectureEClass.getEStructuralFeatures().get(7);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getLogicalArchitecture_AllocatedSystemAnalyses() {
-		return (EReference)logicalArchitectureEClass.getEStructuralFeatures().get(8);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getLogicalArchitecture_AllocatingPhysicalArchitectures() {
-		return (EReference)logicalArchitectureEClass.getEStructuralFeatures().get(9);
+		return (EReference)logicalArchitectureEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -442,7 +375,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getLogicalFunction_AllocatorLogicalActors() {
+	public EReference getLogicalFunction_AllocatingLogicalComponents() {
 		return (EReference)logicalFunctionEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -451,7 +384,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getLogicalFunction_AllocatorLogicalComponents() {
+	public EReference getLogicalFunction_RealizedSystemFunctions() {
 		return (EReference)logicalFunctionEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -460,7 +393,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getLogicalFunction_RealizedSystemFunctions() {
+	public EReference getLogicalFunction_RealizingPhysicalFunctions() {
 		return (EReference)logicalFunctionEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -469,7 +402,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getLogicalFunction_RealizingPhysicalFunctions() {
+	public EReference getLogicalFunction_ContainedLogicalFunctions() {
 		return (EReference)logicalFunctionEClass.getEStructuralFeatures().get(4);
 	}
 
@@ -478,17 +411,8 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getLogicalFunction_ContainedLogicalFunctions() {
-		return (EReference)logicalFunctionEClass.getEStructuralFeatures().get(5);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getLogicalFunction_ChildrenLogicalFunctions() {
-		return (EReference)logicalFunctionEClass.getEStructuralFeatures().get(6);
+		return (EReference)logicalFunctionEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -559,7 +483,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getLogicalComponent_OwnedSystemRealizations() {
+	public EReference getLogicalComponent_SubLogicalComponents() {
 		return (EReference)logicalComponentEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -568,7 +492,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getLogicalComponent_SystemRealizations() {
+	public EReference getLogicalComponent_AllocatedLogicalFunctions() {
 		return (EReference)logicalComponentEClass.getEStructuralFeatures().get(4);
 	}
 
@@ -577,7 +501,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getLogicalComponent_SubLogicalComponents() {
+	public EReference getLogicalComponent_RealizedSystemComponents() {
 		return (EReference)logicalComponentEClass.getEStructuralFeatures().get(5);
 	}
 
@@ -586,26 +510,8 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getLogicalComponent_AllocatedLogicalFunctions() {
-		return (EReference)logicalComponentEClass.getEStructuralFeatures().get(6);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getLogicalComponent_RealizingPhysicalComponents() {
-		return (EReference)logicalComponentEClass.getEStructuralFeatures().get(7);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getLogicalComponent_RealizedSystems() {
-		return (EReference)logicalComponentEClass.getEStructuralFeatures().get(8);
+		return (EReference)logicalComponentEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -649,7 +555,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getCapabilityRealization_OwnedActorCapabilityRealizations() {
+	public EReference getCapabilityRealization_OwnedCapabilityRealizationInvolvements() {
 		return (EReference)capabilityRealizationEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -658,7 +564,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getCapabilityRealization_OwnedSystemComponentCapabilityRealizations() {
+	public EReference getCapabilityRealization_InvolvedComponents() {
 		return (EReference)capabilityRealizationEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -667,7 +573,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getCapabilityRealization_ParticipatingActors() {
+	public EReference getCapabilityRealization_RealizedCapabilities() {
 		return (EReference)capabilityRealizationEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -676,7 +582,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getCapabilityRealization_ParticipatingSystemComponents() {
+	public EReference getCapabilityRealization_RealizedCapabilityRealizations() {
 		return (EReference)capabilityRealizationEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -685,44 +591,8 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getCapabilityRealization_InvolvedActors() {
-		return (EReference)capabilityRealizationEClass.getEStructuralFeatures().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getCapabilityRealization_InvolvedSystemComponents() {
-		return (EReference)capabilityRealizationEClass.getEStructuralFeatures().get(5);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getCapabilityRealization_RealizedCapabilities() {
-		return (EReference)capabilityRealizationEClass.getEStructuralFeatures().get(6);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getCapabilityRealization_RealizedCapabilityRealizations() {
-		return (EReference)capabilityRealizationEClass.getEStructuralFeatures().get(7);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getCapabilityRealization_RealizingCapabilityRealizations() {
-		return (EReference)capabilityRealizationEClass.getEStructuralFeatures().get(8);
+		return (EReference)capabilityRealizationEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -766,125 +636,8 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getSystemRealization() {
-		return systemRealizationEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getContextInterfaceRealization() {
 		return contextInterfaceRealizationEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getLogicalActorPkg() {
-		return logicalActorPkgEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getLogicalActorPkg_OwnedLogicalActorPkgs() {
-		return (EReference)logicalActorPkgEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getLogicalActorPkg_OwnedLogicalActors() {
-		return (EReference)logicalActorPkgEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getLogicalActor() {
-		return logicalActorEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getLogicalActor_OwnedSystemActorRealizations() {
-		return (EReference)logicalActorEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getLogicalActor_SystemActorRealizations() {
-		return (EReference)logicalActorEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getLogicalActor_ParticipationsInCapabilityRealizations() {
-		return (EReference)logicalActorEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getLogicalActor_AllocatedLogicalFunctions() {
-		return (EReference)logicalActorEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getLogicalActor_RealizedSystemActors() {
-		return (EReference)logicalActorEClass.getEStructuralFeatures().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getLogicalActor_RealizingPhysicalActors() {
-		return (EReference)logicalActorEClass.getEStructuralFeatures().get(5);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getSystemActorRealization() {
-		return systemActorRealizationEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getLogicalContext() {
-		return logicalContextEClass;
 	}
 
 	/**
@@ -919,10 +672,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 		createEReference(logicalArchitecturePkgEClass, LOGICAL_ARCHITECTURE_PKG__OWNED_LOGICAL_ARCHITECTURES);
 
 		logicalArchitectureEClass = createEClass(LOGICAL_ARCHITECTURE);
-		createEReference(logicalArchitectureEClass, LOGICAL_ARCHITECTURE__OWNED_LOGICAL_CONTEXT);
-		createEReference(logicalArchitectureEClass, LOGICAL_ARCHITECTURE__OWNED_LOGICAL_COMPONENT);
 		createEReference(logicalArchitectureEClass, LOGICAL_ARCHITECTURE__OWNED_LOGICAL_COMPONENT_PKG);
-		createEReference(logicalArchitectureEClass, LOGICAL_ARCHITECTURE__OWNED_LOGICAL_ACTOR_PKG);
 		createEReference(logicalArchitectureEClass, LOGICAL_ARCHITECTURE__CONTAINED_CAPABILITY_REALIZATION_PKG);
 		createEReference(logicalArchitectureEClass, LOGICAL_ARCHITECTURE__CONTAINED_LOGICAL_FUNCTION_PKG);
 		createEReference(logicalArchitectureEClass, LOGICAL_ARCHITECTURE__OWNED_SYSTEM_ANALYSIS_REALIZATIONS);
@@ -932,8 +682,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 
 		logicalFunctionEClass = createEClass(LOGICAL_FUNCTION);
 		createEReference(logicalFunctionEClass, LOGICAL_FUNCTION__OWNED_LOGICAL_FUNCTION_PKGS);
-		createEReference(logicalFunctionEClass, LOGICAL_FUNCTION__ALLOCATOR_LOGICAL_ACTORS);
-		createEReference(logicalFunctionEClass, LOGICAL_FUNCTION__ALLOCATOR_LOGICAL_COMPONENTS);
+		createEReference(logicalFunctionEClass, LOGICAL_FUNCTION__ALLOCATING_LOGICAL_COMPONENTS);
 		createEReference(logicalFunctionEClass, LOGICAL_FUNCTION__REALIZED_SYSTEM_FUNCTIONS);
 		createEReference(logicalFunctionEClass, LOGICAL_FUNCTION__REALIZING_PHYSICAL_FUNCTIONS);
 		createEReference(logicalFunctionEClass, LOGICAL_FUNCTION__CONTAINED_LOGICAL_FUNCTIONS);
@@ -947,24 +696,18 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 		createEReference(logicalComponentEClass, LOGICAL_COMPONENT__OWNED_LOGICAL_COMPONENTS);
 		createEReference(logicalComponentEClass, LOGICAL_COMPONENT__OWNED_LOGICAL_ARCHITECTURES);
 		createEReference(logicalComponentEClass, LOGICAL_COMPONENT__OWNED_LOGICAL_COMPONENT_PKGS);
-		createEReference(logicalComponentEClass, LOGICAL_COMPONENT__OWNED_SYSTEM_REALIZATIONS);
-		createEReference(logicalComponentEClass, LOGICAL_COMPONENT__SYSTEM_REALIZATIONS);
 		createEReference(logicalComponentEClass, LOGICAL_COMPONENT__SUB_LOGICAL_COMPONENTS);
 		createEReference(logicalComponentEClass, LOGICAL_COMPONENT__ALLOCATED_LOGICAL_FUNCTIONS);
+		createEReference(logicalComponentEClass, LOGICAL_COMPONENT__REALIZED_SYSTEM_COMPONENTS);
 		createEReference(logicalComponentEClass, LOGICAL_COMPONENT__REALIZING_PHYSICAL_COMPONENTS);
-		createEReference(logicalComponentEClass, LOGICAL_COMPONENT__REALIZED_SYSTEMS);
 
 		logicalComponentPkgEClass = createEClass(LOGICAL_COMPONENT_PKG);
 		createEReference(logicalComponentPkgEClass, LOGICAL_COMPONENT_PKG__OWNED_LOGICAL_COMPONENTS);
 		createEReference(logicalComponentPkgEClass, LOGICAL_COMPONENT_PKG__OWNED_LOGICAL_COMPONENT_PKGS);
 
 		capabilityRealizationEClass = createEClass(CAPABILITY_REALIZATION);
-		createEReference(capabilityRealizationEClass, CAPABILITY_REALIZATION__OWNED_ACTOR_CAPABILITY_REALIZATIONS);
-		createEReference(capabilityRealizationEClass, CAPABILITY_REALIZATION__OWNED_SYSTEM_COMPONENT_CAPABILITY_REALIZATIONS);
-		createEReference(capabilityRealizationEClass, CAPABILITY_REALIZATION__PARTICIPATING_ACTORS);
-		createEReference(capabilityRealizationEClass, CAPABILITY_REALIZATION__PARTICIPATING_SYSTEM_COMPONENTS);
-		createEReference(capabilityRealizationEClass, CAPABILITY_REALIZATION__INVOLVED_ACTORS);
-		createEReference(capabilityRealizationEClass, CAPABILITY_REALIZATION__INVOLVED_SYSTEM_COMPONENTS);
+		createEReference(capabilityRealizationEClass, CAPABILITY_REALIZATION__OWNED_CAPABILITY_REALIZATION_INVOLVEMENTS);
+		createEReference(capabilityRealizationEClass, CAPABILITY_REALIZATION__INVOLVED_COMPONENTS);
 		createEReference(capabilityRealizationEClass, CAPABILITY_REALIZATION__REALIZED_CAPABILITIES);
 		createEReference(capabilityRealizationEClass, CAPABILITY_REALIZATION__REALIZED_CAPABILITY_REALIZATIONS);
 		createEReference(capabilityRealizationEClass, CAPABILITY_REALIZATION__REALIZING_CAPABILITY_REALIZATIONS);
@@ -975,25 +718,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 
 		systemAnalysisRealizationEClass = createEClass(SYSTEM_ANALYSIS_REALIZATION);
 
-		systemRealizationEClass = createEClass(SYSTEM_REALIZATION);
-
 		contextInterfaceRealizationEClass = createEClass(CONTEXT_INTERFACE_REALIZATION);
-
-		logicalActorPkgEClass = createEClass(LOGICAL_ACTOR_PKG);
-		createEReference(logicalActorPkgEClass, LOGICAL_ACTOR_PKG__OWNED_LOGICAL_ACTOR_PKGS);
-		createEReference(logicalActorPkgEClass, LOGICAL_ACTOR_PKG__OWNED_LOGICAL_ACTORS);
-
-		logicalActorEClass = createEClass(LOGICAL_ACTOR);
-		createEReference(logicalActorEClass, LOGICAL_ACTOR__OWNED_SYSTEM_ACTOR_REALIZATIONS);
-		createEReference(logicalActorEClass, LOGICAL_ACTOR__SYSTEM_ACTOR_REALIZATIONS);
-		createEReference(logicalActorEClass, LOGICAL_ACTOR__PARTICIPATIONS_IN_CAPABILITY_REALIZATIONS);
-		createEReference(logicalActorEClass, LOGICAL_ACTOR__ALLOCATED_LOGICAL_FUNCTIONS);
-		createEReference(logicalActorEClass, LOGICAL_ACTOR__REALIZED_SYSTEM_ACTORS);
-		createEReference(logicalActorEClass, LOGICAL_ACTOR__REALIZING_PHYSICAL_ACTORS);
-
-		systemActorRealizationEClass = createEClass(SYSTEM_ACTOR_REALIZATION);
-
-		logicalContextEClass = createEClass(LOGICAL_CONTEXT);
 	}
 
 	/**
@@ -1024,8 +749,8 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 		CtxPackage theCtxPackage = (CtxPackage)EPackage.Registry.INSTANCE.getEPackage(CtxPackage.eNS_URI);
 		PaPackage thePaPackage = (PaPackage)EPackage.Registry.INSTANCE.getEPackage(PaPackage.eNS_URI);
 		FaPackage theFaPackage = (FaPackage)EPackage.Registry.INSTANCE.getEPackage(FaPackage.eNS_URI);
-		InteractionPackage theInteractionPackage = (InteractionPackage)EPackage.Registry.INSTANCE.getEPackage(InteractionPackage.eNS_URI);
 		CapellacommonPackage theCapellacommonPackage = (CapellacommonPackage)EPackage.Registry.INSTANCE.getEPackage(CapellacommonPackage.eNS_URI);
+		InteractionPackage theInteractionPackage = (InteractionPackage)EPackage.Registry.INSTANCE.getEPackage(InteractionPackage.eNS_URI);
 
 		// Create type parameters
 
@@ -1036,27 +761,20 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 		logicalArchitectureEClass.getESuperTypes().add(theCsPackage.getComponentArchitecture());
 		logicalFunctionEClass.getESuperTypes().add(theFaPackage.getAbstractFunction());
 		logicalFunctionPkgEClass.getESuperTypes().add(theFaPackage.getFunctionPkg());
-		logicalComponentEClass.getESuperTypes().add(theCsPackage.getSystemComponent());
-		logicalComponentPkgEClass.getESuperTypes().add(theFaPackage.getAbstractFunctionalStructure());
+		logicalComponentEClass.getESuperTypes().add(theCsPackage.getComponent());
+		logicalComponentEClass.getESuperTypes().add(theCapellacommonPackage.getCapabilityRealizationInvolvedElement());
+		logicalComponentPkgEClass.getESuperTypes().add(theCsPackage.getComponentPkg());
 		capabilityRealizationEClass.getESuperTypes().add(theInteractionPackage.getAbstractCapability());
 		capabilityRealizationPkgEClass.getESuperTypes().add(theCapellacommonPackage.getAbstractCapabilityPkg());
 		systemAnalysisRealizationEClass.getESuperTypes().add(theCsPackage.getArchitectureAllocation());
-		systemRealizationEClass.getESuperTypes().add(theCsPackage.getComponentAllocation());
 		contextInterfaceRealizationEClass.getESuperTypes().add(theCsPackage.getInterfaceAllocation());
-		logicalActorPkgEClass.getESuperTypes().add(theFaPackage.getAbstractFunctionalStructure());
-		logicalActorEClass.getESuperTypes().add(theCsPackage.getAbstractActor());
-		systemActorRealizationEClass.getESuperTypes().add(theCsPackage.getComponentAllocation());
-		logicalContextEClass.getESuperTypes().add(theCsPackage.getComponentContext());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(logicalArchitecturePkgEClass, LogicalArchitecturePkg.class, "LogicalArchitecturePkg", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEReference(getLogicalArchitecturePkg_OwnedLogicalArchitectures(), this.getLogicalArchitecture(), null, "ownedLogicalArchitectures", null, 0, -1, LogicalArchitecturePkg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(logicalArchitectureEClass, LogicalArchitecture.class, "LogicalArchitecture", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(getLogicalArchitecture_OwnedLogicalContext(), this.getLogicalContext(), null, "ownedLogicalContext", null, 0, 1, LogicalArchitecture.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getLogicalArchitecture_OwnedLogicalComponent(), this.getLogicalComponent(), null, "ownedLogicalComponent", null, 0, 1, LogicalArchitecture.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getLogicalArchitecture_OwnedLogicalComponentPkg(), this.getLogicalComponentPkg(), null, "ownedLogicalComponentPkg", null, 0, 1, LogicalArchitecture.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getLogicalArchitecture_OwnedLogicalActorPkg(), this.getLogicalActorPkg(), null, "ownedLogicalActorPkg", null, 0, 1, LogicalArchitecture.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getLogicalArchitecture_ContainedCapabilityRealizationPkg(), this.getCapabilityRealizationPkg(), null, "containedCapabilityRealizationPkg", null, 0, 1, LogicalArchitecture.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getLogicalArchitecture_ContainedLogicalFunctionPkg(), this.getLogicalFunctionPkg(), null, "containedLogicalFunctionPkg", null, 0, 1, LogicalArchitecture.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getLogicalArchitecture_OwnedSystemAnalysisRealizations(), this.getSystemAnalysisRealization(), null, "ownedSystemAnalysisRealizations", null, 0, -1, LogicalArchitecture.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
@@ -1066,8 +784,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 
 		initEClass(logicalFunctionEClass, LogicalFunction.class, "LogicalFunction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEReference(getLogicalFunction_OwnedLogicalFunctionPkgs(), this.getLogicalFunctionPkg(), null, "ownedLogicalFunctionPkgs", null, 0, -1, LogicalFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getLogicalFunction_AllocatorLogicalActors(), this.getLogicalActor(), this.getLogicalActor_AllocatedLogicalFunctions(), "allocatorLogicalActors", null, 0, -1, LogicalFunction.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getLogicalFunction_AllocatorLogicalComponents(), this.getLogicalComponent(), this.getLogicalComponent_AllocatedLogicalFunctions(), "allocatorLogicalComponents", null, 0, -1, LogicalFunction.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getLogicalFunction_AllocatingLogicalComponents(), this.getLogicalComponent(), this.getLogicalComponent_AllocatedLogicalFunctions(), "allocatingLogicalComponents", null, 0, -1, LogicalFunction.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getLogicalFunction_RealizedSystemFunctions(), theCtxPackage.getSystemFunction(), theCtxPackage.getSystemFunction_RealizingLogicalFunctions(), "realizedSystemFunctions", null, 0, -1, LogicalFunction.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getLogicalFunction_RealizingPhysicalFunctions(), thePaPackage.getPhysicalFunction(), thePaPackage.getPhysicalFunction_RealizedLogicalFunctions(), "realizingPhysicalFunctions", null, 0, -1, LogicalFunction.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getLogicalFunction_ContainedLogicalFunctions(), this.getLogicalFunction(), null, "containedLogicalFunctions", null, 0, -1, LogicalFunction.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
@@ -1081,24 +798,18 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 		initEReference(getLogicalComponent_OwnedLogicalComponents(), this.getLogicalComponent(), null, "ownedLogicalComponents", null, 0, -1, LogicalComponent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getLogicalComponent_OwnedLogicalArchitectures(), this.getLogicalArchitecture(), null, "ownedLogicalArchitectures", null, 0, -1, LogicalComponent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getLogicalComponent_OwnedLogicalComponentPkgs(), this.getLogicalComponentPkg(), null, "ownedLogicalComponentPkgs", null, 0, -1, LogicalComponent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getLogicalComponent_OwnedSystemRealizations(), this.getSystemRealization(), null, "ownedSystemRealizations", null, 0, -1, LogicalComponent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getLogicalComponent_SystemRealizations(), this.getSystemRealization(), null, "systemRealizations", null, 0, -1, LogicalComponent.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getLogicalComponent_SubLogicalComponents(), this.getLogicalComponent(), null, "subLogicalComponents", null, 0, -1, LogicalComponent.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getLogicalComponent_AllocatedLogicalFunctions(), this.getLogicalFunction(), this.getLogicalFunction_AllocatorLogicalComponents(), "allocatedLogicalFunctions", null, 0, -1, LogicalComponent.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getLogicalComponent_AllocatedLogicalFunctions(), this.getLogicalFunction(), this.getLogicalFunction_AllocatingLogicalComponents(), "allocatedLogicalFunctions", null, 0, -1, LogicalComponent.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getLogicalComponent_RealizedSystemComponents(), theCtxPackage.getSystemComponent(), null, "realizedSystemComponents", null, 0, -1, LogicalComponent.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getLogicalComponent_RealizingPhysicalComponents(), thePaPackage.getPhysicalComponent(), thePaPackage.getPhysicalComponent_RealizedLogicalComponents(), "realizingPhysicalComponents", null, 0, -1, LogicalComponent.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getLogicalComponent_RealizedSystems(), theCtxPackage.getSystem(), theCtxPackage.getSystem_RealizingLogicalComponents(), "realizedSystems", null, 0, -1, LogicalComponent.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(logicalComponentPkgEClass, LogicalComponentPkg.class, "LogicalComponentPkg", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEReference(getLogicalComponentPkg_OwnedLogicalComponents(), this.getLogicalComponent(), null, "ownedLogicalComponents", null, 0, -1, LogicalComponentPkg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getLogicalComponentPkg_OwnedLogicalComponentPkgs(), this.getLogicalComponentPkg(), null, "ownedLogicalComponentPkgs", null, 0, -1, LogicalComponentPkg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(capabilityRealizationEClass, CapabilityRealization.class, "CapabilityRealization", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(getCapabilityRealization_OwnedActorCapabilityRealizations(), theCsPackage.getActorCapabilityRealizationInvolvement(), null, "ownedActorCapabilityRealizations", null, 0, -1, CapabilityRealization.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getCapabilityRealization_OwnedSystemComponentCapabilityRealizations(), theCsPackage.getSystemComponentCapabilityRealizationInvolvement(), null, "ownedSystemComponentCapabilityRealizations", null, 0, -1, CapabilityRealization.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getCapabilityRealization_ParticipatingActors(), theCsPackage.getAbstractActor(), null, "participatingActors", null, 0, -1, CapabilityRealization.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getCapabilityRealization_ParticipatingSystemComponents(), theCsPackage.getSystemComponent(), null, "participatingSystemComponents", null, 0, -1, CapabilityRealization.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getCapabilityRealization_InvolvedActors(), theCsPackage.getActorCapabilityRealizationInvolvement(), null, "involvedActors", null, 0, -1, CapabilityRealization.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getCapabilityRealization_InvolvedSystemComponents(), theCsPackage.getSystemComponentCapabilityRealizationInvolvement(), null, "involvedSystemComponents", null, 0, -1, CapabilityRealization.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getCapabilityRealization_OwnedCapabilityRealizationInvolvements(), theCapellacommonPackage.getCapabilityRealizationInvolvement(), null, "ownedCapabilityRealizationInvolvements", null, 0, -1, CapabilityRealization.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getCapabilityRealization_InvolvedComponents(), theCapellacommonPackage.getCapabilityRealizationInvolvedElement(), null, "involvedComponents", null, 0, -1, CapabilityRealization.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getCapabilityRealization_RealizedCapabilities(), theCtxPackage.getCapability(), theCtxPackage.getCapability_RealizingCapabilityRealizations(), "realizedCapabilities", null, 0, -1, CapabilityRealization.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getCapabilityRealization_RealizedCapabilityRealizations(), this.getCapabilityRealization(), this.getCapabilityRealization_RealizingCapabilityRealizations(), "realizedCapabilityRealizations", null, 0, -1, CapabilityRealization.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getCapabilityRealization_RealizingCapabilityRealizations(), this.getCapabilityRealization(), this.getCapabilityRealization_RealizedCapabilityRealizations(), "realizingCapabilityRealizations", null, 0, -1, CapabilityRealization.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
@@ -1109,25 +820,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 
 		initEClass(systemAnalysisRealizationEClass, SystemAnalysisRealization.class, "SystemAnalysisRealization", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
-		initEClass(systemRealizationEClass, SystemRealization.class, "SystemRealization", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-
 		initEClass(contextInterfaceRealizationEClass, ContextInterfaceRealization.class, "ContextInterfaceRealization", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-
-		initEClass(logicalActorPkgEClass, LogicalActorPkg.class, "LogicalActorPkg", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(getLogicalActorPkg_OwnedLogicalActorPkgs(), this.getLogicalActorPkg(), null, "ownedLogicalActorPkgs", null, 0, -1, LogicalActorPkg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getLogicalActorPkg_OwnedLogicalActors(), this.getLogicalActor(), null, "ownedLogicalActors", null, 0, -1, LogicalActorPkg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-
-		initEClass(logicalActorEClass, LogicalActor.class, "LogicalActor", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(getLogicalActor_OwnedSystemActorRealizations(), this.getSystemActorRealization(), null, "ownedSystemActorRealizations", null, 0, -1, LogicalActor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getLogicalActor_SystemActorRealizations(), this.getSystemActorRealization(), null, "systemActorRealizations", null, 0, -1, LogicalActor.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getLogicalActor_ParticipationsInCapabilityRealizations(), theCsPackage.getActorCapabilityRealizationInvolvement(), null, "participationsInCapabilityRealizations", null, 0, -1, LogicalActor.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getLogicalActor_AllocatedLogicalFunctions(), this.getLogicalFunction(), this.getLogicalFunction_AllocatorLogicalActors(), "allocatedLogicalFunctions", null, 0, -1, LogicalActor.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getLogicalActor_RealizedSystemActors(), theCtxPackage.getActor(), theCtxPackage.getActor_RealizingLogicalActors(), "realizedSystemActors", null, 0, -1, LogicalActor.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getLogicalActor_RealizingPhysicalActors(), thePaPackage.getPhysicalActor(), thePaPackage.getPhysicalActor_RealizedLogicalActors(), "realizingPhysicalActors", null, 0, -1, LogicalActor.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-
-		initEClass(systemActorRealizationEClass, SystemActorRealization.class, "SystemActorRealization", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-
-		initEClass(logicalContextEClass, LogicalContext.class, "LogicalContext", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
 		// Create resource
 		createResource(eNS_URI);
@@ -1204,34 +897,10 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
-		  (getLogicalArchitecture_OwnedLogicalContext(), 
-		   source, 
-		   new String[] {
-			 "description", "the set of parts that make the \"world\" (the system + the external parts) at the logical level\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getLogicalArchitecture_OwnedLogicalComponent(), 
-		   source, 
-		   new String[] {
-			 "description", "the logical component that represents the system (in the case where a single System is being designed)\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
 		  (getLogicalArchitecture_OwnedLogicalComponentPkg(), 
 		   source, 
 		   new String[] {
 			 "description", "Link to the package that contains logical components\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getLogicalArchitecture_OwnedLogicalActorPkg(), 
-		   source, 
-		   new String[] {
-			 "description", "Link to the package that contains logical actors\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
@@ -1268,6 +937,14 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 		   source, 
 		   new String[] {
 			 "description", "Set of subpackages that contain logical function elements", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
+		  (getLogicalFunction_AllocatingLogicalComponents(), 
+		   source, 
+		   new String[] {
+			 "description", "Logical components that allocate this Logical Function", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
@@ -1345,26 +1022,26 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
-		  (getLogicalComponent_OwnedSystemRealizations(), 
-		   source, 
-		   new String[] {
-			 "description", "the system realization links that are contained in this component\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getLogicalComponent_SystemRealizations(), 
-		   source, 
-		   new String[] {
-			 "description", "the system realization links that point to/from this component\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
 		  (getLogicalComponent_SubLogicalComponents(), 
 		   source, 
 		   new String[] {
 			 "description", "(automatically computed) the children components of this logical component\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
+		  (getLogicalComponent_RealizedSystemComponents(), 
+		   source, 
+		   new String[] {
+			 "description", "System Components that are realized by this Logical Component", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
+		  (getLogicalComponent_RealizingPhysicalComponents(), 
+		   source, 
+		   new String[] {
+			 "description", "Physical Components that realize this Logical Component", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
@@ -1409,50 +1086,18 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
-		  (getCapabilityRealization_OwnedActorCapabilityRealizations(), 
+		  (getCapabilityRealization_OwnedCapabilityRealizationInvolvements(), 
 		   source, 
 		   new String[] {
-			 "description", "the actor capability realization links that are contained in this CapabilityRealization\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			 "description", "the capability realization links that are contained in this CapabilityRealization\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
-		  (getCapabilityRealization_OwnedSystemComponentCapabilityRealizations(), 
+		  (getCapabilityRealization_InvolvedComponents(), 
 		   source, 
 		   new String[] {
-			 "description", "the system component realization links that are contained/owned by this capability realization\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getCapabilityRealization_ParticipatingActors(), 
-		   source, 
-		   new String[] {
-			 "description", "(automatically computed) direct references to the actors which capabilities are being realized by this CapabilityRealization\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getCapabilityRealization_ParticipatingSystemComponents(), 
-		   source, 
-		   new String[] {
-			 "description", "(automatically computed) direct references to the system components being realized by this CapabilityRealization\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getCapabilityRealization_InvolvedActors(), 
-		   source, 
-		   new String[] {
-			 "description", "(automatically computed) references to the involvement links in ActorCapabilityRealizations\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getCapabilityRealization_InvolvedSystemComponents(), 
-		   source, 
-		   new String[] {
-			 "description", "(automatically computed) references to the involvement links in SystemComponentRealizations for this CapabilityRealization\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			 "description", "Components that are involved in this Capability Realization", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
@@ -1497,110 +1142,10 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
-		  (systemRealizationEClass, 
-		   source, 
-		   new String[] {
-			 "description", "an allocation link between a system and (one of) the component(s) that realize it\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "logical", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
 		  (contextInterfaceRealizationEClass, 
 		   source, 
 		   new String[] {
 			 "description", "an allocation link between an interface at the logical level, and the system-level interface that it realizes\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "logical", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (logicalActorPkgEClass, 
-		   source, 
-		   new String[] {
-			 "description", "Package that contains LogicalActor elements", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "logical", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getLogicalActorPkg_OwnedLogicalActorPkgs(), 
-		   source, 
-		   new String[] {
-			 "description", "sub-(logical actor) packages contained in this package\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getLogicalActorPkg_OwnedLogicalActors(), 
-		   source, 
-		   new String[] {
-			 "description", "logical actors contained in this package\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (logicalActorEClass, 
-		   source, 
-		   new String[] {
-			 "description", "External actor interacting with the system via logical interfaces", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "logical actors are typically created automatically when performing a transition of system-level actors. Additional logical actors can then be created manually.", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "logical", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getLogicalActor_OwnedSystemActorRealizations(), 
-		   source, 
-		   new String[] {
-			 "description", "the list of realisation links to/from system-level actor(s) that this actor hosts/contains\r\n[source: Capella study]\r\n", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getLogicalActor_SystemActorRealizations(), 
-		   source, 
-		   new String[] {
-			 "description", "(automatically computed) the list of actor realization links where this logical actor is involved\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getLogicalActor_ParticipationsInCapabilityRealizations(), 
-		   source, 
-		   new String[] {
-			 "description", "(automatically computed) the involvement links between this logical actor and actor capability realizations\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (systemActorRealizationEClass, 
-		   source, 
-		   new String[] {
-			 "description", "an allocation link between an actor, and the component that realizes it\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "logical", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (logicalContextEClass, 
-		   source, 
-		   new String[] {
-			 "description", "the list of parts that together make the \"world\" (system + external parts) at the logical architecture level\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 			 "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "used in levels", "logical", //$NON-NLS-1$ //$NON-NLS-2$
 			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
@@ -1629,22 +1174,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 		   new String[] {
 		   });	
 		addAnnotation
-		  (getLogicalArchitecture_OwnedLogicalContext(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getLogicalArchitecture_OwnedLogicalComponent(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
 		  (getLogicalArchitecture_OwnedLogicalComponentPkg(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getLogicalArchitecture_OwnedLogicalActorPkg(), 
 		   source, 
 		   new String[] {
 		   });	
@@ -1682,13 +1212,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 		   new String[] {
 		   });	
 		addAnnotation
-		  (getLogicalFunction_AllocatorLogicalActors(), 
-		   source, 
-		   new String[] {
-			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getLogicalFunction_AllocatorLogicalComponents(), 
+		  (getLogicalFunction_AllocatingLogicalComponents(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
@@ -1758,15 +1282,16 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 		   new String[] {
 		   });	
 		addAnnotation
-		  (getLogicalComponent_RealizingPhysicalComponents(), 
+		  (getLogicalComponent_RealizedSystemComponents(), 
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
-		  (getLogicalComponent_RealizedSystems(), 
+		  (getLogicalComponent_RealizingPhysicalComponents(), 
 		   source, 
 		   new String[] {
+			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (logicalComponentPkgEClass, 
@@ -1789,12 +1314,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 		   new String[] {
 		   });	
 		addAnnotation
-		  (getCapabilityRealization_ParticipatingActors(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getCapabilityRealization_ParticipatingSystemComponents(), 
+		  (getCapabilityRealization_InvolvedComponents(), 
 		   source, 
 		   new String[] {
 		   });	
@@ -1826,47 +1346,6 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 		   });	
 		addAnnotation
 		  (getCapabilityRealizationPkg_OwnedCapabilityRealizationPkgs(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (logicalActorPkgEClass, 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getLogicalActorPkg_OwnedLogicalActorPkgs(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getLogicalActorPkg_OwnedLogicalActors(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (logicalActorEClass, 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getLogicalActor_AllocatedLogicalFunctions(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getLogicalActor_RealizedSystemActors(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getLogicalActor_RealizingPhysicalActors(), 
-		   source, 
-		   new String[] {
-			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (logicalContextEClass, 
 		   source, 
 		   new String[] {
 		   });
@@ -1919,22 +1398,10 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "Label", "Logical Architecture" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
-		  (getLogicalArchitecture_OwnedLogicalComponent(), 
-		   source, 
-		   new String[] {
-			 "Label", "ownedLogicalComponents" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
 		  (getLogicalArchitecture_OwnedLogicalComponentPkg(), 
 		   source, 
 		   new String[] {
 			 "Label", "ownedLogicalComponentPkgs" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getLogicalArchitecture_OwnedLogicalActorPkg(), 
-		   source, 
-		   new String[] {
-			 "Label", "ownedActorPkg" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getLogicalArchitecture_AllocatedSystemAnalysisRealizations(), 
@@ -1997,42 +1464,6 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "Label", "CapabilityRealization" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
-		  (getCapabilityRealization_OwnedActorCapabilityRealizations(), 
-		   source, 
-		   new String[] {
-			 "Label", "ownedActorCapabilityRealizations" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getCapabilityRealization_OwnedSystemComponentCapabilityRealizations(), 
-		   source, 
-		   new String[] {
-			 "Label", "ownedSystemComponentCapabilityRealizations" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getCapabilityRealization_ParticipatingActors(), 
-		   source, 
-		   new String[] {
-			 "Label", "participatingActors" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getCapabilityRealization_ParticipatingSystemComponents(), 
-		   source, 
-		   new String[] {
-			 "Label", "participatingSystemComponents" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getCapabilityRealization_InvolvedActors(), 
-		   source, 
-		   new String[] {
-			 "Label", "involvedActors" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getCapabilityRealization_InvolvedSystemComponents(), 
-		   source, 
-		   new String[] {
-			 "Label", "involvedSystemComponents" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
 		  (capabilityRealizationPkgEClass, 
 		   source, 
 		   new String[] {
@@ -2082,21 +1513,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "stereotype", "eng.LogicalArchitecture" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
-		  (getLogicalArchitecture_OwnedLogicalComponent(), 
-		   source, 
-		   new String[] {
-			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
 		  (getLogicalArchitecture_OwnedLogicalComponentPkg(), 
-		   source, 
-		   new String[] {
-			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getLogicalArchitecture_OwnedLogicalActorPkg(), 
 		   source, 
 		   new String[] {
 			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
@@ -2166,34 +1583,6 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "stereotype", "eng.CapabilityRealization" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
-		  (getCapabilityRealization_OwnedActorCapabilityRealizations(), 
-		   source, 
-		   new String[] {
-			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getCapabilityRealization_OwnedSystemComponentCapabilityRealizations(), 
-		   source, 
-		   new String[] {
-			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getCapabilityRealization_InvolvedActors(), 
-		   source, 
-		   new String[] {
-			 "featureName", "clientDependency", //$NON-NLS-1$ //$NON-NLS-2$
-			 "featureOwner", "NamedElement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getCapabilityRealization_InvolvedSystemComponents(), 
-		   source, 
-		   new String[] {
-			 "featureName", "clientDependency", //$NON-NLS-1$ //$NON-NLS-2$
-			 "featureOwner", "NamedElement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
 		  (capabilityRealizationPkgEClass, 
 		   source, 
 		   new String[] {
@@ -2251,36 +1640,12 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
-		  (getLogicalArchitecture_OwnedLogicalContext(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "uml::Package::packagedElement elements on which LogicalContext stereotype or any stereotype that inherits from it is applied\r\nMultiplicity must be [0..1]" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getLogicalArchitecture_OwnedLogicalComponent(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "uml::Package::packagedElement elements on which LogicalComponent stereotype or any stereotype that inherits from it is applied\r\nMultiplicity must be [0..1]" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
 		  (getLogicalArchitecture_OwnedLogicalComponentPkg(), 
 		   source, 
 		   new String[] {
 			 "UML/SysML semantic equivalences", "uml::Package::nestedPackage#uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "uml::Package::nestedPackage elements on which LogicalComponentPkg stereotype or any stereotype that inherits from it is applied\r\nMultiplicity must be [0..1]" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getLogicalArchitecture_OwnedLogicalActorPkg(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "uml::Package::nestedPackage#uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "uml::Package::nestedPackage elements on which LogicalActorPkg stereotype or any stereotype that inherits from it is applied\r\nMultiplicity must be [0..1]" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getLogicalArchitecture_ContainedCapabilityRealizationPkg(), 
@@ -2348,15 +1713,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "constraints", "uml::Package::nestedPackage elements on which LogicalFunctionPkg stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
-		  (getLogicalFunction_AllocatorLogicalActors(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getLogicalFunction_AllocatorLogicalComponents(), 
+		  (getLogicalFunction_AllocatingLogicalComponents(), 
 		   source, 
 		   new String[] {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
@@ -2454,22 +1811,6 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
-		  (getLogicalComponent_OwnedSystemRealizations(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "keyword::nearestpackage", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "SysML::Blocks::Block cannot contain realizations, hence we find the nearest available package to store them.", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getLogicalComponent_SystemRealizations(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
 		  (getLogicalComponent_SubLogicalComponents(), 
 		   source, 
 		   new String[] {
@@ -2479,22 +1820,6 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 		   });	
 		addAnnotation
 		  (getLogicalComponent_AllocatedLogicalFunctions(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getLogicalComponent_RealizingPhysicalComponents(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getLogicalComponent_RealizedSystems(), 
 		   source, 
 		   new String[] {
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
@@ -2533,54 +1858,6 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "base metaclass in UML/SysML profile ", "uml::UseCase", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "needs to be mapped to UseCase since its parent is mapped to UseCase...and has many references mapped to UseCase\'s references", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getCapabilityRealization_OwnedActorCapabilityRealizations(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "keyword::nearestpackage", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "Elements are contained in the nearest possible parent container.", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "uml::Package::packagedElement elements on which ActorCapabilityRealizationInvolvement stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getCapabilityRealization_OwnedSystemComponentCapabilityRealizations(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "keyword::nearestpackage", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "Elements are contained in the nearest possible parent container.", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "uml::Package::packagedElement elements on which SystemComponentCapabilityRealizationInvolvement stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getCapabilityRealization_ParticipatingActors(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getCapabilityRealization_ParticipatingSystemComponents(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getCapabilityRealization_InvolvedActors(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getCapabilityRealization_InvolvedSystemComponents(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
@@ -2642,120 +1919,11 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
-		  (systemRealizationEClass, 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "uml::Realization", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
 		  (contextInterfaceRealizationEClass, 
 		   source, 
 		   new String[] {
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "base metaclass in UML/SysML profile ", "uml::Realization", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (logicalActorPkgEClass, 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "uml::Package", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getLogicalActorPkg_OwnedLogicalActorPkgs(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "uml::Package::nestedPackage#uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "uml::Package::nestedPackage elements on which LogicalActorPkg stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getLogicalActorPkg_OwnedLogicalActors(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "uml::Package::packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "uml::Package::packagedElement elements on which LogicalActor stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (logicalActorEClass, 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "SysML::Blocks::Block", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getLogicalActor_OwnedSystemActorRealizations(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "uml::BehavioredClassifier::interfaceRealization", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "Elements are contained in the nearest possible parent container.", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "uml::BehavioredClassifier::interfaceRealization elements on which ActorRealization stereotype or any stereotype that inherits from it is applied" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getLogicalActor_SystemActorRealizations(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getLogicalActor_ParticipationsInCapabilityRealizations(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getLogicalActor_AllocatedLogicalFunctions(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getLogicalActor_RealizedSystemActors(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getLogicalActor_RealizingPhysicalActors(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (systemActorRealizationEClass, 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "uml::InterfaceRealization", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (logicalContextEClass, 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "uml::Class", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });
@@ -2775,17 +1943,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 		   new String[] {
 		   });	
 		addAnnotation
-		  (getLogicalArchitecture_OwnedLogicalComponent(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
 		  (getLogicalArchitecture_OwnedLogicalComponentPkg(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getLogicalArchitecture_OwnedLogicalActorPkg(), 
 		   source, 
 		   new String[] {
 		   });	
@@ -2821,36 +1979,6 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 		   });	
 		addAnnotation
 		  (getLogicalComponentPkg_OwnedLogicalComponentPkgs(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getCapabilityRealization_OwnedActorCapabilityRealizations(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getCapabilityRealization_OwnedSystemComponentCapabilityRealizations(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getCapabilityRealization_ParticipatingActors(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getCapabilityRealization_ParticipatingSystemComponents(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getCapabilityRealization_InvolvedActors(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getCapabilityRealization_InvolvedSystemComponents(), 
 		   source, 
 		   new String[] {
 		   });	
@@ -2911,14 +2039,7 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "viatra.expression", "allocatingArchitectures" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
-		  (getLogicalFunction_AllocatorLogicalActors(), 
-		   source, 
-		   new String[] {
-			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
-			 "viatra.expression", "LogicalFunction.incomingTraces(self, cfa);\r\nComponentFunctionalAllocation.sourceElement(cfa, target);" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getLogicalFunction_AllocatorLogicalComponents(), 
+		  (getLogicalFunction_AllocatingLogicalComponents(), 
 		   source, 
 		   new String[] {
 			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
@@ -2953,13 +2074,6 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "viatra.expression", "subFunctions" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
-		  (getLogicalComponent_SystemRealizations(), 
-		   source, 
-		   new String[] {
-			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
-			 "viatra.expression", "provisionedComponentAllocations" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
 		  (getLogicalComponent_SubLogicalComponents(), 
 		   source, 
 		   new String[] {
@@ -2974,6 +2088,13 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "viatra.expression", "allocatedFunctions" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
+		  (getLogicalComponent_RealizedSystemComponents(), 
+		   source, 
+		   new String[] {
+			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
+			 "viatra.expression", "allocatingComponents" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
+		addAnnotation
 		  (getLogicalComponent_RealizingPhysicalComponents(), 
 		   source, 
 		   new String[] {
@@ -2981,39 +2102,9 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 			 "viatra.expression", "allocatingComponents" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
-		  (getLogicalComponent_RealizedSystems(), 
+		  (getCapabilityRealization_InvolvedComponents(), 
 		   source, 
 		   new String[] {
-			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
-			 "viatra.expression", "allocatedComponents" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getCapabilityRealization_ParticipatingActors(), 
-		   source, 
-		   new String[] {
-			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
-			 "viatra.expression", "involvedActors.involved" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getCapabilityRealization_ParticipatingSystemComponents(), 
-		   source, 
-		   new String[] {
-			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
-			 "viatra.expression", "involvedSystemComponents.involved" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getCapabilityRealization_InvolvedActors(), 
-		   source, 
-		   new String[] {
-			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
-			 "viatra.expression", "involvedInvolvements" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getCapabilityRealization_InvolvedSystemComponents(), 
-		   source, 
-		   new String[] {
-			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
-			 "viatra.expression", "involvedInvolvements" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 		addAnnotation
 		  (getCapabilityRealization_RealizedCapabilities(), 
@@ -3035,41 +2126,6 @@ public class LaPackageImpl extends EPackageImpl implements LaPackage {
 		   new String[] {
 			 "viatra.variant", "patternbody", //$NON-NLS-1$ //$NON-NLS-2$
 			 "viatra.expression", "CapabilityRealization.incomingTraces(self, acr);\r\nAbstractCapabilityRealization.realizingCapability(acr, target);" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getLogicalActor_SystemActorRealizations(), 
-		   source, 
-		   new String[] {
-			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
-			 "viatra.expression", "provisionedComponentAllocations" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getLogicalActor_ParticipationsInCapabilityRealizations(), 
-		   source, 
-		   new String[] {
-			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
-			 "viatra.expression", "involvingCapabilityRealizationInvolvements" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getLogicalActor_AllocatedLogicalFunctions(), 
-		   source, 
-		   new String[] {
-			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
-			 "viatra.expression", "allocatedFunctions" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getLogicalActor_RealizedSystemActors(), 
-		   source, 
-		   new String[] {
-			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
-			 "viatra.expression", "allocatedComponents" //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
-		addAnnotation
-		  (getLogicalActor_RealizingPhysicalActors(), 
-		   source, 
-		   new String[] {
-			 "viatra.variant", "alias", //$NON-NLS-1$ //$NON-NLS-2$
-			 "viatra.expression", "allocatingComponents" //$NON-NLS-1$ //$NON-NLS-2$
 		   });
 	}
 

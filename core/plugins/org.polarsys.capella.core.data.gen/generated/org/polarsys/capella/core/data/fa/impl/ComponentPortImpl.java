@@ -44,17 +44,14 @@ import org.polarsys.capella.core.data.fa.ComponentPortKind;
 import org.polarsys.capella.core.data.fa.FaPackage;
 import org.polarsys.capella.core.data.fa.FunctionPort;
 import org.polarsys.capella.core.data.fa.OrientationPortKind;
-import org.polarsys.capella.core.data.information.AbstractInstance;
 import org.polarsys.capella.core.data.information.AggregationKind;
 import org.polarsys.capella.core.data.information.Association;
 import org.polarsys.capella.core.data.information.InformationPackage;
 import org.polarsys.capella.core.data.information.MultiplicityElement;
-import org.polarsys.capella.core.data.information.Partition;
 import org.polarsys.capella.core.data.information.Property;
 import org.polarsys.capella.core.data.information.datavalue.DataValue;
 import org.polarsys.capella.core.data.information.datavalue.NumericValue;
 import org.polarsys.capella.core.data.information.impl.PortImpl;
-import org.polarsys.capella.core.data.interaction.InstanceRole;
 
 /**
  * <!-- begin-user-doc -->
@@ -64,6 +61,9 @@ import org.polarsys.capella.core.data.interaction.InstanceRole;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link org.polarsys.capella.core.data.fa.impl.ComponentPortImpl#getIncomingInformationFlows <em>Incoming Information Flows</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.fa.impl.ComponentPortImpl#getOutgoingInformationFlows <em>Outgoing Information Flows</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.fa.impl.ComponentPortImpl#getInformationFlows <em>Information Flows</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.ComponentPortImpl#isIsAbstract <em>Is Abstract</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.ComponentPortImpl#isIsStatic <em>Is Static</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.ComponentPortImpl#getVisibility <em>Visibility</em>}</li>
@@ -87,10 +87,6 @@ import org.polarsys.capella.core.data.interaction.InstanceRole;
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.ComponentPortImpl#isIsReadOnly <em>Is Read Only</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.ComponentPortImpl#isIsPartOfKey <em>Is Part Of Key</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.ComponentPortImpl#getAssociation <em>Association</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.fa.impl.ComponentPortImpl#getRepresentingInstanceRoles <em>Representing Instance Roles</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.fa.impl.ComponentPortImpl#getIncomingInformationFlows <em>Incoming Information Flows</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.fa.impl.ComponentPortImpl#getOutgoingInformationFlows <em>Outgoing Information Flows</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.fa.impl.ComponentPortImpl#getInformationFlows <em>Information Flows</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.ComponentPortImpl#getOrientation <em>Orientation</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.ComponentPortImpl#getKind <em>Kind</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.ComponentPortImpl#getComponentExchanges <em>Component Exchanges</em>}</li>
@@ -1657,53 +1653,6 @@ public class ComponentPortImpl extends PortImpl implements ComponentPort {
 	 * @generated
 	 */
 
-	public EList<InstanceRole> getRepresentingInstanceRoles() {
-
-
-    Object result = null;
-    // Helper that can get value for current feature.
-    IHelper helper = null;
-    // If current object is adaptable, ask it to get its IHelper.
-    if (this instanceof IAdaptable) {
-    	helper = (IHelper) ((IAdaptable) this).getAdapter(IHelper.class);
-    }
-    if (null == helper) {
-      // No helper found yet.
-      // Ask the platform to get the adapter 'IHelper.class' for current object.
-      IAdapterManager adapterManager = Platform.getAdapterManager();
-      helper = (IHelper) adapterManager.getAdapter(this, IHelper.class);
-    }
-    if (null == helper) {
-      EPackage package_l = eClass().getEPackage();
-      // Get the root package of the owner package.
-      EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
-    } 
-    // A helper is found, let's use it. 
-    EAnnotation annotation = InformationPackage.Literals.ABSTRACT_INSTANCE__REPRESENTING_INSTANCE_ROLES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
-    result = helper.getValue(this, InformationPackage.Literals.ABSTRACT_INSTANCE__REPRESENTING_INSTANCE_ROLES, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<InstanceRole> resultAsList = (Collection<InstanceRole>) result;
-		return new EcoreEList.UnmodifiableEList<InstanceRole>(this, InformationPackage.Literals.ABSTRACT_INSTANCE__REPRESENTING_INSTANCE_ROLES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException exception) {
-	  	exception.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
-
-
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
 	public EList<AbstractInformationFlow> getIncomingInformationFlows() {
 
 
@@ -2266,6 +2215,12 @@ public class ComponentPortImpl extends PortImpl implements ComponentPort {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case FaPackage.COMPONENT_PORT__INCOMING_INFORMATION_FLOWS:
+				return getIncomingInformationFlows();
+			case FaPackage.COMPONENT_PORT__OUTGOING_INFORMATION_FLOWS:
+				return getOutgoingInformationFlows();
+			case FaPackage.COMPONENT_PORT__INFORMATION_FLOWS:
+				return getInformationFlows();
 			case FaPackage.COMPONENT_PORT__IS_ABSTRACT:
 				return isIsAbstract();
 			case FaPackage.COMPONENT_PORT__IS_STATIC:
@@ -2315,14 +2270,6 @@ public class ComponentPortImpl extends PortImpl implements ComponentPort {
 			case FaPackage.COMPONENT_PORT__ASSOCIATION:
 				if (resolve) return getAssociation();
 				return basicGetAssociation();
-			case FaPackage.COMPONENT_PORT__REPRESENTING_INSTANCE_ROLES:
-				return getRepresentingInstanceRoles();
-			case FaPackage.COMPONENT_PORT__INCOMING_INFORMATION_FLOWS:
-				return getIncomingInformationFlows();
-			case FaPackage.COMPONENT_PORT__OUTGOING_INFORMATION_FLOWS:
-				return getOutgoingInformationFlows();
-			case FaPackage.COMPONENT_PORT__INFORMATION_FLOWS:
-				return getInformationFlows();
 			case FaPackage.COMPONENT_PORT__ORIENTATION:
 				return getOrientation();
 			case FaPackage.COMPONENT_PORT__KIND:
@@ -2518,6 +2465,12 @@ public class ComponentPortImpl extends PortImpl implements ComponentPort {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case FaPackage.COMPONENT_PORT__INCOMING_INFORMATION_FLOWS:
+				return !getIncomingInformationFlows().isEmpty();
+			case FaPackage.COMPONENT_PORT__OUTGOING_INFORMATION_FLOWS:
+				return !getOutgoingInformationFlows().isEmpty();
+			case FaPackage.COMPONENT_PORT__INFORMATION_FLOWS:
+				return !getInformationFlows().isEmpty();
 			case FaPackage.COMPONENT_PORT__IS_ABSTRACT:
 				return isAbstract != IS_ABSTRACT_EDEFAULT;
 			case FaPackage.COMPONENT_PORT__IS_STATIC:
@@ -2564,14 +2517,6 @@ public class ComponentPortImpl extends PortImpl implements ComponentPort {
 				return isPartOfKey != IS_PART_OF_KEY_EDEFAULT;
 			case FaPackage.COMPONENT_PORT__ASSOCIATION:
 				return basicGetAssociation() != null;
-			case FaPackage.COMPONENT_PORT__REPRESENTING_INSTANCE_ROLES:
-				return !getRepresentingInstanceRoles().isEmpty();
-			case FaPackage.COMPONENT_PORT__INCOMING_INFORMATION_FLOWS:
-				return !getIncomingInformationFlows().isEmpty();
-			case FaPackage.COMPONENT_PORT__OUTGOING_INFORMATION_FLOWS:
-				return !getOutgoingInformationFlows().isEmpty();
-			case FaPackage.COMPONENT_PORT__INFORMATION_FLOWS:
-				return !getInformationFlows().isEmpty();
 			case FaPackage.COMPONENT_PORT__ORIENTATION:
 				return orientation != ORIENTATION_EDEFAULT;
 			case FaPackage.COMPONENT_PORT__KIND:
@@ -2602,6 +2547,14 @@ public class ComponentPortImpl extends PortImpl implements ComponentPort {
 	 */
 	@Override
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == InformationsExchanger.class) {
+			switch (derivedFeatureID) {
+				case FaPackage.COMPONENT_PORT__INCOMING_INFORMATION_FLOWS: return ModellingcorePackage.INFORMATIONS_EXCHANGER__INCOMING_INFORMATION_FLOWS;
+				case FaPackage.COMPONENT_PORT__OUTGOING_INFORMATION_FLOWS: return ModellingcorePackage.INFORMATIONS_EXCHANGER__OUTGOING_INFORMATION_FLOWS;
+				case FaPackage.COMPONENT_PORT__INFORMATION_FLOWS: return ModellingcorePackage.INFORMATIONS_EXCHANGER__INFORMATION_FLOWS;
+				default: return -1;
+			}
+		}
 		if (baseClass == Feature.class) {
 			switch (derivedFeatureID) {
 				case FaPackage.COMPONENT_PORT__IS_ABSTRACT: return CapellacorePackage.FEATURE__IS_ABSTRACT;
@@ -2655,25 +2608,6 @@ public class ComponentPortImpl extends PortImpl implements ComponentPort {
 				default: return -1;
 			}
 		}
-		if (baseClass == AbstractInstance.class) {
-			switch (derivedFeatureID) {
-				case FaPackage.COMPONENT_PORT__REPRESENTING_INSTANCE_ROLES: return InformationPackage.ABSTRACT_INSTANCE__REPRESENTING_INSTANCE_ROLES;
-				default: return -1;
-			}
-		}
-		if (baseClass == Partition.class) {
-			switch (derivedFeatureID) {
-				default: return -1;
-			}
-		}
-		if (baseClass == InformationsExchanger.class) {
-			switch (derivedFeatureID) {
-				case FaPackage.COMPONENT_PORT__INCOMING_INFORMATION_FLOWS: return ModellingcorePackage.INFORMATIONS_EXCHANGER__INCOMING_INFORMATION_FLOWS;
-				case FaPackage.COMPONENT_PORT__OUTGOING_INFORMATION_FLOWS: return ModellingcorePackage.INFORMATIONS_EXCHANGER__OUTGOING_INFORMATION_FLOWS;
-				case FaPackage.COMPONENT_PORT__INFORMATION_FLOWS: return ModellingcorePackage.INFORMATIONS_EXCHANGER__INFORMATION_FLOWS;
-				default: return -1;
-			}
-		}
 		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
 	}
 
@@ -2684,6 +2618,14 @@ public class ComponentPortImpl extends PortImpl implements ComponentPort {
 	 */
 	@Override
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == InformationsExchanger.class) {
+			switch (baseFeatureID) {
+				case ModellingcorePackage.INFORMATIONS_EXCHANGER__INCOMING_INFORMATION_FLOWS: return FaPackage.COMPONENT_PORT__INCOMING_INFORMATION_FLOWS;
+				case ModellingcorePackage.INFORMATIONS_EXCHANGER__OUTGOING_INFORMATION_FLOWS: return FaPackage.COMPONENT_PORT__OUTGOING_INFORMATION_FLOWS;
+				case ModellingcorePackage.INFORMATIONS_EXCHANGER__INFORMATION_FLOWS: return FaPackage.COMPONENT_PORT__INFORMATION_FLOWS;
+				default: return -1;
+			}
+		}
 		if (baseClass == Feature.class) {
 			switch (baseFeatureID) {
 				case CapellacorePackage.FEATURE__IS_ABSTRACT: return FaPackage.COMPONENT_PORT__IS_ABSTRACT;
@@ -2734,25 +2676,6 @@ public class ComponentPortImpl extends PortImpl implements ComponentPort {
 				case InformationPackage.PROPERTY__IS_READ_ONLY: return FaPackage.COMPONENT_PORT__IS_READ_ONLY;
 				case InformationPackage.PROPERTY__IS_PART_OF_KEY: return FaPackage.COMPONENT_PORT__IS_PART_OF_KEY;
 				case InformationPackage.PROPERTY__ASSOCIATION: return FaPackage.COMPONENT_PORT__ASSOCIATION;
-				default: return -1;
-			}
-		}
-		if (baseClass == AbstractInstance.class) {
-			switch (baseFeatureID) {
-				case InformationPackage.ABSTRACT_INSTANCE__REPRESENTING_INSTANCE_ROLES: return FaPackage.COMPONENT_PORT__REPRESENTING_INSTANCE_ROLES;
-				default: return -1;
-			}
-		}
-		if (baseClass == Partition.class) {
-			switch (baseFeatureID) {
-				default: return -1;
-			}
-		}
-		if (baseClass == InformationsExchanger.class) {
-			switch (baseFeatureID) {
-				case ModellingcorePackage.INFORMATIONS_EXCHANGER__INCOMING_INFORMATION_FLOWS: return FaPackage.COMPONENT_PORT__INCOMING_INFORMATION_FLOWS;
-				case ModellingcorePackage.INFORMATIONS_EXCHANGER__OUTGOING_INFORMATION_FLOWS: return FaPackage.COMPONENT_PORT__OUTGOING_INFORMATION_FLOWS;
-				case ModellingcorePackage.INFORMATIONS_EXCHANGER__INFORMATION_FLOWS: return FaPackage.COMPONENT_PORT__INFORMATION_FLOWS;
 				default: return -1;
 			}
 		}

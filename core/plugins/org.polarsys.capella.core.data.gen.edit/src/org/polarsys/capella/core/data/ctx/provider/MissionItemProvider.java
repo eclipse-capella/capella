@@ -36,8 +36,6 @@ import org.polarsys.capella.core.data.capellacore.provider.NamedElementItemProvi
 import org.polarsys.capella.core.data.ctx.CtxFactory;
 import org.polarsys.capella.core.data.ctx.CtxPackage;
 import org.polarsys.capella.core.data.ctx.Mission;
-import org.polarsys.kitalpha.emde.extension.ExtensionModelManager;
-import org.polarsys.kitalpha.emde.extension.ModelExtensionHelper;
 import org.polarsys.kitalpha.emde.model.edit.provider.NewChildDescriptorHelper;
 
 /**
@@ -55,20 +53,6 @@ public class MissionItemProvider
 		IItemLabelProvider,
 		IItemPropertySource {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected IItemPropertyDescriptor participatingSystemPropertyDescriptor;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected IItemPropertyDescriptor involvedSystemPropertyDescriptor;
-
-	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -76,41 +60,6 @@ public class MissionItemProvider
 	 */
 	public MissionItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void checkChildCreationExtender(Object object) {
-		super.checkChildCreationExtender(object);
-		if (object instanceof EObject) {
-			EObject eObject = (EObject) object;
-			// Process CtxPackage.Literals.MISSION__PARTICIPATING_SYSTEM
-			if (participatingSystemPropertyDescriptor != null) {
-				Object participatingSystemValue = eObject.eGet(CtxPackage.Literals.MISSION__PARTICIPATING_SYSTEM, true);
-				if (participatingSystemValue != null && participatingSystemValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) participatingSystemValue)) {
-					itemPropertyDescriptors.remove(participatingSystemPropertyDescriptor);
-				} else if (participatingSystemValue == null && ExtensionModelManager.getAnyType(eObject, CtxPackage.Literals.MISSION__PARTICIPATING_SYSTEM) != null) {
-					itemPropertyDescriptors.remove(participatingSystemPropertyDescriptor);				  					
-				} else if (itemPropertyDescriptors.contains(participatingSystemPropertyDescriptor) == false) {
-					itemPropertyDescriptors.add(participatingSystemPropertyDescriptor);
-				}
-			}
-			// Process CtxPackage.Literals.MISSION__INVOLVED_SYSTEM
-			if (involvedSystemPropertyDescriptor != null) {
-				Object involvedSystemValue = eObject.eGet(CtxPackage.Literals.MISSION__INVOLVED_SYSTEM, true);
-				if (involvedSystemValue != null && involvedSystemValue instanceof EObject && ModelExtensionHelper.getInstance(eObject).isExtensionModelDisabled((EObject) involvedSystemValue)) {
-					itemPropertyDescriptors.remove(involvedSystemPropertyDescriptor);
-				} else if (involvedSystemValue == null && ExtensionModelManager.getAnyType(eObject, CtxPackage.Literals.MISSION__INVOLVED_SYSTEM) != null) {
-					itemPropertyDescriptors.remove(involvedSystemPropertyDescriptor);				  					
-				} else if (itemPropertyDescriptors.contains(involvedSystemPropertyDescriptor) == false) {
-					itemPropertyDescriptors.add(involvedSystemPropertyDescriptor);
-				}
-			}
-		}		
 	}
 
 	/**
@@ -125,10 +74,7 @@ public class MissionItemProvider
 			super.getPropertyDescriptors(object);
 
 			addInvolvedInvolvementsPropertyDescriptor(object);
-			addParticipatingActorsPropertyDescriptor(object);
-			addParticipatingSystemPropertyDescriptor(object);
-			addInvolvedActorsPropertyDescriptor(object);
-			addInvolvedSystemPropertyDescriptor(object);
+			addInvolvedSystemComponentsPropertyDescriptor(object);
 			addExploitedCapabilitiesPropertyDescriptor(object);
 		}
 		// begin-extension-code
@@ -165,12 +111,12 @@ public class MissionItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Participating Actors feature.
+	 * This adds a property descriptor for the Involved System Components feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addParticipatingActorsPropertyDescriptor(Object object) {
+	protected void addInvolvedSystemComponentsPropertyDescriptor(Object object) {
 
 		// begin-extension-code
 		itemPropertyDescriptors.add
@@ -178,9 +124,9 @@ public class MissionItemProvider
 		// end-extension-code
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Mission_participatingActors_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_Mission_participatingActors_feature", "_UI_Mission_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 CtxPackage.Literals.MISSION__PARTICIPATING_ACTORS,
+				 getString("_UI_Mission_involvedSystemComponents_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_Mission_involvedSystemComponents_feature", "_UI_Mission_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 CtxPackage.Literals.MISSION__INVOLVED_SYSTEM_COMPONENTS,
 				 false,
 				 false,
 				 false,
@@ -188,85 +134,6 @@ public class MissionItemProvider
 				 null,
 		// begin-extension-code
 				 null));
-		// end-extension-code
-	}
-
-	/**
-	 * This adds a property descriptor for the Participating System feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addParticipatingSystemPropertyDescriptor(Object object) {
-		// begin-extension-code
-		participatingSystemPropertyDescriptor = createItemPropertyDescriptor
-		// end-extension-code		
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Mission_participatingSystem_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_Mission_participatingSystem_feature", "_UI_Mission_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 CtxPackage.Literals.MISSION__PARTICIPATING_SYSTEM,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null);
-		itemPropertyDescriptors.add(participatingSystemPropertyDescriptor);
-		// end-extension-code
-	}
-
-	/**
-	 * This adds a property descriptor for the Involved Actors feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addInvolvedActorsPropertyDescriptor(Object object) {
-
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Mission_involvedActors_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_Mission_involvedActors_feature", "_UI_Mission_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 CtxPackage.Literals.MISSION__INVOLVED_ACTORS,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
-
-	/**
-	 * This adds a property descriptor for the Involved System feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addInvolvedSystemPropertyDescriptor(Object object) {
-		// begin-extension-code
-		involvedSystemPropertyDescriptor = createItemPropertyDescriptor
-		// end-extension-code		
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Mission_involvedSystem_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_Mission_involvedSystem_feature", "_UI_Mission_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 CtxPackage.Literals.MISSION__INVOLVED_SYSTEM,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null);
-		itemPropertyDescriptors.add(involvedSystemPropertyDescriptor);
 		// end-extension-code
 	}
 
@@ -309,8 +176,7 @@ public class MissionItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(CtxPackage.Literals.MISSION__OWNED_ACTOR_MISSION_INVOLVEMENTS);
-			childrenFeatures.add(CtxPackage.Literals.MISSION__OWNED_SYSTEM_MISSION_INVOLVEMENT);
+			childrenFeatures.add(CtxPackage.Literals.MISSION__OWNED_MISSION_INVOLVEMENTS);
 			childrenFeatures.add(CtxPackage.Literals.MISSION__OWNED_CAPABILITY_EXPLOITATIONS);
 		}
 		return childrenFeatures;
@@ -376,8 +242,7 @@ public class MissionItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Mission.class)) {
-			case CtxPackage.MISSION__OWNED_ACTOR_MISSION_INVOLVEMENTS:
-			case CtxPackage.MISSION__OWNED_SYSTEM_MISSION_INVOLVEMENT:
+			case CtxPackage.MISSION__OWNED_MISSION_INVOLVEMENTS:
 			case CtxPackage.MISSION__OWNED_CAPABILITY_EXPLOITATIONS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
@@ -398,20 +263,8 @@ public class MissionItemProvider
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
-                        (CtxPackage.Literals.MISSION__OWNED_ACTOR_MISSION_INVOLVEMENTS,
-                         CtxFactory.eINSTANCE.createActorMissionInvolvement());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (CtxPackage.Literals.MISSION__OWNED_SYSTEM_MISSION_INVOLVEMENT,
-                         CtxFactory.eINSTANCE.createSystemMissionInvolvement());
+                        (CtxPackage.Literals.MISSION__OWNED_MISSION_INVOLVEMENTS,
+                         CtxFactory.eINSTANCE.createMissionInvolvement());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
                     }
