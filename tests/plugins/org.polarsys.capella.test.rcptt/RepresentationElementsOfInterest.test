@@ -6,8 +6,8 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _wlapMHoDEeiaPKaUZLw7uw
-Runtime-Version: 2.3.0.201806262310
-Save-Time: 1/23/19 10:59 AM
+Runtime-Version: 2.5.0.201906250740
+Save-Time: 7/4/19 3:44 PM
 Testcase-Type: ecl
 
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
@@ -25,7 +25,7 @@ with [get-view Properties] {
         -after [get-label "Elements of Interest :"] | click
 }
 with [get-window "Transfer Dialog"] {
-    get-group "Select a name to find" | get-editbox -after [get-label "? = any character, * = any string"] | set-focus
+    get-editbox | click-text
     with [get-tree] {
         select "EOLE_AF/EOLE_AF/Logical Architecture/Actors/Atmosphere" | double-click
         select "EOLE_AF/EOLE_AF/Logical Architecture/Actors/Forecaster" | double-click

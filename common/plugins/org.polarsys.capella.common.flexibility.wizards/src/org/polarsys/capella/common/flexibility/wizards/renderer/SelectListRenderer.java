@@ -213,7 +213,48 @@ public class SelectListRenderer extends AbstractRenderer {
 
         // Create a filtered tree viewer that expands all systematically.
         
-        CapellaFilteredTree filteredTree = new CapellaFilteredTree(parent, getTreeStyle(), getFilter()) ;
+        CapellaFilteredTree filteredTree = new CapellaFilteredTree(parent, getTreeStyle(), getFilter()) {
+          @Override
+          protected void createControl(Composite parent, int treeStyle) {
+            // We need to override this method to provide room for the vertical toolbar on the right side
+            // Make the main composite's layout having 2 columns.
+            GridLayout layout = new GridLayout(2, false);
+            layout.marginHeight = 0;
+            layout.marginWidth = 0;
+            setLayout(layout);
+            setLayoutData(new GridData(GridData.FILL, GridData.FILL, true, true));
+
+            // First column is for the filtered tree
+            Composite filteredTreeComposite = new Composite(this, SWT.NONE);
+            filteredTreeComposite.setLayout(new GridLayout());
+            filteredTreeComposite.setLayoutData(new GridData(GridData.FILL, GridData.FILL, true, true));
+
+            if (showFilterControls) {
+              filterComposite = new Composite(filteredTreeComposite, SWT.BORDER);
+              filterComposite.setBackground(getDisplay().getSystemColor(SWT.COLOR_LIST_BACKGROUND));
+              GridLayout filterLayout = new GridLayout(2, false);
+              filterLayout.marginHeight = 0;
+              filterLayout.marginWidth = 0;
+              filterComposite.setLayout(filterLayout);
+              filterComposite.setFont(parent.getFont());
+
+              createFilterControls(filterComposite);
+              filterComposite.setLayoutData(new GridData(SWT.FILL, SWT.BEGINNING, true, false));
+            }
+
+            treeComposite = new Composite(filteredTreeComposite, SWT.NONE);
+            GridLayout treeCompositeLayout = new GridLayout();
+            treeCompositeLayout.marginHeight = 0;
+            treeCompositeLayout.marginWidth = 0;
+            treeComposite.setLayout(treeCompositeLayout);
+            GridData data = new GridData(SWT.FILL, SWT.FILL, true, true);
+            treeComposite.setLayoutData(data);
+            createTreeControl(treeComposite, treeStyle);
+
+            // The second column is for the vertical toolbar, which will be contributed by many actions, for instance in RecRpl dialog
+            initializeControls(this, context);
+          }
+        };
         TreeViewer viewer = filteredTree.getViewer();
         setExpandLevel(viewer);
         return viewer;

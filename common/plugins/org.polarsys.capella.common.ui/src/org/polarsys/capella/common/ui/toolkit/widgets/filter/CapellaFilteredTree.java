@@ -15,6 +15,8 @@ import org.eclipse.core.runtime.jobs.IJobChangeListener;
 import org.eclipse.jface.viewers.AbstractTreeViewer;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.KeyEvent;
+import org.eclipse.swt.events.KeyListener;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.ui.dialogs.FilteredTree;
@@ -106,10 +108,19 @@ public class CapellaFilteredTree extends FilteredTree {
     }
 
     // Add our own "ENTER" listener which will filter the tree based on pattern text
-    filterText.addTraverseListener(e -> {
-      if (e.detail == SWT.TRAVERSE_RETURN) {
-        e.doit = false;
-        textChanged();
+    // Use the KeyListener instead of Traverse in order to support RCPTT test
+    filterText.addKeyListener(new KeyListener() {
+      
+      @Override
+      public void keyPressed(KeyEvent e) {
+        if (e.keyCode == SWT.CR ||e.keyCode == SWT.KEYPAD_CR) {
+          textChanged();
+        }
+      }
+
+      @Override
+      public void keyReleased(KeyEvent e) {
+        
       }
     });
   }

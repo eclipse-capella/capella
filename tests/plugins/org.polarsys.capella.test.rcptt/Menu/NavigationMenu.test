@@ -93,7 +93,7 @@ get-view "Capella Project Explorer" | get-tree
     | get-menu -path "Show Impact Analysis..." | click
     
 with [get-window "Impact Analysis"] {
-    get-group "Select a name to find" | get-editbox -after [get-label "? = any character, * = any string"] | set-focus
+    get-editbox | click-text
     get-tree | select "In-Flight Entertainment System/In-Flight Entertainment System/Logical Architecture"
 }
 with [get-window "Impact Analysis" | get-tree] {
